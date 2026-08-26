@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004b-aerodynamic-forces-1-current-v3.config.json",
+  "configDigest": "sha256:a703af759895894725e8776879a112af1abcb63cf1d3137cb9a95f58aa16c2e9",
+  "goalIds": [
+    "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 438,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:63715a0c69a3fb54269b09a3c9d02233d1c96ca52502f928f3bd8a01e339ed00"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:49837053a94d2eb2465a678c2ba414e49aedd47fe2c92a622efcd7b40afdc081",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:44aa8c6109b2c19ef429b8d40071d9a41aa507fa0418b675bae93f027806fba3",
+    "reviewInputFingerprint": "sha256:f2f11262f9c485251bb0b69d7d74fd66a5ee62648cdaf2e67e477ed6dea4db97",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-a",
+        "campaignDigest": "sha256:d1becaac84c046ba773c4ce9bd2f51b27a456f6adb36322651aa021df7cdd96a",
+        "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-a",
+        "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:aaf023dee1daae2eeaf2b73d9ff851365bec9fa47d2d2870efba00be4dae1094"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-b",
+        "campaignDigest": "sha256:dd9d4951d76815fe0852990a03df1e99454b090826026d1f79b84a5264b9a7fb",
+        "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-b",
+        "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0bff9d8a0b010ae140b5c318808c04a83cef11aaba2e278c9c60b36c76b632ae"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

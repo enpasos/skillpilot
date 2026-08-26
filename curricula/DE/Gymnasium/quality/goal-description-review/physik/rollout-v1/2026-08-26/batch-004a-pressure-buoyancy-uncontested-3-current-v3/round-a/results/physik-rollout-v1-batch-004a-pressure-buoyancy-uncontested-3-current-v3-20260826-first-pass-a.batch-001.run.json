@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-004a-v3-round-a-gpt5-20260826",
+  "campaignId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-a",
+  "roundId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:24f13395634b4af0b17713c5e420a95990d81b1076d45791cd3ba97b8f629919",
+  "bundleFingerprint": "sha256:646837f63f4d9b8db71570d5b746de87cadaae44189d3bcbee41c840a8bf8c4e",
+  "bookDigest": "sha256:69db57e25dec8eab11dbe52478afe74538af8ebbc1211a47b27ee11376226464",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5308de76-79f0-44f4-8cb7-fc9de4772217",
+    "310b4f62-e261-46be-bb1b-1f125fc1699a",
+    "e11b2ee9-e528-4857-9ecd-59bd460fba81"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:58535247658b71612c171f7f61efeeb7204f12e7f85f80de0c89ce391415353f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:24f13395634b4af0b17713c5e420a95990d81b1076d45791cd3ba97b8f629919"
+    }
+  ],
+  "startedAt": "2026-08-26T08:32:56Z",
+  "completedAt": "2026-08-26T08:32:56Z",
+  "status": "completed",
+  "outputDigest": "sha256:823c8a1ee86142dfaa2d81391e6d1f5b2b61421ac478e6cfcd766108aaeb1ac1",
+  "toolchainVersion": "codex-goal-description-review-v2"
+}

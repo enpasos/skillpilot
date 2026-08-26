@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b004-pressure-buoyancy-round-b-openai-gpt5-20260826",
+  "campaignId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-20260826-b",
+  "roundId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:01c90ecb348673cef0ae909f63aceec0219ed727421d38537b184fe93a7bc5fe",
+  "bundleFingerprint": "sha256:db895905230d2572d1b00ee3b61b47c91e86b89a69a14eaa2ce6a1d8786f5ad2",
+  "bookDigest": "sha256:1bb5d799899afb0337acf58d63f238b926796d75b279c9075b39b3fc3be9c890",
+  "provider": "OpenAI",
+  "model": "Codex GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:3e1cc20e27f505784e345cf204276a86c297d092cc760bde43d4f546766652d4",
+  "independenceGroupId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5308de76-79f0-44f4-8cb7-fc9de4772217",
+    "310b4f62-e261-46be-bb1b-1f125fc1699a",
+    "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+    "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:01c90ecb348673cef0ae909f63aceec0219ed727421d38537b184fe93a7bc5fe"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T07:35:30.000Z",
+  "completedAt": "2026-08-26T07:40:29.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:cdee9c36058f5f90f9b798dbc2af8f82ac44d96414472afc80236d0ef4479989",
+  "toolchainVersion": "goal-description-review-v1"
+}

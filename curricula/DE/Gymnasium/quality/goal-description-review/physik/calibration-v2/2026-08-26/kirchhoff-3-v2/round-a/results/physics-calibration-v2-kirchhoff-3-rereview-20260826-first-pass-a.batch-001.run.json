@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a-subject-reviewer-a-gpt5",
+  "campaignId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a",
+  "roundId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-a",
+  "batchId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:5243a50c43489c6940546d20c9ab8d07680d7dc54e22d8b838a81b0fef7e3b55",
+  "bundleFingerprint": "sha256:23e82e915fe96f9b414ca2286af72da2ed63ae49a85fbf0b4df300b8aa75ce03",
+  "bookDigest": "sha256:6ec2b2bf9dd7f4b285da66bc60266224f633f3d099dde43ac974fa0a18e4abe2",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:bb387ca0a1a36cc7c891c450ee4d4a60f802d71232589eea7faefe1fee426b50",
+  "independenceGroupId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8a84de16-2fde-58ec-827a-f803e2ce8564",
+    "267170bd-f880-56a7-9719-ffb9751872c5",
+    "8f833b36-4126-52db-b210-79fb0023c7d9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5243a50c43489c6940546d20c9ab8d07680d7dc54e22d8b838a81b0fef7e3b55"
+    }
+  ],
+  "startedAt": "2026-08-25T22:52:00Z",
+  "completedAt": "2026-08-25T23:18:08Z",
+  "status": "completed",
+  "outputDigest": "sha256:c19071e6db006dd5e59c678ee2b4f9387e5b0d170de930323fca1250142040f7",
+  "toolchainVersion": "codex-gpt5-description-review-v2"
+}

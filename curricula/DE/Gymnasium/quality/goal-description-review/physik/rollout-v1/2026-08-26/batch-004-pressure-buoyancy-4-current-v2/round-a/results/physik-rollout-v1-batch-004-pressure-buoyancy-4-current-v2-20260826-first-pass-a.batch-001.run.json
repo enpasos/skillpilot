@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-batch004-current-v2-round-a-gpt5-20260826",
+  "campaignId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-a",
+  "roundId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e5ed3f92fd27804083586847d3a17740eef7519f2beb376345956f7b7d7faa3f",
+  "bundleFingerprint": "sha256:af104574a3d01d8449167676b862b71824308a969ac0a0334fb21fb07fafd052",
+  "bookDigest": "sha256:0706d401fc7d08b461db189dcad28c4dd8cb5368909e2d84494c950e013b2041",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:8052da15d86328c753a4a9f8885ff45829f2b68d825c91d94d5b5db0e49fabc9",
+  "independenceGroupId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5308de76-79f0-44f4-8cb7-fc9de4772217",
+    "310b4f62-e261-46be-bb1b-1f125fc1699a",
+    "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+    "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:0e00224467c5de60f6c4e58af28f3bbe00516d4ebb777d51784accd0a83bfe75"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e5ed3f92fd27804083586847d3a17740eef7519f2beb376345956f7b7d7faa3f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T08:16:41.000Z",
+  "completedAt": "2026-08-26T08:18:08.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:c2a07117d629ad1cdb41d53086db7ee8beefaaf9879a941b12af99c577b5026f",
+  "toolchainVersion": "goal-description-review-v1"
+}

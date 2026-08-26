@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T07:02:55.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826",
+    "batchManifestDigest": "sha256:972b5721f8024569c5efc242b165b7540718cfa4460539fa4f23f3c6a14ae29d",
+    "configDigest": "sha256:78eb25218c6f38985f6e22428d55cf1eca51c5723356ed175f2380fce8facb6e",
+    "bundleFingerprint": "sha256:119d943088443c3207eef68c0a1e5083f91694136f1ef306b1fade085bb48b50",
+    "bookDigest": "sha256:4f1aa889b1d8fa98d4427411dd6b5e23047bf1fb3b3552a62f31c49d44f24a6a",
+    "reviewInputFingerprint": "sha256:8ce9452de8047c1bc5a4a21d7a791d550036dcd33bbf283cc4398095daa1eea3",
+    "dualSummaryDigest": "sha256:40cdc45d8802342a4eafd880294e3cd9b3a1c297566f6e2f31e2861b9cf1215b",
+    "canonicalLandscapeDigest": "sha256:426e939ab702c466daf82739d8aea4171a792269dc1a878eb9d3a7b618e6230d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-a",
+      "campaignDigest": "sha256:0370fbaae7a2454d3733269dd90535790b8487f08bce217b2f81429087a2449b",
+      "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:8ce9452de8047c1bc5a4a21d7a791d550036dcd33bbf283cc4398095daa1eea3",
+      "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1154d4d28cfa17c9e60699292ab42ba26db1180d9d5c0454058edcdaf7f63c3c",
+      "runId": "gdr-physik-20260826-a-energy-climate-5be98160",
+      "runManifestDigest": "sha256:63e64d913c49e42edea3217b8f818d4434321e07f88a21a69020d5710510780b",
+      "resultsDigest": "sha256:61ae052c49785c92a84a25276e988690e0a6b2b94c569681a96480d785789315"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-b",
+      "campaignDigest": "sha256:3b9faee555970652a3a70f37e05ff64b20bf20f665ac011ea234078c20e020f7",
+      "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:8ce9452de8047c1bc5a4a21d7a791d550036dcd33bbf283cc4398095daa1eea3",
+      "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:bcbb6ff5455b17b147da6bf1a45ecc2964e3d80e30483ac0c292844267b14cf5",
+      "runId": "physik-energy-climate-evaluation-round-b-20260826-gpt-5",
+      "runManifestDigest": "sha256:8dfc4b085c63fa40fb3702b4552462a08d0b1bc19d33cc1ea44ae617b11c86b2",
+      "resultsDigest": "sha256:89d5af3f6a5d37443595653bfe04a1df77279315d588329cc4561adcb94d811b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-synthesis-decision-001",
+      "goalId": "5be98160-5189-58aa-8183-1df1c400cc8c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f719bee5fbd934e38fde89e4613b9533d87dc198d27a38ba38b8714583b6a8a4",
+      "pageFingerprint": "sha256:bdefd85a4ada759358a4b45f8d4f81d9957cf10ef657f1a66b61aa1ecc4f3ab1",
+      "goalReviewContextFingerprint": "sha256:27463739779b285be951b14609c498e116b682c252507e9b807980dda78e932e",
+      "finalText": {
+        "titleDe": "Energieversorgung und Klimawirkungen fachlich bewerten",
+        "titleEn": "Evaluate energy supply and climate impacts scientifically",
+        "descriptionDe": "Die lernende Person kann verschiedene Arten der Energieversorgung anhand fachlich belastbarer Daten und offengelegter Kriterien unter physikalischen, ökologischen, ökonomischen und gesellschaftlichen Aspekten vergleichen, Klimawirkungen fachlich begründet einordnen und daraus ein abgewogenes Urteil formulieren.",
+        "descriptionEn": "The learner can compare forms of energy supply using scientifically reliable data and explicit criteria from physical, ecological, economic, and social perspectives, classify climate impacts with scientific reasoning, and formulate a balanced judgment from this comparison."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gdr-physik-20260826-a-5be98160-5189-58aa-8183-1df1c400cc8c",
+          "recordDigest": "sha256:f2d4e83eb705dfc9b54bf359bb34c68a97d53711c7a91080a1db27675e118276"
+        },
+        "second": {
+          "recordId": "physik-energy-climate-evaluation-round-b-20260826-5be98160",
+          "recordDigest": "sha256:7a730f261c1e220eb0d863a9db55ebd46a16bbffd45dfd4792bc5a0ed81def14"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KI-Reviews bestätigen den aktuellen Wortlaut. Die erste Evidence-Fassung ist enger und fachlich stärker, weil sie die Bewertung konsequent an vergleichbare Daten zu den Versorgungssystemen, Bezugsgrößen, Zeitraum, Systemgrenze, Einheiten und erkennbare Unsicherheiten bindet, Datenbefund und wertende Kriteriengewichtung trennt und den Transfer auf eine veränderte regionale Verfügbarkeit mit geänderter Systemgrenze oder Zeitperspektive konzentriert. Die zweite Fassung bleibt fachlich vereinbar, fügt aber mit einer Mindestanzahl, einem Gegenargument und mehreren möglichen Transferachsen mehr Prüfdesign hinzu, ohne den Kern dieses Ziels zu schärfen.",
+      "rationaleEn": "Both independent AI reviews confirm the current wording. The first evidence formulation is tighter and scientifically stronger because it consistently binds the evaluation to comparable data about the supply systems, reference quantities, time period, system boundary, units, and identifiable uncertainties; separates data-based findings from value-based criteria weighting; and focuses transfer on changed regional availability together with a changed system boundary or time perspective. The second formulation remains scientifically compatible but adds more assessment design through a minimum number, a counterargument, and several possible transfer axes without sharpening the core of this goal."
+    }
+  ],
+  "manifestFingerprint": "sha256:02db8c7c913a5fe940a963c0fa3bb4d84e5cc398b50623edaadf039fe8397ea8"
+}

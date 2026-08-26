@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 1,
+  "selectionVersion": "physics-description-understanding-evidence-calibration-v1",
+  "selectionId": "de-de-gym-physics-description-understanding-evidence-calibration-v1",
+  "createdOn": "2026-08-25",
+  "status": "review_input",
+  "purpose": "Defensible stratified calibration set for reviewing whether Physics goal descriptions and positive-understanding-evidence-v2 profiles support deep understanding, independently observable performance, and transfer to a fresh changed case.",
+  "method": {
+    "selectionType": "deliberate-stratified-calibration",
+    "population": "The 429 curricularAtomic pages in the compiled nationwide German Gymnasium Physics atlas.",
+    "selectionRule": "Select current ordinary curricularAtomic goals that jointly cover both school stages, all seven closed V2 archetypes, AB1 to AB3, accepted/pilot/absent visualizations, sparse and nationwide applicability, cross-stage projection, external mathematics prerequisites, source-boundary handling, description fragments, semantic-atomicity stress, evaluation, quantum physics, relativity, experiments, representations, data, and scientific-correctness sentries.",
+    "orderRule": "Stable authored order: shared and Sek-I foundations first, then E and Q1 to Q4, while retaining deliberate contrasts next to the concepts they calibrate.",
+    "representativenessClaim": "This is a calibration stress set, not a statistical sample and not a claim about defect prevalence in the population.",
+    "blindReviewRule": "Reviewers receive the ordered goals and bound source context; these selection reasons are withheld until independent records have been returned.",
+    "authorityRule": "Selection, AI reviews, and model agreement are candidate evidence only and do not authorize canonical edits, profile approval, publication, or mastery claims."
+  },
+  "evidenceSources": [
+    {
+      "role": "canonical-goal-semantics",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "rawSha256": "sha256:c09ec399c88a035c86a45f9186d88d9de42fecbb93d43bc9e53e0fa7abaf7c97"
+    },
+    {
+      "role": "semantic-kind-decisions",
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "rawSha256": "sha256:139a7101a959b3fad41cc5c65e49219cabb0032a16a9f64be2e04c5af453e550"
+    },
+    {
+      "role": "semantic-atomicity-context",
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "rawSha256": "sha256:10bc9fdcdc50258dc71467e51af876ee37666b8179193823d1cd50b7431ac5b7"
+    },
+    {
+      "role": "nationwide-atlas-build-config",
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+      "rawSha256": "sha256:f2ae7c25c2f288ead6796db39aaed38b6c813e6e2c2496024cb5f127bdd73190"
+    },
+    {
+      "role": "effective-projection-source-manifest",
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "rawSha256": "sha256:a525967091f95e5a47002262afc2da42bd6f66e3f7b8431d6eaca5ff81efc267"
+    },
+    {
+      "role": "physics-duration-policy",
+      "path": "curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json",
+      "rawSha256": "sha256:80f8697ebdbc457f2accd3f552b84f072d89b5852ebbd5e33b1da8116c6aaa07"
+    },
+    {
+      "role": "visualization-review-state",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "rawSha256": "sha256:1233740b8d12a0a15b70d2ada48979db4f8faa491b13705e6eaf5b864e462e1f"
+    }
+  ],
+  "derivedEvidenceSnapshot": {
+    "path": "tmp/goal-books/de-gym-physik-bundesweit.book-model.json",
+    "authoritative": false,
+    "rebuildDate": "2026-08-25",
+    "pageCount": 429,
+    "modelDigest": "sha256:5353b9c754167a786a6dbc4944faeeb76e78d5855d5c8e255bf37d93766db835",
+    "landscapeSemanticDigest": "sha256:e8a1d01123caec501442b23a3638be87e2e5f192be9a3c2f19820169e83ecdcd",
+    "compositionViewManifestSemanticDigest": "sha256:905e470d63844c3a00128f2ef88c40edc4e15ac3f7cfabf92617c61583891209",
+    "semanticKindLedgerSemanticDigest": "sha256:82aa9d71c3d1652c1363624e2a65a2480e770b301b731acef6723c8337043c46",
+    "goalVisualizationQaSemanticDigest": "sha256:ab8c40d57d7848ab20cee5b041ed5c2c74c55b00ac009b30bf38f6d897ad2833",
+    "interpretation": "The generated model records compiled applicability and per-goal fingerprints for this snapshot. Canonical sources, composition views, manifest, policy, and ledgers remain the sources of truth."
+  },
+  "selectionInvariants": [
+    "All 22 entries are ordinary goals classified as curricularAtomic; orientation, memory, practice, assessment, program, and runtime-support nodes are excluded.",
+    "All 22 entries had current atomic decisions in the semantic-atomicity ledger at selection time, but that ledger is context rather than authority for description atomicity.",
+    "Effective applicability is taken from the rebuilt nationwide atlas projection, not from raw canonical goal applicability.",
+    "The stable view order is identical to the entry order in this file.",
+    "No entry is selected because an image is presumed correct; visualization state is an independent calibration dimension.",
+    "The external mathematics landscape is required so the cross-subject prerequisite of movement modeling resolves without weakening the Physics graph."
+  ],
+  "coverage": {
+    "sampleSize": 22,
+    "populationPageCount": 429,
+    "semanticKind": {
+      "curricularAtomic": 22
+    },
+    "semanticAtomicityContext": {
+      "atomic": 22
+    },
+    "phase": {
+      "GLOBAL": 9,
+      "E": 4,
+      "Q1": 3,
+      "Q2": 1,
+      "Q3": 2,
+      "Q4": 3
+    },
+    "demandLevel": {
+      "AB1": 7,
+      "AB2": 11,
+      "AB3": 4
+    },
+    "primaryArchetype": {
+      "concept": 4,
+      "procedure": 2,
+      "representation": 2,
+      "modeling": 8,
+      "proof": 1,
+      "experiment": 2,
+      "data": 3
+    },
+    "visualizationReviewStatus": {
+      "accepted": 21,
+      "pilot": 0,
+      "none": 1
+    },
+    "effectiveStageClass": {
+      "SekI": 7,
+      "CrossStage": 4,
+      "SekII": 11
+    },
+    "effectiveJurisdictionCountHistogram": {
+      "1": 1,
+      "2": 1,
+      "14": 3,
+      "15": 10,
+      "16": 7
+    },
+    "specialDimensions": {
+      "externalMathematicsPrerequisite": [
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "sourceApplicabilityBoundary": [
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "semanticAtomicityStress": [
+        "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+        "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+        "01bebdfc-5819-4610-a03e-ea5e794fc954",
+        "8a84de16-2fde-58ec-827a-f803e2ce8564",
+        "8f833b36-4126-52db-b210-79fb0023c7d9"
+      ],
+      "scientificConventionSentry": [
+        "79da5c34-86b2-5c10-9726-9de886ccef7d"
+      ],
+      "descriptionFragment": [
+        "5476480f-7ff2-529f-aade-968198c782a9",
+        "c5413852-abae-566b-b435-f9939209ca63"
+      ],
+      "evaluationWithinClosedArchetypeEnum": [
+        "bb5c5eab-2fc1-5336-b8cf-14d147695487"
+      ],
+      "noVisualization": [
+        "0f6b798b-594e-5480-8c5f-95e2486a4d85"
+      ],
+      "sparseEffectiveApplicability": [
+        "5355fee0-0477-5570-a234-561477bf77ba",
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "order": 1,
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "goalFingerprint": "sha256:22ad22f3ede2ec893f9568d3f90250d45a5a4772c1a4a9a3864889e21e69ef91",
+      "title": "Beobachtung und Erklärung unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Denk- und Arbeitsweisen",
+      "demandLevel": "AB1",
+      "primaryArchetype": "concept",
+      "secondaryCharacteristics": ["experiment", "communication", "epistemic-distinction"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "CrossStage",
+        "jurisdictionCount": 2,
+        "SekI": ["DE-BW"],
+        "SekII": ["DE-BY"],
+        "courseProfileNote": "DE-BW Sek I has no course profile; DE-BY Sek II has GK and LK projections."
+      },
+      "selectionReason": "Calibrates the foundational distinction between observation or measurement and explanation through laws or models, including a deliberately sparse cross-stage projection that prevents raw canonical applicability from being treated as effective scope."
+    },
+    {
+      "order": 2,
+      "goalId": "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+      "goalFingerprint": "sha256:b030a8819ae60efc5706bfafe03d9c55c6515ed7f247a61579016b01a0330f26",
+      "title": "Kraft und Verformung experimentell untersuchen",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "demandLevel": "AB2",
+      "primaryArchetype": "experiment",
+      "secondaryCharacteristics": ["data", "representation", "proportionality"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 15,
+        "SekI": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": [],
+        "missingJurisdictions": ["DE-BW"]
+      },
+      "selectionReason": "Tests whether experiment evidence includes a question, controlled variation, apparatus and data, graph-based proportional reasoning, uncertainty, and limits rather than only a named classroom activity."
+    },
+    {
+      "order": 3,
+      "goalId": "79cb1695-f985-443a-b93e-27b57ab474b7",
+      "goalFingerprint": "sha256:5b50b42df53de3796493c9ed4dd786d2654740442fca7279c48aac31997760f2",
+      "title": "Lichtwege mit dem Strahlenmodell darstellen und vorhersagen",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "demandLevel": "AB1",
+      "primaryArchetype": "representation",
+      "secondaryCharacteristics": ["modeling", "construction", "prediction"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 16,
+        "SekI": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": []
+      },
+      "selectionReason": "Provides nationwide Sek-I coverage for constructing and interpreting a model representation and predicting a changed geometry without reifying a drawn ray."
+    },
+    {
+      "order": 4,
+      "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "goalFingerprint": "sha256:3be460faa7a495adc4331075ff6f6d9910cb8268593b195f9de9709c74d4a453",
+      "title": "Schallausbreitung im Teilchenmodell erklären",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "demandLevel": "AB1",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["concept", "misconception-resistance"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 14,
+        "SekI": ["DE-BB", "DE-BE", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": [],
+        "missingJurisdictions": ["DE-BW", "DE-BY"]
+      },
+      "selectionReason": "Retains the dominant atomic part of the former combined goal and stresses a common misconception: medium particles oscillate locally while the disturbance and energy propagate, so object-transport explanations fail."
+    },
+    {
+      "order": 5,
+      "goalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "goalFingerprint": "sha256:ca5556ab525182e51f63733ce388be42e7fe7b956026108b73584659752e345f",
+      "title": "Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "demandLevel": "AB2",
+      "primaryArchetype": "data",
+      "secondaryCharacteristics": ["modeling", "concept", "counterexample"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 15,
+        "SekI": ["DE-BB", "DE-BE", "DE-BW", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": [],
+        "missingJurisdictions": ["DE-BY"]
+      },
+      "selectionReason": "Calibrates data-based comparison, qualitative medium modeling, and an explicit counterexample against the false shortcut that aggregate state alone determines a universal speed ranking."
+    },
+    {
+      "order": 6,
+      "goalId": "01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "goalFingerprint": "sha256:dc17e56815005e34cf71666134c49694873f7faaf408ad22cc705ab34d92220d",
+      "title": "Reihen- und Parallelschaltungen für eine Funktion planen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "demandLevel": "AB2",
+      "primaryArchetype": "procedure",
+      "secondaryCharacteristics": ["representation", "design", "justification"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 15,
+        "SekI": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": [],
+        "missingJurisdictions": ["DE-BW"]
+      },
+      "selectionReason": "Retains the dominant design part of the former combined circuit goal and tests whether a functional requirement is translated into a circuit topology and justified through the required current paths."
+    },
+    {
+      "order": 7,
+      "goalId": "8a84de16-2fde-58ec-827a-f803e2ce8564",
+      "goalFingerprint": "sha256:30a43c430a6dda6bc072040aa4023c9e5c2184fb52b8c5f33dc005a431e7bd90",
+      "title": "Strom- und Spannungsbilanzen in einfachen Schaltungen begründen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "demandLevel": "AB2",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["procedure", "conservation", "prediction"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 16,
+        "SekI": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": []
+      },
+      "selectionReason": "Tests whether current and voltage balances are selected and used for a prediction or check and are explained through charge and energy conservation instead of recalled as disconnected slogans."
+    },
+    {
+      "order": 8,
+      "goalId": "8f833b36-4126-52db-b210-79fb0023c7d9",
+      "goalFingerprint": "sha256:fc895c19b3c99705c6fb197d4c0c6ec1609a7a3f956b2df31403e54b395cafe6",
+      "title": "Widerstandswirkungen in Reihen- und Parallelschaltungen deuten",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "demandLevel": "AB2",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["concept", "causal-reasoning", "limiting-case"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "CrossStage",
+        "jurisdictionCount": 16,
+        "SekI": ["DE-BB", "DE-BE", "DE-BW", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "SekII": ["DE-BY"],
+        "courseProfileNote": "The DE-BY Sek-II projection includes GK and LK; the other jurisdictions project the goal in Sek I."
+      },
+      "selectionReason": "Calibrates causal predictions for changed series and parallel networks and requires a limiting-case check, exposing rules that were memorized without understanding the network effect."
+    },
+    {
+      "order": 9,
+      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "goalFingerprint": "sha256:35eb6832a7d90d5c4fc37f4f70a9eef2f1146b051de39f8b9d59fa862996b81b",
+      "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "demandLevel": "AB2",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["concept", "source-boundary"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekI",
+        "jurisdictionCount": 1,
+        "SekI": ["DE-BY"],
+        "SekII": [],
+        "missingJurisdictions": ["DE-BB", "DE-BE", "DE-BW", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]
+      },
+      "selectionReason": "Exercises the most source-specific projection and a mapping-inheritance boundary: the shared Bavarian Ph10.4.3 source bullet also maps to reactor and evaluation siblings, while this goal must remain limited to mass defect and mass-energy equivalence."
+    },
+    {
+      "order": 10,
+      "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "goalFingerprint": "sha256:436f934a0736bf0ba7370ba06043050c10ed6032fbb6c9efff50775513cad8aa",
+      "title": "Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+      "phase": "E",
+      "area": null,
+      "demandLevel": "AB1",
+      "primaryArchetype": "data",
+      "secondaryCharacteristics": ["experiment", "uncertainty"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 15,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW"]
+      },
+      "selectionReason": "Requires fresh-data inference and a defensible distinction between random and systematic uncertainty instead of a generic instruction to use digital tools."
+    },
+    {
+      "order": 11,
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "goalFingerprint": "sha256:deeb51b33f8cda3c2079b3395b78eac3968f000e68a1a106f7b910872526137a",
+      "title": "Modellierung und Idealisierung von Bewegungen",
+      "phase": "E",
+      "area": null,
+      "demandLevel": "AB1",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["representation", "cross-subject-prerequisite"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "CrossStage",
+        "jurisdictionCount": 16,
+        "SekI": ["DE-BW", "DE-BY"],
+        "SekII": ["DE-BB", "DE-BE", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]
+      },
+      "externalPrerequisite": {
+        "landscape": "Mathematik (Gymnasium, DE)",
+        "goalId": "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
+        "title": "Lineare Funktionen rechnerisch untersuchen"
+      },
+      "selectionReason": "Covers model choice, assumptions, idealization, graph coordination, model limits, cross-stage age fit, and the only external mathematics prerequisite in the set."
+    },
+    {
+      "order": 12,
+      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "goalFingerprint": "sha256:1a57494553ad42aa56ad6dff05ff6e54e065bafbb1e266aa57aa94c4d6c0bec0",
+      "title": "Newtons 3. Axiom anwenden",
+      "phase": "E",
+      "area": null,
+      "demandLevel": "AB1",
+      "primaryArchetype": "concept",
+      "secondaryCharacteristics": ["procedure", "representation", "misconception-resistance"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "CrossStage",
+        "jurisdictionCount": 15,
+        "SekI": ["DE-BW", "DE-BY"],
+        "SekII": ["DE-BB", "DE-BE", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-RP"]
+      },
+      "selectionReason": "Tests whether force pairs are assigned to different interacting bodies and are not incorrectly cancelled on one free-body diagram; altered body and direction cases expose memorized slogans."
+    },
+    {
+      "order": 13,
+      "goalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+      "goalFingerprint": "sha256:10be9efb165bfe6011ac9786a1f3a92a830500b61f1e9f2fc4389cfc585d2627",
+      "title": "Entropie E09: Der 2. Hauptsatz als Entscheidungsregel",
+      "phase": "E",
+      "area": null,
+      "demandLevel": "AB2",
+      "primaryArchetype": "concept",
+      "secondaryCharacteristics": ["modeling", "system-boundary", "decision-rule"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 14,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW", "DE-BY"]
+      },
+      "selectionReason": "Calibrates system-plus-surroundings entropy reasoning, process direction, and the reversible limit, where an omitted boundary produces a plausible but physically wrong rule."
+    },
+    {
+      "order": 14,
+      "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "goalFingerprint": "sha256:7cc3155d9979760866184f880bf92d7a9e55f4652946c8dab3bcfcb955c2c5a1",
+      "title": "Magnetische Felder und Feldlinienbilder",
+      "phase": "Q1",
+      "area": null,
+      "demandLevel": "AB1",
+      "primaryArchetype": "representation",
+      "secondaryCharacteristics": ["concept", "construction", "model-discipline"],
+      "visualizationReviewStatus": "none",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 16,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]
+      },
+      "selectionReason": "Is the no-visualization control and tests construction and interpretation of field-line conventions without treating lines as material objects."
+    },
+    {
+      "order": 15,
+      "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+      "goalFingerprint": "sha256:59ef07ab5bb559e9a83786c1d379ea880dba157ee7d6423d448127e194b8947b",
+      "title": "Lorentzkraft auf freie Ladungen",
+      "phase": "Q1",
+      "area": null,
+      "demandLevel": "AB2",
+      "primaryArchetype": "procedure",
+      "secondaryCharacteristics": ["representation", "modeling", "vector-reasoning"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 15,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BW", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BY"]
+      },
+      "selectionReason": "Requires physically meaningful vector, sign, angle, direction, and path reasoning and therefore distinguishes law selection and interpretation from formula substitution."
+    },
+    {
+      "order": 16,
+      "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
+      "goalFingerprint": "sha256:02bc1e408dec1ea353a1b399f896393beddf50d9071482a274b92d286be4e411",
+      "title": "Fadenstrahlrohr als Elektronen-Messverfahren einordnen",
+      "phase": "Q1",
+      "area": null,
+      "demandLevel": "AB2",
+      "primaryArchetype": "experiment",
+      "secondaryCharacteristics": ["data", "modeling", "measured-versus-inferred"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 16,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]
+      },
+      "selectionReason": "Forces a distinction between measured voltage, field, and radius and the inferred charge-to-mass ratio; obtaining electron mass also requires an independent charge value."
+    },
+    {
+      "order": 17,
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "goalFingerprint": "sha256:824a3547b336f404958214e88b5256c7ce629600eabb0907396a3ef88a6dddc0",
+      "title": "Erzwungene Schwingungen und Resonanz",
+      "phase": "Q2",
+      "area": null,
+      "demandLevel": "AB2",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["data", "representation", "changed-condition-transfer"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 16,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"]
+      },
+      "selectionReason": "Connects driving frequency, natural frequency, damping, amplitude and the resonance curve; changed damping or drive conditions provide meaningful transfer."
+    },
+    {
+      "order": 18,
+      "goalId": "5476480f-7ff2-529f-aade-968198c782a9",
+      "goalFingerprint": "sha256:f5e40564136f70efc358063afa935184d3391b5ffd6c89e993684125f593b088",
+      "title": "Fotoeffekt-Daten auswerten",
+      "phase": "Q3",
+      "area": null,
+      "demandLevel": "AB3",
+      "primaryArchetype": "data",
+      "secondaryCharacteristics": ["procedure", "representation", "description-fragment"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 15,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW"],
+        "courseProfileNote": "The DE-BY projection is LK-only; the other effective jurisdictions include GK and LK."
+      },
+      "selectionReason": "The current description is a sentence fragment and the evidence must cover fresh-data linearization, slope and intercept meaning, units, uncertainty, and a changed material rather than a rehearsed fit."
+    },
+    {
+      "order": 19,
+      "goalId": "c5413852-abae-566b-b435-f9939209ca63",
+      "goalFingerprint": "sha256:e30d1251ca8fdcbcf8917846b603551f6abbbfdab3b1498912262c530fa74e88",
+      "title": "Einzelphotonen-Interferenz",
+      "phase": "Q3",
+      "area": null,
+      "demandLevel": "AB3",
+      "primaryArchetype": "concept",
+      "secondaryCharacteristics": ["data", "representation", "quantum-model-discipline", "description-fragment"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 15,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW"]
+      },
+      "selectionReason": "The fragment description and quantum context test whether profiles distinguish stochastic single events from the accumulating ensemble pattern and transfer to changed which-path information."
+    },
+    {
+      "order": 20,
+      "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
+      "goalFingerprint": "sha256:b62485436d3af1abaf975f88e6e6b0f64f4fa7535e3553f9a71190aee857c372",
+      "title": "Einstein-Synchronisation erläutern",
+      "phase": "Q4",
+      "area": null,
+      "demandLevel": "AB2",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["concept", "representation", "operational-definition"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 15,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW"]
+      },
+      "selectionReason": "Requires an operational light-signal procedure and its relation to simultaneity and reference frame, not a verbal definition detached from measurement."
+    },
+    {
+      "order": 21,
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "goalFingerprint": "sha256:96f2d98e7f7178ace6ce759f662bf409a03d4e38e6f299a8ecd439937fdaa2e3",
+      "title": "Strahlungsrisiken mit physikalischen Größen beurteilen",
+      "phase": "Q4",
+      "area": null,
+      "demandLevel": "AB3",
+      "primaryArchetype": "modeling",
+      "secondaryCharacteristics": ["evaluation", "data", "safety"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 15,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW"]
+      },
+      "selectionReason": "Calibrates evaluation inside the closed seven-archetype schema: dose, activity, exposure, and shielding must support an evidence-and-criteria judgment while empirical claims remain separate from values."
+    },
+    {
+      "order": 22,
+      "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "goalFingerprint": "sha256:79a016950b3c6d7c7c2068959f610737857f072bc7c28e8f60ea64a867365d0b",
+      "title": "Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen",
+      "phase": "Q4",
+      "area": null,
+      "demandLevel": "AB3",
+      "primaryArchetype": "proof",
+      "secondaryCharacteristics": ["modeling", "scientific-convention-sentry", "source-bound-terminology"],
+      "visualizationReviewStatus": "accepted",
+      "effectiveProjection": {
+        "stageClass": "SekII",
+        "jurisdictionCount": 14,
+        "SekI": [],
+        "SekII": ["DE-BB", "DE-BE", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH"],
+        "missingJurisdictions": ["DE-BW", "DE-BY"]
+      },
+      "selectionReason": "Acts as a factual and source-convention sentry: the source-bound historical term requires explicit adjudication against the modern invariant-rest-mass convention before a defensible description or positive evidence profile is accepted."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-calibration-v2-kirchhoff-3-20260826-b-subject-review-gpt5",
+  "campaignId": "physics-calibration-v2-kirchhoff-3-20260826-b",
+  "roundId": "physics-calibration-v2-kirchhoff-3-20260826-first-pass-b",
+  "batchId": "physics-calibration-v2-kirchhoff-3-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:94c39ad4c77c2b0659076c5a4aa53f3cb2048e9beda61f9390cc8a6764f51bff",
+  "bundleFingerprint": "sha256:b08ae2a21fe9a67fdab502e2a83ff2e2ea4ffea549bde9f590e69f22dae38185",
+  "bookDigest": "sha256:bdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:33879625f5b3739ca3efa6389c797b2142e56891856de03f6073cfa133bf82a6",
+  "independenceGroupId": "physics-calibration-v2-kirchhoff-3-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8a84de16-2fde-58ec-827a-f803e2ce8564",
+    "267170bd-f880-56a7-9719-ffb9751872c5",
+    "8f833b36-4126-52db-b210-79fb0023c7d9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:94c39ad4c77c2b0659076c5a4aa53f3cb2048e9beda61f9390cc8a6764f51bff"
+    }
+  ],
+  "startedAt": "2026-08-25T22:38:30.334Z",
+  "completedAt": "2026-08-25T22:38:31.334Z",
+  "status": "completed",
+  "outputDigest": "sha256:6cca2ba4bcf3c27b9611dbf82b9acb5b89748964abfa3f73e03e86081492b9de",
+  "toolchainVersion": "codex-physics-description-review-v1"
+}

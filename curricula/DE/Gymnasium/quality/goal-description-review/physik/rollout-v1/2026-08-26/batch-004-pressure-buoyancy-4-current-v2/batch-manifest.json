@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004-pressure-buoyancy-4-current-v2.config.json",
+  "configDigest": "sha256:a67cb397ae3a0e562410a62b5b09be7e3eed5af32ad268a1950b4ae868c5b392",
+  "goalIds": [
+    "5308de76-79f0-44f4-8cb7-fc9de4772217",
+    "310b4f62-e261-46be-bb1b-1f125fc1699a",
+    "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+    "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 438,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:63715a0c69a3fb54269b09a3c9d02233d1c96ca52502f928f3bd8a01e339ed00"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:0706d401fc7d08b461db189dcad28c4dd8cb5368909e2d84494c950e013b2041",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:af104574a3d01d8449167676b862b71824308a969ac0a0334fb21fb07fafd052",
+    "reviewInputFingerprint": "sha256:dc3c6b6c9e459cda2e43d428f265bdbb5eda84c2ec95a46aeb99a7b9ab53b578",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-a",
+        "campaignDigest": "sha256:e580b789dc67a64c9816bd3ef396e4c2f51eb2030e7f5d747ec925d3bd9d6950",
+        "roundId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-independent-a",
+        "batchId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e5ed3f92fd27804083586847d3a17740eef7519f2beb376345956f7b7d7faa3f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-b",
+        "campaignDigest": "sha256:327808dd415719356546a7f70f92f8fde125fe7b378685350f304b967d85ae17",
+        "roundId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-independent-b",
+        "batchId": "physik-rollout-v1-batch-004-pressure-buoyancy-4-current-v2-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:bf0ab87b206b87d111a4ae225de17dd60488a7563c681e7ff85970d98f0475ca"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

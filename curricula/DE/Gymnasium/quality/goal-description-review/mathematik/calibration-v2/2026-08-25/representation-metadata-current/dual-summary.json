@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:baa5798a73c48fe2940323ae935d39a1cc46c9ebce4178d09b94fe596db8a853",
+  "reviewInputFingerprint": "sha256:fc5a523004745869f9390e6df76eb19e0071c9a80432a6d1c8413f4d34cf668d",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "math-representation-metadata-current-20260825-a",
+      "roundId": "math-representation-metadata-current-first-pass-a-20260825",
+      "independenceGroupId": "math-representation-metadata-current-independent-a-20260825",
+      "runIds": [
+        "reviewer-a-98238c5f-f9f0-47ca-9006-d5e2fc92c8ca:run-342fba28-a547-4aad-a19a-6703332e1d8a"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "math-representation-metadata-current-20260825-b",
+      "roundId": "math-representation-metadata-current-first-pass-b-20260825",
+      "independenceGroupId": "math-representation-metadata-current-independent-b-20260825",
+      "runIds": [
+        "skillpilot-reviewer-b-82c84acb-2358-4ffc-ad4d-df6b9d6f6204+run-c781ba67-f06f-4814-87e2-caf21936db03"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::Codex"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "8dd9f210-2683-5902-acab-e3be22725232",
+      "firstRecordId": "record-d24ca208-fdbf-4526-aa73-f123435effe6",
+      "secondRecordId": "goal-description-review-a4125679-aa5e-4157-bfe2-16e99254ba9e",
+      "firstRunId": "reviewer-a-98238c5f-f9f0-47ca-9006-d5e2fc92c8ca:run-342fba28-a547-4aad-a19a-6703332e1d8a",
+      "secondRunId": "skillpilot-reviewer-b-82c84acb-2358-4ffc-ad4d-df6b9d6f6204+run-c781ba67-f06f-4814-87e2-caf21936db03",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

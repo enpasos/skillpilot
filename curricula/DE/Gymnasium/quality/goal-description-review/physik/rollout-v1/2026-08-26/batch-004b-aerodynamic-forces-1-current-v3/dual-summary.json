@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:44aa8c6109b2c19ef429b8d40071d9a41aa507fa0418b675bae93f027806fba3",
+  "reviewInputFingerprint": "sha256:f2f11262f9c485251bb0b69d7d74fd66a5ee62648cdaf2e67e477ed6dea4db97",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-a",
+      "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a-codex-gpt5"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-b",
+      "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001.gpt5-subject-review"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "firstRecordId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a-codex-gpt5.24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "secondRecordId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001.goal-24b4686a",
+      "firstRunId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a-codex-gpt5",
+      "secondRunId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001.gpt5-subject-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-thales-current-b-run-20260825-codex-001",
+  "campaignId": "math-thales-current-20260825-b",
+  "roundId": "math-thales-current-first-pass-b-20260825",
+  "batchId": "math-thales-current-first-pass-b-20260825.batch-001",
+  "batchInputFingerprint": "sha256:c967b22f5a2ac1f5007ec368e8ffb5f240760bab293ca92e7e9b8bbfa03a6a11",
+  "bundleFingerprint": "sha256:34bd37d4d26efb263435fd4e54c9bd32d206934162b1443e98f629c38bc10516",
+  "bookDigest": "sha256:e400df604d5d077ab726ebd43b3d0722c45518b9d9ecb5702d395e64390c75f9",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "modelVersion": "GPT-5-based agent; exact serving snapshot not exposed",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:9483c31b3087546e415040001cd8125f57753368a77cd7a5556a842d0f10d7f5",
+  "independenceGroupId": "math-thales-current-independent-b-20260825",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "743e5470-ff39-551e-9aba-529656418c66"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:649decdc22fc47c9cee3d1c61fe99ad7621794ee1f69e3a258efa6a1d6f9b735"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a083c028a8c6c72b63e7a465b6aabea13f1f469ed2c1acd0fd7856fbe51eb309"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c967b22f5a2ac1f5007ec368e8ffb5f240760bab293ca92e7e9b8bbfa03a6a11"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-08-25T20:43:24Z",
+  "completedAt": "2026-08-25T20:44:26Z",
+  "status": "completed",
+  "outputDigest": "sha256:2813769418ea600df9edda7bff6713984eba24f78ff19bd02895a24063775267",
+  "toolchainVersion": "goal-description-review-v1"
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+  "goal": {
+    "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a4f8cbeba8de70358a16ca696fbc16951e13084369b5e5368be2510ec76bc4c8",
+    "pageFingerprint": "sha256:56ca149c25626b0c9b5ce85c648ae6b8e0f615da06b64ef1f16c7c1715263d14",
+    "goalReviewContextFingerprint": "sha256:02938636104bc9fe4e48b1d2202be3a9a6eaf56567d69abc757e7250a5414305",
+    "finalText": {
+      "titleDe": "Äquivalenz durch Begründung oder Gegenbeispiel prüfen",
+      "titleEn": "Test equivalence by proof or counterexample",
+      "descriptionDe": "Die lernende Person kann prüfen, ob eine mathematische Aussage und ihre Umkehrung beide gelten, und eine behauptete Äquivalenz durch Begründungen bestätigen oder durch ein Gegenbeispiel widerlegen.",
+      "descriptionEn": "The learner can test whether a mathematical statement and its converse are both true and can confirm a claimed equivalence by justification or refute it with a counterexample."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:02938636104bc9fe4e48b1d2202be3a9a6eaf56567d69abc757e7250a5414305",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-19",
+      "recordDigest": "sha256:6fc30946a37834097842a2349d7a4f98dbd1328d5699951f605587eecf803c88"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:02938636104bc9fe4e48b1d2202be3a9a6eaf56567d69abc757e7250a5414305",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-019",
+      "recordDigest": "sha256:733d5fb7ee42c2029fda865522909a443772c43cf2a641992eab8f0c5d9e1847"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Äquivalenz durch Begründung oder Gegenbeispiel prüfen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Test equivalence by proof or counterexample” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Zwei Aussagen sind genau dann äquivalent, wenn beide Implikationsrichtungen allgemein gelten; eine Bestätigung braucht für jede Richtung eine allgemeine Begründung, während zum Widerlegen einer behaupteten Äquivalenz ein passendes Gegenbeispiel zu einer Richtung genügt.",
+      "essentialUnderstandingEn": "Two statements are equivalent exactly when both directions of implication hold in general; confirmation requires a general justification for each direction, whereas one suitable counterexample to either direction is enough to refute a claimed equivalence.",
+      "observablePerformanceDe": "Die lernende Person prüft Aussage und Umkehrung selbstständig getrennt, liefert bei Gültigkeit tragfähige allgemeine Begründungen für beide Richtungen oder konstruiert bei Ungültigkeit ein Gegenbeispiel und zeigt genau, welche Richtung daran scheitert.",
+      "observablePerformanceEn": "The learner independently tests the statement and its converse separately, provides valid general justifications for both directions when they hold, or constructs a counterexample when they do not and identifies exactly which direction fails.",
+      "transferExpectationDe": "Bei einer strukturell anderen Behauptung entscheidet die lernende Person erneut zwischen zweiseitiger Begründung und Gegenbeispiel, insbesondere wenn die Ausgangsaussage gilt, ihre Umkehrung aber nicht.",
+      "transferExpectationEn": "For a structurally different claim, the learner again decides between two-direction justification and a counterexample, especially when the original statement holds but its converse does not."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ec541acb904fe17b19b9cc59c17371ad1e4d9ebfba32d9b3c2ca72c27e55f291"
+}

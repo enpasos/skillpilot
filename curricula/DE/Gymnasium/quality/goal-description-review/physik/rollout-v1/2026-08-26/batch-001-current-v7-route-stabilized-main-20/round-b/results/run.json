@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "phys-v7b-main20-6f58a8fc-7ad3-4f8b-aed2-712e7ad842ce",
+  "campaignId": "physik-rollout-v1-batch-001-current-v7-route-stabilized-main-20-20260826-b",
+  "roundId": "physik-rollout-v1-batch-001-current-v7-route-stabilized-main-20-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-001-current-v7-route-stabilized-main-20-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f8f5f0154f7880e0eb6a5c0c376d8555ecca489eb46e14f4b464462800028c8c",
+  "bundleFingerprint": "sha256:7400e28f3263e12b47ba1b4e57e60c86550177693da9c5b7558bc16c71d19e6c",
+  "bookDigest": "sha256:5e261860c182a18c2c573beaa80222d35d41502026cf3b5e8a5d0d7786bdee57",
+  "provider": "openai",
+  "model": "codex-gpt-5",
+  "modelVersion": "reviewer-fef73455-e74f-4e72-acda-33a1f8d43bb8",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:2b4ea3532345d07b9e10ab404436ba73e2d38878327671eb2694e62104c44fa3",
+  "independenceGroupId": "physik-rollout-v1-batch-001-current-v7-route-stabilized-main-20-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+    "5ea765ac-c279-551a-8a94-a07da2381e5b",
+    "41d35667-0296-5f84-bc12-202ffc440be0",
+    "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
+    "581c0766-b84b-54cb-b8b6-375310329a41",
+    "327302e3-5b36-46f8-9c16-73f24583b0eb",
+    "722857cf-f327-5740-8151-64eb92195ec8",
+    "940978fa-1f2d-4e54-9c28-081a6df9b76f",
+    "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+    "30a936ec-e427-57fe-bf3e-4abd64b1f0c1",
+    "b92827a7-5d62-5fdb-a6f5-ac44461f4a7b",
+    "f7f2c254-1663-5861-bed7-a32c00495b19",
+    "dd7cdcea-0950-461b-96ac-ce49989fca47",
+    "af0e2efb-f634-5f2d-abea-b2e1a67a2894",
+    "f827b00f-af7f-52de-84aa-2a2bbaa035bd",
+    "f92b5b8a-327f-50d2-8313-6a142399ebf0",
+    "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
+    "9c328f68-41ed-55dd-9e02-34414a6246f2",
+    "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+    "b57427c9-1af5-5daa-8c65-b84a4cc20785"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f8f5f0154f7880e0eb6a5c0c376d8555ecca489eb46e14f4b464462800028c8c"
+    }
+  ],
+  "startedAt": "2026-08-26T11:27:54Z",
+  "completedAt": "2026-08-26T11:37:55Z",
+  "status": "completed",
+  "outputDigest": "sha256:8c92b84f0014f407a84efc72ed35b9c0a9977badb4b307e8b32c6ae3a3a40d27",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

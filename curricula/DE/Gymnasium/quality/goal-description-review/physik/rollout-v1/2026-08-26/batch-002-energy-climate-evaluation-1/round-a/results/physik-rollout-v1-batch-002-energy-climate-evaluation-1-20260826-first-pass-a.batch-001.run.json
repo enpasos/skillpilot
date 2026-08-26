@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-first-pass-a.openai-gpt-5.6-sol.run-001",
+  "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-a",
+  "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ac9b019704050b21d0ac9feeaff55f47641ee1d96612d4266a778aa502f5768b",
+  "bundleFingerprint": "sha256:7c6f289205bc770ab6383a2fa472c38d047c0d37de1dadf5b5379b71ca145616",
+  "bookDigest": "sha256:7a4d5864d1d1709af503c3eaffd82ab0259b1f5046d6da925ec66e179136360a",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:04882a3f87de44873654ebb742abb32563fd5caaea5cc5f7dfbc45e23f6c0d29",
+  "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5be98160-5189-58aa-8183-1df1c400cc8c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ac9b019704050b21d0ac9feeaff55f47641ee1d96612d4266a778aa502f5768b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T06:35:24Z",
+  "completedAt": "2026-08-26T06:36:18Z",
+  "status": "completed",
+  "outputDigest": "sha256:791fdbefa94a8216037f9a9b41f7bf3dd3e18c3e4ef54fc5ed8fa030371ae85d",
+  "toolchainVersion": "goal-description-review-v1"
+}

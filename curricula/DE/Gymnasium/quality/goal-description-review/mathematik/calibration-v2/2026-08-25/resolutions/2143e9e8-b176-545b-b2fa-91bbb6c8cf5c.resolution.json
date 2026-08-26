@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+  "goal": {
+    "goalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:44b4adeb92abeb732c6c65a46b9f0924d32c02e666a3ff1c607890089dc99ae5",
+    "pageFingerprint": "sha256:e1fc298413d26b04a4d889a675701ecf2d030510bd2f341ad4270af77e0bc769",
+    "goalReviewContextFingerprint": "sha256:207f972977a11b730c08cb7776fa29827543b2b7878d37d6d376d7bd2d7f42a2",
+    "finalText": {
+      "titleDe": "Momentane Änderungsrate qualitativ verstehen",
+      "titleEn": "Qualitatively understand instantaneous rate of change",
+      "descriptionDe": "Die lernende Person kann die momentane Änderungsrate qualitativ als Grenzfall mittlerer Änderungsraten beschreiben und am Graphen als Tangentensteigung verorten.",
+      "descriptionEn": "The learner can qualitatively describe the instantaneous rate of change as a limit case of average rates of change and locate it on the graph as tangent slope."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:207f972977a11b730c08cb7776fa29827543b2b7878d37d6d376d7bd2d7f42a2",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-10",
+      "recordDigest": "sha256:032ac63aaf6114c8d9c28d4f7ca083a536bf697eaabb1611df0444cd84cc72b4"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:207f972977a11b730c08cb7776fa29827543b2b7878d37d6d376d7bd2d7f42a2",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-010",
+      "recordDigest": "sha256:b2edcf8fbab1dc4330de7a2fa6aa78d9e34120d8a71b85e848f5df254637fc11"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Momentane Änderungsrate qualitativ verstehen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Qualitatively understand instantaneous rate of change” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Mittlere Änderungsraten sind Sekantensteigungen über Intervalle; wenn das Intervall um eine Stelle schrumpft, beschreibt ihr Grenzverhalten die momentane Änderungsrate als Tangentensteigung mit Vorzeichen und Größe.",
+      "essentialUnderstandingEn": "Average rates of change are secant slopes over intervals; as the interval around a point shrinks, their limiting behaviour describes the instantaneous rate of change as a tangent slope with a sign and magnitude.",
+      "observablePerformanceDe": "Die lernende Person erklärt an einem unbekannten Graphen selbstständig, wie eine Folge von Sekanten zur Tangente führt, verortet die momentane Änderungsrate an einer Stelle und deutet ihr Vorzeichen und ihre relative Größe qualitativ.",
+      "observablePerformanceEn": "Using an unfamiliar graph, the learner independently explains how a sequence of secants approaches the tangent, locates the instantaneous rate of change at a point, and qualitatively interprets its sign and relative magnitude.",
+      "transferExpectationDe": "Bei einem Graphen mit verändertem lokalen Verlauf oder in einem neuen Änderungskontext überträgt die lernende Person die Sekanten-Tangenten-Beziehung und vergleicht momentane Änderungsraten ohne bloße Formelroutine.",
+      "transferExpectationEn": "For a graph with changed local behaviour or in a new change context, the learner transfers the secant-tangent relationship and compares instantaneous rates of change without relying on a formula routine."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:de658ecee9d83c6378f46c8b1c6575330841b23a46a8e8b1ca3552cbc6d104f5"
+}

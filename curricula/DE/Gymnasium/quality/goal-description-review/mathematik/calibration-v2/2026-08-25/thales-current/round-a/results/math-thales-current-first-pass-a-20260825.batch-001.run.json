@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-thales-current-a-20260825-openai-gpt-5-run-001",
+  "campaignId": "math-thales-current-20260825-a",
+  "roundId": "math-thales-current-first-pass-a-20260825",
+  "batchId": "math-thales-current-first-pass-a-20260825.batch-001",
+  "batchInputFingerprint": "sha256:18d2ce8ecd64952fd49a60e36809093a762b42e1015bfe178763ffe9e97de4bf",
+  "bundleFingerprint": "sha256:34bd37d4d26efb263435fd4e54c9bd32d206934162b1443e98f629c38bc10516",
+  "bookDigest": "sha256:e400df604d5d077ab726ebd43b3d0722c45518b9d9ecb5702d395e64390c75f9",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "math-thales-current-independent-a-20260825",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "743e5470-ff39-551e-9aba-529656418c66"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:18d2ce8ecd64952fd49a60e36809093a762b42e1015bfe178763ffe9e97de4bf"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-08-25T20:34:46Z",
+  "completedAt": "2026-08-25T20:35:38Z",
+  "status": "completed",
+  "outputDigest": "sha256:cb89fb416b701a6d6cff50f817593c86498dbe2762fce97de0885c39f7f91310",
+  "toolchainVersion": "codex-gpt-5"
+}

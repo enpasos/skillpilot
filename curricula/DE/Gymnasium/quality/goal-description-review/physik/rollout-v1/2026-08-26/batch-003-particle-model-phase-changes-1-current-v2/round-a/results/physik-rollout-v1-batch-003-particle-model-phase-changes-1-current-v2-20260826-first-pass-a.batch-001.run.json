@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "gdr-physik-b003-pm-phase-v2-a-873c6371",
+  "campaignId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-a",
+  "roundId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:c3db295fd746df33023184d042fd3646f758a7e6d7a884082ed7f0b90ef28b92",
+  "bundleFingerprint": "sha256:da8b2a24a886ff79ac5c54022c47790d5e328bfcdf30a7cfe71faac093eae3ba",
+  "bookDigest": "sha256:0b9ac321a466c888cd9ac624f824f11ded6e0632c8a9eec823941c0ca0094621",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:24a58bbd406a731f1dd831c875a39a9337c0459b6d1d795de1266b407b378eae",
+  "independenceGroupId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "873c6371-4ffb-582b-8d8d-3f45f968ba08"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c3db295fd746df33023184d042fd3646f758a7e6d7a884082ed7f0b90ef28b92"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T07:05:51.633Z",
+  "completedAt": "2026-08-26T07:06:48.813Z",
+  "status": "completed",
+  "outputDigest": "sha256:29297040735e428b969b5f05cf6cfa6c41014fc517773045e1dc2c9b8adfddff",
+  "toolchainVersion": "skillpilot-goal-description-review-v1"
+}

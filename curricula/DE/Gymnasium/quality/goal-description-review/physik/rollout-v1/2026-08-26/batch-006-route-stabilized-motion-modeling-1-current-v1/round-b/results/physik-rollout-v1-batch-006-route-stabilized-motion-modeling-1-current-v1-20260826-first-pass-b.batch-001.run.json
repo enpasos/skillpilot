@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-gdr-b006-round-b-run-001",
+  "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-b",
+  "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:219d5b6996ce09465ac24f7eb3537764c41ebe7ae519ab9d0323dbd86b2d72a2",
+  "bundleFingerprint": "sha256:8ee0c96967fd8bcd5144ee36149eb0d9d209e2406bcfcaa608666e6e19e41f74",
+  "bookDigest": "sha256:ca44cd17e26f895fba148e4dca45fb7c0af243a0adef264fdc66a647452e732a",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:3b336ff0dab89aeba55bf1c398c09fb2221eb91d22c3919df154a78c5c98e11d",
+  "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d6dc0e02-831d-4894-a61a-852bcc74f147"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:219d5b6996ce09465ac24f7eb3537764c41ebe7ae519ab9d0323dbd86b2d72a2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-26T15:59:49+02:00",
+  "completedAt": "2026-08-26T16:00:39+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:e137b1d50509a5e8bb2653dc977c57821a6b0f6a2bf0bc4592fb4021a1839645",
+  "toolchainVersion": "codex-agent"
+}

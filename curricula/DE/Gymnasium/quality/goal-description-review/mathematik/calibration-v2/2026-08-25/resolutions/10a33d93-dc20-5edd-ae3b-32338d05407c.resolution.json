@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-10a33d93-dc20-5edd-ae3b-32338d05407c",
+  "goal": {
+    "goalId": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a8604222eec4121c90d5635beee8c97e49c2b0eda4e0b278f30977b8df89d7c5",
+    "pageFingerprint": "sha256:e70e560fac67d5f6d78e34bf9ae479cd039ec51fa6f2dd81c70d060b2866c3ad",
+    "goalReviewContextFingerprint": "sha256:d779a705519035a9fc4858213a5efd8132dfaa31fb01c3145178a31f23f88372",
+    "finalText": {
+      "titleDe": "Zustände in Markov-Ketten vorwärts berechnen und deuten",
+      "titleEn": "Calculate and interpret forward state developments in Markov chains",
+      "descriptionDe": "Die lernende Person kann Zustandsentwicklungen in Markov-Ketten mit Anfangsvektor und Übergangsmatrix vorwärts berechnen und die Ergebnisse als Verteilungen deuten.",
+      "descriptionEn": "The learner can calculate state developments in Markov chains forward using an initial vector and transition matrix and interpret the results as distributions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:d779a705519035a9fc4858213a5efd8132dfaa31fb01c3145178a31f23f88372",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-14",
+      "recordDigest": "sha256:a191244fda6be72affcce16921d091cbebec49a035e5098139c012e667a9b813"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:d779a705519035a9fc4858213a5efd8132dfaa31fb01c3145178a31f23f88372",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-014",
+      "recordDigest": "sha256:5d4ebb8cc7be118f32a2a820d190d3f9fe22b33a874d916ed5f144016fa1626c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-10a33d93-dc20-5edd-ae3b-32338d05407c",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Zustände in Markov-Ketten vorwärts berechnen und deuten“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Calculate and interpret forward state developments in Markov chains” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Übergangsmatrix bildet bei konsistenter Vektor-Matrix-Konvention eine Zustandsverteilung auf die Verteilung des nächsten Schritts ab; wiederholte Anwendung beschreibt die weitere Entwicklung, wobei gültige Verteilungen nichtnegative Anteile mit Summe eins haben.",
+      "essentialUnderstandingEn": "Under a consistent vector-matrix convention, the transition matrix maps one state distribution to the distribution at the next step; repeated application describes further evolution, and valid distributions have non-negative components summing to one.",
+      "observablePerformanceDe": "Die lernende Person ordnet Anfangsvektor und Übergangsmatrix selbstständig derselben Konvention zu, berechnet einen oder mehrere Folgezustände, prüft die Verteilungseigenschaften und deutet die Komponenten im gegebenen Übergangskontext.",
+      "observablePerformanceEn": "The learner independently aligns the initial vector and transition matrix with the same convention, calculates one or more subsequent states, checks the distribution properties, and interprets the components in the given transition context.",
+      "transferExpectationDe": "Bei einer veränderten Anfangsverteilung, Übergangsstruktur oder Darstellung als Zustandsdiagramm richtet die lernende Person das Modell neu ein, berechnet die Entwicklung und deutet die neue Verteilung.",
+      "transferExpectationEn": "With a changed initial distribution, transition structure, or representation as a state diagram, the learner sets up the model anew, calculates its evolution, and interprets the new distribution."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3ca85af2aca7c011581e223710886e488b58559c181380e695df111a938ffa29"
+}

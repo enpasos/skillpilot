@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+  "goal": {
+    "goalId": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9296843f95a39eff2e4c0e1ef2686ded4ab014303b9fb21f0a0bd2e74aa0bfba",
+    "pageFingerprint": "sha256:f3f90cb3ba1a16e5799749588eb9830cf13b9b113e6313b00050c340a01cb36c",
+    "goalReviewContextFingerprint": "sha256:8d3bad4a59d476fc26dfdb5dd7016a25a0f3b03e0c926f833601131cace971a2",
+    "finalText": {
+      "titleDe": "Integral als Bestand und Flächeninhalt verstehen",
+      "titleEn": "Understand integral as quantity and area",
+      "descriptionDe": "Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen.",
+      "descriptionEn": "The learner can interpret a definite integral, depending on the situation, as oriented area or change in a stock and determine a stock from a rate of change and an initial stock."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:8d3bad4a59d476fc26dfdb5dd7016a25a0f3b03e0c926f833601131cace971a2",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-12",
+      "recordDigest": "sha256:245773d6aeeb2c9914d9e423a3bb4ddaecc8199fd96b950d702813def0957fc7"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:8d3bad4a59d476fc26dfdb5dd7016a25a0f3b03e0c926f833601131cace971a2",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-012",
+      "recordDigest": "sha256:a87aedda2ca401713d3220408d61ca5969a0bb9750e9c18e792384f15916b334"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Integral als Bestand und Flächeninhalt verstehen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Understand integral as quantity and area” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein bestimmtes Integral summiert vorzeichenbehaftete Beiträge über ein Intervall; geometrisch ist es orientierter Flächeninhalt, in einem Änderungsmodell die Nettoänderung, sodass Endbestand gleich Anfangsbestand plus Integral der Änderungsrate ist.",
+      "essentialUnderstandingEn": "A definite integral accumulates signed contributions over an interval; geometrically it is oriented area, and in a change model it is net change, so final stock equals initial stock plus the integral of the rate of change.",
+      "observablePerformanceDe": "Die lernende Person deutet Integrand und Grenzen in einer neuen Aufgabe, unterscheidet orientierten vom rein geometrischen Flächeninhalt und bestimmt aus einer Änderungsrate und einem Anfangsbestand den Endbestand einschließlich Vorzeichen und Einheiten.",
+      "observablePerformanceEn": "In a new task, the learner interprets the integrand and bounds, distinguishes oriented from purely geometric area, and determines the final stock from a rate of change and an initial stock, including signs and units.",
+      "transferExpectationDe": "Bei einer Änderungsrate mit Vorzeichenwechsel, anderen Einheiten oder verändertem Anfangsbestand überträgt die lernende Person die Akkumulationsbeziehung und erklärt, wie positive und negative Beiträge den Bestand verändern.",
+      "transferExpectationEn": "For a rate of change that changes sign, uses different units, or has a changed initial stock, the learner transfers the accumulation relationship and explains how positive and negative contributions change the stock."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:872b24d4ac24a2e962f3bb4c097bb3673b855234495596f4b47f743725b826d0"
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b.codex-blind-run",
+  "campaignId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-b",
+  "roundId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:89a685a401ba2fa4fc6a10141f3056989ab66a08714c13c74589522538227d07",
+  "bundleFingerprint": "sha256:7787a80cfefe0dfd8b228f1fcbc766fcbb4237e9513baa9339e18d8ce112eb9e",
+  "bookDigest": "sha256:0870d9e5d03e886c7f0b8d4107c08755b8e231a92ca69f27a5e3bf8c1d814fd4",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4e5cf0d27db1a681d2406c441b7dc52197addcf1d2551551cd7e43e5aba9560a",
+  "independenceGroupId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:89a685a401ba2fa4fc6a10141f3056989ab66a08714c13c74589522538227d07"
+    }
+  ],
+  "startedAt": "2026-08-26T03:11:07.156Z",
+  "completedAt": "2026-08-26T03:11:07.156Z",
+  "status": "completed",
+  "outputDigest": "sha256:d2da7d777253864fb2d3691dc94bc3d64e00693520856ae83432d1f66c0885c3",
+  "toolchainVersion": "codex-blind-review-2026-08-26"
+}

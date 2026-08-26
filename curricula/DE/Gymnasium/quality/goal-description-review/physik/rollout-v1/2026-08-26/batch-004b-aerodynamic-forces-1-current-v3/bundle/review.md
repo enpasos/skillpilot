@@ -1,0 +1,48 @@
+# AI review input: Physik Lernzielbeschreibungs-Review – Rollout Batch 004b, integrierte Flugkräfte
+
+- Book ID: `de-gym-physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:49837053a94d2eb2465a678c2ba414e49aedd47fe2c92a622efcd7b40afdc081`
+- Selected goals: 1
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen
+
+- Full learning-goal ID: `24b4686a-e8a6-4583-8952-33e6f653c2a3`
+- Goal fingerprint: `sha256:9fdc5b1b62f08efff49ecc3fb0d4045c0e99cd93f509897e0afa2f5f571a1f03`
+- Page fingerprint: `sha256:9e0374a728bdc212436de863a1653783a629a1d2b9536588b9141431abd91f28`
+- Topic path: Physik > Sekundarstufe I > Druck und Auftrieb (Sek I)
+
+### Canonical description
+
+Die lernende Person kann Auftrieb an Tragflächen und Luftwiderstand qualitativ beschreiben und in einfachen Anwendungssituationen einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/physik/24b4686a-e8a6-4583-8952-33e6f653c2a3/24b4686a-e8a6-4583-8952-33e6f653c2a3.jpg
+
+- original digest: `sha256:ce8a184c1a38b7397e42a1be5b3a266f1aff29fb0edb3ca29ec5d9340c288939`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Auftrieb mit dem archimedischen Prinzip erklären — `e11b2ee9-e528-4857-9ecd-59bd460fba81` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.

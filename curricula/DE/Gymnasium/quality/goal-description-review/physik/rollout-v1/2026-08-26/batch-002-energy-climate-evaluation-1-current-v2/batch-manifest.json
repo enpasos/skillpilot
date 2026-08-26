@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-002-energy-climate-evaluation-1-current-v2.config.json",
+  "configDigest": "sha256:78eb25218c6f38985f6e22428d55cf1eca51c5723356ed175f2380fce8facb6e",
+  "goalIds": [
+    "5be98160-5189-58aa-8183-1df1c400cc8c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 438,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:303d958e856c36a2b7ed7be4ea64e8e201bc685a98f61c1adc91f19a7b5c7e2c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4f1aa889b1d8fa98d4427411dd6b5e23047bf1fb3b3552a62f31c49d44f24a6a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:119d943088443c3207eef68c0a1e5083f91694136f1ef306b1fade085bb48b50",
+    "reviewInputFingerprint": "sha256:8ce9452de8047c1bc5a4a21d7a791d550036dcd33bbf283cc4398095daa1eea3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-a",
+        "campaignDigest": "sha256:0370fbaae7a2454d3733269dd90535790b8487f08bce217b2f81429087a2449b",
+        "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-independent-a",
+        "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1154d4d28cfa17c9e60699292ab42ba26db1180d9d5c0454058edcdaf7f63c3c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-b",
+        "campaignDigest": "sha256:3b9faee555970652a3a70f37e05ff64b20bf20f665ac011ea234078c20e020f7",
+        "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-independent-b",
+        "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:bcbb6ff5455b17b147da6bf1a45ecc2964e3d80e30483ac0c292844267b14cf5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

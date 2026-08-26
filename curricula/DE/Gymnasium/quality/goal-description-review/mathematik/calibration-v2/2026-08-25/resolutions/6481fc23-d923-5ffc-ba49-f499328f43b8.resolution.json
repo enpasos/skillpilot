@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-6481fc23-d923-5ffc-ba49-f499328f43b8",
+  "goal": {
+    "goalId": "6481fc23-d923-5ffc-ba49-f499328f43b8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7b5427e0e290bd6d7efbdd7444ace53eb4dee19588854ace33e0e3f710e806b5",
+    "pageFingerprint": "sha256:9b2c41ef1a459948c85399d9323a243b176fcdd1f0afba5228e5c092de90ef4e",
+    "goalReviewContextFingerprint": "sha256:14a2fc07b8fb0dfa32018b16f8dc4c7eb65f7d4a2cb3dd9449b556a889295658",
+    "finalText": {
+      "titleDe": "Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen",
+      "titleEn": "Select suitable solution strategies for linear systems",
+      "descriptionDe": "Die lernende Person kann anhand der Struktur eines linearen Gleichungssystems aus einer analytisch-geometrischen Problemstellung eine geeignete Lösungsstrategie wählen und erklären, warum sie hier günstiger ist als eine plausible Alternative.",
+      "descriptionEn": "The learner can use the structure of a linear system from an analytic-geometry problem to choose a suitable solution strategy and explain why it is more advantageous here than a plausible alternative."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:14a2fc07b8fb0dfa32018b16f8dc4c7eb65f7d4a2cb3dd9449b556a889295658",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-13",
+      "recordDigest": "sha256:b31e85e775144ab582904ebd8036a2a40713dff98444ce1ecebf8ff7150b69df"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:14a2fc07b8fb0dfa32018b16f8dc4c7eb65f7d4a2cb3dd9449b556a889295658",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-013",
+      "recordDigest": "sha256:e2d357b2c2aab09ca956a01a41d8304f2bb4ce140cd050e97bc0cba4bed344dc"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-6481fc23-d923-5ffc-ba49-f499328f43b8",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Select suitable solution strategies for linear systems” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Äquivalente Lösungsstrategien können dieselbe Lösungsmenge liefern, unterscheiden sich aber je nach Koeffizientenstruktur, bereits isolierten Variablen, Zahl der Gleichungen und geometrischer Fragestellung in Aufwand, Übersichtlichkeit und Fehleranfälligkeit.",
+      "essentialUnderstandingEn": "Equivalent solution strategies can produce the same solution set, but depending on coefficient structure, already isolated variables, number of equations, and the geometric question, they differ in effort, transparency, and susceptibility to error.",
+      "observablePerformanceDe": "Die lernende Person untersucht ein lineares Gleichungssystem aus einer neuen analytisch-geometrischen Aufgabe, wählt selbstständig eine passende Strategie und erläutert anhand konkreter Strukturmerkmale, warum sie günstiger ist als eine benannte plausible Alternative.",
+      "observablePerformanceEn": "The learner examines a linear system from a new analytic-geometry task, independently chooses a suitable strategy, and uses specific structural features to explain why it is more advantageous than a named plausible alternative.",
+      "transferExpectationDe": "Nach einer Änderung der Koeffizientenstruktur oder der geometrischen Zielfrage prüft die lernende Person die Strategiewahl neu und begründet, warum nun dieselbe oder eine andere Vorgehensweise geeigneter ist.",
+      "transferExpectationEn": "After a change in coefficient structure or in the target geometric question, the learner reassesses the strategy choice and justifies why the same or a different approach is now more suitable."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-6481fc23-d923-5ffc-ba49-f499328f43b8",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f3861e611e775eef9ed13ea1ab0c95c5de3ce91ceccde6884517dd903a1bdd35"
+}

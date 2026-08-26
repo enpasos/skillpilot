@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+  "goal": {
+    "goalId": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7dfdb466bd1e879eadea7fa3df42c3c6fb09edd09a5fff915a082651da3d61d2",
+    "pageFingerprint": "sha256:5e441a6944dadc670f0f3da5ad756bab966aaa90f01824ca459875e2393b9521",
+    "goalReviewContextFingerprint": "sha256:1f12f45f46857d2a45acf0a289151e5bf4d71396f36c5d0af4950ec83fb12204",
+    "finalText": {
+      "titleDe": "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen",
+      "titleEn": "Assess backward calculations in Markov chains for validity and uniqueness",
+      "descriptionDe": "Die lernende Person kann beurteilen, ob aus einem späteren Zustand einer Markov-Kette ein zulässiger früherer Zustand sinnvoll und eindeutig bestimmt werden kann, und ihre Entscheidung begründen.",
+      "descriptionEn": "The learner can assess whether a valid earlier state of a Markov chain can be determined meaningfully and uniquely from a later state and justify the assessment."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:1f12f45f46857d2a45acf0a289151e5bf4d71396f36c5d0af4950ec83fb12204",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-15",
+      "recordDigest": "sha256:5f4ffe08bfc8f465cfed116f5deb3545886c8e792bdd53e250dd13a2f5b26090"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:1f12f45f46857d2a45acf0a289151e5bf4d71396f36c5d0af4950ec83fb12204",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-015",
+      "recordDigest": "sha256:70dcb21b24e595dd159726ceb2e58a4d2d1c14f4c03dee5ce358b708c5f751fc"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Assess backward calculations in Markov chains for validity and uniqueness” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine algebraische Rückwärtslösung ist nur dann ein möglicher früherer Zustand, wenn sie unter der verwendeten Übergangskonvention vorwärts den späteren Zustand erzeugt und eine gültige Verteilung ist; Existenz und Eindeutigkeit hängen zusätzlich von der Abbildung durch die Übergangsmatrix ab.",
+      "essentialUnderstandingEn": "An algebraic backward solution is a possible earlier state only if, under the transition convention used, it maps forward to the later state and is a valid distribution; existence and uniqueness also depend on the mapping defined by the transition matrix.",
+      "observablePerformanceDe": "Die lernende Person stellt die Rückwärtsbedingung selbstständig auf, bestimmt oder untersucht mögliche Vorgänger, prüft Vorwärtsbild, Nichtnegativität und Summe eins und begründet getrennt, ob eine Lösung existiert, zulässig und eindeutig ist.",
+      "observablePerformanceEn": "The learner independently sets up the backward condition, determines or analyses possible predecessors, checks the forward image, non-negativity, and sum of one, and separately justifies whether a solution exists, is valid, and is unique.",
+      "transferExpectationDe": "Bei einer anderen Übergangsmatrix oder einem veränderten späteren Zustand untersucht die lernende Person einen Fall mit eindeutiger, unzulässiger oder nicht eindeutiger Rückwärtslösung und passt ihr Urteil an.",
+      "transferExpectationEn": "For a different transition matrix or changed later state, the learner analyses a case with a unique, invalid, or non-unique backward solution and adjusts the assessment."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0f41b642887ff4d9a0c3605f307b055b2e754dff82849936b4f6d1994fa1f78c"
+}

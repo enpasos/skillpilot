@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-b.gpt-5.6-sol.subject-reviewer.run-001",
+  "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-b",
+  "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:4649fb8d4c99ee17091b20265bee76dfcaeeb050dfeebd5f2364eaf24f79a903",
+  "bundleFingerprint": "sha256:7c6f289205bc770ab6383a2fa472c38d047c0d37de1dadf5b5379b71ca145616",
+  "bookDigest": "sha256:7a4d5864d1d1709af503c3eaffd82ab0259b1f5046d6da925ec66e179136360a",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:e7814b18e80dc5358192dcce02cc60be79d7cdee6fdb963b53d2442c70341a07",
+  "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5be98160-5189-58aa-8183-1df1c400cc8c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:20f2258d1040a2e71ec8cce94db98212ca6d219b3bc164f1c250cba79148999a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4649fb8d4c99ee17091b20265bee76dfcaeeb050dfeebd5f2364eaf24f79a903"
+    }
+  ],
+  "startedAt": "2026-08-26T08:30:00+02:00",
+  "completedAt": "2026-08-26T08:39:32+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:54da3dc7ebc2d69d5cccf5ef184848d27f2a5c927199cdc7df2bb82f38d219b8",
+  "toolchainVersion": "codex-gpt-5.6-sol-2026-08-26"
+}

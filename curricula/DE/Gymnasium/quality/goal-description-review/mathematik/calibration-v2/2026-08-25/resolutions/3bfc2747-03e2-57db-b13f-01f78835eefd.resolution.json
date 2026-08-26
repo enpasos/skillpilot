@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-3bfc2747-03e2-57db-b13f-01f78835eefd",
+  "goal": {
+    "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:3d2ac11108abfd720bef9cd8d4881f361b0205169b6d767145f589e86be8c92f",
+    "pageFingerprint": "sha256:ba1a2f30471fc29cb0fa745f87caf86b7401ca885ea5a529ebb2e69dc7217881",
+    "goalReviewContextFingerprint": "sha256:93452c2b28b7989b3a3d0b2bb298a1357ebfaecc244ea013adcb1ea49d80beaa",
+    "finalText": {
+      "titleDe": "Konvergenz und Grenzen numerischer Verfahren reflektieren",
+      "titleEn": "Reflect on convergence and limits of numerical methods",
+      "descriptionDe": "Die lernende Person kann an einem numerischen Verfahren beurteilen, ob und wie zuverlässig die Näherungen konvergieren, und ein Abbruchkriterium sowie eine relevante Fehlerquelle begründen.",
+      "descriptionEn": "The learner can assess for a numerical method whether and how reliably its approximations converge and justify a stopping criterion and a relevant source of error."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:93452c2b28b7989b3a3d0b2bb298a1357ebfaecc244ea013adcb1ea49d80beaa",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-11",
+      "recordDigest": "sha256:d8e0ef316d1ff3cbe078b1075c55afbad88296d92431e05c4a7db346741ae641"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:93452c2b28b7989b3a3d0b2bb298a1357ebfaecc244ea013adcb1ea49d80beaa",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-011",
+      "recordDigest": "sha256:dac02e35b55e5348f2796e3d9a26203221441c6ba2b06018711474214d717781"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-3bfc2747-03e2-57db-b13f-01f78835eefd",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Konvergenz und Grenzen numerischer Verfahren reflektieren“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Reflect on convergence and limits of numerical methods” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Folge numerischer Näherungen ist nur dann verlässlich, wenn ihr Konvergenzverhalten zur gesuchten Größe passt; ein Abbruchkriterium verbindet den beobachtbaren Fortschritt mit einer geforderten Genauigkeit, während etwa Rundung, Startwert oder Verfahrensannahmen Fehler verursachen können.",
+      "essentialUnderstandingEn": "A sequence of numerical approximations is reliable only when its convergence behaviour is connected to the sought quantity; a stopping criterion links observable progress to required accuracy, while rounding, the starting value, or method assumptions can introduce error.",
+      "observablePerformanceDe": "Die lernende Person untersucht selbstständig eine Näherungsfolge, begründet anhand ihres Verlaufs, ob und wie zuverlässig sie konvergiert, formuliert ein zur Toleranz passendes Abbruchkriterium und erklärt die Wirkung einer konkreten Fehlerquelle.",
+      "observablePerformanceEn": "The learner independently examines an approximation sequence, uses its behaviour to justify whether and how reliably it converges, formulates a stopping criterion suited to the tolerance, and explains the effect of a specific source of error.",
+      "transferExpectationDe": "Wenn Startwert, Toleranz oder numerische Empfindlichkeit geändert werden, beurteilt die lernende Person Konvergenz, Abbruch und Fehlerwirkung erneut und passt ihre Zuverlässigkeitsaussage an.",
+      "transferExpectationEn": "When the starting value, tolerance, or numerical sensitivity changes, the learner reassesses convergence, stopping, and the effect of error and adjusts the reliability claim."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-3bfc2747-03e2-57db-b13f-01f78835eefd",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a8ddc49cdd55365ee26dc26012f4c22699a48ec60d553ee7c19f87c1eca3148c"
+}

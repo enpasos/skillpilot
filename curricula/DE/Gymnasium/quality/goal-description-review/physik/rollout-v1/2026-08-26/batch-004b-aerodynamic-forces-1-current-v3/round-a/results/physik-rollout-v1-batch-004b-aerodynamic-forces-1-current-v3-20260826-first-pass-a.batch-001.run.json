@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a-codex-gpt5",
+  "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-a",
+  "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:aaf023dee1daae2eeaf2b73d9ff851365bec9fa47d2d2870efba00be4dae1094",
+  "bundleFingerprint": "sha256:44aa8c6109b2c19ef429b8d40071d9a41aa507fa0418b675bae93f027806fba3",
+  "bookDigest": "sha256:49837053a94d2eb2465a678c2ba414e49aedd47fe2c92a622efcd7b40afdc081",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:929a72a663d3b0e6e8c45aa18eaf1d4a2765ef16f44568f16e6623e9bd9ff4ef",
+  "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:aaf023dee1daae2eeaf2b73d9ff851365bec9fa47d2d2870efba00be4dae1094"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-26T08:43:11Z",
+  "completedAt": "2026-08-26T08:44:01Z",
+  "status": "completed",
+  "outputDigest": "sha256:9d87ba66a3bbe87bca45032fa0070db95fc3fae3037a66812a62a37cc45fa2f7",
+  "toolchainVersion": "codex-agent-gpt5-2026-08-26"
+}

@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-understanding-evidence-rollout-v1-batch-005-colors-current-v1",
+  "reviewedAt": "2026-08-26T10:10:35.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-005-colors-current-v1-profile-author-candidate-2026-08-26",
+  "goals": [
+    {
+      "goalId": "a4681378-ade4-4f20-bf77-fb020469510f",
+      "reason": "DE: Das Profil operationalisiert den im aktuellen Lernziel ausdrücklich verlangten Vergleich: unterschiedlich starke Brechung trennt Bestandteile weißen Lichts im Prisma räumlich, während der schnell rotierende Farbkreis rasch wechselnde Farbeindrücke zeitlich zu einem annähernd weißen Gesamteindruck integriert. Unabhängige Gegenfälle mit einfarbigem Licht, veränderter Drehzahl und einer direkten Prozessgegenüberstellung prüfen die Mechanismen statt bloßer Bildwiedererkennung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the comparison explicitly required by the current goal: different degrees of refraction spatially separate components of white light in a prism, whereas the rapidly rotating color wheel temporally integrates rapidly changing color impressions into an approximately white overall impression. Independent countercases with monochromatic light, changed rotation rate, and a direct process comparison test the mechanisms rather than mere image recognition. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "prism-spectral-separation",
+            "essentialUnderstandingDe": "Weißes Licht enthält verschiedene Spektralfarbanteile. Ein Prisma bricht diese Anteile unterschiedlich stark und trennt sie dadurch räumlich zu einem Spektrum; ein bereits einfarbiger Lichtstrahl kann nicht in mehrere Spektralfarben aufgefächert werden.",
+            "essentialUnderstandingEn": "White light contains different spectral-color components. A prism refracts these components by different amounts and thereby separates them spatially into a spectrum; a light beam that is already monochromatic cannot be spread into several spectral colors.",
+            "observablePerformanceDe": "Die lernende Person sagt für einen neuen Prismafall selbstständig voraus, ob ein Spektrum oder nur ein schmaler abgelenkter Farbstrahl entsteht, und begründet die Vorhersage mit den vorhandenen Lichtanteilen und ihrer unterschiedlichen Ablenkung.",
+            "observablePerformanceEn": "For a fresh prism case, the learner independently predicts whether a spectrum or only a narrow deflected colored beam results and justifies the prediction using the light components present and their different deflections."
+          },
+          {
+            "id": "rotating-wheel-composite-impression",
+            "essentialUnderstandingDe": "Auf einem Farbkreis bleiben die farbigen Sektoren materiell getrennt. Bei schneller Rotation folgen ihre Lichtreize so rasch aufeinander, dass das Auge sie zeitlich zu einem annähernd weißen zusammengesetzten Farbeindruck integriert; dabei zerlegt der Farbkreis kein weißes Licht.",
+            "essentialUnderstandingEn": "On a color wheel, the colored sectors remain physically separate. During rapid rotation, their light stimuli follow one another so quickly that the eye temporally integrates them into an approximately white composite color impression; the color wheel does not decompose white light.",
+            "observablePerformanceDe": "Die lernende Person vergleicht einen stehenden, langsam und schnell rotierenden Farbkreis, sagt die jeweils sichtbare Wirkung voraus und erklärt den Übergang zum annähernd weißen Eindruck durch zeitliche Integration statt durch eine Zerlegung am Rad.",
+            "observablePerformanceEn": "The learner compares a stationary, slowly rotating, and rapidly rotating color wheel, predicts the visible effect in each case, and explains the transition to an approximately white impression through temporal integration rather than decomposition at the wheel."
+          },
+          {
+            "id": "spatial-versus-temporal-process",
+            "essentialUnderstandingDe": "Prisma und Farbkreis zeigen entgegengesetzte und physikalisch verschiedene Vorgänge: Das Prisma verändert durch Brechung die räumlichen Wege bereits vorhandener Lichtanteile, während beim Farbkreis materiell getrennte Farben rasch nacheinander wahrgenommen und erst im Auge zu einem Gesamteindruck integriert werden.",
+            "essentialUnderstandingEn": "The prism and color wheel show opposite and physically different processes: through refraction, the prism changes the spatial paths of light components already present, whereas on the color wheel physically separate colors are perceived in rapid succession and integrated into an overall impression only in the eye.",
+            "observablePerformanceDe": "Die lernende Person stellt beide Prozesse in einer neuen Gegenüberstellung zusammenhängend gegenüber, ordnet räumliche Aufspaltung und zeitliche Integration korrekt zu und weist die Behauptung zurück, beide Geräte würden Licht auf dieselbe Weise physisch mischen oder zerlegen.",
+            "observablePerformanceEn": "In a fresh comparison, the learner gives a coherent contrast between the two processes, correctly assigns spatial separation and temporal integration, and rejects the claim that both devices physically mix or separate light in the same way."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "prism-spectral-separation",
+            "rotating-wheel-composite-impression",
+            "spatial-versus-temporal-process"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "incident-light-composition",
+            "textDe": "Weißes Licht mit mehreren Spektralfarbanteilen oder bereits einfarbiges Licht am Prisma",
+            "textEn": "White light with several spectral-color components or already monochromatic light at the prism"
+          },
+          {
+            "id": "wheel-motion",
+            "textDe": "Stehender, langsam rotierender oder schnell rotierender Farbkreis",
+            "textEn": "Stationary, slowly rotating, or rapidly rotating color wheel"
+          },
+          {
+            "id": "physical-versus-perceptual-effect",
+            "textDe": "Räumliche Trennung von Lichtanteilen oder zeitlich zusammengesetzter Farbeindruck im Auge",
+            "textEn": "Spatial separation of light components or a temporally composite color impression in the eye"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "white-and-monochromatic-prism-beams",
+            "taskDemandDe": "Nacheinander fällt ein schmaler weißer Lichtstrahl und ein schmaler einfarbig roter Lichtstrahl auf dasselbe Prisma. Für beide Fälle ist das Schirmbild vorherzusagen und der Unterschied zu erklären.",
+            "taskDemandEn": "A narrow white light beam and then a narrow monochromatic red light beam strike the same prism. Predict the screen image in both cases and explain the difference.",
+            "expectedPerformanceDe": "Die lernende Person sagt für weißes Licht ein räumlich aufgefächertes Spektrum und für den roten Strahl nur einen schmalen abgelenkten roten Bereich voraus und führt den Unterschied auf mehrere beziehungsweise nur einen vorhandenen Spektralfarbanteil zurück.",
+            "expectedPerformanceEn": "The learner predicts a spatially spread spectrum for white light and only a narrow deflected red region for the red beam and attributes the difference to the presence of several spectral-color components versus only one.",
+            "understandingFocusDe": "Der Gegenfall prüft, ob das Spektrum aus der Zusammensetzung des einfallenden Lichts und der unterschiedlichen Ablenkung erklärt wird, nicht aus einer vermeintlichen Farberzeugung im Prisma.",
+            "understandingFocusEn": "The countercase tests whether the spectrum is explained by the composition of the incident light and different deflection, rather than by supposed color creation inside the prism."
+          },
+          {
+            "id": "color-wheel-speed-comparison",
+            "taskDemandDe": "Derselbe Farbkreis wird angehalten, langsam und anschließend sehr schnell gedreht. Für jede Bewegungsstufe ist der Farbeindruck zu beschreiben und der schnelle Fall mit der Arbeitsweise des Auges zu erklären.",
+            "taskDemandEn": "The same color wheel is stationary, then rotates slowly, and finally rotates very rapidly. Describe the color impression at each speed and explain the rapid case using how the eye processes the stimuli.",
+            "expectedPerformanceDe": "Die lernende Person erwartet beim stehenden oder langsamen Rad unterscheidbare Farbsektoren und beim schnellen Rad einen annähernd weißen zusammengesetzten Eindruck, erklärt diesen mit der zeitlichen Integration rasch wechselnder Lichtreize und grenzt ihn ausdrücklich von der Prismenzersetzung ab.",
+            "expectedPerformanceEn": "The learner expects distinguishable colored sectors for the stationary or slow wheel and an approximately white composite impression for the fast wheel, explains it through temporal integration of rapidly changing light stimuli, and explicitly distinguishes it from prism decomposition.",
+            "understandingFocusDe": "Die Drehzahlvariation macht sichtbar, ob der weiße Eindruck als Wahrnehmungswirkung eines zusammengesetzten Reizes verstanden wird.",
+            "understandingFocusEn": "Varying rotation rate reveals whether the white impression is understood as a perceptual effect of a composite stimulus."
+          },
+          {
+            "id": "direct-prism-wheel-contrast",
+            "taskDemandDe": "Bei einem Prisma entsteht aus einem weißen Lichtbündel ein räumliches Farbband; ein schnell rotierender mehrfarbiger Farbkreis erscheint dagegen annähernd weiß. Beide Beobachtungen sind direkt zu vergleichen und die Aussage zu prüfen, beide Anordnungen würden Farben auf dieselbe Weise mischen.",
+            "taskDemandEn": "A prism produces a spatial band of colors from a white light beam, whereas a rapidly rotating multicolored wheel appears approximately white. Compare the two observations directly and assess the claim that both setups mix colors in the same way.",
+            "expectedPerformanceDe": "Die lernende Person weist die Gleichsetzung zurück, erklärt beim Prisma die räumliche Aufspaltung vorhandener Spektralfarbanteile durch unterschiedlich starke Brechung und beim Rad die zeitliche Integration rasch wechselnder Farbeindrücke im Auge und benennt den weißen Radeindruck als Wahrnehmungswirkung.",
+            "expectedPerformanceEn": "The learner rejects the equivalence, explains the prism as spatial separation of existing spectral-color components through different degrees of refraction, explains the wheel as temporal integration of rapidly changing color impressions in the eye, and identifies the wheel's white appearance as a perceptual effect.",
+            "understandingFocusDe": "Die direkte Gegenüberstellung prüft die im Lernziel verlangte Unterscheidung beider Mechanismen unabhängig von isoliert gelernten Einzelbildern.",
+            "understandingFocusEn": "The direct comparison tests the distinction between the two mechanisms required by the goal independently of separately memorized images."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+      "reason": "DE: Das Profil macht die Unterscheidung von additiver und subtraktiver Farbmischung über die jeweiligen Lichtwege prüfbar: Lichtanteile werden von Quellen hinzugefügt oder durch Filter beziehungsweise Farbstoffe aus einfallendem Licht entfernt. Zwei unabhängige, veränderte Fälle verlangen Vorhersage und Erklärung statt bloßer Begriffszuteilung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile makes the distinction between additive and subtractive color mixing assessable through their respective light paths: light components are added by sources or removed from incident light by filters or colorants. Two independent changed cases require prediction and explanation rather than mere term assignment. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "additive-light-superposition",
+            "essentialUnderstandingDe": "Bei additiver Farbmischung überlagern sich Lichtanteile verschiedener Quellen, und das gemeinsam ins Auge gelangende Licht bestimmt den Farbeindruck. Der Ausgangspunkt ohne Beiträge ist dunkel; zusätzliche Beiträge können weitere Spektralanteile zum ankommenden Licht hinzufügen.",
+            "essentialUnderstandingEn": "In additive color mixing, light components from different sources overlap, and the combined light reaching the eye determines the color impression. The starting point without contributions is dark; additional contributions can add further spectral components to the arriving light.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einem neuen Projektions- oder Leuchtenfall die Beiträge der Lichtquellen bis zum Auge, sagt die Farbe eines Überlagerungsbereichs voraus und begründet sie als Addition von Licht statt mit vermischten Stoffen.",
+            "observablePerformanceEn": "In a fresh projection or lighting case, the learner traces the contributions of the light sources to the eye, predicts the color of an overlap region, and justifies it as addition of light rather than mixing of substances."
+          },
+          {
+            "id": "subtractive-component-removal",
+            "essentialUnderstandingDe": "Bei subtraktiver Farbmischung entfernen Filter oder Farbstoffe bestimmte Anteile aus einfallendem Licht durch Absorption; zum Auge gelangen nur die gemeinsam durchgelassenen oder reflektierten Anteile. Ein zweiter Filter oder Farbstoff kann einen bereits entfernten Lichtanteil nicht wieder hinzufügen.",
+            "essentialUnderstandingEn": "In subtractive color mixing, filters or colorants remove certain components from incident light by absorption; only components jointly transmitted or reflected reach the eye. A second filter or colorant cannot add back a light component that has already been removed.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einem neuen Filter- oder Farbstofffall die verbleibenden Lichtanteile, sagt den Farbeindruck voraus und begründet ihn als Auswahl aus dem einfallenden Licht statt als Addition von Quellenlicht.",
+            "observablePerformanceEn": "In a fresh filter or colorant case, the learner traces the remaining light components, predicts the color impression, and justifies it as selection from the incident light rather than addition of source light."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "additive-light-superposition",
+            "subtractive-component-removal"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "mixing-agent",
+            "textDe": "Überlagerte Lichtquellen oder absorbierende Filter beziehungsweise Farbstoffe",
+            "textEn": "Overlapping light sources or absorbing filters or colorants"
+          },
+          {
+            "id": "incident-spectrum",
+            "textDe": "Weißes einfallendes Licht oder ein Licht mit bereits eingeschränkten Spektralanteilen",
+            "textEn": "White incident light or light whose spectral components are already restricted"
+          },
+          {
+            "id": "reasoning-direction",
+            "textDe": "Aus Lichtwegen den Farbeindruck vorhersagen oder aus einem beobachteten Ergebnis den passenden Mischvorgang begründen",
+            "textEn": "Predict the color impression from light paths or justify the appropriate mixing process from an observed result"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "red-blue-projector-overlap",
+            "taskDemandDe": "Ein roter und ein blauer Projektor beleuchten eine weiße Wand zunächst getrennt und dann mit teilweise überlappenden Lichtflecken. Die Farben außerhalb und innerhalb der Überlagerung sind vorherzusagen und die Mischungsart ist zu begründen.",
+            "taskDemandEn": "A red and a blue projector illuminate a white wall first separately and then with partly overlapping light spots. Predict the colors outside and inside the overlap and justify the type of mixing.",
+            "expectedPerformanceDe": "Die lernende Person sagt rote und blaue Einzelbereiche sowie einen magentafarbenen Überlagerungsbereich voraus, ordnet den Vorgang der additiven Mischung zu und erklärt, dass dort rotes und blaues Licht gemeinsam zum Auge gelangen.",
+            "expectedPerformanceEn": "The learner predicts separate red and blue regions and a magenta overlap region, classifies the process as additive mixing, and explains that red and blue light jointly reach the eye there.",
+            "understandingFocusDe": "Der Lichtweg zeigt, ob additiv als Überlagerung von Quellenlicht und nicht nur als auswendig gelernte Farbkombination verstanden wird.",
+            "understandingFocusEn": "The light path reveals whether additive mixing is understood as superposition of source light rather than only as a memorized color combination."
+          },
+          {
+            "id": "cyan-yellow-filter-stack",
+            "taskDemandDe": "Weißes Licht fällt nacheinander durch einen idealisierten Cyanfilter und einen idealisierten Gelbfilter. Die Farbe des austretenden Lichts ist vorherzusagen; anschließend ist zu erklären, warum derselbe Filterstapel bei rein rotem einfallendem Licht dunkel bleibt.",
+            "taskDemandEn": "White light passes successively through an idealized cyan filter and an idealized yellow filter. Predict the color of the emerging light, then explain why the same filter stack remains dark under purely red incident light.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt Grün als gemeinsamen durchgelassenen Anteil bei weißem Licht, ordnet den Vorgang der subtraktiven Mischung zu und erklärt für rotes Eingangslicht, dass der Cyanfilter den vorhandenen Rotanteil entfernt und kein weiterer Anteil übrig bleibt.",
+            "expectedPerformanceEn": "The learner identifies green as the component jointly transmitted under white light, classifies the process as subtractive mixing, and explains that for red input light the cyan filter removes the available red component so no component remains.",
+            "understandingFocusDe": "Der veränderte Eingang prüft, ob subtraktive Mischung als Entfernen vorhandener Lichtanteile statt als feste Rezepttabelle verstanden wird.",
+            "understandingFocusEn": "The changed input tests whether subtractive mixing is understood as removal of available light components rather than as a fixed recipe table."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+      "reason": "DE: Das Profil bindet alltägliche Farbwahrnehmung an eine vollständige Kausalkette von Beleuchtung über die selektive Wirkung der Oberfläche bis zum Lichtreiz am Auge. Zwei Gegenfälle verändern Beleuchtung und Oberfläche getrennt und prüfen damit, ob Farbe als situationsabhängiger Eindruck statt als unveränderliches Objektetikett beschrieben wird. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile ties everyday color perception to a complete causal chain from illumination through the surface's selective action to the light stimulus at the eye. Two countercases vary illumination and surface separately, testing whether color is described as a context-dependent impression rather than an immutable object label. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "illumination-surface-eye-chain",
+            "essentialUnderstandingDe": "Der Farbeindruck entsteht aus dem Zusammenspiel dreier Glieder: Die Beleuchtung stellt bestimmte Lichtanteile bereit, die Oberfläche reflektiert beziehungsweise absorbiert diese unterschiedlich, und nur das von der Oberfläche ins Auge gelangende Licht kann dort einen Farbeindruck hervorrufen.",
+            "essentialUnderstandingEn": "The color impression arises from the interaction of three links: illumination provides particular light components, the surface reflects or absorbs them differently, and only light traveling from the surface into the eye can produce a color impression there.",
+            "observablePerformanceDe": "Die lernende Person beschreibt für eine neue Alltagssituation lückenlos, welche Lichtanteile die Beleuchtung bereitstellt, welche davon die Oberfläche zum Auge zurücksendet und welchen Farbeindruck dies qualitativ erwarten lässt.",
+            "observablePerformanceEn": "For a fresh everyday situation, the learner gives a complete account of which light components the illumination provides, which of them the surface returns to the eye, and what color impression this qualitatively leads one to expect."
+          },
+          {
+            "id": "appearance-depends-on-conditions",
+            "essentialUnderstandingDe": "Die wahrgenommene Farbe ist keine unveränderliche Eigenschaft der Oberfläche allein: Dieselbe Oberfläche kann unter verschiedener Beleuchtung anders erscheinen, und verschiedene Oberflächen können unter eingeschränkter Beleuchtung ähnlich erscheinen.",
+            "essentialUnderstandingEn": "Perceived color is not an immutable property of the surface alone: the same surface can appear different under different illumination, and different surfaces can appear similar under restricted illumination.",
+            "observablePerformanceDe": "Die lernende Person vergleicht selbstständig zwei veränderte Beleuchtungs- oder Oberflächenfälle, sagt Gemeinsamkeiten beziehungsweise Unterschiede der Farbeindrücke voraus und begründet sie mit dem tatsächlich zum Auge gelangenden Licht.",
+            "observablePerformanceEn": "The learner independently compares two changed illumination or surface cases, predicts similarities or differences between the color impressions, and justifies them using the light that actually reaches the eye."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "illumination-surface-eye-chain",
+            "appearance-depends-on-conditions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "illumination-spectrum",
+            "textDe": "Breit zusammengesetztes weißes Licht oder farbiges Licht mit eingeschränkten Anteilen",
+            "textEn": "Broad-spectrum white light or colored light with restricted components"
+          },
+          {
+            "id": "surface-response",
+            "textDe": "Oberflächen, die unterschiedliche Anteile des einfallenden Lichts reflektieren beziehungsweise absorbieren",
+            "textEn": "Surfaces that reflect or absorb different components of the incident light"
+          },
+          {
+            "id": "comparison-structure",
+            "textDe": "Dieselbe Oberfläche unter verschiedener Beleuchtung oder verschiedene Oberflächen unter derselben Beleuchtung",
+            "textEn": "The same surface under different illumination or different surfaces under the same illumination"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "red-apple-under-blue-light",
+            "taskDemandDe": "Ein idealisiert roter Apfel wird zuerst mit weißem Licht und danach nur mit blauem Licht beleuchtet. Sein Farbeindruck in beiden Fällen ist vorherzusagen und über Beleuchtung, Oberfläche und Auge zu beschreiben.",
+            "taskDemandEn": "An idealized red apple is illuminated first with white light and then only with blue light. Predict its color impression in both cases and describe it through illumination, surface, and eye.",
+            "expectedPerformanceDe": "Die lernende Person erklärt, dass der Apfel aus weißem Licht vor allem rote Anteile zum Auge reflektiert und rot erscheint, unter rein blauem Licht aber keinen nennenswerten roten Anteil erhält und deshalb dunkel erscheint; das Auge reagiert jeweils auf das tatsächlich ankommende Licht.",
+            "expectedPerformanceEn": "The learner explains that under white light the apple reflects mainly red components to the eye and appears red, whereas under purely blue light it receives no appreciable red component and therefore appears dark; in each case the eye responds to the light that actually arrives.",
+            "understandingFocusDe": "Der Beleuchtungswechsel prüft, ob der Farbeindruck aus der vollständigen Kausalkette statt aus dem Etikett 'roter Gegenstand' abgeleitet wird.",
+            "understandingFocusEn": "Changing illumination tests whether the color impression is derived from the complete causal chain rather than from the label 'red object.'"
+          },
+          {
+            "id": "white-and-red-cards-in-red-light",
+            "taskDemandDe": "Eine weiße und eine idealisiert rote Karte liegen nebeneinander. Unter weißem Licht sind sie klar unterscheidbar; anschließend werden beide nur mit rotem Licht beleuchtet. Ihr möglicher Farbeindruck und der Grund für die geringere Unterscheidbarkeit sind zu beschreiben.",
+            "taskDemandEn": "A white card and an idealized red card lie side by side. They are clearly distinguishable under white light; then both are illuminated only with red light. Describe their possible color impressions and why they become less distinguishable.",
+            "expectedPerformanceDe": "Die lernende Person erklärt, dass unter rotem Licht sowohl die weiße als auch die rote Oberfläche roten Lichtanteil zum Auge zurücksenden kann, sodass beide rötlich und ähnlicher erscheinen, obwohl ihre Oberflächen unter weißem Licht unterschiedliche Anteile reflektieren.",
+            "expectedPerformanceEn": "The learner explains that under red light both the white and red surfaces can return red light to the eye, so both may appear reddish and more similar even though their surfaces reflect different components under white light.",
+            "understandingFocusDe": "Der Oberflächenvergleich zeigt, dass unterschiedliche Gegenstände bei eingeschränkter Beleuchtung ähnliche Farbeindrücke erzeugen können.",
+            "understandingFocusEn": "The surface comparison shows that different objects can produce similar color impressions under restricted illumination."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5",
+      "reason": "DE: Das Profil erklärt Bildschirmfarben und Farbdruck über ihre unterschiedlichen technischen Lichtwege: additive Emission nah benachbarter Subpixel gegenüber subtraktiver Reflexion an bedrucktem Papier. Vergrößerungs- und Beleuchtungsvariationen prüfen die Mechanismen unabhängig von fertigen Farbnamen. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile explains screen colors and color printing through their different technical light paths: additive emission from closely spaced subpixels versus subtractive reflection from printed paper. Magnification and illumination variations test the mechanisms independently of supplied color names. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "screen-additive-emission",
+            "essentialUnderstandingDe": "Ein Farbbildschirm erzeugt Farbe, indem dicht benachbarte rote, grüne und blaue Subpixel Licht mit steuerbarer Stärke aussenden. Aus üblichem Betrachtungsabstand gelangen ihre Beiträge gemeinsam ins Auge und erzeugen additiv den Farbeindruck; ausgeschaltete Subpixel tragen kein Licht bei.",
+            "essentialUnderstandingEn": "A color screen produces color by having closely spaced red, green, and blue subpixels emit light at controllable intensities. From a normal viewing distance, their contributions reach the eye together and additively produce the color impression; switched-off subpixels contribute no light.",
+            "observablePerformanceDe": "Die lernende Person leitet für eine unbekannte einfache Subpixel-Ansteuerung den Farbeindruck aus den emittierten Lichtbeiträgen ab und erklärt, warum die vergrößert getrennten Subpixel aus normalem Abstand als gemeinsame Fläche erscheinen.",
+            "observablePerformanceEn": "For an unfamiliar simple subpixel setting, the learner derives the color impression from the emitted light contributions and explains why subpixels seen separately under magnification appear as a single area from a normal viewing distance."
+          },
+          {
+            "id": "print-subtractive-reflection",
+            "essentialUnderstandingDe": "Beim Farbdruck trifft Umgebungslicht auf Papier und Druckfarben. Die Druckfarben absorbieren ausgewählte Lichtanteile; nur die verbleibenden vom Papier zurückgeworfenen Anteile gelangen zum Auge. Deshalb ist der Druck im Unterschied zum Bildschirm auf äußere Beleuchtung angewiesen.",
+            "essentialUnderstandingEn": "In color printing, ambient light strikes paper and printing inks. The inks absorb selected light components; only the remaining components reflected by the paper reach the eye. Unlike a screen, print therefore depends on external illumination.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einem neuen einfachen Druckfall einfallendes Licht, Absorption und reflektiertes Restlicht, sagt daraus die Druckfarbe voraus und erklärt die Änderung beim Wechsel der Umgebungsbeleuchtung.",
+            "observablePerformanceEn": "In a fresh simple printing case, the learner traces incident light, absorption, and remaining reflected light, predicts the printed color from them, and explains the change when ambient illumination changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "screen-additive-emission",
+            "print-subtractive-reflection"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "technical-light-path",
+            "textDe": "Selbstleuchtende Bildschirm-Subpixel oder von bedrucktem Papier reflektiertes Umgebungslicht",
+            "textEn": "Self-emitting screen subpixels or ambient light reflected by printed paper"
+          },
+          {
+            "id": "viewing-resolution",
+            "textDe": "Vergrößert getrennt sichtbare Farbkomponenten oder aus normalem Abstand integrierter Farbeindruck",
+            "textEn": "Color components visible separately under magnification or an integrated color impression from normal viewing distance"
+          },
+          {
+            "id": "ambient-illumination",
+            "textDe": "Helles weißes Umgebungslicht, farbig eingeschränkte Beleuchtung oder Dunkelheit",
+            "textEn": "Bright white ambient light, color-restricted illumination, or darkness"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "yellow-screen-pixel-zoom",
+            "taskDemandDe": "Eine gelb erscheinende Bildschirmfläche wird so stark vergrößert, dass rote, grüne und blaue Subpixel getrennt erkennbar sind. Die aktive Ansteuerung ist vorherzusagen und der einheitliche Farbeindruck aus normalem Abstand zu erklären.",
+            "taskDemandEn": "A screen area that appears yellow is magnified until its red, green, and blue subpixels can be seen separately. Predict the active setting and explain the uniform color impression from a normal viewing distance.",
+            "expectedPerformanceDe": "Die lernende Person ordnet helles rotes und grünes sowie kein oder nur geringes blaues Subpixellicht zu, erklärt Gelb als additive Wirkung der gemeinsam zum Auge gelangenden Beiträge und führt die einheitliche Fläche auf die geringe räumliche Trennung der Subpixel im normalen Sehwinkel zurück.",
+            "expectedPerformanceEn": "The learner assigns bright red and green subpixel light and no or little blue light, explains yellow as the additive effect of the contributions jointly reaching the eye, and attributes the uniform area to the small angular separation of the subpixels under normal viewing.",
+            "understandingFocusDe": "Der Wechsel zwischen Vergrößerung und normalem Abstand prüft den technischen Zusammenhang zwischen Subpixelansteuerung und wahrgenommenem Bildschirmfarbfeld.",
+            "understandingFocusEn": "Changing between magnification and normal viewing distance tests the technical relationship between subpixel control and the perceived screen color field."
+          },
+          {
+            "id": "cyan-yellow-print-under-changing-light",
+            "taskDemandDe": "Auf weißem Papier überdecken sich idealisierte cyanfarbene und gelbe Druckfarbe. Der Eindruck unter weißem Umgebungslicht und nach Ausschalten der Beleuchtung ist vorherzusagen und über den Lichtweg zu erklären.",
+            "taskDemandEn": "Idealized cyan and yellow printing inks overlap on white paper. Predict the appearance under white ambient light and after the illumination is switched off and explain it through the light path.",
+            "expectedPerformanceDe": "Die lernende Person sagt unter weißem Licht einen grünen Druckbereich voraus, weil beide Druckfarben zusammen vor allem grünes Restlicht vom Papier zum Auge gelangen lassen, und erklärt, dass der Bereich ohne einfallendes Licht nicht sichtbar leuchtet, weil Druckfarbe selbst kein Bildschirmlicht aussendet.",
+            "expectedPerformanceEn": "The learner predicts a green printed region under white light because the two inks together allow mainly green remaining light to travel from the paper to the eye and explains that without incident light the region does not glow visibly because printing ink does not emit screen light itself.",
+            "understandingFocusDe": "Die Beleuchtungsänderung grenzt subtraktive Reflexion im Druck von additiver Emission am Bildschirm ab.",
+            "understandingFocusEn": "Changing illumination distinguishes subtractive reflection in print from additive emission at a screen."
+          }
+        ]
+      }
+    }
+  ]
+}

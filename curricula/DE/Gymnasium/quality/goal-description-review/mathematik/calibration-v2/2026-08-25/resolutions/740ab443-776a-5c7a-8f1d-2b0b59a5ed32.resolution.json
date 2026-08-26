@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+  "goal": {
+    "goalId": "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:c67a4843ff8ec5ed3ac500836ec60e6bc28dd28384f509767e56bf72f137e970",
+    "pageFingerprint": "sha256:1217d9be348af2c7d53a7e76a2f9726d93c4d17b87ed3196350dd9e2cd6662b7",
+    "goalReviewContextFingerprint": "sha256:043350f68d37053f9fa90df049a3b30250e1c302f6e8401ed4ffa4cd59ca752f",
+    "finalText": {
+      "titleDe": "Umkehrung und Kontraposition bilden",
+      "titleEn": "Form the converse and contrapositive",
+      "descriptionDe": "Die lernende Person kann zu einer mathematischen Implikation die Umkehrung und die Kontraposition korrekt formulieren und beide von der Ausgangsaussage unterscheiden.",
+      "descriptionEn": "The learner can correctly formulate the converse and contrapositive of a mathematical implication and distinguish both from the original statement."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:043350f68d37053f9fa90df049a3b30250e1c302f6e8401ed4ffa4cd59ca752f",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-18",
+      "recordDigest": "sha256:424842f9763d722c691157d2aeddf3fa27d7ac168eb400211468d59581630da2"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:043350f68d37053f9fa90df049a3b30250e1c302f6e8401ed4ffa4cd59ca752f",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-018",
+      "recordDigest": "sha256:af2d66818ca53792793c51d5fdf362af4997de1193a11320c4f182288935a0c4"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Umkehrung und Kontraposition bilden“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Form the converse and contrapositive” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Aus P impliziert Q entsteht die Umkehrung durch Vertauschen zu Q impliziert P und die Kontraposition durch Vertauschen und Verneinen zu nicht Q impliziert nicht P; dadurch haben alle drei Aussagen unterschiedliche Voraussetzung-Folgerung-Strukturen.",
+      "essentialUnderstandingEn": "From P implies Q, the converse is formed by swapping the parts to Q implies P, while the contrapositive is formed by swapping and negating them to not Q implies not P; the three statements therefore have different premise-conclusion structures.",
+      "observablePerformanceDe": "Die lernende Person kennzeichnet in einer unbekannten mathematischen Implikation P und Q, formuliert selbstständig Ausgangsaussage, Umkehrung und Kontraposition mit korrekter Reihenfolge und Verneinung und erläutert die strukturellen Unterschiede.",
+      "observablePerformanceEn": "The learner identifies P and Q in an unfamiliar mathematical implication, independently formulates the original statement, converse, and contrapositive with the correct order and negation, and explains their structural differences.",
+      "transferExpectationDe": "Bei einer neuen algebraischen oder geometrischen Implikation mit zusammengesetzten Aussagen bildet und unterscheidet die lernende Person Umkehrung und Kontraposition, ohne die sprachliche Oberfläche der vorherigen Aufgabe zu kopieren.",
+      "transferExpectationEn": "For a new algebraic or geometric implication with compound statements, the learner forms and distinguishes the converse and contrapositive without copying the wording pattern of the previous task."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4b58f1fabd2407af903a6f1032929dea45bdde4ac29433f07108036842f503c4"
+}

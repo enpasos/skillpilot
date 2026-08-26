@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "title": "SkillPilot per-goal dual-round description resolution v1",
+  "description": "A closed, current-context-bound synthesis of exactly two independently validated description-review records. The document records provenance and synthesis; strict completion is derived by the validator and is never self-asserted here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "resolutionId",
+    "resolutionFingerprint",
+    "goal",
+    "rounds",
+    "dualSummary",
+    "status",
+    "decision",
+    "synthesis"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "resolutionId": { "$ref": "#/$defs/stableId" },
+    "resolutionFingerprint": { "$ref": "#/$defs/digest" },
+    "goal": { "$ref": "#/$defs/goalBinding" },
+    "rounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first", "second"],
+      "properties": {
+        "first": { "$ref": "#/$defs/roundBinding" },
+        "second": { "$ref": "#/$defs/roundBinding" }
+      }
+    },
+    "dualSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validationContract", "digest"],
+      "properties": {
+        "validationContract": { "const": "goal-description-dual-round-v1" },
+        "digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "status": { "enum": ["resolved", "open"] },
+    "decision": {
+      "enum": ["keep_current", "current_after_revision", "current_after_split"]
+    },
+    "synthesisDecisionManifest": { "$ref": "#/$defs/synthesisDecisionManifest" },
+    "synthesis": { "$ref": "#/$defs/synthesis" }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "relativeArtifactPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "goalBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "effectiveSemanticKind",
+        "goalFingerprint",
+        "pageFingerprint",
+        "goalReviewContextFingerprint",
+        "finalText"
+      ],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "effectiveSemanticKind": {
+          "enum": [
+            "orientation",
+            "curricularAtomic",
+            "curricularArea",
+            "practiceAssessment",
+            "memory",
+            "programStructure",
+            "runtimeSupport"
+          ]
+        },
+        "goalFingerprint": { "$ref": "#/$defs/digest" },
+        "pageFingerprint": { "$ref": "#/$defs/digest" },
+        "goalReviewContextFingerprint": { "$ref": "#/$defs/digest" },
+        "finalText": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["titleDe", "titleEn", "descriptionDe", "descriptionEn"],
+          "properties": {
+            "titleDe": { "$ref": "#/$defs/nonBlank" },
+            "titleEn": { "$ref": "#/$defs/nonBlank" },
+            "descriptionDe": { "$ref": "#/$defs/longText" },
+            "descriptionEn": { "$ref": "#/$defs/longText" }
+          }
+        }
+      }
+    },
+    "roundBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "campaignDigest",
+        "roundId",
+        "independenceGroupId",
+        "reviewInputFingerprint",
+        "goalReviewContextFingerprint",
+        "batchId",
+        "runId",
+        "runManifestDigest",
+        "resultsDigest",
+        "recordId",
+        "recordDigest"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/$defs/stableId" },
+        "campaignDigest": { "$ref": "#/$defs/digest" },
+        "roundId": { "$ref": "#/$defs/stableId" },
+        "independenceGroupId": { "$ref": "#/$defs/stableId" },
+        "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+        "goalReviewContextFingerprint": { "$ref": "#/$defs/digest" },
+        "batchId": { "$ref": "#/$defs/stableId" },
+        "runId": { "$ref": "#/$defs/stableId" },
+        "runManifestDigest": { "$ref": "#/$defs/digest" },
+        "resultsDigest": { "$ref": "#/$defs/digest" },
+        "recordId": { "$ref": "#/$defs/stableId" },
+        "recordDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "understandingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "essentialUnderstandingDe",
+        "essentialUnderstandingEn",
+        "observablePerformanceDe",
+        "observablePerformanceEn",
+        "transferExpectationDe",
+        "transferExpectationEn"
+      ],
+      "properties": {
+        "essentialUnderstandingDe": { "$ref": "#/$defs/longText" },
+        "essentialUnderstandingEn": { "$ref": "#/$defs/longText" },
+        "observablePerformanceDe": { "$ref": "#/$defs/longText" },
+        "observablePerformanceEn": { "$ref": "#/$defs/longText" },
+        "transferExpectationDe": { "$ref": "#/$defs/longText" },
+        "transferExpectationEn": { "$ref": "#/$defs/longText" }
+      }
+    },
+    "dissent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dissentId", "source", "textDe", "textEn", "disposition"],
+      "properties": {
+        "dissentId": { "$ref": "#/$defs/stableId" },
+        "source": { "enum": ["first", "second", "both", "synthesis"] },
+        "textDe": { "$ref": "#/$defs/longText" },
+        "textEn": { "$ref": "#/$defs/longText" },
+        "disposition": {
+          "enum": ["accepted_first", "accepted_second", "merged", "not_material", "unresolved"]
+        }
+      }
+    },
+    "humanAttestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attestationId", "attestationDigest", "reviewedBy", "reviewedAt", "approvalBasis"],
+      "properties": {
+        "attestationId": { "$ref": "#/$defs/stableId" },
+        "attestationDigest": { "$ref": "#/$defs/digest" },
+        "reviewedBy": { "$ref": "#/$defs/nonBlank" },
+        "reviewedAt": { "type": "string", "format": "date-time" },
+        "approvalBasis": { "$ref": "#/$defs/longText" }
+      }
+    },
+    "synthesisDecisionManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract", "manifestPath", "manifestId", "manifestDigest", "manifestFingerprint", "decisionId"],
+      "properties": {
+        "contract": { "const": "goal-description-rollout-synthesis-decision-v1" },
+        "manifestPath": { "$ref": "#/$defs/relativeArtifactPath" },
+        "manifestId": { "$ref": "#/$defs/stableId" },
+        "manifestDigest": { "$ref": "#/$defs/digest" },
+        "manifestFingerprint": { "$ref": "#/$defs/digest" },
+        "decisionId": { "$ref": "#/$defs/stableId" }
+      }
+    },
+    "synthesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "synthesisId",
+        "authority",
+        "synthesizedBy",
+        "synthesizedAt",
+        "rationaleDe",
+        "rationaleEn",
+        "understandingEvidence",
+        "dissent",
+        "humanAttestation"
+      ],
+      "properties": {
+        "synthesisId": { "$ref": "#/$defs/stableId" },
+        "authority": { "enum": ["ai_synthesis", "human"] },
+        "synthesizedBy": { "$ref": "#/$defs/nonBlank" },
+        "synthesizedAt": { "type": "string", "format": "date-time" },
+        "rationaleDe": { "$ref": "#/$defs/longText" },
+        "rationaleEn": { "$ref": "#/$defs/longText" },
+        "understandingEvidence": { "$ref": "#/$defs/understandingEvidence" },
+        "dissent": {
+          "type": "array",
+          "maxItems": 100,
+          "items": { "$ref": "#/$defs/dissent" }
+        },
+        "humanAttestation": {
+          "oneOf": [{ "$ref": "#/$defs/humanAttestation" }, { "type": "null" }]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "authority": { "const": "ai_synthesis" } },
+            "required": ["authority"]
+          },
+          "then": {
+            "properties": { "humanAttestation": { "type": "null" } }
+          }
+        },
+        {
+          "if": {
+            "properties": { "authority": { "const": "human" } },
+            "required": ["authority"]
+          },
+          "then": {
+            "properties": { "humanAttestation": { "$ref": "#/$defs/humanAttestation" } }
+          }
+        }
+      ]
+    }
+  }
+}

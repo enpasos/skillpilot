@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/deep-understanding-rollout/v1/deep-understanding-rollout-config.schema.json",
+  "title": "SkillPilot deep-understanding rollout configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "reportId",
+    "subjects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/deep-understanding-rollout/v1/deep-understanding-rollout-config.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "reportId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/subject"
+      }
+    }
+  },
+  "$defs": {
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject",
+        "label",
+        "landscapePath",
+        "semanticKindLedgerPath",
+        "semanticAtomicityConfigPath",
+        "memoryReviewConfigPath",
+        "visualizationQaPath",
+        "resolutionIndexPaths",
+        "positiveEvidenceConfigPaths"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landscapePath": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "semanticKindLedgerPath": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "semanticAtomicityConfigPath": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "memoryReviewConfigPath": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "visualizationQaPath": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "resolutionIndexPaths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/repoPath"
+          }
+        },
+        "positiveEvidenceConfigPaths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/repoPath"
+          }
+        }
+      }
+    }
+  }
+}

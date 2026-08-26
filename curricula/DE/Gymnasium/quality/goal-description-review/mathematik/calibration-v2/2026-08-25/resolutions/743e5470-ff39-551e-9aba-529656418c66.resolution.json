@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-743e5470-ff39-551e-9aba-529656418c66",
+  "goal": {
+    "goalId": "743e5470-ff39-551e-9aba-529656418c66",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7d4148ff0d98d6787842cc2cdd3ba857bd09dd4126642b4ad2e0e02996a33f0a",
+    "pageFingerprint": "sha256:38c074c6a519cd54261db948a95b91082063627ee65e75965d1accfc308e4cb9",
+    "goalReviewContextFingerprint": "sha256:37965746d77b807ce3041d2316eaf59d36dd7b55dc3fd753811486401c572b62",
+    "finalText": {
+      "titleDe": "Kreistangenten von einem äußeren Punkt konstruieren",
+      "titleEn": "Construct circle tangents from an external point",
+      "descriptionDe": "Die lernende Person kann von einem Punkt außerhalb eines Kreises die beiden Tangenten mithilfe des Thaleskreises über der Strecke zwischen Kreismittelpunkt und äußerem Punkt konstruieren und die Berührpunkte durch den rechten Winkel zwischen Radius und Tangente begründen.",
+      "descriptionEn": "The learner can construct the two tangents from a point outside a circle using the Thales circle whose diameter joins the circle's centre to the external point, and justify the points of contact by the right angle between radius and tangent."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-thales-current-20260825-a",
+      "campaignDigest": "sha256:ec29aca2e9218b24232e57a1c954344faa2b74dcd1e2a10e70c5679c28204134",
+      "roundId": "math-thales-current-first-pass-a-20260825",
+      "independenceGroupId": "math-thales-current-independent-a-20260825",
+      "reviewInputFingerprint": "sha256:3eaa9e805ddef6df37351d2bca2091782f647af4c3e44fcc9ce24b3d8b7da69a",
+      "goalReviewContextFingerprint": "sha256:37965746d77b807ce3041d2316eaf59d36dd7b55dc3fd753811486401c572b62",
+      "batchId": "math-thales-current-first-pass-a-20260825.batch-001",
+      "runId": "math-thales-current-a-20260825-openai-gpt-5-run-001",
+      "runManifestDigest": "sha256:8eb999864e9323d1f975aa25bee7cafd127bad64681c65fc1ace904350328832",
+      "resultsDigest": "sha256:cb89fb416b701a6d6cff50f817593c86498dbe2762fce97de0885c39f7f91310",
+      "recordId": "math-thales-current-a-20260825-record-001",
+      "recordDigest": "sha256:3cce4e35d72a6baafa57b768a15fd1fe35ba52ebd03e7301e8adfc6c9c456b46"
+    },
+    "second": {
+      "campaignId": "math-thales-current-20260825-b",
+      "campaignDigest": "sha256:f876f7e644d54fa8e68ca63d9d6399deb965823989e700dd58b8c86ebd007d9a",
+      "roundId": "math-thales-current-first-pass-b-20260825",
+      "independenceGroupId": "math-thales-current-independent-b-20260825",
+      "reviewInputFingerprint": "sha256:3eaa9e805ddef6df37351d2bca2091782f647af4c3e44fcc9ce24b3d8b7da69a",
+      "goalReviewContextFingerprint": "sha256:37965746d77b807ce3041d2316eaf59d36dd7b55dc3fd753811486401c572b62",
+      "batchId": "math-thales-current-first-pass-b-20260825.batch-001",
+      "runId": "math-thales-current-b-run-20260825-codex-001",
+      "runManifestDigest": "sha256:a80ae494eb78162f96f1a18b6c5c05e94d9644ce32a1684f0ac5184a37a11bb3",
+      "resultsDigest": "sha256:2813769418ea600df9edda7bff6713984eba24f78ff19bd02895a24063775267",
+      "recordId": "math-thales-current-b-record-743e5470-20260825-001",
+      "recordDigest": "sha256:03d93f8d908ee65e407ae8006208b84005e4bd3208d6e5112c83306e9e87fa73"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9df723291b948dff914a78d03bd0bfb9320dc60fd931cb76191ce65747ce268f"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-743e5470-ff39-551e-9aba-529656418c66",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Kreistangenten von einem äußeren Punkt konstruieren“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der ersten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Construct circle tangents from an external point” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the first round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass ein Berührpunkt T einer Tangente vom äußeren Punkt P zugleich auf dem gegebenen Kreis und auf dem Thaleskreis mit Durchmesser OP liegen muss: Nach dem Satz des Thales gilt OT senkrecht zu PT, und eine Gerade durch einen Kreispunkt ist bei senkrechtem Radius dort Tangente. Die zwei Schnittpunkte liefern daher die beiden Tangenten.",
+      "essentialUnderstandingEn": "The learner understands that a point of contact T of a tangent from the external point P must lie both on the given circle and on the Thales circle with diameter OP: by Thales' theorem, OT is perpendicular to PT, and a line through a point of a circle that is perpendicular to the radius there is a tangent. The two intersection points therefore yield the two tangents.",
+      "observablePerformanceDe": "Die lernende Person konstruiert zu einem gegebenen Kreis mit Mittelpunkt O und einem äußeren Punkt P selbstständig den Mittelpunkt von OP, zeichnet den Thaleskreis über OP, bestimmt seine beiden Schnittpunkte T1 und T2 mit dem gegebenen Kreis und zeichnet PT1 und PT2. Sie begründet für jeden Berührpunkt mit dem Satz des Thales, dass OT1 beziehungsweise OT2 senkrecht auf PT1 beziehungsweise PT2 steht und PT1 beziehungsweise PT2 deshalb eine Tangente ist.",
+      "observablePerformanceEn": "Given a circle with centre O and an external point P, the learner independently constructs the midpoint of OP, draws the Thales circle on OP, identifies its two intersection points T1 and T2 with the given circle, and draws PT1 and PT2. For each point of contact, the learner uses Thales' theorem to justify that OT1 or OT2 is perpendicular to PT1 or PT2, respectively, and that PT1 or PT2 is therefore a tangent.",
+      "transferExpectationDe": "Bei einer neu vorgelegten Kreis-Punkt-Konfiguration, in der P in anderer Lage und Entfernung außerhalb des Kreises liegt und der Hilfskreis nicht vorgegeben ist, erkennt die lernende Person selbstständig OP als erforderlichen Durchmesser, konstruiert beide Tangenten und begründet sie wiederum über die rechten Winkel an den neuen Berührpunkten.",
+      "transferExpectationEn": "For a newly presented circle-and-point configuration in which P has a different position and distance outside the circle and the auxiliary circle is not supplied, the learner independently recognises OP as the required diameter, constructs both tangents, and again justifies them using the right angles at the new points of contact."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-743e5470-ff39-551e-9aba-529656418c66",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:928393f932a29a5cceecea8a76766ae7275fe470bdf96a4f8827f3b3e7635a54"
+}

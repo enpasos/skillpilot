@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T14:01:37.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826",
+    "batchManifestDigest": "sha256:98b3bfb1f5ff1a7f2d95bc290cceec4de03da4ca96ab249dbc49d6180afb92b8",
+    "configDigest": "sha256:e6a165eed3294bb1d7bd8bda9629fd6c212555e40b3e0a3e8bb026ce741d3b66",
+    "bundleFingerprint": "sha256:8ee0c96967fd8bcd5144ee36149eb0d9d209e2406bcfcaa608666e6e19e41f74",
+    "bookDigest": "sha256:ca44cd17e26f895fba148e4dca45fb7c0af243a0adef264fdc66a647452e732a",
+    "reviewInputFingerprint": "sha256:ba1e528c03c419ae7274934b5df69932aa0e44dee569ecef3b51dba4b354a93c",
+    "dualSummaryDigest": "sha256:34add69bc6d21c6a722b9d524e76102b3ed98c89ff1438ae97d178a344bbfdbf",
+    "canonicalLandscapeDigest": "sha256:d58bc951f4b165f380728df1ed70824a5af5c11b3ba1d2530042e141e63b8949"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-a",
+      "campaignDigest": "sha256:2c1ee39556c004de9839f9e20f254ce6b185b9af5c8f826235017312a557c68d",
+      "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:ba1e528c03c419ae7274934b5df69932aa0e44dee569ecef3b51dba4b354a93c",
+      "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:0e13c7733adfbd6851ddea5be17748ad32d15283f5992abad89a319f5608cdaa",
+      "runId": "gdr-physik-b006-round-a-run-a",
+      "runManifestDigest": "sha256:a8bf7d2d214e43e011269428acd81383652003111e449920907e08cf79af5abe",
+      "resultsDigest": "sha256:a5035d57c27fe9fc5e28605a74ab816f337b649a4a07f860f8a25dfdf02dd1bc"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-b",
+      "campaignDigest": "sha256:1baf0dc4262e0264f378f072dae453115a58349d3aa2a2d0360b217ceec0133e",
+      "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:ba1e528c03c419ae7274934b5df69932aa0e44dee569ecef3b51dba4b354a93c",
+      "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:219d5b6996ce09465ac24f7eb3537764c41ebe7ae519ab9d0323dbd86b2d72a2",
+      "runId": "physik-gdr-b006-round-b-run-001",
+      "runManifestDigest": "sha256:ae07b18c1efc626dbfb61b7d56c09d4f193e0fc18d095abb64cedc9f6be468b7",
+      "resultsDigest": "sha256:e137b1d50509a5e8bb2653dc977c57821a6b0f6a2bf0bc4592fb4021a1839645"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-synthesis-decision-001",
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3f711d058fc50a4000d6c312529b7c1abbbef2f09a6563717a69bbf9761edcfb",
+      "pageFingerprint": "sha256:e2054ce76574ac151a74d81f9a562b34c3ae5e71bebec30c15bdf9cf6cd51580",
+      "goalReviewContextFingerprint": "sha256:7dd9cf8ef952736b90575e2a62a9280a05461da167b80604454ad93dfbd00afb",
+      "finalText": {
+        "titleDe": "Modellierung und Idealisierung von Bewegungen",
+        "titleEn": "Modeling and Idealization of Motions",
+        "descriptionDe": "Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen modellieren, die verwendeten Idealisierungen wie Massepunkt und Reibungsfreiheit begründen und die Grenzen der Modellvorhersagen angeben.",
+        "descriptionEn": "The learner can model motions using time-position and time-velocity laws, justify the idealizations used, such as the point-particle approximation and neglect of friction, and state the limits of the model predictions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "gdr-physik-b006-round-a-d6dc0e02",
+          "recordDigest": "sha256:9ebc5ef0bd10d98e061b928ca7f96deb269bd82cd16db229fd3940d60fd54e7d"
+        },
+        "second": {
+          "recordId": "physik-gdr-b006-b-d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "recordDigest": "sha256:54b8b9e821881e6944d1af4f043c11874200db40aba236f7b62a09881411307c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle bilinguale Beschreibung nach der Routenstabilisierung. Die zweite Evidence-Fassung operationalisiert Zeit-Ort- und Zeit-Geschwindigkeits-Gesetze zusätzlich über Größen, Einheiten und Bewegungsrichtung und verlangt im Transfer eine begründete Anpassung oder Verwerfung des Modells, sobald Massepunkt- oder Reibungsannahmen nicht mehr tragen.",
+      "rationaleEn": "Both independent reviews confirm the current bilingual description after route stabilization. The second evidence formulation additionally operationalizes time-position and time-velocity laws through quantities, units, and direction of motion and requires a justified adjustment or rejection of the model in transfer once the point-particle or negligible-friction assumptions no longer hold."
+    }
+  ],
+  "manifestFingerprint": "sha256:6e7c137745a6703b5d41cc1f6e2f43809b6f7edfc45020948b046674ab799a6a"
+}

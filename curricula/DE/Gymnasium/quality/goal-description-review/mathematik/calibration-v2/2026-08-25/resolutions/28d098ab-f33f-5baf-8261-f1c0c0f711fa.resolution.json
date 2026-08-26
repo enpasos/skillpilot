@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+  "goal": {
+    "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:fde711a0d32d82377b61c84e7e446a1e2f40d59dfb815d59ad211189e97b1121",
+    "pageFingerprint": "sha256:cfe9e492ee5107f9c11fe9b90212fa1963677124d07f2eab62c35e3601c54bf1",
+    "goalReviewContextFingerprint": "sha256:f7d1e947bc8556c8d1ccfdcb5a56641afe1e793139d89694e8b63a87b856a0d3",
+    "finalText": {
+      "titleDe": "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden",
+      "titleEn": "Distinguish premises and conclusions in if-then statements",
+      "descriptionDe": "Die lernende Person kann in einer mathematischen Wenn-Dann-Aussage Voraussetzung und Folgerung eindeutig benennen und den Geltungsbereich der Aussage angeben.",
+      "descriptionEn": "The learner can identify the premise and conclusion in a mathematical if-then statement and state the scope in which the statement applies."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:f7d1e947bc8556c8d1ccfdcb5a56641afe1e793139d89694e8b63a87b856a0d3",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-17",
+      "recordDigest": "sha256:71fadf1de4dc11a44fe2da44c3eddde2a35026f96080ccd1dd46ba271eb4cc74"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:f7d1e947bc8556c8d1ccfdcb5a56641afe1e793139d89694e8b63a87b856a0d3",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-017",
+      "recordDigest": "sha256:dbafd03d23e0621d1595fee9bfb425d1aab3847781f319b769f0441b2b6c56f7"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Distinguish premises and conclusions in if-then statements” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Implikation behauptet innerhalb eines festgelegten Geltungsbereichs, dass aus der Voraussetzung P die Folgerung Q folgt; die Rollen von P und Q sind gerichtet und der Geltungsbereich bestimmt, für welche Objekte die Behauptung gilt.",
+      "essentialUnderstandingEn": "Within a specified domain, an implication claims that conclusion Q follows from premise P; the roles of P and Q are directional, and the domain determines the objects for which the claim applies.",
+      "observablePerformanceDe": "Die lernende Person zerlegt eine mathematische Aussage selbstständig in Voraussetzung und Folgerung, formuliert sie eindeutig als P impliziert Q und benennt die Variablen-, Mengen- oder Fallbeschränkungen ihres Geltungsbereichs.",
+      "observablePerformanceEn": "The learner independently decomposes a mathematical statement into premise and conclusion, states it unambiguously as P implies Q, and identifies the variable, set, or case restrictions that define its domain.",
+      "transferExpectationDe": "Bei einer neu formulierten oder nur indirekt als Wenn-Dann-Aussage erkennbaren Behauptung sowie einem veränderten Geltungsbereich identifiziert die lernende Person erneut P, Q und die Reichweite der Aussage.",
+      "transferExpectationEn": "For a newly worded claim, including one only implicitly expressed as an if-then statement, and with a changed domain, the learner again identifies P, Q, and the scope of the statement."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e14ecfd35af211d185e2f054155705ba995cdbbbb05168635f5cffd17b97200d"
+}

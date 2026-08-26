@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-v8-checkpoint-main-20-round-a-openai-gpt5-20260826T1314Z",
+  "campaignId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-a",
+  "roundId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f3463b81989709d14a4c4fe68baed767661bb49058a2557f19389baad7ab1853",
+  "bundleFingerprint": "sha256:a6adb7eb5e299a79547024320b7720f650e1e7ce9d7f06fc52d4a078a1e18631",
+  "bookDigest": "sha256:64c31a8c66f634a74830b9d1162883efe058321e23f02ef7cd47fff7feba2725",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:290073aaeff0bf0c6254b3f87f3a185e052839d84d93713d9e19fd39c929debe",
+  "independenceGroupId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+    "5ea765ac-c279-551a-8a94-a07da2381e5b",
+    "41d35667-0296-5f84-bc12-202ffc440be0",
+    "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
+    "581c0766-b84b-54cb-b8b6-375310329a41",
+    "327302e3-5b36-46f8-9c16-73f24583b0eb",
+    "722857cf-f327-5740-8151-64eb92195ec8",
+    "940978fa-1f2d-4e54-9c28-081a6df9b76f",
+    "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+    "30a936ec-e427-57fe-bf3e-4abd64b1f0c1",
+    "b92827a7-5d62-5fdb-a6f5-ac44461f4a7b",
+    "f7f2c254-1663-5861-bed7-a32c00495b19",
+    "dd7cdcea-0950-461b-96ac-ce49989fca47",
+    "af0e2efb-f634-5f2d-abea-b2e1a67a2894",
+    "f827b00f-af7f-52de-84aa-2a2bbaa035bd",
+    "f92b5b8a-327f-50d2-8313-6a142399ebf0",
+    "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
+    "9c328f68-41ed-55dd-9e02-34414a6246f2",
+    "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+    "b57427c9-1af5-5daa-8c65-b84a4cc20785"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b6fd869957e98551b6eaa743515c4ff1c4c8e4bd013caab09cbb971141df4d46"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f3463b81989709d14a4c4fe68baed767661bb49058a2557f19389baad7ab1853"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-26T13:00:00Z",
+  "completedAt": "2026-08-26T13:23:53Z",
+  "status": "completed",
+  "outputDigest": "sha256:a831707238f34532a47107fcbe481b19ff1b5aa78910e5d26731666bac79f502",
+  "toolchainVersion": "codex-gpt5-review-2026-08-26"
+}

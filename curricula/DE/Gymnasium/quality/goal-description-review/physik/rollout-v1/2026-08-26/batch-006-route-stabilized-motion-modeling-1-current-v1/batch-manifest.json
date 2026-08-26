@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-006-route-stabilized-motion-modeling-1-current-v1.config.json",
+  "configDigest": "sha256:e6a165eed3294bb1d7bd8bda9629fd6c212555e40b3e0a3e8bb026ce741d3b66",
+  "goalIds": [
+    "d6dc0e02-831d-4894-a61a-852bcc74f147"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 438,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:dfef470c244d9b28e81768c4ea6f57606ee4ee9a02fe4bb6827874c94f62ffbe"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ca44cd17e26f895fba148e4dca45fb7c0af243a0adef264fdc66a647452e732a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:8ee0c96967fd8bcd5144ee36149eb0d9d209e2406bcfcaa608666e6e19e41f74",
+    "reviewInputFingerprint": "sha256:ba1e528c03c419ae7274934b5df69932aa0e44dee569ecef3b51dba4b354a93c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-a",
+        "campaignDigest": "sha256:2c1ee39556c004de9839f9e20f254ce6b185b9af5c8f826235017312a557c68d",
+        "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-a",
+        "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0e13c7733adfbd6851ddea5be17748ad32d15283f5992abad89a319f5608cdaa"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-b",
+        "campaignDigest": "sha256:1baf0dc4262e0264f378f072dae453115a58349d3aa2a2d0360b217ceec0133e",
+        "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-b",
+        "batchId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:219d5b6996ce09465ac24f7eb3537764c41ebe7ae519ab9d0323dbd86b2d72a2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

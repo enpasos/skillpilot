@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-calibration-v2-final-20-rereview-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/calibration-v2/2026-08-26/final-20-v2.config.json",
+  "configDigest": "sha256:664be4b1b0a338f269f94162c1363de21c659d5296f80df90160544670c5cb54",
+  "goalIds": [
+    "5355fee0-0477-5570-a234-561477bf77ba",
+    "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+    "79cb1695-f985-443a-b93e-27b57ab474b7",
+    "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+    "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+    "01bebdfc-5819-4610-a03e-ea5e794fc954",
+    "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+    "72effc66-87f4-5f5e-8d36-1547677365fb",
+    "d6dc0e02-831d-4894-a61a-852bcc74f147",
+    "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+    "be921c3b-7db9-50b5-a110-92f31673fc62",
+    "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+    "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+    "966782e5-690d-4fae-bbab-fa3fa30525c3",
+    "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+    "5476480f-7ff2-529f-aade-968198c782a9",
+    "c5413852-abae-566b-b435-f9939209ca63",
+    "a08e33db-d821-457b-86dd-870e7648c5f4",
+    "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+    "79da5c34-86b2-5c10-9726-9de886ccef7d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 430,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:be665d5d599a28f45d7b66ee5c1d8b1e7b30a20050e86ba342d2acd0bb944fa7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b8ef4bdcf4f8acfc0a655cf2139ca3571cae5800855b6ccf56b3a659ea755ff7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:421cad7c10737b10ce9cc430e273152353e5e24cbaca161069a8c373a8fb7c0f",
+    "reviewInputFingerprint": "sha256:1c97c80ddff8872b8bc976e04ccc3642dd625bfcaa37daf93e362d4ea5485aa6",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-calibration-v2-final-20-rereview-20260826-a",
+        "campaignDigest": "sha256:28771a363dee3f40f4a0f8c503645450a78d3fcccbc8b69e7e1659b63303df7a",
+        "roundId": "physics-calibration-v2-final-20-rereview-20260826-first-pass-a",
+        "independenceGroupId": "physics-calibration-v2-final-20-rereview-20260826-independent-a",
+        "batchId": "physics-calibration-v2-final-20-rereview-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:440940a2ff5a31e9f3f1ab05e496c2f86d5627059fd56f20726b3b3c986a8440"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-calibration-v2-final-20-rereview-20260826-b",
+        "campaignDigest": "sha256:60e85f827e21cd3210803f48928bf8b8343a44cdc50e777a4f8d911094118453",
+        "roundId": "physics-calibration-v2-final-20-rereview-20260826-first-pass-b",
+        "independenceGroupId": "physics-calibration-v2-final-20-rereview-20260826-independent-b",
+        "batchId": "physics-calibration-v2-final-20-rereview-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:3bd946499fda9d4755e1dc38a0e41e93e27c8403aae8231a39518c6e1870f480"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

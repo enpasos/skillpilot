@@ -1,0 +1,488 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-synthesis",
+  "manifestFingerprint": "sha256:3e4c0a2493a0a6893a8f476b8af873fd074b7fb024fdfb8f069101b46e8142c6",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex independent AI synthesis",
+  "synthesizedAt": "2026-08-26T03:16:35.053Z",
+  "batch": {
+    "batchId": "physics-calibration-v2-final-20-current-rereview-v6-20260826",
+    "batchManifestDigest": "sha256:17f0754eafecc1a1e1af52078f14c776c9aa0fbdace9abf200d467acb4cc5ccf",
+    "configDigest": "sha256:a7875ab04634701f3d5e13c1baa5ea33b791aac9a24c59f1a37d66d32b33c284",
+    "bundleFingerprint": "sha256:5fa1cddd9e0ff45ed0ec7a1d36ecde162e265b41303996141b55f22996c6ab47",
+    "bookDigest": "sha256:1ee98127085198c7e3a42c70401b0296ed29e0ef4f36d4d860b5943749e26eb6",
+    "reviewInputFingerprint": "sha256:35c6176ff27a72c868f3b2bad6dfcf6552dd51c252a1915bb8bd527370ae02a1",
+    "dualSummaryDigest": "sha256:91a95ae56c469df2283020499779a4908c5b0a309d34ca93851ff9331805e384",
+    "canonicalLandscapeDigest": "sha256:12e0a165f4a61268e57277e56638de6684df9a92d56c953e76985984fe65317d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-a",
+      "campaignDigest": "sha256:264357702b227d1f4bdfb4ccaac01d67dd4ef43b1fc12528bd39abb7665986f6",
+      "roundId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a",
+      "independenceGroupId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:35c6176ff27a72c868f3b2bad6dfcf6552dd51c252a1915bb8bd527370ae02a1",
+      "batchId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:027b0112a091bf135cd28d23d697fa525c060d85c97e3530a1c43e3a41f4ebe1",
+      "runId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.codex-blind-a49",
+      "runManifestDigest": "sha256:8170872c5c2ce758f06d7e3f6ff3f6093a6c681d927bb9bb03b072a7aa97dd21",
+      "resultsDigest": "sha256:51e63cee155f39aad0cd2026c8b1b110565aa7a1a9119639d7e4f2d3f26d03df"
+    },
+    "second": {
+      "campaignId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-b",
+      "campaignDigest": "sha256:4b5ba393d1e9f7a9e9ff1b09094661585dbb2ed5592426ad3c381a98e50040a5",
+      "roundId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b",
+      "independenceGroupId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:35c6176ff27a72c868f3b2bad6dfcf6552dd51c252a1915bb8bd527370ae02a1",
+      "batchId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0a516eac9a0cb0af263b12915c6fd664068624fc6039883af075acb4d639e974",
+      "runId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.codex-blind-run",
+      "runManifestDigest": "sha256:c7f8c4c3b20879756f56ba98af1d4d790e2f24f66b42bb7610a71a30a7f9d3de",
+      "resultsDigest": "sha256:84443100315b7def9f0bdee288fe6cec3f175f4ec39d0dfaa18b428603c2c78e"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-final20-v6-synthesis-001",
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e6e80b9f944d6d0dc5c355d004409a719899f9190b5b0a5593b5b1de9b7710eb",
+      "pageFingerprint": "sha256:3ebcaad434b407b3da928253ee3dd06d975c32eb042535b7697451ef3aa00790",
+      "goalReviewContextFingerprint": "sha256:6e0ec113a257d76a41fb30deca386c0c1b7f02824f6a211b37e93a7d74e2991c",
+      "finalText": {
+        "titleDe": "Beobachtung und Erklärung unterscheiden",
+        "titleEn": "Distinguish observations and explanations",
+        "descriptionDe": "Die lernende Person kann Beobachtungen, die auf Sinneseindrücken oder Messungen beruhen, von physikalischen Erklärungen mithilfe von Gesetzen und Modellen unterscheiden.",
+        "descriptionEn": "The learner can distinguish observations based on sensory impressions or measurements from physical explanations that use laws and models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-001", "recordDigest": "sha256:f46a4dc7b4314cf3297cde4ab575ab8789619a0ef48463097cba3a2b9f67925d" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-001", "recordDigest": "sha256:0e2ce4b19f0488afe2496f01196ec1cf479c88f2d9a2ef9b315166ea33ae90ac" }
+      },
+      "rationaleDe": "Beide aktuellen Blind-Reviews bestätigen den Finaltext. Die zweite Evidence-Fassung ist stärker, weil sie Beobachtung und Erklärung ausdrücklich als verschiedene Erkenntnisebenen trennt und im Transfer mehrere konkurrierende Erklärungen gegen die Fehlannahme prüft, ein Befund beweise bereits eine davon.",
+      "rationaleEn": "Both current blind reviews confirm the final text. The second evidence formulation is stronger because it explicitly separates observation and explanation as different epistemic levels and tests several competing explanations against the misconception that a finding already proves one of them."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-002",
+      "goalId": "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b030a8819ae60efc5706bfafe03d9c55c6515ed7f247a61579016b01a0330f26",
+      "pageFingerprint": "sha256:90a7134359f4d03702b4297e6527681ec9becbd3727775be3d25e7361bfeb70e",
+      "goalReviewContextFingerprint": "sha256:fe651660c43adebebf92082adffed82a3f4434b32e4941f1a0c74c5e972d5e69",
+      "finalText": {
+        "titleDe": "Kraft und Verformung experimentell untersuchen",
+        "titleEn": "Experimentally investigate force and deformation",
+        "descriptionDe": "Die lernende Person kann den Zusammenhang zwischen Kraft und Verformung eines elastischen Körpers experimentell untersuchen, Messwerte tabellarisch und grafisch auswerten und begründet angeben, in welchem Messbereich Kraft und Verformung proportional sind.",
+        "descriptionEn": "The learner can experimentally investigate the relationship between force and deformation of an elastic body, analyze measurements in tables and graphs, and justify the measurement range in which force and deformation are proportional."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-002", "recordDigest": "sha256:700441e5df4211906a3eb02727a29a80f281d1af9a8ecebb00f0a8fa24f79638" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-002", "recordDigest": "sha256:f61afdcd8a1751f7569399ada304c85a53f32e42ac8aacee731e6341a7d41985" }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die begrenzte Proportionalität. Die zweite Fassung verbindet Trend und Messstreuung mit einer begründeten Bereichsentscheidung und verlangt im Transfer ausdrücklich, nichtlineare Randbereiche neu auszuwerten, ohne unzulässig zu extrapolieren.",
+      "rationaleEn": "Both reviews confirm limited proportionality. The second formulation links trend and measurement scatter to a justified range decision and explicitly requires the learner to reassess nonlinear edge regions without unjustified extrapolation."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-003",
+      "goalId": "79cb1695-f985-443a-b93e-27b57ab474b7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5b50b42df53de3796493c9ed4dd786d2654740442fca7279c48aac31997760f2",
+      "pageFingerprint": "sha256:0d3b1876f61c9e68ffc64f339e4aa9e8a713e6d801aa7045f5ebde0759fc8a66",
+      "goalReviewContextFingerprint": "sha256:3b9c7c77e5743fa10e38c360a4841a4ec1fab84bcfcc1c71e79b2e65f0e70d00",
+      "finalText": {
+        "titleDe": "Lichtwege mit dem Strahlenmodell darstellen und vorhersagen",
+        "titleEn": "Represent and predict light paths using the ray model",
+        "descriptionDe": "Die lernende Person kann Lichtwege in einfachen optischen Anordnungen als gerichtete Linien des Strahlenmodells darstellen und aus den für die Anordnung geltenden Ausbreitungsregeln weitere Wegabschnitte vorhersagen.",
+        "descriptionEn": "The learner can represent light paths in simple optical arrangements as directed lines of the ray model and use the propagation rules that apply to the arrangement to predict subsequent path segments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-003", "recordDigest": "sha256:47c96be8a28ac45f2df2e3129d80a7e979ebf1227b7cfaa8c2f8195f78cfd12c" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-003", "recordDigest": "sha256:bbdd73a4a39bc21867bbe7ace8566c45f528582b1c2c1cd3702d5cddcb4eef00" }
+      },
+      "rationaleDe": "Beide Reviews erfassen das Strahlenmodell korrekt. Die zweite Fassung ist stärker, weil sie die jeweils lokale Regelanwendung beobachtbar macht und beim veränderten Aufbau zusätzlich prüfen lässt, welche räumlichen Aspekte das Modell darstellt und welche es bewusst auslässt.",
+      "rationaleEn": "Both reviews capture the ray model correctly. The second formulation is stronger because it makes local rule application observable and, in a changed arrangement, also tests which spatial aspects the model represents and deliberately omits."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-004",
+      "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:283ef10a4ac9b1c5a471d5c8df0c1aa3acf6c8bd5d685e1e0213a3668fdf7852",
+      "pageFingerprint": "sha256:dda0829c9ff4867b562aab683ea92283e21f0b45ff4dd62ae240645694342593",
+      "goalReviewContextFingerprint": "sha256:cf7f2b71e3e358faa0813cb96fd958c0e032f17eb7f65e282fd004ae61fd4e24",
+      "finalText": {
+        "titleDe": "Schallausbreitung im Teilchenmodell erklären",
+        "titleEn": "Explain Sound Propagation Using the Particle Model",
+        "descriptionDe": "Die lernende Person kann Schallausbreitung im Teilchen- beziehungsweise Medienelementmodell als Weitergabe einer lokalen Druck- oder Verformungsstörung und von Energie erklären, die Bewegung von Teilchen beziehungsweise kleinen Medienelementen um einen Gleichgewichtszustand deuten und begründen, warum im betrachteten idealisierten Wellenmodell kein dauerhafter Nettostofftransport mit dem Schall durch das Medium erfolgt.",
+        "descriptionEn": "The learner can explain sound propagation in a particle or medium-element model as the transmission of a local pressure or deformation disturbance and energy, interpret the motion of particles or small medium elements about an equilibrium state, and justify why, in the idealized wave model under consideration, sound propagation produces no sustained net transport of matter through the medium."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-004", "recordDigest": "sha256:f5dc12f19c8770d51a00485665915819761ccd0b021a1d57430488c99c60fa4c" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-004", "recordDigest": "sha256:71055e29beaf4d463be2d0b8dc2632af13d7ac08a62b39d52ea33bb03158fba9" }
+      },
+      "rationaleDe": "Beide Reviews erklären Störungs- und Energietransport ohne Nettostofftransport. Die erste Fassung ist für dieses Ziel diagnostisch stärker, weil ihr Transferfall die zentrale Fehlvorstellung eines mitwandernden markierten Teilchens direkt aufgreift und mithilfe von Gleichgewichtslage und Modellbereich korrigieren lässt.",
+      "rationaleEn": "Both reviews explain disturbance and energy transport without net matter transport. The first formulation is diagnostically stronger for this goal because its transfer case directly confronts the central misconception of a marked particle travelling with the sound and requires correction using equilibrium position and model domain."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-005",
+      "goalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca5556ab525182e51f63733ce388be42e7fe7b956026108b73584659752e345f",
+      "pageFingerprint": "sha256:9fded6225b4727601396fc1b0d2ec8dcec6e12e25d9464472421e5c3fa488373",
+      "goalReviewContextFingerprint": "sha256:6483a8cab630d96c9c80204a75b9062c0810048547a1f3669fcffb00e29f1dbe",
+      "finalText": {
+        "titleDe": "Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen",
+        "titleEn": "Compare and explain sound speeds in different media",
+        "descriptionDe": "Die lernende Person kann Schallgeschwindigkeiten in verschiedenen Medien anhand von Daten vergleichen, Unterschiede mit elastischer Kopplung und Trägheit im Teilchenmodell begründen und eine vorschnelle Rangfolge allein nach Aggregatzuständen prüfen.",
+        "descriptionEn": "The learner can compare sound speeds in different media using data, explain differences in terms of elastic coupling and inertia in the particle model, and check an oversimplified ranking based only on states of matter."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-005", "recordDigest": "sha256:ec7dbcf05e9086a67fa18f0f32ac5f060764c31ef0b1ed1f8d086e482d73706d" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-005", "recordDigest": "sha256:8be7a3ab3c90905d423f9bb3de5d1f40f3004bd2ab54601adeab6103f695945a" }
+      },
+      "rationaleDe": "Beide Reviews vermeiden eine pauschale Aggregatzustandsrangfolge. Die zweite Fassung verbindet unbekannte Messdaten konsequenter mit elastischer Kopplung und Trägheit und verlangt bei einem Gegenbeispiel eine materialbezogene Modellbegründung statt bloßer Einordnung.",
+      "rationaleEn": "Both reviews avoid a blanket state-of-matter ranking. The second formulation more consistently links unfamiliar measurements to elastic coupling and inertia and requires a material-specific model explanation for a counterexample rather than mere classification."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-006",
+      "goalId": "01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dc17e56815005e34cf71666134c49694873f7faaf408ad22cc705ab34d92220d",
+      "pageFingerprint": "sha256:8138bcbfdb9d1b93fb40c297bbf5be52f853ad32c85c9a40fb640906c7fa82a9",
+      "goalReviewContextFingerprint": "sha256:6ad2e7a999311fa46f732a37cce72962c3184d1f8913da7ff9bd9d611532035c",
+      "finalText": {
+        "titleDe": "Reihen- und Parallelschaltungen für eine Funktion planen",
+        "titleEn": "Plan series and parallel circuits for a function",
+        "descriptionDe": "Die lernende Person kann für eine vorgegebene Funktion einen Schaltplan als Reihen- oder Parallelschaltung entwerfen und die Wahl anhand der benötigten Stromwege begründen.",
+        "descriptionEn": "The learner can design a series or parallel circuit diagram for a specified function and justify the choice using the required current paths."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-006", "recordDigest": "sha256:b370653be0ad40d87bcc95b1b7f0f0aacda0726daa1d7452dd160d60afb45ce0" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-006", "recordDigest": "sha256:7a6ec8d3cfb062a53d2fb237d75a3cc50bcfbcc7828c58887bde13f54256b567" }
+      },
+      "rationaleDe": "Beide Reviews machen die Stromwege zum Begründungskern. Die zweite Fassung prüft zusätzlich relevante Schalterzustände und überträgt die Topologie auf unabhängiges Schalten, gemeinsamen Ausfall oder einen zusätzlichen Verbraucher; dadurch wird die Funktionsplanung breiter beobachtbar.",
+      "rationaleEn": "Both reviews make current paths the core of the justification. The second formulation additionally tests relevant switch states and transfers the topology to independent switching, common failure, or an added load, making functional planning more broadly observable."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-007",
+      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d51d9b4ba8f2a9aa8a69c371c0f8a4f35521aeaea70dbc51edd0be1f021df598",
+      "pageFingerprint": "sha256:70b8f14d51142f7a17f44a3eb25c3966e592404e038a7d10dc8f8c7d9a998e1d",
+      "goalReviewContextFingerprint": "sha256:7e6bbc835787fbb0c1132b63dc915ab01b6572eb96955cf20bd6b8217ed0e6ff",
+      "finalText": {
+        "titleDe": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären",
+        "titleEn": "Explain Energy Release in Nuclear Reactions Using Mass-Energy Equivalence",
+        "descriptionDe": "Die lernende Person kann die Energiefreisetzung beim Alpha-Zerfall und bei einfachen Kernreaktionen qualitativ aus der Differenz der Ruhemassensummen vor und nach dem Prozess mithilfe der Masse-Energie-Äquivalenz erklären.",
+        "descriptionEn": "The learner can qualitatively explain energy release in alpha decay and simple nuclear reactions from the difference between the total rest masses before and after the process using mass-energy equivalence."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-007", "recordDigest": "sha256:eb4ece102e654a128408c0d0fcd567e614bc25a115e2a3c62788680b35f042ad" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-007", "recordDigest": "sha256:51a3962ad959e0527ce375c898feb67036ce45df100ef4fccaad3909b2255236" }
+      },
+      "rationaleDe": "Beide Reviews verwenden invariante Ruhemassen statt einer geschwindigkeitsabhängigen Masse. Die zweite Fassung ist stärker, weil sie die Ruheenergiedifferenz im vollständigen System verortet und bei neuen Massendaten sowohl Energiefreisetzung als auch notwendige Energiezufuhr entscheiden lässt.",
+      "rationaleEn": "Both reviews use invariant rest masses rather than velocity-dependent mass. The second formulation is stronger because it locates the rest-energy difference in the complete system and asks learners to decide both energy release and required energy input from fresh mass data."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-008",
+      "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5b5eb21ef5fb4985cfbca42031f94165e429d98a0a94a3258e1b9c7891e58a39",
+      "pageFingerprint": "sha256:2805d6a7c6662a63c0d37480e41c72194a78db037eb40537994746abdeff4c9f",
+      "goalReviewContextFingerprint": "sha256:8ec14fc81c84b258ef3aec3b5aa79eb1acec95b0adc7d8ab346d753ba30ba461",
+      "finalText": {
+        "titleDe": "Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+        "titleEn": "Analyze Digital Data and Account for Uncertainties",
+        "descriptionDe": "Die lernende Person kann digitale Messdaten auswerten, zufällige Streuung von systematischen Abweichungen unterscheiden und begründen, wie beide die Aussagekraft des Ergebnisses begrenzen.",
+        "descriptionEn": "The learner can analyze digital measurement data, distinguish random scatter from systematic deviations, and justify how both limit the strength of the resulting conclusion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-008", "recordDigest": "sha256:6cec6caba3463a904a0a8af4f6d5250e016c5508978dd53a844dff29c9d32f75" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-008", "recordDigest": "sha256:779ca6a75e10c522618ce950e7dc218f048f1bb6868571f63c9e9efd10ab5b1e" }
+      },
+      "rationaleDe": "Beide Reviews unterscheiden Zufallsstreuung und systematische Verschiebung. Die zweite Fassung macht den Unterschied zwischen Präzision und Genauigkeit in zwei kontrastierenden Datensätzen unmittelbar prüfbar und verlangt dazu jeweils eine passende Verbesserungsmaßnahme.",
+      "rationaleEn": "Both reviews distinguish random scatter from systematic shift. The second formulation makes the difference between precision and accuracy directly assessable through two contrasting data sets and requires an appropriate improvement for each."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-009",
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3f711d058fc50a4000d6c312529b7c1abbbef2f09a6563717a69bbf9761edcfb",
+      "pageFingerprint": "sha256:357a29b8f5d00441501444cc39c4535530dfa57058fba73dc0cb7d71017c8078",
+      "goalReviewContextFingerprint": "sha256:c519db1e3083930a86b06742b4d9ae0cc912cf653027146e32f252e0cbc1407c",
+      "finalText": {
+        "titleDe": "Modellierung und Idealisierung von Bewegungen",
+        "titleEn": "Modeling and Idealization of Motions",
+        "descriptionDe": "Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen modellieren, die verwendeten Idealisierungen wie Massepunkt und Reibungsfreiheit begründen und die Grenzen der Modellvorhersagen angeben.",
+        "descriptionEn": "The learner can model motions using time-position and time-velocity laws, justify the idealizations used, such as the point-particle approximation and neglect of friction, and state the limits of the model predictions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-009", "recordDigest": "sha256:47929a4daeb782577680505df22344a4e0225457bb23fd23bfc7950b4f61ec5d" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-009", "recordDigest": "sha256:cee8124c253e915e7e8fea4c3957cee0d1398a3c57aec76e169d2b24c9145133" }
+      },
+      "rationaleDe": "Beide Reviews binden Zeitgesetze an Annahmen und Gültigkeitsbereiche. Die zweite Fassung ist stärker, weil sie eine Modellvorhersage ausdrücklich mit Realität oder Daten vergleichen und bei Luftwiderstand, endlicher Ausdehnung oder zusätzlichem Bewegungsabschnitt eine konkrete Modellanpassung begründen lässt.",
+      "rationaleEn": "Both reviews bind time laws to assumptions and validity ranges. The second formulation is stronger because it explicitly compares a prediction with reality or data and requires a concrete model adaptation when drag, finite extent, or an additional motion segment becomes relevant."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-010",
+      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a3ef76055e44da985e3af5fc689fffab4c9f9b6604a2bcd59b67404f78745c33",
+      "pageFingerprint": "sha256:241b7842b518cad1319d92e4a79d8886ebd535dd3a91ccd22d9c0272a7834eec",
+      "goalReviewContextFingerprint": "sha256:9293578374551a91e9e3449680e9b960cdf652599772ab1787ff42b46a92a9da",
+      "finalText": {
+        "titleDe": "Newtons 3. Axiom anwenden",
+        "titleEn": "Apply Newton's Third Law",
+        "descriptionDe": "Die lernende Person kann in Alltagssituationen Wechselwirkungskräfte als gleich große, entgegengesetzt gerichtete Kräfte identifizieren, die gleichzeitig auf zwei verschiedene Körper wirken, und sie von einer Kräftebilanz an einem einzelnen Körper unterscheiden.",
+        "descriptionEn": "In everyday situations, the learner can identify interaction forces as equal in magnitude and opposite in direction, acting simultaneously on two different bodies, and distinguish them from a force balance on a single body."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-010", "recordDigest": "sha256:ea83743fd363743a6e5996a8e9081afb8ff93a50dd696174d7c65b2d9a05a002" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-010", "recordDigest": "sha256:d7416d60860fd6b960b8720cdba01439cfb2fcca2e529519e2f2c4af038ebe16" }
+      },
+      "rationaleDe": "Beide Reviews trennen Wechselwirkungspaar und Kräftebilanz. Die erste Fassung ist diagnostisch stärker, weil sie den typischen Fehlschluss an Körpern sehr unterschiedlicher Masse prüft: gleiche Wechselwirkungskräfte müssen trotz verschiedener Bewegungsänderungen begründet werden.",
+      "rationaleEn": "Both reviews separate an interaction pair from a force balance. The first formulation is diagnostically stronger because it tests the common misconception using bodies of very different masses: equal interaction forces must be justified despite different changes in motion."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-011",
+      "goalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a9471942fe241baa8e2bd509c36cab29d205095abddbf1ae1e88b2b3e9264286",
+      "pageFingerprint": "sha256:ae7b909a180e384b5badde76b29551ec0a79832a921603c5b302f87d1cae00df",
+      "goalReviewContextFingerprint": "sha256:b16ea3724d3be8149578263f026d881962923b5c9e2d96d80ab9863c0aacb6c8",
+      "finalText": {
+        "titleDe": "Entropie E09: Der 2. Hauptsatz als Entscheidungsregel",
+        "titleEn": "Entropy E09: The Second Law as a Decision Rule",
+        "descriptionDe": "Die lernende Person kann für ein als isoliert betrachtetes Gesamtsystem aus System und Umgebung $\\Delta S_{\\mathrm{ges}} \\ge 0$ als Kriterium für eine nach dem zweiten Hauptsatz mögliche Prozessrichtung anwenden und den reversiblen Grenzfall $\\Delta S_{\\mathrm{ges}} = 0$ von irreversiblen Prozessen mit $\\Delta S_{\\mathrm{ges}} > 0$ unterscheiden.",
+        "descriptionEn": "For a combined system consisting of a system and its surroundings and treated as isolated, the learner can apply $\\Delta S_{\\mathrm{tot}} \\ge 0$ as a criterion for a process direction allowed by the second law and distinguish the reversible limit $\\Delta S_{\\mathrm{tot}} = 0$ from irreversible processes with $\\Delta S_{\\mathrm{tot}} > 0$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-011", "recordDigest": "sha256:09da645abfac59ecf2fe41c754ec89b2f512a4d524219fcba7b9c4fe08269567" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-011", "recordDigest": "sha256:130591296846700162900eca8b3ef4a39e2f7c23a62f5ccdfea3d93949a0eb57" }
+      },
+      "rationaleDe": "Beide Reviews wenden die Gesamtentropie als Richtungsregel an. Die zweite Fassung ist stärker, weil sie eine überprüfte Systemgrenze, die Summenbildung und die begründete Entscheidung gemeinsam beobachtbar macht und bei Umkehrung oder neuer Abgrenzung eine erneute Prüfung statt Regelwiederholung verlangt.",
+      "rationaleEn": "Both reviews apply total entropy as a direction rule. The second formulation is stronger because it makes boundary checking, summation, and justified decision jointly observable and requires reassessment after reversal or redefinition rather than repetition of a rule."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-012",
+      "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:459fa0cc72fb9bea0104d01b3d8bafe1c0cbda8a06487ff5631aa74b30c666f1",
+      "pageFingerprint": "sha256:e15bb8d605cc82b0908ea16c8ebec045577843298d3da58ad7d18f60bffa38e0",
+      "goalReviewContextFingerprint": "sha256:3e45df5d210bb3ae226c769837ea83870249300712223ad4f8e067cbac99c24f",
+      "finalText": {
+        "titleDe": "Magnetische Felder und Feldlinienbilder",
+        "titleEn": "Magnetic Fields and Field Line Diagrams",
+        "descriptionDe": "Die lernende Person kann typische magnetische Felder von Permanentmagneten, geraden stromdurchflossenen Leitern und langen Spulen durch Feldlinienbilder darstellen und diese als Modellbilder deuten, in denen die Tangentenrichtung die Feldrichtung und die Liniendichte innerhalb einer Darstellung die relative Feldstärke codiert.",
+        "descriptionEn": "The learner can represent typical magnetic fields of permanent magnets, straight current-carrying conductors, and long coils using field line diagrams and interpret them as model diagrams in which the tangent direction encodes field direction and the line density within a diagram encodes relative field strength."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-012", "recordDigest": "sha256:ed97cb9b7c1b268a6c7af7ec070ea11fa43ac4e22ba56999b7a70fa0424542cc" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-012", "recordDigest": "sha256:4e0c9180bd8d6572ed548833c359e95e3596c763af234297858fdc93f9f938e3" }
+      },
+      "rationaleDe": "Beide Reviews deuten Feldlinien als Modelllinien. Die zweite Fassung prüft Richtung, Symmetrie und relative Stärke in einer unbekannten Anordnung zusammen und verlangt bei Polungs- oder Stromumkehr eine konsistente Änderung, ohne geometrisch unveränderte Stärkeaussagen zu verfälschen.",
+      "rationaleEn": "Both reviews interpret field lines as model lines. The second formulation jointly tests direction, symmetry, and relative strength in an unfamiliar arrangement and requires a consistent change after polarity or current reversal without corrupting geometrically unchanged strength statements."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-013",
+      "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7f8deee23acd850a451bbcd8cded977472f837c1978b443da963b8ab0919e007",
+      "pageFingerprint": "sha256:58a30f4fef4c196c041e3026fb7858261b1c92085856d8997c616d78261e6e31",
+      "goalReviewContextFingerprint": "sha256:365adbbb27bf35aaaf9974ef39b93388aa0abe4ffc4a48513b88ca71d866d3be",
+      "finalText": {
+        "titleDe": "Lorentzkraft auf freie Ladungen",
+        "titleEn": "Lorentz Force on Free Charges",
+        "descriptionDe": "Die lernende Person kann den Betrag der magnetischen Lorentzkraft auf frei bewegte Ladungen mit $F_L=|q|vB\\sin(\\alpha)$ berechnen, ihre Richtung aus $\\vec v\\times\\vec B$ unter Beachtung des Ladungsvorzeichens bestimmen und unter Vernachlässigung anderer Kräfte für die Grenzfälle eines parallelen oder senkrechten Eintritts in ein homogenes Magnetfeld die geradlinige beziehungsweise kreisförmige Bahn qualitativ deuten.",
+        "descriptionEn": "The learner can calculate the magnitude of the magnetic Lorentz force on freely moving charges using $F_L=|q|vB\\sin(\\alpha)$, determine its direction from $\\vec v\\times\\vec B$ while accounting for the sign of the charge, and, neglecting other forces, qualitatively interpret the straight or circular trajectory for the limiting cases of entry parallel or perpendicular to a uniform magnetic field, respectively."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-013", "recordDigest": "sha256:839e6cdaad152fea15b8d35ee7ab9bf45b49cd0cf8a0bed4adba94fe6ea96ab8" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-013", "recordDigest": "sha256:c831e385c2edc6f4a1dcd790c278e548e8536e0ccee8b1fdd3652925faaed8ce" }
+      },
+      "rationaleDe": "Beide Reviews decken Betrag, Richtung und Grenzfälle ab. Die erste Fassung ist fachlich stärker, weil sie zusätzlich den entscheidenden Zusammenhang sichtbar macht, dass die alleinige Magnetkraft die Bahnrichtung, nicht aber den Geschwindigkeitsbetrag ändert, und dazu Vorhersagen vor der Rechnung fordert.",
+      "rationaleEn": "Both reviews cover magnitude, direction, and limiting cases. The first formulation is stronger because it additionally makes the key relation observable that magnetic force acting alone changes trajectory direction but not speed magnitude, and it requires predictions before calculation."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-014",
+      "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:02bc1e408dec1ea353a1b399f896393beddf50d9071482a274b92d286be4e411",
+      "pageFingerprint": "sha256:dd8c25f6218c735a2ecdb656e7ddecef39e501ebf01490e26fd344d4e9431ef1",
+      "goalReviewContextFingerprint": "sha256:dbd50cf4de2c492c3336a3e5b29f22044c1a17a7700b9e01e3ed89a5458a5b34",
+      "finalText": {
+        "titleDe": "Fadenstrahlrohr als Elektronen-Messverfahren einordnen",
+        "titleEn": "Classify the Fine-Beam Tube as an Electron Measurement Method",
+        "descriptionDe": "Die lernende Person kann das Fadenstrahlrohr als indirektes Messverfahren einordnen, die eingestellten und gemessenen Größen benennen und erläutern, wie daraus der Betrag der spezifischen Elektronenladung $|e|/m_e$ bestimmt wird und – bei unabhängig bekanntem $|e|$ – die Elektronenmasse folgt.",
+        "descriptionEn": "The learner can classify the fine-beam tube as an indirect measurement method, identify the set and measured quantities, and explain how they yield the magnitude of the electron's specific charge $|e|/m_e$ and—when $|e|$ is known independently—the electron mass."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-014", "recordDigest": "sha256:1912285842f5f4d4088e5592aac49fa8d392fc5376deb31edfa0297dd52d6379" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-014", "recordDigest": "sha256:ac5d9314dfabf84083e964ace90cc8c36605d2720aca310763256b62437f5823" }
+      },
+      "rationaleDe": "Beide Reviews kennzeichnen die Bestimmung als indirekt. Die zweite Fassung trennt eingestellte, gemessene und modellabhängig erschlossene Größen besonders klar und überträgt diese Messkette auf veränderte Spannung, Feldstärke oder Bahnkrümmung.",
+      "rationaleEn": "Both reviews identify the determination as indirect. The second formulation separates set, measured, and model-inferred quantities especially clearly and transfers this measurement chain to changed voltage, field strength, or trajectory curvature."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-015",
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e0f2ec55b3794bf95b122e8cf2b69ad44a4fae38c4804af173c3f41551ccd53d",
+      "pageFingerprint": "sha256:fae2e1c6db4a963d19ab2a77d245859242d373a062ea1b6ebc24f98779761c47",
+      "goalReviewContextFingerprint": "sha256:4f2fbf8e3f94af505b60e518c05e7441cfc611cc7f744b0b9b5ae2c28193db88",
+      "finalText": {
+        "titleDe": "Erzwungene Schwingungen und Resonanz",
+        "titleEn": "Forced Oscillations and Resonance",
+        "descriptionDe": "Die lernende Person kann erzwungene Schwingungen als Antwort auf eine periodische Anregung beschreiben, Resonanz über das Verhältnis von Anregungs- und Eigenfrequenz erklären und Resonanzkurven für unterschiedliche Dämpfungen qualitativ deuten.",
+        "descriptionEn": "The learner can describe forced oscillations as a response to periodic driving, explain resonance through the relationship between driving frequency and natural frequency, and qualitatively interpret resonance curves for different damping levels."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-015", "recordDigest": "sha256:3ccd2f73337e7924eb53881ca2abaa235d1aa43072b472b1fad38208393d70fe" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-015", "recordDigest": "sha256:a8a9204b183c155970b7ca13d3fff531b073380ee355db67aefb28a55539eafd" }
+      },
+      "rationaleDe": "Beide Reviews verbinden Resonanzlage und Dämpfung mit der Antwortamplitude. Die zweite Fassung macht in unbekannten Kurven Eigenfrequenz, Anregungsfrequenz, Resonanzbereich und Dämpfungsstärke gemeinsam prüfbar und unterscheidet im Transfer Lage- von Formänderungen.",
+      "rationaleEn": "Both reviews connect resonance location and damping to response amplitude. The second formulation jointly assesses natural frequency, driving frequency, resonance region, and damping level in unfamiliar curves and distinguishes location changes from shape changes in transfer."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-016",
+      "goalId": "5476480f-7ff2-529f-aade-968198c782a9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f5e40564136f70efc358063afa935184d3391b5ffd6c89e993684125f593b088",
+      "pageFingerprint": "sha256:4779f26c5ff5e3df08f6be9f8158fc92227e84f8b66e195be7711be7687da188",
+      "goalReviewContextFingerprint": "sha256:0b8740c42678686c0bf267d54c8204da17ad3727fd466c044ef61f73732f3d0a",
+      "finalText": {
+        "titleDe": "Fotoeffekt-Daten auswerten",
+        "titleEn": "Analyze Photoelectric-Effect Data",
+        "descriptionDe": "Die lernende Person kann Fotoeffekt-Daten mithilfe der Einstein-Gleichung geeignet linearisieren, das Plancksche Wirkungsquantum aus der Steigung unter Berücksichtigung der gewählten Achsengrößen bestimmen und den materialabhängigen Achsenabschnitt deuten.",
+        "descriptionEn": "The learner can suitably linearize photoelectric-effect data using Einstein's equation, determine Planck's constant from the slope while accounting for the chosen axis quantities, and interpret the material-dependent intercept."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-016", "recordDigest": "sha256:a9d2a06083489086f70cba2a0b0a7cd5118473d6ed21bdf6d2ef07079015ea38" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-016", "recordDigest": "sha256:72c0e2707a47af032d2532ea7f78cc08a8c4c3450f3670f29ddb041c06ccf5f3" }
+      },
+      "rationaleDe": "Beide Reviews binden Steigung und Achsenabschnitt an die Achsenwahl. Die zweite Fassung ist stärker, weil sie Einheiten ausdrücklich einbezieht und bei anderem Material sowie vertauschten oder skalierten Achsen eine erneute Herleitung statt schematischer Wertübernahme fordert.",
+      "rationaleEn": "Both reviews bind slope and intercept to the axis choice. The second formulation is stronger because it explicitly includes units and requires re-derivation for another material and swapped or rescaled axes instead of schematic reuse of a value."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-017",
+      "goalId": "c5413852-abae-566b-b435-f9939209ca63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ade180674a289f7c265039612ddce769e27ce261572121a1b3129fe36827fb3b",
+      "pageFingerprint": "sha256:22f6e60b40403241aa1669e709387814862898a935db7a505fe449eeb45a3be0",
+      "goalReviewContextFingerprint": "sha256:3f7bdf88c97e51f432f349cbff4bbe1726a47a02b847786778713240521f6ab5",
+      "finalText": {
+        "titleDe": "Einzelphotonen-Interferenz",
+        "titleEn": "Single Photon Interference",
+        "descriptionDe": "Die lernende Person kann deuten, wie sich aus vielen einzelnen, lokalisierten Photonennachweisen schrittweise ein relatives Häufigkeitsmuster aufbaut, das eine Interferenz-Wahrscheinlichkeitsverteilung sichtbar macht, ohne den Einzelereignissen klassische Bahnen zuzuschreiben.",
+        "descriptionEn": "The learner can interpret how many individual localized photon detections gradually build a relative-frequency pattern that reveals an interference probability distribution, without assigning classical paths to the individual events."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-017", "recordDigest": "sha256:9163953f1127f12ee583adfc38118fd565a1deca8347d61dc2d3e98caff3a089" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-017", "recordDigest": "sha256:32de2234f8301e9ab29d5ff082442f8cde546500be2ace9eee94ef4c7cab71f4" }
+      },
+      "rationaleDe": "Beide Reviews trennen lokale Einzelereignisse von der Ensembleverteilung. Die zweite Fassung ist stärker, weil sie Aussagen für Ensemble und Einzelphoton explizit abgrenzt und bei einem veränderten Muster weiterhin weder den nächsten Ort noch eine klassische Bahn ableiten lässt.",
+      "rationaleEn": "Both reviews separate localized single events from the ensemble distribution. The second formulation is stronger because it explicitly distinguishes claims about the ensemble and one photon and, after a changed pattern, still prevents inference of either the next location or a classical path."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-018",
+      "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bed753c9d59bf983aca8c6b8b8e985a0405f5f39a8f1c5138092354cd8c81993",
+      "pageFingerprint": "sha256:90dc1c1c1620970b8be4ad86a3e7354729caa95562c6d867087525cff9c94096",
+      "goalReviewContextFingerprint": "sha256:4aedd24297b1b0b5f57fa9243f2c65d9d01418df44d90961ebf7603f9e667e90",
+      "finalText": {
+        "titleDe": "Einstein-Synchronisation erläutern",
+        "titleEn": "Explain Einstein Synchronization",
+        "descriptionDe": "Die lernende Person kann erläutern, wie räumlich getrennte, ruhende Uhren in einem Inertialsystem mit Lichtsignalen in Hin- und Rückrichtung nach der Einstein-Konvention synchronisiert werden, und erklären, warum diese Festlegung die Gleichzeitigkeit in diesem Bezugssystem definiert.",
+        "descriptionEn": "The learner can explain how spatially separated clocks at rest in an inertial frame are synchronized by round-trip light signals using the Einstein convention and why this convention defines simultaneity in that reference frame."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-018", "recordDigest": "sha256:95e8d84f0715b855db8a6858cd969c0faccb8c31ad7b9df5bc74d1315f3c2cc5" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-018", "recordDigest": "sha256:c7ff8dfd8d5965e4ced8a5e5f14c0adc0cdf62c0617b22c2d144c5ca2e0be5a3" }
+      },
+      "rationaleDe": "Beide Reviews erklären die Mittelpunktkonvention bezugssystemgebunden. Die zweite Fassung macht das Verfahren an einem unbekannten Zeitdiagramm vollständig beobachtbar und hält auch bei neuen Zeitstempeln die Aussage ausdrücklich im selben Inertialsystem.",
+      "rationaleEn": "Both reviews explain the midpoint convention as frame-dependent. The second formulation makes the full procedure observable in an unfamiliar timing diagram and explicitly keeps the claim in the same inertial frame even with fresh timestamps."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-019",
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a3caf98a10f32d80b186f7af0ce8081890839cb7fdc966b8d54934e801b9514c",
+      "pageFingerprint": "sha256:c875db6f1efabf7f4e8618338169ad18c80ad97c94213ab1af749c3ff0f07217",
+      "goalReviewContextFingerprint": "sha256:da0840210583610234b70a62c546b3b453a31b9951a450440cbd8102ec7fc3d2",
+      "finalText": {
+        "titleDe": "Strahlungsrisiken mit physikalischen Größen beurteilen",
+        "titleEn": "Assess Radiation Risks Using Physical Quantities",
+        "descriptionDe": "Die lernende Person kann Strahlungsrisiken fachlich beurteilen, indem sie Aktivität als Quellenkenngröße von einer zur Fragestellung passenden Dosisgröße unterscheidet, die Energiedeposition pro Masseneinheit oder eine daraus abgeleitete strahlenschutzbezogene Gewichtung beschreibt, und dabei je nach Expositionssituation Strahlungsart, Expositionsdauer, Geometrie und Abstand, Abschirmung sowie Unsicherheit berücksichtigt.",
+        "descriptionEn": "The learner can assess radiation risks by distinguishing activity as a source quantity from a dose quantity appropriate to the question that describes deposited energy per unit mass or a radiation-protection weighting derived from it and, as appropriate to the exposure situation, accounting for radiation type, exposure duration, geometry and distance, shielding, and uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-019", "recordDigest": "sha256:46bd2ffdb47d6abbc3a0381a673917d1b9c9687fe5394dec2980376ffd03ccce" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-019", "recordDigest": "sha256:36687da4e7d180336e35de14ec2344a1f71b4ab645ec5e89d33b23306b2a6b6c" }
+      },
+      "rationaleDe": "Beide Reviews verhindern die Gleichsetzung von Aktivität und Risiko. Die zweite Fassung strukturiert unbekannte Expositionsfälle besonders vollständig und prüft im Transfer getrennt Änderungen von Abstand, Dauer, Abschirmung und Strahlungsart bei gleicher Aktivität beziehungsweise Dosis.",
+      "rationaleEn": "Both reviews prevent equating activity with risk. The second formulation structures unfamiliar exposure cases especially completely and separately tests changes in distance, duration, shielding, and radiation type at equal activity or dose."
+    },
+    {
+      "decisionId": "physics-final20-v6-synthesis-020",
+      "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bc6c107f55173b70d1dbe29432b063debe6238eae56ff92ee7ff1eb4c7f1f7db",
+      "pageFingerprint": "sha256:b93ac55dffa64e90a8dff703a539365e8ddfdeefc5531dcd07f82a08b42ed422",
+      "goalReviewContextFingerprint": "sha256:c4df34c7cc67d6f9f0ec22e47ce951055697088817b650fae307135912c95363",
+      "finalText": {
+        "titleDe": "Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen",
+        "titleEn": "Derive and Contextualize Velocity-Dependent “Relativistic Mass”",
+        "descriptionDe": "Die lernende Person kann für ein massives Teilchen mit fester Ruhemasse $m_0$ die historische geschwindigkeitsabhängige Konvention $m_{\\mathrm{rel}}=\\gamma m_0=E/c^2$ herleiten, sie von der invarianten Ruhemasse unterscheiden und erklären, dass in moderner Darstellung Energie und Impulsbetrag – nicht die invariante Masse – mit der Geschwindigkeit relativ zu einem Inertialsystem zunehmen.",
+        "descriptionEn": "For a massive particle of fixed rest mass $m_0$, the learner can derive the historical velocity-dependent convention $m_{\\mathrm{rel}}=\\gamma m_0=E/c^2$, distinguish it from invariant rest mass, and explain that in the modern formulation energy and momentum magnitude—not invariant mass—increase with the particle's speed relative to an inertial frame."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-a.record-020", "recordDigest": "sha256:0edf030dc94961510e729965265eaa2f136238fed3c500d9336ea3209d0b26c3" },
+        "second": { "recordId": "physics-calibration-v2-final-20-current-rereview-v6-20260826-first-pass-b.record-020", "recordDigest": "sha256:ac37bed742439f3387fe633cbee3ed024201e708a0431c8be89295f69c3573af" }
+      },
+      "rationaleDe": "Beide Reviews unterscheiden historische relativistische Masse und invariante Ruhemasse. Die zweite Fassung ist stärker, weil sie zusätzlich den Grenzfall und die getrennte Betrachtung von Energie, Impulsbetrag und historischer Konvention bei neuer Geschwindigkeit fordert und die moderne Terminologie explizit absichert.",
+      "rationaleEn": "Both reviews distinguish historical relativistic mass from invariant rest mass. The second formulation is stronger because it additionally requires the limiting case and separate treatment of energy, momentum magnitude, and the historical convention at a new speed while explicitly securing modern terminology."
+    }
+  ]
+}

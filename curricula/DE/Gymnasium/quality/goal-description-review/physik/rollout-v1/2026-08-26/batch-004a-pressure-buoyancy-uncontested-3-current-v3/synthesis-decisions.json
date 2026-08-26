@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T08:37:09.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826",
+    "batchManifestDigest": "sha256:ca74db6cdcd89a5d4bfd3b5774ba5c2054cab814111c2284b272b366da4c13c5",
+    "configDigest": "sha256:f37e914102ba37884680e3a7c32b5d7c202a57e89a612f0c5c67fe58711f9bc5",
+    "bundleFingerprint": "sha256:646837f63f4d9b8db71570d5b746de87cadaae44189d3bcbee41c840a8bf8c4e",
+    "bookDigest": "sha256:69db57e25dec8eab11dbe52478afe74538af8ebbc1211a47b27ee11376226464",
+    "reviewInputFingerprint": "sha256:3d3c49c23c5cfeb392890d3796edba3feff735fc5a1ad9aac7af8739e32a4bc4",
+    "dualSummaryDigest": "sha256:be90da29ce0c895e5a5a04b046fba5224a269c01a5e287284f38aff6ccb2863f",
+    "canonicalLandscapeDigest": "sha256:87c9cba5172b024af21e05767faa4cc263b0c0c342e499611b487205585628f2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-a",
+      "campaignDigest": "sha256:bff0e5b4c0c9dfa83882d18eac0abc4a5d45881094a0d526d737da176333e16d",
+      "roundId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:3d3c49c23c5cfeb392890d3796edba3feff735fc5a1ad9aac7af8739e32a4bc4",
+      "batchId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:24f13395634b4af0b17713c5e420a95990d81b1076d45791cd3ba97b8f629919",
+      "runId": "physik-rollout-v1-batch-004a-v3-round-a-gpt5-20260826",
+      "runManifestDigest": "sha256:d89134324397a5ad463658f745f6636656c6c777ff6fcf040ebbefb8e847c22f",
+      "resultsDigest": "sha256:823c8a1ee86142dfaa2d81391e6d1f5b2b61421ac478e6cfcd766108aaeb1ac1"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-b",
+      "campaignDigest": "sha256:86ddcdfe9e22341ff64633d78b30fd52e62d9bbc2d5f77a7d1e7bfc522a934cc",
+      "roundId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:3d3c49c23c5cfeb392890d3796edba3feff735fc5a1ad9aac7af8739e32a4bc4",
+      "batchId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:8e7d12630ce8aa9ff4d2a1dd6c41bf212d141309dacfcda02ff005bc6a87a13b",
+      "runId": "physik-b004a-v3-round-b-gpt5-20260826",
+      "runManifestDigest": "sha256:b92887b1bcfd6aa4c0a5cc97cefc185d86f5a2ed5ee5f0d75167868ea463263e",
+      "resultsDigest": "sha256:aefac75657bb7379791bf92523c800f45e52acc83292ebb1640c3fdc569736e5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-synthesis-decision-001",
+      "goalId": "5308de76-79f0-44f4-8cb7-fc9de4772217",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:232206b4506fd63fcc8cb3077e6fbeed675aae6db608f87d0f59c56b80184a3d",
+      "pageFingerprint": "sha256:4fd4d3b169aecb58e03c039d2dcea2ae039bf3f4f1e8686f60bd2d14bd2ec691",
+      "goalReviewContextFingerprint": "sha256:95a39269aef51ff9d66348ced6e95319e433c986f0cee78fb5fb07bc86c04d29",
+      "finalText": {
+        "titleDe": "Druck in Flüssigkeiten und Gasen qualitativ beschreiben",
+        "titleEn": "Qualitatively Describe Pressure in Liquids and Gases",
+        "descriptionDe": "Die lernende Person kann Druck als Kraft pro Fläche qualitativ beschreiben und Beispiele für Druck in Flüssigkeiten und Gasen fachlich zuordnen.",
+        "descriptionEn": "The learner can qualitatively describe pressure as force per area and appropriately classify examples of pressure in liquids and gases."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b004a-v3-round-a-r001-20260826",
+          "recordDigest": "sha256:8bf00873a78397a827e6be3e7faf8550b47872df7c93eade2c7fd568e6e6ee05"
+        },
+        "second": {
+          "recordId": "physik-b004a-v3-round-b-gpt5-20260826:5308de76-79f0-44f4-8cb7-fc9de4772217",
+          "recordDigest": "sha256:776a6e6cb01989574fcf416d1ed06692e7cec546ced38f8700321d098be17550"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KI-Reviews bestätigen den aktuellen bilingualen Wortlaut ohne fachliche, curriculare oder semantische Schwäche. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie Kraft und belastete Fläche als getrennt variierbare Größen prüft und die fachliche Zuordnung sowohl zu Flüssigkeits- als auch zu Gaskontexten ausdrücklich verlangt. Damit bildet sie den gebundenen qualitativen Zielumfang vollständig ab, ohne hydrostatische oder mikroskopische Mechanismen aus Nachbarzielen hinzuzunehmen. Die zweite Fassung ist ebenfalls fachlich richtig, setzt ihren direkten Vergleich jedoch enger auf gleiche Kraft bei verschiedener Fläche. Die erste Fassung bietet deshalb innerhalb desselben engen Scopes die ausgewogenere Evidenz für Begriffsverständnis und Transfer.",
+      "rationaleEn": "Both independent AI reviews confirm the current bilingual wording without identifying a scientific, curricular, or semantic weakness. The first round's evidence formulation is selected because it assesses force and loaded area as separately variable quantities and explicitly requires appropriate classification in both liquid and gas contexts. It therefore covers the bound qualitative scope completely without adding hydrostatic or microscopic mechanisms from neighbouring goals. The second formulation is also scientifically sound, but its direct comparison focuses more narrowly on equal force with different areas. Within the same limited scope, the first formulation consequently provides the more balanced evidence of conceptual understanding and transfer."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-synthesis-decision-002",
+      "goalId": "310b4f62-e261-46be-bb1b-1f125fc1699a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e99d1162e2d3fd23f93febda2d3c86a83e2b4e5dfdfb5acc7a7b8a3fd0c382c0",
+      "pageFingerprint": "sha256:de38b723eb8de52d28166ec2b4a0eb218d18f76d700963602b64f6c89f3c305b",
+      "goalReviewContextFingerprint": "sha256:ad6a209cfb8f33a2a9b102b1c715440fe63cd585df19d68047353ef52c8ed4ef",
+      "finalText": {
+        "titleDe": "Druck-Temperatur-Zusammenhang bei konstantem Volumen qualitativ erklären",
+        "titleEn": "Qualitatively Explain the Pressure–Temperature Relationship at Constant Volume",
+        "descriptionDe": "Die lernende Person kann für eine eingeschlossene Gasmenge bei konstantem Volumen mithilfe des Teilchenmodells qualitativ erklären, warum der Druck bei steigender Temperatur zunimmt und bei sinkender Temperatur abnimmt.",
+        "descriptionEn": "The learner can use the particle model to qualitatively explain why, for a fixed amount of gas at constant volume, pressure increases as temperature rises and decreases as temperature falls."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b004a-v3-round-a-r002-20260826",
+          "recordDigest": "sha256:4c0bd225d9688a70db36f52402f81de6d9a6ec02884bc362c4b65614c341a529"
+        },
+        "second": {
+          "recordId": "physik-b004a-v3-round-b-gpt5-20260826:310b4f62-e261-46be-bb1b-1f125fc1699a",
+          "recordDigest": "sha256:60dade4516ec3da5b09f0049cdb2f14c4a76c17f4eef4a3edb2f1486ae39da51"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KI-Reviews bestätigen, dass der aktuelle Wortlaut die feste Gasmenge, das konstante Volumen, das Teilchenmodell sowie Erwärmen und Abkühlen vollständig und DE/EN-gleichwertig erfasst. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie die Erklärungskette von Temperatur über mittlere Teilchenbewegung und Wandstöße bis zum Druck explizit macht und den Transfer durch eine neue Darstellung variiert, während Gasmenge und Volumen im beanspruchten Scope konstant bleiben. Die zweite Fassung ist fachlich ebenfalls tragfähig, nimmt im Transfer aber zusätzlich eine bewegliche Begrenzung und damit einen Fall außerhalb der konstanten-Volumen-Bedingung auf. Diese Grenzfallprüfung ist sinnvoll, für den gebundenen Zielumfang jedoch nicht notwendig; die erste Fassung bleibt enger am kanonischen Atom.",
+      "rationaleEn": "Both independent AI reviews confirm that the current wording fully and equivalently captures the fixed amount of gas, constant volume, particle model, heating, and cooling in German and English. The first round's evidence formulation is selected because it makes the explanatory chain from temperature through average particle motion and wall collisions to pressure explicit and varies the transfer through a new representation while keeping gas amount and volume within the claimed scope. The second formulation is also scientifically robust, but its transfer additionally introduces a movable boundary and therefore a case outside the constant-volume condition. That boundary check is useful but not required by the bound goal scope; the first formulation remains closer to the canonical atom."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-004a-pressure-buoyancy-uncontested-3-current-v3-20260826-synthesis-decision-003",
+      "goalId": "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8994cb6c7a4d612157464e3e90626baf233068ea93df22dd3d78d4121e030adb",
+      "pageFingerprint": "sha256:29087c6cf4eaead80d1a2b57e47801e6e98bda7198fe59015a9e1cb224a6271b",
+      "goalReviewContextFingerprint": "sha256:792397c4e063008195a667e318bf6828d02e3d4a0e8e4826dac3781d1fedf89e",
+      "finalText": {
+        "titleDe": "Auftrieb mit dem archimedischen Prinzip erklären",
+        "titleEn": "Explain Buoyancy Using Archimedes' Principle",
+        "descriptionDe": "Die lernende Person kann Auftrieb in Wasser und Luft mithilfe des archimedischen Prinzips qualitativ erklären.",
+        "descriptionEn": "The learner can qualitatively explain buoyancy in water and air using Archimedes' principle."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b004a-v3-round-a-r003-20260826",
+          "recordDigest": "sha256:ae739aa285f160dde948e240583faf5527a12b83e4571c5867b5148bd858903b"
+        },
+        "second": {
+          "recordId": "physik-b004a-v3-round-b-gpt5-20260826:e11b2ee9-e528-4857-9ecd-59bd460fba81",
+          "recordDigest": "sha256:8ac0c3f0f209c6a44fd6aeddc15171d7675ab29f9c92d56bf92855542b4c70d7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KI-Reviews bestätigen den aktuellen Wortlaut als fachlich korrektes, prüfbares und bilinguales Einzelziel: Das archimedische Prinzip ist ein gemeinsamer Erklärungsrahmen für Auftrieb in Wasser und Luft. Die Evidence-Fassung der zweiten Runde wird gewählt, weil sie die Auftriebskraft ausdrücklich von der Gewichtskraft des Körpers unterscheidet, das Gewicht des verdrängten Mediums als zentrale Beziehung prüft und im Transfer bei gleichem verdrängtem Volumen die unterschiedliche Mediendichte zwischen Wasser und Luft sichtbar macht. Damit adressiert sie eine typische Fehlvorstellung und beide im Ziel genannten Medien, ohne einen zusätzlichen curricularen Inhalt einzuführen. Die erste Fassung ist ebenfalls fachlich richtig, legt den Transfer aber stärker auf Änderungen des verdrängten Volumens; die zweite liefert die trennschärfere Verständnisprüfung.",
+      "rationaleEn": "Both independent AI reviews confirm the current wording as a scientifically correct, assessable, bilingual single goal: Archimedes' principle provides one shared explanatory framework for buoyancy in water and air. The second round's evidence formulation is selected because it explicitly distinguishes buoyant force from the object's weight, assesses the weight of the displaced medium as the central relationship, and uses equal displaced volume in transfer to expose the difference in medium density between water and air. It therefore addresses a common misconception and both media named in the goal without introducing additional curricular content. The first formulation is also scientifically correct but places more transfer emphasis on changes in displaced volume; the second provides the more discriminating test of understanding."
+    }
+  ],
+  "manifestFingerprint": "sha256:3412ed8e0fcb6f63860fe2db6fe02a5611d11edd024af587d7ed515816caff7d"
+}

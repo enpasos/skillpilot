@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-005-colors-4-current-v3-20260826-first-pass-b.batch-001.codex-gpt-5.6-terra-physics-colors-final-round-b",
+  "campaignId": "physik-rollout-v1-batch-005-colors-4-current-v3-20260826-b",
+  "roundId": "physik-rollout-v1-batch-005-colors-4-current-v3-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-005-colors-4-current-v3-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:eab7100ed51eb3e3b3d398dd6872c5b743e358300fdc1ae42fdb5ef98f6e63e8",
+  "bundleFingerprint": "sha256:1931795bbff1a62128d3ba97ecf4b7687eff02b36aceb6f25d3fc9153338b37d",
+  "bookDigest": "sha256:c929f446b8e2586a5851f7f55f032086947d00ccdd6c1a5d236289cec048fd24",
+  "provider": "openai",
+  "model": "codex-gpt-5.6-terra-physics-colors-final-round-b",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:97ebbbd2ff8da31eec9ff47afe8b31316bc1df526310f4926203ba18b251d070",
+  "independenceGroupId": "physik-rollout-v1-batch-005-colors-4-current-v3-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a4681378-ade4-4f20-bf77-fb020469510f",
+    "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+    "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+    "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:eab7100ed51eb3e3b3d398dd6872c5b743e358300fdc1ae42fdb5ef98f6e63e8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T11:40:00+02:00",
+  "completedAt": "2026-08-26T11:59:53+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:e44ec5804b910c3b6b5fd6e81d64e531726cc23eb7540262514ad3e49e11b425",
+  "toolchainVersion": "codex-gpt-5.6-terra"
+}

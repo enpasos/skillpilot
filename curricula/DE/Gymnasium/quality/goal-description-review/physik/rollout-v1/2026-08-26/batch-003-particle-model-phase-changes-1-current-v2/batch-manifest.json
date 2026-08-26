@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-003-particle-model-phase-changes-1-current-v2.config.json",
+  "configDigest": "sha256:f18be37f47fdccef40618fc2923a1701a66343b2fa09cdf113b0a98d42f52702",
+  "goalIds": [
+    "873c6371-4ffb-582b-8d8d-3f45f968ba08"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 438,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:89b938ea2202b2d7c129ae571ca6493a3654f8ed559b3ac383c8acc5889729d6"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:0b9ac321a466c888cd9ac624f824f11ded6e0632c8a9eec823941c0ca0094621",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:da8b2a24a886ff79ac5c54022c47790d5e328bfcdf30a7cfe71faac093eae3ba",
+    "reviewInputFingerprint": "sha256:137747d3753ccabb27f785594c23c70e5b4b629c5c6cfd3025719480b263472c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-a",
+        "campaignDigest": "sha256:644dba7926f01cd67218ba75be2e5c18213f2ab50ecd9d614f7629c41d5b9107",
+        "roundId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-independent-a",
+        "batchId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:c3db295fd746df33023184d042fd3646f758a7e6d7a884082ed7f0b90ef28b92"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-b",
+        "campaignDigest": "sha256:fdc931312faa70b9381337e6bda04ee43c55a68c18121b882f9d11d85616e796",
+        "roundId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-independent-b",
+        "batchId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:2b50be40630f4a5ff33eb6e4f0d5cc9fcd7c96fc784458a135b9e5ee261a467e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

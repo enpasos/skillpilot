@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-508292f2-671b-4fd3-acbf-53d705e44693",
+  "goal": {
+    "goalId": "508292f2-671b-4fd3-acbf-53d705e44693",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e057214fb0b39334999c222a12b0a8dbafdec84e2cf4231c5ff2a87eb31d7361",
+    "pageFingerprint": "sha256:4593e68d586a6221bc0c4981b94da45872e7dbb6ccf0a8e65bb82d7658b041fd",
+    "goalReviewContextFingerprint": "sha256:3e2a3ac8a23041e5570d0cc1ac5ccefaa0188545d52a078c09fd98011a0745b1",
+    "finalText": {
+      "titleDe": "Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen",
+      "titleEn": "Determine conditional probabilities using tree diagrams and contingency tables",
+      "descriptionDe": "Die lernende Person kann aus einer Bedingung den passenden Bezugsraum bestimmen und eine bedingte Wahrscheinlichkeit mit Baumdiagramm oder Vier- beziehungsweise Mehrfeldertafel berechnen und deuten.",
+      "descriptionEn": "The learner can determine the appropriate reference set from a condition and calculate and interpret a conditional probability using a tree diagram or contingency table."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:3e2a3ac8a23041e5570d0cc1ac5ccefaa0188545d52a078c09fd98011a0745b1",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-16",
+      "recordDigest": "sha256:172d4b3992df996934ed80e2051bd77a5513ef58502c3cfd0a3bdddec8ddcfad"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:3e2a3ac8a23041e5570d0cc1ac5ccefaa0188545d52a078c09fd98011a0745b1",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-016",
+      "recordDigest": "sha256:5d6b52ab66730e257b8a1603d622e07dde244f50b37e820cd2ace51ec76049b6"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-508292f2-671b-4fd3-acbf-53d705e44693",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Determine conditional probabilities using tree diagrams and contingency tables” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Bedingung schränkt den Bezugsraum auf die Fälle ein, in denen das bedingende Ereignis gilt; Baumdiagramm und Vier- beziehungsweise Mehrfeldertafel stellen dieselben gemeinsamen Anteile unterschiedlich dar, aus denen innerhalb dieses Bezugsraums neu normiert wird.",
+      "essentialUnderstandingEn": "A condition restricts the reference set to cases in which the conditioning event holds; a tree diagram and a contingency table represent the same joint proportions differently, and the probability is renormalized within that restricted set.",
+      "observablePerformanceDe": "Die lernende Person kennzeichnet in einer unbekannten Aufgabe das bedingende Ereignis und den eingeschränkten Bezugsraum, entnimmt oder konstruiert die passenden Äste beziehungsweise Felder, berechnet die bedingte Wahrscheinlichkeit und deutet ihre Richtung im Kontext.",
+      "observablePerformanceEn": "In an unfamiliar task, the learner identifies the conditioning event and restricted reference set, extracts or constructs the relevant branches or cells, calculates the conditional probability, and interprets its direction in context.",
+      "transferExpectationDe": "Wird die Bedingungsrichtung vertauscht oder dieselbe Information in der jeweils anderen Darstellung gegeben, bestimmt die lernende Person den neuen Bezugsraum und berechnet und deutet die veränderte bedingte Wahrscheinlichkeit.",
+      "transferExpectationEn": "When the direction of conditioning is reversed or the same information is given in the other representation, the learner determines the new reference set and calculates and interprets the changed conditional probability."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-508292f2-671b-4fd3-acbf-53d705e44693",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c40d9ac5e993e5d112530127e65dfe34e2e5c958607d342cc22148fe1a84a388"
+}

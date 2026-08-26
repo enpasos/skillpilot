@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b.codex-gpt-5.6-terra-physics-colors-current-round-b.run-001",
+  "campaignId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b",
+  "roundId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:95cdccb9daad0cdb4b9aedd0034a32d6d290f16bd6ec3e5a511d41b99296281c",
+  "bundleFingerprint": "sha256:a1708e7217ac5729b60b29249bd61838741b76a9299cfa56b66d16471e34d02b",
+  "bookDigest": "sha256:b68a048a4ff164798b63e989e7b8825345f73ff8ea829c275b244cf9cf578f56",
+  "provider": "OpenAI",
+  "model": "codex-gpt-5.6-terra-physics-colors-current-round-b",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "independenceGroupId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a4681378-ade4-4f20-bf77-fb020469510f",
+    "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+    "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+    "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:95cdccb9daad0cdb4b9aedd0034a32d6d290f16bd6ec3e5a511d41b99296281c"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:f515e55fa01381c0562d345b845b91e8f4066906d14fd85a0b5b1c4a60eb53f0"
+    }
+  ],
+  "startedAt": "2026-08-26T11:45:09+02:00",
+  "completedAt": "2026-08-26T11:48:02+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:4f9aa9744dc619d39e76cc39ac6435e66cedea333b3caa397b92ebd80eece6a7",
+  "toolchainVersion": "codex"
+}

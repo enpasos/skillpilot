@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "selectionId": "de-de-gym-math-positive-understanding-evidence-calibration-v2",
+  "selectionVersion": 2,
+  "subject": "Mathematik",
+  "locale": "de-DE",
+  "purpose": "Current atomic calibration set for authoring and independently reviewing positive-understanding-evidence-v2 profiles while retaining the fachliche breadth and order of the historical 16-goal mathematics calibration.",
+  "authority": "selection_rationale_only",
+  "canonicalMutationAuthorized": false,
+  "sourceArtifacts": {
+    "legacyV1ViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/review-views/mathematik-description-understanding-evidence-kalibrierung.view.json",
+    "historicalBookId": "de-de-gym-math-description-understanding-evidence-calibration-v1",
+    "historicalSampleAuthority": "The historicalOriginGoalId values in this rationale retain the exact 16-goal sample. The untouched legacy V1 view is context only and is not reused as the current atomic scope.",
+    "structuralSplitReceiptPath": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-splits-2026-08-16.receipt.json",
+    "markovSplitReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-markov-split-2026-08-16.md",
+    "markovSplitCanonicalCommit": "971fc19f963010a638771a8b06a39fa4123d6928",
+    "currentLandscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "compositionViewPath": "curricula/DE/Gymnasium/quality/goal-evidence/review-views/mathematik-positive-understanding-evidence-kalibrierung-v2.view.json",
+    "goalBookConfigPath": "app/scripts/config/goal-books/de-de-gym-math-positive-understanding-evidence-calibration-v2.json",
+    "reviewCriteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md"
+  },
+  "selectionInvariants": {
+    "historicalGoalCount": 16,
+    "retainedUnsplitGoalCount": 13,
+    "replacedHistoricalGoalCount": 3,
+    "replacementChildCount": 7,
+    "currentGoalCount": 20,
+    "uniqueCurrentGoalCount": 20,
+    "requiredSemanticKind": "curricularAtomic",
+    "replacementRule": "Replace each historical goal that is now a curricularArea with every direct current child in the canonical contains order; retain every unsplit historical goal and its relative order.",
+    "scopeRule": "This version changes the sample only to preserve the complete current atomic meaning of the three historical split goals; it does not add a new convenience sample goal."
+  },
+  "historicalGoalReplacementMap": [
+    {
+      "splitCode": "S25",
+      "historicalGoalId": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+      "historicalTitle": "Tangenten an Kreise konstruieren",
+      "currentSemanticKind": "curricularArea",
+      "replacementGoalIds": [
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "743e5470-ff39-551e-9aba-529656418c66"
+      ],
+      "replacementTitles": [
+        "Eine Kreistangente im Berührpunkt konstruieren",
+        "Kreistangenten von einem äußeren Punkt konstruieren"
+      ]
+    },
+    {
+      "historicalGoalId": "25157542-a262-562f-a29c-ac8d53b9798f",
+      "historicalTitle": "Zustände in Markov-Ketten berechnen",
+      "currentSemanticKind": "curricularArea",
+      "splitReference": "Separate Markov split introduced in canonical commit 971fc19f963010a638771a8b06a39fa4123d6928; the current canonical contains order is authoritative for this selection.",
+      "replacementGoalIds": [
+        "10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "3d4d510c-0fd7-55ea-9b79-1db8d640758f"
+      ],
+      "replacementTitles": [
+        "Zustände in Markov-Ketten vorwärts berechnen und deuten",
+        "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen"
+      ]
+    },
+    {
+      "splitCode": "S14",
+      "historicalGoalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
+      "historicalTitle": "Implikation und Äquivalenz unterscheiden",
+      "currentSemanticKind": "curricularArea",
+      "replacementGoalIds": [
+        "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+        "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+        "e2bf726a-126c-5c66-9fbb-6e04c129bb0f"
+      ],
+      "replacementTitles": [
+        "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden",
+        "Umkehrung und Kontraposition bilden",
+        "Äquivalenz durch Begründung oder Gegenbeispiel prüfen"
+      ]
+    }
+  ],
+  "coverage": {
+    "stageCounts": {
+      "SekI": 8,
+      "SekII": 12
+    },
+    "phaseCounts": {
+      "J5": 1,
+      "J6": 1,
+      "J7": 1,
+      "J8": 3,
+      "J9": 1,
+      "J10": 1,
+      "E": 3,
+      "Q1": 1,
+      "Q2": 3,
+      "Q3": 1,
+      "Q4": 4
+    },
+    "demandLevelCounts": {
+      "AB1": 5,
+      "AB2": 11,
+      "AB3": 4
+    },
+    "courseProfileCounts": {
+      "SekICanonical": 8,
+      "SekIIGKAndLK": 11,
+      "SekIILKOnly": 1
+    },
+    "primaryArchetypeCounts": {
+      "concept": 6,
+      "procedure": 6,
+      "representation": 3,
+      "modeling": 1,
+      "proof": 3,
+      "experiment": 0,
+      "data": 1
+    },
+    "guidingIdeaCounts": {
+      "L1": 13,
+      "L2": 8,
+      "L3": 1,
+      "L4": 7,
+      "L5": 4
+    },
+    "processCompetencyCounts": {
+      "K1.1": 4,
+      "K1.2": 3,
+      "K1.3": 5,
+      "K2.1": 4,
+      "K2.2": 6,
+      "K2.3": 2,
+      "K2.4": 1,
+      "K3.1": 2,
+      "K3.2": 3,
+      "K3.3": 4,
+      "K4.1": 7,
+      "K4.2": 2,
+      "K6.1": 1
+    },
+    "visualizationCounts": {
+      "withCurrentGoalVisualization": 14,
+      "withoutCurrentGoalVisualization": 6
+    },
+    "prerequisiteCoverage": {
+      "goalsWithAtLeastOneExternalDirectPrerequisite": 18,
+      "withinSelectionDirectEdges": 4,
+      "withinSelectionDirectEdgeGoalIds": [
+        "743e5470-ff39-551e-9aba-529656418c66->570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "3d4d510c-0fd7-55ea-9b79-1db8d640758f->10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "740ab443-776a-5c7a-8f1d-2b0b59a5ed32->28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+        "e2bf726a-126c-5c66-9fbb-6e04c129bb0f->28d098ab-f33f-5baf-8261-f1c0c0f711fa"
+      ]
+    },
+    "limitations": [
+      "The primary archetype labels are calibration strata, not pre-approved profile decisions; each blind reviewer must confirm the archetype from the bound goal.",
+      "The experiment archetype is not forced onto this retained mathematics sample because none of the selected current goals claims an experimental competence.",
+      "The selection preserves the historical fachliche breadth and is not statistical evidence for all mathematics goals."
+    ]
+  },
+  "orderedGoals": [
+    {
+      "order": 1,
+      "goalId": "cf474eab-1379-4877-907e-58b0892ce734",
+      "historicalOriginGoalId": "cf474eab-1379-4877-907e-58b0892ce734",
+      "phase": "J5",
+      "demandLevel": "AB1",
+      "primaryArchetype": "representation",
+      "title": "Natürliche Zahlen darstellen und am Zahlenstrahl verorten"
+    },
+    {
+      "order": 2,
+      "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "historicalOriginGoalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "phase": "J6",
+      "demandLevel": "AB1",
+      "primaryArchetype": "concept",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten"
+    },
+    {
+      "order": 3,
+      "goalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+      "historicalOriginGoalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+      "phase": "J7",
+      "demandLevel": "AB2",
+      "primaryArchetype": "data",
+      "title": "Median bestimmen und mit dem arithmetischen Mittel vergleichen"
+    },
+    {
+      "order": 4,
+      "goalId": "8dd9f210-2683-5902-acab-e3be22725232",
+      "historicalOriginGoalId": "8dd9f210-2683-5902-acab-e3be22725232",
+      "phase": "E",
+      "demandLevel": "AB1",
+      "primaryArchetype": "representation",
+      "title": "Darstellungsform auswählen und begründen"
+    },
+    {
+      "order": 5,
+      "goalId": "e09072f9-67d9-412c-b872-24ecbf329232",
+      "historicalOriginGoalId": "e09072f9-67d9-412c-b872-24ecbf329232",
+      "phase": "J8",
+      "demandLevel": "AB1",
+      "primaryArchetype": "procedure",
+      "title": "Funktionswerte linearer Funktionen berechnen und deuten"
+    },
+    {
+      "order": 6,
+      "goalId": "570d5931-f126-5bb4-8b7f-db236d6b727f",
+      "historicalOriginGoalId": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+      "phase": "J8",
+      "demandLevel": "AB2",
+      "primaryArchetype": "procedure",
+      "title": "Eine Kreistangente im Berührpunkt konstruieren"
+    },
+    {
+      "order": 7,
+      "goalId": "743e5470-ff39-551e-9aba-529656418c66",
+      "historicalOriginGoalId": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+      "phase": "J8",
+      "demandLevel": "AB2",
+      "primaryArchetype": "procedure",
+      "title": "Kreistangenten von einem äußeren Punkt konstruieren"
+    },
+    {
+      "order": 8,
+      "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "historicalOriginGoalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "phase": "J9",
+      "demandLevel": "AB2",
+      "primaryArchetype": "proof",
+      "title": "Sinussatz herleiten"
+    },
+    {
+      "order": 9,
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "historicalOriginGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "phase": "J10",
+      "demandLevel": "AB3",
+      "primaryArchetype": "modeling",
+      "title": "Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten"
+    },
+    {
+      "order": 10,
+      "goalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+      "historicalOriginGoalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+      "phase": "E",
+      "demandLevel": "AB2",
+      "primaryArchetype": "concept",
+      "title": "Momentane Änderungsrate qualitativ verstehen"
+    },
+    {
+      "order": 11,
+      "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+      "historicalOriginGoalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+      "phase": "E",
+      "demandLevel": "AB3",
+      "primaryArchetype": "concept",
+      "title": "Konvergenz und Grenzen numerischer Verfahren reflektieren"
+    },
+    {
+      "order": 12,
+      "goalId": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+      "historicalOriginGoalId": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+      "phase": "Q1",
+      "demandLevel": "AB1",
+      "primaryArchetype": "concept",
+      "title": "Integral als Bestand und Flächeninhalt verstehen"
+    },
+    {
+      "order": 13,
+      "goalId": "6481fc23-d923-5ffc-ba49-f499328f43b8",
+      "historicalOriginGoalId": "6481fc23-d923-5ffc-ba49-f499328f43b8",
+      "phase": "Q2",
+      "demandLevel": "AB3",
+      "primaryArchetype": "procedure",
+      "title": "Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen"
+    },
+    {
+      "order": 14,
+      "goalId": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+      "historicalOriginGoalId": "25157542-a262-562f-a29c-ac8d53b9798f",
+      "phase": "Q2",
+      "demandLevel": "AB2",
+      "primaryArchetype": "procedure",
+      "title": "Zustände in Markov-Ketten vorwärts berechnen und deuten"
+    },
+    {
+      "order": 15,
+      "goalId": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+      "historicalOriginGoalId": "25157542-a262-562f-a29c-ac8d53b9798f",
+      "phase": "Q2",
+      "demandLevel": "AB2",
+      "primaryArchetype": "concept",
+      "title": "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen"
+    },
+    {
+      "order": 16,
+      "goalId": "508292f2-671b-4fd3-acbf-53d705e44693",
+      "historicalOriginGoalId": "508292f2-671b-4fd3-acbf-53d705e44693",
+      "phase": "Q3",
+      "demandLevel": "AB2",
+      "primaryArchetype": "representation",
+      "title": "Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen"
+    },
+    {
+      "order": 17,
+      "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+      "historicalOriginGoalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
+      "phase": "Q4",
+      "demandLevel": "AB2",
+      "primaryArchetype": "concept",
+      "title": "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden"
+    },
+    {
+      "order": 18,
+      "goalId": "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+      "historicalOriginGoalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
+      "phase": "Q4",
+      "demandLevel": "AB2",
+      "primaryArchetype": "proof",
+      "title": "Umkehrung und Kontraposition bilden"
+    },
+    {
+      "order": 19,
+      "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+      "historicalOriginGoalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
+      "phase": "Q4",
+      "demandLevel": "AB2",
+      "primaryArchetype": "proof",
+      "title": "Äquivalenz durch Begründung oder Gegenbeispiel prüfen"
+    },
+    {
+      "order": 20,
+      "goalId": "f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+      "historicalOriginGoalId": "f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+      "phase": "Q4",
+      "demandLevel": "AB3",
+      "primaryArchetype": "procedure",
+      "title": "Strategien nach Kriterien vergleichen (LK)"
+    }
+  ]
+}

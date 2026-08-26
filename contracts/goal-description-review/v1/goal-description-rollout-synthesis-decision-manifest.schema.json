@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "title": "SkillPilot standalone rollout synthesis-decision manifest v1",
+  "description": "An explicit, fingerprint-bound AI synthesis decision for every goal in one standalone rollout batch. It selects current canonical text and one of two independently validated current keep records without granting human authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "synthesisContract",
+    "manifestId",
+    "manifestFingerprint",
+    "authority",
+    "synthesizedBy",
+    "synthesizedAt",
+    "batch",
+    "rounds",
+    "decisions"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "synthesisContract": { "const": "goal-description-rollout-synthesis-decision-v1" },
+    "manifestId": { "$ref": "#/$defs/stableId" },
+    "manifestFingerprint": { "$ref": "#/$defs/digest" },
+    "authority": { "const": "ai_synthesis" },
+    "synthesizedBy": { "$ref": "#/$defs/nonBlank" },
+    "synthesizedAt": { "type": "string", "format": "date-time" },
+    "batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "batchId",
+        "batchManifestDigest",
+        "configDigest",
+        "bundleFingerprint",
+        "bookDigest",
+        "reviewInputFingerprint",
+        "dualSummaryDigest",
+        "canonicalLandscapeDigest"
+      ],
+      "properties": {
+        "batchId": { "$ref": "#/$defs/stableId" },
+        "batchManifestDigest": { "$ref": "#/$defs/digest" },
+        "configDigest": { "$ref": "#/$defs/digest" },
+        "bundleFingerprint": { "$ref": "#/$defs/digest" },
+        "bookDigest": { "$ref": "#/$defs/digest" },
+        "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+        "dualSummaryDigest": { "$ref": "#/$defs/digest" },
+        "canonicalLandscapeDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "rounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first", "second"],
+      "properties": {
+        "first": { "$ref": "#/$defs/round" },
+        "second": { "$ref": "#/$defs/round" }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/decision" }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "finalText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titleDe", "titleEn", "descriptionDe", "descriptionEn"],
+      "properties": {
+        "titleDe": { "$ref": "#/$defs/nonBlank" },
+        "titleEn": { "$ref": "#/$defs/nonBlank" },
+        "descriptionDe": { "$ref": "#/$defs/longText" },
+        "descriptionEn": { "$ref": "#/$defs/longText" }
+      }
+    },
+    "round": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "campaignDigest",
+        "roundId",
+        "independenceGroupId",
+        "reviewInputFingerprint",
+        "batchId",
+        "batchInputFingerprint",
+        "runId",
+        "runManifestDigest",
+        "resultsDigest"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/$defs/stableId" },
+        "campaignDigest": { "$ref": "#/$defs/digest" },
+        "roundId": { "$ref": "#/$defs/stableId" },
+        "independenceGroupId": { "$ref": "#/$defs/stableId" },
+        "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+        "batchId": { "$ref": "#/$defs/stableId" },
+        "batchInputFingerprint": { "$ref": "#/$defs/digest" },
+        "runId": { "$ref": "#/$defs/stableId" },
+        "runManifestDigest": { "$ref": "#/$defs/digest" },
+        "resultsDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordId", "recordDigest"],
+      "properties": {
+        "recordId": { "$ref": "#/$defs/stableId" },
+        "recordDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decisionId",
+        "goalId",
+        "effectiveSemanticKind",
+        "goalFingerprint",
+        "pageFingerprint",
+        "goalReviewContextFingerprint",
+        "finalText",
+        "resolutionDecision",
+        "evidenceRound",
+        "records",
+        "rationaleDe",
+        "rationaleEn"
+      ],
+      "properties": {
+        "decisionId": { "$ref": "#/$defs/stableId" },
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "effectiveSemanticKind": { "const": "curricularAtomic" },
+        "goalFingerprint": { "$ref": "#/$defs/digest" },
+        "pageFingerprint": { "$ref": "#/$defs/digest" },
+        "goalReviewContextFingerprint": { "$ref": "#/$defs/digest" },
+        "finalText": { "$ref": "#/$defs/finalText" },
+        "resolutionDecision": {
+          "enum": ["keep_current", "current_after_revision", "current_after_split"]
+        },
+        "evidenceRound": { "enum": ["first", "second"] },
+        "records": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["first", "second"],
+          "properties": {
+            "first": { "$ref": "#/$defs/record" },
+            "second": { "$ref": "#/$defs/record" }
+          }
+        },
+        "rationaleDe": { "$ref": "#/$defs/longText" },
+        "rationaleEn": { "$ref": "#/$defs/longText" }
+      }
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T13:40:55.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826",
+    "batchManifestDigest": "sha256:3d2eb915f83e3dc13540fce6234cd1dad678191335e91e05a1bbde506630ce95",
+    "configDigest": "sha256:de0b3c9bcc867ae3d46f255cab4be80381828a9ed458122efb5ec03a34f25a6c",
+    "bundleFingerprint": "sha256:300d26479e8287ed9701b350acfadcca1876fe1239a90b79ad948639d8e2c37c",
+    "bookDigest": "sha256:8f8720d09ae2619628a985e8bcff35619c0256de4b34f3dd8d3c78cda5cd9b20",
+    "reviewInputFingerprint": "sha256:65d9863fc3ca5a12a6924bae100df3725d7bf3cea794a399a87ff4557315df47",
+    "dualSummaryDigest": "sha256:57003725dcfeb76a67f2af1e9cfa35cb47f4018eff64cace575e9c8ebc8fb050",
+    "canonicalLandscapeDigest": "sha256:be2d31bccfc228b92b74bc3f67edc7416d786ab29d84704050b52aa900cc5c29"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-a",
+      "campaignDigest": "sha256:eafd44dc2163f6f9dc2a2221a66beb26259ff1f09fb274a594141f8e4582fa57",
+      "roundId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:65d9863fc3ca5a12a6924bae100df3725d7bf3cea794a399a87ff4557315df47",
+      "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b3e103a9b5d0f92247bb1fbd58c76c6fbafb0735f6630eec3d4bb45f76e53022",
+      "runId": "physik-v8-checkpoint-follow-up-8-round-a-openai-gpt5-20260826T1315Z",
+      "runManifestDigest": "sha256:4f5b612289f724a72cafd3a3b2772625e231585507bfe36c4a1e1e408ee3bc30",
+      "resultsDigest": "sha256:a532dfe0b4ffd3351fec8693841ea557d1a50e8374fb6a6c70394473c603e16e"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-b",
+      "campaignDigest": "sha256:e8581d4a356718b27a24d2b98b28335feafa773a078e8a91b708972d18218682",
+      "roundId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:65d9863fc3ca5a12a6924bae100df3725d7bf3cea794a399a87ff4557315df47",
+      "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e7bb9ed1fda20e732f422d5622678383765d112991fc237057760681ab1dba8a",
+      "runId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5",
+      "runManifestDigest": "sha256:ea54a6e14f719c9ab70e7c0be5cac5ec6d4aa6ab60212ff0456ff8aad8059eef",
+      "resultsDigest": "sha256:67db7e6c0facebf02f2805d87d1df530c8f2ce0203ce1be77b1fbb104f0f32dd"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-001",
+      "goalId": "33e3417c-e062-5f4a-8df9-3195dca50089",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca7ad2d285b6e0ce418d50b75cd6176c45cd4d0a17bc6a2a1ba681f9fb865221",
+      "pageFingerprint": "sha256:27d8cd59a1fd61b7492fccce010b8e88208971d787d40e1faa7fe2ab26807bec",
+      "goalReviewContextFingerprint": "sha256:3e22cb2af3ec8e18665b8fc3ad696c4109d3bed3489b13c370823daac97a0407",
+      "finalText": {
+        "titleDe": "Mondphasen mit Beleuchtung und Blickrichtung erklären",
+        "titleEn": "Explain lunar phases using illumination and viewing direction",
+        "descriptionDe": "Die lernende Person kann aus den relativen Positionen von Sonne, Erde und Mond ableiten, welcher Anteil der beleuchteten Mondhälfte von der Erde aus sichtbar ist, damit die Mondphasen erklären und begründen, warum sie nicht durch den Erdschatten entstehen.",
+        "descriptionEn": "The learner can infer from the relative positions of the Sun, Earth, and Moon what fraction of the Moon's illuminated half is visible from Earth, use this to explain the lunar phases, and justify why they are not caused by Earth's shadow."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-001",
+          "recordDigest": "sha256:877aa02ae587eae4cd3f5b2321667793ae8e4bd3dd2ee1d0d531b09adbd0c830"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-001",
+          "recordDigest": "sha256:5c1c23de18eef4c21f45efee76b66b2b69042fed46b59703e30468447a71b5bc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen Wortlaut. Die zweite Evidence-Fassung verbindet die räumliche Beleuchtungsgeometrie mit einer ausdrücklichen Widerlegung der Erdschattenvorstellung und prüft zusätzlich die zeitliche Unterscheidung von zu- und abnehmenden Phasen in einer umgekehrten Beobachtungsfolge.",
+      "rationaleEn": "Both independent reviews confirm the current wording. The second evidence formulation links spatial illumination geometry to an explicit refutation of the Earth-shadow misconception and additionally assesses the temporal distinction between waxing and waning phases in a reversed observation sequence."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-002",
+      "goalId": "f0046ae8-cbfc-526b-8414-04e3595b6075",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7fb28ae1976a87eadc6084213f4790cf29b110cfafc7846ba3d55c08d1d418f0",
+      "pageFingerprint": "sha256:5e22c76b73f26f5337ca3ae519e89397072d5b76ee0f9c697a41292e26c4ebb8",
+      "goalReviewContextFingerprint": "sha256:ac99b23009319043b4933cde492215afad01029bde029fa2b93c7a6858553845",
+      "finalText": {
+        "titleDe": "Sonnen- und Mondfinsternisse mit Schattenräumen erklären",
+        "titleEn": "Explain solar and lunar eclipses using shadow regions",
+        "descriptionDe": "Die lernende Person kann für Sonnen- und Mondfinsternisse die jeweilige Anordnung von Sonne, Erde und Mond darstellen, Kern- und Halbschatten zuordnen und daraus erklären, welches Himmelsobjekt für Beobachtende ganz oder teilweise verdunkelt erscheint.",
+        "descriptionEn": "The learner can represent the respective arrangement of the Sun, Earth, and Moon for solar and lunar eclipses, identify the umbra and penumbra, and use these to explain which celestial object appears fully or partially darkened to observers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-002",
+          "recordDigest": "sha256:55aa773a1b127afdbbbd97e5d8b9c8491d6e7479bc7b9c889fdbed4ba47039ec"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-002",
+          "recordDigest": "sha256:fdf9ba1f3cc83472355d858de71411a975aeb76ce5095298be70f90e6c84b314"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Anordnung, Schattenräume und Beobachterbezug. Die erste Evidence-Fassung verlangt für beide Finsternisarten die Konstruktion der tatsächlich begrenzenden geraden Randstrahlen und prüft bei veränderten Abständen, Größenverhältnissen oder seitlichem Versatz die Unterscheidung von totaler, partieller und ausbleibender Finsternis.",
+      "rationaleEn": "Both independent reviews confirm arrangement, shadow regions, and observer dependence. The first evidence formulation requires construction of the actual limiting straight boundary rays for both eclipse types and assesses the distinction among total, partial, and no eclipse under changed distances, size ratios, or lateral offset."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-003",
+      "goalId": "9a9e2085-5ab6-534f-b622-83774d51f36b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e52c651da3d96f09c18e5dd0b217ea4224b75d4334610b126e451313d3e17c2a",
+      "pageFingerprint": "sha256:fbb002d0debdec435feb941f7d65188bd4f2151a3cf0f42790fd5e621543122c",
+      "goalReviewContextFingerprint": "sha256:88db27bbb807b2b6c815774424d221074cac42728e356e2378fb3f95d407f7e1",
+      "finalText": {
+        "titleDe": "Streuung und Absorption von Licht an Beobachtungen unterscheiden",
+        "titleEn": "Distinguish scattering and absorption of light from observations",
+        "descriptionDe": "Die lernende Person kann an einfachen Alltags- und Experimentbeispielen aus beobachteten Änderungen der Lichtverteilung und Helligkeit begründet schließen, ob Licht überwiegend in verschiedene Richtungen gestreut oder vom Material absorbiert wird, und erläutern, welche Beobachtung die Zuordnung stützt.",
+        "descriptionEn": "The learner can use observed changes in light distribution and brightness in simple everyday and experimental examples to infer with reasons whether light is predominantly scattered in different directions or absorbed by the material, and explain which observation supports the classification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-003",
+          "recordDigest": "sha256:f6bd2faa2c081f1759f6eeaa424810baa5aeb4ef1645ad88cb360dda41a9ffd2"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-003",
+          "recordDigest": "sha256:7cc1868fbfd484e7924c64b42b87f1a4341c25b27340e6b7c85b11d98f49cdf1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen, auf eine begründete Aussage über den überwiegenden Prozess begrenzten Wortlaut. Die zweite Evidence-Fassung hält ausdrücklich fest, dass Streuung und Absorption gemeinsam auftreten können, und verlangt den Vergleich von Lichtverteilung in mehreren Richtungen sowie der Helligkeit vor und hinter der Probe, bevor eine Zuordnung begründet wird.",
+      "rationaleEn": "Both independent reviews confirm the current wording, which is limited to a reasoned claim about the predominant process. The second evidence formulation explicitly allows scattering and absorption to coexist and requires comparison of light distribution in several directions and brightness before and after the sample before drawing a justified conclusion."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-004",
+      "goalId": "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ad8f4ea68ed5259b4173d080c1fdb4f7f08c6d7c6113a9bc134f9dfe27d09f1b",
+      "pageFingerprint": "sha256:ad8ee5ae0d8beffec52b4494f17b7894c6675a0922ccc2f0b74fa8a378f151ee",
+      "goalReviewContextFingerprint": "sha256:3cd53336ef507be35d0c3f7956af7096a6b6cf474ed31186e170f62a50d11c8d",
+      "finalText": {
+        "titleDe": "Temperatur mit einem geeigneten Thermometer messen",
+        "titleEn": "Measure Temperature with a Suitable Thermometer",
+        "descriptionDe": "Die lernende Person kann für einen gegebenen Messbereich und die benötigte Auflösung ein geeignetes Thermometer auswählen, es in guten thermischen Kontakt mit dem Messobjekt bringen und einen stabilen Temperaturwert mit Einheit fachgerecht ablesen.",
+        "descriptionEn": "The learner can select a thermometer suitable for a given measurement range and required resolution, place it in good thermal contact with the object, and correctly read a stable temperature value with its unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-004",
+          "recordDigest": "sha256:7ac6afc627017ef8704bfa9aa9ddfc5baaf511e2eb5aa99f9d64a022c1347b81"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-004",
+          "recordDigest": "sha256:56a07ae769fc0f5a294fc1bb9c0d03dd1ce6bbb8b18b1fcafd159a07dfed4740"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Gerätewahl, thermischen Kontakt, Stabilisierung und Ergebnisangabe. Die zweite Evidence-Fassung verknüpft die berichtete Genauigkeit ausdrücklich mit der Auflösung des Geräts und prüft bei verändertem Messbereich oder feinerer geforderter Unterscheidung alle vier Bedingungen erneut.",
+      "rationaleEn": "Both independent reviews confirm instrument selection, thermal contact, stabilization, and reporting. The second evidence formulation explicitly links reported precision to instrument resolution and reassesses all four conditions when the range changes or a finer distinction is required."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-005",
+      "goalId": "b60f63b6-e70b-5557-9f54-86d42fa80325",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:43db7bb64e7214a384533bfb1270667f1bcd60436f1defe209e9165cc49e5e4e",
+      "pageFingerprint": "sha256:69b65ce14d2c6d406cc61c31dea96e4265ae58a8baaa312fa16d4ce10a4a4921",
+      "goalReviewContextFingerprint": "sha256:92b9bef00ffdb987b7c4b9e6a8cbec79947cfcbce67d2cc72f01cb7899c12a33",
+      "finalText": {
+        "titleDe": "Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten",
+        "titleEn": "Interpret Thermal Expansion of Solids, Liquids, and Gases",
+        "descriptionDe": "Die lernende Person kann aus vergleichenden Beobachtungen erklären, dass sich Länge oder Volumen fester, flüssiger und gasförmiger Stoffe beim Erwärmen meist vergrößern und beim Abkühlen verkleinern, sofern eine Ausdehnung nicht durch starre Begrenzung verhindert wird, und Unterschiede qualitativ deuten.",
+        "descriptionEn": "The learner can use comparative observations to explain that the length or volume of solids, liquids, and gases usually increases when heated and decreases when cooled, provided expansion is not prevented by a rigid constraint, and can qualitatively interpret differences."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-005",
+          "recordDigest": "sha256:3df8e19a40fa4895a30b7caac808ee811d4be1e7ccf0126d07b402bdd890a128"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-005",
+          "recordDigest": "sha256:ef67085f63a63800cef293022fbff2ec3f4f8c98d88047abf3b5f9536632e822"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die vorsichtige Aussage über typisches Ausdehnungsverhalten und die Randbedingung freier Ausdehnung. Die erste Evidence-Fassung macht zusätzlich prüfbar, dass eine starre Begrenzung nicht die Tendenz aufhebt, sondern stattdessen Kräfte oder Druck hervorrufen kann, und überträgt dies auf konkrete Anwendungen.",
+      "rationaleEn": "Both independent reviews confirm the cautious claim about typical expansion behavior and the free-expansion boundary condition. The first evidence formulation additionally assesses that rigid confinement does not remove the tendency but can instead produce forces or pressure, and transfers this understanding to concrete applications."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-006",
+      "goalId": "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2e09522dc82a4334db506bf5dc1423d488adb85927230675ebcde74713c8fdbc",
+      "pageFingerprint": "sha256:0097d86a184c1e9f975662d944b8d4de485c53a100e007b1ba59506f47644447",
+      "goalReviewContextFingerprint": "sha256:b84d147818d7f58443bbb29a2d0336966e5df4b1dd924361fe40c8f714833e18",
+      "finalText": {
+        "titleDe": "Teilchenmodell für Temperaturänderungen nutzen",
+        "titleEn": "Use the Particle Model for Temperature Changes",
+        "descriptionDe": "Die lernende Person kann im einfachen Teilchenmodell Temperaturänderungen qualitativ mit Veränderungen der mittleren ungeordneten Teilchenbewegung erklären und das Modell auf einfache Wärmeübertragungsvorgänge innerhalb oder zwischen Stoffen anwenden.",
+        "descriptionEn": "Using a simple particle model, the learner can qualitatively explain temperature changes through changes in the particles' average disordered motion and apply the model to simple heat-transfer processes within or between materials."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-006",
+          "recordDigest": "sha256:e488fab22b7682c4f2cdc6272a21e9304fa676df2c332052c857db6eef259e36"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-006",
+          "recordDigest": "sha256:d9a8d8c195a4f01c511362d750bbbb46dc53a24327f89d96b36140016a418924"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die mittlere ungeordnete Teilchenbewegung als Modellkern. Die erste Evidence-Fassung grenzt sie von gleicher Geschwindigkeit einzelner Teilchen und von makroskopischer Stoffbewegung ab und hält die Anwendung bewusst auf Energieübertragung innerhalb oder zwischen Stoffen begrenzt, statt das Teilchenmodell etwa auf reine Strahlung durch ein Vakuum zu überdehnen.",
+      "rationaleEn": "Both independent reviews confirm average disordered particle motion as the model core. The first evidence formulation distinguishes it from equal speeds of individual particles and from macroscopic material motion and deliberately limits application to energy transfer within or between materials instead of overextending the particle model, for example, to pure radiation through a vacuum."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-007",
+      "goalId": "fbe0faae-7fba-482b-888e-341f926770f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e46f594aecb6ef6358a8fa33e603acdaef4ee01e5e70e72b46cdf73e3040eebe",
+      "pageFingerprint": "sha256:63aa5d3001dac331411a5001d999befa7e3cd1d9e4db3af536cb79d35c792a90",
+      "goalReviewContextFingerprint": "sha256:7e26f78c09898c92ecf1982a5494949af0aab96fdf885c0534d4b96181180b7b",
+      "finalText": {
+        "titleDe": "Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden",
+        "titleEn": "Distinguish Conduction, Convection, and Thermal Radiation",
+        "descriptionDe": "Die lernende Person kann Wärmeleitung als Energieübertragung ohne makroskopischen Stofftransport, Konvektion als Übertragung durch strömende Flüssigkeiten oder Gase und Wärmestrahlung als elektromagnetische Übertragung auch ohne Materie unterscheiden und Alltagsbeispiele begründet zuordnen.",
+        "descriptionEn": "The learner can distinguish conduction as energy transfer without macroscopic transport of matter, convection as transfer by flowing liquids or gases, and thermal radiation as electromagnetic transfer that can also occur without matter, and can justify the classification of everyday examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-007",
+          "recordDigest": "sha256:1610dcd3a9a37025b8ccc7813222fa9490c160a0a6acd9d947680444a4bf4e80"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-007",
+          "recordDigest": "sha256:870529c0c040fcf4257339e9baba6d468e43fabc1046b6501de26db2d6927dfd"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews unterscheiden Wärmeleitung, Konvektion und Wärmestrahlung über ihre Transportbedingungen und lassen mehrere gleichzeitige Mechanismen zu. Die erste Evidence-Fassung prüft mit Stoffzustand, möglicher Strömung und Sichtverbindung ein systematisches Analyseverfahren und variiert im Transfer Materie, Orientierung und Leitfähigkeit getrennt.",
+      "rationaleEn": "Both independent reviews distinguish conduction, convection, and thermal radiation through their transport conditions and allow several mechanisms to act simultaneously. The first evidence formulation assesses a systematic analysis using state of matter, possible flow, and line of sight and varies matter, orientation, and conductivity separately in transfer."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-synthesis-decision-008",
+      "goalId": "5a3716dd-ec67-5c48-ba3d-1a29f05ba2ce",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7b91cbedc1ba1768be814182acd39a2aa7579970e59c082522150d97775c726",
+      "pageFingerprint": "sha256:86daf7b6ff373463657fd481c9cec6c78b2574adfbc03870786ad0b3891c99ed",
+      "goalReviewContextFingerprint": "sha256:b9e997272209421e45d79065664cd211fa3bac4fb9235f725766dc57ca3f0480",
+      "finalText": {
+        "titleDe": "Treibhauseffekt mit Strahlungsbilanz beschreiben",
+        "titleEn": "Describe the greenhouse effect using radiation balance",
+        "descriptionDe": "Die lernende Person kann den natürlichen Treibhauseffekt mit der Absorption und Emission langwelliger Wärmestrahlung durch Treibhausgase in der Strahlungsbilanz erklären und den anthropogenen Anteil auf veränderte Treibhausgaskonzentrationen zurückführen.",
+        "descriptionEn": "The learner can explain the natural greenhouse effect through the absorption and emission of long-wave thermal radiation by greenhouse gases in the radiation balance and attribute the anthropogenic contribution to changed greenhouse-gas concentrations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-follow-a-008",
+          "recordDigest": "sha256:983f8ac21d9df7042b9cfbd5bec8de7058b5dfeb5dfb9e5a57e95660d23a17ae"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5.record-008",
+          "recordDigest": "sha256:d2b34974949ba76caf69193f3bd62bfe91e6b78349276e90daaf98d737dc6df0"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Absorption, Emission und die Trennung des natürlichen Effekts von seiner anthropogenen Verstärkung. Die zweite Evidence-Fassung erfasst Emission in verschiedene Richtungen und lässt für veränderte langwellige Absorption die ausgehenden und zurückgerichteten Anteile bis zu einer neuen qualitativen Strahlungsbilanz verfolgen.",
+      "rationaleEn": "Both independent reviews confirm absorption, emission, and the distinction between the natural effect and its anthropogenic enhancement. The second evidence formulation captures emission in different directions and requires outgoing and downward components to be traced to a new qualitative radiative balance when longwave absorption changes."
+    }
+  ],
+  "manifestFingerprint": "sha256:73755b95e64c5aedba4f34a8e6d702555d53ef9336ed41b584ec7bffe5a32498"
+}
