@@ -83,6 +83,7 @@ interface SplitLayoutTemplate {
   fileSha256: string
   placementCount: number
   excludedGoalIds?: string[]
+  prerequisiteOnlyGoalIds?: string[]
   placements: SplitLayoutPlacement[]
 }
 
@@ -677,6 +678,7 @@ const applyReviewedSplitLayout = (
   const effectiveExcludedGoalIds = new Set([
     ...excludedGoalIds,
     ...(template.excludedGoalIds ?? []),
+    ...(template.prerequisiteOnlyGoalIds ?? []),
   ])
 
   const beforeAtomicGoalIds = collectAtomicGoalIdsFromNodes([sek1Node])
@@ -739,6 +741,40 @@ const applyReviewedSplitLayout = (
       }
     }
   }
+
+  const prerequisiteOnlyGoalIds = template.prerequisiteOnlyGoalIds ?? []
+  if (new Set(prerequisiteOnlyGoalIds).size !== prerequisiteOnlyGoalIds.length) {
+    throw new Error(`${templateFileName}: duplicate prerequisite-only goal ID`)
+  }
+  for (const goalId of prerequisiteOnlyGoalIds) {
+    const goal = goalById.get(goalId)
+    if (!goal) {
+      throw new Error(`${templateFileName}: missing prerequisite-only canonical goal ${goalId}`)
+    }
+    if ((goal.contains?.length ?? 0) > 0) {
+      throw new Error(`${templateFileName}: prerequisite-only goal ${goalId} is not atomic`)
+    }
+    if (!beforeAtomicGoalIds.has(goalId)) {
+      throw new Error(`${templateFileName}: prerequisite-only goal ${goalId} was not in the original target set`)
+    }
+    if (afterAtomicGoalIds.has(goalId)) {
+      throw new Error(`${templateFileName}: prerequisite-only goal ${goalId} remained in the target set`)
+    }
+    const requiringTargetGoalIds = [...afterAtomicGoalIds]
+      .filter((targetGoalId) => (goalById.get(targetGoalId)?.requires ?? []).includes(goalId))
+    if (requiringTargetGoalIds.length === 0) {
+      throw new Error(`${templateFileName}: prerequisite-only goal ${goalId} is not required by a retained target`)
+    }
+  }
+  transformed.children.splice(
+    1,
+    0,
+    ...prerequisiteOnlyGoalIds.map((goalId): CompositionNode => ({
+      kind: 'goalEntry',
+      goalId,
+      projectionRole: 'prerequisiteOnly',
+    })),
+  )
   return transformed
 }
 

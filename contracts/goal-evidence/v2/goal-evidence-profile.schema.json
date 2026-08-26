@@ -92,11 +92,12 @@
       "enum": ["G0", "G1", "G2", "G3", "G4"]
     },
     "reviewRunIds": {
+      "description": "Exact AI review run IDs. Each non-empty ID is valid only when the review configuration binds it uniquely to a completed repository-local run manifest that includes this goal; an empty array makes no run claim.",
       "type": "array",
       "maxItems": 50,
       "uniqueItems": true,
       "items": {
-        "$ref": "#/$defs/slug"
+        "$ref": "#/$defs/stableId"
       }
     },
     "dissent": {
@@ -165,6 +166,12 @@
       "minLength": 1,
       "maxLength": 100,
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
     },
     "sha256Digest": {
       "type": "string",

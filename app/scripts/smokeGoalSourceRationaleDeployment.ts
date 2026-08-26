@@ -29,7 +29,8 @@ const runtimePayloads: RuntimePayloadConfig[] = [
     jurisdiction: 'DE-BY',
     minimumItemCount: 600,
     requiredMemPocGoals: [
-      'a075ae99-7669-563d-807a-f91b119c020a',
+      '339a7bf5-f1df-5d5a-9ec4-41f471f0c111',
+      '02013455-72a0-5213-9509-ed77f7ede62b',
       '09f47964-2cd0-410e-93ee-9632b582fc91',
       'b1dcc191-d046-50de-984a-ee5c17157628',
     ],

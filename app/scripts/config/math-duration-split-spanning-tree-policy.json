@@ -5,7 +5,7 @@
   "inputs": {
     "canonical": {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "sha256": "e7a7c85f482996649061218be99141d427fc5487e66147f10be0b7c8d9eb6e60"
+      "sha256": "7fbf541b9755a9c8df6bf8df36878bad35a6b7c9e66082f6fa3ca094e6b16103"
     },
     "parentDerivativeReceipt": {
       "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
@@ -24,6 +24,7 @@
       "Generate the flat mapping-derived Sek-I view exactly as before, with atomic-asserted goalEntry nodes.",
       "For each placement, remove removeAtomicGoalIds from every direct reference occurrence in the generated Sek-I node.",
       "Apply each template's reviewed excludedGoalIds before inserting replacementNode under parentStructureId. For a materialized split structure, preservedReusedGoalIds remain in their existing pre-split parent and are not removed.",
+      "Apply each template's reviewed prerequisiteOnlyGoalIds to target filtering, require each one to be atomic and directly required by a retained target, then add it back only as a direct prerequisiteOnly goalEntry.",
       "Sort the placement parent children by canonical title using the existing de locale comparator and oldClusterGoalId as the tie-break key for the replacement.",
       "Assert actualAfter equals (flatBefore minus the union of removeAtomicGoalIds) union the atomic closure of every filtered replacementNode; additionally assert each non-excluded preservedReusedGoalId was visible before, is never removed, and remains visible after. Then compile and reject CPV-004/005/006/007/009.",
       "Use the transformed Sek-I node as the standalone output and as the authoritative replacement node for both GK and LK cross-stage outputs."
@@ -39,7 +40,7 @@
     {
       "fileName": "de-he-seki-g8.view.json",
       "viewId": "de-he-gym-seki-math-g8",
-      "fileSha256": "e2f2131851d517c0d5d3fb5d8d5901ac2dfb89624e89ab1ab94beec05138e433",
+      "fileSha256": "b3595640768c5855813d4877279ec839e408b4186185e4a07927dec019a45496",
       "placementCount": 9,
       "placements": [
         {
@@ -213,7 +214,7 @@
     {
       "fileName": "de-he-seki-g9.view.json",
       "viewId": "de-he-gym-seki-math-g9",
-      "fileSha256": "e114aa296b513c8021fc73411df3c3f7afa52c6d12b351ccd0f56bc9bcafd7c1",
+      "fileSha256": "85ce1331a61eb1900347a5013e1d2c4613670e682d0bcea9b67f107949760a08",
       "placementCount": 10,
       "placements": [
         {
@@ -401,8 +402,11 @@
     {
       "fileName": "de-rp-seki-g8.view.json",
       "viewId": "de-rp-gym-seki-math-g8",
-      "fileSha256": "29578556ce972b683f8cb72a9ae589a5f8211af4dbdd775d913adb63134fd010",
+      "fileSha256": "1606d74b17d00e491947e702e778cc5b5851f70d72009c0895579e9ebb1bc929",
       "placementCount": 3,
+      "prerequisiteOnlyGoalIds": [
+        "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
+      ],
       "placements": [
         {
           "parentStructureId": "rp-orientierungsstufe-g8-kompetenzen",
@@ -454,8 +458,11 @@
     {
       "fileName": "de-rp-seki-g9.view.json",
       "viewId": "de-rp-gym-seki-math-g9",
-      "fileSha256": "e21689357969e300c6bc4000a304d603d9c689bcce71e944ab8b551ef4606f09",
+      "fileSha256": "f0e9e48d1de749c62b16456a5af2bb70d96475b5cf14fc087bad6c4fa4d28d69",
       "placementCount": 3,
+      "prerequisiteOnlyGoalIds": [
+        "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
+      ],
       "placements": [
         {
           "parentStructureId": "rp-orientierungsstufe-g9-kompetenzen",
@@ -507,10 +514,13 @@
     {
       "fileName": "de-sh-seki-g8.view.json",
       "viewId": "de-sh-gym-seki-math-g8",
-      "fileSha256": "e9ccaa03f6c0b67106d6b44c1ffc01549f49d5cd96121783aba12afb729d9473",
+      "fileSha256": "e5aa455d0b8b5607a0473cc35a0f9913c15076ceec8738dd4f32d7f37eea56e0",
       "placementCount": 7,
       "excludedGoalIds": [
         "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
+      "prerequisiteOnlyGoalIds": [
+        "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
       ],
       "placements": [
         {
@@ -628,10 +638,13 @@
     {
       "fileName": "de-sh-seki-g9.view.json",
       "viewId": "de-sh-gym-seki-math-g9",
-      "fileSha256": "b54d85a44cecec4cfb24dbe4bfd2f8ce6822b18d72d22d8c4eb0b2a61a1af7be",
+      "fileSha256": "2bc64625ddf171d6c99398323acb32bbd850e09dc5dbbb0cfc63a2f0f58dece3",
       "placementCount": 7,
       "excludedGoalIds": [
         "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
+      "prerequisiteOnlyGoalIds": [
+        "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
       ],
       "placements": [
         {
@@ -774,49 +787,49 @@
     },
     {
       "outputFileName": "de-rp-gk-g8.view.json",
-      "outputSha256": "6ec7deb923c55aa362af4ec41ce92783e0ca1c15b1b8eadd74c4106e112b75c5",
+      "outputSha256": "599a241f4574c85bbac1a77726906cfba7d3b028bd76cb8c58c50e5416a402c9",
       "sek1TemplateFileName": "de-rp-seki-g8.view.json",
       "baseViewFileName": "de-rp-gk.view.json"
     },
     {
       "outputFileName": "de-rp-gk-g9.view.json",
-      "outputSha256": "8b6a507ac3ddf588f861622b06fd2b41c35f2b5fc62c492613b838f2b7fecccd",
+      "outputSha256": "fa5a14591ae1c886f0d71c0e398194c0b6feefa5f9495a294f402251684fc9b3",
       "sek1TemplateFileName": "de-rp-seki-g9.view.json",
       "baseViewFileName": "de-rp-gk.view.json"
     },
     {
       "outputFileName": "de-rp-lk-g8.view.json",
-      "outputSha256": "b9ddbedc362e45be2bb0af0d46008ef8ef3e623b6afca2a3e66408ee97a0fed7",
+      "outputSha256": "fb34419a35b82aa9ef4a436094624f518e356db5fd44984e644bf6547379c5c6",
       "sek1TemplateFileName": "de-rp-seki-g8.view.json",
       "baseViewFileName": "de-rp-lk.view.json"
     },
     {
       "outputFileName": "de-rp-lk-g9.view.json",
-      "outputSha256": "8f6dfd273fc9a04ef8c9e438c9a57ff7a6b5d9428833e26a078af10a81118cfc",
+      "outputSha256": "6c6f1fe0df241b3af926c98f2bc5303929f888496200550697de66678a9b99d4",
       "sek1TemplateFileName": "de-rp-seki-g9.view.json",
       "baseViewFileName": "de-rp-lk.view.json"
     },
     {
       "outputFileName": "de-sh-gk-g8.view.json",
-      "outputSha256": "a4b0984b815e03fe6e0320669aa23b67d6f9c4ecdea09e63ed03aa026bcaaa0a",
+      "outputSha256": "52ca0cc0ab58b374be253c562ec528870f324c20d70ef206080f195273d1bcaf",
       "sek1TemplateFileName": "de-sh-seki-g8.view.json",
       "baseViewFileName": "de-sh-gk.view.json"
     },
     {
       "outputFileName": "de-sh-gk-g9.view.json",
-      "outputSha256": "fa2ece031ae8f5e5431b17ab0a0929f4849519c746587e2bd5f85310febb0723",
+      "outputSha256": "2cf9e636a0fae09a25c2599177506031fb703bfe000cc5728814dab55c334134",
       "sek1TemplateFileName": "de-sh-seki-g9.view.json",
       "baseViewFileName": "de-sh-gk.view.json"
     },
     {
       "outputFileName": "de-sh-lk-g8.view.json",
-      "outputSha256": "a0cda79dbb600488c60a393d07eb01c1f28067fb2847602f4c451cc44221a33c",
+      "outputSha256": "b73613e621ea0f180fe02f5b75eaed9af6787e466945b80f9178ce599fa63602",
       "sek1TemplateFileName": "de-sh-seki-g8.view.json",
       "baseViewFileName": "de-sh-lk.view.json"
     },
     {
       "outputFileName": "de-sh-lk-g9.view.json",
-      "outputSha256": "90ee4a54766ca28922c4af4013411146b4cd63b980984982decbc969d7b25624",
+      "outputSha256": "d325f4cfa77b28c2f4829284fa3a1f421d5fb200ec442c54a01ed22d60535c45",
       "sek1TemplateFileName": "de-sh-seki-g9.view.json",
       "baseViewFileName": "de-sh-lk.view.json"
     }

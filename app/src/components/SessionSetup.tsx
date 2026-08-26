@@ -16,9 +16,9 @@ type ClaudeActionState = 'idle' | 'opening-setup' | 'setup-opened' | 'launching'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
-// Keep the review pilot discoverable only from the local Workbench for now.
-// Re-enable this deliberately when the learning-goal book is ready for public promotion.
-const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = false
+// Product-owner decision 2026-08-26: expose the existing read-only learning-goal books
+// from the public start page without changing any coach launch or learner-state semantics.
+const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = true
 
 interface SessionSetupProps {
   role: Role | null

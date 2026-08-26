@@ -404,6 +404,41 @@ Der Freeze-Checker validiert beide Dateien als zweiten Eintrag in
 Claude-spezifische First-Party-Installationshilfe und erfordert daher weder ein
 Zurückziehen noch eine erneute Einreichung des unveränderten OpenAI-V1-Vertrags.
 
+### 6.7 Eng begrenzte Ausnahme: Lernzielbuch-Link auf der Startseite
+
+Der Product Owner hat am **26. August 2026** entschieden, die vorhandene
+Read-only-Ansicht der Lernzielbücher für Mathematik und Physik auf der
+öffentlichen SkillPilot-Startseite direkt auffindbar zu machen. Die Bücher und
+ihre PDFs waren bereits unter `/lernzielbuch` erreichbar; geändert wird nur
+ihre Sichtbarkeit als lokalisierter Navigationslink.
+
+Freigegeben ist ausschließlich:
+
+- `PUBLIC_GOAL_BOOK_PROMOTION_ENABLED` in `SessionSetup.tsx` einzuschalten;
+- dadurch den bereits vorhandenen deutschen beziehungsweise englischen Link
+  auf `/lernzielbuch` außerhalb von Package-Consumer-Builds anzuzeigen;
+- die fokussierten Regressionen für genau diese Sichtbarkeit zu aktualisieren.
+
+Der öffentliche Sitemap-Eintrag bleibt im Rahmen dieser eng begrenzten
+Entscheidung unverändert aus. Die Lernzielbuchroute bleibt read-only. Coach-
+Start, vorbereitete Nachrichten, Session- und Lernzustandssemantik, OpenAI-
+Paket, MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte,
+Fixtures und Reviewartefakte bleiben unverändert. Daher ist weder ein
+Zurückziehen noch eine erneute Einreichung des laufenden OpenAI-Portalreviews
+erforderlich.
+
+Die Hashkette von `SessionSetup.tsx` wird fortgesetzt:
+
+6. öffentlicher Lernzielbuch-Link:
+   `71c1d46f9eb42ab9a1d643df44e65fb35a89ece2b0a901f9ea045b64c56aae84`.
+
+Die Regressionen sind zusätzlich hashgebunden:
+
+- `app/src/views/WorkbenchView.test.ts`:
+  `97e2c090d00859dd0389dbccdfe226b187293bcbac6d0ada1cddd4ae313a59d6`;
+- `app/scripts/testSessionSetupCompletionUi.ts`:
+  `afb66331e9bf1707195b1389d28bfe09839a9c3a130800bc207d6ed9602426fe`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

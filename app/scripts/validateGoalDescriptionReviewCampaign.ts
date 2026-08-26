@@ -17,9 +17,16 @@ import {
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const BUNDLE_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-review-bundle.schema.json'
 const RUN_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json'
-const INPUT_SCHEMA_PATH = 'contracts/goal-description-review/v1/goal-description-review-input.schema.json'
-const CAMPAIGN_SCHEMA_PATH = 'contracts/goal-description-review/v1/goal-description-review-campaign.schema.json'
+const GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
+const EVIDENCE_PROFILE_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-profile.schema.json'
+const INPUT_V2_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-input.schema.json'
+const INPUT_V3_SCHEMA_PATH = 'contracts/goal-description-review/v3/goal-description-review-input.schema.json'
+const CAMPAIGN_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-campaign.schema.json'
 const RECORD_SCHEMA_PATH = 'contracts/goal-description-review/v1/goal-description-review-record.schema.json'
+
+export const GOAL_DESCRIPTION_REVIEW_RECORD_SCHEMA_ARTIFACT_PATH = (
+  'contracts/goal-description-review-record.schema.json'
+) as const
 
 export type GoalDescriptionReviewInputGoal = {
   goalId: string
@@ -29,11 +36,47 @@ export type GoalDescriptionReviewInputGoal = {
   currentTitleEn: string
   currentDescriptionDe: string
   currentDescriptionEn: string
+  canonicalContext?: GoalDescriptionCanonicalContext
+  reviewContext: GoalBookReviewInput['pages'][number]
+}
+
+export type GoalDescriptionCanonicalContext = {
+  shortKey: string | null
+  phase: string | null
+  core: boolean | null
+  weight: number
+  tags: string[]
+  competencyRefs: string[]
+  sourceRef: string | null
+  dimensionTags: {
+    framework: string
+    demandLevel: 'AB1' | 'AB2' | 'AB3'
+    processCompetencies: string[]
+    guidingIdeas: string[]
+    phase: string
+    area?: string
+    topicCode?: string
+  }
+  applicability: Record<string, string[]> | null
+  type: 'atomic' | 'cluster' | null
+  nodeKind: 'exam' | 'tutor' | 'memory' | null
+  semanticAtomic: boolean | null
+  semanticKind: string | null
+  applicabilitySemantics: {
+    fromRequires: boolean | null
+    mappingInheritance: string | null
+    projection: string | null
+  }
+  requires: string[]
+  contains: string[]
+  examples: string[]
 }
 
 export type GoalDescriptionReviewInput = {
-  $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-input.schema.json'
-  schemaVersion: 1
+  $schema:
+    | 'https://skillpilot.com/schemas/goal-description-review/v2/goal-description-review-input.schema.json'
+    | 'https://skillpilot.com/schemas/goal-description-review/v3/goal-description-review-input.schema.json'
+  schemaVersion: 2 | 3
   bundleFingerprint: string
   bookDigest: string
   goalCount: number
@@ -45,12 +88,13 @@ export type GoalDescriptionReviewCampaignBatch = {
   batchId: string
   ordinal: number
   batchInputFingerprint: string
+  recordSchemaDigest: string
   goalIds: string[]
 }
 
 export type GoalDescriptionReviewCampaign = {
-  $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-campaign.schema.json'
-  schemaVersion: 1
+  $schema: 'https://skillpilot.com/schemas/goal-description-review/v2/goal-description-review-campaign.schema.json'
+  schemaVersion: 2
   campaignId: string
   roundId: string
   bundleFingerprint: string
@@ -58,7 +102,8 @@ export type GoalDescriptionReviewCampaign = {
   reviewInputFingerprint: string
   promptFingerprint: string
   criteriaFingerprint: string
-  reviewerRole: 'internal_ai_reviewer' | 'external_ai_reviewer' | 'human_reviewer' | 'synthesizer'
+  recordSchemaDigest: string
+  reviewerRole: 'internal_ai_reviewer' | 'external_ai_reviewer' | 'synthesizer'
   reviewPass: 'first_pass' | 'follow_up' | 'synthesis'
   independenceGroupId: string
   blindToOtherReviews: boolean
@@ -118,6 +163,116 @@ const sha256 = (value: Buffer | string) => (
 
 const stableDigest = (value: unknown) => sha256(stableGoalBookJson(value))
 
+export const fingerprintGoalBookReviewBundleManifest = (
+  bundle: GoalBookReviewBundleManifest,
+) => {
+  const payload = Object.fromEntries(
+    Object.entries(bundle).filter(([key]) => key !== 'bundleFingerprint'),
+  )
+  return stableDigest(payload)
+}
+
+export const validateGoalBookReviewBundleManifestBindings = (
+  bundle: GoalBookReviewBundleManifest,
+) => {
+  const errors: string[] = []
+  const expectedBundleFingerprint = fingerprintGoalBookReviewBundleManifest(bundle)
+  if (bundle.bundleFingerprint !== expectedBundleFingerprint) {
+    errors.push(`Bundle bundleFingerprint is stale or foreign; expected ${expectedBundleFingerprint}`)
+  }
+  if (bundle.selectedGoalCount !== bundle.goals.length) {
+    errors.push('Bundle selectedGoalCount must match its exact goal array')
+  }
+  const bundleArtifactRoles = bundle.artifacts.map(({ role }) => role)
+  const duplicateBundleArtifactRoles = bundleArtifactRoles.filter((role, index) => (
+    bundleArtifactRoles.indexOf(role) !== index
+  ))
+  if (new Set(duplicateBundleArtifactRoles).size > 0) {
+    errors.push(`Bundle artifact roles must be unique: ${[...new Set(duplicateBundleArtifactRoles)].join(', ')}`)
+  }
+  const bundleArtifactPaths = bundle.artifacts.map(({ path }) => path)
+  const duplicateBundleArtifactPaths = bundleArtifactPaths.filter((path, index) => (
+    bundleArtifactPaths.indexOf(path) !== index
+  ))
+  if (new Set(duplicateBundleArtifactPaths).size > 0) {
+    errors.push(`Bundle artifact paths must be unique: ${[...new Set(duplicateBundleArtifactPaths)].join(', ')}`)
+  }
+  const promptArtifacts = bundle.artifacts.filter(({ role }) => role === 'review_prompt')
+  if (promptArtifacts.length !== 1 || promptArtifacts[0].digest !== bundle.promptFingerprint) {
+    errors.push('Bundle must bind exactly one review_prompt matching promptFingerprint')
+  }
+  const criteriaArtifacts = bundle.artifacts.filter(({ role }) => role === 'review_criteria')
+  if (criteriaArtifacts.length !== 1 || criteriaArtifacts[0].digest !== bundle.criteriaFingerprint) {
+    errors.push('Bundle must bind exactly one review_criteria matching criteriaFingerprint')
+  }
+  return errors
+}
+
+export const buildGoalDescriptionCanonicalContext = (
+  canonicalGoal: Record<string, unknown>,
+): GoalDescriptionCanonicalContext => {
+  const dimensionTags = canonicalGoal.dimensionTags
+  if (!dimensionTags || typeof dimensionTags !== 'object' || Array.isArray(dimensionTags)) {
+    throw new Error(`Canonical goal ${String(canonicalGoal.id ?? '(missing)')} is missing dimensionTags`)
+  }
+  const weight = canonicalGoal.weight
+  if (typeof weight !== 'number' || !Number.isFinite(weight)) {
+    throw new Error(`Canonical goal ${String(canonicalGoal.id ?? '(missing)')} has an invalid weight`)
+  }
+  const stringArray = (value: unknown) => Array.isArray(value)
+    ? value.map((entry) => String(entry))
+    : []
+  const optionalString = (value: unknown) => typeof value === 'string' ? value : null
+  const optionalBoolean = (value: unknown) => typeof value === 'boolean' ? value : null
+  const rawDimensionTags = dimensionTags as Record<string, unknown>
+  const applicability = canonicalGoal.applicability
+  const extendedData = canonicalGoal.extendedData
+  const rawExtendedData = extendedData && typeof extendedData === 'object' && !Array.isArray(extendedData)
+    ? extendedData as Record<string, unknown>
+    : {}
+  return {
+    shortKey: optionalString(canonicalGoal.shortKey),
+    phase: optionalString(canonicalGoal.phase),
+    core: optionalBoolean(canonicalGoal.core),
+    weight,
+    tags: stringArray(canonicalGoal.tags),
+    competencyRefs: stringArray(canonicalGoal.competencyRefs),
+    sourceRef: optionalString(canonicalGoal.sourceRef),
+    dimensionTags: {
+      framework: String(rawDimensionTags.framework ?? ''),
+      demandLevel: String(rawDimensionTags.demandLevel ?? '') as 'AB1' | 'AB2' | 'AB3',
+      processCompetencies: stringArray(rawDimensionTags.processCompetencies),
+      guidingIdeas: stringArray(rawDimensionTags.guidingIdeas),
+      phase: String(rawDimensionTags.phase ?? ''),
+      ...(typeof rawDimensionTags.area === 'string' ? { area: rawDimensionTags.area } : {}),
+      ...(typeof rawDimensionTags.topicCode === 'string' ? { topicCode: rawDimensionTags.topicCode } : {}),
+    },
+    applicability: applicability && typeof applicability === 'object' && !Array.isArray(applicability)
+      ? structuredClone(applicability as Record<string, string[]>)
+      : null,
+    type: optionalString(canonicalGoal.type) as GoalDescriptionCanonicalContext['type'],
+    nodeKind: optionalString(canonicalGoal.nodeKind) as GoalDescriptionCanonicalContext['nodeKind'],
+    semanticAtomic: optionalBoolean(canonicalGoal.semanticAtomic),
+    semanticKind: optionalString(canonicalGoal.semanticKind),
+    applicabilitySemantics: {
+      fromRequires: optionalBoolean(rawExtendedData.applicabilityFromRequires),
+      mappingInheritance: optionalString(rawExtendedData.applicabilityMappingInheritance),
+      projection: optionalString(rawExtendedData.applicabilityProjection),
+    },
+    requires: stringArray(canonicalGoal.requires),
+    contains: stringArray(canonicalGoal.contains),
+    examples: stringArray(canonicalGoal.examples),
+  }
+}
+
+export const loadGoalDescriptionReviewRecordSchemaBytes = () => (
+  readFile(repositoryPath(RECORD_SCHEMA_PATH))
+)
+
+export const fingerprintGoalDescriptionReviewRecordSchema = async () => (
+  sha256(await loadGoalDescriptionReviewRecordSchemaBytes())
+)
+
 const parseJson = <T>(value: Buffer | string, label: string): T => {
   try {
     return JSON.parse(value.toString()) as T
@@ -169,9 +324,19 @@ export const buildGoalDescriptionReviewInput = ({
   if (reviewInput.modelDigest !== bundle.bookModelDigest) {
     throw new Error('Review input modelDigest does not match the review bundle')
   }
-  const reviewPageById = new Map(reviewInput.pages.map(({ page }) => [page.goalId, page]))
+  if (!sameOrderedValues(
+    reviewInput.pages.map(({ page }) => page.goalId),
+    bundle.goals.map(({ goalId }) => goalId),
+  )) {
+    throw new Error('GoalBook review input pages must match all review-bundle goals exactly and in order')
+  }
+  const reviewContextById = new Map(reviewInput.pages.map((reviewContext) => [
+    reviewContext.page.goalId,
+    reviewContext,
+  ]))
   const goals = bundle.goals.map((bundleGoal) => {
-    const page = reviewPageById.get(bundleGoal.goalId)
+    const reviewContext = reviewContextById.get(bundleGoal.goalId)
+    const page = reviewContext?.page
     const canonicalGoal = canonicalGoalById.get(bundleGoal.goalId)
     if (!page || !canonicalGoal) {
       throw new Error(`Cannot build bilingual description input for ${bundleGoal.goalId}`)
@@ -200,11 +365,13 @@ export const buildGoalDescriptionReviewInput = ({
       currentTitleEn,
       currentDescriptionDe,
       currentDescriptionEn,
+      canonicalContext: buildGoalDescriptionCanonicalContext(canonicalGoal),
+      reviewContext,
     }
   })
   const withoutFingerprint = {
-    $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-input.schema.json' as const,
-    schemaVersion: 1 as const,
+    $schema: 'https://skillpilot.com/schemas/goal-description-review/v3/goal-description-review-input.schema.json' as const,
+    schemaVersion: 3 as const,
     bundleFingerprint: bundle.bundleFingerprint,
     bookDigest: bundle.bookModelDigest,
     goalCount: goals.length,
@@ -220,6 +387,8 @@ const batchInputPayload = ({
   bundleFingerprint,
   bookDigest,
   reviewInputFingerprint,
+  inputSchemaVersion,
+  recordSchemaDigest,
   batchId,
   goalIds,
   goals,
@@ -227,14 +396,17 @@ const batchInputPayload = ({
   bundleFingerprint: string
   bookDigest: string
   reviewInputFingerprint: string
+  inputSchemaVersion: GoalDescriptionReviewInput['schemaVersion']
+  recordSchemaDigest: string
   batchId: string
   goalIds: readonly string[]
   goals: readonly GoalDescriptionReviewInputGoal[]
 }) => ({
-  schemaVersion: 1,
+  schemaVersion: inputSchemaVersion,
   bundleFingerprint,
   bookDigest,
   reviewInputFingerprint,
+  recordSchemaDigest,
   batchId,
   goalIds,
   goals,
@@ -249,7 +421,9 @@ export const serializeGoalDescriptionReviewBatchInput = (
     bundleFingerprint: payload.bundleFingerprint,
     bookDigest: payload.bookDigest,
     reviewInputFingerprint: payload.reviewInputFingerprint,
+    recordSchemaDigest: payload.recordSchemaDigest,
     batchId: payload.batchId,
+    batchGoalIds: payload.goalIds,
     ordinal: index + 1,
     goal,
   })).join('\n')}\n`)
@@ -272,6 +446,7 @@ export const buildGoalDescriptionReviewCampaign = ({
   reviewPass,
   independenceGroupId,
   blindToOtherReviews,
+  recordSchemaDigest,
   batchSize = 20,
 }: {
   bundle: GoalBookReviewBundleManifest
@@ -282,6 +457,7 @@ export const buildGoalDescriptionReviewCampaign = ({
   reviewPass: GoalDescriptionReviewCampaign['reviewPass']
   independenceGroupId: string
   blindToOtherReviews: boolean
+  recordSchemaDigest: string
   batchSize?: number
 }): GoalDescriptionReviewCampaign => {
   if (!Number.isInteger(batchSize) || batchSize < 1 || batchSize > 20) {
@@ -297,10 +473,13 @@ export const buildGoalDescriptionReviewCampaign = ({
       batchId,
       ordinal,
       goalIds,
+      recordSchemaDigest,
       batchInputFingerprint: fingerprintGoalDescriptionReviewBatchInput({
         bundleFingerprint: bundle.bundleFingerprint,
         bookDigest: bundle.bookModelDigest,
         reviewInputFingerprint: input.reviewInputFingerprint,
+        inputSchemaVersion: input.schemaVersion,
+        recordSchemaDigest,
         batchId,
         goalIds,
         goals,
@@ -308,8 +487,8 @@ export const buildGoalDescriptionReviewCampaign = ({
     })
   }
   return {
-    $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-campaign.schema.json',
-    schemaVersion: 1,
+    $schema: 'https://skillpilot.com/schemas/goal-description-review/v2/goal-description-review-campaign.schema.json',
+    schemaVersion: 2,
     campaignId,
     roundId,
     bundleFingerprint: bundle.bundleFingerprint,
@@ -317,6 +496,7 @@ export const buildGoalDescriptionReviewCampaign = ({
     reviewInputFingerprint: input.reviewInputFingerprint,
     promptFingerprint: bundle.promptFingerprint,
     criteriaFingerprint: bundle.criteriaFingerprint,
+    recordSchemaDigest,
     reviewerRole,
     reviewPass,
     independenceGroupId,
@@ -331,24 +511,37 @@ export const buildGoalDescriptionReviewCampaign = ({
   }
 }
 
-const loadValidators = async () => {
+let validatorsPromise: ReturnType<typeof createValidators> | null = null
+
+const createValidators = async () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true })
   addFormats(ajv)
   const schemas = await Promise.all([
     BUNDLE_SCHEMA_PATH,
     RUN_SCHEMA_PATH,
-    INPUT_SCHEMA_PATH,
+    GOAL_BOOK_MODEL_SCHEMA_PATH,
+    EVIDENCE_PROFILE_SCHEMA_PATH,
+    INPUT_V2_SCHEMA_PATH,
+    INPUT_V3_SCHEMA_PATH,
     CAMPAIGN_SCHEMA_PATH,
     RECORD_SCHEMA_PATH,
   ].map((path) => readFile(repositoryPath(path), 'utf8').then((value) => JSON.parse(value))))
+  ajv.addSchema(schemas[2])
+  ajv.addSchema(schemas[3])
   return {
     ajv,
     validateBundle: ajv.compile(schemas[0]),
     validateRun: ajv.compile(schemas[1]),
-    validateInput: ajv.compile(schemas[2]),
-    validateCampaign: ajv.compile(schemas[3]),
-    validateRecord: ajv.compile(schemas[4]),
+    validateInputV2: ajv.compile(schemas[4]),
+    validateInputV3: ajv.compile(schemas[5]),
+    validateCampaign: ajv.compile(schemas[6]),
+    validateRecord: ajv.compile(schemas[7]),
   }
+}
+
+const loadValidators = () => {
+  validatorsPromise ??= createValidators()
+  return validatorsPromise
 }
 
 const validateReviewInputBindings = ({
@@ -384,6 +577,39 @@ const validateReviewInputBindings = ({
     ) {
       errors.push(`Description-review input ${goal.goalId} cites stale or foreign goal/page fingerprints`)
     }
+    const { page, evidenceProfile } = goal.reviewContext
+    if (
+      page.goalId !== goal.goalId
+      || page.pageNumber !== bundleGoal.pageNumber
+      || page.goalFingerprint !== goal.goalFingerprint
+      || page.pageFingerprint !== goal.pageFingerprint
+    ) {
+      errors.push(`Description-review input ${goal.goalId} has stale or foreign GoalBook page context`)
+    }
+    if (page.title !== goal.currentTitleDe || page.description !== goal.currentDescriptionDe) {
+      errors.push(`Description-review input ${goal.goalId} GoalBook page context disagrees with its current German text`)
+    }
+    if (stableGoalBookJson(page.evidenceReview) !== stableGoalBookJson(bundleGoal.evidenceReview)) {
+      errors.push(`Description-review input ${goal.goalId} GoalBook evidence summary disagrees with the review bundle`)
+    }
+    if (page.evidenceReview === null) {
+      if (evidenceProfile !== null) {
+        errors.push(`Description-review input ${goal.goalId} has an unbound evidence profile`)
+      }
+    } else if (evidenceProfile === null) {
+      errors.push(`Description-review input ${goal.goalId} is missing its bound evidence profile`)
+    } else if (
+      evidenceProfile.reviewId !== page.evidenceReview.reviewId
+      || evidenceProfile.goalId !== goal.goalId
+      || evidenceProfile.goalFingerprint !== goal.goalFingerprint
+      || evidenceProfile.reviewInputFingerprint !== page.evidenceReview.reviewInputFingerprint
+      || evidenceProfile.profileFingerprint !== page.evidenceReview.profileFingerprint
+      || evidenceProfile.status !== page.evidenceReview.status
+      || evidenceProfile.evidenceLevel !== page.evidenceReview.evidenceLevel
+      || evidenceProfile.maximumClaimScope !== page.evidenceReview.maximumClaimScope
+    ) {
+      errors.push(`Description-review input ${goal.goalId} evidence profile disagrees with its GoalBook page`)
+    }
   })
   const expectedFingerprint = fingerprintGoalDescriptionReviewInput({
     $schema: input.$schema,
@@ -394,7 +620,7 @@ const validateReviewInputBindings = ({
     goals: input.goals,
   })
   if (input.reviewInputFingerprint !== expectedFingerprint) {
-    errors.push('Description-review input reviewInputFingerprint does not match its bilingual goal bytes')
+    errors.push('Description-review input reviewInputFingerprint does not match its complete contextual goal bytes')
   }
   return errors
 }
@@ -408,12 +634,22 @@ export const validateGoalDescriptionReviewCampaign = async ({
   input: GoalDescriptionReviewInput
   campaign: GoalDescriptionReviewCampaign
 }) => {
-  const { ajv, validateBundle, validateInput, validateCampaign } = await loadValidators()
+  const {
+    ajv,
+    validateBundle,
+    validateInputV2,
+    validateInputV3,
+    validateCampaign,
+  } = await loadValidators()
+  const expectedRecordSchemaDigest = await fingerprintGoalDescriptionReviewRecordSchema()
   const errors: string[] = []
   if (!validateBundle(bundle)) errors.push(`Bundle: ${ajv.errorsText(validateBundle.errors)}`)
+  const validateInput = input.schemaVersion === 2 ? validateInputV2 : validateInputV3
   if (!validateInput(input)) errors.push(`Input: ${ajv.errorsText(validateInput.errors)}`)
   if (!validateCampaign(campaign)) errors.push(`Campaign: ${ajv.errorsText(validateCampaign.errors)}`)
   if (errors.length > 0) return { errors }
+
+  errors.push(...validateGoalBookReviewBundleManifestBindings(bundle))
 
   errors.push(...validateReviewInputBindings({ bundle, input }))
   if (campaign.bundleFingerprint !== bundle.bundleFingerprint) {
@@ -430,6 +666,9 @@ export const validateGoalDescriptionReviewCampaign = async ({
   }
   if (campaign.criteriaFingerprint !== bundle.criteriaFingerprint) {
     errors.push('Campaign criteriaFingerprint does not match the review bundle')
+  }
+  if (campaign.recordSchemaDigest !== expectedRecordSchemaDigest) {
+    errors.push('Campaign recordSchemaDigest does not match the exact V1 output-record schema bytes')
   }
   if (campaign.goalCount !== bundle.goals.length) {
     errors.push('Campaign goalCount must cover every review-bundle goal')
@@ -450,10 +689,15 @@ export const validateGoalDescriptionReviewCampaign = async ({
     if (!sameOrderedValues(batch.goalIds, goalIds)) {
       errors.push(`Campaign batch ${batch.batchId} does not contain the exact ordered goal slice`)
     }
+    if (batch.recordSchemaDigest !== campaign.recordSchemaDigest) {
+      errors.push(`Campaign batch ${batch.batchId} recordSchemaDigest does not match the campaign`)
+    }
     const expectedFingerprint = fingerprintGoalDescriptionReviewBatchInput({
       bundleFingerprint: bundle.bundleFingerprint,
       bookDigest: bundle.bookModelDigest,
       reviewInputFingerprint: input.reviewInputFingerprint,
+      inputSchemaVersion: input.schemaVersion,
+      recordSchemaDigest: campaign.recordSchemaDigest,
       batchId: batch.batchId,
       goalIds,
       goals,
@@ -526,6 +770,9 @@ export const validateGoalDescriptionReviewBatch = async ({
   }
   if (run.outputDigest !== sha256(recordsBytes)) {
     errors.push('Run outputDigest does not match description-records.jsonl bytes')
+  }
+  if (run.status !== 'completed') {
+    errors.push('Description-review run status must be completed')
   }
 
   const inputGoalById = new Map(input.goals.map((goal) => [goal.goalId, goal]))

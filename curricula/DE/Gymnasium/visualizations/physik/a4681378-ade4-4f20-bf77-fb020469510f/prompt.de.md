@@ -4,14 +4,14 @@
 
 - SkillPilot-ID: `a4681378-ade4-4f20-bf77-fb020469510f`
 - Titel: Entstehung und Zerlegung von Farben erklären
-- Beschreibung: Die lernende Person kann Farbzerlegung mit Prisma oder Farbkreis erklären und Weiß als zusammengesetzte Farbe deuten.
+- Beschreibung: Die lernende Person kann den Unterschied zwischen der räumlichen Aufspaltung weißen Lichts in Spektralfarben durch unterschiedlich starke Brechung im Prisma und der zeitlichen Integration rasch wechselnder Farbeindrücke zu einem annähernd weißen Gesamteindruck bei einem schnell rotierenden Farbkreis erklären.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `a4681378-ade4-4f20-bf77-fb020469510f.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/a4681378-ade4-4f20-bf77-fb020469510f/a4681378-ade4-4f20-bf77-fb020469510f.jpg`
+- Provider: OpenAI ImageGen (built-in)
+- Status: erzeugt und hashgebunden KI-geprüft, fresh original-resolution AI review 2026-08-26
+- Quellbild: `a4681378-ade4-4f20-bf77-fb020469510f.png`
+- Public Asset: `/assets/goal-visualizations/physik/a4681378-ade4-4f20-bf77-fb020469510f/a4681378-ade4-4f20-bf77-fb020469510f.png`
 
 ## Prompt
 
@@ -28,31 +28,47 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Entstehung und Zerlegung von Farben erklären
-Beschreibung: Die lernende Person kann Farbzerlegung mit Prisma oder Farbkreis erklären und Weiß als zusammengesetzte Farbe deuten.
+Beschreibung: Die lernende Person kann den Unterschied zwischen der räumlichen Aufspaltung weißen Lichts in Spektralfarben durch unterschiedlich starke Brechung im Prisma und der zeitlichen Integration rasch wechselnder Farbeindrücke zu einem annähernd weißen Gesamteindruck bei einem schnell rotierenden Farbkreis erklären.
 
 Zusatzanweisung:
 Pflichtinhalt:
 
-Show color dispersion and white light as a mixture of colors.
-Use a clean prism diagram:
+Expand the existing prism-only infographic into one coherent two-panel landscape infographic that correctly distinguishes prism dispersion from the effect of a rapidly rotating color wheel. Preserve the clean pale-blue classroom infographic style, bold black German typography, high contrast, and simple vector-like geometry.
+
+Left panel:
 
 - one straight white light ray enters a triangular glass prism from the left
-- on the right side, the light is split into an ordered fan of six straight spectral rays
-- label the colors in this order from top to bottom: `rot`, `orange`, `gelb`, `grün`, `blau`, `violett`
-- add label `weißes Licht = zusammengesetzt`
-- add label `Prisma zerlegt weißes Licht`
+- six straight spectral rays leave in this exact top-to-bottom order: red, orange, yellow, green, blue, violet
+- exact labels `Prisma zerlegt weißes Licht` and `Spektralfarben`
+
+Right panel:
+
+- show a color wheel with clearly separated colored sectors
+- use motion marks to indicate rapid rotation
+- show an adjacent nearly white perceived result associated with a simple eye symbol
+- exact labels `Farbkreis schnell gedreht` and `annähernd weißer Farbeindruck`
+
+Across both panels:
+
+- exact title `Entstehung und Zerlegung von Farben erklären`
+- exact contrast label `zwei verschiedene Vorgänge`
+- the prism separates spectral components already present in white light; it does not create colors
+- the rapidly rotating color wheel does not decompose white light; changing color impressions are temporally integrated into an approximately white overall impression
+- the eye receives light and emits no rays
 
 Vermeiden:
 
-Do not show only three colors for the prism spectrum.
-Do not put colors in a random order.
+Do not put prism colors in a random order or show only three colors.
 Do not label white as a spectral color.
-Do not draw curved arrows, guide arrows, decorative arrows, or large summary arrows.
-Do not draw reflected rays going backward from the prism; keep the diagram simple.
-Do not add a rainbow with physically impossible order.
+Do not show a stationary color wheel as white.
+Do not show the wheel emitting a spectrum or decomposing white light.
+Do not show the prism creating colors.
+Do not draw curved prism rays, guide arrows, decorative arrows, or arrows from the eye.
 Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
 ```
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Das aktive Asset wurde am 26. August 2026 in Originalauflösung gegen die
+Visualisierungs-Checkliste geprüft. Der hashgebundene Audit-Eintrag steht in
+`quality/goal-visualization-review/physik-colors-current-alignment-2026-08-26.md`.

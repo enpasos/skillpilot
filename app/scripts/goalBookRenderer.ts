@@ -799,10 +799,13 @@ const renderPage = (
   const reversePrerequisites = referenceList('reverseRequires', page.reverseRequires, pagesByGoalId, copy)
   const feedbackHref = feedbackUrl(options.feedbackBaseUrl, model, page)
   const applicabilitySummary = renderApplicabilitySummary(model, page, copy)
-  const relationCount = page.requires.length + page.reverseRequires.length
+  const relationCount = page.requires.length
+    + page.reverseRequires.length
+    + page.externalPrerequisites.length
+    + page.externalReverseRequires.length
   const relationDensityClass = relationCount > 35
     ? ' goal-page--very-dense-relations'
-    : relationCount > 20
+    : relationCount > 12
       ? ' goal-page--dense-relations'
       : ''
 

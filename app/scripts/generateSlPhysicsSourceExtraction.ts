@@ -109,7 +109,8 @@ const target = {
   simpleMachines: '327302e3-5b36-46f8-9c16-73f24583b0eb',
   sekIHeat: '2d3d42ae-492b-4795-a22f-eeca03aaed38',
   temperature: '940978fa-1f2d-4e54-9c28-081a6df9b76f',
-  expansion: 'd27c8860-12a4-4d7d-9849-ccd8b7caca48',
+  thermometer: '51de4fd9-6827-5b3d-b2ca-5e27ba961a7f',
+  expansion: 'b60f63b6-e70b-5557-9f54-86d42fa80325',
   particleModel: '9ac4973a-21d5-48a5-90b4-eb90e10391ae',
   heatTransfer: 'fbe0faae-7fba-482b-888e-341f926770f3',
   light: '051cedc5-d380-4716-9751-b18f2e67a912',
@@ -207,6 +208,15 @@ const target = {
   semiconductors: '7badac4d-2874-5b3a-87e8-bf8f4440b2a6',
   bandModel: 'df010b2b-b182-5f7e-bbe4-49b72e48c27a',
   solidState: '620d4320-6b93-500b-8a62-86d02b1ed1f0',
+}
+
+const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
+  'sl-phys-seki-sl-ph-seki-8-nw-2024-p33-002-ab9d7888': [target.thermometer],
+  'sl-phys-seki-sl-ph-seki-8-nw-2024-p33-008-f8abcc56': [target.expansion],
+}
+
+const currentWaveRemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  'sl-phys-seki-sl-ph-seki-8-nw-2024-p33-008-f8abcc56': [target.density],
 }
 
 const slSourceDocuments = {
@@ -587,6 +597,8 @@ const inferCanonicalGoalIds = (sourceGoal: SourceGoal, config: ExtractionConfig)
     }
   }
 
+  for (const goalId of currentWaveRemovedTargetsBySourceGoalId[sourceGoal.id] ?? []) ids.delete(goalId)
+  add(ids, ...(currentWaveTargetsBySourceGoalId[sourceGoal.id] ?? []))
   return [...ids]
 }
 

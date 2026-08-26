@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `0a6dab2e-1bbb-5587-adb0-456d3991c327`
 - Titel: Terme mit rationalen Zahlen strukturiert auswerten
-- Beschreibung: Die lernende Person kann Terme mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, sowie Klammern strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.
+- Beschreibung: Die lernende Person kann die durch Grundrechenarten und Klammern bestimmte Struktur von Termen mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, erkennen und fachsprachlich beschreiben, diese Terme strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Terme mit rationalen Zahlen strukturiert auswerten
-Beschreibung: Die lernende Person kann Terme mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, sowie Klammern strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.
+Beschreibung: Die lernende Person kann die durch Grundrechenarten und Klammern bestimmte Struktur von Termen mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, erkennen und fachsprachlich beschreiben, diese Terme strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.
 
 Zusatzanweisung:
 Do not include any technical IDs, platform names, UUIDs, file names, database identifiers, watermarks, signatures, or hidden labels anywhere in the image. Keep all mathematical notation large, sparse, and easy to inspect. Prefer one central worked example over many tiny examples. Ensure sign rules, reciprocal rules, exponent rules, fraction equivalences, decimal notation, and final results are mathematically correct. For negative exponents, show a^(-n)=1/a^n for nonzero a; never imply a negative exponent makes the value negative.

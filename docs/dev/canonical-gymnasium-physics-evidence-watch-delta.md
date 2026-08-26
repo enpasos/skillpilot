@@ -1,6 +1,6 @@
 # Canonical Gymnasium Physics Evidence Watch Delta
 
-Snapshot: `2026-05-10T21:37:17Z`
+Snapshot: `2026-08-26T10:11:05Z`
 
 This file is generated from:
 

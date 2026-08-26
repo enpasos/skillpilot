@@ -9,6 +9,8 @@ import {
   sourceCoverageSurrogateKey,
   type SourceCoverageGoalLike,
 } from './sourceCoverageEvidence'
+import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 const LANDSCAPE = 'landscape'
 const JURISDICTION = 'DE-HE'
@@ -71,6 +73,61 @@ test('applicabilityFromRequires uses all-of intersection semantics', () => {
   assert.deepEqual(intersectApplicabilityJurisdictions([{ jurisdiction: ['DE-BY'] }]), ['DE-BY'])
   assert.deepEqual(intersectApplicabilityJurisdictions([{ jurisdiction: ['DE-BY'] }, {}]), [])
   assert.deepEqual(intersectApplicabilityJurisdictions([]), [])
+})
+
+test('source coverage visibility follows composition target roles, not requires-closure applicability', () => {
+  const makeGoal = (
+    id: string,
+    contains: string[] = [],
+    tags: string[] = [],
+  ): LearningGoal => ({
+    id,
+    title: id,
+    description: id,
+    weight: 1,
+    tags,
+    dimensionTags: {
+      framework: 'test',
+      demandLevel: 'AB1',
+      processCompetencies: [],
+      guidingIdeas: [],
+      phase: 'J8',
+    },
+    requires: [],
+    contains,
+  })
+  const landscape: SkillLandscape = {
+    landscapeId: LANDSCAPE,
+    locale: 'de-DE',
+    title: 'Test',
+    description: 'Test',
+    goals: [
+      makeGoal('root', ['target-cluster', 'support', 'closure-only'], ['root']),
+      makeGoal('target-cluster', ['target']),
+      makeGoal('target'),
+      makeGoal('support'),
+      makeGoal('closure-only'),
+    ],
+  }
+  const view = {
+    viewId: 'test-view',
+    landscapeId: LANDSCAPE,
+    scope: { schoolForm: 'Gymnasium', jurisdiction: JURISDICTION },
+    rootNodes: [{
+      kind: 'structure',
+      id: 'test-root',
+      label: 'Test',
+      children: [
+        { kind: 'canonicalSubtree', goalId: 'target-cluster' },
+        { kind: 'goalEntry', goalId: 'support', projectionRole: 'prerequisiteOnly' },
+      ],
+    }],
+  }
+
+  assert.deepEqual(
+    [...collectAuthoritativeTargetAtomicGoalIds(landscape, view)].sort(),
+    ['target'],
+  )
 })
 
 test('APV-202 is based only on source evidence', () => {

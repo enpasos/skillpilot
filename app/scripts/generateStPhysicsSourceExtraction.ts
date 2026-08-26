@@ -112,6 +112,10 @@ const target = {
   sekINuclear: 'cb0426b0-a973-5660-b6fe-79407934730f',
   sekIEnergySupply: '30a936ec-e427-57fe-bf3e-4abd64b1f0c1',
   sekIClimate: '5be98160-5189-58aa-8183-1df1c400cc8c',
+  thermometer: '51de4fd9-6827-5b3d-b2ca-5e27ba961a7f',
+  thermalExpansion: 'b60f63b6-e70b-5557-9f54-86d42fa80325',
+  reflectionLaw: '3c8e5510-a12d-5770-8a01-e5fe741b259c',
+  eclipses: 'f0046ae8-cbfc-526b-8414-04e3595b6075',
 
   mechanics: '942de15b-32f1-5713-80e5-e7aeb8749fc4',
   gravitation: '0ade0d10-8b32-5a95-a1a9-8ac64e2a8089',
@@ -128,6 +132,14 @@ const target = {
   radiation: 'e5c08365-a0d3-592c-ad8e-d2c2c6e2b717',
   nuclear: '72c2bf5d-c62b-5744-9971-4c117f2a432d',
   relativity: '157c404a-e14b-598a-9389-6924f8f9262e',
+}
+
+const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
+  'st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-069-ab69d8cb': [target.thermalExpansion],
+  'st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-075-d1ddbde4': [target.thermometer],
+  'st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-077-c0f852da': [target.thermometer],
+  'st-phys-seki-st-schuljahrgang-6-strahlenoptik-033-4dd77f01': [target.eclipses],
+  'st-phys-seki-st-schuljahrgang-6-strahlenoptik-039-98f1fe21': [target.reflectionLaw],
 }
 
 const configs: ExtractionConfig[] = [
@@ -478,6 +490,7 @@ const inferCanonicalGoalIds = (sourceGoal: SourceGoal, stage: Stage): string[] =
     if (/relativ|lichtgeschwindigkeit|zeitdilat|längenkontraktion|masse.*energie/u.test(text)) add(ids, target.relativity)
   }
 
+  add(ids, ...(currentWaveTargetsBySourceGoalId[sourceGoal.id] ?? []))
   if (ids.size === 0) add(ids, target.methods)
   return [...ids]
 }

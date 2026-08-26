@@ -10,22 +10,22 @@
 > Source of truth: `curricula/DE/Gymnasium/input/`
 > Source of truth: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
 
-Erzeugt: 2026-07-28T10:26:46.240Z
+Erzeugt: 2026-08-26T04:38:56.667Z
 
 Diese Ansicht ist für Leserinnen und Leser gedacht, die keine SkillPilot-IDs auswerten wollen. Das Lernziel wird deshalb über seinen SkillPilot-Pfad in der Skill-Landschaft benannt. Technische Bezeichner erscheinen nur dort, wo sie für die MEM/FWU-SPARQL-Abfrage notwendig sind.
 
 ## Kurzüberblick
 
-- Lernziele: 3
-- Klassischer Quellenweg vorhanden: 3
-- MEM/FWU-SPARQL konsistent: 0
+- Lernziele: 4
+- Klassischer Quellenweg vorhanden: 4
+- MEM/FWU-SPARQL konsistent: 4
 - Bundesland-Scope: DE-BY
 
-## 1. Brüche erweitern, kürzen und vergleichen
+## 1. Brüche erweitern und kürzen
 
-SkillPilot-Pfad: Mathematik > Jahrgangsstufe 6 > Rationale Zahlen darstellen und berechnen > Brüche erweitern, kürzen und vergleichen
+SkillPilot-Pfad: Mathematik > Jahrgangsstufe 6 > Rationale Zahlen darstellen und berechnen > Brüche erweitern, kürzen und vergleichen > Brüche erweitern und kürzen
 
-Lernziel: Die lernende Person kann Brüche erweitern, kürzen, in äquivalente Darstellungen überführen und zum Größenvergleich geeignete Strategien auswählen.
+Lernziel: Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.
 
 ### So liest man die Originalquelle
 
@@ -40,21 +40,104 @@ Die Quelle formuliert den fachlichen Kern so: erläutern anhand von Beispielen, 
 
 Dieser Ausschnitt steht in einem breiteren offiziellen Erwartungssatz: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z. B. auf der Primfaktorzerlegung basierenden) Verfahrens.
 
-SkillPilot formuliert daraus ein prüfbares Lernziel im Pfad "Mathematik > Jahrgangsstufe 6 > Rationale Zahlen darstellen und berechnen > Brüche erweitern, kürzen und vergleichen": Die lernende Person kann Brüche erweitern, kürzen, in äquivalente Darstellungen überführen und zum Größenvergleich geeignete Strategien auswählen.
+SkillPilot formuliert daraus ein prüfbares Lernziel im Pfad "Mathematik > Jahrgangsstufe 6 > Rationale Zahlen darstellen und berechnen > Brüche erweitern, kürzen und vergleichen > Brüche erweitern und kürzen": Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.
 
 Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. Inhaltlich heißt das: Der extrahierte Quellenbeleg trägt dieses Lernziel direkt; weitere klassische Quellenwege bleiben maschinenlesbar dokumentiert.
 
 ### MEM/FWU-SPARQL als Alternativweg
 
-Für dieses Beispiel ist die MEM/FWU-Route nicht als konsistent gerendert. Status: `mem_sparql_review_needed`.
-Der MEM/FWU-SPARQL-Vergleich ist konfiguriert, aber für den gerenderten klassischen Quellenweg wurde kein passender MEM-Erwartungstext gefunden.
+MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
 
-### Offene Punkte
+1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
+2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
 
-- MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten.
-- Der konfigurierte MEM/FWU-SPARQL-Vergleich fand keinen passenden MEM-Erwartungstext für den klassischen Quellenweg.
+```sparql
+PREFIX lp: <https://w3id.org/lehrplan/ontology/>
+PREFIX bfo: <http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-## 2. Funktionsbegriff und Darstellungen verstehen
+SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
+FROM <https://w3id.org/lehrplan/by/data>
+WHERE {
+  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220606.de> }
+  VALUES ?goal { <https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c> }
+
+  ?plan rdfs:label ?planLabel ;
+    lp:LP_0000026 ?year ;
+    bfo:BFO_0000051+ ?goal .
+
+  ?year rdfs:label ?yearLabel .
+  ?goal rdfs:label ?goalLabel .
+
+  FILTER(langMatches(lang(?yearLabel), "de"))
+}
+```
+
+3. Die Abfrage sollte genau eine Zeile liefern.
+4. Prüfe die Spalten: `planLabel` sollte "Mathematik 6" sein, `yearLabel` sollte "Jahrgangsstufe 6" sein.
+5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z. B. auf der Primfaktorzerlegung basierenden) Verfahrens.
+
+Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
+
+## 2. Brüche mit geeigneten Strategien vergleichen
+
+SkillPilot-Pfad: Mathematik > Jahrgangsstufe 6 > Rationale Zahlen darstellen und berechnen > Brüche erweitern, kürzen und vergleichen > Brüche mit geeigneten Strategien vergleichen
+
+Lernziel: Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.
+
+### So liest man die Originalquelle
+
+1. Öffne die offizielle Quelle: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
+2. Navigiere zur Stelle LehrplanPLUS Bayern Gymnasium Mathematik, M6.1.1.
+3. Vergleiche dort den Quellentext mit diesem extrahierten Beleg: Sie wählen beim Größenvergleich von Brüchen geeignete Strategien
+4. Für eine technische Nachprüfung liegt die Source-Extraction unter `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json`.
+
+### Warum daraus dieses Lernziel entsteht
+
+Die Quelle formuliert den fachlichen Kern so: Sie wählen beim Größenvergleich von Brüchen geeignete Strategien
+
+Dieser Ausschnitt steht in einem breiteren offiziellen Erwartungssatz: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z. B. auf der Primfaktorzerlegung basierenden) Verfahrens.
+
+SkillPilot formuliert daraus ein prüfbares Lernziel im Pfad "Mathematik > Jahrgangsstufe 6 > Rationale Zahlen darstellen und berechnen > Brüche erweitern, kürzen und vergleichen > Brüche mit geeigneten Strategien vergleichen": Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.
+
+Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. Inhaltlich heißt das: Der extrahierte Quellenbeleg trägt dieses Lernziel direkt; weitere klassische Quellenwege bleiben maschinenlesbar dokumentiert.
+
+### MEM/FWU-SPARQL als Alternativweg
+
+MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
+
+1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
+2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
+
+```sparql
+PREFIX lp: <https://w3id.org/lehrplan/ontology/>
+PREFIX bfo: <http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
+FROM <https://w3id.org/lehrplan/by/data>
+WHERE {
+  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220606.de> }
+  VALUES ?goal { <https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c> }
+
+  ?plan rdfs:label ?planLabel ;
+    lp:LP_0000026 ?year ;
+    bfo:BFO_0000051+ ?goal .
+
+  ?year rdfs:label ?yearLabel .
+  ?goal rdfs:label ?goalLabel .
+
+  FILTER(langMatches(lang(?yearLabel), "de"))
+}
+```
+
+3. Die Abfrage sollte genau eine Zeile liefern.
+4. Prüfe die Spalten: `planLabel` sollte "Mathematik 6" sein, `yearLabel` sollte "Jahrgangsstufe 6" sein.
+5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z. B. auf der Primfaktorzerlegung basierenden) Verfahrens.
+
+Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
+
+## 3. Funktionsbegriff und Darstellungen verstehen
 
 SkillPilot-Pfad: Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Funktionsbegriff und Darstellungen verstehen
 
@@ -79,15 +162,40 @@ Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. In
 
 ### MEM/FWU-SPARQL als Alternativweg
 
-Für dieses Beispiel ist die MEM/FWU-Route nicht als konsistent gerendert. Status: `mem_sparql_review_needed`.
-Der MEM/FWU-SPARQL-Vergleich ist konfiguriert, aber für den gerenderten klassischen Quellenweg wurde kein passender MEM-Erwartungstext gefunden.
+MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
 
-### Offene Punkte
+1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
+2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
 
-- MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten.
-- Der konfigurierte MEM/FWU-SPARQL-Vergleich fand keinen passenden MEM-Erwartungstext für den klassischen Quellenweg.
+```sparql
+PREFIX lp: <https://w3id.org/lehrplan/ontology/>
+PREFIX bfo: <http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-## 3. Ableitung als Steigung im Punkt deuten
+SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
+FROM <https://w3id.org/lehrplan/by/data>
+WHERE {
+  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220710.de> }
+  VALUES ?goal { <https://lp-bavaria.org/32733866-36a7-46f8-b663-4ff9d058c23f> }
+
+  ?plan rdfs:label ?planLabel ;
+    lp:LP_0000026 ?year ;
+    bfo:BFO_0000051+ ?goal .
+
+  ?year rdfs:label ?yearLabel .
+  ?goal rdfs:label ?goalLabel .
+
+  FILTER(langMatches(lang(?yearLabel), "de"))
+}
+```
+
+3. Die Abfrage sollte genau eine Zeile liefern.
+4. Prüfe die Spalten: `planLabel` sollte "Mathematik 8" sein, `yearLabel` sollte "Jahrgangsstufe 8" sein.
+5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: verstehen eine Funktion als eindeutige Zuordnung und grenzen die zugehörigen Fachbegriffe (z. B. Funktionsterm, Graph, Definitionsmenge, Wertemenge) voneinander ab. Sie erkennen Funktionen als solche und unterscheiden diese begründet von nicht eindeutigen Zuordnungen. Graphen von Funktionen, denen Terme zugrunde lie...
+
+Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
+
+## 4. Ableitung als Steigung im Punkt deuten
 
 SkillPilot-Pfad: Mathematik > Grundlagen der Analysis und mathematische Modelle > Ableitungseinstieg und Differentialrechnung (Sek II) > Einführung in den Ableitungsbegriff > Einstieg Ableitungsbegriff und Änderungsraten > Ableitung als Steigung im Punkt deuten
 
@@ -110,11 +218,36 @@ Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. In
 
 ### MEM/FWU-SPARQL als Alternativweg
 
-Für dieses Beispiel ist die MEM/FWU-Route nicht als konsistent gerendert. Status: `mem_sparql_review_needed`.
-Der MEM/FWU-SPARQL-Vergleich ist konfiguriert, aber für den gerenderten klassischen Quellenweg wurde kein passender MEM-Erwartungstext gefunden.
+MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
 
-### Offene Punkte
+1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
+2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
 
-- MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten.
-- Der konfigurierte MEM/FWU-SPARQL-Vergleich fand keinen passenden MEM-Erwartungstext für den klassischen Quellenweg.
+```sparql
+PREFIX lp: <https://w3id.org/lehrplan/ontology/>
+PREFIX bfo: <http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
+FROM <https://w3id.org/lehrplan/by/data>
+WHERE {
+  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220889.de> }
+  VALUES ?goal { <https://lp-bavaria.org/786038d7-4eed-4698-912e-6dc1da590b73> }
+
+  ?plan rdfs:label ?planLabel ;
+    lp:LP_0000026 ?year ;
+    bfo:BFO_0000051+ ?goal .
+
+  ?year rdfs:label ?yearLabel .
+  ?goal rdfs:label ?goalLabel .
+
+  FILTER(langMatches(lang(?yearLabel), "de"))
+}
+```
+
+3. Die Abfrage sollte genau eine Zeile liefern.
+4. Prüfe die Spalten: `planLabel` sollte "Mathematik 11" sein, `yearLabel` sollte "Jahrgangsstufe 11" sein.
+5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: interpretieren Werte von Ableitungsfunktionen als lokale Änderungsraten und nutzen diese Interpretation auch im Sachkontext (u. a. lokale Steigung einer Straße, Momentangeschwindigkeit).
+
+Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
 

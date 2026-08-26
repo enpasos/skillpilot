@@ -111,14 +111,21 @@ const target = {
   expansion: 'd27c8860-12a4-4d7d-9849-ccd8b7caca48',
   particleModel: '9ac4973a-21d5-48a5-90b4-eb90e10391ae',
   heatTransfer: 'fbe0faae-7fba-482b-888e-341f926770f3',
+  regularVolume: 'f827b00f-af7f-52de-84aa-2a2bbaa035bd',
+  displacementVolume: 'f92b5b8a-327f-50d2-8313-6a142399ebf0',
   light: '051cedc5-d380-4716-9751-b18f2e67a912',
   lightRays: '79cb1695-f985-443a-b93e-27b57ab474b7',
+  reflectionLaw: '3c8e5510-a12d-5770-8a01-e5fe741b259c',
+  planeMirrorImage: 'b57427c9-1af5-5daa-8c65-b84a4cc20785',
+  lunarPhases: '33e3417c-e062-5f4a-8df9-3195dca50089',
+  eclipses: 'f0046ae8-cbfc-526b-8414-04e3595b6075',
   spectrumColor: 'a4681378-ade4-4f20-bf77-fb020469510f',
   opticsEye: '84ddb244-e560-592f-9d43-e84c801fe5b4',
   opticalInstruments: '6367d45e-919e-4c19-bcd9-7770a2d51139',
   acoustics: '41fd5575-b1a6-40e7-8ea2-66b75a597a79',
   acousticSources: 'c1006f55-0406-48cc-92d4-0d8345897cf4',
   acousticPropagation: '3c82510a-1f12-4eaa-81c2-8599437a5b85',
+  acousticSpeedMedia: 'a24c41ce-68c5-56a7-8235-ef9a7dba7042',
   acousticRisks: '8ac61062-f63e-5935-96ae-84014906c368',
   electrostaticsSimple: '32111497-d5ca-453e-906d-d352f885b126',
   atomSimple: '2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb',
@@ -215,6 +222,18 @@ const target = {
   experimentPlanning: 'd3c153b9-e09b-5668-8386-73105546a7c1',
   experimentDocumentation: 'ad62f563-4fee-5399-8d9c-03a214658aa9',
 }
+
+const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
+  'sn-phys-seki-sn-klassenstufe-6-lb2-008-01-fdd7881a': [target.regularVolume],
+  'sn-phys-seki-sn-klassenstufe-6-lb2-008-02-76a5526e': [target.displacementVolume],
+  'sn-phys-seki-sn-klassenstufe-6-lb1-002-09-a162008f': [target.lunarPhases, target.eclipses],
+  'sn-phys-seki-sn-klassenstufe-6-lb1-003-01-5d404ab8': [target.planeMirrorImage],
+  'sn-phys-seki-sn-klassenstufe-6-lb1-003-02-9b11e256': [target.reflectionLaw],
+}
+
+const currentWaveExactEdges = new Set([
+  `sn-phys-seki-sn-klassenstufe-6-lb2-008-02-76a5526e:${target.displacementVolume}`,
+])
 
 const configs: ExtractionConfig[] = [
   {
@@ -514,7 +533,13 @@ const inferCanonicalGoalIds = (sourceGoal: SourceGoal, stage: Stage): string[] =
       add(ids, target.gravitation, target.gravitationalField, target.astronomy)
     }
     if (/schall|akustik|lautstärke|frequenz|amplitude|ultraschall|infraschall|lärm/u.test(text)) {
-      add(ids, target.acoustics, target.acousticSources, target.acousticPropagation)
+      add(ids, target.acoustics, target.acousticSources)
+    }
+    if (/schallausbreitung|longitudinal|verdichtung|verdünnung|teilchenbild|teilchenmodell/u.test(text)) {
+      add(ids, target.acousticPropagation)
+    }
+    if (/schallgeschwindigkeit|ausbreitungsgeschwindigkeit.*schall|schall.*ausbreitungsgeschwindigkeit|geschwindigkeit in verschiedenen stoffen/u.test(text)) {
+      add(ids, target.acousticSpeedMedia)
     }
     if (/lärm|hörbereich|medizin|tiere/u.test(text)) add(ids, target.acousticRisks)
     if (/hertz|elektromagnetische welle|funk|fernseh|kommunikation/u.test(text)) add(ids, target.emWaves)
@@ -615,6 +640,7 @@ const inferCanonicalGoalIds = (sourceGoal: SourceGoal, stage: Stage): string[] =
     if (/klima|treibhauseffekt|energieentscheidung/u.test(text)) add(ids, target.thermodynamicsClimate)
   }
 
+  add(ids, ...(currentWaveTargetsBySourceGoalId[sourceGoal.id] ?? []))
   if (ids.size === 0) add(ids, target.methods)
   return [...ids]
 }
@@ -708,7 +734,11 @@ const buildExtraction = (config: ExtractionConfig) => {
     decision.canonicalGoalIds.map((canonicalGoalId) => ({
       legacyGoalId: decision.sourceGoalId,
       canonicalGoalId,
-      matchType: decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+      matchType: currentWaveExactEdges.has(`${decision.sourceGoalId}:${canonicalGoalId}`)
+        ? 'exact'
+        : decision.canonicalGoalIds.length === 1
+          ? 'exact'
+          : 'partial',
       reviewDecisionId: decision.sourceGoalId,
     })),
   )

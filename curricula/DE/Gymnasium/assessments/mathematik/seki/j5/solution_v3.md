@@ -54,14 +54,14 @@ Scoring notes:
 1. $PQ$ ist $6 - 1 = 5$, also $5 m$ lang. $QR$ ist $4 - 1 = 3$, also $3 m$ lang. (1 BE)
 2. Die gesuchte Punktmenge ist die waagerechte Strecke von $(1|2)$ bis $(6|2)$. Alle Punkte dieser Strecke liegen innerhalb der Sitzecke und haben genau $1 m$ Abstand zur Seite $PQ$. (2 BE)
 3. $PQRS$ ist ein Rechteck, weil gegenüberliegende Seiten parallel und gleich lang sind und die Seiten waagerecht bzw. senkrecht aufeinander stehen. Es ist kein Quadrat, weil benachbarte Seiten nicht gleich lang sind: $5 m$ und $3 m$. (2 BE)
-4. Milas Begründung reicht nicht. Vier rechte Winkel zeigen ein Rechteck, aber für ein Quadrat müssen zusätzlich alle vier Seiten gleich lang sein. Hier sind die Seitenlängen $5 m$ und $3 m$, also ist es kein Quadrat. (1 BE)
+4. Die Kreislinie hat den Mittelpunkt $T(3|2)$ und den Radius $1 m$. Ein Punkt liegt genau dann auf ihr, wenn sein Abstand zu $T$ genau $1 m$ beträgt. (1 BE)
 
 Scoring notes:
 
 - Seitenlängen aus Koordinaten: 1 BE
 - Punktmenge mit Abstandsbedingung kennzeichnen und beschreiben: 2 BE
 - Rechteck/Quadrat-Entscheidung mit Eigenschaften: 2 BE
-- Fehlvorstellung erklären: 1 BE
+- Kreislinie mit Mittelpunkt $T$ und Radius $1 m$ zeichnen und die Gleichabstandsbedingung angeben: 1 BE
 
 ---
 

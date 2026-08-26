@@ -4,59 +4,30 @@
 
 - SkillPilot-ID: `3c82510a-1f12-4eaa-81c2-8599437a5b85`
 - Titel: Schallausbreitung im Teilchenmodell erklären
-- Beschreibung: Die lernende Person kann Schallausbreitung mithilfe des Teilchenmodells qualitativ erklären und Schallgeschwindigkeiten in verschiedenen Medien vergleichen.
+- Beschreibung: Die lernende Person kann Schallausbreitung im Teilchenmodell als Weitergabe einer lokalen Schwingungsstörung und von Energie erklären und begründen, warum die Teilchen um ihre Ruhelagen schwingen, statt mit dem Schall durch das Medium zu wandern.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg`
+- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
+- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
+- Quellbild: `3c82510a-1f12-4eaa-81c2-8599437a5b85.png`
+- Public Asset: `/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.png`
+- SHA-256: `sha256:23e07f128629d5b5373918e75f3350feb1faaa5bca9db68ecee5e1a5dae1f1fb`
 
-## Prompt
+## Finale wirksame Prompt-Spezifikation
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine klare, fachlich präzise deutschsprachige Lerninfografik im Querformat zur Schallausbreitung im Teilchenmodell.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Zeige drei zeitlich aufeinanderfolgende Momentaufnahmen derselben horizontalen Teilchenreihe. Markiere für jedes Teilchen eine feste Ruhelage. Hebe in allen drei Momentaufnahmen dasselbe einzelne Teilchen farblich hervor und zeige, dass es nur klein nach links und rechts um genau diese Ruhelage schwingt. Verdichtung und Verdünnung sollen sich von links nach rechts verlagern. Ergänze oberhalb eine eindeutig nach rechts gerichtete Kennzeichnung `Störung + Energie wandern` und am markierten Teilchen die Aussage `Teilchen schwingt lokal`.
 
-Titel: Schallausbreitung im Teilchenmodell erklären
-Beschreibung: Die lernende Person kann Schallausbreitung mithilfe des Teilchenmodells qualitativ erklären und Schallgeschwindigkeiten in verschiedenen Medien vergleichen.
+Die Kernaussage muss aus dem Bild selbst verständlich werden: Die Störung und Energie werden weitergegeben, das Material wird nicht mittransportiert. Zeige deshalb ausdrücklich `kein Stofftransport` und keinen Teilchenpfad quer durch das Medium. Verwende wenige, gut lesbare deutsche Labels, feste Gleichgewichtspunkte und konsistente Teilchenabstände.
 
-Zusatzanweisung:
-Pflichtinhalt:
-
-Explain sound propagation with the particle model and compare speeds in media.
-Use two panels plus one small table.
-
-Left panel `Teilchenmodell in Luft`:
-- a speaker on the left
-- a row of air particles from left to right
-- alternating regions labelled `Verdichtung` and `Verdünnung`
-- particles should oscillate around their places, shown with tiny double-headed local vibration marks
-- one labelled direction arrow above the row from speaker to the right: `Schallausbreitung`
-
-Right panel `Medium bestimmt Geschwindigkeit`:
-- three rows labelled `Luft`, `Wasser`, `Metall`
-- use increasing length bars, with order: `Luft langsam`, `Wasser schneller`, `Metall am schnellsten`
-
-Vermeiden:
-
-Do not show individual particles flying from the speaker to the receiver.
-Do not show a single particle arrow all the way across the diagram.
-Do not reverse the speed order; in this school-level comparison metal is fastest, then water, then air.
-Do not show sound in empty space/vacuum as if it propagated normally.
-Do not add pressure or electromagnetic light symbols.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+Keine Schallgeschwindigkeiten oder Medienrangfolgen, keine Drittanbieterlogos, Wasserzeichen, technischen IDs, Plattformnamen, Aufgabenlösung, langen Textblöcke oder Darstellung eines Teilchens, das mit der Welle nach rechts fliegt.
 ```
+
+Die Generierung wurde iterativ korrigiert, bis das markierte Teilchen in allen Momentaufnahmen eindeutig derselben Ruhelage zugeordnet war und die Transportaussage nur Störung und Energie, nicht Materie, betraf.
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Am 25.08.2026 in Originalauflösung KI-geprüft: Die drei Momentaufnahmen unterscheiden lokale Teilchenschwingung und nach rechts fortschreitende Verdichtungsstörung; die Darstellung behauptet weder Stofftransport noch eine Medienrangfolge. Eine menschliche Freigabe liegt nicht vor.

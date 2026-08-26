@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Druck-Temperatur-Zusammenhänge qualitativ erklären
+# Lernzielvisualisierung: Druck-Temperatur-Zusammenhang bei konstantem Volumen qualitativ erklären
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `310b4f62-e261-46be-bb1b-1f125fc1699a`
-- Titel: Druck-Temperatur-Zusammenhänge qualitativ erklären
-- Beschreibung: Die lernende Person kann qualitative Zusammenhänge zwischen Druck- und Temperaturänderungen in Gasen fachlich erläutern.
+- Titel: Druck-Temperatur-Zusammenhang bei konstantem Volumen qualitativ erklären
+- Beschreibung: Die lernende Person kann für eine eingeschlossene Gasmenge bei konstantem Volumen mithilfe des Teilchenmodells qualitativ erklären, warum der Druck bei steigender Temperatur zunimmt und bei sinkender Temperatur abnimmt.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Druck-Temperatur-Zusammenhänge qualitativ erklären
-Beschreibung: Die lernende Person kann qualitative Zusammenhänge zwischen Druck- und Temperaturänderungen in Gasen fachlich erläutern.
+Titel: Druck-Temperatur-Zusammenhang bei konstantem Volumen qualitativ erklären
+Beschreibung: Die lernende Person kann für eine eingeschlossene Gasmenge bei konstantem Volumen mithilfe des Teilchenmodells qualitativ erklären, warum der Druck bei steigender Temperatur zunimmt und bei sinkender Temperatur abnimmt.
 
 Zusatzanweisung:
 Pflichtinhalt:

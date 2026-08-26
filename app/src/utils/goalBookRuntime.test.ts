@@ -249,7 +249,7 @@ const publicationIndexFixture = {
     title: 'Lernzielbuch Physik',
     locale: 'de-DE',
     publicationMode: 'review',
-    pageCount: 426,
+    pageCount: 430,
     model: {
       url: '/lernzielbuch/de-gym-physik-bundesweit.book-model.json',
       sha256: sha,

@@ -512,7 +512,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '1e37d0a8-c314-57bd-8e64-26d0f2ec579a': [
     'c2e0fc31-27a2-5727-9025-a824db9150d2',
-    '01bebdfc-5819-4610-a03e-ea5e794fc954',
+    '8f833b36-4126-52db-b210-79fb0023c7d9',
     '8fca14c7-3251-5526-adde-2567ea6816b2',
     'e5bc2227-d900-585f-8ac0-9d3f1cb40e27',
   ],
@@ -857,20 +857,22 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   'de098d6a-d015-574e-a201-50386c079d18': [
     '53196a71-9dbd-4835-b2f9-ff21b8a8962c',
-    '01bebdfc-5819-4610-a03e-ea5e794fc954',
+    '8a84de16-2fde-58ec-827a-f803e2ce8564',
+    '267170bd-f880-56a7-9719-ffb9751872c5',
+    '8f833b36-4126-52db-b210-79fb0023c7d9',
     'ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca',
   ],
   'f0da0513-86f0-5e4c-9674-161d630f6598': [
     '5355fee0-0477-5570-a234-561477bf77ba',
     'da26294f-4316-5bd5-a37a-bd89397b3b8b',
     'dd7cdcea-0950-461b-96ac-ce49989fca47',
-    'cca06d84-28fe-4b80-9bcd-968dda026e0e',
+    'b57427c9-1af5-5daa-8c65-b84a4cc20785',
     '6a4c6042-052b-502b-a39a-0ed8941247ac',
   ],
   '9e35926a-0175-522c-8b80-f2cfc94edb07': [
     'dd7cdcea-0950-461b-96ac-ce49989fca47',
     '79cb1695-f985-443a-b93e-27b57ab474b7',
-    'cca06d84-28fe-4b80-9bcd-968dda026e0e',
+    'b57427c9-1af5-5daa-8c65-b84a4cc20785',
   ],
   '90c1e686-e1c8-5f07-b2a2-2cecf652b886': [
     '078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5',
@@ -1013,7 +1015,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   '06516caa-8438-5dcf-965a-b08d786e669f': [
     '46e42b07-c098-5d65-8ef5-8472b7c4d8e2',
     '59d1145e-ac54-5917-880a-21b4b80526d3',
-    '01bebdfc-5819-4610-a03e-ea5e794fc954',
+    '8a84de16-2fde-58ec-827a-f803e2ce8564',
   ],
   '75c06e67-c267-5328-b38e-d72318d518df': [
     '201d353a-dfe7-521b-b0f6-eccb4d42945b',
@@ -1174,7 +1176,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
     'd2860d7f-32ff-5d74-b2f8-b7bfc8d75aec',
   ],
   '1294d659-60f1-5ef4-b19a-3726cd2e09e4': [
-    'bfea7a23-1ce1-4a42-badd-1fc9bf30124a',
+    '7d78da7f-6af5-440a-9d6b-6cab4bee8dd2',
     '49872cc0-401f-5464-9235-4763df4db5cf',
     '7e719cc2-0866-5267-a252-e7e7ac0d03f1',
   ],

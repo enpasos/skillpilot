@@ -46,7 +46,7 @@ const target = {
   thermodynamics: 'df11eb33-4900-52bf-93b3-eb82ff0f9a28',
   gravitation: '0ade0d10-8b32-5a95-a1a9-8ac64e2a8089',
   acousticSources: 'c1006f55-0406-48cc-92d4-0d8345897cf4',
-  acousticPropagation: '3c82510a-1f12-4eaa-81c2-8599437a5b85',
+  acousticSpeedMedia: 'a24c41ce-68c5-56a7-8235-ef9a7dba7042',
   acousticRisks: '8ac61062-f63e-5935-96ae-84014906c368',
   lenses: '84ddb244-e560-592f-9d43-e84c801fe5b4',
   opticalInstruments: '6367d45e-919e-4c19-bcd9-7770a2d51139',
@@ -173,7 +173,7 @@ const rows: Row[] = [
   ]),
 
   row('3.2-AKU', 'Schallgeschwindigkeit in Luft und einem weiteren Medium bestimmen und Messwerte dazu auswerten', [
-    target.acousticPropagation,
+    target.acousticSpeedMedia,
     target.methods,
   ]),
   row('3.2-AKU', 'Ton, Klang und Geräusch anhand von Schwingungsbildern vergleichen', [target.acousticSources]),
