@@ -19,6 +19,9 @@ export type GoalEvidenceAiRunManifest = {
   batchInputFingerprint?: string
   bundleFingerprint: string
   bookDigest: string
+  provider: string
+  model: string
+  modelVersion?: string
   promptFingerprint: string
   criteriaFingerprint: string
   independenceGroupId: string
@@ -28,6 +31,7 @@ export type GoalEvidenceAiRunManifest = {
   inputArtifacts: Array<{ role: string; digest: string }>
   startedAt: string
   completedAt: string
+  status: 'completed' | 'failed'
   outputDigest: string
 }
 

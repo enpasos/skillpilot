@@ -311,6 +311,34 @@ assert.ok(
 )
 assert.match(html, /Direkt aufbauende Ziele außerhalb dieses Buchs/u)
 
+const denseExternalModel = {
+  ...model,
+  pages: model.pages.map((page, pageIndex) => pageIndex === 0
+    ? {
+        ...page,
+        externalPrerequisites: Array.from({ length: 13 }, (_, index) => {
+          const goalId = `00000000-0000-4000-8000-${String(index + 1).padStart(12, '0')}`
+          return {
+            goalId,
+            title: `Externe Voraussetzung ${index + 1}`,
+            canonicalUrl: atlasUrl(goalId),
+          }
+        }),
+      }
+    : page),
+} satisfies GoalBookModel
+const denseExternalHtml = renderGoalBookHtml(denseExternalModel, renderOptions)
+assert.match(
+  denseExternalHtml,
+  new RegExp(`<article class="goal-page goal-page--dense-relations"[^>]*data-goal-id="${GOAL_A}"`, 'u'),
+  'more than twelve total internal and external relations select the compact readable relation layout',
+)
+assert.doesNotMatch(
+  html,
+  /<article class="goal-page goal-page--dense-relations"/u,
+  'ordinary relation counts retain the standard relation layout',
+)
+
 const firstPageStart = html.indexOf(`data-goal-id="${GOAL_A}"`)
 const secondPageStart = html.indexOf(`data-goal-id="${GOAL_B}"`)
 const firstPageHtml = html.slice(firstPageStart, secondPageStart)

@@ -52,7 +52,7 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
 ] as const
 const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:55780f31d30bd0d1e91fb69929eebb293a1ec257ae8675a22db54cf2b9b7fe44'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:79fccee18ed4f96812242a203d3ccbddc26a906cc893ea8ca952f9260212d973'
 
 const goal = ({
   id,
@@ -901,10 +901,10 @@ const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
 )), 'utf8')
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 780)
+assert.equal(nationalAtlas.book.pageCount, 786)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 780)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 786)
 assert.equal(nationalAtlas.digest, EXPECTED_NATIONAL_MATH_MODEL_DIGEST)
 assert.equal(
   `${JSON.stringify(nationalAtlas, null, 2)}\n`,
@@ -1046,7 +1046,7 @@ assert.equal(pilotPage.anchor, `goal-${PILOT_GOAL_ID}`)
 assert.equal(pilotPage.title, 'Darstellungsform auswählen und begründen')
 assert.equal(
   pilotPage.goalFingerprint,
-  'sha256:377ebf71de434b0f58f9472b5ebf9a47539d8b59aec4e23010a2a4b54eef7baa',
+  'sha256:15f95e5f0446c03383df700b0c3d94fa1962deeac12cab5c36c13965399e27d5',
   'the book reuses the goal-evidence semantic fingerprint contract',
 )
 assert.match(pilotPage.pageFingerprint, /^sha256:[0-9a-f]{64}$/u)

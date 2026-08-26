@@ -134,6 +134,9 @@ const target = {
   sekICircuits: 'bbabac7c-9613-4c7e-877e-d7dc3df5300f',
   sekINuclear: 'cb0426b0-a973-5660-b6fe-79407934730f',
   sekIEnergySupply: '30a936ec-e427-57fe-bf3e-4abd64b1f0c1',
+  thermalExpansion: 'b60f63b6-e70b-5557-9f54-86d42fa80325',
+  reflectionLaw: '3c8e5510-a12d-5770-8a01-e5fe741b259c',
+  eclipses: 'f0046ae8-cbfc-526b-8414-04e3595b6075',
 
   mechanics: '942de15b-32f1-5713-80e5-e7aeb8749fc4',
   gravitation: '0ade0d10-8b32-5a95-a1a9-8ac64e2a8089',
@@ -151,6 +154,17 @@ const target = {
   nuclear: '72c2bf5d-c62b-5744-9971-4c117f2a432d',
   relativity: '157c404a-e14b-598a-9389-6924f8f9262e',
 }
+
+const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
+  'th-phys-seki-th-2-1-3-temperatur-warme-und-zustandsanderungen-073-7755ee22': [target.thermalExpansion],
+  'th-phys-seki-th-2-1-4-lichtausbreitung-und-bildentstehung-097-eb809dc0': [target.eclipses],
+  'th-phys-seki-th-2-1-4-lichtausbreitung-und-bildentstehung-100-755d7bf9': [target.reflectionLaw],
+}
+
+const currentWaveExactEdges = new Set([
+  `th-phys-seki-th-2-1-4-lichtausbreitung-und-bildentstehung-097-eb809dc0:${target.eclipses}`,
+  `th-phys-seki-th-2-1-4-lichtausbreitung-und-bildentstehung-100-755d7bf9:${target.reflectionLaw}`,
+])
 
 const configs: ExtractionConfig[] = [
   {
@@ -511,6 +525,7 @@ const inferCanonicalGoalIds = (sourceGoal: SourceGoal, stage: Stage): string[] =
     if (/relativ|lichtgeschwindigkeit|zeitdilat|längenkontraktion|masse.*energie/u.test(text)) add(ids, target.relativity)
   }
 
+  add(ids, ...(currentWaveTargetsBySourceGoalId[sourceGoal.id] ?? []))
   if (ids.size === 0) add(ids, target.methods)
   return [...ids]
 }
@@ -603,7 +618,9 @@ const buildExtraction = (config: ExtractionConfig) => {
     decision.canonicalGoalIds.map((canonicalGoalId) => ({
       legacyGoalId: decision.sourceGoalId,
       canonicalGoalId,
-      matchType: 'partial',
+      matchType: currentWaveExactEdges.has(`${decision.sourceGoalId}:${canonicalGoalId}`)
+        ? 'exact'
+        : 'partial',
       reviewDecisionId: decision.sourceGoalId,
     })),
   )

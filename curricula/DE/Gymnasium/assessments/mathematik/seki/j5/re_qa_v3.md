@@ -19,3 +19,24 @@ Target: `draft_v3.md`, `solution_v3.md`, `blueprint.md`, promoted canonical Task
 - [x] Covered goal IDs and `requires` remain unchanged because the assessed mathematical goals are unchanged.
 
 Decision: Task 1 remains release-candidate-ready after the context correction.
+
+---
+
+## Checkpoint maintenance re-QA
+
+Date: 2026-08-26
+
+Reason: Task 4 was aligned with the canonical atomic split between linear
+coordinate objects and circles from center and radius.
+
+- [x] `draft_v3.md` and `solution_v3.md` use the same circle-line subtask and
+      the same midpoint, radius, and equal-distance condition.
+- [x] `blueprint.md` lists the compass and the new circle goal
+      `1dd0266c-41b4-5481-b64b-7b718cfe799b`.
+- [x] The promoted Task 4 node uses the same four narrow `requires` and
+      `examData.coveredGoalIds` as the blueprint.
+- [x] Rectangle-versus-square reasoning remains assessed in subtask 3.
+- [x] Task 4 remains worth 6 BE and the full exam remains worth 30 BE.
+
+Decision: Task 4 remains release-candidate-ready after the atomic-split
+alignment.

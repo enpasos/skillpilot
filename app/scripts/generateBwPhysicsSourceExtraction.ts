@@ -11,6 +11,7 @@ interface SourceDocument {
   title: string
   path: string
   official: true
+  url: string
 }
 
 interface TopicSpec {
@@ -105,6 +106,7 @@ const sourceDocument: SourceDocument = {
   title: 'Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, ueberarbeitete Fassung vom 25. Maerz 2022',
   path: 'curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf',
   official: true,
+  url: 'https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_PH.pdf',
 }
 
 const topicSpecs: TopicSpec[] = [
@@ -199,9 +201,15 @@ const lowerCanonicalTargetsByTopicBullet: Record<string, string[]> = {
     'dd7cdcea-0950-461b-96ac-ce49989fca47',
     '79cb1695-f985-443a-b93e-27b57ab474b7',
   ],
-  '3.2.2:6': ['1fede37b-6554-5dd3-93d9-08ed1fd09c91'],
+  '3.2.2:6': [
+    '33e3417c-e062-5f4a-8df9-3195dca50089',
+    'f0046ae8-cbfc-526b-8414-04e3595b6075',
+  ],
   '3.2.2:7': ['9a9e2085-5ab6-534f-b622-83774d51f36b'],
-  '3.2.2:8': ['cca06d84-28fe-4b80-9bcd-968dda026e0e'],
+  '3.2.2:8': [
+    '3c8e5510-a12d-5770-8a01-e5fe741b259c',
+    'b57427c9-1af5-5daa-8c65-b84a4cc20785',
+  ],
   '3.2.2:9': ['6a4c6042-052b-502b-a39a-0ed8941247ac'],
   '3.2.2:10': ['1ab5f599-0927-579d-94cc-feecdf3b5603'],
   '3.2.2:11': ['078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5'],
@@ -212,7 +220,7 @@ const lowerCanonicalTargetsByTopicBullet: Record<string, string[]> = {
   '3.2.2:13': [
     'dd7cdcea-0950-461b-96ac-ce49989fca47',
     'c1006f55-0406-48cc-92d4-0d8345897cf4',
-    '3c82510a-1f12-4eaa-81c2-8599437a5b85',
+    'a24c41ce-68c5-56a7-8235-ef9a7dba7042',
     '10aad90e-a1db-42b6-8d1e-1d856e14b47d',
   ],
   '3.2.3:1': [
@@ -274,7 +282,10 @@ const lowerCanonicalTargetsByTopicBullet: Record<string, string[]> = {
     'f1a078ae-6262-4444-a4bc-a5ab275621cf',
     '59d1145e-ac54-5917-880a-21b4b80526d3',
   ],
-  '3.2.5:7': ['01bebdfc-5819-4610-a03e-ea5e794fc954'],
+  '3.2.5:7': [
+    '8a84de16-2fde-58ec-827a-f803e2ce8564',
+    '267170bd-f880-56a7-9719-ffb9751872c5',
+  ],
   '3.2.5:8': [
     'cbb26ed2-6979-46f6-a4ae-128f5c5d9d76',
     '201d353a-dfe7-521b-b0f6-eccb4d42945b',
@@ -331,7 +342,10 @@ const lowerCanonicalTargetsByTopicBullet: Record<string, string[]> = {
   '3.3.1:2': ['da26294f-4316-5bd5-a37a-bd89397b3b8b'],
   '3.3.1:3': ['e5bc2227-d900-585f-8ac0-9d3f1cb40e27'],
   '3.3.1:4': ['3ed3279e-c524-5230-a277-dda89493df6d'],
-  '3.3.2:1': ['01bebdfc-5819-4610-a03e-ea5e794fc954'],
+  '3.3.2:1': [
+    '8a84de16-2fde-58ec-827a-f803e2ce8564',
+    '267170bd-f880-56a7-9719-ffb9751872c5',
+  ],
   '3.3.2:2': [
     '53196a71-9dbd-4835-b2f9-ff21b8a8962c',
     'ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca',
@@ -341,7 +355,7 @@ const lowerCanonicalTargetsByTopicBullet: Record<string, string[]> = {
     'baa2bf3c-798a-5ec3-a667-031bf062d96c',
   ],
   '3.3.2:4': [
-    '01bebdfc-5819-4610-a03e-ea5e794fc954',
+    '8f833b36-4126-52db-b210-79fb0023c7d9',
     'ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca',
   ],
   '3.3.2:5': ['1a037489-3c95-540b-8cae-0acd360358ee'],

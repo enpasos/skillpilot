@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `cdab9fd1-5054-4a7e-8c9a-4474062ddd23`
 - Titel: Additive und subtraktive Farbmischung unterscheiden
-- Beschreibung: Die lernende Person kann additive und subtraktive Farbmischung unterscheiden und an einfachen Beispielen anwenden.
+- Beschreibung: Die lernende Person kann additive Farbmischung durch Überlagerung von Licht und subtraktive Farbmischung durch selektive Absorption von Licht unterscheiden und beide an einfachen Beispielen anwenden.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Additive und subtraktive Farbmischung unterscheiden
-Beschreibung: Die lernende Person kann additive und subtraktive Farbmischung unterscheiden und an einfachen Beispielen anwenden.
+Beschreibung: Die lernende Person kann additive Farbmischung durch Überlagerung von Licht und subtraktive Farbmischung durch selektive Absorption von Licht unterscheiden und beide an einfachen Beispielen anwenden.
 
 Zusatzanweisung:
 Pflichtinhalt:
@@ -69,4 +69,7 @@ Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`,
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Das aktive Asset wurde am 26. August 2026 in Originalauflösung gegen den
+präzisierten Lernzieltext und die Visualisierungs-Checkliste geprüft. Der
+hashgebundene Audit-Eintrag steht in
+`quality/goal-visualization-review/physik-colors-current-alignment-2026-08-26.md`.

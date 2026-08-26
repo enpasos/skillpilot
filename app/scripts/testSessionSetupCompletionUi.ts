@@ -302,8 +302,13 @@ try {
   await installApi(termsPage)
   await termsPage.goto(baseUrl)
   assert(
-    await termsPage.getByRole('link', { name: 'Lernzielbuch', exact: true }).count() === 0,
-    'the learning-goal book stays discoverable only from the local Workbench',
+    await termsPage.getByRole('link', { name: 'Lernzielbuch', exact: true }).count() === 1,
+    'the public start page exposes exactly one learning-goal book link',
+  )
+  assert(
+    await termsPage.getByRole('link', { name: 'Lernzielbuch', exact: true }).getAttribute('href')
+      === '/lernzielbuch',
+    'the public learning-goal book link uses the existing read-only route',
   )
   await termsPage.getByRole('button', { name: 'Jetzt starten' }).click()
   await termsPage.getByRole('heading', {

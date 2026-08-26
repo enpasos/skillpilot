@@ -104,6 +104,9 @@ const target = {
   society: '8eaa4e45-39fc-50e9-b59f-8a1752f6bebe',
 
   density: 'e41356c1-968b-435a-af25-b663f080ae5a',
+  measureMass: 'af0e2efb-f634-5f2d-abea-b2e1a67a2894',
+  volumeCluster: '7c996528-5fae-5353-b8fb-d59382e225c6',
+  determineDensity: 'c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0',
   forces: '581c0766-b84b-54cb-b8b6-375310329a41',
   pressure: '5308de76-79f0-44f4-8cb7-fc9de4772217',
   simpleMachines: '327302e3-5b36-46f8-9c16-73f24583b0eb',
@@ -193,6 +196,20 @@ const target = {
   potentialWell: 'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',
   nuclear: '5a5bc118-4420-5bb7-94c3-67837f2ce0dd',
   standardModel: '15cb40f1-e2d3-5754-9e7b-e8888fe78340',
+}
+
+const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
+  'mv-phys-seki-rp2022-j7-materie-dichte-001-2ec24053': [
+    target.methods,
+    target.measureMass,
+    target.volumeCluster,
+  ],
+  'mv-phys-seki-rp2022-j7-baustelle-001-8edab8e9': [
+    target.methods,
+    target.measureMass,
+    target.volumeCluster,
+    target.determineDensity,
+  ],
 }
 
 const repoPath = (absolutePath: string): string =>
@@ -977,7 +994,8 @@ const buildExtraction = (config: ExtractionConfig) => {
   }
 
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal, index) => {
-    const canonicalGoalIds = inferCanonicalGoalIds(rows[index], config)
+    const canonicalGoalIds = currentWaveTargetsBySourceGoalId[sourceGoal.id]
+      ?? inferCanonicalGoalIds(rows[index], config)
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

@@ -4,7 +4,7 @@ Status: release candidate draft after external review and post-release context c
 
 Time: 45 minutes
 
-Aids: ruler, pencil, colored pencil
+Aids: ruler, compass, pencil, colored pencil
 
 Total: 30 BE
 
@@ -59,7 +59,7 @@ Auf dem Schulhof soll eine Sitzecke markiert werden. Im Plan liegen die Eckpunkt
 1. Gib die Längen der Seiten $PQ$ und $QR$ an. (1 BE)
 2. Kennzeichne im Plan alle Punkte innerhalb der Sitzecke, die genau $1 m$ Abstand zur Seite $PQ$ haben. Beschreibe die Punktmenge in einem Satz. (2 BE)
 3. Entscheide, ob $PQRS$ ein Rechteck, ein Quadrat oder keines von beiden ist. Begründe mit Eigenschaften der Seiten und Winkel. (2 BE)
-4. Mila sagt: "Die Sitzecke ist ein Quadrat, weil alle vier Winkel rechte Winkel sind." Erkläre den Fehler. (1 BE)
+4. Am Punkt $T(3|2)$ soll ein kreisförmiger Schutzbereich mit Radius $1 m$ markiert werden. Zeichne seine Kreislinie mit dem Zirkel ein und gib an, woran man erkennt, ob ein Punkt auf dieser Kreislinie liegt. (1 BE)
 
 ---
 

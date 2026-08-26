@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5`
 - Titel: Farben in technischen Anwendungen erklären
-- Beschreibung: Die lernende Person kann technische Anwendungen wie Farbdruck oder Bildschirmfarben fachlich erklären.
+- Beschreibung: Die lernende Person kann fachlich erklären, wie Farben auf Bildschirmen durch additive und im Farbdruck durch subtraktive Farbmischung entstehen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Farben in technischen Anwendungen erklären
-Beschreibung: Die lernende Person kann technische Anwendungen wie Farbdruck oder Bildschirmfarben fachlich erklären.
+Beschreibung: Die lernende Person kann fachlich erklären, wie Farben auf Bildschirmen durch additive und im Farbdruck durch subtraktive Farbmischung entstehen.
 
 Zusatzanweisung:
 Pflichtinhalt:
@@ -64,4 +64,7 @@ Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`,
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Das aktive Asset wurde am 26. August 2026 in Originalauflösung gegen den
+präzisierten Lernzieltext und die Visualisierungs-Checkliste geprüft. Der
+hashgebundene Audit-Eintrag steht in
+`quality/goal-visualization-review/physik-colors-current-alignment-2026-08-26.md`.

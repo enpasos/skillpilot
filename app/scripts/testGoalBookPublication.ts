@@ -21,7 +21,7 @@ assert.deepEqual(
 const verified = verifiedBooks.find(({ model }) => model.book.id === 'de-gym-mathematik-bundesweit')
 assert.ok(verified, 'the real publication contains the registered mathematics atlas')
 assert.equal(verified.model.book.id, 'de-gym-mathematik-bundesweit')
-assert.equal(verified.model.pages.length, 780)
+assert.equal(verified.model.pages.length, 786)
 assert.equal(verified.index.books[0].model.url, '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json')
 assert.equal(verified.index.books[0].pdf.url, '/lernzielbuch/de-gym-mathematik-bundesweit.pdf')
 const registryFixture = {
@@ -31,7 +31,7 @@ const registryFixture = {
     title: 'Lernzielbuch Physik – Gymnasium bundesweit',
     locale: 'de-DE',
     publicationMode: 'review' as const,
-    pageCount: 426,
+    pageCount: 429,
     model: {
       url: '/lernzielbuch/de-gym-physik-bundesweit.book-model.json',
       sha256: `sha256:${'a'.repeat(64)}`,

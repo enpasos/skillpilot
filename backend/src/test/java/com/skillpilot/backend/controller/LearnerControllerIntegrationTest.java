@@ -5692,22 +5692,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "222", "222" },
-                { "DE-BE", "221", "221" },
-                { "DE-BW", "242", "242" },
-                { "DE-BY", "210", "210" },
-                { "DE-HB", "194", "194" },
-                { "DE-HE", "306", "364" },
-                { "DE-HH", "221", "221" },
-                { "DE-MV", "221", "221" },
-                { "DE-NI", "221", "221" },
-                { "DE-NW", "221", "221" },
-                { "DE-RP", "152", "159" },
-                { "DE-SH", "207", "214" },
-                { "DE-SL", "221", "221" },
-                { "DE-SN", "221", "221" },
-                { "DE-ST", "221", "221" },
-                { "DE-TH", "221", "221" }
+                { "DE-BB", "228", "228" },
+                { "DE-BE", "227", "227" },
+                { "DE-BW", "247", "247" },
+                { "DE-BY", "216", "216" },
+                { "DE-HB", "200", "200" },
+                { "DE-HE", "314", "372" },
+                { "DE-HH", "227", "227" },
+                { "DE-MV", "227", "227" },
+                { "DE-NI", "227", "227" },
+                { "DE-NW", "227", "227" },
+                { "DE-RP", "154", "161" },
+                { "DE-SH", "212", "219" },
+                { "DE-SL", "227", "227" },
+                { "DE-SN", "227", "227" },
+                { "DE-ST", "227", "227" },
+                { "DE-TH", "228", "228" }
         };
 
         for (String[] scope : scopes) {
@@ -5741,12 +5741,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "719", "754" },
-                { "DE-HE", "LK", "845", "880" },
-                { "DE-RP", "GK", "570", "577" },
-                { "DE-RP", "LK", "681", "688" },
-                { "DE-SH", "GK", "606", "613" },
-                { "DE-SH", "LK", "702", "709" }
+                { "DE-HE", "GK", "727", "762" },
+                { "DE-HE", "LK", "853", "888" },
+                { "DE-RP", "GK", "572", "579" },
+                { "DE-RP", "LK", "683", "690" },
+                { "DE-SH", "GK", "611", "618" },
+                { "DE-SH", "LK", "707", "714" }
         };
 
         for (String[] scope : scopes) {
@@ -5807,16 +5807,16 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "51", "51" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "64", "64" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "122", "122" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "85", "85" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "120", "120" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "124", "124" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "120", "120" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "122", "122" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "124", "124" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "124", "124" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "124", "124" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "122", "122" }
         };
 
         for (String[] scope : scopes) {

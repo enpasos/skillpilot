@@ -69,6 +69,7 @@ interface ExtractionConfig {
     title: string
     path: string
     official: true
+    url: string
   }
   expectedTopics: TopicSpec[]
   outputPath: string
@@ -97,6 +98,7 @@ const upperConfig: ExtractionConfig = {
     title: 'Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024',
     path: 'curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf',
     official: true,
+    url: 'https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf',
   },
   expectedTopics: [
     ['E.1', 'Bewegungen und ihre Beschreibung', 30],
@@ -136,6 +138,7 @@ const lowerConfig: ExtractionConfig = {
     title: 'Lehrplan Physik Gymnasium Hessen G9',
     path: 'curricula/DE/Gymnasium/input/HE/lower-secondary/g9-physik.pdf',
     official: true,
+    url: 'https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-physik.pdf',
   },
   expectedTopics: [
     ['7.1', 'Optik 1', 6],
@@ -238,7 +241,7 @@ const lowerCanonicalTargetsByTopicRow: Record<string, string[]> = {
     '90e1e6cf-4092-41d6-81f7-5206f9d68f84',
   ],
   '7.1:2': ['79cb1695-f985-443a-b93e-27b57ab474b7'],
-  '7.1:3': ['cca06d84-28fe-4b80-9bcd-968dda026e0e'],
+  '7.1:3': ['b57427c9-1af5-5daa-8c65-b84a4cc20785'],
   '7.1:4': [
     '79cb1695-f985-443a-b93e-27b57ab474b7',
     '58fc7852-722c-5a67-be6a-bfd1be0b527e',
@@ -257,7 +260,11 @@ const lowerCanonicalTargetsByTopicRow: Record<string, string[]> = {
   '7.3:2': ['75bdf5ca-cda4-4658-9ec7-84c77b3759db'],
   '7.3:3': ['a5f652cc-e091-4c90-bec2-c357ae54fcf1'],
   '7.3:4': ['f1a078ae-6262-4444-a4bc-a5ab275621cf'],
-  '7.4:1': ['e41356c1-968b-435a-af25-b663f080ae5a'],
+  '7.4:1': [
+    'af0e2efb-f634-5f2d-abea-b2e1a67a2894',
+    '7c996528-5fae-5353-b8fb-d59382e225c6',
+    'c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0',
+  ],
   '7.4:2': ['ae67bcf1-f3ee-50d6-9a12-25a159dff659'],
   '7.4:3': ['5ea765ac-c279-551a-8a94-a07da2381e5b'],
   '7.4:4': ['10bb8262-fb0f-40cf-94ef-408420ec7cf2'],
@@ -269,6 +276,9 @@ const lowerCanonicalTargetsByTopicRow: Record<string, string[]> = {
   '8.2:2': [
     '53196a71-9dbd-4835-b2f9-ff21b8a8962c',
     '01bebdfc-5819-4610-a03e-ea5e794fc954',
+    '8a84de16-2fde-58ec-827a-f803e2ce8564',
+    '267170bd-f880-56a7-9719-ffb9751872c5',
+    '8f833b36-4126-52db-b210-79fb0023c7d9',
   ],
   '8.2:3': [
     '1911920e-b099-4310-82f2-b47f51a78b33',
@@ -279,7 +289,10 @@ const lowerCanonicalTargetsByTopicRow: Record<string, string[]> = {
   '8.3a:3': ['e11b2ee9-e528-4857-9ecd-59bd460fba81'],
   '8.3a:4': ['24b4686a-e8a6-4583-8952-33e6f653c2a3'],
   '8.3b:1': ['c1006f55-0406-48cc-92d4-0d8345897cf4'],
-  '8.3b:2': ['3c82510a-1f12-4eaa-81c2-8599437a5b85'],
+  '8.3b:2': [
+    '3c82510a-1f12-4eaa-81c2-8599437a5b85',
+    'a24c41ce-68c5-56a7-8235-ef9a7dba7042',
+  ],
   '8.3b:3': ['10aad90e-a1db-42b6-8d1e-1d856e14b47d'],
   '8.3b:4': ['3e33813d-db75-4571-8345-3845b02b956d'],
   '8.3b:5': ['3e33813d-db75-4571-8345-3845b02b956d'],

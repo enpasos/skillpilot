@@ -51,6 +51,15 @@
     "reviewPath": {
       "$ref": "#/$defs/repositoryPath"
     },
+    "reviewRunManifestPaths": {
+      "description": "Optional repository-local manifests for the exact AI review runs cited by reviewRunIds. Empty reviewRunIds remain valid without manifests; every configured manifest must be referenced and every cited run ID must resolve uniquely.",
+      "type": "array",
+      "maxItems": 200,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/repositoryPath"
+      }
+    },
     "reviewedResourceTypes": {
       "description": "Resource bytes intentionally reviewed as part of this profile scope. An empty array keeps visualization review in its existing independent QA lane.",
       "type": "array",

@@ -201,6 +201,42 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "ac57943f16a0cd7cb1c6ce4fd9665821abfd8c3c586877713221cc6220456030",
       },
     },
+    {
+      id: "2026-08-26-goal-book-public-start-link-on",
+      approvedAt: "2026-08-26",
+      approvedBy: "product-owner",
+      reason:
+        "Make the existing read-only mathematics and physics learning-goal books directly discoverable from the public SkillPilot start page.",
+      scope:
+        "Enable only the existing localized start-page link to /lernzielbuch outside package-consumer builds and update focused regression evidence; " +
+        "retain the existing read-only route and artifacts, keep the public sitemap unchanged, and preserve every coach launch, session, learner-state, " +
+        "OpenAI package, MCP/OAuth/tool/schema/UI, review-case, portal, fixture, and review-artifact contract.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-read-only-navigation-link-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        priorAuthorizedSha256:
+          "b56c60fbdf44021c92c9477602207409911ef1049d5a313cc99702f9424e9031",
+        authorizedSha256:
+          "71c1d46f9eb42ab9a1d643df44e65fb35a89ece2b0a901f9ea045b64c56aae84",
+      },
+      evidenceFile: {
+        path: "app/src/views/WorkbenchView.test.ts",
+        sha256:
+          "97e2c090d00859dd0389dbccdfe226b187293bcbac6d0ada1cddd4ae313a59d6",
+      },
+      additionalFile: {
+        path: "app/scripts/testSessionSetupCompletionUi.ts",
+        priorSha256:
+          "561a7e7432882a6f0041f791bbd2d4b2d80b6c356ed9bc9b3471524564e98b29",
+        authorizedSha256:
+          "afb66331e9bf1707195b1389d28bfe09839a9c3a130800bc207d6ed9602426fe",
+      },
+    },
   ]);
 });
 
@@ -212,7 +248,7 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
   );
   assert.equal(
     latestByPath.get("app/src/components/SessionSetup.tsx")?.protectedFile.authorizedSha256,
-    "b56c60fbdf44021c92c9477602207409911ef1049d5a313cc99702f9424e9031",
+    "71c1d46f9eb42ab9a1d643df44e65fb35a89ece2b0a901f9ea045b64c56aae84",
   );
 
   const broken = structuredClone(freeze.authorizedRuntimeExceptions);

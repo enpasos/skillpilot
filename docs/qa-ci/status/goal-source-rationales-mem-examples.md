@@ -10,29 +10,29 @@
 > Source of truth: `curricula/DE/Gymnasium/input/`
 > Source of truth: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
 
-Erzeugt: 2026-06-02T04:02:39.921Z
+Erzeugt: 2026-08-26T04:38:56.554Z
 
 Dieser PoC rendert menschenlesbare Quellenbegründungen für ausgewählte SkillPilot-Lernziele und ergänzt den klassischen reviewten Weg um einen zielbezogenen MEM/FWU-SPARQL-Abgleich.
 
 ## Zusammenfassung
 
-- Angefragte Ziele: 3
-- Aufgelöste Ziele: 3
-- Ziele mit klassischem Quellenweg: 3
+- Angefragte Ziele: 4
+- Aufgelöste Ziele: 4
+- Ziele mit klassischem Quellenweg: 4
 - Ziele ohne klassischen Quellenweg: 0
-- Ziele mit konsistenter MEM/FWU-SPARQL-Route: 3
+- Ziele mit konsistenter MEM/FWU-SPARQL-Route: 4
 - Landschaft: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Mapping-Root: `curricula/DE/Gymnasium/mapping/`
 - Bundesland-Scope: DE-BY
 - MEM/FWU-SPARQL einbezogen: ja
 - MEM/FWU-Konfig: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
 
-## 1. Brüche erweitern, kürzen und vergleichen
+## 1. Brüche erweitern und kürzen
 
 ### Lernziel
 
-- Ziel-ID: `a075ae99-7669-563d-807a-f91b119c020a`
-- Beschreibung: Die lernende Person kann Brüche erweitern, kürzen, in äquivalente Darstellungen überführen und zum Größenvergleich geeignete Strategien auswählen.
+- Ziel-ID: `339a7bf5-f1df-5d5a-9ec4-41f471f0c111`
+- Beschreibung: Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.
 - Quellenbegründungsstatus: `classic_source_reviewed`
 
 ### Kurzbegründung
@@ -57,17 +57,17 @@ Dieses Ziel ist derzeit über `2aa11de2-4cbc-5c4c-b024-c5483a94958f` (LehrplanPL
 
 ### Warum das SkillPilot-Ziel begründet ist
 
-Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.
+Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3. AI-Synthese-Strukturrouting 2026-08-26: Der aktuelle Quelltext wurde semantisch auf wertgleiche Brüche durch Erweitern/Kürzen geroutet; die frühere Sammelziel- beziehungsweise Messformulierung wird nicht fortgeschrieben.
 
 ### Mapping-Form
 
 - Match-Typ: `exact`
 - Review-Entscheidung: `mapped`
 - Review-Decision-ID: `nicht aufgelöst`
-- Review-Datum: 2026-05-07
-- Reviewer: codex
+- Review-Datum: 2026-08-26
+- Reviewer: codex-ai-synthesis
 - Evidence-Methode: legacy-by-mapping-projected-to-source-extraction
-- Weitere klassische Quellenwege im JSON: 2
+- Weitere klassische Quellenwege im JSON: 11
 
 ### MEM/FWU SPARQL-Route
 
@@ -78,7 +78,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 6 / Jahrgangsstufe 6
 - MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220606.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/3ccd6c31-d1fe-4b80-9cab-863326b4be87
+- MEM-Ziel-IRI: https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c
 - MEM-Erwartungstext: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z....
 - Match-Basis: parentBulletText
 
@@ -86,7 +86,66 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 
 - Keine bekannten Einschränkungen für den gerenderten klassischen Quellenweg und die konfigurierte MEM/FWU-SPARQL-Route.
 
-## 2. Funktionsbegriff und Darstellungen verstehen
+## 2. Brüche mit geeigneten Strategien vergleichen
+
+### Lernziel
+
+- Ziel-ID: `02013455-72a0-5213-9509-ed77f7ede62b`
+- Beschreibung: Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.
+- Quellenbegründungsstatus: `classic_source_reviewed`
+
+### Kurzbegründung
+
+Dieses Ziel ist derzeit über `by-math-m6-1-1-2aa11de2-s02-e168cf6d30` (LehrplanPLUS Bayern Gymnasium Mathematik, M6.1.1) begründet. SkillPilot hat dieses Source-Ziel aus `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` extrahiert und mit Match-Typ `exact` dem angefragten kanonischen Ziel zugeordnet.
+
+### Originalquelle Finden
+
+1. Offizielle Quelle öffnen: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
+2. Zur Quellenstelle navigieren oder im Dokument danach suchen: LehrplanPLUS Bayern Gymnasium Mathematik, M6.1.1
+3. Retained Source-Extraction prüfen: `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json`
+
+### Extrahierter Quellenbeleg
+
+- Bundesland: DE-BY
+- Quelldokument: LehrplanPLUS Gymnasium Bayern - Mathematik Jahrgangsstufe 6
+- Offizielle URL: https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/6/mathematik
+- Source-Ziel: `by-math-m6-1-1-2aa11de2-s02-e168cf6d30`
+- Quellenreferenz: LehrplanPLUS Bayern Gymnasium Mathematik, M6.1.1
+- Quellenstelle (Kurzfassung): Sie wählen beim Größenvergleich von Brüchen geeignete Strategien
+- Kurzer Quelltextauszug: Sie wählen beim Größenvergleich von Brüchen geeignete Strategien
+
+### Warum das SkillPilot-Ziel begründet ist
+
+Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2aa11de2-4cbc-5c4c-b024-c5483a94958f; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen. AI-Synthese-Strukturrouting 2026-08-26: Der aktuelle Quelltext wurde semantisch auf begründeter Bruchvergleich geroutet; die frühere Sammelziel- beziehungsweise Messformulierung wird nicht fortgeschrieben.
+
+### Mapping-Form
+
+- Match-Typ: `exact`
+- Review-Entscheidung: `mapped`
+- Review-Decision-ID: `nicht aufgelöst`
+- Review-Datum: 2026-08-26
+- Reviewer: codex-ai-synthesis
+- Evidence-Methode: source-split-parent-review-inherited
+- Weitere klassische Quellenwege im JSON: 4
+
+### MEM/FWU SPARQL-Route
+
+- Status: `mem_sparql_consistent`
+- Endpoint: https://sparql.mem.edufeed.org/sparql
+- Hinweise: Der MEM/FWU-SPARQL-Endpunkt liefert einen passenden Erwartungstext zum klassischen SkillPilot-Quellenweg.
+- Vergleich: Bayern Mathematik Gymnasium LehrplanPLUS (`de-by-math-gymnasium-lehrplanplus`)
+- MEM-Graph: https://w3id.org/lehrplan/by/data
+- MEM-Plan: Mathematik 6 / Jahrgangsstufe 6
+- MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220606.de
+- MEM-Ziel-IRI: https://lp-bavaria.org/9d44fa19-fa0f-47a0-a3ab-fe763ef89c0c
+- MEM-Erwartungstext: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z....
+- Match-Basis: parentBulletText
+
+### Grenzen
+
+- Keine bekannten Einschränkungen für den gerenderten klassischen Quellenweg und die konfigurierte MEM/FWU-SPARQL-Route.
+
+## 3. Funktionsbegriff und Darstellungen verstehen
 
 ### Lernziel
 
@@ -126,7 +185,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - Review-Datum: 2026-05-07
 - Reviewer: codex
 - Evidence-Methode: legacy-by-mapping-projected-to-source-extraction
-- Weitere klassische Quellenwege im JSON: 2
+- Weitere klassische Quellenwege im JSON: 20
 
 ### MEM/FWU SPARQL-Route
 
@@ -137,7 +196,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 8 / Jahrgangsstufe 8
 - MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220710.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/ae630b9d-94f3-4e46-8606-e3bf6b5708e6
+- MEM-Ziel-IRI: https://lp-bavaria.org/32733866-36a7-46f8-b663-4ff9d058c23f
 - MEM-Erwartungstext: verstehen eine Funktion als eindeutige Zuordnung und grenzen die zugehörigen Fachbegriffe (z. B. Funktionsterm, Graph, Definitionsmenge, Wertemenge) voneinander ab. Sie erkennen Funktionen als solche und unterscheiden diese begründet von nicht eindeutigen Z...
 - Match-Basis: parentBulletText
 
@@ -145,7 +204,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 
 - Keine bekannten Einschränkungen für den gerenderten klassischen Quellenweg und die konfigurierte MEM/FWU-SPARQL-Route.
 
-## 3. Ableitung als Steigung im Punkt deuten
+## 4. Ableitung als Steigung im Punkt deuten
 
 ### Lernziel
 
@@ -185,6 +244,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - Review-Datum: 2026-05-07
 - Reviewer: codex
 - Evidence-Methode: legacy-by-mapping-projected-to-source-extraction
+- Weitere klassische Quellenwege im JSON: 8
 
 ### MEM/FWU SPARQL-Route
 
@@ -195,7 +255,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - MEM-Graph: https://w3id.org/lehrplan/by/data
 - MEM-Plan: Mathematik 11 / Jahrgangsstufe 11
 - MEM-Plan-IRI: https://lp-bavaria.org/lis_live_isb.c.220889.de
-- MEM-Ziel-IRI: https://lp-bavaria.org/db09990a-aa21-4905-a389-498a5945dce2
+- MEM-Ziel-IRI: https://lp-bavaria.org/786038d7-4eed-4698-912e-6dc1da590b73
 - MEM-Erwartungstext: interpretieren Werte von Ableitungsfunktionen als lokale Änderungsraten und nutzen diese Interpretation auch im Sachkontext (u. a. lokale Steigung einer Straße, Momentangeschwindigkeit).
 - Match-Basis: parentBulletText
 

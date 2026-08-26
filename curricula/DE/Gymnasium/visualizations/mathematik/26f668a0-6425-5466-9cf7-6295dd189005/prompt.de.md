@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `26f668a0-6425-5466-9cf7-6295dd189005`
 - Titel: Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen
-- Beschreibung: Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen mit kleinen Zehnerpotenzen in Sachzusammenhängen interpretieren.
+- Beschreibung: Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen sehr kleiner Größen mit negativen Zehnerpotenzen in Sachzusammenhängen interpretieren.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen
-Beschreibung: Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen mit kleinen Zehnerpotenzen in Sachzusammenhängen interpretieren.
+Beschreibung: Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen sehr kleiner Größen mit negativen Zehnerpotenzen in Sachzusammenhängen interpretieren.
 
 Zusatzanweisung:
 Correct the referenced scientific-educational infographic while preserving its useful reciprocal, rational-base and small-power examples.

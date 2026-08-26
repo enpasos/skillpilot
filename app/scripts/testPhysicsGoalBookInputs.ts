@@ -18,6 +18,7 @@ import {
   type CompiledCompositionPreviewNode,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
+import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { parseSubjectDurationModelPolicy } from './goalBookModel'
 
 type SemanticKind =
@@ -113,6 +114,9 @@ const SOURCE_MANIFEST_PATH = 'app/scripts/config/goal-books/de-gym-physics-natio
 const CONFIG_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.json'
 const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
 const SHARED_DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json'
+const CURRICULUM_QUALITY_STATUS_PATH = 'docs/qa-ci/status/curriculum-quality-status.json'
+const APPLICABILITY_OVERRIDE_REGISTRY_PATH =
+  'curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json'
 const COMPOSITION_VIEW_DIRECTORY = 'curricula/DE/Gymnasium/composition-views/physik'
 const NATIONAL_PHYSICS_VIEW_IDS = new Set([
   'de-de-gym-physics-gk',
@@ -129,6 +133,255 @@ const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   'a0aaedcb-41f8-4891-af77-a69a76b8c10d',
   '00245a43-eb89-47d2-92d7-21799dbec9f3',
 ] as const
+const BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS = new Set([
+  '37b33812-d428-5953-852e-57a53a4347fe',
+  '7fe3022f-fad0-5f41-af1c-d55ff214ebc6',
+])
+const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
+  '41d35667-0296-5f84-bc12-202ffc440be0',
+  '33e3417c-e062-5f4a-8df9-3195dca50089',
+  '3c8e5510-a12d-5770-8a01-e5fe741b259c',
+  '51de4fd9-6827-5b3d-b2ca-5e27ba961a7f',
+  '67ffd0f0-a5ab-518f-8c45-4c0e7eb18390',
+  'af0e2efb-f634-5f2d-abea-b2e1a67a2894',
+  'b57427c9-1af5-5daa-8c65-b84a4cc20785',
+  'b60f63b6-e70b-5557-9f54-86d42fa80325',
+  'b92827a7-5d62-5fdb-a6f5-ac44461f4a7b',
+  'c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0',
+  'f0046ae8-cbfc-526b-8414-04e3595b6075',
+  'f827b00f-af7f-52de-84aa-2a2bbaa035bd',
+  'f92b5b8a-327f-50d2-8313-6a142399ebf0',
+  'f7f2c254-1663-5861-bed7-a32c00495b19',
+])
+const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
+  '1fede37b-6554-5dd3-93d9-08ed1fd09c91',
+  '10bb8262-fb0f-40cf-94ef-408420ec7cf2',
+  '201d353a-dfe7-521b-b0f6-eccb4d42945b',
+  '7c996528-5fae-5353-b8fb-d59382e225c6',
+  'cca06d84-28fe-4b80-9bcd-968dda026e0e',
+  'd27c8860-12a4-4d7d-9849-ccd8b7caca48',
+  'e41356c1-968b-435a-af25-b663f080ae5a',
+])
+const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  '3631c8f7-ff48-57ff-b7ee-8397ff1d166a',
+  'ef2bb474-89e1-5deb-81c4-c6b05d174bbd',
+  '44ada28b-8635-5481-8d09-2d91686d352b',
+  '899481ae-2917-5fb0-805e-29e7c3c051be',
+  '1a0dd12c-f30f-5e62-860b-93e393db9ce8',
+  '0b8aff9a-6c77-51b9-82d4-725a21f32a90',
+  'd8bad724-03ea-510a-8415-928332ed4979',
+  '5353aabf-68c9-5788-8c25-8ed7e3ea42f3',
+  '9fe4f83e-2065-53f5-8a35-ef4a3b76c17b',
+  '924e1187-a067-5eb6-8d8d-85525ee6c837',
+  'def74475-7126-5e55-8517-498951118f26',
+  '77257ded-ccf0-521f-8a8c-38c8f85fd3ca',
+  '11c964ff-be82-5d02-8cd7-ccb41cda8f4f',
+  '77b23e86-c39f-589e-8460-b28883baea51',
+  '68061652-d617-5e51-8d2a-1c686c3c49df',
+  'dfd2628f-b44e-51b3-86e8-99158861be8c',
+  'b8c3dfb7-9286-52ac-8b0f-ad0a0ce941ed',
+  'a77e53d5-246d-52df-86a2-d14f7a08fb77',
+  'e1794352-ceee-5c27-8be4-224592ddbb89',
+  'b637582c-a618-5698-817a-8d7bd1fa05f6',
+  'b7e366e2-8323-5171-83a1-1f536c2062d8',
+  'b1808b4c-5e02-5e1f-831f-47ee126e00ee',
+  'ac6c578c-401b-5e4b-801a-6dff8fe8b93a',
+  '198bfc8c-25f7-5a02-8618-47650ce36d14',
+  '1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e',
+  'dbe230d5-31e1-5fca-8e11-2226821952ff',
+  '93cdaa49-88e8-5e26-8506-656366d9ce3c',
+  '8ff2a728-fba3-538e-83e9-69bdd8e1369e',
+  '367b17f8-972a-5f3e-8915-8cfe743132a3',
+  '654ec964-d982-593d-8c26-407a381675a6',
+  '88f27aab-8724-5a4d-8543-e49ebcb54b8e',
+  '8f62ab5e-20fc-562f-8121-63c082313e6e',
+  '0cf2a5b0-8660-578d-8316-2b8a50fbdff7',
+  'ca13e9cd-6377-540e-88c8-0308cddc8a7e',
+  'a3c513d0-8fb9-5bd5-88cc-041527ff097d',
+  'de7528cc-8c5d-5cd6-8d08-f8ce7457e666',
+  'eb5e147f-a67c-542e-858b-533a00af7af2',
+  '0b090935-1e43-581b-84ec-078741f8969e',
+  '7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d',
+  '2c195204-2e21-5369-8782-7bf4fc41bf9f',
+  '44985d9f-7b49-52e4-86ec-eddc7b70429f',
+  '35dd0a33-e5d5-53b9-8438-3d339173db1b',
+  '00e2ddfe-18c1-57a4-86ad-ee467a1a3d61',
+  '3f477f0d-4f79-5eed-8671-fb2667d60910',
+  '0acb10a3-c5e2-5a76-8907-3dfe1b57e767',
+  'bb7c5191-3c35-5ba6-85e0-795c7a049744',
+  'd304cfd0-f87c-51f7-8dee-f5f405da4b3d',
+  'e1d3c599-6964-5094-83ee-7fb1ecd161ce',
+  '840a82e3-44aa-5d0f-8b6f-8a067d057d14',
+  '7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba',
+  'd15764ce-ebea-5178-84ea-9351dd808b8c',
+  '449d9732-a869-5126-8879-564da5c3d263',
+])
+const PHYSICS_MOTIVATION_GOAL_ID = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
+const BAVARIA_PH10_1_GOAL_IDS = [
+  '0f6b798b-594e-5480-8c5f-95e2486a4d85',
+  '106417ed-80db-5490-a1ee-bb4160d3f2b4',
+  'eb30189c-27c6-510b-b235-6543afa18b90',
+  'a522c8c0-f3a4-5568-acae-3010ed9feb87',
+  '1a037489-3c95-540b-8cae-0acd360358ee',
+  'fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c',
+  'af1094c1-511a-5aae-9e0a-3e9196a82d9a',
+] as const
+const BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID = '11c964ff-be82-5d02-8cd7-ccb41cda8f4f'
+const GENERIC_SEKI_ASSESSMENT_ID = '3631c8f7-ff48-57ff-b7ee-8397ff1d166a'
+
+const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>([
+  ['924e1187-a067-5eb6-8d8d-85525ee6c837', new Map([
+    ['baa2bf3c-798a-5ec3-a667-031bf062d96c', ['Kupfer, Aluminium, Glas und Kunststoff', 'Leiter und Nichtleiter']],
+    ['ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca', ['mindestens fünf U-I-Wertepaare', 'Material, Leiterlänge und Querschnitt']],
+    ['8f833b36-4126-52db-b210-79fb0023c7d9', ['Zwei gleiche Widerstände liegen zunächst in Reihe', 'parallele Zweige', 'Grenzfall']],
+  ])],
+  ['68061652-d617-5e51-8d2a-1c686c3c49df', new Map([
+    ['2eecd0e2-a7ca-4568-9b12-3d47706c65fb', ['mit Impulserhaltung die Geschwindigkeit', 'kinetischen Energien vor und nach dem Stoß']],
+    ['e790de73-f8e5-4027-bc05-9f12a0e8c9cb', ['Bestimmen Sie den Kraftstoß', 'Impulsänderung']],
+    ['32b896b9-f2f1-4d4e-96ad-e869ac3d3759', ['Newtons erstem Axiom', 'keine resultierende Kraft nötig']],
+  ])],
+  ['dfd2628f-b44e-51b3-86e8-99158861be8c', new Map([
+    ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', ['Videoauswertung', 'beide Teilbewegungen getrennt', 'Form der x-y-Bahn']],
+    ['4a2bf015-052b-4af0-aed7-324259fa1a8a', ['Reaktionsweg', 'Anhalteweg', 'Sicherheitsabstand']],
+  ])],
+  ['b8c3dfb7-9286-52ac-8b0f-ad0a0ce941ed', new Map([
+    ['b3f3f4f7-b5cc-40e1-b57a-3d93649baa61', ['Kennzeichnen Sie Quarks und Leptonen', 'Quarkzusammensetzung']],
+    ['a12fddce-0215-58d9-bd91-21be8a960d25', ['separat gemessene Aktivität der Mutterkerne', 'Aktivität bereits entstandener Tochterkerne', 'Zerfallsfolge']],
+  ])],
+  ['a77e53d5-246d-52df-86a2-d14f7a08fb77', new Map([
+    ['49872cc0-401f-5464-9235-4763df4db5cf', ['für Spaltung und Fusion', 'kontrollierte Reaktion', 'Kettenreaktion']],
+    ['7e719cc2-0866-5267-a252-e7e7ac0d03f1', ['physikalische Bewertungskriterien', 'Kennzeichnen Sie mindestens zwei Unsicherheiten']],
+  ])],
+  ['e1794352-ceee-5c27-8be4-224592ddbb89', new Map([
+    ['37b33812-d428-5953-852e-57a53a4347fe', ['absoluten Temperaturen', 'mittlere kinetische Energie', 'Teilchenebene']],
+  ])],
+  ['b637582c-a618-5698-817a-8d7bd1fa05f6', new Map([
+    ['0da13365-02c2-44f1-8a81-d524ca0ac3ae', ['gemeinsame Geschwindigkeit aus der Impulserhaltung', 'kinetischen Energien vor und nach dem Stoß', 'Umwandlungsformen']],
+  ])],
+  ['b7e366e2-8323-5171-83a1-1f536c2062d8', new Map([
+    ['12260012-cf04-5409-b57d-f5b3a46d9126', ['0, 1,8, 3,0, 3,8, 4,3 und 4,5 m/s', 'Gewichtskraft, Luftwiderstand und resultierende Kraft', 'Grenzgeschwindigkeit']],
+  ])],
+  ['b1808b4c-5e02-5e1f-831f-47ee126e00ee', new Map([
+    ['accb1d9e-cd48-5983-bcef-9b9bca4a9114', ['Zentripetalbeschleunigung und Zentripetalkraft', 'größte im Modell sichere Geschwindigkeit']],
+  ])],
+  ['ac6c578c-401b-5e4b-801a-6dff8fe8b93a', new Map([
+    ['eb0ffdea-c12d-56df-b7e8-c0297d2f8aff', ['Gravitationsgesetz', 'örtliche Feldstärke', 'Masse und Gewichtskraft']],
+    ['05af2893-0201-4d7f-985b-272d7b88e26e', ['Federkonstante', 'harmonischen Schwingung', 'Vergleichen Sie beide Kraftgesetze ausdrücklich']],
+  ])],
+  ['198bfc8c-25f7-5a02-8618-47650ce36d14', new Map([
+    ['2088ccf0-48f4-51d4-be5f-67affd0fb099', ['irreversiblen beziehungsweise näherungsweise reversiblen Vorgang', 'Nutzbarkeit der Energie']],
+    ['f322c268-dc16-5d50-82dd-209834f20208', ['Klimawirkung der Entscheidung', 'Modellunsicherheiten', 'bedingtes Urteil']],
+  ])],
+  ['1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e', new Map([
+    ['df010b2b-b182-5f7e-bbe4-49b72e48c27a', ['teilweise besetztes Band', 'n-Dotierung', 'p-Dotierung']],
+  ])],
+  ['dbe230d5-31e1-5fca-8e11-2226821952ff', new Map([
+    ['fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c', ['Induktionsladegerät', 'zeitlich veränderliches Magnetfeld', 'Strom im geschlossenen Sekundärkreis', 'Ladeelektronik', 'nutzbaren beziehungsweise im Akku gespeicherten Energie']],
+    ['106417ed-80db-5490-a1ee-bb4160d3f2b4', ['langer gerader Leiter', 'lange Luftspule', 'Bestimmen Sie mit']],
+  ])],
+  ['93cdaa49-88e8-5e26-8506-656366d9ce3c', new Map([
+    ['904670af-8e4c-543e-bc9b-e6248d87a10d', ['passenden Übergang', 'Emissionsspektrum', 'Absorptionsvorgang']],
+    ['a359c859-eee0-40ef-a9d1-88db2e6c55b2', ['Einzelphotonen-Doppelspalt', 'Elektronen zeigen', 'Wellen- und Teilchenaspekte']],
+    ['d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec', ['Energie in Joule, Frequenz, Wellenlänge und Impuls', 'E = hf', 'p = h/λ']],
+  ])],
+  ['8ff2a728-fba3-538e-83e9-69bdd8e1369e', new Map([
+    ['1730c01d-8c85-57df-b031-c11e2a0511b1', ['Arbeit, die das elektrische Feld', 'U = W/q', 'U = E·d']],
+    ['bbee4c52-4e95-5529-990f-706aa99316a3', ['Bestimmen Sie die Stromstärke', 'Coulomb pro Sekunde']],
+  ])],
+  ['367b17f8-972a-5f3e-8915-8cfe743132a3', new Map([
+    ['d67502e3-5e0a-595b-a24b-65b1c40de36e', ['Ablauf von Kalibrierung, Koordinatenwahl und punktweiser Markierung', 't-s-Diagramm', 'mittleren Geschwindigkeiten']],
+    ['72effc66-87f4-5f5e-8d36-1547677365fb', ['zufällige beziehungsweise systematische Abweichung', 'Gegenmaßnahme']],
+  ])],
+  ['654ec964-d982-593d-8c26-407a381675a6', new Map([
+    ['58fc7852-722c-5a67-be6a-bfd1be0b527e', ['Bedingungen für Totalreflexion', 'optisch dünnerer Mantel', 'Grenzwinkel']],
+  ])],
+  ['88f27aab-8724-5a4d-8543-e49ebcb54b8e', new Map([
+    ['d36727cc-ce42-51a3-9425-41afb0b9acdd', ['Basis, Kollektor und Emitter', 'Steuer- und Lastkreis', 'Transistor als Schalter']],
+  ])],
+  ['8f62ab5e-20fc-562f-8121-63c082313e6e', new Map([
+    ['41d35667-0296-5f84-bc12-202ffc440be0', ['Zeichnen Sie beide Kräfte', 'Konstruieren Sie die Resultierende', 'Betrag und Richtung']],
+  ])],
+  ['0cf2a5b0-8660-578d-8316-2b8a50fbdff7', new Map([
+    ['7eeff2de-6015-49a6-a96e-a488d886dc9f', ['Materialwagen mit Rettungsausrüstung', 'kinetische Energie', 'Abhängigkeit von Masse und Geschwindigkeit']],
+    ['6affc2ea-ecd2-4fcd-8877-3ffa15b0425b', ['potenziellen Energie', 'Bezugshöhe']],
+    ['327302e3-5b36-46f8-9c16-73f24583b0eb', ['Zugkraft und den Zugweg', 'warum die kleinere Kraft keine Arbeit einspart']],
+  ])],
+  ['ca13e9cd-6377-540e-88c8-0308cddc8a7e', new Map([
+    ['50877233-7abf-54df-b347-6d3224678fc9', ['Kernspaltung beziehungsweise Kernfusion', 'Kernkraftwerk', 'Inneren eines Sterns']],
+  ])],
+  ['a3c513d0-8fb9-5bd5-88cc-041527ff097d', new Map([
+    ['59d1145e-ac54-5917-880a-21b4b80526d3', ['Amperemeter in Reihe und Voltmeter parallel', 'messen Sie Stromstärke und Spannung']],
+    ['f1a078ae-6262-4444-a4bc-a5ab275621cf', ['Amperemeter wurde versehentlich parallel geschaltet', 'fachgerechte Korrektur']],
+  ])],
+  ['de7528cc-8c5d-5cd6-8d08-f8ce7457e666', new Map([
+    ['50431e92-eec9-54d6-b437-ea7a51b6f474', ['Angaben V, W und Ah', 'Gleich- und Wechselspannung', 'Funktion des Ladegeräts']],
+    ['267170bd-f880-56a7-9719-ffb9751872c5', ['beiden Maschen', 'vorzeichenrichtige Spannungsbilanz', 'Energie pro Ladung']],
+    ['8a84de16-2fde-58ec-827a-f803e2ce8564', ['Verzweigungsknoten', 'Lüfterstrom', 'Knotenregel mit Ladungserhaltung']],
+  ])],
+  ['eb5e147f-a67c-542e-858b-533a00af7af2', new Map([
+    ['1911920e-b099-4310-82f2-b47f51a78b33', ['Isolierung, Schutzleiter, Sicherung und Fehlerstrom-Schutzeinrichtung', 'Gewitterorte', 'Seitenblitz, Schrittspannung']],
+  ])],
+  ['0b090935-1e43-581b-84ec-078741f8969e', new Map([
+    ['fbe0faae-7fba-482b-888e-341f926770f3', ['Wärmeleitung, Konvektion und Wärmestrahlung', 'Stofftransport beziehungsweise elektromagnetischer Übertragung']],
+    ['eeba6bf8-a2b9-4d7d-a1d6-67286c923cef', ['Kammer als System', 'gespeicherte innere Energie und mechanische Arbeit', 'qualitative Energiebilanz']],
+    ['5a3716dd-ec67-5c48-ba3d-1a29f05ba2ce', ['natürlichen Treibhauseffekt', 'anthropogenen Anteil', 'Treibhausgaskonzentration']],
+  ])],
+  ['7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d', new Map([
+    ['30a936ec-e427-57fe-bf3e-4abd64b1f0c1', ['Kette von Energieträger beziehungsweise Primärenergie', 'Übertragung und Nutzung', 'Energieabgaben an die Umgebung']],
+    ['5be98160-5189-58aa-8183-1df1c400cc8c', ['10–18 ct/kWh', '13–24 ct/kWh', 'abgewogenes Urteil', 'Klimawirkungen']],
+  ])],
+  ['2c195204-2e21-5369-8782-7bf4fc41bf9f', new Map([
+    ['a4681378-ade4-4f20-bf77-fb020469510f', ['räumliche Spektralzerlegung', 'annähernd weißen Gesamteindruck', 'zeitliche Integration']],
+    ['cdab9fd1-5054-4a7e-8c9a-4474062ddd23', ['Lichtüberlagerung additiv', 'Filtermischung aber subtraktiv']],
+    ['9a9e2085-5ab6-534f-b622-83774d51f36b', ['breiter Lichtkegel sichtbar', 'Stoff erwärmt sich messbar', 'geringere Transmission allein', 'nebeneinander auftreten können']],
+  ])],
+  ['44985d9f-7b49-52e4-86ec-eddc7b70429f', new Map([
+    ['6a4c6042-052b-502b-a39a-0ed8941247ac', ['Wasser-Luft-Grenze', 'Brechung sowie optische Hebung']],
+    ['078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5', ['mit Hauptstrahlen das reelle Bild', 'Zerstreuungswirkung der Konkavlinse']],
+    ['e5bc2227-d900-585f-8ac0-9d3f1cb40e27', ['welche Fragen das Strahlenmodell', 'welche Annahmen es idealisiert', 'Teilchenmodell aus einem anderen Physikbereich']],
+  ])],
+  ['35dd0a33-e5d5-53b9-8438-3d339173db1b', new Map([
+    ['1ab5f599-0927-579d-94cc-feecdf3b5603', ['Pfeilspitze und Pfeilfuß', 'geradlinigen Lichtweg', 'kleineres Loch Helligkeit und Schärfe']],
+    ['90e1e6cf-4092-41d6-81f7-5206f9d68f84', ['Hornhaut, Linse und Netzhaut', 'Kurz- und Weitsichtigkeit', 'Zerstreuungs- beziehungsweise Sammellinse']],
+  ])],
+  ['00e2ddfe-18c1-57a4-86ad-ee467a1a3d61', new Map([
+    ['c1006f55-0406-48cc-92d4-0d8345897cf4', ['Lautsprecher als Schallquelle', 'Mikrofon und Ohr als Empfänger']],
+    ['10aad90e-a1db-42b6-8d1e-1d856e14b47d', ['Ton beziehungsweise Geräusch', 'Tonhöhe und Lautstärke', 'Frequenz und Amplitude']],
+    ['a24c41ce-68c5-56a7-8235-ef9a7dba7042', ['drei Schallgeschwindigkeiten', 'elastischer Kopplung und Trägheit', 'Aggregatzustand allein']],
+    ['3e33813d-db75-4571-8345-3845b02b956d', ['Außenohr, Mittelohr und Innenohr', '94 dB über 60 min', 'zwei konkrete Schutzmaßnahmen']],
+  ])],
+  ['3f477f0d-4f79-5eed-8671-fb2667d60910', new Map([
+    ['6367d45e-919e-4c19-bcd9-7770a2d51139', ['Objektiv, Okular, optische Achse', 'reelle umgekehrte Zwischenbild', 'Grenzen des vereinfachten Strahlenmodells']],
+  ])],
+  ['0acb10a3-c5e2-5a76-8907-3dfe1b57e767', new Map([
+    ['e62e48bc-2387-4b2b-8d6f-7a06c8e7580e', ['freie Saitenlänge', 'Lautstärke', 'unterschiedlich geformte periodische Signale', 'Resonanzkörper']],
+  ])],
+  ['bb7c5191-3c35-5ba6-85e0-795c7a049744', new Map([
+    ['cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5', ['Displayfarben mit additiver Farbmischung', 'Cyan- und Gelbtinte', 'subtraktive Farbmischung']],
+    ['1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075', ['Farbeindrücke der drei Kartenfelder', 'Beleuchtung', 'ins Auge gelangt']],
+  ])],
+  ['d304cfd0-f87c-51f7-8dee-f5f405da4b3d', new Map([
+    ['af0e2efb-f634-5f2d-abea-b2e1a67a2894', ['geeignete Waage', 'Nullpunkt', 'beide Massen']],
+    ['f827b00f-af7f-52de-84aa-2a2bbaa035bd', ['Länge, Breite und Höhe', 'sein Volumen', 'Größenordnung']],
+    ['f92b5b8a-327f-50d2-8313-6a142399ebf0', ['Flüssigkeitsständen vor und nach', 'Meniskus', 'Luftblasen']],
+    ['c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0', ['für beide Körper die Dichte', 'Dichtetabelle', 'Bei gleicher Masse']],
+  ])],
+  ['e1d3c599-6964-5094-83ee-7fb1ecd161ce', new Map([
+    ['e11b2ee9-e528-4857-9ecd-59bd460fba81', ['Auftriebskraft', 'Gewichtskraft des verdrängten Wassers', 'Bedingung für Schweben', 'Gewichtskraft der verdrängten Luft', 'archimedische Prinzip auch in Luft']],
+  ])],
+  ['840a82e3-44aa-5d0f-8b6f-8a067d057d14', new Map([
+    ['24b4686a-e8a6-4583-8952-33e6f653c2a3', ['Auftriebs- und Widerstandskraft', 'drei Messungen', 'energiesparenden Gleitflug']],
+  ])],
+  ['7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba', new Map([
+    ['581c0766-b84b-54cb-b8b6-375310329a41', ['Haftreibung', 'Gleitreibung', 'beim Gehen', 'auf Eis']],
+  ])],
+  ['d15764ce-ebea-5178-84ea-9351dd808b8c', new Map([
+    ['327302e3-5b36-46f8-9c16-73f24583b0eb', ['vier tragenden Seilabschnitten', 'Zugkraft und den Zugweg', 'Hebelgesetz', 'kleinere Kraft keine mechanische Arbeit einspart']],
+  ])],
+  ['449d9732-a869-5126-8879-564da5c3d263', new Map([
+    ['67ffd0f0-a5ab-518f-8c45-4c0e7eb18390', ['Angriffspunkt und Wirkungslinie', 'Schwerpunkt', 'resultierende Drehrichtung', 'Position, an die die einzelne Stütze für Gleichgewicht']],
+  ])],
+])
 
 const EXPECTED_JURISDICTIONS = [
   'DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',
@@ -136,15 +389,19 @@ const EXPECTED_JURISDICTIONS = [
 ] as const
 
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 426,
-  curricularArea: 76,
-  practiceAssessment: 75,
+  curricularAtomic: 438,
+  curricularArea: 83,
+  practiceAssessment: 126,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 1,
-  total: 588,
+  total: 658,
 }
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 5759
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 5583
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 176
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 58
 
 const EXPECTED_DURATION_DECISIONS = new Map<string, {
   stage: 'SekI' | 'SekI+SekII'
@@ -276,7 +533,11 @@ const explicitClassification = (
   if (reviewedAtomicGoalIds.has(goal.id)) {
     return {
       semanticKind: 'curricularAtomic',
-      decisionBasis: 'reviewed-current-pilot-curricular-atomic',
+      decisionBasis: STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS.has(goal.id)
+        ? 'reviewed-current-structural-split-curricular-atomic'
+        : BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS.has(goal.id)
+          ? 'reviewed-current-semantic-recheck-curricular-atomic'
+          : 'reviewed-current-pilot-curricular-atomic',
     }
   }
   if (
@@ -313,7 +574,9 @@ const explicitClassification = (
     }
     return {
       semanticKind: 'curricularArea',
-      decisionBasis: 'reviewed-current-pilot-curricular-area',
+      decisionBasis: STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS.has(goal.id)
+        ? 'reviewed-current-structural-split-curricular-area'
+        : 'reviewed-current-pilot-curricular-area',
     }
   }
   if (
@@ -324,7 +587,9 @@ const explicitClassification = (
   ) {
     return {
       semanticKind: 'practiceAssessment',
-      decisionBasis: 'reviewed-current-pilot-practice-assessment',
+      decisionBasis: POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS.has(goal.id)
+        ? 'reviewed-current-post-split-practice-assessment'
+        : 'reviewed-current-pilot-practice-assessment',
     }
   }
   if (
@@ -404,6 +669,48 @@ const collectAuthoredPrerequisiteRoots = (
   return result
 }
 
+const collectCompositionStructures = (
+  nodes: CompositionViewNode[],
+  structureId: string,
+  matches: Extract<CompositionViewNode, { kind: 'structure' }>[] = [],
+): Extract<CompositionViewNode, { kind: 'structure' }>[] => {
+  nodes.forEach((node) => {
+    if (node.kind !== 'structure') return
+    if (node.id === structureId) matches.push(node)
+    collectCompositionStructures(node.children, structureId, matches)
+  })
+  return matches
+}
+
+const collectAuthoredProjectionGoalIds = (
+  nodes: CompositionViewNode[],
+  goalsById: ReadonlyMap<string, CanonicalAuthoringGoal>,
+): Set<string> => {
+  const result = new Set<string>()
+  const addCanonicalSubtree = (rootGoalId: string) => {
+    const stack = [rootGoalId]
+    while (stack.length > 0) {
+      const goalId = stack.pop()
+      if (!goalId || result.has(goalId)) continue
+      const goal = goalsById.get(goalId)
+      assert(goal, `authored projection references unknown goal ${goalId}`)
+      result.add(goalId)
+      goal.contains.map(normalizeGoalRef).forEach((childId) => stack.push(childId))
+    }
+  }
+  const visit = (node: CompositionViewNode) => {
+    if (node.kind === 'structure') {
+      node.children.forEach(visit)
+      return
+    }
+    if (node.kind === 'landscapeEntry') return
+    if (node.kind === 'canonicalSubtree') addCanonicalSubtree(normalizeGoalRef(node.goalId))
+    else result.add(normalizeGoalRef(node.goalId))
+  }
+  nodes.forEach(visit)
+  return result
+}
+
 const rawLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(LANDSCAPE_PATH)
 const landscape = normalizeCanonicalLandscape(rawLandscape)
 assert.equal(landscape.landscapeId, LANDSCAPE_ID)
@@ -418,6 +725,127 @@ landscape.goals.forEach((goal) => goal.contains.forEach((childId) => {
 }))
 const rawGoalById = new Map(rawLandscape.goals.map((goal) => [String(goal.id), goal]))
 assert.equal(goalById.size, EXPECTED_COUNTS.total, 'canonical Physics goal IDs must be unique')
+const bavariaMotorTransformerAssessment = rawGoalById.get(BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID)
+assert(bavariaMotorTransformerAssessment, 'Bavaria motor/transformer assessment is missing')
+assert.deepEqual(
+  bavariaMotorTransformerAssessment.requires,
+  (bavariaMotorTransformerAssessment.examData as { coveredGoalIds?: unknown })?.coveredGoalIds,
+  'Bavaria motor/transformer assessment requires must exactly match coveredGoalIds',
+)
+
+CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
+  const assessment = rawGoalById.get(assessmentId)
+  assert(assessment, `CQR-104 route assessment ${assessmentId} is missing`)
+  const examData = assessment.examData as {
+    coveredGoalIds?: unknown
+    taskContent?: unknown
+  } | undefined
+  assert.deepEqual(
+    assessment.requires,
+    examData?.coveredGoalIds,
+    `CQR-104 route assessment ${assessmentId} requires must exactly match coveredGoalIds`,
+  )
+  const extendedData = assessment.extendedData as Record<string, unknown> | undefined
+  assert.equal(
+    extendedData?.applicabilityFromRequires,
+    true,
+    `CQR-104 route assessment ${assessmentId} must derive applicability from its exact requires`,
+  )
+  assert.equal(
+    extendedData?.applicabilityOverrides,
+    undefined,
+    `CQR-104 route assessment ${assessmentId} must not carry a jurisdiction override`,
+  )
+  assert.deepEqual(
+    [...evidenceByGoalId.keys()].sort(compareCodePoints),
+    [...((examData?.coveredGoalIds ?? []) as string[])].sort(compareCodePoints),
+    `CQR-104 route assessment ${assessmentId} needs an explicit task-content evidence binding for every covered goal`,
+  )
+  const taskContent = String(examData?.taskContent ?? '')
+  evidenceByGoalId.forEach((evidenceSnippets, coveredGoalId) => {
+    evidenceSnippets.forEach((snippet) => {
+      assert(
+        taskContent.includes(snippet),
+        `CQR-104 route assessment ${assessmentId} does not visibly assess ${coveredGoalId}; missing task evidence: ${snippet}`,
+      )
+    })
+  })
+})
+
+const genericSekIAssessment = rawGoalById.get(GENERIC_SEKI_ASSESSMENT_ID)
+assert(genericSekIAssessment, 'generic Sek-I assessment is missing')
+assert.equal(
+  (genericSekIAssessment.extendedData as { applicabilityProjection?: unknown })?.applicabilityProjection,
+  'excluded',
+  'legacy aggregate Sek-I assessment must be excluded from applicability projection',
+)
+const genericSekIExtendedData = genericSekIAssessment.extendedData as {
+  compatibilityOnly?: unknown
+  applicabilityMappingInheritance?: unknown
+  applicabilityOverrides?: unknown
+}
+assert.equal(
+  genericSekIExtendedData.compatibilityOnly,
+  true,
+  'legacy aggregate Sek-I assessment must remain explicitly classified as compatibility-only',
+)
+assert.equal(
+  genericSekIAssessment.applicability,
+  undefined,
+  'excluded legacy aggregate assessment must not retain compiled jurisdiction applicability',
+)
+assert.equal(
+  genericSekIExtendedData.applicabilityMappingInheritance,
+  undefined,
+  'excluded legacy aggregate assessment needs no mapping-inheritance boundary',
+)
+assert.equal(
+  genericSekIExtendedData.applicabilityOverrides,
+  undefined,
+  'excluded legacy aggregate assessment must not retain jurisdiction overrides',
+)
+const applicabilityOverrideRegistry = readJson<{
+  version: number
+  landscapes: Array<{
+    landscapeId: string
+    goalApplicabilityOverrides?: Record<string, { jurisdiction?: string[] }>
+  }>
+}>(APPLICABILITY_OVERRIDE_REGISTRY_PATH)
+const genericSekIRegistryOverride = applicabilityOverrideRegistry.landscapes
+  .find(({ landscapeId }) => landscapeId === LANDSCAPE_ID)
+  ?.goalApplicabilityOverrides?.[GENERIC_SEKI_ASSESSMENT_ID]
+assert.equal(
+  genericSekIRegistryOverride,
+  undefined,
+  'excluded legacy aggregate assessment must not retain an external applicability override',
+)
+const physicsApplicabilityReport = buildApplicabilityCompilation().reports.find(
+  ({ landscapeId }) => landscapeId === LANDSCAPE_ID,
+)
+assert(physicsApplicabilityReport, 'applicability compiler lacks canonical Physics report')
+assert.equal(
+  physicsApplicabilityReport.summary.errors,
+  0,
+  'Physics applicability compilation must not lose evidence for any goal',
+)
+const compiledGenericSekIApplicability = physicsApplicabilityReport.goals.find(
+  ({ goalId }) => goalId === GENERIC_SEKI_ASSESSMENT_ID,
+)
+assert(compiledGenericSekIApplicability, 'applicability compiler lacks generic compatibility endpoint')
+assert.deepEqual(
+  compiledGenericSekIApplicability.compiledApplicability,
+  {},
+  'excluded legacy aggregate assessment must compile to no jurisdiction',
+)
+assert.deepEqual(
+  compiledGenericSekIApplicability.evidence,
+  [],
+  'excluded legacy aggregate assessment must compile without applicability evidence',
+)
+assert(
+  (parentIdsByChild.get(GENERIC_SEKI_ASSESSMENT_ID) ?? []).length === 0,
+  'excluded legacy aggregate assessment must not remain in the live practice cluster',
+)
 
 const atomicityConfig = readJson<{
   reviewId: string
@@ -552,6 +980,22 @@ ledger.decisions.forEach((decision) => {
 })
 assert.equal(decisionByGoalId.size, goalById.size, 'semantic-kind ledger must bind every Physics goal exactly once')
 assert.deepEqual(actualCounts, EXPECTED_COUNTS)
+const incompleteBilingualAtomicGoals = ledger.decisions
+  .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
+  .flatMap(({ goalId }) => {
+    const goal = rawGoalById.get(goalId)
+    return (
+      typeof goal?.titleEn === 'string'
+      && goal.titleEn.trim() !== ''
+      && typeof goal.descriptionEn === 'string'
+      && goal.descriptionEn.trim() !== ''
+    ) ? [] : [goalId]
+  })
+assert.deepEqual(
+  incompleteBilingualAtomicGoals,
+  [],
+  'Every Physics curricularAtomic goal must have complete titleEn and descriptionEn before bilingual review campaigns',
+)
 
 const config = readJson<Record<string, unknown>>(CONFIG_PATH)
 assert.deepEqual(config, {
@@ -616,12 +1060,34 @@ const physicsAndMathGoalUniverse: CanonicalAuthoringLandscape = {
   title: 'Canonical Physics goal-book goal universe',
   goals: physicsAndMathGoalUniverseGoals,
 }
+const physicsAndMathGoalById = new Map(
+  physicsAndMathGoalUniverseGoals.map((goal) => [goal.id, goal]),
+)
+const effectivePhysicsRequiresByGoalId = new Map<string, string[]>()
+landscapeWithSemanticKinds.goals.forEach((goal) => {
+  const effectiveRequires = new Set(goal.requires.map(normalizeGoalRef))
+  const seenAncestors = new Set<string>()
+  const ancestorStack = [...(parentIdsByChild.get(goal.id) ?? [])]
+  while (ancestorStack.length > 0) {
+    const ancestorId = ancestorStack.pop()
+    if (!ancestorId || seenAncestors.has(ancestorId)) continue
+    seenAncestors.add(ancestorId)
+    const ancestor = semanticGoalById.get(ancestorId)
+    assert(ancestor, `Physics contains graph references unknown ancestor ${ancestorId}`)
+    ancestor.requires.map(normalizeGoalRef).forEach((requiredGoalId) => {
+      effectiveRequires.add(requiredGoalId)
+    })
+    ancestorStack.push(...(parentIdsByChild.get(ancestorId) ?? []))
+  }
+  effectivePhysicsRequiresByGoalId.set(goal.id, [...effectiveRequires].sort(compareCodePoints))
+})
 const allPhysicsViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIRECTORY))
   .filter((fileName) => fileName.endsWith('.view.json'))
   .map((fileName) => `${COMPOSITION_VIEW_DIRECTORY}/${fileName}`)
   .sort(compareCodePoints)
 assert.equal(allPhysicsViewPaths.length, 69, 'Physics projection QA must bind all 69 composition views')
 const validatedNationalPhysicsViewIds = new Set<string>()
+const validatedStrictBwBySekIViewIds = new Set<string>()
 
 allPhysicsViewPaths.forEach((viewPath) => {
   const view = normalizeCompositionView(readJson(viewPath))
@@ -635,6 +1101,136 @@ allPhysicsViewPaths.forEach((viewPath) => {
   assert.deepEqual(errors, [], `invalid Physics composition view ${viewPath}`)
 
   const visibleGoalIds = collectVisibleGoalIds(compilation.compiledRootNodes)
+  if (
+    (view.scope.jurisdiction === 'DE-BW' || view.scope.jurisdiction === 'DE-BY')
+    && view.scope.stage === 'CrossStage'
+  ) {
+    const sekIAnchorId = view.scope.jurisdiction === 'DE-BW' ? 'physics-bw-seki' : 'physics-seki'
+    const sekIStructures = collectCompositionStructures(view.rootNodes, sekIAnchorId)
+    assert.equal(sekIStructures.length, 1, `${view.viewId} must expose exactly one strict Sek-I structure`)
+    const sekIStructure = sekIStructures[0]
+    if (view.scope.jurisdiction === 'DE-BY') {
+      const ph10Structures = collectCompositionStructures([sekIStructure], 'physics-by-ph10-1')
+      assert.equal(ph10Structures.length, 1, `${view.viewId} must expose exactly one Ph10.1 structure`)
+      assert.deepEqual(
+        [...collectAuthoredProjectionGoalIds([ph10Structures[0]], semanticGoalById)].sort(compareCodePoints),
+        [...BAVARIA_PH10_1_GOAL_IDS].sort(compareCodePoints),
+        `${view.viewId} must retain the reviewed seven-goal Ph10.1 projection`,
+      )
+    }
+
+    assert(
+      visibleGoalIds.has(PHYSICS_MOTIVATION_GOAL_ID),
+      `${view.viewId} must expose the Physics motivation anchor`,
+    )
+
+    const strictSekICompilation = compileCompositionView(
+      {
+        ...view,
+        viewId: `${view.viewId}-strict-seki-closure`,
+        rootNodes: [sekIStructure],
+      },
+      landscapeWithSemanticKinds,
+      physicsAndMathGoalUniverse,
+    )
+    assert.deepEqual(
+      strictSekICompilation.findings.filter(({ severity }) => severity === 'error'),
+      [],
+      `${view.viewId} strict Sek-I subtree must compile independently`,
+    )
+    const strictSekITargetGoalIds = collectVisibleGoalIds(strictSekICompilation.compiledRootNodes)
+    const strictSekIProjectionGoalIds = collectAuthoredProjectionGoalIds(
+      [sekIStructure],
+      physicsAndMathGoalById,
+    )
+
+    // Root-level prerequisite-only references are explicit shared support for
+    // the stage branch. Do not admit target goals from the sibling Sek-II
+    // branch into this strict availability set.
+    const rootStructures = collectCompositionStructures(view.rootNodes, 'physics-root')
+    assert.equal(rootStructures.length, 1, `${view.viewId} must expose exactly one Physics root structure`)
+    const rootLevelPrerequisiteNodes = rootStructures[0].children.filter((node) => (
+      node.kind !== 'structure'
+      && node.kind !== 'landscapeEntry'
+      && node.projectionRole === 'prerequisiteOnly'
+    ))
+    collectAuthoredProjectionGoalIds(rootLevelPrerequisiteNodes, physicsAndMathGoalById)
+      .forEach((goalId) => strictSekIProjectionGoalIds.add(goalId))
+    strictSekIProjectionGoalIds.add(PHYSICS_MOTIVATION_GOAL_ID)
+
+    const strictRouteStartGoalIds = [...strictSekITargetGoalIds]
+      .filter((goalId) => {
+        const goal = semanticGoalById.get(goalId)
+        return !!goal && resolveCanonicalNodeType(goal) === 'atomic'
+      })
+      .sort(compareCodePoints)
+    assert(strictRouteStartGoalIds.length > 0, `${view.viewId} strict Sek-I route needs target atoms`)
+    CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((_evidence, assessmentId) => {
+      const assessment = semanticGoalById.get(assessmentId)
+      assert(assessment, `Missing route assessment ${assessmentId}`)
+      assert.equal(
+        (assessment.extendedData as { applicabilityFromRequires?: unknown })?.applicabilityFromRequires,
+        true,
+        `${assessmentId} must derive local visibility from its exact requires`,
+      )
+      const requiredGoalIds = effectivePhysicsRequiresByGoalId.get(assessmentId) ?? []
+      const hasCompleteLocalSupport = requiredGoalIds.every((requiredGoalId) =>
+        strictSekIProjectionGoalIds.has(requiredGoalId),
+      )
+      assert.equal(
+        strictRouteStartGoalIds.includes(assessmentId),
+        hasCompleteLocalSupport,
+        `${view.viewId} must project ${assessmentId} exactly when all requires are authoritatively visible`,
+      )
+    })
+
+    const visitedPrerequisiteGoalIds = new Set<string>()
+    const visitingPrerequisiteGoalIds = new Set<string>()
+    let traversedPrerequisiteEdges = 0
+    const visitAllPrerequisites = (goalId: string, routePath: string[]) => {
+      if (visitingPrerequisiteGoalIds.has(goalId)) {
+        assert.fail(`${view.viewId} strict Sek-I prerequisite cycle: ${[...routePath, goalId].join(' -> ')}`)
+      }
+      if (visitedPrerequisiteGoalIds.has(goalId)) return
+      visitingPrerequisiteGoalIds.add(goalId)
+      const goal = physicsAndMathGoalById.get(goalId)
+      assert(goal, `${view.viewId} strict Sek-I route references unknown canonical goal ${goalId}`)
+      // A foreign canonical root is the explicit cross-landscape hand-off:
+      // this Physics view must authoritatively project it, while its internal
+      // learning route remains owned and validated by the Mathematics view.
+      // Within Physics, no visible local prerequisite may terminate recursion.
+      if (!semanticGoalById.has(goalId)) {
+        visitingPrerequisiteGoalIds.delete(goalId)
+        visitedPrerequisiteGoalIds.add(goalId)
+        return
+      }
+      const requiredGoalIds = effectivePhysicsRequiresByGoalId.get(goalId)
+        ?? []
+      requiredGoalIds.forEach((requiredGoalId) => {
+        traversedPrerequisiteEdges += 1
+        const nextRoutePath = [...routePath, goalId, requiredGoalId]
+        assert(
+          strictSekIProjectionGoalIds.has(requiredGoalId),
+          `${view.viewId} strict Sek-I all-of prerequisite closure leaves its authoritative projection: ${nextRoutePath.join(' -> ')}`,
+        )
+        visitAllPrerequisites(requiredGoalId, [...routePath, goalId])
+      })
+      visitingPrerequisiteGoalIds.delete(goalId)
+      visitedPrerequisiteGoalIds.add(goalId)
+    }
+    strictRouteStartGoalIds.forEach((goalId) => {
+      assert(
+        strictSekIProjectionGoalIds.has(goalId),
+        `${view.viewId} strict Sek-I route start is not authoritatively projected: ${goalId}`,
+      )
+      visitAllPrerequisites(goalId, [])
+    })
+    assert(
+      traversedPrerequisiteEdges > 0,
+      `${view.viewId} strict Sek-I closure regression must traverse prerequisite edges`,
+    )
+    validatedStrictBwBySekIViewIds.add(view.viewId)
+  }
   const expectedForeignPrerequisiteIds = new Set<string>()
   visibleGoalIds.forEach((goalId) => {
     const physicsGoal = semanticGoalById.get(goalId)
@@ -693,6 +1289,16 @@ assert.deepEqual(
   [...validatedNationalPhysicsViewIds].sort(compareCodePoints),
   [...NATIONAL_PHYSICS_VIEW_IDS].sort(compareCodePoints),
   'Physics projection QA must bind all four national CrossStage/SekII GK/LK views',
+)
+assert.deepEqual(
+  [...validatedStrictBwBySekIViewIds].sort(compareCodePoints),
+  [
+    'de-bw-gym-physics-gk',
+    'de-bw-gym-physics-lk',
+    'de-by-gym-physics-gk',
+    'de-by-gym-physics-lk',
+  ],
+  'Physics projection QA must bind all strict BW/BY CrossStage Sek-I routes',
 )
 
 const atlasCurricularAtomicGoalIds = new Set<string>()
@@ -828,6 +1434,83 @@ sharedPhysicsDecisions.forEach((sharedDecision) => {
     `${sharedDecision.jurisdiction} drifted between the shared legacy policy and Physics atlas snapshot`,
   )
 })
+
+const curriculumQualityStatus = readJson<{
+  curricula: Array<{
+    landscapeId: string
+    scopes: Array<{
+      scopeId: string
+      rules: Array<{
+        id: string
+        status: string
+        metrics?: Record<string, number>
+      }>
+    }>
+  }>
+}>(CURRICULUM_QUALITY_STATUS_PATH)
+const physicsQuality = curriculumQualityStatus.curricula.find(({ landscapeId }) => landscapeId === LANDSCAPE_ID)
+assert(physicsQuality, 'curriculum-quality status lacks canonical Physics')
+const physicsSekIRouteScope = physicsQuality.scopes.find(({ scopeId }) => scopeId === 'canonical-physics-sek1')
+assert(physicsSekIRouteScope, 'curriculum-quality status lacks canonical Physics Sek-I route scope')
+const routeProjectionRule = physicsSekIRouteScope.rules.find(({ id }) => id === 'CQR-104')
+assert(routeProjectionRule, 'curriculum-quality status lacks Physics Sek-I CQR-104')
+const routeMetrics = routeProjectionRule.metrics ?? {}
+assert.equal(
+  routeMetrics.visibleProjectedRouteTargetGoalOccurrences,
+  EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES,
+  'Physics Sek-I CQR-104 must count every resolved learner-facing target occurrence',
+)
+assert.equal(
+  routeMetrics.visibleProfileSelectedAtomicGoalOccurrences,
+  EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES,
+)
+assert.equal(
+  routeMetrics.visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector,
+  EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES,
+  'The profile selector diagnostic must retain the known tag/phase mismatch instead of hiding it',
+)
+assert.equal(
+  routeMetrics.uniqueProjectedRouteTargetsExcludedByProfileSelector,
+  EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS,
+)
+assert.equal(
+  (routeMetrics.visibleProfileSelectedAtomicGoalOccurrences ?? 0)
+    + (routeMetrics.visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector ?? 0),
+  routeMetrics.visibleProjectedRouteTargetGoalOccurrences,
+)
+assert.equal(
+  routeMetrics.visibleSelectedAtomicGoalOccurrences,
+  routeMetrics.visibleProjectedRouteTargetGoalOccurrences,
+  'Every projected route target occurrence must enter the route checks',
+)
+assert.equal(
+  routeMetrics.visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks,
+  0,
+  'CQR-104 must fail closed if any projected route target escapes route checks',
+)
+for (const suffix of [
+  'EffectiveMotivationRoute',
+  'DirectMotivationRoute',
+  'EffectiveTerminalRoute',
+  'DirectTerminalRoute',
+] as const) {
+  assert.equal(
+    routeMetrics[`profileSelectorExcludedGoalOccurrencesMissing${suffix}`],
+    routeMetrics[`visibleSelectedGoalOccurrencesMissing${suffix}`],
+    `Known Physics Sek-I projection-local ${suffix} failures must not be removed by profile preselection`,
+  )
+}
+const hasProjectionRouteFailure = [
+  'visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute',
+  'visibleSelectedGoalOccurrencesMissingDirectMotivationRoute',
+  'visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute',
+  'visibleSelectedGoalOccurrencesMissingDirectTerminalRoute',
+].some((metric) => (routeMetrics[metric] ?? 0) > 0)
+assert.equal(
+  routeProjectionRule.status,
+  hasProjectionRouteFailure ? 'fail' : 'pass',
+  'Physics Sek-I CQR-104 status must reflect all projection-local route failures',
+)
 
 console.log(
   `Physics goal-book inputs verified: ${EXPECTED_COUNTS.total} semantic-kind decisions; `

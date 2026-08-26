@@ -4,61 +4,28 @@
 
 - SkillPilot-ID: `79cb1695-f985-443a-b93e-27b57ab474b7`
 - Titel: Lichtwege mit dem Strahlenmodell darstellen und vorhersagen
-- Beschreibung: Die lernende Person kann Lichtwege mit dem Strahlenmodell darstellen und einfache Lichtwege fachlich vorhersagen.
+- Beschreibung: Die lernende Person kann Lichtwege in einfachen optischen Anordnungen als gerichtete Linien des Strahlenmodells darstellen und aus den für die Anordnung geltenden Ausbreitungsregeln weitere Wegabschnitte vorhersagen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `79cb1695-f985-443a-b93e-27b57ab474b7.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.jpg`
+- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
+- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
+- Quellbild: `79cb1695-f985-443a-b93e-27b57ab474b7.png`
+- Public Asset: `/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.png`
+- SHA-256: `sha256:56dfcd1d14fe22c174bdb8459d0e282f809ffb459b66dd11de797636ab459eb7`
 
-## Prompt
+## Finale wirksame Prompt-Spezifikation
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine klare deutschsprachige 2D-Lerninfografik im Querformat zum Strahlenmodell. Ordne von links nach rechts eine punktförmige Lichtquelle, eine undurchsichtige senkrechte Blende mit genau einer mittigen Öffnung und einen senkrechten Schirm an.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Zeige genau drei gerade gelbe Modelllinien, die alle an derselben Punktquelle beginnen, mit sichtbarem Abstand durch die Öffnung laufen und den Schirm erreichen. Jede Linie trägt eine eindeutige Pfeilspitze von der Quelle zum Schirm. Ergänze bei der mittleren Linie eine gestrichelte geradlinige Fortsetzung, die das Vorhersagen eines weiteren Wegabschnitts verdeutlicht. Kurze deutsche Hinweise sollen die beiden Kerngedanken benennen: gerichtete Modelllinie und Vorhersage durch geradlinige Fortsetzung.
 
-Titel: Lichtwege mit dem Strahlenmodell darstellen und vorhersagen
-Beschreibung: Die lernende Person kann Lichtwege mit dem Strahlenmodell darstellen und einfache Lichtwege fachlich vorhersagen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Lichtwege mit dem Strahlenmodell`.
-- Use a flat 2D side-view cross-section only.
-- Layout from left to right: `punktfoermige Lichtquelle`, `Blende mit Oeffnung`, `Schirm als Linie`.
-- The light source must be one single point on the left.
-- The aperture must be a vertical opaque barrier with one narrow opening in the middle. Show the opaque parts above and below the opening clearly.
-- The screen must be shown only as one vertical line, not as a rectangular wall, panel, surface, or 3D screen.
-- Draw exactly three straight light rays as thin lines without arrowheads:
-  1. from the point source through the upper edge of the aperture opening to the upper end of the illuminated segment on the screen line
-  2. from the point source through the center of the aperture opening to the center of the illuminated segment on the screen line
-  3. from the point source through the lower edge of the aperture opening to the lower end of the illuminated segment on the screen line
-- All three rays must start at the same point source and must pass through the aperture opening. No ray may pass through an opaque part of the barrier.
-- On the vertical screen line, show only a bright vertical segment between the two boundary-ray intersections, labelled `beleuchteter Bereich`.
-- Add rule card: `Strahlenmodell: gerade Linien zeigen den Lichtweg`.
-
-Vermeiden:
-
-- Do not draw parallel rays before the aperture; the rays must all start at the same point source.
-- Do not draw a 2D bright patch on a wall or screen.
-- Do not draw a screen rectangle, screen panel, or 3D wall perspective.
-- Do not draw rays through opaque parts of the aperture barrier.
-- Do not bend rays at the aperture; every ray must be one straight line from source through opening to screen.
-- Do not draw rays from the screen back to the light source.
-- Do not add mirrors, lenses, reflection, decorative arrows, connector arrows, or extra rays.
+Keine Linie darf einen undurchsichtigen Blendenteil schneiden. Keine gebogenen oder rückwärts gerichteten Strahlen, Reflexion, Brechung, Linsen, Spiegel, 3D-Perspektive, dekorativen Verbindungspfeile, Logos, Wasserzeichen, technischen IDs oder langen Textblöcke.
 ```
+
+Die Generierung wurde iterativ korrigiert, bis alle drei Pfeilrichtungen und die regelgeleitete Fortsetzung eindeutig sichtbar waren.
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Am 25.08.2026 in Originalauflösung KI-geprüft: Drei gerade, gerichtete Modelllinien passieren die Öffnung; die gestrichelte Fortsetzung macht die Vorhersage explizit. Eine menschliche Freigabe liegt nicht vor.

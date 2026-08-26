@@ -5,8 +5,13 @@ import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
-import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
+import {
+  getCompositionProjectionRole,
+  normalizeCompositionView,
+  type CompositionViewNode,
+} from '../src/utils/authoring/compositionViewAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
+import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
 import { buildDirectChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
 import type { ApplicabilityCompilationResult, ApplicabilityEvidence, ApplicabilityFinding } from './applicabilityCompiler'
@@ -879,6 +884,8 @@ interface RouteProfile {
   terminalAutonomyClusterIds: string[]
   terminalAutonomyClusterIdsByDurationModel?: Partial<Record<DurationModel, string[]>>
   compositionViewStage?: 'SekI' | 'SekII' | 'CrossStage'
+  compositionViewApplicabilityMode?: 'compiled-jurisdiction'
+  compositionViewRoutePathMode?: 'visible-atomic'
   goalSelector: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
 }
@@ -1164,6 +1171,9 @@ const routeProfiles: RouteProfile[] = [
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_PHYSICS_MOTIVATION_GOAL_ID],
     terminalAutonomyClusterIds: [CANONICAL_GYM_PHYSICS_SEK1_PRACTICE_CLUSTER_ID],
+    compositionViewStage: 'SekI',
+    compositionViewApplicabilityMode: 'compiled-jurisdiction',
+    compositionViewRoutePathMode: 'visible-atomic',
     goalSelector: (goal) => isAtomicGoal(goal)
       && isCanonicalGymPhysicsSek1Goal(goal)
       && !isMemoryGoal(goal)
@@ -1527,6 +1537,13 @@ function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
   return (goal.tags ?? []).includes('Practice') || (goal.tags ?? []).includes('Assessment')
 }
 
+function isProjectedRouteTargetGoal(goal: LearningGoal | undefined): goal is LearningGoal {
+  return !!goal
+    && isAtomicGoal(goal)
+    && !isMemoryGoal(goal)
+    && !isPracticeOrAssessmentGoal(goal)
+}
+
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
   if (!goal) return false
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
@@ -1755,6 +1772,37 @@ function createPathChecker(edgeMap: Map<string, string[]>): (startId: string, ta
   return (startId, targetId) => startId === targetId || reachableFrom(startId).has(targetId)
 }
 
+function createVisibleAtomicPathChecker(
+  edgeMap: Map<string, string[]>,
+  visibleAtomicGoalIds: Set<string>,
+): (startId: string, targetId: string) => boolean {
+  const reachableByStart = new Map<string, Set<string>>()
+
+  const reachableFrom = (startId: string): Set<string> => {
+    const cached = reachableByStart.get(startId)
+    if (cached) return cached
+
+    const seen = new Set<string>()
+    const stack = visibleAtomicGoalIds.has(startId) ? [startId] : []
+    while (stack.length > 0) {
+      const current = stack.pop()
+      if (!current || seen.has(current)) continue
+      seen.add(current)
+      for (const next of edgeMap.get(current) ?? []) {
+        if (visibleAtomicGoalIds.has(next) && !seen.has(next)) stack.push(next)
+      }
+    }
+    reachableByStart.set(startId, seen)
+    return seen
+  }
+
+  return (startId, targetId) => (
+    visibleAtomicGoalIds.has(startId)
+    && visibleAtomicGoalIds.has(targetId)
+    && (startId === targetId || reachableFrom(startId).has(targetId))
+  )
+}
+
 function findCycle(edgeMap: Map<string, string[]>): string[] | null {
   const visiting = new Set<string>()
   const visited = new Set<string>()
@@ -1911,63 +1959,520 @@ function terminalAutonomyGoalsForRouteScope(
 function evaluateRouteEndpointCompositionVisibility(
   landscape: SkillLandscape,
   profile: RouteProfile,
+  selectedGoals: LearningGoal[],
   terminalAutonomyGoals: LearningGoal[],
+  applicabilityCompilation: ApplicabilityCompilationResult,
+  effectiveEdges: Map<string, string[]>,
+  reverseEffectiveEdges: Map<string, string[]>,
+  atomicDirectEdges: Map<string, string[]>,
+  reverseAtomicDirectEdges: Map<string, string[]>,
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const applicabilityReport = applicabilityCompilation.reports.find(
+    (report) => report.landscapeId === profile.landscapeId,
+  )
+  const compiledJurisdictionsByGoalId = new Map(
+    (applicabilityReport?.goals ?? []).map((goal) => [
+      goal.goalId,
+      new Set(goal.compiledApplicability.jurisdiction ?? []),
+    ]),
+  )
+  const useCompiledJurisdiction = profile.compositionViewApplicabilityMode === 'compiled-jurisdiction'
+  const enforceProjectionLocalRoutes = profile.compositionViewRoutePathMode === 'visible-atomic'
+  const enforceProjectionLocalAssessmentRequires = (
+    profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID
+  )
 
-  const viewFiles = readCompositionViewFilesForLandscapeId(profile.landscapeId)
-    .filter((file) => {
-      const view = normalizeCompositionView(loadJson<unknown>(file))
-      return view.landscapeId === profile.landscapeId
-        && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage')
-    })
+  const viewEntries = readCompositionViewFilesForLandscapeId(profile.landscapeId)
+    .map((file) => ({ file, view: normalizeCompositionView(loadJson<unknown>(file)) }))
+    .filter(({ view }) => view.landscapeId === profile.landscapeId
+      && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage'))
+  const viewFiles = viewEntries.map(({ file }) => file)
 
-  const missingMotivationViewFiles: string[] = []
-  const missingTerminalViewFiles: string[] = []
+  const missingMotivationScopes: string[] = []
+  const missingTerminalScopes: string[] = []
+  const unexpectedTerminalScopes: string[] = []
+  const emptyExpectedTerminalScopes: string[] = []
+  const invalidStageStructureScopes: string[] = []
+  const terminalPrerequisiteClosureScopes: string[] = []
+  const missingEffectiveMotivationRouteScopes: string[] = []
+  const missingDirectMotivationRouteScopes: string[] = []
+  const missingEffectiveTerminalRouteScopes: string[] = []
+  const missingDirectTerminalRouteScopes: string[] = []
+  const missingJurisdictionStageAuthorityScopes: string[] = []
+  const ambiguousJurisdictionStageAuthorityScopes: string[] = []
+  const uniqueGoalsMissingEffectiveMotivationRoute = new Set<string>()
+  const uniqueGoalsMissingDirectMotivationRoute = new Set<string>()
+  const uniqueGoalsMissingEffectiveTerminalRoute = new Set<string>()
+  const uniqueGoalsMissingDirectTerminalRoute = new Set<string>()
+  const uniqueTerminalPrerequisitesMissingFromProjection = new Set<string>()
+  const uniqueProjectedRouteTargetsExcludedByProfileSelector = new Set<string>()
+  const terminalGoalsMissingCompiledApplicability = useCompiledJurisdiction
+    ? terminalAutonomyGoals
+      .filter((goal) => (compiledJurisdictionsByGoalId.get(goal.id)?.size ?? 0) === 0)
+      .map((goal) => goal.id)
+    : []
+  let evaluatedProjectionScopes = 0
+  let visibleSelectedAtomicGoalOccurrences = 0
+  let visibleProfileSelectedAtomicGoalOccurrences = 0
+  let visibleProjectedRouteTargetGoalOccurrences = 0
+  let visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector = 0
+  let visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks = 0
+  let visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute = 0
+  let visibleSelectedGoalOccurrencesMissingDirectMotivationRoute = 0
+  let visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute = 0
+  let visibleSelectedGoalOccurrencesMissingDirectTerminalRoute = 0
+  let profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute = 0
+  let profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute = 0
+  let profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute = 0
+  let profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute = 0
+  let terminalPrerequisiteOccurrencesMissingFromProjection = 0
+  let nationalProjectionScopesUsingJurisdictionStageAuthority = 0
+  let nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
+  let nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
+  let nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority = 0
+  let minRequiredTerminalAutonomyGoals = Number.POSITIVE_INFINITY
   let maxRequiredTerminalAutonomyGoals = 0
+  const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
 
-  viewFiles.forEach((file) => {
-    const view = normalizeCompositionView(loadJson<unknown>(file))
-    const terminalGoalIds = terminalAutonomyGoalsForRouteScope(
+  viewEntries.forEach(({ file, view }) => {
+    const matchingStageStructures = enforceProjectionLocalRoutes
+      ? collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
+      : []
+    const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
       goalById,
       profile,
       view.scope,
       terminalAutonomyGoals,
-    ).map((goal) => goal.id)
-    maxRequiredTerminalAutonomyGoals = Math.max(maxRequiredTerminalAutonomyGoals, terminalGoalIds.length)
-    const visibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(landscape, file)
-    const hasMotivationAnchors = profile.motivationAnchorGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))
-    const hasTerminalGoals = terminalGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))
-    if (!hasMotivationAnchors) {
-      missingMotivationViewFiles.push(file)
-    }
-    if (!hasTerminalGoals) {
-      missingTerminalViewFiles.push(file)
-    }
+    )
+    const viewJurisdiction = typeof view.scope.jurisdiction === 'string'
+      ? view.scope.jurisdiction
+      : null
+    const projectionJurisdictions: Array<string | null> = useCompiledJurisdiction
+      ? (viewJurisdiction ? [viewJurisdiction] : [...applicabilityCompilation.summary.supportedValues])
+      : [null]
+
+    projectionJurisdictions.forEach((jurisdiction) => {
+      evaluatedProjectionScopes += 1
+      const scopeLabel = `${toRepoPath(file)}${jurisdiction ? ` [${jurisdiction}]` : ''}`
+
+      const scopeFilters = useCompiledJurisdiction
+        ? [view.scope.courseProfile, view.scope.durationModel]
+          .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+        : []
+      const removeGoalsOutsideCompiledProjection = (goalIds: Set<string>) => {
+        if (!useCompiledJurisdiction || !jurisdiction) return
+        Array.from(goalIds).forEach((goalId) => {
+          if (!compiledJurisdictionsByGoalId.get(goalId)?.has(jurisdiction)) {
+            goalIds.delete(goalId)
+          }
+        })
+      }
+      const visibleTargetAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+        landscape,
+        file,
+        scopeFilters,
+        false,
+        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
+        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
+      )
+      const visibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+        landscape,
+        file,
+        scopeFilters,
+        true,
+        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
+        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
+      )
+      if (useCompiledJurisdiction && jurisdiction) {
+        removeGoalsOutsideCompiledProjection(visibleTargetAtomicGoalIds)
+        removeGoalsOutsideCompiledProjection(visibleAtomicGoalIds)
+      }
+      let jurisdictionStageTargetAuthorityGoalIds: Set<string> | null = null
+      let jurisdictionStageVisibleAuthorityGoalIds: Set<string> | null = null
+      if (useCompiledJurisdiction && enforceProjectionLocalRoutes && !viewJurisdiction && jurisdiction) {
+        // A jurisdiction-resolved national view gets its stage boundary and explicit
+        // prerequisite-only support from the matching state view. State targets that
+        // the national view does not itself expose are never imported as hidden path nodes.
+        const jurisdictionViewEntries = viewEntries.filter(({ view: jurisdictionView }) => {
+          if (jurisdictionView.scope.jurisdiction !== jurisdiction) return false
+          if (
+            typeof view.scope.courseProfile === 'string'
+            && jurisdictionView.scope.courseProfile !== view.scope.courseProfile
+          ) return false
+          if (
+            typeof view.scope.durationModel === 'string'
+            && jurisdictionView.scope.durationModel !== view.scope.durationModel
+          ) return false
+          return true
+        })
+        const authorityProjectionSets = jurisdictionViewEntries.map(({ file: authorityFile, view: authorityView }) => {
+          const authorityScopeFilters = [authorityView.scope.courseProfile, authorityView.scope.durationModel]
+            .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+          const targetGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+            landscape,
+            authorityFile,
+            authorityScopeFilters,
+            false,
+            profile.compositionViewStage,
+            profile.motivationAnchorGoalIds,
+          )
+          const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
+            landscape,
+            authorityFile,
+            authorityScopeFilters,
+            true,
+            profile.compositionViewStage,
+            profile.motivationAnchorGoalIds,
+          )
+          removeGoalsOutsideCompiledProjection(targetGoalIds)
+          removeGoalsOutsideCompiledProjection(visibleGoalIds)
+          return { file: authorityFile, targetGoalIds, visibleGoalIds }
+        })
+
+        if (authorityProjectionSets.length === 0) {
+          missingJurisdictionStageAuthorityScopes.push(scopeLabel)
+        } else {
+          nationalProjectionScopesUsingJurisdictionStageAuthority += 1
+          const jurisdictionStageTargetGoalIds = new Set(authorityProjectionSets[0].targetGoalIds)
+          const jurisdictionStageVisibleGoalIds = new Set(authorityProjectionSets[0].visibleGoalIds)
+          const authoritySetsAgree = authorityProjectionSets.every(({ targetGoalIds, visibleGoalIds }) => (
+            targetGoalIds.size === jurisdictionStageTargetGoalIds.size
+            && Array.from(targetGoalIds).every((goalId) => jurisdictionStageTargetGoalIds.has(goalId))
+            && visibleGoalIds.size === jurisdictionStageVisibleGoalIds.size
+            && Array.from(visibleGoalIds).every((goalId) => jurisdictionStageVisibleGoalIds.has(goalId))
+          ))
+          if (!authoritySetsAgree) {
+            ambiguousJurisdictionStageAuthorityScopes.push(
+              `${scopeLabel}: ${authorityProjectionSets.map(({ file: authorityFile }) => toRepoPath(authorityFile)).join(', ')}`,
+            )
+            authorityProjectionSets.slice(1).forEach(({ targetGoalIds, visibleGoalIds }) => {
+              Array.from(jurisdictionStageTargetGoalIds).forEach((goalId) => {
+                if (!targetGoalIds.has(goalId)) jurisdictionStageTargetGoalIds.delete(goalId)
+              })
+              Array.from(jurisdictionStageVisibleGoalIds).forEach((goalId) => {
+                if (!visibleGoalIds.has(goalId)) jurisdictionStageVisibleGoalIds.delete(goalId)
+              })
+            })
+          }
+          jurisdictionStageTargetAuthorityGoalIds = new Set(jurisdictionStageTargetGoalIds)
+          jurisdictionStageVisibleAuthorityGoalIds = new Set(jurisdictionStageVisibleGoalIds)
+
+          const prerequisiteOnlySupportGoalIds = new Set(
+            Array.from(visibleAtomicGoalIds)
+              .filter((goalId) => !visibleTargetAtomicGoalIds.has(goalId)),
+          )
+          const excludedTargetGoalIds = Array.from(visibleTargetAtomicGoalIds)
+            .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
+          nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds.length
+          nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority += excludedTargetGoalIds
+            .filter((goalId) => selectedGoalIds.has(goalId))
+            .length
+          const jurisdictionPrerequisiteOnlySupportGoalIds = Array.from(jurisdictionStageVisibleGoalIds)
+            .filter((goalId) => !jurisdictionStageTargetGoalIds.has(goalId))
+          nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority += (
+            jurisdictionPrerequisiteOnlySupportGoalIds.length
+          )
+          excludedTargetGoalIds.forEach((goalId) => visibleTargetAtomicGoalIds.delete(goalId))
+          visibleAtomicGoalIds.clear()
+          visibleTargetAtomicGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+          prerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+          jurisdictionPrerequisiteOnlySupportGoalIds.forEach((goalId) => visibleAtomicGoalIds.add(goalId))
+        }
+      }
+      if (enforceProjectionLocalRoutes) {
+        visibleTargetAtomicGoalIds.forEach((goalId) => {
+          if (!visibleAtomicGoalIds.has(goalId)) {
+            throw new Error(`Route projection lost visible target ${goalId} in ${toRepoPath(file)}`)
+          }
+        })
+      }
+      const expectedTerminalGoalIds = scopedTerminalGoals
+        .filter((goal) => !useCompiledJurisdiction
+          || (!!jurisdiction && compiledJurisdictionsByGoalId.get(goal.id)?.has(jurisdiction)))
+        .filter((goal) => !enforceProjectionLocalAssessmentRequires
+          || !jurisdictionStageTargetAuthorityGoalIds
+          || jurisdictionStageTargetAuthorityGoalIds.has(goal.id))
+        .filter((goal) => {
+          const extendedData = goal.extendedData as Record<string, unknown> | undefined
+          if (
+            !enforceProjectionLocalAssessmentRequires
+            || extendedData?.applicabilityFromRequires !== true
+          ) return true
+          const authoritativeSupportGoalIds = jurisdictionStageVisibleAuthorityGoalIds
+            ?? visibleAtomicGoalIds
+          return (goal.requires ?? [])
+            .map((rawRef) => parseReference(rawRef, landscape.landscapeId))
+            .filter((ref) => ref.landscapeId === landscape.landscapeId)
+            .every((ref) => authoritativeSupportGoalIds.has(ref.goalId))
+        })
+        .map((goal) => goal.id)
+      minRequiredTerminalAutonomyGoals = Math.min(
+        minRequiredTerminalAutonomyGoals,
+        expectedTerminalGoalIds.length,
+      )
+      maxRequiredTerminalAutonomyGoals = Math.max(
+        maxRequiredTerminalAutonomyGoals,
+        expectedTerminalGoalIds.length,
+      )
+      const actualTerminalGoalIds = terminalAutonomyGoals
+        .map((goal) => goal.id)
+        .filter((goalId) => visibleTargetAtomicGoalIds.has(goalId))
+      const expectedSet = new Set(expectedTerminalGoalIds)
+      const actualSet = new Set(actualTerminalGoalIds)
+      const visibleExpectedTerminalGoalIds = expectedTerminalGoalIds.filter((goalId) => actualSet.has(goalId))
+      const missingGoalIds = expectedTerminalGoalIds.filter((goalId) => !actualSet.has(goalId))
+      const unexpectedGoalIds = actualTerminalGoalIds.filter((goalId) => !expectedSet.has(goalId))
+      const missingTerminalPrerequisiteIds = enforceProjectionLocalRoutes
+        ? visibleExpectedTerminalGoalIds
+          .filter((terminalId) => {
+            const extendedData = goalById.get(terminalId)?.extendedData as Record<string, unknown> | undefined
+            const overrides = extendedData?.applicabilityOverrides as Record<string, unknown> | undefined
+            return Array.isArray(overrides?.jurisdiction)
+              || (
+                enforceProjectionLocalAssessmentRequires
+                && extendedData?.applicabilityFromRequires === true
+              )
+          })
+          .flatMap((terminalId) => {
+            const terminalGoal = goalById.get(terminalId)
+            return (terminalGoal?.requires ?? [])
+              .map((rawRef) => parseReference(rawRef, landscape.landscapeId))
+              .filter((ref) => ref.landscapeId === landscape.landscapeId)
+              .map((ref) => ref.goalId)
+              .filter((goalId) => !visibleAtomicGoalIds.has(goalId))
+              .map((goalId) => `${terminalId}->${goalId}`)
+          })
+        : []
+      const visibleProfileSelectedGoals = selectedGoals.filter((goal) => visibleTargetAtomicGoalIds.has(goal.id))
+      const visibleProjectedRouteTargetGoals = enforceProjectionLocalRoutes
+        ? Array.from(visibleTargetAtomicGoalIds)
+          .map((goalId) => goalById.get(goalId))
+          .filter(isProjectedRouteTargetGoal)
+        : visibleProfileSelectedGoals
+      // The resolved composition projection is authoritative for learner-facing
+      // target semantics. A profile selector may describe the global route lane,
+      // but it must never hide an explicitly projected target from a local route
+      // check merely because phase/tag metadata is missing or differs.
+      const visibleSelectedGoals = visibleProjectedRouteTargetGoals
+      const visibleProfileSelectedGoalIds = new Set(visibleProfileSelectedGoals.map((goal) => goal.id))
+      const routeCheckedGoalIds = new Set(visibleSelectedGoals.map((goal) => goal.id))
+      const projectedTargetsExcludedByProfileSelector = visibleProjectedRouteTargetGoals
+        .filter((goal) => !visibleProfileSelectedGoalIds.has(goal.id))
+      const projectedTargetsExcludedFromRouteChecks = visibleProjectedRouteTargetGoals
+        .filter((goal) => !routeCheckedGoalIds.has(goal.id))
+      const projectedTargetIdsExcludedByProfileSelector = new Set(
+        projectedTargetsExcludedByProfileSelector.map((goal) => goal.id),
+      )
+      const hasVisibleEffectiveMotivationPath = createVisibleAtomicPathChecker(
+        effectiveEdges,
+        visibleAtomicGoalIds,
+      )
+      const hasVisibleDirectMotivationPath = createVisibleAtomicPathChecker(
+        atomicDirectEdges,
+        visibleAtomicGoalIds,
+      )
+      const hasVisibleReverseEffectivePath = createVisibleAtomicPathChecker(
+        reverseEffectiveEdges,
+        visibleAtomicGoalIds,
+      )
+      const hasVisibleReverseDirectPath = createVisibleAtomicPathChecker(
+        reverseAtomicDirectEdges,
+        visibleAtomicGoalIds,
+      )
+      const goalsMissingEffectiveMotivationRoute = enforceProjectionLocalRoutes
+        ? visibleSelectedGoals.filter((goal) => !profile.motivationAnchorGoalIds.some(
+          (anchorId) => hasVisibleEffectiveMotivationPath(goal.id, anchorId),
+        ))
+        : []
+      const goalsMissingDirectMotivationRoute = enforceProjectionLocalRoutes
+        ? visibleSelectedGoals.filter((goal) => !profile.motivationAnchorGoalIds.some(
+          (anchorId) => hasVisibleDirectMotivationPath(goal.id, anchorId),
+        ))
+        : []
+      const goalsMissingEffectiveTerminalRoute = enforceProjectionLocalRoutes
+        ? visibleSelectedGoals.filter((goal) => !visibleExpectedTerminalGoalIds.some(
+          (terminalId) => hasVisibleReverseEffectivePath(goal.id, terminalId),
+        ))
+        : []
+      const goalsMissingDirectTerminalRoute = enforceProjectionLocalRoutes
+        ? visibleSelectedGoals.filter((goal) => !visibleExpectedTerminalGoalIds.some(
+          (terminalId) => hasVisibleReverseDirectPath(goal.id, terminalId),
+        ))
+        : []
+      visibleSelectedAtomicGoalOccurrences += visibleSelectedGoals.length
+      visibleProfileSelectedAtomicGoalOccurrences += visibleProfileSelectedGoals.length
+      visibleProjectedRouteTargetGoalOccurrences += visibleProjectedRouteTargetGoals.length
+      visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector += (
+        projectedTargetsExcludedByProfileSelector.length
+      )
+      visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks += (
+        projectedTargetsExcludedFromRouteChecks.length
+      )
+      visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute += goalsMissingEffectiveMotivationRoute.length
+      visibleSelectedGoalOccurrencesMissingDirectMotivationRoute += goalsMissingDirectMotivationRoute.length
+      visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute += goalsMissingEffectiveTerminalRoute.length
+      visibleSelectedGoalOccurrencesMissingDirectTerminalRoute += goalsMissingDirectTerminalRoute.length
+      profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute += goalsMissingEffectiveMotivationRoute
+        .filter((goal) => projectedTargetIdsExcludedByProfileSelector.has(goal.id))
+        .length
+      profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute += goalsMissingDirectMotivationRoute
+        .filter((goal) => projectedTargetIdsExcludedByProfileSelector.has(goal.id))
+        .length
+      profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute += goalsMissingEffectiveTerminalRoute
+        .filter((goal) => projectedTargetIdsExcludedByProfileSelector.has(goal.id))
+        .length
+      profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute += goalsMissingDirectTerminalRoute
+        .filter((goal) => projectedTargetIdsExcludedByProfileSelector.has(goal.id))
+        .length
+      terminalPrerequisiteOccurrencesMissingFromProjection += missingTerminalPrerequisiteIds.length
+      goalsMissingEffectiveMotivationRoute.forEach((goal) => uniqueGoalsMissingEffectiveMotivationRoute.add(goal.id))
+      goalsMissingDirectMotivationRoute.forEach((goal) => uniqueGoalsMissingDirectMotivationRoute.add(goal.id))
+      goalsMissingEffectiveTerminalRoute.forEach((goal) => uniqueGoalsMissingEffectiveTerminalRoute.add(goal.id))
+      goalsMissingDirectTerminalRoute.forEach((goal) => uniqueGoalsMissingDirectTerminalRoute.add(goal.id))
+      projectedTargetsExcludedByProfileSelector.forEach((goal) => {
+        uniqueProjectedRouteTargetsExcludedByProfileSelector.add(goal.id)
+      })
+      missingTerminalPrerequisiteIds.forEach((pair) => {
+        uniqueTerminalPrerequisitesMissingFromProjection.add(pair.split('->')[1] ?? pair)
+      })
+
+      if (enforceProjectionLocalRoutes && matchingStageStructures.length !== 1) {
+        invalidStageStructureScopes.push(
+          `${scopeLabel}: expected 1 ${profile.compositionViewStage} structure, got ${matchingStageStructures.length}`,
+        )
+      }
+
+      if (!profile.motivationAnchorGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))) {
+        missingMotivationScopes.push(scopeLabel)
+      }
+      if (expectedTerminalGoalIds.length === 0) {
+        emptyExpectedTerminalScopes.push(scopeLabel)
+      }
+      if (missingGoalIds.length > 0) {
+        missingTerminalScopes.push(`${scopeLabel}: ${missingGoalIds.join(', ')}`)
+      }
+      if (unexpectedGoalIds.length > 0) {
+        unexpectedTerminalScopes.push(`${scopeLabel}: ${unexpectedGoalIds.join(', ')}`)
+      }
+      if (missingTerminalPrerequisiteIds.length > 0) {
+        terminalPrerequisiteClosureScopes.push(`${scopeLabel}: ${missingTerminalPrerequisiteIds.join(', ')}`)
+      }
+      if (goalsMissingEffectiveMotivationRoute.length > 0) {
+        missingEffectiveMotivationRouteScopes.push(
+          `${scopeLabel}: ${goalsMissingEffectiveMotivationRoute.map((goal) => goal.id).join(', ')}`,
+        )
+      }
+      if (goalsMissingDirectMotivationRoute.length > 0) {
+        missingDirectMotivationRouteScopes.push(
+          `${scopeLabel}: ${goalsMissingDirectMotivationRoute.map((goal) => goal.id).join(', ')}`,
+        )
+      }
+      if (goalsMissingEffectiveTerminalRoute.length > 0) {
+        missingEffectiveTerminalRouteScopes.push(
+          `${scopeLabel}: ${goalsMissingEffectiveTerminalRoute.map((goal) => goal.id).join(', ')}`,
+        )
+      }
+      if (goalsMissingDirectTerminalRoute.length > 0) {
+        missingDirectTerminalRouteScopes.push(
+          `${scopeLabel}: ${goalsMissingDirectTerminalRoute.map((goal) => goal.id).join(', ')}`,
+        )
+      }
+    })
   })
 
   const pass = viewFiles.length > 0
-    && missingMotivationViewFiles.length === 0
-    && missingTerminalViewFiles.length === 0
+    && evaluatedProjectionScopes > 0
+    && terminalGoalsMissingCompiledApplicability.length === 0
+    && invalidStageStructureScopes.length === 0
+    && missingJurisdictionStageAuthorityScopes.length === 0
+    && ambiguousJurisdictionStageAuthorityScopes.length === 0
+    && missingMotivationScopes.length === 0
+    && missingTerminalScopes.length === 0
+    && unexpectedTerminalScopes.length === 0
+    && emptyExpectedTerminalScopes.length === 0
+    && terminalPrerequisiteClosureScopes.length === 0
+    && missingEffectiveMotivationRouteScopes.length === 0
+    && missingDirectMotivationRouteScopes.length === 0
+    && missingEffectiveTerminalRouteScopes.length === 0
+    && missingDirectTerminalRouteScopes.length === 0
+    && visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks === 0
 
   return makeRule(
     'CQR-104',
     pass ? 'pass' : 'fail',
     pass
-      ? 'Route endpoints are visible in all relevant composition views.'
-      : 'Route endpoints are missing from at least one relevant learner-facing composition view.',
+      ? enforceProjectionLocalRoutes
+        ? 'Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.'
+        : 'Route endpoints are exactly visible in every relevant learner-facing projection scope.'
+      : 'Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.',
     {
       relevantCompositionViews: viewFiles.length,
+      evaluatedProjectionScopes,
       requiredMotivationAnchors: profile.motivationAnchorGoalIds.length,
+      minimumRequiredTerminalAutonomyGoals: Number.isFinite(minRequiredTerminalAutonomyGoals)
+        ? minRequiredTerminalAutonomyGoals
+        : 0,
       requiredTerminalAutonomyGoals: maxRequiredTerminalAutonomyGoals,
-      viewsMissingMotivationAnchors: missingMotivationViewFiles.length,
-      viewsMissingTerminalAutonomyGoals: missingTerminalViewFiles.length,
+      projectionScopesMissingMotivationAnchors: missingMotivationScopes.length,
+      projectionScopesMissingTerminalAutonomyGoals: missingTerminalScopes.length,
+      projectionScopesWithUnexpectedTerminalAutonomyGoals: unexpectedTerminalScopes.length,
+      projectionScopesWithoutExpectedTerminalAutonomyGoals: emptyExpectedTerminalScopes.length,
+      terminalGoalsMissingCompiledApplicability: terminalGoalsMissingCompiledApplicability.length,
+      projectionScopesWithInvalidStageStructure: invalidStageStructureScopes.length,
+      nationalProjectionScopesUsingJurisdictionStageAuthority,
+      nationalProjectionScopesMissingJurisdictionStageAuthority: missingJurisdictionStageAuthorityScopes.length,
+      nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority: ambiguousJurisdictionStageAuthorityScopes.length,
+      nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority,
+      nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority,
+      nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority,
+      projectionScopesWithIncompleteExplicitTerminalPrerequisites: terminalPrerequisiteClosureScopes.length,
+      explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
+      uniqueExplicitTerminalPrerequisitesMissingFromProjection: uniqueTerminalPrerequisitesMissingFromProjection.size,
+      projectionLocalRouteChecksEnabled: enforceProjectionLocalRoutes ? 1 : 0,
+      visibleSelectedAtomicGoalOccurrences,
+      visibleProfileSelectedAtomicGoalOccurrences,
+      visibleProjectedRouteTargetGoalOccurrences,
+      visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector,
+      uniqueProjectedRouteTargetsExcludedByProfileSelector: uniqueProjectedRouteTargetsExcludedByProfileSelector.size,
+      visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks,
+      projectionScopesMissingEffectiveMotivationRoutes: missingEffectiveMotivationRouteScopes.length,
+      projectionScopesMissingDirectMotivationRoutes: missingDirectMotivationRouteScopes.length,
+      projectionScopesMissingEffectiveTerminalRoutes: missingEffectiveTerminalRouteScopes.length,
+      projectionScopesMissingDirectTerminalRoutes: missingDirectTerminalRouteScopes.length,
+      visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute,
+      visibleSelectedGoalOccurrencesMissingDirectMotivationRoute,
+      visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute,
+      visibleSelectedGoalOccurrencesMissingDirectTerminalRoute,
+      profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute,
+      profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute,
+      profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute,
+      profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute,
+      uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute: uniqueGoalsMissingEffectiveMotivationRoute.size,
+      uniqueVisibleSelectedGoalsMissingDirectMotivationRoute: uniqueGoalsMissingDirectMotivationRoute.size,
+      uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute: uniqueGoalsMissingEffectiveTerminalRoute.size,
+      uniqueVisibleSelectedGoalsMissingDirectTerminalRoute: uniqueGoalsMissingDirectTerminalRoute.size,
     },
     [
       ...(viewFiles.length === 0 ? ['No relevant composition view found for configured route scope.'] : []),
-      ...missingMotivationViewFiles.map((file) => `Missing motivation anchor(s): ${toRepoPath(file)}`),
-      ...missingTerminalViewFiles.map((file) => `Missing terminal autonomy goal(s): ${toRepoPath(file)}`),
+      ...terminalGoalsMissingCompiledApplicability.map((goalId) => `Missing compiled applicability: ${goalId}`),
+      ...invalidStageStructureScopes.map((scope) => `Invalid stage-local composition structure: ${scope}`),
+      ...missingJurisdictionStageAuthorityScopes.map(
+        (scope) => `Missing jurisdiction-specific stage-placement authority for national projection: ${scope}`,
+      ),
+      ...ambiguousJurisdictionStageAuthorityScopes.map(
+        (scope) => `Ambiguous jurisdiction-specific stage-placement authority for national projection: ${scope}`,
+      ),
+      ...missingMotivationScopes.map((scope) => `Missing motivation anchor(s): ${scope}`),
+      ...emptyExpectedTerminalScopes.map((scope) => `No applicable terminal autonomy goal: ${scope}`),
+      ...missingTerminalScopes.map((scope) => `Missing terminal autonomy goal(s): ${scope}`),
+      ...unexpectedTerminalScopes.map((scope) => `Unexpected terminal autonomy goal(s): ${scope}`),
+      ...missingEffectiveTerminalRouteScopes.map((scope) => `No projection-local effective terminal route: ${scope}`),
+      ...missingDirectTerminalRouteScopes.map((scope) => `No projection-local direct terminal route: ${scope}`),
+      ...missingEffectiveMotivationRouteScopes.map((scope) => `No projection-local effective motivation route: ${scope}`),
+      ...missingDirectMotivationRouteScopes.map((scope) => `No projection-local direct motivation route: ${scope}`),
+      ...terminalPrerequisiteClosureScopes.map((scope) => `Explicitly scoped terminal prerequisite(s) missing from projection: ${scope}`),
     ],
   )
 }
@@ -2065,7 +2570,11 @@ function examReleaseCoverageIssues(goal: LearningGoal): string[] {
   return issues
 }
 
-function evaluateRouteProfile(landscape: SkillLandscape, profile: RouteProfile): ScopeStatus {
+function evaluateRouteProfile(
+  landscape: SkillLandscape,
+  profile: RouteProfile,
+  applicabilityCompilation: ApplicabilityCompilationResult,
+): ScopeStatus {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
   const effectiveEdges = buildEffectiveRequiresEdges(landscape)
@@ -2106,7 +2615,13 @@ function evaluateRouteProfile(landscape: SkillLandscape, profile: RouteProfile):
   const routeEndpointCompositionVisibility = evaluateRouteEndpointCompositionVisibility(
     landscape,
     profile,
+    selectedGoals,
     terminalAutonomyGoals,
+    applicabilityCompilation,
+    effectiveEdges,
+    reverseEffectiveEdges,
+    atomicDirectEdges,
+    reverseAtomicDirectEdges,
   )
 
   const rules: RuleResult[] = [
@@ -3553,41 +4068,143 @@ function readCompositionViewFilesForReport(report: CoverageReport): string[] {
   return readCompositionViewFilesForLandscapeId(report.landscapeId)
 }
 
+type CompositionRouteStage = 'SekI' | 'SekII'
+
+function compositionStructureStage(node: CompositionViewNode): CompositionRouteStage | null {
+  if (node.kind !== 'structure') return null
+  const normalizedLabel = node.label.trim().toLocaleUpperCase('de')
+  if (
+    /^SEKUNDARSTUFE II(?:$|[\s(:\-–])/u.test(normalizedLabel)
+    || normalizedLabel === 'KURSSTUFE'
+    || normalizedLabel.startsWith('KURSSTUFE ')
+  ) return 'SekII'
+  if (/^SEKUNDARSTUFE I(?:$|[\s(:\-–])/u.test(normalizedLabel)) return 'SekI'
+  return null
+}
+
+function collectCompositionStageStructures(
+  nodes: CompositionViewNode[],
+  stage: CompositionRouteStage,
+  matches: Extract<CompositionViewNode, { kind: 'structure' }>[] = [],
+): Extract<CompositionViewNode, { kind: 'structure' }>[] {
+  nodes.forEach((node) => {
+    if (node.kind !== 'structure') return
+    if (compositionStructureStage(node) === stage) matches.push(node)
+    collectCompositionStageStructures(node.children, stage, matches)
+  })
+  return matches
+}
+
 function collectRenderedAtomicGoalIdsFromCompositionView(
   landscape: SkillLandscape,
   viewFile: string,
+  scopeFilters: string[] = [],
+  includePrerequisiteOnly = false,
+  compositionStage?: CompositionRouteStage,
+  additionalVisibleGoalIds: string[] = [],
 ): Set<string> {
   const entry = {
     meta: landscape,
     goals: landscape.goals.map((goal) => convertLearningGoal(goal, { landscapeId: landscape.landscapeId })),
   }
   const rawView = loadJson<unknown>(viewFile)
-  const projectedEntry = applyCompositionViewProjection([entry], normalizeCompositionView(rawView))[0]
+  const normalizedView = normalizeCompositionView(rawView)
+  const projectedEntry = applyCompositionViewProjection([entry], normalizedView)[0]
   if (!projectedEntry) return new Set<string>()
 
   const goalById = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
   const directChildrenByParent = buildDirectChildrenMap(goalById)
+  if (scopeFilters.length > 0) {
+    directChildrenByParent.forEach((childIds, parentId) => {
+      directChildrenByParent.set(
+        parentId,
+        childIds.filter((childId) => {
+          const child = goalById.get(childId)
+          return !!child && goalMatchesFilters(child, scopeFilters)
+        }),
+      )
+    })
+  }
   const rootGoalIds = projectedEntry.goals
     .filter((goal) => (goal.tags ?? []).includes('root'))
     .map((goal) => goal.id)
-  const visibleGoalIds = new Set<string>()
-  const stack = [...rootGoalIds]
-
-  while (stack.length > 0) {
-    const goalId = stack.pop()
-    if (!goalId || visibleGoalIds.has(goalId)) continue
-    visibleGoalIds.add(goalId)
-    getRenderedChildIds(goalId, goalById, directChildrenByParent).forEach((childId) => stack.push(childId))
+  const collectVisibleGoalIds = (startGoalIds: string[]): Set<string> => {
+    const visibleGoalIds = new Set<string>()
+    const stack = [...startGoalIds]
+    while (stack.length > 0) {
+      const goalId = stack.pop()
+      if (!goalId || visibleGoalIds.has(goalId)) continue
+      visibleGoalIds.add(goalId)
+      getRenderedChildIds(goalId, goalById, directChildrenByParent).forEach((childId) => stack.push(childId))
+    }
+    return visibleGoalIds
   }
+  const fullVisibleGoalIds = collectVisibleGoalIds(rootGoalIds)
+  const stageStructureGoalIds = compositionStage
+    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage)
+      .map((node) => `composition:${normalizedView.viewId}:structure:${node.id}`)
+      .filter((goalId) => goalById.has(goalId))
+    : []
+  const visibleGoalIds = compositionStage
+    ? collectVisibleGoalIds(stageStructureGoalIds)
+    : fullVisibleGoalIds
 
   const atomicGoalIds = new Set<string>()
-  visibleGoalIds.forEach((goalId) => {
+  const addRenderedAtomicGoal = (goalId: string) => {
     if (goalId.startsWith('composition:')) return
     const goal = goalById.get(goalId)
-    if (goal && (goal.contains?.length ?? 0) === 0) {
-      atomicGoalIds.add(goalId)
+    if (goal && (goal.contains?.length ?? 0) === 0) atomicGoalIds.add(goalId)
+  }
+  visibleGoalIds.forEach(addRenderedAtomicGoal)
+  additionalVisibleGoalIds
+    .filter((goalId) => fullVisibleGoalIds.has(goalId))
+    .forEach(addRenderedAtomicGoal)
+  if (includePrerequisiteOnly) {
+    const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
+    const addAtomicIfIncluded = (goalId: string) => {
+      const goal = sourceGoalById.get(goalId)
+      if (
+        goal
+        && (goal.contains?.length ?? 0) === 0
+        && (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters))
+      ) {
+        atomicGoalIds.add(goalId)
+      }
     }
-  })
+    const addAtomicSubtree = (rootGoalId: string) => {
+      const stack = [rootGoalId]
+      const seen = new Set<string>()
+      while (stack.length > 0) {
+        const goalId = stack.pop()
+        if (!goalId || seen.has(goalId)) continue
+        seen.add(goalId)
+        const goal = sourceGoalById.get(goalId)
+        if (!goal) continue
+        if ((goal.contains?.length ?? 0) === 0) {
+          addAtomicIfIncluded(goalId)
+        } else {
+          stack.push(...(goal.contains ?? []))
+        }
+      }
+    }
+    const collectPrerequisiteOnly = (nodes: CompositionViewNode[]) => {
+      nodes.forEach((node) => {
+        if (node.kind === 'structure') {
+          const nodeStage = compositionStructureStage(node)
+          if (compositionStage && nodeStage && nodeStage !== compositionStage) return
+          collectPrerequisiteOnly(node.children)
+          return
+        }
+        if (getCompositionProjectionRole(node) !== 'prerequisiteOnly') return
+        if (node.kind === 'canonicalSubtree') {
+          addAtomicSubtree(node.goalId)
+        } else if (node.kind === 'goalEntry') {
+          addAtomicIfIncluded(node.goalId)
+        }
+      })
+    }
+    collectPrerequisiteOnly(normalizedView.rootNodes)
+  }
   return atomicGoalIds
 }
 
@@ -5355,7 +5972,11 @@ function main() {
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
       )
       const scopedProfiles = routeProfiles.filter((profile) => profile.landscapeId === landscape.landscapeId)
-      const scopes = scopedProfiles.map((profile) => evaluateRouteProfile(landscape, profile))
+      const scopes = scopedProfiles.map((profile) => evaluateRouteProfile(
+        landscape,
+        profile,
+        applicabilityCompilation,
+      ))
       if (scopes.length === 0) {
         curriculumRules.push(makeRule(
           'CQR-101',

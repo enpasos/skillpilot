@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { access, mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promises'
-import { dirname, join, resolve } from 'node:path'
+import { dirname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type {
   GoalBookReviewBundleManifest,
@@ -13,8 +13,11 @@ import {
 import {
   buildGoalDescriptionReviewCampaign,
   buildGoalDescriptionReviewInput,
+  GOAL_DESCRIPTION_REVIEW_RECORD_SCHEMA_ARTIFACT_PATH,
+  loadGoalDescriptionReviewRecordSchemaBytes,
   serializeGoalDescriptionReviewBatchInput,
   validateGoalDescriptionReviewCampaign,
+  validateGoalBookReviewBundleManifestBindings,
   type GoalDescriptionReviewCampaign,
 } from './validateGoalDescriptionReviewCampaign'
 
@@ -38,16 +41,142 @@ const artifactDigest = (
 ) => bundle.artifacts.find((artifact) => artifact.role === role)?.digest
   ?? (() => { throw new Error(`Review bundle has no ${role} artifact`) })()
 
+type ReviewBundleArtifactRole = GoalBookReviewBundleManifest['artifacts'][number]['role']
+type VerifiedReviewBundleArtifactBytes = ReadonlyMap<ReviewBundleArtifactRole, Buffer>
+
+const CAMPAIGN_GUIDANCE_ARTIFACT_ROLES = ['review_prompt', 'review_criteria'] as const
+const CAMPAIGN_RESERVED_FILES = [
+  'review-bundle-manifest.json',
+  'description-review-input.json',
+  'description-review-campaign.json',
+] as const
+const CAMPAIGN_RESERVED_DIRECTORIES = ['batches', 'contracts'] as const
+
+const isSameOrDescendantPath = (candidatePath: string, parentPath: string) => (
+  candidatePath === parentPath || candidatePath.startsWith(`${parentPath}${sep}`)
+)
+
+const campaignGuidanceArtifactPlans = ({
+  bundle,
+  campaignDirectory,
+  verifiedArtifactBytes,
+}: {
+  bundle: GoalBookReviewBundleManifest
+  campaignDirectory: string
+  verifiedArtifactBytes: VerifiedReviewBundleArtifactBytes
+}) => {
+  const manifestErrors = validateGoalBookReviewBundleManifestBindings(bundle)
+  if (manifestErrors.length > 0) {
+    throw new Error(`Invalid review-bundle provenance: ${manifestErrors.join(' | ')}`)
+  }
+  const resolvedCampaignDirectory = resolve(campaignDirectory)
+  const reservedPaths = [
+    ...CAMPAIGN_RESERVED_FILES,
+    ...CAMPAIGN_RESERVED_DIRECTORIES,
+  ].map((reservedPath) => resolve(resolvedCampaignDirectory, reservedPath))
+  const plans = CAMPAIGN_GUIDANCE_ARTIFACT_ROLES.map((role) => {
+    const artifact = bundle.artifacts.find((candidate) => candidate.role === role)
+    if (!artifact) throw new Error(`Review bundle has no ${role} artifact`)
+    const targetPath = resolve(resolvedCampaignDirectory, artifact.path)
+    const relativePath = relative(resolvedCampaignDirectory, targetPath)
+    if (
+      relativePath === ''
+      || relativePath === '..'
+      || relativePath.startsWith(`..${sep}`)
+    ) {
+      throw new Error(`Review guidance artifact path escapes its campaign directory: ${artifact.path}`)
+    }
+    if (reservedPaths.some((reservedPath) => (
+      isSameOrDescendantPath(targetPath, reservedPath)
+      || isSameOrDescendantPath(reservedPath, targetPath)
+    ))) {
+      throw new Error(`Review guidance artifact path collides with a reserved campaign path: ${artifact.path}`)
+    }
+    const bytes = verifiedArtifactBytes.get(role)
+    if (!bytes) throw new Error(`Verified review-bundle bytes are missing for ${role}`)
+    if (bytes.length !== artifact.bytes || sha256(bytes) !== artifact.digest) {
+      throw new Error(`Verified review-bundle bytes no longer match the ${role} artifact`)
+    }
+    return { artifact, bytes, targetPath }
+  })
+  for (let left = 0; left < plans.length; left += 1) {
+    for (let right = left + 1; right < plans.length; right += 1) {
+      if (
+        isSameOrDescendantPath(plans[left].targetPath, plans[right].targetPath)
+        || isSameOrDescendantPath(plans[right].targetPath, plans[left].targetPath)
+      ) {
+        throw new Error(
+          `Review guidance artifact output paths collide: ${plans[left].artifact.path} and ${plans[right].artifact.path}`,
+        )
+      }
+    }
+  }
+  return plans
+}
+
+export const verifyGoalBookReviewBundleArtifactBytes = async (
+  bundle: GoalBookReviewBundleManifest,
+  bundleDirectory: string,
+) => {
+  const manifestErrors = validateGoalBookReviewBundleManifestBindings(bundle)
+  if (manifestErrors.length > 0) {
+    throw new Error(`Invalid review-bundle provenance: ${manifestErrors.join(' | ')}`)
+  }
+  const resolvedBundleDirectory = resolve(bundleDirectory)
+  const verifiedArtifacts = await Promise.all(bundle.artifacts.map(async (artifact) => {
+    const artifactPath = resolve(resolvedBundleDirectory, artifact.path)
+    const relativePath = relative(resolvedBundleDirectory, artifactPath)
+    if (
+      relativePath === ''
+      || relativePath === '..'
+      || relativePath.startsWith(`..${sep}`)
+    ) {
+      throw new Error(`Review-bundle artifact path escapes its bundle directory: ${artifact.path}`)
+    }
+    const bytes = await readFile(artifactPath)
+    if (bytes.length !== artifact.bytes) {
+      throw new Error(`Review-bundle artifact ${artifact.role} byte count does not match its manifest`)
+    }
+    if (sha256(bytes) !== artifact.digest) {
+      throw new Error(`Review-bundle artifact ${artifact.role} bytes do not match its manifest digest`)
+    }
+    return [artifact.role, bytes] as const
+  }))
+  return new Map<ReviewBundleArtifactRole, Buffer>(verifiedArtifacts)
+}
+
+export const writeVerifiedGoalDescriptionReviewCampaignGuidanceArtifacts = async ({
+  bundle,
+  campaignDirectory,
+  verifiedArtifactBytes,
+}: {
+  bundle: GoalBookReviewBundleManifest
+  campaignDirectory: string
+  verifiedArtifactBytes: VerifiedReviewBundleArtifactBytes
+}) => {
+  const plans = campaignGuidanceArtifactPlans({
+    bundle,
+    campaignDirectory,
+    verifiedArtifactBytes,
+  })
+  await Promise.all(plans.map(async ({ bytes, targetPath }) => {
+    await mkdir(dirname(targetPath), { recursive: true })
+    await writeFile(targetPath, bytes, { flag: 'wx' })
+  }))
+}
+
 export const createGoalDescriptionReviewCampaignArtifacts = async ({
   bundleBytes,
   bookModelBytes,
   reviewInputBytes,
+  bundleDirectory,
   outputDirectory,
   campaignOptions,
 }: {
   bundleBytes: Buffer
   bookModelBytes: Buffer
   reviewInputBytes: Buffer
+  bundleDirectory: string
   outputDirectory: string
   campaignOptions: {
     campaignId: string
@@ -71,6 +200,7 @@ export const createGoalDescriptionReviewCampaignArtifacts = async ({
     }
   }
   const bundle = parseJson<GoalBookReviewBundleManifest>(bundleBytes, 'review-bundle manifest')
+  const verifiedArtifactBytes = await verifyGoalBookReviewBundleArtifactBytes(bundle, bundleDirectory)
   if (sha256(bookModelBytes) !== artifactDigest(bundle, 'book_model')) {
     throw new Error('BookModel bytes do not match the review-bundle book_model artifact')
   }
@@ -88,9 +218,12 @@ export const createGoalDescriptionReviewCampaignArtifacts = async ({
   }
   const reviewInput = parseJson<GoalBookReviewInput>(reviewInputBytes, 'review input')
   const input = buildGoalDescriptionReviewInput({ bundle, reviewInput, landscape })
+  const recordSchemaBytes = await loadGoalDescriptionReviewRecordSchemaBytes()
+  const recordSchemaDigest = sha256(recordSchemaBytes)
   const campaign = buildGoalDescriptionReviewCampaign({
     bundle,
     input,
+    recordSchemaDigest,
     ...campaignOptions,
   })
   const result = await validateGoalDescriptionReviewCampaign({ bundle, input, campaign })
@@ -102,10 +235,20 @@ export const createGoalDescriptionReviewCampaignArtifacts = async ({
   const temporaryDirectory = await mkdtemp(join(dirname(outputDirectory), '.goal-description-review-campaign-'))
   try {
     await mkdir(join(temporaryDirectory, 'batches'))
+    await mkdir(join(temporaryDirectory, 'contracts'))
+    await writeVerifiedGoalDescriptionReviewCampaignGuidanceArtifacts({
+      bundle,
+      campaignDirectory: temporaryDirectory,
+      verifiedArtifactBytes,
+    })
     await Promise.all([
       writeFile(join(temporaryDirectory, 'review-bundle-manifest.json'), bundleBytes),
       writeFile(join(temporaryDirectory, 'description-review-input.json'), `${JSON.stringify(input, null, 2)}\n`),
       writeFile(join(temporaryDirectory, 'description-review-campaign.json'), `${JSON.stringify(campaign, null, 2)}\n`),
+      writeFile(
+        join(temporaryDirectory, GOAL_DESCRIPTION_REVIEW_RECORD_SCHEMA_ARTIFACT_PATH),
+        recordSchemaBytes,
+      ),
       ...campaign.batches.map((batch) => {
         const offset = (batch.ordinal - 1) * campaign.batchSize
         const goals = input.goals.slice(offset, offset + batch.goalIds.length)
@@ -115,6 +258,8 @@ export const createGoalDescriptionReviewCampaignArtifacts = async ({
             bundleFingerprint: bundle.bundleFingerprint,
             bookDigest: bundle.bookModelDigest,
             reviewInputFingerprint: input.reviewInputFingerprint,
+            inputSchemaVersion: input.schemaVersion,
+            recordSchemaDigest: campaign.recordSchemaDigest,
             batchId: batch.batchId,
             goalIds: batch.goalIds,
             goals,
@@ -194,6 +339,7 @@ const main = async () => {
     bundleBytes,
     bookModelBytes,
     reviewInputBytes,
+    bundleDirectory: dirname(options.bundlePath),
     outputDirectory: options.outputDirectory,
     campaignOptions: options.campaignOptions,
   })

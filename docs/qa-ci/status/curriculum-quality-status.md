@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-08-21T12:26:51.044Z
+Generated: 2026-08-26T16:22:26.144Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -40,9 +40,9 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1147 | 903 | 31/31 | 16/16 | 2 | 1 | 0 |
+| Mathematik (Gymnasium, DE) | M6 | 1158 | 909 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Physik (Gymnasium, DE) | M6 | 588 | 499 | 25/25 | 16/16 | 2 | 1 | 0 |
+| Physik (Gymnasium, DE) | M6 | 658 | 562 | 25/25 | 16/16 | 2 | 1 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
@@ -235,44 +235,44 @@ Rules version: curriculum-quality-v4
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 15 | 195 | 17 | 178 | 9% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 44 | 245 | 15% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 16 | 221 | 72 | 149 | 33% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 278 | 92 | 186 | 33% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 URL; local cache 0/12 | 3/3 | - | 66 | 468 | 253 | 215 | 54% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 278 | 91 | 187 | 33% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 URL; local cache 0/12 | 3/3 | - | 66 | 468 | 247 | 221 | 53% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 122 | 275 | 0 | 275 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 256 | 76 | 180 | 30% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 256 | 71 | 185 | 28% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 293 | 23 | 93% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 599 | 2 | 100% | 598/598; diff 118; open 0 |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 438 | 138 | 300 | 32% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 593 | 8 | 99% | 598/598; diff 118; open 0 |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 438 | 133 | 305 | 30% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 189 | 0 | 189 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 219 | 0 | 219 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) | DE-MV | 2/2 URL; local cache 0/2 | 3/3 | - | 33 | 369 | 131 | 238 | 36% | - |  |
+| Mathematik (Gymnasium, DE) | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) | DE-MV | 2/2 URL; local cache 0/2 | 3/3 | - | 33 | 369 | 125 | 244 | 34% | - |  |
 | Mathematik (Gymnasium, DE) | DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 220 | 0 | 220 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 28 | 361 | 113 | 248 | 31% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 28 | 361 | 112 | 249 | 31% | - |  |
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 13 | 235 | 0 | 235 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 17 | 207 | 38 | 169 | 18% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 17 | 207 | 37 | 170 | 18% | - |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 23 | 192 | 0 | 192 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 255 | 62 | 193 | 24% | - |  |
+| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 255 | 58 | 197 | 23% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 274 | 66 | 208 | 24% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 346 | 128 | 218 | 37% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 346 | 123 | 223 | 36% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 URL; local cache 0/3 | 3/3 | - | 23 | 743 | 0 | 743 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 176 | 642 | 22% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 169 | 649 | 21% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 31 | 243 | 0 | 243 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 47 | 327 | 75 | 252 | 23% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 47 | 327 | 72 | 255 | 22% | - |  |
 | Mathematik (Gymnasium, DE) | DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 188 | 0 | 188 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 32 | 424 | 137 | 287 | 32% | - |  |
+| Mathematik (Gymnasium, DE) | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 32 | 424 | 135 | 289 | 32% | - |  |
 | Mathematik (Gymnasium, DE) | DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 URL; local cache 0/2 | 3/3 | - | 8 | 189 | 0 | 189 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 URL; local cache 0/2 | 3/3 | - | 17 | 356 | 83 | 273 | 23% | - |  |
+| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 2/2 URL; local cache 0/2 | 3/3 | - | 17 | 356 | 82 | 274 | 23% | - |  |
 | Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 48 | 204 | 9 | 195 | 4% | - |  |
 | Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 24 | 38 | 38 | 0 | 100% | - |  |
 | Physik (Gymnasium, DE) | DE-BB - Physik Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 175 | 0 | 175 | 0% | - |  |
 | Physik (Gymnasium, DE) | DE-BE - Physik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 175 | 0 | 175 | 0% | - |  |
 | Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 24 | 164 | 64 | 100 | 39% | - |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 14 | 101 | 39 | 62 | 39% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 14 | 101 | 32 | 69 | 32% | - |  |
 | Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 42 | 296 | 21 | 275 | 7% | - |  |
 | Physik (Gymnasium, DE) | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 7 | 68 | 35 | 33 | 51% | - |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 10 | 214 | 146 | 68 | 68% | - |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 21 | 274 | 198 | 76 | 72% | - |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 48 | 39 | 9 | 81% | - |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 8 | 128 | 65 | 63 | 51% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 48 | 34 | 14 | 71% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 8 | 128 | 62 | 66 | 48% | - |  |
 | Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 10 | 154 | 91 | 63 | 59% | - |  |
 | Physik (Gymnasium, DE) | DE-MV - Physik Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 143 | 5 | 138 | 3% | - |  |
 | Physik (Gymnasium, DE) | DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 17 | 142 | 4 | 138 | 3% | - |  |
@@ -283,10 +283,10 @@ Rules version: curriculum-quality-v4
 | Physik (Gymnasium, DE) | DE-SL - Physik Gymnasiale Oberstufe (Saarland, GOS 2023 Source-Extraction) | DE-SL | 3/3 URL; local cache 0/3 | 3/3 | - | 88 | 854 | 78 | 776 | 9% | - |  |
 | Physik (Gymnasium, DE) | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 4/4 URL; local cache 0/4 | 3/3 | - | 72 | 670 | 86 | 584 | 13% | - |  |
 | Physik (Gymnasium, DE) | DE-SN - Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 39 | 318 | 6 | 312 | 2% | - |  |
-| Physik (Gymnasium, DE) | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 35 | 276 | 21 | 255 | 8% | - |  |
+| Physik (Gymnasium, DE) | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 35 | 276 | 22 | 254 | 8% | - |  |
 | Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 18 | 387 | 0 | 387 | 0% | - |  |
 | Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 30 | 575 | 0 | 575 | 0% | - |  |
-| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 220 | 0 | 220 | 0% | - |  |
+| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 220 | 2 | 218 | 1% | - |  |
 | Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012/2024 Source-Extraction) | DE-TH | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 257 | 0 | 257 | 0% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Brandenburg, RLP 2015 FULL Source-Extraction) | DE-BB | 2/2 URL; local cache 0/2 | 3/3 | - | 17 | 113 | 0 | 113 | 0% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Brandenburg, GOST FULL Source-Extraction) | DE-BB | 2/2 URL; local cache 0/2 | 3/3 | - | 32 | 156 | 2 | 154 | 1% | - |  |
@@ -373,9 +373,9 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 699 | 903 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 699 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 705 | 909 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 705 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
-| Physik (Gymnasium, DE) | 16/16 | 395 | 499 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 388 (100%) |
+| Physik (Gymnasium, DE) | 16/16 | 404 | 562 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 397 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |

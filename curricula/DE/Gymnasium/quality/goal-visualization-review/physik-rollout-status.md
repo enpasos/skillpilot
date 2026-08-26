@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-17T05:43:41.247Z
+Generated: 2026-08-26T15:42:30.167Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,28 +16,28 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 588 |
-| Atomare Ziele im Visualisierungs-Scope | 426 |
-| Ziele mit primaerem Visualisierungslink | 406 |
-| Coverage | 95.3% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 426 |
+| Alle Ziele in der Landschaft | 658 |
+| Atomare Ziele im Visualisierungs-Scope | 438 |
+| Ziele mit primaerem Visualisierungslink | 418 |
+| Coverage | 95.4% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 438 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 74 |
+| Review-Ledger-Dateien | 75 |
 | Offene Provider-Deferred-Ziele | 20 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 18 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 82 |
-| `pilot` | 324 |
+| `accepted` | 79 |
+| `pilot` | 339 |
 
 ## Ledger Decisions
 
@@ -45,8 +45,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | `accepted_pilot` | 280 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
-| `accepted_pilot_after_fresh_ai_review` | 275 |
-| `accepted_pilot_after_fresh_ai_review_correction` | 132 |
+| `accepted_pilot_after_fresh_ai_review` | 279 |
+| `accepted_pilot_after_fresh_ai_review_correction` | 134 |
 | `accepted_pilot_after_provider_limitation_revisit` | 3 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
@@ -64,8 +64,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-074.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-colors-current-alignment-2026-08-26.md` |
+| Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 
@@ -129,7 +129,26 @@ Keine Eintraege.
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `67ffd0f0-a5ab-518f-8c45-4c0e7eb18390` | Angriffspunkt, Wirkungslinie und Schwerpunkt deuten | `pilot` | - |
+| `c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0` | Dichte aus Masse und Volumen bestimmen und deuten | `pilot` | - |
+| `41d35667-0296-5f84-bc12-202ffc440be0` | Kräfte vektoriell zusammensetzen und Resultierende bestimmen | `pilot` | - |
+| `b92827a7-5d62-5fdb-a6f5-ac44461f4a7b` | Leistung als Energie pro Zeit bestimmen und deuten | `pilot` | - |
+| `af0e2efb-f634-5f2d-abea-b2e1a67a2894` | Masse von Körpern messen und vergleichen | `pilot` | - |
+| `33e3417c-e062-5f4a-8df9-3195dca50089` | Mondphasen mit Beleuchtung und Blickrichtung erklären | `pilot` | - |
+| `3c8e5510-a12d-5770-8a01-e5fe741b259c` | Reflexionsgesetz experimentell prüfen | `pilot` | - |
+| `a24c41ce-68c5-56a7-8235-ef9a7dba7042` | Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen | `pilot` | - |
+| `f0046ae8-cbfc-526b-8414-04e3595b6075` | Sonnen- und Mondfinsternisse mit Schattenräumen erklären | `pilot` | - |
+| `267170bd-f880-56a7-9719-ffb9751872c5` | Spannungsbilanzen in Maschen mit Energieerhaltung begründen | `pilot` | - |
+| `b57427c9-1af5-5daa-8c65-b84a4cc20785` | Spiegelbilder am ebenen Spiegel mit dem Strahlenmodell erklären | `pilot` | - |
+| `8a84de16-2fde-58ec-827a-f803e2ce8564` | Strombilanzen an Knoten mit Ladungserhaltung begründen | `pilot` | - |
+| `51de4fd9-6827-5b3d-b2ca-5e27ba961a7f` | Temperatur mit einem geeigneten Thermometer messen | `pilot` | - |
+| `b60f63b6-e70b-5557-9f54-86d42fa80325` | Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten | `pilot` | - |
+| `f827b00f-af7f-52de-84aa-2a2bbaa035bd` | Volumen regelmäßiger Körper geometrisch bestimmen | `pilot` | - |
+| `f92b5b8a-327f-50d2-8313-6a142399ebf0` | Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen | `pilot` | - |
+| `8f833b36-4126-52db-b210-79fb0023c7d9` | Widerstandswirkungen in Reihen- und Parallelschaltungen deuten | `pilot` | - |
+| `f7f2c254-1663-5861-bed7-a32c00495b19` | Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten | `pilot` | - |
 
 ### Accepted Review Without Link
 

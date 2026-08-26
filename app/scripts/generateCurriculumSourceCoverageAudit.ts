@@ -1,10 +1,12 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
 import type { ApplicabilityEvidence } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -21,6 +23,11 @@ const TARGET_LANDSCAPE_IDS = [
   '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced',
   '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a',
 ]
+
+const compositionViewDirectoryByLandscapeId = new Map<string, string>([
+  ['68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', 'mathematik'],
+  ['7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a', 'physik'],
+])
 
 type CoverageStatus = 'covered' | 'partial' | 'error' | 'none'
 
@@ -99,6 +106,43 @@ function readLandscapeForReport(report: CoverageReport): SkillLandscape | null {
   const absolutePath = resolve(repoRoot, report.file)
   if (!existsSync(absolutePath)) return null
   return JSON.parse(readFileSync(absolutePath, 'utf8')) as SkillLandscape
+}
+
+function collectFiles(directory: string): string[] {
+  if (!existsSync(directory)) return []
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const absolutePath = join(directory, entry.name)
+    if (entry.isDirectory()) return collectFiles(absolutePath)
+    return entry.isFile() && entry.name.endsWith('.view.json') ? [absolutePath] : []
+  })
+}
+
+function readAuthoritativeTargetAtomicGoalIdsByJurisdiction(
+  landscape: SkillLandscape,
+): Map<string, Set<string>> {
+  const directoryName = compositionViewDirectoryByLandscapeId.get(landscape.landscapeId)
+  if (!directoryName) return new Map<string, Set<string>>()
+
+  const result = new Map<string, Set<string>>()
+  const directory = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views', directoryName)
+  for (const file of collectFiles(directory)) {
+    const rawView = JSON.parse(readFileSync(file, 'utf8')) as unknown
+    const view = normalizeCompositionView(rawView)
+    const jurisdiction = view.scope.jurisdiction
+    if (
+      view.landscapeId !== landscape.landscapeId
+      || typeof jurisdiction !== 'string'
+      || !Object.prototype.hasOwnProperty.call(JURISDICTION_LABELS, jurisdiction)
+    ) {
+      continue
+    }
+
+    const targetGoalIds = result.get(jurisdiction) ?? new Set<string>()
+    collectAuthoritativeTargetAtomicGoalIds(landscape, rawView)
+      .forEach((goalId) => targetGoalIds.add(goalId))
+    result.set(jurisdiction, targetGoalIds)
+  }
+  return result
 }
 
 function isMemoryGoal(goal: LearningGoal): boolean {
@@ -229,11 +273,11 @@ function renderMarkdown(audit: SourceCoverageAudit): string {
   lines.push('')
   lines.push('This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.')
   lines.push('')
-  lines.push('`Covered` means direct source/mapping evidence plus explicitly accepted surrogate evidence. `Direct` excludes surrogate evidence; `Surrogate-only` is the accepted requires-closure bridge count. `View status` only evaluates the currently visible projection.')
+  lines.push('`Covered` means direct source/mapping evidence plus explicitly accepted surrogate evidence. `Direct` excludes surrogate evidence; `Surrogate-only` is the accepted requires-closure bridge count. `View status` evaluates only learner-facing `target` atoms in authoritative jurisdiction composition views; `prerequisiteOnly` atoms and applicability inherited only through `requires-closure` outside those views are not source targets.')
   lines.push('')
   lines.push('Memory/SRS, practice, assessment, motivation, orientation, and `examData` goals are excluded from the source-coverage denominator; memory traceability is handled by the separate memory-card review.')
   lines.push('')
-  lines.push('This file is a raw Applicability compiler audit. The Workbench `Curriculum Quality` cards use the composition-view based counters in `curriculum-quality-status.json`, including extracted source atoms and fully covered source original goals.')
+  lines.push('The Applicability compiler supplies source evidence and projection findings; learner-facing visibility is resolved from the same composition-view target projection used by the Workbench `Curriculum Quality` counters. Those counters additionally include extracted source atoms and fully covered source original goals.')
   lines.push('')
 
   for (const curriculum of audit.curricula) {
@@ -270,6 +314,9 @@ function buildAudit(): SourceCoverageAudit {
     if (!targetIds.has(report.landscapeId)) continue
     const landscape = readLandscapeForReport(report)
     const goalById = new Map((landscape?.goals ?? []).map((goal) => [goal.id, goal]))
+    const authoritativeTargetAtomicGoalIdsByJurisdiction = landscape
+      ? readAuthoritativeTargetAtomicGoalIdsByJurisdiction(landscape)
+      : new Map<string, Set<string>>()
     const atomicGoals = report.goals.filter((goal) =>
       goal.goalType === 'atomic' && isCurriculumSourceCoverageGoal(goalById.get(goal.goalId)))
     const jurisdictions = report.projections.map((projection) => {
@@ -286,8 +333,10 @@ function buildAudit(): SourceCoverageAudit {
       const surrogateBackedAtomicGoals = atomicGoals.filter((goal) =>
         !hasDirectSourceBackedJurisdictionEvidence(goal, projection.value)
         && coverageEvidence.hasReviewedRequiresClosureSurrogateEvidence(goal))
+      const authoritativeTargetAtomicGoalIds = authoritativeTargetAtomicGoalIdsByJurisdiction
+        .get(projection.value) ?? new Set<string>()
       const visibleAtomicGoals = atomicGoals.filter((goal) =>
-        (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
+        authoritativeTargetAtomicGoalIds.has(goal.goalId))
       const unsupportedAssignedAtomicGoals = visibleAtomicGoals.filter((goal) =>
         !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
       const visibleCoveredAtomicGoals = visibleAtomicGoals.filter((goal) =>
@@ -295,7 +344,7 @@ function buildAudit(): SourceCoverageAudit {
       const missingSourceBackedAtomicGoals = atomicGoals.filter((goal) =>
         !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
       const nonVisibleMissingSourceBackedAtomicGoals = missingSourceBackedAtomicGoals.filter((goal) =>
-        !(goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
+        !authoritativeTargetAtomicGoalIds.has(goal.goalId))
       const partialSourceLinkedAtomicGoals = visibleAtomicGoals.filter((goal) =>
         hasPartialSourceLinkedJurisdictionEvidence(goal, projection.value))
       const labels = JURISDICTION_LABELS[projection.value]

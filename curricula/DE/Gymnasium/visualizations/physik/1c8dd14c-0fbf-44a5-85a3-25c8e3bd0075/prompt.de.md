@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075`
 - Titel: Einfache Farbwahrnehmung beschreiben
-- Beschreibung: Die lernende Person kann Alltagserfahrungen zur Farbwahrnehmung fachlich beschreiben.
+- Beschreibung: Die lernende Person kann Alltagserfahrungen zur Farbwahrnehmung fachlich beschreiben, indem sie erläutert, wie Beleuchtung und Oberfläche das ins Auge gelangende Licht und damit den Farbeindruck bestimmen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Einfache Farbwahrnehmung beschreiben
-Beschreibung: Die lernende Person kann Alltagserfahrungen zur Farbwahrnehmung fachlich beschreiben.
+Beschreibung: Die lernende Person kann Alltagserfahrungen zur Farbwahrnehmung fachlich beschreiben, indem sie erläutert, wie Beleuchtung und Oberfläche das ins Auge gelangende Licht und damit den Farbeindruck bestimmen.
 
 Zusatzanweisung:
 Pflichtinhalt:
@@ -63,4 +63,8 @@ Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`,
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Das unveränderte Originalasset wurde am 2026-08-26 frisch gegen die kausal
+präzisierte Beschreibung geprüft. Es zeigt fachlich passend, wie Beleuchtung
+und Oberfläche das zum Auge gelangende Licht und damit den Farbeindruck
+bestimmen. Maßgeblicher hashgebundener Review:
+`quality/goal-visualization-review/physik-colors-current-alignment-2026-08-26.md`.

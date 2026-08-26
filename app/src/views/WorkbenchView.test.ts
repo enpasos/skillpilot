@@ -49,12 +49,12 @@ const publicSitemap = readFileSync(
 )
 
 ensure(
-  /const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = false/u.test(sessionSetupSource),
-  'public learning-goal book promotion must stay disabled until an explicit release decision',
+  /const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = true/u.test(sessionSetupSource),
+  'the explicit product-owner decision must expose the read-only learning-goal book on the public start page',
 )
 ensure(
   !publicSitemap.includes('https://skillpilot.com/lernzielbuch'),
-  'public sitemap must not promote the Workbench-only learning-goal book',
+  'the scoped start-page decision must not silently expand into a sitemap change',
 )
 
-console.log('Workbench learning-goal book links passed')
+console.log('Public and Workbench learning-goal book links passed')
