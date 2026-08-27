@@ -11,6 +11,7 @@ import {
   type GoalVisualizationQaYesNo,
 } from './goalVisualizationQaModel'
 import {
+  isActiveClusterOverviewForVisualization,
   isOrdinaryAtomicGoalForVisualization,
   normalizeGoalVisualizationSubject,
 } from '../../scripts/goal_visualization_scope.mjs'
@@ -271,7 +272,10 @@ const buildLedgers = (subjects: Set<string> | null): GoalVisualizationQaLedger[]
     if (!landscapeSubject || !selectedSubjects.has(landscapeSubject)) continue
 
     for (const rawGoal of landscape.goals) {
-      if (!isOrdinaryAtomicGoalForVisualization(rawGoal)) continue
+      if (
+        !isOrdinaryAtomicGoalForVisualization(rawGoal)
+        && !isActiveClusterOverviewForVisualization(rawGoal)
+      ) continue
       const goal = rawGoal as Record<string, unknown>
       const goalId = normalizeText(goal.id)
       if (!goalId) continue
@@ -378,7 +382,7 @@ const main = () => {
 
   const ledgers = buildLedgers(subjects)
   if (ledgers.length === 0) {
-    throw new Error('No ordinary atomic goals found for the selected goal-visualization subject scope.')
+    throw new Error('No ordinary atomic or active cluster-overview goals found for the selected goal-visualization subject scope.')
   }
 
   mkdirSync(qaRoot, { recursive: true })

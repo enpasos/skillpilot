@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-009-j7-analysis-proportionality-2-v1.config.json",
+  "configDigest": "sha256:03ce603b638b0415f92c098f73ca94a775a25fcb0406647dd076ce9b1b3241b5",
+  "goalIds": [
+    "093397e0-eec8-45bb-9a5a-a24827876df5",
+    "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 791,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:c95f649865810eeec1221ab6f0503f9030d1a5ff44e7804b12f15b6e9a064553"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b2cc1c3e034b2da3a14550e2fbb58e73c64fa16763194482201596b932516524",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:af02a6c610a1ab37f916b7939bc3819569acde0c012ac006c0851ae699bd4fbc",
+    "reviewInputFingerprint": "sha256:0db08df41b35b94f3d44219eba27ab9a57886a3ba77bd1079f29e3d721819039",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-a",
+        "campaignDigest": "sha256:e796bf970215300183e3571cf200cee871b9f563058417afc487b5f7eb139a2e",
+        "roundId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:70a815c6ef5ed9d01c2c2a82dc7db97a0a171eb3a4ec89fd1f33af60d5b81daa"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-b",
+        "campaignDigest": "sha256:f574319e9428dfa55dec76145a3ced27987044e848c0b4c1c0b32e1595404e20",
+        "roundId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:cb600d7e64c7e1eeb7728b17961968e08c8cedac1ad5c9e95f77d50338058e34"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

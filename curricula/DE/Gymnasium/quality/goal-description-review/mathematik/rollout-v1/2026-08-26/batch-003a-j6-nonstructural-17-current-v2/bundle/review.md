@@ -3,7 +3,7 @@
 - Book ID: `de-gym-mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826`
 - Book edition: `curricular-atomic-v1`
 - Publication mode: `review`
-- BookModel digest: `sha256:da559d820c8c47d7296887198a4d926abb4a4eeec755f3f039c69ca9006b4865`
+- BookModel digest: `sha256:342ddb860db76df63f5d11d69a9cab4ea111552acb5419dfc7584aadbb9b9c83`
 - Selected goals: 17
 
 The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
@@ -331,7 +331,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `b44f038c-fb1f-527e-b9ad-382214d0328a`
 - Goal fingerprint: `sha256:067d7408c30f81ee69a8d3538f357ccdd2068233ca72f7e1e348a00f99ec2b0f`
-- Page fingerprint: `sha256:e35dadc8c280d80229accc3606a46885a2a3c87ad470261089709add7a6fa302`
+- Page fingerprint: `sha256:6c6f10c22e98dfdb4286b07c7cd051ec63066f5dc6444240f363ef2339cf40d4`
 - Topic path: Mathematik
 
 ### Canonical description
@@ -364,6 +364,7 @@ Die lernende Person kann die Volumenformel des Quaders mithilfe von Einheitswür
 ### Direct reverse prerequisites outside this book
 
 - Aufgabe 5 (Jahrgangsstufe 6, 6 BE) — `974edafb-ea7b-588e-b88a-547e7a097c70` (outside this book)
+- Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen — `99ef0fc2-150a-51e8-bac8-7e40e46917b` (outside this book)
 - Volumen von Zylindern berechnen — `415bd48b-8a76-4d4f-bfdd-d085573e7ac3` (outside this book)
 - Geometrische Beziehungen an Kreisen und Zylindern begründet anwenden — `f65ab452-1884-57b0-9be3-c7d9e4944891` (outside this book)
 
@@ -374,7 +375,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `57fbbf31-9b8c-5408-9af5-fbc73acd12bb`
 - Goal fingerprint: `sha256:22d4e16bf92a39cb15301cf3b0f4f35b34e2cc065b75e4aea3430af2f7f34d1f`
-- Page fingerprint: `sha256:8418d72c8c593719c0c5ad5aed421fcc968e797f1b563fc87b62174d7e5bdd38`
+- Page fingerprint: `sha256:f330de6493355e0b3cbf68ed4282a878b200f9e01d475373e085c664c07b4ca6`
 - Topic path: Mathematik
 
 ### Canonical description
@@ -406,6 +407,7 @@ Die lernende Person kann Volumeneinheiten, auch Liter und Milliliter, mithilfe v
 
 ### Direct reverse prerequisites outside this book
 
+- Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen — `99ef0fc2-150a-51e8-bac8-7e40e46917b` (outside this book)
 - Volumen von Zylindern berechnen — `415bd48b-8a76-4d4f-bfdd-d085573e7ac3` (outside this book)
 - Geometrische Beziehungen an Kreisen und Zylindern begründet anwenden — `f65ab452-1884-57b0-9be3-c7d9e4944891` (outside this book)
 - Volumen und Oberflächen gerader Prismen berechnen — `59d5a330-61be-4590-ab46-cf7cefecd144` (outside this book)
@@ -634,7 +636,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `8a691345-3216-522c-a898-d65e8e94db28`
 - Goal fingerprint: `sha256:7d2c803035aa204eb2b68bc8553a61a3f8b55914bb1f904de8a10ff273ffcc3d`
-- Page fingerprint: `sha256:e0fa4e874eb588b19ab1ee5bd877bbe714374a1c59a7f51b81d509bf17ac6624`
+- Page fingerprint: `sha256:76b63542c3e12f696363a8060d071a86d738255e3dace122e3b14de683cc313b`
 - Topic path: Mathematik
 
 ### Canonical description
@@ -674,7 +676,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `c823b5a2-82e3-5e22-9c27-c0f41cc5eac6`
 - Goal fingerprint: `sha256:b707b40798133eac6a7f1e04c1f10bc9f65eb6f25d1beeaa5faecfe184a1da95`
-- Page fingerprint: `sha256:9106d5ce8a04751d278de9dddee694340e4550be5f01896ae9885764cf8c8557`
+- Page fingerprint: `sha256:c17e0003085280bbdedbc18678e5b8892d4118d51e6fcbbda6503fd3d98ee73e`
 - Topic path: Mathematik
 
 ### Canonical description
@@ -695,7 +697,7 @@ Die lernende Person kann Quader, Würfel, Prisma, Zylinder, Pyramide, Kegel und 
 
 ### Direct reverse prerequisites
 
-- Darstellungsformen gerader Körper verknüpfen — `11c88ea2-8502-5008-bec2-3e491c75ace4` (page 17)
+- None
 
 ### Prerequisites outside this book
 
@@ -705,7 +707,10 @@ Die lernende Person kann Quader, Würfel, Prisma, Zylinder, Pyramide, Kegel und 
 ### Direct reverse prerequisites outside this book
 
 - Aufgabe 5 (Jahrgangsstufe 6, 6 BE) — `974edafb-ea7b-588e-b88a-547e7a097c70` (outside this book)
-- Quader- und Würfeldarstellungen zeichnen — `59098969-0a35-5a58-94f2-1cfcdf191cf5` (outside this book)
+- Oberflächeninhalte von Quadern und Würfeln aus ihren Seitenflächen berechnen — `cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa` (outside this book)
+- Netze von Quadern und Würfeln zeichnen — `f52e9d72-4995-5c80-91d2-7761ea0cbec0` (outside this book)
+- Schrägbilder von Quadern und Würfeln zeichnen — `6bb52f96-6320-5a34-afb0-db9b471dd4ac` (outside this book)
+- Eine orthogonale Ansicht eines Quaders oder Würfels zeichnen — `bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -714,7 +719,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `11c88ea2-8502-5008-bec2-3e491c75ace4`
 - Goal fingerprint: `sha256:9ecfd94df4f5b2c8e8e8f00c417a54b47b158b451725bb81a6b73b67776895dd`
-- Page fingerprint: `sha256:25d6cb40c59efa3c277d39e87148b8f5051e14c89ef61cbd9f2e49ca6610a803`
+- Page fingerprint: `sha256:0409852eea2237d2cef69f27f250f70d72338e3a469759e89b9a59152cad585f`
 - Topic path: Mathematik
 
 ### Canonical description
@@ -731,7 +736,7 @@ Die lernende Person kann Zusammenhänge zwischen Netz, Schrägbild und Modell be
 
 ### Direct prerequisites
 
-- Elementare Körper erkennen und benennen — `c823b5a2-82e3-5e22-9c27-c0f41cc5eac6` (page 16)
+- None
 
 ### Direct reverse prerequisites
 
@@ -739,12 +744,12 @@ Die lernende Person kann Zusammenhänge zwischen Netz, Schrägbild und Modell be
 
 ### Prerequisites outside this book
 
-- Warum Mathematik? – Entdecken, Muster & Alltag — `65365dce-f33f-49d8-9516-42f75883aa86` (outside this book)
-- Quader- und Würfeldarstellungen zeichnen — `59098969-0a35-5a58-94f2-1cfcdf191cf5` (outside this book)
+- Netze von Quadern und Würfeln zeichnen — `f52e9d72-4995-5c80-91d2-7761ea0cbec0` (outside this book)
+- Schrägbilder von Quadern und Würfeln zeichnen — `6bb52f96-6320-5a34-afb0-db9b471dd4ac` (outside this book)
 
 ### Direct reverse prerequisites outside this book
 
-- Aufgabe 5 (Jahrgangsstufe 6, 6 BE) — `974edafb-ea7b-588e-b88a-547e7a097c70` (outside this book)
+- Quaderdarstellungen zeichnen und verknüpfen — `c34c6132-f85d-59be-8b95-032ddfc0d0de` (outside this book)
 
 ### Evidence-profile candidate
 

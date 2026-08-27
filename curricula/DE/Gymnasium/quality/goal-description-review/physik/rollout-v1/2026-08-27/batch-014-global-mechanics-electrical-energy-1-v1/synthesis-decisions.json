@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T10:10:58.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827",
+    "batchManifestDigest": "sha256:13573ee10d45bfab00b24fab223afb6530f6e078fec11bba778df8e1660af4d6",
+    "configDigest": "sha256:999eec3cfe215a5e88d0bb98fadf98060232ee2b371d6fc7bcedf00d00dbca1c",
+    "bundleFingerprint": "sha256:cfe6bc69d3d20be1f3a5358cfc91def161e6d486f34ac316aa56759b82596885",
+    "bookDigest": "sha256:8734f054edb004fac29eb20fcd17f4f57849a3356d2de3e6363c0a8ff1dcbef1",
+    "reviewInputFingerprint": "sha256:710ed478de1e56cd6ae6cdb8141d5976d0c31b305521a63bb38e85337a3712e0",
+    "dualSummaryDigest": "sha256:eccd267883911b814126bca88ad2f683732b2b3fd023f403ad04c657533e78cb",
+    "canonicalLandscapeDigest": "sha256:46f6977eef57e018ad491cf8bef887c1148e7c0d71ffef9f00a809f08841170a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-a",
+      "campaignDigest": "sha256:2691ff5fd8e51c5db6f05acf81e8b83a70a5de9d23dac47d0f2baebb70c4a5a3",
+      "roundId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:710ed478de1e56cd6ae6cdb8141d5976d0c31b305521a63bb38e85337a3712e0",
+      "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7350b95e80cf24f975f16c904c231657988e594ad385a8b8f849c2ecadd19132",
+      "runId": "physik-b014-20260827-round-a-gpt5",
+      "runManifestDigest": "sha256:344228d26469f2808138213b71e09ae9d38bbdbb003440a40bdbdb0251259608",
+      "resultsDigest": "sha256:75fbfc5fa93e9818d476a4b3aabaa0c261a51e0166038c643a334d5dbb186760"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-b",
+      "campaignDigest": "sha256:255c885fcca41b5ac37d9ae1d18da3e935629a1b978688f859d7179f3dd62c4a",
+      "roundId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:710ed478de1e56cd6ae6cdb8141d5976d0c31b305521a63bb38e85337a3712e0",
+      "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:f885354faebe2cb7441efc6ef8f29f7f6fc06306343b15bcdd573072077016d9",
+      "runId": "physik-014-global-mechanics-electrical-energy-b-001-codex",
+      "runManifestDigest": "sha256:2a49302839a6dc7c428b92feac1f046fdba5d7d83421567e3bb5f5c2804d81fd",
+      "resultsDigest": "sha256:1495097d666eaa56eb6760166eaa838b2164b08f3b6ed03b8f9fce49e4913dd1"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-synthesis-decision-001",
+      "goalId": "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23a0e3e7436738793419e3263b24d8c64c3fc6e032f5dff0d9aa3b0b9c0fe6af",
+      "pageFingerprint": "sha256:7681d88455256424ef4a3a4a5e5b7568ebdcf418c368d8ff98d5a242f3335788",
+      "goalReviewContextFingerprint": "sha256:5831b9aae627626f96d9b0009ad81eff2840d522a6a1f4330a9bf839aa05acb8",
+      "finalText": {
+        "titleDe": "Elektrische Energieumwandlungen qualitativ beschreiben",
+        "titleEn": "Describe electrical energy conversions qualitatively",
+        "descriptionDe": "Die lernende Person kann elektrische Energieumwandlungen beschreiben und einfache Anwendungen qualitativ bewerten.",
+        "descriptionEn": "The learner can describe electrical energy conversions and qualitatively evaluate simple applications."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "phys014-a-001-cbb26ed2",
+          "recordDigest": "sha256:8b3c326f6f10dff1bb3c5a3993a770f225bca08fb91fe5314a434507cd53c8a7"
+        },
+        "second": {
+          "recordId": "physik-014-global-mechanics-electrical-energy-b-001-codex.record-001",
+          "recordDigest": "sha256:82879dec577827332c34b4263f550fde3549fb51828c33c5e0d5e9c7c57d0b49"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen bilingualen Wortlaut als fachlich korrekte, altersangemessene und zusammenhängende Sek-I-Kompetenz aus qualitativer Beschreibung und zweckbezogener Bewertung. Die zweite Evidenzfassung wird ausgewählt, weil sie den verbreiteten Fehlbegriff eines Energieverbrauchs ausdrücklich ausschließt, eine passende Systemgrenze und die Energieübertragung an die Umgebung präzise fordert sowie Nutz- und Begleitwirkungen mit expliziten zweckbezogenen Kriterien verbindet. Ihr Transfer zwischen Heizgerät und Elektromotor prüft denselben Energiefluss bei geänderter Nutzzuordnung, ohne das getrennte quantitative Leistungs- und Wirkungsgradziel vorwegzunehmen.",
+      "rationaleEn": "Both independent reviews confirm the current bilingual wording as a scientifically correct, age-appropriate, and coherent lower-secondary competence combining qualitative description with purpose-related evaluation. The second evidence formulation is selected because it explicitly rejects the common misconception that energy is consumed, precisely requires an appropriate system boundary and energy transfer to the surroundings, and connects useful and accompanying effects to explicit purpose-related criteria. Its transfer between an electric heater and motor tests the same energy flow under a changed useful-output classification without anticipating the separate quantitative power-and-efficiency goal."
+    }
+  ],
+  "manifestFingerprint": "sha256:14cc73ea978e3449dd712906cae1508bccad7d33513cc50d2e2b9c7a1f5bb3ff"
+}

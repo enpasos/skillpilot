@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-rollout-v1-batch-007-j6-analysis-patterns-current-v1",
+  "reviewedAt": "2026-08-27T09:57:44.000Z",
+  "reviewer": "codex-math-batch007-positive-evidence-synthesis-2026-08-27",
+  "goals": [
+    {
+      "goalId": "8cb18560-3a2b-593e-b634-9d768566cba9",
+      "reason": "DE: Das Profil bindet Mustererkennung an eine durchgehend passende Beziehung zwischen Elementen, verlangt eine reproduzierbare verbale Regel sowie begründetes mehrschrittiges Fortsetzen und prüft den Transfer zwischen Zahlenfolge, Punktfigur und fehlerhafter Fortsetzung. Es bleibt auf Muster und Zahlenfolgen in Jahrgang 6 begrenzt. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile binds pattern recognition to a relationship that consistently fits the elements, requires a reproducible verbal rule and justified multi-step continuation, and tests transfer among a number sequence, a dot figure, and a flawed continuation. It remains limited to Year 6 patterns and number sequences. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "pattern-rule-connects-elements",
+            "essentialUnderstandingDe": "Ein Muster beruht auf einer durchgehend passenden Beziehung zwischen aufeinanderfolgenden Elementen oder Entwicklungsschritten. Gleichbleibende Merkmale und systematische Veränderungen, etwa ein wiederkehrender Operationswechsel oder sich verändernde Zuwächse, bestimmen die Regel; einzelne passende Übergänge allein reichen nicht aus.",
+            "essentialUnderstandingEn": "A pattern is based on a relationship that consistently fits successive elements or stages of development. Invariant features and systematic changes, such as a repeating change of operation or changing increments, determine the rule; a few matching transitions alone are not sufficient.",
+            "observablePerformanceDe": "Die lernende Person untersucht bei einem neuen Muster alle gegebenen Übergänge, kennzeichnet, was gleich bleibt und was sich systematisch verändert, und formuliert eine Regel, die zu jedem vorhandenen Element beziehungsweise Entwicklungsschritt passt.",
+            "observablePerformanceEn": "For a fresh pattern, the learner examines all given transitions, identifies what remains invariant and what changes systematically, and states a rule that fits every supplied element or stage of development."
+          },
+          {
+            "id": "verbal-rule-generates-and-checks",
+            "essentialUnderstandingDe": "Eine verbale Musterregel muss Ausgangspunkt, Reihenfolge und gegebenenfalls Wiederholung ihrer Schritte so eindeutig festlegen, dass daraus weitere Elemente erzeugt und vorgeschlagene Fortsetzungen geprüft werden können. Eine Fortsetzung ist begründet, wenn jeder neue Schritt mit derselben angegebenen Regel übereinstimmt.",
+            "essentialUnderstandingEn": "A verbal pattern rule must specify its starting point, order, and, where applicable, repetition of steps clearly enough to generate further elements and check proposed continuations. A continuation is justified when every new step agrees with the same stated rule.",
+            "observablePerformanceDe": "Die lernende Person beschreibt die Regel eines neuen Musters in eigenen Worten so präzise, dass eine andere Person die Fortsetzung reproduzieren kann, erzeugt mindestens drei weitere Elemente, begründet die Übergänge und korrigiert eine vorgelegte Fortsetzung anhand der Regel.",
+            "observablePerformanceEn": "The learner describes the rule of a fresh pattern in their own words precisely enough for another person to reproduce the continuation, generates at least three further elements, justifies the transitions, and corrects a supplied continuation by applying the rule."
+          },
+          {
+            "id": "representations-preserve-growth-rule",
+            "essentialUnderstandingDe": "Dasselbe wachsende Muster kann als Figurenfolge, Wertetabelle oder Zahlenfolge dargestellt werden. Die von Schritt zu Schritt hinzugefügten oder veränderten Teile der Figur müssen den Änderungen der zugehörigen Zahlenwerte entsprechen; die Darstellungen zeigen verschiedene Seiten derselben Regel.",
+            "essentialUnderstandingEn": "The same growing pattern can be represented as a sequence of figures, a value table, or a number sequence. The parts added or changed from one stage to the next must correspond to the changes in the associated numerical values; the representations show different aspects of the same rule.",
+            "observablePerformanceDe": "Die lernende Person überträgt ein unabhängig vorgelegtes Figurenmuster in eine Zahlenfolge oder Tabelle, erklärt die zahlenmäßige Änderung aus dem Figurenaufbau und setzt Figur und Zahlenfolge so fort, dass beide Darstellungen dieselbe Regel erfüllen.",
+            "observablePerformanceEn": "The learner translates an independently presented figural pattern into a number sequence or table, explains the numerical change from the construction of the figure, and continues both the figure and the number sequence so that the two representations satisfy the same rule."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "pattern-rule-connects-elements",
+            "verbal-rule-generates-and-checks",
+            "representations-preserve-growth-rule"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "rule-structure",
+            "textDe": "Konstanter Schritt, alternierende Zweischrittregel oder systematisch wachsender Zuwachs",
+            "textEn": "Constant step, alternating two-step rule, or systematically growing increment"
+          },
+          {
+            "id": "representation",
+            "textDe": "Zahlenliste, Wertetabelle oder wachsende Punkt- beziehungsweise Plättchenfigur",
+            "textEn": "List of numbers, value table, or growing dot or tile figure"
+          },
+          {
+            "id": "direction-of-reasoning",
+            "textDe": "Regel aus Elementen erschließen, Elemente aus einer verbalen Regel erzeugen oder eine vorgeschlagene Fortsetzung prüfen",
+            "textEn": "Infer a rule from elements, generate elements from a verbal rule, or check a proposed continuation"
+          },
+          {
+            "id": "performance-mode",
+            "textDe": "Muster beschreiben und fortsetzen, Darstellungen übersetzen oder einen Regelverstoß begründet reparieren",
+            "textEn": "Describe and continue a pattern, translate representations, or justifiably repair a rule violation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "alternating-number-sequence",
+            "taskDemandDe": "Untersuche die Zahlenfolge 5, 8, 6, 9, 7, 10. Formuliere eine einfache Regel, die zu allen Übergängen passt, setze die Folge um vier Glieder fort und begründe jeden neuen Übergang mit deiner Regel.",
+            "taskDemandEn": "Investigate the number sequence 5, 8, 6, 9, 7, 10. State a simple rule that fits every transition, continue the sequence by four terms, and justify each new transition using your rule.",
+            "expectedPerformanceDe": "Die lernende Person erkennt den Wechsel aus +3 und −2, beschreibt die Reihenfolge und Wiederholung der beiden Schritte ausdrücklich und ergänzt 8, 11, 9, 12. Sie weist für jedes ergänzte Glied nach, welcher der beiden abwechselnden Schritte angewandt wurde, ohne zu behaupten, dies sei die einzig denkbare Regel für eine endliche Folge.",
+            "expectedPerformanceEn": "The learner identifies the alternating +3 and −2 steps, explicitly describes their order and repetition, and appends 8, 11, 9, 12. For each added term, the learner identifies which alternating step was applied without claiming that this is the only conceivable rule for a finite sequence.",
+            "understandingFocusDe": "Der Fall prüft eine durchgehend passende alternierende Beziehung und eine präzise, reproduzierbare Regel statt bloßes Erraten des nächsten Glieds.",
+            "understandingFocusEn": "The case tests a consistently fitting alternating relationship and a precise, reproducible rule rather than merely guessing the next term."
+          },
+          {
+            "id": "growing-dot-figure-to-sequence",
+            "taskDemandDe": "Eine neue Folge von Punktfiguren zeigt dreieckige Stufen mit 1, 3, 6 und 10 Punkten. Markiere, welche neue Punktreihe von einer Stufe zur nächsten hinzukommt, übertrage die Punktzahlen in eine Tabelle, beschreibe die Wachstumsregel und bestimme die Punktzahlen der nächsten beiden Figuren.",
+            "taskDemandEn": "A fresh sequence of dot figures shows triangular stages containing 1, 3, 6, and 10 dots. Identify the new row of dots added from one stage to the next, transfer the dot counts to a table, describe the growth rule, and determine the dot counts of the next two figures.",
+            "expectedPerformanceDe": "Die lernende Person verbindet die neuen Reihen mit den Zuwächsen +2, +3 und +4, formuliert, dass jeweils die nächste natürliche Zahl hinzukommt, und setzt Figuridee und Zahlenfolge mit +5 und +6 zu 15 beziehungsweise 21 Punkten konsistent fort.",
+            "expectedPerformanceEn": "The learner connects the new rows with increments of +2, +3, and +4, states that the next natural number is added each time, and consistently continues both the figural idea and the number sequence with +5 and +6 to obtain 15 and 21 dots respectively.",
+            "understandingFocusDe": "Der Darstellungswechsel prüft, ob die sichtbare Figurenentwicklung und die numerischen Differenzen als dieselbe Regel koordiniert werden.",
+            "understandingFocusEn": "The change of representation tests whether the visible growth of the figures and the numerical differences are coordinated as the same rule."
+          },
+          {
+            "id": "verbal-rule-error-diagnosis",
+            "taskDemandDe": "Gegeben ist die Regel: Beginne bei 24, subtrahiere 5 und addiere danach 2; wiederhole diese beiden Schritte abwechselnd. Prüfe die vorgeschlagene Folge 24, 19, 21, 16, 18, 14, 16, finde den ersten Regelverstoß, korrigiere ab dort und setze die Folge um ein weiteres Glied fort.",
+            "taskDemandEn": "Use this rule: start at 24, subtract 5 and then add 2; repeat these two steps alternately. Check the proposed sequence 24, 19, 21, 16, 18, 14, 16, find the first rule violation, correct the sequence from that point, and continue it by one further term.",
+            "expectedPerformanceDe": "Die lernende Person prüft die Übergänge in der angegebenen Reihenfolge, erkennt 14 als erstes falsches Glied, ersetzt den Abschnitt ab 18 durch 13, 15, 10 und erklärt die Korrektur mit den abwechselnden Schritten −5, +2 und −5.",
+            "expectedPerformanceEn": "The learner checks the transitions in the stated order, identifies 14 as the first incorrect term, replaces the section after 18 with 13, 15, 10, and explains the correction using the alternating steps −5, +2, and −5.",
+            "understandingFocusDe": "Die umgekehrte Richtung von der verbalen Regel zur Prüfung einer fremden Fortsetzung zeigt, ob die Regel als Erzeugungs- und Kontrollkriterium verstanden wird.",
+            "understandingFocusEn": "Reversing the direction from a verbal rule to checking someone else's continuation shows whether the rule is understood as both a generation and a checking criterion."
+          }
+        ]
+      }
+    }
+  ]
+}

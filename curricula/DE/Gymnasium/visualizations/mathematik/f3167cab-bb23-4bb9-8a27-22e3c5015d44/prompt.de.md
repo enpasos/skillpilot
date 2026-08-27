@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `f3167cab-bb23-4bb9-8a27-22e3c5015d44`
 - Titel: Proportionale Funktionen als Ursprungsgeraden deuten und darstellen
-- Beschreibung: Die lernende Person kann proportionale Funktionen in Tabellen und Graphen als Ursprungsgeraden deuten, darstellen und die Darstellungsformen passend aufeinander beziehen.
+- Beschreibung: Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten und dabei erläutern, dass bei Eingabewerten ungleich null der konstante Quotient aus Ausgabe- und Eingabewert der Steigung der Geraden entspricht.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Proportionale Funktionen als Ursprungsgeraden deuten und darstellen
-Beschreibung: Die lernende Person kann proportionale Funktionen in Tabellen und Graphen als Ursprungsgeraden deuten, darstellen und die Darstellungsformen passend aufeinander beziehen.
+Beschreibung: Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten und dabei erläutern, dass bei Eingabewerten ungleich null der konstante Quotient aus Ausgabe- und Eingabewert der Steigung der Geraden entspricht.
 
 Zusatzanweisung:
 Do not include any technical identifiers in the image. Create a German educational infographic about proportional functions as lines through the origin. Use y = 2x. Show a table: x = 0,1,2,3 and y = 0,2,4,6. Show a coordinate graph with a straight line through O(0|0) and points (1|2), (2|4), (3|6). Label "Ursprungsgerade", "Proportionalitaetsfaktor k=2", and "Graph, Tabelle und Term gehoeren zusammen". Avoid any y-intercept other than 0.

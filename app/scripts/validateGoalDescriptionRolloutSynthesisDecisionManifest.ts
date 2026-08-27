@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import { stableGoalBookJson } from './goalBookModel'
+import { buildGoalDescriptionRejectedRevisionDissent } from './goalDescriptionRolloutResolutionSynthesis'
 import type {
   GoalDescriptionDualRoundResolution,
   GoalDescriptionDualRoundResolutionSource,
@@ -67,6 +68,14 @@ export type GoalDescriptionRolloutSynthesisDecisionManifest = {
     records: {
       first: { recordId: string; recordDigest: GoalDescriptionSynthesisDigest }
       second: { recordId: string; recordDigest: GoalDescriptionSynthesisDigest }
+    }
+    revisionDissent?: {
+      sourceRound: 'first' | 'second'
+      disposition: 'rejected_keep_current'
+      proposedDescriptionDe: string
+      proposedDescriptionEn: string
+      rationaleDe: string
+      rationaleEn: string
     }
     rationaleDe: string
     rationaleEn: string
@@ -243,6 +252,49 @@ export const validateGoalDescriptionRolloutSynthesisDecisionManifest = async ({
     }
     const sources = [goal.firstSource, goal.secondSource]
     const labels = ['first', 'second'] as const
+    const keepSourceCount = sources.filter(({ decision: sourceDecision }) => sourceDecision === 'keep').length
+    const reviseSourceCount = sources.filter(({ decision: sourceDecision }) => sourceDecision === 'revise').length
+    const mixedKeepRevise = (
+      decision.resolutionDecision === 'keep_current'
+      && keepSourceCount === 1
+      && reviseSourceCount === 1
+    )
+    const bothKeep = keepSourceCount === 2
+    if (!bothKeep && !mixedKeepRevise) {
+      errors.push(
+        `${goal.goalId}: synthesis requires either two current keep records or, for keep_current only, exactly one current keep and one current revise record`,
+      )
+    }
+    const reviseSourceIndex = sources.findIndex(({ decision: sourceDecision }) => sourceDecision === 'revise')
+    if (mixedKeepRevise) {
+      const reviseSource = sources[reviseSourceIndex]
+      const reviseRecord = reviseSource?.record
+      const reviseLabel = labels[reviseSourceIndex]
+      const dissent = decision.revisionDissent
+      if (
+        !reviseRecord
+        || !dissent
+        || dissent.sourceRound !== reviseLabel
+        || dissent.disposition !== 'rejected_keep_current'
+        || dissent.proposedDescriptionDe !== reviseRecord.proposedDescriptionDe
+        || dissent.proposedDescriptionEn !== reviseRecord.proposedDescriptionEn
+      ) {
+        errors.push(`${goal.goalId}: keep_current with a revise source requires exact rejected-revision dissent binding`)
+      }
+      if (dissent) {
+        try {
+          buildGoalDescriptionRejectedRevisionDissent({
+            batchId: manifest.batch.batchId,
+            goalId: goal.goalId,
+            revisionDissent: dissent,
+          })
+        } catch (error) {
+          errors.push(error instanceof Error ? error.message : String(error))
+        }
+      }
+    } else if (decision.revisionDissent) {
+      errors.push(`${goal.goalId}: revisionDissent is only valid for keep_current with exactly one revise source`)
+    }
     sources.forEach((source, sourceIndex) => {
       const label = labels[sourceIndex]
       const expectedRound = withoutRecordBinding(
@@ -252,8 +304,9 @@ export const validateGoalDescriptionRolloutSynthesisDecisionManifest = async ({
       if (!same(manifest.rounds[label], expectedRound)) {
         errors.push(`${goal.goalId}: ${label} source does not belong to the manifest-bound current run`)
       }
-      if (source.decision !== 'keep' || !source.record) {
-        errors.push(`${goal.goalId}: ${label} source must be a current keep record; found ${source.decision}`)
+      const allowedDecision = source.decision === 'keep' || (mixedKeepRevise && source.decision === 'revise')
+      if (!allowedDecision || !source.record) {
+        errors.push(`${goal.goalId}: ${label} source is not an allowed current keep/revise record; found ${source.decision}`)
         return
       }
       if (
@@ -263,7 +316,7 @@ export const validateGoalDescriptionRolloutSynthesisDecisionManifest = async ({
         || source.binding.goalReviewContextFingerprint !== goal.goalReviewContextFingerprint
         || !same(recordCurrentText(source), goal.finalText)
       ) {
-        errors.push(`${goal.goalId}: ${label} keep record is stale or foreign to the exact current goal context`)
+        errors.push(`${goal.goalId}: ${label} record is stale or foreign to the exact current goal context`)
       }
       const actualRecord = decision.records[label]
       if (

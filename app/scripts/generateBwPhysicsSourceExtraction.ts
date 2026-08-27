@@ -192,7 +192,7 @@ const lowerCanonicalTargetsByTopicBullet: Record<string, string[]> = {
     '90e1e6cf-4092-41d6-81f7-5206f9d68f84',
     'c1006f55-0406-48cc-92d4-0d8345897cf4',
   ],
-  '3.2.2:3': ['3e33813d-db75-4571-8345-3845b02b956d'],
+  '3.2.2:3': ['da0837c7-95a7-5a6a-81db-f33cb7f42d85'],
   '3.2.2:4': [
     'dd7cdcea-0950-461b-96ac-ce49989fca47',
     '79cb1695-f985-443a-b93e-27b57ab474b7',
@@ -1355,6 +1355,40 @@ function writeExtraction(
   writeFileSync(outputPath, `${JSON.stringify(document, null, 2)}\n`)
 }
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "bw-phys-seki-3-2-5-b09-a01-38e15e8e": [
+    "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
+  ],
+  "bw-phys-seki-3-2-5-b11-a01-fe769b0d": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "bw-phys-seki-3-3-2-b02-a01-21aa2c68": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "bw-phys-seki-3-3-2-b03-a01-53b2443a": [
+    "66256e22-44a3-5939-8862-821e29d6711d",
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "bw-phys-seki-3-3-2-b07-a01-d740a1eb": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ],
+  "bw-phys-seki-3-3-2-b08-a01-201ffc0f": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+    "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
+  ],
+  "bw-phys-seki-3-3-2-b09-a01-8d5929cb": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal[] }): ReviewCoverage {
   const reviewPath = absoluteRepoPath(config.reviewPath)
   mkdirSync(path.dirname(reviewPath), { recursive: true })
@@ -1364,7 +1398,7 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
 
   const decisions = parsed.sourceGoals.map((sourceGoal) => {
     const sourceKey = `${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`
-    const canonicalGoalIds = targetLookup[sourceKey] ?? []
+    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, targetLookup[sourceKey] ?? [])
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

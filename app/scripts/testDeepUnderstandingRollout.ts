@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict'
+import { dirname, resolve } from 'node:path'
 import {
   claimUniqueGoal,
   duplicateValues,
   formatRolloutPercentage,
   generateDeepUnderstandingRollout,
   intersectStrictGoalGates,
+  resolveResolutionBatchArtifactPath,
 } from './reportDeepUnderstandingRollout'
 
 assert.deepEqual(duplicateValues(['a', 'b', 'a', 'c', 'b']), ['a', 'b'])
@@ -30,6 +32,29 @@ assert.equal(claimUniqueGoal('goal-1', 'batch-a', owners, ready), null)
 assert.equal(ready.has('goal-1'), true)
 assert.equal(claimUniqueGoal('goal-1', 'batch-b', owners, ready), 'batch-a')
 assert.equal(ready.has('goal-1'), false, 'An overlapping goal must fail closed.')
+
+const compositeIndexPath = resolve(
+  '/tmp/skillpilot-deep-understanding-fixture/checkpoint-current-2026-08-26/resolution-index.json',
+)
+const groupRelativeResolutionPath = resolve(
+  dirname(compositeIndexPath),
+  '../calibration-v2/2026-08-25/final-20-v6/resolutions/goal-physics-01.resolution.json',
+)
+assert.equal(
+  resolveResolutionBatchArtifactPath(groupRelativeResolutionPath, 'synthesis-decisions.json'),
+  resolve(
+    '/tmp/skillpilot-deep-understanding-fixture/calibration-v2/2026-08-25/final-20-v6/synthesis-decisions.json',
+  ),
+  'A composite index must resolve the manifest from the concrete resolution batch, not from the index directory.',
+)
+assert.throws(
+  () => resolveResolutionBatchArtifactPath(
+    groupRelativeResolutionPath,
+    '../foreign-batch/synthesis-decisions.json',
+  ),
+  /leaves its batch root/u,
+  'A resolution-bound manifest path must not escape its concrete batch root.',
+)
 
 const report = await generateDeepUnderstandingRollout()
 assert.equal(report.blockingIssueCount, 0)

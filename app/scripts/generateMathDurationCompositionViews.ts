@@ -55,6 +55,9 @@ interface LearningGoal {
     phase?: string
     topicCode?: string
   }
+  applicability?: {
+    jurisdiction?: string[]
+  }
 }
 
 interface SourceGoal {
@@ -95,6 +98,11 @@ interface SplitLayoutPlan {
       path: string
       sha256: string
     }
+    additiveAdjudications?: Array<{
+      path: string
+      fileSha256: string
+      adjudicationDigest: string
+    }>
   }
   counts: {
     sek1TemplateCount: number
@@ -152,6 +160,9 @@ const splitLayoutPlanPath = resolve(
 const CANONICAL_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
 const SEK1_MEMORY_GOAL_ID = '4eefbd04-9e49-41ea-a087-9ad6ac71ec5a'
+const J6_REFLECTIONS_CLUSTER_ID = '1335dff9-db1e-5dd6-aa55-3938b6d3b0ec'
+const J6_NETS_GOAL_ID = 'f52e9d72-4995-5c80-91d2-7761ea0cbec0'
+const J6_OBLIQUE_VIEW_GOAL_ID = '6bb52f96-6320-5a34-afb0-db9b471dd4ac'
 const SEK1_EXAM_FOLDER_IDS_BY_YEAR: Record<string, string> = {
   '5': '81c8da58-9258-488e-9ab8-48500ab31652',
   '6': '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
@@ -343,6 +354,25 @@ if (
   throw new Error(`Invalid reviewed split-layout plan ${splitLayoutPlanPath}`)
 }
 
+for (const input of splitLayoutPlan.inputs.additiveAdjudications ?? []) {
+  const absolutePath = resolve(repoRoot, input.path)
+  const bytes = readFileSync(absolutePath)
+  const fileSha256 = createHash('sha256').update(bytes).digest('hex')
+  const adjudication = JSON.parse(bytes.toString('utf8')) as Record<string, unknown>
+  const digestPayload = structuredClone(adjudication)
+  delete digestPayload.adjudicationDigest
+  const adjudicationDigest = `sha256:${createHash('sha256')
+    .update(JSON.stringify(digestPayload))
+    .digest('hex')}`
+  if (
+    fileSha256 !== input.fileSha256
+    || adjudication.adjudicationDigest !== input.adjudicationDigest
+    || adjudicationDigest !== input.adjudicationDigest
+  ) {
+    throw new Error(`Invalid additive split-layout adjudication ${input.path}`)
+  }
+}
+
 const splitLayoutTemplateByFileName = new Map(
   splitLayoutPlan.sek1Templates.map((template) => [template.fileName, template]),
 )
@@ -397,6 +427,11 @@ const isCanonicalSek1AtomicGoal = (goalId: string): boolean => {
   return (phase === 'GLOBAL' || phase === 'SekI') && topicCode.includes('.SEK1.')
 }
 
+const isGoalApplicableToJurisdiction = (goalId: string, jurisdiction: string): boolean => {
+  const jurisdictions = goalById.get(goalId)?.applicability?.jurisdiction
+  return !jurisdictions || jurisdictions.includes(jurisdiction)
+}
+
 interface CompleteHeSek1RouteBucketsOptions<TBucket extends string> {
   durationModel: DurationModel
   buckets: Record<TBucket, string[]>
@@ -428,7 +463,10 @@ const completeHeSek1RouteBuckets = <TBucket extends string>({
   ) as Record<TBucket, Set<string>>
   const examTargetIds = examYears.flatMap((year) => {
     const folderId = SEK1_EXAM_FOLDER_IDS_BY_YEAR[year]
-    return folderId ? [folderId, ...collectAtomicDescendantIds(folderId)] : []
+    return folderId
+      ? [folderId, ...collectAtomicDescendantIds(folderId)
+          .filter((goalId) => isGoalApplicableToJurisdiction(goalId, 'DE-HE'))]
+      : []
   })
   const presentGoalIds = new Set<string>([
     SEK1_MOTIVATION_GOAL_ID,
@@ -1152,6 +1190,17 @@ const createShBandNode = (
   }
 }
 
+const createShStageWideJ6GeometryNode = (durationModel: DurationModel): CompositionNode => ({
+  kind: 'structure',
+  id: `sh-stage-wide-j6-geometry-${durationModel.toLowerCase()}`,
+  label: 'Stufenübergreifend lehrplanbelegte Raum-und-Form-Kompetenzen',
+  children: [
+    createCanonicalSubtree(J6_REFLECTIONS_CLUSTER_ID),
+    createGoalEntry(J6_NETS_GOAL_ID),
+    createGoalEntry(J6_OBLIQUE_VIEW_GOAL_ID),
+  ],
+})
+
 const createShSek1Node = (
   durationModel: DurationModel,
   excludedGoalIds: Set<string> = new Set(),
@@ -1163,6 +1212,7 @@ const createShSek1Node = (
     label: 'Sekundarstufe I',
     children: [
       createCanonicalSubtree(SEK1_MOTIVATION_GOAL_ID),
+      createShStageWideJ6GeometryNode(durationModel),
       ...shBands
         .map((band) => createShBandNode(durationModel, band, buckets[band]))
         .filter((node): node is CompositionNode => node !== null),
@@ -1229,18 +1279,24 @@ const findStructureById = (nodes: CompositionNode[], structureId: string): Compo
   return null
 }
 
-const collectProjectedTargetGoalIds = (nodes: CompositionNode[]): Set<string> => {
+const collectProjectedTargetGoalIds = (
+  nodes: CompositionNode[],
+  jurisdiction?: string,
+): Set<string> => {
   const goalIds = new Set<string>()
   const visit = (node: CompositionNode) => {
     if (node.kind === 'goalEntry') {
       if (node.projectionRole === 'prerequisiteOnly') return
+      if (jurisdiction && !isGoalApplicableToJurisdiction(node.goalId, jurisdiction)) return
       goalIds.add(node.goalId)
       return
     }
     if (node.kind === 'canonicalSubtree') {
       if (node.projectionRole === 'prerequisiteOnly') return
       goalIds.add(node.goalId)
-      collectAtomicDescendantIds(node.goalId).forEach((goalId) => goalIds.add(goalId))
+      collectAtomicDescendantIds(node.goalId)
+        .filter((goalId) => !jurisdiction || isGoalApplicableToJurisdiction(goalId, jurisdiction))
+        .forEach((goalId) => goalIds.add(goalId))
       return
     }
     if (node.kind === 'structure') node.children.forEach(visit)
@@ -1262,8 +1318,8 @@ const assertCompleteHeSek1DirectRequirements = (view: CompositionView) => {
     throw new Error(`Missing generated Sek-I structure ${structureId} in ${view.viewId}`)
   }
 
-  const allTargetGoalIds = collectProjectedTargetGoalIds(view.rootNodes)
-  const sek1TargetGoalIds = collectProjectedTargetGoalIds([sek1Node])
+  const allTargetGoalIds = collectProjectedTargetGoalIds(view.rootNodes, jurisdiction)
+  const sek1TargetGoalIds = collectProjectedTargetGoalIds([sek1Node], jurisdiction)
   const missingEdges: string[] = []
   sek1TargetGoalIds.forEach((goalId) => {
     if (!isCanonicalSek1AtomicGoal(goalId)) return
@@ -1301,13 +1357,17 @@ const generatedViews = new Map<string, CompositionView>([
 
 const serialize = (view: CompositionView) => `${JSON.stringify(view, null, 2)}\n`
 const canonicalAuthoringLandscape = normalizeCanonicalLandscape(canonicalMath)
-const collectCompiledAtomicGoalIds = (nodes: CompiledCompositionPreviewNode[]): Set<string> => {
+const collectCompiledAtomicGoalIds = (
+  nodes: CompiledCompositionPreviewNode[],
+  jurisdiction?: string,
+): Set<string> => {
   const result = new Set<string>()
   const visit = (node: CompiledCompositionPreviewNode) => {
     if (
       node.kind === 'goal'
       && node.sourceGoalId
       && (goalById.get(node.sourceGoalId)?.contains?.length ?? 0) === 0
+      && (!jurisdiction || isGoalApplicableToJurisdiction(node.sourceGoalId, jurisdiction))
     ) result.add(node.sourceGoalId)
     node.children.forEach(visit)
   }
@@ -1329,10 +1389,10 @@ const assertGeneratedViewIntegrity = (view: CompositionView) => {
   }
 
   const expectedGoalIds = new Set(
-    [...collectProjectedTargetGoalIds(view.rootNodes)]
+    [...collectProjectedTargetGoalIds(view.rootNodes, view.scope.jurisdiction)]
       .filter((goalId) => (goalById.get(goalId)?.contains?.length ?? 0) === 0),
   )
-  const actualGoalIds = collectCompiledAtomicGoalIds(result.compiledRootNodes)
+  const actualGoalIds = collectCompiledAtomicGoalIds(result.compiledRootNodes, view.scope.jurisdiction)
   const missing = [...expectedGoalIds].filter((goalId) => !actualGoalIds.has(goalId))
   const unexpected = [...actualGoalIds].filter((goalId) => !expectedGoalIds.has(goalId))
   if (missing.length > 0 || unexpected.length > 0) {

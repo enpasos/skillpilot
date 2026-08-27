@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-b.run-001",
+  "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-b",
+  "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ca0a8676aea44f432a17f0503c53a226743bae705865fa3e1ace3f742eb92f07",
+  "bundleFingerprint": "sha256:18590cd140f24a21535436c39978dd80cf70c6ba585be22543742e346ff50e12",
+  "bookDigest": "sha256:9f1a6cd527a226c7a628f2faf43a515d53f9306a8094b23e4477d81a5872f775",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:45c6be7058ce080517995d58f0182065995550c49e3653172ceca2a9e0c33db6",
+  "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+    "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+    "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+    "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+    "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+    "cc60f759-1168-5fc0-8ff5-5f7a2533e61c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ca0a8676aea44f432a17f0503c53a226743bae705865fa3e1ace3f742eb92f07"
+    }
+  ],
+  "startedAt": "2026-08-27T04:24:46Z",
+  "completedAt": "2026-08-27T04:41:30Z",
+  "status": "completed",
+  "outputDigest": "sha256:12e434884b0a8ba78fddddb6c97fd177e2224e060aa9e378439a226401123d54",
+  "toolchainVersion": "codex-review-jsonl-v1"
+}

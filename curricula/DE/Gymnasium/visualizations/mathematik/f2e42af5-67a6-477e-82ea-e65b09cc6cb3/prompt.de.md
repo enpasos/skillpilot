@@ -4,14 +4,14 @@
 
 - SkillPilot-ID: `f2e42af5-67a6-477e-82ea-e65b09cc6cb3`
 - Titel: Größen und Einheiten vergleichen und umrechnen
-- Beschreibung: Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei den unveränderten Größenwert anhand des Einheitenverhältnisses begründen und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.
+- Beschreibung: Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.
 
 ## Generator
 
-- Provider: OpenAI GPT Image (built-in imagegen)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
-- Quellbild: `f2e42af5-67a6-477e-82ea-e65b09cc6cb3.png`
-- Public Asset: `/assets/goal-visualizations/mathematik/f2e42af5-67a6-477e-82ea-e65b09cc6cb3/f2e42af5-67a6-477e-82ea-e65b09cc6cb3.png`
+- Quellbild: `f2e42af5-67a6-477e-82ea-e65b09cc6cb3.jpg`
+- Public Asset: `/assets/goal-visualizations/mathematik/f2e42af5-67a6-477e-82ea-e65b09cc6cb3/f2e42af5-67a6-477e-82ea-e65b09cc6cb3.jpg`
 
 ## Prompt
 
@@ -19,21 +19,21 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Größen und Einheiten vergleichen und umrechnen
-Beschreibung: Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei den unveränderten Größenwert anhand des Einheitenverhältnisses begründen und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.
+Beschreibung: Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.
 
 Zusatzanweisung:
-Zeige zwei alltagsnahe Größenangaben derselben Größenart zunächst in verschiedenen Einheiten, die Wahl einer passenden gemeinsamen Einheit, die fachlich korrekte Umrechnung und erst danach den Größenvergleich. Mache durch eine sichtbare Gleichwertigkeit deutlich, dass trotz verändertem Zahlenwert und Einheitenzeichen dieselbe Größe erhalten bleibt und dies aus dem Einheitenverhältnis folgt. Stelle außerdem dar, dass nur gleichartige Größen in einer gemeinsamen Einheit direkt verglichen werden. Keine Messgeräte und keinen Messvorgang zeigen: Das eigenständige Erfassen von Größen gehört nicht zu diesem Ziel. Sehr wenig Text, keine technischen IDs, keine Wasserzeichen und keine Zusatzthemen.
+Nutze das Referenzbild als verbindliche fachliche Struktur. Bewahre alle dort gezeigten Zahlen, Gleichungen, Zuordnungen, Markierungen und logischen Beziehungen exakt; füge keine neuen Beispiele oder Aussagen hinzu. Zeichne die Darstellung im lockeren, handillustrierten Infografikstil von Nano Banana Pro neu. Deutsche Texte und mathematische Zeichen müssen vollständig korrekt und gut lesbar bleiben.
 ```
 
 ## Review-Notiz
 
-Die aktive PNG-Fassung wurde am 2026-08-26 in Originalauflösung hashgebunden geprüft. Sie zeigt ein unmarkiertes Band als unveränderte Größe, die korrekten Gleichwertigkeiten `1,2 m = 120 cm = 0,12 dam`, die zugrunde liegenden Einheitenverhältnisse und einen Vergleich erst nach Umrechnung in eine gemeinsame Einheit. Ein zuvor verwendetes Messgerät wurde entfernt; sichtbare deutsche Beschriftungen, Zahlen und Relationszeichen sind korrekt und lesbar.
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

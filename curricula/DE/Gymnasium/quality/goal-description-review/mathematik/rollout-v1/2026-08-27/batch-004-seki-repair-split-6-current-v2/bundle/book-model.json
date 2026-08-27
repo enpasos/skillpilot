@@ -1,0 +1,2342 @@
+{
+  "schemaVersion": "1.0.0",
+  "book": {
+    "id": "de-gym-mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827",
+    "title": "Mathematik Lernzielbeschreibungs-Review – Rollout Batch 004, finale Sek-I-Reparaturen und Gleichungs-Split",
+    "locale": "de-DE",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "viewId": "de-gym-math-national-atlas",
+    "scope": {
+      "schoolForm": "Gymnasium"
+    },
+    "pageCount": 6,
+    "projectedAtomicGoalCount": 6,
+    "excludedTargetAtomicGoalCount": 0,
+    "edition": "curricular-atomic-v1",
+    "publicationMode": "review",
+    "atlasBaseUrl": "https://skillpilot.com/lernzielbuch",
+    "oneGoalPerPage": true
+  },
+  "source": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "compositionViewPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.sources.json",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "goalVisualizationQaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+    "landscapeDigest": "sha256:6a4bb16ad64c9d96cf4a1fd23ba7a7f547ef55bc8cec8c0bda0943b1c0d2c423",
+    "compositionViewDigest": "sha256:65f7421094c7b55d796d03c2498fd92be79170f0e6f6e926fbb4cb26d67f8b33",
+    "semanticKindLedgerDigest": "sha256:493f6a8d8fdb0f71fc234e84c15da7e8d3c4bb6d39fcd0777c0901abf3a9e4f1",
+    "goalVisualizationQaDigest": "sha256:a0a74580fd0de8435d9432817ee56443057f9c9681f6f6c91e96814c04cdb92e",
+    "compositionViewManifestPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.sources.json",
+    "compositionViewManifestDigest": "sha256:65f7421094c7b55d796d03c2498fd92be79170f0e6f6e926fbb4cb26d67f8b33",
+    "compositionViewSources": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+        "viewId": "de-bb-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:1fb70d9c263fbab02ab8268cc2ecd3eac71a773cc714ffed35d55dbb3a7882af",
+        "projectionFingerprint": "sha256:8e46709bb1ed02ca31dd2650d65d13923cab8e388dcbae686fb36ba8040f8473"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+        "viewId": "de-bb-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:0e85bfe50ef70cd2e6090a34fde2bc03e50ee18a5827ff76853fac422792db54",
+        "projectionFingerprint": "sha256:27bc7753e4de35e491ce3f691ffb6212460ae0070f8a582989f61bb4985d5a4b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+        "viewId": "de-bb-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:e4880b33c7e502c68aba11647864117e33b1b7efb6051377efbe46731b6d8816",
+        "projectionFingerprint": "sha256:958851afe0c0d24bdb80009023b533138b84f501439682450dc6de46e1c7d387"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+        "viewId": "de-bb-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:d01e4f51018f463af55838d511b005bd6d171a1b695765005bc175d089d252ef",
+        "projectionFingerprint": "sha256:f539b8671f67667064b5e6dd215b6391bd2fa9473ddbe441f32930d607cc44f0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+        "viewId": "de-be-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:2a67e0bdff9f55d02071339a0ba62b5543fbea591c05e0ca5643873909811f4e",
+        "projectionFingerprint": "sha256:56d7f1be81cf72d5b562e4b6acabe788f0b61062a6abaf30cc306277f6ab52aa"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+        "viewId": "de-be-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:d5a123039333180836bc31644047bc3401815481818446a5fc50370d95ef35b8",
+        "projectionFingerprint": "sha256:3882516ead55106710389f483dacf25755c37c34dab387512492a1f7f49c5f81"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+        "viewId": "de-be-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:05f2b0bc01693f6862d6a2bb4b6ac1dc169c5e423932ea46ed33e393cab33baf",
+        "projectionFingerprint": "sha256:6607fea8f7fe4b29509e8cf0f7f231e8a38ed87b5b1e712297dc1326a1624c6f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+        "viewId": "de-be-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b9f273ba066f808172f89b797dc5f4b0d1dbefba5a2ac1342a11e8e1f513f955",
+        "projectionFingerprint": "sha256:92f7500ede611c17b23cf413f9e4deee4686747ae5c9c8dbbc0b803b089107a7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+        "viewId": "de-bw-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:f2100fa8ae2d4a9bd5f84055b43f6b38649c578c7c026b259f84e69777508778",
+        "projectionFingerprint": "sha256:cda0f6b26d8c73d8fbd5ed1ba9831d201afb8acf6942ba6231a31976f2053366"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+        "viewId": "de-bw-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:7e6ecee7070326dc02807044df87b9ae3043d0ecacfbbfa9677a2a96042e1987",
+        "projectionFingerprint": "sha256:c08cf9789ba5119a00e3a6a1159b24cd5a995f0d0e0e90b37f32623dc5884cdb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+        "viewId": "de-bw-gym-seki-math",
+        "scope": {
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:60ff4094e87efa76495b75ccfc27bbae1b42b0517e305687fa95c7352e643a61",
+        "projectionFingerprint": "sha256:781f5b232babf8f9e736a1ffee19d8c54a47e794d7ed48e3b38125fb71634542"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+        "viewId": "de-bw-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:f96334c38dbd31945b9bf7ca9fab93be74eb86c9713c56b68aa1fb598665915b",
+        "projectionFingerprint": "sha256:9608f50e0f016eceb8fdcd884e16f2bef697ca3eaff4e5bf4c9a925ff0953cd5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+        "viewId": "de-bw-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:69aff4bde06366161d9e7e55274fb7cf1a52144b5620194e0d48ec63808c340d",
+        "projectionFingerprint": "sha256:038b14ce031026e5fa984727fee3edc3dfeb6adb38d740c4e3de8145044ecf39"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+        "viewId": "de-by-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:9e1a60f306b86424a9a654bb46109d1c84dab8d384aadd25b8592fbc494257e2",
+        "projectionFingerprint": "sha256:4b209fb79e91162785a2b468d36ca1498229db26f28c06eaa9a00d7cb25e0058"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+        "viewId": "de-by-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:4a9150e8679837832e141b70937c6ab5866fe75779638efb7787217c06b0e48c",
+        "projectionFingerprint": "sha256:1a2853520834adec5caf14669cb14b9907a95b732500bb7da4a7f829855f75d1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+        "viewId": "de-by-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:616c63aac65f3fdfb790ab8e7b4815672a939c9692271d1b0c4eecaff4e733dc",
+        "projectionFingerprint": "sha256:a9efee872641f65554db921c63566ead9b3be8e3b32d5ed2d7c157df24a8d20e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+        "viewId": "de-by-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BY",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:9d529933603bd11070969e32f159e043bc48d9524641f376b110a1fd26451eb0",
+        "projectionFingerprint": "sha256:779fb706613a53476bf8aa3eea6df975ad04135b3cbc5748eca5e1d408e68598"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+        "viewId": "de-hb-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:68c80f7241132c1af09335f9bbac6a55c61dfef10befff2f0851e618684db99b",
+        "projectionFingerprint": "sha256:c4bf9a6fbea034799a164fd265b1250776212b773d3bffaddcb78db7295cf10f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+        "viewId": "de-hb-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:d37a3fd253d47b1b802aac352e0f832820475e01a74aa7ebf75c9c7abb6cef02",
+        "projectionFingerprint": "sha256:cd6ad5b6bab870f8c5f9be62066cba8d0f72fe51643952e023f604d6bc8641eb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "viewId": "de-hb-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:c7b2c2104567f95e28861e2373321bdadabb805893d577cd099badc43fe67ec7",
+        "projectionFingerprint": "sha256:46f66ddfb39ec438a9c84513af936d434b79cb1757962b655b54d4bb04eb8f06"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "viewId": "de-hb-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HB",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:484d79a7cd872024707ff86c238fcbfb93c8688362c5a92a33cc3a42a8a341a7",
+        "projectionFingerprint": "sha256:709270ab044c1078affe19c812043a34f006b22636af61af0def94f480a9073b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+        "viewId": "de-he-gym-math-gk-g8",
+        "scope": {
+          "courseProfile": "GK",
+          "durationModel": "G8",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:9891ddcf60ee66635c4c1962f7c9e47c1e018894c3b080d1eec84f9f153d6de0",
+        "projectionFingerprint": "sha256:727e1147db4b80411bc2de6233a2134457c11d9a93c48aedcf06bb31fa5356b5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+        "viewId": "de-he-gym-math-gk-g9",
+        "scope": {
+          "courseProfile": "GK",
+          "durationModel": "G9",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:a433dbd09eecce326de1a84d4f195ae9d87d4264564067dae05a17649bb5ae46",
+        "projectionFingerprint": "sha256:e433f99af6b97ab873d58aabc8bbf704db1c902acc6615cf6b9fb7f2754cdc4f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+        "viewId": "de-he-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:28ed9dd9f8cede4162cb4c5d875a5e67dbae779b2e7f763ccc0c7d9b38b5753d",
+        "projectionFingerprint": "sha256:6b5484cff0fc2296a42df0937f3d5fe04d94d69cec9d3aff08585c546e96b60c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+        "viewId": "de-he-gym-math-lk-g8",
+        "scope": {
+          "courseProfile": "LK",
+          "durationModel": "G8",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:2265870055cb6c212d5dd9d78ae7ae1fa01705a7307cf3f8b39ee2b51cf3aaf9",
+        "projectionFingerprint": "sha256:874bdda487167ff70d4d30c57b8189c48feebc3b3f34b5e4f36bc5a20367be80"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+        "viewId": "de-he-gym-math-lk-g9",
+        "scope": {
+          "courseProfile": "LK",
+          "durationModel": "G9",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:e85fd3275cd615cbb33d035246dceb4864e885bd17af88f7986b1d9355574281",
+        "projectionFingerprint": "sha256:6e4304b1b6c74a95d022764e2f0667da72b2f15d23d48944474b419ab4c90202"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+        "viewId": "de-he-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:4b094dd2eadcc325087307a83f2f6802173c8d2aa74df0c3b403b4ecf9122f17",
+        "projectionFingerprint": "sha256:26c53fba5803e2c81749a695b9b494ccfd5b1ead68173c24bd47f38fd29df263"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+        "viewId": "de-he-gym-seki-math-g8",
+        "scope": {
+          "durationModel": "G8",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:83ae5ad4c3162f5e9e6158a20051b64156e815dad3d16c92548659409f6d3dea",
+        "projectionFingerprint": "sha256:dd1043efc62114ef9cbfe68fd482ac3fa168a381155f9dcd9f71b1567c5eeb6e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+        "viewId": "de-he-gym-seki-math-g9",
+        "scope": {
+          "durationModel": "G9",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:581f689b4b4f9245a54d4cee3782e7a0be07b71a085df2128326250712bae0b8",
+        "projectionFingerprint": "sha256:37d73cbb972a81264c7630b07c8eff5663e5e5d24c62d4d215e3c3422f7990de"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+        "viewId": "de-he-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:2095c6e4d71277f1382b0f8faa95995e3752229bfdcc315653a2dd26e36ba145",
+        "projectionFingerprint": "sha256:fd78b71d8be6768b8877fa15ee6134b733fbd92f7713591381c9631c85a9cd4e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+        "viewId": "de-he-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:5c440d6cb2b4110de6f2d2739e15259f6b146af0ba6e23562019f5305c7e7b2d",
+        "projectionFingerprint": "sha256:393615b7cd7b5ba367afbf6a17c54832093dc02fd35e33f7c362025c885d85da"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+        "viewId": "de-hh-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:4e27dbdc8555a66d545538773345d092265c982544e3a8f5567b8db0c442a15e",
+        "projectionFingerprint": "sha256:7fe7b79cbea1512d0075bb44aa70895fb6c625621b667aad764729eaad7bd88e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+        "viewId": "de-hh-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:a8bb9f5578196e0be32566a1f15d8ae0cc549971820a8d4384b301b63475e2db",
+        "projectionFingerprint": "sha256:26ef8b5c2e81594a8ad45dbc304563fab618150294595d9271cff6acaf399a96"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+        "viewId": "de-hh-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:a3fb2f9334ef435db6be7e259eea61f65e0999d4fd2420e71e56144effd49ace",
+        "projectionFingerprint": "sha256:72a118b7fc3473e131b694bbe173af14719afdd1baa6b6f14ea5491e202e8a0e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+        "viewId": "de-hh-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-HH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:bed619f394ecc30d34ba36231a5a57f7b97a8f34a1bcdc2ccb7d2e4b604d5a38",
+        "projectionFingerprint": "sha256:c2d445d231bee118a4cdecbb01ee504162a6506fc875e4711abf612c964528fb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+        "viewId": "de-mv-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:ba8bda2513a2a35f07ff5fb42558e4fc9ae7a5f119d547053822fa165b778b96",
+        "projectionFingerprint": "sha256:c43944413d48a1fe8644c647b8f6b8b4efd6d4bfd28d92f88fd6e39fa7fbb37e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+        "viewId": "de-mv-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:1645cbd2cc5048f7c46ec239292e07484a68abb29891945ab04b6a30113a128c",
+        "projectionFingerprint": "sha256:f10fd3436d3df65e05743f9cd2305634d24c9340a0ba286aa073f32249785af1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+        "viewId": "de-mv-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:d9c36fb80fcecb46f19ac52abdc018979a10b71161371e3561af16ea3ece84a8",
+        "projectionFingerprint": "sha256:f9c6367cec2a0cb1b858c5bec4308d86f2001ff8c0d5bbee8f0d0bdc73a4a990"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+        "viewId": "de-mv-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-MV",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:e468d7050810575cea93323633b5646f4d496387e6412592c6b608613bf198ec",
+        "projectionFingerprint": "sha256:8ebdd40ca46c7ebebc244523b15f5110f2156ae718f447e5e02171f25e89e8f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+        "viewId": "de-ni-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:f4a236630e745bc5880aa0ffb7660d066d30d3aa76dd4f393b0f0a3d8ff45815",
+        "projectionFingerprint": "sha256:7909848991b0f57f36a40bf6c0003afa3f2c6cbc688cbe87c1b479c4e971fe6c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+        "viewId": "de-ni-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:d978bfc10b9395d38acc388e93a446d34d14e65a7113e1840925766b7b99415e",
+        "projectionFingerprint": "sha256:fe5c20c99129241b8413a3351e71226a3e196c08e14c64bfc9e6fe15cc4eeb17"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+        "viewId": "de-ni-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:53bb2408163e2236d5d1bb855abcf418266020af60ed709c8d743ec64affa9e3",
+        "projectionFingerprint": "sha256:54bf6f8ed6825c11cab744b6fcfa6d171cbbafe65bb478ac5c793642d6e25648"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+        "viewId": "de-ni-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NI",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:27bed66d05f07615e684928b55d24aa0fed4816cda9cfa49d10e90bbdc348e54",
+        "projectionFingerprint": "sha256:7097be25c863428e22ce9855064bb52180b47afd39734671b353ab4e2bf1ede2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+        "viewId": "de-nw-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:5563e060d7ac3a8b59352eba43a1144f269c19a8cc1e4358112f6102d55c62d4",
+        "projectionFingerprint": "sha256:09ad5075e11dbe2069148faa414af5b38173ae8aa822f26f4e0c52a4c6ca30c7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+        "viewId": "de-nw-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:53e2318e804e2163575638c2d450292e6943fd5dd0e680a15068ebfb7b7016bb",
+        "projectionFingerprint": "sha256:a8868c848efbe69f86e2e04dcadad26a98775514ba0c832c8ab21b2b14aabfaf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+        "viewId": "de-nw-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:71eb347a26800db1447dcbdd2bcde1d483360f8acc094bfd806802ca14e90db5",
+        "projectionFingerprint": "sha256:1508b0d5162141635ec6b7f629ac269deef39a558b13f034235918bd216d2d52"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+        "viewId": "de-nw-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-NW",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b5535b99ae87a4535cc6cddaef4987008083a319a10ba21b30c3334c8af2d6c1",
+        "projectionFingerprint": "sha256:131e2c3d2261dc83b770acc37bf7f7b6440472cf4cb573b03315b2daa287ba54"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+        "viewId": "de-rp-gym-math-gk-g8",
+        "scope": {
+          "courseProfile": "GK",
+          "durationModel": "G8",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:92f89539e74de7ba5dcc0e6adaf8f267c3a1df6e13a1f568450c23559b1b13c9",
+        "projectionFingerprint": "sha256:464303afdcc2f310c4b3b69cd9d293798951a4c052c3b2edaa9caa99f5828352"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+        "viewId": "de-rp-gym-math-gk-g9",
+        "scope": {
+          "courseProfile": "GK",
+          "durationModel": "G9",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:f0f6b745ab7310ec7883edff8c3bb96ca6c3f6a71bbac9bebd591b22accb90d2",
+        "projectionFingerprint": "sha256:5888481a23748518689f5d2c6a820c6ebaf8d1000ed6253f518bbd75e138b547"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+        "viewId": "de-rp-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:7b37e11c0e1ad5009f86853041a5e0bf9af9616fb753f112912375aca8828362",
+        "projectionFingerprint": "sha256:6bb1845ed9dad3649fbc403bd4d9cc46d4c973fab6fc02288345cf193f923b6b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+        "viewId": "de-rp-gym-math-lk-g8",
+        "scope": {
+          "courseProfile": "LK",
+          "durationModel": "G8",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:b6d01995923c862970052f0c3902d047ed93c67eb0e63e4852c89ab0adcb28d7",
+        "projectionFingerprint": "sha256:4ff760a44da6c18534b67825c5a4e01f2e3df1e920f74fb622bd22aadc2ad200"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+        "viewId": "de-rp-gym-math-lk-g9",
+        "scope": {
+          "courseProfile": "LK",
+          "durationModel": "G9",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:7a18653c814ca1f7da48e88388423adcb7698b13ab6cac02bb4f56153970a21b",
+        "projectionFingerprint": "sha256:6515886313d1a2aaed4c16b16d0ed291d6e61f08b0faff52b704c8890fe6348e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+        "viewId": "de-rp-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:c9734999f0a04b76e0997d3f7c6f847244826099a077f4fa77648067d382a18b",
+        "projectionFingerprint": "sha256:f7b7d32f120f43cda086cbf1596f1455871baced6cbf42cec59ec3212a6411a0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+        "viewId": "de-rp-gym-seki-math-g8",
+        "scope": {
+          "durationModel": "G8",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:8a38188def54d9b5b5ee0450f642f5b57fefc0c7de47c08cec964e69acd1f9f3",
+        "projectionFingerprint": "sha256:84e0a7f0a5e86217dc3a6a8adfdfb1e3732e8c3246109c86123f186304dc798d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+        "viewId": "de-rp-gym-seki-math-g9",
+        "scope": {
+          "durationModel": "G9",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:e4b21629c1b02ecd8fa395eba5ed7f7e2e8a1ea4dee5ccd2785173e7b76e4737",
+        "projectionFingerprint": "sha256:383b0bc0c1c5d9e4fc7e9a7d71d5c99ba863ffa2c3cca4d11ce2440dd528c063"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+        "viewId": "de-rp-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:0ef351442baae0c17ce557b7803ba309fee32804d2b5aa3f224ef2c69668e1a6",
+        "projectionFingerprint": "sha256:582fc6d6c60c2e6da3f399d7523f5ece17b973827f89c908a0ad2d1f6486f229"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+        "viewId": "de-rp-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-RP",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:baf34f1b76c023e3ab9b8459e4f1c207c47e2c6a012cf5338d3e8258d2427fb0",
+        "projectionFingerprint": "sha256:235c29fdcc5dc0b00ad30920c0e95ec7957625b3db7a56952784241fcd839ada"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+        "viewId": "de-sh-gym-math-gk-g8",
+        "scope": {
+          "courseProfile": "GK",
+          "durationModel": "G8",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:2ceb9a063e1c356a10cc983efced33b30af26afe7241e3b15024c91d36f70794",
+        "projectionFingerprint": "sha256:7ae64043fcf58dda022d1311cbab8fb2e8a6c776b6d004d13e1fcc98da1a2573"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+        "viewId": "de-sh-gym-math-gk-g9",
+        "scope": {
+          "courseProfile": "GK",
+          "durationModel": "G9",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:dd04f7fa1ca750609f3066908cb883540bc4ce7e53dfce7f726cda0836562e69",
+        "projectionFingerprint": "sha256:6d877cbf4b8cefda8f303f88c15ae8dd012eca1a3a940b0aec86c2568da49f87"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+        "viewId": "de-sh-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:0f8bd64d0d1d4ecb0e17e7fb1f29c0bdd2530191bc1a747e2cc77cbea92bdb75",
+        "projectionFingerprint": "sha256:c9f442d1c0574687a1b82f76f7d190b862155f324912de64b866fd8b61fdbfb5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+        "viewId": "de-sh-gym-math-lk-g8",
+        "scope": {
+          "courseProfile": "LK",
+          "durationModel": "G8",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:3570a6df17dee6e6597e20ab740fc235439fb25ec4430b20416cb5ecdde1dc7f",
+        "projectionFingerprint": "sha256:8bcd43c65e0e3ff10b3d9121656d50ff2355a7441731b8823872b682ace12042"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+        "viewId": "de-sh-gym-math-lk-g9",
+        "scope": {
+          "courseProfile": "LK",
+          "durationModel": "G9",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:a7fdd3d76a3990b2d93b90047d1bb637627b6cf75c7adee4252f5aea69e43d0b",
+        "projectionFingerprint": "sha256:8a285b06b3fff3947bff4c2e2a0159be7e7be05980f7426ec2cfb25825e60cf3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+        "viewId": "de-sh-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:e35600a2eb73cf3b4143acc903c39bdbdd0567dd2e32ec018a0433b07f627879",
+        "projectionFingerprint": "sha256:9448b8e0a805e621fd5314844ee1c77c087800ee56e0c779dfd9f3277cbd23af"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+        "viewId": "de-sh-gym-seki-math-g8",
+        "scope": {
+          "durationModel": "G8",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:2c45722cfa4bb4b164b9ddcece14eb193692c1b1bf492daea64d55e1bbb7ce1e",
+        "projectionFingerprint": "sha256:a0f2cb2430da91828dcc54c661a5ba058437e6d9cc6d9c5ac0f29c775e267b7f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+        "viewId": "de-sh-gym-seki-math-g9",
+        "scope": {
+          "durationModel": "G9",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "digest": "sha256:b9876dbc00cfe699b05a407c15a65c0bcc447852a17a51027239568218e3c7fc",
+        "projectionFingerprint": "sha256:4374217d0afff009ea8a296b5470b64213acc02fcea7dfaf8d644ddbd56758fc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "viewId": "de-sh-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:e52b17072560e66830e1cfe338a1908fc7ce65a2ba2d43e0b078b6ca51fbf078",
+        "projectionFingerprint": "sha256:97728453a7c14f65909ce5a53e63b308a0d57b2a5d2eef9e55cc02f457f3f4f3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "viewId": "de-sh-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b7073289bd9f5a5dda8f697f74f24c75a885cead3324595fd128cc142999cbc3",
+        "projectionFingerprint": "sha256:b896b532e4ab07de32ffa673285f824f68a183a33acb853c6438c4c2ac64be3e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+        "viewId": "de-sl-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:124edc124d7814f9d1b20ff2c40a939a3ba7979651ea3a9f3028db08b79d75ed",
+        "projectionFingerprint": "sha256:ced0994a3426b4468e6b8f656b43c93d1c634f3be2c03e73904866a5beee7333"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+        "viewId": "de-sl-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:ad94c469ab4c4700beae1fa95f39aa10e2ea6cd9748a23918d7a1b135fc9f337",
+        "projectionFingerprint": "sha256:73394f8981adeab10c20ae426c682ea9a62c1aaf6bd4538afd4f31f2a0ab9d0e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+        "viewId": "de-sl-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:26c923f7f05f9dd293113951c8306fd145599d293507ed3b0303192b23d1bfce",
+        "projectionFingerprint": "sha256:2c1219001a5e4f705448b5de07c299998d4eea9778e66d19f1c8dbfb032eb1aa"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+        "viewId": "de-sl-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SL",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:d63ea1c3518675c0977ce3b19a29f18a6a9831965718ecf18a96e4846647fe59",
+        "projectionFingerprint": "sha256:0ad7d73b294e9773fc8e7164240e7f1ac962b2f57e56ef2dcefde4b2a898e763"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+        "viewId": "de-sn-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:55aac00966deea23a5b4a0d2c147a93824c5bab902238abc8e3c8f4727ad739c",
+        "projectionFingerprint": "sha256:5e4ffe97810c590d6dbb6aa0875ae40e6b17d2e1a6c8280907e9a281ad069a25"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+        "viewId": "de-sn-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:54da942c1b7d7922ff47f556869356c1c7cacce428a4960806673d0a7d5f9040",
+        "projectionFingerprint": "sha256:94e5f2e0b5a3b77939ca831d64d80d84ca55b3930031c40e59e6d605b1f050a0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+        "viewId": "de-sn-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:1e935c721eae93454c320b57abbca775452644ad216eb97361562c70adfa62e5",
+        "projectionFingerprint": "sha256:138691cabf9e42c7f0633f29762dc15548d4703a1b7cf62b6e14814aae2f2da8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+        "viewId": "de-sn-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-SN",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:3590c54e5d2c29ff213be5bb8a37884289c637b608fe803da2ccbab50f7436ac",
+        "projectionFingerprint": "sha256:de2c8c4b8d3d5068cb13de197f267225331d9b0b2035524168e8f92ad55c4180"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+        "viewId": "de-st-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:14b5496866312c12257af8800035b74a6d035735b293bdca1325d0de384750ef",
+        "projectionFingerprint": "sha256:bca5f13331e7d57273b47391cc8e8097edf1b77f8b13e4fc0a80554a9a81fb28"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+        "viewId": "de-st-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:d57d18e98c12a96d74fa5a9b4cf772e9ec4e14abca3d875dcd1afe269a24271a",
+        "projectionFingerprint": "sha256:51fa9b3ac1df6cff2341d36e2387f29631be8726784fc3f658c521c60a802ce3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+        "viewId": "de-st-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:4ec41cb35cddc8b501c3916d466df77bf9463bfabea5b5e1b7512d83ed8451ea",
+        "projectionFingerprint": "sha256:9d99fbf4de096fdb07612d3d4add5831f1563d02b961e1353a47b31a2d13f95d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+        "viewId": "de-st-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-ST",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:b8d70dc349ef94babed24489137b08d2fb992b13e5b7628f1f03753e3da0a33b",
+        "projectionFingerprint": "sha256:64e78fdebdf529a5f4d11e70f5d50c5ed99b634c5d2482105ab7fdbf8b965236"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+        "viewId": "de-th-gym-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:3d94761a7f4b089d95c5542ddc50a3e11df6cee2a68d0ea60a1562ae1af33073",
+        "projectionFingerprint": "sha256:dc0d72ad97fa4216c6b95561d0546672586952a5f63009c8a66bb632558b62ab"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+        "viewId": "de-th-gym-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "digest": "sha256:c2f871c6cc9435ada9ee13b83269e1cd67a70a37dcf1db216adc6e540f4b2a79",
+        "projectionFingerprint": "sha256:822e67d36d825b1be6a8ec92d826e35e98d669f1e07efac474be0a3c3f13341a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+        "viewId": "de-th-gym-sekii-math-gk",
+        "scope": {
+          "courseProfile": "GK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:4e30c317f4e6a9380058104d85f71e45215d0ed10daf8ad149e8e6d04d8fa244",
+        "projectionFingerprint": "sha256:0f121fb205ee489f834b0990b6e43411e5e79534504b5c49902fafe6bcab2c5f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+        "viewId": "de-th-gym-sekii-math-lk",
+        "scope": {
+          "courseProfile": "LK",
+          "jurisdiction": "DE-TH",
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "digest": "sha256:1a936af68fdb4410953fd23140da1caf81fea6d47536fa2fa01273468962d998",
+        "projectionFingerprint": "sha256:5e8d4d66f6be2b801712c1170c95681160467461778a768c629c57c2072b14e1"
+      }
+    ],
+    "navigationOwnership": "common-topic-suffix-v1",
+    "durationModelPolicyPath": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+    "durationModelPolicyDigest": "sha256:651120efb037be6078a95233c8122127da7985e2ac1dfa80223eb3efebe00bce",
+    "evidenceReviewSources": [],
+    "goalFingerprintRuleVersion": "goal-evidence-v1"
+  },
+  "chapters": [
+    {
+      "chapterId": "atlas:7748e0fedff93a25d866",
+      "label": "Mathematik",
+      "parentChapterId": null,
+      "goalIds": [
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c"
+      ],
+      "pageNumbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "goalId": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "shortKey": "canonical_math_sek1_j6_explain_dynamic_measurement_relationships",
+      "anchor": "goal-3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "title": "Dynamische Zusammenhänge zwischen Größen erläutern",
+      "description": "Die lernende Person kann in einfachen Situationen mithilfe geeigneter Darstellungen erläutern, wie sich Umfang, Flächeninhalt oder Volumen verändern, wenn die betreffenden Längen in vorgegebener Weise verändert werden.",
+      "breadcrumbs": [
+        "Mathematik"
+      ],
+      "chapterIds": [
+        "atlas:7748e0fedff93a25d866"
+      ],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        }
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86"
+        },
+        {
+          "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+          "title": "Umfang und Flächeninhalt unterscheiden und anwenden",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-d6c3fb37-ece6-5b56-9221-1eeb21845877"
+        },
+        {
+          "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "title": "Flächeninhalte ebener Figuren berechnen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+        },
+        {
+          "goalId": "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+          "title": "Volumina und Oberflächen einfacher Körper berechnen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-1f89d69e-ead1-424b-8221-fae37fdea2bc"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "c1af440d-bfe0-52db-ba88-5e40f6f42e80",
+          "title": "Aufgabe 4 (Jahrgangsstufe 6, 6 BE)",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c1af440d-bfe0-52db-ba88-5e40f6f42e80"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Dynamische Zusammenhänge zwischen Größen erläutern",
+        "url": "/assets/goal-visualizations/mathematik/3d49cd27-3a84-50eb-ac35-f0b0bee80df2/3d49cd27-3a84-50eb-ac35-f0b0bee80df2.jpg",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Dynamische Zusammenhänge zwischen Größen erläutern\". Die lernende Person kann in einfachen Situationen mithilfe geeigneter Darstellungen erläutern, wie sich Umfang, Flächeninhalt oder Volumen verändern, wenn die betreffenden Längen in vorgegebener Weise verändert werden.",
+        "originalDigest": "sha256:1457606c6a6e010406fe24fec4e83b1a08fa17a6a80697a35dc6c7b791c29756",
+        "qaStatus": "approved",
+        "approvedForPublication": true
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:2fe08885c7c4d3a360c072b106ee9291981f9c979e4ba3aa9a249162c3ae5ded",
+      "pageFingerprint": "sha256:621a0563d109244b9d2885f92051eb46c184e7647b82cd79c7679a5838528086"
+    },
+    {
+      "pageNumber": 2,
+      "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+      "shortKey": "canonical_math_sek1_j7_simple_interest",
+      "anchor": "goal-bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+      "title": "Einfache Zinsrechnung im Prozentkontext anwenden",
+      "description": "Die lernende Person kann einfache Zinsprobleme in vertrauten Sachzusammenhängen als Prozentrechnung darstellen und lösen sowie die Ergebnisse nachvollziehbar im Kontext deuten.",
+      "breadcrumbs": [
+        "Mathematik"
+      ],
+      "chapterIds": [
+        "atlas:7748e0fedff93a25d866"
+      ],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        }
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86"
+        },
+        {
+          "goalId": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+          "title": "Grundaufgaben der Prozentrechnung lösen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71d43fcc-d787-4874-ae4a-2336364e9c0a"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "bb736def-061a-5371-b5c9-cc695f85cd3a",
+          "title": "Aufgabe 6 (Jahrgangsstufe 7, 4 BE)",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-bb736def-061a-5371-b5c9-cc695f85cd3a"
+        },
+        {
+          "goalId": "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+          "title": "Begriffe des Zinseszinses erläutern",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+        },
+        {
+          "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+          "title": "Zinssatz tabellarisch näherungsweise bestimmen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-1842da92-ca2c-5fed-a946-e6413a6285bb"
+        },
+        {
+          "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+          "title": "Tilgung oder Sparrate tabellarisch näherungsweise bestimmen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+        },
+        {
+          "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+          "title": "Laufzeit tabellarisch näherungsweise bestimmen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fc34449a-fbf4-574c-884f-ecdf48b42d2e"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Einfache Zinsrechnung im Prozentkontext anwenden",
+        "url": "/assets/goal-visualizations/mathematik/bd8fd6d5-7155-45a5-96f0-008a4e9acb3a/bd8fd6d5-7155-45a5-96f0-008a4e9acb3a.jpg",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Zinsrechnung im Prozentkontext anwenden\". Die lernende Person kann einfache Zinsprobleme in vertrauten Sachzusammenhängen als Prozentrechnung darstellen und lösen sowie die Ergebnisse nachvollziehbar im Kontext deuten.",
+        "originalDigest": "sha256:f6fd735d75e0d19fb2e622c45710657d1bce327d162d9111f78c59c632193095",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:a33582c8922091522465eee59995ac82f59624879d2af4e7829c022d927bbe30",
+      "pageFingerprint": "sha256:8ea28bacb5415cb2d77fb5480ee7528d6b0ea382850187f2ac8e3a514927db08"
+    },
+    {
+      "pageNumber": 3,
+      "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "shortKey": "canonical_math_sek1_characterize_functions_as_unique_mappings",
+      "anchor": "goal-7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "title": "Funktionen als eindeutige Zuordnungen charakterisieren",
+      "description": "Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.",
+      "breadcrumbs": [
+        "Mathematik"
+      ],
+      "chapterIds": [
+        "atlas:7748e0fedff93a25d866"
+      ],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        }
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86"
+        },
+        {
+          "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+          "title": "Zuordnungen analysieren",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "a157b619-e875-5db6-b26a-607a39de00dc",
+          "title": "Aufgabe 4 (Jahrgangsstufe 7, 7 BE)",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a157b619-e875-5db6-b26a-607a39de00dc"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Funktionen als eindeutige Zuordnungen charakterisieren",
+        "url": "/assets/goal-visualizations/mathematik/7dea79d2-67f2-4d92-b6cc-ad1b953dca3d/7dea79d2-67f2-4d92-b6cc-ad1b953dca3d.jpg",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Funktionen als eindeutige Zuordnungen charakterisieren\". Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.",
+        "originalDigest": "sha256:abd5c259949cce058802262dc9b54beb6789e53604395a80dade7db329394215",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:dd44e50a36258dff54c1ad85e28ad00e4af4f31536e0cca3ee59e1b2cb1a0413",
+      "pageFingerprint": "sha256:a0a6c00fb28b51fad5f3960177504336965748fb22b12118cd00e0078e206666"
+    },
+    {
+      "pageNumber": 4,
+      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "shortKey": "canonical_math_sek1_j7_proportional_origin_lines",
+      "anchor": "goal-f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "title": "Proportionale Funktionen als Ursprungsgeraden deuten und darstellen",
+      "description": "Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten sowie beide Darstellungsformen passend aufeinander beziehen.",
+      "breadcrumbs": [
+        "Mathematik"
+      ],
+      "chapterIds": [
+        "atlas:7748e0fedff93a25d866"
+      ],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        }
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86"
+        },
+        {
+          "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+          "title": "Zuordnungen analysieren",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2bb4bb91-7929-483a-b735-44275f6b5cdc"
+        },
+        {
+          "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+          "title": "Proportionale Zusammenhänge mit Quotientengleichheit prüfen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "a157b619-e875-5db6-b26a-607a39de00dc",
+          "title": "Aufgabe 4 (Jahrgangsstufe 7, 7 BE)",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a157b619-e875-5db6-b26a-607a39de00dc"
+        },
+        {
+          "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "title": "Lineare Funktionen beschreiben",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Proportionale Funktionen als Ursprungsgeraden deuten und darstellen",
+        "url": "/assets/goal-visualizations/mathematik/f3167cab-bb23-4bb9-8a27-22e3c5015d44/f3167cab-bb23-4bb9-8a27-22e3c5015d44.jpg",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Proportionale Funktionen als Ursprungsgeraden deuten und darstellen\". Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten sowie beide Darstellungsformen passend aufeinander beziehen.",
+        "originalDigest": "sha256:69b1ded879561be0716cc12196c6d5d90e2e039a63d3895f6e2bff8d2d9e4d6a",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:38c81ffea5e431ddf91fd715709a017acae445b540bddcc7795112c143034def",
+      "pageFingerprint": "sha256:a174b4ee33364a692fd1d3a00d6952b3b0b1b24674896b077cccd0848c267030"
+    },
+    {
+      "pageNumber": 5,
+      "goalId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "shortKey": "canonical_math_sek1_j7_solve_check_ratio_equations",
+      "anchor": "goal-671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "title": "Verhältnisgleichungen lösen und prüfen",
+      "description": "Die lernende Person kann Verhältnisgleichungen durch begründete Äquivalenzumformungen lösen, dabei notwendige Definitionsbedingungen beachten und gefundene Lösungen durch Einsetzen in die Ausgangsgleichung prüfen.",
+      "breadcrumbs": [
+        "Mathematik"
+      ],
+      "chapterIds": [
+        "atlas:7748e0fedff93a25d866"
+      ],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        }
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+          "title": "Terme im Bereich rationaler Zahlen äquivalent umformen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+        },
+        {
+          "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+          "title": "Lineare Gleichungen systematisch lösen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+          "title": "Lineare Gleichungen mit Klammern und Verhältnisgleichungen lösen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fa0b6b69-ce54-4711-90e6-26f27249cd71"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Verhältnisgleichungen lösen und prüfen",
+        "url": "/assets/goal-visualizations/mathematik/671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6/671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6.png",
+        "altText": "Eine begründete Äquivalenzkette löst die Verhältnisgleichung (x + 1)/(x − 2) = 2/3 unter der Definitionsbedingung x ≠ 2 bis x = −7 und bestätigt die Lösung durch Einsetzen in die Ausgangsgleichung.",
+        "originalDigest": "sha256:ad0dbd8f45a5330e309b1e8bf18361f1fd5165c38e23d566aff9220bebcd7317",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:a25099dfc97f845440b285d132a6e1632ef71a3fe26080cf5254d09fad3ec987",
+      "pageFingerprint": "sha256:fbaaff42a6bfa0f95cddba43ac51664cba4ac83a4831b57850cceccebd723040"
+    },
+    {
+      "pageNumber": 6,
+      "goalId": "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+      "shortKey": "canonical_math_sek1_j7_linear_equations_solvability_multiplicity",
+      "anchor": "goal-cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+      "title": "Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen",
+      "description": "Die lernende Person kann lineare Gleichungen durch äquivalente Umformungen auf 0 = 0, auf 0 = c mit c ≠ 0 oder auf x = a zurückführen, daraus jeweils unendlich viele, keine oder genau eine Lösung folgern und die Lösungsmenge begründen.",
+      "breadcrumbs": [
+        "Mathematik"
+      ],
+      "chapterIds": [
+        "atlas:7748e0fedff93a25d866"
+      ],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            },
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G9",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekI",
+              "durationModel": "G8",
+              "courseProfile": null
+            }
+          ]
+        }
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+          "title": "Lineare Gleichungen systematisch lösen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-325771e1-602d-4bca-a199-a8f39a2d3dee"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+          "title": "Lineare Gleichungssysteme mit zwei Variablen lösen und Lösungsvielfalt untersuchen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-e42c208d-9555-43cc-92f5-5bb4c0688726"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen",
+        "url": "/assets/goal-visualizations/mathematik/cc60f759-1168-5fc0-8ff5-5f7a2533e61c/cc60f759-1168-5fc0-8ff5-5f7a2533e61c.png",
+        "altText": "Drei Äquivalenzketten führen lineare Gleichungen auf 0 = 0, den Widerspruch 0 = 3 beziehungsweise x = 6 zurück und ordnen ihnen die Lösungsmengen ℝ, ∅ und {6} zu.",
+        "originalDigest": "sha256:bb8b5ff218fbb83b99580dbf86edbdf0188cbc2f17268b33b189ec786e80c42a",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:9bcdb285cb50fe5db45abc34545af8949763332eb58933cc7339b0940990e0ea",
+      "pageFingerprint": "sha256:80a56f99ff04d11ac4d204c40dbda3c47600f0771476eadcc60a3dde78964218"
+    }
+  ],
+  "excludedTargetGoals": [],
+  "digest": "sha256:9f1a6cd527a226c7a628f2faf43a515d53f9306a8094b23e4477d81a5872f775"
+}

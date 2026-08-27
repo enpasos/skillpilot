@@ -358,7 +358,44 @@ const extraction = {
   sourceGoals,
 }
 
-const mappings = rows.flatMap((currentRow, index) => {
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "hb-physics-seki-bp2006-2022-3-1-elektrostatik-036-94f1334e": [
+    "c156d2fb-0fe9-5f13-8baa-3e74d7da151e"
+  ],
+  "hb-physics-seki-bp2006-2022-3-1-elektrostatik-037-0ed93aad": [
+    "c156d2fb-0fe9-5f13-8baa-3e74d7da151e"
+  ],
+  "hb-physics-seki-bp2006-2022-3-2-stromkreis-043-8df1f4d1": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "hb-physics-seki-bp2006-2022-3-2-stromkreis-044-eddcc681": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "hb-physics-seki-bp2006-2022-3-2-stromkreis-045-7169ddc0": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "hb-physics-seki-bp2006-2022-3-2-stromkreis-048-e8f7a259": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "hb-physics-seki-bp2006-2022-3-2-stromkreis-049-72aab4f1": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
+const resolvedRows = rows.map((currentRow, index) => ({
+  ...currentRow,
+  canonicalGoalIds: applyPhysicsBatch015Targets(sourceGoals[index].id, currentRow.canonicalGoalIds),
+}))
+
+const mappings = resolvedRows.flatMap((currentRow, index) => {
   const sourceGoal = sourceGoals[index]
   return currentRow.canonicalGoalIds.map((canonicalGoalId) => ({
     legacyGoalId: sourceGoal.id,
@@ -368,7 +405,7 @@ const mappings = rows.flatMap((currentRow, index) => {
   }))
 })
 
-const decisions = rows.map((currentRow, index) => {
+const decisions = resolvedRows.map((currentRow, index) => {
   const sourceGoal = sourceGoals[index]
   return {
     sourceGoalId: sourceGoal.id,

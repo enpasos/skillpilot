@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b010-global-optics-v1",
+  "reviewedAt": "2026-08-27T05:46:30.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-010-global-optics-profile-author-candidate-2026-08-27",
+  "goals": [
+    {
+      "goalId": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "reason": "DE: Das Profil macht das qualitative Linsenmodell des Auges über Bildentstehung auf der Netzhaut, die relative Fokuslage und begründete Vorhersagen bei veränderter Augenlänge oder Brechkraft prüfbar. Es grenzt das optische Modell von neuronaler Verarbeitung ab und behandelt Kurz- und Weitsichtigkeit als Varianten derselben Modellrelation. Keine menschliche Freigabe oder Profil-Review-Läufe werden behauptet. EN: The profile makes the qualitative lens model of the eye observable through retinal image formation, relative focus position, and justified predictions when eye length or optical power changes. It separates the optical model from neural processing and treats nearsightedness and farsightedness as variants of the same model relationship. No human approval or profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "eye-lens-model-and-retina",
+            "essentialUnderstandingDe": "Im qualitativen Linsenmodell bündelt das optische System des Auges Licht so, dass für eine festgelegte Gegenstandsweite ein scharfes reelles Bild auf der Netzhaut entsteht. Das Modell beschreibt Lichtwege und Bildlage; es erklärt nicht die nachfolgende neuronale Verarbeitung des Seheindrucks.",
+            "essentialUnderstandingEn": "In the qualitative lens model, the eye's optical system focuses light so that a sharp real image forms on the retina for a specified object distance. The model describes light paths and image position; it does not explain the subsequent neural processing of vision.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder vervollständigt für einen neuen Augenquerschnitt repräsentative Lichtwege, lokalisiert Bild und Netzhaut und erklärt, welche Modellannahmen für die optische Aussage benutzt werden und was daraus nicht über Wahrnehmung folgt.",
+            "observablePerformanceEn": "For a fresh cross-section of an eye, the learner independently constructs or completes representative light paths, locates the image and retina, and explains which model assumptions support the optical claim and what does not follow about perception."
+          },
+          {
+            "id": "focus-position-and-refractive-error",
+            "essentialUnderstandingDe": "Bei festgelegter Gegenstandsweite bestimmen Brechkraft und Augenlänge gemeinsam die Fokuslage relativ zur Netzhaut. Ohne ausgleichende Akkommodation oder Korrektur liegt der Fokus bei Kurzsichtigkeit vor und bei Weitsichtigkeit hinter der Netzhaut; Normalsichtigkeit entspricht in diesem Fall einer Fokuslage auf der Netzhaut.",
+            "essentialUnderstandingEn": "For a specified object distance, optical power and eye length jointly determine the focus position relative to the retina. Without compensating accommodation or correction, the focus lies in front of the retina in nearsightedness and behind it in farsightedness; normal vision corresponds to a focus on the retina in this case.",
+            "observablePerformanceDe": "Die lernende Person ordnet unbekannte qualitative Strahlengänge begründet Normalsichtigkeit, Kurzsichtigkeit oder Weitsichtigkeit zu, kennzeichnet die entscheidende Fokuslage und erklärt die Abweichung durch Brechkraft oder Augenlänge statt nur ein Etikett zu nennen.",
+            "observablePerformanceEn": "The learner classifies unfamiliar qualitative ray diagrams as normal vision, nearsightedness, or farsightedness with justification, marks the decisive focus position, and explains the deviation through optical power or eye length rather than merely naming a label."
+          },
+          {
+            "id": "changed-eye-parameter-prediction",
+            "essentialUnderstandingDe": "Eine Änderung der Augenlänge oder der Brechkraft verschiebt bei sonst festgehaltenen Bedingungen die Bildlage systematisch. Die Richtung der Verschiebung muss aus dem Linsenmodell und nicht aus einem auswendig gelernten Fehlsichtigkeitsnamen folgen.",
+            "essentialUnderstandingEn": "A change in eye length or optical power systematically shifts the image position when other conditions are held fixed. The direction of the shift must follow from the lens model rather than from a memorized name for a visual impairment.",
+            "observablePerformanceDe": "Die lernende Person sagt für einen frischen Fall mit veränderter Augenlänge oder Brechkraft zuerst die Fokusverschiebung voraus, prüft sie in einem eigenen Strahlenbild und begründet anschließend, welche Sehbedingung das Modell beschreibt.",
+            "observablePerformanceEn": "For a fresh case with changed eye length or optical power, the learner first predicts the focus shift, checks it in a self-constructed ray diagram, and then justifies which vision condition the model describes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "eye-lens-model-and-retina",
+            "focus-position-and-refractive-error",
+            "changed-eye-parameter-prediction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "focus-position",
+            "textDe": "Fokus vor, auf oder hinter der Netzhaut bei festgelegter Gegenstandsweite",
+            "textEn": "Focus in front of, on, or behind the retina for a specified object distance"
+          },
+          {
+            "id": "changed-eye-property",
+            "textDe": "Augenlänge oder Brechkraft wird einzeln verändert, während die übrigen Modellbedingungen festgehalten werden",
+            "textEn": "Eye length or optical power is changed individually while the other model conditions are held fixed"
+          },
+          {
+            "id": "representation-form",
+            "textDe": "Vollständiges Strahlenbild, zu ergänzendes Schema oder sprachlich beschriebene Modelländerung",
+            "textEn": "Complete ray diagram, schematic to be completed, or verbally described model change"
+          },
+          {
+            "id": "object-condition",
+            "textDe": "Verschiedene festgelegte Gegenstandsweiten bei ausdrücklich gleichbleibender Akkommodationsannahme",
+            "textEn": "Different specified object distances under an explicitly unchanged accommodation assumption"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-eye-models",
+            "taskDemandDe": "Drei neue qualitative Augenmodelle zeigen bei gleicher Gegenstandsweite Fokuslagen vor, auf und hinter der Netzhaut. Die Fälle sind fachlich zuzuordnen und die gemeinsame Modellbeziehung ist zu erklären.",
+            "taskDemandEn": "Three fresh qualitative eye models show focus positions in front of, on, and behind the retina for the same object distance. Classify the cases scientifically and explain the common model relationship.",
+            "expectedPerformanceDe": "Die lernende Person kennzeichnet Netzhaut und Fokus, ordnet die Fälle Kurzsichtigkeit, Normalsichtigkeit und Weitsichtigkeit zu und erklärt jede Zuordnung aus der relativen Bildlage, ohne die gezeichneten Strahlen als beobachtete Objekte auszugeben.",
+            "expectedPerformanceEn": "The learner marks the retina and focus, classifies the cases as nearsightedness, normal vision, and farsightedness, and explains each classification from the relative image position without treating the drawn rays as observed objects.",
+            "understandingFocusDe": "Der Dreifachvergleich prüft dieselbe Fokus-Netzhaut-Relation statt drei getrennte Merksätze.",
+            "understandingFocusEn": "The three-way comparison tests one focus-to-retina relationship rather than three separate memorized rules."
+          },
+          {
+            "id": "longer-eye-transfer",
+            "taskDemandDe": "Ein zuvor normalsichtig modelliertes Auge wird bei unveränderter Brechkraft länger dargestellt. Vor einer Konstruktion ist die neue Bildlage vorherzusagen und anschließend mit einem Strahlenmodell zu prüfen.",
+            "taskDemandEn": "An eye previously modeled as normal is shown with a greater length while optical power remains unchanged. Predict the new image position before constructing and then check it with a ray model.",
+            "expectedPerformanceDe": "Die lernende Person hält die ursprüngliche Fokuslage des optischen Systems fest, erkennt die nach hinten verschobene Netzhaut relativ zum Fokus, leitet Kurzsichtigkeit im Modell ab und benennt die festgehaltenen Bedingungen.",
+            "expectedPerformanceEn": "The learner keeps the original focus position of the optical system fixed, recognizes the retina shifted behind the focus, derives nearsightedness in the model, and states the conditions held constant.",
+            "understandingFocusDe": "Die Geometrieänderung zeigt, ob Augenlänge kausal statt nur terminologisch mit Fehlsichtigkeit verbunden wird.",
+            "understandingFocusEn": "The geometry change reveals whether eye length is causally rather than merely terminologically connected to refractive error."
+          },
+          {
+            "id": "weaker-optical-power-transfer",
+            "taskDemandDe": "Bei gleicher Augenlänge und Gegenstandsweite wird die Brechkraft des Augenmodells verringert. Die Fokusverschiebung und die resultierende Sehbedingung sind qualitativ vorherzusagen und zu begründen.",
+            "taskDemandEn": "With eye length and object distance unchanged, the optical power of the eye model is reduced. Qualitatively predict and justify the focus shift and resulting vision condition.",
+            "expectedPerformanceDe": "Die lernende Person sagt eine weiter hinter dem optischen System liegende Fokuslage voraus, ordnet sie relativ zur Netzhaut ein und begründet den Fall als Weitsichtigkeit im festgelegten Modell.",
+            "expectedPerformanceEn": "The learner predicts a focus farther behind the optical system, locates it relative to the retina, and justifies the case as farsightedness within the specified model.",
+            "understandingFocusDe": "Die getrennte Änderung der Brechkraft prüft Transfer über dieselbe Bildlagebeziehung bei unveränderter Geometrie.",
+            "understandingFocusEn": "Changing optical power alone tests transfer through the same image-position relationship with unchanged geometry."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "reason": "DE: Das Profil bindet einfache Fernrohr- und Mikroskopmodelle an die Funktionen von Objektiv und Okular, repräsentative Lichtwege und aufeinanderfolgende Bildentstehung. Unterschiedliche Gegenstandsbedingungen und Linsenanordnungen prüfen Modelltransfer statt Bauteilbenennung. Keine menschliche Freigabe oder Profil-Review-Läufe werden behauptet. EN: The profile connects simple telescope and microscope models to the functions of objective and eyepiece, representative light paths, and successive image formation. Different object conditions and lens arrangements test model transfer rather than component naming. No human approval or profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "components-and-ray-convention",
+            "essentialUnderstandingDe": "In einem festgelegten einfachen Instrumentmodell haben Objektiv und Okular unterschiedliche Funktionen und verändern nacheinander ausgewählte Lichtbündel. Gezeichnete Strahlen repräsentieren Lichtwege; ihre Lage folgt aus Modellannahmen zu Linsentyp, Gegenstandsweite, Brennweite und Abstand.",
+            "essentialUnderstandingEn": "In a specified simple instrument model, the objective and eyepiece have different functions and successively alter selected bundles of light. Drawn rays represent light paths; their positions follow from assumptions about lens type, object distance, focal length, and separation.",
+            "observablePerformanceDe": "Die lernende Person identifiziert in einem neuen Aufbau Objektiv und Okular, begründet ihre jeweilige Funktion und konstruiert oder vervollständigt repräsentative Strahlen, ohne die Modelllinien als materielle Strahlenbündel zu reifizieren.",
+            "observablePerformanceEn": "In a fresh setup, the learner identifies the objective and eyepiece, justifies their respective functions, and constructs or completes representative rays without reifying the model lines as material ray bundles."
+          },
+          {
+            "id": "successive-image-formation",
+            "essentialUnderstandingDe": "Die Beobachtungswirkung entsteht durch das Zusammenspiel aufeinanderfolgender Abbildungen: Das Objektiv erzeugt im jeweiligen Modell eine Bildsituation, die für das Okular als Gegenstand dient; reelle oder virtuelle Zwischen- und Endbilder sind anhand der Lichtwege zu unterscheiden.",
+            "essentialUnderstandingEn": "The observational effect results from the interaction of successive imaging steps: in the relevant model, the objective creates an image situation that serves as the object for the eyepiece; real and virtual intermediate and final images are distinguished from the light paths.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einem unbekannten Fernrohr- oder Mikroskopschema die Abbildungsfolge, lokalisiert Zwischen- und Endbild qualitativ und erklärt, wie beide Bauteile gemeinsam die Beobachtung mit dem Auge ermöglichen.",
+            "observablePerformanceEn": "In an unfamiliar telescope or microscope schematic, the learner traces the sequence of imaging, qualitatively locates the intermediate and final images, and explains how both components together enable observation by the eye."
+          },
+          {
+            "id": "instrument-specific-model-transfer",
+            "essentialUnderstandingDe": "Fernrohr und Mikroskop teilen die Analyse aufeinanderfolgender Abbildungen, unterscheiden sich aber in Gegenstandsbedingung und konkreter Linsenanordnung. Eine Aussage darf deshalb nur innerhalb des ausdrücklich gewählten Instrumentmodells übertragen werden.",
+            "essentialUnderstandingEn": "A telescope and microscope share the analysis of successive imaging but differ in object condition and specific lens arrangement. A claim may therefore be transferred only within the explicitly chosen instrument model.",
+            "observablePerformanceDe": "Bei einem veränderten Zwei-Linsen-Aufbau sagt die lernende Person Lichtweg und Beobachtungswirkung voraus, nennt die übertragbaren Beziehungen und erklärt, welche Annahme eines bekannten Fernrohr- oder Mikroskopmodells geändert wurde.",
+            "observablePerformanceEn": "For a changed two-lens setup, the learner predicts the light path and observational effect, states the relationships that transfer, and explains which assumption of a familiar telescope or microscope model has changed."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "components-and-ray-convention",
+            "successive-image-formation",
+            "instrument-specific-model-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "instrument-model",
+            "textDe": "Einfaches Linsenfernrohr oder einfaches zusammengesetztes Mikroskop mit jeweils festgelegtem Modell",
+            "textEn": "Simple refracting telescope or simple compound microscope with the model specified in each case"
+          },
+          {
+            "id": "object-condition",
+            "textDe": "Weit entfernter Gegenstand oder Gegenstand nahe der Objektivbrennweite passend zum Instrument",
+            "textEn": "Distant object or object near the objective focal point as appropriate to the instrument"
+          },
+          {
+            "id": "component-geometry",
+            "textDe": "Linsenabstand, Brennweitenrelation oder Position eines Bauteils wird verändert",
+            "textEn": "Lens separation, focal-length relationship, or position of one component is changed"
+          },
+          {
+            "id": "diagram-completeness",
+            "textDe": "Vollständiges Schema, unvollständiger Strahlenverlauf oder rein sprachlich beschriebener Aufbau",
+            "textEn": "Complete schematic, incomplete ray path, or setup described only in words"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "simple-refracting-telescope",
+            "taskDemandDe": "Ein neues Schema eines einfachen Linsenfernrohrs mit festgelegter Objektiv- und Okularlinse wird vorgelegt. Der Strahlenverlauf ist zu ergänzen und die Beobachtungsfunktion beider Linsen zu erklären.",
+            "taskDemandEn": "A fresh schematic of a simple refracting telescope with specified objective and eyepiece lenses is provided. Complete the ray path and explain the observational function of both lenses.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert Objektiv und Okular, verfolgt ein von einem weit entfernten Objekt kommendes Lichtbündel, beschreibt die Zwischenbildsituation und erklärt, wie das Okular die Beobachtung ermöglicht.",
+            "expectedPerformanceEn": "The learner identifies the objective and eyepiece, traces a bundle of light arriving from a distant object, describes the intermediate image situation, and explains how the eyepiece enables observation.",
+            "understandingFocusDe": "Der Fall prüft die kausale Abbildungsfolge statt das Auswendiglernen der Bauteilnamen.",
+            "understandingFocusEn": "The case tests the causal imaging sequence rather than memorization of component names."
+          },
+          {
+            "id": "simple-compound-microscope",
+            "taskDemandDe": "Für ein einfaches Mikroskopmodell liegt der Gegenstand knapp außerhalb der Objektivbrennweite. Die entstehenden Bildschritte sind qualitativ zu konstruieren und ihre Funktion für die Beobachtung zu erklären.",
+            "taskDemandEn": "In a simple microscope model, the object lies just beyond the objective focal point. Qualitatively construct the resulting imaging steps and explain their function for observation.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert das vergrößerte Zwischenbild des Objektivs, nutzt es als Gegenstand des Okulars und erklärt die virtuelle Endbildbeobachtung, ohne Fernrohrannahmen unverändert zu übertragen.",
+            "expectedPerformanceEn": "The learner constructs the magnified intermediate image produced by the objective, uses it as the object for the eyepiece, and explains observation of the virtual final image without transferring telescope assumptions unchanged.",
+            "understandingFocusDe": "Der Wechsel der Gegenstandsbedingung prüft Transfer der Abbildungslogik zwischen zwei Instrumentmodellen.",
+            "understandingFocusEn": "Changing the object condition tests transfer of imaging logic between two instrument models."
+          },
+          {
+            "id": "changed-lens-separation",
+            "taskDemandDe": "Bei einem bekannten Zwei-Linsen-Instrument wird der Abstand zwischen Objektiv und Okular verändert, während Linsentypen und Gegenstandslage fest bleiben. Die Auswirkung auf Zwischenbild und Beobachtbarkeit ist vorherzusagen.",
+            "taskDemandEn": "In a familiar two-lens instrument, the separation between objective and eyepiece is changed while lens types and object position remain fixed. Predict the effect on the intermediate image and observability.",
+            "expectedPerformanceDe": "Die lernende Person hält die vom Objektiv bestimmte Bildlage zunächst fest, vergleicht sie mit der neuen Okularposition und erklärt qualitativ, ob die ursprüngliche Beobachtungsbedingung noch erfüllt ist.",
+            "expectedPerformanceEn": "The learner initially keeps the image position determined by the objective fixed, compares it with the new eyepiece position, and qualitatively explains whether the original observation condition is still satisfied.",
+            "understandingFocusDe": "Die Geometrievariation zeigt, ob das Zusammenspiel der Komponenten statt eines starren Standardbilds verstanden ist.",
+            "understandingFocusEn": "The geometry variation reveals whether the interaction of components rather than one fixed standard diagram is understood."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6a4c6042-052b-502b-a39a-0ed8941247ac",
+      "reason": "DE: Das Profil verbindet qualitative Grenzflächenbrechung, Strahlenkonstruktion und scheinbare Objektlage in einer gemeinsamen Ursache-Wirkungs-Kette. Medienwechsel, Beobachtungsgeometrie und senkrechter Einfall prüfen Vorhersage und Modellgrenzen statt bloßer Diagrammerkennung. Keine menschliche Freigabe oder Profil-Review-Läufe werden behauptet. EN: The profile links qualitative refraction at an interface, ray construction, and apparent object position in one cause-and-effect chain. Changes of media, viewing geometry, and normal incidence test prediction and model limits rather than mere diagram recognition. No human approval or profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "direction-change-at-interface",
+            "essentialUnderstandingDe": "Im Strahlenmodell verläuft Licht innerhalb jedes homogenen transparenten Mediums geradlinig. Bei schrägem Übergang an einer Grenzfläche ändert sich die Richtung relativ zum Lot: zum Lot beim Übergang in das optisch dichtere und vom Lot beim Übergang in das optisch dünnere Medium; bei senkrechtem Einfall ändert sich die Richtung nicht.",
+            "essentialUnderstandingEn": "In the ray model, light travels in straight lines within each homogeneous transparent medium. At oblique incidence on an interface, its direction relative to the normal changes: toward the normal when entering the optically denser medium and away from the normal when entering the optically less dense medium; at normal incidence the direction does not change.",
+            "observablePerformanceDe": "Die lernende Person zeichnet für eine unbekannte Mediengrenze Lot, einfallenden und gebrochenen Strahl, sagt die Ablenkungsrichtung vor der Konstruktion voraus und begründet sie aus Medienreihenfolge und Einfallsrichtung.",
+            "observablePerformanceEn": "For an unfamiliar boundary between media, the learner draws the normal and the incident and refracted rays, predicts the bending direction before constructing, and justifies it from the order of the media and direction of incidence."
+          },
+          {
+            "id": "apparent-position-from-back-projection",
+            "essentialUnderstandingDe": "Das Licht erreicht das Auge auf dem tatsächlich gebrochenen Weg; die scheinbare Objektlage ergibt sich im Strahlenmodell aus der geradlinigen Rückverlängerung der am Auge ankommenden Strahlen. Diese virtuelle Lage ist keine zweite physische Position des Gegenstands.",
+            "essentialUnderstandingEn": "Light reaches the eye along the actual refracted path; in the ray model, the apparent object position results from the straight backward extension of the rays arriving at the eye. This virtual position is not a second physical location of the object.",
+            "observablePerformanceDe": "Die lernende Person konstruiert für einen neuen Beobachtungsfall die gebrochenen Wege zum Auge, verlängert sie rückwärts, lokalisiert die scheinbare Objektposition und erklärt den Unterschied zwischen realem Lichtweg, Modellkonstruktion und Wahrnehmungseffekt.",
+            "observablePerformanceEn": "For a fresh viewing case, the learner constructs the refracted paths to the eye, extends them backward, locates the apparent object position, and explains the distinction among actual light path, model construction, and perception effect."
+          },
+          {
+            "id": "changed-geometry-and-limit",
+            "essentialUnderstandingDe": "Richtung und Stärke der scheinbaren Verschiebung hängen qualitativ von Medienübergang und Beobachtungsgeometrie ab. Das Strahlenmodell muss deshalb bei vertauschten Medien, anderer Blickrichtung oder senkrechtem Einfall aus den neuen Bedingungen aufgebaut werden.",
+            "essentialUnderstandingEn": "The direction and magnitude of apparent displacement depend qualitatively on the transition between media and the viewing geometry. The ray model must therefore be rebuilt from the new conditions when the media are reversed, the viewing direction changes, or incidence is normal.",
+            "observablePerformanceDe": "Die lernende Person überträgt die Konstruktion auf eine veränderte Medien- oder Beobachteranordnung, sagt Ablenkung und scheinbare Verschiebung voraus und prüft die Vorhersage auf Konsistenz mit dem Grenzfall senkrechten Einfalls.",
+            "observablePerformanceEn": "The learner transfers the construction to a changed arrangement of media or observer, predicts bending and apparent displacement, and checks the prediction for consistency with the limiting case of normal incidence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "direction-change-at-interface",
+            "apparent-position-from-back-projection",
+            "changed-geometry-and-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "media-order",
+            "textDe": "Übergang vom optisch dünneren zum dichteren Medium oder in umgekehrter Richtung",
+            "textEn": "Transition from the optically less dense to the denser medium or in the reverse direction"
+          },
+          {
+            "id": "incidence-direction",
+            "textDe": "Schräger Einfall mit verschiedener Lotrichtung oder senkrechter Einfall als Grenzfall",
+            "textEn": "Oblique incidence with different normal orientations or normal incidence as a limiting case"
+          },
+          {
+            "id": "viewing-geometry",
+            "textDe": "Beobachtung von oben, von der Seite oder durch eine anders orientierte ebene Grenzfläche",
+            "textEn": "Viewing from above, from the side, or through a plane interface with a different orientation"
+          },
+          {
+            "id": "representation-task",
+            "textDe": "Strahlenbild konstruieren, unvollständiges Bild prüfen oder aus einer sprachlichen Situation ein Modell entwickeln",
+            "textEn": "Construct a ray diagram, check an incomplete diagram, or develop a model from a verbal situation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coin-below-water",
+            "taskDemandDe": "Eine Münze liegt unter einer ebenen Wasseroberfläche und wird schräg von oben betrachtet. Der tatsächliche Lichtweg und die scheinbare Lage sind vor einer Konstruktion qualitativ vorherzusagen und anschließend darzustellen.",
+            "taskDemandEn": "A coin lies below a flat water surface and is viewed obliquely from above. Qualitatively predict the actual light path and apparent position before constructing and then represent them.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet das Lot, lässt den Strahl beim Übergang Wasser-Luft vom Lot weg brechen, verlängert die Luftstrahlen geradlinig zurück und erklärt die näher an der Oberfläche liegende virtuelle Münzposition.",
+            "expectedPerformanceEn": "The learner draws the normal, bends the ray away from the normal at the water-to-air transition, extends the air rays backward in straight lines, and explains the virtual coin position closer to the surface.",
+            "understandingFocusDe": "Der Fall verbindet Medienübergang und Rückprojektion zur optischen Hebung.",
+            "understandingFocusEn": "The case connects the transition between media and back-projection to apparent depth."
+          },
+          {
+            "id": "observer-inside-denser-medium",
+            "taskDemandDe": "Ein Beobachtungspunkt befindet sich im optisch dichteren Medium und betrachtet einen Gegenstand im optisch dünneren Medium durch dieselbe ebene Grenzfläche. Ablenkungsrichtung und scheinbare Verschiebung sind neu herzuleiten.",
+            "taskDemandEn": "An observer is located in the optically denser medium and views an object in the optically less dense medium through the same plane interface. Derive the bending direction and apparent displacement anew.",
+            "expectedPerformanceDe": "Die lernende Person vertauscht die Übergangsrichtung korrekt, konstruiert die Brechung zum Lot, bestimmt die virtuelle Objektlage durch Rückverlängerung und begründet, warum die Regel des ersten Falls nicht wortgleich übernommen werden darf.",
+            "expectedPerformanceEn": "The learner correctly reverses the direction of transition, constructs bending toward the normal, determines the virtual object position by backward extension, and justifies why the rule from the first case cannot be copied verbatim.",
+            "understandingFocusDe": "Der umgekehrte Medienübergang prüft Transfer der Modellbeziehung statt eines festen Hebungsmerksatzes.",
+            "understandingFocusEn": "The reversed transition tests transfer of the model relationship rather than a fixed apparent-depth rule."
+          },
+          {
+            "id": "normal-incidence-limit",
+            "taskDemandDe": "Ein Lichtweg trifft senkrecht auf eine ebene Grenzfläche zwischen zwei transparenten Medien. Es ist vorherzusagen, ob sich die Richtung ändert und welche Aussage über eine seitliche scheinbare Verschiebung zulässig ist.",
+            "taskDemandEn": "A light path strikes a plane interface between two transparent media at normal incidence. Predict whether its direction changes and what claim about lateral apparent displacement is justified.",
+            "expectedPerformanceDe": "Die lernende Person erkennt den Einfallswinkel null relativ zum Lot, zeichnet den Weg ohne Richtungsänderung fort und erklärt, dass aus diesem einzelnen senkrechten Strahl keine seitliche Ablenkung oder Verschiebung folgt.",
+            "expectedPerformanceEn": "The learner recognizes zero incidence angle relative to the normal, continues the path without a direction change, and explains that this single normal ray produces no lateral bending or displacement.",
+            "understandingFocusDe": "Der Grenzfall prüft, ob die Brechungsregel bedingungsabhängig statt pauschal angewendet wird.",
+            "understandingFocusEn": "The limiting case tests whether the refraction rule is applied conditionally rather than indiscriminately."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1ab5f599-0927-579d-94cc-feecdf3b5603",
+      "reason": "DE: Das Profil macht die Lochkamera-Bildentstehung durch punktweise Zuordnung, geradlinige Lichtausbreitung und begründete Vorhersagen bei veränderter Geometrie beobachtbar. Es verlangt eigene Strahlenkonstruktionen und grenzt das Modell von einer Linsenabbildung ab. Keine menschliche Freigabe oder Profil-Review-Läufe werden behauptet. EN: The profile makes pinhole-camera image formation observable through point-to-point mapping, rectilinear light propagation, and justified predictions under changed geometry. It requires learner-generated ray constructions and distinguishes the model from lens imaging. No human approval or profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "ray-model-and-aperture-selection",
+            "essentialUnderstandingDe": "Im betrachteten homogenen Bereich breitet sich Licht geradlinig aus. Die kleine Öffnung lässt von jedem Gegenstandspunkt nur ein schmales Bündel möglicher Lichtwege auf den Schirm gelangen; gezeichnete Strahlen sind ausgewählte Modelllinien für diese Ausbreitungsrichtungen.",
+            "essentialUnderstandingEn": "Within the homogeneous region considered, light propagates in straight lines. The small aperture allows only a narrow bundle of possible light paths from each object point to reach the screen; drawn rays are selected model lines for these directions of propagation.",
+            "observablePerformanceDe": "Die lernende Person entwickelt für einen neuen Lochkamera-Aufbau ein Strahlenmodell, erklärt die Auswahl der dargestellten Wege durch die Öffnung und grenzt die Modelllinien von beobachtbaren materiellen Objekten ab.",
+            "observablePerformanceEn": "For a fresh pinhole-camera setup, the learner develops a ray model, explains why the represented paths are selected by the aperture, and distinguishes the model lines from observable material objects."
+          },
+          {
+            "id": "point-mapping-and-inversion",
+            "essentialUnderstandingDe": "Die geradlinigen Wege durch die Öffnung ordnen jedem Gegenstandspunkt einen Bildpunkt auf dem Schirm zu. Wege von oberen und unteren sowie linken und rechten Gegenstandspunkten kreuzen sich an der Öffnung, sodass ein reelles, umgekehrtes Bild ohne Linse entsteht.",
+            "essentialUnderstandingEn": "The straight paths through the aperture map each object point to an image point on the screen. Paths from upper and lower as well as left and right object points cross at the aperture, producing a real, inverted image without a lens.",
+            "observablePerformanceDe": "Die lernende Person konstruiert von mindestens zwei markanten Punkten eines unbekannten Gegenstands Lichtwege durch die Öffnung, bestimmt die zugehörigen Bildpunkte und erklärt Lage und Orientierung des vollständigen Bildes aus der punktweisen Zuordnung.",
+            "observablePerformanceEn": "From at least two distinctive points of an unfamiliar object, the learner constructs light paths through the aperture, determines the corresponding image points, and explains the position and orientation of the complete image from the point-to-point mapping."
+          },
+          {
+            "id": "geometry-controls-image-size",
+            "essentialUnderstandingDe": "Bei gleichbleibender kleiner Öffnung bestimmen die Abstände zwischen Gegenstand, Öffnung und Schirm die relative Bildgröße im geometrischen Strahlenmodell. Eine Vorhersage muss aus ähnlichen Strahlendreiecken beziehungsweise deren qualitativer Geometrie folgen, nicht aus einer Linsenregel.",
+            "essentialUnderstandingEn": "With the small aperture unchanged, the distances among object, aperture, and screen determine relative image size in the geometric ray model. A prediction must follow from similar ray triangles or their qualitative geometry, not from a lens rule.",
+            "observablePerformanceDe": "Die lernende Person sagt bei verändertem Gegenstands- oder Schirmabstand die Richtung der Bildgrößenänderung voraus, prüft sie mit einer neuen Strahlenkonstruktion und begründet, welche Abstände dabei festgehalten wurden.",
+            "observablePerformanceEn": "When object or screen distance changes, the learner predicts the direction of the image-size change, checks it with a new ray construction, and justifies which distances were held fixed."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ray-model-and-aperture-selection",
+            "point-mapping-and-inversion",
+            "geometry-controls-image-size"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "object-shape-and-orientation",
+            "textDe": "Asymmetrischer Gegenstand mit verschiedenen markanten Punkten und wechselnder Orientierung",
+            "textEn": "Asymmetric object with different distinctive points and changing orientation"
+          },
+          {
+            "id": "screen-distance",
+            "textDe": "Abstand zwischen Öffnung und Schirm wird bei gleicher Gegenstandslage verändert",
+            "textEn": "Distance between aperture and screen changes while object position remains fixed"
+          },
+          {
+            "id": "object-distance",
+            "textDe": "Gegenstandsabstand wird bei unveränderter Kameralänge verändert",
+            "textEn": "Object distance changes while camera length remains unchanged"
+          },
+          {
+            "id": "representation-direction",
+            "textDe": "Vom Aufbau zur Strahlenkonstruktion, von unvollständigen Strahlen zum Bild oder vom Bild zurück zu passenden Gegenstandspunkten",
+            "textEn": "From setup to ray construction, from incomplete rays to the image, or from the image back to matching object points"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "asymmetric-object-construction",
+            "taskDemandDe": "Ein neuer asymmetrischer Gegenstand steht vor einer Lochkamera. Für drei markante Gegenstandspunkte sind die Lichtwege zu konstruieren und Bildlage, Orientierung und reelle Bildart zu erklären.",
+            "taskDemandEn": "A fresh asymmetric object stands in front of a pinhole camera. Construct the light paths for three distinctive object points and explain image position, orientation, and its real nature.",
+            "expectedPerformanceDe": "Die lernende Person führt von jedem Punkt einen repräsentativen Weg durch die Öffnung zum Schirm, ordnet die Bildpunkte korrekt zu und erklärt die Umkehrung aus dem Kreuzen der Wege an der Öffnung statt aus einer Linsenwirkung.",
+            "expectedPerformanceEn": "The learner traces one representative path from each point through the aperture to the screen, maps the image points correctly, and explains inversion from the crossing of paths at the aperture rather than from a lens effect.",
+            "understandingFocusDe": "Die asymmetrische Form macht vollständige punktweise Zuordnung statt Nachzeichnen eines vertrauten Pfeils sichtbar.",
+            "understandingFocusEn": "The asymmetric shape exposes complete point-to-point mapping rather than copying a familiar arrow."
+          },
+          {
+            "id": "longer-camera-transfer",
+            "taskDemandDe": "Der Schirm einer Lochkamera wird bei unveränderter Öffnung und Gegenstandslage weiter von der Öffnung entfernt. Vor der Konstruktion ist die Änderung von Bildgröße und Orientierung vorherzusagen.",
+            "taskDemandEn": "The screen of a pinhole camera is moved farther from the aperture while the aperture and object position remain unchanged. Predict the change in image size and orientation before constructing.",
+            "expectedPerformanceDe": "Die lernende Person sagt ein größeres weiterhin umgekehrtes Bild voraus, bestätigt dies mit den weiter auseinanderlaufenden Strahlen hinter der Öffnung und benennt Gegenstandslage und Öffnung als unverändert.",
+            "expectedPerformanceEn": "The learner predicts a larger image that remains inverted, confirms this with the rays spreading farther apart behind the aperture, and states that object position and aperture are unchanged.",
+            "understandingFocusDe": "Die Kameralängenänderung prüft geometrische Skalierung getrennt von Bildorientierung.",
+            "understandingFocusEn": "Changing camera length tests geometric scaling separately from image orientation."
+          },
+          {
+            "id": "farther-object-transfer",
+            "taskDemandDe": "Bei unveränderter Kameralänge wird derselbe Gegenstand weiter von der Lochöffnung entfernt. Die neue Bildgröße ist qualitativ vorherzusagen und mit einer Strahlenkonstruktion zu vergleichen.",
+            "taskDemandEn": "With camera length unchanged, the same object is moved farther from the pinhole. Qualitatively predict the new image size and compare it using a ray construction.",
+            "expectedPerformanceDe": "Die lernende Person sagt ein kleineres Bild bei unveränderter Umkehrung voraus, konstruiert passende Randstrahlen und erklärt die Änderung über das Verhältnis von Gegenstands- und Schirmabstand.",
+            "expectedPerformanceEn": "The learner predicts a smaller image with unchanged inversion, constructs appropriate boundary rays, and explains the change through the relationship between object and screen distances.",
+            "understandingFocusDe": "Der geänderte Gegenstandsabstand prüft dieselbe geometrische Beziehung in einer unabhängigen Variation.",
+            "understandingFocusEn": "Changing object distance tests the same geometric relationship in an independent variation."
+          }
+        ]
+      }
+    }
+  ]
+}

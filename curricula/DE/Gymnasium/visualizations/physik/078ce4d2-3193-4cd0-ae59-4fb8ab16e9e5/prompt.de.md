@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5`
 - Titel: Linsenabbildungen qualitativ beschreiben und konstruieren
-- Beschreibung: Die lernende Person kann Konvex- und Konkavlinsen beschreiben, Brennweiten angeben und einfache Bildkonstruktionen durchführen.
+- Beschreibung: Die lernende Person kann im vereinfachten Strahlenmodell die Wirkung von Konvex- und Konkavlinsen mithilfe von Brennpunkten und Brennweite beschreiben, einfache Bildkonstruktionen durchführen und daraus Bildlage, Bildorientierung, Bildgröße und die reelle oder virtuelle Bildart qualitativ deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Linsenabbildungen qualitativ beschreiben und konstruieren
-Beschreibung: Die lernende Person kann Konvex- und Konkavlinsen beschreiben, Brennweiten angeben und einfache Bildkonstruktionen durchführen.
+Beschreibung: Die lernende Person kann im vereinfachten Strahlenmodell die Wirkung von Konvex- und Konkavlinsen mithilfe von Brennpunkten und Brennweite beschreiben, einfache Bildkonstruktionen durchführen und daraus Bildlage, Bildorientierung, Bildgröße und die reelle oder virtuelle Bildart qualitativ deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:

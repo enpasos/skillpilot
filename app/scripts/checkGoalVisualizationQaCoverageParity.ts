@@ -2,11 +2,16 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  isActiveClusterOverviewForVisualization,
+  isOrdinaryAtomicGoalForVisualization,
+} from '../../scripts/goal_visualization_scope.mjs'
 
 type VisualizationState = 'available' | 'missing'
 
 interface QaRecord {
   goalId: string
+  landscapePath: string
   visualizationState: VisualizationState
   missingReason: '' | 'no_primary_link' | 'deferred_provider_limitation'
   imageUrl: string
@@ -76,8 +81,32 @@ for (const subject of subjects) {
   const goalIds = qa.records.map((record) => record.goalId)
   assert.equal(new Set(goalIds).size, goalIds.length, `${subject}: duplicate QA goal IDs`)
 
-  const available = qa.records.filter((record) => record.visualizationState === 'available')
-  const missing = qa.records.filter((record) => record.visualizationState === 'missing')
+  const canonicalByGoalId = new Map<string, Record<string, unknown>>()
+  for (const landscapePath of new Set(qa.records.map((record) => record.landscapePath))) {
+    const landscape = JSON.parse(readFileSync(resolve(repoRoot, landscapePath), 'utf8')) as {
+      goals?: Array<Record<string, unknown>>
+    }
+    for (const goal of landscape.goals ?? []) {
+      if (typeof goal.id === 'string') canonicalByGoalId.set(goal.id, goal)
+    }
+  }
+  const atomicRecords = qa.records.filter((record) => (
+    isOrdinaryAtomicGoalForVisualization(canonicalByGoalId.get(record.goalId))
+  ))
+  const clusterOverviewRecords = qa.records.filter((record) => (
+    isActiveClusterOverviewForVisualization(canonicalByGoalId.get(record.goalId))
+  ))
+  assert.equal(
+    atomicRecords.length + clusterOverviewRecords.length,
+    qa.records.length,
+    `${subject}: QA ledger contains a goal outside ordinary-atomic and active cluster-overview scope`,
+  )
+  clusterOverviewRecords.forEach((record) => {
+    assert.equal(record.visualizationState, 'available', `${subject}:${record.goalId}: cluster overview must stay active`)
+  })
+
+  const available = atomicRecords.filter((record) => record.visualizationState === 'available')
+  const missing = atomicRecords.filter((record) => record.visualizationState === 'missing')
   const deferred = missing.filter((record) => record.missingReason === 'deferred_provider_limitation')
   const regularMissing = missing.filter((record) => record.missingReason !== 'deferred_provider_limitation')
 
@@ -91,7 +120,7 @@ for (const subject of subjects) {
     assert.equal(record.assetSha256, '', `${subject}:${record.goalId}: missing record has an asset hash`)
   })
 
-  assert.equal(qa.records.length, rollout.summary.atomicGoalsInScope, `${subject}: target-scope mismatch`)
+  assert.equal(atomicRecords.length, rollout.summary.atomicGoalsInScope, `${subject}: target-scope mismatch`)
   assert.equal(available.length, rollout.summary.goalsWithPrimaryVisualization, `${subject}: active-image mismatch`)
   assert.equal(deferred.length, rollout.summary.openProviderDeferredGoals, `${subject}: deferred mismatch`)
   assert.equal(regularMissing.length, rollout.summary.regularUnlinkedGoals, `${subject}: regular-missing mismatch`)
@@ -108,7 +137,7 @@ for (const subject of subjects) {
   )
   if (regularMissing.length === 0) {
     assertSameGoalIds(
-      qa.records.map((record) => record.goalId),
+      atomicRecords.map((record) => record.goalId),
       [
         ...rollout.visualizedGoals.map((record) => record.goalId),
         ...rollout.qualityQueues.openProviderDeferred.map((record) => record.goalId),
@@ -118,6 +147,6 @@ for (const subject of subjects) {
   }
 
   console.log(
-    `${subject}: QA/rollout parity passed (${qa.records.length} scope, ${available.length} active, ${deferred.length} deferred, ${regularMissing.length} regular missing).`,
+    `${subject}: QA/rollout parity passed (${atomicRecords.length} atomic scope, ${clusterOverviewRecords.length} active cluster overview, ${available.length} active, ${deferred.length} deferred, ${regularMissing.length} regular missing).`,
   )
 }

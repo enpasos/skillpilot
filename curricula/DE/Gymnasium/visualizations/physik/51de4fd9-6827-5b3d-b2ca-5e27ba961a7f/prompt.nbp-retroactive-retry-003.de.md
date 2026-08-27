@@ -1,0 +1,8 @@
+Erzeuge eine fachlich präzise, locker handgezeichnete Lernillustration zur Wahl eines geeigneten Thermometers. Der vorige Versuch wird verworfen, weil die feine klinische Skala doppelte und fehlerhafte Zahlen enthielt.
+
+Zeige genau zwei klar getrennte Bereiche:
+
+- Links: „Laborthermometer“. Ein gut erkennbares Messbereich-Schild trägt exakt „−10 °C bis 110 °C“. Das Thermometer zeigt groß und eindeutig exakt „65 °C“. Sein Fühler ist vollständig in eine Flüssigkeit eingetaucht, berührt weder Gefäßboden noch Gefäßwand; ein Auge befindet sich auf Ablesehöhe. Keine fein nummerierte Skala zeichnen.
+- Rechts: „Klinisches Thermometer“. Ein gut erkennbares Messbereich-Schild trägt exakt „35 °C bis 42 °C“. Daneben ein rotes Kreuz und exakt die Begründung „65 °C > 42 °C – außerhalb des Messbereichs“. Keine fein nummerierte Skala zeichnen.
+
+Nutze außer den vier verlangten Temperaturangaben −10 °C, 110 °C, 65 °C und 35 °C bis 42 °C keinerlei weitere Zahlen. Keine Aussage „größer als 65 °C“. Alle Gradzeichen, Minuszeichen und Ungleichheitszeichen müssen korrekt sein. Der lockere illustrative Stil ist erwünscht, die Messentscheidung und die korrekte Versuchsdurchführung müssen aber unmissverständlich sein.

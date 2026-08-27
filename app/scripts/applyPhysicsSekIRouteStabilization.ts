@@ -1587,14 +1587,15 @@ assessmentSpecs.push(
       title: 'Prüfungsaufgabe: Schall bei einer Schulveranstaltung untersuchen',
       titleEn: 'Assessment Task: Investigate Sound at a School Event',
       description:
-        'Die lernende Person kann Schallquelle und -empfänger beschreiben, Tonhöhe, Lautstärke und Geräusch unterscheiden, Schallgeschwindigkeiten datenbasiert vergleichen und eine Lärmbelastung für das Ohr beurteilen.',
+        'Die lernende Person kann Schallquelle und -empfänger beschreiben, Tonhöhe, Lautstärke und Geräusch unterscheiden, Schallgeschwindigkeiten datenbasiert vergleichen, den Hörvorgang qualitativ erklären und eine Lärmbelastung für das Ohr beurteilen.',
       descriptionEn:
-        'The learner can describe sound sources and receivers, distinguish pitch, loudness, and noise, compare sound speeds from data, and assess a noise exposure for the ear.',
+        'The learner can describe sound sources and receivers, distinguish pitch, loudness, and noise, compare sound speeds from data, explain hearing qualitatively, and assess a noise exposure for the ear.',
       coveredGoalIds: [
         'c1006f55-0406-48cc-92d4-0d8345897cf4',
         '10aad90e-a1db-42b6-8d1e-1d856e14b47d',
         'a24c41ce-68c5-56a7-8235-ef9a7dba7042',
-        '3e33813d-db75-4571-8345-3845b02b956d',
+        '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
+        'da0837c7-95a7-5a6a-81db-f33cb7f42d85',
       ],
       applicability: ['DE-BW'],
       area: 'Akustik und Hören',
@@ -1603,7 +1604,7 @@ assessmentSpecs.push(
       guidingIdeas: ['LI_WELLEN', 'LI_BIOPHYSIK'],
       coveredStrands: ['LI_WELLEN', 'LI_BIOPHYSIK'],
       taskContent:
-        '**Kontext Schulkonzert:** Eine Lautsprechermembran schwingt; ein Mikrofon und das Ohr empfangen Schall. Oszillogramm A ist periodisch mit 440 Hz, B unregelmäßig; C hat dieselbe Frequenz wie A, aber größere Amplitude. Gemessene Schallgeschwindigkeiten: Luft 343 m/s, Wasser 1480 m/s, Stahl 5100 m/s. Am Mischpult werden in Ohrnähe 94 dB über 60 min erwartet.\n\n1. Beschreiben Sie Lautsprecher als Schallquelle sowie Mikrofon und Ohr als Empfänger und erklären Sie die Übertragung über Schwingungen des Mediums. (5 BE)\n2. Ordnen Sie A und B Ton beziehungsweise Geräusch zu, vergleichen Sie A und C hinsichtlich Tonhöhe und Lautstärke und begründen Sie mit Frequenz und Amplitude. (5 BE)\n3. Vergleichen Sie die drei Schallgeschwindigkeiten und begründen Sie die Unterschiede mit elastischer Kopplung und Trägheit im Teilchenmodell. Erklären Sie, warum der Aggregatzustand allein keine allgemeine Rangfolge garantiert. (5 BE)\n4. Beschreiben Sie den Weg des Schalls durch Außenohr, Mittelohr und Innenohr und beurteilen Sie die Belastung von 94 dB über 60 min. Leiten Sie zwei konkrete Schutzmaßnahmen ab. (5 BE)',
+        '**Kontext Schulkonzert:** Eine Lautsprechermembran schwingt; ein Mikrofon und das Ohr empfangen Schall. Oszillogramm A ist periodisch mit 440 Hz, B unregelmäßig; C hat dieselbe Frequenz wie A, aber größere Amplitude. Gemessene Schallgeschwindigkeiten: Luft 343 m/s, Wasser 1480 m/s, Stahl 5100 m/s. Am Mischpult werden in Ohrnähe 94 dB über 60 min erwartet.\n\n1. Beschreiben Sie Lautsprecher als Schallquelle sowie Mikrofon und Ohr als Empfänger und erklären Sie die Übertragung über Schwingungen des Mediums. (5 BE)\n2. Ordnen Sie A und B Ton beziehungsweise Geräusch zu, vergleichen Sie A und C hinsichtlich Tonhöhe und Lautstärke und begründen Sie mit Frequenz und Amplitude. (5 BE)\n3. Vergleichen Sie die drei Schallgeschwindigkeiten und begründen Sie die Unterschiede mit elastischer Kopplung und Trägheit im Teilchenmodell. Erklären Sie, warum der Aggregatzustand allein keine allgemeine Rangfolge garantiert. (5 BE)\n4. Erklären Sie den Weg des Schalls durch Außenohr, Mittelohr und Innenohr einschließlich der Umwandlung der mechanischen Anregung in Nervensignale. Beurteilen Sie die Belastung von 94 dB über 60 min und leiten Sie zwei konkrete Schutzmaßnahmen ab. (5 BE)',
       solutionContent:
         'Die Membran regt das Medium an; Mikrofon und Ohr wandeln die ankommende Schwingung um. A ist ein Ton, B ein Geräusch. A und C haben gleiche Tonhöhe, C ist wegen größerer Amplitude lauter. Die Daten zeigen deutlich verschiedene Geschwindigkeiten; starke elastische Kopplung erhöht, große Trägheit vermindert die Ausbreitung, sodass nicht der Aggregatzustand allein entscheidet. Außenohr und Trommelfell nehmen Schall auf, Gehörknöchelchen übertragen, die Cochlea wandelt in Nervenimpulse. 94 dB über eine Stunde ist belastend; Abstand, geringerer Pegel, kürzere Dauer und Gehörschutz reduzieren das Risiko.',
       scoring: {
@@ -1613,7 +1614,8 @@ assessmentSpecs.push(
           { id: 'sound_hearing_1', points: 5, description: 'Schallquelle, Medium und Empfänger fachlich beschrieben' },
           { id: 'sound_hearing_2', points: 5, description: 'Ton, Geräusch, Tonhöhe und Lautstärke an Signalen unterschieden' },
           { id: 'sound_hearing_3', points: 5, description: 'Schallgeschwindigkeiten daten- und teilchenmodellgestützt verglichen' },
-          { id: 'sound_hearing_4', points: 5, description: 'Hörweg und Lärmbelastung beurteilt sowie Schutzmaßnahmen abgeleitet' },
+          { id: 'sound_hearing_4a', points: 2, description: 'Hörweg und Umwandlung in Nervensignale qualitativ erklärt' },
+          { id: 'sound_hearing_4b', points: 3, description: 'Lärmbelastung mit Pegel und Dauer beurteilt sowie Schutzmaßnahmen abgeleitet' },
         ],
       },
     },
@@ -2246,11 +2248,11 @@ function buildSemanticKinds(landscape: JsonRecord): JsonRecord {
   ]
   ledger.counts = Object.fromEntries(order.filter((key) => counts[key] !== undefined).map((key) => [key, counts[key]]))
   ledger.counts.total = (ledger.decisions as JsonRecord[]).length
-  if (ledger.counts.curricularAtomic !== 438) {
-    throw new Error(`Expected 438 curricularAtomic Physics decisions, got ${ledger.counts.curricularAtomic}`)
+  if (ledger.counts.curricularAtomic !== 439) {
+    throw new Error(`Expected 439 curricularAtomic Physics decisions, got ${ledger.counts.curricularAtomic}`)
   }
-  if (ledger.counts.practiceAssessment !== 126 || ledger.counts.total !== 658) {
-    throw new Error(`Expected 126 practiceAssessment / 658 total decisions, got ${ledger.counts.practiceAssessment} / ${ledger.counts.total}`)
+  if (ledger.counts.practiceAssessment !== 126 || ledger.counts.total !== 660) {
+    throw new Error(`Expected 126 practiceAssessment / 660 total decisions, got ${ledger.counts.practiceAssessment} / ${ledger.counts.total}`)
   }
   return ledger
 }
@@ -2516,5 +2518,5 @@ if (writeMode) {
 }
 
 console.log(
-  `CHECK apply_physics_seki_route_stabilization ${writeMode ? 'WRITE' : 'PASS'} motivationEdges=3 assessments=51 compositionViews=${compositionViews.length} terminalPlacements=${totalPlacements} routePrerequisiteStructures=13 routePrerequisitePlacements=187 curricularAtomic=438 practiceAssessment=126`,
+  `CHECK apply_physics_seki_route_stabilization ${writeMode ? 'WRITE' : 'PASS'} motivationEdges=3 assessments=51 compositionViews=${compositionViews.length} terminalPlacements=${totalPlacements} routePrerequisiteStructures=13 routePrerequisitePlacements=187 curricularAtomic=439 practiceAssessment=126`,
 )

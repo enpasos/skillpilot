@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-resolution-69f8f59c-b0c3-5b0b-82db-834a0e655736",
+  "goal": {
+    "goalId": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:cd1c3ddadb60512e4e5b02317166546a19447296675f9b9de4350b6933db3a74",
+    "pageFingerprint": "sha256:5a9cb664fba9f98242294cabea7d08536080027970e2267902fd46f89a840625",
+    "goalReviewContextFingerprint": "sha256:c43f03bff4e050751d87ac9be698d7e2a5dfcdd280fed384a0b6a733b59c6341",
+    "finalText": {
+      "titleDe": "Zwischen Stromkreis und Schaltplan übersetzen",
+      "titleEn": "Translate between a circuit and its diagram",
+      "descriptionDe": "Die lernende Person kann einen einfachen realen Stromkreis mit fachüblichen Schaltsymbolen als Schaltplan darstellen, einen vorgegebenen Schaltplan als Aufbau umsetzen und erklären, dass der Plan elektrische Verbindungen statt räumlicher Anordnung codiert.",
+      "descriptionEn": "The learner can represent a simple physical circuit as a circuit diagram using standard symbols, build a physical setup from a given diagram, and explain that the diagram encodes electrical connections rather than spatial arrangement."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-a",
+      "campaignDigest": "sha256:0bfb378574a958a63e3bf4df48a2d5a77a636985878ead0bc52df6a531e8b906",
+      "roundId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:6df6f79b258531c5c11c7d781c772585b7402eee33614661fe3c7f73af15cda1",
+      "goalReviewContextFingerprint": "sha256:c43f03bff4e050751d87ac9be698d7e2a5dfcdd280fed384a0b6a733b59c6341",
+      "batchId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-a.batch-001",
+      "runId": "physik-b012-20260827-round-a-gpt5",
+      "runManifestDigest": "sha256:2a6f300455d0eb76caa79d54f062ad517254cce2f0f29e9660b36eea8e6deb0e",
+      "resultsDigest": "sha256:7aba732dc5bd5d35744c58d8a911ef43863a0a7e82caf85535bb5054095435c1",
+      "recordId": "phys012-a-003-69f8f59c",
+      "recordDigest": "sha256:9fc91c463c4f68d394815e05eb5a6fa10c6879cc6c526c474ed0cc1ceaa9c9c0"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-b",
+      "campaignDigest": "sha256:09aa530b0412c2a35eda4f508d4d8ff4a4947e85a0bfda4c303e6d74c1e3ce86",
+      "roundId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:6df6f79b258531c5c11c7d781c772585b7402eee33614661fe3c7f73af15cda1",
+      "goalReviewContextFingerprint": "sha256:c43f03bff4e050751d87ac9be698d7e2a5dfcdd280fed384a0b6a733b59c6341",
+      "batchId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-b.batch-001",
+      "runId": "physik-b012-electricity-rb-codex-20260827",
+      "runManifestDigest": "sha256:0dad7e825ae2630c6e19529cd35fa085699f6d95622bcbc8eb5a9e1dc14e0a07",
+      "resultsDigest": "sha256:5047b3e06a0baa790319619dea5f582b6d71cb02697fc54ec64b0afdd97276b1",
+      "recordId": "physik-b012-electricity-rb-codex-20260827.003",
+      "recordDigest": "sha256:34934141c0be600f233c4dcadcf7d6a8fdcec179f4bbaf5b399f062585c4169b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:84cde814b7c387063ae1535583542ecb030cac9eb8daaafb7cfdee80e38f4add"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-synthesis",
+    "manifestDigest": "sha256:aaf5f7683ec8261b6c0881b6e08c4dfbfa6ea2eaa02eb07480fc1fa6cc802322",
+    "manifestFingerprint": "sha256:a653fac01cfd0b0177ef15da25fc954a42223b68054bcadcfbc1815fe52d6de8",
+    "decisionId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-synthesis-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-synthesis-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-27T09:24:06.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die bidirektionale Übersetzung als fachlich vollständige Repräsentationskompetenz. Die erste Evidenzfassung bindet die elektrische Äquivalenz ausdrücklich an Knoten und leitende Verbindungswege und prüft, ob trotz stark veränderter räumlicher Anordnung dieselbe Topologie erkannt beziehungsweise von einer tatsächlich veränderten Verschaltung unterschieden wird.",
+    "rationaleEn": "Both independent reviews confirm the bidirectional translation as a scientifically complete representation competence. The first evidence formulation explicitly binds electrical equivalence to nodes and conducting paths and tests whether the same topology is recognized despite a strongly changed spatial arrangement or distinguished from a genuinely changed connection.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht den Schaltplan als vereinfachte symbolische Darstellung der Bauteile und ihrer elektrischen Verbindungen: räumliche Form, Leitungslängen und Positionen können sich ändern, während die elektrische Verschaltung gleich bleibt.",
+      "essentialUnderstandingEn": "The learner understands a circuit diagram as a simplified symbolic representation of components and their electrical connections: spatial shape, wire lengths, and positions may change while the electrical connectivity remains the same.",
+      "observablePerformanceDe": "Die lernende Person erstellt zu einem einfachen realen Aufbau einen elektrisch äquivalenten Schaltplan mit fachüblichen Symbolen, setzt einen anderen vorgegebenen Plan als sicheren Aufbau um und weist anhand der Knoten und Verbindungswege nach, dass beide Darstellungen dieselbe Verschaltung zeigen.",
+      "observablePerformanceEn": "The learner creates an electrically equivalent circuit diagram with standard symbols for a simple physical setup, implements another given diagram as a safe physical circuit, and uses nodes and conducting paths to show that both representations express the same connectivity.",
+      "transferExpectationDe": "Bei einem frischen Aufbau, dessen Leitungen und Bauteile räumlich deutlich anders angeordnet sind, erkennt und erzeugt die lernende Person den gleichen Schaltplan oder unterscheidet ihn begründet von einer tatsächlich anders verschalteten Variante.",
+      "transferExpectationEn": "For a fresh setup in which wires and components are arranged very differently in space, the learner identifies and produces the same circuit diagram or justifiably distinguishes it from a variant with genuinely different connectivity."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-592e25cda7a969b978fd4ca2ca6968f9736893f66f76cfeaa6ecf80b57387f78",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d0973eb8d418fc105c49f63d256041123e376d0ebf1948c63d8f308a682e01b3"
+}

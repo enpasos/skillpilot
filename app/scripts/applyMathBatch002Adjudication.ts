@@ -305,7 +305,6 @@ function buildCanonical(): JsonRecord {
     parent.weight = 2
     parent.requires = []
     parent.contains = children
-    parent.resourceLinks = []
     delete parent.semanticAtomic
   }
 

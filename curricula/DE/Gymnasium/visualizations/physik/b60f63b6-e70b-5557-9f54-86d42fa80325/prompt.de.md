@@ -6,28 +6,27 @@
 - Titel: Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten
 - Beschreibung: Die lernende Person kann aus vergleichenden Beobachtungen erklären, dass sich Länge oder Volumen fester, flüssiger und gasförmiger Stoffe beim Erwärmen meist vergrößern und beim Abkühlen verkleinern, sofern eine Ausdehnung nicht durch starre Begrenzung verhindert wird, und Unterschiede qualitativ deuten.
 
-## Finale reproduzierbare Prompt-Spezifikation
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `b60f63b6-e70b-5557-9f54-86d42fa80325.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.jpg`
+
+## Prompt
 
 ```text
-Erzeuge eine dreigeteilte deutschsprachige Physik-Lerninfografik im Querformat zur thermischen Ausdehnung bei Erwärmung.
+Der vorige Entwurf ist fachlich fast korrekt, wird aber wegen fehlerhaft kleingeschriebener deutscher Nomen in den Überschriften noch nicht akzeptiert. Erzeuge die Vergleichsinfografik erneut und verwende als drei Bereichsüberschriften exakt und ausschließlich „FEST“, „FLÜSSIG“ und „GASFÖRMIG“ – ohne Klammerzusätze.
 
-Oben zeigt ein Wärmesymbol die gemeinsame Ursache. Links unter „fest“: derselbe Metallstab vorher und wärmer, wobei der wärmere Stab sichtbar länger ist; markiere die zusätzliche Länge als „Ausdehnung“. In der Mitte unter „flüssig“: derselbe Kolben mit Steigrohr vorher und wärmer, wobei der Flüssigkeitsstand beim wärmeren Zustand höher liegt. Rechts unter „gasförmig“: derselbe Kolben mit Ballon vorher und wärmer, wobei der Ballon beim wärmeren Zustand deutlich größer ist. Ergänze unten knapp „Abmessung bzw. Volumen nimmt im betrachteten Bereich zu“.
+Behalte die klaren Vorher/Wärmer-Vergleiche:
 
-Die Vorher-/Wärmer-Paare müssen jeweils nur die Temperaturänderung variieren und keine Stoffmenge hinzufügen. Weißer Hintergrund, reduzierte 2D-Lerninfografik, feste Stoffe türkis/orange, Flüssigkeit türkis/orange, Gasballon klar erkennbar.
+- derselbe Metallstab wird bei Wärme sichtbar etwas länger,
+- dieselbe Flüssigkeitsmenge steht im engen Steigrohr bei Wärme sichtbar höher,
+- dieselbe eingeschlossene Gasmenge befindet sich in einem transparenten Zylinder mit festem linken Boden und frei beweglichem rechten Kolben; bei Wärme steht der Kolben eindeutig weiter rechts und die farbige Gasfläche ist bei gleicher Querschnittsfläche sichtbar länger.
 
-Keine Phasenübergänge, kein schmelzender Stab, kein kochendes Gefäß, keine allgemeine Behauptung ohne betrachteten Bereich, keine Drittanbieterlogos, Wasserzeichen, Plattformnamen oder technischen IDs.
+Beschrifte die Zustände exakt „Vorher“ und „Wärmer“. Zeige „Erwärmen: größer“, „Abkühlen: kleiner“ und „sofern keine starre Begrenzung die Ausdehnung verhindert“. Alle deutschen Nomen großschreiben. Keine medizinische Spritze, kein offenes Gefäß für das Gas, kein Entweichen, keine Teilchenvergrößerung, keine Logos oder Anbieternamen.
 ```
 
-## Tatsächlich verwendeter OpenAI-Prompt
+## Review-Notiz
 
-~~~text
-Create a clean, precise educational physics diagram for a German lower-secondary learning goal about qualitatively interpreting thermal expansion of solids, liquids, and gases from comparative observations. White background, landscape composition, polished textbook vector-like raster style, dark navy outlines with teal cold-state and warm orange heated-state overlays, ample whitespace. Use exactly three compact before/after panels under the same small heat symbol. Solid: a metal rod is slightly longer after heating, with matching endpoints and an expansion arrow. Liquid: the same flask and narrow capillary show the liquid level higher after heating. Gas: a sealed flask with a flexible balloon shows the balloon larger after heating. Label the panels exactly “fest”, “flüssig”, and “gasförmig”; label states only “vorher” and “wärmer”. Include one compact statement “Abmessung bzw. Volumen nimmt im betrachteten Bereich zu”. No equations, no people, no flames touching glass, no logos, no watermark. Do not imply that particles themselves grow; depict only macroscopic length, liquid level, and gas volume changes.
-~~~
-
-## Asset-Bindung
-
-- Quellbild: `b60f63b6-e70b-5557-9f54-86d42fa80325.png`
-- Public Asset: `/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.png`
-- Provider: OpenAI image generation
-- Asset-SHA-256: sha256:f44c2e1bc9ec357182a788ac72c3bbad211a27a013adbffc4602e269456a4d9b
-- QA: am 2026-08-26 erneut in Originalauflösung gegen die revidierte Beschreibung geprüft. Die drei dargestellten Fälle zeigen freie beziehungsweise beweglich begrenzte Ausdehnung und bleiben damit unter der nun ausdrücklich genannten Randbedingung korrekt; der Kontrast zur starren Begrenzung wird im gebundenen Verständnisprofil geprüft. Die KI-Freigabe ist im QA-Ledger an diesen Hash gebunden. Eine menschliche Freigabe wurde nicht behauptet.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:b68f356f14a5f9a8dcbccd51c41226106ec1ed920145ca4ba7102fa0e762abb2 gebunden; eine menschliche Freigabe wurde nicht behauptet.

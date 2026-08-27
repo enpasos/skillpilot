@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b004-a-openai-gpt5-20260827",
+  "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:458c89678b7a8ad829da906a872482f00448dc40433adb0e3015fc29cd182160",
+  "bundleFingerprint": "sha256:953794a985cf4053ab55bbacb5102c66653d99ae33c46b4d216b2bbd712e75b6",
+  "bookDigest": "sha256:befd24f3097fff2b655d7260818f6dd93454709f1f7419cf21a5cb8512aebd16",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:5d72f8a83dc9c489d65a35c9962e6a4e5723d436eca00c3d817874e1cbcec715",
+  "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+    "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+    "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+    "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+    "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+    "cc60f759-1168-5fc0-8ff5-5f7a2533e61c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:458c89678b7a8ad829da906a872482f00448dc40433adb0e3015fc29cd182160"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-08-27T04:28:02.000Z",
+  "completedAt": "2026-08-27T04:30:06.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:68fdc96a3a1b2b7bf4ae3231aab6eb78e63f1dca0887a1ae500a4271f6770583",
+  "toolchainVersion": "goal-description-review-v1"
+}

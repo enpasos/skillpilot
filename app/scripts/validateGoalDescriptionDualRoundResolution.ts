@@ -1,10 +1,11 @@
 import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
+import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal } from '../src/landscapeTypes'
+import { buildGoalDescriptionRolloutResolutionSynthesis } from './goalDescriptionRolloutResolutionSynthesis'
 import {
   GOAL_BOOK_EDITION,
   GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
@@ -29,6 +30,10 @@ import {
   type GoalDescriptionDualRoundSummary,
   type GoalDescriptionReviewRoundArtifacts,
 } from './validateGoalDescriptionReviewDualRound'
+import {
+  validateGoalDescriptionRolloutSynthesisDecisionManifestStructure,
+  type GoalDescriptionRolloutSynthesisDecisionManifest,
+} from './validateGoalDescriptionRolloutSynthesisDecisionManifest'
 
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const RESOLUTION_SCHEMA_PATH = resolve(
@@ -123,7 +128,7 @@ export type GoalDescriptionDualRoundResolution = {
       source: 'first' | 'second' | 'both' | 'synthesis'
       textDe: string
       textEn: string
-      disposition: 'accepted_first' | 'accepted_second' | 'merged' | 'not_material' | 'unresolved'
+      disposition: 'accepted_first' | 'accepted_second' | 'merged' | 'not_material' | 'rejected_revision_evidence_accepted' | 'unresolved'
     }>
     humanAttestation: null | {
       attestationId: string
@@ -149,7 +154,41 @@ export type GoalDescriptionDualRoundResolutionBindingArtifacts = {
   canonicalGoal: Record<string, unknown>
   firstSource: GoalDescriptionDualRoundResolutionSource
   secondSource: GoalDescriptionDualRoundResolutionSource
+  synthesisDecisionManifestArtifact?: {
+    manifest: GoalDescriptionRolloutSynthesisDecisionManifest
+    manifestBytes: Buffer
+    manifestPath: string
+  }
   humanAttestationBytes?: Buffer
+}
+
+const hasExactRejectedRevisionDissent = ({
+  resolution,
+  firstSource,
+  secondSource,
+}: {
+  resolution: Pick<GoalDescriptionDualRoundResolution, 'decision' | 'synthesis'>
+  firstSource: GoalDescriptionDualRoundResolutionSource
+  secondSource: GoalDescriptionDualRoundResolutionSource
+}) => {
+  if (resolution.decision !== 'keep_current') return false
+  const entries = [
+    ['first', firstSource],
+    ['second', secondSource],
+  ] as const
+  const keepEntries = entries.filter(([, source]) => source.decision === 'keep')
+  const reviseEntries = entries.filter(([, source]) => source.decision === 'revise')
+  if (keepEntries.length !== 1 || reviseEntries.length !== 1) return false
+  const [reviseLabel, reviseSource] = reviseEntries[0]
+  const proposedDescriptionDe = reviseSource.record?.proposedDescriptionDe
+  const proposedDescriptionEn = reviseSource.record?.proposedDescriptionEn
+  if (!proposedDescriptionDe || !proposedDescriptionEn) return false
+  return resolution.synthesis.dissent.some((dissent) => (
+    dissent.source === reviseLabel
+    && dissent.disposition === 'rejected_revision_evidence_accepted'
+    && dissent.textDe.includes(proposedDescriptionDe)
+    && dissent.textEn.includes(proposedDescriptionEn)
+  ))
 }
 
 const sha256 = (value: Buffer | string): Digest => (
@@ -205,6 +244,216 @@ const parseJson = <T>(value: Buffer | string, label: string): T => {
     return JSON.parse(value.toString()) as T
   } catch (error) {
     throw new Error(`${label} is not valid JSON: ${error instanceof Error ? error.message : String(error)}`)
+  }
+}
+
+const manifestRoundBindingFromSource = (
+  source: GoalDescriptionDualRoundResolutionSource,
+) => ({
+  campaignId: source.binding.campaignId,
+  campaignDigest: source.binding.campaignDigest,
+  roundId: source.binding.roundId,
+  independenceGroupId: source.binding.independenceGroupId,
+  reviewInputFingerprint: source.binding.reviewInputFingerprint,
+  batchId: source.binding.batchId,
+  runId: source.binding.runId,
+  runManifestDigest: source.binding.runManifestDigest,
+  resultsDigest: source.binding.resultsDigest,
+})
+
+const manifestRoundBindingWithoutBatchInput = (
+  round: GoalDescriptionRolloutSynthesisDecisionManifest['rounds']['first'],
+) => ({
+  campaignId: round.campaignId,
+  campaignDigest: round.campaignDigest,
+  roundId: round.roundId,
+  independenceGroupId: round.independenceGroupId,
+  reviewInputFingerprint: round.reviewInputFingerprint,
+  batchId: round.batchId,
+  runId: round.runId,
+  runManifestDigest: round.runManifestDigest,
+  resultsDigest: round.resultsDigest,
+})
+
+const validateManifestBoundResolutionSynthesis = async ({
+  resolution,
+  dualSummary,
+  currentInput,
+  firstSource,
+  secondSource,
+  artifact,
+}: {
+  resolution: GoalDescriptionDualRoundResolution
+  dualSummary: GoalDescriptionDualRoundSummary
+  currentInput: GoalDescriptionReviewInput
+  firstSource: GoalDescriptionDualRoundResolutionSource
+  secondSource: GoalDescriptionDualRoundResolutionSource
+  artifact?: GoalDescriptionDualRoundResolutionBindingArtifacts['synthesisDecisionManifestArtifact']
+}) => {
+  const errors: string[] = []
+  const keepCount = [firstSource, secondSource]
+    .filter(({ decision }) => decision === 'keep').length
+  const reviseCount = [firstSource, secondSource]
+    .filter(({ decision }) => decision === 'revise').length
+  const mixedKeepRevise = (
+    resolution.decision === 'keep_current'
+    && keepCount === 1
+    && reviseCount === 1
+  )
+  const binding = resolution.synthesisDecisionManifest
+  if (mixedKeepRevise && !binding) {
+    errors.push('A keep_current resolution with exactly one keep and one revise source requires a synthesis-decision manifest binding')
+  }
+  if (binding && !artifact) {
+    errors.push('A synthesis-decision manifest binding requires the exact supplied manifest bytes and parsed manifest')
+  }
+  if (artifact && !binding) {
+    errors.push('Supplied synthesis-decision manifest bytes require a resolution manifest binding')
+  }
+  if (!binding || !artifact) {
+    return { errors, exactManifestSynthesis: false, mixedKeepRevise }
+  }
+
+  const structure = await validateGoalDescriptionRolloutSynthesisDecisionManifestStructure(
+    artifact.manifest,
+  )
+  errors.push(...structure.errors)
+  if (!structure.schemaValid) {
+    return { errors, exactManifestSynthesis: false, mixedKeepRevise }
+  }
+  try {
+    const persistedManifest = parseJson<GoalDescriptionRolloutSynthesisDecisionManifest>(
+      artifact.manifestBytes,
+      'persisted synthesis-decision manifest',
+    )
+    if (stableGoalBookJson(persistedManifest) !== stableGoalBookJson(artifact.manifest)) {
+      errors.push('Supplied synthesis-decision manifest object does not match the persisted manifest bytes')
+    }
+  } catch (error) {
+    errors.push(error instanceof Error ? error.message : String(error))
+  }
+  if (binding.manifestPath !== artifact.manifestPath) {
+    errors.push('Resolution synthesis-decision manifestPath does not match the supplied manifest artifact path')
+  }
+  if (
+    binding.contract !== artifact.manifest.synthesisContract
+    || binding.manifestId !== artifact.manifest.manifestId
+    || binding.manifestDigest !== sha256(artifact.manifestBytes)
+    || binding.manifestFingerprint !== artifact.manifest.manifestFingerprint
+  ) {
+    errors.push('Resolution does not bind the exact synthesis-decision manifest identity, bytes, and fingerprint')
+  }
+  const duplicateDecisionIds = duplicateValues(
+    artifact.manifest.decisions.map(({ decisionId }) => decisionId),
+  )
+  const duplicateGoalIds = duplicateValues(
+    artifact.manifest.decisions.map(({ goalId }) => goalId),
+  )
+  duplicateDecisionIds.forEach((decisionId) => {
+    errors.push(`Synthesis-decision manifest contains duplicate decisionId ${decisionId}`)
+  })
+  duplicateGoalIds.forEach((goalId) => {
+    errors.push(`Synthesis-decision manifest contains duplicate goalId ${goalId}`)
+  })
+  const goalDecisions = artifact.manifest.decisions.filter(
+    ({ goalId }) => goalId === resolution.goal.goalId,
+  )
+  const boundDecisions = artifact.manifest.decisions.filter(
+    ({ decisionId }) => decisionId === binding.decisionId,
+  )
+  if (goalDecisions.length !== 1 || boundDecisions.length !== 1 || goalDecisions[0] !== boundDecisions[0]) {
+    errors.push(
+      `Synthesis-decision manifest must contain exactly one bound decision for ${resolution.goal.goalId}`,
+    )
+    return { errors, exactManifestSynthesis: false, mixedKeepRevise }
+  }
+  const decision = goalDecisions[0]
+  const summaryGoals = dualSummary.goals.filter(({ goalId }) => goalId === resolution.goal.goalId)
+  if (summaryGoals.length !== 1) {
+    errors.push(`Synthesis-decision validation requires exactly one dual-summary goal ${resolution.goal.goalId}`)
+    return { errors, exactManifestSynthesis: false, mixedKeepRevise }
+  }
+  const expectedBatchBinding = {
+    bundleFingerprint: currentInput.bundleFingerprint,
+    bookDigest: currentInput.bookDigest,
+    reviewInputFingerprint: currentInput.reviewInputFingerprint,
+    dualSummaryDigest: resolution.dualSummary.digest,
+  }
+  const actualBatchBinding = {
+    bundleFingerprint: artifact.manifest.batch.bundleFingerprint,
+    bookDigest: artifact.manifest.batch.bookDigest,
+    reviewInputFingerprint: artifact.manifest.batch.reviewInputFingerprint,
+    dualSummaryDigest: artifact.manifest.batch.dualSummaryDigest,
+  }
+  if (stableGoalBookJson(actualBatchBinding) !== stableGoalBookJson(expectedBatchBinding)) {
+    errors.push('Synthesis-decision manifest does not bind the supplied current input and dual summary')
+  }
+  const sources = { first: firstSource, second: secondSource } as const
+  ;(['first', 'second'] as const).forEach((label) => {
+    if (
+      stableGoalBookJson(manifestRoundBindingWithoutBatchInput(artifact.manifest.rounds[label]))
+      !== stableGoalBookJson(manifestRoundBindingFromSource(sources[label]))
+    ) {
+      errors.push(`Synthesis-decision manifest ${label} round does not bind the exact current review run`)
+    }
+  })
+  const expectedDecisionBinding = {
+    decisionId: binding.decisionId,
+    goalId: resolution.goal.goalId,
+    effectiveSemanticKind: resolution.goal.effectiveSemanticKind,
+    goalFingerprint: resolution.goal.goalFingerprint,
+    pageFingerprint: resolution.goal.pageFingerprint,
+    goalReviewContextFingerprint: resolution.goal.goalReviewContextFingerprint,
+    finalText: resolution.goal.finalText,
+    resolutionDecision: resolution.decision,
+    records: {
+      first: {
+        recordId: resolution.rounds.first.recordId,
+        recordDigest: resolution.rounds.first.recordDigest,
+      },
+      second: {
+        recordId: resolution.rounds.second.recordId,
+        recordDigest: resolution.rounds.second.recordDigest,
+      },
+    },
+    rationaleDe: resolution.synthesis.rationaleDe,
+    rationaleEn: resolution.synthesis.rationaleEn,
+  }
+  const actualDecisionBinding = {
+    decisionId: decision.decisionId,
+    goalId: decision.goalId,
+    effectiveSemanticKind: decision.effectiveSemanticKind,
+    goalFingerprint: decision.goalFingerprint,
+    pageFingerprint: decision.pageFingerprint,
+    goalReviewContextFingerprint: decision.goalReviewContextFingerprint,
+    finalText: decision.finalText,
+    resolutionDecision: decision.resolutionDecision,
+    records: decision.records,
+    rationaleDe: decision.rationaleDe,
+    rationaleEn: decision.rationaleEn,
+  }
+  if (stableGoalBookJson(actualDecisionBinding) !== stableGoalBookJson(expectedDecisionBinding)) {
+    errors.push('Resolution goal, records, decision, final text, or rationale disagrees with its bound synthesis decision')
+  }
+  try {
+    const expectedSynthesis = buildGoalDescriptionRolloutResolutionSynthesis({
+      batchId: artifact.manifest.batch.batchId,
+      manifest: artifact.manifest,
+      decision,
+      summaryGoal: summaryGoals[0],
+      firstSource,
+      secondSource,
+    })
+    if (stableGoalBookJson(resolution.synthesis) !== stableGoalBookJson(expectedSynthesis)) {
+      errors.push('Resolution synthesis does not exactly match the manifest-selected current record evidence and deterministic dissent')
+    }
+  } catch (error) {
+    errors.push(error instanceof Error ? error.message : String(error))
+  }
+  return {
+    errors,
+    exactManifestSynthesis: errors.length === 0,
+    mixedKeepRevise,
   }
 }
 
@@ -338,18 +587,23 @@ export const buildGoalDescriptionDualRoundResolution = ({
       validationContract: 'goal-description-dual-round-v1' as const,
       digest: sha256(dualSummaryBytes),
     },
-    status: (
-      firstSource.decision === 'keep' && secondSource.decision === 'keep'
-        ? 'resolved'
-        : 'open'
-    ) as GoalDescriptionDualRoundResolution['status'],
+    status: 'open' as GoalDescriptionDualRoundResolution['status'],
     decision,
     ...(synthesisDecisionManifest ? { synthesisDecisionManifest } : {}),
     synthesis,
   }
-  return {
+  const provisional = {
     ...withoutFingerprint,
-    resolutionFingerprint: fingerprintGoalDescriptionDualRoundResolution(withoutFingerprint),
+  }
+  provisional.status = (
+    (firstSource.decision === 'keep' && secondSource.decision === 'keep')
+    || hasExactRejectedRevisionDissent({ resolution: provisional, firstSource, secondSource })
+      ? 'resolved'
+      : 'open'
+  )
+  return {
+    ...provisional,
+    resolutionFingerprint: fingerprintGoalDescriptionDualRoundResolution(provisional),
   }
 }
 
@@ -501,6 +755,7 @@ export const validateGoalDescriptionDualRoundResolutionBindings = async ({
   canonicalGoal,
   firstSource,
   secondSource,
+  synthesisDecisionManifestArtifact,
   humanAttestationBytes,
 }: GoalDescriptionDualRoundResolutionBindingArtifacts) => {
   const { ajv, validateResolution, validateInputV3 } = await loadValidators()
@@ -613,15 +868,33 @@ export const validateGoalDescriptionDualRoundResolutionBindings = async ({
     }
   }
 
+  const manifestValidation = await validateManifestBoundResolutionSynthesis({
+    resolution,
+    dualSummary,
+    currentInput,
+    firstSource,
+    secondSource,
+    artifact: synthesisDecisionManifestArtifact,
+  })
+  errors.push(...manifestValidation.errors)
+
   const bothKeep = firstSource.decision === 'keep' && secondSource.decision === 'keep'
-  if (resolution.status === 'resolved' && !bothKeep) {
-    errors.push('A revise, split_review, or block source decision must remain open until two fresh current-context keep reviews exist')
+  const acceptedKeepRevise = (
+    manifestValidation.mixedKeepRevise
+    && manifestValidation.exactManifestSynthesis
+    && hasExactRejectedRevisionDissent({ resolution, firstSource, secondSource })
+  )
+  if (resolution.status === 'resolved' && !bothKeep && !acceptedKeepRevise) {
+    errors.push('A non-keep source decision must remain open unless keep_current binds exactly one current keep plus one current revise record and explicitly rejects the revision as dissent')
   }
   if (
     resolution.status === 'resolved'
     && resolution.synthesis.dissent.some(({ disposition }) => disposition === 'unresolved')
   ) {
     errors.push('A resolved synthesis cannot retain unresolved dissent')
+  }
+  if (manifestValidation.mixedKeepRevise && resolution.status !== 'resolved') {
+    errors.push('An exact manifest-bound keep_current keep/revise synthesis must have resolved status')
   }
   duplicateValues(resolution.synthesis.dissent.map(({ dissentId }) => dissentId)).forEach((dissentId) => {
     errors.push(`Resolution synthesis contains duplicate dissentId ${dissentId}`)
@@ -640,7 +913,7 @@ export const validateGoalDescriptionDualRoundResolutionBindings = async ({
   const strictDescriptionComplete = (
     errors.length === 0
     && resolution.status === 'resolved'
-    && bothKeep
+    && (bothKeep || acceptedKeepRevise)
   )
   return { errors, strictDescriptionComplete }
 }
@@ -653,6 +926,7 @@ export const validateGoalDescriptionDualRoundResolution = async ({
   landscape,
   first,
   second,
+  synthesisDecisionManifestArtifact,
   humanAttestationBytes,
 }: {
   resolution: GoalDescriptionDualRoundResolution
@@ -662,6 +936,7 @@ export const validateGoalDescriptionDualRoundResolution = async ({
   landscape: unknown
   first: GoalDescriptionReviewRoundArtifacts
   second: GoalDescriptionReviewRoundArtifacts
+  synthesisDecisionManifestArtifact?: GoalDescriptionDualRoundResolutionBindingArtifacts['synthesisDecisionManifestArtifact']
   humanAttestationBytes?: Buffer
 }) => {
   const errors: string[] = []
@@ -734,6 +1009,7 @@ export const validateGoalDescriptionDualRoundResolution = async ({
     canonicalGoal: canonicalMatches[0],
     firstSource: firstSourceResult.source,
     secondSource: secondSourceResult.source,
+    synthesisDecisionManifestArtifact,
     humanAttestationBytes,
   })
   return {
@@ -830,14 +1106,42 @@ const main = async () => {
     loadRound(paths.second),
     paths.humanAttestation ? readFile(paths.humanAttestation) : Promise.resolve(undefined),
   ])
+  const resolution = parseJson<GoalDescriptionDualRoundResolution>(
+    resolutionBytes,
+    paths.resolution,
+  )
+  let synthesisDecisionManifestArtifact:
+    GoalDescriptionDualRoundResolutionBindingArtifacts['synthesisDecisionManifestArtifact']
+  if (resolution.synthesisDecisionManifest) {
+    const batchRoot = dirname(dirname(paths.resolution))
+    const manifestPath = resolve(batchRoot, resolution.synthesisDecisionManifest.manifestPath)
+    const relativeManifestPath = relative(batchRoot, manifestPath)
+    if (
+      relativeManifestPath === ''
+      || relativeManifestPath === '..'
+      || relativeManifestPath.startsWith(`..${sep}`)
+    ) {
+      throw new Error('Resolution synthesis-decision manifestPath leaves its batch root')
+    }
+    const manifestBytes = await readFile(manifestPath)
+    synthesisDecisionManifestArtifact = {
+      manifest: parseJson<GoalDescriptionRolloutSynthesisDecisionManifest>(
+        manifestBytes,
+        manifestPath,
+      ),
+      manifestBytes,
+      manifestPath: resolution.synthesisDecisionManifest.manifestPath,
+    }
+  }
   const result = await validateGoalDescriptionDualRoundResolution({
-    resolution: parseJson<GoalDescriptionDualRoundResolution>(resolutionBytes, paths.resolution),
+    resolution,
     dualSummary: parseJson<GoalDescriptionDualRoundSummary>(dualSummaryBytes, paths.dualSummary),
     dualSummaryBytes,
     currentInput: parseJson<GoalDescriptionReviewInput>(currentInputBytes, paths.currentInput),
     landscape: parseJson<unknown>(landscapeBytes, paths.landscape),
     first: first.artifacts,
     second: second.artifacts,
+    synthesisDecisionManifestArtifact,
     humanAttestationBytes,
   })
   const errors = [
@@ -850,7 +1154,6 @@ const main = async () => {
     process.exitCode = 1
     return
   }
-  const resolution = parseJson<GoalDescriptionDualRoundResolution>(resolutionBytes, paths.resolution)
   console.log(
     `Goal-description dual-round resolution valid: ${resolution.goal.goalId}; strictDescriptionComplete=${result.strictDescriptionComplete}`,
   )

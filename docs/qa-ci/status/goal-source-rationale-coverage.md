@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-08-20T04:38:02.441Z
+Generated: 2026-08-27T14:18:57.804Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1147 |
-| Atomare Blattleernziele | 903 |
-| Davon relevant fuer Quellenbegruendung | 780 |
-| Memory-/Nicht-Content-Blattziele | 123 |
-| Clusterziele | 244 |
-| Runtime-Quellenbegruendungen | 725 |
-| Runtime-Ziele mit klassischem Quellenweg | 725 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 214 |
-| Relevante Blattziele mit klassischem Quellenweg | 725/780 (92.9%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 214/780 (27.4%) |
+| Alle Mathematik-Ziele | 1170 |
+| Atomare Blattleernziele | 916 |
+| Davon relevant fuer Quellenbegruendung | 791 |
+| Memory-/Nicht-Content-Blattziele | 125 |
+| Clusterziele | 254 |
+| Runtime-Quellenbegruendungen | 736 |
+| Runtime-Ziele mit klassischem Quellenweg | 736 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 223 |
+| Relevante Blattziele mit klassischem Quellenweg | 736/791 (93.0%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 223/791 (28.2%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 55 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/244 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 244 |
-| contains-Relationen mit Begruendungstext | 0/1267 |
-| requires-Relationen mit Begruendungstext | 0/2436 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/254 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 254 |
+| contains-Relationen mit Begruendungstext | 0/1290 |
+| requires-Relationen mit Begruendungstext | 0/2451 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 725 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 736 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -49,26 +49,26 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Q3 | 76 | 73 (96.1%) | 13 (17.1%) | 3 |
 | J10 | 58 | 58 (100.0%) | 21 (36.2%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 10 (20.8%) | 0 |
-| J7 | 44 | 44 (100.0%) | 16 (36.4%) | 0 |
+| J7 | 45 | 45 (100.0%) | 17 (37.8%) | 0 |
 | J9 | 44 | 44 (100.0%) | 18 (40.9%) | 0 |
+| J6 | 42 | 42 (100.0%) | 21 (50.0%) | 0 |
 | J8 | 38 | 38 (100.0%) | 16 (42.1%) | 0 |
-| J6 | 36 | 36 (100.0%) | 17 (47.2%) | 0 |
-| J5 | 32 | 32 (100.0%) | 19 (59.4%) | 0 |
+| J5 | 36 | 36 (100.0%) | 23 (63.9%) | 0 |
 | GLOBAL | 7 | 7 (100.0%) | 2 (28.6%) | 0 |
 
 ## Gaps By Area
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| unknown | 385 | 337 (87.5%) | 67 (17.4%) | 48 |
-| Analysis | 126 | 120 (95.2%) | 36 (28.6%) | 6 |
+| unknown | 386 | 338 (87.6%) | 67 (17.4%) | 48 |
+| Analysis | 125 | 119 (95.2%) | 36 (28.8%) | 6 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
-| Geometry | 75 | 75 (100.0%) | 36 (48.0%) | 0 |
+| Geometry | 80 | 80 (100.0%) | 39 (48.8%) | 0 |
 | LinearAlgebra | 68 | 68 (100.0%) | 7 (10.3%) | 0 |
-| Algebra | 54 | 54 (100.0%) | 32 (59.3%) | 0 |
-| Arithmetic | 42 | 42 (100.0%) | 20 (47.6%) | 0 |
+| Algebra | 55 | 55 (100.0%) | 33 (60.0%) | 0 |
+| Arithmetic | 46 | 46 (100.0%) | 24 (52.2%) | 0 |
+| Measurement | 11 | 11 (100.0%) | 4 (36.4%) | 0 |
 | Data | 10 | 10 (100.0%) | 8 (80.0%) | 0 |
-| Measurement | 10 | 10 (100.0%) | 3 (30.0%) | 0 |
 | Probability | 6 | 6 (100.0%) | 4 (66.7%) | 0 |
 | Lineare Algebra | 2 | 2 (100.0%) | 0 (0.0%) | 0 |
 
@@ -225,7 +225,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Kongruenzbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Kongruenzbeziehungen ebener Figuren untersuchen |
 | Längen- und Winkelbeziehungen einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Längen- und Winkelbeziehungen einfacher Körper untersuchen |
 
-Weitere 431 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 433 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -292,11 +292,11 @@ Weitere 431 Eintraege stehen in der JSON-Begleitdatei.
 | Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by) | Q4 | Algebra | CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) |
 | Problemlösen und Argumentieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren |
 
-Weitere 184 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 194 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-08-17T01:00:59.542Z
+- Runtime index generated: 2026-08-27T13:04:50.040Z
 

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `7dea79d2-67f2-4d92-b6cc-ad1b953dca3d`
 - Titel: Funktionen als eindeutige Zuordnungen charakterisieren
-- Beschreibung: Die lernende Person kann Funktionen als eindeutige Zuordnungen charakterisieren und sie von allgemeineren Zuordnungen anhand dieser Eigenschaft abgrenzen.
+- Beschreibung: Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Funktionen als eindeutige Zuordnungen charakterisieren
-Beschreibung: Die lernende Person kann Funktionen als eindeutige Zuordnungen charakterisieren und sie von allgemeineren Zuordnungen anhand dieser Eigenschaft abgrenzen.
+Beschreibung: Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.
 
 Zusatzanweisung:
 Do not include any technical IDs, platform names, UUIDs, file names, database identifiers, watermarks, signatures, or hidden labels anywhere in the image. Show functions as unique assignments. Use two side-by-side mapping diagrams. Left diagram: Funktion, green check. Input set x values 1, 2, 3. Output values 2, 4, 6. Arrows: 1 -> 2, 2 -> 4, 3 -> 6. Label: jeder x-Wert hat genau einen y-Wert. Right diagram: keine Funktion, red cross. Input values 1, 2, 3. Output values 2, 4, 6. Arrows: 1 -> 2 and 1 -> 4, 2 -> 4, 3 -> 6. Label: ein x-Wert hat zwei y-Werte. Do not add formulas or graphs.

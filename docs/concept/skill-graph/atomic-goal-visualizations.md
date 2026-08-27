@@ -181,6 +181,35 @@ Reference pools of example tasks or image inspirations may be kept locally under
 
 ## Production Pipeline
 
+### Provider priority and exception policy
+
+For new Mathematik and Physik curriculum visualizations, use **Google Gemini /
+Nano Banana Pro as the default production provider**. Its loose, approachable
+illustration style is part of the intended learner experience. An existing,
+fachlich correct Nano Banana Pro asset must not be replaced merely because a
+repository-native SVG would be easier to edit, render deterministically, or
+validate mechanically.
+
+This priority also applies retroactively to every Mathematik or Physik asset
+newly produced during an ongoing rollout: before such a rollout is finalized,
+review its already-created learner-facing assets against the same provider
+priority and exception evidence. A repository-native draft created earlier in
+the rollout does not become an accepted final asset merely because it predates
+this policy clarification.
+
+A repository-native SVG or another provider may become the final asset only
+after targeted Nano Banana Pro attempts have failed to achieve the required
+subject-matter correctness or legibility. The corresponding visualization
+review note must record the attempted prompts or reference-image strategy, the
+visible defects in the rejected candidates, and why the fallback is necessary.
+Temporary SVGs remain useful as exact reference inputs for Nano Banana Pro; that
+does not make them the preferred final learner-facing asset.
+
+When an atomic goal is split, preserve a good existing aggregate image as an
+overview on the retained cluster whenever it still accurately represents the
+combined scope. Add more specific child images without mechanically deleting
+the overview asset.
+
 1. Select an atomic goal and record its SkillPilot ID, title, description, phase, and intended learner audience.
 2. Draft a compact image prompt from the goal itself. The prompt may add concrete representations, but must not add extra curriculum content beyond the goal.
 3. Generate several candidates with the chosen image provider.
@@ -388,7 +417,13 @@ Review decisions should use these labels:
 - `deferred_provider_limitation` - repeated provider attempts stayed fachlich wrong; remove the `resourceLinks` image reference and revisit when the provider improves
 - `needs_external_review` - no obvious blocker, but the image is too subtle or high-risk for self-review only
 
-If repeated Nano Banana Pro attempts still contain a gross mathematical or tool-use error, do not substitute a hand-drawn SVG or other non-provider replacement for the same cartoon visualization lane. Remove the active image link, remove the published asset copies, and record the deferred decision in the review ledger.
+If repeated, targeted Nano Banana Pro attempts still contain a gross mathematical
+or tool-use error, do not silently substitute another provider. A precise
+repository-native image may be used only as the documented exception described
+above: the review record must bind the rejected provider attempts, their visible
+defects, and the reason the fallback is materially better. If no fallback meets
+the same fachliche and visual-quality bar, remove the active image link and
+published copies and record `deferred_provider_limitation` instead.
 
 Keep `reviewStatus: "pilot"` until the intended release review has passed. Do not infer approval from the existence of a generated file, a public asset, or a `resourceLinks` entry.
 

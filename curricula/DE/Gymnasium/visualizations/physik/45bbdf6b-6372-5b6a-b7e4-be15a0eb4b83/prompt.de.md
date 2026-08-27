@@ -8,26 +8,17 @@
 
 ## Generator
 
-- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
-- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
-- Quellbild: `45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.png`
-- Public Asset: `/assets/goal-visualizations/physik/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.png`
-- SHA-256: `sha256:60a86675a28536cc7d404b8024714405e4fcfe37cc47fcfa3d9a6e7fc8f39126`
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.jpg`
 
-## Finale wirksame Prompt-Spezifikation
+## Prompt
 
 ```text
-Erzeuge eine klare, fachlich präzise deutschsprachige Lerninfografik im Querformat zum experimentellen Zusammenhang zwischen Kraft F und Federverlängerung s.
-
-Zeige eine vertikale Feder mit nach unten gerichteten Kraftpfeilen, eine konsistente Messtabelle und ein Diagramm mit F auf der waagerechten und s auf der senkrechten Achse. Verwende exakt die Messpaare F in N: 0, 1, 2, 3, 4, 5, 6 und s in cm: 0, 2, 4, 6, 8, 11, 15. Markiere 0 bis 8 cm als proportionalen Messbereich und die beiden folgenden Punkte als nicht mehr proportional. Die Punkte 0 bis 8 cm müssen auf einer Geraden durch den Ursprung liegen; 11 cm und 15 cm müssen sichtbar davon abweichen.
-
-Mache die drei Erkenntnisschritte visuell lesbar: messen, Tabelle und Graph auswerten, Proportionalbereich begründet abgrenzen. Alle Kraftpfeile zeigen nach unten. Beschriftungen und Zahlen müssen auch verkleinert eindeutig und untereinander widerspruchsfrei sein.
-
-Keine Drittanbieterlogos, Wasserzeichen, technischen IDs, Plattformnamen, Aufgabenlösung, langen Textblöcke oder irreführenden Gewichts-/Kraftbeschriftungen. Keine rein lineare Darstellung über den gesamten Messbereich.
+Der erste Nano-Banana-Pro-Versuch wurde verworfen, weil die Federreihe F=3 N ausließ, F=2 N doppelte und mehrere Verformungswerte falsch beschriftete. Erzeuge eine korrigierte Fassung mit genau sieben von links nach rechts angeordneten Federzuständen. Oberhalb müssen ohne Ausnahme die Beschriftungen F = 0 N, F = 1 N, F = 2 N, F = 3 N, F = 4 N, F = 5 N, F = 6 N stehen. Direkt am jeweils selben Federzustand müssen darunter exakt s = 0 cm, s = 2 cm, s = 4 cm, s = 6 cm, s = 8 cm, s = 11 cm, s = 15 cm stehen. Kein Wert darf fehlen, doppelt auftreten oder einem anderen Zustand zugeordnet werden. Tabelle und Diagramm müssen dieselben sieben Werte verwenden; proportional ist nur 0 bis 4 N beziehungsweise 0 bis 8 cm. Lockeren handillustrierten Stil beibehalten, keine zusätzlichen Zahlen.
 ```
-
-Die Generierung wurde iterativ korrigiert, bis Pfeilrichtungen, Tabelle, Diagramm und die Grenze des Proportionalbereichs übereinstimmten.
 
 ## Review-Notiz
 
-Am 25.08.2026 in Originalauflösung KI-geprüft: Kraftwerte, Verlängerungen, Tabelle und F-s-Diagramm stimmen überein; der lineare Bereich 0 bis 8 cm und die anschließende Abweichung sind ausdrücklich getrennt. Eine menschliche Freigabe liegt nicht vor.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:146636869dbe72b8dd53f2976b859c9807b550be726f72325f457193ea998e06 gebunden; eine menschliche Freigabe wurde nicht behauptet.

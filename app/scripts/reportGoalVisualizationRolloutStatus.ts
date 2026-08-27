@@ -335,7 +335,10 @@ export function splitMarkdownTableRow(line: string): string[] {
 export function parseReviewDecisionRow(line: string, batch: string): ReviewDecisionRow | null {
   if (!/^\s*\|/u.test(line)) return null
   const cells = splitMarkdownTableRow(line)
-  const goalId = cells[0]?.match(/^`?([0-9a-f]{8}-[0-9a-f-]{27,})`?$/iu)?.[1]
+  // A small number of stable legacy curriculum IDs have an 11-character
+  // final UUID-like segment. Accept those canonical IDs as table identities
+  // without relaxing the requirement that the complete first cell is an ID.
+  const goalId = cells[0]?.match(/^`?([0-9a-f]{8}-[0-9a-f-]{26,})`?$/iu)?.[1]
   if (!goalId) return null
   const codeCells = cells.flatMap((cell) => Array.from(cell.matchAll(/`([^`]+)`/g), (match) => match[1]))
   const decision = codeCells.find(isReviewDecision)

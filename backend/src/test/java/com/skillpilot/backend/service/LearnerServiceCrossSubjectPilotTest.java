@@ -186,6 +186,8 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_SEK1_SOUND_SPEED_MEDIA_ID = "a24c41ce-68c5-56a7-8235-ef9a7dba7042";
     private static final String CANONICAL_PHYSICS_SEK1_SOUND_CHARACTERIZATION_ID = "10aad90e-a1db-42b6-8d1e-1d856e14b47d";
     private static final String CANONICAL_PHYSICS_SEK1_HEARING_ID = "3e33813d-db75-4571-8345-3845b02b956d";
+    private static final String CANONICAL_PHYSICS_SEK1_HEARING_PROCESS_ID = "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c";
+    private static final String CANONICAL_PHYSICS_SEK1_NOISE_EXPOSURE_ID = "da0837c7-95a7-5a6a-81db-f33cb7f42d85";
     private static final String CANONICAL_PHYSICS_SEK1_SOUND_MUSIC_ID = "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e";
     private static final String CANONICAL_PHYSICS_SEK1_COLORS_CLUSTER_ID = "48fb4a0b-62a0-4c8f-9792-3aeef6316885";
     private static final String CANONICAL_PHYSICS_SEK1_COLOR_ORIGIN_ID = "a4681378-ade4-4f20-bf77-fb020469510f";
@@ -203,10 +205,16 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_SEK1_ELECTRICITY_CLUSTER_ID = "4924d83e-5e4b-4819-9d70-86cda3496195";
     private static final String CANONICAL_PHYSICS_SEK1_MAGNETS_ID = "f778a659-1467-4aa7-97b2-bed78c530634";
     private static final String CANONICAL_PHYSICS_SEK1_SIMPLE_CIRCUITS_ID = "75bdf5ca-cda4-4658-9ec7-84c77b3759db";
+    private static final String CANONICAL_PHYSICS_SEK1_OPEN_CLOSED_CIRCUITS_ID = "7ca44ba0-b77e-52bf-8562-f67b44767172";
+    private static final String CANONICAL_PHYSICS_SEK1_CIRCUIT_DIAGRAM_TRANSLATION_ID = "69f8f59c-b0c3-5b0b-82db-834a0e655736";
+    private static final String CANONICAL_PHYSICS_SEK1_CONDUCTIVITY_ID = "baa2bf3c-798a-5ec3-a667-031bf062d96c";
     private static final String CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID = "a5f652cc-e091-4c90-bec2-c357ae54fcf1";
     private static final String CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID = "f1a078ae-6262-4444-a4bc-a5ab275621cf";
     private static final String CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID = "bbabac7c-9613-4c7e-877e-d7dc3df5300f";
     private static final String CANONICAL_PHYSICS_SEK1_STATIC_ELECTRICITY_ID = "32111497-d5ca-453e-906d-d352f885b126";
+    private static final String CANONICAL_PHYSICS_SEK1_CHARGE_SEPARATION_ID = "dc7dd287-6eac-574d-818d-65cfb23a2d94";
+    private static final String CANONICAL_PHYSICS_SEK1_VOLTAGE_MEASUREMENT_ID = "28237994-9c24-5a06-82fe-be1f494768ba";
+    private static final String CANONICAL_PHYSICS_SEK1_CAPACITOR_ID = "80dd0a2b-1422-5b00-89ff-ec4d0faa047e";
     private static final String CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID = "53196a71-9dbd-4835-b2f9-ff21b8a8962c";
     private static final String CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID = "01bebdfc-5819-4610-a03e-ea5e794fc954";
     private static final String CANONICAL_PHYSICS_SEK1_KIRCHHOFF_BALANCES_ID = "8a84de16-2fde-58ec-827a-f803e2ce8564";
@@ -445,7 +453,22 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SOUND_MUSIC_ID, 1.0);
         assertThat(mastery).doesNotContainKeys(
                 CANONICAL_PHYSICS_SEK1_SOUND_PROPAGATION_ID,
-                CANONICAL_PHYSICS_SEK1_SOUND_SPEED_MEDIA_ID);
+                CANONICAL_PHYSICS_SEK1_SOUND_SPEED_MEDIA_ID,
+                CANONICAL_PHYSICS_SEK1_HEARING_PROCESS_ID,
+                CANONICAL_PHYSICS_SEK1_NOISE_EXPOSURE_ID);
+    }
+
+    @Test
+    void getMasteryKeepsRetainedPhysicsHearingClusterMasteryWithoutFanningOutToChildren() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, CANONICAL_PHYSICS_SEK1_HEARING_ID, 0.75)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_HEARING_ID, 0.75);
+        assertThat(mastery).doesNotContainKeys(
+                CANONICAL_PHYSICS_SEK1_HEARING_PROCESS_ID,
+                CANONICAL_PHYSICS_SEK1_NOISE_EXPOSURE_ID);
     }
 
     @Test
@@ -536,7 +559,7 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void getMasteryProjectsExactLegacySek1PhysicsElectricityMasteryIntoCanonicalPhysicsBridgeGoals() {
+    void getMasteryProjectsExactLegacySek1PhysicsElectricityGoalsButNotTheAmbiguousCircuitSplit() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_MAGNETS_ID, 1.0),
@@ -546,10 +569,14 @@ class LearnerServiceCrossSubjectPilotTest {
 
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
+        assertThat(mastery).containsEntry(LEGACY_SEK1_PHYSICS_SIMPLE_CIRCUITS_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_MAGNETS_ID, 1.0);
-        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SIMPLE_CIRCUITS_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_SIMPLE_CIRCUITS_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_OPEN_CLOSED_CIRCUITS_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_CIRCUIT_DIAGRAM_TRANSLATION_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_CONDUCTIVITY_ID, 1.0);
     }
 
     @Test
@@ -563,7 +590,7 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void getMasteryDoesNotProjectAmbiguousLegacySek1PhysicsCircuitSplit() {
+    void getMasteryProjectsOnlyExactLegacySek1PhysicsElectricityMappings() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_STATIC_ELECTRICITY_ID, 1.0),
@@ -573,14 +600,18 @@ class LearnerServiceCrossSubjectPilotTest {
 
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
+        assertThat(mastery).containsEntry(LEGACY_SEK1_PHYSICS_STATIC_ELECTRICITY_ID, 1.0);
         assertThat(mastery).containsEntry(LEGACY_SEK1_PHYSICS_RESISTOR_CIRCUITS_ID, 1.0);
-        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_STATIC_ELECTRICITY_ID, 1.0);
+        assertThat(mastery).containsEntry(LEGACY_SEK1_PHYSICS_ELECTRICAL_SAFETY_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID, 1.0);
-        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ELECTRICAL_SAFETY_ID, 1.0);
-        assertThat(mastery).doesNotContainKeys(
-                CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID,
-                CANONICAL_PHYSICS_SEK1_KIRCHHOFF_BALANCES_ID,
-                CANONICAL_PHYSICS_SEK1_RESISTANCE_EFFECTS_ID);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_STATIC_ELECTRICITY_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_CHARGE_SEPARATION_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_VOLTAGE_MEASUREMENT_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_CAPACITOR_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_KIRCHHOFF_BALANCES_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_RESISTANCE_EFFECTS_ID, 1.0);
+        assertThat(mastery).doesNotContainEntry(CANONICAL_PHYSICS_SEK1_ELECTRICAL_SAFETY_ID, 1.0);
     }
 
     @Test
@@ -1063,7 +1094,7 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalPhysicsPilotFrontierUnlocksCurrentEffectsFromProjectedLegacySimpleCircuitMastery() {
+    void canonicalPhysicsPilotFrontierKeepsAmbiguousLegacySimpleCircuitMasteryAtTheFirstAtomicStep() {
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_ELECTRICITY_CLUSTER_ID)));
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
@@ -1073,11 +1104,12 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
-                .contains(CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID, CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID);
+                .contains(CANONICAL_PHYSICS_SEK1_OPEN_CLOSED_CIRCUITS_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID, CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID);
     }
 
     @Test
-    void canonicalPhysicsPilotFrontierUnlocksVoltageCurrentRelationFromProjectedLegacyElectricityAndStaticMastery() {
+    void canonicalPhysicsPilotFrontierKeepsVoltageCurrentRelationBlockedByAtomicMeasurementGoals() {
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID)));
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
@@ -1089,8 +1121,9 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
-                .contains(CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID)
+                .contains(CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID, CANONICAL_PHYSICS_SEK1_VOLTAGE_MEASUREMENT_ID)
                 .doesNotContain(
+                        CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID,
                         CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID,
                         CANONICAL_PHYSICS_SEK1_KIRCHHOFF_BALANCES_ID,
                         CANONICAL_PHYSICS_SEK1_RESISTANCE_EFFECTS_ID);

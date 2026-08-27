@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-010-j7-algebra-variables-terms-final-6-v3.config.json",
+  "configDigest": "sha256:e10388c8b7880412ec73dc21f5cd280f39d5b8f5287d6f9c3864a0111c7fbff4",
+  "goalIds": [
+    "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+    "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+    "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+    "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+    "fd860da9-73ba-47cd-a1a8-452424915a80",
+    "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 791,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:f7ae0d2e8445baf023ab4f8d5e0984d6a137044627a770b534a04b279142ee78"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:71254892437cfd30e441ebe729cc829ebfe84d5b21ff5d884086a864e852c488",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:db845413b212acbec83da6ab2f8d84e58062cc5dec172beb5e300a822768d6a7",
+    "reviewInputFingerprint": "sha256:501901b6346bfbf1e55292c4ec2bc604ebd68adbb8ce65b00b2b22a54a908441",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-a",
+        "campaignDigest": "sha256:8876c1dc2e4ffc9aa202460134b62947cc7936c80b860bb11439be6cd871b71f",
+        "roundId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:876b8a5a0dbaa6dfc833fcfa8888dd30a10156c63b1f2f35ea5561476722dd8c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-b",
+        "campaignDigest": "sha256:0ee951c9b00e8e6cbb68457285555a06fa61afa95451573f20c6e2cd54f7e2dc",
+        "roundId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-010-j7-algebra-variables-terms-final-6-v3-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:2c3168d8ca349256a6bb4cb8f6d63681863170e1fc447774c0cdddcc242224bb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

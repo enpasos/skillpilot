@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T04:48:28.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827",
+    "batchManifestDigest": "sha256:73550d60f74a94b977923ed9f219594663523bc473189d4ffc5685240c52ba94",
+    "configDigest": "sha256:928a949c344b4810a049f2bf2054cddc41d76d23555869c776a62d9aa16cb38f",
+    "bundleFingerprint": "sha256:eb910ca1f0b63f50ef551e291953f69fd404d94a8d00aa7bfcf10cd99bc785e5",
+    "bookDigest": "sha256:944fdaa4ba11b50997c099a057f77eb7c0543189728b1b7fee38d36f1369ce97",
+    "reviewInputFingerprint": "sha256:d61ab012d765fdcf97c08fc98c3110fc96be66716bc9d36712dc98abb63bb14c",
+    "dualSummaryDigest": "sha256:3f78ebbec84c56a30d8b3b67e1c04d34a4b528a880898f0350f194d788458f69",
+    "canonicalLandscapeDigest": "sha256:20c2e7fe63b563b7be188819b1e5996e78664e1a964820873823fb5579a0160d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-a",
+      "campaignDigest": "sha256:36f208fff14f1f0f253b9427365ae89bdc8fb7c16e3835e96f6e0b1a43d307ea",
+      "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:d61ab012d765fdcf97c08fc98c3110fc96be66716bc9d36712dc98abb63bb14c",
+      "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7221e6fa3bdfc87b87bb2c788b34ec8bd5f5c624eae40ee7b7f11f79f05f536f",
+      "runId": "mathematik-b004-v3-first-pass-a-openai-gpt5-20260827",
+      "runManifestDigest": "sha256:fb9c707bf338733bcf42b380f188659d37a2801bc791e110eb97184e90ed827c",
+      "resultsDigest": "sha256:933114142dbe3d1367d0588a938c47970ddb9763167431900289e9de7c90431c"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-b",
+      "campaignDigest": "sha256:02f02e6317ebc5a6cd52a636b940cb40a5affb6860e3e64e871edebb6c8b781f",
+      "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:d61ab012d765fdcf97c08fc98c3110fc96be66716bc9d36712dc98abb63bb14c",
+      "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9b66e639027203e03b5a3606489b93af538cb72dd92d548d3849b6a24af3979b",
+      "runId": "mathematik-b004-v3-round-b-openai-gpt5-20260827",
+      "runManifestDigest": "sha256:aaeade04b6f3e516fa893ea64deb0549601df96c654edbe4d851a3c6dd8ea6b0",
+      "resultsDigest": "sha256:4978d50068090f00d40c63310904344ca3520f4f91df9155c2d4cc9e7be9628c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis-decision-001",
+      "goalId": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2fe08885c7c4d3a360c072b106ee9291981f9c979e4ba3aa9a249162c3ae5ded",
+      "pageFingerprint": "sha256:de32693ff68d8d562878087f22e68a36dfb8608794cb615d6b729acc6773120a",
+      "goalReviewContextFingerprint": "sha256:6b8b293d7b4596217a4c940f13ad02b237abaa77ce41b7d1eb69101b05b0d560",
+      "finalText": {
+        "titleDe": "Dynamische Zusammenhänge zwischen Größen erläutern",
+        "titleEn": "Explain dynamic relationships between quantities",
+        "descriptionDe": "Die lernende Person kann in einfachen Situationen mithilfe geeigneter Darstellungen erläutern, wie sich Umfang, Flächeninhalt oder Volumen verändern, wenn die betreffenden Längen in vorgegebener Weise verändert werden.",
+        "descriptionEn": "The learner can use suitable representations in simple situations to explain how perimeter, area, or volume changes when the relevant lengths are changed in a specified way."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b004-v3-first-pass-a-record-01",
+          "recordDigest": "sha256:637762dd37c61e75bc543905eb7de84132edd28eaa961d2f6e38c3279e3008e4"
+        },
+        "second": {
+          "recordId": "mathematik-b004-v3-round-b-3d49cd27",
+          "recordDigest": "sha256:4d3bac4860c8f3df08c8d8d2f104b96cec19f1d1deb49d568600b6371457f05b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle Beschreibung. Die zweite Evidenzfassung macht besonders klar, dass Lernende selbst eine passende Skizze, Tabelle oder Rechnung wählen, Vorher und Nachher vergleichen und die unterschiedlichen Wirkungen veränderter Längen auf Umfang, Fläche oder Volumen aus den beteiligten Dimensionen begründen müssen.",
+      "rationaleEn": "Both independent reviews confirm the current description. The second evidence formulation makes particularly clear that learners must independently choose an appropriate diagram, table, or calculation, compare before and after, and justify the different effects of changed lengths on perimeter, area, or volume from the dimensions involved."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis-decision-002",
+      "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a33582c8922091522465eee59995ac82f59624879d2af4e7829c022d927bbe30",
+      "pageFingerprint": "sha256:8ea28bacb5415cb2d77fb5480ee7528d6b0ea382850187f2ac8e3a514927db08",
+      "goalReviewContextFingerprint": "sha256:4bfe7a2998b911910848769035727fe7e0671044e16098fd8670bb541da37f5f",
+      "finalText": {
+        "titleDe": "Einfache Zinsrechnung im Prozentkontext anwenden",
+        "titleEn": "Apply simple interest calculations in percentage contexts",
+        "descriptionDe": "Die lernende Person kann einfache Zinsprobleme in vertrauten Sachzusammenhängen als Prozentrechnung darstellen und lösen sowie die Ergebnisse nachvollziehbar im Kontext deuten.",
+        "descriptionEn": "The learner can represent and solve simple interest problems in familiar contexts as percentage calculations and interpret the results clearly in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b004-v3-first-pass-a-record-02",
+          "recordDigest": "sha256:027413d2fb36136991739181efec75de959e29ebb3a59a10824c3990460ab682"
+        },
+        "second": {
+          "recordId": "mathematik-b004-v3-round-b-bd8fd6d5",
+          "recordDigest": "sha256:0e6950821e01b42d4a5159c25bdaf2aba60c6bb06705cfaf2e5eda2854eb3aa3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen das einfache Zinsziel als kohärente Prozentmodellierung. Die zweite Evidenzfassung trennt Kapital, Zinssatz, Zinsbetrag und resultierenden Gesamtstand, verlangt die selbstständige Wahl der gesuchten Größe und prüft den Transfer zwischen Spar- und Kreditkontexten statt bloßes Einsetzen.",
+      "rationaleEn": "Both independent reviews confirm the simple-interest goal as coherent percentage modeling. The second evidence formulation distinguishes principal, interest rate, interest amount, and resulting balance, requires independent identification of the unknown, and tests transfer between saving and borrowing contexts rather than mere substitution."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis-decision-003",
+      "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dd44e50a36258dff54c1ad85e28ad00e4af4f31536e0cca3ee59e1b2cb1a0413",
+      "pageFingerprint": "sha256:a0a6c00fb28b51fad5f3960177504336965748fb22b12118cd00e0078e206666",
+      "goalReviewContextFingerprint": "sha256:e96f962b3bfbb16b4a1254f3a6695c788e46d16a7b4b8922d6fd02617c062139",
+      "finalText": {
+        "titleDe": "Funktionen als eindeutige Zuordnungen charakterisieren",
+        "titleEn": "Characterize Functions as Relations with Exactly One Output for Each Input",
+        "descriptionDe": "Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.",
+        "descriptionEn": "The learner can characterize functions as relations in which each admissible input is assigned exactly one output and distinguish them from more general relations using this property."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b004-v3-first-pass-a-record-03",
+          "recordDigest": "sha256:347c3a9182c3f02b6349dc7190b5d41e22831c0598dd354da927f2de36c59bd1"
+        },
+        "second": {
+          "recordId": "mathematik-b004-v3-round-b-7dea79d2",
+          "recordDigest": "sha256:7ee2cf32043ac1e58dbfd71eff5baab780ab496a81d50e63cc0c0382df7c556e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die präzisierte Funktionseigenschaft. Die erste Evidenzfassung operationalisiert sie über Tabellen, Zuordnungspfeile, Graphen und verbale Regeln, verlangt konkrete Gegenbeispiele bei fehlender Eindeutigkeit und prüft den Transfer bei verändertem Definitionsbereich oder Darstellungswechsel.",
+      "rationaleEn": "Both independent reviews confirm the clarified defining property of a function. The first evidence formulation operationalizes it through tables, mapping diagrams, graphs, and verbal rules, requires concrete counterexamples when uniqueness fails, and tests transfer under a changed domain or representation."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis-decision-004",
+      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8777d5c55cf7e0cb1e63b607d6257a1350221719c56361a481ff31d7d2dfaf8c",
+      "pageFingerprint": "sha256:7f1bdbdec14642e718e0cb9b49cbef7fdba4c70d6e67e34ca9cc8499cad21830",
+      "goalReviewContextFingerprint": "sha256:b8b45b898853ef0455b880e6e5f94355c30cd893a650e32651b3893e64ee9571",
+      "finalText": {
+        "titleDe": "Proportionale Funktionen als Ursprungsgeraden deuten und darstellen",
+        "titleEn": "Interpret and represent proportional functions as lines through the origin",
+        "descriptionDe": "Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten und dabei erläutern, dass bei Eingabewerten ungleich null der konstante Quotient aus Ausgabe- und Eingabewert der Steigung der Geraden entspricht.",
+        "descriptionEn": "The learner can represent and interpret proportional functions in tables and as lines through the origin in graphs and explain that, for nonzero inputs, the constant ratio of output to input corresponds to the slope of the line."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b004-v3-first-pass-a-record-04",
+          "recordDigest": "sha256:e895a6d1be548b0df9af42e75b620d37dcbc8e96288a5ff6d23374160dba1a4f"
+        },
+        "second": {
+          "recordId": "mathematik-b004-v3-round-b-f3167cab",
+          "recordDigest": "sha256:11b35f229f2d9dcbce2a76ca24c4d8826457b9e1a3017a0f6146629a2baad99b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen nach der lokalen Präzisierung die aktuelle Beschreibung. Die zweite Evidenzfassung bindet den konstanten Quotienten bei Eingaben ungleich null ausdrücklich an den Proportionalitätsfaktor und die Steigung der Ursprungsgeraden und fordert einen selbstständigen Darstellungswechsel auch bei anderer Skalierung oder anderen Einheiten.",
+      "rationaleEn": "Both independent reviews confirm the current description after its local clarification. The second evidence formulation explicitly connects the constant ratio for nonzero inputs to the constant of proportionality and the slope of the line through the origin and requires independent conversion between representations under changed scales or units."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis-decision-005",
+      "goalId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a25099dfc97f845440b285d132a6e1632ef71a3fe26080cf5254d09fad3ec987",
+      "pageFingerprint": "sha256:98c96cf33bb7196131c2fd8750e0f85fb0a00c7b71c2da6549ddb937679c875d",
+      "goalReviewContextFingerprint": "sha256:d0383f2c547c93419b801cb6494ee1651b69a5adf99f2e3ba6ab40b76a72ef3a",
+      "finalText": {
+        "titleDe": "Verhältnisgleichungen lösen und prüfen",
+        "titleEn": "Solve and check ratio equations",
+        "descriptionDe": "Die lernende Person kann Verhältnisgleichungen durch begründete Äquivalenzumformungen lösen, dabei notwendige Definitionsbedingungen beachten und gefundene Lösungen durch Einsetzen in die Ausgangsgleichung prüfen.",
+        "descriptionEn": "The learner can solve ratio equations using justified equivalent transformations, observe any necessary domain restrictions, and check the solutions found by substituting them into the original equation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b004-v3-first-pass-a-record-05",
+          "recordDigest": "sha256:ac0ef4968b6f7ffcb50d53ddce9d71139c7346e7c53e0cb713876f0d550f05fa"
+        },
+        "second": {
+          "recordId": "mathematik-b004-v3-round-b-671ef00a",
+          "recordDigest": "sha256:24118e9cb5afaf6a6d5bfe03a16dad4af4e4768045e2b9235b71ab605d52d1dc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen das neue Verhältnisgleichungsziel. Die erste Evidenzfassung verlangt Definitionsbedingungen vor der Umformung, eine begründete Äquivalenzkette, die Probe in der Ausgangsgleichung und Transfer auf veränderte Zähler- oder Nennerpositionen einschließlich ausgeschlossener Kandidaten.",
+      "rationaleEn": "Both independent reviews confirm the new ratio-equation goal. The first evidence formulation requires domain restrictions before transformation, a justified chain of equivalent steps, checking in the original equation, and transfer to changed numerator or denominator positions including excluded candidates."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-synthesis-decision-006",
+      "goalId": "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9bcdb285cb50fe5db45abc34545af8949763332eb58933cc7339b0940990e0ea",
+      "pageFingerprint": "sha256:2851e56d847e42488bcef78e9a403b9131dde199fd989ffe493996894cee3d31",
+      "goalReviewContextFingerprint": "sha256:ce36f5a065af49a45c365b5ed860ab2d8ed93a72dd78a5165c0af60d9bf1e429",
+      "finalText": {
+        "titleDe": "Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen",
+        "titleEn": "Investigate solvability and solution multiplicity of linear equations",
+        "descriptionDe": "Die lernende Person kann lineare Gleichungen durch äquivalente Umformungen auf 0 = 0, auf 0 = c mit c ≠ 0 oder auf x = a zurückführen, daraus jeweils unendlich viele, keine oder genau eine Lösung folgern und die Lösungsmenge begründen.",
+        "descriptionEn": "The learner can transform linear equations equivalently into 0 = 0, 0 = c with c ≠ 0, or x = a; infer respectively infinitely many solutions, no solution, or exactly one solution; and justify the solution set."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b004-v3-first-pass-a-record-06",
+          "recordDigest": "sha256:e8c1a94af26b15b7d6267e469305e19797558b9cf0cf1c4978cf25e2b83ff19b"
+        },
+        "second": {
+          "recordId": "mathematik-b004-v3-round-b-cc60f759",
+          "recordDigest": "sha256:2b34046c50b81a669511a59e72256631a41363449e47cbef61f38fe388de0990"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen nach der mathematischen Präzisierung die aktuelle Beschreibung. Die zweite Evidenzfassung unterscheidet Identität, Widerspruch mit c ungleich null und eindeutige Bestimmung, verlangt begründete Lösungsmengen im vereinbarten Grundbereich und verhindert die unbegründete Vorannahme, jede lineare Gleichung habe genau eine Lösung.",
+      "rationaleEn": "Both independent reviews confirm the current description after its mathematical clarification. The second evidence formulation distinguishes an identity, a contradiction with nonzero c, and a unique determination, requires justified solution sets in the agreed domain, and prevents the unsupported assumption that every linear equation has exactly one solution."
+    }
+  ],
+  "manifestFingerprint": "sha256:07ede6801ccfc56d3d757665c85e41ea51ab9bef92750bca36bb33e5dc29168b"
+}

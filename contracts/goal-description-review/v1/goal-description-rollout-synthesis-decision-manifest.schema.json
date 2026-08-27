@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
   "title": "SkillPilot standalone rollout synthesis-decision manifest v1",
-  "description": "An explicit, fingerprint-bound AI synthesis decision for every goal in one standalone rollout batch. It selects current canonical text and one of two independently validated current keep records without granting human authority.",
+  "description": "An explicit, fingerprint-bound AI synthesis decision for every goal in one standalone rollout batch. It normally selects current canonical text and one of two independently validated current keep records. For keep_current only, one current revise record may instead be rejected explicitly while its proposal and evidence remain bound as dissent. The manifest never grants human authority.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -179,6 +179,27 @@
             "second": { "$ref": "#/$defs/record" }
           }
         },
+        "revisionDissent": { "$ref": "#/$defs/revisionDissent" },
+        "rationaleDe": { "$ref": "#/$defs/longText" },
+        "rationaleEn": { "$ref": "#/$defs/longText" }
+      }
+    },
+    "revisionDissent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceRound",
+        "disposition",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "rationaleDe",
+        "rationaleEn"
+      ],
+      "properties": {
+        "sourceRound": { "enum": ["first", "second"] },
+        "disposition": { "const": "rejected_keep_current" },
+        "proposedDescriptionDe": { "$ref": "#/$defs/longText" },
+        "proposedDescriptionEn": { "$ref": "#/$defs/longText" },
         "rationaleDe": { "$ref": "#/$defs/longText" },
         "rationaleEn": { "$ref": "#/$defs/longText" }
       }

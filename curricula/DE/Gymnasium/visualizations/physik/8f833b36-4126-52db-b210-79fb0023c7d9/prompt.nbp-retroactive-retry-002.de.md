@@ -1,0 +1,5 @@
+Behalte den lockeren Zweispalten-Aufbau, die korrekten Zahlenwerte und den Grenzfall bei. Korrigiere ausschließlich die elektrische Topologie der beiden Parallelschaltungen und die Strompfeile.
+
+In jeder Parallelschaltung liegen oben und unten zwei waagerechte Leiterschienen. Links verbindet nur die 6-V-Quelle beide Schienen. Rechts darf es niemals eine direkte senkrechte Drahtverbindung zwischen oberer und unterer Schiene geben. „vorher“ verbindet genau ein senkrechter 6-Ω-Widerstand die Schienen. „nachher“ verbinden genau zwei getrennte senkrechte 6-Ω-Widerstandszweige die Schienen. Nach dem letzten Widerstandszweig enden beide Schienen offen; sie werden rechts nicht miteinander verbunden. Keine Kurzschlussbrücke um einen Widerstand.
+
+Im Nachher-Bild genau ein kleiner Strompfeil je Widerstandszweig, beide in derselben Richtung von oben nach unten, jeweils „I = 1 A“. Keine entgegengesetzten Pfeile unter den Widerständen. Die Beschriftungen bleiben exakt „U = 6 V“, „R_ges = 3 Ω“ und „I_ges = 2 A“. Die Reihenschaltungen und der Grenzfall bleiben unverändert. Schreibe die Überschrift fehlerfrei oder lasse einen langen Gesamttitel ganz weg.

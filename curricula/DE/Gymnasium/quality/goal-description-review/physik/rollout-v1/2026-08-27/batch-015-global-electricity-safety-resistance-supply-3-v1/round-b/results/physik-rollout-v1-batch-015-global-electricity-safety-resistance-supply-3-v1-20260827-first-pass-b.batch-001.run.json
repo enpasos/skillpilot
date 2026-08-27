@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b015-20260827-round-b-gpt5",
+  "campaignId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-b",
+  "roundId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e09eb62973e10ac85984cef407b7afd01ffa9fad75c106ac34c8aff8df744b22",
+  "bundleFingerprint": "sha256:2a575acd1a9a37618cf8032170ff5537cdf5d437e37bc85bc358d81141f1d490",
+  "bookDigest": "sha256:1df8ad969594ecb51b3fa7fe5fa24c3b489604e791194aec0d99c77011e96ddb",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:06188ebd92ce7ab163df297db05117c7607a5ec14e9ccd7372d3bc77bdbbac56",
+  "independenceGroupId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1911920e-b099-4310-82f2-b47f51a78b33",
+    "ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca",
+    "50431e92-eec9-54d6-b437-ea7a51b6f474"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e09eb62973e10ac85984cef407b7afd01ffa9fad75c106ac34c8aff8df744b22"
+    }
+  ],
+  "startedAt": "2026-08-27T10:29:30Z",
+  "completedAt": "2026-08-27T10:34:11Z",
+  "status": "completed",
+  "outputDigest": "sha256:7275cbe494ea959319ad97a5aaa191687db383de31ed663efc1b103098775ffc",
+  "toolchainVersion": "codex-review-v2"
+}

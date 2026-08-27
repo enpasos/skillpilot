@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-b005-j6-geometry-round-a-gpt5-20260827",
+  "campaignId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:c53ce10b9ce3dee9cacc94af6b8f235abc0a7adb1da19aa0993e88a0fc1804dd",
+  "bundleFingerprint": "sha256:885f2bb44b5eb785ffe86a299a150f8837c35793caba38a4932cc5ec4cab407e",
+  "bookDigest": "sha256:8eb6fa5da488b7a5023d6250a07cad6154af99d8266a20227bc3e3b75a2ba4e9",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:556d518063aedd174759853da4980ccbf890cae0a1f05bcaa3b1c90d30db25cb",
+  "independenceGroupId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+    "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+    "59098969-0a35-5a58-94f2-1cfcdf191cf5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:300d040a45e718d2bb1ca44ef5cdd06f58d0433f2a15482457eddeaa123f9057"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c53ce10b9ce3dee9cacc94af6b8f235abc0a7adb1da19aa0993e88a0fc1804dd"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-08-27T05:02:00.000Z",
+  "completedAt": "2026-08-27T05:03:49.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:103d88f163fe050e4f37f477cafd2c92ae2c0632f44fade607a0e0d346bf105b",
+  "toolchainVersion": "codex-agent-review-v1"
+}

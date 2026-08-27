@@ -294,8 +294,8 @@ const lowerCanonicalTargetsByTopicRow: Record<string, string[]> = {
     'a24c41ce-68c5-56a7-8235-ef9a7dba7042',
   ],
   '8.3b:3': ['10aad90e-a1db-42b6-8d1e-1d856e14b47d'],
-  '8.3b:4': ['3e33813d-db75-4571-8345-3845b02b956d'],
-  '8.3b:5': ['3e33813d-db75-4571-8345-3845b02b956d'],
+  '8.3b:4': ['2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c'],
+  '8.3b:5': ['da0837c7-95a7-5a6a-81db-f33cb7f42d85'],
   '8.3b:6': ['e62e48bc-2387-4b2b-8d6f-7a06c8e7580e'],
   '8.3c:1': ['a4681378-ade4-4f20-bf77-fb020469510f'],
   '8.3c:2': ['cdab9fd1-5054-4a7e-8c9a-4474062ddd23'],
@@ -1361,6 +1361,23 @@ function writeExtraction(
   writeFileSync(absoluteOutputPath, `${JSON.stringify(extraction, null, 2)}\n`)
 }
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "he-phys-seki-8-2-b03-a01-3fe0dc0a": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8",
+    "c156d2fb-0fe9-5f13-8baa-3e74d7da151e",
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+    "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal[] }): ReviewCoverage {
   const absoluteReviewPath = path.resolve(repoRoot, config.reviewPath)
   mkdirSync(path.dirname(absoluteReviewPath), { recursive: true })
@@ -1370,9 +1387,25 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
   const sourceLabel = config.stage === 'SekI'
     ? 'Sek-I-Unterrichtsinhaltsblock'
     : 'Sek-II-Lehrplanaspekt'
+  const explicitlyPartialSourceGoalIds = new Set(
+    parsed.sourceGoals
+      .filter((sourceGoal) => config.stage === 'SekI'
+        && new Set(['8.3b:4', '8.3b:5']).has(`${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`))
+      .map((sourceGoal) => sourceGoal.id),
+  )
+  const partialRationalesBySourceKey = new Map<string, string>([
+    [
+      '8.3b:4',
+      'Das kanonische Ziel deckt Aufbau, funktionalen Hörweg und Signalumwandlung im menschlichen Ohr ab; der zusätzliche amtliche Vergleich der Hörbereiche von Menschen und Tieren bleibt als Source-Coverage-Lücke sichtbar.',
+    ],
+    [
+      '8.3b:5',
+      'Das kanonische Ziel deckt die Beurteilung von Lärmbelastung und personenbezogene Schutzmaßnahmen ab; Echo, Nachhall sowie baulicher Schallschutz an Häusern und Verkehrswegen bleiben zusätzliche Source-Aspekte.',
+    ],
+  ])
   const decisions = parsed.sourceGoals.flatMap((sourceGoal) => {
     const sourceKey = `${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`
-    const targetIds = targetLookup[sourceKey] ?? []
+    const targetIds = applyPhysicsBatch015Targets(sourceGoal.id, targetLookup[sourceKey] ?? [])
     const isExplicitUpperGap = config.stage === 'SekII' && upperNeedsCanonicalGoalByTopicBullet.has(sourceKey)
     if (config.stage === 'SekII' && targetIds.length === 0 && !isExplicitUpperGap) {
       return []
@@ -1385,18 +1418,23 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
       canonicalGoalIds: targetIds,
       rationale: targetIds.length === 0
         ? `Der amtliche ${sourceLabel} benötigt noch fachliche M3-Review oder ein neues kanonisches Physikziel.`
+        : explicitlyPartialSourceGoalIds.has(sourceGoal.id)
+          ? partialRationalesBySourceKey.get(sourceKey)
         : targetIds.length > 1
           ? `Der amtliche ${sourceLabel} wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.`
           : `Der amtliche ${sourceLabel} wird durch das kanonische Physikziel inhaltlich abgedeckt.`,
-      reviewedAt: '2026-05-09',
-      reviewer: 'codex',
+      reviewedAt: new Set(['8.3b:4', '8.3b:5']).has(sourceKey) ? '2026-08-27' : '2026-05-09',
+      reviewer: new Set(['8.3b:4', '8.3b:5']).has(sourceKey)
+        ? 'codex-physics-batch-007-split-synthesis'
+        : 'codex',
     }]
   })
   const mappings = decisions.flatMap((decision) =>
     decision.canonicalGoalIds.map((canonicalGoalId) => ({
       legacyGoalId: decision.sourceGoalId,
       canonicalGoalId,
-      matchType: decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+      matchType: decision.canonicalGoalIds.length === 1
+        && !explicitlyPartialSourceGoalIds.has(decision.sourceGoalId) ? 'exact' : 'partial',
       reviewDecisionId: decision.sourceGoalId,
     })))
   const mappedSourceGoalIds = new Set(mappings.map((mapping) => mapping.legacyGoalId))

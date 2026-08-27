@@ -8,24 +8,27 @@
 
 ## Generator
 
-- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
-- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
-- Quellbild: `79cb1695-f985-443a-b93e-27b57ab474b7.png`
-- Public Asset: `/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.png`
-- SHA-256: `sha256:56dfcd1d14fe22c174bdb8459d0e282f809ffb459b66dd11de797636ab459eb7`
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `79cb1695-f985-443a-b93e-27b57ab474b7.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.jpg`
 
-## Finale wirksame Prompt-Spezifikation
+## Prompt
 
 ```text
-Erzeuge eine klare deutschsprachige 2D-Lerninfografik im Querformat zum Strahlenmodell. Ordne von links nach rechts eine punktförmige Lichtquelle, eine undurchsichtige senkrechte Blende mit genau einer mittigen Öffnung und einen senkrechten Schirm an.
+Der vorige Entwurf wird verworfen: Rechts von der undurchsichtigen Blende erschien ein gelber Rest eines angeblich gestoppten Strahls, und eine gestrichelte Vorhersagelinie verlief nicht durch die Öffnung.
 
-Zeige genau drei gerade gelbe Modelllinien, die alle an derselben Punktquelle beginnen, mit sichtbarem Abstand durch die Öffnung laufen und den Schirm erreichen. Jede Linie trägt eine eindeutige Pfeilspitze von der Quelle zum Schirm. Ergänze bei der mittleren Linie eine gestrichelte geradlinige Fortsetzung, die das Vorhersagen eines weiteren Wegabschnitts verdeutlicht. Kurze deutsche Hinweise sollen die beiden Kerngedanken benennen: gerichtete Modelllinie und Vorhersage durch geradlinige Fortsetzung.
+Zeichne die Anordnung neu im lockeren handillustrierten Stil, aber geometrisch streng:
 
-Keine Linie darf einen undurchsichtigen Blendenteil schneiden. Keine gebogenen oder rückwärts gerichteten Strahlen, Reflexion, Brechung, Linsen, Spiegel, 3D-Perspektive, dekorativen Verbindungspfeile, Logos, Wasserzeichen, technischen IDs oder langen Textblöcke.
+- links genau eine punktförmige Lichtquelle,
+- mittig genau eine frontal dargestellte undurchsichtige Blende mit genau einer kleinen Öffnung,
+- rechts genau ein Schirm,
+- genau ein hervorgehobener gerader Lichtstrahl läuft von der Quelle durch die Öffnung bis zum Schirm; vor und hinter der Öffnung müssen seine Abschnitte exakt auf derselben Geraden liegen,
+- zwei weitere gerade Strahlen treffen oberhalb beziehungsweise unterhalb der Öffnung auf den undurchsichtigen Teil und enden exakt an der Vorderseite der Blende; rechts von der Blende darf von diesen beiden Strahlen überhaupt kein gelber oder gestrichelter Abschnitt erscheinen.
+
+Pfeilspitzen zeigen ausschließlich von links nach rechts. Keine geknickten Strahlen, keine zusätzliche gestrichelte Hilfslinie, kein Strahl durch Materie. Beschrifte nur „Punktförmige Lichtquelle“, „Undurchsichtige Blende“, „Öffnung“, „Schirm“, „geradlinige Fortsetzung“. Schreibe weder einen Anbieternamen noch „Nano Banana Pro“ ins Bild.
 ```
-
-Die Generierung wurde iterativ korrigiert, bis alle drei Pfeilrichtungen und die regelgeleitete Fortsetzung eindeutig sichtbar waren.
 
 ## Review-Notiz
 
-Am 25.08.2026 in Originalauflösung KI-geprüft: Drei gerade, gerichtete Modelllinien passieren die Öffnung; die gestrichelte Fortsetzung macht die Vorhersage explizit. Eine menschliche Freigabe liegt nicht vor.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:19d7e178c6ed2ad74862726f03f4a944815394333ad341f26c8e15bda7be0a25 gebunden; eine menschliche Freigabe wurde nicht behauptet.

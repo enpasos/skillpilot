@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-rollout-v1-batch-006a-oblique-view-current-v1",
+  "reviewedAt": "2026-08-27T09:39:01.000Z",
+  "reviewer": "codex-math-batch006-visual-compatibility-recheck-2026-08-27",
+  "goals": [
+    {
+      "goalId": "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "reason": "DE: Das Profil bindet ein Schrägbild an eine vorgegebene Konvention, an die drei parallelen Kantenfamilien und an räumlich begründete Sichtbarkeitslinien. Veränderte Blickrichtungen, Verkürzungen und Fehlerdiagnosen prüfen regelgeleiteten Transfer statt das Nachzeichnen eines Musters. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile binds an oblique view to a specified convention, the three parallel edge families, and spatially justified visibility lines. Changed viewing directions, foreshortening factors, and error diagnosis test rule-governed transfer rather than copying a template. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "oblique-convention-controls-depth-edges",
+            "essentialUnderstandingDe": "Eine vorgegebene Schrägbildkonvention legt Richtung und Längenverhältnis der nach hinten verlaufenden Kanten fest. Alle räumlich parallelen Kanten derselben Familie müssen im Bild parallel bleiben und dieselbe konventionsgemäße Skalierung erhalten; andernfalls widerspricht die Zeichnung dem dargestellten Quader oder Würfel.",
+            "essentialUnderstandingEn": "A specified oblique-drawing convention determines the direction and length ratio of receding edges. All spatially parallel edges in the same family must remain parallel in the drawing and receive the same convention-based scaling; otherwise the drawing contradicts the represented cuboid or cube.",
+            "observablePerformanceDe": "Die lernende Person entnimmt einer neuen Konventionsangabe Tiefenrichtung und Verkürzungsfaktor, konstruiert alle zugehörigen Tiefenkanten einheitlich und begründet an ausgewählten Kanten deren Richtung, Parallelität und Bildlänge.",
+            "observablePerformanceEn": "From a fresh convention statement, the learner extracts the receding direction and foreshortening factor, constructs all corresponding receding edges consistently, and justifies the direction, parallelism, and drawn length of selected edges."
+          },
+          {
+            "id": "visibility-follows-spatial-view",
+            "essentialUnderstandingDe": "Durchgezogene und gestrichelte Linien codieren die Sichtbarkeit räumlicher Kanten aus der gewählten Blicklage. Ob eine Kante verdeckt ist, folgt aus ihrer Lage hinter sichtbaren Flächen und nicht daraus, ob sie waagerecht, senkrecht oder schräg verläuft; bei einer anderen Blickseite können sich die Linienarten ändern.",
+            "essentialUnderstandingEn": "Solid and dashed lines encode the visibility of spatial edges from the chosen view. Whether an edge is hidden follows from its location behind visible faces, not from whether it is horizontal, vertical, or oblique; under a different viewing side, line styles may change.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einem selbst konstruierten Schrägbild sichtbare Kanten durchgezogen und gegebenenfalls verdeckte Kanten gestrichelt und erklärt die Entscheidung für mindestens zwei Kanten anhand der räumlichen Vorder- beziehungsweise Hinterlage.",
+            "observablePerformanceEn": "In an independently constructed oblique view, the learner draws visible edges as solid and, where applicable, hidden edges as dashed, and explains the choice for at least two edges using their spatial front-or-back positions."
+          },
+          {
+            "id": "closed-edge-structure-supports-checking",
+            "essentialUnderstandingDe": "Ein räumlich konsistentes Schrägbild erhält die Eckpunkt- und Kantenstruktur des Körpers: An jedem Würfel- oder Quadereck treffen die passenden drei Kantenfamilien zusammen, gegenüberliegende Kanten passen paarweise, und die Flächen schließen ohne zusätzliche, fehlende oder widersprüchliche Kanten.",
+            "essentialUnderstandingEn": "A spatially consistent oblique view preserves the vertex and edge structure of the solid: the appropriate three edge families meet at each cube or cuboid vertex, opposite edges correspond in pairs, and faces close without extra, missing, or contradictory edges.",
+            "observablePerformanceDe": "Die lernende Person prüft ein neues eigenes oder fremdes Schrägbild systematisch über gemeinsame Ecken, parallele Kantenfamilien, Flächenschluss und Sichtbarkeit, lokalisiert mindestens einen Regelverstoß und korrigiert ihn mit fachlicher Begründung.",
+            "observablePerformanceEn": "The learner systematically checks a fresh self-produced or given oblique view using shared vertices, parallel edge families, face closure, and visibility, locates at least one rule violation, and corrects it with a mathematical justification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "oblique-convention-controls-depth-edges",
+            "visibility-follows-spatial-view",
+            "closed-edge-structure-supports-checking"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-proportions",
+            "textDe": "Würfel oder Quader mit wechselnden Kantenlängen und wechselnder Orientierung der Vorderfläche",
+            "textEn": "Cube or cuboid with varying edge lengths and varying orientation of the front face"
+          },
+          {
+            "id": "depth-convention",
+            "textDe": "Nach rechts oder links verlaufende Tiefenkanten mit verändertem vorgegebenem Winkel und Verkürzungsfaktor",
+            "textEn": "Rightward or leftward receding edges with a changed specified angle and foreshortening factor"
+          },
+          {
+            "id": "view-and-visibility",
+            "textDe": "Veränderte Blickseite mit entsprechend anderen sichtbaren und verdeckten Kanten",
+            "textEn": "Changed viewing side with correspondingly different visible and hidden edges"
+          },
+          {
+            "id": "performance-mode",
+            "textDe": "Neukonstruktion, begründete Prüfung oder Reparatur eines fehlerhaften Schrägbilds",
+            "textEn": "Fresh construction, justified checking, or repair of a flawed oblique view"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cuboid-half-depth-right",
+            "taskDemandDe": "Zeichne zu einem Quader mit Vorderfläche 6 cm × 4 cm und Tiefe 5 cm ein Schrägbild nach der Vorgabe: Tiefenkanten verlaufen im angegebenen Winkel nach rechts oben und werden mit dem Faktor 1/2 gezeichnet. Kennzeichne sichtbare und verdeckte Kanten und begründe zwei Linienarten.",
+            "taskDemandEn": "Draw an oblique view of a cuboid with a 6 cm by 4 cm front face and a depth of 5 cm under this convention: receding edges run at the specified angle up and to the right and are drawn with factor 1/2. Mark visible and hidden edges and justify two line styles.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert die Vorderfläche maßhaltig, zeichnet alle vier Tiefenkanten parallel mit 2,5 cm Bildlänge, schließt die hintere Fläche über passende Parallelen und bestimmt durch räumliche Lage, welche Kanten durchgezogen beziehungsweise gestrichelt sind.",
+            "expectedPerformanceEn": "The learner constructs the front face to scale, draws all four receding edges parallel with a drawn length of 2.5 cm, closes the rear face with corresponding parallels, and uses spatial position to determine which edges are solid or dashed.",
+            "understandingFocusDe": "Die Aufgabe prüft, ob Richtung, Verkürzung, Parallelität und Sichtbarkeit als zusammenhängende Konvention umgesetzt werden.",
+            "understandingFocusEn": "The task tests whether direction, foreshortening, parallelism, and visibility are implemented as one coherent convention."
+          },
+          {
+            "id": "changed-leftward-convention-transfer",
+            "taskDemandDe": "Ein bereits bekanntes Quaderbeispiel wird mit einer neuen Vorgabe gestellt: Die Tiefenkanten sollen nun nach links oben verlaufen und nur 40 % der wirklichen Tiefe lang sein; außerdem ist die gegenüberliegende Seitenfläche dem Blick zugewandt. Konstruiere das neue Schrägbild und erkläre alle Änderungen gegenüber der früheren Fassung.",
+            "taskDemandEn": "A familiar cuboid example is now given under a new convention: receding edges run up and to the left and are only 40% of the actual depth; moreover, the opposite side face is turned toward the viewer. Construct the new oblique view and explain every change from the earlier version.",
+            "expectedPerformanceDe": "Die lernende Person überträgt die Körperstruktur, ändert aber alle Tiefenkanten konsistent in Richtung und Länge, erhält die drei Parallelfamilien, schließt dieselben acht Eckpunkte und passt die durchgezogenen beziehungsweise gestrichelten Kanten an die neue Blickseite an.",
+            "expectedPerformanceEn": "The learner transfers the solid structure while consistently changing every receding edge in direction and length, preserving the three parallel families, closing the same eight vertices, and adapting solid and dashed edges to the new viewing side.",
+            "understandingFocusDe": "Der veränderte Konventions- und Blickparameter trennt echtes Regelverständnis vom eingeprägten Standardbild.",
+            "understandingFocusEn": "Changing both the convention and viewpoint separates genuine rule understanding from a memorized standard picture."
+          },
+          {
+            "id": "diagnose-and-repair-oblique-view",
+            "taskDemandDe": "Prüfe ein vorgelegtes Schrägbild eines Würfels, in dem eine Tiefenkante einen anderen Winkel besitzt, eine hintere Kante fälschlich durchgezogen ist und eine Fläche wegen eines falsch verbundenen Eckpunkts nicht schließt. Markiere, korrigiere und begründe jeden Fehler.",
+            "taskDemandEn": "Check a supplied oblique view of a cube in which one receding edge has a different angle, one rear edge is incorrectly solid, and one face does not close because a vertex is connected incorrectly. Mark, correct, and justify each error.",
+            "expectedPerformanceDe": "Die lernende Person ordnet die drei Fehler getrennt Parallelitätskonvention, Sichtbarkeit und Eckpunktstruktur zu, repariert die betroffenen Linien ohne den restlichen Körper zu verändern und weist anschließend Parallelfamilien, geschlossene Flächen und stimmige Linienarten nach.",
+            "expectedPerformanceEn": "The learner assigns the three errors separately to the parallelism convention, visibility, and vertex structure, repairs the affected lines without changing the rest of the solid, and then verifies parallel families, closed faces, and consistent line styles.",
+            "understandingFocusDe": "Die Fehlerdiagnose verlangt eine explizite Prüfung der tragenden räumlichen Regeln statt bloßes Produzieren eines bekannten Bilds.",
+            "understandingFocusEn": "Error diagnosis requires explicit checking of the governing spatial rules rather than merely producing a familiar picture."
+          }
+        ]
+      }
+    }
+  ]
+}

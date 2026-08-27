@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "dispositionContract": "goal-description-review-tie-break-disposition-v1",
+  "dispositionId": "physik-batch-010-pinhole-v2-tie-break-20260827",
+  "goalId": "1ab5f599-0927-579d-94cc-feecdf3b5603",
+  "reviewedGoalFingerprint": "sha256:257766d0b0f7b3a6d6fa32d017fb0515ac1d84b28a85176e0a9688ece5d10d76",
+  "reviewedPageFingerprint": "sha256:af4933e1f70a5dac48a0ac4b8495a2326ec449cced381a824fb35bc795e8123c",
+  "votes": [
+    {
+      "role": "v2-round-a",
+      "decision": "revise",
+      "artifactPath": "../round-a/results/physik-rollout-v1-batch-010-global-optics-4-v2-20260827-first-pass-a.batch-001.records.jsonl",
+      "artifactSha256": "sha256:9c7be68cb9728da36b9c13000e45760a2fe9ca097fa2d9f690cae3acb3718aeb"
+    },
+    {
+      "role": "v2-round-b",
+      "decision": "keep",
+      "artifactPath": "../round-b/results/physik-rollout-v1-batch-010-global-optics-4-v2-20260827-first-pass-b.batch-001.records.jsonl",
+      "artifactSha256": "sha256:ecdd97fd43523030a1b10b8617d0d66a88664cc27697e7502ac945ad38056b40"
+    },
+    {
+      "role": "blind-focused-tie-break",
+      "decision": "revise",
+      "artifactPath": "1ab5f599-0927-579d-94cc-feecdf3b5603.review.json",
+      "artifactSha256": "sha256:62f6e23933b03789c3b6ddddf5a9702be2881aba78ae0580c19aa70dc917068a"
+    }
+  ],
+  "majorityDecision": "revise",
+  "voteCount": {
+    "revise": 2,
+    "keep": 1
+  },
+  "boundedWeaknessDe": "Der bisherige Text nannte Strahlenmodell und geradlinige Lichtausbreitung, machte aber die Punkt-zu-Punkt-Abbildung durch die kleine Öffnung und die daraus folgende Bildumkehr nicht explizit prüfbar.",
+  "boundedWeaknessEn": "The previous text named the ray model and rectilinear propagation but did not make the point-to-point mapping through the small aperture and the resulting image inversion explicitly assessable.",
+  "disposition": "adopt_bounded_revision_and_require_fresh_dual_review",
+  "adoptedDescriptionDe": "Die lernende Person kann mit dem Strahlenmodell erklären, wie Licht von verschiedenen Gegenstandspunkten geradlinig durch die kleine Öffnung zu entsprechenden Bildpunkten auf dem Schirm gelangt und warum dabei ein umgekehrtes Bild entsteht.",
+  "adoptedDescriptionEn": "The learner can use the ray model to explain how light from different object points travels in straight lines through the small aperture to corresponding image points on the screen and why this produces an inverted image.",
+  "freshReviewBatchConfigPath": "../../batch-010-global-optics-4-v3.config.json",
+  "freshGoalFingerprint": "sha256:e00476ca657205960cd403afca1eb41dbf6a29c2dfaa734906409094d61577ff",
+  "freshPageFingerprint": "sha256:df63bf645c7fdb9f3f71334c3caaa782479d8ece6b3d5f518832138926b1be16",
+  "authority": "ai_synthesis",
+  "humanAttestation": null
+}

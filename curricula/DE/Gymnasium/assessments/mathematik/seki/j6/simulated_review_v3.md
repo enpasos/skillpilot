@@ -26,7 +26,7 @@ Task 6 v3 also separates the activities:
 1. Task 6.3 contains only the reflection and awards 1 BE.
 2. Task 6.4 contains only the number pattern and awards 1 BE.
 
-The expected results, total of 6 BE, covered goals, prerequisites and demand levels are unchanged. Earlier promoted artifacts remain immutable.
+The expected results, total of 6 BE and demand levels are unchanged. The reflection coverage and prerequisite are narrowed from the former combined reflection parent to the exact axis-reflection child. Earlier promoted source artifacts remain immutable.
 
 ---
 
@@ -50,7 +50,7 @@ The expected results, total of 6 BE, covered goals, prerequisites and demand lev
 
 The separated subtasks continue to assess exactly:
 
-- `1335dff9-db1e-5dd6-aa55-3938b6d3b0ec` - Achsenspiegelungen und Punktspiegelungen durchführen;
+- `2f3d24e7-2450-55d8-97c2-3e106d2854c6` - Achsenspiegelungen konstruieren;
 - `8cb18560-3a2b-593e-b634-9d768566cba9` - Muster und Zahlenfolgen erkennen, beschreiben und fortsetzen.
 
 ---
@@ -59,7 +59,7 @@ The separated subtasks continue to assess exactly:
 
 - Canonical Tasks 1-5 continue to reference `draft_v1.md`.
 - Canonical Task 6 references `draft_v3.md` and embeds the matching v3 task and solution text.
-- Canonical Task 6 retains the same `requires`, `coveredGoalIds`, total points and passing threshold.
+- Canonical Task 6 retains the same total points and passing threshold; its `requires` and `coveredGoalIds` narrow only the reflection binding to the exact axis-reflection child.
 - The package README and blueprint identify v3 as the promoted source for Task 6.
 
 With these conditions satisfied, Task 6 v3 is structurally clearer and ready for promotion.

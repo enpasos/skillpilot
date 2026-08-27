@@ -304,7 +304,6 @@ function buildCanonical(): JsonRecord {
   parent.weight = 2
   parent.requires = []
   parent.contains = childSpecs.map((spec) => spec.id)
-  parent.resourceLinks = []
   delete parent.semanticAtomic
 
   for (const spec of childSpecs) {

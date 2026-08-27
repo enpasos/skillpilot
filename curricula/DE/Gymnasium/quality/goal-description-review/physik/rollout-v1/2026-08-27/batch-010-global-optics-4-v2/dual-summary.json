@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:910c396e0b0a9d12fe6bf97dac3e05d1e8fde9452650b92d6be9047d6aa0f425",
+  "reviewInputFingerprint": "sha256:9fe3e24260d1e133ca2632f4f8bc25075bd497d603cf880c6ccd237b9f3c4122",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-a",
+      "roundId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-independent-a",
+      "runIds": [
+        "physik-b010-optics-v2-round-a-openai-gpt5-20260827"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b",
+      "roundId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "firstRecordId": "physik-b010-optics-v2-round-a-001",
+      "secondRecordId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.record-001",
+      "firstRunId": "physik-b010-optics-v2-round-a-openai-gpt5-20260827",
+      "secondRunId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "firstRecordId": "physik-b010-optics-v2-round-a-002",
+      "secondRecordId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.record-002",
+      "firstRunId": "physik-b010-optics-v2-round-a-openai-gpt5-20260827",
+      "secondRunId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6a4c6042-052b-502b-a39a-0ed8941247ac",
+      "firstRecordId": "physik-b010-optics-v2-round-a-003",
+      "secondRecordId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.record-003",
+      "firstRunId": "physik-b010-optics-v2-round-a-openai-gpt5-20260827",
+      "secondRunId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1ab5f599-0927-579d-94cc-feecdf3b5603",
+      "firstRecordId": "physik-b010-optics-v2-round-a-004",
+      "secondRecordId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.record-004",
+      "firstRunId": "physik-b010-optics-v2-round-a-openai-gpt5-20260827",
+      "secondRunId": "physik-rollout-v1-batch-010-global-optics-4-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

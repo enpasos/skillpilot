@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-010-global-optics-4-v3.config.json",
+  "configDigest": "sha256:7b4a6e1e0577b78085c890d27c4fdcb4e4a4a69696587a9016ce0c5e77b22319",
+  "goalIds": [
+    "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+    "6367d45e-919e-4c19-bcd9-7770a2d51139",
+    "6a4c6042-052b-502b-a39a-0ed8941247ac",
+    "1ab5f599-0927-579d-94cc-feecdf3b5603"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 439,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:198a191e197b749b715ba5e0e635d79cd6da2c1bf2f407f2ebd5ff304444f5f7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:215e17fe14ff8f7458b87bff1c1dad93364356c15c99e4d2e26be377e69bb441",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2a8a3e6efe30831c01f944fac8a13823efec872f740c932e933412e776542760",
+    "reviewInputFingerprint": "sha256:845a93242ad22594bc141e59b022c9d457153b7ed67aa8a36728b92ef46cb9e6",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-a",
+        "campaignDigest": "sha256:b29c2730155f6cf60ac306159d9edd8b7df74058e8c41a4a1cf02346ad2d7672",
+        "roundId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-independent-a",
+        "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:47da541173000368e088e75372405e05a3a81ff69a86d3272c08fce490dc5f26"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-b",
+        "campaignDigest": "sha256:e430ec70646fa9e2ecf18b91dc56b6b4ecd629012620f9a25c5cc64674715bec",
+        "roundId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-independent-b",
+        "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a9c867b570b9490434a90ad21958ad4c440bc6a35ec963355023c9818fa9c7b2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

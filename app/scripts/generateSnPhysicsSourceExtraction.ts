@@ -235,6 +235,39 @@ const currentWaveExactEdges = new Set([
   `sn-phys-seki-sn-klassenstufe-6-lb2-008-02-76a5526e:${target.displacementVolume}`,
 ])
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "sn-phys-seki-sn-klassenstufe-6-lb4-017-02-2c6b646e": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "sn-phys-seki-sn-klassenstufe-6-lb4-017-03-9f23073a": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "sn-phys-seki-sn-klassenstufe-8-lb3-053-01-877a802c": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "sn-phys-seki-sn-klassenstufe-8-lb3-055-01-cb8f7101": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "sn-phys-seki-sn-klassenstufe-8-lb3-056-01-02d6f9a5": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8",
+    "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
+  ],
+  "sn-phys-seki-sn-klassenstufe-8-lb4-058-01-ac94a954": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "sn-phys-seki-sn-klassenstufe-9-lb1-065-01-d5f010b8": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 const configs: ExtractionConfig[] = [
   {
     stage: 'SekI',
@@ -714,7 +747,7 @@ const buildExtraction = (config: ExtractionConfig) => {
 
   const passages = [...passageByTopic.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
-    const canonicalGoalIds = inferCanonicalGoalIds(sourceGoal, config.stage)
+    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config.stage))
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

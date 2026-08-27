@@ -1,0 +1,7 @@
+Rekonstruiere die zwei klar getrennten Vorgänge als lockere, handillustrierte deutschsprachige Lerninfografik im Querformat. Heller Papierhintergrund, sanfte Aquarellakzente, kräftige dunkle Konturen, sehr wenig Text.
+
+Linkes Panel „Prisma: räumliche Aufspaltung“: Ein gerader weißer Lichtstrahl tritt von links in ein dreieckiges Glasprisma ein. Beim Eintritt und Austritt wird der Strahl gebrochen. Rechts verlassen das Prisma sechs gerade, voneinander getrennte Spektralstrahlen in exakt dieser Reihenfolge von oben nach unten: Rot, Orange, Gelb, Grün, Blau, Violett. Kurzes Label: „weißes Licht → Spektralfarben“. Das Prisma trennt die im weißen Licht enthaltenen Spektralanteile; es erzeugt keine Farben.
+
+Rechtes Panel „Farbkreis: zeitliche Integration“: Ein Farbkreis mit sechs klar getrennten farbigen Sektoren rotiert schnell; eindeutige Bewegungsstriche zeigen die Drehung. Daneben blickt ein schlichtes Auge auf den rotierenden Kreis und nimmt eine kleine annähernd weiße Kreisfläche wahr. Kurzes Label: „schnell gedreht → annähernd weißer Farbeindruck“. Das Auge empfängt Licht und sendet keine Strahlen aus.
+
+Zwischen den Panels oder unten exakt „zwei verschiedene Vorgänge“. Keine zufällige Farbreihenfolge, kein weißer Spektralstrahl auf der Ausgangsseite, kein Farbspektrum aus dem Farbkreis, keine Behauptung, der ruhende Farbkreis sei weiß, keine gekrümmten Lichtstrahlen, keine Logos, technischen IDs oder Wasserzeichen.

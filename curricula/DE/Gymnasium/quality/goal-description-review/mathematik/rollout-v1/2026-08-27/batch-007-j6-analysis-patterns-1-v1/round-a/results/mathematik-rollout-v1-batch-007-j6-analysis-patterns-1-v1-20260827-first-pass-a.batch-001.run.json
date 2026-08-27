@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-007-j6-patterns-a-001-codex",
+  "campaignId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:48c70c0101e85f811b50d5eda1a21fd54dcc28fff3c36b5842a0d60d6f75dadf",
+  "bundleFingerprint": "sha256:cb0e38ef5693abc6e31d8fb5b1d258d03e86a30b053f1520a25183006a03026a",
+  "bookDigest": "sha256:388a6e9e4529c3b2b9e5d7ef12c7283c2f67b926a1a9e7071b900c9b6f717241",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:06188ebd92ce7ab163df297db05117c7607a5ec14e9ccd7372d3bc77bdbbac56",
+  "independenceGroupId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8cb18560-3a2b-593e-b634-9d768566cba9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:48c70c0101e85f811b50d5eda1a21fd54dcc28fff3c36b5842a0d60d6f75dadf"
+    }
+  ],
+  "startedAt": "2026-08-27T09:50:58Z",
+  "completedAt": "2026-08-27T09:51:37Z",
+  "status": "completed",
+  "outputDigest": "sha256:7b20fee77914248c28eacdc08c5e2dad603123c8449847021e8a1629ab3eef83",
+  "toolchainVersion": "codex-review-v2"
+}

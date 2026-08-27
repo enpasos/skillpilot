@@ -146,6 +146,12 @@ export function buildVisualizationPaths(goal, options) {
   const fileName = `${goal.id}.${safeExtension}`
   const sourceDir = path.join(ROOT_DIR, 'curricula/DE/Gymnasium/visualizations', options.subjectPath, goal.id)
   const publicDir = path.join(ROOT_DIR, 'app/public/assets/goal-visualizations', options.subjectPath, goal.id)
+  const backendDir = path.join(
+    ROOT_DIR,
+    'backend/src/main/resources/static/assets/goal-visualizations',
+    options.subjectPath,
+    goal.id,
+  )
 
   return {
     slug,
@@ -156,6 +162,8 @@ export function buildVisualizationPaths(goal, options) {
     sourceReconstructionPromptPath: path.join(sourceDir, `image-reconstruction-prompt.${options.lang}.md`),
     publicDir,
     publicImagePath: path.join(publicDir, fileName),
+    backendDir,
+    backendImagePath: path.join(backendDir, fileName),
     publicUrl: `/assets/goal-visualizations/${options.subjectPath}/${goal.id}/${fileName}`,
   }
 }

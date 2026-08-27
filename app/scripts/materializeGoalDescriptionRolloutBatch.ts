@@ -1046,13 +1046,23 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
     const selectedSource = synthesisDecision.evidenceRound === 'first'
       ? firstSourceResult.source
       : secondSourceResult.source
+    const otherSource = synthesisDecision.evidenceRound === 'first'
+      ? secondSourceResult.source
+      : firstSourceResult.source
+    const selectedReviseAllowed = (
+      synthesisDecision.resolutionDecision === 'keep_current'
+      && selectedSource.decision === 'revise'
+      && otherSource.decision === 'keep'
+      && synthesisDecision.revisionDissent?.sourceRound === synthesisDecision.evidenceRound
+      && synthesisDecision.revisionDissent.disposition === 'rejected_keep_current'
+    )
     if (
-      selectedSource.decision !== 'keep'
-      || !selectedSource.record
+      !selectedSource.record
+      || (selectedSource.decision !== 'keep' && !selectedReviseAllowed)
       || stableGoalBookJson(resolution.synthesis.understandingEvidence)
         !== stableGoalBookJson(selectedSource.record.understandingEvidence)
     ) {
-      throw new Error(`${goalId}: resolution understanding evidence does not match the selected current keep record`)
+      throw new Error(`${goalId}: resolution understanding evidence does not match the selected allowed current keep/revise record`)
     }
     const validation = await validateGoalDescriptionDualRoundResolution({
       resolution,
@@ -1062,12 +1072,17 @@ export const materializeGoalDescriptionRolloutBatchResolutionIndex = async (
       landscape,
       first: dual.first,
       second: dual.second,
+      synthesisDecisionManifestArtifact: {
+        manifest: synthesisManifest,
+        manifestBytes: synthesisManifestArtifact.bytes,
+        manifestPath: synthesisBinding.manifestPath,
+      },
     })
     if (validation.errors.length > 0) {
       throw new Error(`${goalId}: ${validation.errors.join(' | ')}`)
     }
     if (!validation.strictDescriptionComplete) {
-      throw new Error(`${goalId}: resolution is not strict current-context keep/keep completion`)
+      throw new Error(`${goalId}: resolution is not strict current-context keep/keep or explicitly rejected keep/revise completion`)
     }
     entries.push({
       goalId,

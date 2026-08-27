@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v2-20260827-first-pass-a.batch-001.codex-reviewer-a",
+  "campaignId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v2-20260827-a",
+  "roundId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v2-20260827-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v2-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:4769ed4a3758d3a07f8cd88bd84db8e4e1d4db764f0bdd08a3fb42847d79ad59",
+  "bundleFingerprint": "sha256:a4af6ea1a00946f46cabf8ff134a133558316df11d725a89867bac2e9b8d551f",
+  "bookDigest": "sha256:63880678a0cbbf241bbd7ade50f3240fbb5aa90eb6d32dc176fc10379e16ab71",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:fc94eb9a6f8a5decf297e460da1f2528a5092f945705e2816661f372f1f19fa2",
+  "independenceGroupId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v2-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c1006f55-0406-48cc-92d4-0d8345897cf4",
+    "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c",
+    "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+    "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4769ed4a3758d3a07f8cd88bd84db8e4e1d4db764f0bdd08a3fb42847d79ad59"
+    }
+  ],
+  "startedAt": "2026-08-27T03:47:40Z",
+  "completedAt": "2026-08-27T03:49:54Z",
+  "status": "completed",
+  "outputDigest": "sha256:2610401e357590f2b8080f57a425a8a9d51d17dc08a6504dad50030b41ab2c03",
+  "toolchainVersion": "goal-description-review-v2"
+}

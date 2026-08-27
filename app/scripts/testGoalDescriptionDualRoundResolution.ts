@@ -7,7 +7,9 @@ import {
   buildGoalDescriptionCanonicalContext,
   fingerprintGoalDescriptionReviewInput,
   type GoalDescriptionReviewInput,
+  type GoalDescriptionReviewRecord,
 } from './validateGoalDescriptionReviewCampaign'
+import { buildGoalDescriptionRolloutResolutionSynthesis } from './goalDescriptionRolloutResolutionSynthesis'
 import {
   buildGoalDescriptionDualRoundResolution,
   extractGoalDescriptionDualRoundResolutionSource,
@@ -23,6 +25,11 @@ import type {
   GoalDescriptionDualRoundSummary,
   GoalDescriptionReviewRoundArtifacts,
 } from './validateGoalDescriptionReviewDualRound'
+import {
+  buildGoalDescriptionRolloutSynthesisRoundBinding,
+  fingerprintGoalDescriptionRolloutSynthesisDecisionManifest,
+  type GoalDescriptionRolloutSynthesisDecisionManifest,
+} from './validateGoalDescriptionRolloutSynthesisDecisionManifest'
 
 const digest = (character: string) => `sha256:${character.repeat(64)}` as const
 const sha256 = (value: Buffer) => (
@@ -414,8 +421,11 @@ const manifestBoundResolution = await validateGoalDescriptionDualRoundResolution
     draft.synthesisDecisionManifest = synthesisDecisionManifestBinding
   }),
 })
-assert.deepEqual(manifestBoundResolution.errors, [])
-assert.equal(manifestBoundResolution.strictDescriptionComplete, true)
+assert.match(
+  manifestBoundResolution.errors.join('\n'),
+  /requires the exact supplied manifest bytes and parsed manifest/u,
+)
+assert.equal(manifestBoundResolution.strictDescriptionComplete, false)
 
 const wrongRun = await validateGoalDescriptionDualRoundResolutionBindings({
   ...baseArtifacts,
@@ -499,8 +509,205 @@ for (const sourceDecision of ['revise', 'split_review', 'block'] as const) {
     dualSummaryBytes: openSummaryBytes,
     firstSource: { binding: firstBinding, decision: sourceDecision },
   })
-  assert.match(resolvedResult.errors.join('\n'), /must remain open until two fresh/u)
+  assert.match(resolvedResult.errors.join('\n'), /must remain open unless keep_current binds exactly one current keep plus one current revise/u)
 }
+
+const firstRecord: GoalDescriptionReviewRecord = {
+  recordId: firstBinding.recordId,
+  runId: firstBinding.runId,
+  campaignId: firstBinding.campaignId,
+  roundId: firstBinding.roundId,
+  bundleFingerprint: currentInput.bundleFingerprint,
+  bookDigest: currentInput.bookDigest,
+  goalId: canonicalGoal.id,
+  goalFingerprint,
+  pageFingerprint: page.pageFingerprint,
+  currentTitleDe: canonicalGoal.title,
+  currentTitleEn: canonicalGoal.titleEn,
+  currentDescriptionDe: canonicalGoal.description,
+  currentDescriptionEn: canonicalGoal.descriptionEn,
+  decision: 'keep',
+  understandingEvidence: structuredClone(resolution.synthesis.understandingEvidence),
+  rationale: 'The current text is precise and assessable.',
+  evidenceProfileContract: 'positive-understanding-evidence-v2',
+  evidenceProfileRecommendation: 'create',
+  recordStatus: 'candidate',
+  reviewAuthority: 'ai_candidate',
+}
+const proposedDescriptionDe = 'Die lernende Person kann den Zusammenhang mit einer ausdrücklich genannten Zusatzbedingung erklären.'
+const proposedDescriptionEn = 'The learner can explain the relationship with an explicitly stated additional condition.'
+const secondRecord: GoalDescriptionReviewRecord = {
+  ...firstRecord,
+  recordId: secondBinding.recordId,
+  runId: secondBinding.runId,
+  campaignId: secondBinding.campaignId,
+  roundId: secondBinding.roundId,
+  decision: 'revise',
+  proposedDescriptionDe,
+  proposedDescriptionEn,
+  understandingEvidence: {
+    ...structuredClone(resolution.synthesis.understandingEvidence),
+    transferExpectationDe: 'Die lernende Person prüft den Zusammenhang unter einer veränderten Randbedingung.',
+    transferExpectationEn: 'The learner tests the relationship under a changed boundary condition.',
+  },
+  rationale: 'The current wording is retained, while the stronger boundary-condition evidence is selected.',
+}
+const mixedFirstSource = { binding: firstBinding, decision: 'keep' as const, record: firstRecord }
+const mixedSecondSource = { binding: secondBinding, decision: 'revise' as const, record: secondRecord }
+const mixedSummary = structuredClone(dualSummary)
+mixedSummary.goals[0].secondDecision = 'revise'
+mixedSummary.goals[0].disagreementFields = ['decision', 'proposedDescription', 'understandingEvidence']
+const mixedSummaryBytes = Buffer.from(`${JSON.stringify(mixedSummary, null, 2)}\n`)
+const mixedManifestPayload: Omit<GoalDescriptionRolloutSynthesisDecisionManifest, 'manifestFingerprint'> = {
+  $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json',
+  schemaVersion: 1,
+  synthesisContract: 'goal-description-rollout-synthesis-decision-v1',
+  manifestId: 'fixture-mixed-keep-revise-synthesis',
+  authority: 'ai_synthesis',
+  synthesizedBy: 'Fixture AI synthesizer',
+  synthesizedAt: '2026-08-25T12:00:00.000Z',
+  batch: {
+    batchId: 'fixture-mixed-keep-revise-batch',
+    batchManifestDigest: digest('c'),
+    configDigest: digest('d'),
+    bundleFingerprint: currentInput.bundleFingerprint as `sha256:${string}`,
+    bookDigest: currentInput.bookDigest as `sha256:${string}`,
+    reviewInputFingerprint: currentInput.reviewInputFingerprint as `sha256:${string}`,
+    dualSummaryDigest: sha256(mixedSummaryBytes),
+    canonicalLandscapeDigest: digest('e'),
+  },
+  rounds: {
+    first: buildGoalDescriptionRolloutSynthesisRoundBinding(firstBinding, digest('f')),
+    second: buildGoalDescriptionRolloutSynthesisRoundBinding(secondBinding, digest('0')),
+  },
+  decisions: [{
+    decisionId: 'fixture-mixed-keep-revise-decision',
+    goalId: canonicalGoal.id,
+    effectiveSemanticKind,
+    goalFingerprint,
+    pageFingerprint: page.pageFingerprint,
+    goalReviewContextFingerprint,
+    finalText: resolution.goal.finalText,
+    resolutionDecision: 'keep_current',
+    evidenceRound: 'second',
+    records: {
+      first: { recordId: firstBinding.recordId, recordDigest: firstBinding.recordDigest },
+      second: { recordId: secondBinding.recordId, recordDigest: secondBinding.recordDigest },
+    },
+    revisionDissent: {
+      sourceRound: 'second',
+      disposition: 'rejected_keep_current',
+      proposedDescriptionDe,
+      proposedDescriptionEn,
+      rationaleDe: 'Die Zusatzbedingung wird als Evidenzhinweis bewahrt, rechtfertigt aber keinen längeren kanonischen Text.',
+      rationaleEn: 'The additional condition is retained as evidence guidance but does not justify a longer canonical text.',
+    },
+    rationaleDe: 'Der aktuelle Text bleibt; die präzisere Evidenz der zweiten Runde wird ausdrücklich ausgewählt.',
+    rationaleEn: 'The current text remains; the more precise evidence from the second round is selected explicitly.',
+  }],
+}
+const mixedManifest: GoalDescriptionRolloutSynthesisDecisionManifest = {
+  ...mixedManifestPayload,
+  manifestFingerprint: fingerprintGoalDescriptionRolloutSynthesisDecisionManifest(mixedManifestPayload),
+}
+const mixedManifestBytes = Buffer.from(`${JSON.stringify(mixedManifest, null, 2)}\n`)
+const mixedManifestBinding = {
+  contract: mixedManifest.synthesisContract,
+  manifestPath: 'synthesis-decisions.json',
+  manifestId: mixedManifest.manifestId,
+  manifestDigest: sha256(mixedManifestBytes),
+  manifestFingerprint: mixedManifest.manifestFingerprint,
+  decisionId: mixedManifest.decisions[0].decisionId,
+}
+const mixedSynthesis = buildGoalDescriptionRolloutResolutionSynthesis({
+  batchId: mixedManifest.batch.batchId,
+  manifest: mixedManifest,
+  decision: mixedManifest.decisions[0],
+  summaryGoal: mixedSummary.goals[0],
+  firstSource: mixedFirstSource,
+  secondSource: mixedSecondSource,
+})
+const mixedResolution = buildGoalDescriptionDualRoundResolution({
+  resolutionId: 'fixture-mixed-keep-revise-resolution',
+  goalId: canonicalGoal.id,
+  effectiveSemanticKind,
+  decision: 'keep_current',
+  synthesis: mixedSynthesis,
+  dualSummaryBytes: mixedSummaryBytes,
+  currentInput,
+  firstSource: mixedFirstSource,
+  secondSource: mixedSecondSource,
+  synthesisDecisionManifest: mixedManifestBinding,
+})
+const mixedArtifacts: GoalDescriptionDualRoundResolutionBindingArtifacts = {
+  ...baseArtifacts,
+  resolution: mixedResolution,
+  dualSummary: mixedSummary,
+  dualSummaryBytes: mixedSummaryBytes,
+  firstSource: mixedFirstSource,
+  secondSource: mixedSecondSource,
+  synthesisDecisionManifestArtifact: {
+    manifest: mixedManifest,
+    manifestBytes: mixedManifestBytes,
+    manifestPath: mixedManifestBinding.manifestPath,
+  },
+}
+const validMixed = await validateGoalDescriptionDualRoundResolutionBindings(mixedArtifacts)
+assert.deepEqual(validMixed.errors, [])
+assert.equal(validMixed.strictDescriptionComplete, true)
+
+const mutateMixedResolution = (
+  mutate: (draft: GoalDescriptionDualRoundResolution) => void,
+) => {
+  const draft = structuredClone(mixedResolution)
+  mutate(draft)
+  return withFingerprint(Object.fromEntries(
+    Object.entries(draft).filter(([key]) => key !== 'resolutionFingerprint'),
+  ) as Omit<GoalDescriptionDualRoundResolution, 'resolutionFingerprint'>)
+}
+const missingMixedManifestBinding = await validateGoalDescriptionDualRoundResolutionBindings({
+  ...mixedArtifacts,
+  resolution: mutateMixedResolution((draft) => { delete draft.synthesisDecisionManifest }),
+  synthesisDecisionManifestArtifact: undefined,
+})
+assert.match(missingMixedManifestBinding.errors.join('\n'), /requires a synthesis-decision manifest binding/u)
+assert.equal(missingMixedManifestBinding.strictDescriptionComplete, false)
+
+const missingMixedManifestArtifact = await validateGoalDescriptionDualRoundResolutionBindings({
+  ...mixedArtifacts,
+  synthesisDecisionManifestArtifact: undefined,
+})
+assert.match(missingMixedManifestArtifact.errors.join('\n'), /requires the exact supplied manifest bytes/u)
+assert.equal(missingMixedManifestArtifact.strictDescriptionComplete, false)
+
+const arbitraryMixedEvidence = await validateGoalDescriptionDualRoundResolutionBindings({
+  ...mixedArtifacts,
+  resolution: mutateMixedResolution((draft) => {
+    draft.synthesis.understandingEvidence.transferExpectationEn = 'Arbitrary unbound evidence.'
+  }),
+})
+assert.match(arbitraryMixedEvidence.errors.join('\n'), /manifest-selected current record evidence/u)
+assert.equal(arbitraryMixedEvidence.strictDescriptionComplete, false)
+
+for (const mutate of [
+  (draft: GoalDescriptionDualRoundResolution) => { draft.synthesis.dissent[0].source = 'first' },
+  (draft: GoalDescriptionDualRoundResolution) => { draft.synthesis.dissent[0].textDe = 'Falscher Revisionstext.' },
+  (draft: GoalDescriptionDualRoundResolution) => { draft.synthesis.dissent[0].disposition = 'unresolved' },
+]) {
+  const contradictoryDissent = await validateGoalDescriptionDualRoundResolutionBindings({
+    ...mixedArtifacts,
+    resolution: mutateMixedResolution(mutate),
+  })
+  assert.match(contradictoryDissent.errors.join('\n'), /deterministic dissent|unresolved dissent/u)
+  assert.equal(contradictoryDissent.strictDescriptionComplete, false)
+}
+
+const openMixed = await validateGoalDescriptionDualRoundResolutionBindings({
+  ...mixedArtifacts,
+  resolution: mutateMixedResolution((draft) => { draft.status = 'open' }),
+})
+assert.match(openMixed.errors.join('\n'), /must have resolved status/u)
+assert.equal(openMixed.strictDescriptionComplete, false)
 
 const missingDissent = await validateGoalDescriptionDualRoundResolutionBindings({
   ...baseArtifacts,

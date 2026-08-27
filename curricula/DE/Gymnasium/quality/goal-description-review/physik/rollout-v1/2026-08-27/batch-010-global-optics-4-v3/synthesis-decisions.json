@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T06:32:05.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827",
+    "batchManifestDigest": "sha256:28454f1c9935ce51b2c4a6af2b6014c8f9bb30268006d0b854f13ec92fbf5f2a",
+    "configDigest": "sha256:7b4a6e1e0577b78085c890d27c4fdcb4e4a4a69696587a9016ce0c5e77b22319",
+    "bundleFingerprint": "sha256:2a8a3e6efe30831c01f944fac8a13823efec872f740c932e933412e776542760",
+    "bookDigest": "sha256:215e17fe14ff8f7458b87bff1c1dad93364356c15c99e4d2e26be377e69bb441",
+    "reviewInputFingerprint": "sha256:845a93242ad22594bc141e59b022c9d457153b7ed67aa8a36728b92ef46cb9e6",
+    "dualSummaryDigest": "sha256:9f50c672d235523999f2faac830aaf607acc6ba8ea0fda346ac9456e083aa9fa",
+    "canonicalLandscapeDigest": "sha256:79ad7c1f5f0ee92f8905ff237c2be7b7271532a86e604fd59fec0a3d580f8276"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-a",
+      "campaignDigest": "sha256:b29c2730155f6cf60ac306159d9edd8b7df74058e8c41a4a1cf02346ad2d7672",
+      "roundId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:845a93242ad22594bc141e59b022c9d457153b7ed67aa8a36728b92ef46cb9e6",
+      "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:47da541173000368e088e75372405e05a3a81ff69a86d3272c08fce490dc5f26",
+      "runId": "physik-b010-v3-round-a-independent-gpt5-20260827",
+      "runManifestDigest": "sha256:bd78ac466be2ca42af2293e017a698a2e03575a91c41ab6f396540b9a1f111b0",
+      "resultsDigest": "sha256:981e18cf3ca2cf16fcbd1d14c4686ef205561988347ae12fc78668ed2df23e67"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-b",
+      "campaignDigest": "sha256:e430ec70646fa9e2ecf18b91dc56b6b4ecd629012620f9a25c5cc64674715bec",
+      "roundId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:845a93242ad22594bc141e59b022c9d457153b7ed67aa8a36728b92ef46cb9e6",
+      "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a9c867b570b9490434a90ad21958ad4c440bc6a35ec963355023c9818fa9c7b2",
+      "runId": "physik-b010-optics-v3-round-b-gpt5-20260827",
+      "runManifestDigest": "sha256:cbbfeae2606809f570999f0458a261b947801ecd3d55a7d1f2ec35a0beccdad1",
+      "resultsDigest": "sha256:dca0b85139fdb32180e5507d39fb29a0eeb053f0e12b083815eb743407c65dbe"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-synthesis-decision-001",
+      "goalId": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9c976ecdfd491a23f1e755cce8ba5892f1fab231ebfee8eb0eb4fbd4891411bd",
+      "pageFingerprint": "sha256:cc2af679a59669a2ef46e2b3eab64f8df6a084d8fe1a18aaaca1ab68ad62a9cb",
+      "goalReviewContextFingerprint": "sha256:c1f6233b881d72b5ca82694583736b8f9616f1f5b947560e84de13636247051c",
+      "finalText": {
+        "titleDe": "Sehvorgang und Fehlsichtigkeiten qualitativ erklären",
+        "titleEn": "Explain vision and visual impairments qualitatively",
+        "descriptionDe": "Die lernende Person kann mit einem qualitativen Linsenmodell erklären, wie im Auge ein scharfes Bild auf der Netzhaut entsteht und wie eine unpassende Brechkraft oder Augenlänge bei Kurz- und Weitsichtigkeit die Bildlage relativ zur Netzhaut verändert.",
+        "descriptionEn": "The learner can use a qualitative lens model to explain how the eye forms a sharp image on the retina and how a mismatch in optical power or eye length in nearsightedness and farsightedness changes the image position relative to the retina."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b010-v3-a-90e1e6cf-review",
+          "recordDigest": "sha256:fbe25f9a916afde5d926acc1ef77b6c84038dfb912abfdce7b4cb9b041542224"
+        },
+        "second": {
+          "recordId": "physik-b010-optics-v3-round-b-001",
+          "recordDigest": "sha256:abc026f9f881523320f59c2ca63b860da3e35b5c436ad101f0e966618a42d9f5"
+        }
+      },
+      "rationaleDe": "Beide frischen unabhängigen v3-Reviews bestätigen die aktuelle bilinguale Beschreibung als präzise qualitative Modellkompetenz. Die zweite Evidenzfassung bindet scharfes Sehen ausdrücklich an das Zusammenfallen von Bildebene und Netzhaut, hält Gegenstandsweite und Akkommodation beim Ursachenvergleich kontrolliert und prüft den Transfer durch getrennte Änderungen von Augenlänge und Brechkraft statt durch bloße Benennung von Kurz- oder Weitsichtigkeit.",
+      "rationaleEn": "Both fresh independent v3 reviews confirm the current bilingual description as a precise qualitative modeling competence. The second evidence formulation explicitly ties sharp vision to coincidence of the image plane and retina, controls object distance and accommodation when comparing causes, and tests transfer through separate changes in eye length and optical power rather than mere labeling of nearsightedness or farsightedness."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-synthesis-decision-002",
+      "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:00ce60939b3ba2036edea8bb5cabd35e777b0b4ad01bc4eb8986ae9aa8040a51",
+      "pageFingerprint": "sha256:cd598fa0faf65b2a163ac093fd29467c5f1f0d47ce0616b03418f5b6fd573774",
+      "goalReviewContextFingerprint": "sha256:e1b90c6bc5135fdc2dd9a24911619d21900b4d339e64bfe66b72d05906eeeaec",
+      "finalText": {
+        "titleDe": "Einfache optische Instrumente beschreiben",
+        "titleEn": "Describe simple optical instruments",
+        "descriptionDe": "Die lernende Person kann bei einem einfachen Fernrohr oder Mikroskop den Strahlenverlauf durch Objektiv und Okular im jeweiligen Modell deuten und erklären, wie der Aufbau die Beobachtung ermöglicht.",
+        "descriptionEn": "The learner can interpret the ray path through the objective and eyepiece in the relevant model of a simple telescope or microscope and explain how the setup enables observation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b010-v3-a-6367d45e-review",
+          "recordDigest": "sha256:9e1ef8146755286f31d98d7f5a6e4a21806f419e615e2f83255d78465f1d0401"
+        },
+        "second": {
+          "recordId": "physik-b010-optics-v3-round-b-002",
+          "recordDigest": "sha256:360ceb1dc5cfd5bda6c24904e32c30c2ebd4353020e60a64faf0fcc934490528"
+        }
+      },
+      "rationaleDe": "Beide frischen unabhängigen v3-Reviews bestätigen Fernrohr und Mikroskop als alternative Anwendungen derselben zusammenhängenden Deutung eines zweistufigen Strahlengangs. Die erste Evidenzfassung unterscheidet besonders sorgfältig die Funktionen von Objektiv und Okular, vermeidet die pauschale Behauptung eines universell reellen Zwischenbilds und verlangt bei veränderter Gegenstandsposition oder verändertem Linsenabstand eine begründete Vorhersage für Zwischen- und Austrittsbündel.",
+      "rationaleEn": "Both fresh independent v3 reviews confirm telescope and microscope as alternative applications of one coherent interpretation of a two-stage ray path. The first evidence formulation particularly carefully distinguishes the functions of objective and eyepiece, avoids a blanket claim of a universally real intermediate image, and requires a justified prediction for the intermediate and emerging bundles when object position or lens separation changes."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-synthesis-decision-003",
+      "goalId": "6a4c6042-052b-502b-a39a-0ed8941247ac",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e9d53247ee06f42079a07e1db7d31c65f8ccc6353d5a7202e0f61829d9957b96",
+      "pageFingerprint": "sha256:e7301f1033a0a4a21e6c7ed81d20ce5eb7f0c2dedc6781dff21c4d9bc7a61a4e",
+      "goalReviewContextFingerprint": "sha256:0ebde05f5cc93d096dc7181f65fd5aabb43f79f527ef1ae69955ccef4834727b",
+      "finalText": {
+        "titleDe": "Brechung und optische Hebung qualitativ beschreiben",
+        "titleEn": "Describe refraction and apparent depth qualitatively",
+        "descriptionDe": "Die lernende Person kann mit dem Strahlenmodell qualitativ erklären, wie sich Lichtwege beim Übergang zwischen zwei Medien an der Grenzfläche ändern und wie daraus Wahrnehmungseffekte wie optische Hebung entstehen.",
+        "descriptionEn": "The learner can use the ray model to explain qualitatively how light paths change at the interface when passing between two media and how this produces perception effects such as apparent depth."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b010-v3-a-6a4c6042-review",
+          "recordDigest": "sha256:2bb5f3f63695a88fae1209ed532ee028b0815aa97b10a5819c177d352a5c4664"
+        },
+        "second": {
+          "recordId": "physik-b010-optics-v3-round-b-003",
+          "recordDigest": "sha256:6f3ab51c4c1ab88a9f09f9a5ffe1628ba41d15599c1824d6d3554bda13238674"
+        }
+      },
+      "rationaleDe": "Beide frischen unabhängigen v3-Reviews bestätigen Brechung und optische Hebung als eine kausal verbundene Modellkompetenz. Die erste Evidenzfassung trennt tatsächlichen gebrochenen Lichtweg, geradlinige Rückverlängerung und scheinbare Lage, bezieht die Richtung auf das Lot sowie die Medienfolge und prüft den Transfer bei vertauschter Übergangsrichtung, geänderter Beobachtungsgeometrie und im Grenzfall lotrechten Einfalls.",
+      "rationaleEn": "Both fresh independent v3 reviews confirm refraction and apparent depth as one causally connected modeling competence. The first evidence formulation distinguishes the actual refracted light path, straight backward extension, and apparent position, relates direction to the normal and media sequence, and tests transfer when the transition direction or viewing geometry changes and in the limiting case of normal incidence."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-synthesis-decision-004",
+      "goalId": "1ab5f599-0927-579d-94cc-feecdf3b5603",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e00476ca657205960cd403afca1eb41dbf6a29c2dfaa734906409094d61577ff",
+      "pageFingerprint": "sha256:df63bf645c7fdb9f3f71334c3caaa782479d8ece6b3d5f518832138926b1be16",
+      "goalReviewContextFingerprint": "sha256:08097f629468bcbc6d518d98be0eb21aa5e2c352db289e190b309d9d3300e4bf",
+      "finalText": {
+        "titleDe": "Bildentstehung bei der Lochkamera qualitativ beschreiben",
+        "titleEn": "Describe image formation in a pinhole camera qualitatively",
+        "descriptionDe": "Die lernende Person kann mit dem Strahlenmodell erklären, wie Licht von verschiedenen Gegenstandspunkten geradlinig durch die kleine Öffnung zu entsprechenden Bildpunkten auf dem Schirm gelangt und warum dabei ein umgekehrtes Bild entsteht.",
+        "descriptionEn": "The learner can use the ray model to explain how light from different object points travels in straight lines through the small aperture to corresponding image points on the screen and why this produces an inverted image."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b010-v3-a-1ab5f599-review",
+          "recordDigest": "sha256:6e1aff8168287e4f530e9d2f525386cbfbea81209085c11c9de65c0e02e2dfed"
+        },
+        "second": {
+          "recordId": "physik-b010-optics-v3-round-b-004",
+          "recordDigest": "sha256:f60b7054ccd7d01405d5d163b822d5485560f80e73630021b7d887e0bf237b07"
+        }
+      },
+      "rationaleDe": "Nach der dokumentierten 2:1-Tie-Break-Präzisierung bestätigen beide frischen unabhängigen v3-Reviews die Lochkamera-Beschreibung vollständig. Die erste Evidenzfassung macht die Auswahl enger Lichtanteile durch die kleine Öffnung, die selbstständig konstruierte Punkt-zu-Punkt-Zuordnung und die daraus entstehende Bildumkehr beobachtbar; ein veränderter Aufbau prüft Transfer statt das Nachzeichnen einer Standardskizze.",
+      "rationaleEn": "After the documented 2-to-1 tie-break clarification, both fresh independent v3 reviews fully confirm the pinhole-camera description. The first evidence formulation makes the small aperture's selection of narrow portions of light, independently constructed point-to-point mapping, and the resulting image inversion observable; a changed setup tests transfer rather than copying a standard diagram."
+    }
+  ],
+  "manifestFingerprint": "sha256:0f50996c8c3f9509f3066ecef7da9eb0a5d5e12b76d283322894415da0f201ac"
+}

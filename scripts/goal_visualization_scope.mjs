@@ -35,6 +35,35 @@ export function isOrdinaryAtomicGoalForVisualization(goal) {
   return true
 }
 
+/**
+ * A reviewed visualization may remain attached to a stable cluster after an
+ * atomicity split when it still gives a useful overview of all children. Such
+ * records stay in the QA ledger, but they remain outside ordinary-atomic
+ * coverage counts and rollout denominators.
+ */
+export function isActiveClusterOverviewForVisualization(goal) {
+  if (!goal || typeof goal !== 'object' || Array.isArray(goal)) return false
+  if (!Array.isArray(goal.contains) || goal.contains.length === 0) return false
+
+  const nodeKind = typeof goal.nodeKind === 'string' ? goal.nodeKind.trim().toLowerCase() : ''
+  if (EXCLUDED_NODE_KINDS.has(nodeKind)) return false
+  if (goal.examData !== undefined) return false
+
+  const tags = normalizedTags(goal)
+  if (tags.some((tag) => EXCLUDED_TAGS.has(tag))) return false
+  if (tags.some((tag) => tag.startsWith('srs-deck:'))) return false
+
+  return Array.isArray(goal.resourceLinks) && goal.resourceLinks.some((link) => (
+    link
+    && typeof link === 'object'
+    && !Array.isArray(link)
+    && link.type === 'goal-visualization'
+    && (!link.role || link.role === 'primary')
+    && typeof link.url === 'string'
+    && link.url.trim().length > 0
+  ))
+}
+
 export function normalizeGoalVisualizationSubject(value) {
   return String(value ?? '')
     .trim()

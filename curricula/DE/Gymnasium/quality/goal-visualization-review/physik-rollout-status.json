@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-26T15:42:30.167Z",
+  "generatedAt": "2026-08-27T13:04:48.631Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -10,34 +10,38 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
   "summary": {
-    "totalGoals": 658,
-    "atomicGoalsInScope": 438,
-    "goalsWithPrimaryVisualization": 418,
-    "coveragePercent": 95.4,
-    "goalsAccountedForByAssetOrDeferred": 438,
+    "totalGoals": 676,
+    "atomicGoalsInScope": 444,
+    "goalsWithPrimaryVisualization": 424,
+    "coveragePercent": 95.5,
+    "goalsAccountedForByAssetOrDeferred": 444,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "accepted": 79,
-      "pilot": 339
+      "accepted": 82,
+      "pilot": 342
     },
     "linkedVisualizationReviewStatuses": {
-      "accepted": 79,
-      "pilot": 339
+      "accepted": 82,
+      "pilot": 342
     },
-    "reviewLedgerFiles": 75,
+    "reviewLedgerFiles": 79,
     "reviewDecisionCounts": {
-      "accepted_pilot": 280,
+      "accepted_documented_repo_native_fallback": 1,
+      "accepted_pilot": 281,
       "accepted_pilot_after_fifth_regeneration": 1,
       "accepted_pilot_after_fresh_ai_review": 279,
       "accepted_pilot_after_fresh_ai_review_correction": 134,
+      "accepted_pilot_after_owner_review": 3,
       "accepted_pilot_after_provider_limitation_revisit": 3,
       "accepted_pilot_after_provider_quota_retry": 6,
       "accepted_pilot_after_provider_retry": 3,
-      "accepted_pilot_after_regeneration": 102,
-      "accepted_pilot_after_second_regeneration": 23,
+      "accepted_pilot_after_regeneration": 107,
+      "accepted_pilot_after_regeneration_and_owner_review": 3,
+      "accepted_pilot_after_second_regeneration": 24,
       "accepted_pilot_after_third_regeneration": 3,
-      "accepted_pilot_after_user_review_correction": 9,
+      "accepted_pilot_after_user_review_correction": 10,
+      "accepted_retroactive_nano_banana": 22,
       "blocked_provider_quota": 1,
       "deferred_provider_limitation": 26,
       "provider_temporary_failure_retried": 1,
@@ -49,12 +53,12 @@
     "blockedProviderQuotaLedgers": 1,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 18,
+    "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-colors-current-alignment-2026-08-26.md",
-    "latestLedgerStatus": null,
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-078.md",
+    "latestLedgerStatus": "completed",
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
@@ -266,138 +270,18 @@
         "title": "Kraft und Verformung experimentell untersuchen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The first candidate was rejected because the middle spring state was also labeled `F = 0 N` despite showing the `1 N` load. The first imported regeneration was later rejected after user review because the zero point and ruler scale were misleading and `s in cm` did not reliably correspond to the visible spring displacement. The accepted replacement removes the numbered ruler, uses one shared `Nullpunkt` at the unloaded lower spring end, shows `s = 0 cm`, `s = 2 cm`, and `s = 4 cm` as displacement segments from that line, keeps consistent spring windings, and retains the correct table rows and graph points."
+      },
+      {
+        "batch": "077",
+        "goalId": "f0046ae8-cbfc-526b-8414-04e3595b6075",
+        "title": "Sonnen- und Mondfinsternisse mit Schattenräumen erklären",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "`2fb3862606a2dfb298f548144cb4c5b4bde990aee9932cc24d224746750438df`; beide Teilbilder besitzen genau vier gerade Randstrahlen. Bei der Sonnenfinsternis sind sie gemeinsame Tangenten von Sonne und Mond, bei der Mondfinsternis gemeinsame Tangenten von Sonne und Erde; der Mond liegt dort berührungsfrei im Erdschatten. Kern- und Halbschatten folgen den begrenzenden Geraden konsistent."
       }
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [
-      {
-        "goalId": "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
-        "title": "Angriffspunkt, Wirkungslinie und Schwerpunkt deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
-        "title": "Dichte aus Masse und Volumen bestimmen und deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
-        "title": "Kräfte vektoriell zusammensetzen und Resultierende bestimmen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/41d35667-0296-5f84-bc12-202ffc440be0/41d35667-0296-5f84-bc12-202ffc440be0.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "b92827a7-5d62-5fdb-a6f5-ac44461f4a7b",
-        "title": "Leistung als Energie pro Zeit bestimmen und deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "af0e2efb-f634-5f2d-abea-b2e1a67a2894",
-        "title": "Masse von Körpern messen und vergleichen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/af0e2efb-f634-5f2d-abea-b2e1a67a2894/af0e2efb-f634-5f2d-abea-b2e1a67a2894.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "33e3417c-e062-5f4a-8df9-3195dca50089",
-        "title": "Mondphasen mit Beleuchtung und Blickrichtung erklären",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/33e3417c-e062-5f4a-8df9-3195dca50089/33e3417c-e062-5f4a-8df9-3195dca50089.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "3c8e5510-a12d-5770-8a01-e5fe741b259c",
-        "title": "Reflexionsgesetz experimentell prüfen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/3c8e5510-a12d-5770-8a01-e5fe741b259c/3c8e5510-a12d-5770-8a01-e5fe741b259c.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
-        "title": "Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "f0046ae8-cbfc-526b-8414-04e3595b6075",
-        "title": "Sonnen- und Mondfinsternisse mit Schattenräumen erklären",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/f0046ae8-cbfc-526b-8414-04e3595b6075/f0046ae8-cbfc-526b-8414-04e3595b6075.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "267170bd-f880-56a7-9719-ffb9751872c5",
-        "title": "Spannungsbilanzen in Maschen mit Energieerhaltung begründen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/267170bd-f880-56a7-9719-ffb9751872c5/267170bd-f880-56a7-9719-ffb9751872c5.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "b57427c9-1af5-5daa-8c65-b84a4cc20785",
-        "title": "Spiegelbilder am ebenen Spiegel mit dem Strahlenmodell erklären",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/b57427c9-1af5-5daa-8c65-b84a4cc20785/b57427c9-1af5-5daa-8c65-b84a4cc20785.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "8a84de16-2fde-58ec-827a-f803e2ce8564",
-        "title": "Strombilanzen an Knoten mit Ladungserhaltung begründen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/8a84de16-2fde-58ec-827a-f803e2ce8564/8a84de16-2fde-58ec-827a-f803e2ce8564.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
-        "title": "Temperatur mit einem geeigneten Thermometer messen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "b60f63b6-e70b-5557-9f54-86d42fa80325",
-        "title": "Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "f827b00f-af7f-52de-84aa-2a2bbaa035bd",
-        "title": "Volumen regelmäßiger Körper geometrisch bestimmen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/f827b00f-af7f-52de-84aa-2a2bbaa035bd/f827b00f-af7f-52de-84aa-2a2bbaa035bd.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "f92b5b8a-327f-50d2-8313-6a142399ebf0",
-        "title": "Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "8f833b36-4126-52db-b210-79fb0023c7d9",
-        "title": "Widerstandswirkungen in Reihen- und Parallelschaltungen deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/8f833b36-4126-52db-b210-79fb0023c7d9/8f833b36-4126-52db-b210-79fb0023c7d9.png",
-        "latestDecision": null
-      },
-      {
-        "goalId": "f7f2c254-1663-5861-bed7-a32c00495b19",
-        "title": "Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.png",
-        "latestDecision": null
-      }
-    ],
+    "linkedWithoutAcceptedReview": [],
     "acceptedReviewWithoutLink": []
   },
   "visualizedGoals": [
@@ -455,7 +339,7 @@
       "phase": "GLOBAL",
       "area": "Mechanik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390.png"
+      "url": "/assets/goal-visualizations/physik/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390.jpg"
     },
     {
       "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
@@ -791,7 +675,7 @@
       "phase": "GLOBAL",
       "area": "Mechanik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0.png"
+      "url": "/assets/goal-visualizations/physik/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0.jpg"
     },
     {
       "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
@@ -906,6 +790,14 @@
       "url": "/assets/goal-visualizations/physik/692db5b6-8be1-5c7b-8307-3a02afb21ea0/692db5b6-8be1-5c7b-8307-3a02afb21ea0.jpg"
     },
     {
+      "goalId": "80dd0a2b-1422-5b00-89ff-ec4d0faa047e",
+      "title": "Einen Kondensator als System getrennter Ladungen deuten",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/80dd0a2b-1422-5b00-89ff-ec4d0faa047e/80dd0a2b-1422-5b00-89ff-ec4d0faa047e.jpg"
+    },
+    {
       "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
       "title": "Einfache Farbwahrnehmung beschreiben",
       "phase": "GLOBAL",
@@ -930,20 +822,20 @@
       "url": "/assets/goal-visualizations/physik/2eecd0e2-a7ca-4568-9b12-3d47706c65fb/2eecd0e2-a7ca-4568-9b12-3d47706c65fb.jpg"
     },
     {
-      "goalId": "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
-      "title": "Einfache Stromkreise aufbauen und Schaltsymbole nutzen",
-      "phase": "GLOBAL",
-      "area": "Elektrizität",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/75bdf5ca-cda4-4658-9ec7-84c77b3759db/75bdf5ca-cda4-4658-9ec7-84c77b3759db.jpg"
-    },
-    {
       "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
       "title": "Einfachen Elektromotor bauen und qualitativ erklären",
       "phase": "GLOBAL",
       "area": "Elektromagnetismus",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/eb30189c-27c6-510b-b235-6543afa18b90/eb30189c-27c6-510b-b235-6543afa18b90.jpg"
+    },
+    {
+      "goalId": "af7855a3-6aea-5e05-8505-248bc9a8c219",
+      "title": "Einflüsse auf den Widerstand eines Leiters qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/af7855a3-6aea-5e05-8505-248bc9a8c219/af7855a3-6aea-5e05-8505-248bc9a8c219.jpg"
     },
     {
       "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
@@ -959,7 +851,7 @@
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/c5413852-abae-566b-b435-f9939209ca63.png"
+      "url": "/assets/goal-visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/c5413852-abae-566b-b435-f9939209ca63.jpg"
     },
     {
       "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
@@ -978,14 +870,6 @@
       "url": "/assets/goal-visualizations/physik/d30fd37b-1f05-44e3-a40a-4c5a88fa28c2/d30fd37b-1f05-44e3-a40a-4c5a88fa28c2.jpg"
     },
     {
-      "goalId": "1911920e-b099-4310-82f2-b47f51a78b33",
-      "title": "Elektrische Anlagen, Gewitter und Haushaltsstromkreise sicher beurteilen",
-      "phase": "GLOBAL",
-      "area": "Elektrizität",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/1911920e-b099-4310-82f2-b47f51a78b33/1911920e-b099-4310-82f2-b47f51a78b33.jpg"
-    },
-    {
       "goalId": "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
       "title": "Elektrische Energieumwandlungen qualitativ beschreiben",
       "phase": "GLOBAL",
@@ -994,12 +878,12 @@
       "url": "/assets/goal-visualizations/physik/cbb26ed2-6979-46f6-a4ae-128f5c5d9d76/cbb26ed2-6979-46f6-a4ae-128f5c5d9d76.jpg"
     },
     {
-      "goalId": "50431e92-eec9-54d6-b437-ea7a51b6f474",
-      "title": "Elektrische Energieversorgung und Geräteangaben einordnen",
+      "goalId": "27b90ce9-b650-5232-85fb-ce2cb69d59a3",
+      "title": "Elektrische Geräte- und Akkuangaben physikalisch deuten",
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/physik/50431e92-eec9-54d6-b437-ea7a51b6f474/50431e92-eec9-54d6-b437-ea7a51b6f474.jpg"
+      "url": "/assets/goal-visualizations/physik/27b90ce9-b650-5232-85fb-ce2cb69d59a3/27b90ce9-b650-5232-85fb-ce2cb69d59a3.jpg"
     },
     {
       "goalId": "46e42b07-c098-5d65-8ef5-8472b7c4d8e2",
@@ -1016,6 +900,14 @@
       "area": "Elektrizität",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/baa2bf3c-798a-5ec3-a667-031bf062d96c/baa2bf3c-798a-5ec3-a667-031bf062d96c.jpg"
+    },
+    {
+      "goalId": "c156d2fb-0fe9-5f13-8baa-3e74d7da151e",
+      "title": "Elektrische Vorgänge und sicheres Verhalten bei Gewittern erklären",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/c156d2fb-0fe9-5f13-8baa-3e74d7da151e/c156d2fb-0fe9-5f13-8baa-3e74d7da151e.jpg"
     },
     {
       "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
@@ -1048,6 +940,14 @@
       "area": "Quantenphysik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/e296aba6-f407-5944-a2bd-e5296e4c9f06/e296aba6-f407-5944-a2bd-e5296e4c9f06.jpg"
+    },
+    {
+      "goalId": "dc7dd287-6eac-574d-818d-65cfb23a2d94",
+      "title": "Elektrostatische Aufladung durch Ladungsumverteilung erklären",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/dc7dd287-6eac-574d-818d-65cfb23a2d94/dc7dd287-6eac-574d-818d-65cfb23a2d94.jpg"
     },
     {
       "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
@@ -1303,7 +1203,7 @@
       "phase": "GLOBAL",
       "area": "Farben",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/a4681378-ade4-4f20-bf77-fb020469510f/a4681378-ade4-4f20-bf77-fb020469510f.png"
+      "url": "/assets/goal-visualizations/physik/a4681378-ade4-4f20-bf77-fb020469510f/a4681378-ade4-4f20-bf77-fb020469510f.jpg"
     },
     {
       "goalId": "481ffd56-d585-56fe-b525-ed423e30eed3",
@@ -1538,6 +1438,14 @@
       "url": "/assets/goal-visualizations/physik/e6895bc3-fcbd-59ad-baef-a78c97a13e11/e6895bc3-fcbd-59ad-baef-a78c97a13e11.jpg"
     },
     {
+      "goalId": "5ddba212-9e0a-5dd4-8274-239ec51ab6a8",
+      "title": "Gefahren elektrischer Anlagen und Haushaltsstromkreise sicher beurteilen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/5ddba212-9e0a-5dd4-8274-239ec51ab6a8/5ddba212-9e0a-5dd4-8274-239ec51ab6a8.jpg"
+    },
+    {
       "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
       "title": "Geladene Teilchen in homogenen elektrischen Feldern untersuchen",
       "phase": "Q1",
@@ -1583,7 +1491,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.png"
+      "url": "/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.jpg"
     },
     {
       "goalId": "af1c3116-5b55-55f5-86da-8c2cfe2c550c",
@@ -1592,6 +1500,14 @@
       "area": "Physik und Gesellschaft",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/af1c3116-5b55-55f5-86da-8c2cfe2c550c/af1c3116-5b55-55f5-86da-8c2cfe2c550c.jpg"
+    },
+    {
+      "goalId": "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "title": "Gleich- und Wechselspannungsversorgungen einordnen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/4a42cddd-7827-5204-87e5-8d9eac7792f1/4a42cddd-7827-5204-87e5-8d9eac7792f1.jpg"
     },
     {
       "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
@@ -1738,12 +1654,12 @@
       "url": "/assets/goal-visualizations/physik/8ea46612-7f0d-4ef4-a732-9428e640ae92/8ea46612-7f0d-4ef4-a732-9428e640ae92.jpg"
     },
     {
-      "goalId": "3e33813d-db75-4571-8345-3845b02b956d",
-      "title": "Hören, Ohr und Lärmbelastung einordnen",
+      "goalId": "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c",
+      "title": "Hörvorgang im Ohr qualitativ erklären",
       "phase": "GLOBAL",
       "area": "Akustik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/3e33813d-db75-4571-8345-3845b02b956d/3e33813d-db75-4571-8345-3845b02b956d.jpg"
+      "url": "/assets/goal-visualizations/physik/2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c/2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c.jpg"
     },
     {
       "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
@@ -2063,7 +1979,7 @@
       "phase": "GLOBAL",
       "area": "Mechanik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.png"
+      "url": "/assets/goal-visualizations/physik/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.jpg"
     },
     {
       "goalId": "5ea765ac-c279-551a-8a94-a07da2381e5b",
@@ -2138,6 +2054,14 @@
       "url": "/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg"
     },
     {
+      "goalId": "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+      "title": "Lärmbelastung des Gehörs beurteilen",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/da0837c7-95a7-5a6a-81db-f33cb7f42d85/da0837c7-95a7-5a6a-81db-f33cb7f42d85.jpg"
+    },
+    {
       "goalId": "0172ca41-cc42-51d6-94ad-f0f4680059e4",
       "title": "Laserprinzip (Vertiefung: Resonator-Moden)",
       "phase": "Q3",
@@ -2159,7 +2083,7 @@
       "phase": "GLOBAL",
       "area": "Energie",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b.png"
+      "url": "/assets/goal-visualizations/physik/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b.jpg"
     },
     {
       "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
@@ -2183,7 +2107,7 @@
       "phase": "GLOBAL",
       "area": "Optik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.png"
+      "url": "/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.jpg"
     },
     {
       "goalId": "74a74132-fa39-541c-8d3c-696cf228452d",
@@ -2295,7 +2219,7 @@
       "phase": "GLOBAL",
       "area": "Mechanik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/af0e2efb-f634-5f2d-abea-b2e1a67a2894/af0e2efb-f634-5f2d-abea-b2e1a67a2894.png"
+      "url": "/assets/goal-visualizations/physik/af0e2efb-f634-5f2d-abea-b2e1a67a2894/af0e2efb-f634-5f2d-abea-b2e1a67a2894.jpg"
     },
     {
       "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
@@ -2479,7 +2403,7 @@
       "phase": "GLOBAL",
       "area": "Optik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/33e3417c-e062-5f4a-8df9-3195dca50089/33e3417c-e062-5f4a-8df9-3195dca50089.png"
+      "url": "/assets/goal-visualizations/physik/33e3417c-e062-5f4a-8df9-3195dca50089/33e3417c-e062-5f4a-8df9-3195dca50089.jpg"
     },
     {
       "goalId": "2bc068de-5d2b-5f94-bd51-755982befb6f",
@@ -2568,6 +2492,14 @@
       "area": "Astrophysik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/6ae54ff9-dc3b-563b-b2ee-09a0f0d00162/6ae54ff9-dc3b-563b-b2ee-09a0f0d00162.jpg"
+    },
+    {
+      "goalId": "7ca44ba0-b77e-52bf-8562-f67b44767172",
+      "title": "Offene und geschlossene Stromkreise aufbauen und deuten",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/7ca44ba0-b77e-52bf-8562-f67b44767172/7ca44ba0-b77e-52bf-8562-f67b44767172.jpg"
     },
     {
       "goalId": "e39c83b0-cb4f-5454-a143-b9a159c99cba",
@@ -2911,7 +2843,7 @@
       "phase": "GLOBAL",
       "area": "Optik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/3c8e5510-a12d-5770-8a01-e5fe741b259c/3c8e5510-a12d-5770-8a01-e5fe741b259c.png"
+      "url": "/assets/goal-visualizations/physik/3c8e5510-a12d-5770-8a01-e5fe741b259c/3c8e5510-a12d-5770-8a01-e5fe741b259c.jpg"
     },
     {
       "goalId": "581c0766-b84b-54cb-b8b6-375310329a41",
@@ -2943,7 +2875,7 @@
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.png"
+      "url": "/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg"
     },
     {
       "goalId": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
@@ -3007,7 +2939,7 @@
       "phase": "GLOBAL",
       "area": "Akustik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.png"
+      "url": "/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg"
     },
     {
       "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
@@ -3023,7 +2955,7 @@
       "phase": "GLOBAL",
       "area": "Akustik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.png"
+      "url": "/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.jpg"
     },
     {
       "goalId": "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
@@ -3127,7 +3059,7 @@
       "phase": "GLOBAL",
       "area": "Optik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/f0046ae8-cbfc-526b-8414-04e3595b6075/f0046ae8-cbfc-526b-8414-04e3595b6075.png"
+      "url": "/assets/goal-visualizations/physik/f0046ae8-cbfc-526b-8414-04e3595b6075/f0046ae8-cbfc-526b-8414-04e3595b6075.jpg"
     },
     {
       "goalId": "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
@@ -3154,12 +3086,20 @@
       "url": "/assets/goal-visualizations/physik/c9405043-bdc0-5995-8b4d-5bb56d97d05d/c9405043-bdc0-5995-8b4d-5bb56d97d05d.jpg"
     },
     {
+      "goalId": "28237994-9c24-5a06-82fe-be1f494768ba",
+      "title": "Spannung in einfachen Stromkreisen messen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/28237994-9c24-5a06-82fe-be1f494768ba/28237994-9c24-5a06-82fe-be1f494768ba.jpg"
+    },
+    {
       "goalId": "267170bd-f880-56a7-9719-ffb9751872c5",
       "title": "Spannungsbilanzen in Maschen mit Energieerhaltung begründen",
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/267170bd-f880-56a7-9719-ffb9751872c5/267170bd-f880-56a7-9719-ffb9751872c5.png"
+      "url": "/assets/goal-visualizations/physik/267170bd-f880-56a7-9719-ffb9751872c5/267170bd-f880-56a7-9719-ffb9751872c5.jpg"
     },
     {
       "goalId": "ea2d5085-4ec1-5e33-87e0-15edcad635bf",
@@ -3183,7 +3123,7 @@
       "phase": "GLOBAL",
       "area": "Optik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/b57427c9-1af5-5daa-8c65-b84a4cc20785/b57427c9-1af5-5daa-8c65-b84a4cc20785.png"
+      "url": "/assets/goal-visualizations/physik/b57427c9-1af5-5daa-8c65-b84a4cc20785/b57427c9-1af5-5daa-8c65-b84a4cc20785.jpg"
     },
     {
       "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
@@ -3200,14 +3140,6 @@
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/4e046c1c-bcc7-5e3c-9f71-f80d69027483/4e046c1c-bcc7-5e3c-9f71-f80d69027483.jpg"
-    },
-    {
-      "goalId": "32111497-d5ca-453e-906d-d352f885b126",
-      "title": "Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten",
-      "phase": "GLOBAL",
-      "area": "Elektrizität",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/32111497-d5ca-453e-906d-d352f885b126/32111497-d5ca-453e-906d-d352f885b126.jpg"
     },
     {
       "goalId": "4c919da9-157a-5a14-a725-f7343975c9ab",
@@ -3282,12 +3214,20 @@
       "url": "/assets/goal-visualizations/physik/9a9e2085-5ab6-534f-b622-83774d51f36b/9a9e2085-5ab6-534f-b622-83774d51f36b.jpg"
     },
     {
+      "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+      "title": "Strom-Spannungs-Kennlinien einfacher Bauteile experimentell untersuchen und deuten",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/66256e22-44a3-5939-8862-821e29d6711d/66256e22-44a3-5939-8862-821e29d6711d.jpg"
+    },
+    {
       "goalId": "8a84de16-2fde-58ec-827a-f803e2ce8564",
       "title": "Strombilanzen an Knoten mit Ladungserhaltung begründen",
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/8a84de16-2fde-58ec-827a-f803e2ce8564/8a84de16-2fde-58ec-827a-f803e2ce8564.png"
+      "url": "/assets/goal-visualizations/physik/8a84de16-2fde-58ec-827a-f803e2ce8564/8a84de16-2fde-58ec-827a-f803e2ce8564.jpg"
     },
     {
       "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
@@ -3304,14 +3244,6 @@
       "area": "Elektrizität",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/f1a078ae-6262-4444-a4bc-a5ab275621cf/f1a078ae-6262-4444-a4bc-a5ab275621cf.jpg"
-    },
-    {
-      "goalId": "59d1145e-ac54-5917-880a-21b4b80526d3",
-      "title": "Stromstärke und Spannung messen",
-      "phase": "GLOBAL",
-      "area": "Elektrizität",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/physik/59d1145e-ac54-5917-880a-21b4b80526d3/59d1145e-ac54-5917-880a-21b4b80526d3.jpg"
     },
     {
       "goalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
@@ -3383,7 +3315,7 @@
       "phase": "GLOBAL",
       "area": "Wärmelehre",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f.png"
+      "url": "/assets/goal-visualizations/physik/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f.jpg"
     },
     {
       "goalId": "940978fa-1f2d-4e54-9c28-081a6df9b76f",
@@ -3399,7 +3331,7 @@
       "phase": "GLOBAL",
       "area": "Wärmelehre",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.png"
+      "url": "/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.jpg"
     },
     {
       "goalId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
@@ -3503,7 +3435,7 @@
       "phase": "GLOBAL",
       "area": "Mechanik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/f827b00f-af7f-52de-84aa-2a2bbaa035bd/f827b00f-af7f-52de-84aa-2a2bbaa035bd.png"
+      "url": "/assets/goal-visualizations/physik/f827b00f-af7f-52de-84aa-2a2bbaa035bd/f827b00f-af7f-52de-84aa-2a2bbaa035bd.jpg"
     },
     {
       "goalId": "f92b5b8a-327f-50d2-8313-6a142399ebf0",
@@ -3511,7 +3443,7 @@
       "phase": "GLOBAL",
       "area": "Mechanik",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.png"
+      "url": "/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.jpg"
     },
     {
       "goalId": "70b358bf-da6d-53ba-8393-51d5c2365b04",
@@ -3602,20 +3534,12 @@
       "url": "/assets/goal-visualizations/physik/d716a35e-e422-5aba-b39a-f2e22f1e1e74/d716a35e-e422-5aba-b39a-f2e22f1e1e74.jpg"
     },
     {
-      "goalId": "ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca",
-      "title": "Widerstand und Kennlinien einfacher Bauteile untersuchen",
-      "phase": "GLOBAL",
-      "area": "Elektrizität",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/physik/ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca/ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca.jpg"
-    },
-    {
       "goalId": "8f833b36-4126-52db-b210-79fb0023c7d9",
       "title": "Widerstandswirkungen in Reihen- und Parallelschaltungen deuten",
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/8f833b36-4126-52db-b210-79fb0023c7d9/8f833b36-4126-52db-b210-79fb0023c7d9.png"
+      "url": "/assets/goal-visualizations/physik/8f833b36-4126-52db-b210-79fb0023c7d9/8f833b36-4126-52db-b210-79fb0023c7d9.jpg"
     },
     {
       "goalId": "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
@@ -3647,7 +3571,7 @@
       "phase": "GLOBAL",
       "area": "Energie",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.png"
+      "url": "/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.jpg"
     },
     {
       "goalId": "73b5af24-7750-520a-bb16-43136ce19a5c",
@@ -3728,6 +3652,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d.jpg"
+    },
+    {
+      "goalId": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+      "title": "Zwischen Stromkreis und Schaltplan übersetzen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/69f8f59c-b0c3-5b0b-82db-834a0e655736/69f8f59c-b0c3-5b0b-82db-834a0e655736.jpg"
     },
     {
       "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",

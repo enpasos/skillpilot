@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T10:09:09.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827",
+    "batchManifestDigest": "sha256:7ceaeb132a16eb657955b281c68bfd23583f540e019d6f479927d53f5313f5df",
+    "configDigest": "sha256:2ebab84b5246ea272edbfaf169f7858b6dcc05b712012a6040a79d393d3e1c8b",
+    "bundleFingerprint": "sha256:a2bd92e102a984a2d167850a35e112d36546be3c5b6af61941f28a726eff1891",
+    "bookDigest": "sha256:2ad4148f56d395e632b0927f178afeb87ef6938c4752d3bf7e3701a02129121b",
+    "reviewInputFingerprint": "sha256:4a3cafff18fba4bc94ea059a3243fdf08128bca3e50c0e92545c6320bb42c462",
+    "dualSummaryDigest": "sha256:ef99f64bcb7544d3ad5c4ab403d91f9f2be1c3a1f39818510f7cc4bcb0643805",
+    "canonicalLandscapeDigest": "sha256:82983e7c24bf34fb7b42b207e689fc2d7e111e44fc9cc4e441f635ae626ccb9a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-a",
+      "campaignDigest": "sha256:ecda6ff53f1c893e5a81d6f45269339347ecd58a51076359fc43ec3a5586c592",
+      "roundId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:4a3cafff18fba4bc94ea059a3243fdf08128bca3e50c0e92545c6320bb42c462",
+      "batchId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:de76f80f5de4c597fbf894b8093f5cabd4b4f45aa391d3f98311e6e886727366",
+      "runId": "mathematik-008-global-analysis-mappings-a-001-codex",
+      "runManifestDigest": "sha256:9763c50e1accf2e4ae7d72761cb8c4a7f18abc81b885505436cd7fff9bb9a37d",
+      "resultsDigest": "sha256:684a9e8b78a5bb3f407d9de4e4cb6335bcfd8065c15d06653579eeb1652807b6"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-b",
+      "campaignDigest": "sha256:caac95dafc8258dee180aeac643a88958d8f79f78f200c94fe4bdb962aaa8554",
+      "roundId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:4a3cafff18fba4bc94ea059a3243fdf08128bca3e50c0e92545c6320bb42c462",
+      "batchId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:84d9d3601b48cd56fed1e6d4eb628817bc20cc122ead2e39aa457a40c56d6d67",
+      "runId": "mathematik-b008-20260827-round-b-gpt5",
+      "runManifestDigest": "sha256:ca793182d80e784c2d8d338c41379e0dcb224a515dbc1f216dcad31c92b20cc2",
+      "resultsDigest": "sha256:917dcb277ca80083c79c0c52eb4bcec0c8c432bb6f31398f2f3d12a4c29057a7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-synthesis-decision-001",
+      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:79a7e1894ae833a5baad3b9217881fc0bddc92449632ac1daa5ffa510aaccf1d",
+      "pageFingerprint": "sha256:25a63c429675e1becebf098ef63441e716e0c844caeb8e061a73dc36945f7a62",
+      "goalReviewContextFingerprint": "sha256:dbd3117789d31b0554ec8bc145f767daa59f1e720e86c13496b1cb4ded33d3d7",
+      "finalText": {
+        "titleDe": "Zuordnungen analysieren",
+        "titleEn": "Analyze mappings",
+        "descriptionDe": "Die lernende Person kann Zuordnungstabellen erstellen, grafisch darstellen und einfache funktionale Zusammenhänge deuten.",
+        "descriptionEn": "The learner can create mapping tables, represent them graphically, and interpret simple functional relationships."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-008-global-analysis-mappings-a-001-codex.record-001",
+          "recordDigest": "sha256:2b5f228c3c2c67000484bccb2787154d02043834d89c881273f1dc62333b73d6"
+        },
+        "second": {
+          "recordId": "math008-b-001-2bb4bb91",
+          "recordDigest": "sha256:6c17921c275c198c92d0cbede1593b0414ac844d7ea9b39e5d780cbaec74d881"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen Wortlaut als fachlich klare, bilinguale und semantisch kohärente Kompetenz, die Tabelle, Graph und Deutung desselben einfachen funktionalen Zusammenhangs koordiniert. Die erste Evidenzfassung ist als gebundene Grundlage stärker, weil sie zusätzlich geeignete Achsen und Skalierungen, die Prüfung korrespondierender Wertepaare sowie den unabhängigen Rückweg vom Graphen zur Tabelle ausdrücklich verlangt, ohne aus endlich vielen Punkten eine eindeutige Funktionsregel abzuleiten. Die zweite Fassung hebt ergänzend die präzise Entsprechung von Tabellenzeile und Graphpunkt sowie einen andersartigen Verlauf hervor; diese unterschiedliche Akzentuierung bleibt als gebundener Dissent erhalten und fließt in das separate Kandidatenprofil ein.",
+      "rationaleEn": "Both independent reviews confirm the current wording as a mathematically clear, bilingual, and semantically coherent competence coordinating a table, a graph, and interpretation of the same simple functional relationship. The first evidence formulation is the stronger bound basis because it additionally requires suitable axes and scales, checks corresponding value pairs, and explicitly includes the independent reverse direction from graph to table without inferring a unique function rule from finitely many points. The second formulation adds a useful emphasis on the precise correspondence between a table row and a graph point and on a differently shaped relationship; this difference in emphasis remains bound as dissent and informs the separate candidate profile."
+    }
+  ],
+  "manifestFingerprint": "sha256:c8fb41a810f658a22652645d9292c75d4948a1a13276210e289f7bec3401654e"
+}
