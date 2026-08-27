@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-007-seki-acoustics-optics-7-current-v1.config.json",
+  "configDigest": "sha256:560d5daa93727e8b67854bd7711ea11ee28583f072fc50a8e2258759d3deb04b",
+  "goalIds": [
+    "c1006f55-0406-48cc-92d4-0d8345897cf4",
+    "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+    "3e33813d-db75-4571-8345-3845b02b956d",
+    "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+    "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+    "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+    "6367d45e-919e-4c19-bcd9-7770a2d51139"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 438,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:76e95dbfe5fc41b67011d88fcf98ad46e6dd757aa37e76cc1a97d482d1968499"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7296f0799b387e8a7c824df3b05adaf444b0db63836d3975f575343dd76939f0",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e1cd1f93754f6d3a562e7420c5d4dadaa43970999ee2ebbf624586e0e7e9a608",
+    "reviewInputFingerprint": "sha256:70c8e2a30584cfcf89877aa62e04fbbd315ef42a1c0f799900f52f1016dd3aee",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-a",
+        "campaignDigest": "sha256:81c33aad622f5c39bc70d1483847ac3e97e6083d8c7e7201198abee6a5e13159",
+        "roundId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-independent-a",
+        "batchId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3077d5ddd4cee67f15eea80e36c8392490758e4a9e24921141900fae028af2b9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-b",
+        "campaignDigest": "sha256:c00d8ecdea11c31332bcf408fdb072191b17254310185f14e792e515e300f232",
+        "roundId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-independent-b",
+        "batchId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:64c91b389887f3a44f4fa3fce236ea2849dfb129540ce15f79e8e980d20dce6c"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

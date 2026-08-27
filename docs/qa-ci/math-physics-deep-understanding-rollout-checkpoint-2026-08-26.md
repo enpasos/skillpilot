@@ -19,7 +19,7 @@ Dokument genannten Hashes beschreiben den lokalen Checkpoint.
 | Physik | 61 / 438 | 13,9 % | 61 | 61 | 438 | 438 | 438 |
 
 Der zentrale Bericht meldet **0 Blocking Issues**. Maßgeblich ist
-[`de-gymnasium-math-physics.config.json`](../../../curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json).
+[`de-gymnasium-math-physics.config.json`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json).
 Der Gesamtstatus weist Mathematik und Physik weiterhin als **M6** aus.
 
 Die Spalte „Visualisierung“ bezeichnet hier nur die vollständige, aktuelle
@@ -69,7 +69,7 @@ sonstige geprüfte Routenlücke.
 
 Die vorbereiteten strukturellen Splits aus Batch 003b bleiben absichtlich
 unangewandt. Das fail-closed Skript
-[`applyMathBatch003StructuralSplits.ts`](../../../app/scripts/applyMathBatch003StructuralSplits.ts)
+[`applyMathBatch003StructuralSplits.ts`](https://github.com/enpasos/skillpilot/blob/main/app/scripts/applyMathBatch003StructuralSplits.ts)
 kann ohne die noch fehlende fachliche Kanten-Adjudikation keine
 Curriculumdaten schreiben. Alle bisherigen IDs bleiben gültig.
 
@@ -111,7 +111,7 @@ bytegleich gebunden:
 - Doppelspalt: zwei Spalte; Quelle vertikal zwischen den Spalten; Trefferzahl
   wächst von links nach rechts; Schwärzungsvariation und zentraler Peak liegen
   in vertikaler Detektorrichtung. Finale SVG:
-  [`single-photon-double-slit-v1.svg`](../../../curricula/DE/Gymnasium/visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/single-photon-double-slit-v1.svg),
+  [`single-photon-double-slit-v1.svg`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/single-photon-double-slit-v1.svg),
   SVG-SHA256 `e51d39f344993c28efc1858469a92be3c8cefadd7e49b6a97bdfed66af7a334f`,
   PNG-SHA256 `d6842a4afa320607e4aca188956725595f3cb12b4cb62c4b83f5d1c9bac877d9`.
 
@@ -119,7 +119,7 @@ bytegleich gebunden:
 
 Beide Bücher wurden aus den finalen lokalen Eingaben neu gebaut, mit dem
 gebundenen Chromium-Profil gerendert und gegen
-[`index.json`](../../../app/public/lernzielbuch/index.json) geprüft:
+[`index.json`](https://github.com/enpasos/skillpilot/blob/main/app/public/lernzielbuch/index.json) geprüft:
 
 | Fach | Seiten | Modelldigest | Modell-SHA256 | PDF-SHA256 | Manifest-SHA256 |
 | --- | ---: | --- | --- | --- | --- |
@@ -128,8 +128,8 @@ gebundenen Chromium-Profil gerendert und gegen
 
 Direkte lokale Artefakte:
 
-- [`de-gym-mathematik-bundesweit.pdf`](../../../app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf)
-- [`de-gym-physik-bundesweit.pdf`](../../../app/public/lernzielbuch/de-gym-physik-bundesweit.pdf)
+- [`de-gym-mathematik-bundesweit.pdf`](https://github.com/enpasos/skillpilot/blob/main/app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf)
+- [`de-gym-physik-bundesweit.pdf`](https://github.com/enpasos/skillpilot/blob/main/app/public/lernzielbuch/de-gym-physik-bundesweit.pdf)
 
 Die öffentlichen Quellenrationale-Indizes sind aktuell gebunden:
 Mathematik 731 Einträge (`9023e95b26ee…`), Physik 400 Einträge

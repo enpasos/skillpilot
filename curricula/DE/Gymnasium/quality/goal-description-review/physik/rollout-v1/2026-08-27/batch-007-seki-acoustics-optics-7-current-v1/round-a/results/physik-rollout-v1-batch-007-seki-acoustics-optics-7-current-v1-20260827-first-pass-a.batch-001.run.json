@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+  "campaignId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-a",
+  "roundId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3077d5ddd4cee67f15eea80e36c8392490758e4a9e24921141900fae028af2b9",
+  "bundleFingerprint": "sha256:e1cd1f93754f6d3a562e7420c5d4dadaa43970999ee2ebbf624586e0e7e9a608",
+  "bookDigest": "sha256:7296f0799b387e8a7c824df3b05adaf444b0db63836d3975f575343dd76939f0",
+  "provider": "OpenAI",
+  "model": "gpt-5-codex",
+  "modelVersion": "2026-08-27-independent-round-a",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:ec6834ef53813570be5eadefe22975f2ecbe2894a7da9b9b75d3024cb2fd7331",
+  "independenceGroupId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c1006f55-0406-48cc-92d4-0d8345897cf4",
+    "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+    "3e33813d-db75-4571-8345-3845b02b956d",
+    "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+    "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+    "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+    "6367d45e-919e-4c19-bcd9-7770a2d51139"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:fc09d4913b9e4f1889c0686a223823a64b375df2c136b6169ef3cb2787111cc0"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3077d5ddd4cee67f15eea80e36c8392490758e4a9e24921141900fae028af2b9"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-27T01:17:22+02:00",
+  "completedAt": "2026-08-27T01:23:34+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:812a4f0ee46c4d7bcd4e0296b9a96a7d8d14a41ed031d415d6b91b9bd0ff7bc9",
+  "toolchainVersion": "goal-description-review-v3"
+}

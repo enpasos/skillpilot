@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e1cd1f93754f6d3a562e7420c5d4dadaa43970999ee2ebbf624586e0e7e9a608",
+  "reviewInputFingerprint": "sha256:70c8e2a30584cfcf89877aa62e04fbbd315ef42a1c0f799900f52f1016dd3aee",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-a",
+      "roundId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-independent-a",
+      "runIds": [
+        "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5-codex::2026-08-27-independent-round-a"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-b",
+      "roundId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-007-seki-acoustics-optics-7-current-v1-20260827-independent-b",
+      "runIds": [
+        "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex independent physics reviewer 2026-08-27::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3e33813d-db75-4571-8345-3845b02b956d",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.3e33813d-db75-4571-8345-3845b02b956d",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:3e33813d-db75-4571-8345-3845b02b956d",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "firstRecordId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest.6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "secondRecordId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex:6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "firstRunId": "physik-b007-round-a-openai-gpt5-codex-20260827-0117-cest",
+      "secondRunId": "physik-batch-007-seki-acoustics-optics-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
