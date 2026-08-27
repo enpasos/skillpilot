@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:925c2f2ab9a5bb5ce38c1dce482fe1ed8b7adb62910590e83d590b10ca1a9561",
+  "reviewInputFingerprint": "sha256:44a55b9bb503d46ceb5c6849c7e472f85e600e4534b16ad96f8a8bbca1a08153",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-004-20260826-a",
+      "roundId": "mathematik-rollout-v1-batch-004-20260826-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-004-20260826-independent-a",
+      "runIds": [
+        "math-b004-round-a-codex-gpt5-20260827-r1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::GPT-5"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-004-20260826-b",
+      "roundId": "mathematik-rollout-v1-batch-004-20260826-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-004-20260826-independent-b",
+      "runIds": [
+        "math-batch-004-round-b-20260827-gpt5-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex independent reviewer 2026-08-27::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "8cb18560-3a2b-593e-b634-9d768566cba9",
+      "firstRecordId": "math-b004-ra-20260827-001",
+      "secondRecordId": "math-batch-004-round-b-20260827-001",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "firstRecordId": "math-b004-ra-20260827-002",
+      "secondRecordId": "math-batch-004-round-b-20260827-002",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "firstRecordId": "math-b004-ra-20260827-003",
+      "secondRecordId": "math-batch-004-round-b-20260827-003",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "firstRecordId": "math-b004-ra-20260827-004",
+      "secondRecordId": "math-batch-004-round-b-20260827-004",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "093397e0-eec8-45bb-9a5a-a24827876df5",
+      "firstRecordId": "math-b004-ra-20260827-005",
+      "secondRecordId": "math-batch-004-round-b-20260827-005",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "firstRecordId": "math-b004-ra-20260827-006",
+      "secondRecordId": "math-batch-004-round-b-20260827-006",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "firstRecordId": "math-b004-ra-20260827-007",
+      "secondRecordId": "math-batch-004-round-b-20260827-007",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "firstRecordId": "math-b004-ra-20260827-008",
+      "secondRecordId": "math-batch-004-round-b-20260827-008",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "firstRecordId": "math-b004-ra-20260827-009",
+      "secondRecordId": "math-batch-004-round-b-20260827-009",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+      "firstRecordId": "math-b004-ra-20260827-010",
+      "secondRecordId": "math-batch-004-round-b-20260827-010",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0afe00fe-8cbc-4ed4-8b50-84494067e362",
+      "firstRecordId": "math-b004-ra-20260827-011",
+      "secondRecordId": "math-batch-004-round-b-20260827-011",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "firstRecordId": "math-b004-ra-20260827-012",
+      "secondRecordId": "math-batch-004-round-b-20260827-012",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+      "firstRecordId": "math-b004-ra-20260827-013",
+      "secondRecordId": "math-batch-004-round-b-20260827-013",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "firstRecordId": "math-b004-ra-20260827-014",
+      "secondRecordId": "math-batch-004-round-b-20260827-014",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+      "firstRecordId": "math-b004-ra-20260827-015",
+      "secondRecordId": "math-batch-004-round-b-20260827-015",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "804d7443-9976-5d81-a47d-1601f42f7e0e",
+      "firstRecordId": "math-b004-ra-20260827-016",
+      "secondRecordId": "math-batch-004-round-b-20260827-016",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+      "firstRecordId": "math-b004-ra-20260827-017",
+      "secondRecordId": "math-batch-004-round-b-20260827-017",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8da730f1-8947-498d-9e78-7fb20b00a994",
+      "firstRecordId": "math-b004-ra-20260827-018",
+      "secondRecordId": "math-batch-004-round-b-20260827-018",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+      "firstRecordId": "math-b004-ra-20260827-019",
+      "secondRecordId": "math-batch-004-round-b-20260827-019",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "firstRecordId": "math-b004-ra-20260827-020",
+      "secondRecordId": "math-batch-004-round-b-20260827-020",
+      "firstRunId": "math-b004-round-a-codex-gpt5-20260827-r1",
+      "secondRunId": "math-batch-004-round-b-20260827-gpt5-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

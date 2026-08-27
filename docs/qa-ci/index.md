@@ -106,6 +106,10 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-26](math-physics-deep-understanding-rollout-checkpoint-2026-08-26.md)
+  Deployable, validated rollout checkpoint with strict subject progress and resumable continuation boundary.
+- [Mathematik/Physik Deep-Understanding Review-Pause, 2026-08-27](math-physics-deep-understanding-review-pause-2026-08-27.md)
+  Independent follow-up review evidence, isolated revision questions, and an explicit no-canonical-change handoff.
 - [MEM SPARQL Consistency PoC, 2026-06-01](archive/mem-sparql-consistency-poc-2026-06-01.md)
   Archived first Mathematik/Gymnasium MEM PoC baseline and investigation notes.
 - [MEM SPARQL Consistency PoC Procedure](mem-sparql-consistency-poc-procedure.md)
