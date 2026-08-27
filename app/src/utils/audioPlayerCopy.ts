@@ -6,22 +6,25 @@ export interface AudioPlayerCopy {
   aiVoiceNotice: string
   playLabel: string
   pauseLabel: string
+  seekLabel: string
 }
 
 export const getAudioPlayerCopy = (language: LabelLanguage): AudioPlayerCopy => (
   language === 'en'
     ? {
-        notebookLabel: 'Listen to the SkillPilot Podcast',
-        subtitle: 'The idea behind SkillPilot, explained briefly.',
+        notebookLabel: 'Audio introduction',
+        subtitle: 'The idea behind SkillPilot, explained in a compact audio format.',
         aiVoiceNotice: 'This audio introduction contains AI-generated voices.',
-        playLabel: 'Play',
-        pauseLabel: 'Pause',
+        playLabel: 'Play audio introduction',
+        pauseLabel: 'Pause audio introduction',
+        seekLabel: 'Audio playback position',
       }
     : {
-        notebookLabel: 'SkillPilot Podcast anhören',
-        subtitle: 'Die Idee hinter SkillPilot kompakt erklärt.',
+        notebookLabel: 'Audio-Einführung',
+        subtitle: 'Die Idee hinter SkillPilot kompakt als Audio erklärt.',
         aiVoiceNotice: 'Diese Audioeinführung enthält KI-erzeugte Stimmen.',
-        playLabel: 'Abspielen',
-        pauseLabel: 'Pause',
+        playLabel: 'Audio-Einführung abspielen',
+        pauseLabel: 'Audio-Einführung pausieren',
+        seekLabel: 'Wiedergabeposition der Audio-Einführung',
       }
 )
