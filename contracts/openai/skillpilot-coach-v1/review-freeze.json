@@ -128,6 +128,26 @@
         "priorSha256": "561a7e7432882a6f0041f791bbd2d4b2d80b6c356ed9bc9b3471524564e98b29",
         "authorizedSha256": "afb66331e9bf1707195b1389d28bfe09839a9c3a130800bc207d6ed9602426fe"
       }
+    },
+    {
+      "id": "2026-08-27-public-overview-entry",
+      "approvedAt": "2026-08-27",
+      "approvedBy": "product-owner",
+      "reason": "Unify the public SkillPilot concept navigation by replacing the standalone root audio topic and separate concept link with one localized overview entry.",
+      "scope": "In the current production WebGUI only, replace the standalone root audio topic and separate concept link with one localized overview card containing exactly three actions and no neutral overview link: Audio and Video target their existing anchors with a one-time play intent, Whitepaper targets its existing anchor directly, and a neutral /whitepaper/:lang request never autoplays media; preserve every coach handler, prepared message, session, learner-state, OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, fixture, and review-artifact contract.",
+      "target": "current-production-web-frontend",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-public-information-navigation-only-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/components/SessionSetup.tsx",
+        "submittedSha256": "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        "priorAuthorizedSha256": "71c1d46f9eb42ab9a1d643df44e65fb35a89ece2b0a901f9ea045b64c56aae84",
+        "authorizedSha256": "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testPublicOverviewUi.tsx",
+        "sha256": "69b029ea922aea40ddddac6630fe04e89ace84e135d16586d5305ed34cbd1fb3"
+      }
     }
   ],
   "authorizedCopyClarifications": [

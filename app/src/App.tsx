@@ -9,6 +9,7 @@ import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
+import { getSkillPilotOverviewCopy } from './utils/skillPilotOverviewCopy'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from './utils/curriculumDisplay'
 import {
   isRootRoute,
@@ -472,9 +473,11 @@ const App: React.FC = () => {
       path === '/quickstart' || path.startsWith('/quickstart/') ||
       path === '/start' || path.startsWith('/start/')
     const isQuickstartPath = path === '/quickstart' || path.startsWith('/quickstart/')
-    const quickstartRouteLanguage = path.split('/')[2]?.toLowerCase()
-    const metadataLanguage = isQuickstartPath && (quickstartRouteLanguage === 'de' || quickstartRouteLanguage === 'en')
-      ? quickstartRouteLanguage
+    const isWhitepaperPath = path === '/whitepaper' || path.startsWith('/whitepaper/')
+    const publicDocumentRouteLanguage = path.split('/')[2]?.toLowerCase()
+    const metadataLanguage = (isQuickstartPath || isWhitepaperPath)
+      && (publicDocumentRouteLanguage === 'de' || publicDocumentRouteLanguage === 'en')
+      ? publicDocumentRouteLanguage
       : language
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasActiveSession || isPublicPath || path === '/'
@@ -527,10 +530,10 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Information about the planned version-bound learning-goal feedback pilot.'
           : 'Informationen zum geplanten versionsgebundenen Feedback-Pilot für Lernziele.'
-      } else if (path === '/whitepaper' || path.startsWith('/whitepaper/')) {
-        const whitepaperTitle = t.startPage.cards.whitepaper.title || 'Whitepaper'
-        title = `${whitepaperTitle} | ${baseTitle}`
-        description = t.startPage.cards.whitepaper.description || defaultDescription
+      } else if (isWhitepaperPath) {
+        const overview = getSkillPilotOverviewCopy(metadataLanguage)
+        title = `${overview.title} | ${baseTitle}`
+        description = overview.description
       } else if (isQuickstartPath) {
         title = metadataLanguage === 'en'
           ? `Start SkillPilot in 5 Steps | ${baseTitle}`
@@ -630,6 +633,8 @@ const App: React.FC = () => {
       ? '/'
       : isQuickstartPath
         ? `/quickstart/${metadataLanguage}`
+        : isWhitepaperPath
+          ? `/whitepaper/${metadataLanguage}`
         : path
     const canonicalUrl = `${window.location.origin}${canonicalPath}`
     const finalDescription = trimDescription(description) || defaultDescription

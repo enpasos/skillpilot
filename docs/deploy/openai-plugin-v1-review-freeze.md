@@ -439,6 +439,47 @@ Die Regressionen sind zusätzlich hashgebunden:
 - `app/scripts/testSessionSetupCompletionUi.ts`:
   `afb66331e9bf1707195b1389d28bfe09839a9c3a130800bc207d6ed9602426fe`.
 
+### 6.8 Eng begrenzte Ausnahme: gemeinsamer SkillPilot-Überblick
+
+Der Product Owner hat am **27. August 2026** entschieden, die zwei parallelen
+Zugänge zur SkillPilot-Idee auf der öffentlichen Startseite nach dem Anliegen
+der Besuchenden zusammenzuführen. Der eigenständige Audio-Einstieg und der
+separate Konzeptlink werden deshalb durch eine gemeinsame lokalisierte
+Überblickskarte mit genau drei direkten Aktionen ersetzt; die Inhalte und ihre
+direkten Ziele bleiben erhalten.
+
+Freigegeben ist ausschließlich:
+
+- auf der öffentlichen Startseite den eigenständigen Audio-Einstieg und den
+  separaten Konzeptlink durch eine lokalisierte Überblickskarte mit exakt drei
+  Aktionen und ohne zusätzlichen neutralen „Überblick öffnen“-Link zu ersetzen;
+- dafür die unveränderte Route `/whitepaper/:lang` weiterzuverwenden;
+- Audio und Video über ihre bestehenden Anker mit einem einmaligen
+  Wiedergabe-Intent direkt zu starten;
+- das Whitepaper direkt über seinen bestehenden Anker zu öffnen und bei einem
+  neutralen Aufruf von `/whitepaper/:lang` keinerlei Medium automatisch
+  abzuspielen;
+- den neuen fokussierten Überblickstest für genau diese Abgrenzung
+  hinzuzufügen.
+
+Coach-Handler, vorbereitete Nachrichten, Session- und Lernzustandssemantik,
+OpenAI-Paket, MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte,
+Fixtures und Reviewartefakte bleiben unverändert. Die Änderung betrifft nur die
+Informationsnavigation des aktuellen Produktions-Webfrontends. Daher ist weder
+ein Zurückziehen noch eine erneute Einreichung des laufenden
+OpenAI-Portalreviews erforderlich; das eingefrorene Plugin bleibt
+`skillpilot-coach-v1` Version `1.0.0`.
+
+Die Hashkette von `SessionSetup.tsx` wird fortgesetzt:
+
+7. gemeinsamer SkillPilot-Überblick:
+   `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`.
+
+Die fokussierte Regression ist zusätzlich hashgebunden:
+
+- `app/scripts/testPublicOverviewUi.tsx`:
+  `69b029ea922aea40ddddac6630fe04e89ace84e135d16586d5305ed34cbd1fb3`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

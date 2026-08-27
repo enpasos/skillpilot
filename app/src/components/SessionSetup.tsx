@@ -31,7 +31,7 @@ interface SessionSetupProps {
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
-import { AudioPlayer } from './AudioPlayer'
+import { SkillPilotOverviewCard } from './SkillPilotOverviewCard'
 import { getLegalTermsCopy } from '../utils/legalTermsCopy'
 import {
   acceptCurrentTerms,
@@ -1059,7 +1059,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               </div>
 
               <div className="w-full">
-                <AudioPlayer key={language} compact />
+                <SkillPilotOverviewCard language={language === 'en' ? 'en' : 'de'} />
               </div>
 
               {/* Card 3: Curricula */}
@@ -1106,14 +1106,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     <span>{t.startPage.links.workbench}</span>
                   </Link>
                 )}
-                <Link
-                  to={`/whitepaper/${language === 'de' ? 'de' : 'en'}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-sky-500 hover:underline transition-colors"
-                >
-                  {t.startPage.links.whitepaper}
-                </Link>
                 {(['trainer', 'explorer'] as const).map((r) => (
                   <button
                     key={r}
