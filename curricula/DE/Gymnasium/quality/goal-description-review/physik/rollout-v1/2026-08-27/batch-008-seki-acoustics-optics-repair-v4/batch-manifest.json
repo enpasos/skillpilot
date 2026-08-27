@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-008-seki-acoustics-optics-repair-v4.config.json",
+  "configDigest": "sha256:d75d3db5454181a0866e0c2e35b14f18446af78eef25bac71138e5d41cb4484d",
+  "goalIds": [
+    "c1006f55-0406-48cc-92d4-0d8345897cf4",
+    "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c",
+    "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+    "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 439,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:13fe562681777d10d10353770bc837226ab064ad5a22ee021619d976dbcbd8a7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:09e73429c9878a2bc092ebf368fe335aac1bebea34e9529082a9d58ffc922c79",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a84e4d916d9c756ce1a54268f72fe039f2bc2bad0081a1bba9cb8b183b72d676",
+    "reviewInputFingerprint": "sha256:dc74f4bf39d8a5f4dab0bc8bb073bd785672a721a9108ac61b2e3e6998ab2621",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-a",
+        "campaignDigest": "sha256:2b2152487a544c140ef7a4de8f9820d95e541586e3294489d38283d74247341b",
+        "roundId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-independent-a",
+        "batchId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:dc761bb526885390721d93e593ac8be4b83fad81a751fe1c3f46d2301cb0b79b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-b",
+        "campaignDigest": "sha256:ea64dbad25f2ea265c968d913a110d789b58d06ac5340fb7c008b47cac7d0309",
+        "roundId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-independent-b",
+        "batchId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4f90d28c005970df482fa95a58fc048e1bcc24f968b7e8659a2dadc403c143fe"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

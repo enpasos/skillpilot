@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b010-v3-round-a-independent-gpt5-20260827",
+  "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-a",
+  "roundId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:47da541173000368e088e75372405e05a3a81ff69a86d3272c08fce490dc5f26",
+  "bundleFingerprint": "sha256:2a8a3e6efe30831c01f944fac8a13823efec872f740c932e933412e776542760",
+  "bookDigest": "sha256:215e17fe14ff8f7458b87bff1c1dad93364356c15c99e4d2e26be377e69bb441",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:dbbce090b5ba8700e8aaf1a1e498ba166d6287ebd7a14aa0db5cf0ac02517d08",
+  "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+    "6367d45e-919e-4c19-bcd9-7770a2d51139",
+    "6a4c6042-052b-502b-a39a-0ed8941247ac",
+    "1ab5f599-0927-579d-94cc-feecdf3b5603"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:47da541173000368e088e75372405e05a3a81ff69a86d3272c08fce490dc5f26"
+    }
+  ],
+  "startedAt": "2026-08-27T08:21:58+02:00",
+  "completedAt": "2026-08-27T08:24:24+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:981e18cf3ca2cf16fcbd1d14c4686ef205561988347ae12fc78668ed2df23e67",
+  "toolchainVersion": "codex-goal-description-review-v1"
+}

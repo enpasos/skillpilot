@@ -8,26 +8,19 @@
 
 ## Generator
 
-- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
-- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
-- Quellbild: `a24c41ce-68c5-56a7-8235-ef9a7dba7042.png`
-- Public Asset: `/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.png`
-- SHA-256: `sha256:1140feb7c5005957696afd50ef79c519cb3f2d2589cb07289992fc5af53ba3e8`
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `a24c41ce-68c5-56a7-8235-ef9a7dba7042.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.jpg`
 
-## Finale wirksame Prompt-Spezifikation
+## Prompt
 
 ```text
-Erzeuge eine klare, fachlich präzise deutschsprachige Lerninfografik im Querformat zum datenbasierten Vergleich von Schallgeschwindigkeiten in verschiedenen Medien.
+Behalte Aufbau, lockeren Stil, vier gleich große Karten, alle vier korrekten Zahlenwerte, die Luft-Helium-Klammer und die qualitative Deutung bei. Korrigiere nur die Temperaturzuordnung:
 
-Zeige vier gleich große, gleichrangige Vergleichskarten und eine kompakte Tabelle mit exakt diesen Näherungswerten bei etwa 20 °C: Luft 343 m/s, Helium 1007 m/s, Wasser 1480 m/s, Stahl 5900 m/s. Verwende keine Balkenlängen, Flächen oder Piktogrammgrößen, die eine Proportionalität zu den Zahlen vortäuschen.
-
-Verbinde Luft und Helium visuell mit der Frage `Beide gasförmig – trotzdem verschieden: Warum?` und kennzeichne dies als Gegenbeispiel gegen eine Rangfolge allein nach Aggregatzuständen. Zeige als qualitative Deutung zwei gegenläufige Einflussgrößen im Teilchenmodell: `elastische Kopplung` begünstigt schnelle Weitergabe, `Trägheit` hemmt die Änderung. Formuliere die Schlussfolgerung knapp: `Nicht nur der Aggregatzustand entscheidet.`
-
-Alle Werte und Einheiten müssen in Karten und Tabelle übereinstimmen und auch verkleinert lesbar sein. Keine pauschale Behauptung `fest immer schneller als flüssig immer schneller als gasförmig`, keine Drittanbieterlogos, Wasserzeichen, technischen IDs, Plattformnamen, Aufgabenlösung oder langen Textblöcke.
+Setze oberhalb aller vier Karten genau einmal den gemeinsamen Hinweis „Werte bei ca. 20 °C“. Entferne die einzelnen Temperaturangaben aus den Karten. Der gemeinsame Hinweis muss eindeutig für Luft 343 m/s, Helium 1007 m/s, Wasser 1480 m/s und Stahl 5900 m/s gelten. Alle vier Werte und Einheiten unverändert und fehlerfrei. Kein anderer neuer Text, keine Rangfolge allein nach Aggregatzustand.
 ```
-
-Die Generierung wurde iterativ korrigiert; eine frühere irreführende Balkendarstellung wurde durch gleich große Vergleichskarten ersetzt, damit nur die Zahlen den quantitativen Vergleich tragen.
 
 ## Review-Notiz
 
-Am 25.08.2026 in Originalauflösung KI-geprüft: Die vier Werte und Einheiten stimmen überein; Luft und Helium widerlegen sichtbar die bloße Aggregatzustandsregel, und Kopplung sowie Trägheit werden als qualitative Einflussgrößen gezeigt. Eine menschliche Freigabe liegt nicht vor.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:a26494acb70d474f814f3e4a9a3016cb8da1234877f44a416613160b1f9257b5 gebunden; eine menschliche Freigabe wurde nicht behauptet.

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `7dea79d2-67f2-4d92-b6cc-ad1b953dca3d`
 - Titel: Funktionen als eindeutige Zuordnungen charakterisieren
-- Beschreibung: Die lernende Person kann Funktionen als eindeutige Zuordnungen charakterisieren und sie von allgemeineren Zuordnungen anhand dieser Eigenschaft abgrenzen.
+- Beschreibung: Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.
 
 ## Generator
 

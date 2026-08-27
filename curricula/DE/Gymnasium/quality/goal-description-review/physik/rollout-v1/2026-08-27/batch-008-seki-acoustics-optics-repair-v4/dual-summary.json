@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a84e4d916d9c756ce1a54268f72fe039f2bc2bad0081a1bba9cb8b183b72d676",
+  "reviewInputFingerprint": "sha256:dc74f4bf39d8a5f4dab0bc8bb073bd785672a721a9108ac61b2e3e6998ab2621",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-a",
+      "roundId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-b",
+      "roundId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-independent-b",
+      "runIds": [
+        "physik-b008-v4-round-b-subject-review-20260827"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5 family::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "firstRecordId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.record-001",
+      "secondRecordId": "physik-b008-v4-round-b-record-001",
+      "firstRunId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-b008-v4-round-b-subject-review-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c",
+      "firstRecordId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.record-002",
+      "secondRecordId": "physik-b008-v4-round-b-record-002",
+      "firstRunId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-b008-v4-round-b-subject-review-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+      "firstRecordId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.record-003",
+      "secondRecordId": "physik-b008-v4-round-b-record-003",
+      "firstRunId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-b008-v4-round-b-subject-review-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "firstRecordId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.record-004",
+      "secondRecordId": "physik-b008-v4-round-b-record-004",
+      "firstRunId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-b008-v4-round-b-subject-review-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

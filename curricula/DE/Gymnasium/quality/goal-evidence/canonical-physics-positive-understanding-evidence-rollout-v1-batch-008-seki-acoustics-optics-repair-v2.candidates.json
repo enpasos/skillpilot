@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b008-seki-acoustics-optics-repair-v2",
+  "reviewedAt": "2026-08-27T12:00:00.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-008-seki-acoustics-optics-profile-author-candidate-2026-08-27",
+  "goals": [
+    {
+      "goalId": "c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "reason": "DE: Das Profil prüft die kausale Unterscheidung von Schallquelle und Schallempfänger: Eine schwingende Quelle regt das Medium an, ein Empfänger reagiert auf die ankommende Schallanregung. Rollenwechsel und Störfälle verhindern eine bloße Zuordnung nach auswendig gelernten Gegenständen. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile tests the causal distinction between sound source and sound receiver: a vibrating source excites the medium, whereas a receiver responds to the arriving sound excitation. Role changes and fault cases prevent mere classification of memorized objects. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-produces-sound-by-vibration",
+            "essentialUnderstandingDe": "Eine Schallquelle erzeugt Schall, indem ein schwingender Teil das umgebende Medium zu Druck- beziehungsweise Dichteschwankungen anregt. Nicht der Name eines Gegenstands, sondern seine aktuelle Funktion und die wirksame Schwingung machen ihn in einer Situation zur Quelle.",
+            "essentialUnderstandingEn": "A sound source produces sound when a vibrating part excites pressure or density variations in the surrounding medium. It is not an object's name but its current function and the effective vibration that make it a source in a situation.",
+            "observablePerformanceDe": "Die lernende Person identifiziert in einem neuen Aufbau den tatsächlich schwingenden Quellteil, beschreibt dessen Anregung des Mediums und sagt begründet voraus, was sich bei unterbundener Schwingung ändert.",
+            "observablePerformanceEn": "In a fresh setup, the learner identifies the part that actually vibrates, describes how it excites the medium, and gives a justified prediction of what changes when that vibration is prevented."
+          },
+          {
+            "id": "receiver-responds-to-arriving-sound",
+            "essentialUnderstandingDe": "Ein Schallempfänger wird durch ankommende Schwingungen des Mediums angeregt und wandelt diese Reaktion je nach System etwa in eine mechanische, elektrische oder neuronale Wirkung um. Empfangen bedeutet daher nicht, selbst die ursprüngliche Schallanregung zu erzeugen.",
+            "essentialUnderstandingEn": "A sound receiver is excited by arriving vibrations of the medium and, depending on the system, converts that response into a mechanical, electrical, or neural effect. Receiving therefore does not mean producing the original sound excitation itself.",
+            "observablePerformanceDe": "Die lernende Person verfolgt in einem unbekannten Beispiel den Weg der Anregung bis zum Empfänger, benennt dessen Reaktion und grenzt diese kausal von der Schallerzeugung an der Quelle ab.",
+            "observablePerformanceEn": "In an unfamiliar example, the learner traces the excitation to the receiver, identifies the receiver's response, and causally distinguishes it from sound production at the source."
+          },
+          {
+            "id": "roles-depend-on-system-direction",
+            "essentialUnderstandingDe": "Dasselbe technische Bauteil kann in verschiedenen Betriebsarten Quelle oder Empfänger sein, wenn der Energie- und Signalweg umgekehrt wird. Die Rollen werden deshalb für den betrachteten Vorgang aus Ursache, Übertragungsweg und Reaktion bestimmt.",
+            "essentialUnderstandingEn": "The same technical component can be a source or a receiver in different operating modes when the energy and signal path is reversed. The roles are therefore determined for the process being considered from cause, transmission path, and response.",
+            "observablePerformanceDe": "Die lernende Person ordnet einem umkehrbaren Wandler in zwei Betriebsarten unterschiedliche Rollen zu und begründet jede Zuordnung über die Richtung von Anregung und Reaktion statt über das Bauteiletikett.",
+            "observablePerformanceEn": "The learner assigns different roles to a reversible transducer in two operating modes and justifies each assignment through the direction of excitation and response rather than through the component label."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-produces-sound-by-vibration",
+            "receiver-responds-to-arriving-sound",
+            "roles-depend-on-system-direction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "physical-realization",
+            "textDe": "Mechanische Quelle und biologischer Empfänger oder elektroakustische Wandler",
+            "textEn": "Mechanical source and biological receiver or electroacoustic transducers"
+          },
+          {
+            "id": "operating-direction",
+            "textDe": "Bauteil erzeugt Schall aus einem Eingangssignal oder reagiert auf ankommenden Schall",
+            "textEn": "Component produces sound from an input signal or responds to arriving sound"
+          },
+          {
+            "id": "interrupted-link",
+            "textDe": "Quellschwingung, Übertragung im Medium oder Empfängerreaktion wird gezielt unterbrochen",
+            "textEn": "Source vibration, transmission through the medium, or receiver response is deliberately interrupted"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "tuning-fork-and-ear-with-muted-tines",
+            "taskDemandDe": "Eine angeschlagene Stimmgabel ist in Luft zu hören. Danach werden ihre Zinken unmittelbar nach dem Anschlagen festgehalten. Für beide Fälle sind Quelle, Empfänger und die Wirkung des Festhaltens zu erklären.",
+            "taskDemandEn": "A struck tuning fork can be heard in air. Its tines are then held immediately after striking. Explain the source, receiver, and the effect of holding the tines in both cases.",
+            "expectedPerformanceDe": "Die lernende Person benennt die schwingenden Zinken als Quelle und das Ohr als Empfänger, beschreibt die Luftanregung zwischen ihnen und erklärt, dass das Festhalten die Quellschwingung und damit die fortgesetzte Schallerzeugung unterbindet, obwohl das Ohr unverändert vorhanden ist.",
+            "expectedPerformanceEn": "The learner identifies the vibrating tines as the source and the ear as the receiver, describes the excitation of the air between them, and explains that holding the tines prevents source vibration and therefore continued sound production even though the ear remains present.",
+            "understandingFocusDe": "Der Störfall zeigt, ob Schallerzeugung an eine reale Quellschwingung und Empfangen an die Reaktion auf ankommenden Schall gebunden wird.",
+            "understandingFocusEn": "The fault case reveals whether sound production is tied to actual source vibration and reception to a response to arriving sound."
+          },
+          {
+            "id": "loudspeaker-microphone-signal-chain",
+            "taskDemandDe": "Ein elektrisches Audiosignal steuert einen Lautsprecher; einige Meter entfernt liefert ein Mikrofon ein elektrisches Messsignal. Die Rollen und die jeweilige Umwandlung beider Geräte sind zu erklären.",
+            "taskDemandEn": "An electrical audio signal drives a loudspeaker; several meters away, a microphone supplies an electrical measurement signal. Explain the roles and the respective conversion in both devices.",
+            "expectedPerformanceDe": "Die lernende Person erklärt den Lautsprecher als Quelle, weil seine Membran aus dem elektrischen Eingang heraus schwingt und die Luft anregt, und das Mikrofon als Empfänger, weil ankommende Luftdruckschwankungen seine Membran anregen und ein elektrisches Ausgangssignal bewirken.",
+            "expectedPerformanceEn": "The learner explains the loudspeaker as a source because its diaphragm vibrates in response to the electrical input and excites the air, and the microphone as a receiver because arriving air-pressure variations excite its diaphragm and produce an electrical output signal.",
+            "understandingFocusDe": "Der gerichtete Signalweg prüft die kausale Rollenunterscheidung über Ein- und Ausgang statt über die bloße Ähnlichkeit zweier Membranen.",
+            "understandingFocusEn": "The directed signal path tests the causal role distinction through input and output rather than merely through the similarity of two diaphragms."
+          },
+          {
+            "id": "reversible-transducer-role-change",
+            "taskDemandDe": "Ein kleiner dynamischer Lautsprecher wird zuerst normal als Lautsprecher betrieben und anschließend an ein Messgerät angeschlossen, während man in seine Membran spricht. Für beide Betriebsarten ist zu entscheiden, ob er Quelle oder Empfänger ist.",
+            "taskDemandEn": "A small dynamic loudspeaker is first operated normally as a loudspeaker and then connected to a measuring device while someone speaks toward its diaphragm. Decide whether it is a source or a receiver in each operating mode.",
+            "expectedPerformanceDe": "Die lernende Person ordnet das Bauteil im ersten Fall als Quelle ein, weil ein elektrischer Eingang die Membran antreibt, und im zweiten Fall als Empfänger, weil ankommender Schall die Membran bewegt und ein elektrisches Signal entsteht; sie begründet, warum der Gerätename die Rolle nicht festlegt.",
+            "expectedPerformanceEn": "The learner classifies the component as a source in the first case because an electrical input drives the diaphragm and as a receiver in the second because arriving sound moves the diaphragm and produces an electrical signal; the learner explains why the device name does not determine the role.",
+            "understandingFocusDe": "Der Rollenwechsel deckt eine oberflächliche Gegenstandsklassifikation auf und verlangt die Betrachtung des tatsächlichen Vorgangs.",
+            "understandingFocusEn": "The role reversal exposes superficial object classification and requires consideration of the actual process."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c",
+      "reason": "DE: Das Profil operationalisiert den Hörvorgang als funktionale Kausalkette durch Außen-, Mittel- und Innenohr und verlangt ausdrücklich eine qualitative Beschreibung, wie mechanische Schwingungen Sinneszellen anregen und dadurch Nervensignale entstehen. Geänderte Störstellen prüfen Funktionsverständnis statt Beschriftungswissen. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes hearing as a functional causal chain through the outer, middle, and inner ear and explicitly requires a qualitative account of how mechanical vibrations stimulate sensory cells and thereby give rise to neural signals. Changed fault locations test functional understanding rather than labeling knowledge. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "functional-path-through-ear",
+            "essentialUnderstandingDe": "Außenohr und Gehörgang leiten Schall zum Trommelfell; dessen Schwingung wird im Mittelohr über die Gehörknöchelchen auf das Innenohr übertragen. Entscheidend ist die geordnete funktionale Verbindung der Stationen, nicht nur ihre Benennung.",
+            "essentialUnderstandingEn": "The outer ear and ear canal guide sound to the eardrum; its vibration is transmitted through the ossicles of the middle ear to the inner ear. What matters is the ordered functional connection of the stages, not merely naming them.",
+            "observablePerformanceDe": "Die lernende Person erklärt für einen neuen Hörfall selbstständig den Weg vom ankommenden Schall bis zur Anregung des Innenohrs und verbindet jede Station mit ihrer funktionalen Wirkung auf die nächste.",
+            "observablePerformanceEn": "For a fresh hearing case, the learner independently explains the path from arriving sound to excitation of the inner ear and connects each stage to its functional effect on the next."
+          },
+          {
+            "id": "mechanical-to-neural-conversion",
+            "essentialUnderstandingDe": "Bis in das Innenohr wird die Anregung mechanisch als Schwingung beziehungsweise Bewegung weitergegeben. In der Cochlea reagieren Sinneszellen auf diese mechanische Anregung und bewirken Nervensignale; das Nervensignal ist nicht selbst ein Schallstrahl, der bis ins Gehirn weiterläuft.",
+            "essentialUnderstandingEn": "Up to the inner ear, the excitation is transmitted mechanically as vibration or motion. In the cochlea, sensory cells respond to this mechanical excitation and generate neural signals; the neural signal is not itself a sound ray continuing into the brain.",
+            "observablePerformanceDe": "Die lernende Person markiert in einer selbst erstellten Prozessdarstellung den Übergang von mechanischer Übertragung zu neuronaler Signalweitergabe und erklärt, welche physikalische Größe beziehungsweise Signalart vor und nach diesem Übergang gemeint ist.",
+            "observablePerformanceEn": "In a learner-created process representation, the learner marks the transition from mechanical transmission to neural signaling and explains which physical quantity or type of signal is meant before and after that transition."
+          },
+          {
+            "id": "location-specific-functional-consequences",
+            "essentialUnderstandingDe": "Eine Störung an verschiedenen Stationen unterbricht unterschiedliche Glieder derselben Kausalkette. Aus dem Ort der Störung lässt sich qualitativ begründen, ob vor allem Leitung und mechanische Übertragung oder die Umwandlung in Nervensignale betroffen ist.",
+            "essentialUnderstandingEn": "A disturbance at different stages interrupts different links of the same causal chain. From the location of the disturbance, one can qualitatively justify whether conduction and mechanical transmission or conversion into neural signals is primarily affected.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei neue Störfälle an unterschiedlichen Ohrabschnitten, sagt die qualitative Wirkung auf den Hörweg voraus und begründet sie anhand des jeweils unterbrochenen Funktionsglieds.",
+            "observablePerformanceEn": "The learner compares two fresh fault cases in different parts of the ear, predicts the qualitative effect on the hearing pathway, and justifies it using the functional link interrupted in each case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "functional-path-through-ear",
+            "mechanical-to-neural-conversion",
+            "location-specific-functional-consequences"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-form",
+            "textDe": "Verbale Kausalkette, selbst erzeugtes Funktionsschema oder Analyse eines unbekannten Störfalls",
+            "textEn": "Verbal causal chain, learner-generated functional diagram, or analysis of an unfamiliar fault case"
+          },
+          {
+            "id": "affected-ear-section",
+            "textDe": "Gehörgang, Trommelfell beziehungsweise Gehörknöchelchen oder Sinneszellen der Cochlea",
+            "textEn": "Ear canal, eardrum or ossicles, or sensory cells of the cochlea"
+          },
+          {
+            "id": "signal-domain",
+            "textDe": "Schall im Medium, mechanische Schwingung von Ohrstrukturen oder neuronales Signal",
+            "textEn": "Sound in the medium, mechanical vibration of ear structures, or neural signal"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "build-functional-hearing-chain",
+            "taskDemandDe": "Ohne vorgegebene Pfeile sind Ohrmuschel/Gehörgang, Trommelfell, Gehörknöchelchen, Cochlea mit Sinneszellen und Hörnerv zu einer funktionalen Prozesskette zu ordnen und die Übergänge zu erklären.",
+            "taskDemandEn": "Without supplied arrows, arrange pinna/ear canal, eardrum, ossicles, cochlea with sensory cells, and auditory nerve into a functional process chain and explain the transitions.",
+            "expectedPerformanceDe": "Die lernende Person ordnet die Stationen korrekt, erklärt die Leitung des Schalls, die mechanische Schwingungsübertragung über Trommelfell und Gehörknöchelchen, die Reaktion der Sinneszellen in der Cochlea und die anschließende Weitergabe als Nervensignal.",
+            "expectedPerformanceEn": "The learner orders the stages correctly and explains sound conduction, mechanical vibration transmission through the eardrum and ossicles, the response of sensory cells in the cochlea, and subsequent transmission as a neural signal.",
+            "understandingFocusDe": "Die eigenständig erzeugte Kette prüft funktionale Verknüpfung und den Signalartwechsel unabhängig vom Layout der vorhandenen Visualisierung.",
+            "understandingFocusEn": "The learner-generated chain tests functional linkage and the change in signal type independently of the layout of the existing visualization."
+          },
+          {
+            "id": "eardrum-versus-hair-cell-fault",
+            "taskDemandDe": "Zwei idealisierte Fälle werden verglichen: Im ersten schwingt das Trommelfell kaum; im zweiten funktioniert die mechanische Übertragung bis zur Cochlea, aber deren Sinneszellen reagieren nicht. Für beide ist die unterbrochene Stelle und die Folge für den Hörweg zu erklären.",
+            "taskDemandEn": "Compare two idealized cases: in the first, the eardrum hardly vibrates; in the second, mechanical transmission reaches the cochlea but its sensory cells do not respond. Explain the interrupted point and the consequence for the hearing pathway in each case.",
+            "expectedPerformanceDe": "Die lernende Person ordnet den ersten Fall der gestörten mechanischen Weiterleitung und den zweiten der gestörten Umwandlung mechanischer Anregung in Nervensignale zu und erklärt, dass in beiden Fällen die nachfolgenden Glieder der Kette nicht regulär angeregt werden.",
+            "expectedPerformanceEn": "The learner classifies the first case as disrupted mechanical transmission and the second as disrupted conversion of mechanical excitation into neural signals and explains that in both cases later links in the chain are not normally excited.",
+            "understandingFocusDe": "Der Vergleich zeigt, ob mechanische Übertragung und neuronale Umwandlung als verschiedene Funktionsabschnitte verstanden werden.",
+            "understandingFocusEn": "The comparison reveals whether mechanical transmission and neural conversion are understood as different functional stages."
+          },
+          {
+            "id": "reject-sound-to-brain-misconception",
+            "taskDemandDe": "Die Aussage „Der Schall läuft vom Gehörgang über die Knochen und den Hörnerv unverändert bis ins Gehirn“ ist fachlich zu prüfen und durch eine korrekte Prozessbeschreibung zu ersetzen.",
+            "taskDemandEn": "Assess the statement, 'Sound travels unchanged from the ear canal through the bones and auditory nerve to the brain,' and replace it with a correct process description.",
+            "expectedPerformanceDe": "Die lernende Person weist die Aussage zurück, unterscheidet Luftschall, mechanische Bewegung der Ohrstrukturen und Nervensignale und lokalisiert den qualitativen Übergang zur neuronalen Signalweitergabe an den Sinneszellen der Cochlea.",
+            "expectedPerformanceEn": "The learner rejects the statement, distinguishes airborne sound, mechanical motion of ear structures, and neural signals, and locates the qualitative transition to neural signaling at the sensory cells of the cochlea.",
+            "understandingFocusDe": "Der Fehlersatz prüft, ob der Hörweg als Folge verschiedener gekoppelter Prozesse statt als unveränderte Stoff- oder Strahlbewegung verstanden wird.",
+            "understandingFocusEn": "The misconception probe tests whether the hearing pathway is understood as a sequence of different coupled processes rather than unchanged material or ray motion."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+      "reason": "DE: Das Profil bindet ein fachliches Lärmurteil an das gemeinsame Abwägen von Schallpegel, Einwirkdauer, Schutzmaßnahmen und möglichen Gehörfolgen. Paarvergleiche mit jeweils veränderter Bedingung prüfen die Begründungsstruktur und vermeiden starre Scheingrenzwerte. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile ties a technically grounded noise judgment to joint consideration of sound level, exposure duration, protective measures, and possible effects on hearing. Paired comparisons with one condition changed at a time test the reasoning structure and avoid rigid pseudo-thresholds. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "joint-level-duration-assessment",
+            "essentialUnderstandingDe": "Lärmbelastung hängt nicht von einer einzigen Angabe ab: Ein höherer Schallpegel erhöht die Beanspruchung, und eine längere Einwirkdauer vergrößert bei sonst gleichen Bedingungen die Belastung. Eine fachliche Beurteilung muss beide Größen gemeinsam und im konkreten Kontext berücksichtigen.",
+            "essentialUnderstandingEn": "Noise exposure does not depend on a single value: a higher sound level increases stress, and a longer exposure duration increases exposure under otherwise equal conditions. A technically grounded assessment must consider both quantities together and in context.",
+            "observablePerformanceDe": "Die lernende Person vergleicht neue Expositionsfälle mit unterschiedlichen Pegeln und Dauern, formuliert ein abgestuftes Belastungsurteil und begründet es anhand beider Größen statt nur anhand des lautesten oder längsten Falls.",
+            "observablePerformanceEn": "The learner compares fresh exposure cases with different levels and durations, gives a graded exposure judgment, and justifies it using both quantities rather than only the loudest or longest case."
+          },
+          {
+            "id": "protection-changes-exposure-path",
+            "essentialUnderstandingDe": "Gehörschutz, größerer Abstand, leisere Einstellung und kürzere Aufenthaltszeit können die am Ohr wirksame Belastung auf unterschiedlichen Wegen verringern. Eine Maßnahme ist nur dann angemessen bewertet, wenn ihre tatsächliche Anwendung und ihr Einfluss auf Pegel oder Dauer berücksichtigt werden.",
+            "essentialUnderstandingEn": "Hearing protection, greater distance, a lower setting, and shorter time spent can reduce the exposure acting at the ear through different pathways. A measure is assessed appropriately only when its actual use and its effect on level or duration are considered.",
+            "observablePerformanceDe": "Die lernende Person wählt für einen neuen Nutzungskontext geeignete Schutzmaßnahmen, erklärt deren Wirkweg und beurteilt verbleibende Risiken, ohne Schutz als pauschale Garantie darzustellen.",
+            "observablePerformanceEn": "For a fresh use context, the learner selects suitable protective measures, explains how they act, and assesses residual risks without presenting protection as an unconditional guarantee."
+          },
+          {
+            "id": "hearing-consequences-and-uncertainty",
+            "essentialUnderstandingDe": "Starke oder anhaltende Belastung kann zu vorübergehenden Beschwerden und zu bleibenden Schädigungen des Gehörs beitragen. Ein begründetes Urteil unterscheidet mögliche Folgen von sicher eintretenden Folgen und berücksichtigt, dass individuelle Empfindlichkeit und reale Expositionsbedingungen variieren.",
+            "essentialUnderstandingEn": "Strong or sustained exposure can contribute to temporary symptoms and permanent hearing damage. A justified judgment distinguishes possible effects from effects claimed to occur with certainty and recognizes variation in individual susceptibility and real exposure conditions.",
+            "observablePerformanceDe": "Die lernende Person verbindet ihr Belastungsurteil mit plausiblen möglichen Gehörfolgen, kennzeichnet Unsicherheit angemessen und formuliert eine verhältnismäßige Schutzempfehlung.",
+            "observablePerformanceEn": "The learner links the exposure judgment to plausible possible effects on hearing, characterizes uncertainty appropriately, and formulates a proportionate protective recommendation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "joint-level-duration-assessment",
+            "protection-changes-exposure-path",
+            "hearing-consequences-and-uncertainty"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sound-level",
+            "textDe": "Niedrigerer oder höherer am Ohr wirksamer Schallpegel bei vergleichbarer Dauer",
+            "textEn": "Lower or higher sound level acting at the ear for a comparable duration"
+          },
+          {
+            "id": "exposure-duration-pattern",
+            "textDe": "Kurze Einzelbelastung, längerer ununterbrochener Aufenthalt oder wiederholte Belastung",
+            "textEn": "Brief single exposure, longer uninterrupted stay, or repeated exposure"
+          },
+          {
+            "id": "protective-condition",
+            "textDe": "Ohne Schutz, mit korrekt getragenem Gehörschutz, größerem Abstand oder zeitlicher Begrenzung",
+            "textEn": "Without protection, with correctly worn hearing protection, greater distance, or a time limit"
+          },
+          {
+            "id": "judgment-evidence-quality",
+            "textDe": "Genaue Pegel- und Zeitangaben oder nur unvollständige qualitative Situationsangaben",
+            "textEn": "Precise level and time information or only incomplete qualitative information about the situation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "same-level-different-duration",
+            "taskDemandDe": "Zwei Personen stehen am gleichen Ort einer lauten Veranstaltung ohne Gehörschutz. Person A bleibt zehn Minuten, Person B zwei Stunden. Die Belastungen und sinnvolle Maßnahmen sind vergleichend zu beurteilen.",
+            "taskDemandEn": "Two people stand at the same location at a loud event without hearing protection. Person A stays for ten minutes and person B for two hours. Compare and assess their exposures and sensible measures.",
+            "expectedPerformanceDe": "Die lernende Person beurteilt bei gleichem Pegel die längere Einwirkdauer als höhere Gesamtbelastung, vermeidet die Behauptung, die kurze Dauer sei automatisch folgenlos, und empfiehlt je nach Situation kürzeren Aufenthalt, Pausen beziehungsweise Schutz.",
+            "expectedPerformanceEn": "At the same level, the learner judges the longer duration to be the greater overall exposure, avoids claiming that the short duration is automatically harmless, and recommends a shorter stay, breaks, or protection as appropriate.",
+            "understandingFocusDe": "Der Paarvergleich isoliert die Einwirkdauer als belastungswirksame Größe und prüft ein abgestuftes statt binäres Urteil.",
+            "understandingFocusEn": "The paired comparison isolates exposure duration as a relevant quantity and tests a graded rather than binary judgment."
+          },
+          {
+            "id": "same-duration-different-level",
+            "taskDemandDe": "Für dieselbe halbe Stunde werden zwei Arbeitsplätze verglichen: An Platz A ist der am Ohr gemessene Schallpegel deutlich höher als an Platz B. Beide Personen tragen zunächst keinen Schutz. Die Risiken und Prioritäten für Maßnahmen sind zu beurteilen.",
+            "taskDemandEn": "Compare two workplaces for the same half hour: the sound level measured at the ear is substantially higher at workplace A than at B. Initially neither person wears protection. Assess the risks and priorities for action.",
+            "expectedPerformanceDe": "Die lernende Person stuft Platz A bei gleicher Dauer als stärker belastend ein, begründet dies mit dem höheren Pegel, fordert dort vorrangig Pegelminderung, Abstand oder Gehörschutz und erkennt zugleich an, dass auch Platz B ohne konkrete Grenz- und Kontextdaten nicht pauschal als sicher erklärt werden kann.",
+            "expectedPerformanceEn": "For the same duration, the learner rates workplace A as more exposing, justifies this with the higher level, prioritizes level reduction, distance, or hearing protection there, and also recognizes that workplace B cannot be declared safe without relevant threshold and context data.",
+            "understandingFocusDe": "Der Fall prüft die Pegelwirkung sowie einen fachlich vorsichtigen Umgang mit unvollständigen Daten.",
+            "understandingFocusEn": "The case tests the effect of level and technically cautious reasoning with incomplete data."
+          },
+          {
+            "id": "protected-concert-plan-with-residual-risk",
+            "taskDemandDe": "Eine Schülerin plant einen langen Konzertbesuch und schlägt vor: nicht direkt an den Lautsprechern stehen, passend getragenen Gehörschutz verwenden und regelmäßig ruhigere Bereiche aufsuchen. Der Plan ist fachlich zu bewerten und gegebenenfalls zu verbessern.",
+            "taskDemandEn": "A student plans a long concert visit and proposes standing away from the loudspeakers, wearing suitable hearing protection correctly, and regularly moving to quieter areas. Assess the plan technically and improve it if needed.",
+            "expectedPerformanceDe": "Die lernende Person erklärt, wie Abstand und Schutz den am Ohr wirksamen Pegel sowie ruhigere Phasen die Einwirkdauer verringern, bewertet die Kombination als sinnvoller als eine Einzelmaßnahme und weist darauf hin, dass verbleibende Belastung, falscher Sitz und sehr lange Dauer weiterhin berücksichtigt werden müssen.",
+            "expectedPerformanceEn": "The learner explains how distance and protection reduce the level acting at the ear and quieter periods reduce exposure duration, judges the combination to be more appropriate than a single measure, and notes that residual exposure, incorrect fit, and very long duration must still be considered.",
+            "understandingFocusDe": "Der Transfer verlangt eine begründete Mehrkriterienentscheidung mit Schutzwirkung und Restunsicherheit statt einer pauschalen Sicherheitszusage.",
+            "understandingFocusEn": "The transfer requires a justified multi-criteria decision including protective effects and residual uncertainty rather than a blanket assurance of safety."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "reason": "DE: Das Profil verknüpft Linsenwirkung, Brennpunkte und Brennweite mit eigenständiger Strahlenkonstruktion und der qualitativen Deutung von Bildlage, Orientierung, Größe sowie reeller oder virtueller Bildart. Veränderte Gegenstandspositionen und beide Linsenarten prüfen Modellverständnis statt das Kopieren einer Standardskizze. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile connects lens action, focal points, and focal length with independent ray construction and qualitative interpretation of image position, orientation, size, and whether the image is real or virtual. Changed object positions and both lens types test model understanding rather than copying a standard diagram. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "lens-action-and-focal-geometry",
+            "essentialUnderstandingDe": "Im vereinfachten Strahlenmodell bündelt eine Konvexlinse achsenparallel einfallende Strahlen zum bildseitigen Brennpunkt, während eine Konkavlinse sie so zerstreut, als kämen sie vom gegenstandsseitigen Brennpunkt. Die Brennweite beschreibt dabei die geometrische Lage der Brennpunkte relativ zur Linse.",
+            "essentialUnderstandingEn": "In the simplified ray model, a convex lens converges axis-parallel incident rays toward the image-side focal point, whereas a concave lens diverges them as if they came from the object-side focal point. Focal length describes the geometric location of the focal points relative to the lens.",
+            "observablePerformanceDe": "Die lernende Person sagt für eine neue Strahlenanordnung die qualitative Wirkung der Linsenart voraus, zeichnet passende Hauptstrahlen mit Brennpunktbezug und erklärt die verwendeten Modellregeln.",
+            "observablePerformanceEn": "For a fresh ray arrangement, the learner predicts the qualitative effect of the lens type, draws appropriate principal rays using the focal points, and explains the model rules used."
+          },
+          {
+            "id": "construct-image-from-ray-correspondence",
+            "essentialUnderstandingDe": "Eine Bildkonstruktion ordnet jedem betrachteten Gegenstandspunkt den Schnittpunkt der zugehörigen gebrochenen Strahlen beziehungsweise ihrer rückwärtigen Verlängerungen zu. Das gezeichnete Bild ist eine Modellvorhersage aus mindestens zwei konsistenten Strahlenwegen und kein materielles Objekt in der Linse.",
+            "essentialUnderstandingEn": "An image construction assigns each object point to the intersection of the corresponding refracted rays or their backward extensions. The drawn image is a model prediction from at least two consistent ray paths and not a material object inside the lens.",
+            "observablePerformanceDe": "Die lernende Person konstruiert in einer unbekannten einfachen Anordnung selbstständig mindestens zwei geeignete Hauptstrahlen, bestimmt ihren relevanten Schnittpunkt und prüft die Konstruktion auf geometrische Konsistenz.",
+            "observablePerformanceEn": "In an unfamiliar simple arrangement, the learner independently constructs at least two suitable principal rays, determines their relevant intersection, and checks the construction for geometric consistency."
+          },
+          {
+            "id": "interpret-image-properties-and-kind",
+            "essentialUnderstandingDe": "Aus der Konstruktion folgen Bildlage, Orientierung und Größe. Treffen sich reale Lichtstrahlen, ist das Bild reell und auf einem Schirm auffangbar; treffen sich nur rückwärtige Verlängerungen, ist es virtuell und nicht als Lichtbild auf einem Schirm auffangbar.",
+            "essentialUnderstandingEn": "Image position, orientation, and size follow from the construction. If actual light rays meet, the image is real and can be captured on a screen; if only backward extensions meet, it is virtual and cannot be captured as a light image on a screen.",
+            "observablePerformanceDe": "Die lernende Person liest aus einer eigenen oder neuen korrekten Konstruktion Bildlage, Orientierung, relative Größe und Bildart ab, begründet jede Eigenschaft geometrisch und sagt die Schirmbeobachtung voraus.",
+            "observablePerformanceEn": "From a learner-created or fresh correct construction, the learner determines image position, orientation, relative size, and image type, justifies each property geometrically, and predicts the screen observation."
+          },
+          {
+            "id": "model-scope-and-object-position-change",
+            "essentialUnderstandingDe": "Die Bildwirkung einer Linse hängt von Linsenart, Brennweite und Gegenstandsposition ab. Das dünne-Linsen-Strahlenmodell idealisiert reale Linsen; seine Strahlen sind Konstruktionslinien für ausgewählte Lichtwege und keine Behauptung, Licht existiere nur entlang dieser zwei oder drei Linien.",
+            "essentialUnderstandingEn": "A lens's imaging effect depends on lens type, focal length, and object position. The thin-lens ray model idealizes real lenses; its rays are construction lines for selected light paths and do not claim that light exists only along those two or three lines.",
+            "observablePerformanceDe": "Die lernende Person überträgt die Konstruktion auf eine veränderte Gegenstandsposition oder Linsenart, erklärt die qualitative Änderung der Bildeigenschaften und benennt mindestens eine Aussage, die die Skizze nicht über die reale Lichtverteilung macht.",
+            "observablePerformanceEn": "The learner transfers the construction to a changed object position or lens type, explains the qualitative change in image properties, and states at least one claim that the diagram does not make about the real light distribution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "lens-action-and-focal-geometry",
+            "construct-image-from-ray-correspondence",
+            "interpret-image-properties-and-kind",
+            "model-scope-and-object-position-change"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "lens-type",
+            "textDe": "Konvexlinse oder Konkavlinse",
+            "textEn": "Convex lens or concave lens"
+          },
+          {
+            "id": "object-position-relative-to-focus",
+            "textDe": "Gegenstand außerhalb der doppelten Brennweite, zwischen einfacher und doppelter Brennweite oder innerhalb der Brennweite",
+            "textEn": "Object beyond twice the focal length, between one and two focal lengths, or inside the focal length"
+          },
+          {
+            "id": "evidence-representation",
+            "textDe": "Eigenständige Konstruktion, Deutung einer fremden Konstruktion oder Vorhersage einer Schirmprobe",
+            "textEn": "Independent construction, interpretation of another construction, or prediction of a screen test"
+          },
+          {
+            "id": "focal-length-geometry",
+            "textDe": "Gleiche Gegenstandsposition mit verschiedener Brennweite oder gleiche Brennweite mit veränderter Gegenstandsposition",
+            "textEn": "Same object position with different focal length or same focal length with changed object position"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "convex-lens-object-beyond-two-f",
+            "taskDemandDe": "Ein Gegenstand steht außerhalb der doppelten Brennweite einer Konvexlinse. Ohne vorgezeichnete Bildstrahlen sind zwei Hauptstrahlen von der Gegenstandsspitze zu konstruieren und Bildlage, Orientierung, Größe, Bildart und Schirmbeobachtung zu deuten.",
+            "taskDemandEn": "An object is placed beyond twice the focal length of a convex lens. Without supplied image rays, construct two principal rays from the object tip and interpret image position, orientation, size, image type, and the screen observation.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet einen achsenparallelen Strahl, der hinter der Linse durch den bildseitigen Brennpunkt läuft, sowie einen geeigneten zweiten Hauptstrahl, lokalisiert ihren Schnittpunkt zwischen einfacher und doppelter Brennweite auf der Bildseite und deutet das Bild als reell, umgekehrt, verkleinert und auf einem Schirm auffangbar.",
+            "expectedPerformanceEn": "The learner draws an axis-parallel ray that passes through the image-side focal point after the lens and a suitable second principal ray, locates their intersection between one and two focal lengths on the image side, and interprets the image as real, inverted, reduced, and capturable on a screen.",
+            "understandingFocusDe": "Der Fall verbindet selbstständige Konstruktion mit allen qualitativen Bildeigenschaften und einer physikalischen Schirmprobe.",
+            "understandingFocusEn": "The case connects independent construction with all qualitative image properties and a physical screen test."
+          },
+          {
+            "id": "convex-lens-object-inside-focus",
+            "taskDemandDe": "Derselbe Gegenstand wird bei unveränderter Konvexlinse innerhalb der Brennweite aufgestellt. Der neue Strahlenverlauf ist zu konstruieren und mit dem vorherigen reellen Bildfall zu vergleichen.",
+            "taskDemandEn": "With the same convex lens, the object is moved inside the focal length. Construct the new ray path and compare it with the previous real-image case.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert hinter der Linse auseinanderlaufende Strahlen, verlängert sie rückwärts zu einem Schnittpunkt auf der Gegenstandsseite und deutet das Bild als virtuell, aufrecht und vergrößert; sie erklärt, dass ein Schirm hinter der Linse dieses Bild nicht auffängt.",
+            "expectedPerformanceEn": "The learner constructs diverging rays after the lens, extends them backward to an intersection on the object side, and interprets the image as virtual, upright, and magnified; the learner explains that a screen behind the lens cannot capture this image.",
+            "understandingFocusDe": "Die Positionsänderung prüft, ob reelle und virtuelle Bildart aus realem Strahlenschnitt beziehungsweise rückwärtiger Verlängerung abgeleitet werden.",
+            "understandingFocusEn": "Changing object position tests whether real and virtual image type are derived from actual ray intersection versus backward extensions."
+          },
+          {
+            "id": "concave-lens-fresh-construction",
+            "taskDemandDe": "Vor einer Konkavlinse steht ein Gegenstand. Mit den eingezeichneten Brennpunkten, aber ohne Bildvorgabe, ist eine qualitative Konstruktion anzufertigen und zu erklären, weshalb das Ergebnis nicht auf einem Schirm hinter der Linse erscheint.",
+            "taskDemandEn": "An object stands in front of a concave lens. With focal points shown but no image supplied, make a qualitative construction and explain why the result does not appear on a screen behind the lens.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet den achsenparallelen Strahl hinter der Linse auseinanderlaufend, sodass seine Rückverlängerung durch den gegenstandsseitigen Brennpunkt geht, ergänzt einen konsistenten zweiten Strahl und bestimmt aus den Rückverlängerungen ein virtuelles, aufrechtes, verkleinertes Bild zwischen Linse und Brennpunkt.",
+            "expectedPerformanceEn": "The learner draws the axis-parallel ray diverging after the lens so that its backward extension passes through the object-side focal point, adds a consistent second ray, and uses the backward extensions to determine a virtual, upright, reduced image between lens and focal point.",
+            "understandingFocusDe": "Der unabhängige Transfer auf die Konkavlinse prüft die Brennpunktregel, die Konstruktion und die Bildart jenseits der bekannten Konvexlinsenskizze.",
+            "understandingFocusEn": "Independent transfer to the concave lens tests the focal-point rule, construction, and image type beyond the familiar convex-lens diagram."
+          }
+        ]
+      }
+    }
+  ]
+}

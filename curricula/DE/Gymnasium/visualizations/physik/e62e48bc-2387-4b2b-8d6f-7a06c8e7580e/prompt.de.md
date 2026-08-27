@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e62e48bc-2387-4b2b-8d6f-7a06c8e7580e`
 - Titel: Schallphänomene an Musikinstrumenten beschreiben
-- Beschreibung: Die lernende Person kann Schallphänomene an Musikinstrumenten beschreiben und einfache Klanggestaltung fachlich erklären.
+- Beschreibung: Die lernende Person kann an einfachen Bauprinzipien von Musikinstrumenten erklären, wie schwingende Saiten, Membranen oder Luftsäulen Schall erzeugen und wie Änderungen am schwingenden System, an der Anregung oder an einem Resonanzkörper Tonhöhe, Lautstärke oder Klangfarbe beeinflussen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Schallphänomene an Musikinstrumenten beschreiben
-Beschreibung: Die lernende Person kann Schallphänomene an Musikinstrumenten beschreiben und einfache Klanggestaltung fachlich erklären.
+Beschreibung: Die lernende Person kann an einfachen Bauprinzipien von Musikinstrumenten erklären, wie schwingende Saiten, Membranen oder Luftsäulen Schall erzeugen und wie Änderungen am schwingenden System, an der Anregung oder an einem Resonanzkörper Tonhöhe, Lautstärke oder Klangfarbe beeinflussen.
 
 Zusatzanweisung:
 Pflichtinhalt:

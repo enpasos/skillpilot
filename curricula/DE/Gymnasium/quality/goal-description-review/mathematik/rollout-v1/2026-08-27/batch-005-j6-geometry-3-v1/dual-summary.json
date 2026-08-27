@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:885f2bb44b5eb785ffe86a299a150f8837c35793caba38a4932cc5ec4cab407e",
+  "reviewInputFingerprint": "sha256:01139be2dd3a210c6d656383b78def014537a5cec622bc045275b6976bd5cebc",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-a",
+      "roundId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-independent-a",
+      "runIds": [
+        "mathematik-b005-j6-geometry-round-a-gpt5-20260827"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-b",
+      "roundId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-005-j6-geometry-3-v1-20260827-independent-b",
+      "runIds": [
+        "mathematik-b005-v1-first-pass-b-openai-gpt5-20260827"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+      "firstRecordId": "mathematik-b005-round-a-1f89d69e",
+      "secondRecordId": "mathematik-b005-v1-first-pass-b-record-01",
+      "firstRunId": "mathematik-b005-j6-geometry-round-a-gpt5-20260827",
+      "secondRunId": "mathematik-b005-v1-first-pass-b-openai-gpt5-20260827",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+      "firstRecordId": "mathematik-b005-round-a-1335dff9",
+      "secondRecordId": "mathematik-b005-v1-first-pass-b-record-02",
+      "firstRunId": "mathematik-b005-j6-geometry-round-a-gpt5-20260827",
+      "secondRunId": "mathematik-b005-v1-first-pass-b-openai-gpt5-20260827",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+      "firstRecordId": "mathematik-b005-round-a-59098969",
+      "secondRecordId": "mathematik-b005-v1-first-pass-b-record-03",
+      "firstRunId": "mathematik-b005-j6-geometry-round-a-gpt5-20260827",
+      "secondRunId": "mathematik-b005-v1-first-pass-b-openai-gpt5-20260827",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

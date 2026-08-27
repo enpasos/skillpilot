@@ -8,41 +8,33 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Repository-native SVG (documented Nano Banana Pro fallback)
 - Status: pilot
-- Quellbild: `6aed5be9-f62f-482a-9b98-4253c3275e6e.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/6aed5be9-f62f-482a-9b98-4253c3275e6e/6aed5be9-f62f-482a-9b98-4253c3275e6e.jpg`
+- Quellbild: `6aed5be9-f62f-482a-9b98-4253c3275e6e.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/6aed5be9-f62f-482a-9b98-4253c3275e6e/6aed5be9-f62f-482a-9b98-4253c3275e6e.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine freundliche, lockere 16:9-Infografik mit drei Karten zu
+Sekanten-, Tangenten- und Normalensteigungen samt Steigungswinkeln.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Karte 1 zeigt eine gerade Sekante durch zwei Kurvenpunkte A und B. Das
+Steigungsdreieck hat exakt Δx = 2 und Δy = 1; deshalb gelten mₛ = 1/2 und
+αₛ ≈ 26,6°.
 
-Titel: Sekanten-, Tangenten- und Normalensteigungen mit Steigungswinkeln bestimmen
-Beschreibung: Die lernende Person kann Sekanten-, Tangenten- und Normalensteigungen bestimmen und zugehörige Steigungswinkel berechnen.
+Karte 2 zeigt in demselben Punkt P eine gerade Tangente mit mₜ = 2 und eine
+senkrechte gerade Normale mit mₙ = −1/2. Der Tangentenrichtungsvektor ist
+(1|2), der Normalenrichtungsvektor (−2|1). Die gerichteten Winkel von der
+positiven waagerechten Richtung lauten αₜ ≈ 63,4° und αₙ ≈ 153,4°; damit
+gelten mₜ·mₙ = −1 und αₙ−αₜ = 90°.
 
-Zusatzanweisung:
-Ergänze im vorhandenen Bild die fehlende eindeutige Beschriftung des gerichteten Normalenwinkels.
+Karte 3 zeigt den Sonderfall einer exakt waagerechten Tangente mit mₜ = 0 und
+einer exakt senkrechten Normalen mit nicht definierter Steigung und αₙ = 90°.
 
-Pflichtinhalt:
-- Schreibe am blauen Winkelbogen von der positiven x-Achse zur fallenden Normalen exakt „αₙ ≈ 153,4°“.
-- Erhalte „αₜ ≈ 63,4°“, „mₜ=2“, „mₙ=−1/2“ und „αₙ−αₜ=90°“.
-- Der blaue Winkelbogen muss gegen den Uhrzeigersinn von der positiven x-Achse bis zur Normalen im zweiten Quadranten reichen.
-- Erhalte den Sonderfall mₜ=0 mit senkrechter Normale, αₙ=90° und nicht definierter Normalensteigung.
-
-Vermeiden:
-- Kein alleiniger spitzer Winkel 26,6° und kein negatives Winkelmaß für die Normale.
-- Kein Dezimalpunkt und keine Änderung der Geradenlagen.
-- Keine technischen Metadaten, Logos oder Wasserzeichen.
+Diese repository-native Fassung ist die dokumentierte enge Ausnahme nach vier
+gezielten, fachlich verworfenen Nano-Banana-Pro-Versuchen. Das bindende,
+mathematisch konstruierte Layout liegt in `repo-native-geometry-v1.svg`.
 ```
 
 ## Review-Notiz

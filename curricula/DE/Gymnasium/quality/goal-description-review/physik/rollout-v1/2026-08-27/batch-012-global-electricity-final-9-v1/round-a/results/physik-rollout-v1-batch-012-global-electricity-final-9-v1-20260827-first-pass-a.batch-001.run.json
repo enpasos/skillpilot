@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b012-20260827-round-a-gpt5",
+  "campaignId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-a",
+  "roundId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:a0666b443608a8cfe9cb20b677bc471987e19f12f03a850f89d3dd00e652676e",
+  "bundleFingerprint": "sha256:eb7845d4ad9fa9f58985a82e6855ebc368cb358fdaa1a398800a6ba031e28db5",
+  "bookDigest": "sha256:b2cd68f02d0ab93d2d07e5d10a628277bd609b6a16f5f4f9d83a2777ad0a10df",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4a49e922afd426be7988f77a176a803d729f1aefed0eed72ee27f9aa6a09b9a6",
+  "independenceGroupId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f778a659-1467-4aa7-97b2-bed78c530634",
+    "7ca44ba0-b77e-52bf-8562-f67b44767172",
+    "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+    "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+    "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+    "dc7dd287-6eac-574d-818d-65cfb23a2d94",
+    "28237994-9c24-5a06-82fe-be1f494768ba",
+    "80dd0a2b-1422-5b00-89ff-ec4d0faa047e",
+    "53196a71-9dbd-4835-b2f9-ff21b8a8962c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a0666b443608a8cfe9cb20b677bc471987e19f12f03a850f89d3dd00e652676e"
+    }
+  ],
+  "startedAt": "2026-08-27T11:17:16+02:00",
+  "completedAt": "2026-08-27T11:20:11+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:7aba732dc5bd5d35744c58d8a911ef43863a0a7e82caf85535bb5054095435c1",
+  "toolchainVersion": "codex-gpt5-2026-08-27"
+}

@@ -228,9 +228,138 @@ for (const sourceDecision of ['revise', 'split_review', 'block'] as const) {
       manifest,
       expected: invalidExpected,
     })).errors.join('\n'),
-    new RegExp(`first source must be a current keep record; found ${sourceDecision}`, 'u'),
+    /synthesis requires either two current keep records or, for keep_current only, exactly one current keep and one current revise record/u,
   )
 }
+
+const proposedDescriptionDe = 'Die lernende Person kann den Zusammenhang unter einer ausdrücklich genannten Zusatzbedingung erklären.'
+const proposedDescriptionEn = 'The learner can explain the relationship under an explicitly stated additional condition.'
+const mixedExpected = structuredClone(expected)
+mixedExpected.goals[0].secondSource.decision = 'revise'
+mixedExpected.goals[0].secondSource.record!.decision = 'revise'
+mixedExpected.goals[0].secondSource.record!.proposedDescriptionDe = proposedDescriptionDe
+mixedExpected.goals[0].secondSource.record!.proposedDescriptionEn = proposedDescriptionEn
+const mixedManifestWithoutFingerprint = structuredClone(manifestWithoutFingerprint)
+mixedManifestWithoutFingerprint.decisions[0].resolutionDecision = 'keep_current'
+mixedManifestWithoutFingerprint.decisions[0].evidenceRound = 'second'
+mixedManifestWithoutFingerprint.decisions[0].revisionDissent = {
+  sourceRound: 'second',
+  disposition: 'rejected_keep_current',
+  proposedDescriptionDe,
+  proposedDescriptionEn,
+  rationaleDe: 'Die Zusatzbedingung ist fachlich relevant und bleibt in der ausgewählten Evidenz gebunden; als kanonischer Ersatztext ist der Vorschlag jedoch unnötig lang.',
+  rationaleEn: 'The additional condition is relevant and remains bound in the selected evidence, but the proposed canonical replacement is unnecessarily long.',
+}
+const mixedManifest = withFingerprint(mixedManifestWithoutFingerprint)
+assert.deepEqual(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: mixedManifest,
+    expected: mixedExpected,
+  })).errors,
+  [],
+  'keep_current must accept exactly one current keep plus one current revise when the rejected proposal is bound as dissent.',
+)
+const mixedSummaryGoal = {
+  ...summaryGoal,
+  secondDecision: 'revise',
+  disagreementFields: ['decision', 'proposedDescription', 'understandingEvidence'],
+} as GoalDescriptionDualRoundSummary['goals'][number]
+const mixedSynthesis = buildGoalDescriptionRolloutResolutionSynthesis({
+  batchId: mixedExpected.batch.batchId,
+  manifest: mixedManifest,
+  decision: mixedManifest.decisions[0],
+  summaryGoal: mixedSummaryGoal,
+  firstSource: mixedExpected.goals[0].firstSource,
+  secondSource: mixedExpected.goals[0].secondSource,
+})
+assert.deepEqual(mixedSynthesis.understandingEvidence, secondEvidence)
+assert.equal(mixedSynthesis.dissent[0]?.source, 'second')
+assert.equal(mixedSynthesis.dissent[0]?.disposition, 'rejected_revision_evidence_accepted')
+assert.match(mixedSynthesis.dissent[0]?.textDe ?? '', new RegExp(proposedDescriptionDe, 'u'))
+assert.match(mixedSynthesis.dissent[0]?.textEn ?? '', new RegExp(proposedDescriptionEn, 'u'))
+
+const overlongMixedExpected = structuredClone(mixedExpected)
+const overlongProposedDescriptionDe = `D${'e'.repeat(3899)}`
+const overlongProposedDescriptionEn = `E${'n'.repeat(3899)}`
+overlongMixedExpected.goals[0].secondSource.record!.proposedDescriptionDe = overlongProposedDescriptionDe
+overlongMixedExpected.goals[0].secondSource.record!.proposedDescriptionEn = overlongProposedDescriptionEn
+const overlongMixedManifestWithoutFingerprint = structuredClone(mixedManifestWithoutFingerprint)
+overlongMixedManifestWithoutFingerprint.decisions[0].revisionDissent!.proposedDescriptionDe = overlongProposedDescriptionDe
+overlongMixedManifestWithoutFingerprint.decisions[0].revisionDissent!.proposedDescriptionEn = overlongProposedDescriptionEn
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(overlongMixedManifestWithoutFingerprint),
+    expected: overlongMixedExpected,
+  })).errors.join('\n'),
+  /generated (German|English) rejected-revision dissent must be non-blank, trimmed, and at most 4000 characters/u,
+  'Individually schema-valid proposal and rationale inputs must fail before they can generate schema-invalid dissent.',
+)
+
+const missingRevisionDissent = structuredClone(mixedManifestWithoutFingerprint)
+delete missingRevisionDissent.decisions[0].revisionDissent
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(missingRevisionDissent),
+    expected: mixedExpected,
+  })).errors.join('\n'),
+  /requires exact rejected-revision dissent binding/u,
+)
+
+const wrongRevisionRound = structuredClone(mixedManifestWithoutFingerprint)
+wrongRevisionRound.decisions[0].revisionDissent!.sourceRound = 'first'
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(wrongRevisionRound),
+    expected: mixedExpected,
+  })).errors.join('\n'),
+  /requires exact rejected-revision dissent binding/u,
+)
+
+const wrongRevisionText = structuredClone(mixedManifestWithoutFingerprint)
+wrongRevisionText.decisions[0].revisionDissent!.proposedDescriptionEn = 'A foreign revision proposal.'
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: withFingerprint(wrongRevisionText),
+    expected: mixedExpected,
+  })).errors.join('\n'),
+  /requires exact rejected-revision dissent binding/u,
+)
+
+const twoReviseExpected = structuredClone(mixedExpected)
+twoReviseExpected.goals[0].firstSource.decision = 'revise'
+twoReviseExpected.goals[0].firstSource.record!.decision = 'revise'
+twoReviseExpected.goals[0].firstSource.record!.proposedDescriptionDe = proposedDescriptionDe
+twoReviseExpected.goals[0].firstSource.record!.proposedDescriptionEn = proposedDescriptionEn
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: mixedManifest,
+    expected: twoReviseExpected,
+  })).errors.join('\n'),
+  /exactly one current keep and one current revise record/u,
+)
+
+for (const disallowedDecision of ['split_review', 'block'] as const) {
+  const disallowedExpected = structuredClone(mixedExpected)
+  disallowedExpected.goals[0].secondSource.decision = disallowedDecision
+  disallowedExpected.goals[0].secondSource.record!.decision = disallowedDecision
+  assert.match(
+    (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+      manifest: mixedManifest,
+      expected: disallowedExpected,
+    })).errors.join('\n'),
+    /not an allowed current keep\/revise record/u,
+  )
+}
+
+const staleReviseExpected = structuredClone(mixedExpected)
+staleReviseExpected.goals[0].secondSource.record!.goalFingerprint = digest('f')
+assert.match(
+  (await validateGoalDescriptionRolloutSynthesisDecisionManifest({
+    manifest: mixedManifest,
+    expected: staleReviseExpected,
+  })).errors.join('\n'),
+  /record is stale or foreign/u,
+)
 
 const nonIndependentWithoutFingerprint = structuredClone(manifestWithoutFingerprint)
 nonIndependentWithoutFingerprint.rounds.second.independenceGroupId = nonIndependentWithoutFingerprint.rounds.first.independenceGroupId

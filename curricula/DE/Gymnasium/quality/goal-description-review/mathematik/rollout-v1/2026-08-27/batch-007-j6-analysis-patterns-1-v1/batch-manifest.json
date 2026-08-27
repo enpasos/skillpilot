@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-007-j6-analysis-patterns-1-v1.config.json",
+  "configDigest": "sha256:fa786f10407f0bb7345bb9c4331f9185e6bbb6d853cc75a40afc6075891b8835",
+  "goalIds": [
+    "8cb18560-3a2b-593e-b634-9d768566cba9"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 791,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:c95f649865810eeec1221ab6f0503f9030d1a5ff44e7804b12f15b6e9a064553"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:388a6e9e4529c3b2b9e5d7ef12c7283c2f67b926a1a9e7071b900c9b6f717241",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:cb0e38ef5693abc6e31d8fb5b1d258d03e86a30b053f1520a25183006a03026a",
+    "reviewInputFingerprint": "sha256:b6aa2673a2b17e8d98ac1646ef7cca8fd05a5620823617c8ab1c837454077bb7",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-a",
+        "campaignDigest": "sha256:7633f31bd57ade83020d771f248bcdc5d116e44390011f9d613937881d65d87c",
+        "roundId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:48c70c0101e85f811b50d5eda1a21fd54dcc28fff3c36b5842a0d60d6f75dadf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-b",
+        "campaignDigest": "sha256:0d850e621a54d0d1b2aa22aa22f200f0e25d6f4f6802aaf8166fda6b7d90f0fc",
+        "roundId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-007-j6-analysis-patterns-1-v1-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:52a4107d1e90ece654bf9d2d191f2c0712708900bdd1fb5fae470bdafd7feb72"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

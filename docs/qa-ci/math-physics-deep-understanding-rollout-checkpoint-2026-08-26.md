@@ -110,10 +110,12 @@ bytegleich gebunden:
   kollinear.
 - Doppelspalt: zwei Spalte; Quelle vertikal zwischen den Spalten; Trefferzahl
   wächst von links nach rechts; Schwärzungsvariation und zentraler Peak liegen
-  in vertikaler Detektorrichtung. Finale SVG:
-  [`single-photon-double-slit-v1.svg`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/single-photon-double-slit-v1.svg),
-  SVG-SHA256 `e51d39f344993c28efc1858469a92be3c8cefadd7e49b6a97bdfed66af7a334f`,
-  PNG-SHA256 `d6842a4afa320607e4aca188956725595f3cb12b4cb62c4b83f5d1c9bac877d9`.
+  in vertikaler Detektorrichtung. Die damals dokumentierte SVG-Fassung wurde
+  im Folge-Checkpoint gemäß der später festgelegten Nano-Banana-Pro-Regel
+  durch das aktive
+  [`c5413852-abae-566b-b435-f9939209ca63.jpg`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/c5413852-abae-566b-b435-f9939209ca63.jpg)
+  ersetzt; JPG-SHA256
+  `b965069577e99a163489bd1f7167ee603746035ba713d310a8756dd65d1ca78d`.
 
 ## Lernzielbücher und Startseite
 

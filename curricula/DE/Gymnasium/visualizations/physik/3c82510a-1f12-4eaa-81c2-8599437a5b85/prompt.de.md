@@ -4,30 +4,36 @@
 
 - SkillPilot-ID: `3c82510a-1f12-4eaa-81c2-8599437a5b85`
 - Titel: Schallausbreitung im Teilchenmodell erklären
-- Beschreibung: Die lernende Person kann Schallausbreitung im Teilchenmodell als Weitergabe einer lokalen Schwingungsstörung und von Energie erklären und begründen, warum die Teilchen um ihre Ruhelagen schwingen, statt mit dem Schall durch das Medium zu wandern.
+- Beschreibung: Die lernende Person kann Schallausbreitung im Teilchen- beziehungsweise Medienelementmodell als Weitergabe einer lokalen Druck- oder Verformungsstörung und von Energie erklären, die Bewegung von Teilchen beziehungsweise kleinen Medienelementen um einen Gleichgewichtszustand deuten und begründen, warum im betrachteten idealisierten Wellenmodell kein dauerhafter Nettostofftransport mit dem Schall durch das Medium erfolgt.
 
 ## Generator
 
-- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
-- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
-- Quellbild: `3c82510a-1f12-4eaa-81c2-8599437a5b85.png`
-- Public Asset: `/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.png`
-- SHA-256: `sha256:23e07f128629d5b5373918e75f3350feb1faaa5bca9db68ecee5e1a5dae1f1fb`
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg`
 
-## Finale wirksame Prompt-Spezifikation
+## Prompt
 
 ```text
-Erzeuge eine klare, fachlich präzise deutschsprachige Lerninfografik im Querformat zur Schallausbreitung im Teilchenmodell.
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
-Zeige drei zeitlich aufeinanderfolgende Momentaufnahmen derselben horizontalen Teilchenreihe. Markiere für jedes Teilchen eine feste Ruhelage. Hebe in allen drei Momentaufnahmen dasselbe einzelne Teilchen farblich hervor und zeige, dass es nur klein nach links und rechts um genau diese Ruhelage schwingt. Verdichtung und Verdünnung sollen sich von links nach rechts verlagern. Ergänze oberhalb eine eindeutig nach rechts gerichtete Kennzeichnung `Störung + Energie wandern` und am markierten Teilchen die Aussage `Teilchen schwingt lokal`.
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Die Kernaussage muss aus dem Bild selbst verständlich werden: Die Störung und Energie werden weitergegeben, das Material wird nicht mittransportiert. Zeige deshalb ausdrücklich `kein Stofftransport` und keinen Teilchenpfad quer durch das Medium. Verwende wenige, gut lesbare deutsche Labels, feste Gleichgewichtspunkte und konsistente Teilchenabstände.
+Titel: Schallausbreitung im Teilchenmodell erklären
+Beschreibung: Die lernende Person kann Schallausbreitung im Teilchen- beziehungsweise Medienelementmodell als Weitergabe einer lokalen Druck- oder Verformungsstörung und von Energie erklären, die Bewegung von Teilchen beziehungsweise kleinen Medienelementen um einen Gleichgewichtszustand deuten und begründen, warum im betrachteten idealisierten Wellenmodell kein dauerhafter Nettostofftransport mit dem Schall durch das Medium erfolgt.
 
-Keine Schallgeschwindigkeiten oder Medienrangfolgen, keine Drittanbieterlogos, Wasserzeichen, technischen IDs, Plattformnamen, Aufgabenlösung, langen Textblöcke oder Darstellung eines Teilchens, das mit der Welle nach rechts fliegt.
+Zusatzanweisung:
+Behalte die fachlich richtige, nach rechts wandernde Verdichtungszone des zweiten Versuchs bei. Ändere nur die zeitliche Position des einen grün markierten Medienelements an der einzigen durchgehenden vertikalen schwarzen gestrichelten Gleichgewichtslinie: Bei t₁ liegt der Mittelpunkt des grünen Kreises sichtbar etwa einen halben Kreisdurchmesser links von der Linie; bei t₂ sichtbar etwa einen halben Kreisdurchmesser rechts von der Linie; bei t₃ wieder etwa einen halben Kreisdurchmesser links von der Linie. Die Linie selbst bleibt an exakt derselben horizontalen Position durch alle drei Zeilen. Die grünen Kreise bleiben unmittelbar neben ihr und dürfen niemals an einen anderen Ort der Reihe springen. Zeige kleine waagerechte Doppelpfeile für die lokale Links-rechts-Schwingung. Keine zusätzlichen grünen gestrichelten Linien. Alle Texte korrekt, insbesondere „Störung + Energie“, „Gleichgewichtslage“ und „kein dauerhafter Nettostofftransport“. Keine Anbieter- oder Modellnamen, Logos, IDs oder Wasserzeichen.
 ```
-
-Die Generierung wurde iterativ korrigiert, bis das markierte Teilchen in allen Momentaufnahmen eindeutig derselben Ruhelage zugeordnet war und die Transportaussage nur Störung und Energie, nicht Materie, betraf.
 
 ## Review-Notiz
 
-Am 25.08.2026 in Originalauflösung KI-geprüft: Die drei Momentaufnahmen unterscheiden lokale Teilchenschwingung und nach rechts fortschreitende Verdichtungsstörung; die Darstellung behauptet weder Stofftransport noch eine Medienrangfolge. Eine menschliche Freigabe liegt nicht vor.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:5b804a516a7f7d40b4909decfc733b24a74574af40f94d5804e9f7f3accfc82f gebunden; eine menschliche Freigabe wurde nicht behauptet.

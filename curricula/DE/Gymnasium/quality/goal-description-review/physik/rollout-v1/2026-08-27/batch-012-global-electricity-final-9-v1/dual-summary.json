@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:eb7845d4ad9fa9f58985a82e6855ebc368cb358fdaa1a398800a6ba031e28db5",
+  "reviewInputFingerprint": "sha256:6df6f79b258531c5c11c7d781c772585b7402eee33614661fe3c7f73af15cda1",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-a",
+      "roundId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-independent-a",
+      "runIds": [
+        "physik-b012-20260827-round-a-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-b",
+      "roundId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827-independent-b",
+      "runIds": [
+        "physik-b012-electricity-rb-codex-20260827"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "f778a659-1467-4aa7-97b2-bed78c530634",
+      "firstRecordId": "phys012-a-001-f778a659",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.001",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7ca44ba0-b77e-52bf-8562-f67b44767172",
+      "firstRecordId": "phys012-a-002-7ca44ba0",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.002",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "69f8f59c-b0c3-5b0b-82db-834a0e655736",
+      "firstRecordId": "phys012-a-003-69f8f59c",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.003",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+      "firstRecordId": "phys012-a-004-a5f652cc",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.004",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "firstRecordId": "phys012-a-005-f1a078ae",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.005",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc7dd287-6eac-574d-818d-65cfb23a2d94",
+      "firstRecordId": "phys012-a-006-dc7dd287",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.006",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "28237994-9c24-5a06-82fe-be1f494768ba",
+      "firstRecordId": "phys012-a-007-28237994",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.007",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "80dd0a2b-1422-5b00-89ff-ec4d0faa047e",
+      "firstRecordId": "phys012-a-008-80dd0a2b",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.008",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+      "firstRecordId": "phys012-a-009-53196a71",
+      "secondRecordId": "physik-b012-electricity-rb-codex-20260827.009",
+      "firstRunId": "physik-b012-20260827-round-a-gpt5",
+      "secondRunId": "physik-b012-electricity-rb-codex-20260827",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

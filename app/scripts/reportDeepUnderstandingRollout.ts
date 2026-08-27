@@ -29,6 +29,9 @@ import type {
   GoalDescriptionReviewCampaign,
   GoalDescriptionReviewInput,
 } from './validateGoalDescriptionReviewCampaign'
+import type {
+  GoalDescriptionRolloutSynthesisDecisionManifest,
+} from './validateGoalDescriptionRolloutSynthesisDecisionManifest'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -356,6 +359,23 @@ const resolveIndexPath = (indexPath: string, configuredPath: string): string => 
   const relativePath = relative(repoRoot, absolutePath)
   if (relativePath === '..' || relativePath.startsWith(`..${sep}`)) {
     throw new Error(`Index artifact leaves repository: ${configuredPath}`)
+  }
+  return absolutePath
+}
+
+export const resolveResolutionBatchArtifactPath = (
+  resolutionPath: string,
+  configuredPath: string,
+): string => {
+  const batchRoot = dirname(dirname(resolve(resolutionPath)))
+  const absolutePath = resolve(batchRoot, configuredPath)
+  const relativePath = relative(batchRoot, absolutePath)
+  if (
+    relativePath === ''
+    || relativePath === '..'
+    || relativePath.startsWith(`..${sep}`)
+  ) {
+    throw new Error(`Resolution batch artifact leaves its batch root: ${configuredPath}`)
   }
   return absolutePath
 }
@@ -1054,6 +1074,23 @@ const validateResolutionIndex = async (
       const humanAttestationBytes = index.schemaVersion === 1 && entry.humanAttestationPath
         ? readFileSync(resolveIndexPath(indexPath, entry.humanAttestationPath))
         : undefined
+      const synthesisDecisionManifestArtifact = resolution.synthesisDecisionManifest
+        ? (() => {
+            const manifestPath = resolveResolutionBatchArtifactPath(
+              resolutionPath,
+              resolution.synthesisDecisionManifest!.manifestPath,
+            )
+            const manifestBytes = readFileSync(manifestPath)
+            return {
+              manifest: parseJson<GoalDescriptionRolloutSynthesisDecisionManifest>(
+                manifestBytes,
+                manifestPath,
+              ),
+              manifestBytes,
+              manifestPath: resolution.synthesisDecisionManifest!.manifestPath,
+            }
+          })()
+        : undefined
       const validation = await validateGoalDescriptionDualRoundResolution({
         resolution,
         dualSummary: group.dualSummary,
@@ -1062,6 +1099,7 @@ const validateResolutionIndex = async (
         landscape: scope.rawLandscape,
         first: group.first,
         second: group.second,
+        synthesisDecisionManifestArtifact,
         humanAttestationBytes,
       })
       if (validation.errors.length > 0) {

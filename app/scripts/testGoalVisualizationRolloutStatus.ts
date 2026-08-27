@@ -94,6 +94,21 @@ assert.deepEqual(
   'review ledgers may put the decision before the title',
 )
 
+assert.deepEqual(
+  parseReviewDecisionRow(
+    '| `99ef0fc2-150a-51e8-bac8-7e40e46917b` | Legacy stable goal ID | `accepted_pilot_after_regeneration` | hashgebunden geprüft |',
+    '210',
+  ),
+  {
+    batch: '210',
+    goalId: '99ef0fc2-150a-51e8-bac8-7e40e46917b',
+    title: 'Legacy stable goal ID',
+    decision: 'accepted_pilot_after_regeneration',
+    notes: 'hashgebunden geprüft',
+  },
+  'stable legacy UUID-like IDs with an 11-character final segment must remain reviewable',
+)
+
 assert.equal(
   parseReviewDecisionRow(
     '| Candidate | `tmp/goal-visualizations/1801c759-d92d-5bfb-a44f-cfd2455d207b/generated/candidate.jpg` | `rejected_regenerated` |',

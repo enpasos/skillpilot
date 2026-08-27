@@ -1,0 +1,3 @@
+Behalte die jetzt korrekte Schaltungstopologie und sämtliche korrekten Zahlenwerte. Entferne im Nachher-Bild der Parallelschaltung ausnahmslos alle kleinen Stromrichtungspfeile und alle vier verteilten „I = 1 A“-Beschriftungen an den Zweigen. Sie waren widersprüchlich und dürfen nicht mehr erscheinen.
+
+Setze stattdessen unter die zwei parallelen 6-Ω-Widerstände genau ein gemeinsames Textfeld: „je Zweig: I = 1 A“. Darunter bleiben „R_ges = 3 Ω“ und „I_ges = 2 A“. Die beiden Zweige bleiben getrennt parallel zwischen oberer und unterer Schiene; rechts verbindet kein Draht die Schienen. Keine Stromrichtungspfeile irgendwo in den vier Schaltbildern. Die großen Ursache-Wirkungs-Pfeile in den Textzeilen und der Grenzfall dürfen bleiben.

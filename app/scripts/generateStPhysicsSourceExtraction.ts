@@ -142,6 +142,32 @@ const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
   'st-phys-seki-st-schuljahrgang-6-strahlenoptik-039-98f1fe21': [target.reflectionLaw],
 }
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "st-phys-seki-st-schuljahrgange-7-8-elektrischer-strom-und-seine-wirkungen-135-28d383fe": [
+    "c156d2fb-0fe9-5f13-8baa-3e74d7da151e"
+  ],
+  "st-phys-seki-st-schuljahrgange-7-8-elektrischer-strom-und-seine-wirkungen-144-f956c47e": [
+    "c156d2fb-0fe9-5f13-8baa-3e74d7da151e"
+  ],
+  "st-phys-seki-st-schuljahrgange-7-8-elektrischer-strom-und-seine-wirkungen-148-2792e40c": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "st-phys-seki-st-schuljahrgange-7-8-stromkreise-und-elektromagnetismus-228-3a402220": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "st-phys-seki-st-schuljahrgang-9-elektromagnetische-induktion-und-leitungsvorgange-252-d54d3f19": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 const configs: ExtractionConfig[] = [
   {
     stage: 'SekI',
@@ -568,7 +594,7 @@ const buildExtraction = (config: ExtractionConfig) => {
 
   const passages = [...passageByTopic.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
-    const canonicalGoalIds = inferCanonicalGoalIds(sourceGoal, config.stage)
+    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config.stage))
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

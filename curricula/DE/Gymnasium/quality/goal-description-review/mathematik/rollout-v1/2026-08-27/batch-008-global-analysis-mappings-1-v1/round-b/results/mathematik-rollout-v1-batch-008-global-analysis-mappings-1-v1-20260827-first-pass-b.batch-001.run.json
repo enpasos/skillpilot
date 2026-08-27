@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-b008-20260827-round-b-gpt5",
+  "campaignId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-b",
+  "roundId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:84d9d3601b48cd56fed1e6d4eb628817bc20cc122ead2e39aa457a40c56d6d67",
+  "bundleFingerprint": "sha256:a2bd92e102a984a2d167850a35e112d36546be3c5b6af61941f28a726eff1891",
+  "bookDigest": "sha256:2ad4148f56d395e632b0927f178afeb87ef6938c4752d3bf7e3701a02129121b",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:5eb6aaceb172afa30e771dc6a89681045c710d44777f4b67a2444822de37e754",
+  "independenceGroupId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:84d9d3601b48cd56fed1e6d4eb628817bc20cc122ead2e39aa457a40c56d6d67"
+    }
+  ],
+  "startedAt": "2026-08-27T12:06:30+02:00",
+  "completedAt": "2026-08-27T12:09:08+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:917dcb277ca80083c79c0c52eb4bcec0c8c432bb6f31398f2f3d12a4c29057a7",
+  "toolchainVersion": "codex-gpt5-2026-08-27"
+}

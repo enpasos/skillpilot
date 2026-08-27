@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b009-v2-first-pass-a-openai-gpt5-20260827",
+  "campaignId": "physik-rollout-v1-batch-009-superseding-isolated-acoustics-2-v2-20260827-a",
+  "roundId": "physik-rollout-v1-batch-009-superseding-isolated-acoustics-2-v2-20260827-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-009-superseding-isolated-acoustics-2-v2-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:49db7d987e1a7b10dad2f804065d03dbfed0acca01f976254e088978160cf1bf",
+  "bundleFingerprint": "sha256:1ca7eb85e1ed2e046ba24a04ee1be06fd4e28242c78ca2ac0c9d5613530823c6",
+  "bookDigest": "sha256:82a39218535bc16e850a4ecf5a6d3059d53ce8e9965bf5bb6b10ac6140993b0e",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:6e3b39dc61b6a0f93ca4578d30c91bc48fcfcd66cc216c541b364fb46317152f",
+  "independenceGroupId": "physik-rollout-v1-batch-009-superseding-isolated-acoustics-2-v2-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+    "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:49db7d987e1a7b10dad2f804065d03dbfed0acca01f976254e088978160cf1bf"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-27T04:54:21.000Z",
+  "completedAt": "2026-08-27T04:55:30.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:e7ec31f44b1180c9b556ebee7ed41d325d0a409f2b9334cbb8359e96c91b6731",
+  "toolchainVersion": "goal-description-review-v1"
+}

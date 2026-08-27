@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b008-analyze-mappings-v1",
+  "reviewedAt": "2026-08-27T10:13:05.000Z",
+  "reviewer": "codex-math-batch008-positive-evidence-synthesis-2026-08-27",
+  "goals": [
+    {
+      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "reason": "DE: Das Profil macht die Zuordnung von Eingabe und Ausgabe als geordnetes Wertepaar sichtbar, koordiniert den paarweisen Tabelleneintrag mit dem zugehörigen Graphpunkt, verlangt eine begründete Achsenwahl und Skalierung und prüft den Darstellungswechsel in beiden Richtungen. Es grenzt Aussagen über endlich viele dargestellte Werte ausdrücklich von einer nur unter Zusatzannahmen eindeutigen Fortsetzung oder Funktionsregel ab. Die stärkere erste Reviewfassung liefert die Grundlage; die präzise Tabellenzeilen- beziehungsweise Tabellenspalten-zu-Punkt-Entsprechung und die Verlaufsvariation aus der zweiten Fassung sind fachlich integriert. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile makes the assignment of input and output visible as an ordered pair, coordinates each paired table entry with its graph point, requires justified axis choice and scaling, and tests translation in both directions. It explicitly distinguishes statements supported by finitely many displayed values from a unique continuation or function rule that would require an additional assumption. The stronger first review formulation provides the basis; the precise table-row-or-column-to-point correspondence and variation in relationship shape from the second formulation are integrated. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "input-output-pairs-across-representations",
+            "essentialUnderstandingDe": "Eine Zuordnung verbindet einen Eingabewert mit einem Ausgabewert; das geordnete Wertepaar (Eingabe, Ausgabe) bewahrt diese Rollen. Je nach Tabellenlayout erscheint dasselbe Paar als zusammengehörige Tabellenzeile oder -spalte und im Graphen als genau der Punkt, dessen erste Koordinate die Eingabe und dessen zweite Koordinate die Ausgabe ist.",
+            "essentialUnderstandingEn": "A mapping links an input value to an output value, and the ordered pair (input, output) preserves these roles. Depending on the table layout, the same pair appears as a corresponding row or column of the table and in the graph as exactly the point whose first coordinate is the input and whose second coordinate is the output.",
+            "observablePerformanceDe": "Die lernende Person benennt bei einer neuen einfachen Zuordnung Eingabe- und Ausgabegröße, beschriftet Tabelle und Achsen entsprechend und weist für mehrere Wertepaare jeweils nachvollziehbar den zusammengehörigen Tabelleneintrag und Graphpunkt zu; dabei erklärt sie die Bedeutung beider Koordinaten.",
+            "observablePerformanceEn": "For a fresh simple mapping, the learner identifies the input and output quantities, labels the table and axes accordingly, and explicitly matches several ordered pairs to their corresponding table entries and graph points while explaining the meaning of both coordinates."
+          },
+          {
+            "id": "faithful-graph-construction-and-scaling",
+            "essentialUnderstandingDe": "Eine grafische Darstellung bildet die Wertepaare nur dann verlässlich ab, wenn die Größen den richtigen Achsen zugeordnet sind und jede Achse eine eindeutige, gleichmäßige und zum Wertebereich passende Skalierung besitzt. Verschiedene Achsen dürfen verschiedene Schrittweiten haben; gleiche Abstände auf derselben Achse müssen jedoch gleiche Wertedifferenzen bedeuten.",
+            "essentialUnderstandingEn": "A graph represents the ordered pairs faithfully only when the quantities are assigned to the correct axes and each axis has an unambiguous, uniform scale suited to its range of values. The two axes may use different step sizes, but equal distances on the same axis must represent equal differences in value.",
+            "observablePerformanceDe": "Die lernende Person erstellt aus einer gegebenen einfachen Zuordnung eine vollständige Wertetabelle, wählt und begründet Achsenbereiche und Skalierungen, trägt alle Wertepaare korrekt ein und prüft die Zeichnung, indem sie ausgewählte Punkte in die Tabelle zurückliest und einen vorgelegten Eintrags- oder Skalierungsfehler berichtigt.",
+            "observablePerformanceEn": "From a given simple mapping, the learner creates a complete table of values, chooses and justifies axis ranges and scales, plots every ordered pair correctly, and checks the graph by reading selected points back into the table and correcting a supplied plotting or scaling error."
+          },
+          {
+            "id": "interpret-and-reverse-translate-within-evidence",
+            "essentialUnderstandingDe": "Tabelle und Graph zeigen denselben Zusammenhang aus unterschiedlichen Blickwinkeln und erlauben Aussagen darüber, wie sich die Ausgabe über den dargestellten Eingaben verändert. Endlich viele Wertepaare legen jedoch nur diese dargestellten Zuordnungen fest; eine eindeutige Regel, Fortsetzung oder Aussage zwischen beziehungsweise außerhalb der gezeigten Eingaben folgt erst aus einer zusätzlich gegebenen Regel oder begründeten Annahme.",
+            "essentialUnderstandingEn": "A table and a graph show the same relationship from different viewpoints and support statements about how the output changes over the displayed inputs. Finitely many ordered pairs, however, determine only those displayed assignments; a unique rule, continuation, or statement between or beyond the shown inputs requires an additional stated rule or justified assumption.",
+            "observablePerformanceDe": "Die lernende Person liest aus einem unabhängig vorgelegten Graphen Wertepaare in eine Tabelle zurück, beschreibt Zunahme, Abnahme oder Gleichbleiben der Ausgabe nur für den dargestellten Bereich, vergleicht eine zweite Darstellung anhand korrespondierender Wertepaare und kennzeichnet ausdrücklich, welche weitergehende Aussage eine Zusatzannahme benötigt.",
+            "observablePerformanceEn": "The learner reads ordered pairs from an independently presented graph back into a table, describes increase, decrease, or constancy of the output only over the displayed range, compares a second representation using corresponding ordered pairs, and explicitly identifies which further claim would require an additional assumption."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "input-output-pairs-across-representations",
+            "faithful-graph-construction-and-scaling",
+            "interpret-and-reverse-translate-within-evidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direction-of-representation-change",
+            "textDe": "Von einer verbal gegebenen Zuordnung über die Tabelle zum Graphen oder umgekehrt vom Graphen über Wertepaare zur Tabelle und verbalen Deutung",
+            "textEn": "From a verbally stated mapping through a table to a graph, or in reverse from a graph through ordered pairs to a table and verbal interpretation"
+          },
+          {
+            "id": "relationship-behavior",
+            "textDe": "Über den dargestellten Bereich zunehmende, abnehmende oder abschnittsweise gleichbleibende Ausgabewerte",
+            "textEn": "Output values that increase, decrease, or remain constant over part of the displayed range"
+          },
+          {
+            "id": "axis-range-and-scale",
+            "textDe": "Einerschritte, nicht ganzzahlige Schrittweiten oder unterschiedliche, jeweils gleichmäßige Skalierungen auf den beiden Achsen",
+            "textEn": "Unit steps, non-integer step sizes, or different but individually uniform scales on the two axes"
+          },
+          {
+            "id": "strength-of-given-information",
+            "textDe": "Explizit angegebene Zuordnungsregel gegenüber endlich vielen dargestellten Wertepaaren ohne Fortsetzungsannahme",
+            "textEn": "An explicitly stated mapping rule versus finitely many displayed ordered pairs without an assumption about continuation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "verbal-mapping-to-table-and-graph",
+            "taskDemandDe": "Für die Eingaben −2, −1, 0, 1 und 2 liefert eine Zuordnungsmaschine jeweils das Doppelte der Eingabe plus 1. Lege Eingabe und Ausgabe fest, erstelle eine beschriftete Wertetabelle, wähle geeignete Achsen und Skalierungen, zeichne die zugehörigen Punkte und beschreibe anhand von Tabelle und Graph, wie sich die Ausgabe in diesem Bereich verändert.",
+            "taskDemandEn": "For the inputs −2, −1, 0, 1, and 2, a mapping machine outputs twice the input plus 1. Identify input and output, create a labelled table of values, choose suitable axes and scales, plot the corresponding points, and use the table and graph to describe how the output changes over this range.",
+            "expectedPerformanceDe": "Die lernende Person ordnet den Eingaben die Ausgaben −3, −1, 1, 3 und 5 zu, notiert jedes Paar in der richtigen Reihenfolge, beschriftet die waagerechte Achse als Eingabe und die senkrechte als Ausgabe und wählt gleichmäßige Skalen, die alle Werte lesbar enthalten. Sie trägt jeden Tabellenwert als Punkt (Eingabe, Ausgabe) ein, liest Kontrollpunkte zurück und beschreibt für den angegebenen Bereich die Zunahme der Ausgabe um 2 bei einer Zunahme der Eingabe um 1.",
+            "expectedPerformanceEn": "The learner assigns the outputs −3, −1, 1, 3, and 5 to the inputs, records each pair in the correct order, labels the horizontal axis as input and the vertical axis as output, and chooses uniform scales that display all values clearly. The learner plots every table entry as the point (input, output), reads check points back, and states that over the specified range the output increases by 2 whenever the input increases by 1.",
+            "understandingFocusDe": "Der Fall prüft die vollständige Vorwärtsübersetzung von einer verbal festgelegten Zuordnung über geordnete Wertepaare und Tabelle zum korrekt skalierten Graphen sowie eine bereichsgebundene Deutung.",
+            "understandingFocusEn": "The case tests complete forward translation from a verbally specified mapping through ordered pairs and a table to a correctly scaled graph, together with an interpretation restricted to the stated range."
+          },
+          {
+            "id": "graph-to-table-and-consistency-check",
+            "taskDemandDe": "Ein unabhängig vorgelegter Graph zeigt die Punkte (0|8), (2|6), (4|3), (6|3) und (8|1); die Eingabeachse ist in Zweierschritten und die Ausgabeachse in Einerschritten skaliert. Übertrage die Zuordnung in eine Tabelle, beschreibe die Veränderung der Ausgabe und prüfe eine zweite Tabelle, in der für die Eingabe 6 die Ausgabe 4 steht.",
+            "taskDemandEn": "An independently presented graph shows the points (0, 8), (2, 6), (4, 3), (6, 3), and (8, 1); the input axis uses steps of 2 and the output axis uses steps of 1. Transfer the mapping into a table, describe how the output changes, and check a second table in which input 6 is paired with output 4.",
+            "expectedPerformanceDe": "Die lernende Person liest die fünf geordneten Wertepaare unter Beachtung beider Skalen korrekt in die Tabelle, beschreibt, dass die Ausgabe über den gezeigten Eingaben insgesamt abnimmt und zwischen den Eingaben 4 und 6 gleich bleibt, und verwirft die zweite Tabelle begründet, weil ihr Paar (6|4) nicht mit dem Graphpunkt (6|3) übereinstimmt.",
+            "expectedPerformanceEn": "The learner reads the five ordered pairs into the table correctly while respecting both scales, states that the output decreases overall across the shown inputs and remains constant between inputs 4 and 6, and justifiably rejects the second table because its pair (6, 4) does not match the graph point (6, 3).",
+            "understandingFocusDe": "Der umgekehrte Darstellungswechsel prüft, ob Achsenskalierung, Paarreihenfolge und die punktweise Konsistenz von Graph und Tabelle unabhängig koordiniert werden.",
+            "understandingFocusEn": "The reverse change of representation tests whether axis scales, order within each pair, and point-by-point consistency between graph and table are coordinated independently."
+          },
+          {
+            "id": "same-finite-pairs-different-scales-and-limits",
+            "taskDemandDe": "Zwei punktweise Graphen stellen die Wertepaare (0|2), (1|4), (2|6) und (3|8) dar. Im ersten Graphen ist die Ausgabeachse in Einerschritten, im zweiten in Zweierschritten skaliert. Zeige anhand einer Tabelle, ob beide Graphen dieselbe Zuordnung darstellen, erkläre den unterschiedlichen visuellen Eindruck und beurteile die Behauptung: Aus diesen vier Punkten folge zwingend die Regel „Ausgabe = 2 · Eingabe + 2“ und daher müsse bei Eingabe 4 die Ausgabe 10 sein.",
+            "taskDemandEn": "Two point graphs represent the ordered pairs (0, 2), (1, 4), (2, 6), and (3, 8). The first graph scales the output axis in steps of 1, while the second uses steps of 2. Use a table to determine whether the graphs show the same mapping, explain their different visual appearance, and assess this claim: the four points necessarily imply the rule ‘output = 2 · input + 2,’ so input 4 must have output 10.",
+            "expectedPerformanceDe": "Die lernende Person liest aus beiden Graphen dieselben vier geordneten Paare und hält daher dieselbe dargestellte Zuordnung fest; sie führt den unterschiedlichen visuellen Eindruck auf die Achsenskalierung zurück. Sie erkennt die angegebene Regel und das Paar (4|10) als mit dem beobachteten Muster vereinbar, aber nicht allein durch die vier endlichen Punkte erzwungen, und nennt als nötige Zusatzannahme, dass die Regel mit dem Zuwachs 2 auch für weitere Eingaben gelten soll.",
+            "expectedPerformanceEn": "The learner reads the same four ordered pairs from both graphs and therefore identifies the same displayed mapping, attributing the different visual appearance to the axis scale. The learner recognizes the stated rule and the pair (4, 10) as consistent with the observed pattern but not forced by the four finite points alone, and states the needed additional assumption that the rule with an increment of 2 continues for further inputs.",
+            "understandingFocusDe": "Der Fall trennt die durch Wertepaare gesicherte Darstellungsübereinstimmung vom maßstabsabhängigen Erscheinungsbild und von einer nicht ohne Zusatzannahme eindeutigen Fortsetzung.",
+            "understandingFocusEn": "The case distinguishes representation agreement established by ordered pairs from scale-dependent appearance and from a continuation that is not unique without an additional assumption."
+          }
+        ]
+      }
+    }
+  ]
+}

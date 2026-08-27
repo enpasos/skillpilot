@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:af02a6c610a1ab37f916b7939bc3819569acde0c012ac006c0851ae699bd4fbc",
+  "reviewInputFingerprint": "sha256:0db08df41b35b94f3d44219eba27ab9a57886a3ba77bd1079f29e3d721819039",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-a",
+      "roundId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-independent-a",
+      "runIds": [
+        "mathematik-b009-20260827-round-a-gpt5"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-b",
+      "roundId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-009-j7-analysis-proportionality-2-v1-20260827-independent-b",
+      "runIds": [
+        "mathematik-b009-20260827-round-b-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "093397e0-eec8-45bb-9a5a-a24827876df5",
+      "firstRecordId": "mathematik-b009-round-a-093397e0-candidate",
+      "secondRecordId": "math009-b-001-093397e0",
+      "firstRunId": "mathematik-b009-20260827-round-a-gpt5",
+      "secondRunId": "mathematik-b009-20260827-round-b-gpt5",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "firstRecordId": "mathematik-b009-round-a-c1f50bcc-candidate",
+      "secondRecordId": "math009-b-002-c1f50bcc",
+      "firstRunId": "mathematik-b009-20260827-round-a-gpt5",
+      "secondRunId": "mathematik-b009-20260827-round-b-gpt5",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

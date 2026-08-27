@@ -8,30 +8,32 @@
 
 ## Generator
 
-- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
-- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
-- Quellbild: `01bebdfc-5819-4610-a03e-ea5e794fc954.png`
-- Public Asset: `/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.png`
-- SHA-256: `sha256:d11b67361989b01692d3f669d5c1e4108e284897a823594b11e86bf9231a193f`
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `01bebdfc-5819-4610-a03e-ea5e794fc954.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg`
 
-## Finale wirksame Prompt-Spezifikation
+## Prompt
 
 ```text
-Erzeuge eine klare, fachlich präzise deutschsprachige Lerninfografik im Querformat zur funktionalen Wahl zwischen Reihen- und Parallelschaltung.
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
-Beginne mit der Anforderung: `Zwei Lampen sollen unabhängig schaltbar sein; fällt eine aus, leuchtet die andere weiter.` Zeige darunter zwei normgerechte, einfach lesbare Schaltpläne mit derselben Spannungsquelle und zwei Lampen.
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Links `Reihenschaltung`: zwei Lampen und Schalter in nur einem gemeinsamen Stromweg. Markiere diesen Entwurf unaufdringlich rot als `ungeeignet` und begründe knapp: `ein Stromweg – nicht unabhängig`.
+Titel: Reihen- und Parallelschaltungen für eine Funktion planen
+Beschreibung: Die lernende Person kann für eine vorgegebene Funktion einen Schaltplan als Reihen- oder Parallelschaltung entwerfen und die Wahl anhand der benötigten Stromwege begründen.
 
-Rechts `Parallelschaltung`: zwei getrennte Zweige, jeder Zweig enthält genau einen eigenen Schalter und eine Lampe. Markiere diesen Entwurf grün als `passender Plan` und begründe: `zwei Stromwege – unabhängig`.
-
-Verwende einen vollständig deckenden weißen Hintergrund, gerade Leitungen und eindeutige Verbindungen. Das Bild soll die Planungsentscheidung aus der geforderten Funktion ableiten, nicht Widerstandsrechnungen oder Kirchhoff-Regeln behandeln.
-
-Keine Formeln, Strom- oder Spannungszahlen, Kurzschlüsse, dekorativen Bauteile, Drittanbieterlogos, Wasserzeichen, technischen IDs, Plattformnamen, Aufgabenlösung oder langen Textblöcke.
+Zusatzanweisung:
+Rekonstruiere die fachliche Aussage des Referenzbilds als lockere, handillustrierte Nano-Banana-Pro-Lerninfografik im Querformat. Die elektrische Topologie muss exakt stimmen: links eine Reihenschaltung mit genau einem gemeinsamen Stromweg für zwei Lampen; rechts eine Parallelschaltung mit genau zwei vollständig geschlossenen Zweigen, wobei jeder Zweig genau einen eigenen Schalter und genau eine Lampe enthält. Die vorgegebene Funktion lautet sinngemäß: Beide Lampen sind unabhängig schaltbar, und beim Ausfall einer Lampe leuchtet die andere weiter. Markiere die Reihenschaltung als ungeeignet und die Parallelschaltung als passenden Plan. Keine offenen oder unverbundenen Leitungsenden außer den bewusst geöffnet gezeichneten Schalterkontakten, kein Kurzschluss, keine dritte Lampe, keine Widerstandsrechnung. Wenige, vollständig korrekte deutsche Labels; keine technischen IDs, Logos oder Wasserzeichen.
 ```
-
-Die Generierung wurde iterativ korrigiert, bis beide Stromwege der Parallelschaltung vollständig verbunden, beide Lampen wirklich getrennt schaltbar und der Hintergrund vollständig deckend weiß waren.
 
 ## Review-Notiz
 
-Am 25.08.2026 in Originalauflösung KI-geprüft: Anforderung, Stromwegstruktur und Entscheidung stimmen überein; die Reihenschaltung erfüllt die Unabhängigkeitsanforderung nicht, die Parallelschaltung mit je eigenem Schalter schon. Eine menschliche Freigabe liegt nicht vor.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:ce19e39aef33e3a71ef5d332416858f24ba3b1ec598a28b0dc649168e8eb9e0e gebunden; eine menschliche Freigabe wurde nicht behauptet.

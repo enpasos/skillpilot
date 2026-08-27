@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "adjudicationId": "canonical-math-058bf6de-structural-split-2026-08-27-v1",
+  "adjudicatedAt": "2026-08-27",
+  "status": "APPROVED_IMPLEMENTATION_INPUT",
+  "adjudicationDigest": "sha256:bbba8db5c01d33e709f1c1484b4870a39bc08a29d4b7954a0d4c2ba8e0b61e6b",
+  "scope": {
+    "subject": "Mathematik",
+    "layer": "Layer A curriculum data only",
+    "canonicalLandscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "retainedGoalId": "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+    "forbidden": [
+      "backend or runtime code",
+      "OpenAI V1 contract bytes",
+      "physics curriculum data",
+      "goal books and source rationales",
+      "description-review rollout rounds"
+    ]
+  },
+  "authority": {
+    "decision": "SPLIT",
+    "basis": "The source competence combines three independently assessable performances: solving linear equations, solving ratio equations, and classifying the solution multiplicity of linear equations. The retained public ID becomes their cluster.",
+    "productOwnerEscalationRequired": false,
+    "openUncertainties": []
+  },
+  "canonicalPlan": {
+    "retainedCluster": {
+      "goalId": "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+      "retainsStableIdAndShortKey": true,
+      "type": "cluster",
+      "weight": 3,
+      "requires": [],
+      "contains": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c"
+      ],
+      "masteryPolicy": "reassess",
+      "resourceLinksAction": "detach broad primary visualization from the cluster; retain historical asset bytes unchanged"
+    },
+    "children": [
+      {
+        "kind": "reused",
+        "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "semanticRole": "solve and check linear equations",
+        "parentDeduplication": "remove the reused atom from the direct Year 7 anchor because it is reached through the retained cluster"
+      },
+      {
+        "kind": "new",
+        "goalId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "shortKey": "canonical_math_sek1_j7_solve_check_ratio_equations",
+        "semanticRole": "solve and check ratio equations while observing domain restrictions",
+        "requires": [
+          "325771e1-602d-4bca-a199-a8f39a2d3dee",
+          "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+        ]
+      },
+      {
+        "kind": "new",
+        "goalId": "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "shortKey": "canonical_math_sek1_j7_linear_equations_solvability_multiplicity",
+        "semanticRole": "classify and justify solution multiplicity of linear equations",
+        "requires": [
+          "325771e1-602d-4bca-a199-a8f39a2d3dee"
+        ]
+      }
+    ],
+    "downstreamRewire": {
+      "dependentGoalId": "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+      "field": "requires",
+      "replaceRetainedClusterWith": [
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6"
+      ],
+      "rationale": "The Year 8 goal extends ratio-equation solving; the ratio atom already requires the reused linear-equation atom. Solvability classification is not a prerequisite for this extension."
+    },
+    "terminalRouteConnection": {
+      "dependentGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "field": "requires",
+      "replaceReusedLinearGoalIdWith": "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+      "rationale": "Classifying the solution multiplicity of one linear equation is a direct conceptual prerequisite for investigating the solution multiplicity of a two-variable linear system. The latter already leads to an unchanged Year 8 assessment terminal."
+    },
+    "assessmentReferences": {
+      "coveredGoalIdOccurrencesBefore": 0,
+      "action": "none"
+    }
+  },
+  "sourceMappingRoutes": [
+    {
+      "routeId": "BB-reviewed-linear-and-ratio",
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "bb-math-seki-rlp-1-10-2-2-l4-gleichungen-funktionen-e-02-b14c5121",
+      "sourceSpan": "Lineare Gleichungen und Verhältnisgleichungen lösen, auch mit Äquivalenzumformungen",
+      "beforeCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014"
+      ],
+      "afterCanonicalGoalIds": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/110/canonicalGoalId",
+        "/decisions/50/canonicalGoalIds/0"
+      ],
+      "classification": "replace_with_linear_and_ratio_atoms",
+      "confidence": "high"
+    },
+    {
+      "routeId": "BB-legacy-aggregate",
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
+      "sourceGoalId": "01122671-ccc3-41a6-ac57-8b6ab736cbea",
+      "sourceSpan": "Aggregate source goal covering linear equations, ratio equations, checking and solvability",
+      "beforeCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66"
+      ],
+      "afterCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/14/canonicalGoalId"
+      ],
+      "classification": "retain_exact_aggregate_cluster_mapping",
+      "confidence": "high"
+    },
+    {
+      "routeId": "BE-reviewed-linear-and-ratio",
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "be-math-seki-rlp-1-10-2-2-l4-gleichungen-funktionen-e-02-b14c5121",
+      "sourceSpan": "Lineare Gleichungen und Verhältnisgleichungen lösen, auch mit Äquivalenzumformungen",
+      "beforeCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014"
+      ],
+      "afterCanonicalGoalIds": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/110/canonicalGoalId",
+        "/decisions/50/canonicalGoalIds/0"
+      ],
+      "classification": "replace_with_linear_and_ratio_atoms",
+      "confidence": "high"
+    },
+    {
+      "routeId": "BW-reviewed-solvability",
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "bw-math-seki-bp2016-3-2-1-25-7f311d76",
+      "sourceSpan": "die Lösbarkeit und Lösungsvielfalt von linearen und quadratischen Gleichungen sowie linearen Gleichungssystemen untersuchen",
+      "beforeCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ],
+      "afterCanonicalGoalIds": [
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/173/canonicalGoalId",
+        "/decisions/157/canonicalGoalIds/0"
+      ],
+      "classification": "replace_with_solvability_atom",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-KC-linear-solving",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-kc-7-3-funktionen-gleichungen-j7-8-01-32591b6d",
+      "sourceSpan": "Lösen von linearen Gleichungen",
+      "beforeCanonicalGoalIds": [
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66"
+      ],
+      "afterCanonicalGoalIds": [
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/163/canonicalGoalId",
+        "/decisions/77/canonicalGoalIds/2"
+      ],
+      "classification": "remove_redundant_aggregate_edge",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-KC-compare-linear-solving",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-kc-7-3-funktionen-gleichungen-j7-8-02-48964817",
+      "sourceSpan": "Vergleich des Vorgehens beim Lösen von linearen Gleichungen",
+      "beforeCanonicalGoalIds": [
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "afterCanonicalGoalIds": [
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/165/canonicalGoalId",
+        "/decisions/78/canonicalGoalIds/1"
+      ],
+      "classification": "remove_redundant_aggregate_edge",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-G9-simple-equations-without-equivalence-transformations",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-7-2-07-ba2d6c41",
+      "sourceSpan": "Einfache Gleichungen Lösen einfacher Gleichungen in N, Z und Q (keine Äquivalenzumformungen)",
+      "beforeCanonicalGoalIds": [
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66"
+      ],
+      "afterCanonicalGoalIds": [
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "54148506-c23f-41b8-959b-068dd194cf15"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/587/canonicalGoalId",
+        "/decisions/289/canonicalGoalIds/2"
+      ],
+      "classification": "remove_no_split_child",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-G9-linear-equations-and-inequalities",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-8-1-01-11efbaec",
+      "sourceSpan": "Lineare Gleichungen und Ungleichungen",
+      "beforeCanonicalGoalIds": [
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
+      "afterCanonicalGoalIds": [
+        "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/625/canonicalGoalId",
+        "/decisions/305/canonicalGoalIds/2"
+      ],
+      "classification": "remove_redundant_aggregate_edge",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-G9-solve-linear-equations-and-inequalities",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-8-1-04-d200d9f1",
+      "sourceSpan": "Lineare Gleichungen / Ungleichungen Lösen linearer Gleichungen und Ungleichungen",
+      "beforeCanonicalGoalIds": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66"
+      ],
+      "afterCanonicalGoalIds": [
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/637/canonicalGoalId",
+        "/decisions/308/canonicalGoalIds/2"
+      ],
+      "classification": "remove_redundant_aggregate_edge",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-G9-solution-set",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-8-1-05-c0d0f5f5",
+      "sourceSpan": "Lösungsmenge (auch leere Menge)",
+      "beforeCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "17c9e061-fe52-5553-be81-fec7a525fcbd"
+      ],
+      "afterCanonicalGoalIds": [
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "17c9e061-fe52-5553-be81-fec7a525fcbd"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/638/canonicalGoalId",
+        "/decisions/309/canonicalGoalIds/0"
+      ],
+      "classification": "replace_with_solvability_atom",
+      "confidence": "high"
+    },
+    {
+      "routeId": "HE-G8-solution-set",
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g8-7g-5-04-79ad1c7c",
+      "sourceSpan": "Lösungsmenge (auch leere Menge)",
+      "beforeCanonicalGoalIds": [
+        "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+        "17c9e061-fe52-5553-be81-fec7a525fcbd"
+      ],
+      "afterCanonicalGoalIds": [
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "17c9e061-fe52-5553-be81-fec7a525fcbd"
+      ],
+      "physicalOldOccurrences": [
+        "/mappings/1187/canonicalGoalId",
+        "/decisions/482/canonicalGoalIds/0"
+      ],
+      "classification": "replace_with_solvability_atom",
+      "confidence": "high"
+    }
+  ],
+  "provenancePlan": {
+    "retainedCluster": "retain the existing BB aggregate source provenance",
+    "reusedLinearAtom": "retain the existing provenance unchanged",
+    "newRatioAtom": {
+      "sourceLandscapeId": "54cf7ae7-21e7-4cc2-a7b8-1f7dd9df5dc1",
+      "sourceGoalId": "01122671-ccc3-41a6-ac57-8b6ab736cbea",
+      "additionalSourceLandscapeIds": [
+        "b30048d2-d649-4727-b448-988a0f86a2c2"
+      ]
+    },
+    "newSolvabilityAtom": {
+      "sourceLandscapeId": "54cf7ae7-21e7-4cc2-a7b8-1f7dd9df5dc1",
+      "sourceGoalId": "01122671-ccc3-41a6-ac57-8b6ab736cbea",
+      "additionalSourceLandscapeIds": [
+        "6232b783-199c-4c50-92f2-9fb31277e619",
+        "b167b4cd-4b78-4c84-a721-6b2adbbcab3c"
+      ]
+    }
+  },
+  "compositionPlan": {
+    "affectedViewCount": 14,
+    "manualViews": [
+      "de-by-gk.view.json",
+      "de-by-lk.view.json"
+    ],
+    "generatedViews": [
+      "de-he-gk-g8.view.json",
+      "de-he-gk-g9.view.json",
+      "de-he-lk-g8.view.json",
+      "de-he-lk-g9.view.json",
+      "de-he-seki-g8.view.json",
+      "de-he-seki-g9.view.json",
+      "de-sh-gk-g8.view.json",
+      "de-sh-gk-g9.view.json",
+      "de-sh-lk-g8.view.json",
+      "de-sh-lk-g9.view.json",
+      "de-sh-seki-g8.view.json",
+      "de-sh-seki-g9.view.json"
+    ],
+    "projectionRule": "Keep the already visible reused linear-equation atom exactly once and add only the two new atoms inside one reviewed split structure. Do not project the retained cluster directly."
+  },
+  "completeness": {
+    "logicalSourceRouteCount": 11,
+    "physicalOldOccurrenceCount": 21,
+    "canonicalAssessmentReferenceCount": 0,
+    "affectedViewCount": 14,
+    "openUncertainties": []
+  }
+}

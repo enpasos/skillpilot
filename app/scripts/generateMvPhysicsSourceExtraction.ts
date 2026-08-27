@@ -757,6 +757,32 @@ const upperTopics: Topic[] = [
   },
 ]
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "mv-phys-seki-rp2022-j8-ladung-009-9b16b23a": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "mv-phys-seki-rp2022-j8-ladung-010-0d2795b5": [
+    "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
+  ],
+  "mv-phys-seki-rp2022-j8-stromkreise-007-faa3e23b": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "mv-phys-seki-rp2022-j9-induktion-007-575785eb": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ],
+  "mv-phys-seki-rp2022-j9-ebike-003-4bc22ec8": [
+    "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 const configs: ExtractionConfig[] = [
   {
     stage: 'SekI',
@@ -994,8 +1020,10 @@ const buildExtraction = (config: ExtractionConfig) => {
   }
 
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal, index) => {
-    const canonicalGoalIds = currentWaveTargetsBySourceGoalId[sourceGoal.id]
-      ?? inferCanonicalGoalIds(rows[index], config)
+    const canonicalGoalIds = applyPhysicsBatch015Targets(
+      sourceGoal.id,
+      currentWaveTargetsBySourceGoalId[sourceGoal.id] ?? inferCanonicalGoalIds(rows[index], config),
+    )
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

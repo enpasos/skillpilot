@@ -289,6 +289,59 @@ const slSourceDocuments = {
   ] satisfies SourceDocument[],
 }
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "sl-phys-seki-sl-ph-seki-7-2023-p11-013-86797b18": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "sl-phys-seki-sl-ph-seki-7-2023-p14-005-14a6c835": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "sl-phys-seki-sl-ph-seki-7-2023-p14-006-3c49e209": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "sl-phys-seki-sl-ph-seki-7-2023-p14-008-a34b4bca": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "sl-phys-seki-sl-ph-seki-7-2023-p14-009-5c72747c": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p33-001-e36a6abc": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p33-002-9d1a7923": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p33-003-17a8a7b4": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p33-004-bfcabcc6": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p33-005-ea4277ff": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p12-007-edc838e3": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p12-013-82b38b9f": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p13-003-bf4801b0": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p13-008-1d602017": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 const configs: ExtractionConfig[] = [
   {
     stage: 'SekI',
@@ -668,7 +721,7 @@ const buildExtraction = (config: ExtractionConfig) => {
 
   const passages = [...passageByKey.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
-    const canonicalGoalIds = inferCanonicalGoalIds(sourceGoal, config)
+    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config))
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

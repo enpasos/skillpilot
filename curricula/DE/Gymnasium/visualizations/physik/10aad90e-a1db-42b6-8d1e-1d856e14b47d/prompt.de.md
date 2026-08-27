@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `10aad90e-a1db-42b6-8d1e-1d856e14b47d`
 - Titel: Tonhöhe, Lautstärke und Geräusche unterscheiden
-- Beschreibung: Die lernende Person kann Ton, Geräusch, Lautstärke und Tonhöhe unterscheiden und in einfachen Darstellungen fachlich beschreiben.
+- Beschreibung: Die lernende Person kann Töne von Geräuschen anhand einfacher Schwingungsdarstellungen unterscheiden sowie Tonhöhe und Lautstärke als verschiedene Merkmale beschreiben und mit Frequenz beziehungsweise – unter vergleichbaren Bedingungen – Amplitude in Beziehung setzen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Tonhöhe, Lautstärke und Geräusche unterscheiden
-Beschreibung: Die lernende Person kann Ton, Geräusch, Lautstärke und Tonhöhe unterscheiden und in einfachen Darstellungen fachlich beschreiben.
+Beschreibung: Die lernende Person kann Töne von Geräuschen anhand einfacher Schwingungsdarstellungen unterscheiden sowie Tonhöhe und Lautstärke als verschiedene Merkmale beschreiben und mit Frequenz beziehungsweise – unter vergleichbaren Bedingungen – Amplitude in Beziehung setzen.
 
 Zusatzanweisung:
 Pflichtinhalt:

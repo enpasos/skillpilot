@@ -166,6 +166,29 @@ const currentWaveExactEdges = new Set([
   `th-phys-seki-th-2-1-4-lichtausbreitung-und-bildentstehung-100-755d7bf9:${target.reflectionLaw}`,
 ])
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-049-a770abe0": [
+    "af7855a3-6aea-5e05-8505-248bc9a8c219"
+  ],
+  "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-052-7647d539": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ],
+  "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-058-4b3e32e6": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "th-phys-seki-th-2-2-1-elektromagnetische-wechselwirkungen-135-1167f2e8": [
+    "4a42cddd-7827-5204-87e5-8d9eac7792f1"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
 const configs: ExtractionConfig[] = [
   {
     stage: 'SekI',
@@ -598,7 +621,7 @@ const buildExtraction = (config: ExtractionConfig) => {
 
   const passages = [...passageByTopic.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
-    const canonicalGoalIds = inferCanonicalGoalIds(sourceGoal, config.stage)
+    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config.stage))
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,

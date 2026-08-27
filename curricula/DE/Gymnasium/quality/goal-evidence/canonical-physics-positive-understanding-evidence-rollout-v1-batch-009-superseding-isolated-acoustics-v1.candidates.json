@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b009-superseding-isolated-acoustics-v1",
+  "reviewedAt": "2026-08-27T04:28:43.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-009-superseding-isolated-profile-author-candidate-2026-08-27",
+  "goals": [
+    {
+      "goalId": "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+      "reason": "DE: Das Profil macht die Unterscheidung von Tonhöhe, Lautstärke, Ton und Geräusch in einfachen Zeitdarstellungen überprüfbar. Unabhängige Änderungen von Wiederholungsrate, Amplitude und Regelmäßigkeit verhindern, dass ein einzelnes Bildmerkmal oder eine alltagssprachliche Bewertung auswendig zugeordnet wird. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile makes the distinction among pitch, loudness, tone, and noise observable in simple time representations. Independent changes in repetition rate, amplitude, and regularity prevent rote assignment based on a single visual feature or an everyday-language judgment. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "time-representation-meaning",
+            "essentialUnderstandingDe": "Eine einfache Zeitdarstellung zeigt, wie sich eine Schallgröße an einem betrachteten Ort mit der Zeit ändert: Die waagerechte Richtung steht für Zeit, die senkrechte Auslenkung für die relative Stärke der Schwankung. Die Kurve ist keine räumliche Flugbahn des Schalls.",
+            "essentialUnderstandingEn": "A simple time representation shows how a sound-related quantity at a chosen location changes over time: the horizontal direction represents time, and the vertical displacement represents the relative magnitude of the variation. The curve is not a spatial flight path of sound.",
+            "observablePerformanceDe": "Die lernende Person liest oder erstellt für einen neuen Schallfall eine einfache Zeitdarstellung, erläutert die Bedeutung beider Richtungen und grenzt die dargestellte zeitliche Schwankung von einer räumlichen Bahn ab.",
+            "observablePerformanceEn": "For a fresh sound case, the learner interprets or constructs a simple time representation, explains the meaning of both directions, and distinguishes the represented temporal variation from a spatial path."
+          },
+          {
+            "id": "pitch-and-loudness-vary-independently",
+            "essentialUnderstandingDe": "Bei einfachen vergleichbaren Schallsignalen hängt die Tonhöhe von der Wiederholungsrate beziehungsweise Frequenz ab: mehr Wiederholungen in gleicher Zeit bedeuten eine höhere Tonhöhe. Eine größere Amplitude kennzeichnet eine stärkere Schallschwankung und wird unter sonst vergleichbaren Bedingungen als lauter wahrgenommen; sie legt nicht die Tonhöhe fest.",
+            "essentialUnderstandingEn": "For simple comparable sound signals, pitch depends on repetition rate or frequency: more repetitions in the same time mean a higher pitch. A larger amplitude indicates a stronger sound variation and is perceived as louder under otherwise comparable conditions; it does not determine pitch.",
+            "observablePerformanceDe": "Die lernende Person vergleicht neue Darstellungen, in denen Frequenz und Amplitude unabhängig verändert werden, ordnet höhere oder tiefere Tonhöhe sowie lautere oder leisere Wahrnehmung begründet zu und erklärt, welche Größe jeweils unverändert bleibt.",
+            "observablePerformanceEn": "The learner compares fresh representations in which frequency and amplitude are varied independently, justifies assignments of higher or lower pitch and louder or softer perception, and explains which quantity remains unchanged in each comparison."
+          },
+          {
+            "id": "tone-noise-pattern-distinction",
+            "essentialUnderstandingDe": "Ein idealisierter reiner Ton erscheint in einer einfachen Zeitdarstellung als regelmäßig wiederkehrende sinusförmige Schwingung. Ein Geräusch zeigt einen unregelmäßigen Verlauf ohne feste Wiederholungsperiode; die fachliche Unterscheidung beruht auf der Signalstruktur und nicht darauf, ob ein Schall angenehm oder störend empfunden wird.",
+            "essentialUnderstandingEn": "In a simple time representation, an idealized pure tone appears as a regularly repeating sinusoidal oscillation. Noise shows an irregular pattern without a fixed repetition period; the scientific distinction is based on signal structure, not on whether a sound is perceived as pleasant or annoying.",
+            "observablePerformanceDe": "Die lernende Person ordnet unbekannte einfache Zeitverläufe als Ton oder Geräusch ein, markiert die entscheidende Regelmäßigkeit beziehungsweise Unregelmäßigkeit und begründet, warum eine bloße Geschmacksbewertung für die Zuordnung nicht ausreicht.",
+            "observablePerformanceEn": "The learner classifies unfamiliar simple time patterns as tone or noise, identifies the decisive regularity or irregularity, and explains why a mere preference judgment is insufficient for the classification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "time-representation-meaning",
+            "pitch-and-loudness-vary-independently",
+            "tone-noise-pattern-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "frequency-amplitude-change",
+            "textDe": "Nur Frequenz, nur Amplitude oder beide Größen werden zwischen zwei Zeitdarstellungen verändert",
+            "textEn": "Only frequency, only amplitude, or both quantities are changed between two time representations"
+          },
+          {
+            "id": "signal-regularity",
+            "textDe": "Regelmäßig sinusförmiger Verlauf oder unregelmäßiger Verlauf ohne feste Periode",
+            "textEn": "Regular sinusoidal pattern or irregular pattern without a fixed period"
+          },
+          {
+            "id": "representation-direction",
+            "textDe": "Von einer gehörten oder sprachlich beschriebenen Eigenschaft zur Skizze oder von der Skizze zur fachlichen Beschreibung",
+            "textEn": "From a heard or verbally described property to a sketch, or from the sketch to a scientific description"
+          },
+          {
+            "id": "sound-context",
+            "textDe": "Technisch erzeugter Signalton, Alltagsgeräusch oder unbekannte abstrakte Zeitkurve",
+            "textEn": "Technically generated signal tone, everyday noise, or an unfamiliar abstract time curve"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "same-period-different-amplitude",
+            "taskDemandDe": "Zwei regelmäßige Zeitkurven haben in demselben Zeitfenster gleich viele Schwingungen, aber Kurve B besitzt eine deutlich größere Amplitude. Tonhöhe und Lautstärke sind vergleichend zu beschreiben und die Kurvenachsen sind zu erläutern.",
+            "taskDemandEn": "Two regular time curves have the same number of oscillations in the same time window, but curve B has a substantially larger amplitude. Compare their pitch and loudness and explain the curve axes.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die gleiche Frequenz und damit gleiche Tonhöhe, beschreibt B unter vergleichbaren Bedingungen als lauter, ordnet die größere Amplitude der stärkeren Schwankung zu und erklärt, dass die Kurven einen Zeitverlauf an einem Ort statt eine Schallbahn zeigen.",
+            "expectedPerformanceEn": "The learner identifies the same frequency and therefore the same pitch, describes B as louder under comparable conditions, connects the larger amplitude to the stronger variation, and explains that the curves show a time pattern at one location rather than a path of sound.",
+            "understandingFocusDe": "Die isolierte Amplitudenänderung prüft die Unabhängigkeit von Lautstärke und Tonhöhe sowie das Verständnis der Darstellung.",
+            "understandingFocusEn": "The isolated amplitude change tests the independence of loudness and pitch as well as understanding of the representation."
+          },
+          {
+            "id": "same-amplitude-different-frequency",
+            "taskDemandDe": "Ein tiefer Signalton und ein höherer Signalton sollen als zwei einfache Zeitkurven mit vergleichbarer Amplitude, aber unterschiedlicher Zahl von Schwingungen im gleichen Zeitfenster skizziert und erklärt werden.",
+            "taskDemandEn": "A low signal tone and a higher signal tone are to be sketched and explained as two simple time curves with comparable amplitude but different numbers of oscillations in the same time window.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet für den höheren Ton mehr Wiederholungen in derselben Zeit, hält die Amplituden vergleichbar, bezeichnet die höhere Frequenz als Ursache der höheren Tonhöhe und behauptet nicht, dass die dichtere Kurve deshalb automatisch lauter sei.",
+            "expectedPerformanceEn": "The learner draws more repetitions in the same time for the higher tone, keeps the amplitudes comparable, identifies the higher frequency as the reason for the higher pitch, and does not claim that the denser curve is automatically louder.",
+            "understandingFocusDe": "Die selbst erstellte Darstellung zeigt, ob Frequenz als Tonhöhenmerkmal gezielt verändert werden kann, ohne Amplitude und Lautstärke mitzuziehen.",
+            "understandingFocusEn": "The learner-generated representation reveals whether frequency can be varied deliberately as the pitch feature without dragging amplitude and loudness along with it."
+          },
+          {
+            "id": "regular-tone-and-irregular-noise",
+            "taskDemandDe": "Drei unbekannte Zeitkurven werden vorgelegt: zwei regelmäßig sinusförmige Kurven mit unterschiedlichen Frequenzen und eine unregelmäßige Kurve. Die Kurven sind als Töne beziehungsweise Geräusch einzuordnen und nach Tonhöhe zu vergleichen, soweit dies fachlich sinnvoll ist.",
+            "taskDemandEn": "Three unfamiliar time curves are provided: two regular sinusoidal curves with different frequencies and one irregular curve. Classify the curves as tones or noise and compare pitch where scientifically meaningful.",
+            "expectedPerformanceDe": "Die lernende Person ordnet die regelmäßigen Kurven als Töne und die unregelmäßige als Geräusch ein, vergleicht die Tonhöhen der beiden Töne über ihre Frequenzen und weist darauf hin, dass dem unregelmäßigen Geräusch in dieser einfachen Darstellung keine einzelne feste Tonhöhe wie bei den Tönen zugeordnet wird.",
+            "expectedPerformanceEn": "The learner classifies the regular curves as tones and the irregular one as noise, compares the pitches of the two tones through their frequencies, and notes that the irregular noise is not assigned one fixed pitch in this simple representation as the tones are.",
+            "understandingFocusDe": "Der gemischte Fall prüft die strukturbezogene Ton-Geräusch-Unterscheidung und verhindert eine Einordnung nach angenehm oder unangenehm.",
+            "understandingFocusEn": "The mixed case tests the structure-based tone-noise distinction and prevents classification by pleasantness or unpleasantness."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+      "reason": "DE: Das Profil bindet Schallphänomene und einfache Klanggestaltung an den tatsächlich schwingenden Instrumententeil, die Änderung seiner Schwingungsfrequenz sowie getrennte Einflüsse auf Lautstärke und Klangfarbe. Fälle mit Saite und Luftsäule sowie veränderter Anregung prüfen Transfer statt instrumentenspezifischer Wortlisten. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile connects sound phenomena and simple sound shaping to the instrument part that actually vibrates, changes in its oscillation frequency, and separate influences on loudness and timbre. Cases involving a string and an air column as well as changed excitation test transfer rather than instrument-specific word lists. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "instrument-vibration-and-radiation",
+            "essentialUnderstandingDe": "Bei einem Musikinstrument schwingt ein konkreter Teil, etwa eine Saite, Membran oder Luftsäule, und regt die umgebende Luft an. Resonanzkörper, Schallbecher oder andere gekoppelte Teile können die Übertragung an die Luft und damit den hörbaren Schall verstärken oder formen, ohne selbst die ursprüngliche Anregung zu sein.",
+            "essentialUnderstandingEn": "In a musical instrument, a specific part such as a string, membrane, or air column vibrates and excites the surrounding air. A resonating body, bell, or other coupled parts can enhance or shape transmission to the air and therefore the audible sound without being the original excitation themselves.",
+            "observablePerformanceDe": "Die lernende Person identifiziert bei einem unbekannten einfachen Instrument den schwingenden Teil und den Übertragungsweg zur Luft und sagt begründet voraus, wie Dämpfen oder Entkoppeln eines beteiligten Teils den hörbaren Schall verändert.",
+            "observablePerformanceEn": "For an unfamiliar simple instrument, the learner identifies the vibrating part and the transmission path to the air and gives a justified prediction of how damping or decoupling an involved part changes the audible sound."
+          },
+          {
+            "id": "pitch-shaped-by-vibration-frequency",
+            "essentialUnderstandingDe": "Die Tonhöhe wird durch die Schwingungsfrequenz des wirksamen Instrumententeils bestimmt. Welche bauliche oder spielerische Änderung die Frequenz erhöht oder verringert, hängt vom Instrument ab, beispielsweise von wirksamer Saitenlänge und Spannung oder von der Länge einer schwingenden Luftsäule.",
+            "essentialUnderstandingEn": "Pitch is determined by the oscillation frequency of the effective instrument part. Which structural or playing change raises or lowers the frequency depends on the instrument, for example the effective string length and tension or the length of a vibrating air column.",
+            "observablePerformanceDe": "Die lernende Person erklärt für ein neues Saiten- oder Luftsäuleninstrument, welche konkrete Änderung die wirksame Schwingung verändert, sagt die Richtung der Tonhöhenänderung voraus und begründet sie über die höhere oder niedrigere Frequenz.",
+            "observablePerformanceEn": "For a fresh string or air-column instrument, the learner explains which specific change alters the effective oscillation, predicts the direction of the pitch change, and justifies it through the higher or lower frequency."
+          },
+          {
+            "id": "loudness-and-timbre-shaped-separately",
+            "essentialUnderstandingDe": "Stärkere Anregung führt unter vergleichbaren Bedingungen meist zu größerer Schwingungsamplitude und damit zu lauterem Schall, ohne die Grundfrequenz zwangsläufig zu ändern. Anregungsort, Bauform und Kopplung können dagegen die Zusammensetzung der Schwingung und damit die Klangfarbe verändern; Tonhöhe, Lautstärke und Klangfarbe sind daher unterscheidbare Gestaltungsmerkmale.",
+            "essentialUnderstandingEn": "Under comparable conditions, stronger excitation usually produces a larger oscillation amplitude and therefore louder sound without necessarily changing the fundamental frequency. Excitation point, construction, and coupling can instead change the composition of the oscillation and thus the timbre; pitch, loudness, and timbre are therefore distinguishable shaping features.",
+            "observablePerformanceDe": "Die lernende Person vergleicht neue Spielweisen desselben Instruments, ordnet Änderungen von Tonhöhe, Lautstärke und Klangfarbe getrennt zu und erklärt jede Änderung über Frequenz, Amplitude beziehungsweise veränderte Schwingungszusammensetzung statt alle Effekte pauschal mit stärkerem Spielen zu begründen.",
+            "observablePerformanceEn": "The learner compares fresh ways of playing the same instrument, assigns changes in pitch, loudness, and timbre separately, and explains each change through frequency, amplitude, or altered oscillation composition rather than attributing every effect generically to playing harder."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "instrument-vibration-and-radiation",
+            "pitch-shaped-by-vibration-frequency",
+            "loudness-and-timbre-shaped-separately"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "vibrating-system",
+            "textDe": "Saite, Membran oder Luftsäule als schwingender Instrumententeil",
+            "textEn": "String, membrane, or air column as the vibrating instrument part"
+          },
+          {
+            "id": "pitch-control-variable",
+            "textDe": "Wirksame Länge, Spannung oder Länge der Luftsäule wird passend zum Instrument verändert",
+            "textEn": "Effective length, tension, or air-column length is changed as appropriate for the instrument"
+          },
+          {
+            "id": "excitation-strength-and-location",
+            "textDe": "Schwächere oder stärkere Anregung sowie unterschiedliche Anregungsorte bei sonst gleichem Instrument",
+            "textEn": "Weaker or stronger excitation and different excitation points on an otherwise unchanged instrument"
+          },
+          {
+            "id": "acoustic-coupling",
+            "textDe": "Resonanzkörper oder gekoppelte Fläche schwingt frei, wird gedämpft oder wird vom Schwinger entkoppelt",
+            "textEn": "Resonating body or coupled surface vibrates freely, is damped, or is decoupled from the oscillator"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "guitar-fret-and-plucking-strength",
+            "taskDemandDe": "Auf derselben Gitarrensaite werden zuerst ein tieferer Ton auf der leeren Saite und dann ein Ton mit verkürzter wirksamer Saitenlänge gespielt. Anschließend wird derselbe gegriffene Ton einmal schwach und einmal kräftig gezupft. Die beobachtbaren Klangänderungen sind getrennt zu erklären.",
+            "taskDemandEn": "On the same guitar string, a lower tone is first played on the open string and then a tone with a shorter effective string length. The same fretted tone is then plucked once gently and once strongly. Explain the observable sound changes separately.",
+            "expectedPerformanceDe": "Die lernende Person erklärt die höhere Tonhöhe der verkürzten Saite über ihre höhere Schwingungsfrequenz, die größere Lautstärke beim kräftigeren Zupfen über die größere Amplitude und hält fest, dass die stärkere Anregung allein die gegriffene Grundtonhöhe nicht festlegt.",
+            "expectedPerformanceEn": "The learner explains the higher pitch of the shortened string through its higher oscillation frequency, the greater loudness of the stronger pluck through the larger amplitude, and notes that stronger excitation alone does not determine the fretted fundamental pitch.",
+            "understandingFocusDe": "Der zweistufige Vergleich trennt eine Frequenzänderung durch wirksame Länge von einer Amplitudenänderung durch Anregungsstärke.",
+            "understandingFocusEn": "The two-stage comparison separates a frequency change caused by effective length from an amplitude change caused by excitation strength."
+          },
+          {
+            "id": "blown-bottles-air-column",
+            "taskDemandDe": "Zwei gleichartige Flaschen enthalten unterschiedlich viel Wasser und werden jeweils über der Öffnung angeblasen. Dadurch sind die Luftsäulen über dem Wasser unterschiedlich lang. Vor dem Versuch ist die Tonhöhenreihenfolge vorherzusagen und anschließend fachlich zu erklären.",
+            "taskDemandEn": "Two identical bottles contain different amounts of water and are each blown across the opening. The air columns above the water therefore have different lengths. Predict the pitch order before the trial and then explain it scientifically.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert die Luftsäule als wirksamen Schwinger, sagt für die kürzere Luftsäule eine höhere Frequenz und damit höhere Tonhöhe voraus und begründet, warum die Wasserfüllung hier über die Luftsäulenlänge wirkt, statt das Wasser selbst als Tonquelle zu bezeichnen.",
+            "expectedPerformanceEn": "The learner identifies the air column as the effective oscillator, predicts a higher frequency and therefore a higher pitch for the shorter air column, and explains why the water level acts here through air-column length rather than calling the water itself the sound source.",
+            "understandingFocusDe": "Der Transfer von der Saite zur Luftsäule prüft, ob Tonhöhengestaltung instrumentenspezifisch über den tatsächlich schwingenden Teil erklärt wird.",
+            "understandingFocusEn": "Transfer from a string to an air column tests whether pitch shaping is explained in an instrument-specific way through the part that actually vibrates."
+          },
+          {
+            "id": "guitar-excitation-point-and-body-damping",
+            "taskDemandDe": "Dieselbe Gitarrensaite wird bei gleicher Länge und Spannung einmal nahe der Mitte und einmal nahe am Steg gezupft. In einem weiteren Durchgang wird der Gitarrenkorpus leicht gedämpft. Es ist vorherzusagen und zu erklären, welche Merkmale des hörbaren Schalls sich jeweils ändern können.",
+            "taskDemandEn": "The same guitar string, with unchanged length and tension, is plucked once near the middle and once near the bridge. In a further trial, the guitar body is lightly damped. Predict and explain which properties of the audible sound may change in each case.",
+            "expectedPerformanceDe": "Die lernende Person erwartet bei unveränderter Saitenlänge und Spannung keine gezielte Änderung der Grundtonhöhe, erklärt mögliche Klangfarbenunterschiede durch die anders angeregte Schwingungszusammensetzung und beschreibt die geringere Schallabgabe beim gedämpften Korpus als Folge veränderter Kopplung und Resonanz.",
+            "expectedPerformanceEn": "With unchanged string length and tension, the learner does not expect a deliberate change in fundamental pitch, explains possible timbre differences through the differently excited oscillation composition, and describes reduced sound radiation from the damped body as a consequence of changed coupling and resonance.",
+            "understandingFocusDe": "Der Fall prüft einfache Klanggestaltung jenseits der Tonhöhe und verlangt eine kausale Trennung von Anregungsort, Resonanzkopplung und Grundfrequenz.",
+            "understandingFocusEn": "The case tests simple sound shaping beyond pitch and requires causal separation of excitation point, resonance coupling, and fundamental frequency."
+          }
+        ]
+      }
+    }
+  ]
+}

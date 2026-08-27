@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-011-global-electricity-6-v1.config.json",
+  "configDigest": "sha256:532338671d21aa7c96a4d3fa5d2b5d055a2d7309f19eb9ade0f95f751fbf9e1c",
+  "goalIds": [
+    "f778a659-1467-4aa7-97b2-bed78c530634",
+    "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
+    "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+    "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+    "32111497-d5ca-453e-906d-d352f885b126",
+    "53196a71-9dbd-4835-b2f9-ff21b8a8962c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 439,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:7076643543392c229b085923e24ac3a26cea5e9674768c3316fb2ca22fa3b85c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6096cd8f456bace904060a80f880740f1f5750ca9454f5886705a4d8d563aeee",
+    "reviewInputFingerprint": "sha256:fb4f335dc675dd6cd698f4b17bbcc300b07582db202b6292570d4eb1f06f98bc",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-a",
+        "campaignDigest": "sha256:3292051d55c4bd80132a60b154dfbe532d9d02b16b2dd6d266056213ee46f7ac",
+        "roundId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-independent-a",
+        "batchId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:5478b61076db76ddfd04a03a10ff8b55d54676d20292059dc094e2bf902d0d0d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-b",
+        "campaignDigest": "sha256:ca070b904b3bff91f7ad97769a24097f9c36028f258c6596aba178781cfe4ee4",
+        "roundId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-independent-b",
+        "batchId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6547259d2d584c5c235b0161dde01332a6ef467e46a9d23c786ebc475e07db4d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

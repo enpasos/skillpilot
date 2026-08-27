@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-014-global-mechanics-electrical-energy-b-001-codex",
+  "campaignId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-b",
+  "roundId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f885354faebe2cb7441efc6ef8f29f7f6fc06306343b15bcdd573072077016d9",
+  "bundleFingerprint": "sha256:cfe6bc69d3d20be1f3a5358cfc91def161e6d486f34ac316aa56759b82596885",
+  "bookDigest": "sha256:8734f054edb004fac29eb20fcd17f4f57849a3356d2de3e6363c0a8ff1dcbef1",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:06188ebd92ce7ab163df297db05117c7607a5ec14e9ccd7372d3bc77bdbbac56",
+  "independenceGroupId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f885354faebe2cb7441efc6ef8f29f7f6fc06306343b15bcdd573072077016d9"
+    }
+  ],
+  "startedAt": "2026-08-27T10:07:00Z",
+  "completedAt": "2026-08-27T10:10:57Z",
+  "status": "completed",
+  "outputDigest": "sha256:1495097d666eaa56eb6760166eaa838b2164b08f3b6ed03b8f9fce49e4913dd1",
+  "toolchainVersion": "codex-review-v2"
+}

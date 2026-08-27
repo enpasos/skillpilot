@@ -442,7 +442,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   '98c500b8-214d-5d1d-92f7-ac746953021d': [
     '8ac61062-f63e-5935-96ae-84014906c368',
     '10aad90e-a1db-42b6-8d1e-1d856e14b47d',
-    '3e33813d-db75-4571-8345-3845b02b956d',
+    'da0837c7-95a7-5a6a-81db-f33cb7f42d85',
     'b378c8b3-5e83-5abf-8243-b0f345037bfc',
   ],
   '9d44489c-a946-59a8-95ca-6a71380994ca': [
@@ -1901,6 +1901,35 @@ function buildPipeline(parsed: { passages: Passage[], sourceGoals: SourceGoal[] 
   }
 }
 
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, Array<{ targetGoalId: string; matchType: 'exact' | 'partial' }>> = {
+  "ca6eda33-e8f1-598d-be39-c768f9db4c6c": [
+    {
+      "targetGoalId": "66256e22-44a3-5939-8862-821e29d6711d",
+      "matchType": "partial"
+    }
+  ],
+  "8ae934cf-b74e-574f-87dc-d49c5526f819": [
+    {
+      "targetGoalId": "5ddba212-9e0a-5dd4-8274-239ec51ab6a8",
+      "matchType": "partial"
+    }
+  ]
+}
+const applyPhysicsBatch015Targets = (
+  sourceGoalId: string,
+  targets: Array<{ canonicalGoalId: string; matchType: string }>,
+): Array<{ canonicalGoalId: string; matchType: string }> => {
+  const retained = targets.filter((target) => !batch015SplitParentIds.has(target.canonicalGoalId))
+  for (const addition of batch015TargetsBySourceGoalId[sourceGoalId] ?? []) {
+    const existing = retained.find((target) => target.canonicalGoalId === addition.targetGoalId)
+    if (existing) existing.matchType = addition.matchType
+    else retained.push({ canonicalGoalId: addition.targetGoalId, matchType: addition.matchType })
+  }
+  return retained
+}
+
 function writeReviewSeed(parsed: { sourceGoals: SourceGoal[] }, sourceLandscapeId: string): void {
   const reviewAbsolutePath = absoluteRepoPath(reviewPath)
   const legacyMappingAbsolutePath = absoluteRepoPath(legacyMappingPath)
@@ -1936,7 +1965,10 @@ function writeReviewSeed(parsed: { sourceGoals: SourceGoal[] }, sourceLandscapeI
   const decisions = parsed.sourceGoals
     .filter((sourceGoal) => canonicalTargetsBySourceGoalId.has(sourceGoal.id))
     .map((sourceGoal) => {
-      const targets = canonicalTargetsBySourceGoalId.get(sourceGoal.id) ?? []
+      const targets = applyPhysicsBatch015Targets(
+        sourceGoal.id,
+        canonicalTargetsBySourceGoalId.get(sourceGoal.id) ?? [],
+      )
       const explicitlyReviewed = explicitlyReviewedSourceGoalIds.has(sourceGoal.id)
       return {
         sourceGoalId: sourceGoal.id,

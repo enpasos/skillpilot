@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:953794a985cf4053ab55bbacb5102c66653d99ae33c46b4d216b2bbd712e75b6",
+  "reviewInputFingerprint": "sha256:7ecd5c89a92425beacef171b23bb442a6c8fc0b5372ef006ca73011ae7bd545c",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-a",
+      "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-independent-a",
+      "runIds": [
+        "math-b004-a-openai-gpt5-20260827"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b",
+      "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "firstRecordId": "math-b004-a-openai-gpt5-20260827.record-001",
+      "secondRecordId": "mathematik-b004-current-v1-round-b.record-001",
+      "firstRunId": "math-b004-a-openai-gpt5-20260827",
+      "secondRunId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+      "firstRecordId": "math-b004-a-openai-gpt5-20260827.record-002",
+      "secondRecordId": "mathematik-b004-current-v1-round-b.record-002",
+      "firstRunId": "math-b004-a-openai-gpt5-20260827",
+      "secondRunId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "firstRecordId": "math-b004-a-openai-gpt5-20260827.record-003",
+      "secondRecordId": "mathematik-b004-current-v1-round-b.record-003",
+      "firstRunId": "math-b004-a-openai-gpt5-20260827",
+      "secondRunId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "firstRecordId": "math-b004-a-openai-gpt5-20260827.record-004",
+      "secondRecordId": "mathematik-b004-current-v1-round-b.record-004",
+      "firstRunId": "math-b004-a-openai-gpt5-20260827",
+      "secondRunId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "firstRecordId": "math-b004-a-openai-gpt5-20260827.record-005",
+      "secondRecordId": "mathematik-b004-current-v1-round-b.record-005",
+      "firstRunId": "math-b004-a-openai-gpt5-20260827",
+      "secondRunId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+      "firstRecordId": "math-b004-a-openai-gpt5-20260827.record-006",
+      "secondRecordId": "mathematik-b004-current-v1-round-b.record-006",
+      "firstRunId": "math-b004-a-openai-gpt5-20260827",
+      "secondRunId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v1-20260827-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

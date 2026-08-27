@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b008-v4-round-b-subject-review-20260827",
+  "campaignId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-b",
+  "roundId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:4f90d28c005970df482fa95a58fc048e1bcc24f968b7e8659a2dadc403c143fe",
+  "bundleFingerprint": "sha256:a84e4d916d9c756ce1a54268f72fe039f2bc2bad0081a1bba9cb8b183b72d676",
+  "bookDigest": "sha256:09e73429c9878a2bc092ebf368fe335aac1bebea34e9529082a9d58ffc922c79",
+  "provider": "OpenAI",
+  "model": "Codex GPT-5 family",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot.goal-description-understanding-evidence-review.v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:87b36257900b636b98294132bbb867e271beed689d30e4ebe87b925f175f3700",
+  "independenceGroupId": "physik-rollout-v1-batch-008-seki-acoustics-optics-repair-v4-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c1006f55-0406-48cc-92d4-0d8345897cf4",
+    "2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c",
+    "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
+    "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4f90d28c005970df482fa95a58fc048e1bcc24f968b7e8659a2dadc403c143fe"
+    }
+  ],
+  "startedAt": "2026-08-27T06:00:00+02:00",
+  "completedAt": "2026-08-27T06:09:49+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:cb4314095f3bf84d42426a11809fb041ff81571f1e9cce29d06e7da38355e347",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

@@ -6,28 +6,24 @@
 - Titel: Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten
 - Beschreibung: Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführter Energie bestimmen, Energieanteile in einem einfachen System bilanzieren und begründen, warum ein Wirkungsgrad nicht größer als eins sein kann.
 
-## Finale reproduzierbare Prompt-Spezifikation
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `f7f2c254-1663-5861-bed7-a32c00495b19.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.jpg`
+
+## Prompt
 
 ```text
-Erzeuge eine fachlich präzise deutschsprachige Physik-Lerninfografik im Querformat zu Wirkungsgrad und Energiefluss.
+Erzeuge eine lockere handillustrierte, fachlich exakte deutschsprachige Physik-Infografik zum Wirkungsgrad. Zeige genau einen Energiefluss:
 
-Zeige einen Energiefluss durch einen einfachen Wandler: links ein breiter Pfeil „zugeführt: 100 J“, in der Mitte ein neutrales Zahnradsymbol, rechts ein türkisfarbener Pfeil „nutzbar: 75 J“. Ein kleiner orangefarbener Abzweig trägt die Beschriftung „weitere Abgabe: 25 J“. Darunter stehen exakt „η = 75 J / 100 J = 0,75 = 75 %“ und als Bilanz „75 J + 25 J = 100 J“.
+- ein Eingangspfeil „zugeführt: 100 J“ führt in einen einfachen neutralen Wandler,
+- der Ausgang teilt sich in einen deutlich breiteren Pfeil „nutzbar: 75 J“ und einen schmaleren Pfeil „weitere Abgabe: 25 J“.
 
-Pfeilbreiten und Zahlen sollen verdeutlichen, dass die nutzbare Energie nur ein Anteil der zugeführten Energie ist und die vollständige Bilanz erhalten bleibt. Weißer Hintergrund, klare 2D-Lerninfografik, dunkelblaue Schrift, gut lesbare Formel.
-
-Kein Perpetuum mobile, kein Wirkungsgrad über 100 %, keine Verwechslung mit Leistung, keine Drittanbieterlogos, Wasserzeichen, Plattformnamen oder technischen IDs.
+Darunter stehen exakt „η = 75 J / 100 J = 0,75 = 75 %“ und die vollständige Bilanz „75 J + 25 J = 100 J“. Ergänze knapp „nutzbarer Anteil ≤ zugeführte Energie → η ≤ 1“. Pfeilbreiten sollen ungefähr 75 zu 25 widerspiegeln. Keine Energieerzeugung, kein Wirkungsgrad über 100 %, keine Verwechslung mit Leistung, keine zusätzlichen Zahlen, keine Logos oder Anbieternamen.
 ```
 
-## Tatsächlich verwendeter OpenAI-Prompt
+## Review-Notiz
 
-~~~text
-Create a clean, precise educational physics diagram for a German lower-secondary learning goal about efficiency as the ratio of useful to input energy. White background, landscape composition, polished textbook vector-like raster style, dark navy lines with teal and warm orange energy-flow arrows, ample whitespace. Show one energy-flow diagram only: an input arrow labeled exactly “zugeführt: 100 J” enters a simple device box; the output splits into a large teal arrow labeled exactly “nutzbar: 75 J” and a smaller orange arrow labeled exactly “weitere Abgabe: 25 J”. Make the arrow widths visually proportional 75 to 25 and ensure the energy balance is obvious. Beneath show exactly “η = 75 J / 100 J = 0,75 = 75 %” and “75 J + 25 J = 100 J”. No title, no people, no logos, no watermark. Every number, unit, ratio, and conservation relation must be scientifically and mathematically correct.
-~~~
-
-## Asset-Bindung
-
-- Quellbild: `f7f2c254-1663-5861-bed7-a32c00495b19.png`
-- Public Asset: `/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.png`
-- Provider: OpenAI image generation
-- Asset-SHA-256: sha256:e9b95a5d64cc059a3204b1bb926457132eec39742bfc98e375d91cd9a62ccab8
-- QA: in Originalauflösung fachlich und auf Lesbarkeit geprüft; die KI-Freigabe ist im QA-Ledger an diesen Hash gebunden. Eine menschliche Freigabe wurde nicht behauptet.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:2980a12e8a5a9cfddb5e5caf31864836f26fc7da9face8710e970e34b905b11e gebunden; eine menschliche Freigabe wurde nicht behauptet.

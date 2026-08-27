@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-math-058bf6de-structural-split.receipt.schema.json",
+  "title": "Canonical mathematics retained-ID structural-split receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "scope",
+    "authorization",
+    "designBindings",
+    "split",
+    "counts",
+    "postApplyBindings",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "receiptId": {
+      "const": "canonical-math-058bf6de-structural-split-2026-08-27-v1"
+    },
+    "appliedAt": {
+      "const": "2026-08-27"
+    },
+    "status": {
+      "const": "applied-locally-not-committed"
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "subject",
+        "layer",
+        "retainedGoalId",
+        "affectsOpenAiCoachV1Contract",
+        "backendOrRuntimeChanged",
+        "physicsChanged"
+      ],
+      "properties": {
+        "subject": {
+          "const": "Mathematik"
+        },
+        "layer": {
+          "const": "Layer A curriculum data only"
+        },
+        "retainedGoalId": {
+          "const": "058bf6de-6c0e-4298-b054-9e8dff6e6a66"
+        },
+        "affectsOpenAiCoachV1Contract": {
+          "const": false
+        },
+        "backendOrRuntimeChanged": {
+          "const": false
+        },
+        "physicsChanged": {
+          "const": false
+        }
+      }
+    },
+    "authorization": {
+      "type": "object"
+    },
+    "designBindings": {
+      "type": "object"
+    },
+    "split": {
+      "type": "object"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "retainedClusters",
+        "reusedChildren",
+        "newAtomicGoals",
+        "logicalSourceRoutes",
+        "historicalPhysicalOldOccurrences",
+        "affectedCompositionViews",
+        "assessmentCoveredGoalIdRewires"
+      ],
+      "properties": {
+        "retainedClusters": {
+          "const": 1
+        },
+        "reusedChildren": {
+          "const": 1
+        },
+        "newAtomicGoals": {
+          "const": 2
+        },
+        "logicalSourceRoutes": {
+          "const": 11
+        },
+        "historicalPhysicalOldOccurrences": {
+          "const": 21
+        },
+        "affectedCompositionViews": {
+          "const": 14
+        },
+        "assessmentCoveredGoalIdRewires": {
+          "const": 0
+        }
+      }
+    },
+    "postApplyBindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/fileBinding"
+      }
+    },
+    "receiptDigest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

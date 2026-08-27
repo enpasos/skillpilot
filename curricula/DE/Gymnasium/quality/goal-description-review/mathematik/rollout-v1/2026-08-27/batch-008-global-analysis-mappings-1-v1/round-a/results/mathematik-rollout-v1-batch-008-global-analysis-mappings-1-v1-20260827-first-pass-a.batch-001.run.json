@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-008-global-analysis-mappings-a-001-codex",
+  "campaignId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:de76f80f5de4c597fbf894b8093f5cabd4b4f45aa391d3f98311e6e886727366",
+  "bundleFingerprint": "sha256:a2bd92e102a984a2d167850a35e112d36546be3c5b6af61941f28a726eff1891",
+  "bookDigest": "sha256:2ad4148f56d395e632b0927f178afeb87ef6938c4752d3bf7e3701a02129121b",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:06188ebd92ce7ab163df297db05117c7607a5ec14e9ccd7372d3bc77bdbbac56",
+  "independenceGroupId": "mathematik-rollout-v1-batch-008-global-analysis-mappings-1-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:de76f80f5de4c597fbf894b8093f5cabd4b4f45aa391d3f98311e6e886727366"
+    }
+  ],
+  "startedAt": "2026-08-27T10:03:00Z",
+  "completedAt": "2026-08-27T10:08:00Z",
+  "status": "completed",
+  "outputDigest": "sha256:684a9e8b78a5bb3f407d9de4e4cb6335bcfd8065c15d06653579eeb1652807b6",
+  "toolchainVersion": "codex-review-v2"
+}

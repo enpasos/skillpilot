@@ -23,6 +23,7 @@ type AuthoringDecision = {
   goalId: string
   resolutionDecision?: 'keep_current' | 'current_after_revision' | 'current_after_split'
   evidenceRound: 'first' | 'second'
+  revisionDissent?: GoalDescriptionRolloutSynthesisDecisionManifest['decisions'][number]['revisionDissent']
   rationaleDe: string
   rationaleEn: string
 }
@@ -266,6 +267,7 @@ const main = async () => {
             recordDigest: goal.secondSource.binding.recordDigest,
           },
         },
+        ...(authored.revisionDissent ? { revisionDissent: structuredClone(authored.revisionDissent) } : {}),
         rationaleDe: authored.rationaleDe,
         rationaleEn: authored.rationaleEn,
       }

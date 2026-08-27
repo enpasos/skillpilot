@@ -203,6 +203,7 @@ function main() {
   console.log(`Source image: ${toProjectPath(imagePath)}`)
   console.log(`Canonical image: ${toProjectPath(paths.sourceImagePath)}`)
   console.log(`Public image: ${toProjectPath(paths.publicImagePath)}`)
+  console.log(`Backend image: ${toProjectPath(paths.backendImagePath)}`)
   console.log(`Canonical prompt: ${toProjectPath(paths.sourcePromptPath)}`)
   console.log(`Canonical reconstruction prompt: ${toProjectPath(paths.sourceReconstructionPromptPath)}`)
   console.log(`JSON link URL: ${paths.publicUrl}`)
@@ -218,6 +219,7 @@ function main() {
 
   copyFileIfNeeded(imagePath, paths.sourceImagePath, dryRun)
   copyFileIfNeeded(imagePath, paths.publicImagePath, dryRun)
+  copyFileIfNeeded(imagePath, paths.backendImagePath, dryRun)
   fs.mkdirSync(path.dirname(paths.sourcePromptPath), { recursive: true })
   fs.writeFileSync(paths.sourcePromptPath, promptMarkdown, 'utf-8')
   if (reconstructionPromptMarkdown) {

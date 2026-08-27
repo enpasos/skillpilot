@@ -415,7 +415,29 @@ const extraction = {
   sourceGoals,
 }
 
-const mappings = rows.flatMap((currentRow, index) => {
+// Batch 015 electricity structural split overlay
+const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
+const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "hh-physics-seki-bp2022-3-1-elek-019-71600b1a": [
+    "5ddba212-9e0a-5dd4-8274-239ec51ab6a8"
+  ],
+  "hh-physics-seki-bp2022-3-2-elek-072-9d35e0d7": [
+    "66256e22-44a3-5939-8862-821e29d6711d"
+  ]
+}
+const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
+  ...new Set([
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+  ]),
+]
+
+const resolvedRows = rows.map((currentRow, index) => ({
+  ...currentRow,
+  canonicalGoalIds: applyPhysicsBatch015Targets(sourceGoals[index].id, currentRow.canonicalGoalIds),
+}))
+
+const mappings = resolvedRows.flatMap((currentRow, index) => {
   const sourceGoal = sourceGoals[index]
   return currentRow.canonicalGoalIds.map((canonicalGoalId) => ({
     legacyGoalId: sourceGoal.id,
@@ -425,7 +447,7 @@ const mappings = rows.flatMap((currentRow, index) => {
   }))
 })
 
-const decisions = rows.map((currentRow, index) => {
+const decisions = resolvedRows.map((currentRow, index) => {
   const sourceGoal = sourceGoals[index]
   return {
     sourceGoalId: sourceGoal.id,

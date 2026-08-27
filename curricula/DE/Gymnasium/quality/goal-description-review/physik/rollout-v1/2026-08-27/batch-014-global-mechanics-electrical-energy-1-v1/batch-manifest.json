@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-014-global-mechanics-electrical-energy-1-v1.config.json",
+  "configDigest": "sha256:999eec3cfe215a5e88d0bb98fadf98060232ee2b371d6fc7bcedf00d00dbca1c",
+  "goalIds": [
+    "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 441,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:0a7cc0bce569f08fae1ad42cb5b9706ba54ac683238ff7787f8033e11d8e1809"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8734f054edb004fac29eb20fcd17f4f57849a3356d2de3e6363c0a8ff1dcbef1",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:cfe6bc69d3d20be1f3a5358cfc91def161e6d486f34ac316aa56759b82596885",
+    "reviewInputFingerprint": "sha256:710ed478de1e56cd6ae6cdb8141d5976d0c31b305521a63bb38e85337a3712e0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-a",
+        "campaignDigest": "sha256:2691ff5fd8e51c5db6f05acf81e8b83a70a5de9d23dac47d0f2baebb70c4a5a3",
+        "roundId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-independent-a",
+        "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7350b95e80cf24f975f16c904c231657988e594ad385a8b8f849c2ecadd19132"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-b",
+        "campaignDigest": "sha256:255c885fcca41b5ac37d9ae1d18da3e935629a1b978688f859d7179f3dd62c4a",
+        "roundId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-independent-b",
+        "batchId": "physik-rollout-v1-batch-014-global-mechanics-electrical-energy-1-v1-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f885354faebe2cb7441efc6ef8f29f7f6fc06306343b15bcdd573072077016d9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v2.config.json",
+  "configDigest": "sha256:129f712c0a88e2208681b02915f7f65213902d42c18227df9df7278ca3eb02de",
+  "goalIds": [
+    "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+    "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+    "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+    "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+    "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+    "cc60f759-1168-5fc0-8ff5-5f7a2533e61c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 787,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d546e98f422f03c97538b44fee46ad6b3502f679742b87b88f2bd0a0cfbbf433"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9f1a6cd527a226c7a628f2faf43a515d53f9306a8094b23e4477d81a5872f775",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:18590cd140f24a21535436c39978dd80cf70c6ba585be22543742e346ff50e12",
+    "reviewInputFingerprint": "sha256:60d4a02eed9c11b4cd4a5980e3a7a8bee78eab45d921a766e32aa2f3fd9f19de",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-a",
+        "campaignDigest": "sha256:ffaa228d0914baceb8ea3c25f35ac9ae7b3ce41094d2f6ebe946bc59b60d9605",
+        "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:db89bc20d148d270669248f3384c4fedbdf2f9e95ae2764f73044ea6071c7ade"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-b",
+        "campaignDigest": "sha256:0171054cd1290929e990f18bbdf98f83ce34e865eeab8589348faee4b43a1ced",
+        "roundId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v2-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ca0a8676aea44f432a17f0503c53a226743bae705865fa3e1ace3f742eb92f07"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

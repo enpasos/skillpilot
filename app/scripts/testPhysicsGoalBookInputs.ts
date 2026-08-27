@@ -138,6 +138,7 @@ const BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS = new Set([
   '7fe3022f-fad0-5f41-af1c-d55ff214ebc6',
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
+  '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
   '41d35667-0296-5f84-bc12-202ffc440be0',
   '33e3417c-e062-5f4a-8df9-3195dca50089',
   '3c8e5510-a12d-5770-8a01-e5fe741b259c',
@@ -152,8 +153,21 @@ const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   'f827b00f-af7f-52de-84aa-2a2bbaa035bd',
   'f92b5b8a-327f-50d2-8313-6a142399ebf0',
   'f7f2c254-1663-5861-bed7-a32c00495b19',
+  'da0837c7-95a7-5a6a-81db-f33cb7f42d85',
+  '7ca44ba0-b77e-52bf-8562-f67b44767172',
+  '69f8f59c-b0c3-5b0b-82db-834a0e655736',
+  'dc7dd287-6eac-574d-818d-65cfb23a2d94',
+  '28237994-9c24-5a06-82fe-be1f494768ba',
+  '80dd0a2b-1422-5b00-89ff-ec4d0faa047e',
+  '5ddba212-9e0a-5dd4-8274-239ec51ab6a8',
+  'c156d2fb-0fe9-5f13-8baa-3e74d7da151e',
+  '66256e22-44a3-5939-8862-821e29d6711d',
+  'af7855a3-6aea-5e05-8505-248bc9a8c219',
+  '4a42cddd-7827-5204-87e5-8d9eac7792f1',
+  '27b90ce9-b650-5232-85fb-ce2cb69d59a3',
 ])
 const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
+  '3e33813d-db75-4571-8345-3845b02b956d',
   '1fede37b-6554-5dd3-93d9-08ed1fd09c91',
   '10bb8262-fb0f-40cf-94ef-408420ec7cf2',
   '201d353a-dfe7-521b-b0f6-eccb4d42945b',
@@ -161,6 +175,12 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'cca06d84-28fe-4b80-9bcd-968dda026e0e',
   'd27c8860-12a4-4d7d-9849-ccd8b7caca48',
   'e41356c1-968b-435a-af25-b663f080ae5a',
+  '75bdf5ca-cda4-4658-9ec7-84c77b3759db',
+  '32111497-d5ca-453e-906d-d352f885b126',
+  '59d1145e-ac54-5917-880a-21b4b80526d3',
+  '1911920e-b099-4310-82f2-b47f51a78b33',
+  'ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca',
+  '50431e92-eec9-54d6-b437-ea7a51b6f474',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
   '3631c8f7-ff48-57ff-b7ee-8397ff1d166a',
@@ -173,6 +193,10 @@ const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
   '5353aabf-68c9-5788-8c25-8ed7e3ea42f3',
   '9fe4f83e-2065-53f5-8a35-ef4a3b76c17b',
   '924e1187-a067-5eb6-8d8d-85525ee6c837',
+  '119cb138-b0c4-559d-8f1a-a4ae42db0656',
+  '1ee79cae-a7da-53cb-86ff-872e8403f033',
+  '5a530302-1303-517f-82cc-9cd457b792a8',
+  '5f3bbce4-b0b9-5997-8c41-f58b2a8a8fa6',
   'def74475-7126-5e55-8517-498951118f26',
   '77257ded-ccf0-521f-8a8c-38c8f85fd3ca',
   '11c964ff-be82-5d02-8cd7-ccb41cda8f4f',
@@ -215,6 +239,7 @@ const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
   '7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba',
   'd15764ce-ebea-5178-84ea-9351dd808b8c',
   '449d9732-a869-5126-8879-564da5c3d263',
+  '4996346f-ab5d-4d09-9b9e-b9e559af153d',
 ])
 const PHYSICS_MOTIVATION_GOAL_ID = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const BAVARIA_PH10_1_GOAL_IDS = [
@@ -232,8 +257,25 @@ const GENERIC_SEKI_ASSESSMENT_ID = '3631c8f7-ff48-57ff-b7ee-8397ff1d166a'
 const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>([
   ['924e1187-a067-5eb6-8d8d-85525ee6c837', new Map([
     ['baa2bf3c-798a-5ec3-a667-031bf062d96c', ['Kupfer, Aluminium, Glas und Kunststoff', 'Leiter und Nichtleiter']],
-    ['ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca', ['mindestens fünf U-I-Wertepaare', 'Material, Leiterlänge und Querschnitt']],
+    ['66256e22-44a3-5939-8862-821e29d6711d', ['mindestens fünf U-I-Wertepaare', 'zeichnen und interpretieren Sie die Kennlinie']],
+    ['af7855a3-6aea-5e05-8505-248bc9a8c219', ['Material, Leiterlänge und Querschnitt']],
     ['8f833b36-4126-52db-b210-79fb0023c7d9', ['Zwei gleiche Widerstände liegen zunächst in Reihe', 'parallele Zweige', 'Grenzfall']],
+  ])],
+  ['119cb138-b0c4-559d-8f1a-a4ae42db0656', new Map([
+    ['dc7dd287-6eac-574d-818d-65cfb23a2d94', ['Richtung, in die sich Elektronen verschieben', 'keine elektrische Ladung erzeugt oder vernichtet', 'was bei einer leitenden Verbindung zwischen den entgegengesetzt geladenen Teilen geschieht']],
+    ['80dd0a2b-1422-5b00-89ff-ec4d0faa047e', ['zwei voneinander isolierte Leiter mit getrennten entgegengesetzten Ladungen', 'für Stellung 2 die Ladungsvorzeichen beider Platten']],
+  ])],
+  ['1ee79cae-a7da-53cb-86ff-872e8403f033', new Map([
+    ['f778a659-1467-4aa7-97b2-bed78c530634', ['Nordpol gegenüber einem Nordpol', 'Modell der Elementarmagnete']],
+    ['a5f652cc-e091-4c90-bec2-c357ae54fcf1', ['Licht-, Wärme-, magnetischen und chemischen Wirkung', 'was nach dem Ausschalten']],
+  ])],
+  ['5a530302-1303-517f-82cc-9cd457b792a8', new Map([
+    ['66256e22-44a3-5939-8862-821e29d6711d', ['mindestens fünf U-I-Wertepaare', 'zeichnen und interpretieren Sie die Kennlinie']],
+    ['8f833b36-4126-52db-b210-79fb0023c7d9', ['hinzugefügt, entfernt oder stark vergrößert', 'Grenzfall eines nahezu offenen Zweigs']],
+  ])],
+  ['5f3bbce4-b0b9-5997-8c41-f58b2a8a8fa6', new Map([
+    ['8a84de16-2fde-58ec-827a-f803e2ce8564', ['2,5 A = 1,5 A + I_L', 'an keinem Knoten Ladung ansammelt']],
+    ['267170bd-f880-56a7-9719-ffb9751872c5', ['+12 V − 2 V − U_F = 0', 'Energie pro Ladung']],
   ])],
   ['68061652-d617-5e51-8d2a-1c686c3c49df', new Map([
     ['2eecd0e2-a7ca-4568-9b12-3d47706c65fb', ['mit Impulserhaltung die Geschwindigkeit', 'kinetischen Energien vor und nach dem Stoß']],
@@ -310,16 +352,18 @@ const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>(
     ['50877233-7abf-54df-b347-6d3224678fc9', ['Kernspaltung beziehungsweise Kernfusion', 'Kernkraftwerk', 'Inneren eines Sterns']],
   ])],
   ['a3c513d0-8fb9-5bd5-88cc-041527ff097d', new Map([
-    ['59d1145e-ac54-5917-880a-21b4b80526d3', ['Amperemeter in Reihe und Voltmeter parallel', 'messen Sie Stromstärke und Spannung']],
+    ['28237994-9c24-5a06-82fe-be1f494768ba', ['Amperemeter in Reihe und Voltmeter parallel', 'messen Sie Stromstärke und Spannung']],
     ['f1a078ae-6262-4444-a4bc-a5ab275621cf', ['Amperemeter wurde versehentlich parallel geschaltet', 'fachgerechte Korrektur']],
   ])],
   ['de7528cc-8c5d-5cd6-8d08-f8ce7457e666', new Map([
-    ['50431e92-eec9-54d6-b437-ea7a51b6f474', ['Angaben V, W und Ah', 'Gleich- und Wechselspannung', 'Funktion des Ladegeräts']],
+    ['4a42cddd-7827-5204-87e5-8d9eac7792f1', ['Gleich- und Wechselspannung', 'Funktion des Ladegeräts']],
+    ['27b90ce9-b650-5232-85fb-ce2cb69d59a3', ['Angaben V, W und Ah']],
     ['267170bd-f880-56a7-9719-ffb9751872c5', ['beiden Maschen', 'vorzeichenrichtige Spannungsbilanz', 'Energie pro Ladung']],
     ['8a84de16-2fde-58ec-827a-f803e2ce8564', ['Verzweigungsknoten', 'Lüfterstrom', 'Knotenregel mit Ladungserhaltung']],
   ])],
   ['eb5e147f-a67c-542e-858b-533a00af7af2', new Map([
-    ['1911920e-b099-4310-82f2-b47f51a78b33', ['Isolierung, Schutzleiter, Sicherung und Fehlerstrom-Schutzeinrichtung', 'Gewitterorte', 'Seitenblitz, Schrittspannung']],
+    ['5ddba212-9e0a-5dd4-8274-239ec51ab6a8', ['Isolierung, Schutzleiter, Sicherung und Fehlerstrom-Schutzeinrichtung']],
+    ['c156d2fb-0fe9-5f13-8baa-3e74d7da151e', ['Gewitterorte', 'Seitenblitz, Schrittspannung']],
   ])],
   ['0b090935-1e43-581b-84ec-078741f8969e', new Map([
     ['fbe0faae-7fba-482b-888e-341f926770f3', ['Wärmeleitung, Konvektion und Wärmestrahlung', 'Stofftransport beziehungsweise elektromagnetischer Übertragung']],
@@ -348,7 +392,8 @@ const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>(
     ['c1006f55-0406-48cc-92d4-0d8345897cf4', ['Lautsprecher als Schallquelle', 'Mikrofon und Ohr als Empfänger']],
     ['10aad90e-a1db-42b6-8d1e-1d856e14b47d', ['Ton beziehungsweise Geräusch', 'Tonhöhe und Lautstärke', 'Frequenz und Amplitude']],
     ['a24c41ce-68c5-56a7-8235-ef9a7dba7042', ['drei Schallgeschwindigkeiten', 'elastischer Kopplung und Trägheit', 'Aggregatzustand allein']],
-    ['3e33813d-db75-4571-8345-3845b02b956d', ['Außenohr, Mittelohr und Innenohr', '94 dB über 60 min', 'zwei konkrete Schutzmaßnahmen']],
+    ['2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c', ['Weg des Schalls durch Außenohr, Mittelohr und Innenohr', 'Umwandlung der mechanischen Anregung in Nervensignale']],
+    ['da0837c7-95a7-5a6a-81db-f33cb7f42d85', ['94 dB über 60 min', 'zwei konkrete Schutzmaßnahmen']],
   ])],
   ['3f477f0d-4f79-5eed-8671-fb2667d60910', new Map([
     ['6367d45e-919e-4c19-bcd9-7770a2d51139', ['Objektiv, Okular, optische Achse', 'reelle umgekehrte Zwischenbild', 'Grenzen des vereinfachten Strahlenmodells']],
@@ -389,17 +434,17 @@ const EXPECTED_JURISDICTIONS = [
 ] as const
 
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 438,
-  curricularArea: 83,
-  practiceAssessment: 126,
+  curricularAtomic: 444,
+  curricularArea: 90,
+  practiceAssessment: 131,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 1,
-  total: 658,
+  total: 676,
 }
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 5759
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 5583
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6251
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6075
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 176
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 58
 
@@ -771,6 +816,40 @@ CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
     })
   })
 })
+
+const bwElectricalEnergyAssessment = rawGoalById.get('4996346f-ab5d-4d09-9b9e-b9e559af153d')
+assert(bwElectricalEnergyAssessment, 'BW electrical-energy assessment is missing')
+assert.deepEqual(
+  bwElectricalEnergyAssessment.requires,
+  (bwElectricalEnergyAssessment.examData as { coveredGoalIds?: unknown })?.coveredGoalIds,
+  'BW electrical-energy assessment requires must exactly match coveredGoalIds',
+)
+assert.deepEqual(
+  bwElectricalEnergyAssessment.applicability,
+  { jurisdiction: ['DE-BW'] },
+  'BW electrical-energy assessment must stay explicitly BW-only',
+)
+assert.deepEqual(
+  bwElectricalEnergyAssessment.extendedData,
+  {
+    applicabilityMappingInheritance: 'boundary',
+    applicabilityOverrides: { jurisdiction: ['DE-BW'] },
+  },
+  'BW electrical-energy assessment must retain its reviewed boundary override',
+)
+const bwElectricalEnergyTask = String(
+  (bwElectricalEnergyAssessment.examData as { taskContent?: unknown })?.taskContent ?? '',
+)
+for (const snippet of [
+  'Energieumwandlungskette',
+  'nutzbare und unerwünschte Energieübertragungen',
+  'unter gleichen Bedingungen energetisch geeigneter',
+]) {
+  assert(
+    bwElectricalEnergyTask.includes(snippet),
+    `BW electrical-energy assessment lacks task evidence: ${snippet}`,
+  )
+}
 
 const genericSekIAssessment = rawGoalById.get(GENERIC_SEKI_ASSESSMENT_ID)
 assert(genericSekIAssessment, 'generic Sek-I assessment is missing')

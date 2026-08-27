@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b010-optics-v3-round-b-gpt5-20260827",
+  "campaignId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-b",
+  "roundId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:a9c867b570b9490434a90ad21958ad4c440bc6a35ec963355023c9818fa9c7b2",
+  "bundleFingerprint": "sha256:2a8a3e6efe30831c01f944fac8a13823efec872f740c932e933412e776542760",
+  "bookDigest": "sha256:215e17fe14ff8f7458b87bff1c1dad93364356c15c99e4d2e26be377e69bb441",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:ca4bf362f068d90f911c54d4b770324aec293d9868262a6a8c8a131c59e2b8b1",
+  "independenceGroupId": "physik-rollout-v1-batch-010-global-optics-4-v3-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+    "6367d45e-919e-4c19-bcd9-7770a2d51139",
+    "6a4c6042-052b-502b-a39a-0ed8941247ac",
+    "1ab5f599-0927-579d-94cc-feecdf3b5603"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a9c867b570b9490434a90ad21958ad4c440bc6a35ec963355023c9818fa9c7b2"
+    }
+  ],
+  "startedAt": "2026-08-27T06:28:50Z",
+  "completedAt": "2026-08-27T06:32:04Z",
+  "status": "completed",
+  "outputDigest": "sha256:dca0b85139fdb32180e5507d39fb29a0eeb053f0e12b083815eb743407c65dbe",
+  "toolchainVersion": "goal-description-review-v1"
+}

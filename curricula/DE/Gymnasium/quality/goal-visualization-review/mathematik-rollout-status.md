@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-26T15:42:29.295Z
+Generated: 2026-08-27T15:55:37.473Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,20 +16,20 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1158 |
-| Atomare Ziele im Visualisierungs-Scope | 786 |
-| Ziele mit primaerem Visualisierungslink | 717 |
-| Coverage | 91.2% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 786 |
+| Alle Ziele in der Landschaft | 1170 |
+| Atomare Ziele im Visualisierungs-Scope | 791 |
+| Ziele mit primaerem Visualisierungslink | 722 |
+| Coverage | 91.3% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 791 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 223 |
+| Review-Ledger-Dateien | 227 |
 | Offene Provider-Deferred-Ziele | 69 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 12 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 3 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 1 |
 | `approved` | 20 |
-| `pilot` | 696 |
+| `pilot` | 701 |
 
 ## Ledger Decisions
 
@@ -48,20 +48,26 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_regeneration` | 8 |
 | `accepted_after_user_issue_correction` | 8 |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 603 |
+| `accepted_documented_repo_native_fallback` | 1 |
+| `accepted_pilot` | 604 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
 | `accepted_pilot_after_provider_retry` | 2 |
-| `accepted_pilot_after_regeneration` | 161 |
+| `accepted_pilot_after_reference_guided_regeneration` | 1 |
+| `accepted_pilot_after_regeneration` | 166 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
+| `accepted_pilot_after_targeted_layout_correction` | 1 |
+| `accepted_pilot_after_targeted_topology_correction` | 1 |
 | `accepted_pilot_after_third_attempt` | 5 |
 | `accepted_pilot_after_third_regeneration` | 6 |
 | `accepted_pilot_after_user_review_correction` | 47 |
 | `accepted_replacement` | 4 |
+| `accepted_retroactive_nano_banana` | 14 |
 | `accepted_reuse_after_description_review` | 27 |
 | `accepted_unchanged_human_approval_preserved` | 2 |
+| `accepted_unchanged_nano_banana_reverified` | 1 |
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
@@ -85,8 +91,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-powers-split-deferred-2026-08-26.md` |
-| Latest ledger status | - |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-212.md` |
+| Latest ledger status | `completed` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -172,18 +178,9 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
-| `60c2418b-aaff-58f6-964a-bc7cda2a673c` | Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern | `pilot` | - |
-| `339a7bf5-f1df-5d5a-9ec4-41f471f0c111` | Brüche erweitern und kürzen | `pilot` | - |
-| `02013455-72a0-5213-9509-ed77f7ede62b` | Brüche mit geeigneten Strategien vergleichen | `pilot` | - |
-| `596345cd-679e-5c7b-955f-e8cb1ec81e96` | Einfache proportionale Sachaufgaben mit Dreisatz lösen | `pilot` | - |
-| `e331a425-e9c6-46eb-89cb-dedf72857974` | Große Zahlen mit Zehnerpotenzen darstellen und deuten | `pilot` | `deferred_provider_limitation` |
-| `1dd0266c-41b4-5481-b64b-7b718cfe799b` | Kreise aus Mittelpunkt und Radius zeichnen und begründen | `pilot` | - |
-| `79dd11f0-ed20-5b92-a215-b061a2098c0c` | Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen | `pilot` | - |
+| `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | `pilot` | - |
 | `03703b29-efd8-57e0-acf5-4381b1dc67ec` | Modalwert bestimmen und im Kontext deuten | `approved` | - |
-| `a4c2b831-02f0-5d55-a300-7823a71352c4` | Natürliche Zahlen in Primfaktoren zerlegen | `pilot` | - |
-| `d658e26a-e351-4bca-824e-f346deaa87c5` | Potenzen mit natürlichen Exponenten deuten und berechnen | `pilot` | `deferred_provider_limitation` |
-| `f6b13b8e-1ecd-5420-905d-21290aa996a6` | Rationale Zahlen an der Zahlengeraden darstellen und ordnen | `pilot` | - |
-| `6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077` | Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen | `pilot` | - |
+| `f08d06dc-139d-5fd2-892c-8cc919b1e4fc` | Terme mit Variablen lesen und deuten | `pilot` | - |
 
 ### Accepted Review Without Link
 

@@ -25,6 +25,16 @@ Multiple resolution indexes and positive-evidence configs may be appended to a
 subject. Repeated paths, repeated goal IDs, overlaps, or conflicting bindings
 are blocking and the affected goals fail closed.
 
+The ordinary strict-resolution case remains two current independent `keep`
+records. A narrowly adjudicated `keep_current` case may also resolve one
+current `keep` plus one current `revise` record when both bind the exact same
+current goal, page, context, and canonical final text, and the synthesis binds
+the proposed replacement verbatim as explicitly rejected revision dissent.
+This permits the stronger review evidence to be retained without pretending
+that its longer replacement sentence was adopted. Two `revise` records,
+`split_review`, `block`, stale bindings, a changed final text, or unresolved
+dissent remain open and never count.
+
 New description-review work should use one schema-version-2 standalone index
 per final batch. Such an index binds only its exact batch goals and artifacts;
 it intentionally carries no live denominator. Legacy schema-version-1 indexes

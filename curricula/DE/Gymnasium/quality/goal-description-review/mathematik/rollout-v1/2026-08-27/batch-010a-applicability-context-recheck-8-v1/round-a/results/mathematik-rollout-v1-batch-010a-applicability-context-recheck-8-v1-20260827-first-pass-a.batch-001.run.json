@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math010a-context-openai-gpt-5.6-sol-a",
+  "campaignId": "mathematik-rollout-v1-batch-010a-applicability-context-recheck-8-v1-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-010a-applicability-context-recheck-8-v1-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-010a-applicability-context-recheck-8-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3395e82f8572f26bc69b1fde31709a6e8e7cf0f2b38cf6c5fe7492f64f9d39d4",
+  "bundleFingerprint": "sha256:e4ed585bd04563a0850e3a3a690fca5dbcb787843b1f6964dc80e72c31ded168",
+  "bookDigest": "sha256:a40830db1385ae8e3a74d60c3336ee2d0c1fcbd65e780171e316d07febed91df",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:6f24442ef6fb76820b9e60f1a4b64afcc9f37246d95f9f22fb04098aaf01d5a2",
+  "independenceGroupId": "mathematik-rollout-v1-batch-010a-applicability-context-recheck-8-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+    "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+    "2f3d24e7-2450-55d8-97c2-3e106d2854c6",
+    "50e4ecab-d462-5496-b493-b30d699eb100",
+    "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+    "bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82",
+    "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+    "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3395e82f8572f26bc69b1fde31709a6e8e7cf0f2b38cf6c5fe7492f64f9d39d4"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-08-27T12:20:15Z",
+  "completedAt": "2026-08-27T12:22:44Z",
+  "status": "completed",
+  "outputDigest": "sha256:500a3d7e48e1d72b0ceb7874aa9670180e155fd47ddc0955ed850b7c55e29ac5",
+  "toolchainVersion": "codex-gpt-5.6-sol"
+}

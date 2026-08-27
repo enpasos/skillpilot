@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `c1006f55-0406-48cc-92d4-0d8345897cf4`
 - Titel: Schallquellen und Schallempfänger beschreiben
-- Beschreibung: Die lernende Person kann Schall als Schwingung deuten und typische Schallquellen sowie Schallempfänger fachlich benennen.
+- Beschreibung: Die lernende Person kann Schallquellen und Schallempfänger an Beispielen nach ihrer Funktion unterscheiden und erklären, wie eine schwingende Quelle Schall erzeugt und ankommender Schall am Empfänger eine mechanische Reaktion oder ein weiterverarbeitbares Signal hervorruft.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Schallquellen und Schallempfänger beschreiben
-Beschreibung: Die lernende Person kann Schall als Schwingung deuten und typische Schallquellen sowie Schallempfänger fachlich benennen.
+Beschreibung: Die lernende Person kann Schallquellen und Schallempfänger an Beispielen nach ihrer Funktion unterscheiden und erklären, wie eine schwingende Quelle Schall erzeugt und ankommender Schall am Empfänger eine mechanische Reaktion oder ein weiterverarbeitbares Signal hervorruft.
 
 Zusatzanweisung:
 Pflichtinhalt:

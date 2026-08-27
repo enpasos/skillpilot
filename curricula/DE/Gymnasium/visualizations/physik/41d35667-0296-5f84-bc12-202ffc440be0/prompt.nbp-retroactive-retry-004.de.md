@@ -1,0 +1,5 @@
+Die drei textbasierten Versuche scheiterten an vertauschter Rasterbreite und Rasterhöhe. Nutze deshalb die beigefügte geometrisch exakte Referenz als bindendes Layout und übertrage sie nur in einen lockeren handillustrierten Stil.
+
+Die Geometrie darf sich nicht ändern: genau drei quadratische Rasterspalten waagerecht und genau vier quadratische Rasterzeilen senkrecht. Vom gemeinsamen Ursprung O gehen genau drei Pfeile aus: 3 N exakt drei Kästchen nach rechts, 4 N exakt vier Kästchen nach oben und F_R = 5 N zur gemeinsamen Ecke drei Kästchen rechts und vier Kästchen oben. Der 4-N-Pfeil ist sichtbar länger als der 3-N-Pfeil. Obere und rechte Parallelogrammseite sind gestrichelt; ein Rechtwinkelsymbol steht bei O.
+
+Kein separater Ergebnis-Pfeil, keine vierte Kraft, kein zusätzliches Raster, keine anderen Zahlen. Schreibe exakt „3 N“, „4 N“, „F_R = 5 N“ und „1 Kästchen = 1 N“. Der lockere Stil darf Linien leicht organisch wirken lassen, aber Kästchenzahl, Pfeilendpunkte und gemeinsamer Ursprung bleiben exakt wie in der Referenz.

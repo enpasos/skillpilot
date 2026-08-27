@@ -4,28 +4,21 @@
 
 - SkillPilot-ID: `79da5c34-86b2-5c10-9726-9de886ccef7d`
 - Titel: Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen
-- Beschreibung: Die lernende Person kann die historische geschwindigkeitsabhängige Konvention $m_{\mathrm{rel}}=\gamma m_0=E/c^2$ herleiten, sie von der invarianten Ruhemasse unterscheiden und erklären, dass in moderner Darstellung Energie und Impuls – nicht die invariante Masse – mit der Geschwindigkeit zunehmen.
+- Beschreibung: Die lernende Person kann für ein massives Teilchen mit fester Ruhemasse $m_0$ die historische geschwindigkeitsabhängige Konvention $m_{\mathrm{rel}}=\gamma m_0=E/c^2$ herleiten, sie von der invarianten Ruhemasse unterscheiden und erklären, dass in moderner Darstellung Energie und Impulsbetrag – nicht die invariante Masse – mit der Geschwindigkeit relativ zu einem Inertialsystem zunehmen.
 
 ## Generator
 
-- Provider: OpenAI image generation (integriertes Codex-Werkzeug)
-- Status: KI-geprüftes Pilotasset; keine menschliche Freigabe
-- Quellbild: `79da5c34-86b2-5c10-9726-9de886ccef7d.png`
-- Public Asset: `/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.png`
-- SHA-256: `sha256:44c06b91ef6fc8d4452ae4d9e79e756ed2862907a9a5d9c52dbb6813b28bf236`
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: erzeugt und hashgebunden KI-geprüft
+- Quellbild: `79da5c34-86b2-5c10-9726-9de886ccef7d.jpg`
+- Public Asset: `/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.jpg`
 
-## Finale wirksame Prompt-Spezifikation
+## Prompt
 
 ```text
-Erzeuge eine fachlich präzise deutschsprachige Lerninfografik im Querformat, die die historische Konvention der „relativistischen Masse“ herleitet und von der modernen Darstellung unterscheidet.
-
-Gliedere das Bild klar in drei zusammengehörige Teile. Erstens: historische Definition m_rel := E/c² = gamma*m0 mit gamma = 1/sqrt(1-v²/c²). Kennzeichne sie ausdrücklich als historische Konvention. Zweitens: Ruhemasse m0 ist invariant und wird nicht geschwindigkeitsabhängig. Drittens: In moderner Sprache nehmen Energie E und Impuls p mit der Geschwindigkeit zu, nicht die invariante Masse.
-
-Zeige ergänzend ein deutlich als historische Darstellung beschriftetes Diagramm m_rel/m0 gegen v/c: Start bei 1, zunehmende Krümmung, Annäherung an eine senkrechte Grenze bei v/c = 1 ohne sie zu erreichen oder zu überschreiten. Formeln, Symbole und deutsche Beschriftungen müssen gut lesbar und widerspruchsfrei sein.
-
-Keine Aussage, dass die invariante Masse wächst; keine Überlichtgeschwindigkeit; keine Gleichsetzung der modernen Standarddarstellung mit einer geschwindigkeitsabhängigen invarianten Masse; keine Logos, Wasserzeichen, technischen IDs oder langen Textblöcke.
+Zeichne die Referenz im lockeren handillustrierten Nano-Banana-Pro-Stil neu und bewahre die physikalische Unterscheidung exakt. Historisch: E = gamma m_0 c^2 und m_rel := E/c^2 = gamma m_0. Zeige gamma = 1/sqrt(1-v^2/c^2), gamma >= 1 und gamma -> unendlich für v -> c. Modern bleibt die Ruhemasse m_0 invariant; Energie E = gamma m_0 c^2 und Impulsbetrag p = gamma m_0 v wachsen mit v. Die Kurve m_rel/m_0 = gamma beginnt bei 1 für v=0 und wächst ohne obere Grenze bei v/c -> 1; massive Teilchen mit m_0>0 erreichen v=c nicht. Keine Aussage, die moderne invariante Masse wachse; Formeln und deutsche Texte exakt lesbar.
 ```
 
 ## Review-Notiz
 
-Am 25.08.2026 in Originalauflösung KI-geprüft: Das Bild kennzeichnet $m_{\mathrm{rel}}$ als historische Definition, hält $m_0$ invariant und beschreibt die moderne Sicht über wachsende Energie und wachsenden Impuls. Eine menschliche Freigabe liegt nicht vor.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:d53ad6ee8dc52cfc04566f97b3ad4be90e5ad400002bb07bb22ebb53b36fe9ad gebunden; eine menschliche Freigabe wurde nicht behauptet.

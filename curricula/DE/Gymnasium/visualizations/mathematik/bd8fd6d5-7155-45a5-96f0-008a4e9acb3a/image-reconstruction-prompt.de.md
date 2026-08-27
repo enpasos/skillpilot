@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `bd8fd6d5-7155-45a5-96f0-008a4e9acb3a`
 - Titel: Einfache Zinsrechnung im Prozentkontext anwenden
-- Beschreibung: Die lernende Person kann einfache Zinsrechnungen in vertrauten Sachzusammenhängen mit Prozenten darstellen, berechnen und nachvollziehbar deuten.
+- Beschreibung: Die lernende Person kann einfache Zinsprobleme in vertrauten Sachzusammenhängen als Prozentrechnung darstellen und lösen sowie die Ergebnisse nachvollziehbar im Kontext deuten.
 
 ## Generator
 

@@ -6,13 +6,13 @@ import {
   materializeGoalDescriptionRolloutBatchDualSummary,
 } from './materializeGoalDescriptionRolloutBatch'
 import {
+  buildGoalDescriptionRolloutResolutionSynthesis,
+} from './goalDescriptionRolloutResolutionSynthesis'
+import {
   buildGoalDescriptionDualRoundResolution,
   extractGoalDescriptionDualRoundResolutionSource,
   validateGoalDescriptionDualRoundResolution,
-  type GoalDescriptionDualRoundResolution,
-  type GoalDescriptionDualRoundResolutionSource,
 } from './validateGoalDescriptionDualRoundResolution'
-import type { GoalDescriptionDualRoundSummary } from './validateGoalDescriptionReviewDualRound'
 import {
   buildGoalDescriptionRolloutSynthesisRoundBinding,
   validateGoalDescriptionRolloutSynthesisDecisionManifest,
@@ -22,6 +22,8 @@ import {
 } from './validateGoalDescriptionRolloutSynthesisDecisionManifest'
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+
+export { buildGoalDescriptionRolloutResolutionSynthesis }
 
 const parseArgs = (args: string[]) => {
   let configPath = ''
@@ -124,47 +126,6 @@ const synthesisTimestamp = (
     throw new Error('Completed review runs must provide valid completedAt timestamps')
   }
   return new Date(Math.max(...completedAtValues) + 1000).toISOString()
-}
-
-export const buildGoalDescriptionRolloutResolutionSynthesis = ({
-  batchId,
-  manifest,
-  decision,
-  summaryGoal,
-  firstSource,
-  secondSource,
-}: {
-  batchId: string
-  manifest: GoalDescriptionRolloutSynthesisDecisionManifest
-  decision: GoalDescriptionRolloutSynthesisDecisionManifest['decisions'][number]
-  summaryGoal: GoalDescriptionDualRoundSummary['goals'][number]
-  firstSource: GoalDescriptionDualRoundResolutionSource
-  secondSource: GoalDescriptionDualRoundResolutionSource
-}): GoalDescriptionDualRoundResolution['synthesis'] => {
-  const evidenceSource = decision.evidenceRound === 'first' ? firstSource : secondSource
-  if (evidenceSource.decision !== 'keep' || !evidenceSource.record) {
-    throw new Error(`${decision.goalId}: selected evidence round is not a current keep record`)
-  }
-  const disagreementFields = summaryGoal.disagreementFields.join(', ')
-  return {
-    synthesisId: decision.decisionId,
-    authority: 'ai_synthesis',
-    synthesizedBy: manifest.synthesizedBy,
-    synthesizedAt: manifest.synthesizedAt,
-    rationaleDe: decision.rationaleDe,
-    rationaleEn: decision.rationaleEn,
-    understandingEvidence: structuredClone(evidenceSource.record.understandingEvidence),
-    dissent: summaryGoal.agreement === 'disagreement'
-      ? [{
-          dissentId: `synthesis-dissent-${createHash('sha256').update(`${batchId}\u0000${decision.goalId}`).digest('hex')}`,
-          source: 'both',
-          textDe: `Die beiden aktuellen keep-Reviews unterscheiden sich in ${disagreementFields}; das Manifest wählt ausdrücklich die Evidence-Fassung der ${decision.evidenceRound === 'first' ? 'ersten' : 'zweiten'} Runde.`,
-          textEn: `The two current keep reviews differ in ${disagreementFields}; the manifest explicitly selects the evidence formulation from the ${decision.evidenceRound} round.`,
-          disposition: decision.evidenceRound === 'first' ? 'accepted_first' : 'accepted_second',
-        }]
-      : [],
-    humanAttestation: null,
-  }
 }
 
 const main = async () => {
@@ -318,6 +279,11 @@ const main = async () => {
       landscape,
       first: dual.first,
       second: dual.second,
+      synthesisDecisionManifestArtifact: {
+        manifest: synthesisManifest,
+        manifestBytes: synthesisManifestBytes,
+        manifestPath: synthesisManifestRelativePath.split(sep).join('/'),
+      },
     })
     if (validation.errors.length > 0) {
       throw new Error(`${goalId}: ${validation.errors.join(' | ')}`)

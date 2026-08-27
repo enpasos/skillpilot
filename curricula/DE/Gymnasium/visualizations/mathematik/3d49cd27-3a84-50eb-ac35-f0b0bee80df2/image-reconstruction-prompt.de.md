@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `3d49cd27-3a84-50eb-ac35-f0b0bee80df2`
 - Titel: Dynamische Zusammenhänge zwischen Größen erläutern
-- Beschreibung: Die lernende Person kann in einfachen Situationen anschaulich erläutern, wie Änderungen einer Länge mit Änderungen von Umfang, Flächeninhalt oder Volumen zusammenhängen.
+- Beschreibung: Die lernende Person kann in einfachen Situationen mithilfe geeigneter Darstellungen erläutern, wie sich Umfang, Flächeninhalt oder Volumen verändern, wenn die betreffenden Längen in vorgegebener Weise verändert werden.
 
 ## Generator
 

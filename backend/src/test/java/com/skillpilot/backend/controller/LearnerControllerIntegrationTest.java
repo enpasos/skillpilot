@@ -29,6 +29,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.time.Instant;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -5692,23 +5693,24 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "228", "228" },
-                { "DE-BE", "227", "227" },
-                { "DE-BW", "247", "247" },
-                { "DE-BY", "216", "216" },
-                { "DE-HB", "200", "200" },
-                { "DE-HE", "314", "372" },
-                { "DE-HH", "227", "227" },
-                { "DE-MV", "227", "227" },
-                { "DE-NI", "227", "227" },
-                { "DE-NW", "227", "227" },
-                { "DE-RP", "154", "161" },
-                { "DE-SH", "212", "219" },
-                { "DE-SL", "227", "227" },
-                { "DE-SN", "227", "227" },
-                { "DE-ST", "227", "227" },
-                { "DE-TH", "228", "228" }
+                { "DE-BB", "234", "234" },
+                { "DE-BE", "233", "233" },
+                { "DE-BW", "253", "253" },
+                { "DE-BY", "222", "222" },
+                { "DE-HB", "207", "207" },
+                { "DE-HE", "320", "374" },
+                { "DE-HH", "233", "233" },
+                { "DE-MV", "233", "233" },
+                { "DE-NI", "233", "233" },
+                { "DE-NW", "233", "233" },
+                { "DE-RP", "156", "163" },
+                { "DE-SH", "220", "227" },
+                { "DE-SL", "233", "233" },
+                { "DE-SN", "233", "233" },
+                { "DE-ST", "233", "233" },
+                { "DE-TH", "234", "234" }
         };
+        SoftAssertions softly = new SoftAssertions();
 
         for (String[] scope : scopes) {
             String jurisdiction = scope[0];
@@ -5733,21 +5735,23 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
-            assertThat(g8Total).as(jurisdiction + " G8 total").isEqualTo(Integer.parseInt(scope[1]));
-            assertThat(g9Total).as(jurisdiction + " G9 total").isEqualTo(Integer.parseInt(scope[2]));
+            softly.assertThat(g8Total).as(jurisdiction + " G8 total").isEqualTo(Integer.parseInt(scope[1]));
+            softly.assertThat(g9Total).as(jurisdiction + " G9 total").isEqualTo(Integer.parseInt(scope[2]));
         }
+        softly.assertAll();
     }
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "727", "762" },
-                { "DE-HE", "LK", "853", "888" },
-                { "DE-RP", "GK", "572", "579" },
-                { "DE-RP", "LK", "683", "690" },
-                { "DE-SH", "GK", "611", "618" },
-                { "DE-SH", "LK", "707", "714" }
+                { "DE-HE", "GK", "733", "764" },
+                { "DE-HE", "LK", "859", "890" },
+                { "DE-RP", "GK", "574", "581" },
+                { "DE-RP", "LK", "685", "692" },
+                { "DE-SH", "GK", "619", "626" },
+                { "DE-SH", "LK", "715", "722" }
         };
+        SoftAssertions softly = new SoftAssertions();
 
         for (String[] scope : scopes) {
             String jurisdiction = scope[0];
@@ -5774,11 +5778,12 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", courseProfile);
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", courseProfile);
-            assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 total")
+            softly.assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 total")
                     .isEqualTo(Integer.parseInt(scope[2]));
-            assertThat(g9Total).as(jurisdiction + " " + courseProfile + " G9 total")
+            softly.assertThat(g9Total).as(jurisdiction + " " + courseProfile + " G9 total")
                     .isEqualTo(Integer.parseInt(scope[3]));
         }
+        softly.assertAll();
     }
 
     @Test
@@ -5807,17 +5812,18 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "122", "122" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "85", "85" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "120", "120" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "124", "124" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "120", "120" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "122", "122" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "124", "124" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "124", "124" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "124", "124" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "122", "122" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "134", "134" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "89", "89" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "131", "131" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "135", "135" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "131", "131" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "133", "133" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "135", "135" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "135", "135" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "135", "135" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "133", "133" }
         };
+        SoftAssertions softly = new SoftAssertions();
 
         for (String[] scope : scopes) {
             String subject = scope[0];
@@ -5845,11 +5851,12 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
-            assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
+            softly.assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
                     .isEqualTo(Integer.parseInt(scope[3]));
-            assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
+            softly.assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
                     .isEqualTo(Integer.parseInt(scope[4]));
         }
+        softly.assertAll();
     }
 
     @Test

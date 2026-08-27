@@ -8,10 +8,10 @@
 
 ## Generator
 
-- Provider: OpenAI image generation
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: erzeugt und hashgebunden KI-geprüft
-- Quellbild: `d658e26a-e351-4bca-824e-f346deaa87c5.png`
-- Public Asset: `/assets/goal-visualizations/mathematik/d658e26a-e351-4bca-824e-f346deaa87c5/d658e26a-e351-4bca-824e-f346deaa87c5.png`
+- Quellbild: `d658e26a-e351-4bca-824e-f346deaa87c5.jpg`
+- Public Asset: `/assets/goal-visualizations/mathematik/d658e26a-e351-4bca-824e-f346deaa87c5/d658e26a-e351-4bca-824e-f346deaa87c5.jpg`
 
 ## Prompt
 
@@ -29,8 +29,11 @@ Rahmen:
 
 Titel: Potenzen mit natürlichen Exponenten deuten und berechnen
 Beschreibung: Die lernende Person kann für eine Potenz a^n mit natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als wiederholte Multiplikation von n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.
+
+Zusatzanweisung:
+Nutze das Referenzbild als verbindliche fachliche Struktur. Bewahre alle dort gezeigten Zahlen, Gleichungen, Zuordnungen, Markierungen und logischen Beziehungen exakt; füge keine neuen Beispiele oder Aussagen hinzu. Zeichne die Darstellung im lockeren, handillustrierten Infografikstil von Nano Banana Pro neu. Deutsche Texte und mathematische Zeichen müssen vollständig korrekt und gut lesbar bleiben.
 ```
 
 ## Review-Notiz
 
-Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:4b3635ca63f81f9d570c194b425656abe5eea955ac1081a32f7b586e3d4c3f80 gebunden; eine menschliche Freigabe wurde nicht behauptet.
+Das erzeugte Rasterbild wurde in Originalauflösung fachlich und auf Lesbarkeit geprüft. Die KI-Freigabe ist im QA-Ledger an sha256:e91b845cb55c589c1338da7782246233fa411b33be5ed9ca801642d40119a98f gebunden; eine menschliche Freigabe wurde nicht behauptet.

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b011-global-electricity-rb-20260827",
+  "campaignId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-b",
+  "roundId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:6547259d2d584c5c235b0161dde01332a6ef467e46a9d23c786ebc475e07db4d",
+  "bundleFingerprint": "sha256:6096cd8f456bace904060a80f880740f1f5750ca9454f5886705a4d8d563aeee",
+  "bookDigest": "sha256:968203e95e1fcb88ce7c94026a7bfc05ce6dfb74ba1a6229e944d2cc21dabe4f",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:8431539e3633d9624e34af67cfca017fc49c201f5695fb84f7f5f91285537236",
+  "independenceGroupId": "physik-rollout-v1-batch-011-global-electricity-6-v1-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f778a659-1467-4aa7-97b2-bed78c530634",
+    "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
+    "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+    "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+    "32111497-d5ca-453e-906d-d352f885b126",
+    "53196a71-9dbd-4835-b2f9-ff21b8a8962c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6547259d2d584c5c235b0161dde01332a6ef467e46a9d23c786ebc475e07db4d"
+    }
+  ],
+  "startedAt": "2026-08-27T07:02:53.403Z",
+  "completedAt": "2026-08-27T07:03:03.524Z",
+  "status": "completed",
+  "outputDigest": "sha256:b87a95c7037848ab3fdd9333ba2fb17081123150a17605cec827e0f8c748965e",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

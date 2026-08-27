@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b010-j7-algebra-variables-terms-v1",
+  "reviewedAt": "2026-08-27T12:07:03.000Z",
+  "reviewer": "codex-math-batch010-v3-positive-evidence-synthesis-2026-08-27",
+  "goals": [
+    {
+      "goalId": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "reason": "DE: Das Profil operationalisiert die in der Synthese ausgewählte Round-A-Evidenz: Eine Variable bleibt an eine klar benannte veränderliche Größe gebunden, und eine einfache Abhängigkeit muss zwischen Kontext, Worten und Symbolen konsistent bleiben. Drei unabhängige Fälle wechseln Sachbereich und Beziehungsstruktur von proportional über additiv bis zu festem plus veränderlichem Anteil; damit ist der Transfer mehr als ein Zahlentausch. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the Round A evidence selected by the synthesis: a variable remains tied to a clearly identified varying quantity, and a simple relationship must remain consistent across context, words, and symbols. Three independent cases change the real-world domain and relationship structure from proportional to additive to a fixed-plus-varying part, making transfer more than a change of numbers. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "context-bound-variable-meaning",
+            "essentialUnderstandingDe": "Eine Variable bezeichnet in einer Sachsituation eine klar festgelegte Größe, deren Wert sich ändern kann. Das gewählte Symbol ist frei, seine Bedeutung muss innerhalb der Darstellung jedoch eindeutig und unverändert bleiben.",
+            "essentialUnderstandingEn": "In a real-world situation, a variable denotes a clearly specified quantity whose value can change. The chosen symbol is arbitrary, but its meaning must remain unambiguous and unchanged throughout the representation.",
+            "observablePerformanceDe": "Die lernende Person wählt für eine neue einfache Sachsituation geeignete Variablensymbole, definiert jedes Symbol mit seiner Kontextbedeutung und verwendet es in allen sprachlichen und symbolischen Aussagen konsistent.",
+            "observablePerformanceEn": "For a fresh simple real-world situation, the learner chooses suitable variable symbols, defines each symbol by its contextual meaning, and uses it consistently in every verbal and symbolic statement."
+          },
+          {
+            "id": "relationship-in-words-and-symbols",
+            "essentialUnderstandingDe": "Eine Abhängigkeit beschreibt nicht nur zwei Größen, sondern wie eine Größe mit der anderen zusammenhängt; dieselbe Beziehung kann in Worten und durch eine symbolische Aussage ausgedrückt werden.",
+            "essentialUnderstandingEn": "A relationship describes not merely two quantities but how one quantity is connected to the other; the same relationship can be expressed in words and by a symbolic statement.",
+            "observablePerformanceDe": "Die lernende Person beschreibt die Beziehung zwischen den gewählten Größen in eigenen Worten, formuliert dazu eine passende symbolische Aussage und erklärt, wie die Bestandteile der Aussage die sprachlich beschriebene Abhängigkeit wiedergeben.",
+            "observablePerformanceEn": "The learner describes the relationship between the chosen quantities in their own words, formulates a matching symbolic statement, and explains how the parts of that statement represent the verbally described relationship."
+          },
+          {
+            "id": "changed-context-rebinding",
+            "essentialUnderstandingDe": "Beim Wechsel der Sachsituation oder der Beziehungsstruktur müssen Variablenbedeutungen und symbolische Beschreibung neu aus dem Kontext bestimmt werden; ein bekanntes Symbol oder eine bekannte Formel darf nicht allein nach äußerer Ähnlichkeit übernommen werden.",
+            "essentialUnderstandingEn": "When the real-world situation or relationship structure changes, the meanings of variables and the symbolic description must be determined anew from the context; a familiar symbol or formula cannot be carried over merely because it looks similar.",
+            "observablePerformanceDe": "Bei einer unabhängig vorgelegten Situation mit anderer Größenbeziehung legt die lernende Person die Variablen neu fest und passt die sprachliche und symbolische Beschreibung nachvollziehbar an die geänderte Struktur an.",
+            "observablePerformanceEn": "For an independently presented situation with a different relationship between quantities, the learner defines the variables anew and transparently adapts the verbal and symbolic description to the changed structure."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "context-bound-variable-meaning",
+            "relationship-in-words-and-symbols",
+            "changed-context-rebinding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relationship-structure",
+            "textDe": "Proportionale Abhängigkeit gegenüber additiver Abhängigkeit und einer Verbindung aus festem und veränderlichem Anteil",
+            "textEn": "A proportional relationship versus an additive relationship and a combination of a fixed and a varying part"
+          },
+          {
+            "id": "quantity-role",
+            "textDe": "Eine gegebene Ausgangsgröße gegenüber zwei gemeinsam veränderlichen Größen und vertauschter sprachlicher Reihenfolge",
+            "textEn": "A given input quantity versus two jointly varying quantities and a reversed verbal order"
+          },
+          {
+            "id": "context-domain",
+            "textDe": "Gegenstandsanzahl, Altersbeziehung und Kosten in voneinander unabhängigen Sachbereichen",
+            "textEn": "Object counts, an age relationship, and costs in mutually independent real-world domains"
+          },
+          {
+            "id": "representation-start",
+            "textDe": "Ausgang von einer rein sprachlichen Beschreibung gegenüber einer kurzen Datenaussage oder einer bereits benannten Größe",
+            "textEn": "Starting from a purely verbal description versus a short data statement or an already named quantity"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bicycles-and-wheels",
+            "taskDemandDe": "In einer Fahrradstation stehen unterschiedlich viele Fahrräder; jedes Fahrrad hat zwei Räder. Lege Variablen für Fahrradzahl und Radzahl fest und beschreibe ihre Abhängigkeit in Worten und symbolisch.",
+            "taskDemandEn": "A bicycle station contains varying numbers of bicycles, and each bicycle has two wheels. Define variables for the number of bicycles and wheels and describe their relationship verbally and symbolically.",
+            "expectedPerformanceDe": "Die lernende Person legt etwa b als Fahrradzahl und r als Radzahl fest, erklärt beide Bedeutungen und formuliert konsistent, dass die Radzahl doppelt so groß wie die Fahrradzahl ist, beispielsweise r = 2b. Sie erläutert, dass jede Änderung von b die zugehörige Änderung von r bestimmt.",
+            "expectedPerformanceEn": "The learner defines, for example, b as the number of bicycles and r as the number of wheels, explains both meanings, and consistently states that the number of wheels is twice the number of bicycles, for example r = 2b. The learner explains that each change in b determines the corresponding change in r.",
+            "understandingFocusDe": "Der Fall prüft eindeutige Variablenbindung und die Koordination einer einfachen proportionalen Abhängigkeit zwischen Worten und Symbolen.",
+            "understandingFocusEn": "The case tests unambiguous variable binding and coordination of a simple proportional relationship between words and symbols."
+          },
+          {
+            "id": "age-difference",
+            "taskDemandDe": "Mira ist stets drei Jahre älter als Leo. Lege Variablen für beide Alter fest und drücke die Beziehung in Worten und symbolisch aus; erkläre, welche Größe durch die andere bestimmt wird.",
+            "taskDemandEn": "Mira is always three years older than Leo. Define variables for both ages and express the relationship verbally and symbolically; explain which quantity is determined by the other.",
+            "expectedPerformanceDe": "Die lernende Person definiert etwa l als Leos Alter und m als Miras Alter, formuliert m = l + 3 und liest die Gleichung kontextgerecht. Sie hält die Bedeutungen der Symbole stabil und erklärt, dass zu jedem Wert von l der um drei größere Wert von m gehört.",
+            "expectedPerformanceEn": "The learner defines, for example, l as Leo's age and m as Mira's age, formulates m = l + 3, and reads the equation in context. The learner keeps the meanings of the symbols stable and explains that each value of l corresponds to a value of m that is three greater.",
+            "understandingFocusDe": "Der Transfer wechselt von einer multiplikativen zu einer additiven Abhängigkeit und verlangt eine neue, kontextgebundene Variablenzuordnung.",
+            "understandingFocusEn": "The transfer changes from a multiplicative to an additive relationship and requires a new context-bound assignment of variables."
+          },
+          {
+            "id": "taxi-base-and-distance",
+            "taskDemandDe": "Eine Taxifahrt kostet 4 Euro Grundpreis und zusätzlich 2 Euro je gefahrenem Kilometer. Lege Variablen für Strecke und Gesamtkosten fest und beschreibe die Abhängigkeit sprachlich und symbolisch.",
+            "taskDemandEn": "A taxi ride costs a base fare of 4 euros plus 2 euros for each kilometre travelled. Define variables for distance and total cost and describe the relationship verbally and symbolically.",
+            "expectedPerformanceDe": "Die lernende Person definiert etwa d als Kilometerzahl und k als Kosten in Euro, formuliert k = 4 + 2d und erklärt den festen sowie den von d abhängigen Anteil. Sie übernimmt nicht die Struktur eines reinen Vielfachen, sondern passt die Aussage an den Grundpreis an.",
+            "expectedPerformanceEn": "The learner defines, for example, d as the distance in kilometres and k as the cost in euros, formulates k = 4 + 2d, and explains the fixed part and the part depending on d. The learner does not reuse a pure-multiple structure but adapts the statement to include the base fare.",
+            "understandingFocusDe": "Der unabhängige Fall prüft die Neubindung der Variablen und eine strukturell geänderte Abhängigkeit aus festem und veränderlichem Anteil.",
+            "understandingFocusEn": "The independent case tests rebinding the variables and a structurally changed relationship combining a fixed and a varying part."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Round-A-Evidenz als eine zusammenhängende Deutungskompetenz: Die Rolle einer Variablen folgt aus Aussage und Kontext, nicht aus dem Buchstaben, und wird als gesuchte Unbekannte, veränderliche Größe oder Parameter fachsprachlich begründet. Drei unabhängige Fälle wechseln Term, Gleichung und Formel sowie Informationsstatus und Rollenverteilung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected Round A evidence as one coherent interpretive competence: the role of a variable follows from the statement and context, not from the letter, and is justified using correct terminology as an unknown, varying quantity, or parameter. Three independent cases change among expression, equation, and formula and vary information status and role distribution. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "role-from-statement-and-context",
+            "essentialUnderstandingDe": "Ob ein Symbol eine Unbekannte, eine veränderliche Größe oder einen Parameter bezeichnet, ergibt sich aus der mathematischen Aussage und der Situation, nicht aus dem verwendeten Buchstaben oder seiner Position.",
+            "essentialUnderstandingEn": "Whether a symbol denotes an unknown, a varying quantity, or a parameter follows from the mathematical statement and situation, not from the letter used or its position.",
+            "observablePerformanceDe": "Die lernende Person ordnet Variablen in neuen Termen, Gleichungen und Formeln ihren Rollen zu und begründet jede Zuordnung durch das, was gegeben ist, gesucht wird, sich innerhalb eines Falls verändert oder einen ganzen Fall festlegt.",
+            "observablePerformanceEn": "The learner assigns roles to variables in new expressions, equations, and formulae and justifies each assignment by what is given, sought, varies within one case, or determines an entire case."
+          },
+          {
+            "id": "unknown-and-varying-quantity-distinction",
+            "essentialUnderstandingDe": "Eine Unbekannte steht in einer Gleichung für einen noch zu bestimmenden, im betrachteten Fall festen Wert; eine veränderliche Größe kann dagegen innerhalb einer Menge zulässiger Werte wechseln und dadurch den Wert eines Terms oder einer Formel verändern.",
+            "essentialUnderstandingEn": "In an equation, an unknown stands for a value that is fixed in the case under consideration but has yet to be determined; a varying quantity can instead range over a set of admissible values and thereby change the value of an expression or formula.",
+            "observablePerformanceDe": "Die lernende Person erklärt an einem Gleichungs- und einem Term- oder Formelkontext, warum ein Symbol im ersten Fall gesucht und fest, im zweiten Fall aber veränderlich ist, und verwendet das Symbol entsprechend.",
+            "observablePerformanceEn": "Using an equation context and an expression or formula context, the learner explains why a symbol is sought and fixed in the first case but varying in the second, and uses the symbol accordingly."
+          },
+          {
+            "id": "parameter-controls-a-family",
+            "essentialUnderstandingDe": "Ein Parameter wird für einen einzelnen Fall als fest behandelt, kann aber zwischen Fällen unterschiedliche Werte annehmen und dadurch eine ganze Situation oder Familie verwandter Terme, Gleichungen oder Formeln bestimmen.",
+            "essentialUnderstandingEn": "A parameter is treated as fixed within one case but can take different values between cases and thereby determine an entire situation or family of related expressions, equations, or formulae.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einer einfachen Formel den Parameter und die veränderlichen Größen, erklärt die Wirkung einer Parameteränderung auf die entstehende Familie und grenzt diese Rolle von einer zu lösenden Unbekannten ab.",
+            "observablePerformanceEn": "In a simple formula, the learner identifies the parameter and varying quantities, explains how changing the parameter affects the resulting family, and distinguishes that role from an unknown to be solved for."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "role-from-statement-and-context",
+            "unknown-and-varying-quantity-distinction",
+            "parameter-controls-a-family"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "mathematical-object",
+            "textDe": "Term gegenüber Gleichung und Formel",
+            "textEn": "Expression versus equation and formula"
+          },
+          {
+            "id": "information-status",
+            "textDe": "Gesuchter fester Wert gegenüber innerhalb eines Falls veränderlicher Größe und zwischen Fällen veränderlichem Parameter",
+            "textEn": "A fixed value being sought versus a quantity varying within one case and a parameter varying between cases"
+          },
+          {
+            "id": "same-symbol-new-role",
+            "textDe": "Derselbe Buchstabe in zwei Aussagen mit unterschiedlichen Rollen",
+            "textEn": "The same letter in two statements with different roles"
+          },
+          {
+            "id": "single-and-multiple-roles",
+            "textDe": "Eine einzelne Variable gegenüber mehreren Symbolen mit gleichzeitig verschiedenen Rollen",
+            "textEn": "One variable versus several symbols with different roles at the same time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unknown-in-equation",
+            "taskDemandDe": "In der Gleichung 4x + 3 = 27 beschreibt x die Anzahl gleich großer Pakete in einer Lieferung. Erkläre die Rolle von x und wodurch sie sich von einer frei veränderlichen Größe unterscheidet.",
+            "taskDemandEn": "In the equation 4x + 3 = 27, x represents the number of equal-sized packages in a delivery. Explain the role of x and how it differs from a freely varying quantity.",
+            "expectedPerformanceDe": "Die lernende Person bezeichnet x als Unbekannte, weil die Situation genau einen noch zu bestimmenden Paketwert verlangt, und erklärt, dass x nach Festlegung der Gleichung nicht beliebig variiert. Die Begründung stützt sich auf die gesuchte Größe und nicht auf den Buchstaben x.",
+            "expectedPerformanceEn": "The learner identifies x as an unknown because the situation requires one package value that has yet to be determined and explains that x does not vary arbitrarily once the equation is fixed. The justification relies on the quantity being sought, not on the letter x.",
+            "understandingFocusDe": "Der Fall prüft die fachsprachlich begründete Rolle einer Unbekannten in einer Gleichung.",
+            "understandingFocusEn": "The case tests a correctly justified role of an unknown in an equation."
+          },
+          {
+            "id": "varying-side-length-in-formula",
+            "taskDemandDe": "Die Formel U = 4s gibt den Umfang eines Quadrats für verschiedene Seitenlängen s an. Ordne U und s Rollen zu und erkläre, warum s hier keine zu lösende Unbekannte ist.",
+            "taskDemandEn": "The formula U = 4s gives the perimeter of a square for different side lengths s. Assign roles to U and s and explain why s is not an unknown to be solved for here.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt s als veränderliche Seitenlänge und U als davon abhängige veränderliche Umfangsgröße. Sie erklärt, dass verschiedene zulässige s-Werte eingesetzt werden können und die Formel jeweils den zugehörigen U-Wert liefert.",
+            "expectedPerformanceEn": "The learner describes s as a varying side length and U as the varying perimeter quantity that depends on it. The learner explains that different admissible values of s can be used and that the formula yields the corresponding value of U each time.",
+            "understandingFocusDe": "Der Transfer wechselt von einer gesuchten Unbekannten zu zwei durch eine Formel verbundenen veränderlichen Größen.",
+            "understandingFocusEn": "The transfer changes from an unknown being sought to two varying quantities connected by a formula."
+          },
+          {
+            "id": "unit-price-parameter-and-role-change",
+            "taskDemandDe": "In K = p · n ist n die gekaufte Stückzahl und p der für eine Preisliste festgelegte Stückpreis. Erkläre die Rollen von n, K und p und vergleiche sie mit der Gleichung p · 6 = 24, in der p gesucht ist.",
+            "taskDemandEn": "In K = p · n, n is the number of items purchased and p is the unit price fixed for one price list. Explain the roles of n, K, and p and compare them with the equation p · 6 = 24, in which p is being sought.",
+            "expectedPerformanceDe": "Die lernende Person deutet in der Formel n und K als veränderliche Größen und p als Parameter, der innerhalb einer Preisliste fest ist, aber zwischen Preislisten wechseln kann. In der zweiten Aussage ordnet sie demselben Buchstaben p die Rolle einer Unbekannten zu, weil sein fester Wert aus der Gleichung bestimmt werden soll.",
+            "expectedPerformanceEn": "In the formula, the learner interprets n and K as varying quantities and p as a parameter that is fixed within one price list but can change between price lists. In the second statement, the learner assigns the same letter p the role of an unknown because its fixed value is to be determined from the equation.",
+            "understandingFocusDe": "Der unabhängige Fall prüft Parameterbedeutung, mehrere gleichzeitige Rollen und die Neuordnung desselben Symbols aus dem Kontext.",
+            "understandingFocusEn": "The independent case tests parameter meaning, several simultaneous roles, and reclassification of the same symbol from context."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Round-A-Evidenz: Äquivalenz bedeutet gleiche Termwerte für alle zulässigen Variablenwerte, jeder Schritt wird durch ein Rechengesetz getragen, und einzelne Zahlenproben ersetzen keine allgemeine Begründung. Drei unabhängige Fälle variieren Ausmultiplizieren, Zusammenfassen, Ausklammern sowie Klammer- und Vorzeichenstruktur. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected Round A evidence: equivalence means equal expression values for every admissible variable value, every step is supported by an arithmetic law, and isolated numerical checks do not replace a general justification. Three independent cases vary expansion, collecting terms, factoring, and grouping and sign structure. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "equivalence-as-value-invariant",
+            "essentialUnderstandingDe": "Zwei Terme sind äquivalent, wenn sie für jeden zulässigen Wert ihrer Variablen denselben Termwert besitzen. Eine Umformung darf deshalb die durch den Term beschriebene Rechenfunktion nicht verändern.",
+            "essentialUnderstandingEn": "Two expressions are equivalent when they have the same value for every admissible value of their variables. A transformation must therefore not change the computation represented by the expression.",
+            "observablePerformanceDe": "Die lernende Person benennt bei einem neuen Umformungsproblem die zu erhaltende Gleichheit der Termwerte und erläutert am Ausgangs- und Zielterm, warum der gewählte Weg diese Gleichheit allgemein wahrt.",
+            "observablePerformanceEn": "For a fresh transformation problem, the learner identifies the equality of expression values that must be preserved and explains from the original and final expressions why the chosen route preserves it in general."
+          },
+          {
+            "id": "law-justified-transformations",
+            "essentialUnderstandingDe": "Kommutativ-, Assoziativ- und Distributivgesetz sowie das Zusammenfassen gleichartiger Termteile erlauben bestimmte Umformungen; die jeweilige Struktur des Terms entscheidet, welches Gesetz anwendbar ist.",
+            "essentialUnderstandingEn": "The commutative, associative, and distributive laws, together with collecting like terms, permit particular transformations; the structure of the expression determines which law is applicable.",
+            "observablePerformanceDe": "Die lernende Person formt einen Term mit rationalen Zahlen und Variablen selbstständig um, macht Zwischenschritte sichtbar und benennt oder erläutert für jeden wesentlichen Schritt das passende Rechengesetz, ohne an eine einzige Lösungsroute gebunden zu sein.",
+            "observablePerformanceEn": "The learner independently transforms an expression involving rational numbers and variables, shows intermediate steps, and names or explains the appropriate arithmetic law for each substantial step without being restricted to one solution route."
+          },
+          {
+            "id": "general-justification-beyond-sampling",
+            "essentialUnderstandingDe": "Übereinstimmung bei einzelnen eingesetzten Zahlen kann eine Umformung prüfen oder einen Fehler aufdecken, belegt aber nicht die Gleichheit für alle zulässigen Werte; diese allgemeine Aussage folgt aus gültigen Rechengesetzen.",
+            "essentialUnderstandingEn": "Agreement for individual substituted numbers can check a transformation or expose an error, but it does not establish equality for every admissible value; that general statement follows from valid arithmetic laws.",
+            "observablePerformanceDe": "Die lernende Person begründet die Äquivalenz durch eine gültige Gesetzeskette und unterscheidet diese allgemeine Begründung ausdrücklich von einer ergänzenden Zahlenprobe.",
+            "observablePerformanceEn": "The learner justifies equivalence through a valid chain of laws and explicitly distinguishes this general justification from an optional numerical check."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "equivalence-as-value-invariant",
+            "law-justified-transformations",
+            "general-justification-beyond-sampling"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "transformation-direction",
+            "textDe": "Ausmultiplizieren gegenüber Zusammenfassen und Ausklammern",
+            "textEn": "Expanding versus collecting terms and factoring"
+          },
+          {
+            "id": "sign-and-grouping-structure",
+            "textDe": "Positive Klammer gegenüber Minusklammer sowie einfacher gegenüber verschachtelter Summenstruktur",
+            "textEn": "A positive bracket versus a bracket preceded by a minus sign and a simple versus nested sum structure"
+          },
+          {
+            "id": "coefficient-type",
+            "textDe": "Ganzzahlige gegenüber gebrochenen oder negativen rationalen Koeffizienten",
+            "textEn": "Integer versus fractional or negative rational coefficients"
+          },
+          {
+            "id": "task-direction",
+            "textDe": "Freies Herstellen einer äquivalenten Form gegenüber begründeter Prüfung einer vorgegebenen Zielform",
+            "textEn": "Constructing an equivalent form freely versus justifiably checking a proposed target form"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expand-and-collect",
+            "taskDemandDe": "Forme 3(x + 4) - 2x in einen äquivalenten möglichst einfachen Term um. Begründe die wesentlichen Schritte durch Rechengesetze und erläutere, was Äquivalenz hier bedeutet.",
+            "taskDemandEn": "Transform 3(x + 4) - 2x into an equivalent expression that is as simple as possible. Justify the substantial steps using arithmetic laws and explain what equivalence means here.",
+            "expectedPerformanceDe": "Die lernende Person verwendet das Distributivgesetz zu 3x + 12 - 2x und fasst gleichartige Termteile zu x + 12 zusammen. Sie erklärt, dass jeder Schritt den Termwert für alle zulässigen x erhält, und stützt die allgemeine Begründung nicht nur auf eingesetzte Beispiele.",
+            "expectedPerformanceEn": "The learner uses the distributive law to obtain 3x + 12 - 2x and collects like terms to obtain x + 12. The learner explains that each step preserves the value for every admissible x and does not base the general justification only on substituted examples.",
+            "understandingFocusDe": "Der Fall prüft die Äquivalenzinvariante und eine nachvollziehbare Gesetzeskette beim Ausmultiplizieren und Zusammenfassen.",
+            "understandingFocusEn": "The case tests the equivalence invariant and a transparent chain of laws when expanding and collecting terms."
+          },
+          {
+            "id": "minus-bracket-and-rational-coefficients",
+            "taskDemandDe": "Forme -2(x - 3) + 5x äquivalent um und begründe insbesondere den Umgang mit dem Minuszeichen vor der Klammer. Führe anschließend höchstens eine Zahlenprobe als Kontrolle aus und ordne ihren Beweiswert ein.",
+            "taskDemandEn": "Transform -2(x - 3) + 5x equivalently and justify in particular how the minus sign before the bracket is handled. Then perform at most one numerical check and explain its evidential status.",
+            "expectedPerformanceDe": "Die lernende Person verteilt -2 auf beide Klammerterme, erhält -2x + 6 + 5x und fasst zu 3x + 6 zusammen. Sie begründet die Vorzeichen mit dem Distributivgesetz und erklärt, dass eine übereinstimmende Probe nur kontrolliert, während die Gesetzeskette die allgemeine Äquivalenz trägt.",
+            "expectedPerformanceEn": "The learner distributes -2 across both terms in the bracket, obtains -2x + 6 + 5x, and collects this to 3x + 6. The learner justifies the signs using the distributive law and explains that an agreeing numerical check only provides a check, whereas the chain of laws supports general equivalence.",
+            "understandingFocusDe": "Der Transfer verändert Klammer- und Vorzeichenstruktur und trennt positive Kontrollhandlung von allgemeiner Begründung.",
+            "understandingFocusEn": "The transfer changes grouping and sign structure and distinguishes a positive checking action from a general justification."
+          },
+          {
+            "id": "factor-rational-like-terms",
+            "taskDemandDe": "Stelle für (3/4)x - (1/2)x eine äquivalente ausgeklammerte oder zusammengefasste Form her und begründe ohne bloßes Probieren, warum sie für alle rationalen x denselben Wert hat.",
+            "taskDemandEn": "Produce an equivalent factored or collected form of (3/4)x - (1/2)x and justify without mere trial why it has the same value for every rational x.",
+            "expectedPerformanceDe": "Die lernende Person erkennt x als gemeinsamen Faktor und berechnet 3/4 - 1/2 = 1/4, sodass (1/4)x entsteht. Sie kann dies als Ausklammern von x oder als Zusammenfassen gleichartiger Termteile erklären und begründet die Gleichheit durch Distributivgesetz und rationale Koeffizientenrechnung.",
+            "expectedPerformanceEn": "The learner recognizes x as a common factor and calculates 3/4 - 1/2 = 1/4, obtaining (1/4)x. The learner can explain this as factoring out x or collecting like terms and justifies equality using the distributive law and arithmetic with rational coefficients.",
+            "understandingFocusDe": "Der unabhängige Fall wechselt Umformungsrichtung und Koeffiziententyp, lässt aber mehrere mathematisch gleichwertige Begründungswege zu.",
+            "understandingFocusEn": "The independent case changes the transformation direction and coefficient type while allowing several mathematically equivalent routes of justification."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+      "reason": "DE: Das Profil operationalisiert die in der Synthese ausgewählte Round-B-Evidenz: Rechenzeichen und Klammern legen die hierarchische Struktur eines Terms fest, die lernende Person liest ihn eindeutig in Worten und deutet seine Bestandteile im Kontext. Drei unabhängige Fälle variieren Klammerung, Operationshierarchie, symbolischen Vergleich und Sachbezug, ohne eine Leseschablone vorzugeben. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the Round B evidence selected by the synthesis: operation signs and parentheses determine the hierarchical structure of an expression, and the learner reads it unambiguously in words and interprets its components in context. Three independent cases vary grouping, operational hierarchy, symbolic comparison, and real-world setting without supplying a reading template. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "hierarchical-expression-structure",
+            "essentialUnderstandingDe": "Ein Term ist hierarchisch aufgebaut: Zahlen, Variablen, Rechenzeichen und Klammern bilden Teilterme, und ihre Anordnung legt fest, welche Operationen zuerst und welche auf den bereits gebildeten Teiltermen ausgeführt werden.",
+            "essentialUnderstandingEn": "An expression has a hierarchical structure: numbers, variables, operation signs, and parentheses form subexpressions, and their arrangement determines which operations occur first and which operate on the subexpressions already formed.",
+            "observablePerformanceDe": "Die lernende Person gliedert einen unbekannten Variablenterm selbstständig in Teilterme, benennt Variablen, Zahlen und Operationen und stellt die Rechenhierarchie eindeutig dar.",
+            "observablePerformanceEn": "The learner independently decomposes an unfamiliar variable expression into subexpressions, identifies variables, numbers, and operations, and represents the operational hierarchy unambiguously."
+          },
+          {
+            "id": "unambiguous-verbal-reading",
+            "essentialUnderstandingDe": "Eine eindeutige sprachliche Lesart muss die symbolische Struktur erhalten; insbesondere unterscheiden Formulierungen wie die Summe mal einen Faktor, ein Summand plus ein Vielfaches und eine Differenz unter einer Klammer verschiedene Terme.",
+            "essentialUnderstandingEn": "An unambiguous verbal reading must preserve the symbolic structure; in particular, phrases such as a sum multiplied by a factor, one addend plus a multiple, and a difference within parentheses describe different expressions.",
+            "observablePerformanceDe": "Die lernende Person liest einen vorgelegten Term ohne Schablone so in Worten, dass Klammerung und Operationsreihenfolge eindeutig werden, und kann zwei ähnlich aussehende Terme anhand dieser Lesarten unterscheiden.",
+            "observablePerformanceEn": "Without a supplied template, the learner reads a presented expression in words so that grouping and order of operations are unambiguous and can distinguish two visually similar expressions from those readings."
+          },
+          {
+            "id": "contextual-meaning-of-components",
+            "essentialUnderstandingDe": "In einem einfachen Kontext stehen nicht nur die Variablen, sondern auch Zahlen, Teilterme und Rechenoperationen für bestimmte Größen oder Beziehungen; die Bedeutung des ganzen Terms folgt aus deren strukturierter Verknüpfung.",
+            "essentialUnderstandingEn": "In a simple context, not only the variables but also numbers, subexpressions, and operations represent particular quantities or relationships; the meaning of the whole expression follows from how they are structured together.",
+            "observablePerformanceDe": "Die lernende Person erklärt bei einem gegebenen Kontext, wofür jeder wesentliche Bestandteil und jede Operation eines vorgelegten Terms steht und wie daraus die Bedeutung des gesamten Terms entsteht.",
+            "observablePerformanceEn": "For a given context, the learner explains what each substantial component and operation of a presented expression represents and how these produce the meaning of the whole expression."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "hierarchical-expression-structure",
+            "unambiguous-verbal-reading",
+            "contextual-meaning-of-components"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "grouping-change",
+            "textDe": "Summe außerhalb einer Multiplikation gegenüber geklammerter Summe innerhalb einer Multiplikation",
+            "textEn": "A sum outside a multiplication versus a parenthesized sum inside a multiplication"
+          },
+          {
+            "id": "operation-hierarchy",
+            "textDe": "Einstufiger gegenüber mehrstufigem Term sowie Addition gegenüber Subtraktion unter einer Klammer",
+            "textEn": "A one-stage versus multistage expression and addition versus subtraction within parentheses"
+          },
+          {
+            "id": "interpretation-mode",
+            "textDe": "Rein strukturelles Lesen gegenüber Deutung in einem gegebenen einfachen Sachkontext",
+            "textEn": "Purely structural reading versus interpretation in a given simple real-world context"
+          },
+          {
+            "id": "similar-symbolic-forms",
+            "textDe": "Ähnlich aussehende Terme, deren veränderte Anordnung oder Klammerung zu unterschiedlicher Bedeutung führt",
+            "textEn": "Visually similar expressions whose changed arrangement or grouping produces different meanings"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "read-base-plus-multiple",
+            "taskDemandDe": "Gliedere den Term 7 + 3x in seine Bestandteile und Teilterme, lies ihn eindeutig in Worten und erkläre die Rechenstruktur, ohne ihn auszurechnen.",
+            "taskDemandEn": "Decompose the expression 7 + 3x into its components and subexpressions, read it unambiguously in words, and explain its operational structure without evaluating it.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert x als Variable, 3 als Faktor von x, 3x als Produktterm und 7 als weiteren Summanden. Sie liest den Term etwa als sieben plus das Dreifache von x und erklärt, dass zuerst das Produkt 3x gebildet und danach 7 addiert wird.",
+            "expectedPerformanceEn": "The learner identifies x as the variable, 3 as a factor of x, 3x as a product subexpression, and 7 as another addend. The learner reads the expression as, for example, seven plus three times x and explains that the product 3x is formed before 7 is added.",
+            "understandingFocusDe": "Der Fall prüft Bestandteile, Teilterme, eindeutige sprachliche Lesart und hierarchische Rechenstruktur.",
+            "understandingFocusEn": "The case tests components, subexpressions, unambiguous verbal reading, and hierarchical operational structure."
+          },
+          {
+            "id": "compare-grouped-and-ungrouped",
+            "taskDemandDe": "Vergleiche die Terme 4(2 + y) und 4 · 2 + y. Lies beide eindeutig in Worten und beschreibe, wie die Klammer die jeweilige Rechenstruktur verändert.",
+            "taskDemandEn": "Compare the expressions 4(2 + y) and 4 · 2 + y. Read both unambiguously in words and describe how the parentheses change their operational structures.",
+            "expectedPerformanceDe": "Die lernende Person liest den ersten Term als das Vierfache der Summe aus 2 und y und den zweiten als acht plus y. Sie erklärt, dass beim ersten Term die gesamte Summe mit 4 multipliziert wird, während beim zweiten nur 2 mit 4 multipliziert wird und y außerhalb dieses Produkts bleibt.",
+            "expectedPerformanceEn": "The learner reads the first expression as four times the sum of 2 and y and the second as eight plus y. The learner explains that the entire sum is multiplied by 4 in the first expression, whereas only 2 is multiplied by 4 in the second and y remains outside that product.",
+            "understandingFocusDe": "Der Transfer verändert die Klammerung und prüft, ob die lernende Person daraus eine andere Hierarchie und Bedeutung erschließt statt nach äußerer Ähnlichkeit zu lesen.",
+            "understandingFocusEn": "The transfer changes the grouping and tests whether the learner derives a different hierarchy and meaning rather than reading by visual similarity."
+          },
+          {
+            "id": "interpret-rental-expression",
+            "taskDemandDe": "Für einen Fahrradverleih ist der Term 12 + 2,5h gegeben, wobei h die Ausleihdauer in Stunden bezeichnet. Erkläre die Bedeutung jedes Bestandteils und der gesamten Rechenstruktur im Kontext.",
+            "taskDemandEn": "For a bicycle rental, the expression 12 + 2.5h is given, where h denotes the rental duration in hours. Explain the meaning of each component and of the entire operational structure in context.",
+            "expectedPerformanceDe": "Die lernende Person deutet 12 als festen Betrag, 2,5 als Preis je Stunde, 2,5h als von der Dauer abhängigen Betrag und die Addition als Verbindung beider Kostenanteile. Sie erklärt den ganzen Term als Gesamtkosten für h Stunden, ohne die Darstellung nur vorzulesen.",
+            "expectedPerformanceEn": "The learner interprets 12 as a fixed amount, 2.5 as the price per hour, 2.5h as the amount depending on duration, and the addition as combining the two cost components. The learner explains the whole expression as the total cost for h hours rather than merely reciting the notation.",
+            "understandingFocusDe": "Der unabhängige Kontextfall prüft, ob Komponenten- und Operationsbedeutung zur Gesamtdeutung des Terms koordiniert werden.",
+            "understandingFocusEn": "The independent contextual case tests whether the meanings of components and operations are coordinated into an interpretation of the whole expression."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "reason": "DE: Das Profil operationalisiert die in der Synthese ausgewählte Round-B-Evidenz: Die Variable erhält eine klare Kontextbedeutung, jeder Termbestandteil und jede Operation bildet eine konkrete Größenbeziehung ab, und strukturelle Änderungen im Kontext führen zu angepassten Termen. Drei unabhängige Modellierungsfälle variieren festen und veränderlichen Anteil, zwei Variablen sowie die Multiplikation einer Summe. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the Round B evidence selected by the synthesis: the variable has a clear contextual meaning, every component and operation represents a concrete relationship between quantities, and structural changes in context lead to adapted expressions. Three independent modelling cases vary a fixed and a varying part, two variables, and multiplication of a sum. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "variables-represent-context-quantities",
+            "essentialUnderstandingDe": "Beim Übersetzen einer Sachsituation bezeichnet jede Variable eine eindeutig benannte veränderliche Größe; ihre Bedeutung und gegebenenfalls ihre Einheit bleiben in der gesamten Modellierung stabil.",
+            "essentialUnderstandingEn": "When translating a real-world situation, each variable denotes a clearly identified varying quantity; its meaning and, where applicable, its unit remain stable throughout the modelling process.",
+            "observablePerformanceDe": "Die lernende Person legt für eine neue einfache Sachsituation selbstständig geeignete Variablen fest, benennt ihre Kontextbedeutungen eindeutig und verwendet sie im aufgestellten Term konsistent.",
+            "observablePerformanceEn": "For a fresh simple real-world situation, the learner independently defines suitable variables, states their contextual meanings unambiguously, and uses them consistently in the constructed expression."
+          },
+          {
+            "id": "operations-encode-relationships",
+            "essentialUnderstandingDe": "Zahlen, Variablen, Teilterme und Rechenoperationen eines Modells stehen für konkrete Größen und Beziehungen der Sachsituation; Klammerung und Reihenfolge entscheiden, welche Größen zuerst zusammengefasst oder vervielfacht werden.",
+            "essentialUnderstandingEn": "Numbers, variables, subexpressions, and operations in a model represent concrete quantities and relationships in the real-world situation; grouping and order determine which quantities are first combined or multiplied.",
+            "observablePerformanceDe": "Die lernende Person stellt einen passenden Variablenterm auf und erklärt für jeden wesentlichen Bestandteil und jede Operation, welche Angabe oder Beziehung der Sachsituation dadurch abgebildet wird.",
+            "observablePerformanceEn": "The learner constructs a suitable variable expression and explains which fact or relationship in the real-world situation is represented by each substantial component and operation."
+          },
+          {
+            "id": "structural-change-adapts-expression",
+            "essentialUnderstandingDe": "Ein Term passt nur dann zur Sachsituation, wenn seine Struktur die dort geltenden Beziehungen wiedergibt. Ändert sich etwa ein fester Anteil, die Anzahl veränderlicher Größen oder die Reihenfolge einer Verknüpfung, muss sich auch die Termstruktur ändern.",
+            "essentialUnderstandingEn": "An expression fits a real-world situation only when its structure represents the relationships that hold there. If, for example, a fixed part, the number of varying quantities, or the order of a combination changes, the expression structure must change as well.",
+            "observablePerformanceDe": "Bei einer unabhängig vorgelegten strukturell veränderten Situation entwickelt die lernende Person einen entsprechend angepassten Term und begründet den Unterschied zum zuvor passenden Modell aus den veränderten Beziehungen.",
+            "observablePerformanceEn": "For an independently presented structurally changed situation, the learner develops a correspondingly adapted expression and justifies its difference from the previously suitable model through the changed relationships."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "variables-represent-context-quantities",
+            "operations-encode-relationships",
+            "structural-change-adapts-expression"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fixed-and-varying-parts",
+            "textDe": "Nur veränderlicher Anteil gegenüber Verbindung aus festem und veränderlichem Anteil",
+            "textEn": "A varying part only versus a combination of a fixed and a varying part"
+          },
+          {
+            "id": "number-of-variables",
+            "textDe": "Eine veränderliche Kontextgröße gegenüber zwei unabhängig benannten veränderlichen Größen",
+            "textEn": "One varying contextual quantity versus two independently identified varying quantities"
+          },
+          {
+            "id": "operation-order",
+            "textDe": "Summe aus Produkten gegenüber Multiplikation einer zuvor gebildeten Summe",
+            "textEn": "A sum of products versus multiplication of a sum formed first"
+          },
+          {
+            "id": "contextual-constraint",
+            "textDe": "Direkte Stückkosten gegenüber Paket-, Zeilen- oder Gruppenstruktur, die eine Klammer erfordert",
+            "textEn": "Direct per-item cost versus a package, row, or group structure that requires parentheses"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rental-fixed-plus-hourly",
+            "taskDemandDe": "Ein Verleih berechnet 6 Euro Grundgebühr und 2 Euro je Ausleihstunde. Lege eine Variable für die Stunden fest, stelle einen Term für die Gesamtkosten auf und erkläre jeden Bestandteil.",
+            "taskDemandEn": "A rental service charges a base fee of 6 euros plus 2 euros for each hour of rental. Define a variable for the hours, construct an expression for the total cost, and explain every component.",
+            "expectedPerformanceDe": "Die lernende Person definiert etwa h als Stundenzahl und stellt 6 + 2h auf. Sie deutet 6 als festen Grundbetrag, 2 als Euro je Stunde, 2h als variablen Kostenanteil und die Addition als Bildung der Gesamtkosten.",
+            "expectedPerformanceEn": "The learner defines, for example, h as the number of hours and constructs 6 + 2h. The learner interprets 6 as the fixed base amount, 2 as euros per hour, 2h as the varying cost component, and the addition as forming the total cost.",
+            "understandingFocusDe": "Der Fall prüft die vollständige Übersetzung eines festen und eines veränderlichen Kontextanteils in einen erklärten Variablenterm.",
+            "understandingFocusEn": "The case tests complete translation of a fixed and a varying contextual part into an explained variable expression."
+          },
+          {
+            "id": "rectangle-border-two-variables",
+            "taskDemandDe": "Ein rechteckiger Garten mit variabler Länge l und Breite b soll vollständig eingefasst werden. Stelle einen Term für die gesamte Randlänge auf und erkläre, wie jede Seite berücksichtigt wird.",
+            "taskDemandEn": "A rectangular garden with varying length l and width b is to be enclosed completely. Construct an expression for the total boundary length and explain how every side is represented.",
+            "expectedPerformanceDe": "Die lernende Person definiert l und b als Seitenlängen und stellt etwa 2l + 2b oder die äquivalente Form 2(l + b) auf. Sie erklärt die zwei Längs- und zwei Breitenseiten beziehungsweise die Verdopplung einer Länge-Breite-Summe; beide fachlich gleichwertigen Formen werden akzeptiert.",
+            "expectedPerformanceEn": "The learner defines l and b as side lengths and constructs, for example, 2l + 2b or the equivalent form 2(l + b). The learner explains the two length sides and two width sides or, equivalently, doubling one length-plus-width sum; both mathematically equivalent forms are accepted.",
+            "understandingFocusDe": "Der Transfer führt eine zweite Variable ein und prüft, ob die Operationen die tatsächliche geometrische Größenbeziehung statt ein gelerntes Oberflächenmuster abbilden.",
+            "understandingFocusEn": "The transfer introduces a second variable and tests whether the operations represent the actual geometric relationship rather than a memorized surface pattern."
+          },
+          {
+            "id": "boxes-with-extra-items",
+            "taskDemandDe": "In jeder von n gleich aufgebauten Kisten liegen m reguläre Gegenstände und zusätzlich 2 Proben. Stelle einen Term für die Gesamtzahl aller Gegenstände auf. Vergleiche ihn mit einer geänderten Situation, in der nur insgesamt 2 Proben hinzukommen.",
+            "taskDemandEn": "Each of n identically arranged boxes contains m regular items plus 2 samples. Construct an expression for the total number of items. Compare it with a changed situation in which only 2 samples are added in total.",
+            "expectedPerformanceDe": "Die lernende Person stellt für die erste Situation n(m + 2) auf und erklärt, dass die Summe in jeder Kiste vorkommt und deshalb als Ganzes mit n multipliziert wird. Für die geänderte Situation bildet sie nm + 2 und begründet, dass die 2 nun nur einmal außerhalb des n-fachen regulären Bestands hinzukommt.",
+            "expectedPerformanceEn": "For the first situation, the learner constructs n(m + 2) and explains that the sum occurs in every box and is therefore multiplied by n as a whole. For the changed situation, the learner constructs nm + 2 and explains that the 2 is now added only once outside the n-fold regular stock.",
+            "understandingFocusDe": "Der unabhängige Fall verändert die Operationsreihenfolge und prüft, ob eine strukturelle Kontextänderung zu einer begründet anderen Klammerung führt.",
+            "understandingFocusEn": "The independent case changes the order of operations and tests whether a structural change in context leads to a justifiably different grouping."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Round-A-Evidenz: Werte werden jeder Variablen konsistent an allen Vorkommen zugeordnet, Klammern, Vorzeichen und Rechenreihenfolge bleiben erhalten, und der nachvollziehbar berechnete Termwert gehört zur konkreten Belegung. Drei unabhängige Fälle variieren negative und gebrochene Werte, wiederholte Variablen, mehrere Variablen, Potenzen und verschachtelte Klammern. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected Round A evidence: values are assigned consistently to every occurrence of each variable, grouping, signs, and order of operations are preserved, and the transparently calculated expression value belongs to the concrete assignment. Three independent cases vary negative and fractional values, repeated variables, several variables, powers, and nested grouping. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "consistent-variable-assignment",
+            "essentialUnderstandingDe": "Eine Variablenbelegung ordnet jeder Variablen genau einen konkreten Wert zu, der an jedem Vorkommen derselben Variablen eingesetzt werden muss; verschiedene Variablen können unterschiedliche Werte erhalten.",
+            "essentialUnderstandingEn": "An assignment gives each variable exactly one concrete value that must be substituted at every occurrence of that variable; different variables can receive different values.",
+            "observablePerformanceDe": "Die lernende Person notiert die gegebene Belegung, ersetzt jedes Variablenvorkommen eindeutig und konsistent und hält bei mehreren Variablen deren verschiedene Zuordnungen auseinander.",
+            "observablePerformanceEn": "The learner records the given assignment, replaces every occurrence of each variable unambiguously and consistently, and keeps the different assignments distinct when several variables are present."
+          },
+          {
+            "id": "preserve-signs-grouping-and-order",
+            "essentialUnderstandingDe": "Nach dem Einsetzen bleibt die Rechenstruktur des Terms erhalten. Negative oder gebrochene Werte benötigen eine eindeutige Klammerung, und Vorzeichen, Potenzen sowie die Rechenreihenfolge bestimmen den entstehenden Zahlenwert.",
+            "essentialUnderstandingEn": "After substitution, the operational structure of the expression remains intact. Negative or fractional values require unambiguous parentheses, and signs, powers, and order of operations determine the resulting numerical value.",
+            "observablePerformanceDe": "Die lernende Person setzt insbesondere negative oder gebrochene Werte mit passenden Klammern ein und wertet den entstandenen Zahlenterm in einer nachvollziehbaren, strukturgerechten Reihenfolge aus.",
+            "observablePerformanceEn": "The learner substitutes negative or fractional values in particular using appropriate parentheses and evaluates the resulting numerical expression in a transparent order that respects its structure."
+          },
+          {
+            "id": "term-value-belongs-to-assignment",
+            "essentialUnderstandingDe": "Ein Termwert ist kein dauerhafter Wert des Variablenterms, sondern das Ergebnis für eine bestimmte Variablenbelegung; ändert sich die Belegung, kann sich der Termwert ändern.",
+            "essentialUnderstandingEn": "An expression value is not a permanent value of the variable expression but the result for a particular assignment of variables; if the assignment changes, the expression value can change.",
+            "observablePerformanceDe": "Die lernende Person dokumentiert Belegung, eingesetzten Zahlenterm, Rechenschritte und Ergebnis zusammen, ordnet das Ergebnis ausdrücklich dieser Belegung zu und kann bei geänderter Belegung den neuen Termwert getrennt bestimmen.",
+            "observablePerformanceEn": "The learner records the assignment, substituted numerical expression, calculation steps, and result together, explicitly relates the result to that assignment, and can determine a separate new value when the assignment changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "consistent-variable-assignment",
+            "preserve-signs-grouping-and-order",
+            "term-value-belongs-to-assignment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "value-type-and-sign",
+            "textDe": "Positive ganze Werte gegenüber negativen und gebrochenen rationalen Werten",
+            "textEn": "Positive integer values versus negative and fractional rational values"
+          },
+          {
+            "id": "variable-multiplicity",
+            "textDe": "Ein Vorkommen einer Variablen gegenüber wiederholten Vorkommen und mehreren verschieden belegten Variablen",
+            "textEn": "One occurrence of a variable versus repeated occurrences and several differently assigned variables"
+          },
+          {
+            "id": "expression-structure",
+            "textDe": "Lineare Summenstruktur gegenüber Potenz, Produkt und verschachtelter Klammer",
+            "textEn": "A linear sum structure versus a power, product, and nested grouping"
+          },
+          {
+            "id": "assignment-change",
+            "textDe": "Eine feste Belegung gegenüber einer zweiten unabhängig vorgelegten Belegung desselben Terms",
+            "textEn": "One fixed assignment versus a second independently presented assignment of the same expression"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-value-with-power",
+            "taskDemandDe": "Berechne den Wert von 2x² - 3x + 1 für x = -2. Notiere die Belegung, das Einsetzen und alle wesentlichen Rechenschritte so, dass Vorzeichen und Potenz eindeutig bleiben.",
+            "taskDemandEn": "Evaluate 2x² - 3x + 1 for x = -2. Record the assignment, substitution, and all substantial calculation steps so that signs and the power remain unambiguous.",
+            "expectedPerformanceDe": "Die lernende Person notiert 2(-2)² - 3(-2) + 1, setzt -2 an beiden x-Stellen konsistent und verwendet Klammern. Sie berechnet zuerst (-2)² = 4 und erhält 8 + 6 + 1 = 15, das sie als Termwert für die Belegung x = -2 kennzeichnet.",
+            "expectedPerformanceEn": "The learner writes 2(-2)² - 3(-2) + 1, substitutes -2 consistently at both occurrences of x, and uses parentheses. The learner first calculates (-2)² = 4 and obtains 8 + 6 + 1 = 15, identifying it as the expression value for the assignment x = -2.",
+            "understandingFocusDe": "Der Fall prüft konsistentes mehrfaches Einsetzen, Klammerung eines negativen Werts, Potenz-vor-Multiplikation und die Zuordnung des Ergebnisses zur Belegung.",
+            "understandingFocusEn": "The case tests consistent repeated substitution, grouping of a negative value, powers before multiplication, and relating the result to the assignment."
+          },
+          {
+            "id": "two-variables-with-fraction",
+            "taskDemandDe": "Berechne den Wert von 3a - 2b für a = -1/2 und b = 4. Halte die beiden Belegungen und die Vorzeichen in deiner Rechnung eindeutig auseinander.",
+            "taskDemandEn": "Evaluate 3a - 2b for a = -1/2 and b = 4. Keep the two assignments and the signs unambiguously distinct in your calculation.",
+            "expectedPerformanceDe": "Die lernende Person notiert 3(-1/2) - 2 · 4, ordnet jedem Symbol den richtigen Wert zu und erhält -3/2 - 8 = -19/2 beziehungsweise -9,5. Sie kennzeichnet das Ergebnis als Wert des Terms für a = -1/2 und b = 4.",
+            "expectedPerformanceEn": "The learner writes 3(-1/2) - 2 · 4, assigns the correct value to each symbol, and obtains -3/2 - 8 = -19/2 or -9.5. The learner identifies the result as the value of the expression for a = -1/2 and b = 4.",
+            "understandingFocusDe": "Der Transfer führt zwei verschieden belegte Variablen und einen negativen Bruch ein und prüft die strukturtreue Auswertung ohne Zuordnungsvertauschung.",
+            "understandingFocusEn": "The transfer introduces two differently assigned variables and a negative fraction and tests structure-preserving evaluation without swapping assignments."
+          },
+          {
+            "id": "nested-grouping-and-new-assignment",
+            "taskDemandDe": "Berechne 4 - (x - 2y) zuerst für x = -3 und y = 1,5 und danach unabhängig für x = 2 und y = -1. Dokumentiere beide Belegungen getrennt und erkläre, warum zwei verschiedene Termwerte entstehen können.",
+            "taskDemandEn": "Evaluate 4 - (x - 2y) first for x = -3 and y = 1.5 and then independently for x = 2 and y = -1. Record the two assignments separately and explain why two different expression values can result.",
+            "expectedPerformanceDe": "Für die erste Belegung notiert die lernende Person 4 - ((-3) - 2 · 1,5) und erhält 10; für die zweite notiert sie 4 - (2 - 2 · (-1)) und erhält 0. Sie wahrt die innere Klammer und alle Vorzeichen und ordnet jedes Ergebnis nur der jeweils verwendeten Belegung zu.",
+            "expectedPerformanceEn": "For the first assignment, the learner writes 4 - ((-3) - 2 · 1.5) and obtains 10; for the second, the learner writes 4 - (2 - 2 · (-1)) and obtains 0. The learner preserves the inner grouping and all signs and relates each result only to the assignment used.",
+            "understandingFocusDe": "Der unabhängige Fall kombiniert verschachtelte Klammern, mehrere Variablen, negative Werte und einen Belegungswechsel und macht die Belegungsabhängigkeit des Termwerts sichtbar.",
+            "understandingFocusEn": "The independent case combines nested grouping, several variables, negative values, and a changed assignment, making the assignment-dependence of the expression value visible."
+          }
+        ]
+      }
+    }
+  ]
+}
