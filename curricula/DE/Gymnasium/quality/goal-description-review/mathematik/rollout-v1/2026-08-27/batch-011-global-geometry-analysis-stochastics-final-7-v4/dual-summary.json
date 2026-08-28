@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:18a2303f63d007e9a495275f484820faed6764bd2aa9a684e60eed5c422f8678",
+  "reviewInputFingerprint": "sha256:0e1d921575ae26a5213099c1cf74005c9882381e40a8b9c214f2081e053c5e43",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-a",
+      "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-independent-a",
+      "runIds": [
+        "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-b",
+      "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-independent-b",
+      "runIds": [
+        "math-b011-final-v4-20260827-round-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-5.6-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+      "secondRecordId": "math-b011-final-v4-round-b-9d497a0c",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7b860649-373e-5523-9843-ec96b3537f1f",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:7b860649-373e-5523-9843-ec96b3537f1f",
+      "secondRecordId": "math-b011-final-v4-round-b-7b860649",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "secondRecordId": "math-b011-final-v4-round-b-bfc2bf06",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+      "secondRecordId": "math-b011-final-v4-round-b-57b11e9a",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+      "secondRecordId": "math-b011-final-v4-round-b-9bf67cce",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+      "secondRecordId": "math-b011-final-v4-round-b-8dc2c87a",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e8d810de-95ed-52d6-ab1f-0560398e35c0",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:e8d810de-95ed-52d6-ab1f-0560398e35c0",
+      "secondRecordId": "math-b011-final-v4-round-b-e8d810de",
+      "firstRunId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "secondRunId": "math-b011-final-v4-20260827-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

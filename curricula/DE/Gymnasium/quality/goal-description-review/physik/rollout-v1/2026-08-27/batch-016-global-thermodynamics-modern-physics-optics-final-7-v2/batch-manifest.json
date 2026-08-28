@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-016-global-thermodynamics-modern-physics-optics-final-7-v2.config.json",
+  "configDigest": "sha256:086eb4c7b7347d94294c5fe66fbbd661bb5faa8553276dd28cced9abba61cbd3",
+  "goalIds": [
+    "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+    "88d07c80-5d7d-5c70-b385-b22769381e44",
+    "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+    "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+    "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+    "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+    "5492f0e0-cbae-574e-a853-182616205ed3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 444,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:778888eadd2084334d8aedaff7a98813cd0808cbc0b3c9c2a9ff3e36d915b70c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8d828325ace57c44318f609aa6be090e697d937ac80f5b470f0ab518d927204f",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e6e33c27ed84402cf1cb25a3e6387cbda9fd842f275f0bb3fee9929693be4694",
+    "reviewInputFingerprint": "sha256:62766092128e056a20e7da1e29cf447a5b8ac05c1441a16d9551ff39c380a27e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-a",
+        "campaignDigest": "sha256:d2bb5dc878e98893241839da02231cc0014c74da6931e920a18935e8dad3fc99",
+        "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-independent-a",
+        "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a03ca848428304cca163545cf43db9cc6593043b850d2dea428d50b5c4001970"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b",
+        "campaignDigest": "sha256:7fef8ba2519af15f30431e719a27fe45a1740d4948347d7e850c47ac10c3b76e",
+        "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-independent-b",
+        "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1a7aa43c527638b03a8b337e6393bddf8b574b8cebf2482f248cd263a921365e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

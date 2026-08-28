@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e8d810de-95ed-52d6-ab1f-0560398e35c0`
 - Titel: Binomialkoeffizienten als Abkürzung verwenden
-- Beschreibung: Die lernende Person kann Binomialkoeffizienten als abkürzende Schreibweise für Kombinationen ohne Zurücklegen verwenden.
+- Beschreibung: Die lernende Person kann den Binomialkoeffizienten „n über k“ als abkürzende Schreibweise für die Anzahl ungeordneter Auswahlen von k aus n unterscheidbaren Elementen ohne Zurücklegen verwenden.
 
 ## Generator
 

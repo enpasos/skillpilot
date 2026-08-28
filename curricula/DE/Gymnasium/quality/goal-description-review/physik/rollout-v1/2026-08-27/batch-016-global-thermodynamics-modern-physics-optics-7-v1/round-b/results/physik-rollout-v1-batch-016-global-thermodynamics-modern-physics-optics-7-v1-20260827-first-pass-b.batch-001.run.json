@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+  "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b",
+  "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:9887699aac6b42faadbdab14c818c08e7d3837928aa9e53bca4342f5797fae4e",
+  "bundleFingerprint": "sha256:9f99026454695f352c5b2d1991e8646117d93fdad19baae1a9035e27b588ebc1",
+  "bookDigest": "sha256:6fb17501e1a688b5fc8d77d90c30c56df5fffe9ec1e3dee7ac8ddaa22d6b18b1",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:e95fb02bc77f235e62e00af0ca4d3e93db9a6a0880411fe76a056efbabe979be",
+  "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+    "88d07c80-5d7d-5c70-b385-b22769381e44",
+    "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+    "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+    "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+    "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+    "5492f0e0-cbae-574e-a853-182616205ed3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9887699aac6b42faadbdab14c818c08e7d3837928aa9e53bca4342f5797fae4e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-27T19:27:20.000Z",
+  "completedAt": "2026-08-27T19:30:28.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:b58381064f4c8e47205400b49b2a62f18410b838d3caa32813f00f5f6dba2503",
+  "toolchainVersion": "goal-description-review-v2"
+}

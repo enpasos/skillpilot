@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2a575acd1a9a37618cf8032170ff5537cdf5d437e37bc85bc358d81141f1d490",
+  "reviewInputFingerprint": "sha256:b70a464e3445a035b09abbb2a56989a89a4d02b654162a79bf8a4593f327363a",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-a",
+      "roundId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-independent-a",
+      "runIds": [
+        "physik-b015-20260827-round-a-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-b",
+      "roundId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-3-v1-20260827-independent-b",
+      "runIds": [
+        "physik-b015-20260827-round-b-gpt5"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "1911920e-b099-4310-82f2-b47f51a78b33",
+      "firstRecordId": "phys015-a-001-1911920e",
+      "secondRecordId": "physics015-b-001-1911920e",
+      "firstRunId": "physik-b015-20260827-round-a-gpt5",
+      "secondRunId": "physik-b015-20260827-round-b-gpt5",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca",
+      "firstRecordId": "phys015-a-002-ec5cac7b",
+      "secondRecordId": "physics015-b-002-ec5cac7b",
+      "firstRunId": "physik-b015-20260827-round-a-gpt5",
+      "secondRunId": "physik-b015-20260827-round-b-gpt5",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "50431e92-eec9-54d6-b437-ea7a51b6f474",
+      "firstRecordId": "phys015-a-003-50431e92",
+      "secondRecordId": "physics015-b-003-50431e92",
+      "firstRunId": "physik-b015-20260827-round-a-gpt5",
+      "secondRunId": "physik-b015-20260827-round-b-gpt5",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

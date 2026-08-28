@@ -1,0 +1,709 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b016-thermodynamics-modern-physics-optics-v1",
+  "reviewedAt": "2026-08-27T20:12:43.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-016-thermodynamics-modern-physics-optics-profile-author-candidate-2026-08-27",
+  "goals": [
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "reason": "DE: Das Profil macht die Herleitung der Erhaltung mechanischer Energie als zusammenhängenden physikalisch-mathematischen Beweis sichtbar: festgelegtes System konstanter Masse, zweites Newtonsches Axiom, Skalarprodukt mit der Geschwindigkeit, konservative Kraft, zeitunabhängiges Potenzial und Gültigkeitsgrenze. Drei unabhängige Fälle erzwingen Herleitung, Interpretation und Transfer auf eine verletzte Voraussetzung statt Formelwiedergabe. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile makes the derivation of mechanical-energy conservation visible as a coherent physical and mathematical proof: a defined constant-mass system, Newton's second law, scalar product with velocity, conservative force, time-independent potential, and validity boundary. Three independent cases require derivation, interpretation, and transfer to a violated condition rather than formula reproduction. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "newton-law-yields-kinetic-power-balance",
+            "essentialUnderstandingDe": "Für ein festgelegtes System konstanter Masse in einem Inertialsystem wird durch das Skalarprodukt von m·dv/dt = F mit v die Beziehung dE_kin/dt = F·v sichtbar. Der Schritt verbindet die vektorielle Bewegungsgleichung mit der skalaren Änderungsrate kinetischer Energie und setzt die konstante Masse ausdrücklich voraus.",
+            "essentialUnderstandingEn": "For a defined constant-mass system in an inertial frame, taking the scalar product of m·dv/dt = F with v yields dE_kin/dt = F·v. This step connects the vector equation of motion with the scalar rate of change of kinetic energy and explicitly requires constant mass.",
+            "observablePerformanceDe": "Die lernende Person legt in einer unabhängig vorgelegten Bewegung System, Bezugssystem und Geschwindigkeit fest, bildet das Skalarprodukt des zweiten Newtonschen Axioms mit v, führt m·v·dv/dt als Zeitableitung von E_kin aus und begründet Vektoroperation, Einheit und Voraussetzung konstanter Masse.",
+            "observablePerformanceEn": "For an independently presented motion, the learner defines the system, reference frame, and velocity, takes the scalar product of Newton's second law with v, rewrites m·v·dv/dt as the time derivative of E_kin, and justifies the vector operation, unit, and constant-mass condition."
+          },
+          {
+            "id": "conservative-potential-cancels-kinetic-change",
+            "essentialUnderstandingDe": "Für eine konservative Kraft F = −∇U mit nicht explizit zeitabhängigem Potenzial gilt entlang der Bewegung dU/dt = ∇U·v. Deshalb ist die Kraftleistung F·v = −dU/dt und die Summe E_kin + U besitzt die Änderungsrate null.",
+            "essentialUnderstandingEn": "For a conservative force F = −∇U with no explicit time dependence in the potential, dU/dt = ∇U·v along the motion. Therefore the force power F·v equals −dU/dt and the sum E_kin + U has zero rate of change.",
+            "observablePerformanceDe": "Die lernende Person führt für ein unbekanntes zeitunabhängiges Potenzial die Kettenregel entlang einer Bahn aus, verbindet sie mit F = −∇U, setzt beide Leistungsbeziehungen zu d(E_kin + U)/dt = 0 zusammen und interpretiert die Konstante als mechanische Energie des gewählten Systems.",
+            "observablePerformanceEn": "For an unfamiliar time-independent potential, the learner applies the chain rule along a path, connects it with F = −∇U, combines the two power relations into d(E_kin + U)/dt = 0, and interprets the constant as the mechanical energy of the chosen system."
+          },
+          {
+            "id": "conservation-claim-depends-on-explicit-conditions",
+            "essentialUnderstandingDe": "Die Schlussfolgerung gilt nur innerhalb der benannten Modellbedingungen: konstante Masse, Inertialsystem, ausschließlich konservative Kräfte im betrachteten mechanischen System und kein explizit zeitabhängiges Potenzial. Nichtkonservative Kräfte oder ein zeitabhängiges Potenzial führen zu einem Energieaustausch beziehungsweise Zusatzterm und nicht zu unveränderter mechanischer Energie.",
+            "essentialUnderstandingEn": "The conclusion holds only under the stated model conditions: constant mass, an inertial frame, exclusively conservative forces in the mechanical system under consideration, and no explicit time dependence of the potential. Non-conservative forces or a time-dependent potential introduce energy transfer or an additional term rather than unchanged mechanical energy.",
+            "observablePerformanceDe": "Die lernende Person prüft bei einem neuen Kraftmodell jede Herleitungsvoraussetzung, lokalisiert bei Reibung oder U(x,t) den nicht mehr gültigen Schritt und formuliert aus der gegebenen Kraft oder Zeitabhängigkeit die Richtung beziehungsweise den Term der mechanischen Energieänderung.",
+            "observablePerformanceEn": "For a fresh force model, the learner checks every premise of the derivation, locates the step that fails when friction or U(x,t) is present, and uses the supplied force or time dependence to state the direction or term of the mechanical-energy change."
+          },
+          {
+            "id": "derived-conservation-supports-bounded-prediction",
+            "essentialUnderstandingDe": "Die hergeleitete Konstante erlaubt innerhalb ihres Gültigkeitsbereichs physikalische Vorhersagen über zugängliche Orte, Geschwindigkeiten und Umkehrpunkte. Eine solche Vorhersage muss zur Potenzialreferenz, zu E_kin ≥ 0, zu Einheiten und zu Grenzfällen passen; sie ist keine allgemeine Aussage für beliebige äußere Einwirkung.",
+            "essentialUnderstandingEn": "Within its domain of validity, the derived constant supports physical predictions about accessible positions, speeds, and turning points. Such a prediction must be consistent with the potential reference, E_kin ≥ 0, units, and limiting cases; it is not a general statement for arbitrary external action.",
+            "observablePerformanceDe": "Aus einem frischen Potenzialverlauf und einer Anfangsbedingung bestimmt die lernende Person qualitativ oder quantitativ zugängliche Bereiche und einen Umkehrpunkt, prüft die Energiebilanz auf Einheiten und Plausibilität und benennt, welche Änderung der Modellbedingungen diese Vorhersage ungültig machen würde.",
+            "observablePerformanceEn": "From a fresh potential curve and initial condition, the learner determines qualitatively or quantitatively the accessible region and a turning point, checks the energy balance for units and plausibility, and states which change in model conditions would invalidate the prediction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "newton-law-yields-kinetic-power-balance",
+            "conservative-potential-cancels-kinetic-change",
+            "conservation-claim-depends-on-explicit-conditions",
+            "derived-conservation-supports-bounded-prediction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "potential-and-force-geometry",
+            "textDe": "Eindimensionales U(x), zweidimensionales U(x,y), lineare Gewichtskraft oder nichtlineare konservative Kraft",
+            "textEn": "One-dimensional U(x), two-dimensional U(x,y), uniform gravitational force, or nonlinear conservative force"
+          },
+          {
+            "id": "validity-condition",
+            "textDe": "Nur konservative Kräfte, zusätzliche Reibung, explizit zeitabhängiges Potenzial oder veränderliche Systemmasse als zu prüfende Modellgrenze",
+            "textEn": "Conservative forces only, added friction, explicitly time-dependent potential, or changing system mass as a model boundary to be checked"
+          },
+          {
+            "id": "representation-chain",
+            "textDe": "Vektorielles Kraftfeld, Bewegungsgleichung, Potenzialkurve, Bahn oder Energie-Zeit-Darstellung",
+            "textEn": "Vector force field, equation of motion, potential curve, trajectory, or energy-time representation"
+          },
+          {
+            "id": "independent-demand",
+            "textDe": "Herleitung, Voraussetzungenprüfung, Fehlerdiagnose oder begrenzte Vorhersage aus der hergeleiteten Erhaltung",
+            "textEn": "Derivation, audit of assumptions, diagnosis of a failed step, or bounded prediction from the derived conservation law"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "particle-in-supplied-one-dimensional-potential",
+            "taskDemandDe": "Ein Teilchen konstanter Masse bewegt sich in einem bereitgestellten glatten, zeitunabhängigen Potenzial U(x). Leite aus m·dv/dt = −dU/dx die Erhaltung von E_kin + U her, markiere für eine gegebene Anfangsenergie die zugänglichen Bereiche und bestimme einen Umkehrpunkt aus dem Potenzial statt aus einer auswendig gelernten Spezialformel.",
+            "taskDemandEn": "A constant-mass particle moves in a supplied smooth, time-independent potential U(x). Derive conservation of E_kin + U from m·dv/dt = −dU/dx, mark the accessible regions for a given initial energy, and determine a turning point from the potential rather than from a memorized special-case formula.",
+            "expectedPerformanceDe": "Die lernende Person führt Skalarprodukt beziehungsweise eindimensionale Multiplikation und Kettenregel vollständig aus, erhält d(E_kin + U)/dt = 0, nennt konstante Masse, konservative Kraft und Zeitunabhängigkeit und nutzt E_kin ≥ 0 für die markierten Bereiche und den Umkehrpunkt.",
+            "expectedPerformanceEn": "The learner carries out the scalar-product or one-dimensional multiplication and chain rule completely, obtains d(E_kin + U)/dt = 0, states constant mass, conservative force, and time independence, and uses E_kin ≥ 0 to identify the regions and turning point.",
+            "understandingFocusDe": "Der Fall verbindet die allgemeine Herleitung mit der physikalischen Bedeutung der Energiefläche, ohne auf ein bekanntes Standardproblem beschränkt zu bleiben.",
+            "understandingFocusEn": "The case connects the general derivation with the physical meaning of the energy landscape without restricting it to a familiar standard problem."
+          },
+          {
+            "id": "two-dimensional-conservative-field-path",
+            "taskDemandDe": "Für ein vorgegebenes zweidimensionales Potenzial U(x,y) und eine Bahn v(t) ist F = −∇U angegeben. Stelle die Leistungsbilanz vektoriell auf, zeige die Wegunabhängigkeit der mechanischen Energieänderung zwischen zwei markierten Punkten und prüfe die Aussage an einem Grenzfall mit v = 0.",
+            "taskDemandEn": "For a supplied two-dimensional potential U(x,y) and a path v(t), F = −∇U is given. Set up the power balance in vector form, show the path independence of the mechanical-energy change between two marked points, and check the statement in a limiting case with v = 0.",
+            "expectedPerformanceDe": "Die lernende Person nutzt ∇U·v als totale Zeitableitung entlang der Bahn, kombiniert sie mit F·v, erhält eine konstante Summe und erklärt, dass v = 0 momentane Nullleistung bedeutet, ohne daraus allgemein verschwindende Kraft oder konstantes Potenzial zu folgern.",
+            "expectedPerformanceEn": "The learner uses ∇U·v as the total time derivative along the path, combines it with F·v, obtains a constant sum, and explains that v = 0 means zero instantaneous power without inferring zero force or a constant potential in general.",
+            "understandingFocusDe": "Die neue Geometrie prüft, ob Gradient, Skalarprodukt und Energiebeziehung verstanden und nicht nur in einer Raumrichtung reproduziert werden.",
+            "understandingFocusEn": "The changed geometry tests whether gradient, scalar product, and the energy relation are understood rather than reproduced only in one dimension."
+          },
+          {
+            "id": "damped-motion-breaks-mechanical-conservation",
+            "taskDemandDe": "Ein unabhängiger Modellfall ergänzt zur konservativen Kraft −∇U eine lineare Reibungskraft −b·v. Untersuche die ursprüngliche Herleitung, bestimme d(E_kin + U)/dt und erkläre für b > 0 die Richtung des Energieaustauschs und die Systemgrenze.",
+            "taskDemandEn": "An independent model case adds a linear drag force −b·v to the conservative force −∇U. Examine the original derivation, determine d(E_kin + U)/dt, and explain for b > 0 the direction of energy transfer and the system boundary.",
+            "expectedPerformanceDe": "Die lernende Person behält für den konservativen Anteil die Aufhebung bei, ergänzt die Leistung −b·v², erhält d(E_kin + U)/dt = −b·v² und deutet die Abnahme als Übertragung aus der betrachteten mechanischen Energie, statt den Erhaltungssatz trotz verletzter Voraussetzung weiter anzuwenden.",
+            "expectedPerformanceEn": "The learner retains the cancellation for the conservative part, adds the power −b·v², obtains d(E_kin + U)/dt = −b·v², and interprets the decrease as transfer out of the mechanical energy under consideration instead of continuing to apply conservation after its condition has failed.",
+            "understandingFocusDe": "Der Reibungsfall erzwingt Transfer auf eine geänderte Kraftart und lokalisiert genau die Gültigkeitsgrenze der Herleitung.",
+            "understandingFocusEn": "The drag case requires transfer to a changed force type and locates the exact validity boundary of the derivation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44",
+      "reason": "DE: Das Profil hält das Ziel eng bei der historischen und begrifflichen Einordnung von „Wärmeenergie“ als innere Energie eines festgelegten Systems. Es prüft Systembezug, mikroskopische gespeicherte Beiträge, Übersetzung historischer Sprache und die Abgrenzung von einem Wärmestoff, ohne eine vollständige Wärme-, Arbeits- oder Energiebilanz eines Nachbarziels zu vereinnahmen. Die Fälle bleiben über Sek I und Sek II hinweg qualitativ zugänglich. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile keeps the goal narrowly focused on the historical and conceptual interpretation of “heat energy” as the internal energy of a defined system. It tests system reference, stored microscopic contributions, translation of historical language, and the distinction from caloric substance without appropriating a full heat, work, or energy balance from a neighboring goal. The cases remain qualitatively accessible across lower and upper secondary stages. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "internal-energy-belongs-to-defined-system-state",
+            "essentialUnderstandingDe": "Innere Energie ist eine dem Zustand eines festgelegten Systems zugeordnete gespeicherte Größe. Sie umfasst mikroskopische kinetische und potenzielle Beiträge der Systembestandteile und ist von der makroskopischen Bewegung oder Lage des Systems als Ganzes begrifflich zu unterscheiden.",
+            "essentialUnderstandingEn": "Internal energy is a stored quantity assigned to the state of a defined system. It includes microscopic kinetic and potential contributions of the system's constituents and is conceptually distinct from the macroscopic motion or position of the system as a whole.",
+            "observablePerformanceDe": "Die lernende Person legt in einem unbekannten Beispiel die Systemgrenze fest, ordnet qualitativ beschriebene mikroskopische Bewegungs- und Wechselwirkungsbeiträge der inneren Energie zu und begründet, warum die Gesamtbewegung des Behälters nicht allein eine Änderung dieser inneren Energie bezeichnet.",
+            "observablePerformanceEn": "In an unfamiliar example, the learner defines the system boundary, assigns qualitatively described microscopic motion and interaction contributions to internal energy, and explains why motion of the container as a whole does not by itself denote a change in that internal energy."
+          },
+          {
+            "id": "historical-heat-energy-can-denote-internal-energy",
+            "essentialUnderstandingDe": "Der historische Ausdruck „Wärmeenergie“ kann im gebundenen Quellenzusammenhang die Energie meinen, die ein betrachtetes System als innere Energie besitzt. Die moderne Bezeichnung benennt die gespeicherte Systemgröße präziser und vermeidet, dass das Wort Wärme als zusätzliche eigenständige Energieart im System gelesen wird.",
+            "essentialUnderstandingEn": "In the bound source context, the historical expression “heat energy” can refer to the energy a system possesses as internal energy. The modern term names the stored system quantity more precisely and avoids reading heat as an additional, separate kind of energy inside the system.",
+            "observablePerformanceDe": "Die lernende Person überträgt eine unabhängig vorgelegte historische Aussage mit „Wärmeenergie“ in moderne Fachsprache, benennt das gemeinte System und begründet aus dem Kontext, weshalb „innere Energie“ die behauptete gespeicherte Größe präziser ausdrückt.",
+            "observablePerformanceEn": "The learner translates an independently presented historical statement using “heat energy” into modern scientific language, identifies the system meant, and uses the context to justify why “internal energy” expresses the claimed stored quantity more precisely."
+          },
+          {
+            "id": "term-does-not-imply-caloric-substance-or-change-path",
+            "essentialUnderstandingDe": "Innere Energie ist kein gespeicherter Wärmestoff. Die Bezeichnung sagt, welche Energie dem Systemzustand zugeordnet wird, aber für sich allein nicht, auf welchem Prozessweg der Zustand entstand; Aussagen über Erwärmen, Rühren oder Komprimieren dürfen deshalb nicht in eine unbeanspruchte vollständige Wärme- und Arbeitsbilanz erweitert werden.",
+            "essentialUnderstandingEn": "Internal energy is not stored caloric substance. The term states what energy is assigned to the system state but does not by itself specify the process path by which that state arose; statements about warming, stirring, or compression must therefore not be expanded into an unclaimed complete heat-and-work balance.",
+            "observablePerformanceDe": "Die lernende Person korrigiert in einem neuen Text die Vorstellung eines im Körper enthaltenen Wärmestoffs, formuliert stattdessen eine Änderung oder einen Wert der inneren Energie und kennzeichnet ausdrücklich, welche Prozess- oder Bilanzinformation aus der gegebenen Aussage nicht folgt.",
+            "observablePerformanceEn": "In a fresh text, the learner corrects the idea of caloric substance contained in a body, instead states a change or value of internal energy, and explicitly identifies which process or balance information does not follow from the statement supplied."
+          },
+          {
+            "id": "conceptual-translation-is-bounded-by-context",
+            "essentialUnderstandingDe": "„Wärmeenergie“ ist historisch und alltagssprachlich mehrdeutig; seine fachliche Deutung muss sich auf das konkret betrachtete System und die Aussage über gespeicherte Energie stützen. Das Ziel erlaubt eine begründete begriffliche Übersetzung, nicht die Behauptung, jede Verwendung des Ausdrucks bedeute automatisch dasselbe.",
+            "essentialUnderstandingEn": "“Heat energy” is historically and colloquially ambiguous; its scientific interpretation must be grounded in the particular system and the statement about stored energy. The goal supports a justified conceptual translation, not a claim that every use of the expression automatically means the same thing.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei neue kurze Textstellen, entscheidet für jede anhand von System- und Zustandsbezug, ob „innere Energie“ die gemeinte Größe trifft, und formuliert bei unzureichendem Kontext eine begrenzte Nachfrage statt eine universelle Gleichsetzung.",
+            "observablePerformanceEn": "The learner compares two fresh short passages, decides for each from its system and state reference whether “internal energy” captures the quantity meant, and asks a bounded clarifying question when context is insufficient rather than making a universal equation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "internal-energy-belongs-to-defined-system-state",
+            "historical-heat-energy-can-denote-internal-energy",
+            "term-does-not-imply-caloric-substance-or-change-path",
+            "conceptual-translation-is-bounded-by-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "system-and-state",
+            "textDe": "Festkörper, Flüssigkeit oder Gas mit jeweils ausdrücklich festgelegter Systemgrenze und qualitativ beschriebenem Zustand",
+            "textEn": "Solid, liquid, or gas with an explicitly defined system boundary and qualitatively described state"
+          },
+          {
+            "id": "historical-context",
+            "textDe": "Historischer Lehrbuchsatz, alltagssprachliche Aussage, moderne Fachformulierung oder unzureichend bestimmter Ausdruck",
+            "textEn": "Historical textbook sentence, everyday statement, modern scientific wording, or insufficiently specified expression"
+          },
+          {
+            "id": "process-backdrop",
+            "textDe": "Erwärmen, Abkühlen, Rühren oder Komprimieren nur als Kontext der Zustandsaussage, nicht als vollständige Bilanzaufgabe",
+            "textEn": "Warming, cooling, stirring, or compression only as context for a state statement, not as a complete balance task"
+          },
+          {
+            "id": "representation-and-claim",
+            "textDe": "Teilchenbeschreibung, Vorher-nachher-Zustand, Begriffsvergleich oder Diagnose einer Wärmestoffvorstellung",
+            "textEn": "Particle description, before-and-after state, comparison of terms, or diagnosis of a caloric-substance conception"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "historical-hot-metal-wording",
+            "taskDemandDe": "Ein bereitgestellter älterer Text sagt, ein heißer Metallkörper besitze mehr „Wärmeenergie“ als derselbe Körper in einem kühleren Zustand. Bestimme das betrachtete System, formuliere die Aussage mit moderner Terminologie um und erkläre, welche gespeicherten mikroskopischen Beiträge damit qualitativ gemeint sein können.",
+            "taskDemandEn": "A supplied older text says that a hot metal body possesses more “heat energy” than the same body in a cooler state. Identify the system, reformulate the statement in modern terminology, and explain qualitatively which stored microscopic contributions can be meant.",
+            "expectedPerformanceDe": "Die lernende Person nennt den Metallkörper als System, ersetzt „Wärmeenergie“ durch innere Energie, verbindet die Zustandsänderung qualitativ mit mikroskopischer Bewegung und Wechselwirkung und vermeidet sowohl einen Wärmestoff als auch eine Aussage über die makroskopische Lageenergie.",
+            "expectedPerformanceEn": "The learner identifies the metal body as the system, replaces “heat energy” with internal energy, qualitatively links the state change to microscopic motion and interaction, and avoids both caloric substance and a claim about macroscopic potential energy.",
+            "understandingFocusDe": "Die historische Formulierung prüft die präzise begriffliche Übersetzung und den Systembezug, nicht das Wiederholen eines modernen Etiketts.",
+            "understandingFocusEn": "The historical wording tests precise conceptual translation and system reference rather than repetition of a modern label."
+          },
+          {
+            "id": "stirred-or-compressed-gas-statement",
+            "taskDemandDe": "Zwei kurze historische Aussagen beschreiben einen gerührten beziehungsweise komprimierten Gasinhalt als Körper mit vermehrter „Wärmeenergie“, ohne eine vollständige Prozessbilanz zu liefern. Formuliere die jeweilige Zustandsaussage fachlich neu und trenne sicher Erkennbares von Informationen, die für den Prozessweg fehlen.",
+            "taskDemandEn": "Two short historical statements describe a stirred or compressed gas as a body with increased “heat energy” without supplying a complete process balance. Reformulate each state statement scientifically and separate what can be established from the information missing about the process path.",
+            "expectedPerformanceDe": "Die lernende Person spricht von größerer innerer Energie des festgelegten Gas-Systems, behandelt diese nicht als Wärmestoff und erklärt, dass aus dem Ausdruck allein weder die vollständige Wärme- noch Arbeitsübertragung quantifiziert werden kann.",
+            "expectedPerformanceEn": "The learner states that the defined gas system has greater internal energy, does not treat this as caloric substance, and explains that the expression alone does not quantify the complete heat or work transfer.",
+            "understandingFocusDe": "Der geänderte Prozesshintergrund zeigt, ob innere Energie als Zustandsgröße verstanden wird, ohne das enge Begriffslernziel zu einer Bilanzkompetenz auszuweiten.",
+            "understandingFocusEn": "The changed process backdrop reveals whether internal energy is understood as a state quantity without widening the narrow terminology goal into a balance competence."
+          },
+          {
+            "id": "fresh-particle-descriptions-and-ambiguous-label",
+            "taskDemandDe": "Für dasselbe abgegrenzte System werden zwei neue qualitative Teilchenbeschreibungen und die Überschrift „Wärmeenergie im Körper“ vorgelegt. Ordne die beschriebenen mikroskopischen Bewegungs- und Wechselwirkungsbeiträge der inneren Energie zu, ersetze die Überschrift präzise und nenne eine Information, die für einen quantitativen Vergleich fehlt.",
+            "taskDemandEn": "Two fresh qualitative particle descriptions for the same bounded system are supplied under the heading “heat energy in the body.” Assign the described microscopic motion and interaction contributions to internal energy, replace the heading precisely, and identify one item of information missing for a quantitative comparison.",
+            "expectedPerformanceDe": "Die lernende Person verwendet „innere Energie des Systems“, erläutert die qualitativen mikroskopischen Beiträge und begrenzt die Aussage auf die dargestellten Zustände, statt aus dem Bild eine gemessene Energiemenge oder einen bestimmten Übertragungsweg zu erfinden.",
+            "expectedPerformanceEn": "The learner uses “internal energy of the system,” explains the qualitative microscopic contributions, and limits the claim to the represented states rather than inventing a measured amount of energy or a particular transfer path from the diagram.",
+            "understandingFocusDe": "Die frische Teilchendarstellung prüft die Verbindung zwischen Begriff, Systemzustand und epistemischer Grenze ohne Bindung an die kanonische Visualisierung.",
+            "understandingFocusEn": "The fresh particle representation tests the connection among term, system state, and epistemic boundary without binding the canonical visualization."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "reason": "DE: Das Profil verbindet Positron-Eigenschaften, Ruheenergie und Vektorimpuls zu einem begrenzten Modell der Zwei-Photonen-Paarvernichtung. Es verlangt unabhängige Bilanzen für ein annähernd ruhendes und ein bewegtes Paar sowie eine korrekte Deutung der Vernichtungsphotonen als PET-Messsignal. Das Profil endet ausdrücklich an diesem Signal und umfasst weder Ortsbestimmung noch Bildrekonstruktion; alle Strahlungsfälle beruhen auf bereitgestellten Daten oder Simulationen. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile connects positron properties, rest energy, and vector momentum in a bounded model of two-photon pair annihilation. It requires independent balances for an approximately stationary and a moving pair and a correct interpretation of the annihilation photons as a PET measurement signal. The profile explicitly stops at that signal and includes neither localization nor image reconstruction; all radiation cases use supplied data or simulation. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "positron-is-electron-antiparticle",
+            "essentialUnderstandingDe": "Das Positron ist das Antiteilchen des Elektrons: Es besitzt dieselbe Ruhemasse und den gleichen Betrag, aber das entgegengesetzte Vorzeichen der elektrischen Ladung. Diese Zuordnung ist eine Teilcheneigenschaft und keine Aussage darüber, dass ein einzelnes Positron bereits vernichtet sein muss.",
+            "essentialUnderstandingEn": "The positron is the electron's antiparticle: it has the same rest mass and the same magnitude but opposite sign of electric charge. This assignment is a particle property and does not state that an individual positron must already have annihilated.",
+            "observablePerformanceDe": "Die lernende Person liest aus einer neuen Teilchentabelle Masse und Ladung ab, identifiziert das Positron begründet als Elektron-Antiteilchen, hält Betragsgleichheit und Vorzeichenwechsel auseinander und verwirft eine Zuordnung nur aufgrund ähnlicher Namen oder Energiewerte.",
+            "observablePerformanceEn": "From a fresh particle table, the learner reads mass and charge, justifiably identifies the positron as the electron's antiparticle, keeps equal magnitude distinct from reversed sign, and rejects an assignment based only on similar names or energy values."
+          },
+          {
+            "id": "rest-energy-balance-gives-near-511-kev-photons",
+            "essentialUnderstandingDe": "Bei der Vernichtung eines im Schwerpunktsystem annähernd ruhenden Elektron-Positron-Paares geht die Ruheenergie von ungefähr 2m_e c² in Photonenenergie über. Im dominierenden Zwei-Photonen-Fall besitzen die Photonen bei vernachlässigbarer Anfangsbewegung jeweils ungefähr 511 keV; kleine Anfangs- oder Bindungsbeiträge begrenzen die Exaktheit dieser Angabe.",
+            "essentialUnderstandingEn": "When an electron–positron pair approximately at rest in its center-of-momentum frame annihilates, rest energy of about 2m_e c² becomes photon energy. In the dominant two-photon case, negligible initial motion gives each photon about 511 keV; small initial-motion or binding contributions limit the exactness of this value.",
+            "observablePerformanceDe": "Die lernende Person stellt für ein unabhängig gegebenes annähernd ruhendes Paar die Energiegleichung mit Einheiten auf, bestimmt die ungefähre Energie pro Photon und nennt die Ruhe- und Zwei-Photonen-Annahmen, statt den Zahlenwert ohne System- und Zustandsbezug einzusetzen.",
+            "observablePerformanceEn": "For an independently given pair that is approximately at rest, the learner sets up the energy equation with units, determines the approximate energy per photon, and states the rest and two-photon assumptions rather than substituting the number without reference to the system and state."
+          },
+          {
+            "id": "vector-momentum-controls-photon-directions",
+            "essentialUnderstandingDe": "Energieerhaltung allein bestimmt die Richtungen nicht. Bei nahezu verschwindendem Anfangsimpuls muss der Vektorimpuls der beiden Photonen nahezu null ergeben, weshalb sie nahezu entgegengesetzt ausgesandt werden; bei kleinem Gesamtimpuls können Richtungen und Energien im Laborsystem abweichen, während die Gesamtbilanz erhalten bleibt.",
+            "essentialUnderstandingEn": "Energy conservation alone does not determine the directions. When initial momentum is nearly zero, the vector sum of the two photon momenta must be nearly zero, so they are emitted in nearly opposite directions; with small total momentum, their directions and energies can differ in the laboratory frame while the total balance remains conserved.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus frischen Energie- und Impulsangaben ein beschriftetes Vektordiagramm, prüft zwei vorgeschlagene Photonenkonfigurationen gegen beide Erhaltungssätze und erklärt für einen Fall mit von null verschiedenem Gesamtimpuls qualitativ die Abweichung von exakt gegenläufigen gleichenergetischen Photonen.",
+            "observablePerformanceEn": "From fresh energy and momentum data, the learner constructs a labelled vector diagram, checks two proposed photon configurations against both conservation laws, and qualitatively explains the departure from exactly opposite equal-energy photons when total momentum is nonzero."
+          },
+          {
+            "id": "pet-uses-annihilation-photons-only-as-measurement-signals",
+            "essentialUnderstandingDe": "Die bei der Paarvernichtung entstehenden Photonen können in der PET als detektierbare Messsignale dienen. Sie liefern das hier beanspruchte physikalische Signal, sind aber weder die Energieversorgung des Scanners noch selbst ein unmittelbar sichtbares PET-Bild; weitere Orts- und Rekonstruktionsverfahren gehören nicht zu diesem Ziel.",
+            "essentialUnderstandingEn": "The photons produced in pair annihilation can serve as detectable measurement signals in PET. They provide the physical signal claimed here but are neither the scanner's energy supply nor themselves a directly visible PET image; further localization and reconstruction procedures are outside this goal.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem neuen PET-Ereignisprotokoll zwei energiemäßig passende Detektionssignale der Paarvernichtung zu, erklärt ihre physikalische Herkunft und begrenzt die Aussage auf die Rolle als Messsignal, ohne Energieversorgung, Ortsbestimmung oder Bildinhalt zu erfinden.",
+            "observablePerformanceEn": "In a fresh PET event record, the learner associates two energy-compatible detection signals with pair annihilation, explains their physical origin, and limits the conclusion to their role as measurement signals without inventing energy supply, localization, or image content."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "positron-is-electron-antiparticle",
+            "rest-energy-balance-gives-near-511-kev-photons",
+            "vector-momentum-controls-photon-directions",
+            "pet-uses-annihilation-photons-only-as-measurement-signals"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "initial-pair-momentum",
+            "textDe": "Annähernd ruhendes Paar im Schwerpunktsystem oder Paar mit kleinem, aber von null verschiedenem Gesamtimpuls im Laborsystem",
+            "textEn": "Pair approximately at rest in its center-of-momentum frame or pair with small but nonzero total momentum in the laboratory frame"
+          },
+          {
+            "id": "conservation-representation",
+            "textDe": "Ruheenergie- und Photonenenergiebilanz, Vektorimpulsdiagramm, Teilchentabelle oder geprüftes Ereignisprotokoll",
+            "textEn": "Rest-energy and photon-energy balance, vector-momentum diagram, particle table, or supplied event record"
+          },
+          {
+            "id": "photon-outcome",
+            "textDe": "Nahezu gleiche oder unterschiedliche Photonenergien sowie exakt angenäherte oder leicht abweichende Gegenrichtung",
+            "textEn": "Nearly equal or unequal photon energies and approximately exact or slightly deviating opposite directions"
+          },
+          {
+            "id": "claim-boundary",
+            "textDe": "Antiteilcheneigenschaft, Paarvernichtungsbilanz und PET-Messsignal gegenüber Energiequelle oder unmittelbar sichtbarem Bildinhalt",
+            "textEn": "Antiparticle property, pair-annihilation balance, and PET measurement signal contrasted with an energy source or directly visible image content"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "stationary-pair-energy-and-momentum-balance",
+            "taskDemandDe": "Ein bereitgestelltes Modell setzt Elektron und Positron im Schwerpunktsystem näherungsweise in Ruhe und gibt m_e c² = 511 keV an. Stelle Energie- und Vektorimpulsbilanz für den dominierenden Zwei-Photonen-Fall auf, bestimme die Photonenergien und zeichne zulässige Richtungen.",
+            "taskDemandEn": "A supplied model treats an electron and positron as approximately at rest in their center-of-momentum frame and gives m_e c² = 511 keV. Set up the energy and vector-momentum balance for the dominant two-photon case, determine the photon energies, and draw allowed directions.",
+            "expectedPerformanceDe": "Die lernende Person erhält ungefähr 1022 keV Gesamtenergie und 511 keV pro Photon, zeichnet nahezu gleich große entgegengesetzte Impulsvektoren und begründet Anzahl, Energien und Richtungen gemeinsam aus beiden Erhaltungssätzen und den genannten Näherungen.",
+            "expectedPerformanceEn": "The learner obtains about 1022 keV total energy and 511 keV per photon, draws nearly equal opposite momentum vectors, and jointly justifies the number, energies, and directions from both conservation laws and the stated approximations.",
+            "understandingFocusDe": "Der Ruhefall prüft, ob Ruheenergie und Vektorimpuls eine zusammenhängende physikalische Erklärung statt zweier Merksätze bilden.",
+            "understandingFocusEn": "The rest case tests whether rest energy and vector momentum form one coherent physical explanation rather than two memorized statements."
+          },
+          {
+            "id": "moving-pair-candidate-outcomes",
+            "taskDemandDe": "Für ein Elektron-Positron-Paar mit kleinem vorgegebenem Gesamtimpuls werden drei mögliche Zwei-Photonen-Ausgänge als Energie- und Vektordaten angeboten. Wähle die mit Energie- und Impulserhaltung vereinbare Konfiguration und erkläre, warum exakt gegenläufige gleichenergetische Photonen hier nicht zwingend sind.",
+            "taskDemandEn": "For an electron–positron pair with a small supplied total momentum, three possible two-photon outcomes are offered as energy and vector data. Choose the configuration consistent with energy and momentum conservation and explain why exactly opposite equal-energy photons are not required here.",
+            "expectedPerformanceDe": "Die lernende Person summiert Energien und Impulsvektoren getrennt, verwirft Konfigurationen mit falscher Gesamtbilanz und ordnet die verbleibende Richtungs- und Energieasymmetrie dem nicht verschwindenden Anfangsimpuls zu, ohne klassische verborgene Photonbahnen zu erfinden.",
+            "expectedPerformanceEn": "The learner separately sums energies and momentum vectors, rejects configurations with an incorrect total balance, and attributes the remaining directional and energy asymmetry to the nonzero initial momentum without inventing classical hidden photon paths.",
+            "understandingFocusDe": "Der geänderte Bezugsfall erzwingt Transfer der beiden Erhaltungssätze jenseits der symmetrischen 511-keV-Situation.",
+            "understandingFocusEn": "The changed reference case requires transfer of both conservation laws beyond the symmetric 511 keV situation."
+          },
+          {
+            "id": "bounded-pet-detection-record",
+            "taskDemandDe": "Ein simuliertes PET-Protokoll enthält zwei einem bereitgestellten Vernichtungsereignis zugeordnete Detektionssignale mit Energien nahe 511 keV. Eine Aussage bezeichnet die Photonen als Energiequelle des Scanners, eine zweite bereits als das fertige sichtbare Bild. Erkläre die physikalische Herkunft und die begrenzte Rolle der Signale.",
+            "taskDemandEn": "A simulated PET record contains two detection signals assigned to a supplied annihilation event, with energies near 511 keV. One statement calls the photons the scanner's energy source and another calls them the finished visible image. Explain the physical origin and bounded role of the signals.",
+            "expectedPerformanceDe": "Die lernende Person deutet die Signale als detektierte Vernichtungsphotonen, verbindet ihre Größenordnung mit der Paar-Ruheenergie und weist Energiequellen- und Fertigbildbehauptung zurück. Sie bleibt beim Messsignal und führt keine Orts- oder Rekonstruktionsmethode ein.",
+            "expectedPerformanceEn": "The learner interprets the signals as detected annihilation photons, connects their energy scale with the pair rest energy, and rejects both the energy-source and finished-image claims. The learner stops at the measurement signal and introduces no localization or reconstruction method.",
+            "understandingFocusDe": "Der PET-Fall prüft ausschließlich die enge Anwendung der Vernichtungsphotonen als Messsignal.",
+            "understandingFocusEn": "The PET case tests only the narrow application of annihilation photons as measurement signals."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "reason": "DE: Das Profil prüft das Rayleigh-Kriterium als beugungsbegrenztes Auflösungsmodell mit endlicher Öffnung, Wellenlänge, überlagerten Beugungsmustern und instrumentenspezifischer Winkel- beziehungsweise Ortsauflösung. Mikroskop, Teleskop und Auge erscheinen in drei frischen Fällen mit konkurrierenden Einflussgrößen; Vergrößerung und reale Zusatzfehler werden von der modellierten Trennbarkeitsgrenze unterschieden. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile tests the Rayleigh criterion as a diffraction-limited resolution model involving finite aperture, wavelength, overlapping diffraction patterns, and instrument-specific angular or spatial resolution. Microscope, telescope, and eye appear in three fresh cases with competing factors; magnification and additional real-world imperfections are distinguished from the modeled separability limit. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "finite-aperture-produces-diffraction-pattern",
+            "essentialUnderstandingDe": "Eine endliche wirksame Öffnung bildet eine punktförmige Quelle nicht als idealen geometrischen Punkt ab, sondern erzeugt ein Beugungsmuster mit endlicher Ausdehnung. Zwei nahe Quellen liefern überlagerte Muster, sodass ihre Trennbarkeit physikalisch begrenzt sein kann, auch wenn das Bild vergrößert wird.",
+            "essentialUnderstandingEn": "A finite effective aperture does not image a point source as an ideal geometrical point but produces a diffraction pattern of finite extent. Two nearby sources give overlapping patterns, so their distinguishability can be physically limited even when the image is magnified.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder deutet für zwei unabhängig vorgelegte Punktquellen die überlagerten Beugungsmuster, ordnet die endliche Breite der Öffnung und der Beugung zu und erklärt, weshalb bloße Vergrößerung keine im Muster verlorene Trenninformation erzeugt.",
+            "observablePerformanceEn": "For two independently presented point sources, the learner constructs or interprets the overlapping diffraction patterns, attributes their finite width to aperture and diffraction, and explains why mere magnification does not create separation information absent from the pattern."
+          },
+          {
+            "id": "rayleigh-criterion-is-conventional-separability-model",
+            "essentialUnderstandingDe": "Das Rayleigh-Kriterium setzt für zwei gleichartige Punktquellen eine konventionelle Trennbarkeitsgrenze, indem das Hauptmaximum des einen Beugungsmusters mit dem ersten Minimum des anderen verglichen wird. Es ist ein Modellkriterium für beugungsbegrenzte Auflösung und keine Aussage, dass menschliche Wahrnehmung oder jedes reale Instrument exakt an einer scharfen Naturgrenze umschaltet.",
+            "essentialUnderstandingEn": "For two similar point sources, the Rayleigh criterion sets a conventional separability limit by comparing the principal maximum of one diffraction pattern with the first minimum of the other. It is a model criterion for diffraction-limited resolution, not a claim that human perception or every real instrument switches at an exact sharp natural boundary.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einer frischen Rayleigh-Darstellung Hauptmaximum und erstes Minimum, entscheidet für mehrere Abstände begründet zwischen unterhalb, ungefähr an und oberhalb der Modellgrenze und bezeichnet das Ergebnis als kriteriumsgebundene Auflösungsbeurteilung.",
+            "observablePerformanceEn": "In a fresh Rayleigh representation, the learner identifies the principal maximum and first minimum, justifiably classifies several separations as below, approximately at, or above the model limit, and states the result as a criterion-bound resolution judgment."
+          },
+          {
+            "id": "wavelength-and-effective-aperture-set-resolution-scale",
+            "essentialUnderstandingDe": "Bei kreisförmiger wirksamer Öffnung skaliert die beugungsbegrenzte Winkelauflösung mit λ/D; bei Mikroskopen wird die entsprechende Ortsauflösung durch Wellenlänge und numerische Apertur bestimmt. Kürzere Wellenlänge und größere wirksame Öffnung beziehungsweise numerische Apertur verbessern die jeweilige Auflösung, sofern die übrigen Modellbedingungen vergleichbar bleiben.",
+            "essentialUnderstandingEn": "For a circular effective aperture, diffraction-limited angular resolution scales with λ/D; for microscopes, the corresponding spatial resolution is set by wavelength and numerical aperture. Shorter wavelength and larger effective aperture or numerical aperture improve the respective resolution when the other model conditions remain comparable.",
+            "observablePerformanceDe": "Die lernende Person wählt für neue Instrumentdaten die passende Winkel- oder Ortsbeziehung, führt Größen und Einheiten konsistent, sagt die Richtung einer Änderung von λ, D oder numerischer Apertur vor der Rechnung voraus und prüft das Ergebnis auf Größenordnung und Auflösungsbedeutung.",
+            "observablePerformanceEn": "For fresh instrument data, the learner chooses the appropriate angular or spatial relation, handles quantities and units consistently, predicts the direction of a change in λ, D, or numerical aperture before calculating, and checks the result for order of magnitude and resolution meaning."
+          },
+          {
+            "id": "instrument-comparison-respects-model-and-evidence-limits",
+            "essentialUnderstandingDe": "Teleskop, Mikroskop und Auge verwenden unterschiedliche geometrische Größen und können zusätzlich durch Aberrationen, Detektor- oder Rezeptorabstände und Signalqualität begrenzt sein. Das Rayleigh-Kriterium liefert deshalb eine beugungsbedingte Grenze unter benannten Annahmen; bei gegenläufigen Änderungen von Wellenlänge und Öffnung ist ohne relative Angaben keine eindeutige Rangfolge zulässig.",
+            "essentialUnderstandingEn": "Telescopes, microscopes, and the eye use different geometrical quantities and can additionally be limited by aberrations, detector or receptor spacing, and signal quality. The Rayleigh criterion therefore gives a diffraction-imposed limit under stated assumptions; when wavelength and aperture change in opposing directions, no unique ranking is justified without relative information.",
+            "observablePerformanceDe": "Die lernende Person vergleicht in einem unbekannten Instrumentenfall die relevanten Größen, trennt beugungsbedingte Modellgrenze von bereitgestellten Zusatzbegrenzungen und kennzeichnet einen Konkurrenzfall als nicht entscheidbar, wenn λ- und Öffnungseinfluss nicht quantitativ gegeneinander abgewogen werden können.",
+            "observablePerformanceEn": "In an unfamiliar instrument case, the learner compares the relevant quantities, separates the diffraction-limited model result from supplied additional limitations, and identifies a competing-factor case as undecidable when wavelength and aperture effects cannot be weighed quantitatively."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "finite-aperture-produces-diffraction-pattern",
+            "rayleigh-criterion-is-conventional-separability-model",
+            "wavelength-and-effective-aperture-set-resolution-scale",
+            "instrument-comparison-respects-model-and-evidence-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "instrument-and-resolution-type",
+            "textDe": "Teleskopische Winkelauflösung, mikroskopische Ortsauflösung oder beugungsbegrenzte Winkelauflösung des Auges",
+            "textEn": "Telescopic angular resolution, microscopic spatial resolution, or diffraction-limited angular resolution of the eye"
+          },
+          {
+            "id": "wavelength-and-medium",
+            "textDe": "Kürzere oder längere Wellenlänge sowie Luft- oder Immersionsmedium bei dafür passend angegebener numerischer Apertur",
+            "textEn": "Shorter or longer wavelength and air or immersion medium with the corresponding numerical aperture supplied"
+          },
+          {
+            "id": "effective-aperture",
+            "textDe": "Geänderter Öffnungsdurchmesser, Pupillendurchmesser oder numerische Apertur mit einzeln oder gegeneinander wirkenden Einflüssen",
+            "textEn": "Changed aperture diameter, pupil diameter, or numerical aperture with effects acting alone or in opposition"
+          },
+          {
+            "id": "representation-and-evidence",
+            "textDe": "Überlagerte Beugungsmuster, Rayleigh-Skizze, Instrumentdaten, Formelvergleich oder reale Zusatzbegrenzung",
+            "textEn": "Overlapping diffraction patterns, Rayleigh diagram, instrument data, formula comparison, or real additional limitation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "telescope-double-star-angular-resolution",
+            "taskDemandDe": "Ein Teleskop mit kreisförmiger Öffnung beobachtet zwei punktförmige Sterne mit vorgegebenem Winkelabstand. Für zwei Wellenlängen und zwei Öffnungsdurchmesser sind die Daten angegeben. Sage zunächst die Änderungsrichtungen voraus, berechne dann die Rayleigh-Winkelgrenzen und entscheide für jede Kombination, ob die Sterne beugungsbegrenzt getrennt werden.",
+            "taskDemandEn": "A telescope with a circular aperture observes two point-like stars with a supplied angular separation. Data are given for two wavelengths and two aperture diameters. First predict the directions of change, then calculate the Rayleigh angular limits and decide for each combination whether the stars are diffraction-limited resolved.",
+            "expectedPerformanceDe": "Die lernende Person verwendet konsistente Winkel- und Längeneinheiten, erhält kleinere Grenzwinkel für kürzere Wellenlänge und größere Öffnung, vergleicht sie mit dem Objektabstand und formuliert das Ergebnis ausdrücklich als Rayleigh-Beurteilung unter kreisförmiger Öffnungsannahme.",
+            "expectedPerformanceEn": "The learner uses consistent angular and length units, obtains smaller limiting angles for shorter wavelength and larger aperture, compares them with the source separation, and explicitly states the result as a Rayleigh judgment under the circular-aperture assumption.",
+            "understandingFocusDe": "Der astronomische Fall verbindet Vorhersage, Skalierung, Einheiten und Modellgrenze in einer neuen Winkelgeometrie.",
+            "understandingFocusEn": "The astronomical case connects prediction, scaling, units, and model limit in a fresh angular geometry."
+          },
+          {
+            "id": "microscope-air-versus-immersion-comparison",
+            "taskDemandDe": "Zwei Mikroskope verwenden unterschiedliche Wellenlängen; eines arbeitet in Luft mit kleinerer, das andere mit einem angegebenen Immersionssystem und größerer numerischer Apertur. Vergleiche die beugungsbegrenzte Ortsauflösung, ordne die konkurrierenden Einflüsse und beurteile, welche von zwei Objektstrukturen nach Rayleigh trennbar ist.",
+            "taskDemandEn": "Two microscopes use different wavelengths; one operates in air with a smaller numerical aperture, while the other uses a supplied immersion system with a larger numerical aperture. Compare their diffraction-limited spatial resolution, weigh the competing effects, and assess which of two object structures is resolvable under Rayleigh.",
+            "expectedPerformanceDe": "Die lernende Person nutzt die zur numerischen Apertur passende Ortsbeziehung, behandelt kleinere Grenzabstände als bessere Auflösung, wägt Wellenlänge und Apertur quantitativ ab und vermeidet die unzulässige Behauptung, Immersion oder Vergrößerung allein garantiere jede Trennung.",
+            "expectedPerformanceEn": "The learner uses the spatial relation appropriate to numerical aperture, treats a smaller limiting separation as better resolution, quantitatively weighs wavelength and aperture, and avoids the invalid claim that immersion or magnification alone guarantees every separation.",
+            "understandingFocusDe": "Der Medien- und Geometriewechsel prüft echten Transfer von λ und wirksamer Öffnung auf Ortsauflösung.",
+            "understandingFocusEn": "Changing medium and geometry tests genuine transfer of wavelength and effective aperture to spatial resolution."
+          },
+          {
+            "id": "eye-pupil-diffraction-and-additional-limit",
+            "taskDemandDe": "Für ein vereinfachtes Augenmodell sind Pupillendurchmesser, Wellenlänge und der Winkelabstand zweier Lichtpunkte gegeben; zusätzlich nennt der Fall eine gröbere Rezeptorabstandsgrenze. Bestimme die Rayleigh-Grenze, vergleiche beide Begrenzungen und erkläre, welche Aussage über reale Trennbarkeit aus den Daten folgt.",
+            "taskDemandEn": "For a simplified eye model, pupil diameter, wavelength, and angular separation of two light points are supplied; the case also states a coarser receptor-spacing limit. Determine the Rayleigh limit, compare the two limitations, and explain what conclusion about actual distinguishability follows from the data.",
+            "expectedPerformanceDe": "Die lernende Person berechnet die beugungsbedingte Winkelgrenze, trennt sie von der bereitgestellten Rezeptorbegrenzung und verwendet die strengere Grenze für die Fallbeurteilung, ohne das Rayleigh-Kriterium als einzige reale Begrenzung des Auges auszugeben.",
+            "expectedPerformanceEn": "The learner calculates the diffraction-imposed angular limit, separates it from the supplied receptor limit, and uses the stricter limit for the case judgment without presenting the Rayleigh criterion as the eye's only real limitation.",
+            "understandingFocusDe": "Der Augenfall prüft, ob ein korrektes Beugungsmodell fachlich begrenzt und mit zusätzlicher Evidenz koordiniert wird.",
+            "understandingFocusEn": "The eye case tests whether a correct diffraction model is bounded appropriately and coordinated with additional evidence."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+      "reason": "DE: Das Profil operationalisiert das ausdrücklich qualitative MRT-Funktionsprinzip als Ensemble- und Signalkette aus statischem Feld, Netto-Kernspinmagnetisierung, resonanter Hochfrequenzanregung, gemessenem Relaxationssignal und Gradientencodierung. Es verlangt Sequenzordnung, Ursache-Wirkungs-Erklärung und Transfer auf geänderte Resonanz- oder Gradientenbedingungen, ohne einzelne Spins als direkt sichtbares Bild, quantitative Relaxationskontraste oder Fourier-Rekonstruktion zu behaupten. Alle Fälle verwenden sichere bereitgestellte Schemata oder Simulationen statt realer starker Magnetfelder und Hochfrequenzanlagen. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile operationalizes the explicitly qualitative MRI principle as an ensemble and signal chain involving the static field, net nuclear-spin magnetization, resonant radio-frequency excitation, measured relaxation signal, and gradient encoding. It requires sequence ordering, causal explanation, and transfer to changed resonance or gradient conditions without treating individual spins as a directly visible image or claiming quantitative relaxation contrast or Fourier reconstruction. All cases use safe supplied diagrams or simulations rather than real strong magnetic fields and radio-frequency systems. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "static-field-establishes-net-ensemble-magnetization",
+            "essentialUnderstandingDe": "In einem statischen Magnetfeld B0 entsteht bei geeigneten Kernspins durch eine kleine statistische Ungleichverteilung eine Netto-Magnetisierung entlang des Feldes. Das Modell beschreibt ein Ensemble; es bedeutet weder, dass alle einzelnen Spins exakt ausgerichtet sind, noch dass diese Spins unmittelbar als Bildpunkte beobachtet werden.",
+            "essentialUnderstandingEn": "In a static magnetic field B0, a small statistical population imbalance among suitable nuclear spins establishes net magnetization along the field. The model describes an ensemble; it means neither that all individual spins are exactly aligned nor that those spins are observed directly as image points.",
+            "observablePerformanceDe": "Die lernende Person deutet in einem neuen Ensembleschema die überwiegende und entgegenstehende Spinpopulation, konstruiert daraus die Richtung der Netto-Magnetisierung und korrigiert die Behauptung, B0 richte jeden einzelnen Kernspin vollständig gleich aus.",
+            "observablePerformanceEn": "In a fresh ensemble diagram, the learner interprets the predominant and opposing spin populations, constructs the direction of net magnetization from them, and corrects the claim that B0 completely aligns every individual nuclear spin."
+          },
+          {
+            "id": "resonant-rf-excitation-tips-net-magnetization",
+            "essentialUnderstandingDe": "Eine Hochfrequenzanregung koppelt wirksam an die Kernspinmagnetisierung, wenn ihre Frequenz zur Resonanzbedingung im lokalen Magnetfeld passt. Der Puls lenkt die Netto-Magnetisierung aus ihrer Gleichgewichtslage aus; eine beliebige Frequenz oder bloßes Einschalten eines Senders bewirkt nicht dieselbe Anregung.",
+            "essentialUnderstandingEn": "Radio-frequency excitation couples effectively to nuclear-spin magnetization when its frequency matches the resonance condition in the local magnetic field. The pulse tips net magnetization away from equilibrium; an arbitrary frequency or merely switching on a transmitter does not produce the same excitation.",
+            "observablePerformanceDe": "Für eine unabhängig vorgelegte lokale Feldstärke und mehrere qualitative Anregungsfrequenzen wählt die lernende Person die resonante Möglichkeit, ordnet dem Puls die Auslenkung der Netto-Magnetisierung zu und sagt für deutliche Verstimmung qualitativ eine schwächere beziehungsweise fehlende Anregung voraus.",
+            "observablePerformanceEn": "For an independently presented local field strength and several qualitative excitation frequencies, the learner selects the resonant option, assigns tipping of net magnetization to the pulse, and qualitatively predicts weaker or absent excitation for substantial detuning."
+          },
+          {
+            "id": "relaxing-transverse-magnetization-produces-measured-signal",
+            "essentialUnderstandingDe": "Nach der Anregung präzediert die transversale Magnetisierung und kehrt unter Relaxation zum Gleichgewicht zurück. Ihre zeitliche Änderung erzeugt in der Empfangseinrichtung ein messbares Signal; gemessen wird ein elektromagnetisches Signal des Ensembles, aus dem Eigenschaften erschlossen werden, nicht ein unmittelbar sichtbarer einzelner Kernspin.",
+            "essentialUnderstandingEn": "After excitation, transverse magnetization precesses and returns toward equilibrium through relaxation. Its time variation produces a measurable signal in the receiver; what is measured is an electromagnetic ensemble signal from which properties are inferred, not a directly visible individual nuclear spin.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem frischen Zeitablauf Hochfrequenzpuls, transversale Magnetisierung, abklingendes Empfangssignal und Rückkehr zum Gleichgewicht, erklärt die Messentstehung qualitativ und trennt gemessenes Signal von der daraus erschlossenen Magnetisierungsentwicklung.",
+            "observablePerformanceEn": "In a fresh timeline, the learner orders the radio-frequency pulse, transverse magnetization, decaying received signal, and return toward equilibrium, qualitatively explains signal generation, and distinguishes the measured signal from the inferred evolution of magnetization."
+          },
+          {
+            "id": "gradients-encode-position-in-frequency-or-phase",
+            "essentialUnderstandingDe": "Magnetfeldgradienten machen die lokale Feldstärke und damit Resonanzfrequenz beziehungsweise Phasenentwicklung von der Position abhängig. Dadurch kann das gemessene Signal räumliche Information tragen; ohne einen passenden Gradienten fehlt diese Ortsunterscheidung, während die qualitative Erklärung keine Fourier-Rekonstruktion oder quantitative Kontrastanalyse voraussetzt.",
+            "essentialUnderstandingEn": "Magnetic-field gradients make local field strength, and thus resonance frequency or phase evolution, depend on position. This allows the measured signal to carry spatial information; without an appropriate gradient that positional distinction is absent, while the qualitative explanation does not require Fourier reconstruction or quantitative contrast analysis.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einer neuen einfachen Orts-Frequenz- oder Orts-Phasen-Tabelle Signalkomponenten den Positionen zu, sagt für umgekehrte beziehungsweise anders ausgerichtete Gradienten die Änderung der Codierung voraus und benennt ohne Gradienten die fehlende Ortsinformation.",
+            "observablePerformanceEn": "In a fresh simple position-frequency or position-phase table, the learner assigns signal components to positions, predicts the change in encoding when gradients are reversed or redirected, and identifies the missing positional information when no gradient is present."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "static-field-establishes-net-ensemble-magnetization",
+            "resonant-rf-excitation-tips-net-magnetization",
+            "relaxing-transverse-magnetization-produces-measured-signal",
+            "gradients-encode-position-in-frequency-or-phase"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sequence-component",
+            "textDe": "Statisches Feld, resonanter Hochfrequenzpuls, Relaxations- und Empfangsphase oder Magnetfeldgradient einzeln und in geänderter Reihenfolge",
+            "textEn": "Static field, resonant radio-frequency pulse, relaxation and reception phase, or magnetic-field gradient alone and in changed sequence"
+          },
+          {
+            "id": "resonance-condition",
+            "textDe": "Passende Resonanzfrequenz, deutliche Verstimmung oder durch lokale Feldänderung verschobene Resonanzbedingung",
+            "textEn": "Matching resonance frequency, substantial detuning, or resonance condition shifted by a local field change"
+          },
+          {
+            "id": "gradient-geometry",
+            "textDe": "Positiver, umgekehrter oder auf eine andere Raumachse gelegter Gradient sowie fehlender Gradient",
+            "textEn": "Positive, reversed, or differently oriented spatial gradient, and absence of a gradient"
+          },
+          {
+            "id": "representation-chain",
+            "textDe": "Ensemble-Magnetisierungsskizze, Sequenzzeitlinie, Empfangssignal oder einfache Orts-Frequenz- beziehungsweise Orts-Phasen-Zuordnung",
+            "textEn": "Ensemble-magnetization diagram, sequence timeline, received signal, or simple position-frequency or position-phase mapping"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "qualitative-mri-sequence-ordering",
+            "taskDemandDe": "Vier neu gezeichnete Sequenzkarten zeigen B0 mit Netto-Magnetisierung, einen resonanten Hochfrequenzpuls, ein abklingendes Empfangssignal und einen Ortsgradienten. Ordne die Karten zu einer physikalisch sinnvollen qualitativen MRT-Kette und erkläre für jede Karte, welche Systemgröße verändert oder gemessen wird.",
+            "taskDemandEn": "Four newly drawn sequence cards show B0 with net magnetization, a resonant radio-frequency pulse, a decaying received signal, and a spatial gradient. Arrange the cards into a physically meaningful qualitative MRI chain and explain for each card which system quantity is changed or measured.",
+            "expectedPerformanceDe": "Die lernende Person beginnt mit der Ensemble-Netto-Magnetisierung im statischen Feld, ordnet die resonante Auslenkung vor das Relaxationssignal, beschreibt das Empfangssignal als Messgröße und weist dem Gradienten die Ortscodierung statt die Erzeugung der Kernspins zu.",
+            "expectedPerformanceEn": "The learner begins with ensemble net magnetization in the static field, places resonant tipping before the relaxation signal, describes the received signal as the measured quantity, and assigns spatial encoding rather than creation of nuclear spins to the gradient.",
+            "understandingFocusDe": "Die Sequenzprüfung zeigt, ob die MRT-Schritte als Kausalkette mit getrennten Rollen statt als ungeordnete Begriffsliste verstanden werden.",
+            "understandingFocusEn": "The sequence task reveals whether the MRI steps are understood as a causal chain with distinct roles rather than an unordered list of terms."
+          },
+          {
+            "id": "reversed-gradient-position-frequency-map",
+            "taskDemandDe": "Eine sichere Simulation zeigt drei gleichartige Probenorte entlang einer Achse und ihre lokalen Resonanzfrequenzen bei einem linearen Gradienten. Ordne die Frequenzen den Orten zu, kehre anschließend das Gradientenvorzeichen um und sage die neue Zuordnung voraus, ohne eine vollständige Bildrekonstruktion durchzuführen.",
+            "taskDemandEn": "A safe simulation shows three similar sample positions along one axis and their local resonance frequencies under a linear gradient. Assign the frequencies to positions, then reverse the gradient sign and predict the new mapping without performing a full image reconstruction.",
+            "expectedPerformanceDe": "Die lernende Person verbindet lokale Feldstärke, Resonanzfrequenz und Position, kehrt bei umgekehrtem Gradienten die räumliche Reihenfolge der Frequenzzuordnung begründet um und belässt die Netto-Magnetisierungs- und Relaxationserklärung unverändert.",
+            "expectedPerformanceEn": "The learner connects local field strength, resonance frequency, and position, justifiably reverses the spatial ordering of the frequency mapping when the gradient is reversed, and leaves the net-magnetization and relaxation explanation unchanged.",
+            "understandingFocusDe": "Der Vorzeichenwechsel prüft den Transfer der Ortscodierung und trennt ihn von Anregung und Signalentstehung.",
+            "understandingFocusEn": "Reversing the sign tests transfer of spatial encoding and separates it from excitation and signal generation."
+          },
+          {
+            "id": "off-resonance-and-missing-gradient-diagnosis",
+            "taskDemandDe": "Zwei simulierte MRT-Varianten werden verglichen: In A liegt die Hochfrequenz deutlich neben der angegebenen Resonanz, in B ist die Anregung resonant, aber der Ortsgradient fehlt. Sage qualitativ voraus, welche Stufe der Signalkette jeweils beeinträchtigt ist und welche Information deshalb fehlt.",
+            "taskDemandEn": "Two simulated MRI variants are compared: in A the radio frequency is well away from the supplied resonance, while in B excitation is resonant but the spatial gradient is absent. Qualitatively predict which stage of the signal chain is impaired in each case and what information is therefore missing.",
+            "expectedPerformanceDe": "Die lernende Person erwartet in A eine schwache oder fehlende Auslenkung und damit ein entsprechend schwaches Signal, in B dagegen ein Ensemble-Signal ohne die vorgesehene räumliche Unterscheidung. Sie verwechselt Resonanzbedingung und Gradientencodierung nicht und fordert keine quantitative Kontrast- oder Fourier-Auswertung.",
+            "expectedPerformanceEn": "The learner expects weak or absent tipping in A and thus a correspondingly weak signal, but in B an ensemble signal without the intended spatial distinction. The learner does not confuse resonance condition with gradient encoding and does not require quantitative contrast or Fourier analysis.",
+            "understandingFocusDe": "Die zwei unterschiedlichen Ausfälle prüfen, ob Anregung und Ortscodierung kausal getrennt und auf neue Bedingungen übertragen werden.",
+            "understandingFocusEn": "The two different failures test whether excitation and spatial encoding are causally separated and transferred to fresh conditions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "reason": "DE: Das Profil koordiniert Dispersionsrelation, frequenz- beziehungsweise vakuumwellenlängenabhängige Brechzahl, Phasengeschwindigkeit und Brechungsrichtung in frischen Graph-, Tabellen- und Grenzflächenfällen. Es fordert begründete Vorhersagen bei geändertem Medium, Kurvenverlauf und Einfallswinkel, begrenzt Aussagen auf den dargestellten Frequenzbereich und bleibt ausschließlich bei Phasengeschwindigkeit und Brechung. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile coordinates dispersion relation, frequency- or vacuum-wavelength-dependent refractive index, phase velocity, and refraction direction in fresh graph, table, and interface cases. It requires justified predictions when medium, curve shape, and incidence angle change, bounds claims to the represented frequency range, and remains exclusively within phase velocity and refraction. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "dispersion-relation-sets-frequency-dependent-phase-velocity",
+            "essentialUnderstandingDe": "Eine Dispersionsrelation ω(k) verknüpft Kreisfrequenz und Wellenzahl für ein bestimmtes Medium und Modellregime. Für einen dargestellten monochromatischen Anteil ist die Phasengeschwindigkeit v_ph = ω/k; verschiedene Punkte der Kurve können deshalb verschiedene Phasengeschwindigkeiten besitzen.",
+            "essentialUnderstandingEn": "A dispersion relation ω(k) links angular frequency and wave number for a particular medium and model regime. For a represented monochromatic component, phase velocity is v_ph = ω/k, so different points on the curve can have different phase velocities.",
+            "observablePerformanceDe": "Die lernende Person liest aus einem unbekannten ω-k-Diagramm für mehrere markierte Punkte ω und k mit Einheiten ab, bestimmt oder vergleicht jeweils ω/k und erklärt die Unterschiede als frequenzabhängige Phasengeschwindigkeit innerhalb des angegebenen Kurvenbereichs.",
+            "observablePerformanceEn": "From an unfamiliar ω-k graph, the learner reads ω and k with units for several marked points, determines or compares ω/k for each, and explains the differences as frequency-dependent phase velocity within the stated range of the curve."
+          },
+          {
+            "id": "refractive-index-links-medium-to-phase-velocity",
+            "essentialUnderstandingDe": "Die Brechzahl n(ω) beziehungsweise n(λ0) beschreibt im betrachteten Medium die Phasengeschwindigkeit über v_ph = c/n. An einer ruhenden Grenzfläche bleibt die Frequenz erhalten, während sich im Medium Phasengeschwindigkeit und Wellenlänge ändern; n muss daher zur jeweiligen Frequenz oder Vakuumwellenlänge ausgewertet werden.",
+            "essentialUnderstandingEn": "The refractive index n(ω), or n(λ0), describes phase velocity in the medium through v_ph = c/n. At a stationary interface frequency remains unchanged while phase velocity and wavelength in the medium change, so n must be evaluated at the relevant frequency or vacuum wavelength.",
+            "observablePerformanceDe": "Aus einer frischen n(ω)- oder n(λ0)-Tabelle bestimmt die lernende Person für zwei Spektralanteile die zugehörigen Phasengeschwindigkeiten, hält Frequenz und Wellenlänge an der Grenzfläche fachlich auseinander und prüft Einheiten sowie die Erwartung v_ph < c für die vorgegebenen n > 1.",
+            "observablePerformanceEn": "From a fresh n(ω) or n(λ0) table, the learner determines phase velocities for two spectral components, correctly distinguishes frequency from wavelength at the interface, and checks units and the expectation v_ph < c for the supplied n > 1."
+          },
+          {
+            "id": "frequency-dependent-index-controls-refraction-direction",
+            "essentialUnderstandingDe": "Bei gegebener Einfallsgeometrie verbindet das Brechungsgesetz die Ausbreitungsrichtungen mit den Brechzahlen beider Medien. Hängt n von der Frequenz ab, können verschiedene Frequenzanteile unterschiedliche Brechungswinkel besitzen; welche Frequenz stärker gebrochen wird, folgt aus den konkreten n-Werten und darf nicht aus einer universellen Farbreihenfolge geraten werden.",
+            "essentialUnderstandingEn": "For a given incidence geometry, the law of refraction links propagation directions with the refractive indices of both media. If n depends on frequency, different frequency components can have different refraction angles; which frequency is refracted more strongly follows from the actual n values and must not be guessed from a universal color ordering.",
+            "observablePerformanceDe": "Die lernende Person sagt für eine unbekannte Grenzfläche zunächst aus den bereitgestellten n-Werten die relative Richtungsänderung zweier Frequenzen voraus, konstruiert oder berechnet die Winkel mit konsistenter Bezugsnormaler und erklärt Vorzeichen, Geometrie und physikalische Folgerung.",
+            "observablePerformanceEn": "For an unfamiliar interface, the learner first predicts the relative directional change of two frequencies from the supplied n values, constructs or calculates the angles using a consistent normal, and explains the sign, geometry, and physical conclusion."
+          },
+          {
+            "id": "representations-and-validity-range-must-agree",
+            "essentialUnderstandingDe": "ω-k-Kurve, n-Frequenz- oder n-Wellenlängen-Darstellung, Gleichung und Grenzflächenskizze beschreiben zusammengehörige, aber nicht identische Aspekte der Dispersion. Eine Aussage gilt nur für das angegebene Medium, den ausgewiesenen Spektralbereich und die verwendete Phasengeschwindigkeits- und Brechungsbeziehung; eine Fortsetzung außerhalb der Daten benötigt zusätzliche Evidenz.",
+            "essentialUnderstandingEn": "An ω-k curve, refractive-index-versus-frequency or wavelength representation, equation, and interface diagram describe related but non-identical aspects of dispersion. A conclusion applies only to the stated medium, spectral range, and phase-velocity and refraction relation used; extending it beyond the data requires additional evidence.",
+            "observablePerformanceDe": "Die lernende Person übersetzt bei einem neuen Fall zwischen Graph, Tabelle, v_ph-Beziehung und Ausbreitungsrichtung, kennzeichnet den belegten Frequenzbereich und weist eine Extrapolation oder Rangfolge zurück, die der vorgegebenen Kurve widerspricht oder außerhalb ihres Bereichs liegt.",
+            "observablePerformanceEn": "In a fresh case, the learner translates among graph, table, the v_ph relation, and propagation direction, identifies the evidenced frequency range, and rejects an extrapolation or ordering that contradicts the supplied curve or lies outside its range."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "dispersion-relation-sets-frequency-dependent-phase-velocity",
+            "refractive-index-links-medium-to-phase-velocity",
+            "frequency-dependent-index-controls-refraction-direction",
+            "representations-and-validity-range-must-agree"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "medium-and-curve-shape",
+            "textDe": "Zwei Medien mit unterschiedlicher n(ω)- beziehungsweise n(λ0)-Kurve, einschließlich geänderter oder lokal umgekehrter Reihenfolge der Brechzahlen",
+            "textEn": "Two media with different n(ω) or n(λ0) curves, including a changed or locally reversed ordering of refractive indices"
+          },
+          {
+            "id": "spectral-components",
+            "textDe": "Zwei oder mehr Frequenzen beziehungsweise Vakuumwellenlängen innerhalb verschiedener ausdrücklich markierter Datenbereiche",
+            "textEn": "Two or more frequencies or vacuum wavelengths within different explicitly marked data ranges"
+          },
+          {
+            "id": "interface-geometry",
+            "textDe": "Übergang zwischen verschiedenen Medien bei normalem, schrägem oder verändertem Einfallswinkel und festgelegter Flächennormaler",
+            "textEn": "Transition between different media at normal, oblique, or changed incidence angle with a defined surface normal"
+          },
+          {
+            "id": "representation-mode",
+            "textDe": "ω-k-Diagramm, n-Frequenz- oder n-Vakuumwellenlängen-Kurve, Datentabelle, Gleichung oder Ausbreitungsrichtungsskizze",
+            "textEn": "ω-k graph, refractive-index-versus-frequency or vacuum-wavelength curve, data table, equation, or propagation-direction diagram"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "prism-with-supplied-index-curve",
+            "taskDemandDe": "Für ein unbekanntes transparentes Medium ist eine n(λ0)-Kurve in einem begrenzten Bereich angegeben. Zwei monochromatische Anteile treffen aus Luft unter demselben Winkel auf eine prismatische Grenzfläche. Vergleiche ihre Phasengeschwindigkeiten, sage die relative Brechung voraus und konstruiere die Ausbreitungsrichtungen aus den konkreten Kurvenwerten.",
+            "taskDemandEn": "A bounded n(λ0) curve is supplied for an unfamiliar transparent medium. Two monochromatic components meet a prism interface from air at the same angle. Compare their phase velocities, predict their relative refraction, and construct the propagation directions from the actual curve values.",
+            "expectedPerformanceDe": "Die lernende Person liest für beide Vakuumwellenlängen n ab, verwendet v_ph = c/n, ordnet den größeren n-Wert der kleineren Phasengeschwindigkeit und der stärkeren Richtungsänderung zur Normalen zu und begrenzt die Aussage auf den angegebenen Kurvenbereich.",
+            "expectedPerformanceEn": "The learner reads n for both vacuum wavelengths, uses v_ph = c/n, associates the larger n with lower phase velocity and greater directional change toward the normal, and bounds the conclusion to the supplied range of the curve.",
+            "understandingFocusDe": "Der frische Medienfall prüft die gemeinsame Deutung von Kurve, Phasengeschwindigkeit und Brechungsgeometrie statt einer auswendig gelernten Farbreihenfolge.",
+            "understandingFocusEn": "The fresh medium case tests coordinated interpretation of curve, phase velocity, and refraction geometry rather than a memorized color ordering."
+          },
+          {
+            "id": "omega-k-points-and-phase-velocity",
+            "taskDemandDe": "Ein neues ω-k-Diagramm eines Mediums markiert drei Punkte in verschiedenen Frequenzbereichen. Bestimme an jedem Punkt ω/k mit Einheiten, ordne die Phasengeschwindigkeiten und verknüpfe die Ordnung mit einer separat bereitgestellten n(ω)-Tabelle desselben Mediums.",
+            "taskDemandEn": "A fresh ω-k graph for a medium marks three points in different frequency ranges. Determine ω/k with units at each point, order the phase velocities, and connect that ordering with a separately supplied n(ω) table for the same medium.",
+            "expectedPerformanceDe": "Die lernende Person verwendet für jeden monochromatischen Punkt das Verhältnis ω/k, erhält eine mit c/n konsistente Rangfolge, erklärt mögliche Abweichungen durch Ableseunsicherheit und bleibt bei der geforderten Phasengeschwindigkeit.",
+            "expectedPerformanceEn": "For each monochromatic point, the learner uses the ratio ω/k, obtains an ordering consistent with c/n, explains possible discrepancies through reading uncertainty, and stays with the required phase velocity.",
+            "understandingFocusDe": "Die Koordination zweier Darstellungen prüft die Bedeutung der Phasengeschwindigkeit innerhalb des exakten Zielumfangs.",
+            "understandingFocusEn": "Coordinating two representations tests the meaning of phase velocity within the exact goal scope."
+          },
+          {
+            "id": "changed-index-order-and-incidence-geometry",
+            "taskDemandDe": "Die bereitgestellte n(λ0)-Kurve eines zweiten Mediums führt für zwei Spektralanteile im untersuchten Bereich zu einer anderen Brechzahlreihenfolge als die Kurve des ersten Mediums. Bei einem neuen schrägen Einfallswinkel soll entschieden werden, ob sich dadurch auch die Reihenfolge der Brechungswinkel ändert und welche Daten außerhalb des markierten Bereichs keine Aussage tragen.",
+            "taskDemandEn": "For two spectral components in the investigated range, the supplied n(λ0) curve of a second medium gives a different ordering of refractive indices from the curve of the first medium. At a fresh oblique incidence angle, decide whether the ordering of refraction angles also changes and which data outside the marked range support no conclusion.",
+            "expectedPerformanceDe": "Die lernende Person liest die lokale Brechzahlordnung am relevanten Spektralpunkt ab, wendet die Grenzflächengeometrie mit fester Normaler an, sagt eine mögliche Umkehr der Winkelordnung begründet voraus und verweigert eine Extrapolation über den Datenbereich hinaus.",
+            "expectedPerformanceEn": "The learner reads the local ordering of refractive indices at the relevant spectral point, applies the interface geometry with a fixed normal, justifiably predicts a possible reversal in angle ordering, and refuses extrapolation beyond the data range.",
+            "understandingFocusDe": "Der Kurven- und Geometriewechsel erzwingt echten Transfer und verhindert eine universelle, medienunabhängige Dispersionsregel.",
+            "understandingFocusEn": "Changing the curve and geometry requires genuine transfer and prevents a universal medium-independent dispersion rule."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5492f0e0-cbae-574e-a853-182616205ed3",
+      "reason": "DE: Das Profil verbindet Ladungs- und Nukleonenzahlbilanz, konsistente Massendaten, Q = (Σm_vor − Σm_nach)c² und Vorzeichendeutung zu einem physikalisch kontrollierten Kernreaktionsverfahren. Frische Reaktionsarten und umgekehrte Reaktionsrichtung verlangen Transfer; ein eigener Grenzfall stellt klar, dass Q < 0 einen Energiebedarf bezeichnet, aber sein Betrag wegen der Impulserhaltung nicht automatisch die experimentelle Projektilschwelle ist. Alle Aufgaben verwenden bereitgestellte Reaktions- und Massendaten statt realer Strahlungsquellen. Es wurde keine Visualisierung als Evidenzquelle gebunden; weder menschliche Freigabe noch Profil-Review-Läufe werden behauptet. EN: The profile connects charge-number and nucleon-number balance, consistent mass data, Q = (Σm_before − Σm_after)c², and sign interpretation in a physically controlled nuclear-reaction procedure. Fresh reaction types and reversed reaction direction require transfer; a dedicated boundary case makes clear that Q < 0 denotes an energy requirement but its magnitude is not automatically the experimental projectile threshold because momentum must be conserved. All tasks use supplied reaction and mass data rather than real radiation sources. No visualization was bound as an evidence source; neither human approval nor profile-review runs are claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "charge-and-nucleon-numbers-complete-reaction",
+            "essentialUnderstandingDe": "In einer Kernreaktionsgleichung müssen die Summen der Ladungszahlen Z und der Nukleonenzahlen A auf beiden Seiten übereinstimmen. Beide Bilanzen werden getrennt geprüft und bestimmen bei eindeutigen Angaben ein fehlendes Nuklid oder Teilchen; ein passendes A allein reicht nicht aus.",
+            "essentialUnderstandingEn": "In a nuclear reaction equation, the sums of charge numbers Z and nucleon numbers A must match on both sides. The two balances are checked separately and, when the information is sufficient, determine a missing nuclide or particle; a matching A alone is not enough.",
+            "observablePerformanceDe": "Die lernende Person ergänzt in einer unabhängig vorgelegten Reaktion das fehlende Nuklid oder Teilchen, notiert die A- und Z-Summen beider Seiten getrennt, prüft Elementsymbol und Ladung und verwirft einen Vorschlag, der nur eine der beiden Erhaltungszahlen erfüllt.",
+            "observablePerformanceEn": "For an independently presented reaction, the learner completes the missing nuclide or particle, records the A and Z sums on both sides separately, checks element symbol and charge, and rejects a proposal satisfying only one of the two conserved numbers."
+          },
+          {
+            "id": "consistent-mass-balance-determines-q-value",
+            "essentialUnderstandingDe": "Der Q-Wert Q = (Σm_vor − Σm_nach)c² bilanziert die Änderung der Ruheenergie zwischen vollständigem Anfangs- und Endzustand. Atom- oder Kernmassen, Elektronenbeiträge, Masseneinheiten und Umrechnungsfaktor müssen konsistent behandelt werden; eine bloße Differenz nicht zusammengehöriger Tabellenwerte ist keine gültige Energiebilanz.",
+            "essentialUnderstandingEn": "The Q-value Q = (Σm_before − Σm_after)c² balances the change in rest energy between complete initial and final states. Atomic or nuclear masses, electron contributions, mass units, and conversion factor must be handled consistently; merely subtracting unrelated table entries is not a valid energy balance.",
+            "observablePerformanceDe": "Die lernende Person wählt aus einer frischen Massentabelle die zur vervollständigten Reaktion gehörenden Werte, dokumentiert eine konsistente Atom- oder Kernmassenkonvention, bildet die vorzeichenrichtige Massendifferenz, rechnet in Energieeinheiten um und prüft Größenordnung und Einheit.",
+            "observablePerformanceEn": "From a fresh mass table, the learner selects the values belonging to the completed reaction, documents a consistent atomic- or nuclear-mass convention, forms the mass difference with the correct sign, converts it to energy units, and checks order of magnitude and unit."
+          },
+          {
+            "id": "q-sign-states-net-energy-release-or-requirement",
+            "essentialUnderstandingDe": "Q > 0 bedeutet, dass die Ruhemasse des Endzustands kleiner ist und netto Energie für kinetische Energie oder Strahlung frei wird; Q < 0 bedeutet, dass dem Reaktionssystem netto Energie zugeführt werden muss. Das Vorzeichen gehört zur gewählten Reaktionsrichtung und kehrt sich bei der exakt umgekehrten Reaktion um.",
+            "essentialUnderstandingEn": "Q > 0 means that the final-state rest mass is smaller and net energy is released into kinetic energy or radiation; Q < 0 means that net energy must be supplied to the reaction system. The sign belongs to the chosen reaction direction and reverses for the exact reverse reaction.",
+            "observablePerformanceDe": "Die lernende Person deutet in einem neuen Fall Vorzeichen und Betrag als Nettoenergiebilanz, benennt mögliche Energieformen ohne eine einzelne Aufteilung zu erfinden und sagt für die umgekehrte Reaktion die Vorzeichenänderung voraus, bevor sie die Massenbilanz kontrolliert.",
+            "observablePerformanceEn": "In a fresh case, the learner interprets sign and magnitude as a net energy balance, identifies possible energy forms without inventing a unique partition, and predicts the sign reversal for the reverse reaction before checking the mass balance."
+          },
+          {
+            "id": "negative-q-is-not-automatically-projectile-threshold",
+            "essentialUnderstandingDe": "Bei einer endothermen Projektilreaktion zeigt Q < 0 den Nettoenergiebedarf, aber |Q| ist im Laborsystem nicht automatisch die kleinste Projektilenergie, bei der die Reaktion stattfinden kann. Weil zusätzlich Impuls erhalten werden muss, kann auch der Endzustand kinetische Energie tragen; eine experimentelle Schwelle verlangt eine eigene kinematische Analyse, die dieses Ziel nicht als Q-Wert-Berechnung ausgibt.",
+            "essentialUnderstandingEn": "For an endothermic projectile reaction, Q < 0 shows the net energy requirement, but |Q| is not automatically the minimum projectile energy at which the reaction can occur in the laboratory frame. Because momentum must also be conserved, the final state can carry kinetic energy; an experimental threshold requires a separate kinematic analysis and is not presented by this goal as a Q-value calculation.",
+            "observablePerformanceDe": "Die lernende Person beurteilt zu einer unabhängig vorgelegten Reaktion die Behauptung „Schwellenenergie = |Q|“, trennt sicher belegten Q-Wert und Vorzeichendeutung von der zusätzlichen Impulsbedingung und nennt die fehlende kinematische Information, ohne eine nicht geforderte Schwellenformel zu erfinden.",
+            "observablePerformanceEn": "For an independently presented reaction, the learner assesses the claim “threshold energy = |Q|,” separates the established Q-value and sign interpretation from the additional momentum condition, and identifies the missing kinematic information without inventing an unrequested threshold formula."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "charge-and-nucleon-numbers-complete-reaction",
+            "consistent-mass-balance-determines-q-value",
+            "q-sign-states-net-energy-release-or-requirement",
+            "negative-q-is-not-automatically-projectile-threshold"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reaction-pattern",
+            "textDe": "Einfang, induzierte Transmutation, Fusion oder exakt umgekehrte Reaktionsrichtung mit verändertem Projektil- und Produktmuster",
+            "textEn": "Capture, induced transmutation, fusion, or exact reverse reaction with a changed projectile and product pattern"
+          },
+          {
+            "id": "missing-reaction-entry",
+            "textDe": "Fehlendes Nuklid, Proton, Neutron oder anderes durch A- und Z-Bilanz eindeutig bestimmtes Teilchen",
+            "textEn": "Missing nuclide, proton, neutron, or other particle uniquely determined by A and Z balance"
+          },
+          {
+            "id": "mass-data-convention",
+            "textDe": "Konsistente Atommassen, Kernmassen, Massen in u, Energiedaten in MeV/c² oder bereitgestellte Massendefekte",
+            "textEn": "Consistent atomic masses, nuclear masses, masses in u, energy data in MeV/c², or supplied mass defects"
+          },
+          {
+            "id": "energy-claim-boundary",
+            "textDe": "Exothermer oder endothermer Q-Wert, umgekehrtes Vorzeichen, mögliche Energieformen und Abgrenzung von der experimentellen Projektilschwelle",
+            "textEn": "Exothermic or endothermic Q-value, reversed sign, possible energy forms, and distinction from the experimental projectile threshold"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "nitrogen-alpha-transmutation-with-missing-proton",
+            "taskDemandDe": "Die Reaktion ¹⁴₇N + ⁴₂He → ¹⁷₈O + ? und eine konsistente Tabelle der Atommassen werden bereitgestellt. Ergänze das fehlende Teilchen mit A- und Z-Bilanz, berechne Q einschließlich Einheit und deute das Vorzeichen als Nettoenergiebilanz.",
+            "taskDemandEn": "The reaction ¹⁴₇N + ⁴₂He → ¹⁷₈O + ? and a consistent table of atomic masses are supplied. Complete the missing particle using A and Z balance, calculate Q including its unit, and interpret the sign as a net energy balance.",
+            "expectedPerformanceDe": "Die lernende Person erhält für das fehlende Teilchen ¹₁H beziehungsweise ein Proton, zeigt 18 und 9 als gleiche A- und Z-Summen, verwendet wegen ausgeglichener Elektronenzahl die bereitgestellten Atommassen konsistent und deutet den berechneten Q-Wert ohne Verwechslung mit einer Schwellenenergie.",
+            "expectedPerformanceEn": "The learner identifies ¹₁H, or a proton, as the missing particle, shows equal A and Z sums of 18 and 9, consistently uses the supplied atomic masses because electron numbers balance, and interprets the calculated Q-value without confusing it with a threshold energy.",
+            "understandingFocusDe": "Die Transmutation koppelt Reaktionsvollständigkeit, Massenkonvention und Energievorzeichen in einem frischen, überprüfbaren Verfahren.",
+            "understandingFocusEn": "The transmutation couples reaction completion, mass convention, and energy sign in a fresh, checkable procedure."
+          },
+          {
+            "id": "deuterium-tritium-forward-and-reverse-q",
+            "taskDemandDe": "Für ²₁H + ³₁H → ⁴₂He + ¹₀n sind konsistente Massendaten gegeben. Berechne den Q-Wert der dargestellten Richtung, sage anschließend für die exakt umgekehrte Reaktion Vorzeichen und Energiebedarf voraus und bestätige dies durch Vertauschen der Massensummen.",
+            "taskDemandEn": "Consistent mass data are supplied for ²₁H + ³₁H → ⁴₂He + ¹₀n. Calculate the Q-value in the direction shown, then predict the sign and energy requirement for the exact reverse reaction and confirm this by interchanging the mass sums.",
+            "expectedPerformanceDe": "Die lernende Person prüft A = 5 und Z = 2 auf beiden Seiten, erhält für die Vorwärtsrichtung einen positiven und für die Rückrichtung den gleich großen negativen Q-Wert und erklärt die Vorzeichenänderung als Umkehr derselben Ruheenergiebilanz, ohne die Energieaufteilung auf Produkte zu erfinden.",
+            "expectedPerformanceEn": "The learner checks A = 5 and Z = 2 on both sides, obtains a positive Q-value in the forward direction and an equal-magnitude negative value in reverse, and explains the sign change as reversal of the same rest-energy balance without inventing how energy is partitioned among products.",
+            "understandingFocusDe": "Die Richtungsumkehr prüft, ob das Q-Vorzeichen aus einer geordneten Anfangs- und Endbilanz statt aus dem Reaktionsnamen folgt.",
+            "understandingFocusEn": "Reversing the direction tests whether the Q sign follows from an ordered initial and final balance rather than from the name of the reaction."
+          },
+          {
+            "id": "endothermic-projectile-q-versus-threshold-claim",
+            "taskDemandDe": "Eine unbekannte Projektilreaktion wird vollständig mit A, Z und konsistenten Massen angegeben; daraus folgt Q < 0. Ein Versuchsbericht behauptet ohne weitere Kinematik, die kleinste Projektilenergie sei exakt |Q|. Berechne und deute Q und beurteile anschließend die Schwellenbehauptung.",
+            "taskDemandEn": "An unfamiliar projectile reaction is fully specified by A, Z, and consistent masses, giving Q < 0. Without further kinematics, an experimental report claims that the minimum projectile energy is exactly |Q|. Calculate and interpret Q, then assess the threshold claim.",
+            "expectedPerformanceDe": "Die lernende Person bestätigt den negativen Q-Wert als Nettoenergiebedarf, erklärt aber, dass Impulserhaltung im Laborsystem kinetische Energie des Endzustands verlangen kann, und kennzeichnet die experimentelle Schwelle ohne zusätzliche kinematische Angaben als nicht aus Q allein bestimmt.",
+            "expectedPerformanceEn": "The learner confirms the negative Q-value as a net energy requirement but explains that momentum conservation in the laboratory frame can require final-state kinetic energy and identifies the experimental threshold as not determined by Q alone without additional kinematic information.",
+            "understandingFocusDe": "Der Grenzfall schützt die korrekte Vorzeichendeutung vor der fachlich falschen Gleichsetzung mit einer experimentellen Schwelle.",
+            "understandingFocusEn": "The boundary case protects correct sign interpretation from the physically false equation with an experimental threshold."
+          }
+        ]
+      }
+    }
+  ]
+}

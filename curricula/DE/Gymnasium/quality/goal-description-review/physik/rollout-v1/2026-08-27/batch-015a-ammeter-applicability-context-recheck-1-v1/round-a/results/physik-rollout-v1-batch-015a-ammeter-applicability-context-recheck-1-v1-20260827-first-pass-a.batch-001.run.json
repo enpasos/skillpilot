@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "openai-gpt-5.6-sol-physik-b015a-round-a-20260827T190320Z",
+  "campaignId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-a",
+  "roundId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:94e78a7f81f31ea0c49b7d5426f08438bb92bb665985def7e03b455bd05a9f4e",
+  "bundleFingerprint": "sha256:5e3556a79ce3a23111382c5a2dd1660b38a096ec17ef256bc3e9519f4231ebb6",
+  "bookDigest": "sha256:a569db5595cd20007257f376b72d8b5915e2d64df436abce62571160a9c3c2d3",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c2c957bc4d2f0aed5b8b3b720a2f27fe995a1ec28e7563e23fb30d85770c5e43",
+  "independenceGroupId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f1a078ae-6262-4444-a4bc-a5ab275621cf"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:94e78a7f81f31ea0c49b7d5426f08438bb92bb665985def7e03b455bd05a9f4e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-27T19:03:20Z",
+  "completedAt": "2026-08-27T19:06:27Z",
+  "status": "completed",
+  "outputDigest": "sha256:464214a641d8c05501f69bb3d16fe9386835713fbfc768083d8afab26d0e6cd5",
+  "toolchainVersion": "codex-gpt-5.6-sol-review-v1"
+}

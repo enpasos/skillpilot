@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `8dc2c87a-cfc6-5f15-89e5-634107f5c9c7`
 - Titel: Abbildungsmatrix aus Basisbildern bestimmen
-- Beschreibung: Die lernende Person kann aus den Bildern der Einheitsvektoren einer Basis die zugehörige Abbildungsmatrix bestimmen.
+- Beschreibung: Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Abbildungsmatrix aus Basisbildern bestimmen
-Beschreibung: Die lernende Person kann aus den Bildern der Einheitsvektoren einer Basis die zugehörige Abbildungsmatrix bestimmen.
+Beschreibung: Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.
 
 Zusatzanweisung:
 Pflichtinhalt:

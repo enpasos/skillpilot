@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cd8b0af81ca466a9f4762bc73bd814a042dd49efcc97b286f9665674169f341b",
+  "reviewInputFingerprint": "sha256:27fa956f826ed24a5964e8cf0819d0e6145851b68d317dc97c2aacea24ed99dc",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-a",
+      "roundId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-independent-a",
+      "runIds": [
+        "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b",
+      "roundId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-5.6-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "5ddba212-9e0a-5dd4-8274-239ec51ab6a8",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z:5ddba212-9e0a-5dd4-8274-239ec51ab6a8",
+      "secondRecordId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-001",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c156d2fb-0fe9-5f13-8baa-3e74d7da151e",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z:c156d2fb-0fe9-5f13-8baa-3e74d7da151e",
+      "secondRecordId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-002",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z:66256e22-44a3-5939-8862-821e29d6711d",
+      "secondRecordId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-003",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "af7855a3-6aea-5e05-8505-248bc9a8c219",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z:af7855a3-6aea-5e05-8505-248bc9a8c219",
+      "secondRecordId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-004",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z:4a42cddd-7827-5204-87e5-8d9eac7792f1",
+      "secondRecordId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-005",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27b90ce9-b650-5232-85fb-ce2cb69d59a3",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z:27b90ce9-b650-5232-85fb-ce2cb69d59a3",
+      "secondRecordId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-006",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015-global-electricity-safety-resistance-supply-final-6-v2-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `9bf67cce-4c8f-5497-8e64-825b83c6aa40`
 - Titel: Stochastische Übergangsmatrizen für Markov-Ketten prüfen
-- Beschreibung: Die lernende Person kann prüfen, ob eine gegebene Matrix als stochastische Übergangsmatrix einer Markov-Kette geeignet ist.
+- Beschreibung: Die lernende Person kann unter Angabe der Zeilen- oder Spaltenkonvention begründen, ob eine Matrix eine stochastische Übergangsmatrix einer Markov-Kette ist: Die Matrix ist quadratisch und ihre Zeilen und Spalten beziehen sich auf denselben Zustandsraum, alle Einträge sind nichtnegativ, und die zu jedem Ausgangszustand gehörenden Einträge summieren sich zu 1.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Stochastische Übergangsmatrizen für Markov-Ketten prüfen
-Beschreibung: Die lernende Person kann prüfen, ob eine gegebene Matrix als stochastische Übergangsmatrix einer Markov-Kette geeignet ist.
+Beschreibung: Die lernende Person kann unter Angabe der Zeilen- oder Spaltenkonvention begründen, ob eine Matrix eine stochastische Übergangsmatrix einer Markov-Kette ist: Die Matrix ist quadratisch und ihre Zeilen und Spalten beziehen sich auf denselben Zustandsraum, alle Einträge sind nichtnegativ, und die zu jedem Ausgangszustand gehörenden Einträge summieren sich zu 1.
 
 Zusatzanweisung:
 Pflichtinhalt:

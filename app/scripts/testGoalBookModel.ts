@@ -52,7 +52,7 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
 ] as const
 const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:954cfcec4a5168bc769a4c6b4846ba1cdf4cb5f5f3e37a83b02b8e219bcf0fd5'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:800edca92864b30c6ce25bdf423fa8ecc5ed2f5542c58ee4b68d3ceb46216fbd'
 
 const goal = ({
   id,

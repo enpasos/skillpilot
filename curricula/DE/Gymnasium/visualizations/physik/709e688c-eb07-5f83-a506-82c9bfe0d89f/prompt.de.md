@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `709e688c-eb07-5f83-a506-82c9bfe0d89f`
 - Titel: Auflösungsvermögen optischer Instrumente
-- Beschreibung: Beugung als begrenzender Faktor für die Auflösung von Mikroskopen, Teleskopen und dem menschlichen Auge (Rayleigh-Kriterium).
+- Beschreibung: Die lernende Person kann mithilfe des Rayleigh-Kriteriums erklären und beurteilen, wie Beugung, Wellenlänge und wirksame Öffnung das Auflösungsvermögen von Mikroskopen, Teleskopen und dem menschlichen Auge begrenzen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Auflösungsvermögen optischer Instrumente
-Beschreibung: Beugung als begrenzender Faktor für die Auflösung von Mikroskopen, Teleskopen und dem menschlichen Auge (Rayleigh-Kriterium).
+Beschreibung: Die lernende Person kann mithilfe des Rayleigh-Kriteriums erklären und beurteilen, wie Beugung, Wellenlänge und wirksame Öffnung das Auflösungsvermögen von Mikroskopen, Teleskopen und dem menschlichen Auge begrenzen.
 
 Zusatzanweisung:
 Bewahre die fachlich richtige Bildstruktur und korrigiere die deutsche Orthografie vollständig.

@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T20:19:24.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827",
+    "batchManifestDigest": "sha256:3c50b7b11b345814e86edb7df7ae04f0edb9b2a30cceb8726ba9e2eb344a6ffc",
+    "configDigest": "sha256:d5e8086522c3115b88a25dcb50306dfc64b56b108b1e77a78e5d918b3634c2c8",
+    "bundleFingerprint": "sha256:18a2303f63d007e9a495275f484820faed6764bd2aa9a684e60eed5c422f8678",
+    "bookDigest": "sha256:c6d23a5ce24d9caf09230b59abd0c36d438bcb5e6cdfe2d4f0f6ff741eefeab1",
+    "reviewInputFingerprint": "sha256:0e1d921575ae26a5213099c1cf74005c9882381e40a8b9c214f2081e053c5e43",
+    "dualSummaryDigest": "sha256:8b23f6b748c7e235edf1325c2c72182b4fef8fa0597dbb771951b2e750bd52fb",
+    "canonicalLandscapeDigest": "sha256:af12f6d966ee4214e014dcab032b5dbbac092c7b87b76de13c290d694f327127"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-a",
+      "campaignDigest": "sha256:54a8cf4284fd924ae9790bca0a32c3b5bbad3755912843a291130c07d2c84c3f",
+      "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:0e1d921575ae26a5213099c1cf74005c9882381e40a8b9c214f2081e053c5e43",
+      "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:72fc1457fbbf2734f8a1d2b0a4bfd7a7e34e9bf92f449a9d9a2f52a6b3a290fe",
+      "runId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "runManifestDigest": "sha256:d69cbf6ecd989f297e783cde3db45652e8a36245d78d4c217e41531a95e9c6c9",
+      "resultsDigest": "sha256:2d7d604aa27091ce4e7d45ba604a8c62583e7fa9fb4128947f7f26d80f6ace89"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-b",
+      "campaignDigest": "sha256:50b9c07a7032c38e0c6ac8297ee9e1ea6bdb084eaf58ac4c4d55e1259cc4cd70",
+      "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:0e1d921575ae26a5213099c1cf74005c9882381e40a8b9c214f2081e053c5e43",
+      "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a0e3ff66e7ec0050f248337c14fed5dcc4a7fe4c4bcf69825ae07d110ea14e5d",
+      "runId": "math-b011-final-v4-20260827-round-b-run-001",
+      "runManifestDigest": "sha256:14cab52937d46d82d66be4651e190709c362b07d030a56a71a46a9d979ab1633",
+      "resultsDigest": "sha256:c9a8f4b891c050af5d5fb197e79eb2ef2bb9b948fcc8cf4cca0f6b2cc9a9732b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-001",
+      "goalId": "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4d00bdf8e387c39880741cebff051cff949197a181ee6d120f606b6a273e3d72",
+      "pageFingerprint": "sha256:83aca91506f9534198e956df1b66474f5baf0a6556a83432f4e81ce32544b4c4",
+      "goalReviewContextFingerprint": "sha256:2d72d1dd11290221443850ef862c95cebbdfa4ae30772f0988a2783d804d2a35",
+      "finalText": {
+        "titleDe": "Volumen von Prismen und Pyramiden berechnen",
+        "titleEn": "Calculate volumes of prisms and pyramids",
+        "descriptionDe": "Die lernende Person kann bei Prismen und Pyramiden Grundflächeninhalt und senkrechte Höhe identifizieren, anhand der Körperart die passende Volumenformel V = G · h beziehungsweise V = ⅓ · G · h auswählen und anwenden sowie Ergebnisse in passenden Volumeneinheiten prüfen.",
+        "descriptionEn": "The learner can identify base area and perpendicular height in prisms and pyramids, select and apply the appropriate volume formula V = G · h or V = ⅓ · G · h according to the solid, and check results using suitable cubic units."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+          "recordDigest": "sha256:75236fa13e5f24a4872e337f25ce87b6fee6c61add79be040d69317788e142c3"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-9d497a0c",
+          "recordDigest": "sha256:f4a0fbf172ce16c289259cf15db3ae51acb69ab8b2b2f442a28332dad13c6fdb"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Beschreibung als quellentreue, atomare Volumenkompetenz. Die zweite Evidenzfassung wird gebunden, weil sie Grundflächeninhalt und senkrechte Höhe, die körperabhängige Wahl zwischen V = G · h und V = ⅓ · G · h sowie Einheiten- und Größenprüfung in veränderten Darstellungen zusammenführt, ohne die getrennte Formelherleitung vorwegzunehmen.",
+      "rationaleEn": "Both independent reviews confirm the description as a source-faithful, atomic volume competence. The second evidence formulation is bound because it combines base area and perpendicular height, selection between V = G · h and V = ⅓ · G · h according to the solid, and unit and magnitude checks in varied representations without taking over the separate formula-derivation goal."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-002",
+      "goalId": "7b860649-373e-5523-9843-ec96b3537f1f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3ba6fc827232f6268a54f49ebc5136a58d71065db4dcdfef9895e9858932c4d2",
+      "pageFingerprint": "sha256:846fc0827ef97f183bc613683d9e65e859109395b4ecc4d56e92989d730c5486",
+      "goalReviewContextFingerprint": "sha256:90bdc1ec70fc70eed2a4650f51eeecc818df5844d69e0999752edb2bc76cb260",
+      "finalText": {
+        "titleDe": "Volumen von Kegeln berechnen",
+        "titleEn": "Calculate volumes of cones",
+        "descriptionDe": "Die lernende Person kann bei geraden Kreiskegeln Grundkreisfläche und senkrechte Höhe identifizieren, die senkrechte Höhe von der Mantellinie unterscheiden, mit V = ⅓ · G · h das Volumen berechnen und das Ergebnis in passenden Volumeneinheiten prüfen.",
+        "descriptionEn": "The learner can identify the circular base area and perpendicular height of a right circular cone, distinguish the height from the slant height, calculate the volume using V = ⅓ · G · h, and check the result using suitable cubic units."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:7b860649-373e-5523-9843-ec96b3537f1f",
+          "recordDigest": "sha256:427e00b902e54bf33cf41103f64a300ca2fd8a56b015ed1eb5e7ddfa3727f7c4"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-7b860649",
+          "recordDigest": "sha256:bfa0c02416612e7caf33c3dc081c945422d83ee77dc4c2082f87ecd4503ea69d"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die lokale Präzisierung des geraden Kreiskegels als vollständig und atomar. Die zweite Evidenzfassung wird gebunden, weil sie Grundkreisfläche, senkrechte Höhe und Mantellinie auch bei gedrehter Darstellung oder Durchmesserangabe sicher trennt und die Volumenrechnung mit Einheiten prüft.",
+      "rationaleEn": "Both reviews confirm the local clarification of the right circular cone as complete and atomic. The second evidence formulation is bound because it reliably distinguishes circular base area, perpendicular height, and slant height even in a rotated representation or when a diameter is supplied, and checks the volume calculation with units."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-003",
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f2195c5d00a5705e2aefa3da8e46d6682420238eccc59debe1ff11164769bac4",
+      "pageFingerprint": "sha256:31a4a86ee731b10989e5bc9a5d36d2c4f053c7cfe2c7e58e9074b6d6a4147830",
+      "goalReviewContextFingerprint": "sha256:e7e4ab2cf48a1530e4442771f3eb20f91166ca326a6fe940a2a5274d790b9d88",
+      "finalText": {
+        "titleDe": "Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)",
+        "titleEn": "Determine areas using improper integrals (advanced course)",
+        "descriptionDe": "Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.",
+        "descriptionEn": "The learner can determine the area of an unbounded region using suitable improper integrals expressed as limits, split the region by sign into nonnegative subregions, and interpret the area as finite only when all required limits exist and are finite."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+          "recordDigest": "sha256:ff554e4c6063c565e91064b549e3596615d0aa62a39b98a6ef501bf1682b0ca9"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-bfc2bf06",
+          "recordDigest": "sha256:f514e142b32e5cbfe9e34b3d38b475ce5fab453c9ec84f272cd515bd12b66762"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass die Beschreibung den Quellenumfang auf unendlich ausgedehnte Flächen begrenzt und den geometrischen Flächeninhalt fachlich korrekt absichert. Die zweite Evidenzfassung wird gebunden, weil sie vorzeichengerechte Zerlegung in nichtnegative Teilflächen und endliche Existenz jedes benötigten Grenzwerts verlangt und dadurch scheinbare Konvergenz durch Auslöschung ausschließt.",
+      "rationaleEn": "Both reviews confirm that the description stays within the source scope of unbounded regions and safeguards geometric area correctly. The second evidence formulation is bound because it requires sign-aware splitting into nonnegative subregions and finite existence of every required limit, thereby excluding apparent convergence through cancellation."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-004",
+      "goalId": "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1b82c2ed2142e9fda202fa4bbbfdb1ceaebaa0ae9320d751b5a7f30fbee4bfb",
+      "pageFingerprint": "sha256:fe1fc2ebc214df6085b62e10f45c70de721ba67222a19dba5122aab19fd727f1",
+      "goalReviewContextFingerprint": "sha256:798759ebeae47f8b6de3d8bb3e1ea1a3504ca7f8e2242f48925479527965358b",
+      "finalText": {
+        "titleDe": "Schnittwinkel über Richtungs- und Normalenvektoren bestimmen",
+        "titleEn": "Determine angles of intersection using direction and normal vectors",
+        "descriptionDe": "Die lernende Person kann den nichtstumpfen Schnittwinkel α zwischen einer Geraden mit Richtungsvektor u und einer Ebene mit Normalenvektor n orientierungsunabhängig über sin α = |u · n|/(‖u‖ · ‖n‖) bestimmen, als Ergänzungswinkel zum nichtstumpfen Winkel zwischen Geraden- und Normalenrichtung deuten und geometrisch prüfen.",
+        "descriptionEn": "The learner can determine the non-obtuse angle α between a line with direction vector u and a plane with normal vector n independently of vector orientation using sin α = |u · n|/(‖u‖ · ‖n‖), interpret it as the complement of the non-obtuse angle between the line and normal directions, and check it geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+          "recordDigest": "sha256:64bb3c69a9ec14222f346390c8330acfccef757cc6f738a261d5e520405b9e34"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-57b11e9a",
+          "recordDigest": "sha256:c46b093ecbcf64984a8fcf3b7307e625fca03ddc48dca88f6204a9b9e69b8f7c"
+        }
+      },
+      "rationaleDe": "Beide finalen Reviews bestätigen die orientierungsfeste Korrektur. Die zweite Evidenzfassung wird gebunden, weil der Betrag in sin α = |u · n|/(‖u‖ · ‖n‖) den nichtstumpfen Gerade-Ebene-Winkel bei jedem Vorzeichenwechsel invariant hält, die Ergänzungswinkelbeziehung erklärt und die Grenzfälle parallel und senkrecht prüft.",
+      "rationaleEn": "Both final reviews confirm the orientation-invariant correction. The second evidence formulation is bound because the absolute value in sin α = |u · n|/(‖u‖ · ‖n‖) keeps the non-obtuse line-plane angle invariant under every sign reversal, explains the complementary-angle relation, and checks the parallel and perpendicular limiting cases."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-005",
+      "goalId": "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ddb69b4e6d86e6537fa8dba3e811a0e5bece4a4191f7cae93ffcce6ae1f78c7e",
+      "pageFingerprint": "sha256:700b7eaf70850565448b8e6b82d0a8a5b86c3ca69e944ada84e0efd2d16a8b3e",
+      "goalReviewContextFingerprint": "sha256:c6578270209719bd0e363fb21f4fb098e4fbb5afaae6d52407ed6e38ce210f8f",
+      "finalText": {
+        "titleDe": "Stochastische Übergangsmatrizen für Markov-Ketten prüfen",
+        "titleEn": "Check stochastic transition matrices for Markov chains",
+        "descriptionDe": "Die lernende Person kann unter Angabe der Zeilen- oder Spaltenkonvention begründen, ob eine Matrix eine stochastische Übergangsmatrix einer Markov-Kette ist: Die Matrix ist quadratisch und ihre Zeilen und Spalten beziehen sich auf denselben Zustandsraum, alle Einträge sind nichtnegativ, und die zu jedem Ausgangszustand gehörenden Einträge summieren sich zu 1.",
+        "descriptionEn": "The learner can state the row or column convention and justify whether a matrix is a stochastic transition matrix for a Markov chain: The matrix is square and its rows and columns refer to the same state space, all entries are nonnegative, and the entries belonging to each source state sum to 1."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+          "recordDigest": "sha256:8967359952f9d20cd046aa7330739d2975a11907be033be38ed34d7039d8d0b6"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-9bf67cce",
+          "recordDigest": "sha256:554cf4a8a67c683e632213afd52ad8ad3e65f2783e7cf191d1b9e2e2e2d66198"
+        }
+      },
+      "rationaleDe": "Beide finalen Reviews bestätigen nun alle notwendigen Markov-Bedingungen. Die zweite Evidenzfassung wird gebunden, weil sie quadratische Form und denselben Zustandsraum auf beiden Achsen zusammen mit Nichtnegativität, konventionsgerechter Summenbedingung und konsistenter Eintragsdeutung prüft und rechteckige Kandidaten auch bei normierten Zeilen oder Spalten korrekt ablehnt.",
+      "rationaleEn": "Both final reviews now confirm all necessary Markov conditions. The second evidence formulation is bound because it tests square shape and the same state space on both axes together with nonnegativity, convention-aware normalization, and consistent interpretation of entries, and correctly rejects rectangular candidates even when their rows or columns are normalized."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-006",
+      "goalId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c1e8229a05814e037334dfc0f24c4a769b54bd2d836b7fb56af55a4e930b255d",
+      "pageFingerprint": "sha256:443df9b3e763fae975c2a7a84a117e3195fcb165a7dbe22c8b92f561c1766438",
+      "goalReviewContextFingerprint": "sha256:a87597604cc32ddf203ca2ea018b6ccc146194a0d3afa883bf77280c995625e8",
+      "finalText": {
+        "titleDe": "Abbildungsmatrix aus Basisbildern bestimmen",
+        "titleEn": "Determine mapping matrix from basis images",
+        "descriptionDe": "Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+        "descriptionEn": "The learner can determine the matrix of a linear map with respect to the standard basis by placing the coordinate vectors of the images of the ordered standard-basis vectors as columns in the same order."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "recordDigest": "sha256:af3c50faabea059e0f6ca65dfc63540e4572435de97bde3a91005ddede1fb83c"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-8dc2c87a",
+          "recordDigest": "sha256:408451cb1cbb7223405f1afb84bbbaa71914af3af49797c2463f57768ab1987d"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die ausdrückliche Beschränkung auf die Standardbasis und die Spaltenordnung als fachlich präzise. Die zweite Evidenzfassung wird gebunden, weil sie Bilder geordneter Standardbasisvektoren sicher ihren Spalten zuordnet und die resultierende Matrix unabhängig an einem weiteren Vektor prüfen lässt.",
+      "rationaleEn": "Both reviews confirm the explicit restriction to the standard basis and the column order as scientifically precise. The second evidence formulation is bound because it reliably assigns images of the ordered standard-basis vectors to their columns and independently verifies the resulting matrix on another vector."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-007",
+      "goalId": "e8d810de-95ed-52d6-ab1f-0560398e35c0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a3b40843d793daf264f7b63bb5ad61f65dacc071f2551c2581a4fac0f08f675",
+      "pageFingerprint": "sha256:49d1d0fe533866f161e03fad60091a43dbffa19a034d54c3ea4a0b6292c4c64e",
+      "goalReviewContextFingerprint": "sha256:851de677c7ac0bb3e78391c0d9c45860345be4bc7fe6b96f4278dfdcd0b66f72",
+      "finalText": {
+        "titleDe": "Binomialkoeffizienten als Abkürzung verwenden",
+        "titleEn": "Use binomial coefficients as shorthand",
+        "descriptionDe": "Die lernende Person kann den Binomialkoeffizienten „n über k“ als abkürzende Schreibweise für die Anzahl ungeordneter Auswahlen von k aus n unterscheidbaren Elementen ohne Zurücklegen verwenden.",
+        "descriptionEn": "The learner can use the binomial coefficient “n choose k” as shorthand for the number of unordered selections of k from n distinct elements without replacement."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:e8d810de-95ed-52d6-ab1f-0560398e35c0",
+          "recordDigest": "sha256:ef90d64380cccfe51d272b5635b358b78c5f3275ccfe7f2694178fa734361673"
+        },
+        "second": {
+          "recordId": "math-b011-final-v4-round-b-e8d810de",
+          "recordDigest": "sha256:55eccd5214aa6f22edea852252d1105146d08c6b724a7e670560ddbcffea6065"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Formulierung als eng begrenzte Notationskompetenz. Die zweite Evidenzfassung wird gebunden, weil sie „n über k“ genau mit ungeordneten k-Auswahlen aus n unterscheidbaren Elementen ohne Zurücklegen verbindet und bei Reihenfolge, Wiederholung oder Komplementauswahl die passende Abkürzung neu entscheiden lässt.",
+      "rationaleEn": "Both reviews confirm the wording as a narrowly bounded notation competence. The second evidence formulation is bound because it links “n choose k” precisely to unordered selections of k from n distinct elements without replacement and requires a fresh decision about the appropriate shorthand when order, repetition, or complementary selection changes."
+    }
+  ],
+  "manifestFingerprint": "sha256:65529479df8cfc9b25fa31f0fef042a122ddce1c26f3bbcb7af47e50b9fa9df7"
+}

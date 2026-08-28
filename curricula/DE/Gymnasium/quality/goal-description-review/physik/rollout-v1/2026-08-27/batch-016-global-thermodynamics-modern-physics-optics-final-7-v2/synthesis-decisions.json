@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T20:09:19.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827",
+    "batchManifestDigest": "sha256:1bc7ed8198e9a4e57dd3ca21ec4c4e12c3571026a350269efa7e7c7fc8e847fa",
+    "configDigest": "sha256:086eb4c7b7347d94294c5fe66fbbd661bb5faa8553276dd28cced9abba61cbd3",
+    "bundleFingerprint": "sha256:e6e33c27ed84402cf1cb25a3e6387cbda9fd842f275f0bb3fee9929693be4694",
+    "bookDigest": "sha256:8d828325ace57c44318f609aa6be090e697d937ac80f5b470f0ab518d927204f",
+    "reviewInputFingerprint": "sha256:62766092128e056a20e7da1e29cf447a5b8ac05c1441a16d9551ff39c380a27e",
+    "dualSummaryDigest": "sha256:d49c32088c9cf633115d1c68b901735e5f3553cb85ed61c4f911b38131a16985",
+    "canonicalLandscapeDigest": "sha256:811cfa66be5019fd4c964bfdd73ca4f032648a25f881052c0a844b5e155f4063"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-a",
+      "campaignDigest": "sha256:d2bb5dc878e98893241839da02231cc0014c74da6931e920a18935e8dad3fc99",
+      "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:62766092128e056a20e7da1e29cf447a5b8ac05c1441a16d9551ff39c380a27e",
+      "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a03ca848428304cca163545cf43db9cc6593043b850d2dea428d50b5c4001970",
+      "runId": "physik-b016-v2-20260827-round-a-gpt-5.6-sol",
+      "runManifestDigest": "sha256:ba49f790c88d88654f8d37f29ac59685d481be879a6104679d5a2e461b215c09",
+      "resultsDigest": "sha256:aa493f085da6674aa0fb1b770b8970bcf1f6c3bff66a8517cda638fce14cf2e5"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b",
+      "campaignDigest": "sha256:7fef8ba2519af15f30431e719a27fe45a1740d4948347d7e850c47ac10c3b76e",
+      "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:62766092128e056a20e7da1e29cf447a5b8ac05c1441a16d9551ff39c380a27e",
+      "batchId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1a7aa43c527638b03a8b337e6393bddf8b574b8cebf2482f248cd263a921365e",
+      "runId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001",
+      "runManifestDigest": "sha256:3c97373dcc4d5872ac432adb8f4f510fcff74c514a3b3044cd485410bac82e45",
+      "resultsDigest": "sha256:b069d141325447c5d27509b93a8add0a4efd29d04f2c8fdcd2674ad0d2199600"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-001",
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cec7d11bed6b99207f6e4b4256b6595f2a3daa703088a99a978655e98d382af6",
+      "pageFingerprint": "sha256:ed690474c0867ff7bf92e0b2addae265745c5d91914158914461f67c16ac2a4d",
+      "goalReviewContextFingerprint": "sha256:7008c6cf22e57bef9ea97d4d8370cba331a0127e5679d2c8a22013c7bc413679",
+      "finalText": {
+        "titleDe": "Erhaltung der mechanischen Energie tiefer verstehen (LK)",
+        "titleEn": "Energy Conservation from Newton's Laws (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann für ein System konstanter Masse, auf das nur konservative Kräfte mit zeitunabhängigem Potenzial wirken, aus dem zweiten Newtonschen Axiom und F = −∇U die Erhaltung der mechanischen Energie herleiten und die Gültigkeitsbedingungen erläutern.",
+        "descriptionEn": "The learner can derive conservation of mechanical energy from Newton's second law and F = −∇U for a constant-mass system subject only to conservative forces with a time-independent potential and explain the conditions under which the derivation is valid."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r01",
+          "recordDigest": "sha256:c55799b9bec5e4a509e6b9c143d1ef19065d4810fd6f5f88fe26375bfcb42c5a"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-001",
+          "recordDigest": "sha256:607bdfafacaecfe22d4f41b67ea7525c7f275e8253140615a4b330d6c09ad2dc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die korrigierte Herleitung als fachlich vollständig und atomar. Die zweite Evidenzfassung wird gebunden, weil sie den Weg von Newton II über Kraftleistung und F = −∇U bis d(E_kin + U)/dt = 0 transparent macht und mit Reibung beziehungsweise zeitabhängigem Potenzial gezielt die Gültigkeitsgrenzen prüft.",
+      "rationaleEn": "Both independent reviews confirm the corrected derivation as scientifically complete and atomic. The second evidence formulation is bound because it makes the path from Newton's second law through mechanical power and F = −∇U to d(E_kin + U)/dt = 0 transparent and specifically tests the limits of validity using friction and a time-dependent potential."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-002",
+      "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:729c96e2af2c60be07069cc437dbfa844fd9a5cf939e0f8102014f85374840c3",
+      "pageFingerprint": "sha256:fdd6834d837ca22ed92249986588dbc3634bdbae69e3be447e5a349f023e3d50",
+      "goalReviewContextFingerprint": "sha256:ec6235d33a5adcdeaf35b3ccf9cc819a604a802087dcd1c4770b52a1a401bd7d",
+      "finalText": {
+        "titleDe": "Wärmeenergie als innere Energie deuten",
+        "titleEn": "Interpret Heat Energy as Internal Energy",
+        "descriptionDe": "Die lernende Person kann den Ausdruck „Wärmeenergie“ im historischen Zusammenhang als Bezeichnung für die innere Energie eines betrachteten Systems einordnen und erklären, warum „innere Energie“ die im System gespeicherte Energie begrifflich präziser bezeichnet.",
+        "descriptionEn": "The learner can contextualize the term “heat energy” historically as a term for the internal energy of the system under consideration and explain why “internal energy” more precisely denotes the energy stored in the system."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r02",
+          "recordDigest": "sha256:ab5ac1204dd30385776bde5084be1fa013f732b137110d1bfd775f0b19dc4be7"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-002",
+          "recordDigest": "sha256:bd2562ceae0fe182b1147332901b1593cc9649d6d87bcb71eff337877e264e3c"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die enge, quellentreue historische Begriffspräzisierung und lehnen eine Ausweitung auf ein vollständiges Wärmeübertragungs- oder Bilanzziel ab. Die zweite Evidenzfassung wird gebunden, weil sie Systemgrenze, mikroskopische Beiträge und die Abgrenzung von gespeichertem Wärmestoff klar prüfbar macht, ohne Nachbarziele zu vereinnahmen.",
+      "rationaleEn": "Both reviews confirm the narrow, source-faithful historical clarification and reject expanding it into a complete heat-transfer or energy-balance goal. The second evidence formulation is bound because it makes the system boundary, microscopic contributions, and rejection of stored caloric substance clearly assessable without absorbing neighboring goals."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-003",
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:221e889f371f1de26daf65a8beaee0cc1226bae469fafa4cda50b51a48fd649e",
+      "pageFingerprint": "sha256:2d01c98da5a581fe0a3e48df7893b9fdb0b9435ba942b540d94929afb42f9588",
+      "goalReviewContextFingerprint": "sha256:d42c85fb0327507f7f71f630f1532afc716ad831101765e2f0a385783c98c3b0",
+      "finalText": {
+        "titleDe": "Antimaterie und Paarvernichtung",
+        "titleEn": "Antimatter and Pair Annihilation",
+        "descriptionDe": "Die lernende Person kann das Positron als Antiteilchen des Elektrons beschreiben und erklären, wie bei der Vernichtung eines annähernd ruhenden Elektron-Positron-Paares unter Energie- und Impulserhaltung zwei nahezu entgegengesetzt ausgesandte Photonen entstehen, die in der PET als Messsignal genutzt werden.",
+        "descriptionEn": "The learner can describe the positron as the electron’s antiparticle and explain how annihilation of an approximately stationary electron–positron pair produces two nearly oppositely emitted photons under conservation of energy and momentum, which are used as a measurement signal in PET."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r03",
+          "recordDigest": "sha256:e04b99f8718e6a35f85478cd9bd42c12265237e21b96409e8e030e05bc46bf21"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-003",
+          "recordDigest": "sha256:218d88b787436b5109ff6e0fb0b717c0a93b6934ef0da9c21c62eb3d00799ea2"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Korrektur von der vermeintlichen Energiequelle zum PET-Messsignal sowie die Bindung der Zwei-Photonen-Geometrie an Energie- und Impulserhaltung. Die zweite Evidenzfassung wird gebunden, weil sie den annähernden Ruhefall und einen Fall mit kleinem Gesamtimpuls prüft und die getrennte Kompetenz der Koinzidenz-Ortung ausdrücklich nicht in dieses Lernziel aufnimmt.",
+      "rationaleEn": "Both reviews confirm the correction from a supposed energy source to a PET measurement signal and the grounding of the two-photon geometry in conservation of energy and momentum. The second evidence formulation is bound because it tests both the approximately stationary case and a case with small total momentum while explicitly excluding the separate coincidence-localization competence from this goal."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-004",
+      "goalId": "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:05d6cf7891c2b836a8df7f144a9807c7208ed6f4e5c5ad83cf6e3843de35adf9",
+      "pageFingerprint": "sha256:2072871bbffac5cbc6580141adc688087971ad8f5573e38f39c57200203f80e0",
+      "goalReviewContextFingerprint": "sha256:ddd92de8738e9930e1680612d4c5b97e3071cd6ac6d9b9ca5c715837b5795b9d",
+      "finalText": {
+        "titleDe": "Auflösungsvermögen optischer Instrumente",
+        "titleEn": "Resolving Power of Optical Instruments",
+        "descriptionDe": "Die lernende Person kann mithilfe des Rayleigh-Kriteriums erklären und beurteilen, wie Beugung, Wellenlänge und wirksame Öffnung das Auflösungsvermögen von Mikroskopen, Teleskopen und dem menschlichen Auge begrenzen.",
+        "descriptionEn": "The learner can use the Rayleigh criterion to explain and assess how diffraction, wavelength, and effective aperture limit the resolving power of microscopes, telescopes, and the human eye."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r04",
+          "recordDigest": "sha256:7a195263388293d0295b022c009f2742c500e6ef7fdc9022b4e75961bb48661f"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-004",
+          "recordDigest": "sha256:16d37ea49c79b9205df20dbdd4ab45c307ac2fbe1aad59f19ebcdbea264b27f1"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass Rayleigh-Kriterium, Beugung, Wellenlänge und wirksame Öffnung die vorgesehene gemeinsame Auflösungskompetenz präzise abbilden. Die zweite Evidenzfassung wird gebunden, weil sie Trennbarkeit statt bloßer Vergrößerung prüft, konkurrierende Parameterwirkungen auf neue Instrumente überträgt und reale Zusatzbegrenzungen nicht ausschließt.",
+      "rationaleEn": "Both reviews confirm that the Rayleigh criterion, diffraction, wavelength, and effective aperture precisely capture the intended common resolution competence. The second evidence formulation is bound because it tests distinguishability rather than mere magnification, transfers competing parameter effects to fresh instruments, and does not exclude additional real-world limitations."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-005",
+      "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8bbfb259f628bacccb805ea32e324faa839383c115f57229c5be51f9fce82413",
+      "pageFingerprint": "sha256:fb2649c7a9aacffe7b374bf2261c8875486223a23c483e57dbad166448e31f30",
+      "goalReviewContextFingerprint": "sha256:becc9f421e96d371af6eeb4ccbe4c5ce60339310985199425b51de154612445d",
+      "finalText": {
+        "titleDe": "Kernspintomografie (MRT)",
+        "titleEn": "Magnetic Resonance Imaging (MRI)",
+        "descriptionDe": "Die lernende Person kann qualitativ erklären, wie ein statisches Magnetfeld eine Netto-Kernspinmagnetisierung ausrichtet, eine resonante Hochfrequenzanregung sie auslenkt und Magnetfeldgradienten die bei der Relaxation gemessenen Signale räumlich für ein MRT-Bild codieren.",
+        "descriptionEn": "The learner can qualitatively explain how a static magnetic field aligns net nuclear-spin magnetization, resonant radio-frequency excitation tips it, and magnetic-field gradients spatially encode the signals measured during relaxation for an MRI image."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r05",
+          "recordDigest": "sha256:2c725c9ca1fe793edefab12e527dd2d2be1fe71df3cc3839e4930db1cec70364"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-005",
+          "recordDigest": "sha256:8b6480404a48a69e4c11e10e22b9f9efb79dbf96a7700aa52816d97b8165f03a"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die qualitative MRT-Kausalkette von Netto-Magnetisierung über Resonanzanregung und Relaxationssignal bis zur Gradientencodierung. Die zweite Evidenzfassung wird gebunden, weil sie die Funktion jedes Schrittes sowie den Informationsverlust beim Weglassen von Anregung oder Gradienten beobachtbar macht, ohne quantitative Bildrekonstruktion zu fordern.",
+      "rationaleEn": "Both reviews confirm the qualitative MRI causal chain from net magnetization through resonant excitation and relaxation signal to gradient encoding. The second evidence formulation is bound because it makes the function of every step and the information lost when excitation or gradients are omitted observable without requiring quantitative image reconstruction."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-006",
+      "goalId": "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:11b847af4551d820b6c5cf7be1f0ccd6896a18ad10d1ce049c531f38077abedc",
+      "pageFingerprint": "sha256:2ac0b56be62eb45de845b970d176d71422f13e6bd5d9022de4399ab093df12f3",
+      "goalReviewContextFingerprint": "sha256:70bffafdec42c311e9c59659e66a0189bd0f224e0df6265de46edc0a7673712c",
+      "finalText": {
+        "titleDe": "Dispersion elektromagnetischer Wellen",
+        "titleEn": "Dispersion of Electromagnetic Waves",
+        "descriptionDe": "Die lernende Person kann Dispersionsrelationen und die Frequenz- beziehungsweise Wellenlängenabhängigkeit der Brechzahl analysieren und daraus erklären, wie ein Medium Phasengeschwindigkeit und Brechung elektromagnetischer Wellen frequenzabhängig verändert.",
+        "descriptionEn": "The learner can analyze dispersion relations and the frequency or wavelength dependence of refractive index and use them to explain how a medium changes the phase velocity and refraction of electromagnetic waves as a function of frequency."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r06",
+          "recordDigest": "sha256:b986cefda5bd6285ad95b5076bbe2d53e097d60afdddc633413954e9a2ca3274"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-006",
+          "recordDigest": "sha256:ef34784df517f4d0fd336dc34ea3300213119149755e0161c9cca11e2d7f2955"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Verbindung von Dispersionsrelation, Brechzahlverlauf, Phasengeschwindigkeit und frequenzabhängiger Brechung als eine kohärente Kompetenz. Die zweite Evidenzfassung wird gebunden, weil sie den Transfer auf anders verlaufende n-λ-Diagramme fordert und die gesonderte Gruppengeschwindigkeitskompetenz klar ausgrenzt.",
+      "rationaleEn": "Both reviews confirm the connection among dispersion relation, refractive-index curve, phase velocity, and frequency-dependent refraction as one coherent competence. The second evidence formulation is bound because it requires transfer to differently shaped n-λ graphs and clearly excludes the separate group-velocity competence."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-synthesis-decision-007",
+      "goalId": "5492f0e0-cbae-574e-a853-182616205ed3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0dfb431ef430f6bbe94e401474f14e6eae2bf4f1900cad364257837fa2049caa",
+      "pageFingerprint": "sha256:1b2678b8fb302767bc4a020b9cdf1b5860232c87a1296f06c97220ddb43165dd",
+      "goalReviewContextFingerprint": "sha256:bc26c0dcaafd02d2f45717006b6a30c87f24517bdb048c874f8cf373084c7a8f",
+      "finalText": {
+        "titleDe": "Kernreaktionen und Q-Werte",
+        "titleEn": "Nuclear Reactions and Q-Values",
+        "descriptionDe": "Die lernende Person kann Kernreaktionsgleichungen unter Erhaltung von Ladungs- und Nukleonenzahl vervollständigen, Q-Werte aus den Massen vor und nach der Reaktion bestimmen und deren Vorzeichen als frei werdende oder erforderliche Energie deuten.",
+        "descriptionEn": "The learner can complete nuclear reaction equations using conservation of charge and nucleon number, determine Q-values from the masses before and after the reaction, and interpret their sign as energy released or required."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b016-v2-a-r07",
+          "recordDigest": "sha256:c73221e39df0829c9d157c688887ed8ea2838a8b4fa9beaedec5e87972da80b3"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-final-7-v2-20260827-b.gpt-5.6-sol.root-subject-reviewer.run-001.record-007",
+          "recordDigest": "sha256:a8f6c394c099f3ec2532965ecf4fdb72e344a87e5ec8922a71e37dece123899b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Ladungs- und Nukleonenzahlbilanz, konsistente Massendifferenz und Vorzeichendeutung als zusammengehörige Kernreaktionskompetenz. Die zweite Evidenzfassung wird gebunden, weil sie bei umgekehrter Reaktionsrichtung neu bilanziert und zugleich den wichtigen Grenzfall absichert, dass |Q| bei endothermen Projektilreaktionen nicht automatisch die vollständige Schwellenenergie ist.",
+      "rationaleEn": "Both reviews confirm charge-number and nucleon-number balance, consistent mass difference, and sign interpretation as one nuclear-reaction competence. The second evidence formulation is bound because it rebuilds the balance for a reversed reaction and also safeguards the important boundary case that |Q| is not automatically the full threshold energy for endothermic projectile reactions."
+    }
+  ],
+  "manifestFingerprint": "sha256:2a7e3f7ef2264577f2394de56f810680bb17539ec1199271de3aaa6315e8a1aa"
+}

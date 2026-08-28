@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5e3556a79ce3a23111382c5a2dd1660b38a096ec17ef256bc3e9519f4231ebb6",
+  "reviewInputFingerprint": "sha256:13fa3010add38f2548a3f924be92ce10adc6a6d96c74758b46fb3df4a4bd59ec",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-a",
+      "roundId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-independent-a",
+      "runIds": [
+        "openai-gpt-5.6-sol-physik-b015a-round-a-20260827T190320Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b",
+      "roundId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-5.6-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "firstRecordId": "openai-gpt-5.6-sol-physik-b015a-round-a-20260827T190320Z:f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "secondRecordId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-001",
+      "firstRunId": "openai-gpt-5.6-sol-physik-b015a-round-a-20260827T190320Z",
+      "secondRunId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

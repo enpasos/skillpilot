@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `7b860649-373e-5523-9843-ec96b3537f1f`
 - Titel: Volumen von Kegeln berechnen
-- Beschreibung: Die lernende Person kann die Volumenformel für gerade Kreiskegel in Berechnungen sicher anwenden und Ergebnisse mit passenden Einheiten angeben.
+- Beschreibung: Die lernende Person kann bei geraden Kreiskegeln Grundkreisfläche und senkrechte Höhe identifizieren, die senkrechte Höhe von der Mantellinie unterscheiden, mit V = ⅓ · G · h das Volumen berechnen und das Ergebnis in passenden Volumeneinheiten prüfen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Volumen von Kegeln berechnen
-Beschreibung: Die lernende Person kann die Volumenformel für gerade Kreiskegel in Berechnungen sicher anwenden und Ergebnisse mit passenden Einheiten angeben.
+Beschreibung: Die lernende Person kann bei geraden Kreiskegeln Grundkreisfläche und senkrechte Höhe identifizieren, die senkrechte Höhe von der Mantellinie unterscheiden, mit V = ⅓ · G · h das Volumen berechnen und das Ergebnis in passenden Volumeneinheiten prüfen.
 
 Zusatzanweisung:
 Pflichtinhalt:

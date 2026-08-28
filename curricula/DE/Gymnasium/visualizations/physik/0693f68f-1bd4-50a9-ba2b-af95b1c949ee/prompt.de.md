@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `0693f68f-1bd4-50a9-ba2b-af95b1c949ee`
 - Titel: Dispersion elektromagnetischer Wellen
-- Beschreibung: Dispersionsrelationen und Brechzahlverläufe analysieren.
+- Beschreibung: Die lernende Person kann Dispersionsrelationen und die Frequenz- beziehungsweise Wellenlängenabhängigkeit der Brechzahl analysieren und daraus erklären, wie ein Medium Phasengeschwindigkeit und Brechung elektromagnetischer Wellen frequenzabhängig verändert.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Dispersion elektromagnetischer Wellen
-Beschreibung: Dispersionsrelationen und Brechzahlverläufe analysieren.
+Beschreibung: Die lernende Person kann Dispersionsrelationen und die Frequenz- beziehungsweise Wellenlängenabhängigkeit der Brechzahl analysieren und daraus erklären, wie ein Medium Phasengeschwindigkeit und Brechung elektromagnetischer Wellen frequenzabhängig verändert.
 
 Zusatzanweisung:
 Pflichtinhalt:
