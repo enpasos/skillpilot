@@ -615,10 +615,11 @@ Schritt ohne Änderung an `SessionSetup.tsx`:
    `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
    (vorher und nachher byte-identisch).
 
-Die beiden aktualisierten Implementierungsdateien sind mit ihrem vorherigen
-und ihrem neuen autorisierten SHA-256 verankert:
+Der autorisierte Komponentenstand wurde vor der nächsten Änderung
+byte-identisch als historische Evidenz archiviert. Die unveränderte Copy-Datei
+bleibt zusätzlich live hashgebunden:
 
-- `app/src/components/SkillPilotOverviewCard.tsx`:
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-factual-overview-SkillPilotOverviewCard.tsx`:
   `0b6c7539cb55d02f78198f3a50fcd8a95ac9b0c6bd0f8d5fa8d486352e2f75b3`
   →
   `8495949581cbd3c9efcfe5b7decb49ca3e32f0e881435be946cd0c7170ee7c54`;
@@ -627,10 +628,63 @@ und ihrem neuen autorisierten SHA-256 verankert:
   →
   `8698f3c9bfb995dab191cd2e317e4fc80f566ec4e449e0dc4152bcc5e34eef4d`.
 
+Auch die fokussierte Regression wurde vor der nächsten autorisierten Änderung
+byte-identisch archiviert und ist hashgebunden:
+
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-factual-overview-testPublicOverviewUi.tsx`:
+  `f4911b536c399516bee60b66abbeca9578a8d01ac540d8b534abb4b2858b1b7d`.
+
+### 6.11 Eng begrenzte Ausnahme: einfacher grüner Interaktionsrahmen
+
+Der Product Owner hat am **28. August 2026** für das aktuelle
+Produktions-Webfrontend ausdrücklich genehmigt, den doppelten violetten
+Interaktionsrahmen der Überblickskarte durch genau einen zurückhaltenden,
+ein Pixel breiten grünen Kartenrand zu ersetzen. Die fokussierte einzelne
+Aktion behält ihren eigenen gut sichtbaren Fokusindikator. Das OpenAI-Plugin
+bleibt unverändert `skillpilot-coach-v1` Version `1.0.0`; ein Zurückziehen oder
+erneutes Einreichen im Portal ist nicht erforderlich.
+
+Freigegeben ist ausschließlich:
+
+- bei Hover oder Fokus innerhalb der Überblickskarte genau den bestehenden
+  ein Pixel breiten Kartenrand grün einzufärben;
+- den äußeren kartenweiten Ring, seinen Offset und die dadurch entstehende
+  doppelte Linie vollständig zu entfernen;
+- die `focus-visible`-Ringe der drei Medienlinks und des
+  Vision-&-Mission-Disclosure-Buttons unverändert beizubehalten;
+- den einzelnen grünen Kartenrand, die Abwesenheit eines äußeren Kartenrings
+  und die weiterhin sichtbaren Fokusindikatoren der einzelnen Aktionen mit der
+  fokussierten Überblicksregression zu belegen.
+
+Sämtliche deutschen und englischen Texte, Layouts, Aktionen, Medienziele,
+Anker, einmaligen Wiedergabe-Intents und das neutrale Verhalten von
+`/whitepaper/:lang` bleiben unverändert. Die Seitenreihenfolge **Lernen
+starten** → **SkillPilot im Überblick** → **Curriculum-Champions** bleibt
+unverändert; **Lernen starten** bleibt die erste und wichtigste Aktion.
+`SessionSetup.tsx` bleibt byte-identisch. Coach-Handler, vorbereitete
+Nachrichten, Session- und Lernzustandssemantik, OpenAI-Paket, MCP/OAuth, Tools,
+Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und Reviewartefakte
+bleiben unverändert und eingefroren.
+
+Die Hashkette dokumentiert deshalb erneut ausdrücklich einen autorisierten
+Schritt ohne Änderung an `SessionSetup.tsx`:
+
+10. einfacher grüner Interaktionsrahmen ohne äußeren Kartenring:
+    `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
+    (vorher und nachher byte-identisch).
+
+Die aktualisierte Implementierungsdatei ist mit ihrem vorherigen und ihrem
+neuen autorisierten SHA-256 verankert:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `8495949581cbd3c9efcfe5b7decb49ca3e32f0e881435be946cd0c7170ee7c54`
+  →
+  `b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90`.
+
 Die aktualisierte fokussierte Regression ist ebenfalls hashgebunden:
 
 - `app/scripts/testPublicOverviewUi.tsx`:
-  `f4911b536c399516bee60b66abbeca9578a8d01ac540d8b534abb4b2858b1b7d`.
+  `0097c3418e3a310907f4d82edd380399b15571225b603d73d73269a21191838f`.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den

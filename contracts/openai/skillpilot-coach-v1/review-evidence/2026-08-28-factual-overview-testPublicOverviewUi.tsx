@@ -752,22 +752,6 @@ try {
       true,
       `${language}: the disclosure button is not nested in a navigation link`,
     )
-    await page.mouse.move(374, 899)
-    await flushBrowserEffects(page)
-    const [restingCardBoxShadow, restingDisclosureBoxShadow, cardFrameClasses] = await Promise.all([
-      overviewEntry.evaluate((card) => getComputedStyle(card).boxShadow),
-      disclosureButton.evaluate((button) => getComputedStyle(button).boxShadow),
-      overviewEntry.evaluate((card) => [...card.classList]),
-    ])
-    assert(
-      cardFrameClasses.includes('hover:border-emerald-400/70')
-      && cardFrameClasses.includes('focus-within:border-emerald-500'),
-      `${language}: the overview card uses the approved single green interaction border`,
-    )
-    assert(
-      !cardFrameClasses.some((className) => className.startsWith('focus-within:ring')),
-      `${language}: the overview card has no second focus-within ring`,
-    )
     await assertActionRowStructure(page, language)
     assert.equal(await page.locator('audio, video').count(), 0, 'the root has no parallel media player')
     const cardDescription = overviewEntry.getByTestId('skillpilot-overview-card-description')
@@ -933,46 +917,6 @@ try {
     )
     await page.keyboard.press('Enter')
     await disclosurePanel.waitFor({ state: 'visible' })
-    await flushBrowserEffects(page)
-    const [focusedCardRendering, focusedDisclosureRendering] = await Promise.all([
-      overviewEntry.evaluate((card) => {
-        const style = getComputedStyle(card)
-        return {
-          borderWidths: [
-            style.borderTopWidth,
-            style.borderRightWidth,
-            style.borderBottomWidth,
-            style.borderLeftWidth,
-          ],
-          boxShadow: style.boxShadow,
-          focusWithin: card.matches(':focus-within'),
-        }
-      }),
-      disclosureButton.evaluate((button) => ({
-        active: document.activeElement === button,
-        boxShadow: getComputedStyle(button).boxShadow,
-        focusVisible: button.matches(':focus-visible'),
-      })),
-    ])
-    assert(focusedCardRendering.focusWithin, `${language}: the open card contains keyboard focus`)
-    assert(
-      focusedCardRendering.borderWidths.every((width) => width === '1px'),
-      `${language}: the focused overview card keeps exactly one 1px border`,
-    )
-    assert.equal(
-      focusedCardRendering.boxShadow,
-      restingCardBoxShadow,
-      `${language}: focusing the disclosure adds no outer card ring`,
-    )
-    assert(
-      focusedDisclosureRendering.active && focusedDisclosureRendering.focusVisible,
-      `${language}: the disclosure button itself retains keyboard focus visibility`,
-    )
-    assert.notEqual(
-      focusedDisclosureRendering.boxShadow,
-      restingDisclosureBoxShadow,
-      `${language}: the keyboard-focused disclosure retains its local focus ring`,
-    )
     assert.equal(await disclosureButton.getAttribute('aria-expanded'), 'true')
     assert.equal(await disclosurePanel.getAttribute('hidden'), null)
     assert.equal(

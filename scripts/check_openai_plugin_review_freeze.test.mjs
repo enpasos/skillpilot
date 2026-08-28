@@ -341,13 +341,15 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       },
       evidenceFile: {
-        path: "app/scripts/testPublicOverviewUi.tsx",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-factual-overview-testPublicOverviewUi.tsx",
         sha256:
           "f4911b536c399516bee60b66abbeca9578a8d01ac540d8b534abb4b2858b1b7d",
       },
       additionalFiles: [
         {
-          path: "app/src/components/SkillPilotOverviewCard.tsx",
+          path:
+            "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-factual-overview-SkillPilotOverviewCard.tsx",
           priorSha256:
             "0b6c7539cb55d02f78198f3a50fcd8a95ac9b0c6bd0f8d5fa8d486352e2f75b3",
           authorizedSha256:
@@ -361,6 +363,42 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
             "8698f3c9bfb995dab191cd2e317e4fc80f566ec4e449e0dc4152bcc5e34eef4d",
         },
       ],
+    },
+    {
+      id: "2026-08-28-public-overview-single-green-frame",
+      approvedAt: "2026-08-28",
+      approvedBy: "product-owner",
+      reason:
+        "Remove the redundant purple double frame from the public overview card while preserving a clear, restrained card interaction state and the focus indication of each individual control.",
+      scope:
+        "In the current production WebGUI only, change the existing overview card interaction styling so hover or focus within uses exactly one 1-pixel green card border with no outer card-level ring, ring offset, or double line, while retaining the focus-visible rings on all three media links and the Vision & Mission disclosure; " +
+        "preserve every German and English copy, layout, action, route, media play intent, the page order with learner start first, the byte-identical SessionSetup, every coach handler, prepared message, session, learner-state, " +
+        "OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, fixture, and review-artifact contract.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-public-interaction-focus-styling-only-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        priorAuthorizedSha256:
+          "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+        authorizedSha256:
+          "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+      },
+      evidenceFile: {
+        path: "app/scripts/testPublicOverviewUi.tsx",
+        sha256:
+          "0097c3418e3a310907f4d82edd380399b15571225b603d73d73269a21191838f",
+      },
+      additionalFile: {
+        path: "app/src/components/SkillPilotOverviewCard.tsx",
+        priorSha256:
+          "8495949581cbd3c9efcfe5b7decb49ca3e32f0e881435be946cd0c7170ee7c54",
+        authorizedSha256:
+          "b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90",
+      },
     },
   ]);
 });
@@ -383,7 +421,7 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
         latestSessionSetupException?.protectedFile.authorizedSha256,
     },
     {
-      id: "2026-08-28-public-overview-factual-closed-state",
+      id: "2026-08-28-public-overview-single-green-frame",
       priorAuthorizedSha256:
         "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       authorizedSha256:
