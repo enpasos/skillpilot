@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "openai-gpt-5.6-sol-math-b011-v3-a-5bfa74da-4589-4f9b-aef2-fcb671ed9690",
+  "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:722ba8ecc37b293bd2fb63cbc62ff643795776fc74efe42bed6c42c153d3cf3b",
+  "bundleFingerprint": "sha256:686b9bc633731787ed5ec45b3099c078a3b9475ea0d2b1cf1a5f6e5cc0e16f4d",
+  "bookDigest": "sha256:336cf3ac087773cac34bc58b7a8a12bd195d588846f41f8b6b7556c7f457dce7",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+    "7b860649-373e-5523-9843-ec96b3537f1f",
+    "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+    "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+    "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+    "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+    "e8d810de-95ed-52d6-ab1f-0560398e35c0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:722ba8ecc37b293bd2fb63cbc62ff643795776fc74efe42bed6c42c153d3cf3b"
+    }
+  ],
+  "startedAt": "2026-08-27T20:09:30Z",
+  "completedAt": "2026-08-27T20:12:02Z",
+  "status": "completed",
+  "outputDigest": "sha256:a8e0ff4ac24a92612d73e2eb9f3ce44aa0b12df1f7cc5fc6bd32761aa0c62e51",
+  "toolchainVersion": "goal-description-review-campaign-v2"
+}

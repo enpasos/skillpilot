@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e359f8bb-6106-44aa-9edf-694528d2d2a9`
 - Titel: Erhaltung der mechanischen Energie tiefer verstehen (LK)
-- Beschreibung: Die lernende Person kann die Energieerhaltung aus den Newtonschen Axiomen herleiten und die Voraussetzungen dieser Herleitung benennen. Ausgangspunkt ist die Grundgleichung der Mechanik, die mit der Geschwindigkeit skalar multipliziert wird. Dabei ist für die kinetische Energie eine konstante Masse vorausgesetzt. Für konservative Kräfte wird die Kraft als Gradient eines Potenzials aufgefasst, sodass sich der entsprechende Term als Zeitableitung der potenziellen Energie schreiben lässt. Auf diese Weise gelangt die lernende Person zur Erhaltung der mechanischen Energie.
+- Beschreibung: Die lernende Person kann für ein System konstanter Masse, auf das nur konservative Kräfte mit zeitunabhängigem Potenzial wirken, aus dem zweiten Newtonschen Axiom und F = −∇U die Erhaltung der mechanischen Energie herleiten und die Gültigkeitsbedingungen erläutern.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Erhaltung der mechanischen Energie tiefer verstehen
-Beschreibung: Die lernende Person kann die Energieerhaltung aus den Newtonschen Axiomen herleiten und die Voraussetzungen dieser Herleitung benennen. Ausgangspunkt ist die Grundgleichung der Mechanik, die mit der Geschwindigkeit skalar multipliziert wird. Dabei ist für die kinetische Energie eine konstante Masse vorausgesetzt. Für konservative Kräfte wird die Kraft als Gradient eines Potenzials aufgefasst, sodass sich der entsprechende Term als Zeitableitung der potenziellen Energie schreiben lässt. Auf diese Weise gelangt die lernende Person zur Erhaltung der mechanischen Energie.
+Beschreibung: Die lernende Person kann für ein System konstanter Masse, auf das nur konservative Kräfte mit zeitunabhängigem Potenzial wirken, aus dem zweiten Newtonschen Axiom und F = −∇U die Erhaltung der mechanischen Energie herleiten und die Gültigkeitsbedingungen erläutern.
 
 Zusatzanweisung:
 Correct the existing advanced German mechanics infographic while preserving its valid energy-conservation derivation.

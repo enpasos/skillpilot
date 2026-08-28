@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9f99026454695f352c5b2d1991e8646117d93fdad19baae1a9035e27b588ebc1",
+  "reviewInputFingerprint": "sha256:2ed74bd3ff57e1db036fa439d403c766c0d386a49925b5e57ee9eaea80b1ff0d",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-a",
+      "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-independent-a",
+      "runIds": [
+        "phys-b016-round-a-gpt5-20260827-1920z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b",
+      "roundId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "firstRecordId": "phys-b016-a-001-e359f8bb",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-001",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44",
+      "firstRecordId": "phys-b016-a-002-88d07c80",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-002",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "firstRecordId": "phys-b016-a-003-48e3d6c2",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-003",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "firstRecordId": "phys-b016-a-004-709e688c",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-004",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+      "firstRecordId": "phys-b016-a-005-52bdabb2",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-005",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "firstRecordId": "phys-b016-a-006-0693f68f",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-006",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5492f0e0-cbae-574e-a853-182616205ed3",
+      "firstRecordId": "phys-b016-a-007-5492f0e0",
+      "secondRecordId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-007",
+      "firstRunId": "phys-b016-round-a-gpt5-20260827-1920z",
+      "secondRunId": "physik-rollout-v1-batch-016-global-thermodynamics-modern-physics-optics-7-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

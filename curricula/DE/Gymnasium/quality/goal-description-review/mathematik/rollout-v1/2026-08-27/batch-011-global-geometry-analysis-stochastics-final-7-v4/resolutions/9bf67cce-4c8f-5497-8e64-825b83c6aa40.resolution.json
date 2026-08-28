@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-resolution-9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+  "goal": {
+    "goalId": "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ddb69b4e6d86e6537fa8dba3e811a0e5bece4a4191f7cae93ffcce6ae1f78c7e",
+    "pageFingerprint": "sha256:700b7eaf70850565448b8e6b82d0a8a5b86c3ca69e944ada84e0efd2d16a8b3e",
+    "goalReviewContextFingerprint": "sha256:c6578270209719bd0e363fb21f4fb098e4fbb5afaae6d52407ed6e38ce210f8f",
+    "finalText": {
+      "titleDe": "Stochastische Übergangsmatrizen für Markov-Ketten prüfen",
+      "titleEn": "Check stochastic transition matrices for Markov chains",
+      "descriptionDe": "Die lernende Person kann unter Angabe der Zeilen- oder Spaltenkonvention begründen, ob eine Matrix eine stochastische Übergangsmatrix einer Markov-Kette ist: Die Matrix ist quadratisch und ihre Zeilen und Spalten beziehen sich auf denselben Zustandsraum, alle Einträge sind nichtnegativ, und die zu jedem Ausgangszustand gehörenden Einträge summieren sich zu 1.",
+      "descriptionEn": "The learner can state the row or column convention and justify whether a matrix is a stochastic transition matrix for a Markov chain: The matrix is square and its rows and columns refer to the same state space, all entries are nonnegative, and the entries belonging to each source state sum to 1."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-a",
+      "campaignDigest": "sha256:54a8cf4284fd924ae9790bca0a32c3b5bbad3755912843a291130c07d2c84c3f",
+      "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:0e1d921575ae26a5213099c1cf74005c9882381e40a8b9c214f2081e053c5e43",
+      "goalReviewContextFingerprint": "sha256:c6578270209719bd0e363fb21f4fb098e4fbb5afaae6d52407ed6e38ce210f8f",
+      "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-a.batch-001",
+      "runId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70",
+      "runManifestDigest": "sha256:d69cbf6ecd989f297e783cde3db45652e8a36245d78d4c217e41531a95e9c6c9",
+      "resultsDigest": "sha256:2d7d604aa27091ce4e7d45ba604a8c62583e7fa9fb4128947f7f26d80f6ace89",
+      "recordId": "openai-gpt-5.6-sol-math-b011-v4-a-3a1ba220-d16b-4c7e-a1b3-16f37eb02d70:9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+      "recordDigest": "sha256:8967359952f9d20cd046aa7330739d2975a11907be033be38ed34d7039d8d0b6"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-b",
+      "campaignDigest": "sha256:50b9c07a7032c38e0c6ac8297ee9e1ea6bdb084eaf58ac4c4d55e1259cc4cd70",
+      "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:0e1d921575ae26a5213099c1cf74005c9882381e40a8b9c214f2081e053c5e43",
+      "goalReviewContextFingerprint": "sha256:c6578270209719bd0e363fb21f4fb098e4fbb5afaae6d52407ed6e38ce210f8f",
+      "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-first-pass-b.batch-001",
+      "runId": "math-b011-final-v4-20260827-round-b-run-001",
+      "runManifestDigest": "sha256:14cab52937d46d82d66be4651e190709c362b07d030a56a71a46a9d979ab1633",
+      "resultsDigest": "sha256:c9a8f4b891c050af5d5fb197e79eb2ef2bb9b948fcc8cf4cca0f6b2cc9a9732b",
+      "recordId": "math-b011-final-v4-round-b-9bf67cce",
+      "recordDigest": "sha256:554cf4a8a67c683e632213afd52ad8ad3e65f2783e7cf191d1b9e2e2e2d66198"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:8b23f6b748c7e235edf1325c2c72182b4fef8fa0597dbb771951b2e750bd52fb"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis",
+    "manifestDigest": "sha256:5ad8d252fcd2d626cfa49d2c92a2bd0afd4e785f3989d19bc38b06a322992071",
+    "manifestFingerprint": "sha256:65529479df8cfc9b25fa31f0fef042a122ddce1c26f3bbcb7af47e50b9fa9df7",
+    "decisionId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v4-20260827-synthesis-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-27T20:19:24.000Z",
+    "rationaleDe": "Beide finalen Reviews bestätigen nun alle notwendigen Markov-Bedingungen. Die zweite Evidenzfassung wird gebunden, weil sie quadratische Form und denselben Zustandsraum auf beiden Achsen zusammen mit Nichtnegativität, konventionsgerechter Summenbedingung und konsistenter Eintragsdeutung prüft und rechteckige Kandidaten auch bei normierten Zeilen oder Spalten korrekt ablehnt.",
+    "rationaleEn": "Both final reviews now confirm all necessary Markov conditions. The second evidence formulation is bound because it tests square shape and the same state space on both axes together with nonnegativity, convention-aware normalization, and consistent interpretation of entries, and correctly rejects rectangular candidates even when their rows or columns are normalized.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht eine Markov-Übergangsmatrix als quadratische Darstellung von Übergängen innerhalb desselben Zustandsraums, bei der jeder Eintrag nichtnegativ ist und die zu jedem Ausgangszustand gehörende Zeile oder Spalte eine vollständige Wahrscheinlichkeitsverteilung mit Summe 1 bildet.",
+      "essentialUnderstandingEn": "The learner understands a Markov transition matrix as a square representation of transitions within the same state space in which every entry is nonnegative and the row or column belonging to each source state forms a complete probability distribution summing to 1.",
+      "observablePerformanceDe": "Die lernende Person benennt bei einer beschrifteten Kandidatenmatrix die Konvention und Achsenzustände, prüft Quadratheit, Gleichheit des Zeilen- und Spaltenzustandsraums, Nichtnegativität und jede relevante Summe und begründet Annahme oder Ablehnung.",
+      "observablePerformanceEn": "For a labelled candidate matrix, the learner states the convention and axis states, checks squareness, equality of the row and column state spaces, nonnegativity, and every relevant sum, and justifies acceptance or rejection.",
+      "transferExpectationDe": "Bei rechteckigen, unterschiedlich beschrifteten, transponierten oder parametrischen Kandidaten entscheidet die lernende Person anhand aller Bedingungen: Eine bloße Normierung genügt weder bei falscher Form noch bei verschiedenen Zustandsräumen; eine andere Reihenfolge ist nur mit konsistenter Beschriftung und Eintragsdeutung zulässig.",
+      "transferExpectationEn": "For rectangular, differently labelled, transposed, or parametric candidates, the learner decides using all conditions: normalization alone is insufficient for an incorrect shape or different state spaces, while a different ordering is admissible only with consistent labels and entry interpretation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-de70309a1c59124953d6b86d4194098976ffe50ce9ee811ad89e3b542652ff15",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d18cefb6ca38a5e80d40c4be41b819c46775848f61e3b1ca77c217085a347978"
+}

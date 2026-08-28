@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `48e3d6c2-00bf-5afd-8846-ba3dbd01e96d`
 - Titel: Antimaterie und Paarvernichtung
-- Beschreibung: Existenz von Antiteilchen (Positron). Paarvernichtung als Energiequelle für die PET-Diagnostik (E=mc²).
+- Beschreibung: Die lernende Person kann das Positron als Antiteilchen des Elektrons beschreiben und erklären, wie bei der Vernichtung eines annähernd ruhenden Elektron-Positron-Paares unter Energie- und Impulserhaltung zwei nahezu entgegengesetzt ausgesandte Photonen entstehen, die in der PET als Messsignal genutzt werden.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Antimaterie und Paarvernichtung
-Beschreibung: Existenz von Antiteilchen (Positron). Paarvernichtung als Energiequelle für die PET-Diagnostik (E=mc²).
+Beschreibung: Die lernende Person kann das Positron als Antiteilchen des Elektrons beschreiben und erklären, wie bei der Vernichtung eines annähernd ruhenden Elektron-Positron-Paares unter Energie- und Impulserhaltung zwei nahezu entgegengesetzt ausgesandte Photonen entstehen, die in der PET als Messsignal genutzt werden.
 
 Zusatzanweisung:
 Pflichtinhalt:

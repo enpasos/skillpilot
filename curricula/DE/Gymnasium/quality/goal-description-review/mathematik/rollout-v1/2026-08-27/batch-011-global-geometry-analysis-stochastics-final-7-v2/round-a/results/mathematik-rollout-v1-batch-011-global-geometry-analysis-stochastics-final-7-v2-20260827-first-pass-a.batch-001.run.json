@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-b011-final-v2-a-gpt56sol-20260827t1956z",
+  "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v2-20260827-a",
+  "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v2-20260827-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v2-20260827-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f50b3b154cd82694d4071e16ec7d2d274b64ac3a4aaac28cb5335235e0d7169d",
+  "bundleFingerprint": "sha256:7d818744f6018d386fc70f5778a5c1fa44df83bfb4163ff73a85d57457a34df2",
+  "bookDigest": "sha256:c6916653e3a5bcd582949f7532e6808499347625e3a8857b044cc4b97d6edd41",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:ca8a91f027293fbf026de913f62fa295723933bbc06125c24fff7c2fb1185871",
+  "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v2-20260827-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+    "7b860649-373e-5523-9843-ec96b3537f1f",
+    "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+    "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+    "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+    "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+    "e8d810de-95ed-52d6-ab1f-0560398e35c0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f50b3b154cd82694d4071e16ec7d2d274b64ac3a4aaac28cb5335235e0d7169d"
+    }
+  ],
+  "startedAt": "2026-08-27T19:56:30Z",
+  "completedAt": "2026-08-27T20:00:48Z",
+  "status": "completed",
+  "outputDigest": "sha256:9e117de697cd29c555c6cc9eb64da49bf79f91e4d06f8384b2059023ca47ec2b",
+  "toolchainVersion": "goal-description-review-campaign-v2"
+}

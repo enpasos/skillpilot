@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5`
 - Titel: Schnittwinkel über Richtungs- und Normalenvektoren bestimmen
-- Beschreibung: Die lernende Person kann für eine gegebene Gerade-Ebene-Konfiguration den Schnittwinkel mithilfe von Richtungs- und Normalenvektoren berechnen.
+- Beschreibung: Die lernende Person kann den nichtstumpfen Schnittwinkel α zwischen einer Geraden mit Richtungsvektor u und einer Ebene mit Normalenvektor n orientierungsunabhängig über sin α = |u · n|/(‖u‖ · ‖n‖) bestimmen, als Ergänzungswinkel zum nichtstumpfen Winkel zwischen Geraden- und Normalenrichtung deuten und geometrisch prüfen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Schnittwinkel über Richtungs- und Normalenvektoren bestimmen
-Beschreibung: Die lernende Person kann für eine gegebene Gerade-Ebene-Konfiguration den Schnittwinkel mithilfe von Richtungs- und Normalenvektoren berechnen.
+Beschreibung: Die lernende Person kann den nichtstumpfen Schnittwinkel α zwischen einer Geraden mit Richtungsvektor u und einer Ebene mit Normalenvektor n orientierungsunabhängig über sin α = |u · n|/(‖u‖ · ‖n‖) bestimmen, als Ergänzungswinkel zum nichtstumpfen Winkel zwischen Geraden- und Normalenrichtung deuten und geometrisch prüfen.
 
 Zusatzanweisung:
 Pflichtinhalt:

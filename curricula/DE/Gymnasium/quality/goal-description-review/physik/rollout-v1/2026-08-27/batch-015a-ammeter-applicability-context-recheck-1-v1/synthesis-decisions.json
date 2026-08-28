@@ -1,0 +1,84 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T19:07:02.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827",
+    "batchManifestDigest": "sha256:cdbce4094ed6d4ed1da2195a8f1bf2394249192be6bd218a7df880d1a63685c2",
+    "configDigest": "sha256:087961b5b19bf98fb9a9cfe7a12f6249de4dbf12fd45935bc1fe9937998549aa",
+    "bundleFingerprint": "sha256:5e3556a79ce3a23111382c5a2dd1660b38a096ec17ef256bc3e9519f4231ebb6",
+    "bookDigest": "sha256:a569db5595cd20007257f376b72d8b5915e2d64df436abce62571160a9c3c2d3",
+    "reviewInputFingerprint": "sha256:13fa3010add38f2548a3f924be92ce10adc6a6d96c74758b46fb3df4a4bd59ec",
+    "dualSummaryDigest": "sha256:5a5c40e56108b9134bb173a258ef3e4241c344ecd6db3cec9c68809e1c9b932a",
+    "canonicalLandscapeDigest": "sha256:098d8af04a0ed6d2a7ef3774cc4207ced313133efb24b64e4dd30a4db40f83e4"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-a",
+      "campaignDigest": "sha256:fb2b08476504e15c6fa6300fce911d0cc52799af5ad1654ad3984384d65d2f28",
+      "roundId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:13fa3010add38f2548a3f924be92ce10adc6a6d96c74758b46fb3df4a4bd59ec",
+      "batchId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:94e78a7f81f31ea0c49b7d5426f08438bb92bb665985def7e03b455bd05a9f4e",
+      "runId": "openai-gpt-5.6-sol-physik-b015a-round-a-20260827T190320Z",
+      "runManifestDigest": "sha256:0443f5de0b8de6eac4a347bee828fb40f00b8789bc1ebd8be693bec4291d793a",
+      "resultsDigest": "sha256:464214a641d8c05501f69bb3d16fe9386835713fbfc768083d8afab26d0e6cd5"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b",
+      "campaignDigest": "sha256:7f6f0cfc8abd28a92128523e5a7b0b596197ac848b7d16791ab438446a4b9f65",
+      "roundId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:13fa3010add38f2548a3f924be92ce10adc6a6d96c74758b46fb3df4a4bd59ec",
+      "batchId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:be14416ba277aa5ea5db58d307fc6e5e7d2b305f8192a4e4b966193bf2eadb38",
+      "runId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001",
+      "runManifestDigest": "sha256:fbdd2297c75a325ebc60eae2040277b8b62918da116b5a796ba443b267976cdb",
+      "resultsDigest": "sha256:ff5d781aa94784d9d6780cc2dc37971a4ac783557fdf5e369fa41d82c400e269"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-synthesis-decision-001",
+      "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ddae4a9a8927cf3989b59c1c491a815fab29030ff4216ada22d490e672abd965",
+      "pageFingerprint": "sha256:3abf91da15ef4226e62ccf39ca05e2f2d5e0abd596377f36ca6cfad40a6de2f6",
+      "goalReviewContextFingerprint": "sha256:321ff6c19474c6d46cbdf085f039865cef969038b9e63a2c6ef192f9a62558a6",
+      "finalText": {
+        "titleDe": "Stromstärke in einfachen Stromkreisen messen",
+        "titleEn": "Measure current in simple circuits",
+        "descriptionDe": "Die lernende Person kann ein Amperemeter in einem einfachen Stromkreis in Reihe anschließen, einen geeigneten Messbereich wählen und die Stromstärke bestimmen sowie den Messwert mit Einheit angeben.",
+        "descriptionEn": "The learner can connect an ammeter in series in a simple circuit, select a suitable measurement range, determine the current, and report the reading with its unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physik-b015a-round-a-20260827T190320Z:f1a078ae-6262-4444-a4bc-a5ab275621cf",
+          "recordDigest": "sha256:a7bdc472420f86b9ced08a1545990847d606fd00496a06a93f7c87b68ccb6cb7"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-015a-ammeter-applicability-context-recheck-1-v1-20260827-b.gpt-5.6-sol.subject-reviewer.run-001.record-001",
+          "recordDigest": "sha256:46390cc8fc004f0a41b94563e1d1051fb75949bfb9ae9a41feb791d3532caf8a"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann unter sicheren Kleinspannungsbedingungen ein Amperemeter in einem einfachen Stromkreis in Reihe anschließen, einen geeigneten Messbereich wählen, die Stromstärke bestimmen und den Messwert mit Einheit angeben.",
+        "proposedDescriptionEn": "Under safe low-voltage conditions, the learner can connect an ammeter in series in a simple circuit, select a suitable measurement range, determine the current, and report the reading with its unit.",
+        "rationaleDe": "Die vorgeschlagene Ergänzung ist als Versuchsbedingung richtig, aber keine zusätzliche fachliche Kompetenz. Das gebundene Evidenzprofil begrenzt jede praktische Leistung ausdrücklich auf einen beaufsichtigten sicheren Kleinspannungsstromkreis, verlangt spannungsfreies Umverdrahten und schließt Netzspannung damit eindeutig aus; der kanonische Lernzieltext kann knapp bleiben.",
+        "rationaleEn": "The proposed addition is correct as an experimental condition but is not an additional subject competence. The bound evidence profile explicitly limits every practical performance to a supervised safe low-voltage circuit, requires de-energized rewiring, and thereby excludes mains voltage unambiguously; the canonical goal text can remain concise."
+      },
+      "rationaleDe": "Die Reviews stimmen darin überein, dass Reiheneinbau, Messbereichswahl, Bestimmung und Einheitenangabe eine einzige Strommesskompetenz bilden. Die aktuelle Beschreibung bleibt unverändert; die zweite Evidenzfassung wird gebunden, weil sie sicheren Kleinspannungsbetrieb, Abschalten beim Umverdrahten, Anschlussbuchsen, kleinen Innenwiderstand, Bereichswahl, Plausibilitätsprüfung und den Transfer auf Gesamt- und Zweigstrom vollständig operationalisiert.",
+      "rationaleEn": "The reviews agree that series insertion, range selection, determination, and reporting with a unit form one current-measurement competence. The current description remains unchanged; the second evidence formulation is bound because it fully operationalizes safe low-voltage operation, de-energized rewiring, terminals, low internal resistance, range selection, plausibility checking, and transfer to total and branch currents."
+    }
+  ],
+  "manifestFingerprint": "sha256:754fb5b78ad5cc40d5ff8a78ac2e845da526655874fe65b919c5a11446d5a4a3"
+}

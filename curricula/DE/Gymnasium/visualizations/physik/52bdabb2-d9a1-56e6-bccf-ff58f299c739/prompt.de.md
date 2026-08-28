@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `52bdabb2-d9a1-56e6-bccf-ff58f299c739`
 - Titel: Kernspintomografie (MRT)
-- Beschreibung: Anwendung von starken Magnetfeldern und Resonanz in der Medizintechnik. Funktionsprinzip qualitativ verstehen.
+- Beschreibung: Die lernende Person kann qualitativ erklären, wie ein statisches Magnetfeld eine Netto-Kernspinmagnetisierung ausrichtet, eine resonante Hochfrequenzanregung sie auslenkt und Magnetfeldgradienten die bei der Relaxation gemessenen Signale räumlich für ein MRT-Bild codieren.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Kernspintomografie (MRT)
-Beschreibung: Anwendung von starken Magnetfeldern und Resonanz in der Medizintechnik. Funktionsprinzip qualitativ verstehen.
+Beschreibung: Die lernende Person kann qualitativ erklären, wie ein statisches Magnetfeld eine Netto-Kernspinmagnetisierung ausrichtet, eine resonante Hochfrequenzanregung sie auslenkt und Magnetfeldgradienten die bei der Relaxation gemessenen Signale räumlich für ein MRT-Bild codieren.
 
 Zusatzanweisung:
 Pflichtinhalt:

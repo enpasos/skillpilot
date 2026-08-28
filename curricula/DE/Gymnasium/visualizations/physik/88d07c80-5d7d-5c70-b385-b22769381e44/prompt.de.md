@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `88d07c80-5d7d-5c70-b385-b22769381e44`
 - Titel: Wärmeenergie als innere Energie deuten
-- Beschreibung: Die lernende Person kann Wärmeenergie als innere Energie eines Systems interpretieren, typische Beispiele nennen und den Nutzen dieser Definition historisch einordnen.
+- Beschreibung: Die lernende Person kann den Ausdruck „Wärmeenergie“ im historischen Zusammenhang als Bezeichnung für die innere Energie eines betrachteten Systems einordnen und erklären, warum „innere Energie“ die im System gespeicherte Energie begrifflich präziser bezeichnet.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Wärmeenergie als innere Energie deuten
-Beschreibung: Die lernende Person kann Wärmeenergie als innere Energie eines Systems interpretieren, typische Beispiele nennen und den Nutzen dieser Definition historisch einordnen.
+Beschreibung: Die lernende Person kann den Ausdruck „Wärmeenergie“ im historischen Zusammenhang als Bezeichnung für die innere Energie eines betrachteten Systems einordnen und erklären, warum „innere Energie“ die im System gespeicherte Energie begrifflich präziser bezeichnet.
 
 Zusatzanweisung:
 Pflichtinhalt:

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-011-global-geometry-analysis-stochastics-final-7-v3.config.json",
+  "configDigest": "sha256:e7a4c4adf1df507941c4b71dd67180812b65edb45563ec25354cf139c2daf45c",
+  "goalIds": [
+    "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+    "7b860649-373e-5523-9843-ec96b3537f1f",
+    "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+    "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+    "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+    "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+    "e8d810de-95ed-52d6-ab1f-0560398e35c0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 791,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:7f2e2722df806dd6663224801fd20b9c1122d49be5003feb57444ea92abe092f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:336cf3ac087773cac34bc58b7a8a12bd195d588846f41f8b6b7556c7f457dce7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:686b9bc633731787ed5ec45b3099c078a3b9475ea0d2b1cf1a5f6e5cc0e16f4d",
+    "reviewInputFingerprint": "sha256:3bc86f7a9bf47d43b82a948f78b8c11002d7e257b87d829722ba8bd38b5d4673",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-a",
+        "campaignDigest": "sha256:28b57cf7b98facded30a5b207481b42952675cd9c2dccdd88dea05dc4e718734",
+        "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:722ba8ecc37b293bd2fb63cbc62ff643795776fc74efe42bed6c42c153d3cf3b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-b",
+        "campaignDigest": "sha256:4f66ad96094e2fac87a3d4bce63a47d7ce1b65da01db87c585448fa7fb80c5d9",
+        "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f47bea7fc0109186d4ed87c460c19584cbb254fdf7a40abbd51a910551289a03"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

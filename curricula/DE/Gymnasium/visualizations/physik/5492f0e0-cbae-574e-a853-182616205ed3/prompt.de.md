@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `5492f0e0-cbae-574e-a853-182616205ed3`
 - Titel: Kernreaktionen und Q-Werte
-- Beschreibung: Q-Werte und Reaktionsgleichungen berechnen.
+- Beschreibung: Die lernende Person kann Kernreaktionsgleichungen unter Erhaltung von Ladungs- und Nukleonenzahl vervollständigen, Q-Werte aus den Massen vor und nach der Reaktion bestimmen und deren Vorzeichen als frei werdende oder erforderliche Energie deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Kernreaktionen und Q-Werte
-Beschreibung: Q-Werte und Reaktionsgleichungen berechnen.
+Beschreibung: Die lernende Person kann Kernreaktionsgleichungen unter Erhaltung von Ladungs- und Nukleonenzahl vervollständigen, Q-Werte aus den Massen vor und nach der Reaktion bestimmen und deren Vorzeichen als frei werdende oder erforderliche Energie deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `bfc2bf06-9b37-4912-a8eb-25fb5d489d72`
 - Titel: Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)
-- Beschreibung: Die lernende Person kann Flächeninhalte mithilfe uneigentlicher Integrale bestimmen, indem sie passende uneigentliche Integrale aufstellt und berechnet.
+- Beschreibung: Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)
-Beschreibung: Die lernende Person kann Flächeninhalte mithilfe uneigentlicher Integrale bestimmen, indem sie passende uneigentliche Integrale aufstellt und berechnet.
+Beschreibung: Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.
 
 Zusatzanweisung:
 Pflichtinhalt:

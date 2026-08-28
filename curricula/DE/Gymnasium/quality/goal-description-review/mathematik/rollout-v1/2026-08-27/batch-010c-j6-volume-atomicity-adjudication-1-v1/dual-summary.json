@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4ad0083a5a22cd60b57df350f7345d073dc756655f253124f1dd91acbfee079a",
+  "reviewInputFingerprint": "sha256:52a17ad03cce5c992576099d9e3d2831c0b7c417649defba45e199b6a49f81eb",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-010c-j6-volume-atomicity-adjudication-1-v1-20260827-a",
+      "roundId": "mathematik-rollout-v1-batch-010c-j6-volume-atomicity-adjudication-1-v1-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-010c-j6-volume-atomicity-adjudication-1-v1-20260827-independent-a",
+      "runIds": [
+        "math010c-round-a-openai-gpt-5.6-sol-20260827"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-010c-j6-volume-atomicity-adjudication-1-v1-20260827-b",
+      "roundId": "mathematik-rollout-v1-batch-010c-j6-volume-atomicity-adjudication-1-v1-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-010c-j6-volume-atomicity-adjudication-1-v1-20260827-independent-b",
+      "runIds": [
+        "math010c-b-openai-gpt-5.6-sol-20260827"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5.6-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+      "firstRecordId": "math010c-a-99ef0fc2-150a-51e8-bac8-7e40e46917b",
+      "secondRecordId": "math010c-b-001-99ef0fc2",
+      "firstRunId": "math010c-round-a-openai-gpt-5.6-sol-20260827",
+      "secondRunId": "math010c-b-openai-gpt-5.6-sol-20260827",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

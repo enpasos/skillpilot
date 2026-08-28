@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5`
 - Titel: Volumen von Prismen und Pyramiden berechnen
-- Beschreibung: Die lernende Person kann Volumenformeln für Prismen und Pyramiden auswählen und in einfachen Berechnungen sicher anwenden.
+- Beschreibung: Die lernende Person kann bei Prismen und Pyramiden Grundflächeninhalt und senkrechte Höhe identifizieren, anhand der Körperart die passende Volumenformel V = G · h beziehungsweise V = ⅓ · G · h auswählen und anwenden sowie Ergebnisse in passenden Volumeneinheiten prüfen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Volumen von Prismen und Pyramiden berechnen
-Beschreibung: Die lernende Person kann Volumenformeln für Prismen und Pyramiden auswählen und in einfachen Berechnungen sicher anwenden.
+Beschreibung: Die lernende Person kann bei Prismen und Pyramiden Grundflächeninhalt und senkrechte Höhe identifizieren, anhand der Körperart die passende Volumenformel V = G · h beziehungsweise V = ⅓ · G · h auswählen und anwenden sowie Ergebnisse in passenden Volumeneinheiten prüfen.
 
 Zusatzanweisung:
 Pflichtinhalt:

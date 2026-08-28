@@ -1,0 +1,252 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-27T12:36:54.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827",
+    "batchManifestDigest": "sha256:f681a8deed6161cc0e0f54290e64f24afc9899ec0167d6f262d86cc81c774ead",
+    "configDigest": "sha256:78bc54b300bb386393889679f52594a413f9d0f58a331a002bad082376e23f24",
+    "bundleFingerprint": "sha256:19d138b0d93419f38439dadeed0eea21f983675ebf66cb74c9f8f3f875530f0e",
+    "bookDigest": "sha256:28c7938e2cb064f3d58e537019fd0a9473ea636a0585847631b396992e75b30c",
+    "reviewInputFingerprint": "sha256:dc37bc041745972837ff2d2539a1e471eba3fcf46f7bd0a48b4d7552580175e7",
+    "dualSummaryDigest": "sha256:ac1b410c1add0a116db824df66cac5fb8f2820d850cd24f3f929a7e3233b2dc7",
+    "canonicalLandscapeDigest": "sha256:6d45389fb55835cb8fb83af63ede91fd56ed5f20e5e27266837efc70f797dc90"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-a",
+      "campaignDigest": "sha256:75432d53d6148e520500366a5267abded6157108fb15e7538ab2f11f74dc527f",
+      "roundId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-independent-a",
+      "reviewInputFingerprint": "sha256:dc37bc041745972837ff2d2539a1e471eba3fcf46f7bd0a48b4d7552580175e7",
+      "batchId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4b194d00ab2551a0abf8381c85bf373da49892c84cc6561aee34bd48f530665a",
+      "runId": "math010b-round-a-openai-gpt-5.6-sol-20260827",
+      "runManifestDigest": "sha256:d7da6b1884de6c324177ac1bc542a9bea9096e1c89075aa1888fd2c23708925b",
+      "resultsDigest": "sha256:6c31d228c008cbf556ff81bd2c62bd8d36d90972b935ba599464aedecc01153b"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-b",
+      "campaignDigest": "sha256:3a2090f24b75806fcbcf2a481572c67a5574473730931aa5916e13fb9cdc6081",
+      "roundId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-independent-b",
+      "reviewInputFingerprint": "sha256:dc37bc041745972837ff2d2539a1e471eba3fcf46f7bd0a48b4d7552580175e7",
+      "batchId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a8fd88e6e30683c16698b6be32ff7dfead7994cfeb1c2aab3bdde64309b89521",
+      "runId": "math010b-b-openai-gpt-5.6-sol-20260827",
+      "runManifestDigest": "sha256:a1c340b8e51d2f96b08260153a3eb26bbca82b19d0646210482070bad4bfd9f0",
+      "resultsDigest": "sha256:cad6c53364b0a887a8e4aeb379afa70d77f832879294788928c2290c1ec22a05"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-001",
+      "goalId": "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ce35178e6307071a3e002c79b4df0ed804257ba87e3f00787837cc2d4ce2bbf5",
+      "pageFingerprint": "sha256:30a59447e16bcdd265a53d3e81b6a575c788cca73d3f0cd858735e22f6cfd875",
+      "goalReviewContextFingerprint": "sha256:83099b2bd4d4d5e225597bafcb4e96ec535d1aa619e143a5dcd37299cd9c82ab",
+      "finalText": {
+        "titleDe": "Rechteckflächenformel aus dem Messprinzip erklären",
+        "titleEn": "Explain the rectangle area formula from the measuring principle",
+        "descriptionDe": "Die lernende Person kann die Formel für den Flächeninhalt eines Rechtecks aus dem Grundprinzip des Messens mit Einheitsquadraten erklären.",
+        "descriptionEn": "The learner can explain the formula for the area of a rectangle from the measuring principle using unit squares."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+          "recordDigest": "sha256:74e011164b4dac355f4934e60e5ff77c4c2bf8c4c22d4463ee8e9dee2cc25cef"
+        },
+        "second": {
+          "recordId": "math010b-b-001-0bd7dc9b",
+          "recordDigest": "sha256:6acdca83416d1d45ff22d4365e1d229dbf4387a37769e2650549b5f065309cd3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle Beschreibung als präzise, altersgerechte und atomare Erklärung der Rechteckflächenformel aus dem Messen mit Einheitsquadraten. Die erste Evidenzfassung wird gebunden, weil sie den Zusammenhang von Zeilen, Spalten, gleich langen Maßeinheiten und Quadrateinheit besonders klar macht und den Transfer auf anders orientierte oder nur teilweise gerasterte Rechtecke verlangt.",
+      "rationaleEn": "Both independent reviews confirm the current description as a precise, age-appropriate, and atomic explanation of the rectangle area formula from measurement with unit squares. The first evidence formulation is bound because it makes the relationship among rows, columns, equal units of length, and the square unit especially clear and requires transfer to differently oriented or only partially gridded rectangles."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-002",
+      "goalId": "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c6ad9668d47d68792449c3a6e08e79ee48b866334d178da17d66b5a353ac06f6",
+      "pageFingerprint": "sha256:37b787720a26187af08e6768227e5a04f440de45661b80c9af2842270d2a7407",
+      "goalReviewContextFingerprint": "sha256:2e3444c1d921cfc3a984221857f9e864a777f97ff2cbdc2eeeb74769f0a27b58",
+      "finalText": {
+        "titleDe": "Schrägbilder von Quadern und Würfeln zeichnen",
+        "titleEn": "Draw oblique views of cuboids and cubes",
+        "descriptionDe": "Die lernende Person kann zu einem Quader oder Würfel nach einer vorgegebenen Schrägbildkonvention ein räumlich konsistentes Schrägbild zeichnen, dabei zusammengehörige Körperkanten parallel sowie sichtbare Kanten durchgezogen und verdeckte Kanten gegebenenfalls gestrichelt darstellen.",
+        "descriptionEn": "The learner can draw a spatially consistent oblique view of a cuboid or cube using a specified oblique-drawing convention, keeping corresponding edges parallel and drawing visible edges as solid lines and hidden edges, where applicable, as dashed lines."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+          "recordDigest": "sha256:3756bd88b8b85ba45ab69e3387c5c73341ade5cbe9dd47e51bfd50e07aa372da"
+        },
+        "second": {
+          "recordId": "math010b-b-002-6bb52f96",
+          "recordDigest": "sha256:12c0f327ba4ae184e0a2c32f60d3b48febb17c45f2b5a7d7c9e9eb68a785a810"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen, dass die aktuelle Beschreibung genau eine kohärente Darstellungsleistung unter einer vorgegebenen Schrägbildkonvention erfasst. Die erste Evidenzfassung ist die stärkere Grundlage, weil sie Richtung und Verkürzung der Tiefenkanten, die Parallelität zusammengehöriger Kanten sowie die aus der Blickrichtung folgende Sichtbarkeit gemeinsam beobachtbar macht und bei einer veränderten Konvention erneut prüfen lässt.",
+      "rationaleEn": "Both independent reviews confirm that the current description captures exactly one coherent representation performance under a specified oblique-drawing convention. The first evidence formulation is the stronger basis because it makes the direction and shortening of receding edges, the parallelism of corresponding edges, and visibility from the viewpoint jointly observable and requires them to be checked again under a changed convention."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-003",
+      "goalId": "2f3d24e7-2450-55d8-97c2-3e106d2854c6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d93245456fa133acbb08214e54d08ca2f07370595ea9754c39f517e89bd5b118",
+      "pageFingerprint": "sha256:6a114032ce917b869080247bb1a05f442275622e81a3ef9231cb4e7dae2776aa",
+      "goalReviewContextFingerprint": "sha256:35ae675e0236343033c4914aaf99d9ff8bdbd33d9f5402762880f6e55a138cc7",
+      "finalText": {
+        "titleDe": "Achsenspiegelungen konstruieren",
+        "titleEn": "Construct reflections across a line",
+        "descriptionDe": "Die lernende Person kann zu einem Punkt oder einer Figur an einer gegebenen Geraden die Bildpunkte so konstruieren, dass die Verbindungsstrecken senkrecht zur Spiegelachse verlaufen und Ausgangs- und Bildpunkt jeweils denselben Abstand von ihr haben, und diese Bedingungen prüfen.",
+        "descriptionEn": "The learner can construct the image points of a point or figure under reflection across a given line so that the joining segments are perpendicular to the mirror line and each original point and its image are equally distant from it, and check these conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-2f3d24e7-2450-55d8-97c2-3e106d2854c6",
+          "recordDigest": "sha256:1fb26b6fd6a2b5bcdb960e8afac4f28ddd94f5199b6f65eda2e5d361d21456e2"
+        },
+        "second": {
+          "recordId": "math010b-b-003-2f3d24e7",
+          "recordDigest": "sha256:d0893155ce70c709b3593cb3892878cf3d6046a8bfb66eba54392d46acc5c8bf"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann einen Punkt oder eine Figur an einer gegebenen Geraden spiegeln, indem sie Punkte auf der Spiegelachse fest lässt und zu jedem übrigen Punkt den Bildpunkt so konstruiert, dass die Achse die Verbindungsstrecke senkrecht halbiert, und diese Bedingungen prüft.",
+        "proposedDescriptionEn": "The learner can reflect a point or figure across a given line by leaving points on the mirror line fixed and constructing the image of every other point so that the line perpendicularly bisects the joining segment, and check these conditions.",
+        "rationaleDe": "Die vorgeschlagene Ergänzung macht den Fixpunktfall expliziter, erweitert aber eine bereits hinreichend bestimmte Konstruktionsbeschreibung um einen einzelnen Randfall. Dieser Randfall wird im gebundenen Verständnissevidenzprofil ausdrücklich geprüft; die kanonische Beschreibung bleibt dadurch knapp, ohne den Coach oder die Prüfung fachlich offen zu lassen.",
+        "rationaleEn": "The proposed addition makes the fixed-point case more explicit but expands an already sufficiently specified construction description with one boundary case. That case is tested explicitly in the bound understanding-evidence profile, so the canonical description remains concise without leaving the coaching or assessment interpretation open."
+      },
+      "rationaleDe": "Die erste Runde bestätigt die definierenden Senkrecht- und Abstandsgleichheitsbedingungen, während die zweite Runde lediglich den Fixpunktfall auf der Achse expliziter formulieren möchte. Die aktuelle Beschreibung bleibt unverändert; gebunden wird die zweite Evidenzfassung, weil sie die Spiegelachse als Mittelsenkrechte, Punkte auf der Achse als Fixpunkte und den Transfer auf eine schräge, die Figur schneidende Achse ausdrücklich zusammenführt.",
+      "rationaleEn": "The first round confirms the defining perpendicularity and equal-distance conditions, while the second round only seeks to state the fixed-point case on the line more explicitly. The current description remains unchanged; the second evidence formulation is bound because it explicitly combines the mirror line as a perpendicular bisector, points on the line as fixed points, and transfer to an oblique line crossing the figure."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-004",
+      "goalId": "50e4ecab-d462-5496-b493-b30d699eb100",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3c6c99decad0254f9c53ee961a66b3a94990458c5a1eee2e290f0c90b27d6dbf",
+      "pageFingerprint": "sha256:0b2127ab3612761f32b352eba9a97f7b2b238a7f573341b6ce39a9a4651c06ae",
+      "goalReviewContextFingerprint": "sha256:ce4f7acaf9a4d8f09879778df8b90a09091cb1f6fdef2a8a46c5528d205e0862",
+      "finalText": {
+        "titleDe": "Punktspiegelungen konstruieren",
+        "titleEn": "Construct point reflections",
+        "descriptionDe": "Die lernende Person kann zu einem Punkt oder einer Figur bei gegebenem Spiegelzentrum die Bildpunkte so konstruieren, dass das Spiegelzentrum jeweils auf der Verbindungsstrecke liegt und von Ausgangs- und Bildpunkt gleich weit entfernt ist, und diese Bedingung prüfen.",
+        "descriptionEn": "The learner can construct the image points of a point or figure under point reflection about a given centre so that the centre lies on each joining segment and is equally distant from the original point and its image, and check this condition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-50e4ecab-d462-5496-b493-b30d699eb100",
+          "recordDigest": "sha256:dd8d3e17ed91603bb8b9eb27947134ea23eeb1226a7ecd1b3767b615d13fd650"
+        },
+        "second": {
+          "recordId": "math010b-b-004-50e4ecab",
+          "recordDigest": "sha256:5cd1b34daa6a603e53eb1c4452d312b1a8656a5912190a96272b66e36ba1f789"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle Beschreibung als atomare Konstruktion und Kontrolle einer Punktspiegelung über genau eine Mittelpunktbedingung. Die erste Evidenzfassung wird gebunden, weil sie Kollinearität, entgegengesetzte Lage und gleiche Abstände transparent macht und dieselbe Bedingung auch außerhalb eines Koordinatengitters oder bei einem außerhalb der Figur liegenden Zentrum verlangt.",
+      "rationaleEn": "Both independent reviews confirm the current description as an atomic construction and check of a point reflection through exactly one midpoint condition. The first evidence formulation is bound because it makes collinearity, opposite placement, and equal distances transparent and requires the same condition without a coordinate grid or with the centre outside the figure."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-005",
+      "goalId": "bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dfd33d6ba7d4a407eb8af73c1a3f772e0c9148d289e3866ed647b0fcf75e0f05",
+      "pageFingerprint": "sha256:80e95450998a1369da2938e9963da22ce4c50d3dcbd2a2ef879b36eaa2db6cd5",
+      "goalReviewContextFingerprint": "sha256:0379487fdb3fbb9dc841ea57e1c68611873e42e153ba0f6d051f73aae5900083",
+      "finalText": {
+        "titleDe": "Eine orthogonale Ansicht eines Quaders oder Würfels zeichnen",
+        "titleEn": "Draw an orthographic view of a cuboid or cube",
+        "descriptionDe": "Die lernende Person kann zu einem Quader oder Würfel aus einer vorgegebenen Hauptblickrichtung eine orthogonale ebene Ansicht zeichnen und deren Breite und Höhe den entsprechenden Kantenlängen des Körpers zuordnen.",
+        "descriptionEn": "The learner can draw an orthographic plane view of a cuboid or cube from a specified principal viewing direction and relate its width and height to the corresponding edge lengths of the solid."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82",
+          "recordDigest": "sha256:46e68328bc4088f64420b52d8740edf74a21bdf0ce87cfb950a9fa26ebcb8ad2"
+        },
+        "second": {
+          "recordId": "math010b-b-005-bce2c2cb",
+          "recordDigest": "sha256:fb299efa06b83ccce3661c68200a931af747dfed944b42db8de09248c92274d0"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle Beschreibung als geschlossene Projektionsleistung aus Blickrichtung, ebener Ansicht und Zuordnung der sichtbaren Maße. Die erste Evidenzfassung ist die stärkere Grundlage, weil sie ausdrücklich erklärt, warum die Tiefenausdehnung in Blickrichtung entfällt, und bei Vorder-, Seiten-, Draufsicht oder gedrehter Körperdarstellung eine neue Zuordnung verlangt.",
+      "rationaleEn": "Both independent reviews confirm the current description as one coherent projection performance combining viewing direction, plane view, and assignment of the visible dimensions. The first evidence formulation is the stronger basis because it explicitly explains why the depth dimension along the line of sight disappears and requires reassignment for front, side, top, or rotated views."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-006",
+      "goalId": "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fe68bd2029a91384ebdfef9623e6531e9a98fbb7f8afcbf3e33d5aeee7c7dd66",
+      "pageFingerprint": "sha256:9d02fc8f9c4fc4d9b7fb59df760def1fc91998cd2c70a44642066d1f0548ea85",
+      "goalReviewContextFingerprint": "sha256:57e7c45be187a8fdc21525a996ccc441f7c520303fe9c8dfd542aaeefe5abe89",
+      "finalText": {
+        "titleDe": "Oberflächeninhalte von Quadern und Würfeln aus ihren Seitenflächen berechnen",
+        "titleEn": "Calculate surface areas of cuboids and cubes from their faces",
+        "descriptionDe": "Die lernende Person kann bei einem Quader oder Würfel die Flächeninhalte der sechs Seitenflächen aus den Kantenlängen bestimmen, gleich große Seitenflächen berücksichtigen und sie zum Oberflächeninhalt addieren.",
+        "descriptionEn": "The learner can determine the areas of the six faces of a cuboid or cube from its edge lengths, account for congruent faces, and add them to obtain the surface area."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+          "recordDigest": "sha256:8efb39b5a095cd70951661659aa3a7200e22df8e92c48d21f9ecb7cb95b73722"
+        },
+        "second": {
+          "recordId": "math010b-b-006-cddcdabd",
+          "recordDigest": "sha256:cecfdf9445a1a9e86c007dc1515ce292aa29c58fe7c77aa5ccfd9b6209871af7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen, dass die Beschreibung die Zerlegung der Oberfläche in sechs Seitenflächen, die Paarstruktur gleich großer Flächen und deren Addition zu einer einzigen nachvollziehbaren Kompetenz verbindet. Die erste Evidenzfassung wird gebunden, weil sie die Zuordnung der Kantenlängen, jedes Gegenflächenpaar, die Quadrateinheit und den Transfer zwischen räumlicher Skizze und Netz besonders vollständig prüft.",
+      "rationaleEn": "Both independent reviews confirm that the description combines decomposition of the surface into six faces, the pairing of congruent faces, and their addition into one transparent competence. The first evidence formulation is bound because it particularly fully tests assignment of edge lengths, every pair of opposite faces, the square unit, and transfer between a spatial sketch and a net."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-010b-applicability-context-recheck-uncontested-7-v1-20260827-synthesis-decision-007",
+      "goalId": "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4e742f29b82dfa3e5f00f446b4e9fa9513c4d7eba95350520cecb3cbbe693e86",
+      "pageFingerprint": "sha256:312c5d7a71f22398d3e14243d48d403dc72af3b2cdfd4cccf30542c3e6a6774a",
+      "goalReviewContextFingerprint": "sha256:56c17fcf58fda4db7f803f7933bf5bcc5cce0ff02b146d7a314d86c838a586f3",
+      "finalText": {
+        "titleDe": "Netze von Quadern und Würfeln zeichnen",
+        "titleEn": "Draw nets of cuboids and cubes",
+        "descriptionDe": "Die lernende Person kann aus den sechs Seitenflächen eines Quaders oder Würfels ein vollständiges, zusammenhängendes Netz zeichnen und prüfen, ob es sich ohne Überlappung zum Körper falten lässt.",
+        "descriptionEn": "The learner can draw a complete, connected net from the six faces of a cuboid or cube and check whether it can be folded into the solid without overlap."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math010b-a-f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+          "recordDigest": "sha256:049e41ae4e36cea7c606ccfa51bcd9015f56855787e17243d648c1001ae03c48"
+        },
+        "second": {
+          "recordId": "math010b-b-007-f52e9d72",
+          "recordDigest": "sha256:577a30b4b789c8d2b08089c452afb67eb3acf622268c63bf48b74e428bbb7d74"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle Beschreibung als kohärente Konstruktion und Faltbarkeitsprüfung eines vollständigen Körpernetzes. Die zweite Evidenzfassung wird gebunden, weil sie jede Seitenfläche genau einmal, die Kantenbeziehungen, korrekte Nachbarschaften und Überlappungsfreiheit explizit macht und den Transfer auf veränderte Seitenlängen oder eine vorgegebene Teilanordnung verlangt.",
+      "rationaleEn": "Both independent reviews confirm the current description as a coherent construction and foldability check of a complete solid net. The second evidence formulation is bound because it explicitly requires every face exactly once, the edge relationships, correct adjacencies, and freedom from overlap, and tests transfer to changed side lengths or a supplied partial arrangement."
+    }
+  ],
+  "manifestFingerprint": "sha256:fa0eea651df62064ecb0bcffb3bf32b3601c2cf43d3839e2c007cebc8fce3f60"
+}

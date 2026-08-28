@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b011-final-v3-20260827-round-b-run-001",
+  "campaignId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-b",
+  "roundId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f47bea7fc0109186d4ed87c460c19584cbb254fdf7a40abbd51a910551289a03",
+  "bundleFingerprint": "sha256:686b9bc633731787ed5ec45b3099c078a3b9475ea0d2b1cf1a5f6e5cc0e16f4d",
+  "bookDigest": "sha256:336cf3ac087773cac34bc58b7a8a12bd195d588846f41f8b6b7556c7f457dce7",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-review-mathematics-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:b6eef606af428fd9d066d0bb3c36f8e0ba04cacb0b88b30867e95695777bdb3c",
+  "independenceGroupId": "mathematik-rollout-v1-batch-011-global-geometry-analysis-stochastics-final-7-v3-20260827-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+    "7b860649-373e-5523-9843-ec96b3537f1f",
+    "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+    "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+    "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+    "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+    "e8d810de-95ed-52d6-ab1f-0560398e35c0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f47bea7fc0109186d4ed87c460c19584cbb254fdf7a40abbd51a910551289a03"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:b423aeec49f688d8e0aa2f3b4755ab11b960d71ed68b7615eda930ddf3c7f049"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-27T22:08:42+02:00",
+  "completedAt": "2026-08-27T22:08:42+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:b4ec40b7bd62e39ed8fe8126c9c980fa269a327446d9a712cee8fdc3b78977db",
+  "toolchainVersion": "codex-agent-v1"
+}
