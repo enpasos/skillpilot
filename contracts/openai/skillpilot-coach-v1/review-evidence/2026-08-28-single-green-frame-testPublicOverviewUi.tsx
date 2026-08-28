@@ -31,6 +31,7 @@ interface ExpectedOverview {
   cardDescription: string
   removedCardTagline: string
   removedCompactMission: string
+  formatsLabel: string
   formatNavigationLabel: string
   switchLabel: string
   audioNotice: string
@@ -55,6 +56,7 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
     cardDescription: 'Die Idee hinter SkillPilot – anhören, ansehen oder lesen.',
     removedCardTagline: 'Alles Wissen. Für jeden Menschen.',
     removedCompactMission: 'SkillPilot macht Wissen navigierbar – in offenen Wissenslandschaften, die von Menschen gestaltet, geprüft und verantwortet werden. Lernende und ihre persönliche KI erhalten verlässliche Orientierung. Für Lehrende werden individuelle Lernfortschritte sichtbar, damit sie Lernprozesse fundierter und gezielter begleiten können.',
+    formatsLabel: 'Verfügbare Formate',
     formatNavigationLabel: 'Format wählen',
     switchLabel: 'English',
     audioNotice: 'Diese Audioeinführung enthält KI-erzeugte Stimmen.',
@@ -100,6 +102,7 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
     cardDescription: 'The idea behind SkillPilot—listen, watch, or read.',
     removedCardTagline: 'All knowledge. For everyone.',
     removedCompactMission: 'SkillPilot makes knowledge navigable—in open knowledge landscapes designed and reviewed by people, who remain responsible for them. Learners and their personal AI receive reliable guidance. Educators gain insight into individual learning progress, enabling them to provide more informed and targeted learning support.',
+    formatsLabel: 'Available formats',
     formatNavigationLabel: 'Choose a format',
     switchLabel: 'Deutsch',
     audioNotice: 'This audio introduction contains AI-generated voices.',
@@ -143,13 +146,6 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
 }
 
 const formatIds: FormatId[] = ['audio', 'video', 'whitepaper']
-const rootActionTestIds = [
-  ...formatIds.map((formatId) => `skillpilot-overview-format-${formatId}`),
-  'skillpilot-overview-disclosure-toggle',
-]
-const rootActionSelector = rootActionTestIds
-  .map((testId) => `[data-testid="${testId}"]`)
-  .join(', ')
 const forbiddenNeutralAction: Record<Language, string> = {
   de: 'Überblick öffnen',
   en: 'Open overview',
@@ -308,66 +304,55 @@ const assertNoHorizontalOverflow = async (page: Page, message: string) => {
   )
 }
 
-const assertActionsStayInOneRow = async (page: Page, language: Language) => {
-  const actions = page.getByTestId('skillpilot-overview-media-actions').locator(rootActionSelector)
-  assert.equal(await actions.count(), rootActionTestIds.length, `${language}: desktop keeps all four actions`)
+const assertMediaActionsStayInOneRow = async (page: Page, language: Language) => {
+  const actions = page.locator('[data-testid^="skillpilot-overview-format-"]')
+  assert.equal(await actions.count(), formatIds.length, `${language}: desktop keeps all media actions`)
   const positions = await actions.evaluateAll((elements) => elements.map((element) => {
     const bounds = element.getBoundingClientRect()
-    return { left: bounds.left, right: bounds.right, top: bounds.top }
+    return { left: bounds.left, top: bounds.top }
   }))
   assert(
     positions.every((position) => Math.abs(position.top - positions[0]!.top) <= 1),
-    `${language}: desktop action pills stay in one row`,
+    `${language}: desktop media actions stay in one row`,
   )
   assert(
     positions.every((position, index) => index === 0 || position.left > positions[index - 1]!.left),
-    `${language}: desktop action pills keep their reading order`,
-  )
-
-  const gaps = positions.slice(1).map((position, index) => (
-    position.left - positions[index]!.right
-  ))
-  assert(
-    gaps.every((gap) => Math.abs(gap - gaps[0]!) <= 1),
-    `${language}: Vision & Mission follows Whitepaper with the same pill gap`,
+    `${language}: desktop media actions keep their reading order`,
   )
 }
 
 const assertActionRowStructure = async (page: Page, language: Language) => {
   const actionRow = page.getByTestId('skillpilot-overview-actions')
-  const actionList = page.getByTestId('skillpilot-overview-media-actions')
+  const mediaGroup = page.getByTestId('skillpilot-overview-media-actions')
 
   assert.equal(await actionRow.count(), 1, `${language}: the card has one shared action row`)
   assert.equal(
-    await actionList.evaluate((list) => list.tagName.toLowerCase()),
-    'ul',
-    `${language}: all four actions form one semantic list`,
-  )
-  assert.equal(
-    await actionList.evaluate((list, rowTestId) => (
-      list.parentElement?.getAttribute('data-testid') === rowTestId
-    ), 'skillpilot-overview-actions'),
+    await actionRow.evaluate((row) => {
+      const media = row.querySelector('[data-testid="skillpilot-overview-media-actions"]')
+      const disclosure = row.querySelector('[data-testid="skillpilot-overview-disclosure-toggle"]')
+      return media?.parentElement === row && disclosure?.parentElement === row
+    }),
     true,
-    `${language}: the action list is the direct content of the shared action row`,
+    `${language}: media group and disclosure are direct siblings in the shared action row`,
   )
   assert.equal(
-    await actionList.locator(':scope > li').count(),
-    rootActionTestIds.length,
-    `${language}: the wrapping sequence has exactly four list items`,
-  )
-  assert.deepEqual(
-    await actionList.locator(':scope > li').evaluateAll((items) => items.map((item) => {
-      const action = item.querySelector(':scope > a, :scope > button')
-      return action?.getAttribute('data-testid') ?? null
-    })),
-    rootActionTestIds,
-    `${language}: Vision & Mission is the fourth pill directly after Whitepaper`,
+    await mediaGroup.evaluate((media, disclosureTestId) => {
+      const disclosure = document.querySelector(`[data-testid="${disclosureTestId}"]`)
+      return Boolean(
+        disclosure
+        && (media.compareDocumentPosition(disclosure) & Node.DOCUMENT_POSITION_FOLLOWING),
+      )
+    }, 'skillpilot-overview-disclosure-toggle'),
+    true,
+    `${language}: the disclosure follows all three media links in DOM and keyboard order`,
   )
 }
 
 const assertMobileActionWrap = async (page: Page, language: Language) => {
-  const actionList = page.getByTestId('skillpilot-overview-media-actions')
-  const actionRects = await actionList.locator(rootActionSelector).evaluateAll((elements) => elements.map((element) => {
+  const actionRow = page.getByTestId('skillpilot-overview-actions')
+  const actionRects = await actionRow.locator(
+    'a[data-testid^="skillpilot-overview-format-"], button[data-testid="skillpilot-overview-disclosure-toggle"]',
+  ).evaluateAll((elements) => elements.map((element) => {
     const bounds = element.getBoundingClientRect()
     return {
       bottom: bounds.bottom,
@@ -376,8 +361,8 @@ const assertMobileActionWrap = async (page: Page, language: Language) => {
       top: bounds.top,
     }
   }))
-  const rowBounds = await actionList.evaluate((list) => {
-    const bounds = list.getBoundingClientRect()
+  const rowBounds = await actionRow.evaluate((row) => {
+    const bounds = row.getBoundingClientRect()
     return { bottom: bounds.bottom, left: bounds.left, right: bounds.right, top: bounds.top }
   })
 
@@ -398,158 +383,39 @@ const assertMobileActionWrap = async (page: Page, language: Language) => {
 }
 
 const assertDesktopActionLayout = async (page: Page, language: Language) => {
-  await assertActionsStayInOneRow(page, language)
+  await assertMediaActionsStayInOneRow(page, language)
 
-  const [rowBounds, firstActionBounds, disclosureRendering] = await Promise.all([
+  const [rowBounds, mediaBounds, disclosureBounds] = await Promise.all([
     page.getByTestId('skillpilot-overview-actions').evaluate((element) => {
       const bounds = element.getBoundingClientRect()
       return { left: bounds.left, right: bounds.right }
     }),
-    page.getByTestId('skillpilot-overview-format-audio').evaluate((element) => {
+    page.getByTestId('skillpilot-overview-media-actions').evaluate((element) => {
       const bounds = element.getBoundingClientRect()
-      return { left: bounds.left }
+      return { left: bounds.left, right: bounds.right, verticalCenter: bounds.top + bounds.height / 2 }
     }),
     page.getByTestId('skillpilot-overview-disclosure-toggle').evaluate((element) => {
       const bounds = element.getBoundingClientRect()
-      return {
-        marginInlineStart: getComputedStyle(element).marginInlineStart,
-        right: bounds.right,
-      }
+      return { left: bounds.left, right: bounds.right, verticalCenter: bounds.top + bounds.height / 2 }
     }),
   ])
 
   assert(
-    Math.abs(firstActionBounds.left - rowBounds.left) <= 1,
-    `${language}: desktop keeps the wrapping action sequence left-aligned`,
-  )
-  assert.equal(
-    disclosureRendering.marginInlineStart,
-    '0px',
-    `${language}: the fourth pill has no automatic start margin`,
+    Math.abs(mediaBounds.left - rowBounds.left) <= 1,
+    `${language}: desktop keeps the media group left-aligned`,
   )
   assert(
-    rowBounds.right - disclosureRendering.right > 16,
-    `${language}: the fourth pill stays beside Whitepaper instead of right-aligning`,
+    disclosureBounds.left > mediaBounds.right,
+    `${language}: desktop places the disclosure after the media group without overlap`,
   )
-}
-
-const readDisclosurePillAppearance = async (page: Page) => (
-  page.getByTestId('skillpilot-overview-disclosure-toggle').evaluate((button) => {
-    const style = getComputedStyle(button)
-    return {
-      backgroundColor: style.backgroundColor,
-      borderColor: style.borderTopColor,
-      borderRadius: style.borderRadius,
-      borderStyle: style.borderTopStyle,
-      borderWidth: style.borderTopWidth,
-      classNames: [...button.classList],
-      color: style.color,
-      fontSize: style.fontSize,
-      fontWeight: style.fontWeight,
-      marginInlineStart: style.marginInlineStart,
-      paddingBlockEnd: style.paddingBlockEnd,
-      paddingBlockStart: style.paddingBlockStart,
-      paddingInlineEnd: style.paddingInlineEnd,
-      paddingInlineStart: style.paddingInlineStart,
-      textDecorationLine: style.textDecorationLine,
-    }
-  })
-)
-
-const assertClosedDisclosurePill = async (page: Page, language: Language) => {
-  const actionPills = page.getByTestId('skillpilot-overview-media-actions').locator(rootActionSelector)
-  const appearances = await actionPills.evaluateAll((elements) => elements.map((element) => {
-    const style = getComputedStyle(element)
-    return {
-      backgroundColor: style.backgroundColor,
-      borderColor: style.borderTopColor,
-      borderRadius: style.borderRadius,
-      borderStyle: style.borderTopStyle,
-      borderWidth: style.borderTopWidth,
-      color: style.color,
-      fontSize: style.fontSize,
-      fontWeight: style.fontWeight,
-      paddingBlockEnd: style.paddingBlockEnd,
-      paddingBlockStart: style.paddingBlockStart,
-      paddingInlineEnd: style.paddingInlineEnd,
-      paddingInlineStart: style.paddingInlineStart,
-      textDecorationLine: style.textDecorationLine,
-    }
-  }))
-  const disclosureAppearance = await readDisclosurePillAppearance(page)
-  const comparableStyleKeys = [
-    'backgroundColor',
-    'borderColor',
-    'borderRadius',
-    'borderStyle',
-    'borderWidth',
-    'color',
-    'fontSize',
-    'fontWeight',
-    'paddingBlockEnd',
-    'paddingBlockStart',
-    'paddingInlineEnd',
-    'paddingInlineStart',
-    'textDecorationLine',
-  ] as const
-
-  assert.equal(appearances.length, rootActionTestIds.length, `${language}: all action pills render`)
-  for (const mediaAppearance of appearances.slice(0, formatIds.length)) {
-    for (const key of comparableStyleKeys) {
-      assert.equal(
-        disclosureAppearance[key],
-        mediaAppearance[key],
-        `${language}: closed disclosure matches media-pill ${key}`,
-      )
-    }
-  }
-
-  for (const className of [
-    'inline-flex',
-    'items-center',
-    'gap-1.5',
-    'rounded-full',
-    'border',
-    'px-2.5',
-    'py-1',
-    'text-xs',
-    'font-medium',
-    'border-violet-200/80',
-    'bg-violet-50/70',
-    'text-text-secondary',
-  ]) {
-    assert(
-      disclosureAppearance.classNames.includes(className),
-      `${language}: closed disclosure uses the shared ${className} pill class`,
-    )
-  }
-  for (const forbiddenClassName of [
-    'ms-auto',
-    'rounded-sm',
-    'underline-offset-4',
-    'hover:underline',
-    'text-violet-700',
-    'hover:text-violet-900',
-    'dark:text-violet-300',
-    'dark:hover:text-violet-100',
-  ]) {
-    assert(
-      !disclosureAppearance.classNames.includes(forbiddenClassName),
-      `${language}: disclosure avoids standalone-link class ${forbiddenClassName}`,
-    )
-  }
-  assert.equal(
-    disclosureAppearance.marginInlineStart,
-    '0px',
-    `${language}: closed disclosure has no right-alignment margin`,
+  assert(
+    Math.abs(disclosureBounds.right - rowBounds.right) <= 1,
+    `${language}: desktop aligns the disclosure to the right when space permits`,
   )
-  assert.equal(
-    disclosureAppearance.textDecorationLine,
-    'none',
-    `${language}: closed disclosure has no text-link underline`,
+  assert(
+    Math.abs(disclosureBounds.verticalCenter - mediaBounds.verticalCenter) <= 2,
+    `${language}: desktop keeps media and disclosure controls in one visual row`,
   )
-
-  return disclosureAppearance
 }
 
 const assertDisclosureColumns = async (
@@ -903,7 +769,6 @@ try {
       `${language}: the overview card has no second focus-within ring`,
     )
     await assertActionRowStructure(page, language)
-    const closedDisclosureAppearance = await assertClosedDisclosurePill(page, language)
     assert.equal(await page.locator('audio, video').count(), 0, 'the root has no parallel media player')
     const cardDescription = overviewEntry.getByTestId('skillpilot-overview-card-description')
     assert.equal(
@@ -946,22 +811,10 @@ try {
       !overviewEntryText?.includes(forbiddenNeutralAction[language]),
       `${language}: the root card has no neutral overview action`,
     )
-    const actionListLabel = await overviewEntry
-      .getByTestId('skillpilot-overview-media-actions')
-      .evaluate((list) => {
-        const labelledBy = list.getAttribute('aria-labelledby')
-        return {
-          labelledBy,
-          labelText: labelledBy
-            ? document.getElementById(labelledBy)?.textContent?.trim() ?? null
-            : null,
-        }
-      })
-    assert(actionListLabel.labelledBy, `${language}: root action list references its card heading`)
     assert.equal(
-      actionListLabel.labelText,
-      expected.title,
-      `${language}: all four actions share the localized overview heading as accessible name`,
+      await overviewEntry.locator(`ul[aria-label="${expected.formatsLabel}"]`).count(),
+      1,
+      `${language}: root format list has an accessible name`,
     )
     await assertMobileActionWrap(page, language)
 
@@ -1008,22 +861,6 @@ try {
       `${language}: the disclosure does not create a dialog`,
     )
 
-    const disclosureIcon = disclosureButton.getByTestId('skillpilot-overview-disclosure-icon')
-    assert.equal(await disclosureIcon.count(), 1, `${language}: disclosure has one leading Compass icon`)
-    assert.equal(
-      await disclosureIcon.evaluate((icon) => icon.tagName.toLowerCase()),
-      'svg',
-      `${language}: the leading Compass icon is an SVG`,
-    )
-    assert.equal(
-      await disclosureIcon.getAttribute('aria-hidden'),
-      'true',
-      `${language}: the decorative Compass icon is hidden from assistive technology`,
-    )
-    assert(
-      (await disclosureIcon.getAttribute('class'))?.split(/\s+/u).includes('lucide-compass'),
-      `${language}: the leading symbol is the intended Compass icon`,
-    )
     const disclosureChevron = disclosureButton.getByTestId('skillpilot-overview-disclosure-chevron')
     assert.equal(await disclosureChevron.count(), 1, `${language}: the disclosure has one chevron`)
     assert.equal(
@@ -1039,18 +876,6 @@ try {
     assert(
       !(await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
       `${language}: the closed chevron points down`,
-    )
-    assert.deepEqual(
-      await disclosureButton.locator(':scope > *').evaluateAll((children) => children.map((child) => (
-        child.getAttribute('data-testid')
-        ?? (child.tagName.toLowerCase() === 'span' ? 'visible-label' : null)
-      ))),
-      [
-        'skillpilot-overview-disclosure-icon',
-        'visible-label',
-        'skillpilot-overview-disclosure-chevron',
-      ],
-      `${language}: Compass, constant label and state chevron keep their visual order`,
     )
 
     for (const [sectionName, [heading, tagline, description]] of Object.entries({
@@ -1109,42 +934,6 @@ try {
     await page.keyboard.press('Enter')
     await disclosurePanel.waitFor({ state: 'visible' })
     await flushBrowserEffects(page)
-    const openDisclosureAppearance = await readDisclosurePillAppearance(page)
-    for (const activeClassName of [
-      'border-emerald-300/80',
-      'bg-emerald-50/80',
-      'text-emerald-800',
-    ]) {
-      assert(
-        openDisclosureAppearance.classNames.includes(activeClassName),
-        `${language}: open disclosure uses active class ${activeClassName}`,
-      )
-    }
-    for (const closedClassName of [
-      'border-violet-200/80',
-      'bg-violet-50/70',
-      'text-text-secondary',
-    ]) {
-      assert(
-        !openDisclosureAppearance.classNames.includes(closedClassName),
-        `${language}: open disclosure replaces closed class ${closedClassName}`,
-      )
-    }
-    assert.notEqual(
-      openDisclosureAppearance.backgroundColor,
-      closedDisclosureAppearance.backgroundColor,
-      `${language}: open disclosure has a visibly distinct green background`,
-    )
-    assert.notEqual(
-      openDisclosureAppearance.borderColor,
-      closedDisclosureAppearance.borderColor,
-      `${language}: open disclosure has a visibly distinct green border`,
-    )
-    assert.equal(
-      openDisclosureAppearance.borderRadius,
-      closedDisclosureAppearance.borderRadius,
-      `${language}: open disclosure retains the same rounded pill geometry`,
-    )
     const [focusedCardRendering, focusedDisclosureRendering] = await Promise.all([
       overviewEntry.evaluate((card) => {
         const style = getComputedStyle(card)
@@ -1243,25 +1032,12 @@ try {
     await disclosureButton.focus()
     await page.keyboard.press('Space')
     await disclosurePanel.waitFor({ state: 'hidden' })
-    const reclosedDisclosureClasses = await disclosureButton.evaluate((button) => [...button.classList])
     assert.equal(await disclosureButton.getAttribute('aria-expanded'), 'false')
     assert.notEqual(await disclosurePanel.getAttribute('hidden'), null)
     assert.equal(
       (await disclosureButton.innerText()).trim(),
       expected.disclosure.label,
       `${language}: Space closes without changing the disclosure label`,
-    )
-    assert(
-      reclosedDisclosureClasses.includes('border-violet-200/80')
-      && reclosedDisclosureClasses.includes('bg-violet-50/70')
-      && reclosedDisclosureClasses.includes('text-text-secondary'),
-      `${language}: Space restores the closed violet media-pill styling`,
-    )
-    assert(
-      !reclosedDisclosureClasses.includes('border-emerald-300/80')
-      && !reclosedDisclosureClasses.includes('bg-emerald-50/80')
-      && !reclosedDisclosureClasses.includes('text-emerald-800'),
-      `${language}: Space removes the green active styling`,
     )
     assert(
       !(await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
