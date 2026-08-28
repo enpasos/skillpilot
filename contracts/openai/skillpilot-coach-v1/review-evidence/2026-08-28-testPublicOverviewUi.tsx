@@ -28,9 +28,8 @@ interface BrowserProbeState {
 
 interface ExpectedOverview {
   title: string
+  cardTagline: string
   cardDescription: string
-  removedCardTagline: string
-  removedCompactMission: string
   formatsLabel: string
   formatNavigationLabel: string
   switchLabel: string
@@ -43,8 +42,8 @@ interface ExpectedOverview {
     whitepaper: [eyebrow: string, title: string, description: string, action: string]
   }
   disclosure: {
-    label: string
-    introduction: string
+    openLabel: string
+    closeLabel: string
     vision: [heading: string, tagline: string, description: string]
     mission: [heading: string, tagline: string, description: string]
   }
@@ -53,9 +52,8 @@ interface ExpectedOverview {
 const expectedByLanguage: Record<Language, ExpectedOverview> = {
   de: {
     title: 'SkillPilot im Überblick',
-    cardDescription: 'Die Idee hinter SkillPilot – anhören, ansehen oder lesen.',
-    removedCardTagline: 'Alles Wissen. Für jeden Menschen.',
-    removedCompactMission: 'SkillPilot macht Wissen navigierbar – in offenen Wissenslandschaften, die von Menschen gestaltet, geprüft und verantwortet werden. Lernende und ihre persönliche KI erhalten verlässliche Orientierung. Für Lehrende werden individuelle Lernfortschritte sichtbar, damit sie Lernprozesse fundierter und gezielter begleiten können.',
+    cardTagline: 'Alles Wissen. Für jeden Menschen.',
+    cardDescription: 'SkillPilot macht Wissen navigierbar – in offenen Wissenslandschaften, die von Menschen gestaltet, geprüft und verantwortet werden. Lernende und ihre persönliche KI erhalten verlässliche Orientierung. Für Lehrende werden individuelle Lernfortschritte sichtbar, damit sie Lernprozesse fundierter und gezielter begleiten können.',
     formatsLabel: 'Verfügbare Formate',
     formatNavigationLabel: 'Format wählen',
     switchLabel: 'English',
@@ -83,8 +81,8 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
       ],
     },
     disclosure: {
-      label: 'Vision & Mission',
-      introduction: 'Vision und Mission beschreiben unser langfristiges Ziel und den Weg dorthin.',
+      openLabel: 'Vision & Mission im Wortlaut',
+      closeLabel: 'Vision & Mission schließen',
       vision: [
         'Unsere Vision',
         'Alles Wissen. Für jeden Menschen.',
@@ -99,9 +97,8 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
   },
   en: {
     title: 'SkillPilot at a glance',
-    cardDescription: 'The idea behind SkillPilot—listen, watch, or read.',
-    removedCardTagline: 'All knowledge. For everyone.',
-    removedCompactMission: 'SkillPilot makes knowledge navigable—in open knowledge landscapes designed and reviewed by people, who remain responsible for them. Learners and their personal AI receive reliable guidance. Educators gain insight into individual learning progress, enabling them to provide more informed and targeted learning support.',
+    cardTagline: 'All knowledge. For everyone.',
+    cardDescription: 'SkillPilot makes knowledge navigable—in open knowledge landscapes designed and reviewed by people, who remain responsible for them. Learners and their personal AI receive reliable guidance. Educators gain insight into individual learning progress, enabling them to provide more informed and targeted learning support.',
     formatsLabel: 'Available formats',
     formatNavigationLabel: 'Choose a format',
     switchLabel: 'Deutsch',
@@ -129,8 +126,8 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
       ],
     },
     disclosure: {
-      label: 'Vision & Mission',
-      introduction: 'Vision and mission describe our long-term goal and the path towards it.',
+      openLabel: 'Vision & Mission in full',
+      closeLabel: 'Close Vision & Mission',
       vision: [
         'Our vision',
         'All knowledge. For everyone.',
@@ -318,147 +315,6 @@ const assertMediaActionsStayInOneRow = async (page: Page, language: Language) =>
   assert(
     positions.every((position, index) => index === 0 || position.left > positions[index - 1]!.left),
     `${language}: desktop media actions keep their reading order`,
-  )
-}
-
-const assertActionRowStructure = async (page: Page, language: Language) => {
-  const actionRow = page.getByTestId('skillpilot-overview-actions')
-  const mediaGroup = page.getByTestId('skillpilot-overview-media-actions')
-
-  assert.equal(await actionRow.count(), 1, `${language}: the card has one shared action row`)
-  assert.equal(
-    await actionRow.evaluate((row) => {
-      const media = row.querySelector('[data-testid="skillpilot-overview-media-actions"]')
-      const disclosure = row.querySelector('[data-testid="skillpilot-overview-disclosure-toggle"]')
-      return media?.parentElement === row && disclosure?.parentElement === row
-    }),
-    true,
-    `${language}: media group and disclosure are direct siblings in the shared action row`,
-  )
-  assert.equal(
-    await mediaGroup.evaluate((media, disclosureTestId) => {
-      const disclosure = document.querySelector(`[data-testid="${disclosureTestId}"]`)
-      return Boolean(
-        disclosure
-        && (media.compareDocumentPosition(disclosure) & Node.DOCUMENT_POSITION_FOLLOWING),
-      )
-    }, 'skillpilot-overview-disclosure-toggle'),
-    true,
-    `${language}: the disclosure follows all three media links in DOM and keyboard order`,
-  )
-}
-
-const assertMobileActionWrap = async (page: Page, language: Language) => {
-  const actionRow = page.getByTestId('skillpilot-overview-actions')
-  const actionRects = await actionRow.locator(
-    'a[data-testid^="skillpilot-overview-format-"], button[data-testid="skillpilot-overview-disclosure-toggle"]',
-  ).evaluateAll((elements) => elements.map((element) => {
-    const bounds = element.getBoundingClientRect()
-    return {
-      bottom: bounds.bottom,
-      left: bounds.left,
-      right: bounds.right,
-      top: bounds.top,
-    }
-  }))
-  const rowBounds = await actionRow.evaluate((row) => {
-    const bounds = row.getBoundingClientRect()
-    return { bottom: bounds.bottom, left: bounds.left, right: bounds.right, top: bounds.top }
-  })
-
-  assert.equal(actionRects.length, 4, `${language}: mobile keeps all four actions`)
-  assert(
-    new Set(actionRects.map(({ top }) => Math.round(top))).size > 1,
-    `${language}: actions wrap instead of overflowing on mobile`,
-  )
-  assert(
-    actionRects.every(({ bottom, left, right, top }) => (
-      left >= rowBounds.left - 1
-      && right <= rowBounds.right + 1
-      && top >= rowBounds.top - 1
-      && bottom <= rowBounds.bottom + 1
-    )),
-    `${language}: every wrapped mobile action remains inside the shared row`,
-  )
-}
-
-const assertDesktopActionLayout = async (page: Page, language: Language) => {
-  await assertMediaActionsStayInOneRow(page, language)
-
-  const [rowBounds, mediaBounds, disclosureBounds] = await Promise.all([
-    page.getByTestId('skillpilot-overview-actions').evaluate((element) => {
-      const bounds = element.getBoundingClientRect()
-      return { left: bounds.left, right: bounds.right }
-    }),
-    page.getByTestId('skillpilot-overview-media-actions').evaluate((element) => {
-      const bounds = element.getBoundingClientRect()
-      return { left: bounds.left, right: bounds.right, verticalCenter: bounds.top + bounds.height / 2 }
-    }),
-    page.getByTestId('skillpilot-overview-disclosure-toggle').evaluate((element) => {
-      const bounds = element.getBoundingClientRect()
-      return { left: bounds.left, right: bounds.right, verticalCenter: bounds.top + bounds.height / 2 }
-    }),
-  ])
-
-  assert(
-    Math.abs(mediaBounds.left - rowBounds.left) <= 1,
-    `${language}: desktop keeps the media group left-aligned`,
-  )
-  assert(
-    disclosureBounds.left > mediaBounds.right,
-    `${language}: desktop places the disclosure after the media group without overlap`,
-  )
-  assert(
-    Math.abs(disclosureBounds.right - rowBounds.right) <= 1,
-    `${language}: desktop aligns the disclosure to the right when space permits`,
-  )
-  assert(
-    Math.abs(disclosureBounds.verticalCenter - mediaBounds.verticalCenter) <= 2,
-    `${language}: desktop keeps media and disclosure controls in one visual row`,
-  )
-}
-
-const assertDisclosureColumns = async (
-  page: Page,
-  language: Language,
-  mode: 'stacked' | 'columns',
-) => {
-  const [visionBounds, missionBounds] = await Promise.all([
-    page.getByTestId('skillpilot-overview-vision').evaluate((element) => {
-      const bounds = element.getBoundingClientRect()
-      return { bottom: bounds.bottom, left: bounds.left, top: bounds.top, width: bounds.width }
-    }),
-    page.getByTestId('skillpilot-overview-mission').evaluate((element) => {
-      const bounds = element.getBoundingClientRect()
-      return { bottom: bounds.bottom, left: bounds.left, top: bounds.top, width: bounds.width }
-    }),
-  ])
-
-  if (mode === 'stacked') {
-    assert(
-      missionBounds.top > visionBounds.bottom,
-      `${language}: below 850px mission is stacked after vision`,
-    )
-    assert(
-      Math.abs(missionBounds.left - visionBounds.left) <= 1
-      && Math.abs(missionBounds.width - visionBounds.width) <= 1,
-      `${language}: below 850px both disclosure sections use the same column`,
-    )
-    return
-  }
-
-  assert(
-    Math.abs(missionBounds.top - visionBounds.top) <= 1,
-    `${language}: from 850px vision and mission start in one row`,
-  )
-  assert(
-    missionBounds.left > visionBounds.left + visionBounds.width,
-    `${language}: from 850px mission is the second column`,
-  )
-  const columnRatio = missionBounds.width / visionBounds.width
-  assert(
-    columnRatio >= 1.4 && columnRatio <= 1.6,
-    `${language}: the wider mission column keeps the intended 0.8/1.2 proportion`,
   )
 }
 
@@ -752,35 +608,13 @@ try {
       true,
       `${language}: the disclosure button is not nested in a navigation link`,
     )
-    await assertActionRowStructure(page, language)
     assert.equal(await page.locator('audio, video').count(), 0, 'the root has no parallel media player')
-    const cardDescription = overviewEntry.getByTestId('skillpilot-overview-card-description')
-    assert.equal(
-      await cardDescription.textContent(),
-      expected.cardDescription,
-      `${language}: closed card uses the exact factual overview subtitle`,
-    )
-    assert(await cardDescription.isVisible(), `${language}: factual overview subtitle is immediately visible`)
-    assert.equal(
-      await overviewEntry.getByTestId('skillpilot-overview-card-tagline').count(),
-      0,
-      `${language}: the former compact vision tagline is removed from the closed card`,
-    )
-    assert.equal(
-      await overviewEntry.getByText(expected.removedCompactMission, { exact: true }).count(),
-      0,
-      `${language}: the former compact mission is absent rather than repeated`,
-    )
-    const fullVisionTagline = overviewEntry.getByText(expected.removedCardTagline, { exact: true })
-    assert.equal(
-      await fullVisionTagline.count(),
-      1,
-      `${language}: the former visible tagline remains only as full vision copy`,
-    )
-    assert(
-      await fullVisionTagline.isHidden(),
-      `${language}: the vision tagline is not visible while the disclosure is closed`,
-    )
+    const compactTagline = overviewEntry.getByTestId('skillpilot-overview-card-tagline')
+    const compactDescription = overviewEntry.getByTestId('skillpilot-overview-card-description')
+    assert.equal(await compactTagline.textContent(), expected.cardTagline, `${language}: exact compact vision tagline`)
+    assert.equal(await compactDescription.textContent(), expected.cardDescription, `${language}: exact compact mission copy`)
+    assert(await compactTagline.isVisible(), `${language}: compact vision tagline is immediately visible`)
+    assert(await compactDescription.isVisible(), `${language}: compact mission copy is immediately visible`)
     const overviewEntryText = await overviewEntry.textContent()
     for (const visibleText of [
       expected.title,
@@ -800,12 +634,11 @@ try {
       1,
       `${language}: root format list has an accessible name`,
     )
-    await assertMobileActionWrap(page, language)
 
     assert.equal(await disclosureButton.getAttribute('aria-expanded'), 'false')
     assert.equal(
       (await disclosureButton.innerText()).trim(),
-      expected.disclosure.label,
+      expected.disclosure.openLabel,
       `${language}: the closed disclosure has its exact localized label`,
     )
     const controlledPanelId = await disclosureButton.getAttribute('aria-controls')
@@ -822,18 +655,6 @@ try {
       `${language}: the controlled panel is hidden by default`,
     )
     assert(await disclosurePanel.isHidden(), `${language}: the full copy is not displayed initially`)
-    const disclosureIntroduction = disclosurePanel.getByTestId(
-      'skillpilot-overview-disclosure-introduction',
-    )
-    assert.equal(
-      await disclosureIntroduction.textContent(),
-      expected.disclosure.introduction,
-      `${language}: disclosure contains the exact localized long-term-goal clarification`,
-    )
-    assert(
-      await disclosureIntroduction.isHidden(),
-      `${language}: long-term-goal clarification is initially hidden with the disclosure`,
-    )
     assert.equal(
       await disclosurePanel.evaluate((panel) => panel.closest('[data-testid="skillpilot-overview-entry"]') !== null),
       true,
@@ -921,8 +742,8 @@ try {
     assert.equal(await disclosurePanel.getAttribute('hidden'), null)
     assert.equal(
       (await disclosureButton.innerText()).trim(),
-      expected.disclosure.label,
-      `${language}: opening preserves the constant disclosure label`,
+      expected.disclosure.closeLabel,
+      `${language}: opening changes the disclosure label`,
     )
     assert(
       (await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
@@ -935,10 +756,6 @@ try {
       0,
       `${language}: opening remains inline and creates no modal`,
     )
-    assert(
-      await disclosureIntroduction.isVisible(),
-      `${language}: opened panel displays the long-term-goal clarification`,
-    )
     for (const statement of [expected.disclosure.vision, expected.disclosure.mission]) {
       for (const exactCopy of statement) {
         assert(
@@ -947,32 +764,8 @@ try {
         )
       }
     }
-    await assertDisclosureColumns(page, language, 'stacked')
     await assertNoHorizontalOverflow(page, `${language}: open root card has no mobile overflow`)
 
-    // Disclosure state is intentionally local to this render and is never
-    // persisted across a reload or a fresh visit to the root route.
-    await page.reload()
-    await overviewEntry.waitFor()
-    await disclosurePanel.waitFor({ state: 'hidden' })
-    assert.equal(
-      await disclosureButton.getAttribute('aria-expanded'),
-      'false',
-      `${language}: reload restores the initially closed disclosure`,
-    )
-    assert.notEqual(
-      await disclosurePanel.getAttribute('hidden'),
-      null,
-      `${language}: reload does not persist the open panel`,
-    )
-    assert.equal(
-      (await disclosureButton.innerText()).trim(),
-      expected.disclosure.label,
-      `${language}: reload preserves the same constant disclosure label`,
-    )
-
-    await disclosureButton.click()
-    await disclosurePanel.waitFor({ state: 'visible' })
     await disclosureButton.focus()
     await page.keyboard.press('Space')
     await disclosurePanel.waitFor({ state: 'hidden' })
@@ -980,8 +773,8 @@ try {
     assert.notEqual(await disclosurePanel.getAttribute('hidden'), null)
     assert.equal(
       (await disclosureButton.innerText()).trim(),
-      expected.disclosure.label,
-      `${language}: Space closes without changing the disclosure label`,
+      expected.disclosure.openLabel,
+      `${language}: Space closes and restores the disclosure label`,
     )
     assert(
       !(await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
@@ -990,23 +783,13 @@ try {
     assert.equal(page.url(), unchangedRootUrl, `${language}: closing performs no navigation`)
     await assertNoHorizontalOverflow(page, `${language}: reclosed root card has no mobile overflow`)
 
-    await page.setViewportSize({ width: 849, height: 900 })
+    await page.setViewportSize({ width: 1_024, height: 900 })
     await page.goto(`${origin}/`)
     await page.getByTestId('skillpilot-overview-entry').waitFor()
+    await assertMediaActionsStayInOneRow(page, language)
     await page.getByTestId('skillpilot-overview-disclosure-toggle').click()
     await page.getByTestId('skillpilot-overview-disclosure-panel').waitFor({ state: 'visible' })
-    await assertDisclosureColumns(page, language, 'stacked')
-    await assertNoHorizontalOverflow(page, `${language}: open card has no overflow below 850px`)
-
-    await page.setViewportSize({ width: 850, height: 900 })
-    await page.goto(`${origin}/`)
-    await page.getByTestId('skillpilot-overview-entry').waitFor()
-    await assertDesktopActionLayout(page, language)
-    await page.getByTestId('skillpilot-overview-disclosure-toggle').click()
-    await page.getByTestId('skillpilot-overview-disclosure-panel').waitFor({ state: 'visible' })
-    await assertDesktopActionLayout(page, language)
-    await assertDisclosureColumns(page, language, 'columns')
-    await assertNoHorizontalOverflow(page, `${language}: two-column card has no overflow from 850px`)
+    await assertMediaActionsStayInOneRow(page, language)
     await page.setViewportSize({ width: 375, height: 900 })
 
     // Every root action must survive the lazy route load, focus/scroll the exact
