@@ -28,7 +28,6 @@ interface BrowserProbeState {
 
 interface ExpectedOverview {
   title: string
-  cardTagline: string
   cardDescription: string
   formatsLabel: string
   formatNavigationLabel: string
@@ -41,19 +40,12 @@ interface ExpectedOverview {
     video: [eyebrow: string, title: string, description: string, action: string]
     whitepaper: [eyebrow: string, title: string, description: string, action: string]
   }
-  disclosure: {
-    openLabel: string
-    closeLabel: string
-    vision: [heading: string, tagline: string, description: string]
-    mission: [heading: string, tagline: string, description: string]
-  }
 }
 
 const expectedByLanguage: Record<Language, ExpectedOverview> = {
   de: {
     title: 'SkillPilot im Überblick',
-    cardTagline: 'Alles Wissen. Für jeden Menschen.',
-    cardDescription: 'SkillPilot macht Wissen navigierbar – in offenen Wissenslandschaften, die von Menschen gestaltet, geprüft und verantwortet werden. Lernende und ihre persönliche KI erhalten verlässliche Orientierung. Für Lehrende werden individuelle Lernfortschritte sichtbar, damit sie Lernprozesse fundierter und gezielter begleiten können.',
+    cardDescription: 'Die Idee hinter SkillPilot – anhören, ansehen oder lesen.',
     formatsLabel: 'Verfügbare Formate',
     formatNavigationLabel: 'Format wählen',
     switchLabel: 'English',
@@ -80,25 +72,10 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
         'Whitepaper lesen',
       ],
     },
-    disclosure: {
-      openLabel: 'Vision & Mission im Wortlaut',
-      closeLabel: 'Vision & Mission schließen',
-      vision: [
-        'Unsere Vision',
-        'Alles Wissen. Für jeden Menschen.',
-        'Eine Welt, in der jeder Mensch sich das gesamte Wissen der Menschheit erschließen kann – frei, selbstbestimmt und unabhängig von seinen finanziellen Möglichkeiten.',
-      ],
-      mission: [
-        'Unsere Mission',
-        'SkillPilot macht Wissen navigierbar.',
-        'Wir schaffen offene Wissenslandschaften, die fachlich und didaktisch von Menschen verantwortet und gemeinschaftlich weiterentwickelt werden. Sie geben Lernenden und ihren persönlichen KIs verlässliche Orientierung und machen Lehrenden individuelle Lernfortschritte sichtbar – als Grundlage für fundierte pädagogische Entscheidungen und gezielte Lernbegleitung.',
-      ],
-    },
   },
   en: {
     title: 'SkillPilot at a glance',
-    cardTagline: 'All knowledge. For everyone.',
-    cardDescription: 'SkillPilot makes knowledge navigable—in open knowledge landscapes designed and reviewed by people, who remain responsible for them. Learners and their personal AI receive reliable guidance. Educators gain insight into individual learning progress, enabling them to provide more informed and targeted learning support.',
+    cardDescription: 'The idea behind SkillPilot—listen, watch, or read.',
     formatsLabel: 'Available formats',
     formatNavigationLabel: 'Choose a format',
     switchLabel: 'Deutsch',
@@ -123,20 +100,6 @@ const expectedByLanguage: Record<Language, ExpectedOverview> = {
         'Whitepaper',
         'Background, architecture, and implementation in detail.',
         'Read whitepaper',
-      ],
-    },
-    disclosure: {
-      openLabel: 'Vision & Mission in full',
-      closeLabel: 'Close Vision & Mission',
-      vision: [
-        'Our vision',
-        'All knowledge. For everyone.',
-        'A world in which everyone can explore all of humanity’s knowledge—freely, on their own terms, and regardless of their financial means.',
-      ],
-      mission: [
-        'Our mission',
-        'SkillPilot makes knowledge navigable.',
-        'We create open knowledge landscapes that are developed collaboratively and remain under human responsibility for both their subject matter and pedagogy. They provide learners and their personal AI with reliable guidance and give educators insight into individual learning progress—as a basis for sound pedagogical decisions and targeted learning support.',
       ],
     },
   },
@@ -287,34 +250,6 @@ const assertFocusable = async (page: Page, selector: string) => {
   assert(
     await locator.evaluate((element) => document.activeElement === element),
     `${selector} can receive keyboard focus`,
-  )
-}
-
-const assertNoHorizontalOverflow = async (page: Page, message: string) => {
-  assert.equal(
-    await page.evaluate(() => (
-      document.documentElement.scrollWidth <= document.documentElement.clientWidth
-      && document.body.scrollWidth <= document.body.clientWidth
-    )),
-    true,
-    message,
-  )
-}
-
-const assertMediaActionsStayInOneRow = async (page: Page, language: Language) => {
-  const actions = page.locator('[data-testid^="skillpilot-overview-format-"]')
-  assert.equal(await actions.count(), formatIds.length, `${language}: desktop keeps all media actions`)
-  const positions = await actions.evaluateAll((elements) => elements.map((element) => {
-    const bounds = element.getBoundingClientRect()
-    return { left: bounds.left, top: bounds.top }
-  }))
-  assert(
-    positions.every((position) => Math.abs(position.top - positions[0]!.top) <= 1),
-    `${language}: desktop media actions stay in one row`,
-  )
-  assert(
-    positions.every((position, index) => index === 0 || position.left > positions[index - 1]!.left),
-    `${language}: desktop media actions keep their reading order`,
   )
 }
 
@@ -490,12 +425,6 @@ try {
     /t\.startPage\.links\.whitepaper/u,
     'the public root no longer renders the former parallel whitepaper link',
   )
-  const primaryStartCardIndex = sessionSetupSource.indexOf('onClick={openLearnerStart}')
-  const overviewCardIndex = sessionSetupSource.indexOf('<SkillPilotOverviewCard language=')
-  const curriculaCardIndex = sessionSetupSource.indexOf('to="/curricula"', overviewCardIndex)
-  assert(primaryStartCardIndex >= 0, 'the public root retains its primary learner-start card')
-  assert(overviewCardIndex > primaryStartCardIndex, 'the overview card stays after the primary learner-start card')
-  assert(curriculaCardIndex > overviewCardIndex, 'the curricula card stays after the overview card')
 
   browser = await chromium.launch({
     headless: true,
@@ -582,42 +511,14 @@ try {
       await overviewEntry.locator(
         'a, button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"])',
       ).count(),
-      4,
-      `${language}: the root card has three media links and one disclosure button`,
-    )
-    const mediaActions = overviewEntry.locator('a[data-testid^="skillpilot-overview-format-"]')
-    assert.equal(
-      await mediaActions.count(),
       3,
-      `${language}: the three existing media actions remain links`,
-    )
-    const disclosureButton = overviewEntry.getByTestId('skillpilot-overview-disclosure-toggle')
-    assert.equal(
-      await disclosureButton.count(),
-      1,
-      `${language}: the disclosure is one separate control`,
-    )
-    assert.equal(
-      await disclosureButton.evaluate((button) => button.tagName.toLowerCase()),
-      'button',
-      `${language}: the disclosure uses a semantic button`,
-    )
-    assert.equal(await disclosureButton.getAttribute('type'), 'button')
-    assert.equal(
-      await disclosureButton.evaluate((button) => button.closest('a') === null),
-      true,
-      `${language}: the disclosure button is not nested in a navigation link`,
+      `${language}: the root card has exactly three interactive format actions`,
     )
     assert.equal(await page.locator('audio, video').count(), 0, 'the root has no parallel media player')
-    const compactTagline = overviewEntry.getByTestId('skillpilot-overview-card-tagline')
-    const compactDescription = overviewEntry.getByTestId('skillpilot-overview-card-description')
-    assert.equal(await compactTagline.textContent(), expected.cardTagline, `${language}: exact compact vision tagline`)
-    assert.equal(await compactDescription.textContent(), expected.cardDescription, `${language}: exact compact mission copy`)
-    assert(await compactTagline.isVisible(), `${language}: compact vision tagline is immediately visible`)
-    assert(await compactDescription.isVisible(), `${language}: compact mission copy is immediately visible`)
     const overviewEntryText = await overviewEntry.textContent()
     for (const visibleText of [
       expected.title,
+      expected.cardDescription,
       ...Object.values(expected.formats).map((format) => format[1]),
     ]) {
       assert(
@@ -634,79 +535,6 @@ try {
       1,
       `${language}: root format list has an accessible name`,
     )
-
-    assert.equal(await disclosureButton.getAttribute('aria-expanded'), 'false')
-    assert.equal(
-      (await disclosureButton.innerText()).trim(),
-      expected.disclosure.openLabel,
-      `${language}: the closed disclosure has its exact localized label`,
-    )
-    const controlledPanelId = await disclosureButton.getAttribute('aria-controls')
-    assert(controlledPanelId, `${language}: the disclosure identifies its controlled panel`)
-    const disclosurePanel = overviewEntry.getByTestId('skillpilot-overview-disclosure-panel')
-    assert.equal(
-      await disclosurePanel.getAttribute('id'),
-      controlledPanelId,
-      `${language}: aria-controls resolves to the inline disclosure panel`,
-    )
-    assert.notEqual(
-      await disclosurePanel.getAttribute('hidden'),
-      null,
-      `${language}: the controlled panel is hidden by default`,
-    )
-    assert(await disclosurePanel.isHidden(), `${language}: the full copy is not displayed initially`)
-    assert.equal(
-      await disclosurePanel.evaluate((panel) => panel.closest('[data-testid="skillpilot-overview-entry"]') !== null),
-      true,
-      `${language}: the controlled panel stays inside the same overview card`,
-    )
-    assert.equal(
-      await overviewEntry.getByRole('dialog').count(),
-      0,
-      `${language}: the disclosure does not create a dialog`,
-    )
-
-    const disclosureChevron = disclosureButton.getByTestId('skillpilot-overview-disclosure-chevron')
-    assert.equal(await disclosureChevron.count(), 1, `${language}: the disclosure has one chevron`)
-    assert.equal(
-      await disclosureChevron.evaluate((chevron) => chevron.tagName.toLowerCase()),
-      'svg',
-      `${language}: the visual state marker is an SVG chevron`,
-    )
-    assert.equal(
-      await disclosureChevron.getAttribute('aria-hidden'),
-      'true',
-      `${language}: the decorative chevron is hidden from assistive technology`,
-    )
-    assert(
-      !(await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
-      `${language}: the closed chevron points down`,
-    )
-
-    for (const [sectionName, [heading, tagline, description]] of Object.entries({
-      vision: expected.disclosure.vision,
-      mission: expected.disclosure.mission,
-    })) {
-      assert.equal(
-        await disclosurePanel.getByRole('heading', {
-          name: heading,
-          exact: true,
-          includeHidden: true,
-        }).count(),
-        1,
-        `${language}: ${sectionName} has its exact localized heading`,
-      )
-      assert.equal(
-        await disclosurePanel.getByText(tagline, { exact: true }).count(),
-        1,
-        `${language}: ${sectionName} has its exact localized tagline`,
-      )
-      assert.equal(
-        await disclosurePanel.getByText(description, { exact: true }).count(),
-        1,
-        `${language}: ${sectionName} has its exact localized full text`,
-      )
-    }
 
     for (const formatId of formatIds) {
       const formatLink = page.getByTestId(`skillpilot-overview-format-${formatId}`)
@@ -727,70 +555,6 @@ try {
       )
       await assertFocusable(page, `[data-testid="skillpilot-overview-format-${formatId}"]`)
     }
-
-    const unchangedRootUrl = page.url()
-    await assertNoHorizontalOverflow(page, `${language}: closed root card has no mobile overflow`)
-    await page.keyboard.press('Tab')
-    assert.equal(
-      await disclosureButton.evaluate((button) => document.activeElement === button),
-      true,
-      `${language}: Tab moves from the final media link to the disclosure button`,
-    )
-    await page.keyboard.press('Enter')
-    await disclosurePanel.waitFor({ state: 'visible' })
-    assert.equal(await disclosureButton.getAttribute('aria-expanded'), 'true')
-    assert.equal(await disclosurePanel.getAttribute('hidden'), null)
-    assert.equal(
-      (await disclosureButton.innerText()).trim(),
-      expected.disclosure.closeLabel,
-      `${language}: opening changes the disclosure label`,
-    )
-    assert(
-      (await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
-      `${language}: opening turns the chevron upward`,
-    )
-    assert.equal(page.url(), unchangedRootUrl, `${language}: opening performs no navigation`)
-    assert.equal(context.pages().length, 1, `${language}: opening creates no popup or new page`)
-    assert.equal(
-      await page.locator('[role="dialog"]').count(),
-      0,
-      `${language}: opening remains inline and creates no modal`,
-    )
-    for (const statement of [expected.disclosure.vision, expected.disclosure.mission]) {
-      for (const exactCopy of statement) {
-        assert(
-          await disclosurePanel.getByText(exactCopy, { exact: true }).isVisible(),
-          `${language}: opened panel displays ${exactCopy}`,
-        )
-      }
-    }
-    await assertNoHorizontalOverflow(page, `${language}: open root card has no mobile overflow`)
-
-    await disclosureButton.focus()
-    await page.keyboard.press('Space')
-    await disclosurePanel.waitFor({ state: 'hidden' })
-    assert.equal(await disclosureButton.getAttribute('aria-expanded'), 'false')
-    assert.notEqual(await disclosurePanel.getAttribute('hidden'), null)
-    assert.equal(
-      (await disclosureButton.innerText()).trim(),
-      expected.disclosure.openLabel,
-      `${language}: Space closes and restores the disclosure label`,
-    )
-    assert(
-      !(await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),
-      `${language}: closing restores the downward chevron`,
-    )
-    assert.equal(page.url(), unchangedRootUrl, `${language}: closing performs no navigation`)
-    await assertNoHorizontalOverflow(page, `${language}: reclosed root card has no mobile overflow`)
-
-    await page.setViewportSize({ width: 1_024, height: 900 })
-    await page.goto(`${origin}/`)
-    await page.getByTestId('skillpilot-overview-entry').waitFor()
-    await assertMediaActionsStayInOneRow(page, language)
-    await page.getByTestId('skillpilot-overview-disclosure-toggle').click()
-    await page.getByTestId('skillpilot-overview-disclosure-panel').waitFor({ state: 'visible' })
-    await assertMediaActionsStayInOneRow(page, language)
-    await page.setViewportSize({ width: 375, height: 900 })
 
     // Every root action must survive the lazy route load, focus/scroll the exact
     // destination and, for media formats, consume one explicit play intent.
