@@ -1,6 +1,6 @@
 # SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre
 
-**Stand:** 24. August 2026
+**Stand:** 28. August 2026
 
 **Portalstatus:** `Review`
 
@@ -475,10 +475,82 @@ Die Hashkette von `SessionSetup.tsx` wird fortgesetzt:
 7. gemeinsamer SkillPilot-Überblick:
    `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`.
 
-Die fokussierte Regression ist zusätzlich hashgebunden:
+Die fokussierte Regression wurde vor der nächsten autorisierten Änderung
+byte-identisch als historische Evidenz archiviert und ist zusätzlich
+hashgebunden:
+
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-27-testPublicOverviewUi.tsx`:
+  `69b029ea922aea40ddddac6630fe04e89ace84e135d16586d5305ed34cbd1fb3`.
+
+### 6.9 Eng begrenzte Ausnahme: Vision und Mission im bestehenden Überblick
+
+Der Product Owner hat am **28. August 2026** für das aktuelle
+Produktions-Webfrontend ausdrücklich genehmigt, die bestehende Überblickskarte
+um genau einen lokalen Vision-&-Mission-Disclosure-Button einschließlich der
+genehmigten deutschen und englischen Kurz- und Langtexte zu ergänzen. Das
+OpenAI-Plugin bleibt unverändert `skillpilot-coach-v1` Version `1.0.0`; ein
+Zurückziehen oder erneutes Einreichen im Portal ist nicht erforderlich.
+
+Diese Entscheidung ersetzt ausschließlich die in Abschnitt 6.8 festgelegte
+Grenze von genau drei interaktiven Aktionen. Weiterhin vorhanden und
+unverändert bleiben genau drei direkte Medienaktionen für Audio-Einführung,
+Präsentationsvideo und Whitepaper. Als viertes interaktives Element ist genau
+ein zunächst geschlossenes, semantisches Disclosure innerhalb derselben Karte
+freigegeben.
+
+Freigegeben ist ausschließlich:
+
+- die bisherige lokalisierte Kurzbeschreibung durch die genehmigte kompakte
+  Vision und Mission zu ersetzen; sie nennt offene, von Menschen gestaltete,
+  geprüfte und verantwortete Wissenslandschaften, verlässliche Orientierung
+  für Lernende und ihre persönliche KI sowie die lernfortschrittsbezogene
+  Sichtbarkeit für fundierte pädagogische Entscheidungen und gezielte
+  Lernbegleitung;
+- unter den drei Medienaktionen genau einen deutsch beziehungsweise englisch
+  beschrifteten Textbutton anzuzeigen, der einen zunächst verborgenen Bereich
+  mit dem genehmigten vollständigen Vision-und-Mission-Wortlaut innerhalb
+  derselben Karte öffnet und wieder schließt;
+- das Disclosure tastaturbedienbar mit `aria-expanded`, `aria-controls` und
+  einem für assistive Technik ausgeblendeten Zustands-Chevron umzusetzen, ohne
+  automatische Öffnung, Modal, Pop-up, neue Route, zusätzliche Karte oder
+  zusätzlichen Hauptnavigationspunkt;
+- die mobile und Desktop-Darstellung sowie die exakten deutschen und
+  englischen Texte, den anfänglich geschlossenen Zustand, die
+  Disclosure-Semantik und die unveränderten Medienziele mit der fokussierten
+  Überblicksregression zu belegen.
+
+Die Seitenreihenfolge **Lernen starten** → **SkillPilot im Überblick** →
+**Curriculum-Champions** bleibt unverändert; **Lernen starten** bleibt die
+erste und wichtigste Aktion. Alle drei Medienziele, Anker und einmaligen
+Wiedergabe-Intents sowie das neutrale Verhalten von `/whitepaper/:lang`
+bleiben unverändert. `SessionSetup.tsx` bleibt byte-identisch. Coach-Handler,
+vorbereitete Nachrichten, Session- und Lernzustandssemantik, OpenAI-Paket,
+MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und
+Reviewartefakte bleiben unverändert und eingefroren.
+
+Die Hashkette dokumentiert deshalb ausdrücklich einen autorisierten Schritt
+ohne Änderung an `SessionSetup.tsx`:
+
+8. Vision-&-Mission-Disclosure im bestehenden Überblick:
+   `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
+   (vorher und nachher byte-identisch).
+
+Die beiden geänderten Implementierungsdateien sind mit ihrem vorherigen und
+ihrem neuen autorisierten SHA-256 verankert:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `1a2c27f60320b1296e32f20bae7af3adbf7625762c52ea1dfb5d2cd5a20df420`
+  →
+  `0b6c7539cb55d02f78198f3a50fcd8a95ac9b0c6bd0f8d5fa8d486352e2f75b3`;
+- `app/src/utils/skillPilotOverviewCopy.ts`:
+  `537e128921b534c8abdd71d4bdc5dc8afda63b865da2598fdcde9957e57d56cb`
+  →
+  `f2192dfabe8d2f00ca6f2bad01c0e65b5982dcd68aba426b10e9c4a59c43ec01`.
+
+Die aktualisierte fokussierte Regression ist ebenfalls hashgebunden:
 
 - `app/scripts/testPublicOverviewUi.tsx`:
-  `69b029ea922aea40ddddac6630fe04e89ace84e135d16586d5305ed34cbd1fb3`.
+  `45fbf9051fd2cf143cdb7414f0434ad4dc82471d9728689d620454d218c7f72c`.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den

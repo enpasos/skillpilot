@@ -1,4 +1,5 @@
-import { BookOpenText, Headphones, PlayCircle } from 'lucide-react'
+import { BookOpenText, ChevronDown, Headphones, PlayCircle } from 'lucide-react'
+import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { LabelLanguage } from '../utils/filterLabels'
 import { getSkillPilotOverviewCopy } from '../utils/skillPilotOverviewCopy'
@@ -9,6 +10,8 @@ interface SkillPilotOverviewCardProps {
 
 export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps) => {
   const copy = getSkillPilotOverviewCopy(language)
+  const disclosurePanelId = useId()
+  const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
   const formats = [
     {
       icon: Headphones,
@@ -41,7 +44,16 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
       <h3 className="text-lg font-semibold text-text-primary transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400">
         {copy.title}
       </h3>
-      <p className="mt-1 text-sm leading-relaxed text-text-secondary">
+      <p
+        data-testid="skillpilot-overview-card-tagline"
+        className="mt-1 text-sm font-semibold leading-relaxed text-text-primary"
+      >
+        {copy.cardTagline}
+      </p>
+      <p
+        data-testid="skillpilot-overview-card-description"
+        className="mt-1 text-sm leading-relaxed text-text-secondary"
+      >
         {copy.cardDescription}
       </p>
       <ul
@@ -62,6 +74,53 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
           </li>
         ))}
       </ul>
+      <button
+        type="button"
+        data-testid="skillpilot-overview-disclosure-toggle"
+        aria-expanded={isDisclosureOpen}
+        aria-controls={disclosurePanelId}
+        onClick={() => setIsDisclosureOpen((current) => !current)}
+        className="mt-3 inline-flex items-center gap-1 rounded-sm text-sm font-medium text-violet-700 underline-offset-4 transition-colors duration-200 hover:text-violet-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-violet-300 dark:hover:text-violet-100 dark:focus-visible:ring-offset-slate-900"
+      >
+        <span>
+          {isDisclosureOpen ? copy.disclosure.closeLabel : copy.disclosure.openLabel}
+        </span>
+        <ChevronDown
+          size={16}
+          aria-hidden="true"
+          data-testid="skillpilot-overview-disclosure-chevron"
+          className={`shrink-0 transition-transform duration-200 motion-reduce:transition-none ${isDisclosureOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+      <div
+        id={disclosurePanelId}
+        data-testid="skillpilot-overview-disclosure-panel"
+        hidden={!isDisclosureOpen}
+        className="mt-4 border-t border-border-color pt-4 text-sm leading-relaxed text-text-secondary"
+      >
+        <section>
+          <h4 className="font-semibold text-text-primary">
+            {copy.disclosure.vision.heading}
+          </h4>
+          <p className="mt-2 font-semibold text-text-primary">
+            {copy.disclosure.vision.tagline}
+          </p>
+          <p className="mt-1">
+            {copy.disclosure.vision.description}
+          </p>
+        </section>
+        <section className="mt-4">
+          <h4 className="font-semibold text-text-primary">
+            {copy.disclosure.mission.heading}
+          </h4>
+          <p className="mt-2 font-semibold text-text-primary">
+            {copy.disclosure.mission.tagline}
+          </p>
+          <p className="mt-1">
+            {copy.disclosure.mission.description}
+          </p>
+        </section>
+      </div>
     </article>
   )
 }
