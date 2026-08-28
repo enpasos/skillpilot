@@ -1,4 +1,4 @@
-import { BookOpenText, ChevronDown, Compass, Headphones, PlayCircle } from 'lucide-react'
+import { BookOpenText, ChevronDown, Headphones, PlayCircle } from 'lucide-react'
 import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { LabelLanguage } from '../utils/filterLabels'
@@ -10,7 +10,6 @@ interface SkillPilotOverviewCardProps {
 
 export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps) => {
   const copy = getSkillPilotOverviewCopy(language)
-  const headingId = useId()
   const disclosurePanelId = useId()
   const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
   const formats = [
@@ -42,10 +41,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
       data-testid="skillpilot-overview-entry"
       className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-emerald-400/70 hover:shadow-md focus-within:border-emerald-500 dark:bg-slate-800/50 dark:hover:border-emerald-500/60 dark:focus-within:border-emerald-400"
     >
-      <h3
-        id={headingId}
-        className="text-lg font-semibold text-text-primary transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400"
-      >
+      <h3 className="text-lg font-semibold text-text-primary transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400">
         {copy.title}
       </h3>
       <p
@@ -56,12 +52,12 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
       </p>
       <div
         data-testid="skillpilot-overview-actions"
-        className="mt-3"
+        className="mt-3 flex flex-wrap items-center gap-2"
       >
         <ul
-          aria-labelledby={headingId}
+          aria-label={copy.formatsLabel}
           data-testid="skillpilot-overview-media-actions"
-          className="flex flex-wrap items-center gap-2 text-xs font-medium text-text-secondary"
+          className="flex w-full flex-wrap gap-2 text-xs font-medium text-text-secondary min-[850px]:w-auto"
         >
           {formats.map(({ icon: Icon, label, action, target, to }) => (
             <li key={target}>
@@ -76,30 +72,23 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
               </Link>
             </li>
           ))}
-          <li>
-            <button
-              type="button"
-              data-testid="skillpilot-overview-disclosure-toggle"
-              aria-expanded={isDisclosureOpen}
-              aria-controls={disclosurePanelId}
-              onClick={() => setIsDisclosureOpen((current) => !current)}
-              className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-offset-slate-900 ${isDisclosureOpen ? 'border-emerald-300/80 bg-emerald-50/80 text-emerald-800 hover:border-emerald-400 hover:bg-emerald-100 hover:text-emerald-900 dark:border-emerald-600/70 dark:bg-emerald-950/40 dark:text-emerald-200 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/60 dark:hover:text-emerald-100' : 'border-violet-200/80 bg-violet-50/70 text-text-secondary hover:border-violet-400 hover:bg-violet-100 hover:text-violet-800 dark:border-violet-700/50 dark:bg-violet-950/30 dark:hover:border-violet-500 dark:hover:bg-violet-950/60 dark:hover:text-violet-200'}`}
-            >
-              <Compass
-                size={14}
-                aria-hidden="true"
-                data-testid="skillpilot-overview-disclosure-icon"
-              />
-              <span>{copy.disclosure.label}</span>
-              <ChevronDown
-                size={16}
-                aria-hidden="true"
-                data-testid="skillpilot-overview-disclosure-chevron"
-                className={`shrink-0 transition-transform duration-200 motion-reduce:transition-none ${isDisclosureOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-          </li>
         </ul>
+        <button
+          type="button"
+          data-testid="skillpilot-overview-disclosure-toggle"
+          aria-expanded={isDisclosureOpen}
+          aria-controls={disclosurePanelId}
+          onClick={() => setIsDisclosureOpen((current) => !current)}
+          className="inline-flex items-center gap-1 rounded-sm text-sm font-medium text-violet-700 underline-offset-4 transition-colors duration-200 hover:text-violet-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 motion-reduce:transition-none min-[850px]:ms-auto dark:text-violet-300 dark:hover:text-violet-100 dark:focus-visible:ring-offset-slate-900"
+        >
+          <span>{copy.disclosure.label}</span>
+          <ChevronDown
+            size={16}
+            aria-hidden="true"
+            data-testid="skillpilot-overview-disclosure-chevron"
+            className={`shrink-0 transition-transform duration-200 motion-reduce:transition-none ${isDisclosureOpen ? 'rotate-180' : ''}`}
+          />
+        </button>
       </div>
       <div
         id={disclosurePanelId}

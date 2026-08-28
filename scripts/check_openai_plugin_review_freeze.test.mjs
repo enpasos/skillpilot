@@ -388,16 +388,55 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       },
       evidenceFile: {
-        path: "app/scripts/testPublicOverviewUi.tsx",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-single-green-frame-testPublicOverviewUi.tsx",
         sha256:
           "0097c3418e3a310907f4d82edd380399b15571225b603d73d73269a21191838f",
       },
       additionalFile: {
-        path: "app/src/components/SkillPilotOverviewCard.tsx",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-single-green-frame-SkillPilotOverviewCard.tsx",
         priorSha256:
           "8495949581cbd3c9efcfe5b7decb49ca3e32f0e881435be946cd0c7170ee7c54",
         authorizedSha256:
           "b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90",
+      },
+    },
+    {
+      id: "2026-08-28-public-overview-adjacent-vision-mission-pill",
+      approvedAt: "2026-08-28",
+      approvedBy: "product-owner",
+      reason:
+        "Present Vision & Mission as the fourth peer overview action instead of a visually separate trailing link.",
+      scope:
+        "In the current production WebGUI only, place the existing Vision & Mission disclosure fourth immediately after Whitepaper in one semantic action list labelled by the localized card heading; " +
+        "render it as an adjacent pill with a leading Compass, constant visible label, and trailing state chevron that rotates upward while open and downward when closed, make its closed appearance match the three media pills and its open appearance green, and remove the freestanding purple link, automatic right alignment, and underline presentation; " +
+        "preserve every German and English text, media route and play intent, disclosure state and panel layout, single green card interaction frame, the page order with learner start first, the byte-identical SessionSetup, every coach handler, prepared message, session, learner-state, " +
+        "OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, fixture, and review-artifact contract.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-public-information-action-styling-only-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        priorAuthorizedSha256:
+          "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+        authorizedSha256:
+          "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+      },
+      evidenceFile: {
+        path: "app/scripts/testPublicOverviewUi.tsx",
+        sha256:
+          "f85a72c8440d1b315664ce912fbd6ced1bdfdf4156d02d7afff5d47cc26c83b2",
+      },
+      additionalFile: {
+        path: "app/src/components/SkillPilotOverviewCard.tsx",
+        priorSha256:
+          "b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90",
+        authorizedSha256:
+          "d7408c72ba5a98791a54c586a08b6be320a1ab059efb723fd627351312d255eb",
       },
     },
   ]);
@@ -421,7 +460,7 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
         latestSessionSetupException?.protectedFile.authorizedSha256,
     },
     {
-      id: "2026-08-28-public-overview-single-green-frame",
+      id: "2026-08-28-public-overview-adjacent-vision-mission-pill",
       priorAuthorizedSha256:
         "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       authorizedSha256:

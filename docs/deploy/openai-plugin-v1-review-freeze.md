@@ -673,18 +673,82 @@ Schritt ohne Änderung an `SessionSetup.tsx`:
     `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
     (vorher und nachher byte-identisch).
 
-Die aktualisierte Implementierungsdatei ist mit ihrem vorherigen und ihrem
-neuen autorisierten SHA-256 verankert:
+Der autorisierte Komponentenstand wurde vor der nächsten Änderung
+byte-identisch als historische Evidenz archiviert und bleibt mit seinem
+vorherigen und seinem autorisierten SHA-256 verankert:
 
-- `app/src/components/SkillPilotOverviewCard.tsx`:
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-single-green-frame-SkillPilotOverviewCard.tsx`:
   `8495949581cbd3c9efcfe5b7decb49ca3e32f0e881435be946cd0c7170ee7c54`
   →
   `b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90`.
 
+Auch die fokussierte Regression wurde vor der nächsten autorisierten Änderung
+byte-identisch archiviert und ist hashgebunden:
+
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-single-green-frame-testPublicOverviewUi.tsx`:
+  `0097c3418e3a310907f4d82edd380399b15571225b603d73d73269a21191838f`.
+
+### 6.12 Eng begrenzte Ausnahme: Vision und Mission als vierte Aktionspille
+
+Der Product Owner hat am **28. August 2026** für das aktuelle
+Produktions-Webfrontend ausdrücklich genehmigt, das bestehende
+Vision-&-Mission-Disclosure nicht mehr als freistehenden violetten Textlink,
+sondern als vierte gleichrangige Aktionspille unmittelbar nach dem Whitepaper
+anzuzeigen. Das OpenAI-Plugin bleibt unverändert `skillpilot-coach-v1` Version
+`1.0.0`; ein Zurückziehen oder erneutes Einreichen im Portal ist nicht
+erforderlich.
+
+Freigegeben ist ausschließlich:
+
+- Audio-Einführung, Präsentationsvideo, Whitepaper und Vision & Mission in
+  dieser Reihenfolge in genau einer semantischen Liste anzuordnen, deren
+  zugängliche Beschriftung die lokalisierte Überschrift der Überblickskarte
+  ist;
+- Vision & Mission als vierte direkt anschließende Pille mit einem führenden,
+  für assistive Technik ausgeblendeten Kompasssymbol, der konstanten sichtbaren
+  Beschriftung „Vision & Mission“ und dem nachgestellten Zustands-Chevron
+  darzustellen;
+- die geschlossene Pille wie die drei Medienpillen zu gestalten und nur den
+  geöffneten Zustand grün hervorzuheben;
+- den Chevron beim Öffnen nach oben zu drehen und beim Schließen wieder nach
+  unten zu drehen, während `aria-expanded` und `aria-controls` die semantische
+  Zustands- und Bereichsbeziehung unverändert abbilden;
+- die frühere freistehende violette Linkdarstellung, automatische
+  Rechtsausrichtung und Unterstreichung zu entfernen;
+- die genaue Reihenfolge, Listensemantik, Symbole, konstanten Texte,
+  Zustandsdarstellung, Tastaturbedienung und responsive Umbruchfreiheit mit der
+  fokussierten Überblicksregression zu belegen.
+
+Sämtliche deutschen und englischen Texte, Medienrouten und
+Wiedergabe-Intents, der initial geschlossene Disclosure-Zustand, Inhalt und
+Layout des geöffneten Bereichs sowie der einzelne grüne Interaktionsrahmen der
+Karte bleiben unverändert. Die Seitenreihenfolge **Lernen starten** →
+**SkillPilot im Überblick** → **Curriculum-Champions** bleibt unverändert;
+**Lernen starten** bleibt die erste und wichtigste Aktion. `SessionSetup.tsx`
+bleibt byte-identisch. Coach-Handler, vorbereitete Nachrichten, Session- und
+Lernzustandssemantik, OpenAI-Paket, MCP/OAuth, Tools, Schemas, MCP-Apps-UI,
+Reviewfälle, Portalwerte, Fixtures und Reviewartefakte bleiben unverändert und
+eingefroren.
+
+Die Hashkette dokumentiert deshalb erneut ausdrücklich einen autorisierten
+Schritt ohne Änderung an `SessionSetup.tsx`:
+
+11. Vision und Mission als vierte Aktionspille:
+    `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
+    (vorher und nachher byte-identisch).
+
+Die aktualisierte Implementierungsdatei ist mit ihrem vorherigen und ihrem
+neuen autorisierten SHA-256 verankert:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90`
+  →
+  `d7408c72ba5a98791a54c586a08b6be320a1ab059efb723fd627351312d255eb`.
+
 Die aktualisierte fokussierte Regression ist ebenfalls hashgebunden:
 
 - `app/scripts/testPublicOverviewUi.tsx`:
-  `0097c3418e3a310907f4d82edd380399b15571225b603d73d73269a21191838f`.
+  `f85a72c8440d1b315664ce912fbd6ced1bdfdf4156d02d7afff5d47cc26c83b2`.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
