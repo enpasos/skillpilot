@@ -165,19 +165,51 @@
         "authorizedSha256": "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140"
       },
       "evidenceFile": {
-        "path": "app/scripts/testPublicOverviewUi.tsx",
+        "path": "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-testPublicOverviewUi.tsx",
         "sha256": "45fbf9051fd2cf143cdb7414f0434ad4dc82471d9728689d620454d218c7f72c"
       },
       "additionalFiles": [
         {
-          "path": "app/src/components/SkillPilotOverviewCard.tsx",
+          "path": "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-SkillPilotOverviewCard.tsx",
           "priorSha256": "1a2c27f60320b1296e32f20bae7af3adbf7625762c52ea1dfb5d2cd5a20df420",
           "authorizedSha256": "0b6c7539cb55d02f78198f3a50fcd8a95ac9b0c6bd0f8d5fa8d486352e2f75b3"
         },
         {
-          "path": "app/src/utils/skillPilotOverviewCopy.ts",
+          "path": "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-28-skillPilotOverviewCopy.ts",
           "priorSha256": "537e128921b534c8abdd71d4bdc5dc8afda63b865da2598fdcde9957e57d56cb",
           "authorizedSha256": "f2192dfabe8d2f00ca6f2bad01c0e65b5982dcd68aba426b10e9c4a59c43ec01"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-28-public-overview-factual-closed-state",
+      "approvedAt": "2026-08-28",
+      "approvedBy": "product-owner",
+      "reason": "Keep the closed public overview factual and lightweight while retaining the full Vision & Mission on demand and clearly distinguishing the long-term goal from the current product scope.",
+      "scope": "In the current production WebGUI only, refine the 2026-08-28 Vision & Mission disclosure by restoring the factual localized closed subtitle and removing the immediately visible compact Vision/Mission copy; place the existing constant-label disclosure control in the same wrapping action row as exactly three unchanged media actions, add the approved localized long-term-goal clarification to the opened panel, and render the complete German and English Vision/Mission text in a responsive two-column layout from approximately 850 pixels; preserve every media route and play intent, the page order with learner start first, the byte-identical SessionSetup, every coach handler, prepared message, session, learner-state, OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, fixture, and review-artifact contract.",
+      "target": "current-production-web-frontend",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-public-information-copy-and-layout-only-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/components/SessionSetup.tsx",
+        "submittedSha256": "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        "priorAuthorizedSha256": "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+        "authorizedSha256": "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testPublicOverviewUi.tsx",
+        "sha256": "f4911b536c399516bee60b66abbeca9578a8d01ac540d8b534abb4b2858b1b7d"
+      },
+      "additionalFiles": [
+        {
+          "path": "app/src/components/SkillPilotOverviewCard.tsx",
+          "priorSha256": "0b6c7539cb55d02f78198f3a50fcd8a95ac9b0c6bd0f8d5fa8d486352e2f75b3",
+          "authorizedSha256": "8495949581cbd3c9efcfe5b7decb49ca3e32f0e881435be946cd0c7170ee7c54"
+        },
+        {
+          "path": "app/src/utils/skillPilotOverviewCopy.ts",
+          "priorSha256": "f2192dfabe8d2f00ca6f2bad01c0e65b5982dcd68aba426b10e9c4a59c43ec01",
+          "authorizedSha256": "8698f3c9bfb995dab191cd2e317e4fc80f566ec4e449e0dc4152bcc5e34eef4d"
         }
       ]
     }

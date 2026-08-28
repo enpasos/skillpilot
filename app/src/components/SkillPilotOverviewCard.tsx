@@ -45,81 +45,87 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
         {copy.title}
       </h3>
       <p
-        data-testid="skillpilot-overview-card-tagline"
-        className="mt-1 text-sm font-semibold leading-relaxed text-text-primary"
-      >
-        {copy.cardTagline}
-      </p>
-      <p
         data-testid="skillpilot-overview-card-description"
         className="mt-1 text-sm leading-relaxed text-text-secondary"
       >
         {copy.cardDescription}
       </p>
-      <ul
-        aria-label={copy.formatsLabel}
-        className="mt-3 flex flex-wrap gap-2 text-xs font-medium text-text-secondary"
+      <div
+        data-testid="skillpilot-overview-actions"
+        className="mt-3 flex flex-wrap items-center gap-2"
       >
-        {formats.map(({ icon: Icon, label, action, target, to }) => (
-          <li key={target}>
-            <Link
-              to={to}
-              data-testid={`skillpilot-overview-format-${target}`}
-              aria-label={`${label}: ${action}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-violet-200/80 bg-violet-50/70 px-2.5 py-1 transition-colors hover:border-violet-400 hover:bg-violet-100 hover:text-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:border-violet-700/50 dark:bg-violet-950/30 dark:hover:border-violet-500 dark:hover:bg-violet-950/60 dark:hover:text-violet-200 dark:focus-visible:ring-offset-slate-900"
-            >
-              <Icon size={14} aria-hidden="true" />
-              {label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <button
-        type="button"
-        data-testid="skillpilot-overview-disclosure-toggle"
-        aria-expanded={isDisclosureOpen}
-        aria-controls={disclosurePanelId}
-        onClick={() => setIsDisclosureOpen((current) => !current)}
-        className="mt-3 inline-flex items-center gap-1 rounded-sm text-sm font-medium text-violet-700 underline-offset-4 transition-colors duration-200 hover:text-violet-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-violet-300 dark:hover:text-violet-100 dark:focus-visible:ring-offset-slate-900"
-      >
-        <span>
-          {isDisclosureOpen ? copy.disclosure.closeLabel : copy.disclosure.openLabel}
-        </span>
-        <ChevronDown
-          size={16}
-          aria-hidden="true"
-          data-testid="skillpilot-overview-disclosure-chevron"
-          className={`shrink-0 transition-transform duration-200 motion-reduce:transition-none ${isDisclosureOpen ? 'rotate-180' : ''}`}
-        />
-      </button>
+        <ul
+          aria-label={copy.formatsLabel}
+          data-testid="skillpilot-overview-media-actions"
+          className="flex w-full flex-wrap gap-2 text-xs font-medium text-text-secondary min-[850px]:w-auto"
+        >
+          {formats.map(({ icon: Icon, label, action, target, to }) => (
+            <li key={target}>
+              <Link
+                to={to}
+                data-testid={`skillpilot-overview-format-${target}`}
+                aria-label={`${label}: ${action}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-violet-200/80 bg-violet-50/70 px-2.5 py-1 transition-colors hover:border-violet-400 hover:bg-violet-100 hover:text-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:border-violet-700/50 dark:bg-violet-950/30 dark:hover:border-violet-500 dark:hover:bg-violet-950/60 dark:hover:text-violet-200 dark:focus-visible:ring-offset-slate-900"
+              >
+                <Icon size={14} aria-hidden="true" />
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          data-testid="skillpilot-overview-disclosure-toggle"
+          aria-expanded={isDisclosureOpen}
+          aria-controls={disclosurePanelId}
+          onClick={() => setIsDisclosureOpen((current) => !current)}
+          className="inline-flex items-center gap-1 rounded-sm text-sm font-medium text-violet-700 underline-offset-4 transition-colors duration-200 hover:text-violet-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 motion-reduce:transition-none min-[850px]:ms-auto dark:text-violet-300 dark:hover:text-violet-100 dark:focus-visible:ring-offset-slate-900"
+        >
+          <span>{copy.disclosure.label}</span>
+          <ChevronDown
+            size={16}
+            aria-hidden="true"
+            data-testid="skillpilot-overview-disclosure-chevron"
+            className={`shrink-0 transition-transform duration-200 motion-reduce:transition-none ${isDisclosureOpen ? 'rotate-180' : ''}`}
+          />
+        </button>
+      </div>
       <div
         id={disclosurePanelId}
         data-testid="skillpilot-overview-disclosure-panel"
         hidden={!isDisclosureOpen}
         className="mt-4 border-t border-border-color pt-4 text-sm leading-relaxed text-text-secondary"
       >
-        <section>
-          <h4 className="font-semibold text-text-primary">
-            {copy.disclosure.vision.heading}
-          </h4>
-          <p className="mt-2 font-semibold text-text-primary">
-            {copy.disclosure.vision.tagline}
-          </p>
-          <p className="mt-1">
-            {copy.disclosure.vision.description}
-          </p>
-        </section>
-        <section className="mt-4">
-          <h4 className="font-semibold text-text-primary">
-            {copy.disclosure.mission.heading}
-          </h4>
-          <p className="mt-2 font-semibold text-text-primary">
-            {copy.disclosure.mission.tagline}
-          </p>
-          <p className="mt-1">
-            {copy.disclosure.mission.description}
-          </p>
-        </section>
+        <p data-testid="skillpilot-overview-disclosure-introduction">
+          {copy.disclosure.introduction}
+        </p>
+        <div
+          data-testid="skillpilot-overview-disclosure-grid"
+          className="mt-4 grid grid-cols-1 gap-6 min-[850px]:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] min-[850px]:gap-8"
+        >
+          <section data-testid="skillpilot-overview-vision">
+            <h4 className="font-semibold text-text-primary">
+              {copy.disclosure.vision.heading}
+            </h4>
+            <p className="mt-2 font-semibold text-text-primary">
+              {copy.disclosure.vision.tagline}
+            </p>
+            <p className="mt-1">
+              {copy.disclosure.vision.description}
+            </p>
+          </section>
+          <section data-testid="skillpilot-overview-mission">
+            <h4 className="font-semibold text-text-primary">
+              {copy.disclosure.mission.heading}
+            </h4>
+            <p className="mt-2 font-semibold text-text-primary">
+              {copy.disclosure.mission.tagline}
+            </p>
+            <p className="mt-1">
+              {copy.disclosure.mission.description}
+            </p>
+          </section>
+        </div>
       </div>
     </article>
   )

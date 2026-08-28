@@ -16,12 +16,13 @@ export interface SkillPilotOverviewStatementCopy {
 export interface SkillPilotOverviewCopy {
   title: string
   description: string
+  cardTagline: string
   cardDescription: string
   formatsLabel: string
   formatNavigationLabel: string
   disclosure: {
-    label: string
-    introduction: string
+    openLabel: string
+    closeLabel: string
     vision: SkillPilotOverviewStatementCopy
     mission: SkillPilotOverviewStatementCopy
   }
@@ -39,12 +40,13 @@ export const getSkillPilotOverviewCopy = (
     ? {
         title: 'SkillPilot at a glance',
         description: 'Discover the idea behind SkillPilot—listen, watch, or explore it in depth.',
-        cardDescription: 'The idea behind SkillPilot—listen, watch, or read.',
+        cardTagline: 'All knowledge. For everyone.',
+        cardDescription: 'SkillPilot makes knowledge navigable—in open knowledge landscapes designed and reviewed by people, who remain responsible for them. Learners and their personal AI receive reliable guidance. Educators gain insight into individual learning progress, enabling them to provide more informed and targeted learning support.',
         formatsLabel: 'Available formats',
         formatNavigationLabel: 'Choose a format',
         disclosure: {
-          label: 'Vision & Mission',
-          introduction: 'Vision and mission describe our long-term goal and the path towards it.',
+          openLabel: 'Vision & Mission in full',
+          closeLabel: 'Close Vision & Mission',
           vision: {
             heading: 'Our vision',
             tagline: 'All knowledge. For everyone.',
@@ -80,12 +82,13 @@ export const getSkillPilotOverviewCopy = (
     : {
         title: 'SkillPilot im Überblick',
         description: 'Lerne die Idee hinter SkillPilot kennen – zum Anhören, Ansehen oder vertieften Lesen.',
-        cardDescription: 'Die Idee hinter SkillPilot – anhören, ansehen oder lesen.',
+        cardTagline: 'Alles Wissen. Für jeden Menschen.',
+        cardDescription: 'SkillPilot macht Wissen navigierbar – in offenen Wissenslandschaften, die von Menschen gestaltet, geprüft und verantwortet werden. Lernende und ihre persönliche KI erhalten verlässliche Orientierung. Für Lehrende werden individuelle Lernfortschritte sichtbar, damit sie Lernprozesse fundierter und gezielter begleiten können.',
         formatsLabel: 'Verfügbare Formate',
         formatNavigationLabel: 'Format wählen',
         disclosure: {
-          label: 'Vision & Mission',
-          introduction: 'Vision und Mission beschreiben unser langfristiges Ziel und den Weg dorthin.',
+          openLabel: 'Vision & Mission im Wortlaut',
+          closeLabel: 'Vision & Mission schließen',
           vision: {
             heading: 'Unsere Vision',
             tagline: 'Alles Wissen. Für jeden Menschen.',
