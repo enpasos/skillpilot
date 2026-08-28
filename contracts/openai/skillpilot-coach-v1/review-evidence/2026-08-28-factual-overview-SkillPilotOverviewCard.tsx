@@ -39,7 +39,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
   return (
     <article
       data-testid="skillpilot-overview-entry"
-      className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-emerald-400/70 hover:shadow-md focus-within:border-emerald-500 dark:bg-slate-800/50 dark:hover:border-emerald-500/60 dark:focus-within:border-emerald-400"
+      className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-violet-300/70 hover:shadow-md focus-within:border-violet-300/70 focus-within:ring-2 focus-within:ring-violet-500 focus-within:ring-offset-2 dark:bg-slate-800/50 dark:hover:border-violet-500/40 dark:focus-within:border-violet-500/40 dark:focus-within:ring-offset-slate-950"
     >
       <h3 className="text-lg font-semibold text-text-primary transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400">
         {copy.title}
