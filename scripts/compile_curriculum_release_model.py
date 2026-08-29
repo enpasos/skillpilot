@@ -2366,6 +2366,15 @@ def compile_release_quality_evidence(
         if not isinstance(record, dict) or not isinstance(record.get("goalId"), str):
             raise CompilationError("Malformed goal-visualization QA decision")
         goal_id = record["goalId"]
+        # The authoring ledger may retain reviewed images for known canonical
+        # goals that later left the ordinary-atomic scope. Unknown IDs remain
+        # fatal so stale or mistyped evidence cannot disappear silently.
+        if goal_id not in atomic_scope:
+            if goal_id not in goal_by_id:
+                raise CompilationError(
+                    f"Goal-visualization QA references unknown goal {goal_id}"
+                )
+            continue
         if goal_id in visual_goal_ids:
             raise CompilationError(f"Duplicate goal-visualization QA decision for {goal_id}")
         visual_goal_ids.add(goal_id)
@@ -2984,6 +2993,13 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         semantic_counts[str(semantic_kind)] += 1
 
         extended = goal.get("extendedData")
+        if isinstance(extended, dict):
+            # Applicability overrides are reviewed authoring evidence. The
+            # resolved runtime applicability above is the release contract.
+            extended.pop("applicabilityOverrides", None)
+            if not extended:
+                goal.pop("extendedData", None)
+                extended = None
         if isinstance(extended, dict):
             for field in ("vocabularySource", "vocabularySourceEn"):
                 value = extended.get(field)

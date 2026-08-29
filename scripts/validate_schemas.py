@@ -8,6 +8,12 @@ import sys
 CURRICULA_DIR = "curricula"
 SCHEMA_PATH = "docs/landscape-runtime.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
+NON_LANDSCAPE_GOAL_COLLECTION_ROOTS = (
+    os.path.normpath(
+        "curricula/DE/Gymnasium/quality/goal-description-review"
+    ),
+    os.path.normpath("curricula/DE/Gymnasium/quality/goal-evidence"),
+)
 
 
 def validate_personalization_flow_contract(schema_path, schema):
@@ -486,6 +492,53 @@ def validate_personalization_flow_semantic_contract():
             return False
     return True
 
+def is_known_non_landscape_goal_collection(file_path):
+    normalized_path = os.path.normpath(file_path)
+    return any(
+        normalized_path == root or normalized_path.startswith(root + os.sep)
+        for root in NON_LANDSCAPE_GOAL_COLLECTION_ROOTS
+    )
+
+
+def looks_like_runtime_landscape(file_path, data):
+    """Identify candidates without hiding malformed landscape fields."""
+    if not isinstance(data, dict) or "goals" not in data:
+        return False
+    if "landscapeId" in data or "id" in data:
+        return True
+    return not is_known_non_landscape_goal_collection(file_path)
+
+
+def validate_landscape_discovery_contract():
+    cases = [
+        ("curricula/example.json", {"landscapeId": "current", "goals": []}, True),
+        ("curricula/legacy.json", {"id": "legacy", "goals": []}, True),
+        ("curricula/broken.json", {"landscapeId": None, "goals": []}, True),
+        ("curricula/broken.json", {"landscapeId": "broken", "goals": None}, True),
+        ("curricula/missing-id.json", {"goals": []}, True),
+        (
+            "curricula/DE/Gymnasium/quality/goal-evidence/review.json",
+            {"reviewId": "review", "goals": []},
+            False,
+        ),
+        (
+            "curricula/DE/Gymnasium/quality/goal-description-review/run/input.json",
+            {"goals": []},
+            False,
+        ),
+        ("curricula/view.json", {"landscapeId": "view", "goalEntries": []}, False),
+        ("curricula/list.json", [], False),
+    ]
+    for file_path, data, expected in cases:
+        if looks_like_runtime_landscape(file_path, data) is not expected:
+            print(
+                "❌ Landscape discovery self-test failed for "
+                f"{file_path}: {data!r}"
+            )
+            return False
+    return True
+
+
 def validate_file(file_path, schema):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -494,8 +547,9 @@ def validate_file(file_path, schema):
         print(f"❌ skipping {file_path}: Failed to load JSON: {e}")
         return False
 
-    if not isinstance(data, dict) or 'goals' not in data:
-        # Skip files that don't look like landscapes
+    if not looks_like_runtime_landscape(file_path, data):
+        # Review ledgers may also carry a top-level goals collection. Runtime
+        # landscapes additionally declare a current or legacy landscape ID.
         return True
 
     try:
@@ -538,6 +592,8 @@ def main():
     if not validate_personalization_flow_contract(COMPILED_SCHEMA_PATH, compiled_schema):
         sys.exit(1)
     if not validate_personalization_flow_semantic_contract():
+        sys.exit(1)
+    if not validate_landscape_discovery_contract():
         sys.exit(1)
 
     if not os.path.exists(CURRICULA_DIR):
