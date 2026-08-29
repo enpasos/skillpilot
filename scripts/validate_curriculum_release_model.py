@@ -3015,6 +3015,14 @@ def build_expected_quality_evidence(
             "Malformed goal-visualization QA decision",
         )
         goal_id = record["goalId"]
+        # Independently mirror the release projection: retained decisions for
+        # known non-atomic goals are authoring-only, while unknown IDs fail.
+        if goal_id not in atomic_scope:
+            require(
+                goal_id in goal_by_id,
+                f"Goal-visualization QA references unknown goal {goal_id}",
+            )
+            continue
         require(
             goal_id not in visual_goal_ids,
             f"Duplicate goal-visualization QA decision for {goal_id}",
@@ -3397,6 +3405,13 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         semantic_counts[str(semantic_kind)] += 1
 
         extended = goal.get("extendedData")
+        if isinstance(extended, dict):
+            # Mirror the compiler projection independently: override evidence
+            # remains authoring-only once runtime applicability is resolved.
+            extended.pop("applicabilityOverrides", None)
+            if not extended:
+                goal.pop("extendedData", None)
+                extended = None
         if isinstance(extended, dict):
             for field in ("vocabularySource", "vocabularySourceEn"):
                 value = extended.get(field)
