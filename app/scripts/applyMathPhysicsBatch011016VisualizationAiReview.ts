@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-type JsonRecord = Record<string, any>
+type JsonRecord = Record<string, unknown>
 
 const repoRoot = resolve(import.meta.dirname, '../..')
 const writeMode = process.argv.includes('--write')

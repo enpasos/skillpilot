@@ -196,7 +196,10 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_SEK1_COLOR_TECH_ID = "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5";
     private static final String CANONICAL_PHYSICS_SEK1_RADIOACTIVITY_CLUSTER_ID = "8917c71a-bfcb-4003-971c-188a69446b60";
     private static final String CANONICAL_PHYSICS_SEK1_ATOM_ID = "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb";
-    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_ID = "f6f646db-3544-49ed-8f55-67bc684e80ce";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_CLUSTER_ID = "f6f646db-3544-49ed-8f55-67bc684e80ce";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID = "1593d95c-2aac-504c-8527-37cb61877da9";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_DETECTION_ID = "25d91cc0-d84c-5522-86b5-fdff73264f08";
+    private static final String CANONICAL_PHYSICS_SEK1_RADIATION_EFFECTS_ID = "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd";
     private static final String CANONICAL_PHYSICS_SEK1_RADIATION_APPLICATIONS_ID = "979e0d0d-8933-4ace-814f-f28060ad280f";
     private static final String CANONICAL_PHYSICS_SEK1_LIGHT_CLUSTER_ID = "051cedc5-d380-4716-9751-b18f2e67a912";
     private static final String CANONICAL_PHYSICS_SEK1_LIGHT_PROPAGATION_ID = "dd7cdcea-0950-461b-96ac-ce49989fca47";
@@ -509,7 +512,7 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void getMasteryProjectsExactLegacySek1PhysicsRadioactivityMasteryIntoCanonicalPhysicsBridgeGoals() {
+    void getMasteryProjectsExactRadioactivityMappingsButDoesNotFanOutPartialLegacyRadiationMapping() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_ATOM_ID, 1.0),
@@ -519,8 +522,12 @@ class LearnerServiceCrossSubjectPilotTest {
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ATOM_ID, 1.0);
-        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RADIATION_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RADIATION_APPLICATIONS_ID, 1.0);
+        assertThat(mastery).doesNotContainKeys(
+                CANONICAL_PHYSICS_SEK1_RADIATION_CLUSTER_ID,
+                CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID,
+                CANONICAL_PHYSICS_SEK1_RADIATION_DETECTION_ID,
+                CANONICAL_PHYSICS_SEK1_RADIATION_EFFECTS_ID);
     }
 
     @Test
@@ -1202,7 +1209,11 @@ class LearnerServiceCrossSubjectPilotTest {
                 .orElseThrow();
 
         assertThat(upperSecondaryRadiationGoal.getRequires())
-                .containsExactly("5c44b9ba-9b05-4774-95d5-073230d3fc4f", CANONICAL_PHYSICS_SEK1_RADIATION_ID);
+                .containsExactly(
+                        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+                        CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID,
+                        CANONICAL_PHYSICS_SEK1_RADIATION_DETECTION_ID,
+                        CANONICAL_PHYSICS_SEK1_RADIATION_EFFECTS_ID);
     }
 
     @Test
@@ -1281,7 +1292,10 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
-                .contains(CANONICAL_PHYSICS_SEK1_RADIATION_ID)
+                .contains(
+                        CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID,
+                        CANONICAL_PHYSICS_SEK1_RADIATION_DETECTION_ID,
+                        CANONICAL_PHYSICS_SEK1_RADIATION_EFFECTS_ID)
                 .doesNotContain(CANONICAL_PHYSICS_SEK1_RADIATION_APPLICATIONS_ID);
     }
 

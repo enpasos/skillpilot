@@ -5693,22 +5693,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "234", "234" },
-                { "DE-BE", "233", "233" },
-                { "DE-BW", "253", "253" },
-                { "DE-BY", "222", "222" },
-                { "DE-HB", "207", "207" },
-                { "DE-HE", "320", "374" },
-                { "DE-HH", "233", "233" },
-                { "DE-MV", "233", "233" },
-                { "DE-NI", "233", "233" },
-                { "DE-NW", "233", "233" },
-                { "DE-RP", "156", "163" },
-                { "DE-SH", "220", "227" },
-                { "DE-SL", "233", "233" },
-                { "DE-SN", "233", "233" },
-                { "DE-ST", "233", "233" },
-                { "DE-TH", "234", "234" }
+                { "DE-BB", "236", "236" },
+                { "DE-BE", "235", "235" },
+                { "DE-BW", "255", "255" },
+                { "DE-BY", "224", "224" },
+                { "DE-HB", "209", "209" },
+                { "DE-HE", "322", "376" },
+                { "DE-HH", "235", "235" },
+                { "DE-MV", "235", "235" },
+                { "DE-NI", "235", "235" },
+                { "DE-NW", "235", "235" },
+                { "DE-RP", "157", "164" },
+                { "DE-SH", "221", "228" },
+                { "DE-SL", "235", "235" },
+                { "DE-SN", "235", "235" },
+                { "DE-ST", "235", "235" },
+                { "DE-TH", "236", "236" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -5744,12 +5744,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "733", "764" },
-                { "DE-HE", "LK", "859", "890" },
-                { "DE-RP", "GK", "574", "581" },
-                { "DE-RP", "LK", "685", "692" },
-                { "DE-SH", "GK", "619", "626" },
-                { "DE-SH", "LK", "715", "722" }
+                { "DE-HE", "GK", "736", "767" },
+                { "DE-HE", "LK", "862", "893" },
+                { "DE-RP", "GK", "576", "583" },
+                { "DE-RP", "LK", "687", "694" },
+                { "DE-SH", "GK", "621", "628" },
+                { "DE-SH", "LK", "717", "724" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -5812,16 +5812,16 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "134", "134" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "89", "89" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "131", "131" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "135", "135" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "131", "131" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "133", "133" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "135", "135" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "135", "135" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "135", "135" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "133", "133" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "141", "141" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "100", "100" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "134", "134" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "138", "138" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "134", "134" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "141", "141" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "138", "138" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "138", "138" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "141", "141" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "138", "138" }
         };
         SoftAssertions softly = new SoftAssertions();
 

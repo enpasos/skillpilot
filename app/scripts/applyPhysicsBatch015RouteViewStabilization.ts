@@ -195,13 +195,6 @@ const removeAssessmentEntries = (value: Json): Json => {
   return value
 }
 
-const setGoalEntryTarget = (value: Json, goalId: string): void => {
-  if (Array.isArray(value)) return value.forEach((entry) => setGoalEntryTarget(entry, goalId))
-  if (!value || typeof value !== 'object') return
-  const node = value as RecordJson
-  if (node.kind === 'goalEntry' && node.goalId === goalId) delete node.projectionRole
-  Object.values(node).forEach((entry) => setGoalEntryTarget(entry, goalId))
-}
 const removeDirectGoalEntry = (value: Json, goalId: string): Json => {
   if (Array.isArray(value)) return value
     .filter((entry) => !(
@@ -320,7 +313,6 @@ for (const file of bwSpecificViews) {
     JSON.parse(outputs.get(path) ?? readFileSync(path, 'utf8')) as RecordJson,
     ids.bwEnergyAssessment,
   ) as RecordJson
-  const rootChildren = ((view.rootNodes as RecordJson[])[0]?.children as Json[])
   if (!JSON.stringify(view).includes(ids.solarAssessment)) appendToSekI(view, goalEntry(ids.solarAssessment))
   if (!JSON.stringify(view).includes(ids.resistanceAssessment)) appendToSekI(view, goalEntry(ids.resistanceAssessment))
   if (!JSON.stringify(view).includes(ids.bwEnergyAssessment)) appendToSekI(view, goalEntry(ids.bwEnergyAssessment))
@@ -333,7 +325,6 @@ for (const file of genericViews) {
     JSON.parse(outputs.get(path) ?? readFileSync(path, 'utf8')) as RecordJson,
     ids.bwEnergyAssessment,
   ) as RecordJson
-  const rootChildren = ((view.rootNodes as RecordJson[])[0]?.children as Json[])
   if (!JSON.stringify(view).includes(ids.bwEnergyAssessment)) appendToSekI(view, goalEntry(ids.bwEnergyAssessment))
   outputs.set(path, serialize(view))
 }

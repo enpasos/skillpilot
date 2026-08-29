@@ -3,7 +3,7 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 
-type JsonRecord = Record<string, any>
+type JsonRecord = Record<string, unknown>
 type MatchType = 'exact' | 'partial'
 type RouteTarget = { targetGoalId: string; matchType: MatchType }
 
@@ -110,15 +110,6 @@ const mappingPaths = [
 ]
 const structuralViewPaths = ['de-bw-gk', 'de-bw-lk', 'de-by-gk', 'de-by-lk']
   .map((name) => `${paths.compositionViews}/${name}.view.json`)
-const assessmentViewPaths = readdirSync(resolve(repoRoot, paths.compositionViews))
-  .filter((name) => name.endsWith('.view.json'))
-  .map((name) => `${paths.compositionViews}/${name}`)
-  .filter((path) => {
-    const view = JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8')) as JsonRecord
-    return view.landscapeId === physicsLandscapeId
-      && ['SekI', 'CrossStage'].includes(String(view.scope?.stage))
-  })
-  .sort()
 const allPhysicsViewPaths = readdirSync(resolve(repoRoot, paths.compositionViews))
   .filter((name) => name.endsWith('.view.json'))
   .map((name) => `${paths.compositionViews}/${name}`)

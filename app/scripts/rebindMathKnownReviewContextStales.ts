@@ -172,7 +172,7 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
       outputDirectory: relative(repoRoot, temporaryOutput),
     }
     await writeFile(temporaryConfigPath, jsonBytes(temporaryConfig))
-    const prepared = await prepareGoalDescriptionRolloutBatch(relative(repoRoot, temporaryConfigPath))
+    await prepareGoalDescriptionRolloutBatch(relative(repoRoot, temporaryConfigPath))
 
     const preparedManifestPath = join(temporaryOutput, 'batch-manifest.json')
     const preparedManifest = parseJson<GoalDescriptionRolloutBatchManifest>(

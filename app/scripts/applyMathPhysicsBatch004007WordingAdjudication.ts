@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 
-type JsonRecord = Record<string, any>
+type JsonRecord = Record<string, unknown>
 
 const repoRoot = resolve(import.meta.dirname, '../..')
 const writeMode = process.argv.includes('--write')
@@ -148,8 +148,6 @@ const readJsonl = (path: string): JsonRecord[] => readFileSync(abs(path), 'utf8'
   .split(/\r?\n/u)
   .filter((line) => line.trim() !== '')
   .map((line) => JSON.parse(line))
-const writeJson = (path: string, value: unknown): void => writeFileSync(abs(path), `${JSON.stringify(value, null, 2)}\n`)
-const writeJsonl = (path: string, values: JsonRecord[]): void => writeFileSync(abs(path), `${values.map((value) => JSON.stringify(value)).join('\n')}\n`)
 const normalizeText = (value: unknown): string => String(value ?? '').normalize('NFKC').replace(/\s+/gu, ' ').trim()
 const stableJson = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`

@@ -1790,7 +1790,7 @@ function validateCompositionViewContract(fileName: string, view: JsonRecord): vo
     for (const childId of [ids.nets, ids.obliqueViews]) {
       const serialized = stableJson(view)
       if (countCompositionReferences(view, childId) !== 1
-        || !serialized.includes(`\"goalId\":\"${childId}\",\"kind\":\"goalEntry\",\"projectionRole\":\"prerequisiteOnly\"`)) {
+        || !serialized.includes(`"goalId":"${childId}","kind":"goalEntry","projectionRole":"prerequisiteOnly"`)) {
         throw new Error(`${fileName} must expose ${childId} only as prerequisiteOnly via ${ids.linkedRepresentations}`)
       }
     }
