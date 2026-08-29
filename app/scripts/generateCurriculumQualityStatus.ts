@@ -1358,6 +1358,7 @@ function trackedRepoPaths(): Set<string> | null {
     const output = execFileSync('git', ['ls-files', '-z'], {
       cwd: repoRoot,
       encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
       stdio: ['ignore', 'pipe', 'ignore'],
     })
     trackedRepoPathsCache = new Set(
