@@ -135,6 +135,9 @@ const inferGoalStageScope = (
 
   const title = normalizeComparableText(goal.title)
   const phase = normalizeComparableText(goal.phase)
+  const normalizedTags = new Set(
+    (goal.tags ?? []).map((tag) => normalizeComparableText(tag)),
+  )
 
   if (title === 'SEKUNDARSTUFE I' || title.startsWith('SEKUNDARSTUFE I ') || title.endsWith('(SEK I)')) {
     return 'sek1'
@@ -148,6 +151,20 @@ const inferGoalStageScope = (
     || title.startsWith('KURSSTUFE ')
   ) {
     return 'sek2'
+  }
+
+  if (phase === 'SEKI') {
+    return 'sek1'
+  }
+
+  if (phase === 'SEKII') {
+    return 'sek2'
+  }
+
+  const hasSek1PhaseTag = normalizedTags.has('PHASE:SEKI')
+  const hasSek2PhaseTag = normalizedTags.has('PHASE:SEKII')
+  if (hasSek1PhaseTag !== hasSek2PhaseTag) {
+    return hasSek1PhaseTag ? 'sek1' : 'sek2'
   }
 
   if (/^J([5-9]|10)$/.test(phase)) {

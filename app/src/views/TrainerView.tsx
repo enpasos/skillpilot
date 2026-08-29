@@ -29,6 +29,24 @@ import {
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { normalizeDurationModel } from '../utils/durationModel'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
+import { isRepositoryGymnasiumFramework } from '../utils/curriculumDisplay'
+import {
+  applyCompositionViewProjection,
+  applyMatchedCompositionRouteGoalProjection,
+  deriveRuntimeCompositionScope,
+} from '../utils/compositionViewRuntime'
+import {
+  normalizeCompositionView,
+  type CompositionView,
+} from '../utils/authoring/compositionViewAuthoring'
+import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
+import { buildDirectChildrenMap } from '../utils/treeProjectionRuntime'
+import {
+  findRuntimeRootLandscapeId,
+  resolveLearnerRuntimeOfferingId,
+  resolveRuntimeApiHref,
+  type RuntimeCurriculumCatalogState,
+} from '../utils/runtimeCurriculumCatalog'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -36,6 +54,7 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
   loadingLandscapes?: boolean
+  runtimeCatalogState: RuntimeCurriculumCatalogState
   classSetupLandscapes?: LandscapeEntry[]
   classSetupRootLandscapeId?: string
   onContextChange: (
@@ -51,6 +70,18 @@ interface TrainerViewProps {
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
 }
+
+interface TrainerCompositionRequest {
+  key: string
+  landscapeId: string
+  url: string | null
+}
+
+type TrainerCompositionResolution =
+  | { key: string; status: 'loading' }
+  | { key: string; status: 'ready'; view: CompositionView }
+  | { key: string; status: 'no-match' }
+  | { key: string; status: 'error'; error: Error }
 
 const loadStoredTrainerClasses = (): ClassSession[] => {
   try {
@@ -85,6 +116,7 @@ const loadStoredActiveClassId = (): string | null => {
 export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
   loadingLandscapes = false,
+  runtimeCatalogState,
   classSetupLandscapes,
   classSetupRootLandscapeId,
   onContextChange,
@@ -110,6 +142,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [masteryByStudent, setMasteryByStudent] = useState<Map<string, MasteryMap>>(new Map())
   const [plannedGoalsByStudent, setPlannedGoalsByStudent] = useState<Map<string, Set<string>>>(new Map())
+  const [compositionResolution, setCompositionResolution] = useState<TrainerCompositionResolution | null>(null)
+  const [compositionRetryToken, setCompositionRetryToken] = useState(0)
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
     title: string
@@ -145,6 +179,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         courseProfileOpen: 'Kursprofil offen',
         editTooltip: 'Klasse und Curriculum bearbeiten',
         setupLoading: 'Gymnasium-Auswahl wird geladen …',
+        compositionLoading: 'Klassen-Curriculum wird geladen …',
+        compositionUnavailable: 'Für diese Klassenauswahl konnte keine passende Curriculumansicht geladen werden.',
+        compositionRetry: 'Erneut versuchen',
       })
     : {
         allJurisdictions: 'All federal states',
@@ -157,6 +194,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         courseProfileOpen: 'Course profile open',
         editTooltip: 'Edit class and curriculum',
         setupLoading: 'Loading Gymnasium selection …',
+        compositionLoading: 'Loading class curriculum …',
+        compositionUnavailable: 'No matching curriculum view could be loaded for this class scope.',
+        compositionRetry: 'Try again',
       }, [localizedLanguage])
 
   const getClassScopeDisplay = useCallback((session: ClassSession) => {
@@ -262,6 +302,16 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (!activeClass) return undefined
     return normalizeDurationModel(activeClass.personalConfig?.[activeClass.landscapeId]?.durationModel)
   }, [activeClass])
+  const activeClassSourceLandscapeEntry = useMemo(
+    () => landscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
+    [activeClass?.landscapeId, landscapeEntries],
+  )
+  const activeClassPersonalCurriculum = useMemo(
+    () => activeClass
+      ? JSON.stringify({ personalCurriculum: activeClass.personalConfig ?? {} })
+      : null,
+    [activeClass],
+  )
   const trainerContextFilter = useMemo(() => {
     if (activeClassRootFilterId && !isWildcardFilter(activeClassRootFilterId)) {
       return activeClassRootFilterId
@@ -292,10 +342,200 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     }
     return Array.from(next)
   }, [activeClass, activeClassLandscapeDurationModel, activeClassLandscapeFilterId, activeClassRootDurationModel, activeClassRootFilterId])
-  const projectedTrainerLandscapeEntries = useMemo(
+  const trainerCompositionRequest = useMemo<TrainerCompositionRequest | null>(() => {
+    if (!activeClass || !activeClassPersonalCurriculum) return null
+    if (runtimeCatalogState.mode === 'loading' || runtimeCatalogState.mode === 'unavailable') return null
+
+    const packageRootLandscapeId = runtimeCatalogState.mode === 'package'
+      ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, activeClass.landscapeId)
+      : undefined
+    const rootLandscapeId = packageRootLandscapeId ?? activeClass.rootLandscapeId
+    const scope = deriveRuntimeCompositionScope({
+      landscapeId: activeClass.landscapeId,
+      rootLandscapeId,
+      scopeEnabled: runtimeCatalogState.mode === 'package'
+        || isRepositoryGymnasiumFramework(activeClassSourceLandscapeEntry?.meta.frameworkId),
+      catalogJurisdictions: runtimeCatalogState.mode === 'package'
+        ? runtimeCatalogState.catalog.offerings
+            .filter((offering) => offering.landscapeId === activeClass.landscapeId)
+            .map((offering) => offering.scope.jurisdiction)
+            .filter((jurisdiction): jurisdiction is string => typeof jurisdiction === 'string')
+        : undefined,
+      activeFilter: activeClass.activeFilter,
+      learnerPersonalCurriculum: activeClassPersonalCurriculum,
+    })
+
+    if (runtimeCatalogState.mode === 'repository') {
+      if (!scope) return null
+      const params = new URLSearchParams({
+        landscapeId: scope.landscapeId,
+        schoolForm: scope.schoolForm ?? '',
+        jurisdiction: scope.jurisdiction ?? '',
+        stage: scope.stage ?? '',
+        courseProfile: scope.courseProfile ?? '',
+        durationModel: scope.durationModel ?? '',
+      })
+      const url = `/api/ui/composition-views/match?${params.toString()}`
+      return {
+        key: `repository:${url}`,
+        landscapeId: activeClass.landscapeId,
+        url,
+      }
+    }
+
+    const catalogLandscape = runtimeCatalogState.catalog.landscapes.find(
+      (candidate) => candidate.landscapeId === activeClass.landscapeId,
+    )
+    if (!catalogLandscape) return null
+    const hasOfferings = runtimeCatalogState.catalog.offerings.some(
+      (candidate) => candidate.landscapeId === activeClass.landscapeId,
+    )
+    if (!hasOfferings && !catalogLandscape.defaultOfferingId) return null
+
+    const requestedScope = scope
+      ? Object.entries(scope).reduce<Record<string, string>>((result, [key, value]) => {
+          if (key !== 'landscapeId' && typeof value === 'string' && value.length > 0) {
+            result[key] = value
+          }
+          return result
+        }, {})
+      : null
+    const offeringId = resolveLearnerRuntimeOfferingId(
+      runtimeCatalogState.catalog,
+      activeClass.landscapeId,
+      requestedScope,
+    )
+    const scopeKey = new URLSearchParams(requestedScope ?? {}).toString()
+    if (!offeringId) {
+      return {
+        key: `package:no-offering:${activeClass.landscapeId}:${scopeKey}`,
+        landscapeId: activeClass.landscapeId,
+        url: null,
+      }
+    }
+    const href = `/api/ui/composition-views/offerings/${encodeURIComponent(offeringId)}`
+    const url = resolveRuntimeApiHref(runtimeCatalogState.apiBase, href)
+    return {
+      key: `package:${url}`,
+      landscapeId: activeClass.landscapeId,
+      url,
+    }
+  }, [
+    activeClass,
+    activeClassPersonalCurriculum,
+    activeClassSourceLandscapeEntry?.meta.frameworkId,
+    runtimeCatalogState,
+  ])
+  const trainerCompositionRequestKey = trainerCompositionRequest?.key ?? null
+  const trainerCompositionRequestLandscapeId = trainerCompositionRequest?.landscapeId ?? null
+  const trainerCompositionRequestUrl = trainerCompositionRequest?.url ?? null
+
+  useEffect(() => {
+    if (!trainerCompositionRequestKey || !trainerCompositionRequestLandscapeId) {
+      setCompositionResolution(null)
+      return
+    }
+
+    const requestKey = trainerCompositionRequestKey
+    const requestLandscapeId = trainerCompositionRequestLandscapeId
+    if (!trainerCompositionRequestUrl) {
+      setCompositionResolution({
+        key: requestKey,
+        status: 'error',
+        error: new Error(`No curriculum offering matches ${requestLandscapeId}`),
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    const signal = controller.signal
+    setCompositionResolution({ key: requestKey, status: 'loading' })
+    void fetch(trainerCompositionRequestUrl, { signal })
+      .then(async (response) => {
+        if (response.status === 204) {
+          return null
+        }
+        if (!response.ok) {
+          throw new Error(`Failed to load composition view for ${requestLandscapeId} (${response.status})`)
+        }
+        const view = normalizeCompositionView(await response.json())
+        if (view.landscapeId !== requestLandscapeId) {
+          throw new Error(`Composition view landscape mismatch for ${requestLandscapeId}`)
+        }
+        return view
+      })
+      .then((view) => {
+        if (signal.aborted) return
+        setCompositionResolution(view
+          ? { key: requestKey, status: 'ready', view }
+          : { key: requestKey, status: 'no-match' })
+      })
+      .catch((error) => {
+        if (signal.aborted) return
+        console.warn('[TrainerView] Failed to load matching class composition view', error)
+        setCompositionResolution({
+          key: requestKey,
+          status: 'error',
+          error: error instanceof Error ? error : new Error('Failed to load composition view'),
+        })
+      })
+
+    return () => controller.abort()
+  }, [
+    compositionRetryToken,
+    trainerCompositionRequestKey,
+    trainerCompositionRequestLandscapeId,
+    trainerCompositionRequestUrl,
+  ])
+
+  const currentCompositionResolution = trainerCompositionRequest
+    && compositionResolution?.key === trainerCompositionRequest.key
+    ? compositionResolution
+    : null
+  const isTrainerCompositionPending = !!trainerCompositionRequest
+    && (!currentCompositionResolution || currentCompositionResolution.status === 'loading')
+  const isTrainerCompositionUnavailable = !!trainerCompositionRequest
+    && !!currentCompositionResolution
+    && (currentCompositionResolution.status === 'no-match' || currentCompositionResolution.status === 'error')
+  const matchedTrainerCompositionView = currentCompositionResolution?.status === 'ready'
+    ? currentCompositionResolution.view
+    : null
+  const placementProjectedTrainerLandscapeEntries = useMemo(
     () => applyGoalPlacementProjection(landscapeEntries, activeClassFilterIds),
     [activeClassFilterIds, landscapeEntries],
   )
+  const projectedTrainerLandscapeEntries = useMemo(() => {
+    if (!trainerCompositionRequest) {
+      return placementProjectedTrainerLandscapeEntries
+    }
+    if (!matchedTrainerCompositionView) {
+      return [] as LandscapeEntry[]
+    }
+
+    const placementByLandscapeId = new Map(
+      placementProjectedTrainerLandscapeEntries.map((entry) => [entry.meta.landscapeId, entry] as const),
+    )
+    const compositionSourceEntries = landscapeEntries.map((entry) => (
+      entry.meta.landscapeId === trainerCompositionRequest.landscapeId
+        ? entry
+        : placementByLandscapeId.get(entry.meta.landscapeId) ?? entry
+    ))
+    const compositionProjectedEntries = applyCompositionViewProjection(
+      compositionSourceEntries,
+      matchedTrainerCompositionView,
+    )
+    const routeProjectedEntries = applyMatchedCompositionRouteGoalProjection(
+      compositionProjectedEntries,
+      routeGoalId,
+    )
+    return routeProjectedEntries.map((entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry)
+  }, [
+    landscapeEntries,
+    matchedTrainerCompositionView,
+    placementProjectedTrainerLandscapeEntries,
+    routeGoalId,
+    trainerCompositionRequest,
+  ])
   const activeLandscapeEntry = useMemo(
     () => projectedTrainerLandscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
     [activeClass, projectedTrainerLandscapeEntries],
@@ -305,9 +545,35 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [projectedTrainerLandscapeEntries],
   )
   const { goalIndexAll: classGoalIndexAll } = useGoalIndex(classAllGoals)
+  const trainerVisibleChildrenByParent = useMemo(
+    () => matchedTrainerCompositionView ? buildDirectChildrenMap(classGoalIndexAll) : undefined,
+    [classGoalIndexAll, matchedTrainerCompositionView],
+  )
+  const trainerCompositionTargetGoalIds = useMemo(() => {
+    if (!matchedTrainerCompositionView || !activeLandscapeEntry) return null
+
+    const targetGoalIds = new Set<string>()
+    const pendingGoalIds = activeLandscapeEntry.goals
+      .filter((goal) => (goal.tags ?? []).includes('root'))
+      .map((goal) => goal.id)
+    while (pendingGoalIds.length > 0) {
+      const goalId = pendingGoalIds.pop()
+      if (!goalId || targetGoalIds.has(goalId)) continue
+      const goal = classGoalIndexAll.get(goalId)
+      if (!goal) continue
+      targetGoalIds.add(goalId)
+      ;(goal.contains ?? []).forEach((childId) => {
+        if (!targetGoalIds.has(childId)) pendingGoalIds.push(childId)
+      })
+    }
+    return targetGoalIds
+  }, [activeLandscapeEntry, classGoalIndexAll, matchedTrainerCompositionView])
   const goalMatchesActiveClassConfig = useCallback((goal: UiGoal | null | undefined) => {
     if (!goal) return false
     if (!activeClass) return true
+    if (trainerCompositionTargetGoalIds) {
+      return trainerCompositionTargetGoalIds.has(goal.id)
+    }
     if (!goalMatchesGlobalStageScope(
       goal,
       activeClass.personalConfig ?? {},
@@ -316,7 +582,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       return false
     }
     return goalMatchesFilters(goal, activeClassFilterIds)
-  }, [activeClass, activeClassFilterIds])
+  }, [activeClass, activeClassFilterIds, trainerCompositionTargetGoalIds])
   const classRootGoals = useMemo(() => {
     if (!activeClass) {
       return [] as UiGoal[]
@@ -448,7 +714,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   // --- EFFECTS ---
   // Browser Back/Forward is authoritative for both the visible and persisted goal.
   useEffect(() => {
-    if (!activeClass || !routeGoalId) return
+    if (!activeClass || !routeGoalId || isTrainerCompositionPending || isTrainerCompositionUnavailable) return
 
     const routeGoal = classGoalIndexAll.get(routeGoalId)
     const routeGoalIsValid =
@@ -489,6 +755,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     classRootGoals,
     classes,
     goalMatchesActiveClassConfig,
+    isTrainerCompositionPending,
+    isTrainerCompositionUnavailable,
     onContextChange,
     persistClasses,
     routeGoalId,
@@ -496,7 +764,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   ])
 
   useEffect(() => {
-    if (!activeClass || openingClassId !== activeClass.id) return
+    if (
+      !activeClass
+      || openingClassId !== activeClass.id
+      || isTrainerCompositionPending
+      || isTrainerCompositionUnavailable
+    ) return
 
     const persistedGoal = activeClass.currentGoalId
       ? classGoalIndexAll.get(activeClass.currentGoalId)
@@ -523,6 +796,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     classGoalIndexAll,
     classRootGoals,
     goalMatchesActiveClassConfig,
+    isTrainerCompositionPending,
+    isTrainerCompositionUnavailable,
     onContextChange,
     openingClassId,
     trainerContextFilter,
@@ -1007,7 +1282,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           ))}
         </div>
       </aside>
-      <aside className="w-1/3 min-w-[320px] border-r border-border-color flex flex-col bg-sidebar-bg">
+      <aside
+        className="w-1/3 min-w-[320px] border-r border-border-color flex flex-col bg-sidebar-bg"
+        data-testid="trainer-competence-tree-panel"
+      >
         <div className="p-4 border-b border-border-color bg-sidebar-bg">
           <div className="text-xs uppercase text-text-secondary font-bold mb-1">{t.currentContext}</div>
           {currentGoal && (
@@ -1019,26 +1297,53 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           )}
         </div>
         <div className="flex-1 p-2 overflow-y-auto">
-          <CompetenceTree
-            key={`trainer-competence-tree-${activeClass?.id ?? 'none'}`}
-            rootGoals={classRootGoals}
-            allGoals={classGoalIndexAll}
-            getMastery={getStudentMastery}
-            plannedGoals={plannedGoals}
-            onTogglePlan={currentLearnerId === '__ALL__' ? handleTogglePlanForAll : handleTogglePlan}
-            onSelect={handleSelectGoal}
-            selectedId={currentGoal?.id ?? selectedGoalId}
-            activeFilter={trainerContextFilter}
-            structureMode="content"
-            aggregatedPlannedGoals={aggregatedPlannedGoals}
-            totalStudents={activeClass.students.length}
-            personalConfig={activeClass.personalConfig}
-            rootLandscapeId={activeClass.rootLandscapeId}
-          />
+          {isTrainerCompositionPending ? (
+            <div className="p-8 text-center text-sm text-text-secondary" data-testid="trainer-composition-loading">
+              {scopeCopy.compositionLoading}
+            </div>
+          ) : isTrainerCompositionUnavailable ? (
+            <div className="m-2 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm dark:border-amber-900/60 dark:bg-amber-950/20">
+              <p className="text-text-secondary">{scopeCopy.compositionUnavailable}</p>
+              <button
+                type="button"
+                onClick={() => setCompositionRetryToken((current) => current + 1)}
+                className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white transition-colors hover:bg-sky-500"
+              >
+                {scopeCopy.compositionRetry}
+              </button>
+            </div>
+          ) : (
+            <CompetenceTree
+              key={`trainer-competence-tree-${activeClass?.id ?? 'none'}`}
+              rootGoals={classRootGoals}
+              allGoals={classGoalIndexAll}
+              getMastery={getStudentMastery}
+              plannedGoals={plannedGoals}
+              onTogglePlan={currentLearnerId === '__ALL__' ? handleTogglePlanForAll : handleTogglePlan}
+              onSelect={handleSelectGoal}
+              selectedId={currentGoal?.id ?? selectedGoalId}
+              activeFilter={trainerContextFilter}
+              structureMode="content"
+              aggregatedPlannedGoals={aggregatedPlannedGoals}
+              totalStudents={activeClass.students.length}
+              personalConfig={activeClass.personalConfig}
+              rootLandscapeId={activeClass.rootLandscapeId}
+              visibleChildrenByParentOverride={trainerVisibleChildrenByParent}
+              useRawGoalTitles={!!matchedTrainerCompositionView}
+            />
+          )}
         </div>
       </aside>
       <main className="flex-1 p-8 bg-chat-bg overflow-y-auto flex flex-col">
-        {currentGoal ? (
+        {isTrainerCompositionPending ? (
+          <div className="flex-1 flex items-center justify-center text-text-secondary">
+            {scopeCopy.compositionLoading}
+          </div>
+        ) : isTrainerCompositionUnavailable ? (
+          <div className="flex-1 flex items-center justify-center text-text-secondary">
+            {scopeCopy.compositionUnavailable}
+          </div>
+        ) : currentGoal ? (
           currentLearnerId === '__ALL__' ? (
             (() => {
               const plannedCount = aggregatedPlannedGoals?.get(currentGoal.id) ?? 0
@@ -1062,7 +1367,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                     showMastery
                   />
 
-                  <GoalCard goal={currentGoal} masteryValue={0} onMasteryChange={() => { }} showLearnerTools={false} />
+                  <GoalCard
+                    goal={currentGoal}
+                    masteryValue={0}
+                    onMasteryChange={() => { }}
+                    showLearnerTools={false}
+                    useRawGoalTitles={!!matchedTrainerCompositionView}
+                  />
 
                   <NeighborSection
                     title={tExp.contains}
@@ -1120,7 +1431,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                 showMastery
               />
 
-              <GoalCard goal={currentGoal} masteryValue={getStudentMastery(currentGoal.id)} showLearnerTools />
+              <GoalCard
+                goal={currentGoal}
+                masteryValue={getStudentMastery(currentGoal.id)}
+                showLearnerTools
+                useRawGoalTitles={!!matchedTrainerCompositionView}
+              />
 
               <NeighborSection
                 title={tExp.contains}
