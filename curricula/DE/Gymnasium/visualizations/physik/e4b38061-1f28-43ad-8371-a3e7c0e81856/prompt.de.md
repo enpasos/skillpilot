@@ -4,70 +4,33 @@
 
 - SkillPilot-ID: `e4b38061-1f28-43ad-8371-a3e7c0e81856`
 - Titel: Gleichmäßig beschleunigte Bewegung und Beschleunigung
-- Beschreibung: Die lernende Person kann gleichmäßig beschleunigte Bewegungen beschreiben, den Begriff der Beschleunigung definieren und Durchschnitts- mit Momentangeschwindigkeit vergleichen.
+- Beschreibung: Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.
 
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: pilot, independently reviewed 2026-08-29
 - Quellbild: `e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg`
+- Asset SHA-256: `sha256:fd83544e329cc947ab46a9b49f4ab7a461a168a1c086b4624669a44679aa8fbf`
 - Public Asset: `/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine klare deutsche Physik-Infografik im lockeren Cartoon-Stil zu gleichmäßig beschleunigter Bewegung aus der Ruhe.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Zeige vier getrennte und ausdrücklich als schematisch, nicht maßstäblich bezeichnete Momentaufnahmen für t=0,1,2,3 s mit v=0,2,4,6 m/s und s=0,1,4,9 m.
 
-Titel: Gleichmäßig beschleunigte Bewegung und Beschleunigung
-Beschreibung: Die lernende Person kann gleichmäßig beschleunigte Bewegungen beschreiben, den Begriff der Beschleunigung definieren und Durchschnitts- mit Momentangeschwindigkeit vergleichen.
+Zeige drei konsistente Diagramme:
+- t-s: Parabel durch (0,0), (1,1), (2,4), (3,9), Achsen t/s und s/m.
+- t-v: Gerade durch (0,0), (1,2), (2,4), (3,6), Achsen t/s und v/(m/s).
+- t-a: horizontale Linie bei a=2 m/s², Achsen t/s und a/(m/s²).
 
-Zusatzanweisung:
-Pflichtinhalt:
+Formeln und Bedingungen: a=konstant, v₀=0, s₀=0, v(t)=v₀+a·t und s(t)=s₀+v₀·t+½a·t².
 
-Show uniformly accelerated motion from rest with matching position and velocity information.
-
-Title: `Gleichmaessig beschleunigte Bewegung`
-
-Left scene:
-- draw a small cart at four positions on a straight horizontal track
-- label the positions `t=0 s`, `t=1 s`, `t=2 s`, `t=3 s`
-- mark the positions at `s=0 m`, `s=1 m`, `s=4 m`, `s=9 m`
-- the gaps between positions must increase: `1 m`, then `3 m`, then `5 m`
-- do not draw arrows between the cart positions
-
-Right diagrams:
-1. `t-s-Diagramm`
-   - horizontal axis `t/s`, vertical axis `s/m`
-   - upward-curving graph through `(0,0)`, `(1,1)`, `(2,4)`, `(3,9)`
-2. `t-v-Diagramm`
-   - horizontal axis `t/s`, vertical axis `v/(m/s)`
-   - straight rising line through `(0,0)`, `(1,2)`, `(2,4)`, `(3,6)`
-
-Formula note:
-- `a = Delta v / Delta t = 2 m/s^2`
-- `Momentangeschwindigkeit: Wert im t-v-Diagramm`
-- `Durchschnittsgeschwindigkeit: Strecke pro Zeitintervall`
-
-Vermeiden:
-
-Do not make the position gaps equal.
-Do not draw a straight `t-s` graph for this accelerated motion.
-Do not draw a curved `t-v` graph for constant acceleration.
-Do not swap position and velocity values.
-Do not draw force arrows.
-Do not add arrows between positions or graph points.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Keine gemeinsame räumliche Linealskala für die vier Momentaufnahmen. Keine Inhalte zu Durchschnitts- oder Momentangeschwindigkeit. Keine Kraftpfeile.
 ```
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Unabhängige Originalauflösungsprüfung: Alle Momentwerte, drei Diagramme, Achsen, Einheiten, Formeln und Anfangsbedingungen sind konsistent; die getrennten Panels beseitigen jede falsche Maßstabs-Suggestion.

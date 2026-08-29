@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-j10-clean2-current-v1",
+  "reviewedAt": "2026-08-28T14:00:00.000Z",
+  "reviewer": "codex-math-j10-clean2-corrected-and-independently-reaudited-2026-08-28",
+  "goals": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "reason": "DE: Das Profil bindet den Graphverlauf von f(x)=b*a^x an zulässige Parameter, f(0)=b, den konstanten Änderungsfaktor, Vorzeichen, Wertebereich, Monotonie und die Asymptote y=0. Drei unabhängige Fälle verlangen Vorhersage, inverse Zuordnung und die fachliche Einordnung degenerierter Randfälle; insbesondere wird die Fehlvorstellung geprüft, a<1 bedeute unabhängig vom Vorzeichen von b stets einen fallenden Graphen. Digitale Werkzeuge dienen nur der nachträglichen Kontrolle. EN: The profile binds the graph of f(x)=b*a^x to admissible parameters, f(0)=b, the constant change factor, sign, range, monotonicity, and the asymptote y=0. Three independent cases require prediction, inverse matching, and classification of degenerate boundary cases; in particular they test the misconception that a<1 always means a decreasing graph regardless of the sign of b. Digital tools are used only for subsequent checking.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "parameters-determine-intercept-sign-range-and-asymptote",
+            "essentialUnderstandingDe": "Unter der üblichen nichtdegenerierten Konvention a>0, a!=1 und b!=0 ist f(x)=b*a^x auf ganz R definiert. Es gilt f(0)=b; der Graph bleibt bei b>0 oberhalb und bei b<0 unterhalb der x-Achse, besitzt keine Nullstelle und nähert sich y=0 in genau einer x-Richtung asymptotisch: für a>1 bei x gegen minus unendlich, für 0<a<1 bei x gegen plus unendlich. Der Betrag von b skaliert den Graphen vertikal, sein Vorzeichen spiegelt ihn an der x-Achse.",
+            "essentialUnderstandingEn": "Under the usual non-degenerate convention a>0, a!=1, and b!=0, f(x)=b*a^x is defined on all of R. We have f(0)=b; the graph remains above the x-axis when b>0 and below it when b<0, has no zero, and approaches y=0 asymptotically in exactly one x-direction: as x tends to negative infinity when a>1 and as x tends to positive infinity when 0<a<1. The magnitude of b scales the graph vertically, while its sign reflects it across the x-axis.",
+            "observablePerformanceDe": "Die lernende Person prüft bei unbekannten Parameterpaaren zuerst die Zulässigkeit und sagt anschließend y-Achsenabschnitt, Lage zur x-Achse, Wertebereich und das Grenzverhalten für x gegen plus oder minus unendlich voraus; jede Aussage begründet sie aus dem Term statt aus dem bloßen Aussehen eines Werkzeuggraphen.",
+            "observablePerformanceEn": "For unfamiliar parameter pairs, the learner first checks admissibility and then predicts the y-intercept, position relative to the x-axis, range, and limiting behaviour as x tends to positive or negative infinity; each statement is justified from the expression rather than merely from the appearance of a tool-generated graph."
+          },
+          {
+            "id": "base-factor-and-sign-jointly-determine-monotonicity",
+            "essentialUnderstandingDe": "Aus f(x+1)=a*f(x) folgt, dass a der positive Multiplikationsfaktor je x-Einheit ist. Bei b>0 erzeugt a>1 Wachstum und 0<a<1 Zerfall; bei b<0 kehrt die Spiegelung an der x-Achse die numerische Monotonierichtung um. Daher darf die Richtung nicht allein aus der Lage von a relativ zu 1 abgelesen werden.",
+            "essentialUnderstandingEn": "The relation f(x+1)=a*f(x) shows that a is the positive multiplicative factor per unit of x. For b>0, a>1 gives growth and 0<a<1 gives decay; for b<0, reflection across the x-axis reverses the numerical direction of monotonicity. The direction therefore cannot be inferred from the position of a relative to 1 alone.",
+            "observablePerformanceDe": "Die lernende Person ordnet jedes der vier nichtdegenerierten Vorzeichen- und Basisregime einer steigenden oder fallenden Funktion zu, belegt die Entscheidung mit dem Faktorverhältnis und dem Vorzeichen und überprüft sie gegebenenfalls an sinnvoll gewählten Funktionswerten.",
+            "observablePerformanceEn": "The learner classifies each of the four non-degenerate sign and base regimes as increasing or decreasing, supports the decision using the factor ratio and sign, and, where useful, checks it with appropriately chosen function values."
+          },
+          {
+            "id": "graph-features-and-parameter-conditions-are-coherent",
+            "essentialUnderstandingDe": "Y-Achsenabschnitt, Vorzeichen, Monotonie und die x-Richtung, in der sich der Funktionswert 0 nähert, müssen gemeinsam zu demselben Parameterpaar passen. Die Randfälle a=1 oder b=0 liefern konstante Funktionen und sind deshalb nicht unbemerkt wie nichtkonstante Exponentialgraphen mit Wachstum oder Zerfall zu behandeln.",
+            "essentialUnderstandingEn": "The y-intercept, sign, monotonicity, and the x-direction in which the function value approaches 0 must jointly fit the same parameter pair. The boundary cases a=1 or b=0 produce constant functions and therefore must not silently be treated like non-constant exponential graphs showing growth or decay.",
+            "observablePerformanceDe": "Die lernende Person gleicht eine Beschreibung oder Skizze mit mehreren möglichen Termen ab, verwirft inkonsistente Kandidaten anhand eines konkreten Merkmals und klassifiziert konstante Randfälle ausdrücklich, bevor sie einen digitalen Graphen höchstens zur Kontrolle heranzieht.",
+            "observablePerformanceEn": "The learner matches a description or sketch against several possible expressions, rejects inconsistent candidates using a specific feature, and explicitly classifies constant boundary cases before using a digital graph, if at all, only as a check."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameters-determine-intercept-sign-range-and-asymptote",
+            "base-factor-and-sign-jointly-determine-monotonicity",
+            "graph-features-and-parameter-conditions-are-coherent"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "base-regime",
+            "textDe": "Basis a>1 gegenüber 0<a<1 sowie gesonderte Einordnung von a=1",
+            "textEn": "Base a>1 versus 0<a<1, with separate classification of a=1"
+          },
+          {
+            "id": "coefficient-sign-and-scale",
+            "textDe": "Positives oder negatives b sowie veränderter Betrag von b",
+            "textEn": "Positive or negative b and a changed magnitude of b"
+          },
+          {
+            "id": "reasoning-direction",
+            "textDe": "Vom Term zum Graphverlauf gegenüber der Auswahl eines Terms aus beschriebenen Graphmerkmalen",
+            "textEn": "From an expression to graph behaviour versus choosing an expression from described graph features"
+          },
+          {
+            "id": "validation-mode",
+            "textDe": "Begründung über f(0), Faktorverhältnis und Grenzverhalten gegenüber Fehlerdiagnose einer vorgelegten Zuordnung",
+            "textEn": "Justification using f(0), factor ratio, and limiting behaviour versus diagnosis of a proposed match"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "compare-positive-growth-and-negative-decay-base",
+            "taskDemandDe": "Vergleiche f(x)=3*2^x und g(x)=-2*(1/2)^x. Bestimme Definitions- und Wertebereich, y-Achsenabschnitt, Monotonie und das Verhalten für x gegen plus oder minus unendlich. Skizziere beide Graphen erst nach der Begründung und prüfe sie anschließend optional digital.",
+            "taskDemandEn": "Compare f(x)=3*2^x and g(x)=-2*(1/2)^x. Determine domain and range, y-intercept, monotonicity, and behaviour as x tends to positive or negative infinity. Sketch both graphs only after giving the reasoning and then optionally check them digitally.",
+            "expectedPerformanceDe": "Die lernende Person nennt für beide den Definitionsbereich R. Für f erhält sie f(0)=3, den Wertebereich (0,unendlich), strenges Steigen, den Grenzwert 0 von oben für x gegen minus unendlich und unbeschränktes Wachstum für x gegen plus unendlich. Für g erhält sie g(0)=-2, den Wertebereich (-unendlich,0), strenges Steigen mit den Kontrollwerten g(-1)=-4, g(0)=-2 und g(1)=-1, den Grenzwert 0 von unten für x gegen plus unendlich und unbeschränkt negative Werte für x gegen minus unendlich.",
+            "expectedPerformanceEn": "The learner gives R as the domain of both functions. For f, the learner obtains f(0)=3, range (0,infinity), strict increase, a limit of 0 from above as x tends to negative infinity, and unbounded growth as x tends to positive infinity. For g, the learner obtains g(0)=-2, range (-infinity,0), strict increase with the check values g(-1)=-4, g(0)=-2, and g(1)=-1, a limit of 0 from below as x tends to positive infinity, and unbounded negative values as x tends to negative infinity.",
+            "understandingFocusDe": "Der Vergleich macht sichtbar, dass eine Basis zwischen 0 und 1 bei negativem b einen numerisch steigenden Graphen ergibt und die Monotonie daher aus a und b gemeinsam folgt.",
+            "understandingFocusEn": "The comparison shows that a base between 0 and 1 gives a numerically increasing graph when b is negative, so monotonicity follows jointly from a and b."
+          },
+          {
+            "id": "match-described-graph-to-one-parameter-pair",
+            "taskDemandDe": "Ein Graph schneidet die y-Achse bei -4, liegt vollständig unterhalb der x-Achse, ist streng fallend und nähert sich für x gegen minus unendlich der x-Achse von unten. Wähle zwischen h1(x)=-4*3^x, h2(x)=4*3^x und h3(x)=-4*(1/3)^x und begründe die Auswahl anhand aller Merkmale.",
+            "taskDemandEn": "A graph crosses the y-axis at -4, lies entirely below the x-axis, is strictly decreasing, and approaches the x-axis from below as x tends to negative infinity. Choose among h1(x)=-4*3^x, h2(x)=4*3^x, and h3(x)=-4*(1/3)^x and justify the choice using every feature.",
+            "expectedPerformanceDe": "Die lernende Person wählt h1. h1 und h3 treffen wegen b=-4 den geforderten y-Achsenabschnitt; h2 wird wegen b=4 verworfen, denn sein Graph liegt oberhalb der x-Achse. h3 ist wegen 0<a<1 zusammen mit b<0 streng steigend und nähert sich erst für x gegen plus unendlich der 0. h1 besitzt genau die geforderte Lage, Fallrichtung und Asymptotik.",
+            "expectedPerformanceEn": "The learner chooses h1. h1 and h3 meet the required y-intercept because b=-4; h2 is rejected because b=4, so its graph lies above the x-axis. h3 is strictly increasing because 0<a<1 together with b<0 and approaches 0 only as x tends to positive infinity. h1 has exactly the required position, decreasing direction, and asymptotic behaviour.",
+            "understandingFocusDe": "Die inverse Zuordnung verlangt eine kohärente Kombination mehrerer Graphmerkmale statt des Abgleichs nur eines Parameters.",
+            "understandingFocusEn": "The inverse match requires a coherent combination of several graph features rather than matching only one parameter."
+          },
+          {
+            "id": "classify-degenerate-and-nondegenerate-cases",
+            "taskDemandDe": "Ordne p(x)=5*1^x, q(x)=0*2^x, r(x)=-0,5*4^x und s(x)=2*(-3)^x ein. Entscheide jeweils, ob eine auf ganz R definierte nichtkonstante reelle Exponentialfunktion im hier betrachteten Sinn vorliegt, und beschreibe den tatsächlichen Graphverlauf oder die verletzte Parameterbedingung mit Begründung.",
+            "taskDemandEn": "Classify p(x)=5*1^x, q(x)=0*2^x, r(x)=-0.5*4^x, and s(x)=2*(-3)^x. Decide in each case whether it is a non-constant real exponential function defined on all of R in the sense considered here and describe the actual graph behaviour or the violated parameter condition with justification.",
+            "expectedPerformanceDe": "Die lernende Person vereinfacht p zu der konstanten Funktion 5 und q zur Nullfunktion und bezeichnet beide als degenerierte Randfälle ohne exponentielles Wachstum oder Zerfall. Für r erkennt sie a=4>1 und b<0, erhält r(0)=-0,5, einen vollständig negativen, streng fallenden Graphen sowie y=0 als für x gegen minus unendlich angenäherte Asymptote. Bei s erklärt sie, dass die negative Basis für allgemeine reelle x keine reellwertige Funktion auf ganz R definiert und daher die Bedingung a>0 verletzt.",
+            "expectedPerformanceEn": "The learner simplifies p to the constant function 5 and q to the zero function and classifies both as degenerate boundary cases without exponential growth or decay. For r, the learner recognizes a=4>1 and b<0, obtains r(0)=-0.5, a wholly negative strictly decreasing graph, and y=0 as the asymptote approached as x tends to negative infinity. For s, the learner explains that a negative base does not define a real-valued function for arbitrary real x on all of R and therefore violates the condition a>0.",
+            "understandingFocusDe": "Die Randfallprüfung verhindert, dass aus der bloßen Schreibform b*a^x unzulässig nichtkonstantes Verhalten gefolgert wird.",
+            "understandingFocusEn": "The boundary-case check prevents non-constant behaviour from being inferred merely from the written form b*a^x."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "reason": "DE: Das Profil führt Sinus- und Kosinusgraphen aus den y- beziehungsweise x-Koordinaten derselben Einheitskreisbewegung her, prüft den Zwischenverlauf durch echte nicht-kardinale Projektionen, begründet 2*pi als Periode und leitet die Phasenbeziehung allgemein aus der positiven Vierteldrehung her. Drei unabhängige Fälle umfassen Kreis->Graph, den umgekehrten Weg Sinusgraph->Kreispunkt->Kosinusgraph und die fachliche Diagnose falscher Perioden- und Verschiebungsbehauptungen. EN: The profile derives sine and cosine graphs from the y- and x-coordinates of the same unit-circle motion, checks the intervening behaviour through genuine non-cardinal projections, justifies 2*pi as a period, and derives the phase relationship generally from the positive quarter-turn. Three independent cases cover circle-to-graph, the reverse route sine graph-to-circle point-to-cosine graph, and mathematical diagnosis of false period and shift claims.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "unit-circle-coordinates-generate-both-graphs",
+            "essentialUnderstandingDe": "Zum Winkel theta gehört auf dem Einheitskreis der Punkt (cos(theta),sin(theta)). Wird beim Durchlaufen des Kreises die y-Koordinate gegen theta aufgetragen, entsteht der Sinusgraph; die x-Koordinate erzeugt den Kosinusgraph. Markante Winkel verankern Nullstellen und Extremwerte; zusätzliche Kreispositionen und der kontinuierliche Koordinatenverlauf bestimmen den Zwischenverlauf beider Darstellungen.",
+            "essentialUnderstandingEn": "The angle theta corresponds to the point (cos(theta),sin(theta)) on the unit circle. Plotting the y-coordinate against theta while traversing the circle produces the sine graph, while plotting the x-coordinate produces the cosine graph. Key angles anchor zeros and extrema; additional circle positions and the continuous coordinate progression determine the intervening behaviour of both representations.",
+            "observablePerformanceDe": "Die lernende Person wählt geeignete Winkel, überträgt die zugehörigen Kreis-Koordinaten auf ein Winkel-Wert-Diagramm und konstruiert daraus beide Graphen einschließlich eines begründeten Verlaufs zwischen den markanten Punkten, statt eine fertige Kurvenform zu kopieren.",
+            "observablePerformanceEn": "The learner selects suitable angles, transfers the corresponding circle coordinates to an angle-value diagram, and constructs both graphs including a justified progression between key points rather than copying a ready-made curve."
+          },
+          {
+            "id": "full-turn-explains-periodicity",
+            "essentialUnderstandingDe": "Die Winkel theta und theta+2*pi besitzen dieselbe Endlage auf dem Einheitskreis und daher dieselben x- und y-Koordinaten. Deshalb gelten sin(theta+2*pi)=sin(theta) und cos(theta+2*pi)=cos(theta); eine halbe Umdrehung liefert dagegen im Allgemeinen den Gegenpunkt und keine Wiederholung beider Werte.",
+            "essentialUnderstandingEn": "The angles theta and theta+2*pi have the same terminal point on the unit circle and therefore the same x- and y-coordinates. Hence sin(theta+2*pi)=sin(theta) and cos(theta+2*pi)=cos(theta); a half-turn, by contrast, generally gives the opposite point rather than repeating both values.",
+            "observablePerformanceDe": "Die lernende Person setzt einen gegebenen Graphenausschnitt um ganze Umdrehungen fort, begründet die Wiederholung durch identische Kreispositionen und prüft einen behaupteten Periodenwert an mindestens einem passenden Gegen- oder Bestätigungspunkt.",
+            "observablePerformanceEn": "The learner continues a supplied graph segment by whole turns, justifies the repetition using identical circle positions, and checks a claimed period using at least one appropriate confirming point or counterexample."
+          },
+          {
+            "id": "quarter-turn-explains-sine-cosine-phase-relation",
+            "essentialUnderstandingDe": "Die positive Vierteldrehung bildet P(theta)=(cos(theta),sin(theta)) auf P(theta+pi/2)=(-sin(theta),cos(theta)) ab. Da die neue y-Koordinate cos(theta) ist, gilt für jeden Winkel cos(theta)=sin(theta+pi/2), gleichbedeutend mit sin(theta)=cos(theta-pi/2). Dadurch ist der Kosinusgraph der um pi/2 nach links verschobene Sinusgraph.",
+            "essentialUnderstandingEn": "The positive quarter-turn maps P(theta)=(cos(theta),sin(theta)) to P(theta+pi/2)=(-sin(theta),cos(theta)). Because the new y-coordinate is cos(theta), cos(theta)=sin(theta+pi/2) for every angle, equivalently sin(theta)=cos(theta-pi/2). Thus the cosine graph is the sine graph shifted left by pi/2.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert aus einem der beiden Graphen den anderen, gibt eine korrekte Verschiebungsbeziehung an und belegt sie sowohl an markanten Winkeln als auch durch die Vierteldrehung am Einheitskreis.",
+            "observablePerformanceEn": "The learner reconstructs either graph from the other, states a correct shift relationship, and supports it both at key angles and through the quarter-turn on the unit circle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "unit-circle-coordinates-generate-both-graphs",
+            "full-turn-explains-periodicity",
+            "quarter-turn-explains-sine-cosine-phase-relation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "angle-interval",
+            "textDe": "Grundintervall von 0 bis 2*pi gegenüber einem verschobenen Intervall mit negativen Winkeln",
+            "textEn": "Principal interval from 0 to 2*pi versus a shifted interval containing negative angles"
+          },
+          {
+            "id": "representation-direction",
+            "textDe": "Vom frei beweglichen Einheitskreispunkt über kontinuierliche Koordinatenprojektionen zu beiden Graphen gegenüber dem umgekehrten Weg vom gegebenen Sinusgraphen über Kreispunkte zum Kosinusgraphen",
+            "textEn": "From a freely moving unit-circle point through continuous coordinate projections to both graphs versus the reverse route from a supplied sine graph through circle points to the cosine graph"
+          },
+          {
+            "id": "target-coordinate",
+            "textDe": "y-Koordinate für Sinus gegenüber x-Koordinate für Kosinus sowie Wechsel zwischen beiden",
+            "textEn": "The y-coordinate for sine versus the x-coordinate for cosine and transitions between them"
+          },
+          {
+            "id": "reasoning-demand",
+            "textDe": "Eigenständige Konstruktion, periodische Fortsetzung oder Diagnose einer falschen Perioden- beziehungsweise Verschiebungsbehauptung",
+            "textEn": "Independent construction, periodic continuation, or diagnosis of a false period or shift claim"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-one-full-turn-from-key-points",
+            "taskDemandDe": "Leite für theta=0, pi/2, pi, 3*pi/2 und 2*pi sowie zusätzlich für pi/4, 3*pi/4, 5*pi/4 und 7*pi/4 die Punkte des Einheitskreises her. Konstruiere beide Graphen anschließend durch eine kontinuierliche Projektion: Für den frei beweglichen Punkt P(theta) überträgst du bei jedem Winkel seine y- beziehungsweise x-Koordinate an die Stelle theta im Winkel-Wert-Diagramm. Begründe den Verlauf in jedem Quadranten und erkläre, warum ein geradliniges Verbinden der fünf kardinalen Punkte nicht hergeleitet wäre.",
+            "taskDemandEn": "Derive the unit-circle points for theta=0, pi/2, pi, 3*pi/2, and 2*pi and also for pi/4, 3*pi/4, 5*pi/4, and 7*pi/4. Then construct both graphs by continuous projection: for the freely moving point P(theta), transfer its y- and x-coordinate at every angle to the position theta in the angle-value diagram. Justify the progression in each quadrant and explain why joining the five cardinal points with straight lines would not be a derivation.",
+            "expectedPerformanceDe": "Die lernende Person erhält die kardinalen Punkte (1,0), (0,1), (-1,0), (0,-1) und (1,0) sowie die nicht-kardinalen Punkte (sqrt(2)/2,sqrt(2)/2), (-sqrt(2)/2,sqrt(2)/2), (-sqrt(2)/2,-sqrt(2)/2) und (sqrt(2)/2,-sqrt(2)/2). Sie beschreibt den Sinusgraphen als Menge der Punkte (theta,y(P(theta))) und den Kosinusgraphen als (theta,x(P(theta))) des kontinuierlich rotierenden Punktes. Daraus begründet sie die koordinatenweise Zu- oder Abnahme in jedem Quadranten. Gerade Verbindungsstücke verwirft sie konkret, weil sie bei theta=pi/4 den Wert 1/2 liefern würden, die Kreisprojektion aber sqrt(2)/2 ergibt. Die identische Endlage nach 2*pi begründet die Wiederholung.",
+            "expectedPerformanceEn": "The learner obtains the cardinal points (1,0), (0,1), (-1,0), (0,-1), and (1,0) and the non-cardinal points (sqrt(2)/2,sqrt(2)/2), (-sqrt(2)/2,sqrt(2)/2), (-sqrt(2)/2,-sqrt(2)/2), and (sqrt(2)/2,-sqrt(2)/2). The learner describes the sine graph as the set of points (theta,y(P(theta))) and the cosine graph as (theta,x(P(theta))) of the continuously rotating point. This justifies the coordinate-wise increase or decrease in each quadrant. The learner specifically rejects straight line segments because at theta=pi/4 they would give 1/2, whereas the circle projection gives sqrt(2)/2. The identical terminal point after 2*pi justifies repetition.",
+            "understandingFocusDe": "Nicht-kardinale Punkte und die kontinuierliche Koordinatenprojektion unterscheiden eine echte Herleitung der Kurven von einer beliebigen stetigen oder geradlinigen Interpolation.",
+            "understandingFocusEn": "Non-cardinal points and continuous coordinate projection distinguish a genuine derivation of the curves from an arbitrary continuous or piecewise-linear interpolation."
+          },
+          {
+            "id": "reconstruct-on-shifted-negative-interval",
+            "taskDemandDe": "Gegeben ist der Sinusgraph auf dem Intervall [-pi,pi], aber kein Kosinusgraph. Rekonstruiere den Kosinusgraphen mithilfe der Vierteldrehung am Einheitskreis, ordne an -pi, -pi/2, 0, pi/2 und pi jeweils den Punkt (cos(theta),sin(theta)) zu und setze danach beide Graphen bis 3*pi fort. Begründe die Fortsetzung und die sichtbare Verschiebungsrichtung.",
+            "taskDemandEn": "The sine graph is given on the interval [-pi,pi], but the cosine graph is not. Reconstruct the cosine graph using the quarter-turn on the unit circle, assign the point (cos(theta),sin(theta)) at -pi, -pi/2, 0, pi/2, and pi, and then continue both graphs to 3*pi. Justify the continuation and the visible shift direction.",
+            "expectedPerformanceDe": "Die lernende Person leitet aus der positiven Vierteldrehung P(theta)=(cos(theta),sin(theta)) -> P(theta+pi/2)=(-sin(theta),cos(theta)) allgemein her, dass die neue y-Koordinate cos(theta) ist und somit cos(theta)=sin(theta+pi/2) für alle theta gilt. Daher rekonstruiert sie den Kosinusgraphen als den um pi/2 nach links verschobenen Sinusgraphen. Sie gewinnt die Punktpaare (-1,0), (0,-1), (1,0), (0,1) und (-1,0) für theta=-pi,-pi/2,0,pi/2,pi zurück und setzt beide Graphen wegen P(theta+2*pi)=P(theta) bis 3*pi periodisch fort.",
+            "expectedPerformanceEn": "From the positive quarter-turn P(theta)=(cos(theta),sin(theta)) -> P(theta+pi/2)=(-sin(theta),cos(theta)), the learner generally derives that the new y-coordinate is cos(theta), so cos(theta)=sin(theta+pi/2) for every theta. The learner therefore reconstructs the cosine graph as the sine graph shifted left by pi/2. The learner recovers the point pairs (-1,0), (0,-1), (1,0), (0,1), and (-1,0) for theta=-pi,-pi/2,0,pi/2,pi and continues both graphs periodically to 3*pi because P(theta+2*pi)=P(theta).",
+            "understandingFocusDe": "Der umgekehrte Darstellungsweg vom gegebenen Sinusgraphen über die allgemeine Vierteldrehung zu Kreispunkten und Kosinusgraph prüft mehr als eine zweite Vorwärtskonstruktion.",
+            "understandingFocusEn": "The reverse representation route from a supplied sine graph through the general quarter-turn to circle points and the cosine graph tests more than a second forward construction."
+          },
+          {
+            "id": "diagnose-wrong-shift-and-half-turn-period",
+            "taskDemandDe": "Eine Lösung behauptet cos(theta)=sin(theta-pi/2) und pi sei eine Periode der Sinusfunktion. Prüfe beide Aussagen am Einheitskreis, widerlege falsche Aussagen mit geeigneten Winkeln und formuliere die korrekten Beziehungen.",
+            "taskDemandEn": "A proposed solution claims cos(theta)=sin(theta-pi/2) and that pi is a period of the sine function. Check both claims on the unit circle, refute false claims using suitable angles, and state the correct relationships.",
+            "expectedPerformanceDe": "Die lernende Person setzt theta=0 und erhält cos(0)=1, aber sin(-pi/2)=-1; damit ist die erste Aussage falsch. Für die zweite vergleicht sie etwa sin(pi/2)=1 mit sin(3*pi/2)=-1 und erklärt allgemein die Gegenpunktabbildung P(theta+pi)=(-cos(theta),-sin(theta)) nach einer halben Umdrehung. Anschließend nutzt sie die positive Vierteldrehung P(theta+pi/2)=(-sin(theta),cos(theta)): Deren neue y-Koordinate ist cos(theta), also gilt cos(theta)=sin(theta+pi/2) für jeden Winkel. Aus P(theta+2*pi)=P(theta) folgert sie die 2*pi-Periodizität von Sinus und Kosinus.",
+            "expectedPerformanceEn": "The learner uses theta=0 and obtains cos(0)=1 but sin(-pi/2)=-1, so the first claim is false. For the second, the learner compares, for example, sin(pi/2)=1 with sin(3*pi/2)=-1 and explains the general opposite-point mapping P(theta+pi)=(-cos(theta),-sin(theta)) after a half-turn. The learner then uses the positive quarter-turn P(theta+pi/2)=(-sin(theta),cos(theta)): its new y-coordinate is cos(theta), so cos(theta)=sin(theta+pi/2) for every angle. From P(theta+2*pi)=P(theta), the learner infers the 2*pi-periodicity of sine and cosine.",
+            "understandingFocusDe": "Die Fehlerdiagnose unterscheidet eine bloß ähnlich aussehende Verschiebung von der algebraisch und geometrisch richtigen Vierteldrehung und eine halbe von einer vollen Umdrehung.",
+            "understandingFocusEn": "The error diagnosis distinguishes a merely similar-looking shift from the algebraically and geometrically correct quarter-turn and distinguishes a half-turn from a full turn."
+          }
+        ]
+      }
+    }
+  ]
+}

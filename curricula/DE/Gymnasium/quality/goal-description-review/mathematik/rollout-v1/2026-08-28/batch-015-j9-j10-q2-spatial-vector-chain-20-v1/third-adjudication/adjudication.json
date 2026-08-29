@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-goal-description-third-adjudication-draft",
+  "draftContract": "skillpilot-goal-description-bilingual-adjudication-draft-v1",
+  "batchId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828",
+  "subject": "mathematik",
+  "adjudicatedAt": "2026-08-28",
+  "authority": "third_non_blind_subject_adjudication",
+  "mode": "repository_local_subject_adjudication",
+  "noProgressClaim": true,
+  "materialized": false,
+  "inputBinding": {
+    "configDigest": "sha256:d0d12e31a97364cd8bce4b754a832fe4f388fba526a509b754a4464f8fd291f0",
+    "batchManifestDigest": "sha256:3e4b88da699124c9685ed08e8a4cdf3517aafc30922382ecc7077218a59be723",
+    "bundleFingerprint": "sha256:80b1eb5c7bded9e4d8f99c548039ebf66940738822f4e01e9c972b8d28b94381",
+    "reviewInputFingerprint": "sha256:7a504066a2aa238472e0f005f3e1e41a65f0219c3f6220c678b964151390d782",
+    "bookDigest": "sha256:3cb3d43cc1df54edc7b91be4d61d4e61b3439b517f096ade730a3f14bb2b6984",
+    "dualSummaryDigest": "sha256:fa77ed3c3bf6987aa20faea5f54497499c5348dbe0ab345d0d3683a92e045447",
+    "goalCount": 20,
+    "roundA": {
+      "runId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "runDigest": "sha256:017555179287f5249efa3ac1cd290de1305d28e00de0bdcaa1cb309e610ce9bb",
+      "recordsDigest": "sha256:b5e5dced2d1e0d20f7a9ccaab43b1df3a326a87e2335a0ef76e13595c9005a85"
+    },
+    "roundB": {
+      "runId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "runDigest": "sha256:96c777a5db9ac338621b3231448017b707dd7b57774fa8f8fc65168c21abd13d",
+      "recordsDigest": "sha256:32d539408bfa83a021e13c3f4dda9b06061caa50c703cd6b7fcdde4d1c34177a"
+    },
+    "blindnessEndedOnlyForThisThirdAdjudication": true
+  },
+  "counts": {
+    "total": 20,
+    "keep_current": 4,
+    "accepted_revision": 14,
+    "structural_split": 2,
+    "unresolved_block": 0,
+    "finalizableUnderCurrentText": 4,
+    "strictlyFinalizableBeforeIntegratedFollowUp": 0,
+    "requiresCanonicalReworkAndFreshBlindReview": 16,
+    "postSplitExpectedCurricularAtomicDenominator": 793,
+    "postSplitAffectedAtomicReviewCount": 23,
+    "requiresFullContextRecheck": 23,
+    "requiresProductOwnerDecision": 0
+  },
+  "contractNoteDe": "Vier aktuelle Texte bleiben fachlich unverändert, vierzehn Beschreibungen werden präzisiert und zwei gebündelte Atome werden strukturell getrennt. Retitel, Splits und Abhängigkeitsänderungen verändern requires- und reverseRequires-Kontexte. Nach Umwandlung der beiden alten Atome in Cluster, zwei neuen Punkt-/Geraden-Kindern, einem neuen Mittelpunkt-Kind und der Wiederverwendung zweier bestehender Betrag-/Abstand-Atome umfasst die betroffene atomare Nachprüfung 23 Ziele; der Mathematik-Nenner steigt voraussichtlich von 792 auf 793. Da ein Rollout-Batch höchstens 20 Ziele umfasst, sind mindestens zwei topologische Folgebatches mit je zwei frischen unabhängigen Blindreviews nötig. Vor deren Abschluss und allen betroffenen Layer-A-Prüfungen wird kein Ziel als zusätzlicher strikter Fortschritt materialisiert.",
+  "contractNoteEn": "Four current texts remain substantively unchanged, fourteen descriptions are clarified, and two bundled atoms are structurally separated. Retitles, splits, and dependency changes alter requires and reverseRequires contexts. After converting both old atoms to clusters, adding two point/line children and one midpoint child, and reusing two existing magnitude/distance atoms, the affected atomic recheck contains 23 goals and the Mathematics denominator is expected to rise from 792 to 793. Because a rollout batch may contain at most 20 goals, at least two topological follow-up batches with two fresh independent blind reviews each are required. No goal is materialized as additional strict progress before those reviews and every affected Layer-A check pass.",
+  "productOwnerEscalations": [],
+  "decisions": [
+    {
+      "sequence": 1,
+      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "math-b015-a-001-f242a3e8",
+      "finalText": {
+        "titleDe": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "titleEn": "Express and interpret points in the spatial coordinate system as tuples",
+        "descriptionDe": "Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+        "descriptionEn": "The learner can represent points in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple location data in context."
+      },
+      "rationaleDe": "Das Ziel bildet eine kohärente Punkt-Tupel-Kompetenz ab; Punkt-Vektor-Verwechslungen werden im Evidenzprofil geprüft.",
+      "rationaleEn": "The goal defines one coherent point-tuple competence; point-vector misconceptions are tested in the evidence profile."
+    },
+    {
+      "sequence": 2,
+      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "reviewPositions": { "first": "revise", "second": "keep" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "first",
+      "finalText": {
+        "titleDe": "Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "titleEn": "Express and interpret vectors in the spatial coordinate system as tuples",
+        "descriptionDe": "Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, ihre Einträge als gerichtete Änderungen entlang der Koordinatenachsen deuten und einfache Verschiebungsangaben im Kontext erklären.",
+        "descriptionEn": "The learner can represent vectors in the spatial coordinate system as tuples, interpret their entries as directed changes along the coordinate axes, and explain simple displacement information in context."
+      },
+      "rationaleDe": "Richtungsangaben unterschätzen, dass Komponenten gerichtete Änderungen einschließlich Vorzeichen und Größe codieren.",
+      "rationaleEn": "Directional information under-specifies that components encode signed changes rather than direction alone."
+    },
+    {
+      "sequence": 3,
+      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "math-b015-a-003-94b48b93",
+      "finalText": {
+        "titleDe": "Vektoren als Orts- und Verschiebungsvektoren deuten",
+        "titleEn": "Interpret vectors as position and displacement vectors",
+        "descriptionDe": "Die lernende Person kann Vektoren in Tupeldarstellung als Orts- oder Verschiebungsvektoren deuten und ihre geometrische Bedeutung in einfachen Situationen erklären.",
+        "descriptionEn": "The learner can interpret vectors in tuple form as position or displacement vectors and explain their geometric meaning in simple situations."
+      },
+      "rationaleDe": "Bezugspunkt und geometrische Rolle bilden eine einzelne begriffliche Kompetenz.",
+      "rationaleEn": "Reference point and geometric role form one conceptual competence."
+    },
+    {
+      "sequence": 4,
+      "goalId": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+      "reviewPositions": { "first": "split_review", "second": "revise" },
+      "resolutionDecision": "structural_split",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "retainedCluster": {
+        "goalId": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "titleDe": "Punkte und Geraden im räumlichen Koordinatensystem darstellen",
+        "titleEn": "Represent points and lines in the spatial coordinate system",
+        "descriptionDe": "Cluster für die fachlich getrennten Lernziele zum Eintragen von Punkten und zum Veranschaulichen von Geraden in räumlichen Koordinatensystemen und Schrägbildern.",
+        "descriptionEn": "Cluster for the distinct learning goals of plotting points and visualizing lines in spatial coordinate systems and oblique drawings.",
+        "contains": [
+          "3f85e184-a7ee-5800-8048-ebcd2267496b",
+          "2d332f72-8378-58c6-8e3b-54304261361b"
+        ]
+      },
+      "children": [
+        {
+          "goalId": "3f85e184-a7ee-5800-8048-ebcd2267496b",
+          "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_sek1_j9_spatial_points_oblique_drawings)",
+          "shortKey": "canonical_math_sek1_j9_spatial_points_oblique_drawings",
+          "titleDe": "Punkte in räumlichen Koordinatensystemen und Schrägbildern darstellen",
+          "titleEn": "Represent points in spatial coordinate systems and oblique drawings",
+          "descriptionDe": "Die lernende Person kann Punkte aus gegebenen Koordinaten in ein beschriftetes dreidimensionales kartesisches Koordinatensystem oder ein passendes Schrägbild eintragen, ihre Lage fachsprachlich erklären und Achsenreihenfolge sowie Vorzeichen prüfen.",
+          "descriptionEn": "The learner can plot points from given coordinates in a labelled three-dimensional Cartesian coordinate system or suitable oblique drawing, explain their positions using correct terminology, and check axis order and signs.",
+          "requires": ["f242a3e8-55a3-492e-8354-b81b24cdbb78"]
+        },
+        {
+          "goalId": "2d332f72-8378-58c6-8e3b-54304261361b",
+          "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_sek1_j9_spatial_lines_trace_points)",
+          "shortKey": "canonical_math_sek1_j9_spatial_lines_trace_points",
+          "titleDe": "Geraden mithilfe von Spurpunkten im räumlichen Schrägbild veranschaulichen",
+          "titleEn": "Visualize lines in spatial oblique drawings using trace points",
+          "descriptionDe": "Die lernende Person kann eine Gerade aus gegebenen Spurpunkten in einem räumlichen Schrägbild veranschaulichen, ihren unbegrenzten Verlauf und die dargestellten Inzidenzbeziehungen erklären sowie projektionsbedingte Längen- und Winkelverzerrungen berücksichtigen.",
+          "descriptionEn": "The learner can visualize a line from given trace points in a spatial oblique drawing, explain its unbounded extent and the represented incidence relations, and account for projection-induced distortions of lengths and angles.",
+          "requires": ["3f85e184-a7ee-5800-8048-ebcd2267496b"]
+        }
+      ],
+      "rationaleDe": "Die BW-Quelle führt Punkt-Eintragen und Geraden-Veranschaulichen getrennt; das vorhandene Mapping bewertet die Bündelung ausdrücklich nur partiell.",
+      "rationaleEn": "The BW source states point plotting and line visualization separately, and the existing mapping explicitly classifies the bundle as only a partial match."
+    },
+    {
+      "sequence": 5,
+      "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75",
+      "reviewPositions": { "first": "split_review", "second": "keep" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "finalText": {
+        "titleDe": "Vektoren komponentenweise addieren, subtrahieren und skalieren",
+        "titleEn": "Add, subtract, and scale vectors component-wise",
+        "descriptionDe": "Die lernende Person kann Vektoren komponentenweise addieren und subtrahieren sowie mit Skalaren multiplizieren und die Ergebnisse als Verkettung, gerichtete Differenz oder Skalierung von Verschiebungen geometrisch deuten.",
+        "descriptionEn": "The learner can add and subtract vectors component-wise, multiply them by scalars, and interpret the results geometrically as compositions, directed differences, or scalings of displacements."
+      },
+      "rationaleDe": "Die Operationen bilden eine kohärente Vektoroperationsfamilie; der bisherige Titel verschwieg jedoch die Subtraktion und die geometrischen Rollen blieben zu implizit.",
+      "rationaleEn": "The operations form a coherent vector-operation family, but the current title omits subtraction and the geometric roles remain too implicit."
+    },
+    {
+      "sequence": 6,
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "math-b015-a-006-d1352ce0",
+      "finalText": {
+        "titleDe": "Kollinearität von Vektoren prüfen",
+        "titleEn": "Check collinearity of vectors",
+        "descriptionDe": "Die lernende Person kann in einfachen kollinearen und nicht kollinearen Fällen prüfen, ob Vektoren kollinear sind, und die Prüfung geometrisch oder rechnerisch begründen.",
+        "descriptionEn": "The learner can check in simple collinear and non-collinear cases whether vectors are collinear and justify the check geometrically or algebraically."
+      },
+      "rationaleDe": "Positive und negative Fälle sowie eine begründete Entscheidung ergeben bereits ein klares Einzelziel.",
+      "rationaleEn": "Positive and negative cases plus a justified decision already define a clear atomic goal."
+    },
+    {
+      "sequence": 7,
+      "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+      "reviewPositions": { "first": "split_review", "second": "split_review" },
+      "resolutionDecision": "structural_split",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "retainedCluster": {
+        "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+        "titleDe": "Beträge, Abstände und Mittelpunkte im Raum",
+        "titleEn": "Magnitudes, distances, and midpoints in space",
+        "descriptionDe": "Cluster für die fachlich getrennten Lernziele zu Vektorbeträgen, Punktabständen und Streckenmittelpunkten im Raum.",
+        "descriptionEn": "Cluster for the distinct learning goals concerning vector magnitudes, point distances, and segment midpoints in space."
+      },
+      "reuseCandidates": [
+        {
+          "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "role": "vector_magnitude",
+          "condition": "Rebind the existing Q2 atom to minimal phase-neutral prerequisites and prove unique placement in every combined and phase-specific composition view."
+        },
+        {
+          "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "role": "point_distance",
+          "condition": "Remove the current Q2-only object/sketch prerequisite chain, rebind to the shared magnitude and point/vector foundations, and prove unique placement."
+        }
+      ],
+      "newMidpointChild": {
+        "goalId": "213deae9-b2c5-5db6-8123-bc0211961fcc",
+        "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_segment_midpoint_space_coordinates)",
+        "shortKey": "canonical_math_segment_midpoint_space_coordinates",
+        "titleDe": "Mittelpunkt einer Strecke im Raum bestimmen und prüfen",
+        "titleEn": "Determine and verify the midpoint of a segment in space",
+        "descriptionDe": "Die lernende Person kann den Mittelpunkt einer Strecke im Raum koordinatenweise bestimmen, das Ergebnis als Mittelwert der Endpunktkoordinaten deuten und durch gleich große entgegengesetzte Verbindungsvektoren prüfen.",
+        "descriptionEn": "The learner can determine the midpoint of a segment in space component-wise, interpret it as the average of the endpoint coordinates, and verify it using equal and opposite connecting vectors."
+      },
+      "designGuard": "Prefer stable semantic reuse over duplicate J9 atoms, but do not materialize reuse until DAG, placement, route, mapping, memory, assessment, and one-visible-parent checks prove the phase-neutral design. If that proof fails, return this split to developer adjudication rather than silently duplicating semantics.",
+      "rationaleDe": "Betrag, Abstand und Mittelpunkt sind unabhängig beherrschbare Leistungen; die Source-Mappings stammen aus getrennten Quellzielen.",
+      "rationaleEn": "Magnitude, distance, and midpoint are independently masterable performances, and the source mappings originate from distinct source goals."
+    },
+    {
+      "sequence": 8,
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Geraden und Strecken im Raum parametrisch beschreiben",
+        "titleEn": "Describe lines and segments in space parametrically",
+        "descriptionDe": "Die lernende Person kann aus Punktangaben Parameterdarstellungen von Geraden und Strecken im Raum mit Stütz- und Richtungsvektor aufstellen und sie durch den Parameterbereich unterscheiden (Gerade: t ∈ ℝ; Strecke: passendes beschränktes Intervall, bei x = A + t(B − A): 0 ≤ t ≤ 1).",
+        "descriptionEn": "The learner can construct parametric representations of lines and segments in space from point data using a position vector and a direction vector and distinguish them by the parameter domain (line: t ∈ ℝ; segment: an appropriate bounded interval, with x = A + t(B − A): 0 ≤ t ≤ 1)."
+      },
+      "rationaleDe": "Erst der Parameterbereich unterscheidet formal Gerade und Strecke.",
+      "rationaleEn": "The parameter domain is the formal distinction between a line and a segment."
+    },
+    {
+      "sequence": 9,
+      "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen",
+        "titleEn": "Investigate positional relations and intersections of lines in space",
+        "descriptionDe": "Die lernende Person kann mithilfe von Parameterdarstellungen entscheiden, ob zwei Geraden im Raum identisch, parallel, windschief oder schneidend sind, die Einordnung rechnerisch begründen und bei schneidenden Geraden den Schnittpunkt bestimmen.",
+        "descriptionEn": "Using parametric representations, the learner can decide whether two lines in space are coincident, parallel, skew, or intersecting, justify the classification algebraically, and determine the intersection point for intersecting lines."
+      },
+      "rationaleDe": "Die vier räumlichen Fälle, insbesondere windschiefe Geraden, müssen explizit sein.",
+      "rationaleEn": "The four spatial cases, especially skew lines, need to be explicit."
+    },
+    {
+      "sequence": 10,
+      "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Geradlinige Bewegungen mit Vektoren modellieren",
+        "titleEn": "Model rectilinear motions with vectors",
+        "descriptionDe": "Die lernende Person kann gleichförmige geradlinige Bewegungen in Ebene und Raum mit Anfangs-Ortsvektor, Geschwindigkeitsvektor und Zeitparameter modellieren sowie Ergebnisse und die Grenzen der Annahmen „geradlinig“ und „gleichförmig“ im Kontext deuten.",
+        "descriptionEn": "The learner can model uniform rectilinear motion in the plane and in space using an initial position vector, a velocity vector, and a time parameter, and interpret results and the limitations of the straight-line and uniform-motion assumptions in context."
+      },
+      "rationaleDe": "Zeit- und Geschwindigkeitsbedeutung verhindern die Verwechslung einer Bahn mit einer zeitlich bestimmten Bewegung.",
+      "rationaleEn": "Time and velocity semantics prevent confusing a geometric path with a time-dependent motion."
+    },
+    {
+      "sequence": 11,
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "reviewPositions": { "first": "block", "second": "block" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "sourceFaithfulRepurposing": true,
+      "finalText": {
+        "titleDe": "Geometrische Sachverhalte in Ebene und Raum koordinatisieren",
+        "titleEn": "Coordinate geometric situations in the plane and in space",
+        "descriptionDe": "Die lernende Person kann einfache geometrische Sachverhalte in Ebene und Raum durch geeignete Punktkoordinaten sowie Orts-, Richtungs- und Verschiebungsvektoren in einem kartesischen Koordinatensystem darstellen, die Darstellungen aufeinander beziehen und die gewählte Koordinatisierung fachsprachlich erklären.",
+        "descriptionEn": "The learner can represent simple geometric situations in the plane and in space in a Cartesian coordinate system using suitable point coordinates and position, direction, and displacement vectors, relate these representations to one another, and explain the chosen coordinatization using correct terminology."
+      },
+      "requiredPrerequisiteAddition": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "sourceBasis": "Official Brandenburg upper-secondary standard: Geometrische Sachverhalte in Ebene und Raum koordinatisieren und im Koordinatensystem darstellen.",
+      "mappingGuard": "The valid exact Brandenburg route does not legitimize the current 1278-occurrence unrelated bulk mapping fan-out; audit that fan-out separately.",
+      "rationaleDe": "Die offizielle BB-Anforderung verlangt integratives Koordinatisieren geometrischer Sachverhalte; der aktuelle Text wiederholt nur isolierte Voraussetzungen.",
+      "rationaleEn": "The official BB standard requires integrated coordinatization of geometric situations; the current wording merely repeats isolated prerequisites."
+    },
+    {
+      "sequence": 12,
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Räumliche Objekte im Koordinatensystem verorten",
+        "titleEn": "Locate spatial objects in three-dimensional coordinate systems",
+        "descriptionDe": "Die lernende Person kann räumliche Objekte durch Koordinaten charakteristischer Punkte in einem dreidimensionalen Koordinatensystem verorten, dafür Ursprung, Achsenrichtungen und Skalierung passend wählen und die Wahl begründen.",
+        "descriptionEn": "The learner can locate spatial objects in a three-dimensional coordinate system using the coordinates of characteristic points, choose a suitable origin, axis directions, and scale, and justify that choice."
+      },
+      "rationaleDe": "Geeignete Koordinatenbezüge werden erst durch die konkreten Wahlentscheidungen prüfbar.",
+      "rationaleEn": "Suitable coordinate references become assessable only when the relevant choices are explicit."
+    },
+    {
+      "sequence": 13,
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Schrägbilder räumlicher Objekte zeichnen",
+        "titleEn": "Draw oblique sketches of spatial objects",
+        "descriptionDe": "Die lernende Person kann räumliche Objekte nach einer passenden Schrägbildkonvention zeichnen, die dargestellten Lage- und Inzidenzbeziehungen fachsprachlich erläutern und kennzeichnen, welche Längen oder Winkel nicht maßstäblich ablesbar sind.",
+        "descriptionEn": "The learner can draw spatial objects using a suitable oblique-drawing convention, explain the represented positional and incidence relations using correct terminology, and identify which lengths or angles cannot be read to scale."
+      },
+      "rationaleDe": "Die Projektionsgrenzen verhindern, dass der Bildeindruck als metrischer Beweis behandelt wird.",
+      "rationaleEn": "Projection limits prevent visual appearance from being treated as metric proof."
+    },
+    {
+      "sequence": 14,
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "reviewPositions": { "first": "block", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "sourceFaithfulRepurposing": true,
+      "revisionBasis": "second_plus_source_audit",
+      "finalText": {
+        "titleDe": "Punkte räumlicher Objekte mit Koordinaten beschreiben",
+        "titleEn": "Describe points of spatial objects using coordinates",
+        "descriptionDe": "Die lernende Person kann charakteristische Punkte räumlicher Objekte anhand geordneter Koordinatentripel in achsenbezogenen Darstellungen verorten und umgekehrt ihre Koordinaten aus der dargestellten Lage bestimmen und fachsprachlich erläutern.",
+        "descriptionEn": "The learner can locate characteristic points of spatial objects in axis-based representations from ordered coordinate triples and, conversely, determine their coordinates from the represented positions and explain them using correct terminology."
+      },
+      "sourceBasis": "Official Hessen Q2.2 aspect couples spatial-object representations with describing points using coordinates.",
+      "rationaleDe": "Objektbezug und bidirektionale Übersetzung unterscheiden die Q2-Anwendung von elementaren Punkt-Tupel-Voraussetzungen.",
+      "rationaleEn": "The spatial-object context and bidirectional translation distinguish the Q2 application from elementary point-tuple prerequisites."
+    },
+    {
+      "sequence": 15,
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second_plus_source_audit",
+      "finalText": {
+        "titleDe": "Einfache geometrische Figuren beschreiben",
+        "titleEn": "Describe simple plane figures",
+        "descriptionDe": "Die lernende Person kann gleichschenklige, gleichseitige und rechtwinklige Dreiecke sowie Quadrat, Rechteck, Raute, Parallelogramm, allgemeines und symmetrisches Trapez und Drachenviereck anhand ihrer bestimmenden Seiten-, Winkel-, Parallelitäts- und Symmetrieeigenschaften fachsprachlich beschreiben, voneinander unterscheiden und zutreffende Mehrfachzuordnungen begründen.",
+        "descriptionEn": "The learner can use defining side, angle, parallelism, and symmetry properties to describe and distinguish isosceles, equilateral, and right triangles as well as squares, rectangles, rhombi, parallelograms, general and isosceles trapezia, and kites, and justify valid multiple classifications."
+      },
+      "rationaleDe": "Die Revision verhindert Prototyp-Erkennung und stellt die quellenbelegte Unterscheidung allgemeiner und symmetrischer Trapeze her.",
+      "rationaleEn": "The revision prevents prototype-based classification and restores the source distinction between general and isosceles trapezia."
+    },
+    {
+      "sequence": 16,
+      "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "first",
+      "finalText": {
+        "titleDe": "Einfache geometrische Körper im Raum beschreiben",
+        "titleEn": "Describe simple geometric solids in space",
+        "descriptionDe": "Die lernende Person kann Würfel, Quader sowie gerade und schiefe Prismen und Pyramiden anhand der Struktur ihrer Grund- und Seitenflächen, ihrer Kanten und der Lage von Seitenkanten beziehungsweise Spitze zur Grundfläche fachsprachlich beschreiben, unterscheiden und in räumlichen Darstellungen identifizieren.",
+        "descriptionEn": "The learner can describe, distinguish, and identify in spatial representations cubes, cuboids, and right and oblique prisms and pyramids using the structure of their bases and lateral faces, their edges, and the position of lateral edges or the apex relative to the base."
+      },
+      "rationaleDe": "Gerade und schiefe Körper müssen über Struktur und Lagebeziehungen statt über scheinbare Schräglage klassifiziert werden.",
+      "rationaleEn": "Right and oblique solids must be classified from structural and positional relations rather than apparent slant."
+    },
+    {
+      "sequence": 17,
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "reviewPositions": { "first": "keep", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Geometriesoftware zur Raumorientierung nutzen",
+        "titleEn": "Use geometry software for spatial orientation",
+        "descriptionDe": "Die lernende Person kann Geometriesoftware nutzen, um räumliche Objekte im dreidimensionalen Koordinatensystem darzustellen, Ansichten gezielt zu variieren und Koordinaten- oder Lagevermutungen zu prüfen, wobei sie eine Bildschirmansicht von einer mathematischen Begründung unterscheidet.",
+        "descriptionEn": "The learner can use geometry software to represent spatial objects in a three-dimensional coordinate system, vary views deliberately, and test conjectures about coordinates or position while distinguishing an on-screen view from a mathematical justification."
+      },
+      "rationaleDe": "Überprüfen darf eine Perspektive oder gerundete Softwaremessung nicht zum Beweis erheben.",
+      "rationaleEn": "Checking must not elevate a perspective view or rounded software measurement to proof."
+    },
+    {
+      "sequence": 18,
+      "goalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Eigenschaften ebener Figuren für Flächenberechnungen nutzen",
+        "titleEn": "Use plane-figure properties for area calculations",
+        "descriptionDe": "Die lernende Person kann bei einfachen Dreiecken und Vierecken flächenrelevante Seiten-, Höhen- und Zerlegungsbeziehungen erkennen, daraus eine passende Flächenberechnung herleiten, ihre Wahl begründen und das Ergebnis prüfen.",
+        "descriptionEn": "The learner can identify area-relevant side, height, and decomposition relations in simple triangles and quadrilaterals, derive a suitable area calculation from them, justify the choice, and check the result."
+      },
+      "rationaleDe": "Geeignete Flächenberechnungen war zirkulär und nannte keine tragende Beziehung.",
+      "rationaleEn": "Suitable area calculations was circular and failed to identify the supporting relations."
+    },
+    {
+      "sequence": 19,
+      "goalId": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "reviewPositions": { "first": "keep", "second": "revise" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "math-b015-a-019-b04bd2d6",
+      "finalText": {
+        "titleDe": "Kongruenzbeziehungen ebener Figuren untersuchen",
+        "titleEn": "Analyze congruence relations of plane figures",
+        "descriptionDe": "Die lernende Person kann Kongruenzbeziehungen einfacher ebener Figuren untersuchen und die verwendeten Kriterien fachsprachlich begründen.",
+        "descriptionEn": "The learner can analyze congruence relations of simple plane figures and justify the criteria used."
+      },
+      "rationaleDe": "Untersuchen plus begründete Kriterien ist bereits beobachtbar; Korrespondenzen, starre Bewegungen und Gegenbeispiele gehören ins Evidenzprofil.",
+      "rationaleEn": "Investigation plus justified criteria is already observable; correspondence, rigid motion, and counterexamples belong in the evidence profile."
+    },
+    {
+      "sequence": 20,
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "first",
+      "finalText": {
+        "titleDe": "Ähnlichkeitsbeziehungen ebener Figuren untersuchen",
+        "titleEn": "Analyze similarity relations of plane figures",
+        "descriptionDe": "Die lernende Person kann die Ähnlichkeit einfacher ebener Figuren anhand entsprechender Winkel und proportionaler Seiten begründen und daraus Längenbeziehungen mit dem Maßstabsfaktor sowie Flächenbeziehungen mit dessen Quadrat ableiten.",
+        "descriptionEn": "The learner can justify the similarity of simple plane figures using corresponding angles and proportional sides and derive length relations using the scale factor and area relations using its square."
+      },
+      "rationaleDe": "Die Unterscheidung zwischen linearer Skalierung mit k und Flächenskalierung mit k² ist die zentrale Verständnisgrenze.",
+      "rationaleEn": "The distinction between linear scaling by k and area scaling by k² is the central understanding threshold."
+    }
+  ],
+  "integrationOrder": [
+    "Resolve both structural splits and their exact graph, placement, mapping, assessment, atomicity, memory, and visualization consequences.",
+    "Stabilize goals 1-4, then 5-10, then 11-14, then 15-17, then 18-20.",
+    "Do not integrate the separate 1878f680 assessment-alignment repair before Batch 015 unless all nine lost reverse-requires page contexts are deliberately regenerated afterward.",
+    "After the final topology and text are stable, regenerate the complete affected 23-atomic-goal context as at least two bounded topological reviewer batches and run two fresh independent blind reviews for each batch.",
+    "Create positive-understanding-evidence-v2 candidates only against those final current text and context fingerprints."
+  ]
+}

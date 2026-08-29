@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-017-e-trigonometric-context-recheck-8-v1.config.json",
+  "configDigest": "sha256:8d4c613048ada997ef0a0119ea22b5efb04d91b63e17bcc298a90cdfe1246aed",
+  "goalIds": [
+    "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+    "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+    "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+    "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+    "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+    "3401d95d-2191-5929-ac78-4de51d71a6be",
+    "ecd13e54-ab0e-550f-9400-66e13306635d",
+    "56fba457-ab98-5b96-963e-ec284458c17f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 792,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:1725e20737658e4b77db25b356b356f8b8e8e7e7efb4023c6178e2e84b9e0665"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e9364558fedcff4c69901a43cec46904d15fc849a64adf56577ee65007537e05",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3e28955a3034f81cce1d4936807061801af39b9daf0c929c258fb5b87709ac92",
+    "reviewInputFingerprint": "sha256:e0d1e92af94b57f2355d4a086d3d0f72707b11662bc6487d857662cf5255f0a2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-a",
+        "campaignDigest": "sha256:1124c92db977a305d7039191fba289c89a01eacf2da02bd480b3fe1d1b09c990",
+        "roundId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:498d69f334d19ebc7df252fcbd6676c0d03db085f19d21c9de4ffd51f3084d6b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-b",
+        "campaignDigest": "sha256:a4f690d1daed49d35948b1b9cb7d94e440cec26613db7687fc811c4aaf77b90d",
+        "roundId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:657950a803d1ad78c093b3344ddc7d6d2b65b27aa5255c820cc6dd2c8a55ea32"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

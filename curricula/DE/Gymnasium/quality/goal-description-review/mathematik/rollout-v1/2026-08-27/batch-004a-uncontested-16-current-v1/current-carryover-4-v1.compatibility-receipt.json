@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-rollout-v1-batch-004a-current-carryover-4-v1-20260828",
+  "purpose": "Bounded compatibility reuse of four exact-current keep/keep reviews from a closed 16-goal legacy campaign.",
+  "sourceBatchId": "mathematik-rollout-v1-batch-004a-uncontested-16-current-v1-20260827",
+  "sourceCampaignGoalCount": 16,
+  "claimedGoalIds": [
+    "804d7443-9976-5d81-a47d-1601f42f7e0e",
+    "8da730f1-8947-498d-9e78-7fb20b00a994",
+    "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+    "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+  ],
+  "claimedGoalCount": 4,
+  "sourceDualSummaryDigest": "sha256:0d7f456d30c08d28bb22cae31b432675502faebcb5b18917d0282ae49cedd96d",
+  "currentCanonicalLandscapeDigest": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+  "resolutionIndexPath": "resolution-index.current-carryover-4-v1.json",
+  "resolutionIndexFormat": "legacy-schema-v1-partial-group",
+  "rationale": [
+    "All four bilingual goal texts, goal fingerprints, and canonical review contexts remain exact-current and both independent source records remain keep.",
+    "The source campaign contains 16 goals, while only these four are current and unowned; a schema-v2 index requires the complete campaign and would create duplicate or stale claims.",
+    "A fresh four-goal campaign would repeat two already valid independent reviews without adding fachliche evidence. The supported schema-v1 partial-group compatibility path preserves fresh per-resolution production validation instead.",
+    "This receipt changes no canonical goal, graph, mapping, assessment, atomicity, memory, or visualization bytes and grants no progress until the central five-gate rollout check passes."
+  ],
+  "safeguards": {
+    "individualResolutionsFreshlyValidated": true,
+    "duplicateOwnershipFailsClosed": true,
+    "staleCanonicalContextFailsClosed": true,
+    "positiveEvidenceValidatedSeparately": true,
+    "productOwnerEscalationRequired": false
+  }
+}

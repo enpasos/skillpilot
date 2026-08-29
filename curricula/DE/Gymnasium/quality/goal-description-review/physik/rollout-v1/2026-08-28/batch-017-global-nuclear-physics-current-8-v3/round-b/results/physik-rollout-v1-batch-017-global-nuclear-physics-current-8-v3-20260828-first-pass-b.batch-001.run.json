@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+  "campaignId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-b",
+  "roundId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.batch-001",
+  "bundleFingerprint": "sha256:26077433b984eb6be1788c3bfacaab699195d08b2e0b0a1d0e3d1b002c34eec2",
+  "bookDigest": "sha256:d1c2e0a44e9ebc05e9918273bd80bb7342ae4536be3572fb8d7139705fecf3be",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "blindToOtherRuns": true,
+  "independenceGroupId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-independent-b",
+  "batchInputFingerprint": "sha256:1d0945409a66e9276b0553a932f8797145e802339b560efe5129ea67c47fa9a8",
+  "goalIds": [
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+    "25d91cc0-d84c-5522-86b5-fdff73264f08",
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+    "979e0d0d-8933-4ace-814f-f28060ad280f",
+    "1593d95c-2aac-504c-8527-37cb61877da9",
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+    "50877233-7abf-54df-b347-6d3224678fc9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:334add79a286a777265eb3c4d10ac6e869e71434aac410970c5146de20008237"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1d0945409a66e9276b0553a932f8797145e802339b560efe5129ea67c47fa9a8"
+    }
+  ],
+  "startedAt": "2026-08-28T05:06:00.000Z",
+  "completedAt": "2026-08-28T05:08:00.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:370a18968d7b322a865fbd896f043f493aec8c511c4e77702373ca89434bf740",
+  "toolchainVersion": "codex-gpt-5"
+}

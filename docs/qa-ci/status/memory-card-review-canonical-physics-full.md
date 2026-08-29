@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 444 |
-| goals without memory need | 317 |
+| ordinary atomic goals reviewed | 447 |
+| goals without memory need | 320 |
 | goals with intentional memory support | 127 |
 | goals needing developer review | 0 |
 | primary cards in scope | 148 |
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 522 | 5 | 127 | 0 |
-| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 522 | 5 | 127 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 528 | 5 | 127 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 528 | 5 | 127 | 0 |
 
 ## Memory-Required Goals
 
@@ -191,7 +191,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | `de_gymnasium_physics_fields_q1` | `physics_q1_c11` | Wien-Filter (Geschwindigkeitsfilter) | Kombination aus E- und B-Feld. Durchlassbedingung: $F_{el} = F_L \Rightarrow v = \frac{E}{B}$. | Q1: Massenspektrometer als Feldanwendung beschreiben (`3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_fields_q1` | `physics_q1_c12` | Hall-Effekt: Hall-Spannung $U_H$ | Entsteht durch Ablenkung von Ladungsträgern im B-Feld. Gleichgewicht: $F_{el} = F_L$. | Q1: Hall-Effekt anwenden (`b39ae8fb-4358-5866-8adf-3d5365368eeb`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_fields_q1` | `physics_q1_c13` | Magnetfeld einer langen Spule | $B = \mu_0 \cdot \mu_r \cdot \frac{N \cdot I}{l}$ Hängt von der Windungsdichte $N/l$ ab. | Q1: Magnetfeld von geradem Leiter und Spule (`106417ed-80db-5490-a1ee-bb4160d3f2b4`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
-| `de_gymnasium_physics_fields_q1` | `physics_q1_c14` | Zyklotron-Frequenz (Umlaufdauer) | $T = \frac{2\pi \cdot m}{q \cdot B}$ Unabhängig vom Bahnradius und der Geschwindigkeit (bei nicht-relativistischen Geschwindigkeiten). | Q1: Teilchenbeschleuniger (Zyklotron/Synchrotron) (`2d62b444-796e-548d-aeee-cfd9c6665ddc`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
+| `de_gymnasium_physics_fields_q1` | `physics_q1_c14` | Zyklotron-Frequenz (Umlaufdauer) | $T = \frac{2\pi \cdot m}{\|q\| \cdot B}$ Unabhängig vom Bahnradius und der Geschwindigkeit (bei nicht-relativistischen Geschwindigkeiten). | Q1: Teilchenbeschleuniger (Zyklotron/Synchrotron) (`2d62b444-796e-548d-aeee-cfd9c6665ddc`) | Frisch fachlich geprüft und behalten: Die Zyklotron-Umlaufdauer verwendet jetzt den Ladungsbetrag $\|q\|$, sodass die positive Periodendauer nicht fälschlich vom Ladungsvorzeichen abhängt; Anwendung, Drehsinn und Modellgrenzen bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_001` | Messfehler: systematisch vs. zufällig? | Systematische Fehler verschieben Messwerte in eine Richtung zufällige Fehler streuen um den Mittelwert | E: Messabweichungen und Fehlerarten unterscheiden (`8aff7aac-321b-5172-ac55-877876bfd2cd`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_002` | Linearisierung: Grundidee? | Nichtlineare Daten werden so transformiert, dass eine Gerade entsteht: $y=mx+b$ $m$ und $b$ liefern Modellparameter | E: Methode: Linearisierung von Messkurven (`264dc31c-ec92-5e39-a8b8-16f1d74366d4`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_003` | Digitale Messung: zentraler Merksatz? | Digitale Sensoren liefern schnell viele Datenpunkte Messunsicherheiten (systematisch und zufällig) bleiben trotzdem bestehen | E: Digitale Messdaten mit Sensoren erfassen (`691c11d0-fa6a-5d2e-a19c-086e89c3c233`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |

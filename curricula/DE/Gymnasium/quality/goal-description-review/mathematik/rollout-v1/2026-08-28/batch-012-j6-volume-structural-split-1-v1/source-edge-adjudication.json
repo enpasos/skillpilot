@@ -1,0 +1,672 @@
+{
+  "schemaVersion": 1,
+  "adjudicationId": "canonical-math-99ef-volume-structural-split-2026-08-28-v1",
+  "status": "APPROVED_IMPLEMENTATION_INPUT",
+  "reviewedAt": "2026-08-28",
+  "retainedClusterId": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+  "retainedScopeUnchanged": true,
+  "retainedNanoBananaOverviewSha256": "sha256:b51f224ff0f4ddfe785244b8e8fa3d43f99d3dc7db4fe92e8be18a3ef42baed7",
+  "children": [
+    {
+      "id": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "shortKey": "canonical_math_sek1_j6_determine_cuboid_cube_volumes",
+      "title": "Volumina von Quadern und Würfeln bestimmen",
+      "titleEn": "Determine volumes of cuboids and cubes",
+      "description": "Die lernende Person kann die Volumina von Quadern und Würfeln mithilfe von Einheitswürfeln oder aus Kantenlängen bestimmen, die Ergebnisse in geeigneten Volumeneinheiten angeben und sie nach erforderlicher Umrechnung vergleichen.",
+      "descriptionEn": "The learner can determine the volumes of cuboids and cubes using unit cubes or edge lengths, state the results in suitable units of volume, and compare them after any required conversion.",
+      "requires": [
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+      ],
+      "jurisdictions": [
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST"
+      ]
+    },
+    {
+      "id": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "shortKey": "canonical_math_sek1_j6_determine_composite_cuboid_volumes_additively",
+      "title": "Volumina zusammengesetzter Quaderkörper additiv bestimmen",
+      "titleEn": "Determine volumes of composite cuboid solids additively",
+      "description": "Die lernende Person kann die Additivität des Volumens nutzen, um die Volumina aus Quadern und Würfeln zusammengesetzter Körper durch lücken- und überlappungsfreies Zerlegen oder durch Ergänzen zu einem Quader und Subtrahieren des Ergänzungsvolumens zu bestimmen und das Ergebnis zu prüfen.",
+      "descriptionEn": "The learner can use the additivity of volume to determine the volumes of solids composed of cuboids and cubes by decomposing them without gaps or overlaps, or by completing them to a cuboid and subtracting the added volume, and check the result.",
+      "requires": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "jurisdictions": [
+        "DE-BW",
+        "DE-BY",
+        "DE-HE",
+        "DE-SL",
+        "DE-SN"
+      ]
+    }
+  ],
+  "sourceMappingRoutes": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "bw-math-seki-bp2016-3-1-2-15-78754d0f",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Die Quelle trägt sowohl das einfache Quader-/Würfelvolumen als auch die ausdrücklich genannte Volumenadditivität bei zusammengesetzten Quaderkörpern; beide neuen Atome werden direkt gebunden."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+      "sourceGoalId": "8af615a2-df8b-4446-af06-b289ba97a111",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Die Quelle trägt sowohl das einfache Quader-/Würfelvolumen als auch die ausdrücklich genannte Volumenadditivität bei zusammengesetzten Quaderkörpern; beide neuen Atome werden direkt gebunden."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "fbef22b4-fd99-53de-9bf7-d4ad4c8ca4fb",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "b7f1692a-291c-536a-b2ee-defa7399aa7c",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "e01869db-891c-57a4-8660-789ec6875ec2"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+      "sourceGoalId": "e22589c0-cc0d-5df1-8103-b02fc26be319",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "e01869db-891c-57a4-8660-789ec6875ec2"
+      ],
+      "note": "Die Quelle trägt sowohl das einfache Quader-/Würfelvolumen als auch die ausdrücklich genannte Volumenadditivität bei zusammengesetzten Quaderkörpern; beide neuen Atome werden direkt gebunden."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+      "sourceGoalId": "fbef22b4-fd99-53de-9bf7-d4ad4c8ca4fb",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+      "sourceGoalId": "b7f1692a-291c-536a-b2ee-defa7399aa7c",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "e01869db-891c-57a4-8660-789ec6875ec2"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-021-20b7e0d36c",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-026-5d938ec099",
+      "beforeCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-kc-7-3-koerper-j5-6-02-15d6870b",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-kc-7-3-messvorgaenge-j5-6-07-2a6dd82a",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-5-2-03-de977c1c",
+      "beforeCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "bff7aa8b-1007-5c95-a148-a1b82f47da18"
+      ],
+      "afterCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "bff7aa8b-1007-5c95-a148-a1b82f47da18"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-6-2-17-99efcdf0",
+      "beforeCanonicalGoalIds": [
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-6-2-18-14d440a7",
+      "beforeCanonicalGoalIds": [
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g9-6-2-19-23b99577",
+      "beforeCanonicalGoalIds": [
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g8-5g-2-18-d54a1407",
+      "beforeCanonicalGoalIds": [
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "he-math-seki-g8-5g-2-19-8e06ebb4",
+      "beforeCanonicalGoalIds": [
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
+      "sourceGoalId": "209a6413-6598-47d6-b296-962207b2f5b1",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Die Quelle trägt sowohl das einfache Quader-/Würfelvolumen als auch die ausdrücklich genannte Volumenadditivität bei zusammengesetzten Quaderkörpern; beide neuen Atome werden direkt gebunden."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-5-6-10-10-9055e569c9",
+      "beforeCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-5-6-10-11-4e88f18218",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-5-6-10-12-06fefc9e29",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "b44f038c-fb1f-527e-b9ad-382214d0328a"
+      ],
+      "note": "Die Quelle verlangt das Beschreiben und Begründen der Volumenformel anhand des Messvorgangs. Sie bindet daher das bereits vorhandene Plausibilisierungsziel, nicht eines der beiden Berechnungsatome."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-mv-mathematik-seki-rahmenplaene-2020-2019-mv-seki-os-j6-stereometrie-005-a3baec8132",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-mv-mathematik-seki-rahmenplaene-2020-2019-mv-seki-os-j6-stereometrie-006-1787ff132d",
+      "beforeCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+      ],
+      "note": "Die Quelle nennt ausschließlich Volumeneinheiten. Sie bindet daher das bereits vorhandene Ziel zum Deuten und Umrechnen von Volumeneinheiten, nicht eines der Berechnungsatome."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-korper-und-figuren-008-2c8c1bdba8",
+      "beforeCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-geometrie-002-1c09f2ff48",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "1ea06c0c-5c60-45cd-8f31-638de98820b4"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "1ea06c0c-5c60-45cd-8f31-638de98820b4"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-geometrie-016-f8f9d99d51",
+      "beforeCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "879389a7-73de-45bb-a632-0d918c23a082"
+      ],
+      "afterCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "879389a7-73de-45bb-a632-0d918c23a082"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-os-l2-messen-groessen-005-c05173b1ab",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-K024-7460f69fbd",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json",
+      "sourceGoalId": "sh-sek1-jg5-6-groessen-messen-volumen-quader",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-5-6-t05-flacheninhalt-und-volumen-b19-a6e51e74d6",
+      "beforeCanonicalGoalIds": [
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "e01869db-891c-57a4-8660-789ec6875ec2"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-5-6-t05-flacheninhalt-und-volumen-b26-e6d1b45ccc",
+      "beforeCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+      ],
+      "afterCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-5-6-t05-flacheninhalt-und-volumen-b28-afcaa6cb28",
+      "beforeCanonicalGoalIds": [
+        "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-5-lb04-rechtecke-und-quader-r009-5632a04ac5",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-5-lb04-rechtecke-und-quader-r012-92f4e90477",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Additivitätsziel für lücken- und überlappungsfreie Zerlegung oder Ergänzung zusammengesetzter Quaderkörper."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-5-6-gk-lk-umfang-flacheninhalt-und-volumen-k010-e498ee43ec",
+      "beforeCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-5-6-gk-lk-umfang-flacheninhalt-und-volumen-k011-70cb6cff67",
+      "beforeCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-5-6-gk-lk-umfang-flacheninhalt-und-volumen-w016-956b77f0f4",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Der bestätigte Split routet den bisherigen breiten Verweis auf das atomare Ziel zum Bestimmen und einheitenrichtigen Vergleichen von Quader- und Würfelvolumina."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-023-25ccf8044a",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Die gebundene Thüringer Quellzeile nennt Umfang, Flächeninhalt und Oberflächeninhalt, aber kein Volumen; der fachfremde Volumenverweis wird ersatzlos entfernt."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-024-3c7aadd43c",
+      "beforeCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "afterCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
+      ],
+      "note": "Die gebundene Thüringer Quellzeile nennt Umfang, Flächeninhalt und Oberflächeninhalt, aber kein Volumen; der fachfremde Volumenverweis wird ersatzlos entfernt."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-025-2f559a65e2",
+      "beforeCanonicalGoalIds": [
+        "b9a501c4-9d74-5514-b77b-895980b89b1b",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "afterCanonicalGoalIds": [
+        "b9a501c4-9d74-5514-b77b-895980b89b1b",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "note": "Die gebundene Thüringer Quellzeile nennt Umfang, Flächeninhalt und Oberflächeninhalt, aber kein Volumen; der fachfremde Volumenverweis wird ersatzlos entfernt."
+    }
+  ],
+  "completeness": {
+    "physicalOldOccurrenceCount": 40,
+    "affectedMappingDocumentCount": 18,
+    "thuringiaRemovedSourceGoalIds": [
+      "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-023-25ccf8044a",
+      "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-024-3c7aadd43c",
+      "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-025-2f559a65e2"
+    ],
+    "openUncertainties": []
+  },
+  "beforeState": {
+    "canonicalSha256": "sha256:af12f6d966ee4214e014dcab032b5dbbac092c7b87b76de13c290d694f327127",
+    "mappingCorpusSha256": "sha256:cf506cf765e09ec2b1c7fd72c88e8024beba5eb8a6554ab8889f0d82a1571382"
+  },
+  "adjudicationDigest": "sha256:4a8be59e32b5eca67870cf8574bc659e59a738e28a8311554bc1f4a6c474c1c8"
+}

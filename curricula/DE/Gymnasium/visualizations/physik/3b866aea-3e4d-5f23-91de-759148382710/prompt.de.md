@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Bahnformen quantitativ bestimmen
+# Lernzielvisualisierung: Kreisbahnen geladener Teilchen quantitativ bestimmen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `3b866aea-3e4d-5f23-91de-759148382710`
-- Titel: Bahnformen quantitativ bestimmen
-- Beschreibung: Die lernende Person kann Bahnradien und Umlaufzeiten geladener Teilchen in homogenen Feldern berechnen.
+- Titel: Kreisbahnen geladener Teilchen quantitativ bestimmen
+- Beschreibung: Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Bahnformen quantitativ bestimmen
-Beschreibung: Die lernende Person kann Bahnradien und Umlaufzeiten geladener Teilchen in homogenen Feldern berechnen.
+Titel: Kreisbahnen geladener Teilchen quantitativ bestimmen
+Beschreibung: Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.
 
 Zusatzanweisung:
 Baue die Infografik als eindeutige quantitative Darstellung einer geladenen Teilchenbahn im homogenen Magnetfeld auf.

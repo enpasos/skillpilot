@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-rollout-v1-j7-fast16-stable3-current-carryover-v1-20260828",
+  "purpose": "Bounded compatibility reuse of three exact-current, dependency-stable keep/keep reviews from a closed sixteen-goal J7 geometry and measurement campaign.",
+  "sourceBatchId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828",
+  "sourceCampaignGoalCount": 16,
+  "claimedGoalIds": [
+    "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+    "3e53a39b-1c75-4034-a647-8de85719e1fb",
+    "ad26e4d9-b025-57ec-8f25-df4a2415cc62"
+  ],
+  "claimedGoalCount": 3,
+  "incompatibleCurrentCandidateGoalIds": [
+    "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e"
+  ],
+  "incompatibleCurrentCandidateReason": "The angle-relations goal has split_review/keep source decisions. The production resolution contract allows resolved keep_current only for keep/keep or an exact manifest-bound keep/revise rejection, so this goal requires a fresh dual review.",
+  "directDeferredContextCandidateGoalIds": [
+    "34200b88-c616-58f6-aa03-efb9fd766f88",
+    "f509a549-aee5-5468-af73-5b1efa3f342c",
+    "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+    "3017e774-8d9f-5129-828f-7684db5afc1e"
+  ],
+  "directDeferredContextCandidateReason": "Four goals directly depend on prerequisites with adjudicated revisions. The current page fingerprint contract binds prerequisite IDs and titles but not prerequisite descriptions, so these four remain explicitly deferred rather than relying on a known context blind spot.",
+  "transitiveDeferredContextCandidateGoalIds": [
+    "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+    "de393ab3-d2af-5476-8b46-315185abb805"
+  ],
+  "transitiveDeferredContextCandidateReason": "Two goals directly depend on the split_review/keep angle-relations goal, whose fresh review may change its semantics or structure. They remain deferred until that prerequisite is final and their contexts are reviewed again.",
+  "canonicalReworkGoalIds": [
+    "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+    "59d5a330-61be-4590-ab46-cf7cefecd144",
+    "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+    "f0a49da2-018b-4cda-adbd-27047b610a0f",
+    "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+    "d051857c-0707-544f-ae7a-f20690d182b2"
+  ],
+  "canonicalReworkReason": "These goals have adjudicated text revisions or structural splits and require canonical integration followed by two fresh blind reviews.",
+  "sourceDualSummaryDigest": "sha256:00eb81f40d83f58f2cd22c5a179a3e6d7c71b6f75faea0f4d604c23d195819fe",
+  "importedBundleFingerprint": "sha256:09c55fdd10e7d66772d3dacbe6e033bff8c91bac4c917eb042963b87cc8f2b9f",
+  "currentCanonicalLandscapeDigest": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+  "sourceAdjudicationDigest": "sha256:44b17c1e316aa00590479a9ea9c0e3f0c1716ba4a2e39bdf22a3aae5aa5b9e63",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-3-v1.json",
+  "resolutionIndexFormat": "legacy-schema-v1-partial-group",
+  "rationale": [
+    "All three bilingual goal texts, goal fingerprints, canonical review contexts, bundle bytes, and both independent keep records are exact-current.",
+    "The source campaign contains sixteen goals, while only these three are both production-compatible and insulated from already-adjudicated direct or transitive prerequisite rework. Schema v2 requires the complete campaign and cannot represent this bounded carryover.",
+    "A fresh three-goal campaign would repeat two already valid independent reviews without adding subject evidence. The supported schema-v1 partial-group compatibility path preserves fresh per-resolution production validation.",
+    "The tenth current-text adjudication candidate is deliberately excluded because split_review/keep cannot satisfy the production resolved-resolution contract.",
+    "Six otherwise current keep/keep candidates are deliberately deferred until their direct revised prerequisites or the disputed angle-relations prerequisite are final and their contexts can be reviewed again.",
+    "The six revision and split goals are excluded. Their planned description-only revisions retain IDs, titles, and graph edges; the structural splits have no direct prerequisite or reverse-prerequisite page binding to these three goals. Any future context drift remains fail-closed in the central validator.",
+    "This receipt changes no canonical goal, graph, mapping, assessment, atomicity, memory, visualization, or Nano Banana asset bytes and grants no progress until the central five-gate rollout check passes."
+  ],
+  "safeguards": {
+    "individualResolutionsFreshlyValidated": true,
+    "duplicateOwnershipFailsClosed": true,
+    "staleCanonicalContextFailsClosed": true,
+    "positiveEvidenceValidatedSeparately": true,
+    "incompatibleSplitReviewKeepCandidateExcluded": true,
+    "directAndTransitiveReworkContextsDeferred": true,
+    "canonicalRevisionAndSplitCandidatesExcluded": true,
+    "productOwnerEscalationRequired": false
+  }
+}

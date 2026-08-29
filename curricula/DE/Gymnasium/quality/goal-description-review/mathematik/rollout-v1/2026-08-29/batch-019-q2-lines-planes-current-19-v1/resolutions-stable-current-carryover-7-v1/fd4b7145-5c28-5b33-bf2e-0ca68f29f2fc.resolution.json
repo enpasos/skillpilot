@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-b019-stable7-current-carryover-v1-resolution-fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+  "goal": {
+    "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e3ffcc8497740a1e7f8ae74176819c9727a898cd0104407d31f48f4837a7921c",
+    "pageFingerprint": "sha256:919e136005507ba3e4b2891a37a3474cc4a2611c1522fb944846dce6d7979301",
+    "goalReviewContextFingerprint": "sha256:b4c34887a879fd3bb8a18e9692e0668f3abe0588e9193a8567a495c2aea19830",
+    "finalText": {
+      "titleDe": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+      "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+      "descriptionDe": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+      "descriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-a",
+      "campaignDigest": "sha256:fdef7d7517b798e28d0fe2bb6d7b69aa183525f8888ee996396aee8b39ea4086",
+      "roundId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-independent-a",
+      "reviewInputFingerprint": "sha256:925e834dd9c46e9691897908aba7e5a2270b50489c854de80ce494de14f13adc",
+      "goalReviewContextFingerprint": "sha256:b4c34887a879fd3bb8a18e9692e0668f3abe0588e9193a8567a495c2aea19830",
+      "batchId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-a.batch-001",
+      "runId": "mathematik-rollout-v1-b019-q2-lines-planes-20260829-openai-codex-gpt5-a",
+      "runManifestDigest": "sha256:28b57364174bd67575f1435061e1b06847d5826ce85132efc78d61427da15193",
+      "resultsDigest": "sha256:7b45073fa8b1b7e3d92402fb9b5fe7403762911372b0b75bc95a0cb32b814bdf",
+      "recordId": "mathematik-b019-a-fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "recordDigest": "sha256:159eae23f02d1d3ae0de63f5757f51fafad1bf2274d5ac4ba38184e4c845ddb1"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-b",
+      "campaignDigest": "sha256:8d4ed697092b8251fd6a6b374dfed606e89e541965f88f4b25455cdd83bed95b",
+      "roundId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-independent-b",
+      "reviewInputFingerprint": "sha256:925e834dd9c46e9691897908aba7e5a2270b50489c854de80ce494de14f13adc",
+      "goalReviewContextFingerprint": "sha256:b4c34887a879fd3bb8a18e9692e0668f3abe0588e9193a8567a495c2aea19830",
+      "batchId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-b.batch-001",
+      "runId": "mathematik-b019-q2-round-b-blind-codex-gpt5-20260829t020234z",
+      "runManifestDigest": "sha256:bf79c8ddb08ec9008d1e085a44e2267f13e2fe5e879c1a6c382c242e19766469",
+      "resultsDigest": "sha256:44ee9f7cc550c94432e8cd32c488eb7b30f548c70df648bcf0a8a26788692014",
+      "recordId": "codex-math-b019-q2-blind-b-20260829.record-019",
+      "recordDigest": "sha256:a7b81aa03a2512a3146a320784b508f15a910bb739cacb23de99490cbeb75190"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f4b4bfad37a85df8afe80af677030963b458a4a60e73398785df2bcd46958f9c"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-7-v1.json",
+    "manifestId": "mathematik-b019-stable7-synthesis-openai-codex-20260829",
+    "manifestDigest": "sha256:04d2a7ca780a7b0e6e4f3356ee0307bf205aea74a853e4bb11a93e14c473b46e",
+    "manifestFingerprint": "sha256:20fad5dc93ce72412e7920ef8c24a56b9a78c1fd10149de1cd18fb509b1da89d",
+    "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-007"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B019 stable-seven bounded synthesis candidate",
+    "synthesizedAt": "2026-08-29T02:12:08.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde B trennt Scharparameter, Raumvariablen, Entartung und bloße Darstellungsskalierung am vollständigsten.",
+    "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current advanced-course competence. Round B most clearly distinguishes family parameters, spatial variables, degeneracy, and representational scaling.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Scharparameter wählt eine konkrete Ebene, indem er Koeffizienten, Normalenrichtung oder Konstante der Koordinatengleichung festlegt; die Raumkoordinaten bleiben davon verschiedene Variablen. Lage- und Schnittbedingungen werden zu Bedingungen an den Scharparameter, wobei besondere Werte zu entarteten Gleichungen oder qualitativ anderen Ebenenlagen führen können.",
+      "essentialUnderstandingEn": "The family parameter selects one particular plane by fixing coefficients, normal direction, or the constant in the coordinate equation; the spatial coordinates remain distinct variables. Positional and intersection conditions become conditions on the family parameter, and exceptional values may lead to degenerate equations or qualitatively different plane positions.",
+      "observablePerformanceDe": "Die lernende Person untersucht eine neue Koordinatengleichungsschar, bestimmt den Normalenvektor in Abhängigkeit vom Scharparameter, übersetzt eine vorgegebene Parallelitäts-, Punkt- oder Schnittbedingung in eine Parameterbedingung und prüft alle gefundenen Werte auf Zulässigkeit und geometrische Bedeutung.",
+      "observablePerformanceEn": "The learner analyzes a new family of coordinate equations, determines the normal vector as a function of the family parameter, translates a specified parallelism, point, or intersection condition into a condition on that parameter, and checks every resulting value for admissibility and geometric meaning.",
+      "transferExpectationDe": "Die lernende Person überträgt das Vorgehen auf eine äquivalent skalierte Schardarstellung oder eine andere Lagebedingung, trennt echte geometrische Änderungen von bloßen Gleichungsänderungen und identifiziert besondere Parameterwerte vollständig.",
+      "transferExpectationEn": "The learner transfers the approach to an equivalently scaled representation of the family or a different positional condition, distinguishes genuine geometric changes from mere equation changes, and identifies exceptional parameter values completely."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8c156c8654e27583e83616a4b07112d0c3d81fab745833a51d357f96113c444b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ea251c97aae411dc6adbf9bb35743467198d4886cc4a9e8b8b9d2829bfe84818"
+}

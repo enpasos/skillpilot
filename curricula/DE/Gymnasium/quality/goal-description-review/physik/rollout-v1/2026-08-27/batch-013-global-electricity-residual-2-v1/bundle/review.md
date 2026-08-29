@@ -3,7 +3,7 @@
 - Book ID: `de-gym-physik-rollout-v1-batch-013-global-electricity-residual-2-v1-20260827`
 - Book edition: `curricular-atomic-v1`
 - Publication mode: `review`
-- BookModel digest: `sha256:c78d762f8ebc085f8ed9c9122887f61b3bec474220a30853cf15e8aa4b3ff247`
+- BookModel digest: `sha256:075aa61571c81cba7c3abb5252c41df8fc09e5d4da5018ce3a0c81f6109771c2`
 - Selected goals: 2
 
 The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.

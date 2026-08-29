@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `692db5b6-8be1-5c7b-8307-3a02afb21ea0`
 - Titel: Ein- und Ausschaltvorgänge analysieren
-- Beschreibung: Die lernende Person kann zeitliche Verläufe bei der Spule beschreiben und Begriffe Selbstinduktion/Induktivität quantifizieren.
+- Beschreibung: Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Ein- und Ausschaltvorgänge analysieren
-Beschreibung: Die lernende Person kann zeitliche Verläufe bei der Spule beschreiben und Begriffe Selbstinduktion/Induktivität quantifizieren.
+Beschreibung: Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.
 
 Zusatzanweisung:
 Create a new German educational infographic with two completely separate circuit diagrams, not a shared or ambiguous switch. Left: a battery, resistor and inductor connected in one closed loop labelled Einschalten, with I(t) = I_max(1 − e^(−t/τ)). Right: no battery at all; resistor and inductor alone are connected end-to-end in one visibly closed loop labelled Entladen, with I(t) = I₀e^(−t/τ). Put a current arrow around each closed loop and τ = L/R below. Every wire must visibly connect; do not draw any open switch, loose terminal, shorted battery or broken discharge path.

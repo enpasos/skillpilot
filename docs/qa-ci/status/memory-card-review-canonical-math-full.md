@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 791 |
-| goals without memory need | 752 |
+| ordinary atomic goals reviewed | 792 |
+| goals without memory need | 753 |
 | goals with intentional memory support | 39 |
 | goals needing developer review | 0 |
 | primary cards in scope | 64 |
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 281 | 2 | 7 | 0 |
-| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 283 | 2 | 10 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 284 | 2 | 7 | 0 |
+| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 286 | 2 | 10 | 0 |
 
 ## Memory-Required Goals
 

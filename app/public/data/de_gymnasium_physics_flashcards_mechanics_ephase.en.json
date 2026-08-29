@@ -148,8 +148,8 @@
     },
     {
       "id": "physics_e_cov_013",
-      "front": "1st Newtonian axiom?",
-      "back": "Without a net force, a body remains at rest or moves uniformly in a straight line",
+      "front": "Newton’s first law (law of inertia) in an inertial frame?",
+      "back": "If the net external force is zero, a body remains at rest or moves in a straight line with constant velocity:\n\n$\\sum \\vec F_\\mathrm{ext}=0 \\Rightarrow \\vec v=\\text{constant}$",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -160,8 +160,8 @@
     },
     {
       "id": "physics_e_cov_014",
-      "front": "Consequence of the 1st Newton axiom for sum of forces = 0?",
-      "back": "$\\sum \\vec F=0 \\Rightarrow \\vec a=0$\n\nthe velocity vector remains constant",
+      "front": "What follows in an inertial frame from $\\sum \\vec F_\\mathrm{ext}=0$?",
+      "back": "$\\vec a=0$ and therefore $\\vec v=\\text{constant}$. Force equilibrium means no acceleration, but not necessarily rest.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -172,8 +172,8 @@
     },
     {
       "id": "physics_e_cov_015",
-      "front": "2nd Newtonian axiom\n(general and for constant mass)?",
-      "back": "$\\vec F=\\frac{d \\vec p}{dt}$\n\nfor constant mass:\n\n$\\vec F=m \\vec a$",
+      "front": "Newton’s second law for a constant-mass body in an inertial frame?",
+      "back": "With $\\vec p=m\\vec v$:\n\n$\\sum \\vec F_\\mathrm{ext}=\\frac{\\mathrm d\\vec p}{\\mathrm dt}=m\\vec a$",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -184,8 +184,8 @@
     },
     {
       "id": "physics_e_cov_017",
-      "front": "3rd Newtonian axiom?",
-      "back": "Forces occur in pairs: equal in magnitude, opposite in direction, and acting on different bodies",
+      "front": "Newton’s third law (action–reaction law)?",
+      "back": "When two bodies A and B exert forces on each other, simultaneously:\n\n$\\vec F_{A\\to B}=-\\vec F_{B\\to A}$\n\nThe equal-magnitude, oppositely directed forces act on different bodies.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -220,8 +220,8 @@
     },
     {
       "id": "physics_e_cov_020",
-      "front": "The three Newtonian axioms in short form?",
-      "back": "1: Principle of inertia\n\n2: $\\vec F=\\frac{d \\vec p}{dt}$\n\n3: Actio = Reactio",
+      "front": "The three Newtonian laws in short form?",
+      "back": "1: In an inertial frame, $\\sum \\vec F_\\mathrm{ext}=0 \\Rightarrow \\vec v=\\text{constant}$.\n\n2: For a constant-mass body, $\\sum \\vec F_\\mathrm{ext}=\\frac{\\mathrm d\\vec p}{\\mathrm dt}=m\\vec a$.\n\n3: $\\vec F_{A\\to B}=-\\vec F_{B\\to A}$; both forces act simultaneously on different bodies.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -234,8 +234,8 @@
     },
     {
       "id": "physics_e_cov_021",
-      "front": "Work as energy transfer?",
-      "back": "$W= \\Delta E$\n\nfor constant force $F$ along a path $s$ (force and displacement parallel)\n\n$W=F \\cdot s$",
+      "front": "Mechanical work as energy transfer?",
+      "back": "Work is signed energy transfer across the boundary of a chosen system. If it is the only transfer, the work done on the system equals its change in energy.\n\nFor work done on the system, $W=\\int_C \\vec F\\cdot \\mathrm d\\vec s$.\n\nFor a constant force and straight-line displacement, $W=Fs\\cos\\alpha$; for force in the same direction as the displacement, $W=Fs$.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -270,8 +270,8 @@
     },
     {
       "id": "physics_e_cov_024",
-      "front": "Formula for gravitational potential energy (near Earth’s surface)?",
-      "back": "$E_\\mathrm{pot}=mgh$",
+      "front": "Gravitational potential energy near Earth’s surface?",
+      "back": "For the object–Earth system with approximately constant $g$, relative to a chosen reference height $h=0$:\n\n$E_\\mathrm{pot}=mgh$\n\nIndependent of the zero level, $\\Delta E_\\mathrm{pot}=mg\\,\\Delta h$.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -282,8 +282,8 @@
     },
     {
       "id": "physics_e_cov_025",
-      "front": "Frictional energy: mnemonic?",
-      "back": "Friction converts mechanical energy into internal energy (heat)",
+      "front": "What does “frictional energy” mean in an energy balance?",
+      "back": "It denotes the portion of mechanical energy converted by friction into the internal energy of the interacting bodies; total energy is conserved.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -294,8 +294,8 @@
     },
     {
       "id": "physics_e_cov_026",
-      "front": "Energy conservation in a closed system?",
-      "back": "$E_\\text{tot}= \\text{constant}$",
+      "front": "When does a system’s total energy remain constant?",
+      "back": "If no energy is transferred across the system boundary (isolated system):\n\n$E_\\mathrm{tot}=\\text{constant}$\n\nAny energy transfer must be included in the energy balance.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -317,8 +317,8 @@
     },
     {
       "id": "physics_e_cov_028",
-      "front": "Conservation of momentum?",
-      "back": "In closed systems, total momentum remains conserved:\n\n$\\sum \\vec p= \\text{constant}$",
+      "front": "When is a system’s total momentum conserved?",
+      "back": "If the net external impulse over the time interval is zero, then vectorially:\n\n$\\vec J_\\mathrm{ext}=\\int \\sum \\vec F_\\mathrm{ext}\\,\\mathrm dt=0 \\Rightarrow \\sum_i \\vec p_i=\\text{constant}$",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",
@@ -340,8 +340,8 @@
     },
     {
       "id": "physics_e_cov_030",
-      "front": "Impulse?",
-      "back": "$\\vec J= \\int \\vec F\\,dt \\approx \\vec F\\,\\Delta t= \\Delta \\vec p$",
+      "front": "Impulse from the net external force?",
+      "back": "$\\vec J_\\mathrm{ext}=\\int_{t_1}^{t_2}\\sum \\vec F_\\mathrm{ext}(t)\\,\\mathrm dt=\\Delta\\vec p$\n\nFor a constant net external force, $\\vec J_\\mathrm{ext}=\\sum \\vec F_\\mathrm{ext}\\,\\Delta t$.",
       "category": "E-Phase Mechanics",
       "tags": [
         "GK",

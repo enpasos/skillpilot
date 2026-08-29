@@ -3,7 +3,7 @@
 - Book ID: `de-gym-physik-rollout-v1-batch-012-global-electricity-final-9-v1-20260827`
 - Book edition: `curricular-atomic-v1`
 - Publication mode: `review`
-- BookModel digest: `sha256:b2cd68f02d0ab93d2d07e5d10a628277bd609b6a16f5f4f9d83a2777ad0a10df`
+- BookModel digest: `sha256:6829478b762f3a6d3d4222ac6aef8ccd88eeaa73f3affa7902e7eb7179e7e465`
 - Selected goals: 9
 
 The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
@@ -12,7 +12,7 @@ The PDF and this Markdown are parallel review surfaces. The normalized JSON is a
 
 - Full learning-goal ID: `f778a659-1467-4aa7-97b2-bed78c530634`
 - Goal fingerprint: `sha256:4779de83e660a13ee0698b72fb61adb5c223695b43027842473f6e4b016e4b99`
-- Page fingerprint: `sha256:03cffa1cddd2eab8696b3b182ac546a31814001d56c305847d6e118e9d82bbec`
+- Page fingerprint: `sha256:374cbae8d19cb4bb07c76d7c0d82ed58946ec5b97c02646f367a805bd4836d5a`
 - Topic path: Physik
 
 ### Canonical description
@@ -41,6 +41,7 @@ Die lernende Person kann Anziehung und Abstoßung zwischen Magnetpolen qualitati
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Magnetpole und Wirkungen des elektrischen Stroms untersuchen — `1ee79cae-a7da-53cb-86ff-872e8403f033` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 
 ### Evidence-profile candidate
@@ -50,7 +51,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `7ca44ba0-b77e-52bf-8562-f67b44767172`
 - Goal fingerprint: `sha256:ba9eaf18a5f7c97100bf8eea6d64e1bdadd07268db001919658a93017728d79b`
-- Page fingerprint: `sha256:ed0bc0fe9dbde2e48d58fa9f736c4baea38f22135815d5f5ddd9246a5fa66a7a`
+- Page fingerprint: `sha256:5c0dea90d98a61b17831ba353ae85a62752386a8750a5133569c4677d85a8453`
 - Topic path: Physik > Leitfähigkeit, Stromkreise und Schaltpläne
 
 ### Canonical description
@@ -59,7 +60,11 @@ Die lernende Person kann mit einer sicheren Kleinspannungsquelle einfache offene
 
 ### Visualization
 
-No visualization is bound to this page.
+/assets/goal-visualizations/physik/7ca44ba0-b77e-52bf-8562-f67b44767172/7ca44ba0-b77e-52bf-8562-f67b44767172.jpg
+
+- original digest: `sha256:f9f01dde38d4c893ce00554c611deef7a8164397a8b6459582842e2f0e77a0b5`
+- QA status: `review_candidate`
+- approved for public publication: `false`
 
 ### Direct prerequisites
 
@@ -85,7 +90,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `69f8f59c-b0c3-5b0b-82db-834a0e655736`
 - Goal fingerprint: `sha256:cd1c3ddadb60512e4e5b02317166546a19447296675f9b9de4350b6933db3a74`
-- Page fingerprint: `sha256:5a9cb664fba9f98242294cabea7d08536080027970e2267902fd46f89a840625`
+- Page fingerprint: `sha256:f8bdbc6d7488cb072a9a0cea23dba2ca8f78714292cd9f411b8604cd0ac77517`
 - Topic path: Physik > Leitfähigkeit, Stromkreise und Schaltpläne
 
 ### Canonical description
@@ -94,7 +99,11 @@ Die lernende Person kann einen einfachen realen Stromkreis mit fachüblichen Sch
 
 ### Visualization
 
-No visualization is bound to this page.
+/assets/goal-visualizations/physik/69f8f59c-b0c3-5b0b-82db-834a0e655736/69f8f59c-b0c3-5b0b-82db-834a0e655736.jpg
+
+- original digest: `sha256:54b473b1c0b6a61088f6d7497a971820ccb2af6d900af5ed8f24284c6c8650af`
+- QA status: `review_candidate`
+- approved for public publication: `false`
 
 ### Direct prerequisites
 
@@ -120,7 +129,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `a5f652cc-e091-4c90-bec2-c357ae54fcf1`
 - Goal fingerprint: `sha256:b5889dbdee29f1585de264935bbc546205ee8e0da433db7ac336687bf33c4e83`
-- Page fingerprint: `sha256:11f54d268f807eabbe3125dcfcd316a08fb661d6d51adfccb4829fe49f223973`
+- Page fingerprint: `sha256:cdf5e729a472dd1f34d47b918445f568ffbc0f377553b13e15fb9bb51842aa51`
 - Topic path: Physik
 
 ### Canonical description
@@ -149,6 +158,7 @@ Die lernende Person kann magnetische, Licht-, Wärme- und chemische Wirkungen de
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Magnetpole und Wirkungen des elektrischen Stroms untersuchen — `1ee79cae-a7da-53cb-86ff-872e8403f033` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 - Einfachen Elektromotor bauen und qualitativ erklären — `eb30189c-27c6-510b-b235-6543afa18b90` (outside this book)
 
@@ -200,7 +210,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `dc7dd287-6eac-574d-818d-65cfb23a2d94`
 - Goal fingerprint: `sha256:8f5766c4b47c3b03766ab3fe454a17edf191438e16be359bac09564532ce4da1`
-- Page fingerprint: `sha256:127a1e9566868ed9f870c2be51ebcf69c7e6957c3ea8f0d725c12a9109a97f36`
+- Page fingerprint: `sha256:3d025b2f0205aab1abf6ce8594a7717c56ae9aced9aefb97c18731b0a1c9f375`
 - Topic path: Physik > Sekundarstufe I > Spannung, Schaltungen und Sicherheit (Sek I) > Statische Elektrizität, Spannung und Kondensatoren
 
 ### Canonical description
@@ -209,7 +219,11 @@ Die lernende Person kann in einfachen elektrostatischen Situationen mit einem La
 
 ### Visualization
 
-No visualization is bound to this page.
+/assets/goal-visualizations/physik/dc7dd287-6eac-574d-818d-65cfb23a2d94/dc7dd287-6eac-574d-818d-65cfb23a2d94.jpg
+
+- original digest: `sha256:f8e663b9660312ac8cee98c32a9c2bc79e4c722f8e3eb9bc8dc4d8ba7ecf6c41`
+- QA status: `review_candidate`
+- approved for public publication: `false`
 
 ### Direct prerequisites
 
@@ -226,6 +240,7 @@ No visualization is bound to this page.
 ### Direct reverse prerequisites outside this book
 
 - Prüfungsaufgabe: Ladungstrennung und Kondensator im Modell erklären — `119cb138-b0c4-559d-8f1a-a4ae42db0656` (outside this book)
+- Elektrische Vorgänge und sicheres Verhalten bei Gewittern erklären — `c156d2fb-0fe9-5f13-8baa-3e74d7da151e` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -234,7 +249,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `28237994-9c24-5a06-82fe-be1f494768ba`
 - Goal fingerprint: `sha256:61f43a22ea6092977e3705b318d8fe1185d0ddee8ce54afba9eb43826ffbc1de`
-- Page fingerprint: `sha256:99211ad783f9363521031596ba5ae118be1d16786cf2d0e202bb388ea7b9984a`
+- Page fingerprint: `sha256:98573d52f0d8e728ef681e997519cf78d0277dae349d9da3493a9daaa2ccad6c`
 - Topic path: Physik
 
 ### Canonical description
@@ -243,7 +258,11 @@ Die lernende Person kann ein Voltmeter parallel zwischen zwei Punkten eines einf
 
 ### Visualization
 
-No visualization is bound to this page.
+/assets/goal-visualizations/physik/28237994-9c24-5a06-82fe-be1f494768ba/28237994-9c24-5a06-82fe-be1f494768ba.jpg
+
+- original digest: `sha256:5abe164d96763177944960210e24ac63441bf3ecbedda1d0fa5ce25683dc52eb`
+- QA status: `review_candidate`
+- approved for public publication: `false`
 
 ### Direct prerequisites
 
@@ -271,7 +290,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `80dd0a2b-1422-5b00-89ff-ec4d0faa047e`
 - Goal fingerprint: `sha256:f99b0b43ed1448a2dc17a3b450a69b8c867a1a716d8410439f588a6b964a7c89`
-- Page fingerprint: `sha256:7da937db87921ea8f322e41624d6f9ff31629cda1aca7836424d79ddc9c688ab`
+- Page fingerprint: `sha256:8e744c43349a238081b39da1accb596e5e1be588cd20693b8da1e139f6b13928`
 - Topic path: Physik > Sekundarstufe I > Spannung, Schaltungen und Sicherheit (Sek I) > Statische Elektrizität, Spannung und Kondensatoren
 
 ### Canonical description
@@ -280,7 +299,11 @@ Die lernende Person kann einen geladenen Kondensator als zwei voneinander isolie
 
 ### Visualization
 
-No visualization is bound to this page.
+/assets/goal-visualizations/physik/80dd0a2b-1422-5b00-89ff-ec4d0faa047e/80dd0a2b-1422-5b00-89ff-ec4d0faa047e.jpg
+
+- original digest: `sha256:b36f7855932b93fd6ffc61bacd974b57849ce6f085c5976fe90b05e428fb5c7f`
+- QA status: `review_candidate`
+- approved for public publication: `false`
 
 ### Direct prerequisites
 
@@ -305,7 +328,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `53196a71-9dbd-4835-b2f9-ff21b8a8962c`
 - Goal fingerprint: `sha256:9eaba9b5f11f424c715cc636ac46c17401eb938e3ae07226f39d2b17304ada6f`
-- Page fingerprint: `sha256:6c480fedb2f21eb72f1976ea96a174d95980406fc0723861de6787e13a5e645b`
+- Page fingerprint: `sha256:214477f1854fc04b5aa51304399c33914f76c58e8e6b7df221b0638225ebe88e`
 - Topic path: Physik
 
 ### Canonical description
@@ -338,9 +361,11 @@ Die lernende Person kann die Stromstärke durch und die Spannung an einem einfac
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 - Elektrische Energieumwandlungen qualitativ beschreiben — `cbb26ed2-6979-46f6-a4ae-128f5c5d9d76` (outside this book)
 - Reihen- und Parallelschaltungen für eine Funktion planen — `01bebdfc-5819-4610-a03e-ea5e794fc954` (outside this book)
-- Elektrische Anlagen, Gewitter und Haushaltsstromkreise sicher beurteilen — `1911920e-b099-4310-82f2-b47f51a78b33` (outside this book)
-- Widerstand und Kennlinien einfacher Bauteile untersuchen — `ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca` (outside this book)
-- Elektrische Energieversorgung und Geräteangaben einordnen — `50431e92-eec9-54d6-b437-ea7a51b6f474` (outside this book)
+- Gefahren elektrischer Anlagen und Haushaltsstromkreise sicher beurteilen — `5ddba212-9e0a-5dd4-8274-239ec51ab6a8` (outside this book)
+- Strom-Spannungs-Kennlinien einfacher Bauteile experimentell untersuchen und deuten — `66256e22-44a3-5939-8862-821e29d6711d` (outside this book)
+- Einflüsse auf den Widerstand eines Leiters qualitativ beschreiben — `af7855a3-6aea-5e05-8505-248bc9a8c219` (outside this book)
+- Gleich- und Wechselspannungsversorgungen einordnen — `4a42cddd-7827-5204-87e5-8d9eac7792f1` (outside this book)
+- Elektrische Geräte- und Akkuangaben physikalisch deuten — `27b90ce9-b650-5232-85fb-ce2cb69d59a3` (outside this book)
 - Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben — `5f97952e-5ac9-5749-94d0-d1dc50dda358` (outside this book)
 
 ### Evidence-profile candidate

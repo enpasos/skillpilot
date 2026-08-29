@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `5f289cdc-fda1-4058-b44f-041ba1398e79`
 - Titel: Grundgleichung der Mechanik anwenden
-- Beschreibung: Die lernende Person kann die Grundgleichung der Mechanik $F = m \cdot a$ in einfachen eindimensionalen Situationen anwenden und Kräftegleichgewichte von beschleunigten Bewegungen abgrenzen.
+- Beschreibung: Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\sum F_\mathrm{ext}=m\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\sum F_\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Grundgleichung der Mechanik anwenden
-Beschreibung: Die lernende Person kann die Grundgleichung der Mechanik $F = m \cdot a$ in einfachen eindimensionalen Situationen anwenden und Kräftegleichgewichte von beschleunigten Bewegungen abgrenzen.
+Beschreibung: Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\sum F_\mathrm{ext}=m\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\sum F_\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Nutze für einen Körper konstanter Masse in einem Inertialsystem eine klar gewählte eindimensionale Vorzeichenrichtung und unterscheide ΣF_ext=0 von ΣF_ext=m·a.
+
 Pflichtinhalt:
 
 Show applying `F = m * a` in one-dimensional motion.

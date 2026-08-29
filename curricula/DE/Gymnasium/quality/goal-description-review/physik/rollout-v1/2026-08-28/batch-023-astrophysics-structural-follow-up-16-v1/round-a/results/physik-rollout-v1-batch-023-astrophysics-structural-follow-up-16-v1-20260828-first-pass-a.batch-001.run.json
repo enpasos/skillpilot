@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b023-20260828-round-a-gpt5-6-sol",
+  "campaignId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-a",
+  "roundId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9639a698e72672accaff6f93c8ff3c897e7ddfee3e2df2c97bc9c954ec216d16",
+  "bundleFingerprint": "sha256:c651679bbfe66f38c8eef96a2df80e5fa8e052b5660fcf65456b12630a2ce2ad",
+  "bookDigest": "sha256:df810de7d30e711e2adf9474e3793d908ab1419de9cc9ac22c9c71853a25cbb5",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Codex",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:abfa97d753007982760aa29d5e1de92b61784a5b142d82cc1c1968ee4d936927",
+  "independenceGroupId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+    "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+    "4ea39b40-1563-58ab-8d54-5fc20efa5365",
+    "d024aa45-5dbb-51f7-87a6-9ba939858696",
+    "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+    "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+    "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+    "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+    "206a7d3d-9b11-56be-89ff-73898445c4f5",
+    "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+    "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+    "c53b3f0c-b4fe-5509-8803-a36c2883e5d6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9639a698e72672accaff6f93c8ff3c897e7ddfee3e2df2c97bc9c954ec216d16"
+    }
+  ],
+  "startedAt": "2026-08-28T18:20:00Z",
+  "completedAt": "2026-08-28T18:39:19Z",
+  "status": "completed",
+  "outputDigest": "sha256:13c1ef2b2f911334fac5277ed97528e665d62ac3df6693f6f03859bdb10d79c2",
+  "toolchainVersion": "codex-gpt5.6-sol-2026-08-28"
+}

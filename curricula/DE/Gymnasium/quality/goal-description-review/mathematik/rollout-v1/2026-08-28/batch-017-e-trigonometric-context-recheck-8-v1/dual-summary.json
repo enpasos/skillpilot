@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3e28955a3034f81cce1d4936807061801af39b9daf0c929c258fb5b87709ac92",
+  "reviewInputFingerprint": "sha256:e0d1e92af94b57f2355d4a086d3d0f72707b11662bc6487d857662cf5255f0a2",
+  "goalCount": 8,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-a",
+      "roundId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-independent-a",
+      "runIds": [
+        "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-b",
+      "roundId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-independent-b",
+      "runIds": [
+        "6cc30e96-c150-4c12-b7cd-f324389e9234"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 8,
+    "unavailable": 0,
+    "requiresSynthesis": 8
+  },
+  "goals": [
+    {
+      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-001",
+      "secondRecordId": "426c7c31-3e31-406f-8db5-e190862db147",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-002",
+      "secondRecordId": "7b99b146-df07-4c9f-9e52-a24e96ed8169",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-003",
+      "secondRecordId": "3014b33c-d2a8-4317-a00f-1cd2c5d7691f",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-004",
+      "secondRecordId": "9914fd44-71a5-4fc3-9390-1bce26a3db4a",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-005",
+      "secondRecordId": "7d5564ba-e3c5-41eb-832c-7bb7df81cf31",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-006",
+      "secondRecordId": "c79b5c97-d636-499a-bf59-a14f5257dd3c",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "block",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-007",
+      "secondRecordId": "d6317294-7861-4599-9cd9-bdc5894233c9",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "56fba457-ab98-5b96-963e-ec284458c17f",
+      "firstRecordId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0.goal-008",
+      "secondRecordId": "09d382f7-5053-41da-a5ff-928e72215244",
+      "firstRunId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+      "secondRunId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

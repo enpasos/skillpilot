@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-08-27T20:28:29.992Z
+Generated: 2026-08-29T06:33:07.567Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -40,9 +40,9 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1170 | 916 | 31/31 | 16/16 | 2 | 1 | 0 |
+| Mathematik (Gymnasium, DE) | M6 | 1174 | 919 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Physik (Gymnasium, DE) | M6 | 676 | 573 | 25/25 | 16/16 | 2 | 1 | 0 |
+| Physik (Gymnasium, DE) | M6 | 706 | 592 | 25/25 | 16/16 | 2 | 1 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
@@ -265,28 +265,28 @@ Rules version: curriculum-quality-v4
 | Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 24 | 38 | 38 | 0 | 100% | - |  |
 | Physik (Gymnasium, DE) | DE-BB - Physik Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 1/1 | 3/3 | - | 20 | 175 | 0 | 175 | 0% | - |  |
 | Physik (Gymnasium, DE) | DE-BE - Physik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 1/1 | 3/3 | - | 20 | 175 | 0 | 175 | 0% | - |  |
-| Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 24 | 164 | 64 | 100 | 39% | - |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 14 | 101 | 29 | 72 | 29% | - |  |
-| Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 42 | 296 | 21 | 275 | 7% | - |  |
+| Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 24 | 164 | 63 | 101 | 38% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 14 | 101 | 36 | 65 | 36% | - |  |
+| Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 42 | 301 | 21 | 280 | 7% | - |  |
 | Physik (Gymnasium, DE) | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 2/2 | 3/3 | - | 7 | 68 | 35 | 33 | 51% | - |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 1/1 | 3/3 | - | 10 | 214 | 146 | 68 | 68% | - |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 21 | 274 | 198 | 76 | 72% | - |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 48 | 29 | 19 | 60% | - |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 8 | 128 | 62 | 66 | 48% | - |  |
-| Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 10 | 154 | 91 | 63 | 59% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 21 | 274 | 194 | 80 | 71% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 48 | 35 | 13 | 73% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 8 | 128 | 57 | 71 | 45% | - |  |
+| Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 10 | 154 | 89 | 65 | 58% | - |  |
 | Physik (Gymnasium, DE) | DE-MV - Physik Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 143 | 5 | 138 | 3% | - |  |
 | Physik (Gymnasium, DE) | DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 URL; local cache 1/1 | 3/3 | - | 17 | 142 | 4 | 138 | 3% | - |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 1/1 URL; local cache 1/1 | 3/3 | - | 19 | 154 | 92 | 62 | 60% | - |  |
 | Physik (Gymnasium, DE) | DE-NW - Physik Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 1/1 URL; local cache 1/1 | 3/3 | - | 30 | 187 | 8 | 179 | 4% | - |  |
 | Physik (Gymnasium, DE) | DE-RP - Physik Sekundarstufe II (Rheinland-Pfalz, MSS Source-Extraction Draft) | DE-RP | 1/1 URL; local cache 1/1 | 3/3 | - | 46 | 193 | 1 | 192 | 1% | - |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 URL; local cache 1/1 | 3/3 | - | 15 | 169 | 90 | 79 | 53% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 URL; local cache 1/1 | 3/3 | - | 15 | 169 | 88 | 81 | 52% | - |  |
 | Physik (Gymnasium, DE) | DE-SL - Physik Gymnasiale Oberstufe (Saarland, GOS 2023 Source-Extraction) | DE-SL | 3/3 URL; local cache 3/3 | 3/3 | - | 88 | 854 | 78 | 776 | 9% | - |  |
-| Physik (Gymnasium, DE) | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 4/4 URL; local cache 4/4 | 3/3 | - | 72 | 670 | 86 | 584 | 13% | - |  |
+| Physik (Gymnasium, DE) | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 4/4 URL; local cache 4/4 | 3/3 | - | 72 | 670 | 87 | 583 | 13% | - |  |
 | Physik (Gymnasium, DE) | DE-SN - Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 39 | 318 | 6 | 312 | 2% | - |  |
-| Physik (Gymnasium, DE) | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 35 | 276 | 22 | 254 | 8% | - |  |
+| Physik (Gymnasium, DE) | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 35 | 276 | 25 | 251 | 9% | - |  |
 | Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 1/1 | 3/3 | - | 18 | 387 | 0 | 387 | 0% | - |  |
 | Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 1/1 | 3/3 | - | 30 | 575 | 0 | 575 | 0% | - |  |
-| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 220 | 2 | 218 | 1% | - |  |
+| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 179 | 2 | 177 | 1% | - |  |
 | Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012/2024 Source-Extraction) | DE-TH | 2/2 URL; local cache 2/2 | 3/3 | - | 11 | 257 | 0 | 257 | 0% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Brandenburg, RLP 2015 FULL Source-Extraction) | DE-BB | 2/2 URL; local cache 2/2 | 3/3 | - | 17 | 113 | 0 | 113 | 0% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Brandenburg, GOST FULL Source-Extraction) | DE-BB | 2/2 URL; local cache 2/2 | 3/3 | - | 32 | 156 | 2 | 154 | 1% | - |  |
@@ -373,9 +373,9 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 710 | 916 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 710 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 711 | 919 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 711 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
-| Physik (Gymnasium, DE) | 16/16 | 411 | 573 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 404 (100%) |
+| Physik (Gymnasium, DE) | 16/16 | 428 | 592 | 16 | 6306 | 6306 | 6306 | 0 | 6306 | 0 | 0 | 0 | 0 | 0 | 421 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |

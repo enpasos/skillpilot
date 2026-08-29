@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:d151b11d8ad024e338ea6e423f4286f9e5c61f21367fbf2297ca2fc20ed70b4d",
+  "reviewInputFingerprint": "sha256:2dfe97c2f71b59d50cc7e047f3f0cacc16b6fd93c1a1d4024bf9dedcfe9d1c23",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-a",
+      "roundId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-independent-a",
+      "runIds": [
+        "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5.6 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-b",
+      "roundId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5.5::OpenAI::GPT-5.5"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "firstRecordId": "gdr-b018-a-b352fb2b-01",
+      "secondRecordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-001",
+      "firstRunId": "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb",
+      "secondRunId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "firstRecordId": "gdr-b018-a-b352fb2b-02",
+      "secondRecordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-002",
+      "firstRunId": "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb",
+      "secondRunId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
+      "firstRecordId": "gdr-b018-a-b352fb2b-03",
+      "secondRecordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-003",
+      "firstRunId": "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb",
+      "secondRunId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "firstRecordId": "gdr-b018-a-b352fb2b-04",
+      "secondRecordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-004",
+      "firstRunId": "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb",
+      "secondRunId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "56fba457-ab98-5b96-963e-ec284458c17f",
+      "firstRecordId": "gdr-b018-a-b352fb2b-05",
+      "secondRecordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-005",
+      "firstRunId": "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb",
+      "secondRunId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `31a2ef52-114b-4d2c-a720-6ef5a390b6dc`
 - Titel: Newtons 1. Axiom (Trägheitsprinzip)
-- Beschreibung: Die lernende Person kann das Trägheitsprinzip formulieren und an einfachen Situationen deuten.
+- Beschreibung: Die lernende Person kann Newtons erstes Axiom formulieren und einfache Situationen damit deuten: In einem Inertialsystem bleibt ein Körper bei verschwindender resultierender äußerer Kraft in Ruhe oder bewegt sich geradlinig mit konstanter Geschwindigkeit.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Newtons 1. Axiom (Trägheitsprinzip)
-Beschreibung: Die lernende Person kann das Trägheitsprinzip formulieren und an einfachen Situationen deuten.
+Beschreibung: Die lernende Person kann Newtons erstes Axiom formulieren und einfache Situationen damit deuten: In einem Inertialsystem bleibt ein Körper bei verschwindender resultierender äußerer Kraft in Ruhe oder bewegt sich geradlinig mit konstanter Geschwindigkeit.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Formuliere Newtons erstes Axiom für ein Inertialsystem und beziehe die unveränderte Ruhe beziehungsweise gleichförmig-geradlinige Bewegung ausdrücklich auf eine verschwindende resultierende äußere Kraft.
+
 Pflichtinhalt:
 
 Show Newton's first law as the inertia principle, without force arrows.

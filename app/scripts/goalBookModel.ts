@@ -16,6 +16,7 @@ import {
   type CanonicalAuthoringLandscape,
 } from '../src/utils/authoring/canonicalAuthoring'
 import {
+  collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
   type CompositionView,
@@ -1648,7 +1649,19 @@ const compileGoalBookViewSource = (
       .map((finding) => `${finding.code}${finding.goalId ? ` ${finding.goalId}` : ''}: ${finding.message}`)
       .join(' | ')}`)
   }
-  const targetCollection = collectTargetAtomicGoals(compilation.compiledRootNodes, landscape)
+  const unfilteredTargetCollection = collectTargetAtomicGoals(
+    compilation.compiledRootNodes,
+    landscape,
+  )
+  const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(
+    view.rootNodes,
+    new Map(landscape.goals.map((goal) => [goal.id, goal] as const)),
+  )
+  const targetCollection = {
+    ...unfilteredTargetCollection,
+    occurrences: unfilteredTargetCollection.occurrences
+      .filter(({ goalId }) => targetGoalIds.has(goalId)),
+  }
   const curricularAtomicGoalIds = new Set(targetCollection.occurrences
     .filter(({ goalId }) => semanticKindByGoalId.get(goalId) === 'curricularAtomic')
     .map(({ goalId }) => goalId))

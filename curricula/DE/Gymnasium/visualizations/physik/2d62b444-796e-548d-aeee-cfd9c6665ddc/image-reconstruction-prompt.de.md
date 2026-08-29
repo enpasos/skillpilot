@@ -1,10 +1,10 @@
-# Bildrekonstruktionsprompt: Teilchenbeschleuniger (Zyklotron/Synchrotron)
+# Bildrekonstruktionsprompt: Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `2d62b444-796e-548d-aeee-cfd9c6665ddc`
-- Titel: Teilchenbeschleuniger (Zyklotron/Synchrotron)
-- Beschreibung: Die lernende Person kann Prinzip und Grenzen von Zyklotron und Synchrotron (rotierende Teilchenbeschleuniger) erläutern.
+- Titel: Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen
+- Beschreibung: Die lernende Person kann Zyklotron und Synchrotron anhand der gemeinsamen Rollen elektrischer Felder beim Beschleunigen und magnetischer Felder bei der Bahnführung vergleichen, die feste Hochfrequenztaktung mit wachsendem Bahnradius beim idealisierten nichtrelativistischen Zyklotron von der angepassten Beschleunigungsphase und Magnetfeldstärke bei näherungsweise konstantem Synchrotronradius unterscheiden und daraus wesentliche Modell- und Betriebsgrenzen begründen.
 
 ## Generator
 

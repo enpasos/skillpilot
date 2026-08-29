@@ -1,0 +1,69 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-023-astrophysics-structural-follow-up-16-v1.config.json",
+  "configDigest": "sha256:99ed9371f12a8642eea49e1eb3e5fcdcae183635eb36bf1e1f6bb309f1f323dc",
+  "goalIds": [
+    "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+    "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+    "4ea39b40-1563-58ab-8d54-5fc20efa5365",
+    "d024aa45-5dbb-51f7-87a6-9ba939858696",
+    "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+    "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+    "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+    "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+    "206a7d3d-9b11-56be-89ff-73898445c4f5",
+    "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+    "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+    "c53b3f0c-b4fe-5509-8803-a36c2883e5d6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 459,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:368745a103ba91297236ecd1d4c4a1af4d734c81ceda503cf2acb23007494a92"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:df810de7d30e711e2adf9474e3793d908ab1419de9cc9ac22c9c71853a25cbb5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c651679bbfe66f38c8eef96a2df80e5fa8e052b5660fcf65456b12630a2ce2ad",
+    "reviewInputFingerprint": "sha256:ef93e5d515960cf43620f822ade162f5bec68303850223f53a18ff18c125f281",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-a",
+        "campaignDigest": "sha256:281856f6282e35ef1188b6ee7568a728178c2b9b8b25c00f9d1a6f3a9fd44986",
+        "roundId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-independent-a",
+        "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:9639a698e72672accaff6f93c8ff3c897e7ddfee3e2df2c97bc9c954ec216d16"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-b",
+        "campaignDigest": "sha256:a2572b24ed57ff470462d269413d6aed00a4b1004cd20f068b5daf257607d66b",
+        "roundId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-independent-b",
+        "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:974d93cdab0f5f0de93985d4b81d292e2786eeb67b42518e6989eff2e5cd50ac"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

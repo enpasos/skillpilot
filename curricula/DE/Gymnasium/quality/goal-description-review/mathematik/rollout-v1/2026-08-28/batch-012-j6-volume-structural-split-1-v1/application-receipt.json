@@ -1,0 +1,889 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-math-99ef-volume-structural-split-2026-08-28-v3",
+  "appliedAt": "2026-08-28",
+  "status": "applied-locally-not-committed",
+  "scope": {
+    "subject": "Mathematik",
+    "layer": "Layer A curriculum data and its direct QA bindings only",
+    "retainedClusterId": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+    "newAtomicGoalIds": [
+      "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "e01869db-891c-57a4-8660-789ec6875ec2"
+    ],
+    "centralDeepRolloutConfigChanged": true,
+    "publicGoalBooksChanged": true,
+    "physicsChanged": false
+  },
+  "invariants": {
+    "retainedScopeTextUnchanged": true,
+    "retainedNanoBananaOverviewSha256": "sha256:b51f224ff0f4ddfe785244b8e8fa3d43f99d3dc7db4fe92e8be18a3ef42baed7",
+    "child2RequiresChild1": true,
+    "childVisualizations": "deferred_provider_limitation",
+    "thuringiaUnsupportedVolumeEdgesRemoved": 3,
+    "applicabilityCompilerReconciled": true,
+    "simpleAndCompositeJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "assessmentJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "retiredParentPositiveEvidenceScopeRemoved": true,
+    "retainedPositiveEvidenceProfilesChanged": false,
+    "descriptionReviewDecisionAndTextChanged": false,
+    "descriptionContextBindingsRebound": true
+  },
+  "counts": {
+    "oldAtomicGoals": 1,
+    "retainedClusters": 1,
+    "newAtomicGoals": 2,
+    "curricularAtomicDelta": 1,
+    "historicalPhysicalMappingEdgesReconsidered": 40,
+    "affectedMappingDocuments": 18,
+    "affectedCompositionViews": 20,
+    "assessmentReferencesRewired": 2,
+    "newRouteClosingAssessments": 1
+  },
+  "sourceAdjudication": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-structural-split-1-v1/source-edge-adjudication.json",
+    "bytes": 35429,
+    "sha256": "sha256:b06d7d4f2309cd15b3fbe488927cc856e165ac05ea063653b64b00284ab6103f"
+  },
+  "sourceAdjudicationDigest": "sha256:4a8be59e32b5eca67870cf8574bc659e59a738e28a8311554bc1f4a6c474c1c8",
+  "applyScript": {
+    "path": "app/scripts/applyMathBatch012VolumeStructuralSplit.ts",
+    "bytes": 81391,
+    "sha256": "sha256:cea8ece4eb1acf2f9be9efd3541b685cd5fd2f9c69b7905786e9fdbed4335df0"
+  },
+  "beforeState": {
+    "canonicalSha256": "sha256:af12f6d966ee4214e014dcab032b5dbbac092c7b87b76de13c290d694f327127",
+    "mappingCorpusSha256": "sha256:cf506cf765e09ec2b1c7fd72c88e8024beba5eb8a6554ab8889f0d82a1571382"
+  },
+  "afterBindings": [
+    {
+      "path": "app/public/data/goal-source-rationales-math-public.json",
+      "bytes": 34921608,
+      "sha256": "sha256:f1bdcdb3c0e8609e3394b550935a1ec4fa9494e74152f67a0087d58f433378f5"
+    },
+    {
+      "path": "app/public/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json",
+      "bytes": 6165186,
+      "sha256": "sha256:08aefa88755ca88fc71f41ab8dcd32971e1ba1ccd51831f95f03cb1b192a5691"
+    },
+    {
+      "path": "app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf",
+      "bytes": 85277403,
+      "sha256": "sha256:b09871c3c41f1e898c0c4d58dfb2e6bd5ce7d41efac0772d14107ec241e99c6b"
+    },
+    {
+      "path": "app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf.render-manifest.json",
+      "bytes": 824450,
+      "sha256": "sha256:0dabe15f668ed643ebd685b273c9fe03b647d6410ddd3842f7b14ac92b74e186"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-math-national-atlas.sources.json",
+      "bytes": 7324,
+      "sha256": "sha256:c5a4c68368b1044a68f89e95099d6d2fc25f879c419ffd96c999897c6c3e33de"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "bytes": 45376,
+      "sha256": "sha256:f6df8775f400798db4264622f147b5c93e7be199ff1197ba83163af4d1151162"
+    },
+    {
+      "path": "app/scripts/rebindMathKnownReviewContextStales.ts",
+      "bytes": 23700,
+      "sha256": "sha256:a38aa6dd3353f44b8e39e2bf69c1a5bad03a067eeba42acf1cde898649fa09e1"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+      "bytes": 298661,
+      "sha256": "sha256:5371964f790c7aba5ff6d8063025e118bb8aef85ac0cc80270167880871a633e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6/blueprint.md",
+      "bytes": 7273,
+      "sha256": "sha256:18ff9ff8cc6888c5955e1fc09f7e8eecc37e152b625a2d9ef161ca7b2251764e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-28/j6/j6-composite-volume-additivity/draft_v1.md",
+      "bytes": 884,
+      "sha256": "sha256:4e95d1dde3a4ab52d795353221db5741728fbd268942c6afd6d9162026f6c010"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-28/j6/j6-composite-volume-additivity/simulated_review_v1.md",
+      "bytes": 652,
+      "sha256": "sha256:26de77d26ca4fe828ac9930a4dcc25797e0f5fa9856557977845454c9c773c5e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-28/j6/j6-composite-volume-additivity/solution_v1.md",
+      "bytes": 1099,
+      "sha256": "sha256:61e3a8d0c0912f1a3aba62fd7daf38ad7e440e33b14b5beed9b71e45addbde86"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3240775,
+      "sha256": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "bytes": 66983,
+      "sha256": "sha256:3f294cbb0516dfa10caa0dc679b2160488fc35a95d2b700e9c65dd605b38a12a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "bytes": 94527,
+      "sha256": "sha256:058ed33ba4a4a70b2153aad83d0ddcba4f992d19fedbd6fc37b2b47e73e741e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "bytes": 56940,
+      "sha256": "sha256:c4cc93a6cb21f6472ac0e936b8065408e16566cec78594e41e6f06aec17b8ff7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "bytes": 61224,
+      "sha256": "sha256:b3551b051a8fcc683211da58f9d5707b23c79d023e7039d8e27fcefb9119c47c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "bytes": 58737,
+      "sha256": "sha256:111cedadddaacc8b71c05a361f4a980e1b29f41afeb606eed204d141d3c240f5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "bytes": 63021,
+      "sha256": "sha256:570610d06bd3310cb0e162d3b4c3755739bf3b74bb125b5a74acf7abd15d5388"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "bytes": 43924,
+      "sha256": "sha256:e837057045d8d245b3d217fd213d930d9bfa5ec4af6433475c833cf3ef729e83"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "bytes": 51196,
+      "sha256": "sha256:2244e8a2aeace0e549098d7d2e97f97ba0c62431a2d6639c7e7e4ea3e8e34a73"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "bytes": 34350,
+      "sha256": "sha256:f5731be238ac0ebc21131e9b667e83474ebefe7096d7118b70fd824dd6889719"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "bytes": 34570,
+      "sha256": "sha256:abde97791f1b58a6db71dbb24b615e66b1aababcbc93fbdfd18c6ac29572a69d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "bytes": 34350,
+      "sha256": "sha256:51b87ae0230c3f239595f0ff7e8f16601fd562b6dccdc1491c2ee6ef937d7e61"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "bytes": 34570,
+      "sha256": "sha256:3ee03c644e2eb6b4224c332d86ac2f79a96055738ea74ffa15dcc85b6d27eb88"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "bytes": 19634,
+      "sha256": "sha256:0c42b6c038469671f0ed1bee6e6a8e36c303030f7c4aef8835b3ed0f500d3fd9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "bytes": 19834,
+      "sha256": "sha256:d786b205ed07fd91efbacbd22d534b0fc51f752760b5b633ef49408c7fac95cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "bytes": 52944,
+      "sha256": "sha256:276ffe7335adadcdc74712816f19e06d7d02f1a1d71618f4e530724af15e226b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "bytes": 53151,
+      "sha256": "sha256:37a43454851a475ef140e29e3676f6a08e64cf0955eb0cb7bc192d97435a6742"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "bytes": 54924,
+      "sha256": "sha256:ea3d4da6bd0aa1cdac87649d41377276ede15effd1b21d43cf1b28d72ddc28b3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "bytes": 55131,
+      "sha256": "sha256:aa4e8026ad40b59203124a683aed2a083c89ea6327b26a6c084556dc6c9feadf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "bytes": 30703,
+      "sha256": "sha256:aa89a75bf32947fcc8985a152b91dca8d34d27160f0fce37ddbbd8b38a3d2c38"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "bytes": 30890,
+      "sha256": "sha256:2bdeb2d5d85a66bae724e4d258bf6c6d30f8da186bc62014efdc46cd940b7f32"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 334232,
+      "sha256": "sha256:6a5eeae3478bc92f8896ce9e1a65606c6a39e0ef3ec53546aefec4a08b7f3678"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+      "bytes": 21548,
+      "sha256": "sha256:6017533181ebb601e4ace1f03b9fe1a7308e853bd7f568b36b4be39c29cda423"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "bytes": 601152,
+      "sha256": "sha256:843ecb7b683e203938d23272cf3783d793c3d9df2c49bfe3653774a13e2c9350"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+      "bytes": 60520,
+      "sha256": "sha256:27e66826d0f4d14c4007a02b6bf24d241c5a8e6ba268e1b4b55ee34e2d3b94c3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 580092,
+      "sha256": "sha256:60fe3267dda10b4c88f13293e0db8908ee3cc27e882b28bc2d67411f2f15571d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 775025,
+      "sha256": "sha256:ee1cf4fdc262debe2fd872f6756fed815e872a9de1db540a08b3db5e12bd7400"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
+      "bytes": 7048,
+      "sha256": "sha256:e7b2ca346b3bc392780e8e449065562f2a42ec53777da60d970015ec0f8e334b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 673907,
+      "sha256": "sha256:ae8ec3e64d95c75a576a63039c90b0c852a284b2198df1fba35149d7b4a61ec8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 824031,
+      "sha256": "sha256:470d48af803afe43c69c04b2484bf68bec22c401615f73f5bf12865644b668bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 809321,
+      "sha256": "sha256:97fd2154a451235b4c5346370917bc5d41a9e1104e021c130ea6183f8360d867"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 456210,
+      "sha256": "sha256:1bfacdf51e8695982b4479bf4b1e8c3d4d1c61580d88d8877965a6b9f5b5a1ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 547910,
+      "sha256": "sha256:f886108c187feae51f18b68274a7a5bcc4c1f169348967372de478f244f34607"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 736947,
+      "sha256": "sha256:144c585823fd0f171ed0dcfece658c0e0e136710947cf738f5c31e1466fbfcbe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json",
+      "bytes": 19377,
+      "sha256": "sha256:a0314693dbfa4cfeb90a894766f9f576654ddc22bbff40ed0ff59ac880531b6e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 1897902,
+      "sha256": "sha256:f508881facba8d573c83ab25071293a5aae84f52b945a97c66591600cfbde190"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 805284,
+      "sha256": "sha256:224dd6273ab9b23adcb8659af8a214065d5583f30f56b78ee3f8cb272ebdbbc5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 990050,
+      "sha256": "sha256:a3aed24e602c9687955128e041befc09d17783f423311b1b49d3afed6dc69064"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "bytes": 873000,
+      "sha256": "sha256:a214e1ef7448f0082059becb91c190bdb30fb93f5d852135705c8b554a4f5596"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+      "bytes": 264543,
+      "sha256": "sha256:218fa443869dcd8aebc13d5c6a32749b67603791329f22096cca26d621246790"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json",
+      "bytes": 210925,
+      "sha256": "sha256:33ebc9b355d7f8aec22911edd1a388b54dcc6d6a03514282f1d93585e7ff604c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "bytes": 11486,
+      "sha256": "sha256:d68cd29fcdfbe2e8eafc44c90dcf10f7b9e0529e52b3087ea7a2007c487de9a5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3.config.json",
+      "bytes": 1416,
+      "sha256": "sha256:928a949c344b4810a049f2bf2054cddc41d76d23555869c776a62d9aa16cb38f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/batch-manifest.json",
+      "bytes": 3376,
+      "sha256": "sha256:14c297b88fd6f5ad8bf8d23b9166b8b17756065009914b9fea4df052db305903"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/book-model.json",
+      "bytes": 86838,
+      "sha256": "sha256:ec4cf84b13bb7d5871f8a9a332ef0863db5806e4593c92996c4607432ac87e95"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/book.html",
+      "bytes": 43468,
+      "sha256": "sha256:9b27980b2784a02085bf0a362cc32f552e9f1b3457c5765caa378606ca1d6fdb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/book.html.render-manifest.json",
+      "bytes": 7333,
+      "sha256": "sha256:47bc0adfa8fa6d568ebc03ca6f832bea8dcf02e318f29b4d6ac365a6ebab1882"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/book.pdf",
+      "bytes": 707812,
+      "sha256": "sha256:faa6e35bd2abadc6d8f893b9c4f6c957e44d7eb3eadf1ba87de6ddf3e9e2b892"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/book.pdf.render-manifest.json",
+      "bytes": 7332,
+      "sha256": "sha256:fbcb93a16b4a191c7bb7b9c349faa41a0dc25b01405cea635590ea4d844559b0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/contracts/goal-evidence-ai-run-manifest.schema.json",
+      "bytes": 3886,
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/contracts/goal-evidence-finding.schema.json",
+      "bytes": 3613,
+      "sha256": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/criteria.md",
+      "bytes": 4496,
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/manifest.json",
+      "bytes": 5332,
+      "sha256": "sha256:a5b7072edf7cf445d74a50447612f243dc10128af21662bbabce594403c750b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/review-input.json",
+      "bytes": 44379,
+      "sha256": "sha256:2b631dc4543a5f7e408a30a960c7fda9e75d06b5e23454d514d12b5c2bfffa71"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/review-input.jsonl",
+      "bytes": 26866,
+      "sha256": "sha256:ae375d52e7ba60c8d3b2b26df2fa6555a57c3fc67d5081a9a1e25eef1a0c3ee7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/bundle/review.md",
+      "bytes": 10248,
+      "sha256": "sha256:65d9d354e26f24de6fcd3fb56353491612dd66def5495e0c3bc3a7ef0e0a959e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/dual-summary.json",
+      "bytes": 5427,
+      "sha256": "sha256:1300f5168d95441d4dde710b148316d1932f3d54daae75dccad7117840ec7a43"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolution-index.json",
+      "bytes": 4748,
+      "sha256": "sha256:d3f09afbbc27c4a36c7f0d65a822dc4245d219d8658e08905d6dc2a8c854056c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/3d49cd27-3a84-50eb-ac35-f0b0bee80df2.resolution.json",
+      "bytes": 8593,
+      "sha256": "sha256:df27849cb1c0573dcc0d772f550102446e75e3b1e1e6b3b2d2829ebcb4e84881"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6.resolution.json",
+      "bytes": 8084,
+      "sha256": "sha256:8e0159b29f3e13e2369309f169b73b4122f6ca649f44edc254adbb3ce0c63b13"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/7dea79d2-67f2-4d92-b6cc-ad1b953dca3d.resolution.json",
+      "bytes": 7913,
+      "sha256": "sha256:6bdcdf3f59b3f8446485780a6b4f2738fe8b781dcab8fe50e86158c0639eacdc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/bd8fd6d5-7155-45a5-96f0-008a4e9acb3a.resolution.json",
+      "bytes": 8631,
+      "sha256": "sha256:c6b261f13487516da800045877326792f0718f6281adc7d70aaf0e01b3cb5d41"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/cc60f759-1168-5fc0-8ff5-5f7a2533e61c.resolution.json",
+      "bytes": 8719,
+      "sha256": "sha256:03303412e12fe182b71f1b701a45f31c1c8122b0808ab423570a258fe3cb4a2f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/f3167cab-bb23-4bb9-8a27-22e3c5015d44.resolution.json",
+      "bytes": 8863,
+      "sha256": "sha256:81f87aba8512e724ba005b9699e52ea099018008aee2640516701b86a8733134"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/batches/mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-a.batch-001.input.jsonl",
+      "bytes": 41137,
+      "sha256": "sha256:77ab6b29977025418cba86f3d6e457713d428714a3720b5632703c9d0f5904e7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/contracts/goal-description-review-record.schema.json",
+      "bytes": 5872,
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/criteria.md",
+      "bytes": 4496,
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/description-review-campaign.json",
+      "bytes": 1970,
+      "sha256": "sha256:947871bb91e0ecfc9bdd8c412aa64b512e0ab8ae2f511fdc05e186424176e64f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/description-review-input.json",
+      "bytes": 62074,
+      "sha256": "sha256:cae6765255e232933809218fc23883718d1646a52d61a60b917f49d628b84df4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/results/mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-a.batch-001.records.jsonl",
+      "bytes": 21850,
+      "sha256": "sha256:59dacd9668c52136ef7a1d8a6bc301f44624a73fa772bed0ffcaf270ea064132"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/results/mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-a.batch-001.run.json",
+      "bytes": 2387,
+      "sha256": "sha256:c9926d38fdf8a7e0edb5f631688c9d635efb547b3a6c08b5d22d99385cf94ba2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-a/review-bundle-manifest.json",
+      "bytes": 5332,
+      "sha256": "sha256:a5b7072edf7cf445d74a50447612f243dc10128af21662bbabce594403c750b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/batches/mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-b.batch-001.input.jsonl",
+      "bytes": 41137,
+      "sha256": "sha256:d5b8bcee113d3295de552f3ef641836091ddb8fff638ca815eec2bc9722351d7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/contracts/goal-description-review-record.schema.json",
+      "bytes": 5872,
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/criteria.md",
+      "bytes": 4496,
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/description-review-campaign.json",
+      "bytes": 1970,
+      "sha256": "sha256:a1308f42cb6fdf04831476ea9cc882866233dab27972ffd3c1a178987f5793b4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/description-review-input.json",
+      "bytes": 62074,
+      "sha256": "sha256:cae6765255e232933809218fc23883718d1646a52d61a60b917f49d628b84df4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/results/mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-b.batch-001.records.jsonl",
+      "bytes": 25527,
+      "sha256": "sha256:4b98a1b27b46993cae2f623b777ef856a0c10b8d0b74806933081f2a4156ddd6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/results/mathematik-rollout-v1-batch-004-seki-repair-split-6-current-v3-20260827-first-pass-b.batch-001.run.json",
+      "bytes": 2390,
+      "sha256": "sha256:05819564bc0b8d20afc3cb47ccd35824dfa0283400a2b74819546e2de330f5cd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/round-b/review-bundle-manifest.json",
+      "bytes": 5332,
+      "sha256": "sha256:a5b7072edf7cf445d74a50447612f243dc10128af21662bbabce594403c750b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/synthesis-authoring.json",
+      "bytes": 5469,
+      "sha256": "sha256:8b98965f84fd2c20f60ff51bdd9d94867b590fd1d0814c4610492302da934791"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/synthesis-decisions.json",
+      "bytes": 18132,
+      "sha256": "sha256:9d072e03d03f1078b48e61e42603a21681c0b42dfa76fb941fa2a1d3ddaf613a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2.config.json",
+      "bytes": 1196,
+      "sha256": "sha256:b773886acc0eadf351c3babd31ea4ab172fb46401cdb462e72317077d1e7327c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/batch-manifest.json",
+      "bytes": 3100,
+      "sha256": "sha256:c830a80a16c924fb2888966c10d10232e151c14616b772c4063e4de5e65cef64"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/book-model.json",
+      "bytes": 59006,
+      "sha256": "sha256:8b5c2377ad6966a5bce31c7af2f04581352ffc310f8c97a37cfb2402be1c25cf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/book.html",
+      "bytes": 17874,
+      "sha256": "sha256:947c3d646535ec0c9ff4d2df81277fe2bd3eb2a17e104ae314262f9ceb4235cd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/book.html.render-manifest.json",
+      "bytes": 2069,
+      "sha256": "sha256:725b395e61bf1a32c6ad052c94409acb5c318c6f9a38746eb1e61598e12f659d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/book.pdf",
+      "bytes": 158206,
+      "sha256": "sha256:4f6738e749d4c1caed3c34f3ce8adea0a5d3b23ba2c6159a20f5b05e0f4a0b5a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/book.pdf.render-manifest.json",
+      "bytes": 2068,
+      "sha256": "sha256:0d71c38beafcef9faca1b475ee4aac3a7413cdc0c43539ae6f48db8ec6deb902"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/contracts/goal-evidence-ai-run-manifest.schema.json",
+      "bytes": 3886,
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/contracts/goal-evidence-finding.schema.json",
+      "bytes": 3613,
+      "sha256": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/criteria.md",
+      "bytes": 4496,
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/manifest.json",
+      "bytes": 4036,
+      "sha256": "sha256:f451b8defbb86f42a708ddd1681b675b00418e42d4cfa6178a04e7c95adac481"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/review-input.json",
+      "bytes": 14941,
+      "sha256": "sha256:39d5e15a1a0da80f8b28e9985d769ac1fcb6c3b87540b1bcc9f2b1f7f0166d4f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/review-input.jsonl",
+      "bytes": 8139,
+      "sha256": "sha256:42e343478fa87d8dc2bc0df10f1dc85bf4f0698259582a73f1b6d2fef7b40806"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/bundle/review.md",
+      "bytes": 3492,
+      "sha256": "sha256:6aa31ff41754a4ce7f863ec15e4a7265b23e4a89ead3230c303ae06c45dee161"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/dual-summary.json",
+      "bytes": 2946,
+      "sha256": "sha256:c085f57d56634f7f1ed19f16bc5a6fb49cce745f27abb073fd3e675c8194f877"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/resolution-index.json",
+      "bytes": 2084,
+      "sha256": "sha256:60020ebb61258abaf5f4cb299b7c7d5a46b2b57c58f054a612bc08b352a26cac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/resolutions/7c978529-ce62-5adc-897f-24ea80babbc8.resolution.json",
+      "bytes": 8655,
+      "sha256": "sha256:932c730e1d70e14ea19d6126305c71e470294673b0c03451b2880bb94613edcf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/resolutions/e01869db-891c-57a4-8660-789ec6875ec2.resolution.json",
+      "bytes": 9398,
+      "sha256": "sha256:701481fdb5dbb884dd34731ba6eb9c6170484b228b84078d073df7094ca74922"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/batches/mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-a.batch-001.input.jsonl",
+      "bytes": 12605,
+      "sha256": "sha256:77f6e9728cacd5e1b49556da3abdd246c6f26b61e5dfebd89e80b5c8d90337bb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/contracts/goal-description-review-record.schema.json",
+      "bytes": 5872,
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/criteria.md",
+      "bytes": 4496,
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/description-review-campaign.json",
+      "bytes": 1738,
+      "sha256": "sha256:620cc6c8248bdd6fe5786c2d735b2b2eee23a184afaa59462d1d7c4714f27dfc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/description-review-input.json",
+      "bytes": 20649,
+      "sha256": "sha256:475e837841f3f2fbf8df3d5a8e76cc03aa8530299dd7ccf3223a2bf8ea7518cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/results/mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-a.batch-001.records.jsonl",
+      "bytes": 9498,
+      "sha256": "sha256:3ff14dd3f5082935b8fa462557eff719b6acbfccc1921580a8a633d4227bcc73"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/results/mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-a.batch-001.run.json",
+      "bytes": 2160,
+      "sha256": "sha256:84feb2f08d82b483593065e8d93f670648cb0a70dcaf5688913c061c0e1c77de"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-a/review-bundle-manifest.json",
+      "bytes": 4036,
+      "sha256": "sha256:f451b8defbb86f42a708ddd1681b675b00418e42d4cfa6178a04e7c95adac481"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/batches/mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-b.batch-001.input.jsonl",
+      "bytes": 12605,
+      "sha256": "sha256:7b5d3523eeb2a1b442f315d3fd2bf78a823adee136c5a93624c69d3daaaf4ad9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/contracts/goal-description-review-record.schema.json",
+      "bytes": 5872,
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/criteria.md",
+      "bytes": 4496,
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/description-review-campaign.json",
+      "bytes": 1738,
+      "sha256": "sha256:c7a7d22100b790a88269fa035ce9494de009ab11dfdd63cd03de1f0592d10228"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/description-review-input.json",
+      "bytes": 20649,
+      "sha256": "sha256:475e837841f3f2fbf8df3d5a8e76cc03aa8530299dd7ccf3223a2bf8ea7518cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/prompt.md",
+      "bytes": 5974,
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/results/mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-b.batch-001.records.jsonl",
+      "bytes": 8983,
+      "sha256": "sha256:3f693d6a33799208a220211ea990d4382c74bb6fe1b10011c6f6949964f393a5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/results/mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-b.batch-001.run.json",
+      "bytes": 2176,
+      "sha256": "sha256:1e764c48d3e00e3240fb23f78087381a8d4cae1d2548abe404154823a2c87a5e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/round-b/review-bundle-manifest.json",
+      "bytes": 4036,
+      "sha256": "sha256:f451b8defbb86f42a708ddd1681b675b00418e42d4cfa6178a04e7c95adac481"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/synthesis-authoring.json",
+      "bytes": 2362,
+      "sha256": "sha256:4d9a1da93d8c94c88979f4234caa59f5904adca6bb65d8a52965857a39439922"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/synthesis-decisions.json",
+      "bytes": 8913,
+      "sha256": "sha256:500bcf8ba67ee043ca2248912ff013f3f3abb0e6313664b489e13a2e80434f54"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-structural-split-1-v1/source-edge-adjudication.json",
+      "bytes": 35429,
+      "sha256": "sha256:b06d7d4f2309cd15b3fbe488927cc856e165ac05ea063653b64b00284ab6103f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-004-seki-repair-split-current-v1.candidates.json",
+      "bytes": 65533,
+      "sha256": "sha256:9166ae9fb4146eead994255da69c54885b8dee5da7d6c6464feffd52a2694cd5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-004-seki-repair-split-current-v1.config.json",
+      "bytes": 1464,
+      "sha256": "sha256:c92315197a33a75a3fcef9daeade0e1c77c5f0b9a5f73d3f05512d99a9596b0f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-004-seki-repair-split-current-v1.review.jsonl",
+      "bytes": 64612,
+      "sha256": "sha256:42f3cd769bb7ab20a934820527fa34a14696541492abdf1fe4c222bb8e5a83fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006b-j6-split-children-current-v1.candidates.json",
+      "bytes": 52860,
+      "sha256": "sha256:fb49a7e8fb25e076f1e1f093757e1679250ccd59d3e27f293b8e910bcda2565a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006b-j6-split-children-current-v1.config.json",
+      "bytes": 1424,
+      "sha256": "sha256:08b24d9765a4a99bee75764a4e13ff1e1540532d99bda16c73cc98100ee50521"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006b-j6-split-children-current-v1.review.jsonl",
+      "bytes": 51980,
+      "sha256": "sha256:a1f519494d83f3cc840537fd612d814e93d4ef1f69c3d55e8ea54def91613b95"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-012-j6-volume-current-v1.candidates.json",
+      "bytes": 21038,
+      "sha256": "sha256:ad8722b2b707a523cd06874934730d1aec4d3d5e52ac8386b8b277badbb392e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-012-j6-volume-current-v1.config.json",
+      "bytes": 1239,
+      "sha256": "sha256:22fe67afa5fb82eeaa6963d50cad91e66f8b16ad947da609b88ea12a110ed3de"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-012-j6-volume-current-v1.review.jsonl",
+      "bytes": 20245,
+      "sha256": "sha256:cbdcb313d17d9d713b1c738f99e56f81f74bdf40d30f04ce9c73eb7857afe868"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "bytes": 1664679,
+      "sha256": "sha256:b16de33c1a872dda3acfe0eddb6cac684447b546f869fef26bf878cd481f45af"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-213.md",
+      "bytes": 1548,
+      "sha256": "sha256:ef3a5da820b850505eb99bcbb81ec2aa10d20507fa29c7adaca8ac602e4e7534"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json",
+      "bytes": 319977,
+      "sha256": "sha256:94ff900fba3ff175c5ba2f603c97f6a9cfcb06be375925c62e7d8640b8005ce3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md",
+      "bytes": 13347,
+      "sha256": "sha256:d4855f00fd469ded88885b93f14fa72885abf56e6cbe5a5a0e45b74d471f1b17"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "bytes": 464745,
+      "sha256": "sha256:8683fc7603f808e85f06bddac6b6e575693665dcf0fab32f1e5655900bcff4bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 378360,
+      "sha256": "sha256:4bbb39a5846692a190678772eefd9fe08ca5e4f2e8dfeeaa44201da9e5956dc0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "bytes": 422993,
+      "sha256": "sha256:5228aa54a7eaec1ef196af0553ce4878f60e54791c791cddab91617d18457c8b"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+      "bytes": 1547024,
+      "sha256": "sha256:810fb722653fe4bba752561aff4d4e6fc429abb7f0a54601d46ee987b8f7cc82"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+      "bytes": 73938,
+      "sha256": "sha256:3d02dca7edc825a4dcc0351958d234bd080e73519741a62d295f214b669a5ccc"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-gap-issues.json",
+      "bytes": 118003,
+      "sha256": "sha256:b49998b5b8b7155299b62c0a1d11e3308b1e5a289ab830c16fa404e65f52b69d"
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json",
+      "bytes": 34999654,
+      "sha256": "sha256:7ef61a7f33aaca5aab54a3e0e79df21b930dcb6930808b4f0f0a0b9b2fc1d048"
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-math-full.md",
+      "bytes": 39299,
+      "sha256": "sha256:3c98c15c2f038e8073cbae50e125c8b515cb2c4fa53c594cb11d0753513c5fa1"
+    }
+  ],
+  "openBoundaries": [
+    "The existing J6 Task 5 directly assesses only the simple cuboid/cube-volume child and is therefore not falsely bound to the composite-volume child; a separate six-point S3 task closes the composite route.",
+    "The stable parent is now a curricular-area cluster and was therefore removed from the older curricular-atomic positive-understanding evidence scope; its two new atomic children remain covered by Batch 012."
+  ],
+  "receiptDigest": "sha256:f9fe7bf6380341c832609f577d40afc47c4fba5d7ff53b834c6d8a8f6b78d5b5"
+}

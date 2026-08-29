@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Elektromagnetische Felder im Maxwell-Ueberblick beschreiben
+# Lernzielvisualisierung: Elektromagnetische Felder im Maxwell-Überblick beschreiben
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `ffbbf243-c2eb-4330-b050-837de994c130`
-- Titel: Elektromagnetische Felder im Maxwell-Ueberblick beschreiben
-- Beschreibung: Die lernende Person kann Ursache und Struktur elektromagnetischer Felder anhand zentraler Aussagen der Maxwell-Gleichungen im Überblick beschreiben, ohne die Gleichungen formal herzuleiten.
+- Titel: Elektromagnetische Felder im Maxwell-Überblick beschreiben
+- Beschreibung: Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Elektromagnetische Felder im Maxwell-Ueberblick beschreiben
-Beschreibung: Die lernende Person kann Ursache und Struktur elektromagnetischer Felder anhand zentraler Aussagen der Maxwell-Gleichungen im Überblick beschreiben, ohne die Gleichungen formal herzuleiten.
+Titel: Elektromagnetische Felder im Maxwell-Überblick beschreiben
+Beschreibung: Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.
 
 Zusatzanweisung:
 Use case: scientific-educational.

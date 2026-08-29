@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `09029573-864f-40ca-bf8a-cee7bf6dcb73`
 - Titel: Freier Fall experimentell untersuchen
-- Beschreibung: Die lernende Person kann den freien Fall experimentell untersuchen, Messdaten grafisch darstellen, die Gravitationsbeschleunigung bestimmen und ein Zeit-Ort-Gesetz formulieren.
+- Beschreibung: Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Freier Fall experimentell untersuchen
-Beschreibung: Die lernende Person kann den freien Fall experimentell untersuchen, Messdaten grafisch darstellen, die Gravitationsbeschleunigung bestimmen und ein Zeit-Ort-Gesetz formulieren.
+Beschreibung: Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Ordne die Messdaten grafisch aus, bestimme daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung und formuliere das Zeit-Ort-Gesetz mit den verwendeten Anfangsbedingungen.
+
 Pflichtinhalt:
 
 Show a free-fall experiment with one consistent data set and a linearized graph.

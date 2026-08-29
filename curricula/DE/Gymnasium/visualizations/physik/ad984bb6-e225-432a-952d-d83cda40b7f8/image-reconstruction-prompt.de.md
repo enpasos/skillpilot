@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `ad984bb6-e225-432a-952d-d83cda40b7f8`
 - Titel: Newtons 3. Axiom (Wechselwirkungsprinzip)
-- Beschreibung: Die lernende Person kann das Wechselwirkungsprinzip formulieren und an Beispielen erläutern.
+- Beschreibung: Die lernende Person kann Newtons drittes Axiom formulieren und an Beispielen erläutern, dass zwei wechselwirkende Körper gleichzeitig gleich große, entgegengesetzt gerichtete Kräfte aufeinander ausüben.
 
 ## Generator
 

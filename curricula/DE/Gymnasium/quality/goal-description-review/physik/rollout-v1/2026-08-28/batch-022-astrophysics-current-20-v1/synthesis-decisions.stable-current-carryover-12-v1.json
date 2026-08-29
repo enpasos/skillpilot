@@ -1,0 +1,392 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b022-stable12-synthesis-openai-codex-20260828",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B022 subject synthesis candidate",
+  "synthesizedAt": "2026-08-28T17:13:35.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828",
+    "batchManifestDigest": "sha256:254c30d4ccedadb982afc310953fa527eaf6703bbb1f2a6f77071a9bece37f48",
+    "configDigest": "sha256:8c6fa751fd722a72aceab4ebba9c7796117d6ea6ae3a768388992d9b5c1d7d97",
+    "bundleFingerprint": "sha256:5af96672fc1b6c0d0f3baaa69688fa9396cb7dfe7453c0d86d16f430fcd58019",
+    "bookDigest": "sha256:7e6fe28afb5ef4b4e0448392fa01232b704912ccc12fabfb98f81efbfaddf76a",
+    "reviewInputFingerprint": "sha256:c03db07ef7de7c1cac85bd83cb4fdadabbca06fbbb75e63191af08b36d644b95",
+    "dualSummaryDigest": "sha256:e9759f734266db617d93f7ddfe9998053757f63ee518843c7a2d11b3a725e7d4",
+    "canonicalLandscapeDigest": "sha256:f3a1912bb912badd3ff676f405b301f4461b30f48ed2f3ea95747a54bcd36152"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-a",
+      "campaignDigest": "sha256:02fa4714de1be62c404a0fbf7ea92d05f44b8b39d3dea09b9f16194a76585068",
+      "roundId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:c03db07ef7de7c1cac85bd83cb4fdadabbca06fbbb75e63191af08b36d644b95",
+      "batchId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b63ab5b005bd163b8d5f2b4ef16596f6c1fccaea7af1538cede0b8bcf02ee009",
+      "runId": "physik-b022-round-a-codex-reviewer-a-20260828",
+      "runManifestDigest": "sha256:81d5f5a89eb7a27b83fc03ebd941f7fdb8d7c468850572c81718ee3b71dc1979",
+      "resultsDigest": "sha256:a5f7241856c10b169790ac203e446566113fc870e11b0119c6f2bb24fcf243da"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-b",
+      "campaignDigest": "sha256:fb2afaad1e4f2ad372ef6e2fd7d486c2bdec2d1566949ce0746d76d9166dc70e",
+      "roundId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:c03db07ef7de7c1cac85bd83cb4fdadabbca06fbbb75e63191af08b36d644b95",
+      "batchId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:73101e8b1d6f074f96c2df49eb7ecd72b193551448d457f8b5c1e21e554367ed",
+      "runId": "physik-b022-round-b-reviewer-b-20260828",
+      "runManifestDigest": "sha256:0c3fe4fb9925672de3fb6bbc0caf65db0be5b34d6e678025a760d76c130c7a3a",
+      "resultsDigest": "sha256:efc56ac825f5783e539a211e298c0a7463519abce5f608ab199150a684919353"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-001",
+      "goalId": "6d18104b-5704-5c45-b39a-2c84565b1796",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b73ef096509455e4fede10484192b160075a4177203680367a31e18a3c0d3ae1",
+      "pageFingerprint": "sha256:81e55eec38972a710511a14c301bc4c3cc89ae86dca5feda7ed0f05d06382a9f",
+      "goalReviewContextFingerprint": "sha256:7d27e12721d2b0de88bcab2d2b7132dca4bac3bed143e870ce27786dae6b38e8",
+      "finalText": {
+        "titleDe": "Astronomische Weltbilder historisch und gesellschaftlich reflektieren",
+        "titleEn": "Reflect on Astronomical Worldviews in Historical and Social Contexts",
+        "descriptionDe": "Die lernende Person kann bedeutsame Beobachtungen und physikalische Theorien, die astronomische Weltbilder verändert haben, in ihre historischen und gesellschaftlichen Zusammenhänge einordnen und deren Auswirkungen reflektieren.",
+        "descriptionEn": "The learner can place significant observations and physical theories that changed astronomical worldviews in their historical and social contexts and reflect on their impact."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-001",
+          "recordDigest": "sha256:cc970df79895dbc0a588b0498f3121a38e94dc4b751c1be8606779935b35af67"
+        },
+        "second": {
+          "recordId": "physik-b022-b-001",
+          "recordDigest": "sha256:f007d69851afd86eee794fb8f44b07cb72d0f2ac2150cdfc38ab4e91a052fb78"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen Wortlaut als eine zusammenhängende historische Reflexionskompetenz. Die erste Runde bildet die fachliche Kette von Beobachtung über Theorie und Weltbildwechsel bis zur kriteriengeleiteten Wirkungsreflexion vollständiger ab und wird deshalb als Evidenzgrundlage gewählt.",
+      "rationaleEn": "Both independent reviews confirm the current wording as one coherent historical reflection competence. The first round more fully captures the chain from observation through theory and worldview change to criteria-based reflection on impacts and is therefore selected as the evidence basis."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-002",
+      "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ea3d73f117b06af3278d9273baaf5c351348bc3e3f960aa003f6dd83df65dea6",
+      "pageFingerprint": "sha256:f522a3d40d49ace8a8610584ee7d4f6d476fac9db25a7d1f125717435e553f34",
+      "goalReviewContextFingerprint": "sha256:f4262525a8366f2401acf665c6fb48c7862beb0af4ae2a3654c19a105c627472",
+      "finalText": {
+        "titleDe": "Himmelskörper des Sonnensystems physikalisch klassifizieren",
+        "titleEn": "Classify Solar System Bodies Using Physical Criteria",
+        "descriptionDe": "Die lernende Person kann Himmelskörper des Sonnensystems anhand physikalischer Eigenschaften, Bahnparameter und recherchierter Daten klassifizieren und begründete Schlussfolgerungen präsentieren.",
+        "descriptionEn": "The learner can classify Solar System bodies using physical properties, orbital parameters, and researched data and present justified conclusions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-002",
+          "recordDigest": "sha256:7d9ea84185e09adbaed810cd15a8907250cfc323ee20c0c70db03c2c1d319314"
+        },
+        "second": {
+          "recordId": "physik-b022-b-002",
+          "recordDigest": "sha256:9d3886412b92bfe0ab0efcb3a641da94636b5bc867a8e1699a8292ae6ec3a424"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die daten- und kriteriengestützte Klassifikationskompetenz. Die zweite Runde prüft zusätzlich unvollständige Daten, eine entscheidende Folgemessung und die revisionsfähige Schlussfolgerung und ist damit die stärkere Transfergrundlage.",
+      "rationaleEn": "Both reviews confirm the data- and criteria-based classification competence. The second round additionally tests incomplete data, a decisive follow-up measurement, and a revisable conclusion, making it the stronger transfer basis."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-003",
+      "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:85de97c2ef0fdac45c4f80a63c5c4b6550d6c05d4aba647cccdbadeff71dd447",
+      "pageFingerprint": "sha256:fb09a396c5b51c2b93868631296acf89353742986db38fd78c4a4912b832e0da",
+      "goalReviewContextFingerprint": "sha256:ead63524bfaf23a853750327b8abb6d903219fc34e31fb14d17e1b3b8398a97e",
+      "finalText": {
+        "titleDe": "Sternentfernungen und Tangentialgeschwindigkeiten astrometrisch bestimmen",
+        "titleEn": "Determine Stellar Distances and Tangential Velocities Astrometrically",
+        "descriptionDe": "Die lernende Person kann aus der trigonometrischen Parallaxe die Entfernung eines Sterns bestimmen und zusammen mit seiner Eigenbewegung dessen Tangentialgeschwindigkeit abschätzen sowie Reichweite und Messunsicherheit der Methode beurteilen.",
+        "descriptionEn": "The learner can determine a star’s distance from its trigonometric parallax and, together with its proper motion, estimate its tangential velocity and assess the method’s range and measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-006",
+          "recordDigest": "sha256:005347c52f7b0d72e263aca56a6f347930d8b2b78d4ed8453d18b743910aad7a"
+        },
+        "second": {
+          "recordId": "physik-b022-b-006",
+          "recordDigest": "sha256:9b0ddeaa8d5d757e66db6941e0c782c511afe34b18cfea169e19e06ecb7ab29a"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die gemeinsame astrometrische Inferenzkette. Die erste Runde trennt Tangential- und Radialkomponente explizit und bindet Einheiten, Messunsicherheit und Tragfähigkeitsurteil am vollständigsten.",
+      "rationaleEn": "Both reviews confirm the joint astrometric inference chain. The first round explicitly distinguishes tangential and radial components and most fully binds units, measurement uncertainty, and the reliability judgment."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-004",
+      "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d5de976a349a85018f305dbe3a063c4e09f010d41611346460c44a78294af56",
+      "pageFingerprint": "sha256:ac6627c52f2b566dae509f7e6852bb5572ca0cbdc9b67f9e87136598fb32e936",
+      "goalReviewContextFingerprint": "sha256:0136b2564a81923f137b30f830bd7c21938c2b1c43f7fee0c7724a79184fa566",
+      "finalText": {
+        "titleDe": "Radialgeschwindigkeiten aus Dopplerverschiebungen bestimmen",
+        "titleEn": "Determine Radial Velocities from Doppler Shifts",
+        "descriptionDe": "Die lernende Person kann Richtung und Betrag der Radialgeschwindigkeit eines Sterns aus der Verschiebung identifizierter Spektrallinien bestimmen und Vorzeichen, Bezugssystem sowie Messunsicherheit erläutern.",
+        "descriptionEn": "The learner can determine the direction and magnitude of a star’s radial velocity from shifts of identified spectral lines and explain the sign convention, reference frame, and measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-007",
+          "recordDigest": "sha256:bddbb9e1795b8c985b5688abf63f9763463491f118c8efc0605950ae64d9a267"
+        },
+        "second": {
+          "recordId": "physik-b022-b-007",
+          "recordDigest": "sha256:8ab5110d0a59b37453cbb3b5a9d1dad725ff33e483026c3b5aae6732d24a226f"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Radialgeschwindigkeitsbestimmung aus identifizierten Linien. Die erste Runde macht Näherung, Bezugssystem, Vorzeichen und instrumentell begründete Unsicherheit besonders vollständig prüfbar.",
+      "rationaleEn": "Both reviews confirm radial-velocity inference from identified lines. The first round makes the approximation, reference frame, sign convention, and instrument-based uncertainty especially complete and assessable."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-005",
+      "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d35877d314c37e5cf2a92305e74e8644f423fa15bd7adb624032b6055799953e",
+      "pageFingerprint": "sha256:e5a0ec247ba264947397230da65b3e217ab48e9c6b19fc64b64372f59968db18",
+      "goalReviewContextFingerprint": "sha256:13e4f60ef84597f91659be0c54a97ee3863881ac49f6cf42357f57e9bb52dc6d",
+      "finalText": {
+        "titleDe": "Sterne anhand ihrer Spektren klassifizieren",
+        "titleEn": "Classify Stars from Their Spectra",
+        "descriptionDe": "Die lernende Person kann Sternspektren anhand charakteristischer Absorptionslinien einer Spektralklasse zuordnen und die Zuordnung mit Linienmustern und Oberflächentemperatur begründen.",
+        "descriptionEn": "The learner can assign stellar spectra to a spectral class using characteristic absorption lines and justify the classification using line patterns and surface temperature."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-008",
+          "recordDigest": "sha256:5638054f6e41733bc35ddfcb1366e123925e8641beb3de1aea6fd2e5dbd94bc6"
+        },
+        "second": {
+          "recordId": "physik-b022-b-008",
+          "recordDigest": "sha256:ce6347240abb19bbf84788296602a52b63455660a47a9875d71d27ec8275ab07"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Spektralklassifikation als zusammenhängende Kompetenz. Die erste Runde verbindet Linienmuster und relative Linienstärken präziser mit Anregung, Ionisation, Temperaturbereich und der begrenzten Aussage bei verrauschten Daten.",
+      "rationaleEn": "Both reviews confirm spectral classification as one coherent competence. The first round more precisely connects line patterns and relative line strengths with excitation, ionization, temperature range, and bounded claims from noisy data."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-006",
+      "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:06fdac8625074f621e7e7af432a72be789118af2c7c6e8861b6cecd28ddd927f",
+      "pageFingerprint": "sha256:ad9c5e262c09ebf45c891a9f87952e0bc261bc9b32a500240cf4cf428cede610",
+      "goalReviewContextFingerprint": "sha256:d7794044e7c1fefb9a46bc310e08e78a75c9d6949ef18b45bbba9bc757abb751",
+      "finalText": {
+        "titleDe": "Fraunhoferlinien in Sternspektren deuten",
+        "titleEn": "Interpret Fraunhofer Lines in Stellar Spectra",
+        "descriptionDe": "Die lernende Person kann Fraunhoferlinien in Sternspektren als Absorptionslinien deuten und ihre Entstehung durch selektive Absorption in der Sternatmosphäre mithilfe eines Energieniveaumodells erklären.",
+        "descriptionEn": "The learner can interpret Fraunhofer lines in stellar spectra as absorption lines and explain their formation through selective absorption in a stellar atmosphere using an energy-level model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-009",
+          "recordDigest": "sha256:c8e217e2a5de7e192c8aff8daeecea173c81b74aa1622c29077507aac12e1a7e"
+        },
+        "second": {
+          "recordId": "physik-b022-b-009",
+          "recordDigest": "sha256:bb61c21dedf53605733e459e7758cd29188180102fc8c5c7691e29ce8153fc14"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die modellgestützte Deutung der Fraunhoferlinien. Die zweite Runde rekonstruiert den Strahlungsweg durch heiße und kühlere Sternschichten, trennt Linienlage von Linienstärke und fordert eine Vorhersage für ein anderes Atom oder Ion.",
+      "rationaleEn": "Both reviews confirm the model-based interpretation of Fraunhofer lines. The second round reconstructs the radiation path through hot and cooler stellar layers, distinguishes line position from line strength, and requires a prediction for another atom or ion."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-007",
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d268cd922ab23ad397ec160fa47615b2b4b3fb0d0c43693e458a16ec54d9deb6",
+      "pageFingerprint": "sha256:132b5031ee51c61c6854023558808941bb83582152bb8e2443a6de8dd8a261ef",
+      "goalReviewContextFingerprint": "sha256:bec19bb11ae2684f2ea0f3e3d83eec9d7dd7e1ba33f090a70e41c851cf4d111a",
+      "finalText": {
+        "titleDe": "Oberflächentemperaturen von Sternen aus Strahlungsdaten abschätzen",
+        "titleEn": "Estimate Stellar Surface Temperatures from Radiation Data",
+        "descriptionDe": "Die lernende Person kann die Oberflächentemperatur eines Sterns aus dem Spektralmaximum mit dem Wienschen Verschiebungsgesetz oder bei bekannten Größen zu Radius und Strahlungsleistung mit dem Stefan-Boltzmann-Gesetz abschätzen.",
+        "descriptionEn": "The learner can estimate a star’s surface temperature from its spectral maximum using Wien’s displacement law or, when radius and radiated power are known, using the Stefan–Boltzmann law."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-010",
+          "recordDigest": "sha256:17e815656c0b0047b6b8f9196798fe8c39adaf5acca05b8ba14fb1b6d55f2d1f"
+        },
+        "second": {
+          "recordId": "physik-b022-b-010",
+          "recordDigest": "sha256:21f8f83461badb6826bff659ef78a862aef01e176f839046d91d3a64cfb7c6b0"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Wien- und Stefan-Boltzmann-Gesetz als alternative Wege zur selben Zielgröße. Die zweite Runde bindet Kugeloberfläche, Methodenvergleich und die Entscheidung bei unsicherem Radius oder nichtthermischem Spektrum am stärksten.",
+      "rationaleEn": "Both reviews confirm Wien and Stefan-Boltzmann laws as alternative routes to the same target quantity. The second round most strongly binds spherical area, method comparison, and the decision under uncertain radius or a non-thermal spectrum."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-008",
+      "goalId": "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cfac8363439fd5a9c18c9bfe1d37594061eb7300df64142130b6ece74042e3d2",
+      "pageFingerprint": "sha256:32a6070f1d84dee50941fcf3ba28c0aa2b91688cdb639cddf33f111fa992efdd",
+      "goalReviewContextFingerprint": "sha256:ee46cfa3da0cbf39807a6eefd1c5cd6ff4b30f4d74ac9efba30726da41323d1a",
+      "finalText": {
+        "titleDe": "Sonnenaktivität und Weltraumwetter fachlich beurteilen",
+        "titleEn": "Assess Solar Activity and Space Weather",
+        "descriptionDe": "Die lernende Person kann Zusammenhänge zwischen solarem Magnetfeld, Sonnenflecken und Aktivitätsphasen anhand recherchierter Informationen prüfen und daraus die Bedeutung der Überwachung des Weltraumwetters fachlich beurteilen.",
+        "descriptionEn": "The learner can examine relationships among the solar magnetic field, sunspots, and activity phases using researched information and use them to assess the importance of monitoring space weather."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-013",
+          "recordDigest": "sha256:a02e798c24185ccd60d9c7a4890970d5179888b5be1c9c216e55312359744fce"
+        },
+        "second": {
+          "recordId": "physik-b022-b-013",
+          "recordDigest": "sha256:fc30aef86296648ab9f0e266d1a24065d1ad9d5a0eefc2953514082823439ba5"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Evidenz-zu-Urteil-Kette. Die zweite Runde unterscheidet Sonnenflecken präzise als Indikatoren statt Ursachen, verbindet magnetische Ereignisse mit erdnahen Folgen und begrenzt Warnungen ausdrücklich gegenüber sicheren Vorhersagen.",
+      "rationaleEn": "Both reviews confirm the evidence-to-judgment chain. The second round precisely distinguishes sunspots as indicators rather than causes, connects magnetic events to near-Earth effects, and explicitly limits warnings relative to certain predictions."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-009",
+      "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+      "pageFingerprint": "sha256:90ca66d7ffe0ae3e3358c03f786ae9c4beae1869da56a3b07cdf2117392f22ae",
+      "goalReviewContextFingerprint": "sha256:d2f0dda08c7463b69fea0d52df21f98b0a76243fe88be032c72e2a8e598f53bf",
+      "finalText": {
+        "titleDe": "Teleskope und Spektralbereiche zur Struktur der Milchstraße nutzen",
+        "titleEn": "Use Telescopes Across Spectral Bands to Study the Milky Way",
+        "descriptionDe": "Die lernende Person kann Teleskope für verschiedene Spektralbereiche vergleichen, Beobachtungsdaten aus mehreren Bereichen zusammenführen und daraus die Struktur der Milchstraße beschreiben.",
+        "descriptionEn": "The learner can compare telescopes for different spectral bands, combine observational data from several bands, and use them to describe the structure of the Milky Way."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-015",
+          "recordDigest": "sha256:baa75f886c11acaca870e8a6596931bafc4b7b3e1f72aa60d1c40e2fdf1229ca"
+        },
+        "second": {
+          "recordId": "physik-b022-b-015",
+          "recordDigest": "sha256:886d9c7017fead258ba359afffda1938849799d66b1a9a0c2c8885b350bddeaf"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Mehrwellenlängenanalyse als eine gemeinsame Strukturinferenz. Die erste Runde trennt beobachtete und erschlossene Strukturen besonders klar und fordert ein nur datengetragen revidiertes Milchstraßenmodell.",
+      "rationaleEn": "Both reviews confirm multiwavelength analysis as one joint structural inference. The first round particularly clearly distinguishes observed and inferred structures and requires a Milky Way model revised only as far as the data support it."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-010",
+      "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f8c8ae3b7b3edc6c96dc941bdb8ba3154e12518178dec54472c191d0f8a9ab27",
+      "pageFingerprint": "sha256:a675d24378caeb0eee57a76b861619d84d4038900b54b16dbc9e97c0a683191b",
+      "goalReviewContextFingerprint": "sha256:1afff02a3f7e1c0742c94ab4d9c3843f83cf1777bcc8bbd160c8eef1e81497a0",
+      "finalText": {
+        "titleDe": "Entstehung von Gravitationswellen mit begrenzter Analogie erklären",
+        "titleEn": "Explain Gravitational-Wave Generation Using a Limited Analogy",
+        "descriptionDe": "Die lernende Person kann die Entstehung von Gravitationswellen durch zeitlich veränderliche, nicht kugelsymmetrische Massenverteilungen qualitativ erklären und Gemeinsamkeiten sowie Grenzen der Analogie zu elektromagnetischer Strahlung benennen.",
+        "descriptionEn": "The learner can qualitatively explain gravitational-wave generation by time-varying, non-spherically symmetric mass distributions and identify both similarities and limits of the analogy with electromagnetic radiation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-017",
+          "recordDigest": "sha256:1601f30f1a84ef811aa53e238e44e8aafe62b6ddeeca34029eb45e09e6abd74b"
+        },
+        "second": {
+          "recordId": "physik-b022-b-017",
+          "recordDigest": "sha256:0bca64907c4860404c3cf217586a5dd29482a9ce049fbe19a73bece3a9867255"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann die Entstehung von Gravitationswellen qualitativ durch ein zeitlich veränderliches Massenquadrupol erklären und Gemeinsamkeiten sowie Grenzen der Analogie zu elektromagnetischer Strahlung benennen.",
+        "proposedDescriptionEn": "The learner can qualitatively explain gravitational-wave generation through a time-varying mass quadrupole and identify both similarities and limits of the analogy with electromagnetic radiation.",
+        "rationaleDe": "Der aktuelle qualitative Wortlaut benennt eine zeitlich veränderliche nicht kugelsymmetrische Massenverteilung und ist im Zielkontext fachlich tragfähig. Die präzisere Quadrupolbedingung wird vollständig in die ausgewählte Evidenz übernommen; eine kanonische Textrevision ist dafür nicht erforderlich.",
+        "rationaleEn": "The current qualitative wording identifies a time-varying non-spherical mass distribution and is scientifically defensible in the goal context. The more precise quadrupole condition is carried fully into the selected evidence; a canonical text revision is not required for that purpose."
+      },
+      "rationaleDe": "Die Drittabwägung behält den aktuellen qualitativen Wortlaut bei, weil die zeitlich veränderliche nicht kugelsymmetrische Massenverteilung im Zielkontext eine fachlich tragfähige Symmetriebedingung bezeichnet. Zugleich wird die wissenschaftlich präzisere Quadrupol-Evidenz der zweiten Runde verbindlich ausgewählt und deren engerer Ersatztext ausdrücklich als nicht notwendige Textrevision verworfen.",
+      "rationaleEn": "The third adjudication retains the current qualitative wording because a time-varying non-spherical mass distribution states a scientifically defensible symmetry condition in this goal context. At the same time, the scientifically more precise quadrupole evidence from the second round is selected as binding, while its narrower replacement wording is explicitly rejected as an unnecessary text revision."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-011",
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba",
+      "pageFingerprint": "sha256:ef4389fc98f19de8fcc19463b64d333f80866b543ea5070e7ef9e4a1cba253b5",
+      "goalReviewContextFingerprint": "sha256:6acde66c7cdee1676423b3a5da83b272f4414d3937dc69aec84737ab5ee4189f",
+      "finalText": {
+        "titleDe": "Exoplanetensuche und Habitabilität quellenkritisch beurteilen",
+        "titleEn": "Critically Assess Exoplanet Detection and Habitability Claims",
+        "descriptionDe": "Die lernende Person kann Aussagen zur Habitabilität von Exoplaneten beurteilen, indem sie Nachweismethoden vergleicht, Lebensbedingungen anhand physikalischer Kriterien mit denen der Erde abgleicht und digitale Quellen quellenkritisch auswertet.",
+        "descriptionEn": "The learner can assess claims about exoplanet habitability by comparing detection methods, relating conditions for life to Earth using physical criteria, and critically evaluating digital sources."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-018",
+          "recordDigest": "sha256:3c092f6d7efec1df69cc49d933f13d1c78ebcaf28083541d3ccfeafe7c859a60"
+        },
+        "second": {
+          "recordId": "physik-b022-b-018",
+          "recordDigest": "sha256:b7b2ca288e8e5c0da59bae3ed9a2a201701d0c74c2e707bc70f175d91b9a4c22"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die kohärente quellenkritische Habitabilitätsbewertung. Die erste Runde trennt Messung, modellabhängige Inferenz und Spekulation explizit und begrenzt Habitabilitätskriterien klar gegenüber einem Lebensnachweis.",
+      "rationaleEn": "Both reviews confirm the coherent source-critical assessment of habitability. The first round explicitly distinguishes measurement, model-dependent inference, and speculation and clearly limits habitability criteria relative to evidence of life."
+    },
+    {
+      "decisionId": "physik-b022-stable12-synthesis-openai-codex-20260828-decision-012",
+      "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:72d57c60e3bc9c515deaec344db63d989eacaac080a2d595375ed1921d2191b3",
+      "pageFingerprint": "sha256:ccfb1a9e2968d0e8d8d42809a77d7bf674ec63e1dbabed8480404f406c8740e6",
+      "goalReviewContextFingerprint": "sha256:1c7b44649d190fd8459c96b4cfa4975325963bf547bc2862ea1fd19bf60b0807",
+      "finalText": {
+        "titleDe": "Offene kosmologische Fragen quellenkritisch einordnen",
+        "titleEn": "Critically Assess Open Questions in Cosmology",
+        "descriptionDe": "Die lernende Person kann offene kosmologische Problemstellungen beschreiben, daraus physikalisch untersuchbare Fragen ableiten und populärwissenschaftliche Darstellungen anhand von Evidenz, Unsicherheit und Quellenqualität kritisch bewerten.",
+        "descriptionEn": "The learner can describe open problems in cosmology, derive physically investigable questions from them, and critically evaluate popular-science accounts using evidence, uncertainty, and source quality."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b022-round-a-a-019",
+          "recordDigest": "sha256:9885aba2b968f4f28d0df2360c4303e69543b0b550d875595ccf44c769b4b755"
+        },
+        "second": {
+          "recordId": "physik-b022-b-019",
+          "recordDigest": "sha256:3861296dcbe71ee242c691fdb1ae0fefe1164bcd79215d069741a11e67e0b16f"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die allgemeine wissenschaftliche Einordnungskompetenz. Die erste Runde verbindet gesicherten Befund, Modell, offene Frage, unterscheidbare Vorhersage und die Prüfung populärwissenschaftlicher Sicherheit besonders vollständig.",
+      "rationaleEn": "Both reviews confirm the general scientific-assessment competence. The first round most fully connects established findings, models, open questions, discriminating predictions, and scrutiny of confidence in popular-science accounts."
+    }
+  ],
+  "manifestFingerprint": "sha256:ae9d678e01fb67f7a706679e894c7638cf3963d65dd9579f2d7a340219a42a25"
+}

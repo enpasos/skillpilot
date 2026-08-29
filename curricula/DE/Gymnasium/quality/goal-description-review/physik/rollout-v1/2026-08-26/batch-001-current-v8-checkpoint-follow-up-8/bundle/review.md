@@ -3,7 +3,7 @@
 - Book ID: `de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826`
 - Book edition: `curricular-atomic-v1`
 - Publication mode: `review`
-- BookModel digest: `sha256:8f8720d09ae2619628a985e8bcff35619c0256de4b34f3dd8d3c78cda5cd9b20`
+- BookModel digest: `sha256:22bc7f0acb5c66cd7a877956937735088ee3c88d279a9e573f66150f049a0d0c`
 - Selected goals: 8
 
 The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
@@ -12,7 +12,7 @@ The PDF and this Markdown are parallel review surfaces. The normalized JSON is a
 
 - Full learning-goal ID: `33e3417c-e062-5f4a-8df9-3195dca50089`
 - Goal fingerprint: `sha256:ca7ad2d285b6e0ce418d50b75cd6176c45cd4d0a17bc6a2a1ba681f9fb865221`
-- Page fingerprint: `sha256:27d8cd59a1fd61b7492fccce010b8e88208971d787d40e1faa7fe2ab26807bec`
+- Page fingerprint: `sha256:2c2658ee20217e2a168fb0a3295de362b6cfcc0db26892d4b4703892bc17f048`
 - Topic path: Physik
 
 ### Canonical description
@@ -21,9 +21,9 @@ Die lernende Person kann aus den relativen Positionen von Sonne, Erde und Mond a
 
 ### Visualization
 
-/assets/goal-visualizations/physik/33e3417c-e062-5f4a-8df9-3195dca50089/33e3417c-e062-5f4a-8df9-3195dca50089.png
+/assets/goal-visualizations/physik/33e3417c-e062-5f4a-8df9-3195dca50089/33e3417c-e062-5f4a-8df9-3195dca50089.jpg
 
-- original digest: `sha256:5350992b4cd8ca651203ed142c0cb20267c5b0d0619e0c292e26800d6d1dfac6`
+- original digest: `sha256:2c1670663dc53b70c7b15bdf93ab614547905ec5df1cdea2c9f39f4319d15da7`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -50,7 +50,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `f0046ae8-cbfc-526b-8414-04e3595b6075`
 - Goal fingerprint: `sha256:7fb28ae1976a87eadc6084213f4790cf29b110cfafc7846ba3d55c08d1d418f0`
-- Page fingerprint: `sha256:5e22c76b73f26f5337ca3ae519e89397072d5b76ee0f9c697a41292e26c4ebb8`
+- Page fingerprint: `sha256:bfc0db709b2d25aca475ad9d0f253f1c65e45f9463d02338b918c86a1b019115`
 - Topic path: Physik
 
 ### Canonical description
@@ -59,9 +59,9 @@ Die lernende Person kann für Sonnen- und Mondfinsternisse die jeweilige Anordnu
 
 ### Visualization
 
-/assets/goal-visualizations/physik/f0046ae8-cbfc-526b-8414-04e3595b6075/f0046ae8-cbfc-526b-8414-04e3595b6075.png
+/assets/goal-visualizations/physik/f0046ae8-cbfc-526b-8414-04e3595b6075/f0046ae8-cbfc-526b-8414-04e3595b6075.jpg
 
-- original digest: `sha256:c31d5ad3e4917a20fc4eb95bdf3a272d331a9d886ade58ce53e9406984b92c4c`
+- original digest: `sha256:2fb3862606a2dfb298f548144cb4c5b4bde990aee9932cc24d224746750438df`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -88,7 +88,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `9a9e2085-5ab6-534f-b622-83774d51f36b`
 - Goal fingerprint: `sha256:e52c651da3d96f09c18e5dd0b217ea4224b75d4334610b126e451313d3e17c2a`
-- Page fingerprint: `sha256:fbb002d0debdec435feb941f7d65188bd4f2151a3cf0f42790fd5e621543122c`
+- Page fingerprint: `sha256:ef1d322e185c3819b4d93235457b918f8ea3fe020a370b9d47b7d33c26497b3f`
 - Topic path: Physik
 
 ### Canonical description
@@ -117,6 +117,7 @@ Die lernende Person kann an einfachen Alltags- und Experimentbeispielen aus beob
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Farben und Lichtwechselwirkungen in einer Ausstellung erklären — `2c195204-2e21-5369-8782-7bf4fc41bf9f` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 
 ### Evidence-profile candidate
@@ -126,8 +127,8 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `51de4fd9-6827-5b3d-b2ca-5e27ba961a7f`
 - Goal fingerprint: `sha256:ad8f4ea68ed5259b4173d080c1fdb4f7f08c6d7c6113a9bc134f9dfe27d09f1b`
-- Page fingerprint: `sha256:ad8ee5ae0d8beffec52b4494f17b7894c6675a0922ccc2f0b74fa8a378f151ee`
-- Topic path: Physik > Sekundarstufe I > Wärmelehre und Teilchenmodell (Sek I) > Temperaturmessung und thermische Ausdehnung
+- Page fingerprint: `sha256:08fdc9d3172cbfc23efd4fc9517e849dbbc9d8bbc057ffa2da580f83beb8c8d5`
+- Topic path: Physik
 
 ### Canonical description
 
@@ -135,9 +136,9 @@ Die lernende Person kann für einen gegebenen Messbereich und die benötigte Auf
 
 ### Visualization
 
-/assets/goal-visualizations/physik/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f.png
+/assets/goal-visualizations/physik/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f/51de4fd9-6827-5b3d-b2ca-5e27ba961a7f.jpg
 
-- original digest: `sha256:4bb8ecbdd1b3428838906b58e6c2823e41a50e06ffe71e1bd4036baeb1fd94b3`
+- original digest: `sha256:20b29c13f48b75bc76db6d43bad508e9c325344607702e37faa43fd63e7c970b`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -164,7 +165,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `b60f63b6-e70b-5557-9f54-86d42fa80325`
 - Goal fingerprint: `sha256:43db7bb64e7214a384533bfb1270667f1bcd60436f1defe209e9165cc49e5e4e`
-- Page fingerprint: `sha256:69b65ce14d2c6d406cc61c31dea96e4265ae58a8baaa312fa16d4ce10a4a4921`
+- Page fingerprint: `sha256:909b3aa1bd39a4a42e3c567c30fb723f5935124afcc0363bc7e207b4a1f0455b`
 - Topic path: Physik
 
 ### Canonical description
@@ -173,9 +174,9 @@ Die lernende Person kann aus vergleichenden Beobachtungen erklären, dass sich L
 
 ### Visualization
 
-/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.png
+/assets/goal-visualizations/physik/b60f63b6-e70b-5557-9f54-86d42fa80325/b60f63b6-e70b-5557-9f54-86d42fa80325.jpg
 
-- original digest: `sha256:f44c2e1bc9ec357182a788ac72c3bbad211a27a013adbffc4602e269456a4d9b`
+- original digest: `sha256:b68f356f14a5f9a8dcbccd51c41226106ec1ed920145ca4ba7102fa0e762abb2`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -242,7 +243,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `fbe0faae-7fba-482b-888e-341f926770f3`
 - Goal fingerprint: `sha256:e46f594aecb6ef6358a8fa33e603acdaef4ee01e5e70e72b46cdf73e3040eebe`
-- Page fingerprint: `sha256:63aa5d3001dac331411a5001d999befa7e3cd1d9e4db3af536cb79d35c792a90`
+- Page fingerprint: `sha256:d6ad3dccfb6d037bae38c8b7bcaac4aa55f740db8a356b39ca02f392b59a85ed`
 - Topic path: Physik
 
 ### Canonical description
@@ -271,6 +272,7 @@ Die lernende Person kann Wärmeleitung als Energieübertragung ohne makroskopisc
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Wärmeübertragung und Treibhauseffekt bilanzieren — `0b090935-1e43-581b-84ec-078741f8969e` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 
 ### Evidence-profile candidate
@@ -280,7 +282,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `5a3716dd-ec67-5c48-ba3d-1a29f05ba2ce`
 - Goal fingerprint: `sha256:a7b91cbedc1ba1768be814182acd39a2aa7579970e59c082522150d97775c726`
-- Page fingerprint: `sha256:86daf7b6ff373463657fd481c9cec6c78b2574adfbc03870786ad0b3891c99ed`
+- Page fingerprint: `sha256:583d61ddb5b56159522f7a835f741595fb1c7e5bae58a1a887fd4d5fddc27798`
 - Topic path: Physik
 
 ### Canonical description
@@ -309,6 +311,7 @@ Die lernende Person kann den natürlichen Treibhauseffekt mit der Absorption und
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Wärmeübertragung und Treibhauseffekt bilanzieren — `0b090935-1e43-581b-84ec-078741f8969e` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 - Energieversorgung und Klimawirkungen fachlich bewerten — `5be98160-5189-58aa-8183-1df1c400cc8c` (outside this book)
 

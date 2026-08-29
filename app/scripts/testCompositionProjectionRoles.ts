@@ -328,6 +328,27 @@ assert.equal(
   'The more specific target role must apply to all descendants of that subtree.',
 )
 
+const specificityCompilation = compileCompositionView(
+  specificityView,
+  canonicalLandscape,
+  canonicalLandscape,
+  new Map([['TEST', canonicalLandscape]]),
+)
+assert.deepEqual(
+  specificityCompilation.findings.filter((finding) => finding.severity === 'error'),
+  [],
+)
+const specificityPreviewGoalIds = collectPreviewGoalIds(
+  specificityCompilation.compiledRootNodes,
+)
+assert.equal(specificityPreviewGoalIds.has('TARGET_BRANCH'), true)
+assert.equal(specificityPreviewGoalIds.has('DEEPER_PREREQUISITE'), false)
+assert.equal(specificityPreviewGoalIds.has('DEEPER_PREREQUISITE_CHILD'), false)
+assert.equal(specificityPreviewGoalIds.has('DIRECT_PREREQUISITE'), false)
+assert.equal(specificityPreviewGoalIds.has('PREREQUISITE_BRANCH'), false)
+assert.equal(specificityPreviewGoalIds.has('DEEPER_TARGET'), true)
+assert.equal(specificityPreviewGoalIds.has('DEEPER_TARGET_CHILD'), true)
+
 const [specificityProjectedEntry] = applyCompositionViewProjection([entry], specificityView)
 assert.ok(specificityProjectedEntry)
 const specificityReachableGoalIds = collectReachableGoalIds(specificityProjectedEntry)

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-fast18-stable-current-carryover-8-v1-resolution-f23fdfa9-38b6-5157-8301-ed302476c456",
+  "goal": {
+    "goalId": "f23fdfa9-38b6-5157-8301-ed302476c456",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ee9d1911490cd319043422a3e8f41463c8d027fb73acc483bc3b396d5dc02b34",
+    "pageFingerprint": "sha256:f259c48d48e76cd899c9417d0361447ba7e9b10d26b9ad0c1c65a7d64f17e1e0",
+    "goalReviewContextFingerprint": "sha256:22f24c00ef5a671078966a06da96708987cb28dfbc76941cfaae5fbb791ddd33",
+    "finalText": {
+      "titleDe": "Mittelwert und Streuung aus Messreihen bestimmen",
+      "titleEn": "Determine Mean and Spread from Data Series",
+      "descriptionDe": "Die lernende Person kann aus einer Messreihe Mittelwerte bestimmen und die Streuung zur qualitativen Unsicherheitsbewertung nutzen.",
+      "descriptionEn": "The learner can determine mean values from a data series and use spread for qualitative uncertainty assessment."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-a",
+      "campaignDigest": "sha256:b239ae5e4db5dc343d1825d793b212b672355e1251714ccfc92fbeb1031a0d3f",
+      "roundId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:7d46ac3bd7bc26ef07ac8a6b29479a7cbedb3adc474ff751397801d4ea258dad",
+      "goalReviewContextFingerprint": "sha256:22f24c00ef5a671078966a06da96708987cb28dfbc76941cfaae5fbb791ddd33",
+      "batchId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-first-pass-a.batch-001",
+      "runId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "runManifestDigest": "sha256:bc638967e2a842a7f2dc0d15025b9d33ff48eb03551094e8d8c8b20e91992459",
+      "resultsDigest": "sha256:2e33124eb5b9f49747f349573d52c38d1c6089bbfcb63b8e088faa3831de25d1",
+      "recordId": "physik-fast18-20260828-a.f23fdfa9-38b6-5157-8301-ed302476c456",
+      "recordDigest": "sha256:1f84dedf17b27a8b702f2c1912ace3ca8670540fcfc2770467195832b233d88e"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-b",
+      "campaignDigest": "sha256:e56cf559245b7c6c9a25b7f63e641f31130e2f5a0d50876e44c42f7e7b69d1e5",
+      "roundId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:7d46ac3bd7bc26ef07ac8a6b29479a7cbedb3adc474ff751397801d4ea258dad",
+      "goalReviewContextFingerprint": "sha256:22f24c00ef5a671078966a06da96708987cb28dfbc76941cfaae5fbb791ddd33",
+      "batchId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-first-pass-b.batch-001",
+      "runId": "physik-fast18-b-openai-codex-20260828",
+      "runManifestDigest": "sha256:ea8ccaceb72edc0cae4614e1ab71b365f6aad19770afee7a6908343910322d88",
+      "resultsDigest": "sha256:395ea18b81a9428537e0e1dc8b6a5c25fd2a46e8a51a69f872511f78967ef785",
+      "recordId": "physik-fast18-b.004.f23fdfa9-38b6-5157-8301-ed302476c456",
+      "recordDigest": "sha256:9ae980a83fe383c3ca8fe7e6fe9f4cdc5a5be3105cba77882583890f5a9b0896"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:5402c361385d623ecad4f884e9463b1c25ebe87c34ac90938a930172d1534b75"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-fast18-stable-current-carryover-8-v1-synthesis-f23fdfa9-38b6-5157-8301-ed302476c456",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis candidate",
+    "synthesizedAt": "2026-08-28T10:45:00.000Z",
+    "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte zweisprachige Beschreibung „Mittelwert und Streuung aus Messreihen bestimmen“ mit keep. Die fachliche Drittabwägung übernimmt die konkretere Evidenzfassung der zweiten Runde; die andere Runde ist damit vereinbar.",
+    "rationaleEn": "Both independent current reviews confirm the unchanged bilingual description “Determine Mean and Spread from Data Series” with keep. The subject-specific third adjudication adopts the more concrete evidence formulation from the second round; the other round is compatible with it.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Mittelwert bündelt wiederholte Messwerte zu einem Schätzwert, während ihre Streuung die zufällige Variabilität und damit die Wiederholbarkeit beschreibt; eine geringe Streuung allein schließt eine systematische Abweichung nicht aus.",
+      "essentialUnderstandingEn": "The mean combines repeated measurements into an estimate, whereas their spread describes random variability and thus repeatability; a small spread alone does not rule out a systematic deviation.",
+      "observablePerformanceDe": "Die lernende Person berechnet für eine Messreihe den Mittelwert, beschreibt die Streuung anhand der Daten, vergleicht die Wiederholbarkeit zweier Reihen und begründet eine qualitative Unsicherheitsbewertung einschließlich des Umgangs mit auffälligen Werten.",
+      "observablePerformanceEn": "The learner calculates the mean of a data series, describes its spread from the data, compares the repeatability of two series, and justifies a qualitative uncertainty assessment including how conspicuous values are handled.",
+      "transferExpectationDe": "Bei einer neuen Messreihe mit gleichem Mittelwert, aber anderer Streuung, einem Ausreißer oder einem bekannten gemeinsamen Offset trennt die lernende Person erneut Aussagen über Wiederholbarkeit und mögliche Richtigkeit.",
+      "transferExpectationEn": "For a new data series with the same mean but different spread, an outlier, or a known common offset, the learner again separates claims about repeatability from claims about possible accuracy."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-f23fdfa9-38b6-5157-8301-ed302476c456",
+        "source": "both",
+        "textDe": "Die beiden keep-Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two keep reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:abb4c8de2b906b306d6477e027400fb4b2bd00ed3fece42e1c153be0fa1b3747"
+}

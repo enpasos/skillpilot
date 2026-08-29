@@ -26,6 +26,8 @@ const repoRoot = path.resolve(__dirname, '../..')
 const sourceLandscapeId = 'cc3245a5-2980-4019-aa51-84904e073195'
 const targetLandscapeId = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const sourcePdfPath = 'curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf'
+const sourceUrl =
+  'https://www.hamburg.de/resource/blob/123488/8c3d4d03adf8ddad189172bef45ab665/physik-gym-seki-data.pdf'
 const extractionPath =
   'curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PHYSIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json'
 const reviewPath =
@@ -300,6 +302,7 @@ const extraction = {
     title: 'Bildungsplan Physik Sekundarstufe I Hamburg 2022',
     path: sourcePdfPath,
     official: true,
+    url: sourceUrl,
   },
   method: {
     passageExtraction:
@@ -425,10 +428,40 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "66256e22-44a3-5939-8862-821e29d6711d"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "hh-physics-seki-bp2022-3-2-licht-materie-116-c1251aa9": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-117-a3d9cd7c": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-118-cc7669a0": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-119-97ad97a7": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-121-d77d2f63": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-122-ed813150": [
+    "3b50255a-6b01-578b-8f5c-4383536a3221"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-123-69ca8a0e": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "hh-physics-seki-bp2022-3-2-licht-materie-128-71634e92": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ]
+}
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -442,7 +475,9 @@ const mappings = resolvedRows.flatMap((currentRow, index) => {
   return currentRow.canonicalGoalIds.map((canonicalGoalId) => ({
     legacyGoalId: sourceGoal.id,
     canonicalGoalId,
-    matchType: currentRow.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+    matchType: (batch017TargetsBySourceGoalId[sourceGoal.id] ?? []).includes(canonicalGoalId)
+      ? 'partial'
+      : currentRow.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
     reviewDecisionId: sourceGoal.id,
   }))
 })

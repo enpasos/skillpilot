@@ -4,68 +4,28 @@
 
 - SkillPilot-ID: `a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20`
 - Titel: Newtons 2. Axiom (Grundgleichung der Mechanik)
-- Beschreibung: Die lernende Person kann den Impuls p = m · v einführen und Newtons zweites Axiom in der Form d/dt p = F (auch bei veränderlicher Masse) formulieren und deuten.
+- Beschreibung: Die lernende Person kann den vektoriellen Impuls $\vec p=m\vec v$ einführen, Newtons zweites Axiom in einem Inertialsystem für ein materiell abgeschlossenes System als Zusammenhang zwischen der resultierenden äußeren Kraft und der zeitlichen Änderung des Impulses formulieren und deuten sowie für konstante Masse auf $\sum \vec F_\mathrm{ext}=m\vec a$ zurückführen.
 
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: pilot, independently reviewed 2026-08-29
 - Quellbild: `a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20.jpg`
+- Asset SHA-256: `sha256:57b21a77d205429a3b9a6905e19da7085020d160e252ddcfa2738161253a6817`
 - Public Asset: `/assets/goal-visualizations/physik/a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20/a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20.jpg`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine klare deutsche Physik-Infografik im lockeren Cartoon-Stil zu Newtons zweitem Axiom für ein materiell abgeschlossenes System in einem Inertialsystem.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Zeige genau einen blauen Impulspfeil p⃗ und genau einen roten Pfeil der resultierenden äußeren Kraft ΣF⃗_ext. Keine v⃗=p⃗-Suggestion und keine Vorher-/Nachher-Pfeilkonstruktion.
 
-Titel: Newtons 2. Axiom (Grundgleichung der Mechanik)
-Beschreibung: Die lernende Person kann den Impuls p = m · v einführen und Newtons zweites Axiom in der Form d/dt p = F (auch bei veränderlicher Masse) formulieren und deuten.
+Formeln: p⃗=m·v⃗, ΣF⃗_ext=dp⃗/dt und bei konstanter Masse ΣF⃗_ext=m·a⃗. Beschrifte die gestrichelte Systemgrenze als materiell abgeschlossenes System und den Bezugsrahmen als Inertialsystem.
 
-Zusatzanweisung:
-Pflichtinhalt:
-
-Show Newton's second law through momentum change.
-
-Title: `Newtons 2. Axiom`
-
-Main scene:
-- show one cart on a horizontal track
-- draw one red force arrow anchored at the cart center, pointing to the right, labelled `F`
-- draw two momentum arrows above the cart, both pointing to the right:
-  - shorter arrow `p vorher`
-  - longer arrow `p nachher`
-- label the change `Delta p` to the right
-
-Formula box:
-- `p = m * v`
-- `F = d p / d t`
-- `bei konstanter Masse: F = m * a`
-
-Small interpretation:
-- `Kraft aendert den Impuls.`
-- `Richtung der Kraft: Richtung der Impulsaenderung.`
-- `gilt auch, wenn m sich aendert`
-
-Vermeiden:
-
-Do not draw force and momentum arrows in opposite directions.
-Do not draw more than one force arrow on the cart.
-Do not draw the force arrow starting away from the cart.
-Do not write `F = p * t` or `F = m / a`.
-Do not show an acceleration opposite to the force.
-Do not use a rocket or exhaust plume.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Keine Aussage, die die einfache Systemgleichung pauschal als Variable-Mass-Gleichung ausgibt. Symbole, Vektorpfeile und ext-Indizes müssen eindeutig lesbar sein.
 ```
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Kompatibilitätsprüfung 2026-08-29: Das unveränderte Nano-Banana-Pro-Asset zeigt die formal korrekte Impulsform und den Konstantmassen-Spezialfall. Der höhere Formalisierungsgrad ist kein fachlicher Fehler. Assetbytes und Digest sowie der historische eingezäunte Generator-Prompt bleiben unverändert.

@@ -333,6 +333,53 @@ assert.match(
   new RegExp(`<article class="goal-page goal-page--dense-relations"[^>]*data-goal-id="${GOAL_A}"`, 'u'),
   'more than twelve total internal and external relations select the compact readable relation layout',
 )
+assert.match(
+  denseExternalHtml,
+  /\.goal-page--dense-relations \.external-references ul\s*\{[^}]*minmax\(30mm, 1fr\)\);[^}]*gap:\s*0\.4mm;/su,
+  'dense external relations use the same compact grid as dense internal relations',
+)
+assert.match(
+  denseExternalHtml,
+  /\.goal-page--dense-relations \.external-references code\s*\{[^}]*font-size:\s*4\.1pt;[^}]*line-height:\s*1;/su,
+  'dense external relation UUIDs remain visible in compact identifier typography',
+)
+
+const veryDenseExternalModel = {
+  ...denseExternalModel,
+  pages: denseExternalModel.pages.map((page, pageIndex) => pageIndex === 0
+    ? {
+        ...page,
+        externalPrerequisites: Array.from({ length: 36 }, (_, index) => {
+          const goalId = `00000000-0000-4000-8001-${String(index + 1).padStart(12, '0')}`
+          return {
+            goalId,
+            title: `Sehr dichte externe Voraussetzung ${index + 1}`,
+            canonicalUrl: atlasUrl(goalId),
+          }
+        }),
+      }
+    : page),
+} satisfies GoalBookModel
+const veryDenseExternalHtml = renderGoalBookHtml(veryDenseExternalModel, renderOptions)
+assert.match(
+  veryDenseExternalHtml,
+  new RegExp(`<article class="goal-page goal-page--very-dense-relations"[^>]*data-goal-id="${GOAL_A}"`, 'u'),
+  'more than thirty-five total internal and external relations select the very-dense layout',
+)
+assert.match(
+  veryDenseExternalHtml,
+  /\.goal-page--very-dense-relations \.external-references ul\s*\{[^}]*minmax\(25mm, 1fr\)\);[^}]*gap:\s*0\.3mm;/su,
+  'very-dense external relations use the narrow bounded grid',
+)
+assert.match(
+  veryDenseExternalHtml,
+  /\.goal-page--very-dense-relations \.external-references code\s*\{[^}]*font-size:\s*3\.3pt;[^}]*line-height:\s*1;/su,
+  'very-dense external relation UUIDs remain visible in the smallest bounded typography',
+)
+assert.ok(
+  veryDenseExternalHtml.includes('Sehr dichte externe Voraussetzung 36'),
+  'very-dense rendering retains every external relation instead of truncating the model',
+)
 assert.doesNotMatch(
   html,
   /<article class="goal-page goal-page--dense-relations"/u,

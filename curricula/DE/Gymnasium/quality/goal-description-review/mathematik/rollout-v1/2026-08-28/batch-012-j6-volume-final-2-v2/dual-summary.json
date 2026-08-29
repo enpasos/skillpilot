@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1ddee2bade13ee652bcdeb6b6a55c867f92ab41616a89515f3e4ba3a25a3117a",
+  "reviewInputFingerprint": "sha256:a050129ab87286f01d78f8a3aa550f6d45643032f345239474b68e1cae9d54f1",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-a",
+      "roundId": "mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-independent-a",
+      "runIds": [
+        "math-b012-a-8c8ebd23-c1dd-4487-b3d3-0c1a62a22c48"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-b",
+      "roundId": "mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-012-j6-volume-final-2-v2-20260828-independent-b",
+      "runIds": [
+        "7f33201f-0e77-417e-972d-3f6a853aeffa"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "firstRecordId": "math-b012-a-8c8ebd23-c1dd-4487-b3d3-0c1a62a22c48.goal-001",
+      "secondRecordId": "c64e7381-d63c-4e58-93ad-d7f587f21902",
+      "firstRunId": "math-b012-a-8c8ebd23-c1dd-4487-b3d3-0c1a62a22c48",
+      "secondRunId": "7f33201f-0e77-417e-972d-3f6a853aeffa",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "firstRecordId": "math-b012-a-8c8ebd23-c1dd-4487-b3d3-0c1a62a22c48.goal-002",
+      "secondRecordId": "4a63f686-824d-47ae-99eb-32c60a07ed03",
+      "firstRunId": "math-b012-a-8c8ebd23-c1dd-4487-b3d3-0c1a62a22c48",
+      "secondRunId": "7f33201f-0e77-417e-972d-3f6a853aeffa",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

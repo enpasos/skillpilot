@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a3c1842958e8e019d61716d56b03b091cf9b901a8d8e066c9de8f93777f47af1",
+  "reviewInputFingerprint": "sha256:069ac646455058b2679741448cf93fa60df1b2baad8a6c7181ec786685cf4f80",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-a",
+      "roundId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-b",
+      "roundId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:3b866aea-3e4d-5f23-91de-759148382710",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:3b866aea-3e4d-5f23-91de-759148382710",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:1a037489-3c95-540b-8cae-0acd360358ee",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:1a037489-3c95-540b-8cae-0acd360358ee",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:e5c33afc-a233-50ff-a17f-63c085dfb89c",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:e5c33afc-a233-50ff-a17f-63c085dfb89c",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:37f28bc4-def2-57cf-a06b-191dfd228205",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:37f28bc4-def2-57cf-a06b-191dfd228205",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a1389d4e-dc97-5557-babe-a31a2bd57217",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:a1389d4e-dc97-5557-babe-a31a2bd57217",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:a1389d4e-dc97-5557-babe-a31a2bd57217",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ffbbf243-c2eb-4330-b050-837de994c130",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:ffbbf243-c2eb-4330-b050-837de994c130",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:ffbbf243-c2eb-4330-b050-837de994c130",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "firstRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001:d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "secondRecordId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b:d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "firstRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

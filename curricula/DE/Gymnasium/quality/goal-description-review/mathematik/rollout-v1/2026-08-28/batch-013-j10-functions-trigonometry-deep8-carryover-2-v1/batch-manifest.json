@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-013-j10-functions-trigonometry-deep8-carryover-2-v1.config.json",
+  "configDigest": "sha256:51bbab64c8834f279f04b0fab482ec1d77bbe5c0749a790fb6f1c67aa4e80df7",
+  "goalIds": [
+    "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+    "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+    "53b47494-ec60-4128-840d-2a4c4bab6d32",
+    "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+    "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+    "6a4716bd-8038-46bb-b647-0db4a254fee7",
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+    "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 792,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:cf69aed5fcb87652037a2d015626bf86e7364876ac466ad26e663768c3e4589c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:12015eefdda57e9117484dee9cfdbf664282d7b23efbfa1760c32bb657705346",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7cb4cbdbeaa001638f725579d114c23c69f2df5c6dbee793617fc222733f4814",
+    "reviewInputFingerprint": "sha256:121caa94ddbc3793c21d6c741723a9910534f6589d9fd29d018886e399a0d6b7",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-a",
+        "campaignDigest": "sha256:b8a1e56c21b0c13b7af75eb4253e70e00b00d2855bd5410be8dc895c194340f2",
+        "roundId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-independent-a",
+        "batchId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:28f01503b8142914f5170421c645cb9ba23fa9498a3fd38b27cf6a3eea7858e9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-b",
+        "campaignDigest": "sha256:f0c1acdf4284974d73f896556194a7bf1ee8b05a21c12975fa134e2833cda4f5",
+        "roundId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-independent-b",
+        "batchId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a6fdae8f759e3ccd34e54ea469da4e2221d4e5fd7a48b0b5f4113898498f88e3"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -10,6 +10,10 @@ type Row = {
   text: string
   courseLevel: CourseLevel
   canonicalGoalIds: string[]
+  matchTypeOverride?: 'exact' | 'partial'
+  reviewRationale?: string
+  reviewedAt?: string
+  reviewer?: string
 }
 
 type Topic = {
@@ -25,6 +29,7 @@ const repoRoot = path.resolve(__dirname, '../..')
 const sourceLandscapeId = 'f1a2c733-b994-4db3-9dd6-54ffe544002b'
 const targetLandscapeId = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const sourcePdfPath = 'curricula/DE/Gymnasium/input/SH/Fachanforderungen_Physik_Sekundarstufe_2022_barrierearm.pdf'
+const sourcePdfUrl = 'https://fachportal.lernnetz.de/sh/faecher/physik/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Physik%20Sekundarstufe%20%282022%29%2C%20barrierearm.pdf&cid=16990'
 const extractionPath =
   'curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_PHYSIK_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json'
 const reviewPath =
@@ -39,6 +44,7 @@ const target = {
   digitalMeasurement: 'e452baa3-c9fc-5b62-893c-f91fe8d53715',
   society: '8eaa4e45-39fc-50e9-b59f-8a1752f6bebe',
   motion: '65ddd780-0323-45d1-8f94-5e31bf28da23',
+  averageInstantaneousVelocity: 'bf8517a9-142b-5789-826a-767f3b277998',
   projectile: '287739a3-6143-55d0-abe7-1a08889e9b49',
   newton: '9340e894-bb0d-45a4-91f2-b90a63ad50a8',
   conservation: 'e9d616d8-685f-4129-a36f-dae7a280bae7',
@@ -108,11 +114,46 @@ const row = (topicCode: string, text: string, canonicalGoalIds: string[], course
   courseLevel,
 })
 
+const partialRow = (
+  topicCode: string,
+  text: string,
+  canonicalGoalIds: string[],
+  courseLevel: CourseLevel,
+  reviewRationale: string,
+): Row => ({
+  ...row(topicCode, text, canonicalGoalIds, courseLevel),
+  matchTypeOverride: 'partial',
+  reviewRationale,
+  reviewedAt: '2026-08-28',
+  reviewer: 'codex-physics-batch-019-mapping-adjudication',
+})
+
+// Batch 025 average/instantaneous-velocity structural split overlay
+const batch025PartialRow = (
+  topicCode: string,
+  text: string,
+  canonicalGoalIds: string[],
+  courseLevel: CourseLevel,
+  reviewRationale: string,
+): Row => ({
+  ...row(topicCode, text, canonicalGoalIds, courseLevel),
+  matchTypeOverride: 'partial',
+  reviewRationale,
+  reviewedAt: '2026-08-29',
+  reviewer: 'codex-physics-batch-025-motion-split-2026-08-29',
+})
+
 const rows: Row[] = [
   row('2.3.1-KIN', 'Bewegungen mithilfe von Messwerterfassungen und Videoanalysen analysieren', [target.motion, target.digitalMeasurement]),
   row('2.3.1-KIN', 'zwischen gleichförmigen und gleichmäßig beschleunigten Bewegungen unterscheiden', [target.motion]),
   row('2.3.1-KIN', 'Ort-Zeit-Zusammenhänge aus Diagrammen und Messwerten bestimmen', [target.motion]),
-  row('2.3.1-KIN', 'Durchschnitts- und Momentangeschwindigkeiten bestimmen und deuten', [target.motion]),
+  batch025PartialRow(
+    '2.3.1-KIN',
+    'Durchschnitts- und Momentangeschwindigkeiten bestimmen und deuten',
+    [target.averageInstantaneousVelocity],
+    'GK_LK',
+    "Das amtliche SH-Ziel fordert das Bestimmen und Deuten von Durchschnitts- und Momentangeschwindigkeiten. Das neue kanonische Ziel präzisiert zusätzlich endliches Intervall, Zeitpunkt sowie Sekanten- und Tangentensteigung; die Zuordnung ist partial.",
+  ),
   row('2.3.1-KIN', 'Beschleunigungen bestimmen und in Bewegungssituationen interpretieren', [target.motion]),
   row('2.3.1-KIN', 'Ableitungen zur Bestimmung von Geschwindigkeit und Beschleunigung verwenden', [target.motion]),
   row('2.3.1-KIN', 'Flächen unter Bewegungsgraphen zur Bestimmung von Wegstrecken verwenden', [target.motion]),
@@ -190,7 +231,13 @@ const rows: Row[] = [
   row('2.3.2-STATISCHE-FELDER', 'gekreuzte elektrische und magnetische Felder zur Geschwindigkeitsselektion verwenden', [target.chargedInEField, target.magneticField]),
   row('2.3.2-STATISCHE-FELDER', 'den Wien-Filter als technische Anwendung gekreuzter Felder erklären', [target.chargedInEField, target.magneticField]),
   row('2.3.2-STATISCHE-FELDER', 'Massenspektrometer mit elektrischen und magnetischen Feldern beschreiben', [target.massSpectrometer], 'LK'),
-  row('2.3.2-STATISCHE-FELDER', 'Teilchenbeschleuniger als Anwendung statischer Felder einordnen', [target.particleAccelerators], 'LK'),
+  partialRow(
+    '2.3.2-STATISCHE-FELDER',
+    'Teilchenbeschleuniger als Anwendung statischer Felder einordnen',
+    [target.particleAccelerators],
+    'LK',
+    'Das amtliche SH-Source-Ziel nennt Teilchenbeschleuniger nur als allgemeine Anwendung statischer Felder; den vollständigen Vergleich von Zyklotron und Synchrotron trägt es daher nur teilweise.',
+  ),
   row('2.3.2-STATISCHE-FELDER', 'Energie-, Impuls- und Kreisbewegungsmodelle bei Feldbewegungen verknüpfen', [target.energy, target.conservation, target.circularMotion]),
   row('2.3.2-STATISCHE-FELDER', 'Kreisbewegungen in Gravitationsfeldern und Magnetfeldern vergleichen', [target.gravitation, target.circularFields]),
   row('2.3.2-STATISCHE-FELDER', 'Drehimpuls als Erhaltungsgröße bei Kreis- und Feldbewegungen einordnen', [target.angularMomentum]),
@@ -370,6 +417,7 @@ const extraction = {
     title: 'Fachanforderungen Physik Sekundarstufe I/II Schleswig-Holstein 2022',
     path: sourcePdfPath,
     official: true,
+    url: sourcePdfUrl,
   },
   method: {
     passageExtraction:
@@ -483,7 +531,8 @@ const mappings = rows.flatMap((currentRow, index) => {
   return currentRow.canonicalGoalIds.map((canonicalGoalId) => ({
     legacyGoalId: sourceGoal.id,
     canonicalGoalId,
-    matchType: currentRow.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+    matchType: currentRow.matchTypeOverride
+      ?? (currentRow.canonicalGoalIds.length === 1 ? 'exact' : 'partial'),
     reviewDecisionId: sourceGoal.id,
   }))
 })
@@ -496,13 +545,13 @@ const decisions = rows.map((currentRow, index) => {
     sourceSpan: sourceGoal.sourceSpan,
     decision: currentRow.canonicalGoalIds.length > 0 ? 'mapped' : 'needsCanonicalGoal',
     canonicalGoalIds: currentRow.canonicalGoalIds,
-    rationale: currentRow.canonicalGoalIds.length > 1
+    rationale: currentRow.reviewRationale ?? (currentRow.canonicalGoalIds.length > 1
       ? 'Das amtliche SH-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.'
       : currentRow.canonicalGoalIds.length === 1
         ? 'Das amtliche SH-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'
-        : 'Für dieses amtliche SH-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.',
-    reviewedAt: '2026-05-10',
-    reviewer: 'codex',
+        : 'Für dieses amtliche SH-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.'),
+    reviewedAt: currentRow.reviewedAt ?? '2026-05-10',
+    reviewer: currentRow.reviewer ?? 'codex',
   }
 })
 
@@ -543,6 +592,87 @@ registryEntry.sourcePath = sourcePdfPath
 registryEntry.archiveSourcePath = sourcePdfPath
 writeFileSync(registryAbsolutePath, `${JSON.stringify(registry, null, 2)}\n`)
 
+const ensureBatch025VelocityTargetPlacement = (view: Record<string, unknown>): void => {
+  const velocityGoalId = 'bf8517a9-142b-5789-826a-767f3b277998'
+  const motions: Array<Record<string, unknown>> = []
+  const acceleratedStructures: Array<Record<string, unknown>> = []
+  const velocityReferences: Array<Record<string, unknown>> = []
+  const visit = (nodes: Array<Record<string, unknown>>): void => {
+    for (const node of nodes) {
+      if (node.id === 'physics-e1-motion') motions.push(node)
+      if (node.id === 'physics-e1-accelerated-and-free-fall') acceleratedStructures.push(node)
+      if (node.goalId === velocityGoalId) velocityReferences.push(node)
+      if (Array.isArray(node.children)) {
+        visit(node.children as Array<Record<string, unknown>>)
+      }
+    }
+  }
+  if (!Array.isArray(view.rootNodes)) throw new Error('Batch-025 composition rootNodes missing')
+  const rootNodes = view.rootNodes as Array<Record<string, unknown>>
+  visit(rootNodes)
+  if (motions.length !== 1 || acceleratedStructures.length !== 1 || velocityReferences.length !== 1) {
+    throw new Error(
+      `Batch-025 placement cardinality drifted: motion=${motions.length} accelerated=${acceleratedStructures.length} velocity=${velocityReferences.length}`,
+    )
+  }
+  const motion = motions[0]
+  const accelerated = acceleratedStructures[0]
+  const inheritedReference = velocityReferences[0]
+  if (
+    motion.kind !== 'structure'
+    || accelerated.kind !== 'structure'
+    || !Array.isArray(motion.children)
+    || !Array.isArray(accelerated.children)
+  ) {
+    throw new Error('Batch-025 motion or accelerated structure shape drifted')
+  }
+  const motionChildren = motion.children as Array<Record<string, unknown>>
+  const acceleratedChildren = accelerated.children as Array<Record<string, unknown>>
+  const acceleratedIndexes = motionChildren
+    .map((child, index) => child === accelerated ? index : -1)
+    .filter((index) => index >= 0)
+  const inheritedIndexes = acceleratedChildren
+    .map((child, index) => child === inheritedReference ? index : -1)
+    .filter((index) => index >= 0)
+  if (acceleratedIndexes.length !== 1) {
+    throw new Error('Batch-025 accelerated structure is not exactly one direct motion child')
+  }
+  if (
+    inheritedIndexes.length !== 1
+    || inheritedReference.kind !== 'goalEntry'
+    || inheritedReference.projectionRole !== 'prerequisiteOnly'
+  ) {
+    throw new Error('Batch-025 inherited velocity reference is not the expected direct prerequisiteOnly goalEntry')
+  }
+  acceleratedChildren.splice(inheritedIndexes[0], 1)
+  const targetReference: Record<string, unknown> = {
+    kind: 'canonicalSubtree',
+    goalId: velocityGoalId,
+  }
+  const acceleratedIndex = acceleratedIndexes[0]
+  motionChildren.splice(acceleratedIndex, 0, targetReference)
+
+  const postReferences: Array<Record<string, unknown>> = []
+  const collectPostReferences = (nodes: Array<Record<string, unknown>>): void => {
+    for (const node of nodes) {
+      if (node.goalId === velocityGoalId) postReferences.push(node)
+      if (Array.isArray(node.children)) {
+        collectPostReferences(node.children as Array<Record<string, unknown>>)
+      }
+    }
+  }
+  collectPostReferences(rootNodes)
+  if (
+    postReferences.length !== 1
+    || postReferences[0] !== targetReference
+    || motionChildren[acceleratedIndex] !== targetReference
+    || motionChildren[acceleratedIndex + 1] !== accelerated
+    || acceleratedChildren.some((child) => child.goalId === velocityGoalId)
+  ) {
+    throw new Error('Batch-025 target placement postcondition failed')
+  }
+}
+
 const addShSpecificViewEntries = (view: Record<string, unknown>) => {
   const rootNodes = Array.isArray(view.rootNodes) ? view.rootNodes : []
   const root = rootNodes.find((node): node is Record<string, unknown> =>
@@ -572,6 +702,7 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
   view.viewId = String(view.viewId).replace('de-bb', 'de-sh')
   view.scope = { ...view.scope, jurisdiction: 'DE-SH' }
   addShSpecificViewEntries(view)
+  ensureBatch025VelocityTargetPlacement(view)
   writeFileSync(outputPath, `${JSON.stringify(view, null, 2)}\n`)
 }
 

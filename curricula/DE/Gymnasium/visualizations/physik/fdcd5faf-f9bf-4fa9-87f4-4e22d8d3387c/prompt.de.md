@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben
+# Lernzielvisualisierung: Technische Anwendungen des Induktionsgesetzes qualitativ erklären
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c`
-- Titel: Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben
-- Beschreibung: Die lernende Person kann technische Anwendungen des Induktionsgesetzes wie Generator, Transformator, Induktionsladegerät oder Induktionskochplatte qualitativ beschreiben und den Nutzen elektromagnetischer Induktion fachlich einordnen.
+- Titel: Technische Anwendungen des Induktionsgesetzes qualitativ erklären
+- Beschreibung: Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben
-Beschreibung: Die lernende Person kann technische Anwendungen des Induktionsgesetzes wie Generator, Transformator, Induktionsladegerät oder Induktionskochplatte qualitativ beschreiben und den Nutzen elektromagnetischer Induktion fachlich einordnen.
+Titel: Technische Anwendungen des Induktionsgesetzes qualitativ erklären
+Beschreibung: Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.
 
 Zusatzanweisung:
 Pflichtinhalt:

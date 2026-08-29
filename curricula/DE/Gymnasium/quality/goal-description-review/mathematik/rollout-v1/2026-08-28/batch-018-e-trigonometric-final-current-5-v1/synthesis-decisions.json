@@ -1,0 +1,188 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-28T19:04:13.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828",
+    "batchManifestDigest": "sha256:f256804a60129f5525b359b5a6e7666fdf551f9835414993bd947b57610c3c2f",
+    "configDigest": "sha256:ed51b9cce4aef37c63a66aed067b7d4d1f707881992bb807a73c689a827d9198",
+    "bundleFingerprint": "sha256:d151b11d8ad024e338ea6e423f4286f9e5c61f21367fbf2297ca2fc20ed70b4d",
+    "bookDigest": "sha256:8cac19abc8b09144267db02157ad07512f373e6489c3bc405af55e966cbdde79",
+    "reviewInputFingerprint": "sha256:2dfe97c2f71b59d50cc7e047f3f0cacc16b6fd93c1a1d4024bf9dedcfe9d1c23",
+    "dualSummaryDigest": "sha256:2b7ef824f3ee76c4112fbfbec56a616f06a7dc5482d2ad0f266783f5e87d0b0e",
+    "canonicalLandscapeDigest": "sha256:100825c360d41b225cec01e06ceda10b0014f2987e7911756b4b9166aad2d0ae"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-a",
+      "campaignDigest": "sha256:ef7ce1590e1a8ad63229a80e2577294214e7b2d7df69095074c91b06badba361",
+      "roundId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:2dfe97c2f71b59d50cc7e047f3f0cacc16b6fd93c1a1d4024bf9dedcfe9d1c23",
+      "batchId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4c9be1cd91c54251f15290dd4704d1a0599a824d877bf8dd039740084e44c64d",
+      "runId": "mathematik-b018-round-a-openai-gpt56-codex-b352fb2b-652f-42a3-9729-a2fa59bbcefb",
+      "runManifestDigest": "sha256:e63f10841e8db10d7dede73141202d6354ebf7d32e41298cead80e6e1b6ebb67",
+      "resultsDigest": "sha256:c4521a7d7f1efdac8aa54eb67cb070b8731701cfc813887604df7843430be6cf"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-b",
+      "campaignDigest": "sha256:f6e941e9d1fb574a23e3292d150be92831f2b8e7958583abf5d63bfc21111ca5",
+      "roundId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:2dfe97c2f71b59d50cc7e047f3f0cacc16b6fd93c1a1d4024bf9dedcfe9d1c23",
+      "batchId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:f615bc561aa4835272a125277a3e3bb96aaf4b4b944e0f131af8ad9ae8415e54",
+      "runId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.openai-gpt-5.5.run-001",
+      "runManifestDigest": "sha256:052879832a8483da1caa0b2afc5de897698cef06bb998dc6673ec95593db5903",
+      "resultsDigest": "sha256:f66bc90a03b2100f5c5ffdf1576980d875a442c8dbb6943edf8f2ecd18654469"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-synthesis-decision-001",
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23817169ae1fc6599afd61a7c69e438de54552720cd0d9ae609a943e35ed89b0",
+      "pageFingerprint": "sha256:0267d0affd08ccf88b59c86cee1daff2bc93e4e296f030259e1e0726aa0bf480",
+      "goalReviewContextFingerprint": "sha256:3d2b71c484aa592d9a8260c00d0f2bb5e74956e092ea70764ad80d63c6627572",
+      "finalText": {
+        "titleDe": "Ableitungen elementarer Funktionen berechnen",
+        "titleEn": "Calculate derivatives of elementary functions",
+        "descriptionDe": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+        "descriptionEn": "The learner can use the structure of polynomial functions up to degree 3 and simple exponential and power functions to select the appropriate differentiation rule and calculate the derivative step by step."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gdr-b018-a-b352fb2b-01",
+          "recordDigest": "sha256:391089d4312a2ee0e79eb687c227a64bd40a2d61e057bb2b50fcddfca522bc88"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-001",
+          "recordDigest": "sha256:fcff9224bbea8804ec52ed90c4ec26b5316afb8a7266800aaae314b66be3d779"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen den aktuellen bilingualen Wortlaut und binden die Regelwahl an die Struktur des Funktionsterms. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie Summe, konstanten Faktor, Potenz und einfachen Exponentialterm präzise unterscheidet und im Transfer insbesondere die diagnostisch wichtige Abgrenzung von Potenz- und Exponentialstruktur verlangt. Die beobachtbare Leistung verbindet Zerlegung, begründete Regelwahl und nachvollziehbare Rechnung, ohne über die im Ziel begrenzten ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen hinauszugehen. Die zweite Fassung ist fachlich tragfähig und nennt Grund- und Rechenregeln expliziter, bleibt im Transfer bei einer neu kombinierten Termstruktur aber weniger trennscharf hinsichtlich der typischen Verwechslung von Potenz- und Exponentialfunktion; daher wird ihre abweichende Evidence-Fassung nicht übernommen.",
+      "rationaleEn": "Both independent KEEP reviews confirm the current bilingual wording and tie rule selection to the structure of the function term. The first round's evidence formulation is selected because it precisely distinguishes sums, constant factors, powers, and simple exponential terms and, in transfer, specifically requires the diagnostically important distinction between power and exponential structure. Its observable performance connects decomposition, justified rule selection, and a traceable calculation without extending beyond the goal's bounded scope of polynomial functions up to degree 3 and simple exponential and power functions. The second formulation is mathematically sound and names the basic and operational rules more explicitly, but its transfer to a newly combined term is less discriminating about the common confusion between power and exponential functions; its differing evidence formulation is therefore not selected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-synthesis-decision-002",
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d9d74a65093ea056e47c1bb60edc2753e5297ae9cba883e695639a7480c41417",
+      "pageFingerprint": "sha256:3315dad52c68baeb50f09ad76dc3264a7e0f7515aae2804f0c8051ce626997e4",
+      "goalReviewContextFingerprint": "sha256:f2e20841794a31a2429998076cf864ec5b5b9223ae6e4b3d00cad00ff1edd940",
+      "finalText": {
+        "titleDe": "Ableitungen von Sinus- und Kosinusfunktionen herleiten",
+        "titleEn": "Derive differentiation rules for sine and cosine functions",
+        "descriptionDe": "Die lernende Person kann im Bogenmaß die Ableitungsregeln $(\\sin x)^{\\prime}=\\cos x$ und $(\\cos x)^{\\prime}=-\\sin x$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und insbesondere das Minuszeichen der Kosinusableitung begründen.",
+        "descriptionEn": "Using radian measure, the learner can derive the differentiation rules $(\\sin x)^{\\prime}=\\cos x$ and $(\\cos x)^{\\prime}=-\\sin x$ through geometric arguments or limit reasoning and, in particular, justify the negative sign in the derivative of cosine."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gdr-b018-a-b352fb2b-02",
+          "recordDigest": "sha256:6e6c9df3624fe5e1526e1de2ca8eeaa7ffec5fc1a7fcb4e81f1b67ebe413c9e6"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-002",
+          "recordDigest": "sha256:27f5d975ebb136c051654197c75b8fcdc15e459bdc36f9037b5aa73810c2ac65"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen, dass der aktuelle Wortlaut Herleitung, Bogenmaß und die Begründung des Minuszeichens als eine geschlossene Verständnisleistung erfasst. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie lokale Winkeländerungen am Einheitskreis unmittelbar mit dem Vertauschen von Sinus und Kosinus sowie der Abnahme der Kosinuskoordinate verbindet. Ihre beobachtbare Leistung fordert eine vollständige selbstständige Herleitung und macht die Rolle des Bogenmaßes explizit. Der Transfer von einer Regel über eine passende Phasenverschiebungsidentität zur anderen prüft, ob Funktionsbeziehung und Vorzeichen tatsächlich rekonstruiert werden können. Die zweite Fassung ist ebenfalls fachlich korrekt und bietet sinnvolle Repräsentationswechsel zwischen Graph, Einheitskreis und Differenzenquotient; sie lässt die Übertragung jedoch breiter und weniger eindeutig an die gegenseitige Herleitbarkeit der beiden Regeln gebunden. Deshalb wird die fokussiertere erste Evidence-Fassung übernommen.",
+      "rationaleEn": "Both independent KEEP reviews confirm that the current wording captures derivation, radian measure, and justification of the negative sign as one coherent understanding performance. The first round's evidence formulation is selected because it directly connects local angular changes on the unit circle with the interchange of sine and cosine and with the decrease of the cosine coordinate. Its observable performance requires a complete independent derivation and makes the role of radian measure explicit. Transfer from one rule to the other through an appropriate phase-shift identity tests whether the functional relationship and sign can actually be reconstructed. The second formulation is also mathematically correct and offers useful representation changes among graphs, the unit circle, and difference quotients, but its transfer is broader and less directly tied to the mutual derivability of the two rules. The more focused first evidence formulation is therefore selected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-synthesis-decision-003",
+      "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7b087eadd5fc2a7acb9faad7cc12e1486afbbbe8568310bacc7af2a0129e7c6",
+      "pageFingerprint": "sha256:70a65559da4e86850822a5ca3c4b62090e32e77aa2302610690e4b65a9701891",
+      "goalReviewContextFingerprint": "sha256:7c424ef6a546234c3bf38d5d82928a6334e9d774c599f35e2347ecdd3fd30d2d",
+      "finalText": {
+        "titleDe": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
+        "titleEn": "Apply derivatives of sine and cosine functions",
+        "descriptionDe": "Die lernende Person kann die Ableitungsregeln für Sinus und Kosinus anwenden, um bei Funktionen der Form $f(x)=a\\cdot\\sin(x)+d$ beziehungsweise $f(x)=a\\cdot\\cos(x)+d$ die Ableitungsfunktion und an vorgegebenen Stellen die Tangentensteigung zu bestimmen sowie die Ergebnisse am Graphen zu überprüfen.",
+        "descriptionEn": "The learner can apply the differentiation rules for sine and cosine to functions of the form $f(x)=a\\cdot\\sin(x)+d$ or $f(x)=a\\cdot\\cos(x)+d$, determine the derivative function and the tangent slope at specified points, and verify the results on the graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gdr-b018-a-b352fb2b-03",
+          "recordDigest": "sha256:e72d5fd09e9f1f338b58c06fae5612a68b61e99f5b975b7045596a3da756e022"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-003",
+          "recordDigest": "sha256:28b5186c94e3c567bba4e9097ee6866c5fe797c5ae35b6fc45f4c4636d9a2f79"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen die aktuelle Verbindung aus Ableitungsfunktion, punktueller Tangentensteigung und grafischer Kontrolle für die angegebenen Sinus- und Kosinusformen. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie die Wirkungen von Faktor a und vertikaler Verschiebung d konzeptionell trennt, die erhaltenen Steigungen über Vorzeichen, Nullstellen und Größenordnung mit dem Ausgangsgraphen abgleicht und im Transfer Vorhersage, Rechnung und begründete Fehlerprüfung verbindet. Der Wechsel zwischen Sinus und Kosinus sowie ein negatives a oder verändertes d variieren genau die im Ziel enthaltenen Parameter, ohne zusätzliche Transformationen einzuführen. Die zweite Fassung ist fachlich gültig und grenzt die nicht verlangte Kettenregel ausdrücklich aus; dieser negative Scope-Hinweis ist jedoch weniger leistungsdiagnostisch als die in der ersten Fassung geforderte Vorhersage und grafisch begründete Prüfung. Daher wird die erste Evidence-Fassung ausgewählt.",
+      "rationaleEn": "Both independent KEEP reviews confirm the current connection among the derivative function, tangent slope at a point, and graphical checking for the stated sine and cosine forms. The first round's evidence formulation is selected because it conceptually separates the effects of the factor a and the vertical shift d, checks the resulting slopes against the original graph through signs, zeros, and magnitude, and combines prediction, calculation, and justified error checking in transfer. Switching between sine and cosine and changing to a negative a or a different d varies exactly the parameters contained in the goal without introducing additional transformations. The second formulation is mathematically valid and explicitly excludes the unrequired chain rule, but that negative scope guard is less diagnostically useful than the prediction and graph-based justification required by the first formulation. The first evidence formulation is therefore selected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-synthesis-decision-004",
+      "goalId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:528162afe18d661f08b31d1cf457cff1edf6aa5ebff18eadd536e78c9e4b3f26",
+      "pageFingerprint": "sha256:2e69acc53aa5dd0cf7088f7a17bdc2fd91e64142ce7736060cf59107e9530953",
+      "goalReviewContextFingerprint": "sha256:58c408837947525c505b1ac40bfe8d503aad60cbc271e4dd809f5590848cfea0",
+      "finalText": {
+        "titleDe": "Trigonometrische Gleichungen lösen",
+        "titleEn": "Solve trigonometric equations",
+        "descriptionDe": "Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, ihre vollständigen Lösungsmengen mithilfe von Periodizität und Symmetrie formulieren und am Einheitskreis darstellen.",
+        "descriptionEn": "The learner can solve simple trigonometric equations such as $\\sin(x)=k$ or $\\cos(x)=k$, formulate their complete solution sets using periodicity and symmetry, and represent them on the unit circle."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gdr-b018-a-b352fb2b-04",
+          "recordDigest": "sha256:ac2db8e7c66f9672a8f1293a95c1c6acd2d8855708ab1a075c7e2d0817722ef9"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-004",
+          "recordDigest": "sha256:2f8fa96a2abc5fd023d3b85cf5870541a92a9dc772a53737a8a299f3d7105ba2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen das aktuelle Lernziel als kohärente Verbindung von Einheitskreis, Symmetrie, Periodizität und vollständiger Lösungsmenge. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie die Existenzbedingung |k| ≤ 1 ausdrücklich nennt, die Anzahl und Konstruktion der Grundlösungen beobachtbar macht und Sonder- sowie Leermengenfälle in die vollständige parametrisierte Lösungsmenge einbindet. Der Transfer auf ein endliches Intervall verlangt nachweisbar alle und nur die zulässigen Lösungen und kontrolliert sie erneut am Einheitskreis; damit wird sowohl Vollständigkeit als auch Ausschluss unzulässiger Lösungen geprüft. Die zweite Fassung ist ebenfalls korrekt und nutzt einen sinnvollen Wechsel der Darstellung, formuliert diese Vollständigkeitskontrolle im Intervall aber weniger streng. Die erste Fassung liefert deshalb die trennschärfere Evidenz innerhalb desselben einfachen Gleichungsscope.",
+      "rationaleEn": "Both independent KEEP reviews confirm the current learning goal as a coherent connection among the unit circle, symmetry, periodicity, and a complete solution set. The first round's evidence formulation is selected because it explicitly states the existence condition |k| ≤ 1, makes the number and construction of base solutions observable, and incorporates special and empty-set cases into the complete parameterized solution set. Transfer to a finite interval demonstrably requires all and only the admissible solutions and checks them again on the unit circle, thereby assessing both completeness and exclusion of inadmissible solutions. The second formulation is also correct and uses a useful representation change, but it states this completeness check within an interval less rigorously. The first formulation therefore provides the more discriminating evidence within the same simple-equation scope."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-synthesis-decision-005",
+      "goalId": "56fba457-ab98-5b96-963e-ec284458c17f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6349d766c15be6c941e5288ea44bad63c8b50d7456e3d61ca1830f1608ef7f5c",
+      "pageFingerprint": "sha256:479f3d78f6942e4fb0bc57a4452ceec4227de31e83b7e5dd6a6526ef4458fdc1",
+      "goalReviewContextFingerprint": "sha256:c969cd039dca4e5fbc65157894c5e64170734519c8f56c8a82138498d9a43e54",
+      "finalText": {
+        "titleDe": "Periodische Prozesse modellieren",
+        "titleEn": "Model periodic processes",
+        "descriptionDe": "Die lernende Person kann periodische Realsituationen (z. B. Gezeiten oder Schwingungen) unter begründeten Annahmen mit Sinus- oder Kosinusfunktionen modellieren, Parameter aus Messdaten bestimmen, den Modellverlauf im Kontext interpretieren und Passung sowie Grenzen des Modells anhand von Daten und Annahmen beurteilen.",
+        "descriptionEn": "The learner can model periodic real-world situations (e.g. tides or oscillations) with sine or cosine functions under justified assumptions, determine parameters from measured data, interpret the model behavior in context, and assess the model's fit and limitations based on data and assumptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "gdr-b018-a-b352fb2b-05",
+          "recordDigest": "sha256:1093d08b33ec940a19e4e54bc66f2b36cab1715be909c8d01af67a48c485e6a6"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-018-e-trigonometric-final-current-5-v1-20260828-first-pass-b.batch-001.record-005",
+          "recordDigest": "sha256:8c98192e34cfb426e1353a0e9c5a5a2b952805f81a5b290fdd57a67d32958cc3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen, dass das aktuelle Ziel Modellbildung, Parameterdeutung, Datenpassung und Modellgrenzen in einem vollständigen Modellierungszyklus verbindet. Die Evidence-Fassung der ersten Runde wird gewählt, weil sie Mittellage, Amplitude, Periode und Phasenlage eindeutig den Eigenschaften des periodischen Prozesses zuordnet und jede Aussagekraft an Datenpassung sowie offengelegte Annahmen bindet. Die beobachtbare Leistung verlangt ein selbstständig aus Messdaten entwickeltes Modell, die kontextuelle Parameterdeutung, den Vergleich von Modellwerten und Daten sowie ein begründetes Urteil zu Brauchbarkeit und Grenzen. Ihr Transfer variiert systematisch Mittellage, Periode, Phasenlage und Datenstreuung und prüft erneut die Angemessenheit der Modellklasse. Die zweite Fassung ist fachlich stark und ergänzt diagnostisch nützliche Fälle wie Messrauschen oder einen fehlenden Extrempunkt, verwendet mit Mittelwert, Verschiebung und Startlage jedoch weniger eindeutige Parameterbegriffe und bindet die Modellgrenzen im wesentlichen Verständnis etwas allgemeiner. Die erste Fassung bildet daher den kanonischen Scope präziser und vollständiger ab.",
+      "rationaleEn": "Both independent KEEP reviews confirm that the current goal connects model construction, parameter interpretation, fit to data, and model limitations in a complete modelling cycle. The first round's evidence formulation is selected because it unambiguously maps midline, amplitude, period, and phase to features of the periodic process and ties every claim to fit with data and explicit assumptions. Its observable performance requires a model independently developed from measured data, contextual interpretation of the parameters, comparison of model values with data, and a justified judgment about usefulness and limitations. Its transfer systematically varies the midline, period, phase, and data variability and reassesses whether the model class remains appropriate. The second formulation is mathematically strong and adds diagnostically useful cases such as measurement noise or a missing extremum, but it uses less precise parameter language through mean, shift, and initial position and binds model limitations somewhat more generally in the essential understanding. The first formulation therefore captures the canonical scope more precisely and completely."
+    }
+  ],
+  "manifestFingerprint": "sha256:46ca8320bc4c940abd394fdc2b75b5a504f6055ce06fe689414854044ae2c6a6"
+}

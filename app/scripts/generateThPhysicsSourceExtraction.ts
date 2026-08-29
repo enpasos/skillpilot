@@ -12,6 +12,8 @@ type SourceDocument = {
   title: string
   path: string
   official: true
+  url?: string
+  landingUrl?: string
 }
 
 type Topic = {
@@ -60,11 +62,12 @@ type SourceGoal = {
   rawParentBulletText: string
 }
 
+// Batch 017 TH reviewed-empty-target normalization
 type MappingDecision = {
   sourceGoalId: string
   topicCode: string
   sourceSpan: string
-  decision: 'mapped'
+  decision: 'mapped' | 'unmapped'
   canonicalGoalIds: string[]
   rationale: string
   reviewedAt: string
@@ -110,12 +113,15 @@ const sourceDocuments: SourceDocument[] = [
     title: 'Thüringer Lehrplan Physik 2012',
     path: sourcePdf2012Path,
     official: true,
+    url: 'https://www.schulportal-thueringen.de/web/guest/media/detail?tspi=2280',
   },
   {
     key: 'TH-PH-2024',
     title: 'Thüringer Lehrplan Physik Qualifikationsphase 2024',
     path: sourcePdf2024Path,
     official: true,
+    url: 'https://www.schulportal-thueringen.de/tip/resources/medien/63792?dateiname=LP_GY_OSt_Physik_final_2024-10-28.pdf',
+    landingUrl: 'https://www.schulportal-thueringen.de/web/guest/media/detail?tspi=18005',
   },
 ]
 
@@ -169,6 +175,16 @@ const currentWaveExactEdges = new Set([
 // Batch 015 electricity structural split overlay
 const batch015SplitParentIds = new Set(["1911920e-b099-4310-82f2-b47f51a78b33","ec5cac7b-ad31-590c-8ab0-5b3ef24d2bca","50431e92-eec9-54d6-b437-ea7a51b6f474"])
 const batch015TargetsBySourceGoalId: Record<string, string[]> = {
+  "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-038-d2ed1a4c": [
+    "69f8f59c-b0c3-5b0b-82db-834a0e655736"
+  ],
+  "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-040-110a437e": [
+    "baa2bf3c-798a-5ec3-a667-031bf062d96c"
+  ],
+  "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-045-fee04f8c": [
+    "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+    "28237994-9c24-5a06-82fe-be1f494768ba"
+  ],
   "th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-049-a770abe0": [
     "af7855a3-6aea-5e05-8505-248bc9a8c219"
   ],
@@ -182,10 +198,90 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "4a42cddd-7827-5204-87e5-8d9eac7792f1"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "th-phys-seki-th-2-2-3-radioaktivitat-199-811aaff7": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-200-ccd23b74": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-201-6b051f4a": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-202-4631ad00": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-203-286771d9": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-204-91010f39": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-205-816b3011": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-206-f4fbfd69": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-207-c12cf23e": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-208-0aa93784": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-209-3ea48415": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-210-d0faa2b4": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-211-5878cb00": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-212-e10bb744": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ]
+}
+
+const batch017RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "th-phys-seki-th-2-2-3-radioaktivitat-202-4631ad00": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-203-286771d9": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-204-91010f39": [
+    "8eaa4e45-39fc-50e9-b59f-8a1752f6bebe",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-205-816b3011": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-206-f4fbfd69": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-208-0aa93784": [
+    "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+    "d3c153b9-e09b-5668-8386-73105546a7c1",
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-210-d0faa2b4": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "th-phys-seki-th-2-2-3-radioaktivitat-212-e10bb744": [
+    "8eaa4e45-39fc-50e9-b59f-8a1752f6bebe",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ]
+}
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -202,7 +298,7 @@ const configs: ExtractionConfig[] = [
     readmePath: 'curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/PHYSIK.md',
     oldSnapshotCount: 11,
     peerBaseline:
-      'HE/BW/HH/MV/BY/SN/ST = 48/101/128/142/296/276/387 Source-Ziele; Thüringen Sek I wird aus den Themenbereichen Klassenstufen 7/8 und 9/10 extrahiert.',
+      'HE/BW/HH/MV/BY/SN/ST = 48/101/128/142/296/276/387 Source-Ziele; Thüringen Sek I wird ausschließlich aus fachlichen Kompetenzbullets und ausgewiesenen Schülerexperimenten der Klassenstufen 7-10 extrahiert.',
   },
   {
     stage: 'SekII',
@@ -371,7 +467,13 @@ const parse2012 = (): SourceBullet[] => {
         continue
       }
 
-      if (!currentTopic || isJunkLine(line)) continue
+      if (!currentTopic) continue
+      if (/^Projektvorschläge/u.test(line)) {
+        finishBullet()
+        currentArea = 'Projektvorschläge'
+        continue
+      }
+      if (isJunkLine(line)) continue
       if (/^Sach(?:- und|und) Methodenkompetenz/u.test(line)) {
         finishBullet()
         currentArea = 'Sach- und Methodenkompetenz'
@@ -382,12 +484,6 @@ const parse2012 = (): SourceBullet[] => {
         currentArea = 'Selbst- und Sozialkompetenz'
         continue
       }
-      if (/^Projektvorschläge/u.test(line)) {
-        finishBullet()
-        currentArea = ''
-        continue
-      }
-
       const bullet = startBullet(line)
       if (bullet && currentArea) {
         finishBullet()
@@ -504,11 +600,11 @@ const inferCanonicalGoalIds = (sourceGoal: SourceGoal, stage: Stage): string[] =
   }
 
   if (stage === 'SekI') {
-    if (/kraft|druck|mechanik|arbeit|leistung|energie|bewegung|geschwindigkeit|beschleunigung|fall|wurf|hebel|gewicht/u.test(text)) {
+    if (/kraft|druck|mechanik|arbeit|leistung|energie|bewegung|geschwindigkeit|beschleunigung|\bfall\b|wurf|hebel|gewicht/u.test(text)) {
       add(ids, target.sekIMechanics)
     }
     if (/temperatur|wärme|zustand|aggregat|schmelz|siede|teilchenmodell|gas/u.test(text)) add(ids, target.sekIHeat)
-    if (/licht|optik|strahl|spiegel|linse|brechung|reflexion|bild/u.test(text)) add(ids, target.sekILight)
+    if (/licht|optik|\bstrahl\b|spiegel|linse|brechung|reflexion|bild/u.test(text)) add(ids, target.sekILight)
     if (/strom|spannung|widerstand|ladung|stromkreis|schaltung|leiter|isolator|elektrisch|halbleiter/u.test(text)) {
       add(ids, target.sekICircuits)
     }
@@ -558,12 +654,23 @@ const canonicalTitleById = new Map(canonical.goals.map((goal) => [goal.id, goal.
 const canonicalGoalById = new Map(canonical.goals.map((goal) => [goal.id, goal]))
 const parsedBullets = [...parse2012(), ...parse2024()]
 
+// Batch 017 TH non-subject source-bullet filter. This is a defensive second
+// boundary behind parse2012: project suggestions and the page-25 introduction
+// to the upper-secondary 11S phase are not Sek-I competencies.
+// The loop still enumerates the unfiltered bullet list so retained IDs stay stable.
+const isNonSubjectSourceBullet = (bullet: SourceBullet): boolean => {
+  if (bullet.stage !== 'SekI') return false
+  if (bullet.competencyArea === 'Projektvorschläge') return true
+  return bullet.code === 'TH-2-2-3-radioaktivitat' && bullet.page >= 25
+}
+
 const buildExtraction = (config: ExtractionConfig) => {
   const stageBullets = parsedBullets.filter((bullet) => bullet.stage === config.stage)
   const passageByTopic = new Map<string, Passage>()
   const sourceGoals: SourceGoal[] = []
 
   for (const [bulletIndex, bullet] of stageBullets.entries()) {
+    if (isNonSubjectSourceBullet(bullet)) continue
     let passage = passageByTopic.get(bullet.code)
     if (!passage) {
       passage = {
@@ -621,19 +728,31 @@ const buildExtraction = (config: ExtractionConfig) => {
 
   const passages = [...passageByTopic.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
-    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config.stage))
+    const inferredCanonicalGoalIds = inferCanonicalGoalIds(sourceGoal, config.stage)
+    const batch017Touched = inferredCanonicalGoalIds.some((goalId) => batch017SplitParentIds.has(goalId))
+      || batch017TargetsBySourceGoalId[sourceGoal.id] !== undefined
+    const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferredCanonicalGoalIds)
+    const batch017Labels = (batch017TargetsBySourceGoalId[sourceGoal.id] ?? []).map((goalId) => ({
+      '25d91cc0-d84c-5522-86b5-fdff73264f08': 'Ionisierende Strahlung mit geeigneten Detektoren nachweisen',
+      '861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd': 'Biologische Wirkungen ionisierender Strahlung einordnen',
+      '1593d95c-2aac-504c-8527-37cb61877da9': 'Alpha-, Beta- und Gammastrahlung unterscheiden',
+      '16b94a12-ecc5-5b5c-85b6-87b4290bebf8': 'Halbwertszeit radioaktiver Stoffe deuten',
+    }[goalId] ?? goalId))
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,
       sourceSpan: sourceGoal.sourceSpan,
-      decision: 'mapped',
+      decision: canonicalGoalIds.length > 0 ? 'mapped' : 'unmapped',
       canonicalGoalIds,
-      rationale:
-        canonicalGoalIds.length > 1
+      rationale: batch017Touched
+        ? batch017Labels.length > 0
+          ? `Batch-017-Fachreview: Die beiden früheren Sammelziele wurden strukturell entflochten. Diese Quelle stützt direkt oder teilweise ${batch017Labels.join('; ')}; fachfremde Altzuordnungen wurden nicht fortgeschrieben, andere bereits geprüfte Ziele bleiben erhalten.`
+          : 'Batch-017-Fachreview: Die frühere Sammelzuordnung war für diese Quelle fachlich zu breit. Sie wurde ohne Vererbung auf die neuen Kinder entfernt; andere bereits geprüfte Ziele bleiben erhalten.'
+        : canonicalGoalIds.length > 1
           ? 'Das amtliche Thüringen-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.'
           : 'Das amtliche Thüringen-Source-Ziel ist inhaltlich durch den angegebenen kanonischen Physik-Teilbaum abgedeckt; die Zuordnung auf ein Sammelziel ist eine fachliche Abdeckungsentscheidung.',
-      reviewedAt: '2026-05-11',
-      reviewer: 'codex',
+      reviewedAt: batch017Touched ? '2026-08-28' : '2026-05-11',
+      reviewer: batch017Touched ? 'codex-physics-batch-017-nuclear-structural-adjudication' : 'codex',
     }
   })
 
@@ -647,6 +766,20 @@ const buildExtraction = (config: ExtractionConfig) => {
       reviewDecisionId: decision.sourceGoalId,
     })),
   )
+
+  if (config.stage === 'SekI') {
+    const requiredPreciseEdges = [
+      ['th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-038-d2ed1a4c', '69f8f59c-b0c3-5b0b-82db-834a0e655736'],
+      ['th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-040-110a437e', 'baa2bf3c-798a-5ec3-a667-031bf062d96c'],
+      ['th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-045-fee04f8c', 'f1a078ae-6262-4444-a4bc-a5ab275621cf'],
+      ['th-phys-seki-th-2-1-2-geladene-korper-stromkreise-elektrische-gro-en-und-elektrische-leitungsvorgange-045-fee04f8c', '28237994-9c24-5a06-82fe-be1f494768ba'],
+    ] as const
+    for (const [legacyGoalId, canonicalGoalId] of requiredPreciseEdges) {
+      if (!mappings.some((mapping) => mapping.legacyGoalId === legacyGoalId && mapping.canonicalGoalId === canonicalGoalId)) {
+        throw new Error(`Missing reviewed precise TH electricity edge ${legacyGoalId}:${canonicalGoalId}`)
+      }
+    }
+  }
 
   const uniqueTargetIds = [...new Set(mappings.map((mapping) => mapping.canonicalGoalId))]
   const missingCanonicalGoalIds = uniqueTargetIds.filter((goalId) => !canonicalTitleById.has(goalId))
@@ -673,7 +806,9 @@ const buildExtraction = (config: ExtractionConfig) => {
       passageExtraction:
         'pdftotext -layout; Passagen werden je Klassenstufe und Themen-/Inhaltsbereich gebildet.',
       sourceGoalExtraction:
-        'Ein Source-Ziel pro Kompetenzbullet und ausgewiesenem Schülerexperiment. Projektvorschläge, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt.',
+        config.stage === 'SekI'
+          ? 'Ein Source-Ziel pro fachlichem Kompetenzbullet und ausgewiesenem Schülerexperiment. Projektvorschläge, fachunspezifische Lernorganisationssätze, PDF-Übergangsartefakte, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt.'
+          : 'Ein Source-Ziel pro Kompetenzbullet und ausgewiesenem Schülerexperiment. Projektvorschläge, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt.',
     },
     qualityReview: {
       sourceGoalCountPeerBaseline: {
@@ -795,7 +930,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     status: {
       scope: `${jurisdiction} Physik ${config.stage} / Lehrplan Gymnasium Thüringen`,
       reviewedSourceGoals: sourceGoals.length,
-      mappedSourceGoals: sourceGoals.length,
+      mappedSourceGoals: decisions.filter((decision) => decision.decision === 'mapped').length,
       needsViewPlacementReview: 0,
       needsCanonicalGoal: 0,
       totalSourceGoals: sourceGoals.length,
@@ -882,7 +1017,11 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   })
   if (!root) throw new Error(`physics-root not found for ${suffix}`)
 
-  const candidateTargets = suffix.startsWith('sekii') ? [...upperTargetIds] : allTargetIds
+  // The broad mechanics area is already represented by its reviewed atomic
+  // subtrees in the authored views. Re-adding the area as a supplement would
+  // duplicate learner-facing content without adding source coverage.
+  const candidateTargets = (suffix.startsWith('sekii') ? [...upperTargetIds] : allTargetIds)
+    .filter((goalId) => goalId !== target.mechanics)
   const allowedTargets = candidateTargets.filter((goalId) => {
     const mappedLevels = allDecisions
       .filter((decision) => decision.canonicalGoalIds.includes(goalId))
@@ -907,11 +1046,16 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
 }
 
 for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
+  const thViewPath = `${compositionViewDir}/de-th-${suffix}.view.json`
+  // Existing learner-facing views are reviewed authored state (including route
+  // prerequisites and terminal tasks). Source extraction must not rebuild or
+  // silently narrow them from a generic state template.
+  if (existsSync(path.resolve(repoRoot, thViewPath))) continue
   const template = readJson<Record<string, unknown>>(`${compositionViewDir}/de-bb-${suffix}.view.json`)
   template.viewId = String(template.viewId).replace('de-bb', 'de-th')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
-  writeJson(`${compositionViewDir}/de-th-${suffix}.view.json`, template)
+  writeJson(thViewPath, template)
 }
 
 for (const [index, config] of configs.entries()) {

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `6affc2ea-ecd2-4fcd-8877-3ffa15b0425b`
 - Titel: Potenzielle Energie (Lageenergie)
-- Beschreibung: Die lernende Person kann potenzielle Energie als Lageenergie in einfachen mechanischen Situationen beschreiben und einfache Fälle ohne Feldbegriff berechnen.
+- Beschreibung: Die lernende Person kann in einfachen Situationen nahe der Erdoberfläche die gravitative potenzielle Energie des Systems Erde–Körper relativ zu einer gewählten Bezugshöhe beschreiben und ohne Feldbegriff berechnen.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Potenzielle Energie (Lageenergie)
-Beschreibung: Die lernende Person kann potenzielle Energie als Lageenergie in einfachen mechanischen Situationen beschreiben und einfache Fälle ohne Feldbegriff berechnen.
+Beschreibung: Die lernende Person kann in einfachen Situationen nahe der Erdoberfläche die gravitative potenzielle Energie des Systems Erde–Körper relativ zu einer gewählten Bezugshöhe beschreiben und ohne Feldbegriff berechnen.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Stelle die gravitative potenzielle Energie des Systems Erde–Körper nahe der Erdoberfläche relativ zu einer gewählten Bezugshöhe dar und berechne sie ohne Feldbegriff.
+
 Pflichtinhalt:
 
 Show gravitational potential energy as height energy in a simple near-Earth situation.

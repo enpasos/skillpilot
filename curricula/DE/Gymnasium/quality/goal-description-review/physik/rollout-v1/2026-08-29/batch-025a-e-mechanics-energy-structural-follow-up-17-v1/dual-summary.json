@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5d5df15d9edcd57b55913c4071321bee222566b7d0194162d497bf289d351eeb",
+  "reviewInputFingerprint": "sha256:f3d37c4f6577734f1b0df1e3802e6ab90477cf0a76903cc263ba2ada36851a8d",
+  "goalCount": 17,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-a",
+      "roundId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-b",
+      "roundId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 17,
+    "unavailable": 0,
+    "requiresSynthesis": 17
+  },
+  "goals": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:bf8517a9-142b-5789-826a-767f3b277998",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:bf8517a9-142b-5789-826a-767f3b277998",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "block",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:253a71d2-e751-4c63-acbe-238b71463cd8",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:253a71d2-e751-4c63-acbe-238b71463cd8",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "firstRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "secondRecordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "firstRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "secondRunId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "firstDecision": "block",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

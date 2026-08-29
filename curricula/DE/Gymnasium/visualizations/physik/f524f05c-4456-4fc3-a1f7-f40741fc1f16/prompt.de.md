@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `f524f05c-4456-4fc3-a1f7-f40741fc1f16`
 - Titel: Impulserhaltung aus Newtonschen Axiomen (LK)
-- Beschreibung: Die lernende Person kann die Impulserhaltung aus Newtonschen Axiomen herleiten und den Geltungsbereich diskutieren.
+- Beschreibung: Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß erhalten bleibt, und die Voraussetzungen dieser Herleitung diskutieren.
 
 ## Generator
 
@@ -68,4 +68,4 @@ Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Kompatibilitätsprüfung 2026-08-29: Das unveränderte Nano-Banana-Pro-Asset zeigt die Newton-II/III-Herleitung und die gebundenen Voraussetzungen weiterhin korrekt. Assetbytes und Digest sowie der historische eingezäunte Generator-Prompt bleiben unverändert.

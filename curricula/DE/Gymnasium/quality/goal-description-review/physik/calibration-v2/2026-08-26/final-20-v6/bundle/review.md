@@ -3,7 +3,7 @@
 - Book ID: `de-gym-physics-calibration-v2-final-20-current-rereview-v6-20260826`
 - Book edition: `curricular-atomic-v1`
 - Publication mode: `review`
-- BookModel digest: `sha256:1ee98127085198c7e3a42c70401b0296ed29e0ef4f36d4d860b5943749e26eb6`
+- BookModel digest: `sha256:c7fa054f1533c0333c67d1099b0db3b90477daadeca11149334e12ede7aee03b`
 - Selected goals: 20
 
 The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
@@ -53,7 +53,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83`
 - Goal fingerprint: `sha256:b030a8819ae60efc5706bfafe03d9c55c6515ed7f247a61579016b01a0330f26`
-- Page fingerprint: `sha256:90a7134359f4d03702b4297e6527681ec9becbd3727775be3d25e7361bfeb70e`
+- Page fingerprint: `sha256:002a4fe6248c4ad1f97389bb86f31ef79dffe2a3a877273a3b7e1c2c2fd69ba6`
 - Topic path: Physik
 
 ### Canonical description
@@ -62,9 +62,9 @@ Die lernende Person kann den Zusammenhang zwischen Kraft und Verformung eines el
 
 ### Visualization
 
-/assets/goal-visualizations/physik/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.png
+/assets/goal-visualizations/physik/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83/45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83.jpg
 
-- original digest: `sha256:60a86675a28536cc7d404b8024714405e4fcfe37cc47fcfa3d9a6e7fc8f39126`
+- original digest: `sha256:146636869dbe72b8dd53f2976b859c9807b550be726f72325f457193ea998e06`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -84,6 +84,8 @@ Die lernende Person kann den Zusammenhang zwischen Kraft und Verformung eines el
 ### Direct reverse prerequisites outside this book
 
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
+- Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen — `d8bad724-03ea-510a-8415-928332ed4979` (outside this book)
+- Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben — `05af2893-0201-4d7f-985b-272d7b88e26e` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -92,7 +94,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `79cb1695-f985-443a-b93e-27b57ab474b7`
 - Goal fingerprint: `sha256:5b50b42df53de3796493c9ed4dd786d2654740442fca7279c48aac31997760f2`
-- Page fingerprint: `sha256:0d3b1876f61c9e68ffc64f339e4aa9e8a713e6d801aa7045f5ebde0759fc8a66`
+- Page fingerprint: `sha256:a1f122a8371d581016654932465f7481fd262d62b7089411d69abba72f32a9fb`
 - Topic path: Physik
 
 ### Canonical description
@@ -101,9 +103,9 @@ Die lernende Person kann Lichtwege in einfachen optischen Anordnungen als gerich
 
 ### Visualization
 
-/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.png
+/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.jpg
 
-- original digest: `sha256:56dfcd1d14fe22c174bdb8459d0e282f809ffb459b66dd11de797636ab459eb7`
+- original digest: `sha256:19d7e178c6ed2ad74862726f03f4a944815394333ad341f26c8e15bda7be0a25`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -122,7 +124,9 @@ Die lernende Person kann Lichtwege in einfachen optischen Anordnungen als gerich
 ### Direct reverse prerequisites outside this book
 
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
-- Mondphasen und Finsternisse mit Licht und Schatten erklären — `1fede37b-6554-5dd3-93d9-08ed1fd09c91` (outside this book)
+- Reflexionsgesetz experimentell prüfen — `3c8e5510-a12d-5770-8a01-e5fe741b259c` (outside this book)
+- Mondphasen mit Beleuchtung und Blickrichtung erklären — `33e3417c-e062-5f4a-8df9-3195dca50089` (outside this book)
+- Sonnen- und Mondfinsternisse mit Schattenräumen erklären — `f0046ae8-cbfc-526b-8414-04e3595b6075` (outside this book)
 - Linsenabbildungen qualitativ beschreiben und konstruieren — `078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5` (outside this book)
 - Brechung und optische Hebung qualitativ beschreiben — `6a4c6042-052b-502b-a39a-0ed8941247ac` (outside this book)
 - Bildentstehung bei der Lochkamera qualitativ beschreiben — `1ab5f599-0927-579d-94cc-feecdf3b5603` (outside this book)
@@ -135,7 +139,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `3c82510a-1f12-4eaa-81c2-8599437a5b85`
 - Goal fingerprint: `sha256:283ef10a4ac9b1c5a471d5c8df0c1aa3acf6c8bd5d685e1e0213a3668fdf7852`
-- Page fingerprint: `sha256:dda0829c9ff4867b562aab683ea92283e21f0b45ff4dd62ae240645694342593`
+- Page fingerprint: `sha256:2b2ef3beb1ff81da96f8860f0468c55ab86e1fcf100b0a57c6478915043b123b`
 - Topic path: Physik > Sekundarstufe I > Akustische Grundlagen (Sek I)
 
 ### Canonical description
@@ -144,9 +148,9 @@ Die lernende Person kann Schallausbreitung im Teilchen- beziehungsweise Medienel
 
 ### Visualization
 
-/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.png
+/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg
 
-- original digest: `sha256:ac34cf582658e157a4c3f178db49f9f9541345aff88bccaa57265495410272cd`
+- original digest: `sha256:5b804a516a7f7d40b4909decfc733b24a74574af40f94d5804e9f7f3accfc82f`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -167,6 +171,7 @@ Die lernende Person kann Schallausbreitung im Teilchen- beziehungsweise Medienel
 
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 - Tonhöhe, Lautstärke und Geräusche unterscheiden — `10aad90e-a1db-42b6-8d1e-1d856e14b47d` (outside this book)
+- Hörvorgang im Ohr qualitativ erklären — `2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c` (outside this book)
 - Harmonische Wellen und ihre Größen — `cb0ced6d-b7c1-5b7d-9922-8c394f6030e8` (outside this book)
 
 ### Evidence-profile candidate
@@ -176,7 +181,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `a24c41ce-68c5-56a7-8235-ef9a7dba7042`
 - Goal fingerprint: `sha256:ca5556ab525182e51f63733ce388be42e7fe7b956026108b73584659752e345f`
-- Page fingerprint: `sha256:9fded6225b4727601396fc1b0d2ec8dcec6e12e25d9464472421e5c3fa488373`
+- Page fingerprint: `sha256:32644bec8c6b8dcf9b8b4ef0e9257810c3324429656b698602cd12d98f0412d4`
 - Topic path: Physik
 
 ### Canonical description
@@ -185,9 +190,9 @@ Die lernende Person kann Schallgeschwindigkeiten in verschiedenen Medien anhand 
 
 ### Visualization
 
-/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.png
+/assets/goal-visualizations/physik/a24c41ce-68c5-56a7-8235-ef9a7dba7042/a24c41ce-68c5-56a7-8235-ef9a7dba7042.jpg
 
-- original digest: `sha256:1140feb7c5005957696afd50ef79c519cb3f2d2589cb07289992fc5af53ba3e8`
+- original digest: `sha256:a26494acb70d474f814f3e4a9a3016cb8da1234877f44a416613160b1f9257b5`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -205,6 +210,7 @@ Die lernende Person kann Schallgeschwindigkeiten in verschiedenen Medien anhand 
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Schall bei einer Schulveranstaltung untersuchen — `00e2ddfe-18c1-57a4-86ad-ee467a1a3d61` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 
 ### Evidence-profile candidate
@@ -214,7 +220,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `01bebdfc-5819-4610-a03e-ea5e794fc954`
 - Goal fingerprint: `sha256:dc17e56815005e34cf71666134c49694873f7faaf408ad22cc705ab34d92220d`
-- Page fingerprint: `sha256:8138bcbfdb9d1b93fb40c297bbf5be52f853ad32c85c9a40fb640906c7fa82a9`
+- Page fingerprint: `sha256:dd5e81276146d1fa8deed5502678fbe2fd619ca137d7d91b84b9402a4c29c4af`
 - Topic path: Physik
 
 ### Canonical description
@@ -223,9 +229,9 @@ Die lernende Person kann für eine vorgegebene Funktion einen Schaltplan als Rei
 
 ### Visualization
 
-/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.png
+/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg
 
-- original digest: `sha256:d11b67361989b01692d3f669d5c1e4108e284897a823594b11e86bf9231a193f`
+- original digest: `sha256:ce19e39aef33e3a71ef5d332416858f24ba3b1ec598a28b0dc649168e8eb9e0e`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -255,8 +261,8 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `7d78da7f-6af5-440a-9d6b-6cab4bee8dd2`
 - Goal fingerprint: `sha256:d51d9b4ba8f2a9aa8a69c371c0f8a4f35521aeaea70dbc51edd0be1f021df598`
-- Page fingerprint: `sha256:70b8f14d51142f7a17f44a3eb25c3966e592404e038a7d10dc8f8c7d9a998e1d`
-- Topic path: Physik > Sekundarstufe I > Ph10.4
+- Page fingerprint: `sha256:01fe4e4caf34d2399cd0b352cecc4dcad2d0cead0b4f8e9a941f52f4c674089a`
+- Topic path: Physik
 
 ### Canonical description
 
@@ -280,7 +286,7 @@ Die lernende Person kann die Energiefreisetzung beim Alpha-Zerfall und bei einfa
 
 ### Prerequisites outside this book
 
-- Kernzerfälle und ionisierende Strahlung beschreiben — `cb0426b0-a973-5660-b6fe-79407934730f` (outside this book)
+- Alpha-, Beta- und Gammastrahlung unterscheiden — `1593d95c-2aac-504c-8527-37cb61877da9` (outside this book)
 
 ### Direct reverse prerequisites outside this book
 
@@ -293,7 +299,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `72effc66-87f4-5f5e-8d36-1547677365fb`
 - Goal fingerprint: `sha256:5b5eb21ef5fb4985cfbca42031f94165e429d98a0a94a3258e1b9c7891e58a39`
-- Page fingerprint: `sha256:2805d6a7c6662a63c0d37480e41c72194a78db037eb40537994746abdeff4c9f`
+- Page fingerprint: `sha256:d31a2eed65d32b826f391ef5e399364da79dc79aa0f9d5ff584326d2a3966ef2`
 - Topic path: Physik
 
 ### Canonical description
@@ -326,6 +332,7 @@ Die lernende Person kann digitale Messdaten auswerten, zufällige Streuung von s
 ### Direct reverse prerequisites outside this book
 
 - Messmethoden und Datenanalyse in Aufgaben anwenden — `0432a422-401b-5134-bf08-05cfd8c7a366` (outside this book)
+- Prüfungsaufgabe: Eine Bewegung digital auswerten — `367b17f8-972a-5f3e-8915-8cfe743132a3` (outside this book)
 - E-Phase-Klausuraufgaben Physik selbstständig lösen — `7f83e25c-38f7-5ac2-8f9c-ec54eeef1026` (outside this book)
 - Frequenzabhaengige Schaltungen und Filter untersuchen — `e413a352-33c4-53ae-b54a-30e52c3e65ae` (outside this book)
 - Das Messproblem in der Quantenphysik — `b05da028-65e4-5cd1-a13c-6c1a95b6dfdf` (outside this book)
@@ -337,7 +344,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `d6dc0e02-831d-4894-a61a-852bcc74f147`
 - Goal fingerprint: `sha256:3f711d058fc50a4000d6c312529b7c1abbbef2f09a6563717a69bbf9761edcfb`
-- Page fingerprint: `sha256:357a29b8f5d00441501444cc39c4535530dfa57058fba73dc0cb7d71017c8078`
+- Page fingerprint: `sha256:013228a1b2ee36f030df781ae94aa4d44955f587a92bc998cbaaf30756c0ec3d`
 - Topic path: Physik
 
 ### Canonical description
@@ -362,9 +369,9 @@ Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gese
 
 ### Prerequisites outside this book
 
-- Freier Fall experimentell untersuchen — `230345f3-c360-4963-b390-ab94e3e2c864` (outside this book)
 - Lineare Funktionen rechnerisch untersuchen — `e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb` (outside this book)
-- Freier Fall experimentell untersuchen — `09029573-864f-40ca-bf8a-cee7bf6dcb73` (outside this book)
+- Bewegungen mit Diagrammen untersuchen — `ce431132-dfc4-42c2-aff6-bd72035190f8` (outside this book)
+- Gleichmäßig beschleunigte Bewegung und Beschleunigung — `e4b38061-1f28-43ad-8371-a3e7c0e81856` (outside this book)
 
 ### Direct reverse prerequisites outside this book
 
@@ -463,7 +470,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `0f6b798b-594e-5480-8c5f-95e2486a4d85`
 - Goal fingerprint: `sha256:459fa0cc72fb9bea0104d01b3d8bafe1c0cbda8a06487ff5631aa74b30c666f1`
-- Page fingerprint: `sha256:e15bb8d605cc82b0908ea16c8ebec045577843298d3da58ad7d18f60bffa38e0`
+- Page fingerprint: `sha256:34a18c87f2cbb34ae2c776e8fefaacd8954c201cea61003d2ad61c697d776a5f`
 - Topic path: Physik
 
 ### Canonical description
@@ -480,7 +487,7 @@ No visualization is bound to this page.
 
 ### Direct reverse prerequisites
 
-- None
+- Lorentzkraft auf freie Ladungen — `8c9394cb-f54a-508d-9750-4c49e31b3fa9` (page 13)
 
 ### Prerequisites outside this book
 
@@ -490,6 +497,9 @@ No visualization is bound to this page.
 
 - Q1-Klausuraufgaben Physik selbstständig lösen — `d441ee2f-9230-5751-832b-5b0b5cf14605` (outside this book)
 - Kraft auf stromdurchflossene Leiter — `c6355a22-24cf-5d8b-88af-ea11711460fb` (outside this book)
+- Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden — `106417ed-80db-5490-a1ee-bb4160d3f2b4` (outside this book)
+- Magnetisierung und Permanentmagnete — `0924162b-46d0-5c56-93bc-33e1f5ac6886` (outside this book)
+- Geladene Teilchen in homogenen magnetischen Feldern untersuchen — `9854589c-5feb-4942-b90f-311ddf36eb78` (outside this book)
 - Einfachen Elektromotor bauen und qualitativ erklären — `eb30189c-27c6-510b-b235-6543afa18b90` (outside this book)
 
 ### Evidence-profile candidate
@@ -499,7 +509,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `8c9394cb-f54a-508d-9750-4c49e31b3fa9`
 - Goal fingerprint: `sha256:7f8deee23acd850a451bbcd8cded977472f837c1978b443da963b8ab0919e007`
-- Page fingerprint: `sha256:58a30f4fef4c196c041e3026fb7858261b1c92085856d8997c616d78261e6e31`
+- Page fingerprint: `sha256:bf69c149d0d0ea632c0153aad7b217d4f5a800b68e429f15d124c24205467795`
 - Topic path: Physik
 
 ### Canonical description
@@ -516,7 +526,7 @@ Die lernende Person kann den Betrag der magnetischen Lorentzkraft auf frei beweg
 
 ### Direct prerequisites
 
-- None
+- Magnetische Felder und Feldlinienbilder — `0f6b798b-594e-5480-8c5f-95e2486a4d85` (page 12)
 
 ### Direct reverse prerequisites
 
@@ -524,7 +534,7 @@ Die lernende Person kann den Betrag der magnetischen Lorentzkraft auf frei beweg
 
 ### Prerequisites outside this book
 
-- Magnetfeld von geradem Leiter und Spule — `106417ed-80db-5490-a1ee-bb4160d3f2b4` (outside this book)
+- None
 
 ### Direct reverse prerequisites outside this book
 
@@ -533,7 +543,7 @@ Die lernende Person kann den Betrag der magnetischen Lorentzkraft auf frei beweg
 - Magnetfeld, Leiterkraft und Lorentzkraft — `ba29e928-a287-5de7-b3fe-5c8c3731363b` (outside this book)
 - Q1-Klausuraufgaben Physik selbstständig lösen — `d441ee2f-9230-5751-832b-5b0b5cf14605` (outside this book)
 - LK Abi-Klausur 1 — `ed3a6f6b-2ca3-51c2-8f00-58e11eb02401` (outside this book)
-- Bahnformen quantitativ bestimmen — `3b866aea-3e4d-5f23-91de-759148382710` (outside this book)
+- Kreisbahnen geladener Teilchen quantitativ bestimmen — `3b866aea-3e4d-5f23-91de-759148382710` (outside this book)
 - Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben — `7fe6f8a1-5580-4e37-bf8e-9772964a6b0a` (outside this book)
 - Hall-Effekt anwenden — `b39ae8fb-4358-5866-8adf-3d5365368eeb` (outside this book)
 - Bewegungsinduktion und Ladungstrennung — `a522c8c0-f3a4-5568-acae-3010ed9feb87` (outside this book)
@@ -666,7 +676,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `c5413852-abae-566b-b435-f9939209ca63`
 - Goal fingerprint: `sha256:ade180674a289f7c265039612ddce769e27ce261572121a1b3129fe36827fb3b`
-- Page fingerprint: `sha256:22f6e60b40403241aa1669e709387814862898a935db7a505fe449eeb45a3be0`
+- Page fingerprint: `sha256:ca3dbb678e43f8a284f39cd97ff5c06abf3708cac7230d3861e2de526a780539`
 - Topic path: Physik
 
 ### Canonical description
@@ -675,9 +685,9 @@ Die lernende Person kann deuten, wie sich aus vielen einzelnen, lokalisierten Ph
 
 ### Visualization
 
-/assets/goal-visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/c5413852-abae-566b-b435-f9939209ca63.png
+/assets/goal-visualizations/physik/c5413852-abae-566b-b435-f9939209ca63/c5413852-abae-566b-b435-f9939209ca63.jpg
 
-- original digest: `sha256:ceabb703e77baa46c1c5cc0dfc6cc6b58fb7344fdd334e23023802f3594974a1`
+- original digest: `sha256:b965069577e99a163489bd1f7167ee603746035ba713d310a8756dd65d1ca78d`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -745,7 +755,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `bb5c5eab-2fc1-5336-b8cf-14d147695487`
 - Goal fingerprint: `sha256:a3caf98a10f32d80b186f7af0ce8081890839cb7fdc966b8d54934e801b9514c`
-- Page fingerprint: `sha256:c875db6f1efabf7f4e8618338169ad18c80ad97c94213ab1af749c3ff0f07217`
+- Page fingerprint: `sha256:e55d90b280995fb1f798b67a9b0de338828214d4fbf48b5763ba0f9e97d16597`
 - Topic path: Physik
 
 ### Canonical description
@@ -777,7 +787,6 @@ Die lernende Person kann Strahlungsrisiken fachlich beurteilen, indem sie Aktivi
 
 - Q4-Klausuraufgaben Physik selbstständig lösen — `4a58df57-f791-502f-8b8d-9ba155e46035` (outside this book)
 - Radioaktivitaet, Zerfall und Strahlenschutz — `4daef009-6425-526a-8574-4fa75f28f946` (outside this book)
-- Kernenergieoptionen mit physikalischen Kriterien bewerten — `7e719cc2-0866-5267-a252-e7e7ac0d03f1` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -786,7 +795,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `79da5c34-86b2-5c10-9726-9de886ccef7d`
 - Goal fingerprint: `sha256:bc6c107f55173b70d1dbe29432b063debe6238eae56ff92ee7ff1eb4c7f1f7db`
-- Page fingerprint: `sha256:b93ac55dffa64e90a8dff703a539365e8ddfdeefc5531dcd07f82a08b42ed422`
+- Page fingerprint: `sha256:cc0372265e0f857ec16ff2e7ea18ea92f72e7795c4f4b901809d706403f4f08d`
 - Topic path: Physik > Q4 Struktur von Materie, Raum und Zeit > Spezielle Relativitätstheorie
 
 ### Canonical description
@@ -795,9 +804,9 @@ Die lernende Person kann für ein massives Teilchen mit fester Ruhemasse $m_0$ d
 
 ### Visualization
 
-/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.png
+/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.jpg
 
-- original digest: `sha256:44c06b91ef6fc8d4452ae4d9e79e756ed2862907a9a5d9c52dbb6813b28bf236`
+- original digest: `sha256:d53ad6ee8dc52cfc04566f97b3ad4be90e5ad400002bb07bb22ebb53b36fe9ad`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 

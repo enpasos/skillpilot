@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -776,10 +776,153 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "mv-phys-seki-rp2022-j10-kernphysik-002-f0143df5": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-003-7401a30c": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-004-9d924038": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-005-f5927ff3": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-006-05bec548": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-007-72ab6104": [
+    "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-008-0ecfe0e7": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-010-92147256": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+    "e6a50c74-c922-508c-aa27-07bac2566955"
+  ]
+}
+
+const batch017RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "mv-phys-seki-rp2022-j8-waerme-007-6cad190f": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-002-f0143df5": [
+    "1e9ec823-384b-5e5f-974c-4ce224d05c19"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-003-7401a30c": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+    "327302e3-5b36-46f8-9c16-73f24583b0eb"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-004-9d924038": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-005-f5927ff3": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-006-05bec548": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-007-72ab6104": [
+    "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+    "327302e3-5b36-46f8-9c16-73f24583b0eb",
+    "50877233-7abf-54df-b347-6d3224678fc9"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-008-0ecfe0e7": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-009-034ad168": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "mv-phys-seki-rp2022-j10-kernphysik-010-92147256": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ]
+}
+
+const batch019TargetsBySourceGoalId: Record<string, string[]> = {
+  'mv-phys-sekii-rp2022-q-teilchen-felder-003-38b4f6b0': [
+    '74a74132-fa39-541c-8d3c-696cf228452d',
+  ],
+}
+
+const batch019RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  'mv-phys-sekii-rp2022-q-teilchen-felder-003-38b4f6b0': [
+    '2d62b444-796e-548d-aeee-cfd9c6665ddc',
+  ],
+}
+
+const batch019RationalesBySourceGoalId = new Map<string, string>([
+  [
+    'mv-phys-sekii-rp2022-q-teilchen-felder-003-38b4f6b0',
+    'Das amtliche MV-Source-Ziel behandelt ausdrücklich den Linearbeschleuniger. Es wird deshalb partial dem bestehenden kanonischen Linearbeschleuniger-Ziel statt dem Zyklotron/Synchrotron-Vergleich zugeordnet.',
+  ],
+])
+
+// Batch 025 average/instantaneous-velocity structural split overlay
+const batch025TargetsBySourceGoalId: Record<string, string[]> = {
+  "mv-phys-seki-rp2022-j9-bewegung-004-b1d00202": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "mv-phys-seki-rp2022-j9-bewegung-005-411d8eba": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "mv-phys-seki-rp2022-j9-ebike-004-70caf2ad": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "mv-phys-seki-rp2022-j10-beschleunigt-004-92574af7": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "mv-phys-seki-rp2022-j10-beschleunigt-006-f9a0d70c": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ]
+}
+const batch025RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "mv-phys-seki-rp2022-j10-beschleunigt-004-92574af7": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+  ]
+}
+const batch025RationalesBySourceGoalId = new Map<string, string>([
+  [
+    "mv-phys-seki-rp2022-j9-bewegung-004-b1d00202",
+    "Das amtliche MV-Ziel deutet Geschwindigkeit als Anstieg im Weg-Zeit-Diagramm. Es trägt damit einen Teil der Sekanten-/Tangentenkompetenz, aber nicht deren vollständigen Vergleich; die Zuordnung ist partial."
+  ],
+  [
+    "mv-phys-seki-rp2022-j9-bewegung-005-411d8eba",
+    "Das amtliche MV-Ziel fordert ausdrücklich die Unterscheidung von Momentan- und Durchschnittsgeschwindigkeit, jedoch nicht die vollständige Bestimmung und grafische Sekanten-/Tangenten-Deutung; die Zuordnung ist partial."
+  ],
+  [
+    "mv-phys-seki-rp2022-j9-ebike-004-70caf2ad",
+    "Das amtliche MV-Ziel nutzt Momentan- und Durchschnittsgeschwindigkeit zur Beschreibung einer ungleichförmigen E-Bike-Bewegung. Die vollständige Sekanten-/Tangenten-Deutung ist nicht ausgewiesen; die Zuordnung ist partial."
+  ],
+  [
+    "mv-phys-seki-rp2022-j10-beschleunigt-004-92574af7",
+    "Der amtliche MV-Aspekt deutet Momentangeschwindigkeit über sehr kleine Zeitintervalle. Er belegt weder das Konstantbeschleunigungsmodell noch freien Fall und deckt die neue Vergleichskompetenz nur teilweise ab."
+  ],
+  [
+    "mv-phys-seki-rp2022-j10-beschleunigt-006-f9a0d70c",
+    "Das amtliche MV-Ziel deutet Anstiege in Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen. Damit ist die neue Sekanten-/Tangentenkompetenz fachlich berührt, aber nicht vollständig formuliert; die Zuordnung ist partial."
+  ]
+])
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch019RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch025RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch019TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch025TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -1024,18 +1167,20 @@ const buildExtraction = (config: ExtractionConfig) => {
       sourceGoal.id,
       currentWaveTargetsBySourceGoalId[sourceGoal.id] ?? inferCanonicalGoalIds(rows[index], config),
     )
+    const batch019Rationale = batch019RationalesBySourceGoalId.get(sourceGoal.id)
+    const batch025Rationale = batch025RationalesBySourceGoalId.get(sourceGoal.id)
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,
       sourceSpan: sourceGoal.sourceSpan,
       decision: 'mapped',
       canonicalGoalIds,
-      rationale:
+      rationale: batch025Rationale ?? batch019Rationale ?? (
         canonicalGoalIds.length > 1
           ? 'Das amtliche MV-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.'
-          : 'Das amtliche MV-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.',
-      reviewedAt: '2026-05-11',
-      reviewer: 'codex',
+          : 'Das amtliche MV-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'),
+      reviewedAt: batch025Rationale ? '2026-08-29' : batch019Rationale ? '2026-08-28' : '2026-05-11',
+      reviewer: batch025Rationale ? 'codex-physics-batch-025-motion-split-2026-08-29' : batch019Rationale ? 'codex-physics-batch-019-mapping-adjudication' : 'codex',
     }
   })
 
@@ -1283,7 +1428,7 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   if (!root) throw new Error(`physics-root not found for ${suffix}`)
 
   const candidateTargets = suffix.startsWith('sekii') ? [...upperTargetIds] : allTargetIds
-  const allowedTargets = candidateTargets.filter((goalId) => {
+  const allowedTargets = candidateTargets.filter((goalId) => canonicalGoalById.get(goalId)?.type === 'atomic').filter((goalId) => {
     const mappedLevels = allDecisions
       .filter((decision) => decision.canonicalGoalIds.includes(goalId))
       .map((decision) => allSourceGoals.find((sourceGoal) => sourceGoal.id === decision.sourceGoalId)?.courseLevel)
@@ -1309,11 +1454,15 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
 }
 
 for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
+  const mvViewPath = `${compositionViewDir}/de-mv-${suffix}.view.json`
+  // Existing learner-facing views are reviewed authored state. Source
+  // extraction must not rebuild or silently narrow their assessment routes.
+  if (existsSync(path.resolve(repoRoot, mvViewPath))) continue
   const template = readJson<Record<string, unknown>>(`${compositionViewDir}/de-bb-${suffix}.view.json`)
   template.viewId = String(template.viewId).replace('de-bb', 'de-mv')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
-  writeJson(`${compositionViewDir}/de-mv-${suffix}.view.json`, template)
+  writeJson(mvViewPath, template)
 }
 
 for (const [index, config] of configs.entries()) {

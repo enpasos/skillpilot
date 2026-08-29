@@ -52,7 +52,7 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
 ] as const
 const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:800edca92864b30c6ce25bdf423fa8ecc5ed2f5542c58ee4b68d3ceb46216fbd'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:2c09186739825ba3c9c463d64eced1992206602f67b21b96b3a9239480a1b17f'
 
 const goal = ({
   id,
@@ -767,6 +767,94 @@ assert.ok(physicsAtlas.pages.every(({ applicability }) => (
   && applicability[0].scopes[0]?.durationModel === 'G9'
 )))
 
+const roleAwareAtlasInput = JSON.parse(JSON.stringify(physicsAtlasInput)) as GoalBookBuildInput
+roleAwareAtlasInput.compositionViewManifest = {
+  schemaVersion: 1,
+  manifestId: 'fixture-role-aware-physics-atlas',
+  landscapeId: 'fixture-landscape',
+  navigationOwnership: 'common-topic-suffix-v1',
+  expectedJurisdictions: ['DE-BY', 'DE-HE'],
+  durationModelPolicyPath: 'fixtures/duration-model-policy.json',
+  expectedCurricularAtomicGoalCount: 4,
+  sourcePaths: ['fixtures/by-physics.view.json', 'fixtures/he-physics.view.json'],
+}
+const roleAwareBaseView = JSON.parse(JSON.stringify(physicsAtlasView)) as {
+  viewId: string
+  scope: Record<string, string>
+  rootNodes: Array<{ kind: string, children: Array<Record<string, unknown>> }>
+}
+roleAwareBaseView.viewId = 'fixture-by-role-aware-physics'
+roleAwareBaseView.scope.jurisdiction = 'DE-BY'
+const roleAwareExcludedView = JSON.parse(JSON.stringify(roleAwareBaseView)) as typeof roleAwareBaseView
+roleAwareExcludedView.viewId = 'fixture-he-role-aware-physics'
+roleAwareExcludedView.scope.jurisdiction = 'DE-HE'
+roleAwareExcludedView.rootNodes[0].children.push({
+  kind: 'goalEntry',
+  goalId: 'A',
+  projectionRole: 'prerequisiteOnly',
+})
+roleAwareAtlasInput.compositionViewSources = [{
+  path: 'fixtures/by-physics.view.json',
+  view: roleAwareBaseView,
+}, {
+  path: 'fixtures/he-physics.view.json',
+  view: roleAwareExcludedView,
+}]
+roleAwareAtlasInput.durationModelPolicy = {
+  schemaVersion: 1,
+  decisions: [
+    ...singleStatePolicy.decisions,
+    {
+      subject: 'Physik',
+      jurisdiction: 'DE-BY',
+      stage: 'SekI+SekII',
+      status: 'reviewed',
+      decision: 'single-duration-source',
+      durationModels: ['G9'],
+    },
+    {
+      subject: 'Physik',
+      jurisdiction: 'DE-HE',
+      stage: 'SekI+SekII',
+      status: 'reviewed',
+      decision: 'single-duration-source',
+      durationModels: ['G9'],
+    },
+  ],
+}
+const roleAwareAtlas = buildGoalBookModel(roleAwareAtlasInput)
+assert.equal(roleAwareAtlas.pages.length, 4)
+assert.deepEqual(
+  roleAwareAtlas.pages.find(({ goalId }) => goalId === 'A')?.applicability
+    ?.map(({ jurisdiction }) => jurisdiction),
+  ['DE-BY'],
+  'A direct prerequisiteOnly goalEntry must remove an inherited target from that atlas source.',
+)
+assert.deepEqual(
+  roleAwareAtlas.pages.find(({ goalId }) => goalId === 'B')?.applicability
+    ?.map(({ jurisdiction }) => jurisdiction),
+  ['DE-BY', 'DE-HE'],
+  'The role override must not remove unaffected siblings from the atlas source.',
+)
+const roleAwareHeSource = roleAwareAtlas.source.compositionViewSources
+  ?.find(({ viewId }) => viewId === roleAwareExcludedView.viewId)
+assert.ok(roleAwareHeSource)
+const explicitRoleAwareAtlasInput = JSON.parse(JSON.stringify(roleAwareAtlasInput)) as GoalBookBuildInput
+const explicitHeView = (explicitRoleAwareAtlasInput.compositionViewSources ?? [])[1]
+  ?.view as typeof roleAwareExcludedView
+assert.ok(explicitHeView)
+explicitHeView.rootNodes[0].children = ['B', 'C', 'D'].map((goalId) => ({
+  kind: 'goalEntry',
+  goalId,
+}))
+const explicitRoleAwareAtlas = buildGoalBookModel(explicitRoleAwareAtlasInput)
+assert.equal(
+  roleAwareHeSource.projectionFingerprint,
+  explicitRoleAwareAtlas.source.compositionViewSources
+    ?.find(({ viewId }) => viewId === explicitHeView.viewId)?.projectionFingerprint,
+  'The source projection fingerprint must bind the effective role-aware target IDs.',
+)
+
 const sekIBookConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-de-gym-seki-math.json',
   import.meta.url,
@@ -901,10 +989,10 @@ const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
 )), 'utf8')
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 791)
+assert.equal(nationalAtlas.book.pageCount, 792)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 791)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 792)
 assert.equal(nationalAtlas.digest, EXPECTED_NATIONAL_MATH_MODEL_DIGEST)
 assert.equal(
   `${JSON.stringify(nationalAtlas, null, 2)}\n`,

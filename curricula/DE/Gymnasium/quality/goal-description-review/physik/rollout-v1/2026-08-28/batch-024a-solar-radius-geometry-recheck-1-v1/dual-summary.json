@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ee4930014d5d5c6a3dd73f1b27db7fb70a04a5b87342cdbf930fafb29a2939ee",
+  "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-a",
+      "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-b",
+      "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-b",
+      "runIds": [
+        "physik-b024a-round-b-batch-001-gpt5-subject-review"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "firstRecordId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex.record-001",
+      "secondRecordId": "physik-b024a-round-b-batch-001-bebc3738-review",
+      "firstRunId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex",
+      "secondRunId": "physik-b024a-round-b-batch-001-gpt5-subject-review",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

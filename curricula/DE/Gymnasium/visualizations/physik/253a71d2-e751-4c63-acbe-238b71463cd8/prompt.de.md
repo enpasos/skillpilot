@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `253a71d2-e751-4c63-acbe-238b71463cd8`
 - Titel: Reibungsenergie
-- Beschreibung: Die lernende Person kann Reibungsenergie als Umwandlung mechanischer Energie in innere Energie deuten und einfache Energieumwandlungen qualitativ beschreiben.
+- Beschreibung: Die lernende Person kann den Begriff Reibungsenergie als Bilanzgröße für den Anteil mechanischer Energie deuten, der bei Reibung in innere Energie der beteiligten Körper umgewandelt wird, und diese Energieumwandlung für ein festgelegtes System qualitativ bilanzieren.
 
 ## Generator
 
@@ -61,4 +61,4 @@ Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Kompatibilitätsprüfung 2026-08-29: Das unveränderte Nano-Banana-Pro-Asset zeigt ausschließlich mechanische und innere Energie als Speichergrößen und E_reib=30 J als umgewandelten Bilanzanteil. Assetbytes und Digest sowie der historische eingezäunte Generator-Prompt bleiben unverändert.

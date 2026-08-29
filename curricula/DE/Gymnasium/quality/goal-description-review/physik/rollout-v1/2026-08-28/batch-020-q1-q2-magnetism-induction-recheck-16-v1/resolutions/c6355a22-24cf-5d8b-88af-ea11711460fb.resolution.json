@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-resolution-c6355a22-24cf-5d8b-88af-ea11711460fb",
+  "goal": {
+    "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:58a4cdd4883979a2e1ef515bf4c7ffed9fdbe159db558aac44e16fd50c1fc80e",
+    "pageFingerprint": "sha256:f5cd58a8da1f86d0209074e68715617c51cf3590338331f40d3adaa56a7ad1a3",
+    "goalReviewContextFingerprint": "sha256:fabbf0a8b13b1ef02080de225fba63256f5d87776b4dbcc4028577be562faf61",
+    "finalText": {
+      "titleDe": "Kraft auf stromdurchflossene Leiter",
+      "titleEn": "Force on Current-Carrying Conductors",
+      "descriptionDe": "Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.",
+      "descriptionEn": "The learner can determine the magnitude and direction of the force on a straight current-carrying conductor segment in a uniform magnetic field using F = B · I · ℓ · sin(α), where α is the angle between the current and field directions, and determine B from a force measurement in the perpendicular case using B = F/(I · ℓ)."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:fabbf0a8b13b1ef02080de225fba63256f5d87776b4dbcc4028577be562faf61",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167",
+      "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-02",
+      "recordDigest": "sha256:0779801b0968cd6164b2a366c9648e35931db06241748e4ee997f13ae8233b5a"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:fabbf0a8b13b1ef02080de225fba63256f5d87776b4dbcc4028577be562faf61",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150",
+      "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r002",
+      "recordDigest": "sha256:a5ece325d742f00013d2b8d612c483b7633b0fd19b154c9f876b26de0912275b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+    "manifestDigest": "sha256:f9ee42a12924c8cdbe09d8edf18b3e54bc426e22d2ac1c3944ce5c7cdb9af45b",
+    "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2",
+    "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+    "synthesizedAt": "2026-08-28T14:07:36.000Z",
+    "rationaleDe": "Beide Reviews bewerten Kraftbestimmung und inverse Feldbestimmung als zusammenhängende Anwendung derselben Leiterkraftbeziehung. Der aktuelle Wortlaut bleibt bestehen; die erste Runde liefert die ausführlichere contract-konforme Evidence-Kette, die zweite bleibt als alternative Fassung im Dissent gebunden.",
+    "rationaleEn": "Both reviews treat force determination and inverse field determination as connected applications of the same conductor-force relation. The current wording is retained; the first round supplies the more detailed contract-conforming evidence chain, while the second remains bound as an alternative formulation in dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Kraft auf das Leiterstück ist die makroskopische Wirkung der magnetischen Kraft auf die bewegten Ladungsträger: Ihr Betrag hängt von B, I, der wirksamen Leiterlänge und sin(α) ab, ihre Richtung steht senkrecht zu Strom- und Feldrichtung. Bei senkrechter Anordnung kann eine Kraftmessung deshalb B operational bestimmen.",
+      "essentialUnderstandingEn": "The force on the conductor segment is the macroscopic effect of the magnetic force on its moving charge carriers: its magnitude depends on B, I, the effective conductor length, and sin(α), and its direction is perpendicular to the current and field directions. In the perpendicular arrangement, a force measurement can therefore determine B operationally.",
+      "observablePerformanceDe": "Die lernende Person kennzeichnet Strom-, Feld- und Kraftrichtung in einer vorgegebenen Anordnung, berechnet den Kraftbetrag einschließlich Winkelabhängigkeit und Einheiten und ermittelt bei α = 90° aus Messwerten B; sie erklärt dabei auch die verschwindende Kraft bei paralleler Anordnung.",
+      "observablePerformanceEn": "In a given arrangement, the learner marks the current, field, and force directions, calculates the force magnitude including its angular dependence and units, and determines B from measurements at α = 90°; the learner also explains why the force vanishes in the parallel arrangement.",
+      "transferExpectationDe": "Bei einer neuen Leiterorientierung oder nach Umkehr von Strom beziehungsweise Magnetfeld sagt die lernende Person die Änderung von Betrag und Richtung vor der Rechnung voraus und prüft sie anschließend mit dem Kraftmodell oder den Messdaten.",
+      "transferExpectationEn": "For a new conductor orientation or after reversing the current or magnetic field, the learner predicts the change in magnitude and direction before calculating and then checks it using the force model or measurement data."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-1f4d593f06c2783dd00a63b9437fe93e817e649754014f1ac2190bba80ca02a7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:062853f5f39725a34dc6ba8e73e1c8aa15f5288998e3158e6ea7d832326fe4dc"
+}

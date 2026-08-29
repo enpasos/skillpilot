@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-b025-stable4-current-carryover-v1-resolution-7eeff2de-6015-49a6-a96e-a488d886dc9f",
+  "goal": {
+    "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:1e1374abd88fb6216cbd7068d1c0eb3356434a0cecae642b3697c9c5f07cbb87",
+    "pageFingerprint": "sha256:fc5b8fce94d08189a7b8dbf3ab6e735e326a7b26a4b1c64427a1239d064f9d61",
+    "goalReviewContextFingerprint": "sha256:2734b0e23e12ba76a9884ae2309cf292734dab3c97b73b1a246c889877b639c9",
+    "finalText": {
+      "titleDe": "Kinetische Energie",
+      "titleEn": "Kinetic Energy",
+      "descriptionDe": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+      "descriptionEn": "The learner can calculate kinetic energy $E_k=\\frac{1}{2}mv^2$ and explain its dependence on mass and velocity."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-a",
+      "campaignDigest": "sha256:f04ee9008335e4d44dee84e3cc3f92a6f353bfb6683e4edafc0519268bf77b36",
+      "roundId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+      "goalReviewContextFingerprint": "sha256:2734b0e23e12ba76a9884ae2309cf292734dab3c97b73b1a246c889877b639c9",
+      "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b025-e-mechanics-energy-current-round-a-gpt-5.6-codex-20260828",
+      "runManifestDigest": "sha256:83c2e75f9949f088837ed2159721ce42e9c2f30040de7f85aa79cb1b1aeca5f2",
+      "resultsDigest": "sha256:ec3e9fc0c6d94c342ff96ee09ea58a98061832cc06976da610aa2ed134a9b5a6",
+      "recordId": "physik-b025-a-014",
+      "recordDigest": "sha256:7a8b68ecf747b5b57acc899e2b5d28f23eec8e4ccbaadae38b555d92baf81487"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-b",
+      "campaignDigest": "sha256:a40fbfe11c27667315ae5e5dcc9f0c81adacb5a9036de9fa2741c2eeca780a0d",
+      "roundId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+      "goalReviewContextFingerprint": "sha256:2734b0e23e12ba76a9884ae2309cf292734dab3c97b73b1a246c889877b639c9",
+      "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b025-round-b-gpt5-20260828",
+      "runManifestDigest": "sha256:627376ec9c75407907484dfb54a4a4c12a61bc791d56bf5b0559070e649d3f9e",
+      "resultsDigest": "sha256:f08e7206b82cb6b1fe525463c1e0e7f8f99127d6cd1049f3e3bb43df4dc05793",
+      "recordId": "physik-b025-round-b-014",
+      "recordDigest": "sha256:6f63a847a43213130e268277e1da1ffe48f34fe0ad6e61870c0a83c086c7fdda"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:384c0f4cf154cfe9558e3d885e094e396a5290bf75afe9b3b47718645617fb24"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-4-v1.json",
+    "manifestId": "physik-b025-stable4-synthesis-openai-codex-20260829",
+    "manifestDigest": "sha256:d99745260ddf18bd4798d439cc34c8e42481cd8a610415213a3282beb055847e",
+    "manifestFingerprint": "sha256:c74a2d65dc61837277963700fca37441a6b810682287ca87e96e166ec7eca988",
+    "decisionId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B025 stable-four compatibility synthesis candidate",
+    "synthesizedAt": "2026-08-28T21:14:55.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz. Die erste Runde ist die ausgewählte Evidenz; die zweite bleibt als gebundene unabhängige Bestätigung erhalten. Drittentscheidung: Both independent reviews support the current bounded competency.",
+    "rationaleEn": "Both independent blind reviews confirm the unchanged competency. The first round is selected as evidence; the second remains bound as independent confirmation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die kinetische Energie ist im gewählten Bezugssystem die skalare Größe E_k = 1/2 m v²; sie ist nicht negativ, wächst linear mit der Masse und quadratisch mit dem Geschwindigkeitsbetrag und hängt daher im Gegensatz zur Masse vom Bezugssystem ab.",
+      "essentialUnderstandingEn": "In the chosen reference frame, kinetic energy is the scalar quantity E_k = 1/2 m v²; it is non-negative, grows linearly with mass and quadratically with speed, and therefore, unlike mass, depends on the reference frame.",
+      "observablePerformanceDe": "Die lernende Person berechnet kinetische Energien mit konsistenten Einheiten, vergleicht Fälle mit veränderter Masse oder Geschwindigkeit und erklärt ohne bloßes Einsetzen, weshalb eine Verdopplung der Geschwindigkeit die Energie vervierfacht.",
+      "observablePerformanceEn": "The learner calculates kinetic energies with consistent units, compares cases with changed mass or speed, and explains rather than merely substitutes why doubling speed quadruples the energy.",
+      "transferExpectationDe": "Bei einem neuen Fall mit umgekehrter Bewegungsrichtung oder einem anders bewegten Bezugssystem entscheidet die lernende Person, ob und warum sich die kinetische Energie ändert, obwohl dieselbe Masse betrachtet wird.",
+      "transferExpectationEn": "For a new case with reversed direction of motion or a differently moving reference frame, the learner decides whether and why kinetic energy changes even though the same mass is considered."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6099fa9f72eb99a0a7ec1c63ba6e56079e55e799fcb260ad749b4f1fbe7bd45c",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fcc55243c055d06944693388a48eb9ce67e01fdcbce62929ae439e4b8489f91a"
+}

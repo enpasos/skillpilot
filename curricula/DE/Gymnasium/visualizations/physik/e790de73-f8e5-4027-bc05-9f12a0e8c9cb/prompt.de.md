@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e790de73-f8e5-4027-bc05-9f12a0e8c9cb`
 - Titel: Kraftstoß
-- Beschreibung: Die lernende Person kann den Kraftstoß als Produkt aus Kraft und Einwirkdauer beschreiben und mit Impulsänderungen verknüpfen.
+- Beschreibung: Die lernende Person kann den Kraftstoß als über die Einwirkdauer aufsummierte Wirkung der resultierenden äußeren Kraft beschreiben, ihn in einer gewählten Richtung als vorzeichenbehaftete Fläche unter einem Kraft-Zeit-Diagramm und bei konstanter Kraft als Produkt aus Kraft und Einwirkdauer bestimmen sowie mit der Impulsänderung verknüpfen.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Kraftstoß
-Beschreibung: Die lernende Person kann den Kraftstoß als Produkt aus Kraft und Einwirkdauer beschreiben und mit Impulsänderungen verknüpfen.
+Beschreibung: Die lernende Person kann den Kraftstoß als zeitliches Integral der resultierenden äußeren Kraft beziehungsweise in einer gewählten Richtung als vorzeichenbehaftete Fläche unter dem Kraft-Zeit-Diagramm beschreiben, ihn bei konstanter Kraft als Produkt aus Kraft und Einwirkdauer bestimmen und mit der Impulsänderung verknüpfen.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Deute den Kraftstoß allgemein als zeitliches Integral der resultierenden äußeren Kraft beziehungsweise in der gewählten Richtung als vorzeichenbehaftete Fläche; zeige den konstanten Spezialfall J=F·Δt und die Impulsänderung.
+
 Pflichtinhalt:
 
 Show impulse as area under a force-time graph and as momentum change.
@@ -69,4 +72,4 @@ Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Kompatibilitätsprüfung 2026-08-29: Das unveränderte Nano-Banana-Pro-Asset bleibt mit Fläche, konstantem Kraft-Zeit-Produkt und Impulsänderung vollständig kompatibel. Assetbytes und Digest sowie der historische eingezäunte Generator-Prompt bleiben unverändert.

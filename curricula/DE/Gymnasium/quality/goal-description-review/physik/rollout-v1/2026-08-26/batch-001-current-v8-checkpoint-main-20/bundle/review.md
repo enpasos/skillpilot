@@ -3,7 +3,7 @@
 - Book ID: `de-gym-physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826`
 - Book edition: `curricular-atomic-v1`
 - Publication mode: `review`
-- BookModel digest: `sha256:64c31a8c66f634a74830b9d1162883efe058321e23f02ef7cd47fff7feba2725`
+- BookModel digest: `sha256:2e500298a71f80c57e8ae98587c927c71d7ad1263deedd373a6e9055b68c6224`
 - Selected goals: 20
 
 The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
@@ -97,7 +97,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `41d35667-0296-5f84-bc12-202ffc440be0`
 - Goal fingerprint: `sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87`
-- Page fingerprint: `sha256:e17fe2f2c7cc7add578d98f5df498b9af381aab9512193bea68d19a518a11cfb`
+- Page fingerprint: `sha256:6bf823985823b416562fcdd887551165d5c63b6c353408a3fdd2ba26f4e2808f`
 - Topic path: Physik
 
 ### Canonical description
@@ -108,7 +108,7 @@ Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäbl
 
 /assets/goal-visualizations/physik/41d35667-0296-5f84-bc12-202ffc440be0/41d35667-0296-5f84-bc12-202ffc440be0.png
 
-- original digest: `sha256:b06e00ec14e7d160aae291b7eb15d389194d0993194fdbea21e499a54dad5f69`
+- original digest: `sha256:f631200a4f5f4ae96f42202013fe2f27735707ad5262c1b1eaca4ec9d780de23`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -126,6 +126,7 @@ Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäbl
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Kräfte an einer Aufhängung vektoriell bilanzieren — `8f62ab5e-20fc-562f-8121-63c082313e6e` (outside this book)
 - Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen — `d8bad724-03ea-510a-8415-928332ed4979` (outside this book)
 
 ### Evidence-profile candidate
@@ -135,7 +136,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `67ffd0f0-a5ab-518f-8c45-4c0e7eb18390`
 - Goal fingerprint: `sha256:12251968347859f9afa724038e46767619e9d79c8b939b2afc3a6297b0f9416b`
-- Page fingerprint: `sha256:3d5ec17c796943c8c5cd03ff6919119825945555e1a2b91f7086cbc28cef5e2a`
+- Page fingerprint: `sha256:792c9ac5641f710585db80d103065765ae37e7f16b85342a331acc90fbf81459`
 - Topic path: Physik > Sekundarstufe I > Mechanische Grundlagen (Sek I) > Kräfteigenschaften untersuchen
 
 ### Canonical description
@@ -144,9 +145,9 @@ Die lernende Person kann an starren Körpern Angriffspunkt und Wirkungslinie ein
 
 ### Visualization
 
-/assets/goal-visualizations/physik/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390.png
+/assets/goal-visualizations/physik/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390/67ffd0f0-a5ab-518f-8c45-4c0e7eb18390.jpg
 
-- original digest: `sha256:734afb287acdb0084ecdb750efde469c7db7512b6aa9db7268c0f92111b4d040`
+- original digest: `sha256:63460b45e7ee495b7ce2422c3e27eece5ab3502e84ff821d53e64bfa01351a4f`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -164,7 +165,7 @@ Die lernende Person kann an starren Körpern Angriffspunkt und Wirkungslinie ein
 
 ### Direct reverse prerequisites outside this book
 
-- None
+- Prüfungsaufgabe: Wirkungslinien und Schwerpunkt an einer Planke deuten — `449d9732-a869-5126-8879-564da5c3d263` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -173,7 +174,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `581c0766-b84b-54cb-b8b6-375310329a41`
 - Goal fingerprint: `sha256:0da527126449fd0f810e03791955d7af7f560739bf4b998c165795aa65ddc99c`
-- Page fingerprint: `sha256:5edeeaf9d26564f4cd400b68ad110ed70e2f11864cdd263005a615b08bc432f5`
+- Page fingerprint: `sha256:2f1d661a48d28d09b8e599276480475140b6323af440f32a378e708d5446665f`
 - Topic path: Physik > Sekundarstufe I > Mechanische Grundlagen (Sek I)
 
 ### Canonical description
@@ -203,6 +204,7 @@ Die lernende Person kann Reibung als Kontaktkraft deuten, die einer relativen od
 ### Direct reverse prerequisites outside this book
 
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
+- Prüfungsaufgabe: Reibung beim Ziehen und Gehen deuten — `7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -211,7 +213,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `327302e3-5b36-46f8-9c16-73f24583b0eb`
 - Goal fingerprint: `sha256:c4a4aa52a3db904de0caae95f65ecfabf4288dc471e59e7217fec95e595f1172`
-- Page fingerprint: `sha256:0dda94ffc3a884a5afad27fcf70114637247c7777837bf0af5b7d2beb17d234c`
+- Page fingerprint: `sha256:4ce51a2ff074f5531427ec41003df6ebce5a069980dda10b1e633c03c8bc4462`
 - Topic path: Physik
 
 ### Canonical description
@@ -241,7 +243,9 @@ Die lernende Person kann einfache Maschinen wie Hebel, Rollen und Räder als Kra
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Einen Rettungs- und Materialwagen energetisch bewegen und heben — `0cf2a5b0-8660-578d-8316-2b8a50fbdff7` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
+- Prüfungsaufgabe: Kraft und Weg an einfachen Maschinen vergleichen — `d15764ce-ebea-5178-84ea-9351dd808b8c` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -335,7 +339,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `eeba6bf8-a2b9-4d7d-a1d6-67286c923cef`
 - Goal fingerprint: `sha256:97d4f435401bba112e324ec83bcf7bf70be1d836793fe5062937a23a6cae5a3c`
-- Page fingerprint: `sha256:a6e0d4b9819d8801cf16c088c46e778eacd8e2c93375ca6523329802f569cc0c`
+- Page fingerprint: `sha256:95004276328f86130d66422ca632615d19ad510a594975d0692271defbe4adcf`
 - Topic path: Physik
 
 ### Canonical description
@@ -365,6 +369,7 @@ Die lernende Person kann Wärme als Energieübertragung aufgrund eines Temperatu
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Wärmeübertragung und Treibhauseffekt bilanzieren — `0b090935-1e43-581b-84ec-078741f8969e` (outside this book)
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 - Aggregatzustandsänderungen im Teilchenmodell deuten — `873c6371-4ffb-582b-8d8d-3f45f968ba08` (outside this book)
 
@@ -375,7 +380,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `30a936ec-e427-57fe-bf3e-4abd64b1f0c1`
 - Goal fingerprint: `sha256:0a6a05330f90cebdfd0f293016118bf71d998328b08262798b01f79cae750824`
-- Page fingerprint: `sha256:2f74a9aa4b6b81b87a0eef3efd0bef9d5cc3713be7333f505e04df81b2e12cbb`
+- Page fingerprint: `sha256:f0612484c4bb7648f13958639c21b1700ea0cb6d975b053638ed28e55c335dec`
 - Topic path: Physik
 
 ### Canonical description
@@ -405,6 +410,7 @@ Die lernende Person kann Energieversorgungssysteme wie Wasser-, Wind-, Kohle- od
 ### Direct reverse prerequisites outside this book
 
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
+- Prüfungsaufgabe: Eine kommunale Energieversorgung bewerten — `7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d` (outside this book)
 - Energieversorgung und Klimawirkungen fachlich bewerten — `5be98160-5189-58aa-8183-1df1c400cc8c` (outside this book)
 - Photovoltaikanlagen als technische Systeme erklaeren — `92076a27-46cd-5c33-b3d8-aa68329af7c4` (outside this book)
 
@@ -415,7 +421,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `b92827a7-5d62-5fdb-a6f5-ac44461f4a7b`
 - Goal fingerprint: `sha256:97cdb2555a80b1c50b949babfc59ddadb021f0dc769d121b34a39434e7aa19f8`
-- Page fingerprint: `sha256:bd46d318d0263b7b4cc00cde64893c3246dffb01b3329d7b1480e4026014602b`
+- Page fingerprint: `sha256:38058c20f4001d9c0429001b5ae48e641138bec7084cab4ac7117b980b0238ab`
 - Topic path: Physik > Leistung und Wirkungsgrad
 
 ### Canonical description
@@ -424,9 +430,9 @@ Die lernende Person kann Leistung als übertragene oder umgewandelte Energie pro
 
 ### Visualization
 
-/assets/goal-visualizations/physik/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b.png
+/assets/goal-visualizations/physik/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b/b92827a7-5d62-5fdb-a6f5-ac44461f4a7b.jpg
 
-- original digest: `sha256:f23f7f52fb2c056aa800f34d96a92c77e99f249d3a84f8be236007a75198ab3d`
+- original digest: `sha256:bf9b07bd5f15b09eed2a6ec0e73b431636767d4382e3e0575406c388703b5ac0`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -446,6 +452,7 @@ Die lernende Person kann Leistung als übertragene oder umgewandelte Energie pro
 
 - Prüfungsaufgabe: Leistung und Wirkungsgrad eines Hebezeugs vergleichen — `0b8aff9a-6c77-51b9-82d4-725a21f32a90` (outside this book)
 - Elektrische Leistung und Wirkungsgrad bilanzieren — `46e42b07-c098-5d65-8ef5-8472b7c4d8e2` (outside this book)
+- Elektrische Geräte- und Akkuangaben physikalisch deuten — `27b90ce9-b650-5232-85fb-ce2cb69d59a3` (outside this book)
 - Idealen Transformator quantitativ deuten — `af1094c1-511a-5aae-9e0a-3e9196a82d9a` (outside this book)
 
 ### Evidence-profile candidate
@@ -455,7 +462,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `f7f2c254-1663-5861-bed7-a32c00495b19`
 - Goal fingerprint: `sha256:a54a9234aa4e1a1adc289218aec3cb0957047dd6e3c903c382e168927ee6bd3e`
-- Page fingerprint: `sha256:10c1cceba86358dedb0641b0874c3c3dc79a842bff93fefa8a2df39375c05390`
+- Page fingerprint: `sha256:88c8e72d5c9b63227af6eb2ed19e9b049376dbace157eb2ac13dd3049a169db8`
 - Topic path: Physik > Leistung und Wirkungsgrad
 
 ### Canonical description
@@ -464,9 +471,9 @@ Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführ
 
 ### Visualization
 
-/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.png
+/assets/goal-visualizations/physik/f7f2c254-1663-5861-bed7-a32c00495b19/f7f2c254-1663-5861-bed7-a32c00495b19.jpg
 
-- original digest: `sha256:e9b95a5d64cc059a3204b1bb926457132eec39742bfc98e375d91cd9a62ccab8`
+- original digest: `sha256:2980a12e8a5a9cfddb5e5caf31864836f26fc7da9face8710e970e34b905b11e`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -486,6 +493,8 @@ Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführ
 
 - Prüfungsaufgabe: Leistung und Wirkungsgrad eines Hebezeugs vergleichen — `0b8aff9a-6c77-51b9-82d4-725a21f32a90` (outside this book)
 - Elektrische Leistung und Wirkungsgrad bilanzieren — `46e42b07-c098-5d65-8ef5-8472b7c4d8e2` (outside this book)
+- Energieentwertung vs. Energieverbrauch — `cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73` (outside this book)
+- Energiesparmaßnahmen physikalisch bewerten — `aed9161b-ddc4-559c-be8f-baeeddf224f3` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -536,7 +545,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `af0e2efb-f634-5f2d-abea-b2e1a67a2894`
 - Goal fingerprint: `sha256:a0089f4ce5f1e646d19c6c6ce835f1e411aa4d98566ad5a6f5abbf053b74bee5`
-- Page fingerprint: `sha256:71679492a3340a49fd1db90e6df6189f27bbec30d6521fbafbcc1a07133ebe72`
+- Page fingerprint: `sha256:e5ec8d2a881c1e3b8670287bd24e033ec20bd619bc85f5bd3c26503544de7d7c`
 - Topic path: Physik > Sekundarstufe I > Mechanische Grundlagen (Sek I) > Masse, Volumen und Dichte
 
 ### Canonical description
@@ -545,9 +554,9 @@ Die lernende Person kann für Messbereich und benötigte Auflösung eine geeigne
 
 ### Visualization
 
-/assets/goal-visualizations/physik/af0e2efb-f634-5f2d-abea-b2e1a67a2894/af0e2efb-f634-5f2d-abea-b2e1a67a2894.png
+/assets/goal-visualizations/physik/af0e2efb-f634-5f2d-abea-b2e1a67a2894/af0e2efb-f634-5f2d-abea-b2e1a67a2894.jpg
 
-- original digest: `sha256:02742b7d93c5b103fe3fce8a6693172983cdeed8b6aef57ab03403acd32e61c6`
+- original digest: `sha256:5ce78460618d30d3c17856f89d5cfd3f561be2c9ae2041e164178d0ff2e728b0`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -565,7 +574,7 @@ Die lernende Person kann für Messbereich und benötigte Auflösung eine geeigne
 
 ### Direct reverse prerequisites outside this book
 
-- None
+- Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen — `d304cfd0-f87c-51f7-8dee-f5f405da4b3d` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -574,7 +583,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `f827b00f-af7f-52de-84aa-2a2bbaa035bd`
 - Goal fingerprint: `sha256:abb79783347c78419a43e8b4b012a57f470e3bd6d4afe508ca9eec2f0151610e`
-- Page fingerprint: `sha256:073c8b284023e1915f45ba9e212bd534b8874641fac777a0d856df06927c001d`
+- Page fingerprint: `sha256:617e5f8ce10d013ecf00b76784ba86845a4943abe2a75bdb9439ef14e2b15506`
 - Topic path: Physik > Sekundarstufe I > Mechanische Grundlagen (Sek I) > Masse, Volumen und Dichte > Volumen von Körpern bestimmen und vergleichen
 
 ### Canonical description
@@ -583,9 +592,9 @@ Die lernende Person kann die benötigten Abmessungen eines einfachen regelmäßi
 
 ### Visualization
 
-/assets/goal-visualizations/physik/f827b00f-af7f-52de-84aa-2a2bbaa035bd/f827b00f-af7f-52de-84aa-2a2bbaa035bd.png
+/assets/goal-visualizations/physik/f827b00f-af7f-52de-84aa-2a2bbaa035bd/f827b00f-af7f-52de-84aa-2a2bbaa035bd.jpg
 
-- original digest: `sha256:f30eb39c6cf3402bf31a601ad38bba04f0e1d3b43737eb8fcd8daca1049d4497`
+- original digest: `sha256:d2973dc053ac5798b0a75e225ee841e24f90817b863a962a68f3d0e3f36187a5`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -603,7 +612,7 @@ Die lernende Person kann die benötigten Abmessungen eines einfachen regelmäßi
 
 ### Direct reverse prerequisites outside this book
 
-- None
+- Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen — `d304cfd0-f87c-51f7-8dee-f5f405da4b3d` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -612,7 +621,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `f92b5b8a-327f-50d2-8313-6a142399ebf0`
 - Goal fingerprint: `sha256:979191d899b8181ca1e7c225c1e132d134d0f682c71d38021637942a053522f1`
-- Page fingerprint: `sha256:44e231daa5722051d590bd973fe21c45dfd181e16e04a072230bb28acce85d0e`
+- Page fingerprint: `sha256:8da4950853d1d0afb7994761d9b927d9e59d20d4bfc24f16025c8475e31700e7`
 - Topic path: Physik > Sekundarstufe I > Mechanische Grundlagen (Sek I) > Masse, Volumen und Dichte > Volumen von Körpern bestimmen und vergleichen
 
 ### Canonical description
@@ -621,9 +630,9 @@ Die lernende Person kann das Volumen eines vollständig eintauchbaren unregelmä
 
 ### Visualization
 
-/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.png
+/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.jpg
 
-- original digest: `sha256:4465879e0305e0aa15858217b1193d0687ff56806582fe020c7f9fe8c6026a87`
+- original digest: `sha256:f55352ed6e602c36d10cf2c50ed164d8aca52d808375485194a78cc66ea5a090`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -641,6 +650,7 @@ Die lernende Person kann das Volumen eines vollständig eintauchbaren unregelmä
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen — `d304cfd0-f87c-51f7-8dee-f5f405da4b3d` (outside this book)
 - Auftrieb mit dem archimedischen Prinzip erklären — `e11b2ee9-e528-4857-9ecd-59bd460fba81` (outside this book)
 
 ### Evidence-profile candidate
@@ -650,7 +660,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0`
 - Goal fingerprint: `sha256:35b2f09f11b02172818efcd4e0c6ec8ee296329a6e648c4846aeef07f55418a7`
-- Page fingerprint: `sha256:d55a6e958e9045b5d41e00f4ab87f947081fa841778c805e6d6429483bfa2e40`
+- Page fingerprint: `sha256:470c605f82c517dbe768a04cc2c81700bb99cb00419c2bbed0601412b69e0852`
 - Topic path: Physik > Sekundarstufe I > Mechanische Grundlagen (Sek I) > Masse, Volumen und Dichte
 
 ### Canonical description
@@ -659,9 +669,9 @@ Die lernende Person kann Dichte als Quotient aus Masse und Volumen bestimmen, pa
 
 ### Visualization
 
-/assets/goal-visualizations/physik/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0.png
+/assets/goal-visualizations/physik/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0/c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0.jpg
 
-- original digest: `sha256:0f6d64ab8c12ee77d1ab29e3ae6cb162dc9b51dbc0d8744a6783d611e53374e3`
+- original digest: `sha256:79a020c5b6c626e48ad96bcd0d27aaf40f3345e2477145887c258ca1a8dda901`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -681,6 +691,7 @@ Die lernende Person kann Dichte als Quotient aus Masse und Volumen bestimmen, pa
 
 ### Direct reverse prerequisites outside this book
 
+- Prüfungsaufgabe: Masse, Volumen und Dichte experimentell bestimmen — `d304cfd0-f87c-51f7-8dee-f5f405da4b3d` (outside this book)
 - Auftrieb mit dem archimedischen Prinzip erklären — `e11b2ee9-e528-4857-9ecd-59bd460fba81` (outside this book)
 
 ### Evidence-profile candidate
@@ -690,7 +701,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `9c328f68-41ed-55dd-9e02-34414a6246f2`
 - Goal fingerprint: `sha256:3a14e778f2a310ebc0abc066dec0c9d6d6466e17c2876494c87b9006ceef0c03`
-- Page fingerprint: `sha256:fea769b8483c568f49ca2a93debd53073eed685927d8f3377886423bba9ac3fb`
+- Page fingerprint: `sha256:94377371cbec6d8960e19064d849c0dd370b5f605c1df6cf1384e390918b630b`
 - Topic path: Physik
 
 ### Canonical description
@@ -721,6 +732,7 @@ Die lernende Person kann Masse als ortsunabhängige Eigenschaft eines Körpers v
 
 - Sek-I-Abschlussaufgaben Physik selbstständig lösen — `3631c8f7-ff48-57ff-b7ee-8397ff1d166a` (outside this book)
 - Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen — `d8bad724-03ea-510a-8415-928332ed4979` (outside this book)
+- Gravitationsgesetz und Gewichtskraft anwenden — `eb0ffdea-c12d-56df-b7e8-c0297d2f8aff` (outside this book)
 
 ### Evidence-profile candidate
 
@@ -729,7 +741,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `3c8e5510-a12d-5770-8a01-e5fe741b259c`
 - Goal fingerprint: `sha256:616eba5d2f0c8d41045eb2ebc9a2700f90fb3a587c3820d59ed8c7398586b25a`
-- Page fingerprint: `sha256:95d06e2114ba71d3b41ea7ffbe3626d234f6ab353ff80ef70b7eca5a637a6bb5`
+- Page fingerprint: `sha256:a8884292ccc969c95cf64fc5d52198a95d5a8a9f808fbc59012c85e1f50a9e3f`
 - Topic path: Physik
 
 ### Canonical description
@@ -738,9 +750,9 @@ Die lernende Person kann bei der Reflexion an einer ebenen glatten Fläche Einfa
 
 ### Visualization
 
-/assets/goal-visualizations/physik/3c8e5510-a12d-5770-8a01-e5fe741b259c/3c8e5510-a12d-5770-8a01-e5fe741b259c.png
+/assets/goal-visualizations/physik/3c8e5510-a12d-5770-8a01-e5fe741b259c/3c8e5510-a12d-5770-8a01-e5fe741b259c.jpg
 
-- original digest: `sha256:42a33be25096f4e56b5b006dc5bf6a6894957ac850e0d3779f098a29e941f6cd`
+- original digest: `sha256:e3e51d533dfff5e63571664b51e0d5f0feddc2c5dac5cbdcb0b8ae64c4fdb21a`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 
@@ -767,7 +779,7 @@ No evidence-profile record is bound to this page.
 
 - Full learning-goal ID: `b57427c9-1af5-5daa-8c65-b84a4cc20785`
 - Goal fingerprint: `sha256:e62900daa49bb33a2730998ec3d910e50c00d089c94d8137ee9cb64affad0271`
-- Page fingerprint: `sha256:f8038324507307c54604d9ea17438b8ed8b3f06605e86f84559ac42778fbaec4`
+- Page fingerprint: `sha256:2156c26ae27945c3ccd0e961b2a18f1f7d23b4a08ad5d5b295a6d61a1f00d958`
 - Topic path: Physik
 
 ### Canonical description
@@ -776,9 +788,9 @@ Die lernende Person kann reflektierte Lichtwege rückwärts verlängern, damit L
 
 ### Visualization
 
-/assets/goal-visualizations/physik/b57427c9-1af5-5daa-8c65-b84a4cc20785/b57427c9-1af5-5daa-8c65-b84a4cc20785.png
+/assets/goal-visualizations/physik/b57427c9-1af5-5daa-8c65-b84a4cc20785/b57427c9-1af5-5daa-8c65-b84a4cc20785.jpg
 
-- original digest: `sha256:a8035373a3fcd012ba39c03b771f45be085fca2301918a00fee4fdc6827d91eb`
+- original digest: `sha256:517ad891badebf527fdb42d590b0f2becbd56e26e6fcc58f3f4053ffae0af25a`
 - QA status: `review_candidate`
 - approved for public publication: `false`
 

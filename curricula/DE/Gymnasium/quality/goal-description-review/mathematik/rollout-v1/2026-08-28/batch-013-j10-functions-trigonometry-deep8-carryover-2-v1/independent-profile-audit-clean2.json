@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-independent-positive-understanding-evidence-v2-subject-audit",
+  "auditId": "canonical-math-j10-keep3-profile-clean2-782-302",
+  "auditedAt": "2026-08-28",
+  "scope": {
+    "candidatePath": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/candidates.json",
+    "goalIds": [
+      "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "302a857d-ad71-4bdf-81f3-851c95aeefe1"
+    ],
+    "readOnlyRepositoryAudit": true,
+    "repositoryFilesChanged": false
+  },
+  "inputArtifacts": {
+    "candidates": "sha256:28266cd1b9a58b052e5becc3e00e9a6456dd784c8277807b550490b4893b6c2e",
+    "candidateValidator": "sha256:78d0aed0cfb6f1bc22fe77c75bd5e259133c973818ec29a518e6609b2c988ec6",
+    "candidateValidationReceipt": "sha256:33bf4fd62814d94e706f963088634283077c94f4240c021f52e9a9547509baaa",
+    "canonicalLandscape": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+    "roundAContextualInput": "sha256:64a38ae01b927dc594dc31b8f3027df19a19d04b4f54966a78e7aed503c9f6dc",
+    "roundBContextualInput": "sha256:64a38ae01b927dc594dc31b8f3027df19a19d04b4f54966a78e7aed503c9f6dc",
+    "roundACampaign": "sha256:6e7daec366691baee96026089545ea089482f02838286cd0000d8f81bc67ec78",
+    "roundBCampaign": "sha256:50488adb5498a5b867594c188f41490737d8b7e79d4aeb3a861552bc21bb0f8a",
+    "adjudication": "sha256:19acc2ea7569e51227c89623ef511b79f1b505672b35d4d78397eb59820c5f5c",
+    "adjudicationValidation": "sha256:d09cf0d984b34cdc89e065846d8680feba18fd9eb19edaef226e85720dd8d67f",
+    "profileCriteria": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "profileSchema": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+  },
+  "productionValidation": {
+    "externalCandidateValidator": "PASS",
+    "positiveGoalEvidenceCandidateMaterializerSelfTest": "PASS: 20 profiles",
+    "positiveGoalEvidenceProfileV2ModelTest": "PASS",
+    "interpretation": "These checks establish current bindings, schema validity, materializability, and production-model invariants, but they are not treated as proof of mathematical or didactic correctness."
+  },
+  "reviewIndependence": {
+    "byteIdenticalContextualInput": true,
+    "roundAIndependenceGroupId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-independent-a",
+    "roundBIndependenceGroupId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-independent-b",
+    "distinctIndependenceGroups": true,
+    "distinctRunIds": true,
+    "roundABlindToOtherReviews": true,
+    "roundBBlindToOtherReviews": true
+  },
+  "goals": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "decision": "REVISE",
+      "currentBinding": {
+        "titleDe": "Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben",
+        "titleEn": "Describe the graph shape of exponential functions of the form $b\\cdot a^x$ using $a$ and $b$",
+        "descriptionDe": "Die lernende Person kann für exponentielle Funktionen der Form $b\\cdot a^x$ den Verlauf des Graphen anhand der Parameter $a$ und $b$ beschreiben, insbesondere y-Achsenabschnitt, asymptotisches Verhalten und Monotonieverhalten begründen und passende Veranschaulichungen auch mit digitalen Werkzeugen nutzen.",
+        "descriptionEn": "The learner can describe the graph of exponential functions of the form $b\\cdot a^x$ using the parameters $a$ and $b$, justify the y-intercept, asymptotic behaviour, and monotonicity, and use suitable visualizations including digital tools.",
+        "requires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "goalFingerprint": "sha256:a132b889da1543803a126a5ed255105b4a258fe18f2e4ef17230afbdfa4b0cd8",
+        "boundedPageFingerprint": "sha256:6556bcbf45736ed02be2e561db5c2a71d7159b8f23788087bc979f357575d81f",
+        "goalReviewContextFingerprint": "sha256:82d4cf775bdfb890763fa75d909c29839bbcfd13b6742308aebe7fb8e89df57d"
+      },
+      "candidateBinding": {
+        "reviewInputFingerprint": "sha256:5762cfcab651d34b04b9065991f4cb0481ccdf0ae3bb77fdfc76c93023103382",
+        "profileFingerprint": "sha256:a185419dd076755333134512d6b7803eb43ffc7e5881b0de45be082ec49fe819",
+        "archetype": "representation",
+        "expectationCount": 3,
+        "applicationCaseCount": 3,
+        "minimumIndependentDemonstrations": 3
+      },
+      "passedFindings": [
+        "The representation archetype matches the graph-description and inverse graph-to-expression demands.",
+        "The profile remains within the non-shifted family f(x)=b*a^x and does not import logarithms or contextual exponential modelling.",
+        "The four non-degenerate monotonicity regimes are handled correctly: for b>0, a>1 increases and 0<a<1 decreases; for b<0, the numerical monotonicity is reversed.",
+        "All authored numerical cases and limits are correct: f(x)=3*2^x, g(x)=-2*(1/2)^x, h1(x)=-4*3^x, h2(x)=4*3^x, h3(x)=-4*(1/3)^x, p(x)=5*1^x, q(x)=0*2^x, r(x)=-0.5*4^x, and the inadmissible whole-real-line case s(x)=2*(-3)^x.",
+        "The three task forms are consequentially distinct: forward feature prediction, inverse parameter matching, and classification of boundary or inadmissible cases.",
+        "The common misconception that 0<a<1 always implies a decreasing graph is directly challenged by the negative-b case."
+      ],
+      "blockingCorrections": [
+        {
+          "location": "profile.expectations[0].essentialUnderstandingDe and essentialUnderstandingEn",
+          "problem": "The phrase 'auf genau einer Seite/on exactly one side' is ambiguous between side of the x-axis and x-direction and omits which limit direction belongs to each base regime.",
+          "replacementDe": "Unter der üblichen nichtdegenerierten Konvention a>0, a!=1 und b!=0 ist f(x)=b*a^x auf ganz R definiert. Es gilt f(0)=b; der Graph bleibt bei b>0 oberhalb und bei b<0 unterhalb der x-Achse, besitzt keine Nullstelle und nähert sich y=0 in genau einer x-Richtung asymptotisch: für a>1 bei x gegen minus unendlich, für 0<a<1 bei x gegen plus unendlich. Der Betrag von b skaliert den Graphen vertikal, sein Vorzeichen spiegelt ihn an der x-Achse.",
+          "replacementEn": "Under the usual non-degenerate convention a>0, a!=1, and b!=0, f(x)=b*a^x is defined on all of R. We have f(0)=b; the graph remains above the x-axis when b>0 and below it when b<0, has no zero, and approaches y=0 asymptotically in exactly one x-direction: as x tends to negative infinity when a>1 and as x tends to positive infinity when 0<a<1. The magnitude of b scales the graph vertically, while its sign reflects it across the x-axis."
+        },
+        {
+          "location": "profile.expectations[2].essentialUnderstandingDe and essentialUnderstandingEn",
+          "problem": "The German wording says that y=0 is reached although a non-degenerate exponential graph never reaches its horizontal asymptote; both languages should identify an x-direction rather than an unspecified side.",
+          "replacementDe": "Y-Achsenabschnitt, Vorzeichen, Monotonie und die x-Richtung, in der sich der Funktionswert 0 nähert, müssen gemeinsam zu demselben Parameterpaar passen. Die Randfälle a=1 oder b=0 liefern konstante Funktionen und sind deshalb nicht unbemerkt wie nichtkonstante Exponentialgraphen mit Wachstum oder Zerfall zu behandeln.",
+          "replacementEn": "The y-intercept, sign, monotonicity, and the x-direction in which the function value approaches 0 must jointly fit the same parameter pair. The boundary cases a=1 or b=0 produce constant functions and therefore must not silently be treated like non-constant exponential graphs showing growth or decay."
+        },
+        {
+          "location": "profile.applicationCaseBriefs[id=match-described-graph-to-one-parameter-pair].expectedPerformanceDe and expectedPerformanceEn",
+          "problem": "The current comparison first refers to the two candidates with b=-4 and then contrasts h2, which has b=4; the referent structure is internally inconsistent in both languages even though the final choice h1 is correct.",
+          "replacementDe": "Die lernende Person wählt h1. h1 und h3 treffen wegen b=-4 den geforderten y-Achsenabschnitt; h2 wird wegen b=4 verworfen, denn sein Graph liegt oberhalb der x-Achse. h3 ist wegen 0<a<1 zusammen mit b<0 streng steigend und nähert sich erst für x gegen plus unendlich der 0. h1 besitzt genau die geforderte Lage, Fallrichtung und Asymptotik.",
+          "replacementEn": "The learner chooses h1. h1 and h3 meet the required y-intercept because b=-4; h2 is rejected because b=4, so its graph lies above the x-axis. h3 is strictly increasing because 0<a<1 together with b<0 and approaches 0 only as x tends to positive infinity. h1 has exactly the required position, decreasing direction, and asymptotic behaviour."
+        }
+      ],
+      "debtAssessment": {
+        "mappingBlocksIntegration": false,
+        "visualizationBlocksIntegration": false,
+        "atomicityBlocksIntegration": false,
+        "memoryBlocksIntegration": false,
+        "profileCorrectionAndRevalidationRequired": true
+      }
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "decision": "REVISE",
+      "currentBinding": {
+        "titleDe": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen",
+        "titleEn": "Derive sine and cosine graphs from the unit circle and justify periodicity and their relationship",
+        "descriptionDe": "Die lernende Person kann mithilfe des Einheitskreises den Verlauf der Graphen von Sinus- und Kosinusfunktion ableiten, ihre Periodizität begründen und den Zusammenhang zwischen beiden Funktionen erklären.",
+        "descriptionEn": "The learner can use the unit circle to derive the graphs of the sine and cosine functions, justify their periodicity, and explain the relationship between the two functions.",
+        "requires": [
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "goalFingerprint": "sha256:c81aeb80b4027471ccc59bef7b52088affac39efbed6734a4f409937f0ad67be",
+        "boundedPageFingerprint": "sha256:cbfc2dcb83f7e48659c01f23949c35a219977c1920b2ceae76e2fb6ab6ecbeb8",
+        "goalReviewContextFingerprint": "sha256:161ea19cde701d12fd5abcf6219844fc5f3be14b21fe71bf9f84d3ab492464d6"
+      },
+      "candidateBinding": {
+        "reviewInputFingerprint": "sha256:6c382da4108b31232f8d9dae9d4d83d2c018d62d750a1ff86c3f5c71d9897d08",
+        "profileFingerprint": "sha256:8873b567974a58a35c7ef4eb9683398c4d93fe298736c4b847bfa419e732a5b7",
+        "archetype": "representation",
+        "expectationCount": 3,
+        "applicationCaseCount": 3,
+        "minimumIndependentDemonstrations": 3
+      },
+      "passedFindings": [
+        "The representation archetype exactly matches the unit-circle-to-graph and graph-to-graph translation competence.",
+        "The standard coordinate assignment P(theta)=(cos(theta),sin(theta)), the five cardinal points, the values on [-pi,pi], and the 2*pi period relations are correct in both languages.",
+        "The phase identities cos(theta)=sin(theta+pi/2) and sin(theta)=cos(theta-pi/2) are correct.",
+        "The counterexamples cos(0)=1 versus sin(-pi/2)=-1 and sin(pi/2)=1 versus sin(3*pi/2)=-1 correctly refute the proposed wrong shift and pi as a sine period.",
+        "The scope remains on the standard sine and cosine functions and does not import amplitude, general frequency, vertical shifts, or contextual modelling from successor goals.",
+        "The negative-angle case legitimately recombines the current prerequisite concerning reduction of negative and greater-than-2*pi angles."
+      ],
+      "blockingCorrections": [
+        {
+          "location": "profile.expectations[0].essentialUnderstandingDe and essentialUnderstandingEn",
+          "problem": "The current statement says that key angles determine the intervening graph. Five cardinal points plus continuity do not determine the sinusoidal progression; a line-segment or many other continuous interpolations would satisfy those data.",
+          "replacementDe": "Zum Winkel theta gehört auf dem Einheitskreis der Punkt (cos(theta),sin(theta)). Wird beim Durchlaufen des Kreises die y-Koordinate gegen theta aufgetragen, entsteht der Sinusgraph; die x-Koordinate erzeugt den Kosinusgraph. Markante Winkel verankern Nullstellen und Extremwerte; zusätzliche Kreispositionen und der kontinuierliche Koordinatenverlauf bestimmen den Zwischenverlauf beider Darstellungen.",
+          "replacementEn": "The angle theta corresponds to the point (cos(theta),sin(theta)) on the unit circle. Plotting the y-coordinate against theta while traversing the circle produces the sine graph, while plotting the x-coordinate produces the cosine graph. Key angles anchor zeros and extrema; additional circle positions and the continuous coordinate progression determine the intervening behaviour of both representations."
+        },
+        {
+          "location": "profile.applicationCaseBriefs[id=construct-one-full-turn-from-key-points].taskDemandDe, taskDemandEn, expectedPerformanceDe, and expectedPerformanceEn",
+          "problem": "The task supplies only the five cardinal angles and the expected performance merely asks for a continuous connection. This cannot distinguish a derived sine or cosine curve from an arbitrary continuous interpolation and therefore does not fully evidence the claimed graph derivation.",
+          "requiredChange": "Require the learner to transfer at least one non-cardinal circle position in each quadrant, or an equivalent continuous projection construction, and to use quadrant-wise coordinate change to justify the progression between zeros and extrema. The expected performance must reject straight-line joining as unsupported and name the mathematical property that determines the curve from the rotating point."
+        },
+        {
+          "location": "profile.variationAxes[id=representation-direction], profile reason, and profile.applicationCaseBriefs[id=reconstruct-on-shifted-negative-interval]",
+          "problem": "The profile claims reverse representation from graph values to circle points, but both construction cases currently run from unit-circle points to values and graphs. The shifted interval is meaningful, yet it does not instantiate the advertised representation-direction axis and is too close to the first case to support three independent demonstrations as authored.",
+          "replacementTaskDemandDe": "Gegeben ist der Sinusgraph auf dem Intervall [-pi,pi], aber kein Kosinusgraph. Rekonstruiere den Kosinusgraphen mithilfe der Vierteldrehung am Einheitskreis, ordne an -pi, -pi/2, 0, pi/2 und pi jeweils den Punkt (cos(theta),sin(theta)) zu und setze danach beide Graphen bis 3*pi fort. Begründe die Fortsetzung und die sichtbare Verschiebungsrichtung.",
+          "replacementTaskDemandEn": "The sine graph is given on the interval [-pi,pi], but the cosine graph is not. Reconstruct the cosine graph using the quarter-turn on the unit circle, assign the point (cos(theta),sin(theta)) at -pi, -pi/2, 0, pi/2, and pi, and then continue both graphs to 3*pi. Justify the continuation and the visible shift direction.",
+          "requiredExpectedPerformance": "Derive the general identity cos(theta)=sin(theta+pi/2) from the positive quarter-turn mapping (cos(theta),sin(theta)) to (-sin(theta),cos(theta)); state that the cosine graph is the sine graph shifted left by pi/2; recover the cardinal coordinate pairs; and use the common 2*pi terminal positions for the continuation. Provide the same content in German and English."
+        },
+        {
+          "location": "profile.applicationCaseBriefs[id=diagnose-wrong-shift-and-half-turn-period].expectedPerformanceDe and expectedPerformanceEn",
+          "problem": "The two numerical counterexamples refute the false claims, but the expected performance then states the corrected phase identity without a general justification. A single confirming or refuting point cannot establish the all-theta identity.",
+          "requiredChange": "After the counterexamples, require the positive quarter-turn mapping (cos(theta),sin(theta)) to (-sin(theta),cos(theta)) and explicitly infer that the new y-coordinate equals cos(theta), hence cos(theta)=sin(theta+pi/2) for every theta. Keep the half-turn opposite-point explanation and the full-turn period argument."
+        }
+      ],
+      "debtAssessment": {
+        "mappingBlocksIntegration": false,
+        "visualizationBlocksIntegration": false,
+        "atomicityBlocksIntegration": false,
+        "memoryBlocksIntegration": false,
+        "profileCorrectionAndRevalidationRequired": true
+      }
+    }
+  ],
+  "overallDecision": "REVISE",
+  "integrationStatement": "Neither profile is fachlich approvable in its current fingerprint. Both have bounded corrections and no independent mapping, visualization, atomicity, or memory blocker for these two goals. After the corrections, regenerate profile fingerprints and the validation receipt, rerun the production validators, and repeat an independent content check before repository materialization."
+}

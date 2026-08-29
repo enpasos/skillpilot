@@ -1,0 +1,69 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-019-q1-q2-magnetism-induction-16-v1.config.json",
+  "configDigest": "sha256:01eaaa9382152893e3fdfe77f1cce67e820aac37eb97da513302e71982f87566",
+  "goalIds": [
+    "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+    "c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "3b866aea-3e4d-5f23-91de-759148382710",
+    "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+    "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+    "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+    "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+    "1a037489-3c95-540b-8cae-0acd360358ee",
+    "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+    "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+    "37f28bc4-def2-57cf-a06b-191dfd228205",
+    "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "a1389d4e-dc97-5557-babe-a31a2bd57217",
+    "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+    "ffbbf243-c2eb-4330-b050-837de994c130",
+    "d18d4190-ddc1-5181-b1b6-e79947b737c2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 447,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:c162a9203ddd2e0a98c3c60aee6d41138aab649e274d0424e558497d9677fd2c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:06eefd11230cb6189f05fbfbb52273ceffe1132b3709951025f8b27f0b925b69",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a3c1842958e8e019d61716d56b03b091cf9b901a8d8e066c9de8f93777f47af1",
+    "reviewInputFingerprint": "sha256:069ac646455058b2679741448cf93fa60df1b2baad8a6c7181ec786685cf4f80",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-a",
+        "campaignDigest": "sha256:5fe8e1a262908d973c68ddf0da25be1bfddf5143dfdeef45c5e16e1ce117923a",
+        "roundId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-independent-a",
+        "batchId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ac3fcfd6fb52a6f136e3d1cf8e0c6af1dbea0a619dcc68c944e211cf60eb5817"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-b",
+        "campaignDigest": "sha256:4250b137a47b4b8691dd1a4721d966ba7bdef1c54005fe40c53bafb5cc5d4929",
+        "roundId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-independent-b",
+        "batchId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f2b2ec08911e42a151d521cd85e0a34e9eb34e213f1eb38d10df7ec25240e56e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-29/batch-025b-e-mechanics-energy-revised-follow-up-5-v1.config.json",
+  "configDigest": "sha256:88406b9f36d0be9a987561cba31497b9934faed25835354a079ea6cc7669c398",
+  "goalIds": [
+    "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+    "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+    "253a71d2-e751-4c63-acbe-238b71463cd8",
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:fedd8e2f989967369d7d44f1e302caa90477be23fb85a364977c60d52babc43f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a1a6164627f565cb0e3409b87efc3dacb4955348643876c222869745f11ff26c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:fa3833588f294b2e9c39676cf3a1203ed13e0e0e01b63a46637a21dadc19f493",
+    "reviewInputFingerprint": "sha256:73f124bf5d85d4b9e3988d59782956aa663e852a53ded9306f4aa84aa7357c9b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-a",
+        "campaignDigest": "sha256:198b8a3b4d9c38e695bf2e008a61477ff3f638035b931c672e54e705f346107a",
+        "roundId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-independent-a",
+        "batchId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:72eb43defe83a9adc92cf5014aa2bdfb9fb4c713cf790d77fea6d2b9757b921f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-b",
+        "campaignDigest": "sha256:b8e59b631943023cc2ce5b6b0c85da7d74eeaed8d20c377cec7f512def3f9c69",
+        "roundId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-independent-b",
+        "batchId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a5081a63d2c13015a58bc64209c3932ac54a65cf4afba4dcd64c618385410738"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

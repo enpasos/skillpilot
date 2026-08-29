@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-resolution-e5c33afc-a233-50ff-a17f-63c085dfb89c",
+  "goal": {
+    "goalId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:792d5b99c20693a3fe1cf9e6922049b032d9d87f1216c6db8e2957c3f4f939dc",
+    "pageFingerprint": "sha256:6d4b0fc07721460e3ef5b707741c721ca27942e26ea6e4daf136ebbe7c1f43e8",
+    "goalReviewContextFingerprint": "sha256:ffbcc85aea06b55b7d50b4cd3938e010b979c9edaac28f1f75318a52039dec53",
+    "finalText": {
+      "titleDe": "Wirbelströme und Waltenhofen-Pendel",
+      "titleEn": "Eddy Currents and the Waltenhofen Pendulum",
+      "descriptionDe": "Die lernende Person kann die Entstehung von Wirbelströmen in massiven Leitern mit Induktionsgesetz und Lenz’scher Regel erklären sowie ihre bremsende Wirkung am Waltenhofen-Pendel und ihre Verringerung durch Blechpakete in Transformatorenkernen begründen.",
+      "descriptionEn": "The learner can explain the formation of eddy currents in bulk conductors using the law of induction and Lenz’s law and justify both their braking effect in a Waltenhofen pendulum and their reduction by laminations in transformer cores."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:ffbcc85aea06b55b7d50b4cd3938e010b979c9edaac28f1f75318a52039dec53",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167",
+      "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-10",
+      "recordDigest": "sha256:bfd39c8a10c169d11e69d3e5e518c367f0d7047ff1e4f04fa5148688d7432b9f"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:ffbcc85aea06b55b7d50b4cd3938e010b979c9edaac28f1f75318a52039dec53",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150",
+      "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r010",
+      "recordDigest": "sha256:4d2867e56d6aedbe13e90505b03baccc2873211ec69f0e990d639b6482598d4f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+    "manifestDigest": "sha256:f9ee42a12924c8cdbe09d8edf18b3e54bc426e22d2ac1c3944ce5c7cdb9af45b",
+    "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2",
+    "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-010"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-010",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+    "synthesizedAt": "2026-08-28T14:07:36.000Z",
+    "rationaleDe": "Entstehung, Bremswirkung und Verringerung von Wirbelströmen bilden eine gemeinsame kausale Anwendungskette; beide Reviews stützen `keep`. Die erste Runde bindet Energieumwandlung und Strompfade ausführlicher, die abweichende zweite Evidence-Fassung bleibt als Dissent dokumentiert.",
+    "rationaleEn": "The formation, braking effect, and reduction of eddy currents form one causal application chain; both reviews support keep. The first round binds energy conversion and current paths more fully, while the differing second evidence formulation remains documented as dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Zeitlich veränderlicher magnetischer Fluss erzeugt in massiven Leitern geschlossene Wirbelströme. Deren Magnetfeld wirkt der Flussänderung entgegen; beim Waltenhofen-Pendel wird dadurch Bewegungsenergie in Wärme umgewandelt, während gegeneinander isolierte Blechlagen große Stromschleifen und damit Wirbelstromverluste begrenzen.",
+      "essentialUnderstandingEn": "A time-varying magnetic flux produces closed eddy currents in bulk conductors. Their magnetic field opposes the flux change; in a Waltenhofen pendulum this converts mechanical energy into heat, while mutually insulated laminations restrict large current loops and therefore reduce eddy-current losses.",
+      "observablePerformanceDe": "Die lernende Person zeichnet für ein bewegtes massives Pendelblech Flussänderung, Wirbelstromschleifen und bremsende Kraft konsistent ein, erklärt die Energieumwandlung und vergleicht einen massiven mit einem geschlitzten beziehungsweise laminierten Leiter anhand möglicher Strompfade.",
+      "observablePerformanceEn": "For a moving solid pendulum plate, the learner consistently draws the flux change, eddy-current loops, and braking force, explains the energy conversion, and compares a solid conductor with a slotted or laminated one in terms of the available current paths.",
+      "transferExpectationDe": "Bei einem neuen leitenden Bauteil mit veränderter Schlitzung, Materialleitfähigkeit oder Bewegungsgeschwindigkeit sagt die lernende Person qualitativ die Änderung von Wirbelstromstärke, Bremswirkung und Erwärmung voraus und begründet sie mit Induktionsgesetz und Lenz’scher Regel.",
+      "transferExpectationEn": "For a new conducting component with changed slotting, material conductivity, or speed of motion, the learner qualitatively predicts changes in eddy-current strength, braking effect, and heating and justifies them using the law of induction and Lenz’s law."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-44011e646ff336035dc8720cea9c892fb772aefe8460105bdf8ea4e1ce146679",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9fe2518eb070418d90976a41db2d0e26c381d69cb4505521db2210397a578dd8"
+}
