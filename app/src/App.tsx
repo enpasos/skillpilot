@@ -971,6 +971,7 @@ const App: React.FC = () => {
             <TrainerView
               landscapeEntries={core.landscapeEntries}
               loadingLandscapes={core.loadingLandscapes}
+              runtimeCatalogState={core.runtimeCatalogState}
               classSetupLandscapes={trainerClassSetupLandscapes}
               classSetupRootLandscapeId={trainerClassSetupRootLandscapeId}
               onContextChange={core.handleTrainerContextChange}

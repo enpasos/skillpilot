@@ -49,20 +49,37 @@ const studentId = '11111111-2222-4333-8444-555555555555'
 const rootGoalId = 'trainer-gymnasium-root-goal'
 const mathRootGoalId = 'trainer-gymnasium-math-root'
 const physicsRootGoalId = 'trainer-gymnasium-physics-root'
+const mathSek1DistractorGoalId = 'trainer-gymnasium-math-sek1-distractor'
+const mathSek2GoalId = 'trainer-gymnasium-math-sek2'
+const physicsSek2GoalId = 'trainer-gymnasium-physics-sek2'
 
-const goal = (id: string, title: string, contains: string[] = []) => ({
+const goal = (
+  id: string,
+  title: string,
+  contains: string[] = [],
+  options: { root?: boolean; tags?: string[]; phase?: string } = {},
+) => ({
   id,
   title,
   description: `Die lernende Person kann ${title.toLowerCase()} einordnen.`,
   core: true,
   weight: 1,
-  tags: ['root', 'canonical', 'GK', 'LK', 'DE-HE', 'G8', 'G9'],
+  tags: [
+    ...(options.root ? ['root'] : []),
+    'canonical',
+    'GK',
+    'LK',
+    'DE-HE',
+    'G8',
+    'G9',
+    ...(options.tags ?? []),
+  ],
   dimensionTags: {
     framework: 'canonical-gymnasium-test',
     demandLevel: 'AB1',
     processCompetencies: [],
     guidingIdeas: [],
-    phase: 'GLOBAL',
+    phase: options.phase ?? 'GLOBAL',
     area: 'Test',
   },
   courseLevel: 'GK+LK',
@@ -82,7 +99,7 @@ const rootLandscape = {
     { id: 'ALL', label: 'Alle Bundesländer' },
     { id: 'DE-HE', label: 'Hessen' },
   ],
-  goals: [goal(rootGoalId, 'Gymnasium', [mathRootGoalId, physicsRootGoalId])],
+  goals: [goal(rootGoalId, 'Gymnasium', [mathRootGoalId, physicsRootGoalId], { root: true })],
 }
 
 const mathLandscape = {
@@ -96,7 +113,21 @@ const mathLandscape = {
     { id: 'GK', label: 'Grundkurs' },
     { id: 'LK', label: 'Leistungskurs' },
   ],
-  goals: [goal(mathRootGoalId, 'Mathematik')],
+  goals: [
+    goal(mathRootGoalId, 'Mathematik', [mathSek1DistractorGoalId, mathSek2GoalId], { root: true }),
+    goal(
+      mathSek1DistractorGoalId,
+      'Frühe Geometrie und Raumvorstellungen',
+      [],
+      { tags: ['phase:SekI'] },
+    ),
+    goal(
+      mathSek2GoalId,
+      'Sekundarstufe II Mathematik',
+      [],
+      { tags: ['phase:SekI'] },
+    ),
+  ],
 }
 
 const physicsLandscape = {
@@ -110,13 +141,44 @@ const physicsLandscape = {
     { id: 'GK', label: 'Grundkurs' },
     { id: 'LK', label: 'Leistungskurs' },
   ],
-  goals: [goal(physicsRootGoalId, 'Physik')],
+  goals: [
+    goal(physicsRootGoalId, 'Physik', [physicsSek2GoalId], { root: true }),
+    goal(physicsSek2GoalId, 'Sekundarstufe II Physik'),
+  ],
 }
+
+const compositionView = (
+  landscapeId: string,
+  targetGoalId: string,
+  prerequisiteOnlyGoalId?: string,
+) => ({
+  viewId: `trainer-test-${landscapeId}-de-he-sekii-lk`,
+  landscapeId,
+  scope: {
+    jurisdiction: 'DE-HE',
+    schoolForm: 'Gymnasium',
+    stage: 'SekII',
+    courseProfile: 'LK',
+  },
+  rootNodes: [{
+    kind: 'structure',
+    id: 'sek2-lk',
+    label: 'Sekundarstufe II (LK)',
+    children: [
+      { kind: 'canonicalSubtree', goalId: targetGoalId },
+      ...(prerequisiteOnlyGoalId
+        ? [{ kind: 'goalEntry', goalId: prerequisiteOnlyGoalId, projectionRole: 'prerequisiteOnly' }]
+        : []),
+    ],
+  }],
+})
 
 const installApi = async (page: Page) => {
   let learnerCreateRequests = 0
   const closureRequests: string[] = []
   const abortedClosureRequests: string[] = []
+  const compositionViewRequests: string[] = []
+  let mathCompositionNoMatch = false
   page.on('request', (request) => {
     const url = new URL(request.url())
     if (url.pathname.endsWith('/closure')) closureRequests.push(url.pathname)
@@ -131,6 +193,38 @@ const installApi = async (page: Page) => {
 
     if (pathname === '/api/ui/curriculum-catalog') {
       await route.fulfill({ status: 404, body: '' })
+      return
+    }
+    if (pathname === '/api/ui/composition-views/match') {
+      const requestUrl = new URL(request.url())
+      compositionViewRequests.push(requestUrl.toString())
+      await new Promise((resolve) => setTimeout(resolve, 150))
+      const landscapeId = requestUrl.searchParams.get('landscapeId')
+      if (landscapeId === mathLandscapeId) {
+        if (mathCompositionNoMatch) {
+          await route.fulfill({ status: 204, body: '' })
+          return
+        }
+        await route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify(compositionView(
+            mathLandscapeId,
+            mathSek2GoalId,
+            mathSek1DistractorGoalId,
+          )),
+        })
+        return
+      }
+      if (landscapeId === physicsLandscapeId) {
+        await route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify(compositionView(physicsLandscapeId, physicsSek2GoalId)),
+        })
+        return
+      }
+      await route.fulfill({ status: 204, body: '' })
       return
     }
     if (pathname === `/api/ui/landscapes/${mathLandscapeId}/closure`) {
@@ -172,6 +266,10 @@ const installApi = async (page: Page) => {
     getLearnerCreateRequests: () => learnerCreateRequests,
     getClosureRequests: () => [...closureRequests],
     getAbortedClosureRequests: () => [...abortedClosureRequests],
+    getCompositionViewRequests: () => [...compositionViewRequests],
+    setMathCompositionNoMatch: (value: boolean) => {
+      mathCompositionNoMatch = value
+    },
   }
 }
 
@@ -227,6 +325,8 @@ try {
     getLearnerCreateRequests,
     getClosureRequests,
     getAbortedClosureRequests,
+    getCompositionViewRequests,
+    setMathCompositionNoMatch,
   } = await installApi(page)
 
   await page.goto(`${server.baseUrl}/scripts/fixtures/trainerGymnasiumScopeUi.html`)
@@ -248,6 +348,96 @@ try {
   assert(classCardText.includes('G9'), 'existing class card shows the Gymnasium duration')
   assert(classCardText.includes('LK'), 'existing class card shows the course profile')
   assert(!classCardText.includes(mathLandscapeId), 'existing class card does not expose the raw landscape UUID')
+
+  const compositionRequestCountBeforeOpen = getCompositionViewRequests().length
+  await classCard.click()
+  await page.getByTestId('trainer-composition-loading').waitFor()
+  assert(
+    await page.getByText('Frühe Geometrie und Raumvorstellungen', { exact: true }).count() === 0,
+    'the broad lower-secondary node never flashes while the class composition view is loading',
+  )
+  await page.waitForURL((url) => url.pathname === `/trainer/${mathRootGoalId}`)
+  const trainerTreePanel = page.getByTestId('trainer-competence-tree-panel')
+  await trainerTreePanel.getByText('Sekundarstufe II (LK)', { exact: true }).waitFor()
+  assert(
+    await trainerTreePanel.getByText('Frühe Geometrie und Raumvorstellungen', { exact: true }).count() === 0,
+    'the trainer tree excludes the lower-secondary distractor from an upper-secondary class',
+  )
+  assert(
+    await trainerTreePanel.getByText('Sekundarstufe II (LK)', { exact: true }).count() === 1,
+    'the trainer tree uses the exact learner-facing composition label without adding another LK suffix',
+  )
+  const compositionStructureRow = trainerTreePanel
+    .getByText('Sekundarstufe II (LK)', { exact: true })
+    .locator('..')
+  await compositionStructureRow.getByRole('button').first().click()
+  const explicitCompositionTarget = trainerTreePanel.getByText('Sekundarstufe II Mathematik', { exact: true })
+  await explicitCompositionTarget.waitFor()
+  await explicitCompositionTarget.click()
+  await page.waitForURL((url) => url.pathname === `/trainer/${mathSek2GoalId}`)
+  assert(
+    await trainerTreePanel.getByText('Sekundarstufe II Mathematik', { exact: true }).count() === 1,
+    'an explicit composition target remains authoritative even when legacy stage tags disagree',
+  )
+
+  const mathCompositionRequests = getCompositionViewRequests().slice(compositionRequestCountBeforeOpen)
+  assert(
+    mathCompositionRequests.length === 1,
+    `opening the class resolves exactly one composition view; got ${JSON.stringify(mathCompositionRequests)}`,
+  )
+  const compositionRequestUrl = new URL(mathCompositionRequests[0])
+  assert(
+    JSON.stringify(Array.from(compositionRequestUrl.searchParams.keys()).sort())
+      === JSON.stringify([
+        'courseProfile',
+        'durationModel',
+        'jurisdiction',
+        'landscapeId',
+        'schoolForm',
+        'stage',
+      ]),
+    `composition matching sends only curriculum scope keys; got ${compositionRequestUrl.search}`,
+  )
+  assert(
+    compositionRequestUrl.searchParams.get('landscapeId') === mathLandscapeId
+      && compositionRequestUrl.searchParams.get('schoolForm') === 'Gymnasium'
+      && compositionRequestUrl.searchParams.get('jurisdiction') === 'DE-HE'
+      && compositionRequestUrl.searchParams.get('stage') === 'SekII'
+      && compositionRequestUrl.searchParams.get('courseProfile') === 'LK'
+      && compositionRequestUrl.searchParams.get('durationModel') === 'G9',
+    `composition matching uses the local class scope exactly; got ${compositionRequestUrl.search}`,
+  )
+  assert(
+    !compositionRequestUrl.toString().includes(classId)
+      && !compositionRequestUrl.toString().includes(studentId)
+      && !decodeURIComponent(compositionRequestUrl.toString()).includes('Taunusgymnasium'),
+    'composition matching never sends the local class identity, label, or student mapping',
+  )
+
+  const settledMathUrl = page.url()
+  const settledMathCompositionRequestCount = getCompositionViewRequests().length
+  await page.waitForTimeout(500)
+  assert(page.url() === settledMathUrl, 'the matched Mathematics class route remains stable')
+  assert(
+    getCompositionViewRequests().length === settledMathCompositionRequestCount,
+    'the settled Mathematics class view does not repeat composition matching',
+  )
+  await page.getByRole('button', { name: /Alle Klassen/u }).click()
+  await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+
+  setMathCompositionNoMatch(true)
+  await classCard.click()
+  await page.getByText(
+    'Für diese Klassenauswahl konnte keine passende Curriculumansicht geladen werden.',
+    { exact: true },
+  ).first().waitFor()
+  assert(
+    await page.getByText('Frühe Geometrie und Raumvorstellungen', { exact: true }).count() === 0,
+    'a missing composition view stays fail-closed instead of exposing the broad canonical tree',
+  )
+  setMathCompositionNoMatch(false)
+  await page.getByRole('button', { name: /Alle Klassen/u }).click()
+  await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
 
   await newClassButton.click()
   await page.getByRole('heading', { name: 'Neue Klasse / Kurs anlegen' }).waitFor()
