@@ -9,6 +9,7 @@
  * archive records must keep the wording they had when they were captured, so
  * those trees are excluded here instead of being exempted rule by rule.
  */
+import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, extname, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -82,6 +83,8 @@ const excludedDirectories = new Set([
 const frozenEvidencePaths = [
   // Build output.
   'backend/src/main/resources/static',
+  // Immutable point-in-time snapshots for explicitly approved review exceptions.
+  'contracts/openai/skillpilot-coach-v1/review-evidence',
   // Retired landscapes and captured source snapshots behind coverage claims.
   'curricula/DE/Gymnasium/archive',
   'curricula/DE/Gymnasium/input',
@@ -89,6 +92,57 @@ const frozenEvidencePaths = [
   'tools/demo-video/output/manual-review-de',
   'tools/demo-video/output/manual-review-en',
   'tmp',
+]
+
+interface GrandfatheredOccurrence {
+  ruleId: string
+  path: string
+  line: number
+  column: number
+  found: string
+  lineSha256: string
+}
+
+/**
+ * Exact occurrences preserved by the active OpenAI review freeze.
+ *
+ * These are deliberately narrower than an allowed phrase or a file exclusion:
+ * moving or changing the approved wording makes this baseline stale and fails
+ * the check until the occurrence is reviewed again.
+ */
+const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  {
+    ruleId: 'TRM-001',
+    path: 'app/scripts/testPublicOverviewUi.tsx',
+    line: 57,
+    column: 78,
+    found: 'Wissenslandschaften',
+    lineSha256: '684fbf08d53b563eea7b2e73cf0e8151727f1eda5bc44c4ae45db270c4a5c2e3',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'app/scripts/testPublicOverviewUi.tsx',
+    line: 94,
+    column: 30,
+    found: 'Wissenslandschaften',
+    lineSha256: 'd240409a7691214bdfde425a657b126c795f642ac87d53f6da873b3a1ce29e90',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'app/src/utils/skillPilotOverviewCopy.ts',
+    line: 97,
+    column: 47,
+    found: 'Wissenslandschaften',
+    lineSha256: '7bebb5107399a1b5f33a292f96816ed3694ef40ae3d4b5a8cf1b6dd9af8ef8c7',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'docs/deploy/openai-plugin-v1-review-freeze.md',
+    line: 505,
+    column: 30,
+    found: 'Wissenslandschaften',
+    lineSha256: '863fbedf7aef561bd4fd6868d4e7d13d61b0d1a107fbb2b00c8e0fedcd4275e9',
+  },
 ]
 
 /** This file lists the retired terms and would otherwise report itself. */
@@ -146,7 +200,9 @@ interface Violation {
   rule: TerminologyRule
   path: string
   line: number
+  column: number
   found: string
+  lineSha256: string
 }
 
 /**
@@ -178,7 +234,14 @@ function findViolations(path: string, contents: string): Violation[] {
         const end = start + match[0].length
         const covered = allowedRanges.some(([from, to]) => start >= from && end <= to)
         if (covered) continue
-        violations.push({ rule, path, line: index + 1, found: match[0] })
+        violations.push({
+          rule,
+          path,
+          line: index + 1,
+          column: start + 1,
+          found: match[0],
+          lineSha256: createHash('sha256').update(line).digest('hex'),
+        })
       }
     }
   })
@@ -186,25 +249,61 @@ function findViolations(path: string, contents: string): Violation[] {
 }
 
 const scannedFiles = collectScannableFiles('')
-const violations = scannedFiles.flatMap((path) => {
+const detectedViolations = scannedFiles.flatMap((path) => {
   const contents = readFileSync(resolve(repoRoot, path), 'utf8')
   return findViolations(toPosixPath(path), contents)
 })
 
-if (violations.length > 0) {
-  const shown = violations.slice(0, 40)
-  console.error(`Terminology check failed: ${violations.length} retired term(s) found.\n`)
-  for (const violation of shown) {
-    console.error(`${violation.path}:${violation.line}: "${violation.found}" [${violation.rule.id}]`)
-    console.error(`  use instead: ${violation.rule.use}`)
-    console.error(`  why: ${violation.rule.why}`)
+const consumedGrandfatheredOccurrences = new Set<number>()
+const violations = detectedViolations.filter((violation) => {
+  const grandfatheredIndex = grandfatheredOccurrences.findIndex(
+    (occurrence, index) =>
+      !consumedGrandfatheredOccurrences.has(index) &&
+      occurrence.ruleId === violation.rule.id &&
+      occurrence.path === violation.path &&
+      occurrence.line === violation.line &&
+      occurrence.column === violation.column &&
+      occurrence.found === violation.found &&
+      occurrence.lineSha256 === violation.lineSha256,
+  )
+  if (grandfatheredIndex < 0) return true
+  consumedGrandfatheredOccurrences.add(grandfatheredIndex)
+  return false
+})
+const staleGrandfatheredOccurrences = grandfatheredOccurrences.filter(
+  (_, index) => !consumedGrandfatheredOccurrences.has(index),
+)
+
+if (violations.length > 0 || staleGrandfatheredOccurrences.length > 0) {
+  if (violations.length > 0) {
+    const shown = violations.slice(0, 40)
+    console.error(`Terminology check failed: ${violations.length} retired term(s) found.\n`)
+    for (const violation of shown) {
+      console.error(
+        `${violation.path}:${violation.line}:${violation.column}: "${violation.found}" [${violation.rule.id}]`,
+      )
+      console.error(`  use instead: ${violation.rule.use}`)
+      console.error(`  why: ${violation.rule.why}`)
+    }
+    if (violations.length > shown.length) {
+      console.error(`\n... and ${violations.length - shown.length} more.`)
+    }
   }
-  if (violations.length > shown.length) {
-    console.error(`\n... and ${violations.length - shown.length} more.`)
+  if (staleGrandfatheredOccurrences.length > 0) {
+    console.error(
+      `${violations.length > 0 ? '\n' : ''}Terminology check failed: ${staleGrandfatheredOccurrences.length} grandfathered occurrence(s) are stale.`,
+    )
+    for (const occurrence of staleGrandfatheredOccurrences) {
+      console.error(
+        `${occurrence.path}:${occurrence.line}:${occurrence.column}: expected "${occurrence.found}" [${occurrence.ruleId}]`,
+      )
+    }
   }
   console.error('\nDefinitions: docs/concept/glossary.md')
   console.error('Rules and scope policy: app/scripts/checkTerminology.ts')
   process.exit(1)
 }
 
-console.log(`Terminology check passed for ${scannedFiles.length} files.`)
+console.log(
+  `Terminology check passed for ${scannedFiles.length} files with ${grandfatheredOccurrences.length} exact frozen occurrence(s).`,
+)
