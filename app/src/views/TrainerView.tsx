@@ -32,7 +32,13 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
   classSetupLandscapes?: LandscapeEntry[]
-  onContextChange: (landscapeId: string, filter: string, goalId?: string) => void
+  onContextChange: (
+    landscapeId: string,
+    filter: string,
+    goalId: string | null | undefined,
+    options?: { replace?: boolean },
+  ) => void
+  routeGoalId: string
   currentLearnerId: string
   onSelectLearner: (id: string) => void
   goalShortKeyMap: Map<string, string>
@@ -74,6 +80,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
   classSetupLandscapes,
   onContextChange,
+  routeGoalId,
   currentLearnerId,
   onSelectLearner,
   goalShortKeyMap,
@@ -87,6 +94,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const notifications = language === 'en' ? en.notifications : de.notifications
   const [classes, setClasses] = useState<ClassSession[]>(loadStoredTrainerClasses)
   const [activeClassId, setActiveClassId] = useState<string | null>(loadStoredActiveClassId)
+  const [openingClassId, setOpeningClassId] = useState<string | null>(null)
   const [isCreating, setIsCreating] = useState(false)
   const [isAssigning, setIsAssigning] = useState(false)
   const [selectedGoalId, setSelectedGoalId] = useState<string>('')
@@ -131,7 +139,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     return result
   }, [currentLearnerId, plannedGoalsByStudent])
 
-  const activeClass = useMemo(() => classes.find((c) => c.id === activeClassId) ?? null, [activeClassId, classes])
+  const selectedClass = useMemo(
+    () => classes.find((c) => c.id === activeClassId) ?? null,
+    [activeClassId, classes],
+  )
+  // A remembered class does not reopen itself on /trainer. The route (or an
+  // explicit class click still resolving its root goal) owns the visible view.
+  const activeClass = useMemo(() => {
+    if (!routeGoalId && openingClassId !== activeClassId) {
+      return null
+    }
+    return selectedClass
+  }, [activeClassId, openingClassId, routeGoalId, selectedClass])
   const activeClassRootFilterId = useMemo(() => {
     if (!activeClass?.rootLandscapeId) return undefined
     return activeClass.personalConfig?.[activeClass.rootLandscapeId]?.filterId
@@ -230,10 +249,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [activeClass, classGoalIndexAll],
   )
   const currentGoal = useMemo(() => {
+    const routeGoal = routeGoalId ? classGoalIndexAll.get(routeGoalId) : undefined
+    if (
+      routeGoal &&
+      (!activeClass || routeGoal.landscapeId === activeClass.landscapeId) &&
+      goalMatchesActiveClassConfig(routeGoal)
+    ) {
+      return routeGoal
+    }
     const goal = selectedGoalId ? classGoalIndexAll.get(selectedGoalId) : undefined
     if (goal && (!activeClass || goal.landscapeId === activeClass.landscapeId) && goalMatchesActiveClassConfig(goal)) return goal
     return classGoalIndexAll.get(classRootGoals[0]?.id ?? '') ?? null
-  }, [activeClass, classGoalIndexAll, classRootGoals, goalMatchesActiveClassConfig, selectedGoalId])
+  }, [activeClass, classGoalIndexAll, classRootGoals, goalMatchesActiveClassConfig, routeGoalId, selectedGoalId])
 
   const { neighbors } = useCompetenceGraph(currentGoal, landscapeGoals)
   const filteredNeighbors = useMemo(
@@ -310,19 +337,107 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap, masteryCache],
   )
 
+  const persistClasses = useCallback((items: ClassSession[]) => {
+    setClasses(items)
+    try {
+      localStorage.setItem('skillpilot_classes', JSON.stringify(items))
+      return true
+    } catch (err) {
+      console.warn('Could not save classes', err)
+      onNotify?.('error', notifications.trainerClassSaveFailed)
+      return false
+    }
+  }, [notifications.trainerClassSaveFailed, onNotify])
 
 
   // --- EFFECTS ---
+  // Browser Back/Forward is authoritative for both the visible and persisted goal.
   useEffect(() => {
-    const isValid =
-      selectedGoalId &&
-      classGoalIndexAll.has(selectedGoalId) &&
-      (!activeClass || classGoalIndexAll.get(selectedGoalId)?.landscapeId === activeClass.landscapeId) &&
-      goalMatchesActiveClassConfig(classGoalIndexAll.get(selectedGoalId))
-    if (!isValid) {
-      setSelectedGoalId(classRootGoals[0]?.id ?? '')
+    if (!activeClass || !routeGoalId) return
+
+    const routeGoal = classGoalIndexAll.get(routeGoalId)
+    const routeGoalIsValid =
+      routeGoal?.landscapeId === activeClass.landscapeId &&
+      goalMatchesActiveClassConfig(routeGoal)
+
+    if (!routeGoalIsValid) {
+      const fallbackGoalId = classRootGoals[0]?.id
+      if (fallbackGoalId && fallbackGoalId !== routeGoalId) {
+        onContextChange(
+          activeClass.landscapeId,
+          trainerContextFilter,
+          fallbackGoalId,
+          { replace: true },
+        )
+      } else if (!fallbackGoalId) {
+        onContextChange(
+          activeClass.landscapeId,
+          trainerContextFilter,
+          undefined,
+          { replace: true },
+        )
+      }
+      return
     }
-  }, [activeClass, classGoalIndexAll, classRootGoals, goalMatchesActiveClassConfig, selectedGoalId])
+
+    setSelectedGoalId((current) => current === routeGoalId ? current : routeGoalId)
+    if (activeClass.currentGoalId !== routeGoalId) {
+      persistClasses(classes.map((session) =>
+        session.id === activeClass.id
+          ? { ...session, currentGoalId: routeGoalId }
+          : session,
+      ))
+    }
+  }, [
+    activeClass,
+    classGoalIndexAll,
+    classRootGoals,
+    classes,
+    goalMatchesActiveClassConfig,
+    onContextChange,
+    persistClasses,
+    routeGoalId,
+    trainerContextFilter,
+  ])
+
+  useEffect(() => {
+    if (!activeClass || openingClassId !== activeClass.id) return
+
+    const persistedGoal = activeClass.currentGoalId
+      ? classGoalIndexAll.get(activeClass.currentGoalId)
+      : undefined
+    const persistedGoalIsValid =
+      persistedGoal?.landscapeId === activeClass.landscapeId &&
+      goalMatchesActiveClassConfig(persistedGoal)
+    const targetGoalId = persistedGoalIsValid
+      ? persistedGoal.id
+      : classRootGoals[0]?.id
+    if (!targetGoalId) {
+      onContextChange(
+        activeClass.landscapeId,
+        trainerContextFilter,
+        undefined,
+        { replace: true },
+      )
+      return
+    }
+
+    onContextChange(activeClass.landscapeId, trainerContextFilter, targetGoalId)
+  }, [
+    activeClass,
+    classGoalIndexAll,
+    classRootGoals,
+    goalMatchesActiveClassConfig,
+    onContextChange,
+    openingClassId,
+    trainerContextFilter,
+  ])
+
+  useEffect(() => {
+    if (routeGoalId && openingClassId) {
+      setOpeningClassId(null)
+    }
+  }, [openingClassId, routeGoalId])
 
   useEffect(() => {
     if (classes.length === 0) {
@@ -358,27 +473,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     clearReportedLoadError('trainer-class-data-load')
   }, [activeClassId, clearReportedLoadError])
 
-  const lastContextRef = useRef<{ lid: string; filter: string; goalId?: string }>({ lid: '', filter: '', goalId: undefined })
   useEffect(() => {
     if (!activeClass) return
-    const isSameLandscape = lastContextRef.current.lid === activeClass.landscapeId
-    const targetGoalId = activeClass.currentGoalId || (isSameLandscape ? selectedGoalId : undefined) || classRootGoals[0]?.id
-
-    const next = { lid: activeClass.landscapeId, filter: trainerContextFilter, goalId: targetGoalId }
-    const prev = lastContextRef.current
-    if (
-      prev.lid !== next.lid ||
-      prev.filter !== next.filter ||
-      prev.goalId !== next.goalId
-    ) {
-      lastContextRef.current = next
-      onContextChange(next.lid, next.filter, next.goalId)
-      if (next.goalId) setSelectedGoalId(next.goalId)
-    }
     if (!activeClass.students.find((s) => s.id === currentLearnerId) && currentLearnerId !== '__ALL__') {
       onSelectLearner('__ALL__')
     }
-  }, [activeClass, classRootGoals, currentLearnerId, onSelectLearner, selectedGoalId, onContextChange, trainerContextFilter])
+  }, [activeClass, currentLearnerId, onSelectLearner])
 
   useEffect(() => {
     if (!activeClass) return
@@ -438,25 +538,21 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [currentLearnerId, plannedGoalsByStudent])
 
   // --- HANDLERS ---
-  const persistClasses = (items: ClassSession[]) => {
-    setClasses(items)
-    try {
-      localStorage.setItem('skillpilot_classes', JSON.stringify(items))
-      return true
-    } catch (err) {
-      console.warn('Could not save classes', err)
-      onNotify?.('error', notifications.trainerClassSaveFailed)
-      return false
-    }
+  const handleOpenClass = (session: ClassSession) => {
+    setOpeningClassId(session.id)
+    setSelectedGoalId(session.currentGoalId ?? '')
+    setActiveClassId(session.id)
+  }
+
+  const handleShowAllClasses = () => {
+    setOpeningClassId(null)
+    setSelectedGoalId('')
+    onContextChange(activeClass?.landscapeId ?? '', trainerContextFilter, null)
   }
 
   const handleSelectGoal = (id: string) => {
-    setSelectedGoalId(id)
-    if (activeClass) {
-      const updated = classes.map((c) => (c.id === activeClass.id ? { ...c, currentGoalId: id } : c))
-      persistClasses(updated)
-    }
-    onContextChange(activeClass?.landscapeId ?? '', trainerContextFilter, id)
+    if (!activeClass || id === routeGoalId) return
+    onContextChange(activeClass.landscapeId, trainerContextFilter, id)
   }
 
   const handleTogglePlan = async (goalId: string) => {
@@ -659,10 +755,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           rootLandscapeId={classSetupLandscapes && classSetupLandscapes.length > 1 ? classSetupLandscapes[0]?.meta.landscapeId : undefined}
           onCancel={() => setIsCreating(false)}
           onSave={(session) => {
-          const next = [...classes, session]
-          persistClasses(next)
-          setActiveClassId(session.id)
-          setIsCreating(false)
+            const next = [...classes, session]
+            persistClasses(next)
+            handleOpenClass(session)
+            setIsCreating(false)
           }}
         />
       </div>
@@ -691,7 +787,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         </header>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {classes.map((c) => (
-            <div key={c.id} onClick={() => setActiveClassId(c.id)} className="relative flex flex-col text-left bg-sidebar-bg border border-border-color hover:border-sky-500 p-6 rounded-xl transition-all group cursor-pointer">
+            <div key={c.id} onClick={() => handleOpenClass(c)} className="relative flex flex-col text-left bg-sidebar-bg border border-border-color hover:border-sky-500 p-6 rounded-xl transition-all group cursor-pointer">
               <div className="flex justify-between items-start mb-1">
                 <div className="font-bold text-lg text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 pr-2">{c.name}</div>
                 <div className="flex gap-2">
@@ -745,7 +841,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       <aside className="w-72 border-r border-border-color bg-sidebar-bg flex flex-col flex-shrink-0">
         <div className="p-4 border-b border-border-color flex justify-between items-start">
           <div>
-            <button onClick={() => setActiveClassId(null)} className="text-xs text-text-secondary hover:text-text-primary mb-2">← {t.allClasses}</button>
+            <button onClick={handleShowAllClasses} className="text-xs text-text-secondary hover:text-text-primary mb-2">← {t.allClasses}</button>
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate" title={activeClass.name}>{activeClass.name}</h2>
           </div>
           <div className="flex items-center gap-2">
@@ -789,7 +885,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             plannedGoals={plannedGoals}
             onTogglePlan={currentLearnerId === '__ALL__' ? handleTogglePlanForAll : handleTogglePlan}
             onSelect={handleSelectGoal}
-            selectedId={selectedGoalId}
+            selectedId={currentGoal?.id ?? selectedGoalId}
             activeFilter={trainerContextFilter}
             structureMode="content"
             aggregatedPlannedGoals={aggregatedPlannedGoals}

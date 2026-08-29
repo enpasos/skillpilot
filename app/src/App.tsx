@@ -929,6 +929,7 @@ const App: React.FC = () => {
               landscapeEntries={core.landscapeEntries}
               classSetupLandscapes={trainerClassSetupLandscapes}
               onContextChange={core.handleTrainerContextChange}
+              routeGoalId={core.currentRouteGoalId}
               currentLearnerId={trainerLearnerId}
               onSelectLearner={setTrainerLearnerId}
               goalShortKeyMap={core.goalShortKeyMap}
