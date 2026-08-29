@@ -56,7 +56,7 @@ const goal = (id: string, title: string, contains: string[] = []) => ({
   description: `Die lernende Person kann ${title.toLowerCase()} einordnen.`,
   core: true,
   weight: 1,
-  tags: ['root', 'canonical', 'GK', 'LK'],
+  tags: ['root', 'canonical', 'GK', 'LK', 'DE-HE', 'G8', 'G9'],
   dimensionTags: {
     framework: 'canonical-gymnasium-test',
     demandLevel: 'AB1',
@@ -115,6 +115,16 @@ const physicsLandscape = {
 
 const installApi = async (page: Page) => {
   let learnerCreateRequests = 0
+  const closureRequests: string[] = []
+  const abortedClosureRequests: string[] = []
+  page.on('request', (request) => {
+    const url = new URL(request.url())
+    if (url.pathname.endsWith('/closure')) closureRequests.push(url.pathname)
+  })
+  page.on('requestfailed', (request) => {
+    const url = new URL(request.url())
+    if (url.pathname.endsWith('/closure')) abortedClosureRequests.push(url.pathname)
+  })
   await page.route('**/api/ui/**', async (route) => {
     const request = route.request()
     const pathname = new URL(request.url()).pathname
@@ -128,6 +138,14 @@ const installApi = async (page: Page) => {
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify([mathLandscape]),
+      })
+      return
+    }
+    if (pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`) {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([physicsLandscape]),
       })
       return
     }
@@ -150,7 +168,11 @@ const installApi = async (page: Page) => {
     }
     await route.fulfill({ status: 404, body: '' })
   })
-  return () => learnerCreateRequests
+  return {
+    getLearnerCreateRequests: () => learnerCreateRequests,
+    getClosureRequests: () => [...closureRequests],
+    getAbortedClosureRequests: () => [...abortedClosureRequests],
+  }
 }
 
 const server = await startViteTestServer(
@@ -201,7 +223,11 @@ try {
   page.setDefaultTimeout(60_000)
   const browserErrors: string[] = []
   page.on('pageerror', (error) => browserErrors.push(error.message))
-  const getLearnerCreateRequests = await installApi(page)
+  const {
+    getLearnerCreateRequests,
+    getClosureRequests,
+    getAbortedClosureRequests,
+  } = await installApi(page)
 
   await page.goto(`${server.baseUrl}/scripts/fixtures/trainerGymnasiumScopeUi.html`)
   await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
@@ -283,6 +309,77 @@ try {
     'editing replaces the class scope with the newly selected duration model',
   )
   assert(getLearnerCreateRequests() === 0, 'editing does not issue learner-creation requests')
+
+  const closureRequestCountBeforeCreate = getClosureRequests().length
+  await newClassButton.click()
+  await page.getByRole('heading', { name: 'Neue Klasse / Kurs anlegen' }).waitFor()
+  await page.getByLabel('Bezeichnung').fill('Physik LK – Regressionsklasse')
+  await page.getByLabel('Sicht / Bundesland').selectOption('DE-HE')
+  await page.getByLabel('Sekundarstufe II', { exact: true }).check()
+  await page.getByLabel('Fach / Landscape').selectOption(physicsLandscapeId)
+  await page.getByLabel('G9').check()
+  await page.getByLabel('Filter / Niveau').selectOption('LK')
+  await page.getByRole('button', { name: 'Klasse anlegen' }).click()
+
+  try {
+    await page.waitForURL((url) => url.pathname === `/trainer/${physicsRootGoalId}`, { timeout: 10_000 })
+    await page.getByRole('heading', { name: 'Physik', exact: true }).waitFor({ timeout: 10_000 })
+  } catch (error) {
+    const bodyText = (await page.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
+    throw new Error(
+      `${error instanceof Error ? error.message : String(error)}\n`
+      + `Current URL: ${page.url()}\n`
+      + `Closure requests: ${JSON.stringify(getClosureRequests().slice(closureRequestCountBeforeCreate))}\n`
+      + `Aborted closure requests: ${JSON.stringify(getAbortedClosureRequests())}\n`
+      + `Body: ${bodyText.slice(0, 2_000)}`,
+    )
+  }
+  await page.waitForTimeout(500)
+  const closureRequestsAfterCreate = getClosureRequests().slice(closureRequestCountBeforeCreate)
+  const stableUrl = page.url()
+  const stableClosureRequestCount = getClosureRequests().length
+  assert(
+    closureRequestsAfterCreate.filter((pathname) => pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`).length === 1,
+    `creating and opening a class loads its subject closure exactly once; got ${JSON.stringify(closureRequestsAfterCreate)}`,
+  )
+  assert(
+    closureRequestsAfterCreate.every((pathname) => pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`),
+    `creating a Physics class never falls back to another landscape closure; got ${JSON.stringify(closureRequestsAfterCreate)}`,
+  )
+  assert(
+    getAbortedClosureRequests().length === 0,
+    `creating and opening a class does not abort closure loads; got ${JSON.stringify(getAbortedClosureRequests())}`,
+  )
+  const createdClassState = await page.evaluate((className) => {
+    const classes = JSON.parse(localStorage.getItem('skillpilot_classes') ?? '[]') as Array<{ id?: string; name?: string }>
+    const createdClass = classes.find((entry) => entry.name === className)
+    return {
+      createdClassId: createdClass?.id,
+      activeClassId: localStorage.getItem('skillpilot_active_class'),
+    }
+  }, 'Physik LK – Regressionsklasse')
+  assert(
+    createdClassState.createdClassId === createdClassState.activeClassId,
+    'the created class remains the locally active class after its landscape has loaded',
+  )
+
+  await page.waitForTimeout(750)
+  const finalUrl = new URL(page.url())
+  assert(
+    page.url() === stableUrl
+      && finalUrl.pathname === `/trainer/${physicsRootGoalId}`
+      && finalUrl.searchParams.get('l') === physicsLandscapeId,
+    `the created class route remains stable; expected ${stableUrl}, got ${page.url()}`,
+  )
+  assert(
+    getClosureRequests().length === stableClosureRequestCount,
+    `the settled class view issues no further closure requests; got ${JSON.stringify(getClosureRequests())}`,
+  )
+  assert(
+    await page.getByRole('heading', { name: 'Physik', exact: true }).count() === 1
+      && await page.getByText('Landscapes laden ...', { exact: true }).count() === 0,
+    'the Physics class view remains visible without returning to the landscape loader',
+  )
   assert(browserErrors.length === 0, `trainer Gymnasium scope browser errors:\n${browserErrors.join('\n')}`)
 
   await context.close()

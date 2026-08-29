@@ -185,6 +185,31 @@ interface AppCoreOptions {
   enabled?: boolean
 }
 
+interface PendingTrainerNavigation {
+  url: string
+  landscapeId: string
+  filter: string
+}
+
+const normalizeTrainerFilterForSync = (value: string) => {
+  const filters = splitFilterIds(value)
+    .filter((filter) => !isWildcardFilter(filter))
+    .map((filter) => {
+      const jurisdiction = normalizeJurisdictionCode(filter)
+      if (jurisdiction) return jurisdiction
+      const normalized = filter.trim().toUpperCase()
+      if (COURSE_FILTER_VALUES.has(normalized) || normalized === 'G8' || normalized === 'G9') {
+        return normalized
+      }
+      return filter.trim()
+    })
+    .filter(Boolean)
+  return filters.length > 0 ? filters.join(',') : DEFAULT_ACTIVE_FILTER
+}
+
+const trainerFiltersMatch = (left: string, right: string) =>
+  normalizeTrainerFilterForSync(left) === normalizeTrainerFilterForSync(right)
+
 const normalizeLandscapeIdForRole = (landscapeId: string | null, role: Role) => {
   if (!landscapeId) return ''
   if (role === 'trainer') {
@@ -209,7 +234,8 @@ export function useAppCore({
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
   const pendingSelectedGoalNavigationRef = React.useRef<string | null>(null)
-  const pendingTrainerNavigationRef = React.useRef<string | null>(null)
+  const pendingTrainerNavigationRef = React.useRef<PendingTrainerNavigation | null>(null)
+  const pendingLandscapeFromUrlRef = React.useRef<string | null>(null)
   const pendingFilterFromUrlRef = React.useRef<string | null>(null)
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
 
@@ -259,6 +285,7 @@ export function useAppCore({
     }
     const fromUrl = normalizeLandscapeIdForRole(rawFromUrl, role)
     if (fromUrl !== selectedLandscapeId) {
+      pendingLandscapeFromUrlRef.current = fromUrl
       setSelectedLandscapeId(fromUrl)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -266,6 +293,18 @@ export function useAppCore({
 
   // Update URL when selection changes
   useEffect(() => {
+    if (pendingTrainerNavigationRef.current) {
+      return
+    }
+
+    const pendingLandscapeFromUrl = pendingLandscapeFromUrlRef.current
+    if (pendingLandscapeFromUrl !== null) {
+      if (selectedLandscapeId !== pendingLandscapeFromUrl) {
+        return
+      }
+      pendingLandscapeFromUrlRef.current = null
+    }
+
     const currentParams = new URLSearchParams(currentSearchString)
     const current = currentParams.get('l')
     const next = new URLSearchParams(currentParams)
@@ -358,6 +397,7 @@ export function useAppCore({
 
   useEffect(() => {
     if (!currentLandscapeEntry) return
+    if (pendingTrainerNavigationRef.current) return
     const pendingFilterFromUrl = pendingFilterFromUrlRef.current
     if (pendingFilterFromUrl) {
       if (activeFilter !== pendingFilterFromUrl) {
@@ -723,8 +763,19 @@ export function useAppCore({
 
   useEffect(() => {
     pendingSelectedGoalNavigationRef.current = null
-    pendingTrainerNavigationRef.current = null
   }, [location.pathname, location.search])
+
+  useEffect(() => {
+    const pendingNavigation = pendingTrainerNavigationRef.current
+    if (!pendingNavigation) return
+
+    const currentUrl = `${location.pathname}${location.search}`
+    if (currentUrl !== pendingNavigation.url) return
+    if (selectedLandscapeId !== pendingNavigation.landscapeId) return
+    if (!trainerFiltersMatch(activeFilter, pendingNavigation.filter)) return
+
+    pendingTrainerNavigationRef.current = null
+  }, [activeFilter, location.pathname, location.search, selectedLandscapeId])
 
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
   const matchesActiveFilter = useCallback(
@@ -864,13 +915,16 @@ export function useAppCore({
       const currentUrl = `${location.pathname}${location.search}`
 
       if (currentUrl === nextUrl) {
-        pendingTrainerNavigationRef.current = null
         return
       }
-      if (pendingTrainerNavigationRef.current === nextUrl) {
+      if (pendingTrainerNavigationRef.current?.url === nextUrl) {
         return
       }
-      pendingTrainerNavigationRef.current = nextUrl
+      pendingTrainerNavigationRef.current = {
+        url: nextUrl,
+        landscapeId: normalizedLandscapeId,
+        filter: filter || activeFilter,
+      }
       pendingSearchRef.current = nextSearch
       navigate(nextUrl, { replace: goalId === undefined || options?.replace === true })
     },

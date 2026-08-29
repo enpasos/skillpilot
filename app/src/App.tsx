@@ -902,7 +902,7 @@ const App: React.FC = () => {
     return sessionSetupElement
   }
 
-  if (core.loadingLandscapes) {
+  if (core.loadingLandscapes && role !== 'trainer') {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
         Landscapes laden ...
@@ -970,6 +970,7 @@ const App: React.FC = () => {
           element={
             <TrainerView
               landscapeEntries={core.landscapeEntries}
+              loadingLandscapes={core.loadingLandscapes}
               classSetupLandscapes={trainerClassSetupLandscapes}
               classSetupRootLandscapeId={trainerClassSetupRootLandscapeId}
               onContextChange={core.handleTrainerContextChange}
