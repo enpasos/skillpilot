@@ -209,6 +209,7 @@ export function useAppCore({
   const [searchParams, setSearchParams] = useSearchParams()
   const pendingSearchRef = React.useRef<string | null>(null)
   const pendingSelectedGoalNavigationRef = React.useRef<string | null>(null)
+  const pendingTrainerNavigationRef = React.useRef<string | null>(null)
   const pendingFilterFromUrlRef = React.useRef<string | null>(null)
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
 
@@ -722,6 +723,7 @@ export function useAppCore({
 
   useEffect(() => {
     pendingSelectedGoalNavigationRef.current = null
+    pendingTrainerNavigationRef.current = null
   }, [location.pathname, location.search])
 
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
@@ -832,7 +834,13 @@ export function useAppCore({
   }
 
   const handleTrainerContextChange = React.useCallback(
-    (lid: string, filter: string, goalId?: string) => {
+    (
+      lid: string,
+      filter: string,
+      // string = goal route, null = class overview, undefined = replace-only scope sync
+      goalId: string | null | undefined,
+      options?: { replace?: boolean },
+    ) => {
       const normalizedLandscapeId = normalizeLandscapeIdForRole(lid, role)
       if (normalizedLandscapeId !== selectedLandscapeId) {
         setSelectedLandscapeId(normalizedLandscapeId)
@@ -840,16 +848,33 @@ export function useAppCore({
       if (filter && filter !== activeFilter) {
         setActiveFilter(filter)
       }
-      const newSearchParams = new URLSearchParams(searchParams)
+      const newSearchParams = new URLSearchParams(location.search)
       if (normalizedLandscapeId) newSearchParams.set('l', normalizedLandscapeId)
       else newSearchParams.delete('l')
-      if (filter) newSearchParams.set('f', filter)
-      replaceSearchParamsIfNeeded(newSearchParams)
-      if (goalId) {
-        navigate(`/trainer/${goalId}?${newSearchParams.toString()}`)
+      if (filter && !isWildcardFilter(filter)) newSearchParams.set('f', filter)
+      else newSearchParams.delete('f')
+
+      const nextPath = goalId === undefined
+        ? location.pathname
+        : goalId
+          ? `/trainer/${encodeURIComponent(goalId)}`
+          : '/trainer'
+      const nextSearch = newSearchParams.toString()
+      const nextUrl = nextSearch ? `${nextPath}?${nextSearch}` : nextPath
+      const currentUrl = `${location.pathname}${location.search}`
+
+      if (currentUrl === nextUrl) {
+        pendingTrainerNavigationRef.current = null
+        return
       }
+      if (pendingTrainerNavigationRef.current === nextUrl) {
+        return
+      }
+      pendingTrainerNavigationRef.current = nextUrl
+      pendingSearchRef.current = nextSearch
+      navigate(nextUrl, { replace: goalId === undefined || options?.replace === true })
     },
-    [activeFilter, navigate, replaceSearchParamsIfNeeded, role, searchParams, selectedLandscapeId, setActiveFilter],
+    [activeFilter, location.pathname, location.search, navigate, role, selectedLandscapeId, setActiveFilter],
   )
 
   const handleShareContext = useCallback(async (): Promise<'success' | 'error'> => {
