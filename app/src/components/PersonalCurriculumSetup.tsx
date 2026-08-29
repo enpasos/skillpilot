@@ -3,7 +3,6 @@ import { X, ChevronDown, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
-import type { LegacyCutoverPreviewItem } from '../utils/legacyCutover'
 import {
     getGlobalStageScopeSelection,
     GLOBAL_STAGE_SCOPE_CONFIG_IDS,
@@ -59,15 +58,6 @@ interface PersonalCurriculumPreferences {
 const isCompatibilityOnlyLandscape = (landscape: LandscapeSummary) =>
     isCompatibilityOnlyCurriculum(landscape.landscapeId, landscape.compatibilityOnly)
 
-interface SetupMigrationConfig {
-    title: string
-    description: string
-    actionLabel: string
-    actionPending?: boolean
-    onAction: () => void
-    previewItems?: LegacyCutoverPreviewItem[]
-}
-
 const cleanLandscapeDisplayTitle = (title: string) => {
     return title
         .replace(/^Kanonische\s+/i, '')
@@ -82,7 +72,6 @@ interface PersonalCurriculumSetupProps {
     onClose: () => void
     availableLandscapes: LandscapeSummary[]
     currentLandscapeId?: string
-    retirementOnly?: boolean
     onApply?: (config: PersonalCurriculumConfig, preferences: PersonalCurriculumPreferences) => Promise<void> | void
     onPreferencesApply?: (preferences: PersonalCurriculumPreferences) => Promise<void> | void
     initialConfig?: PersonalCurriculumConfig
@@ -91,7 +80,6 @@ interface PersonalCurriculumSetupProps {
     initialAutoPilot?: boolean
     initialStrictMode?: boolean
     initialShowGoalVisualizationsInChat?: boolean
-    migration?: SetupMigrationConfig
     personalizationEditor?: PersonalCurriculumEditorProps
 }
 
@@ -100,7 +88,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     onClose,
     availableLandscapes,
     currentLandscapeId,
-    retirementOnly = false,
     onApply,
     onPreferencesApply,
     initialConfig = {},
@@ -109,13 +96,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialAutoPilot = true,
     initialStrictMode = false,
     initialShowGoalVisualizationsInChat = true,
-    migration,
     personalizationEditor,
 }) => {
     const { language } = useLanguage()
     const localizedLanguage = language === 'en' ? 'en' : 'de'
     const setupCopy = getPersonalCurriculumSetupCopy(localizedLanguage)
-    const retirementCopy = setupCopy.retirement
     const compatibilityCopy = setupCopy.compatibility
     const runtimeCatalogState = useRuntimeCurriculumCatalog()
     const offeringSource = React.useMemo(
@@ -428,11 +413,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     )
 
     const handleApply = async () => {
-        if (retirementOnly) {
-            onClose()
-            return
-        }
-
         if (personalizationEditor) {
             if (guidedCloseBlocked) return
             if (!onPreferencesApply) {
@@ -707,12 +687,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 <div className="p-6 border-b border-border-color flex items-center justify-between">
                     <div>
                         <h2 className="text-xl font-bold text-text-primary">
-                            {retirementOnly ? retirementCopy.title : setupCopy.title}
+                            {setupCopy.title}
                         </h2>
                         <p className="text-text-secondary text-sm mt-1">
-                            {retirementOnly
-                                ? retirementCopy.subtitle
-                                : setupCopy.subtitle}
+                            {setupCopy.subtitle}
                         </p>
                     </div>
                     <button
@@ -725,61 +703,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-4">
-                    {migration && (
-                        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
-                            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                                <div>
-                                    <h3 className="text-sm font-semibold text-text-primary">{migration.title}</h3>
-                                    <p className="mt-1 text-sm text-text-secondary">{migration.description}</p>
-                                    {(migration.previewItems ?? []).length > 0 && (
-                                        <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                                            {(migration.previewItems ?? []).map((item) => (
-                                                <div
-                                                    key={`${item.label}:${item.value}`}
-                                                    className="rounded-lg border border-amber-200/70 bg-white/70 px-3 py-2 dark:border-amber-900/30 dark:bg-slate-950/30"
-                                                >
-                                                    <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
-                                                        {item.label}
-                                                    </div>
-                                                    <div className="mt-1 text-sm font-medium text-text-primary">
-                                                        {item.value}
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                                <button
-                                    onClick={migration.onAction}
-                                    disabled={migration.actionPending}
-                                    className="shrink-0 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-60"
-                                >
-                                    {migration.actionPending ? '...' : migration.actionLabel}
-                                </button>
-                            </div>
-                        </div>
-                    )}
-
-                    {retirementOnly && (
-                        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50/40 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
-                            <h3 className="text-sm font-semibold text-text-primary">{retirementCopy.noticeTitle}</h3>
-                            <p className="mt-2 text-sm text-text-secondary">
-                                {retirementCopy.noticeBodyPrimary}
-                            </p>
-                            <p className="mt-2 text-sm text-text-secondary">
-                                {retirementCopy.noticeBodySecondary}
-                            </p>
-                        </div>
-                    )}
-
-                    {!retirementOnly && personalizationEditor && (
+                    {personalizationEditor && (
                         <div className="mb-6">
                             <PersonalCurriculumEditor {...personalizationEditor} />
                         </div>
                     )}
 
                     {/* Preferences Section */}
-                    {!retirementOnly && (
+                    {(
                         <div className="mb-6 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
                             <h3 className="text-sm font-semibold text-text-primary mb-3">{setupCopy.preferencesTitle}</h3>
                             <div className="flex flex-col gap-3">
@@ -854,7 +785,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         </div>
                     )}
 
-                    {!retirementOnly && !personalizationEditor && (
+                    {!personalizationEditor && (
                         <div className="flex flex-col gap-1">
                             {rootLandscape ? renderNode(rootLandscape, true) : childrenLandscapes.map(l => renderNode(l, false))}
                         </div>
@@ -869,7 +800,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         disabled={isApplying || guidedCloseBlocked}
                         className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
-                        {retirementOnly ? setupCopy.closeAction : isApplying ? setupCopy.savePending : setupCopy.doneAction}
+                        {isApplying ? setupCopy.savePending : setupCopy.doneAction}
                     </button>
                 </div>
             </div>

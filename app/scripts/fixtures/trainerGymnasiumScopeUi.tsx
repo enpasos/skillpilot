@@ -1,0 +1,25 @@
+import React, { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+
+import App from '../../src/App'
+import { LanguageProvider } from '../../src/contexts/LanguageContext'
+import { ThemeProvider } from '../../src/contexts/ThemeContext'
+
+const canonicalGymnasiumMathId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+window.history.replaceState({}, '', `/trainer?l=${canonicalGymnasiumMathId}`)
+
+const rootElement = document.getElementById('root')
+if (!rootElement) throw new Error('missing fixture root')
+
+createRoot(rootElement).render(
+  <BrowserRouter>
+    <LanguageProvider>
+      <ThemeProvider>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </ThemeProvider>
+    </LanguageProvider>
+  </BrowserRouter>,
+)

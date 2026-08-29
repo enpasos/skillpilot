@@ -477,6 +477,36 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "16329baefd5fbbf5d733253508a57661c67e0ba5d49583f6cec119fe5695a77a",
       },
     },
+    {
+      id: "2026-08-29-retire-obsolete-gymnasium-runtime-cutover",
+      approvedAt: "2026-08-29",
+      approvedBy: "product-owner",
+      reason:
+        "Remove the obsolete Gymnasium legacy learner cutover runtime because no real legacy learners require it.",
+      scope:
+        "Remove only the UsersView bulk operator, LearnerView single cutover and per-learner archive/retirement UI, " +
+        "their frontend helpers and package-consumer aliases, backend endpoints, DTOs and service paths, and exclusively " +
+        "related tests and copy; preserve canonical curricula, retained source and archive registries, mapping, provenance, " +
+        "compatibility-summary and topic-summary lanes, current personalization migration, ChatGPT/MCP/OAuth/tools/schemas, " +
+        "review fixtures, and learner-state semantics for supported current curricula.",
+      target: "current-production-web-frontend-and-backend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-obsolete-legacy-runtime-removal-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/views/LearnerView.tsx",
+        submittedSha256:
+          "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
+        authorizedSha256:
+          "d579e459e6450cc6891971bab3a65621a3409a0c5d16ae9c22ce67b24956e0e6",
+      },
+      evidenceFile: {
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-pre-runtime-cutover-cleanup-LearnerView.tsx",
+        sha256:
+          "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
+      },
+    },
   ]);
 });
 
@@ -503,6 +533,29 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
         "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       authorizedSha256:
         "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+    },
+  );
+
+  const learnerViewException = latestByPath.get(
+    "app/src/views/LearnerView.tsx",
+  );
+  assert.deepEqual(
+    {
+      id: learnerViewException?.id,
+      submittedSha256: learnerViewException?.protectedFile.submittedSha256,
+      hasPriorAuthorizedSha256: Object.hasOwn(
+        learnerViewException?.protectedFile ?? {},
+        "priorAuthorizedSha256",
+      ),
+      authorizedSha256: learnerViewException?.protectedFile.authorizedSha256,
+    },
+    {
+      id: "2026-08-29-retire-obsolete-gymnasium-runtime-cutover",
+      submittedSha256:
+        "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
+      hasPriorAuthorizedSha256: false,
+      authorizedSha256:
+        "d579e459e6450cc6891971bab3a65621a3409a0c5d16ae9c22ce67b24956e0e6",
     },
   );
 

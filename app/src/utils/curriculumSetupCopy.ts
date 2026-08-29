@@ -7,14 +7,6 @@ interface SharedCurriculumSetupCopy {
   durationModelHint: string
 }
 
-interface RetirementSetupCopy {
-  title: string
-  subtitle: string
-  noticeTitle: string
-  noticeBodyPrimary: string
-  noticeBodySecondary: string
-}
-
 interface CompatibilitySetupCopy {
   title: string
   subtitle: string
@@ -36,15 +28,14 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
   strictModeDescription: string
   showGoalVisualizationsInChatTitle: string
   showGoalVisualizationsInChatDescription: string
-  closeAction: string
   savePending: string
   doneAction: string
-  retirement: RetirementSetupCopy
   compatibility: CompatibilitySetupCopy
 }
 
 export interface ClassSetupCopy extends SharedCurriculumSetupCopy {
   title: string
+  editTitle: string
   classNameLabel: string
   classNamePlaceholder: string
   selectSubjectFirst: string
@@ -62,6 +53,7 @@ export interface ClassSetupCopy extends SharedCurriculumSetupCopy {
   errorPrefix: string
   cancel: string
   submit: string
+  submitEdit: string
 }
 
 const getSharedCurriculumSetupCopy = (language: LabelLanguage): SharedCurriculumSetupCopy => (
@@ -97,19 +89,11 @@ export const getPersonalCurriculumSetupCopy = (
         strictModeDescription: 'Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.',
         showGoalVisualizationsInChatTitle: 'Lernzielbilder im Chat anzeigen',
         showGoalVisualizationsInChatDescription: 'Zeigt verfügbare Bilder zu atomaren Lernzielen direkt im Chat.',
-        closeAction: 'Schließen',
         savePending: 'Speichert...',
         doneAction: 'Fertig',
-        retirement: {
-          title: 'Legacy-Ansicht',
-          subtitle: 'Diese Legacy-Ansicht bleibt nur noch für Migration, Vergleich und Audit verfügbar.',
-          noticeTitle: 'Nur noch für Umstellung und Audit',
-          noticeBodyPrimary: 'Fach- und Filteränderungen werden in dieser eingefrorenen Legacy-Ansicht nicht mehr gepflegt. Für die weitere Arbeit soll der Lernstand auf Gymnasium (DE) umgestellt werden.',
-          noticeBodySecondary: 'Die aktuelle Legacy-Ansicht bleibt vorerst als Vergleichspfad sichtbar, ist aber kein normaler Konfigurationspfad mehr.',
-        },
         compatibility: {
           title: 'Kompatibilitätsansichten',
-          subtitle: 'Diese eingefrorenen Legacy-Ansichten bleiben nur für Migration, Vergleich und Audit verfügbar.',
+          subtitle: 'Diese eingefrorenen Legacy-Ansichten bleiben nur für Vergleich und Audit verfügbar.',
           hiddenSummary: (count: number) => `${count} Ansicht${count === 1 ? '' : 'en'} ausgeblendet.`,
           showAction: 'Einblenden',
           hideAction: 'Ausblenden',
@@ -128,19 +112,11 @@ export const getPersonalCurriculumSetupCopy = (
         strictModeDescription: 'Checks all prerequisites globally, even outside your current focus.',
         showGoalVisualizationsInChatTitle: 'Show learning-goal images in chat',
         showGoalVisualizationsInChatDescription: 'Displays available images for atomic learning goals directly in chat.',
-        closeAction: 'Close',
         savePending: 'Saving...',
         doneAction: 'Done',
-        retirement: {
-          title: 'Legacy View',
-          subtitle: 'This legacy view remains available only for migration, comparison, and audit.',
-          noticeTitle: 'Available only for migration and audit',
-          noticeBodyPrimary: 'Subject and filter changes are no longer maintained in this frozen legacy view. Ongoing work should move the learner state to Gymnasium (DE).',
-          noticeBodySecondary: 'The current legacy view remains visible for comparison for now, but it is no longer a regular configuration path.',
-        },
         compatibility: {
           title: 'Compatibility Views',
-          subtitle: 'These frozen legacy views remain available only for migration, comparison, and audit.',
+          subtitle: 'These frozen legacy views remain available only for comparison and audit.',
           hiddenSummary: (count: number) => `${count} view${count === 1 ? '' : 's'} hidden.`,
           showAction: 'Show',
           hideAction: 'Hide',
@@ -154,6 +130,7 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
   ...(language === 'de'
     ? {
         title: 'Neue Klasse / Kurs anlegen',
+        editTitle: 'Klasse / Kurs bearbeiten',
         classNameLabel: 'Bezeichnung',
         classNamePlaceholder: 'z.B. Physik LK',
         selectSubjectFirst: 'Bitte wähle zuerst ein Fach aus.',
@@ -171,9 +148,11 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
         errorPrefix: 'Fehler',
         cancel: 'Abbrechen',
         submit: 'Klasse anlegen & IDs generieren',
+        submitEdit: 'Änderungen speichern',
       }
     : {
         title: 'Create Class / Course',
+        editTitle: 'Edit Class / Course',
         classNameLabel: 'Label',
         classNamePlaceholder: 'e.g. Physics advanced course',
         selectSubjectFirst: 'Please choose a subject first.',
@@ -191,5 +170,6 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
         errorPrefix: 'Error',
         cancel: 'Cancel',
         submit: 'Create class & generate IDs',
+        submitEdit: 'Save changes',
       }),
 })

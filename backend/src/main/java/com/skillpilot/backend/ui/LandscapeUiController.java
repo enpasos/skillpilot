@@ -59,7 +59,7 @@ public class LandscapeUiController {
         }
         throw new ResponseStatusException(
                 CONFLICT,
-                "This compatibility-only landscape route is retired. Use /api/ui/landscapes?includeCompatibility=true for frozen summaries, /api/ui/curricula/{curriculumId}/topics for frozen topic metadata, or the learner compatibility archive for retired learner sessions.");
+                "This compatibility-only landscape route is retired. Use /api/ui/landscapes?includeCompatibility=true for frozen summaries or /api/ui/curricula/{curriculumId}/topics for frozen topic metadata.");
     }
 
 }

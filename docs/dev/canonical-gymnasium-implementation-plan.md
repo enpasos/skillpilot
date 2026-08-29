@@ -2,6 +2,14 @@
 
 Snapshot: `2026-03-16`
 
+Runtime cleanup note (`2026-08-29`): the temporary single-learner and bulk
+Gymnasium cutover endpoints, their cockpit/operator controls, and the dedicated
+learner compatibility-archive download endpoint have been removed. No real
+legacy learners require this transition path. The canonical curricula and the
+DE-level archive, mapping, provenance, compatibility-summary, and topic-summary
+registries remain authoritative and unchanged. Cutover-path statements below
+describe rollout history, not currently available runtime operations.
+
 This document turns the rollout strategy from the concept docs into an implementation-oriented plan.
 
 See also:
@@ -170,8 +178,8 @@ Current operational baseline:
 - when the learner is still inside a Hessen compatibility session, that same cockpit setup now runs in retirement-only mode: migration/audit stay available, but it no longer acts as a normal curriculum configuration editor for the frozen Hessen path
 - the learner cockpit now also treats those open Hessen compatibility sessions as read-only/audit-only for planning, active-goal selection, and SRS drilling, so the retained Hessen path is no longer a normal active-learning workspace even before full backend retirement
 - UI and AI write endpoints now enforce the same rule server-side: retained Hessen compatibility sessions reject curriculum mutation, planning, active-goal, mastery, and client-state writes, so the remaining compatibility route is backend-read-only as well as frontend-read-only
-- UI and AI learner-state routes no longer serve retained Hessen compatibility sessions as live state views; the cockpit now offers migration plus a dedicated compatibility-archive export, so the fallback is an explicit frozen artifact path rather than an alternate runtime route
-- the compatibility-archive export itself now resolves retired Hessen curriculum summaries from the DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json` and snapshots raw persisted learner data instead of depending on a live legacy learner-state projection
+- UI and AI learner-state routes no longer serve retained Hessen compatibility sessions as live state views; the temporary cockpit migration and per-learner archive controls were removed after the real-user migration window proved empty
+- retired Hessen curriculum summaries remain available from the DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json` for bounded comparison/audit metadata without restoring a live legacy learner-state projection
 - Hessen cutover now also resolves stored `legacyGoalId -> sourceLandscapeId` membership from the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so subject inference no longer depends on a live Hessen upper-secondary skill graph staying loaded
 - `/api/ui/landscapes?includeCompatibility=true` now also resolves Hessen compatibility summaries from the frozen DE-level archive registry, so overview/listing metadata no longer depends on loaded Hessen upper-secondary landscape files
 - `/api/ui/curricula/{curriculumId}/topics` now also resolves Hessen compatibility topics from the frozen DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json`, while direct `/api/ui/landscapes/{id}` and `/closure` routes for Hessen compatibility landscapes are retired

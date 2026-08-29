@@ -24,13 +24,14 @@ import { getClassSetupCopy } from '../utils/curriculumSetupCopy'
 interface ClassSetupProps {
   landscapes: LandscapeEntry[]
   rootLandscapeId?: string
+  initialSession?: ClassSession
   onSave: (session: ClassSession) => void
   onCancel: () => void
 }
 
 const normalizeWildcardFilter = (filterId?: string) => filterId ?? 'ALL'
 
-export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscapeId, onSave, onCancel }) => {
+export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscapeId, initialSession, onSave, onCancel }) => {
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const copy = getClassSetupCopy(localizedLanguage)
@@ -48,8 +49,15 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     [landscapes, rootLandscapeId],
   )
 
-  const [className, setClassName] = useState('')
+  const isEditing = Boolean(initialSession)
+  const [className, setClassName] = useState(initialSession?.name ?? '')
   const [selectedLandscapeId, setSelectedLandscapeId] = useState(() => {
+    if (
+      initialSession?.landscapeId
+      && subjectLandscapes.some((entry) => entry.meta.landscapeId === initialSession.landscapeId)
+    ) {
+      return initialSession.landscapeId
+    }
     const saved = localStorage.getItem('skillpilot_last_landscape')
     return saved && subjectLandscapes.some((entry) => entry.meta.landscapeId === saved)
       ? saved
@@ -57,13 +65,26 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   })
   const effectiveRootFilters = useMemo(() => rootLandscape?.meta.filters ?? [], [rootLandscape])
   const [selectedRootFilter, setSelectedRootFilter] = useState(() => (
-    getDisplayFiltersForSelection(rootLandscape?.meta.filters ?? [], localizedLanguage)[0]?.id ?? 'ALL'
+    (rootLandscapeId ? initialSession?.personalConfig?.[rootLandscapeId]?.filterId : undefined)
+      ?? getDisplayFiltersForSelection(rootLandscape?.meta.filters ?? [], localizedLanguage)[0]?.id
+      ?? 'ALL'
   ))
   const [curriculumConfig, setCurriculumConfig] = useState<TrainerClassCurriculumConfig>(() =>
-    synchronizePersonalCurriculumStageScope({}, { rootLandscapeId }).config
+    synchronizePersonalCurriculumStageScope(initialSession?.personalConfig ?? {}, {
+      rootLandscapeId,
+      landscapeId: initialSession?.landscapeId,
+    }).config
   )
-  const [selectedDurationModel, setSelectedDurationModel] = useState('')
-  const [selectedSubjectFilter, setSelectedSubjectFilter] = useState('GK+LK')
+  const [selectedDurationModel, setSelectedDurationModel] = useState(() => (
+    initialSession?.personalConfig?.[initialSession.landscapeId]?.durationModel
+      ?? (rootLandscapeId ? initialSession?.personalConfig?.[rootLandscapeId]?.durationModel : undefined)
+      ?? ''
+  ))
+  const [selectedSubjectFilter, setSelectedSubjectFilter] = useState(() => (
+    initialSession?.personalConfig?.[initialSession.landscapeId]?.filterId
+      ?? initialSession?.activeFilter
+      ?? 'GK+LK'
+  ))
   const [studentNames, setStudentNames] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -113,10 +134,16 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     [localizedLanguage],
   )
   const offeredDurationModels = useMemo(
-    () => stageSelection.sek1Selected
+    () => (stageSelection.sek1Selected || stageSelection.sek2Selected)
       ? getOfferedGymnasiumDurationModels(selectedLandscapeId, selectedRootFilter, offeringSource)
       : [],
-    [offeringSource, selectedLandscapeId, selectedRootFilter, stageSelection.sek1Selected],
+    [
+      offeringSource,
+      selectedLandscapeId,
+      selectedRootFilter,
+      stageSelection.sek1Selected,
+      stageSelection.sek2Selected,
+    ],
   )
   const durationModelOptions = useMemo(
     () => getDurationModelOptions(localizedLanguage, offeredDurationModels),
@@ -154,11 +181,12 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   }, [selectableSubjectLandscapes, selectedLandscapeId])
 
   useEffect(() => {
+    if (offeringSource.mode === 'unavailable') return
     const normalized = normalizeOfferedDurationModel(selectedDurationModel, offeredDurationModels)
     if (normalized !== selectedDurationModel) {
       setSelectedDurationModel(normalized ?? '')
     }
-  }, [offeredDurationModels, selectedDurationModel])
+  }, [offeredDurationModels, offeringSource.mode, selectedDurationModel])
 
   const toggleGlobalStageScope = (stageScopeId: string) => {
     setCurriculumConfig((prev) => {
@@ -213,40 +241,68 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         .map((s) => s.trim())
         .filter((s) => s.length > 0)
 
-      const students: StudentMapping[] = []
-      for (const name of names) {
-        try {
-          const res = await fetch(toApi('/api/ui/learners'), { method: 'POST' })
-          if (!res.ok) throw new Error(copy.createLearnerFailedStatus(res.status))
-          const data = await res.json()
-          const id = data.state?.skillpilotId || data.skillpilotId || data.id
-          if (!id) throw new Error(copy.missingSkillpilotId)
-          students.push({ name, id: String(id) })
-        } catch (err) {
-          console.error('Failed to create learner for', name, err)
-          throw err instanceof Error ? err : new Error(copy.createLearnerFailedGeneric)
+      const students: StudentMapping[] = initialSession ? initialSession.students : []
+      if (!initialSession) {
+        for (const name of names) {
+          try {
+            const res = await fetch(toApi('/api/ui/learners'), { method: 'POST' })
+            if (!res.ok) throw new Error(copy.createLearnerFailedStatus(res.status))
+            const data = await res.json()
+            const id = data.state?.skillpilotId || data.skillpilotId || data.id
+            if (!id) throw new Error(copy.missingSkillpilotId)
+            students.push({ name, id: String(id) })
+          } catch (err) {
+            console.error('Failed to create learner for', name, err)
+            throw err instanceof Error ? err : new Error(copy.createLearnerFailedGeneric)
+          }
         }
       }
 
+      const nextCurriculumConfig: TrainerClassCurriculumConfig = { ...curriculumConfig }
+      subjectLandscapes.forEach((entry) => {
+        if (
+          entry.meta.landscapeId !== selectedLandscapeId
+          && nextCurriculumConfig[entry.meta.landscapeId]?.selected
+        ) {
+          nextCurriculumConfig[entry.meta.landscapeId] = {
+            ...nextCurriculumConfig[entry.meta.landscapeId],
+            selected: false,
+          }
+        }
+      })
+
+      const nextSubjectConfig = {
+        ...nextCurriculumConfig[selectedLandscapeId],
+        selected: true,
+      }
+      if (showCourseProfileControls) {
+        nextSubjectConfig.filterId = normalizeWildcardFilter(selectedSubjectFilter)
+      } else {
+        delete nextSubjectConfig.filterId
+      }
+      if (normalizedSelectedDurationModel) {
+        nextSubjectConfig.durationModel = normalizedSelectedDurationModel
+      } else {
+        delete nextSubjectConfig.durationModel
+      }
+
       const personalConfig: TrainerClassCurriculumConfig = synchronizePersonalCurriculumStageScope({
-        ...curriculumConfig,
+        ...nextCurriculumConfig,
         ...(rootLandscape
           ? {
               [rootLandscape.meta.landscapeId]: {
+                ...nextCurriculumConfig[rootLandscape.meta.landscapeId],
                 selected: true,
                 filterId: normalizeWildcardFilter(selectedRootFilter),
               },
             }
           : {}),
-        [selectedLandscapeId]: {
-          selected: true,
-          filterId: showCourseProfileControls ? normalizeWildcardFilter(selectedSubjectFilter) : undefined,
-          ...(normalizedSelectedDurationModel ? { durationModel: normalizedSelectedDurationModel } : {}),
-        },
+        [selectedLandscapeId]: nextSubjectConfig,
       }, { rootLandscapeId }).config
 
       const newClass: ClassSession = {
-        id: crypto.randomUUID(),
+        ...initialSession,
+        id: initialSession?.id ?? crypto.randomUUID(),
         name: className,
         landscapeId: selectedLandscapeId,
         activeFilter: rootLandscape
@@ -257,8 +313,11 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
             ? normalizeWildcardFilter(selectedSubjectFilter)
             : 'all',
         personalConfig,
-        rootLandscapeId: rootLandscape?.meta.landscapeId,
+        rootLandscapeId: rootLandscape?.meta.landscapeId ?? initialSession?.rootLandscapeId,
         students,
+        currentGoalId: initialSession?.landscapeId === selectedLandscapeId
+          ? initialSession.currentGoalId
+          : undefined,
       }
       onSave(newClass)
     } catch (err) {
@@ -270,11 +329,14 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
   return (
     <div className="max-w-4xl w-full mx-auto bg-sidebar-bg p-8 rounded-xl border border-border-color shadow-xl transition-colors">
-      <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400 mb-6">{copy.title}</h2>
+      <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400 mb-6">
+        {isEditing ? copy.editTitle : copy.title}
+      </h2>
       <form onSubmit={handleCreate} className="space-y-6">
         <div>
-          <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.classNameLabel}</label>
+          <label htmlFor="trainer-class-name" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.classNameLabel}</label>
           <input
+            id="trainer-class-name"
             required
             value={className}
             onChange={(e) => setClassName(e.target.value)}
@@ -287,8 +349,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {effectiveRootFilters.length > 0 && (
               <div>
-                <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.rootFilterLabel}</label>
+                <label htmlFor="trainer-class-root-filter" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.rootFilterLabel}</label>
                 <select
+                  id="trainer-class-root-filter"
                   value={selectedRootFilter}
                   onChange={(e) => setSelectedRootFilter(e.target.value)}
                   className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary transition-colors"
@@ -329,8 +392,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.landscapeLabel}</label>
+            <label htmlFor="trainer-class-landscape" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.landscapeLabel}</label>
             <select
+              id="trainer-class-landscape"
               value={selectedLandscapeId}
               onChange={(e) => {
                 setSelectedLandscapeId(e.target.value)
@@ -347,9 +411,10 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           </div>
 
           <div>
-            <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.levelFilterLabel}</label>
+            <label htmlFor="trainer-class-level-filter" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.levelFilterLabel}</label>
             {showCourseProfileControls ? (
               <select
+                id="trainer-class-level-filter"
                 value={selectedSubjectFilter}
                 onChange={(e) => setSelectedSubjectFilter(e.target.value)}
                 className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary transition-colors"
@@ -361,7 +426,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
                 ))}
               </select>
             ) : (
-              <div className="w-full bg-input-bg border border-border-color rounded p-2 text-text-secondary">
+              <div id="trainer-class-level-filter" className="w-full bg-input-bg border border-border-color rounded p-2 text-text-secondary">
                 {stageSelection.sek2Selected ? copy.noAdditionalCourseFilter : copy.courseFilterOnlySek2}
               </div>
             )}
@@ -395,19 +460,22 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           )}
         </div>
 
-        <div>
-          <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.studentsLabel}</label>
-          <p className="text-[11px] text-text-secondary mb-2">
-            {copy.studentsHint}
-          </p>
-          <textarea
-            value={studentNames}
-            onChange={(e) => setStudentNames(e.target.value)}
-            placeholder={copy.studentsPlaceholder}
-            rows={6}
-            className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono text-sm transition-colors"
-          />
-        </div>
+        {!isEditing && (
+          <div>
+            <label htmlFor="trainer-class-students" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.studentsLabel}</label>
+            <p className="text-[11px] text-text-secondary mb-2">
+              {copy.studentsHint}
+            </p>
+            <textarea
+              id="trainer-class-students"
+              value={studentNames}
+              onChange={(e) => setStudentNames(e.target.value)}
+              placeholder={copy.studentsPlaceholder}
+              rows={6}
+              className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono text-sm transition-colors"
+            />
+          </div>
+        )}
 
         {error && <div className="text-sm text-amber-300">{copy.errorPrefix}: {error}</div>}
 
@@ -421,7 +489,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
             className="px-6 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded font-medium flex items-center gap-2 disabled:opacity-60"
           >
             {isGenerating && <span className="animate-spin">⟳</span>}
-            {copy.submit}
+            {isEditing ? copy.submitEdit : copy.submit}
           </button>
         </div>
       </form>

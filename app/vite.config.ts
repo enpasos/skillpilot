@@ -72,10 +72,6 @@ const PACKAGE_CONSUMER_SOURCE_REPLACEMENTS = new Map([
     path.resolve(APP_ROOT, 'src', 'packageConsumer', 'goalSourceRationalesUnavailable.ts'),
   ],
   [
-    path.resolve(APP_ROOT, 'src', 'utils', 'canonicalGymnasiumCutoverApi'),
-    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'canonicalGymnasiumCutoverApi.ts'),
-  ],
-  [
     path.resolve(APP_ROOT, 'src', 'utils', 'jurisdictionMetadata'),
     path.resolve(APP_ROOT, 'src', 'packageConsumer', 'jurisdictionMetadata.ts'),
   ],

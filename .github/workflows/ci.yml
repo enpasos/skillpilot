@@ -242,6 +242,8 @@ jobs:
         run: npm run test:session-setup-ui
       - name: Test trainer navigation history
         run: npm run test:trainer-navigation-ui
+      - name: Test trainer Gymnasium scope
+        run: npm run test:trainer-gymnasium-scope-ui
       - name: Test learner data and SkillPilot ID management
         run: npm run test:learner-data-management
       - name: Test curriculum quality traffic-light interactions
