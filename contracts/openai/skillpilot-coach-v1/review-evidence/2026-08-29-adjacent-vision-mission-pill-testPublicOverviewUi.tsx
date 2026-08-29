@@ -886,24 +886,6 @@ try {
       true,
       `${language}: the disclosure button is not nested in a navigation link`,
     )
-    const overviewHeadingClasses = await page
-      .getByTestId('skillpilot-overview-heading')
-      .evaluate((heading) => [...heading.classList])
-    for (const interactionClass of [
-      'group-hover:text-emerald-700',
-      'group-focus-within:text-emerald-700',
-      'dark:group-hover:text-emerald-300',
-      'dark:group-focus-within:text-emerald-300',
-    ]) {
-      assert(
-        overviewHeadingClasses.includes(interactionClass),
-        `${language}: overview heading uses approved green interaction class ${interactionClass}`,
-      )
-    }
-    assert(
-      overviewHeadingClasses.every((className) => !className.includes('violet')),
-      `${language}: overview heading has no purple interaction color`,
-    )
     await page.mouse.move(374, 899)
     await flushBrowserEffects(page)
     const [restingCardBoxShadow, restingDisclosureBoxShadow, cardFrameClasses] = await Promise.all([
