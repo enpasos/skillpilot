@@ -427,16 +427,54 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       },
       evidenceFile: {
-        path: "app/scripts/testPublicOverviewUi.tsx",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-adjacent-vision-mission-pill-testPublicOverviewUi.tsx",
         sha256:
           "f85a72c8440d1b315664ce912fbd6ced1bdfdf4156d02d7afff5d47cc26c83b2",
       },
       additionalFile: {
-        path: "app/src/components/SkillPilotOverviewCard.tsx",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-adjacent-vision-mission-pill-SkillPilotOverviewCard.tsx",
         priorSha256:
           "b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90",
         authorizedSha256:
           "d7408c72ba5a98791a54c586a08b6be320a1ab059efb723fd627351312d255eb",
+      },
+    },
+    {
+      id: "2026-08-29-public-overview-green-interaction-heading",
+      approvedAt: "2026-08-29",
+      approvedBy: "product-owner",
+      reason:
+        "Align the public overview heading with the card's approved green interaction state instead of changing it to purple.",
+      scope:
+        "In the current production WebGUI only, change the public overview card heading on hover and focus-within to the established accessible green interaction colors emerald-700 in light mode and emerald-300 in dark mode; " +
+        "preserve every German and English text, layout, action, route, media play intent, disclosure behavior, action-pill style, single green card interaction frame, the page order with learner start first, the byte-identical SessionSetup, every coach handler, prepared message, session, learner-state, " +
+        "OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, fixture, and review-artifact contract.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-public-interaction-color-styling-only-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        priorAuthorizedSha256:
+          "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+        authorizedSha256:
+          "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
+      },
+      evidenceFile: {
+        path: "app/scripts/testPublicOverviewUi.tsx",
+        sha256:
+          "fe66f2148c198663aa671ce1a1eea4ccdf57b23bfdb4f20287c0c42a832ef757",
+      },
+      additionalFile: {
+        path: "app/src/components/SkillPilotOverviewCard.tsx",
+        priorSha256:
+          "d7408c72ba5a98791a54c586a08b6be320a1ab059efb723fd627351312d255eb",
+        authorizedSha256:
+          "16329baefd5fbbf5d733253508a57661c67e0ba5d49583f6cec119fe5695a77a",
       },
     },
   ]);
@@ -460,7 +498,7 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
         latestSessionSetupException?.protectedFile.authorizedSha256,
     },
     {
-      id: "2026-08-28-public-overview-adjacent-vision-mission-pill",
+      id: "2026-08-29-public-overview-green-interaction-heading",
       priorAuthorizedSha256:
         "df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140",
       authorizedSha256:

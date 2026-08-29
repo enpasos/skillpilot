@@ -737,18 +737,75 @@ Schritt ohne Änderung an `SessionSetup.tsx`:
     `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
     (vorher und nachher byte-identisch).
 
-Die aktualisierte Implementierungsdatei ist mit ihrem vorherigen und ihrem
-neuen autorisierten SHA-256 verankert:
+Der autorisierte Komponentenstand wurde vor der nächsten Änderung
+byte-identisch als historische Evidenz archiviert und bleibt mit seinem
+vorherigen und seinem autorisierten SHA-256 verankert:
 
-- `app/src/components/SkillPilotOverviewCard.tsx`:
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-adjacent-vision-mission-pill-SkillPilotOverviewCard.tsx`:
   `b55844133b156287db7a763e52fc225505435f975438d5651bccaf6692ca2a90`
   →
   `d7408c72ba5a98791a54c586a08b6be320a1ab059efb723fd627351312d255eb`.
 
+Auch die fokussierte Regression wurde vor der nächsten autorisierten Änderung
+byte-identisch archiviert und ist hashgebunden:
+
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-adjacent-vision-mission-pill-testPublicOverviewUi.tsx`:
+  `f85a72c8440d1b315664ce912fbd6ced1bdfdf4156d02d7afff5d47cc26c83b2`.
+
+### 6.13 Eng begrenzte Ausnahme: grüne Überschrift im Interaktionszustand
+
+Der Product Owner hat am **29. August 2026** für das aktuelle
+Produktions-Webfrontend ausdrücklich genehmigt, die Überschrift der
+Überblickskarte im grünen Hover- beziehungsweise Fokuszustand nicht mehr
+violett, sondern passend zum bereits freigegebenen grünen Kartenrand
+darzustellen. Das OpenAI-Plugin bleibt unverändert `skillpilot-coach-v1`
+Version `1.0.0`; ein Zurückziehen oder erneutes Einreichen im Portal ist nicht
+erforderlich.
+
+Freigegeben ist ausschließlich:
+
+- die Überschrift bei Hover und bei Fokus innerhalb der Karte im hellen Modus
+  mit dem etablierten `emerald-700` und im dunklen Modus mit `emerald-300`
+  darzustellen;
+- die violette Interaktionsfarbe vollständig von der Überschrift zu entfernen,
+  während ihre neutrale Ausgangsfarbe unverändert bleibt;
+- damit Überschrift und einzelner grüner Kartenrand als ein konsistenter
+  Interaktionszustand erscheinen;
+- die vier hellen beziehungsweise dunklen Hover-/Fokusklassen und die
+  Abwesenheit einer violetten Überschriftenklasse mit der fokussierten
+  Überblicksregression zu belegen. Die gewählten Farben erreichen auf den
+  vorhandenen Kartenhintergründen mindestens WCAG-AA-Kontrast für normalen
+  Text.
+
+Sämtliche deutschen und englischen Texte, Layouts, Aktionen, Medienziele,
+Anker, Wiedergabe-Intents, Disclosure- und Aktionspillenverhalten sowie der
+einzelne grüne Interaktionsrahmen der Karte bleiben unverändert. Die
+Seitenreihenfolge **Lernen starten** → **SkillPilot im Überblick** →
+**Curriculum-Champions** bleibt unverändert; **Lernen starten** bleibt die
+erste und wichtigste Aktion. `SessionSetup.tsx` bleibt byte-identisch.
+Coach-Handler, vorbereitete Nachrichten, Session- und Lernzustandssemantik,
+OpenAI-Paket, MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte,
+Fixtures und Reviewartefakte bleiben unverändert und eingefroren.
+
+Die Hashkette dokumentiert deshalb erneut ausdrücklich einen autorisierten
+Schritt ohne Änderung an `SessionSetup.tsx`:
+
+12. grüne Überschrift im Hover- und Fokuszustand:
+    `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
+    (vorher und nachher byte-identisch).
+
+Die aktualisierte Implementierungsdatei ist mit ihrem vorherigen und ihrem
+neuen autorisierten SHA-256 verankert:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `d7408c72ba5a98791a54c586a08b6be320a1ab059efb723fd627351312d255eb`
+  →
+  `16329baefd5fbbf5d733253508a57661c67e0ba5d49583f6cec119fe5695a77a`.
+
 Die aktualisierte fokussierte Regression ist ebenfalls hashgebunden:
 
 - `app/scripts/testPublicOverviewUi.tsx`:
-  `f85a72c8440d1b315664ce912fbd6ced1bdfdf4156d02d7afff5d47cc26c83b2`.
+  `fe66f2148c198663aa671ce1a1eea4ccdf57b23bfdb4f20287c0c42a832ef757`.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den

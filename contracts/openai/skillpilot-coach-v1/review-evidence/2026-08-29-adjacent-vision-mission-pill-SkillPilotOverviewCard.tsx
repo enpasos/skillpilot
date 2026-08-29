@@ -44,8 +44,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
     >
       <h3
         id={headingId}
-        data-testid="skillpilot-overview-heading"
-        className="text-lg font-semibold text-text-primary transition-colors group-hover:text-emerald-700 group-focus-within:text-emerald-700 dark:group-hover:text-emerald-300 dark:group-focus-within:text-emerald-300"
+        className="text-lg font-semibold text-text-primary transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400"
       >
         {copy.title}
       </h3>
