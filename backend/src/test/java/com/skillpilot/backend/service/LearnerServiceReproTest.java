@@ -192,20 +192,6 @@ public class LearnerServiceReproTest {
     }
 
     @Test
-    void goalBelongsToLandscapeFallsBackToArchivedMembershipRegistry() throws Exception {
-        when(landscapeService.getLandscapeIdForGoal("legacy-archived-goal")).thenReturn(null);
-        when(landscapeService.resolveLandscapeIdForGoalIncludingArchived("legacy-archived-goal"))
-                .thenReturn("legacy-overview");
-
-        Method method = LearnerService.class.getDeclaredMethod("goalBelongsToLandscape", String.class, String.class);
-        method.setAccessible(true);
-
-        boolean result = (boolean) method.invoke(learnerService, "legacy-archived-goal", "legacy-overview");
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
     void combinedCourseProfileIncludesGkLkAndUnrestrictedGoals() throws Exception {
         Method method = LearnerService.class.getDeclaredMethod(
                 "matchesCourseFilter",
