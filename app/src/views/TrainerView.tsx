@@ -35,6 +35,7 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
+  loadingLandscapes?: boolean
   classSetupLandscapes?: LandscapeEntry[]
   classSetupRootLandscapeId?: string
   onContextChange: (
@@ -83,6 +84,7 @@ const loadStoredActiveClassId = (): string | null => {
 
 export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
+  loadingLandscapes = false,
   classSetupLandscapes,
   classSetupRootLandscapeId,
   onContextChange,
@@ -843,6 +845,16 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const editingClass = editingClassId
     ? classes.find((session) => session.id === editingClassId) ?? null
     : null
+
+  // Keep this component mounted while a class switches to another landscape.
+  // Its one-shot opening intent must survive until the target closure is ready.
+  if (loadingLandscapes) {
+    return (
+      <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
+        Landscapes laden ...
+      </div>
+    )
+  }
 
   if ((isCreating || editingClass) && !isClassSetupReady) {
     return (
