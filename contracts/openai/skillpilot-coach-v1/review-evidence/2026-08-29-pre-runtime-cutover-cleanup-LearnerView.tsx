@@ -22,7 +22,14 @@ import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
 import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
-import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
+import {
+  CANONICAL_GYMNASIUM_ROOT_ID,
+  LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
+} from '../utils/curriculumDisplay'
+import {
+  buildLegacyCutoverUiState,
+  inferLegacyHessenLowerSelection,
+} from '../utils/legacyCutover'
 import {
   ABI26_CAMPAIGN_SLUG,
   ABI26_ROOT_CURRICULUM_ID,
@@ -39,6 +46,7 @@ import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
+import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 import {
   beginLatestRequest,
@@ -72,6 +80,7 @@ import {
 } from '../coachVariants/coachLaunch'
 import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
 import { buildVisibleSessionVerifiedRecallInstruction } from '../coachVariants/visibleSession/verifiedRecallPrompt'
+import { requestCanonicalGymnasiumCutover } from '../utils/canonicalGymnasiumCutoverApi'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import {
   usePersonalCurriculumEditor,
@@ -107,6 +116,7 @@ interface LearnerViewProps {
   onScopeDataRefresh?: () => void
   parentMap?: Map<string, string[]>
   onLandscapeChange?: (landscapeId: string) => void
+  onLandscapeGoalChange?: (landscapeId: string, goalId: string) => void
 }
 
 type PersonalCurriculumConfig = Record<string, {
@@ -268,6 +278,8 @@ const normalizePersonalConfig = (
     return { config: normalized, corrected }
   }
 
+  const availableLandscapeIds = new Set(availableLandscapes.map((landscape) => landscape.landscapeId))
+
   availableLandscapes.forEach((landscape) => {
     const current = normalized[landscape.landscapeId]
     if (!current) return
@@ -279,6 +291,16 @@ const normalizePersonalConfig = (
       corrected = true
     }
   })
+
+  if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+    Object.keys(normalized).forEach((landscapeId) => {
+      if (!LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(landscapeId) || availableLandscapeIds.has(landscapeId)) {
+        return
+      }
+      delete normalized[landscapeId]
+      corrected = true
+    })
+  }
 
   const hasChildEntries = childLandscapeIds.some((id) => normalized[id] !== undefined)
   const hasSelectedChild = childLandscapeIds.some((id) => normalized[id]?.selected === true)
@@ -348,6 +370,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onScopeDataRefresh,
   parentMap,
   onLandscapeChange,
+  onLandscapeGoalChange,
 }) => {
   const learnerStateScopeKey = `${skillpilotId}\u0000${rootLandscapeId ?? ''}`
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
@@ -381,6 +404,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
   const [isPersonalConfigHydrating, setIsPersonalConfigHydrating] = useState<boolean>(!!skillpilotId)
+  const [isCutoverPending, setIsCutoverPending] = useState(false)
+  const [compatibilityRouteRetired, setCompatibilityRouteRetired] = useState(false)
+  const [isCompatibilityArchivePending, setIsCompatibilityArchivePending] = useState(false)
   const [isDataManagementOpen, setIsDataManagementOpen] = useState(false)
   const [learnerRetention, setLearnerRetention] = useState<LearnerRetentionStatus | null>(null)
   const [learnerRetentionLoading, setLearnerRetentionLoading] = useState(false)
@@ -430,6 +456,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(localizedLanguage)
   const openAiMcpCoachActive = isOpenAiMcpCoachActive(localizedLanguage)
+  const bavariaFilterDisplay = import.meta.env.MODE === 'package-consumer'
+    ? ''
+    : formatFilterDisplayLabel('DE-BY', localizedLanguage)
+  const hessenFilterDisplay = import.meta.env.MODE === 'package-consumer'
+    ? ''
+    : formatFilterDisplayLabel('DE-HE', localizedLanguage)
+
   useEffect(() => {
     const resumeId = skillpilotId
     if (!resumeId || learnerResumeAttemptedIdRef.current === resumeId) return
@@ -1375,8 +1408,33 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     t.notifications.learnerInitialLoadFailed,
   ])
 
+  const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection({
+    selectedCurriculum: learnerData?.selectedCurriculum,
+    personalConfig,
+    plannedGoalIds: Array.from(plannedGoals),
+    activeGoalId: effectiveActiveGoalId,
+    resolveGoalLandscapeId: (goalId) => goalIndexAll.get(goalId)?.landscapeId,
+  }), [learnerData?.selectedCurriculum, personalConfig, plannedGoals, effectiveActiveGoalId, goalIndexAll])
+  const legacyCutoverUiState = useMemo(() => buildLegacyCutoverUiState({
+    selectedCurriculum: learnerData?.selectedCurriculum,
+    language,
+    compatibilityRouteRetired,
+    personalConfig,
+    lowerSelection: lowerLegacySelection,
+    bavariaFilterDisplay,
+    hessenFilterDisplay,
+  }), [
+    learnerData?.selectedCurriculum,
+    language,
+    compatibilityRouteRetired,
+    personalConfig,
+    lowerLegacySelection,
+    bavariaFilterDisplay,
+    hessenFilterDisplay,
+  ])
+  const canCutoverLegacyGymnasium = legacyCutoverUiState.canCutover
   const usesGuidedPersonalCurriculumEditor =
-    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && !canCutoverLegacyGymnasium
   const personalConfigLoadStatus: LearnerStateLoadStatus =
     personalConfigLoadState.scopeKey === learnerStateScopeKey
       ? personalConfigLoadState.status
@@ -1400,8 +1458,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     enabled: usesGuidedPersonalCurriculumEditor
       && (isSetupOpen || canAutoRepairAbi26Personalization),
   })
+  const supportsCompatibilityArchive = legacyCutoverUiState.supportsCompatibilityArchive
+  const isCompatibilityAuditOnly = legacyCutoverUiState.isCompatibilityAuditOnly
   const currentFlashcardVerificationDisabled =
-    currentFlashcardVerificationComplete || currentFlashcardVerificationWaiting
+    isCompatibilityAuditOnly || currentFlashcardVerificationComplete || currentFlashcardVerificationWaiting
+  const shouldShowCompatibilityRetirementGate = legacyCutoverUiState.shouldShowCompatibilityRetirementGate
+  const legacyReadOnlyCopy = legacyCutoverUiState.readOnlyCopy
+  const legacyErrorCopy = legacyCutoverUiState.errorCopy
+  const legacyUiCopy = legacyCutoverUiState.uiCopy
   const personalizationGateCopy = language === 'en'
     ? guidedPersonalizationGateReason === 'scopeLoading'
       ? {
@@ -1470,6 +1534,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     data: LearnerStatePayload,
     requestScopeKey: string,
   ): LearnerStateRefreshResult => {
+    setCompatibilityRouteRetired(false)
     const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
     if (data.frontier && Array.isArray(data.frontier)) {
       setFrontierOptions(data.frontier)
@@ -1545,6 +1610,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           if (!isLearnerStatePayload(data)) return null
           return applyLearnerStatePayload(data, requestScopeKey)
         }
+        if (res.status === 409) {
+          if (!isCurrentRequest()) return null
+          setCompatibilityRouteRetired(true)
+          setFrontierOptions([])
+          setStateActiveGoalId(null)
+          setLearnerData(prev => prev ? { ...prev, activeGoalId: undefined } : prev)
+          setStateRequiredAction('compatibilityArchive')
+          setBackendStats(null)
+          setLearnerStateLoadState({
+            scopeKey: requestScopeKey,
+            status: 'ready',
+          })
+          clearReportedLoadError('learner-initial-load')
+          return null
+        }
         if (!isCurrentRequest()) return null
         setLearnerStateLoadState({
           scopeKey: requestScopeKey,
@@ -1565,6 +1645,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     },
     [
       applyLearnerStatePayload,
+      clearReportedLoadError,
       learnerStateScopeKey,
       notifyLoadErrorOnce,
       skillpilotId,
@@ -1863,6 +1944,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId, refreshPlanned, refreshLearnerData])
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
+    if (isCompatibilityAuditOnly) {
+      setModalTitle(legacyReadOnlyCopy.title)
+      setModalMessage(legacyReadOnlyCopy.activeGoalMessage)
+      setModalType('info')
+      setIsModalOpen(true)
+      return
+    }
     if (!skillpilotId) return;
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -1917,6 +2005,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       onNotify?.('error', t.notifications.activeGoalSetSystemFailed)
     }
   }, [
+    isCompatibilityAuditOnly,
+    legacyReadOnlyCopy,
     learnerViewCopy.activeGoalNotAllowedTitle,
     learnerViewCopy.activeGoalNotInFrontierMessage,
     onNotify,
@@ -1933,6 +2023,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ])
 
   const togglePlan = useCallback(async (id: string) => {
+    if (isCompatibilityAuditOnly) {
+      setModalTitle(legacyReadOnlyCopy.title)
+      setModalMessage(legacyReadOnlyCopy.planMessage)
+      setModalType('info')
+      setIsModalOpen(true)
+      return
+    }
     // Single-focus mode: a completed personal curriculum always keeps one
     // focus. Re-selecting the current focus is therefore idempotent; selecting
     // another row replaces it.
@@ -1994,6 +2091,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     applyLearnerStatePayload,
     buildCollapsedFocusPath,
     currentRouteGoalId,
+    isCompatibilityAuditOnly,
+    legacyReadOnlyCopy,
     learnerStateScopeKey,
     onNotify,
     onSelectGoal,
@@ -2143,6 +2242,89 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     document.body.style.cursor = 'col-resize'
     document.body.style.userSelect = 'none'
   }, [resize, stopResizing])
+
+  const handleCutoverCanonicalGymnasium = useCallback(async () => {
+    if (!skillpilotId || isCutoverPending) return
+    setIsCutoverPending(true)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const res = await requestCanonicalGymnasiumCutover(fetch, apiBase, skillpilotId)
+      if (!res.ok) {
+        const message = await res.text()
+        setModalTitle(legacyErrorCopy.cutoverTitle)
+        setModalMessage(
+          message || legacyErrorCopy.cutoverCreateMessage,
+        )
+        setModalType('error')
+        setIsModalOpen(true)
+        return
+      }
+
+      const data = await res.json()
+      if (data.frontier && Array.isArray(data.frontier)) {
+        setFrontierOptions(data.frontier)
+      } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+        setFrontierOptions(data.stateMachine.goalOptions)
+      } else {
+        setFrontierOptions([])
+      }
+      setStateActiveGoalId(data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null)
+      setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+      if (data.goals) {
+        const backendPlannedGoalIds = (data.goals.planned ?? []).map((goal: FrontierGoal) => goal.id).filter(Boolean)
+        setPlannedGoals(new Set(backendPlannedGoalIds))
+        setBackendStats({
+          masteredAtomic: data.goals.mastered_count ?? 0,
+          totalAtomic: data.goals.total_count ?? 0,
+          personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
+          personalizedTotalAtomic: data.goals.personalized?.total_atomic,
+          plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
+        })
+      }
+
+      const targetGoalId =
+        data.activeGoal?.id ??
+        data.goals?.planned?.[0]?.id ??
+        data.stateMachine?.activeGoal?.id ??
+        data.stateMachine?.goalOptions?.[0]?.id ??
+        null
+
+      if (targetGoalId && onLandscapeGoalChange) {
+        onLandscapeGoalChange(CANONICAL_GYMNASIUM_ROOT_ID, targetGoalId)
+      } else {
+        onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+      }
+
+      await Promise.all([
+        refreshLearnerData(),
+        onRefresh?.(),
+      ])
+      setCompatibilityRouteRetired(false)
+      dispatchLearnerUiRefresh({
+        skillpilotId,
+        reason: 'CANONICAL_CUTOVER',
+        targets: ['all'],
+      })
+      setIsSetupOpen(false)
+      setModalTitle(legacyUiCopy.cutoverSuccessTitle)
+      setModalMessage(
+        legacyCutoverUiState.cutoverSuccessMessage
+          ?? legacyUiCopy.cutoverFallbackMessage,
+      )
+      setModalType('success')
+      setIsModalOpen(true)
+    } catch (e) {
+      console.warn('Failed to cut over learner to canonical Gymnasium', e)
+      setModalTitle(legacyErrorCopy.cutoverTitle)
+      setModalMessage(
+        legacyErrorCopy.cutoverSystemMessage,
+      )
+      setModalType('error')
+      setIsModalOpen(true)
+    } finally {
+      setIsCutoverPending(false)
+    }
+  }, [skillpilotId, isCutoverPending, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, legacyCutoverUiState.cutoverSuccessMessage, legacyErrorCopy, legacyUiCopy])
 
   useEffect(() => {
     if (!canAutoRepairAbi26Personalization || !campaignContext || !rootLandscapeId) return
@@ -2417,6 +2599,92 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     link.click()
     document.body.removeChild(link)
   }, [skillpilotId])
+
+  const handleCompatibilityArchiveDownload = useCallback(async () => {
+    if (!skillpilotId || isCompatibilityArchivePending) return
+    setIsCompatibilityArchivePending(true)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${skillpilotId}/compatibility-archive`
+        : `/api/ui/learners/${skillpilotId}/compatibility-archive`
+      const res = await fetch(url)
+      if (!res.ok) {
+        const message = await res.text()
+        if (onNotify) {
+          onNotify('error', message || t.notifications.compatibilityArchiveExportFailed)
+        } else {
+          setModalTitle(legacyErrorCopy.archiveTitle)
+          setModalMessage(
+            message || legacyErrorCopy.archiveCreateMessage,
+          )
+          setModalType('error')
+          setIsModalOpen(true)
+        }
+        return
+      }
+
+      const serverArchive = await res.json()
+      const clientData: Record<string, unknown> = { srsState: {} }
+      const prefix = `srs_state_${skillpilotId}_`
+
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i)
+          if (key && key.startsWith(prefix)) {
+            const val = localStorage.getItem(key)
+            if (val) (clientData.srsState as Record<string, unknown>)[key] = JSON.parse(val)
+          }
+        }
+      } catch (e) {
+        console.warn('Error collecting local SRS state for compatibility archive', e)
+      }
+
+      const exportPayload = {
+        version: 'compatibility-archive/1.0',
+        exportedAt: new Date().toISOString(),
+        serverArchive,
+        clientData,
+      }
+
+      downloadJsonPayload(exportPayload, 'compatibility_archive')
+      if (onNotify) {
+        onNotify('success', t.notifications.compatibilityArchiveExported)
+      } else {
+        setModalTitle(legacyUiCopy.archiveSuccessTitle)
+        setModalMessage(
+          legacyCutoverUiState.compatibilityArchiveSuccessMessage
+            ?? legacyUiCopy.archiveFallbackMessage,
+        )
+        setModalType('success')
+        setIsModalOpen(true)
+      }
+    } catch (e) {
+      console.error('Compatibility archive export error', e)
+      if (onNotify) {
+        onNotify('error', t.notifications.compatibilityArchiveExportFailed)
+      } else {
+        setModalTitle(legacyErrorCopy.archiveTitle)
+        setModalMessage(
+          legacyErrorCopy.archiveSystemMessage,
+        )
+        setModalType('error')
+        setIsModalOpen(true)
+      }
+    } finally {
+      setIsCompatibilityArchivePending(false)
+    }
+  }, [
+    downloadJsonPayload,
+    isCompatibilityArchivePending,
+    legacyErrorCopy,
+    legacyCutoverUiState.compatibilityArchiveSuccessMessage,
+    legacyUiCopy,
+    onNotify,
+    skillpilotId,
+    t.notifications.compatibilityArchiveExportFailed,
+    t.notifications.compatibilityArchiveExported,
+  ])
 
   const handleExport = useCallback(async () => {
     if (!skillpilotId) return
@@ -2942,6 +3210,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               plannedGoals={plannedGoals}
               plannedScopeGoalIds={plannedScopeGoalIds}
               onTogglePlan={togglePlan}
+              readOnly={isCompatibilityAuditOnly}
               onSelect={onSelectGoal}
               selectedId={selectedId}
               activeFilter={effectiveActiveFilter}
@@ -3016,8 +3285,96 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
         ) : currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {canCutoverLegacyGymnasium && (
+              <div className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/90 p-4 shadow-sm dark:border-amber-700/60 dark:bg-amber-950/30">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                      {legacyCutoverUiState.bannerLabel}
+                    </div>
+                    <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
+                      {legacyCutoverUiState.bannerDescription}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 gap-2">
+                    {supportsCompatibilityArchive && (
+                      <button
+                        type="button"
+                        onClick={handleCompatibilityArchiveDownload}
+                        disabled={isCompatibilityArchivePending}
+                        className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+                      >
+                        {isCompatibilityArchivePending
+                          ? legacyCutoverUiState.compatibilityArchivePendingLabel
+                          : legacyCutoverUiState.compatibilityArchiveActionLabel}
+                      </button>
+                    )}
+	                    <button
+	                      type="button"
+	                      onClick={() => setIsSetupOpen(true)}
+	                      className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+	                    >
+	                      {legacyUiCopy.setupButtonLabel}
+	                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCutoverCanonicalGymnasium}
+                      disabled={isCutoverPending}
+                      className="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <MoveRight size={16} />
+                      <span>
+                        {isCutoverPending
+                          ? legacyCutoverUiState.actionPendingLabel
+                          : legacyCutoverUiState.actionLabel}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+            {shouldShowCompatibilityRetirementGate && (
+              <div className="mb-6 rounded-xl border border-sky-300/80 bg-sky-50/90 p-5 shadow-sm dark:border-sky-700/60 dark:bg-sky-950/30">
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <div className="text-sm font-semibold text-sky-800 dark:text-sky-300">
+                      {legacyCutoverUiState.retirementGateCopy?.title}
+                    </div>
+                    <p className="mt-2 text-sm text-sky-900/90 dark:text-sky-100/90">
+                      {legacyCutoverUiState.retirementGateCopy?.description}
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <button
+                      type="button"
+                      onClick={handleCutoverCanonicalGymnasium}
+                      disabled={isCutoverPending}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <MoveRight size={16} />
+                      <span>
+                        {isCutoverPending
+                          ? legacyCutoverUiState.retirementGateCopy?.cutoverPendingLabel
+                          : legacyCutoverUiState.retirementGateCopy?.cutoverLabel}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCompatibilityArchiveDownload}
+                      disabled={isCompatibilityArchivePending}
+                      className="rounded-lg border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors hover:bg-sky-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-700 dark:bg-sky-950/40 dark:text-sky-100 dark:hover:bg-sky-900/50"
+                    >
+                      {isCompatibilityArchivePending
+                        ? legacyCutoverUiState.retirementGateCopy?.archivePendingLabel
+                        : legacyCutoverUiState.retirementGateCopy?.archiveLabel}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
             {/* Check for SRS Tag */}
-            {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+            {!shouldShowCompatibilityRetirementGate && (
+              currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
                 <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
                   <div className="mb-6 border-b border-border-color pb-4">
                     <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
@@ -3042,6 +3399,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         goalId={currentGoal.id}
                         dataSourceUrl={getSrsSource(currentGoal)}
                         skillPilotId={skillpilotId}
+                        readOnly={isCompatibilityAuditOnly}
                         titleOverride={getLearnerGoalTitle(currentGoal)}
                         onSync={syncClientData}
                         reloadSignal={srsReloadCounter}
@@ -3172,6 +3530,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   showLearnerTools={true}
                   hideTechnicalStructureUi
                   hideTitleWhenPrimaryVisualizationVisible
+                  readOnly={isCompatibilityAuditOnly}
                   isPlanned={plannedGoals.has(currentGoal.id)}
                   isActive={effectiveActiveGoalId === currentGoal.id}
                   onSetActive={handleSetActiveGoal}
@@ -3180,10 +3539,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
                   activeFilter={effectiveActiveFilter}
                 />
-              )}
+              )
+            )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {shouldShowNextSteps && (
+            {!shouldShowCompatibilityRetirementGate && !isCompatibilityAuditOnly && shouldShowNextSteps && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
@@ -3250,6 +3610,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onClose={() => setIsSetupOpen(false)}
         availableLandscapes={availableLandscapes}
         currentLandscapeId={landscapeId}
+        retirementOnly={canCutoverLegacyGymnasium}
         onApply={handlePersonalCurriculumApply}
         onPreferencesApply={(preferences) =>
           handlePersonalCurriculumApply(personalConfig, preferences)}
@@ -3266,6 +3627,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             applyOption: applyGuidedPersonalizationOption,
             reopen: reopenGuidedPersonalization,
             rewind: rewindGuidedPersonalization,
+          }
+          : undefined}
+        migration={canCutoverLegacyGymnasium
+          ? {
+            title: legacyCutoverUiState.migrationTitle ?? '',
+            description: legacyCutoverUiState.migrationDescription ?? '',
+            actionLabel: legacyCutoverUiState.migrationActionLabel ?? '',
+            actionPending: isCutoverPending,
+            onAction: handleCutoverCanonicalGymnasium,
+            previewItems: legacyCutoverUiState.previewItems,
           }
           : undefined}
       />

@@ -13,7 +13,7 @@ import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
 
-import { Save, Trash2 } from 'lucide-react'
+import { Pencil, Save, Trash2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
@@ -22,9 +22,13 @@ import { interpolateTemplate } from '../utils/interpolateTemplate'
 import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
-import { goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
+import {
+  getGlobalStageScopeSelection,
+  goalMatchesGlobalStageScope,
+} from '../utils/personalCurriculumStageScope'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { normalizeDurationModel } from '../utils/durationModel'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -32,6 +36,7 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
   classSetupLandscapes?: LandscapeEntry[]
+  classSetupRootLandscapeId?: string
   onContextChange: (
     landscapeId: string,
     filter: string,
@@ -79,6 +84,7 @@ const loadStoredActiveClassId = (): string | null => {
 export const TrainerView: React.FC<TrainerViewProps> = ({
   landscapeEntries,
   classSetupLandscapes,
+  classSetupRootLandscapeId,
   onContextChange,
   routeGoalId,
   currentLearnerId,
@@ -96,6 +102,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [activeClassId, setActiveClassId] = useState<string | null>(loadStoredActiveClassId)
   const [openingClassId, setOpeningClassId] = useState<string | null>(null)
   const [isCreating, setIsCreating] = useState(false)
+  const [editingClassId, setEditingClassId] = useState<string | null>(null)
   const [isAssigning, setIsAssigning] = useState(false)
   const [selectedGoalId, setSelectedGoalId] = useState<string>('')
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
@@ -115,6 +122,92 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onConfirm: () => { },
   })
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
+
+  const setupLandscapeEntries = classSetupLandscapes ?? landscapeEntries
+  const isClassSetupReady = !classSetupRootLandscapeId || setupLandscapeEntries.some(
+    (entry) => entry.meta.landscapeId === classSetupRootLandscapeId,
+  )
+  const setupLandscapeById = useMemo(
+    () => new Map(setupLandscapeEntries.map((entry) => [entry.meta.landscapeId, entry])),
+    [setupLandscapeEntries],
+  )
+  const scopeCopy = useMemo(() => localizedLanguage === 'de'
+    ? ({
+        allJurisdictions: 'Alle Bundesländer',
+        jurisdictionOpen: 'Bundesland offen',
+        stageSek1: 'Sekundarstufe I',
+        stageSek2: 'Sekundarstufe II',
+        stageBoth: 'Sekundarstufe I + II',
+        stageOpen: 'Sekundarstufe offen',
+        durationOpen: 'G8/G9 offen',
+        courseProfileOpen: 'Kursprofil offen',
+        editTooltip: 'Klasse und Curriculum bearbeiten',
+        setupLoading: 'Gymnasium-Auswahl wird geladen …',
+      })
+    : {
+        allJurisdictions: 'All federal states',
+        jurisdictionOpen: 'Jurisdiction open',
+        stageSek1: 'Lower secondary',
+        stageSek2: 'Upper secondary',
+        stageBoth: 'Lower + upper secondary',
+        stageOpen: 'Secondary stage open',
+        durationOpen: 'G8/G9 open',
+        courseProfileOpen: 'Course profile open',
+        editTooltip: 'Edit class and curriculum',
+        setupLoading: 'Loading Gymnasium selection …',
+      }, [localizedLanguage])
+
+  const getClassScopeDisplay = useCallback((session: ClassSession) => {
+    const subjectEntry = setupLandscapeById.get(session.landscapeId)
+      ?? landscapeEntries.find((entry) => entry.meta.landscapeId === session.landscapeId)
+    const subjectLabel = subjectEntry?.meta.subject?.trim()
+      || subjectEntry?.meta.title?.trim()
+      || (localizedLanguage === 'de' ? 'Fach nicht zugeordnet' : 'Subject not assigned')
+    const rootFilterId = session.rootLandscapeId
+      ? session.personalConfig?.[session.rootLandscapeId]?.filterId
+      : undefined
+    const jurisdiction = normalizeJurisdictionCode(rootFilterId)
+    const jurisdictionLabel = jurisdiction
+      ? formatFilterDisplayLabel(jurisdiction, localizedLanguage)
+      : rootFilterId?.trim().toUpperCase() === 'ALL'
+        ? scopeCopy.allJurisdictions
+        : scopeCopy.jurisdictionOpen
+    const stageSelection = getGlobalStageScopeSelection(session.personalConfig ?? {}, {
+      rootLandscapeId: session.rootLandscapeId,
+      landscapeId: session.landscapeId,
+    })
+    const stageLabel = stageSelection.sek1Selected && stageSelection.sek2Selected
+      ? scopeCopy.stageBoth
+      : stageSelection.sek1Selected
+        ? scopeCopy.stageSek1
+        : stageSelection.sek2Selected
+          ? scopeCopy.stageSek2
+          : scopeCopy.stageOpen
+    const durationModel = normalizeDurationModel(
+      session.personalConfig?.[session.landscapeId]?.durationModel
+        ?? (session.rootLandscapeId ? session.personalConfig?.[session.rootLandscapeId]?.durationModel : undefined),
+    )
+    const rawCourseProfile = session.personalConfig?.[session.landscapeId]?.filterId
+      ?? session.activeFilter
+    const normalizedCourseProfile = rawCourseProfile?.trim().toUpperCase()
+    const courseProfile = normalizedCourseProfile === 'GK'
+      || normalizedCourseProfile === 'LK'
+      || normalizedCourseProfile === 'GK+LK'
+      ? normalizedCourseProfile
+      : null
+
+    return {
+      subjectLabel,
+      badges: [
+        jurisdictionLabel,
+        stageLabel,
+        durationModel ?? scopeCopy.durationOpen,
+        ...(stageSelection.sek2Selected
+          ? [courseProfile ? formatFilterDisplayLabel(courseProfile, localizedLanguage) : scopeCopy.courseProfileOpen]
+          : []),
+      ],
+    }
+  }, [landscapeEntries, localizedLanguage, scopeCopy, setupLandscapeById])
 
   const notifyLoadErrorOnce = useCallback((key: string, message: string) => {
     if (!onNotify) return
@@ -747,18 +840,40 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }
 
   // ----- RENDER -----
-  if (isCreating) {
+  const editingClass = editingClassId
+    ? classes.find((session) => session.id === editingClassId) ?? null
+    : null
+
+  if ((isCreating || editingClass) && !isClassSetupReady) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-slate-950 p-8 flex items-center justify-center text-text-secondary">
+        {scopeCopy.setupLoading}
+      </div>
+    )
+  }
+
+  if (isCreating || editingClass) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-slate-950 p-8 flex items-center justify-center">
         <ClassSetup
-          landscapes={classSetupLandscapes ?? landscapeEntries}
-          rootLandscapeId={classSetupLandscapes && classSetupLandscapes.length > 1 ? classSetupLandscapes[0]?.meta.landscapeId : undefined}
-          onCancel={() => setIsCreating(false)}
-          onSave={(session) => {
-            const next = [...classes, session]
-            persistClasses(next)
-            handleOpenClass(session)
+          key={editingClass?.id ?? 'new-class'}
+          landscapes={setupLandscapeEntries}
+          rootLandscapeId={classSetupRootLandscapeId}
+          initialSession={editingClass ?? undefined}
+          onCancel={() => {
             setIsCreating(false)
+            setEditingClassId(null)
+          }}
+          onSave={(session) => {
+            const next = editingClass
+              ? classes.map((current) => current.id === session.id ? session : current)
+              : [...classes, session]
+            persistClasses(next)
+            if (!editingClass) {
+              handleOpenClass(session)
+            }
+            setIsCreating(false)
+            setEditingClassId(null)
           }}
         />
       </div>
@@ -775,7 +890,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           <div className="flex gap-3">
             <button onClick={() => fileInputRef.current?.click()} className="border border-border-color hover:bg-gray-200 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-text-secondary transition-colors">{t.import}</button>
             <input type="file" ref={fileInputRef} onChange={handleImportClass} hidden accept=".json" />
-            <button onClick={() => setIsCreating(true)} className="bg-sky-600 hover:bg-sky-500 px-6 py-2 rounded-lg font-medium transition-colors text-white">+ {t.newClass}</button>
+            <button
+              onClick={() => setIsCreating(true)}
+              disabled={!isClassSetupReady}
+              title={!isClassSetupReady ? scopeCopy.setupLoading : undefined}
+              className="bg-sky-600 hover:bg-sky-500 px-6 py-2 rounded-lg font-medium transition-colors text-white disabled:cursor-wait disabled:opacity-60"
+            >
+              + {t.newClass}
+            </button>
             {onLogout && (
               <LogoutButton
                 onLogout={onLogout}
@@ -786,11 +908,24 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           </div>
         </header>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {classes.map((c) => (
+          {classes.map((c) => {
+            const scope = getClassScopeDisplay(c)
+            return (
             <div key={c.id} onClick={() => handleOpenClass(c)} className="relative flex flex-col text-left bg-sidebar-bg border border-border-color hover:border-sky-500 p-6 rounded-xl transition-all group cursor-pointer">
               <div className="flex justify-between items-start mb-1">
                 <div className="font-bold text-lg text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 pr-2">{c.name}</div>
                 <div className="flex gap-2">
+                  <button
+                    onClick={(event) => {
+                      event.stopPropagation()
+                      setEditingClassId(c.id)
+                    }}
+                    disabled={!isClassSetupReady}
+                    className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors disabled:cursor-wait disabled:opacity-50"
+                    title={isClassSetupReady ? scopeCopy.editTooltip : scopeCopy.setupLoading}
+                  >
+                    <Pencil size={16} className="pointer-events-none" />
+                  </button>
                   <button
                     onClick={(e) => handleExportClass(e, c)}
                     className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
@@ -809,24 +944,19 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               </div>
 
               <div className="text-sm text-text-secondary mb-4">{c.students.length} {t.students}</div>
-              <div className="mt-auto flex gap-2 text-[10px] uppercase tracking-wider text-text-secondary">
-                <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">{c.landscapeId}</span>
-                  <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
-                  {formatFilterDisplayLabel(
-                    c.rootLandscapeId
-                      ? (c.personalConfig?.[c.rootLandscapeId]?.filterId ?? 'ALL')
-                      : ((c.activeFilter || 'all').toUpperCase() === 'ALL' ? 'ALL' : (c.activeFilter || 'all')),
-                    localizedLanguage,
-                  )}
-                </span>
-                {c.personalConfig?.[c.landscapeId]?.filterId && c.personalConfig[c.landscapeId]?.filterId !== 'ALL' && (
-                  <span className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
-                    {formatFilterDisplayLabel(c.personalConfig[c.landscapeId]!.filterId!, localizedLanguage)}
+              {scope.subjectLabel !== c.name && (
+                <div className="mb-2 text-sm font-medium text-text-primary">{scope.subjectLabel}</div>
+              )}
+              <div className="mt-auto flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-text-secondary">
+                {scope.badges.map((badge, index) => (
+                  <span key={`${index}:${badge}`} className="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded border border-border-color">
+                    {badge}
                   </span>
-                )}
+                ))}
               </div>
             </div>
-          ))}
+            )
+          })}
           {classes.length === 0 && <div className="col-span-full text-center py-20 border-2 border-dashed border-border-color rounded-2xl text-text-secondary">{t.emptyClasses}</div>}
         </div>
 

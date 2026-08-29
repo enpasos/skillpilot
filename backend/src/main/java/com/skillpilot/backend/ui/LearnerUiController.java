@@ -7,9 +7,6 @@ import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
 import com.skillpilot.backend.api.ChatStartRequest;
 import com.skillpilot.backend.api.ChatStartResponse;
-import com.skillpilot.backend.api.CompatibilityArchiveResponse;
-import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverRequest;
-import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResponse;
 import com.skillpilot.backend.api.MasteryResponse;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.FrontierResponse;
@@ -203,28 +200,6 @@ public class LearnerUiController {
             @RequestParam(defaultValue = "de") String lang) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getLearnerLandscapeClosure(skillpilotId, landscapeId, lang);
-    }
-
-    @GetMapping("/{skillpilotId}/compatibility-archive")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public CompatibilityArchiveResponse exportCompatibilityArchive(@PathVariable String skillpilotId) {
-        return learnerService.exportCompatibilityArchive(skillpilotId);
-    }
-
-    @PostMapping("/{skillpilotId}/cutover/canonical-gymnasium")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public UnifiedLearnerStateResponse cutoverCanonicalGymnasium(@PathVariable String skillpilotId) {
-        return learnerLifecycle.withActivity(skillpilotId, () -> {
-            learnerService.cutoverLegacyHessenGymnasiumToCanonicalAndPersistPlannedGoals(skillpilotId);
-            return learnerService.getLearnerState(skillpilotId);
-        });
-    }
-
-    @PostMapping("/cutover/canonical-gymnasium/bulk")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public BulkCanonicalGymnasiumCutoverResponse bulkCutoverCanonicalGymnasium(
-            @Valid @RequestBody BulkCanonicalGymnasiumCutoverRequest request) {
-        return learnerService.bulkCutoverLegacyHessenGymnasiumToCanonical(request.skillpilotIds(), request.dryRun());
     }
 
     @GetMapping("/{skillpilotId}/client-state/{nodeId}")

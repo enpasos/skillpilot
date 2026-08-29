@@ -397,21 +397,41 @@ const App: React.FC = () => {
   )
 
   const trainerClassSetupLandscapes = useMemo(() => {
-    if (!currentLandscapeEntry) {
-      return landscapeEntries
+    const setupLandscapeEntries = setupClosureRootLandscapeId
+      && canonicalGymnasiumSetupLandscapeEntries.some(
+        (entry) => entry.meta.landscapeId === setupClosureRootLandscapeId,
+      )
+      ? canonicalGymnasiumSetupLandscapeEntries
+      : landscapeEntries
+    const setupCurrentLandscapeEntry = setupLandscapeEntries.find(
+      (entry) => entry.meta.landscapeId === currentLandscapeEntry?.meta.landscapeId,
+    ) ?? currentLandscapeEntry
+
+    if (
+      setupClosureRootLandscapeId
+      && setupLandscapeEntries.some((entry) => entry.meta.landscapeId === setupClosureRootLandscapeId)
+    ) {
+      return setupLandscapeEntries
     }
 
-    const entriesById = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
-    const getLandscapeRoot = (entry: typeof currentLandscapeEntry) =>
+    if (!setupCurrentLandscapeEntry) {
+      return setupLandscapeEntries
+    }
+
+    const entriesById = new Map(setupLandscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
+    const setupGoalIndex = new Map(
+      setupLandscapeEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)),
+    )
+    const getLandscapeRoot = (entry: NonNullable<typeof setupCurrentLandscapeEntry>) =>
       entry.goals.find((goal) => goal.tags?.includes('root')) ?? entry.goals[0]
 
-    const collectChildLandscapeEntries = (rootEntry: typeof currentLandscapeEntry) => {
+    const collectChildLandscapeEntries = (rootEntry: NonNullable<typeof setupCurrentLandscapeEntry>) => {
       const rootGoal = getLandscapeRoot(rootEntry)
-      const nextChildren: typeof landscapeEntries = []
+      const nextChildren: typeof setupLandscapeEntries = []
       const seenLandscapeIds = new Set<string>()
 
       for (const childId of rootGoal?.contains ?? []) {
-        const childGoal = selectionGoalIndexAll.get(childId)
+        const childGoal = setupGoalIndex.get(childId) ?? selectionGoalIndexAll.get(childId)
         const childLandscapeId = childGoal?.landscapeId
         if (
           !childLandscapeId ||
@@ -433,17 +453,17 @@ const App: React.FC = () => {
       return nextChildren
     }
 
-    const directChildren = collectChildLandscapeEntries(currentLandscapeEntry)
+    const directChildren = collectChildLandscapeEntries(setupCurrentLandscapeEntry)
     if (directChildren.length > 0) {
-      return [currentLandscapeEntry, ...directChildren]
+      return [setupCurrentLandscapeEntry, ...directChildren]
     }
 
-    const parentEntry = landscapeEntries.find((entry) => {
-      if (entry.meta.landscapeId === currentLandscapeEntry.meta.landscapeId) {
+    const parentEntry = setupLandscapeEntries.find((entry) => {
+      if (entry.meta.landscapeId === setupCurrentLandscapeEntry.meta.landscapeId) {
         return false
       }
       return collectChildLandscapeEntries(entry).some(
-        (childEntry) => childEntry.meta.landscapeId === currentLandscapeEntry.meta.landscapeId,
+        (childEntry) => childEntry.meta.landscapeId === setupCurrentLandscapeEntry.meta.landscapeId,
       )
     })
 
@@ -451,8 +471,32 @@ const App: React.FC = () => {
       return [parentEntry, ...collectChildLandscapeEntries(parentEntry)]
     }
 
-    return [currentLandscapeEntry]
-  }, [currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll])
+    return [setupCurrentLandscapeEntry]
+  }, [
+    canonicalGymnasiumSetupLandscapeEntries,
+    currentLandscapeEntry,
+    landscapeEntries,
+    selectionGoalIndexAll,
+    setupClosureRootLandscapeId,
+  ])
+  const trainerClassSetupRootLandscapeId = useMemo(() => {
+    if (setupClosureRootLandscapeId) {
+      return setupClosureRootLandscapeId
+    }
+
+    const goalLandscapeById = new Map(
+      trainerClassSetupLandscapes.flatMap((entry) =>
+        entry.goals.map((goal) => [goal.id, entry.meta.landscapeId] as const),
+      ),
+    )
+    return trainerClassSetupLandscapes.find((entry) => {
+      const rootGoal = entry.goals.find((goal) => goal.tags?.includes('root')) ?? entry.goals[0]
+      return rootGoal?.contains.some((goalId) => {
+        const childLandscapeId = goalLandscapeById.get(goalId)
+        return childLandscapeId && childLandscapeId !== entry.meta.landscapeId
+      })
+    })?.meta.landscapeId
+  }, [setupClosureRootLandscapeId, trainerClassSetupLandscapes])
 
   useEffect(() => {
     if (!pendingLandscapeId) return
@@ -918,7 +962,6 @@ const App: React.FC = () => {
               onScopeDataRefresh={core.refreshLearnerGraphData}
               parentMap={core.parentMapAll}
               onLandscapeChange={core.setSelectedLandscapeId}
-              onLandscapeGoalChange={core.handleNavigateToExternal}
             />
           }
         />
@@ -928,6 +971,7 @@ const App: React.FC = () => {
             <TrainerView
               landscapeEntries={core.landscapeEntries}
               classSetupLandscapes={trainerClassSetupLandscapes}
+              classSetupRootLandscapeId={trainerClassSetupRootLandscapeId}
               onContextChange={core.handleTrainerContextChange}
               routeGoalId={core.currentRouteGoalId}
               currentLearnerId={trainerLearnerId}

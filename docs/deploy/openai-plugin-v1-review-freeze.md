@@ -807,6 +807,49 @@ Die aktualisierte fokussierte Regression ist ebenfalls hashgebunden:
 - `app/scripts/testPublicOverviewUi.tsx`:
   `fe66f2148c198663aa671ce1a1eea4ccdf57b23bfdb4f20287c0c42a832ef757`.
 
+### 6.14 Eng begrenzte Ausnahme: obsoleten Gymnasium-Runtime-Cutover entfernen
+
+Der Product Owner hat am **29. August 2026** für das aktuelle
+Produktions-Webfrontend und -Backend ausdrücklich genehmigt, den nur für eine
+Übergangsphase gebauten Gymnasium-Legacy-Cutover vollständig zu entfernen. Der
+Grund ist, dass keine realen Legacy-Lernenden diesen Migrationspfad benötigen.
+Das OpenAI-Plugin bleibt unverändert `skillpilot-coach-v1` Version `1.0.0`; ein
+Zurückziehen oder erneutes Einreichen im Portal ist nicht erforderlich.
+
+Freigegeben ist ausschließlich:
+
+- das Bulkwerkzeug in `UsersView` samt Bulk-Endpunkt und ausschließlich dafür
+  vorhandenen DTOs, Zählern, Tests und Texten zu entfernen;
+- den Einzel-Cutover sowie die dazugehörigen Banner, Retirement-Ansichten und
+  Hilfslogik aus dem Lernenden-Cockpit zu entfernen;
+- den dedizierten per-learner Kompatibilitätsarchiv-Download samt Endpoint,
+  DTOs, Servicepfad und ausschließlich dazugehörigen Tests zu entfernen;
+- die danach eindeutig toten Frontend-Helper, Package-Consumer-Aliase und
+  Backend-Servicepfade zu entfernen;
+- verbleibende generische Read-only-Fehlertexte von den entfernten Aktionen zu
+  entkoppeln.
+
+Unverändert erhalten bleiben die kanonischen Curricula, die internen
+Quelllandschaften sowie die DE-weiten Archive, Mapping-, Provenance-,
+Kompatibilitäts-Summary- und Topic-Summary-Lanes. Ebenfalls unverändert bleiben
+die aktuelle Personalization-Migration, alle unterstützten aktuellen
+Lernzustandssemantiken, Coach-Handler, vorbereitete Nachrichten, OpenAI-Paket,
+MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und
+Reviewartefakte. Die deutschen und englischen Locale-Dateien bleiben
+byte-identisch; ihre nun ungenutzten historischen Operator-Texte werden wegen
+der bestehenden Hashbindung nicht in dieser Ausnahme verändert.
+
+Der vorherige geschützte Stand wurde vor der Änderung byte-identisch als
+historische Evidenz archiviert und bleibt zusammen mit dem autorisierten Hash
+verankert:
+
+- `app/src/views/LearnerView.tsx`:
+  `ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7`
+  →
+  `d579e459e6450cc6891971bab3a65621a3409a0c5d16ae9c22ce67b24956e0e6`;
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-pre-runtime-cutover-cleanup-LearnerView.tsx`:
+  `ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
