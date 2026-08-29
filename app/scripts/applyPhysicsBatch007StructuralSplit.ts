@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 
-type JsonRecord = Record<string, any>
+type JsonRecord = Record<string, unknown>
 
 const repoRoot = resolve(import.meta.dirname, '../..')
 const writeMode = process.argv.includes('--write')
@@ -587,7 +587,8 @@ function replaceDirectGoalEntry(value: unknown): { value: unknown; count: number
         const record = entry as JsonRecord
         if (record.goalId === ids.retainedHearingNoise || (record.goalId === ids.noiseExposure && !hasPrerequisite)) {
           count += 1
-          const { displayLabel: _displayLabel, ...base } = record
+          const base = { ...record }
+          delete base.displayLabel
           const target = { ...record, goalId: ids.noiseExposure }
           return [
             { ...base, goalId: ids.hearingProcess, projectionRole: 'prerequisiteOnly' },

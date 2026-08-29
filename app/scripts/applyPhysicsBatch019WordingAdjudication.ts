@@ -3,7 +3,7 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 
-type JsonRecord = Record<string, any>
+type JsonRecord = Record<string, unknown>
 
 const repoRoot = resolve(import.meta.dirname, '../..')
 const writeMode = process.argv.includes('--write')
