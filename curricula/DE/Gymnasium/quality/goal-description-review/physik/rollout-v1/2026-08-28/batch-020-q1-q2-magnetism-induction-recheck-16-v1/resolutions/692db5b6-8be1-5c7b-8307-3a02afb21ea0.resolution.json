@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-resolution-692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+  "goal": {
+    "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad",
+    "pageFingerprint": "sha256:6d71ffaed29063bb00edbfe6841996ae5f3eae6b8fcf91a4141e49318dfbef59",
+    "goalReviewContextFingerprint": "sha256:c7e6bf9cd313ce90c04e0c7258202ecb7c2ecc00a225ccf449a79884230f6278",
+    "finalText": {
+      "titleDe": "Ein- und Ausschaltvorgänge analysieren",
+      "titleEn": "Analyze Switch-On and Switch-Off Processes",
+      "descriptionDe": "Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.",
+      "descriptionEn": "The learner can quantitatively analyze current and voltage curves when an idealized RL circuit is switched on and off using the time constant τ = L/R and determine the inductance from such a transient."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:c7e6bf9cd313ce90c04e0c7258202ecb7c2ecc00a225ccf449a79884230f6278",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167",
+      "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-12",
+      "recordDigest": "sha256:785256bb72321ee9b2b5e4478362239f4661007140e04a57d58f264a8c1a8de9"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:c7e6bf9cd313ce90c04e0c7258202ecb7c2ecc00a225ccf449a79884230f6278",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150",
+      "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r012",
+      "recordDigest": "sha256:47e6e5de305e93f288f9b840c6b019fa74f8d9a7b22e417c21b575c2f9298c95"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+    "manifestDigest": "sha256:f9ee42a12924c8cdbe09d8edf18b3e54bc426e22d2ac1c3944ce5c7cdb9af45b",
+    "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2",
+    "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+    "synthesizedAt": "2026-08-28T14:07:36.000Z",
+    "rationaleDe": "Ein- und Ausschalten sowie die Bestimmung von L sind komplementäre Auswertungen desselben idealisierten RL-Modells; beide Reviews bestätigen `keep`. Die erste Runde enthält die vollständigere Anfangs-, Grenzwert-, Vorzeichen- und Transferprüfung und wird als Evidence gebunden; die zweite bleibt Dissent.",
+    "rationaleEn": "Switch-on, switch-off, and determination of L are complementary analyses of the same idealized RL model; both reviews confirm keep. The first round contains the fuller initial-value, limiting-value, sign, and transfer checks and is bound as evidence; the second remains dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im idealisierten linearen RL-Stromkreis kann der Spulenstrom nicht sprunghaft ändern; das Zusammenspiel von Widerstand und Selbstinduktion erzeugt exponentielle Ein- und Ausschaltverläufe. Die Zeitkonstante τ = L/R legt die Zeitskala fest und erlaubt bei bekanntem R die Bestimmung von L.",
+      "essentialUnderstandingEn": "In an idealized linear RL circuit, inductor current cannot change discontinuously; the interaction of resistance and self-induction produces exponential switch-on and switch-off transients. The time constant τ = L/R sets the time scale and allows L to be determined when R is known.",
+      "observablePerformanceDe": "Die lernende Person ordnet Strom- und Spannungsverläufe den Bauteilen und Schaltphasen zu, bestimmt Anfangs- und Grenzwerte sowie τ aus einem Graphen oder Modell, berechnet daraus L mit Einheit und prüft die Plausibilität des Verlaufs einschließlich der Vorzeichen.",
+      "observablePerformanceEn": "The learner assigns current and voltage curves to the components and switching phases, determines initial and limiting values and τ from a graph or model, calculates L with its unit, and checks the plausibility of the transient including signs.",
+      "transferExpectationDe": "Für einen neuen RL-Kreis mit geändertem Widerstand, anderer Anfangsbedingung oder umgekehrter Quellenspannung sagt die lernende Person vor der Rechnung voraus, wie Zeitskala, Grenzwerte und Spannungspolungen verändert werden, und bestätigt dies quantitativ.",
+      "transferExpectationEn": "For a new RL circuit with changed resistance, a different initial condition, or reversed source voltage, the learner predicts before calculating how the time scale, limiting values, and voltage polarities change and then confirms the prediction quantitatively."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b41c36657d3d0666fe87fb7e7140847f1c4d6b94f12d3b3048bc0d55b189a88d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2c1f644d733068ac0a433ac167afde7bd631a714bfa4de6ba37545725eace41f"
+}

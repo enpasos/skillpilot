@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:09c55fdd10e7d66772d3dacbe6e033bff8c91bac4c917eb042963b87cc8f2b9f",
+  "reviewInputFingerprint": "sha256:38597f268f7af61207e37a9c0b8e63780e340bbdfbadb7809d3da6364c0a9f79",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-a",
+      "roundId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-independent-a",
+      "runIds": [
+        "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-b",
+      "roundId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-independent-b",
+      "runIds": [
+        "math-fast-j7-geom-measure-rb-20260828-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::GPT-5"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "firstRecordId": "gdr-math-j7-a-01-121e3fdf",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r01",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "firstRecordId": "gdr-math-j7-a-02-3e53a39b",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r02",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+      "firstRecordId": "gdr-math-j7-a-03-c31d3a7a",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r03",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "firstRecordId": "gdr-math-j7-a-04-34200b88",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r04",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "firstRecordId": "gdr-math-j7-a-05-f509a549",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r05",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
+      "firstRecordId": "gdr-math-j7-a-06-59d5a330",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r06",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+      "firstRecordId": "gdr-math-j7-a-07-8064088b",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r07",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "firstRecordId": "gdr-math-j7-a-08-ad26e4d9",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r08",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "firstRecordId": "gdr-math-j7-a-09-fc047e6e",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r09",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "firstRecordId": "gdr-math-j7-a-10-b37851f1",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r10",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+      "firstRecordId": "gdr-math-j7-a-11-f0a49da2",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r11",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "firstRecordId": "gdr-math-j7-a-12-de393ab3",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r12",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "firstRecordId": "gdr-math-j7-a-13-3017e774",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r13",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "firstRecordId": "gdr-math-j7-a-14-0f6c1df6",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r14",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
+      "firstRecordId": "gdr-math-j7-a-15-d051857c",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r15",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "firstRecordId": "gdr-math-j7-a-16-dcda6fdf",
+      "secondRecordId": "math-fast-j7-geom-measure-rb-20260828-r16",
+      "firstRunId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "secondRunId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

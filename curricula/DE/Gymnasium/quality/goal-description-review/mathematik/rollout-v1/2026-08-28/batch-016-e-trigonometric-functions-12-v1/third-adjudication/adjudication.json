@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-goal-description-third-adjudication-draft",
+  "draftContract": "skillpilot-goal-description-bilingual-adjudication-draft-v1",
+  "batchId": "mathematik-rollout-v1-batch-016-e-trigonometric-functions-12-v1-20260828",
+  "subject": "mathematik",
+  "adjudicatedAt": "2026-08-28",
+  "authority": "third_non_blind_subject_adjudication",
+  "mode": "repository_local_subject_adjudication",
+  "noProgressClaim": true,
+  "materialized": false,
+  "inputBinding": {
+    "configDigest": "sha256:8a9c76a6921bf34b78803166b0a6ef762e2f5d291840d533eaefb439f6d78699",
+    "batchManifestDigest": "sha256:b1b605176166663b6a952475b7df3bd51286a33f7c1aa4d0a83fc805e2ed380e",
+    "bundleFingerprint": "sha256:70b4ecb415c229a62b62fc52a8aae64be4fc07b52450193789f87dffc0ea6755",
+    "reviewInputFingerprint": "sha256:05998aa52102c690c48b77e622ae61082ccd7a5aee9d714c7fda8f66c7e0fa37",
+    "bookDigest": "sha256:44ab602f6e6d0787cf997d6aa5713bdc1e948833b31a39fc31a4e45467aaa5a8",
+    "dualSummaryDigest": "sha256:eef85e81514b4a8e59405fea348bfce5a4b6f67beb8b9b75c8e9ae5d42dc55d7",
+    "goalCount": 12,
+    "roundA": {
+      "runId": "mathematik-batch016-e-trig12-round-a-gpt5-20260828",
+      "runDigest": "sha256:c7f3127f857b2353d31be6f36197e7595d48ebc0122ecf864eeb34c936d608b2",
+      "recordsDigest": "sha256:4e5af4aef56ef7f67a50c37fbe41b0e15b68b243e418c078fff041ce40571daf"
+    },
+    "roundB": {
+      "runId": "math-b016-round-b-gpt5-20260828-run-001",
+      "runDigest": "sha256:8b45c9a16c160aae4f6de59f7a4f596cff066379f2d16a160b26461d45482b8e",
+      "recordsDigest": "sha256:8d387dddc70aa7cd56f06c0b0f8bd1204546d663c7c4b30732fe495f0d5de83a"
+    },
+    "blindnessEndedOnlyForThisThirdAdjudication": true
+  },
+  "counts": {
+    "total": 12,
+    "keep_current": 9,
+    "accepted_revision": 3,
+    "structural_split": 0,
+    "unresolved_block": 0,
+    "finalizableUnderCurrentText": 9,
+    "strictlyFinalizableBeforeIntegratedFollowUp": 0,
+    "requiresCanonicalReworkAndFreshBlindReview": 8,
+    "requiresFullContextRecheck": 8,
+    "requiresProductOwnerDecision": 0
+  },
+  "contractNoteDe": "Drei lokale Beschreibungsfehler werden behoben; neun fachlich tragfähige Beschreibungen bleiben unverändert. Zusätzlich entfällt am Einführungsziel zu Sinus und Kosinus genau die fachlich unplausible Voraussetzung bereits beherrschter Ableitungsregeln; das spätere Herleitungsziel wird stattdessen direkt an den Grenzwert des Differenzenquotienten gebunden. Die per Ziel gebundenen Review-Kontext-Fingerprints zeigen, dass Text, direkte oder umgekehrte Kanten und die korrigierte Assessment-Bindung genau acht Zielkontexte verändern. Nur diese acht Ziele werden deshalb mit zwei frischen unabhängigen Blindreviews erneut geprüft; die sechs byte- und kontextgleichen Entscheidungen bleiben gültig. Bis diese Nachprüfung und alle Layer-A-Gates erfolgreich sind, entsteht kein zusätzlicher strikter Fortschritt.",
+  "contractNoteEn": "Three local description defects are corrected, while nine substantively sound descriptions remain unchanged. In addition, the introductory sine-and-cosine goal loses exactly the implausible prerequisite of already mastered differentiation rules; the later derivation goal is instead linked directly to limits of difference quotients. Per-goal review-context fingerprints show that text, direct or reverse edges, and the corrected assessment bindings alter exactly eight goal contexts. Only those eight goals therefore undergo two fresh independent blind reviews; the six byte- and context-identical decisions remain valid. No additional strict progress is claimed until that recheck and every Layer-A gate pass.",
+  "productOwnerEscalations": [],
+  "topologyDecisions": [
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "decision": "remove_one_prerequisite",
+      "requiresBefore": [
+        "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "requiresAfter": [
+        "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "removedGoalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "rationaleDe": "Der Kreis-Koordinaten-Zugang zu Sinus und Kosinus setzt Bogenmaß und die Orientierung voraus, aber keine bereits beherrschten Ableitungsregeln elementarer Funktionen. Die aus dem HE-Quellgraphen übernommene Kante ist eine mechanische Sammelabhängigkeit: Das Quellziel zu elementaren Ableitungen besitzt zahlreiche fachfremde direkte Nachfolger und ist deshalb keine belastbare didaktische Autorität für dieses Einführungsziel. Die beiden tragfähigen Voraussetzungen bleiben unverändert.",
+      "rationaleEn": "The circle-coordinate introduction to sine and cosine requires radian measure and orientation, but not prior mastery of elementary differentiation rules. The edge copied from the Hesse source graph is a mechanical aggregate dependency: the source goal for elementary derivatives has numerous unrelated direct dependents and therefore is not credible didactic authority for this introductory goal. The two sound prerequisites remain unchanged."
+    },
+    {
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "decision": "add_one_precise_prerequisite",
+      "requiresBefore": [
+        "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"
+      ],
+      "requiresAfter": [
+        "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+        "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
+      ],
+      "addedGoalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "rationaleDe": "Die Herleitung der Ableitungsidentitäten benötigt den Ableitungsbegriff und den Grenzübergang vom Differenzenquotienten, nicht jedoch vorab eine Sammlung elementarer Ableitungsregeln. Die direkte Kante bildet genau diese fachliche Grundlage ab und bewahrt den unabhängigen Kreis-Koordinaten-Einstieg.",
+      "rationaleEn": "Deriving the differentiation identities requires the derivative concept and the limiting transition from a difference quotient, but not prior mastery of a collection of elementary differentiation rules. This direct edge captures exactly that foundation while preserving the independent circle-coordinate introduction."
+    }
+  ],
+  "topologyImpact": {
+    "directReverseContextGoalIds": [
+      "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
+    ],
+    "effectivePrerequisiteClosureChangedGoalIds": [
+      "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "56fba457-ab98-5b96-963e-ec284458c17f"
+    ]
+  },
+  "assessmentRemediation": {
+    "decision": "correct_overclaims_and_add_canonical_follow_up",
+    "existingAssessmentCoverage": [
+      {
+        "goalId": "3b1f0646-fd0e-5d9d-b515-a5a45417a005",
+        "requiresAndCoveredGoalIdsAfter": [
+          "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+          "ecd13e54-ab0e-550f-9400-66e13306635d"
+        ],
+        "rationaleDe": "Die unveränderte Riesenradaufgabe prüft Parameterdeutung und das Lösen trigonometrischer Gleichungen beziehungsweise Ungleichungen. Sie prüft weder die Kreis-Koordinaten-Entstehung, eine Ableitungsherleitung, eine ableitungsbasierte Funktionsuntersuchung noch eine Modellbildung aus Messdaten."
+      },
+      {
+        "goalId": "6634ef12-0e88-584e-8e45-9e60eafc0951",
+        "requiresAndCoveredGoalIdsAfter": [
+          "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+          "eda3a298-4965-525e-878d-f05b9e2d4503",
+          "ecd13e54-ab0e-550f-9400-66e13306635d",
+          "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+          "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+          "58d2f963-4fb9-550d-a832-f5ac60808900",
+          "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+          "f042385e-f772-42db-9c96-f21a792ac5ea"
+        ],
+        "rationaleDe": "Die unveränderte Federpendelaufgabe prüft Bogenmaß, Parameter, charakteristische Punkte ohne Differenzialrechnung, Gleichungen, Modellklassenvergleich, grafisches Differenzieren, Kettenregel, Kontextdeutung sowie Tangente und Normale. Sie prüft nicht die Kreis-Koordinaten-Entstehung, die geometrische oder grenzwertige Herleitung beider Grundableitungen, eine allgemeine ableitungsbasierte Untersuchung oder die Modellbildung aus Messdaten."
+      }
+    ],
+    "newAssessment": {
+      "goalId": "2c30949d-0381-5d32-81cf-c6eac7711399",
+      "shortKey": "canonical_math_e_practice_trigonometric_understanding_model_derivative",
+      "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_e_practice_trigonometric_understanding_model_derivative)",
+      "coveredGoalIds": [
+        "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+        "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+        "3401d95d-2191-5929-ac78-4de51d71a6be",
+        "56fba457-ab98-5b96-963e-ec284458c17f"
+      ],
+      "designGuard": "The task must make requires and examData.coveredGoalIds byte-identical and must independently elicit the circle-coordinate explanation, data-based model construction with assumptions and validation, both derivative identities in radian measure, and a derivative-based investigation. A supplied model, unexplained formula recall, or non-calculus extremum calculation is not sufficient evidence."
+    }
+  },
+  "requiredFollowUpGoalIds": [
+    "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+    "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+    "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+    "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+    "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+    "3401d95d-2191-5929-ac78-4de51d71a6be",
+    "ecd13e54-ab0e-550f-9400-66e13306635d",
+    "56fba457-ab98-5b96-963e-ec284458c17f"
+  ],
+  "decisions": [
+    {
+      "sequence": 1,
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-01",
+      "finalText": {
+        "titleDe": "Bogenmaß in periodischen Prozessen nutzen",
+        "titleEn": "Use radian measure in periodic processes",
+        "descriptionDe": "Die lernende Person kann das Bogenmaß als Winkelmaß in trigonometrischen Funktionstermen verwenden, zwischen Grad- und Bogenmaß wechseln und Bogenmaßangaben im Verlauf periodischer Prozesse deuten.",
+        "descriptionEn": "The learner can use radian measure as an angle measure in trigonometric function terms, convert between degrees and radians, and interpret radian values in periodic processes."
+      },
+      "rationaleDe": "Verwenden, Umrechnen und Deuten bilden eine kohärente Bogenmaß-Kompetenz; Verhältnis- und Transferlogik gehören in das Evidenzprofil.",
+      "rationaleEn": "Use, conversion, and interpretation form one coherent radian-measure competence; ratio and transfer reasoning belong in the evidence profile."
+    },
+    {
+      "sequence": 2,
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "third_source_bound_synthesis",
+      "finalText": {
+        "titleDe": "Sinus- und Kosinusfunktionen verstehen",
+        "titleEn": "Understand sine and cosine functions",
+        "descriptionDe": "Die lernende Person kann erklären, wie Sinus- und Kosinusfunktionen als Koordinatenverläufe einer Kreisbewegung entstehen, ihre Graphen skizzieren sowie Amplitude und Nullstellen als charakteristische Merkmale benennen.",
+        "descriptionEn": "The learner can explain how sine and cosine functions arise as coordinate traces of circular motion, sketch their graphs, and identify amplitude and zeros as characteristic features."
+      },
+      "rationaleDe": "Die Revision ersetzt das nicht beobachtbare „motivieren“ durch eine Erklärungsleistung und korrigiert die falsche Einordnung der Amplitude als Punkt. Der Koordinatenverlauf präzisiert den bereits beanspruchten Kreis-Graph-Zusammenhang, ohne den fachlichen Umfang zu erweitern.",
+      "rationaleEn": "The revision replaces the unobservable verb 'motivate' with an explanatory performance and corrects the false classification of amplitude as a point. Coordinate traces clarify the already intended circle-to-graph relationship without widening scope."
+    },
+    {
+      "sequence": 3,
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-03",
+      "finalText": {
+        "titleDe": "Parameter periodischer Funktionen deuten",
+        "titleEn": "Interpret parameters of periodic functions",
+        "descriptionDe": "Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \\cdot \\sin(bx+c)+d$ bestimmen.",
+        "descriptionEn": "The learner can interpret amplitude, period, phase shift and vertical shift and determine corresponding parameters in terms $y = a \\cdot \\sin(bx+c)+d$."
+      },
+      "rationaleDe": "Die Beschreibung benennt die vier Merkmale, den Funktionsterm sowie Interpretation und Parameterbestimmung bereits hinreichend klar.",
+      "rationaleEn": "The description already states the four features, the function form, interpretation, and parameter determination clearly enough."
+    },
+    {
+      "sequence": 4,
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-04",
+      "finalText": {
+        "titleDe": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+        "titleEn": "Determine characteristic points of trigonometric functions using symmetry",
+        "descriptionDe": "Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstellen, Extrempunkte und Wendepunkte ohne Differenzialrechnung aus Periodizität, Amplitude, Verschiebungen und Symmetrieargumenten bestimmen.",
+        "descriptionEn": "The learner can determine zeros, extrema, and inflection points of sine and cosine functions without calculus by using periodicity, amplitude, shifts, and symmetry arguments."
+      },
+      "rationaleDe": "Die Beschreibung grenzt die nicht-differenzialrechnerische Begründung präzise ab und verbindet die Punktarten über dieselben Strukturargumente.",
+      "rationaleEn": "The description precisely delimits the non-calculus justification and connects the point types through the same structural reasoning."
+    },
+    {
+      "sequence": 5,
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "reviewPositions": { "first": "keep", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second_confirmed_by_source_context_adjudication",
+      "finalText": {
+        "titleDe": "Ableitungen von Sinus- und Kosinusfunktionen herleiten",
+        "titleEn": "Differentiate sine and cosine functions",
+        "descriptionDe": "Die lernende Person kann im Bogenmaß die Ableitungsregeln $(\\sin x)^{\\prime}=\\cos x$ und $(\\cos x)^{\\prime}=-\\sin x$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und insbesondere das Minuszeichen der Kosinusableitung begründen.",
+        "descriptionEn": "Using radian measure, the learner can derive the differentiation rules $(\\sin x)^{\\prime}=\\cos x$ and $(\\cos x)^{\\prime}=-\\sin x$ through geometric arguments or limit reasoning and, in particular, justify the negative sign in the derivative of cosine."
+      },
+      "rationaleDe": "Bogenmaß, beide Identitäten und das zentrale Minuszeichen sind mathematisch notwendige Bestandteile der bereits beanspruchten geometrischen oder grenzwertigen Herleitung; die Revision führt keine neue Methode ein.",
+      "rationaleEn": "Radian measure, both identities, and the central negative sign are mathematically necessary parts of the already intended geometric or limit derivation; the revision introduces no new method."
+    },
+    {
+      "sequence": 6,
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-06",
+      "finalText": {
+        "titleDe": "Ableitungen von Sinus und Kosinus grafisch begründen",
+        "titleEn": "Justify sine and cosine derivatives graphically",
+        "descriptionDe": "Die lernende Person kann aus dem Verlauf der Sinus- und Kosinusgraphen die Ableitungsfunktionen durch grafisches Differenzieren begründen und die Vorzeichen- und Extremstellenzusammenhänge erklären.",
+        "descriptionEn": "The learner can justify the derivative functions from the graphs of sine and cosine by graphical differentiation and explain the relationships between signs and extrema."
+      },
+      "rationaleDe": "Grafisches Differenzieren sowie Vorzeichen- und Extremstellenbeziehungen bilden eine klar abgegrenzte grafische Begründungskompetenz.",
+      "rationaleEn": "Graphical differentiation and sign/extremum relationships form a clearly bounded graphical justification competence."
+    },
+    {
+      "sequence": 7,
+      "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
+      "reviewPositions": { "first": "keep", "second": "revise" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-07",
+      "finalText": {
+        "titleDe": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
+        "titleEn": "Apply derivatives of sine and cosine functions",
+        "descriptionDe": "Die lernende Person kann die Ableitungen von $\\sin(x)$ und $\\cos(x)$ zur Untersuchung einfacher trigonometrischer Funktionen einsetzen.",
+        "descriptionEn": "The learner can use the derivatives of $\\sin(x)$ and $\\cos(x)$ to analyze simple trigonometric functions."
+      },
+      "rationaleDe": "Die konkretisierende Revision auf Monotonie und Extremstellen wäre fachlich plausibel, ist aber mit der einzigen direkten HE-Quellzuordnung nicht hinreichend abgesichert: Diese ist ausdrücklich nur partiell und sagt, dass die Quelle eine allgemeine Funktionsuntersuchung nicht als eigenes Ziel formuliert. Deshalb bleibt der aktuelle, quellenvorsichtige Umfang bestehen; konkrete Analyseleistungen werden im Evidenzprofil und Assessment beobachtbar gemacht.",
+      "rationaleEn": "Specializing the goal to monotonicity and extrema would be mathematically plausible but is not sufficiently supported by its sole direct Hesse source mapping, which is explicitly partial and states that the source does not formulate a general function investigation as a separate goal. The current source-conservative scope therefore remains; concrete analytical performances are made observable in the evidence profile and assessment."
+    },
+    {
+      "sequence": 8,
+      "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-08",
+      "finalText": {
+        "titleDe": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+        "titleEn": "Differentiate transformed sine and cosine functions using the chain rule",
+        "descriptionDe": "Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.",
+        "descriptionEn": "The learner can differentiate functions of the form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ or $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ using the chain rule and explain the role of the inner linear transformation."
+      },
+      "rationaleDe": "Funktionsformen, Kettenregel und Rolle der inneren linearen Transformation sind bereits präzise und kohärent beschrieben.",
+      "rationaleEn": "The function forms, chain rule, and role of the inner linear transformation are already described precisely and coherently."
+    },
+    {
+      "sequence": 9,
+      "goalId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-09",
+      "finalText": {
+        "titleDe": "Trigonometrische Gleichungen lösen",
+        "titleEn": "Solve trigonometric equations",
+        "descriptionDe": "Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, allgemeine Lösungsangaben formulieren und Lösungen im Einheitskreis veranschaulichen.",
+        "descriptionEn": "The learner can solve simple trigonometric equations such as $\\sin(x)=k$ or $\\cos(x)=k$, formulate general solutions and illustrate solutions in the unit circle."
+      },
+      "rationaleDe": "Lösen, allgemeine Lösungsfamilien und Einheitskreisrepräsentation sind verschiedene Darstellungen derselben Gleichungskompetenz.",
+      "rationaleEn": "Solving, general solution families, and unit-circle representation are different forms of the same equation-solving competence."
+    },
+    {
+      "sequence": 10,
+      "goalId": "56fba457-ab98-5b96-963e-ec284458c17f",
+      "reviewPositions": { "first": "keep", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second_confirmed_by_source_context_adjudication",
+      "finalText": {
+        "titleDe": "Periodische Prozesse modellieren",
+        "titleEn": "Model periodic processes",
+        "descriptionDe": "Die lernende Person kann periodische Realsituationen (z. B. Gezeiten oder Schwingungen) unter begründeten Annahmen mit Sinus- oder Kosinusfunktionen modellieren, Parameter aus Messdaten bestimmen und den Modellverlauf im Kontext interpretieren.",
+        "descriptionEn": "The learner can model periodic real-world situations (e.g. tides or oscillations) with sine or cosine functions under justified assumptions, determine parameters from measured data, and interpret the model behavior in context."
+      },
+      "rationaleDe": "Modellieren, begründete Annahmen, datenbasierte Parameterbestimmung und Kontextinterpretation operationalisieren den bereits im Titel, AB3-Niveau und Quellenaspekt beanspruchten Modellierungszyklus, ohne eine neue Modellklasse hinzuzufügen.",
+      "rationaleEn": "Modeling, justified assumptions, data-based parameter determination, and contextual interpretation operationalize the modeling cycle already claimed by the title, AB3 level, and source aspect without adding a new model class."
+    },
+    {
+      "sequence": 11,
+      "goalId": "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-11",
+      "finalText": {
+        "titleDe": "Ableitungswerte trigonometrischer Modelle im Kontext interpretieren",
+        "titleEn": "Interpret derivative values of trigonometric models in context",
+        "descriptionDe": "Die lernende Person kann die Ableitung einer trigonometrischen Modellfunktion an einer Stelle bestimmen und den Wert als lokale Änderungsrate im jeweiligen Sachzusammenhang interpretieren.",
+        "descriptionEn": "The learner can determine the derivative of a trigonometric model function at a point and interpret the value as a local rate of change in context."
+      },
+      "rationaleDe": "Punktweise Bestimmung und Deutung als lokale Änderungsrate bilden bereits eine klare, prüfbare Kompetenz.",
+      "rationaleEn": "Pointwise calculation and interpretation as a local rate of change already form a clear, assessable competence."
+    },
+    {
+      "sequence": 12,
+      "goalId": "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "evidenceRecordId": "mathematik-batch016-e-trig12-round-a-record-12",
+      "finalText": {
+        "titleDe": "Trigonometrische und ganzrationale Funktionen vergleichen",
+        "titleEn": "Compare trigonometric and polynomial functions",
+        "descriptionDe": "Die lernende Person kann trigonometrische Modelle mit ganzrationalen Funktionen hinsichtlich Periodizität, Symmetrie, Nullstellen, Extremverhalten und langfristigem Verlauf vergleichen und die Grenzen der jeweiligen Modellklasse begründen.",
+        "descriptionEn": "The learner can compare trigonometric models with polynomial functions with regard to periodicity, symmetry, zeros, extrema, and long-term behavior and justify the limits of each model class."
+      },
+      "rationaleDe": "Die Vergleichsdimensionen und die begründeten Modellgrenzen bilden eine kohärente Modellklassenvergleichskompetenz.",
+      "rationaleEn": "The comparison dimensions and justified model limitations form one coherent model-class comparison competence."
+    }
+  ]
+}

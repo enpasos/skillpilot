@@ -1,0 +1,84 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b024a-solar-radius-geometry-synthesis-openai-codex-20260828",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B024a physics subject synthesis candidate",
+  "synthesizedAt": "2026-08-28T21:07:50.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828",
+    "batchManifestDigest": "sha256:a1dda117ef3e4322eb328d789a2680916c8f242b873c20a8b4cf7fa1367bb0dc",
+    "configDigest": "sha256:e58de48c3f7310c68cdca993597e63432094febf9a5b685851a4689de1d87f46",
+    "bundleFingerprint": "sha256:ee4930014d5d5c6a3dd73f1b27db7fb70a04a5b87342cdbf930fafb29a2939ee",
+    "bookDigest": "sha256:dfe2d53372d19fb2bd37ac307d45af138f40131f4c0f51f3774e2148341c04dd",
+    "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+    "dualSummaryDigest": "sha256:f6d221622deccc83778c6d6ca16f634c6205d4dc13c4e36c078d01f883ed5e43",
+    "canonicalLandscapeDigest": "sha256:1cd096e078a8878da47e4a432aa078c770119349312788d6f1bb31761aea6c4c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-a",
+      "campaignDigest": "sha256:6a08066a5f15534e6c2ed7cf640ad35525b6a4cf91f085029560cba625fbd91a",
+      "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+      "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ff76b90bdf5f936ab639c6738ba514931c64284842b30694fefb26175ed7cb3a",
+      "runId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex",
+      "runManifestDigest": "sha256:ad3c8337ded1cab5fca2f36b0d996532cc3c14308213ce97c9256a80a6a90b4c",
+      "resultsDigest": "sha256:591322e5944dfcea4f88bb5b5f1c53f72c4225d7f27da173d87d9e5db5f6a2ef"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-b",
+      "campaignDigest": "sha256:340c5c0b82a58d394a2f9c8b0b4e4c1fb200c9443a2c2c261cd830f7b0e7b974",
+      "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+      "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:078853ffe51adddabbac14179cb74f1115db3dce16c21b4a41a4e2ed266ed508",
+      "runId": "physik-b024a-round-b-batch-001-gpt5-subject-review",
+      "runManifestDigest": "sha256:433371b91e86ade4b95edf4ff857c78523264fdb1833c59ca6ba7814bd1c33f2",
+      "resultsDigest": "sha256:f00dda34e23c5642859a7dafc16e45bbc54cfcf3cf4204f155f6aa5dea8a05ea"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b024a-solar-radius-geometry-synthesis-openai-codex-20260828-decision-001",
+      "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec9c0010af1779d18c61fc76ccd97abb5906d2dc9c423ef10864daf06a43e10a",
+      "pageFingerprint": "sha256:a86dff331cde6999e27b8255caee3746f6f5621d4d874c567a41f04dbd691568",
+      "goalReviewContextFingerprint": "sha256:a296a8ca1568c9cbe07c0cb98248d777eefa05b2dca6389872029906abf007c4",
+      "finalText": {
+        "titleDe": "Sonnenradius aus Beobachtungsdaten abschätzen",
+        "titleEn": "Estimate the Solar Radius from Observational Data",
+        "descriptionDe": "Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser der Sonne und ihrer Entfernung mithilfe eines geometrischen Modells den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+        "descriptionEn": "The learner can use a safely obtained or supplied angular diameter of the Sun and its distance with a geometrical model to estimate the solar radius and account for measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex.record-001",
+          "recordDigest": "sha256:a721a863c253616f4b5d1282f9ed02088de7dc3bf26883b2fa3a430d9332818a"
+        },
+        "second": {
+          "recordId": "physik-b024a-round-b-batch-001-bebc3738-review",
+          "recordDigest": "sha256:01339cda6273912806344216baf8a084d24371f52f74641be84ecb53dbdfb28e"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser θ der Sonne und der Entfernung d vom Beobachtungsort zum Sonnenmittelpunkt im geometrischen Kugelmodell mithilfe von R = d · sin(θ/2) den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+        "proposedDescriptionEn": "The learner can use a safely obtained or supplied angular diameter θ of the Sun and the distance d from the observation point to the Sun's center in a geometrical sphere model to estimate the solar radius using R = d · sin(θ/2) and account for measurement uncertainty.",
+        "rationaleDe": "Der vorgeschlagene Ersatztext ist fachlich korrekt, aber für die kurze lernendenseitige Kompetenzbeschreibung unnötig formel- und konventionsspezifisch. Der aktuelle Wortlaut behauptet keine falsche Beziehung und lässt ein begründetes geometrisches Modell zu; die genaue Definition der Mittelpunktentfernung, die exakte Sinusbeziehung, die Abgrenzung zur ebenen Tangensprojektion und die Kleinwinkelnäherung sind im ausgewählten positiven Understanding-Evidence verbindlich und prüfbar festgehalten.",
+        "rationaleEn": "The proposed replacement is scientifically correct but unnecessarily formula- and convention-specific for the concise learner-facing competence description. The current wording asserts no false relation and allows a justified geometrical model; the exact definition of centre distance, the exact sine relation, the distinction from planar tangent projection, and the small-angle approximation are bound and assessable in the selected positive understanding evidence."
+      },
+      "rationaleDe": "Die beiden unabhängigen Nachprüfungen bestätigen die korrekte Kugelgeometrie R = d · sin(θ/2) für die Entfernung zum Sonnenmittelpunkt und grenzen sie von einer ebenen Tangensprojektion sowie der Kleinwinkelnäherung ab. Der aktuelle Zieltext bleibt unverändert, weil er korrekt und methodenneutral ist; ausgewählt wird die zweite Evidence-Fassung, die Herleitung, Entfernungskonvention, Unsicherheitsbehandlung und Transfer vollständig ausdrückt. Die fachlich korrekte, aber unnötig ausführliche Beschreibungsrevision der ersten Runde bleibt als ausdrücklich verworfener Dissent gebunden.",
+      "rationaleEn": "The two independent rechecks confirm the correct spherical relation R = d · sin(θ/2) for centre distance and distinguish it from planar tangent projection and the small-angle approximation. The current goal text is retained because it is accurate and method-neutral; the second evidence formulation is selected because it fully states the derivation, distance convention, uncertainty treatment, and transfer. The scientifically correct but unnecessarily detailed description revision from the first round remains bound as explicitly rejected dissent."
+    }
+  ],
+  "manifestFingerprint": "sha256:2139d98ece59e948f657a1d350cff7991b034d40ebe502025be4b32de20ff53f"
+}

@@ -75,12 +75,12 @@ const target = {
   generalRelativity: '14d99a65-8d58-5647-88ab-02137b96d55b',
   astrophysics: 'b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6',
   astronomicalObservation: '2b700858-bc2e-5ddf-a791-b14d44160480',
-  astronomicalVisibility: '2bc068de-5d2b-5f94-bd51-755982befb6f',
-  planetaryVisibility: '0a172021-dfd9-5926-b92c-c01a9dfe9aa8',
-  stellarSpectra: 'a7bec355-48c5-5107-bfab-d6956f9c9205',
+  spatiotemporalVisibility: '0b8a4215-e6ed-56c8-88c3-b3a2a99723c7',
+  planetaryConfigurations: '6e1cd027-040b-51d9-8764-3cf3daddb5ec',
+  stellarSurfaceTemperature: '89124b92-5769-5e13-8a5d-78497936260f',
   radiationBalance: 'a5031dfc-6d25-5a04-850a-5c7d8a254c21',
   stellarEvolution: '7df923a0-6470-595e-8cea-53126fad9506',
-  gravitationalWaves: '7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4',
+  gravitationalWaveGeneration: '09995ab9-86aa-5b02-8a58-62b16a37831d',
   exoplanets: 'e2014db8-c97f-5ce1-82c5-2a42741f4a61',
   cosmology: 'e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9',
 }
@@ -248,8 +248,8 @@ const rows: Row[] = [
   row('4.1', 'Hohmann-Transfer und Swing-by-Manöver als energieschonende Raumfahrtmanöver beurteilen', [target.planetaryMotion, target.society]),
   row('4.1', 'Planetenbahnen iterativ oder simulativ berechnen und Modellgrenzen reflektieren', [target.planetaryMotion, target.digitalMeasurement, target.methods]),
 
-  row('4.2', 'Sternbilder in Abhängigkeit von Uhrzeit und Jahreszeit sichtbarkeitsbezogen erschließen', [target.astronomicalVisibility]),
-  row('4.2', 'Sonnenlauf, Mondlauf, Tierkreiszeichen und Planetenbahnen am Himmel beschreiben', [target.planetaryVisibility]),
+  row('4.2', 'Sternbilder in Abhängigkeit von Uhrzeit und Jahreszeit sichtbarkeitsbezogen erschließen', [target.spatiotemporalVisibility]),
+  row('4.2', 'Sonnenlauf, Mondlauf, Tierkreiszeichen und Planetenbahnen am Himmel beschreiben', [target.planetaryConfigurations]),
   row('4.2', 'Linsen und Spiegel als optische Elemente astronomischer Beobachtung beschreiben', [target.astronomicalObservation]),
   row('4.2', 'Vergrößerung als Winkelstreckung von Auflösung mit Beugungsbezug unterscheiden', [target.astronomicalObservation, target.emWaves]),
   row('4.2', 'astronomische Beobachtungsinstrumente für Röntgen-, UV-, IR- und Radiowellen einordnen', [target.astronomicalObservation, target.emWaves]),
@@ -261,11 +261,11 @@ const rows: Row[] = [
   row('4.2', 'weißen Zwerg und schwarzes Loch als unterschiedliche Endstadien massereicher Systeme einordnen', [target.stellarEvolution]),
   row('4.2', 'schwarze Löcher mit Aufbau und Ereignishorizont qualitativ beschreiben', [target.generalRelativity, target.astrophysics]),
   row('4.2', 'Fallzeiten außerhalb und innerhalb schwarzer Löcher qualitativ beschreiben', [target.generalRelativity, target.astrophysics]),
-  row('4.2', 'Gravitationswellen als Abstrahlung beschleunigter Massen beschreiben', [target.gravitationalWaves]),
-  row('4.2', 'Messverfahren von Gravitationswellen mit dem Interferometer LIGO erläutern', [target.gravitationalWaves, target.interferometer]),
+  row('4.2', 'Gravitationswellen als Abstrahlung beschleunigter Massen beschreiben', [target.gravitationalWaveGeneration]),
+  row('4.2', 'Messverfahren von Gravitationswellen mit dem Interferometer LIGO erläutern', [target.interferometer]),
   row('4.2', 'Skalen im Universum und historische Erschließung in einer Zeitleiste einordnen', [target.cosmology]),
   row('4.2', 'Klimaten von Planeten mithilfe von Strahlungsbilanzen beschreiben', [target.radiationBalance]),
-  row('4.2', 'Stefan-Boltzmann-Gesetz für schwarze Strahler und Strahlungsleistung anwenden', [target.stellarSpectra, target.radiationBalance]),
+  row('4.2', 'Stefan-Boltzmann-Gesetz für schwarze Strahler und Strahlungsleistung anwenden', [target.stellarSurfaceTemperature, target.radiationBalance]),
   row('4.2', 'Abstrahlungsgesetz als 1/r^2-Gesetz anwenden', [target.radiationBalance]),
   row('4.2', 'Aufbau und Energiebilanzen von Sonne, Gesteinsplaneten und Gasplaneten an Beispielen vergleichen', [target.radiationBalance, target.astrophysics]),
   row('4.2', 'Exoplaneten, Planetenkli­mate und klassische habitable Zone beurteilen', [target.exoplanets, target.radiationBalance]),
@@ -347,6 +347,7 @@ const extraction = {
     title: 'Bildungsplan Studienstufe Physik Hamburg 2022',
     path: sourcePdfPath,
     official: true,
+    url: 'https://www.hamburg.de/resource/blob/123094/2691efabaaf2679cd7dd970a95a3c748/physik-gyo-2022-data.pdf',
   },
   method: {
     passageExtraction:
@@ -455,12 +456,55 @@ const extraction = {
   sourceGoals,
 }
 
+// Batch 021 source-specific astrophysics mapping adjudications.
+const batch021MappingAdjudicationBySourceText: Record<string, { rationale: string; matchTypes: Array<'exact' | 'partial'> }> = {
+  "Gravitationswellen als Abstrahlung beschleunigter Massen beschreiben": {
+    "rationale": "Batch-021-Fachreview: Das Hamburger Ziel zur Abstrahlung beschleunigter Massen stützt das Gravitationswellen-Entstehungskind teilweise; dessen notwendige nicht kugelsymmetrische Zeitabhängigkeit und die Grenzen der elektromagnetischen Analogie gehen über den Source-Wortlaut hinaus.",
+    "matchTypes": [
+      "partial"
+    ]
+  },
+  "Messverfahren von Gravitationswellen mit dem Interferometer LIGO erläutern": {
+    "rationale": "Batch-021-Fachreview: Dieses Hamburger Source-Ziel betrifft ausschließlich das LIGO-Interferometer. Das bestehende LIGO-Ziel bleibt die exakte Zuordnung; der frühere Gravitationswellen-Sammelknoten wird ohne Umleitung auf ein Kind entfernt.",
+    "matchTypes": [
+      "exact"
+    ]
+  },
+  "Stefan-Boltzmann-Gesetz für schwarze Strahler und Strahlungsleistung anwenden": {
+    "rationale": "Batch-021-Fachreview: Das Hamburger Ziel zum Stefan-Boltzmann-Gesetz wird auf das quantitative Temperaturgesetz-Kind und das bestehende Strahlungsbilanzziel abgebildet; der frühere Spektren-Sammelknoten entfällt.",
+    "matchTypes": [
+      "partial",
+      "partial"
+    ]
+  }
+}
+
+// Batch 022 source-specific astrophysics mapping adjudications.
+const batch022MappingAdjudicationBySourceText: Record<string, { rationale: string; matchTypes: Array<'exact' | 'partial'> }> = {
+  "Sternbilder in Abhängigkeit von Uhrzeit und Jahreszeit sichtbarkeitsbezogen erschließen": {
+    "rationale": "Batch-022-Fachreview: Das Hamburger Ziel nennt die Sichtbarkeit von Sternbildern in Abhängigkeit von Uhrzeit und Jahreszeit. Es stützt das räumlich-zeitliche Sichtbarkeitskind teilweise, nicht aber Orientierung oder Objektklassifikation.",
+    "matchTypes": [
+      "partial"
+    ]
+  },
+  "Sonnenlauf, Mondlauf, Tierkreiszeichen und Planetenbahnen am Himmel beschreiben": {
+    "rationale": "Batch-022-Fachreview: Das Hamburger Ziel zum Lauf von Sonne, Mond und Planeten am Himmel stützt das Konstellations- und Sichtbarkeitskind teilweise. Es enthält weder Schleifenbahnen noch deren historische Modellbedeutung.",
+    "matchTypes": [
+      "partial"
+    ]
+  }
+}
+
 const mappings = rows.flatMap((currentRow, index) => {
   const sourceGoal = sourceGoals[index]
-  return currentRow.canonicalGoalIds.map((canonicalGoalId) => ({
+  const batch022Adjudication = batch022MappingAdjudicationBySourceText[currentRow.text]
+  const batch021Adjudication = batch021MappingAdjudicationBySourceText[currentRow.text]
+  return currentRow.canonicalGoalIds.map((canonicalGoalId, targetIndex) => ({
     legacyGoalId: sourceGoal.id,
     canonicalGoalId,
-    matchType: currentRow.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+    matchType: batch022Adjudication?.matchTypes[targetIndex]
+      ?? batch021Adjudication?.matchTypes[targetIndex]
+      ?? (currentRow.canonicalGoalIds.length === 1 ? 'exact' : 'partial'),
     reviewDecisionId: sourceGoal.id,
   }))
 })
@@ -473,12 +517,17 @@ const decisions = rows.map((currentRow, index) => {
     sourceSpan: sourceGoal.sourceSpan,
     decision: 'mapped',
     canonicalGoalIds: currentRow.canonicalGoalIds,
-    rationale:
-      currentRow.canonicalGoalIds.length > 1
+    rationale: batch022MappingAdjudicationBySourceText[currentRow.text]?.rationale
+      ?? batch021MappingAdjudicationBySourceText[currentRow.text]?.rationale
+      ?? (currentRow.canonicalGoalIds.length > 1
         ? 'Das Hamburger Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.'
-        : 'Das Hamburger Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.',
-    reviewedAt: '2026-05-10',
-    reviewer: 'codex',
+        : 'Das Hamburger Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'),
+    reviewedAt: batch022MappingAdjudicationBySourceText[currentRow.text] || batch021MappingAdjudicationBySourceText[currentRow.text] ? '2026-08-28' : '2026-05-10',
+    reviewer: batch022MappingAdjudicationBySourceText[currentRow.text]
+      ? 'codex-physics-batch-022-astrophysics-structural-adjudication-2026-08-28'
+      : batch021MappingAdjudicationBySourceText[currentRow.text]
+        ? 'codex-physics-batch-021-astrophysics-adjudication-2026-08-28'
+        : 'codex',
   }
 })
 

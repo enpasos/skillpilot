@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `c1c71daa-042b-4f4c-8c31-0ac366f5149e`
 - Titel: Mechanische Arbeit als Energieänderung
-- Beschreibung: Arbeit (W) als Prozessgröße verstehen: Energie wird durch verrichtete Arbeit übertragen oder umgewandelt ($W = \Delta E$). Beispiel: Hubarbeit $W = F \cdot s$ führt zu potenzieller Energie.
+- Beschreibung: Die lernende Person kann mechanische Arbeit als Energieübertragung über eine festgelegte Systemgrenze deuten, ihr Vorzeichen aus Kraft- und Wegrichtung bestimmen und die am System verrichtete Arbeit konsistent mit dessen Energieänderung bilanzieren.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Mechanische Arbeit als Energieänderung
-Beschreibung: Arbeit (W) als Prozessgröße verstehen: Energie wird durch verrichtete Arbeit übertragen oder umgewandelt ($W = \Delta E$). Beispiel: Hubarbeit $W = F \cdot s$ führt zu potenzieller Energie.
+Beschreibung: Die lernende Person kann mechanische Arbeit als Energieübertragung über eine festgelegte Systemgrenze deuten, ihr Vorzeichen aus Kraft- und Wegrichtung bestimmen und die am System verrichtete Arbeit konsistent mit dessen Energieänderung bilanzieren.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Deute mechanische Arbeit als Energieübertragung über eine festgelegte Systemgrenze, kennzeichne das Vorzeichen aus Kraft- und Wegrichtung und bilanziere die am System verrichtete Arbeit konsistent mit seiner Energieänderung.
+
 Pflichtinhalt:
 
 Show mechanical work as energy transfer during lifting.

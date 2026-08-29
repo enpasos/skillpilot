@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Magnetfeld von geradem Leiter und Spule
+# Lernzielvisualisierung: Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `106417ed-80db-5490-a1ee-bb4160d3f2b4`
-- Titel: Magnetfeld von geradem Leiter und Spule
-- Beschreibung: Die lernende Person kann die magnetische Flussdichte B in einfachen Fällen für geraden Leiter und lange Spule bestimmen und dabei zentrale Schulformeln (u. a. B = mu_0 * mu_r * N * I / l für die lange Spule) sicher anwenden.
+- Titel: Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden
+- Beschreibung: Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Magnetfeld von geradem Leiter und Spule
-Beschreibung: Die lernende Person kann die magnetische Flussdichte B in einfachen Fällen für geraden Leiter und lange Spule bestimmen und dabei zentrale Schulformeln (u. a. B = mu_0 * mu_r * N * I / l für die lange Spule) sicher anwenden.
+Titel: Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden
+Beschreibung: Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.
 
 Zusatzanweisung:
 Pflichtinhalt:

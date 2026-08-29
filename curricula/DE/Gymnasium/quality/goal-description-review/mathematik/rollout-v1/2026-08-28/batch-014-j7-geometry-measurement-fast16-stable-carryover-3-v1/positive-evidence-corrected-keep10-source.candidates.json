@@ -1,0 +1,789 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-fast-j7-geometry-measurement-keep10-precommit-v1",
+  "reviewedAt": "2026-08-28T11:40:00.000Z",
+  "reviewer": "codex-math-j7-fast16-keep10-positive-evidence-synthesis-2026-08-28",
+  "goals": [
+    {
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "reason": "DE: Das Profil operationalisiert die in der Adjudikation ausgewählte Evidenzkette: Vorzeichen, Achsen und Maßstab bestimmen Punktlagen; die Übersetzung zwischen Koordinaten und geometrischer Beschreibung muss Lagebeziehungen erhalten. Drei unabhängige Fälle variieren Darstellungsrichtung, Quadranten, Maßstab, geometrische Lagebeziehungen und Werkzeug, nicht bloß Zahlen. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the evidence chain selected in adjudication: signs, axes, and scale determine point positions, and translation between coordinates and geometric descriptions must preserve positional relations. Three independent cases vary representation direction, quadrants, scale, geometric relations, and tool rather than merely numbers. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "coordinate-position-and-scale",
+            "essentialUnderstandingDe": "Ein geordnetes Paar (x|y) legt durch Reihenfolge, Vorzeichen, Achsenrichtung und Achsenmaßstab genau eine Punktlage fest. Gleiche Kästchenabstände bedeuten nur bei korrekt gelesener Skalierung gleiche Koordinatendifferenzen.",
+            "essentialUnderstandingEn": "An ordered pair (x,y) determines exactly one point position through order, sign, axis direction, and axis scale. Equal grid distances represent equal coordinate differences only when the scale is read correctly.",
+            "observablePerformanceDe": "Die lernende Person wählt für positive und negative Koordinaten einen geeigneten Maßstab, trägt beschriftete Punkte in allen vier Quadranten ein und liest Punkte zurück, wobei sie Achse, Vorzeichen und Skalierung ausdrücklich zur Kontrolle heranzieht.",
+            "observablePerformanceEn": "The learner chooses a suitable scale for positive and negative coordinates, plots labelled points in all four quadrants, and reads points back while explicitly using axes, signs, and scale as checks."
+          },
+          {
+            "id": "bidirectional-geometric-translation",
+          "essentialUnderstandingDe": "Eine Koordinatenfigur beschreibt nicht nur einzelne Punkte, sondern auch geometrische Beziehungen zwischen ihnen, etwa horizontale oder vertikale Lage, Streckenlängen oder Parallelität. Eine passende Übersetzung in eine andere Darstellung erhält genau diese Beziehungen.",
+          "essentialUnderstandingEn": "A coordinate figure describes not only individual points but also geometric relations among them, such as horizontal or vertical position, segment lengths, or parallelism. A valid translation into another representation preserves those relations.",
+          "observablePerformanceDe": "Die lernende Person erzeugt aus einer Koordinatenliste eine Figur und aus einer geometrischen Darstellung oder Beschreibung eine Koordinatenliste, benennt dabei mindestens zwei erhaltene Lagebeziehungen und prüft mit Koordinatendifferenzen, ob beide Darstellungen zusammenpassen.",
+          "observablePerformanceEn": "The learner creates a figure from a coordinate list and a coordinate list from a geometric representation or description, identifies at least two preserved positional relations, and uses coordinate differences to check that the representations match."
+          },
+          {
+            "id": "purposeful-tool-and-view-choice",
+            "essentialUnderstandingDe": "Papierdarstellung und digitales Koordinatenwerkzeug sind nur dann zweckmäßig eingesetzt, wenn Achsenfenster, Maßstab, Beschriftung und Eingabe die mathematischen Beziehungen sichtbar und überprüfbar machen; eine automatische Zeichnung ersetzt die Zuordnungsbegründung nicht.",
+            "essentialUnderstandingEn": "A paper representation or digital coordinate tool is used purposefully only when the viewing window, scale, labels, and input make the mathematical relations visible and checkable; an automatically produced drawing does not replace the justification of the correspondence.",
+            "observablePerformanceDe": "Die lernende Person entscheidet bei einer neuen Aufgabe begründet über ein geeignetes Achsenfenster und Papier- oder Digitaleinsatz, dokumentiert die eingegebenen beziehungsweise abgelesenen Koordinaten und prüft eine geometrische Aussage unabhängig von der bloßen Bildschirmansicht.",
+            "observablePerformanceEn": "For a fresh task, the learner justifies a suitable coordinate window and the use of paper or a digital tool, documents entered or read coordinates, and checks a geometric claim independently of mere screen appearance."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coordinate-position-and-scale",
+            "bidirectional-geometric-translation",
+            "purposeful-tool-and-view-choice"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-direction",
+            "textDe": "Koordinatenliste zu Figur gegenüber Figur oder geometrischer Beschreibung zu Koordinatenliste",
+            "textEn": "Coordinate list to figure versus figure or geometric description to coordinate list"
+          },
+          {
+          "id": "relational-description-and-check",
+          "textDe": "Direkt vorgegebene Koordinaten gegenüber aus horizontalen, vertikalen oder Mittelpunktbeziehungen herzuleitenden Koordinaten",
+          "textEn": "Directly supplied coordinates versus coordinates derived from horizontal, vertical, or midpoint relations"
+          },
+          {
+            "id": "scale-and-tool",
+            "textDe": "Einheitsmaßstab auf Papier gegenüber anderem Achsenmaßstab oder selbst gewähltem digitalen Ansichtsfenster",
+            "textEn": "Unit scale on paper versus a different axis scale or a self-chosen digital viewing window"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "four-quadrant-coordinate-polygon",
+            "taskDemandDe": "Trage A(-4|2), B(1|2), C(1|-3) und D(-4|-3) in ein selbst skaliertes Koordinatensystem ein, verbinde sie in dieser Reihenfolge und begründe anhand der Koordinaten, welche gegenüberliegenden Seiten parallel und gleich lang sind.",
+            "taskDemandEn": "Plot A(-4,2), B(1,2), C(1,-3), and D(-4,-3) in a coordinate system with a scale you choose, join them in that order, and use the coordinates to justify which opposite sides are parallel and equal in length.",
+            "expectedPerformanceDe": "Die lernende Person trägt die Punkte mit korrekten Vorzeichen in vier Quadranten ein, wählt ein vollständig sichtbares Achsenfenster und erhält ein Rechteck. Sie begründet AB parallel zu CD über gleiche y-Koordinaten und Länge 5 sowie BC parallel zu AD über gleiche x-Koordinaten und Länge 5, statt nur auf das Bild zu verweisen.",
+            "expectedPerformanceEn": "The learner plots the points with correct signs across all four quadrants, chooses a window showing the complete figure, and obtains a rectangle. The learner justifies AB parallel to CD through equal y-coordinates and length 5, and BC parallel to AD through equal x-coordinates and length 5, rather than relying only on appearance.",
+            "understandingFocusDe": "Der Fall verbindet sichere Punktdarstellung mit einer koordinatengebundenen Prüfung geometrischer Beziehungen.",
+            "understandingFocusEn": "The case connects reliable plotting with a coordinate-based check of geometric relations."
+          },
+          {
+          "id": "geometric-description-to-coordinates",
+          "taskDemandDe": "Eine geometrische Beschreibung legt P(2|1) fest: Q liegt vier Einheiten rechts von P; R liegt drei Einheiten senkrecht über dem Mittelpunkt der Strecke PQ. Bestimme Q und R, trage das Dreieck in ein selbst skaliertes Koordinatensystem ein und prüfe an den Koordinaten, dass PQ horizontal ist und R über der Mitte von PQ liegt.",
+          "taskDemandEn": "A geometric description fixes P(2,1): Q lies four units to the right of P; R lies three units vertically above the midpoint of segment PQ. Determine Q and R, plot the triangle in a coordinate system with a scale you choose, and use the coordinates to check that PQ is horizontal and R lies above the midpoint of PQ.",
+          "expectedPerformanceDe": "Die lernende Person bestimmt Q(6|1), den Mittelpunkt M(4|1) und R(4|4), wählt einen geeigneten Maßstab und trägt die Punkte korrekt ein. Sie begründet die horizontale Lage von PQ mit gleichen y-Koordinaten und die Mittellage von R mit gleichen horizontalen Abständen zu P und Q sowie gleicher x-Koordinate wie M.",
+          "expectedPerformanceEn": "The learner determines Q(6,1), midpoint M(4,1), and R(4,4), chooses a suitable scale, and plots the points correctly. The learner justifies that PQ is horizontal from equal y-coordinates and that R is above its midpoint from equal horizontal distances to P and Q and the same x-coordinate as M.",
+          "understandingFocusDe": "Der Transfer kehrt die Darstellungsrichtung um: Aus einer geometrischen Beschreibung entstehen Koordinaten, deren Lagebeziehungen anschließend unabhängig geprüft werden.",
+          "understandingFocusEn": "The transfer reverses the representation direction: coordinates are derived from a geometric description and their positional relations are then checked independently."
+          },
+          {
+            "id": "digital-window-and-reverse-reading",
+            "taskDemandDe": "Stelle die Punkte E(-12|6), F(8|6), G(8|-10) und H(-12|-10) in einem digitalen Koordinatenwerkzeug dar. Wähle das Ansichtsfenster so, dass die Figur gut prüfbar ist, exportiere oder skizziere die Ansicht ohne Koordinatenetiketten und lies anschließend die Punktkoordinaten aus deiner Darstellung zurück.",
+            "taskDemandEn": "Represent E(-12,6), F(8,6), G(8,-10), and H(-12,-10) in a digital coordinate tool. Choose a viewing window that makes the figure easy to check, export or sketch the view without coordinate labels, and then read the point coordinates back from your representation.",
+            "expectedPerformanceDe": "Die lernende Person wählt ein Fenster, das beide Achsen und alle vier Punkte umfasst, dokumentiert Eingaben und Maßstab und liest die ursprünglichen Koordinaten korrekt zurück. Sie erklärt anhand gleicher x- beziehungsweise y-Koordinaten, warum die Seiten achsenparallel sind, unabhängig von einer möglichen Bildschirmverzerrung.",
+            "expectedPerformanceEn": "The learner chooses a window containing both axes and all four points, documents inputs and scale, and reads the original coordinates back correctly. The learner uses equal x- or y-coordinates to explain why the sides are axis-parallel, independently of possible screen distortion.",
+            "understandingFocusDe": "Der Fall prüft den sinnvollen Werkzeugeinsatz, einen stark veränderten Wertebereich und die Rückübersetzung statt bloßer automatischer Zeichnung.",
+            "understandingFocusEn": "The case tests purposeful tool use, a substantially changed range, and reverse translation rather than mere automatic drawing."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "reason": "DE: Das Profil bindet die ausgewählte Adjudikationsevidenz an definierende geometrische Eigenschaften statt an den optischen Eindruck. Zwei unabhängige Fälle variieren Beschriftung, Drehung, Maßstäblichkeit, Zusatzlinien und die Richtung zwischen Fachsprache und Skizze. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile binds the evidence selected in adjudication to defining geometric properties rather than visual appearance. Two independent cases vary labels, rotation, scale fidelity, extra lines, and the direction between mathematical language and sketches. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "line-relations-by-defining-properties",
+            "essentialUnderstandingDe": "Parallele Geraden haben in einer Ebene keinen Schnittpunkt, senkrechte Geraden schneiden sich im rechten Winkel und andere schneidende Geraden besitzen genau einen Schnittpunkt ohne notwendigerweise senkrecht zu sein. Diese Beziehungen sind lage- und drehungsunabhängig.",
+            "essentialUnderstandingEn": "Parallel lines in a plane do not intersect, perpendicular lines meet at a right angle, and other intersecting lines have exactly one point of intersection without necessarily being perpendicular. These relations do not depend on position or rotation.",
+            "observablePerformanceDe": "Die lernende Person ordnet Geradenpaare in einer neuen, auch nicht maßstäblichen Skizze als parallel, senkrecht oder sonst schneidend ein, formuliert die Beziehung fachsprachlich und nennt Schnittpunkt- oder Rechtwinkeleigenschaft als Begründung.",
+            "observablePerformanceEn": "In a fresh, possibly not-to-scale sketch, the learner classifies pairs of lines as parallel, perpendicular, or otherwise intersecting, states the relation in mathematical language, and cites the intersection or right-angle property as justification."
+          },
+          {
+            "id": "bisection-object-and-equality",
+            "essentialUnderstandingDe": "Eine Winkelhalbierende teilt eine Winkelgröße in zwei gleiche Teilwinkel, während eine Streckenhalbierende beziehungsweise ein Mittelpunkt eine Strecke in zwei gleich lange Teilstrecken teilt. Das halbierte Objekt und die Gleichheitsmarkierung bestimmen die Aussage.",
+            "essentialUnderstandingEn": "An angle bisector divides an angle measure into two equal sub-angles, whereas a segment bisector or midpoint divides a segment into two equal sub-segments. The object being bisected and the equality marking determine the statement.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet in beschrifteten und unbeschrifteten Skizzen Winkel- von Streckenhalbierung, benennt das jeweils halbierte Objekt und belegt die Zuordnung durch gleiche Winkelmarken beziehungsweise gleiche Streckenlängen.",
+            "observablePerformanceEn": "In labelled and unlabelled sketches, the learner distinguishes angle bisection from segment bisection, names the object being bisected, and supports the classification with equal angle marks or equal segment lengths."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "line-relations-by-defining-properties",
+            "bisection-object-and-equality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "information-form",
+            "textDe": "Explizite Fachbegriffe gegenüber ausschließlich durch rechte Winkel, Pfeile oder Gleichheitsmarken codierten Beziehungen",
+            "textEn": "Explicit mathematical terms versus relations encoded only by right-angle, arrow, or equality markings"
+          },
+          {
+            "id": "orientation-and-scale-fidelity",
+            "textDe": "Vertraute Ausrichtung gegenüber gedrehter, nicht maßstäblicher Figur mit zusätzlichen Ablenkungslinien",
+            "textEn": "Familiar orientation versus a rotated, not-to-scale figure containing extra distractor lines"
+          },
+          {
+            "id": "translation-direction",
+            "textDe": "Skizze fachsprachlich beschreiben gegenüber eine fachsprachliche Aussage in einer Skizze eindeutig markieren",
+            "textEn": "Describe a sketch mathematically versus mark a mathematical statement unambiguously in a sketch"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "marked-relations-not-to-scale",
+          "taskDemandDe": "Eine nicht maßstäbliche Skizze enthält mehrere Geraden und Strahlen. Pfeilmarken kennzeichnen g und h als parallel; ein Rechtwinkelsymbol steht am Schnitt von h und k; m schneidet g ohne Rechtwinkelsymbol. Am Scheitel S liegen die Strahlen u, w und v, wobei gleiche Winkelbögen ∠uSw = ∠wSv markieren. Auf AB liegt M mit gleichen Strichmarken auf AM und MB; die Gerade n verläuft durch M. Beschreibe alle markierten Beziehungen fachsprachlich und begründe jede Zuordnung durch die jeweilige Markierung.",
+          "taskDemandEn": "A not-to-scale sketch contains several lines and rays. Arrow marks identify g and h as parallel; a right-angle symbol appears where h meets k; m meets g without a right-angle symbol. Rays u, w, and v meet at vertex S, with equal arcs marking angle uSw equal to angle wSv. Point M lies on AB with equal tick marks on AM and MB, and line n passes through M. Describe every marked relation in mathematical language and justify each classification from its marking.",
+          "expectedPerformanceDe": "Die lernende Person formuliert g parallel zu h, h senkrecht zu k und m schneidet g, ohne aus der Zeichnung eine Senkrechtstellung zu behaupten. Sie beschreibt w als Halbierende des Winkels uSv, M als Mittelpunkt von AB und n als Streckenhalbierende von AB, jeweils gestützt auf die richtige Gleichheits- und Lageinformation.",
+          "expectedPerformanceEn": "The learner states that g is parallel to h, h is perpendicular to k, and m intersects g without inferring perpendicularity from appearance. The learner describes w as bisecting angle uSv, M as the midpoint of AB, and n as a segment bisector of AB, supported by the correct equality and incidence information in each case.",
+            "understandingFocusDe": "Der Fall prüft alle Begriffsfamilien über definierende Markierungen und trennt ausdrücklich Schnitt von Senkrechtstellung.",
+            "understandingFocusEn": "The case tests all terminology families through defining markings and explicitly distinguishes intersection from perpendicularity."
+          },
+          {
+            "id": "verbal-constraints-to-annotated-sketch",
+            "taskDemandDe": "Erstelle aus folgenden Aussagen eine eigene gedrehte Skizze mit eindeutigen Markierungen: p ist parallel zu q; r steht senkrecht auf q; s schneidet p, ist aber nicht senkrecht; der Strahl v halbiert den Winkel zwischen r und s; M halbiert die Strecke XY. Ergänze zwei nicht relevante Hilfslinien und erkläre, woran die fünf Aussagen trotz der Zusatzlinien überprüfbar bleiben.",
+            "taskDemandEn": "Create your own rotated sketch with unambiguous markings from these statements: p is parallel to q; r is perpendicular to q; s intersects p but is not perpendicular; ray v bisects the angle between r and s; M bisects segment XY. Add two irrelevant auxiliary lines and explain how the five statements remain checkable despite the extra lines.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet eine konsistente Anordnung und verwendet unterschiedliche, passende Markierungen für Parallelität, rechten Winkel, Schnittpunkt, gleiche Teilwinkel und gleiche Teilstrecken. In der Erklärung bindet sie jeden Fachbegriff an diese Eigenschaft statt an horizontale oder vertikale Bildlage.",
+            "expectedPerformanceEn": "The learner draws a consistent arrangement and uses distinct appropriate markings for parallelism, a right angle, an intersection, equal sub-angles, and equal sub-segments. In the explanation, the learner binds every mathematical term to its property rather than to horizontal or vertical appearance.",
+            "understandingFocusDe": "Der Transfer kehrt die Darstellungsrichtung um und prüft robuste Fachsprache in einer selbst erzeugten, gedrehten und visuell komplexeren Figur.",
+            "understandingFocusEn": "The transfer reverses the representation direction and tests robust mathematical language in a self-produced, rotated, visually more complex figure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Adjudikationsevidenz zur Mittelsenkrechten als zugleich exakte Konstruktion und Ortslinie gleicher Endpunktabstände. Zwei unabhängige Fälle variieren Streckenlage, Konstruktionszweck und Darstellungsrichtung; beide verlangen eine Eigenschaftsbegründung statt optischer oder bloß gemessener Genauigkeit. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the adjudicated evidence for the perpendicular bisector as both an exact construction and the locus of equal endpoint distances. Two independent cases vary segment orientation, construction purpose, and representation direction; both require property-based justification rather than visual or merely measured accuracy. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "equal-radius-construction",
+            "essentialUnderstandingDe": "Zwei Kreisbögen mit denselben Zentren an den Streckenendpunkten und demselben Radius größer als die halbe Streckenlänge erzeugen zwei Schnittpunkte. Jeder dieser Schnittpunkte hat zu beiden Endpunkten denselben Abstand; ihre Verbindungsgerade ist deshalb die Mittelsenkrechte.",
+            "essentialUnderstandingEn": "Two arcs centred at the segment endpoints with the same radius greater than half the segment length create two intersection points. Each intersection is equidistant from the endpoints, so the line through them is the perpendicular bisector.",
+            "observablePerformanceDe": "Die lernende Person konstruiert bei einer neuen Strecke mit unverändertem Zirkelradius zwei Kreisbogen-Schnittpunkte, verbindet sie geradlinig und erklärt anhand der Radiengleichheit, warum die entstandene Gerade durch den Mittelpunkt verläuft und senkrecht zur Strecke steht.",
+            "observablePerformanceEn": "For a fresh segment, the learner uses one unchanged compass radius to construct two arc intersections, joins them with a straight line, and uses the equality of radii to explain why the resulting line passes through the midpoint and is perpendicular to the segment."
+          },
+          {
+            "id": "equidistance-locus-and-check",
+            "essentialUnderstandingDe": "Genau die Punkte der Mittelsenkrechten sind von den beiden Streckenendpunkten gleich weit entfernt. Diese Ortslinieneigenschaft erlaubt sowohl das Bestimmen gesuchter Punkte als auch eine vom optischen Eindruck unabhängige Prüfung der Konstruktion.",
+            "essentialUnderstandingEn": "Exactly the points on the perpendicular bisector are equidistant from the two segment endpoints. This locus property supports both locating required points and checking the construction independently of visual appearance.",
+            "observablePerformanceDe": "Die lernende Person nutzt die Gleichabstandseigenschaft in einer neuen Situation, um einen zulässigen Punkt zu bestimmen oder eine vorgelegte Gerade zu prüfen, und begründet die Entscheidung über gleiche Abstände zu beiden Endpunkten sowie Mittelpunkt und rechten Winkel.",
+            "observablePerformanceEn": "In a fresh situation, the learner uses equidistance to locate an admissible point or test a proposed line and justifies the decision through equal distances to both endpoints together with midpoint and right-angle properties."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "equal-radius-construction",
+            "equidistance-locus-and-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "segment-orientation-and-length",
+            "textDe": "Kurze waagerechte Strecke gegenüber längerer geneigter Strecke mit neu zu wählendem Zirkelradius",
+            "textEn": "A short horizontal segment versus a longer slanted segment requiring a newly chosen compass radius"
+          },
+          {
+            "id": "construction-purpose",
+            "textDe": "Die vollständige Mittelsenkrechte konstruieren gegenüber einen gleich weit entfernten Ort aus einem Sachconstraint bestimmen",
+            "textEn": "Construct the complete perpendicular bisector versus locate an equidistant place from a contextual constraint"
+          },
+          {
+            "id": "evidence-direction",
+            "textDe": "Aus gleichen Radien die Geradeneigenschaft begründen gegenüber eine vorgelegte Gerade mit der Gleichabstandseigenschaft prüfen",
+            "textEn": "Justify the line property from equal radii versus test a proposed line using equidistance"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "slanted-segment-exact-construction",
+            "taskDemandDe": "Konstruiere die Mittelsenkrechte einer 7,4 cm langen, schräg gezeichneten Strecke AB ausschließlich mit Zirkel und Lineal. Begründe die Wahl des Zirkelradius und warum die Gerade durch die beiden Kreisbogen-Schnittpunkte die geforderten Eigenschaften besitzt.",
+            "taskDemandEn": "Construct the perpendicular bisector of a 7.4 cm slanted segment AB using only a compass and straightedge. Justify the compass-radius choice and explain why the line through the two arc intersections has the required properties.",
+            "expectedPerformanceDe": "Die lernende Person wählt einen Radius über 3,7 cm und lässt ihn für Bögen um A und B unverändert. Sie verbindet die zwei Schnittpunkte und erklärt, dass beide wegen der gleichen Radien gleich weit von A und B entfernt sind; daraus folgen der Durchgang durch den Mittelpunkt und die Senkrechtstellung, nicht aus einer nachträglichen Sichtprüfung.",
+            "expectedPerformanceEn": "The learner chooses a radius greater than 3.7 cm and keeps it unchanged for arcs centred at A and B. The learner joins the two intersections and explains that both are equidistant from A and B because of the equal radii; passing through the midpoint and being perpendicular follow from this, not from a later visual check.",
+            "understandingFocusDe": "Der Fall prüft den vollständigen exakten Konstruktionsgang und die tragende Gleichabstandsbegründung bei ungewohnter Streckenlage.",
+            "understandingFocusEn": "The case tests the complete exact construction and its governing equidistance argument for an unfamiliar segment orientation."
+          },
+          {
+            "id": "equidistant-water-point",
+            "taskDemandDe": "Zwei Wasseranschlüsse A und B sind in einem Lageplan markiert. Ein Entnahmepunkt P soll von beiden gleich weit entfernt sein und zusätzlich auf einem vorgegebenen Weg w liegen. Konstruiere alle möglichen Positionen von P und erkläre, wann keine, eine oder mehrere Lösungen entstehen können.",
+            "taskDemandEn": "Two water connections A and B are marked on a site plan. A collection point P must be equally distant from both and must also lie on a given path w. Construct every possible position of P and explain when zero, one, or several solutions can arise.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert die Mittelsenkrechte von AB und bestimmt P als Schnittpunkt beziehungsweise Schnittpunkte mit w. Sie begründet die Gleichheit PA = PB durch die Ortslinieneigenschaft und erkennt, dass Anzahl und Existenz der Lösungen von der Schnittlage des Weges zur Mittelsenkrechten abhängen.",
+            "expectedPerformanceEn": "The learner constructs the perpendicular bisector of AB and identifies P as its intersection or intersections with w. The learner justifies PA = PB through the locus property and recognizes that the number and existence of solutions depend on how the path intersects the perpendicular bisector.",
+            "understandingFocusDe": "Der Transfer nutzt die Mittelsenkrechte als Ortslinie in einer Constraint-Aufgabe statt als isolierten Konstruktionsauftrag.",
+            "understandingFocusEn": "The transfer uses the perpendicular bisector as a locus in a constraint task rather than as an isolated construction instruction."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Evidenz zur Winkelhalbierenden als symmetrische Konstruktion, Gleichheit der Teilwinkel und Ortslinie gleicher senkrechter Abstände zu den Schenkeln. Zwei unabhängige Fälle variieren Winkelgröße, Ausrichtung und Konstruktionszweck und verlangen jeweils eine mathematische Prüfung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected evidence for the angle bisector as a symmetric construction, equality of sub-angles, and the locus of equal perpendicular distances from the sides. Two independent cases vary angle size, orientation, and construction purpose and each requires a mathematical check. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "symmetric-angle-bisector-construction",
+            "essentialUnderstandingDe": "Ein Kreisbogen um den Scheitel markiert auf beiden Schenkeln gleich weit entfernte Punkte. Gleich große Bögen um diese beiden Punkte erzeugen einen inneren Schnittpunkt; der Strahl vom Scheitel durch ihn ist wegen dieser Symmetrie die Winkelhalbierende.",
+            "essentialUnderstandingEn": "An arc centred at the vertex marks equally distant points on both sides. Equal arcs centred at those points create an interior intersection; by this symmetry, the ray from the vertex through that intersection is the angle bisector.",
+            "observablePerformanceDe": "Die lernende Person führt bei einem neuen Winkel die symmetrische Zirkelkonstruktion mit unveränderten paarweisen Radien aus, zeichnet den Halbierungsstrahl und erklärt, wie die Konstruktion zwei gleich große Teilwinkel sicherstellt.",
+            "observablePerformanceEn": "For a fresh angle, the learner carries out the symmetric compass construction using unchanged paired radii, draws the bisecting ray, and explains how the construction ensures two equal sub-angles."
+          },
+          {
+            "id": "equal-distance-locus-from-sides",
+            "essentialUnderstandingDe": "Jeder Punkt auf der inneren Winkelhalbierenden besitzt zu beiden Schenkeln denselben senkrechten Abstand; umgekehrt liegen Punkte im Winkelinneren mit gleichen senkrechten Schenkelabständen auf der Winkelhalbierenden.",
+            "essentialUnderstandingEn": "Every point on the internal angle bisector has the same perpendicular distance from both sides; conversely, interior points with equal perpendicular distances from the sides lie on the angle bisector.",
+            "observablePerformanceDe": "Die lernende Person bestimmt oder prüft in einer neuen Figur einen Punkt mit gleichen Schenkelabständen, konstruiert dazu die Lote auf beide Schenkel und begründet aus deren Gleichheit die Lage auf der Winkelhalbierenden.",
+            "observablePerformanceEn": "In a fresh figure, the learner locates or tests a point having equal distances from the sides, constructs perpendiculars to both sides, and uses their equality to justify that the point lies on the angle bisector."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "symmetric-angle-bisector-construction",
+            "equal-distance-locus-from-sides"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "angle-size-and-orientation",
+            "textDe": "Spitzer vertraut ausgerichteter Winkel gegenüber stumpfem oder gedrehtem Winkel",
+            "textEn": "An acute angle in a familiar orientation versus an obtuse or rotated angle"
+          },
+          {
+            "id": "evidence-property",
+            "textDe": "Gleichheit der Teilwinkel gegenüber Gleichheit der senkrechten Abstände zu den Schenkeln",
+            "textEn": "Equality of sub-angles versus equality of perpendicular distances from the sides"
+          },
+          {
+            "id": "construction-purpose",
+            "textDe": "Den Halbierungsstrahl konstruieren gegenüber einen gleich weit von zwei Begrenzungen entfernten Ort bestimmen",
+            "textEn": "Construct the bisecting ray versus locate a point equidistant from two boundaries"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rotated-obtuse-angle-construction",
+            "taskDemandDe": "Konstruiere mit Zirkel und Lineal die Winkelhalbierende eines gedreht dargestellten stumpfen Winkels ASB. Kennzeichne die jeweils gleich gewählten Radien und begründe, warum dein Strahl den Winkel exakt halbiert.",
+            "taskDemandEn": "Using a compass and straightedge, construct the bisector of a rotated obtuse angle ASB. Mark each pair of equal radii and justify why your ray bisects the angle exactly.",
+            "expectedPerformanceDe": "Die lernende Person markiert mit einem Bogen um S gleich weit entfernte Punkte auf SA und SB, schlägt von ihnen mit gleichem Radius zwei sich schneidende Bögen und verbindet deren inneren Schnittpunkt mit S. Sie begründet die gleichen Teilwinkel über die symmetrische Konstruktion und nicht durch Winkelmessung allein.",
+            "expectedPerformanceEn": "The learner uses an arc centred at S to mark equally distant points on SA and SB, draws two intersecting arcs from them using the same radius, and joins their interior intersection to S. The learner justifies the equal sub-angles through the symmetric construction rather than through angle measurement alone.",
+            "understandingFocusDe": "Der Fall prüft die exakte Konstruktionslogik unabhängig von einer vertrauten Winkelgröße oder Ausrichtung.",
+            "understandingFocusEn": "The case tests the exact construction logic independently of a familiar angle size or orientation."
+          },
+          {
+            "id": "junction-equidistant-location",
+            "taskDemandDe": "Zwei gerade Mauern bilden einen Winkel. Ein runder Schutzpfosten soll im Winkelinneren so stehen, dass sein Mittelpunkt von beiden Mauern denselben senkrechten Abstand besitzt. Konstruiere die mögliche Ortslinie des Mittelpunkts, wähle einen Punkt darauf und weise die Abstandsgleichheit nach.",
+            "taskDemandEn": "Two straight walls form an angle. A circular protective post must be placed inside the angle so that its centre has the same perpendicular distance from both walls. Construct the possible locus of the centre, choose a point on it, and demonstrate equality of distances.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert die innere Winkelhalbierende, wählt darauf einen Punkt und fällt von ihm Lote auf beide Schenkel. Sie begründet die Gleichheit der Lotstrecken durch die Ortslinieneigenschaft und erkennt, dass andere Punkte auf derselben Halbierenden ebenfalls zulässig sind.",
+            "expectedPerformanceEn": "The learner constructs the internal angle bisector, chooses a point on it, and drops perpendiculars from that point to both sides. The learner justifies equality of the perpendicular segments through the locus property and recognizes that other points on the same bisector are also admissible.",
+            "understandingFocusDe": "Der Transfer nutzt die Abstandsbedeutung in einer offenen Ortslinienaufgabe und verlangt eine andere Prüfung als der direkte Konstruktionsfall.",
+            "understandingFocusEn": "The transfer uses the distance meaning in an open locus task and requires a different check from the direct construction case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte vollständige Messkette: Messgröße festlegen, Messbereich und Auflösung abgleichen, analoges oder digitales Werkzeug begründet wählen, nachvollziehbar messen und nur mit verfahrensgerechter Einheit und Genauigkeit berichten. Drei unabhängige Fälle wechseln Größe, Wertebereich, Instrumententyp und verfügbare Auflösung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected complete measurement chain: specify the measurand, match range and resolution, justify an analogue or digital tool, measure transparently, and report only with a procedure-appropriate unit and precision. Three independent cases vary quantity, range, instrument type, and available resolution. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "measurand-range-and-resolution",
+            "essentialUnderstandingDe": "Ein Messmittel ist für eine festgelegte Messgröße nur geeignet, wenn sein Messbereich den erwarteten Wert umfasst und seine Auflösung die benötigte Genauigkeit sinnvoll unterstützt. Eine feinere Anzeige ist nicht automatisch eine verlässlichere Messung.",
+            "essentialUnderstandingEn": "An instrument is suitable for a specified measurand only if its range contains the expected value and its resolution meaningfully supports the required precision. A finer display does not automatically make a measurement more reliable.",
+            "observablePerformanceDe": "Die lernende Person benennt in einer neuen Alltagssituation die zu messende Größe, schätzt ihren Wertebereich, vergleicht verfügbare analoge oder digitale Messmittel anhand von Bereich und kleinster sinnvoll ablesbarer Einheit und begründet die Auswahl.",
+            "observablePerformanceEn": "In a fresh everyday situation, the learner names the measurand, estimates its range, compares available analogue or digital instruments by range and smallest meaningful readable unit, and justifies the choice."
+          },
+          {
+            "id": "transparent-measurement-and-report",
+            "essentialUnderstandingDe": "Das Ergebnis hängt außer vom Gerät auch von Nullpunkt, Anlege- oder Ableseposition und Durchführung ab. Die angegebene Stelle und Einheit dürfen keine Genauigkeit vortäuschen, die Werkzeug und Verfahren nicht liefern.",
+            "essentialUnderstandingEn": "Besides the device, a result depends on zero alignment, placement or reading position, and execution. The reported digits and unit must not imply precision that the instrument and procedure cannot provide.",
+            "observablePerformanceDe": "Die lernende Person richtet das gewählte Messmittel sachgerecht aus, dokumentiert den Ableseschritt, wiederholt oder plausibilisiert die Messung angemessen und gibt einen realistisch gerundeten Wert mit korrekter Einheit und kurzer Genauigkeitsbegründung an.",
+            "observablePerformanceEn": "The learner positions the chosen instrument appropriately, documents the reading step, repeats or checks the measurement as appropriate, and reports a realistically rounded value with the correct unit and a brief justification of precision."
+          },
+          {
+            "id": "adaptation-under-tool-constraints",
+            "essentialUnderstandingDe": "Ändern sich Größe, Wertebereich oder verfügbare Messmittel, müssen Werkzeugwahl, Vorgehen und berichtete Genauigkeit zusammen angepasst werden. Ein nur teilweise geeignetes Werkzeug kann ein verändertes Verfahren erfordern, ohne dadurch genauer zu werden als seine Auflösung.",
+            "essentialUnderstandingEn": "When the quantity, range, or available instruments change, tool choice, procedure, and reported precision must be adapted together. A partly suitable tool may require a changed procedure without becoming more precise than its resolution.",
+            "observablePerformanceDe": "Bei einer unabhängig veränderten Messaufgabe entwickelt die lernende Person aus den verfügbaren Mitteln ein begründetes Vorgehen, benennt dessen Genauigkeitsgrenze und verwirft ein Instrument, dessen Messbereich oder Auflösung für die Aufgabe unpassend ist.",
+            "observablePerformanceEn": "For an independently changed measurement task, the learner develops a justified procedure from the available tools, states its precision limit, and rejects an instrument whose range or resolution is unsuitable."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "measurand-range-and-resolution",
+            "transparent-measurement-and-report",
+            "adaptation-under-tool-constraints"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-and-range",
+            "textDe": "Raumlänge im Meterbereich gegenüber Flüssigkeitsvolumen im Milliliterbereich oder Zeit im Sekundenbereich",
+            "textEn": "Room length in the metre range versus liquid volume in the millilitre range or time in the second range"
+          },
+          {
+            "id": "instrument-mode",
+            "textDe": "Analoges Skaleninstrument gegenüber digitaler Anzeige mit anderer Auflösung und möglicher Scheinpräzision",
+            "textEn": "An analogue scale instrument versus a digital display with different resolution and possible false precision"
+          },
+          {
+            "id": "availability-constraint",
+            "textDe": "Direkt passendes Messmittel gegenüber nur teilweise geeigneter Auswahl, die ein angepasstes Vorgehen erfordert",
+            "textEn": "A directly suitable instrument versus a partly suitable selection requiring an adapted procedure"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "classroom-width-tool-choice",
+            "taskDemandDe": "Bestimme die Breite eines Klassenraums. Verfügbar sind ein 15-cm-Lineal mit Millimeterteilung, ein 2-m-Gliedermaßstab mit Zentimeterteilung und ein digitales Distanzmessgerät mit Messbereich 0,05 m bis 20 m, Millimeteranzeige und spezifizierter Abweichung von ±3 mm. Schätze zuerst den Wertebereich, wähle und begründe ein Messmittel, führe die Messung aus und gib das Ergebnis mit realistischer Genauigkeit an.",
+            "taskDemandEn": "Determine the width of a classroom. Available tools are a 15 cm ruler with millimetre divisions, a 2 m folding rule with centimetre divisions, and a digital distance meter with a range from 0.05 m to 20 m, a millimetre display, and a specified deviation of ±3 mm. First estimate the range, choose and justify an instrument, carry out the measurement, and report it with realistic precision.",
+            "expectedPerformanceDe": "Die lernende Person wählt ein Werkzeug mit hinreichendem Bereich oder plant beim Gliedermaßstab nachvollziehbare Teilstrecken, richtet Anfang und Messrichtung aus und wiederholt die Messung. Sie unterscheidet beim Digitalgerät Messbereich, Anzeigeauflösung und spezifizierte Genauigkeit, übernimmt nicht unkritisch jede angezeigte Millimeterstelle, sondern rundet entsprechend Gerätespezifikation, Aufstellung und Wiederholungsstreuung und nennt Meter oder Zentimeter eindeutig.",
+            "expectedPerformanceEn": "The learner selects a tool with sufficient range or transparently plans successive lengths with the folding rule, aligns the start and measurement direction, and repeats the measurement. For the digital device, the learner distinguishes range, display resolution, and specified accuracy, does not uncritically retain every displayed millimetre digit, and rounds according to the device specification, placement, and repeated variation while stating metres or centimetres unambiguously.",
+            "understandingFocusDe": "Der Fall prüft Bereich, scheinbare digitale Feinheit, Durchführung und verfahrensgerechte Ergebnisangabe an einer großen Länge.",
+            "understandingFocusEn": "The case tests range, apparent digital fineness, execution, and procedure-appropriate reporting for a large length."
+          },
+          {
+            "id": "water-volume-scale-reading",
+            "taskDemandDe": "Bestimme das Volumen einer kleinen Wassermenge von ungefähr 180 ml. Zur Wahl stehen ein 1-l-Küchenmessbecher mit 50-ml-Teilung und ein 250-ml-Messzylinder mit 5-ml-Teilung. Begründe die Wahl, beschreibe die Ableseposition und gib das Ergebnis angemessen gerundet an.",
+            "taskDemandEn": "Determine the volume of a small amount of water of about 180 ml. Choose between a 1 L kitchen jug with 50 ml divisions and a 250 ml measuring cylinder with 5 ml divisions. Justify the choice, describe the reading position, and report the result with appropriate rounding.",
+            "expectedPerformanceDe": "Die lernende Person wählt den Messzylinder wegen passendem Bereich und feinerer Teilung, stellt ihn eben auf und liest die Flüssigkeitshöhe auf Augenhöhe ab. Sie berichtet den Wert in Millilitern mit einer zur 5-ml-Teilung passenden Genauigkeit und erklärt, warum der Küchenbecher dieselbe Stellenzahl nicht stützen würde.",
+            "expectedPerformanceEn": "The learner chooses the measuring cylinder because its range and finer divisions are suitable, places it level, and reads the liquid level at eye height. The learner reports the value in millilitres with precision appropriate to 5 ml divisions and explains why the kitchen jug would not support the same number of digits.",
+            "understandingFocusDe": "Der Transfer wechselt Messgröße, Skalentyp und Wertebereich und verlangt eine konkrete Ablese- und Rundungsbegründung.",
+            "understandingFocusEn": "The transfer changes measurand, scale type, and range and requires a concrete justification of reading and rounding."
+          },
+          {
+            "id": "short-event-limited-timer",
+            "taskDemandDe": "Miss die Dauer von zehn aufeinanderfolgenden Pendelschwingungen mit einer Stoppuhr, die nur Zehntelsekunden anzeigt, und bestimme daraus die mittlere Dauer einer Schwingung. Begründe, warum zehn Schwingungen gemeinsam gemessen werden und wie viele Nachkommastellen das Endergebnis sinnvoll besitzt.",
+            "taskDemandEn": "Measure the duration of ten consecutive pendulum oscillations using a stopwatch that displays only tenths of a second, and determine the mean duration of one oscillation. Justify why ten oscillations are timed together and how many decimal places are meaningful in the final result.",
+            "expectedPerformanceDe": "Die lernende Person misst eine längere Gesamtdauer statt einer einzelnen sehr kurzen Bewegung, dokumentiert Start- und Endereignis und teilt anschließend durch zehn. Sie erklärt, dass das Verfahren den relativen Einfluss der Start-Stopp-Reaktion verringert, ohne eine beliebige Zahl zusätzlicher gesicherter Stellen zu erzeugen, und gibt Sekunden mit realistischer Genauigkeit an.",
+            "expectedPerformanceEn": "The learner measures a longer total interval rather than one very short motion, documents the start and end events, and then divides by ten. The learner explains that the procedure reduces the relative effect of start-stop reaction without creating an arbitrary number of warranted extra digits and reports seconds with realistic precision.",
+            "understandingFocusDe": "Der unabhängige Fall verlangt eine Anpassung des Messverfahrens an ein begrenzt auflösendes Werkzeug und trennt Rechenstellen von Messgenauigkeit.",
+            "understandingFocusEn": "The independent case requires adapting the procedure to a limited-resolution tool and distinguishes calculated digits from measurement precision."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "reason": "DE: Das Profil setzt die bestätigte atomare Familienkompetenz um: Voraussetzungen erkennen, eine passende Winkelbeziehung aus Scheitel-, Neben-, Stufen-, Wechselwinkel- oder Winkelsummen auswählen und jeden Schritt einer geometrischen Argumentation kennzeichnen. Drei unabhängige Fälle decken Parallelen, Dreiecks- und Vieleckszerlegung sowie eine kombinierte Transferfigur ab. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile implements the upheld atomic family competence: recognize premises, select an appropriate relation among vertical, supplementary, corresponding, alternate angles or angle sums, and label every step of a geometric argument. Three independent cases cover parallels, triangle and polygon decomposition, and a combined transfer figure. No human approval or profile-review run is claimed.",
+      "dissent": [
+        "DE: Round A empfahl eine Trennung der Satzfamilien. Die dritte Adjudikation hielt die aktuelle Atomicity-Entscheidung aufrecht, weil alle Familien Variationsbereiche derselben beobachtbaren Argumentationskette sind. Dieses Profil macht die Familienabdeckung explizit, ohne neue Teilziele zu behaupten. EN: Round A recommended splitting the theorem families. Third adjudication upheld the current atomicity decision because all families are variation domains of the same observable reasoning chain. This profile makes family coverage explicit without claiming new subgoals."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "premise-bound-angle-relation-selection",
+            "essentialUnderstandingDe": "Scheitel- und Nebenwinkel folgen aus einem Geradenschnitt; Stufen- und Wechselwinkel dürfen in der benötigten Gleichheitsform nur aus der gegebenen Parallelität abgeleitet werden. Die Lage in einer Skizze allein ist keine Voraussetzung.",
+            "essentialUnderstandingEn": "Vertical and supplementary angles follow from intersecting lines; corresponding and alternate-angle equalities may be inferred in the required form only from given parallelism. Position in a sketch alone is not a premise.",
+            "observablePerformanceDe": "Die lernende Person benennt in einer unbekannten Figur die für jeden Schritt vorhandene Geradenlage, wählt die dazu zulässige Winkelbeziehung und kennzeichnet ausdrücklich, wo Parallelität, Scheitelwinkel oder eine lineare Ergänzung die Aussage tragen.",
+            "observablePerformanceEn": "In an unfamiliar figure, the learner identifies the line configuration available for each step, selects the admissible angle relation, and explicitly labels where parallelism, vertical angles, or a linear supplement supports the claim."
+          },
+          {
+            "id": "triangle-and-polygon-angle-sums",
+            "essentialUnderstandingDe": "Die Innenwinkelsumme eines Dreiecks beträgt 180 Grad. Eine Vielecks-Winkelsumme kann durch eine nachvollziehbare Zerlegung in Dreiecke begründet werden; sie ist nicht bloß eine auswendig eingesetzte Zahl.",
+            "essentialUnderstandingEn": "The interior angles of a triangle sum to 180 degrees. A polygon angle sum can be justified through a transparent decomposition into triangles; it is not merely a memorized number.",
+            "observablePerformanceDe": "Die lernende Person bestimmt in einem neuen Dreieck oder Vieleck einen unbekannten Winkel, stellt die verwendete Winkelsumme aus einer passenden Dreieckszerlegung her und erklärt, weshalb Anzahl und Anordnung der Teilwinkel die Rechnung tragen.",
+            "observablePerformanceEn": "In a fresh triangle or polygon, the learner determines an unknown angle, derives the angle sum from a suitable decomposition into triangles, and explains why the number and arrangement of component angles support the calculation."
+          },
+          {
+            "id": "complete-labelled-reasoning-chain",
+            "essentialUnderstandingDe": "Eine geometrische Winkelargumentation ist eine Kette: Jeder neue Winkelwert oder Vergleich muss aus bereits gegebenen oder zuvor begründeten Beziehungen folgen. Eine gedrehte Figur oder Hilfslinie ändert die gültigen Beziehungen nicht, kann aber ihre Auswahl neu strukturieren.",
+            "essentialUnderstandingEn": "A geometric angle argument is a chain: every new angle value or comparison must follow from given or previously justified relations. Rotating a figure or adding an auxiliary line does not change valid relations but may restructure how they are selected.",
+            "observablePerformanceDe": "Die lernende Person entwickelt ohne vorgegebenen Lösungsweg eine geordnete Kette bis zur Behauptung, versieht jeden Schritt mit Beziehung und Voraussetzung und prüft am Ende, ob Winkelsumme und Größenordnung der Winkel konsistent sind.",
+            "observablePerformanceEn": "Without a supplied solution path, the learner develops an ordered chain leading to the claim, annotates every step with its relation and premise, and finally checks consistency with angle sums and plausible angle magnitudes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "premise-bound-angle-relation-selection",
+            "triangle-and-polygon-angle-sums",
+            "complete-labelled-reasoning-chain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relation-family",
+            "textDe": "Geradenschnitt und Parallelenbeziehungen gegenüber Dreiecks- oder Vieleck-Winkelsummen sowie deren Kombination",
+            "textEn": "Intersecting-line and parallel-line relations versus triangle or polygon angle sums and their combination"
+          },
+          {
+            "id": "premise-visibility",
+            "textDe": "Explizite Parallelmarkierung gegenüber aus Textbedingungen zu erschließender Geradenlage; niemals bloßer optischer Eindruck",
+            "textEn": "Explicit parallel markings versus line configurations inferred from textual conditions, never mere visual appearance"
+          },
+          {
+            "id": "figure-structure",
+            "textDe": "Direkte Einzelbeziehung gegenüber gedrehter Figur mit Hilfslinie und mehrschrittiger Abhängigkeit",
+            "textEn": "A direct single relation versus a rotated figure with an auxiliary line and multi-step dependency"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parallel-lines-labelled-chain",
+            "taskDemandDe": "Zwei als parallel markierte Geraden g und h werden von t geschnitten. An g ist ein Winkel von 128 Grad gegeben. Bestimme einen auf der anderen Seite von t an h liegenden spitzen Winkel und begründe jeden Schritt mit Scheitel-, Neben-, Stufen- oder Wechselwinkelbeziehung.",
+            "taskDemandEn": "Two lines g and h marked as parallel are cut by t. An angle of 128 degrees is given at g. Determine an acute angle on the other side of t at h and justify every step using vertical, supplementary, corresponding, or alternate-angle relations.",
+            "expectedPerformanceDe": "Die lernende Person bildet zunächst den Nebenwinkel 52 Grad oder überträgt den gegebenen Winkel zulässig an die zweite Parallele und gelangt dann mit einer korrekt benannten weiteren Beziehung zum gefragten Winkel. Jeder Gleichheits- oder Ergänzungsschritt nennt die Parallelmarkierung oder den Geradenschnitt als Voraussetzung.",
+            "expectedPerformanceEn": "The learner first forms the 52-degree supplementary angle or validly transfers the given angle to the second parallel, then reaches the requested angle using another correctly named relation. Every equality or supplementary step states the parallel marking or intersection as its premise.",
+            "understandingFocusDe": "Der Fall prüft die voraussetzungsgebundene Auswahl und Verkettung von Winkelbeziehungen an Parallelen.",
+            "understandingFocusEn": "The case tests premise-bound selection and chaining of angle relations at parallel lines."
+          },
+          {
+            "id": "pentagon-sum-from-triangulation",
+            "taskDemandDe": "Ein unregelmäßiges Fünfeck hat vier Innenwinkel von 92, 118, 104 und 126 Grad. Bestimme den fünften Winkel, indem du die Innenwinkelsumme durch eine Zerlegung des Fünfecks in Dreiecke begründest; eine bloß genannte Formel genügt nicht.",
+            "taskDemandEn": "An irregular pentagon has four interior angles of 92, 118, 104, and 126 degrees. Determine the fifth angle by justifying the interior-angle sum through a decomposition of the pentagon into triangles; merely citing a formula is insufficient.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet von einem Eckpunkt zwei nicht kreuzende Diagonalen, erhält drei Dreiecke und begründet damit 3 mal 180 Grad gleich 540 Grad. Sie berechnet den fehlenden Winkel als 100 Grad und prüft, dass er als Innenwinkel zur gezeichneten Form passt.",
+            "expectedPerformanceEn": "The learner draws two non-crossing diagonals from one vertex, obtains three triangles, and thereby justifies 3 times 180 degrees equals 540 degrees. The learner calculates the missing angle as 100 degrees and checks that it is a plausible interior angle for the drawn shape.",
+            "understandingFocusDe": "Der unabhängige Fall wechselt von Geradenbeziehungen zu einer begründeten Vieleckszerlegung und macht die Winkelsumme sichtbar.",
+            "understandingFocusEn": "The independent case shifts from line relations to a justified polygon decomposition and makes the angle sum visible."
+          },
+          {
+            "id": "rotated-combined-auxiliary-line",
+            "taskDemandDe": "In einem gedrehten Dreieck ABC wird durch C eine Hilfsgerade p parallel zu AB eingezeichnet. Die Innenwinkel bei A und B sind 47 und 68 Grad. Bestimme den Winkel bei C auf zwei nachvollziehbaren Wegen: einmal mit der Dreieckswinkelsumme und einmal durch Übertragen der beiden Basiswinkel an p. Vergleiche die Begründungen.",
+            "taskDemandEn": "In a rotated triangle ABC, an auxiliary line p parallel to AB is drawn through C. The interior angles at A and B are 47 and 68 degrees. Determine the angle at C in two transparent ways: once using the triangle angle sum and once by transferring the two base angles to p. Compare the arguments.",
+            "expectedPerformanceDe": "Die lernende Person erhält 65 Grad aus 180 minus 47 minus 68. Im zweiten Weg nutzt sie die markierte Parallelität, überträgt 47 und 68 Grad als zulässige Wechsel- oder Stufenwinkel an p und verwendet den gestreckten Winkel bei C. Sie erklärt, dass beide Ketten dieselbe Winkelsumme unterschiedlich strukturieren.",
+            "expectedPerformanceEn": "The learner obtains 65 degrees from 180 minus 47 minus 68. In the second route, the learner uses the marked parallelism, transfers 47 and 68 degrees as admissible alternate or corresponding angles to p, and uses the straight angle at C. The learner explains that both chains structure the same angle sum differently.",
+            "understandingFocusDe": "Der Transfer kombiniert Satzfamilien in einer gedrehten Figur und verlangt ohne vorgegebenen Einzelweg zwei kohärente Argumentationsketten.",
+            "understandingFocusEn": "The transfer combines relation families in a rotated figure and requires two coherent chains without supplying an individual solution path."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Eigenschaftskette für Höhe, Mittelsenkrechte, Seitenhalbierende und Winkelhalbierende. Zwei unabhängige Fälle variieren direkte Markierungen, Außenverlängerungen, Zusatzlinien und die Richtung zwischen Definition und Figur; die Zuordnung darf nicht aus der Bildlage folgen. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected property chain for altitudes, perpendicular bisectors, medians, and angle bisectors. Two independent cases vary direct markings, external extensions, extra lines, and the direction between definition and figure; classification must not follow from visual orientation. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "distinguish-four-special-line-definitions",
+            "essentialUnderstandingDe": "Eine Höhe verläuft durch einen Eckpunkt senkrecht zur gegenüberliegenden Seite oder deren Verlängerung; eine Mittelsenkrechte steht senkrecht auf einer Seite und geht durch deren Mittelpunkt; eine Seitenhalbierende verbindet einen Eckpunkt mit dem gegenüberliegenden Seitenmittelpunkt; eine Winkelhalbierende teilt einen Eckwinkel. Eckpunkt, Seite, Mittelpunkt, rechter Winkel und gleiche Teilwinkel haben dabei unterschiedliche Rollen.",
+            "essentialUnderstandingEn": "An altitude passes through a vertex perpendicular to the opposite side or its extension; a perpendicular bisector is perpendicular to a side through its midpoint; a median joins a vertex to the midpoint of the opposite side; an angle bisector divides a vertex angle. Vertex, side, midpoint, right angle, and equal sub-angles play distinct roles.",
+            "observablePerformanceDe": "Die lernende Person identifiziert in einer neuen, nicht maßstäblichen Dreiecksfigur jede besondere Linie, benennt sie fachsprachlich und belegt die Zuordnung mit genau den erforderlichen Markierungen für Eckpunktbezug, Mittelpunkt, rechten Winkel oder gleiche Teilwinkel.",
+            "observablePerformanceEn": "In a fresh not-to-scale triangle figure, the learner identifies each special line, names it mathematically, and supports the classification with exactly the required markings for vertex incidence, midpoint, right angle, or equal sub-angles."
+          },
+          {
+            "id": "property-stability-under-distractors",
+            "essentialUnderstandingDe": "Die definierenden Beziehungen bleiben bei Drehung, stumpfwinkliger Form, außerhalb liegendem Höhenfuß und zusätzlichen Hilfslinien erhalten. Eine Linie kann durch einen Seitenmittelpunkt gehen, ohne Mittelsenkrechte zu sein, wenn die Senkrechtbedingung fehlt, oder senkrecht sein, ohne Seitenhalbierende zu sein.",
+            "essentialUnderstandingEn": "The defining relations remain valid under rotation, an obtuse shape, an altitude foot outside the triangle, and extra auxiliary lines. A line may pass through a side midpoint without being a perpendicular bisector if perpendicularity is absent, or be perpendicular without being a median.",
+            "observablePerformanceDe": "In einer gedrehten stumpfwinkligen Figur mit Seitenverlängerungen und plausiblen Ablenkungslinien wählt die lernende Person nur die Linien aus, die alle definierenden Bedingungen erfüllen, und erklärt bei mindestens einer Ablenkungslinie konkret, welche Bedingung fehlt.",
+            "observablePerformanceEn": "In a rotated obtuse figure with side extensions and plausible distractor lines, the learner selects only lines satisfying all defining conditions and explains for at least one distractor exactly which condition is missing."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "distinguish-four-special-line-definitions",
+            "property-stability-under-distractors"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "triangle-shape-and-orientation",
+            "textDe": "Akutes vertraut ausgerichtetes Dreieck gegenüber gedrehtem stumpfwinkligem Dreieck mit Außenverlängerungen",
+            "textEn": "An acute triangle in a familiar orientation versus a rotated obtuse triangle with external extensions"
+          },
+          {
+            "id": "evidence-marking",
+            "textDe": "Rechter Winkel, Seitenmittelpunkt oder gleiche Teilwinkel einzeln und in konkurrierenden Kombinationen",
+            "textEn": "Right angle, side midpoint, or equal sub-angles individually and in competing combinations"
+          },
+          {
+            "id": "classification-direction",
+            "textDe": "Markierte Linien benennen gegenüber aus einer Definition die richtige Linie in einer komplexen Skizze auswählen",
+            "textEn": "Name marked lines versus select the correct line in a complex sketch from a definition"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "four-lines-from-markings",
+            "taskDemandDe": "In einem nicht maßstäblichen Dreieck ABC sind vier verschiedenfarbige Linien markiert: durch A senkrecht zu BC, durch den Mittelpunkt von AB senkrecht zu AB, von B zum Mittelpunkt von AC und durch C zwischen zwei gleich markierten Teilwinkeln. Benenne jede Linie und begründe jede Zuordnung nur mit den markierten Eigenschaften.",
+            "taskDemandEn": "In a not-to-scale triangle ABC, four differently coloured lines are marked: through A perpendicular to BC, through the midpoint of AB perpendicular to AB, from B to the midpoint of AC, and through C between two equally marked sub-angles. Name each line and justify every classification only from the marked properties.",
+            "expectedPerformanceDe": "Die lernende Person bezeichnet die Linien als Höhe von A, Mittelsenkrechte von AB, Seitenhalbierende von B und Winkelhalbierende bei C. Für jede nennt sie die vollständige Definition und trennt insbesondere Mittelsenkrechte und Seitenhalbierende über Senkrecht- beziehungsweise Eckpunktbedingung.",
+            "expectedPerformanceEn": "The learner identifies the lines as the altitude from A, the perpendicular bisector of AB, the median from B, and the angle bisector at C. For each, the learner states the complete definition and particularly distinguishes perpendicular bisector from median through the perpendicularity or vertex condition.",
+            "understandingFocusDe": "Der Fall prüft die vier Begriffe gleichzeitig, aber mit eindeutigen, eigenschaftsgebundenen Leistungsnachweisen.",
+            "understandingFocusEn": "The case tests all four terms together through unambiguous property-bound evidence."
+          },
+          {
+            "id": "obtuse-triangle-decoy-selection",
+          "taskDemandDe": "Eine gedrehte stumpfwinklige Dreiecksfigur enthält sieben markierte Linien: eine Höhe mit Fußpunkt auf der Verlängerung von BC, eine Seitenhalbierende, eine Mittelsenkrechte, eine Winkelhalbierende und drei Ablenkungslinien. Wähle die vier besonderen Linien aus, benenne sie und erkläre für jede ausgewählte und verworfene Linie die tragende beziehungsweise fehlende Definitionseigenschaft.",
+          "taskDemandEn": "A rotated obtuse triangle figure contains seven marked lines: an altitude whose foot lies on the extension of BC, a median, a perpendicular bisector, an angle bisector, and three distractors. Select and name the four special lines and explain for every selected and rejected line which defining property is present or missing.",
+          "expectedPerformanceDe": "Die lernende Person akzeptiert die außerhalb verlaufende Höhe wegen Eckpunkt und rechtem Winkel zur Gegenseitenverlängerung, erkennt Seitenhalbierende und Mittelsenkrechte über ihre verschiedenen Bedingungen und ordnet die Winkelhalbierende über gleiche Teilwinkel zu. Ablenkungslinien verwirft sie jeweils mit einer konkreten fehlenden Bedingung.",
+          "expectedPerformanceEn": "The learner accepts the external altitude because it passes through a vertex and is perpendicular to the opposite-side extension, recognizes the median and perpendicular bisector from their distinct conditions, and identifies the angle bisector from equal sub-angles. Each distractor is rejected by naming a specific missing condition.",
+            "understandingFocusDe": "Der Transfer prüft Eigenschaftsstabilität unter Außenlage, Drehung und visueller Konkurrenz statt Wiedererkennen einer Standardzeichnung.",
+            "understandingFocusEn": "The transfer tests stability of properties under external position, rotation, and visual competition rather than recognition of a standard diagram."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Evidenz, dass Winkel- und Seitenklassifikation unabhängig sind, sich überlagern können und definierende Eigenschaften Folgerungen für einfache Begründungen liefern. Drei Fälle variieren direkte und indirekte Angaben, Mehrfachklassifikation und nicht maßstäbliche Darstellung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected evidence that angle-based and side-based classifications are independent, can overlap, and yield consequences for simple arguments. Three cases vary direct and indirect data, multiple classification, and not-to-scale representation. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "independent-side-and-angle-classification",
+          "essentialUnderstandingDe": "Ein nicht entartetes Dreieck gehört genau einer Winkelklasse an: spitz-, recht- oder stumpfwinklig. Die davon unabhängigen Seitenklassen können bei ausdrücklich inklusiver Begriffsverwendung geschachtelt sein: Ein gleichseitiges Dreieck besitzt insbesondere mindestens zwei gleich lange Seiten und ist damit auch gleichschenklig. Alle zutreffenden Kategorien oder eine verwendete exklusive Schulkonvention müssen kenntlich sein.",
+          "essentialUnderstandingEn": "A non-degenerate triangle belongs to exactly one angle class: acute, right, or obtuse. The independent side classes may be nested under an explicitly inclusive convention: in particular, an equilateral triangle has at least two equal sides and is therefore also isosceles. All applicable categories or an explicitly used exclusive classroom convention must be stated.",
+            "observablePerformanceDe": "Die lernende Person klassifiziert neue Dreiecke aus Längen, Winkelwerten oder eindeutigen Markierungen auf beiden Achsen vollständig und begründet jede zutreffende Klasse mit der definierenden Seiten- oder Winkeleigenschaft.",
+            "observablePerformanceEn": "From lengths, angle measures, or unambiguous markings, the learner fully classifies fresh triangles on both axes and justifies each applicable class using its defining side or angle property."
+          },
+          {
+            "id": "derive-properties-for-simple-argument",
+            "essentialUnderstandingDe": "Definierende Eigenschaften tragen Folgerungen: In einem gleichschenkligen Dreieck sind die Basiswinkel gleich, in einem gleichseitigen Dreieck sind alle Winkel 60 Grad, und aus der Dreieckswinkelsumme können fehlende Winkel und damit die Winkelklasse bestimmt werden.",
+            "essentialUnderstandingEn": "Defining properties support consequences: an isosceles triangle has equal base angles, an equilateral triangle has three 60-degree angles, and the triangle angle sum can determine missing angles and therefore the angle class.",
+            "observablePerformanceDe": "Die lernende Person leitet bei indirekten Angaben fehlende Winkel oder Seitenbeziehungen her, verwendet die Folgerung in einer kurzen begründeten Rechnung und schließt erst danach auf die vollständige Klassifikation.",
+            "observablePerformanceEn": "With indirect data, the learner derives missing angles or side relations, uses the consequence in a short justified calculation, and only then concludes the complete classification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-side-and-angle-classification",
+            "derive-properties-for-simple-argument"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "information-source",
+            "textDe": "Direkte Winkel- und Längenwerte gegenüber Gleichheits-, Rechtwinkel- oder nicht maßstäblichen Bildmarkierungen",
+            "textEn": "Direct angle and length values versus equality, right-angle, or not-to-scale diagram markings"
+          },
+          {
+            "id": "classification-combination",
+            "textDe": "Gleichschenklig-spitz, gleichschenklig-stumpf, ungleichseitig-rechtwinklig oder gleichseitig-spitz",
+            "textEn": "Isosceles-acute, isosceles-obtuse, scalene-right, or equilateral-acute"
+          },
+          {
+            "id": "reasoning-direction",
+            "textDe": "Aus Eigenschaften klassifizieren gegenüber aus einer Klasse eine fehlende Winkelbeziehung herleiten und damit weiter argumentieren",
+            "textEn": "Classify from properties versus derive a missing angle relation from a class and use it in further reasoning"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "classification-cards-two-axes",
+          "taskDemandDe": "Klassifiziere vier Dreiecke jeweils vollständig nach Seiten und Winkeln und verwende für Seitenklassen die inklusive Konvention: A mit Seiten 5, 5, 6 und Winkeln von ungefähr 53, 53 und 74 Grad; B mit Seiten 3, 4, 5 und einem markierten rechten Winkel; C mit drei gleich markierten Seiten; D mit Seiten 4, 4, 7 und einem Winkel von ungefähr 122 Grad. Begründe jede Bezeichnung.",
+          "taskDemandEn": "Classify four triangles completely by sides and angles, using the inclusive convention for side classes: A with sides 5, 5, 6 and angles of approximately 53, 53, and 74 degrees; B with sides 3, 4, 5 and a marked right angle; C with three equally marked sides; D with sides 4, 4, 7 and one angle of approximately 122 degrees. Justify every label.",
+          "expectedPerformanceDe": "Die lernende Person klassifiziert A als gleichschenklig und spitzwinklig, B als ungleichseitig und rechtwinklig, C als gleichseitig, im inklusiven Sinn auch gleichschenklig und wegen dreimal 60 Grad spitzwinklig sowie D als gleichschenklig und stumpfwinklig. Jede Zuordnung verweist auf gleiche Seiten oder die größte Winkelart, nicht auf die Zeichenform.",
+          "expectedPerformanceEn": "The learner classifies A as isosceles and acute, B as scalene and right, C as equilateral, also isosceles under the inclusive convention, and acute because all angles are 60 degrees, and D as isosceles and obtuse. Every classification cites equal sides or the largest angle type rather than the drawn appearance.",
+            "understandingFocusDe": "Der Fall prüft die unabhängige und vollständige Mehrfachklassifikation über mehrere Kombinationen.",
+            "understandingFocusEn": "The case tests independent and complete multiple classification across several combinations."
+          },
+          {
+            "id": "indirect-isosceles-base-angles",
+            "taskDemandDe": "In einer nicht maßstäblichen Skizze gilt AB = AC und der Winkel bei A beträgt 40 Grad. Bestimme die beiden anderen Winkel, klassifiziere das Dreieck vollständig und begründe die Rechnung aus der Seitenmarkierung.",
+            "taskDemandEn": "In a not-to-scale sketch, AB = AC and the angle at A is 40 degrees. Determine the other two angles, classify the triangle completely, and justify the calculation from the side marking.",
+            "expectedPerformanceDe": "Die lernende Person folgert aus AB = AC gleiche Basiswinkel bei B und C, berechnet beide als (180 - 40) / 2 = 70 Grad und klassifiziert das Dreieck als gleichschenklig und spitzwinklig. Sie erklärt, warum die nicht maßstäbliche Skizze die markierten Beziehungen nicht ersetzt.",
+            "expectedPerformanceEn": "The learner infers equal base angles at B and C from AB = AC, calculates each as (180 - 40) / 2 = 70 degrees, and classifies the triangle as isosceles and acute. The learner explains why the not-to-scale sketch does not replace the marked relation.",
+            "understandingFocusDe": "Der Transfer verlangt eine Folgerung von der Seitenklasse zur Winkelbeziehung und erst danach die Winkelklassifikation.",
+            "understandingFocusEn": "The transfer requires a consequence from the side class to the angle relation before the angle classification."
+          },
+          {
+            "id": "reverse-classification-from-angles",
+            "taskDemandDe": "Ein Dreieck hat die Winkel 30, 30 und 120 Grad, aber keine eingezeichneten Seitenmarkierungen. Bestimme seine Winkel- und Seitenklasse und begründe, welche Seitenbeziehung aus den gleichen Winkeln folgt.",
+            "taskDemandEn": "A triangle has angles of 30, 30, and 120 degrees but no side markings. Determine its angle and side classes and justify which side relation follows from the equal angles.",
+            "expectedPerformanceDe": "Die lernende Person klassifiziert das Dreieck wegen 120 Grad als stumpfwinklig und folgert aus den zwei gleichen 30-Grad-Winkeln zwei gleich lange gegenüberliegende Seiten, also gleichschenklig. Sie benennt die jeweils gegenüberliegenden Winkel und Seiten korrekt.",
+            "expectedPerformanceEn": "The learner classifies the triangle as obtuse because of the 120-degree angle and infers two equal opposite sides from the two equal 30-degree angles, hence isosceles. The learner correctly identifies the corresponding opposite angles and sides.",
+            "understandingFocusDe": "Der unabhängige Fall kehrt die Begründungsrichtung um und prüft Seitenklassifikation aus Winkelinformation statt direkter Längenangabe.",
+            "understandingFocusEn": "The independent case reverses the direction of reasoning and tests side classification from angle information rather than direct lengths."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Evidenz, dass zulässige Seiten- und Winkelangaben einen Kongruenzfall bilden, ein Dreieck bis auf Kongruenz bestimmen und jeder Konstruktionsschritt eine Bedingung geometrisch realisiert. Drei unabhängige Fälle wechseln Kongruenzfall, Reihenfolge und Ausgangslage und verlangen Dokumentation sowie Eigenschaftsprüfung. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected evidence that admissible side and angle data form a congruence case, determine a triangle up to congruence, and are geometrically realized by each construction step. Three independent cases change congruence case, order, and starting orientation and require documentation and property checks. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "identify-admissible-congruence-data",
+            "essentialUnderstandingDe": "Ein zulässiger Kongruenzdatensatz bestimmt Form und Größe eines Dreiecks bis auf Verschiebung, Drehung oder Spiegelung. Entscheidend ist nicht nur die Anzahl der Angaben, sondern ihre Anordnung, etwa der eingeschlossene Winkel beim SWS-Fall.",
+            "essentialUnderstandingEn": "An admissible congruence data set determines a triangle's shape and size up to translation, rotation, or reflection. What matters is not only the number of data but their arrangement, such as the included angle in the SAS case.",
+            "observablePerformanceDe": "Die lernende Person ordnet einen neuen Datensatz dem zutreffenden Kongruenzfall zu, benennt die Rolle jeder Angabe und plant eine Reihenfolge, in der Schnittpunkte von Strahlen oder Kreisbögen genau die noch fehlenden Bedingungen festlegen.",
+            "observablePerformanceEn": "The learner matches a fresh data set to the applicable congruence case, states the role of every datum, and plans an order in which intersections of rays or arcs impose exactly the remaining conditions."
+          },
+          {
+            "id": "exact-construction-and-documentation",
+            "essentialUnderstandingDe": "Eine Dreieckskonstruktion ist eine Folge exakter geometrischer Bedingungen: abgetragene Seitenlängen erzeugen Kreise oder Strecken, Winkelangaben erzeugen Strahlen, und deren Schnitt bestimmt den verbleibenden Eckpunkt. Eine maßstäbliche Skizze allein erfüllt diese Bedingungen nicht.",
+            "essentialUnderstandingEn": "A triangle construction is a sequence of exact geometric conditions: transferred side lengths create circles or segments, angle data create rays, and their intersection determines the remaining vertex. A drawing that merely looks to scale does not satisfy these conditions.",
+            "observablePerformanceDe": "Die lernende Person führt die geplante Konstruktion mit Geodreieck, Zirkel und erforderlichem Lineal aus, dokumentiert jeden Schritt mit Fachbegriff und zugehöriger Vorgabe und lässt alle entscheidenden Kreisbögen oder Strahlen nachvollziehbar sichtbar.",
+            "observablePerformanceEn": "The learner carries out the planned construction using a set square, compass, and required straightedge, documents every step with its mathematical term and corresponding datum, and leaves all decisive arcs or rays visible for inspection."
+          },
+          {
+            "id": "condition-check-and-uniqueness",
+            "essentialUnderstandingDe": "Die fertige Figur ist nur dann eine Lösung, wenn alle vorgegebenen Seiten und Winkel erfüllt sind. Spiegelbildliche Lagen können kongruente Lösungen darstellen; unzulässige zusätzliche Schnittpunkte oder nicht erfüllte Angaben müssen erkannt werden.",
+            "essentialUnderstandingEn": "The completed figure is a solution only if all specified sides and angles are satisfied. Reflected placements may represent congruent solutions; inadmissible extra intersections or unsatisfied data must be recognized.",
+            "observablePerformanceDe": "Die lernende Person prüft am fertigen Dreieck jede Ausgangsangabe mit einer unabhängigen Längen-, Winkel- oder Kongruenzbegründung, erklärt eine mögliche Spiegelbildlage und begründet, weshalb der Datensatz das Dreieck bis auf Kongruenz festlegt.",
+            "observablePerformanceEn": "On the completed triangle, the learner checks every original datum using an independent length, angle, or congruence argument, explains a possible reflected placement, and justifies why the data determine the triangle up to congruence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "identify-admissible-congruence-data",
+            "exact-construction-and-documentation",
+            "condition-check-and-uniqueness"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "congruence-case",
+            "textDe": "SSS gegenüber SWS oder WSW mit jeweils anderer geometrischer Schnittkonstruktion",
+            "textEn": "SSS versus SAS or ASA, each requiring a different geometric intersection construction"
+          },
+          {
+            "id": "data-order-and-start",
+            "textDe": "Geordnet vorgelegte Angaben gegenüber Textangaben in anderer Reihenfolge und gedrehter Ausgangsseite",
+            "textEn": "Data supplied in construction order versus textual data in another order and a rotated starting side"
+          },
+          {
+            "id": "solution-placement",
+            "textDe": "Ein gewählter Halbebenen-Schnittpunkt gegenüber zwei spiegelbildlichen, aber kongruenten Lagen",
+            "textEn": "One chosen half-plane intersection versus two reflected but congruent placements"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sss-from-three-side-lengths",
+            "taskDemandDe": "Konstruiere ein Dreieck ABC mit AB = 6,0 cm, AC = 4,5 cm und BC = 5,2 cm. Ordne die Angaben einem Kongruenzfall zu, dokumentiere die Konstruktionsschritte und prüfe alle drei Seitenbedingungen.",
+            "taskDemandEn": "Construct triangle ABC with AB = 6.0 cm, AC = 4.5 cm, and BC = 5.2 cm. Match the data to a congruence case, document the construction steps, and check all three side conditions.",
+            "expectedPerformanceDe": "Die lernende Person erkennt SSS, zeichnet AB, schlägt um A einen Kreis mit Radius 4,5 cm und um B einen Kreis mit Radius 5,2 cm und wählt einen Schnittpunkt als C. Sie dokumentiert die Kreise als Realisierung der Längenbedingungen, misst oder begründet alle Seiten zurück und erklärt den zweiten Schnittpunkt als spiegelbildlich kongruente Lage.",
+            "expectedPerformanceEn": "The learner recognizes SSS, draws AB, constructs a circle centred at A with radius 4.5 cm and one centred at B with radius 5.2 cm, and chooses an intersection as C. The learner documents the circles as realizing the length conditions, checks all sides, and explains the second intersection as a reflected congruent placement.",
+            "understandingFocusDe": "Der Fall prüft die Kreis-Schnittstruktur des SSS-Falls einschließlich Vollständigkeit und Spiegelbildlage.",
+            "understandingFocusEn": "The case tests the circle-intersection structure of SSS, including completeness and the reflected placement."
+          },
+          {
+            "id": "sas-unordered-text-data",
+            "taskDemandDe": "Aus einem Text sind die Angaben AC = 5,5 cm, Winkel CAB = 63 Grad und AB = 7,0 cm bekannt. Bringe sie in eine sinnvolle Konstruktionsreihenfolge, benenne den Kongruenzfall und konstruiere das Dreieck in einer gedrehten Ausgangslage.",
+            "taskDemandEn": "A text gives AC = 5.5 cm, angle CAB = 63 degrees, and AB = 7.0 cm. Put the data into a sensible construction order, name the congruence case, and construct the triangle from a rotated starting position.",
+            "expectedPerformanceDe": "Die lernende Person erkennt den eingeschlossenen Winkel zwischen AB und AC und damit SWS. Sie zeichnet AB in selbst gewählter Richtung, trägt bei A den 63-Grad-Strahl ab, markiert auf ihm mit dem Zirkel AC = 5,5 cm und verbindet C mit B. Anschließend prüft sie beide Seiten und den eingeschlossenen Winkel.",
+            "expectedPerformanceEn": "The learner recognizes the included angle between AB and AC and therefore SAS. The learner draws AB in a chosen direction, constructs a 63-degree ray at A, marks AC = 5.5 cm on it with a compass, and joins C to B. The learner then checks both sides and the included angle.",
+            "understandingFocusDe": "Der Transfer wechselt Kongruenzfall, Reihenfolge und Orientierung und verlangt eine selbst geplante Konstruktionsfolge.",
+            "understandingFocusEn": "The transfer changes congruence case, data order, and orientation and requires a self-planned construction sequence."
+          },
+          {
+            "id": "asa-two-rays-intersection",
+            "taskDemandDe": "Konstruiere ein Dreieck mit AB = 8 cm, Winkel A = 48 Grad und Winkel B = 67 Grad. Erkläre, warum der Schnitt der beiden Winkelstrahlen C festlegt, und prüfe zusätzlich mit der Winkelsumme den entstehenden Winkel C.",
+            "taskDemandEn": "Construct a triangle with AB = 8 cm, angle A = 48 degrees, and angle B = 67 degrees. Explain why the intersection of the two angle rays fixes C, and additionally use the angle sum to check the resulting angle C.",
+            "expectedPerformanceDe": "Die lernende Person erkennt WSW, zeichnet AB und trägt an A und B die Winkelstrahlen auf derselben Seite der Grundlinie ab. Deren Schnittpunkt bestimmt C; sie dokumentiert dies als Erfüllung beider Winkelbedingungen und prüft Winkel C als 65 Grad aus der Dreieckswinkelsumme.",
+            "expectedPerformanceEn": "The learner recognizes ASA, draws AB, and constructs the angle rays at A and B on the same side of the base. Their intersection determines C; the learner documents this as satisfying both angle conditions and checks angle C as 65 degrees using the triangle angle sum.",
+            "understandingFocusDe": "Der dritte unabhängige Fall ersetzt Kreisbedingungen durch den Schnitt zweier Strahlen und prüft die Vollständigkeit über eine abgeleitete Beziehung.",
+            "understandingFocusEn": "The third independent case replaces circle conditions with the intersection of two rays and checks completeness through a derived relation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "reason": "DE: Das Profil operationalisiert die ausgewählte Evidenz zur Seitenhalbierenden: Seitenmittelpunkt als zwei gleich lange Teilstrecken, Verbindung mit dem gegenüberliegenden Eckpunkt und ausdrückliche Abgrenzung von der Mittelsenkrechten. Zwei unabhängige Fälle variieren vollständige Konstruktion, unvollständige Skizze, stumpfwinklige Lage und Ablenkungslinie. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the selected evidence for medians: a side midpoint as two equal sub-segments, connection to the opposite vertex, and explicit distinction from a perpendicular bisector. Two independent cases vary complete construction, incomplete sketch, obtuse orientation, and a distractor line. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "midpoint-and-opposite-vertex-construction",
+            "essentialUnderstandingDe": "Eine Seitenhalbierende verbindet einen Eckpunkt mit dem Mittelpunkt der gegenüberliegenden Seite. Der Mittelpunkt ist durch zwei gleich lange Teilstrecken bestimmt; eine Senkrechtstellung zur Seite gehört nicht zur Definition.",
+            "essentialUnderstandingEn": "A median joins a vertex to the midpoint of the opposite side. The midpoint is determined by two equal sub-segments; perpendicularity to the side is not part of the definition.",
+            "observablePerformanceDe": "Die lernende Person konstruiert bei einem neuen Dreieck jeden Seitenmittelpunkt durch eine begründete Halbierung, verbindet ihn mit dem jeweils gegenüberliegenden Eckpunkt und kennzeichnet für jede Seitenhalbierende die zwei gleich langen Teilstrecken.",
+            "observablePerformanceEn": "For a fresh triangle, the learner constructs each side midpoint through a justified bisection, joins it to the opposite vertex, and marks the two equal sub-segments supporting each median."
+          },
+          {
+            "id": "verification-and-perpendicular-bisector-distinction",
+            "essentialUnderstandingDe": "Ob eine Linie eine Seitenhalbierende ist, wird durch Eckpunkt und gegenüberliegenden Seitenmittelpunkt geprüft. Eine Mittelsenkrechte kann denselben Mittelpunkt enthalten, muss aber senkrecht zur Seite sein und muss im Allgemeinen nicht durch den gegenüberliegenden Eckpunkt gehen.",
+            "essentialUnderstandingEn": "A line is tested as a median through its vertex and the midpoint of the opposite side. A perpendicular bisector may contain the same midpoint but must be perpendicular to the side and generally need not pass through the opposite vertex.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert oder prüft Seitenhalbierende in einer unvollständigen beziehungsweise gedrehten Figur, weist die Mittelpunktseigenschaft über gleiche Teilstrecken nach und verwirft eine plausible Mittelsenkrechten-Ablenkung durch die fehlende Eckpunktbedingung.",
+            "observablePerformanceEn": "In an incomplete or rotated figure, the learner reconstructs or tests medians, establishes the midpoint property through equal sub-segments, and rejects a plausible perpendicular-bisector distractor because it lacks the required vertex incidence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "midpoint-and-opposite-vertex-construction",
+            "verification-and-perpendicular-bisector-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "triangle-shape",
+            "textDe": "Akutes ungleichseitiges Dreieck gegenüber gedrehtem stumpfwinkligem Dreieck",
+            "textEn": "An acute scalene triangle versus a rotated obtuse triangle"
+          },
+          {
+            "id": "task-completeness",
+            "textDe": "Alle Mittelpunkte und Seitenhalbierenden neu konstruieren gegenüber fehlende Elemente aus einer unvollständigen Hilfsskizze rekonstruieren",
+            "textEn": "Construct every midpoint and median from scratch versus reconstruct missing elements from an incomplete auxiliary sketch"
+          },
+          {
+            "id": "competing-line-property",
+            "textDe": "Mittelpunkt plus Eckpunkt als Definition gegenüber einer senkrechten Linie durch denselben Mittelpunkt als Ablenkung",
+            "textEn": "Midpoint plus vertex as the definition versus a perpendicular line through the same midpoint as a distractor"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-all-three-medians",
+            "taskDemandDe": "Konstruiere in einem ungleichseitigen Dreieck ABC alle drei Seitenhalbierenden. Lasse die Konstruktion der Seitenmittelpunkte sichtbar, markiere die jeweils gleichen Teilstrecken und erkläre für jede Linie, welcher Eckpunkt mit welchem gegenüberliegenden Mittelpunkt verbunden wird.",
+            "taskDemandEn": "Construct all three medians in a scalene triangle ABC. Leave the midpoint constructions visible, mark each pair of equal sub-segments, and explain for every line which vertex is joined to which opposite midpoint.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert die Mittelpunkte von AB, BC und CA, verbindet sie korrekt mit C, A beziehungsweise B und weist jede Halbierung durch gleiche Teilstrecken nach. Sie verwendet eine Mittelsenkrechten-Konstruktion gegebenenfalls nur als Hilfsverfahren zum Mittelpunkt und identifiziert die entstehende Verbindung zum Eckpunkt als Seitenhalbierende.",
+            "expectedPerformanceEn": "The learner constructs the midpoints of AB, BC, and CA, correctly joins them to C, A, and B respectively, and establishes each bisection through equal sub-segments. If a perpendicular-bisector construction is used as an auxiliary method for finding a midpoint, the learner identifies the resulting vertex-to-midpoint connection as the median.",
+            "understandingFocusDe": "Der Fall prüft die vollständige Konstruktion und die Rollen von Hilfskonstruktion, Mittelpunkt und eigentlicher Seitenhalbierender.",
+            "understandingFocusEn": "The case tests the complete construction and the roles of auxiliary construction, midpoint, and the actual median."
+          },
+          {
+            "id": "incomplete-obtuse-sketch-with-decoy",
+            "taskDemandDe": "In einer gedrehten stumpfwinkligen Dreiecksskizze sind auf Seite AC zwei gleiche Teilstrecken markiert, die Verbindung von B zu diesem Mittelpunkt fehlt. Zusätzlich ist durch denselben Mittelpunkt eine senkrechte Linie zu AC eingezeichnet. Ergänze die Seitenhalbierende, entscheide, welche der beiden Linien welche Rolle hat, und konstruiere die zwei weiteren Seitenhalbierenden.",
+            "taskDemandEn": "In a rotated obtuse-triangle sketch, side AC is marked as two equal sub-segments but the connection from B to that midpoint is missing. A line perpendicular to AC is also drawn through the same midpoint. Add the median, decide the role of each line, and construct the other two medians.",
+            "expectedPerformanceDe": "Die lernende Person verbindet B mit dem markierten Mittelpunkt von AC und begründet diese Linie als Seitenhalbierende über Eckpunkt und gleiche Teilstrecken. Die vorhandene senkrechte Linie benennt sie als Mittelsenkrechte von AC, sofern die Markierungen dies tragen, nicht als Seitenhalbierende. Anschließend rekonstruiert sie die übrigen Seitenhalbierenden aus denselben Mittelpunktbedingungen.",
+            "expectedPerformanceEn": "The learner joins B to the marked midpoint of AC and justifies this line as a median through vertex incidence and equal sub-segments. The existing perpendicular line is identified as the perpendicular bisector of AC, if the markings support that, rather than as a median. The learner then reconstructs the remaining medians from the same midpoint conditions.",
+            "understandingFocusDe": "Der Transfer prüft Rekonstruktion und begriffliche Abgrenzung in einer unvollständigen, gedrehten Figur mit gezielter Ablenkung.",
+            "understandingFocusEn": "The transfer tests reconstruction and conceptual distinction in an incomplete rotated figure with a deliberate distractor."
+          }
+        ]
+      }
+    }
+  ]
+}

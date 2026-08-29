@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:428d83677a4b298463c86b87aa3f1f86a42df33251072a3910408e90c8c08d00",
+  "reviewInputFingerprint": "sha256:7d46ac3bd7bc26ef07ac8a6b29479a7cbedb3adc474ff751397801d4ea258dad",
+  "goalCount": 18,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-a",
+      "roundId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-independent-a",
+      "runIds": [
+        "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-b",
+      "roundId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828-independent-b",
+      "runIds": [
+        "physik-fast18-b-openai-codex-20260828"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::gpt-5"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 18,
+    "unavailable": 0,
+    "requiresSynthesis": 18
+  },
+  "goals": [
+    {
+      "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "firstRecordId": "physik-fast18-20260828-a.8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "secondRecordId": "physik-fast18-b.001.8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "firstRecordId": "physik-fast18-20260828-a.f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "secondRecordId": "physik-fast18-b.002.f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "firstRecordId": "physik-fast18-20260828-a.b615830a-e8b0-5754-81e0-99da98343a8d",
+      "secondRecordId": "physik-fast18-b.003.b615830a-e8b0-5754-81e0-99da98343a8d",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f23fdfa9-38b6-5157-8301-ed302476c456",
+      "firstRecordId": "physik-fast18-20260828-a.f23fdfa9-38b6-5157-8301-ed302476c456",
+      "secondRecordId": "physik-fast18-b.004.f23fdfa9-38b6-5157-8301-ed302476c456",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+      "firstRecordId": "physik-fast18-20260828-a.264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+      "secondRecordId": "physik-fast18-b.005.264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+      "firstRecordId": "physik-fast18-20260828-a.75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+      "secondRecordId": "physik-fast18-b.006.75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+      "firstRecordId": "physik-fast18-20260828-a.691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+      "secondRecordId": "physik-fast18-b.007.691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "firstRecordId": "physik-fast18-20260828-a.d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "secondRecordId": "physik-fast18-b.008.d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7ead007f-e85a-5cb5-b52d-76aae626119a",
+      "firstRecordId": "physik-fast18-20260828-a.7ead007f-e85a-5cb5-b52d-76aae626119a",
+      "secondRecordId": "physik-fast18-b.009.7ead007f-e85a-5cb5-b52d-76aae626119a",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+      "firstRecordId": "physik-fast18-20260828-a.e39c83b0-cb4f-5454-a143-b9a159c99cba",
+      "secondRecordId": "physik-fast18-b.010.e39c83b0-cb4f-5454-a143-b9a159c99cba",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "firstRecordId": "physik-fast18-20260828-a.31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "secondRecordId": "physik-fast18-b.011.31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "firstRecordId": "physik-fast18-20260828-a.32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "secondRecordId": "physik-fast18-b.012.32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "firstRecordId": "physik-fast18-20260828-a.ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "secondRecordId": "physik-fast18-b.013.ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "firstRecordId": "physik-fast18-20260828-a.00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "secondRecordId": "physik-fast18-b.014.00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "firstRecordId": "physik-fast18-20260828-a.5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "secondRecordId": "physik-fast18-b.015.5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "firstRecordId": "physik-fast18-20260828-a.94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "secondRecordId": "physik-fast18-b.016.94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "firstRecordId": "physik-fast18-20260828-a.7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "secondRecordId": "physik-fast18-b.017.7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "firstRecordId": "physik-fast18-20260828-a.6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "secondRecordId": "physik-fast18-b.018.6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "firstRunId": "physik-fast-measurement-mechanics-energy-18-20260828-a-gpt5",
+      "secondRunId": "physik-fast18-b-openai-codex-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

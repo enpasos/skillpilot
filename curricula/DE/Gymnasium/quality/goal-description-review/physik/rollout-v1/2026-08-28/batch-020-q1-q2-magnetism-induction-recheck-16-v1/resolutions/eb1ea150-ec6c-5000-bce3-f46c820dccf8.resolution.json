@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-resolution-eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+  "goal": {
+    "goalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:3df7a3da385e749c48dd44579d3ccb0deff8fd15f5eed24dd7d37f097b829091",
+    "pageFingerprint": "sha256:e7b6a4ce4ac653536d5ca4271514f69922e9983ef3f2fe464dc435e72785d4af",
+    "goalReviewContextFingerprint": "sha256:c608bf64ac1e6c5dd30f3fe1f5c17c137f5ed97069536e20271f829d2266356a",
+    "finalText": {
+      "titleDe": "Induktionsgesetz und Lenz’sche Regel",
+      "titleEn": "Law of Induction and Lenz’s Law",
+      "descriptionDe": "Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.",
+      "descriptionEn": "For a coil with N equivalent turns, the learner can determine the mean induced voltage using U_ind = −N · ΔΦ/Δt and, for a closed circuit, justify the direction of the induced current using Lenz’s law as an effect opposing the change in flux."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:c608bf64ac1e6c5dd30f3fe1f5c17c137f5ed97069536e20271f829d2266356a",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167",
+      "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-09",
+      "recordDigest": "sha256:e1cc6403b88b325106e3eea83af6e79957e294eb4d09744b5700dd4ff3c4cfee"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:c608bf64ac1e6c5dd30f3fe1f5c17c137f5ed97069536e20271f829d2266356a",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150",
+      "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r009",
+      "recordDigest": "sha256:29a631b9d6edb2fb70da2ec15c13caa7e077193004d6b7a6f4f68f5ef8ac3c15"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+    "manifestDigest": "sha256:f9ee42a12924c8cdbe09d8edf18b3e54bc426e22d2ac1c3944ce5c7cdb9af45b",
+    "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2",
+    "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+    "synthesizedAt": "2026-08-28T14:07:36.000Z",
+    "rationaleDe": "Betrag, Vorzeichen und Lenz’sche Richtungsbegründung gehören zum selben Faraday-Lenz-Zusammenhang; beide Reviews bestätigen den Text. Die erste Evidence-Fassung ist bei Orientierung, offenem Kreis und Gegenwirkung zur Flussänderung detaillierter und wird ausgewählt; die zweite bleibt Dissent.",
+    "rationaleEn": "Magnitude, sign, and the Lenz-law direction justification belong to the same Faraday-Lenz relation; both reviews confirm the text. The first evidence formulation is more detailed about orientation, open circuits, and opposition to flux change and is selected; the second remains dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die mittlere Induktionsspannung ist proportional zur Flussänderung je Zeit und zur Zahl gleichartiger Windungen. Das Minuszeichen kodiert bei festgelegter Orientierung die Lenz’sche Regel: Ein induzierter Strom erzeugt im geschlossenen Kreis eine magnetische Wirkung, die der verursachenden Flussänderung entgegenwirkt, nicht dem vorhandenen Fluss schlechthin.",
+      "essentialUnderstandingEn": "The mean induced voltage is proportional to the change in flux per time and to the number of equivalent turns. With a fixed orientation, the minus sign encodes Lenz’s law: in a closed circuit, the induced current creates a magnetic effect opposing the causal change in flux, not the existing flux as such.",
+      "observablePerformanceDe": "Die lernende Person legt Flächen- und Umlauforientierung konsistent fest, berechnet die mittlere Spannung mit Einheit und Vorzeichen und bestimmt für einen geschlossenen Kreis die Stromrichtung, indem sie zuerst die Flussänderung und dann die ihr entgegenwirkende induzierte Feldrichtung konstruiert.",
+      "observablePerformanceEn": "The learner sets consistent surface and loop orientations, calculates the mean voltage with unit and sign, and determines the current direction for a closed circuit by first constructing the flux change and then the induced field direction that opposes it.",
+      "transferExpectationDe": "Bei einer neuen Spulenanordnung mit umgekehrter Bewegung, Feldrichtung oder Wicklungsorientierung sowie bei offenem statt geschlossenem Kreis sagt die lernende Person Spannungspolung und gegebenenfalls Stromrichtung voraus und erklärt, welche Aussage der Lenz’schen Regel jeweils anwendbar ist.",
+      "transferExpectationEn": "For a new coil arrangement with reversed motion, field direction, or winding orientation, and for an open rather than closed circuit, the learner predicts voltage polarity and, where applicable, current direction and explains which statement of Lenz’s law applies."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7176c59525a7baa19c7500f318e0d445734213b86ec03557f120139b4b548f75",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fa659201a52458886d926cc3e2ab481c85db00bbbced804010acbb1746a698c0"
+}

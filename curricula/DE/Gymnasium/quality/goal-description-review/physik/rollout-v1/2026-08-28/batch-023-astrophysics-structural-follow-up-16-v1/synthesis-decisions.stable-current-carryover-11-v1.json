@@ -1,0 +1,356 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b023-stable11-synthesis-openai-codex-20260828",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B023 subject synthesis candidate",
+  "synthesizedAt": "2026-08-28T18:41:42.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828",
+    "batchManifestDigest": "sha256:e37004c065fc1d54be49d649d4397babc302625ac231739e356bf01f2677bdd0",
+    "configDigest": "sha256:99ed9371f12a8642eea49e1eb3e5fcdcae183635eb36bf1e1f6bb309f1f323dc",
+    "bundleFingerprint": "sha256:c651679bbfe66f38c8eef96a2df80e5fa8e052b5660fcf65456b12630a2ce2ad",
+    "bookDigest": "sha256:df810de7d30e711e2adf9474e3793d908ab1419de9cc9ac22c9c71853a25cbb5",
+    "reviewInputFingerprint": "sha256:ef93e5d515960cf43620f822ade162f5bec68303850223f53a18ff18c125f281",
+    "dualSummaryDigest": "sha256:c88e0619acab793ecb14b77b332bdb203621b7655817f1d02afb9fee6de3a5db",
+    "canonicalLandscapeDigest": "sha256:48820560030f203c106c5db2006771604e097a3d3b90188728bc1bb199424e4a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-a",
+      "campaignDigest": "sha256:281856f6282e35ef1188b6ee7568a728178c2b9b8b25c00f9d1a6f3a9fd44986",
+      "roundId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:ef93e5d515960cf43620f822ade162f5bec68303850223f53a18ff18c125f281",
+      "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9639a698e72672accaff6f93c8ff3c897e7ddfee3e2df2c97bc9c954ec216d16",
+      "runId": "physik-b023-20260828-round-a-gpt5-6-sol",
+      "runManifestDigest": "sha256:90a5cac9e93b56ee059c4f6573df472d89a86199d7f0cc260ac7b7759778e367",
+      "resultsDigest": "sha256:13c1ef2b2f911334fac5277ed97528e665d62ac3df6693f6f03859bdb10d79c2"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-b",
+      "campaignDigest": "sha256:a2572b24ed57ff470462d269413d6aed00a4b1004cd20f068b5daf257607d66b",
+      "roundId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:ef93e5d515960cf43620f822ade162f5bec68303850223f53a18ff18c125f281",
+      "batchId": "physik-rollout-v1-batch-023-astrophysics-structural-follow-up-16-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:974d93cdab0f5f0de93985d4b81d292e2786eeb67b42518e6989eff2e5cd50ac",
+      "runId": "physik-b023-round-b-openai-gpt5-20260828",
+      "runManifestDigest": "sha256:9047c272f16d10503d4e33e17935a1c5ca53365638556c00923bb96d0a0fe8f0",
+      "resultsDigest": "sha256:275595839cb7ab6204e648801c19e94b9db80e478e9e7d4c1e33f60729d2d610"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-001",
+      "goalId": "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2085e0973c7a1371ae9d9b306ff691354b05c6800784599b37869693916817bc",
+      "pageFingerprint": "sha256:292e9af9e7d40c9dd784489461c7ba4a10376a79b35b51616bc9258ccd08bf88",
+      "goalReviewContextFingerprint": "sha256:402016bf4dc1565d94a0b7bb8532cf8cd47d0b59ab46435c2c919fe2b4392b9f",
+      "finalText": {
+        "titleDe": "Strahlungsgleichgewichte und Lebensbedingungen abschätzen",
+        "titleEn": "Use Radiation Equilibria to Assess Conditions for Life",
+        "descriptionDe": "Die lernende Person kann aus einem begründeten Strahlungsgleichgewicht die Gleichgewichtstemperatur eines Himmelskörpers als Modellnäherung für seine Oberflächentemperatur abschätzen, Modellannahmen und Abweichungen von Messwerten reflektieren und daraus begrenzte Aussagen zu möglichen Lebensbedingungen ableiten.",
+        "descriptionEn": "The learner can use a justified radiative equilibrium to estimate a celestial body's equilibrium temperature as a model approximation of its surface temperature, reflect on model assumptions and discrepancies from measured values, and derive bounded statements about possible conditions for life."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-002-a5031dfc",
+          "recordDigest": "sha256:b93718ba01e14bc808f6839fcec0f10b35e1ce72f95151588623c04b85c73739"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-02-a5031dfc",
+          "recordDigest": "sha256:a2b3f20f2f3acdddb8c22b5175c420be9e2718f37a1ce914b0f4bafbd394017e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die aktuelle Modellierungs- und Urteilskompetenz. Runde A ist die stärkere Evidenzgrundlage, weil sie Bezugsfläche, Parameterwirkungen, Einheiten, Messabweichung sowie Atmosphäre, innere Wärme und weitere Grenzen in einer vollständigen Bilanz-zu-Urteil-Kette verbindet; die kompatible Fassung aus Runde B bleibt als gebundener Dissent erhalten.",
+      "rationaleEn": "Both reviews confirm the current modeling and judgment competence. Round A is the stronger evidence basis because it connects reference area, parameter effects, units, discrepancy from measurement, atmosphere, internal heat, and further limitations in a complete balance-to-judgment chain; the compatible Round B formulation remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-002",
+      "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9abe366b372f12bba5b64627aeef7481637063c2ef580aacdb21edfa193e21e7",
+      "pageFingerprint": "sha256:3809f4158dc453963c6a5bcb5b732b1b96849233b8c26b713cb43702c6e710c8",
+      "goalReviewContextFingerprint": "sha256:1177763e7b61b8eea7e8e255d49eece3721e8c78e362258564fbde335d45be62",
+      "finalText": {
+        "titleDe": "Am Nachthimmel mit Sternkarte oder Software navigieren",
+        "titleEn": "Navigate the Night Sky with a Star Chart or Software",
+        "descriptionDe": "Die lernende Person kann für einen vorgegebenen Beobachtungsort und -zeitpunkt eine Sternkarte oder geeignete Software ausrichten und damit markante Sternbilder oder astronomische Objekte am Himmel auffinden.",
+        "descriptionEn": "The learner can orient a star chart or suitable software for a given observing location and time and use it to locate prominent constellations or astronomical objects in the sky."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-004-d024aa45",
+          "recordDigest": "sha256:6e4a69ec946c96cea8b458e054e025a85049d4dfb2bf16d487a916195be59703"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-04-d024aa45",
+          "recordDigest": "sha256:adc3e545408971fa5eeeba95f8f694efb29afcfb0898089f5eea5fe3472dc026"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die orts- und zeitgebundene Himmelsnavigation. Runde A ist stärker, weil sie nicht nur die Ausrichtung, sondern eine nachvollziehbare Suchroute über sichtbare Wegmarken und die unabhängige Identitätsprüfung anhand von Richtung, Höhe und Nachbarmustern verlangt; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm location- and time-specific sky navigation. Round A is stronger because it requires not only orientation but also a traceable search route from visible landmarks and an independent identity check using direction, altitude, and neighboring patterns; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-003",
+      "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a1b85c43348ff65c7d2f40e00f04611713402628e1ea112f0775df6ea5b0a6a6",
+      "pageFingerprint": "sha256:4833a76f22cee4721df099c7ec8b9a1239658359c811b1e8aa3ad6caa197e4cf",
+      "goalReviewContextFingerprint": "sha256:b451bd8037821257656cd30056f92eb61021260fc788a400576eedd2a460444a",
+      "finalText": {
+        "titleDe": "Mit bloßem Auge beobachtbare Himmelsobjekte klassifizieren",
+        "titleEn": "Classify Celestial Objects Visible to the Naked Eye",
+        "descriptionDe": "Die lernende Person kann mit bloßem Auge beobachtbare astronomische Objekte anhand geeigneter beobachtbarer Merkmale begründet Objektklassen zuordnen.",
+        "descriptionEn": "The learner can assign astronomical objects visible to the naked eye to appropriate object classes using observable features and justify the classification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-005-e06dd9c7",
+          "recordDigest": "sha256:20346c023200c49933708d6d54828467c33c6d1819897ca7360c70c7e038111c"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-05-e06dd9c7",
+          "recordDigest": "sha256:9a7274036a42fccbcc31df633245d095e30789e1c44eb034d1664bfa2202c425"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die merkmalsgestützte Klassifikation. Runde A macht Beobachtung und Deutung, mehrere trennscharfe Merkmale, verbleibende Mehrdeutigkeit und eine revisionsfähige Zuordnung nach zusätzlicher Bewegungsinformation am vollständigsten prüfbar; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm feature-based classification. Round A most fully makes assessable the separation of observation from interpretation, multiple discriminating features, residual ambiguity, and revisable assignment after additional motion information; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-004",
+      "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fdb3e3cefb2936fb796a7d5d988d6dec933ceb148568531e0054b39636304f00",
+      "pageFingerprint": "sha256:b008b245b5e176a51087370f0f319b0ce9ece7acc9a484f61b4c9f400c39a982",
+      "goalReviewContextFingerprint": "sha256:d41f305949d04a1764d9b9206b30aaa7fe043285072ef30b9a8b4258af680c8d",
+      "finalText": {
+        "titleDe": "Räumlich-zeitliche Sichtbarkeit astronomischer Objekte begründen",
+        "titleEn": "Explain the Spatial and Temporal Visibility of Astronomical Objects",
+        "descriptionDe": "Die lernende Person kann unter Berücksichtigung von Beobachtungsort, Uhrzeit und Jahreszeit grundlegende Aussagen darüber treffen und begründen, wann und wo ein astronomisches Objekt sichtbar ist.",
+        "descriptionEn": "The learner can account for observing location, time of day, and season to make and justify basic statements about when and where an astronomical object is visible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-006-0b8a4215",
+          "recordDigest": "sha256:4da0b0f1b7e8562ac5e64c445e9fd73e9b231c8c43263ddb65e5d687fc370a1b"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-06-0b8a4215",
+          "recordDigest": "sha256:202fca111faba8a0ce5bb1bffaf49e75b07888db4bb94697217194f22b2ef3fe"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die räumlich-zeitliche Sichtbarkeitsinferenz. Runde A verbindet lokalen Horizont und Sonnenlage explizit mit Erdrotation, Erdumlauf und geografischer Breite und prüft zusätzlich Beobachtungsfenster sowie Zirkumpolarität im Transfer; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm spatial-temporal visibility inference. Round A explicitly connects the local horizon and solar position with Earth rotation, Earth orbit, and geographic latitude and additionally tests observing windows and circumpolarity in transfer; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-005",
+      "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:64282b0fced72374cdecea92ddf88ab0aeacced9798244f077ed53d2efd127a0",
+      "pageFingerprint": "sha256:cd1f57ef91e737142ee3061dbc8f900882856fcc73b0f5a11734c2e979042c5c",
+      "goalReviewContextFingerprint": "sha256:5a1a1ef8c955ec48b9078bc8119fbec5bde16bb3e98deb4a484ef65df7677f4a",
+      "finalText": {
+        "titleDe": "Sonnenmasse aus Bahndaten abschätzen",
+        "titleEn": "Estimate the Solar Mass from Orbital Data",
+        "descriptionDe": "Die lernende Person kann aus Bahndaten eines Körpers im Sonnensystem mit einem Newton-Kepler-Modell die Sonnenmasse abschätzen und die Modellannahmen benennen.",
+        "descriptionEn": "The learner can estimate the Sun’s mass from orbital data for a Solar System body using a Newton–Kepler model and state the model assumptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-008-5e9cd796",
+          "recordDigest": "sha256:ba87e638c2793eb4b6c50a074ad1e68a6214f58b1cf13191366ece2dca5156a9"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-08-5e9cd796",
+          "recordDigest": "sha256:c02ca2e4a743e00dfc8e09f6960500870fb5b80dc05bf377ea4600b58f6cb86e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Newton-Kepler-Masseninferenz. Runde A bindet große Halbachse, Periode, physikalische Herleitung, Einheiten- und Größenordnungsprüfung, Unsicherheit sowie den Wechsel zu Gesamtmasse und Relativbahn bei massereichem Begleiter besonders vollständig; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm Newton-Kepler mass inference. Round A most fully binds semimajor axis, period, physical derivation, unit and order-of-magnitude checks, uncertainty, and the change to total mass and relative orbit for a massive companion; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-006",
+      "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0bfa124718e283157d086ee21552566a4d1c5cbbdf08eb063ae4d1a11bd4801e",
+      "pageFingerprint": "sha256:d87cee57244c0217fabc84aaaa242f8c914e942b97d4afb6090940ba19de451c",
+      "goalReviewContextFingerprint": "sha256:51879203d0f769f64c5f24b9a051bf078129490a7ce08bdadde862a04b07b0d7",
+      "finalText": {
+        "titleDe": "Sonnenleuchtkraft aus Solarkonstante und Entfernung abschätzen",
+        "titleEn": "Estimate Solar Luminosity from the Solar Constant and Distance",
+        "descriptionDe": "Die lernende Person kann aus Solarkonstante und Sonne-Erde-Abstand die Leuchtkraft der Sonne abschätzen und die gemessene Bestrahlungsstärke von der erschlossenen Gesamtleistung unterscheiden.",
+        "descriptionEn": "The learner can estimate the Sun’s luminosity from the solar constant and the Sun–Earth distance and distinguish measured irradiance from inferred total power."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-009-9851bd02",
+          "recordDigest": "sha256:fa50effa4453f53348fc2f68d47b3dc41f8f50683bec07bc1a28903e4ea699cc"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-09-9851bd02",
+          "recordDigest": "sha256:db640f72f32b34a839bd91670dc7c8f77dcb9408b05c8b48f9c1ff9c08f913b4"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Inferenz von lokaler Bestrahlungsstärke zur Gesamtleistung. Runde A macht Messort, Bezugsfläche, Abstandsprognose, Unsicherheit und die Prüfung von Isotropie beziehungsweise Abschwächung besonders explizit; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm inference from local irradiance to total power. Round A makes the measurement location, reference area, distance prediction, uncertainty, and the test of isotropy or attenuation especially explicit; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-007",
+      "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1c396a1363e997858a03b52a5321c8f8794474e3b0a34dd838d2ad5c2d8afa7e",
+      "pageFingerprint": "sha256:3767ee0acf76115ad39921464692190a362896f11b90a2309471b5a7e712715a",
+      "goalReviewContextFingerprint": "sha256:fbdf59596819a03e37ed40ef80124bcb6f9587b8e908289fcb0ce85a4befe1a4",
+      "finalText": {
+        "titleDe": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
+        "titleEn": "Model Planetary Configurations and Their Visibility",
+        "descriptionDe": "Die lernende Person kann Planetenkonstellationen in Zeichnungen oder Simulationen modellieren und daraus ihre Sichtbarkeit am Nachthimmel erklären.",
+        "descriptionEn": "The learner can model planetary configurations in drawings or simulations and use them to explain their visibility in the night sky."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-011-6e1cd027",
+          "recordDigest": "sha256:344b1c27e8fcfe04e16f66d69072a90f1b65c76a1dc1040fbb41f8b6ff243fc6"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-11-6e1cd027",
+          "recordDigest": "sha256:d6b14c1e381bebbc9d30e50d8508aa7ac8bc56ca1782382c68f22e18793b61c1"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die modellgestützte Planetensichtbarkeit. Runde A trennt heliozentrische Modelldarstellung und beobachtete Himmelsperspektive besonders klar und verlangt Blickrichtung, Sonnenrichtung, relevante Winkel sowie den Transfer zwischen inneren und äußeren Planeten; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm model-based planetary visibility. Round A particularly clearly separates the heliocentric model representation from the observed sky perspective and requires line of sight, solar direction, relevant angles, and transfer between inner and outer planets; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-008",
+      "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3eca68903fe787d80265fafa27800a2f5704602fde74f8c439cb62745bef712a",
+      "pageFingerprint": "sha256:a10316d5be94c9d7e68004369a4c482a1053fa50fa53732ff46e5b155a5d052b",
+      "goalReviewContextFingerprint": "sha256:94ca3438d1d252b7a1f074aeb514f019e791e7444d7ce9ee61eab79ec90c50e7",
+      "finalText": {
+        "titleDe": "Schleifenbahnen von Planeten historisch einordnen",
+        "titleEn": "Place Planetary Retrograde Loops in Historical Context",
+        "descriptionDe": "Die lernende Person kann scheinbare Schleifenbahnen der Planeten als Folge relativer Bewegung im heliozentrischen Modell erklären und ihre Bedeutung für historische Erweiterungen und Umbrüche von Planetenbahnmodellen sowie deren Auswirkungen auf Weltbilder reflektieren.",
+        "descriptionEn": "The learner can explain apparent planetary retrograde loops as a result of relative motion in the heliocentric model and reflect on their significance for historical extensions and shifts in models of planetary motion and their effects on worldviews."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-012-44766569",
+          "recordDigest": "sha256:ada1000331164c373f92ff47128e60dd2a917605a020f24ddf7abc31ea7ed2cf"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-12-44766569",
+          "recordDigest": "sha256:5c1a3fd29a201ff1495a1c14613fbc89479cb34ff9ea87cd6ad2d00e54f928d9"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die physikalische und historische Einordnung scheinbarer Schleifenbahnen. Runde A operationalisiert den Modellvergleich zusätzlich mit Vorhersagegüte, Kohärenz, Einfachheit und zeitgenössischen Beobachtungsmöglichkeiten und verhindert dadurch eine monokausale Beweisgeschichte; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm the physical and historical interpretation of apparent retrograde loops. Round A additionally operationalizes model comparison through predictive performance, coherence, simplicity, and contemporary observational capability, thereby preventing a monocausal proof narrative; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-009",
+      "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ecb93156ffba2e939cdac9cba9e9f38cc9071fe5622c70a4cef28ade31e9addc",
+      "pageFingerprint": "sha256:8b25f8865cde5df11d04f3357d0c2e46ea389935f06dc7a4071ce3011333846a",
+      "goalReviewContextFingerprint": "sha256:663ccf901bec6dd35dba85773c4d9e100a36002a01613239ab65085319c7383d",
+      "finalText": {
+        "titleDe": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
+        "titleEn": "Determine Galaxy Distances and Evaluate the Methods",
+        "descriptionDe": "Die lernende Person kann ein geeignetes Verfahren zur Entfernungsbestimmung von Galaxien anwenden, mit anderen astronomischen Entfernungsverfahren vergleichen und Messunsicherheiten sowie Gültigkeitsgrenzen beurteilen.",
+        "descriptionEn": "The learner can apply a suitable method for determining galaxy distances, compare it with other astronomical distance methods, and assess measurement uncertainties and validity limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-013-206a7d3d",
+          "recordDigest": "sha256:87764b86b60e91a3864ef7a4435c197fedad592cc2c6fe72be4c1743bc7537d6"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-13-206a7d3d",
+          "recordDigest": "sha256:e0d225a80880100e305c1c19e699f2aef0dacce5e4ff846609506aa81eba4d04"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Methodenwahl für Galaxienentfernungen. Runde A trennt Messgröße, Kalibriergröße und erschlossene Entfernung, bindet die teilweise aufeinander aufbauende Entfernungsskala ein und prüft Reichweite, Extinktion sowie fehlende Kalibratoren im Transfer; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm method selection for galaxy distances. Round A distinguishes observable, calibration quantity, and inferred distance, incorporates the partly interdependent distance scale, and tests range, extinction, and missing calibrators in transfer; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-010",
+      "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:06531cc8d072d46371e3ed47eb7f6c1226d3d0ada1e215dc0b438738923d19ac",
+      "pageFingerprint": "sha256:0c8e987789bedb3ba8081562afdfdc597bfb5532ddb83d21563a6ff77e3edb73",
+      "goalReviewContextFingerprint": "sha256:b3e7c3e5bbd3a7a5e3053a73f6bb22e86cc8556b9e1538ed5285c30979a9e5c3",
+      "finalText": {
+        "titleDe": "Universumsalter mit der Hubble-Beziehung abschätzen",
+        "titleEn": "Estimate the Age of the Universe from the Hubble Relation",
+        "descriptionDe": "Die lernende Person kann aus der Hubble-Beziehung ein Hubble-Alter abschätzen und erläutern, warum es nur unter vereinfachenden Annahmen über die Expansionsgeschichte als Universumsalter gedeutet werden darf.",
+        "descriptionEn": "The learner can estimate a Hubble age from the Hubble relation and explain why it can be interpreted as the age of the universe only under simplifying assumptions about the expansion history."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-014-44f0eefa",
+          "recordDigest": "sha256:bb203d78692c1c3001a541a6e0023a70d33764eed154bac955a27377140f9343"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-14-44f0eefa",
+          "recordDigest": "sha256:a066138f4d3acf8fd5ea56812941571cf406bf5035fc3ebeed573ffe98f4e9bb"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen das Hubble-Alter als modellabhängige Zeitskala. Runde A verbindet transparente Einheitenumrechnung mit der durch Materie, Strahlung und dunkle Energie veränderten Expansionsgeschichte und verlangt für Abbremsung oder Beschleunigung eine begründete Über- beziehungsweise Unterschätzungsrichtung; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm the Hubble age as a model-dependent time scale. Round A connects transparent unit conversion with an expansion history altered by matter, radiation, and dark energy and requires a justified direction of over- or underestimation for deceleration or acceleration; Round B remains bound as dissent."
+    },
+    {
+      "decisionId": "physik-b023-stable11-synthesis-openai-codex-20260828-decision-011",
+      "goalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b9cd2342aa02f2b778dd067625d1e6fc7e9f8c974c117e1509dc4297740b578f",
+      "pageFingerprint": "sha256:47fe6fcdfb4a6181396a2fdf7c91ff11e5943e581d74cfd9793eafead63c5a3c",
+      "goalReviewContextFingerprint": "sha256:4ecdc632f3f95e443074093dce028149baa4c868d26bc4eaed99445ccaef2c5d",
+      "finalText": {
+        "titleDe": "Dunkle Materie aus Galaxienrotationskurven erschließen",
+        "titleEn": "Infer Dark Matter from Galaxy Rotation Curves",
+        "descriptionDe": "Die lernende Person kann eine beobachtete Galaxienrotationskurve mit der aus der sichtbaren Materieverteilung erwarteten Kurve vergleichen, die Abweichung als Hinweis auf zusätzliche nicht leuchtende Materie deuten und Grenzen dieses Schlusses erläutern.",
+        "descriptionEn": "The learner can compare an observed galaxy rotation curve with the curve expected from the visible-matter distribution, interpret the discrepancy as evidence for additional non-luminous matter, and explain limits of that inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b023-a-016-c53b3f0c",
+          "recordDigest": "sha256:dace1309fa4f5dfee71318788cf40b8558db5ddd85caf372681d8edcfa07063c"
+        },
+        "second": {
+          "recordId": "physik-b023-round-b-16-c53b3f0c",
+          "recordDigest": "sha256:277d34efade91c5befb796da58bea22a80b091518b4fab4ab37124550d58c52b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die begrenzte Dunkle-Materie-Inferenz. Runde A verbindet den quantitativen Kurvenvergleich mit eingeschlossener Masse, Masse-Licht-Verhältnis und Gravitationsmodell und fordert zusätzlich eine unabhängige Prüfung durch veränderte baryonische Verteilung oder Linsendaten; Runde B bleibt als Dissent gebunden.",
+      "rationaleEn": "Both reviews confirm the bounded dark-matter inference. Round A connects quantitative curve comparison with enclosed mass, mass-to-light ratio, and the gravitational model and additionally requires an independent check using a changed baryonic distribution or lensing data; Round B remains bound as dissent."
+    }
+  ],
+  "manifestFingerprint": "sha256:778f4e3ec44d0c3e45ab214b5ad350a97c9680bd84611c552d0cd2ec0e5e332b"
+}

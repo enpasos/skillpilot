@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-b019-q2-lines-planes-20260829-openai-codex-gpt5-a",
+  "campaignId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-a",
+  "roundId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:1767dcb54eb89e0114e119b67e6bf41bd37167c7ef196357df935a64c1e0da7b",
+  "bundleFingerprint": "sha256:d68a979615582d99024680fb4288514d095c75c992a309001d2a41439121c39b",
+  "bookDigest": "sha256:a8eeef48f2a96fe17be5c6a381773127de12f61116e2037b445e7feaf2c62eae",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "modelVersion": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot.goal-description-review.v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:55e55d7f1704b3ac53be624fcc1fdb93a252f4b267ce7d11005e8698ca0b14fd",
+  "independenceGroupId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "effe43eb-cabe-56cb-a228-35887d7915c1",
+    "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+    "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
+    "ec6447d1-97da-5b77-94ae-4973b43f094e",
+    "66a96282-340d-5220-91a6-cc97e2ec2220",
+    "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8",
+    "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+    "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+    "d76766a5-ce07-5c7a-987b-157f2998b05e",
+    "ce491ec0-c558-5872-86fd-289e60a38403",
+    "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+    "f613634b-39fb-5021-9970-790ef34c9932",
+    "06de364f-9b63-4044-8229-a975621dc6df",
+    "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+    "436532fe-cee6-5a13-a4be-05522435937b",
+    "7aa1abee-d6ec-528a-b110-f2260b0cda51",
+    "a9fde754-51b4-58d7-85e5-5e36160581e6",
+    "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+    "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1767dcb54eb89e0114e119b67e6bf41bd37167c7ef196357df935a64c1e0da7b"
+    }
+  ],
+  "startedAt": "2026-08-29T02:02:18Z",
+  "completedAt": "2026-08-29T02:12:07Z",
+  "status": "completed",
+  "outputDigest": "sha256:7b45073fa8b1b7e3d92402fb9b5fe7403762911372b0b75bc95a0cb32b814bdf",
+  "toolchainVersion": "codex-gpt5-review-v1"
+}

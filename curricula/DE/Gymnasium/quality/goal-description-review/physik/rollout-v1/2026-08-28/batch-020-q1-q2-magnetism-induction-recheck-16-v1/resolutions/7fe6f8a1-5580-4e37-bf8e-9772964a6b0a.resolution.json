@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-resolution-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+  "goal": {
+    "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:1eb5d0c364344a666d54e06264adb3c91cac98892bc23bcce85e47140c7d81f0",
+    "pageFingerprint": "sha256:64da00c62ef2abdc0a9a937e3b2e8e27211771d352c058c549ac866bbe80b5ff",
+    "goalReviewContextFingerprint": "sha256:3618c3fb1b05f701deb76208c4003985f334b9d3e92a500a9dd5b36436e6ea8a",
+    "finalText": {
+      "titleDe": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben",
+      "titleEn": "Describe Charged Particles in Magnetic Fields at Arbitrary Entry Angles",
+      "descriptionDe": "Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.",
+      "descriptionEn": "The learner can decompose the velocity of a charged particle entering a uniform magnetic field into field-parallel and field-perpendicular components and use the Lorentz force to qualitatively interpret straight, circular, or helical trajectories."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:3618c3fb1b05f701deb76208c4003985f334b9d3e92a500a9dd5b36436e6ea8a",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167",
+      "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-04",
+      "recordDigest": "sha256:f051d1c07d2b85642c181dd064b17925cf92ae50a3182ca10643766028b72fb0"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:3618c3fb1b05f701deb76208c4003985f334b9d3e92a500a9dd5b36436e6ea8a",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150",
+      "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r004",
+      "recordDigest": "sha256:ce392f20afd829d7538027b4e9158a6b3019f02222ab1012ba09c617548ea54d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+    "manifestDigest": "sha256:f9ee42a12924c8cdbe09d8edf18b3e54bc426e22d2ac1c3944ce5c7cdb9af45b",
+    "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2",
+    "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+    "synthesizedAt": "2026-08-28T14:07:36.000Z",
+    "rationaleDe": "Gerad-, Kreis- und Schraubenbahn sind gekoppelte Fälle derselben Geschwindigkeitszerlegung; beide Reviews stützen `keep`. Der kanonische Text bleibt unverändert, die räumlich und vorzeichenbezogen detailliertere Evidence der ersten Runde wird gebunden und die zweite Evidence-Fassung als Dissent dokumentiert.",
+    "rationaleEn": "Straight, circular, and helical paths are connected cases of the same velocity decomposition; both reviews support keep. The canonical text remains unchanged, the more spatially and sign-specific first-round evidence is bound, and the second evidence formulation is documented as dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Nur die zu B senkrechte Geschwindigkeitskomponente wird durch die Lorentzkraft gekrümmt; die parallele Komponente bleibt unverändert. Reine Parallelbewegung ergibt eine Gerade, reine Senkrechtbewegung einen Kreis und die Überlagerung eine Schraubenbahn, deren Umlaufsinn vom Ladungsvorzeichen abhängt.",
+      "essentialUnderstandingEn": "Only the velocity component perpendicular to B is curved by the Lorentz force; the parallel component remains unchanged. Pure parallel motion gives a straight line, pure perpendicular motion a circle, and their superposition a helix whose sense of rotation depends on the charge sign.",
+      "observablePerformanceDe": "Die lernende Person zerlegt einen gegebenen Geschwindigkeitsvektor relativ zu B, wählt daraus den Bahnzustand, zeichnet eine räumlich konsistente Bahn und erklärt Radius, Vorschubrichtung und Umlaufsinn qualitativ aus den beiden Komponenten und dem Ladungsvorzeichen.",
+      "observablePerformanceEn": "The learner decomposes a given velocity vector relative to B, identifies the resulting trajectory, draws a spatially consistent path, and qualitatively explains its radius, advance direction, and sense of rotation from the two components and the charge sign.",
+      "transferExpectationDe": "Bei verändertem Eintrittswinkel, umgekehrtem Feld oder entgegengesetztem Ladungsvorzeichen konstruiert die lernende Person die neue Bahn und unterscheidet, welche ihrer Eigenschaften sich ändern und welche erhalten bleiben.",
+      "transferExpectationEn": "For a changed entry angle, reversed field, or opposite charge sign, the learner constructs the new trajectory and distinguishes which of its properties change and which remain unchanged."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-c9fe1c0d8b99d65da6fc0c88c7fcbc9c3ab7f5d73e3682ffde68c892a3aed6b3",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:15174abc36a35c8a8d2804a5d85de73409ec75d8598a05ec4d0eb3fb696e05e2"
+}

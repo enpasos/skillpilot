@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "artifact": "/dev/shm/skillpilot-math-j10-deep8-adjudication-v1/adjudication.json",
+  "validatedAt": "2026-08-28",
+  "valid": true,
+  "errors": [],
+  "checks": {
+    "jsonParsed": true,
+    "artifactContract": true,
+    "productionBatchCheck": true,
+    "productionRoundACampaignValidation": true,
+    "productionRoundBCampaignValidation": true,
+    "productionDualSummaryValidation": true,
+    "allExactInputHashesAndSizesMatch": true,
+    "exactlyEightDecisionsInPackageOrder": true,
+    "bundleReviewBookGoalAndPageFingerprintsBound": true,
+    "preparedAndCurrentCanonicalBytesMatch": true,
+    "rawRoundRecordsBound": true,
+    "understandingEvidenceCompleteAndTraceable": true,
+    "decisionCountsShapesAndFreshReviewGatesMatch": true,
+    "bogenmassOrthographyWeaknessResolvedAsLocalRevision": true,
+    "bogenmassImageAlreadyCorrectAndPreserved": true,
+    "mappingContextAndPerGoalCountsMatch": true,
+    "compositionContextAggregateMatches": true,
+    "currentSemanticAtomicityEvidenceChecked": true,
+    "currentMemoryEvidenceChecked": true,
+    "visualQaAndCanonicalPublicMirrorBytesMatch": true,
+    "existingAssessmentConsequencesDocumented": true,
+    "materialized": false,
+    "noProgressClaim": true,
+    "trackedWritesByThisTask": false,
+    "productOwnerEscalationRequired": false
+  },
+  "counts": {
+    "total": 8,
+    "keep_current": 3,
+    "accepted_revision": 3,
+    "structural_split": 2,
+    "unresolved_block": 0,
+    "finalizableUnderCurrentText": 3,
+    "requiresCanonicalReworkAndFreshBlindReview": 5,
+    "requiresProductOwnerDecision": 0
+  },
+  "inputBinding": {
+    "bundleFingerprint": "sha256:7cb4cbdbeaa001638f725579d114c23c69f2df5c6dbee793617fc222733f4814",
+    "reviewInputFingerprint": "sha256:121caa94ddbc3793c21d6c741723a9910534f6589d9fd29d018886e399a0d6b7",
+    "bookDigest": "sha256:12015eefdda57e9117484dee9cfdbf664282d7b23efbfa1760c32bb657705346",
+    "dualSummarySha256": "1404b6f1c269323e00ace716b0230535a25ef98ce2da82c2edcc44c90d625197"
+  },
+  "contextBindings": {
+    "reviewedMappingFileCount": 15,
+    "reviewedMappingAggregateSha256": "290ab432b92a2c71f83c7da55aa07417ab0bbbdd393b79c947d1b0970b533e5d",
+    "referencingCompositionViewCount": 50,
+    "referencingCompositionViewAggregateSha256": "17724adcd4ae57c998404dc7b86cbabf9a09106105b2202940afd841e47d8b80"
+  },
+  "criticalNonBlockingFinding": {
+    "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+    "finding": "The current reviewed mapping inventory contains 64 edges, of which 61 are partial and a substantial subset is semantically unrelated to periodic real-world modelling.",
+    "requiredFollowUp": "Perform the bounded per-edge mapping cleanup documented in the adjudication before treating those edges as source or applicability evidence.",
+    "blocksAdjudication": false,
+    "productOwnerDecisionRequired": false
+  },
+  "artifactBytes": 78996,
+  "artifactSha256": "19acc2ea7569e51227c89623ef511b79f1b505672b35d4d78397eb59820c5f5c"
+}

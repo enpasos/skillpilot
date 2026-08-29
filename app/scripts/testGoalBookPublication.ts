@@ -11,6 +11,7 @@ import {
 } from './checkGoalBookPublication'
 import { serviceWorkerPrecacheGlobIgnores } from '../serviceWorkerNavigationPolicy'
 import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublicationRegistry'
+import { buildApplicabilityCompilation } from './applicabilityCompiler'
 
 const verifiedBooks = await verifyPublishedGoalBooks()
 assert.deepEqual(
@@ -18,10 +19,33 @@ assert.deepEqual(
   GOAL_BOOK_PUBLICATION_REGISTRY.map(({ bookId }) => bookId),
   'the real publication gate verifies every registered book in canonical order',
 )
+const applicabilityReportByLandscapeId = new Map(
+  buildApplicabilityCompilation().reports.map((report) => [report.landscapeId, report] as const),
+)
+verifiedBooks.forEach(({ model }) => {
+  const report = applicabilityReportByLandscapeId.get(model.book.landscapeId)
+  assert.ok(report, `missing compiled applicability for ${model.book.landscapeId}`)
+  const compiledJurisdictionsByGoalId = new Map(report.goals.map(({ goalId, compiledApplicability }) => [
+    goalId,
+    new Set(compiledApplicability.jurisdiction ?? []),
+  ] as const))
+  model.pages.forEach((page) => {
+    const compiledJurisdictions = compiledJurisdictionsByGoalId.get(page.goalId)
+    assert.ok(compiledJurisdictions, `missing compiled applicability for goal ${page.goalId}`)
+    const unsupportedJurisdictions = (page.applicability ?? [])
+      .map(({ jurisdiction }) => jurisdiction)
+      .filter((jurisdiction) => !compiledJurisdictions.has(jurisdiction))
+    assert.deepEqual(
+      unsupportedJurisdictions,
+      [],
+      `${model.book.id} must not publish ${page.goalId} in a jurisdiction without compiled applicability`,
+    )
+  })
+})
 const verified = verifiedBooks.find(({ model }) => model.book.id === 'de-gym-mathematik-bundesweit')
 assert.ok(verified, 'the real publication contains the registered mathematics atlas')
 assert.equal(verified.model.book.id, 'de-gym-mathematik-bundesweit')
-assert.equal(verified.model.pages.length, 791)
+assert.equal(verified.model.pages.length, 792)
 assert.equal(verified.index.books[0].model.url, '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json')
 assert.equal(verified.index.books[0].pdf.url, '/lernzielbuch/de-gym-mathematik-bundesweit.pdf')
 const registryFixture = {

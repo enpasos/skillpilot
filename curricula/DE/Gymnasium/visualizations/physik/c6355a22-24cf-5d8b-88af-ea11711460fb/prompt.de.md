@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `c6355a22-24cf-5d8b-88af-ea11711460fb`
 - Titel: Kraft auf stromdurchflossene Leiter
-- Beschreibung: Die lernende Person kann die Kraft auf einen stromdurchflossenen Leiter im homogenen Magnetfeld mit F = B * I * l * sin(alpha) berechnen, daraus B = F / (I * l) bestimmen (Definition der magnetischen Flussdichte) und die Richtung der Kraft fachlich festlegen.
+- Beschreibung: Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Kraft auf stromdurchflossene Leiter
-Beschreibung: Die lernende Person kann die Kraft auf einen stromdurchflossenen Leiter im homogenen Magnetfeld mit F = B * I * l * sin(alpha) berechnen, daraus B = F / (I * l) bestimmen (Definition der magnetischen Flussdichte) und die Richtung der Kraft fachlich festlegen.
+Beschreibung: Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.
 
 Zusatzanweisung:
 Pflichtinhalt:

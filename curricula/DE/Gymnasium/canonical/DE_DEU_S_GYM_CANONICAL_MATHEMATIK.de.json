@@ -2722,7 +2722,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 916,
+      "weight": 919,
       "tags": [
         "root",
         "canonical",
@@ -5985,7 +5985,7 @@
       "contains": [],
       "requires": [
         "ca623958-c204-5d1b-bdd0-3f76765674cb",
-        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
       "applicability": {
@@ -6525,7 +6525,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J6 der gymnasialen Sekundarstufe I in Mathematik. Hier hängen rationale Zahlvorstellungen, Flächen- und Volumenideen sowie Prozent- und Datenroutinen an.",
       "descriptionEn": "Canonical year anchor for year 6 in lower-secondary Gymnasium mathematics. Rational-number concepts, area and volume ideas, and percentage and data routines attach here.",
       "core": true,
-      "weight": 47,
+      "weight": 49,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -7993,7 +7993,7 @@
       "description": "Kanonischer Cluster für Flächen- und Volumenroutinen in J6. Der Cluster differenziert das Herleiten von Flächenformeln, das Berechnen von Flächen und Oberflächen sowie das Plausibilisieren und Anwenden von Volumenvorstellungen.",
       "descriptionEn": "Canonical cluster for area and volume routines in year 6. It differentiates deriving area formulas, calculating areas and surfaces, and justifying and applying volume concepts.",
       "core": true,
-      "weight": 6,
+      "weight": 7,
       "tags": [
         "canonical"
       ],
@@ -8335,7 +8335,7 @@
       "description": "Die lernende Person kann Volumina und Oberflächen einfacher Körper berechnen, Volumeneinheiten sicher verwenden und Ergebnisse an Modellen oder in Sachsituationen prüfen.",
       "descriptionEn": "The learner can calculate volumes and surfaces of simple solids, use units reliably, and check results on models or in contextual situations.",
       "core": true,
-      "weight": 2,
+      "weight": 3,
       "tags": [
         "canonical"
       ],
@@ -8404,7 +8404,7 @@
       "description": "Die lernende Person kann die Volumina von Quadern, Würfeln und aus ihnen zusammengesetzten Körpern mithilfe von Einheitswürfeln oder aus Kantenlängen bestimmen, zusammengesetzte Körper dazu gezielt in Quader zerlegen oder zu Quadern ergänzen und die Ergebnisse in geeigneten Volumeneinheiten angeben und vergleichen.",
       "descriptionEn": "The learner can determine the volumes of cuboids, cubes, and solids composed of them using unit cubes or edge lengths, deliberately decompose composite solids into cuboids or complete them to cuboids, and state and compare the results in suitable units of volume.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical"
       ],
@@ -8421,6 +8421,75 @@
         "phase": "J6",
         "area": "Geometry",
         "topicCode": "CANONICAL.MATH.SEK1.J6.2B"
+      },
+      "contains": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "e01869db-891c-57a4-8660-789ec6875ec2"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+          "title": "Visualisierung: Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/99ef0fc2-150a-51e8-bac8-7e40e46917b/99ef0fc2-150a-51e8-bac8-7e40e46917b.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen.",
+          "altText": "Würfel, Quader und ein aus zwei farbigen Quadern zusammengesetzter Körper zeigen passende Kantenmaße und die korrekten Volumina 27 cm³, 24 cm³ und 14 cm³.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "shortKey": "canonical_math_sek1_j6_determine_cuboid_cube_volumes",
+      "title": "Volumina von Quadern und Würfeln bestimmen",
+      "titleEn": "Determine volumes of cuboids and cubes",
+      "description": "Die lernende Person kann die Volumina von Quadern und Würfeln mithilfe von Einheitswürfeln oder aus Kantenlängen bestimmen, die Ergebnisse in geeigneten Volumeneinheiten angeben und sie nach erforderlicher Umrechnung vergleichen.",
+      "descriptionEn": "The learner can determine the volumes of cuboids and cubes using unit cubes or edge lengths, state the results in suitable units of volume, and compare them after any required conversion.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2B2"
       },
       "contains": [],
       "requires": [
@@ -8449,22 +8518,61 @@
       },
       "type": "atomic",
       "semanticAtomic": true,
-      "resourceLinks": [
-        {
-          "type": "goal-visualization",
-          "resourceType": "image",
-          "role": "primary",
-          "skillpilotId": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
-          "title": "Visualisierung: Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
-          "url": "/assets/goal-visualizations/mathematik/99ef0fc2-150a-51e8-bac8-7e40e46917b/99ef0fc2-150a-51e8-bac8-7e40e46917b.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen.",
-          "altText": "Würfel, Quader und ein aus zwei farbigen Quadern zusammengesetzter Körper zeigen passende Kantenmaße und die korrekten Volumina 27 cm³, 24 cm³ und 14 cm³.",
-          "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
-          "reviewStatus": "pilot"
-        }
-      ]
+      "resourceLinks": []
+    },
+    {
+      "id": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "shortKey": "canonical_math_sek1_j6_determine_composite_cuboid_volumes_additively",
+      "title": "Volumina zusammengesetzter Quaderkörper additiv bestimmen",
+      "titleEn": "Determine volumes of composite cuboid solids additively",
+      "description": "Die lernende Person kann die Additivität des Volumens nutzen, um die Volumina aus Quadern und Würfeln zusammengesetzter Körper durch eine geeignete lücken- und überlappungsfreie Zerlegung oder durch Ergänzen zu einem Quader und Subtrahieren des Ergänzungsvolumens zu bestimmen und das Ergebnis anhand der Körperstruktur auf Plausibilität zu prüfen.",
+      "descriptionEn": "The learner can use the additivity of volume to determine the volumes of solids composed of cuboids and cubes by a suitable decomposition without gaps or overlaps, or by completing the solid to a cuboid and subtracting the complementary volume, and check the result for plausibility against the structure of the solid.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2B3"
+      },
+      "contains": [],
+      "requires": [
+        "7c978529-ce62-5adc-897f-24ea80babbc8"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": []
     },
     {
       "id": "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
@@ -9588,7 +9696,7 @@
       "requires": [
         "d6c3fb37-ece6-5b56-9221-1eeb21845877",
         "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
-        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
       "applicability": {
@@ -11483,7 +11591,7 @@
       "description": "Cluster für den frühen Sek-I-Korridor von Grundgrößen zu ersten Flächen- und Volumenvorstellungen. Der Korridor verbindet Einheiten und Größenvergleiche mit Rechteckflächen und Volumen an Quadern in einfachen Sachzusammenhängen.",
       "descriptionEn": "Cluster for the early lower-secondary corridor from basic quantities to first ideas of area and volume. The corridor connects units and quantity comparisons with rectangle areas and cuboid volume in simple contexts.",
       "core": true,
-      "weight": 4,
+      "weight": 5,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -12007,7 +12115,7 @@
       "description": "Cluster für den späteren Sek-I-Geometriekorridor zu Vierecken, Dreiecken und Kongruenz, geometrischen Abbildungen und Ähnlichkeit, Kreisgeometrie, Satzgruppe des Pythagoras sowie ersten Körpervorstellungen. Der Korridor verbindet ebene Figuren und Konstruktionen mit Symmetrie- und Verhältnisargumenten, Kreisbeziehungen und geometrischen Begründungen; erste räumliche Körperberechnungen bleiben als Kompatibilitätsbrücke angebunden.",
       "descriptionEn": "Cluster for the later lower-secondary geometry corridor on quadrilaterals, triangles and congruence, geometric transformations and similarity, circle geometry, the Pythagorean theorem group, and first solids ideas. The corridor connects planar figures and constructions with symmetry and ratio arguments, circle relations, and geometric justifications; first solid calculations remain attached as a compatibility bridge.",
       "core": true,
-      "weight": 25,
+      "weight": 26,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -12330,7 +12438,7 @@
       "description": "Cluster für den späteren Sek-I-Korridor zu Flächeninhalten, Kreisberechnungen und Körpern. Der Korridor verbindet Flächen- und Kreisvorstellungen mit Volumen-, Oberflächen- und ersten räumlichen Körperberechnungen und hält den Körperstrang damit als eigene kanonische Arbeitseinheit sichtbar.",
       "descriptionEn": "Cluster for the later lower-secondary corridor on area concepts, circle calculations, and solids. The corridor connects area and circle ideas with volume, surface, and first spatial solid calculations and keeps the solids strand visible as its own canonical work package.",
       "core": true,
-      "weight": 7,
+      "weight": 8,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -13450,7 +13558,7 @@
       "description": "Cluster für geometrische Grundvorstellungen und Raumvorstellungen aus der gymnasialen Sekundarstufe I. Der Korridor ist jetzt explizit in frühe Geometrie und Raumvorstellungen, spätere Figuren-, Abbildungs- und Satzgeometrie, spätere Flächen-, Kreis- und Körpervorstellungen sowie die trigonometrische Brücke mit späteren Raumproblemen gegliedert und ist zusätzlich an die kanonischen Jahrgangsanker J5 bis J10 angebunden.",
       "descriptionEn": "Cluster for lower-secondary geometry and spatial reasoning in Gymnasium. The corridor is now explicitly structured into early geometry and spatial imagination, later figure/transformation/theorem geometry, later area/circle/solids concepts, and the trigonometric bridge with later spatial problems, and is additionally linked to the canonical year anchors J5 to J10.",
       "core": true,
-      "weight": 53,
+      "weight": 54,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -21888,7 +21996,7 @@
         "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
         "b44f038c-fb1f-527e-b9ad-382214d0328a",
         "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
-        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
         "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
         "f0a49da2-018b-4cda-adbd-27047b610a0f",
         "65365dce-f33f-49d8-9516-42f75883aa86"
@@ -35482,7 +35590,7 @@
       "id": "bfc4fe23-bfa4-4836-9bd2-793f4305d682",
       "title": "Sek-I-Prüfungen und Lernkarten",
       "description": "Kompatibilitätscluster für Sek-I-Prüfungsordner und den schmalen Lernkartenknoten. Standard-Views platzieren Jahrgangsprüfungen innerhalb der jeweiligen Jahrgangsstufe.",
-      "weight": 45,
+      "weight": 48,
       "tags": [
         "GK",
         "LK",
@@ -36172,7 +36280,7 @@
       "id": "7a2a5706-aff4-4fd0-b092-1779d6ecbc1f",
       "title": "Prüfungen Jahrgangsstufe 6",
       "description": "Bündelt freigegebene Prüfungsaufgaben zur Jahrgangsstufe 6. Die einzelnen Aufgaben sind als eigene Exam-Knoten modelliert, damit Lernpfade sichtbar in passenden Prüfungsaufgaben enden.",
-      "weight": 9,
+      "weight": 10,
       "tags": [
         "GK",
         "LK",
@@ -36232,7 +36340,8 @@
         "47c515c9-2174-58c7-a844-6865fc67c243",
         "f1050f11-50bb-52ce-a406-4563ad976cc4",
         "1cab2bd9-d79a-5468-89dc-05cc63026584",
-        "c34c6132-f85d-59be-8b95-032ddfc0d0de"
+        "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+        "7285df88-39cf-59c5-86c3-166e84669abc"
       ],
       "requires": [],
       "phase": "J6",
@@ -36681,7 +36790,7 @@
       "requires": [
         "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
         "b44f038c-fb1f-527e-b9ad-382214d0328a",
-        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
         "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
       ],
       "phase": "J6",
@@ -36693,7 +36802,7 @@
         "coveredGoalIds": [
           "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
           "b44f038c-fb1f-527e-b9ad-382214d0328a",
-          "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+          "7c978529-ce62-5adc-897f-24ea80babbc8",
           "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa"
         ],
         "coveredStrands": [
@@ -39726,7 +39835,7 @@
       "titleEn": "Foundations of Calculus and Mathematical Models",
       "description": "Cluster-Knoten für grundlegende Funktionen, den Ableitungsbegriff, exponentielle und trigonometrische Modelle, Folgen und Reihen sowie grundlegende Verfahren zum Lösen von Gleichungen.",
       "descriptionEn": "Cluster node for foundational functions, the concept of derivatives, exponential and trigonometric models, sequences and series, and core methods for solving equations.",
-      "weight": 108,
+      "weight": 123,
       "tags": [
         "GK",
         "LK",
@@ -41648,8 +41757,8 @@
       "id": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
       "title": "Sinus- und Kosinusfunktionen verstehen",
       "titleEn": "Understand sine and cosine functions",
-      "description": "Die lernende Person kann Sinus- und Kosinusfunktionen mithilfe von Kreisbewegungen motivieren, Graphen skizzieren und charakteristische Punkte (Amplitude, Nullstellen) benennen.",
-      "descriptionEn": "The learner can motivate sine and cosine functions using circular movements, sketch graphs and name characteristic points (amplitude, zeros).",
+      "description": "Die lernende Person kann erklären, wie Sinus- und Kosinusfunktionen als Koordinatenverläufe einer Kreisbewegung entstehen, ihre Graphen skizzieren sowie Amplitude und Nullstellen als charakteristische Merkmale benennen.",
+      "descriptionEn": "The learner can explain how sine and cosine functions arise as coordinate traces of circular motion, sketch their graphs, and identify amplitude and zeros as characteristic features.",
       "weight": 1,
       "tags": [
         "GK",
@@ -41658,8 +41767,7 @@
       "contains": [],
       "requires": [
         "cdf49335-cebf-54b4-9f52-50d5badabe2f",
-        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -41706,7 +41814,7 @@
           "url": "/assets/goal-visualizations/mathematik/bbef7cf2-90fa-59fa-a115-8b651aab9231/bbef7cf2-90fa-59fa-a115-8b651aab9231.jpg",
           "provider": "Google Gemini / Nano Banana Pro",
           "description": "Visualisierung zum Lernziel: Sinus- und Kosinusfunktionen verstehen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Sinus- und Kosinusfunktionen verstehen\". Die lernende Person kann Sinus- und Kosinusfunktionen mithilfe von Kreisbewegungen motivieren, Graphen skizzieren und charakteristische Punkte (Amplitude, Nullstellen) benennen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sinus- und Kosinusfunktionen verstehen\". Die lernende Person kann erklären, wie Sinus- und Kosinusfunktionen als Koordinatenverläufe einer Kreisbewegung entstehen, ihre Graphen skizzieren sowie Amplitude und Nullstellen als charakteristische Merkmale benennen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -41858,8 +41966,8 @@
       "id": "ecd13e54-ab0e-550f-9400-66e13306635d",
       "title": "Trigonometrische Gleichungen lösen",
       "titleEn": "Solve trigonometric equations",
-      "description": "Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, allgemeine Lösungsangaben formulieren und Lösungen im Einheitskreis veranschaulichen.",
-      "descriptionEn": "The learner can solve simple trigonometric equations such as $\\sin(x)=k$ or $\\cos(x)=k$, formulate general solutions and illustrate solutions in the unit circle.",
+      "description": "Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, ihre vollständigen Lösungsmengen mithilfe von Periodizität und Symmetrie formulieren und am Einheitskreis darstellen.",
+      "descriptionEn": "The learner can solve simple trigonometric equations such as $\\sin(x)=k$ or $\\cos(x)=k$, formulate their complete solution sets using periodicity and symmetry, and represent them on the unit circle.",
       "weight": 1,
       "tags": [
         "GK",
@@ -41915,7 +42023,7 @@
           "url": "/assets/goal-visualizations/mathematik/ecd13e54-ab0e-550f-9400-66e13306635d/ecd13e54-ab0e-550f-9400-66e13306635d.jpg",
           "provider": "Google Gemini / Nano Banana Pro",
           "description": "Visualisierung zum Lernziel: Trigonometrische Gleichungen lösen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Trigonometrische Gleichungen lösen\". Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, allgemeine Lösungsangaben formulieren und Lösungen im Einheitskreis veranschaulichen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Trigonometrische Gleichungen lösen\". Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, ihre vollständigen Lösungsmengen mithilfe von Periodizität und Symmetrie formulieren und am Einheitskreis darstellen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -41925,9 +42033,9 @@
     {
       "id": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
       "title": "Ableitungen von Sinus- und Kosinusfunktionen herleiten",
-      "titleEn": "Differentiate sine and cosine functions",
-      "description": "Die lernende Person kann die Ableitungen von $\\sin(x)$ und $\\cos(x)$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und die einzelnen Zusammenhänge fachlich erläutern.",
-      "descriptionEn": "The learner can derive the derivatives of $\\sin(x)$ and $\\cos(x)$ using geometric arguments or limit considerations and explain the individual relationships mathematically.",
+      "titleEn": "Derive differentiation rules for sine and cosine functions",
+      "description": "Die lernende Person kann im Bogenmaß die Ableitungsregeln $(\\sin x)^{\\prime}=\\cos x$ und $(\\cos x)^{\\prime}=-\\sin x$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und insbesondere das Minuszeichen der Kosinusableitung begründen.",
+      "descriptionEn": "Using radian measure, the learner can derive the differentiation rules $(\\sin x)^{\\prime}=\\cos x$ and $(\\cos x)^{\\prime}=-\\sin x$ through geometric arguments or limit reasoning and, in particular, justify the negative sign in the derivative of cosine.",
       "weight": 1,
       "tags": [
         "GK",
@@ -41935,7 +42043,8 @@
       ],
       "contains": [],
       "requires": [
-        "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"
+        "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+        "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -41982,7 +42091,7 @@
           "url": "/assets/goal-visualizations/mathematik/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Ableitungen von Sinus- und Kosinusfunktionen herleiten.",
-          "altText": "Die lernende Person kann die Ableitungen von $\\sin(x)$ und $\\cos(x)$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und die einzelnen Zusammenhänge fachlich erläutern.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen von Sinus- und Kosinusfunktionen herleiten\". Die lernende Person kann im Bogenmaß die Ableitungsregeln $(\\sin x)^{\\prime}=\\cos x$ und $(\\cos x)^{\\prime}=-\\sin x$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und insbesondere das Minuszeichen der Kosinusableitung begründen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "approved"
@@ -42067,8 +42176,8 @@
       "id": "3401d95d-2191-5929-ac78-4de51d71a6be",
       "title": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
       "titleEn": "Apply derivatives of sine and cosine functions",
-      "description": "Die lernende Person kann die Ableitungen von $\\sin(x)$ und $\\cos(x)$ zur Untersuchung einfacher trigonometrischer Funktionen einsetzen.",
-      "descriptionEn": "The learner can use the derivatives of $\\sin(x)$ and $\\cos(x)$ to analyze simple trigonometric functions.",
+      "description": "Die lernende Person kann die Ableitungsregeln für Sinus und Kosinus anwenden, um bei Funktionen der Form $f(x)=a\\cdot\\sin(x)+d$ beziehungsweise $f(x)=a\\cdot\\cos(x)+d$ die Ableitungsfunktion und an vorgegebenen Stellen die Tangentensteigung zu bestimmen sowie die Ergebnisse am Graphen zu überprüfen.",
+      "descriptionEn": "The learner can apply the differentiation rules for sine and cosine to functions of the form $f(x)=a\\cdot\\sin(x)+d$ or $f(x)=a\\cdot\\cos(x)+d$, determine the derivative function and the tangent slope at specified points, and verify the results on the graph.",
       "weight": 1,
       "tags": [
         "GK",
@@ -42126,7 +42235,7 @@
           "url": "/assets/goal-visualizations/mathematik/3401d95d-2191-5929-ac78-4de51d71a6be/3401d95d-2191-5929-ac78-4de51d71a6be.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Ableitungen von Sinus- und Kosinusfunktionen anwenden.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen von Sinus- und Kosinusfunktionen anwenden\". Die lernende Person kann die Ableitungen von $\\sin(x)$ und $\\cos(x)$ zur Untersuchung einfacher trigonometrischer Funktionen einsetzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen von Sinus- und Kosinusfunktionen anwenden\". Die lernende Person kann die Ableitungsregeln für Sinus und Kosinus anwenden, um bei Funktionen der Form $f(x)=a\\cdot\\sin(x)+d$ beziehungsweise $f(x)=a\\cdot\\cos(x)+d$ die Ableitungsfunktion und an vorgegebenen Stellen die Tangentensteigung zu bestimmen sowie die Ergebnisse am Graphen zu überprüfen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "approved"
@@ -42286,8 +42395,8 @@
       "id": "56fba457-ab98-5b96-963e-ec284458c17f",
       "title": "Periodische Prozesse modellieren",
       "titleEn": "Model periodic processes",
-      "description": "Die lernende Person kann periodische Realsituationen (z. B. Gezeiten, Schwingungen) mit Sinus- oder Kosinusfunktionen beschreiben, Parameter mithilfe von Messdaten bestimmen und Aussagen zum Verlauf treffen.",
-      "descriptionEn": "The learner can describe periodic real-world situations (e.g. tides, oscillations) using sine or cosine functions, determine parameters using measured data and make statements about the progression.",
+      "description": "Die lernende Person kann periodische Realsituationen (z. B. Gezeiten oder Schwingungen) unter begründeten Annahmen mit Sinus- oder Kosinusfunktionen modellieren, Parameter aus Messdaten bestimmen, den Modellverlauf im Kontext interpretieren und Passung sowie Grenzen des Modells anhand von Daten und Annahmen beurteilen.",
+      "descriptionEn": "The learner can model periodic real-world situations (e.g. tides or oscillations) with sine or cosine functions under justified assumptions, determine parameters from measured data, interpret the model behavior in context, and assess the model's fit and limitations based on data and assumptions.",
       "weight": 1,
       "tags": [
         "GK",
@@ -42343,7 +42452,7 @@
           "url": "/assets/goal-visualizations/mathematik/56fba457-ab98-5b96-963e-ec284458c17f/56fba457-ab98-5b96-963e-ec284458c17f.jpg",
           "provider": "Google Gemini / Nano Banana Pro",
           "description": "Visualisierung zum Lernziel: Periodische Prozesse modellieren.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Periodische Prozesse modellieren\". Die lernende Person kann periodische Realsituationen (z. B. Gezeiten, Schwingungen) mit Sinus- oder Kosinusfunktionen beschreiben, Parameter mithilfe von Messdaten bestimmen und Aussagen zum Verlauf treffen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Periodische Prozesse modellieren\". Die lernende Person kann periodische Realsituationen (z. B. Gezeiten oder Schwingungen) unter begründeten Annahmen mit Sinus- oder Kosinusfunktionen modellieren, Parameter aus Messdaten bestimmen, den Modellverlauf im Kontext interpretieren und Passung sowie Grenzen des Modells anhand von Daten und Annahmen beurteilen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -44300,8 +44409,8 @@
           "role": "primary",
           "skillpilotId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
           "title": "Visualisierung: Grenzwerte des Differenzenquotienten bestimmen",
-          "url": "/assets/goal-visualizations/mathematik/b42bdfcc-3db7-5697-8b3e-69e50962ca86/b42bdfcc-3db7-5697-8b3e-69e50962ca86.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
+          "url": "/assets/goal-visualizations/mathematik/b42bdfcc-3db7-5697-8b3e-69e50962ca86/b42bdfcc-3db7-5697-8b3e-69e50962ca86.png",
+          "provider": "Repository-native SVG (documented Nano Banana Pro fallback)",
           "description": "Visualisierung zum Lernziel: Grenzwerte des Differenzenquotienten bestimmen.",
           "altText": "Didaktische Visualisierung zum Lernziel \"Grenzwerte des Differenzenquotienten bestimmen\". Die lernende Person kann Grenzwerte des Differenzenquotienten mit der h-Methode (h → 0) tabellarisch oder numerisch bestimmen und den Übergang von der Sekante zur Tangente begründen.",
           "lang": "de",
@@ -44450,8 +44559,8 @@
       "id": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
       "title": "Ableitungen elementarer Funktionen berechnen",
       "titleEn": "Calculate derivatives of elementary functions",
-      "description": "Die lernende Person kann die Ableitung elementarer Funktionen (z. B. ganzrationale Funktionen bis Grad 3, einfache Exponential- und Potenzfunktionen) mit Ableitungsregeln berechnen.",
-      "descriptionEn": "The learner can calculate the derivative of elementary functions (e.g., polynomials up to degree 3, simple exponential and power functions) using differentiation rules.",
+      "description": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+      "descriptionEn": "The learner can use the structure of polynomial functions up to degree 3 and simple exponential and power functions to select the appropriate differentiation rule and calculate the derivative step by step.",
       "weight": 1,
       "tags": [
         "GK",
@@ -44505,7 +44614,7 @@
           "url": "/assets/goal-visualizations/mathematik/858113c5-e53b-57bb-b01f-ba95c3ddcb6f/858113c5-e53b-57bb-b01f-ba95c3ddcb6f.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Ableitungen elementarer Funktionen berechnen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen elementarer Funktionen berechnen\". Die lernende Person kann die Ableitung elementarer Funktionen (z. B. ganzrationale Funktionen bis Grad 3, einfache Exponential- und Potenzfunktionen) mit Ableitungsregeln berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen elementarer Funktionen berechnen\". Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -61995,11 +62104,7 @@
       ],
       "contains": [],
       "requires": [
-        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
-        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
-        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
-        "265af6af-8eac-5632-b730-800aafcde26a"
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -62055,8 +62160,8 @@
       "id": "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
       "title": "Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten",
       "titleEn": "Represent lines and segments in space parametrically and interpret parameters",
-      "description": "Die lernende Person kann Geraden und Strecken im Raum in Parameterform angeben, aus Punktbeschreibungen aufstellen und die Parameter von Geradengleichungen im Kontext deuten.",
-      "descriptionEn": "The learner can state lines and segments in space in parametric form, construct them from point descriptions, and interpret the parameters of line equations in context.",
+      "description": "Die lernende Person kann Geraden und Strecken im Raum aus zwei verschiedenen Punkten parametrisch darstellen, dabei für Geraden den gesamten reellen Parameterbereich und für Strecken einen passenden begrenzten Parameterbereich festlegen sowie Parameterwerte im Kontext deuten.",
+      "descriptionEn": "The learner can parametrically represent lines and segments in space from two distinct points, use the full real parameter range for lines and an appropriate bounded parameter interval for segments, and interpret parameter values in context.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62114,7 +62219,7 @@
           "url": "/assets/goal-visualizations/mathematik/525b1da9-7fdd-4a70-9f30-ff01d7511b04/525b1da9-7fdd-4a70-9f30-ff01d7511b04.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten\". Die lernende Person kann Geraden und Strecken im Raum in Parameterform angeben, aus Punktbeschreibungen aufstellen und die Parameter von Geradengleichungen im Kontext deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten\". Die lernende Person kann Geraden und Strecken im Raum aus zwei verschiedenen Punkten parametrisch darstellen, dabei für Geraden den gesamten reellen Parameterbereich und für Strecken einen passenden begrenzten Parameterbereich festlegen sowie Parameterwerte im Kontext deuten.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -62250,8 +62355,8 @@
       "id": "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
       "title": "Ebenen in Parameterform angeben und interpretieren",
       "titleEn": "State and interpret planes in parametric form",
-      "description": "Die lernende Person kann eine Ebene in Parameterform angeben, Richtungsvektoren und Stützpunkt interpretieren und Punkte der Ebene prüfen.",
-      "descriptionEn": "The learner can state a plane in parametric form, interpret direction vectors and base point, and check points on the plane.",
+      "description": "Die lernende Person kann eine Ebene durch einen Stützpunkt und zwei linear unabhängige Spannvektoren in Parameterform angeben, den Stützpunkt und die Spannvektoren geometrisch deuten und die Zugehörigkeit von Punkten prüfen.",
+      "descriptionEn": "The learner can represent a plane parametrically using a base point and two linearly independent spanning vectors, interpret the base point and spanning vectors geometrically, and test whether points lie on the plane.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62260,11 +62365,7 @@
       ],
       "contains": [],
       "requires": [
-        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
-        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
-        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
-        "265af6af-8eac-5632-b730-800aafcde26a"
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -62311,7 +62412,7 @@
           "url": "/assets/goal-visualizations/mathematik/d785943c-d61b-51a1-a9c2-c36a9e0cc97d/d785943c-d61b-51a1-a9c2-c36a9e0cc97d.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Ebenen in Parameterform angeben und interpretieren.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Ebenen in Parameterform angeben und interpretieren\". Die lernende Person kann eine Ebene in Parameterform angeben, Richtungsvektoren und Stützpunkt interpretieren und Punkte der Ebene prüfen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ebenen in Parameterform angeben und interpretieren\". Die lernende Person kann eine Ebene durch einen Stützpunkt und zwei linear unabhängige Spannvektoren in Parameterform angeben, den Stützpunkt und die Spannvektoren geometrisch deuten und die Zugehörigkeit von Punkten prüfen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -62322,8 +62423,8 @@
       "id": "f613634b-39fb-5021-9970-790ef34c9932",
       "title": "Parallelogramme und Dreiecke in Parameterform darstellen",
       "titleEn": "Represent Parallelograms and Triangles in Parametric Form",
-      "description": "Die lernende Person kann Parallelogramme und Dreiecke im Raum in Parameterform angeben, geeignete Spannvektoren aus Eckpunkten bestimmen und die Darstellung geometrisch deuten.",
-      "descriptionEn": "The learner can represent parallelograms and triangles in space in parametric form, determine suitable spanning vectors from vertices, and interpret the representation geometrically.",
+      "description": "Die lernende Person kann aus den Eckpunkten passende Spannvektoren bestimmen, Parallelogramme durch x = a + su + tv mit 0 ≤ s,t ≤ 1 und Dreiecke mit s,t ≥ 0 und s + t ≤ 1 parametrisch darstellen und die begrenzten Punktmengen geometrisch deuten.",
+      "descriptionEn": "The learner can determine suitable spanning vectors from the vertices, parametrically represent parallelograms by x = a + su + tv with 0 ≤ s,t ≤ 1 and triangles with s,t ≥ 0 and s + t ≤ 1, and interpret the bounded point sets geometrically.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62382,7 +62483,7 @@
           "url": "/assets/goal-visualizations/mathematik/f613634b-39fb-5021-9970-790ef34c9932/f613634b-39fb-5021-9970-790ef34c9932.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Parallelogramme und Dreiecke in Parameterform darstellen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Parallelogramme und Dreiecke in Parameterform darstellen\". Die lernende Person kann Parallelogramme und Dreiecke im Raum in Parameterform angeben, geeignete Spannvektoren aus Eckpunkten bestimmen und die Darstellung geometrisch deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Parallelogramme und Dreiecke in Parameterform darstellen\". Die lernende Person kann aus den Eckpunkten passende Spannvektoren bestimmen, Parallelogramme durch x = a + su + tv mit 0 ≤ s,t ≤ 1 und Dreiecke mit s,t ≥ 0 und s + t ≤ 1 parametrisch darstellen und die begrenzten Punktmengen geometrisch deuten.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -62464,8 +62565,8 @@
       "id": "ec6447d1-97da-5b77-94ae-4973b43f094e",
       "title": "Normalenvektor einer Ebene bestimmen und nutzen",
       "titleEn": "Determine and use a normal vector of a plane",
-      "description": "Die lernende Person kann einen Normalenvektor zu einer Ebene bestimmen und seine Bedeutung für Orthogonalität und Lage interpretieren.",
-      "descriptionEn": "The learner can determine a normal vector of a plane and interpret its meaning for orthogonality and position.",
+      "description": "Die lernende Person kann einen von null verschiedenen Normalenvektor zu einer Ebene bestimmen, ihn als zu allen Richtungsvektoren der Ebene orthogonalen Vektor deuten und für die Beschreibung ihrer Orientierung nutzen.",
+      "descriptionEn": "The learner can determine a nonzero normal vector of a plane, interpret it as a vector orthogonal to every direction vector in the plane, and use it to describe the plane's orientation.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62474,11 +62575,7 @@
       ],
       "contains": [],
       "requires": [
-        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
-        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
-        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
-        "265af6af-8eac-5632-b730-800aafcde26a"
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -62525,7 +62622,7 @@
           "url": "/assets/goal-visualizations/mathematik/ec6447d1-97da-5b77-94ae-4973b43f094e/ec6447d1-97da-5b77-94ae-4973b43f094e.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Normalenvektor einer Ebene bestimmen und nutzen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Normalenvektor einer Ebene bestimmen und nutzen\". Die lernende Person kann einen Normalenvektor zu einer Ebene bestimmen und seine Bedeutung für Orthogonalität und Lage interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Normalenvektor einer Ebene bestimmen und nutzen\". Die lernende Person kann einen von null verschiedenen Normalenvektor zu einer Ebene bestimmen, ihn als zu allen Richtungsvektoren der Ebene orthogonalen Vektor deuten und für die Beschreibung ihrer Orientierung nutzen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -62536,8 +62633,8 @@
       "id": "66a96282-340d-5220-91a6-cc97e2ec2220",
       "title": "Punkt-Normalen-Form einer Ebene aufstellen",
       "titleEn": "Set up the point-normal form of a plane",
-      "description": "Die lernende Person kann die Punkt-Normalen-Form einer Ebene aus Punkt und Normalenvektor aufstellen und damit arbeiten.",
-      "descriptionEn": "The learner can set up the point-normal form of a plane from a point and a normal vector and use it.",
+      "description": "Die lernende Person kann aus dem Ortsvektor p eines Ebenenpunkts und einem von null verschiedenen Normalenvektor n die Punkt-Normalen-Form n · (x − p) = 0 aufstellen und als Orthogonalitätsbedingung deuten.",
+      "descriptionEn": "The learner can set up the point-normal form n · (x − p) = 0 from the position vector p of a point on the plane and a nonzero normal vector n and interpret it as an orthogonality condition.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62590,7 +62687,7 @@
           "url": "/assets/goal-visualizations/mathematik/66a96282-340d-5220-91a6-cc97e2ec2220/66a96282-340d-5220-91a6-cc97e2ec2220.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Punkt-Normalen-Form einer Ebene aufstellen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Punkt-Normalen-Form einer Ebene aufstellen\". Die lernende Person kann die Punkt-Normalen-Form einer Ebene aus Punkt und Normalenvektor aufstellen und damit arbeiten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Punkt-Normalen-Form einer Ebene aufstellen\". Die lernende Person kann aus dem Ortsvektor p eines Ebenenpunkts und einem von null verschiedenen Normalenvektor n die Punkt-Normalen-Form n · (x − p) = 0 aufstellen und als Orthogonalitätsbedingung deuten.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -62669,8 +62766,8 @@
       "id": "06de364f-9b63-4044-8229-a975621dc6df",
       "title": "Koordinatenformen von Ebenen zur Orientierung im Raum nutzen",
       "titleEn": "Use coordinate forms of planes for orientation in space",
-      "description": "Die lernende Person kann Koordinatenformen von Ebenen zur Orientierung im Raum nutzen, insbesondere Punktproben durchführen, Achsenschnittpunkte bestimmen und den Normalenvektor zur räumlichen Deutung heranziehen.",
-      "descriptionEn": "The learner can use coordinate forms of planes for orientation in space, in particular by performing point tests, determining axis intercepts, and using the normal vector for spatial interpretation.",
+      "description": "Die lernende Person kann aus der Koordinatenform einer Ebene Achsenschnittpunkte und die Richtung des Normalenvektors bestimmen, die Zugehörigkeit gegebener Punkte prüfen und diese Informationen zu einer begründeten räumlichen Lagebeschreibung der Ebene zusammenführen.",
+      "descriptionEn": "The learner can determine a plane's axis intercepts and normal direction from its coordinate form, test whether given points lie on the plane, and combine these results into a reasoned spatial description of the plane's position.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62679,7 +62776,7 @@
       ],
       "contains": [],
       "requires": [
-        "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8"
+        "ce491ec0-c558-5872-86fd-289e60a38403"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
@@ -62728,7 +62825,7 @@
           "url": "/assets/goal-visualizations/mathematik/06de364f-9b63-4044-8229-a975621dc6df/06de364f-9b63-4044-8229-a975621dc6df.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Koordinatenformen von Ebenen zur Orientierung im Raum nutzen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Koordinatenformen von Ebenen zur Orientierung im Raum nutzen\". Die lernende Person kann Koordinatenformen von Ebenen zur Orientierung im Raum nutzen, insbesondere Punktproben durchführen, Achsenschnittpunkte bestimmen und den Normalenvektor zur räumlichen Deutung heranziehen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Koordinatenformen von Ebenen zur Orientierung im Raum nutzen\". Die lernende Person kann aus der Koordinatenform einer Ebene Achsenschnittpunkte und die Richtung des Normalenvektors bestimmen, die Zugehörigkeit gegebener Punkte prüfen und diese Informationen zu einer begründeten räumlichen Lagebeschreibung der Ebene zusammenführen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -62945,8 +63042,8 @@
       "id": "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
       "title": "Ebenengleichung aus geometrischen Bedingungen bestimmen",
       "titleEn": "Determine a plane equation from geometric conditions",
-      "description": "Die lernende Person kann eine Ebenengleichung aus Bedingungen wie drei Punkten, Punkt+Normalenvektor oder Punkt+zwei Richtungsvektoren bestimmen.",
-      "descriptionEn": "The learner can determine a plane equation from conditions such as three points, point+normal vector, or point+two direction vectors.",
+      "description": "Die lernende Person kann aus drei nicht kollinearen Punkten, einem Ebenenpunkt und einem von null verschiedenen Normalenvektor oder einem Ebenenpunkt und zwei linear unabhängigen Spannvektoren eine passende Ebenengleichung bestimmen.",
+      "descriptionEn": "The learner can determine a suitable plane equation from three noncollinear points, from a point on the plane and a nonzero normal vector, or from a point on the plane and two linearly independent spanning vectors.",
       "weight": 1,
       "tags": [
         "GK",
@@ -63000,7 +63097,7 @@
           "url": "/assets/goal-visualizations/mathematik/ea4bd128-17ab-5a8b-ae98-29552d774fb0/ea4bd128-17ab-5a8b-ae98-29552d774fb0.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Ebenengleichung aus geometrischen Bedingungen bestimmen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Ebenengleichung aus geometrischen Bedingungen bestimmen\". Die lernende Person kann eine Ebenengleichung aus Bedingungen wie drei Punkten, Punkt+Normalenvektor oder Punkt+zwei Richtungsvektoren bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ebenengleichung aus geometrischen Bedingungen bestimmen\". Die lernende Person kann aus drei nicht kollinearen Punkten, einem Ebenenpunkt und einem von null verschiedenen Normalenvektor oder einem Ebenenpunkt und zwei linear unabhängigen Spannvektoren eine passende Ebenengleichung bestimmen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -68550,7 +68647,7 @@
       "id": "28b45b93-11e1-5a96-97a1-4cfee171802b",
       "title": "Übungen E-Phase",
       "description": "Bündelt materialgestützte E-Phasen-Klausuraufgaben mit normalem Klausurcharakter zu Funktionen, Ableitung, exponentiellen Modellen, Trigonometrie, numerischen Verfahren und Folgen. Die globalen Abituraufgaben bleiben davon getrennt modelliert.",
-      "weight": 10,
+      "weight": 11,
       "tags": [
         "GK",
         "LK"
@@ -68580,6 +68677,7 @@
         "9634bfe1-39ea-5428-a042-c3f970f811a3",
         "3b1f0646-fd0e-5d9d-b515-a5a45417a005",
         "6634ef12-0e88-584e-8e45-9e60eafc0951",
+        "2c30949d-0381-5d32-81cf-c6eac7711399",
         "78f5003e-9578-545c-b6b3-4b02f31ffcd4",
         "b4a8ba81-d195-5413-bd98-516e7c76c8f3",
         "c4cf4273-cadc-5eca-9b35-b3edd6de26ce"
@@ -69226,9 +69324,8 @@
         "phase": "E"
       },
       "requires": [
-        "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
-        "3401d95d-2191-5929-ac78-4de51d71a6be",
-        "56fba457-ab98-5b96-963e-ec284458c17f"
+        "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+        "ecd13e54-ab0e-550f-9400-66e13306635d"
       ],
       "contains": [],
       "examples": [],
@@ -69255,9 +69352,8 @@
       "examData": {
         "reviewStatus": "released",
         "coveredGoalIds": [
-          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
-          "3401d95d-2191-5929-ac78-4de51d71a6be",
-          "56fba457-ab98-5b96-963e-ec284458c17f"
+          "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+          "ecd13e54-ab0e-550f-9400-66e13306635d"
         ],
         "coveredStrands": [
           "L1",
@@ -69330,15 +69426,11 @@
       },
       "requires": [
         "cdf49335-cebf-54b4-9f52-50d5badabe2f",
-        "bbef7cf2-90fa-59fa-a115-8b651aab9231",
         "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
         "eda3a298-4965-525e-878d-f05b9e2d4503",
         "ecd13e54-ab0e-550f-9400-66e13306635d",
-        "56fba457-ab98-5b96-963e-ec284458c17f",
         "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
-        "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
         "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
-        "3401d95d-2191-5929-ac78-4de51d71a6be",
         "58d2f963-4fb9-550d-a832-f5ac60808900",
         "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
         "f042385e-f772-42db-9c96-f21a792ac5ea"
@@ -69369,15 +69461,11 @@
         "reviewStatus": "released",
         "coveredGoalIds": [
           "cdf49335-cebf-54b4-9f52-50d5badabe2f",
-          "bbef7cf2-90fa-59fa-a115-8b651aab9231",
           "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
           "eda3a298-4965-525e-878d-f05b9e2d4503",
           "ecd13e54-ab0e-550f-9400-66e13306635d",
-          "56fba457-ab98-5b96-963e-ec284458c17f",
           "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
-          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
           "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
-          "3401d95d-2191-5929-ac78-4de51d71a6be",
           "58d2f963-4fb9-550d-a832-f5ac60808900",
           "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
           "f042385e-f772-42db-9c96-f21a792ac5ea"
@@ -69422,6 +69510,131 @@
       },
       "phase": "E",
       "type": "atomic"
+    },
+    {
+      "id": "2c30949d-0381-5d32-81cf-c6eac7711399",
+      "title": "Kreisbewegung, periodische Modellierung und trigonometrische Ableitungen verknüpfen",
+      "description": "Die lernende Person kann in einer E-Phasen-Klausuraufgabe Sinus und Kosinus aus der Kreisbewegung erklären, ihre Ableitungsregeln im Bogenmaß herleiten, ein periodisches Modell aus Messdaten entwickeln und prüfen sowie das Modell mithilfe der Ableitung untersuchen.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "phase:E",
+        "ExamTask"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/e/trigonometric-understanding-model-derivative/draft_v1.md#aufgabe",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E.PRACTICE.TRIGONOMETRIC_UNDERSTANDING_MODEL_DERIVATIVE"
+      },
+      "shortKey": "canonical_math_e_practice_trigonometric_understanding_model_derivative",
+      "contains": [],
+      "requires": [
+        "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+        "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+        "3401d95d-2191-5929-ac78-4de51d71a6be",
+        "58d2f963-4fb9-550d-a832-f5ac60808900",
+        "56fba457-ab98-5b96-963e-ec284458c17f"
+      ],
+      "examples": [],
+      "resourceLinks": [],
+      "phase": "E",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "released after focused simulated internal review on 2026-08-28 for the Batch-016 trigonometric understanding, modeling and derivative route",
+        "coveredGoalIds": [
+          "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "3401d95d-2191-5929-ac78-4de51d71a6be",
+          "58d2f963-4fb9-550d-a832-f5ac60808900",
+          "56fba457-ab98-5b96-963e-ec284458c17f"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/e/trigonometric-understanding-model-derivative/draft_v1.md",
+        "taskContent": "Ein Punkt bewegt sich mit konstanter Winkelgeschwindigkeit auf einem Kreis. Für die Modellierung wird der Kreis auf den Einheitskreis normiert. Außerdem wurden bei einer vollständigen Umdrehung eines Riesenrads folgende Höhen einer Gondel gemessen:\n\n| $t$ in s | 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 |\n|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| $h$ in m | 2,0 | 4,9 | 12,0 | 19,1 | 22,0 | 19,1 | 12,0 | 4,9 | 2,0 |\n\nEine weitere, zunächst nicht für die Modellbildung verwendete Messung ergab $h(12)=15{,}1\\,\\mathrm m$.\n\n1. Erläutern Sie am Einheitskreis, warum bei einem Winkel $\\varphi$ die $x$-Koordinate durch $\\cos(\\varphi)$ und die $y$-Koordinate durch $\\sin(\\varphi)$ beschrieben wird. Skizzieren Sie anschließend die Graphen von Sinus und Kosinus für $0\\le \\varphi\\le 2\\pi$ und kennzeichnen Sie jeweils Amplitude und Nullstellen. (5 BE)\n2. Leiten Sie im Bogenmaß mit den Additionstheoremen und den Grenzwerten\n   $$\n   \\lim_{u\\to0}\\frac{\\sin u}{u}=1,\\qquad\n   \\lim_{u\\to0}\\frac{\\cos u-1}{u}=0\n   $$\n   die Regeln $(\\sin x)'=\\cos x$ und $(\\cos x)'=-\\sin x$ her. Begründen Sie insbesondere das Minuszeichen und erläutern Sie, weshalb das Bogenmaß für die erste Grenzwertgleichung entscheidend ist. (6 BE)\n3. Bestimmen Sie aus den Messdaten ein geeignetes Sinus- oder Kosinusmodell für $h(t)$. Deuten Sie die Modellparameter im Kontext, begründen Sie mindestens zwei Annahmen des Modells, prüfen Sie es an der zusätzlichen Messung bei $t=12$ und nennen Sie eine konkrete Grenze seiner Gültigkeit. (7 BE)\n4. Bestimmen Sie für Ihr Modell $h'(t)$. Ermitteln Sie damit innerhalb einer Umdrehung die Monotonieintervalle und die Extremstellen, geben Sie die zugehörigen Höhen an und prüfen Sie die Ergebnisse am Verlauf der Messdaten. (6 BE)",
+        "solutionContent": "1. Ein Punkt des Einheitskreises hat beim Winkel $\\varphi$ die Koordinaten\n$$\nP(\\varphi)=(\\cos\\varphi,\\sin\\varphi).\n$$\nDer Kosinus ist daher die waagerechte, der Sinus die senkrechte Projektion des Radiusvektors. Beide Funktionen haben Amplitude $1$ und Periode $2\\pi$. Im Intervall $[0,2\\pi]$ hat der Sinus die Nullstellen $0$, $\\pi$ und $2\\pi$, der Kosinus die Nullstellen $\\frac{\\pi}{2}$ und $\\frac{3\\pi}{2}$. Die Skizzen müssen außerdem die korrekte Phasenlage zeigen. (2 BE für den Kreis-Koordinaten-Zusammenhang, 2 BE für beide korrekten Skizzen, 1 BE für Amplituden und Nullstellen)\n\n2. Mit $\\sin(x+u)=\\sin x\\cos u+\\cos x\\sin u$ erhält man\n$$\n\\frac{\\sin(x+u)-\\sin x}{u}\n=\\sin x\\frac{\\cos u-1}{u}+\\cos x\\frac{\\sin u}{u}\n\\longrightarrow \\cos x.\n$$\nMit $\\cos(x+u)=\\cos x\\cos u-\\sin x\\sin u$ folgt\n$$\n\\frac{\\cos(x+u)-\\cos x}{u}\n=\\cos x\\frac{\\cos u-1}{u}-\\sin x\\frac{\\sin u}{u}\n\\longrightarrow-\\sin x.\n$$\nDas Minuszeichen stammt aus dem Term $-\\sin x\\sin u$ im Additionstheorem des Kosinus. Der Grenzwert $\\sin u/u=1$ gilt in dieser Form nur im Bogenmaß; bei Gradmaß entstünde der zusätzliche Faktor $\\pi/180$. (je 2 BE für die beiden Herleitungen, je 1 BE für Minuszeichen und Rolle des Bogenmaßes)\n\n3. Aus Minimum $2\\,\\mathrm m$ und Maximum $22\\,\\mathrm m$ folgen Mittellinie $12\\,\\mathrm m$ und Amplitude $10\\,\\mathrm m$. Eine Umdrehung dauert $40\\,\\mathrm s$, also ist\n$$\n\\omega=\\frac{2\\pi}{40}=\\frac{\\pi}{20}.\n$$\nDa die Gondel bei $t=0$ im Tiefpunkt startet, passt\n$$\nh(t)=12-10\\cos\\left(\\frac{\\pi}{20}t\\right).\n$$\nÄquivalente Sinusdarstellungen sind ebenfalls richtig. Die $12$ beschreibt die Höhe der Radachse, $10$ den Radius und $40\\,\\mathrm s$ die Umlaufdauer. Mögliche Modellannahmen sind eine annähernd konstante Winkelgeschwindigkeit, ein fester Radius und eine konstante Höhe der Radachse sowie ein stabiler Bewegungsablauf während der betrachteten Umdrehung. Für die Kontrollmessung gilt\n$$\nh(12)=12-10\\cos\\left(\\frac{3\\pi}{5}\\right)\\approx15{,}09\\,\\mathrm m,\n$$\nalso stimmt das Modell bis auf die Messrundung mit $15{,}1\\,\\mathrm m$ überein. Eine konkrete Grenze ist beispielsweise, dass Anfahr-, Brems- oder Geschwindigkeitsschwankungen und Messfehler nicht erfasst werden; außerhalb eines stabilen Umlaufs ist die Prognose daher nur eingeschränkt verlässlich. (3 BE für datenbasierte Parameter und Modellterm, 1 BE für die Kontextdeutung, 1 BE für mindestens zwei begründete Annahmen, 1 BE für die unabhängige Prüfung, 1 BE für eine konkrete Modellgrenze)\n\n4. Für\n$$\nh(t)=12-10\\cos\\left(\\frac{\\pi}{20}t\\right)\n$$\nist\n$$\nh'(t)=\\frac{\\pi}{2}\\sin\\left(\\frac{\\pi}{20}t\\right).\n$$\nAuf $0<t<20$ ist $h'(t)>0$, also steigt die Gondel; auf $20<t<40$ ist $h'(t)<0$, also fällt sie. Bei $t=20$ liegt das Maximum mit $h(20)=22\\,\\mathrm m$. Bei $t=0$ und $t=40$ liegen die periodisch aufeinanderfolgenden Minima mit $h=2\\,\\mathrm m$. Das stimmt mit den Messwerten überein. (2 BE für $h'$, 2 BE für Vorzeichen und Monotonie, 1 BE für Extremstellen und Höhen, 1 BE für den Datenabgleich)",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "e_trig_deep_1",
+              "points": 5,
+              "description": "Kreis-Koordinaten-Zusammenhang, Sinus- und Kosinusgraphen, Amplituden und Nullstellen korrekt erklärt beziehungsweise dargestellt"
+            },
+            {
+              "id": "e_trig_deep_2",
+              "points": 6,
+              "description": "Beide trigonometrischen Ableitungsregeln im Bogenmaß hergeleitet sowie Minuszeichen und Rolle des Bogenmaßes begründet"
+            },
+            {
+              "id": "e_trig_deep_3",
+              "points": 7,
+              "description": "Periodisches Modell aus Messdaten entwickelt, Parameter gedeutet, Annahmen begründet, unabhängig geprüft und eine Modellgrenze benannt"
+            },
+            {
+              "id": "e_trig_deep_4",
+              "points": 6,
+              "description": "Modell abgeleitet, Monotonie und Extremstellen untersucht und die Ergebnisse mit den Messdaten abgeglichen"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "78f5003e-9578-545c-b6b3-4b02f31ffcd4",
@@ -75140,8 +75353,8 @@
       "shortKey": "canonical_math_q2_interpret_solution_sets_of_linear_systems_geometrically",
       "title": "Lösungsmengen linearer Gleichungssysteme geometrisch deuten",
       "titleEn": "Geometrically interpret solution sets of linear systems",
-      "description": "Die lernende Person kann Lösungsmengen linearer Gleichungssysteme in analytisch-geometrischen Situationen geometrisch deuten, etwa als Schnittpunkt, Schnittgerade, Ebene, leere Menge oder unendlich viele Lösungen.",
-      "descriptionEn": "The learner can geometrically interpret solution sets of linear systems in analytic-geometry situations, for example as an intersection point, intersection line, plane, empty set, or infinitely many solutions.",
+      "description": "Die lernende Person kann die Lösungsmenge eines linearen Gleichungssystems in einer analytisch-geometrischen Situation im Raum als Schnittmenge der durch seine Gleichungen beschriebenen Punktmengen deuten und sie anhand von Konsistenz und Anzahl freier Variablen als leere Menge, Punkt, Gerade, Ebene oder ganzen Raum einordnen.",
+      "descriptionEn": "The learner can interpret the solution set of a linear system in a three-dimensional analytic-geometry situation as the intersection of the point sets described by its equations and classify it, based on consistency and the number of free variables, as the empty set, a point, a line, a plane, or all of space.",
       "requires": [
         "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6"
       ],
@@ -75199,7 +75412,7 @@
           "url": "/assets/goal-visualizations/mathematik/436532fe-cee6-5a13-a4be-05522435937b/436532fe-cee6-5a13-a4be-05522435937b.jpg",
           "provider": "Google Gemini / Nano Banana Pro",
           "description": "Visualisierung zum Lernziel: Lösungsmengen linearer Gleichungssysteme geometrisch deuten.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Lösungsmengen linearer Gleichungssysteme geometrisch deuten\". Die lernende Person kann Lösungsmengen linearer Gleichungssysteme in analytisch-geometrischen Situationen geometrisch deuten, etwa als Schnittpunkt, Schnittgerade, Ebene, leere Menge oder unendlich viele Lösungen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Lösungsmengen linearer Gleichungssysteme geometrisch deuten\". Die lernende Person kann die Lösungsmenge eines linearen Gleichungssystems in einer analytisch-geometrischen Situation im Raum als Schnittmenge der durch seine Gleichungen beschriebenen Punktmengen deuten und sie anhand von Konsistenz und Anzahl freier Variablen als leere Menge, Punkt, Gerade, Ebene oder ganzen Raum einordnen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -83322,6 +83535,97 @@
         "applicabilityOverrides": {
           "jurisdiction": [
             "DE-BW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "7285df88-39cf-59c5-86c3-166e84669abc",
+      "title": "Zusatzaufgabe S3: Volumenadditivität bei einem zusammengesetzten Quaderkörper",
+      "description": "Die lernende Person kann in einer freigegebenen Zusatzaufgabe das Volumen eines zusammengesetzten Quaderkörpers durch Ergänzen und durch eine lücken- und überlappungsfreie Zerlegung bestimmen, die Übereinstimmung begründen und das Ergebnis prüfen.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "phase:SekI",
+        "ExamTask"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-28/j6/j6-composite-volume-additivity/draft_v1.md",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J6.COMPOSITE_VOLUME_ADDITIVITY"
+      },
+      "shortKey": "canonical_math_sek1_practice_j6_volume_additivity_follow_up",
+      "contains": [],
+      "requires": [
+        "e01869db-891c-57a4-8660-789ec6875ec2"
+      ],
+      "phase": "J6",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "released after focused simulated internal review on 2026-08-28 for the Batch-012 composite-volume route",
+        "coveredGoalIds": [
+          "e01869db-891c-57a4-8660-789ec6875ec2"
+        ],
+        "coveredStrands": [
+          "L2"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-28/j6/j6-composite-volume-additivity/draft_v1.md",
+        "taskContent": "Ein quaderförmiger Ausstellungsblock ist 8 cm lang, 5 cm breit und 4 cm hoch. Aus einer Ecke wird über die gesamte Höhe ein Quader mit 3 cm Länge und 2 cm Breite herausgenommen.\n\n1. Bestimme das verbleibende Volumen durch Ergänzen zum ursprünglichen Quader und Subtrahieren des herausgenommenen Volumens. (2 BE)\n2. Zerlege den verbleibenden Körper stattdessen in zwei Quader, gib deren Maße an und berechne das Volumen erneut. (2 BE)\n3. Begründe, warum deine Zerlegung weder eine Lücke noch eine Überlappung enthält, und erkläre, weshalb beide Rechenwege dasselbe Ergebnis liefern müssen. Prüfe außerdem, ob dein Ergebnis zwischen 0 cm³ und dem Volumen des vollständigen Quaders liegt. (2 BE)",
+        "solutionContent": "Der vollständige Quader hat das Volumen 8 · 5 · 4 = 160 cm³. Der herausgenommene Quader hat das Volumen 3 · 2 · 4 = 24 cm³. Durch Ergänzen und Subtrahieren ergibt sich 160 cm³ − 24 cm³ = 136 cm³.\n\nEine mögliche lücken- und überlappungsfreie Zerlegung besteht aus einem Quader 5 cm × 5 cm × 4 cm und einem Quader 3 cm × 3 cm × 4 cm. Ihre Volumina sind 100 cm³ und 36 cm³, zusammen also ebenfalls 136 cm³.\n\nDie beiden Teilquader decken den Restkörper vollständig ab und haben keinen gemeinsamen Rauminhalt; ihre Berührungsfläche besitzt kein Volumen. Deshalb darf man die Teilvolumina addieren. Beide Strategien beschreiben denselben Körper und müssen nach der Additivität des Volumens übereinstimmen. Die Kontrolle 0 < 136 < 160 ist erfüllt.",
+        "scoring": {
+          "maxPoints": 6,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "j6_batch012_composite_volume_additivity",
+              "points": 6,
+              "description": "Volumenadditivität durch Ergänzen und Zerlegen nutzen, die Strategieinvarianz begründen und das Ergebnis prüfen."
+            }
           ]
         }
       }

@@ -1382,10 +1382,49 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "66256e22-44a3-5939-8862-821e29d6711d"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "bw-phys-seki-3-3-4-b01-a01-31408e45": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "bw-phys-seki-3-3-4-b02-a01-72ced8e1": [
+    "1593d95c-2aac-504c-8527-37cb61877da9",
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "bw-phys-seki-3-3-4-b03-a01-7266562e": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "bw-phys-seki-3-3-4-b06-a01-5219be73": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ]
+}
+
+const batch017RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "bw-phys-seki-3-3-4-b03-a01-7266562e": [
+    "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717"
+  ]
+}
+
+// Batch 019 magnetic-model description adjudication: a source that only
+// covers the long-solenoid side is evidence for part, not all, of the stable
+// conductor/solenoid model-selection goal.
+const batch019PartialRationalesBySourceGoalId = new Map<string, string>([
+  [
+    'bw-phys-sekii-3-6-2-2-b05-a01-7735e4a0',
+    'Das amtliche BW-Source-Ziel behandelt nur das Magnetfeld der schlanken Spule; die begründete Modellwahl zwischen langer Spule und geradem Leiter wird daher nur teilweise getragen.',
+  ],
+])
+
+const isBatch019PartialMapping = (sourceGoalId: string, canonicalGoalId: string): boolean =>
+  canonicalGoalId === '106417ed-80db-5490-a1ee-bb4160d3f2b4'
+  && batch019PartialRationalesBySourceGoalId.has(sourceGoalId)
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -1399,26 +1438,29 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
   const decisions = parsed.sourceGoals.map((sourceGoal) => {
     const sourceKey = `${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`
     const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, targetLookup[sourceKey] ?? [])
+    const batch019Rationale = batch019PartialRationalesBySourceGoalId.get(sourceGoal.id)
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,
       sourceSpan: sourceGoal.sourceSpan,
       decision: canonicalGoalIds.length > 0 ? 'mapped' : 'needsCanonicalGoal',
       canonicalGoalIds,
-      rationale: canonicalGoalIds.length > 1
+      rationale: batch019Rationale ?? (canonicalGoalIds.length > 1
         ? 'Das amtliche BW-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.'
         : canonicalGoalIds.length === 1
           ? 'Das amtliche BW-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'
-          : 'Für dieses amtliche BW-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.',
-      reviewedAt: '2026-05-10',
-      reviewer: 'codex',
+          : 'Für dieses amtliche BW-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.'),
+      reviewedAt: batch019Rationale ? '2026-08-28' : '2026-05-10',
+      reviewer: batch019Rationale ? 'codex-physics-batch-019-mapping-adjudication' : 'codex',
     }
   })
   const mappings = decisions.flatMap((decision) =>
     decision.canonicalGoalIds.map((canonicalGoalId) => ({
       legacyGoalId: decision.sourceGoalId,
       canonicalGoalId,
-      matchType: decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
+      matchType: isBatch019PartialMapping(decision.sourceGoalId, canonicalGoalId)
+        ? 'partial'
+        : decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
       reviewDecisionId: decision.sourceGoalId,
     })))
   const reviewedSourceGoalIds = new Set(decisions.map((decision) => decision.sourceGoalId))

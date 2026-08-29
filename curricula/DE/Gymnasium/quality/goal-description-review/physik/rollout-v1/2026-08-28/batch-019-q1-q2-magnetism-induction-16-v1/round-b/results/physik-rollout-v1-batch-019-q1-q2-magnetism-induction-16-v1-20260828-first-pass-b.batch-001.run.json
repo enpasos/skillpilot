@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+  "campaignId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-b",
+  "roundId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f2b2ec08911e42a151d521cd85e0a34e9eb34e213f1eb38d10df7ec25240e56e",
+  "bundleFingerprint": "sha256:a3c1842958e8e019d61716d56b03b091cf9b901a8d8e066c9de8f93777f47af1",
+  "bookDigest": "sha256:06eefd11230cb6189f05fbfbb52273ceffe1132b3709951025f8b27f0b925b69",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:5c8faededf5c1150cf4ef445cda47e6626d6fb030b810162d16b325c31d492fa",
+  "independenceGroupId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+    "c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "3b866aea-3e4d-5f23-91de-759148382710",
+    "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+    "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+    "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+    "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+    "1a037489-3c95-540b-8cae-0acd360358ee",
+    "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+    "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+    "37f28bc4-def2-57cf-a06b-191dfd228205",
+    "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "a1389d4e-dc97-5557-babe-a31a2bd57217",
+    "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+    "ffbbf243-c2eb-4330-b050-837de994c130",
+    "d18d4190-ddc1-5181-b1b6-e79947b737c2"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f2b2ec08911e42a151d521cd85e0a34e9eb34e213f1eb38d10df7ec25240e56e"
+    }
+  ],
+  "startedAt": "2026-08-28T12:10:00Z",
+  "completedAt": "2026-08-28T12:52:20Z",
+  "status": "completed",
+  "outputDigest": "sha256:493e11d6d2cb26afeab11077889d2b0900903d1a7bac07adf4f5aa6e8f79a7c2",
+  "toolchainVersion": "codex-goal-description-review-v2"
+}

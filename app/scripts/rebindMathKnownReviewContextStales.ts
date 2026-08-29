@@ -46,8 +46,19 @@ import type { GoalEvidenceAiRunManifest } from './validateGoalEvidenceFindings'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const args = process.argv.slice(2)
-if (args.some((arg) => arg !== '--write') || args.filter((arg) => arg === '--write').length > 1) {
-  throw new Error('Usage: tsx app/scripts/rebindMathKnownReviewContextStales.ts [--write]')
+let selectedConfigPath: string | null = null
+for (let index = 0; index < args.length; index += 1) {
+  const arg = args[index]
+  if (arg === '--write') continue
+  if (arg === '--config' && args[index + 1] && selectedConfigPath === null) {
+    selectedConfigPath = args[index + 1]
+    index += 1
+    continue
+  }
+  throw new Error('Usage: tsx app/scripts/rebindMathKnownReviewContextStales.ts [--write] [--config <known-config-path>]')
+}
+if (args.filter((arg) => arg === '--write').length > 1) {
+  throw new Error('Duplicate --write')
 }
 const writeMode = args.includes('--write')
 
@@ -59,6 +70,26 @@ const batches = [
   {
     configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3.config.json',
     outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3',
+  },
+  {
+    configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/calibration-v2/2026-08-26/final-20-v6.config.json',
+    outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/calibration-v2/2026-08-26/final-20-v6',
+  },
+  {
+    configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-001-current-v8-checkpoint-follow-up-8.config.json',
+    outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-001-current-v8-checkpoint-follow-up-8',
+  },
+  {
+    configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-001-current-v8-checkpoint-main-20.config.json',
+    outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-001-current-v8-checkpoint-main-20',
+  },
+  {
+    configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-012-global-electricity-final-9-v1.config.json',
+    outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-012-global-electricity-final-9-v1',
+  },
+  {
+    configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-013-global-electricity-residual-2-v1.config.json',
+    outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-013-global-electricity-residual-2-v1',
   },
 ] as const
 
@@ -461,4 +492,8 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
   }
 }
 
-for (const batch of batches) await rematerializeBatch(batch)
+const selectedBatches = selectedConfigPath === null
+  ? batches
+  : batches.filter(({ configPath }) => configPath === selectedConfigPath)
+if (selectedBatches.length === 0) throw new Error(`Unknown context-rebind config: ${selectedConfigPath}`)
+for (const batch of selectedBatches) await rematerializeBatch(batch)

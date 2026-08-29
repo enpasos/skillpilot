@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `b39ae8fb-4358-5866-8adf-3d5365368eeb`
 - Titel: Hall-Effekt anwenden
-- Beschreibung: Die lernende Person kann Hall-Spannungen bestimmen und Einsatzgebiete nennen.
+- Beschreibung: Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Hall-Effekt anwenden
-Beschreibung: Die lernende Person kann Hall-Spannungen bestimmen und Einsatzgebiete nennen.
+Beschreibung: Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.
 
 Zusatzanweisung:
 Pflichtinhalt:

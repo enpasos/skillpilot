@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z",
+  "campaignId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-b",
+  "roundId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b",
+  "batchId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:a6fdae8f759e3ccd34e54ea469da4e2221d4e5fd7a48b0b5f4113898498f88e3",
+  "bundleFingerprint": "sha256:7cb4cbdbeaa001638f725579d114c23c69f2df5c6dbee793617fc222733f4814",
+  "bookDigest": "sha256:12015eefdda57e9117484dee9cfdbf664282d7b23efbfa1760c32bb657705346",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:693f68c7a8e7fa2f5377e8ba2d1ea3fce444d0fb2529e31abef66745810fdcb7",
+  "independenceGroupId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+    "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+    "53b47494-ec60-4128-840d-2a4c4bab6d32",
+    "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+    "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+    "6a4716bd-8038-46bb-b647-0db4a254fee7",
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+    "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a6fdae8f759e3ccd34e54ea469da4e2221d4e5fd7a48b0b5f4113898498f88e3"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-28T09:29:00.000Z",
+  "completedAt": "2026-08-28T09:34:01.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:b6839a90ae7692b77a68482ab7ceb42ee437a552136e266a56bcbc0a01eb4910",
+  "toolchainVersion": "goal-description-review-v2"
+}

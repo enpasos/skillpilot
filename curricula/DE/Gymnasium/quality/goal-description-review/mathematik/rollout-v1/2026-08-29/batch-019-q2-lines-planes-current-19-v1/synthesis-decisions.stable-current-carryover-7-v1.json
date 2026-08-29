@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b019-stable7-synthesis-openai-codex-20260829",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B019 stable-seven bounded synthesis candidate",
+  "synthesizedAt": "2026-08-29T02:12:08.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829",
+    "batchManifestDigest": "sha256:5a28c4f03b46945522b9e4a82ba293bf073daafe4c5e738888f66bebb5bb5ddc",
+    "configDigest": "sha256:ed260ede97a458dddb272fc514965a9616facd392c760f9265272ffc6646474a",
+    "bundleFingerprint": "sha256:d68a979615582d99024680fb4288514d095c75c992a309001d2a41439121c39b",
+    "bookDigest": "sha256:a8eeef48f2a96fe17be5c6a381773127de12f61116e2037b445e7feaf2c62eae",
+    "reviewInputFingerprint": "sha256:925e834dd9c46e9691897908aba7e5a2270b50489c854de80ce494de14f13adc",
+    "dualSummaryDigest": "sha256:f4b4bfad37a85df8afe80af677030963b458a4a60e73398785df2bcd46958f9c",
+    "canonicalLandscapeDigest": "sha256:b0b9e06c17430e98748d69533091ff14cfb0fa7d1946a21d8ca698f61cb1af7c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-a",
+      "campaignDigest": "sha256:fdef7d7517b798e28d0fe2bb6d7b69aa183525f8888ee996396aee8b39ea4086",
+      "roundId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-independent-a",
+      "reviewInputFingerprint": "sha256:925e834dd9c46e9691897908aba7e5a2270b50489c854de80ce494de14f13adc",
+      "batchId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1767dcb54eb89e0114e119b67e6bf41bd37167c7ef196357df935a64c1e0da7b",
+      "runId": "mathematik-rollout-v1-b019-q2-lines-planes-20260829-openai-codex-gpt5-a",
+      "runManifestDigest": "sha256:28b57364174bd67575f1435061e1b06847d5826ce85132efc78d61427da15193",
+      "resultsDigest": "sha256:7b45073fa8b1b7e3d92402fb9b5fe7403762911372b0b75bc95a0cb32b814bdf"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-b",
+      "campaignDigest": "sha256:8d4ed697092b8251fd6a6b374dfed606e89e541965f88f4b25455cdd83bed95b",
+      "roundId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-independent-b",
+      "reviewInputFingerprint": "sha256:925e834dd9c46e9691897908aba7e5a2270b50489c854de80ce494de14f13adc",
+      "batchId": "mathematik-rollout-v1-batch-019-q2-lines-planes-current-19-v1-20260829-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0f63367285450183609818c368be62cc0e4366f97966220616b50913e174c372",
+      "runId": "mathematik-b019-q2-round-b-blind-codex-gpt5-20260829t020234z",
+      "runManifestDigest": "sha256:bf79c8ddb08ec9008d1e085a44e2267f13e2fe5e879c1a6c382c242e19766469",
+      "resultsDigest": "sha256:44ee9f7cc550c94432e8cd32c488eb7b30f548c70df648bcf0a8a26788692014"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-001",
+      "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:82c01068fe126f022f560924f07378b95c6b3382a97969ab2a01cd4faef464b9",
+      "pageFingerprint": "sha256:b576f7f3e7682aec9b3b581baeb967c2c8b4556b6b6a6e6130a71a8be87f11cd",
+      "goalReviewContextFingerprint": "sha256:8041ff75e5b5a813b2cb86c5f76e623906cbfc20675e704bfbe90eb23e2a1bf3",
+      "finalText": {
+        "titleDe": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+        "titleEn": "Apply normal form and Hesse normal form of a plane (advanced course)",
+        "descriptionDe": "Die lernende Person kann die Normalenform einer Ebene, einschließlich Hessescher Normalenform, aufstellen, interpretieren und für Abstandsberechnungen nutzen.",
+        "descriptionEn": "The learner can set up, interpret, and use the normal form of a plane, including Hesse normal form, for distance calculations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "recordDigest": "sha256:7ffdb6aa4478b629873b9826c65ac6410af0a744817fa8adc776de1ea815436b"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-008",
+          "recordDigest": "sha256:ab74b0e48ba6609841749907cd3bae332b823b9f44437f74ba60b668931fdebe"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde B ist bei Normierung, Vorzeichen, Betrag und Invarianz am vollständigsten.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current advanced-course competency. Round B is more complete on normalization, sign, absolute value, and invariance."
+    },
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-002",
+      "goalId": "d76766a5-ce07-5c7a-987b-157f2998b05e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e318dc2e7e17e1602169e66b6bd96f88eb3498463277412e5a19beef1cb76c62",
+      "pageFingerprint": "sha256:208378d48bb49e5e913b4fc17c9e201d29569cf6e757868e25c0fe17302998d2",
+      "goalReviewContextFingerprint": "sha256:5aa6b0856ea2212ddd3e0ce6ef5fa08d3c125e4235fdc271f831d6ae0c98e581",
+      "finalText": {
+        "titleDe": "Zwischen Ebenenformen umformen",
+        "titleEn": "Convert between plane equation forms",
+        "descriptionDe": "Die lernende Person kann Parameterform, Punkt-Normalen-Form und Koordinatenform einer Ebene ineinander überführen.",
+        "descriptionEn": "The learner can convert between parametric form, point-normal form, and coordinate form of a plane."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-d76766a5-ce07-5c7a-987b-157f2998b05e",
+          "recordDigest": "sha256:da17101711526089f26af26fbe63ba9d5dec0ed7ce79342b71bbb4773bfdff5a"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-009",
+          "recordDigest": "sha256:de24c193f19048f68ef8b85b57a7c8117d7eb198cf9251929bd5c2dd5b9ad213"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde B trennt den vollständigen Wechsel zwischen drei Ebenenformen besonders klar vom engeren Zweiformen-Ziel und prüft die Invarianz der Punktmenge.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. The source explicitly requires converting plane representations. Round B best distinguishes the complete three-form conversion from the focused two-form goal and verifies point-set invariance."
+    },
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-003",
+      "goalId": "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2c43240754468c5f65db5d3ea5c426a15686d7169d43e9bdf156744e5c94b669",
+      "pageFingerprint": "sha256:b1a916d95b5ba80e312fdd180d39759fd9f214fde1a3da990dc8af9f2f1157a4",
+      "goalReviewContextFingerprint": "sha256:76fb3d663103f613c3188bf7fe846721984203b3c46d7a1e6b8e70710d296dbd",
+      "finalText": {
+        "titleDe": "Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen",
+        "titleEn": "Systematically solve linear systems in analytic geometry",
+        "descriptionDe": "Die lernende Person kann lineare Gleichungssysteme, auch über- und unterbestimmte, aus konkreten Problemstellungen der Analytischen Geometrie systematisch aufstellen und lösen.",
+        "descriptionEn": "The learner can systematically set up and solve linear systems, including overdetermined and underdetermined systems, from concrete analytic-geometry problems."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+          "recordDigest": "sha256:c47d8ac7650a3c738c02e6c56626b90d5fe3d3959baa58088743e0e865beb440"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-014",
+          "recordDigest": "sha256:c5baa14301f3f98d59b0a68cc9e3e1bf87f0d0b7243986b6897a7758bedcb0db"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde B unterscheidet Rang, Konsistenz und freie Variablen besonders klar von einer bloßen Zählung der Gleichungen.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current modeling-and-solving competency. Round B better distinguishes rank, consistency, and free variables from mere equation counting."
+    },
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-004",
+      "goalId": "7aa1abee-d6ec-528a-b110-f2260b0cda51",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3744ae4b1947a100d24783595267405ee749c25ff8168e312d6d3acca75585a2",
+      "pageFingerprint": "sha256:79ca94d69d9b48a3f8454a645d14845c602af096e3b95cb372f12f73f806b614",
+      "goalReviewContextFingerprint": "sha256:b2e24a9cb23d0a1150fcf73c61ca72b554a9f89359ce5d28437c81169e37e31c",
+      "finalText": {
+        "titleDe": "Punktprobe bei Geraden und Strecken in Parameterform durchführen",
+        "titleEn": "Check whether a point lies on a parametric line or segment",
+        "descriptionDe": "Die lernende Person kann durch Einsetzen und Lösen der Parameterbedingungen prüfen, ob ein Punkt auf einer Geraden oder auf einer begrenzten Strecke im Raum liegt.",
+        "descriptionEn": "The learner can check whether a point lies on a line or bounded segment in space by substituting and solving the parameter conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-7aa1abee-d6ec-528a-b110-f2260b0cda51",
+          "recordDigest": "sha256:ec5b90f8ae5204ffb5a1d33daaa7b193966aef4a99902836b4537cc2ca6cd3fa"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-016",
+          "recordDigest": "sha256:8b23fdd72d96812339deaa71ec5825a70ac857c1056e71507f0fb96842513c74"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde B macht den Unterschied zwischen Trägergerade und begrenzter Strecke am deutlichsten.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current point-test competence. Round B makes the supporting-line versus bounded-segment distinction most explicit."
+    },
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-005",
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a2a77ed48c23c58a8509eac0f6c069b48ab09e9a5da411a7802217bed2229dc1",
+      "pageFingerprint": "sha256:65670072cb311ce3757977ba1743ae756603aae45e091ec2291a26bbe93e64eb",
+      "goalReviewContextFingerprint": "sha256:96dcf14d8a8ef1b911996a6a72c2dc1a313a594b3bb28086456570a1825c4bf3",
+      "finalText": {
+        "titleDe": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+        "titleEn": "Determine intersections of a line with coordinate planes",
+        "descriptionDe": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+        "descriptionEn": "The learner can determine intersections of a line with coordinate planes, interpret them as trace points, and check them algebraically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "recordDigest": "sha256:b95147332393f66e6dcba654abfe193b9ce8ec6fb54730db7dc4dc29f75323ae"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-017",
+          "recordDigest": "sha256:63e46e8df51384a985cc16dd2ec42bc5daab031310fda25b5dce48170de76d73"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde A bewahrt die notwendigen Sonderfälle einer leeren Schnittmenge und einer vollständig enthaltenen Geraden ohne Erweiterung des kanonischen Ziels.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current trace-point competence. Round A preserves the intrinsic empty and contained-line cases without expanding the canonical wording."
+    },
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-006",
+      "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:80e688f9194e6011c3483508be1f723da4c3ac0c003276a8b16ebc05a85dcd46",
+      "pageFingerprint": "sha256:a9b014605114f1bc320c8d958a4276620bcd6e09164c77c662607389c13c0385",
+      "goalReviewContextFingerprint": "sha256:c76db45d7b5da4af40f409b763724b58b8beb053283cca5e20e4a49848bfa97f",
+      "finalText": {
+        "titleDe": "Geradenscharen untersuchen (LK)",
+        "titleEn": "Analyze families of lines (advanced course)",
+        "descriptionDe": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Geradenkonfigurationen geometrisch deuten.",
+        "descriptionEn": "The learner can analyze one-parameter families of lines, determine parameter values for specified positional or intersection conditions, and interpret the corresponding line configurations geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "recordDigest": "sha256:8d824c4c280be8afca4da90756a21bf13df1af57ca478f4d629123d28c49eadf"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-018",
+          "recordDigest": "sha256:0ea574f9400031a34162892c243166537fe1313a297e7ded3831990ecfc7bd48"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde A trennt Scharparameter und Laufparameter zweisprachig am klarsten.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current advanced-course competence. Round A has the cleaner bilingual distinction between family and running parameter."
+    },
+    {
+      "decisionId": "mathematik-b019-stable7-synthesis-openai-codex-20260829-decision-007",
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e3ffcc8497740a1e7f8ae74176819c9727a898cd0104407d31f48f4837a7921c",
+      "pageFingerprint": "sha256:919e136005507ba3e4b2891a37a3474cc4a2611c1522fb944846dce6d7979301",
+      "goalReviewContextFingerprint": "sha256:b4c34887a879fd3bb8a18e9692e0668f3abe0588e9193a8567a495c2aea19830",
+      "finalText": {
+        "titleDe": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+        "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+        "descriptionDe": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+        "descriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b019-a-fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "recordDigest": "sha256:159eae23f02d1d3ae0de63f5757f51fafad1bf2274d5ac4ba38184e4c845ddb1"
+        },
+        "second": {
+          "recordId": "codex-math-b019-q2-blind-b-20260829.record-019",
+          "recordDigest": "sha256:a7b81aa03a2512a3146a320784b508f15a910bb739cacb23de99490cbeb75190"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten zweisprachigen Wortlaut mit KEEP. Der aktuelle kanonische Kontext ist exakt an den geprüften Nach-B019-Stand gebunden. Runde B trennt Scharparameter, Raumvariablen, Entartung und bloße Darstellungsskalierung am vollständigsten.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording with KEEP. The current canonical context is exactly bound to the reviewed post-B019 state. Both reviews support the current advanced-course competence. Round B most clearly distinguishes family parameters, spatial variables, degeneracy, and representational scaling."
+    }
+  ],
+  "manifestFingerprint": "sha256:20fad5dc93ce72412e7920ef8c24a56b9a78c1fd10149de1cd18fb509b1da89d"
+}

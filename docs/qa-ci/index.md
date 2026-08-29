@@ -106,8 +106,12 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-29](math-physics-deep-understanding-rollout-checkpoint-2026-08-29.md)
+  Current commit/deploy checkpoint with strict progress, B019/B020 bindings, the corrected electromagnetic-wave image, exact GoalBook hashes, and a mandatory process review before continuation.
+- [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-28](math-physics-deep-understanding-rollout-checkpoint-2026-08-28.md)
+  Historical checkpoint before the final B019/B020 consolidation and electromagnetic-wave image correction.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-27](math-physics-deep-understanding-rollout-checkpoint-2026-08-27.md)
-  Current commit/deploy checkpoint with strict progress, Nano Banana Pro audit, exact book bindings, staging handoff, and resumable continuation boundary.
+  Earlier checkpoint with strict progress, Nano Banana Pro audit, exact book bindings, staging handoff, and resumable continuation boundary.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-26](math-physics-deep-understanding-rollout-checkpoint-2026-08-26.md)
   Deployable, validated rollout checkpoint with strict subject progress and resumable continuation boundary.
 - [Mathematik/Physik Deep-Understanding Review-Pause, 2026-08-27](math-physics-deep-understanding-review-pause-2026-08-27.md)

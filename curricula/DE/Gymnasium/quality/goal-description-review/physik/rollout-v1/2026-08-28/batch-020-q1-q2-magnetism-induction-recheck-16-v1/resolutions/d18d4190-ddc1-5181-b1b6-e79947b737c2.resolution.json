@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-resolution-d18d4190-ddc1-5181-b1b6-e79947b737c2",
+  "goal": {
+    "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29",
+    "pageFingerprint": "sha256:c99c95aae5f25c7c62914478c3416f8181db44c0d1f75abeb317ce1bf26339aa",
+    "goalReviewContextFingerprint": "sha256:6649bf2bf2bbe5ca9105655fe3473796e9d8762b386d1008b1edd496a36fb2b5",
+    "finalText": {
+      "titleDe": "Induktionsgesetz in Ableitungsform anwenden",
+      "titleEn": "Apply the Time-Derivative Form of the Law of Induction",
+      "descriptionDe": "Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.",
+      "descriptionEn": "When magnetic flux is a differentiable function of time, the learner can determine the instantaneous induced voltage of a coil with N equivalent turns using U_ind(t) = −N · dΦ(t)/dt and physically interpret the voltage’s time dependence."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:6649bf2bf2bbe5ca9105655fe3473796e9d8762b386d1008b1edd496a36fb2b5",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167",
+      "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-16",
+      "recordDigest": "sha256:4f90c15228882bd91b5bf19fe069d634e49fb1222249ade4a851ef4cd9b44708"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "goalReviewContextFingerprint": "sha256:6649bf2bf2bbe5ca9105655fe3473796e9d8762b386d1008b1edd496a36fb2b5",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150",
+      "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r016",
+      "recordDigest": "sha256:80fe7f22e50ea02c474ca22a40f0b620d2b38d7133ebe484a2c37f6564299298"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+    "manifestDigest": "sha256:f9ee42a12924c8cdbe09d8edf18b3e54bc426e22d2ac1c3944ce5c7cdb9af45b",
+    "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2",
+    "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-016"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-016",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+    "synthesizedAt": "2026-08-28T14:07:36.000Z",
+    "rationaleDe": "Bestimmung und physikalische Deutung des Spannungsverlaufs sind gekoppelte Aspekte derselben Ableitungsform; beide Reviews bestätigen `keep`. Die erste Runde bindet Steigung, Nulldurchgänge, Vorzeichen und Differenzierbarkeitsgrenze ausführlicher und wird als Evidence gewählt; die zweite bleibt Dissent.",
+    "rationaleEn": "Determining and physically interpreting the voltage curve are connected aspects of the same derivative form; both reviews confirm keep. The first round binds slope, zero crossings, sign, and the differentiability boundary more fully and is selected as evidence; the second remains dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Für differenzierbaren Fluss ist die momentane Induktionsspannung das negative N-Fache seiner momentanen Änderungsrate. Betrag, Vorzeichen und zeitlicher Verlauf von U_ind entsprechen daher Steilheit, Richtung und zeitlicher Struktur des Φ(t)-Graphen bei konsistenter Orientierung; ein konstanter Fluss ergibt null Spannung.",
+      "essentialUnderstandingEn": "For differentiable flux, the instantaneous induced voltage is minus N times its instantaneous rate of change. The magnitude, sign, and time dependence of U_ind therefore correspond to the slope, direction, and temporal structure of the Φ(t) graph under a consistent orientation; constant flux gives zero voltage.",
+      "observablePerformanceDe": "Die lernende Person bestimmt aus einer Funktion oder einem glatten Φ(t)-Graphen dΦ/dt und U_ind(t) mit Einheit und Vorzeichen, skizziert den zugehörigen Spannungsverlauf und erklärt Maxima, Nulldurchgänge und Vorzeichenwechsel anhand der Flusssteigung statt nur formal abzuleiten.",
+      "observablePerformanceEn": "From a function or smooth Φ(t) graph, the learner determines dΦ/dt and U_ind(t) with unit and sign, sketches the corresponding voltage curve, and explains maxima, zero crossings, and sign changes in terms of flux slope rather than merely differentiating formally.",
+      "transferExpectationDe": "Für einen neuen differenzierbaren Flussverlauf, etwa mit geänderter Frequenz, Phase oder nichtsinusförmiger glatter Form, sagt die lernende Person den Spannungsverlauf qualitativ voraus, berechnet ihn und grenzt Stellen ohne definierte Ableitung von der Modellvoraussetzung ab.",
+      "transferExpectationEn": "For a new differentiable flux function, for example with changed frequency, phase, or a smooth nonsinusoidal form, the learner qualitatively predicts the voltage curve, calculates it, and distinguishes points without a defined derivative from the model assumption."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ac6a4212d4c32fb8017f69777683abdab38ffb0f16f6135fd8e9c1f48db64e72",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7a0a32742afb96c3dca49ac6beddd427131a8eb483cf10167f571416f950df9b"
+}

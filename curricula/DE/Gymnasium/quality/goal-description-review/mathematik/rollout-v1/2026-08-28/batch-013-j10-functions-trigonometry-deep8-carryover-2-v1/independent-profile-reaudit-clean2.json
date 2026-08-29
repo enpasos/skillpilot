@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-independent-positive-understanding-evidence-v2-re-audit",
+  "auditId": "canonical-math-j10-keep2-corrected-clean2-independent-re-audit-v1",
+  "auditedAt": "2026-08-28",
+  "scope": {
+    "candidatePath": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/corrected-clean2.candidates.json",
+    "goalIds": [
+      "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "302a857d-ad71-4bdf-81f3-851c95aeefe1"
+    ],
+    "sourceBlockingCorrectionCount": 7,
+    "readOnlyRepositoryAudit": true,
+    "repositoryFilesChanged": false
+  },
+  "inputArtifacts": {
+    "correctedCandidates": "sha256:79f984d81959bedde11e477f981a560a4b9e30e947aad72c164acf86f94bf858",
+    "correctedValidationReceipt": "sha256:84290ffcc3dfdf4891b0af6c9528e6c410b3731a9a94351ad8ef8e532cb83479",
+    "correctedMaterializer": "sha256:b3b2d76e0d850402a7a268076928624698169a4a288756f2b92aa1d3a8972604",
+    "correctedValidator": "sha256:c60ec2e83e2883e8deae67e47922c0343af2087064bcc90a4159c15bd83a6915",
+    "sourceIndependentAudit": "sha256:bbd84129e7f78f67eba624a05211c52fe17f00e8cbe6b1398053541ae20bdde4",
+    "canonicalLandscape": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+    "semanticKinds": "sha256:4bbb39a5846692a190678772eefd9fe08ca5e4f2e8dfeeaa44201da9e5956dc0",
+    "roundAContextualInput": "sha256:64a38ae01b927dc594dc31b8f3027df19a19d04b4f54966a78e7aed503c9f6dc",
+    "roundBContextualInput": "sha256:64a38ae01b927dc594dc31b8f3027df19a19d04b4f54966a78e7aed503c9f6dc",
+    "profileCriteria": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "profileSchema": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+  },
+  "currentBindingVerification": {
+    "canonicalLandscapeUnchangedFromSourceAudit": true,
+    "byteIdenticalRoundAAndRoundBContextualInput": true,
+    "originalBlindReviewAndAdjudicationValidator": "PASS",
+    "goals": [
+      {
+        "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "titleDe": "Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben",
+        "titleEn": "Describe the graph shape of exponential functions of the form $b\\cdot a^x$ using $a$ and $b$",
+        "descriptionDe": "Die lernende Person kann für exponentielle Funktionen der Form $b\\cdot a^x$ den Verlauf des Graphen anhand der Parameter $a$ und $b$ beschreiben, insbesondere y-Achsenabschnitt, asymptotisches Verhalten und Monotonieverhalten begründen und passende Veranschaulichungen auch mit digitalen Werkzeugen nutzen.",
+        "descriptionEn": "The learner can describe the graph of exponential functions of the form $b\\cdot a^x$ using the parameters $a$ and $b$, justify the y-intercept, asymptotic behaviour, and monotonicity, and use suitable visualizations including digital tools.",
+        "requires": [
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "goalFingerprint": "sha256:a132b889da1543803a126a5ed255105b4a258fe18f2e4ef17230afbdfa4b0cd8",
+        "boundedPageFingerprint": "sha256:6556bcbf45736ed02be2e561db5c2a71d7159b8f23788087bc979f357575d81f",
+        "goalReviewContextFingerprint": "sha256:82d4cf775bdfb890763fa75d909c29839bbcfd13b6742308aebe7fb8e89df57d"
+      },
+      {
+        "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "titleDe": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen",
+        "titleEn": "Derive sine and cosine graphs from the unit circle and justify periodicity and their relationship",
+        "descriptionDe": "Die lernende Person kann mithilfe des Einheitskreises den Verlauf der Graphen von Sinus- und Kosinusfunktion ableiten, ihre Periodizität begründen und den Zusammenhang zwischen beiden Funktionen erklären.",
+        "descriptionEn": "The learner can use the unit circle to derive the graphs of the sine and cosine functions, justify their periodicity, and explain the relationship between the two functions.",
+        "requires": [
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "goalFingerprint": "sha256:c81aeb80b4027471ccc59bef7b52088affac39efbed6734a4f409937f0ad67be",
+        "boundedPageFingerprint": "sha256:cbfc2dcb83f7e48659c01f23949c35a219977c1920b2ceae76e2fb6ab6ecbeb8",
+        "goalReviewContextFingerprint": "sha256:161ea19cde701d12fd5abcf6219844fc5f3be14b21fe71bf9f84d3ab492464d6"
+      }
+    ]
+  },
+  "blockingCorrectionVerification": [
+    {
+      "id": "EXP-1",
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "status": "PASS",
+      "evidence": "Both languages now distinguish x-direction from side of the x-axis and state x to negative infinity for a>1 and x to positive infinity for 0<a<1."
+    },
+    {
+      "id": "EXP-2",
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "status": "PASS",
+      "evidence": "Both languages say that the function value approaches 0 in an x-direction; the incorrect German claim that y=0 is reached has been removed."
+    },
+    {
+      "id": "EXP-3",
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "status": "PASS",
+      "evidence": "The inverse case now states separately that h1 and h3 have b=-4 and that h2 is rejected because b=4; all subsequent monotonicity and limit claims refer to the correct candidate."
+    },
+    {
+      "id": "TRIG-1",
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "status": "PASS",
+      "evidence": "Both languages now treat cardinal angles as anchors and make the intervening graph depend on additional circle positions plus the continuous coordinate projection, not on finite points plus continuity alone."
+    },
+    {
+      "id": "TRIG-2",
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "status": "PASS",
+      "evidence": "The construction case includes four non-cardinal pi/4 positions, the moving-point projection, quadrant-wise coordinate behaviour, and the explicit sqrt(2)/2 versus 1/2 refutation of straight-line joining."
+    },
+    {
+      "id": "TRIG-3",
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "status": "PASS",
+      "evidence": "The second case now begins with a supplied sine graph, reconstructs circle points and the cosine graph through the general quarter-turn identity, states the visible left shift, and uses full-turn periodicity to continue to 3*pi."
+    },
+    {
+      "id": "TRIG-4",
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "status": "PASS",
+      "evidence": "The diagnosis case retains numerical counterexamples but now derives the corrected all-angle phase identity from P(theta+pi/2)=(-sin(theta),cos(theta)); it also gives the general half-turn and full-turn mappings."
+    }
+  ],
+  "independentMathematicalRecalculation": {
+    "exponential": {
+      "status": "PASS",
+      "generalChecks": [
+        "For a>0 and b!=0, f(0)=b, a^x is positive, and f has no zero; the sign and range follow from b.",
+        "For a>1, a^x tends to 0 as x tends to negative infinity; for 0<a<1, a^x tends to 0 as x tends to positive infinity.",
+        "For b>0, a>1 is strictly increasing and 0<a<1 is strictly decreasing; multiplying by b<0 reverses those numerical monotonicity directions.",
+        "a=1 gives the constant function b, b=0 gives the zero function, and a negative base does not define a real-valued power function for every real x."
+      ],
+      "caseChecks": [
+        "For f(x)=3*2^x: f(0)=3, range (0,infinity), strict increase, limit 0+ at negative infinity, and positive unbounded growth at positive infinity.",
+        "For g(x)=-2*(1/2)^x: g(-1)=-4, g(0)=-2, g(1)=-1, range (-infinity,0), strict increase, limit 0- at positive infinity, and negative unboundedness at negative infinity.",
+        "For h1=-4*3^x, h2=4*3^x, and h3=-4*(1/3)^x, only h1 satisfies intercept -4, a wholly negative graph, strict decrease, and limit 0- at negative infinity.",
+        "p=5*1^x is constant 5; q=0*2^x is the zero function; r=-0.5*4^x is wholly negative and strictly decreasing with limit 0- at negative infinity; s=2*(-3)^x is not real-valued on all of R."
+      ]
+    },
+    "trigonometric": {
+      "status": "PASS",
+      "nonCardinalPoints": [
+        "P(pi/4)=(sqrt(2)/2,sqrt(2)/2)",
+        "P(3*pi/4)=(-sqrt(2)/2,sqrt(2)/2)",
+        "P(5*pi/4)=(-sqrt(2)/2,-sqrt(2)/2)",
+        "P(7*pi/4)=(sqrt(2)/2,-sqrt(2)/2)"
+      ],
+      "identityChecks": [
+        "A positive quarter-turn gives P(theta+pi/2)=(-sin(theta),cos(theta)), hence cos(theta)=sin(theta+pi/2) and sin(theta)=cos(theta-pi/2).",
+        "A half-turn gives P(theta+pi)=(-cos(theta),-sin(theta)), so pi is not a sine or cosine period.",
+        "A full turn gives P(theta+2*pi)=P(theta), hence 2*pi is a period of both functions.",
+        "Because cos(theta)=sin(theta+pi/2), the cosine graph is the sine graph shifted left by pi/2.",
+        "At theta=pi/4, a straight segment between the adjacent cardinal graph points has value 1/2 while the circle projection has value sqrt(2)/2; the difference is approximately 0.2071067812.",
+        "For theta in (pi/2,pi], the part of the shifted sine graph apparently outside the supplied [-pi,pi] interval is recovered inside it as sin(theta+pi/2-2*pi), so the reverse case is complete when its required full-turn periodicity is used."
+      ],
+      "counterexampleChecks": [
+        "At theta=0, cos(0)=1 but sin(-pi/2)=-1, refuting cos(theta)=sin(theta-pi/2).",
+        "sin(pi/2)=1 but sin(3*pi/2)=-1, refuting pi as a sine period."
+      ]
+    }
+  },
+  "goalDecisions": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "decision": "PASS",
+      "profileFingerprint": "sha256:3924d73084c2c0260f6597feb5fdaf1ec9d3717ba862eafae84c971f893a2146",
+      "reviewInputFingerprint": "sha256:5762cfcab651d34b04b9065991f4cb0481ccdf0ae3bb77fdfc76c93023103382",
+      "archetype": "representation",
+      "caseIndependence": [
+        "forward prediction and comparison from two expressions",
+        "inverse selection of one expression from a multi-feature graph description",
+        "classification of degenerate, non-degenerate, and inadmissible parameter cases"
+      ],
+      "scopeFinding": "The profile stays within graph features of f(x)=b*a^x. Domain, range, parameter admissibility, and boundary cases support the stated graph reasoning and do not import logarithms or contextual exponential modelling.",
+      "misconceptionFinding": "The negative-coefficient cases directly expose why the base regime alone does not determine numerical monotonicity; the boundary case distinguishes written exponential form from a non-constant exponential function.",
+      "assessmentFinding": "All cases demand learner-produced classifications, values, limits, sketches, exclusions, and reasons. Digital graphs are optional checks rather than supplied evidence, so the profile tests observable understanding rather than tool imitation.",
+      "remainingFindings": []
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "decision": "PASS",
+      "profileFingerprint": "sha256:0e649e9709d2a7f53252e45fa1ccef06a27e58bab3bea42db4b3dcc1623cffe5",
+      "reviewInputFingerprint": "sha256:6c382da4108b31232f8d9dae9d4d83d2c018d62d750a1ff86c3f5c71d9897d08",
+      "archetype": "representation",
+      "caseIndependence": [
+        "unit-circle to both graphs through non-cardinal continuous coordinate projection",
+        "supplied sine graph to circle points and cosine graph on a shifted interval",
+        "diagnosis and general correction of false phase and period claims"
+      ],
+      "scopeFinding": "The profile stays on the standard sine and cosine functions and their unit-circle derivation. Exact diagonal values and negative angles are prerequisite recombination; no amplitude, general frequency, tangent, contextual modelling, or successor transformation competence is added.",
+      "misconceptionFinding": "The cases positively distinguish true circle projection from straight-line interpolation, the correct algebraic and visible shift directions, and a half-turn sign reversal from a full-turn repetition.",
+      "assessmentFinding": "The moving-point projection is not merely teaching support: the learner must produce the locus assignment, exact non-cardinal controls, quadrant behaviour, a countercheck against linear joining, a reverse reconstruction, universal geometric identities, and counterexamples. Each output is independently observable and scoreable.",
+      "remainingFindings": []
+    }
+  ],
+  "productionValidation": {
+    "deterministicCorrectedMaterializer": "PASS",
+    "correctedCandidateValidator": "PASS",
+    "positiveGoalEvidenceCandidateMaterializerSelfTest": "PASS: 20 profiles",
+    "positiveGoalEvidenceProfileV2ModelTest": "PASS",
+    "interpretation": "These checks supplement but do not replace the mathematical and didactic audit above."
+  },
+  "overallDecision": "PASS",
+  "allSevenBlockingCorrectionsImplemented": true,
+  "remainingFindings": [],
+  "integrationStatement": "The two corrected E1/G1 AI candidates are fachlich suitable for bounded repository materialization at the stated fingerprints. This external audit does not itself materialize them, approve learner mastery, or claim rollout progress; repository integration still requires the normal deterministic materialization and dependent Layer-A QA gates."
+}

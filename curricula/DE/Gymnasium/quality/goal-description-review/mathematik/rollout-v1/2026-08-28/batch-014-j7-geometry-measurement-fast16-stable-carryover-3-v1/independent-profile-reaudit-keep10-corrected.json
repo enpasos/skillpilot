@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "auditId": "math-j7-corrected-evidence-fresh-independent-reaudit-2026-08-28",
+  "auditedAt": "2026-08-28T11:40:01Z",
+  "auditor": "codex-math-j7-fresh-independent-reaudit",
+  "overallDecision": "PASS",
+  "allTenProfilesPass": true,
+  "summary": {
+    "candidateGoalCount": 10,
+    "auditedGoalCount": 10,
+    "passingGoalCount": 10,
+    "failingGoalCount": 0
+  },
+  "auditIsolation": {
+    "decisionBasis": [
+      "The exact candidates.corrected.json bytes bound below",
+      "The current canonical German Gymnasium mathematics goal objects for the ten goal IDs, including their current direct parent and placement context"
+    ],
+    "priorAuditJudgmentsUsed": false,
+    "repositoryWritesPerformed": false
+  },
+  "inputArtifacts": {
+    "candidates": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j7-fast16-precommit-v1/evidence-keep10-v2/candidates.corrected.json",
+      "sha256": "3758f6bd43edeb89f3339c72bd141472c18d2e82476eba028041760a6abd7cd8",
+      "goalCount": 10
+    },
+    "canonicalGoals": {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+      "selectedGoalContextSha256": "f168fd787280faa7fcb0b5b288b1ff93bb551be1be3d9052f5d32ee1ed510a9f",
+      "selectedGoalCount": 10,
+      "allSelectedGoalsPresent": true,
+      "allSelectedGoalsAtomic": true,
+      "allSelectedGoalsCanonicalPhase": "J7"
+    }
+  },
+  "criteria": [
+    "mathematicalConsistency",
+    "canonicalScope",
+    "deepUnderstanding",
+    "observablePerformance",
+    "independentDemonstrations",
+    "archetypeFit",
+    "j7Appropriateness",
+    "deEnParity"
+  ],
+  "goalDecisions": [
+    {
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "canonicalTitle": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
+      "archetype": "representation",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 3,
+        "provided": 3,
+        "caseIds": [
+          "four-quadrant-coordinate-polygon",
+          "geometric-description-to-coordinates",
+          "digital-window-and-reverse-reading"
+        ]
+      },
+      "verifiedFacts": [
+        "A(-4,2), B(1,2), C(1,-3), D(-4,-3) occupy quadrants II, I, IV, III respectively; all four side lengths are 5, so the stated opposite-side relations are valid (the figure is specifically a square and therefore also a rectangle).",
+        "From P(2,1), Q four units right is Q(6,1); midpoint M is (4,1), and three units vertically above it gives R(4,4).",
+        "For E(-12,6), F(8,6), G(8,-10), H(-12,-10), the side lengths are 20, 16, 20, 16 and the equal-coordinate axis-parallel claims are correct."
+      ],
+      "rationale": "The cases test both translation directions, four-quadrant signs and scale, preservation of geometric relations, and purposeful digital-window choice. The evidence requires coordinate-based checks rather than trusting appearance, stays within the canonical representation goal, and is suitable for J7. German and English impose the same data and performances."
+    },
+    {
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "canonicalTitle": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben",
+      "archetype": "concept",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 2,
+        "provided": 2,
+        "caseIds": [
+          "marked-relations-not-to-scale",
+          "verbal-constraints-to-annotated-sketch"
+        ]
+      },
+      "verifiedFacts": [
+        "The parallel, perpendicular, intersecting, angle-bisecting, midpoint, and segment-bisecting classifications follow from the stipulated markings and incidences rather than drawing orientation.",
+        "A line through a marked midpoint of AB bisects AB; no perpendicular condition is incorrectly imposed on that relation."
+      ],
+      "rationale": "The first case translates marked geometry into terminology and the second reverses the direction by creating an annotated rotated sketch. Both require defining properties and explicit rejection of visual inference. This exactly covers the canonical concept goal at J7 level, with materially equivalent German and English versions."
+    },
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "canonicalTitle": "Mittelsenkrechten konstruieren und begründen",
+      "archetype": "procedure",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 2,
+        "provided": 2,
+        "caseIds": [
+          "slanted-segment-exact-construction",
+          "equidistant-water-point"
+        ]
+      },
+      "verifiedFacts": [
+        "For a 7.4 cm segment, an unchanged equal compass radius greater than 3.7 cm gives two arc intersections; both are equidistant from A and B, and their joining line is the perpendicular bisector.",
+        "Points satisfying PA = PB lie on the perpendicular bisector, so the admissible collection points are precisely its intersections with the stipulated path w; zero, one, or multiple positions are possible depending on that path."
+      ],
+      "rationale": "One case demonstrates the exact construction and its equal-radius justification; the other independently transfers the locus property to a constraint problem. This is deeper than visual or measurement-only execution without exceeding the canonical construction-and-justification scope. The procedure archetype and bilingual versions fit J7."
+    },
+    {
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "canonicalTitle": "Winkelhalbierende konstruieren und begründen",
+      "archetype": "procedure",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 2,
+        "provided": 2,
+        "caseIds": [
+          "rotated-obtuse-angle-construction",
+          "junction-equidistant-location"
+        ]
+      },
+      "verifiedFacts": [
+        "The equal-radius compass construction is symmetric in the two sides and correctly yields the internal angle-bisecting ray.",
+        "For points in the angle interior, equal perpendicular distances to the two sides characterize the internal angle bisector, so the wall-location transfer is mathematically sound."
+      ],
+      "rationale": "The profile separates exact construction from an independent locus application and requires perpendicular-distance verification. It captures the canonical equal-distance justification, uses a suitable procedure archetype, remains accessible in J7, and preserves all demands across German and English."
+    },
+    {
+      "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "canonicalTitle": "Größen mit geeigneten Messmitteln erfassen",
+      "archetype": "experiment",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 3,
+        "provided": 3,
+        "caseIds": [
+          "classroom-width-tool-choice",
+          "water-volume-scale-reading",
+          "short-event-limited-timer"
+        ]
+      },
+      "verifiedFacts": [
+        "The classroom case correctly distinguishes the digital meter's 0.05 m to 20 m range, 1 mm display resolution, and specified plus-or-minus 3 mm accuracy instead of treating display digits as guaranteed accuracy.",
+        "For about 180 ml, the 250 ml cylinder with 5 ml divisions is more suitable than the 1 l vessel with 50 ml divisions, and eye-level reading plus precision matched to the scale is coherent.",
+        "Timing ten periods and dividing by ten reduces the relative contribution of start-stop timing and display quantization per period, while the profile correctly warns that the division does not manufacture arbitrarily reliable digits."
+      ],
+      "rationale": "The three tasks independently vary measurand, scale, instrument mode, range, resolution, and procedure. They make tool choice, execution, repetition or plausibility checking, units, and realistic precision observable, exactly matching the canonical measurement chain. The experiment archetype and DE/EN pair are appropriate for J7."
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "canonicalTitle": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
+      "archetype": "proof",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 3,
+        "provided": 3,
+        "caseIds": [
+          "parallel-lines-labelled-chain",
+          "pentagon-sum-from-triangulation",
+          "rotated-combined-auxiliary-line"
+        ]
+      },
+      "verifiedFacts": [
+        "The acute supplement to 128 degrees is 52 degrees; transfer across the marked parallels plus a vertical or linear-pair step yields the requested acute angle with valid premises.",
+        "The four stated pentagon angles sum to 440 degrees; triangulation gives 3 times 180 degrees = 540 degrees, so the missing angle is 100 degrees.",
+        "For triangle angles 47 and 68 degrees, the third angle is 65 degrees; transferring the base angles to the parallel auxiliary line gives the same 47 + 65 + 68 = 180 degree straight-angle chain."
+      ],
+      "rationale": "The three cases separately cover parallel-line relations, a derived polygon sum, and a combined two-route argument. Every conclusion must be premise-labelled and checked, providing proof-like deep evidence without going beyond the canonical family competence. The calculations, J7 demand, archetype, and German/English semantics all pass."
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "canonicalTitle": "Besondere Linien in Dreiecken beschreiben",
+      "archetype": "concept",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 2,
+        "provided": 2,
+        "caseIds": [
+          "four-lines-from-markings",
+          "obtuse-triangle-decoy-selection"
+        ]
+      },
+      "verifiedFacts": [
+        "The profile correctly distinguishes altitude, perpendicular bisector, median, and angle bisector by vertex incidence, midpoint, perpendicularity, or equal sub-angles.",
+        "An altitude of an obtuse triangle may meet an extension of the opposite side; rotation and an exterior foot do not invalidate its definition."
+      ],
+      "rationale": "Direct marked classification is followed by a rotated obtuse-triangle transfer with exterior heights and explicit distractor rejection. This makes conceptual discrimination observable, fully covers the canonical four-line scope, and is appropriately challenging for J7 in both languages."
+    },
+    {
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "canonicalTitle": "Besondere Dreiecke untersuchen",
+      "archetype": "concept",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 3,
+        "provided": 3,
+        "caseIds": [
+          "classification-cards-two-axes",
+          "indirect-isosceles-base-angles",
+          "reverse-classification-from-angles"
+        ]
+      },
+      "verifiedFacts": [
+        "For sides 5, 5, 6, the angles are approximately 53.1301, 53.1301, and 73.7398 degrees, so the stated approximately 53, 53, 74 and isosceles-acute classification are consistent.",
+        "The 3, 4, 5 triangle is scalene-right; an equilateral triangle has three 60 degree angles and is acute (and isosceles under the explicitly declared inclusive convention).",
+        "For sides 4, 4, 7, the triangle inequality holds and the angles are approximately 28.9550, 28.9550, and 122.0900 degrees, so the stated approximately 122 degree isosceles-obtuse classification is consistent.",
+        "From AB = AC and angle A = 40 degrees, both base angles are 70 degrees; angles 30, 30, 120 degrees sum to 180 degrees and imply equal opposite sides."
+      ],
+      "rationale": "All supplied side and angle data were independently recomputed and are mutually consistent. The cases vary direct classification, inference from equal sides, and the converse inference from equal angles, making both classification axes and simple property-based reasoning observable. Scope, concept archetype, J7 level, and DE/EN parity all pass."
+    },
+    {
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "canonicalTitle": "Dreiecke aus Kongruenzangaben konstruieren",
+      "archetype": "procedure",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 3,
+        "provided": 3,
+        "caseIds": [
+          "sss-from-three-side-lengths",
+          "sas-unordered-text-data",
+          "asa-two-rays-intersection"
+        ]
+      },
+      "verifiedFacts": [
+        "For SSS radii 4.5 cm and 5.2 cm with base 6.0 cm, absolute radius difference 0.7 < 6.0 < 9.7 radius sum, so exactly two reflected circle intersections exist and the stated construction is valid.",
+        "AC = 5.5 cm, AB = 7.0 cm, and angle CAB = 63 degrees are two sides with their included angle, so SAS determines a non-degenerate triangle up to congruence.",
+        "For AB = 8 cm, angles A = 48 degrees and B = 67 degrees, the rays meet because their sum is below 180 degrees, and angle C = 180 - 48 - 67 = 65 degrees."
+      ],
+      "rationale": "The cases independently require SSS circle intersection, SAS ordering from text, and ASA ray intersection, with visible construction evidence and a check of every datum. This is a complete, observable realization of the canonical procedure goal at J7 level, and the German and English specifications match."
+    },
+    {
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "canonicalTitle": "Seitenhalbierende in Dreiecken konstruieren",
+      "archetype": "procedure",
+      "decision": "PASS",
+      "checks": {
+        "mathematicalConsistency": "PASS",
+        "canonicalScope": "PASS",
+        "deepUnderstanding": "PASS",
+        "observablePerformance": "PASS",
+        "independentDemonstrations": "PASS",
+        "archetypeFit": "PASS",
+        "j7Appropriateness": "PASS",
+        "deEnParity": "PASS"
+      },
+      "independentDemonstrations": {
+        "required": 2,
+        "provided": 2,
+        "caseIds": [
+          "construct-all-three-medians",
+          "incomplete-obtuse-sketch-with-decoy"
+        ]
+      },
+      "verifiedFacts": [
+        "The midpoint of AB, BC, or CA must be joined to C, A, or B respectively; this is the correct opposite-vertex pairing for all three medians.",
+        "A perpendicular line through the midpoint of AC is its perpendicular bisector, whereas the median from B is the distinct vertex-to-midpoint line unless the two happen to coincide in a special triangle."
+      ],
+      "rationale": "A complete three-median construction and an independent reconstruction with a perpendicular-bisector decoy both require midpoint evidence and the opposite-vertex condition. The profile stays tightly within the canonical construction-and-check scope and is mathematically, developmentally, archetypally, and bilingually sound."
+    }
+  ],
+  "remainingFindings": []
+}

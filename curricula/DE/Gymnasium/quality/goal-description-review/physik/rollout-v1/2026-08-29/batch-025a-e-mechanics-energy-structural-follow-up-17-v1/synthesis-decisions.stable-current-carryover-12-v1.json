@@ -1,0 +1,384 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b025a-stable12-synthesis-openai-codex-20260829",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B025a stable-twelve bounded synthesis candidate",
+  "synthesizedAt": "2026-08-28T23:51:44.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829",
+    "batchManifestDigest": "sha256:739e068a7ac33103e4b0d09fc5d1b6765e166e816286c529f7d2addd424d0bb6",
+    "configDigest": "sha256:7c3f610555750be16dea5f242b001c6b4bdc2f71a0dea16ccb249401f6a522e1",
+    "bundleFingerprint": "sha256:5d5df15d9edcd57b55913c4071321bee222566b7d0194162d497bf289d351eeb",
+    "bookDigest": "sha256:7987ffdeeecdf567dbb7292b126694139815ece34144d07297f18dbe73bcd94a",
+    "reviewInputFingerprint": "sha256:f3d37c4f6577734f1b0df1e3802e6ab90477cf0a76903cc263ba2ada36851a8d",
+    "dualSummaryDigest": "sha256:7c47d894654f9f24dd67212af5361ab59080f351b0978ebf173c480d417dd51c",
+    "canonicalLandscapeDigest": "sha256:a8eb1398a6d11dcdbdb02ccb4bd3526a512ecac8743630d24ae2381b8041a64c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-a",
+      "campaignDigest": "sha256:e096e463c5f664b8648f905461598b204ce4956224f02c4a7b25e45639ae1886",
+      "roundId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-independent-a",
+      "reviewInputFingerprint": "sha256:f3d37c4f6577734f1b0df1e3802e6ab90477cf0a76903cc263ba2ada36851a8d",
+      "batchId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:37b045187785bd3d86ef06c3621101a18950a99787c0f07f7f6afdb3010b68e1",
+      "runId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001",
+      "runManifestDigest": "sha256:9f8a13961f282ab226a9ad2b77ad7d8738cf7cd3c50a1fcf6f42a00ce31efa09",
+      "resultsDigest": "sha256:f4050489d29702d3e9b80a28ae3d9079da91e80efcadbada709745961af5689e"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-b",
+      "campaignDigest": "sha256:1951c41b5b6d94dfbc5269def39992520365e4847d957bc5aba189b6a5b26754",
+      "roundId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-independent-b",
+      "reviewInputFingerprint": "sha256:f3d37c4f6577734f1b0df1e3802e6ab90477cf0a76903cc263ba2ada36851a8d",
+      "batchId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:348e616c2c2eb461f216b505d5df157e9e2f65eead86be94c59b4ca4c3254a57",
+      "runId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001",
+      "runManifestDigest": "sha256:c034f092adc5040ca8f4072b149f70ff19497b8fce0a459c8052013ff0843f7a",
+      "resultsDigest": "sha256:3b19b758f08f95a81c1e7f3ed9120a2999fc009f49073159a3f148086b0ebcfe"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-001",
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:95d059f7d9429995816457c18cf514a4ed17fed36aa204f9f0d4c524af356a1d",
+      "pageFingerprint": "sha256:ece0c1e907c394bf380062c1265f7841f9dadabbf0743cbd581488e0909028c7",
+      "goalReviewContextFingerprint": "sha256:7f19cc815b8ba2db940f74eec5630a3fc598ba856921e0e7916762b6c9ff3145",
+      "finalText": {
+        "titleDe": "Bewegungen mit Diagrammen untersuchen",
+        "titleEn": "Investigate Motions with Diagrams",
+        "descriptionDe": "Die lernende Person kann einfache Bewegungen experimentell erfassen und in t-s-, t-v- und t-a-Diagrammen darstellen und interpretieren.",
+        "descriptionEn": "The learner can experimentally record simple motions and represent and interpret them in t-s, t-v, and t-a diagrams."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "recordDigest": "sha256:3176f1f2facbf75eee4f0fe700f8a71d682990d41057465b92589b6c7057720b"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "recordDigest": "sha256:93b862b7561c1d75792b1bc8993ecce57a2d0b0524b848a0f5494a0086d8394c"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B wird gewählt, weil sie Messdaten und abgeleitete Größen ausdrücklich trennt, Größen und Einheiten in allen drei Diagrammen verlangt und den Transfer auf eine neue Mehrphasenbewegung bindet; Runde A bleibt als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B is selected because it explicitly separates measured and derived quantities, requires quantities and units in all three graphs, and binds transfer to a new multi-phase motion; Round A remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-002",
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:525b6122c6aa914d3109d26afb18a86d440b8247ce92eb478eac94bc8cd651a7",
+      "pageFingerprint": "sha256:42cbec5a22013a313effe017470d127364888513e54e5011251df1875e870b4a",
+      "goalReviewContextFingerprint": "sha256:3b40854c3ed6e8a4f2fa53ad6718ddbc93814cd38e575ae7d13cdfe36b02d25a",
+      "finalText": {
+        "titleDe": "Gleichförmige Bewegung und Geschwindigkeit",
+        "titleEn": "Uniform Motion and Velocity",
+        "descriptionDe": "Die lernende Person kann gleichförmige Bewegungen im Diagramm erkennen, die Geschwindigkeit definieren und den Geschwindigkeitsbetrag experimentell bestimmen.",
+        "descriptionEn": "The learner can recognize uniform motions in the diagram, define velocity, and experimentally determine the magnitude of velocity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "recordDigest": "sha256:c647e203977c051b5085bf10c668085491641c000e985840350310586c22b2a9"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "recordDigest": "sha256:742cd16f0f1d46388bc7d90363f4fb55ccae04a1ac1ed6afe4ec19753e3955af"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B operationalisiert die vorzeichenbehaftete Geschwindigkeit, die gewählte positive Richtung, Messstreuung und Diagrammform sowie den Achsenwechsel besonders vollständig; Runde A bleibt als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B most fully operationalizes signed velocity, the chosen positive direction, measurement scatter and graph shape, and reversal of the coordinate axis; Round A remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-003",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7e2809ae10f02c415568a67269a4f869f77ade333635eb92329199764bdbf7ed",
+      "pageFingerprint": "sha256:8e828820b060402e56b3f178fbf31c0760566bb9cb56bf4f5ae3dbc195999041",
+      "goalReviewContextFingerprint": "sha256:48dce25eb612dfc1e0ab0bcfe7f546e6b784dffcd358b7ca3b7968e52ffb04c0",
+      "finalText": {
+        "titleDe": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+        "titleEn": "Distinguish Average and Instantaneous Velocity",
+        "descriptionDe": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+        "descriptionEn": "The learner can determine and compare average velocity over a finite interval and instantaneous velocity at an instant, interpreting them in a time-position graph as secant and tangent slopes, respectively."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:bf8517a9-142b-5789-826a-767f3b277998",
+          "recordDigest": "sha256:27f3ab06612edc04f450876ecb1fa38cf69c31a38ef5bb8bfccdbd0d0e75f03d"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:bf8517a9-142b-5789-826a-767f3b277998",
+          "recordDigest": "sha256:b5ce5077e3854f00f08c1a7ba90078ffa8585bc36bd2979172f51db07df8b1ca"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde A trennt endliches Intervall und lokalen Zeitpunkt besonders klar und prüft mit dem Hin-und-Rück-Fall unabhängig, warum verschwindende Durchschnittsgeschwindigkeit nicht verschwindende Momentangeschwindigkeiten zulässt; Runde B bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round A most clearly separates a finite interval from a local instant and independently tests, through an out-and-back case, why zero average velocity permits nonzero instantaneous velocities; Round B remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-004",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:70e4e02a89e3533891437bcd8ecdb5eebbf6844890928e623f32a6fbb2c2dd58",
+      "pageFingerprint": "sha256:4febd980dde33708efa764bead484465c4f62ca5e14c1557ebffba62ae9a4158",
+      "goalReviewContextFingerprint": "sha256:fa2b10acaa857d8725867864ac55e42432eb3423ff40397376f204ac050e6fa7",
+      "finalText": {
+        "titleDe": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+        "titleEn": "Uniformly Accelerated Motion and Acceleration",
+        "descriptionDe": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+        "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "recordDigest": "sha256:8f8c079cc0c457754a701b0b99c7aa4acca6efb6dc56f92d71eb41a59f417525"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "recordDigest": "sha256:6dd7ce9c7c1ceb6dce0240f8ef6e31ed97073e9df488b8d52da4c1cc76bf7a6a"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde A verlangt die eigenständige Konstruktion aller drei Darstellungen und verbindet Anfangswerte, Vorzeichen, Steigungen, Flächen, Einheiten und Umkehrzeitpunkt zu einer stärkeren Konsistenzprüfung; Runde B bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round A requires independent construction of all three representations and connects initial values, signs, slopes, areas, units, and reversal time in the stronger consistency check; Round B remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-005",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:130790489acb03f5ba26be963eb06339ad5f38783763c65e16a1646eb7acd6ab",
+      "pageFingerprint": "sha256:25d41ddfb7efad811dfcd8f018bef399a5991dfe3e3f709c8b531c411625fdea",
+      "goalReviewContextFingerprint": "sha256:84a56229c3e0c44b825be90280476a188634b5bee51c7858e6d4718e6efe48e8",
+      "finalText": {
+        "titleDe": "Freier Fall experimentell untersuchen",
+        "titleEn": "Investigate Free Fall Experimentally",
+        "descriptionDe": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+        "descriptionEn": "The learner can experimentally investigate free fall near Earth's surface, graphically analyze measurement data, use a model that neglects air resistance to determine gravitational acceleration, and formulate a time-position law with stated initial conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "recordDigest": "sha256:7ddc56e6dff94ab5f49660714b6d77b480b5ca4b8b894b7a19ee2fb6309fa6db"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "recordDigest": "sha256:7f9fef17f3cf1e3255ad9e97531cd0640b8b41d9c14f889a552121f6c133e754"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B bildet Planung oder Nutzung einer sicheren Messung, grafische Bestimmung von g, begründete Unsicherheit, Modellpassung und den Transfer auf geänderte Achse sowie merklichen Luftwiderstand am vollständigsten ab; Runde A bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B most fully covers planning or using a safe measurement, graphical determination of g, justified uncertainty, model fit, and transfer to a changed axis and appreciable drag; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-006",
+      "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:414bdcc53cd4baac2cda5eeec900a70764b50c7f36e5d56bd0177fde631eb5ba",
+      "pageFingerprint": "sha256:1cac2b1b4b6ab525d978746d15f1138b45305bed32a9c35749952009b9de02a4",
+      "goalReviewContextFingerprint": "sha256:736ac6ac02497832ee4701309e1e3078125594c21c23fe6cbacbac7386200c9f",
+      "finalText": {
+        "titleDe": "Newtons 1. Axiom (Trägheitsprinzip)",
+        "titleEn": "Newton's First Law (Principle of Inertia)",
+        "descriptionDe": "Die lernende Person kann Newtons erstes Axiom formulieren und einfache Situationen damit deuten: In einem Inertialsystem bleibt ein Körper bei verschwindender resultierender äußerer Kraft in Ruhe oder bewegt sich geradlinig mit konstanter Geschwindigkeit.",
+        "descriptionEn": "The learner can state Newton's first law and use it to interpret simple situations: in an inertial frame, a body remains at rest or moves in a straight line at constant velocity when the net external force is zero."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "recordDigest": "sha256:9c3290c68544406d7ecc477a796e3174f7f47c6506ee8ae4c31beca259c173be"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "recordDigest": "sha256:7b7380109b1b941fdc96fbf914c3299b1bfba0516e051d96538fdd20c98f70d8"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde A fordert eine gerichtete Darstellung der äußeren Kräfte, die vektorielle Resultierende und einen bereits bewegten Körper mit ausgeglichenen Antriebs- und Widerstandskräften und grenzt damit die zentrale Fehlvorstellung am schärfsten ab; Runde B bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round A requires a directional representation of external forces, their vector resultant, and an already moving body with balanced driving and resistive forces, most sharply separating the central misconception; Round B remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-007",
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3867678c4913da3fa6d11f203a81f8b47df5092b4ffccf79e71e8b34caf42a94",
+      "pageFingerprint": "sha256:8896d2c6770a08ef7d851c5ac394ee567984c31d78c2b1ce72d87d2e086d4310",
+      "goalReviewContextFingerprint": "sha256:fde598e2dcbc0f9ac9307fe23824d5e1871c1e6a3ad758f76e53b6525a9ed79f",
+      "finalText": {
+        "titleDe": "Grundgleichung der Mechanik anwenden",
+        "titleEn": "Apply Fundamental Equation of Mechanics",
+        "descriptionDe": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+        "descriptionEn": "The learner can apply the relation $\\sum F_\\mathrm{ext}=m\\cdot a$ using a chosen positive direction to simple one-dimensional motions of a constant-mass body in an inertial frame and distinguish force equilibrium ($\\sum F_\\mathrm{ext}=0$) from accelerated motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "recordDigest": "sha256:5d016da956d3a2776ce24cc4a767dd9c054adc9794a8f9755e418b62d2b6d22f"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "recordDigest": "sha256:936cb24e8cb72e7ee8ef91024bb3686136ac5627c553bcfb176c660eed572d46"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B verbindet Körperabgrenzung, vollständige vorzeichenrichtige Kräftebilanz, Richtungsplausibilität und den Transfer zwischen Achsenumkehr, Vorzeichenwechsel der Resultierenden und Beschleunigung ohne Geschwindigkeit und Beschleunigung zu verwechseln; Runde A bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B connects system isolation, a complete signed force balance, directional plausibility, and transfer among axis reversal, a change in the resultant sign, and acceleration without confusing velocity and acceleration; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-008",
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5ea56753e82614b83345c2e0f4a677020665122bb8f3930888a6c0e3c2d04c05",
+      "pageFingerprint": "sha256:5e0dac6403e0cc997945dd4559c49a236220d82f26648c1ec402ef915f0eb85f",
+      "goalReviewContextFingerprint": "sha256:7cd08f583b19a693580eb2369cd4cd67dd0cf756525648ff75012a48ea0b5f8c",
+      "finalText": {
+        "titleDe": "Newtons 3. Axiom (Wechselwirkungsprinzip)",
+        "titleEn": "Newton's Third Law (Action-Reaction)",
+        "descriptionDe": "Die lernende Person kann Newtons drittes Axiom formulieren und an Beispielen erläutern, dass zwei wechselwirkende Körper gleichzeitig gleich große, entgegengesetzt gerichtete Kräfte aufeinander ausüben.",
+        "descriptionEn": "The learner can state Newton's third law and use examples to explain that two interacting bodies simultaneously exert equal-magnitude, oppositely directed forces on each other."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:ad984bb6-e225-432a-952d-d83cda40b7f8",
+          "recordDigest": "sha256:719411e500b212fd2636f6b30c96751e3ac00431c4a19c3eb2de41dd8fc1418a"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:ad984bb6-e225-432a-952d-d83cda40b7f8",
+          "recordDigest": "sha256:1379d5781168d336d7988c310bff17093c8fd5c59fb32975d7d3f4f1791b4090"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B verlangt getrennte Kraftdarstellungen für beide Körper und widerlegt sowohl die Verwechslung mit zwei Kräften auf demselben Körper als auch eine zeitlich versetzte Ursache-Wirkungs-Deutung; Runde A bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B requires separate force representations for both bodies and rejects both confusion with two forces on one body and a time-delayed cause-and-effect interpretation; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-009",
+      "goalId": "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:61d9c9691f9b92d856e41030ec2787ffdd098ed76faceb2377e30451e73176ed",
+      "pageFingerprint": "sha256:548cf2ffe1cd6015a9524792105dcc6ffb13a164644ae371ce6c9170e0a42081",
+      "goalReviewContextFingerprint": "sha256:745eb5a10af3a822bfcf3894e5cc34cd22c71273ca295c271887a5545e3f5011",
+      "finalText": {
+        "titleDe": "Mechanische Arbeit als Energieänderung",
+        "titleEn": "Mechanical Work as Energy Change",
+        "descriptionDe": "Die lernende Person kann mechanische Arbeit als Energieübertragung über eine festgelegte Systemgrenze deuten, ihr Vorzeichen aus Kraft- und Wegrichtung bestimmen und die am System verrichtete Arbeit konsistent mit dessen Energieänderung bilanzieren.",
+        "descriptionEn": "The learner can interpret mechanical work as energy transfer across a defined system boundary, determine its sign from the directions of force and displacement, and consistently relate work done on the system to its change in energy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+          "recordDigest": "sha256:090833d548e6f75f740e050851817cfeb1de6bb6c052e6a081bb497302aaaab8"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+          "recordDigest": "sha256:c6d0d10ade0f84495b575fa4f073024bef3c22bfb3f1ff8c9bb0a36ae0f58de9"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B bindet Systemgrenze, Kraftanteil in Wegrichtung, Vorzeichenkonvention, weitere Übertragungen und den Transfer auf schräge Kraft oder neu gewählte Systemgrenze in einer besonders vollständigen Energiebilanz; Runde A bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B binds the system boundary, force component along the displacement, sign convention, additional transfers, and transfer to an oblique force or a newly chosen boundary in an especially complete energy balance; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-010",
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:05dd4bf4c0884b70e6411dab19ff568c360588aabbeb60ed2a2557ee07c63e6d",
+      "pageFingerprint": "sha256:fd9f80265f6d60b70e3d3c39f19ae22e0f708a42c122910c9c4aae87574dface",
+      "goalReviewContextFingerprint": "sha256:d542e5d9a57a6c675f046ad6722386b238ab4dc69212417882c473dea607c20b",
+      "finalText": {
+        "titleDe": "Potenzielle Energie (Lageenergie)",
+        "titleEn": "Potential Energy (Positional Energy)",
+        "descriptionDe": "Die lernende Person kann in einfachen Situationen nahe der Erdoberfläche die gravitative potenzielle Energie des Systems Erde–Körper relativ zu einer gewählten Bezugshöhe beschreiben und ohne Feldbegriff berechnen.",
+        "descriptionEn": "In simple situations near Earth's surface, the learner can describe the gravitational potential energy of the Earth–object system relative to a chosen reference height and calculate it without using the field concept."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "recordDigest": "sha256:51926039b6153fc815461986cfa0d8918bb83f8554c3cab42794aef4e6c4cd83"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "recordDigest": "sha256:b34048d5a6a81d51493c9d5ebea797c39cb231f27dca32aff3f2dec5ea37489a"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B macht das Erde-Körper-System, das frei gewählte Nullniveau, mögliche negative Bezugswerte und die Invarianz der Energieänderung bei Weg- oder Nullniveauwechsel gemeinsam beobachtbar; Runde A bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B jointly makes observable the Earth-object system, the freely chosen zero level, possible negative reference values, and invariance of the energy change under a path or zero-level change; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-011",
+      "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2ae8418306dd6f825719d781ed1a42aec247306095cc1d59ed87b9a7f03e9369",
+      "pageFingerprint": "sha256:395a3140d3224a9cb4aefe87bdc342c6c2f5180ce2322c2222c99608dec9c2fc",
+      "goalReviewContextFingerprint": "sha256:df457500aafa4d028a5e829c2f30f325fe7b6da7ab58074997b28250630ed2ca",
+      "finalText": {
+        "titleDe": "Energieerhaltung",
+        "titleEn": "Energy Conservation",
+        "descriptionDe": "Die lernende Person kann für ein System, über dessen Grenze keine Energie übertragen wird, die Energieerhaltung formulieren und einfache Umwandlungen zwischen Energieformen bilanziell beschreiben.",
+        "descriptionEn": "The learner can formulate energy conservation for a system with no energy transfer across its boundary and use balances to describe simple transformations among forms of energy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "recordDigest": "sha256:097ab38e58463c3f944e8ee894659d8333c13128fc04794dc1cb7cf6a320ac33"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "recordDigest": "sha256:4909c9d6ad0bfd3765ce7372c062ee1ac40e267b49767e6f32c35c2556a76aaa"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B prüft die Grenzbedingung fehlender Energieübertragung ausdrücklich und überträgt dieselbe Situation auf eine andere Systemgrenze, sodass entweder eine geschlossene Bilanz oder eine Bilanz mit Übertragungstermen begründet werden muss; Runde A bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B explicitly tests the no-transfer boundary condition and transfers the same situation to a different system boundary, requiring justification of either a closed balance or one with transfer terms; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b025a-stable12-synthesis-openai-codex-20260829-decision-012",
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3b201c5d47c8de0521c67d3f3c0935441c5cbdd1a406ba637bec59461701a812",
+      "pageFingerprint": "sha256:82a255197a7cd58ed1bea75eb1ae3f0512646fce044fad9b18fb02eeb7285218",
+      "goalReviewContextFingerprint": "sha256:b500c26d617b1956c82dace36a334fcf33fd6300f1adbb65ddf77747a94938cf",
+      "finalText": {
+        "titleDe": "Impulserhaltung",
+        "titleEn": "Momentum Conservation",
+        "descriptionDe": "Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+        "descriptionEn": "In a defined system with no net external impulse, the learner can use total momentum as a conserved vector quantity and apply it to qualitatively justify simple recoil situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-a.batch-001.run-001:839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "recordDigest": "sha256:8071be9abff5908a0eb88d9b8c987706a7a600bc6a5a2ccca08811fcd25ca2ff"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-025a-e-mechanics-energy-structural-follow-up-17-v1-20260829-first-pass-b.batch-001.run-001:839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "recordDigest": "sha256:0dd631c365112d657b45340e715a618baefc16ee76a6797e316161937bea3205"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde A verbindet System und äußeren Kraftstoß mit einer vorzeichenbehafteten oder vektoriellen Vorher-Nachher-Bilanz und prüft zusätzlich ungleiche Massen sowie einen von null verschiedenen Anfangsgesamtimpuls; Runde B bleibt gebunden.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round A connects the system and external impulse with a signed or vector before-and-after balance and additionally tests unequal masses and nonzero initial total momentum; Round B remains bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:0caa5572ba494a1b90b3f3153f40fdc1612e54a809592aaf2f526e7da759cb1c"
+}

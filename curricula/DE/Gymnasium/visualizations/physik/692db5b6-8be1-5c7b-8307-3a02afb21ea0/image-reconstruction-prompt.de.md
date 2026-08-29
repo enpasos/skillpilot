@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `692db5b6-8be1-5c7b-8307-3a02afb21ea0`
 - Titel: Ein- und Ausschaltvorgänge analysieren
-- Beschreibung: Die lernende Person kann zeitliche Verläufe bei der Spule beschreiben und Begriffe Selbstinduktion/Induktivität quantifizieren.
+- Beschreibung: Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.
 
 ## Generator
 

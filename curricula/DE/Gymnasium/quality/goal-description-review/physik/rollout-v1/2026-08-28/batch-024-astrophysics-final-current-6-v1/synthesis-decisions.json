@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B024 subject synthesis candidate",
+  "synthesizedAt": "2026-08-28T20:39:37.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828",
+    "batchManifestDigest": "sha256:b0239d9af0d4337f863720f3501557e245b3d0d9ea8b074258f72eb64b9ca132",
+    "configDigest": "sha256:4da9c99d96a3feeb7f530610f7e82f6efb750cb21d0a246ddc7acb3e0e4682ee",
+    "bundleFingerprint": "sha256:8ab55aaf07fe1c15bcc3cd94da31bedd1ce328fbac1f7a05867ab4a4fa531249",
+    "bookDigest": "sha256:f2ac93a6015ad6e0ec0350fba33e297cec77fc4c36fcdc40494e62ddda2923f2",
+    "reviewInputFingerprint": "sha256:75b0608e1af8d027c2a460909712d77dff0e66aa3f90e6579d604f31ac64ce9a",
+    "dualSummaryDigest": "sha256:b539be198ca83fed7060b38d14f808fe06c1fb41ddb25e01bf80f3641764f668",
+    "canonicalLandscapeDigest": "sha256:1cd096e078a8878da47e4a432aa078c770119349312788d6f1bb31761aea6c4c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-a",
+      "campaignDigest": "sha256:ea26620abed5082d1ed34b48e10f9896d8ea29c394bd2918bfbc9a06858e2133",
+      "roundId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:75b0608e1af8d027c2a460909712d77dff0e66aa3f90e6579d604f31ac64ce9a",
+      "batchId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8138ac33a0280413dc6212a7f0ba72cc7171e6909455a22366c8a8d456be9f27",
+      "runId": "physik-b024-round-a-openai-gpt-5.6-codex-20260828",
+      "runManifestDigest": "sha256:ea94e45bfb5aa84b6e8b02a2c71813fea3e0a3c38e9108f7dd6a94d6b587abf3",
+      "resultsDigest": "sha256:9418474727ceea6120fbff5a47ef3f9edf86e87941558e85eb947a4752806133"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-b",
+      "campaignDigest": "sha256:99483588cc75a036250ef8a48a47397a94e86b64d22c8111280aaed8af381313",
+      "roundId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:75b0608e1af8d027c2a460909712d77dff0e66aa3f90e6579d604f31ac64ce9a",
+      "batchId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e22bbc979c0617e14b72b99fb24ab588f699996dba7a3926ff3537511231ea84",
+      "runId": "physik-b024-round-b-openai-gpt-5.6-codex",
+      "runManifestDigest": "sha256:ac16cf8aed6df8b7488e3a83d14126994bce73c1855da778b26c2180529af767",
+      "resultsDigest": "sha256:c8b8796ade795ccae665f2f71316c07d56e5a65f468795070c241a639efe0124"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828-decision-001",
+      "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:40f87bbce02f3ff0bebe22b18d56f003db43506cb10c907424badc363c344c43",
+      "pageFingerprint": "sha256:5175b3abf66dd2477f67de1e93b197fdc554658ecdc1048a318ac2a970988147",
+      "goalReviewContextFingerprint": "sha256:94ef29428c1abb8120a4c5cb3c707265bc03931ae3efc3e86f94f8fbfec9b965",
+      "finalText": {
+        "titleDe": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
+        "titleEn": "Explain the Astronomical Unit and Its Observation-Based Determination",
+        "descriptionDe": "Die lernende Person kann die Astronomische Einheit als Entfernungsmaß im Sonnensystem einordnen, dessen Wert in Metern heute exakt definiert ist, und aus Fachtexten sowie Beobachtungsdaten rekonstruieren, wie diese Länge vor der heutigen Definition erschlossen wurde.",
+        "descriptionEn": "The learner can characterize the astronomical unit as a distance measure in the Solar System whose value in metres is now defined exactly and use scientific texts and observational data to reconstruct how that length was inferred before the current definition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b024-round-a-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+          "recordDigest": "sha256:07550c21267af266d8c7fcb0960622ab2a48b03e6cb00e16033383f0cfaebcfd"
+        },
+        "second": {
+          "recordId": "physik-b024-round-b-record-001",
+          "recordDigest": "sha256:6a31e79c4c9c01945e3705eaab8e5fa4d203f13f89cc8969fa1c5cb1f74adb2f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen, dass der aktuelle Wortlaut die heutige exakte Definition der Astronomischen Einheit sauber von ihrer historischen beobachtungs- und modellbasierten Erschließung trennt. Der kanonische Text bleibt unverändert; die erste Runde wird wegen ihrer expliziten Bindung an beobachtete Größen, Inferenzkette, Einheiten und Unsicherheiten als Evidence gewählt, während die gleichwertige zweite Fassung vollständig als Dissent erhalten bleibt.",
+      "rationaleEn": "Both independent reviews confirm that the current wording clearly distinguishes today's exact definition of the astronomical unit from its historical observation- and model-based inference. The canonical text is retained; the first round is selected as evidence because it explicitly binds observed quantities, the inference chain, units, and uncertainties, while the equally valid second formulation remains fully preserved as dissent."
+    },
+    {
+      "decisionId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828-decision-002",
+      "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec9c0010af1779d18c61fc76ccd97abb5906d2dc9c423ef10864daf06a43e10a",
+      "pageFingerprint": "sha256:b6fb0175be51b0da4f0fed8d672aef35fed51092422d83555e9f4cbad933147d",
+      "goalReviewContextFingerprint": "sha256:a0b3b6d6513b8e4fb7e9c08de5aa45e14e8fa31e989f27466db82d5a06ea8536",
+      "finalText": {
+        "titleDe": "Sonnenradius aus Beobachtungsdaten abschätzen",
+        "titleEn": "Estimate the Solar Radius from Observational Data",
+        "descriptionDe": "Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser der Sonne und ihrer Entfernung mithilfe eines geometrischen Modells den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+        "descriptionEn": "The learner can use a safely obtained or supplied angular diameter of the Sun and its distance with a geometrical model to estimate the solar radius and account for measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b024-round-a-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+          "recordDigest": "sha256:7844d1f7223290dd620a66ad4e76206677dff7fc703c112a2a14f72d9c17e25d"
+        },
+        "second": {
+          "recordId": "physik-b024-round-b-record-002",
+          "recordDigest": "sha256:6437e99eed988b76b5421d314fb547d10f149fab2148bc6b641fb1b9aaf72e0a"
+        }
+      },
+      "rationaleDe": "Beide Reviews bewerten Winkeldurchmesser, Entfernung, geometrisches Modell und Messunsicherheit als eine geschlossene und bilinguale Radiuskompetenz. Der aktuelle Text bleibt unverändert; ausgewählt wird die erste Evidence-Fassung, weil sie Winkelradius und Winkeldurchmesser, Radiant sowie exakte Beziehung und Kleinwinkelnäherung besonders klar auseinanderhält, während die zweite Fassung als dokumentierte Alternative gebunden bleibt.",
+      "rationaleEn": "Both reviews treat angular diameter, distance, the geometrical model, and measurement uncertainty as one coherent bilingual radius competence. The current wording is retained; the first evidence formulation is selected because it particularly clearly distinguishes angular radius from angular diameter, radians, and the exact relation from the small-angle approximation, while the second formulation remains bound as a documented alternative."
+    },
+    {
+      "decisionId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828-decision-003",
+      "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5ef34388296a0eeb6a84a66769a580cd4b739b06ba3eff31e79df0a72c2e74b6",
+      "pageFingerprint": "sha256:eb96c054e38a593592fc979777c8242072cc5e45fdd167632e6d7d98118ba230",
+      "goalReviewContextFingerprint": "sha256:f8c21bf7ec4e776f76259d01d7347c6e4c3772fcd193b745834528914ba6dc0c",
+      "finalText": {
+        "titleDe": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
+        "titleEn": "Estimate the Sun’s Rotation Period from Observation Series",
+        "descriptionDe": "Die lernende Person kann in zeitlich getrennten, sicher gewonnenen oder bereitgestellten Sonnenbildern wiedererkennbare Strukturen verfolgen, daraus eine beobachterbezogene synodische Rotationsdauer abschätzen und erläutern, wie Projektion, Strukturentwicklung und differentielle Rotation die Näherung begrenzen.",
+        "descriptionEn": "The learner can track recurring structures in time-separated, safely obtained or supplied solar images, use them to estimate an observer-dependent synodic rotation period, and explain how projection, feature evolution, and differential rotation limit the approximation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b024-round-a-23335a89-f8e6-5c22-8705-d71193aeac96",
+          "recordDigest": "sha256:ef1f7fb14bbaec1f1b974d6ae278238526c7c92240adaff40b004ec48ecd4182"
+        },
+        "second": {
+          "recordId": "physik-b024-round-b-record-003",
+          "recordDigest": "sha256:2f6c4949605533356017236dd4197bf324e62fd65b68c787f33f8f538a216830"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die aktuelle Inferenzkette vom sicheren Strukturtracking zur beobachterbezogenen synodischen Rotationsdauer und zu ihren physikalischen Grenzen. Der Text bleibt unverändert; die erste Runde wird wegen der expliziten Trennung von Messstreuung und systematischen Grenzen sowie des benannten Bezugssystems als Evidence gewählt, die zweite Evidence-Fassung bleibt als Dissent vollständig erhalten.",
+      "rationaleEn": "Both reviews confirm the current inference chain from safe feature tracking to the observer-dependent synodic rotation period and its physical limitations. The wording is retained; the first round is selected as evidence because it explicitly separates measurement scatter from systematic limitations and names the reference frame, while the complete second evidence formulation remains preserved as dissent."
+    },
+    {
+      "decisionId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828-decision-004",
+      "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9a8138278f415cacc4c349a84763d0817dfdc395a85f1254f1d248c4f7e4cc06",
+      "pageFingerprint": "sha256:d33ef4418d0c948de6951f646a6e154a276ef2759cb72859fc3b0fb77d78d114",
+      "goalReviewContextFingerprint": "sha256:673c3a60f1dc68830912ae294ba59a41779f9c4b0c27b5d2f0e6d67243a3cccc",
+      "finalText": {
+        "titleDe": "Massen aus astronomischen Bahnbewegungen abschätzen",
+        "titleEn": "Estimate Masses from Astronomical Orbital Motion",
+        "descriptionDe": "Die lernende Person kann aus Bahngeschwindigkeiten und Radien mit einem begründeten Gravitationsmodell die innerhalb der jeweiligen Bahn eingeschlossene Masse eines astronomischen Systems abschätzen und erläutern, unter welchen Annahmen daraus etwa die Masse eines zentralen Schwarzen Lochs oder die Massenverteilung einer Galaxie erschlossen werden kann.",
+        "descriptionEn": "The learner can use orbital speeds and radii with a justified gravitational model to estimate the mass enclosed within the relevant orbit of an astronomical system and explain the assumptions under which this can be used to infer, for example, the mass of a central black hole or a galaxy’s mass distribution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b024-round-a-f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+          "recordDigest": "sha256:95d50d6b276f77f46e420218bbd2e08d049271cc56c7988ff73de0fdb3485664"
+        },
+        "second": {
+          "recordId": "physik-b024-round-b-record-004",
+          "recordDigest": "sha256:c15207da1cfa99496270875b165463b303893585eaeb657f047aeeea7c728804"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass Zentralmasse und galaktische Massenverteilung Anwendungen derselben modellgebundenen Inferenz auf die eingeschlossene Masse sind und keinen verdeckten Split erfordern. Der kanonische Text bleibt unverändert; die erste Evidence-Fassung wird wegen ihrer expliziten Kraftbilanz, radialen Mehrpunktprüfung und Unsicherheitsbetrachtung ausgewählt, die fachlich kompatible zweite Fassung bleibt gebundener Dissent.",
+      "rationaleEn": "Both reviews confirm that a central mass and a galactic mass distribution are applications of the same model-bound inference of enclosed mass and do not require a hidden split. The canonical wording is retained; the first evidence formulation is selected for its explicit force balance, multi-radius analysis, and treatment of uncertainty, while the scientifically compatible second formulation remains bound dissent."
+    },
+    {
+      "decisionId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828-decision-005",
+      "goalId": "2014791b-af68-58d0-838b-fc9701202096",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b524d9d29c2e0dbdc7700f6f12cc0afa88e1a1194038f66deb24631a6ad3326",
+      "pageFingerprint": "sha256:cb660ffe78721b79864ab2b154f4ffb648e85e05be53f45d8bc9ae7c06342b9c",
+      "goalReviewContextFingerprint": "sha256:407bd60cfc7829ab4f32a1b3b0f965d31d57a781be6cb15666b3e40145145cad",
+      "finalText": {
+        "titleDe": "Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen",
+        "titleEn": "Infer Dynamical Total Mass from Optical Binary-Orbit Data",
+        "descriptionDe": "Die lernende Person kann aus Bahnperiode und räumlich kalibrierter Bahnskala eines optisch beobachteten Zweikörpersystems mit einem begründeten Zweikörper- und Gravitationsmodell die dynamische Gesamtmasse des Systems abschätzen sowie Annahmen, Unsicherheiten und Grenzen der Inferenz erläutern.",
+        "descriptionEn": "The learner can use the orbital period and spatially calibrated orbital scale of an optically observed two-body system with a justified two-body and gravitational model to estimate the system’s dynamical total mass and explain the assumptions, uncertainties, and limitations of the inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b024-round-a-2014791b-af68-58d0-838b-fc9701202096",
+          "recordDigest": "sha256:74a9c3b906b620c83a5503f7736fd597e5a143356ffc44b84b729963e441012b"
+        },
+        "second": {
+          "recordId": "physik-b024-round-b-record-005",
+          "recordDigest": "sha256:ed1c40e7303ecf35cbfcfec705f1983c2da95bb758c75541384198f5a4b64c64"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen das neue Strukturkind als atomare Inferenz der dynamischen Gesamtmasse aus optischen Zweikörperbahndaten. Der aktuelle Text bleibt unverändert; ausgewählt wird die erste Evidence-Fassung, weil sie Relativbahn, räumliche Kalibrierung, Gesamt- gegenüber Einzelmassen und die Beiträge von Entfernung, Inklination und Bahnabdeckung besonders vollständig trennt, während die zweite Fassung als Dissent erhalten bleibt.",
+      "rationaleEn": "Both reviews confirm the new structural child as an atomic inference of dynamical total mass from optical two-body orbit data. The current wording is retained; the first evidence formulation is selected because it most fully distinguishes the relative orbit, spatial calibration, total versus component masses, and the contributions of distance, inclination, and orbit coverage, while the second formulation remains preserved as dissent."
+    },
+    {
+      "decisionId": "physik-b024-synthesis-openai-gpt-5.6-sol-20260828-decision-006",
+      "goalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f9dd3bb5f751beee489d52dd51da52b1ead479f552b32d9c6240ad37430c718e",
+      "pageFingerprint": "sha256:8dcff17264fbc34daa605cf49eeb57ebecef22b9247357d972ea9870d9f0456d",
+      "goalReviewContextFingerprint": "sha256:34124c9bf339eda793fcf99993cedd457e0c5c7398fa0717ab13751f31c1e8ad",
+      "finalText": {
+        "titleDe": "Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen",
+        "titleEn": "Infer Chirp Mass from the Frequency Evolution of a Gravitational-Wave Signal",
+        "descriptionDe": "Die lernende Person kann aus Frequenz und Frequenzänderungsrate eines inspiralartigen Gravitationswellensignals mit einem begründeten Näherungsmodell die Chirp-Masse als bestimmte Kombination der Komponentenmassen abschätzen sowie Annahmen, Unsicherheiten und Grenzen dieser Inferenz erläutern.",
+        "descriptionEn": "The learner can use the frequency and frequency derivative of an inspiral-like gravitational-wave signal with a justified approximation model to estimate the chirp mass as a specific combination of the component masses and explain the assumptions, uncertainties, and limitations of this inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b024-round-a-1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+          "recordDigest": "sha256:c34dab34cad36bbc3c78f4868147acce84c0f280d0c7f850c468fe36e4858fa5"
+        },
+        "second": {
+          "recordId": "physik-b024-round-b-record-006",
+          "recordDigest": "sha256:c1b5745bbe9b52b4754ec00fa7f142d0b5711b4c393e01a356407770727d6f75"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen das neue Strukturkind als atomare, modellgebundene Inferenz der Chirp-Masse aus Frequenz und Frequenzänderungsrate. Der Wortlaut bleibt unverändert; die erste Evidence-Fassung wird wegen der expliziten Massenkombination, der Trennung von Signalgrößen und Inferenz sowie der klaren Grenzen des führenden Inspiralmodells ausgewählt, während die zweite Fassung vollständig als Dissent gebunden bleibt.",
+      "rationaleEn": "Both reviews confirm the new structural child as an atomic, model-bound inference of chirp mass from frequency and frequency derivative. The wording is retained; the first evidence formulation is selected for its explicit mass combination, separation of signal quantities from inference, and clear limits of the leading inspiral model, while the complete second formulation remains bound as dissent."
+    }
+  ],
+  "manifestFingerprint": "sha256:65f0967c94eb094e4bba30cd07857c743a9c1447ba50e1b9ca7f04bb1fb29fd6"
+}

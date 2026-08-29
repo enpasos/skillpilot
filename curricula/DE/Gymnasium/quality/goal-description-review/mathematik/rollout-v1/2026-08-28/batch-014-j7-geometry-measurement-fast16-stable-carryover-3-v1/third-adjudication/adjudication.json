@@ -1,0 +1,607 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-goal-description-third-adjudication-draft",
+  "draftContract": "skillpilot-goal-description-bilingual-adjudication-draft-v1",
+  "batchId": "mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828",
+  "subject": "mathematik",
+  "adjudicatedAt": "2026-08-28",
+  "authority": "third_non_blind_subject_adjudication",
+  "mode": "external_read_only_repository",
+  "noProgressClaim": true,
+  "materialized": false,
+  "inputBinding": {
+    "bundleFingerprint": "sha256:09c55fdd10e7d66772d3dacbe6e033bff8c91bac4c917eb042963b87cc8f2b9f",
+    "reviewInputFingerprint": "sha256:38597f268f7af61207e37a9c0b8e63780e340bbdfbadb7809d3da6364c0a9f79",
+    "bookDigest": "sha256:510e49be45c6aac81dc75b9964cd88bf92c37ca5b922d99045c54285b2ba7b0d",
+    "goalCount": 16,
+    "roundA": {
+      "runId": "math-fast-j7-geometry-measurement-16-round-a-gpt5-20260828",
+      "modelIdentity": "OpenAI::GPT-5::(unspecified-version)"
+    },
+    "roundB": {
+      "runId": "math-fast-j7-geom-measure-rb-20260828-codex",
+      "modelIdentity": "OpenAI::Codex::GPT-5"
+    },
+    "blindnessEndedOnlyForThisThirdAdjudication": true
+  },
+  "exactInputSha256": [
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/bundle/criteria.md","sha256":"d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919","bytes":4496},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/bundle/prompt.md","sha256":"b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b","bytes":5974},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/bundle/review-input.json","sha256":"1e162aa01bd5feef49f15406155a324f5fa066053d9a2d2fd75c8b1b3f044144","bytes":81828},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/bundle/review-input.jsonl","sha256":"bc72690b2ff009a45acfb8d158d5d4f87b8563e0fdb9e51392246e46989312dd","bytes":55128},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/dual-summary.json","sha256":"00eb81f40d83f58f2cd22c5a179a3e6d7c71b6f75faea0f4d604c23d195819fe","bytes":11723},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-a/batches/mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-a.batch-001.input.jsonl","sha256":"afee105b56bf8ff79855e0548002d29335466eb0b1f24f088da2a7587b947cac","bytes":99877},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-a/criteria.md","sha256":"d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919","bytes":4496},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-a/prompt.md","sha256":"b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b","bytes":5974},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-a/results/mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-a.batch-001.records.jsonl","sha256":"e95ae5149eda2a85f7d7c02c028ee866c290b786447a13af16a4f03b3bd8504b","bytes":58091},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-a/results/mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-a.batch-001.run.json","sha256":"6da4d7ae82e3a9b873fb45f06a86efa6653b183f60e204d22c43b469f837fc3a","bytes":2858},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-b/batches/mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-b.batch-001.input.jsonl","sha256":"b86a5ed9d475985a10cf966209ff1ab48ff8b87b53a4d7c43c63e82dc1113dab","bytes":99877},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-b/criteria.md","sha256":"d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919","bytes":4496},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-b/prompt.md","sha256":"b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b","bytes":5974},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-b/results/mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-b.batch-001.records.jsonl","sha256":"4e4c6e0393a6a53702c63279e5051ae4da7ab273a89182aad537eba83cae97cc","bytes":56821},
+    {"path":"/home/enpasos/projects/skillpilot/app/node_modules/.cache/skillpilot-rollout-provisional/math-fast-j7-geometry-measurement-16-v1/output/round-b/results/mathematik-rollout-v1-fast-j7-geometry-measurement-16-precommit-v1-20260828-first-pass-b.batch-001.run.json","sha256":"db0000f8af6c8f63b7f3d38238e7433f2afaccf895d12edbf9a7019e9cc32652","bytes":3002},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/assessments/mathematik/seki/j7/blueprint.md","sha256":"2a6753f06fb69877439d224a34e37fc7b39d6e8ef0a0113ebefdb25f898035c3","bytes":4044},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v1.md","sha256":"fe9d757605f7d362cfa8eb409e99d3799b47eb26070afa95d6fc3866424b9fd5","bytes":3197},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json","sha256":"13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f","bytes":3240775},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_source_extraction_to_canonical_math.review.json","sha256":"4273e95728a7fa68d7c4115ae43fdddaf873dd3a27e732ec72876d0c1ec24ce4","bytes":482326},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json","sha256":"377a069cb1c45d5979ea77944f8e67c225fe90c30f307fb2ce3c32448db25370","bytes":12416},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_source_extraction_to_canonical_math.review.json","sha256":"82307d1e25f0d617c452dd2ccae52eed7d4e533ed830237338e7ed00ff1aa0aa","bytes":482310},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json","sha256":"8d777d9016a94e92200cc1e9bc8f1f7c503790cccbcc7321298bc8e7ee52f250","bytes":11441},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json","sha256":"6a5eeae3478bc92f8896ce9e1a65606c6a39e0ef3ec53546aefec4a08b7f3678","bytes":334232},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json","sha256":"6017533181ebb601e4ace1f03b9fe1a7308e853bd7f568b36b4be39c29cda423","bytes":21548},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json","sha256":"843ecb7b683e203938d23272cf3783d793c3d9df2c49bfe3653774a13e2c9350","bytes":601152},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json","sha256":"27e66826d0f4d14c4007a02b6bf24d241c5a8e6ba268e1b4b55ee34e2d3b94c3","bytes":60520},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json","sha256":"ee1cf4fdc262debe2fd872f6756fed815e872a9de1db540a08b3db5e12bd7400","bytes":775025},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json","sha256":"e7b2ca346b3bc392780e8e449065562f2a42ec53777da60d970015ec0f8e334b","bytes":7048},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json","sha256":"470d48af803afe43c69c04b2484bf68bec22c401615f73f5bf12865644b668bd","bytes":824031},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json","sha256":"77c8e888bdf9e0d9e3980addee7f9c78308ad9f4577234a89c93a60ba80e48d2","bytes":11623},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json","sha256":"144c585823fd0f171ed0dcfece658c0e0e136710947cf738f5c31e1466fbfcbe","bytes":736947},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json","sha256":"a0314693dbfa4cfeb90a894766f9f576654ddc22bbff40ed0ff59ac880531b6e","bytes":19377},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_to_canonical_math.json","sha256":"f2c3f6be183bd8420570e05077007ac6cf4ec6472d9d1f22dfb4164383afea5d","bytes":15703},
+    {"path":"/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl","sha256":"5228aa54a7eaec1ef196af0553ce4878f60e54791c791cddab91617d18457c8b","bytes":422993}
+  ],
+  "counts": {
+    "total": 16,
+    "keep_current": 10,
+    "accepted_revision": 4,
+    "structural_split": 2,
+    "unresolved_block": 0,
+    "finalizableUnderCurrentText": 10,
+    "requiresCanonicalReworkAndFreshBlindReview": 6,
+    "requiresProductOwnerDecision": 0
+  },
+  "contractNoteDe": "Die zehn keep_current-Entscheidungen können auf den gebundenen aktuellen Beschreibungen synthetisiert werden. Vier Revisionen und zwei strukturelle Splits sind fachliche Umsetzungsentwürfe: Sie müssen erst kanonisch integriert und anschließend mit neuen aktuellen Fingerprints wieder in zwei unabhängigen Blindreviews sowie in der V2-Evidenz-, Mapping-, Assessment-, Atomicity-, Memory-, Visualisierungs- und M6-Lane geprüft werden.",
+  "contractNoteEn": "The ten keep_current decisions can be synthesized against the bound current descriptions. Four revisions and two structural splits are subject-matter implementation drafts: they must first be integrated canonically and then undergo two fresh independent blind reviews with current fingerprints as well as V2 evidence, mapping, assessment, atomicity, memory, visualization, and M6 checks.",
+  "existingAtomicityReconciliation": {
+    "ledger": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+    "reviewedAt": "2026-05-05",
+    "records": [
+      {
+        "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
+        "priorStatus": "atomic",
+        "priorReason": "J7-Review: Eine zusammenhängende Prismenberechnungsroutine für Volumen und Oberfläche.",
+        "adjudication": "overturn_to_structural_split",
+        "whyNewEvidenceIsStrongerDe": "Beide neuen Blindreviews identifizieren unabhängig dieselbe Trennlinie. Volumen und Oberfläche beantworten verschiedene Sachfragen, verwenden unterschiedliche Einheiten und unterschiedliche Strukturen (G·h gegenüber Summe der Randflächen); die vorhandene J7-Prüfung weist dafür sogar getrennte Teilaufgaben und getrennte Bewertungseinheiten aus. Damit ist nicht nur eine Variantenbreite derselben Routine, sondern unabhängig ausfallende Beherrschung nachgewiesen.",
+        "whyNewEvidenceIsStrongerEn": "Both new blind reviews independently identify the same boundary. Volume and surface area answer different contextual questions, use different unit dimensions, and rely on different structures (base area times height versus the sum of boundary faces); the existing Year 7 assessment even assigns separate sub-items and marks to them. This demonstrates independently variable mastery rather than mere variation within one routine."
+      },
+      {
+        "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+        "priorStatus": "atomic",
+        "priorReason": "J7-Review: Eine zusammenhängende Kreisberechnungsroutine für Umfang und Flächeninhalt.",
+        "adjudication": "overturn_to_structural_split",
+        "whyNewEvidenceIsStrongerDe": "Beide neuen Blindreviews trennen unabhängig lineare Randmaße von zweidimensionalen Flächenmaßen. Radiusänderungen wirken linear auf Umfang beziehungsweise Bogenlänge, aber quadratisch auf Flächen; Einheiten und Modellwahl unterscheiden sich. Zusätzlich ist der bisherige Titel breiter als die Beschreibung, weil Kreisteilflächen nur im Titel vorkommen. Die vorhandene J7-Prüfung bepunktet Umfang, Vollkreisfläche und Viertelkreisfläche getrennt und prüft Bogenlänge bislang gar nicht; gerade diese Lücke würde ein bloßes KEEP verdecken.",
+        "whyNewEvidenceIsStrongerEn": "Both new blind reviews independently separate linear boundary measures from two-dimensional area measures. Changes in radius affect circumference or arc length linearly but area quadratically; units and model choice differ. In addition, the current title is broader than the description because areas of circle parts appear only in the title. The existing Year 7 assessment scores circumference, full-circle area, and quarter-circle area separately and does not yet assess arc length at all; a simple KEEP would conceal this gap."
+      },
+      {
+        "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+        "priorStatus": "atomic",
+        "priorReason": "J7-Review: Eine zusammenhängende Argumentationsroutine zu Winkelbeziehungen in Figuren.",
+        "adjudication": "uphold_atomic_keep",
+        "whyDe": "Die Satzfamilien können zwar separat geübt werden, im Ziel sind sie jedoch Variationsbereiche derselben beobachtbaren Leistung: eine passende Winkelbeziehung aus den gegebenen Voraussetzungen auswählen und eine schrittweise geometrische Argumentation tragen. Round B und mehrere lokale Source-Mappings stützen genau diese Familienkompetenz. Anders als bei Volumen/Oberfläche wechseln weder die Größenart noch das Leistungsprodukt; die neue Evidenz reicht deshalb nicht aus, um die bestehende fingerprint-gebundene KEEP-Entscheidung zu überschreiben.",
+        "whyEn": "Although the theorem families can be practised separately, the goal treats them as variation domains of one observable performance: selecting an applicable angle relation from the given conditions and using it to support a stepwise geometric argument. Round B and several local source mappings support precisely this family-level competence. Unlike volume versus surface area, neither the type of quantity nor the performance product changes, so the new evidence is insufficient to overturn the existing fingerprint-bound KEEP decision."
+      }
+    ]
+  },
+  "productOwnerEscalations": [],
+  "decisions": [
+    {
+      "sequence": 1,
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass geordnete Koordinatenpaare durch Vorzeichen, Achsen und Maßstab eindeutige Punktlagen festlegen und dass eine Figur durch die Beziehungen zwischen ihren Punkten und Strecken sowohl geometrisch als auch in Koordinaten beschrieben werden kann.",
+        "essentialUnderstandingEn": "The learner understands that ordered coordinate pairs determine unique point positions through signs, axes, and scale, and that a figure can be described both geometrically and in coordinates through the relations among its points and segments.",
+        "observablePerformanceDe": "Die lernende Person stellt aus einer geometrischen Beschreibung oder einer Koordinatenliste selbstständig eine beschriftete Figur in allen vier Quadranten mit geeignetem Maßstab dar, liest umgekehrt Koordinaten ab und begründet die Zuordnung der Darstellungen anhand erhaltener Lagebeziehungen.",
+        "observablePerformanceEn": "From a geometric description or a coordinate list, the learner independently represents a labelled figure across all four quadrants using a suitable scale, reads coordinates in the reverse direction, and justifies the match between representations through preserved positional relations.",
+        "transferExpectationDe": "Bei einer unabhängig vorgelegten, verschobenen, gespiegelten oder anders skalierten Figur überträgt die lernende Person dieselben Koordinatenbeziehungen ohne Vorlage und prüft, ob die behaupteten geometrischen Beziehungen erhalten sind.",
+        "transferExpectationEn": "For an independently presented figure that is translated, reflected, or shown at a different scale, the learner transfers the same coordinate relations without a template and checks whether the stated geometric relations are preserved."
+      },
+      "rationaleDe": "KEEP. Die zweite Kette ist stärker, weil sie Vorzeichen, Maßstab, beide Darstellungsrichtungen und die Begründung über erhaltene Lagebeziehungen gemeinsam prüft.",
+      "rationaleEn": "KEEP. The second chain is stronger because it jointly tests signs, scale, both representation directions, and justification through preserved positional relations."
+    },
+    {
+      "sequence": 2,
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht die definierenden Unterschiede zwischen parallelen, senkrechten und schneidenden Geraden sowie zwischen Winkel- und Streckenhalbierung; entscheidend sind geometrische Eigenschaften und nicht der optische Eindruck einer Skizze.",
+        "essentialUnderstandingEn": "The learner understands the defining differences among parallel, perpendicular, and intersecting lines and between angle and segment bisection; geometric properties, rather than the visual impression of a sketch, are decisive.",
+        "observablePerformanceDe": "Die lernende Person identifiziert in beschrifteten und unbeschrifteten Skizzen die jeweilige Lagebeziehung, formuliert sie mit korrekter Fachsprache und nennt die Eigenschaft, etwa einen rechten Winkel oder zwei gleich große Teilwinkel beziehungsweise Teilstrecken, die ihre Zuordnung trägt.",
+        "observablePerformanceEn": "In labelled and unlabelled sketches, the learner identifies each positional relation, states it using correct mathematical language, and names the supporting property, such as a right angle or two equal partial angles or segment lengths.",
+        "transferExpectationDe": "In einer gedrehten, nicht maßstäblichen oder mit zusätzlichen Linien versehenen Figur ordnet die lernende Person die Beziehungen anhand gegebener Markierungen oder Eigenschaften erneut korrekt zu und erklärt, warum bloßes Aussehen nicht genügt.",
+        "transferExpectationEn": "In a rotated, not-to-scale figure or one containing additional lines, the learner again classifies the relations correctly from given markings or properties and explains why visual appearance alone is insufficient."
+      },
+      "rationaleDe": "KEEP. Die zweite Kette macht die Eigenschaftsbindung und die Abgrenzung vom optischen Eindruck expliziter und prüft beschriftete wie unbeschriftete Darstellungen.",
+      "rationaleEn": "KEEP. The second chain makes property-based classification and the distinction from visual appearance more explicit and tests both labelled and unlabelled representations."
+    },
+    {
+      "sequence": 3,
+      "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+      "reviewPositions": {"first":"keep","second":"revise"},
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "titleDe": "Parallele und senkrechte Geraden konstruieren",
+        "titleEn": "Construct parallel and perpendicular lines",
+        "descriptionDe": "Die lernende Person kann parallele und senkrechte Geraden mit dem Geodreieck oder mit Zirkel und Lineal konstruieren und die Konstruktion anhand der jeweiligen Lagebeziehung fachsprachlich erläutern und prüfen.",
+        "descriptionEn": "The learner can construct parallel and perpendicular lines using a set square or a compass and straightedge, and explain and check the construction using the defining positional relation."
+      },
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass parallele Geraden dieselbe Richtung haben und sich in der Ebene nicht schneiden, während senkrechte Geraden einen rechten Winkel bilden, und dass eine Konstruktion diese definierenden Bedingungen sichern muss.",
+        "essentialUnderstandingEn": "The learner understands that parallel lines have the same direction and do not meet in the plane, whereas perpendicular lines form a right angle, and that a construction must enforce these defining conditions.",
+        "observablePerformanceDe": "Zu einer gegebenen Geraden und einem gegebenen Punkt konstruiert die lernende Person selbstständig eine Parallele oder Senkrechte mit dem Geodreieck oder mit Zirkel und Lineal, erläutert die entscheidenden Schritte und prüft das Ergebnis anhand von Richtung beziehungsweise rechtem Winkel.",
+        "observablePerformanceEn": "Given a line and a point, the learner independently constructs a parallel or perpendicular using a set square or a compass and straightedge, explains the decisive steps, and checks the result through direction or a right angle, respectively.",
+        "transferExpectationDe": "Bei veränderter Lage des Punktes, gedrehter Ausgangsgerade oder einer Konstruktion ohne günstige Gitterlage wählt die lernende Person ein geeignetes Verfahren und begründet weiterhin die korrekte Lagebeziehung.",
+        "transferExpectationEn": "When the point position changes, the initial line is rotated, or no convenient grid alignment is available, the learner selects a suitable construction method and continues to justify the correct positional relation."
+      },
+      "rationaleDe": "Die Revision behebt zwei konkrete Schwächen ohne Umfangserweiterung: Eine Zirkelkonstruktion der Geraden benötigt zusätzlich ein Lineal, und das subjektive Wort „sauber“ wird durch eine überprüfbare Eigenschaftsprüfung ersetzt. Lokale BW-Quellen nennen Geodreieck, Lineal und Zirkel ausdrücklich.",
+      "rationaleEn": "The revision removes two concrete weaknesses without expanding scope: constructing a line with a compass also requires a straightedge, and the subjective word 'accurately' is replaced by a check against defining properties. Local Baden-Württemberg source mappings explicitly name set square, straightedge, and compass.",
+      "integrationConsequences": [
+        "Canonical bilingual description only; title, ID, type, contains, requires, applicability, weight, and downstream graph remain unchanged.",
+        "Refresh description-review, V2 evidence, semantic-atomicity, memory-card, visualization-alt-text, provenance, and any semantic fingerprints before counting the goal."
+      ],
+      "mappingConsequences": [
+        "Retain the existing source edges because the mathematical scope does not change; recompute any text-bound fingerprints and revalidate exact versus partial against the revised wording.",
+        "Do not infer a new official compass-only requirement; the revision merely makes the required straightedge explicit."
+      ],
+      "assessmentConsequences": [
+        "A mastery item must require construction through or relative to given objects, explanation of decisive steps, and a check of parallelism or perpendicularity; visual neatness alone is not evidence."
+      ]
+    },
+    {
+      "sequence": 4,
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht die Mittelsenkrechte als Gerade durch den Mittelpunkt einer Strecke, die senkrecht auf ihr steht, und zugleich als Ortslinie aller Punkte mit gleichem Abstand zu beiden Endpunkten.",
+        "essentialUnderstandingEn": "The learner understands the perpendicular bisector as the line through the midpoint of a segment that is perpendicular to it and, at the same time, as the locus of all points equidistant from the two endpoints.",
+        "observablePerformanceDe": "Die lernende Person konstruiert zu einer unabhängig gegebenen Strecke die Mittelsenkrechte, erklärt die Bedeutung der gleich großen Zirkelradien und begründet, warum zwei Schnittpunkte der Kreisbögen sowie die daraus entstehende Gerade von beiden Endpunkten gleich weit entfernt sind.",
+        "observablePerformanceEn": "For an independently given segment, the learner constructs the perpendicular bisector, explains the significance of using equal compass radii, and justifies why the two arc intersections and the resulting line are equidistant from both endpoints.",
+        "transferExpectationDe": "Die lernende Person nutzt bei einer anders langen oder geneigten Strecke dieselbe Abstandseigenschaft, um die Konstruktion zu prüfen oder einen Punkt zu bestimmen, der von den beiden Endpunkten gleich weit entfernt sein soll.",
+        "transferExpectationEn": "For a segment of a different length or orientation, the learner uses the same distance property to check the construction or locate a point required to be equidistant from the two endpoints."
+      },
+      "rationaleDe": "KEEP. Die erste Kette erklärt zusätzlich die Rolle gleicher Zirkelradien und der beiden Kreisbogen-Schnittpunkte und liefert damit den stärkeren Konstruktionsnachweis.",
+      "rationaleEn": "KEEP. The first chain additionally explains the role of equal compass radii and the two arc intersections, providing the stronger construction argument."
+    },
+    {
+      "sequence": 5,
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht die Winkelhalbierende als Gerade beziehungsweise Strahl, der einen Winkel in zwei gleich große Winkel teilt, und als Ortslinie der Punkte mit gleichem senkrechtem Abstand zu beiden Schenkeln.",
+        "essentialUnderstandingEn": "The learner understands the angle bisector as the line or ray that divides an angle into two equal angles and as the locus of points having equal perpendicular distance from the two sides.",
+        "observablePerformanceDe": "Die lernende Person konstruiert die Winkelhalbierende eines unabhängig gegebenen Winkels, erläutert die symmetrische Zirkelkonstruktion und begründet das Ergebnis sowohl durch gleiche Teilwinkel als auch durch gleiche Abstände zu den Schenkeln.",
+        "observablePerformanceEn": "The learner constructs the bisector of an independently given angle, explains the symmetric compass construction, and justifies the result using both equal sub-angles and equal distances from the sides.",
+        "transferExpectationDe": "Die lernende Person überträgt die Konstruktion und ihre Begründung auf einen Winkel anderer Größe oder Ausrichtung und nutzt die Abstandseigenschaft, um einen geeigneten Punkt im Winkelinneren zu bestimmen.",
+        "transferExpectationEn": "The learner transfers the construction and its justification to an angle of a different size or orientation and uses the distance property to locate a suitable point inside the angle."
+      },
+      "rationaleDe": "KEEP. Die erste Kette verbindet gleiche Teilwinkel, die Ortslinieneigenschaft und die symmetrische Zirkelkonstruktion am vollständigsten.",
+      "rationaleEn": "KEEP. The first chain most completely connects equal sub-angles, the locus property, and the symmetric compass construction."
+    },
+    {
+      "sequence": 6,
+      "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
+      "reviewPositions": {"first":"split_review","second":"split_review"},
+      "resolutionDecision": "structural_split",
+      "finalizableNow": false,
+      "whyWordingOnlyInsufficientDe": "Volumen und Oberflächeninhalt sind unabhängig assessierbare Größen: Rauminhalt gegenüber Randflächeninhalt, Kubik- gegenüber Quadrateinheiten sowie G·h gegenüber Flächenzerlegung. Eine Person kann eine der beiden Strukturen sicher beherrschen und die andere verwechseln. Eine einzige umformulierte atomare Beschreibung würde diesen Unterschied weiterhin verdecken.",
+      "whyWordingOnlyInsufficientEn": "Volume and surface area are independently assessable quantities: occupied space versus boundary-face area, cubic versus square units, and base area times height versus decomposition into faces. A learner may securely master one structure while confusing the other. A single reworded atomic description would continue to hide that distinction.",
+      "clusterConversion": {
+        "retainedGoalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
+        "retainedShortKey": "canonical_math_sek1_j7_right_prism_volume_surface",
+        "titleDe": "Volumen und Oberflächen gerader Prismen berechnen",
+        "titleEn": "Calculate volumes and surface areas of right prisms",
+        "descriptionDe": "Cluster für die fachlich getrennten Lernziele zum Volumen und zum Oberflächeninhalt gerader Prismen.",
+        "descriptionEn": "Cluster for the separate learning goals concerning the volume and surface area of right prisms.",
+        "type": "cluster",
+        "weight": 2,
+        "contains": [
+          "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+          "f1348d40-3872-5e44-8892-3600c811796f"
+        ],
+        "requires": [],
+        "removeFields": ["semanticAtomic"],
+        "parentAction": "retain_old_id_in_parent_contains"
+      },
+      "children": [
+        {
+          "goalId": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+          "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_sek1_j7_right_prism_volume)",
+          "shortKey": "canonical_math_sek1_j7_right_prism_volume",
+          "titleDe": "Volumen gerader Prismen berechnen",
+          "titleEn": "Calculate volumes of right prisms",
+          "descriptionDe": "Die lernende Person kann das Volumen eines geraden Prismas aus Grundflächeninhalt und senkrechter Höhe berechnen, benötigte Größen passend bestimmen und das Ergebnis mit Kubikeinheit im Sachkontext deuten.",
+          "descriptionEn": "The learner can calculate the volume of a right prism from its base area and perpendicular height, determine required quantities appropriately, and interpret the result with a cubic unit in context.",
+          "requires": [
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "65365dce-f33f-49d8-9516-42f75883aa86"
+          ],
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die lernende Person versteht Volumen als Maß des ausgefüllten Raums und ein gerades Prisma als Schichtung kongruenter Grundflächen entlang der senkrechten Höhe; deshalb gilt V = G·h und das Ergebnis trägt eine Kubikeinheit.",
+            "essentialUnderstandingEn": "The learner understands volume as a measure of occupied space and a right prism as congruent base regions layered along the perpendicular height; therefore V = G·h and the result has a cubic unit.",
+            "observablePerformanceDe": "Für ein unabhängig dargestelltes gerades Prisma mit nicht unmittelbar gegebenem Grundflächeninhalt bestimmt die lernende Person G und h, berechnet das Volumen mit korrekter Einheit und erklärt, welche räumliche Größe das Ergebnis im Kontext beschreibt.",
+            "observablePerformanceEn": "For an independently presented right prism whose base area is not supplied directly, the learner determines G and h, calculates the volume with the correct unit, and explains which spatial quantity the result describes in context.",
+            "transferExpectationDe": "Bei veränderter Grundform, Höhe oder einer fehlenden Größe überträgt die lernende Person die Schichtungsstruktur, sagt die Auswirkung einer Maßänderung voraus und löst die Beziehung gegebenenfalls nach der unbekannten Größe auf.",
+            "transferExpectationEn": "When the base shape, height, or an unknown quantity changes, the learner transfers the layering structure, predicts the effect of a dimensional change, and rearranges the relation for the unknown quantity where needed."
+          }
+        },
+        {
+          "goalId": "f1348d40-3872-5e44-8892-3600c811796f",
+          "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_sek1_j7_right_prism_surface_area)",
+          "shortKey": "canonical_math_sek1_j7_right_prism_surface_area",
+          "titleDe": "Oberflächeninhalt gerader Prismen berechnen",
+          "titleEn": "Calculate surface areas of right prisms",
+          "descriptionDe": "Die lernende Person kann den Oberflächeninhalt eines geraden Prismas durch Bestimmen und Addieren der beiden Grundflächen und der Mantelflächen berechnen, benötigte Teilflächen passend bestimmen und das Ergebnis mit Quadrateinheit im Sachkontext deuten.",
+          "descriptionEn": "The learner can calculate the surface area of a right prism by determining and adding the two bases and lateral faces, determine required component areas appropriately, and interpret the result with a square unit in context.",
+          "requires": [
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "65365dce-f33f-49d8-9516-42f75883aa86"
+          ],
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die lernende Person versteht den Oberflächeninhalt als Summe genau aller äußeren Begrenzungsflächen eines Körpers; beim geraden Prisma sind dies zwei kongruente Grundflächen und die Mantelflächen, und das Ergebnis trägt eine Quadrateinheit.",
+            "essentialUnderstandingEn": "The learner understands surface area as the sum of exactly all exterior boundary faces of a solid; for a right prism these are two congruent bases and the lateral faces, and the result has a square unit.",
+            "observablePerformanceDe": "Für ein unabhängig dargestelltes gerades Prisma oder sein Netz identifiziert die lernende Person jede äußere Fläche ohne Auslassung oder Doppelzählung, bestimmt die benötigten Teilflächen, addiert sie und deutet das Ergebnis etwa als zu bedeckende Materialfläche.",
+            "observablePerformanceEn": "For an independently presented right prism or its net, the learner identifies every exterior face without omission or double counting, determines the required component areas, adds them, and interprets the result, for example as an area to be covered.",
+            "transferExpectationDe": "Bei ungewohnter Grundfläche, gedrehter Darstellung oder einer Sachfrage mit ausdrücklich offenen beziehungsweise nicht zu bedeckenden Flächen passt die lernende Person die Flächenauswahl begründet an und prüft die Plausibilität.",
+            "transferExpectationEn": "For an unfamiliar base, a rotated representation, or a context explicitly containing open or uncovered faces, the learner adapts the selection of faces with justification and checks plausibility."
+          }
+        }
+      ],
+      "integrationConsequences": [
+        "The old ID remains the cluster referenced by the current parent; both children inherit core, canonical tags, J7 Geometry dimension metadata, and the union of current applicability.",
+        "The children are parallel competencies and must not require each other. The volume child retains the volume-unit prerequisite; the surface child does not inherit it merely because the old broad goal did.",
+        "Recompute cluster weight, all descendant counts, projections, frontier routes, provenance, semantic-atomicity and memory-card ledgers, positive-understanding-evidence profiles, and every current description fingerprint.",
+        "Preserve the existing Nano Banana Pro image bytes. Reuse them only if an image review confirms accurate support for a child; otherwise retain them as historical or cluster-level material and create child images NBP-first."
+      ],
+      "mappingConsequences": [
+        "Enumerate every physical mapping occurrence of the old ID and adjudicate against the exact source span; do not mechanically copy an old exact edge to both children.",
+        "HE source goals he-math-seki-kc-7-3-koerper-j7-8-02-d13ff17e and he-math-seki-kc-7-3-messvorgaenge-j7-8-02-c4e78487 explicitly combine volume and surface area: replace the old atomic target with both children and classify each child edge as partial because each covers only part of the combined source goal.",
+        "BW source bw-math-seki-bp2016-3-3-2-07-642d8d26 and SH source de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T052-a83bf755ca are broader multi-solid or representation goals: route relevant prism claims to both children as partial.",
+        "Legacy exact edges without embedded source text, including BB legacy goal 450d24cb-e531-4a72-9285-cc24c26b85af, require source reinspection before exact/partial is assigned; source-specific volume-only or surface-only spans route to only the matching child.",
+        "Move or duplicate provenance evidence only where the cited source actually supports the child; then regenerate mapping corpus digests and applicability."
+      ],
+      "assessmentConsequences": [
+        "Assessment goal 0dded9c1-043e-57cb-82fc-792b391e9cb0 currently lists the old goal in requires and coveredGoalIds. Its task has separately scored volume and surface-area sub-items, so replace the old ID with both child IDs only after the task also elicits the contextual distinction required by the child descriptions.",
+        "Retain 2345ae25-5805-4c72-b830-32e63cc6262a for density. Verify that density depends directly on the volume child rather than the new cluster.",
+        "Update blueprint, task/solution scoring notes, immutable assessment metadata and fingerprints together; a single combined score must not mask independent failure in one child."
+      ]
+    },
+    {
+      "sequence": 7,
+      "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+      "reviewPositions": {"first":"split_review","second":"split_review"},
+      "resolutionDecision": "structural_split",
+      "finalizableNow": false,
+      "whyWordingOnlyInsufficientDe": "Kreisumfang beziehungsweise Bogenlänge sind eindimensionale Randmaße und skalieren linear mit dem Radius; Kreis- beziehungsweise Sektorfläche sind zweidimensionale Maße und skalieren quadratisch. Beide Modellfamilien können unabhängig beherrscht werden. Zudem verspricht der Titel derzeit Flächeninhalte von Kreisteilen, die Beschreibung nennt aber nur Flächeninhalte ganzer Kreise. Eine Wortlautergänzung würde das Atomizitätsproblem nur vergrößern.",
+      "whyWordingOnlyInsufficientEn": "Circumference or arc length are one-dimensional boundary measures and scale linearly with radius; circle or sector area are two-dimensional measures and scale quadratically. The two model families can be mastered independently. In addition, the current title promises areas of circle parts while the description mentions only full-circle areas. Adding words would only enlarge the atomicity problem.",
+      "clusterConversion": {
+        "retainedGoalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+        "retainedShortKey": "canonical_math_sek1_j7_circle_perimeter_area_parts",
+        "titleDe": "Umfang und Flächeninhalt von Kreisen und Kreisteilen berechnen",
+        "titleEn": "Calculate circumference and area of circles and circle parts",
+        "descriptionDe": "Cluster für die fachlich getrennten Lernziele zu Randlängen und Flächeninhalten von Kreisen und Kreisteilen.",
+        "descriptionEn": "Cluster for the separate learning goals concerning boundary lengths and areas of circles and circle parts.",
+        "type": "cluster",
+        "weight": 2,
+        "contains": [
+          "0abb316b-65e9-520b-83f9-163d36fff533",
+          "669794ca-65d6-595c-873b-37955a41bc02"
+        ],
+        "requires": [],
+        "removeFields": ["semanticAtomic"],
+        "parentAction": "retain_old_id_in_parent_contains"
+      },
+      "children": [
+        {
+          "goalId": "0abb316b-65e9-520b-83f9-163d36fff533",
+          "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_sek1_j7_circle_circumference_arc_length)",
+          "shortKey": "canonical_math_sek1_j7_circle_circumference_arc_length",
+          "titleDe": "Kreisumfänge und Bogenlängen von Kreisteilen berechnen",
+          "titleEn": "Calculate circle circumferences and arc lengths of circle parts",
+          "descriptionDe": "Die lernende Person kann Kreisumfänge und Bogenlängen von Kreisteilen aus Radius oder Durchmesser und gegebenenfalls dem zugehörigen Winkelanteil berechnen, bei Randlängen geradlinige Anteile berücksichtigen und Ergebnisse im Sachkontext deuten.",
+          "descriptionEn": "The learner can calculate circle circumferences and arc lengths of circle parts from a radius or diameter and, where applicable, the corresponding angular fraction, include straight segments when determining boundary lengths, and interpret results in context.",
+          "requires": [
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "65365dce-f33f-49d8-9516-42f75883aa86"
+          ],
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die lernende Person versteht Umfang und Bogenlänge als lineare Randmaße: C = 2πr, ein Bogen ist der zum Mittelpunktswinkel gehörende Anteil des Vollumfangs, und eine vollständige Randlänge kann zusätzlich geradlinige Stücke enthalten.",
+            "essentialUnderstandingEn": "The learner understands circumference and arc length as linear boundary measures: C = 2πr, an arc is the fraction of the full circumference corresponding to its central angle, and a complete boundary length may additionally contain straight segments.",
+            "observablePerformanceDe": "In einer unabhängig vorgelegten Kreis- oder Kreisteilfigur entscheidet die lernende Person, ob Vollumfang, Bogenlänge oder gesamte Randlänge gesucht ist, bestimmt Radius, Durchmesser und Winkelanteil, berechnet die passende Länge mit Einheit und begründet die Auswahl.",
+            "observablePerformanceEn": "In an independently presented circle or circle-part figure, the learner decides whether full circumference, arc length, or total boundary length is required, determines radius, diameter, and angular fraction, calculates the appropriate length with its unit, and justifies the choice.",
+            "transferExpectationDe": "Bei verändertem Radius, Winkel oder einer aus Bögen und Strecken zusammengesetzten Randlinie sagt die lernende Person die lineare Änderung voraus, zerlegt den Rand passend und überprüft das Ergebnis geometrisch.",
+            "transferExpectationEn": "When the radius, angle, or a boundary composed of arcs and segments changes, the learner predicts the linear change, decomposes the boundary appropriately, and checks the result geometrically."
+          }
+        },
+        {
+          "goalId": "669794ca-65d6-595c-873b-37955a41bc02",
+          "idDerivation": "sha1_uuid_v5_style(DE-GYM-CANONICAL-MATH:canonical_math_sek1_j7_circle_and_sector_area)",
+          "shortKey": "canonical_math_sek1_j7_circle_and_sector_area",
+          "titleDe": "Flächeninhalte von Kreisen und Kreissektoren berechnen",
+          "titleEn": "Calculate areas of circles and circular sectors",
+          "descriptionDe": "Die lernende Person kann Flächeninhalte von Kreisen und Kreissektoren aus Radius und gegebenenfalls dem zugehörigen Winkelanteil berechnen und Ergebnisse mit Quadrateinheit im Sachkontext deuten.",
+          "descriptionEn": "The learner can calculate areas of circles and circular sectors from a radius and, where applicable, the corresponding angular fraction, and interpret results with a square unit in context.",
+          "requires": [
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "65365dce-f33f-49d8-9516-42f75883aa86"
+          ],
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die lernende Person versteht den Kreisflächeninhalt als zweidimensionales Maß A = πr², einen Kreissektor als den zum Mittelpunktswinkel gehörenden Anteil der Vollkreisfläche und die quadratische Skalierung mit dem Radius.",
+            "essentialUnderstandingEn": "The learner understands circle area as the two-dimensional measure A = πr², a circular sector as the fraction of the full-circle area corresponding to its central angle, and the quadratic scaling with radius.",
+            "observablePerformanceDe": "In einer unabhängig vorgelegten Kreis- oder Sektoraufgabe bestimmt die lernende Person Radius und Winkelanteil, berechnet Vollkreis- beziehungsweise Sektorfläche mit korrekter Quadrateinheit und erklärt, welche Fläche das Ergebnis im Kontext erfasst.",
+            "observablePerformanceEn": "In an independently presented circle or sector task, the learner determines the radius and angular fraction, calculates the full-circle or sector area with the correct square unit, and explains which region the result represents in context.",
+            "transferExpectationDe": "Bei verändertem Radius oder Mittelpunktswinkel sagt die lernende Person die Auswirkung auf die Fläche vor der Rechnung begründet voraus und überträgt das Anteilsmodell auf einen anders orientierten Sektor.",
+            "transferExpectationEn": "When the radius or central angle changes, the learner predicts the effect on area with justification before calculating and transfers the fraction model to a differently oriented sector."
+          }
+        }
+      ],
+      "integrationConsequences": [
+        "The old ID remains the cluster referenced by the current parent; both children inherit core, canonical tags, J7 Geometry dimension metadata, and the union of current applicability.",
+        "The children are parallel competencies and must not require each other. Both need the Pi-ratio prerequisite; only the area child inherits the plane-area prerequisite.",
+        "Recompute cluster weight, descendants, projections, routes, provenance, semantic-atomicity and memory ledgers, V2 evidence, and all current fingerprints. The title-description gap is resolved by explicitly including sector area in the area child.",
+        "Preserve the current Nano Banana Pro asset bytes. Reuse only after child-specific factual review; otherwise retain as historical or cluster-level material and generate child visuals NBP-first."
+      ],
+      "mappingConsequences": [
+        "Enumerate every physical occurrence of the old target and re-adjudicate by exact source text; do not inherit old exact match types automatically.",
+        "BW source bw-math-seki-bp2016-3-1-2-09-d0b08397 concerns circle circumference and routes to the boundary child; because the child also includes arc length, the individual edge is partial. BW source bw-math-seki-bp2016-3-1-2-13-e49d241e concerns circle area and analogously routes partial to the area child.",
+        "BW source bw-math-seki-bp2016-3-3-2-03-d4231e06 explicitly combines arc length and sector area: route it to both children with separately justified partial edges.",
+        "SH source de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T049-16f7409805 concerns sector area and routes only to the area child; HE source he-math-seki-kc-7-3-messvorgaenge-j7-8-01-ba17d03c combines circumference and area and routes to both as partial.",
+        "Legacy exact edges without embedded source spans, including BB 77742a6b-964e-4156-b2ff-90f1dfede05f and SN b5789755-0732-49b5-93bd-aad82dd2c1a2, require source reinspection before child routing and match type are asserted.",
+        "Regenerate mapping corpus digests, provenance and applicability only after the source-edge plan passes the normal source-mapping validators."
+      ],
+      "assessmentConsequences": [
+        "Assessment goal 4ef1ec52-d99a-5ae4-9e7e-dc5568f0613b currently lists only the old goal. Task 3 separately assesses full circumference, full-circle area and quarter-circle area, but does not assess arc length or an explicit choice between boundary and area models.",
+        "Before both children can be claimed in coveredGoalIds, add a genuine arc-length or circle-part boundary item and at least one short model-choice or interpretation prompt; otherwise record only the area child and treat the circumference item as insufficient partial evidence for the full boundary child.",
+        "Update blueprint, task, solution, point total, immutable assessment node metadata, requires, coveredGoalIds and fingerprints as one consistent migration."
+      ]
+    },
+    {
+      "sequence": 8,
+      "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass ein Messergebnis von der festgelegten Größe, dem Messbereich und der Auflösung des Werkzeugs sowie der Durchführung abhängt und deshalb nur mit passender Einheit und einer durch das Verfahren begrenzten Genauigkeit sinnvoll ist.",
+        "essentialUnderstandingEn": "The learner understands that a measurement result depends on the specified quantity, the tool's range and resolution, and the way the measurement is carried out, so it is meaningful only with an appropriate unit and precision limited by the procedure.",
+        "observablePerformanceDe": "Die lernende Person bestimmt in einer unabhängig vorgelegten Alltagssituation die relevante Größe, vergleicht geeignete analoge oder digitale Messmittel anhand von Messbereich und Ablesegenauigkeit, führt die Messung nachvollziehbar durch und berichtet einen realistisch gerundeten Wert mit Einheit.",
+        "observablePerformanceEn": "In an independently presented everyday situation, the learner identifies the relevant quantity, compares suitable analogue or digital tools by range and reading precision, carries out the measurement transparently, and reports a realistically rounded value with its unit.",
+        "transferExpectationDe": "Bei einer veränderten Größe, einem anderen Wertebereich oder nur teilweise geeigneten verfügbaren Messmitteln passt die lernende Person Werkzeugwahl, Vorgehen und angegebene Genauigkeit begründet an.",
+        "transferExpectationEn": "When the quantity, value range, or available set of only partly suitable tools changes, the learner adapts the tool choice, procedure, and reported precision with justification."
+      },
+      "rationaleDe": "KEEP. Die erste Kette prüft die vollständige Messkette einschließlich Messbereich, Durchführung, realistischer Rundung und begründeter Anpassung bei nur teilweise geeigneten Werkzeugen.",
+      "rationaleEn": "KEEP. The first chain tests the complete measurement process, including range, procedure, realistic rounding, and justified adaptation when tools are only partly suitable."
+    },
+    {
+      "sequence": 9,
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "reviewPositions": {"first":"split_review","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, wie Scheitel-, Neben-, Stufen- und Wechselwinkel sowie Winkelsummen in Dreiecken und Vielecken aus Geradenlagen und Zerlegungen folgen und dass solche Beziehungen eine Begründung tragen, statt bloß aus einer Zeichnung abgelesen zu werden.",
+        "essentialUnderstandingEn": "The learner understands how vertical, supplementary, corresponding, and alternate angles, together with angle sums in triangles and polygons, follow from line positions and decompositions and can support a justification rather than merely being read from a drawing.",
+        "observablePerformanceDe": "In einer unbekannten Figur benennt die lernende Person relevante Winkelbeziehungen, berechnet oder vergleicht unbekannte Winkel durch eine nachvollziehbare Kette begründeter Schritte und kennzeichnet jeweils die verwendete Beziehung.",
+        "observablePerformanceEn": "In an unfamiliar figure, the learner identifies relevant angle relations, calculates or compares unknown angles through a clear chain of justified steps, and labels the relation used at each step.",
+        "transferExpectationDe": "In einer gedrehten oder um Hilfslinien erweiterten Figur, die Beziehungen aus Parallelen und einer Winkelzerlegung kombiniert, erkennt die lernende Person die tragende Struktur erneut und entwickelt eine passende Argumentation ohne vorgegebenen Lösungsweg.",
+        "transferExpectationEn": "In a rotated figure or one extended by auxiliary lines that combines relations from parallel lines with an angle decomposition, the learner identifies the governing structure again and develops a suitable argument without a supplied solution path."
+      },
+      "rationaleDe": "KEEP trotz Round-A-Split. Die Satzfamilien sind Wissensvarianten innerhalb einer einzigen Leistungskette: Voraussetzungen erkennen, Beziehung auswählen und jeden Argumentationsschritt begründen. Die bestehende fingerprint-gebundene Atomicity-Entscheidung und lokale HE/BW/SH-Source-Mappings stützen diese Familienkompetenz; es liegt keine stärkere neue Evidenz für unabhängig ausfallende Leistungsprodukte vor.",
+      "rationaleEn": "KEEP despite Round A's split recommendation. The theorem families are knowledge variants within one performance chain: identify conditions, select a relation, and justify every reasoning step. The existing fingerprint-bound atomicity decision and local HE/BW/SH source mappings support this family-level competence; there is no stronger new evidence of independently variable performance products."
+    },
+    {
+      "sequence": 10,
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht die besonderen Linien eines Dreiecks über ihre unterschiedlichen definierenden Beziehungen: Höhe durch einen Eckpunkt senkrecht zur Gegenseite, Mittelsenkrechte senkrecht durch einen Seitenmittelpunkt, Seitenhalbierende vom Eckpunkt zum gegenüberliegenden Mittelpunkt und Winkelhalbierende als Teilung eines Eckwinkels.",
+        "essentialUnderstandingEn": "The learner understands the special lines of a triangle through their distinct defining relations: an altitude through a vertex perpendicular to the opposite side, a perpendicular bisector through a side's midpoint, a median from a vertex to the opposite midpoint, and an angle bisector dividing a vertex angle.",
+        "observablePerformanceDe": "In einer nicht maßstäblichen Skizze identifiziert und benennt die lernende Person besondere Linien anhand markierter rechter Winkel, gleicher Strecken oder Winkel und erklärt für jede Zuordnung die entscheidende definierende Eigenschaft.",
+        "observablePerformanceEn": "In a not-to-scale sketch, the learner identifies and names special lines from marked right angles, equal segments, or equal angles and explains the decisive defining property for each classification.",
+        "transferExpectationDe": "In einem schiefen oder stumpfwinkligen Dreieck mit außerhalb liegenden Verlängerungen und zusätzlichen Hilfslinien unterscheidet die lernende Person die besonderen Linien erneut sicher anhand ihrer Eigenschaften.",
+        "transferExpectationEn": "In a scalene or obtuse triangle containing external extensions and additional auxiliary lines, the learner again distinguishes the special lines reliably from their properties."
+      },
+      "rationaleDe": "KEEP. Die zweite Kette ist stärker, weil sie Außenverlängerungen, ein stumpfwinkliges Dreieck und eine nicht maßstäbliche Skizze einbezieht und jede Zuordnung an die Definition bindet.",
+      "rationaleEn": "KEEP. The second chain is stronger because it includes external extensions, an obtuse triangle, and a not-to-scale sketch while binding each classification to its definition."
+    },
+    {
+      "sequence": 11,
+      "goalId": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+      "reviewPositions": {"first":"revise","second":"revise"},
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "titleDe": "Kongruenzsätze anwenden und begründen",
+        "titleEn": "Apply and justify congruence theorems",
+        "descriptionDe": "Die lernende Person kann einen geeigneten Kongruenzsatz auswählen, die erforderlichen Seiten- und Winkelbeziehungen prüfen und damit nachvollziehbar begründen, dass zwei Dreiecke kongruent sind.",
+        "descriptionEn": "The learner can select a suitable congruence theorem, verify the required side and angle relations, and use it to justify clearly that two triangles are congruent."
+      },
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht Kongruenz als Übereinstimmung aller entsprechenden Seiten und Winkel und versteht, warum die in einem passenden Kongruenzsatz genannten, korrekt zugeordneten Angaben bereits ausreichen, um diese Übereinstimmung zu sichern.",
+        "essentialUnderstandingEn": "The learner understands congruence as agreement of all corresponding sides and angles and understands why the correctly matched data named in an applicable congruence theorem are sufficient to guarantee that agreement.",
+        "observablePerformanceDe": "Für zwei Dreiecke ordnet die lernende Person entsprechende Eckpunkte, Seiten und Winkel zu, wählt einen passenden Kongruenzsatz, prüft jede benötigte Voraussetzung und formuliert daraus eine vollständige Kongruenzbegründung samt einer zulässigen Folgerung.",
+        "observablePerformanceEn": "For two triangles, the learner matches corresponding vertices, sides, and angles, selects an applicable congruence theorem, checks every required condition, and gives a complete congruence argument together with a valid consequence.",
+        "transferExpectationDe": "Bei gedrehten, gespiegelten oder anders beschrifteten Dreiecken beziehungsweise bei unzureichenden Angaben entscheidet die lernende Person erneut begründet, ob ein Kongruenzsatz anwendbar ist, statt sich auf den optischen Eindruck zu verlassen.",
+        "transferExpectationEn": "For rotated, reflected, or differently labelled triangles, or when the data are insufficient, the learner again decides with justification whether a congruence theorem applies rather than relying on visual appearance."
+      },
+      "rationaleDe": "Beide Runden identifizieren die echte Präzisionslücke. „Gleiche Dreiecke“ wird durch „kongruente Dreiecke“ ersetzt; Auswahl und Prüfung der erforderlichen Beziehungen werden explizit, ohne den bestehenden Umfang zu erweitern.",
+      "rationaleEn": "Both rounds identify the same genuine precision gap. The ambiguous German phrase for 'equal triangles' is replaced by 'congruent triangles'; selecting and checking the required relations becomes explicit without expanding the existing scope.",
+      "integrationConsequences": [
+        "ID, title, graph and applicability remain unchanged; refresh every semantic fingerprint and V2 evidence profile after canonical text integration."
+      ],
+      "mappingConsequences": [
+        "Existing congruence-theorem source edges remain in scope; revalidate exact/partial and text-bound rationales without adding a new curricular claim."
+      ],
+      "assessmentConsequences": [
+        "A valid assessment must test correspondence, theorem choice, every required condition, and a justified conclusion; naming a theorem alone is insufficient."
+      ]
+    },
+    {
+      "sequence": 12,
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass Dreiecke unabhängig nach Winkelarten und Seitenlängen klassifiziert werden, dass sich diese Klassen überschneiden können und dass definierende Eigenschaften Folgerungen tragen, etwa gleiche Basiswinkel beim gleichschenkligen Dreieck.",
+        "essentialUnderstandingEn": "The learner understands that triangles are classified independently by angle type and side lengths, that these classes can overlap, and that defining properties support consequences, such as equal base angles in an isosceles triangle.",
+        "observablePerformanceDe": "Die lernende Person klassifiziert Dreiecke aus Seiten- und Winkelangaben oder Markierungen vollständig, begründet jede zutreffende Klasse mit der passenden Eigenschaft und verwendet daraus folgende Beziehungen in einer einfachen geometrischen Argumentation.",
+        "observablePerformanceEn": "From side and angle data or markings, the learner classifies triangles completely, justifies each applicable class with the corresponding property, and uses resulting relations in a simple geometric argument.",
+        "transferExpectationDe": "Bei indirekten Angaben, einer nicht maßstäblichen Zeichnung oder einer Figur, die zugleich zu einer Seiten- und einer Winkelklasse gehört, leitet die lernende Person die zutreffenden Eigenschaften her und begründet die Mehrfachklassifikation.",
+        "transferExpectationEn": "With indirect data, a not-to-scale drawing, or a figure belonging to both a side-based and an angle-based class, the learner derives the applicable properties and justifies the multiple classification."
+      },
+      "rationaleDe": "KEEP. Die zweite Kette prüft Mehrfachklassifikation, indirekte Angaben und die Verwendung von Folgerungen in einer geometrischen Argumentation besonders klar.",
+      "rationaleEn": "KEEP. The second chain particularly clearly tests multiple classification, indirect data, and the use of consequences in a geometric argument."
+    },
+    {
+      "sequence": 13,
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass ein passender Satz von Seiten- und Winkelangaben ein Dreieck bis auf Kongruenz bestimmt und dass jeder Konstruktionsschritt eine dieser Bedingungen geometrisch realisiert.",
+        "essentialUnderstandingEn": "The learner understands that a suitable set of side and angle data determines a triangle up to congruence and that each construction step geometrically realizes one of those conditions.",
+        "observablePerformanceDe": "Die lernende Person ordnet gegebene Maße einem Kongruenzfall zu, plant und führt die Konstruktion mit geeigneten Werkzeugen aus, dokumentiert die Schritte mit Fachbegriffen und prüft am fertigen Dreieck, ob alle Vorgaben erfüllt sind.",
+        "observablePerformanceEn": "The learner matches the given measures to a congruence case, plans and carries out the construction with suitable tools, documents the steps using mathematical terms, and checks that the completed triangle satisfies all data.",
+        "transferExpectationDe": "Für einen anderen Kongruenzfall, eine geänderte Reihenfolge der Angaben oder eine gedrehte Ausgangslage entwickelt die lernende Person selbstständig eine passende Konstruktionsfolge und begründet deren Vollständigkeit.",
+        "transferExpectationEn": "For a different congruence case, a changed order of the data, or a rotated starting configuration, the learner independently develops a suitable construction sequence and justifies its completeness."
+      },
+      "rationaleDe": "KEEP. Die zweite Kette ergänzt die explizite Zuordnung zum Kongruenzfall und verlangt im Transfer eine selbst entwickelte vollständige Konstruktionsfolge.",
+      "rationaleEn": "KEEP. The second chain adds explicit matching to a congruence case and requires an independently developed complete construction sequence in transfer."
+    },
+    {
+      "sequence": 14,
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "reviewPositions": {"first":"revise","second":"keep"},
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "titleDe": "Lösbarkeit von Dreieckskonstruktionen begründen",
+        "titleEn": "Justify the solvability of triangle constructions",
+        "descriptionDe": "Die lernende Person kann aus gegebenen Seiten- und Winkelangaben mithilfe von Kongruenzsätzen und geometrischen Bedingungen begründen, ob die Angaben kein Dreieck zulassen, das Dreieck bis auf Kongruenz eindeutig bestimmen oder mehrere nicht kongruente Dreiecke zulassen.",
+        "descriptionEn": "From given side and angle data, the learner can use congruence theorems and geometric conditions to justify whether the data admit no triangle, determine the triangle uniquely up to congruence, or admit multiple non-congruent triangles."
+      },
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht, dass Seiten- und Winkelangaben sowohl Existenzbedingungen als auch die Eindeutigkeit bis auf Kongruenz bestimmen: Angaben können widersprüchlich, hinreichend eindeutig oder für mehrere nicht kongruente Lösungen offen sein.",
+        "essentialUnderstandingEn": "The learner understands that side and angle data determine both existence conditions and uniqueness up to congruence: the data may be inconsistent, sufficient for a unique solution, or open to multiple non-congruent solutions.",
+        "observablePerformanceDe": "Die lernende Person analysiert einen unabhängig vorgelegten Satz von Seiten- und Winkelangaben, prüft passende geometrische Bedingungen und Kongruenzsätze und begründet anhand einer Konstruktion, eines Satzes oder geeigneter Gegenbeispiele eine der drei Lösbarkeitsklassen.",
+        "observablePerformanceEn": "The learner analyzes an independently presented set of side and angle data, checks relevant geometric conditions and congruence theorems, and justifies one of the three solvability classes using a construction, a theorem, or suitable counterexamples.",
+        "transferExpectationDe": "Nach der Änderung genau einer Seiten- oder Winkelangabe prüft die lernende Person erneut Existenz und Eindeutigkeit und erklärt, warum die ursprüngliche Einordnung bestehen bleibt oder in eine andere Lösbarkeitsklasse wechselt.",
+        "transferExpectationEn": "After exactly one side or angle datum is changed, the learner reassesses existence and uniqueness and explains why the original classification remains valid or changes to another solvability class."
+      },
+      "rationaleDe": "Die knappe Revision beseitigt eine echte Mehrdeutigkeit: Verschobene, gedrehte oder gespiegelte kongruente Darstellungen zählen nicht als verschiedene Lösungen. Die drei Fälle werden deshalb ausdrücklich relativ zu Kongruenz formuliert.",
+      "rationaleEn": "The concise revision removes a genuine ambiguity: translated, rotated, or reflected congruent representations do not count as different solutions. The three cases are therefore stated explicitly relative to congruence.",
+      "integrationConsequences": [
+        "ID, title, graph and applicability remain unchanged; refresh description, atomicity, memory, evidence and visualization fingerprints after integration."
+      ],
+      "mappingConsequences": [
+        "Source edges remain in scope; revalidate exact/partial against the more precise uniqueness semantics, especially sources that mention solution multiplicity or constructibility."
+      ],
+      "assessmentConsequences": [
+        "Use data sets for no solution, unique up to congruence, and multiple non-congruent solutions; require a theorem, geometric condition, construction, or counterexample rather than a trial sketch alone."
+      ]
+    },
+    {
+      "sequence": 15,
+      "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
+      "reviewPositions": {"first":"revise","second":"revise"},
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "titleDe": "Höhen in Dreiecken konstruieren",
+        "titleEn": "Construct altitudes in triangles",
+        "descriptionDe": "Die lernende Person kann in einem gegebenen Dreieck jede Höhe als die durch einen Eckpunkt verlaufende Senkrechte zur Geraden der gegenüberliegenden Seite konstruieren, bei Bedarf die Seite verlängern und die Konstruktion anhand dieser definierenden Eigenschaft prüfen.",
+        "descriptionEn": "The learner can construct each altitude in a given triangle as the line through a vertex perpendicular to the line containing the opposite side, extend the side when necessary, and check the construction against this defining property."
+      },
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht eine Dreieckshöhe als die durch einen Eckpunkt verlaufende Senkrechte zur Geraden der gegenüberliegenden Seite; bei stumpfwinkligen Dreiecken kann der zugehörige Fußpunkt auf der Verlängerung dieser Seite liegen.",
+        "essentialUnderstandingEn": "The learner understands a triangle altitude as the line through a vertex perpendicular to the line containing the opposite side; in an obtuse triangle, the corresponding foot may lie on an extension of that side.",
+        "observablePerformanceDe": "Die lernende Person konstruiert in einem unabhängig vorgelegten Dreieck alle drei Höhen, kennzeichnet jeweils Eckpunkt, gegenüberliegende Seitengerade, rechten Winkel und Höhenfußpunkt und prüft damit jede Konstruktion.",
+        "observablePerformanceEn": "In an independently presented triangle, the learner constructs all three altitudes, identifies for each the vertex, opposite side line, right angle, and foot of the altitude, and uses these features to check every construction.",
+        "transferExpectationDe": "Die lernende Person überträgt die Konstruktion von einem spitzwinkligen auf ein stumpf- oder rechtwinkliges Dreieck, verlängert Seiten bei Bedarf und begründet die veränderte Lage der Höhenfußpunkte.",
+        "transferExpectationEn": "The learner transfers the construction from an acute triangle to an obtuse or right triangle, extends sides where needed, and justifies the changed locations of the feet of the altitudes."
+      },
+      "rationaleDe": "Beide Runden identifizieren dieselbe definitorische Lücke: Die bisherige Beschreibung nennt Eckpunkt und Senkrechtlage, aber nicht die gegenüberliegende Seitengerade und damit nicht den Außenfall beim stumpfwinkligen Dreieck. Der Finaltext ergänzt nur diese notwendige Beziehung.",
+      "rationaleEn": "Both rounds identify the same definitional gap: the current description names the vertex and perpendicularity but not the line containing the opposite side and therefore not the external case for an obtuse triangle. The final text adds only this necessary relation.",
+      "integrationConsequences": [
+        "ID, title, graph and applicability remain unchanged; refresh description, evidence, atomicity, memory and visualization fingerprints."
+      ],
+      "mappingConsequences": [
+        "Keep sources that require drawing or constructing altitudes; the revision clarifies the definition but must not be presented as a new curriculum claim. Revalidate exact/partial and rationale text."
+      ],
+      "assessmentConsequences": [
+        "At least one obtuse or differently oriented triangle must test whether the learner extends the correct opposite side and checks the right angle on its supporting line."
+      ]
+    },
+    {
+      "sequence": 16,
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "reviewPositions": {"first":"keep","second":"keep"},
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "finalizableNow": true,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die lernende Person versteht eine Seitenhalbierende als Strecke beziehungsweise Gerade vom Eckpunkt zum Mittelpunkt der gegenüberliegenden Seite und den Mittelpunkt als Punkt, der diese Seite in zwei gleich lange Teilstrecken zerlegt.",
+        "essentialUnderstandingEn": "The learner understands a median as the segment or line from a vertex to the midpoint of the opposite side and the midpoint as the point that divides that side into two equal lengths.",
+        "observablePerformanceDe": "Die lernende Person konstruiert in einem gegebenen Dreieck die Mittelpunkte aller drei Seiten, verbindet jeden mit dem gegenüberliegenden Eckpunkt und prüft jede Seitenhalbierende durch den Nachweis der zwei gleich langen Teilstrecken.",
+        "observablePerformanceEn": "In a given triangle, the learner constructs the midpoint of each side, joins it to the opposite vertex, and checks each median by establishing the two equal partial side lengths.",
+        "transferExpectationDe": "Bei einem anders orientierten oder stumpfwinkligen Dreieck und bei einer unvollständigen Hilfsskizze rekonstruiert die lernende Person die Seitenhalbierenden aus der Mittelpunktseigenschaft, ohne sie mit Mittelsenkrechten zu verwechseln.",
+        "transferExpectationEn": "For a differently oriented or obtuse triangle and from an incomplete auxiliary sketch, the learner reconstructs the medians from the midpoint property without confusing them with perpendicular bisectors."
+      },
+      "rationaleDe": "KEEP. Die zweite Kette ist stärker, weil sie die Abgrenzung zur Mittelsenkrechten und die Rekonstruktion aus einer unvollständigen Hilfsskizze ausdrücklich prüft.",
+      "rationaleEn": "KEEP. The second chain is stronger because it explicitly tests distinction from a perpendicular bisector and reconstruction from an incomplete auxiliary sketch."
+    }
+  ],
+  "postIntegrationRequiredChecks": [
+    "fresh independent blind rounds for all four revised goals and all four new atomic child goals",
+    "positive-understanding-evidence-v2 generation and strict validation against final current fingerprints",
+    "semantic-atomicity and memory-card review refresh for changed and new atomic goals",
+    "source-mapping and provenance edge adjudication with regenerated corpus digests",
+    "assessment blueprint, task, solution, examData requires and coveredGoalIds consistency",
+    "contains/requires DAG, projection, applicability, route and frontier validation",
+    "visualization factual review with Nano Banana Pro preservation and NBP-first replacement policy",
+    "full Layer-A curriculum quality report and protected M6 floor gate before progress is counted"
+  ]
+}

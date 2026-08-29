@@ -90,6 +90,8 @@ const repoRoot = path.resolve(__dirname, '../..')
 const jurisdiction = 'DE-ST'
 const targetLandscapeId = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const sourcePdfPath = 'curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf'
+const sourceUrl =
+  'https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Physik_Gym_01082022_swd.pdf'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
@@ -161,10 +163,213 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "66256e22-44a3-5939-8862-821e29d6711d"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-308-f6cbf8fa": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-309-195b1552": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-310-bc3b03ea": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-311-16fce03d": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-312-abec71a0": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-313-b0ea47d1": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-314-fc7c393c": [
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-315-2d45386a": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-316-b3b6290e": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-317-b26c20f6": [
+    "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+    "50877233-7abf-54df-b347-6d3224678fc9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-318-9d1c5fa8": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-319-add0e548": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-320-ba90b001": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-321-56ecfa6c": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f",
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-322-a8635b2a": [
+    "50877233-7abf-54df-b347-6d3224678fc9",
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-323-cff8f6df": [
+    "f74c691b-0b76-54e0-8fd6-a22211994e0a"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-324-27b80972": [
+    "1593d95c-2aac-504c-8527-37cb61877da9",
+    "25d91cc0-d84c-5522-86b5-fdff73264f08",
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-325-a058f9a9": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08",
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-326-ef000908": [
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-327-f4c8f7d6": [
+    "50877233-7abf-54df-b347-6d3224678fc9",
+    "979e0d0d-8933-4ace-814f-f28060ad280f"
+  ]
+}
+
+const batch017RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "st-phys-seki-st-schuljahrgang-6-temperatur-und-warme-083-c5abc33b": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-308-f6cbf8fa": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-309-195b1552": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-310-bc3b03ea": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-311-16fce03d": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-312-abec71a0": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "bbabac7c-9613-4c7e-877e-d7dc3df5300f",
+    "4924d83e-5e4b-4819-9d70-86cda3496195"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-313-b0ea47d1": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-314-fc7c393c": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-315-2d45386a": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-316-b3b6290e": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-317-b26c20f6": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-318-9d1c5fa8": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "ad62f563-4fee-5399-8d9c-03a214658aa9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-319-add0e548": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "ad62f563-4fee-5399-8d9c-03a214658aa9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-320-ba90b001": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "ad62f563-4fee-5399-8d9c-03a214658aa9"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-321-56ecfa6c": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-322-a8635b2a": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "e452baa3-c9fc-5b62-893c-f91fe8d53715"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-323-cff8f6df": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-324-27b80972": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-325-a058f9a9": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2d3d42ae-492b-4795-a22f-eeca03aaed38"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-326-ef000908": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-radioaktivitat-und-kernenergie-327-f4c8f7d6": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-klimaphysik-342-5d53a15b": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-klimaphysik-345-ab840ba1": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-klimaphysik-351-0f1fd7dc": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-klimaphysik-352-3b28ab82": [
+    "9645f0d8-43a3-5f29-873c-daa5ace638db",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-klimaphysik-362-f8a9b3b8": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "st-phys-seki-st-schuljahrgang-10-einfuhrungsphase-klimaphysik-364-9892d9fa": [
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ]
+}
+
+// Batch 025 average/instantaneous-velocity structural split overlay
+const batch025TargetsBySourceGoalId: Record<string, string[]> = {
+  "st-phys-seki-st-schuljahrgang-6-eigenschaften-und-bewegung-von-korpern-und-teilchen-048-7cf285b3": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "st-phys-seki-st-schuljahrgang-6-eigenschaften-und-bewegung-von-korpern-und-teilchen-064-3d3b23b8": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "st-phys-seki-st-schuljahrgang-9-mechanik-der-punktmasse-279-ec7bf2a4": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ]
+}
+const batch025RemovedTargetsBySourceGoalId: Record<string, string[]> = {}
+const batch025RationalesBySourceGoalId = new Map<string, string>([
+  [
+    "st-phys-seki-st-schuljahrgang-6-eigenschaften-und-bewegung-von-korpern-und-teilchen-048-7cf285b3",
+    "Das amtliche Sachsen-Anhalt-Ziel fordert Durchschnittsgeschwindigkeiten bei ungleichförmigen Bewegungen zu berechnen. Momentangeschwindigkeit und Tangentensteigung fehlen; die Zuordnung ist partial."
+  ],
+  [
+    "st-phys-seki-st-schuljahrgang-6-eigenschaften-und-bewegung-von-korpern-und-teilchen-064-3d3b23b8",
+    "Der amtliche Sachsen-Anhalt-Wissensbestand nennt Momentan- und Durchschnittsgeschwindigkeit. Die vollständige Bestimmung und Sekanten-/Tangenten-Deutung ist nicht ausgewiesen; die Zuordnung ist partial."
+  ],
+  [
+    "st-phys-seki-st-schuljahrgang-9-mechanik-der-punktmasse-279-ec7bf2a4",
+    "Der amtliche Sachsen-Anhalt-Wissensbestand nennt Durchschnittsgeschwindigkeit. Momentangeschwindigkeit sowie Sekanten-/Tangentensteigung fehlen; die Zuordnung zum neuen Ziel ist partial."
+  ]
+])
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch025RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch025TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -595,18 +800,19 @@ const buildExtraction = (config: ExtractionConfig) => {
   const passages = [...passageByTopic.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
     const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config.stage))
+    const batch025Rationale = batch025RationalesBySourceGoalId.get(sourceGoal.id)
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,
       sourceSpan: sourceGoal.sourceSpan,
       decision: 'mapped',
       canonicalGoalIds,
-      rationale:
+      rationale: batch025Rationale ?? (
         canonicalGoalIds.length > 1
           ? 'Das amtliche Sachsen-Anhalt-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.'
-          : 'Das amtliche Sachsen-Anhalt-Source-Ziel ist inhaltlich durch den angegebenen kanonischen Physik-Teilbaum abgedeckt; die Zuordnung auf ein Sammelziel ist eine fachliche Abdeckungsentscheidung.',
-      reviewedAt: '2026-05-11',
-      reviewer: 'codex',
+          : 'Das amtliche Sachsen-Anhalt-Source-Ziel ist inhaltlich durch den angegebenen kanonischen Physik-Teilbaum abgedeckt; die Zuordnung auf ein Sammelziel ist eine fachliche Abdeckungsentscheidung.'),
+      reviewedAt: batch025Rationale ? '2026-08-29' : '2026-05-11',
+      reviewer: batch025Rationale ? 'codex-physics-batch-025-motion-split-2026-08-29' : 'codex',
     }
   })
 
@@ -638,6 +844,7 @@ const buildExtraction = (config: ExtractionConfig) => {
       title: 'Fachlehrplan Gymnasium Physik Sachsen-Anhalt 2022',
       path: sourcePdfPath,
       official: true,
+      url: sourceUrl,
     },
     sourceDocuments: [
       {
@@ -645,6 +852,7 @@ const buildExtraction = (config: ExtractionConfig) => {
         title: 'Fachlehrplan Gymnasium Physik Sachsen-Anhalt 2022',
         path: sourcePdfPath,
         official: true,
+        url: sourceUrl,
       },
     ],
     method: {
@@ -861,7 +1069,7 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   if (!root) throw new Error(`physics-root not found for ${suffix}`)
 
   const candidateTargets = suffix.startsWith('sekii') ? [...upperTargetIds] : allTargetIds
-  const allowedTargets = candidateTargets.filter((goalId) => {
+  const allowedTargets = candidateTargets.filter((goalId) => canonicalGoalById.get(goalId)?.type === 'atomic').filter((goalId) => {
     const mappedLevels = allDecisions
       .filter((decision) => decision.canonicalGoalIds.includes(goalId))
       .map((decision) => allSourceGoals.find((sourceGoal) => sourceGoal.id === decision.sourceGoalId)?.courseLevel)
@@ -885,11 +1093,15 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
 }
 
 for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
+  const stViewPath = `${compositionViewDir}/de-st-${suffix}.view.json`
+  // Existing learner-facing views are reviewed authored state. Source
+  // extraction must not rebuild or silently narrow their assessment routes.
+  if (existsSync(path.resolve(repoRoot, stViewPath))) continue
   const template = readJson<Record<string, unknown>>(`${compositionViewDir}/de-bb-${suffix}.view.json`)
   template.viewId = String(template.viewId).replace('de-bb', 'de-st')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
-  writeJson(`${compositionViewDir}/de-st-${suffix}.view.json`, template)
+  writeJson(stViewPath, template)
 }
 
 for (const [index, config] of configs.entries()) {

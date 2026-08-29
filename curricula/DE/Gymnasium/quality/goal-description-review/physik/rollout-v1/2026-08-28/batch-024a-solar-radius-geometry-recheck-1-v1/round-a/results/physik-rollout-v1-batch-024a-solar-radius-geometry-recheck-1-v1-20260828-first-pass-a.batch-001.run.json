@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex",
+  "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-a",
+  "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ff76b90bdf5f936ab639c6738ba514931c64284842b30694fefb26175ed7cb3a",
+  "bundleFingerprint": "sha256:ee4930014d5d5c6a3dd73f1b27db7fb70a04a5b87342cdbf930fafb29a2939ee",
+  "bookDigest": "sha256:dfe2d53372d19fb2bd37ac307d45af138f40131f4c0f51f3774e2148341c04dd",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:cc7735989096b17e65616ec607fce4958b74e24d5fbde2a6773d0d6b0bd80c14",
+  "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ff76b90bdf5f936ab639c6738ba514931c64284842b30694fefb26175ed7cb3a"
+    }
+  ],
+  "startedAt": "2026-08-28T21:06:40Z",
+  "completedAt": "2026-08-28T21:07:49Z",
+  "status": "completed",
+  "outputDigest": "sha256:591322e5944dfcea4f88bb5b5f1c53f72c4225d7f27da173d87d9e5db5f6a2ef",
+  "toolchainVersion": "codex-review-v1"
+}

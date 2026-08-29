@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:80b1eb5c7bded9e4d8f99c548039ebf66940738822f4e01e9c972b8d28b94381",
+  "reviewInputFingerprint": "sha256:7a504066a2aa238472e0f005f3e1e41a65f0219c3f6220c678b964151390d782",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828-a",
+      "roundId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828-independent-a",
+      "runIds": [
+        "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828-b",
+      "roundId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-j9-j10-q2-spatial-vector-chain-20-v1-20260828-independent-b",
+      "runIds": [
+        "mathematik-015-spatial-vector-chain-b-001-codex"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "firstRecordId": "math-b015-a-001-f242a3e8",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r01",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "firstRecordId": "math-b015-a-002-19f170e4",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r02",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "firstRecordId": "math-b015-a-003-94b48b93",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r03",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+      "firstRecordId": "math-b015-a-004-57f6d5e4",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r04",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75",
+      "firstRecordId": "math-b015-a-005-1bc118c3",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r05",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "firstRecordId": "math-b015-a-006-d1352ce0",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r06",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+      "firstRecordId": "math-b015-a-007-a8ff2666",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r07",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "firstRecordId": "math-b015-a-008-235ae698",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r08",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+      "firstRecordId": "math-b015-a-009-b025df0c",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r09",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+      "firstRecordId": "math-b015-a-010-ba343971",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r10",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "firstRecordId": "math-b015-a-011-075f1ef2",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r11",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "firstRecordId": "math-b015-a-012-aae119f2",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r12",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "firstRecordId": "math-b015-a-013-7680701b",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r13",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "firstRecordId": "math-b015-a-014-d81d888c",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r14",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "block",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "firstRecordId": "math-b015-a-015-4af3dfb9",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r15",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "firstRecordId": "math-b015-a-016-d379e28b",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r16",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "firstRecordId": "math-b015-a-017-eb6bfdd9",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r17",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "firstRecordId": "math-b015-a-018-5390691d",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r18",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "firstRecordId": "math-b015-a-019-b04bd2d6",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r19",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "firstRecordId": "math-b015-a-020-d6b74b15",
+      "secondRecordId": "mathematik-015-spatial-vector-chain-b-r20",
+      "firstRunId": "math-b015-j9-j10-q2-spatial-vector-chain-20-round-a-gpt5-20260828",
+      "secondRunId": "mathematik-015-spatial-vector-chain-b-001-codex",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

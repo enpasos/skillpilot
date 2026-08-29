@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `a1389d4e-dc97-5557-babe-a31a2bd57217`
 - Titel: Energie gespeicherter Magnetfelder
-- Beschreibung: Die lernende Person kann die Feldenergie einer Spule bestimmen und technische Anwendungen begründen.
+- Beschreibung: Die lernende Person kann die in einer idealisierten Spule mit konstanter Induktivität gespeicherte magnetische Energie mit W = 1/2 · L · I² bestimmen und Energieaufnahme und -abgabe bei technischen Anwendungen physikalisch begründen.
 
 ## Generator
 
@@ -28,10 +28,27 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Energie gespeicherter Magnetfelder
-Beschreibung: Die lernende Person kann die Feldenergie einer Spule bestimmen und technische Anwendungen begründen.
+Beschreibung: Die lernende Person kann die in einer idealisierten Spule mit konstanter Induktivität gespeicherte magnetische Energie mit W = 1/2 · L · I² bestimmen und Energieaufnahme und -abgabe bei technischen Anwendungen physikalisch begründen.
 
 Zusatzanweisung:
-Create a fresh German educational infographic about energy stored in a magnetic field. Use two independent panels and draw no switches anywhere. In the first panel, show exactly one visibly closed loop containing a battery, resistor and inductor in series, with current I; draw the magnetic field inside the coil and state W_mag = ½ L I². In the second panel, show a separate visibly closed loop containing only the inductor and a resistor or lamp, with no battery and no open wire end; the collapsing field transfers its energy and the lamp briefly glows. Every loop must be closed by continuous connected wires. Never show an open circuit together with persistent current or stored magnetic field. Use correct German spelling and unambiguous connected wires.
+Use case: scientific-educational
+Asset type: deutsche Physik-Lerninfografik im lockeren, freundlichen Cartoon-Stil
+
+Erzeuge eine neue, einfache Zweipanel-Grafik mit dem Titel "Energie gespeicherter Magnetfelder".
+
+Pflichtinhalt und feste Geometrie:
+- Beide Panels zeigen ein sauberes rechteckiges Schaltbild. Die identisch orientierte Spule L sitzt in BEIDEN Panels als normales, vertikal gezeichnetes Schaltsymbol in der RECHTEN Rechteckseite. Ihre beiden Anschluesse beruehren oben und unten ohne jede sichtbare Luecke die schwarze Leitung. Jeder Stromkreis ist eindeutig geschlossen.
+- Panel 1 "Energie speichern": Batterie links, Widerstand R oben, Spule L rechts. Genau ein schwarzer Strompfeil I zeigt auf der oberen Leitung nach rechts und damit in den oberen Spulenanschluss. Zeige gut lesbar "W_mag = 1/2 · L · I²".
+- Panel 2 "Energie abgeben": keine Batterie; Lampe oder Widerstand R links, dieselbe Spule L rechts. Genau ein schwarzer Strompfeil I(t) zeigt auf der oberen Leitung ebenfalls nach rechts und damit in denselben oberen Spulenanschluss. Die Lampe leuchtet kurz.
+- Neben der Spule zeigen in beiden Panels ausschliesslich gerade blaue Magnetfeldpfeile nach unten. In Panel 2 sind es sichtbar weniger oder kuerzere Pfeile und die exakte Beschriftung lautet "abnehmendes Magnetfeld".
+- Die Stromrichtung durch die gleich orientierte Spule und die Magnetfeldrichtung bleiben beim Entladen gleich; nur Strom und Feldstaerke nehmen ab.
+
+Vermeiden:
+- Keine offenen Schalter und keine Luecken zwischen Spulensymbol und Leitung.
+- Spule und Lampe nicht ausserhalb oder nur dekorativ neben den schwarzen Stromkreis setzen.
+- Keine umgekehrten Strom- oder Magnetfeldpfeile im zweiten Panel.
+- Keine gebogenen oder geschlossenen blauen Feldlinien.
+- Keine technischen IDs, Wasserzeichen, Provider- oder Plattformnamen.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-b025-stable4-current-carryover-v1-resolution-4a2bf015-052b-4af0-aed7-324259fa1a8a",
+  "goal": {
+    "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:61e944870cf0c0907ead5f0208201a1de42cd453ada097b88de560c95cb6edd5",
+    "pageFingerprint": "sha256:4656c1a871b653615d9f62b9b0612f888c84df59af439dea59cc5ea5ca8c0309",
+    "goalReviewContextFingerprint": "sha256:bec3f781c3750078da392e5cb29eed1c558912375266e61609a0fbc7aa9abee3",
+    "finalText": {
+      "titleDe": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+      "titleEn": "Physics in Road Traffic: Evaluating Safe Distances",
+      "descriptionDe": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
+      "descriptionEn": "The learner can assess reaction and braking distances qualitatively and using simple models and evaluate safe distances in everyday situations."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-a",
+      "campaignDigest": "sha256:f04ee9008335e4d44dee84e3cc3f92a6f353bfb6683e4edafc0519268bf77b36",
+      "roundId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+      "goalReviewContextFingerprint": "sha256:bec3f781c3750078da392e5cb29eed1c558912375266e61609a0fbc7aa9abee3",
+      "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-b025-e-mechanics-energy-current-round-a-gpt-5.6-codex-20260828",
+      "runManifestDigest": "sha256:83c2e75f9949f088837ed2159721ce42e9c2f30040de7f85aa79cb1b1aeca5f2",
+      "resultsDigest": "sha256:ec3e9fc0c6d94c342ff96ee09ea58a98061832cc06976da610aa2ed134a9b5a6",
+      "recordId": "physik-b025-a-005",
+      "recordDigest": "sha256:30752f704638d753e4b2a6c7209c04776bb51d41bf1f39a8fddb27d699f1909a"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-b",
+      "campaignDigest": "sha256:a40fbfe11c27667315ae5e5dcc9f0c81adacb5a9036de9fa2741c2eeca780a0d",
+      "roundId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+      "goalReviewContextFingerprint": "sha256:bec3f781c3750078da392e5cb29eed1c558912375266e61609a0fbc7aa9abee3",
+      "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b025-round-b-gpt5-20260828",
+      "runManifestDigest": "sha256:627376ec9c75407907484dfb54a4a4c12a61bc791d56bf5b0559070e649d3f9e",
+      "resultsDigest": "sha256:f08e7206b82cb6b1fe525463c1e0e7f8f99127d6cd1049f3e3bb43df4dc05793",
+      "recordId": "physik-b025-round-b-005",
+      "recordDigest": "sha256:8ab2bbdde8a4b1f0829b2651a6703eecc1dcad2466507d1cc33d751a14ed9615"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:384c0f4cf154cfe9558e3d885e094e396a5290bf75afe9b3b47718645617fb24"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-4-v1.json",
+    "manifestId": "physik-b025-stable4-synthesis-openai-codex-20260829",
+    "manifestDigest": "sha256:d99745260ddf18bd4798d439cc34c8e42481cd8a610415213a3282beb055847e",
+    "manifestFingerprint": "sha256:c74a2d65dc61837277963700fca37441a6b810682287ca87e96e166ec7eca988",
+    "decisionId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B025 stable-four compatibility synthesis candidate",
+    "synthesizedAt": "2026-08-28T21:14:55.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz. Die erste Runde ist die ausgewählte Evidenz; die zweite bleibt als gebundene unabhängige Bestätigung erhalten. Drittentscheidung: Both independent reviews support the current scope and learner-facing wording.",
+    "rationaleEn": "Both independent blind reviews confirm the unchanged competency. The first round is selected as evidence; the second remains bound as independent confirmation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Anhalteweg setzt sich aus Reaktions- und Bremsweg zusammen; bei einfachen Modellen wächst der Reaktionsweg proportional zu Geschwindigkeit und Reaktionszeit, der Bremsweg bei konstanter Verzögerung quadratisch mit der Geschwindigkeit. Reale Sicherheitsabstände müssen außerdem Bedingungen, Unsicherheiten und eine explizite Sicherheitsreserve berücksichtigen.",
+      "essentialUnderstandingEn": "Stopping distance is the sum of reaction and braking distance; in simple models, reaction distance is proportional to speed and reaction time, while braking distance under constant deceleration grows with the square of speed. Real safe distances must also account for conditions, uncertainty, and an explicit safety margin.",
+      "observablePerformanceDe": "Die lernende Person trennt für eine gegebene Verkehrssituation Reaktions- und Bremsphase, begründet ein einfaches Modell mit Größen, Einheiten und Annahmen, berechnet oder schätzt den Anhalteweg und bewertet einen vorgeschlagenen Abstand anhand offengelegter Sicherheitskriterien.",
+      "observablePerformanceEn": "For a given traffic situation, the learner separates the reaction and braking phases, justifies a simple model with quantities, units, and assumptions, calculates or estimates stopping distance, and evaluates a proposed gap using stated safety criteria.",
+      "transferExpectationDe": "Bei einer neuen Situation mit nasser Fahrbahn, Gefälle oder veränderter Reaktionszeit passt die lernende Person die Modellannahmen an, sagt die Richtung und ungefähre Stärke der Änderung voraus und begründet einen entsprechend veränderten Sicherheitsabstand.",
+      "transferExpectationEn": "For a new situation involving a wet road, a downhill grade, or a changed reaction time, the learner adapts the model assumptions, predicts the direction and approximate size of the change, and justifies an accordingly modified safe distance."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b378f94b902308cad1ac5d1b35e687f176a8261a81b8483d01c7cd91cee1e264",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6a612587ec300a6c920b10478883051835212bbb2d27305d371a26ec92959dfb"
+}

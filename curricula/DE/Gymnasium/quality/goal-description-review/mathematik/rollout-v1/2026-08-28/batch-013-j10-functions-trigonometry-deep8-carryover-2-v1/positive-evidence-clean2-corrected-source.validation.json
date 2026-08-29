@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-external-j10-keep2-corrected-clean2-positive-understanding-evidence-v2-validation",
+  "validatedAt": "2026-08-28",
+  "valid": true,
+  "errors": [],
+  "materializedInRepository": false,
+  "strictProgressClaimed": false,
+  "goalIds": [
+    "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+    "302a857d-ad71-4bdf-81f3-851c95aeefe1"
+  ],
+  "profileBindings": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "goalFingerprint": "sha256:a132b889da1543803a126a5ed255105b4a258fe18f2e4ef17230afbdfa4b0cd8",
+      "reviewInputFingerprint": "sha256:5762cfcab651d34b04b9065991f4cb0481ccdf0ae3bb77fdfc76c93023103382",
+      "profileFingerprint": "sha256:3924d73084c2c0260f6597feb5fdaf1ec9d3717ba862eafae84c971f893a2146",
+      "archetype": "representation",
+      "expectationCount": 3,
+      "applicationCaseCount": 3,
+      "minimumIndependentDemonstrations": 3,
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1"
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "goalFingerprint": "sha256:c81aeb80b4027471ccc59bef7b52088affac39efbed6734a4f409937f0ad67be",
+      "reviewInputFingerprint": "sha256:6c382da4108b31232f8d9dae9d4d83d2c018d62d750a1ff86c3f5c71d9897d08",
+      "profileFingerprint": "sha256:0e649e9709d2a7f53252e45fa1ccef06a27e58bab3bea42db4b3dcc1623cffe5",
+      "archetype": "representation",
+      "expectationCount": 3,
+      "applicationCaseCount": 3,
+      "minimumIndependentDemonstrations": 3,
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1"
+    }
+  ],
+  "corrections": {
+    "independentAuditDecision": "REVISE",
+    "blockingCorrectionCount": 7,
+    "exponentialCorrectionsApplied": 3,
+    "trigonometricCorrectionsApplied": 4,
+    "bilingualCorrectionsApplied": true
+  },
+  "checks": {
+    "exactCurrentCanonicalAndDescriptionContextBindings": true,
+    "deterministicCorrectedCandidateMaterialization": true,
+    "productionPositiveCandidateMaterialization": true,
+    "productionPositiveCandidateMaterializerSelfTest": true,
+    "productionPositiveV2ProfileModelTest": true,
+    "v2JsonSchema": true,
+    "productionSemanticValidation": true,
+    "e1G1AiCandidateAuthority": true,
+    "threeExpectationsAndThreeIndependentCasesPerGoal": true,
+    "explicitExponentialLimitDirections": true,
+    "coherentInverseExponentialComparison": true,
+    "genuineNonCardinalUnitCircleProjection": true,
+    "reverseGraphToCircleToCosineRepresentation": true,
+    "generalPositiveQuarterTurnDerivation": true,
+    "straightLineInterpolationExplicitlyRejected": true,
+    "arithmeticAndTrigonometricRelationsIndependentlyRecomputed": true,
+    "noRepositoryWriteOrProgressClaim": true
+  },
+  "commandChecks": [
+    {
+      "label": "corrected candidate deterministic materializer",
+      "command": "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx /home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/materialize-corrected-clean2.ts",
+      "status": "PASS",
+      "outputSha256": "sha256:8052cd1a0a3ab795ea567245476c0df73b620ac40a1bf802208c52714ca5742d"
+    },
+    {
+      "label": "original current description/profile binding validator",
+      "command": "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx /home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/validate-profile-candidates.ts",
+      "status": "PASS",
+      "outputSha256": "sha256:f3a081c52dafdd284060203f6305739a7d8debb89b78c89958885052dc8b1937"
+    },
+    {
+      "label": "production positive candidate materializer self-test",
+      "command": "npm --prefix app run test:positive-goal-evidence-candidates",
+      "status": "PASS",
+      "outputSha256": "sha256:07eaf264d3e73a44f5569c357988781758bcb846165e6983af4fc15310f5f45f"
+    },
+    {
+      "label": "production positive V2 profile model test",
+      "command": "npm --prefix app run test:goal-evidence-profile-v2",
+      "status": "PASS",
+      "outputSha256": "sha256:0a9a919251f51915484cbf7e81f3e4e931fb84ada424d20db7cdc26e621e8fc1"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "workflow_gate",
+      "goalIds": [
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1"
+      ],
+      "finding": "The seven blocking corrections are implemented and locally validated, but the corrected fingerprints have not yet received the repeated independent content check required by the source audit.",
+      "treatment": "Run one fresh independent profile-specific subject audit against corrected-clean2.candidates.json before repository materialization.",
+      "blocksCorrectedCandidateValidity": false,
+      "blocksRepositoryIntegration": true,
+      "productOwnerDecisionRequired": false
+    }
+  ],
+  "inputArtifacts": {
+    "correctedCandidates": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/corrected-clean2.candidates.json",
+      "bytes": 28705,
+      "sha256": "sha256:79f984d81959bedde11e477f981a560a4b9e30e947aad72c164acf86f94bf858"
+    },
+    "correctedMaterializer": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/materialize-corrected-clean2.ts",
+      "bytes": 15547,
+      "sha256": "sha256:b3b2d76e0d850402a7a268076928624698169a4a288756f2b92aa1d3a8972604"
+    },
+    "correctedValidator": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/validate-corrected-clean2.ts",
+      "bytes": 21531,
+      "sha256": "sha256:c60ec2e83e2883e8deae67e47922c0343af2087064bcc90a4159c15bd83a6915"
+    },
+    "independentAudit": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/independent-profile-audit-clean2.json",
+      "bytes": 17653,
+      "sha256": "sha256:bbd84129e7f78f67eba624a05211c52fe17f00e8cbe6b1398053541ae20bdde4"
+    },
+    "originalCandidates": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/candidates.json",
+      "bytes": 39500,
+      "sha256": "sha256:28266cd1b9a58b052e5becc3e00e9a6456dd784c8277807b550490b4893b6c2e"
+    },
+    "originalValidator": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/validate-profile-candidates.ts",
+      "bytes": 27325,
+      "sha256": "sha256:78d0aed0cfb6f1bc22fe77c75bd5e259133c973818ec29a518e6609b2c988ec6"
+    },
+    "originalValidation": {
+      "path": "/home/enpasos/.codex/artifacts/skillpilot-deep-understanding/2026-08-28-math-j10-deep8-precommit-v1/keep3-positive-evidence-v2/validation.json",
+      "bytes": 15184,
+      "sha256": "sha256:33bf4fd62814d94e706f963088634283077c94f4240c021f52e9a9547509baaa"
+    },
+    "currentLandscape": {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3240775,
+      "sha256": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f"
+    },
+    "currentSemanticKinds": {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 378360,
+      "sha256": "sha256:4bbb39a5846692a190678772eefd9fe08ca5e4f2e8dfeeaa44201da9e5956dc0"
+    },
+    "profileCriteria": {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "bytes": 8064,
+      "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    "profileSchema": {
+      "path": "/home/enpasos/projects/skillpilot/contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "bytes": 8707,
+      "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    }
+  }
+}

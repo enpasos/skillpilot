@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-goal-description-third-adjudication-draft",
+  "draftContract": "skillpilot-goal-description-bilingual-adjudication-draft-v1",
+  "batchId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828",
+  "subject": "physik",
+  "adjudicatedAt": "2026-08-28",
+  "authority": "third_non_blind_subject_adjudication",
+  "mode": "repository_local_subject_adjudication",
+  "noProgressClaim": true,
+  "materialized": false,
+  "inputBinding": {
+    "configDigest": "sha256:01eaaa9382152893e3fdfe77f1cce67e820aac37eb97da513302e71982f87566",
+    "batchManifestDigest": "sha256:2379a2430ef9de5d98d814fff290a1a019b73c009c1f8dc78710192ec017e2a2",
+    "bundleFingerprint": "sha256:a3c1842958e8e019d61716d56b03b091cf9b901a8d8e066c9de8f93777f47af1",
+    "reviewInputFingerprint": "sha256:069ac646455058b2679741448cf93fa60df1b2baad8a6c7181ec786685cf4f80",
+    "bookDigest": "sha256:06eefd11230cb6189f05fbfbb52273ceffe1132b3709951025f8b27f0b925b69",
+    "dualSummaryDigest": "sha256:ed730192fc99cddeb977f104679af9b99b19c266d7a8832466606aa8b5b397d4",
+    "goalCount": 16,
+    "roundA": {
+      "runId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-a.batch-001.run-001",
+      "runDigest": "sha256:f37c594beb15dc8c236e52a5cdc45eb409af2e73401a68daacb0521ad5532cc7",
+      "recordsDigest": "sha256:edaad09693d70309909c499b777d6216aa5a8972d6f37f4b2d44dbb14b2e22a9"
+    },
+    "roundB": {
+      "runId": "physik-rollout-v1-batch-019-q1-q2-magnetism-induction-16-v1-20260828-first-pass-b.batch-001.openai-gpt5-review-b",
+      "runDigest": "sha256:fbe62448c665e651aff1f7d53ae5ba9022187999ae18e40cf82990a6bb74868e",
+      "recordsDigest": "sha256:493e11d6d2cb26afeab11077889d2b0900903d1a7bac07adf4f5aa6e8f79a7c2"
+    },
+    "blindnessEndedOnlyForThisThirdAdjudication": true
+  },
+  "counts": {
+    "total": 16,
+    "keep_current": 1,
+    "accepted_revision": 15,
+    "structural_split": 0,
+    "unresolved_block": 0,
+    "finalizableUnderCurrentText": 1,
+    "strictlyFinalizableBeforeIntegratedFollowUp": 0,
+    "requiresCanonicalReworkAndFreshBlindReview": 15,
+    "postRevisionExpectedCurricularAtomicDenominator": 447,
+    "postRevisionAffectedAtomicReviewCount": 16,
+    "requiresFullContextRecheck": 16,
+    "requiresProductOwnerDecision": 0
+  },
+  "adjudicationPolicy": {
+    "minimalChangeRule": "Only identified weaknesses are changed. A leaf may remain atomic when its final wording makes one observable model-selection or comparison competence the organizing performance.",
+    "splitSafetyRule": "If both fresh blind reviewers independently still classify either final model-selection or comparison wording as a semantic bundle, reopen structural adjudication before any strict progress claim.",
+    "rationaleDe": "Die beiden bisherigen Split-Kandidaten werden nicht aus Effizienzgründen ungeprüft beibehalten, sondern fachlich zu jeweils einer einzelnen, beobachtbaren Modellwahl- beziehungsweise Vergleichsleistung geschärft. Offizielle Quellen, vorhandene Aufgaben und die bestehenden Nano-Banana-Pro-Vergleichsbilder tragen diesen Zuschnitt. Zwei frische unabhängige Blindreviews prüfen die endgültigen Texte erneut und können den Split fail-closed wieder öffnen.",
+    "rationaleEn": "The two prior split candidates are not retained merely for efficiency. Each is sharpened into one observable model-selection or comparison performance supported by official sources, existing tasks, and the current Nano Banana Pro comparison images. Two fresh independent blind reviews will reassess the final wording and can reopen structural splitting fail-closed."
+  },
+  "contractNoteDe": "Fünfzehn Beschreibungen werden gezielt präzisiert; ein bereits kausaler Text bleibt unverändert. Es entstehen keine neuen IDs und der Physik-Nenner bleibt 447. Die Retitel, die neue Vergleichsformulierung und eine zusätzliche fachliche Voraussetzung verändern requires- und reverseRequires-Seitenkontexte, daher werden alle 16 Ziele nach der Integration in einem frischen topologischen Batch zweimal unabhängig blind geprüft. Vor Abschluss dieser Reviews, der positiven Evidenzprofile und aller betroffenen Layer-A-Prüfungen wird kein zusätzlicher strikter Fortschritt beansprucht.",
+  "contractNoteEn": "Fifteen descriptions receive targeted clarifications and one already causal description remains unchanged. No new IDs are introduced and the Physics denominator remains 447. Retitles, the new comparison wording, and one additional substantive prerequisite change requires and reverseRequires page contexts, so all 16 goals will receive two fresh independent blind reviews in one topological batch after integration. No additional strict progress is claimed before those reviews, the positive evidence profiles, and all affected Layer A checks pass.",
+  "productOwnerEscalations": [],
+  "sourceAndImpactAudit": {
+    "canonicalSnapshotSha256": "sha256:dfdacc61736f7b5d11e08de2f695f63514a1f01239c664d1afe005180d6b0b89",
+    "impactAuditVerified": true,
+    "stableIdDecision": "Keep both disputed IDs atomic for the first integrated re-review. Do not create or map speculative children unless the fresh blind consensus reopens a split.",
+    "goal1": {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "reverseRequiresCount": 8,
+      "directCompositionEntryCount": 11,
+      "mappingRowCount": 20,
+      "mappingFileCount": 9,
+      "supportingAssessmentId": "dbe230d5-31e1-5fca-8e11-2226821952ff",
+      "incomingRequiresRebindings": [
+        {
+          "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+          "requiresAfterRevision": [
+            "0f6b798b-594e-5480-8c5f-95e2486a4d85"
+          ]
+        },
+        {
+          "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+          "requiresAfterRevision": [
+            "0f6b798b-594e-5480-8c5f-95e2486a4d85"
+          ]
+        },
+        {
+          "goalId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+          "requiresAfterRevision": [
+            "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+          ]
+        },
+        {
+          "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+          "requiresAfterRevision": [
+            "0f6b798b-594e-5480-8c5f-95e2486a4d85"
+          ]
+        }
+      ],
+      "note": "The released assessment explicitly requires choosing and applying both field models and explaining one validity limit for each, which supports a single model-selection competence. Existing mapping match types still require a bounded source-by-source recheck."
+    },
+    "goal6": {
+      "goalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "reverseRequiresCount": 3,
+      "directCompositionEntryCount": 6,
+      "mappingRowCount": 18,
+      "mappingFileCount": 10,
+      "note": "Hessen Q1.2 and several other state sources treat particle or circular accelerators as one application category. The final wording makes comparison explicit; all mapping match types and the new electric-field prerequisite still require bounded revalidation."
+    },
+    "assessmentDebt": [
+      {
+        "assessmentId": "ba29e928-a287-5de7-b3fe-5c8c3731363b",
+        "finding": "The released task currently does not assess either straight-conductor or solenoid field determination despite depending on the combined goal."
+      },
+      {
+        "assessmentId": "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+        "finding": "The released task currently contains no accelerator task despite claiming the accelerator goal."
+      },
+      {
+        "assessmentId": "d441ee2f-9230-5751-832b-5b0b5cf14605",
+        "finding": "The generic Q1 umbrella task claims 39 goals without goal-specific prompts; its coverage requires a separate bounded assessment-alignment repair rather than silent expansion in this description batch."
+      }
+    ],
+    "mappingDebt": [
+      {
+        "sourceGoalId": "mv-phys-sekii-rp2022-q-teilchen-felder-003-38b4f6b0",
+        "finding": "This source goal concerns a linear accelerator and should be checked against existing canonical goal 74a74132-fa39-541c-8d3c-696cf228452d instead of the circular-accelerator comparison."
+      }
+    ]
+  },
+  "visualizationPolicy": {
+    "preserveExistingNanoBananaProBytes": true,
+    "goalIds": [
+      "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "2d62b444-796e-548d-aeee-cfd9c6665ddc"
+    ],
+    "noteDe": "Beide vorhandenen Nano-Banana-Pro-Bilder visualisieren bereits genau die Modellwahl beziehungsweise den Vergleich. Ihre Bildbytes werden nicht ersetzt; nach finaler Textbindung werden nur Titel, Beschreibung und Alt-Text fachlich synchronisiert und erneut geprüft.",
+    "noteEn": "Both existing Nano Banana Pro images already visualize the intended model choice or comparison. Their image bytes are preserved; only title, description, and alt text are synchronized after final text binding and reviewed again."
+  },
+  "decisions": [
+    {
+      "sequence": 1,
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "reviewPositions": { "first": "split_review", "second": "split_review" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "third_source_and_assessment_adjudication",
+      "finalText": {
+        "titleDe": "Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden",
+        "titleEn": "Select and Apply Magnetic-Field Models for a Straight Conductor and a Long Solenoid",
+        "descriptionDe": "Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.",
+        "descriptionEn": "The learner can select the appropriate magnetic-field model for an idealized long straight current-carrying conductor in air and for the interior of an idealized long solenoid with a homogeneous linear core, determine the magnitude using B = μ₀ · I/(2πr) or B ≈ μ₀ · μᵣ · (N/ℓ) · I, state the direction using the right-hand rule, and justify the models' different validity limits."
+      },
+      "requiresAfterRevision": ["0f6b798b-594e-5480-8c5f-95e2486a4d85"],
+      "rationaleDe": "Die endgültige Leistung ist nicht das additive Abarbeiten zweier Formeln, sondern die fachlich begründete Auswahl und Anwendung eines von zwei idealisierten Feldmodellen einschließlich Gültigkeitsgrenze. Die amtlichen Quellen bündeln die Konfigurationen teilweise, und eine vorhandene Aufgabe prüft genau diese Modellwahl in einem zusammenhängenden Teil.",
+      "rationaleEn": "The final performance is not an additive recitation of two formulas but the justified selection and application of one of two idealized field models including its validity limit. Official sources partly group the configurations, and an existing task assesses exactly this model choice in one coherent part."
+    },
+    {
+      "sequence": 2,
+      "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Kraft auf stromdurchflossene Leiter",
+        "titleEn": "Force on Current-Carrying Conductors",
+        "descriptionDe": "Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.",
+        "descriptionEn": "The learner can determine the magnitude and direction of the force on a straight current-carrying conductor segment in a uniform magnetic field using F = B · I · ℓ · sin(α), where α is the angle between the current and field directions, and determine B from a force measurement in the perpendicular case using B = F/(I · ℓ)."
+      },
+      "rationaleDe": "Die Senkrechtbedingung für B = F/(I · ℓ) wird explizit; die Umstellung wird korrekt als operative Bestimmung statt als allgemeine Definition bezeichnet.",
+      "rationaleEn": "The perpendicular condition for B = F/(I · ℓ) becomes explicit, and the rearrangement is correctly framed as an operational determination rather than a general definition."
+    },
+    {
+      "sequence": 3,
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Kreisbahnen geladener Teilchen quantitativ bestimmen",
+        "titleEn": "Quantitatively Determine Circular Orbits of Charged Particles",
+        "descriptionDe": "Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.",
+        "descriptionEn": "Within the nonrelativistic model, the learner can determine the orbit radius and period of a charged particle whose velocity is perpendicular to a uniform magnetic field from the Lorentz and centripetal forces."
+      },
+      "rationaleDe": "Die Revision ersetzt die physikalisch zu breite Angabe homogene Felder durch die notwendigen Kreisbahnbedingungen.",
+      "rationaleEn": "The revision replaces the physically over-broad phrase homogeneous fields with the necessary circular-orbit conditions."
+    },
+    {
+      "sequence": 4,
+      "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben",
+        "titleEn": "Describe Charged Particles in Magnetic Fields at Arbitrary Entry Angles",
+        "descriptionDe": "Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.",
+        "descriptionEn": "The learner can decompose the velocity of a charged particle entering a uniform magnetic field into field-parallel and field-perpendicular components and use the Lorentz force to qualitatively interpret straight, circular, or helical trajectories."
+      },
+      "rationaleDe": "Homogenität und die geraden beziehungsweise kreisförmigen Grenzfälle werden explizit.",
+      "rationaleEn": "Uniformity and the straight and circular limiting cases become explicit."
+    },
+    {
+      "sequence": 5,
+      "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "reviewPositions": { "first": "split_review", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Hall-Effekt anwenden",
+        "titleEn": "Apply the Hall Effect",
+        "descriptionDe": "Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.",
+        "descriptionEn": "The learner can determine the Hall voltage in a current-carrying conductor in a magnetic field and use its magnitude or sign to explain how the Hall effect is used to measure magnetic fields or determine the charge-carrier type."
+      },
+      "rationaleDe": "Spannungsbestimmung und Messanwendung bilden eine kohärente Ursache-Messgröße-Auswertung-Kette; bloßes Nennen von Einsatzgebieten entfällt.",
+      "rationaleEn": "Voltage determination and measurement use form one coherent cause-quantity-interpretation chain; mere recall of application areas is removed."
+    },
+    {
+      "sequence": 6,
+      "goalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "reviewPositions": { "first": "split_review", "second": "split_review" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "third_source_and_comparison_adjudication",
+      "finalText": {
+        "titleDe": "Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen",
+        "titleEn": "Compare Cyclotrons and Synchrotrons as Circular Accelerators",
+        "descriptionDe": "Die lernende Person kann Zyklotron und Synchrotron anhand der gemeinsamen Rollen elektrischer Felder beim Beschleunigen und magnetischer Felder bei der Bahnführung vergleichen, die feste Hochfrequenztaktung mit wachsendem Bahnradius beim idealisierten nichtrelativistischen Zyklotron von der angepassten Beschleunigungsphase und Magnetfeldstärke bei näherungsweise konstantem Synchrotronradius unterscheiden und daraus wesentliche Modell- und Betriebsgrenzen begründen.",
+        "descriptionEn": "The learner can compare cyclotrons and synchrotrons through the common roles of electric fields in accelerating particles and magnetic fields in guiding their trajectories, distinguish the fixed radio-frequency timing and increasing orbit radius of an idealized nonrelativistic cyclotron from the adjusted accelerating phase and magnetic-field strength at an approximately constant synchrotron radius, and use these differences to justify key model and operating limits."
+      },
+      "requiresAfterRevision": [
+        "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+        "3b866aea-3e4d-5f23-91de-759148382710"
+      ],
+      "rationaleDe": "Der alte Text verlangte zwei additive Geräteerklärungen und nannte die Anlagen irreführend rotierend. Die neue Fassung macht den fachlich einheitlichen Vergleich von Feldrollen, Synchronisation, Bahnregelung und Grenzen zur beobachtbaren Kernleistung; die Quellen führen beide Geräte als Beispiele derselben Beschleunigerkategorie.",
+      "rationaleEn": "The old text required two additive device explanations and misleadingly called the machines rotating. The revision makes comparison of field roles, synchronization, orbit control, and limits the observable organizing performance; the sources present both devices as examples of one accelerator category."
+    },
+    {
+      "sequence": 7,
+      "goalId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "reviewPositions": { "first": "keep", "second": "keep" },
+      "resolutionDecision": "keep_current",
+      "finalizableUnderCurrentText": true,
+      "strictBeforeIntegratedFollowUp": false,
+      "evidenceRound": "first",
+      "finalText": {
+        "titleDe": "Bewegungsinduktion und Ladungstrennung",
+        "titleEn": "Motional Induction and Charge Separation",
+        "descriptionDe": "Die lernende Person kann die Entstehung einer elektrischen Spannung an einem im Magnetfeld bewegten Leiterstück als Folge der Lorentzkraft auf die Leitungselektronen qualitativ erklären.",
+        "descriptionEn": "The learner can qualitatively explain the origin of an electric voltage in a conductor moving through a magnetic field as a consequence of the Lorentz force on conduction electrons."
+      },
+      "requiresAfterRevision": [
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "rationaleDe": "Der Text ist bereits präzise und kausal. Die Voraussetzung wird vom sachfremd engen Leiter-/Spulen-Feldmodell auf die unmittelbar benötigte Lorentzkraft-Kompetenz umgebunden; dadurch ändert sich der Review-Seitenkontext.",
+      "rationaleEn": "The text is already precise and causal. Its prerequisite is rebound from the unnecessarily narrow conductor/solenoid field model to the directly required Lorentz-force competence, changing the review-page context."
+    },
+    {
+      "sequence": 8,
+      "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Induktion durch Änderung des magnetischen Flusses",
+        "titleEn": "Induction by Change of Magnetic Flux",
+        "descriptionDe": "Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.",
+        "descriptionEn": "For a uniform magnetic field, the learner can describe the magnetic flux Φ = B · A · cos(α) through the area enclosed by a conducting loop, where α is the angle between the field direction and the surface normal, and qualitatively explain that a change of this flux over time produces an induced voltage."
+      },
+      "rationaleDe": "Flussdefinition und Induktion werden über die entscheidende physikalische Beziehung verbunden.",
+      "rationaleEn": "The flux definition and induction are connected through the decisive physical relation."
+    },
+    {
+      "sequence": 9,
+      "goalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "first",
+      "finalText": {
+        "titleDe": "Induktionsgesetz und Lenz’sche Regel",
+        "titleEn": "Law of Induction and Lenz’s Law",
+        "descriptionDe": "Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.",
+        "descriptionEn": "For a coil with N equivalent turns, the learner can determine the mean induced voltage using U_ind = −N · ΔΦ/Δt and, for a closed circuit, justify the direction of the induced current using Lenz’s law as an effect opposing the change in flux."
+      },
+      "rationaleDe": "Windungszahl, Flussbezug, geschlossener Stromkreis und die Wirkung gegen die Flussänderung werden explizit.",
+      "rationaleEn": "Turn count, flux relation, the closed-circuit condition, and opposition to the change in flux become explicit."
+    },
+    {
+      "sequence": 10,
+      "goalId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Wirbelströme und Waltenhofen-Pendel",
+        "titleEn": "Eddy Currents and the Waltenhofen Pendulum",
+        "descriptionDe": "Die lernende Person kann die Entstehung von Wirbelströmen in massiven Leitern mit Induktionsgesetz und Lenz’scher Regel erklären sowie ihre bremsende Wirkung am Waltenhofen-Pendel und ihre Verringerung durch Blechpakete in Transformatorenkernen begründen.",
+        "descriptionEn": "The learner can explain the formation of eddy currents in bulk conductors using the law of induction and Lenz’s law and justify both their braking effect in a Waltenhofen pendulum and their reduction by laminations in transformer cores."
+      },
+      "rationaleDe": "Die Fragmente werden zu einer kausalen Kompetenz; Blechpakete verringern Wirbelströme, statt sie vollständig zu vermeiden.",
+      "rationaleEn": "The fragments become one causal performance; laminations reduce eddy currents rather than eliminating them completely."
+    },
+    {
+      "sequence": 11,
+      "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+      "reviewPositions": { "first": "keep", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second",
+      "finalText": {
+        "titleDe": "Selbstinduktion und Induktivität",
+        "titleEn": "Self-Induction and Inductance",
+        "descriptionDe": "Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.",
+        "descriptionEn": "The learner can phenomenologically explain how a coil responds during switch-on and switch-off processes through a self-induced voltage that opposes the change in current and interpret inductance as a measure of the strength of this relation."
+      },
+      "rationaleDe": "Die Revision ersetzt die missverständliche Schaltverzögerung durch den kausalen Widerstand gegen die Stromänderung.",
+      "rationaleEn": "The revision replaces the ambiguous switching delay with the causal opposition to the change in current."
+    },
+    {
+      "sequence": 12,
+      "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Ein- und Ausschaltvorgänge analysieren",
+        "titleEn": "Analyze Switch-On and Switch-Off Processes",
+        "descriptionDe": "Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.",
+        "descriptionEn": "The learner can quantitatively analyze current and voltage curves when an idealized RL circuit is switched on and off using the time constant τ = L/R and determine the inductance from such a transient."
+      },
+      "rationaleDe": "System, beobachtete Größen und quantitative Beziehung werden prüfbar benannt.",
+      "rationaleEn": "The system, observed quantities, and quantitative relation become assessable."
+    },
+    {
+      "sequence": 13,
+      "goalId": "a1389d4e-dc97-5557-babe-a31a2bd57217",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Energie gespeicherter Magnetfelder",
+        "titleEn": "Energy Stored in Magnetic Fields",
+        "descriptionDe": "Die lernende Person kann die in einer idealisierten Spule mit konstanter Induktivität gespeicherte magnetische Energie mit W = 1/2 · L · I² bestimmen und Energieaufnahme und -abgabe bei technischen Anwendungen physikalisch begründen.",
+        "descriptionEn": "The learner can determine the magnetic energy stored in an idealized inductor with constant inductance using W = 1/2 · L · I² and physically justify energy uptake and release in technical applications."
+      },
+      "rationaleDe": "Modellbedingung, Formel und die fachliche Basis der Anwendungsbegründung werden explizit.",
+      "rationaleEn": "The model condition, formula, and physical basis for application reasoning become explicit."
+    },
+    {
+      "sequence": 14,
+      "goalId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+      "reviewPositions": { "first": "split_review", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "second_source_bounded",
+      "finalText": {
+        "titleDe": "Technische Anwendungen des Induktionsgesetzes qualitativ erklären",
+        "titleEn": "Qualitatively Explain Technical Applications of the Law of Induction",
+        "descriptionDe": "Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.",
+        "descriptionEn": "For a given technical application—such as a generator, transformer, induction charger, or induction cooktop—the learner can qualitatively explain what changes the magnetic flux, what voltage and, in a closed circuit, what currents are induced, and what technical purpose this serves."
+      },
+      "rationaleDe": "Die Geräte sind alternative Transferfälle eines gemeinsamen Analyseschemas und werden nicht kumulativ verlangt; Ursache, induzierte Größe und Zweck machen die Leistung beobachtbar.",
+      "rationaleEn": "The devices are alternative transfer cases of one common analysis pattern rather than cumulative requirements; cause, induced quantity, and purpose make the performance observable."
+    },
+    {
+      "sequence": 15,
+      "goalId": "ffbbf243-c2eb-4330-b050-837de994c130",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Elektromagnetische Felder im Maxwell-Überblick beschreiben",
+        "titleEn": "Describe Electromagnetic Fields in a Maxwell Overview",
+        "descriptionDe": "Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.",
+        "descriptionEn": "The learner can qualitatively interpret the four Maxwell equations as statements about electric charges as sources of electric fields, the absence of magnetic sources, the circulation of electric fields caused by time-varying magnetic fields, and the circulation of magnetic fields caused by currents and time-varying electric fields, and describe how the equations work together without formally deriving them."
+      },
+      "rationaleDe": "Der fachliche Überblick wird präzise und die Schreibweise Überblick korrigiert, ohne eine formale Herleitung zu verlangen.",
+      "rationaleEn": "The conceptual overview becomes precise and the German spelling is corrected without requiring a formal derivation."
+    },
+    {
+      "sequence": 16,
+      "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "reviewPositions": { "first": "revise", "second": "revise" },
+      "resolutionDecision": "accepted_revision",
+      "finalizableUnderCurrentText": false,
+      "strictBeforeIntegratedFollowUp": false,
+      "revisionBasis": "hybrid",
+      "finalText": {
+        "titleDe": "Induktionsgesetz in Ableitungsform anwenden",
+        "titleEn": "Apply the Time-Derivative Form of the Law of Induction",
+        "descriptionDe": "Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.",
+        "descriptionEn": "When magnetic flux is a differentiable function of time, the learner can determine the instantaneous induced voltage of a coil with N equivalent turns using U_ind(t) = −N · dΦ(t)/dt and physically interpret the voltage’s time dependence."
+      },
+      "rationaleDe": "Ableitungsform bezeichnet eindeutig die zeitliche Flussableitung und vermeidet die Verwechslung mit der lokalen Maxwell-Faraday-Gleichung.",
+      "rationaleEn": "Time-derivative form unambiguously denotes the time derivative of flux and avoids confusion with the local Maxwell-Faraday equation."
+    }
+  ],
+  "integrationOrder": [
+    "Apply and source-recheck goals 1-6, including the added electric-field prerequisite for goal 6.",
+    "Regenerate the final 16-page topological review bundle so goal 7 and the induction chain see current prerequisite titles and reverse-requires contexts.",
+    "Run two fresh independent blind description reviews; reopen structural adjudication if both reject either model-selection or comparison atom.",
+    "Refresh semantic-atomicity and memory decisions for changed semantic fingerprints; keep memory cards narrow and correct physics_q1_c14 to use the charge magnitude |q| if its formula is touched.",
+    "Recheck all affected source mappings and the named assessment debts without mechanically broadening or narrowing unrelated terminal routes.",
+    "Preserve existing Nano Banana Pro image bytes, synchronize their textual metadata, and rerun visualization QA and rollout parity.",
+    "Create positive-understanding-evidence-v2 profiles only after final text and graph context are stable, then run all affected Layer A, M6 floor, and review-freeze checks."
+  ]
+}

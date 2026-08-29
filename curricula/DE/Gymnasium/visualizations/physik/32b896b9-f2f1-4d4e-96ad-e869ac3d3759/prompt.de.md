@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `32b896b9-f2f1-4d4e-96ad-e869ac3d3759`
 - Titel: Newtons 1. Axiom anwenden
-- Beschreibung: Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen anwenden und Kräftegleichgewicht von gleichförmiger Bewegung abgrenzen.
+- Beschreibung: Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen in Inertialsystemen anwenden und erklären, dass eine verschwindende resultierende äußere Kraft sowohl mit Ruhe als auch mit gleichförmig-geradliniger Bewegung vereinbar ist.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Newtons 1. Axiom anwenden
-Beschreibung: Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen anwenden und Kräftegleichgewicht von gleichförmiger Bewegung abgrenzen.
+Beschreibung: Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen in Inertialsystemen anwenden und den Unterschied zwischen einer verschwindenden resultierenden Kraft und den Bewegungszuständen Ruhe beziehungsweise gleichförmig-geradlinige Bewegung erklären.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Wende das Trägheitsprinzip in einer Alltagssituation innerhalb eines Inertialsystems an und trenne klar zwischen verschwindender resultierender Kraft und den möglichen Bewegungszuständen Ruhe oder gleichförmig-geradliniger Bewegung.
+
 Pflichtinhalt:
 
 Show applying Newton's first law to distinguish force balance from motion state.
@@ -68,4 +71,4 @@ Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Kompatibilitätsprüfung 2026-08-29: Das unveränderte Nano-Banana-Pro-Asset bleibt mit der präzisierten Beziehung zwischen Kraftbilanz, Ruhe und gleichförmiger Bewegung vereinbar. Assetbytes und Digest sowie der historische eingezäunte Generator-Prompt bleiben unverändert.

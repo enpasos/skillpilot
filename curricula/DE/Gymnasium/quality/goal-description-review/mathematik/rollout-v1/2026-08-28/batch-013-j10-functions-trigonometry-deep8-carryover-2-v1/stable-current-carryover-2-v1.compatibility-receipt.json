@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-rollout-v1-j10-clean2-stable-current-carryover-v1-20260828",
+  "purpose": "Bounded compatibility reuse of two exact-current keep/keep reviews from a closed eight-goal J10 deep-review campaign.",
+  "sourceBatchId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828",
+  "sourceCampaignGoalCount": 8,
+  "claimedGoalIds": [
+    "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+    "302a857d-ad71-4bdf-81f3-851c95aeefe1"
+  ],
+  "claimedGoalCount": 2,
+  "blockedCurrentCandidateGoalIds": [
+    "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+  ],
+  "blockedCurrentCandidateReason": "The periodic-modeling goal has many unrelated mapping edges and an assessment that overclaims the full competence; it remains excluded until both debts are repaired and revalidated.",
+  "canonicalReworkGoalIds": [
+    "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+    "53b47494-ec60-4128-840d-2a4c4bab6d32",
+    "6a4716bd-8038-46bb-b647-0db4a254fee7",
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+    "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+  ],
+  "canonicalReworkReason": "These goals have adjudicated text revisions or structural splits and require canonical integration followed by two fresh blind reviews.",
+  "sourceDualSummaryDigest": "sha256:1404b6f1c269323e00ace716b0230535a25ef98ce2da82c2edcc44c90d625197",
+  "importedBundleFingerprint": "sha256:7cb4cbdbeaa001638f725579d114c23c69f2df5c6dbee793617fc222733f4814",
+  "currentCanonicalLandscapeDigest": "sha256:13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+  "sourceAdjudicationDigest": "sha256:19acc2ea7569e51227c89623ef511b79f1b505672b35d4d78397eb59820c5f5c",
+  "sourceAdjudicationValidationDigest": "sha256:d09cf0d984b34cdc89e065846d8680feba18fd9eb19edaef226e85720dd8d67f",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-2-v1.json",
+  "resolutionIndexFormat": "legacy-schema-v1-partial-group",
+  "rationale": [
+    "Both bilingual goal texts, goal fingerprints, contexts, bundle bytes, and both independent keep records are exact-current.",
+    "The source campaign contains eight goals, while only these two are currently clean, stable, and unowned. Schema v2 requires the complete campaign and cannot represent this bounded carryover.",
+    "A fresh two-goal campaign would repeat two already valid independent reviews without adding subject evidence. The supported schema-v1 partial-group compatibility path preserves fresh per-resolution production validation.",
+    "The third current KEEP goal is deliberately excluded because its mapping and assessment debt would make a strict integration claim unsound.",
+    "This receipt changes no canonical goal, graph, mapping, assessment, atomicity, memory, visualization, or Nano Banana asset bytes and grants no progress until the central five-gate rollout check passes."
+  ],
+  "safeguards": {
+    "individualResolutionsFreshlyValidated": true,
+    "duplicateOwnershipFailsClosed": true,
+    "staleCanonicalContextFailsClosed": true,
+    "positiveEvidenceValidatedSeparately": true,
+    "blockedMappingAssessmentCandidateExcluded": true,
+    "canonicalRevisionAndSplitCandidatesExcluded": true,
+    "productOwnerEscalationRequired": false
+  }
+}

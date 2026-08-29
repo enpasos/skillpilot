@@ -1,0 +1,188 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b025b-revised-five-keep-current-synthesis-20260829",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex synthesis after independent rounds A and B",
+  "synthesizedAt": "2026-08-29T00:55:14.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829",
+    "batchManifestDigest": "sha256:413ed58f6702996459701cf0b749cc0d12e147922b59dd0540a8a9861f1b2e0c",
+    "configDigest": "sha256:88406b9f36d0be9a987561cba31497b9934faed25835354a079ea6cc7669c398",
+    "bundleFingerprint": "sha256:fa3833588f294b2e9c39676cf3a1203ed13e0e0e01b63a46637a21dadc19f493",
+    "bookDigest": "sha256:a1a6164627f565cb0e3409b87efc3dacb4955348643876c222869745f11ff26c",
+    "reviewInputFingerprint": "sha256:73f124bf5d85d4b9e3988d59782956aa663e852a53ded9306f4aa84aa7357c9b",
+    "dualSummaryDigest": "sha256:6a2cf1a5d073acae83a597f5c60c046a56f05df2ad6f4726bbadf23c670c06b7",
+    "canonicalLandscapeDigest": "sha256:a8eb1398a6d11dcdbdb02ccb4bd3526a512ecac8743630d24ae2381b8041a64c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-a",
+      "campaignDigest": "sha256:198b8a3b4d9c38e695bf2e008a61477ff3f638035b931c672e54e705f346107a",
+      "roundId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-independent-a",
+      "reviewInputFingerprint": "sha256:73f124bf5d85d4b9e3988d59782956aa663e852a53ded9306f4aa84aa7357c9b",
+      "batchId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:72eb43defe83a9adc92cf5014aa2bdfb9fb4c713cf790d77fea6d2b9757b921f",
+      "runId": "physik-b025b-round-a-blind-reviewer-codex-gpt5-20260829t005218z",
+      "runManifestDigest": "sha256:d250ce8baa9a11a4ccbcd9faf58a87114ab35280b1cefa316c23f010a3fa69af",
+      "resultsDigest": "sha256:b3a90c5749e3970c78aa9a7fddce4dfa75c46d470d39285c2574f82c7011339b"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-b",
+      "campaignDigest": "sha256:b8e59b631943023cc2ce5b6b0c85da7d74eeaed8d20c377cec7f512def3f9c69",
+      "roundId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-independent-b",
+      "reviewInputFingerprint": "sha256:73f124bf5d85d4b9e3988d59782956aa663e852a53ded9306f4aa84aa7357c9b",
+      "batchId": "physik-rollout-v1-batch-025b-e-mechanics-energy-revised-follow-up-5-v1-20260829-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a5081a63d2c13015a58bc64209c3932ac54a65cf4afba4dcd64c618385410738",
+      "runId": "physik-b025b-round-b-blind-reviewer-b-20260829-run-001",
+      "runManifestDigest": "sha256:25c4d76729834621fd9c1d7f6bf74ec136984f751bce55e656d5659a835e7da0",
+      "resultsDigest": "sha256:0ed9dcd2fb320caf62d0d80f2f7aec3ec7e9ff509bd333f30f851bc29ca0c1e7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b025b-revised-five-keep-current-synthesis-20260829-decision-001",
+      "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:629c88784ae6973e11672ee17d18132860e3fbd14de69f3da913ff8fb9c6c98c",
+      "pageFingerprint": "sha256:adae78930f7704af1b4b8fe6671f511fb9a2e3dc0183f632214e558c56cca18e",
+      "goalReviewContextFingerprint": "sha256:2ea37ec5d5ac843e18d90174fedb5d913259ce79871284c1ea390de7f810f13c",
+      "finalText": {
+        "titleDe": "Newtons 1. Axiom anwenden",
+        "titleEn": "Apply Newton's First Law",
+        "descriptionDe": "Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen in Inertialsystemen anwenden und erklären, dass eine verschwindende resultierende äußere Kraft sowohl mit Ruhe als auch mit gleichförmig-geradliniger Bewegung vereinbar ist.",
+        "descriptionEn": "The learner can apply the principle of inertia to everyday situations in inertial frames and explain that zero net external force is compatible with both rest and uniform rectilinear motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-physics-b025b-blind-a-20260829.record-001",
+          "recordDigest": "sha256:44fe9e82f3335d012c5f6798cd97ff5175e668dd2f060286b763d40b6e908171"
+        },
+        "second": {
+          "recordId": "physik-b025b-round-b-reviewer-b-record-001",
+          "recordDigest": "sha256:c4e00c5da74bcd9d2426ab93f6d1a84428e3ba71cea8887e22ef70ed6ce0343d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen den aktuellen Text als fachlich korrekt, knapp und prüfbar. Runde A wird als Evidenzbasis gewählt, weil sie Körperabgrenzung, Kraftrichtungen, Anfangszustand und den Unterschied zwischen fehlenden und sich ausgleichenden Kräften gemeinsam operationalisiert und den Transfer auf eine andere Kräftekonfiguration ausdrücklich bindet. Runde B bestätigt unabhängig dieselbe Trägheitsvorstellung und die zentrale Fehlvorstellung, ohne eine Textänderung zu begründen.",
+      "rationaleEn": "Both independent rounds confirm that the current text is scientifically correct, concise, and assessable. Round A is selected as the evidence basis because it jointly operationalizes the body boundary, force directions, initial state, and the distinction between absent and balancing forces, and explicitly binds transfer to a different force configuration. Round B independently confirms the same understanding of inertia and the central misconception without justifying a text change."
+    },
+    {
+      "decisionId": "physik-b025b-revised-five-keep-current-synthesis-20260829-decision-002",
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5149485fcfc94441e9d45b7f72bf2d44a62120f995b1aab71da5e8dbc5ac9732",
+      "pageFingerprint": "sha256:3c94f3a9aef7f0a3c030be2dfa2aee73907e09ce86460da57fc39dc57a1fa80a",
+      "goalReviewContextFingerprint": "sha256:b4238e5d0982fb0fde515119926bfca4db218997a3e7c50ac8f5551778f2927f",
+      "finalText": {
+        "titleDe": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
+        "titleEn": "Newton's Second Law (Fundamental Equation of Mechanics)",
+        "descriptionDe": "Die lernende Person kann den vektoriellen Impuls $\\vec p=m\\vec v$ einführen, Newtons zweites Axiom in einem Inertialsystem für ein materiell abgeschlossenes System als Zusammenhang zwischen der resultierenden äußeren Kraft und der zeitlichen Änderung des Impulses formulieren und deuten sowie für konstante Masse auf $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ zurückführen.",
+        "descriptionEn": "The learner can introduce vector momentum $\\vec p=m\\vec v$, formulate and interpret Newton's second law in an inertial frame for a materially closed system as the relationship between the net external force and the change of momentum over time, and reduce it to $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ for constant mass."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-physics-b025b-blind-a-20260829.record-002",
+          "recordDigest": "sha256:161a9c93f63b1376d07453ed2531cb790aa2208e55a45432e9f5964a468af55e"
+        },
+        "second": {
+          "recordId": "physik-b025b-round-b-reviewer-b-record-002",
+          "recordDigest": "sha256:21ac7881da418efd781c297d5f833c451619c6ec1ebcf319153c9f3ceac794f8"
+        }
+      },
+      "rationaleDe": "Beide Runden bewerten die Impulsform von Newtons zweitem Axiom, die Bindung an Inertialsystem und materiell abgeschlossenes System sowie die Rückführung auf konstante Masse als korrekt. Runde A wird gewählt, weil sie zusätzlich Systemgrenze, äußere gegenüber inneren Kräften, Koordinatenwahl, Vektorrichtung, Vorzeichen, Einheiten und einen nicht parallelen Transferfall geschlossen operationalisiert. Runde B liefert eine unabhängige fachliche Bestätigung; der kanonische Text bleibt unverändert.",
+      "rationaleEn": "Both rounds judge the momentum form of Newton's second law, its restriction to an inertial frame and a materially closed system, and the constant-mass reduction to be correct. Round A is selected because it additionally operationalizes the system boundary, external versus internal forces, coordinate choice, vector direction, signs, units, and a nonparallel transfer case as one coherent evidence chain. Round B provides independent scientific confirmation; the canonical text remains unchanged."
+    },
+    {
+      "decisionId": "physik-b025b-revised-five-keep-current-synthesis-20260829-decision-003",
+      "goalId": "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:829dbee7bf74bd49ec72a222b0b2bd988eff24717c49ba60c04e2f55e71c8780",
+      "pageFingerprint": "sha256:e52c4f6ce015d4767887e1bb2e05e78d6db01aed562e11b36551b4ea998c74ee",
+      "goalReviewContextFingerprint": "sha256:71559c9b9dc95afe07b954d417643acef5ddb67aad100e025ed560a6476bc122",
+      "finalText": {
+        "titleDe": "Reibungsenergie",
+        "titleEn": "Frictional Energy",
+        "descriptionDe": "Die lernende Person kann den Begriff Reibungsenergie als Bilanzgröße für den Anteil mechanischer Energie deuten, der bei Reibung in innere Energie der beteiligten Körper umgewandelt wird, und diese Energieumwandlung für ein festgelegtes System qualitativ bilanzieren.",
+        "descriptionEn": "The learner can interpret the term frictional energy as a quantity used in energy accounting for the portion of mechanical energy converted by friction into the internal energy of the interacting bodies, and qualitatively account for this energy transformation for a defined system."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-physics-b025b-blind-a-20260829.record-003",
+          "recordDigest": "sha256:037a992495eaea429fcb9b3b198f1fa425a5f88aea12439cc94f1bf98f934dcd"
+        },
+        "second": {
+          "recordId": "physik-b025b-round-b-reviewer-b-record-003",
+          "recordDigest": "sha256:996745b12e899f925ef9d562c88063d5013ab886b4f453c9e77aab0e3ad04391"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen, dass der aktuelle Text Reibungsenergie korrekt als Bilanzgröße und nicht als verlorene oder eigenständige Energieform beschreibt. Runde A wird als Evidenzbasis gewählt, weil sie Gesamtenergieerhaltung, die Zuordnung innerer Energie zu den einbezogenen Körpern und den Wechsel zwischen Energieumwandlung und Energieübertragung bei veränderter Systemgrenze besonders vollständig verknüpft. Runde B bestätigt diese systemgrenzenabhängige Deutung unabhängig; eine Revision ist nicht erforderlich.",
+      "rationaleEn": "Both rounds confirm that the current text correctly describes frictional energy as an accounting quantity rather than lost energy or a separate stored form. Round A is selected as the evidence basis because it most fully links total-energy conservation, assignment of internal energy to the included bodies, and the change between energy transformation and energy transfer when the system boundary changes. Round B independently confirms this boundary-dependent interpretation; no revision is required."
+    },
+    {
+      "decisionId": "physik-b025b-revised-five-keep-current-synthesis-20260829-decision-004",
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c256b18b840770be0bab44b31fb34629f794fe86e0fa99d975e20be9118e5506",
+      "pageFingerprint": "sha256:e2713243cd596a02bb3f8b9bcb9499a62cd084c8d72e0148c707f43eddf5e8e2",
+      "goalReviewContextFingerprint": "sha256:1b3ae983934c61a733849fa682b379340d69b6856b6c45d61e0a80530337fc9e",
+      "finalText": {
+        "titleDe": "Impulserhaltung aus Newtonschen Axiomen (LK)",
+        "titleEn": "Momentum Conservation from Newton's Laws (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß erhalten bleibt, und die Voraussetzungen dieser Herleitung diskutieren.",
+        "descriptionEn": "In an inertial frame, the learner can derive from Newton's second and third laws that total momentum is conserved in a materially closed system when the net external impulse is zero and discuss the assumptions of the derivation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-physics-b025b-blind-a-20260829.record-004",
+          "recordDigest": "sha256:2f5aca66713ba183e91d8dd11474d582d3660d9fff31bb4eeb59e8e11f0d79c4"
+        },
+        "second": {
+          "recordId": "physik-b025b-round-b-reviewer-b-record-004",
+          "recordDigest": "sha256:5ceebfa1d838b093e22543b0bba170f71c703f7021393cbeabfb0e93b31fbf81"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die LK-Herleitung aus Newtons zweitem und drittem Axiom und die Bedingungen Inertialsystem, materiell abgeschlossenes System und äußerer Kraftstoß. Runde A wird gewählt, weil sie die paarweise Aufhebung innerer Kräfte, Vektoren und Einheiten sowie den Unterschied zwischen gleicher Impulsbilanz an Intervallgrenzen und fortlaufender Erhaltung bei zu jedem Zeitpunkt verschwindender äußerer Resultierenden präzise operationalisiert. Der Systemgrenzen-Transfer ist ebenfalls vollständiger; Runde B bleibt als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both rounds confirm the advanced-course derivation from Newton's second and third laws and the conditions of an inertial frame, a materially closed system, and external impulse. Round A is selected because it precisely operationalizes pairwise cancellation of internal forces, vectors and units, and the distinction between equal endpoint momentum over an interval and continuous conservation when the net external force vanishes at every instant. Its system-boundary transfer is also more complete; Round B remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b025b-revised-five-keep-current-synthesis-20260829-decision-005",
+      "goalId": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:03e86b36c5c2c74af838b0cb183290bec8395c3c0da89614a6b0d5c93733187e",
+      "pageFingerprint": "sha256:c910ee35c383efd94341f8a3b84a081adaea92821127c772957352295c2b13c4",
+      "goalReviewContextFingerprint": "sha256:d45f78c77015969732e200ee6eea4ccd067cd7ec954e8c81f244dcdc903dd4c8",
+      "finalText": {
+        "titleDe": "Kraftstoß",
+        "titleEn": "Impulse (Force-Time)",
+        "descriptionDe": "Die lernende Person kann den Kraftstoß als über die Einwirkdauer aufsummierte Wirkung der resultierenden äußeren Kraft beschreiben, ihn in einer gewählten Richtung als vorzeichenbehaftete Fläche unter einem Kraft-Zeit-Diagramm und bei konstanter Kraft als Produkt aus Kraft und Einwirkdauer bestimmen sowie mit der Impulsänderung verknüpfen.",
+        "descriptionEn": "The learner can describe impulse as the effect of the net external force accumulated over its duration, determine it along a chosen direction as the signed area under a force-time graph and, for constant force, as the product of force and interaction time, and relate it to the change in momentum."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-physics-b025b-blind-a-20260829.record-005",
+          "recordDigest": "sha256:df657511e28a6a4c0f001edc0bb9e169a68fdb8fd02b844a955179547a37e798"
+        },
+        "second": {
+          "recordId": "physik-b025b-round-b-reviewer-b-record-005",
+          "recordDigest": "sha256:4fdb20432d87ceb1fe235bcec2edb267eeb04faf916a42438cc184db06e9d1e8"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den aktuellen Zusammenhang zwischen zeitlich aufsummierter resultierender äußerer Kraft, vorzeichenbehafteter Diagrammfläche, dem Sonderfall konstanter Kraft und der Impulsänderung. Runde A wird gewählt, weil sie System und positive Richtung, positive und negative Teilflächen, Einheiten sowie die Abgrenzung von Betragsfläche und Spitzenkraft-mal-Dauer gemeinsam prüfbar macht und einen Kraftverlauf mit Richtungswechsel als Transfer nutzt. Runde B bestätigt diese Darstellungskoordination unabhängig; der Text bleibt unverändert.",
+      "rationaleEn": "Both rounds confirm the current relationship among net external force accumulated over time, signed graph area, the constant-force special case, and momentum change. Round A is selected because it makes the system and positive direction, positive and negative partial areas, units, and the distinction from unsigned area and peak-force-times-duration jointly assessable, and uses a force history with direction reversal for transfer. Round B independently confirms this coordination of representations; the text remains unchanged."
+    }
+  ],
+  "manifestFingerprint": "sha256:1b0492d90b7b1c59baa63295c2eb9e08f8d9ae9485d632ffb9397952e5d9aadc"
+}

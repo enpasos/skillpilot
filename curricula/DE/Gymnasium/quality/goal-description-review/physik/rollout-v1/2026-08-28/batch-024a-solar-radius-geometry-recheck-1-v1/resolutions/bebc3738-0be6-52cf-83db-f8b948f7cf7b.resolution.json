@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-resolution-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+  "goal": {
+    "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ec9c0010af1779d18c61fc76ccd97abb5906d2dc9c423ef10864daf06a43e10a",
+    "pageFingerprint": "sha256:a86dff331cde6999e27b8255caee3746f6f5621d4d874c567a41f04dbd691568",
+    "goalReviewContextFingerprint": "sha256:a296a8ca1568c9cbe07c0cb98248d777eefa05b2dca6389872029906abf007c4",
+    "finalText": {
+      "titleDe": "Sonnenradius aus Beobachtungsdaten abschätzen",
+      "titleEn": "Estimate the Solar Radius from Observational Data",
+      "descriptionDe": "Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser der Sonne und ihrer Entfernung mithilfe eines geometrischen Modells den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+      "descriptionEn": "The learner can use a safely obtained or supplied angular diameter of the Sun and its distance with a geometrical model to estimate the solar radius and account for measurement uncertainty."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-a",
+      "campaignDigest": "sha256:6a08066a5f15534e6c2ed7cf640ad35525b6a4cf91f085029560cba625fbd91a",
+      "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+      "goalReviewContextFingerprint": "sha256:a296a8ca1568c9cbe07c0cb98248d777eefa05b2dca6389872029906abf007c4",
+      "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex",
+      "runManifestDigest": "sha256:ad3c8337ded1cab5fca2f36b0d996532cc3c14308213ce97c9256a80a6a90b4c",
+      "resultsDigest": "sha256:591322e5944dfcea4f88bb5b5f1c53f72c4225d7f27da173d87d9e5db5f6a2ef",
+      "recordId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001.run-openai-codex.record-001",
+      "recordDigest": "sha256:a721a863c253616f4b5d1282f9ed02088de7dc3bf26883b2fa3a430d9332818a"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-b",
+      "campaignDigest": "sha256:340c5c0b82a58d394a2f9c8b0b4e4c1fb200c9443a2c2c261cd830f7b0e7b974",
+      "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+      "goalReviewContextFingerprint": "sha256:a296a8ca1568c9cbe07c0cb98248d777eefa05b2dca6389872029906abf007c4",
+      "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b.batch-001",
+      "runId": "physik-b024a-round-b-batch-001-gpt5-subject-review",
+      "runManifestDigest": "sha256:433371b91e86ade4b95edf4ff857c78523264fdb1833c59ca6ba7814bd1c33f2",
+      "resultsDigest": "sha256:f00dda34e23c5642859a7dafc16e45bbc54cfcf3cf4204f155f6aa5dea8a05ea",
+      "recordId": "physik-b024a-round-b-batch-001-bebc3738-review",
+      "recordDigest": "sha256:01339cda6273912806344216baf8a084d24371f52f74641be84ecb53dbdfb28e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f6d221622deccc83778c6d6ca16f634c6205d4dc13c4e36c078d01f883ed5e43"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b024a-solar-radius-geometry-synthesis-openai-codex-20260828",
+    "manifestDigest": "sha256:736a0832acb1b45ed0c778d8ddf2536bb1b40f57116bfdb9318a70ab92fe52f6",
+    "manifestFingerprint": "sha256:2139d98ece59e948f657a1d350cff7991b034d40ebe502025be4b32de20ff53f",
+    "decisionId": "physik-b024a-solar-radius-geometry-synthesis-openai-codex-20260828-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b024a-solar-radius-geometry-synthesis-openai-codex-20260828-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B024a physics subject synthesis candidate",
+    "synthesizedAt": "2026-08-28T21:07:50.000Z",
+    "rationaleDe": "Die beiden unabhängigen Nachprüfungen bestätigen die korrekte Kugelgeometrie R = d · sin(θ/2) für die Entfernung zum Sonnenmittelpunkt und grenzen sie von einer ebenen Tangensprojektion sowie der Kleinwinkelnäherung ab. Der aktuelle Zieltext bleibt unverändert, weil er korrekt und methodenneutral ist; ausgewählt wird die zweite Evidence-Fassung, die Herleitung, Entfernungskonvention, Unsicherheitsbehandlung und Transfer vollständig ausdrückt. Die fachlich korrekte, aber unnötig ausführliche Beschreibungsrevision der ersten Runde bleibt als ausdrücklich verworfener Dissent gebunden.",
+    "rationaleEn": "The two independent rechecks confirm the correct spherical relation R = d · sin(θ/2) for centre distance and distinguish it from planar tangent projection and the small-angle approximation. The current goal text is retained because it is accurate and method-neutral; the second evidence formulation is selected because it fully states the derivation, distance convention, uncertainty treatment, and transfer. The scientifically correct but unnecessarily detailed description revision from the first round remains bound as explicitly rejected dissent.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht θ als vollen Winkel zwischen den beiden Sichtlinien zu den Sonnenrändern und d als Abstand vom Beobachtungsort zum Mittelpunkt der kugelförmig modellierten Sonne. Aus der Tangentialgeometrie folgt exakt R = d·sin(θ/2); R = d·tan(θ/2) wäre mit demselben d nicht die Kugelgeometrie, sondern ist nur für eine ebene Projektionsfläche im axialen Abstand d exakt. Für θ in Radiant und θ ≪ 1 gilt R ≈ d·θ/2. Der Radius ist eine aus θ und d abgeleitete, nicht direkt beobachtete Größe, deren Unsicherheit von beiden Eingangsgrößen abhängt.",
+      "essentialUnderstandingEn": "The learner understands θ as the full angle between the two sightlines to the solar limbs and d as the distance from the observer to the centre of the spherically modelled Sun. Tangent geometry then gives exactly R = d·sin(θ/2); with the same d, R = d·tan(θ/2) is not spherical geometry and is exact only for a flat projection plane at axial distance d. For θ in radians and θ ≪ 1, R ≈ d·θ/2. The radius is inferred from θ and d rather than observed directly, and its uncertainty depends on both inputs.",
+      "observablePerformanceDe": "Zu Daten aus einer sicheren Beobachtung oder einem unabhängig vorgelegten Datensatz konstruiert die lernende Person eine beschriftete Skizze mit Beobachtungsort, Sonnenmittelpunkt und Tangentialpunkt, definiert θ und d und leitet aus dem rechtwinkligen Dreieck R = d·sin(θ/2) her. Sie rechnet θ korrekt in Radiant um, bestimmt R mit Einheit, begründet, ob die Kleinwinkelnäherung für den Datensatz ausreicht, überträgt die Unsicherheiten von θ und d mit begründeten Grenzwerten oder linearer Fortpflanzung auf R und gibt das Ergebnis mit angemessener Stellenzahl und einer Plausibilitätsprüfung an.",
+      "observablePerformanceEn": "Using data from a safe observation or an independently presented dataset, the learner constructs a labelled diagram with the observer, the Sun's centre and a tangency point, defines θ and d, and derives R = d·sin(θ/2) from the right triangle. The learner correctly converts θ to radians, determines R with a unit, justifies whether the small-angle approximation is adequate for the dataset, propagates the uncertainties in θ and d to R using justified bounds or linear propagation, and reports the result with appropriate precision and a plausibility check.",
+      "transferExpectationDe": "Bei einer unabhängig vorgelegten simulierten Sonnenbeobachtung aus deutlich anderer Beobachterentfernung, mit größerem Winkeldurchmesser und anders verteilten Messunsicherheiten überträgt die lernende Person die Tangentialkonstruktion, wählt begründet zwischen der exakten Sinusbeziehung und der Kleinwinkelnäherung und beurteilt, ob ihr Radius mit einer zweiten Messung innerhalb der Unsicherheiten vereinbar ist.",
+      "transferExpectationEn": "For an independently presented simulated observation of the Sun from a substantially different observer distance, with a larger angular diameter and a different distribution of measurement uncertainty, the learner transfers the tangent construction, justifiably chooses between the exact sine relation and the small-angle approximation, and judges whether the resulting radius agrees with a second measurement within the uncertainties."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-46b9321a76f1b960a78cb2dabd865e7b8327b63b8b9f5159851b9cebac305252",
+        "source": "first",
+        "textDe": "Die erste Runde schlug folgende Revision vor: „Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser θ der Sonne und der Entfernung d vom Beobachtungsort zum Sonnenmittelpunkt im geometrischen Kugelmodell mithilfe von R = d · sin(θ/2) den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.“ Die Synthese verwirft diesen Ersatztext ausdrücklich und behält den aktuellen kanonischen Wortlaut bei. Der vorgeschlagene Ersatztext ist fachlich korrekt, aber für die kurze lernendenseitige Kompetenzbeschreibung unnötig formel- und konventionsspezifisch. Der aktuelle Wortlaut behauptet keine falsche Beziehung und lässt ein begründetes geometrisches Modell zu; die genaue Definition der Mittelpunktentfernung, die exakte Sinusbeziehung, die Abgrenzung zur ebenen Tangensprojektion und die Kleinwinkelnäherung sind im ausgewählten positiven Understanding-Evidence verbindlich und prüfbar festgehalten.",
+        "textEn": "The first round proposed this revision: “The learner can use a safely obtained or supplied angular diameter θ of the Sun and the distance d from the observation point to the Sun's center in a geometrical sphere model to estimate the solar radius using R = d · sin(θ/2) and account for measurement uncertainty.” The synthesis explicitly rejects that replacement text and retains the current canonical wording. The proposed replacement is scientifically correct but unnecessarily formula- and convention-specific for the concise learner-facing competence description. The current wording asserts no false relation and allows a justified geometrical model; the exact definition of centre distance, the exact sine relation, the distinction from planar tangent projection, and the small-angle approximation are bound and assessable in the selected positive understanding evidence.",
+        "disposition": "rejected_revision_evidence_accepted"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ccc6c2faa0a721ec5420e737093416837863aa5526b3bcffcaa07f28a6a64fe4"
+}

@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-j10-keep3-current-v1",
+  "reviewedAt": "2026-08-28T12:00:00.000Z",
+  "reviewer": "codex-j10-keep3-positive-evidence-author-2026-08-28",
+  "goals": [
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "reason": "DE: Das Profil bindet den Graphverlauf von f(x)=b*a^x an zulässige Parameter, f(0)=b, den konstanten Änderungsfaktor, Vorzeichen, Wertebereich, Monotonie und die Asymptote y=0. Drei unabhängige Fälle verlangen Vorhersage, inverse Zuordnung und die fachliche Einordnung degenerierter Randfälle; insbesondere wird die Fehlvorstellung geprüft, a<1 bedeute unabhängig vom Vorzeichen von b stets einen fallenden Graphen. Digitale Werkzeuge dienen nur der nachträglichen Kontrolle. EN: The profile binds the graph of f(x)=b*a^x to admissible parameters, f(0)=b, the constant change factor, sign, range, monotonicity, and the asymptote y=0. Three independent cases require prediction, inverse matching, and classification of degenerate boundary cases; in particular they test the misconception that a<1 always means a decreasing graph regardless of the sign of b. Digital tools are used only for subsequent checking.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "parameters-determine-intercept-sign-range-and-asymptote",
+            "essentialUnderstandingDe": "Unter der üblichen nichtdegenerierten Konvention a>0, a!=1 und b!=0 ist f(x)=b*a^x auf ganz R definiert. Es gilt f(0)=b; der Graph bleibt bei b>0 oberhalb und bei b<0 unterhalb der x-Achse, besitzt keine Nullstelle und nähert sich y=0 auf genau einer Seite asymptotisch. Der Betrag von b skaliert den Graphen vertikal, sein Vorzeichen spiegelt ihn an der x-Achse.",
+            "essentialUnderstandingEn": "Under the usual non-degenerate convention a>0, a!=1, and b!=0, f(x)=b*a^x is defined on all of R. We have f(0)=b; the graph remains above the x-axis when b>0 and below it when b<0, has no zero, and approaches y=0 asymptotically on exactly one side. The magnitude of b scales the graph vertically, while its sign reflects it across the x-axis.",
+            "observablePerformanceDe": "Die lernende Person prüft bei unbekannten Parameterpaaren zuerst die Zulässigkeit und sagt anschließend y-Achsenabschnitt, Lage zur x-Achse, Wertebereich und das Grenzverhalten für x gegen plus oder minus unendlich voraus; jede Aussage begründet sie aus dem Term statt aus dem bloßen Aussehen eines Werkzeuggraphen.",
+            "observablePerformanceEn": "For unfamiliar parameter pairs, the learner first checks admissibility and then predicts the y-intercept, position relative to the x-axis, range, and limiting behaviour as x tends to positive or negative infinity; each statement is justified from the expression rather than merely from the appearance of a tool-generated graph."
+          },
+          {
+            "id": "base-factor-and-sign-jointly-determine-monotonicity",
+            "essentialUnderstandingDe": "Aus f(x+1)=a*f(x) folgt, dass a der positive Multiplikationsfaktor je x-Einheit ist. Bei b>0 erzeugt a>1 Wachstum und 0<a<1 Zerfall; bei b<0 kehrt die Spiegelung an der x-Achse die numerische Monotonierichtung um. Daher darf die Richtung nicht allein aus der Lage von a relativ zu 1 abgelesen werden.",
+            "essentialUnderstandingEn": "The relation f(x+1)=a*f(x) shows that a is the positive multiplicative factor per unit of x. For b>0, a>1 gives growth and 0<a<1 gives decay; for b<0, reflection across the x-axis reverses the numerical direction of monotonicity. The direction therefore cannot be inferred from the position of a relative to 1 alone.",
+            "observablePerformanceDe": "Die lernende Person ordnet jedes der vier nichtdegenerierten Vorzeichen- und Basisregime einer steigenden oder fallenden Funktion zu, belegt die Entscheidung mit dem Faktorverhältnis und dem Vorzeichen und überprüft sie gegebenenfalls an sinnvoll gewählten Funktionswerten.",
+            "observablePerformanceEn": "The learner classifies each of the four non-degenerate sign and base regimes as increasing or decreasing, supports the decision using the factor ratio and sign, and, where useful, checks it with appropriately chosen function values."
+          },
+          {
+            "id": "graph-features-and-parameter-conditions-are-coherent",
+            "essentialUnderstandingDe": "Y-Achsenabschnitt, Vorzeichen, Monotonie und die Seite, auf der y=0 erreicht wird, müssen gemeinsam zu demselben Parameterpaar passen. Die Randfälle a=1 oder b=0 liefern konstante Funktionen und sind deshalb nicht unbemerkt wie nichtkonstante Exponentialgraphen mit Wachstum oder Zerfall zu behandeln.",
+            "essentialUnderstandingEn": "The y-intercept, sign, monotonicity, and the side on which y=0 is approached must jointly fit the same parameter pair. The boundary cases a=1 or b=0 produce constant functions and therefore must not silently be treated like non-constant exponential graphs showing growth or decay.",
+            "observablePerformanceDe": "Die lernende Person gleicht eine Beschreibung oder Skizze mit mehreren möglichen Termen ab, verwirft inkonsistente Kandidaten anhand eines konkreten Merkmals und klassifiziert konstante Randfälle ausdrücklich, bevor sie einen digitalen Graphen höchstens zur Kontrolle heranzieht.",
+            "observablePerformanceEn": "The learner matches a description or sketch against several possible expressions, rejects inconsistent candidates using a specific feature, and explicitly classifies constant boundary cases before using a digital graph, if at all, only as a check."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameters-determine-intercept-sign-range-and-asymptote",
+            "base-factor-and-sign-jointly-determine-monotonicity",
+            "graph-features-and-parameter-conditions-are-coherent"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "base-regime",
+            "textDe": "Basis a>1 gegenüber 0<a<1 sowie gesonderte Einordnung von a=1",
+            "textEn": "Base a>1 versus 0<a<1, with separate classification of a=1"
+          },
+          {
+            "id": "coefficient-sign-and-scale",
+            "textDe": "Positives oder negatives b sowie veränderter Betrag von b",
+            "textEn": "Positive or negative b and a changed magnitude of b"
+          },
+          {
+            "id": "reasoning-direction",
+            "textDe": "Vom Term zum Graphverlauf gegenüber der Auswahl eines Terms aus beschriebenen Graphmerkmalen",
+            "textEn": "From an expression to graph behaviour versus choosing an expression from described graph features"
+          },
+          {
+            "id": "validation-mode",
+            "textDe": "Begründung über f(0), Faktorverhältnis und Grenzverhalten gegenüber Fehlerdiagnose einer vorgelegten Zuordnung",
+            "textEn": "Justification using f(0), factor ratio, and limiting behaviour versus diagnosis of a proposed match"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "compare-positive-growth-and-negative-decay-base",
+            "taskDemandDe": "Vergleiche f(x)=3*2^x und g(x)=-2*(1/2)^x. Bestimme Definitions- und Wertebereich, y-Achsenabschnitt, Monotonie und das Verhalten für x gegen plus oder minus unendlich. Skizziere beide Graphen erst nach der Begründung und prüfe sie anschließend optional digital.",
+            "taskDemandEn": "Compare f(x)=3*2^x and g(x)=-2*(1/2)^x. Determine domain and range, y-intercept, monotonicity, and behaviour as x tends to positive or negative infinity. Sketch both graphs only after giving the reasoning and then optionally check them digitally.",
+            "expectedPerformanceDe": "Die lernende Person nennt für beide den Definitionsbereich R. Für f erhält sie f(0)=3, den Wertebereich (0,unendlich), strenges Steigen, den Grenzwert 0 von oben für x gegen minus unendlich und unbeschränktes Wachstum für x gegen plus unendlich. Für g erhält sie g(0)=-2, den Wertebereich (-unendlich,0), strenges Steigen mit den Kontrollwerten g(-1)=-4, g(0)=-2 und g(1)=-1, den Grenzwert 0 von unten für x gegen plus unendlich und unbeschränkt negative Werte für x gegen minus unendlich.",
+            "expectedPerformanceEn": "The learner gives R as the domain of both functions. For f, the learner obtains f(0)=3, range (0,infinity), strict increase, a limit of 0 from above as x tends to negative infinity, and unbounded growth as x tends to positive infinity. For g, the learner obtains g(0)=-2, range (-infinity,0), strict increase with the check values g(-1)=-4, g(0)=-2, and g(1)=-1, a limit of 0 from below as x tends to positive infinity, and unbounded negative values as x tends to negative infinity.",
+            "understandingFocusDe": "Der Vergleich macht sichtbar, dass eine Basis zwischen 0 und 1 bei negativem b einen numerisch steigenden Graphen ergibt und die Monotonie daher aus a und b gemeinsam folgt.",
+            "understandingFocusEn": "The comparison shows that a base between 0 and 1 gives a numerically increasing graph when b is negative, so monotonicity follows jointly from a and b."
+          },
+          {
+            "id": "match-described-graph-to-one-parameter-pair",
+            "taskDemandDe": "Ein Graph schneidet die y-Achse bei -4, liegt vollständig unterhalb der x-Achse, ist streng fallend und nähert sich für x gegen minus unendlich der x-Achse von unten. Wähle zwischen h1(x)=-4*3^x, h2(x)=4*3^x und h3(x)=-4*(1/3)^x und begründe die Auswahl anhand aller Merkmale.",
+            "taskDemandEn": "A graph crosses the y-axis at -4, lies entirely below the x-axis, is strictly decreasing, and approaches the x-axis from below as x tends to negative infinity. Choose among h1(x)=-4*3^x, h2(x)=4*3^x, and h3(x)=-4*(1/3)^x and justify the choice using every feature.",
+            "expectedPerformanceDe": "Die lernende Person wählt h1. Die beiden Kandidaten mit b=-4 treffen zwar den Achsenabschnitt, aber h2 liegt wegen b>0 oberhalb der x-Achse und h3 ist wegen 0<a<1 zusammen mit b<0 streng steigend und nähert sich erst für x gegen plus unendlich der 0. h1 besitzt genau die geforderte Lage, Fallrichtung und Asymptotik.",
+            "expectedPerformanceEn": "The learner chooses h1. Although candidates with b=-4 share the required intercept, h2 lies above the x-axis because b>0, while h3 is strictly increasing because 0<a<1 together with b<0 and approaches 0 only as x tends to positive infinity. h1 has exactly the required position, decreasing direction, and asymptotic behaviour.",
+            "understandingFocusDe": "Die inverse Zuordnung verlangt eine kohärente Kombination mehrerer Graphmerkmale statt des Abgleichs nur eines Parameters.",
+            "understandingFocusEn": "The inverse match requires a coherent combination of several graph features rather than matching only one parameter."
+          },
+          {
+            "id": "classify-degenerate-and-nondegenerate-cases",
+            "taskDemandDe": "Ordne p(x)=5*1^x, q(x)=0*2^x, r(x)=-0,5*4^x und s(x)=2*(-3)^x ein. Entscheide jeweils, ob eine auf ganz R definierte nichtkonstante reelle Exponentialfunktion im hier betrachteten Sinn vorliegt, und beschreibe den tatsächlichen Graphverlauf oder die verletzte Parameterbedingung mit Begründung.",
+            "taskDemandEn": "Classify p(x)=5*1^x, q(x)=0*2^x, r(x)=-0.5*4^x, and s(x)=2*(-3)^x. Decide in each case whether it is a non-constant real exponential function defined on all of R in the sense considered here and describe the actual graph behaviour or the violated parameter condition with justification.",
+            "expectedPerformanceDe": "Die lernende Person vereinfacht p zu der konstanten Funktion 5 und q zur Nullfunktion und bezeichnet beide als degenerierte Randfälle ohne exponentielles Wachstum oder Zerfall. Für r erkennt sie a=4>1 und b<0, erhält r(0)=-0,5, einen vollständig negativen, streng fallenden Graphen sowie y=0 als für x gegen minus unendlich angenäherte Asymptote. Bei s erklärt sie, dass die negative Basis für allgemeine reelle x keine reellwertige Funktion auf ganz R definiert und daher die Bedingung a>0 verletzt.",
+            "expectedPerformanceEn": "The learner simplifies p to the constant function 5 and q to the zero function and classifies both as degenerate boundary cases without exponential growth or decay. For r, the learner recognizes a=4>1 and b<0, obtains r(0)=-0.5, a wholly negative strictly decreasing graph, and y=0 as the asymptote approached as x tends to negative infinity. For s, the learner explains that a negative base does not define a real-valued function for arbitrary real x on all of R and therefore violates the condition a>0.",
+            "understandingFocusDe": "Die Randfallprüfung verhindert, dass aus der bloßen Schreibform b*a^x unzulässig nichtkonstantes Verhalten gefolgert wird.",
+            "understandingFocusEn": "The boundary-case check prevents non-constant behaviour from being inferred merely from the written form b*a^x."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "reason": "DE: Das Profil führt Sinus- und Kosinusgraphen aus den y- beziehungsweise x-Koordinaten derselben Einheitskreisbewegung her, begründet 2*pi als Periode und bindet die Phasenbeziehung an eine Vierteldrehung. Drei unabhängige Fälle variieren Winkelintervall, Darstellungsrichtung und Fehlerdiagnose; falsche Behauptungen zur Verschiebungsrichtung und zur Periode pi werden durch Einheitskreis-Gegenpunkte positiv widerlegt. EN: The profile derives sine and cosine graphs from the y- and x-coordinates of the same unit-circle motion, justifies 2*pi as a period, and ties the phase relationship to a quarter-turn. Three independent cases vary the angle interval, direction of representation, and error diagnosis; false claims about the shift direction and pi as a period are positively refuted using unit-circle counterpoints.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "unit-circle-coordinates-generate-both-graphs",
+            "essentialUnderstandingDe": "Zum Winkel theta gehört auf dem Einheitskreis der Punkt (cos(theta),sin(theta)). Wird beim Durchlaufen des Kreises die y-Koordinate gegen theta aufgetragen, entsteht der Sinusgraph; die x-Koordinate erzeugt den Kosinusgraph. Markante Winkel bestimmen Nullstellen, Extremwerte und Zwischenverlauf beider Darstellungen.",
+            "essentialUnderstandingEn": "The angle theta corresponds to the point (cos(theta),sin(theta)) on the unit circle. Plotting the y-coordinate against theta while traversing the circle produces the sine graph, while plotting the x-coordinate produces the cosine graph. Key angles determine zeros, extrema, and the intervening behaviour of both representations.",
+            "observablePerformanceDe": "Die lernende Person wählt geeignete Winkel, überträgt die zugehörigen Kreis-Koordinaten auf ein Winkel-Wert-Diagramm und konstruiert daraus beide Graphen einschließlich eines begründeten Verlaufs zwischen den markanten Punkten, statt eine fertige Kurvenform zu kopieren.",
+            "observablePerformanceEn": "The learner selects suitable angles, transfers the corresponding circle coordinates to an angle-value diagram, and constructs both graphs including a justified progression between key points rather than copying a ready-made curve."
+          },
+          {
+            "id": "full-turn-explains-periodicity",
+            "essentialUnderstandingDe": "Die Winkel theta und theta+2*pi besitzen dieselbe Endlage auf dem Einheitskreis und daher dieselben x- und y-Koordinaten. Deshalb gelten sin(theta+2*pi)=sin(theta) und cos(theta+2*pi)=cos(theta); eine halbe Umdrehung liefert dagegen im Allgemeinen den Gegenpunkt und keine Wiederholung beider Werte.",
+            "essentialUnderstandingEn": "The angles theta and theta+2*pi have the same terminal point on the unit circle and therefore the same x- and y-coordinates. Hence sin(theta+2*pi)=sin(theta) and cos(theta+2*pi)=cos(theta); a half-turn, by contrast, generally gives the opposite point rather than repeating both values.",
+            "observablePerformanceDe": "Die lernende Person setzt einen gegebenen Graphenausschnitt um ganze Umdrehungen fort, begründet die Wiederholung durch identische Kreispositionen und prüft einen behaupteten Periodenwert an mindestens einem passenden Gegen- oder Bestätigungspunkt.",
+            "observablePerformanceEn": "The learner continues a supplied graph segment by whole turns, justifies the repetition using identical circle positions, and checks a claimed period using at least one appropriate confirming point or counterexample."
+          },
+          {
+            "id": "quarter-turn-explains-sine-cosine-phase-relation",
+            "essentialUnderstandingDe": "Eine Vierteldrehung vertauscht in geeigneter Orientierung die Rollen der Kreis-Koordinaten. Daraus folgt cos(theta)=sin(theta+pi/2), gleichbedeutend mit sin(theta)=cos(theta-pi/2). Die algebraische Verschiebungsrichtung und die sichtbare horizontale Verschiebung müssen konsistent unterschieden werden.",
+            "essentialUnderstandingEn": "A quarter-turn interchanges the roles of the circle coordinates in the appropriate orientation. This gives cos(theta)=sin(theta+pi/2), equivalently sin(theta)=cos(theta-pi/2). The algebraic sign of the shift and the visible horizontal shift must be distinguished consistently.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert aus einem der beiden Graphen den anderen, gibt eine korrekte Verschiebungsbeziehung an und belegt sie sowohl an markanten Winkeln als auch durch die Vierteldrehung am Einheitskreis.",
+            "observablePerformanceEn": "The learner reconstructs either graph from the other, states a correct shift relationship, and supports it both at key angles and through the quarter-turn on the unit circle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "unit-circle-coordinates-generate-both-graphs",
+            "full-turn-explains-periodicity",
+            "quarter-turn-explains-sine-cosine-phase-relation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "angle-interval",
+            "textDe": "Grundintervall von 0 bis 2*pi gegenüber einem verschobenen Intervall mit negativen Winkeln",
+            "textEn": "Principal interval from 0 to 2*pi versus a shifted interval containing negative angles"
+          },
+          {
+            "id": "representation-direction",
+            "textDe": "Vom Einheitskreis zur Wertetabelle und zum Graphen gegenüber der Rekonstruktion des Kreispunkts aus Graphwerten",
+            "textEn": "From the unit circle to a value table and graph versus reconstructing the circle point from graph values"
+          },
+          {
+            "id": "target-coordinate",
+            "textDe": "y-Koordinate für Sinus gegenüber x-Koordinate für Kosinus sowie Wechsel zwischen beiden",
+            "textEn": "The y-coordinate for sine versus the x-coordinate for cosine and transitions between them"
+          },
+          {
+            "id": "reasoning-demand",
+            "textDe": "Eigenständige Konstruktion, periodische Fortsetzung oder Diagnose einer falschen Perioden- beziehungsweise Verschiebungsbehauptung",
+            "textEn": "Independent construction, periodic continuation, or diagnosis of a false period or shift claim"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-one-full-turn-from-key-points",
+            "taskDemandDe": "Leite für theta=0, pi/2, pi, 3*pi/2 und 2*pi die Punkte des Einheitskreises her. Erstelle daraus eine gemeinsame Wertetabelle und konstruiere die Sinus- und Kosinusgraphen für eine volle Umdrehung. Begründe anschließend ihre Wiederholung und ihre Phasenbeziehung.",
+            "taskDemandEn": "Derive the unit-circle points for theta=0, pi/2, pi, 3*pi/2, and 2*pi. Use them to create a joint value table and construct the sine and cosine graphs for one full turn. Then justify their repetition and phase relationship.",
+            "expectedPerformanceDe": "Die lernende Person ordnet den Winkeln die Punkte (1,0), (0,1), (-1,0), (0,-1) und (1,0) zu, trägt für Sinus die zweiten und für Kosinus die ersten Koordinaten auf und verbindet sie mit dem durch die Kreisbewegung begründeten stetigen Verlauf. Die identische Endlage nach 2*pi begründet die Periode, und die um pi/2 versetzten Schlüsselpunkte belegen cos(theta)=sin(theta+pi/2).",
+            "expectedPerformanceEn": "The learner assigns the points (1,0), (0,1), (-1,0), (0,-1), and (1,0) to the angles, plots the second coordinates for sine and the first coordinates for cosine, and connects them with the continuous progression justified by the circle motion. The identical terminal point after 2*pi justifies the period, and the key points offset by pi/2 support cos(theta)=sin(theta+pi/2).",
+            "understandingFocusDe": "Die vollständige Darstellungskette macht die Kurvenform, Wiederholung und Phasenlage zu Folgen derselben Kreisbewegung.",
+            "understandingFocusEn": "The complete chain of representations makes graph shape, repetition, and phase consequences of the same circular motion."
+          },
+          {
+            "id": "reconstruct-on-shifted-negative-interval",
+            "taskDemandDe": "Konstruiere beide Graphen auf dem Intervall [-pi,pi] aus den Einheitskreispunkten zu -pi, -pi/2, 0, pi/2 und pi. Erkläre, warum die Intervallenden dieselben Werte besitzen, und setze beide Graphen bis 3*pi fort, ohne eine fertige Vorlage zu verwenden.",
+            "taskDemandEn": "Construct both graphs on the interval [-pi,pi] from the unit-circle points at -pi, -pi/2, 0, pi/2, and pi. Explain why the interval endpoints have the same values, and continue both graphs to 3*pi without using a ready-made template.",
+            "expectedPerformanceDe": "Die lernende Person erhält für Sinus die Folge 0,-1,0,1,0 und für Kosinus -1,0,1,0,-1. Sie erkennt -pi und pi als um 2*pi verschiedene Winkel mit derselben Endlage, wiederholt den Verlauf entsprechend bis 3*pi und hält die Viertelperiodenverschiebung beider Graphen auch im negativen Winkelbereich konsistent.",
+            "expectedPerformanceEn": "The learner obtains 0,-1,0,1,0 for sine and -1,0,1,0,-1 for cosine. The learner recognizes -pi and pi as angles differing by 2*pi with the same terminal point, repeats the progression accordingly up to 3*pi, and keeps the quarter-period displacement of the two graphs consistent in the negative-angle region.",
+            "understandingFocusDe": "Das verschobene Intervall prüft Periodizität und Phasenbeziehung unabhängig von der vertrauten Startstelle theta=0.",
+            "understandingFocusEn": "The shifted interval tests periodicity and the phase relationship independently of the familiar starting point theta=0."
+          },
+          {
+            "id": "diagnose-wrong-shift-and-half-turn-period",
+            "taskDemandDe": "Eine Lösung behauptet cos(theta)=sin(theta-pi/2) und pi sei eine Periode der Sinusfunktion. Prüfe beide Aussagen am Einheitskreis, widerlege falsche Aussagen mit geeigneten Winkeln und formuliere die korrekten Beziehungen.",
+            "taskDemandEn": "A proposed solution claims cos(theta)=sin(theta-pi/2) and that pi is a period of the sine function. Check both claims on the unit circle, refute false claims using suitable angles, and state the correct relationships.",
+            "expectedPerformanceDe": "Die lernende Person setzt theta=0 und erhält cos(0)=1, aber sin(-pi/2)=-1; damit ist die erste Aussage falsch. Für die zweite vergleicht sie etwa sin(pi/2)=1 mit sin(3*pi/2)=-1 und erklärt die Gegenpunktlage nach einer halben Umdrehung. Sie korrigiert zu cos(theta)=sin(theta+pi/2) und sin(theta+2*pi)=sin(theta), entsprechend auch für Kosinus.",
+            "expectedPerformanceEn": "The learner uses theta=0 and obtains cos(0)=1 but sin(-pi/2)=-1, so the first claim is false. For the second, the learner compares, for example, sin(pi/2)=1 with sin(3*pi/2)=-1 and explains the opposite terminal point after a half-turn. The learner corrects the statements to cos(theta)=sin(theta+pi/2) and sin(theta+2*pi)=sin(theta), with the analogous period relation for cosine.",
+            "understandingFocusDe": "Die Fehlerdiagnose unterscheidet eine bloß ähnlich aussehende Verschiebung von der algebraisch und geometrisch richtigen Vierteldrehung und eine halbe von einer vollen Umdrehung.",
+            "understandingFocusEn": "The error diagnosis distinguishes a merely similar-looking shift from the algebraically and geometrically correct quarter-turn and distinguishes a half-turn from a full turn."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "reason": "DE: Das Profil bildet einen vollständigen, aber eng auf einfache periodische Realsituationen begrenzten Modellierungszyklus ab: Parameter aus Kontextmerkmalen gewinnen, Sinus oder Kosinus begründet wählen, Term und Graph an Daten sowie Einheiten prüfen, geänderte Annahmen gezielt in Parametern abbilden und Aussagen samt Modellgrenzen deuten. Drei unabhängige Fälle variieren Informationsform, Zeitnullpunkt, Parameteränderung und Modellprüfung. Die bekannte Mapping-Schuld von 61 teilweise sachfremden Teilkanten wird ausdrücklich nicht als Evidenz verwendet. EN: The profile represents a complete modelling cycle while remaining narrowly limited to simple periodic real-world situations: derive parameters from contextual features, justify a choice of sine or cosine, check expression and graph against data and units, represent changed assumptions through targeted parameter changes, and interpret conclusions together with model limitations. Three independent cases vary information form, time origin, parameter changes, and model checking. The known mapping debt of 61 partly unrelated edges is explicitly not used as evidence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The current description is supported by exact BY and HE sources, but 61 existing partial mapping edges require a separate bounded semantic cleanup and are not evidence for this profile."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "parameters-encode-contextual-periodic-features",
+            "essentialUnderstandingDe": "In einem Modell m(t)=d+A*cos(omega*(t-t0)) oder einer äquivalenten Sinusform beschreibt d die Mittellage, |A| die Amplitude, T=2*pi/|omega| die Periode und t0 zusammen mit der Funktionswahl die zeitliche Lage markanter Zustände. Wertebereich, Zeit- und Größeneinheiten müssen zum realen Vorgang passen.",
+            "essentialUnderstandingEn": "In a model m(t)=d+A*cos(omega*(t-t0)) or an equivalent sine form, d describes the midline, |A| the amplitude, T=2*pi/|omega| the period, and t0 together with the function choice the timing of key states. The range and the units of time and the modelled quantity must fit the real process.",
+            "observablePerformanceDe": "Die lernende Person entnimmt einem unbekannten Kontext oder einfachen Daten Mittellage, Amplitude, Wiederholungsdauer und Referenzzeit, versieht sie mit Einheiten und erklärt für jeden Parameter, welches beobachtbare Merkmal des Vorgangs er abbildet.",
+            "observablePerformanceEn": "From an unfamiliar context or simple data, the learner extracts the midline, amplitude, repetition time, and reference time, assigns units, and explains which observable feature of the process each parameter represents."
+          },
+          {
+            "id": "model-choice-construction-and-validation-form-one-cycle",
+            "essentialUnderstandingDe": "Sinus- und Kosinusdarstellungen können denselben periodischen Verlauf mit unterschiedlicher Phasenlage beschreiben. Eine Modellwahl ist tragfähig, wenn Term und Graph die gegebenen Referenzzustände, den Wertebereich, die Periodendauer und die Einheiten gemeinsam treffen; bloßes Einsetzen in eine Schablone genügt nicht.",
+            "essentialUnderstandingEn": "Sine and cosine representations can describe the same periodic progression with different phase positions. A model choice is sound when its expression and graph jointly match the given reference states, range, period, and units; merely substituting values into a template is not sufficient.",
+            "observablePerformanceDe": "Die lernende Person wählt begründet Sinus oder Kosinus, stellt einen passenden Term und Graphen auf, prüft mindestens ein Extremum, eine Mittellagenpassage und die Wiederholung nach einer Periode und deutet einen berechneten Modellwert im Sachzusammenhang.",
+            "observablePerformanceEn": "The learner justifies a choice of sine or cosine, constructs a matching expression and graph, checks at least one extremum, one crossing of the midline, and repetition after one period, and interprets a calculated model value in context."
+          },
+          {
+            "id": "changed-assumptions-alter-specific-parameters-and-limit-claims",
+            "essentialUnderstandingDe": "Ändert sich eine Modellannahme, muss der davon betroffene Parameter gezielt angepasst werden: Mittellage, Ausschlag, Wiederholungsdauer und Zeitpunkt eines Extremums verändern unterschiedliche Merkmale. Das Sinusmodell setzt eine hinreichend stabile, glatte Wiederholung voraus; unregelmäßige Ausschläge, Trend oder Drift begrenzen seine Vorhersagekraft.",
+            "essentialUnderstandingEn": "When a modelling assumption changes, the affected parameter must be adjusted deliberately: midline, magnitude of variation, repetition time, and timing of an extremum change different features. A sine model assumes a sufficiently stable smooth repetition; irregular excursions, trends, or drift limit its predictive power.",
+            "observablePerformanceDe": "Die lernende Person überführt eine benannte Kontextänderung in genau die erforderlichen Parameteränderungen, vergleicht alten und neuen Verlauf, deutet die Folgen mit Einheiten und benennt anhand vorgelegter Abweichungen eine konkrete Grenze der periodischen Annahme.",
+            "observablePerformanceEn": "The learner translates a stated contextual change into exactly the required parameter changes, compares the old and new progression, interprets the consequences with units, and identifies a concrete limitation of the periodic assumption from supplied deviations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameters-encode-contextual-periodic-features",
+            "model-choice-construction-and-validation-form-one-cycle",
+            "changed-assumptions-alter-specific-parameters-and-limit-claims"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "information-form",
+            "textDe": "Extremwerte und Periodendauer im Text, markante Messpunkte oder ein vorgelegter Graph",
+            "textEn": "Extrema and period stated in text, key measurements, or a supplied graph"
+          },
+          {
+            "id": "reference-state",
+            "textDe": "Minimum, Maximum oder Mittellagenpassage am Zeitursprung beziehungsweise zu einer verschobenen Referenzzeit",
+            "textEn": "A minimum, maximum, or midline crossing at the time origin or at a shifted reference time"
+          },
+          {
+            "id": "changed-assumption",
+            "textDe": "Veränderte Mittellage, Amplitude, Periode, Phasenlage oder eine begründete Kombination davon",
+            "textEn": "Changed midline, amplitude, period, phase position, or a justified combination of these"
+          },
+          {
+            "id": "validation-and-limit",
+            "textDe": "Kontrolle an charakteristischen Daten, Vergleich zweier Kandidaten oder Beurteilung einer Abweichung von stabiler Periodizität",
+            "textEn": "Check against characteristic data, comparison of two candidates, or assessment of a departure from stable periodicity"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ferris-wheel-height-from-extrema-and-period",
+            "taskDemandDe": "Ein Riesenrad hat Radius 18 m, sein Mittelpunkt liegt 20 m über dem Boden. Eine Gondel startet bei t=0 s am tiefsten Punkt und benötigt 40 s für eine Umdrehung. Entwickle und begründe ein Sinus- oder Kosinusmodell für ihre Höhe h(t), skizziere den Verlauf und prüfe charakteristische Zeiten.",
+            "taskDemandEn": "A Ferris wheel has radius 18 m and its centre is 20 m above the ground. A cabin starts at the lowest point at t=0 s and takes 40 s for one revolution. Develop and justify a sine or cosine model for its height h(t), sketch the progression, and check characteristic times.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt Mittellage 20 m, Amplitude 18 m und omega=2*pi/40=pi/20 pro Sekunde und wählt etwa h(t)=20-18*cos(pi*t/20). Sie prüft h(0)=2 m, die Mittellagenpassagen bei 10 s und 30 s, h(20)=38 m sowie h(40)=2 m, zeichnet einen Wertebereich von 2 m bis 38 m und deutet die Wiederholung nach 40 s.",
+            "expectedPerformanceEn": "The learner determines a midline of 20 m, amplitude of 18 m, and omega=2*pi/40=pi/20 per second and chooses, for example, h(t)=20-18*cos(pi*t/20). The learner checks h(0)=2 m, midline crossings at 10 s and 30 s, h(20)=38 m, and h(40)=2 m, draws a range from 2 m to 38 m, and interprets the repetition after 40 s.",
+            "understandingFocusDe": "Der Fall verbindet reale Geometrie, Startzustand, Einheiten und mehrere unabhängige Modellkontrollen statt nur Parameter in einen Term einzusetzen.",
+            "understandingFocusEn": "The case connects real geometry, initial state, units, and several independent model checks rather than merely inserting parameters into an expression."
+          },
+          {
+            "id": "daily-temperature-model-under-changed-ventilation",
+            "taskDemandDe": "Ein vereinfachtes Gewächshausmodell lautet T(t)=18+4*cos(2*pi*(t-14)/24) Grad Celsius für die Uhrzeit t in Stunden. Nach einer neuen Lüftungsregel soll die Mittellage um 2 Grad steigen, die Amplitude auf 3 Grad sinken und das Maximum eine Stunde später liegen; die Tagesperiode bleibt gleich. Stelle das neue Modell auf, vergleiche beide Verläufe und nenne eine Grenze der Annahme.",
+            "taskDemandEn": "A simplified greenhouse model is T(t)=18+4*cos(2*pi*(t-14)/24) degrees Celsius for clock time t in hours. Under a new ventilation rule, the midline is expected to rise by 2 degrees, the amplitude to fall to 3 degrees, and the maximum to occur one hour later; the daily period remains unchanged. Construct the new model, compare the two progressions, and state one limitation of the assumption.",
+            "expectedPerformanceDe": "Die lernende Person erhält T_neu(t)=20+3*cos(2*pi*(t-15)/24) Grad Celsius. Sie erklärt die neue Mittellage 20 Grad, den Wertebereich 17 bis 23 Grad, das Maximum bei 15 Uhr und die unveränderte 24-Stunden-Periode, vergleicht dies mit 14 bis 22 Grad und Maximum 14 Uhr im alten Modell und begrenzt Vorhersagen, wenn Wetter oder Regelung einen Trend, unregelmäßige Spitzen oder eine instabile Periodik erzeugen.",
+            "expectedPerformanceEn": "The learner obtains T_new(t)=20+3*cos(2*pi*(t-15)/24) degrees Celsius. The learner explains the new midline of 20 degrees, range from 17 to 23 degrees, maximum at 15:00, and unchanged 24-hour period, compares these with 14 to 22 degrees and a maximum at 14:00 in the old model, and limits predictions if weather or control produces a trend, irregular peaks, or unstable periodicity.",
+            "understandingFocusDe": "Die gezielte Mehrfachänderung prüft, ob jeder Kontextaspekt dem richtigen Parameter zugeordnet wird und unveränderte Merkmale erhalten bleiben.",
+            "understandingFocusEn": "The targeted multi-parameter change tests whether each contextual feature is assigned to the correct parameter while unchanged features are preserved."
+          },
+          {
+            "id": "buoy-data-select-and-check-model",
+            "taskDemandDe": "Eine Boje liefert für ihre Höhe über einem Bezugspunkt die Messwerte (t in s, H in m): (0,5), (3,7), (6,5), (9,3), (12,5); bei t=0 steigt die Höhe. Wähle zwischen H1(t)=5+2*sin(pi*t/6), H2(t)=5+2*cos(pi*t/6) und H3(t)=2+5*sin(pi*t/6), begründe die Wahl, sage H(15) voraus und erkläre, welche späteren Daten das Modell infrage stellen würden.",
+            "taskDemandEn": "A buoy gives the following measurements for its height above a reference point (t in s, H in m): (0,5), (3,7), (6,5), (9,3), (12,5); at t=0 the height is rising. Choose among H1(t)=5+2*sin(pi*t/6), H2(t)=5+2*cos(pi*t/6), and H3(t)=2+5*sin(pi*t/6), justify the choice, predict H(15), and explain which later data would call the model into question.",
+            "expectedPerformanceDe": "Die lernende Person liest Mittellage 5 m, Amplitude 2 m, Periode 12 s und eine steigende Mittellagenpassage bei t=0 ab und wählt H1. H2 startet fälschlich im Maximum, H3 besitzt falsche Mittellage und Amplitude. Wegen der Periode entspricht t=15 dem Maximum bei t=3, also H(15)=7 m. Systematisch wandernde Extremzeitpunkte, veränderte Ausschläge oder ein Trend der Mittellage wären konkrete Grenzen des stabilen Sinusmodells.",
+            "expectedPerformanceEn": "The learner reads a midline of 5 m, amplitude of 2 m, period of 12 s, and an upward midline crossing at t=0 and chooses H1. H2 incorrectly starts at a maximum, while H3 has the wrong midline and amplitude. By periodicity, t=15 corresponds to the maximum at t=3, so H(15)=7 m. Systematically shifting extremum times, changing amplitudes, or a trend in the midline would be concrete limitations of the stable sine model.",
+            "understandingFocusDe": "Die Kandidatenauswahl prüft gleichzeitig Parameterdeutung, Phasenlage, Datenpassung, Vorhersage und eine sachlich begrenzte Modellkritik.",
+            "understandingFocusEn": "Selecting among candidates simultaneously tests parameter interpretation, phase position, fit to data, prediction, and contextually limited model criticism."
+          }
+        ]
+      }
+    }
+  ]
+}

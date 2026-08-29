@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b025-stable4-synthesis-openai-codex-20260829",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B025 stable-four compatibility synthesis candidate",
+  "synthesizedAt": "2026-08-28T21:14:55.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828",
+    "batchManifestDigest": "sha256:7b92d30ad287b6f9fea4e95297d8e7fe683f9becd14955ca8565da972e65a692",
+    "configDigest": "sha256:b60924ec6896316c1fb3259370a656e19180d0490620453b5bae342d74c8d1f7",
+    "bundleFingerprint": "sha256:754e278b7ee8879bad658ff81e1e25ff21d0a04b06e9c537bebdaba02ad4fb56",
+    "bookDigest": "sha256:0da2ecdbb40bec6eb617dd20028bfcdcb7b1576304c47eede0c8aaa62aeb9751",
+    "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+    "dualSummaryDigest": "sha256:384c0f4cf154cfe9558e3d885e094e396a5290bf75afe9b3b47718645617fb24",
+    "canonicalLandscapeDigest": "sha256:a8eb1398a6d11dcdbdb02ccb4bd3526a512ecac8743630d24ae2381b8041a64c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-a",
+      "campaignDigest": "sha256:f04ee9008335e4d44dee84e3cc3f92a6f353bfb6683e4edafc0519268bf77b36",
+      "roundId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+      "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:49dfe8b71d3add23bc40bb53d71da6157d9c4a0f4af8c197e083aa6d97e1d4ed",
+      "runId": "physik-b025-e-mechanics-energy-current-round-a-gpt-5.6-codex-20260828",
+      "runManifestDigest": "sha256:83c2e75f9949f088837ed2159721ce42e9c2f30040de7f85aa79cb1b1aeca5f2",
+      "resultsDigest": "sha256:ec3e9fc0c6d94c342ff96ee09ea58a98061832cc06976da610aa2ed134a9b5a6"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-b",
+      "campaignDigest": "sha256:a40fbfe11c27667315ae5e5dcc9f0c81adacb5a9036de9fa2741c2eeca780a0d",
+      "roundId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:c4c236d2eb8703bdb787eae34e2dea437a9cf70620692f6c62337b47c0f741f2",
+      "batchId": "physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9a51eec891f4266ddc712259c823016fd6c48a2916f8915170ca931efdf0f700",
+      "runId": "physik-b025-round-b-gpt5-20260828",
+      "runManifestDigest": "sha256:627376ec9c75407907484dfb54a4a4c12a61bc791d56bf5b0559070e649d3f9e",
+      "resultsDigest": "sha256:f08e7206b82cb6b1fe525463c1e0e7f8f99127d6cd1049f3e3bb43df4dc05793"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-001",
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:61e944870cf0c0907ead5f0208201a1de42cd453ada097b88de560c95cb6edd5",
+      "pageFingerprint": "sha256:4656c1a871b653615d9f62b9b0612f888c84df59af439dea59cc5ea5ca8c0309",
+      "goalReviewContextFingerprint": "sha256:bec3f781c3750078da392e5cb29eed1c558912375266e61609a0fbc7aa9abee3",
+      "finalText": {
+        "titleDe": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+        "titleEn": "Physics in Road Traffic: Evaluating Safe Distances",
+        "descriptionDe": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
+        "descriptionEn": "The learner can assess reaction and braking distances qualitatively and using simple models and evaluate safe distances in everyday situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b025-a-005",
+          "recordDigest": "sha256:30752f704638d753e4b2a6c7209c04776bb51d41bf1f39a8fddb27d699f1909a"
+        },
+        "second": {
+          "recordId": "physik-b025-round-b-005",
+          "recordDigest": "sha256:8ab2bbdde8a4b1f0829b2651a6703eecc1dcad2466507d1cc33d751a14ed9615"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz. Die erste Runde ist die ausgewählte Evidenz; die zweite bleibt als gebundene unabhängige Bestätigung erhalten. Drittentscheidung: Both independent reviews support the current scope and learner-facing wording.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency. The first round is selected as evidence; the second remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-002",
+      "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:923973a4103cc78e81bea7716d315cac45a68f23364cb639c050255788d0d3c7",
+      "pageFingerprint": "sha256:257bbbff7b7bd79ed928d3fdb69806acec172c918cf673350801f8a8036dc6d2",
+      "goalReviewContextFingerprint": "sha256:bdfe50c070d276cd8659a5046f5146b6332d0cdaeb0e5c8761122d7eadfe2a42",
+      "finalText": {
+        "titleDe": "Inertialsysteme und Bezugssysteme",
+        "titleEn": "Inertial and Non-Inertial Reference Frames",
+        "descriptionDe": "Die lernende Person kann Inertialsysteme definieren und von nicht-inertialen Bezugssystemen unterscheiden.",
+        "descriptionEn": "The learner can define inertial frames and distinguish them from non-inertial reference frames."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b025-a-011",
+          "recordDigest": "sha256:aad96ea99676f083b2a4142dc4d6f697ec364013aa7dae6aea522020759c291e"
+        },
+        "second": {
+          "recordId": "physik-b025-round-b-011",
+          "recordDigest": "sha256:12d1e8a57c3ff5eac133ecfa1184c7ec638a6d6d4dfc8b688d5af4cb10eac46a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz. Die erste Runde ist die ausgewählte Evidenz; die zweite bleibt als gebundene unabhängige Bestätigung erhalten. Drittentscheidung: Both independent reviews support the current bounded competency.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency. The first round is selected as evidence; the second remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-003",
+      "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e21819c8d46959e6b6ead2324f26e2fc19618cf7d8a73fb4364d172c6ac7663e",
+      "pageFingerprint": "sha256:4daaf6f4e9f4b817bbfd3f44fd0f96410ecaff400f51cbc7427c724e05572cb0",
+      "goalReviewContextFingerprint": "sha256:88ce5bfe795d994d14ddd7da871f15c743ecc9b91c4656dda945f4428d1248fc",
+      "finalText": {
+        "titleDe": "Mechanische Energie",
+        "titleEn": "Mechanical Energy",
+        "descriptionDe": "Die lernende Person kann die mechanische Energie als Summe aus kinetischer und potenzieller Energie beschreiben und einfache Beispiele deuten.",
+        "descriptionEn": "The learner can describe mechanical energy as the sum of kinetic and potential energy and interpret simple examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b025-a-013",
+          "recordDigest": "sha256:beed3c27d8c83d1968ba2c4b8e75da745650c60b1ef2e2ed2308c15830056bfc"
+        },
+        "second": {
+          "recordId": "physik-b025-round-b-013",
+          "recordDigest": "sha256:7beacd287c648b98c535bcca408b5a32c2711602379263158add8d6cc6fb9289"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz. Die erste Runde ist die ausgewählte Evidenz; die zweite bleibt als gebundene unabhängige Bestätigung erhalten. Drittentscheidung: Both independent reviews support the current bounded competency.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency. The first round is selected as evidence; the second remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b025-stable4-synthesis-openai-codex-20260829-decision-004",
+      "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1e1374abd88fb6216cbd7068d1c0eb3356434a0cecae642b3697c9c5f07cbb87",
+      "pageFingerprint": "sha256:fc5b8fce94d08189a7b8dbf3ab6e735e326a7b26a4b1c64427a1239d064f9d61",
+      "goalReviewContextFingerprint": "sha256:2734b0e23e12ba76a9884ae2309cf292734dab3c97b73b1a246c889877b639c9",
+      "finalText": {
+        "titleDe": "Kinetische Energie",
+        "titleEn": "Kinetic Energy",
+        "descriptionDe": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+        "descriptionEn": "The learner can calculate kinetic energy $E_k=\\frac{1}{2}mv^2$ and explain its dependence on mass and velocity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b025-a-014",
+          "recordDigest": "sha256:7a8b68ecf747b5b57acc899e2b5d28f23eec8e4ccbaadae38b555d92baf81487"
+        },
+        "second": {
+          "recordId": "physik-b025-round-b-014",
+          "recordDigest": "sha256:6f63a847a43213130e268277e1da1ffe48f34fe0ad6e61870c0a83c086c7fdda"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz. Die erste Runde ist die ausgewählte Evidenz; die zweite bleibt als gebundene unabhängige Bestätigung erhalten. Drittentscheidung: Both independent reviews support the current bounded competency.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency. The first round is selected as evidence; the second remains bound as independent confirmation."
+    }
+  ],
+  "manifestFingerprint": "sha256:c74a2d65dc61837277963700fca37441a6b810682287ca87e96e166ec7eca988"
+}

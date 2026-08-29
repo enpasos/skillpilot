@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-rollout-v1-fast18-stable-current-carryover-8-v1-20260828",
+  "purpose": "Bounded compatibility reuse of eight stable exact-current keep/keep reviews from a closed 18-goal campaign.",
+  "sourceBatchId": "physik-rollout-v1-provisional-fast-measurement-mechanics-energy-18-20260828",
+  "sourceCampaignGoalCount": 18,
+  "claimedGoalIds": [
+    "8aff7aac-321b-5172-ac55-877876bfd2cd",
+    "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+    "f23fdfa9-38b6-5157-8301-ed302476c456",
+    "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+    "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+    "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+    "7ead007f-e85a-5cb5-b52d-76aae626119a",
+    "e39c83b0-cb4f-5454-a143-b9a159c99cba"
+  ],
+  "claimedGoalCount": 8,
+  "deferredCurrentCandidateGoalIds": [
+    "00245a43-eb89-47d2-92d7-21799dbec9f3",
+    "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+  ],
+  "deferredReason": "These three exact-current keep profiles depend directly on already adjudicated pending prerequisite revisions. They remain prepared but unclaimed to avoid predictable stale-context re-review.",
+  "sourceDualSummaryDigest": "sha256:5402c361385d623ecad4f884e9463b1c25ebe87c34ac90938a930172d1534b75",
+  "importedBundleFingerprint": "sha256:428d83677a4b298463c86b87aa3f1f86a42df33251072a3910408e90c8c08d00",
+  "currentCanonicalLandscapeDigest": "sha256:dfdacc61736f7b5d11e08de2f695f63514a1f01239c664d1afe005180d6b0b89",
+  "sourceAdjudicationDigest": "sha256:8f6c3781db657de7e61ec239d7d129aefb07b8c2b7cdc114f06bc44681984e52",
+  "sourceAdjudicationValidationDigest": "sha256:a15f058fcc4c5c8f7c9edff2246ecbeabcada59cc1d25fe21775b71ce2522051",
+  "independentEvidenceAuditDigest": "sha256:0eb01dde821050d138c3d88d5f7a422c5b5ed84dd35f0a767d2a61c6d589ee62",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-8-v1.json",
+  "resolutionIndexFormat": "legacy-schema-v1-partial-group",
+  "rationale": [
+    "All eight bilingual goal texts, goal fingerprints, contexts, bundle bytes, and both independent source records are exact-current; both source decisions are keep.",
+    "The source campaign contains 18 goals, while only these eight are stable and unowned. A schema-v2 index requires the complete campaign and cannot represent this bounded carryover.",
+    "A fresh eight-goal campaign would repeat two already valid independent reviews without adding subject evidence. The supported schema-v1 partial-group compatibility path preserves fresh per-resolution production validation.",
+    "The three deferred current candidates are deliberately not claimed because planned prerequisite revisions would predictably invalidate their current context bindings.",
+    "This receipt changes no canonical goal, graph, mapping, assessment, atomicity, memory, or visualization bytes and grants no progress until the central five-gate rollout check passes."
+  ],
+  "safeguards": {
+    "individualResolutionsFreshlyValidated": true,
+    "duplicateOwnershipFailsClosed": true,
+    "staleCanonicalContextFailsClosed": true,
+    "positiveEvidenceValidatedSeparately": true,
+    "pendingPrerequisiteRevisionCandidatesExcluded": true,
+    "productOwnerEscalationRequired": false
+  }
+}

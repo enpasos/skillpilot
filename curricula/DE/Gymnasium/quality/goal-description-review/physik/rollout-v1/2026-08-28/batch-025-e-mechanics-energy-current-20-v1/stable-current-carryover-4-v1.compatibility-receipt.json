@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b025-stable-current-carryover-4-v1-20260829",
+  "purpose": "Bounded carryover of exactly four unchanged B025 goals while seventeen post-integration goals require fresh blind review.",
+  "source": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1.config.json",
+    "configSha256": "sha256:b60924ec6896316c1fb3259370a656e19180d0490620453b5bae342d74c8d1f7",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/batch-manifest.json",
+    "batchManifestSha256": "sha256:7b92d30ad287b6f9fea4e95297d8e7fe683f9becd14955ca8565da972e65a692",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/dual-summary.json",
+    "dualSummarySha256": "sha256:384c0f4cf154cfe9558e3d885e094e396a5290bf75afe9b3b47718645617fb24",
+    "adjudicationPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/third-adjudication/adjudication.json",
+    "adjudicationSha256": "sha256:5351bba08ffbb83590ce530eb9d026dfb35cea1c6d9da8b8adaef4b9c50b0003",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "semanticKindLedgerSha256": "sha256:f880e255246c41aabc0ab346d43a074551cbd197b001905bfb46607d6639780f",
+    "curriculumAtomicDenominator": 461,
+    "roundA": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/round-a/results/physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a.batch-001.records.jsonl",
+      "recordsSha256": "sha256:ec3e9fc0c6d94c342ff96ee09ea58a98061832cc06976da610aa2ed134a9b5a6",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/round-a/results/physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-a.batch-001.run.json",
+      "runSha256": "sha256:721e1a263acaa8fca11bc2ff3e5e53d5533fcb636e916aaf2e61d8fef3036650"
+    },
+    "roundB": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/round-b/results/physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b.batch-001.records.jsonl",
+      "recordsSha256": "sha256:f08e7206b82cb6b1fe525463c1e0e7f8f99127d6cd1049f3e3bb43df4dc05793",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/round-b/results/physik-rollout-v1-batch-025-e-mechanics-energy-current-20-v1-20260828-first-pass-b.batch-001.run.json",
+      "runSha256": "sha256:79cc0a73a3c1ff0fdbe17293259722635e073675854c23e1b327c42e73bbadc2"
+    }
+  },
+  "currentCanonicalLandscape": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "sha256:a8eb1398a6d11dcdbdb02ccb4bd3526a512ecac8743630d24ae2381b8041a64c"
+  },
+  "currentCanonicalContexts": [
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "canonicalContext": {
+        "shortKey": "canonical_physics_traffic_safety",
+        "phase": null,
+        "core": null,
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "Context",
+          "canonical",
+          "context:traffic",
+          "cross-subject:mathematics"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+          "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "fingerprint": "sha256:1394990022d9fc11dea3c67fffa0ac04bef4bc45d932b5b00760eabf4a6350d9"
+    },
+    {
+      "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "canonicalContext": {
+        "shortKey": "canonical_physics_inertial_frames",
+        "phase": null,
+        "core": null,
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "fingerprint": "sha256:b0d9471a21e2ef6d582a3a7e2a7127e9c21831a5a0fc39e4549599dd0896d8df"
+    },
+    {
+      "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "canonicalContext": {
+        "shortKey": "canonical_physics_mechanical_energy",
+        "phase": null,
+        "core": null,
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+          "722857cf-f327-5740-8151-64eb92195ec8"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "fingerprint": "sha256:634e0eafeda1fba7c6d25643d3f30fc1dc9b6766ebfd557a7f2dd803710a91ba"
+    },
+    {
+      "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "canonicalContext": {
+        "shortKey": "canonical_physics_kinetic_energy",
+        "phase": null,
+        "core": null,
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "fingerprint": "sha256:7a2d4975d17fa73c0f2cbd02bf9974f06091c3d6362a787ac38a8eef3c150e58"
+    }
+  ],
+  "claimedGoalIds": [
+    "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+    "00245a43-eb89-47d2-92d7-21799dbec9f3",
+    "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+  ],
+  "explicitlyExcludedFreshGoalIds": [
+    "ce431132-dfc4-42c2-aff6-bd72035190f8",
+    "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+    "bf8517a9-142b-5789-826a-767f3b277998",
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+    "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+    "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+    "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "ad984bb6-e225-432a-952d-d83cda40b7f8",
+    "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+    "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+    "91c49019-ea51-4ce5-a919-c91c45b25e83",
+    "253a71d2-e751-4c63-acbe-238b71463cd8",
+    "839ecc8f-3a60-418b-bc92-64bfeef33824",
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+  ],
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-4-v1.json",
+  "synthesisManifestDigest": "sha256:d99745260ddf18bd4798d439cc34c8e42481cd8a610415213a3282beb055847e",
+  "synthesisManifestFingerprint": "sha256:c74a2d65dc61837277963700fca37441a6b810682287ca87e96e166ec7eca988",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-4-v1.json",
+  "resolutionIndexDigest": "sha256:e4dda21c2d39c94bbafe44cfe67ca2d2144c8c0884eddddb37095de4b6d09b63",
+  "noProgressClaimUntilCentralFreshReviewAndFiveGates": true,
+  "safeguards": {
+    "exactlyTwoKeepRecordsPerGoalRequired": true,
+    "sourceRunsAndRecordsByteBound": true,
+    "exactCurrentBilingualTextsRequired": true,
+    "currentDirectCanonicalContextsRefingerprinted": true,
+    "freshSeventeenExplicitlyExcluded": true,
+    "semanticKindLedgerByteBoundAndCountValidated": true,
+    "exactStableFourAndFreshSeventeenScopesValidated": true,
+    "realOutputParentDirectoriesRequired": true,
+    "dedicatedResolutionDirectoryRejectsUnknownEntries": true,
+    "outputAndAdjacentStagingStatesFailClosed": true,
+    "missingOutputsFullyStagedWithExclusiveCreate": true,
+    "partialWxPreparationCannotPoisonAdjacentStaging": true,
+    "atomicNoClobberHardLinkPublish": true,
+    "classifiedCrashStatesForwardResumableAfterStaleLockReview": true,
+    "privateCrashResiduesInventoriedAndResumable": true,
+    "exclusiveBatchWriteLockSerializesStagingCleanup": true,
+    "rollbackNeverDeletesUnverifiedBytes": true,
+    "openAiReviewFreezeRequiredBeforeWrite": true
+  },
+  "materializationPlanSha256": "sha256:509554843ae4c1d4636c1db1190e77641beb0b088d2f2f19fa8a6a3a97e12251"
+}

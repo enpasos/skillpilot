@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `1a037489-3c95-540b-8cae-0acd360358ee`
 - Titel: Induktion durch Änderung des magnetischen Flusses
-- Beschreibung: Die lernende Person kann magnetischen Fluss definieren und qualitative Beispiele für Induktion durch zeitlich veränderten Fluss beschreiben.
+- Beschreibung: Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Induktion durch Änderung des magnetischen Flusses
-Beschreibung: Die lernende Person kann magnetischen Fluss definieren und qualitative Beispiele für Induktion durch zeitlich veränderten Fluss beschreiben.
+Beschreibung: Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.
 
 Zusatzanweisung:
 Pflichtinhalt:

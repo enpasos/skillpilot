@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:26077433b984eb6be1788c3bfacaab699195d08b2e0b0a1d0e3d1b002c34eec2",
+  "reviewInputFingerprint": "sha256:5704c355fa433624690849309838226484ee8175275c30fb520ffadcc34e4ed1",
+  "goalCount": 8,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-a",
+      "roundId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-b",
+      "roundId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 8,
+    "unavailable": 0,
+    "requiresSynthesis": 8
+  },
+  "goals": [
+    {
+      "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-001",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-002",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:f74c691b-0b76-54e0-8fd6-a22211994e0a",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "25d91cc0-d84c-5522-86b5-fdff73264f08",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-003",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:25d91cc0-d84c-5522-86b5-fdff73264f08",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-004",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "979e0d0d-8933-4ace-814f-f28060ad280f",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-005",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:979e0d0d-8933-4ace-814f-f28060ad280f",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1593d95c-2aac-504c-8527-37cb61877da9",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-006",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:1593d95c-2aac-504c-8527-37cb61877da9",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-007",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
+      "firstRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001.record-008",
+      "secondRecordId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b:50877233-7abf-54df-b347-6d3224678fc9",
+      "firstRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-017-global-nuclear-physics-current-8-v3-20260828-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

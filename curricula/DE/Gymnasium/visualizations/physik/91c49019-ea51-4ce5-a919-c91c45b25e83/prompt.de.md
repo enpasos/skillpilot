@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `91c49019-ea51-4ce5-a919-c91c45b25e83`
 - Titel: Energieerhaltung
-- Beschreibung: Die lernende Person kann die Energieerhaltung in abgeschlossenen Systemen formulieren und einfache Energieumwandlungen bilanziell beschreiben.
+- Beschreibung: Die lernende Person kann für ein System, über dessen Grenze keine Energie übertragen wird, die Energieerhaltung formulieren und einfache Umwandlungen zwischen Energieformen bilanziell beschreiben.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Energieerhaltung
-Beschreibung: Die lernende Person kann die Energieerhaltung in abgeschlossenen Systemen formulieren und einfache Energieumwandlungen bilanziell beschreiben.
+Beschreibung: Die lernende Person kann für ein System, über dessen Grenze keine Energie übertragen wird, die Energieerhaltung formulieren und einfache Umwandlungen zwischen Energieformen bilanziell beschreiben.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Kennzeichne ein abgegrenztes System, über dessen Grenze keine Energie übertragen wird, und zeige die konstante Gesamtenergie bei der Umwandlung zwischen Energieformen.
+
 Pflichtinhalt:
 
 Show energy conservation in a closed system using an energy account.

@@ -47,7 +47,7 @@ interface SourceGoal {
   parentBulletText: string
   sourceRef: string
   courseLevel: 'GK_LK' | 'LK' | 'unspecified'
-  granularity: 'officialCompetency'
+  granularity: 'officialCompetency' | 'officialContentItem'
   tags: string[]
   rawSourceText: string
   rawSourceSpan: string
@@ -1664,6 +1664,25 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
     'e6a50c74-c922-508c-aa27-07bac2566955',
     'b378c8b3-5e83-5abf-8243-b0f345037bfc',
   ],
+  // Batch 022 official solar content targets. These content items bound
+  // proposition scope and are not rephrased as official competencies.
+  'b76d014a-487a-5342-8b68-00cd04f1f58f': [
+    'bebc3738-0be6-52cf-83db-f8b948f7cf7b',
+  ],
+  '2b355258-f7d4-5d20-80c5-3c7305527213': [
+    '5e9cd796-3887-5457-8a1f-26863ca7eb28',
+  ],
+  '584d940e-d7da-5e57-863c-737956230cb8': [
+    '9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8',
+  ],
+  '212e1afe-722c-59c5-8305-716e2cab9775': [
+    '23335a89-f8e6-5c22-8705-d71193aeac96',
+  ],
+  '488f9749-e2f9-5c62-85e5-d09f237e748c': [
+    '89124b92-5769-5e13-8a5d-78497936260f',
+  ],
+
+
 }
 
 const sourceDocument: SourceDocument = {
@@ -1730,6 +1749,38 @@ function isSourceGoalNode(goal: SourceGoalNode): boolean {
     && normalizeWhitespace(goal.description ?? '').length > 0
 }
 
+// Batch 022 official LehrplanPLUS solar-content evidence.
+// The item labels are reproduced as content, without invented competency verbs.
+const batch022SolarContentUrl = "https://www.lehrplanplus.bayern.de/fachlehrplan/lernbereich/314021"
+const batch022SolarParentText = "Zustandsgrößen der Sonne: Radius, Masse, Leuchtkraft (auch Solarkonstante), Rotationsdauer, Oberflächentemperatur"
+const batch022SolarOfficialContentItems = [
+  {
+    "id": "b76d014a-487a-5342-8b68-00cd04f1f58f",
+    "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.1",
+    "sourceText": "Radius"
+  },
+  {
+    "id": "2b355258-f7d4-5d20-80c5-3c7305527213",
+    "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.2",
+    "sourceText": "Masse"
+  },
+  {
+    "id": "584d940e-d7da-5e57-863c-737956230cb8",
+    "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.3",
+    "sourceText": "Leuchtkraft (auch Solarkonstante)"
+  },
+  {
+    "id": "212e1afe-722c-59c5-8305-716e2cab9775",
+    "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.4",
+    "sourceText": "Rotationsdauer"
+  },
+  {
+    "id": "488f9749-e2f9-5c62-85e5-d09f237e748c",
+    "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.5",
+    "sourceText": "Oberflächentemperatur"
+  }
+] as const
+
 function buildExtraction(source: SourceLandscape): { passages: Passage[], sourceGoals: SourceGoal[], expectedTopicCodes: string[] } {
   const goalsById = new Map(source.goals.map((goal) => [goal.id, goal]))
   const passageNodes = source.goals.filter(isPassageNode)
@@ -1785,6 +1836,45 @@ function buildExtraction(source: SourceLandscape): { passages: Passage[], source
     })
   })
 
+  // Batch 022: LehrplanPLUS learning-area 314021 publishes this content list
+  // separately from the competency sentence. Keep each entry typed as content.
+  const solarPassage = passages.find((passage) => passage.topicCode === 'Ph13-GA-ASTRO.3')
+  const solarCompetencyIndex = sourceGoals.findIndex((sourceGoal) => sourceGoal.id === '1292f05c-47da-5e95-a706-8f456b507d50')
+  if (!solarPassage || solarCompetencyIndex < 0) {
+    throw new Error('Batch 022 solar competency passage not found')
+  }
+  const solarContentGoals: SourceGoal[] = batch022SolarOfficialContentItems.map((item, index) => ({
+    id: item.id,
+    passageId: solarPassage.id,
+    topicCode: solarPassage.topicCode,
+    bulletIndex: 1,
+    aspectIndex: index + 1,
+    title: item.sourceText,
+    description: item.sourceText,
+    sourceText: item.sourceText,
+    sourceSpan: item.sourceSpan,
+    parentBulletText: batch022SolarParentText,
+    sourceRef: batch022SolarContentUrl,
+    courseLevel: 'GK_LK',
+    granularity: 'officialContentItem',
+    tags: [
+      'jurisdiction:DE-BY',
+      'stage:SekII',
+      'courseLevel:GK_LK',
+      'topic:Ph13-GA-ASTRO.3',
+      'source-kind:officialContentItem',
+    ],
+    rawSourceText: item.sourceText,
+    rawSourceSpan: item.sourceSpan,
+    rawParentBulletText: batch022SolarParentText,
+  }))
+  sourceGoals.splice(solarCompetencyIndex + 1, 0, ...solarContentGoals)
+  const passageCompetencyIndex = solarPassage.sourceGoalIds.indexOf('1292f05c-47da-5e95-a706-8f456b507d50')
+  if (passageCompetencyIndex < 0) throw new Error('Batch 022 solar passage lacks competency reference')
+  solarPassage.sourceGoalIds.splice(passageCompetencyIndex + 1, 0, ...solarContentGoals.map((goal) => goal.id))
+  solarPassage.text = `${solarPassage.text}\nInhalte zu den Kompetenzen: ${batch022SolarParentText}`
+  solarPassage.sourceUrl = batch022SolarContentUrl
+
   return {
     passages,
     sourceGoals,
@@ -1806,7 +1896,7 @@ function buildPipeline(parsed: { passages: Passage[], sourceGoals: SourceGoal[] 
     .map((sourceGoal) => sourceGoal.id)
   const m1Complete = sourcePathPresent && parsed.passages.length === 42
   const m2Complete = m1Complete
-    && parsed.sourceGoals.length === 296
+    && parsed.sourceGoals.length === 301
     && duplicateSourceGoalIds.length === 0
     && missingPassageRefs.length === 0
     && emptySourceTexts.length === 0
@@ -1847,7 +1937,7 @@ function buildPipeline(parsed: { passages: Passage[], sourceGoals: SourceGoal[] 
         {
           id: 'source-goals-created',
           label: 'Aus den LehrplanPLUS-Kompetenzerwartungen wurden Source-Ziele erzeugt',
-          passed: parsed.sourceGoals.length === 296,
+          passed: parsed.sourceGoals.length === 301,
           details: `${parsed.sourceGoals.length} Source-Ziele`,
         },
         {
@@ -1881,7 +1971,7 @@ function buildPipeline(parsed: { passages: Passage[], sourceGoals: SourceGoal[] 
           label: 'MAPPING-2 abgeschlossen',
           passed: m2Complete,
           details: m2Complete
-            ? '296 Source-Ziele liegen vor; MAPPING-3 kann gegen diese Source-Extraction-IDs laufen.'
+            ? '301 Source-Ziele liegen vor; MAPPING-3 kann gegen diese Source-Extraction-IDs laufen.'
             : 'MAPPING-3 wartet auf vollständige Source-Ziele.',
         },
         {
@@ -1917,12 +2007,344 @@ const batch015TargetsBySourceGoalId: Record<string, Array<{ targetGoalId: string
     }
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, Array<{ targetGoalId: string; matchType: 'exact' | 'partial' }>> = {
+  "9af9e852-a30a-5c9f-98cf-618371ebe0a9": [
+    {
+      "targetGoalId": "25d91cc0-d84c-5522-86b5-fdff73264f08",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "1593d95c-2aac-504c-8527-37cb61877da9",
+      "matchType": "partial"
+    }
+  ],
+  "dc93c563-9430-5f43-977f-5dc3a0ee7b35": [
+    {
+      "targetGoalId": "1593d95c-2aac-504c-8527-37cb61877da9",
+      "matchType": "partial"
+    }
+  ],
+  "ea53f883-180a-580a-9b39-0dc759673797": [
+    {
+      "targetGoalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+      "matchType": "partial"
+    }
+  ],
+  "d889c4dd-eb1b-57a0-8e71-cd9ddf57f8a4": [
+    {
+      "targetGoalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+      "matchType": "partial"
+    }
+  ],
+  "da143538-8478-5175-a759-2fdd0b39f77c": [
+    {
+      "targetGoalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+      "matchType": "partial"
+    }
+  ],
+  "a91fa2d4-7c0e-53a0-807a-2bd6b26fa1a2": [
+    {
+      "targetGoalId": "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+      "matchType": "partial"
+    }
+  ]
+}
+
+// Batch 021 astrophysics structural adjudication overlay
+const batch021SplitParentIds = new Set(["e07f36de-2819-59f8-a707-fa25b4633ed3","a7bec355-48c5-5107-bfab-d6956f9c9205","7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4"])
+const batch021TargetsBySourceGoalId: Record<string, Array<{ targetGoalId: string; matchType: 'exact' | 'partial' }>> = {
+  "f794cbd9-db43-54e9-9abe-45fae5724705": [
+    {
+      "targetGoalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+      "matchType": "partial"
+    }
+  ],
+  "cc2ffcad-52de-5a1c-8d32-c9264dd135d3": [
+    {
+      "targetGoalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "matchType": "partial"
+    }
+  ],
+  "0337c4aa-9350-583c-89e2-e136e1f813e5": [
+    {
+      "targetGoalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "matchType": "partial"
+    }
+  ],
+  "09a09524-4d0c-5f3f-b39e-3e669970a6a3": [
+    {
+      "targetGoalId": "4ea39b40-1563-58ab-8d54-5fc20efa5365",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+      "matchType": "partial"
+    }
+  ]
+}
+const batch021MappingRationaleBySourceGoalId: Record<string, string> = {
+  "f794cbd9-db43-54e9-9abe-45fae5724705": "Batch-021-Fachreview: Ph13-GA-ASTRO.4.1 trägt die astrometrische Entfernungs- und Tangentialgeschwindigkeitsbestimmung. Der frühere Sammelknoten wird deshalb durch das Astrometrie-Kind ersetzt; das bereits passende kanonische Distanzziel bleibt erhalten.",
+  "cc2ffcad-52de-5a1c-8d32-c9264dd135d3": "Batch-021-Fachreview: Ph13-GA-ASTRO.4.2 trägt Dopplerschlüsse aus Absorptionslinien und die begründete Spektralklassifikation. Es trägt weder die Fraunhoferlinien-Entstehung noch eine Temperaturbestimmung mit Wien- oder Stefan-Boltzmann-Gesetz; diese Elternanteile werden daher nicht kopiert.",
+  "0337c4aa-9350-583c-89e2-e136e1f813e5": "Batch-021-Fachreview: Ph13-GA-ASTRO.3.4 stützt getrennt die Deutung von Fraunhoferlinien und die Abschätzung der Oberflächentemperatur mit Wien- beziehungsweise Stefan-Boltzmann-Gesetz; die übrigen bereits passenden Grundlagenziele bleiben erhalten.",
+  "09a09524-4d0c-5f3f-b39e-3e669970a6a3": "Batch-021-Fachreview: Ph13-GA-ASTRO.4.5 stützt sowohl die gemeinsame Masseninferenz aus optischen Zweikörper- und Gravitationswellendaten als auch die davon getrennte, physikalisch begrenzte Analogieerklärung der Gravitationswellenentstehung; die beiden Grundlagenziele bleiben erhalten."
+}
+
+// Batch 022 astrophysics structural adjudication overlay
+const batch022SplitParentIds = new Set(["2bc068de-5d2b-5f94-bd51-755982befb6f","94a3a80e-f1de-51a2-b834-1e3431c5d3ca","0a172021-dfd9-5926-b92c-c01a9dfe9aa8","61e84097-57b9-5434-9909-8ed8368a7823","f203a552-fcf0-560c-baa2-47d4eb2379c8"])
+const batch022TargetsBySourceGoalId: Record<string, Array<{ targetGoalId: string; matchType: 'exact' | 'partial' }>> = {
+  "7006a7a0-9f2e-5ea4-aa95-312ecd9db38e": [
+    {
+      "targetGoalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "matchType": "partial"
+    }
+  ],
+  "a8775a10-9af9-586d-a90a-5ad3259bccac": [
+    {
+      "targetGoalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "6d18104b-5704-5c45-b39a-2c84565b1796",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+      "matchType": "partial"
+    }
+  ],
+  "1292f05c-47da-5e95-a706-8f456b507d50": [
+    {
+      "targetGoalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "matchType": "partial"
+    }
+  ],
+  "b76d014a-487a-5342-8b68-00cd04f1f58f": [
+    {
+      "targetGoalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "matchType": "partial"
+    }
+  ],
+  "2b355258-f7d4-5d20-80c5-3c7305527213": [
+    {
+      "targetGoalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+      "matchType": "partial"
+    }
+  ],
+  "584d940e-d7da-5e57-863c-737956230cb8": [
+    {
+      "targetGoalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "matchType": "partial"
+    }
+  ],
+  "212e1afe-722c-59c5-8305-716e2cab9775": [
+    {
+      "targetGoalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+      "matchType": "partial"
+    }
+  ],
+  "488f9749-e2f9-5c62-85e5-d09f237e748c": [
+    {
+      "targetGoalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "matchType": "partial"
+    }
+  ],
+  "9f0d2e0e-9bcf-5b30-9f78-af6374ca0a44": [
+    {
+      "targetGoalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "14d99a65-8d58-5647-88ab-02137b96d55b",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
+      "matchType": "partial"
+    }
+  ],
+  "466996a2-112f-508c-9454-c59385ebda84": [
+    {
+      "targetGoalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+      "matchType": "partial"
+    }
+  ],
+  "6d7f80f4-e1ea-5de1-a826-09cc491de239": [
+    {
+      "targetGoalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+      "matchType": "partial"
+    }
+  ]
+}
+const batch022MappingRationaleBySourceGoalId: Record<string, string> = {
+  "7006a7a0-9f2e-5ea4-aa95-312ecd9db38e": "Batch-022-Fachreview: Ph13-GA-ASTRO.1.1 trägt getrennt die Navigation mit Sternkarte oder Software, die Klassifikation beobachtbarer Objekte und grundlegende räumlich-zeitliche Sichtbarkeitsaussagen. Die bereits passenden Beobachtungs- und Quellenkompetenzen bleiben erhalten; der frühere Sammelknoten entfällt.",
+  "a8775a10-9af9-586d-a90a-5ad3259bccac": "Batch-022-Fachreview: Der erste Satz von Ph13-GA-ASTRO.1.2 stützt Konstellationen und Sichtbarkeit, der zweite Schleifenbahnen und ihre historische Modell- und Weltbildbedeutung. Die vorhandenen Weltbild- und Kepler-Ziele bleiben erhalten.",
+  "1292f05c-47da-5e95-a706-8f456b507d50": "Batch-022-Fachreview: Ph13-GA-ASTRO.3.1 trägt die beobachtungsbasierte Methoden- und Abschätzungskompetenz. Die amtliche Inhaltsliste des Lernbereichs 314021 begrenzt Zustandsgrößen propositionenscharf auf Radius, Masse, Leuchtkraft einschließlich Solarkonstante, Rotationsdauer und Oberflächentemperatur. Vier neue Kinder und das bestehende Temperaturziel bilden diese Größen ab; das Beobachtungsmethodenziel bleibt erhalten.",
+  "b76d014a-487a-5342-8b68-00cd04f1f58f": "Batch-022-Inhaltsbeleg: Das amtliche officialContentItem Radius begrenzt zusammen mit Kompetenz 1292f05c die Zielgröße des Sonnenradius-Kindes; es wird nicht als eigenständige Kompetenz umgedeutet.",
+  "2b355258-f7d4-5d20-80c5-3c7305527213": "Batch-022-Inhaltsbeleg: Das amtliche officialContentItem Masse begrenzt zusammen mit Kompetenz 1292f05c die Zielgröße des Sonnenmasse-Kindes; es wird nicht als eigenständige Kompetenz umgedeutet.",
+  "584d940e-d7da-5e57-863c-737956230cb8": "Batch-022-Inhaltsbeleg: Das amtliche officialContentItem Leuchtkraft (auch Solarkonstante) begrenzt zusammen mit Kompetenz 1292f05c die Zielgröße des Leuchtkraft-Kindes; es wird nicht als eigenständige Kompetenz umgedeutet.",
+  "212e1afe-722c-59c5-8305-716e2cab9775": "Batch-022-Inhaltsbeleg: Das amtliche officialContentItem Rotationsdauer begrenzt zusammen mit Kompetenz 1292f05c die Zielgröße des Rotationsdauer-Kindes; es wird nicht als eigenständige Kompetenz umgedeutet.",
+  "488f9749-e2f9-5c62-85e5-d09f237e748c": "Batch-022-Inhaltsbeleg: Das amtliche officialContentItem Oberflächentemperatur begrenzt zusammen mit Kompetenz 1292f05c die Temperatur-Zielgröße. Es bindet das bereits vorhandene 89124b92 und erzeugt weder ein Doppelkind noch eine eigenständige Kompetenz.",
+  "9f0d2e0e-9bcf-5b30-9f78-af6374ca0a44": "Batch-022-Fachreview: Der erste Satz von Ph13-GA-ASTRO.5.2 trägt die gravitationsgestützte Massenabschätzung für Milchstraße und zentrales Schwarzes Loch; der zweite trägt den Dunkle-Materie-Schluss aus Rotationskurven. Die zwei bereits geprüften Grundlagenziele bleiben erhalten.",
+  "466996a2-112f-508c-9454-c59385ebda84": "Batch-022-Fachreview: Ph13-GA-ASTRO.5.3 trägt ausschließlich Anwendung, Vergleich, Unsicherheit und Gültigkeitsgrenzen von Galaxien-Entfernungsverfahren. Der frühere Sammelknoten wird durch das Distanz-Kind ersetzt; das allgemeine Distanzziel bleibt erhalten.",
+  "6d7f80f4-e1ea-5de1-a826-09cc491de239": "Batch-022-Fachreview: Ph13-GA-ASTRO.5.4 trägt die Hubble-Altersabschätzung und Aussagen zur Entwicklung des Universums. Der frühere Distanz-und-Alter-Sammelknoten wird durch das Hubble-Alter-Kind ersetzt; die vorhandenen Kosmologieziele bleiben erhalten."
+}
+
+// Batch 023 binary/GW mass-inference structural adjudication overlay
+const batch023SplitParentIds = new Set(["4ea39b40-1563-58ab-8d54-5fc20efa5365"])
+const batch023TargetsBySourceGoalId: Record<string, Array<{ targetGoalId: string; matchType: 'exact' | 'partial' }>> = {
+  "09a09524-4d0c-5f3f-b39e-3e669970a6a3": [
+    {
+      "targetGoalId": "2014791b-af68-58d0-838b-fc9701202096",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+      "matchType": "partial"
+    },
+    {
+      "targetGoalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+      "matchType": "partial"
+    }
+  ]
+}
+const batch023MappingRationaleBySourceGoalId: Record<string, string> = {
+  "09a09524-4d0c-5f3f-b39e-3e669970a6a3": "Batch-023-Fachreview: Ph13-GA-ASTRO.4.5 trägt getrennt die dynamische Gesamtmasseninferenz aus optischen Zweikörperbahndaten und die Chirp-Masseninferenz aus der Frequenzentwicklung eines Gravitationswellensignals. Die physikalisch begrenzte Analogieerklärung der Gravitationswellenentstehung und beide Grundlagenziele bleiben erhalten; der nun strukturelle Sammelknoten wird nicht direkt gemappt."
+}
+
 const applyPhysicsBatch015Targets = (
   sourceGoalId: string,
   targets: Array<{ canonicalGoalId: string; matchType: string }>,
 ): Array<{ canonicalGoalId: string; matchType: string }> => {
-  const retained = targets.filter((target) => !batch015SplitParentIds.has(target.canonicalGoalId))
+  const batch023Targets = batch023TargetsBySourceGoalId[sourceGoalId]
+  if (batch023Targets) {
+    return batch023Targets.map((target) => ({
+      canonicalGoalId: target.targetGoalId,
+      matchType: target.matchType,
+    }))
+  }
+  const batch022Targets = batch022TargetsBySourceGoalId[sourceGoalId]
+  if (batch022Targets) {
+    return batch022Targets.map((target) => ({
+      canonicalGoalId: target.targetGoalId,
+      matchType: target.matchType,
+    }))
+  }
+  const batch021Targets = batch021TargetsBySourceGoalId[sourceGoalId]
+  if (batch021Targets) {
+    return batch021Targets.map((target) => ({
+      canonicalGoalId: target.targetGoalId,
+      matchType: target.matchType,
+    }))
+  }
+  const retained = targets.filter((target) => !batch015SplitParentIds.has(target.canonicalGoalId) && !batch017SplitParentIds.has(target.canonicalGoalId) && !batch021SplitParentIds.has(target.canonicalGoalId) && !batch022SplitParentIds.has(target.canonicalGoalId) && !batch023SplitParentIds.has(target.canonicalGoalId))
   for (const addition of batch015TargetsBySourceGoalId[sourceGoalId] ?? []) {
+    const existing = retained.find((target) => target.canonicalGoalId === addition.targetGoalId)
+    if (existing) existing.matchType = addition.matchType
+    else retained.push({ canonicalGoalId: addition.targetGoalId, matchType: addition.matchType })
+  }
+  for (const addition of batch017TargetsBySourceGoalId[sourceGoalId] ?? []) {
     const existing = retained.find((target) => target.canonicalGoalId === addition.targetGoalId)
     if (existing) existing.matchType = addition.matchType
     else retained.push({ canonicalGoalId: addition.targetGoalId, matchType: addition.matchType })
@@ -1984,8 +2406,38 @@ function writeReviewSeed(parsed: { sourceGoals: SourceGoal[] }, sourceLandscapeI
       }
     })
 
+  // Batch 021 source-specific mapping rationales.
+  for (const decision of decisions) {
+    const batch021Rationale = batch021MappingRationaleBySourceGoalId[decision.sourceGoalId]
+    if (!batch021Rationale) continue
+    decision.rationale = batch021Rationale
+    decision.reviewedAt = '2026-08-28'
+    decision.reviewer = 'codex-physics-batch-021-astrophysics-adjudication-2026-08-28'
+  }
+
+  // Batch 022 source-specific mapping rationales.
+  for (const decision of decisions) {
+    const batch022Rationale = batch022MappingRationaleBySourceGoalId[decision.sourceGoalId]
+    if (!batch022Rationale) continue
+    decision.rationale = batch022Rationale
+    decision.reviewedAt = '2026-08-28'
+    decision.reviewer = 'codex-physics-batch-022-astrophysics-structural-adjudication-2026-08-28'
+  }
+
+  // Batch 023 source-specific mapping rationales.
+  for (const decision of decisions) {
+    const batch023Rationale = batch023MappingRationaleBySourceGoalId[decision.sourceGoalId]
+    if (!batch023Rationale) continue
+    decision.rationale = batch023Rationale
+    decision.reviewedAt = '2026-08-28'
+    decision.reviewer = 'codex-physics-batch-023-astrophysics-adjudication-2026-08-28'
+  }
+
   const mappings = decisions.flatMap((decision) => {
-    const targets = canonicalTargetsBySourceGoalId.get(decision.sourceGoalId) ?? []
+    const targets = applyPhysicsBatch015Targets(
+      decision.sourceGoalId,
+      canonicalTargetsBySourceGoalId.get(decision.sourceGoalId) ?? [],
+    )
     return targets.map((target) => ({
       legacyGoalId: decision.sourceGoalId,
       canonicalGoalId: target.canonicalGoalId,
@@ -2027,7 +2479,7 @@ function main(): void {
     method: {
       sourceAcquisition: 'Die strukturierte lokale LehrplanPLUS-Physikquelle fuer Gymnasium Bayern ist registriert; die offizielle LehrplanPLUS-Fachseite ist als Kontroll-URL hinterlegt.',
       passageExtraction: 'Aus der strukturierten LehrplanPLUS-Physikquelle wurden alle zieltragenden Ph8-Ph13-Lernbereichsabschnitte als Passage-Einheiten persistiert; synthetische Jahrgangs- und Motivationsknoten werden nicht als Lehrplanpassagen gewertet.',
-      sourceGoalExtraction: 'Alle in den Passage-Einheiten enthaltenen Kompetenzerwartungen mit Zieltext wurden als Source-Ziele persistiert.',
+      sourceGoalExtraction: 'Alle in den Passage-Einheiten enthaltenen Kompetenzerwartungen mit Zieltext wurden als Source-Ziele persistiert; die amtliche Inhaltsliste zu Ph13-GA-ASTRO.3 ist zusätzlich propositionenscharf als officialContentItem erfasst und wird nicht als eigenständige Kompetenz umgedeutet.',
     },
     expectedTopicCodes: parsed.expectedTopicCodes,
     pipelineStatus: buildPipeline(parsed),
@@ -2041,7 +2493,7 @@ function main(): void {
         ],
         count: parsed.sourceGoals.length,
         assessment: 'plausible',
-        rationale: '296 BY-Physik-Source-Ziele liegen zwischen BW (265) und HE (322) und verletzen die 30-Prozent-Abweichungsheuristik nicht.',
+        rationale: '301 BY-Physik-Source-Ziele einschließlich fünf amtlicher Inhaltslisteneinträge liegen zwischen BW (265) und HE (322) und verletzen die 30-Prozent-Abweichungsheuristik nicht.',
       },
     },
   }

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b024a-round-b-batch-001-gpt5-subject-review",
+  "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-b",
+  "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:078853ffe51adddabbac14179cb74f1115db3dce16c21b4a41a4e2ed266ed508",
+  "bundleFingerprint": "sha256:ee4930014d5d5c6a3dd73f1b27db7fb70a04a5b87342cdbf930fafb29a2939ee",
+  "bookDigest": "sha256:dfe2d53372d19fb2bd37ac307d45af138f40131f4c0f51f3774e2148341c04dd",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:8a5978ec3863207a7d2c7c35e5e6670e7339399f1d72b31adaa3a6a80729c9e3",
+  "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:078853ffe51adddabbac14179cb74f1115db3dce16c21b4a41a4e2ed266ed508"
+    }
+  ],
+  "startedAt": "2026-08-28T21:06:43Z",
+  "completedAt": "2026-08-28T21:07:43Z",
+  "status": "completed",
+  "outputDigest": "sha256:f00dda34e23c5642859a7dafc16e45bbc54cfcf3cf4204f155f6aa5dea8a05ea",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

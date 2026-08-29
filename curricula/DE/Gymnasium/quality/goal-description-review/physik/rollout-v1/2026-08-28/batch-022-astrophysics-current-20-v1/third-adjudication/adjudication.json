@@ -1,0 +1,617 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-goal-description-third-adjudication-draft",
+  "draftContract": "skillpilot-goal-description-bilingual-adjudication-draft-v1",
+  "batchId": "physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828",
+  "subject": "physik",
+  "adjudicatedAt": "2026-08-28",
+  "authority": "root_synthesis_after_two_independent_blind_rounds_and_source_atomicity_audit",
+  "mode": "append_only_fail_closed_repository_local_subject_adjudication",
+  "appendOnly": true,
+  "failClosed": true,
+  "noProgressClaim": true,
+  "materialized": false,
+  "inputBinding": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1.config.json",
+    "configDigest": "sha256:8c6fa751fd722a72aceab4ebba9c7796117d6ea6ae3a768388992d9b5c1d7d97",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/batch-manifest.json",
+    "batchManifestDigest": "sha256:254c30d4ccedadb982afc310953fa527eaf6703bbb1f2a6f77071a9bece37f48",
+    "bundleManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/bundle/manifest.json",
+    "bundleManifestDigest": "sha256:b38b651d8a06d21aeb9f8de5b894f593f7fbf3785ba6ab62e8cd46de0c1c8a67",
+    "bundleFingerprint": "sha256:5af96672fc1b6c0d0f3baaa69688fa9396cb7dfe7453c0d86d16f430fcd58019",
+    "reviewInputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/bundle/review-input.json",
+    "reviewInputDigest": "sha256:6d30c3b769427e2d3f4c446660fc43378c965109f5d766b325eb1cdd55bcff96",
+    "reviewInputFingerprint": "sha256:c03db07ef7de7c1cac85bd83cb4fdadabbca06fbbb75e63191af08b36d644b95",
+    "bookModelPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/bundle/book-model.json",
+    "bookModelFileDigest": "sha256:68194bd1270afec549677770637fa861b03f577ea6bf186982dfa4c35be0e788",
+    "bookModelDigest": "sha256:7e6fe28afb5ef4b4e0448392fa01232b704912ccc12fabfb98f81efbfaddf76a",
+    "goalCount": 20,
+    "blindnessEndedOnlyForThisThirdAdjudication": true,
+    "blindRoundResultsNotReopenedBySourceAuditor": true
+  },
+  "exactInputSha256": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1.config.json",
+      "sha256": "8c6fa751fd722a72aceab4ebba9c7796117d6ea6ae3a768388992d9b5c1d7d97"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/batch-manifest.json",
+      "sha256": "254c30d4ccedadb982afc310953fa527eaf6703bbb1f2a6f77071a9bece37f48"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/bundle/manifest.json",
+      "sha256": "b38b651d8a06d21aeb9f8de5b894f593f7fbf3785ba6ab62e8cd46de0c1c8a67"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/bundle/review-input.json",
+      "sha256": "6d30c3b769427e2d3f4c446660fc43378c965109f5d766b325eb1cdd55bcff96"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/bundle/book-model.json",
+      "sha256": "68194bd1270afec549677770637fa861b03f577ea6bf186982dfa4c35be0e788"
+    }
+  ],
+  "counts": {
+    "total": 20,
+    "keep_current": 12,
+    "accepted_revision": 3,
+    "structural_split": 5,
+    "unresolved_block": 0,
+    "retainedParentClusters": 5,
+    "newAtomicChildren": 13,
+    "curricularAtomicDenominatorBefore": 451,
+    "curricularAtomicDenominatorAfter": 459,
+    "curricularAtomicDenominatorDelta": 8,
+    "curricularAreaCountBefore": 95,
+    "curricularAreaCountAfter": 100,
+    "canonicalGoalCountBefore": 690,
+    "canonicalGoalCountAfter": 703,
+    "requiredFollowUpAtomicGoalCount": 16,
+    "newOfficialContentSourceGoals": 5,
+    "bavariaMappingRowsBefore": 995,
+    "bavariaMappingRowsAfter": 1008,
+    "hamburgMappingRowsBefore": 220,
+    "hamburgMappingRowsAfter": 220,
+    "requiresProductOwnerDecision": 0
+  },
+  "adjudicationPolicy": {
+    "minimalChangeRule": "The twelve KEEP goals remain byte-identical. Only the three evidenced bilingual revisions and five source-supported structural splits are planned.",
+    "semanticAtomicityRule": "A current content leaf is split where independently assessable performances can vary separately. The two blind rounds agreed on the additional 2bc068de and 0a172021 splits, and the official bullets contain multiple independent sentences or performances.",
+    "solarAuthorityRule": "The generic Zustandsgrößen competence is not sufficient by itself to name four new solar quantities. Materialization is gated on generator-owned officialContentItem evidence from LehrplanPLUS learning-area 314021 and proposition-specific Bavaria mapping rows to the four children plus the existing temperature goal.",
+    "visualizationRule": "Existing Nano Banana Pro parent images remain byte-identical as cluster overviews. The thirteen new children receive no substitute images and are recorded as deferred_provider_limitation.",
+    "materializationRule": "This artifact is a draft. It authorizes neither a canonical --write nor a progress claim. The apply script retains a PENDING bounded-plan hash."
+  },
+  "contractNoteDe": "Zwölf Ziele bleiben unverändert, drei Atome erhalten minimale bilinguale Revisionen, und fünf bisherige Atome werden unter stabiler Eltern-ID in Cluster mit insgesamt dreizehn neuen atomaren Kindern umgewandelt. Der Nenner würde dadurch von 451 auf 459 steigen. Vor jeder Materialisierung müssen die amtlichen Sonnen-Inhaltsitems generatorgetragen in BY-X erscheinen, BY-M und HH-M propositionenscharf reproduzierbar sein und der gebundene No-write-Plan gesondert geprüft werden. B023 enthält exakt die dreizehn Kinder und drei revidierten Atome; vor zwei frischen Blindreviews darf kein zusätzlicher Fortschritt beansprucht werden.",
+  "contractNoteEn": "Twelve goals remain unchanged, three atomic goals receive minimal bilingual revisions, and five current atomic goals become clusters under stable parent IDs with thirteen new atomic children. The denominator would therefore rise from 451 to 459. Before any materialization, the official solar content items must be generated into BY-X, the proposition-specific BY-M and HH-M outputs must be reproducible, and the bound no-write plan must be reviewed separately. B023 contains exactly the thirteen children and three revised atomic goals; no additional progress may be claimed before two fresh blind reviews.",
+  "currentContextBindings": {
+    "canonicalLandscape": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "f3a1912bb912badd3ff676f405b301f4461b30f48ed2f3ea95747a54bcd36152"
+    },
+    "semanticKinds": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "b99db8f63d525689db76efedc8df839168e4dbd1c7c53557dffe79bf623897f2"
+    },
+    "semanticAtomicity": {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "sha256": "16d39276ff5a7b55f95d445284b2dfb0cff4f2e2aaa33f074f748e39309dbbb2"
+    },
+    "memoryCardReview": {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "sha256": "4eb3b44cacd57b8c6de479de216921c09710c3ebe70acc06870e459d534bc13c"
+    },
+    "bavariaGenerator": {
+      "path": "app/scripts/generateByPhysicsSourceExtraction.ts",
+      "sha256": "93b4a9cb161e1cfb8eb1c5f6009bac3c621be7857c34db6173810a3d22d02e24"
+    },
+    "bavariaSourceExtraction": {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "a51e264731060ce2a45ed195e5d3855414ebd84cdfbf4cf4766659bffd6966c1"
+    },
+    "bavariaMappingReview": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "sha256": "033377827c9a90c112da45c568496d3259ae78e7cbcf476da1440d43ac7e8789"
+    },
+    "hamburgGenerator": {
+      "path": "app/scripts/generateHhPhysicsSourceExtraction.ts",
+      "sha256": "860a8f62fe64b1d262393675e77224570f4e9ad8a211ac5958ea2377b64aa96a"
+    },
+    "hamburgSourceExtraction": {
+      "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_PHYSIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "sha256": "bdf230c0341a8e72dce882d603d979715708031c79511d5b12eb0ecbea44b426"
+    },
+    "hamburgMappingReview": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "a351e0216cb53ad9d357cd75d8709842186835b873aa8c7b1574fcbc631b1798"
+    },
+    "canonicalProvenance": {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+      "sha256": "670aefd89b442e7f620db527a4c4957595fc42323db3ab9683c27f55bbe58c9f"
+    },
+    "sourceGoalClosure": {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json",
+      "sha256": "66f7d5ce4887f3f7365fcc71c05735a696432f836654d822b653357f243cd720"
+    },
+    "sourceGoalMembership": {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json",
+      "sha256": "87fd61377f153ad3c455fd6bc89d7def21af35190ecb5c597ca6480b1abad6e5"
+    },
+    "visualizationQa": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "sha256": "47f3fbd00c7ac59dceb60576816545e76a0e2a6173f0c256be9b3b4cd6e2d685"
+    }
+  },
+  "officialSolarContentEvidence": {
+    "authority": "Bayerisches Staatsministerium für Unterricht und Kultus, LehrplanPLUS",
+    "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/lernbereich/314021",
+    "verifiedAt": "2026-08-28",
+    "topicCode": "Ph13-GA-ASTRO.3",
+    "heading": "Inhalte zu den Kompetenzen",
+    "parentText": "Zustandsgrößen der Sonne: Radius, Masse, Leuchtkraft (auch Solarkonstante), Rotationsdauer, Oberflächentemperatur",
+    "contentItems": [
+      {
+        "sourceGoalId": "b76d014a-487a-5342-8b68-00cd04f1f58f",
+        "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.1",
+        "sourceText": "Radius",
+        "granularity": "officialContentItem",
+        "canonicalGoalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b"
+      },
+      {
+        "sourceGoalId": "2b355258-f7d4-5d20-80c5-3c7305527213",
+        "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.2",
+        "sourceText": "Masse",
+        "granularity": "officialContentItem",
+        "canonicalGoalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28"
+      },
+      {
+        "sourceGoalId": "584d940e-d7da-5e57-863c-737956230cb8",
+        "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.3",
+        "sourceText": "Leuchtkraft (auch Solarkonstante)",
+        "granularity": "officialContentItem",
+        "canonicalGoalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8"
+      },
+      {
+        "sourceGoalId": "212e1afe-722c-59c5-8305-716e2cab9775",
+        "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.4",
+        "sourceText": "Rotationsdauer",
+        "granularity": "officialContentItem",
+        "canonicalGoalId": "23335a89-f8e6-5c22-8705-d71193aeac96"
+      },
+      {
+        "sourceGoalId": "488f9749-e2f9-5c62-85e5-d09f237e748c",
+        "sourceSpan": "Ph13-GA-ASTRO.3.INHALTE.1.5",
+        "sourceText": "Oberflächentemperatur",
+        "granularity": "officialContentItem",
+        "canonicalGoalId": "89124b92-5769-5e13-8a5d-78497936260f"
+      }
+    ],
+    "nonCompetencyDistortionRule": "Each item remains labelled officialContentItem and is never rewritten as an independent official competence. Its partial mapping is interpreted together with official competency 1292f05c-47da-5e95-a706-8f456b507d50."
+  },
+  "decisions": [
+    {
+      "sequence": 1,
+      "goalId": "6d18104b-5704-5c45-b39a-2c84565b1796",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Eine zusammenhängende Reflexionsleistung an Weltbildwechseln; keine belegte Text- oder Strukturänderung."
+    },
+    {
+      "sequence": 2,
+      "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Klassifikation und begründete Schlussfolgerung verwenden ein gemeinsames physikalisches Kriterienraster."
+    },
+    {
+      "sequence": 3,
+      "goalId": "2bc068de-5d2b-5f94-bd51-755982befb6f",
+      "resolutionDecision": "structural_split",
+      "whyWordingOnlyInsufficientDe": "Orientierung, Objektklassifikation und räumlich-zeitliche Sichtbarkeitsbegründung sind unabhängig prüfbar; das amtliche Bayern-Bullet formuliert sie als getrennte Leistungen.",
+      "clusterConversion": {
+        "retainedGoalId": "2bc068de-5d2b-5f94-bd51-755982befb6f",
+        "retainedShortKey": "canonical_physics_astro_night_sky_orientation_visibility",
+        "titleDe": "Nachthimmel-Orientierung und Sichtbarkeit astronomischer Objekte erschließen",
+        "titleEn": "Navigate the Night Sky and Explain Astronomical Visibility",
+        "descriptionDe": "Die Teilziele bündeln die Navigation am Nachthimmel, die Klassifikation beobachtbarer Objekte und die Begründung ihrer räumlich-zeitlichen Sichtbarkeit.",
+        "descriptionEn": "The subgoals combine navigation of the night sky, classification of observable objects, and explanations of their spatial and temporal visibility.",
+        "weight": 3,
+        "contains": [
+          "d024aa45-5dbb-51f7-87a6-9ba939858696",
+          "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+          "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7"
+        ],
+        "requires": []
+      },
+      "children": [
+        {
+          "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+          "shortKey": "canonical_physics_astro_night_sky_navigation",
+          "titleDe": "Am Nachthimmel mit Sternkarte oder Software navigieren",
+          "titleEn": "Navigate the Night Sky with a Star Chart or Software",
+          "descriptionDe": "Die lernende Person kann für einen vorgegebenen Beobachtungsort und -zeitpunkt eine Sternkarte oder geeignete Software ausrichten und damit markante Sternbilder oder astronomische Objekte am Himmel auffinden.",
+          "descriptionEn": "The learner can orient a star chart or suitable software for a given observing location and time and use it to locate prominent constellations or astronomical objects in the sky.",
+          "requires": [
+            "2b700858-bc2e-5ddf-a791-b14d44160480",
+            "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+          ]
+        },
+        {
+          "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+          "shortKey": "canonical_physics_astro_observable_object_classification",
+          "titleDe": "Mit bloßem Auge beobachtbare Himmelsobjekte klassifizieren",
+          "titleEn": "Classify Celestial Objects Visible to the Naked Eye",
+          "descriptionDe": "Die lernende Person kann mit bloßem Auge beobachtbare astronomische Objekte anhand geeigneter beobachtbarer Merkmale begründet Objektklassen zuordnen.",
+          "descriptionEn": "The learner can assign astronomical objects visible to the naked eye to appropriate object classes using observable features and justify the classification.",
+          "requires": [
+            "2b700858-bc2e-5ddf-a791-b14d44160480"
+          ]
+        },
+        {
+          "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+          "shortKey": "canonical_physics_astro_spatiotemporal_visibility",
+          "titleDe": "Räumlich-zeitliche Sichtbarkeit astronomischer Objekte begründen",
+          "titleEn": "Explain the Spatial and Temporal Visibility of Astronomical Objects",
+          "descriptionDe": "Die lernende Person kann unter Berücksichtigung von Beobachtungsort, Uhrzeit und Jahreszeit grundlegende Aussagen darüber treffen und begründen, wann und wo ein astronomisches Objekt sichtbar ist.",
+          "descriptionEn": "The learner can account for observing location, time of day, and season to make and justify basic statements about when and where an astronomical object is visible.",
+          "requires": [
+            "d024aa45-5dbb-51f7-87a6-9ba939858696"
+          ]
+        }
+      ],
+      "sourceBasis": [
+        "7006a7a0-9f2e-5ea4-aa95-312ecd9db38e",
+        "hh-physics-sekii-bp2022-4-2-134-94297a57"
+      ]
+    },
+    {
+      "sequence": 4,
+      "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "resolutionDecision": "accepted_revision",
+      "changeScope": "title_de_and_title_en_only",
+      "finalText": {
+        "titleDe": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
+        "titleEn": "Explain the Astronomical Unit and Its Observation-Based Determination",
+        "descriptionDe": "Die lernende Person kann die Astronomische Einheit als Entfernungsmaß im Sonnensystem erklären und eine Methode zu ihrer Bestimmung aus Fachtexten und Beobachtungsdaten rekonstruieren.",
+        "descriptionEn": "The learner can explain the astronomical unit as a distance measure in the Solar System and reconstruct a method for determining it from scientific texts and observational data."
+      }
+    },
+    {
+      "sequence": 5,
+      "goalId": "94a3a80e-f1de-51a2-b834-1e3431c5d3ca",
+      "resolutionDecision": "structural_split",
+      "whyWordingOnlyInsufficientDe": "Radius, Masse, Leuchtkraft und Rotationsdauer sind verschiedene Zielgrößen mit unterschiedlichen Mess- und Modellverfahren. Die amtliche Inhaltsliste benennt sie getrennt; Oberflächentemperatur bleibt das bereits vorhandene Ziel 89124b92 und wird nicht doppelt unter diesem Elterncluster geführt.",
+      "clusterConversion": {
+        "retainedGoalId": "94a3a80e-f1de-51a2-b834-1e3431c5d3ca",
+        "retainedShortKey": "canonical_physics_astro_solar_observations_state_variables",
+        "titleDe": "Solare Zustandsgrößen aus Beobachtungen erschließen",
+        "titleEn": "Infer Solar State Variables from Observations",
+        "descriptionDe": "Die Teilziele bündeln beobachtungs- und modellgestützte Abschätzungen von Sonnenradius, Sonnenmasse, Sonnenleuchtkraft und solarer Rotationsdauer.",
+        "descriptionEn": "The subgoals combine observation- and model-based estimates of the Sun’s radius, mass, luminosity, and rotation period.",
+        "weight": 4,
+        "contains": [
+          "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+          "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+          "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+          "23335a89-f8e6-5c22-8705-d71193aeac96"
+        ],
+        "requires": []
+      },
+      "children": [
+        {
+          "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+          "shortKey": "canonical_physics_astro_solar_radius_observation",
+          "titleDe": "Sonnenradius aus Beobachtungsdaten abschätzen",
+          "titleEn": "Estimate the Solar Radius from Observational Data",
+          "descriptionDe": "Die lernende Person kann aus dem gemessenen Winkeldurchmesser der Sonne und ihrer Entfernung den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+          "descriptionEn": "The learner can estimate the Sun’s radius from its measured angular diameter and distance and account for measurement uncertainty.",
+          "requires": [
+            "2b700858-bc2e-5ddf-a791-b14d44160480",
+            "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+          ]
+        },
+        {
+          "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+          "shortKey": "canonical_physics_astro_solar_mass_orbital_data",
+          "titleDe": "Sonnenmasse aus Bahndaten abschätzen",
+          "titleEn": "Estimate the Solar Mass from Orbital Data",
+          "descriptionDe": "Die lernende Person kann aus Bahndaten eines Körpers im Sonnensystem mit einem Newton-Kepler-Modell die Sonnenmasse abschätzen und die Modellannahmen benennen.",
+          "descriptionEn": "The learner can estimate the Sun’s mass from orbital data for a Solar System body using a Newton–Kepler model and state the model assumptions.",
+          "requires": [
+            "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+            "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+          ]
+        },
+        {
+          "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+          "shortKey": "canonical_physics_astro_solar_luminosity_solar_constant",
+          "titleDe": "Sonnenleuchtkraft aus Solarkonstante und Entfernung abschätzen",
+          "titleEn": "Estimate Solar Luminosity from the Solar Constant and Distance",
+          "descriptionDe": "Die lernende Person kann aus Solarkonstante und Sonne-Erde-Abstand die Leuchtkraft der Sonne abschätzen und die gemessene Bestrahlungsstärke von der erschlossenen Gesamtleistung unterscheiden.",
+          "descriptionEn": "The learner can estimate the Sun’s luminosity from the solar constant and the Sun–Earth distance and distinguish measured irradiance from inferred total power.",
+          "requires": [
+            "2b700858-bc2e-5ddf-a791-b14d44160480",
+            "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+          ]
+        },
+        {
+          "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+          "shortKey": "canonical_physics_astro_solar_rotation_observation",
+          "titleDe": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
+          "titleEn": "Estimate the Sun’s Rotation Period from Observation Series",
+          "descriptionDe": "Die lernende Person kann in zeitlich getrennten, sicher gewonnenen oder bereitgestellten Sonnenbildern wiedererkennbare Strukturen verfolgen und daraus eine Rotationsdauer abschätzen.",
+          "descriptionEn": "The learner can track recurring structures in time-separated, safely obtained or supplied solar images and use them to estimate a rotation period.",
+          "requires": [
+            "2b700858-bc2e-5ddf-a791-b14d44160480"
+          ]
+        }
+      ],
+      "sourceBasis": [
+        "1292f05c-47da-5e95-a706-8f456b507d50",
+        "b76d014a-487a-5342-8b68-00cd04f1f58f",
+        "2b355258-f7d4-5d20-80c5-3c7305527213",
+        "584d940e-d7da-5e57-863c-737956230cb8",
+        "212e1afe-722c-59c5-8305-716e2cab9775",
+        "488f9749-e2f9-5c62-85e5-d09f237e748c"
+      ]
+    },
+    {
+      "sequence": 6,
+      "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Die astrometrische Auswertungskette bleibt eine einzige prüfbare Methodenkompetenz."
+    },
+    {
+      "sequence": 7,
+      "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Alle Teilschritte dienen derselben Radialgeschwindigkeitsbestimmung."
+    },
+    {
+      "sequence": 8,
+      "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Linienmuster und Temperatur begründen gemeinsam eine Spektralklassifikation."
+    },
+    {
+      "sequence": 9,
+      "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Liniendeutung und Energieniveaumodell erklären einen Mechanismus."
+    },
+    {
+      "sequence": 10,
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Wien- und Stefan-Boltzmann-Gesetz sind datenabhängige Wege zu derselben Oberflächentemperatur; das Ziel bleibt außerhalb des 94a3a80e-Clusters."
+    },
+    {
+      "sequence": 11,
+      "goalId": "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+      "resolutionDecision": "accepted_revision",
+      "changeScope": "description_de_and_description_en_only",
+      "finalText": {
+        "titleDe": "Strahlungsgleichgewichte und Lebensbedingungen abschätzen",
+        "titleEn": "Use Radiation Equilibria to Assess Conditions for Life",
+        "descriptionDe": "Die lernende Person kann aus einem begründeten Strahlungsgleichgewicht die Gleichgewichtstemperatur eines Himmelskörpers als Modellnäherung für seine Oberflächentemperatur abschätzen, Modellannahmen und Abweichungen von Messwerten reflektieren und daraus begrenzte Aussagen zu möglichen Lebensbedingungen ableiten.",
+        "descriptionEn": "The learner can use a justified radiative equilibrium to estimate a celestial body's equilibrium temperature as a model approximation of its surface temperature, reflect on model assumptions and discrepancies from measured values, and derive bounded statements about possible conditions for life."
+      }
+    },
+    {
+      "sequence": 12,
+      "goalId": "0a172021-dfd9-5926-b92c-c01a9dfe9aa8",
+      "resolutionDecision": "structural_split",
+      "whyWordingOnlyInsufficientDe": "Konstellations- und Sichtbarkeitsmodellierung einerseits sowie Schleifenbahnen und ihre historische Modellbedeutung andererseits stehen in zwei getrennten Sätzen der amtlichen Quelle und können unabhängig beherrscht werden.",
+      "clusterConversion": {
+        "retainedGoalId": "0a172021-dfd9-5926-b92c-c01a9dfe9aa8",
+        "retainedShortKey": "canonical_physics_astro_planetary_configurations_visibility",
+        "titleDe": "Planetenkonstellationen, Sichtbarkeit und Schleifenbahnen erschließen",
+        "titleEn": "Analyze Planetary Configurations, Visibility, and Retrograde Loops",
+        "descriptionDe": "Die Teilziele verbinden die Modellierung von Planetenkonstellationen und Sichtbarkeit mit der physikalischen Erklärung und historischen Einordnung scheinbarer Schleifenbahnen.",
+        "descriptionEn": "The subgoals connect modelling planetary configurations and visibility with a physical explanation and historical interpretation of apparent retrograde loops.",
+        "weight": 2,
+        "contains": [
+          "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+          "44766569-6379-5fbc-8976-cd3fc2fd6ec4"
+        ],
+        "requires": []
+      },
+      "children": [
+        {
+          "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+          "shortKey": "canonical_physics_astro_planetary_configurations_visibility",
+          "titleDe": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
+          "titleEn": "Model Planetary Configurations and Their Visibility",
+          "descriptionDe": "Die lernende Person kann Planetenkonstellationen in Zeichnungen oder Simulationen modellieren und daraus ihre Sichtbarkeit am Nachthimmel erklären.",
+          "descriptionEn": "The learner can model planetary configurations in drawings or simulations and use them to explain their visibility in the night sky.",
+          "requires": [
+            "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+          ]
+        },
+        {
+          "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+          "shortKey": "canonical_physics_astro_planetary_retrograde_loops_worldviews",
+          "titleDe": "Schleifenbahnen von Planeten historisch einordnen",
+          "titleEn": "Place Planetary Retrograde Loops in Historical Context",
+          "descriptionDe": "Die lernende Person kann scheinbare Schleifenbahnen der Planeten als Folge relativer Bewegung im heliozentrischen Modell erklären und ihre Bedeutung für historische Erweiterungen und Umbrüche von Planetenbahnmodellen sowie deren Auswirkungen auf Weltbilder reflektieren.",
+          "descriptionEn": "The learner can explain apparent planetary retrograde loops as a result of relative motion in the heliocentric model and reflect on their significance for historical extensions and shifts in models of planetary motion and their effects on worldviews.",
+          "requires": [
+            "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+            "6d18104b-5704-5c45-b39a-2c84565b1796"
+          ]
+        }
+      ],
+      "sourceBasis": [
+        "a8775a10-9af9-586d-a90a-5ad3259bccac",
+        "hh-physics-sekii-bp2022-4-2-135-07dea54b"
+      ]
+    },
+    {
+      "sequence": 13,
+      "goalId": "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Zusammenhangsprüfung und Überwachungsurteil bilden eine fachlich zusammenhängende Bewertung."
+    },
+    {
+      "sequence": 14,
+      "goalId": "61e84097-57b9-5434-9909-8ed8368a7823",
+      "resolutionDecision": "structural_split",
+      "whyWordingOnlyInsufficientDe": "Die Entfernungsleiter für Galaxien und die modellabhängige Hubble-Altersabschätzung verwenden unterschiedliche Daten, Modelle und Beurteilungskriterien.",
+      "clusterConversion": {
+        "retainedGoalId": "61e84097-57b9-5434-9909-8ed8368a7823",
+        "retainedShortKey": "canonical_physics_astro_galaxy_distance_ladder_hubble_age",
+        "titleDe": "Galaxienentfernungen und Hubble-Alter beurteilen",
+        "titleEn": "Evaluate Galaxy Distances and Hubble-Age Estimates",
+        "descriptionDe": "Die Teilziele trennen die Beurteilung astronomischer Galaxienentfernungen von der modellabhängigen Abschätzung eines Hubble-Alters.",
+        "descriptionEn": "The subgoals separate the assessment of astronomical galaxy distances from model-dependent estimation of a Hubble age.",
+        "weight": 2,
+        "contains": [
+          "206a7d3d-9b11-56be-89ff-73898445c4f5",
+          "44f0eefa-2d93-5954-879f-f6c49e5cebc7"
+        ],
+        "requires": []
+      },
+      "children": [
+        {
+          "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+          "shortKey": "canonical_physics_astro_galaxy_distance_methods",
+          "titleDe": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
+          "titleEn": "Determine Galaxy Distances and Evaluate the Methods",
+          "descriptionDe": "Die lernende Person kann ein geeignetes Verfahren zur Entfernungsbestimmung von Galaxien anwenden, mit anderen astronomischen Entfernungsverfahren vergleichen und Messunsicherheiten sowie Gültigkeitsgrenzen beurteilen.",
+          "descriptionEn": "The learner can apply a suitable method for determining galaxy distances, compare it with other astronomical distance methods, and assess measurement uncertainties and validity limits.",
+          "requires": [
+            "db6b8de4-21e0-58e8-a347-2ae39f538f92"
+          ]
+        },
+        {
+          "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+          "shortKey": "canonical_physics_astro_hubble_age_model",
+          "titleDe": "Universumsalter mit der Hubble-Beziehung abschätzen",
+          "titleEn": "Estimate the Age of the Universe from the Hubble Relation",
+          "descriptionDe": "Die lernende Person kann aus der Hubble-Beziehung ein Hubble-Alter abschätzen und erläutern, warum es nur unter vereinfachenden Annahmen über die Expansionsgeschichte als Universumsalter gedeutet werden darf.",
+          "descriptionEn": "The learner can estimate a Hubble age from the Hubble relation and explain why it can be interpreted as the age of the universe only under simplifying assumptions about the expansion history.",
+          "requires": [
+            "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745"
+          ]
+        }
+      ],
+      "sourceBasis": [
+        "466996a2-112f-508c-9454-c59385ebda84",
+        "6d7f80f4-e1ea-5de1-a826-09cc491de239"
+      ]
+    },
+    {
+      "sequence": 15,
+      "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Teleskopvergleich und Multiwellenlängen-Synthese dienen einer gemeinsamen Strukturauswertung der Milchstraße."
+    },
+    {
+      "sequence": 16,
+      "goalId": "4ea39b40-1563-58ab-8d54-5fc20efa5365",
+      "resolutionDecision": "accepted_revision",
+      "changeScope": "scientific_mass_parameter_precision_in_both_languages",
+      "finalText": {
+        "titleDe": "Massenparameter aus Doppelstern- und Gravitationswellendaten erschließen",
+        "titleEn": "Infer Mass Parameters from Binary-Star and Gravitational-Wave Data",
+        "descriptionDe": "Die lernende Person kann aus optischen Bahnbeobachtungen eines Zweikörpersystems die dynamische Systemmasse und aus der Frequenzentwicklung eines Gravitationswellensignals einen Massenparameter des Systems abschätzen sowie Annahmen und Grenzen beider Verfahren erläutern.",
+        "descriptionEn": "The learner can estimate a binary system’s dynamical mass from optical orbital observations and a system mass parameter from the frequency evolution of a gravitational-wave signal, and explain the assumptions and limitations of both methods."
+      }
+    },
+    {
+      "sequence": 17,
+      "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Qualitative Entstehungserklärung und Grenzen der Analogie bilden eine einheitliche Modellkompetenz."
+    },
+    {
+      "sequence": 18,
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Methodenvergleich, Erdvergleich und Quellenkritik sind Evidenzschritte eines begründeten Habitabilitätsurteils."
+    },
+    {
+      "sequence": 19,
+      "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+      "resolutionDecision": "keep_current",
+      "rationaleDe": "Problem, untersuchbare Frage und Quellenbewertung bilden eine wissenschaftliche Einordnungsleistung."
+    },
+    {
+      "sequence": 20,
+      "goalId": "f203a552-fcf0-560c-baa2-47d4eb2379c8",
+      "resolutionDecision": "structural_split",
+      "whyWordingOnlyInsufficientDe": "Die Abschätzung eingeschlossener Massen und der Dunkle-Materie-Schluss aus Rotationskurven sind getrennte Inferenzleistungen, die im amtlichen Bullet in zwei Sätzen formuliert werden.",
+      "clusterConversion": {
+        "retainedGoalId": "f203a552-fcf0-560c-baa2-47d4eb2379c8",
+        "retainedShortKey": "canonical_physics_astro_dark_matter_rotation_curves",
+        "titleDe": "Galaktische Massen und Dunkle Materie aus Bahnbewegungen erschließen",
+        "titleEn": "Infer Galactic Masses and Dark Matter from Orbital Motion",
+        "descriptionDe": "Die Teilziele trennen die gravitationsgestützte Abschätzung eingeschlossener astronomischer Massen von der Dunkle-Materie-Inferenz aus Galaxienrotationskurven.",
+        "descriptionEn": "The subgoals separate gravity-based estimation of enclosed astronomical masses from inference of dark matter using galaxy rotation curves.",
+        "weight": 2,
+        "contains": [
+          "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+          "c53b3f0c-b4fe-5509-8803-a36c2883e5d6"
+        ],
+        "requires": []
+      },
+      "children": [
+        {
+          "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+          "shortKey": "canonical_physics_astro_orbital_mass_inference",
+          "titleDe": "Massen aus astronomischen Bahnbewegungen abschätzen",
+          "titleEn": "Estimate Masses from Astronomical Orbital Motion",
+          "descriptionDe": "Die lernende Person kann aus Bahngeschwindigkeiten und Radien mit einem begründeten Gravitationsmodell die eingeschlossene Masse eines astronomischen Systems, etwa die Gesamtmasse der Milchstraße oder die Masse ihres zentralen Schwarzen Lochs, abschätzen und Modellannahmen benennen.",
+          "descriptionEn": "The learner can use orbital speeds and radii with a justified gravitational model to estimate the enclosed mass of an astronomical system, such as the Milky Way’s total mass or the mass of its central black hole, and state the model assumptions.",
+          "requires": [
+            "5db07785-8cca-50d5-81a9-e0264d344af9",
+            "14d99a65-8d58-5647-88ab-02137b96d55b"
+          ]
+        },
+        {
+          "goalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+          "shortKey": "canonical_physics_astro_dark_matter_rotation_curves_evidence",
+          "titleDe": "Dunkle Materie aus Galaxienrotationskurven erschließen",
+          "titleEn": "Infer Dark Matter from Galaxy Rotation Curves",
+          "descriptionDe": "Die lernende Person kann eine beobachtete Galaxienrotationskurve mit der aus der sichtbaren Materieverteilung erwarteten Kurve vergleichen, die Abweichung als Hinweis auf zusätzliche nicht leuchtende Materie deuten und Grenzen dieses Schlusses erläutern.",
+          "descriptionEn": "The learner can compare an observed galaxy rotation curve with the curve expected from the visible-matter distribution, interpret the discrepancy as evidence for additional non-luminous matter, and explain limits of that inference.",
+          "requires": [
+            "f3dbcafa-1849-5ee1-8807-81e8d7fed73d"
+          ]
+        }
+      ],
+      "sourceBasis": [
+        "9f0d2e0e-9bcf-5b30-9f78-af6374ca0a44"
+      ]
+    }
+  ],
+  "requiredFollowUpGoalIds": [
+    "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+    "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+    "4ea39b40-1563-58ab-8d54-5fc20efa5365",
+    "d024aa45-5dbb-51f7-87a6-9ba939858696",
+    "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+    "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+    "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+    "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+    "206a7d3d-9b11-56be-89ff-73898445c4f5",
+    "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+    "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+    "c53b3f0c-b4fe-5509-8803-a36c2883e5d6"
+  ],
+  "followUpConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-023-astrophysics-structural-follow-up-16-v1.config.json",
+  "applyScriptPath": "app/scripts/applyPhysicsBatch022AstrophysicsAdjudication.ts",
+  "materializationGates": [
+    "adjudication and B023 config byte hashes match the apply script",
+    "all bound current-context and protected asset hashes match",
+    "planned BY generator reproduces exactly 301 source goals and 1008 proposition-specific mapping rows",
+    "planned HH generator reproduces the unchanged 154-source-goal extraction and exactly 220 proposition-specific mapping rows",
+    "the five official solar content items remain officialContentItem and map one-to-one as partial content evidence",
+    "semantic kind and review ledgers cover exactly 459 curricularAtomic goals",
+    "the context-fingerprint delta is exactly the 13 children plus 3 revised atoms",
+    "all four Bavaria composition views retain each split parent once and directly duplicate no child",
+    "all thirteen child visualizations are deferred_provider_limitation and all five parent images remain byte-identical",
+    "expectedBoundedPlanSha256 is no longer PENDING after independent plan review"
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f393f36e6b55e4ecc41cd15316845f3263587b3b1929ecc1a345b419eac31f1d",
+  "reviewInputFingerprint": "sha256:0984317c60b990e91a82c9aab494aa2a6dcb3ce0dd84f998f4688368213cd207",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-021-astrophysics-fast-lane-16-v1-20260828-a",
+      "roundId": "physik-rollout-v1-batch-021-astrophysics-fast-lane-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-021-astrophysics-fast-lane-16-v1-20260828-independent-a",
+      "runIds": [
+        "physik-b021-20260828-round-a-gpt-5.5"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-021-astrophysics-fast-lane-16-v1-20260828-b",
+      "roundId": "physik-rollout-v1-batch-021-astrophysics-fast-lane-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-021-astrophysics-fast-lane-16-v1-20260828-independent-b",
+      "runIds": [
+        "physik-batch021-astrophysics16-round-b-gpt5-20260828"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "6d18104b-5704-5c45-b39a-2c84565b1796",
+      "firstRecordId": "physik-b021-a-r01",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-01",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "firstRecordId": "physik-b021-a-r02",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-02",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2bc068de-5d2b-5f94-bd51-755982befb6f",
+      "firstRecordId": "physik-b021-a-r03",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-03",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "firstRecordId": "physik-b021-a-r04",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-04",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "94a3a80e-f1de-51a2-b834-1e3431c5d3ca",
+      "firstRecordId": "physik-b021-a-r05",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-05",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e07f36de-2819-59f8-a707-fa25b4633ed3",
+      "firstRecordId": "physik-b021-a-r06",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-06",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7bec355-48c5-5107-bfab-d6956f9c9205",
+      "firstRecordId": "physik-b021-a-r07",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-07",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+      "firstRecordId": "physik-b021-a-r08",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-08",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0a172021-dfd9-5926-b92c-c01a9dfe9aa8",
+      "firstRecordId": "physik-b021-a-r09",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-09",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
+      "firstRecordId": "physik-b021-a-r10",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-10",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "61e84097-57b9-5434-9909-8ed8368a7823",
+      "firstRecordId": "physik-b021-a-r11",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-11",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+      "firstRecordId": "physik-b021-a-r12",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-12",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7c8f1e34-d81a-51a2-8aa0-a6ee8e1b03a4",
+      "firstRecordId": "physik-b021-a-r13",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-13",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "firstRecordId": "physik-b021-a-r14",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-14",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+      "firstRecordId": "physik-b021-a-r15",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-15",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f203a552-fcf0-560c-baa2-47d4eb2379c8",
+      "firstRecordId": "physik-b021-a-r16",
+      "secondRecordId": "physik-batch021-astrophysics16-round-b-record-16",
+      "firstRunId": "physik-b021-20260828-round-a-gpt-5.5",
+      "secondRunId": "physik-batch021-astrophysics16-round-b-gpt5-20260828",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

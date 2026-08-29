@@ -34,6 +34,9 @@ const ids = {
   magneticFields: '0f6b798b-594e-5480-8c5f-95e2486a4d85',
   currentEffects: 'a5f652cc-e091-4c90-bec2-c357ae54fcf1',
   conductorAndCoilField: '106417ed-80db-5490-a1ee-bb4160d3f2b4',
+  chargedParticlesInMagneticFields: '9854589c-5feb-4942-b90f-311ddf36eb78',
+  lorentzForce: '8c9394cb-f54a-508d-9750-4c49e31b3fa9',
+  magnetization: '0924162b-46d0-5c56-93bc-33e1f5ac6886',
   buildMotor: 'eb30189c-27c6-510b-b235-6543afa18b90',
   motionInduction: 'a522c8c0-f3a4-5568-acae-3010ed9feb87',
   magneticFluxInduction: '1a037489-3c95-540b-8cae-0acd360358ee',
@@ -96,6 +99,7 @@ const routePrerequisiteGoalIdsByJurisdiction: Readonly<Record<string, readonly s
     '32111497-d5ca-453e-906d-d352f885b126',
     '01bebdfc-5819-4610-a03e-ea5e794fc954',
     ids.motionInduction,
+    ids.lorentzForce,
     '67ffd0f0-a5ab-518f-8c45-4c0e7eb18390',
     'd3c153b9-e09b-5668-8386-73105546a7c1',
     ids.massAndWeight,
@@ -122,6 +126,7 @@ const routePrerequisiteGoalIdsByJurisdiction: Readonly<Record<string, readonly s
     ids.harmonicWaves,
     ids.characteristicOscillationQuantities,
     ids.harmonicOscillation,
+    ids.lorentzForce,
   ],
   'DE-SN': [
     '3ed3279e-c524-5230-a277-dda89493df6d',
@@ -165,6 +170,7 @@ const nationalRoutePrerequisiteGoalIds = [
   ids.bandModelAndDoping,
   ids.inductionApplications,
   ids.conductorAndCoilField,
+  ids.lorentzForce,
   ids.emissionAndLineSpectra,
   ids.quantumObjects,
   ids.photonEnergyMomentum,
@@ -2012,8 +2018,11 @@ function buildCanonical(): JsonRecord {
   // foundations. These are exact all-of prerequisites: retaining one of the
   // former upper-secondary branches would still block the learner frontier.
   byId.get(ids.conductorAndCoilField)!.requires = [ids.magneticFields]
+  byId.get(ids.chargedParticlesInMagneticFields)!.requires = [ids.magneticFields]
+  byId.get(ids.lorentzForce)!.requires = [ids.magneticFields]
+  byId.get(ids.magnetization)!.requires = [ids.magneticFields]
   byId.get(ids.buildMotor)!.requires = [ids.magneticFields, ids.currentEffects]
-  byId.get(ids.motionInduction)!.requires = [ids.conductorAndCoilField]
+  byId.get(ids.motionInduction)!.requires = [ids.lorentzForce]
   byId.get(ids.inductionApplications)!.requires = [ids.magneticFluxInduction]
 
   // Replace upper-secondary detours only where the existing target itself is
@@ -2190,6 +2199,9 @@ function buildSemanticKinds(landscape: JsonRecord): JsonRecord {
     ids.regularVolume,
     ids.displacementVolume,
     ids.conductorAndCoilField,
+    ids.chargedParticlesInMagneticFields,
+    ids.lorentzForce,
+    ids.magnetization,
     ids.buildMotor,
     ids.motionInduction,
     ids.inductionApplications,
@@ -2248,11 +2260,11 @@ function buildSemanticKinds(landscape: JsonRecord): JsonRecord {
   ]
   ledger.counts = Object.fromEntries(order.filter((key) => counts[key] !== undefined).map((key) => [key, counts[key]]))
   ledger.counts.total = (ledger.decisions as JsonRecord[]).length
-  if (ledger.counts.curricularAtomic !== 439) {
-    throw new Error(`Expected 439 curricularAtomic Physics decisions, got ${ledger.counts.curricularAtomic}`)
+  if (ledger.counts.curricularAtomic !== 447) {
+    throw new Error(`Expected 447 curricularAtomic Physics decisions, got ${ledger.counts.curricularAtomic}`)
   }
-  if (ledger.counts.practiceAssessment !== 126 || ledger.counts.total !== 660) {
-    throw new Error(`Expected 126 practiceAssessment / 660 total decisions, got ${ledger.counts.practiceAssessment} / ${ledger.counts.total}`)
+  if (ledger.counts.practiceAssessment !== 133 || ledger.counts.total !== 683) {
+    throw new Error(`Expected 133 practiceAssessment / 683 total decisions, got ${ledger.counts.practiceAssessment} / ${ledger.counts.total}`)
   }
   return ledger
 }
@@ -2495,9 +2507,9 @@ function buildCompositionViews(landscape: JsonRecord): Array<{ path: string; vie
     throw new Error(`Sek-I terminal assessments have no prerequisite-complete view placement: ${unplacedAssessmentIds.join(', ')}`)
   }
   const totalPlacements = [...placementCounts.values()].reduce((sum, count) => sum + count, 0)
-  if (routePrerequisiteStructures !== 13 || routePrerequisitePlacements !== 187) {
+  if (routePrerequisiteStructures !== 13 || routePrerequisitePlacements !== 192) {
     throw new Error(
-      `Expected 13 route-prerequisite structures / 187 placements, got ${routePrerequisiteStructures} / ${routePrerequisitePlacements}`,
+      `Expected 13 route-prerequisite structures / 192 placements, got ${routePrerequisiteStructures} / ${routePrerequisitePlacements}`,
     )
   }
   return { relevantViews, totalPlacements }
@@ -2518,5 +2530,5 @@ if (writeMode) {
 }
 
 console.log(
-  `CHECK apply_physics_seki_route_stabilization ${writeMode ? 'WRITE' : 'PASS'} motivationEdges=3 assessments=51 compositionViews=${compositionViews.length} terminalPlacements=${totalPlacements} routePrerequisiteStructures=13 routePrerequisitePlacements=187 curricularAtomic=439 practiceAssessment=126`,
+  `CHECK apply_physics_seki_route_stabilization ${writeMode ? 'WRITE' : 'PASS'} motivationEdges=3 assessments=51 compositionViews=${compositionViews.length} terminalPlacements=${totalPlacements} routePrerequisiteStructures=13 routePrerequisitePlacements=192 curricularAtomic=447 practiceAssessment=133`,
 )

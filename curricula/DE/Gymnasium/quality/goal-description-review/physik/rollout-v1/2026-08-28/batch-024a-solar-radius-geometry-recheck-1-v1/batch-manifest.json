@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-024a-solar-radius-geometry-recheck-1-v1.config.json",
+  "configDigest": "sha256:e58de48c3f7310c68cdca993597e63432094febf9a5b685851a4689de1d87f46",
+  "goalIds": [
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 460,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:8b961101c872b3c5335dba49d749a1dea536e47e18eb361a4ec50daa58269e1f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:dfe2d53372d19fb2bd37ac307d45af138f40131f4c0f51f3774e2148341c04dd",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ee4930014d5d5c6a3dd73f1b27db7fb70a04a5b87342cdbf930fafb29a2939ee",
+    "reviewInputFingerprint": "sha256:09e86c7bcdda1c12da67afd9929e34077786791c913f7157f811f79fd9d12a65",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-a",
+        "campaignDigest": "sha256:6a08066a5f15534e6c2ed7cf640ad35525b6a4cf91f085029560cba625fbd91a",
+        "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-a",
+        "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ff76b90bdf5f936ab639c6738ba514931c64284842b30694fefb26175ed7cb3a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-b",
+        "campaignDigest": "sha256:340c5c0b82a58d394a2f9c8b0b4e4c1fb200c9443a2c2c261cd830f7b0e7b974",
+        "roundId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-independent-b",
+        "batchId": "physik-rollout-v1-batch-024a-solar-radius-geometry-recheck-1-v1-20260828-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:078853ffe51adddabbac14179cb74f1115db3dce16c21b4a41a4e2ed266ed508"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

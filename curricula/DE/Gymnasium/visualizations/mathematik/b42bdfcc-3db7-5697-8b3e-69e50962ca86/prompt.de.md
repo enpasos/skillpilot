@@ -8,45 +8,41 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Repository-native SVG (documented Nano Banana Pro fallback)
 - Status: pilot
-- Quellbild: `b42bdfcc-3db7-5697-8b3e-69e50962ca86.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/b42bdfcc-3db7-5697-8b3e-69e50962ca86/b42bdfcc-3db7-5697-8b3e-69e50962ca86.jpg`
+- Quellbild: `b42bdfcc-3db7-5697-8b3e-69e50962ca86.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/b42bdfcc-3db7-5697-8b3e-69e50962ca86/b42bdfcc-3db7-5697-8b3e-69e50962ca86.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine freundliche, lockere 16:9-Unterrichtsgrafik auf warmcremefarbenem
+Hintergrund mit drei großen, abgerundeten Karten. Die Geometrie wird
+repository-native und koordinatengebunden konstruiert, weil drei gezielte
+Nano-Banana-Pro-Korrekturen die Punkt- und Achsengeometrie nicht zuverlässig
+erhalten haben.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Links zeigt „Sekanten nähern sich“ für f(x)=x² den Punkt P(1|1) und mehrere
+Punkte Q=(1+h | (1+h)²) auf derselben Parabel. Jede farbige Sekante ist eine
+Gerade exakt durch P und den zugehörigen Q-Punkt. Die rote Tangente ist
+y=2x−1 und geht exakt durch P. Beschriftungen dürfen von keiner Kurve oder
+Geraden gekreuzt werden.
 
-Titel: Grenzwerte des Differenzenquotienten bestimmen
-Beschreibung: Die lernende Person kann Grenzwerte des Differenzenquotienten mit der h-Methode (h → 0) tabellarisch oder numerisch bestimmen und den Übergang von der Sekante zur Tangente begründen.
+In der Mitte steht exakt
+D(h)=((1+h)²−1)/h=2+h, h≠0.
+Eine gut lesbare Tabelle enthält positive und negative h-Werte, deren
+D(h)-Werte sich beidseitig 2 nähern. Deutsche Dezimalkommas verwenden.
 
-Zusatzanweisung:
-Erzeuge die Sekantensteigungen mit einem eindeutig verankerten Beispiel fachlich neu.
+Rechts zeigt ein kalibriertes Zoomfenster P(1|1) und
+Q₃(1,01|1,0201) unmittelbar rechts oberhalb von P auf der Parabel. Die
+Ticks und Koordinaten sind vollständig und typografisch unbeschädigt. Der
+Schluss lautet exakt lim für h→0 D(h)=2=f′(1).
 
-Pflichtinhalt:
-- Titel: „Ableitung als Grenzwert von Sekantensteigungen deuten“.
-- Verwende f(x) = x² am Punkt x₀ = 1 mit P(1|1).
-- Differenzenquotient D(h) = ((1 + h)² − 1)/h = 2 + h.
-- Tabelle exakt: h = 1 ergibt 3; h = 0,1 ergibt 2,1; h = 0,01 ergibt 2,01; h = 0,001 ergibt 2,001.
-- Zeige mehrere Sekanten, die gegen die Tangente in P mit Steigung 2 konvergieren.
-- Schluss: lim für h → 0 von D(h) = 2 = f′(1).
-- Ausschließlich deutsche Dezimalkommas.
-
-Vermeiden:
-- Keine unverbundenen Tabellenwerte, keine falsche Tangentensteigung.
-- Keine technischen Kennungen, Marken, Logos oder Wasserzeichen.
+Alle Formeln, Punktlagen, Geraden und Kurven müssen mathematisch konsistent
+sein. Keine Logos, technischen IDs, Wasserzeichen oder zusätzlichen Themen.
+Das bindende Layout liegt in `repo-native-geometry-v4.svg`.
 ```
 
-## Review-Notiz
+## Provenienz- und Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Der ursprüngliche Nano-Banana-Pro-Prompt bleibt bytegleich als `prompt.nano-banana-original.de.md` erhalten. Drei gezielte Nano-Banana-Pro-Korrekturversuche sowie drei frühere repo-native Fassungen wurden fachlich beziehungsweise technisch verworfen; die hashgebundene Historie steht in `mathematik-batch-216.md`. Die repository-native Fassung ist eine enge dokumentierte Ausnahme und keine allgemeine Providerablösung. Eine menschliche Freigabe wird nicht behauptet.

@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T20:32:15.592Z",
+  "generatedAt": "2026-08-28T20:05:13.158Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-08-27T20:22:08.453Z",
+    "generatedAt": "2026-08-28T20:01:56.050Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
-      "requestedGoals": 736,
-      "resolvedGoals": 736,
-      "goalsWithClassicSourceRoute": 736,
+      "requestedGoals": 737,
+      "resolvedGoals": 737,
+      "goalsWithClassicSourceRoute": 737,
       "goalsWithoutClassicSourceRoute": 0,
-      "goalsWithMemSparqlConsistentRoute": 223
+      "goalsWithMemSparqlConsistentRoute": 224
     },
     "request": {
       "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -520,7 +520,8 @@
         "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
         "b44f038c-fb1f-527e-b9ad-382214d0328a",
         "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
-        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "e01869db-891c-57a4-8660-789ec6875ec2",
         "2f3d24e7-2450-55d8-97c2-3e106d2854c6",
         "50e4ecab-d462-5496-b493-b30d699eb100",
         "11c88ea2-8502-5008-bec2-3e491c75ace4",
@@ -765,28 +766,28 @@
     }
   },
   "summary": {
-    "totalGoals": 1170,
-    "atomicLeaves": 916,
-    "relevantAtomicLeaves": 791,
-    "memoryOrNonContentLeaves": 125,
-    "clusters": 254,
-    "containsRelations": 1290,
-    "requiresRelations": 2451,
-    "runtimeItems": 736,
-    "runtimeItemsInLandscape": 736,
+    "totalGoals": 1174,
+    "atomicLeaves": 919,
+    "relevantAtomicLeaves": 792,
+    "memoryOrNonContentLeaves": 127,
+    "clusters": 255,
+    "containsRelations": 1294,
+    "requiresRelations": 2453,
+    "runtimeItems": 737,
+    "runtimeItemsInLandscape": 737,
     "runtimeItemsMissingFromLandscape": 0,
-    "runtimeGoalsWithClassicSourceRationale": 736,
-    "runtimeGoalsWithMemSparqlConsistentRoute": 223,
-    "relevantLeavesWithClassicSourceRationale": 736,
-    "relevantLeavesWithMemSparqlConsistentRoute": 223,
+    "runtimeGoalsWithClassicSourceRationale": 737,
+    "runtimeGoalsWithMemSparqlConsistentRoute": 224,
+    "relevantLeavesWithClassicSourceRationale": 737,
+    "relevantLeavesWithMemSparqlConsistentRoute": 224,
     "relevantLeavesMissingRuntimeSourceRationale": 55,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 254,
+    "clustersWithoutDirectRuntimeSourceRationale": 255,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
-    "relevantLeafClassicCoveragePercent": 93,
-    "relevantLeafMemCoveragePercent": 28.2
+    "relevantLeafClassicCoveragePercent": 93.1,
+    "relevantLeafMemCoveragePercent": 28.3
   },
   "buckets": {
     "byPhase": [
@@ -848,9 +849,9 @@
       },
       {
         "key": "J6",
-        "totalRelevantLeaves": 42,
-        "leavesWithClassicSourceRationale": 42,
-        "leavesWithMemSparqlConsistentRoute": 21,
+        "totalRelevantLeaves": 43,
+        "leavesWithClassicSourceRationale": 43,
+        "leavesWithMemSparqlConsistentRoute": 22,
         "missingRelevantLeaves": 0
       },
       {
@@ -899,9 +900,9 @@
       },
       {
         "key": "Geometry",
-        "totalRelevantLeaves": 80,
-        "leavesWithClassicSourceRationale": 80,
-        "leavesWithMemSparqlConsistentRoute": 39,
+        "totalRelevantLeaves": 81,
+        "leavesWithClassicSourceRationale": 81,
+        "leavesWithMemSparqlConsistentRoute": 40,
         "missingRelevantLeaves": 0
       },
       {
@@ -15377,6 +15378,26 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "shortKey": "canonical_math_sek1_j6_calculate_cuboid_cube_volumes",
+        "title": "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
+        "type": "cluster",
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2B",
+        "pathTitles": [
+          "Mathematik",
+          "Jahrgangsstufe 6",
+          "Flächeninhalt und Volumen berechnen",
+          "Volumina und Oberflächen einfacher Körper berechnen",
+          "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "ec12d2db-4ea0-5941-9dda-6dfa20595e75",
         "shortKey": "canonical_math_sek1_j6_circle_space_transformations",
         "title": "Kreis-, Körper- und Abbildungsvorstellungen entwickeln",
@@ -17201,8 +17222,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1290,
-      "requiresRelationsPending": 2451
+      "containsRelationsPending": 1294,
+      "requiresRelationsPending": 2453
     }
   },
   "rows": [
@@ -28899,6 +28920,25 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "2c30949d-0381-5d32-81cf-c6eac7711399",
+      "shortKey": "canonical_math_e_practice_trigonometric_understanding_model_derivative",
+      "title": "Kreisbewegung, periodische Modellierung und trigonometrische Ableitungen verknüpfen",
+      "type": "atomic",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.E.PRACTICE.TRIGONOMETRIC_UNDERSTANDING_MODEL_DERIVATIVE",
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Übungen E-Phase",
+        "Kreisbewegung, periodische Modellierung und trigonometrische Ableitungen verknüpfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "78f5003e-9578-545c-b6b3-4b02f31ffcd4",
       "shortKey": null,
       "title": "Polynomdivision und numerische Gleichungsverfahren anwenden",
@@ -32812,7 +32852,7 @@
       "id": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
       "shortKey": "canonical_math_sek1_j6_calculate_cuboid_cube_volumes",
       "title": "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
-      "type": "atomic",
+      "type": "cluster",
       "phase": "J6",
       "area": "Geometry",
       "topicCode": "CANONICAL.MATH.SEK1.J6.2B",
@@ -32822,6 +32862,48 @@
         "Flächeninhalt und Volumen berechnen",
         "Volumina und Oberflächen einfacher Körper berechnen",
         "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "shortKey": "canonical_math_sek1_j6_determine_cuboid_cube_volumes",
+      "title": "Volumina von Quadern und Würfeln bestimmen",
+      "type": "atomic",
+      "phase": "J6",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J6.2B2",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 6",
+        "Flächeninhalt und Volumen berechnen",
+        "Volumina und Oberflächen einfacher Körper berechnen",
+        "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
+        "Volumina von Quadern und Würfeln bestimmen"
+      ],
+      "runtimeCovered": true,
+      "classicSourceRoute": true,
+      "memSparqlStatus": "mem_sparql_consistent",
+      "classification": "covered_runtime_classic_and_mem"
+    },
+    {
+      "id": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "shortKey": "canonical_math_sek1_j6_determine_composite_cuboid_volumes_additively",
+      "title": "Volumina zusammengesetzter Quaderkörper additiv bestimmen",
+      "type": "atomic",
+      "phase": "J6",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J6.2B3",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 6",
+        "Flächeninhalt und Volumen berechnen",
+        "Volumina und Oberflächen einfacher Körper berechnen",
+        "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
+        "Volumina zusammengesetzter Quaderkörper additiv bestimmen"
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
@@ -33393,6 +33475,25 @@
         "Jahrgangsstufe 6",
         "Prüfungen Jahrgangsstufe 6",
         "Quaderdarstellungen zeichnen und verknüpfen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "7285df88-39cf-59c5-86c3-166e84669abc",
+      "shortKey": "canonical_math_sek1_practice_j6_volume_additivity_follow_up",
+      "title": "Zusatzaufgabe S3: Volumenadditivität bei einem zusammengesetzten Quaderkörper",
+      "type": "atomic",
+      "phase": "J6",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J6.COMPOSITE_VOLUME_ADDITIVITY",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 6",
+        "Prüfungen Jahrgangsstufe 6",
+        "Zusatzaufgabe S3: Volumenadditivität bei einem zusammengesetzten Quaderkörper"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,

@@ -1371,12 +1371,62 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "27b90ce9-b650-5232-85fb-ce2cb69d59a3"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "he-phys-seki-10-2-b02-a01-a2d5bf8d": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08",
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+    "1593d95c-2aac-504c-8527-37cb61877da9"
+  ]
+}
+
+// Batch 025 average/instantaneous-velocity structural split overlay
+const batch025TargetsBySourceGoalId: Record<string, string[]> = {
+  "he-phys-sekii-e-1-b08-a01-1823c481": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ]
+}
+const batch025RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "he-phys-sekii-e-1-b08-a01-1823c481": [
+    "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ]
+}
+const batch025RationalesBySourceGoalId = new Map<string, string>([
+  [
+    "he-phys-sekii-e-1-b06-a01-276db5cc",
+    "Das amtliche Hessen-Ziel behandelt die gleichmäßig beschleunigte Bewegung ohne Anfangsgeschwindigkeit und Anfangsort. Das revidierte kanonische Ziel beschreibt das allgemeinere Konstantbeschleunigungsmodell; die Zuordnung ist deshalb partial."
+  ],
+  [
+    "he-phys-sekii-e-1-b07-a01-5e3ee94d",
+    "Das amtliche Hessen-Ziel nennt die Definition der Beschleunigung. Das revidierte kanonische Ziel verlangt zusätzlich die konsistente Beschreibung in t-s-, t-v- und t-a-Darstellungen; die Zuordnung ist deshalb partial."
+  ],
+  [
+    "he-phys-sekii-e-1-b08-a01-1823c481",
+    "Der amtliche Hessen-Aspekt fordert den Vergleich von Durchschnitts- und Momentangeschwindigkeit. Das neue kanonische Ziel operationalisiert ihn zusätzlich über Sekanten- und Tangentensteigung; die Zuordnung ist partial."
+  ]
+])
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch025RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch025TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
+
+const batch019PartialRationalesBySourceGoalId = new Map<string, string>([
+  [
+    'he-phys-sekii-q1-2-b06-a01-17650b01',
+    'Das amtliche Hessen-Source-Ziel spezifiziert nur die Flussdichte im Inneren einer langen Spule; die begründete Modellwahl zum geraden Leiter ist nicht enthalten, daher ist die Zuordnung partial.',
+  ],
+  [
+    'he-phys-sekii-q1-2-b14-a01-726d9aa7',
+    'Das amtliche Hessen-Source-Ziel nennt Zyklotron und Synchrotron als Beispiele, verlangt aber nicht den vollständigen fachlichen Vergleich ihrer Feldrollen und Regelungsprinzipien; die Zuordnung ist daher partial.',
+  ],
+])
 
 function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal[] }): ReviewCoverage {
   const absoluteReviewPath = path.resolve(repoRoot, config.reviewPath)
@@ -1388,10 +1438,14 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
     ? 'Sek-I-Unterrichtsinhaltsblock'
     : 'Sek-II-Lehrplanaspekt'
   const explicitlyPartialSourceGoalIds = new Set(
-    parsed.sourceGoals
+    [
+      ...parsed.sourceGoals
       .filter((sourceGoal) => config.stage === 'SekI'
         && new Set(['8.3b:4', '8.3b:5']).has(`${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`))
       .map((sourceGoal) => sourceGoal.id),
+      ...batch019PartialRationalesBySourceGoalId.keys(),
+      ...batch025RationalesBySourceGoalId.keys(),
+    ],
   )
   const partialRationalesBySourceKey = new Map<string, string>([
     [
@@ -1407,6 +1461,8 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
     const sourceKey = `${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`
     const targetIds = applyPhysicsBatch015Targets(sourceGoal.id, targetLookup[sourceKey] ?? [])
     const isExplicitUpperGap = config.stage === 'SekII' && upperNeedsCanonicalGoalByTopicBullet.has(sourceKey)
+    const batch019Rationale = batch019PartialRationalesBySourceGoalId.get(sourceGoal.id)
+    const batch025Rationale = batch025RationalesBySourceGoalId.get(sourceGoal.id)
     if (config.stage === 'SekII' && targetIds.length === 0 && !isExplicitUpperGap) {
       return []
     }
@@ -1419,14 +1475,22 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
       rationale: targetIds.length === 0
         ? `Der amtliche ${sourceLabel} benötigt noch fachliche M3-Review oder ein neues kanonisches Physikziel.`
         : explicitlyPartialSourceGoalIds.has(sourceGoal.id)
-          ? partialRationalesBySourceKey.get(sourceKey)
+          ? batch025Rationale ?? batch019Rationale ?? partialRationalesBySourceKey.get(sourceKey)
         : targetIds.length > 1
           ? `Der amtliche ${sourceLabel} wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.`
           : `Der amtliche ${sourceLabel} wird durch das kanonische Physikziel inhaltlich abgedeckt.`,
-      reviewedAt: new Set(['8.3b:4', '8.3b:5']).has(sourceKey) ? '2026-08-27' : '2026-05-09',
-      reviewer: new Set(['8.3b:4', '8.3b:5']).has(sourceKey)
-        ? 'codex-physics-batch-007-split-synthesis'
-        : 'codex',
+      reviewedAt: batch025Rationale
+        ? '2026-08-29'
+        : batch019Rationale
+          ? '2026-08-28'
+          : new Set(['8.3b:4', '8.3b:5']).has(sourceKey) ? '2026-08-27' : '2026-05-09',
+      reviewer: batch025Rationale
+        ? 'codex-physics-batch-025-motion-split-2026-08-29'
+        : batch019Rationale
+          ? 'codex-physics-batch-019-mapping-adjudication'
+          : new Set(['8.3b:4', '8.3b:5']).has(sourceKey)
+            ? 'codex-physics-batch-007-split-synthesis'
+            : 'codex',
     }]
   })
   const mappings = decisions.flatMap((decision) =>

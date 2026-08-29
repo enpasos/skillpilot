@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "adjudicationId": "physik-b024-solar-radius-evidence-geometry-audit-20260828",
+  "authority": "ai_subject_audit",
+  "reviewedAt": "2026-08-28T20:50:37.000Z",
+  "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+  "canonicalDescriptionDecision": "keep_current",
+  "strictResolutionDisposition": "exclude_until_targeted_dual_recheck",
+  "sourceBindings": {
+    "batchManifestSha256": "sha256:b0239d9af0d4337f863720f3501557e245b3d0d9ea8b074258f72eb64b9ca132",
+    "dualSummarySha256": "sha256:b539be198ca83fed7060b38d14f808fe06c1fb41ddb25e01bf80f3641764f668",
+    "synthesisManifestSha256": "sha256:5c00afbdeb08f384e4db099e15491f2fba165e4f5ec64182490504de9825b675",
+    "resolutionIndexSha256": "sha256:5203df9b5f1cb71125a68f8ce49f4d0690e7208a4d718840c0820b1c290c74b9",
+    "firstRecordId": "physik-b024-round-a-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "firstRecordSha256": "sha256:7844d1f7223290dd620a66ad4e76206677dff7fc703c112a2a14f72d9c17e25d",
+    "secondRecordId": "physik-b024-round-b-record-002",
+    "secondRecordSha256": "sha256:6437e99eed988b76b5421d314fb547d10f149fab2148bc6b641fb1b9aaf72e0a"
+  },
+  "findingDe": "Beide unabhängigen Reviews bezeichnen R = d·tan(θ/2) ohne Definition eines ebenen Projektionsmodells als exakte Beziehung zwischen dem Winkeldurchmesser θ der kugelförmigen Sonne, der Entfernung d zum Sonnenzentrum und dem Sonnenradius R. Für die übliche zentrumsbezogene Entfernung folgt aus der Tangentialgeometrie exakt R = d·sin(θ/2); nur im Kleinwinkelgrenzfall gilt R ≈ d·θ/2. Die kanonische Lernzielbeschreibung enthält den Fehler nicht und bleibt fachlich tragfähig, aber keine der beiden Review-Evidence-Fassungen darf als strenge positive Evidenz ausgewählt werden.",
+  "findingEn": "Both independent reviews call R = d·tan(θ/2) the exact relation between the angular diameter θ of the spherical Sun, the centre-based distance d, and the solar radius R without defining a planar projection model. For the usual centre-based distance, tangent geometry gives the exact relation R = d·sin(θ/2); only in the small-angle limit does R ≈ d·θ/2 apply. The canonical learning-goal description does not contain this error and remains scientifically sound, but neither review evidence formulation may be selected as strict positive evidence.",
+  "requiredFollowUp": {
+    "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-024a-solar-radius-geometry-recheck-1-v1.config.json",
+    "requirements": [
+      "Two new reviews remain blind to each other and bind the unchanged current bilingual goal text.",
+      "The evidence must define the distance convention and distinguish exact spherical tangent geometry from a planar projection convention and the small-angle approximation.",
+      "The other five scientifically valid B024 resolutions may be carried forward independently; this goal may count only from the targeted follow-up."
+    ]
+  }
+}

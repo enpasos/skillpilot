@@ -77,6 +77,110 @@ export const getCompositionProjectionRole = (
   node.projectionRole === 'prerequisiteOnly' ? 'prerequisiteOnly' : 'target'
 )
 
+type CompositionProjectionRoleSource = 'landscapeEntry' | 'canonicalSubtree' | 'goalEntry'
+
+interface CompositionProjectionRoleAssignment {
+  role: CompositionProjectionRole
+  source: CompositionProjectionRoleSource
+  distance: number
+}
+
+const COMPOSITION_PROJECTION_ROLE_SOURCE_PRIORITY: Record<CompositionProjectionRoleSource, number> = {
+  landscapeEntry: 0,
+  canonicalSubtree: 1,
+  goalEntry: 2,
+}
+
+const isMoreSpecificCompositionProjectionRoleAssignment = (
+  candidate: CompositionProjectionRoleAssignment,
+  current: CompositionProjectionRoleAssignment | undefined,
+): boolean => {
+  if (!current) return true
+
+  const candidatePriority = COMPOSITION_PROJECTION_ROLE_SOURCE_PRIORITY[candidate.source]
+  const currentPriority = COMPOSITION_PROJECTION_ROLE_SOURCE_PRIORITY[current.source]
+  if (candidatePriority !== currentPriority) {
+    return candidatePriority > currentPriority
+  }
+
+  if (candidate.distance !== current.distance) {
+    return candidate.distance < current.distance
+  }
+
+  return candidate.role === 'target' && current.role === 'prerequisiteOnly'
+}
+
+export const collectCompositionProjectionRoleGoalIds = (
+  nodes: CompositionViewNode[],
+  goalById: ReadonlyMap<string, { contains?: readonly string[] }>,
+  rootGoalIdByLandscapeId: ReadonlyMap<string, string> = new Map(),
+): { targetGoalIds: Set<string>, prerequisiteOnlyGoalIds: Set<string> } => {
+  const assignmentByGoalId = new Map<string, CompositionProjectionRoleAssignment>()
+
+  const assignGoal = (goalId: string, assignment: CompositionProjectionRoleAssignment) => {
+    if (isMoreSpecificCompositionProjectionRoleAssignment(
+      assignment,
+      assignmentByGoalId.get(goalId),
+    )) {
+      assignmentByGoalId.set(goalId, assignment)
+    }
+  }
+
+  const assignSubtree = (
+    rootGoalId: string,
+    role: CompositionProjectionRole,
+    source: Extract<CompositionProjectionRoleSource, 'landscapeEntry' | 'canonicalSubtree'>,
+  ) => {
+    const shortestDistanceByGoalId = new Map<string, number>()
+    const queue: Array<{ goalId: string, distance: number }> = [{ goalId: rootGoalId, distance: 0 }]
+
+    for (let index = 0; index < queue.length; index += 1) {
+      const { goalId, distance } = queue[index]
+      const knownDistance = shortestDistanceByGoalId.get(goalId)
+      if (knownDistance !== undefined && knownDistance <= distance) continue
+      shortestDistanceByGoalId.set(goalId, distance)
+      assignGoal(goalId, { role, source, distance })
+
+      const goal = goalById.get(goalId)
+      ;(goal?.contains ?? []).forEach((childId) => {
+        queue.push({ goalId: childId, distance: distance + 1 })
+      })
+    }
+  }
+
+  const visitNode = (node: CompositionViewNode) => {
+    if (node.kind === 'structure') {
+      node.children.forEach(visitNode)
+      return
+    }
+
+    if (node.kind === 'landscapeEntry') {
+      const rootGoalId = rootGoalIdByLandscapeId.get(node.landscapeId)
+      if (rootGoalId) assignSubtree(rootGoalId, 'target', 'landscapeEntry')
+      return
+    }
+
+    const role = getCompositionProjectionRole(node)
+    if (node.kind === 'canonicalSubtree') {
+      assignSubtree(node.goalId, role, 'canonicalSubtree')
+    } else {
+      assignGoal(node.goalId, { role, source: 'goalEntry', distance: 0 })
+    }
+  }
+
+  nodes.forEach(visitNode)
+  const targetGoalIds = new Set<string>()
+  const prerequisiteOnlyGoalIds = new Set<string>()
+  assignmentByGoalId.forEach((assignment, goalId) => {
+    if (assignment.role === 'prerequisiteOnly') {
+      prerequisiteOnlyGoalIds.add(goalId)
+    } else {
+      targetGoalIds.add(goalId)
+    }
+  })
+  return { targetGoalIds, prerequisiteOnlyGoalIds }
+}
+
 const normalizeScope = (value: unknown): GoalPlacementContext => {
   const record = asRecord(value)
   const scope: GoalPlacementContext = {}
@@ -225,6 +329,20 @@ export const compileCompositionView = (
   }
 
   const index = buildCanonicalGraphIndex(canonicalGoalUniverse)
+  const rootGoalIdByLandscapeId = new Map<string, string>()
+  const canonicalRootGoal = getLandscapeRootGoal(canonicalLandscape)
+  if (canonicalRootGoal) {
+    rootGoalIdByLandscapeId.set(canonicalLandscape.landscapeId, canonicalRootGoal.id)
+  }
+  landscapeUniverseById?.forEach((candidateLandscape, landscapeId) => {
+    const rootGoal = getLandscapeRootGoal(candidateLandscape)
+    if (rootGoal) rootGoalIdByLandscapeId.set(landscapeId, rootGoal.id)
+  })
+  const { targetGoalIds: effectiveTargetGoalIds } = collectCompositionProjectionRoleGoalIds(
+    view.rootNodes,
+    index.goalById,
+    rootGoalIdByLandscapeId,
+  )
   const structureIds = new Set<string>()
   const subtreeRootsByPath = new Map<string, { goalId: string, expandedGoalIds: Set<string> }>()
   const referencedRootIds = new Map<string, string>()
@@ -414,7 +532,7 @@ export const compileCompositionView = (
     displayLabel?: string,
   ): CompiledCompositionPreviewNode | null => {
     const goal = index.goalById.get(goalId)
-    if (!goal) return null
+    if (!goal || !effectiveTargetGoalIds.has(goalId)) return null
     noteGoalOccurrence(goal.id, parentKey)
     const runtimeId = `${pathKey}/goal:${goal.id}`
     return {
@@ -466,7 +584,7 @@ export const compileCompositionView = (
     if (node.kind === 'goalEntry') {
       if (getCompositionProjectionRole(node) === 'prerequisiteOnly') return null
       const goal = index.goalById.get(node.goalId)
-      if (!goal) return null
+      if (!goal || !effectiveTargetGoalIds.has(goal.id)) return null
       noteGoalOccurrence(goal.id, parentKey)
       return {
         runtimeId: `goalEntry:${pathKey}`,

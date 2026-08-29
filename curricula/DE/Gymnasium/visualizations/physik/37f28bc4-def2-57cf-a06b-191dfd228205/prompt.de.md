@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `37f28bc4-def2-57cf-a06b-191dfd228205`
 - Titel: Selbstinduktion und Induktivität
-- Beschreibung: Die lernende Person kann die Selbstinduktion an einer Spule (Ein- und Ausschaltverzögerung) phänomenologisch beschreiben und die Induktivität als charakteristische Eigenschaft der Spule erklären.
+- Beschreibung: Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Selbstinduktion und Induktivität
-Beschreibung: Die lernende Person kann die Selbstinduktion an einer Spule (Ein- und Ausschaltverzögerung) phänomenologisch beschreiben und die Induktivität als charakteristische Eigenschaft der Spule erklären.
+Beschreibung: Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.
 
 Zusatzanweisung:
 Regenerate the complete image while preserving the self-induction lesson structure.

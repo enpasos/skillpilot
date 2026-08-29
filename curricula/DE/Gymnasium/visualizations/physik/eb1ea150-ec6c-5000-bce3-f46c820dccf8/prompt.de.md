@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `eb1ea150-ec6c-5000-bce3-f46c820dccf8`
 - Titel: Induktionsgesetz und Lenz’sche Regel
-- Beschreibung: Die lernende Person kann das Induktionsgesetz in Form eines Differenzenquotienten anwenden und mithilfe der Lenz’schen Regel die Richtung des Induktionsstroms qualitativ bestimmen.
+- Beschreibung: Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.
 
 ## Generator
 
@@ -28,10 +28,26 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Induktionsgesetz und Lenz’sche Regel
-Beschreibung: Die lernende Person kann das Induktionsgesetz in Form eines Differenzenquotienten anwenden und mithilfe der Lenz’schen Regel die Richtung des Induktionsstroms qualitativ bestimmen.
+Beschreibung: Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.
 
 Zusatzanweisung:
-Create a fresh German educational infographic for Lenz’s law. Show a bar magnet with its north pole approaching a coil, explicitly labelled „Annäherung“. The increasing flux must induce a current whose near coil face becomes a north pole and therefore repels the approaching north pole. Add U_ind = −dΦ/dt and explain that the induced effect opposes the flux change. Keep current direction and pole label mutually consistent. Use the exact spelling „Annäherung“ with umlaut and never „Annaeherung“.
+Use case: scientific-educational
+Asset type: deutsche Physik-Lerninfografik im lockeren, freundlichen Cartoon-Stil
+
+Pflichtinhalt:
+- Zeige einen Stabmagneten, dessen Nordpol sich einer Spule mit mehreren gleichartigen Windungen naehert; beschrifte die Bewegung exakt mit "Annäherung".
+- Beschrifte die Spule gut lesbar mit "N Windungen".
+- Zeige exakt und gut lesbar "U_ind = −N · ΔΦ/Δt"; Φ bezeichnet den magnetischen Fluss durch eine einzelne Windung.
+- Der zunehmende Fluss muss einen Induktionsstrom ergeben, durch den die dem Magneten zugewandte Spulenseite zum Nordpol wird und den ankommenden Nordpol abstoesst.
+- Zeige die Stromrichtung in einem getrennten, eindeutig beschrifteten Stirnansichts-Inset: "Blick vom Magneten auf die Spule". Dort ist die Spule als Kreis mit mehreren Windungen zu sehen; ein klarer geschlossener Strompfeil laeuft gegen den Uhrzeigersinn. Beschrifte diese dem Magneten zugewandte Stirnseite mit "N (induziert)" und "Abstoßung". Nach der Rechte-Hand-Regel zeigt das induzierte Feld damit zum Betrachter/Magneten.
+- Zeichne im seitlichen Spulenbild keinen zusaetzlichen Induktionsstrompfeil auf einer unklaren Rueckleitung. Die pruefbare Stromrichtung steht ausschliesslich in der Stirnansicht.
+- Stromrichtung, Spulenpol und Abstoßung muessen wechselseitig konsistent sein.
+
+Vermeiden:
+- Niemals "U_ind = −ΔΦ/Δt" oder "U_ind = −dΦ/dt" ohne den Faktor N zeigen.
+- Keine widerspruechlichen Strompfeile oder Polbezeichnungen.
+- Keine seitlich gezeichnete Mehrfachwindung, deren Stromrichtung nicht bis durch die Windungen verfolgt werden kann, als Beleg fuer den Pol verwenden.
+- Keine technischen IDs, Wasserzeichen, Provider- oder Plattformnamen.
 ```
 
 ## Review-Notiz

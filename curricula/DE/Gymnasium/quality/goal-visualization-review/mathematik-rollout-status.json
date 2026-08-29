@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T15:55:37.473Z",
+  "generatedAt": "2026-08-28T20:43:43.182Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -10,30 +10,31 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "summary": {
-    "totalGoals": 1170,
-    "atomicGoalsInScope": 791,
-    "goalsWithPrimaryVisualization": 722,
-    "coveragePercent": 91.3,
-    "goalsAccountedForByAssetOrDeferred": 791,
+    "totalGoals": 1174,
+    "atomicGoalsInScope": 792,
+    "goalsWithPrimaryVisualization": 721,
+    "coveragePercent": 91,
+    "goalsAccountedForByAssetOrDeferred": 792,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "accepted": 1,
       "approved": 20,
-      "pilot": 701
+      "pilot": 700
     },
     "linkedVisualizationReviewStatuses": {
       "accepted": 1,
       "approved": 20,
-      "pilot": 701
+      "pilot": 700
     },
-    "reviewLedgerFiles": 227,
+    "reviewLedgerFiles": 231,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
       "accepted_after_user_issue_correction": 8,
       "accepted_context_visualization": 2,
-      "accepted_documented_repo_native_fallback": 1,
+      "accepted_documented_repo_native_fallback": 2,
+      "accepted_existing_asset": 8,
       "accepted_pilot": 604,
       "accepted_pilot_after_fresh_ai_review": 88,
       "accepted_pilot_after_fresh_ai_review_correction": 1,
@@ -56,7 +57,7 @@
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
-      "deferred_provider_limitation": 87,
+      "deferred_provider_limitation": 89,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
@@ -72,7 +73,7 @@
       "rejected_regenerated": 80,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 69,
+    "openProviderDeferredGoals": 71,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
@@ -81,7 +82,7 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-212.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-216.md",
     "latestLedgerStatus": "completed",
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
@@ -528,6 +529,20 @@
         "title": "Verdoppelungs- und Halbwertszeiten bestimmen und deuten",
         "decision": "deferred_provider_limitation",
         "notes": "Für „Verdoppelungs- und Halbwertszeiten bestimmen und deuten“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
+      },
+      {
+        "batch": "213",
+        "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "title": "Volumina von Quadern und Würfeln bestimmen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Im eng begrenzten Strukturschritt wurde kein neues Nano-Banana-Pro-Bild erzeugt. Das gute bestehende Übersichtsbild bleibt ausschließlich am stabilen Elterncluster; für das neue Atom wird kein eigenes Ersatzbild behauptet."
+      },
+      {
+        "batch": "213",
+        "goalId": "e01869db-891c-57a4-8660-789ec6875ec2",
+        "title": "Volumina zusammengesetzter Quaderkörper additiv bestimmen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Im eng begrenzten Strukturschritt wurde kein neues Nano-Banana-Pro-Bild erzeugt. Das bestehende Elternbild visualisiert den Gesamtscope bereits korrekt; ein spezifisches Kindbild bleibt bis zu einem späteren qualitätsgesicherten Nano-Banana-Pro-Lauf zurückgestellt."
       },
       {
         "batch": "mathematik-structural-split-deferred-2026-08-16",
@@ -3136,7 +3151,7 @@
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/b42bdfcc-3db7-5697-8b3e-69e50962ca86/b42bdfcc-3db7-5697-8b3e-69e50962ca86.jpg"
+      "url": "/assets/goal-visualizations/mathematik/b42bdfcc-3db7-5697-8b3e-69e50962ca86/b42bdfcc-3db7-5697-8b3e-69e50962ca86.png"
     },
     {
       "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
@@ -6401,14 +6416,6 @@
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/5f548596-9bc3-532e-88a0-81d5029809e9/5f548596-9bc3-532e-88a0-81d5029809e9.jpg"
-    },
-    {
-      "goalId": "99ef0fc2-150a-51e8-bac8-7e40e46917b",
-      "title": "Volumina von Quadern, Würfeln und daraus zusammengesetzten Körpern bestimmen",
-      "phase": "J6",
-      "area": "Geometry",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/99ef0fc2-150a-51e8-bac8-7e40e46917b/99ef0fc2-150a-51e8-bac8-7e40e46917b.jpg"
     },
     {
       "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",

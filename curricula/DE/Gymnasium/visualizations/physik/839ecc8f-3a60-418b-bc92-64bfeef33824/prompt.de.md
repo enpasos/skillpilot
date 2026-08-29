@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `839ecc8f-3a60-418b-bc92-64bfeef33824`
 - Titel: Impulserhaltung
-- Beschreibung: Die lernende Person kann den Impuls als Erhaltungsgröße nutzen, einfache Rückstoßsituationen beschreiben und Impulserhaltung qualitativ begründen.
+- Beschreibung: Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.
 
 ## Generator
 
@@ -28,9 +28,12 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Impulserhaltung
-Beschreibung: Die lernende Person kann den Impuls als Erhaltungsgröße nutzen, einfache Rückstoßsituationen beschreiben und Impulserhaltung qualitativ begründen.
+Beschreibung: Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.
 
 Zusatzanweisung:
+Zielpräzisierung:
+Kennzeichne ein abgegrenztes System ohne resultierenden äußeren Kraftstoß und begründe die einfache Rückstoßsituation mit dem vektoriell konstanten Gesamtimpuls.
+
 Pflichtinhalt:
 
 Show momentum conservation with a recoil situation.

@@ -1,0 +1,935 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "skillpilot-goal-description-third-adjudication-draft",
+  "draftContract": "skillpilot-goal-description-bilingual-adjudication-draft-v1",
+  "batchId": "mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828",
+  "subject": "mathematik",
+  "adjudicatedAt": "2026-08-28",
+  "authority": "third_non_blind_subject_adjudication",
+  "mode": "external_read_only_repository",
+  "materialized": false,
+  "noProgressClaim": true,
+  "repositoryRoot": "/home/enpasos/projects/skillpilot",
+  "inputBinding": {
+    "bundleFingerprint": "sha256:7cb4cbdbeaa001638f725579d114c23c69f2df5c6dbee793617fc222733f4814",
+    "reviewInputFingerprint": "sha256:121caa94ddbc3793c21d6c741723a9910534f6589d9fd29d018886e399a0d6b7",
+    "bookDigest": "sha256:12015eefdda57e9117484dee9cfdbf664282d7b23efbfa1760c32bb657705346",
+    "goalCount": 8,
+    "curriculumAtomicDenominatorAtPreparation": 792,
+    "roundA": {
+      "runId": "7054dd64-7793-49d5-ad82-34fe3a88b8a8",
+      "modelIdentity": "openai::gpt-5::(unspecified-version)",
+      "blindToOtherRuns": true
+    },
+    "roundB": {
+      "runId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z",
+      "modelIdentity": "OpenAI::GPT-5 Codex::(unspecified-version)",
+      "blindToOtherRuns": true
+    },
+    "blindnessEndedOnlyForThisThirdAdjudication": true,
+    "automaticAcceptance": false
+  },
+  "validationEvidence": {
+    "preparedBatchCheck": "PASS: Standalone goal-description batch valid; goals=8",
+    "roundACampaign": "PASS: Goal-description review campaign results valid: 8",
+    "roundBCampaign": "PASS: Goal-description review campaign results valid: 8",
+    "freshDualValidation": "PASS: persisted dual-summary.json is byte-exact to fresh production synthesis; goals=8; requiresSynthesis=8",
+    "diversityPolicy": "report_only",
+    "diversitySatisfied": true,
+    "orderedGoalIdsMatchBatch": true,
+    "currentCanonicalContextMatchesPreparedBatch": true
+  },
+  "exactInputSha256": [
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/batch.config.json",
+      "sha256": "46dea9c53b5328c89f5013a5f438143222ae06ddaadb5e687cc048da21ed4ea2",
+      "bytes": 1446
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/batch-manifest.json",
+      "sha256": "028baad3f28eac2680def0d6691a464bb004a781022baaed062a08cddef4b44a",
+      "bytes": 3412
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/bundle/manifest.json",
+      "sha256": "f26ed0242ea7a62ffc9e83472bfe956f6ea31216f100ff2e1b4d217192d3d271",
+      "bytes": 5962
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/bundle/book-model.json",
+      "sha256": "03bac3d8bcd2dbfd4cae53e9ecb0b01645de2bf20319251893efdceb30a2aa79",
+      "bytes": 100783
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/bundle/criteria.md",
+      "sha256": "d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "bytes": 4496
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/bundle/prompt.md",
+      "sha256": "b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/bundle/review-input.json",
+      "sha256": "bbae02a2406b9400cd79b51e199981f98a26ceee4b08b94f1059a5f4d9469f18",
+      "bytes": 58978
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/bundle/review-input.jsonl",
+      "sha256": "ac8ce57fb74dca784f56fdc8ac6702ffb072b786ce436f61cbecc7ca50587519",
+      "bytes": 37235
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/dual-summary.json",
+      "sha256": "1404b6f1c269323e00ace716b0230535a25ef98ce2da82c2edcc44c90d625197",
+      "bytes": 7468
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-a/description-review-campaign.json",
+      "sha256": "6e7daec366691baee96026089545ea089482f02838286cd0000d8f81bc67ec78",
+      "bytes": 2058
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-a/description-review-input.json",
+      "sha256": "64a38ae01b927dc594dc31b8f3027df19a19d04b4f54966a78e7aed503c9f6dc",
+      "bytes": 83326
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-a/batches/mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-a.batch-001.input.jsonl",
+      "sha256": "28f01503b8142914f5170421c645cb9ba23fa9498a3fd38b27cf6a3eea7858e9",
+      "bytes": 57597
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-a/results/mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-a.batch-001.records.jsonl",
+      "sha256": "53579b0da97897248653cdadaf5ef1d7fc1553b5643fb566c4e5028e5af252c5",
+      "bytes": 33727
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-a/results/mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-a.batch-001.run.json",
+      "sha256": "7fb213bcb0289a7a2ea9af1d50472f490c9c2ecad9ffd3fdaabfe8e723f60440",
+      "bytes": 2444
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-b/description-review-campaign.json",
+      "sha256": "50488adb5498a5b867594c188f41490737d8b7e79d4aeb3a861552bc21bb0f8a",
+      "bytes": 2058
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-b/description-review-input.json",
+      "sha256": "64a38ae01b927dc594dc31b8f3027df19a19d04b4f54966a78e7aed503c9f6dc",
+      "bytes": 83326
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-b/batches/mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b.batch-001.input.jsonl",
+      "sha256": "a6fdae8f759e3ccd34e54ea469da4e2221d4e5fd7a48b0b5f4113898498f88e3",
+      "bytes": 57597
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-b/results/mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b.batch-001.records.jsonl",
+      "sha256": "b6839a90ae7692b77a68482ab7ceb42ee437a552136e266a56bcbc0a01eb4910",
+      "bytes": 34437
+    },
+    {
+      "path": "app/node_modules/.cache/skillpilot-rollout-provisional/math-deep-j10-functions-trig-8-v1/output/round-b/results/mathematik-rollout-v1-deep-j10-functions-trig-8-precommit-v1-20260828-first-pass-b.batch-001.run.json",
+      "sha256": "e2d5402de151b877e40bd686b2711f15393250b7afe0c183b74432a1adbd6855",
+      "bytes": 2628
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "13ccabd3d61b85332089af610828d6f8c82e5c1e467a85a3633767737f68952f",
+      "bytes": 3240775
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "sha256": "5228aa54a7eaec1ef196af0553ce4878f60e54791c791cddab91617d18457c8b",
+      "bytes": 422993
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "sha256": "8683fc7603f808e85f06bddac6b6e575693665dcf0fab32f1e5655900bcff4bd",
+      "bytes": 464745
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+        "sha256": "b16de33c1a872dda3acfe0eddb6cac684447b546f869fef26bf878cd481f45af",
+        "bytes": 1664679
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/blueprint.md",
+      "sha256": "4dfb819bc45b095797e43e25d7db3eb0ee52a6f9bb2b44dffc5e3315c22617be",
+      "bytes": 5160
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+      "sha256": "f41fb0cf1ec9d672011696b13511ef19e2d17f2b7dba459dcb66c85746a7eecc",
+      "bytes": 3967
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md",
+      "sha256": "c7105e5da1af38fa23acd170794517eca79aec0e89e4153d2f6110fe7541f1ab",
+      "bytes": 4028
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "77f04b8d5954a799d6946860d69a5f06d9058e9b4813421eef5d6b3798afa6e6",
+      "bytes": 1021856
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "sha256": "853372a979a5a3b430f7c39d0288ef1f5343773bf4885213a00d29079ab6b834",
+      "bytes": 442887
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "sha256": "843ecb7b683e203938d23272cf3783d793c3d9df2c49bfe3653774a13e2c9350",
+      "bytes": 601152
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "6a5eeae3478bc92f8896ce9e1a65606c6a39e0ef3ec53546aefec4a08b7f3678",
+      "bytes": 334232
+    }
+  ],
+  "contextSetBindings": {
+    "authoritativeReviewedMappingFiles": {
+      "fileCount": 15,
+      "aggregateAlgorithm": "sort repository-relative paths lexicographically, then sha256 over each line '<fileSha256><two spaces><repository-relative path><newline>'",
+      "aggregateSha256": "290ab432b92a2c71f83c7da55aa07417ab0bbbdd393b79c947d1b0970b533e5d"
+    },
+    "referencingCompositionViews": {
+      "fileCount": 50,
+      "aggregateAlgorithm": "sort repository-relative paths lexicographically, then sha256 over each line '<fileSha256><two spaces><repository-relative path><newline>'",
+      "aggregateSha256": "17724adcd4ae57c998404dc7b86cbabf9a09106105b2202940afd841e47d8b80"
+    }
+  },
+  "counts": {
+    "total": 8,
+    "keep_current": 3,
+    "accepted_revision": 3,
+    "structural_split": 2,
+    "unresolved_block": 0,
+    "finalizableUnderCurrentText": 3,
+    "requiresCanonicalReworkAndFreshBlindReview": 5,
+    "requiresProductOwnerDecision": 0
+  },
+  "contractNoteDe": "Drei KEEP-Entscheidungen können auf den exakt gebundenen aktuellen Beschreibungen in V2-Evidenzprofile überführt werden. Drei Revisionen und zwei strukturelle Splits sind ausschließlich externe fachliche Entwürfe. Erst nach kanonischer Integration müssen sie mit neuen Fingerprints erneut zwei unabhängige Blindreviews sowie Mapping-, Assessment-, Atomicity-, Memory-, Visualisierungs-, Composition-, Route-, Lernzielbuch-, Layer-A- und M6-Prüfungen durchlaufen.",
+  "contractNoteEn": "Three KEEP decisions can be converted into V2 evidence profiles against the exact bound current descriptions. Three revisions and two structural splits are external subject-matter drafts only. After canonical integration they require two fresh independent blind reviews with new fingerprints and fresh mapping, assessment, atomicity, memory, visualization, composition, route, GoalBook, Layer A, and M6 checks.",
+  "existingAtomicityReconciliation": {
+    "ledger": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+    "allEightPriorStatus": "atomic",
+    "upheldGoalIds": [
+      "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+    ],
+    "overturnedToStructuralSplit": [
+      {
+        "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+        "priorLedgerLine": 179,
+        "priorReason": "J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+        "whyNewEvidenceIsStrongerDe": "Die frühere Begründung war pauschal und prüfte die Disjunktion nicht. Grad oder Gradschranke aus Endverhalten und Extrempunktzahl zu erschließen und aus Nullstellen, Vielfachheiten und Skalierungsdaten einen passenden Term zu konstruieren, haben verschiedene Informationsvoraussetzungen und können unabhängig ausfallen. Die aktuelle Prüfung deckt nur den Gradschluss, nicht die Termkonstruktion; damit würde das zusammengesetzte Ziel fälschlich als vollständig geprüft erscheinen.",
+        "whyNewEvidenceIsStrongerEn": "The earlier rationale was generic and did not examine the disjunction. Inferring a degree or degree bound from end behaviour and turning points and constructing a fitting expression from zeros, multiplicities, and scale data have different information requirements and can be mastered independently. The current assessment covers only the degree inference, not expression construction, so the composite goal would incorrectly appear fully assessed."
+      },
+      {
+        "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+        "priorLedgerLine": 189,
+        "priorReason": "J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+        "whyNewEvidenceIsStrongerDe": "Vier getrennte BW-Quellkompetenzen tragen aktuell nur einzelne Teile: Monotoniedefinition, lokale-gegen-globale Extrema, Funktionsuntersuchung mit Ableitungen und bidirektionale Funktion-Ableitungs-Graphbeziehung. Graphkoordination, Monotonieintervalle, lokale Klassifikation und globale Randwertprüfung liefern unterschiedliche Leistungsprodukte; insbesondere benötigen globale Extrema einen vorgegebenen Bereich und Randwerte. Die derzeitigen nachgelagerten requires-Kanten zu Tangenten, Approximation und Krümmung zeigen zusätzlich, dass das breite Ziel als unpassender Sammelprerequisit wirkt.",
+        "whyNewEvidenceIsStrongerEn": "Four separate Baden-Wuerttemberg source competencies currently support only individual parts: the definition of monotonicity, local versus global extrema, derivative-based function investigation, and the bidirectional function-derivative graph relationship. Graph coordination, monotonicity intervals, local classification, and global endpoint comparison produce different performances; global extrema in particular require a specified domain and endpoint values. Existing downstream prerequisite edges to tangents, approximation, and curvature also show that the broad goal is acting as an unsuitable aggregate prerequisite."
+      }
+    ]
+  },
+  "criticalExistingMappingDebt": [
+    {
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "reviewedMappingEdgeCount": 64,
+      "exactCount": 3,
+      "partialCount": 61,
+      "finding": "A substantial subset of the 61 partial edges is semantically unrelated to periodic real-world modelling, including source spans about repeating decimals, right-triangle trigonometry, sine and cosine laws, and isolated characteristic values.",
+      "impact": "These edges must not be treated as positive source evidence for the goal or its all-jurisdiction applicability. The exact BY and HE modelling sources and several genuinely related partial sources remain sufficient to support the canonical competence, so this does not block KEEP.",
+      "requiredFollowUp": "Run a bounded per-edge semantic mapping cleanup for this one goal after the commit boundary; remove unrelated edges, retain only defensible exact or partial evidence, regenerate source-rationale/applicability status, and re-check every protected floor.",
+      "productOwnerDecisionRequired": false
+    }
+  ],
+  "productOwnerEscalations": [],
+  "decisions": [
+    {
+      "sequence": 1,
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "goalFingerprint": "sha256:a132b889da1543803a126a5ed255105b4a258fe18f2e4ef17230afbdfa4b0cd8",
+      "pageFingerprint": "sha256:6556bcbf45736ed02be2e561db5c2a71d7159b8f23788087bc979f357575d81f",
+      "currentTitleDe": "Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben",
+      "currentTitleEn": "Describe the graph shape of exponential functions of the form $b\\cdot a^x$ using $a$ and $b$",
+      "currentDescriptionDe": "Die lernende Person kann für exponentielle Funktionen der Form $b\\cdot a^x$ den Verlauf des Graphen anhand der Parameter $a$ und $b$ beschreiben, insbesondere y-Achsenabschnitt, asymptotisches Verhalten und Monotonieverhalten begründen und passende Veranschaulichungen auch mit digitalen Werkzeugen nutzen.",
+      "currentDescriptionEn": "The learner can describe the graph of exponential functions of the form $b\\cdot a^x$ using the parameters $a$ and $b$, justify the y-intercept, asymptotic behaviour, and monotonicity, and use suitable visualizations including digital tools.",
+      "roundA": {
+        "recordId": "64fca88a-0e3b-4845-bf0a-07de16404fbf",
+        "decision": "keep"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-001",
+        "decision": "keep"
+      },
+      "resolutionDecision": "keep_current",
+      "finalizableNow": true,
+      "finalText": null,
+      "understandingEvidenceSource": "third_adjudication_synthesis_of_bound_rounds",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Unter der üblichen nichtdegenerierten Konvention $a>0$, $a\\neq1$ und $b\\neq0$ ist $f(x)=b\\cdot a^x$ auf ganz $\\mathbb{R}$ definiert. Es gilt $f(0)=b$; Betrag und Vorzeichen von $b$ bestimmen vertikale Skalierung und Lage zur x-Achse, während $a$ als Faktor $f(x+1)/f(x)$ zusammen mit dem Vorzeichen von $b$ die Monotonierichtung bestimmt. $y=0$ ist waagerechte Asymptote. Die Randfälle $a=1$ oder $b=0$ sind konstante, degenerierte Fälle und dürfen nicht unbemerkt wie nichtkonstante Exponentialgraphen behandelt werden.",
+        "essentialUnderstandingEn": "Under the usual non-degenerate convention $a>0$, $a\\neq1$, and $b\\neq0$, $f(x)=b\\cdot a^x$ is defined on all of $\\mathbb{R}$. We have $f(0)=b$; the magnitude and sign of $b$ determine vertical scaling and position relative to the x-axis, while $a$ as the factor $f(x+1)/f(x)$ together with the sign of $b$ determines the direction of monotonicity. $y=0$ is a horizontal asymptote. The boundary cases $a=1$ or $b=0$ are constant degenerate cases and must not silently be treated as non-constant exponential graphs.",
+        "observablePerformanceDe": "Die lernende Person prüft zunächst die Zulässigkeit vorgegebener Parameter, sagt für mehrere gültige Parameterpaare Definitions- und Wertebereich, y-Achsenabschnitt, Lage, Monotonie und Grenzverhalten voraus, skizziert passende Graphen und begründet die Merkmale mit $f(0)=b$ und $f(x+1)=a\\cdot f(x)$, bevor sie ein digitales Werkzeug nur zur Kontrolle nutzt.",
+        "observablePerformanceEn": "The learner first checks whether given parameters are admissible, predicts the domain, range, y-intercept, position, monotonicity, and limiting behaviour for several valid parameter pairs, sketches matching graphs, and justifies the features using $f(0)=b$ and $f(x+1)=a\\cdot f(x)$ before using a digital tool only to check the result.",
+        "transferExpectationDe": "In einer neuen Aufgabe wechseln sowohl der Basisbereich von $a$ ($a>1$ gegenüber $0<a<1$) als auch Betrag oder Vorzeichen von $b$; zusätzlich wird ein degenerierter Randfall angeboten. Die lernende Person erklärt, welche Merkmale sich umkehren, skalieren oder invariant bleiben und warum der Randfall gesondert einzuordnen ist.",
+        "transferExpectationEn": "In a fresh task, both the base regime of $a$ ($a>1$ versus $0<a<1$) and the magnitude or sign of $b$ change, and a degenerate boundary case is also offered. The learner explains which features reverse, scale, or remain invariant and why the boundary case must be classified separately."
+      },
+      "rationale": "KEEP. Der mathematische Ausdruck 'exponentielle Funktionen' bindet die übliche positive, von 1 verschiedene Basis; der aktuelle Text behauptet kein falsches pauschales Verhalten, sondern verlangt dessen Herleitung aus den Parametern. Die detaillierten Zulässigkeitsbedingungen und degenerierten Randfälle gehören gemäß Description/Profile-Grenze zwingend in das V2-Profil. Eine Textrevision wäre hier länger, ohne die bereits klare Zielidentität zu verbessern.",
+      "mappingInventory": {
+        "reviewedEdges": 10,
+        "exact": 5,
+        "partial": 5
+      },
+      "mappingConsequences": [
+        "Keine Mapping- oder Provenienzänderung aus KEEP; die BY-Source nennt exakt $b\\cdot a^x$, y-Achsenabschnitt, Asymptotik und Monotonie.",
+        "Das V2-Profil darf die Basisbedingungen nicht als neue curricular claim darstellen, sondern als mathematische Gültigkeitsbedingung der bereits gebundenen Funktionsklasse."
+      ],
+      "graphConsequences": [
+        "Keine Graph- oder ID-Änderung; die Reverse-requires-Kanten zum Asymptotikziel und zu J10-Aufgabe 1 bleiben bestehen."
+      ],
+      "assessmentConsequences": [
+        "J10-Aufgabe 1 verwendet den gültigen nichtdegenerierten Fall $1200\\cdot0{,}82^t$ und bleibt passend; das V2-Profil benötigt zusätzlich eine unabhängige Parameterregime-Variation."
+      ],
+      "atomicityMemoryConsequences": [
+        "Die current fingerprint-bound Atomicity-Entscheidung bleibt erhalten.",
+        "Die current no_memory_needed-Entscheidung bleibt erhalten."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende Nano-Banana-Pro-Bild bleibt erhalten; es ist frisch AI-geprüft und zeigt gültige Beispiele $3\\cdot2^x$ und $3\\cdot0{,}5^x$ korrekt.",
+        "Das Bild ist Lehrunterstützung, ersetzt aber nicht die eigenständige Parameterprüfung im Profil."
+      ],
+      "compositionConsequences": [
+        "Keine Änderung an den 36 referenzierenden Composition Views."
+      ],
+      "followUpLanes": [
+        "goal_description_review_resolution",
+        "positive_understanding_evidence_v2",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 2,
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "goalFingerprint": "sha256:a8d7d3950f9a884bd5f006f9f40ad0181f08b2c408dcc44d92c8b87b4a66d157",
+      "pageFingerprint": "sha256:6f7a0082300bff1f1aa6f3fb67b1412115ecc61896aeab569b14018b157826e6",
+      "currentTitleDe": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+      "currentTitleEn": "Interpret sine and cosine values on the unit circle in radians and determine angles",
+      "currentDescriptionDe": "Die lernende Person kann Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2π am Einheitskreis veranschaulichen, Vorzeichen sicher bestimmen und zu vorgegebenen Sinus- oder Kosinuswerten passende Winkelgrößen angeben.",
+      "currentDescriptionEn": "The learner can illustrate sine and cosine values for angles between 0 and 2π on the unit circle, determine signs reliably, and identify suitable angles for given sine or cosine values.",
+      "roundA": {
+        "recordId": "cae42d68-f81b-4739-9c7d-57083133d053",
+        "decision": "keep"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-002",
+        "decision": "keep"
+      },
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "titleDe": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmaß deuten und Winkel bestimmen",
+        "titleEn": "Interpret sine and cosine values on the unit circle in radians and determine angles",
+        "descriptionDe": "Die lernende Person kann Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2π am Einheitskreis veranschaulichen, Vorzeichen sicher bestimmen und zu vorgegebenen Sinus- oder Kosinuswerten passende Winkelgrößen angeben.",
+        "descriptionEn": "The learner can illustrate sine and cosine values for angles between 0 and 2π on the unit circle, determine signs reliably, and identify suitable angles for given sine or cosine values."
+      },
+      "selectedUnderstandingEvidenceSource": "bound_round_b_with_adjudicator_english_parity_polish",
+      "selectedRecordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-002",
+      "evidenceAdaptation": "Die stärkere deutsche B-Evidenz bleibt byte-identisch; die englischen drei Felder wurden in der Adjudikation ohne inhaltliche Erweiterung enger an dieselbe Aussage angeglichen.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Winkel θ im Bogenmaß legt auf dem Einheitskreis den Punkt (cos θ, sin θ) fest: Der Kosinus ist dessen x-Koordinate, der Sinus dessen y-Koordinate. Die Quadranten bestimmen die Vorzeichen, und wegen der Kreissymmetrien kann derselbe einzelne Koordinatenwert zu mehreren Winkeln einer vollen Umdrehung gehören.",
+        "essentialUnderstandingEn": "An angle θ in radians determines the point (cos θ, sin θ) on the unit circle: cosine is its x-coordinate and sine is its y-coordinate. The quadrants determine the signs, and because of the circle's symmetries the same single coordinate value can belong to several angles in one full revolution.",
+        "observablePerformanceDe": "Die lernende Person trägt vorgegebene Winkel im Bogenmaß am Einheitskreis ein, liest Sinus und Kosinus samt Vorzeichen als Koordinaten ab und lokalisiert umgekehrt zu einem vorgegebenen Sinus- oder Kosinuswert alle passenden Punkte und Winkel einer vollen Umdrehung; Mehrdeutigkeiten begründet sie durch Quadrant und Symmetrie.",
+        "observablePerformanceEn": "The learner plots given angles in radians on the unit circle, reads sine and cosine with their signs as coordinates, and conversely locates all matching points and angles in one full revolution for a given sine or cosine value; they justify ambiguities using quadrant and symmetry.",
+        "transferExpectationDe": "In einer unabhängig gestellten Aufgabe wechselt die Richtung der Schlussfolgerung und die verfügbare Koordinate: Aus einem vorzeichenbehafteten Kosinuswert statt aus einem Winkel bestimmt die lernende Person die möglichen Punkte und Winkel und leitet anschließend die zugehörigen Sinusvorzeichen ohne eine vorgegebene Skizze ab.",
+        "transferExpectationEn": "In an independently posed task, both the direction of inference and the available coordinate change: from a signed cosine value rather than an angle, the learner determines the possible points and angles and then derives the corresponding sine signs without a supplied sketch."
+      },
+      "rationale": "REVISION. Die inhaltliche Fassung nennt Winkelgrößen im Plural, bindet den Grundbereich und lässt die inverse Mehrdeutigkeit nicht verschwinden; dafür bleibt die stärkere B-Evidenz maßgeblich. Im deutschen Deutschland-Kanon ist jedoch 'Bogenmass' eine echte Orthographieschwäche: Die Standardschreibung lautet 'Bogenmaß'. Die lokale Revision korrigiert ausschließlich diesen Titelbestandteil; englischer Titel und beide Beschreibungen bleiben byte-identisch. Dass beide Blindreviews KEEP meldeten, beseitigt den unabhängig verifizierten Schreibfehler nicht.",
+      "mappingInventory": {
+        "reviewedEdges": 3,
+        "exact": 3,
+        "partial": 0
+      },
+      "mappingConsequences": [
+        "Keine semantische Mappingänderung; zwei getrennte BY-Source-Aspekte belegen Vorwärtsrichtung/Vorzeichen und Rückrichtung vom Wert zu den Winkeln exakt.",
+        "Titelgebundene Mapping-/Provenienzfingerprints müssen nach der Orthografiekorrektur neu erzeugt und geprüft werden."
+      ],
+      "graphConsequences": [
+        "Keine ID-, contains- oder requires-Änderung; das Winkelreduktionsziel und drei trigonometrische Herleitungsziele bleiben direkte Nachfolger."
+      ],
+      "assessmentConsequences": [
+        "Die aktuelle J10-Sammelprüfung prüft diese inverse Mehrdeutigkeit nicht vollständig; das V2-Profil braucht mindestens einen unabhängigen Fall mit mehreren Lösungen oder eine andere lokale Assessment-Abdeckung.",
+        "Titel- oder Fingerprintbindungen vorhandener Aufgaben sind nach der kanonischen Korrektur neu zu prüfen."
+      ],
+      "atomicityMemoryConsequences": [
+        "Die Kompetenz bleibt fachlich atomar und benötigt weiterhin kein eigenes Memory-Deck.",
+        "Die Titeländerung macht jedoch beide fingerprint-gebundenen Ledgerentscheidungen stale; sie müssen nach Integration neu gebunden werden."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende Nano-Banana-Pro-Bild bleibt unverändert erhalten: Es schreibt 'Bogenmaß' im Bild bereits korrekt; Koordinaten, Kardinalwinkel und Quadrantenvorzeichen sind frisch AI-geprüft.",
+        "Nur Resource-Link-Titel, Alttext, QA-Metadaten und Fingerprints an den korrigierten kanonischen Titel neu binden. Die inverse Mehrdeutigkeit muss weiterhin durch die Lernerleistung geprüft werden, nicht allein durch das Bild."
+      ],
+      "compositionConsequences": [
+        "Keine Strukturänderung an den 39 referenzierenden Composition Views; titel- oder fingerprint-abhängige Ausgaben neu erzeugen."
+      ],
+      "followUpLanes": [
+        "canonical_title_de",
+        "fresh_two_blind_description_reviews",
+        "goal_description_review_resolution",
+        "positive_understanding_evidence_v2",
+        "semantic_atomicity_fingerprint",
+        "memory_card_review_fingerprint",
+        "source_mapping_and_provenance_revalidation",
+        "visualization_metadata_alttext_and_qa_rebinding",
+        "assessment_route_coverage",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 3,
+      "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "goalFingerprint": "sha256:08a7630eecae778e838383ddc384f154da231eff2e3741d4af8f33abc0f498c5",
+      "pageFingerprint": "sha256:3fffc302b0cb0766a3cc187d49a7ebe0c6a238e2848f19863ee493394b1b7fc4",
+      "currentTitleDe": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+      "currentTitleEn": "Reduce sine and cosine values for angles greater than 2π and for negative angles to the principal interval",
+      "currentDescriptionDe": "Die lernende Person kann mithilfe des Einheitskreises Sinus- und Kosinuswerte für Winkelgrößen größer als 2π sowie für negative Winkelgrößen auf entsprechende Werte im Grundbereich zwischen 0 und 2π zurückführen und die Reduktionsschritte erläutern.",
+      "currentDescriptionEn": "The learner can use the unit circle to reduce sine and cosine values for angles greater than 2π and for negative angles to corresponding values in the principal interval between 0 and 2π and explain the reduction steps.",
+      "roundA": {
+        "recordId": "50356552-ecce-4927-91cf-d1e765ea3918",
+        "decision": "keep"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-003",
+        "decision": "revise"
+      },
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "descriptionDe": "Die lernende Person kann Winkelgrößen größer als 2π und negative Winkelgrößen mithilfe des Einheitskreises durch Addition oder Subtraktion ganzzahliger Vielfacher von 2π auf den eindeutigen zugehörigen Winkel im Grundbereich $[0,2π)$ zurückführen, die unveränderten Sinus- und Kosinuswerte begründen und die Reduktionsschritte erläutern.",
+        "descriptionEn": "The learner can use the unit circle to reduce angles greater than 2π and negative angles to the unique corresponding angle in the principal interval $[0,2π)$ by adding or subtracting integer multiples of 2π, justify why the sine and cosine values remain unchanged, and explain the reduction steps."
+      },
+      "understandingEvidenceSource": "bound_round_b_with_third_adjudication_language_check",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Winkel, die sich um ein ganzzahliges Vielfaches von 2π unterscheiden, enden am selben Punkt des Einheitskreises und haben deshalb dieselben Sinus- und Kosinuswerte. Der halboffene Grundbereich $[0,2π)$ enthält für jede solche Klasse genau einen Vertreter.",
+        "essentialUnderstandingEn": "Angles that differ by an integer multiple of 2π end at the same point on the unit circle and therefore have the same sine and cosine values. The half-open principal interval $[0,2π)$ contains exactly one representative of each such class.",
+        "observablePerformanceDe": "Die lernende Person wählt für einen positiven Winkel über 2π oder einen negativen Winkel selbstständig ein geeignetes ganzzahliges Vielfaches von 2π, berechnet den Vertreter in $[0,2π)$, markiert die identische Endlage am Einheitskreis und begründet daraus die Gleichheit beider trigonometrischer Werte.",
+        "observablePerformanceEn": "For a positive angle greater than 2π or a negative angle, the learner independently chooses a suitable integer multiple of 2π, calculates the representative in $[0,2π)$, marks the identical terminal position on the unit circle, and uses it to justify equality of both trigonometric values.",
+        "transferExpectationDe": "Bei einem neu vorgelegten symbolischen Winkel der Form $α+2πk$ mit unbekanntem ganzzahligen $k$ entscheidet die lernende Person ohne wiederholtes Abtragen, welcher Anteil den Einheitskreispunkt bestimmt, und erklärt allgemein, warum Sinus und Kosinus von $k$ unabhängig sind.",
+        "transferExpectationEn": "For a newly presented symbolic angle of the form $α+2πk$ with unknown integer $k$, the learner determines without repeated plotting which part fixes the unit-circle point and explains generally why sine and cosine are independent of $k$."
+      },
+      "rationale": "REVISION. Die aktuelle Fassung lässt Werte in ein Winkelintervall 'zurückführen' und verwendet mit 0 bis 2π einen nicht eindeutigen Repräsentantenbereich. Die Revision korrigiert ausschließlich Objekt und Randkonvention, wahrt den exakten BY-Scope und macht die Invarianz der Werte als Begründung sichtbar. Die Wahl $[0,2π)$ ist eine mathematische Eindeutigkeitskonvention, keine neue fachliche Reichweite und keine Product-Owner-Grenze.",
+      "mappingInventory": {
+        "reviewedEdges": 1,
+        "exact": 1,
+        "partial": 0
+      },
+      "mappingConsequences": [
+        "Die exakte BY-Kante kann fachlich bestehen bleiben: Sie verlangt ausdrücklich die Reduktion von Winkeln >2π und negativen Winkeln mit dem Einheitskreis auf den Grundbereich.",
+        "Nach finaler Textbindung müssen MatchType, Source-Rationale und Fingerprints erneut validiert werden."
+      ],
+      "graphConsequences": [
+        "Stabile ID und requires bleiben; der Nachfolger zur Ableitung der Sinus-/Kosinusgraphen bleibt fachlich passend."
+      ],
+      "assessmentConsequences": [
+        "Keine aktuelle J10-Prüfungsaufgabe deckt die Reduktion explizit ab; nach Revision ist eine Assessment-/Route-Prüfung erforderlich."
+      ],
+      "atomicityMemoryConsequences": [
+        "Die Revision bleibt eine kohärente Winkelreduktionskompetenz, macht aber Atomicity- und Memory-Fingerprints stale; beide Ledgers müssen nach frischen Blindreviews neu gebunden werden."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende Nano-Banana-Pro-Bild ist inhaltlich bereits passend: Es zeigt $13π/6\\toπ/6$ und $-π/3\\to5π/3$ sowie die gemeinsame Endlage korrekt; Asset nicht ersetzen.",
+        "Nur Titel-/Beschreibung-/Alttextbindung und Visual-QA-Fingerprint aktualisieren und erneut prüfen."
+      ],
+      "compositionConsequences": [
+        "Keine Strukturänderung an den 39 Views; nur Fingerprint-abhängige Ausgaben neu erzeugen."
+      ],
+      "followUpLanes": [
+        "canonical_description_de_en",
+        "fresh_two_blind_description_reviews",
+        "goal_description_review_resolution",
+        "positive_understanding_evidence_v2",
+        "semantic_atomicity_fingerprint",
+        "memory_card_review_fingerprint",
+        "source_mapping_and_provenance_revalidation",
+        "visualization_alttext_and_qa_rebinding",
+        "assessment_route_coverage",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 4,
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "goalFingerprint": "sha256:c81aeb80b4027471ccc59bef7b52088affac39efbed6734a4f409937f0ad67be",
+      "pageFingerprint": "sha256:cbfc2dcb83f7e48659c01f23949c35a219977c1920b2ceae76e2fb6ab6ecbeb8",
+      "currentTitleDe": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen",
+      "currentTitleEn": "Derive sine and cosine graphs from the unit circle and justify periodicity and their relationship",
+      "currentDescriptionDe": "Die lernende Person kann mithilfe des Einheitskreises den Verlauf der Graphen von Sinus- und Kosinusfunktion ableiten, ihre Periodizität begründen und den Zusammenhang zwischen beiden Funktionen erklären.",
+      "currentDescriptionEn": "The learner can use the unit circle to derive the graphs of the sine and cosine functions, justify their periodicity, and explain the relationship between the two functions.",
+      "roundA": {
+        "recordId": "0bb6879a-2d54-4da4-92b7-b2fba1f3f8de",
+        "decision": "keep"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-004",
+        "decision": "keep"
+      },
+      "resolutionDecision": "keep_current",
+      "finalizableNow": true,
+      "finalText": null,
+      "selectedUnderstandingEvidenceSource": "bound_round_b_with_adjudicator_english_parity_polish",
+      "selectedRecordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-004",
+      "evidenceAdaptation": "Die stärkere deutsche B-Evidenz bleibt byte-identisch; die englischen drei Felder wurden in der Adjudikation ohne inhaltliche Erweiterung enger an dieselbe Aussage angeglichen.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Beim Durchlaufen des Einheitskreises ordnen sin θ und cos θ jedem Winkel die y- beziehungsweise x-Koordinate zu; das Auftragen dieser Koordinaten gegen θ erzeugt die beiden Funktionsgraphen. Nach einer vollen Umdrehung wiederholen sich die Koordinaten, daher ist 2π eine Periode, und die Vierteldrehung erklärt die Phasenbeziehung cos θ = sin(θ + π/2).",
+        "essentialUnderstandingEn": "As the unit circle is traversed, sin θ and cos θ assign the y- and x-coordinate, respectively, to each angle; plotting these coordinates against θ creates the two function graphs. After one full revolution the coordinates repeat, so 2π is a period, and a quarter turn explains the phase relationship cos θ = sin(θ + π/2).",
+        "observablePerformanceDe": "Die lernende Person überträgt markante Einheitskreispunkte samt Zwischenverlauf auf ein Winkel-Koordinaten-Diagramm, konstruiert daraus beide Graphen und begründet aus identischen Kreispositionen nach 2π sowohl die Wiederholung als auch die horizontale Verschiebung um π/2 zwischen Sinus und Kosinus.",
+        "observablePerformanceEn": "The learner transfers key unit-circle points and the behaviour between them to an angle-coordinate diagram, constructs both graphs from them, and uses identical circle positions after 2π to justify both repetition and the horizontal shift of π/2 between sine and cosine.",
+        "transferExpectationDe": "In einer neuen Darstellung, in der die Kreisbewegung an einer anderen Referenzposition beginnt und der Graph auch negative Winkel umfasst, rekonstruiert die lernende Person die verschobenen Koordinatenverläufe und erklärt, warum sich die Phasenlage ändert, die Periode jedoch erhalten bleibt.",
+        "transferExpectationEn": "In a fresh representation in which the circular motion starts at a different reference position and the graph also includes negative angles, the learner reconstructs the shifted coordinate traces and explains why the phase changes while the period remains unchanged."
+      },
+      "rationale": "KEEP. Graphableitung, Periodizität und Phasenbeziehung sind gemeinsame Konsequenzen derselben Einheitskreis-Koordinatenbewegung und keine verdeckten unabhängigen Ziele. Beide Sprachfassungen verlangen Herleitung und Begründung, nicht bloß das Abzeichnen fertiger Graphen.",
+      "mappingInventory": {
+        "reviewedEdges": 7,
+        "exact": 6,
+        "partial": 1
+      },
+      "mappingConsequences": [
+        "Keine Änderung; die exakte BY-Kante trägt alle drei Facetten gemeinsam, die BW-Kante bleibt wegen zusätzlicher Parametervariation partial."
+      ],
+      "graphConsequences": [
+        "Keine Graphänderung; zwei nachgelagerte Ziele zu Term-Graph-Übersetzung bleiben passend."
+      ],
+      "assessmentConsequences": [
+        "Das V2-Profil muss eine eigenständige Konstruktion aus Einheitskreispunkten und eine geänderte Startlage prüfen; eine fertige Grafik genügt nicht."
+      ],
+      "atomicityMemoryConsequences": [
+        "Current atomic und no_memory_needed bleiben gültig."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende Nano-Banana-Pro-Bild bleibt erhalten; Einheitskreiskoordinaten, Kurven, Periode und Phasenbeziehung sind frisch AI-geprüft."
+      ],
+      "compositionConsequences": [
+        "Keine Änderung an den 40 referenzierenden Composition Views."
+      ],
+      "followUpLanes": [
+        "goal_description_review_resolution",
+        "positive_understanding_evidence_v2",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 5,
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "goalFingerprint": "sha256:e9a5594a27c5a26ada38efcb8b6008e296225d20e41db105120ac66cdad3477d",
+      "pageFingerprint": "sha256:ac98540d4954760e285eb504aa86a7d57c8c0c5af4301a5f8827700d266951c7",
+      "currentTitleDe": "Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
+      "currentTitleEn": "Model periodic real-world situations with sine and cosine functions and vary the models",
+      "currentDescriptionDe": "Die lernende Person kann realitätsbezogene periodische Vorgänge graphisch und rechnerisch mit geeigneten Sinus- oder Kosinusfunktionen modellieren, Modellannahmen bei Bedarf variieren und Aussagen zum Verlauf im Kontext deuten.",
+      "currentDescriptionEn": "The learner can model periodic real-world processes graphically and numerically using suitable sine or cosine functions, vary modelling assumptions when needed, and interpret statements about the progression in context.",
+      "roundA": {
+        "recordId": "026fe6f3-a8e7-43ad-bc8a-2a74a98cb6cb",
+        "decision": "revise"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-005",
+        "decision": "keep"
+      },
+      "resolutionDecision": "keep_current",
+      "finalizableNow": true,
+      "finalText": null,
+      "selectedUnderstandingEvidenceSource": "bound_round_b_with_adjudicator_english_parity_polish",
+      "selectedRecordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-005",
+      "evidenceAdaptation": "Die stärkere deutsche B-Evidenz bleibt byte-identisch; die englischen drei Felder wurden in der Adjudikation ohne inhaltliche Erweiterung enger an dieselbe Aussage angeglichen.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "In einem Sinus- oder Kosinusmodell beschreiben Mittellage, Amplitude, Periode und Phasenlage den Wertebereich, die Größe der Schwankung, die Wiederholungsdauer und den zeitlichen Ort markanter Zustände. Die Wahl zwischen Sinus und Kosinus ist eine passende Darstellung desselben periodischen Musters; ihre Aussagekraft hängt von Annahmen wie einer stabilen, glatten Wiederholung ab.",
+        "essentialUnderstandingEn": "In a sine or cosine model, midline, amplitude, period, and phase describe the range, magnitude of variation, repetition time, and temporal location of key states. The choice between sine and cosine is a suitable representation of the same periodic pattern; its explanatory power depends on assumptions such as stable, smooth repetition.",
+        "observablePerformanceDe": "Die lernende Person wählt zu Kontextangaben oder Daten begründet Sinus oder Kosinus, bestimmt einen passenden Graphen und Funktionsterm mit sinnvollen Einheiten, erklärt die Bedeutung jedes Parameters, prüft den Verlauf an den Angaben und deutet Vorhersagen im Kontext. Bei einer geänderten Annahme variiert sie den betroffenen Parameter und erläutert die Folgen sowie Grenzen des Modells.",
+        "observablePerformanceEn": "Given contextual information or data, the learner justifies a choice of sine or cosine, determines a suitable graph and expression with meaningful units, explains each parameter, checks the behaviour against the information, and interprets predictions in context. When an assumption changes, the learner varies the affected parameter and explains the consequences and limitations of the model.",
+        "transferExpectationDe": "Für einen neuen periodischen Vorgang mit von null verschiedener Mittellage, einem nicht am Zeitursprung liegenden Extremwert und einer veränderten Wiederholungsdauer entwickelt die lernende Person ohne übertragene Schablone ein angepasstes Modell und beurteilt, welche Abweichungen der Realsituation die periodische Annahme infrage stellen.",
+        "transferExpectationEn": "For a new periodic process with a non-zero midline, an extremum away from the time origin, and a changed repetition time, the learner develops an adapted model without a transferred template and judges which deviations in the real situation call the periodic assumption into question."
+      },
+      "rationale": "KEEP. 'Rechnerisch' und 'numerically' sind hier angemessene schulische Entsprechungen; die aktuelle zweisprachige Fassung umfasst bereits Modellbildung, Variation von Annahmen und kontextbezogene Interpretation. Die A-Revision ist eine stilistische Präzisierung, keine konkrete Schwäche. Die reicheren Anforderungen an Parameter, Einheiten, Anpassung und Modellgrenzen gehören in das V2-Profil.",
+      "mappingInventory": {
+        "reviewedEdges": 64,
+        "exact": 3,
+        "partial": 61,
+        "semanticallyClean": false
+      },
+      "mappingConsequences": [
+        "KEEP does not justify retaining unrelated partial edges. A bounded semantic cleanup is mandatory before these edges are used as source/applicability evidence.",
+        "The exact BY source and exact HE G8/G9 sources directly support the current goal and remain sufficient for the description decision."
+      ],
+      "graphConsequences": [
+        "Keine ID- oder requires-Änderung; J10-Aufgabe 2 bleibt direkter Assessment-Nachfolger."
+      ],
+      "assessmentConsequences": [
+        "J10-Aufgabe 2 prüft Parameterbestimmung und Termkonstruktion, variiert aber Modellannahmen und Modellgrenzen nicht vollständig; die bestehende coveredGoalId-Kante ist deshalb fachlich erneut zu prüfen und gegebenenfalls durch eine zusätzliche Teilaufgabe zu härten."
+      ],
+      "atomicityMemoryConsequences": [
+        "Current atomic und no_memory_needed bleiben textseitig gültig; der Mapping-Cleanup ändert diese Entscheidungen nicht."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende Nano-Banana-Pro-Riesenradbild bleibt erhalten; Parameter und charakteristische Höhen sind frisch AI-geprüft.",
+        "Keine Eigenzeichnung und kein Asset-Austausch."
+      ],
+      "compositionConsequences": [
+        "Die 50 referenzierenden Views ändern sich textseitig nicht; nach Mapping-Cleanup muss ihre jurisdiction-spezifische Sichtbarkeit erneut belegt werden."
+      ],
+      "followUpLanes": [
+        "goal_description_review_resolution",
+        "positive_understanding_evidence_v2",
+        "bounded_source_mapping_cleanup",
+        "applicability_and_source_rationale_revalidation",
+        "assessment_coverage_revalidation",
+        "composition_view_projection_revalidation",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 6,
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "goalFingerprint": "sha256:e83a5d4f56f30f00561814430d6837cbd9f082b776de44fcc2dd6139b7a9978e",
+      "pageFingerprint": "sha256:119b2e49fdaaf0b2e270029260e4e52a498ff1ecb0b4bc10bbc408a050351d4c",
+      "currentTitleDe": "Aus Graphen ganzrationaler Funktionen Rückschlüsse auf Grad oder Funktionsterm ziehen",
+      "currentTitleEn": "Infer degree or expression from graphs of polynomial functions",
+      "currentDescriptionDe": "Die lernende Person kann aus dem Graphen einer ganzrationalen Funktion, soweit möglich, Rückschlüsse auf den Grad der Funktion oder einen passenden Funktionsterm ziehen.",
+      "currentDescriptionEn": "The learner can, where possible, infer the degree of a polynomial function or a fitting function expression from its graph.",
+      "roundA": {
+        "recordId": "3f718ab3-ceac-4589-849c-3ee2ad78aec3",
+        "decision": "revise"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-006",
+        "decision": "split_review"
+      },
+      "resolutionDecision": "structural_split",
+      "finalizableNow": false,
+      "structuralPlan": {
+        "oldGoalAction": "retain_stable_id_as_cluster",
+        "cluster": {
+          "retainedGoalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+          "titleDe": "Aus Graphen ganzrationaler Funktionen auf Grad und Funktionsterm schließen",
+          "titleEn": "Infer degree and function expressions from polynomial graphs",
+          "type": "cluster",
+          "removeSemanticAtomic": true,
+          "requires": [],
+          "childrenUseNewDeterministicIdsAtIntegration": true
+        },
+        "children": [
+          {
+            "alias": "inferDegree",
+            "titleDe": "Aus Graphen ganzrationaler Funktionen mögliche Grade erschließen",
+            "titleEn": "Infer possible degrees from polynomial graphs",
+            "descriptionDe": "Die lernende Person kann aus Endverhalten, Symmetrien, Nullstellen und der Anzahl von Richtungswechseln eines ganzrationalen Funktionsgraphen begründete Aussagen über mögliche Grade oder Gradschranken ableiten und fehlende Eindeutigkeit benennen.",
+            "descriptionEn": "The learner can use end behaviour, symmetries, zeros, and the number of turning points of a polynomial graph to justify possible degrees or degree bounds and identify when the degree is not uniquely determined.",
+            "suggestedRequires": [
+              "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
+              "65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "understandingEvidence": {
+              "essentialUnderstandingDe": "Endverhalten und Symmetrie geben insbesondere Hinweise auf Parität und Vorzeichen des Leitkoeffizienten; $n$ Extrempunkte erfordern mindestens Grad $n+1$. Ein sichtbarer Ausschnitt oder eine qualitative Skizze legt den exakten Grad im Allgemeinen nicht eindeutig fest.",
+              "essentialUnderstandingEn": "End behaviour and symmetry give information in particular about parity and the sign of the leading coefficient; $n$ turning points require degree at least $n+1$. A visible segment or qualitative sketch generally does not determine the exact degree uniquely.",
+              "observablePerformanceDe": "Die lernende Person benennt tragende Graphenmerkmale, leitet daraus zulässige Parität, Untergrenzen oder mögliche Grade ab, verwirft unvereinbare Kandidaten und kennzeichnet ausdrücklich, was nicht eindeutig bestimmt ist.",
+              "observablePerformanceEn": "The learner identifies decisive graph features, derives admissible parity, lower bounds, or possible degrees, rejects incompatible candidates, and explicitly states what is not uniquely determined.",
+              "transferExpectationDe": "Bei einem neuen, nur teilweise sichtbaren oder anders skalierten Graphen vergleicht die lernende Person mehrere Gradbehauptungen und entscheidet jeweils, ob sie zwingend, möglich oder ausgeschlossen sind.",
+              "transferExpectationEn": "For a fresh graph that is only partly visible or uses a different scale, the learner compares several degree claims and decides whether each is necessary, possible, or impossible."
+            }
+          },
+          {
+            "alias": "constructExpression",
+            "titleDe": "Aus Graphen ganzrationaler Funktionen passende Funktionsterme entwickeln",
+            "titleEn": "Develop fitting expressions from polynomial graphs",
+            "descriptionDe": "Die lernende Person kann aus ausreichend gegebenen Nullstellen, Vielfachheiten, Achsenabschnitten oder weiteren Funktionswerten einen passenden ganzrationalen Funktionsterm entwickeln, am Graphen prüfen und verbleibende Nicht-Eindeutigkeit erläutern.",
+            "descriptionEn": "The learner can use sufficiently specified zeros, multiplicities, intercepts, or additional function values to develop a fitting polynomial expression, check it against the graph, and explain any remaining non-uniqueness.",
+            "suggestedRequires": [
+              "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
+              "NEW:inferDegree"
+            ],
+            "understandingEvidence": {
+              "essentialUnderstandingDe": "Nullstellen und Schneiden oder Berühren der x-Achse begründen Faktoren und deren Vielfachheiten; ein zusätzlicher Funktionswert kann den Skalierungsfaktor festlegen. Ohne hinreichende Daten beschreibt der Graph nur eine Termfamilie, nicht einen eindeutigen Term.",
+              "essentialUnderstandingEn": "Zeros and whether the graph crosses or touches the x-axis justify factors and their multiplicities; an additional function value can fix the scale factor. Without sufficient data, the graph determines only a family of expressions, not a unique expression.",
+              "observablePerformanceDe": "Die lernende Person übersetzt hinreichende Graphmerkmale in einen faktorisierten Ansatz, bestimmt einen fehlenden Faktor aus einem weiteren Punkt, multipliziert bei Bedarf aus und prüft Nullstellen, Vielfachheiten, Endverhalten und Funktionswerte am Graphen.",
+              "observablePerformanceEn": "The learner translates sufficient graph features into a factorized form, determines a missing factor from an additional point, expands if needed, and checks zeros, multiplicities, end behaviour, and function values against the graph.",
+              "transferExpectationDe": "In einem neuen Fall fehlt ein Skalierungswert oder der Graph ist nur qualitativ gezeichnet; die lernende Person gibt statt eines scheinbar eindeutigen Terms eine begründete Termfamilie an und benennt die Zusatzinformation, die Eindeutigkeit herstellen würde.",
+              "transferExpectationEn": "In a fresh case, a scale value is missing or the graph is only qualitative; instead of claiming a unique expression, the learner gives a justified family of expressions and identifies the additional information that would make the result unique."
+            }
+          }
+        ]
+      },
+      "rationale": "SPLIT. Die aktuelle Disjunktion erlaubt, das zusammengesetzte Ziel bereits durch nur einen Zweig als gemeistert zu markieren. Gradschluss und Termkonstruktion haben verschiedene Voraussetzungen, Prüfkriterien und typische Fehler. Die exakte BY-Quelle bündelt sie curricular, doch das kanonische Zielmodell verlangt separat mastery-fähige Atome; die Quelle kann beide Kinder tragen.",
+      "mappingInventory": {
+        "reviewedEdges": 1,
+        "exact": 1,
+        "partial": 0
+      },
+      "mappingConsequences": [
+        "Die BY-Source-Extraction-Kompetenz enthält Grad- und Termschluss ausdrücklich. Sie ist in zwei fachliche Source-Aspekte oder zwei nachvollziehbare Zielkanten aufzuteilen und auf beide Kinder zu binden.",
+        "Die Legacy-Kompatibilitätskante darf nicht die neue atomare Source-Evidenz ersetzen; Provenienz und Source-Rationale sind pro Kind neu zu erzeugen."
+      ],
+      "graphConsequences": [
+        "Der alte stabile ID bleibt als Cluster im J10-Parent; die beiden neuen Atome werden geordnet enthalten.",
+        "J10-Aufgabe 3 darf nicht den Cluster als requires/coveredGoal führen. Ihre Kante ist nach Inhaltsprüfung nur auf das tatsächlich geprüfte inferDegree-Kind umzubinden, sofern die Aufgabe unverändert bleibt.",
+        "Das constructExpression-Kind benötigt eine eigene lokale Assessment-Route oder eine fachlich erweiterte bestehende Aufgabe."
+      ],
+      "assessmentConsequences": [
+        "J10-Aufgabe 3, Teil 5, begründet einen minimalen Grad aus Endverhalten und drei Extremstellen; sie prüft keine Termkonstruktion aus einem Graphen.",
+        "coveredGoalIds, requires, Blueprint und Scoring müssen daher auseinandergezogen und danach fachlich neu reviewt werden."
+      ],
+      "atomicityMemoryConsequences": [
+        "Die pauschale Atomicity-Ledgerentscheidung wird durch die stärkere neue Evidenz aufgehoben; der alte ID wird Cluster und verliert semanticAtomic.",
+        "Beide Kinder benötigen neue, aktuelle Atomicity- und Memory-Entscheidungen; voraussichtlich no_memory_needed, aber nicht bulk-vorwegnehmen."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende menschlich freigegebene Nano-Banana-Pro-Bild nicht löschen: Es zeigt Grad- und Termhinweise fachlich korrekt und bleibt als Cluster-Übersicht oder historisch kuratiertes Material erhalten.",
+        "Vor einem neuen Bild ist zu prüfen, ob das bestehende Asset für eines der Kinder ausreichend eng wiederverwendbar ist. Nur falls nicht, zuerst Nano Banana Pro im gleichen lockeren Stil einsetzen; keine eigene Ersatzgrafik als Default."
+      ],
+      "compositionConsequences": [
+        "34 Composition Views referenzieren den alten ID. Nach Clusterkonversion müssen beide Kinder im jeweiligen target-Scope genau einmal sichtbar sein; applicability und projectionRole sind pro Kind zu belegen."
+      ],
+      "followUpLanes": [
+        "canonical_structural_split",
+        "new_stable_deterministic_ids",
+        "source_mapping_and_provenance_split",
+        "requires_rewire_and_dag_validation",
+        "composition_view_projection",
+        "assessment_blueprint_scoring_and_route_coverage",
+        "fresh_two_blind_description_reviews_per_child",
+        "goal_description_review_resolution_per_child",
+        "positive_understanding_evidence_v2_per_child",
+        "semantic_atomicity_per_child",
+        "memory_card_review_per_child",
+        "visualization_reuse_or_nano_first_review",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 7,
+      "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "goalFingerprint": "sha256:9299fdfaf425156492d7d0abc9abebfefb361a6d67992d7c231499176069fcf6",
+      "pageFingerprint": "sha256:f8220fd5670c5b0157cc0d211983cc8f9357714a37d148d333c32253b5409604",
+      "currentTitleDe": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+      "currentTitleEn": "Investigate monotonicity, extrema, and function-derivative relationships",
+      "currentDescriptionDe": "Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.",
+      "currentDescriptionEn": "The learner can explain the relationship between a function and its derivative graphically in simple cases and use the first derivative to investigate monotonicity as well as local and global extrema.",
+      "roundA": {
+        "recordId": "24a1347a-c753-4c6f-a436-aa194739c60a",
+        "decision": "split_review"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-007",
+        "decision": "keep"
+      },
+      "resolutionDecision": "structural_split",
+      "finalizableNow": false,
+      "structuralPlan": {
+        "oldGoalAction": "retain_stable_id_as_cluster",
+        "cluster": {
+          "retainedGoalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+          "titleDe": "Funktion und erste Ableitung für Monotonie und Extrema untersuchen",
+          "titleEn": "Use a function and its first derivative to investigate monotonicity and extrema",
+          "type": "cluster",
+          "removeSemanticAtomic": true,
+          "requires": [],
+          "childrenUseNewDeterministicIdsAtIntegration": true
+        },
+        "children": [
+          {
+            "alias": "coordinateFunctionDerivativeGraphs",
+            "titleDe": "Graphen von Funktion und Ableitungsfunktion aufeinander beziehen",
+            "titleEn": "Relate graphs of a function and its derivative",
+            "descriptionDe": "Die lernende Person kann in einfachen Fällen Steigungen des Funktionsgraphen und Werte der Ableitungsfunktion wechselseitig aufeinander beziehen und daraus qualitative Graphmerkmale begründen.",
+            "descriptionEn": "In simple cases, the learner can relate slopes of a function graph and values of its derivative in both directions and use the relationship to justify qualitative graph features.",
+            "suggestedRequires": [
+              "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+              "65365dce-f33f-49d8-9516-42f75883aa86"
+            ]
+          },
+          {
+            "alias": "analyzeMonotonicity",
+            "titleDe": "Monotonieintervalle mit der ersten Ableitung bestimmen",
+            "titleEn": "Determine intervals of monotonicity using the first derivative",
+            "descriptionDe": "Die lernende Person kann aus dem Vorzeichen der ersten Ableitung Monotonieintervalle einer Funktion bestimmen, die Intervallgrenzen prüfen und die Schlussrichtung begründen.",
+            "descriptionEn": "The learner can use the sign of the first derivative to determine intervals of monotonicity, check their boundaries, and justify the direction of inference.",
+            "suggestedRequires": [
+              "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+              "NEW:coordinateFunctionDerivativeGraphs"
+            ]
+          },
+          {
+            "alias": "classifyLocalExtrema",
+            "titleDe": "Lokale Extremstellen mit der ersten Ableitung bestimmen und klassifizieren",
+            "titleEn": "Determine and classify local extrema using the first derivative",
+            "descriptionDe": "Die lernende Person kann kritische Stellen als Kandidaten bestimmen, in einfachen Fällen über einen Vorzeichenwechsel der ersten Ableitung lokale Maxima oder Minima klassifizieren und erklären, warum $f'(x)=0$ allein nicht genügt.",
+            "descriptionEn": "The learner can identify critical points as candidates, classify local maxima or minima in simple cases using a sign change of the first derivative, and explain why $f'(x)=0$ alone is insufficient.",
+            "suggestedRequires": [
+              "NEW:analyzeMonotonicity"
+            ]
+          },
+          {
+            "alias": "determineGlobalExtrema",
+            "titleDe": "Globale Extremstellen auf vorgegebenen Bereichen bestimmen",
+            "titleEn": "Determine global extrema on specified domains",
+            "descriptionDe": "Die lernende Person kann auf einem vorgegebenen Bereich alle relevanten inneren Kandidaten und Randpunkte erfassen, ihre Funktionswerte vergleichen und daraus globale Maxima oder Minima begründen.",
+            "descriptionEn": "On a specified domain, the learner can identify all relevant interior candidates and endpoints, compare their function values, and use the comparison to justify global maxima or minima.",
+            "suggestedRequires": [
+              "NEW:classifyLocalExtrema"
+            ]
+          }
+        ],
+        "sharedUnderstandingEvidence": {
+          "essentialUnderstandingDe": "Das Vorzeichen von $f'$ beschreibt die lokale Steigungsrichtung von $f$; Nullstellen von $f'$ sind nur Kandidaten. Ein Vorzeichenwechsel klassifiziert lokale Extrema in einfachen Fällen. Globale Extrema sind Aussagen relativ zu einem Bereich und erfordern zusätzlich den Vergleich aller relevanten Kandidaten und Randwerte.",
+          "essentialUnderstandingEn": "The sign of $f'$ describes the local direction of slope of $f$; zeros of $f'$ are only candidates. In simple cases, a sign change classifies local extrema. Global extrema are statements relative to a domain and additionally require comparison of all relevant candidates and endpoint values.",
+          "observablePerformanceDe": "Die lernende Person koordiniert Graphen oder Vorzeichentabellen von $f$ und $f'$, bestimmt Monotonieintervalle, klassifiziert lokale Extrema mit einer hinreichenden Begründung und entscheidet über globale Extrema erst nach vollständigem Vergleich auf dem angegebenen Bereich.",
+          "observablePerformanceEn": "The learner coordinates graphs or sign charts of $f$ and $f'$, determines intervals of monotonicity, classifies local extrema with sufficient justification, and decides global extrema only after a complete comparison on the specified domain.",
+          "transferExpectationDe": "In einer neuen Aufgabe wird $f'$ nur graphisch gegeben und dieselbe Funktion auf zwei verschiedenen abgeschlossenen Intervallen betrachtet; die lernende Person erklärt unveränderte lokale Eigenschaften und mögliche Änderungen der globalen Extrema durch andere Randpunkte.",
+          "transferExpectationEn": "In a fresh task, $f'$ is given only graphically and the same function is considered on two different closed intervals; the learner explains unchanged local properties and possible changes in global extrema caused by different endpoints."
+        }
+      },
+      "rationale": "SPLIT. Die Leistungen können unabhängig ausfallen und werden in der amtlichen BW-Quelle sogar als getrennte Kompetenzen geführt. Globalität ist keine bloße Variante lokaler Extremstellenanalyse, weil Bereich und Randwerte zusätzliche Daten und eine andere Entscheidung erfordern. Ein einziges Mastery-Feld würde den Coach weder sauber anleiten noch valide prüfen lassen.",
+      "mappingInventory": {
+        "reviewedEdges": 4,
+        "exact": 0,
+        "partial": 4
+      },
+      "mappingConsequences": [
+        "Die vier BW-Source-Kanten sind kindbezogen neu zu adjudizieren: Graph f↔f' auf coordinateFunctionDerivativeGraphs; Monotonie auf analyzeMonotonicity; lokale/globale Unterscheidung auf die beiden Extremkinder; der breite Ableitungsbullet bleibt verteilt partial.",
+        "Applicability darf nicht pauschal auf alle vier Kinder kopiert werden; direkte Source-Evidenz, Surrogat-Provenienz und Composition-Scope sind pro Kind zu prüfen."
+      ],
+      "graphConsequences": [
+        "Der alte ID bleibt als Cluster unter dem bestehenden J10-Ableitungscluster.",
+        "Tangenten-/Normalenziel darf den neuen Sammelcluster nicht erben; die alte requires-Kante ist durch den tatsächlich nötigen Ableitungsbegriff beziehungsweise die grundlegenden Regeln zu ersetzen.",
+        "Lineare Approximation benötigt bereits das Tangentenziel und soll die alte Sammelkante verlieren; das Krümmungsziel behält die vorhandene Regelkompetenz und soll die Sammelkante ebenfalls verlieren.",
+        "Alle neuen Kanten müssen auf contains- und requires-Zyklen sowie Frontier-/Route-Semantik geprüft werden."
+      ],
+      "assessmentConsequences": [
+        "J10-Aufgabe 3 prüft derzeit Monotonie über $f'$ und den Monotoniesatz, aber weder die bidirektionale Graphkoordination noch lokale und globale Extrema vollständig.",
+        "Jedes neue Atom benötigt eine ehrliche coveredGoalIds-/requires-Zuordnung und einen lokalen Assessment-Endpunkt; bestehende Aufgabe erweitern oder zusätzliche Aufgabe schaffen, ohne den aktuellen Sammelclaim zu kopieren."
+      ],
+      "atomicityMemoryConsequences": [
+        "Die current Atomicity-Entscheidung wird aufgehoben; der alte ID wird Cluster.",
+        "Alle vier Kinder benötigen individuelle aktuelle Atomicity- und Memory-Reviews. Kein bulk no_memory_needed."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende fachlich korrekte Nano-Banana-Pro-Bild nicht löschen; es zeigt $f$, $f'$, Vorzeichen, Monotonie und ein Maximum und eignet sich als Cluster-Übersicht oder für ein eng passendes Kind nach QA.",
+        "Nur fehlende kindbezogene Visualisierungen zuerst mit Nano Banana Pro im bestehenden lockeren Stil versuchen; keine eigenen Ersatzgrafiken als Default."
+      ],
+      "compositionConsequences": [
+        "14 Composition Views referenzieren den alten ID. Nach Clusterkonversion müssen die fachlich anwendbaren Kinder genau einmal sichtbar sein und target/prerequisiteOnly-Rollen pro Scope belegt werden."
+      ],
+      "followUpLanes": [
+        "canonical_structural_split",
+        "new_stable_deterministic_ids",
+        "source_mapping_and_provenance_split",
+        "requires_rewire_and_dag_validation",
+        "composition_view_projection",
+        "assessment_blueprint_scoring_and_route_coverage",
+        "fresh_two_blind_description_reviews_per_child",
+        "goal_description_review_resolution_per_child",
+        "positive_understanding_evidence_v2_per_child",
+        "semantic_atomicity_per_child",
+        "memory_card_review_per_child",
+        "visualization_reuse_or_nano_first_review",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    },
+    {
+      "sequence": 8,
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "goalFingerprint": "sha256:535a1e5e0308cbda83ec5b4981d1be2c28aacc1e25ee19f9f88e7fa6b82310c8",
+      "pageFingerprint": "sha256:3018587b4ddcf0ec9a63c92d035549025b86479cea6a4c7237f516cbc628aec7",
+      "currentTitleDe": "Monotoniesatz erläutern und Nichtumkehrbarkeit begründen",
+      "currentTitleEn": "Explain the monotonicity theorem and justify its non-converse",
+      "currentDescriptionDe": "Die lernende Person kann den Monotoniesatz für Ableitungen erläutern, ihn zur Monotonieuntersuchung nutzen und begründen, warum die Umkehrung im Allgemeinen nicht gilt.",
+      "currentDescriptionEn": "The learner can explain the monotonicity theorem for derivatives, use it to investigate monotonicity, and justify why its converse does not generally hold.",
+      "roundA": {
+        "recordId": "f770f807-9af1-4a06-b7a0-76b82c13427a",
+        "decision": "revise"
+      },
+      "roundB": {
+        "recordId": "mathematik-j10-functions-trig-8-round-b-openai-gpt5-codex-20260828T092900Z.record-008",
+        "decision": "keep"
+      },
+      "resolutionDecision": "accepted_revision",
+      "finalizableNow": false,
+      "finalText": {
+        "descriptionDe": "Die lernende Person kann den Monotoniesatz für differenzierbare Funktionen auf Intervallen anwenden und erläutern: Gilt dort überall $f'(x)>0$ beziehungsweise $f'(x)<0$, so ist $f$ streng monoton steigend beziehungsweise fallend; anhand eines Gegenbeispiels kann sie begründen, warum die jeweilige Umkehrung im Allgemeinen nicht gilt.",
+        "descriptionEn": "The learner can apply and explain the monotonicity theorem for differentiable functions on intervals: if $f'(x)>0$ or $f'(x)<0$ throughout the interval, then $f$ is strictly increasing or strictly decreasing there, respectively; using a counterexample, the learner can justify why the corresponding converse does not generally hold."
+      },
+      "understandingEvidenceSource": "bound_round_a_with_third_adjudication_bilingual_condition_check",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein auf einem Intervall durchgehend positives beziehungsweise negatives Vorzeichen der Ableitung ist eine hinreichende Bedingung für strenges Steigen beziehungsweise Fallen. Diese Bedingung ist nicht notwendig: Eine differenzierbare streng monotone Funktion kann an einzelnen Stellen die Ableitung 0 besitzen, weshalb die entsprechende Umkehrung der strikten Vorzeichenaussage scheitert.",
+        "essentialUnderstandingEn": "A derivative that is positive or negative throughout an interval is a sufficient condition for strict increase or strict decrease, respectively. This condition is not necessary: a differentiable strictly monotone function can have derivative 0 at individual points, so the corresponding converse of the strict sign statement fails.",
+        "observablePerformanceDe": "Die lernende Person nutzt selbstständig das Vorzeichen von $f'$ auf einem Intervall, um strenge Monotonie zu begründen, formuliert die behauptete Umkehrung logisch korrekt und widerlegt sie beispielsweise an $f(x)=x^3$ beziehungsweise einer fallenden Entsprechung, indem sie strenge Monotonie und die verschwindende Ableitung an einer Stelle nachweist.",
+        "observablePerformanceEn": "The learner independently uses the sign of $f'$ on an interval to justify strict monotonicity, states the claimed converse logically, and refutes it, for example with $f(x)=x^3$ or a decreasing counterpart, by establishing both strict monotonicity and a zero derivative at one point.",
+        "transferExpectationDe": "Bei einer neuen differenzierbaren Funktion mit einer waagerechten Tangente innerhalb eines ansonsten streng monotonen Verlaufs entscheidet die lernende Person, welche Richtung des Monotoniesatzes anwendbar ist, und erklärt ohne bloßen Zahlencheck, warum kein Widerspruch zum Satz vorliegt.",
+        "transferExpectationEn": "For a fresh differentiable function with a horizontal tangent within an otherwise strictly monotone graph, the learner decides which direction of the monotonicity theorem applies and explains, without relying on a numerical check, why there is no contradiction with the theorem."
+      },
+      "rationale": "REVISION. Der unqualifizierte Name 'Monotoniesatz' lässt offen, ob strikte oder nichtstrikte Vorzeichenbedingungen gemeint sind; dann ist auch 'die Umkehrung' logisch mehrdeutig. Die Revision bindet exakt die fachlich und visuell bereits verwendete strikte Variante, nennt Intervall und Differenzierbarkeit und macht das Gegenbeispiel als Begründungsform sichtbar, ohne die amtliche BW-Kompetenz zu erweitern.",
+      "mappingInventory": {
+        "reviewedEdges": 1,
+        "exact": 1,
+        "partial": 0
+      },
+      "mappingConsequences": [
+        "Die exakte BW-Kante bleibt fachlich passend; die Revision expliziert nur die im Source-Begriff vorausgesetzte Satzvariante.",
+        "Source-Rationale und Fingerprint müssen nach finaler Textbindung neu validiert werden."
+      ],
+      "graphConsequences": [
+        "Stabile ID, Parent und requires bleiben; J10-Aufgabe 3 bleibt direkter Assessment-Nachfolger."
+      ],
+      "assessmentConsequences": [
+        "J10-Aufgabe 3, Teil 4, prüft den Satz und das Gegenbeispiel $x^3$ bereits exakt passend; Task-/Solution-Bindings müssen nur gegen den neuen Fingerprint neu geprüft werden."
+      ],
+      "atomicityMemoryConsequences": [
+        "Die Zielidentität bleibt eine kohärente Erklärung-Anwendung-Gegenbeispiel-Kette, aber Atomicity- und Memory-Fingerprints werden durch die Revision stale und müssen neu gebunden werden."
+      ],
+      "visualizationConsequences": [
+        "Das bestehende Nano-Banana-Pro-Bild nicht ersetzen: Es stellt $f'>0/f'<0$, strikte Monotonie und $x^3$ als Gegenbeispiel bereits korrekt dar und ist frisch AI-geprüft.",
+        "Nur Beschreibung/Alttext/QA-Fingerprint neu binden."
+      ],
+      "compositionConsequences": [
+        "Keine Strukturänderung an den 14 Views; nur semantische Fingerprints neu erzeugen."
+      ],
+      "followUpLanes": [
+        "canonical_description_de_en",
+        "fresh_two_blind_description_reviews",
+        "goal_description_review_resolution",
+        "positive_understanding_evidence_v2",
+        "semantic_atomicity_fingerprint",
+        "memory_card_review_fingerprint",
+        "source_mapping_and_provenance_revalidation",
+        "assessment_binding_revalidation",
+        "visualization_alttext_and_qa_rebinding",
+        "goalbook_rebuild",
+        "layer_a_m6_floor_and_deep_understanding_rollout_checks"
+      ]
+    }
+  ],
+  "crossCuttingFollowUp": [
+    "Die drei KEEP-Ziele können vor der Commit-Grenze weiterhin nur extern vorbereitet werden; ihre V2-Profile dürfen den strengen Fortschritt erst nach Materialisierung und vollständiger zentraler Prüfung erhöhen.",
+    "Nach der Commit-Grenze zuerst die drei lokalen Revisionen integrieren, dann die zwei strukturellen Splits mit neuen deterministischen IDs, Mapping-/Provenienzaufteilung, requires-Rewire, Composition Views und Assessment-Routen umsetzen.",
+    "Für jedes revidierte oder neue atomare Ziel danach zwei frische unabhängige Blindreviews auf den finalen aktuellen Bytes durchführen; die vorliegenden Runden sind Entscheidungsgrundlage, aber keine Validierung der neuen Texte.",
+    "Die 64-Kanten-Mapping-Schuld des periodischen Modellierungsziels separat und begrenzt bereinigen; sie ist kein Grund, den guten aktuellen Zieltext zu verändern.",
+    "Bestehende Nano-Banana-Pro-Bilder werden erhalten und bevorzugt wiederverwendet. Neue Bilder nur, wenn ein Kind tatsächlich eine eigene Darstellung benötigt, dann Nano Banana Pro zuerst; keine eigene Ersatzgrafik als Default.",
+    "Anschließend positive-understanding-evidence-v2, Atomicity, Memory, Visual-QA, Source-Rationale, Applicability, DAG, Composition, Assessment, GoalBooks, Layer-A, M6 und Review-Freeze fail-closed prüfen.",
+    "Kein fachlicher oder autoritativer Grenzfall dieser acht Entscheidungen erfordert derzeit eine Product-Owner-Entscheidung."
+  ]
+}

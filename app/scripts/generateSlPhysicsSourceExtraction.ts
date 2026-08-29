@@ -335,10 +335,160 @@ const batch015TargetsBySourceGoalId: Record<string, string[]> = {
     "4a42cddd-7827-5204-87e5-8d9eac7792f1"
   ]
 }
+// Batch 017 nuclear structural adjudication overlay
+const batch017SplitParentIds = new Set(["f6f646db-3544-49ed-8f55-67bc684e80ce","cb0426b0-a973-5660-b6fe-79407934730f"])
+const batch017TargetsBySourceGoalId: Record<string, string[]> = {
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p29-001-6c41a56e": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p29-002-5642f475": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-001-589d6977": [
+    "16b94a12-ecc5-5b5c-85b6-87b4290bebf8"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-003-ee5add84": [
+    "25d91cc0-d84c-5522-86b5-fdff73264f08"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-005-6234ffc9": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-006-14e9828f": [
+    "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd"
+  ]
+}
+
+const batch017RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "sl-phys-seki-sl-ph-seki-8-nw-2024-p39-005-fbadea23": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-8-nw-2024-p39-008-3663729d": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+    "051cedc5-d380-4716-9751-b18f2e67a912"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p13-003-b0c23e4a": [
+    "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-010-f2d3fdbd": [
+    "f778a659-1467-4aa7-97b2-bed78c530634"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p16-011-832b6176": [
+    "f778a659-1467-4aa7-97b2-bed78c530634"
+  ],
+  "sl-phys-seki-sl-ph-seki-9-nw-2024-p28-006-650ff38b": [
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p29-001-6c41a56e": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+    "e6a50c74-c922-508c-aa27-07bac2566955"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p29-002-5642f475": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p29-003-e4e34c6a": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+    "e6a50c74-c922-508c-aa27-07bac2566955"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-001-589d6977": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-003-ee5add84": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-005-6234ffc9": [
+    "051cedc5-d380-4716-9751-b18f2e67a912",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-006-14e9828f": [
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-007-95c4724b": [
+    "581c0766-b84b-54cb-b8b6-375310329a41"
+  ],
+  "sl-phys-seki-sl-ph-seki-10-nw-2026-p30-009-d83c42dc": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+  ]
+}
+
+// Batch 025 average/instantaneous-velocity structural split overlay
+const batch025TargetsBySourceGoalId: Record<string, string[]> = {
+  "sl-phys-seki-sl-ph-seki-7-2023-p25-005-9ad772ee": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p07-001-0e5f7431": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-011-133f2d5c": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-012-05fb050d": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-013-554a317d": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-014-32777fa3": [
+    "bf8517a9-142b-5789-826a-767f3b277998"
+  ]
+}
+const batch025RemovedTargetsBySourceGoalId: Record<string, string[]> = {
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-011-133f2d5c": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-012-05fb050d": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ],
+  "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-013-554a317d": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ]
+}
+const batch025RationalesBySourceGoalId = new Map<string, string>([
+  [
+    "sl-phys-seki-sl-ph-seki-7-2023-p25-005-9ad772ee",
+    "Der amtliche SL-Aspekt interpretiert den Quotienten aus Weg- und Zeitintervall als mittlere Geschwindigkeit bei ungleichförmiger Bewegung. Momentangeschwindigkeit und Tangentensteigung fehlen; die Zuordnung ist partial."
+  ],
+  [
+    "sl-phys-sekii-sl-ph-sekii-ep-2023-p07-001-0e5f7431",
+    "Der amtliche SL-Aspekt definiert die mittlere Geschwindigkeit über ein endliches Intervall. Die Momentangeschwindigkeit und ihre Tangenteninterpretation sind hier nicht enthalten; die Zuordnung ist partial."
+  ],
+  [
+    "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-011-133f2d5c",
+    "Der amtliche SL-Aspekt unterscheidet Momentangeschwindigkeit zu einem Zeitpunkt von mittlerer Geschwindigkeit über eine Zeitspanne. Die grafische Sekanten-/Tangenten-Deutung ist nicht vollständig enthalten; die Zuordnung ist partial."
+  ],
+  [
+    "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-012-05fb050d",
+    "Der amtliche SL-Aspekt nähert Momentangeschwindigkeit mit dem Differenzenquotienten für kleine Zeitintervalle. Der vollständige Vergleich mit der Durchschnittsgeschwindigkeit und die explizite Tangentensteigung sind nur teilweise abgedeckt."
+  ],
+  [
+    "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-013-554a317d",
+    "Der amtliche SL-Aspekt diskutiert Messmöglichkeiten für Momentangeschwindigkeit. Er belegt die neue Bestimmungs- und Vergleichskompetenz nur teilweise und nicht das revidierte Konstantbeschleunigungsmodell."
+  ],
+  [
+    "sl-phys-sekii-sl-ph-sekii-ep-2023-p08-014-32777fa3",
+    "Das amtliche SL-Ziel verbindet die näherungsweise Momentangeschwindigkeitsbestimmung mit einem Experiment unter konstanter Kraft. Es trägt deshalb sowohl das Konstantbeschleunigungsmodell als auch teilweise die neue Vergleichskompetenz."
+  ]
+])
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch025RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch025TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -722,18 +872,19 @@ const buildExtraction = (config: ExtractionConfig) => {
   const passages = [...passageByKey.values()]
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
     const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config))
+    const batch025Rationale = batch025RationalesBySourceGoalId.get(sourceGoal.id)
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,
       sourceSpan: sourceGoal.sourceSpan,
       decision: 'mapped',
       canonicalGoalIds,
-      rationale:
+      rationale: batch025Rationale ?? (
         canonicalGoalIds.length > 1
           ? 'Das amtliche SL-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.'
-          : 'Das amtliche SL-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.',
-      reviewedAt: '2026-05-11',
-      reviewer: 'codex',
+          : 'Das amtliche SL-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'),
+      reviewedAt: batch025Rationale ? '2026-08-29' : '2026-05-11',
+      reviewer: batch025Rationale ? 'codex-physics-batch-025-motion-split-2026-08-29' : 'codex',
     }
   })
 
@@ -962,6 +1113,87 @@ const allSourceGoals = results.flatMap((result) => result.sourceGoals)
 const allTargetIds = [...new Set(results.flatMap((result) => result.uniqueTargetIds))]
 const upperTargetIds = new Set(results[1].uniqueTargetIds)
 
+const ensureBatch025VelocityTargetPlacement = (view: Record<string, unknown>): void => {
+  const velocityGoalId = 'bf8517a9-142b-5789-826a-767f3b277998'
+  const motions: Array<Record<string, unknown>> = []
+  const acceleratedStructures: Array<Record<string, unknown>> = []
+  const velocityReferences: Array<Record<string, unknown>> = []
+  const visit = (nodes: Array<Record<string, unknown>>): void => {
+    for (const node of nodes) {
+      if (node.id === 'physics-e1-motion') motions.push(node)
+      if (node.id === 'physics-e1-accelerated-and-free-fall') acceleratedStructures.push(node)
+      if (node.goalId === velocityGoalId) velocityReferences.push(node)
+      if (Array.isArray(node.children)) {
+        visit(node.children as Array<Record<string, unknown>>)
+      }
+    }
+  }
+  if (!Array.isArray(view.rootNodes)) throw new Error('Batch-025 composition rootNodes missing')
+  const rootNodes = view.rootNodes as Array<Record<string, unknown>>
+  visit(rootNodes)
+  if (motions.length !== 1 || acceleratedStructures.length !== 1 || velocityReferences.length !== 1) {
+    throw new Error(
+      `Batch-025 placement cardinality drifted: motion=${motions.length} accelerated=${acceleratedStructures.length} velocity=${velocityReferences.length}`,
+    )
+  }
+  const motion = motions[0]
+  const accelerated = acceleratedStructures[0]
+  const inheritedReference = velocityReferences[0]
+  if (
+    motion.kind !== 'structure'
+    || accelerated.kind !== 'structure'
+    || !Array.isArray(motion.children)
+    || !Array.isArray(accelerated.children)
+  ) {
+    throw new Error('Batch-025 motion or accelerated structure shape drifted')
+  }
+  const motionChildren = motion.children as Array<Record<string, unknown>>
+  const acceleratedChildren = accelerated.children as Array<Record<string, unknown>>
+  const acceleratedIndexes = motionChildren
+    .map((child, index) => child === accelerated ? index : -1)
+    .filter((index) => index >= 0)
+  const inheritedIndexes = acceleratedChildren
+    .map((child, index) => child === inheritedReference ? index : -1)
+    .filter((index) => index >= 0)
+  if (acceleratedIndexes.length !== 1) {
+    throw new Error('Batch-025 accelerated structure is not exactly one direct motion child')
+  }
+  if (
+    inheritedIndexes.length !== 1
+    || inheritedReference.kind !== 'goalEntry'
+    || inheritedReference.projectionRole !== 'prerequisiteOnly'
+  ) {
+    throw new Error('Batch-025 inherited velocity reference is not the expected direct prerequisiteOnly goalEntry')
+  }
+  acceleratedChildren.splice(inheritedIndexes[0], 1)
+  const targetReference: Record<string, unknown> = {
+    kind: 'canonicalSubtree',
+    goalId: velocityGoalId,
+  }
+  const acceleratedIndex = acceleratedIndexes[0]
+  motionChildren.splice(acceleratedIndex, 0, targetReference)
+
+  const postReferences: Array<Record<string, unknown>> = []
+  const collectPostReferences = (nodes: Array<Record<string, unknown>>): void => {
+    for (const node of nodes) {
+      if (node.goalId === velocityGoalId) postReferences.push(node)
+      if (Array.isArray(node.children)) {
+        collectPostReferences(node.children as Array<Record<string, unknown>>)
+      }
+    }
+  }
+  collectPostReferences(rootNodes)
+  if (
+    postReferences.length !== 1
+    || postReferences[0] !== targetReference
+    || motionChildren[acceleratedIndex] !== targetReference
+    || motionChildren[acceleratedIndex + 1] !== accelerated
+    || acceleratedChildren.some((child) => child.goalId === velocityGoalId)
+  ) {
+    throw new Error('Batch-025 target placement postcondition failed')
+  }
+}
+
 const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: string) => {
   const rootNodes = Array.isArray(view.rootNodes) ? (view.rootNodes as CompositionNode[]) : []
   const present = new Set<string>()
@@ -976,7 +1208,7 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   if (!root) throw new Error(`physics-root not found for ${suffix}`)
 
   const candidateTargets = suffix.startsWith('sekii') ? [...upperTargetIds] : allTargetIds
-  const allowedTargets = candidateTargets.filter((goalId) => {
+  const allowedTargets = candidateTargets.filter((goalId) => canonicalGoalById.get(goalId)?.type === 'atomic').filter((goalId) => {
     const mappedLevels = allDecisions
       .filter((decision) => decision.canonicalGoalIds.includes(goalId))
       .map((decision) => allSourceGoals.find((sourceGoal) => sourceGoal.id === decision.sourceGoalId)?.courseLevel)
@@ -1004,6 +1236,7 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
   template.viewId = String(template.viewId).replace('de-bb', 'de-sl')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
+  ensureBatch025VelocityTargetPlacement(template)
   writeJson(`${compositionViewDir}/de-sl-${suffix}.view.json`, template)
 }
 

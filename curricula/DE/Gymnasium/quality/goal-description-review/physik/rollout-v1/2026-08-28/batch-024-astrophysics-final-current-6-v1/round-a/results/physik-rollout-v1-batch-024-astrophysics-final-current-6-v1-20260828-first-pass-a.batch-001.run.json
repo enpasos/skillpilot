@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b024-round-a-openai-gpt-5.6-codex-20260828",
+  "campaignId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-a",
+  "roundId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:8138ac33a0280413dc6212a7f0ba72cc7171e6909455a22366c8a8d456be9f27",
+  "bundleFingerprint": "sha256:8ab55aaf07fe1c15bcc3cd94da31bedd1ce328fbac1f7a05867ab4a4fa531249",
+  "bookDigest": "sha256:f2ac93a6015ad6e0ec0350fba33e297cec77fc4c36fcdc40494e62ddda2923f2",
+  "provider": "OpenAI",
+  "model": "GPT-5.6-Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:0a1a48a48edca222096c51bd239b2f0d8006db5eaf1312469642d0d62edc743b",
+  "independenceGroupId": "physik-rollout-v1-batch-024-astrophysics-final-current-6-v1-20260828-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+    "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+    "2014791b-af68-58d0-838b-fc9701202096",
+    "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8138ac33a0280413dc6212a7f0ba72cc7171e6909455a22366c8a8d456be9f27"
+    }
+  ],
+  "startedAt": "2026-08-28T22:35:37+02:00",
+  "completedAt": "2026-08-28T22:38:57+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:9418474727ceea6120fbff5a47ef3f9edf86e87941558e85eb947a4752806133",
+  "toolchainVersion": "codex-agent-2026-08-28"
+}

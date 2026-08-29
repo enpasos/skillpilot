@@ -1,0 +1,504 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI gpt-5.6-sol product-decision-bound synthesis",
+  "synthesizedAt": "2026-08-28T14:07:36.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828",
+    "batchManifestDigest": "sha256:03d539b2ff7e4969bae4a936a10e763ff23abf989561c8b64e215ab2ea9a7066",
+    "configDigest": "sha256:586f2f4064058ba5ae739aac7ac44b1a5bdf66386662956d86c9436246cfcbcd",
+    "bundleFingerprint": "sha256:96de937e6d9f35c17ce1893a34ee620437c90256e499e545a7582cc611104ef6",
+    "bookDigest": "sha256:54623d462829b698d5bf8a93bb2639e717a69ddc2fe51666c679da6415f942c0",
+    "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+    "dualSummaryDigest": "sha256:b7b7e470322d18a29d1deb9ec5c41e7c4e447adf3ea9e00f80a5a658781c0e3f",
+    "canonicalLandscapeDigest": "sha256:d5b6a00ef8c574b1f365cec4704aa7dd94e089ec3d39fbddf58ad7186d2b70e2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-a",
+      "campaignDigest": "sha256:3c737786d68e7b676f8d16d78e7689ca086981fb5a8500e7d997daaec6327574",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-a",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:36437f101e13a7b83b6bf2b2a586023843b47d07bfc62dd6a45e4bdba479b10c",
+      "runId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z",
+      "runManifestDigest": "sha256:c87cb72e1049f07b8126be19b29fb2e1dde6696644963e238892c7e76588cda2",
+      "resultsDigest": "sha256:cd43f8697c79df5b7ad1db3015639295784f3cd6885a2bd0d504356a8e29a167"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-b",
+      "campaignDigest": "sha256:a5e4e40ee5e60486850a5f10866d917c01d56725baf4df206daa954935e137ec",
+      "roundId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-independent-b",
+      "reviewInputFingerprint": "sha256:a0a6e7bc3e228a90e600877a79be643246b434eb1e751f02b71f170f72669093",
+      "batchId": "physik-rollout-v1-batch-020-q1-q2-magnetism-induction-recheck-16-v1-20260828-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ae973b8b3662165929cd80039371e85fceaa39017fcf7d01ef06a2d00bb6496b",
+      "runId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z",
+      "runManifestDigest": "sha256:63d560e230465be6db9d6559b09c7316bdb3727950685f13ab96305c95631236",
+      "resultsDigest": "sha256:6c2b05b33754ee079c65ebe993ee577862453033216c10a348f3f40f31a43150"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-001",
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6e7bb22629aecef659aa77d7681b80224fd2709c8ad1afa67b7ffb6e0de02a0f",
+      "pageFingerprint": "sha256:fbdc63f19f668ba47762d95c0378d5c5649db8b8f867c32cf62e885bef4ec6a5",
+      "goalReviewContextFingerprint": "sha256:f2a7cf2c45721157ef23781ecc066423456de00c3525cb0bb7e1d29d23e6b5cd",
+      "finalText": {
+        "titleDe": "Magnetfeldmodelle für geraden Leiter und lange Spule auswählen und anwenden",
+        "titleEn": "Select and Apply Magnetic-Field Models for a Straight Conductor and a Long Solenoid",
+        "descriptionDe": "Die lernende Person kann für einen idealisierten langen geraden stromdurchflossenen Leiter in Luft und für das Innere einer idealisierten langen Spule mit homogenem linearem Kern das passende Magnetfeldmodell auswählen, den Betrag mit B = μ₀ · I/(2πr) beziehungsweise B ≈ μ₀ · μᵣ · (N/ℓ) · I bestimmen, die Richtung mit der Rechte-Hand-Regel angeben und die unterschiedlichen Gültigkeitsgrenzen begründen.",
+        "descriptionEn": "The learner can select the appropriate magnetic-field model for an idealized long straight current-carrying conductor in air and for the interior of an idealized long solenoid with a homogeneous linear core, determine the magnitude using B = μ₀ · I/(2πr) or B ≈ μ₀ · μᵣ · (N/ℓ) · I, state the direction using the right-hand rule, and justify the models' different validity limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-01",
+          "recordDigest": "sha256:d801a198a8f06308c093a8c775dcfaad741d735bc19eca3ec5acc943c3d8d43f"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r001",
+          "recordDigest": "sha256:67c5da75177e782131a3ea331aac05d74138952fe2381a3816d742da0b8e331f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle, integrierte Modellwahlkompetenz für geraden Leiter und lange Spule. Der kanonische Text bleibt unverändert; die fachlich detailliertere und contract-konforme Understanding-Evidence der ersten Runde wird ausgewählt, während die abweichende zweite Evidence-Fassung als Dissent dokumentiert bleibt.",
+      "rationaleEn": "Both independent reviews confirm the current integrated model-selection competence for a straight conductor and a long solenoid. The canonical text remains unchanged; the more detailed, contract-conforming understanding evidence from the first round is selected, while the differing second-round evidence formulation remains documented as dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-002",
+      "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:58a4cdd4883979a2e1ef515bf4c7ffed9fdbe159db558aac44e16fd50c1fc80e",
+      "pageFingerprint": "sha256:f5cd58a8da1f86d0209074e68715617c51cf3590338331f40d3adaa56a7ad1a3",
+      "goalReviewContextFingerprint": "sha256:fabbf0a8b13b1ef02080de225fba63256f5d87776b4dbcc4028577be562faf61",
+      "finalText": {
+        "titleDe": "Kraft auf stromdurchflossene Leiter",
+        "titleEn": "Force on Current-Carrying Conductors",
+        "descriptionDe": "Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.",
+        "descriptionEn": "The learner can determine the magnitude and direction of the force on a straight current-carrying conductor segment in a uniform magnetic field using F = B · I · ℓ · sin(α), where α is the angle between the current and field directions, and determine B from a force measurement in the perpendicular case using B = F/(I · ℓ)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-02",
+          "recordDigest": "sha256:0779801b0968cd6164b2a366c9648e35931db06241748e4ee997f13ae8233b5a"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r002",
+          "recordDigest": "sha256:a5ece325d742f00013d2b8d612c483b7633b0fd19b154c9f876b26de0912275b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bewerten Kraftbestimmung und inverse Feldbestimmung als zusammenhängende Anwendung derselben Leiterkraftbeziehung. Der aktuelle Wortlaut bleibt bestehen; die erste Runde liefert die ausführlichere contract-konforme Evidence-Kette, die zweite bleibt als alternative Fassung im Dissent gebunden.",
+      "rationaleEn": "Both reviews treat force determination and inverse field determination as connected applications of the same conductor-force relation. The current wording is retained; the first round supplies the more detailed contract-conforming evidence chain, while the second remains bound as an alternative formulation in dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-003",
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e899fc22beb6521026f118067dbea8b404f30f4df121a397c69afb48d45842a4",
+      "pageFingerprint": "sha256:65efc9d2b303b17c5ac147df58abe8b89c6d6ec429afd917d0dcabf4ce505c84",
+      "goalReviewContextFingerprint": "sha256:c08042909bbd95e602b947ca6d052c07071b6ea5727a420ee0a8daf39b1b3c22",
+      "finalText": {
+        "titleDe": "Kreisbahnen geladener Teilchen quantitativ bestimmen",
+        "titleEn": "Quantitatively Determine Circular Orbits of Charged Particles",
+        "descriptionDe": "Die lernende Person kann im nichtrelativistischen Modell für ein geladenes Teilchen mit zur Feldrichtung senkrechter Geschwindigkeit in einem homogenen Magnetfeld Bahnradius und Umlaufzeit aus Lorentz- und Zentripetalkraft bestimmen.",
+        "descriptionEn": "Within the nonrelativistic model, the learner can determine the orbit radius and period of a charged particle whose velocity is perpendicular to a uniform magnetic field from the Lorentz and centripetal forces."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-03",
+          "recordDigest": "sha256:8979dd12affc9574c901dfd836e5194c5e588f5551ee107ce17533251cb603ac"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r003",
+          "recordDigest": "sha256:af34c1fb8ee01d6ecd7e7d177a2bd5a56785433b15e6ea101ff6960ac4607ce2"
+        }
+      },
+      "rationaleDe": "Radius und Umlaufzeit sind kohärente Folgerungen aus demselben nichtrelativistischen Kreisbahnmodell, was beide Reviews bestätigen. Der Text bleibt unverändert; ausgewählt wird die detailliertere Evidence der ersten Runde mit expliziter Modellgrenze, während die zweite Fassung als Dissent erhalten bleibt.",
+      "rationaleEn": "Radius and period are coherent consequences of the same nonrelativistic circular-orbit model, as both reviews confirm. The text remains unchanged; the more detailed first-round evidence with its explicit model boundary is selected, while the second formulation is retained as dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-004",
+      "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1eb5d0c364344a666d54e06264adb3c91cac98892bc23bcce85e47140c7d81f0",
+      "pageFingerprint": "sha256:64da00c62ef2abdc0a9a937e3b2e8e27211771d352c058c549ac866bbe80b5ff",
+      "goalReviewContextFingerprint": "sha256:3618c3fb1b05f701deb76208c4003985f334b9d3e92a500a9dd5b36436e6ea8a",
+      "finalText": {
+        "titleDe": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben",
+        "titleEn": "Describe Charged Particles in Magnetic Fields at Arbitrary Entry Angles",
+        "descriptionDe": "Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.",
+        "descriptionEn": "The learner can decompose the velocity of a charged particle entering a uniform magnetic field into field-parallel and field-perpendicular components and use the Lorentz force to qualitatively interpret straight, circular, or helical trajectories."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-04",
+          "recordDigest": "sha256:f051d1c07d2b85642c181dd064b17925cf92ae50a3182ca10643766028b72fb0"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r004",
+          "recordDigest": "sha256:ce392f20afd829d7538027b4e9158a6b3019f02222ab1012ba09c617548ea54d"
+        }
+      },
+      "rationaleDe": "Gerad-, Kreis- und Schraubenbahn sind gekoppelte Fälle derselben Geschwindigkeitszerlegung; beide Reviews stützen `keep`. Der kanonische Text bleibt unverändert, die räumlich und vorzeichenbezogen detailliertere Evidence der ersten Runde wird gebunden und die zweite Evidence-Fassung als Dissent dokumentiert.",
+      "rationaleEn": "Straight, circular, and helical paths are connected cases of the same velocity decomposition; both reviews support keep. The canonical text remains unchanged, the more spatially and sign-specific first-round evidence is bound, and the second evidence formulation is documented as dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-005",
+      "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4424e080678909f0ca3021623987379b2d7e887ee492f64d46233a44b8137172",
+      "pageFingerprint": "sha256:088a26397b6e032133983664f2875825b86e73543e0607cb484ecdaf0f3c6cfa",
+      "goalReviewContextFingerprint": "sha256:c6ef9a7fa556598a61c23bec27c4ef095216131a061484be7456ae4a4a1c44d9",
+      "finalText": {
+        "titleDe": "Hall-Effekt anwenden",
+        "titleEn": "Apply the Hall Effect",
+        "descriptionDe": "Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.",
+        "descriptionEn": "The learner can determine the Hall voltage in a current-carrying conductor in a magnetic field and use its magnitude or sign to explain how the Hall effect is used to measure magnetic fields or determine the charge-carrier type."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-05",
+          "recordDigest": "sha256:c9af79aa6441feabba713e5fb8429afc9143d97683ec9222f44076e358025815"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r005",
+          "recordDigest": "sha256:938e1aa3ed59900b8ab19ce92b2862c7e88ef880ff8f738ef6031b1b560f132f"
+        }
+      },
+      "rationaleDe": "Berechnung, Vorzeicheninterpretation und Messanwendung sind im Hall-Gleichgewicht fachlich gekoppelt; beide Reviews bestätigen den aktuellen Text. Die erste Runde formuliert Kräftegleichgewicht, Geometrie und Transfer vollständiger und wird daher als Evidence gewählt; die zweite Fassung bleibt Dissent.",
+      "rationaleEn": "Calculation, sign interpretation, and measurement use are physically connected through Hall equilibrium; both reviews confirm the current text. The first round states force balance, geometry, and transfer more fully and is therefore selected as evidence; the second formulation remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-006",
+      "goalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1189d2e1290be4f6f28211f3094acd2c49268ecbd98389024998aa63410e4e62",
+      "pageFingerprint": "sha256:f872a05828c763318ca8e3dfa470b6b3d1588faaa7a1f3434d70088193e8f9fd",
+      "goalReviewContextFingerprint": "sha256:a963ad5c1e6a4513a06767a1b532306559b13f7c5e34ad6123d7aa57f5243d44",
+      "finalText": {
+        "titleDe": "Zyklotron und Synchrotron als Kreisbeschleuniger vergleichen",
+        "titleEn": "Compare Cyclotrons and Synchrotrons as Circular Accelerators",
+        "descriptionDe": "Die lernende Person kann Zyklotron und Synchrotron anhand der gemeinsamen Rollen elektrischer Felder beim Beschleunigen und magnetischer Felder bei der Bahnführung vergleichen, die feste Hochfrequenztaktung mit wachsendem Bahnradius beim idealisierten nichtrelativistischen Zyklotron von der angepassten Beschleunigungsphase und Magnetfeldstärke bei näherungsweise konstantem Synchrotronradius unterscheiden und daraus wesentliche Modell- und Betriebsgrenzen begründen.",
+        "descriptionEn": "The learner can compare cyclotrons and synchrotrons through the common roles of electric fields in accelerating particles and magnetic fields in guiding their trajectories, distinguish the fixed radio-frequency timing and increasing orbit radius of an idealized nonrelativistic cyclotron from the adjusted accelerating phase and magnetic-field strength at an approximately constant synchrotron radius, and use these differences to justify key model and operating limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-06",
+          "recordDigest": "sha256:ec682f042fd1b54e41a0d4074c9f8d531d48a3146b86c1a9fa145ba84f53b8fc"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r006",
+          "recordDigest": "sha256:3e5771bdf597a8128cf8b1f31df1ae54959c66b4bc2a0f5dcd5c847bdefebf83"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Zyklotron und Synchrotron anhand der gemeinsamen Rollen elektrischer Felder beim Beschleunigen und magnetischer Felder bei der Bahnführung vergleichen, die feste Hochfrequenztaktung mit wachsendem Bahnradius beim idealisierten nichtrelativistischen Zyklotron von der an die Teilchenbewegung angepassten Hochfrequenztaktung und Magnetfeldstärke bei näherungsweise konstantem Synchrotronradius unterscheiden und daraus wesentliche Modell- und Betriebsgrenzen begründen.",
+        "proposedDescriptionEn": "The learner can compare cyclotrons and synchrotrons through the common roles of electric fields in accelerating particles and magnetic fields in guiding their trajectories, distinguish the fixed radio-frequency timing and increasing orbit radius of an idealized nonrelativistic cyclotron from radio-frequency timing and magnetic-field strength adjusted to the particle motion at an approximately constant synchrotron radius, and use these differences to justify key model and operating limits.",
+        "rationaleDe": "Die aktuelle Formulierung „angepasste Beschleunigungsphase“ ist im Kontext der Synchronisierung des Synchrotrons fachlich vertretbar und wird durch das unabhängige Keep-Review der zweiten Runde bestätigt. Der Präzisionshinweis zur Hochfrequenztaktung bleibt als Dissent dokumentiert. Die detailliertere Understanding-Evidence der ersten Runde wird ausgewählt; die abweichende Evidence-Fassung der zweiten Runde bleibt als Alternativfassung gebunden.",
+        "rationaleEn": "The current phrase “adjusted accelerating phase” is scientifically defensible in the context of synchrotron synchronization and is confirmed by the independent keep review in the second round. The precision note concerning radio-frequency timing remains documented as dissent. The more detailed understanding evidence from the first round is selected; the differing second-round evidence formulation remains bound as an alternative."
+      },
+      "rationaleDe": "Die Produktentscheidung behält den aktuellen kanonischen Wortlaut bei: Der Präzisionsvorschlag der ersten Runde ist hilfreich, aber nicht zur Korrektur eines fachlichen Fehlers erforderlich. Die Vergleichskompetenz bleibt atomar; die detailliertere contract-konforme Understanding-Evidence der ersten Runde wird übernommen und der Wortlaut- sowie Evidence-Dissent vollständig gebunden.",
+      "rationaleEn": "The product decision retains the current canonical wording: the first-round precision proposal is useful but not required to correct a scientific error. The comparison competence remains atomic; the more detailed contract-conforming understanding evidence from the first round is adopted, with wording and evidence dissent fully bound."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-007",
+      "goalId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:005c6a2a0b3831b80641ba0f9e0bdaa13dc619598652f3d3da7deab16d010316",
+      "pageFingerprint": "sha256:97a939de27b5a13e54ebe523da10f7c04740792119844d531343f6df9a71d6e0",
+      "goalReviewContextFingerprint": "sha256:b14ff47386ea47cf2776c06c17b900a6f25f8f62f90f326c49ee1d605fc08659",
+      "finalText": {
+        "titleDe": "Bewegungsinduktion und Ladungstrennung",
+        "titleEn": "Motional Induction and Charge Separation",
+        "descriptionDe": "Die lernende Person kann die Entstehung einer elektrischen Spannung an einem im Magnetfeld bewegten Leiterstück als Folge der Lorentzkraft auf die Leitungselektronen qualitativ erklären.",
+        "descriptionEn": "The learner can qualitatively explain the origin of an electric voltage in a conductor moving through a magnetic field as a consequence of the Lorentz force on conduction electrons."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-07",
+          "recordDigest": "sha256:8d1e4edc1a5692c1bb9870b5e2b70951269f21ecb714c4dfe426ced15a161977"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r007",
+          "recordDigest": "sha256:58c4f89c2cf5621ac202795db2222964b0337402e2f738d6364b2e93f02aa657"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den qualitativen, mikroskopischen Kern der Bewegungsinduktion im metallischen Leiter. Der aktuelle Text bleibt unverändert; die erste Runde ergänzt die vollständigere Kräftegleichgewichts- und Transferkette, während die zweite Evidence-Fassung als Dissent erhalten bleibt.",
+      "rationaleEn": "Both reviews confirm the qualitative microscopic core of motional induction in a metallic conductor. The current text remains unchanged; the first round adds the fuller force-balance and transfer chain, while the second evidence formulation is retained as dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-008",
+      "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:01dd51f3e5a40538c9334c80ca1cba7b0d1a5e8fcf58874bbe8e8fad3ca9e768",
+      "pageFingerprint": "sha256:3d2bcc24e1f2625884bcdb3fba1fd78591b0766e9ba3184769605ba34bdde843",
+      "goalReviewContextFingerprint": "sha256:5c8e81cf2f357a09c754ac06cd19c2406b6b062cc300f4ebafbc0c8b741c1672",
+      "finalText": {
+        "titleDe": "Induktion durch Änderung des magnetischen Flusses",
+        "titleEn": "Induction by Change of Magnetic Flux",
+        "descriptionDe": "Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.",
+        "descriptionEn": "For a uniform magnetic field, the learner can describe the magnetic flux Φ = B · A · cos(α) through the area enclosed by a conducting loop, where α is the angle between the field direction and the surface normal, and qualitatively explain that a change of this flux over time produces an induced voltage."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-08",
+          "recordDigest": "sha256:d8e00edb0f9f5a17ada8bcfbf69e0d67ddb05db2c8b4cd1ea51c4f521ab3ba23"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r008",
+          "recordDigest": "sha256:e02d14b07dcf606f11cb39b599aa07c0855e12ebc564e4985b861dfeb7c2cd5e"
+        }
+      },
+      "rationaleDe": "Flussbeschreibung und qualitative Induktionsaussage sind eine zusammenhängende begriffliche Grundlage; beide Reviews entscheiden `keep`. Die erste Runde bietet die präzisere orientierte Flächen-, Nullfall- und Transferanalyse und wird als Evidence gewählt; die zweite Fassung bleibt dokumentierter Dissent.",
+      "rationaleEn": "Flux description and the qualitative induction statement form one connected conceptual foundation; both reviews decide keep. The first round provides the more precise oriented-area, zero-case, and transfer analysis and is selected as evidence; the second formulation remains documented dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-009",
+      "goalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3df7a3da385e749c48dd44579d3ccb0deff8fd15f5eed24dd7d37f097b829091",
+      "pageFingerprint": "sha256:e7b6a4ce4ac653536d5ca4271514f69922e9983ef3f2fe464dc435e72785d4af",
+      "goalReviewContextFingerprint": "sha256:c608bf64ac1e6c5dd30f3fe1f5c17c137f5ed97069536e20271f829d2266356a",
+      "finalText": {
+        "titleDe": "Induktionsgesetz und Lenz’sche Regel",
+        "titleEn": "Law of Induction and Lenz’s Law",
+        "descriptionDe": "Die lernende Person kann für eine Spule mit N gleichartigen Windungen die mittlere Induktionsspannung mit U_ind = −N · ΔΦ/Δt bestimmen und für einen geschlossenen Stromkreis die Richtung des Induktionsstroms mit der Lenz’schen Regel als Wirkung gegen die Flussänderung begründen.",
+        "descriptionEn": "For a coil with N equivalent turns, the learner can determine the mean induced voltage using U_ind = −N · ΔΦ/Δt and, for a closed circuit, justify the direction of the induced current using Lenz’s law as an effect opposing the change in flux."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-09",
+          "recordDigest": "sha256:e1cc6403b88b325106e3eea83af6e79957e294eb4d09744b5700dd4ff3c4cfee"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r009",
+          "recordDigest": "sha256:29a631b9d6edb2fb70da2ec15c13caa7e077193004d6b7a6f4f68f5ef8ac3c15"
+        }
+      },
+      "rationaleDe": "Betrag, Vorzeichen und Lenz’sche Richtungsbegründung gehören zum selben Faraday-Lenz-Zusammenhang; beide Reviews bestätigen den Text. Die erste Evidence-Fassung ist bei Orientierung, offenem Kreis und Gegenwirkung zur Flussänderung detaillierter und wird ausgewählt; die zweite bleibt Dissent.",
+      "rationaleEn": "Magnitude, sign, and the Lenz-law direction justification belong to the same Faraday-Lenz relation; both reviews confirm the text. The first evidence formulation is more detailed about orientation, open circuits, and opposition to flux change and is selected; the second remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-010",
+      "goalId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:792d5b99c20693a3fe1cf9e6922049b032d9d87f1216c6db8e2957c3f4f939dc",
+      "pageFingerprint": "sha256:6d4b0fc07721460e3ef5b707741c721ca27942e26ea6e4daf136ebbe7c1f43e8",
+      "goalReviewContextFingerprint": "sha256:ffbcc85aea06b55b7d50b4cd3938e010b979c9edaac28f1f75318a52039dec53",
+      "finalText": {
+        "titleDe": "Wirbelströme und Waltenhofen-Pendel",
+        "titleEn": "Eddy Currents and the Waltenhofen Pendulum",
+        "descriptionDe": "Die lernende Person kann die Entstehung von Wirbelströmen in massiven Leitern mit Induktionsgesetz und Lenz’scher Regel erklären sowie ihre bremsende Wirkung am Waltenhofen-Pendel und ihre Verringerung durch Blechpakete in Transformatorenkernen begründen.",
+        "descriptionEn": "The learner can explain the formation of eddy currents in bulk conductors using the law of induction and Lenz’s law and justify both their braking effect in a Waltenhofen pendulum and their reduction by laminations in transformer cores."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-10",
+          "recordDigest": "sha256:bfd39c8a10c169d11e69d3e5e518c367f0d7047ff1e4f04fa5148688d7432b9f"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r010",
+          "recordDigest": "sha256:4d2867e56d6aedbe13e90505b03baccc2873211ec69f0e990d639b6482598d4f"
+        }
+      },
+      "rationaleDe": "Entstehung, Bremswirkung und Verringerung von Wirbelströmen bilden eine gemeinsame kausale Anwendungskette; beide Reviews stützen `keep`. Die erste Runde bindet Energieumwandlung und Strompfade ausführlicher, die abweichende zweite Evidence-Fassung bleibt als Dissent dokumentiert.",
+      "rationaleEn": "The formation, braking effect, and reduction of eddy currents form one causal application chain; both reviews support keep. The first round binds energy conversion and current paths more fully, while the differing second evidence formulation remains documented as dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-011",
+      "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:764f9a1dd26c85fb6bbb2c4f71590fce545d969630d8b3efb5217f1d0063bfb2",
+      "pageFingerprint": "sha256:1f22b5822061bef5e0e71c9972c332c2695e3c45878f2ee5f0242845c683d156",
+      "goalReviewContextFingerprint": "sha256:0f80441d441efe54449dff1d906ce521cc5f1e46fdaddd8e46d27c952ea9447e",
+      "finalText": {
+        "titleDe": "Selbstinduktion und Induktivität",
+        "titleEn": "Self-Induction and Inductance",
+        "descriptionDe": "Die lernende Person kann phänomenologisch erklären, wie eine Spule bei Ein- und Ausschaltvorgängen durch eine der Stromänderung entgegenwirkende Selbstinduktionsspannung reagiert, und die Induktivität als Maß für die Stärke dieses Zusammenhangs deuten.",
+        "descriptionEn": "The learner can phenomenologically explain how a coil responds during switch-on and switch-off processes through a self-induced voltage that opposes the change in current and interpret inductance as a measure of the strength of this relation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-11",
+          "recordDigest": "sha256:be5a48b6c6d776cb415784f9a7da3a98b40e7b77210716286febfd3cc9c95d08"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r011",
+          "recordDigest": "sha256:a6e7689dd2f81f7ae96bb2e42eab58c4d18c45974198fcc7fcaea32175e280e4"
+        }
+      },
+      "rationaleDe": "Selbstinduktion und Induktivität bilden den phänomenologischen Ursache-Maß-Zusammenhang, den beide Reviews bestätigen. Der Text bleibt unverändert; die erste Runde differenziert Stromänderung, Flussverkettung und Transfer vollständiger und wird als Evidence gewählt, die zweite Fassung bleibt Dissent.",
+      "rationaleEn": "Self-induction and inductance form the phenomenological cause-and-measure relation confirmed by both reviews. The text remains unchanged; the first round distinguishes current change, flux linkage, and transfer more fully and is selected as evidence, while the second formulation remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-012",
+      "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:02ae80b7ac55ac76cc2831b8482f71c0d5e90200a83840d1bd73d8e6f7c737ad",
+      "pageFingerprint": "sha256:6d71ffaed29063bb00edbfe6841996ae5f3eae6b8fcf91a4141e49318dfbef59",
+      "goalReviewContextFingerprint": "sha256:c7e6bf9cd313ce90c04e0c7258202ecb7c2ecc00a225ccf449a79884230f6278",
+      "finalText": {
+        "titleDe": "Ein- und Ausschaltvorgänge analysieren",
+        "titleEn": "Analyze Switch-On and Switch-Off Processes",
+        "descriptionDe": "Die lernende Person kann Strom- und Spannungsverläufe beim Ein- und Ausschalten eines idealisierten RL-Stromkreises mit der Zeitkonstante τ = L/R quantitativ analysieren und die Induktivität aus einem solchen Verlauf bestimmen.",
+        "descriptionEn": "The learner can quantitatively analyze current and voltage curves when an idealized RL circuit is switched on and off using the time constant τ = L/R and determine the inductance from such a transient."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-12",
+          "recordDigest": "sha256:785256bb72321ee9b2b5e4478362239f4661007140e04a57d58f264a8c1a8de9"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r012",
+          "recordDigest": "sha256:47e6e5de305e93f288f9b840c6b019fa74f8d9a7b22e417c21b575c2f9298c95"
+        }
+      },
+      "rationaleDe": "Ein- und Ausschalten sowie die Bestimmung von L sind komplementäre Auswertungen desselben idealisierten RL-Modells; beide Reviews bestätigen `keep`. Die erste Runde enthält die vollständigere Anfangs-, Grenzwert-, Vorzeichen- und Transferprüfung und wird als Evidence gebunden; die zweite bleibt Dissent.",
+      "rationaleEn": "Switch-on, switch-off, and determination of L are complementary analyses of the same idealized RL model; both reviews confirm keep. The first round contains the fuller initial-value, limiting-value, sign, and transfer checks and is bound as evidence; the second remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-013",
+      "goalId": "a1389d4e-dc97-5557-babe-a31a2bd57217",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5e6964fbb584c7a8c8b9a81847b749c5e3537c62fbc8138232041e05b5e29d5f",
+      "pageFingerprint": "sha256:aa3084809e718a4cc3fef2fb662213d626d471fbaf212d22a57e8ce9029837e0",
+      "goalReviewContextFingerprint": "sha256:1fa758d488aa93b8557c39644e0eba3602a4e53c2fb35d5a39103c02505de4e8",
+      "finalText": {
+        "titleDe": "Energie gespeicherter Magnetfelder",
+        "titleEn": "Energy Stored in Magnetic Fields",
+        "descriptionDe": "Die lernende Person kann die in einer idealisierten Spule mit konstanter Induktivität gespeicherte magnetische Energie mit W = 1/2 · L · I² bestimmen und Energieaufnahme und -abgabe bei technischen Anwendungen physikalisch begründen.",
+        "descriptionEn": "The learner can determine the magnetic energy stored in an idealized inductor with constant inductance using W = 1/2 · L · I² and physically justify energy uptake and release in technical applications."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-13",
+          "recordDigest": "sha256:e4fa5f65520f8a3fe279946ce103f38fa91c9ac442ea29c386393e9af3a79181"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r013",
+          "recordDigest": "sha256:1a121624187e4cee9e4e81f0a4b3c4563295e038746b33b08e3747f98c140330"
+        }
+      },
+      "rationaleDe": "Energieberechnung sowie Aufnahme und Abgabe gehören zum selben Feldenergiemodell mit konstanter Induktivität; beide Reviews stützen den aktuellen Text. Die erste Runde macht Systemgrenze und Modellgrenze ausführlicher und wird als Evidence gewählt, während die zweite Fassung Dissent bleibt.",
+      "rationaleEn": "Energy calculation, uptake, and release belong to the same field-energy model with constant inductance; both reviews support the current text. The first round states the system boundary and model limit more fully and is selected as evidence, while the second formulation remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-014",
+      "goalId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2240618c91f0bc5bea4d0074aca2690a3a3dfd9731c6909fe48a3bc9f4fbafb7",
+      "pageFingerprint": "sha256:512fb6b2595f5d529960a398ef1e702d9d5a956e5338f13795d3dc5a99fb9be8",
+      "goalReviewContextFingerprint": "sha256:352ad842892ddd6a598ec92edb27f04f0fb0fded4be4e55c19e7f2152ad4f237",
+      "finalText": {
+        "titleDe": "Technische Anwendungen des Induktionsgesetzes qualitativ erklären",
+        "titleEn": "Qualitatively Explain Technical Applications of the Law of Induction",
+        "descriptionDe": "Die lernende Person kann für eine vorgegebene technische Anwendung – etwa Generator, Transformator, Induktionsladegerät oder Induktionskochplatte – qualitativ erklären, wodurch sich der magnetische Fluss ändert, welche Spannung und bei geschlossenem Stromkreis welche Ströme induziert werden und welchem technischen Zweck dies dient.",
+        "descriptionEn": "For a given technical application—such as a generator, transformer, induction charger, or induction cooktop—the learner can qualitatively explain what changes the magnetic flux, what voltage and, in a closed circuit, what currents are induced, and what technical purpose this serves."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-14",
+          "recordDigest": "sha256:dbc157466f49204b98b594b5bc2390f2e7a40175bab72192718ee31c47c9b260"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r014",
+          "recordDigest": "sha256:ae78adb3c2f28b0d313da1a2d8451298860f6cfd1269076b5f95c09f690d79f4"
+        }
+      },
+      "rationaleDe": "Die genannten Geräte sind alternative Realisierungen einer gemeinsamen qualitativen Induktions-Anwendungskette; beide Reviews bestätigen `keep`. Die erste Runde beschreibt Flussänderung, Strompfad, Kopplung und Nutzwirkung vollständiger und wird als Evidence gewählt; die zweite Fassung bleibt Dissent.",
+      "rationaleEn": "The listed devices are alternative realizations of one qualitative induction application chain; both reviews confirm keep. The first round describes flux change, current path, coupling, and useful effect more fully and is selected as evidence; the second formulation remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-015",
+      "goalId": "ffbbf243-c2eb-4330-b050-837de994c130",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9ea2179827c9927fa73def7c07eb2809e1decd7f839caca9a4a4a6fc35807862",
+      "pageFingerprint": "sha256:ddeeaa20f7c1d8b21e023365f91e261f86ee0ae3d1f42a28b084dbbd7dfacb3d",
+      "goalReviewContextFingerprint": "sha256:69f1e100a2f30404a0d8fb770b7c8fd624457e2b666ddfef38a406972b498c6a",
+      "finalText": {
+        "titleDe": "Elektromagnetische Felder im Maxwell-Überblick beschreiben",
+        "titleEn": "Describe Electromagnetic Fields in a Maxwell Overview",
+        "descriptionDe": "Die lernende Person kann die vier Maxwell-Gleichungen qualitativ als Aussagen über elektrische Ladungen als Quellen elektrischer Felder, die Quellenfreiheit des Magnetfelds, Wirbel elektrischer Felder durch zeitlich veränderliche Magnetfelder sowie Wirbel magnetischer Felder durch Ströme und zeitlich veränderliche elektrische Felder einordnen und ihr Zusammenwirken beschreiben, ohne sie formal herzuleiten.",
+        "descriptionEn": "The learner can qualitatively interpret the four Maxwell equations as statements about electric charges as sources of electric fields, the absence of magnetic sources, the circulation of electric fields caused by time-varying magnetic fields, and the circulation of magnetic fields caused by currents and time-varying electric fields, and describe how the equations work together without formally deriving them."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-15",
+          "recordDigest": "sha256:15e4f76d5df741dc77df22707d079891168451443517073a23b9440aa549c9e0"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r015",
+          "recordDigest": "sha256:a1d32e96d4370e8a07ebd92c01f2c97cc645c4cce6e26701ddfa2d7012bb479e"
+        }
+      },
+      "rationaleDe": "Das Ziel ist ein integrativer qualitativer Maxwell-Überblick, keine Sammlung unabhängiger Herleitungen; beide Reviews bestätigen den aktuellen Wortlaut. Die erste Runde differenziert Quellen, Wirbel und dynamische Kopplung ausführlicher und wird als Evidence gewählt, die zweite Fassung bleibt Dissent.",
+      "rationaleEn": "The goal is an integrated qualitative Maxwell overview, not a collection of independent derivations; both reviews confirm the current wording. The first round distinguishes sources, circulation, and dynamic coupling more fully and is selected as evidence, while the second formulation remains dissent."
+    },
+    {
+      "decisionId": "physik-b020-synthesis-openai-gpt-5.6-sol-20260828-decision-016",
+      "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29",
+      "pageFingerprint": "sha256:c99c95aae5f25c7c62914478c3416f8181db44c0d1f75abeb317ce1bf26339aa",
+      "goalReviewContextFingerprint": "sha256:6649bf2bf2bbe5ca9105655fe3473796e9d8762b386d1008b1edd496a36fb2b5",
+      "finalText": {
+        "titleDe": "Induktionsgesetz in Ableitungsform anwenden",
+        "titleEn": "Apply the Time-Derivative Form of the Law of Induction",
+        "descriptionDe": "Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.",
+        "descriptionEn": "When magnetic flux is a differentiable function of time, the learner can determine the instantaneous induced voltage of a coil with N equivalent turns using U_ind(t) = −N · dΦ(t)/dt and physically interpret the voltage’s time dependence."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b020-ronda-openai-gpt-5.6-sol-subject-20260828T135828Z-16",
+          "recordDigest": "sha256:4f90c15228882bd91b5bf19fe069d634e49fb1222249ade4a851ef4cd9b44708"
+        },
+        "second": {
+          "recordId": "physik-b020-rb-openai-gpt-5.5-subject-20260828T135941Z.r016",
+          "recordDigest": "sha256:80fe7f22e50ea02c474ca22a40f0b620d2b38d7133ebe484a2c37f6564299298"
+        }
+      },
+      "rationaleDe": "Bestimmung und physikalische Deutung des Spannungsverlaufs sind gekoppelte Aspekte derselben Ableitungsform; beide Reviews bestätigen `keep`. Die erste Runde bindet Steigung, Nulldurchgänge, Vorzeichen und Differenzierbarkeitsgrenze ausführlicher und wird als Evidence gewählt; die zweite bleibt Dissent.",
+      "rationaleEn": "Determining and physically interpreting the voltage curve are connected aspects of the same derivative form; both reviews confirm keep. The first round binds slope, zero crossings, sign, and the differentiability boundary more fully and is selected as evidence; the second remains dissent."
+    }
+  ],
+  "manifestFingerprint": "sha256:44c04b07bed92f7995a2069e908f84d865999899c3a0dbe23c7ef16c2e8392c2"
+}
