@@ -12,6 +12,7 @@ source "${SCRIPT_DIR}/lib/openai_v1_service_environment.sh"
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 SERVICE_ENV_FILE="${SKILLPILOT_SERVICE_ENV_FILE:-/etc/skillpilot/skillpilot.env}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+DEPLOY_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/deploy/backend-build"
 SYSTEMCTL_BIN=""
 
 require_explicit_coach_variant() {
@@ -50,6 +51,24 @@ require_production_java() {
     echo "Abbruch: Amazon Corretto ${required_corretto_version} ist für Produktion erforderlich (.java-version/.corretto-version)." >&2
     echo "Aktuelle Java-Version:" >&2
     printf '%s\n' "${current_java_version_output}" >&2
+    exit 1
+  fi
+}
+
+require_goal_book_pdf_tools() {
+  local missing_commands=()
+  local command_name
+
+  for command_name in pdfinfo pdftohtml; do
+    if ! command -v "${command_name}" >/dev/null 2>&1; then
+      missing_commands+=("${command_name}")
+    fi
+  done
+
+  if [ "${#missing_commands[@]}" -gt 0 ]; then
+    echo "Abbruch: PDF-Werkzeuge für die Lernzielbuch-Prüfung fehlen: ${missing_commands[*]}." >&2
+    echo "Installiere zuerst poppler-utils (Rocky/RHEL/Fedora: sudo dnf install poppler-utils)." >&2
+    echo "Das Deployment wurde vor Git-Update, Asset-Kopie und Build beendet." >&2
     exit 1
   fi
 }
@@ -214,6 +233,7 @@ require_explicit_coach_variant
 require_public_readiness_configuration
 ensure_restart_possible
 require_production_java
+require_goal_book_pdf_tools
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Überspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
@@ -306,11 +326,14 @@ node ../scripts/verify_frontend_shell_assets.mjs \
 echo "Baue Backend..."
 cd ../backend
 chmod +x gradlew
+mkdir -p "${PROJECT_ROOT}/tmp/deploy"
+export SKILLPILOT_BACKEND_BUILD_DIR="${DEPLOY_BACKEND_BUILD_DIR}"
+echo "Verwende isoliertes Backend-Build-Verzeichnis: ${SKILLPILOT_BACKEND_BUILD_DIR}"
 ./gradlew clean build -x test
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe eingebettete OpenAI-Plugin-V1-Build-ID..."
   node ../scripts/validate_openai_v1_runtime_config.mjs \
-    --built-application build/resources/main/application.yml
+    --built-application "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/application.yml"
   echo "Prüfe fokussierte OpenAI-Security-Verträge vor dem Service-Restart..."
   ./gradlew test \
     --tests com.skillpilot.backend.config.CorsConfigTest \
@@ -327,6 +350,9 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
     --tests com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest \
     --tests com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidationTest
 fi
+echo "Prüfe Frontend-Shell im isolierten Backend-Artefakt..."
+node ../scripts/verify_frontend_shell_assets.mjs \
+  "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/static"
 cd ..
 
 echo "Starte Service neu..."

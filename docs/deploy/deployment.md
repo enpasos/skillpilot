@@ -13,6 +13,23 @@ The normal production command is:
 ./deploy_skillpilot.sh
 ```
 
+The production host must provide the Poppler commands `pdfinfo` and
+`pdftohtml`, which are used by the fail-closed learning-goal-book publication
+check. On Rocky Linux, RHEL, or Fedora they are installed with:
+
+```bash
+sudo dnf install poppler-utils
+```
+
+The deployment checks both commands before updating the Git checkout or
+copying assets. A missing production dependency therefore cannot leave a new
+`index.html` next to stale hashed frontend assets.
+
+Generated shell files such as `backend/src/main/resources/static/index.html`,
+`sw.js`, and `version.json` are deliberately not tracked. Vite creates them and
+their content-hashed CSS/JavaScript files as one artifact during deployment;
+Git must never update only the HTML half of that bundle.
+
 The root entrypoint pins `VITE_SKILLPILOT_COACH_VARIANT=openai-mcp`, which is
 the current production architecture for the German coach, and then executes
 `scripts/deploy.sh`. The engine continues to validate the variant before the
@@ -44,8 +61,9 @@ the deployment logic to maintain.
 
 The deployment process currently does all of the following:
 1.  Require an explicit, valid frontend coach variant for this artifact.
-2.  Check that the target `systemd` service is reachable and that the exact
-    restart command has a passwordless `sudo` grant.
+2.  Check that the target `systemd` service is reachable, that the exact
+    restart command has a passwordless `sudo` grant, and that the required PDF
+    validation tools are available.
 3.  Stash local working-tree changes.
 4.  Pull the latest code from Git and, if `HEAD` changed, restart the freshly
     checked-out deployment engine.
@@ -57,9 +75,11 @@ The deployment process currently does all of the following:
 9.  Install frontend dependencies and verify the committed AI-transparency inventory against the exact assets to be deployed.
 10. Rebuild the React app.
 11. Verify the requested coach variant and the referenced CSS/JavaScript shell assets in the generated backend static artifact.
-12. Build the backend jar with the exact deployed Git commit embedded as the
-    OpenAI server build and MCP server version.
-13. Verify that the processed backend resources contain that commit.
+12. Build the backend in an isolated deployment directory, separate from the
+    default Gradle build directory used by the currently running production
+    `bootRun` process.
+13. Verify that the processed backend resources contain the exact deployed Git
+    commit and a complete frontend shell before restarting the service.
 14. For the `openai-mcp` variant, run the focused backend security and contract
     tests.
 15. Restart the `skillpilot` system service.
@@ -90,6 +110,9 @@ echo "Pruefe explizite Coach-Variante..."
 echo "Pruefe Restart-Voraussetzungen..."
 # The script validates systemctl access and the command-specific NOPASSWD grant
 # before doing expensive build work.
+
+echo "Pruefe Lernzielbuch-PDF-Werkzeuge..."
+# pdfinfo and pdftohtml are required before the checkout can be updated.
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Ueberspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
@@ -146,13 +169,17 @@ node ../scripts/verify_frontend_shell_assets.mjs \
 
 cd ../backend
 chmod +x gradlew
+export SKILLPILOT_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/deploy/backend-build"
 ./gradlew clean build -x test
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Pruefe eingebettete Backend-Buildkennung..."
   node ../scripts/validate_openai_v1_runtime_config.mjs \
-    --built-application build/resources/main/application.yml
+    --built-application "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/application.yml"
 fi
+
+node ../scripts/verify_frontend_shell_assets.mjs \
+  "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/static"
 cd ..
 
 echo "Starte Service neu..."
@@ -183,10 +210,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 ## Why this order?
 
 1.  **Coach-variant preflight first**: every deploy must state the intended frontend contract; there is no production default that could silently choose Visible Session or MCP.
-2.  **Restart preflight**: the script fails before stashing, copying assets, or
-    building if the current environment cannot reach the `systemd` service or
-    lacks a command-specific, passwordless restart grant. It never opens a
-    general `sudo` password prompt.
+2.  **Restart and build-tool preflight**: the script fails before stashing,
+    copying assets, or building if the current environment cannot reach the
+    `systemd` service, lacks a command-specific passwordless restart grant, or
+    lacks `pdfinfo`/`pdftohtml`. It never opens a general `sudo` password
+    prompt.
 3.  **`git stash` + `git pull`**: the current script assumes deployment happens
     from a possibly dirty working tree and protects the pull by stashing first.
     If the pull changes `HEAD`, it restarts the newly checked-out deployment
@@ -204,8 +232,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     or restart. The shell verifier reads `index.html`, rejects cross-origin
     stylesheet/module references, and checks that every referenced local file is
     present and nonempty.
-9.  **Backend build and build-identity verification** produce the updated
-    server artifact. Gradle embeds the full lowercase `HEAD` commit into both
+9.  **Isolated backend build and build-identity verification** produce the
+    updated server artifact outside the default `backend/build` directory.
+    This prevents Gradle `clean`/`processResources` during a failed deployment
+    from changing the classpath of the still-running production `bootRun`
+    process. Gradle embeds the full lowercase `HEAD` commit into both
     `skillpilot.openai.coach.v1.server-build` and the MCP `server-version`; the
     deployment engine verifies the processed resource before restart.
     `SKILLPILOT_SERVER_BUILD` is not a runtime setting and cannot replace this
