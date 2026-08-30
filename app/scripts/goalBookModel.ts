@@ -1665,8 +1665,8 @@ const buildNavigationGoalGraph = (
 ): GoalBookNavigationGoalGraph => {
   const graphWithoutDigest = {
     schemaVersion: GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
-    landscapeId: nonEmptyString(landscape.landscapeId, 'navigation goal graph landscapeId'),
-    title: nonEmptyString(landscape.title, 'navigation goal graph title'),
+    landscapeId: nonEmptyString(landscape.landscapeId, 'navigation skill graph landscapeId'),
+    title: nonEmptyString(landscape.title, 'navigation skill graph title'),
     goals: landscape.goals
       .filter(({ id }) => primaryGoalIds.has(id))
       .map((goal) => ({

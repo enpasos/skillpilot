@@ -315,7 +315,7 @@ site and PDF renderer consume that exact serialized model. The model contains:
 - book version and build fingerprint;
 - canonical landscape and composition-view or source-manifest identifiers;
 - the bound canonical navigation-view digest and projection fingerprint;
-- a compact, digest-bound canonical goal graph used to compile the same
+- a compact, digest-bound canonical skill graph used to compile the same
   scope-specific Composition Views in the read-only WebGUI;
 - ordered chapter records;
 - exactly one record for every included goal;
