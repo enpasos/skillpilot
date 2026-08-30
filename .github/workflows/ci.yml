@@ -70,6 +70,29 @@ jobs:
           fi
           grep -Fq 'sudo -k -n -l -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"' scripts/deploy.sh
           grep -Fq 'sudo -n -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"' scripts/deploy.sh
+          python3 - <<'PY'
+          from pathlib import Path
+
+          source = Path('scripts/deploy.sh').read_text(encoding='utf-8')
+          preflight = source.index('require_goal_book_pdf_tools\n')
+          git_update = source.index('git stash\n')
+          if preflight >= git_update:
+              raise SystemExit('PDF tool preflight must run before the Git update')
+          for command in ('pdfinfo', 'pdftohtml'):
+              if command not in source:
+                  raise SystemExit(f'Deployment PDF tool preflight omits {command}')
+          if 'SKILLPILOT_BACKEND_BUILD_DIR="${DEPLOY_BACKEND_BUILD_DIR}"' not in source:
+              raise SystemExit('Deployment backend build is not isolated from the live bootRun build directory')
+          PY
+          for generated_shell_file in \
+            backend/src/main/resources/static/index.html \
+            backend/src/main/resources/static/sw.js \
+            backend/src/main/resources/static/version.json; do
+            if git ls-files --error-unmatch "${generated_shell_file}" >/dev/null 2>&1; then
+              echo "Generated frontend shell file must not be tracked: ${generated_shell_file}" >&2
+              exit 1
+            fi
+          done
 
   openai-mcp-app-ci:
     name: OpenAI MCP Apps CI
