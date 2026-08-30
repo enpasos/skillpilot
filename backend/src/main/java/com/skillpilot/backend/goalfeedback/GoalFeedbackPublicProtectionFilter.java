@@ -1,5 +1,6 @@
 package com.skillpilot.backend.goalfeedback;
 
+import com.skillpilot.backend.config.RawHttpServletRequest;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ReadListener;
 import jakarta.servlet.ServletException;
@@ -11,7 +12,9 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.net.URI;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -44,6 +47,7 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
 
     public static final String CONTEXT_PATH = "/api/public/goal-feedback/v1/context";
     public static final String SUBMISSION_PATH = "/api/public/goal-feedback/v1/submissions";
+    private static final String REAL_IP_HEADER = "X-Real-IP";
     private static final PathPattern CONTEXT_PATTERN =
             PathPatternParser.defaultInstance.parse(CONTEXT_PATH);
     private static final PathPattern SUBMISSION_PATTERN =
@@ -104,7 +108,7 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
             FilterChain filterChain) throws ServletException, IOException {
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
         if (isContextRequest(request)) {
-            long retryAfter = acquire(contextCounters, request.getRemoteAddr());
+            long retryAfter = acquire(contextCounters, rateLimitClient(request));
             if (retryAfter > 0) {
                 reject(response, 429, "rate_limited", retryAfter);
                 return;
@@ -137,7 +141,7 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
             reject(response, HttpServletResponse.SC_REQUEST_ENTITY_TOO_LARGE, "request_too_large", null);
             return;
         }
-        long retryAfter = acquire(submissionCounters, request.getRemoteAddr());
+        long retryAfter = acquire(submissionCounters, rateLimitClient(request));
         if (retryAfter > 0) {
             reject(response, 429, "rate_limited", retryAfter);
             return;
@@ -169,6 +173,101 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
         long now = clock.millis();
         String candidate = digest(remoteAddress == null ? "unknown" : remoteAddress);
         return counters.acquire(candidate, now, windowMillis, requestsPerWindow);
+    }
+
+    /**
+     * Trusts a client address only across the verified local proxy hop. The
+     * production proxy replaces X-Real-IP with its socket peer, while Spring's
+     * forwarding wrapper may expose client-controlled X-Forwarded-For through
+     * {@code getRemoteAddr()}; consequently only the raw request is inspected
+     * and X-Forwarded-For is ignored completely. Missing, duplicate or invalid
+     * X-Real-IP values fail closed to the raw transport peer's shared bucket.
+     */
+    private static String rateLimitClient(HttpServletRequest request) {
+        HttpServletRequest rawRequest = RawHttpServletRequest.unwrap(request);
+        if (rawRequest == null) {
+            return null;
+        }
+        String rawPeer = rawRequest.getRemoteAddr();
+        if (!isLoopbackIpLiteral(rawPeer)) {
+            return rawPeer;
+        }
+        String realIp = normalizeIpLiteral(singleHeader(rawRequest, REAL_IP_HEADER));
+        return realIp == null ? rawPeer : realIp;
+    }
+
+    private static boolean isLoopbackIpLiteral(String value) {
+        String normalized = normalizeIpLiteral(value);
+        if (normalized == null) {
+            return false;
+        }
+        try {
+            return InetAddress.getByName(normalized).isLoopbackAddress();
+        } catch (UnknownHostException exception) {
+            return false;
+        }
+    }
+
+    /** Parses strict IPv4 and unscoped IPv6 literals without permitting DNS. */
+    private static String normalizeIpLiteral(String value) {
+        if (value == null || value.isBlank() || !value.equals(value.trim()) || value.length() > 45) {
+            return null;
+        }
+        if (isStrictIpv4Literal(value)) {
+            return value;
+        }
+        if (value.indexOf(':') < 0 || !containsOnlyIpv6LiteralCharacters(value)) {
+            return null;
+        }
+        int dottedSuffix = value.lastIndexOf(':') + 1;
+        if (value.indexOf('.') >= 0 && !isStrictIpv4Literal(value.substring(dottedSuffix))) {
+            return null;
+        }
+        try {
+            return InetAddress.getByName(value).getHostAddress();
+        } catch (UnknownHostException exception) {
+            return null;
+        }
+    }
+
+    private static boolean isStrictIpv4Literal(String value) {
+        String[] octets = value.split("\\.", -1);
+        if (octets.length != 4) {
+            return false;
+        }
+        for (String octet : octets) {
+            if (octet.isEmpty()
+                    || octet.length() > 3
+                    || (octet.length() > 1 && octet.charAt(0) == '0')) {
+                return false;
+            }
+            int number = 0;
+            for (int index = 0; index < octet.length(); index++) {
+                char digit = octet.charAt(index);
+                if (digit < '0' || digit > '9') {
+                    return false;
+                }
+                number = number * 10 + digit - '0';
+            }
+            if (number > 255) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean containsOnlyIpv6LiteralCharacters(String value) {
+        for (int index = 0; index < value.length(); index++) {
+            char character = value.charAt(index);
+            if (!(character == ':'
+                    || character == '.'
+                    || (character >= '0' && character <= '9')
+                    || (character >= 'a' && character <= 'f')
+                    || (character >= 'A' && character <= 'F'))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     int contextClientBucketCount() {

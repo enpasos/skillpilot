@@ -3,6 +3,8 @@ package com.skillpilot.backend.goalfeedback;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import java.nio.charset.StandardCharsets;
 import java.time.Clock;
 import java.time.Duration;
@@ -146,6 +148,90 @@ class GoalFeedbackBoundaryFilterTest {
         MockFilterChain unrelatedChain = new MockFilterChain();
         filter.doFilter(unrelated, new MockHttpServletResponse(), unrelatedChain);
         assertThat(unrelatedChain.getRequest()).isSameAs(unrelated);
+    }
+
+    @Test
+    void localProxyUsesOneValidRealIpAndIgnoresForwardedAddressSpoofing() throws Exception {
+        GoalFeedbackPublicProtectionFilter filter = publicFilter(1);
+
+        HttpServletRequest first = forwardingWrapper(
+                contextRequest("127.0.0.1", "203.0.113.10", "198.51.100.10"),
+                "203.0.113.10");
+        MockFilterChain accepted = new MockFilterChain();
+        filter.doFilter(first, new MockHttpServletResponse(), accepted);
+        assertThat(accepted.getRequest()).isSameAs(first);
+
+        // A different X-Forwarded-For and wrapper-visible address must not
+        // create a fresh bucket for the same proxy-supplied X-Real-IP.
+        HttpServletRequest spoofed = forwardingWrapper(
+                contextRequest("127.0.0.1", "203.0.113.20", "198.51.100.10"),
+                "203.0.113.20");
+        MockHttpServletResponse limited = new MockHttpServletResponse();
+        filter.doFilter(spoofed, limited, new MockFilterChain());
+        assertThat(limited.getStatus()).isEqualTo(429);
+
+        MockFilterChain secondClient = new MockFilterChain();
+        HttpServletRequest distinctRealIp = forwardingWrapper(
+                contextRequest("127.0.0.1", "203.0.113.20", "198.51.100.11"),
+                "203.0.113.20");
+        filter.doFilter(distinctRealIp, new MockHttpServletResponse(), secondClient);
+        assertThat(secondClient.getRequest()).isSameAs(distinctRealIp);
+    }
+
+    @Test
+    void duplicateOrInvalidRealIpFallsBackToTheRawProxyPeer() throws Exception {
+        GoalFeedbackPublicProtectionFilter duplicateFilter = publicFilter(1);
+
+        MockHttpServletRequest firstDuplicate = contextRequest(
+                "127.0.0.1", null, "198.51.100.10");
+        firstDuplicate.addHeader("X-Real-IP", "198.51.100.11");
+        assertThat(contextStatus(duplicateFilter, firstDuplicate)).isEqualTo(200);
+
+        MockHttpServletRequest secondDuplicate = contextRequest(
+                "127.0.0.1", null, "203.0.113.10");
+        secondDuplicate.addHeader("X-Real-IP", "203.0.113.11");
+        assertThat(contextStatus(duplicateFilter, secondDuplicate)).isEqualTo(429);
+
+        GoalFeedbackPublicProtectionFilter invalidFilter = publicFilter(1);
+        assertThat(contextStatus(invalidFilter,
+                        contextRequest("127.0.0.1", null, "256.1.1.1")))
+                .isEqualTo(200);
+        assertThat(contextStatus(invalidFilter,
+                        contextRequest("127.0.0.1", null, "2001:db8:::1")))
+                .isEqualTo(429);
+    }
+
+    @Test
+    void nonLoopbackPeerNeverTrustsRealIp() throws Exception {
+        GoalFeedbackPublicProtectionFilter filter = publicFilter(1);
+
+        assertThat(contextStatus(filter,
+                        contextRequest("192.0.2.44", null, "198.51.100.10")))
+                .isEqualTo(200);
+        assertThat(contextStatus(filter,
+                        contextRequest("192.0.2.44", null, "198.51.100.11")))
+                .isEqualTo(429);
+        assertThat(contextStatus(filter,
+                        contextRequest("192.0.2.45", null, "198.51.100.10")))
+                .isEqualTo(200);
+    }
+
+    @Test
+    void validIpv4AndIpv6RealIpsReceiveIndependentCanonicalBuckets() throws Exception {
+        GoalFeedbackPublicProtectionFilter filter = publicFilter(1);
+
+        assertThat(contextStatus(filter,
+                        contextRequest("127.0.0.1", null, "198.51.100.10")))
+                .isEqualTo(200);
+        assertThat(contextStatus(filter,
+                        contextRequest("::1", null, "2001:db8::10")))
+                .isEqualTo(200);
+        assertThat(contextStatus(filter,
+                        contextRequest("0:0:0:0:0:0:0:1", null, "198.51.100.10")))
+                .isEqualTo(429);
+        assertThat(contextStatus(filter,
+                        contextRequest("127.0.0.1", null, "2001:0db8:0:0:0:0:0:10")))
+                .isEqualTo(429);
     }
 
     @Test
@@ -316,9 +402,42 @@ class GoalFeedbackBoundaryFilterTest {
         MockHttpServletRequest request = new MockHttpServletRequest(
                 "GET", GoalFeedbackPublicProtectionFilter.CONTEXT_PATH);
         request.setRemoteAddr(remoteAddress);
+        return contextStatus(filter, request);
+    }
+
+    private static int contextStatus(
+            GoalFeedbackPublicProtectionFilter filter,
+            HttpServletRequest request) throws Exception {
         MockHttpServletResponse response = new MockHttpServletResponse();
         filter.doFilter(request, response, new MockFilterChain());
         return response.getStatus();
+    }
+
+    private static MockHttpServletRequest contextRequest(
+            String rawRemoteAddress,
+            String forwardedFor,
+            String realIp) {
+        MockHttpServletRequest request = new MockHttpServletRequest(
+                "GET", GoalFeedbackPublicProtectionFilter.CONTEXT_PATH);
+        request.setRemoteAddr(rawRemoteAddress);
+        if (forwardedFor != null) {
+            request.addHeader("X-Forwarded-For", forwardedFor);
+        }
+        if (realIp != null) {
+            request.addHeader("X-Real-IP", realIp);
+        }
+        return request;
+    }
+
+    private static HttpServletRequest forwardingWrapper(
+            MockHttpServletRequest rawRequest,
+            String forwardedRemoteAddress) {
+        return new HttpServletRequestWrapper(rawRequest) {
+            @Override
+            public String getRemoteAddr() {
+                return forwardedRemoteAddress;
+            }
+        };
     }
 
     private static MockHttpServletRequest submissionRequest(String body) {
