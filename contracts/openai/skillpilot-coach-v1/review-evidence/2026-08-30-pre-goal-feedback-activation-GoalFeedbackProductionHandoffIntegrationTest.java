@@ -1,7 +1,6 @@
 package com.skillpilot.backend.goalfeedback;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,7 +29,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
@@ -85,40 +83,6 @@ class GoalFeedbackProductionHandoffIntegrationTest {
     private final HttpClient http = HttpClient.newHttpClient();
 
     @Test
-    void migrationEnforcesContentFreeTimestampedTerminalBatchStates() {
-        Instant now = Instant.parse("2026-08-30T12:00:00Z");
-        String digest = "sha256:" + "a".repeat(64);
-
-        assertThatThrownBy(() -> jdbc.update(
-                        """
-                        INSERT INTO goal_feedback_export_batch
-                            (id, created_at, status, payload_digest, record_count,
-                             payload_json, deleted_at, expired_at)
-                        VALUES (?, ?, 'EXPIRED', ?, 1, NULL, NULL, NULL)
-                        """,
-                        UUID.randomUUID(), Timestamp.from(now), digest))
-                .isInstanceOf(DataIntegrityViolationException.class);
-        assertThatThrownBy(() -> jdbc.update(
-                        """
-                        INSERT INTO goal_feedback_export_batch
-                            (id, created_at, status, payload_digest, record_count,
-                             payload_json, deleted_at, expired_at)
-                        VALUES (?, ?, 'DELETED', ?, 1, 'retained-content', ?, NULL)
-                        """,
-                        UUID.randomUUID(), Timestamp.from(now), digest, Timestamp.from(now)))
-                .isInstanceOf(DataIntegrityViolationException.class);
-        assertThatThrownBy(() -> jdbc.update(
-                        """
-                        INSERT INTO goal_feedback_export_batch
-                            (id, created_at, status, payload_digest, record_count,
-                             payload_json, deleted_at, expired_at)
-                        VALUES (?, ?, 'OPEN', ?, 1, NULL, NULL, NULL)
-                        """,
-                        UUID.randomUUID(), Timestamp.from(now), digest))
-                .isInstanceOf(DataIntegrityViolationException.class);
-    }
-
-    @Test
     void publicSubmissionCanBeVerifiedPulledRedownloadedAndAtomicallyDeleted() throws Exception {
         PublicationFixture fixture = publicationFixture();
         HttpResponse<String> contextResponse = send(HttpRequest.newBuilder(contextUri(fixture))
@@ -135,12 +99,6 @@ class GoalFeedbackProductionHandoffIntegrationTest {
 
         UUID clientSubmissionId = UUID.randomUUID();
         ObjectNode wrapper = submission(clientSubmissionId, "", resolved.path("context"), "Der Zahlenstrahl ist missverständlich.");
-        ObjectNode wrongNoticeVersion = wrapper.deepCopy();
-        wrongNoticeVersion.withObject("envelope").put("privacyNoticeVersion", "2026-08-30.0");
-        assertThat(submit(wrongNoticeVersion).statusCode()).isEqualTo(400);
-        ObjectNode wrongNoticeLocale = wrapper.deepCopy();
-        wrongNoticeLocale.withObject("envelope").put("privacyNoticeLocale", "de-DE");
-        assertThat(submit(wrongNoticeLocale).statusCode()).isEqualTo(400);
         HttpResponse<String> accepted = submit(wrapper);
         assertThat(accepted.statusCode()).isEqualTo(202);
         JsonNode receipt = objectMapper.readTree(accepted.body());
@@ -205,9 +163,6 @@ class GoalFeedbackProductionHandoffIntegrationTest {
         assertThat(record.path("bindingStatus").textValue()).isEqualTo("exact_current");
         assertThat(record.path("serverTrustedContext").path("context"))
                 .isEqualTo(record.path("envelope").path("context"));
-        assertThat(record.path("envelope").path("privacyNoticeVersion").textValue())
-                .isEqualTo(GoalFeedbackApi.PRIVACY_NOTICE_VERSION);
-        assertThat(record.path("envelope").path("privacyNoticeLocale").textValue()).isEqualTo("de");
         assertThat(record.path("serverTrustedContext").path("goal").path("title").textValue())
                 .isEqualTo(fixture.goalTitle());
         assertThat(record.path("serverTrustedContext").path("goal").path("description").textValue())
@@ -302,8 +257,6 @@ class GoalFeedbackProductionHandoffIntegrationTest {
         feedback.put("category", "wording_or_language");
         feedback.put("observation", observation);
         feedback.put("reviewerRole", "teacher");
-        envelope.put("privacyNoticeVersion", GoalFeedbackApi.PRIVACY_NOTICE_VERSION);
-        envelope.put("privacyNoticeLocale", "de");
         envelope.put("privacyAcknowledged", true);
         envelope.put("automatedProcessingAcknowledged", true);
         return wrapper;

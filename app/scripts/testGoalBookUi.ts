@@ -817,14 +817,15 @@ try {
   const feedbackHref = await feedbackLink.getAttribute('href')
   const feedbackUrl = new URL(feedbackHref ?? '', 'https://skillpilot.test')
   assert(
-    feedbackUrl.pathname === '/lernziel-feedback'
+    feedbackUrl.origin === 'https://skillpilot.com'
+      && feedbackUrl.pathname === '/lernziel-feedback'
       && feedbackUrl.searchParams.get('bookId') === 'de-gym-physik-bundesweit'
       && feedbackUrl.searchParams.get('goalId') === FIRST_GOAL_ID
       && feedbackUrl.searchParams.get('edition') === 'curricular-atomic-v1'
       && feedbackUrl.searchParams.get('goalFingerprint')?.startsWith('sha256:') === true
       && feedbackUrl.searchParams.get('pageFingerprint')?.startsWith('sha256:') === true
       && feedbackUrl.searchParams.get('bookDigest')?.startsWith('sha256:') === true,
-    'the goal-local feedback action is bound to the exact edition and fingerprints',
+    'the goal-local feedback action uses the canonical production origin and exact edition fingerprints',
   )
   assert(
     requests.every(({ method }) => method === 'GET')

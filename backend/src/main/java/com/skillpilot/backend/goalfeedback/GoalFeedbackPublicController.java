@@ -32,12 +32,15 @@ public class GoalFeedbackPublicController {
 
     private final GoalFeedbackPublicationRegistry publications;
     private final GoalFeedbackSubmissionService submissions;
+    private final GoalFeedbackRetentionCoordinator retention;
 
     public GoalFeedbackPublicController(
             GoalFeedbackPublicationRegistry publications,
-            GoalFeedbackSubmissionService submissions) {
+            GoalFeedbackSubmissionService submissions,
+            GoalFeedbackRetentionCoordinator retention) {
         this.publications = publications;
         this.submissions = submissions;
+        this.retention = retention;
     }
 
     @GetMapping(path = "/context", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -81,6 +84,7 @@ public class GoalFeedbackPublicController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SubmissionReceipt> submit(@RequestBody byte[] body) {
+        retention.purgeAllExpiredContent();
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .cacheControl(CacheControl.noStore())
                 .body(submissions.submit(body));

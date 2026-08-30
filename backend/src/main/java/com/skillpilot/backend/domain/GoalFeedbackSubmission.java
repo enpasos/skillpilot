@@ -18,8 +18,9 @@ import org.hibernate.annotations.CreationTimestamp;
  * Version-bound public feedback intake record.
  *
  * <p>The row exists only while feedback is pending or an OPEN export can still
- * be redownloaded. A digest-confirmed export acknowledgement deletes the whole
- * submission row; only the content-free export-batch receipt remains.</p>
+ * be redownloaded. A digest-confirmed export acknowledgement or maximum-age
+ * expiry deletes the whole submission row; only a content-free export-batch
+ * receipt or expiry tombstone remains for a bound submission.</p>
  */
 @Entity
 @Table(

@@ -484,7 +484,7 @@ const expectedAuthorizedRuntimeExceptions = [
     },
     evidenceFile: {
       path:
-        "backend/src/test/java/com/skillpilot/backend/goalfeedback/GoalFeedbackProductionHandoffIntegrationTest.java",
+        "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-30-pre-goal-feedback-activation-GoalFeedbackProductionHandoffIntegrationTest.java",
       sha256:
         "ff053be447e56015dd595b67e3a4cfa2cad7eb2875c42b51c224f6f3f0f0a9dc",
     },
@@ -522,6 +522,35 @@ const expectedAuthorizedRuntimeExceptions = [
         "fcde2e8108d36e58a35f015a274efe5ad361465bafc2296789ea374dd246dec1",
       authorizedSha256:
         "b400ce01f36f653b96271e4f430f97f5595c7617c48132bdf76bcd9630d9a7f0",
+    },
+  },
+  {
+    id: "2026-08-30-goal-feedback-production-activation-safety",
+    approvedAt: "2026-08-30",
+    approvedBy: "product-owner",
+    reason:
+      "Bring the isolated learning-goal feedback channel to life with auditable notice binding, bounded retention, safe production-to-local custody transfer, and content-free terminal receipts.",
+    scope:
+      "Change only the independently isolated learning-goal feedback WebGUI, public feedback envelope and schema, feedback persistence/export/retention implementation, feedback-specific tests and operator documentation; " +
+      "keep application.yml byte-identical and preserve every submitted ChatGPT/MCP/OAuth/tool/schema/UI/session/state/review contract.",
+    target: "current-production-learning-goal-feedback-channel",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-independent-layer-a-feedback-activation-no-submitted-openai-contract-or-review-flow-effect",
+    protectedFile: {
+      path: "backend/src/main/resources/application.yml",
+      submittedSha256:
+        "15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591",
+      priorAuthorizedSha256:
+        "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990",
+      authorizedSha256:
+        "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990",
+    },
+    evidenceFile: {
+      path:
+        "backend/src/test/java/com/skillpilot/backend/goalfeedback/GoalFeedbackProductionHandoffIntegrationTest.java",
+      sha256:
+        "7c6eaba09fe95aa4334b31d9f5a19b65b4d6655926573a0679db75c4fd87159d",
     },
   },
 ];

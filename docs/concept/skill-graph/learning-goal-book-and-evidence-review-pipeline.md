@@ -739,6 +739,11 @@ Every feedback action carries immutable context supplied by the publication:
 - page or canonical URL; and
 - relevant publication manifest fingerprint.
 
+The V2 envelope additionally binds the exact accepted privacy-notice version
+and the displayed notice locale (`de` or `en`). That locale records the UI
+notice the person saw and is deliberately independent of the publication
+locale in `context.locale`.
+
 The form asks for structured observations such as:
 
 - Which mathematical idea or relationship should become clear?
@@ -752,10 +757,12 @@ names, permanent SkillPilot IDs, chat secrets, or unnecessary personal data.
 Submissions warn users not to include identifying learner information.
 
 The public V2 form deliberately has no contact field and no attachment upload.
-It requires separate acknowledgements that no learner/person data was entered
-and that Codex may perform automated critical triage. The feedback prose and an
-optional submitted source reference remain untrusted external input; no link is
-opened merely because it appears in a submission.
+It warns against entering learner or other personal data and requires consent
+to the versioned feedback-specific notice plus a separate acknowledgement that
+Codex may perform automated critical triage after explicit operator
+authorization. The feedback prose and an optional submitted source reference
+remain untrusted external input; no link is opened merely because it appears in
+a submission.
 
 ### 8.3 Moderation and authority
 
@@ -776,10 +783,13 @@ anonymized and, where practical, reviewed blind. This reduces avoidable role
 conflict while preserving critical challenge.
 
 Public triage runs on a slower scheduled cadence, with a separate urgent lane
-for factual, safety, privacy, accessibility, or normative defects. Public
-feedback is retained locally against the exact historical fingerprint even
-after the current goal changes. It is not silently rebound to the current local
-checkout.
+for factual, safety, privacy, accessibility, or normative defects. During an
+authorized review, public feedback remains bound to the exact historical
+fingerprint even after the current goal changes. It is not silently rebound to
+the current local checkout. The operator removes the local raw-data batch after
+critical review and any expressly commissioned improvement are complete.
+Content-bearing Codex session or tool logs are separate artifacts; removing the
+raw-data batch does not automatically remove them.
 
 ### 8.4 Production-to-local custody transfer
 
@@ -818,12 +828,15 @@ The custody protocol is deliberately two phase:
    idempotent: it returns the retained content-free receipt again. There is no
    automatic best-effort delete.
 
-Deleting the live inbox is not a claim that an already-created infrastructure
-backup is immediately rewritten. Before production activation, the
-feedback-specific privacy notice and operations policy must name the backup
-rotation, maximum unexported retention, local review retention, and the contact
-for statutory requests. Until that review and the default-off feature gate are
-deliberately activated, the code is locally prepared rather than a live intake.
+Deleting the live inbox is not a claim that PostgreSQL WAL or an already-created
+infrastructure backup is individually rewritten. The feedback-specific privacy
+notice therefore makes no shorter deletion promise for those copies: their
+continued existence depends on the separately operated infrastructure. Before
+production activation, that operational retention, the maximum unexported
+retention, local review handling, Codex session/tool-log handling, and the
+contact for statutory requests must be reviewed. Until that review and the
+default-off feature gate are deliberately activated, the code is locally
+prepared rather than a live intake.
 
 ### 8.5 Critical Codex intake
 

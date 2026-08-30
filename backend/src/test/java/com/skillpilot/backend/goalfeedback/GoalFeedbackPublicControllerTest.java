@@ -1,6 +1,7 @@
 package com.skillpilot.backend.goalfeedback;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,6 +20,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -28,14 +30,16 @@ class GoalFeedbackPublicControllerTest {
     private static final String DIGEST = "sha256:" + "a".repeat(64);
     private GoalFeedbackPublicationRegistry publications;
     private GoalFeedbackSubmissionService submissions;
+    private GoalFeedbackRetentionCoordinator retention;
     private MockMvc mvc;
 
     @BeforeEach
     void setUp() {
         publications = mock(GoalFeedbackPublicationRegistry.class);
         submissions = mock(GoalFeedbackSubmissionService.class);
+        retention = mock(GoalFeedbackRetentionCoordinator.class);
         mvc = MockMvcBuilders.standaloneSetup(
-                        new GoalFeedbackPublicController(publications, submissions))
+                        new GoalFeedbackPublicController(publications, submissions, retention))
                 .build();
     }
 
@@ -89,5 +93,9 @@ class GoalFeedbackPublicControllerTest {
                 .andExpect(header().string("Cache-Control", "no-store"))
                 .andExpect(jsonPath("$.feedbackId").value(feedbackId.toString()))
                 .andExpect(jsonPath("$.receivedAt").value("2026-08-30T10:00:00Z"));
+
+        InOrder order = inOrder(retention, submissions);
+        order.verify(retention).purgeAllExpiredContent();
+        order.verify(submissions).submit(any());
     }
 }

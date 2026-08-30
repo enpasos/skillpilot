@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 026-add-goal-feedback-retention
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: goal_feedback_export_batch
+        - not:
+            - columnExists:
+                tableName: goal_feedback_export_batch
+                columnName: expired_at
+      changes:
+        - addColumn:
+            tableName: goal_feedback_export_batch
+            columns:
+              - column:
+                  name: expired_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - sql:
+            sql: >-
+              ALTER TABLE goal_feedback_export_batch
+              DROP CONSTRAINT ck_goal_feedback_export_batch_status
+        - sql:
+            sql: >-
+              ALTER TABLE goal_feedback_export_batch
+              ADD CONSTRAINT ck_goal_feedback_export_batch_status
+              CHECK (
+                (status = 'OPEN'
+                  AND payload_json IS NOT NULL
+                  AND deleted_at IS NULL
+                  AND expired_at IS NULL)
+                OR
+                (status = 'DELETED'
+                  AND payload_json IS NULL
+                  AND deleted_at IS NOT NULL
+                  AND expired_at IS NULL)
+                OR
+                (status = 'EXPIRED'
+                  AND payload_json IS NULL
+                  AND deleted_at IS NULL
+                  AND expired_at IS NOT NULL)
+              )

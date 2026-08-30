@@ -392,6 +392,8 @@ export const materializeGoalFeedbackInbox = (
     feedbackId: record.feedbackId,
     envelopeDigest: record.envelopeDigest,
     feedback: record.envelope.feedback,
+    privacyNoticeVersion: record.envelope.privacyNoticeVersion,
+    privacyNoticeLocale: record.envelope.privacyNoticeLocale,
     privacyAcknowledged: record.envelope.privacyAcknowledged,
     automatedProcessingAcknowledged: record.envelope.automatedProcessingAcknowledged,
   })))

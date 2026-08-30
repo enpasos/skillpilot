@@ -2,6 +2,8 @@ import { goalBookDefinitionById } from './goalBookPublicationRegistry'
 
 export const GOAL_BOOK_FEEDBACK_SCHEMA_URL =
   'https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json'
+export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION = '2026-08-30.1' as const
+export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_LOCALES = ['de', 'en'] as const
 export const GOAL_BOOK_FEEDBACK_CONTEXT_ENDPOINT = '/api/public/goal-feedback/v1/context'
 export const GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT = '/api/public/goal-feedback/v1/submissions'
 
@@ -35,6 +37,7 @@ export const GOAL_BOOK_FEEDBACK_REVIEWER_ROLES = [
 
 export type GoalBookFeedbackCategory = typeof GOAL_BOOK_FEEDBACK_CATEGORIES[number]
 export type GoalBookFeedbackReviewerRole = typeof GOAL_BOOK_FEEDBACK_REVIEWER_ROLES[number]
+export type GoalBookFeedbackPrivacyNoticeLocale = typeof GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_LOCALES[number]
 
 export interface GoalBookFeedbackLinkBinding {
   bookId: string
@@ -88,6 +91,8 @@ export interface GoalBookFeedbackSubmissionRequest {
     schemaVersion: 2
     context: GoalBookFeedbackContext
     feedback: GoalBookFeedbackContent
+    privacyNoticeVersion: typeof GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION
+    privacyNoticeLocale: GoalBookFeedbackPrivacyNoticeLocale
     privacyAcknowledged: true
     automatedProcessingAcknowledged: true
   }
@@ -240,11 +245,13 @@ export const createGoalBookFeedbackSubmission = ({
   context,
   content,
   clientSubmissionId,
+  privacyNoticeLocale,
   website = '',
 }: {
   context: GoalBookFeedbackContext
   content: GoalBookFeedbackContent
   clientSubmissionId: string
+  privacyNoticeLocale: GoalBookFeedbackPrivacyNoticeLocale
   website?: string
 }): GoalBookFeedbackSubmissionRequest => ({
   clientSubmissionId,
@@ -254,6 +261,8 @@ export const createGoalBookFeedbackSubmission = ({
     schemaVersion: 2,
     context,
     feedback: content,
+    privacyNoticeVersion: GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
+    privacyNoticeLocale,
     privacyAcknowledged: true,
     automatedProcessingAcknowledged: true,
   },
