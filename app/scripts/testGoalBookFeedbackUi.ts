@@ -96,6 +96,16 @@ try {
   const fixtureUrl = `${server.baseUrl}/scripts/fixtures/goalBookFeedbackUi.html`
   await page.goto(`${fixtureUrl}?${binding.toString()}`)
   await page.getByRole('heading', { name: 'Kritik strukturiert einreichen' }).waitFor()
+  await page.getByRole('heading', { name: 'Datenschutzhinweis für Lernziel-Feedback' }).waitFor()
+  await page.getByText(/Hinweisversion: 2026-08-30\.1/u).waitFor()
+  await page.getByText(/maximale Aufbewahrung 31 Tage/u).waitFor()
+  await page.getByText(/Erst nach einer gesonderten Freigabe durch den Betreiber darf eine Codex-Sitzung die lokale Rohdatei lesen/u).waitFor()
+  await page.getByText(/Codex-Sitzungs- und Tool-Protokolle entstehen/u).waitFor()
+  await page.getByText(/dieser Hinweis sagt dafür keine kürzere Löschfrist zu/u).waitFor()
+  assert(
+    await page.getByRole('link', { name: 'Allgemeine Datenschutzerklärung' }).getAttribute('href') === '/privacy',
+    'the feedback-specific notice links to the general privacy policy',
+  )
   await page.getByRole('heading', { name: 'Rationale Zahlen darstellen und ordnen' }).waitFor()
   assert(await page.locator('form').count() === 1, 'an exact verified binding exposes one form')
   await page.getByText(/Erst nachdem eine digestgebundene lokale Kopie vollständig geschrieben und geprüft wurde/u).waitFor()
@@ -108,8 +118,8 @@ try {
   await page.getByLabel('Wie könnte es besser sein? (optional)').fill('Eine engere Fundstelle verwenden.')
   await page.getByLabel('Quelle oder Fundstelle (optional)').fill('Offizieller Lehrplan, Seite 42')
   await page.getByLabel('Perspektive (optional)').selectOption('teacher')
-  await page.getByLabel(/keine Namen, Lernenden-IDs/u).check()
-  await page.getByLabel(/Codex diese Rückmeldung automatisiert/u).check()
+  await page.getByLabel(/willige in die Verarbeitung/u).check()
+  await page.getByLabel(/Codex diese Rückmeldung nach gesonderter Freigabe/u).check()
   await page.getByRole('button', { name: 'Feedback verbindlich absenden' }).click()
   await page.getByRole('alert').filter({ hasText: 'konnte nicht gespeichert werden' }).waitFor()
   assert(submissions.length === 1, 'a server error does not trigger an automatic retry')
@@ -131,6 +141,8 @@ try {
   const feedback = envelope.feedback as Record<string, unknown>
   assert(
     envelope.schemaVersion === 2
+      && envelope.privacyNoticeVersion === '2026-08-30.1'
+      && envelope.privacyNoticeLocale === 'de'
       && envelope.privacyAcknowledged === true
       && envelope.automatedProcessingAcknowledged === true
       && feedback.category === 'source_assignment'
@@ -147,8 +159,18 @@ try {
   }))
   assert(dimensions.scroll <= dimensions.client, `390px feedback form overflows: ${JSON.stringify(dimensions)}`)
 
+  await page.getByRole('button', { name: 'EN' }).click()
+  await page.getByRole('heading', { name: 'Privacy notice for learning-goal feedback' }).waitFor()
+  await page.getByText(/Notice version: 2026-08-30\.1/u).waitFor()
+  await page.getByText(/maximum retention is 31 days/u).waitFor()
+  await page.getByText(/only after separate authorization by the operator; the content is then processed by the OpenAI Codex service/u).waitFor()
+  await page.getByText(/Codex session and tool logs/u).waitFor()
+  await page.getByText(/does not promise a shorter deletion period/u).waitFor()
+  await page.getByRole('button', { name: 'DE' }).click()
+
   await page.goto(`${fixtureUrl}?${binding.toString()}&goalId=duplicate`)
   await page.getByRole('heading', { name: 'Feedbacklink nicht gültig' }).waitFor()
+  await page.getByRole('heading', { name: 'Datenschutzhinweis für Lernziel-Feedback' }).waitFor()
   assert(await page.locator('form').count() === 0, 'duplicate binding parameters fail closed without a form')
 
   await page.goto(`${fixtureUrl}?${binding.toString()}&unexpected=secret`)

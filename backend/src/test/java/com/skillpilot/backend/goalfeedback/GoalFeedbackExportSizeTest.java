@@ -57,6 +57,8 @@ class GoalFeedbackExportSizeTest {
         envelope.put("schemaVersion", 2);
         envelope.set("context", mapper.valueToTree(context));
         envelope.putObject("feedback").put("category", "other").put("observation", "Hinweis");
+        envelope.put("privacyNoticeVersion", GoalFeedbackApi.PRIVACY_NOTICE_VERSION);
+        envelope.put("privacyNoticeLocale", "de");
         envelope.put("privacyAcknowledged", true);
         envelope.put("automatedProcessingAcknowledged", true);
         String envelopeJson = canonical.serialize(envelope);

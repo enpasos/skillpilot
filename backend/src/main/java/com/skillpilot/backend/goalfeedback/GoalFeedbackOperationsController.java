@@ -24,17 +24,21 @@ public class GoalFeedbackOperationsController {
 
     private final GoalFeedbackExportService exports;
     private final GoalFeedbackCanonicalJson canonicalJson;
+    private final GoalFeedbackRetentionCoordinator retention;
 
     public GoalFeedbackOperationsController(
             GoalFeedbackExportService exports,
-            GoalFeedbackCanonicalJson canonicalJson) {
+            GoalFeedbackCanonicalJson canonicalJson,
+            GoalFeedbackRetentionCoordinator retention) {
         this.exports = exports;
         this.canonicalJson = canonicalJson;
+        this.retention = retention;
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> create(
             @RequestParam(defaultValue = "100") int limit) {
+        retention.purgeAllExpiredContent();
         JsonNode response = exports.create(limit);
         if (response == null) {
             return ResponseEntity.noContent().cacheControl(CacheControl.noStore()).build();
@@ -47,6 +51,7 @@ public class GoalFeedbackOperationsController {
 
     @GetMapping(path = "/{exportId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> get(@PathVariable UUID exportId) {
+        retention.purgeAllExpiredContent();
         JsonNode response = exports.get(exportId);
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
@@ -58,6 +63,7 @@ public class GoalFeedbackOperationsController {
     public ResponseEntity<DeletedExportReceipt> delete(
             @PathVariable UUID exportId,
             @RequestHeader(value = "If-Match", required = false) String ifMatch) {
+        retention.purgeAllExpiredContent();
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
                 .body(exports.delete(exportId, ifMatch));

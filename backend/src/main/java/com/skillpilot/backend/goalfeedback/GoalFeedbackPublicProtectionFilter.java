@@ -1,6 +1,5 @@
 package com.skillpilot.backend.goalfeedback;
 
-import com.skillpilot.backend.config.RawHttpServletRequest;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ReadListener;
 import jakarta.servlet.ServletException;
@@ -22,9 +21,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -33,6 +31,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.ServletRequestPathUtils;
+import org.springframework.web.util.pattern.PathPattern;
+import org.springframework.web.util.pattern.PathPatternParser;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /** Bounded same-site intake boundary; no client network metadata is persisted. */
@@ -41,15 +42,18 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @ConditionalOnExpression("${skillpilot.goal-feedback.enabled:${SKILLPILOT_GOAL_FEEDBACK_ENABLED:false}}")
 public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
 
+    public static final String CONTEXT_PATH = "/api/public/goal-feedback/v1/context";
     public static final String SUBMISSION_PATH = "/api/public/goal-feedback/v1/submissions";
-    private static final String OVERFLOW_BUCKET = "overflow";
-
+    private static final PathPattern CONTEXT_PATTERN =
+            PathPatternParser.defaultInstance.parse(CONTEXT_PATH);
+    private static final PathPattern SUBMISSION_PATTERN =
+            PathPatternParser.defaultInstance.parse(SUBMISSION_PATH);
     private final Set<String> allowedOrigins;
     private final int requestsPerWindow;
     private final long windowMillis;
-    private final int maxClientBuckets;
     private final Clock clock;
-    private final Map<String, WindowCounter> counters = new ConcurrentHashMap<>();
+    private final BoundedClientCounters contextCounters;
+    private final BoundedClientCounters submissionCounters;
 
     @Autowired
     public GoalFeedbackPublicProtectionFilter(
@@ -81,14 +85,16 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
         this.windowMillis = window == null || window.isZero() || window.isNegative()
                 ? Duration.ofMinutes(1).toMillis()
                 : window.toMillis();
-        this.maxClientBuckets = Math.max(1, maxClientBuckets);
         this.clock = clock;
+        int boundedClients = Math.max(1, maxClientBuckets);
+        long initialResetAt = clock.millis() + windowMillis;
+        this.contextCounters = new BoundedClientCounters(boundedClients, initialResetAt);
+        this.submissionCounters = new BoundedClientCounters(boundedClients, initialResetAt);
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = RawHttpServletRequest.requestUri(request);
-        return path == null || !"POST".equals(request.getMethod()) || !SUBMISSION_PATH.equals(path);
+        return !isContextRequest(request) && !isSubmissionRequest(request);
     }
 
     @Override
@@ -97,6 +103,15 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
+        if (isContextRequest(request)) {
+            long retryAfter = acquire(contextCounters, request.getRemoteAddr());
+            if (retryAfter > 0) {
+                reject(response, 429, "rate_limited", retryAfter);
+                return;
+            }
+            filterChain.doFilter(request, response);
+            return;
+        }
         String origin = singleHeader(request, HttpHeaders.ORIGIN);
         if (origin == null || !allowedOrigins.contains(normalizeOrigin(origin))) {
             reject(response, HttpServletResponse.SC_FORBIDDEN, "origin_not_allowed", null);
@@ -113,11 +128,6 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
             reject(response, HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "json_content_type_required", null);
             return;
         }
-        long retryAfter = acquire(request.getRemoteAddr());
-        if (retryAfter > 0) {
-            reject(response, 429, "rate_limited", retryAfter);
-            return;
-        }
         if (request.getContentLengthLong() > GoalFeedbackSubmissionService.MAX_BODY_BYTES) {
             reject(response, HttpServletResponse.SC_REQUEST_ENTITY_TOO_LARGE, "request_too_large", null);
             return;
@@ -127,18 +137,46 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
             reject(response, HttpServletResponse.SC_REQUEST_ENTITY_TOO_LARGE, "request_too_large", null);
             return;
         }
+        long retryAfter = acquire(submissionCounters, request.getRemoteAddr());
+        if (retryAfter > 0) {
+            reject(response, 429, "rate_limited", retryAfter);
+            return;
+        }
         filterChain.doFilter(new CachedBodyRequest(request, body), response);
     }
 
-    private long acquire(String remoteAddress) {
-        long now = clock.millis();
-        if (counters.size() >= maxClientBuckets) {
-            counters.entrySet().removeIf(entry -> entry.getValue().expired(now));
+    private static boolean isContextRequest(HttpServletRequest request) {
+        return ("GET".equals(request.getMethod()) || "HEAD".equals(request.getMethod()))
+                && matchesControllerPath(request, CONTEXT_PATTERN);
+    }
+
+    private static boolean isSubmissionRequest(HttpServletRequest request) {
+        return "POST".equals(request.getMethod())
+                && matchesControllerPath(request, SUBMISSION_PATTERN);
+    }
+
+    private static boolean matchesControllerPath(HttpServletRequest request, PathPattern pattern) {
+        try {
+            return pattern.matches(ServletRequestPathUtils.parse(request).pathWithinApplication());
+        } catch (IllegalArgumentException exception) {
+            // DispatcherServlet uses the same RequestPath parser and cannot route
+            // a malformed path to the controller either.
+            return false;
         }
+    }
+
+    private long acquire(BoundedClientCounters counters, String remoteAddress) {
+        long now = clock.millis();
         String candidate = digest(remoteAddress == null ? "unknown" : remoteAddress);
-        String key = counters.size() >= maxClientBuckets ? OVERFLOW_BUCKET : candidate;
-        WindowCounter counter = counters.computeIfAbsent(key, ignored -> new WindowCounter(now + windowMillis));
-        return counter.acquire(now, windowMillis, requestsPerWindow);
+        return counters.acquire(candidate, now, windowMillis, requestsPerWindow);
+    }
+
+    int contextClientBucketCount() {
+        return contextCounters.clientCount();
+    }
+
+    int submissionClientBucketCount() {
+        return submissionCounters.clientCount();
     }
 
     private static String singleHeader(HttpServletRequest request, String name) {
@@ -223,6 +261,50 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
 
         private synchronized boolean expired(long now) {
             return now >= resetAt;
+        }
+    }
+
+    /**
+     * Strictly bounded client buckets plus one separate shared overflow counter.
+     * Access-order makes expiry recovery O(1): only the eldest client is ever
+     * considered for eviction, and known clients always retain their counter.
+     */
+    private static final class BoundedClientCounters {
+        private final int maximumClients;
+        private final LinkedHashMap<String, WindowCounter> clients =
+                new LinkedHashMap<>(16, 0.75f, true);
+        private final WindowCounter overflow;
+
+        private BoundedClientCounters(int maximumClients, long initialResetAt) {
+            this.maximumClients = maximumClients;
+            this.overflow = new WindowCounter(initialResetAt);
+        }
+
+        private synchronized long acquire(
+                String candidate,
+                long now,
+                long windowMillis,
+                int requestsPerWindow) {
+            WindowCounter counter = clients.get(candidate);
+            if (counter == null) {
+                if (clients.size() >= maximumClients) {
+                    var eldest = clients.entrySet().iterator();
+                    if (eldest.hasNext() && eldest.next().getValue().expired(now)) {
+                        eldest.remove();
+                    }
+                }
+                if (clients.size() < maximumClients) {
+                    counter = new WindowCounter(now + windowMillis);
+                    clients.put(candidate, counter);
+                } else {
+                    counter = overflow;
+                }
+            }
+            return counter.acquire(now, windowMillis, requestsPerWindow);
+        }
+
+        private synchronized int clientCount() {
+            return clients.size();
         }
     }
 

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import {
   createGoalBookFeedbackSubmission,
+  GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
   goalBookFeedbackContextUrl,
   parseGoalBookFeedbackLinkBinding,
   parseGoalBookFeedbackResolvedContext,
@@ -66,6 +67,7 @@ assert.equal(parseGoalBookFeedbackResolvedContext({
 const submission = createGoalBookFeedbackSubmission({
   context: resolved.context,
   clientSubmissionId: '22222222-2222-4222-8222-222222222222',
+  privacyNoticeLocale: 'de',
   content: {
     category: 'source_assignment',
     observation: 'Die Fundstelle deckt nur einen Teil des Lernziels ab.',
@@ -73,10 +75,21 @@ const submission = createGoalBookFeedbackSubmission({
   },
 })
 assert.equal(submission.envelope.schemaVersion, 2)
+assert.equal(submission.envelope.privacyNoticeVersion, GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION)
+assert.equal(submission.envelope.privacyNoticeLocale, 'de')
 assert.equal(submission.envelope.privacyAcknowledged, true)
 assert.equal(submission.envelope.automatedProcessingAcknowledged, true)
 assert.equal(submission.website, '')
 assert(!JSON.stringify(submission).match(/skillpilotId|learnerId|sessionId|chatSession/iu))
+
+const englishSubmission = createGoalBookFeedbackSubmission({
+  context: resolved.context,
+  clientSubmissionId: '44444444-4444-4444-8444-444444444444',
+  privacyNoticeLocale: 'en',
+  content: submission.envelope.feedback,
+})
+assert.equal(englishSubmission.envelope.privacyNoticeVersion, GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION)
+assert.equal(englishSubmission.envelope.privacyNoticeLocale, 'en')
 
 const receipt = {
   feedbackId: '33333333-3333-4333-8333-333333333333',

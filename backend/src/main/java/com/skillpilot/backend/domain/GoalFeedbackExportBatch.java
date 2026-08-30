@@ -15,8 +15,9 @@ import org.hibernate.annotations.CreationTimestamp;
 /**
  * Durable receipt for one bounded export of public learning-goal feedback.
  *
- * <p>Deleting an export scrubs {@code payloadJson}, but preserves its digest,
- * record count and timestamps for audit and exact retry detection.</p>
+ * <p>Deleting or expiring an export scrubs {@code payloadJson}, but preserves
+ * its digest, record count, status and terminal timestamp. {@code DELETED}
+ * proves a digest-confirmed handoff; {@code EXPIRED} explicitly does not.</p>
  */
 @Entity
 @Table(name = "goal_feedback_export_batch")
@@ -46,6 +47,9 @@ public class GoalFeedbackExportBatch {
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
+
+    @Column(name = "expired_at")
+    private Instant expiredAt;
 
     public UUID getId() {
         return id;
@@ -101,5 +105,13 @@ public class GoalFeedbackExportBatch {
 
     public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public Instant getExpiredAt() {
+        return expiredAt;
+    }
+
+    public void setExpiredAt(Instant expiredAt) {
+        this.expiredAt = expiredAt;
     }
 }

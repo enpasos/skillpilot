@@ -53,7 +53,8 @@ public class GoalFeedbackExportService {
             GoalFeedbackSubmissionRepository submissions,
             GoalFeedbackExportBatchRepository batches,
             JdbcTemplate jdbc) {
-        this(objectMapper, canonicalJson, publications, submissions, batches, jdbc, Clock.systemUTC());
+        this(objectMapper, canonicalJson, publications, submissions, batches,
+                jdbc, Clock.systemUTC());
     }
 
     GoalFeedbackExportService(
@@ -163,12 +164,20 @@ public class GoalFeedbackExportService {
         return response;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public JsonNode get(UUID exportId) {
+        // Keep the selected payload stable until the response has been built;
+        // expiration and acknowledged deletion take this same global lock.
+        jdbc.queryForObject(
+                "SELECT pending_rows FROM goal_feedback_inbox_capacity WHERE id = 1 FOR UPDATE",
+                Long.class);
         GoalFeedbackExportBatch batch = batches.findById(exportId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Export batch not found"));
+        if (batch.getStatus() == GoalFeedbackExportBatchStatus.EXPIRED) {
+            throw new ResponseStatusException(HttpStatus.GONE, "Export batch expired before acknowledgement");
+        }
         if (batch.getStatus() != GoalFeedbackExportBatchStatus.OPEN || batch.getPayloadJson() == null) {
-            throw new ResponseStatusException(HttpStatus.GONE, "Export batch payload was deleted");
+            throw new ResponseStatusException(HttpStatus.GONE, "Export batch was deleted after acknowledgement");
         }
         JsonNode payload = verifiedPayload(batch);
         return boundedResponse(batch.getPayloadDigest(), payload);
@@ -182,6 +191,9 @@ public class GoalFeedbackExportService {
                 Long.class);
         GoalFeedbackExportBatch batch = batches.findByIdForUpdate(exportId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Export batch not found"));
+        if (batch.getStatus() == GoalFeedbackExportBatchStatus.EXPIRED) {
+            throw new ResponseStatusException(HttpStatus.GONE, "Export batch expired before acknowledgement");
+        }
         String expectedEntityTag = "\"" + batch.getPayloadDigest() + "\"";
         if (ifMatch == null || !expectedEntityTag.equals(ifMatch)) {
             throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED, "If-Match must equal payloadDigest");

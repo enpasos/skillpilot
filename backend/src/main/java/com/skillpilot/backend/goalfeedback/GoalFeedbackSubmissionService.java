@@ -40,6 +40,8 @@ public class GoalFeedbackSubmissionService {
             "schemaVersion",
             "context",
             "feedback",
+            "privacyNoticeVersion",
+            "privacyNoticeLocale",
             "privacyAcknowledged",
             "automatedProcessingAcknowledged");
     private static final Set<String> CONTEXT_FIELDS = Set.of(
@@ -98,7 +100,8 @@ public class GoalFeedbackSubmissionService {
                     long maxPendingRows,
             @Value("${skillpilot.goal-feedback.inbox.max-pending-bytes:${SKILLPILOT_GOAL_FEEDBACK_MAX_PENDING_BYTES:104857600}}")
                     long maxPendingBytes) {
-        this(objectMapper, publications, canonicalJson, submissions, jdbc, Clock.systemUTC(), maxPendingRows, maxPendingBytes);
+        this(objectMapper, publications, canonicalJson, submissions, jdbc,
+                Clock.systemUTC(), maxPendingRows, maxPendingBytes);
     }
 
     GoalFeedbackSubmissionService(
@@ -148,6 +151,12 @@ public class GoalFeedbackSubmissionService {
         require(envelope.path("schemaVersion").isIntegralNumber()
                         && envelope.path("schemaVersion").intValue() == 2,
                 "Unsupported feedback schemaVersion");
+        require(GoalFeedbackApi.PRIVACY_NOTICE_VERSION.equals(
+                        requiredText(envelope, "privacyNoticeVersion", 50)),
+                "Unsupported privacyNoticeVersion");
+        String privacyNoticeLocale = requiredText(envelope, "privacyNoticeLocale", 2);
+        require(GoalFeedbackApi.PRIVACY_NOTICE_LOCALES.contains(privacyNoticeLocale),
+                "Unsupported privacyNoticeLocale");
         require(envelope.path("privacyAcknowledged").isBoolean()
                         && envelope.path("privacyAcknowledged").booleanValue(),
                 "privacyAcknowledged must be true");
@@ -167,6 +176,8 @@ public class GoalFeedbackSubmissionService {
         normalizedEnvelope.put("schemaVersion", 2);
         normalizedEnvelope.set("context", trustedContext);
         normalizedEnvelope.set("feedback", normalizedFeedback);
+        normalizedEnvelope.put("privacyNoticeVersion", GoalFeedbackApi.PRIVACY_NOTICE_VERSION);
+        normalizedEnvelope.put("privacyNoticeLocale", privacyNoticeLocale);
         normalizedEnvelope.put("privacyAcknowledged", true);
         normalizedEnvelope.put("automatedProcessingAcknowledged", true);
 
@@ -346,14 +357,28 @@ public class GoalFeedbackSubmissionService {
         return requiredString(parent, name, maximumLength, false);
     }
 
-    private static String requiredString(JsonNode parent, String name, int maximumLength, boolean allowEmpty) {
+    static String requiredString(JsonNode parent, String name, int maximumLength, boolean allowEmpty) {
         JsonNode value = parent.get(name);
         require(value != null && value.isTextual(), name + " must be a string");
         String text = value.textValue();
         require(text.length() <= maximumLength, name + " is too long");
-        require(text.trim().equals(text), name + " must not have surrounding whitespace");
+        require(text.isEmpty()
+                        || (!isEcmaScriptWhitespace(text.charAt(0))
+                                && !isEcmaScriptWhitespace(text.charAt(text.length() - 1))),
+                name + " must not have surrounding whitespace");
         require(allowEmpty || !text.isEmpty(), name + " must not be empty");
         return text;
+    }
+
+    /** Matches the whitespace recognized by the JSON Schema consumer's ECMAScript {@code \\s}. */
+    private static boolean isEcmaScriptWhitespace(char character) {
+        return character == '\t'
+                || character == '\n'
+                || character == '\u000b'
+                || character == '\f'
+                || character == '\r'
+                || character == '\ufeff'
+                || Character.isSpaceChar(character);
     }
 
     private static void require(boolean condition, String message) {

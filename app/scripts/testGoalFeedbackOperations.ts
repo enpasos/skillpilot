@@ -47,6 +47,8 @@ const envelope = {
     proposedImprovement: 'Die kanonische Kapitelzuordnung unabhängig prüfen.',
     reviewerRole: 'teacher',
   },
+  privacyNoticeVersion: '2026-08-30.1',
+  privacyNoticeLocale: 'de',
   privacyAcknowledged: true,
   automatedProcessingAcknowledged: true,
 }
@@ -218,6 +220,8 @@ try {
   assert.match(comparison, /"comparisonStatus":"production_current\/local_match"/u)
   const untrusted = await readFile(join(success.inboxDirectory, 'untrusted-feedback.jsonl'), 'utf8')
   assert.match(untrusted, /"trustBoundary":"untrusted_external_input"/u)
+  assert.match(untrusted, /"privacyNoticeVersion":"2026-08-30\.1"/u)
+  assert.match(untrusted, /"privacyNoticeLocale":"de"/u)
   const trusted = await readFile(join(success.inboxDirectory, 'trusted-context.jsonl'), 'utf8')
   assert.match(trusted, /"serverTrustedContext"/u)
   assert.match(trusted, /"title":"Fixture-Lernziel"/u)
@@ -302,6 +306,14 @@ try {
   await assert.rejects(
     validateGoalFeedbackExportBatch(extraKeyBytes),
     /Feedback export record has unexpected or missing properties/u,
+  )
+
+  const wrongNoticeBatch = buildBatch('export-wrong-notice-001', {
+    envelope: { ...envelope, privacyNoticeVersion: '2026-08-30.0' },
+  })
+  await assert.rejects(
+    validateGoalFeedbackExportBatch(batchBytes(wrongNoticeBatch)),
+    /Feedback export envelope violates the V2 contract/u,
   )
 
   const badDigestBatch = { ...buildBatch('export-bad-digest-001'), payloadDigest: DIGEST('f') }

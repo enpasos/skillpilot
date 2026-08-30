@@ -554,8 +554,8 @@ const GoalPage: React.FC<{
 
       <section className="mt-5 rounded-xl border border-violet-300 bg-violet-50/70 p-4 dark:border-violet-900 dark:bg-violet-950/25" aria-label={c.feedbackAction}>
         <p className="text-sm leading-6 text-violet-950 dark:text-violet-100">{c.feedbackPrompt}</p>
-        <Link
-          to={`/lernziel-feedback?${new URLSearchParams({
+        <a
+          href={`https://skillpilot.com/lernziel-feedback?${new URLSearchParams({
             bookId: model.book.id,
             goalId: page.goalId,
             edition: model.book.edition,
@@ -571,7 +571,7 @@ const GoalPage: React.FC<{
         >
           <FlaskConical size={18} aria-hidden="true" />
           {c.feedbackAction}
-        </Link>
+        </a>
       </section>
 
       <nav aria-label="Lernzielreihenfolge" className="mt-7 flex items-stretch justify-between gap-3 border-t border-border-color pt-5">

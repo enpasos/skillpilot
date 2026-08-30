@@ -917,6 +917,36 @@ hashgebunden:
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1PublicContractValidationTest.java`:
   `e401636ab978d8a97b168e8e5bc606b4594e7a21ccae284064f2590a66c158bf`.
 
+### 6.17 Eng begrenzte Ausnahme: sichere Produktionsaktivierung des Lernziel-Feedbacks
+
+Der Product Owner hat am **30. August 2026** mit „freeze soll uns hier nicht
+abhalten“ und anschließend „bitte zum Leben erwecken“ ausdrücklich entschieden,
+den unabhängig isolierten Lernziel-Feedbackkanal produktiv zu aktivieren. Die
+Freigabe umfasst ausschließlich die Feedback-WebGUI, den öffentlichen
+Feedback-Envelope samt Schema, die feedbackspezifische Persistenz, Übergabe,
+Aufbewahrung und Löschung sowie zugehörige Tests und Betriebsdokumentation.
+
+Freigegeben sind insbesondere die auditierbare Bindung an Version und Sprache
+des angezeigten Datenschutzhinweises, die feste 30-Tage-Retention mit täglichem
+Cleanup, inhaltsfreie Terminalbelege und die abgesicherte Übergabe von
+Produktion in die lokale Entwicklungsablage. `application.yml` bleibt dabei
+byte-identisch auf dem bereits autorisierten Hash. Die eingesendete
+ChatGPT-V1-App, MCP-/OAuth-/Tool-/Schema-/UI-/Session-/State-Semantik, ihre
+Reviewfälle und Portalwerte bleiben unverändert; eine Portalaktion ist nicht
+erforderlich.
+
+Die vor dieser Aktivierung hashgebundene Feedback-Regression ist unverändert
+archiviert:
+
+- `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-30-pre-goal-feedback-activation-GoalFeedbackProductionHandoffIntegrationTest.java`:
+  `ff053be447e56015dd595b67e3a4cfa2cad7eb2875c42b51c224f6f3f0f0a9dc`.
+
+Die aktualisierte Regression für Hinweisbindung, Retention und terminale
+Löschzustände ist ebenfalls hashgebunden:
+
+- `backend/src/test/java/com/skillpilot/backend/goalfeedback/GoalFeedbackProductionHandoffIntegrationTest.java`:
+  `7c6eaba09fe95aa4334b31d9f5a19b65b4d6655926573a0679db75c4fd87159d`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

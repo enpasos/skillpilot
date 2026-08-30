@@ -570,10 +570,10 @@ const App: React.FC = () => {
           ? 'Review the SkillPilot mathematics learning goals by chapter, dependency, and full canonical ID.'
           : 'SkillPilot-Lernziele für Mathematik nach Kapiteln, Abhängigkeiten und vollständiger kanonischer ID prüfen.'
       } else if (path === '/lernziel-feedback') {
-        title = `${language === 'en' ? 'Feedback Pilot' : 'Feedback-Pilot'} | ${baseTitle}`
+        title = `${language === 'en' ? 'Learning-goal feedback' : 'Lernziel-Feedback'} | ${baseTitle}`
         description = language === 'en'
-          ? 'Information about the planned version-bound learning-goal feedback pilot.'
-          : 'Informationen zum geplanten versionsgebundenen Feedback-Pilot für Lernziele.'
+          ? 'Submit structured, version-bound criticism of a published SkillPilot learning goal for critical review.'
+          : 'Strukturierte, versionsgebundene Kritik zu einem veröffentlichten SkillPilot-Lernziel zur kritischen Prüfung einreichen.'
       } else if (isWhitepaperPath) {
         const overview = getSkillPilotOverviewCopy(metadataLanguage)
         title = `${overview.title} | ${baseTitle}`
@@ -686,7 +686,9 @@ const App: React.FC = () => {
       ? 'noindex, follow'
       : path === '/plugins'
         ? 'noindex, nofollow'
-        : 'index, follow'
+        : path === '/lernziel-feedback'
+          ? 'noindex, follow'
+          : 'index, follow'
     const imageUrl = `${window.location.origin}/favicon/web-app-manifest-512x512.png`
 
     document.title = title

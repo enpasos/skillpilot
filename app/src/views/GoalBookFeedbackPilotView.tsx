@@ -13,6 +13,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import {
   createGoalBookFeedbackSubmission,
   GOAL_BOOK_FEEDBACK_CATEGORIES,
+  GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
   GOAL_BOOK_FEEDBACK_REVIEWER_ROLES,
   goalBookFeedbackContextUrl,
   parseGoalBookFeedbackLinkBinding,
@@ -41,7 +42,7 @@ const copy = {
     back: 'Zurück zum Lernzielbuch',
     eyebrow: 'Lernziel-Feedback',
     title: 'Kritik strukturiert einreichen',
-    introduction: 'Die Rückmeldung wird exakt an dieses Lernziel und diese Buchfassung gebunden. Sie wird zentral zwischengespeichert und kann anschließend in einer Codex-Sitzung automatisiert und kritisch geprüft werden.',
+    introduction: 'Die Rückmeldung wird exakt an dieses Lernziel und diese Buchfassung gebunden. Sie wird zentral zwischengespeichert und darf erst nach einer gesonderten Freigabe durch den Betreiber in einer Codex-Sitzung automatisiert und kritisch geprüft werden.',
     loading: 'Die geprüfte Lernzielbindung wird geladen …',
     invalidTitle: 'Feedbacklink nicht gültig',
     invalidText: 'Die Lernziel-ID, Seite oder Buchfassung konnte nicht eindeutig geprüft werden. Bitte öffne den Feedbacklink erneut direkt beim gewünschten Lernziel.',
@@ -61,22 +62,39 @@ const copy = {
     sourceHint: 'Dokumenttitel, Link, Seite oder Abschnitt. Links werden nicht automatisch geöffnet.',
     role: 'Perspektive (optional)',
     rolePlaceholder: 'Keine Angabe',
-    privacy: 'Ich habe keine Namen, Lernenden-IDs, Chatverläufe oder andere personenbezogene Daten eingetragen.',
-    automated: 'Ich verstehe, dass Codex diese Rückmeldung automatisiert vorsortieren und prüfen darf. Eine Einsendung ändert das Curriculum nicht automatisch.',
+    automated: 'Ich verstehe, dass Codex diese Rückmeldung nach gesonderter Freigabe durch den Betreiber automatisiert vorsortieren und prüfen darf. Eine Einsendung ändert das Curriculum nicht automatisch.',
     send: 'Feedback verbindlich absenden',
     sending: 'Feedback wird gespeichert …',
     submitError: 'Das Feedback konnte nicht gespeichert werden. Es bleibt im Formular erhalten; bitte versuche es später erneut.',
     successTitle: 'Feedback wurde zentral gespeichert',
-    successText: 'Vielen Dank. Die Rückmeldung kann nun digestgebunden von Codex lokal übernommen und dort kritisch geprüft werden.',
+    successText: 'Vielen Dank. Nach gesonderter Freigabe durch den Betreiber kann die Rückmeldung digestgebunden lokal übernommen und in Codex kritisch geprüft werden.',
     receipt: 'Feedback-ID',
     noPersonalData: 'Bitte keine personenbezogenen Daten, Lernenden-IDs, Chattexte oder Geheimnisse eingeben. Es sind keine Anhänge möglich.',
-    storageNotice: 'Speicherweg: Das Feedback liegt zunächst im aktiven Produktionseingang. Erst nachdem eine digestgebundene lokale Kopie vollständig geschrieben und geprüft wurde, darf Codex den Inhalt dort löschen. Auf Produktion bleibt nur ein inhaltsfreier Löschbeleg; die lokale Kopie bleibt für die kritische Prüfung erhalten.',
+    storageNotice: 'Speicherweg: Das Feedback liegt zunächst im aktiven Produktionseingang. Erst nachdem eine digestgebundene lokale Kopie vollständig geschrieben und geprüft wurde, darf Codex den Inhalt dort löschen. Ohne erfolgreiche Übernahme wird der Inhalt nach 30 Tagen beim nächsten täglichen Bereinigungslauf entfernt; im laufenden Betrieb liegt die Obergrenze damit bei 31 Tagen.',
+    privacyNoticeTitle: 'Datenschutzhinweis für Lernziel-Feedback',
+    privacyNoticeDate: 'Stand: 30. August 2026',
+    privacyNoticeVersion: 'Hinweisversion',
+    privacyNoticeIntro: 'Verantwortlich ist die enpasos - Enterprise Patterns & Solutions GmbH. Die Verarbeitung erfolgt nur für die Prüfung und mögliche Verbesserung der veröffentlichten Lernziele auf Grundlage deiner freiwilligen Einwilligung.',
+    privacyNoticeItems: [
+      'Gespeichert werden die freiwilligen Formularangaben, die gewählte Perspektive, eine zufällige Einsende-ID, Version und Sprache dieses Hinweises sowie die serverseitig bestätigte Lernziel-, Seiten- und Buchbindung. Es werden keine Anhänge, SkillPilot-IDs oder Chatverläufe angefordert.',
+      'Der Inhalt wird zentral im geschützten Produktionseingang gespeichert und darf in eine zugriffsbeschränkte lokale Codex-Entwicklungsablage übertragen werden. Erst nach einer gesonderten Freigabe durch den Betreiber darf eine Codex-Sitzung die lokale Rohdatei lesen; dabei wird der Inhalt durch den von enpasos eingesetzten OpenAI-Codex-Dienst verarbeitet.',
+      'Codex behandelt den Text als nicht vertrauenswürdige externe Kritik, prüft Behauptungen gegen unabhängige Belege und ändert das Curriculum nie automatisch. Eine fachliche Freigabe bleibt erforderlich.',
+      'Nach vollständig geprüfter lokaler Übernahme wird der Inhalt in der aktiven Produktionsdatenbank digestgebunden gelöscht. Nicht übernommener Inhalt und der Inhalt gestrandeter Transfers werden nach 30 Tagen beim nächsten täglichen Bereinigungslauf entfernt; im laufenden Betrieb beträgt die maximale Aufbewahrung 31 Tage. Auf Produktion kann ein inhaltsfreier Auditbeleg aus ID, Digest, Anzahl und Zeitpunkten bestehen bleiben.',
+      'Die lokale Rohdatenkopie bleibt bis zum Abschluss der kritischen Prüfung und einer ausdrücklich beauftragten Verbesserung erhalten und wird anschließend durch den Betreiber entfernt. Bei der Verarbeitung können außerdem inhaltsführende Codex-Sitzungs- und Tool-Protokolle entstehen. Das Entfernen der lokalen Rohdatenkopie löscht diese Protokolle nicht automatisch; für sie gelten die Aufbewahrungs- und Löschkontrollen des eingesetzten OpenAI-Codex-Dienstes.',
+      'Eine Löschung aus den aktiven Systemen schreibt PostgreSQL-WAL oder bereits vorhandene technische Sicherungskopien nicht einzeln um. Ob und wie lange solche Kopien fortbestehen, richtet sich nach der separat betriebenen Infrastruktur; dieser Hinweis sagt dafür keine kürzere Löschfrist zu.',
+      'Du kannst deine Einwilligung jederzeit für die Zukunft widerrufen sowie Auskunft oder Löschung anfragen. Nenne dafür möglichst die angezeigte Feedback-ID. Gesetzliche Rechte und zwingende Aufbewahrungspflichten bleiben unberührt.',
+    ],
+    privacyNoticePolicy: 'Allgemeine Datenschutzerklärung',
+    privacyNoticeContact: 'Datenschutzkontakt',
+    privacyConsentBefore: 'Ich willige in die Verarbeitung gemäß dem ',
+    privacyConsentLink: 'Datenschutzhinweis für Lernziel-Feedback',
+    privacyConsentAfter: ' ein. Die Einwilligung ist freiwillig und kann für die Zukunft widerrufen werden.',
   },
   en: {
     back: 'Back to the learning goal book',
     eyebrow: 'Learning-goal feedback',
     title: 'Submit structured criticism',
-    introduction: 'The feedback is bound to this exact learning goal and book edition. It is held centrally and can then be reviewed automatically and critically in a Codex session.',
+    introduction: 'The feedback is bound to this exact learning goal and book edition. It is held centrally and may be reviewed automatically and critically in a Codex session only after separate authorization by the operator.',
     loading: 'Loading the verified learning-goal binding …',
     invalidTitle: 'Invalid feedback link',
     invalidText: 'The learning-goal ID, page, or book edition could not be verified unambiguously. Please reopen the feedback link directly from the intended learning goal.',
@@ -96,16 +114,33 @@ const copy = {
     sourceHint: 'Document title, link, page, or section. Links are not opened automatically.',
     role: 'Perspective (optional)',
     rolePlaceholder: 'No answer',
-    privacy: 'I have not entered names, learner IDs, chat transcripts, or other personal data.',
-    automated: 'I understand that Codex may automatically sort and assess this feedback. A submission never changes the curriculum automatically.',
+    automated: 'I understand that Codex may automatically sort and assess this feedback after separate authorization by the operator. A submission never changes the curriculum automatically.',
     send: 'Submit feedback',
     sending: 'Saving feedback …',
     submitError: 'The feedback could not be saved. It remains in the form; please try again later.',
     successTitle: 'Feedback stored centrally',
-    successText: 'Thank you. Codex can now transfer the digest-bound feedback locally and review it critically.',
+    successText: 'Thank you. After separate authorization by the operator, the digest-bound feedback can be transferred locally and reviewed critically in Codex.',
     receipt: 'Feedback ID',
     noPersonalData: 'Do not enter personal data, learner IDs, chat content, or secrets. Attachments are not supported.',
-    storageNotice: 'Storage path: Feedback first remains in the active production inbox. Codex may delete its content there only after a digest-bound local copy has been written and verified in full. Production retains only a content-free deletion receipt; the local copy remains available for critical review.',
+    storageNotice: 'Storage path: Feedback first remains in the active production inbox. Codex may delete its content there only after a digest-bound local copy has been written and verified in full. Without a successful transfer, the content is removed in the next daily cleanup run after 30 days; while the service is operating, the upper bound is therefore 31 days.',
+    privacyNoticeTitle: 'Privacy notice for learning-goal feedback',
+    privacyNoticeDate: 'Effective: August 30, 2026',
+    privacyNoticeVersion: 'Notice version',
+    privacyNoticeIntro: 'The controller is enpasos - Enterprise Patterns & Solutions GmbH. We process the submission only to review and potentially improve published learning goals, based on your freely given consent.',
+    privacyNoticeItems: [
+      'We store the voluntary form entries, the selected perspective, a random submission ID, the version and language of this notice, and the server-verified learning-goal, page, and book binding. We do not request attachments, SkillPilot IDs, or chat transcripts.',
+      'The content is stored centrally in the protected production inbox and may be transferred to an access-restricted local Codex development inbox. A Codex session may read the local raw file only after separate authorization by the operator; the content is then processed by the OpenAI Codex service used by enpasos.',
+      'Codex treats the text as untrusted external criticism, checks claims against independent evidence, and never changes the curriculum automatically. Subject-matter approval remains mandatory.',
+      'After a fully verified local transfer, the content is deleted from the active production database using its digest. Content not transferred, including content in a stranded transfer, is removed in the next daily cleanup run after 30 days; while the service is operating, the maximum retention is 31 days. A content-free production audit record consisting of IDs, digests, counts, and timestamps may remain.',
+      'The local raw-data copy is retained until critical review and any expressly commissioned improvement are complete, after which the operator removes it. Processing may also create content-bearing Codex session and tool logs. Removing the local raw-data copy does not automatically delete those logs; they are governed by the retention and deletion controls of the OpenAI Codex service in use.',
+      'Deletion from active systems does not individually rewrite PostgreSQL WAL or existing technical backup copies. Whether and for how long such copies remain depends on the separately operated infrastructure; this notice does not promise a shorter deletion period for them.',
+      'You may withdraw consent for the future at any time and request access or deletion. Please include the displayed feedback ID where possible. Statutory rights and mandatory retention obligations remain unaffected.',
+    ],
+    privacyNoticePolicy: 'General Privacy Policy',
+    privacyNoticeContact: 'Privacy contact',
+    privacyConsentBefore: 'I consent to processing as described in the ',
+    privacyConsentLink: 'learning-goal feedback privacy notice',
+    privacyConsentAfter: '. Consent is voluntary and may be withdrawn for the future.',
   },
 } as const
 
@@ -224,6 +259,8 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       context: loadState.value.context,
       website,
       content,
+      privacyNoticeLocale: locale,
+      privacyNoticeVersion: GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
     })
     if (clientSubmissionRef.current?.payloadIdentity !== payloadIdentity) {
       clientSubmissionRef.current = { payloadIdentity, id: crypto.randomUUID() }
@@ -233,6 +270,7 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       clientSubmissionId: clientSubmissionRef.current.id,
       website,
       content,
+      privacyNoticeLocale: locale,
     })
     setSubmitState({ status: 'submitting' })
     try {
@@ -276,6 +314,29 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
         </p>
         <h1 className="mt-3 text-3xl font-semibold text-slate-800 dark:text-slate-100">{c.title}</h1>
         <p className="mt-4 text-base leading-7 text-text-primary">{c.introduction}</p>
+
+        <section
+          id="feedback-datenschutz"
+          className="mt-7 scroll-mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-800 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-100"
+          aria-labelledby="feedback-privacy-title"
+        >
+          <h2 id="feedback-privacy-title" className="text-base font-semibold">{c.privacyNoticeTitle}</h2>
+          <p className="mt-1 text-xs text-text-secondary">
+            {c.privacyNoticeDate} · {c.privacyNoticeVersion}: {GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION}
+          </p>
+          <p className="mt-3 text-sm leading-6">{c.privacyNoticeIntro}</p>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6">
+            {c.privacyNoticeItems.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <Link to="/privacy" className="font-medium text-sky-700 underline-offset-2 hover:underline dark:text-sky-300">
+              {c.privacyNoticePolicy}
+            </Link>
+            <a href="mailto:support@skillpilot.com" className="font-medium text-sky-700 underline-offset-2 hover:underline dark:text-sky-300">
+              {c.privacyNoticeContact}: support@skillpilot.com
+            </a>
+          </p>
+        </section>
 
         {loadState.status === 'loading' && <p className="mt-8" role="status">{c.loading}</p>}
 
@@ -377,7 +438,13 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
 
                 <label className="flex items-start gap-3 text-sm leading-6 text-text-primary">
                   <input type="checkbox" name="privacyAcknowledged" required className="mt-1 size-5 shrink-0" />
-                  <span>{c.privacy}</span>
+                  <span>
+                    {c.privacyConsentBefore}
+                    <a href="#feedback-datenschutz" className="font-medium text-violet-700 underline-offset-2 hover:underline dark:text-violet-300">
+                      {c.privacyConsentLink}
+                    </a>
+                    {c.privacyConsentAfter}
+                  </span>
                 </label>
                 <label className="flex items-start gap-3 text-sm leading-6 text-text-primary">
                   <input type="checkbox" name="automatedProcessingAcknowledged" required className="mt-1 size-5 shrink-0" />

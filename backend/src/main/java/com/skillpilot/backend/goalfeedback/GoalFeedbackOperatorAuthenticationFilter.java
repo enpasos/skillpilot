@@ -1,6 +1,5 @@
 package com.skillpilot.backend.goalfeedback;
 
-import com.skillpilot.backend.config.RawHttpServletRequest;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +15,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.ServletRequestPathUtils;
+import org.springframework.web.util.pattern.PathPattern;
+import org.springframework.web.util.pattern.PathPatternParser;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /** Independent fail-closed bearer boundary for the production export API. */
@@ -25,6 +27,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class GoalFeedbackOperatorAuthenticationFilter extends OncePerRequestFilter {
 
     public static final String OPERATIONS_PREFIX = "/api/operations/goal-feedback/v1";
+    private static final PathPattern EXPORT_COLLECTION_PATTERN =
+            PathPatternParser.defaultInstance.parse(OPERATIONS_PREFIX + "/export-batches");
+    private static final PathPattern EXPORT_ITEM_PATTERN =
+            PathPatternParser.defaultInstance.parse(OPERATIONS_PREFIX + "/export-batches/{exportId}");
     private final byte[] configuredTokenDigest;
 
     public GoalFeedbackOperatorAuthenticationFilter(
@@ -39,8 +45,14 @@ public class GoalFeedbackOperatorAuthenticationFilter extends OncePerRequestFilt
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = RawHttpServletRequest.requestUri(request);
-        return path == null || !(path.equals(OPERATIONS_PREFIX) || path.startsWith(OPERATIONS_PREFIX + "/"));
+        try {
+            var path = ServletRequestPathUtils.parse(request).pathWithinApplication();
+            return !EXPORT_COLLECTION_PATTERN.matches(path) && !EXPORT_ITEM_PATTERN.matches(path);
+        } catch (IllegalArgumentException exception) {
+            // DispatcherServlet uses the same RequestPath parser and cannot route
+            // a malformed path to the controller either.
+            return true;
+        }
     }
 
     @Override
