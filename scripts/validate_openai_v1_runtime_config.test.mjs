@@ -480,7 +480,7 @@ test("deployment validates the generated application only for the OpenAI coach b
     "./gradlew clean build -x test",
   );
   const builtValidationPosition = deploymentScript.indexOf(
-    "--built-application build/resources/main/application.yml",
+    '--built-application "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/application.yml"',
   );
   const restartPosition = deploymentScript.indexOf('echo "Starte Service neu..."');
   const assetCopyPosition = deploymentScript.indexOf(
@@ -508,6 +508,6 @@ test("deployment validates the generated application only for the OpenAI coach b
   assert.ok(restartPosition > builtValidationPosition);
   assert.match(
     deploymentScript,
-    /if \[ "\$\{VITE_SKILLPILOT_COACH_VARIANT\}" = "openai-mcp" \]; then\n  echo "Prüfe eingebettete OpenAI-Plugin-V1-Build-ID\.\.\."\n  node \.\.\/scripts\/validate_openai_v1_runtime_config\.mjs \\\n    --built-application build\/resources\/main\/application\.yml/,
+    /if \[ "\$\{VITE_SKILLPILOT_COACH_VARIANT\}" = "openai-mcp" \]; then\n  echo "Prüfe eingebettete OpenAI-Plugin-V1-Build-ID\.\.\."\n  node \.\.\/scripts\/validate_openai_v1_runtime_config\.mjs \\\n    --built-application "\$\{SKILLPILOT_BACKEND_BUILD_DIR\}\/resources\/main\/application\.yml"/,
   );
 });
