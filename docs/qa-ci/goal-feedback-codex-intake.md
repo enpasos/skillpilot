@@ -41,21 +41,29 @@ the following before enabling intake:
    authorized local secret store.
 4. Deliberately set `SKILLPILOT_GOAL_FEEDBACK_ENABLED=true` in production.
 5. Review the bounded row/byte capacity and public rate-limit settings for the
-   deployed proxy topology. Because Spring applies forwarded headers, the
-   first-party Nginx vhost must clear `Forwarded`, `X-Forwarded-Host`,
-   `X-Forwarded-Port`, `X-Forwarded-Prefix`, and `X-Forwarded-Ssl`, and overwrite
-   `X-Forwarded-For` with exactly `$remote_addr`; client-appending forwarding
-   values would let a caller influence the per-address bucket. Context lookup
-   and validated submission use separate bounded windows; rejected origins,
-   media types, and oversized POST bodies do not consume the submission window.
+   deployed proxy topology. The intake filter unwraps Spring forwarding
+   wrappers and never uses `X-Forwarded-For`. It accepts exactly one valid
+   `X-Real-IP` only when the raw socket peer is loopback; otherwise it falls
+   back to the raw peer's shared bucket. The first-party Nginx vhost binds the
+   backend to loopback and replaces `X-Real-IP` with `$remote_addr`, so a caller
+   cannot manufacture per-address buckets even while the legacy vhost still
+   appends `X-Forwarded-For`. Missing, duplicate, chained, or malformed
+   `X-Real-IP` values fail closed to the shared proxy bucket. Context lookup and
+   validated submission use separate bounded windows; rejected origins, media
+   types, and oversized POST bodies do not consume the submission window.
 6. Verify the exact current publication snapshot and complete a live canary
    submission, pull, local validation, and deletion-receipt check.
 
 The checked-in configuration never activates the channel itself. Production
-activation is a separate, reviewed root operation with fail-closed source/file
-shape checks, persistent root-only recovery bytes, Nginx hardening before the
-feature flag, readiness and real-context probes, and a dedicated operator
-credential that is never printed.
+activation is a separate, reviewed operator operation with fail-closed
+source/file shape checks, recovery bytes readable only by the service owner,
+readiness and real-context probes, and a dedicated operator credential that is
+never printed. The preferred root helper additionally installs a root-owned
+backup timer and defense-in-depth forwarding-header cleanup. If interactive
+root access is unavailable, the service owner may use an external Spring
+configuration outside Git only after the raw-peer/`X-Real-IP` regression is
+deployed, the live database credential has been rotated, and the application
+backup entrypoint has been rebound to the content-excluding repository script.
 
 ## Maximum pending retention and backup boundary
 
