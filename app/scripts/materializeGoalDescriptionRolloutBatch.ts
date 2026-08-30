@@ -332,6 +332,29 @@ export const buildGoalDescriptionRolloutSubsetModel = ({
   if (missing.length > 0) throw new Error(`Batch goals are absent from the current base GoalBook: ${missing.join(', ')}`)
   const selected = new Set(goalIds)
   const pageNumberByGoalId = new Map(goalIds.map((goalId, index) => [goalId, index + 1]))
+  const selectedBasePages = goalIds.map((goalId) => basePageByGoalId.get(goalId)!)
+  const navigationOrderByGoalId = new Map(
+    [...selectedBasePages]
+      .sort((left, right) => left.navigationOrder - right.navigationOrder)
+      .map(({ goalId }, index) => [goalId, index] as const),
+  )
+  const retainedBaseChapters = baseModel.chapters.filter((chapter) => (
+    chapter.goalIds.some((goalId) => selected.has(goalId))
+  ))
+  const treeOrderByNodeId = new Map(
+    [
+      ...retainedBaseChapters.map((chapter) => ({
+        nodeId: `chapter:${chapter.chapterId}`,
+        treeOrder: chapter.treeOrder,
+      })),
+      ...selectedBasePages.map((page) => ({
+        nodeId: `goal:${page.goalId}`,
+        treeOrder: page.treeOrder,
+      })),
+    ]
+      .sort((left, right) => left.treeOrder - right.treeOrder)
+      .map(({ nodeId }, index) => [nodeId, index] as const),
+  )
 
   goalIds.forEach((goalId, index) => {
     const page = basePageByGoalId.get(goalId)!
@@ -381,6 +404,8 @@ export const buildGoalDescriptionRolloutSubsetModel = ({
     return {
       ...page,
       pageNumber: index + 1,
+      navigationOrder: navigationOrderByGoalId.get(goalId)!,
+      treeOrder: treeOrderByNodeId.get(`goal:${goalId}`)!,
       requires,
       reverseRequires,
       externalPrerequisites,
@@ -395,13 +420,39 @@ export const buildGoalDescriptionRolloutSubsetModel = ({
       page,
     }),
   }))
-  const chapters = baseModel.chapters.flatMap((chapter) => {
+  const chapters = retainedBaseChapters.flatMap((chapter, order) => {
     const chapterPages = pages.filter((page) => page.chapterIds.includes(chapter.chapterId))
     return chapterPages.length === 0 ? [] : [{
       ...chapter,
+      order,
+      treeOrder: treeOrderByNodeId.get(`chapter:${chapter.chapterId}`)!,
       goalIds: chapterPages.map(({ goalId }) => goalId),
       pageNumbers: chapterPages.map(({ pageNumber }) => pageNumber),
     }]
+  })
+  const canonicalProjectionSource = baseModel.navigation.canonicalProjectionSource
+  const derivedProjectionFingerprint = stableDigest({
+    schemaVersion: baseModel.navigation.schemaVersion,
+    viewId: canonicalProjectionSource.viewId,
+    landscapeId: baseModel.book.landscapeId,
+    title: canonicalProjectionSource.title,
+    scope: canonicalProjectionSource.scope,
+    chapters: chapters.map(({ chapterId, label, parentChapterId, order, treeOrder }) => ({
+      chapterId,
+      label,
+      parentChapterId,
+      order,
+      treeOrder,
+    })),
+    placements: [...pages]
+      .sort((left, right) => left.navigationOrder - right.navigationOrder)
+      .map(({ goalId, breadcrumbs, chapterIds, navigationOrder, treeOrder }) => ({
+        goalId,
+        breadcrumbs,
+        chapterIds,
+        navigationOrder,
+        treeOrder,
+      })),
   })
   const baseWithoutDigest = Object.fromEntries(
     Object.entries(baseModel).filter(([key]) => key !== 'digest'),
@@ -417,6 +468,16 @@ export const buildGoalDescriptionRolloutSubsetModel = ({
       excludedTargetAtomicGoalCount: 0,
     },
     source: structuredClone(baseModel.source),
+    navigation: {
+      ...structuredClone(baseModel.navigation),
+      derivedProjection: {
+        kind: 'goal-description-review-subset-v1' as const,
+        baseModelDigest: baseModel.digest,
+        baseProjectionFingerprint: canonicalProjectionSource.projectionFingerprint,
+        projectionFingerprint: derivedProjectionFingerprint,
+        selectedGoalIds: [...goalIds],
+      },
+    },
     chapters,
     pages,
     excludedTargetGoals: [],

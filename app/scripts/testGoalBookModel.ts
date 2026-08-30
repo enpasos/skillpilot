@@ -50,9 +50,14 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
   '508292f2-671b-4fd3-acbf-53d705e44693',
   'f9c24dd8-eaa5-5395-8679-820c1a74e7b7',
 ] as const
-const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
+const LEGACY_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
+const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model-1.1.schema.json'
+const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
+  'curricula/DE/Gymnasium/quality/goal-description-review/mathematik/'
+  + 'calibration-v2/2026-08-25/thales-current/bundle/book-model.json'
+)
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:2c09186739825ba3c9c463d64eced1992206602f67b21b96b3a9239480a1b17f'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:6aeec6aa790cfd6bf35723a979a2ccf271979a9a3d15c7be728157b9be090d3a'
 
 const goal = ({
   id,
@@ -730,15 +735,17 @@ delete physicsAtlasInput.compositionView
 delete physicsAtlasInput.config.compositionViewPath
 physicsAtlasInput.config.compositionViewManifestPath = 'fixtures/physics-atlas.sources.json'
 physicsAtlasInput.compositionViewManifest = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   manifestId: 'fixture-physics-atlas',
   landscapeId: 'fixture-landscape',
-  navigationOwnership: 'common-topic-suffix-v1',
+  navigationOwnership: 'canonical-composition-view-v1',
+  navigationViewPath: 'fixtures/physics-atlas-navigation.view.json',
   expectedJurisdictions: ['DE-BY'],
   durationModelPolicyPath: 'fixtures/duration-model-policy.json',
   expectedCurricularAtomicGoalCount: 4,
   sourcePaths: ['fixtures/physics.view.json'],
 }
+physicsAtlasInput.navigationView = physicsAtlasView
 physicsAtlasInput.compositionViewSources = [{
   path: 'fixtures/physics.view.json',
   view: physicsAtlasView,
@@ -769,10 +776,11 @@ assert.ok(physicsAtlas.pages.every(({ applicability }) => (
 
 const roleAwareAtlasInput = JSON.parse(JSON.stringify(physicsAtlasInput)) as GoalBookBuildInput
 roleAwareAtlasInput.compositionViewManifest = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   manifestId: 'fixture-role-aware-physics-atlas',
   landscapeId: 'fixture-landscape',
-  navigationOwnership: 'common-topic-suffix-v1',
+  navigationOwnership: 'canonical-composition-view-v1',
+  navigationViewPath: 'fixtures/physics-atlas-navigation.view.json',
   expectedJurisdictions: ['DE-BY', 'DE-HE'],
   durationModelPolicyPath: 'fixtures/duration-model-policy.json',
   expectedCurricularAtomicGoalCount: 4,
@@ -1001,7 +1009,7 @@ assert.equal(
 )
 assert.equal(nationalAtlas.source.compositionViewSources?.length, 83)
 assert.match(nationalAtlas.source.compositionViewManifestDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
-assert.equal(nationalAtlas.source.navigationOwnership, 'common-topic-suffix-v1')
+assert.equal(nationalAtlas.source.navigationOwnership, 'canonical-composition-view-v1')
 assert.match(nationalAtlas.source.durationModelPolicyDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
 assert.equal(
   nationalAtlas.source.durationModelPolicyPath,
@@ -1009,6 +1017,16 @@ assert.equal(
 )
 const atlasRootChapters = nationalAtlas.chapters.filter(({ parentChapterId }) => parentChapterId === null)
 assert.deepEqual(atlasRootChapters.map(({ label }) => label), ['Mathematik'])
+assert.equal(
+  nationalAtlas.chapters.filter(({ label }) => label === 'Sekundarstufe II (GK und LK)').length,
+  1,
+  'the nationwide atlas must label its combined canonical profile branch truthfully',
+)
+assert.equal(
+  nationalAtlas.chapters.some(({ label }) => label === 'Sekundarstufe II (GK)'),
+  false,
+  'the nationwide atlas must not present its GK/LK union as a GK-only branch',
+)
 const atlasSiblingKeys = nationalAtlas.chapters.map(({ parentChapterId, label }) => (
   `${parentChapterId ?? 'ROOT'}\0${label}`
 ))
@@ -1032,9 +1050,15 @@ const crossStageHesseScopes = crossStageNavigationPage.applicability
   ?.find(({ jurisdiction }) => jurisdiction === 'DE-HE')?.scopes ?? []
 assert.ok(crossStageHesseScopes.some(({ stage }) => stage === 'SekI'))
 assert.ok(crossStageHesseScopes.some(({ stage }) => stage === 'SekII'))
-assert.deepEqual(crossStageNavigationPage.breadcrumbs, ['Mathematik'])
+assert.deepEqual(crossStageNavigationPage.breadcrumbs, [
+  'Mathematik',
+  'Sekundarstufe II (GK und LK)',
+  'Grundlagen der Analysis und mathematische Modelle',
+  'Funktionen und ihre Darstellung',
+  'Potenzfunktionen und ganzrationale Funktionen in Grundzügen beschreiben',
+])
 assert.equal(crossStageNavigationPage.breadcrumbs.some((label) => (
-  /Sekundarstufe|\(GK\)|\(LK\)/u.test(label)
+  /(?:G8|G9|Hessen|Bayern|Nordrhein-Westfalen)/u.test(label)
 )), false)
 const allAtlasScopes = nationalAtlas.pages.flatMap((page) => (
   page.applicability?.flatMap(({ jurisdiction, scopes }) => scopes.map((scope) => ({
@@ -1187,6 +1211,22 @@ const bookModelSchema = JSON.parse(await readFile(
   'utf8',
 ))
 const validateBookModel = new Ajv2020({ allErrors: true, strict: true }).compile(bookModelSchema)
+const legacyBookModelSchema = JSON.parse(await readFile(
+  fileURLToPath(new URL(`../../${LEGACY_BOOK_MODEL_SCHEMA_PATH}`, import.meta.url)),
+  'utf8',
+))
+const validateLegacyBookModel = new Ajv2020({ allErrors: true, strict: true })
+  .compile(legacyBookModelSchema)
+const legacyBookModel = JSON.parse(await readFile(
+  fileURLToPath(new URL(`../../${LEGACY_BOOK_MODEL_FIXTURE_PATH}`, import.meta.url)),
+  'utf8',
+))
+assert.equal(
+  validateLegacyBookModel(legacyBookModel),
+  true,
+  `archived 1.0 model must remain valid: ${JSON.stringify(validateLegacyBookModel.errors)}`,
+)
+assert.equal(validateBookModel(legacyBookModel), false, '1.1 schema must reject an archived 1.0 model')
 for (const [label, model] of [
   ['SekI', sekIBook],
   ['SekII-GK', sekIIGkBook],
@@ -1199,6 +1239,11 @@ for (const [label, model] of [
   )
   assert.equal(parseAndValidateGoalBookModel(JSON.stringify(model)).digest, model.digest)
 }
+assert.equal(
+  validateLegacyBookModel(nationalAtlas),
+  false,
+  'legacy 1.0 schema must reject a current 1.1 model',
+)
 const modelWithUnknownField = JSON.parse(JSON.stringify(sekIBook)) as Record<string, unknown>
 modelWithUnknownField.unexpected = true
 assert.equal(validateBookModel(modelWithUnknownField), false, 'closed schema rejects unknown fields')

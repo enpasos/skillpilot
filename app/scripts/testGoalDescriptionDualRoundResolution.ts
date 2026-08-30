@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import type { LearningGoal } from '../src/landscapeTypes'
-import { GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION } from './goalBookModel'
+import {
+  GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
+  stableGoalBookJson,
+} from './goalBookModel'
 import { fingerprintGoalForEvidence } from './goalEvidenceProfileModel'
 import {
   buildGoalDescriptionCanonicalContext,
@@ -74,6 +77,8 @@ const goalFingerprint = fingerprintGoalForEvidence(
 )
 const pageWithPlaceholderFingerprint = {
   pageNumber: 1,
+  navigationOrder: 0,
+  treeOrder: 1,
   goalId: canonicalGoal.id,
   anchor: `goal-${canonicalGoal.id}`,
   title: canonicalGoal.title,
@@ -93,6 +98,29 @@ const page = {
   ...pageWithPlaceholderFingerprint,
   pageFingerprint: fingerprintGoalDescriptionReviewPage(pageWithPlaceholderFingerprint),
 }
+const legacyPageWithPlaceholderFingerprint = structuredClone(
+  pageWithPlaceholderFingerprint,
+) as Record<string, unknown>
+delete legacyPageWithPlaceholderFingerprint.navigationOrder
+delete legacyPageWithPlaceholderFingerprint.treeOrder
+assert.equal(
+  fingerprintGoalDescriptionReviewPage(legacyPageWithPlaceholderFingerprint as unknown as typeof page),
+  sha256(Buffer.from(stableGoalBookJson({
+    modelSchemaVersion: '1.0.0',
+    edition: 'curricular-atomic-v1',
+    page: Object.fromEntries(
+      Object.entries(legacyPageWithPlaceholderFingerprint)
+        .filter(([key]) => key !== 'pageFingerprint'),
+    ),
+  }))),
+)
+assert.throws(
+  () => fingerprintGoalDescriptionReviewPage({
+    ...legacyPageWithPlaceholderFingerprint,
+    navigationOrder: 0,
+  } as unknown as typeof page),
+  /mixes 1\.0 and 1\.1 order fields/u,
+)
 const inputGoal = {
   goalId: canonicalGoal.id,
   goalFingerprint,

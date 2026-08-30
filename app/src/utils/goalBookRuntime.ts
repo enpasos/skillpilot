@@ -8,6 +8,10 @@ import {
   goalBookPdfUrl,
   goalBookRenderManifestUrl,
 } from './goalBookPublicationRegistry'
+import {
+  GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
+  type GoalBookNavigationGoalGraph,
+} from './goalBookChapterProjection'
 
 const DEFAULT_GOAL_BOOK_DEFINITION = GOAL_BOOK_PUBLICATION_REGISTRY[0]
 const PHYSICS_GOAL_BOOK_DEFINITION = GOAL_BOOK_PUBLICATION_REGISTRY[1]
@@ -29,6 +33,7 @@ const SAFE_VISUALIZATION_PATH = /^\/assets\/goal-visualizations\/[A-Za-z0-9/_.-]
 const PUBLIC_ATLAS_URL = 'https://skillpilot.com/lernzielbuch'
 const MAX_PAGES = 5_000
 const MAX_CHAPTERS = 1_000
+const MAX_NAVIGATION_GOALS = 20_000
 const MAX_MODEL_BYTES = 8 * 1024 * 1024
 
 export interface GoalBookRuntimeReference {
@@ -51,12 +56,65 @@ export interface GoalBookRuntimeExternalLandscapeSource {
   digest: string
 }
 
+export interface GoalBookRuntimeCompositionViewSource {
+  path: string
+  viewId: string
+  scope: Record<string, string>
+  digest: string
+  projectionFingerprint: string
+}
+
 export interface GoalBookRuntimeChapter {
   chapterId: string
   label: string
   parentChapterId: string | null
+  order: number
+  treeOrder: number
   goalIds: string[]
   pageNumbers: number[]
+}
+
+export type GoalBookProjectionNodeKind = 'structure' | 'cluster' | 'goal'
+
+/**
+ * Adapter boundary for a compiled, scope-specific chapter projection.
+ *
+ * The goal-book model currently publishes the legacy `chapters` array. A
+ * composition-view compiler can supply this closed, ordered shape without
+ * coupling the read-only goal-book UI to Cockpit mastery or focus state.
+ */
+export interface GoalBookSuppliedChapterProjectionNode {
+  nodeId: string
+  label: string
+  parentNodeId: string | null
+  childNodeIds: string[]
+  kind: GoalBookProjectionNodeKind
+  goalId: string | null
+  descendantGoalCount: number
+}
+
+export interface GoalBookSuppliedChapterProjection {
+  projectionId: string
+  viewId?: string | null
+  scope: GoalBookApplicabilityFilter | null
+  digest: string
+  nodes: GoalBookSuppliedChapterProjectionNode[]
+}
+
+export interface GoalBookResolvedChapterProjectionNode
+  extends GoalBookSuppliedChapterProjectionNode {
+  descendantGoalIds: string[]
+}
+
+export interface GoalBookResolvedChapterProjection {
+  projectionId: string
+  viewId: string | null
+  scope: GoalBookApplicabilityFilter | null
+  digest: string
+  source: 'supplied' | 'canonical-fallback'
+  nodes: GoalBookResolvedChapterProjectionNode[]
+  rootNodeIds: string[]
+  goalIds: string[]
 }
 
 export interface GoalBookApplicabilityScope {
@@ -86,6 +144,8 @@ export interface GoalBookApplicabilityOptions {
 
 export interface GoalBookRuntimePage {
   pageNumber: number
+  navigationOrder: number
+  treeOrder: number
   goalId: string
   anchor: string
   title: string
@@ -114,7 +174,7 @@ export interface GoalBookRuntimePage {
 }
 
 export interface GoalBookRuntimeModel {
-  schemaVersion: '1.0.0'
+  schemaVersion: '1.1.0'
   book: {
     id: string
     title: string
@@ -128,6 +188,19 @@ export interface GoalBookRuntimeModel {
   }
   source: {
     externalLandscapes: GoalBookRuntimeExternalLandscapeSource[]
+    compositionViewSources: GoalBookRuntimeCompositionViewSource[]
+  }
+  navigation: {
+    schemaVersion: typeof GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION
+    canonicalProjectionSource: {
+      path: string
+      viewId: string
+      title: string
+      scope: Record<string, string>
+      digest: string
+      projectionFingerprint: string
+    }
+    goalGraph: GoalBookNavigationGoalGraph
   }
   chapters: GoalBookRuntimeChapter[]
   pages: GoalBookRuntimePage[]
@@ -417,10 +490,175 @@ function ensure(condition: unknown): asserts condition {
   if (!condition) fail()
 }
 
+const parseStringScope = (value: unknown): Record<string, string> | null => {
+  const candidate = record(value)
+  if (!candidate || Object.keys(candidate).length > 20) return null
+  const scope: Record<string, string> = {}
+  for (const [key, entry] of Object.entries(candidate)) {
+    if (!nonBlank(key, 100) || !nonBlank(entry, 500)) return null
+    scope[key] = entry
+  }
+  return scope
+}
+
+const parseCompositionViewSources = (
+  value: unknown,
+): GoalBookRuntimeCompositionViewSource[] | null => {
+  if (!Array.isArray(value) || value.length < 1 || value.length > 500) return null
+  const sources: GoalBookRuntimeCompositionViewSource[] = []
+  const bindings = new Set<string>()
+  for (const item of value) {
+    const source = record(item)
+    if (!source || !exactKeys(source, [
+      'path',
+      'viewId',
+      'scope',
+      'digest',
+      'projectionFingerprint',
+    ])) return null
+    const scope = parseStringScope(source.scope)
+    if (
+      !nonBlank(source.path, 2_000)
+      || !nonBlank(source.viewId, 500)
+      || scope === null
+      || !nonBlank(source.digest, 71)
+      || !SAFE_SHA256.test(source.digest)
+      || !nonBlank(source.projectionFingerprint, 71)
+      || !SAFE_SHA256.test(source.projectionFingerprint)
+    ) return null
+    const bindingKey = `${source.viewId}\u0000${JSON.stringify(scope)}`
+    if (bindings.has(bindingKey)) return null
+    bindings.add(bindingKey)
+    sources.push({
+      path: source.path,
+      viewId: source.viewId,
+      scope,
+      digest: source.digest,
+      projectionFingerprint: source.projectionFingerprint,
+    })
+  }
+  return sources
+}
+
+const parseGoalBookNavigation = (
+  value: unknown,
+  landscapeId: string,
+): GoalBookRuntimeModel['navigation'] | null => {
+  const navigation = record(value)
+  if (!navigation || !exactKeys(navigation, [
+    'schemaVersion',
+    'canonicalProjectionSource',
+    'goalGraph',
+  ])) return null
+  if (navigation.schemaVersion !== GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION) return null
+
+  const source = record(navigation.canonicalProjectionSource)
+  if (!source || !exactKeys(source, [
+    'path',
+    'viewId',
+    'title',
+    'scope',
+    'digest',
+    'projectionFingerprint',
+  ])) return null
+  const sourceScope = parseStringScope(source.scope)
+  if (
+    !nonBlank(source.path, 2_000)
+    || !nonBlank(source.viewId, 500)
+    || !nonBlank(source.title, 1_000)
+    || sourceScope === null
+    || !nonBlank(source.digest, 71)
+    || !SAFE_SHA256.test(source.digest)
+    || !nonBlank(source.projectionFingerprint, 71)
+    || !SAFE_SHA256.test(source.projectionFingerprint)
+  ) return null
+
+  const graph = record(navigation.goalGraph)
+  if (!graph || !exactKeys(graph, [
+    'schemaVersion',
+    'landscapeId',
+    'title',
+    'goals',
+    'digest',
+  ])) return null
+  if (
+    graph.schemaVersion !== GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION
+    || graph.landscapeId !== landscapeId
+    || !nonBlank(graph.title, 1_000)
+    || !Array.isArray(graph.goals)
+    || graph.goals.length < 1
+    || graph.goals.length > MAX_NAVIGATION_GOALS
+    || !nonBlank(graph.digest, 71)
+    || !SAFE_SHA256.test(graph.digest)
+  ) return null
+
+  const semanticKinds = new Set([
+    'orientation',
+    'curricularAtomic',
+    'curricularArea',
+    'practiceAssessment',
+    'memory',
+    'programStructure',
+    'runtimeSupport',
+  ])
+  const goals: GoalBookNavigationGoalGraph['goals'] = []
+  const goalIds = new Set<string>()
+  for (const rawGoal of graph.goals) {
+    const goal = record(rawGoal)
+    if (!goal || !exactKeys(goal, ['id', 'title', 'contains', 'type', 'tags', 'semanticKind'])) {
+      return null
+    }
+    const contains = stringList(goal.contains, MAX_NAVIGATION_GOALS, 500)
+    const tags = goal.tags === undefined ? undefined : stringList(goal.tags, 100, 500)
+    if (
+      !nonBlank(goal.id, 500)
+      || !SAFE_GOAL_ID.test(goal.id)
+      || goalIds.has(goal.id)
+      || !nonBlank(goal.title, 1_000)
+      || contains === null
+      || new Set(contains).size !== contains.length
+      || !['atomic', 'cluster'].includes(String(goal.type))
+      || (goal.type === 'atomic' && contains.length > 0)
+      || (goal.type === 'cluster' && contains.length === 0)
+      || tags === null
+      || !semanticKinds.has(String(goal.semanticKind))
+    ) return null
+    goalIds.add(goal.id)
+    goals.push({
+      id: goal.id,
+      title: goal.title,
+      contains,
+      type: goal.type as 'atomic' | 'cluster',
+      ...(tags === undefined ? {} : { tags }),
+      semanticKind: goal.semanticKind as string,
+    })
+  }
+  if (goals.some(({ contains }) => contains.some((goalId) => !goalIds.has(goalId)))) return null
+
+  return {
+    schemaVersion: GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
+    canonicalProjectionSource: {
+      path: source.path,
+      viewId: source.viewId,
+      title: source.title,
+      scope: sourceScope,
+      digest: source.digest,
+      projectionFingerprint: source.projectionFingerprint,
+    },
+    goalGraph: {
+      schemaVersion: GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
+      landscapeId,
+      title: graph.title,
+      goals,
+      digest: graph.digest,
+    },
+  }
+}
+
 export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel => {
   const root = record(value)
   ensure(root !== null)
-  ensure(root.schemaVersion === '1.0.0')
+  ensure(root.schemaVersion === '1.1.0')
   ensure(typeof root.digest === 'string' && SAFE_SHA256.test(root.digest))
   const rawBook = record(root.book)
   ensure(rawBook !== null)
@@ -442,7 +680,11 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
     rawBook.landscapeId,
   )
   ensure(externalLandscapes !== null)
+  const compositionViewSources = parseCompositionViewSources(rawSource.compositionViewSources)
+  ensure(compositionViewSources !== null)
   const externalLandscapeIds = new Set(externalLandscapes.map(({ landscapeId }) => landscapeId))
+  const navigation = parseGoalBookNavigation(root.navigation, rawBook.landscapeId)
+  ensure(navigation !== null)
 
   ensure(Array.isArray(root.pages))
   ensure(root.pages.length === rawBook.pageCount)
@@ -473,6 +715,16 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
     const visualization = parseVisualization(page.visualization)
     const evidenceReview = parseEvidenceReview(page.evidenceReview)
     ensure(typeof page.pageNumber === 'number' && Number.isSafeInteger(page.pageNumber) && page.pageNumber >= 1)
+    ensure(
+      typeof page.navigationOrder === 'number'
+      && Number.isSafeInteger(page.navigationOrder)
+      && page.navigationOrder >= 0
+    )
+    ensure(
+      typeof page.treeOrder === 'number'
+      && Number.isSafeInteger(page.treeOrder)
+      && page.treeOrder >= 0
+    )
     ensure(nonBlank(page.goalId, 500) && SAFE_GOAL_ID.test(page.goalId))
     ensure(nonBlank(page.anchor, 505) && page.anchor === `goal-${page.goalId}`)
     ensure(nonBlank(page.title, 1_000))
@@ -489,6 +741,8 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
     ensure(nonBlank(page.pageFingerprint, 71) && SAFE_SHA256.test(page.pageFingerprint))
     pages.push({
       pageNumber: page.pageNumber,
+      navigationOrder: page.navigationOrder,
+      treeOrder: page.treeOrder,
       goalId: page.goalId,
       anchor: page.anchor,
       title: page.title,
@@ -527,10 +781,22 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
     ensure(goalIds !== null)
     ensure(pageNumbers !== null)
     ensure(goalIds.length === pageNumbers.length)
+    ensure(
+      typeof chapter.order === 'number'
+      && Number.isSafeInteger(chapter.order)
+      && chapter.order === chapters.length
+    )
+    ensure(
+      typeof chapter.treeOrder === 'number'
+      && Number.isSafeInteger(chapter.treeOrder)
+      && chapter.treeOrder >= 0
+    )
     chapters.push({
       chapterId: chapter.chapterId,
       label: chapter.label,
       parentChapterId: chapter.parentChapterId as string | null,
+      order: chapter.order,
+      treeOrder: chapter.treeOrder,
       goalIds,
       pageNumbers,
     })
@@ -546,6 +812,11 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
     pageNumbers.add(page.pageNumber)
   }
   if (pages.some((page, index) => page.pageNumber !== index + 1)) fail()
+  const treeOrders = [
+    ...chapters.map(({ treeOrder }) => treeOrder),
+    ...pages.map(({ treeOrder }) => treeOrder),
+  ].sort((left, right) => left - right)
+  if (treeOrders.some((treeOrder, index) => treeOrder !== index)) fail()
 
   const chapterIds = new Set(chapters.map(({ chapterId }) => chapterId))
   if (chapterIds.size !== chapters.length) fail()
@@ -562,7 +833,7 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
   }
 
   return {
-    schemaVersion: '1.0.0',
+    schemaVersion: '1.1.0',
     book: {
       id: rawBook.id,
       title: rawBook.title,
@@ -574,7 +845,8 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
       publicationMode: rawBook.publicationMode,
       oneGoalPerPage: true,
     },
-    source: { externalLandscapes },
+    source: { externalLandscapes, compositionViewSources },
+    navigation,
     chapters,
     pages,
     digest: root.digest,
@@ -723,18 +995,22 @@ export const filterGoalBookPages = ({
   query,
   chapterId,
   applicability,
+  goalIds,
 }: {
   model: GoalBookRuntimeModel
   query: string
   chapterId: string | null
   applicability?: GoalBookApplicabilityFilter
+  goalIds?: readonly string[] | ReadonlySet<string> | null
 }): GoalBookRuntimePage[] => {
   const normalizedQuery = normalizedSearchText(query)
   const queryParts = normalizedQuery ? normalizedQuery.split(' ') : []
-  const allowedGoalIds = chapterId
-    ? new Set(model.chapters.find((chapter) => chapter.chapterId === chapterId)?.goalIds ?? [])
-    : null
-  return model.pages.filter((page) => {
+  const allowedGoalIds = goalIds !== undefined && goalIds !== null
+    ? new Set(goalIds)
+    : chapterId
+      ? new Set(model.chapters.find((chapter) => chapter.chapterId === chapterId)?.goalIds ?? [])
+      : null
+  const filteredPages = model.pages.filter((page) => {
     if (allowedGoalIds && !allowedGoalIds.has(page.goalId)) return false
     if (applicability && Object.values(applicability).some((value) => value !== null)) {
       if (!page.applicability || !page.applicability.some((group) => {
@@ -757,6 +1033,204 @@ export const filterGoalBookPages = ({
     ].join(' '))
     return queryParts.every((part) => haystack.includes(part))
   })
+  if (!Array.isArray(goalIds)) return filteredPages
+  const requestedOrder = new Map(goalIds.map((goalId, index) => [goalId, index] as const))
+  return filteredPages.sort((left, right) => (
+    (requestedOrder.get(left.goalId) ?? Number.MAX_SAFE_INTEGER)
+    - (requestedOrder.get(right.goalId) ?? Number.MAX_SAFE_INTEGER)
+  ))
+}
+
+const hasApplicabilitySelection = (filter: GoalBookApplicabilityFilter): boolean => (
+  Object.values(filter).some((value) => value !== null)
+)
+
+const legacyChapterProjection = (
+  model: GoalBookRuntimeModel,
+): GoalBookSuppliedChapterProjection => {
+  const orderedNodes = [
+    ...model.chapters.map((chapter) => ({
+      node: {
+        nodeId: chapter.chapterId,
+        label: chapter.label,
+        parentNodeId: chapter.parentChapterId,
+        childNodeIds: [],
+        kind: chapter.chapterId.startsWith('goal:') ? 'cluster' as const : 'structure' as const,
+        goalId: null,
+        descendantGoalCount: chapter.goalIds.length,
+      },
+      treeOrder: chapter.treeOrder,
+    })),
+    ...model.pages.map((page) => ({
+      node: {
+        nodeId: `goal:${page.goalId}`,
+        label: page.title,
+        parentNodeId: page.chapterIds.at(-1) ?? null,
+        childNodeIds: [],
+        kind: 'goal' as const,
+        goalId: page.goalId,
+        descendantGoalCount: 1,
+      },
+      treeOrder: page.treeOrder,
+    })),
+  ].sort((left, right) => left.treeOrder - right.treeOrder)
+  const nodes: GoalBookSuppliedChapterProjectionNode[] = orderedNodes.map(({ node }) => node)
+  const knownChapterIds = new Set(model.chapters.map(({ chapterId }) => chapterId))
+  const nodesById = new Map(nodes.map((node) => [node.nodeId, node] as const))
+  nodes.forEach((node) => {
+    if (!node.parentNodeId || !knownChapterIds.has(node.parentNodeId)) return
+    nodesById.get(node.parentNodeId)?.childNodeIds.push(node.nodeId)
+  })
+  return {
+    projectionId: `canonical-fallback:${model.book.id}:${model.book.edition}`,
+    viewId: null,
+    scope: null,
+    digest: model.digest,
+    nodes,
+  }
+}
+
+const validateAndResolveProjectionNodes = (
+  model: GoalBookRuntimeModel,
+  projection: GoalBookSuppliedChapterProjection,
+  applicableGoalIds: ReadonlySet<string>,
+): Pick<GoalBookResolvedChapterProjection, 'nodes' | 'rootNodeIds' | 'goalIds'> => {
+  ensure(nonBlank(projection.projectionId, 500))
+  ensure(projection.viewId === undefined || projection.viewId === null || nonBlank(projection.viewId, 500))
+  ensure(nonBlank(projection.digest, 200))
+  ensure(Array.isArray(projection.nodes) && projection.nodes.length <= MAX_CHAPTERS + MAX_PAGES)
+
+  const modelGoalIds = new Set(model.pages.map(({ goalId }) => goalId))
+  const nodesById = new Map<string, GoalBookSuppliedChapterProjectionNode>()
+  const placedGoalIds = new Set<string>()
+  for (const node of projection.nodes) {
+    ensure(nonBlank(node.nodeId, 500) && !nodesById.has(node.nodeId))
+    ensure(nonBlank(node.label, 1_000))
+    ensure(node.parentNodeId === null || nonBlank(node.parentNodeId, 500))
+    ensure(Array.isArray(node.childNodeIds) && node.childNodeIds.length <= MAX_CHAPTERS + MAX_PAGES)
+    ensure(new Set(node.childNodeIds).size === node.childNodeIds.length)
+    ensure(['structure', 'cluster', 'goal'].includes(node.kind))
+    ensure(Number.isSafeInteger(node.descendantGoalCount) && node.descendantGoalCount >= 0)
+    if (node.kind === 'goal') {
+      ensure(nonBlank(node.goalId, 500) && modelGoalIds.has(node.goalId))
+      ensure(node.childNodeIds.length === 0 && node.descendantGoalCount === 1)
+      ensure(!placedGoalIds.has(node.goalId))
+      placedGoalIds.add(node.goalId)
+    } else {
+      ensure(node.goalId === null)
+    }
+    nodesById.set(node.nodeId, node)
+  }
+
+  const rootNodeIds: string[] = []
+  for (const node of projection.nodes) {
+    if (node.parentNodeId === null) {
+      rootNodeIds.push(node.nodeId)
+    } else {
+      const parent = nodesById.get(node.parentNodeId)
+      ensure(parent !== undefined && parent.childNodeIds.includes(node.nodeId))
+    }
+    for (const childNodeId of node.childNodeIds) {
+      const child = nodesById.get(childNodeId)
+      ensure(child !== undefined && child.parentNodeId === node.nodeId)
+    }
+  }
+
+  const visiting = new Set<string>()
+  const visited = new Set<string>()
+  const fullDescendants = new Map<string, string[]>()
+  const descendantsFor = (nodeId: string): string[] => {
+    const known = fullDescendants.get(nodeId)
+    if (known) return known
+    ensure(!visiting.has(nodeId))
+    visiting.add(nodeId)
+    const node = nodesById.get(nodeId)
+    ensure(node !== undefined)
+    const descendantGoalIds = node.kind === 'goal'
+      ? [node.goalId as string]
+      : node.childNodeIds.flatMap(descendantsFor)
+    ensure(new Set(descendantGoalIds).size === descendantGoalIds.length)
+    ensure(descendantGoalIds.length === node.descendantGoalCount)
+    visiting.delete(nodeId)
+    visited.add(nodeId)
+    fullDescendants.set(nodeId, descendantGoalIds)
+    return descendantGoalIds
+  }
+  for (const rootNodeId of rootNodeIds) descendantsFor(rootNodeId)
+  ensure(visited.size === projection.nodes.length)
+
+  const retainedNodeIds = new Set<string>()
+  const filteredDescendants = new Map<string, string[]>()
+  const retain = (nodeId: string): string[] => {
+    const node = nodesById.get(nodeId)
+    ensure(node !== undefined)
+    const descendantGoalIds = node.kind === 'goal'
+      ? applicableGoalIds.has(node.goalId as string) ? [node.goalId as string] : []
+      : node.childNodeIds.flatMap(retain)
+    if (descendantGoalIds.length > 0) retainedNodeIds.add(nodeId)
+    filteredDescendants.set(nodeId, descendantGoalIds)
+    return descendantGoalIds
+  }
+  for (const rootNodeId of rootNodeIds) retain(rootNodeId)
+
+  const nodes = projection.nodes.flatMap((node): GoalBookResolvedChapterProjectionNode[] => {
+    if (!retainedNodeIds.has(node.nodeId)) return []
+    const descendantGoalIds = filteredDescendants.get(node.nodeId) ?? []
+    return [{
+      ...node,
+      childNodeIds: node.childNodeIds.filter((childNodeId) => retainedNodeIds.has(childNodeId)),
+      descendantGoalCount: descendantGoalIds.length,
+      descendantGoalIds,
+    }]
+  })
+  const retainedRoots = rootNodeIds.filter((nodeId) => retainedNodeIds.has(nodeId))
+  const projectionGoalIds = retainedRoots.flatMap((rootNodeId) => (
+    filteredDescendants.get(rootNodeId) ?? []
+  ))
+  ensure(
+    projectionGoalIds.length
+      === [...placedGoalIds].filter((goalId) => applicableGoalIds.has(goalId)).length,
+  )
+  return { nodes, rootNodeIds: retainedRoots, goalIds: projectionGoalIds }
+}
+
+/**
+ * Resolves the tree used by the public goal-book navigation. Search is
+ * deliberately absent: it filters the result column, never the authored tree.
+ */
+export const resolveGoalBookChapterProjection = ({
+  model,
+  applicability,
+  suppliedProjection,
+}: {
+  model: GoalBookRuntimeModel
+  applicability: GoalBookApplicabilityFilter
+  suppliedProjection?: GoalBookSuppliedChapterProjection | null
+}): GoalBookResolvedChapterProjection => {
+  const source = suppliedProjection ?? legacyChapterProjection(model)
+  // A matched Composition View is the authoritative target universe for the
+  // resolved learner scope. Applicability filtering is retained only for the
+  // canonical compatibility tree used by partial filters; intersecting a
+  // supplied view again would silently diverge from the Cockpit projection.
+  const applicableGoalIds = suppliedProjection
+    ? new Set(model.pages.map(({ goalId }) => goalId))
+    : new Set(filterGoalBookPages({
+      model,
+      query: '',
+      chapterId: null,
+      applicability,
+    }).map(({ goalId }) => goalId))
+  const resolved = validateAndResolveProjectionNodes(model, source, applicableGoalIds)
+  return {
+    projectionId: source.projectionId,
+    viewId: source.viewId ?? null,
+    scope: suppliedProjection
+      ? source.scope
+      : hasApplicabilitySelection(applicability) ? { ...applicability } : null,
+    digest: source.digest,
+    source: suppliedProjection ? 'supplied' : 'canonical-fallback',
+    ...resolved,
+  }
 }
 
 const sortedUnique = (values: Iterable<string>): string[] => (

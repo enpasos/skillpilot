@@ -44,9 +44,13 @@ const INPUT_V3_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-description-review/v3/goal-description-review-input.schema.json',
 )
-const GOAL_BOOK_MODEL_SCHEMA_PATH = resolve(
+const LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-book/v1/goal-book-model.schema.json',
+)
+const CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH = resolve(
+  REPOSITORY_ROOT,
+  'contracts/goal-book/v1/goal-book-model-1.1.schema.json',
 )
 const EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
@@ -219,11 +223,25 @@ export const fingerprintGoalDescriptionReviewRunManifest = (
 export const fingerprintGoalDescriptionReviewPage = (
   page: GoalDescriptionReviewInputGoal['reviewContext']['page'],
 ) => {
+  const rawPage = page as unknown as Record<string, unknown>
+  const hasNavigationOrder = Object.hasOwn(rawPage, 'navigationOrder')
+  const hasTreeOrder = Object.hasOwn(rawPage, 'treeOrder')
+  if (hasNavigationOrder !== hasTreeOrder) {
+    throw new Error(
+      'GoalBook review page mixes 1.0 and 1.1 order fields; navigationOrder and treeOrder must occur together',
+    )
+  }
+  if (hasNavigationOrder && (
+    !Number.isSafeInteger(rawPage.navigationOrder)
+    || !Number.isSafeInteger(rawPage.treeOrder)
+  )) {
+    throw new Error('GoalBook review page has invalid 1.1 navigationOrder or treeOrder')
+  }
   const pageWithoutFingerprint = Object.fromEntries(
     Object.entries(page).filter(([key]) => key !== 'pageFingerprint'),
   )
   return stableDigest({
-    modelSchemaVersion: GOAL_BOOK_MODEL_SCHEMA_VERSION,
+    modelSchemaVersion: hasNavigationOrder ? GOAL_BOOK_MODEL_SCHEMA_VERSION : '1.0.0',
     edition: GOAL_BOOK_EDITION,
     page: pageWithoutFingerprint,
   })
@@ -612,13 +630,21 @@ let validatorsPromise: ReturnType<typeof createValidators> | null = null
 const createValidators = async () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true })
   addFormats(ajv)
-  const [resolutionSchema, inputV3Schema, goalBookSchema, evidenceProfileSchema] = await Promise.all([
+  const [
+    resolutionSchema,
+    inputV3Schema,
+    legacyGoalBookSchema,
+    currentGoalBookSchema,
+    evidenceProfileSchema,
+  ] = await Promise.all([
     RESOLUTION_SCHEMA_PATH,
     INPUT_V3_SCHEMA_PATH,
-    GOAL_BOOK_MODEL_SCHEMA_PATH,
+    LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH,
+    CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH,
     EVIDENCE_PROFILE_SCHEMA_PATH,
   ].map((path) => readFile(path, 'utf8').then((value) => JSON.parse(value))))
-  ajv.addSchema(goalBookSchema)
+  ajv.addSchema(legacyGoalBookSchema)
+  ajv.addSchema(currentGoalBookSchema)
   ajv.addSchema(evidenceProfileSchema)
   return {
     ajv,

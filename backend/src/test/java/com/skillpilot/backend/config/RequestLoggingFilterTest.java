@@ -51,6 +51,26 @@ class RequestLoggingFilterTest {
     }
 
     @Test
+    void goalFeedbackIntakeAndExportBypassTheGeneralBodyLogger() throws Exception {
+        for (String path : new String[] {
+                "/api/public/goal-feedback/v1/submissions",
+                "/api/operations/goal-feedback/v1/export-batches/export-id"
+        }) {
+            MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
+            request.setContentType("application/json");
+            request.setContent("{\"untrusted\":\"must-not-be-logged\"}"
+                    .getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            MockFilterChain chain = new MockFilterChain();
+
+            filter.doFilter(request, response, chain);
+
+            assertThat(chain.getRequest()).as(path).isSameAs(request);
+            assertThat(chain.getResponse()).as(path).isSameAs(response);
+        }
+    }
+
+    @Test
     void forwardingWrapperCannotExposeAnInternalOpenAiBodyToTheLogger() throws Exception {
         MockHttpServletRequest raw = new MockHttpServletRequest(
                 "POST",

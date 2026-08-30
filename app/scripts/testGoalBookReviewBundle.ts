@@ -9,6 +9,7 @@ import {
   renderGoalBookReviewMarkdown,
   type ExportOptions,
 } from './exportGoalBookReviewBundle'
+import { goalBookFrontMatterPageCount } from './goalBookRenderer'
 
 const hex = (character: string) => `sha256:${character.repeat(64)}`
 const sha256 = (value: string | Buffer) => (
@@ -17,6 +18,8 @@ const sha256 = (value: string | Buffer) => (
 
 const pageWithoutFingerprint = {
   pageNumber: 1,
+  navigationOrder: 0,
+  treeOrder: 2,
   goalId: 'goal-a',
   anchor: 'goal-goal-a',
   title: 'Representations compare',
@@ -34,13 +37,13 @@ const pageWithoutFingerprint = {
 const page = {
   ...pageWithoutFingerprint,
   pageFingerprint: sha256(stableGoalBookJson({
-    modelSchemaVersion: '1.0.0',
+    modelSchemaVersion: '1.1.0',
     edition: 'curricular-atomic-v1',
     page: pageWithoutFingerprint,
   })),
 }
 const modelWithoutDigest = {
-  schemaVersion: '1.0.0',
+  schemaVersion: '1.1.0',
   book: {
     id: 'fixture-book',
     title: 'Fixture learning-goal book',
@@ -68,11 +71,81 @@ const modelWithoutDigest = {
     evidenceReviewSources: [],
     goalFingerprintRuleVersion: 'goal-evidence-v1',
   },
+  navigation: (() => {
+    const goalGraphWithoutDigest = {
+      schemaVersion: '1.0.0' as const,
+      landscapeId: 'fixture-landscape',
+      title: 'Fixture learning-goal graph',
+      goals: [
+        {
+          id: 'cluster-mathematics',
+          title: 'Mathematics',
+          contains: ['goal-a'],
+          type: 'cluster' as const,
+          semanticKind: 'curricularArea',
+        },
+        {
+          id: 'goal-a',
+          title: 'Representations compare',
+          contains: [],
+          type: 'atomic' as const,
+          semanticKind: 'curricularAtomic',
+        },
+      ],
+    }
+    const projection = {
+      schemaVersion: '1.0.0' as const,
+      viewId: 'fixture-view',
+      landscapeId: 'fixture-landscape',
+      title: 'Fixture learning-goal book',
+      scope: { schoolForm: 'Gymnasium', stage: 'SekI' },
+      chapters: [
+        {
+          chapterId: 'structure:mathematics',
+          label: 'Mathematics',
+          parentChapterId: null,
+          order: 0,
+          treeOrder: 0,
+        },
+        {
+          chapterId: 'structure:representations',
+          label: 'Representations',
+          parentChapterId: 'structure:mathematics',
+          order: 1,
+          treeOrder: 1,
+        },
+      ],
+      placements: [{
+        goalId: 'goal-a',
+        breadcrumbs: ['Mathematics', 'Representations'],
+        chapterIds: ['structure:mathematics', 'structure:representations'],
+        navigationOrder: 0,
+        treeOrder: 2,
+      }],
+    }
+    return {
+      schemaVersion: '1.0.0' as const,
+      canonicalProjectionSource: {
+        path: 'curricula/fixture.view.json',
+        viewId: 'fixture-view',
+        title: 'Fixture learning-goal book',
+        scope: { schoolForm: 'Gymnasium', stage: 'SekI' },
+        digest: hex('b'),
+        projectionFingerprint: sha256(stableGoalBookJson(projection)),
+      },
+      goalGraph: {
+        ...goalGraphWithoutDigest,
+        digest: sha256(stableGoalBookJson(goalGraphWithoutDigest)),
+      },
+    }
+  })(),
   chapters: [
     {
       chapterId: 'structure:mathematics',
       label: 'Mathematics',
       parentChapterId: null,
+      order: 0,
+      treeOrder: 0,
       goalIds: ['goal-a'],
       pageNumbers: [1],
     },
@@ -80,6 +153,8 @@ const modelWithoutDigest = {
       chapterId: 'structure:representations',
       label: 'Representations',
       parentChapterId: 'structure:mathematics',
+      order: 1,
+      treeOrder: 1,
       goalIds: ['goal-a'],
       pageNumbers: [1],
     },
@@ -104,8 +179,8 @@ try {
     writeFile(modelPath, `${JSON.stringify(model, null, 2)}\n`),
     writeFile(pdfPath, pdf),
     writeFile(pdfManifestPath, JSON.stringify({
-      schemaVersion: 1,
-      rendererVersion: 'goal-book-renderer-v1',
+      schemaVersion: 2,
+      rendererVersion: 'goal-book-renderer-v2',
       bookId: model.book.id,
       bookEdition: model.book.edition,
       publicationMode: model.book.publicationMode,
@@ -114,6 +189,9 @@ try {
       modelDigest: model.digest,
       format: 'pdf',
       pageCount: model.pages.length,
+      goalPageCount: model.pages.length,
+      frontMatterPageCount: goalBookFrontMatterPageCount(model),
+      physicalPageCount: model.pages.length + goalBookFrontMatterPageCount(model),
       pages: model.pages.map(({
         pageNumber,
         goalId,

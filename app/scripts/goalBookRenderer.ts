@@ -4,12 +4,13 @@ import { mkdtemp, mkdir, readFile, realpath, rename, rm, writeFile } from 'node:
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { promisify } from 'node:util'
 import type { Browser, Page } from 'playwright'
-import type {
-  GoalBookApplicabilityScope,
-  GoalBookExternalReference,
-  GoalBookModel,
-  GoalBookPage,
-  GoalBookReference,
+import {
+  GOAL_BOOK_MODEL_SCHEMA_VERSION,
+  type GoalBookApplicabilityScope,
+  type GoalBookExternalReference,
+  type GoalBookModel,
+  type GoalBookPage,
+  type GoalBookReference,
 } from './goalBookModel'
 
 const execFileAsync = promisify(execFile)
@@ -24,8 +25,16 @@ const GOAL_BOOK_VIRTUAL_ORIGIN = 'https://goal-book.skillpilot.invalid'
 const GOAL_BOOK_VISUALIZATION_HEIGHT_MM = 106
 const GOAL_BOOK_VISUALIZATION_HEIGHT_CSS_PX = GOAL_BOOK_VISUALIZATION_HEIGHT_MM * 96 / 25.4
 const GOAL_BOOK_LAYOUT_TOLERANCE_PX = 1
+const GOAL_BOOK_COVER_PAGE_COUNT = 1
+const GOAL_BOOK_PDF_OUTLINE_MARKER = 'SKILLPILOT-GOAL-BOOK-OUTLINE-V1'
+const MAX_GOAL_BOOK_PDF_OBJECTS = 1_000_000
+const MAX_GOAL_BOOK_PDF_REVISIONS = 4
+const MAX_GOAL_BOOK_PDF_BYTES = 256 * 1024 * 1024
+const PDF_NAMED_DESTINATION_PATTERN = /^[A-Za-z0-9][A-Za-z0-9-]*$/u
 
-export const GOAL_BOOK_RENDERER_VERSION = 'goal-book-renderer-v1' as const
+export const GOAL_BOOK_TOC_ENTRIES_PER_PAGE = 24
+
+export const GOAL_BOOK_RENDERER_VERSION = 'goal-book-renderer-v2' as const
 export const GOAL_BOOK_PRINT_DERIVATIVE_POLICY = Object.freeze({
   version: 'chromium-canvas-v1',
   maxWidthPixels: 1600,
@@ -122,7 +131,7 @@ type PreparedGoalBookAsset = {
 }
 
 export type GoalBookRenderManifest = {
-  schemaVersion: 1
+  schemaVersion: 2
   rendererVersion: typeof GOAL_BOOK_RENDERER_VERSION
   bookId: string
   bookEdition: GoalBookModel['book']['edition']
@@ -131,7 +140,11 @@ export type GoalBookRenderManifest = {
   feedbackBaseUrl: string
   modelDigest: string
   format: 'html' | 'pdf'
+  /** @deprecated Use goalPageCount. Retained as a stable v1 consumer alias. */
   pageCount: number
+  goalPageCount: number
+  frontMatterPageCount: number
+  physicalPageCount: number
   chapters: GoalBookModel['chapters']
   pages: Array<{
     pageNumber: number
@@ -160,6 +173,19 @@ export type GoalBookRenderManifest = {
 }
 
 type GoalBookCopy = {
+  learningGoalBook: string
+  chapterView: string
+  contents: string
+  contentsContinued: string
+  openContents: string
+  backToCover: string
+  atomicGoals: (count: number) => string
+  chapters: (count: number) => string
+  chapterGoals: (count: number) => string
+  firstGoalPage: (page: number) => string
+  contentsContext: (path: string) => string
+  frontMatterPage: (page: number, total: number) => string
+  contentsExplanation: string
   goalId: string
   missingVisualization: string
   visualizationAlt: (title: string) => string
@@ -185,6 +211,19 @@ const copyForLocale = (locale: string): GoalBookCopy => {
   const language = locale.trim().toLowerCase().split(/[-_]/u)[0]
   if (language === 'de') {
     return {
+      learningGoalBook: 'Lernzielbuch',
+      chapterView: 'Kanonische Kapitelsicht',
+      contents: 'Gliederung',
+      contentsContinued: 'Gliederung – Fortsetzung',
+      openContents: 'Zur Gliederung',
+      backToCover: 'Zum Titel',
+      atomicGoals: (count) => `${count} atomare Lernziele`,
+      chapters: (count) => `${count} Kapitel`,
+      chapterGoals: (count) => `${count} Lernziel${count === 1 ? '' : 'e'}`,
+      firstGoalPage: (page) => `erste zugehörige Lernzielseite ${page}`,
+      contentsContext: (path) => `Kontext: ${path}`,
+      frontMatterPage: (page, total) => `Vorspann ${page} von ${total}`,
+      contentsExplanation: 'Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.',
       goalId: 'Lernziel-ID',
       missingVisualization: 'Für dieses Lernziel liegt keine Visualisierung vor.',
       visualizationAlt: (title) => `Visualisierung zum Lernziel „${title}“`,
@@ -195,7 +234,7 @@ const copyForLocale = (locale: string): GoalBookCopy => {
       externalPrerequisites: 'Vorbedingungen außerhalb dieses Buchs',
       externalReversePrerequisites: 'Direkt aufbauende Ziele außerhalb dieses Buchs',
       none: 'Keine',
-      page: (page, total) => `Seite ${page} von ${total}`,
+      page: (page, total) => `Lernzielseite ${page} von ${total}`,
       bookDigest: 'Buch-Digest',
       goalFingerprint: 'Ziel-Fingerprint',
       feedback: 'Feedback zu diesem Lernziel',
@@ -212,6 +251,19 @@ const copyForLocale = (locale: string): GoalBookCopy => {
   }
   if (language === 'en') {
     return {
+      learningGoalBook: 'Learning-goal book',
+      chapterView: 'Canonical chapter view',
+      contents: 'Contents',
+      contentsContinued: 'Contents – continued',
+      openContents: 'Open contents',
+      backToCover: 'Back to cover',
+      atomicGoals: (count) => `${count} atomic learning goals`,
+      chapters: (count) => `${count} chapters`,
+      chapterGoals: (count) => `${count} learning goal${count === 1 ? '' : 's'}`,
+      firstGoalPage: (page) => `first related goal page ${page}`,
+      contentsContext: (path) => `Context: ${path}`,
+      frontMatterPage: (page, total) => `Front matter ${page} of ${total}`,
+      contentsExplanation: 'The chapter view supports navigation. Goal pages retain their prerequisite-based didactic order and therefore do not form artificial chapter blocks.',
       goalId: 'Learning-goal ID',
       missingVisualization: 'No visualization is available for this learning goal.',
       visualizationAlt: (title) => `Visualization for the learning goal “${title}”`,
@@ -222,7 +274,7 @@ const copyForLocale = (locale: string): GoalBookCopy => {
       externalPrerequisites: 'Prerequisites outside this book',
       externalReversePrerequisites: 'Direct dependants outside this book',
       none: 'None',
-      page: (page, total) => `Page ${page} of ${total}`,
+      page: (page, total) => `Goal page ${page} of ${total}`,
       bookDigest: 'Book digest',
       goalFingerprint: 'Goal fingerprint',
       feedback: 'Feedback on this learning goal',
@@ -395,6 +447,10 @@ const escapeHtml = (value: string) => value
   .replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;')
+
+const renderBookmarkSafeChapterLabel = (value: string) => (
+  value.split(' ').map(escapeHtml).join('&#160;<wbr>')
+)
 
 const assertNonEmpty = (value: string, label: string) => {
   if (value.trim().length === 0) {
@@ -765,12 +821,149 @@ const externalReferenceList = (
     </section>`
 }
 
+export const goalBookFrontMatterPageCount = (model: GoalBookModel) => (
+  GOAL_BOOK_COVER_PAGE_COUNT
+    + Math.ceil(model.chapters.length / GOAL_BOOK_TOC_ENTRIES_PER_PAGE)
+)
+
+const chapterAnchor = (chapterId: string) => (
+  `chapter-${createHash('sha256').update(chapterId).digest('hex').slice(0, 24)}`
+)
+
+type GoalBookChapterNavigation = {
+  anchorByChapterId: ReadonlyMap<string, string>
+  depthByChapterId: ReadonlyMap<string, number>
+  contentsPhysicalPageByChapterId: ReadonlyMap<string, number>
+}
+
+const buildChapterNavigation = (model: GoalBookModel): GoalBookChapterNavigation => {
+  const chapterById = new Map(model.chapters.map((chapter) => [chapter.chapterId, chapter]))
+  const anchorByChapterId = new Map<string, string>()
+  const depthByChapterId = new Map<string, number>()
+  const contentsPhysicalPageByChapterId = new Map<string, number>()
+  const seenAnchors = new Set<string>()
+
+  const depthForChapter = (chapterId: string, visiting = new Set<string>()): number => {
+    const knownDepth = depthByChapterId.get(chapterId)
+    if (knownDepth !== undefined) return knownDepth
+    const chapter = chapterById.get(chapterId)
+    if (!chapter) throw new Error(`Unknown goal-book chapter ${chapterId}`)
+    if (visiting.has(chapterId)) {
+      throw new Error(`Goal-book chapter hierarchy contains a cycle at ${chapterId}`)
+    }
+    visiting.add(chapterId)
+    const depth = chapter.parentChapterId === null
+      ? 0
+      : depthForChapter(chapter.parentChapterId, visiting) + 1
+    visiting.delete(chapterId)
+    depthByChapterId.set(chapterId, depth)
+    return depth
+  }
+
+  model.chapters.forEach((chapter, index) => {
+    const anchor = chapterAnchor(chapter.chapterId)
+    if (seenAnchors.has(anchor)) {
+      throw new Error(`Goal-book chapter anchors collide at ${chapter.chapterId}`)
+    }
+    seenAnchors.add(anchor)
+    anchorByChapterId.set(chapter.chapterId, anchor)
+    depthForChapter(chapter.chapterId)
+    contentsPhysicalPageByChapterId.set(
+      chapter.chapterId,
+      GOAL_BOOK_COVER_PAGE_COUNT + 1 + Math.floor(index / GOAL_BOOK_TOC_ENTRIES_PER_PAGE),
+    )
+  })
+
+  return { anchorByChapterId, depthByChapterId, contentsPhysicalPageByChapterId }
+}
+
+const renderGoalBookFrontMatter = (
+  model: GoalBookModel,
+  copy: GoalBookCopy,
+  navigation: GoalBookChapterNavigation,
+) => {
+  const frontMatterPageCount = goalBookFrontMatterPageCount(model)
+  const chapterById = new Map(model.chapters.map((chapter) => [chapter.chapterId, chapter]))
+  const parentContextForChapter = (chapterId: string) => {
+    const parentLabels: string[] = []
+    let parentChapterId = chapterById.get(chapterId)?.parentChapterId ?? null
+    while (parentChapterId !== null) {
+      const parent = chapterById.get(parentChapterId)
+      if (!parent) break
+      parentLabels.unshift(parent.label)
+      parentChapterId = parent.parentChapterId
+    }
+    return parentLabels
+  }
+  const cover = `<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">${escapeHtml(copy.learningGoalBook)}</p>
+    <h1 id="book-title">${escapeHtml(model.book.title)}</h1>
+    <p class="cover-view">${escapeHtml(copy.chapterView)}</p>
+    <dl class="cover-facts">
+      <div><dt>${escapeHtml(copy.atomicGoals(model.pages.length))}</dt><dd>${escapeHtml(copy.chapters(model.chapters.length))}</dd></div>
+      <div><dt>${escapeHtml(model.book.edition)}</dt><dd><code>${escapeHtml(model.digest)}</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">${escapeHtml(copy.openContents)}</a>
+    <footer class="front-matter-footer"><span>${escapeHtml(copy.frontMatterPage(1, frontMatterPageCount))}</span></footer>
+  </section>`
+
+  const contentsPages = Array.from(
+    { length: frontMatterPageCount - GOAL_BOOK_COVER_PAGE_COUNT },
+    (_, contentsIndex) => {
+      const physicalPage = GOAL_BOOK_COVER_PAGE_COUNT + contentsIndex + 1
+      const chapters = model.chapters.slice(
+        contentsIndex * GOAL_BOOK_TOC_ENTRIES_PER_PAGE,
+        (contentsIndex + 1) * GOAL_BOOK_TOC_ENTRIES_PER_PAGE,
+      )
+      const title = contentsIndex === 0 ? copy.contents : copy.contentsContinued
+      const titleId = contentsIndex === 0 ? 'contents' : `contents-page-${contentsIndex + 1}`
+      const continuationContext = contentsIndex === 0 || chapters.length === 0
+        ? []
+        : parentContextForChapter(chapters[0].chapterId)
+      const entries = chapters.map((chapter) => {
+        const depth = navigation.depthByChapterId.get(chapter.chapterId)
+        const anchor = navigation.anchorByChapterId.get(chapter.chapterId)
+        const firstGoal = model.pages[chapter.pageNumbers[0] - 1]
+        if (depth === undefined || !anchor || !firstGoal) {
+          throw new Error(`Goal-book chapter ${chapter.chapterId} has no renderable navigation target`)
+        }
+        // The tagged HTML structure stops at H6. The PDF renderer installs a
+        // separate, exact arbitrary-depth outline from the chapter model.
+        const headingLevel = Math.min(6, depth + 2)
+        return `<div class="toc-entry" style="--toc-depth:${Math.min(depth, 8)}" data-chapter-id="${escapeHtml(chapter.chapterId)}" data-chapter-depth="${depth}">
+          <h${headingLevel} class="toc-entry-heading" id="${escapeHtml(anchor)}" aria-label="${escapeHtml(chapter.label)}"><a href="#${escapeHtml(firstGoal.anchor)}"><span class="toc-entry-label">${renderBookmarkSafeChapterLabel(chapter.label)}</span></a></h${headingLevel}>
+          <span class="toc-entry-meta"><span>${escapeHtml(copy.chapterGoals(chapter.goalIds.length))}</span><span>${escapeHtml(copy.firstGoalPage(chapter.pageNumbers[0]))}</span></span>
+        </div>`
+      }).join('\n')
+      return `<section class="front-matter-page contents-page" data-front-matter-page="${physicalPage}" aria-labelledby="${escapeHtml(titleId)}">
+        <header class="contents-header">
+          <p class="contents-title" id="${escapeHtml(titleId)}">${escapeHtml(title)}</p>
+          ${contentsIndex === 0
+            ? `<p>${escapeHtml(copy.contentsExplanation)}</p>`
+            : continuationContext.length > 0
+              ? `<p class="contents-context">${escapeHtml(copy.contentsContext(continuationContext.join(' › ')))}</p>`
+              : ''}
+        </header>
+        <nav class="toc-tree" aria-label="${escapeHtml(copy.contents)}">${entries}</nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">${escapeHtml(copy.backToCover)}</a>
+          <span>${escapeHtml(copy.frontMatterPage(physicalPage, frontMatterPageCount))}</span>
+        </footer>
+      </section>`
+    },
+  ).join('\n')
+
+  return `${cover}\n${contentsPages}`
+}
+
 const renderPage = (
   model: GoalBookModel,
   page: GoalBookPage,
   options: GoalBookRenderOptions,
   pagesByGoalId: ReadonlyMap<string, GoalBookPage>,
   copy: GoalBookCopy,
+  navigation: GoalBookChapterNavigation,
 ) => {
   const image = embeddedVisualization(page, options)
   const altText = page.visualization?.altText?.trim()
@@ -792,8 +985,10 @@ const renderPage = (
       </figure>`
   const breadcrumbs = page.breadcrumbs.length === 0
     ? ''
-    : `<nav class="breadcrumbs" aria-label="${escapeHtml(copy.topicPath)}"><ol>${page.breadcrumbs.map((part) => (
-      `<li>${escapeHtml(part)}</li>`
+    : `<nav class="breadcrumbs" aria-label="${escapeHtml(copy.topicPath)}"><ol>${page.breadcrumbs.map((part, index) => (
+      `<li>${page.chapterIds[index] && navigation.anchorByChapterId.has(page.chapterIds[index])
+        ? `<a href="#${escapeHtml(navigation.anchorByChapterId.get(page.chapterIds[index])!)}">${escapeHtml(part)}</a>`
+        : escapeHtml(part)}</li>`
     )).join('')}</ol></nav>`
   const directPrerequisites = referenceList('requires', page.requires, pagesByGoalId, copy)
   const reversePrerequisites = referenceList('reverseRequires', page.reverseRequires, pagesByGoalId, copy)
@@ -811,7 +1006,7 @@ const renderPage = (
 
   return `<article class="goal-page${relationDensityClass}" id="${escapeHtml(page.anchor)}" data-goal-id="${escapeHtml(page.goalId)}" data-page-number="${page.pageNumber}" data-chapter-ids="${escapeHtml(page.chapterIds.join(' '))}" aria-labelledby="${escapeHtml(page.anchor)}-title">
     <header class="goal-header">
-      <h1 id="${escapeHtml(page.anchor)}-title"><a class="goal-self-link" href="#${escapeHtml(page.anchor)}">${escapeHtml(page.title)}</a></h1>
+      <h2 class="goal-title" id="${escapeHtml(page.anchor)}-title"><a class="goal-self-link" href="#${escapeHtml(page.anchor)}">${escapeHtml(page.title)}</a></h2>
       <p class="goal-id"><span>${escapeHtml(copy.goalId)}</span> <code>${escapeHtml(page.goalId)}</code></p>
       ${breadcrumbs}
     </header>
@@ -864,6 +1059,48 @@ const STYLES = `
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
     body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
     .goal-page {
       width: 210mm;
       height: 297mm;
@@ -884,8 +1121,9 @@ const STYLES = `
     .goal-page:last-child { break-after: auto; page-break-after: auto; }
     .goal-header { min-width: 0; }
     .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
     .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
-    h1 { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
     .goal-self-link { color: inherit; text-decoration: none; }
     .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
     .goal-id span { font-weight: 700; }
@@ -980,6 +1218,7 @@ const STYLES = `
     .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
     @media print {
       html, body { background: #fff; }
+      .front-matter-page,
       .goal-page { margin: 0; overflow: hidden; }
     }
   `
@@ -992,7 +1231,7 @@ export const assertGoalBookRenderable = (
   assertNonEmpty(model.digest, 'digest')
   assertNonEmpty(options.feedbackBaseUrl, 'feedbackBaseUrl')
   copyForLocale(options.language?.trim() || model.book.locale)
-  if (model.schemaVersion !== '1.0.0') {
+  if (model.schemaVersion !== GOAL_BOOK_MODEL_SCHEMA_VERSION) {
     throw new Error(`Unsupported goal-book model schema version ${model.schemaVersion}`)
   }
   if (model.book.oneGoalPerPage !== true) {
@@ -1011,13 +1250,19 @@ export const assertGoalBookRenderable = (
   }
 
   const goalIds = new Set<string>()
-  const generatedDomIds = new Set<string>()
+  const generatedDomIds = new Set<string>(['book-cover', 'book-title', 'contents'])
   model.pages.forEach((page, index) => {
     assertNonEmpty(page.goalId, `pages[${index}].goalId`)
     assertNonEmpty(page.title, `pages[${index}].title`)
     assertNonEmpty(page.description, `pages[${index}].description`)
     assertNonEmpty(page.goalFingerprint, `pages[${index}].goalFingerprint`)
     assertNonEmpty(page.pageFingerprint, `pages[${index}].pageFingerprint`)
+    if (!Number.isInteger(page.navigationOrder) || page.navigationOrder < 0) {
+      throw new Error(`Goal ${page.goalId} has invalid navigationOrder ${page.navigationOrder}`)
+    }
+    if (!Number.isInteger(page.treeOrder) || page.treeOrder < 0) {
+      throw new Error(`Goal ${page.goalId} has invalid treeOrder ${page.treeOrder}`)
+    }
     if (page.pageNumber !== index + 1) {
       throw new Error(
         `Goal ${page.goalId} has pageNumber ${page.pageNumber}; expected ${index + 1}`,
@@ -1052,7 +1297,75 @@ export const assertGoalBookRenderable = (
     })
   })
   const pagesByGoalId = new Map(model.pages.map((page) => [page.goalId, page]))
-  const chapterIds = new Set(model.chapters.map(({ chapterId }) => chapterId))
+  const chapterIds = new Set<string>()
+  model.chapters.forEach((chapter, index) => {
+    assertNonEmpty(chapter.chapterId, `chapters[${index}].chapterId`)
+    assertNonEmpty(chapter.label, `chapters[${index}].label`)
+    if (chapterIds.has(chapter.chapterId)) {
+      throw new Error(`Duplicate goal-book chapter ${chapter.chapterId}`)
+    }
+    if (chapter.order !== index) {
+      throw new Error(
+        `Goal-book chapter ${chapter.chapterId} has order ${chapter.order}; expected ${index}`,
+      )
+    }
+    if (!Number.isInteger(chapter.treeOrder) || chapter.treeOrder < 0) {
+      throw new Error(
+        `Goal-book chapter ${chapter.chapterId} has invalid treeOrder ${chapter.treeOrder}`,
+      )
+    }
+    if (chapter.parentChapterId !== null && !chapterIds.has(chapter.parentChapterId)) {
+      throw new Error(
+        `Goal-book chapter ${chapter.chapterId} has missing or forward parent ${chapter.parentChapterId}`,
+      )
+    }
+    if (
+      chapter.goalIds.length === 0
+      || chapter.goalIds.length !== chapter.pageNumbers.length
+    ) {
+      throw new Error(`Goal-book chapter ${chapter.chapterId} has invalid page membership`)
+    }
+    chapter.goalIds.forEach((goalId, goalIndex) => {
+      const target = pagesByGoalId.get(goalId)
+      if (!target || target.pageNumber !== chapter.pageNumbers[goalIndex]) {
+        throw new Error(
+          `Goal-book chapter ${chapter.chapterId} has stale goal/page binding for ${goalId}`,
+        )
+      }
+      if (!target.chapterIds.includes(chapter.chapterId)) {
+        throw new Error(
+          `Goal-book chapter ${chapter.chapterId} includes ${goalId} without reciprocal page membership`,
+        )
+      }
+    })
+    const anchor = chapterAnchor(chapter.chapterId)
+    if (generatedDomIds.has(anchor)) throw new Error(`Duplicate generated DOM ID ${anchor}`)
+    generatedDomIds.add(anchor)
+    chapterIds.add(chapter.chapterId)
+  })
+  for (
+    let contentsIndex = 1;
+    contentsIndex < Math.ceil(model.chapters.length / GOAL_BOOK_TOC_ENTRIES_PER_PAGE);
+    contentsIndex += 1
+  ) {
+    const contentsId = `contents-page-${contentsIndex + 1}`
+    if (generatedDomIds.has(contentsId)) throw new Error(`Duplicate generated DOM ID ${contentsId}`)
+    generatedDomIds.add(contentsId)
+  }
+  const navigationOrders = model.pages
+    .map(({ navigationOrder }) => navigationOrder)
+    .sort((left, right) => left - right)
+  if (navigationOrders.some((order, index) => order !== index)) {
+    throw new Error('Goal-book page navigationOrder values must be contiguous from zero')
+  }
+  const treeOrders = [
+    ...model.chapters.map(({ treeOrder }) => treeOrder),
+    ...model.pages.map(({ treeOrder }) => treeOrder),
+  ].sort((left, right) => left - right)
+  if (treeOrders.some((order, index) => order !== index)) {
+    throw new Error('Goal-book chapter and page treeOrder values must be contiguous from zero')
+  }
+  buildChapterNavigation(model)
   const embeddedSources = new Set<string>()
   let embeddedTotalBytes = 0
   const validateInternalReference = (
@@ -1239,8 +1552,10 @@ export const renderGoalBookHtml = (
   const pagesByGoalId = new Map(model.pages.map((page) => [page.goalId, page]))
   const language = options.language?.trim() || model.book.locale
   const copy = copyForLocale(language)
+  const navigation = buildChapterNavigation(model)
+  const frontMatter = renderGoalBookFrontMatter(model, copy, navigation)
   const pages = model.pages.map((page) => (
-    renderPage(model, page, options, pagesByGoalId, copy)
+    renderPage(model, page, options, pagesByGoalId, copy, navigation)
   )).join('\n')
   return `<!doctype html>
 <html lang="${escapeHtml(language)}">
@@ -1254,6 +1569,7 @@ export const renderGoalBookHtml = (
   <style>${STYLES}</style>
 </head>
 <body>
+${frontMatter}
 ${pages}
 </body>
 </html>`
@@ -1285,7 +1601,7 @@ const createGoalBookRenderManifest = (
   artifact: string | Buffer,
   options: GoalBookRenderOptions,
 ): GoalBookRenderManifest => ({
-  schemaVersion: 1,
+  schemaVersion: 2,
   rendererVersion: GOAL_BOOK_RENDERER_VERSION,
   bookId: model.book.id,
   bookEdition: model.book.edition,
@@ -1295,6 +1611,9 @@ const createGoalBookRenderManifest = (
   modelDigest: model.digest,
   format,
   pageCount: model.pages.length,
+  goalPageCount: model.pages.length,
+  frontMatterPageCount: goalBookFrontMatterPageCount(model),
+  physicalPageCount: model.pages.length + goalBookFrontMatterPageCount(model),
   chapters: model.chapters.map((chapter) => ({
     ...chapter,
     goalIds: [...chapter.goalIds],
@@ -1344,6 +1663,46 @@ export const writeGoalBookRenderManifest = async (
   } finally {
     await rm(temporaryDirectory, { force: true, recursive: true })
   }
+}
+
+export const inspectGoalBookFrontMatterLayout = async (
+  page: Page,
+  expectedPageCount: number,
+) => {
+  const metrics = await page.locator('.front-matter-page').evaluateAll((elements) => (
+    elements.map((element) => {
+      const htmlElement = element as HTMLElement
+      return {
+        pageNumber: Number(htmlElement.dataset.frontMatterPage),
+        id: htmlElement.id,
+        scrollWidth: htmlElement.scrollWidth,
+        clientWidth: htmlElement.clientWidth,
+        scrollHeight: htmlElement.scrollHeight,
+        clientHeight: htmlElement.clientHeight,
+      }
+    })
+  ))
+  if (metrics.length !== expectedPageCount) {
+    throw new Error(
+      `Rendered ${metrics.length} front-matter pages; expected exactly ${expectedPageCount}`,
+    )
+  }
+  const invalidPageNumbers = metrics.filter((metric, index) => metric.pageNumber !== index + 1)
+  if (invalidPageNumbers.length > 0) {
+    throw new Error('Goal-book front-matter page numbering is not contiguous')
+  }
+  const overflows = metrics.filter((metric) => (
+    metric.scrollWidth > metric.clientWidth + GOAL_BOOK_LAYOUT_TOLERANCE_PX
+      || metric.scrollHeight > metric.clientHeight + GOAL_BOOK_LAYOUT_TOLERANCE_PX
+  ))
+  if (overflows.length > 0) {
+    throw new Error(
+      `Goal-book front-matter overflow detected; publication aborted: ${overflows.map((metric) => (
+        `${metric.id || metric.pageNumber}: ${metric.scrollWidth}x${metric.scrollHeight} > ${metric.clientWidth}x${metric.clientHeight}`
+      )).join('; ')}`,
+    )
+  }
+  return metrics
 }
 
 export const inspectGoalBookPageLayout = async (
@@ -1627,6 +1986,10 @@ const openValidatedGoalBookPage = async (
       const missing = [...assets.keys()].filter((path) => !servedAssetPaths.has(path))
       throw new Error(`Goal-book local assets were not requested: ${missing.join(', ')}`)
     }
+    await inspectGoalBookFrontMatterLayout(
+      browserPage,
+      goalBookFrontMatterPageCount(model),
+    )
     await inspectGoalBookPageLayout(browserPage, model.pages.length)
     return browserPage
   } catch (error) {
@@ -1710,11 +2073,983 @@ const renderPdfWithBrowser = async (
       printBackground: true,
       preferCSSPageSize: true,
       tagged: true,
-      outline: true,
+      outline: false,
     })
   } finally {
     await browserPage.close()
   }
+}
+
+const decodePdfHexString = (hexSource: string) => {
+  const compactHex = hexSource.replaceAll(/\s/gu, '')
+  const bytes = Buffer.from(
+    compactHex.length % 2 === 0 ? compactHex : `${compactHex}0`,
+    'hex',
+  )
+  if (bytes.length >= 2 && bytes[0] === 0xfe && bytes[1] === 0xff) {
+    let result = ''
+    for (let index = 2; index + 1 < bytes.length; index += 2) {
+      result += String.fromCharCode(bytes.readUInt16BE(index))
+    }
+    return result
+  }
+  if (bytes.length >= 2 && bytes[0] === 0xff && bytes[1] === 0xfe) {
+    let result = ''
+    for (let index = 2; index + 1 < bytes.length; index += 2) {
+      result += String.fromCharCode(bytes.readUInt16LE(index))
+    }
+    return result
+  }
+  return bytes.toString('latin1')
+}
+
+const parsePdfLiteralString = (source: string, openingIndex: number) => {
+  const bytes: number[] = []
+  let depth = 1
+  let index = openingIndex + 1
+  while (index < source.length && depth > 0) {
+    const code = source.charCodeAt(index)
+    if (code === 0x5c) {
+      const escapedCode = source.charCodeAt(index + 1)
+      if (escapedCode === 0x0d || escapedCode === 0x0a) {
+        index += escapedCode === 0x0d && source.charCodeAt(index + 2) === 0x0a ? 3 : 2
+        continue
+      }
+      const escapedCharacter = source[index + 1]
+      if (escapedCharacter && /^[0-7]$/u.test(escapedCharacter)) {
+        const octal = source.slice(index + 1, index + 4).match(/^[0-7]{1,3}/u)?.[0] ?? ''
+        bytes.push(Number.parseInt(octal, 8))
+        index += 1 + octal.length
+        continue
+      }
+      const escapeBytes: Readonly<Record<string, number>> = {
+        n: 0x0a,
+        r: 0x0d,
+        t: 0x09,
+        b: 0x08,
+        f: 0x0c,
+      }
+      bytes.push(escapeBytes[escapedCharacter] ?? escapedCode)
+      index += 2
+      continue
+    }
+    if (code === 0x28) {
+      depth += 1
+      bytes.push(code)
+      index += 1
+      continue
+    }
+    if (code === 0x29) {
+      depth -= 1
+      if (depth > 0) bytes.push(code)
+      index += 1
+      continue
+    }
+    bytes.push(code & 0xff)
+    index += 1
+  }
+  return depth === 0
+    ? { title: Buffer.from(bytes).toString('latin1'), nextIndex: index }
+    : null
+}
+
+type PdfObjectReference = {
+  objectNumber: number
+  generation: number
+}
+
+type PdfXrefEntry = PdfObjectReference & {
+  offset: number
+  inUse: boolean
+}
+
+type ClassicPdfRevision = {
+  xrefOffset: number
+  entries: ReadonlyMap<number, PdfXrefEntry>
+  trailerSource: string
+  size: number
+  root: PdfObjectReference
+  info: PdfObjectReference | null
+  previousXrefOffset: number | null
+}
+
+type ClassicPdfContext = {
+  source: string
+  latest: ClassicPdfRevision
+  revisions: readonly ClassicPdfRevision[]
+  entries: ReadonlyMap<number, PdfXrefEntry>
+}
+
+export type GoalBookPdfOutlineNode = {
+  title: string
+  destination: string
+  children: GoalBookPdfOutlineNode[]
+}
+
+type PlannedGoalBookPdfOutlineNode = GoalBookPdfOutlineNode & {
+  kind: 'book' | 'chapter' | 'goal'
+  sourceId: string
+  treeOrder: number
+  children: PlannedGoalBookPdfOutlineNode[]
+}
+
+type ParsedGoalBookPdfOutlineNode = GoalBookPdfOutlineNode & {
+  reference: PdfObjectReference
+  count: number | null
+  children: ParsedGoalBookPdfOutlineNode[]
+}
+
+const pdfReferenceEquals = (
+  left: PdfObjectReference | null,
+  right: PdfObjectReference | null,
+) => left?.objectNumber === right?.objectNumber && left?.generation === right?.generation
+
+const pdfReferenceLabel = ({ objectNumber, generation }: PdfObjectReference) => (
+  `${objectNumber} ${generation} R`
+)
+
+const parseSinglePdfReference = (
+  source: string,
+  key: string,
+  required: boolean,
+) => {
+  const matches = [...source.matchAll(new RegExp(
+    `/${key}\\s+(\\d+)\\s+(\\d+)\\s+R\\b`,
+    'gu',
+  ))]
+  if (matches.length > 1 || (required && matches.length !== 1)) {
+    throw new Error(
+      `Goal-book PDF must contain ${required ? 'exactly one' : 'at most one'} /${key} reference`,
+    )
+  }
+  if (matches.length === 0) return null
+  return {
+    objectNumber: Number(matches[0][1]),
+    generation: Number(matches[0][2]),
+  } satisfies PdfObjectReference
+}
+
+const parseSinglePdfInteger = (
+  source: string,
+  key: string,
+  required: boolean,
+) => {
+  const matches = [...source.matchAll(new RegExp(`/${key}\\s+(-?\\d+)\\b`, 'gu'))]
+  if (matches.length > 1 || (required && matches.length !== 1)) {
+    throw new Error(
+      `Goal-book PDF must contain ${required ? 'exactly one' : 'at most one'} /${key} integer`,
+    )
+  }
+  return matches.length === 0 ? null : Number(matches[0][1])
+}
+
+const parseSinglePdfName = (
+  source: string,
+  key: string,
+  required: boolean,
+) => {
+  const matches = [...source.matchAll(new RegExp(
+    `/${key}\\s+/([A-Za-z0-9][A-Za-z0-9-]*)\\b`,
+    'gu',
+  ))]
+  if (matches.length > 1 || (required && matches.length !== 1)) {
+    throw new Error(
+      `Goal-book PDF must contain ${required ? 'exactly one' : 'at most one'} /${key} name`,
+    )
+  }
+  return matches.length === 0 ? null : matches[0][1]
+}
+
+const readPdfLine = (source: string, start: number) => {
+  const lineFeed = source.indexOf('\n', start)
+  if (lineFeed < 0) return { line: source.slice(start).replace(/\r$/u, ''), next: source.length }
+  return {
+    line: source.slice(start, lineFeed).replace(/\r$/u, ''),
+    next: lineFeed + 1,
+  }
+}
+
+const extractPdfDictionary = (source: string, start: number) => {
+  if (source.slice(start, start + 2) !== '<<') {
+    throw new Error(`Goal-book PDF expected a dictionary at byte ${start}`)
+  }
+  let dictionaryDepth = 0
+  let literalDepth = 0
+  let inHexString = false
+  let inComment = false
+  let escaped = false
+  for (let index = start; index < source.length; index += 1) {
+    const character = source[index]
+    if (inComment) {
+      if (character === '\r' || character === '\n') inComment = false
+      continue
+    }
+    if (literalDepth > 0) {
+      if (escaped) {
+        escaped = false
+      } else if (character === '\\') {
+        escaped = true
+      } else if (character === '(') {
+        literalDepth += 1
+      } else if (character === ')') {
+        literalDepth -= 1
+      }
+      continue
+    }
+    if (inHexString) {
+      if (character === '>') inHexString = false
+      continue
+    }
+    if (character === '%') {
+      inComment = true
+      continue
+    }
+    if (character === '(') {
+      literalDepth = 1
+      continue
+    }
+    if (character === '<' && source[index + 1] !== '<') {
+      inHexString = true
+      continue
+    }
+    if (source.slice(index, index + 2) === '<<') {
+      dictionaryDepth += 1
+      index += 1
+      continue
+    }
+    if (source.slice(index, index + 2) === '>>') {
+      dictionaryDepth -= 1
+      index += 1
+      if (dictionaryDepth === 0) {
+        return { source: source.slice(start, index + 1), end: index + 1 }
+      }
+    }
+  }
+  throw new Error(`Goal-book PDF has an unterminated dictionary at byte ${start}`)
+}
+
+const parseClassicPdfRevision = (source: string, xrefOffset: number): ClassicPdfRevision => {
+  if (!Number.isSafeInteger(xrefOffset) || xrefOffset < 0 || xrefOffset >= source.length) {
+    throw new Error(`Goal-book PDF has an invalid xref offset ${xrefOffset}`)
+  }
+  let cursor = xrefOffset
+  let lineResult = readPdfLine(source, cursor)
+  if (lineResult.line !== 'xref') {
+    throw new Error(`Goal-book PDF must use a classic xref table at byte ${xrefOffset}`)
+  }
+  cursor = lineResult.next
+  const entries = new Map<number, PdfXrefEntry>()
+  while (cursor < source.length) {
+    lineResult = readPdfLine(source, cursor)
+    cursor = lineResult.next
+    const line = lineResult.line.trim()
+    if (line.length === 0) continue
+    if (line === 'trailer') break
+    const subsection = /^(\d+)\s+(\d+)$/u.exec(line)
+    if (!subsection) {
+      throw new Error(`Goal-book PDF has malformed classic xref subsection ${JSON.stringify(line)}`)
+    }
+    const firstObject = Number(subsection[1])
+    const count = Number(subsection[2])
+    if (
+      !Number.isSafeInteger(firstObject)
+      || !Number.isSafeInteger(count)
+      || count < 1
+      || firstObject + count > MAX_GOAL_BOOK_PDF_OBJECTS
+    ) {
+      throw new Error('Goal-book PDF classic xref subsection exceeds its object bound')
+    }
+    for (let index = 0; index < count; index += 1) {
+      lineResult = readPdfLine(source, cursor)
+      cursor = lineResult.next
+      const entry = /^(\d{10})\s(\d{5})\s([nf])\s*$/u.exec(lineResult.line)
+      if (!entry) throw new Error('Goal-book PDF has a malformed classic xref entry')
+      const objectNumber = firstObject + index
+      if (entries.has(objectNumber)) {
+        throw new Error(`Goal-book PDF classic xref repeats object ${objectNumber}`)
+      }
+      entries.set(objectNumber, {
+        objectNumber,
+        generation: Number(entry[2]),
+        offset: Number(entry[1]),
+        inUse: entry[3] === 'n',
+      })
+    }
+  }
+  while (/\s/u.test(source[cursor] ?? '')) cursor += 1
+  const dictionary = extractPdfDictionary(source, cursor)
+  const trailerSource = dictionary.source
+  const size = parseSinglePdfInteger(trailerSource, 'Size', true)!
+  const root = parseSinglePdfReference(trailerSource, 'Root', true)!
+  const info = parseSinglePdfReference(trailerSource, 'Info', false)
+  const previousXrefOffset = parseSinglePdfInteger(trailerSource, 'Prev', false)
+  if (
+    !Number.isSafeInteger(size)
+    || size < 1
+    || size > MAX_GOAL_BOOK_PDF_OBJECTS
+    || (previousXrefOffset !== null && (
+      !Number.isSafeInteger(previousXrefOffset)
+      || previousXrefOffset < 0
+    ))
+  ) {
+    throw new Error('Goal-book PDF trailer contains an invalid object or revision bound')
+  }
+  if (/\/Encrypt\b|\/XRefStm\b/u.test(trailerSource)) {
+    throw new Error('Goal-book PDF must not be encrypted or use a hybrid xref stream')
+  }
+  return {
+    xrefOffset,
+    entries,
+    trailerSource,
+    size,
+    root,
+    info,
+    previousXrefOffset,
+  }
+}
+
+const parseClassicPdfContext = (pdfBytes: Buffer): ClassicPdfContext => {
+  if (pdfBytes.length > MAX_GOAL_BOOK_PDF_BYTES) {
+    throw new Error(`Goal-book PDF exceeds the ${MAX_GOAL_BOOK_PDF_BYTES}-byte parser bound`)
+  }
+  const source = pdfBytes.toString('latin1')
+  const startXrefMatches = [...source.matchAll(/startxref\s+(\d+)\s+%%EOF/gu)]
+  const lastStartXref = startXrefMatches.at(-1)
+  if (!lastStartXref || source.slice(lastStartXref.index! + lastStartXref[0].length).trim()) {
+    throw new Error('Goal-book PDF must end in one parseable startxref and %%EOF revision')
+  }
+  const revisions: ClassicPdfRevision[] = []
+  const seenXrefOffsets = new Set<number>()
+  let xrefOffset: number | null = Number(lastStartXref[1])
+  while (xrefOffset !== null) {
+    if (revisions.length >= MAX_GOAL_BOOK_PDF_REVISIONS || seenXrefOffsets.has(xrefOffset)) {
+      throw new Error('Goal-book PDF has a cyclic or excessive incremental revision chain')
+    }
+    seenXrefOffsets.add(xrefOffset)
+    const revision = parseClassicPdfRevision(source, xrefOffset)
+    revisions.push(revision)
+    xrefOffset = revision.previousXrefOffset
+  }
+  const entries = new Map<number, PdfXrefEntry>()
+  revisions.forEach((revision) => {
+    revision.entries.forEach((entry, objectNumber) => {
+      if (!entries.has(objectNumber)) entries.set(objectNumber, entry)
+    })
+  })
+  return { source, latest: revisions[0], revisions, entries }
+}
+
+const readPdfObjectAtEntry = (
+  context: Pick<ClassicPdfContext, 'source'>,
+  entry: PdfXrefEntry | undefined,
+  reference: PdfObjectReference,
+) => {
+  if (!entry?.inUse || entry.generation !== reference.generation) {
+    throw new Error(`Goal-book PDF cannot resolve object ${pdfReferenceLabel(reference)}`)
+  }
+  const marker = `${reference.objectNumber} ${reference.generation} obj`
+  if (!context.source.startsWith(marker, entry.offset)) {
+    throw new Error(`Goal-book PDF xref does not point to object ${pdfReferenceLabel(reference)}`)
+  }
+  const endObject = context.source.indexOf('endobj', entry.offset + marker.length)
+  if (endObject < 0) {
+    throw new Error(`Goal-book PDF object ${pdfReferenceLabel(reference)} is unterminated`)
+  }
+  const objectSource = context.source.slice(entry.offset, endObject + 'endobj'.length)
+  if (/\bstream\b/u.test(objectSource)) {
+    throw new Error(`Goal-book PDF object ${pdfReferenceLabel(reference)} must be uncompressed`)
+  }
+  return objectSource
+}
+
+const readPdfObject = (context: ClassicPdfContext, reference: PdfObjectReference) => (
+  readPdfObjectAtEntry(context, context.entries.get(reference.objectNumber), reference)
+)
+
+const assertPdfDestinationName = (destination: string) => {
+  if (!PDF_NAMED_DESTINATION_PATTERN.test(destination)) {
+    throw new Error(`Goal-book PDF outline destination is unsafe: ${destination}`)
+  }
+}
+
+const buildGoalBookPdfOutlinePlan = (model: GoalBookModel) => {
+  const chapterById = new Map(model.chapters.map((chapter) => [chapter.chapterId, chapter]))
+  if (chapterById.size !== model.chapters.length) {
+    throw new Error('Goal-book PDF outline cannot contain duplicate chapter IDs')
+  }
+  const chapterNodeById = new Map<string, PlannedGoalBookPdfOutlineNode>()
+  model.chapters.forEach((chapter) => {
+    const destination = chapterAnchor(chapter.chapterId)
+    assertPdfDestinationName(destination)
+    chapterNodeById.set(chapter.chapterId, {
+      kind: 'chapter',
+      sourceId: chapter.chapterId,
+      treeOrder: chapter.treeOrder,
+      title: chapter.label,
+      destination,
+      children: [],
+    })
+  })
+  const rootChapters: PlannedGoalBookPdfOutlineNode[] = []
+  model.chapters.forEach((chapter) => {
+    const node = chapterNodeById.get(chapter.chapterId)!
+    if (chapter.parentChapterId === null) {
+      rootChapters.push(node)
+      return
+    }
+    const parent = chapterNodeById.get(chapter.parentChapterId)
+    if (!parent) {
+      throw new Error(
+        `Goal-book PDF outline chapter ${chapter.chapterId} has unknown parent ${chapter.parentChapterId}`,
+      )
+    }
+    parent.children.push(node)
+  })
+  const seenGoalIds = new Set<string>()
+  model.pages.forEach((page) => {
+    if (seenGoalIds.has(page.goalId)) {
+      throw new Error(`Goal-book PDF outline repeats goal ${page.goalId}`)
+    }
+    seenGoalIds.add(page.goalId)
+    if (page.chapterIds.length === 0) {
+      throw new Error(`Goal-book PDF outline goal ${page.goalId} has no chapter path`)
+    }
+    let expectedParentChapterId: string | null = null
+    page.chapterIds.forEach((chapterId) => {
+      const chapter = chapterById.get(chapterId)
+      if (!chapter || chapter.parentChapterId !== expectedParentChapterId) {
+        throw new Error(
+          `Goal-book PDF outline goal ${page.goalId} has a non-contiguous chapter path at ${chapterId}`,
+        )
+      }
+      expectedParentChapterId = chapterId
+    })
+    const deepestChapterId = page.chapterIds.at(-1)!
+    const parent = chapterNodeById.get(deepestChapterId)!
+    assertPdfDestinationName(page.anchor)
+    parent.children.push({
+      kind: 'goal',
+      sourceId: page.goalId,
+      treeOrder: page.treeOrder,
+      title: page.title,
+      destination: page.anchor,
+      children: [],
+    })
+  })
+  const seenNodes = new Set<PlannedGoalBookPdfOutlineNode>()
+  const sortAndAssertTree = (nodes: PlannedGoalBookPdfOutlineNode[]) => {
+    nodes.sort((left, right) => left.treeOrder - right.treeOrder)
+    nodes.forEach((node) => {
+      if (seenNodes.has(node)) {
+        throw new Error(`Goal-book PDF outline contains a chapter cycle at ${node.sourceId}`)
+      }
+      seenNodes.add(node)
+      sortAndAssertTree(node.children)
+    })
+  }
+  sortAndAssertTree(rootChapters)
+  if (seenNodes.size !== model.chapters.length + model.pages.length) {
+    throw new Error('Goal-book PDF outline does not reach every chapter and goal exactly once')
+  }
+  assertPdfDestinationName('book-cover')
+  return {
+    kind: 'book',
+    sourceId: model.book.id,
+    treeOrder: -1,
+    title: model.book.title,
+    destination: 'book-cover',
+    children: rootChapters,
+  } satisfies PlannedGoalBookPdfOutlineNode
+}
+
+const flattenPlannedOutline = (root: PlannedGoalBookPdfOutlineNode) => {
+  const nodes: PlannedGoalBookPdfOutlineNode[] = []
+  const parentByNode = new Map<PlannedGoalBookPdfOutlineNode, PlannedGoalBookPdfOutlineNode | null>()
+  const visit = (
+    node: PlannedGoalBookPdfOutlineNode,
+    parent: PlannedGoalBookPdfOutlineNode | null,
+  ) => {
+    nodes.push(node)
+    parentByNode.set(node, parent)
+    node.children.forEach((child) => visit(child, node))
+  }
+  visit(root, null)
+  return { nodes, parentByNode }
+}
+
+const pdfUtf16HexString = (value: string) => {
+  const bytes = Buffer.from(`\ufeff${value}`, 'utf16le')
+  bytes.swap16()
+  return `<${bytes.toString('hex').toUpperCase()}>`
+}
+
+const catalogWithOutlineReference = (
+  catalogSource: string,
+  outlineReference: PdfObjectReference,
+) => {
+  if (/\/Outlines\b/u.test(catalogSource)) {
+    throw new Error('Goal-book Chromium PDF must not already contain an /Outlines catalog entry')
+  }
+  const dictionaryStart = catalogSource.indexOf('<<')
+  const dictionary = extractPdfDictionary(catalogSource, dictionaryStart)
+  return `${catalogSource.slice(0, dictionary.end - 2)}\n/Outlines ${pdfReferenceLabel(outlineReference)}${catalogSource.slice(dictionary.end - 2)}`
+}
+
+const assertOriginalGoalBookPdfPreconditions = (
+  pdfBytes: Buffer,
+  model: GoalBookModel,
+) => {
+  if (pdfBytes.subarray(0, 8).toString('ascii') !== '%PDF-1.4') {
+    throw new Error('Goal-book outline injection requires an exact Skia PDF-1.4 input')
+  }
+  const context = parseClassicPdfContext(pdfBytes)
+  if (context.revisions.length !== 1 || context.latest.previousXrefOffset !== null) {
+    throw new Error('Goal-book outline injection requires one original classic-xref revision')
+  }
+  const originalXrefEntries = context.latest.entries
+  if (
+    originalXrefEntries.size !== context.latest.size
+    || Array.from({ length: context.latest.size }, (_, objectNumber) => objectNumber)
+      .some((objectNumber) => !originalXrefEntries.has(objectNumber))
+    || originalXrefEntries.get(0)?.inUse !== false
+    || originalXrefEntries.get(0)?.generation !== 65_535
+    || [...originalXrefEntries.values()].some(({ objectNumber, inUse }) => (
+      objectNumber !== 0 && !inUse
+    ))
+  ) {
+    throw new Error('Goal-book outline injection requires the complete original Skia xref table')
+  }
+  if (/\/ID\b/u.test(context.latest.trailerSource)) {
+    throw new Error('Goal-book outline injection does not accept an unpreserved trailer /ID')
+  }
+  if (
+    context.source.includes(GOAL_BOOK_PDF_OUTLINE_MARKER)
+    || /\/Type\s*\/XRef\b|\/Linearized\b/u.test(context.source)
+  ) {
+    throw new Error('Goal-book outline injection rejects prior injection, xref streams, and linearized PDFs')
+  }
+  if (/\/ByteRange\s*\[|\/Type\s*\/Sig\b|\/FT\s*\/Sig\b/u.test(context.source)) {
+    throw new Error('Goal-book outline injection refuses signed PDFs')
+  }
+  if (/\/Encrypt\b/u.test(context.source)) {
+    throw new Error('Goal-book outline injection refuses encrypted PDFs')
+  }
+  const infoReference = context.latest.info
+  if (!infoReference) throw new Error('Goal-book Skia PDF is missing its /Info reference')
+  const infoSource = readPdfObject(context, infoReference)
+  if (
+    !/\/Creator\s*\(Chromium\)/u.test(infoSource)
+    && !/\/Creator\s*\([\s\S]*?HeadlessChrome\/\d+(?:\.\d+){3}[\s\S]*?\)\s*\//u.test(infoSource)
+  ) {
+    throw new Error('Goal-book outline injection requires Chromium as the PDF creator')
+  }
+  if (!/\/Producer\s*\(Skia\/PDF m\d+(?:\.\d+)?\)/u.test(infoSource)) {
+    throw new Error('Goal-book outline injection requires a versioned Skia/PDF producer')
+  }
+  const catalogSource = readPdfObject(context, context.latest.root)
+  if (!/\/Type\s*\/Catalog\b/u.test(catalogSource) || /\/AcroForm\b/u.test(catalogSource)) {
+    throw new Error('Goal-book outline injection requires an unsigned, form-free PDF Catalog')
+  }
+  if (
+    !parseSinglePdfReference(catalogSource, 'Pages', true)
+    || !parseSinglePdfReference(catalogSource, 'StructTreeRoot', true)
+    || !/\/MarkInfo\s*<<[\s\S]*?\/Marked\s+true[\s\S]*?>>/u.test(catalogSource)
+  ) {
+    throw new Error('Goal-book outline injection requires the existing tagged Skia catalog')
+  }
+  if (/\/Outlines\b/u.test(catalogSource) || /\/Type\s*\/Outlines\b/u.test(context.source)) {
+    throw new Error('Goal-book Chromium PDF must be rendered with outline:false')
+  }
+  const destinationsReference = parseSinglePdfReference(catalogSource, 'Dests', true)!
+  const destinationsSource = readPdfObject(context, destinationsReference)
+  if (!destinationsSource.includes('<<') || /\bstream\b/u.test(destinationsSource)) {
+    throw new Error('Goal-book outline injection requires an uncompressed /Dests dictionary')
+  }
+  const outlinePlan = buildGoalBookPdfOutlinePlan(model)
+  const requiredDestinations = new Set<string>(['contents'])
+  const collectDestinations = (node: PlannedGoalBookPdfOutlineNode) => {
+    requiredDestinations.add(node.destination)
+    node.children.forEach(collectDestinations)
+  }
+  collectDestinations(outlinePlan)
+  const missingDestinations = [...requiredDestinations].filter((destination) => (
+    !new RegExp(`/${destination}\\s*\\[`, 'u').test(destinationsSource)
+  ))
+  if (missingDestinations.length > 0) {
+    throw new Error(
+      `Goal-book Skia PDF is missing named destinations required by its outline: ${missingDestinations.join(', ')}`,
+    )
+  }
+  return {
+    context,
+    infoReference,
+    catalogSource,
+    destinationsReference,
+    outlinePlan,
+  }
+}
+
+const serializeGoalBookPdfOutlineObjects = (
+  originalSize: number,
+  outlinePlan: PlannedGoalBookPdfOutlineNode,
+) => {
+  const outlineRoot = { objectNumber: originalSize, generation: 0 }
+  const { nodes, parentByNode } = flattenPlannedOutline(outlinePlan)
+  const referenceByNode = new Map<PlannedGoalBookPdfOutlineNode, PdfObjectReference>()
+  nodes.forEach((node, index) => {
+    referenceByNode.set(node, { objectNumber: originalSize + index + 1, generation: 0 })
+  })
+  const bookReference = referenceByNode.get(outlinePlan)!
+  const objects = [
+    `${outlineRoot.objectNumber} 0 obj\n<</Type /Outlines\n/First ${pdfReferenceLabel(bookReference)}\n/Last ${pdfReferenceLabel(bookReference)}\n/Count ${1 + outlinePlan.children.length}>>\nendobj\n`,
+  ]
+  nodes.forEach((node) => {
+    const reference = referenceByNode.get(node)!
+    const parentNode = parentByNode.get(node)!
+    const parentReference = parentNode === null
+      ? outlineRoot
+      : referenceByNode.get(parentNode)!
+    const siblings = parentNode === null ? [outlinePlan] : parentNode.children
+    const siblingIndex = siblings.indexOf(node)
+    const previous = siblingIndex > 0 ? referenceByNode.get(siblings[siblingIndex - 1])! : null
+    const next = siblingIndex + 1 < siblings.length
+      ? referenceByNode.get(siblings[siblingIndex + 1])!
+      : null
+    const firstChild = node.children.length > 0
+      ? referenceByNode.get(node.children[0])!
+      : null
+    const lastChild = node.children.length > 0
+      ? referenceByNode.get(node.children.at(-1)!)!
+      : null
+    const count = node.children.length === 0
+      ? null
+      : node.kind === 'book'
+        ? node.children.length
+        : -node.children.length
+    objects.push(`${reference.objectNumber} 0 obj\n<</Title ${pdfUtf16HexString(node.title)}\n/Dest /${node.destination}\n/Parent ${pdfReferenceLabel(parentReference)}${previous ? `\n/Prev ${pdfReferenceLabel(previous)}` : ''}${next ? `\n/Next ${pdfReferenceLabel(next)}` : ''}${firstChild ? `\n/First ${pdfReferenceLabel(firstChild)}\n/Last ${pdfReferenceLabel(lastChild!)}\n/Count ${count}` : ''}>>\nendobj\n`)
+  })
+  return { outlineRoot, objects }
+}
+
+const serializeIncrementalXref = (entries: readonly PdfXrefEntry[]) => {
+  const sorted = [...entries].sort((left, right) => left.objectNumber - right.objectNumber)
+  let source = 'xref\n'
+  for (let index = 0; index < sorted.length;) {
+    let end = index + 1
+    while (
+      end < sorted.length
+      && sorted[end].objectNumber === sorted[end - 1].objectNumber + 1
+    ) end += 1
+    source += `${sorted[index].objectNumber} ${end - index}\n`
+    source += sorted.slice(index, end).map((entry) => (
+      `${String(entry.offset).padStart(10, '0')} ${String(entry.generation).padStart(5, '0')} n \n`
+    )).join('')
+    index = end
+  }
+  return source
+}
+
+export const injectGoalBookPdfOutline = (
+  pdfBytes: Buffer,
+  model: GoalBookModel,
+) => {
+  const original = assertOriginalGoalBookPdfPreconditions(pdfBytes, model)
+  const { outlineRoot, objects } = serializeGoalBookPdfOutlineObjects(
+    original.context.latest.size,
+    original.outlinePlan,
+  )
+  const sourceDigest = createHash('sha256').update(pdfBytes).digest('hex')
+  const marker = Buffer.from(
+    `\n%${GOAL_BOOK_PDF_OUTLINE_MARKER} source-bytes=${pdfBytes.length} source-sha256=${sourceDigest}\n`,
+    'ascii',
+  )
+  const revisedCatalog = catalogWithOutlineReference(original.catalogSource, outlineRoot)
+  const objectBuffers = [`${revisedCatalog}\n`, ...objects]
+    .map((source) => Buffer.from(source, 'ascii'))
+  const objectNumbers = [
+    original.context.latest.root.objectNumber,
+    ...objects.map((_, index) => original.context.latest.size + index),
+  ]
+  const generations = [original.context.latest.root.generation, ...objects.map(() => 0)]
+  let offset = pdfBytes.length + marker.length
+  const xrefEntries: PdfXrefEntry[] = objectBuffers.map((buffer, index) => {
+    const entry = {
+      objectNumber: objectNumbers[index],
+      generation: generations[index],
+      offset,
+      inUse: true,
+    }
+    offset += buffer.length
+    return entry
+  })
+  if (offset >= 10_000_000_000) {
+    throw new Error('Goal-book PDF outline injection exceeds classic xref offset capacity')
+  }
+  const xrefOffset = offset
+  const newSize = original.context.latest.size + objects.length
+  const xref = serializeIncrementalXref(xrefEntries)
+  const trailer = `trailer\n<</Size ${newSize}\n/Root ${pdfReferenceLabel(original.context.latest.root)}\n/Info ${pdfReferenceLabel(original.infoReference)}\n/Prev ${original.context.latest.xrefOffset}>>\nstartxref\n${xrefOffset}\n%%EOF\n`
+  const result = Buffer.concat([
+    pdfBytes,
+    marker,
+    ...objectBuffers,
+    Buffer.from(`${xref}${trailer}`, 'ascii'),
+  ])
+  inspectGoalBookPdfOutline(result, model)
+  return result
+}
+
+const parsePdfOutlineTitle = (objectSource: string) => {
+  const titleIndex = objectSource.indexOf('/Title')
+  if (titleIndex < 0) throw new Error('Goal-book PDF outline item is missing /Title')
+  let cursor = titleIndex + '/Title'.length
+  while (/\s/u.test(objectSource[cursor] ?? '')) cursor += 1
+  if (objectSource[cursor] === '<' && objectSource[cursor + 1] !== '<') {
+    const closingIndex = objectSource.indexOf('>', cursor + 1)
+    const hex = closingIndex < 0 ? '' : objectSource.slice(cursor + 1, closingIndex)
+    if (!hex || !/^[0-9A-Fa-f\s]+$/u.test(hex)) {
+      throw new Error('Goal-book PDF outline item has an invalid hexadecimal title')
+    }
+    return decodePdfHexString(hex)
+  }
+  if (objectSource[cursor] === '(') {
+    const parsed = parsePdfLiteralString(objectSource, cursor)
+    if (parsed) return parsed.title
+  }
+  throw new Error('Goal-book PDF outline item has an invalid /Title string')
+}
+
+const readCurrentGoalBookPdfOutline = (
+  pdfBytes: Buffer,
+  maximumItems = MAX_GOAL_BOOK_PDF_OBJECTS,
+) => {
+  const context = parseClassicPdfContext(pdfBytes)
+  const catalogSource = readPdfObject(context, context.latest.root)
+  const outlineReference = parseSinglePdfReference(catalogSource, 'Outlines', true)!
+  const outlineSource = readPdfObject(context, outlineReference)
+  if (!/\/Type\s*\/Outlines\b/u.test(outlineSource)) {
+    throw new Error('Goal-book PDF current Catalog does not reference an /Outlines object')
+  }
+  const first = parseSinglePdfReference(outlineSource, 'First', true)!
+  const last = parseSinglePdfReference(outlineSource, 'Last', true)!
+  const rootCount = parseSinglePdfInteger(outlineSource, 'Count', true)!
+  const seen = new Set<number>()
+  const readSiblings = (
+    firstReference: PdfObjectReference,
+    lastReference: PdfObjectReference,
+    parentReference: PdfObjectReference,
+  ): ParsedGoalBookPdfOutlineNode[] => {
+    const siblings: ParsedGoalBookPdfOutlineNode[] = []
+    let reference: PdfObjectReference | null = firstReference
+    let previous: PdfObjectReference | null = null
+    while (reference !== null) {
+      if (seen.size >= maximumItems || seen.has(reference.objectNumber)) {
+        throw new Error('Goal-book PDF outline has a cycle, duplicate item, or excessive size')
+      }
+      seen.add(reference.objectNumber)
+      const objectSource = readPdfObject(context, reference)
+      const parent = parseSinglePdfReference(objectSource, 'Parent', true)!
+      const actualPrevious = parseSinglePdfReference(objectSource, 'Prev', false)
+      const next = parseSinglePdfReference(objectSource, 'Next', false)
+      if (!pdfReferenceEquals(parent, parentReference)) {
+        throw new Error(
+          `Goal-book PDF outline item ${pdfReferenceLabel(reference)} has the wrong /Parent edge`,
+        )
+      }
+      if (!pdfReferenceEquals(actualPrevious, previous)) {
+        throw new Error(
+          `Goal-book PDF outline item ${pdfReferenceLabel(reference)} has the wrong /Prev edge`,
+        )
+      }
+      const firstChild = parseSinglePdfReference(objectSource, 'First', false)
+      const lastChild = parseSinglePdfReference(objectSource, 'Last', false)
+      if ((firstChild === null) !== (lastChild === null)) {
+        throw new Error('Goal-book PDF outline item must provide /First and /Last together')
+      }
+      const children = firstChild && lastChild
+        ? readSiblings(firstChild, lastChild, reference)
+        : []
+      siblings.push({
+        reference,
+        title: parsePdfOutlineTitle(objectSource),
+        destination: parseSinglePdfName(objectSource, 'Dest', true)!,
+        count: parseSinglePdfInteger(objectSource, 'Count', false),
+        children,
+      })
+      if (pdfReferenceEquals(reference, lastReference)) {
+        if (next !== null) {
+          throw new Error('Goal-book PDF outline /Last item must not have a /Next edge')
+        }
+        reference = null
+      } else {
+        if (next === null) throw new Error('Goal-book PDF outline chain ends before /Last')
+        previous = reference
+        reference = next
+      }
+    }
+    return siblings
+  }
+  const tree = readSiblings(first, last, outlineReference)
+  return { context, outlineReference, outlineSource, rootCount, tree, seen }
+}
+
+const publicOutlineNode = (
+  node: ParsedGoalBookPdfOutlineNode,
+): GoalBookPdfOutlineNode => ({
+  title: node.title,
+  destination: node.destination,
+  children: node.children.map(publicOutlineNode),
+})
+
+const flattenOutlineTitles = (nodes: readonly GoalBookPdfOutlineNode[]) => (
+  nodes.flatMap((node): string[] => [node.title, ...flattenOutlineTitles(node.children)])
+)
+
+const assertExactOutlineTree = (
+  actual: readonly ParsedGoalBookPdfOutlineNode[],
+  expected: readonly PlannedGoalBookPdfOutlineNode[],
+  path: string,
+) => {
+  if (actual.length !== expected.length) {
+    throw new Error(
+      `Goal-book PDF outline has ${actual.length} children at ${path}; expected ${expected.length}`,
+    )
+  }
+  actual.forEach((node, index) => {
+    const expectedNode = expected[index]
+    const nodePath = `${path}/${expectedNode.kind}:${expectedNode.sourceId}`
+    if (node.title !== expectedNode.title || node.destination !== expectedNode.destination) {
+      throw new Error(
+        `Goal-book PDF outline item mismatch at ${nodePath}: ${JSON.stringify(node.title)} -> ${node.destination}`,
+      )
+    }
+    const expectedCount = expectedNode.children.length === 0
+      ? null
+      : expectedNode.kind === 'book'
+        ? expectedNode.children.length
+        : -expectedNode.children.length
+    if (node.count !== expectedCount) {
+      throw new Error(
+        `Goal-book PDF outline item ${nodePath} has /Count ${node.count}; expected ${expectedCount}`,
+      )
+    }
+    assertExactOutlineTree(node.children, expectedNode.children, nodePath)
+  })
+}
+
+export const inspectGoalBookPdfOutline = (
+  pdfBytes: Buffer,
+  model: GoalBookModel,
+) => {
+  const source = pdfBytes.toString('latin1')
+  const markerMatches = [...source.matchAll(new RegExp(
+    `\\n%${GOAL_BOOK_PDF_OUTLINE_MARKER} source-bytes=(\\d+) source-sha256=([0-9a-f]{64})\\n`,
+    'gu',
+  ))]
+  if (markerMatches.length !== 1) {
+    throw new Error('Goal-book PDF must contain exactly one bound outline-injection marker')
+  }
+  const marker = markerMatches[0]
+  const sourceBytes = Number(marker[1])
+  if (!Number.isSafeInteger(sourceBytes) || sourceBytes !== marker.index) {
+    throw new Error('Goal-book PDF outline marker has a stale source byte length')
+  }
+  const originalBytes = pdfBytes.subarray(0, sourceBytes)
+  const originalDigest = createHash('sha256').update(originalBytes).digest('hex')
+  if (originalDigest !== marker[2]) {
+    throw new Error('Goal-book PDF outline marker has a stale source digest')
+  }
+  const original = assertOriginalGoalBookPdfPreconditions(originalBytes, model)
+  const expectedPlan = original.outlinePlan
+  const expectedItemCount = flattenPlannedOutline(expectedPlan).nodes.length
+  const current = readCurrentGoalBookPdfOutline(pdfBytes, expectedItemCount + 1)
+  if (
+    current.context.revisions.length !== 2
+    || current.context.latest.previousXrefOffset !== original.context.latest.xrefOffset
+    || !pdfReferenceEquals(current.context.latest.root, original.context.latest.root)
+    || !pdfReferenceEquals(current.context.latest.info, original.infoReference)
+  ) {
+    throw new Error('Goal-book PDF outline revision is not bound directly to its Skia source revision')
+  }
+  const expectedOutlineObjectCount = expectedItemCount + 1
+  const expectedSize = original.context.latest.size + expectedOutlineObjectCount
+  if (current.context.latest.size !== expectedSize) {
+    throw new Error(
+      `Goal-book PDF outline revision has /Size ${current.context.latest.size}; expected ${expectedSize}`,
+    )
+  }
+  const expectedLatestObjects = new Set<number>([
+    original.context.latest.root.objectNumber,
+    ...Array.from(
+      { length: expectedOutlineObjectCount },
+      (_, index) => original.context.latest.size + index,
+    ),
+  ])
+  const actualLatestEntries = [...current.context.latest.entries.values()]
+  const actualLatestObjects = actualLatestEntries.map(({ objectNumber }) => objectNumber)
+  if (
+    actualLatestObjects.length !== expectedLatestObjects.size
+    || actualLatestEntries.some(({ inUse }) => !inUse)
+    || actualLatestObjects.some((objectNumber) => !expectedLatestObjects.has(objectNumber))
+  ) {
+    throw new Error('Goal-book PDF outline revision contains unexpected xref object updates')
+  }
+  for (const entry of actualLatestEntries) {
+    const expectedGeneration = entry.objectNumber === original.context.latest.root.objectNumber
+      ? original.context.latest.root.generation
+      : 0
+    if (entry.generation !== expectedGeneration) {
+      throw new Error(
+        `Goal-book PDF outline revision has unexpected generation ${entry.generation} for object ${entry.objectNumber}`,
+      )
+    }
+  }
+  const expectedTrailerSource = `<</Size ${expectedSize}\n/Root ${pdfReferenceLabel(original.context.latest.root)}\n/Info ${pdfReferenceLabel(original.infoReference)}\n/Prev ${original.context.latest.xrefOffset}>>`
+  if (current.context.latest.trailerSource !== expectedTrailerSource) {
+    throw new Error('Goal-book PDF outline revision has unexpected trailer semantics')
+  }
+  if (/\/ByteRange\s*\[|\/Type\s*\/Sig\b|\/FT\s*\/Sig\b/u.test(source)) {
+    throw new Error('Goal-book PDF outline revision must remain unsigned')
+  }
+  const expectedOutlineReference = {
+    objectNumber: original.context.latest.size,
+    generation: 0,
+  }
+  if (!pdfReferenceEquals(current.outlineReference, expectedOutlineReference)) {
+    throw new Error('Goal-book PDF current Catalog points to an unexpected outline object')
+  }
+  const originalCatalogEntry = original.context.latest.entries.get(
+    original.context.latest.root.objectNumber,
+  )
+  const originalCatalogSource = readPdfObjectAtEntry(
+    original.context,
+    originalCatalogEntry,
+    original.context.latest.root,
+  )
+  const currentCatalogSource = readPdfObject(current.context, current.context.latest.root)
+  if (
+    currentCatalogSource
+    !== catalogWithOutlineReference(originalCatalogSource, expectedOutlineReference)
+  ) {
+    throw new Error('Goal-book PDF outline revision changed existing Catalog semantics')
+  }
+  if (current.tree.length !== 1 || current.rootCount !== 1 + expectedPlan.children.length) {
+    throw new Error('Goal-book PDF /Outlines root must contain exactly the open book entry')
+  }
+  assertExactOutlineTree(current.tree, [expectedPlan], 'outline')
+  if (current.seen.size !== expectedItemCount) {
+    throw new Error(
+      `Goal-book PDF outline reaches ${current.seen.size} items; expected ${expectedItemCount}`,
+    )
+  }
+  const outlineTree = current.tree.map(publicOutlineNode)
+  const outlineTitles = flattenOutlineTitles(outlineTree)
+  return { outlineTree, outlineTitles }
+}
+
+export const extractGoalBookPdfOutlineTitles = (pdfSource: string) => {
+  const current = readCurrentGoalBookPdfOutline(Buffer.from(pdfSource, 'latin1'))
+  return flattenOutlineTitles(current.tree.map(publicOutlineNode))
 }
 
 export const inspectGoalBookPdfArtifact = async (
@@ -1725,6 +3060,7 @@ export const inspectGoalBookPdfArtifact = async (
   let info: string
   let destinations: string
   let linkXml: string
+  let structure: string
   try {
     const infoResult = await execFileAsync('pdfinfo', [pdfPath], {
       encoding: 'utf8',
@@ -1745,15 +3081,23 @@ export const inspectGoalBookPdfArtifact = async (
       },
     )
     linkXml = linkResult.stdout
+    const structureResult = await execFileAsync('pdfinfo', ['-struct', pdfPath], {
+      encoding: 'utf8',
+      maxBuffer: 32 * 1024 * 1024,
+    })
+    structure = structureResult.stdout
   } catch (error) {
     throw new Error(
       `Goal-book PDF validation requires working pdfinfo and pdftohtml commands: ${error instanceof Error ? error.message : String(error)}`,
     )
   }
+  const frontMatterPageCount = goalBookFrontMatterPageCount(model)
+  const goalPageCount = model.pages.length
+  const expectedPhysicalPageCount = frontMatterPageCount + goalPageCount
   const pageCount = Number(/^Pages:\s+(\d+)\s*$/mu.exec(info)?.[1])
-  if (pageCount !== model.pages.length) {
+  if (pageCount !== expectedPhysicalPageCount) {
     throw new Error(
-      `Goal-book PDF contains ${pageCount} physical pages; expected ${model.pages.length}`,
+      `Goal-book PDF contains ${pageCount} physical pages; expected ${expectedPhysicalPageCount}`,
     )
   }
   const pageSizeMatch = /^Page size:\s+([\d.]+) x ([\d.]+) pts/mu.exec(info)
@@ -1771,10 +3115,31 @@ export const inspectGoalBookPdfArtifact = async (
   for (const match of destinations.matchAll(/^\s*(\d+)\s+\[[^\]]+\]\s+"([^"]+)"\s*$/gmu)) {
     destinationPageByName.set(match[2], Number(match[1]))
   }
+  const navigation = buildChapterNavigation(model)
+  const expectedFrontMatterDestinations = new Map<string, number>([
+    ['book-cover', 1],
+    ['contents', GOAL_BOOK_COVER_PAGE_COUNT + 1],
+    ...model.chapters.map((chapter) => [
+      navigation.anchorByChapterId.get(chapter.chapterId)!,
+      navigation.contentsPhysicalPageByChapterId.get(chapter.chapterId)!,
+    ] as const),
+  ])
+  const wrongFrontMatterDestinations = [...expectedFrontMatterDestinations]
+    .filter(([anchor, expectedPage]) => destinationPageByName.get(anchor) !== expectedPage)
+    .map(([anchor, expectedPage]) => (
+      `${anchor} expected page ${expectedPage}, got ${destinationPageByName.get(anchor) ?? 'missing'}`
+    ))
+  if (wrongFrontMatterDestinations.length > 0) {
+    throw new Error(
+      `Goal-book PDF has missing or wrong front-matter destinations: ${wrongFrontMatterDestinations.join('; ')}`,
+    )
+  }
   const wrongDestinations = model.pages
-    .filter(({ anchor, pageNumber }) => destinationPageByName.get(anchor) !== pageNumber)
+    .filter(({ anchor, pageNumber }) => (
+      destinationPageByName.get(anchor) !== frontMatterPageCount + pageNumber
+    ))
     .map(({ goalId, pageNumber, anchor }) => (
-      `${goalId} expected page ${pageNumber}, got ${destinationPageByName.get(anchor) ?? 'missing'}`
+      `${goalId} expected page ${frontMatterPageCount + pageNumber}, got ${destinationPageByName.get(anchor) ?? 'missing'}`
     ))
   if (wrongDestinations.length > 0) {
     throw new Error(
@@ -1787,20 +3152,28 @@ export const inspectGoalBookPdfArtifact = async (
     xmlPageByNumber.set(Number(match[1]), match[0])
   }
   const missingAnnotations: string[] = []
+  const hasInternalLink = (pageXml: string, targetPage: number) => (
+    new RegExp(`href="[^"]+\\.html#${targetPage}"`, 'u').test(pageXml)
+  )
   const escapedPdfHref = (value: string) => value
     .replaceAll('&', '&amp;')
     .replaceAll('"', '&quot;')
   model.pages.forEach((page) => {
-    const pageXml = xmlPageByNumber.get(page.pageNumber) ?? ''
+    const physicalPageNumber = frontMatterPageCount + page.pageNumber
+    const pageXml = xmlPageByNumber.get(physicalPageNumber) ?? ''
     const expectedTargetPages = new Set([
-      page.pageNumber,
-      ...page.requires.map(({ pageNumber }) => pageNumber),
-      ...page.reverseRequires.map(({ pageNumber }) => pageNumber),
+      physicalPageNumber,
+      ...page.requires.map(({ pageNumber }) => (
+        pageNumber === undefined ? undefined : frontMatterPageCount + pageNumber
+      )),
+      ...page.reverseRequires.map(({ pageNumber }) => (
+        pageNumber === undefined ? undefined : frontMatterPageCount + pageNumber
+      )),
     ])
     expectedTargetPages.forEach((targetPage) => {
       if (
         targetPage === undefined
-        || !new RegExp(`href="[^"]+\\.html#${targetPage}"`, 'u').test(pageXml)
+        || !hasInternalLink(pageXml, targetPage)
       ) {
         missingAnnotations.push(`${page.goalId}->${targetPage ?? 'missing-page'}`)
       }
@@ -1828,13 +3201,64 @@ export const inspectGoalBookPdfArtifact = async (
     ) {
       missingAnnotations.push(`${page.goalId}->applicability-details`)
     }
+    page.chapterIds.forEach((chapterId) => {
+      const contentsPage = navigation.contentsPhysicalPageByChapterId.get(chapterId)
+      if (contentsPage === undefined || !hasInternalLink(pageXml, contentsPage)) {
+        missingAnnotations.push(`${page.goalId}->chapter:${chapterId}`)
+      }
+    })
   })
+  const coverXml = xmlPageByNumber.get(1) ?? ''
+  if (!hasInternalLink(coverXml, GOAL_BOOK_COVER_PAGE_COUNT + 1)) {
+    missingAnnotations.push('cover->contents')
+  }
+  model.chapters.forEach((chapter) => {
+    const contentsPage = navigation.contentsPhysicalPageByChapterId.get(chapter.chapterId)
+    const firstGoalPage = chapter.pageNumbers[0]
+    if (
+      contentsPage === undefined
+      || !hasInternalLink(
+        xmlPageByNumber.get(contentsPage) ?? '',
+        frontMatterPageCount + firstGoalPage,
+      )
+    ) {
+      missingAnnotations.push(`chapter:${chapter.chapterId}->${firstGoalPage}`)
+    }
+  })
+  for (
+    let contentsPage = GOAL_BOOK_COVER_PAGE_COUNT + 1;
+    contentsPage <= frontMatterPageCount;
+    contentsPage += 1
+  ) {
+    if (!hasInternalLink(xmlPageByNumber.get(contentsPage) ?? '', 1)) {
+      missingAnnotations.push(`contents:${contentsPage}->cover`)
+    }
+  }
   if (missingAnnotations.length > 0) {
     throw new Error(
       `Goal-book PDF is missing internal or feedback link annotations: ${missingAnnotations.join(', ')}`,
     )
   }
-  return { pageCount, width, height, destinations, linkXml }
+  if (!/^\s*H1\b/mu.test(structure) || !/^\s*H2\b/mu.test(structure)) {
+    throw new Error('Goal-book PDF is missing the tagged book/chapter heading structure')
+  }
+  const pdfBytes = await readFile(pdfPath)
+  const { outlineTree, outlineTitles } = inspectGoalBookPdfOutline(pdfBytes, model)
+  const normalizedOutlineTitles = outlineTitles.map((title) => title.replaceAll('\u00a0', ' '))
+  return {
+    pageCount,
+    goalPageCount,
+    frontMatterPageCount,
+    physicalPageCount: pageCount,
+    width,
+    height,
+    destinations,
+    linkXml,
+    structure,
+    outlineTree,
+    outlineTitles,
+    normalizedOutlineTitles,
+  }
 }
 
 export const writeGoalBookPdf = async (
@@ -1856,7 +3280,9 @@ export const writeGoalBookPdf = async (
     browser = await launchGoalBookBrowser(options)
     assets = await prepareLocalRenderAssets(browser, model, options)
     await renderPdfWithBrowser(browser, model, temporaryOutput, options, assets)
-    const pdfBytes = await readFile(temporaryOutput)
+    const chromiumPdfBytes = await readFile(temporaryOutput)
+    const pdfBytes = injectGoalBookPdfOutline(chromiumPdfBytes, model)
+    await writeFile(temporaryOutput, pdfBytes)
     const artifactSizeLimit = artifactSizeLimitForProfile(options.printDerivativeProfile)
     if (pdfBytes.length > artifactSizeLimit) {
       throw new Error(

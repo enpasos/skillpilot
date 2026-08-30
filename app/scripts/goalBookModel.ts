@@ -23,6 +23,12 @@ import {
   type CompositionCompileResult,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
+import {
+  compileGoalBookChapterProjection,
+  GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
+  type GoalBookChapterProjection,
+  type GoalBookNavigationGoalGraph,
+} from '../src/utils/goalBookChapterProjection'
 import { aiApprovalStatus } from '../src/utils/goalVisualizationQaStatus'
 import {
   fingerprintGoalForEvidence,
@@ -31,11 +37,11 @@ import {
   validateGoalEvidenceRecordSemantics,
 } from './goalEvidenceProfileModel'
 
-export const GOAL_BOOK_MODEL_SCHEMA_VERSION = '1.0.0' as const
+export const GOAL_BOOK_MODEL_SCHEMA_VERSION = '1.1.0' as const
 export const GOAL_BOOK_CONFIG_SCHEMA_VERSION = 1 as const
 export const GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION = 'goal-evidence-v1' as const
 export const GOAL_BOOK_EDITION = 'curricular-atomic-v1' as const
-export const GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP = 'common-topic-suffix-v1' as const
+export const GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP = 'canonical-composition-view-v1' as const
 
 export type GoalBookPublicationMode = 'review' | 'public'
 export type GoalBookVisualizationQaStatus = 'approved' | 'review_candidate' | 'rejected'
@@ -53,11 +59,11 @@ const SEMANTIC_KINDS = new Set([
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const GOAL_BOOK_MODEL_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
-  'contracts/goal-book/v1/goal-book-model.schema.json',
+  'contracts/goal-book/v1/goal-book-model-1.1.schema.json',
 )
 const GOAL_BOOK_SOURCE_MANIFEST_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
-  'contracts/goal-book/v1/goal-book-source-manifest.schema.json',
+  'contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json',
 )
 const SEMANTIC_KIND_LEDGER_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
@@ -146,6 +152,8 @@ export interface GoalBookChapter {
   chapterId: string
   label: string
   parentChapterId: string | null
+  order: number
+  treeOrder: number
   goalIds: string[]
   pageNumbers: number[]
 }
@@ -162,6 +170,8 @@ export interface GoalBookVisualization {
 
 export interface GoalBookPage {
   pageNumber: number
+  navigationOrder: number
+  treeOrder: number
   goalId: string
   shortKey?: string
   anchor: string
@@ -239,11 +249,33 @@ export interface GoalBookModel {
     compositionViewManifestDigest?: string
     compositionViewSources?: GoalBookCompositionViewSource[]
     navigationOwnership?: typeof GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP
+    navigationViewPath?: string
+    navigationViewDigest?: string
+    navigationProjectionFingerprint?: string
     durationModelPolicyPath?: string
     durationModelPolicyDigest?: string
     externalLandscapes?: GoalBookExternalLandscapeSource[]
     evidenceReviewSources: GoalBookEvidenceReviewSource[]
     goalFingerprintRuleVersion: typeof GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION
+  }
+  navigation: {
+    schemaVersion: typeof GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION
+    canonicalProjectionSource: {
+      path: string
+      viewId: string
+      title: string
+      scope: Record<string, string>
+      digest: string
+      projectionFingerprint: string
+    }
+    derivedProjection?: {
+      kind: 'goal-description-review-subset-v1'
+      baseModelDigest: string
+      baseProjectionFingerprint: string
+      projectionFingerprint: string
+      selectedGoalIds: string[]
+    }
+    goalGraph: GoalBookNavigationGoalGraph
   }
   chapters: GoalBookChapter[]
   pages: GoalBookPage[]
@@ -291,6 +323,7 @@ export interface GoalBookBuildInput {
   compositionView?: unknown
   compositionViewManifest?: unknown
   compositionViewSources?: GoalBookCompositionViewBuildSource[]
+  navigationView?: unknown
   externalLandscapeSources?: GoalBookExternalLandscapeBuildSource[]
   durationModelPolicy?: unknown
   semanticKindLedger: unknown
@@ -311,10 +344,11 @@ export interface GoalBookExternalLandscapeBuildSource {
 }
 
 interface GoalBookSourceManifest {
-  schemaVersion: 1
+  schemaVersion: 2
   manifestId: string
   landscapeId: string
   navigationOwnership: typeof GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP
+  navigationViewPath: string
   expectedJurisdictions: string[]
   durationModelPolicyPath: string
   expectedCurricularAtomicGoalCount: number
@@ -349,12 +383,14 @@ interface TargetGoalOccurrence {
   breadcrumbs: string[]
   chapterIds: string[]
   viewOrder: number
+  treeOrder: number
 }
 
 interface GoalBookChapterDraft {
   chapterId: string
   label: string
   parentChapterId: string | null
+  treeOrder: number
 }
 
 interface TargetGoalCollection {
@@ -1011,6 +1047,7 @@ const collectTargetAtomicGoals = (
   const chapterDrafts: GoalBookChapterDraft[] = []
   const chapterById = new Map<string, GoalBookChapterDraft>()
   let viewOrder = 0
+  let treeOrder = 0
 
   const enterChapter = (
     chapterId: string,
@@ -1021,7 +1058,8 @@ const collectTargetAtomicGoals = (
     if (existing) {
       fail(`compiled composition produces duplicate chapter ID ${chapterId}.`)
     }
-    const draft = { chapterId, label, parentChapterId }
+    const draft = { chapterId, label, parentChapterId, treeOrder }
+    treeOrder += 1
     chapterById.set(chapterId, draft)
     chapterDrafts.push(draft)
   }
@@ -1044,8 +1082,9 @@ const collectTargetAtomicGoals = (
     const goal = goalById.get(goalId)
       ?? fail(`compiled composition references missing goal ${goalId}.`)
     if (resolveCanonicalNodeType(goal) === 'atomic') {
-      occurrences.push({ goalId, breadcrumbs, chapterIds, viewOrder })
+      occurrences.push({ goalId, breadcrumbs, chapterIds, viewOrder, treeOrder })
       viewOrder += 1
+      treeOrder += 1
       return
     }
 
@@ -1067,73 +1106,24 @@ const collectTargetAtomicGoals = (
   return { occurrences, chapterDrafts }
 }
 
-const mergeTargetCollections = (
+const collectAtlasTargetUnion = (
   sources: CompiledGoalBookViewSource[],
-  navigationOwnership: typeof GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP,
-  subject: string,
 ): TargetGoalCollection => {
-  if (navigationOwnership !== GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP) {
-    fail(`unsupported atlas navigation ownership ${navigationOwnership}.`)
-  }
-
   const occurrences: TargetGoalOccurrence[] = []
-  const chapterDrafts: GoalBookChapterDraft[] = []
-  const chapterByPath = new Map<string, GoalBookChapterDraft>()
-  const breadcrumbPathsByGoalId = new Map<string, string[][]>()
-
-  sources.forEach(({ targetCollection }) => targetCollection.occurrences.forEach((occurrence) => {
-    const withoutSubjectRoot = occurrence.breadcrumbs[0] === subject
-      ? occurrence.breadcrumbs.slice(1)
-      : occurrence.breadcrumbs
-    const paths = breadcrumbPathsByGoalId.get(occurrence.goalId) ?? []
-    paths.push(withoutSubjectRoot)
-    breadcrumbPathsByGoalId.set(occurrence.goalId, paths)
-  }))
-
-  const commonSuffix = (paths: string[][]): string[] => {
-    const first = paths[0] ?? []
-    let suffixLength = 0
-    while (
-      suffixLength < first.length
-      && paths.every((path) => (
-        path.length > suffixLength
-        && path[path.length - suffixLength - 1] === first[first.length - suffixLength - 1]
-      ))
-    ) suffixLength += 1
-    return suffixLength === 0 ? [] : first.slice(first.length - suffixLength)
-  }
-
-  const enterChapterPath = (labels: string[]): string[] => labels.map((label, index) => {
-    const pathLabels = labels.slice(0, index + 1)
-    const pathKey = pathLabels.join('\0')
-    const existing = chapterByPath.get(pathKey)
-    if (existing) return existing.chapterId
-    const parentPathKey = pathLabels.slice(0, -1).join('\0')
-    const parentChapterId = index === 0
-      ? null
-      : chapterByPath.get(parentPathKey)?.chapterId
-        ?? fail(`cannot resolve atlas parent chapter path ${parentPathKey}.`)
-    const chapter = {
-      chapterId: `atlas:${digest(pathLabels).slice('sha256:'.length, 'sha256:'.length + 20)}`,
-      label,
-      parentChapterId,
-    }
-    chapterByPath.set(pathKey, chapter)
-    chapterDrafts.push(chapter)
-    return chapter.chapterId
-  })
-
-  breadcrumbPathsByGoalId.forEach((paths, goalId) => {
-    const breadcrumbs = [subject, ...commonSuffix(paths)]
+  const seenGoalIds = new Set<string>()
+  sources.forEach(({ targetCollection }) => targetCollection.occurrences.forEach(({ goalId }) => {
+    if (seenGoalIds.has(goalId)) return
+    seenGoalIds.add(goalId)
     occurrences.push({
       goalId,
-      breadcrumbs,
-      chapterIds: enterChapterPath(breadcrumbs),
+      breadcrumbs: [],
+      chapterIds: [],
       viewOrder: occurrences.length,
+      treeOrder: occurrences.length,
     })
-  })
+  }))
   if (occurrences.length === 0) fail('composition-view source union contains no atomic goals.')
-  return { occurrences, chapterDrafts }
+  return { occurrences, chapterDrafts: [] }
 }
 
 const normalizeAtlasApplicability = (
@@ -1668,11 +1658,94 @@ const compileGoalBookViewSource = (
   return { path, rawView: source.view, view, compilation, targetCollection, curricularAtomicGoalIds }
 }
 
+const buildNavigationGoalGraph = (
+  landscape: CanonicalAuthoringLandscape,
+  primaryGoalIds: ReadonlySet<string>,
+  semanticKindByGoalId: ReadonlyMap<string, string>,
+): GoalBookNavigationGoalGraph => {
+  const graphWithoutDigest = {
+    schemaVersion: GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
+    landscapeId: nonEmptyString(landscape.landscapeId, 'navigation goal graph landscapeId'),
+    title: nonEmptyString(landscape.title, 'navigation goal graph title'),
+    goals: landscape.goals
+      .filter(({ id }) => primaryGoalIds.has(id))
+      .map((goal) => ({
+        id: goal.id,
+        title: nonEmptyString(goal.title, `navigation goal ${goal.id} title`),
+        contains: goal.contains.map(normalizeGoalRef),
+        type: resolveCanonicalNodeType(goal),
+        ...(goal.tags && goal.tags.length > 0 ? { tags: [...goal.tags] } : {}),
+        semanticKind: semanticKindByGoalId.get(goal.id)
+          ?? fail(`navigation goal ${goal.id} has no authoritative semanticKind.`),
+      })),
+  }
+  return { ...graphWithoutDigest, digest: digest(graphWithoutDigest) }
+}
+
+const exactGoalSetDifference = (
+  left: ReadonlySet<string>,
+  right: ReadonlySet<string>,
+): string[] => [...left].filter((goalId) => !right.has(goalId)).sort(compareStrings)
+
+const compileBoundNavigationProjection = (
+  rawView: unknown,
+  goalGraph: GoalBookNavigationGoalGraph,
+  expectedGoalIds: ReadonlySet<string>,
+): GoalBookChapterProjection => {
+  const allCurricularAtomicGoalIds = new Set(goalGraph.goals
+    .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
+    .map(({ id }) => id))
+  const result = compileGoalBookChapterProjection(
+    rawView,
+    goalGraph,
+    allCurricularAtomicGoalIds,
+  )
+  if (!result.projection) {
+    fail(`invalid bound navigation view: ${result.findings
+      .filter(({ severity }) => severity === 'error')
+      .map((finding) => `${finding.code}${finding.goalId ? ` ${finding.goalId}` : ''}: ${finding.message}`)
+      .join(' | ')}`)
+  }
+
+  const actualGoalIds = new Set(result.projection.placements.map(({ goalId }) => goalId))
+  const missingGoalIds = exactGoalSetDifference(expectedGoalIds, actualGoalIds)
+  const unexpectedGoalIds = exactGoalSetDifference(actualGoalIds, expectedGoalIds)
+  if (missingGoalIds.length > 0 || unexpectedGoalIds.length > 0) {
+    const summarize = (goalIds: string[]) => (
+      `${goalIds.slice(0, 8).join(', ')}${goalIds.length > 8 ? ` (+${goalIds.length - 8})` : ''}`
+    )
+    fail(
+      'bound navigation view must place every atlas curricularAtomic goal exactly once; '
+      + `missing [${summarize(missingGoalIds)}], unexpected [${summarize(unexpectedGoalIds)}].`,
+    )
+  }
+  return result.projection
+}
+
+const targetCollectionFromProjection = (
+  projection: GoalBookChapterProjection,
+): TargetGoalCollection => ({
+  occurrences: projection.placements.map((placement) => ({
+    goalId: placement.goalId,
+    breadcrumbs: [...placement.breadcrumbs],
+    chapterIds: [...placement.chapterIds],
+    viewOrder: placement.navigationOrder,
+    treeOrder: placement.treeOrder,
+  })),
+  chapterDrafts: projection.chapters.map(({ chapterId, label, parentChapterId, treeOrder }) => ({
+    chapterId,
+    label,
+    parentChapterId,
+    treeOrder,
+  })),
+})
+
 export const buildGoalBookModel = ({
   landscape: rawLandscape,
   compositionView: rawCompositionView,
   compositionViewManifest: rawCompositionViewManifest,
   compositionViewSources: rawCompositionViewSources,
+  navigationView: rawNavigationView,
   externalLandscapeSources: rawExternalLandscapeSources,
   durationModelPolicy: rawDurationModelPolicy,
   semanticKindLedger: rawSemanticKindLedger,
@@ -1784,8 +1857,8 @@ export const buildGoalBookModel = ({
       })),
     )
     : null
-  const targetCollection = sourceManifest
-    ? mergeTargetCollections(compiledViewSources, sourceManifest.navigationOwnership, subject!)
+  const membershipTargetCollection = sourceManifest
+    ? collectAtlasTargetUnion(compiledViewSources)
     : compiledViewSources[0].targetCollection
   const compositionScope = sourceManifest
     ? { schoolForm: 'Gymnasium' }
@@ -1802,16 +1875,33 @@ export const buildGoalBookModel = ({
     semanticKindLedger.semanticKindByGoalId,
     goalVisualizationQaRecords,
   )
-  const projectedOccurrences = targetCollection.occurrences
-  const occurrences = projectedOccurrences.filter(({ goalId }) => (
+  const projectedOccurrences = membershipTargetCollection.occurrences
+  const membershipOccurrences = projectedOccurrences.filter(({ goalId }) => (
     semanticKindLedger.semanticKindByGoalId.get(goalId) === 'curricularAtomic'
   ))
-  if (occurrences.length === 0) {
+  if (membershipOccurrences.length === 0) {
     fail(`edition ${GOAL_BOOK_EDITION} contains no target curricularAtomic goals.`)
   }
-  if (sourceManifest && occurrences.length !== sourceManifest.expectedCurricularAtomicGoalCount) {
-    fail(`atlas source union has ${occurrences.length} curricularAtomic targets; expected ${sourceManifest.expectedCurricularAtomicGoalCount}.`)
+  if (sourceManifest && membershipOccurrences.length !== sourceManifest.expectedCurricularAtomicGoalCount) {
+    fail(`atlas source union has ${membershipOccurrences.length} curricularAtomic targets; expected ${sourceManifest.expectedCurricularAtomicGoalCount}.`)
   }
+  const navigationGoalGraph = buildNavigationGoalGraph(
+    landscape,
+    primaryGoalIds,
+    semanticKindLedger.semanticKindByGoalId,
+  )
+  const navigationViewPath = sourceManifest?.navigationViewPath ?? compositionViewPath!
+  const navigationView = sourceManifest ? rawNavigationView : rawCompositionView
+  if (navigationView === undefined) {
+    fail('navigationView must be provided for an atlas source manifest.')
+  }
+  const navigationProjection = compileBoundNavigationProjection(
+    navigationView,
+    navigationGoalGraph,
+    new Set(membershipOccurrences.map(({ goalId }) => goalId)),
+  )
+  const targetCollection = targetCollectionFromProjection(navigationProjection)
+  const occurrences = targetCollection.occurrences
   const excludedTargetGoals: GoalBookExcludedTarget[] = projectedOccurrences
     .filter(({ goalId }) => semanticKindLedger.semanticKindByGoalId.get(goalId) !== 'curricularAtomic')
     .map(({ goalId }) => {
@@ -1878,6 +1968,8 @@ export const buildGoalBookModel = ({
     const shortKey = optionalString(goal.shortKey)
     return {
       pageNumber: index + 1,
+      navigationOrder: occurrence.viewOrder,
+      treeOrder: occurrence.treeOrder,
       goalId,
       ...(shortKey ? { shortKey } : {}),
       anchor: goalAnchor(goalId),
@@ -1945,15 +2037,22 @@ export const buildGoalBookModel = ({
   })
 
   const chapters: GoalBookChapter[] = targetCollection.chapterDrafts
-    .map((chapter) => {
+    .map((chapter, order) => {
       const chapterPages = pages.filter((page) => page.chapterIds.includes(chapter.chapterId))
       return {
         ...chapter,
+        order,
         goalIds: chapterPages.map(({ goalId }) => goalId),
         pageNumbers: chapterPages.map(({ pageNumber }) => pageNumber),
       }
     })
     .filter(({ goalIds }) => goalIds.length > 0)
+  const navigationTitle = navigationProjection.title ?? bookTitle
+  const navigationViewDigest = digest(navigationView)
+  const navigationProjectionFingerprint = digest({
+    ...navigationProjection,
+    title: navigationTitle,
+  })
 
   const modelWithoutDigest = {
     schemaVersion: GOAL_BOOK_MODEL_SCHEMA_VERSION,
@@ -1996,6 +2095,9 @@ export const buildGoalBookModel = ({
           }),
         })),
         navigationOwnership: sourceManifest.navigationOwnership,
+        navigationViewPath: sourceManifest.navigationViewPath,
+        navigationViewDigest,
+        navigationProjectionFingerprint,
         durationModelPolicyPath: sourceManifest.durationModelPolicyPath,
         durationModelPolicyDigest: digest(rawDurationModelPolicy),
       } : {}),
@@ -2004,6 +2106,18 @@ export const buildGoalBookModel = ({
         : {}),
       evidenceReviewSources: evidenceReviews.sources,
       goalFingerprintRuleVersion: GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
+    },
+    navigation: {
+      schemaVersion: GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION,
+      canonicalProjectionSource: {
+        path: navigationViewPath,
+        viewId: navigationProjection.viewId,
+        title: navigationTitle,
+        scope: normalizeScope(navigationProjection.scope),
+        digest: navigationViewDigest,
+        projectionFingerprint: navigationProjectionFingerprint,
+      },
+      goalGraph: navigationGoalGraph,
     },
     chapters,
     pages,
@@ -2049,6 +2163,9 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
     Boolean(model.source.compositionViewManifestPath),
     Boolean(model.source.compositionViewManifestDigest),
     Boolean(model.source.navigationOwnership),
+    Boolean(model.source.navigationViewPath),
+    Boolean(model.source.navigationViewDigest),
+    Boolean(model.source.navigationProjectionFingerprint),
     Boolean(model.source.durationModelPolicyPath),
     Boolean(model.source.durationModelPolicyDigest),
   ]
@@ -2083,6 +2200,9 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
     pageByGoalId.set(page.goalId, page)
     if (page.pageNumber !== index + 1) {
       fail(`page ${page.goalId} has non-contiguous pageNumber ${page.pageNumber}.`)
+    }
+    if (!Number.isInteger(page.navigationOrder) || page.navigationOrder < 0) {
+      fail(`page ${page.goalId} has invalid navigationOrder ${page.navigationOrder}.`)
     }
     if (page.anchor !== goalAnchor(page.goalId)) {
       fail(`page ${page.goalId} has invalid anchor ${page.anchor}.`)
@@ -2139,6 +2259,10 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
       fail(`page ${page.goalId} has stale pageFingerprint; expected ${expectedPageFingerprint}.`)
     }
   })
+  const navigationOrders = model.pages.map(({ navigationOrder }) => navigationOrder).sort((a, b) => a - b)
+  if (navigationOrders.some((order, index) => order !== index)) {
+    fail('page navigationOrder values must be unique and contiguous from zero.')
+  }
 
   const exactInternalReference = (
     owner: GoalBookPage,
@@ -2201,8 +2325,11 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
   })
 
   const chapterById = new Map<string, GoalBookChapter>()
-  model.chapters.forEach((chapter) => {
+  model.chapters.forEach((chapter, index) => {
     if (chapterById.has(chapter.chapterId)) fail(`duplicate chapter ${chapter.chapterId}.`)
+    if (chapter.order !== index) {
+      fail(`chapter ${chapter.chapterId} has non-contiguous order ${chapter.order}.`)
+    }
     if (chapter.parentChapterId !== null && !chapterById.has(chapter.parentChapterId)) {
       fail(`chapter ${chapter.chapterId} has missing or forward parent ${chapter.parentChapterId}.`)
     }
@@ -2229,6 +2356,102 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
   model.pages.forEach((page) => page.chapterIds.forEach((chapterId) => {
     if (!chapterById.has(chapterId)) fail(`page ${page.goalId} references missing chapter ${chapterId}.`)
   }))
+  const treeOrders = [
+    ...model.chapters.map(({ treeOrder }) => treeOrder),
+    ...model.pages.map(({ treeOrder }) => treeOrder),
+  ].sort((left, right) => left - right)
+  if (treeOrders.some((order, index) => order !== index)) {
+    fail('chapter and page treeOrder values must form one unique contiguous preorder from zero.')
+  }
+
+  if (model.navigation.schemaVersion !== GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION) {
+    fail(`navigation.schemaVersion must be ${GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION}.`)
+  }
+  if (model.navigation.goalGraph.landscapeId !== model.book.landscapeId) {
+    fail('navigation.goalGraph landscapeId does not match the book landscapeId.')
+  }
+  const { digest: graphDigest, ...goalGraphWithoutDigest } = model.navigation.goalGraph
+  if (graphDigest !== digest(goalGraphWithoutDigest)) {
+    fail(`navigation.goalGraph has stale digest; expected ${digest(goalGraphWithoutDigest)}.`)
+  }
+  const graphGoalIds = model.navigation.goalGraph.goals.map(({ id }) => id)
+  if (new Set(graphGoalIds).size !== graphGoalIds.length) {
+    fail('navigation.goalGraph contains duplicate goal IDs.')
+  }
+  const graphGoalIdSet = new Set(graphGoalIds)
+  model.navigation.goalGraph.goals.forEach((goal) => {
+    if (new Set(goal.contains).size !== goal.contains.length) {
+      fail(`navigation goal ${goal.id} contains duplicate children.`)
+    }
+    goal.contains.forEach((childId) => {
+      if (!graphGoalIdSet.has(childId)) {
+        fail(`navigation goal ${goal.id} references missing child ${childId}.`)
+      }
+    })
+    if (goal.type === 'atomic' && goal.contains.length > 0) {
+      fail(`navigation atomic goal ${goal.id} contains children.`)
+    }
+    if (goal.type === 'cluster' && goal.contains.length === 0) {
+      fail(`navigation cluster goal ${goal.id} has no children.`)
+    }
+  })
+  const canonicalSource = model.navigation.canonicalProjectionSource
+  const expectedNavigationPath = hasManifestSources
+    ? model.source.navigationViewPath
+    : model.source.compositionViewPath
+  if (canonicalSource.path !== expectedNavigationPath) {
+    fail('canonical navigation projection path does not match its source binding.')
+  }
+  if (hasManifestSources && (
+    canonicalSource.digest !== model.source.navigationViewDigest
+    || canonicalSource.projectionFingerprint !== model.source.navigationProjectionFingerprint
+  )) {
+    fail('canonical navigation projection source binding is inconsistent.')
+  }
+  const reconstructedProjection: GoalBookChapterProjection = {
+    schemaVersion: model.navigation.schemaVersion,
+    viewId: canonicalSource.viewId,
+    landscapeId: model.book.landscapeId,
+    title: canonicalSource.title,
+    scope: canonicalSource.scope,
+    chapters: model.chapters.map(({ chapterId, label, parentChapterId, order, treeOrder }) => ({
+      chapterId,
+      label,
+      parentChapterId,
+      order,
+      treeOrder,
+    })),
+    placements: [...model.pages]
+      .sort((left, right) => left.navigationOrder - right.navigationOrder)
+      .map(({ goalId, breadcrumbs, chapterIds, navigationOrder, treeOrder }) => ({
+        goalId,
+        breadcrumbs,
+        chapterIds,
+        navigationOrder,
+        treeOrder,
+      })),
+  }
+  const expectedProjectionFingerprint = digest(reconstructedProjection)
+  const derivedProjection = model.navigation.derivedProjection
+  if (derivedProjection) {
+    if (model.book.publicationMode !== 'review') {
+      fail('derived navigation projections are allowed only for review-mode books.')
+    }
+    if (derivedProjection.baseProjectionFingerprint !== canonicalSource.projectionFingerprint) {
+      fail('derived navigation projection does not bind the canonical base projection.')
+    }
+    if (
+      stableGoalBookJson(derivedProjection.selectedGoalIds)
+      !== stableGoalBookJson(model.pages.map(({ goalId }) => goalId))
+    ) {
+      fail('derived navigation projection selectedGoalIds do not match the review pages.')
+    }
+    if (derivedProjection.projectionFingerprint !== expectedProjectionFingerprint) {
+      fail(`derived navigation projection has stale fingerprint; expected ${expectedProjectionFingerprint}.`)
+    }
+  } else if (canonicalSource.projectionFingerprint !== expectedProjectionFingerprint) {
+    fail(`canonical navigation projection has stale fingerprint; expected ${expectedProjectionFingerprint}.`)
+  }
 
   const excludedGoalIds = new Set<string>()
   model.excludedTargetGoals.forEach(({ goalId }) => {
@@ -2430,6 +2653,16 @@ export const loadGoalBookBuildInputs = async (
       }
     }))
     : undefined
+  const navigationView = sourceManifest
+    ? parseJson(
+      await readFile(resolveRepositoryPath(
+        repositoryRoot,
+        sourceManifest.navigationViewPath,
+        'compositionViewManifest.navigationViewPath',
+      ), 'utf8'),
+      sourceManifest.navigationViewPath,
+    )
+    : undefined
   const durationModelPolicy = sourceManifest
     ? parseJson(
       await readFile(resolveRepositoryPath(
@@ -2451,6 +2684,7 @@ export const loadGoalBookBuildInputs = async (
       : {}),
     ...(compositionViewManifest ? { compositionViewManifest } : {}),
     ...(compositionViewSources ? { compositionViewSources } : {}),
+    ...(navigationView ? { navigationView } : {}),
     ...(externalLandscapeTexts.length > 0 ? {
       externalLandscapeSources: externalLandscapeTexts.map((text, index) => ({
         path: config.externalLandscapePaths![index],

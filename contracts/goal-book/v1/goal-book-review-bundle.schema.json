@@ -30,7 +30,7 @@
     "schemaVersion": { "const": 1 },
     "bundleFingerprint": { "$ref": "#/$defs/digest" },
     "bookModelDigest": { "$ref": "#/$defs/digest" },
-    "bookModelSchemaVersion": { "const": "1.0.0" },
+    "bookModelSchemaVersion": { "enum": ["1.0.0", "1.1.0"] },
     "bookId": { "$ref": "#/$defs/stableId" },
     "bookEdition": { "$ref": "#/$defs/stableId" },
     "publicationMode": { "enum": ["review", "public"] },

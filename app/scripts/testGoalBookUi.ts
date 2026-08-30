@@ -20,7 +20,7 @@ function assert(condition: unknown, message: string): asserts condition {
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
-const modelFixture = await readFile(
+const rawModelFixture = await readFile(
   fileURLToPath(new URL('./fixtures/goalBookUi.model.json', import.meta.url)),
   'utf8',
 )
@@ -28,6 +28,183 @@ const singleBookIndexFixture = await readFile(
   fileURLToPath(new URL('./fixtures/goalBookUi.index.json', import.meta.url)),
   'utf8',
 )
+
+const stableJson = (value: unknown): string => {
+  if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`
+  if (value && typeof value === 'object') {
+    return `{${Object.entries(value as Record<string, unknown>)
+      .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0)
+      .map(([key, nested]) => `${JSON.stringify(key)}:${stableJson(nested)}`)
+      .join(',')}}`
+  }
+  return JSON.stringify(value) ?? 'null'
+}
+
+const stableDigest = (value: unknown): string => (
+  `sha256:${createHash('sha256').update(stableJson(value)).digest('hex')}`
+)
+
+const personalizedView = ({
+  viewId,
+  scope,
+  targetGoalIds,
+  chapterLabel,
+}: {
+  viewId: string
+  scope: Record<string, string>
+  targetGoalIds: string[]
+  chapterLabel: string
+}) => ({
+  viewId,
+  landscapeId: MATHEMATICS_LANDSCAPE_ID,
+  scope,
+  rootNodes: [{
+    kind: 'structure',
+    id: `${viewId}-root`,
+    label: 'Mathematik',
+    children: [{
+      kind: 'structure',
+      id: `${viewId}-chapter`,
+      label: chapterLabel,
+      children: targetGoalIds.map((goalId) => ({ kind: 'goalEntry', goalId })),
+    }],
+  }],
+})
+
+const matchedViews = {
+  heSekIG8: personalizedView({
+    viewId: 'goal-book-test-he-seki-g8',
+    scope: {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'SekI',
+      durationModel: 'G8',
+    },
+    targetGoalIds: [FIRST_GOAL_ID],
+    chapterLabel: 'Hessischer Zahlenpfad',
+  }),
+  bySekIG9: personalizedView({
+    viewId: 'goal-book-test-by-seki',
+    // The server may select this reviewed duration-neutral authored view for
+    // the uniquely inferred G9 learner request.
+    scope: {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-BY',
+      stage: 'SekI',
+    },
+    targetGoalIds: [SECOND_GOAL_ID, FIRST_GOAL_ID],
+    chapterLabel: 'Bayerischer Zahlenpfad',
+  }),
+  bySekIIGk: personalizedView({
+    viewId: 'goal-book-test-by-sekii-gk',
+    scope: {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-BY',
+      stage: 'SekII',
+      courseProfile: 'GK',
+      durationModel: 'G9',
+    },
+    targetGoalIds: [THIRD_GOAL_ID],
+    chapterLabel: 'Bayerische Oberstufe',
+  }),
+  heSekIIGk: personalizedView({
+    viewId: 'goal-book-test-he-sekii-gk-bound-error',
+    scope: {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'SekII',
+      courseProfile: 'GK',
+    },
+    targetGoalIds: [FIRST_GOAL_ID],
+    chapterLabel: 'Gebundene hessische Oberstufe GK',
+  }),
+  heSekIILk: personalizedView({
+    viewId: 'goal-book-test-he-sekii-lk-bound-no-match',
+    scope: {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'SekII',
+      courseProfile: 'LK',
+    },
+    targetGoalIds: [SECOND_GOAL_ID],
+    chapterLabel: 'Gebundene hessische Oberstufe LK',
+  }),
+}
+
+const mathModel = JSON.parse(rawModelFixture) as Record<string, unknown>
+mathModel.schemaVersion = '1.1.0'
+const mathSource = mathModel.source as Record<string, unknown>
+mathSource.compositionViewSources = Object.values(matchedViews).map((view) => ({
+  path: `curricula/DE/Gymnasium/composition-views/mathematik/${view.viewId}.view.json`,
+  viewId: view.viewId,
+  scope: view.scope,
+  digest: stableDigest(view),
+    projectionFingerprint: stableDigest({
+      viewId: view.viewId,
+      scope: view.scope,
+      curricularAtomicGoalIds: view.rootNodes[0].children[0].children
+        .map(({ goalId }) => goalId)
+        .sort(),
+    }),
+}))
+mathModel.navigation = {
+  schemaVersion: '1.0.0',
+  canonicalProjectionSource: {
+    path: 'app/scripts/config/goal-books/navigation/goal-book-ui.view.json',
+    viewId: 'goal-book-ui-canonical',
+    title: 'Kanonische Testgliederung',
+    scope: { schoolForm: 'Gymnasium' },
+    digest: `sha256:${'7'.repeat(64)}`,
+    projectionFingerprint: `sha256:${'8'.repeat(64)}`,
+  },
+  goalGraph: {
+    schemaVersion: '1.0.0',
+    landscapeId: MATHEMATICS_LANDSCAPE_ID,
+    title: 'Mathematik',
+    goals: [{
+      id: 'mathematik',
+      title: 'Mathematik',
+      contains: ['algebra', 'geometrie'],
+      type: 'cluster',
+      semanticKind: 'curricularArea',
+    }, {
+      id: 'algebra',
+      title: 'Algebra',
+      contains: [FIRST_GOAL_ID, SECOND_GOAL_ID],
+      type: 'cluster',
+      semanticKind: 'curricularArea',
+    }, {
+      id: 'geometrie',
+      title: 'Geometrie',
+      contains: [THIRD_GOAL_ID],
+      type: 'cluster',
+      semanticKind: 'curricularArea',
+    }, ...[
+      [FIRST_GOAL_ID, 'Natürliche Zahlen vergleichen'],
+      [SECOND_GOAL_ID, 'Brüche addieren und begründen'],
+      [THIRD_GOAL_ID, 'Flächeninhalte berechnen'],
+    ].map(([id, title]) => ({
+      id,
+      title,
+      contains: [],
+      type: 'atomic',
+      semanticKind: 'curricularAtomic',
+    }))],
+    digest: `sha256:${'6'.repeat(64)}`,
+  },
+}
+const mathChapters = mathModel.chapters as Array<Record<string, unknown>>
+mathChapters.forEach((chapter, index) => { chapter.order = index })
+mathChapters[0].treeOrder = 0
+mathChapters[1].treeOrder = 1
+mathChapters[2].treeOrder = 4
+const mathPages = mathModel.pages as Array<Record<string, unknown>>
+mathPages.forEach((goalPage, index) => { goalPage.navigationOrder = index })
+mathPages[0].treeOrder = 2
+mathPages[1].treeOrder = 3
+mathPages[2].treeOrder = 5
+const modelFixture = `${JSON.stringify(mathModel, null, 2)}\n`
+
 const physicsModel = JSON.parse(
   modelFixture.replaceAll(MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID),
 ) as Record<string, unknown>
@@ -49,6 +226,9 @@ const index = JSON.parse(singleBookIndexFixture) as {
   schemaVersion: 1
   books: Array<Record<string, unknown>>
 }
+const mathFixtureSha256 = `sha256:${createHash('sha256').update(modelFixture).digest('hex')}`
+const mathIndexModel = index.books[0].model as Record<string, unknown>
+mathIndexModel.sha256 = mathFixtureSha256
 index.books.push({
   bookId: 'de-gym-physik-bundesweit',
   title: physicsBook.title,
@@ -137,7 +317,9 @@ try {
   let indexRequests = 0
   let mathModelRequests = 0
   let physicsModelRequests = 0
+  let delayNextMathModelResponse = false
   let imageRequests = 0
+  const compositionViewRequests: URL[] = []
 
   page.on('pageerror', (error) => browserErrors.push(error.message))
   page.on('console', (message) => {
@@ -158,6 +340,10 @@ try {
   })
   await page.route(`**${MODEL_PATH}`, async (route) => {
     mathModelRequests += 1
+    if (delayNextMathModelResponse) {
+      delayNextMathModelResponse = false
+      await new Promise((resolve) => setTimeout(resolve, 400))
+    }
     await route.fulfill({
       status: 200,
       contentType: 'application/json; charset=utf-8',
@@ -170,6 +356,43 @@ try {
       status: 200,
       contentType: 'application/json; charset=utf-8',
       body: physicsFixture,
+    })
+  })
+  await page.route('**/api/ui/composition-views/match?*', async (route) => {
+    const url = new URL(route.request().url())
+    compositionViewRequests.push(url)
+    const scopeKey = [
+      url.searchParams.get('jurisdiction'),
+      url.searchParams.get('stage'),
+      url.searchParams.get('durationModel'),
+      url.searchParams.get('courseProfile'),
+    ].join('|')
+    const view = scopeKey === 'DE-HE|SekI|G8|'
+      ? matchedViews.heSekIG8
+      : scopeKey === 'DE-BY|SekI|G9|'
+        ? matchedViews.bySekIG9
+        : scopeKey === 'DE-BY|SekII|G9|GK'
+          ? matchedViews.bySekIIGk
+          : null
+    if (scopeKey === 'DE-HE|SekII||GK') {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json; charset=utf-8',
+        body: '{invalid-json',
+      })
+      return
+    }
+    if (!view) {
+      await route.fulfill({ status: 204, body: '' })
+      return
+    }
+    if (scopeKey === 'DE-HE|SekI|G8|') {
+      await new Promise((resolve) => setTimeout(resolve, 120))
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json; charset=utf-8',
+      body: JSON.stringify(view),
     })
   })
   await page.route('**/assets/goal-visualizations/goal-book-ui-*.svg', async (route) => {
@@ -266,10 +489,22 @@ try {
   )
   await durationFilter.selectOption('G8')
   const results = page.getByRole('region', { name: 'Lernziele' })
+  const chapterNavigation = page.getByRole('navigation', { name: 'Kapitel' })
+  await chapterNavigation.getByTestId('goal-book-view-label')
+    .filter({ hasText: 'Personalisierte Kapitelsicht' })
+    .waitFor()
   assert(
     await results.getByRole('link').count() === 1
       && await results.getByRole('link', { name: /Natürliche Zahlen vergleichen/u }).count() === 1,
     'the coupled Hesse, lower-secondary, G8 tuple filters without creating a false G9 or course-profile combination',
+  )
+  assert(
+    (await chapterNavigation.getByTestId('goal-book-view-label').innerText())
+      === 'Personalisierte Kapitelsicht · Hessen · Sekundarstufe I · G8'
+      && await chapterNavigation.getByRole('button', { name: 'Alle Lernziele (1)', exact: true }).count() === 1
+      && await chapterNavigation.getByRole('button', { name: /^Hessischer Zahlenpfad.*1 Lernziele$/u }).count() === 1
+      && await chapterNavigation.getByRole('button', { name: /^Algebra/u }).count() === 0,
+    'the complete Level-2 filter switches both target membership and tree to the bound Cockpit composition view',
   )
   const applicability = page.getByRole('heading', { name: 'Curriculare Geltung' })
     .locator('xpath=ancestor::section[1]')
@@ -283,13 +518,49 @@ try {
       && (await applicability.getByRole('table').innerText()).includes('Sekundarstufe II'),
     'the exact applicability tuples are available in an expandable detail matrix',
   )
+  await page.getByTestId('goal-book-page')
+    .getByRole('link', { name: new RegExp(`Brüche addieren.*${SECOND_GOAL_ID}`, 'su') })
+    .click()
+  await page.getByRole('heading', { name: 'Brüche addieren und begründen' }).waitFor()
+  assert(
+    await results.getByRole('link').count() === 1
+      && await page.getByTestId('goal-book-outside-current-selection').count() === 1,
+    'a bound personalized target set can show an internal prerequisite or dependent as a marked reference without widening its results',
+  )
+  await search.fill('kein vorhandenes lernziel')
+  await results.getByRole('button', { name: 'Suche und Kapitel zurücksetzen' }).click()
+  assert(
+    await results.getByRole('link').count() === 1
+      && (await chapterNavigation.getByTestId('goal-book-view-label').innerText())
+        === 'Personalisierte Kapitelsicht · Hessen · Sekundarstufe I · G8',
+    'clearing an empty search preserves the committed personalization scope',
+  )
   await jurisdictionFilter.selectOption('DE-BY')
   await stageFilter.selectOption('SekI')
+  await chapterNavigation.getByTestId('goal-book-view-label')
+    .filter({ hasText: 'Personalisierte Kapitelsicht · Bayern · Sekundarstufe I · G9' })
+    .waitFor()
   assert(
     !await durationFilter.isDisabled()
       && await durationFilter.locator('option[value="G8"]').count() === 0
       && await durationFilter.locator('option[value="G9"]').count() === 1,
-    'Bavaria lower-secondary exposes its authored G9 route without inheriting another state’s G8 route',
+    'Bavaria lower-secondary infers its sole G9 scope, requests the matching view, and labels that resolved scope',
+  )
+  const bavariaSekIResultTexts = await results.getByRole('link').allInnerTexts()
+  assert(
+    bavariaSekIResultTexts.length === 2
+      && bavariaSekIResultTexts[0].includes('Brüche addieren und begründen')
+      && bavariaSekIResultTexts[1].includes('Natürliche Zahlen vergleichen'),
+    'the personalized result list follows authored Composition View order instead of BookModel page order',
+  )
+  await page.getByRole('heading', { name: 'Brüche addieren und begründen' }).waitFor()
+  await page.getByTestId('goal-book-page')
+    .getByRole('link', { name: 'Nächstes Lernziel' })
+    .click()
+  await page.getByRole('heading', { name: 'Natürliche Zahlen vergleichen' }).waitFor()
+  assert(
+    page.url().endsWith(`#goal-${FIRST_GOAL_ID}`),
+    'the personalized next-goal action follows the same authored Composition View order',
   )
   await stageFilter.selectOption('SekII')
   assert(
@@ -301,15 +572,47 @@ try {
   )
   await durationFilter.selectOption('G9')
   await courseFilter.selectOption('GK')
+  await chapterNavigation.getByTestId('goal-book-view-label')
+    .filter({ hasText: 'Personalisierte Kapitelsicht · Bayern · Sekundarstufe II · G9 · GK' })
+    .waitFor()
   assert(
     await results.getByRole('link').count() === 1
       && await results.getByRole('link', { name: /Flächeninhalte berechnen/u }).count() === 1,
     'duration and course profile match one exact upper-secondary state tuple',
   )
-  await jurisdictionFilter.selectOption('')
+
+  await jurisdictionFilter.selectOption('DE-HE')
+  await stageFilter.selectOption('SekII')
+  await courseFilter.selectOption('GK')
+  await page.getByTestId('goal-book-personalized-projection-status')
+    .filter({ hasText: 'konnte nicht geladen werden' })
+    .waitFor()
   assert(
-    await stageFilter.isDisabled() && await results.getByRole('link').count() === 3,
-    'clearing the state also clears every dependent applicability filter',
+    await page.getByRole('navigation', { name: 'Kapitel' }).count() === 0
+      && await page.getByRole('region', { name: 'Lernziele' }).count() === 0,
+    'a matcher error fails closed without exposing the canonical tree or target list',
+  )
+  await courseFilter.selectOption('LK')
+  await page.getByTestId('goal-book-personalized-projection-status')
+    .filter({ hasText: 'keine geprüfte Kapitelsicht verfügbar' })
+    .waitFor()
+  assert(
+    await page.getByRole('navigation', { name: 'Kapitel' }).count() === 0,
+    'a 204 no-match response also fails closed instead of widening to the atlas',
+  )
+
+  await jurisdictionFilter.selectOption('')
+  await jurisdictionFilter.selectOption('DE-HE')
+  await stageFilter.selectOption('SekI')
+  await durationFilter.selectOption('G8')
+  await jurisdictionFilter.selectOption('')
+  await page.waitForTimeout(180)
+  assert(
+    await stageFilter.isDisabled()
+      && await results.getByRole('link').count() === 3
+      && await chapterNavigation.getByRole('button', { name: 'Alle Lernziele (3)', exact: true }).count() === 1
+      && await chapterNavigation.getByTestId('goal-book-view-label').innerText() === 'Kanonische Gesamtsicht',
+    'clearing the state aborts the delayed matcher and keeps the canonical view instead of applying a stale response',
   )
   await search.fill(THIRD_GOAL_ID)
   assert(
@@ -319,13 +622,29 @@ try {
   )
   await search.fill('natürliche vergleichen')
   assert(
-    await results.getByRole('link', { name: /Natürliche Zahlen vergleichen/u }).count() === 1,
-    'search matches title terms with normalized German text',
+    await results.getByRole('link', { name: /Natürliche Zahlen vergleichen/u }).count() === 1
+      && await chapterNavigation.getByRole('button', { name: 'Alle Lernziele (3)', exact: true }).count() === 1,
+    'search matches normalized title terms without rewriting the chapter projection or its counts',
   )
 
   await search.fill('')
-  await page.getByRole('navigation', { name: 'Kapitel' })
-    .getByRole('button', { name: /Geometrie/u })
+  const geometryToggle = chapterNavigation.getByRole('button', {
+    name: 'Kapitel aufklappen: Geometrie',
+    exact: true,
+  })
+  await geometryToggle.click()
+  const expandedGeometryToggle = chapterNavigation.getByRole('button', {
+    name: 'Kapitel einklappen: Geometrie',
+    exact: true,
+  })
+  assert(
+    await expandedGeometryToggle.getAttribute('aria-expanded') === 'true'
+      && await results.getByRole('link').count() === 3
+      && await chapterNavigation.getByRole('link', { name: /Flächeninhalte berechnen/u }).count() === 1,
+    'the dedicated chapter chevron expands the recursive tree without selecting or filtering the row',
+  )
+  await chapterNavigation
+    .getByRole('button', { name: /^Geometrie.*1 Lernziele$/u })
     .click()
   await results.getByRole('link', { name: /Natürliche Zahlen vergleichen/u })
     .waitFor({ state: 'hidden' })
@@ -333,6 +652,19 @@ try {
     await results.getByRole('link').count() === 1
       && await results.getByRole('link', { name: /Flächeninhalte berechnen/u }).count() === 1,
     'chapter navigation restricts the result list to the selected chapter',
+  )
+  await chapterNavigation.getByRole('button', {
+    name: 'Kapitel einklappen: Geometrie',
+    exact: true,
+  }).click()
+  assert(
+    await chapterNavigation.getByRole('button', {
+      name: 'Kapitel aufklappen: Geometrie',
+      exact: true,
+    }).getAttribute('aria-expanded') === 'false'
+      && await chapterNavigation.getByRole('link', { name: /Flächeninhalte berechnen/u }).count() === 0
+      && await results.getByRole('link', { name: /Flächeninhalte berechnen/u }).count() === 1,
+    'a selected chapter can still be collapsed without changing its result scope',
   )
   await results.getByRole('link', { name: /Flächeninhalte berechnen/u }).click()
   await page.getByRole('heading', { name: 'Flächeninhalte berechnen' }).waitFor()
@@ -343,14 +675,37 @@ try {
       === 'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external-measurement-goal',
     'an external prerequisite remains a canonical, edition-bound atlas link',
   )
-
-  await page.getByRole('navigation', { name: 'Kapitel' })
-    .getByRole('button', { name: /Alle Lernziele/u })
-    .click()
   await page.getByTestId('goal-book-page')
     .getByRole('link', { name: new RegExp(`Brüche addieren.*${SECOND_GOAL_ID}`, 'su') })
     .click()
   await page.getByRole('heading', { name: 'Brüche addieren und begründen' }).waitFor()
+  assert(
+    await results.getByRole('link').count() === 3,
+    'an internal relation outside the selected chapter clears only that chapter narrowing and opens its target',
+  )
+
+  await chapterNavigation
+    .getByRole('button', { name: /Alle Lernziele/u })
+    .click()
+  const algebraRow = chapterNavigation.getByRole('button', { name: /^Algebra.*2 Lernziele$/u })
+  await algebraRow.focus()
+  await algebraRow.press('ArrowRight')
+  assert(
+    await chapterNavigation.getByRole('button', {
+      name: 'Kapitel einklappen: Algebra',
+      exact: true,
+    }).getAttribute('aria-expanded') === 'true'
+      && await results.getByRole('link').count() === 3,
+    'right-arrow keyboard navigation expands a chapter without changing the selected result scope',
+  )
+  await chapterNavigation
+    .getByRole('link', { name: new RegExp(`Brüche addieren.*${SECOND_GOAL_ID}`, 'su') })
+    .click()
+  await page.getByRole('heading', { name: 'Brüche addieren und begründen' }).waitFor()
+  assert(
+    await results.getByRole('link').count() === 3,
+    'selecting an atomic tree leaf clears a different chapter filter so the requested goal opens',
+  )
   await page.getByTestId('goal-book-page')
     .getByRole('link', { name: new RegExp(`Natürliche Zahlen vergleichen.*${FIRST_GOAL_ID}`, 'su') })
     .click()
@@ -382,8 +737,41 @@ try {
     mathModelRequests >= 1
       && physicsModelRequests === 1
       && page.url().includes('?book=de-gym-physik-bundesweit')
-      && await page.getByTestId('goal-book-pdf').getAttribute('href') === PHYSICS_PDF_PATH,
+      && await page.getByTestId('goal-book-pdf').getAttribute('href') === PHYSICS_PDF_PATH
+      && await page.getByText('Das verlinkte Lernziel gehört nicht zu dieser Ausgabe.').count() === 0,
     'a stable subject deep link loads only the selected physics model and follows it with the physics PDF',
+  )
+  const physicsSearch = page.getByLabel('Lernziele durchsuchen')
+  const physicsJurisdiction = page.getByLabel('Bundesland')
+  await physicsJurisdiction.selectOption('DE-HE')
+  await page.getByRole('navigation', { name: 'Kapitel' })
+    .getByRole('button', { name: /^Algebra.*2 Lernziele$/u })
+    .click()
+  await physicsSearch.fill('physik-zustand-aus-vorherigem-fach')
+  delayNextMathModelResponse = true
+  await page.goBack()
+  await page.getByRole('status').filter({ hasText: 'Lernzielbuch wird geladen' }).waitFor()
+  assert(
+    await page.getByRole('heading', { name: 'Lernzielbuch Physik – bundesweiter Atlas' }).count() === 0
+      && await page.getByTestId('goal-book-page').count() === 0
+      && await page.getByTestId('goal-book-pdf').getAttribute('aria-disabled') === 'true',
+    'browser history hides the stale subject model, detail, and PDF while the previous subject reloads',
+  )
+  await page.getByRole('heading', { name: 'Lernzielbuch Mathematik – bundesweiter Atlas' }).waitFor()
+  assert(
+    await page.getByLabel('Lernziele durchsuchen').inputValue() === ''
+      && await page.getByLabel('Bundesland').inputValue() === ''
+      && await page.getByRole('region', { name: 'Lernziele' }).getByRole('link').count() === 3
+      && await page.evaluate(() => window.location.hash) === '',
+    'browser Back resets search, chapter, hash, and Level-2 filters like an explicit subject-tab change',
+  )
+  await page.goForward()
+  await page.getByRole('heading', { name: 'Lernzielbuch Physik – bundesweiter Atlas' }).waitFor()
+  assert(
+    await page.getByLabel('Lernziele durchsuchen').inputValue() === ''
+      && await page.getByLabel('Bundesland').inputValue() === ''
+      && await page.getByRole('region', { name: 'Lernziele' }).getByRole('link').count() === 3,
+    'browser Forward applies the same centralized clean subject state',
   )
   await page.evaluate(() => {
     window.location.hash = '#goal-external-measurement-goal'
@@ -416,18 +804,17 @@ try {
   await assertNoHorizontalOverflow(page, 375)
   await assertNoHorizontalOverflow(page, 1440)
 
-  const feedbackSection = page.getByRole('heading', { name: 'Feedback-Pilot' })
-    .locator('xpath=ancestor::section[1]')
+  const goalPage = page.getByTestId('goal-book-page')
+  const feedbackLink = goalPage.getByRole('link', {
+    name: 'Feedback zu „Natürliche Zahlen vergleichen“',
+  })
   assert(
-    await feedbackSection.getByRole('button').count() === 0
-      && await feedbackSection.locator('form').count() === 0,
-    'the visible feedback pilot has no form or mutation control in this slice',
+    await feedbackLink.count() === 1
+      && await page.locator('form').count() === 0
+      && await page.getByText('Feedback-Pilot', { exact: true }).count() === 0,
+    'feedback is attached to the visible goal page without placing a form or ambiguous global pilot below the book',
   )
-  assert(
-    (await feedbackSection.innerText()).includes('noch keine Daten übermittelt'),
-    'the feedback pilot explicitly states that this slice transmits no data',
-  )
-  const feedbackHref = await feedbackSection.getByRole('link').getAttribute('href')
+  const feedbackHref = await feedbackLink.getAttribute('href')
   const feedbackUrl = new URL(feedbackHref ?? '', 'https://skillpilot.test')
   assert(
     feedbackUrl.pathname === '/lernziel-feedback'
@@ -437,17 +824,30 @@ try {
       && feedbackUrl.searchParams.get('goalFingerprint')?.startsWith('sha256:') === true
       && feedbackUrl.searchParams.get('pageFingerprint')?.startsWith('sha256:') === true
       && feedbackUrl.searchParams.get('bookDigest')?.startsWith('sha256:') === true,
-    'the read-only feedback placeholder is bound to the exact edition and fingerprints',
+    'the goal-local feedback action is bound to the exact edition and fingerprints',
   )
   assert(
     requests.every(({ method }) => method === 'GET')
       && requests.every(({ pathname }) => (
         !pathname.startsWith('/api/')
-        && !pathname.toLocaleLowerCase('en-US').includes('learner')
+        || pathname === '/api/ui/composition-views/match'
+      ))
+      && requests.filter(({ pathname }) => pathname.startsWith('/api/')).every(({ pathname }) => (
+        !pathname.toLocaleLowerCase('en-US').includes('learner')
         && !pathname.toLocaleLowerCase('en-US').includes('feedback')
       )),
-    `the read-only view made a learner, feedback, API, or mutation request: ${JSON.stringify(requests)}`,
+    `the book view made a learner, feedback-intake, or mutation request before the action was opened: ${JSON.stringify(requests)}`,
   )
+  assert(
+    compositionViewRequests.length >= 3
+      && compositionViewRequests.every((url) => (
+        url.origin === new URL(server.baseUrl).origin
+        && url.searchParams.get('landscapeId') === MATHEMATICS_LANDSCAPE_ID
+        && url.searchParams.get('schoolForm') === 'Gymnasium'
+      )),
+    'personalized chapter views are resolved only through same-origin, scope-bound matcher GETs',
+  )
+
   assert(browserErrors.length === 0, `browser errors: ${browserErrors.join('\n')}`)
 } finally {
   try {

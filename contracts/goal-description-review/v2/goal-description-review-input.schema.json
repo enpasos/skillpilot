@@ -59,7 +59,14 @@
       "required": ["page", "evidenceProfile"],
       "properties": {
         "page": {
-          "$ref": "https://skillpilot.com/schemas/goal-book/v1/goal-book-model.schema.json#/$defs/page"
+          "oneOf": [
+            {
+              "$ref": "https://skillpilot.com/schemas/goal-book/v1/goal-book-model.schema.json#/$defs/page"
+            },
+            {
+              "$ref": "https://skillpilot.com/schemas/goal-book/v1/goal-book-model-1.1.schema.json#/$defs/page"
+            }
+          ]
         },
         "evidenceProfile": {
           "oneOf": [

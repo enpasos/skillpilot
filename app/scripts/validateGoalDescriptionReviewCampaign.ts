@@ -17,7 +17,8 @@ import {
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const BUNDLE_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-review-bundle.schema.json'
 const RUN_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json'
-const GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
+const LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
+const CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model-1.1.schema.json'
 const EVIDENCE_PROFILE_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-profile.schema.json'
 const INPUT_V2_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-input.schema.json'
 const INPUT_V3_SCHEMA_PATH = 'contracts/goal-description-review/v3/goal-description-review-input.schema.json'
@@ -516,26 +517,38 @@ let validatorsPromise: ReturnType<typeof createValidators> | null = null
 const createValidators = async () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true })
   addFormats(ajv)
-  const schemas = await Promise.all([
+  const [
+    bundleSchema,
+    runSchema,
+    legacyGoalBookSchema,
+    currentGoalBookSchema,
+    evidenceProfileSchema,
+    inputV2Schema,
+    inputV3Schema,
+    campaignSchema,
+    recordSchema,
+  ] = await Promise.all([
     BUNDLE_SCHEMA_PATH,
     RUN_SCHEMA_PATH,
-    GOAL_BOOK_MODEL_SCHEMA_PATH,
+    LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH,
+    CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH,
     EVIDENCE_PROFILE_SCHEMA_PATH,
     INPUT_V2_SCHEMA_PATH,
     INPUT_V3_SCHEMA_PATH,
     CAMPAIGN_SCHEMA_PATH,
     RECORD_SCHEMA_PATH,
   ].map((path) => readFile(repositoryPath(path), 'utf8').then((value) => JSON.parse(value))))
-  ajv.addSchema(schemas[2])
-  ajv.addSchema(schemas[3])
+  ajv.addSchema(legacyGoalBookSchema)
+  ajv.addSchema(currentGoalBookSchema)
+  ajv.addSchema(evidenceProfileSchema)
   return {
     ajv,
-    validateBundle: ajv.compile(schemas[0]),
-    validateRun: ajv.compile(schemas[1]),
-    validateInputV2: ajv.compile(schemas[4]),
-    validateInputV3: ajv.compile(schemas[5]),
-    validateCampaign: ajv.compile(schemas[6]),
-    validateRecord: ajv.compile(schemas[7]),
+    validateBundle: ajv.compile(bundleSchema),
+    validateRun: ajv.compile(runSchema),
+    validateInputV2: ajv.compile(inputV2Schema),
+    validateInputV3: ajv.compile(inputV3Schema),
+    validateCampaign: ajv.compile(campaignSchema),
+    validateRecord: ajv.compile(recordSchema),
   }
 }
 

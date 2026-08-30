@@ -10,12 +10,15 @@ import {
   type GoalBookModel,
   type GoalBookPage,
 } from './goalBookModel'
-import type { GoalBookRenderManifest } from './goalBookRenderer'
+import {
+  goalBookFrontMatterPageCount,
+  type GoalBookRenderManifest,
+} from './goalBookRenderer'
 
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const DEFAULT_PROMPT_PATH = 'curricula/DE/Gymnasium/quality/goal-evidence/prompts/goal-evidence-review-v1.md'
 const DEFAULT_CRITERIA_PATH = 'curricula/DE/Gymnasium/quality/goal-evidence/prompts/goal-evidence-review-criteria-v1.md'
-const RENDER_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-render-manifest.schema.json'
+const RENDER_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-render-manifest-v2.schema.json'
 const BUNDLE_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-review-bundle.schema.json'
 const FINDING_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-finding.schema.json'
 const RUN_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json'
@@ -46,7 +49,7 @@ export type GoalBookReviewBundleManifest = {
   schemaVersion: 1
   bundleFingerprint: string
   bookModelDigest: string
-  bookModelSchemaVersion: '1.0.0'
+  bookModelSchemaVersion: '1.0.0' | '1.1.0'
   bookId: string
   bookEdition: string
   publicationMode: 'review' | 'public'
@@ -333,6 +336,7 @@ const assertRenderManifestBindsArtifact = (
   format: GoalBookRenderManifest['format'],
   artifactBytes: Buffer,
 ) => {
+  const frontMatterPageCount = goalBookFrontMatterPageCount(model)
   if (
     manifest.bookId !== model.book.id
     || manifest.bookEdition !== model.book.edition
@@ -341,6 +345,9 @@ const assertRenderManifestBindsArtifact = (
     || manifest.modelDigest !== model.digest
     || manifest.format !== format
     || manifest.pageCount !== model.pages.length
+    || manifest.goalPageCount !== model.pages.length
+    || manifest.frontMatterPageCount !== frontMatterPageCount
+    || manifest.physicalPageCount !== model.pages.length + frontMatterPageCount
     || manifest.artifactSha256 !== sha256(artifactBytes)
     || manifest.pages.length !== model.pages.length
     || stableGoalBookJson(manifest.chapters) !== stableGoalBookJson(model.chapters)

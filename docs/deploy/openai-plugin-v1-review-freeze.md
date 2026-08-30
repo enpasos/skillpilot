@@ -850,6 +850,73 @@ verankert:
 - `contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-pre-runtime-cutover-cleanup-LearnerView.tsx`:
   `ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7`.
 
+### 6.15 Eng begrenzte Ausnahme: standardmäßig deaktivierte Feedback-Konfiguration
+
+Der Product Owner hat am **30. August 2026** ausdrücklich genehmigt,
+`application.yml` anzupassen, sofern das Risiko überschaubar bleibt. Diese
+Freigabe wird eng ausgelegt: Sie erlaubt ausschließlich einen neuen,
+standardmäßig deaktivierten Konfigurationszweig für die öffentliche
+Lernzielbuch-Rückmeldung und deren operatorgeschützte Übergabe von Produktion
+in eine lokale Codex-Entwicklungsumgebung. Das OpenAI-Plugin bleibt unverändert
+`skillpilot-coach-v1` Version `1.0.0`; ein Zurückziehen oder erneutes Einreichen
+im Portal ist nicht erforderlich.
+
+Freigegeben ist ausschließlich, direkt unter dem bereits vorhandenen
+`skillpilot.public-base-url` den Zweig `skillpilot.goal-feedback` anzulegen mit:
+
+- `enabled`, dessen eingecheckter Standard `false` bleibt;
+- einem eigenen, standardmäßig leeren `operator-token`;
+- begrenzten öffentlichen Rate-Limit-Werten für Requests, Zeitfenster und die
+  maximale Zahl lokaler Zähler-Buckets; und
+- begrenzten Inbox-Werten für ausstehende Zeilen und Bytes.
+
+Keine vorhandene Property, kein bestehender Default und keine OpenAI-, Claude-,
+MCP-, OAuth-, Tool-, Schema-, UI-, Session-, Zustands- oder Review-Semantik darf
+dabei verändert werden. Die Feedback-Komponenten werden nur bei der expliziten
+Aktivierung instanziiert; eine Aktivierung ohne mindestens 32 Zeichen langes,
+eigenständiges Operator-Token bricht den Start fail-closed ab. Diese Ausnahme
+ist weder eine Produktionsaktivierung noch eine Deployment-Freigabe.
+
+Der geschützte Konfigurationsstand ist mit seiner unveränderten
+Submission-Baseline und dem eng autorisierten neuen SHA-256 verankert:
+
+- `backend/src/main/resources/application.yml`:
+  `15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591`
+  →
+  `83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990`.
+
+Die fokussierte Produktionsübergabe-Regression belegt Aktivierung,
+versionierte Annahme, wiederaufnehmbaren Export, Digestbindung, atomare
+Löschung, inhaltsfreien Receipt und historische PDF-Auflösung und ist ebenfalls
+hashgebunden:
+
+- `backend/src/test/java/com/skillpilot/backend/goalfeedback/GoalFeedbackProductionHandoffIntegrationTest.java`:
+  `ff053be447e56015dd595b67e3a4cfa2cad7eb2875c42b51c224f6f3f0f0a9dc`.
+
+### 6.16 Eng begrenzte Ausnahme: Spring Boot 4.1.1
+
+Der Product Owner hat am **30. August 2026** ausdrücklich genehmigt, dass der
+Review-Freeze dieses Wartungsupdate nicht verhindert. Freigegeben ist
+ausschließlich die Änderung des Gradle-Plugins `org.springframework.boot` von
+`4.1.0` auf `4.1.1` im aktuellen Produktions-Webbackend. Java-Version,
+Gradle-Wrapper, Spring-AI-BOM, Quellcode, Konfiguration sowie alle eingereichten
+ChatGPT-, MCP-, OAuth-, Tool-, Schema-, UI-, Session- und Reviewverträge bleiben
+unverändert. Diese Ausnahme ist weder eine Deployment-Freigabe noch eine
+allgemeine Aufhebung des Review-Freeze.
+
+Der unmittelbar vorherige und der autorisierte Dateistand sind hashgebunden:
+
+- `backend/build.gradle.kts`:
+  `fcde2e8108d36e58a35f015a274efe5ad361465bafc2296789ea374dd246dec1`
+  →
+  `b400ce01f36f653b96271e4f430f97f5595c7617c48132bdf76bcd9630d9a7f0`.
+
+Die öffentliche OpenAI-V1-Vertragsregression bleibt als unveränderte Evidenz
+hashgebunden:
+
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1PublicContractValidationTest.java`:
+  `e401636ab978d8a97b168e8e5bc606b4594e7a21ccae284064f2590a66c158bf`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
