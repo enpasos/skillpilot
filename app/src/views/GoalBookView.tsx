@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import {
   AlertTriangle,
@@ -13,17 +19,18 @@ import {
 import { LanguageToggle } from '../components/LanguageToggle'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InlineMathText } from '../components/InlineMathText'
+import { GoalBookChapterTree } from '../components/GoalBookChapterTree'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
   assertGoalBookPublicationBinding,
   filterGoalBookPages,
   GOAL_BOOK_INDEX_URL,
   goalBookApplicabilityOptions,
-  goalBookChapterDepths,
   goalBookExternalReferenceFromHash,
   goalBookPageFromHash,
   parseGoalBookPublicationIndex,
   parseVerifiedGoalBookRuntimeModel,
+  resolveGoalBookChapterProjection,
   selectGoalBookPublication,
   type GoalBookRuntimeExternalReference,
   type GoalBookApplicabilityFilter,
@@ -33,7 +40,13 @@ import {
   type GoalBookRuntimePublication,
   type GoalBookRuntimePublicationIndex,
   type GoalBookRuntimeReference,
+  type GoalBookSuppliedChapterProjection,
 } from '../utils/goalBookRuntime'
+import {
+  compileGoalBookPersonalizedProjection,
+  goalBookCompositionViewMatchUrl,
+  resolveGoalBookPersonalizationScope,
+} from '../utils/goalBookPersonalizedProjection'
 import {
   goalBookDefinitionById,
   goalBookDefinitionByLandscapeId,
@@ -78,6 +91,15 @@ const copy = {
     searchLabel: 'Lernziele durchsuchen',
     searchPlaceholder: 'Titel, Beschreibung oder vollständige Lernziel-ID',
     chapters: 'Kapitel',
+    canonicalView: 'Kanonische Gesamtsicht',
+    canonicalFilteredView: 'Kanonische Gliederung · gefiltert',
+    personalizedView: 'Personalisierte Kapitelsicht',
+    personalizedLoading: 'Die personalisierte Kapitelsicht wird geladen …',
+    personalizedNoMatch: 'Für diese Auswahl ist keine geprüfte Kapitelsicht verfügbar. Es werden keine Lernziele angezeigt.',
+    personalizedInvalid: 'Die gelieferte Kapitelsicht gehört nicht zu dieser geprüften Buchausgabe. Es werden keine Lernziele angezeigt.',
+    personalizedError: 'Die personalisierte Kapitelsicht konnte nicht geladen werden. Es werden keine Lernziele angezeigt.',
+    expandChapter: 'Kapitel aufklappen',
+    collapseChapter: 'Kapitel einklappen',
     allGoals: 'Alle Lernziele',
     goals: 'Lernziele',
     result: 'Treffer',
@@ -95,6 +117,7 @@ const copy = {
     requiredBy: 'Wird direkt vorausgesetzt von',
     outsideBook: 'Außerhalb dieser Ausgabe',
     outsideBookHint: 'Diese Relation ist fachlich erfasst, das Ziel besitzt in diesem Band jedoch keine eigene Seite.',
+    outsideCurrentSelection: 'Dieses Lernziel liegt außerhalb der aktuellen Kapitel-, Such- oder Filterauswahl und wird als verknüpfte Referenz angezeigt.',
     sourceSubject: 'Fachliche Herkunft',
     externalPageTitle: 'Lernziel außerhalb dieser Ausgabe',
     externalPageText: 'Das Lernziel ist als fachliche Relation erfasst, gehört aber nicht zu den curricular-atomaren Zielseiten dieses Bands.',
@@ -103,9 +126,8 @@ const copy = {
     next: 'Nächstes Lernziel',
     evidenceApproved: 'Didaktisches Evidenzprofil geprüft',
     evidencePending: 'Didaktisches Evidenzprofil in Prüfung',
-    feedbackTitle: 'Feedback-Pilot',
-    feedbackText: 'Die strukturierte Rückmeldung zu einer exakten Lernziel-ID und Buchversion wird vorbereitet. In diesem ersten Slice werden noch keine Daten übermittelt.',
-    feedbackInfo: 'Mehr zum Feedback-Pilot',
+    feedbackPrompt: 'Ist an diesem Lernziel fachlich, sprachlich oder in der Einordnung etwas zu verbessern?',
+    feedbackAction: 'Feedback zu diesem Lernziel',
     versionBinding: 'Version und Prüfbinding',
     edition: 'Buchausgabe',
     goalFingerprint: 'Zielfingerprint',
@@ -149,6 +171,15 @@ const copy = {
     searchLabel: 'Search learning goals',
     searchPlaceholder: 'Title, description, or full learning-goal ID',
     chapters: 'Chapters',
+    canonicalView: 'Canonical overview',
+    canonicalFilteredView: 'Canonical structure · filtered',
+    personalizedView: 'Personalized chapter view',
+    personalizedLoading: 'Loading the personalized chapter view …',
+    personalizedNoMatch: 'No reviewed chapter view is available for this selection. No learning goals are shown.',
+    personalizedInvalid: 'The supplied chapter view is not bound to this reviewed book edition. No learning goals are shown.',
+    personalizedError: 'The personalized chapter view could not be loaded. No learning goals are shown.',
+    expandChapter: 'Expand chapter',
+    collapseChapter: 'Collapse chapter',
     allGoals: 'All learning goals',
     goals: 'Learning goals',
     result: 'result',
@@ -166,6 +197,7 @@ const copy = {
     requiredBy: 'Directly required by',
     outsideBook: 'Outside this edition',
     outsideBookHint: 'This relation is recorded, but the goal has no page in this volume.',
+    outsideCurrentSelection: 'This learning goal is outside the current chapter, search, or filter selection and is shown as a linked reference.',
     sourceSubject: 'Subject source',
     externalPageTitle: 'Learning goal outside this edition',
     externalPageText: 'This learning goal is recorded as a subject relation but is not one of the curricular-atomic pages in this volume.',
@@ -174,9 +206,8 @@ const copy = {
     next: 'Next learning goal',
     evidenceApproved: 'Didactic evidence profile reviewed',
     evidencePending: 'Didactic evidence profile under review',
-    feedbackTitle: 'Feedback pilot',
-    feedbackText: 'Structured feedback bound to an exact learning-goal ID and book version is being prepared. This first slice does not transmit any data.',
-    feedbackInfo: 'About the feedback pilot',
+    feedbackPrompt: 'Could this learning goal be improved in its content, wording, or curricular placement?',
+    feedbackAction: 'Feedback on this learning goal',
     versionBinding: 'Version and review binding',
     edition: 'Book edition',
     goalFingerprint: 'Goal fingerprint',
@@ -330,7 +361,8 @@ const RelationList: React.FC<{
   internal: GoalBookRuntimeReference[]
   external: GoalBookRuntimeExternalReference[]
   c: typeof copy.de | typeof copy.en
-}> = ({ title, internal, external, c }) => {
+  onInternalNavigate: () => void
+}> = ({ title, internal, external, c, onInternalNavigate }) => {
   if (internal.length === 0 && external.length === 0) return null
   return (
     <section className="rounded-xl border border-border-color bg-white/60 p-4 dark:bg-slate-900/45">
@@ -341,6 +373,7 @@ const RelationList: React.FC<{
             <li key={relation.goalId}>
               <a
                 href={`#${relation.anchor}`}
+                onClick={onInternalNavigate}
                 className="block rounded-lg border border-sky-200/80 bg-sky-50/70 px-3 py-2 text-sm transition hover:border-sky-400 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:border-sky-900 dark:bg-sky-950/30 dark:hover:border-sky-700"
               >
                 <InlineMathText className="block font-medium text-sky-800 dark:text-sky-200" text={relation.title} />
@@ -400,7 +433,17 @@ const GoalPage: React.FC<{
   navigationPages: GoalBookRuntimePage[]
   language: 'de' | 'en'
   c: typeof copy.de | typeof copy.en
-}> = ({ page, model, navigationPages, language, c }) => {
+  onInternalNavigate: () => void
+  outsideCurrentSelection: boolean
+}> = ({
+  page,
+  model,
+  navigationPages,
+  language,
+  c,
+  onInternalNavigate,
+  outsideCurrentSelection,
+}) => {
   const [failedImage, setFailedImage] = useState<string | null>(null)
   const navigationIndex = navigationPages.findIndex(({ goalId }) => goalId === page.goalId)
   const previous = navigationIndex > 0 ? navigationPages[navigationIndex - 1] : null
@@ -420,6 +463,14 @@ const GoalPage: React.FC<{
       <nav aria-label="Breadcrumb" className="text-sm text-text-secondary">
         {page.breadcrumbs.join(' › ')}
       </nav>
+      {outsideCurrentSelection && (
+        <p
+          data-testid="goal-book-outside-current-selection"
+          className="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100"
+        >
+          {c.outsideCurrentSelection}
+        </p>
+      )}
       <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
@@ -467,12 +518,14 @@ const GoalPage: React.FC<{
           internal={page.requires}
           external={page.externalPrerequisites}
           c={c}
+          onInternalNavigate={onInternalNavigate}
         />
         <RelationList
           title={c.requiredBy}
           internal={page.reverseRequires}
           external={page.externalReverseRequires}
           c={c}
+          onInternalNavigate={onInternalNavigate}
         />
       </div>
 
@@ -498,6 +551,28 @@ const GoalPage: React.FC<{
           <dd><code className="break-all">{model.digest}</code></dd>
         </dl>
       </details>
+
+      <section className="mt-5 rounded-xl border border-violet-300 bg-violet-50/70 p-4 dark:border-violet-900 dark:bg-violet-950/25" aria-label={c.feedbackAction}>
+        <p className="text-sm leading-6 text-violet-950 dark:text-violet-100">{c.feedbackPrompt}</p>
+        <Link
+          to={`/lernziel-feedback?${new URLSearchParams({
+            bookId: model.book.id,
+            goalId: page.goalId,
+            edition: model.book.edition,
+            page: String(page.pageNumber),
+            goalFingerprint: page.goalFingerprint,
+            pageFingerprint: page.pageFingerprint,
+            bookDigest: model.digest,
+          }).toString()}`}
+          aria-label={language === 'de'
+            ? `Feedback zu „${page.title}“`
+            : `Feedback on “${page.title}”`}
+          className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-lg border border-violet-400 px-3 py-2 text-sm font-semibold text-violet-900 transition hover:bg-violet-100 dark:border-violet-700 dark:text-violet-100 dark:hover:bg-violet-950/60"
+        >
+          <FlaskConical size={18} aria-hidden="true" />
+          {c.feedbackAction}
+        </Link>
+      </section>
 
       <nav aria-label="Lernzielreihenfolge" className="mt-7 flex items-stretch justify-between gap-3 border-t border-border-color pt-5">
         {previous ? (
@@ -615,46 +690,16 @@ const ApplicabilityFilters: React.FC<{
   )
 }
 
-const ChapterControls: React.FC<{
-  model: GoalBookRuntimeModel
-  selectedChapterId: string | null
-  chapterDepths: Map<string, number>
-  onSelect: (chapterId: string | null) => void
-  c: typeof copy.de | typeof copy.en
-}> = ({ model, selectedChapterId, chapterDepths, onSelect, c }) => (
-  <>
-    <button
-      type="button"
-      onClick={() => onSelect(null)}
-      aria-current={selectedChapterId === null ? 'true' : undefined}
-      className={`mt-2 min-h-11 w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition ${selectedChapterId === null ? 'bg-sky-700 text-white' : 'hover:bg-slate-100 dark:hover:bg-slate-800'}`}
-    >
-      {c.allGoals} <span className="opacity-75">({model.book.pageCount})</span>
-    </button>
-    <ul className="mt-1 space-y-0.5">
-      {model.chapters.slice(1).map((chapter) => {
-        const depth = Math.max(0, (chapterDepths.get(chapter.chapterId) ?? 1) - 1)
-        const active = selectedChapterId === chapter.chapterId
-        return (
-          <li key={chapter.chapterId}>
-            <button
-              type="button"
-              onClick={() => onSelect(chapter.chapterId)}
-              aria-current={active ? 'true' : undefined}
-              style={{ paddingLeft: `${0.75 + Math.min(depth, 3) * 0.75}rem` }}
-              className={`min-h-11 w-full rounded-lg py-2 pr-2 text-left text-sm leading-tight transition ${active ? 'bg-sky-700 text-white' : 'hover:bg-slate-100 dark:hover:bg-slate-800'}`}
-            >
-              <span className="block">{chapter.label}</span>
-              <span className="mt-0.5 block text-xs opacity-70">{chapter.goalIds.length} {c.goals}</span>
-            </button>
-          </li>
-        )
-      })}
-    </ul>
-  </>
-)
+export interface GoalBookViewProps {
+  suppliedChapterProjection?: GoalBookSuppliedChapterProjection | null
+}
 
-export const GoalBookView: React.FC = () => {
+type PersonalizedProjectionState =
+  | { key: null, status: 'idle', projection: null }
+  | { key: string, status: 'no-match' | 'invalid' | 'error', projection: null }
+  | { key: string, status: 'matched', projection: GoalBookSuppliedChapterProjection }
+
+export const GoalBookView: React.FC<GoalBookViewProps> = ({ suppliedChapterProjection }) => {
   const { language } = useLanguage()
   const location = useLocation()
   const c = copy[language === 'en' ? 'en' : 'de']
@@ -665,16 +710,66 @@ export const GoalBookView: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [query, setQuery] = useState('')
-  const [chapterId, setChapterId] = useState<string | null>(null)
+  const [selectedChapterNodeId, setSelectedChapterNodeId] = useState<string | null>(null)
   const [applicabilityFilter, setApplicabilityFilter] = useState<GoalBookApplicabilityFilter>({
     jurisdiction: null,
     stage: null,
     durationModel: null,
     courseProfile: null,
   })
+  const [personalizedProjection, setPersonalizedProjection] = useState<PersonalizedProjectionState>({
+    key: null,
+    status: 'idle',
+    projection: null,
+  })
   const [hash, setHash] = useState(() => window.location.hash)
   const detailRef = useRef<HTMLDivElement>(null)
   const mobileChapterRef = useRef<HTMLDetailsElement>(null)
+  const clearHashSelection = useCallback(() => {
+    if (window.location.hash) {
+      window.history.replaceState(
+        window.history.state,
+        '',
+        `${window.location.pathname}${window.location.search}`,
+      )
+    }
+    setHash('')
+  }, [])
+
+  const resetGoalBookSelection = useCallback(() => {
+    clearHashSelection()
+    setLoading(true)
+    setError(false)
+    setModel(null)
+    setPublication(null)
+    setQuery('')
+    setSelectedChapterNodeId(null)
+    setApplicabilityFilter({
+      jurisdiction: null,
+      stage: null,
+      durationModel: null,
+      courseProfile: null,
+    })
+    setPersonalizedProjection({ key: null, status: 'idle', projection: null })
+  }, [clearHashSelection])
+
+  const resetForRouteSearch = useCallback((nextSearch: string) => {
+    if (!publicationIndex) return
+    try {
+      const requestedBookId = selectGoalBookPublication(publicationIndex, nextSearch).bookId
+      if (requestedBookId === publication?.bookId) return
+    } catch {
+      // The loading effect reports malformed routes through the normal error UI.
+      // Reset first so a previously loaded subject cannot remain under that URL.
+    }
+    resetGoalBookSelection()
+  }, [publication, publicationIndex, resetGoalBookSelection])
+
+  useEffect(() => {
+    const onPopState = () => resetForRouteSearch(window.location.search)
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [resetForRouteSearch])
 
   useEffect(() => {
     const abortController = new AbortController()
@@ -726,18 +821,111 @@ export const GoalBookView: React.FC = () => {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  const chapterDepths = useMemo(
-    () => model ? goalBookChapterDepths(model.chapters) : new Map<string, number>(),
-    [model],
+  const personalizationScope = useMemo(
+    () => model
+      ? resolveGoalBookPersonalizationScope(model, applicabilityFilter)
+      : { status: 'partial' as const },
+    [applicabilityFilter, model],
   )
+
+  useEffect(() => {
+    if (!model || personalizationScope.status !== 'complete' || suppliedChapterProjection !== undefined) {
+      return
+    }
+
+    const { key, scope } = personalizationScope
+    const abortController = new AbortController()
+    void fetch(goalBookCompositionViewMatchUrl(scope), {
+      method: 'GET',
+      credentials: 'same-origin',
+      redirect: 'error',
+      cache: 'no-store',
+      signal: abortController.signal,
+    })
+      .then(async (response) => {
+        if (abortController.signal.aborted) return
+        if (response.status === 204) {
+          setPersonalizedProjection({ key, status: 'no-match', projection: null })
+          return
+        }
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+        const compiled = await compileGoalBookPersonalizedProjection(
+          await response.json(),
+          model,
+          scope,
+        )
+        if (abortController.signal.aborted) return
+        if (!compiled.suppliedProjection) {
+          console.warn(
+            '[GoalBookView] Rejected personalized chapter projection',
+            compiled.findings,
+          )
+          setPersonalizedProjection({ key, status: 'invalid', projection: null })
+          return
+        }
+        setPersonalizedProjection({
+          key,
+          status: 'matched',
+          projection: compiled.suppliedProjection,
+        })
+      })
+      .catch((reason: unknown) => {
+        if (
+          abortController.signal.aborted
+          || (reason instanceof DOMException && reason.name === 'AbortError')
+        ) return
+        console.warn('[GoalBookView] Failed to load personalized chapter projection', reason)
+        setPersonalizedProjection({ key, status: 'error', projection: null })
+      })
+    return () => abortController.abort()
+  }, [model, personalizationScope, suppliedChapterProjection])
+
+  const matchedChapterProjection = useMemo(() => {
+    if (personalizationScope.status !== 'complete') return null
+    if (suppliedChapterProjection !== undefined) return suppliedChapterProjection
+    return personalizedProjection.key === personalizationScope.key
+      && personalizedProjection.status === 'matched'
+      ? personalizedProjection.projection
+      : null
+  }, [personalizationScope, personalizedProjection, suppliedChapterProjection])
+  const personalizedProjectionBlocked = personalizationScope.status === 'complete'
+    ? matchedChapterProjection === null
+    : personalizationScope.status === 'invalid'
+
+  const activeProjection = useMemo(
+    () => {
+      if (!model || personalizedProjectionBlocked) return null
+      try {
+        return resolveGoalBookChapterProjection({
+          model,
+          applicability: applicabilityFilter,
+          suppliedProjection: matchedChapterProjection,
+        })
+      } catch (reason) {
+        console.warn('[GoalBookView] Rejected resolved chapter projection', reason)
+        return null
+      }
+    },
+    [applicabilityFilter, matchedChapterProjection, model, personalizedProjectionBlocked],
+  )
+  const effectiveSelectedChapterNodeId = selectedChapterNodeId !== null
+    && activeProjection?.nodes.some(({ nodeId }) => nodeId === selectedChapterNodeId)
+    ? selectedChapterNodeId
+    : null
+  const selectedProjectionNode = activeProjection?.nodes.find(
+    ({ nodeId, kind }) => nodeId === effectiveSelectedChapterNodeId && kind !== 'goal',
+  ) ?? null
   const filteredPages = useMemo(
     () => model ? filterGoalBookPages({
       model,
       query,
-      chapterId,
-      applicability: applicabilityFilter,
+      chapterId: null,
+      ...(activeProjection?.source === 'supplied'
+        ? {}
+        : { applicability: applicabilityFilter }),
+      goalIds: selectedProjectionNode?.descendantGoalIds ?? activeProjection?.goalIds ?? [],
     }) : [],
-    [applicabilityFilter, chapterId, model, query],
+    [activeProjection?.goalIds, activeProjection?.source, applicabilityFilter, model, query, selectedProjectionNode?.descendantGoalIds],
   )
   const linkedPage = useMemo(
     () => model && hash ? goalBookPageFromHash(model, hash) : null,
@@ -754,18 +942,58 @@ export const GoalBookView: React.FC = () => {
   const linkedPageInFilter = linkedPage
     ? filteredPages.some(({ goalId }) => goalId === linkedPage.goalId)
     : false
-  const selectedPage = (linkedPageInFilter ? linkedPage : null)
+  const selectedPage = linkedPage
     ?? (linkedExternalReference ? null : filteredPages[0])
     ?? null
+  const selectedPageOutsideCurrentSelection = Boolean(linkedPage && !linkedPageInFilter)
+
+  const languageCode = language === 'en' ? 'en' : 'de'
+  const activeViewLabel = useMemo(() => {
+    const displayedScope = activeProjection?.source === 'supplied' && activeProjection.scope
+      ? activeProjection.scope
+      : applicabilityFilter
+    const scopeParts = [
+      displayedScope.jurisdiction
+        ? jurisdictionLabel(displayedScope.jurisdiction, languageCode)
+        : null,
+      displayedScope.stage ? stageLabel(displayedScope.stage, languageCode) : null,
+      displayedScope.durationModel,
+      displayedScope.courseProfile,
+    ].filter((value): value is string => Boolean(value))
+    const hasFilter = Object.values(applicabilityFilter).some((value) => value !== null)
+    const viewKind = activeProjection?.source === 'supplied'
+      ? c.personalizedView
+      : hasFilter ? c.canonicalFilteredView : c.canonicalView
+    return scopeParts.length > 0 ? `${viewKind} · ${scopeParts.join(' · ')}` : viewKind
+  }, [activeProjection?.scope, activeProjection?.source, applicabilityFilter, c, languageCode])
+  const personalizedProjectionMessage = useMemo(() => {
+    if (!personalizedProjectionBlocked) return null
+    if (personalizationScope.status === 'invalid' || suppliedChapterProjection === null) {
+      return c.personalizedInvalid
+    }
+    if (
+      personalizationScope.status !== 'complete'
+      || personalizedProjection.key !== personalizationScope.key
+    ) return c.personalizedLoading
+    if (personalizedProjection.status === 'no-match') return c.personalizedNoMatch
+    if (personalizedProjection.status === 'invalid') return c.personalizedInvalid
+    return c.personalizedError
+  }, [
+    c,
+    personalizationScope,
+    personalizedProjection,
+    personalizedProjectionBlocked,
+    suppliedChapterProjection,
+  ])
 
   useEffect(() => {
-    if (!selectedPage) return
+    if (!selectedPage || linkedPage?.goalId !== selectedPage.goalId) return
     const frame = window.requestAnimationFrame(() => {
       detailRef.current?.scrollIntoView({ block: 'start' })
       document.getElementById(selectedPage.anchor)?.focus({ preventScroll: true })
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [selectedPage])
+  }, [linkedPage, selectedPage])
 
   return (
     <div
@@ -802,24 +1030,21 @@ export const GoalBookView: React.FC = () => {
               <nav aria-label={c.books} className="mt-4 flex w-fit flex-wrap gap-1 rounded-xl border border-border-color bg-white/80 p-1 dark:bg-slate-900/70">
                 {publicationIndex.books.map((book) => {
                   const active = publication?.bookId === book.bookId
+                  const route = goalBookRoute(book.bookId)
                   return (
                     <Link
                       key={book.bookId}
-                      to={goalBookRoute(book.bookId)}
-                      onClick={() => {
-                        if (active) return
-                        setLoading(true)
-                        setError(false)
-                        setModel(null)
-                        setPublication(null)
-                        setQuery('')
-                        setChapterId(null)
-                        setApplicabilityFilter({
-                          jurisdiction: null,
-                          stage: null,
-                          durationModel: null,
-                          courseProfile: null,
-                        })
+                      to={route}
+                      onClick={(event) => {
+                        if (
+                          event.defaultPrevented
+                          || event.button !== 0
+                          || event.metaKey
+                          || event.ctrlKey
+                          || event.shiftKey
+                          || event.altKey
+                        ) return
+                        resetForRouteSearch(new URL(route, window.location.href).search)
                       }}
                       aria-current={active ? 'page' : undefined}
                       data-testid={`goal-book-select-${book.bookId}`}
@@ -911,7 +1136,11 @@ export const GoalBookView: React.FC = () => {
             <ApplicabilityFilters
               model={model}
               filter={applicabilityFilter}
-              onChange={setApplicabilityFilter}
+              onChange={(nextFilter) => {
+                clearHashSelection()
+                setSelectedChapterNodeId(null)
+                setApplicabilityFilter(nextFilter)
+              }}
               language={language === 'en' ? 'en' : 'de'}
               c={c}
             />
@@ -922,36 +1151,70 @@ export const GoalBookView: React.FC = () => {
               </p>
             )}
 
-            <div className="mt-5 grid min-w-0 gap-5 lg:grid-cols-[15rem_minmax(15rem,21rem)_minmax(0,1fr)]">
+            {personalizedProjectionMessage && (
+              <p
+                role={personalizedProjectionMessage === c.personalizedLoading ? 'status' : 'alert'}
+                data-testid="goal-book-personalized-projection-status"
+                className="mt-5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-4 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100"
+              >
+                {personalizedProjectionMessage}
+              </p>
+            )}
+
+            {activeProjection && (
+              <div className="mt-5 grid min-w-0 gap-5 lg:grid-cols-[minmax(18rem,22rem)_minmax(15rem,21rem)_minmax(0,1fr)]">
               <details ref={mobileChapterRef} className="min-w-0 rounded-xl border border-border-color bg-white/70 p-3 dark:bg-slate-900/55 lg:hidden">
-                <summary className="flex min-h-11 cursor-pointer items-center justify-between rounded-lg px-2 py-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                <summary className="flex min-h-11 cursor-pointer items-start justify-between gap-3 rounded-lg px-2 py-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
                   {c.chapters}
-                  <span className="normal-case tracking-normal">
-                    {model.chapters.find((chapter) => chapter.chapterId === chapterId)?.label ?? c.allGoals}
+                  <span className="text-right normal-case tracking-normal">
+                    <span className="block">
+                      {selectedProjectionNode?.label ?? c.allGoals}
+                    </span>
+                    <span className="mt-0.5 block text-xs font-normal text-sky-700 dark:text-sky-300">
+                      {activeViewLabel}
+                    </span>
                   </span>
                 </summary>
-                <nav aria-label={c.chapters} className="mt-2 max-h-[60vh] overflow-y-auto border-t border-border-color pt-2">
-                  <ChapterControls
-                    model={model}
-                    selectedChapterId={chapterId}
-                    chapterDepths={chapterDepths}
-                    onSelect={(nextChapterId) => {
-                      setChapterId(nextChapterId)
+                <nav aria-label={c.chapters} className="mt-2 max-h-[60vh] overflow-x-hidden overflow-y-auto border-t border-border-color pt-2">
+                  <GoalBookChapterTree
+                    projection={activeProjection}
+                    selectedNodeId={effectiveSelectedChapterNodeId}
+                    activeGoalId={selectedPage?.goalId ?? null}
+                    allGoalsLabel={c.allGoals}
+                    goalsLabel={c.goals}
+                    expandLabel={(label) => `${c.expandChapter}: ${label}`}
+                    collapseLabel={(label) => `${c.collapseChapter}: ${label}`}
+                    onSelectNode={(nextNodeId) => {
+                      clearHashSelection()
+                      setSelectedChapterNodeId(nextNodeId)
                       mobileChapterRef.current?.removeAttribute('open')
                     }}
-                    c={c}
+                    onSelectGoal={() => {
+                      setSelectedChapterNodeId(null)
+                      mobileChapterRef.current?.removeAttribute('open')
+                    }}
                   />
                 </nav>
               </details>
 
-              <nav aria-label={c.chapters} className="hidden min-w-0 rounded-xl border border-border-color bg-white/70 p-3 dark:bg-slate-900/55 lg:sticky lg:top-28 lg:block lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:self-start">
+              <nav aria-label={c.chapters} className="hidden min-w-0 rounded-xl border border-border-color bg-white/70 p-3 dark:bg-slate-900/55 lg:sticky lg:top-28 lg:block lg:max-h-[calc(100vh-8rem)] lg:overflow-x-hidden lg:overflow-y-auto lg:self-start">
                 <h2 className="px-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">{c.chapters}</h2>
-                <ChapterControls
-                  model={model}
-                  selectedChapterId={chapterId}
-                  chapterDepths={chapterDepths}
-                  onSelect={setChapterId}
-                  c={c}
+                <p data-testid="goal-book-view-label" className="px-2 pt-1 text-xs font-medium leading-5 text-sky-700 dark:text-sky-300">
+                  {activeViewLabel}
+                </p>
+                <GoalBookChapterTree
+                  projection={activeProjection}
+                  selectedNodeId={effectiveSelectedChapterNodeId}
+                  activeGoalId={selectedPage?.goalId ?? null}
+                  allGoalsLabel={c.allGoals}
+                  goalsLabel={c.goals}
+                  expandLabel={(label) => `${c.expandChapter}: ${label}`}
+                  collapseLabel={(label) => `${c.collapseChapter}: ${label}`}
+                  onSelectNode={(nextNodeId) => {
+                    clearHashSelection()
+                    setSelectedChapterNodeId(nextNodeId)
+                  }}
+                  onSelectGoal={() => setSelectedChapterNodeId(null)}
                 />
               </nav>
 
@@ -970,14 +1233,9 @@ export const GoalBookView: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => {
+                        clearHashSelection()
                         setQuery('')
-                        setChapterId(null)
-                        setApplicabilityFilter({
-                          jurisdiction: null,
-                          stage: null,
-                          durationModel: null,
-                          courseProfile: null,
-                        })
+                        setSelectedChapterNodeId(null)
                       }}
                       className="mt-3 min-h-11 rounded-lg border border-border-color px-3 py-2 font-medium text-text-primary"
                     >
@@ -1014,6 +1272,8 @@ export const GoalBookView: React.FC = () => {
                     navigationPages={filteredPages}
                     language={language === 'en' ? 'en' : 'de'}
                     c={c}
+                    onInternalNavigate={() => setSelectedChapterNodeId(null)}
+                    outsideCurrentSelection={selectedPageOutsideCurrentSelection}
                   />
                 )}
                 {!selectedPage && linkedExternalReference && (
@@ -1033,33 +1293,9 @@ export const GoalBookView: React.FC = () => {
                   </article>
                 )}
               </div>
-            </div>
+              </div>
+            )}
 
-            <section className="mt-7 rounded-xl border border-dashed border-violet-300 bg-violet-50/70 p-5 dark:border-violet-900 dark:bg-violet-950/25">
-              <h2 className="flex items-center gap-2 font-semibold text-violet-900 dark:text-violet-200">
-                <FlaskConical size={18} aria-hidden="true" />
-                {c.feedbackTitle}
-              </h2>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-violet-900/80 dark:text-violet-200/80">
-                {c.feedbackText}
-              </p>
-              <Link
-                to={selectedPage
-                  ? `/lernziel-feedback?${new URLSearchParams({
-                      bookId: model.book.id,
-                      goalId: selectedPage.goalId,
-                      edition: model.book.edition,
-                      page: String(selectedPage.pageNumber),
-                      goalFingerprint: selectedPage.goalFingerprint,
-                      pageFingerprint: selectedPage.pageFingerprint,
-                      bookDigest: model.digest,
-                    }).toString()}`
-                  : '/lernziel-feedback'}
-                className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-violet-400 px-3 py-2 text-sm font-semibold text-violet-900 transition hover:bg-violet-100 dark:border-violet-700 dark:text-violet-100 dark:hover:bg-violet-950/60"
-              >
-                {c.feedbackInfo}
-              </Link>
-            </section>
           </>
         )}
       </main>

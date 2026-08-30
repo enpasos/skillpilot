@@ -93,6 +93,7 @@ interface SourceManifest {
   manifestId: string
   landscapeId: string
   navigationOwnership: string
+  navigationViewPath: string
   expectedJurisdictions: string[]
   durationModelPolicyPath: string
   expectedCurricularAtomicGoalCount: number
@@ -109,7 +110,8 @@ const LEDGER_PATH = 'curricula/DE/Gymnasium/quality/release-model/physik.semanti
 const MATH_PROFILE_PATH = 'contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json'
 const MATH_LANDSCAPE_PATH = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const LEDGER_SCHEMA_PATH = 'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json'
-const SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest.schema.json'
+const LEGACY_SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest.schema.json'
+const SOURCE_MANIFEST_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json'
 const SOURCE_MANIFEST_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json'
 const CONFIG_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas.json'
 const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
@@ -1137,9 +1139,33 @@ const sourceManifestSchema = readJson<Record<string, unknown>>(SOURCE_MANIFEST_S
 const sourceManifestAjv = new Ajv2020({ allErrors: true, strict: true })
 const validateSourceManifest = sourceManifestAjv.compile(sourceManifestSchema)
 assert(validateSourceManifest(sourceManifest), sourceManifestAjv.errorsText(validateSourceManifest.errors, { separator: '; ' }))
+assert.equal(sourceManifest.schemaVersion, 2)
+const legacySourceManifestSchema = readJson<Record<string, unknown>>(LEGACY_SOURCE_MANIFEST_SCHEMA_PATH)
+const legacySourceManifestAjv = new Ajv2020({ allErrors: true, strict: true })
+const validateLegacySourceManifest = legacySourceManifestAjv.compile(legacySourceManifestSchema)
+const legacySourceManifest = {
+  schemaVersion: 1,
+  manifestId: sourceManifest.manifestId,
+  landscapeId: sourceManifest.landscapeId,
+  navigationOwnership: 'common-topic-suffix-v1',
+  expectedJurisdictions: sourceManifest.expectedJurisdictions,
+  durationModelPolicyPath: sourceManifest.durationModelPolicyPath,
+  expectedCurricularAtomicGoalCount: sourceManifest.expectedCurricularAtomicGoalCount,
+  sourcePaths: sourceManifest.sourcePaths,
+}
+assert(
+  validateLegacySourceManifest(legacySourceManifest),
+  legacySourceManifestAjv.errorsText(validateLegacySourceManifest.errors, { separator: '; ' }),
+)
+assert.equal(validateSourceManifest(legacySourceManifest), false)
+assert.equal(validateLegacySourceManifest(sourceManifest), false)
 assert.equal(sourceManifest.manifestId, 'de-gym-physics-national-atlas')
 assert.equal(sourceManifest.landscapeId, LANDSCAPE_ID)
-assert.equal(sourceManifest.navigationOwnership, 'common-topic-suffix-v1')
+assert.equal(sourceManifest.navigationOwnership, 'canonical-composition-view-v1')
+assert.equal(
+  sourceManifest.navigationViewPath,
+  'app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json',
+)
 assert.deepEqual(sourceManifest.expectedJurisdictions, EXPECTED_JURISDICTIONS)
 assert.equal(sourceManifest.durationModelPolicyPath, DURATION_POLICY_PATH)
 assert.equal(sourceManifest.expectedCurricularAtomicGoalCount, EXPECTED_COUNTS.curricularAtomic)
@@ -1481,6 +1507,71 @@ assert.deepEqual(
   [...reviewedAtomicGoalIds].filter((goalId) => !atlasCurricularAtomicGoalIds.has(goalId)),
   [],
   'all reviewed curricular Physics atoms must be visible in the nationwide atlas union',
+)
+
+const canonicalProfileTargetIds = new Set<string>()
+const ROAD_SAFETY_GOAL_ID = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
+for (const profilePath of [
+  'curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json',
+  'curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json',
+]) {
+  const view = normalizeCompositionView(readJson(profilePath))
+  const compilation = compileCompositionView(
+    view,
+    landscapeWithSemanticKinds,
+    physicsAndMathGoalUniverse,
+  )
+  assert.deepEqual(
+    compilation.findings.filter(({ severity }) => severity === 'error'),
+    [],
+    `invalid canonical Physics profile ${profilePath}`,
+  )
+  collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById).forEach((goalId) => {
+    if (decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic') {
+      canonicalProfileTargetIds.add(goalId)
+    }
+  })
+}
+assert.equal(canonicalProfileTargetIds.size, 388)
+assert.equal(
+  canonicalProfileTargetIds.has(ROAD_SAFETY_GOAL_ID),
+  false,
+  'the direct prerequisiteOnly goalEntry for road safety overrides its broader target subtree',
+)
+
+const navigationView = normalizeCompositionView(readJson(sourceManifest.navigationViewPath))
+const combinedProfileBranches = collectCompositionStructures(
+  navigationView.rootNodes,
+  'goal-book-physics-sekii-gk-lk',
+)
+assert.equal(combinedProfileBranches.length, 1)
+assert.equal(combinedProfileBranches[0].label, 'Sekundarstufe II (GK und LK)')
+assert.equal(
+  collectCompositionStructures(
+    navigationView.rootNodes,
+    'canonical-structure:physics-sekii-gk',
+  ).length,
+  0,
+  'the nationwide Physics atlas must not retain a GK-only label for its GK/LK union',
+)
+const navigationCompilation = compileCompositionView(
+  navigationView,
+  landscapeWithSemanticKinds,
+  physicsAndMathGoalUniverse,
+)
+assert.deepEqual(
+  navigationCompilation.findings.filter(({ severity }) => severity === 'error'),
+  [],
+  'invalid canonical Physics goal-book navigation view',
+)
+const navigationGoalIds = new Set([...collectAtomicGoalIds(
+  navigationCompilation.compiledRootNodes,
+  semanticGoalById,
+)].filter((goalId) => decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic'))
+assert.deepEqual(
+  [...navigationGoalIds].sort(compareCodePoints),
+  [...atlasCurricularAtomicGoalIds].sort(compareCodePoints),
+  'canonical goal-book navigation must place all 461 atlas goals exactly once',
 )
 
 const durationPolicy = readJson<{

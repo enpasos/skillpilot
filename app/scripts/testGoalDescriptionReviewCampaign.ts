@@ -472,6 +472,82 @@ assert.deepEqual(
   (await validateGoalDescriptionReviewCampaign({ bundle, input, campaign })).errors,
   [],
 )
+const currentBundleWithoutFingerprint = {
+  ...bundle,
+  bundleFingerprint: digest('0'),
+  bookModelSchemaVersion: '1.1.0' as const,
+}
+const currentBundle: GoalBookReviewBundleManifest = {
+  ...currentBundleWithoutFingerprint,
+  bundleFingerprint: fingerprintGoalBookReviewBundleManifest(currentBundleWithoutFingerprint),
+}
+const currentInputWithoutFingerprint = {
+  ...inputWithoutFingerprint,
+  bundleFingerprint: currentBundle.bundleFingerprint,
+  goals: inputWithoutFingerprint.goals.map((goal, index) => ({
+    ...goal,
+    reviewContext: {
+      ...goal.reviewContext,
+      page: {
+        ...goal.reviewContext.page,
+        navigationOrder: index,
+        treeOrder: index,
+      },
+    },
+  })),
+}
+const currentInput: GoalDescriptionReviewInput = {
+  ...currentInputWithoutFingerprint,
+  reviewInputFingerprint: fingerprintGoalDescriptionReviewInput(currentInputWithoutFingerprint),
+}
+const currentCampaign = buildGoalDescriptionReviewCampaign({
+  bundle: currentBundle,
+  input: currentInput,
+  campaignId: 'math-description-round-current',
+  roundId: 'math-description-round-current-codex',
+  reviewerRole: 'external_ai_reviewer',
+  reviewPass: 'first_pass',
+  independenceGroupId: 'math-description-blind-current',
+  blindToOtherReviews: true,
+  recordSchemaDigest,
+  batchSize: 20,
+})
+assert.deepEqual(
+  (await validateGoalDescriptionReviewCampaign({
+    bundle: currentBundle,
+    input: currentInput,
+    campaign: currentCampaign,
+  })).errors,
+  [],
+)
+const hybridInputWithoutFingerprint = structuredClone(currentInputWithoutFingerprint)
+delete (hybridInputWithoutFingerprint.goals[0].reviewContext.page as {
+  treeOrder?: number
+}).treeOrder
+const hybridInput = {
+  ...hybridInputWithoutFingerprint,
+  reviewInputFingerprint: fingerprintGoalDescriptionReviewInput(hybridInputWithoutFingerprint),
+} as GoalDescriptionReviewInput
+const hybridCampaign = buildGoalDescriptionReviewCampaign({
+  bundle: currentBundle,
+  input: hybridInput,
+  campaignId: 'math-description-round-hybrid',
+  roundId: 'math-description-round-hybrid-codex',
+  reviewerRole: 'external_ai_reviewer',
+  reviewPass: 'first_pass',
+  independenceGroupId: 'math-description-blind-hybrid',
+  blindToOtherReviews: true,
+  recordSchemaDigest,
+  batchSize: 20,
+})
+assert.match(
+  (await validateGoalDescriptionReviewCampaign({
+    bundle: currentBundle,
+    input: hybridInput,
+    campaign: hybridCampaign,
+  })).errors.join('\n'),
+  /oneOf|treeOrder|additional properties/u,
+)
 assert.equal(input.schemaVersion, 2)
 const v3Campaign = buildGoalDescriptionReviewCampaign({
   bundle,

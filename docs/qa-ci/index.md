@@ -46,6 +46,8 @@ These pages describe durable manual or semi-automated review processes. Their le
   Operational checklist for running the audit, reading the queue, and writing ledger decisions.
 - [Goal Source Rationales Runbook](goal-source-rationales-runbook.md)
   Operational checklist for generating and reviewing human-readable source rationales.
+- [Goal Feedback: Production-to-Codex Intake](goal-feedback-codex-intake.md)
+  Default-off production inbox, digest-bound local custody transfer, online deletion, and candidate-only critical triage.
 
 ## Generated Status
 

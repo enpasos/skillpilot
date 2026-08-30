@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import {
   assertGoalBookPublicationBinding,
   filterGoalBookPages,
@@ -8,8 +9,14 @@ import {
   parseGoalBookPublicationIndex,
   parseGoalBookRuntimeModel,
   parseVerifiedGoalBookRuntimeModel,
+  resolveGoalBookChapterProjection,
   selectGoalBookPublication,
 } from './goalBookRuntime'
+import {
+  compileGoalBookPersonalizedProjection,
+  goalBookCompositionViewMatchUrl,
+  resolveGoalBookPersonalizationScope,
+} from './goalBookPersonalizedProjection'
 
 const assert = {
   equal(actual: unknown, expected: unknown, message = 'values differ') {
@@ -40,8 +47,23 @@ const assert = {
 
 const sha = `sha256:${'a'.repeat(64)}`
 
+const stableJson = (value: unknown): string => {
+  if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`
+  if (value && typeof value === 'object') {
+    return `{${Object.entries(value as Record<string, unknown>)
+      .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0)
+      .map(([key, nested]) => `${JSON.stringify(key)}:${stableJson(nested)}`)
+      .join(',')}}`
+  }
+  return JSON.stringify(value) ?? 'null'
+}
+
+const stableDigest = (value: unknown): string => (
+  `sha256:${createHash('sha256').update(stableJson(value)).digest('hex')}`
+)
+
 const fixture = () => ({
-  schemaVersion: '1.0.0',
+  schemaVersion: '1.1.0',
   book: {
     id: 'de-gym-mathematik-bundesweit',
     title: 'Lernzielbuch',
@@ -57,12 +79,63 @@ const fixture = () => ({
     atlasBaseUrl: 'https://skillpilot.com/lernzielbuch',
     oneGoalPerPage: true,
   },
-  source: {},
+  source: {
+    compositionViewSources: [{
+      path: 'curricula/DE/Gymnasium/composition-views/mathematik/test.view.json',
+      viewId: 'view-he-seki-g9',
+      scope: {
+        schoolForm: 'Gymnasium',
+        jurisdiction: 'DE-HE',
+        stage: 'SekI',
+        durationModel: 'G9',
+      },
+      digest: sha,
+      projectionFingerprint: sha,
+    }],
+  },
+  navigation: {
+    schemaVersion: '1.0.0',
+    canonicalProjectionSource: {
+      path: 'app/scripts/config/goal-books/navigation/test.view.json',
+      viewId: 'view',
+      title: 'Kanonische Testgliederung',
+      scope: { schoolForm: 'Gymnasium' },
+      digest: sha,
+      projectionFingerprint: sha,
+    },
+    goalGraph: {
+      schemaVersion: '1.0.0',
+      landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced',
+      title: 'Mathematik',
+      goals: [{
+        id: 'root',
+        title: 'Mathematik',
+        contains: ['goal-a', 'goal-b'],
+        type: 'cluster',
+        semanticKind: 'curricularArea',
+      }, {
+        id: 'goal-a',
+        title: 'Brüche addieren',
+        contains: [],
+        type: 'atomic',
+        semanticKind: 'curricularAtomic',
+      }, {
+        id: 'goal-b',
+        title: 'Größen vergleichen',
+        contains: [],
+        type: 'atomic',
+        semanticKind: 'curricularAtomic',
+      }],
+      digest: sha,
+    },
+  },
   chapters: [
     {
       chapterId: 'root',
       label: 'Mathematik',
       parentChapterId: null,
+      order: 0,
+      treeOrder: 0,
       goalIds: ['goal-a', 'goal-b'],
       pageNumbers: [1, 2],
     },
@@ -70,6 +143,8 @@ const fixture = () => ({
       chapterId: 'numbers',
       label: 'Zahlen',
       parentChapterId: 'root',
+      order: 1,
+      treeOrder: 1,
       goalIds: ['goal-a'],
       pageNumbers: [1],
     },
@@ -77,6 +152,8 @@ const fixture = () => ({
   pages: [
     {
       pageNumber: 1,
+      navigationOrder: 0,
+      treeOrder: 2,
       goalId: 'goal-a',
       anchor: 'goal-goal-a',
       title: 'Brüche addieren',
@@ -118,6 +195,8 @@ const fixture = () => ({
     },
     {
       pageNumber: 2,
+      navigationOrder: 1,
+      treeOrder: 3,
       goalId: 'goal-b',
       anchor: 'goal-goal-b',
       title: 'Größen vergleichen',
@@ -341,6 +420,11 @@ assert.deepEqual(
   'chapter filters use the authoritative chapter membership',
 )
 assert.deepEqual(
+  filterGoalBookPages({ model, query: '', chapterId: null, goalIds: [] }),
+  [],
+  'an explicitly empty projection stays empty instead of widening to the whole book',
+)
+assert.deepEqual(
   filterGoalBookPages({ model, query: 'nicht vorhanden', chapterId: null }),
   [],
 )
@@ -441,6 +525,303 @@ assert.deepEqual([...goalBookChapterDepths(model.chapters).entries()], [
   ['root', 0],
   ['numbers', 1],
 ])
+
+const canonicalProjection = resolveGoalBookChapterProjection({
+  model,
+  applicability: {
+    jurisdiction: null,
+    stage: null,
+    durationModel: null,
+    courseProfile: null,
+  },
+})
+assert.equal(canonicalProjection.source, 'canonical-fallback')
+assert.deepEqual(canonicalProjection.goalIds, ['goal-a', 'goal-b'])
+assert.deepEqual(
+  canonicalProjection.nodes.find(({ nodeId }) => nodeId === 'root')?.childNodeIds,
+  ['numbers', 'goal:goal-b'],
+  'the legacy adapter retains authored chapter order and places direct atomic leaves explicitly',
+)
+assert.deepEqual(
+  canonicalProjection.nodes.find(({ nodeId }) => nodeId === 'numbers')?.childNodeIds,
+  ['goal:goal-a'],
+  'the legacy chapter array is exposed through the same recursive node interface',
+)
+
+const filteredCanonicalProjection = resolveGoalBookChapterProjection({
+  model,
+  applicability: {
+    jurisdiction: 'DE-HE',
+    stage: 'SekI',
+    durationModel: 'G8',
+    courseProfile: null,
+  },
+})
+assert.deepEqual(filteredCanonicalProjection.goalIds, ['goal-a'])
+assert.equal(
+  filteredCanonicalProjection.nodes.find(({ nodeId }) => nodeId === 'root')?.descendantGoalCount,
+  1,
+  'chapter counts are recalculated from the active projection rather than copied from the whole book',
+)
+assert.equal(
+  filteredCanonicalProjection.nodes.some(({ nodeId }) => nodeId === 'goal:goal-b'),
+  false,
+  'empty branches and leaves are pruned from the applicability projection',
+)
+
+const suppliedProjection = resolveGoalBookChapterProjection({
+  model,
+  applicability: {
+    jurisdiction: 'DE-HE',
+    stage: 'SekI',
+    durationModel: 'G9',
+    courseProfile: null,
+  },
+  suppliedProjection: {
+    projectionId: 'projection-he-seki-g9',
+    viewId: 'view-he-seki-g9',
+    scope: {
+      jurisdiction: 'DE-HE',
+      stage: 'SekI',
+      durationModel: 'G9',
+      courseProfile: null,
+    },
+    digest: sha,
+    nodes: [{
+      nodeId: 'scope-root',
+      label: 'Mathematik Hessen G9',
+      parentNodeId: null,
+      childNodeIds: ['scope-cluster'],
+      kind: 'structure',
+      goalId: null,
+      descendantGoalCount: 1,
+    }, {
+      nodeId: 'scope-cluster',
+      label: 'Zahlen und Größen',
+      parentNodeId: 'scope-root',
+      childNodeIds: ['scope-goal-b'],
+      kind: 'cluster',
+      goalId: null,
+      descendantGoalCount: 1,
+    }, {
+      nodeId: 'scope-goal-b',
+      label: 'Größen vergleichen',
+      parentNodeId: 'scope-cluster',
+      childNodeIds: [],
+      kind: 'goal',
+      goalId: 'goal-b',
+      descendantGoalCount: 1,
+    }],
+  },
+})
+assert.equal(suppliedProjection.source, 'supplied')
+assert.equal(suppliedProjection.viewId, 'view-he-seki-g9')
+assert.deepEqual(
+  suppliedProjection.goalIds,
+  ['goal-b'],
+  'a supplied composition projection defines the exact target universe instead of widening to applicability',
+)
+
+const suppliedReorderedProjection = resolveGoalBookChapterProjection({
+  model,
+  applicability: {
+    jurisdiction: 'DE-HE',
+    stage: 'SekI',
+    durationModel: 'G9',
+    courseProfile: null,
+  },
+  suppliedProjection: {
+    projectionId: 'projection-reordered',
+    viewId: 'view-reordered',
+    scope: null,
+    digest: sha,
+    nodes: [{
+      nodeId: 'reordered-root',
+      label: 'Reordered root',
+      parentNodeId: null,
+      childNodeIds: ['reordered-goal-b', 'reordered-goal-a'],
+      kind: 'structure',
+      goalId: null,
+      descendantGoalCount: 2,
+    }, {
+      nodeId: 'reordered-goal-b',
+      label: 'Größen vergleichen',
+      parentNodeId: 'reordered-root',
+      childNodeIds: [],
+      kind: 'goal',
+      goalId: 'goal-b',
+      descendantGoalCount: 1,
+    }, {
+      nodeId: 'reordered-goal-a',
+      label: 'Brüche addieren',
+      parentNodeId: 'reordered-root',
+      childNodeIds: [],
+      kind: 'goal',
+      goalId: 'goal-a',
+      descendantGoalCount: 1,
+    }],
+  },
+})
+assert.deepEqual(
+  suppliedReorderedProjection.goalIds,
+  ['goal-b', 'goal-a'],
+  'the authored Composition View preorder remains the resolved personalized goal order',
+)
+assert.deepEqual(
+  filterGoalBookPages({
+    model,
+    query: '',
+    chapterId: null,
+    goalIds: suppliedReorderedProjection.goalIds,
+  }).map(({ goalId }) => goalId),
+  ['goal-b', 'goal-a'],
+  'array-shaped projection membership filters preserve authored goal order',
+)
+
+assert.equal(
+  resolveGoalBookPersonalizationScope(model, {
+    jurisdiction: 'DE-HE',
+    stage: 'SekI',
+    durationModel: null,
+    courseProfile: null,
+  }).status,
+  'partial',
+  'a state/stage with both G8 and G9 stays canonical-filtered until duration is resolved',
+)
+assert.equal(
+  resolveGoalBookPersonalizationScope(model, {
+    jurisdiction: 'DE-BY',
+    stage: 'SekI',
+    durationModel: null,
+    courseProfile: null,
+  }).status,
+  'unbound',
+  'a complete filter without a compatible published composition view stays canonical-filtered',
+)
+const completePersonalizationScope = resolveGoalBookPersonalizationScope(model, {
+  jurisdiction: 'DE-HE',
+  stage: 'SekI',
+  durationModel: 'G9',
+  courseProfile: null,
+})
+assert.equal(completePersonalizationScope.status, 'complete')
+if (completePersonalizationScope.status !== 'complete') {
+  throw new Error('expected a complete personalized scope')
+}
+assert.equal(
+  goalBookCompositionViewMatchUrl(completePersonalizationScope.scope),
+  '/api/ui/composition-views/match?landscapeId=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&schoolForm=Gymnasium&jurisdiction=DE-HE&stage=SekI&courseProfile=&durationModel=G9',
+  'the learning-goal book uses the same-origin Cockpit matcher with the complete Level-2 scope',
+)
+
+const authoredPersonalizedView = {
+  viewId: 'view-he-seki-g9-bound',
+  landscapeId: model.book.landscapeId,
+  // A reviewed duration-neutral authored view is a valid compatible subset
+  // of the more specific requested G9 learner scope.
+  scope: {
+    schoolForm: 'Gymnasium',
+    jurisdiction: 'DE-HE',
+    stage: 'SekI',
+  },
+  rootNodes: [{
+    kind: 'structure',
+    id: 'personalized-root',
+    label: 'Hessische Kapitelsicht',
+    children: [{
+      kind: 'goalEntry',
+      goalId: 'goal-a',
+    }, {
+      kind: 'structure',
+      id: 'personalized-cluster',
+      label: 'Größen',
+      children: [{
+        kind: 'goalEntry',
+        goalId: 'goal-b',
+      }],
+    }],
+  }],
+}
+const authoredScope = authoredPersonalizedView.scope
+const boundPersonalizedModel = {
+  ...model,
+  source: {
+    ...model.source,
+    compositionViewSources: [{
+      path: 'curricula/DE/Gymnasium/composition-views/mathematik/test-bound.view.json',
+      viewId: authoredPersonalizedView.viewId,
+      scope: authoredScope,
+      digest: stableDigest(authoredPersonalizedView),
+      projectionFingerprint: stableDigest({
+        viewId: authoredPersonalizedView.viewId,
+        scope: authoredScope,
+        curricularAtomicGoalIds: ['goal-a', 'goal-b'],
+      }),
+    }],
+  },
+}
+const compiledPersonalized = await compileGoalBookPersonalizedProjection(
+  authoredPersonalizedView,
+  boundPersonalizedModel,
+  completePersonalizationScope.scope,
+)
+if (!compiledPersonalized.suppliedProjection) {
+  throw new Error(`personalized projection did not compile: ${JSON.stringify(compiledPersonalized.findings)}`)
+}
+assert.equal(
+  compiledPersonalized.suppliedProjection?.viewId,
+  authoredPersonalizedView.viewId,
+  'a compatible authored scope is accepted only through its published source binding',
+)
+const personalizedRoot = compiledPersonalized.suppliedProjection?.nodes.find(
+  ({ parentNodeId }) => parentNodeId === null,
+)
+assert.deepEqual(
+  personalizedRoot?.childNodeIds.map((nodeId) => (
+    compiledPersonalized.suppliedProjection?.nodes.find((node) => node.nodeId === nodeId)?.kind
+  )),
+  ['goal', 'structure'],
+  'global treeOrder preserves an atomic sibling before a following structure node',
+)
+const tamperedPersonalized = structuredClone(authoredPersonalizedView)
+tamperedPersonalized.rootNodes[0].label = 'Manipulierte Kapitelsicht'
+assert.equal(
+  (await compileGoalBookPersonalizedProjection(
+    tamperedPersonalized,
+    boundPersonalizedModel,
+    completePersonalizationScope.scope,
+  )).suppliedProjection,
+  null,
+  'a same-ID server response with bytes outside the published source binding fails closed',
+)
+
+assert.throws(
+  () => resolveGoalBookChapterProjection({
+    model,
+    applicability: {
+      jurisdiction: null,
+      stage: null,
+      durationModel: null,
+      courseProfile: null,
+    },
+    suppliedProjection: {
+      projectionId: 'broken-count',
+      scope: null,
+      digest: sha,
+      nodes: [{
+        nodeId: 'broken-root',
+        label: 'Broken root',
+        parentNodeId: null,
+        childNodeIds: [],
+        kind: 'structure',
+        goalId: null,
+        descendantGoalCount: 1,
+      }],
+    },
+  }),
+  /nicht sicher gelesen/u,
+  'a malformed supplied projection fails closed instead of falling back to the broad canonical tree',
+)
 
 const brokenRelation = fixture()
 brokenRelation.pages[0].reverseRequires[0].pageNumber = 1

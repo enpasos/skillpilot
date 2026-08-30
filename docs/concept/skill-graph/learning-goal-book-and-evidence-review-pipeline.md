@@ -5,11 +5,11 @@ Initial scope: canonical German Gymnasium mathematics and physics
 Audience: curriculum authors, didactic reviewers, teachers, AI-review operators,
 and runtime implementers
 
-Implementation status (2026-08-20): Phase 0 and the nationwide mathematics and
+Implementation status (2026-08-30): Phase 0 and the nationwide mathematics and
 physics review-atlas slices are implemented. Closed contracts exist for evidence
 profiles, review configuration, BookModel, render manifests, AI-review bundles,
 AI runs, findings, and the public-feedback envelope. The deterministic renderer
-has completed a 780-page mathematics review edition and a 426-page physics
+has completed a 792-page mathematics review edition and a 461-page physics
 review edition. Each covers the deduplicated union of its current
 curricular-atomic Gymnasium targets from all 16 German states, Sekundarstufe I
 and II. Every goal has exactly one physical PDF page. Exact
@@ -19,14 +19,18 @@ goal properties. The same digest-bound reviewer edition is shipped by the
 regular repository build as a coreless, read-only `/lernzielbuch` preview with
 subject selection, chapter navigation, search, stable goal deep links,
 state-bound scope filters, and PDF download. The reserved
-`/lernziel-feedback` target is currently a
-clearly labelled, non-writing pilot placeholder. The representation-choice
+`/lernziel-feedback` target now resolves the exact publication binding and
+offers a privacy-minimized structured form. Its central PostgreSQL intake and
+the digest-bound production-to-local Codex handoff are implemented behind a
+default-off production feature gate; no production activation or deployment is
+claimed here. The representation-choice
 profile is deliberately still an
 `ai_candidate` with `needs_human_review`; no independent multi-provider review
-or human approval is claimed. Public feedback links and their version-bound
-privacy-minimized envelope are prepared, but the moderated production intake
-is a later phase. The physics review edition carries 406 current
-QA-ledger-bound candidate visualizations and 20 explicit no-image pages; it does
+or human approval is claimed. Production activation additionally requires a
+dedicated operator secret and a reviewed feedback-specific privacy/retention
+notice; the frozen general Coach legal/privacy copy is not changed by this
+implementation. The physics review edition carries 413 current
+QA-ledger-bound candidate visualizations and 48 explicit no-image pages; it does
 not claim human image approval. Coach runtime and Mastery behavior remain
 unchanged.
 
@@ -69,8 +73,9 @@ The following decisions are invariants of this concept:
    edition contracts and are not silently mixed into this book.
 5. Every goal page shows the full canonical goal identifier under the
    unambiguous label **Lernziel-ID**.
-6. `contains` supplies chapter and topic context. `requires` supplies the hard
-   ordering constraints.
+6. A reviewed composition view supplies the single-parent chapter and topic
+   context over the canonical `contains` graph. `requires` supplies the hard
+   linear ordering constraints.
 7. Direct prerequisites and direct reverse prerequisites are clickable. PDF
    navigation uses stable named destinations, not guessed page numbers.
 8. A page that does not fit its fixed template makes the build fail. Text may
@@ -122,6 +127,14 @@ The broad canonical `goal.applicability` field is useful provenance and a
 conservative outer bound, but it is not precise enough to print or filter the
 final Bundesland/G8/G9/GK/LK matrix. Changes to any bound projection or to the
 duration policy make the generated atlas stale.
+
+Atlas membership/applicability and atlas navigation are deliberately separate
+contracts. The source-view manifest union determines which curricular-atomic
+goals belong to the book and in which exact learner scopes they apply. A
+separately bound canonical composition view determines the one visible parent,
+labels, and authored preorder of those same goals. The build fails unless that
+navigation view places the atlas target set exactly once without missing or
+additional curricular-atomic goals.
 
 ### 3.2 Positive understanding-evidence profiles
 
@@ -282,7 +295,9 @@ The closed Phase-0 companion contracts are:
 - `contracts/goal-evidence/v1/goal-evidence-review-config.schema.json`;
 - `contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json`;
 - `contracts/goal-evidence/v1/goal-evidence-finding.schema.json`; and
-- `contracts/goal-evidence/v1/goal-public-feedback.schema.json`.
+- `contracts/goal-evidence/v1/goal-public-feedback.schema.json`; and
+- `contracts/goal-evidence/v2/goal-public-feedback.schema.json` for the
+  privacy-minimized public intake.
 
 Run payloads may be large. The implementation must deliberately classify which
 parts are durable review evidence, which are generated summaries, and which are
@@ -294,11 +309,14 @@ learner data are never committed.
 ### 5.1 One projection for HTML and PDF
 
 The generator first creates a locale- and scope-specific `BookModel` validated
-against `contracts/goal-book/v1/goal-book-model.schema.json`. The HTML
+against `contracts/goal-book/v1/goal-book-model-1.1.schema.json`. The HTML
 site and PDF renderer consume that exact serialized model. The model contains:
 
 - book version and build fingerprint;
 - canonical landscape and composition-view or source-manifest identifiers;
+- the bound canonical navigation-view digest and projection fingerprint;
+- a compact, digest-bound canonical goal graph used to compile the same
+  scope-specific Composition Views in the read-only WebGUI;
 - ordered chapter records;
 - exactly one record for every included goal;
 - direct prerequisite and reverse-prerequisite links;
@@ -344,8 +362,8 @@ manifest enumerates every admitted Bundesland/stage/course projection and binds
 the reviewed G8/G9 policy by path and digest; filesystem discovery or a broad
 glob is not a publication contract. Its target set must equal the complete
 union of current curricular-atomic targets across the effective projections.
-At the current bound revision this means 780 unique mathematics goal pages.
-The nationwide physics atlas follows the same contract with 426 unique goal
+At the current bound revision this means 792 unique mathematics goal pages.
+The nationwide physics atlas follows the same contract with 461 unique goal
 pages from 64 explicitly bound state, stage, and course projections. Missing,
 additional, or duplicate IDs fail the build.
 
@@ -364,28 +382,39 @@ state and stage. `null` means that the bound policy makes no duration/profile
 distinction for that tuple; it is not a wildcard and must not match an explicit
 G8, G9, GK, or LK filter.
 
-### 5.3 Chapters from `contains`
+### 5.3 Chapters from reviewed composition
 
-`contains` supplies the topic path and chapter nesting. It is not treated as a
-prerequisite relation. In the initial atomic-goal edition, cluster and structure
-nodes supply chapter labels, breadcrumbs, bookmarks, and ordering preferences;
-they do not receive goal pages.
+Canonical `contains` supplies the fachliche subtree semantics, but the reviewed
+composition view resolves its possible multiple parents into one visible tree.
+It is not treated as a prerequisite relation. In the initial atomic-goal
+edition, cluster and structure nodes supply chapter labels, breadcrumbs,
+bookmarks, and ordering preferences; they do not receive goal pages.
 
 Front matter, contents, indexes, and publication notes may use additional
 non-goal pages. The one-page invariant concerns goal pages: every included goal
 has one and only one complete page, and every goal page belongs to exactly one
 goal.
 
-When a union edition consumes several composition views, view-local runtime IDs
-must not create repeated roots such as several indistinguishable subject
-chapters. The nationwide mathematics and physics atlases bind
-`common-topic-suffix-v1`: it compares every admitted placement of a goal,
-removes state-, stage-, duration-, and course-specific wrappers that are not
-common to all of them, and retains only their exact shared topic suffix below a
-single neutral subject root. If no shared topic path exists, the goal stays at
-that root rather than inheriting a misleading path from whichever source file
-happens to sort first. Source-specific supplement chapters remain distinguishable
-only when their complete labels are genuinely shared.
+When a union edition consumes several composition views, their view-local paths
+must not be merged heuristically. The nationwide mathematics and physics
+atlases bind `canonical-composition-view-v1`: the reviewed canonical GK
+subject structure supplies the backbone, canonical profile additions remain
+explicit, and goals outside the canonical profiles are authored in the clearly
+named, stage- and subject-area-ordered branch **Bundeslandspezifische
+Ergänzungen**. The source-view union still owns membership and applicability;
+the canonical navigation view owns only placement, labels, and order. Raw
+`contains` parent order, filesystem order, and a first-parent fallback are never
+publication semantics.
+
+Because this static nationwide edition intentionally contains both course
+profiles, its shared upper-stage branch is labelled **Sekundarstufe II (GK und
+LK)**. A personalized GK or LK WebGUI projection keeps the profile-specific
+label from its matched composition view instead.
+
+Every chapter and atomic placement carries one common, gap-free `treeOrder`
+preorder. This preserves the exact authored interleaving of chapter and atomic
+siblings. A chapter-only order and a leaf-only order are insufficient because
+they would silently move every chapter before or after adjacent atomic goals.
 
 ### 5.4 Stable topological order from `requires`
 
@@ -457,9 +486,20 @@ destination names. Link labels continue to display the full unmodified ID.
 - Missing, ambiguous, or unsafe targets fail the build; they are never rendered
   as apparently valid dead links.
 
-PDF bookmarks include chapter hierarchy and every goal title. A second index
-maps full Lernziel-IDs to pages. HTML URLs use stable goal-ID fragments or paths
-and preserve the same link graph.
+The visible PDF contents reproduces the complete chapter hierarchy at every
+authored depth and links every chapter to its first goal page. PDF bookmarks
+include the book, the exact arbitrarily deep chapter hierarchy, and every goal
+exactly once below its deepest chapter. Chromium first produces the tagged PDF
+without its depth-limited native outline. The renderer then appends one bounded
+incremental PDF revision containing only the reviewed outline and the matching
+Catalog reference; it does not rewrite pages, tags, links, images, or named
+destinations. This step is dependency-free and fails closed unless the input is
+the expected unsigned, unencrypted Skia PDF 1.4 with a classic xref table,
+tagging, and every required named destination. The publication inspector walks
+the resulting Parent/First/Last/Prev/Next tree from the current Catalog and
+compares every title, destination, order, count, and parent edge with the
+BookModel. A second index maps full Lernziel-IDs to pages. HTML URLs use stable
+goal-ID fragments or paths and preserve the same link graph.
 
 ### 5.7 Fail-closed layout
 
@@ -500,9 +540,14 @@ silently inherit the more permissive review policy.
 An explicitly labelled, read-only reviewer atlas may be reachable on the public
 SkillPilot origin before the learner/teacher edition is approved. It must keep
 `publicationMode: review`, visibly mark the whole edition, retain each image's
-exact QA status in the bound machine contract, expose no write-capable feedback
-control, and make no claim of public approval. Repeating an image-level warning
-on every page is not required. This preview is a review surface, not the `public` publication. A
+exact QA status in the bound machine contract, and make no claim of public
+approval. Repeating an image-level warning on every page is not required. This
+preview is a review surface, not the `public` publication. The Product Owner
+decision of 30 August 2026 permits one narrow exception to the former blanket
+write prohibition: a goal-local, version-bound, moderated feedback intake may
+be linked from the review atlas. It stores no learner state, has no canonical
+write path, is independently feature-gated, and cannot approve or publish its
+own submission. This exception does not relax the candidate-image policy. A
 later public edition is built separately with `publicationMode: public` and the
 stricter resource policy above.
 
@@ -706,6 +751,12 @@ It may request an optional role and contact path, but it must not solicit learne
 names, permanent SkillPilot IDs, chat secrets, or unnecessary personal data.
 Submissions warn users not to include identifying learner information.
 
+The public V2 form deliberately has no contact field and no attachment upload.
+It requires separate acknowledgements that no learner/person data was entered
+and that Codex may perform automated critical triage. The feedback prose and an
+optional submitted source reference remain untrusted external input; no link is
+opened merely because it appears in a submission.
+
 ### 8.3 Moderation and authority
 
 Public submissions enter a moderated intake queue. An authorized reviewer may
@@ -726,8 +777,87 @@ conflict while preserving critical challenge.
 
 Public triage runs on a slower scheduled cadence, with a separate urgent lane
 for factual, safety, privacy, accessibility, or normative defects. Public
-feedback is retained against the exact historical fingerprint even after the
-current goal changes.
+feedback is retained locally against the exact historical fingerprint even
+after the current goal changes. It is not silently rebound to the current local
+checkout.
+
+### 8.4 Production-to-local custody transfer
+
+Feedback arrives in the production PostgreSQL inbox. Codex runs in a separate
+development environment and therefore has no direct database, shell, or file
+access to production. The only handoff is a bounded HTTPS operations API on the
+production origin, authenticated by the dedicated
+`SKILLPILOT_GOAL_FEEDBACK_OPERATOR_TOKEN`. That secret is independent of AI
+provider credentials and may not be passed as a command-line argument or sent
+to another host.
+
+The custody protocol is deliberately two phase:
+
+1. `POST /api/operations/goal-feedback/v1/export-batches?limit=N` atomically
+   claims the oldest unbound records and returns one deterministic payload plus
+   its canonical SHA-256 digest. `GET .../{exportId}` returns the same open
+   batch again after an interrupted transfer.
+2. Each record contains the external V2 envelope and a separate server-derived
+   production snapshot. The latter preserves the exact goal title,
+   description, breadcrumbs, publication context, and fingerprints that were
+   verified when the submission was accepted.
+3. The local client writes the exact response into a fresh ignored directory
+   below `tmp/goal-feedback/inbox/`, with owner-only permissions. It derives
+   separate trusted-context and untrusted-feedback JSONL files, re-reads all
+   bytes, verifies every digest, and synchronizes the directory metadata.
+4. Only after that verification may the client send
+   `DELETE .../{exportId}` with `If-Match: "<payloadDigest>"`. The production
+   transaction deletes the bound submission rows and clears the batch payload.
+   It retains only the content-free batch receipt: export ID, count, payload
+   digest, creation/deletion timestamps, and final status.
+5. The client validates and stores the exact server deletion receipt. A crash,
+   invalid digest, or failed local write before `DELETE` leaves the production
+   batch available for explicit re-download. If the connection fails after the
+   server has committed deletion but before the receipt is stored, the verified
+   local content is already durable and the same digest-bound `DELETE` is
+   idempotent: it returns the retained content-free receipt again. There is no
+   automatic best-effort delete.
+
+Deleting the live inbox is not a claim that an already-created infrastructure
+backup is immediately rewritten. Before production activation, the
+feedback-specific privacy notice and operations policy must name the backup
+rotation, maximum unexported retention, local review retention, and the contact
+for statutory requests. Until that review and the default-off feature gate are
+deliberately activated, the code is locally prepared rather than a live intake.
+
+### 8.5 Critical Codex intake
+
+The local validator keeps the trust boundary visible in the filesystem:
+
+- `bundle.json` is the exact digest-bound production response;
+- `trusted-context.jsonl` contains only server-derived publication snapshots;
+- `untrusted-feedback.jsonl` contains the external prose;
+- `local-context-comparison.jsonl` separately compares the production snapshot
+  with the possibly newer local repository; and
+- `triage-candidates.jsonl` starts empty and can contain candidate findings only.
+
+Feedback text cannot change the Codex work plan, trigger a command, open a URL,
+install software, disclose a secret, or directly edit canonical state. Codex
+first verifies the binding and independently checks factual/source claims
+against appropriate primary evidence. Surviving criticism enters the existing
+fingerprint-bound review lane with `reviewAuthority: "ai_candidate"`. Any
+prepared fix remains an uncommitted patch until separately authorized, and all
+affected curriculum-quality rules and protected Maturity floors must pass.
+
+This first central-handoff slice has two explicit historical/view boundaries:
+
+- the append-only PostgreSQL publication-snapshot registry preserves the exact
+  title, description, breadcrumbs and fingerprints needed to accept and export
+  feedback from already-downloaded, superseded PDFs. It deliberately does not
+  retain the full old BookModel with page relations, applicability, source
+  assignments and visualization payloads; those remain available only in a
+  separately retained publication artifact if deeper historical reproduction
+  is needed; and
+- a personalized WebGUI chapter complaint is currently bound to the exact goal
+  and book, but not yet to the exact filter/composition-view path seen by the
+  reviewer. A later contract must add a server-verifiable, non-personal scope,
+  projection, and chapter-path binding before this channel claims exact
+  personalized-view reproduction.
 
 ## 9. Rollout
 
@@ -802,7 +932,7 @@ profile with a generic template.
 ### 9.4.1 Concrete two-round understanding-evidence workflow
 
 The first nationwide mathematics wording pass uses a small, versioned
-calibration before the 780-goal run. Its 16 goals cover Jahrgangsstufe 5 through
+calibration before the current 792-goal run. Its 16 goals cover Jahrgangsstufe 5 through
 10 and E through Q4, including concepts, procedures, representations, modeling,
 proof/derivation, data, and strategy choice. The sample calibrates three
 positive, content-specific expectations for every goal: essential
@@ -858,7 +988,7 @@ The operational sequence is:
    transfer, or a DE/EN regression returns the goal to human adjudication. It
    does not trigger an automatic second canonical rewrite.
 
-After the 16-goal calibration passes, the same sequence is applied to all 780
+After the 16-goal calibration passes, the same sequence is applied to all 792
 mathematics goals in deterministic bounded batches with a final exact-coverage
 check. “The same external round” means the same locked review contract and
 sampling policy over V2, not reuse of V1 fingerprints or disclosure of the
@@ -925,8 +1055,9 @@ Every release manifest binds:
 - canonical package or landscape fingerprints;
 - composition-view ID and fingerprint;
 - for union editions, the closed source-manifest digest, every bound projection
-  fingerprint, the navigation-ownership contract, and the reviewed
-  duration-policy digest;
+  fingerprint, the navigation-ownership contract, canonical navigation-view
+  digest and projection fingerprint, canonical goal-graph digest, and the
+  reviewed duration-policy digest;
 - locale and scope;
 - ordered goal IDs and goal fingerprints;
 - evidence-profile fingerprints and statuses;
@@ -974,7 +1105,19 @@ The first production-capable implementation is accepted only when:
     publication check fail until BookModel, PDF, and manifests are regenerated;
     and
 17. cross-stage or cross-profile goals never inherit a contradictory chapter
-    path from the lexicographically first source projection.
+    path from the lexicographically first source projection;
+18. feedback intake is disabled by default and cannot be activated without a
+    dedicated operator secret and bounded production capacity;
+19. a public submission is server-bound to an exact published context, is
+    idempotent for one client submission ID, and contains no learner/session ID,
+    attachment, or contact field;
+20. an export preserves the external envelope separately from the exact
+    server-derived production snapshot and marks both as distinct trust zones;
+21. no production content is deleted until the complete local batch has passed
+    byte, schema, and digest verification and the matching `If-Match` digest is
+    confirmed; and
+22. successful deletion removes the live submission rows and batch payload
+    transactionally while retaining only a content-free batch receipt.
 
 ## 13. Required validation classes
 
@@ -988,7 +1131,9 @@ than one opaque all-purpose check:
 - PDF page ownership, destination, link, overflow, and legibility validation;
 - evidence-profile schema, fingerprint, and stale-decision validation;
 - AI-run independence and finding-schema validation;
-- public-feedback envelope and privacy validation;
+- public-feedback V2 envelope, idempotency, origin/body/rate/capacity boundary,
+  operator authentication, exact export, re-download, local durability,
+  digest-bound deletion, and privacy validation;
 - nationwide source-union completeness, policy binding, exact applicability
   tuple, and non-Cartesian filter validation; and
 - pilot adversarial dialogue evaluation.

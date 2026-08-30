@@ -78,6 +78,13 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         // tokens. These protocol endpoints are therefore not body-logged here.
         if (requestUri.equals("/api/action-regression")
                 || requestUri.startsWith("/api/action-regression/")
+                // Public feedback contains untrusted reviewer prose, while the
+                // operator export contains the complete production handoff.
+                // Neither namespace may pass through generic body logging.
+                || requestUri.equals("/api/public/goal-feedback/v1")
+                || requestUri.startsWith("/api/public/goal-feedback/v1/")
+                || requestUri.equals("/api/operations/goal-feedback/v1")
+                || requestUri.startsWith("/api/operations/goal-feedback/v1/")
                 || requestUri.equals("/api/claude/mcp")
                 || requestUri.startsWith("/api/claude/mcp/")
                 || openAiMcp

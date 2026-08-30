@@ -306,6 +306,50 @@
         "path": "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-29-pre-runtime-cutover-cleanup-LearnerView.tsx",
         "sha256": "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7"
       }
+    },
+    {
+      "id": "2026-08-30-goal-feedback-default-off-config",
+      "approvedAt": "2026-08-30",
+      "approvedBy": "product-owner",
+      "reason": "Add isolated, default-off production configuration for the learning-goal feedback inbox and its operator-only custody handoff.",
+      "scope": "Add only the skillpilot.goal-feedback subtree under the existing public base URL, with a false-by-default enable flag, a dedicated operator token, bounded public rate settings, and bounded inbox row/byte settings; preserve every existing application property and every submitted ChatGPT/MCP/OAuth/tool/schema/UI/session/review contract.",
+      "target": "current-production-web-backend",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-additive-default-off-layer-a-feedback-config-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "backend/src/main/resources/application.yml",
+        "submittedSha256": "15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591",
+        "authorizedSha256": "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990"
+      },
+      "evidenceFile": {
+        "path": "backend/src/test/java/com/skillpilot/backend/goalfeedback/GoalFeedbackProductionHandoffIntegrationTest.java",
+        "sha256": "ff053be447e56015dd595b67e3a4cfa2cad7eb2875c42b51c224f6f3f0f0a9dc"
+      }
+    },
+    {
+      "id": "2026-08-30-spring-boot-4-1-1-patch",
+      "approvedAt": "2026-08-30",
+      "approvedBy": "product-owner",
+      "reason": "Update the production backend from Spring Boot 4.1.0 to the compatible 4.1.1 maintenance release.",
+      "scope": "Change only the org.springframework.boot Gradle plugin version from 4.1.0 to 4.1.1; preserve Java, Gradle, Spring AI, source code, configuration and every submitted ChatGPT/MCP/OAuth/tool/schema/UI/session/review contract.",
+      "target": "current-production-web-backend",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-backend-maintenance-patch-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "backend/src/main/resources/application.yml",
+        "submittedSha256": "15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591",
+        "priorAuthorizedSha256": "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990",
+        "authorizedSha256": "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990"
+      },
+      "evidenceFile": {
+        "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1PublicContractValidationTest.java",
+        "sha256": "e401636ab978d8a97b168e8e5bc606b4594e7a21ccae284064f2590a66c158bf"
+      },
+      "additionalFile": {
+        "path": "backend/build.gradle.kts",
+        "priorSha256": "fcde2e8108d36e58a35f015a274efe5ad361465bafc2296789ea374dd246dec1",
+        "authorizedSha256": "b400ce01f36f653b96271e4f430f97f5595c7617c48132bdf76bcd9630d9a7f0"
+      }
     }
   ],
   "authorizedCopyClarifications": [

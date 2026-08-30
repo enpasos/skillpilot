@@ -1,0 +1,526 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-book/v1/goal-book-model-1.1.schema.json",
+  "title": "SkillPilot goal book model v1.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "book",
+    "source",
+    "navigation",
+    "chapters",
+    "pages",
+    "excludedTargetGoals",
+    "digest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.1.0" },
+    "book": { "$ref": "#/$defs/book" },
+    "source": { "$ref": "#/$defs/source" },
+    "navigation": { "$ref": "#/$defs/navigation" },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/chapter" }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/page" }
+    },
+    "excludedTargetGoals": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/excludedTargetGoal" }
+    },
+    "digest": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "goalId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "anchor": {
+      "type": "string",
+      "pattern": "^goal-[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schoolForm": { "$ref": "#/$defs/nonBlank" },
+        "stage": { "$ref": "#/$defs/nonBlank" },
+        "jurisdiction": { "$ref": "#/$defs/nonBlank" },
+        "durationModel": { "$ref": "#/$defs/nonBlank" },
+        "courseProfile": { "$ref": "#/$defs/nonBlank" }
+      }
+    },
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "locale",
+        "landscapeId",
+        "viewId",
+        "scope",
+        "pageCount",
+        "projectedAtomicGoalCount",
+        "excludedTargetAtomicGoalCount",
+        "edition",
+        "publicationMode",
+        "atlasBaseUrl",
+        "oneGoalPerPage"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonBlank" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "locale": { "$ref": "#/$defs/nonBlank" },
+        "landscapeId": { "$ref": "#/$defs/nonBlank" },
+        "viewId": { "$ref": "#/$defs/nonBlank" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "pageCount": { "type": "integer", "minimum": 1 },
+        "projectedAtomicGoalCount": { "type": "integer", "minimum": 1 },
+        "excludedTargetAtomicGoalCount": { "type": "integer", "minimum": 0 },
+        "edition": { "const": "curricular-atomic-v1" },
+        "publicationMode": { "enum": ["review", "public"] },
+        "atlasBaseUrl": {
+          "oneOf": [
+            { "type": "string", "pattern": "^https://" },
+            { "type": "null" }
+          ]
+        },
+        "oneGoalPerPage": { "const": true }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landscapePath",
+        "compositionViewPath",
+        "semanticKindLedgerPath",
+        "goalVisualizationQaPath",
+        "landscapeDigest",
+        "compositionViewDigest",
+        "semanticKindLedgerDigest",
+        "goalVisualizationQaDigest",
+        "evidenceReviewSources",
+        "goalFingerprintRuleVersion"
+      ],
+      "properties": {
+        "landscapePath": { "$ref": "#/$defs/nonBlank" },
+        "compositionViewPath": { "$ref": "#/$defs/nonBlank" },
+        "semanticKindLedgerPath": { "$ref": "#/$defs/nonBlank" },
+        "goalVisualizationQaPath": { "$ref": "#/$defs/nonBlank" },
+        "landscapeDigest": { "$ref": "#/$defs/sha256" },
+        "compositionViewDigest": { "$ref": "#/$defs/sha256" },
+        "semanticKindLedgerDigest": { "$ref": "#/$defs/sha256" },
+        "goalVisualizationQaDigest": { "$ref": "#/$defs/sha256" },
+        "compositionViewManifestPath": { "$ref": "#/$defs/nonBlank" },
+        "compositionViewManifestDigest": { "$ref": "#/$defs/sha256" },
+        "compositionViewSources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/compositionViewSource" }
+        },
+        "navigationOwnership": { "const": "canonical-composition-view-v1" },
+        "navigationViewPath": { "$ref": "#/$defs/nonBlank" },
+        "navigationViewDigest": { "$ref": "#/$defs/sha256" },
+        "navigationProjectionFingerprint": { "$ref": "#/$defs/sha256" },
+        "durationModelPolicyPath": { "$ref": "#/$defs/nonBlank" },
+        "durationModelPolicyDigest": { "$ref": "#/$defs/sha256" },
+        "externalLandscapes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/externalLandscapeSource" }
+        },
+        "evidenceReviewSources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceReviewSource" }
+        },
+        "goalFingerprintRuleVersion": { "const": "goal-evidence-v1" }
+      }
+    },
+    "evidenceReviewSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest"],
+      "properties": {
+        "path": { "$ref": "#/$defs/nonBlank" },
+        "digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "externalLandscapeSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "landscapeId", "digest"],
+      "properties": {
+        "path": { "$ref": "#/$defs/nonBlank" },
+        "landscapeId": { "$ref": "#/$defs/goalId" },
+        "digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "compositionViewSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "viewId", "scope", "digest", "projectionFingerprint"],
+      "properties": {
+        "path": { "$ref": "#/$defs/nonBlank" },
+        "viewId": { "$ref": "#/$defs/nonBlank" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "digest": { "$ref": "#/$defs/sha256" },
+        "projectionFingerprint": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "canonicalProjectionSource", "goalGraph"],
+      "properties": {
+        "schemaVersion": { "const": "1.0.0" },
+        "canonicalProjectionSource": { "$ref": "#/$defs/canonicalProjectionSource" },
+        "derivedProjection": { "$ref": "#/$defs/derivedProjection" },
+        "goalGraph": { "$ref": "#/$defs/navigationGoalGraph" }
+      }
+    },
+    "derivedProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "baseModelDigest",
+        "baseProjectionFingerprint",
+        "projectionFingerprint",
+        "selectedGoalIds"
+      ],
+      "properties": {
+        "kind": { "const": "goal-description-review-subset-v1" },
+        "baseModelDigest": { "$ref": "#/$defs/sha256" },
+        "baseProjectionFingerprint": { "$ref": "#/$defs/sha256" },
+        "projectionFingerprint": { "$ref": "#/$defs/sha256" },
+        "selectedGoalIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/goalId" }
+        }
+      }
+    },
+    "canonicalProjectionSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "viewId",
+        "title",
+        "scope",
+        "digest",
+        "projectionFingerprint"
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/nonBlank" },
+        "viewId": { "$ref": "#/$defs/nonBlank" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "digest": { "$ref": "#/$defs/sha256" },
+        "projectionFingerprint": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "navigationGoalGraph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "landscapeId", "title", "goals", "digest"],
+      "properties": {
+        "schemaVersion": { "const": "1.0.0" },
+        "landscapeId": { "$ref": "#/$defs/nonBlank" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "goals": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/navigationGraphGoal" }
+        },
+        "digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "navigationGraphGoal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "contains", "type", "semanticKind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/goalId" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "contains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/goalId" }
+        },
+        "type": { "enum": ["atomic", "cluster"] },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonBlank" }
+        },
+        "semanticKind": {
+          "enum": [
+            "orientation",
+            "curricularAtomic",
+            "curricularArea",
+            "practiceAssessment",
+            "memory",
+            "programStructure",
+            "runtimeSupport"
+          ]
+        }
+      }
+    },
+    "applicabilityScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "durationModel", "courseProfile"],
+      "properties": {
+        "stage": { "enum": ["SekI", "SekII"] },
+        "durationModel": {
+          "oneOf": [
+            { "enum": ["G8", "G9"] },
+            { "type": "null" }
+          ]
+        },
+        "courseProfile": {
+          "oneOf": [
+            { "enum": ["GK", "LK"] },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "applicabilityGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jurisdiction", "scopes"],
+      "properties": {
+        "jurisdiction": { "$ref": "#/$defs/nonBlank" },
+        "scopes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/applicabilityScope" }
+        }
+      }
+    },
+    "internalReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["goalId", "title", "anchor", "pageNumber"],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/goalId" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "anchor": { "$ref": "#/$defs/anchor" },
+        "pageNumber": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "externalReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["goalId", "title", "canonicalUrl"],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/goalId" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "landscapeId": { "$ref": "#/$defs/goalId" },
+        "canonicalUrl": {
+          "oneOf": [
+            { "type": "string", "pattern": "^https://" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chapterId",
+        "label",
+        "parentChapterId",
+        "order",
+        "treeOrder",
+        "goalIds",
+        "pageNumbers"
+      ],
+      "properties": {
+        "chapterId": { "$ref": "#/$defs/nonBlank" },
+        "label": { "$ref": "#/$defs/nonBlank" },
+        "order": { "type": "integer", "minimum": 0 },
+        "treeOrder": { "type": "integer", "minimum": 0 },
+        "parentChapterId": {
+          "oneOf": [
+            { "$ref": "#/$defs/nonBlank" },
+            { "type": "null" }
+          ]
+        },
+        "goalIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/goalId" }
+        },
+        "pageNumbers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "visualization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceType",
+        "title",
+        "url",
+        "originalDigest",
+        "qaStatus",
+        "approvedForPublication"
+      ],
+      "properties": {
+        "resourceType": { "const": "image" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "url": { "$ref": "#/$defs/nonBlank" },
+        "altText": { "$ref": "#/$defs/nonBlank" },
+        "originalDigest": { "$ref": "#/$defs/sha256" },
+        "qaStatus": {
+          "enum": ["approved", "review_candidate", "rejected"]
+        },
+        "approvedForPublication": { "type": "boolean" }
+      }
+    },
+    "evidenceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "status",
+        "reviewInputFingerprint",
+        "profileFingerprint",
+        "evidenceLevel",
+        "maximumClaimScope"
+      ],
+      "properties": {
+        "reviewId": { "$ref": "#/$defs/nonBlank" },
+        "status": {
+          "enum": ["needs_human_review", "approved", "rejected"]
+        },
+        "reviewInputFingerprint": { "$ref": "#/$defs/sha256" },
+        "profileFingerprint": { "$ref": "#/$defs/sha256" },
+        "evidenceLevel": { "enum": ["E0", "E1", "E2", "E3", "E4", "E5"] },
+        "maximumClaimScope": { "enum": ["G0", "G1", "G2", "G3", "G4"] }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "properties": {
+        "pageNumber": { "type": "integer", "minimum": 1 },
+        "navigationOrder": { "type": "integer", "minimum": 0 },
+        "treeOrder": { "type": "integer", "minimum": 0 },
+        "goalId": { "$ref": "#/$defs/goalId" },
+        "shortKey": { "$ref": "#/$defs/nonBlank" },
+        "anchor": { "$ref": "#/$defs/anchor" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "description": { "$ref": "#/$defs/nonBlank" },
+        "breadcrumbs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonBlank" }
+        },
+        "chapterIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonBlank" }
+        },
+        "applicability": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/applicabilityGroup" }
+        },
+        "requires": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/internalReference" }
+        },
+        "reverseRequires": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/internalReference" }
+        },
+        "externalPrerequisites": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/externalReference" }
+        },
+        "externalReverseRequires": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/externalReference" }
+        },
+        "visualization": {
+          "oneOf": [
+            { "$ref": "#/$defs/visualization" },
+            { "type": "null" }
+          ]
+        },
+        "evidenceReview": {
+          "oneOf": [
+            { "$ref": "#/$defs/evidenceReview" },
+            { "type": "null" }
+          ]
+        },
+        "goalFingerprint": { "$ref": "#/$defs/sha256" },
+        "pageFingerprint": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "excludedTargetGoal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["goalId", "title", "semanticKind", "reason"],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/goalId" },
+        "title": { "$ref": "#/$defs/nonBlank" },
+        "semanticKind": {
+          "enum": [
+            "orientation",
+            "curricularArea",
+            "practiceAssessment",
+            "memory",
+            "programStructure",
+            "runtimeSupport"
+          ]
+        },
+        "reason": { "const": "not-curricular-atomic" }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-book/v1/goal-book-source-manifest-v2.schema.json",
+  "title": "SkillPilot goal-book source manifest v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "manifestId",
+    "landscapeId",
+    "navigationOwnership",
+    "navigationViewPath",
+    "expectedJurisdictions",
+    "durationModelPolicyPath",
+    "expectedCurricularAtomicGoalCount",
+    "sourcePaths"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "manifestId": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "landscapeId": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "navigationOwnership": { "const": "canonical-composition-view-v1" },
+    "navigationViewPath": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "expectedJurisdictions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^DE-[A-Z]{2}$" }
+    },
+    "durationModelPolicyPath": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "expectedCurricularAtomicGoalCount": { "type": "integer", "minimum": 1 },
+    "sourcePaths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "pattern": "\\S" }
+    }
+  }
+}

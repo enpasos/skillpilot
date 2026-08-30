@@ -11,6 +11,10 @@ import {
   type GoalBookModel,
 } from './goalBookModel'
 import {
+  goalBookFrontMatterPageCount,
+  inspectGoalBookPdfArtifact,
+} from './goalBookRenderer'
+import {
   DEFAULT_GOAL_BOOK_ID,
   GOAL_BOOK_PUBLICATION_REGISTRY,
   goalBookDefinitionById,
@@ -25,7 +29,7 @@ const REPOSITORY_ROOT = resolve(APP_ROOT, '..')
 const PUBLICATION_ROOT = resolve(APP_ROOT, 'public', 'lernzielbuch')
 const RENDER_MANIFEST_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
-  'contracts/goal-book/v1/goal-book-render-manifest.schema.json',
+  'contracts/goal-book/v1/goal-book-render-manifest-v2.schema.json',
 )
 
 const SHA256_PATTERN = /^sha256:[0-9a-f]{64}$/u
@@ -335,6 +339,7 @@ export const verifyPublishedGoalBook = async (
     fail('render-manifest byte digest does not match index.json')
   }
   verifyPdfHeaderAndTrailer(pdf)
+  await inspectGoalBookPdfArtifact(paths.pdfPath, publishedModel, FEEDBACK_URL)
 
   const renderManifest = parseJson(renderManifestRaw, 'PDF render manifest')
   const ajv = new Ajv2020({ allErrors: true, strict: true })
@@ -366,6 +371,19 @@ export const verifyPublishedGoalBook = async (
     fail('render manifest publicationMode is stale')
   }
   if (manifest.pageCount !== publishedModel.pages.length) fail('render manifest pageCount is stale')
+  if (manifest.goalPageCount !== publishedModel.pages.length) {
+    fail('render manifest goalPageCount is stale')
+  }
+  const expectedFrontMatterPageCount = goalBookFrontMatterPageCount(publishedModel)
+  if (manifest.frontMatterPageCount !== expectedFrontMatterPageCount) {
+    fail('render manifest frontMatterPageCount is stale')
+  }
+  if (
+    manifest.physicalPageCount
+    !== publishedModel.pages.length + expectedFrontMatterPageCount
+  ) {
+    fail('render manifest physicalPageCount is stale')
+  }
   if (manifest.artifactSizeLimitBytes !== MAX_PDF_BYTES) {
     fail('render manifest artifact-size budget is not the nationwide atlas budget')
   }

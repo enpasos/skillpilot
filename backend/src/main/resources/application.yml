@@ -44,6 +44,17 @@ spring:
 
 skillpilot:
   public-base-url: ${SKILLPILOT_PUBLIC_BASE_URL:https://skillpilot.com}
+  goal-feedback:
+    enabled: ${SKILLPILOT_GOAL_FEEDBACK_ENABLED:false}
+    operator-token: ${SKILLPILOT_GOAL_FEEDBACK_OPERATOR_TOKEN:}
+    public:
+      rate-limit:
+        requests: ${SKILLPILOT_GOAL_FEEDBACK_PUBLIC_REQUESTS_PER_WINDOW:10}
+        window: ${SKILLPILOT_GOAL_FEEDBACK_PUBLIC_RATE_WINDOW:PT1M}
+        max-client-buckets: ${SKILLPILOT_GOAL_FEEDBACK_PUBLIC_MAX_CLIENT_BUCKETS:10000}
+    inbox:
+      max-pending-rows: ${SKILLPILOT_GOAL_FEEDBACK_MAX_PENDING_ROWS:10000}
+      max-pending-bytes: ${SKILLPILOT_GOAL_FEEDBACK_MAX_PENDING_BYTES:104857600}
   claude:
     enabled: ${SKILLPILOT_CLAUDE_ENABLED:false}
     secure-cookie: ${SKILLPILOT_CLAUDE_SECURE_COOKIE:true}

@@ -44,6 +44,8 @@ const page = ({
 }): GoalBookPage => {
   const withoutFingerprint = {
     pageNumber,
+    navigationOrder: pageNumber - 1,
+    treeOrder: pageNumber,
     goalId,
     anchor: `goal-${goalId}`,
     title,
@@ -90,6 +92,46 @@ const pages = [
   page({ pageNumber: 3, goalId: 'goal-3', title: 'Unabhängigen Fall untersuchen' }),
   page({ pageNumber: 4, goalId: 'goal-4', title: 'Späteren Zahlenfall untersuchen' }),
 ]
+const navigationGraphWithoutDigest = {
+  schemaVersion: '1.0.0' as const,
+  landscapeId: 'fixture-landscape',
+  title: 'Fixture landscape',
+  goals: [{
+    id: 'fixture-root',
+    title: 'Fixture',
+    contains: pages.map(({ goalId }) => goalId),
+    type: 'cluster' as const,
+    semanticKind: 'curricularArea',
+  }, ...pages.map(({ goalId, title: goalTitle }) => ({
+    id: goalId,
+    title: goalTitle,
+    contains: [],
+    type: 'atomic' as const,
+    semanticKind: 'curricularAtomic',
+  }))],
+}
+const navigationProjectionWithoutFingerprint = {
+  schemaVersion: '1.0.0' as const,
+  viewId: 'fixture-view',
+  landscapeId: 'fixture-landscape',
+  title: 'Fixture navigation',
+  scope: { schoolForm: 'Gymnasium' },
+  chapters: [{
+    chapterId: 'fixture',
+    label: 'Fixture',
+    parentChapterId: null,
+    order: 0,
+    treeOrder: 0,
+  }],
+  placements: pages.map(({ goalId, breadcrumbs, chapterIds, navigationOrder, treeOrder }) => ({
+    goalId,
+    breadcrumbs,
+    chapterIds,
+    navigationOrder,
+    treeOrder,
+  })),
+}
+const navigationProjectionFingerprint = digest(navigationProjectionWithoutFingerprint)
 const baseWithoutDigest = {
   schemaVersion: GOAL_BOOK_MODEL_SCHEMA_VERSION,
   book: {
@@ -119,10 +161,27 @@ const baseWithoutDigest = {
     evidenceReviewSources: [],
     goalFingerprintRuleVersion: 'goal-evidence-v1' as const,
   },
+  navigation: {
+    schemaVersion: '1.0.0' as const,
+    canonicalProjectionSource: {
+      path: 'fixtures/view.json',
+      viewId: 'fixture-view',
+      title: 'Fixture navigation',
+      scope: { schoolForm: 'Gymnasium' },
+      digest: fixedDigest('b'),
+      projectionFingerprint: navigationProjectionFingerprint,
+    },
+    goalGraph: {
+      ...navigationGraphWithoutDigest,
+      digest: digest(navigationGraphWithoutDigest),
+    },
+  },
   chapters: [{
     chapterId: 'fixture',
     label: 'Fixture',
     parentChapterId: null,
+    order: 0,
+    treeOrder: 0,
     goalIds: pages.map(({ goalId }) => goalId),
     pageNumbers: pages.map(({ pageNumber }) => pageNumber),
   }],
@@ -145,7 +204,28 @@ assert.equal(subset.book.pageCount, 2)
 assert.equal(subset.book.projectedAtomicGoalCount, 2)
 assert.equal(subset.pages[0].reverseRequires[0].pageNumber, 2)
 assert.equal(subset.pages[1].requires[0].pageNumber, 1)
+assert.deepEqual(subset.pages.map(({ navigationOrder }) => navigationOrder), [0, 1])
+assert.deepEqual(
+  [...subset.chapters.map(({ treeOrder }) => treeOrder), ...subset.pages.map(({ treeOrder }) => treeOrder)]
+    .sort((left, right) => left - right),
+  [0, 1, 2],
+)
+assert.equal(
+  subset.navigation.derivedProjection?.baseProjectionFingerprint,
+  baseModel.navigation.canonicalProjectionSource.projectionFingerprint,
+)
 assert.deepEqual(parseAndValidateGoalBookModel(subset), subset)
+
+const sparseSubset = buildGoalDescriptionRolloutSubsetModel({
+  baseModel,
+  goalIds: ['goal-1', 'goal-3'],
+  bookId: 'fixture-batch-sparse',
+  title: 'Fixture sparse batch',
+})
+assert.deepEqual(sparseSubset.pages.map(({ navigationOrder }) => navigationOrder), [0, 1])
+assert.deepEqual(sparseSubset.pages.map(({ treeOrder }) => treeOrder), [1, 2])
+assert.deepEqual(sparseSubset.navigation.derivedProjection?.selectedGoalIds, ['goal-1', 'goal-3'])
+assert.deepEqual(parseAndValidateGoalBookModel(sparseSubset), sparseSubset)
 
 const separated = buildGoalDescriptionRolloutSubsetModel({
   baseModel,

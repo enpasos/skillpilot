@@ -1,0 +1,304 @@
+databaseChangeLog:
+  - changeSet:
+      id: 025-add-goal-feedback-inbox
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - not:
+            - tableExists:
+                tableName: goal_feedback_export_batch
+        - not:
+            - tableExists:
+                tableName: goal_feedback_submission
+        - not:
+            - tableExists:
+                tableName: goal_feedback_publication_snapshot
+        - not:
+            - tableExists:
+                tableName: goal_feedback_publication_current
+        - not:
+            - tableExists:
+                tableName: goal_feedback_inbox_capacity
+      changes:
+        # Immutable export receipt. Deletion scrubs payload_json while preserving
+        # the digest, count and timestamps needed for an auditable receipt.
+        - createTable:
+            tableName: goal_feedback_export_batch
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_goal_feedback_export_batch
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payload_digest
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: record_count
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payload_json
+                  type: TEXT
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - sql:
+            sql: >-
+              ALTER TABLE goal_feedback_export_batch
+              ADD CONSTRAINT ck_goal_feedback_export_batch_status
+              CHECK (status IN ('OPEN', 'DELETED'))
+        - sql:
+            sql: >-
+              ALTER TABLE goal_feedback_export_batch
+              ADD CONSTRAINT ck_goal_feedback_export_batch_count
+              CHECK (record_count >= 0)
+        - createIndex:
+            tableName: goal_feedback_export_batch
+            indexName: idx_goal_feedback_export_batch_status
+            columns:
+              - column:
+                  name: status
+              - column:
+                  name: created_at
+              - column:
+                  name: id
+
+        # Public submissions exist only until their digest-bound export is
+        # acknowledged. Confirmed deletion removes these rows in full; only the
+        # content-free export-batch receipt remains.
+        - createTable:
+            tableName: goal_feedback_submission
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_goal_feedback_submission
+              - column:
+                  name: client_submission_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: received_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: envelope_digest
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: exact_duplicate_key
+                  type: VARCHAR(71)
+              - column:
+                  name: envelope_json
+                  type: TEXT
+              - column:
+                  name: trusted_context_json
+                  type: TEXT
+              - column:
+                  name: stored_bytes
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: export_batch_id
+                  type: UUID
+        - addUniqueConstraint:
+            tableName: goal_feedback_submission
+            columnNames: client_submission_id
+            constraintName: uq_goal_feedback_submission_client_id
+        - addForeignKeyConstraint:
+            baseTableName: goal_feedback_submission
+            baseColumnNames: export_batch_id
+            referencedTableName: goal_feedback_export_batch
+            referencedColumnNames: id
+            constraintName: fk_goal_feedback_submission_export_batch
+        - createIndex:
+            tableName: goal_feedback_submission
+            indexName: idx_goal_feedback_submission_unbound
+            columns:
+              - column:
+                  name: export_batch_id
+              - column:
+                  name: received_at
+              - column:
+                  name: id
+
+        # A single locked counter makes the public intake bound deterministic
+        # across all production instances without retaining network metadata.
+        - createTable:
+            tableName: goal_feedback_inbox_capacity
+            columns:
+              - column:
+                  name: id
+                  type: SMALLINT
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_goal_feedback_inbox_capacity
+              - column:
+                  name: pending_rows
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pending_bytes
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - insert:
+            tableName: goal_feedback_inbox_capacity
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: pending_rows
+                  valueNumeric: 0
+              - column:
+                  name: pending_bytes
+                  valueNumeric: 0
+              - column:
+                  name: updated_at
+                  valueDate: 2026-08-30T00:00:00Z
+        - sql:
+            sql: >-
+              ALTER TABLE goal_feedback_inbox_capacity
+              ADD CONSTRAINT ck_goal_feedback_inbox_capacity_singleton
+              CHECK (id = 1 AND pending_rows >= 0 AND pending_bytes >= 0)
+
+        # Append-only publication snapshots keep old PDF links resolvable after
+        # a later deployment. Only the separate current pointer is replaced.
+        - createTable:
+            tableName: goal_feedback_publication_snapshot
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_goal_feedback_publication_snapshot
+              - column:
+                  name: book_id
+                  type: VARCHAR(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: edition
+                  type: VARCHAR(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: book_digest
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: model_sha256
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: VARCHAR(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: locale
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: render_manifest_fingerprint
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: snapshot_json
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_seen_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: goal_feedback_publication_snapshot
+            columnNames: book_id, edition, book_digest
+            constraintName: uq_goal_feedback_publication_snapshot_binding
+        - createIndex:
+            tableName: goal_feedback_publication_snapshot
+            indexName: idx_goal_feedback_publication_snapshot_book
+            columns:
+              - column:
+                  name: book_id
+              - column:
+                  name: first_seen_at
+        - createTable:
+            tableName: goal_feedback_publication_current
+            columns:
+              - column:
+                  name: book_id
+                  type: VARCHAR(200)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_goal_feedback_publication_current
+              - column:
+                  name: snapshot_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: goal_feedback_publication_current
+            baseColumnNames: snapshot_id
+            referencedTableName: goal_feedback_publication_snapshot
+            referencedColumnNames: id
+            constraintName: fk_goal_feedback_publication_current_snapshot
+        - addUniqueConstraint:
+            tableName: goal_feedback_publication_current
+            columnNames: snapshot_id
+            constraintName: uq_goal_feedback_publication_current_snapshot
+        - createIndex:
+            tableName: goal_feedback_submission
+            indexName: idx_goal_feedback_submission_duplicate
+            columns:
+              - column:
+                  name: exact_duplicate_key
+              - column:
+                  name: received_at
+              - column:
+                  name: id
