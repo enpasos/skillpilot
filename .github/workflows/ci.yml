@@ -172,8 +172,8 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Install FFmpeg for browser demo-video validation
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg
+      - name: Install FFmpeg and PDF validation tools
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils
       - name: Validate reproducible browser demo-video tool
         working-directory: tools/demo-video
         run: |
