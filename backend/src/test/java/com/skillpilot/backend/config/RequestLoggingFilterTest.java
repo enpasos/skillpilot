@@ -71,6 +71,30 @@ class RequestLoggingFilterTest {
     }
 
     @Test
+    void teacherSupervisionNamespaceBypassesTheGeneralBodyLogger() throws Exception {
+        for (String path : new String[] {
+                "/api/ui/teacher-supervision/v1/workspaces",
+                "/api/ui/teacher-supervision/v1/invitations/accept",
+                "/api/ui/teacher-supervision/v1/learner-memberships/list",
+                "/api/ui/teacher-supervision/v1;probe=x/invitations/accept"
+        }) {
+            MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
+            request.setContentType("application/json");
+            request.setContent("{\"invitationToken\":\"must-not-be-logged\",\"courseLabel\":\"private\"}"
+                    .getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            MockFilterChain chain = new MockFilterChain();
+
+            filter.doFilter(request, response, chain);
+
+            assertThat(chain.getRequest()).as(path).isSameAs(request);
+            assertThat(chain.getResponse()).as(path).isSameAs(response);
+            assertThat(response.getHeader("Cache-Control")).as(path).isEqualTo("no-store");
+            assertThat(response.getHeader("Pragma")).as(path).isEqualTo("no-cache");
+        }
+    }
+
+    @Test
     void forwardingWrapperCannotExposeAnInternalOpenAiBodyToTheLogger() throws Exception {
         MockHttpServletRequest raw = new MockHttpServletRequest(
                 "POST",

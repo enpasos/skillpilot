@@ -137,6 +137,46 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
                 GoalFeedbackApi.SUBMISSION_ENDPOINT));
     }
 
+    /** Resolves one goal against the database-selected current publication only. */
+    public Optional<LinkBinding> resolveCurrentBinding(String bookId, String goalId) {
+        List<PublicationKey> current = jdbc.query("""
+                SELECT snapshot.book_id, snapshot.edition, snapshot.book_digest
+                FROM goal_feedback_publication_current publication
+                JOIN goal_feedback_publication_snapshot snapshot ON snapshot.id = publication.snapshot_id
+                WHERE publication.book_id = ?
+                """,
+                (resultSet, rowNumber) -> new PublicationKey(
+                        resultSet.getString("book_id"), resultSet.getString("edition"),
+                        resultSet.getString("book_digest")),
+                bookId);
+        require(current.size() <= 1, "Duplicate current goal-book pointer: " + bookId);
+        if (current.isEmpty()) {
+            return Optional.empty();
+        }
+        PublicationKey key = current.getFirst();
+        require(key.bookId().equals(bookId), "Invalid current goal-book snapshot pointer");
+        PublishedBook book = snapshots.get(key);
+        if (book == null) {
+            book = loadDurableSnapshot(key).orElse(null);
+            if (book == null) {
+                return Optional.empty();
+            }
+            cacheSnapshot(key, book);
+        }
+        PublishedBook currentBook = book;
+        return currentBook.pagesByNumber().values().stream()
+                .filter(page -> page.goalId().equals(goalId))
+                .map(page -> new LinkBinding(
+                        currentBook.id(),
+                        currentBook.edition(),
+                        page.goalId(),
+                        page.goalFingerprint(),
+                        page.pageFingerprint(),
+                        currentBook.modelDigest(),
+                        page.pageNumber()))
+                .findFirst();
+    }
+
     /**
      * Adds display-only image metadata to an otherwise unchanged trusted
      * feedback context. Images come only from a hash-verified static book page

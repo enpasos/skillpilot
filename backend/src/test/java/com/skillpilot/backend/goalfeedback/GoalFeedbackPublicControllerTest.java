@@ -12,6 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.GoalVisualization;
+import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.LinkBinding;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.PublicGoal;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.PublicResolvedContext;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.SubmissionReceipt;
@@ -43,6 +44,55 @@ class GoalFeedbackPublicControllerTest {
         mvc = MockMvcBuilders.standaloneSetup(
                         new GoalFeedbackPublicController(publications, submissions, retention))
                 .build();
+    }
+
+    @Test
+    void currentBindingReturnsTheExactCurrentPublicationBindingWithoutCaching() throws Exception {
+        LinkBinding binding = new LinkBinding(
+                "book+1",
+                "edition+1",
+                "goal+1",
+                DIGEST,
+                "sha256:" + "b".repeat(64),
+                "sha256:" + "c".repeat(64),
+                42);
+        when(publications.resolveCurrentBinding("book+1", "goal+1"))
+                .thenReturn(Optional.of(binding));
+
+        mvc.perform(get("/api/public/goal-feedback/v1/current-binding")
+                        .param("bookId", "book+1")
+                        .param("goalId", "goal+1"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Cache-Control", "no-store"))
+                .andExpect(jsonPath("$.bookId").value(binding.bookId()))
+                .andExpect(jsonPath("$.edition").value(binding.edition()))
+                .andExpect(jsonPath("$.goalId").value(binding.goalId()))
+                .andExpect(jsonPath("$.goalFingerprint").value(binding.goalFingerprint()))
+                .andExpect(jsonPath("$.pageFingerprint").value(binding.pageFingerprint()))
+                .andExpect(jsonPath("$.bookDigest").value(binding.bookDigest()))
+                .andExpect(jsonPath("$.page").value(binding.page()));
+    }
+
+    @Test
+    void currentBindingFailsClosedForUnknownOrAmbiguousLookups() throws Exception {
+        when(publications.resolveCurrentBinding("book-1", "missing-goal"))
+                .thenReturn(Optional.empty());
+
+        mvc.perform(get("/api/public/goal-feedback/v1/current-binding")
+                        .param("bookId", "book-1")
+                        .param("goalId", "missing-goal"))
+                .andExpect(status().isNotFound());
+
+        mvc.perform(get("/api/public/goal-feedback/v1/current-binding")
+                        .param("bookId", "book-1")
+                        .param("goalId", "goal-1")
+                        .param("extra", "not-allowed"))
+                .andExpect(status().isBadRequest());
+
+        mvc.perform(get("/api/public/goal-feedback/v1/current-binding")
+                        .param("bookId", "book-1", "book-2")
+                        .param("goalId", "goal-1"))
+                .andExpect(status().isBadRequest());
     }
 
     @Test

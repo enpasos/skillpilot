@@ -112,6 +112,9 @@ class GoalFeedbackPublicVisualizationIntegrationTest {
                 PAGE_FINGERPRINT,
                 MODEL_DIGEST,
                 1);
+        assertThat(registry.resolveCurrentBinding(BOOK_ID, GOAL_ID)).contains(binding);
+        assertThat(registry.resolveCurrentBinding(BOOK_ID, "missing-goal")).isEmpty();
+        assertThat(registry.resolveCurrentBinding("missing-book", GOAL_ID)).isEmpty();
         GoalFeedbackApi.PublicResolvedContext publicContext = registry.resolvePublic(binding).orElseThrow();
         GoalFeedbackApi.ResolvedContext trustedContext = registry.resolve(binding).orElseThrow();
 

@@ -11,6 +11,7 @@ import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
 import { GoalCard } from '../components/GoalCard'
+import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
 import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
 import { InlineMathText } from '../components/InlineMathText'
@@ -3181,6 +3182,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   activeFilter={effectiveActiveFilter}
                 />
               )}
+
+            <LearnerGoalFeedbackAction
+              key={`${currentGoal.landscapeId ?? 'unknown'}:${currentGoal.id}`}
+              goal={currentGoal}
+            />
 
             {/* Extended Frontier Panel (Below GoalCard) */}
             {shouldShowNextSteps && (

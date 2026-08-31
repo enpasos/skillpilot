@@ -46,10 +46,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
 
     public static final String CONTEXT_PATH = "/api/public/goal-feedback/v1/context";
+    public static final String CURRENT_BINDING_PATH = "/api/public/goal-feedback/v1/current-binding";
     public static final String SUBMISSION_PATH = "/api/public/goal-feedback/v1/submissions";
     private static final String REAL_IP_HEADER = "X-Real-IP";
     private static final PathPattern CONTEXT_PATTERN =
             PathPatternParser.defaultInstance.parse(CONTEXT_PATH);
+    private static final PathPattern CURRENT_BINDING_PATTERN =
+            PathPatternParser.defaultInstance.parse(CURRENT_BINDING_PATH);
     private static final PathPattern SUBMISSION_PATTERN =
             PathPatternParser.defaultInstance.parse(SUBMISSION_PATH);
     private final Set<String> allowedOrigins;
@@ -98,7 +101,7 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !isContextRequest(request) && !isSubmissionRequest(request);
+        return !isContextRequest(request) && !isCurrentBindingRequest(request) && !isSubmissionRequest(request);
     }
 
     @Override
@@ -107,7 +110,7 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
-        if (isContextRequest(request)) {
+        if (isContextRequest(request) || isCurrentBindingRequest(request)) {
             long retryAfter = acquire(contextCounters, rateLimitClient(request));
             if (retryAfter > 0) {
                 reject(response, 429, "rate_limited", retryAfter);
@@ -152,6 +155,11 @@ public class GoalFeedbackPublicProtectionFilter extends OncePerRequestFilter {
     private static boolean isContextRequest(HttpServletRequest request) {
         return ("GET".equals(request.getMethod()) || "HEAD".equals(request.getMethod()))
                 && matchesControllerPath(request, CONTEXT_PATTERN);
+    }
+
+    private static boolean isCurrentBindingRequest(HttpServletRequest request) {
+        return ("GET".equals(request.getMethod()) || "HEAD".equals(request.getMethod()))
+                && matchesControllerPath(request, CURRENT_BINDING_PATTERN);
     }
 
     private static boolean isSubmissionRequest(HttpServletRequest request) {
