@@ -1,5 +1,14 @@
 # Learning Velocity (Concept)
 
+> This is the narrow observational metric approximated by the current UI. Its
+> current snapshot timestamps do not yet prove first atomic threshold
+> crossings, and the current history boundary does not itself validate that
+> every counted entry is an atomic plan-capable goal. The target model for
+> dated curriculum planning, effective teaching weeks, buffers, baselines,
+> target pace and forecasts is defined in
+> [Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](curriculum-time-axis-and-pacing.md).
+> Raw weekly velocity alone must not be presented as schedule adherence.
+
 ## Purpose
 Learning Velocity is a didactic metric that reflects a learner's **consistency and momentum** over time.
 It is designed to encourage steady practice ("don't break the chain") rather than short bursts.
@@ -38,6 +47,11 @@ This is an example of presentation; UI specifics are intentionally flexible.
 - Bulk imports or late updates can create artificial spikes.
 - Learners with different time budgets are not directly comparable.
 - Context switches (new curriculum or new phase) may temporarily reduce velocity.
+- The current mutable mastery timestamp is not sufficient evidence for the
+  first threshold crossing. Reliable pacing requires an append-only achievement
+  event plus stable global and assignment-specific achievement projections.
+- Calendar weeks do not represent teaching capacity: holidays, cancelled
+  lessons and explicit buffers require an instructional calendar.
 
 ## Optional extensions (future)
 - Moving average or trend line for smoothing.

@@ -450,11 +450,61 @@ The unsatisfied effective prerequisites of a goal, split into gaps inside the fi
 
 Progress stored per atomic goal on a `0.0`–`1.0` scale. Cluster mastery is aggregated from contained descendants using goal weights; memorization mastery is derived from card state rather than set manually. Mastery belongs to goals, never to structure, and stays global across composition views.
 
+### Curriculum timeline and pacing plan
+
+*DE: Curriculum-Zeitachse, Curriculum-Zeitplan, Stoffverteilungsplan* — see
+[Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md)
+
+A versioned execution-plan overlay that assigns resolved curriculum clusters
+to concrete local date ranges and teaching capacity for one class or learner.
+It owns calendar, buffer, plan blocks and revisions; it does not add dates to
+canonical goals, program units, placements or composition views.
+
+### Planning unit
+
+*DE: Planungseinheit* — see
+[Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md)
+
+A plan-local unit used to distribute expected curriculum progress across
+available teaching capacity. The transparent initial fallback is one unit per
+eligible atomic target. A planning unit is neither a grade nor the canonical
+goal `weight`, and baseline mastery does not create newly learned units.
+
+### Plan milestone
+
+*DE: Planmeilenstein, konkretes Ziel bis Datum* — see
+[Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md)
+
+A dated commitment such as “complete the selected Mathematics Abitur tasks by
+15 March”. It separates subject-matter kind from deadline rigidity, the exact
+learning-goal workload used for pacing from the mastery or assessment evidence
+used for completion, and references explicit plan capacity. The milestone
+drives the dated goal list, forecast and replanning but allocates no time and
+creates no mastery by itself.
+
+### Course plan status snapshot
+
+*DE: Kurs-Planlage, Plan-und-Planlage-Seite* — see
+[Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md)
+
+A digest-bound, as-of read model that renders one plan revision as a textual
+course plan plus block-level planned progress, confirmed teaching coverage and
+a separately labelled, evidence-qualified mastery distribution. Operational
+teacher drill-down and aggregate leadership summary use different server-side
+capability profiles; the snapshot is not a new source of plan or mastery data.
+
 ### Learning velocity
 
 *DE: Lerngeschwindigkeit* — see [Learning Velocity](didactic/learning-velocity.md)
 
-The count of newly mastered atomic goals per calendar (ISO) week, counting a goal when mastery reaches `0.9` or higher. It measures consistency and momentum and is deliberately **not** a grading metric.
+The observed rate of newly mastered atomic goals, counting a goal when mastery
+first reaches `0.9` or higher. The current narrow view groups raw goal counts by
+calendar week, but currently approximates achievement time from mutable
+mastery snapshots, does not itself validate atomic plan-capable entries, and
+does not yet provide the normative event evidence. A
+bound pacing plan instead compares newly achieved planning units per effective
+teaching week with its target curve. Neither form is a grading metric or a
+learner ranking.
 
 ### Autopilot
 

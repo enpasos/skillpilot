@@ -120,3 +120,15 @@ Mastery is the learner's durable progress on stable atomic goal IDs. It remains
 global across composition views and Level 2 or Level 3 changes. Cluster
 progress is derived from atomic descendants; it is not a separate scope-local
 mastery record.
+
+## Orthogonal planning axis: curriculum timeline
+
+A dated curriculum or course plan is deliberately not a fifth personalization
+level. It is an execution-plan overlay that answers **when** a declared
+planning scope within the Level-2 target universe should be addressed with a
+given calendar and capacity. It may
+prioritize currently scheduled goals inside Level 3, but it does not change
+Personal Curriculum, focus, frontier, active goal, or mastery.
+
+The normative concept is
+[Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md).

@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { CompetenceTree } from '../components/CompetenceTree'
+import { CoursePlanPilotView } from '../components/CoursePlanPilotView'
 import { GoalCard } from '../components/GoalCard'
 import { NeighborSection } from '../components/NeighborSection'
 import { ClassSetup } from '../components/ClassSetup'
@@ -13,12 +15,13 @@ import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
 
-import { Pencil, Save, Trash2 } from 'lucide-react'
+import { BookOpenCheck, CalendarRange, Pencil, Save, ShieldCheck, Trash2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
 import type { ToastKind } from '../hooks/useToast'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
+import { getCoursePlanCopy } from '../utils/coursePlanCopy'
 import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
@@ -129,6 +132,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 }) => {
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const [searchParams, setSearchParams] = useSearchParams()
+  const trainerWorkspace = searchParams.get('view') === 'plan' ? 'plan' : 'goals'
+  const coursePlanCopy = useMemo(() => getCoursePlanCopy(localizedLanguage), [localizedLanguage])
   const t = language === 'en' ? en.trainer : de.trainer
   const tExp = language === 'en' ? en.explorer : de.explorer
   const notifications = language === 'en' ? en.notifications : de.notifications
@@ -158,6 +164,17 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onConfirm: () => { },
   })
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
+
+  const handleTrainerWorkspaceChange = useCallback((workspace: 'goals' | 'plan') => {
+    const nextSearchParams = new URLSearchParams(searchParams)
+    if (workspace === 'plan') {
+      nextSearchParams.set('view', 'plan')
+      onSelectLearner('__ALL__')
+    } else {
+      nextSearchParams.delete('view')
+    }
+    setSearchParams(nextSearchParams)
+  }, [onSelectLearner, searchParams, setSearchParams])
 
   const setupLandscapeEntries = classSetupLandscapes ?? landscapeEntries
   const isClassSetupReady = !classSetupRootLandscapeId || setupLandscapeEntries.some(
@@ -583,6 +600,21 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     }
     return goalMatchesFilters(goal, activeClassFilterIds)
   }, [activeClass, activeClassFilterIds, trainerCompositionTargetGoalIds])
+  const coursePlanGoalIndex = useMemo(() => {
+    const result = new Map<string, UiGoal>()
+    classGoalIndexAll.forEach((goal, goalId) => {
+      if (goalMatchesActiveClassConfig(goal)) result.set(goalId, goal)
+    })
+    return result
+  }, [classGoalIndexAll, goalMatchesActiveClassConfig])
+  const coursePlanChildrenByParent = useMemo(() => {
+    const result = new Map<string, string[]>()
+    coursePlanGoalIndex.forEach((goal) => {
+      const childIds = trainerVisibleChildrenByParent?.get(goal.id) ?? goal.contains ?? []
+      result.set(goal.id, childIds.filter((childId) => coursePlanGoalIndex.has(childId)))
+    })
+    return result
+  }, [coursePlanGoalIndex, trainerVisibleChildrenByParent])
   const classRootGoals = useMemo(() => {
     if (!activeClass) {
       return [] as UiGoal[]
@@ -851,12 +883,21 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [activeClass, currentLearnerId, onSelectLearner])
 
   useEffect(() => {
-    if (!activeClass) return
+    if (!activeClass || trainerWorkspace === 'plan') {
+      setMasteryByStudent(new Map())
+      setPlannedGoalsByStudent(new Map())
+      return
+    }
+    const controller = new AbortController()
+    let cancelled = false
     const fetchAllData = async () => {
       let hadDataLoadFailure = false
       const masteryPromises = activeClass.students.map(async (student) => {
         try {
-          const res = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/mastery`))
+          const res = await fetch(
+            toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/mastery`),
+            { signal: controller.signal },
+          )
           if (res.ok) {
             const data = await res.json()
             if (data && data.mastery) return [student.id, data.mastery] as const
@@ -864,6 +905,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             hadDataLoadFailure = true
           }
         } catch (err) {
+          if (controller.signal.aborted) return [student.id, {}] as const
           console.warn(`Could not load mastery for ${student.name}`, err)
           hadDataLoadFailure = true
         }
@@ -871,7 +913,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       })
       const plannedGoalsPromises = activeClass.students.map(async (student) => {
         try {
-          const res = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/planned`))
+          const res = await fetch(
+            toApi(`/api/ui/learners/${encodeURIComponent(student.id)}/planned`),
+            { signal: controller.signal },
+          )
           if (res.ok) {
             const data = await res.json()
             if (data && Array.isArray(data.goals)) return [student.id, new Set<string>(data.goals as string[])] as const
@@ -879,6 +924,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             hadDataLoadFailure = true
           }
         } catch (err) {
+          if (controller.signal.aborted) return [student.id, new Set<string>()] as const
           console.warn(`Could not load planned goals for ${student.name}`, err)
           hadDataLoadFailure = true
         }
@@ -888,6 +934,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         Promise.all(masteryPromises),
         Promise.all(plannedGoalsPromises),
       ])
+      if (cancelled) return
       setMasteryByStudent(new Map(masteryResults))
       setPlannedGoalsByStudent(new Map<string, Set<string>>(plannedGoalsResults as [string, Set<string>][]))
       if (hadDataLoadFailure) {
@@ -897,7 +944,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       }
     }
     void fetchAllData()
-  }, [activeClass, clearReportedLoadError, notifications.trainerClassDataLoadFailed, notifyLoadErrorOnce])
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [activeClass, clearReportedLoadError, notifications.trainerClassDataLoadFailed, notifyLoadErrorOnce, trainerWorkspace])
 
   useEffect(() => {
     if (currentLearnerId && currentLearnerId !== '__ALL__') {
@@ -1251,11 +1302,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     )
   }
   return (
-    <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden">
+    <div className={`flex h-screen bg-chat-bg text-text-primary overflow-hidden ${trainerWorkspace === 'plan' ? 'flex-col md:flex-row' : ''}`}>
       <ConfirmModal isOpen={confirmation.isOpen} onClose={() => setConfirmation({ ...confirmation, isOpen: false })} onConfirm={confirmation.onConfirm} title={confirmation.title} confirmText={confirmation.confirmText} confirmClassName={confirmation.confirmClassName}>
         {confirmation.message}
       </ConfirmModal>
-      <aside className="w-72 border-r border-border-color bg-sidebar-bg flex flex-col flex-shrink-0">
+      <aside className={`${trainerWorkspace === 'plan' ? 'max-h-[42vh] w-full md:max-h-none md:w-72' : 'w-72'} border-r border-border-color bg-sidebar-bg flex flex-col flex-shrink-0`}>
         <div className="p-4 border-b border-border-color flex justify-between items-start">
           <div>
             <button onClick={handleShowAllClasses} className="text-xs text-text-secondary hover:text-text-primary mb-2">← {t.allClasses}</button>
@@ -1268,24 +1319,88 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-2 space-y-1">
-          <div className="text-[10px] uppercase text-text-secondary font-bold px-2 mb-1 mt-2">{t.studentList} ({activeClass.students.length})</div>
-          <button onClick={() => onSelectLearner('__ALL__')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center group ${currentLearnerId === '__ALL__' ? 'bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-200 border border-sky-300 dark:border-sky-500/30' : 'text-text-secondary hover:bg-gray-200 dark:hover:bg-slate-900'}`}>
-            <span className="truncate">{t.allStudents}</span>
-            {currentLearnerId === '__ALL__' && <span className="w-2 h-2 rounded-full bg-sky-400" />}
+        <nav className="grid grid-cols-2 gap-1 border-b border-border-color p-2" aria-label={coursePlanCopy.workspaceLabel}>
+          <button
+            type="button"
+            onClick={() => handleTrainerWorkspaceChange('goals')}
+            aria-current={trainerWorkspace === 'goals' ? 'page' : undefined}
+            className={`flex min-h-10 items-center justify-center gap-2 rounded-lg px-2 py-2 text-sm font-medium transition-colors ${trainerWorkspace === 'goals' ? 'bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-100' : 'text-text-secondary hover:bg-gray-100 dark:hover:bg-slate-900'}`}
+            data-testid="trainer-goals-tab"
+          >
+            <BookOpenCheck size={16} aria-hidden="true" />
+            {coursePlanCopy.goalsTab}
           </button>
-          {activeClass.students.map((s) => (
-            <button key={s.id} onClick={() => onSelectLearner(s.id)} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center group ${currentLearnerId === s.id ? 'bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-200 border border-sky-300 dark:border-sky-500/30' : 'text-text-secondary hover:bg-gray-200 dark:hover:bg-slate-900'}`}>
-              <span className="truncate">{s.name}</span>
-              {currentLearnerId === s.id && <span className="w-2 h-2 rounded-full bg-sky-400" />}
+          <button
+            type="button"
+            onClick={() => handleTrainerWorkspaceChange('plan')}
+            aria-current={trainerWorkspace === 'plan' ? 'page' : undefined}
+            className={`flex min-h-10 items-center justify-center gap-2 rounded-lg px-2 py-2 text-sm font-medium transition-colors ${trainerWorkspace === 'plan' ? 'bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-100' : 'text-text-secondary hover:bg-gray-100 dark:hover:bg-slate-900'}`}
+            data-testid="trainer-plan-tab"
+          >
+            <CalendarRange size={16} aria-hidden="true" />
+            {coursePlanCopy.planTab}
+          </button>
+        </nav>
+
+        {trainerWorkspace === 'plan' ? (
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-100">
+              <ShieldCheck className="mb-3" size={22} aria-hidden="true" />
+              <p className="font-semibold">{coursePlanCopy.localPreviewTitle}</p>
+              <p className="mt-2 leading-6 opacity-90">{coursePlanCopy.studentPrivacyHint}</p>
+            </div>
+          </div>
+        ) : (
+          <div className="flex-1 overflow-y-auto p-2 space-y-1">
+            <div className="text-[10px] uppercase text-text-secondary font-bold px-2 mb-1 mt-2">{t.studentList} ({activeClass.students.length})</div>
+            <button onClick={() => onSelectLearner('__ALL__')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center group ${currentLearnerId === '__ALL__' ? 'bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-200 border border-sky-300 dark:border-sky-500/30' : 'text-text-secondary hover:bg-gray-200 dark:hover:bg-slate-900'}`}>
+              <span className="truncate">{t.allStudents}</span>
+              {currentLearnerId === '__ALL__' && <span className="w-2 h-2 rounded-full bg-sky-400" />}
             </button>
-          ))}
-        </div>
+            {activeClass.students.map((s) => (
+              <button key={s.id} onClick={() => onSelectLearner(s.id)} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center group ${currentLearnerId === s.id ? 'bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-200 border border-sky-300 dark:border-sky-500/30' : 'text-text-secondary hover:bg-gray-200 dark:hover:bg-slate-900'}`}>
+                <span className="truncate">{s.name}</span>
+                {currentLearnerId === s.id && <span className="w-2 h-2 rounded-full bg-sky-400" />}
+              </button>
+            ))}
+          </div>
+        )}
       </aside>
-      <aside
-        className="w-1/3 min-w-[320px] border-r border-border-color flex flex-col bg-sidebar-bg"
-        data-testid="trainer-competence-tree-panel"
-      >
+      {trainerWorkspace === 'plan' ? (
+        isTrainerCompositionPending ? (
+          <main className="flex flex-1 items-center justify-center bg-chat-bg p-8 text-text-secondary" data-testid="trainer-course-plan-view">
+            {scopeCopy.compositionLoading}
+          </main>
+        ) : isTrainerCompositionUnavailable ? (
+          <main className="flex flex-1 items-center justify-center bg-chat-bg p-8">
+            <div className="max-w-lg rounded-xl border border-amber-300 bg-amber-50 p-5 text-sm text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/20 dark:text-amber-100">
+              <p>{scopeCopy.compositionUnavailable}</p>
+              <button
+                type="button"
+                onClick={() => setCompositionRetryToken((current) => current + 1)}
+                className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white transition-colors hover:bg-sky-500"
+              >
+                {scopeCopy.compositionRetry}
+              </button>
+            </div>
+          </main>
+        ) : (
+          <CoursePlanPilotView
+            key={`${activeClass.id}:${localizedLanguage}`}
+            classId={activeClass.id}
+            classLabel={activeClass.name}
+            goals={coursePlanGoalIndex}
+            visibleChildrenByParent={coursePlanChildrenByParent}
+            language={localizedLanguage}
+            onNotify={onNotify}
+          />
+        )
+      ) : (
+        <>
+          <aside
+            className="w-1/3 min-w-[320px] border-r border-border-color flex flex-col bg-sidebar-bg"
+            data-testid="trainer-competence-tree-panel"
+          >
         <div className="p-4 border-b border-border-color bg-sidebar-bg">
           <div className="text-xs uppercase text-text-secondary font-bold mb-1">{t.currentContext}</div>
           {currentGoal && (
@@ -1333,8 +1448,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             />
           )}
         </div>
-      </aside>
-      <main className="flex-1 p-8 bg-chat-bg overflow-y-auto flex flex-col">
+          </aside>
+          <main className="flex-1 p-8 bg-chat-bg overflow-y-auto flex flex-col">
         {isTrainerCompositionPending ? (
           <div className="flex-1 flex items-center justify-center text-text-secondary">
             {scopeCopy.compositionLoading}
@@ -1484,7 +1599,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             <p className="text-lg text-center">{t.emptyState.title}<br />{t.emptyState.text.split('\n')[0]}<br />{t.emptyState.text.split('\n')[1]}</p>
           </div>
         )}
-      </main>
+          </main>
+        </>
+      )}
     </div>
   )
 }
