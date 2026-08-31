@@ -117,6 +117,9 @@ try {
   assert.equal(destinationParams.get('goalId'), goalId)
   assert.equal(destinationParams.get('page'), String(binding.page))
   assert(!/skillpilotId|learnerId|sessionId|chatSession/iu.test(destinationSearch))
+  const destinationState = await page.getByTestId('feedback-state').textContent() ?? ''
+  assert.deepEqual(JSON.parse(destinationState), { goalFeedbackOrigin: 'learner-cockpit' })
+  assert(!/skillpilotId|learnerId|sessionId|chatSession|returnUrl/iu.test(destinationState))
   assert.equal(errors.length, 0, `Cockpit feedback UI browser errors:\n${errors.join('\n')}`)
   await context.close()
 
