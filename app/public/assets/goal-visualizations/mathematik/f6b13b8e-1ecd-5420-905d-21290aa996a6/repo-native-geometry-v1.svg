@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Rationale Zahlen an der Zahlengeraden darstellen und ordnen</title>
+  <desc id="description">Eine gleichmäßig skalierte Zahlengerade zeigt minus drei Halbe bei minus 1,5, minus ein Halb bei minus 0,5, drei Viertel bei 0,75 und fünf Viertel bei 1,25. Darunter steht die korrekte Reihenfolge der vier Zahlen.</desc>
+
+  <!-- Binding geometry: for values v in [-2, 2], x(v) = 800 + 300*v; y = 440. -->
+  <rect width="1600" height="900" fill="#f7f8fa"/>
+  <rect x="64" y="52" width="1472" height="796" rx="42" fill="#fffdf9" stroke="#d9e1ea" stroke-width="3"/>
+
+  <g font-family="DejaVu Sans, Arial, sans-serif" fill="#102a43">
+    <text x="800" y="120" text-anchor="middle" font-size="26" font-weight="700" letter-spacing="5" fill="#5d36c9">RATIONALE ZAHLEN</text>
+    <text x="800" y="188" text-anchor="middle" font-size="48" font-weight="700">Bruch und Dezimalzahl am selben Punkt</text>
+    <text x="800" y="232" text-anchor="middle" font-size="25" fill="#486581">Die gleichmäßige Skalierung macht Lage und Reihenfolge sichtbar.</text>
+  </g>
+
+  <!-- Exact-value label cards. -->
+  <g font-family="DejaVu Sans, Arial, sans-serif" text-anchor="middle">
+    <g id="label-neg-three-halves">
+      <rect x="218" y="270" width="264" height="92" rx="22" fill="#e6f7fc" stroke="#087da8" stroke-width="3"/>
+      <text x="350" y="327" font-size="31" font-weight="700" fill="#075b7a">−3/2 = −1,5</text>
+      <path d="M350 362 L350 410" fill="none" stroke="#087da8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M341 400 L350 414 L359 400" fill="none" stroke="#087da8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <g id="label-three-fourths">
+      <rect x="895" y="270" width="260" height="92" rx="22" fill="#fff1df" stroke="#d96416" stroke-width="3"/>
+      <text x="1025" y="327" font-size="31" font-weight="700" fill="#a53f0b">3/4 = 0,75</text>
+      <path d="M1025 362 L1025 410" fill="none" stroke="#d96416" stroke-width="4" stroke-linecap="round"/>
+      <path d="M1016 400 L1025 414 L1034 400" fill="none" stroke="#d96416" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <g id="label-neg-one-half">
+      <path d="M650 470 L650 518" fill="none" stroke="#087da8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M641 480 L650 466 L659 480" fill="none" stroke="#087da8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="518" y="518" width="264" height="92" rx="22" fill="#e6f7fc" stroke="#087da8" stroke-width="3"/>
+      <text x="650" y="575" font-size="31" font-weight="700" fill="#075b7a">−1/2 = −0,5</text>
+    </g>
+
+    <g id="label-five-fourths">
+      <path d="M1175 470 L1175 518" fill="none" stroke="#d96416" stroke-width="4" stroke-linecap="round"/>
+      <path d="M1166 480 L1175 466 L1184 480" fill="none" stroke="#d96416" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="1045" y="518" width="260" height="92" rx="22" fill="#fff1df" stroke="#d96416" stroke-width="3"/>
+      <text x="1175" y="575" font-size="31" font-weight="700" fill="#a53f0b">5/4 = 1,25</text>
+    </g>
+  </g>
+
+  <!-- Number line. Major integer ticks are 300 px apart; minor ticks are quarters (75 px). -->
+  <g id="number-line" stroke="#243b53" stroke-linecap="round">
+    <line x1="164" y1="440" x2="1436" y2="440" stroke-width="7"/>
+    <path d="M164 440 L190 425 M164 440 L190 455" fill="none" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M1436 440 L1410 425 M1436 440 L1410 455" fill="none" stroke-width="7" stroke-linejoin="round"/>
+
+    <g stroke-width="3" opacity="0.7">
+      <line x1="275" y1="430" x2="275" y2="450"/>
+      <line x1="425" y1="430" x2="425" y2="450"/>
+      <line x1="575" y1="430" x2="575" y2="450"/>
+      <line x1="725" y1="430" x2="725" y2="450"/>
+      <line x1="875" y1="430" x2="875" y2="450"/>
+      <line x1="950" y1="430" x2="950" y2="450"/>
+      <line x1="1250" y1="430" x2="1250" y2="450"/>
+      <line x1="1325" y1="430" x2="1325" y2="450"/>
+    </g>
+    <g stroke-width="4">
+      <line x1="350" y1="423" x2="350" y2="457"/>
+      <line x1="650" y1="423" x2="650" y2="457"/>
+    </g>
+    <g stroke-width="5">
+      <line x1="200" y1="413" x2="200" y2="467"/>
+      <line x1="500" y1="413" x2="500" y2="467"/>
+      <line x1="800" y1="413" x2="800" y2="467"/>
+      <line x1="1100" y1="413" x2="1100" y2="467"/>
+      <line x1="1400" y1="413" x2="1400" y2="467"/>
+    </g>
+  </g>
+
+  <!-- Point centers are exact evaluations of x(v) = 800 + 300*v. -->
+  <g id="point-neg-three-halves" data-value="-1.5" data-x="350" transform="translate(350 440)">
+    <circle r="23" fill="#ffffff" stroke="#087da8" stroke-width="6"/>
+    <circle r="13" fill="#08a6c9"/>
+  </g>
+  <g id="point-neg-one-half" data-value="-0.5" data-x="650" transform="translate(650 440)">
+    <circle r="23" fill="#ffffff" stroke="#087da8" stroke-width="6"/>
+    <circle r="13" fill="#08a6c9"/>
+  </g>
+  <g id="point-three-fourths" data-value="0.75" data-x="1025" transform="translate(1025 440)">
+    <circle r="23" fill="#ffffff" stroke="#d96416" stroke-width="6"/>
+    <circle r="13" fill="#f28b30"/>
+  </g>
+  <g id="point-five-fourths" data-value="1.25" data-x="1175" transform="translate(1175 440)">
+    <circle r="23" fill="#ffffff" stroke="#d96416" stroke-width="6"/>
+    <circle r="13" fill="#f28b30"/>
+  </g>
+
+  <!-- Integer labels. -->
+  <g font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="700" fill="#243b53" text-anchor="middle">
+    <text x="200" y="505">−2</text>
+    <text x="500" y="505">−1</text>
+    <text x="800" y="505">0</text>
+    <text x="1100" y="505">1</text>
+    <text x="1400" y="505">2</text>
+  </g>
+
+  <!-- Explicit ordering uses exactly the four represented values. -->
+  <g id="ordering" font-family="DejaVu Sans, Arial, sans-serif">
+    <rect x="300" y="688" width="1000" height="104" rx="28" fill="#f2f0fb" stroke="#8b70d6" stroke-width="3"/>
+    <text x="800" y="729" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="3" fill="#5d36c9">VON KLEIN NACH GROSS</text>
+    <text x="800" y="773" text-anchor="middle" font-size="34" font-weight="700" fill="#243b53">−3/2  &lt;  −1/2  &lt;  3/4  &lt;  5/4</text>
+  </g>
+</svg>

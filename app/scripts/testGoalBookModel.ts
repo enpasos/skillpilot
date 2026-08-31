@@ -57,7 +57,7 @@ const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
   + 'calibration-v2/2026-08-25/thales-current/bundle/book-model.json'
 )
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:6aeec6aa790cfd6bf35723a979a2ccf271979a9a3d15c7be728157b9be090d3a'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:2e5cbbea6883370014fabaf911426a2c5324d0b37ccbf78f9abceeb1e60d3fe1'
 
 const goal = ({
   id,

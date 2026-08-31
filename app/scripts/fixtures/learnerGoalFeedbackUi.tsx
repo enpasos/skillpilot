@@ -22,6 +22,7 @@ const FeedbackDestination = () => {
     <main className="p-4">
       <h1>Bestehender Feedbackweg</h1>
       <output data-testid="feedback-search">{location.search}</output>
+      <output data-testid="feedback-state">{JSON.stringify(location.state)}</output>
     </main>
   )
 }

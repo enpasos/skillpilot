@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-28T20:43:43.182Z
+Generated: 2026-08-31T12:07:48.239Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 231 |
+| Review-Ledger-Dateien | 232 |
 | Offene Provider-Deferred-Ziele | 71 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -48,7 +48,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_regeneration` | 8 |
 | `accepted_after_user_issue_correction` | 8 |
 | `accepted_context_visualization` | 2 |
-| `accepted_documented_repo_native_fallback` | 2 |
+| `accepted_documented_repo_native_fallback` | 3 |
 | `accepted_existing_asset` | 8 |
 | `accepted_pilot` | 604 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
@@ -92,7 +92,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-216.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-220.md` |
 | Latest ledger status | `completed` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |

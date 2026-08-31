@@ -11,6 +11,11 @@ import {
   parseGoalBookFeedbackSubmissionReceipt,
   requestCurrentGoalBookFeedbackBinding,
 } from './goalBookFeedback'
+import {
+  isLearnerCockpitGoalFeedbackNavigationState,
+  learnerCockpitGoalFeedbackReturnPath,
+  LEARNER_COCKPIT_GOAL_FEEDBACK_NAVIGATION_STATE,
+} from './goalFeedbackReturnNavigation'
 
 const digest = `sha256:${'a'.repeat(64)}`
 const otherDigest = `sha256:${'b'.repeat(64)}`
@@ -47,6 +52,22 @@ assert.equal(
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${search}&goalId=duplicate`), null)
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${search}&unexpected=secret`), null)
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${search.replace('page=42', 'page=0')}`), null)
+assert(isLearnerCockpitGoalFeedbackNavigationState(LEARNER_COCKPIT_GOAL_FEEDBACK_NAVIGATION_STATE))
+assert.equal(isLearnerCockpitGoalFeedbackNavigationState(null), false)
+assert.equal(isLearnerCockpitGoalFeedbackNavigationState({ goalFeedbackOrigin: 'goal-book' }), false)
+assert.equal(isLearnerCockpitGoalFeedbackNavigationState({
+  ...LEARNER_COCKPIT_GOAL_FEEDBACK_NAVIGATION_STATE,
+  returnUrl: 'https://example.org/redirect',
+}), false)
+assert.equal(
+  learnerCockpitGoalFeedbackReturnPath(binding),
+  `/learner/${binding.goalId}?l=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced`,
+)
+assert.equal(learnerCockpitGoalFeedbackReturnPath({
+  ...binding,
+  bookId: 'unsupported-book',
+  goalId: '../foreign',
+}), null)
 
 const plusBindingSearch = new URLSearchParams({
   ...Object.fromEntries(new URLSearchParams(search)),

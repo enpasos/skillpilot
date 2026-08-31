@@ -9,6 +9,7 @@ import {
   goalBookFeedbackUrl,
   requestCurrentGoalBookFeedbackBinding,
 } from '../utils/goalBookFeedback'
+import { LEARNER_COCKPIT_GOAL_FEEDBACK_NAVIGATION_STATE } from '../utils/goalFeedbackReturnNavigation'
 import { goalBookDefinitionByLandscapeId } from '../utils/goalBookPublicationRegistry'
 
 const copy = {
@@ -77,7 +78,9 @@ export const LearnerGoalFeedbackAction: React.FC<{ goal: FeedbackGoal }> = ({ go
         signal: abortController.signal,
       })
       if (!abortController.signal.aborted) {
-        navigate(goalBookFeedbackUrl(binding))
+        navigate(goalBookFeedbackUrl(binding), {
+          state: LEARNER_COCKPIT_GOAL_FEEDBACK_NAVIGATION_STATE,
+        })
       }
     } catch {
       if (!abortController.signal.aborted) setFailed(true)

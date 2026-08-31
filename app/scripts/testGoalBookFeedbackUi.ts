@@ -16,6 +16,7 @@ const manifestFingerprint = `sha256:${'d'.repeat(64)}`
 const visualizationUrl = `/api/public/goal-feedback/v1/visualizations/${'e'.repeat(64)}`
 const visualizationTitle = 'Visualisierung: Rationale Zahlen darstellen und ordnen'
 const visualizationAlt = 'Rationale Zahlen sind auf einer Zahlengeraden eingeordnet.'
+const landscapeId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const binding = new URLSearchParams({
   bookId: 'de-gym-mathematik-bundesweit',
   goalId,
@@ -41,6 +42,7 @@ try {
   page.setDefaultTimeout(10_000)
   const errors: string[] = []
   const submissions: unknown[] = []
+  const contextUrls: URL[] = []
   let failedSubmissionsRemaining = 2
   page.on('pageerror', (error) => errors.push(error.message))
   page.on('console', (message) => {
@@ -48,6 +50,7 @@ try {
   })
   await page.route('**/api/public/goal-feedback/v1/context?*', async (route) => {
     const url = new URL(route.request().url())
+    contextUrls.push(url)
     if ([...binding.entries()].some(([key, value]) => url.searchParams.get(key) !== value)) {
       await route.fulfill({ status: 404, body: '' })
       return
@@ -125,7 +128,34 @@ try {
   assert(await visualization.getAttribute('src') === visualizationUrl, 'the image uses the server-verified asset path')
   assert(await page.locator('form').count() === 1, 'an exact verified binding exposes one form')
   assert(await page.getByText(goalId, { exact: true }).count() === 1, 'the exact public goal ID is visible')
+  assert(
+    await page.getByRole('link', { name: 'Zurück zum Lernzielbuch' }).getAttribute('href')
+      === `/lernzielbuch#goal-${goalId}`,
+    'a direct learning-goal-book feedback link returns to its exact book goal',
+  )
   assert(submissions.length === 0, 'loading the form does not submit feedback')
+
+  await page.evaluate((goalFeedbackOrigin) => {
+    const current = window.history.state && typeof window.history.state === 'object'
+      ? window.history.state
+      : {}
+    window.history.replaceState({ ...current, usr: { goalFeedbackOrigin } }, '', window.location.href)
+  }, 'learner-cockpit')
+  await page.reload()
+  await page.getByRole('heading', { name: 'Rationale Zahlen darstellen und ordnen' }).waitFor()
+  assert(
+    await page.getByRole('link', { name: 'Zurück zum Cockpit' }).getAttribute('href')
+      === `/learner/${goalId}?l=${landscapeId}`,
+    'Cockpit-origin feedback returns to the exact learner goal and publication landscape after reload',
+  )
+  assert(
+    contextUrls.length === 2
+      && contextUrls.every((url) => (
+        [...url.searchParams.keys()].sort().join(',')
+          === 'bookDigest,bookId,edition,goalFingerprint,goalId,page,pageFingerprint'
+      )),
+    'Cockpit origin remains local router state and never changes the seven-field server context lookup',
+  )
   const privacyDetails = page.locator('#feedback-datenschutz')
   assert(await privacyDetails.count() === 1, 'a valid form contains privacy details')
   assert(!await privacyDetails.evaluate((details) => (details as HTMLDetailsElement).open), 'privacy details start closed')
@@ -148,6 +178,10 @@ try {
   await page.getByRole('button', { name: 'EN', exact: true }).click()
   await page.getByText('Show privacy details', { exact: true }).waitFor()
   await page.getByRole('heading', { name: 'Privacy for learning-goal feedback' }).waitFor()
+  assert(
+    await page.getByRole('link', { name: 'Back to the cockpit' }).count() === 1,
+    'the Cockpit return action is localized without changing its target',
+  )
   await page.getByText(/Notice version: 2026-08-31\.1/u).waitFor()
   assert(
     !/Codex|OpenAI|PostgreSQL|\bWAL\b|production inbox|development inbox|raw-data|digest-bound|session and tool logs/iu.test(await page.locator('body').textContent() ?? ''),
@@ -186,6 +220,11 @@ try {
   await page.getByLabel('Wie könnte es besser sein? (optional)').fill('Eine engere und überprüfte Fundstelle verwenden.')
   await page.getByRole('button', { name: 'Feedback verbindlich absenden' }).click()
   await page.getByRole('heading', { name: 'Feedback wurde gespeichert' }).waitFor()
+  assert(
+    await page.getByRole('link', { name: 'Zurück zum Cockpit' }).getAttribute('href')
+      === `/learner/${goalId}?l=${landscapeId}`,
+    'the submitted receipt keeps the Cockpit return action visible',
+  )
   assert(submissions.length === 3, 'one edited explicit submission sends one additional request')
   const submission = submissions[2] as Record<string, unknown>
   const envelope = submission.envelope as Record<string, unknown>
@@ -203,12 +242,25 @@ try {
       && submission.website === '',
     `unexpected feedback envelope: ${JSON.stringify(submission)}`,
   )
-  assert(!JSON.stringify(submission).match(/skillpilotId|learnerId|sessionId|chatSession/iu), 'no learner or session identifier is transmitted')
+  assert(
+    !JSON.stringify(submission).match(/skillpilotId|learnerId|sessionId|chatSession|goalFeedbackOrigin|returnUrl/iu),
+    'no learner, session, origin, or return-navigation state is transmitted',
+  )
   const dimensions = await page.evaluate(() => ({
     client: document.documentElement.clientWidth,
     scroll: document.documentElement.scrollWidth,
   }))
   assert(dimensions.scroll <= dimensions.client, `390px feedback form overflows: ${JSON.stringify(dimensions)}`)
+
+  await page.getByRole('link', { name: 'Zurück zum Cockpit' }).click()
+  await page.waitForURL(`**/learner/${goalId}?l=${landscapeId}`)
+  const cockpitReturnUrl = new URL(page.url())
+  assert(
+    cockpitReturnUrl.pathname === `/learner/${goalId}`
+      && cockpitReturnUrl.searchParams.size === 1
+      && cockpitReturnUrl.searchParams.get('l') === landscapeId,
+    `the return action opened an unexpected Cockpit target: ${cockpitReturnUrl.href}`,
+  )
 
   await page.goto(`${fixtureUrl}?${binding.toString()}&goalId=duplicate`)
   await page.getByRole('heading', { name: 'Feedbacklink nicht gültig' }).waitFor()
@@ -218,6 +270,12 @@ try {
   await page.goto(`${fixtureUrl}?${binding.toString()}&unexpected=secret`)
   await page.getByRole('heading', { name: 'Feedbacklink nicht gültig' }).waitFor()
   assert(await page.locator('form').count() === 0, 'unknown binding parameters fail closed without a form')
+
+  for (const unsafeReturnParameter of ['source=cockpit', 'returnTo=cockpit', 'returnUrl=https%3A%2F%2Fexample.org']) {
+    await page.goto(`${fixtureUrl}?${binding.toString()}&${unsafeReturnParameter}`)
+    await page.getByRole('heading', { name: 'Feedbacklink nicht gültig' }).waitFor()
+    assert(await page.locator('form').count() === 0, `${unsafeReturnParameter} must not alter the exact URL contract`)
+  }
   assert(errors.length === 0, `browser errors: ${errors.join('\n')}`)
 } finally {
   try {

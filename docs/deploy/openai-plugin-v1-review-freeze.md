@@ -1026,7 +1026,8 @@ Die unmittelbar wirksamen Implementierungsdateien sind ebenfalls
 hashgebunden:
 
 - `app/src/components/LearnerGoalFeedbackAction.tsx` (neu):
-  `b128ce146a555100f407996d24abbaaaafb76428bcd04377435551dbd75b9e15`;
+  `b128ce146a555100f407996d24abbaaaafb76428bcd04377435551dbd75b9e15`
+  → `8ee652562c7433c71d545a5205dfd14adaa9bc777fec9e48e6886819012f9832`;
 - `app/src/utils/goalBookFeedback.ts`:
   `10a461427a5b77aa7e0605d0a7dd803b0c9d301676d1fb70d189370bb65d9890`
   → `94c9ffc088c85a6925391dd8e96f0134a78ec36ef4da30cee88ae34183e1eee7`;
@@ -1051,11 +1052,83 @@ hashgebunden:
 Die fokussierte Browserregression ist mit folgendem SHA-256 gebunden:
 
 - `app/scripts/testLearnerGoalFeedbackUi.ts`:
-  `c0ddf7aaa3c36dd66c8f7993f2431c388fc1cf3fd2f005056e98bb6a8ef35ed5`;
+  `c0ddf7aaa3c36dd66c8f7993f2431c388fc1cf3fd2f005056e98bb6a8ef35ed5`
+  → `7f3226c358320b32d3fe4d13f2b23479b70c2473e7dd6a838859604d68a08148`;
 - `app/scripts/fixtures/learnerGoalFeedbackUi.html`:
   `e7a99fcb3f0266a428682abaa2c6ddfa4443a0a20c57672a4055d56a99674f9d`;
 - `app/scripts/fixtures/learnerGoalFeedbackUi.tsx`:
-  `0332fad29d6eddc285943e0c3ed79de74c9c3b1ea69103433023d43bc5f11f3b`.
+  `0332fad29d6eddc285943e0c3ed79de74c9c3b1ea69103433023d43bc5f11f3b`
+  → `876237cc4c1ce8c4c23ffe13e38a10c434558d0774dd8f0646ca0f7b37ed11f7`.
+
+### 6.19 Eng begrenzte Ausnahme: Rückkehr des Cockpit-Feedbacks ins Cockpit
+
+Der Product Owner hat am **31. August 2026** entschieden, dass ein aus dem
+Lernenden-Cockpit begonnenes Lernziel-Feedback nach der Prüfung oder Einreichung
+zum selben Lernziel im Cockpit zurückführen muss und nicht ins Lernzielbuch.
+Feedbacklinks aus dem Lernzielbuch, aus einem PDF oder aus einem direkten
+Aufruf behalten ihren bisherigen Rücksprung zum exakt gebundenen Lernziel im
+Lernzielbuch.
+
+Freigegeben ist ausschließlich:
+
+- beim bewussten Cockpit-Einstieg neben dem unveränderten siebenfach gebundenen
+  Feedbacklink einen festen browserlokalen React-Router-Herkunftsmarker zu
+  setzen;
+- genau den einen erwarteten Marker ohne weitere Felder anzuerkennen und daraus
+  den Rücksprung zum gebundenen `goalId` im durch die statische
+  Buchpublikations-Registry bestimmten Curriculum abzuleiten;
+- die lokalisierte Rücksprungbeschriftung als **Zurück zum Cockpit** bzw.
+  **Back to the cockpit** anzuzeigen;
+- den Rücksprung auch nach einem Hard Reload und nach erfolgreicher Einreichung
+  anzubieten, ohne automatisch zu navigieren und dadurch die Feedback-ID zu
+  verdecken;
+- die fokussierten Unit- und Browserregressionen für Herkunftsprüfung,
+  Reload-Persistenz, exaktes Rücksprungziel und unveränderte Übertragungsgrenzen
+  zu ergänzen.
+
+Nicht freigegeben sind frei übergebbare Rücksprung-URLs, zusätzliche
+Queryparameter oder ein aus dem Feedbackrequest übernommenes Curriculum. Die
+Feedback-URL, ihr siebenfach gebundener `/context`-Aufruf und das
+Einreichungsformat bleiben byte- und semantikgleich; der Herkunftsmarker wird
+weder an den Server noch mit dem Feedback übertragen. Unbekannte Parameter wie
+`source`, `returnTo` oder `returnUrl` bleiben ungültig. Es gibt keine Änderung
+an Backend, Lernzustand, Coach-Handlern, vorbereiteten Nachrichten, Session-,
+Identitäts- oder Personalisierungssemantik, OpenAI-Paket, MCP/OAuth, Tools,
+Schemas, MCP-Apps-UI, Reviewfällen, Portalwerten, OpenAI-Review-Fixtures oder
+Reviewartefakten.
+
+Die geschützte Cockpit-Datei bleibt in der fortlaufenden Ausnahme bytegleich:
+
+- `app/src/views/LearnerView.tsx`:
+  `f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258`
+  → `f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258`.
+
+Der exakt freigegebene Dateiumfang ist hashgebunden:
+
+- `app/src/components/LearnerGoalFeedbackAction.tsx`:
+  `b128ce146a555100f407996d24abbaaaafb76428bcd04377435551dbd75b9e15`
+  → `8ee652562c7433c71d545a5205dfd14adaa9bc777fec9e48e6886819012f9832`;
+- `app/src/utils/goalFeedbackReturnNavigation.ts` (neu):
+  `b4dc8797b1100c0b52f33875ce9f459ab2ac4e1c767dce0879de1e77741f7a7c`;
+- `app/src/views/GoalBookFeedbackPilotView.tsx`:
+  `946ecd1ebce142f766081a484ce5b0baaaa67ff5030208b82d2bba5a1a45cc12`
+  → `78444751bb17278f53dad1022a05facd8546d9ca61fa7fe2faafd73e62e05d1c`;
+- `app/src/utils/goalBookFeedback.test.ts`:
+  `bf9d80b60edbb27402b0ca992de94c1cfb177a57f0fc0a4598396b58db5bcc0c`
+  → `76a3e589539fe12c87a2847b86145bbc70e2f6788696edc0b9730081526b2985`;
+- `app/scripts/fixtures/learnerGoalFeedbackUi.tsx`:
+  `0332fad29d6eddc285943e0c3ed79de74c9c3b1ea69103433023d43bc5f11f3b`
+  → `876237cc4c1ce8c4c23ffe13e38a10c434558d0774dd8f0646ca0f7b37ed11f7`;
+- `app/scripts/testLearnerGoalFeedbackUi.ts`:
+  `c0ddf7aaa3c36dd66c8f7993f2431c388fc1cf3fd2f005056e98bb6a8ef35ed5`
+  → `7f3226c358320b32d3fe4d13f2b23479b70c2473e7dd6a838859604d68a08148`;
+- `app/scripts/testGoalBookFeedbackUi.ts`:
+  `2b0f5b58960a552de1fec27be029703ea36e67c7760e9fd9257b44057021ffce`
+  → `ab3b57db6469cef0d9f7473b90f55690ee1e048c899e8dd90348ebc40481fffc`.
+
+Die gemeinsame URL-Erzeugung in `app/src/utils/goalBookFeedback.ts` bleibt
+bytegleich auf
+`94c9ffc088c85a6925391dd8e96f0134a78ec36ef4da30cee88ae34183e1eee7`.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den

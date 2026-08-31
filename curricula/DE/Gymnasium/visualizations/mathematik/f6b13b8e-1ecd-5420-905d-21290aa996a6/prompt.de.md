@@ -8,32 +8,31 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Repository-native SVG (documented Nano Banana Pro fallback)
 - Status: pilot
-- Quellbild: `f6b13b8e-1ecd-5420-905d-21290aa996a6.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f6b13b8e-1ecd-5420-905d-21290aa996a6/f6b13b8e-1ecd-5420-905d-21290aa996a6.jpg`
+- Quellbild: `f6b13b8e-1ecd-5420-905d-21290aa996a6.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f6b13b8e-1ecd-5420-905d-21290aa996a6/f6b13b8e-1ecd-5420-905d-21290aa996a6.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine ruhige, gut lesbare 16:9-Unterrichtsgrafik zu rationalen Zahlen.
+Eine einzige waagerechte Zahlengerade trägt gleichmäßig verteilte ganzzahlige
+Marken bei −2, −1, 0, 1 und 2 sowie Viertelmarken. Verwende die affine Bindung
+x(v)=800+300·v bei y=440.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Markiere genau vier Werte mit ihrem Bruch und der wertgleichen Dezimalzahl:
+−3/2=−1,5 bei x=350, −1/2=−0,5 bei x=650, 3/4=0,75 bei x=1025 und
+5/4=1,25 bei x=1175. Jedes Punktzentrum liegt direkt auf der Zahlengeraden und
+wird durch genau einen eindeutigen Pfeil beschriftet. Zeige darunter korrekt
+−3/2 < −1/2 < 3/4 < 5/4.
 
-Titel: Rationale Zahlen an der Zahlengeraden darstellen und ordnen
-Beschreibung: Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, auf einer passend skalierten Zahlengeraden darstellen, begründet ordnen und wertgleiche Darstellungen demselben Punkt zuordnen.
-
-Zusatzanweisung:
-Nutze das Referenzbild als verbindliche fachliche Struktur. Bewahre alle dort gezeigten Zahlen, Gleichungen, Zuordnungen, Markierungen und logischen Beziehungen exakt; füge keine neuen Beispiele oder Aussagen hinzu. Zeichne die Darstellung im lockeren, handillustrierten Infografikstil von Nano Banana Pro neu. Deutsche Texte und mathematische Zeichen müssen vollständig korrekt und gut lesbar bleiben.
+Deutsche Dezimalkommas, korrekte Minuszeichen, klare Kontraste und großzügige
+Abstände verwenden. Keine ungefähren Punktlagen, doppelten Beschriftungen,
+zusätzlichen Werte, Logos, Wasserzeichen oder technischen IDs. Das bindende
+Layout liegt in `repo-native-geometry-v1.svg`.
 ```
 
-## Review-Notiz
+## Provenienz- und Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Der ursprüngliche Nano-Banana-Pro-Prompt und dessen Rekonstruktionsprompt bleiben bytegleich als `prompt.nano-banana-original.de.md` und `image-reconstruction-prompt.nano-banana-original.de.md` erhalten. Drei gezielte Nano-Banana-Pro-Korrekturversuche sowie zwei vorherige Bildkorrekturversuche wurden fachlich verworfen; die hashgebundene Historie und die externe Feedbackbindung stehen in `mathematik-batch-220.md`. Die repository-native Fassung ist eine enge dokumentierte Ausnahme und keine allgemeine Providerablösung. Eine menschliche Freigabe wird nicht behauptet.

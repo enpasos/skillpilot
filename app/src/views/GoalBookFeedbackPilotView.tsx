@@ -23,6 +23,10 @@ import {
   type GoalBookFeedbackResolvedContext,
   type GoalBookFeedbackReviewerRole,
 } from '../utils/goalBookFeedback'
+import {
+  isLearnerCockpitGoalFeedbackNavigationState,
+  learnerCockpitGoalFeedbackReturnPath,
+} from '../utils/goalFeedbackReturnNavigation'
 import { goalBookRoute } from '../utils/goalBookPublicationRegistry'
 
 type LoadState =
@@ -39,7 +43,8 @@ type SubmitState =
 
 const copy = {
   de: {
-    back: 'Zurück zum Lernzielbuch',
+    backToGoalBook: 'Zurück zum Lernzielbuch',
+    backToCockpit: 'Zurück zum Cockpit',
     eyebrow: 'Lernziel-Feedback',
     title: 'Kritik strukturiert einreichen',
     introduction: 'Hier kannst du Hinweise zum Text, zur Einordnung oder zum Bild dieses Lernziels geben. Deine Rückmeldung bleibt genau mit diesem Lernziel und dieser Buchfassung verbunden.',
@@ -87,7 +92,8 @@ const copy = {
     privacyConsent: 'Ich willige in die Verarbeitung meiner Angaben zur Prüfung und Verbesserung dieses Lernziels ein. Die Einwilligung ist freiwillig und kann für die Zukunft widerrufen werden.',
   },
   en: {
-    back: 'Back to the learning goal book',
+    backToGoalBook: 'Back to the learning goal book',
+    backToCockpit: 'Back to the cockpit',
     eyebrow: 'Learning-goal feedback',
     title: 'Submit structured criticism',
     introduction: 'Use this form to comment on the text, placement, or image for this learning goal. Your feedback remains bound to this exact learning goal and book edition.',
@@ -234,7 +240,13 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
   }, [binding])
 
   const bookTarget = binding ? goalBookRoute(binding.bookId) : '/lernzielbuch'
-  const backTarget = binding ? `${bookTarget}#goal-${binding.goalId}` : bookTarget
+  const cockpitTarget = binding && isLearnerCockpitGoalFeedbackNavigationState(location.state)
+    ? learnerCockpitGoalFeedbackReturnPath(binding)
+    : null
+  const backTarget = cockpitTarget
+    ? cockpitTarget
+    : binding ? `${bookTarget}#goal-${binding.goalId}` : bookTarget
+  const backLabel = cockpitTarget ? c.backToCockpit : c.backToGoalBook
   const acknowledgementsAreCurrent = acknowledgements.bindingSearch === location.search
     && acknowledgements.locale === locale
 
@@ -310,7 +322,7 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       <header className="mx-auto flex max-w-3xl items-center justify-between gap-4">
         <Link to={backTarget} className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-text-secondary hover:text-sky-600">
           <ArrowLeft size={18} aria-hidden="true" />
-          {c.back}
+          {backLabel}
         </Link>
         <div className="flex items-center gap-3">
           <LanguageToggle />
