@@ -353,7 +353,8 @@ Die Klarstellung ist separat hashgebunden:
 - `app/src/locales/en.ts`:
   `241e349c71816a76d4d3754a56791ea6a18b6391fe9f972c27de32fafa353da6`;
 - `app/scripts/testRootRoutePolicy.ts`:
-  `b9d399e5bf42a8b8ba4a48cffd7d89edeb16bde52b7d89a5e9747ee8e2d666e4`;
+  `b9d399e5bf42a8b8ba4a48cffd7d89edeb16bde52b7d89a5e9747ee8e2d666e4`
+  → `d0699da8dacafaac489017ed49ab04fb1d5e8b66f38f30b4f03c25c5d49110ad`;
 - `app/src/utils/coachProviderMatrixCopy.ts`:
   `2c24a78b60d0556e194799e5c531f319d4419f68f7ca7b0945b311f551f6da2c`;
 - `app/src/utils/coachProviderMatrixCopy.test.ts`:
@@ -1129,6 +1130,63 @@ Der exakt freigegebene Dateiumfang ist hashgebunden:
 Die gemeinsame URL-Erzeugung in `app/src/utils/goalBookFeedback.ts` bleibt
 bytegleich auf
 `94c9ffc088c85a6925391dd8e96f0134a78ec36ef4da30cee88ae34183e1eee7`.
+
+### 6.20 Eng begrenzter CI-Abgleich ohne Vertragsänderung
+
+Der Product Owner hat am **31. August 2026** beauftragt, die drei nach dem
+Cockpit-Feedback-Commit fehlgeschlagenen CI-Jobs zu reparieren. Freigegeben ist
+ausschließlich der folgende fail-closed Abgleich:
+
+- die bereits bestehende Deaktivierung des Application Core auf der
+  öffentlichen Route `/betreuung` in die zentrale `rootRoutePolicy` zu ziehen.
+  Für alle Routen bleibt der Laufzeitwert identisch; zusätzlich verhindert die
+  zentrale Policy, dass gespeicherter Curriculum-Zustand auf dieser
+  öffentlichen Einladungsroute in die URL synchronisiert wird;
+- den geprüften kanonischen Mathematik-Input-Hash der G8/G9-Composition-View-
+  Policy nach dem bereits fachlich freigegebenen Wechsel der einen
+  Visualisierungsreferenz von `.jpg` auf `.png` neu zu binden. Lernziele,
+  `contains`, Projektionen, Platzierungen und generierte Views bleiben
+  unverändert;
+- die statische Freeze-Testreferenz um die bereits in den Abschnitten 6.18 und
+  6.19 autorisierten Ausnahmen zu ergänzen und die erwartete letzte
+  `LearnerView`-Hashkette fortzuschreiben. Keine Prüfung oder Assertion wird
+  entfernt oder gelockert;
+- den hermetischen Package-Consumer-Smoke auf den in Abschnitt 6.18 bereits
+  autorisierten `app/vite.config.ts`-Hash neu zu binden und die dafür
+  maßgebliche Readiness-Policy auf den neuen Runner-Hash fortzuschreiben. Alle
+  Isolations-, Herkunfts- und Manipulationsprüfungen bleiben unverändert;
+- die vorhandene Root-Route-Regression um die Core- und
+  URL-Synchronisierungsgrenze für `/betreuung` zu ergänzen. Ihre bisherigen
+  Assertions zur Coach-Verfügbarkeit bleiben unverändert erhalten.
+
+Der Abgleich verändert weder das eingereichte OpenAI-Paket noch MCP/OAuth,
+Tools, Schemas, MCP-Apps-UI, Coach-Handler, Session-, Identitäts- oder
+Personalisierungssemantik, Reviewfälle, Portalwerte, OpenAI-Review-Fixtures
+oder Reviewartefakte. Er erfordert keine Portalaktion.
+
+Die betroffenen Dateien sind nachvollziehbar gebunden:
+
+- `app/src/App.tsx`:
+  `088291d7d3d328db75c0cba954e5f5950f6a14022e0c746a68a9f4f09b24a4aa`
+  → `5fd65fad8cd18faa6289412f6bc77d04084304bcea76671141080b19f44cc776`;
+- `app/src/utils/rootRoutePolicy.ts`:
+  `01f30a9710bb7226ba243e94a66014d562c6e54d60cc5700ca6e9278e9480146`
+  → `b6c6d996e102d53013c69f7fa92278902e3d1c361aca2e73d4c4f274b78b6f70`;
+- `app/scripts/testRootRoutePolicy.ts`:
+  `b9d399e5bf42a8b8ba4a48cffd7d89edeb16bde52b7d89a5e9747ee8e2d666e4`
+  → `d0699da8dacafaac489017ed49ab04fb1d5e8b66f38f30b4f03c25c5d49110ad`;
+- `app/scripts/config/math-duration-split-spanning-tree-policy.json`:
+  `f28ccfff4e897aa3d1a63202d3c29a8bc4a70722c8f12887faf529d0953d2e19`
+  → `d1142d7429fba05c0d928032e03c044751914951763897ef6cdc9939a81ed35d`;
+- `scripts/check_openai_plugin_review_freeze.test.mjs`:
+  `78cb10bdba7ebd4dff4b46ae61de7b6f4b97a8364ed541b14eec88da49588f41`
+  → `ecc9a8e4f8d218d4ae581c9a449319dddde33f80b456842d3450f0c904930d29`;
+- `scripts/run_package_consumer_smoke.py`:
+  `65221f914c70d3bcff2f89751c3c10f7c05f78338420f3826d592f0f4303e33c`
+  → `c6ad4a80f0cbd4bbb57789a7ffdd24b89f55c6f658d5908973edd8107f798913`;
+- `contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json`:
+  `c34e38f8d9b9d3697376cc46d475c3a47ef98d3936c4e8355fc6b0aa099835ee`
+  → `91712c26f31fcee7c32697c51f4da1b929f61742a0fac99a93833a0b08b93d18`.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
