@@ -5,6 +5,7 @@ export const GOAL_BOOK_FEEDBACK_SCHEMA_URL =
 export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION = '2026-08-31.1' as const
 export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_LOCALES = ['de', 'en'] as const
 export const GOAL_BOOK_FEEDBACK_CONTEXT_ENDPOINT = '/api/public/goal-feedback/v1/context'
+export const GOAL_BOOK_FEEDBACK_CURRENT_BINDING_ENDPOINT = '/api/public/goal-feedback/v1/current-binding'
 export const GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT = '/api/public/goal-feedback/v1/submissions'
 
 const SAFE_GOAL_ID = /^[A-Za-z0-9][A-Za-z0-9._:+-]{0,199}$/u
@@ -109,6 +110,16 @@ export interface GoalBookFeedbackSubmissionReceipt {
   receivedAt: string
 }
 
+const GOAL_BOOK_FEEDBACK_LINK_BINDING_KEYS = [
+  'bookId',
+  'goalId',
+  'edition',
+  'goalFingerprint',
+  'pageFingerprint',
+  'bookDigest',
+  'page',
+] as const
+
 const nonBlank = (value: unknown, maximumLength: number): value is string => (
   typeof value === 'string'
   && value.length >= 1
@@ -179,22 +190,15 @@ export const parseGoalBookFeedbackLinkBinding = (
   search: string,
 ): GoalBookFeedbackLinkBinding | null => {
   const params = new URLSearchParams(search)
-  const keys = [
-    'bookId',
-    'goalId',
-    'edition',
-    'goalFingerprint',
-    'pageFingerprint',
-    'bookDigest',
-    'page',
-  ] as const
   let unknownKey = false
   params.forEach((_value, key) => {
-    if (!keys.some((expected) => expected === key)) unknownKey = true
+    if (!GOAL_BOOK_FEEDBACK_LINK_BINDING_KEYS.some((expected) => expected === key)) unknownKey = true
   })
   if (unknownKey) return null
-  if (keys.some((key) => params.getAll(key).length !== 1)) return null
-  const values = Object.fromEntries(keys.map((key) => [key, params.get(key) ?? ''])) as unknown as GoalBookFeedbackLinkBinding
+  if (GOAL_BOOK_FEEDBACK_LINK_BINDING_KEYS.some((key) => params.getAll(key).length !== 1)) return null
+  const values = Object.fromEntries(
+    GOAL_BOOK_FEEDBACK_LINK_BINDING_KEYS.map((key) => [key, params.get(key) ?? '']),
+  ) as unknown as GoalBookFeedbackLinkBinding
   if (!goalBookDefinitionById(values.bookId)) return null
   if (!SAFE_GOAL_ID.test(values.goalId)) return null
   if (!SAFE_EDITION.test(values.edition)) return null
@@ -205,9 +209,9 @@ export const parseGoalBookFeedbackLinkBinding = (
   return values
 }
 
-export const goalBookFeedbackContextUrl = (
+const goalBookFeedbackBindingSearch = (
   binding: GoalBookFeedbackLinkBinding,
-): string => `${GOAL_BOOK_FEEDBACK_CONTEXT_ENDPOINT}?${new URLSearchParams({
+): string => new URLSearchParams({
   bookId: binding.bookId,
   goalId: binding.goalId,
   edition: binding.edition,
@@ -215,7 +219,80 @@ export const goalBookFeedbackContextUrl = (
   pageFingerprint: binding.pageFingerprint,
   bookDigest: binding.bookDigest,
   page: binding.page,
+}).toString()
+
+export const goalBookFeedbackUrl = (
+  binding: GoalBookFeedbackLinkBinding,
+  baseUrl = '/lernziel-feedback',
+): string => `${baseUrl}?${goalBookFeedbackBindingSearch(binding)}`
+
+export const goalBookFeedbackContextUrl = (
+  binding: GoalBookFeedbackLinkBinding,
+): string => `${GOAL_BOOK_FEEDBACK_CONTEXT_ENDPOINT}?${goalBookFeedbackBindingSearch(binding)}`
+
+export const goalBookFeedbackCurrentBindingUrl = (
+  bookId: string,
+  goalId: string,
+): string => `${GOAL_BOOK_FEEDBACK_CURRENT_BINDING_ENDPOINT}?${new URLSearchParams({
+  bookId,
+  goalId,
 }).toString()}`
+
+export const parseGoalBookFeedbackCurrentBinding = (
+  value: unknown,
+): GoalBookFeedbackLinkBinding | null => {
+  const root = record(value)
+  if (!root || !exactKeys(root, GOAL_BOOK_FEEDBACK_LINK_BINDING_KEYS)) return null
+  if (typeof root.page !== 'number' || !Number.isSafeInteger(root.page)) return null
+  const search = new URLSearchParams({
+    bookId: typeof root.bookId === 'string' ? root.bookId : '',
+    goalId: typeof root.goalId === 'string' ? root.goalId : '',
+    edition: typeof root.edition === 'string' ? root.edition : '',
+    goalFingerprint: typeof root.goalFingerprint === 'string' ? root.goalFingerprint : '',
+    pageFingerprint: typeof root.pageFingerprint === 'string' ? root.pageFingerprint : '',
+    bookDigest: typeof root.bookDigest === 'string' ? root.bookDigest : '',
+    page: String(root.page),
+  })
+  return parseGoalBookFeedbackLinkBinding(`?${search.toString()}`)
+}
+
+export const requestCurrentGoalBookFeedbackBinding = async ({
+  bookId,
+  goalId,
+  signal,
+  fetcher = globalThis.fetch,
+}: {
+  bookId: string
+  goalId: string
+  signal?: AbortSignal
+  fetcher?: typeof fetch
+}): Promise<GoalBookFeedbackLinkBinding> => {
+  const definition = goalBookDefinitionById(bookId)
+  if (!definition) {
+    throw new Error('Unsupported goal-book publication')
+  }
+  const response = await fetcher(goalBookFeedbackCurrentBindingUrl(bookId, goalId), {
+    method: 'GET',
+    headers: { Accept: 'application/json' },
+    cache: 'no-store',
+    credentials: 'omit',
+    referrerPolicy: 'no-referrer',
+    signal,
+  })
+  if (!response.ok) {
+    throw new Error(`Goal-book feedback binding lookup failed (${response.status})`)
+  }
+  const binding = parseGoalBookFeedbackCurrentBinding(await response.json())
+  if (
+    !binding
+    || binding.bookId !== bookId
+    || binding.goalId !== goalId
+    || binding.edition !== definition.edition
+  ) {
+    throw new Error('Invalid goal-book feedback binding response')
+  }
+  return binding
+}
 
 export const parseGoalBookFeedbackResolvedContext = (
   value: unknown,

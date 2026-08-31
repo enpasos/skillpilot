@@ -50,6 +50,18 @@ import {
   resolveRuntimeApiHref,
   type RuntimeCurriculumCatalogState,
 } from '../utils/runtimeCurriculumCatalog'
+import {
+  buildLinkedClassSession,
+  deleteTeacherCourse,
+  findTeacherWorkspaceCredential,
+  getTeacherCourse,
+  getTeacherMemberMastery,
+  isLinkedClassSession,
+  isTeacherSupervisionNotFound,
+  selectLinkedSubject,
+  type TeacherSupervisionMember,
+} from '../utils/teacherSupervision'
+import { getTeacherSupervisionCopy } from '../utils/teacherSupervisionCopy'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -86,6 +98,12 @@ type TrainerCompositionResolution =
   | { key: string; status: 'no-match' }
   | { key: string; status: 'error'; error: Error }
 
+type LinkedAccessState =
+  | { status: 'checking' }
+  | { status: 'ready' }
+  | { status: 'changed'; member: TeacherSupervisionMember }
+  | { status: 'missing-token' | 'inactive' | 'error' }
+
 const loadStoredTrainerClasses = (): ClassSession[] => {
   try {
     const raw = localStorage.getItem('skillpilot_classes')
@@ -96,7 +114,9 @@ const loadStoredTrainerClasses = (): ClassSession[] => {
     if (!Array.isArray(parsed)) {
       return []
     }
-    const migrated = parsed.map((session) => migrateTrainerClassSession(session))
+    const migrated = parsed.map((session) => isLinkedClassSession(session)
+      ? session
+      : migrateTrainerClassSession(session))
     if (JSON.stringify(migrated) !== JSON.stringify(parsed)) {
       localStorage.setItem('skillpilot_classes', JSON.stringify(migrated))
     }
@@ -135,6 +155,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [searchParams, setSearchParams] = useSearchParams()
   const trainerWorkspace = searchParams.get('view') === 'plan' ? 'plan' : 'goals'
   const coursePlanCopy = useMemo(() => getCoursePlanCopy(localizedLanguage), [localizedLanguage])
+  const supervisionCopy = useMemo(() => getTeacherSupervisionCopy(localizedLanguage), [localizedLanguage])
   const t = language === 'en' ? en.trainer : de.trainer
   const tExp = language === 'en' ? en.explorer : de.explorer
   const notifications = language === 'en' ? en.notifications : de.notifications
@@ -150,6 +171,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [plannedGoalsByStudent, setPlannedGoalsByStudent] = useState<Map<string, Set<string>>>(new Map())
   const [compositionResolution, setCompositionResolution] = useState<TrainerCompositionResolution | null>(null)
   const [compositionRetryToken, setCompositionRetryToken] = useState(0)
+  const [linkedAccessByClass, setLinkedAccessByClass] = useState<Map<string, LinkedAccessState>>(new Map())
+  const [linkedValidationRetryToken, setLinkedValidationRetryToken] = useState(0)
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
     title: string
@@ -217,6 +240,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       }, [localizedLanguage])
 
   const getClassScopeDisplay = useCallback((session: ClassSession) => {
+    if (isLinkedClassSession(session)) {
+      const subjectLabels = session.linkedSupervision.subjects.map((subject) => subject.title)
+      return {
+        subjectLabel: subjectLabels.join(' · '),
+        badges: [supervisionCopy.linkedBadge, supervisionCopy.readOnlyBadge],
+      }
+    }
     const subjectEntry = setupLandscapeById.get(session.landscapeId)
       ?? landscapeEntries.find((entry) => entry.meta.landscapeId === session.landscapeId)
     const subjectLabel = subjectEntry?.meta.subject?.trim()
@@ -266,7 +296,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           : []),
       ],
     }
-  }, [landscapeEntries, localizedLanguage, scopeCopy, setupLandscapeById])
+  }, [landscapeEntries, localizedLanguage, scopeCopy, setupLandscapeById, supervisionCopy])
 
   const notifyLoadErrorOnce = useCallback((key: string, message: string) => {
     if (!onNotify) return
@@ -303,6 +333,21 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     }
     return selectedClass
   }, [activeClassId, openingClassId, routeGoalId, selectedClass])
+  const activeClassIsLinked = isLinkedClassSession(activeClass)
+  const activeLinkedClassId = activeClassIsLinked ? activeClass.id : null
+  const activeLinkedWorkspaceId = activeClassIsLinked ? activeClass.linkedSupervision.workspaceId : null
+  const activeLinkedCourseId = activeClassIsLinked ? activeClass.linkedSupervision.courseId : null
+  const activeLinkedMemberId = activeClassIsLinked ? activeClass.linkedSupervision.memberId : null
+  const activeLinkedFingerprint = activeClassIsLinked
+    ? activeClass.linkedSupervision.personalizationFingerprint ?? ''
+    : null
+  const activeLinkedAccess = activeClassIsLinked
+    ? linkedAccessByClass.get(activeClass.id) ?? { status: 'checking' as const }
+    : null
+  const activeLinkedAccessStatus = activeLinkedAccess?.status ?? null
+  const activeCoursePlanStorageId = activeClassIsLinked
+    ? `${activeClass.id}:${activeClass.landscapeId}`
+    : activeClass?.id ?? ''
   const activeClassRootFilterId = useMemo(() => {
     if (!activeClass?.rootLandscapeId) return undefined
     return activeClass.personalConfig?.[activeClass.rootLandscapeId]?.filterId
@@ -671,9 +716,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   )
 
   // --- MASTERY CALCULATION ---
-  const masteryCache = useMemo(() => new Map<string, { masterySum: number; weightSum: number }>(), [])
-  const getStudentMastery = useCallback(
-    (goalId: string): number => {
+  const getStudentMastery = useMemo(() => {
+    const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
+    return (goalId: string): number => {
       // For __ALL__ students view, studentMasteryMap will not be directly used at this top level
       // The aggregated logic will be handled inside getMasteryRecursive
       const studentMasteryMap = masteryByStudent.get(currentLearnerId)
@@ -726,9 +771,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       }
       const totals = getMasteryRecursive(goalId)
       return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
-    },
-    [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap, masteryCache],
-  )
+    }
+  }, [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap])
 
   const persistClasses = useCallback((items: ClassSession[]) => {
     setClasses(items)
@@ -883,11 +927,101 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [activeClass, currentLearnerId, onSelectLearner])
 
   useEffect(() => {
+    if (
+      !activeClassIsLinked
+      || !activeLinkedClassId
+      || !activeLinkedWorkspaceId
+      || !activeLinkedCourseId
+      || !activeLinkedMemberId
+    ) return
+
+    const credential = findTeacherWorkspaceCredential(activeLinkedWorkspaceId)
+    if (!credential) {
+      setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'missing-token' }))
+      return
+    }
+
+    const controller = new AbortController()
+    setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'checking' }))
+    void getTeacherCourse(credential, activeLinkedCourseId, controller.signal)
+      .then((course) => {
+        const member = course.members.find((candidate) => candidate.memberId === activeLinkedMemberId)
+        if (!member || member.status.trim().toLowerCase() !== 'active') {
+          setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'inactive' }))
+          return
+        }
+        const remoteFingerprint = member.personalizationFingerprint ?? ''
+        if (remoteFingerprint !== activeLinkedFingerprint) {
+          setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'changed', member }))
+          return
+        }
+        setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'ready' }))
+      })
+      .catch((nextError) => {
+        if (controller.signal.aborted) return
+        const status = isTeacherSupervisionNotFound(nextError) ? 'inactive' : 'error'
+        setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status }))
+      })
+    return () => controller.abort()
+  }, [
+    activeClassIsLinked,
+    activeLinkedClassId,
+    activeLinkedCourseId,
+    activeLinkedFingerprint,
+    activeLinkedMemberId,
+    activeLinkedWorkspaceId,
+    linkedValidationRetryToken,
+  ])
+
+  useEffect(() => {
     if (!activeClass || trainerWorkspace === 'plan') {
       setMasteryByStudent(new Map())
       setPlannedGoalsByStudent(new Map())
       return
     }
+
+    if (isLinkedClassSession(activeClass)) {
+      setPlannedGoalsByStudent(new Map())
+      if (activeLinkedAccessStatus !== 'ready') {
+        setMasteryByStudent(new Map())
+        return
+      }
+
+      const credential = findTeacherWorkspaceCredential(activeClass.linkedSupervision.workspaceId)
+      const memberStudent = activeClass.students.find(
+        (student) => student.accessMode === 'teacher-membership'
+          && student.id === activeClass.linkedSupervision.memberId,
+      )
+      if (!credential || !memberStudent) {
+        setMasteryByStudent(new Map())
+        setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'missing-token' }))
+        return
+      }
+
+      const controller = new AbortController()
+      void getTeacherMemberMastery(
+        credential,
+        activeClass.linkedSupervision.courseId,
+        activeClass.linkedSupervision.memberId,
+        activeClass.landscapeId,
+        controller.signal,
+      )
+        .then((response) => {
+          setMasteryByStudent(new Map([[memberStudent.id, response.mastery ?? {}]]))
+          clearReportedLoadError('trainer-class-data-load')
+        })
+        .catch((nextError) => {
+          if (controller.signal.aborted) return
+          setMasteryByStudent(new Map())
+          if (isTeacherSupervisionNotFound(nextError)) {
+            setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'inactive' }))
+          } else {
+            notifyLoadErrorOnce('trainer-class-data-load', notifications.trainerClassDataLoadFailed)
+          }
+        })
+      return () => controller.abort()
+    }
+
     const controller = new AbortController()
     let cancelled = false
     const fetchAllData = async () => {
@@ -948,7 +1082,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       cancelled = true
       controller.abort()
     }
-  }, [activeClass, clearReportedLoadError, notifications.trainerClassDataLoadFailed, notifyLoadErrorOnce, trainerWorkspace])
+  }, [
+    activeClass,
+    activeLinkedAccessStatus,
+    clearReportedLoadError,
+    notifications.trainerClassDataLoadFailed,
+    notifyLoadErrorOnce,
+    trainerWorkspace,
+  ])
 
   useEffect(() => {
     if (currentLearnerId && currentLearnerId !== '__ALL__') {
@@ -971,12 +1112,58 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onContextChange(activeClass?.landscapeId ?? '', trainerContextFilter, null)
   }
 
+  const handleLinkedSubjectChange = (landscapeId: string) => {
+    if (!activeClass || !isLinkedClassSession(activeClass) || activeLinkedAccessStatus !== 'ready') return
+    const nextSession = selectLinkedSubject(activeClass, landscapeId)
+    if (nextSession === activeClass) return
+    persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))
+    setSelectedGoalId('')
+    setOpeningClassId(nextSession.id)
+    onSelectLearner('__ALL__')
+    onContextChange(nextSession.landscapeId, nextSession.activeFilter, null, { replace: true })
+  }
+
+  const handleApplyLinkedPersonalization = () => {
+    if (
+      !activeClass
+      || !isLinkedClassSession(activeClass)
+      || activeLinkedAccess?.status !== 'changed'
+    ) return
+    try {
+      const learnerAlias = activeClass.students[0]?.name ?? ''
+      const nextSession = {
+        ...buildLinkedClassSession({
+          className: activeClass.name,
+          learnerAlias,
+          workspaceId: activeClass.linkedSupervision.workspaceId,
+          courseId: activeClass.linkedSupervision.courseId,
+          member: activeLinkedAccess.member,
+          existing: activeClass,
+        }),
+        currentGoalId: undefined,
+      }
+      persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))
+      setLinkedAccessByClass((current) => new Map(current).set(nextSession.id, { status: 'ready' }))
+      setSelectedGoalId('')
+      setOpeningClassId(nextSession.id)
+      onSelectLearner('__ALL__')
+      onContextChange(nextSession.landscapeId, nextSession.activeFilter, null, { replace: true })
+    } catch (nextError) {
+      console.warn('Could not apply linked learner personalization', nextError)
+      onNotify?.('error', supervisionCopy.invalidMemberProjection)
+    }
+  }
+
   const handleSelectGoal = (id: string) => {
     if (!activeClass || id === routeGoalId) return
     onContextChange(activeClass.landscapeId, trainerContextFilter, id)
   }
 
   const handleTogglePlan = async (goalId: string) => {
+    if (activeClassIsLinked) {
+      onNotify?.('info', supervisionCopy.linkedReadOnlyHint)
+      return
+    }
     if (!currentLearnerId || currentLearnerId === '__ALL__') return
     const previousPlannedGoals = plannedGoals
     const next = new Set(plannedGoals)
@@ -1009,6 +1196,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 
   const handleTogglePlanForAll = async (goalId: string) => {
     if (!activeClass) return
+    if (isLinkedClassSession(activeClass)) {
+      onNotify?.('info', supervisionCopy.linkedReadOnlyHint)
+      return
+    }
     const goal = classGoalIndexAll.get(goalId)
     if (!goal) return
 
@@ -1086,6 +1277,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 
   const handleExportClass = (e: React.MouseEvent, session: ClassSession) => {
     e.stopPropagation()
+    if (isLinkedClassSession(session)) return
     const data = JSON.stringify(session, null, 2)
     const blob = new Blob([data], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
@@ -1099,20 +1291,97 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onNotify?.('success', notifications.classExported)
   }
 
-  const handleDeleteClass = (e: React.MouseEvent, id: string, name: string) => {
+  const removeLocalClass = (id: string) => {
+    persistClasses(classes.filter((candidate) => candidate.id !== id))
+    setLinkedAccessByClass((current) => {
+      const next = new Map(current)
+      next.delete(id)
+      return next
+    })
+    if (activeClassId === id) {
+      setOpeningClassId(null)
+      setActiveClassId(null)
+      onSelectLearner('__ALL__')
+    }
+  }
+
+  const handleDeleteClass = (e: React.MouseEvent, session: ClassSession) => {
     e.preventDefault()
     e.stopPropagation()
+    if (isLinkedClassSession(session)) {
+      const credential = findTeacherWorkspaceCredential(session.linkedSupervision.workspaceId)
+      if (!credential) {
+        setConfirmation({
+          isOpen: true,
+          title: supervisionCopy.removeLocalOnlyTitle,
+          message: supervisionCopy.removeLocalOnlyMessage,
+          confirmText: supervisionCopy.removeLocalOnlyConfirm,
+          confirmClassName: 'bg-rose-600 hover:bg-rose-500',
+          onConfirm: () => {
+            removeLocalClass(session.id)
+            setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+          },
+        })
+        return
+      }
+      setConfirmation({
+        isOpen: true,
+        title: supervisionCopy.deleteLinkedTitle,
+        message: supervisionCopy.deleteLinkedMessage,
+        confirmText: supervisionCopy.deleteLinkedConfirm,
+        confirmClassName: 'bg-rose-600 hover:bg-rose-500',
+        onConfirm: () => {
+          void deleteTeacherCourse(credential, session.linkedSupervision.courseId)
+            .then(() => {
+              removeLocalClass(session.id)
+              setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+            })
+            .catch((nextError) => {
+              if (isTeacherSupervisionNotFound(nextError)) {
+                removeLocalClass(session.id)
+                setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+                return
+              }
+              setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+              onNotify?.('error', supervisionCopy.deleteLinkedFailed)
+            })
+        },
+      })
+      return
+    }
     setConfirmation({
       isOpen: true,
       title: t.deleteClassDialogTitle,
-      message: interpolateTemplate(t.deleteClassDialogMessage, { name }),
+      message: interpolateTemplate(t.deleteClassDialogMessage, { name: session.name }),
       confirmText: t.deleteClassDialogConfirm,
       confirmClassName: 'bg-rose-600 hover:bg-rose-500',
       onConfirm: () => {
-        persistClasses(classes.filter((c) => c.id !== id))
+        removeLocalClass(session.id)
         setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
       },
     })
+  }
+
+  const handleRemoveBlockedLinkedClass = async (session: ClassSession) => {
+    if (!isLinkedClassSession(session)) return
+    const credential = findTeacherWorkspaceCredential(session.linkedSupervision.workspaceId)
+    if (!credential) {
+      if (window.confirm(supervisionCopy.removeLocalOnlyMessage)) {
+        removeLocalClass(session.id)
+      }
+      return
+    }
+    if (!window.confirm(supervisionCopy.deleteLinkedMessage)) return
+    try {
+      await deleteTeacherCourse(credential, session.linkedSupervision.courseId)
+      removeLocalClass(session.id)
+    } catch (nextError) {
+      if (isTeacherSupervisionNotFound(nextError)) {
+        removeLocalClass(session.id)
+        return
+      }
+      onNotify?.('error', supervisionCopy.deleteLinkedFailed)
+    }
   }
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -1127,8 +1396,24 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         if (!session.id || !session.name || !Array.isArray(session.students)) {
           throw new Error(t.invalidImportFormat)
         }
+        if (
+          session.source === 'linked-supervision'
+          || session.linkedSupervision
+          || session.students.some((student: { accessMode?: string }) => student?.accessMode === 'teacher-membership')
+        ) {
+          throw new Error(supervisionCopy.linkedImportRejected)
+        }
+        const idx = classes.findIndex((candidate) => candidate.id === session.id)
+        if (idx >= 0 && isLinkedClassSession(classes[idx])) {
+          throw new Error(supervisionCopy.linkedImportRejected)
+        }
         const doImport = (overwrite = false) => {
-          const idx = classes.findIndex((c) => c.id === session.id)
+          const idx = classes.findIndex((candidate) => candidate.id === session.id)
+          if (idx >= 0 && isLinkedClassSession(classes[idx])) {
+            onNotify?.('error', `${notifications.classImportFailed}: ${supervisionCopy.linkedImportRejected}`)
+            setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+            return
+          }
           let next = classes
           if (idx >= 0) {
             if (!overwrite) return
@@ -1143,7 +1428,6 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           onNotify?.('success', notifications.classImported)
           setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
         }
-        const idx = classes.findIndex((c) => c.id === session.id)
         if (idx >= 0) {
           setConfirmation({
             isOpen: true,
@@ -1248,6 +1532,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {classes.map((c) => {
             const scope = getClassScopeDisplay(c)
+            const linkedState = isLinkedClassSession(c) ? linkedAccessByClass.get(c.id) : null
             return (
             <div key={c.id} onClick={() => handleOpenClass(c)} className="relative flex flex-col text-left bg-sidebar-bg border border-border-color hover:border-sky-500 p-6 rounded-xl transition-all group cursor-pointer">
               <div className="flex justify-between items-start mb-1">
@@ -1264,15 +1549,17 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   >
                     <Pencil size={16} className="pointer-events-none" />
                   </button>
+                  {!isLinkedClassSession(c) && (
+                    <button
+                      onClick={(e) => handleExportClass(e, c)}
+                      className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                      title={t.classExportTooltip}
+                    >
+                      <Save size={16} className="pointer-events-none" />
+                    </button>
+                  )}
                   <button
-                    onClick={(e) => handleExportClass(e, c)}
-                    className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
-                    title={t.classExportTooltip}
-                  >
-                    <Save size={16} className="pointer-events-none" />
-                  </button>
-                  <button
-                    onClick={(e) => handleDeleteClass(e, c.id, c.name)}
+                    onClick={(e) => handleDeleteClass(e, c)}
                     className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-rose-50 dark:hover:bg-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
                     title={t.classDeleteTooltip}
                   >
@@ -1282,6 +1569,16 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               </div>
 
               <div className="text-sm text-text-secondary mb-4">{c.students.length} {t.students}</div>
+              {linkedState?.status === 'changed' && (
+                <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/25 dark:text-amber-100">
+                  {supervisionCopy.personalizationChanged}
+                </div>
+              )}
+              {(linkedState?.status === 'missing-token' || linkedState?.status === 'inactive') && (
+                <div className="mb-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-xs font-medium text-rose-900 dark:border-rose-900/60 dark:bg-rose-950/25 dark:text-rose-100">
+                  {linkedState.status === 'missing-token' ? supervisionCopy.accessMissing : supervisionCopy.accessInactive}
+                </div>
+              )}
               {scope.subjectLabel !== c.name && (
                 <div className="mb-2 text-sm font-medium text-text-primary">{scope.subjectLabel}</div>
               )}
@@ -1298,6 +1595,76 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           {classes.length === 0 && <div className="col-span-full text-center py-20 border-2 border-dashed border-border-color rounded-2xl text-text-secondary">{t.emptyClasses}</div>}
         </div>
 
+      </div>
+    )
+  }
+  if (activeClassIsLinked && activeLinkedAccessStatus !== 'ready') {
+    const statusTitle = activeLinkedAccessStatus === 'changed'
+      ? supervisionCopy.personalizationChanged
+      : activeLinkedAccessStatus === 'missing-token'
+        ? supervisionCopy.accessMissing
+        : activeLinkedAccessStatus === 'inactive'
+          ? supervisionCopy.accessInactive
+          : activeLinkedAccessStatus === 'error'
+            ? supervisionCopy.accessFailed
+            : supervisionCopy.accessChecking
+    const statusHint = activeLinkedAccessStatus === 'changed'
+      ? supervisionCopy.personalizationChangedHint
+      : activeLinkedAccessStatus === 'missing-token'
+        ? supervisionCopy.accessMissingHint
+        : activeLinkedAccessStatus === 'inactive'
+          ? supervisionCopy.accessInactiveHint
+          : activeLinkedAccessStatus === 'error'
+            ? supervisionCopy.accessFailedHint
+            : supervisionCopy.linkedReadOnlyHint
+    return (
+      <div className="min-h-screen bg-chat-bg p-8 text-text-primary">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-border-color bg-sidebar-bg p-7 shadow-xl">
+          <button type="button" onClick={handleShowAllClasses} className="mb-5 text-sm text-text-secondary hover:text-text-primary">
+            ← {supervisionCopy.backToClasses}
+          </button>
+          <div className={`rounded-xl border p-5 ${activeLinkedAccessStatus === 'changed' ? 'border-amber-300 bg-amber-50 dark:border-amber-900/60 dark:bg-amber-950/25' : 'border-border-color bg-input-bg/50'}`}>
+            <h1 className="text-xl font-bold">{statusTitle}</h1>
+            <p className="mt-3 leading-6 text-text-secondary">{statusHint}</p>
+            {activeLinkedAccess?.status === 'changed' && (
+              <div className="mt-5">
+                <p className="text-xs font-bold uppercase tracking-wider text-text-secondary">{supervisionCopy.subjectContexts}</p>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {activeLinkedAccess.member.subjects.map((subject) => (
+                    <li key={subject.landscapeId} className="rounded-full border border-border-color bg-sidebar-bg px-3 py-1 text-sm">
+                      {subject.title}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={handleApplyLinkedPersonalization}
+                  className="mt-5 rounded-lg bg-sky-600 px-5 py-3 font-semibold text-white hover:bg-sky-500"
+                >
+                  {supervisionCopy.applyPersonalization}
+                </button>
+              </div>
+            )}
+            {activeLinkedAccessStatus === 'error' && (
+              <button
+                type="button"
+                onClick={() => setLinkedValidationRetryToken((current) => current + 1)}
+                className="mt-5 rounded-lg bg-sky-600 px-5 py-2 font-semibold text-white hover:bg-sky-500"
+              >
+                {scopeCopy.compositionRetry}
+              </button>
+            )}
+            {(activeLinkedAccessStatus === 'missing-token' || activeLinkedAccessStatus === 'inactive') && (
+              <button
+                type="button"
+                onClick={() => void handleRemoveBlockedLinkedClass(activeClass)}
+                className="mt-5 rounded-lg border border-rose-300 px-5 py-2 font-semibold text-rose-700 hover:bg-rose-50 dark:border-rose-900 dark:text-rose-300 dark:hover:bg-rose-950/30"
+              >
+                {supervisionCopy.removeLocalCard}
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     )
   }
@@ -1318,6 +1685,25 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             )}
           </div>
         </div>
+
+        {isLinkedClassSession(activeClass) && (
+          <div className="border-b border-border-color p-3">
+            <label htmlFor="trainer-linked-subject" className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-text-secondary">
+              {supervisionCopy.subjectSwitchLabel}
+            </label>
+            <select
+              id="trainer-linked-subject"
+              value={activeClass.landscapeId}
+              onChange={(event) => handleLinkedSubjectChange(event.target.value)}
+              className="w-full rounded-lg border border-border-color bg-input-bg p-2 text-sm text-text-primary"
+            >
+              {activeClass.linkedSupervision.subjects.map((subject) => (
+                <option key={subject.landscapeId} value={subject.landscapeId}>{subject.title}</option>
+              ))}
+            </select>
+            <p className="mt-2 text-xs leading-5 text-text-secondary">{supervisionCopy.linkedReadOnlyHint}</p>
+          </div>
+        )}
 
         <nav className="grid grid-cols-2 gap-1 border-b border-border-color p-2" aria-label={coursePlanCopy.workspaceLabel}>
           <button
@@ -1386,8 +1772,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           </main>
         ) : (
           <CoursePlanPilotView
-            key={`${activeClass.id}:${localizedLanguage}`}
-            classId={activeClass.id}
+            key={`${activeCoursePlanStorageId}:${localizedLanguage}`}
+            classId={activeCoursePlanStorageId}
             classLabel={activeClass.name}
             goals={coursePlanGoalIndex}
             visibleChildrenByParent={coursePlanChildrenByParent}
@@ -1435,6 +1821,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               getMastery={getStudentMastery}
               plannedGoals={plannedGoals}
               onTogglePlan={currentLearnerId === '__ALL__' ? handleTogglePlanForAll : handleTogglePlan}
+              readOnly={activeClassIsLinked}
               onSelect={handleSelectGoal}
               selectedId={currentGoal?.id ?? selectedGoalId}
               activeFilter={trainerContextFilter}
@@ -1517,13 +1904,15 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                     highlightForward
                     showMastery
                   />
-                  <button onClick={handleAssignToClass} disabled={isAssigning} className={`w-full px-6 py-3 rounded-lg font-medium transition-colors text-white disabled:bg-gray-400 dark:disabled:bg-slate-700 disabled:text-gray-200 dark:disabled:text-slate-500 ${isRemoving ? 'bg-rose-600 hover:bg-rose-500' : 'bg-sky-600 hover:bg-sky-500'}`}>
-                    {isAssigning
-                        ? (isRemoving ? t.removing : t.assigning)
-                      : isRemoving
-                        ? interpolateTemplate(t.removeFromPlan, { count: plannedCount })
-                        : interpolateTemplate(t.assignToAll, { count: activeClass.students.length })}
-                  </button>
+                  {!activeClassIsLinked && (
+                    <button onClick={handleAssignToClass} disabled={isAssigning} className={`w-full px-6 py-3 rounded-lg font-medium transition-colors text-white disabled:bg-gray-400 dark:disabled:bg-slate-700 disabled:text-gray-200 dark:disabled:text-slate-500 ${isRemoving ? 'bg-rose-600 hover:bg-rose-500' : 'bg-sky-600 hover:bg-sky-500'}`}>
+                      {isAssigning
+                          ? (isRemoving ? t.removing : t.assigning)
+                        : isRemoving
+                          ? interpolateTemplate(t.removeFromPlan, { count: plannedCount })
+                          : interpolateTemplate(t.assignToAll, { count: activeClass.students.length })}
+                    </button>
+                  )}
                 </div>
               )
             })()
@@ -1549,7 +1938,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               <GoalCard
                 goal={currentGoal}
                 masteryValue={getStudentMastery(currentGoal.id)}
-                showLearnerTools
+                showLearnerTools={!activeClassIsLinked}
                 useRawGoalTitles={!!matchedTrainerCompositionView}
               />
 

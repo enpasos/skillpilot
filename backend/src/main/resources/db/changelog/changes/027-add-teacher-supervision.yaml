@@ -1,0 +1,236 @@
+databaseChangeLog:
+  - changeSet:
+      id: 027-add-teacher-supervision
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - not:
+            - tableExists:
+                tableName: teacher_workspace
+        - not:
+            - tableExists:
+                tableName: teacher_course
+        - not:
+            - tableExists:
+                tableName: teacher_membership
+      changes:
+        # Browser-held workspace tokens are capabilities. Only their SHA-256
+        # digests are persisted; the clear token is returned exactly once.
+        - createTable:
+            tableName: teacher_workspace
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_teacher_workspace
+              - column:
+                  name: access_token_hash
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: revoked_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - addUniqueConstraint:
+            tableName: teacher_workspace
+            columnNames: access_token_hash
+            constraintName: uq_teacher_workspace_access_token_hash
+
+        - createTable:
+            tableName: teacher_course
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_teacher_course
+              - column:
+                  name: workspace_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: course_label
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: teacher_display_name
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: closed_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - addForeignKeyConstraint:
+            baseTableName: teacher_course
+            baseColumnNames: workspace_id
+            referencedTableName: teacher_workspace
+            referencedColumnNames: id
+            constraintName: fk_teacher_course_workspace
+            onDelete: CASCADE
+        - createIndex:
+            tableName: teacher_course
+            indexName: idx_teacher_course_workspace
+            columns:
+              - column:
+                  name: workspace_id
+              - column:
+                  name: created_at
+              - column:
+                  name: id
+
+        # One row is both the invitation lifecycle and the durable, opaque
+        # course membership. The permanent learner ID never crosses the
+        # teacher-facing API boundary. Deleting the learner cascades here so
+        # retention cleanup cannot be blocked by an old supervision grant.
+        - createTable:
+            tableName: teacher_membership
+            columns:
+              - column:
+                  name: member_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_teacher_membership
+              - column:
+                  name: invitation_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: course_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: invitation_token_hash
+                  type: VARCHAR(64)
+              - column:
+                  name: status
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: personal_curriculum_read
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: mastery_read
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: accepted_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: revoked_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - addForeignKeyConstraint:
+            baseTableName: teacher_membership
+            baseColumnNames: course_id
+            referencedTableName: teacher_course
+            referencedColumnNames: id
+            constraintName: fk_teacher_membership_course
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: teacher_membership
+            baseColumnNames: learner_id
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            constraintName: fk_teacher_membership_learner
+            onDelete: CASCADE
+        - addUniqueConstraint:
+            tableName: teacher_membership
+            columnNames: invitation_id
+            constraintName: uq_teacher_membership_invitation_id
+        - addUniqueConstraint:
+            tableName: teacher_membership
+            columnNames: invitation_token_hash
+            constraintName: uq_teacher_membership_invitation_token_hash
+        - addUniqueConstraint:
+            tableName: teacher_membership
+            columnNames: course_id, learner_id
+            constraintName: uq_teacher_membership_course_learner
+        - sql:
+            sql: >-
+              ALTER TABLE teacher_membership
+              ADD CONSTRAINT ck_teacher_membership_status
+              CHECK (status IN ('PENDING', 'ACTIVE', 'REVOKED'))
+        - sql:
+            sql: >-
+              ALTER TABLE teacher_membership
+              ADD CONSTRAINT ck_teacher_membership_lifecycle
+              CHECK (
+                (status = 'PENDING'
+                  AND invitation_token_hash IS NOT NULL
+                  AND accepted_at IS NULL
+                  AND revoked_at IS NULL)
+                OR
+                (status = 'ACTIVE'
+                  AND invitation_token_hash IS NULL
+                  AND accepted_at IS NOT NULL
+                  AND revoked_at IS NULL)
+                OR
+                (status = 'REVOKED'
+                  AND invitation_token_hash IS NULL
+                  AND revoked_at IS NOT NULL)
+              )
+        - createIndex:
+            tableName: teacher_membership
+            indexName: idx_teacher_membership_course_status
+            columns:
+              - column:
+                  name: course_id
+              - column:
+                  name: status
+              - column:
+                  name: created_at
+              - column:
+                  name: member_id
+        - createIndex:
+            tableName: teacher_membership
+            indexName: idx_teacher_membership_learner_status
+            columns:
+              - column:
+                  name: learner_id
+              - column:
+                  name: status
+              - column:
+                  name: created_at
+              - column:
+                  name: member_id

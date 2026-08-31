@@ -3,9 +3,13 @@ import {
   createGoalBookFeedbackSubmission,
   GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION,
   goalBookFeedbackContextUrl,
+  goalBookFeedbackCurrentBindingUrl,
+  goalBookFeedbackUrl,
+  parseGoalBookFeedbackCurrentBinding,
   parseGoalBookFeedbackLinkBinding,
   parseGoalBookFeedbackResolvedContext,
   parseGoalBookFeedbackSubmissionReceipt,
+  requestCurrentGoalBookFeedbackBinding,
 } from './goalBookFeedback'
 
 const digest = `sha256:${'a'.repeat(64)}`
@@ -24,6 +28,22 @@ const search = new URLSearchParams({
 const binding = parseGoalBookFeedbackLinkBinding(`?${search}`)
 assert(binding)
 assert.equal(new URL(goalBookFeedbackContextUrl(binding), 'https://skillpilot.test').searchParams.get('goalId'), binding.goalId)
+const feedbackUrl = new URL(goalBookFeedbackUrl(binding), 'https://skillpilot.test')
+assert.equal(feedbackUrl.pathname, '/lernziel-feedback')
+assert.deepEqual([...feedbackUrl.searchParams.keys()].sort(), [
+  'bookDigest',
+  'bookId',
+  'edition',
+  'goalFingerprint',
+  'goalId',
+  'page',
+  'pageFingerprint',
+])
+assert.equal(feedbackUrl.searchParams.get('goalId'), binding.goalId)
+assert.equal(
+  goalBookFeedbackUrl(binding, 'https://skillpilot.com/lernziel-feedback'),
+  `https://skillpilot.com${feedbackUrl.pathname}${feedbackUrl.search}`,
+)
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${search}&goalId=duplicate`), null)
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${search}&unexpected=secret`), null)
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${search.replace('page=42', 'page=0')}`), null)
@@ -35,6 +55,57 @@ const plusBindingSearch = new URLSearchParams({
 }).toString()
 assert(parseGoalBookFeedbackLinkBinding(`?${plusBindingSearch}`))
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${plusBindingSearch.replace('goal%2Bvariant', 'a'.repeat(201))}`), null)
+
+const currentBindingPayload = {
+  bookId: binding.bookId,
+  goalId: binding.goalId,
+  edition: binding.edition,
+  goalFingerprint: binding.goalFingerprint,
+  pageFingerprint: binding.pageFingerprint,
+  bookDigest: binding.bookDigest,
+  page: Number(binding.page),
+}
+assert.deepEqual(parseGoalBookFeedbackCurrentBinding(currentBindingPayload), binding)
+assert.equal(parseGoalBookFeedbackCurrentBinding({ ...currentBindingPayload, page: binding.page }), null)
+assert.equal(parseGoalBookFeedbackCurrentBinding({ ...currentBindingPayload, learnerId: 'secret' }), null)
+
+const bindingLookupUrl = new URL(
+  goalBookFeedbackCurrentBindingUrl(binding.bookId, binding.goalId),
+  'https://skillpilot.test',
+)
+assert.deepEqual([...bindingLookupUrl.searchParams.keys()].sort(), ['bookId', 'goalId'])
+let requestedBindingUrl = ''
+let requestedBindingInit: RequestInit | undefined
+const loadedBinding = await requestCurrentGoalBookFeedbackBinding({
+  bookId: binding.bookId,
+  goalId: binding.goalId,
+  fetcher: (async (input, init) => {
+    requestedBindingUrl = String(input)
+    requestedBindingInit = init
+    return new Response(JSON.stringify(currentBindingPayload), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch,
+})
+assert.deepEqual(loadedBinding, binding)
+assert.equal(requestedBindingUrl, goalBookFeedbackCurrentBindingUrl(binding.bookId, binding.goalId))
+assert.equal(requestedBindingInit?.cache, 'no-store')
+assert.equal(requestedBindingInit?.credentials, 'omit')
+assert.equal(requestedBindingInit?.referrerPolicy, 'no-referrer')
+assert(!/skillpilotId|learnerId|sessionId|chatSession/iu.test(requestedBindingUrl))
+
+await assert.rejects(() => requestCurrentGoalBookFeedbackBinding({
+  bookId: binding.bookId,
+  goalId: binding.goalId,
+  fetcher: (async () => new Response(JSON.stringify({
+    ...currentBindingPayload,
+    goalId: 'different-goal',
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  })) as typeof fetch,
+}))
 
 const resolvedPayload = {
   schemaVersion: 1,

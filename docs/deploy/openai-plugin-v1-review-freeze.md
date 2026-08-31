@@ -947,6 +947,116 @@ Löschzustände ist ebenfalls hashgebunden:
 - `backend/src/test/java/com/skillpilot/backend/goalfeedback/GoalFeedbackProductionHandoffIntegrationTest.java`:
   `7c6eaba09fe95aa4334b31d9f5a19b65b4d6655926573a0679db75c4fd87159d`.
 
+### 6.18 Eng begrenzte Ausnahme: Lernziel-Feedback aus dem Lernenden-Cockpit
+
+Der Product Owner hat am **31. August 2026** entschieden, dass eine lernende
+Person eine unmittelbar beim Lernen bemerkte Schwäche des sichtbaren Lernziels
+direkt aus dem Cockpit über den bereits etablierten Lernzielbuch-Feedbackweg
+melden kann. Ziel ist das aktuelle Produktions-Webfrontend zusammen mit dem
+unabhängig isolierten Lernziel-Feedbackkanal. Das OpenAI-Plugin bleibt
+unverändert `skillpilot-coach-v1` Version `1.0.0`; ein Zurückziehen oder erneutes
+Einreichen im Portal ist nicht erforderlich.
+
+Freigegeben ist ausschließlich:
+
+- unter dem im Lernenden-Cockpit gerade sichtbaren, curricular-atomaren
+  Mathematik- oder Physikziel eine lokalisierte sekundäre Aktion
+  **Feedback zu diesem Lernziel** anzuzeigen;
+- die Aktion erst nach dem bewussten Klick über
+  `GET /api/public/goal-feedback/v1/current-binding` mit exakt `bookId` und
+  `goalId` gegen die bereits hashverifizierte, datenbankseitig als aktuell
+  ausgewählte Buchpublikation aufzulösen;
+- diesen reinen Lesezugriff `no-store` auszuliefern und im selben begrenzten
+  Fenster wie die bestehende Kontextauflösung zu rate-limitieren;
+- aus der Antwort exakt den vorhandenen siebenfach gebundenen
+  `/lernziel-feedback`-Link aufzubauen. Die bestehende `/context`-Prüfung bleibt
+  unverändert strikt und verlangt weiterhin genau `bookId`, `goalId`, `edition`,
+  `goalFingerprint`, `pageFingerprint`, `bookDigest` und `page`;
+- den identischen URL-Builder auch im Lernzielbuch zu verwenden, ohne dessen
+  Ziel, Parameter oder Navigation semantisch zu verändern;
+- Fehler als wiederholbare lokale Cockpit-Meldung anzuzeigen und schnelle
+  Doppelklicks synchron auf genau einen Lookup zu begrenzen;
+- ausschließlich feedbackspezifische Frontend- und Backendtests sowie deren
+  Test-Fixtures und npm-Testregistrierung zu ergänzen.
+
+Die Aktion wird weder im Trainer noch im Explorer oder Package-Consumer
+freigeschaltet und bleibt für Cluster-, Struktur-, Orientierungs-, Memory- und
+Prüfungsziele unsichtbar. Weder SkillPilot-ID noch Learner-, Session-, Chat-,
+Lernstands-, Personalisierungs- oder Rollenwerte werden in Lookup oder
+Feedbacklink übertragen. Der Lookup verändert keinen Lernzustand. Coach-Handler,
+vorbereitete Nachrichten, Session-, Identitäts-, Lernstands- und
+Personalisierungssemantik, OpenAI-Paket, MCP/OAuth, Tools, Schemas,
+MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und Reviewartefakte bleiben
+unverändert und eingefroren.
+
+Der exakt freigegebene Dateiumfang besteht aus:
+
+- `app/src/views/LearnerView.tsx` und dem neuen isolierten
+  `app/src/components/LearnerGoalFeedbackAction.tsx`;
+- `app/src/utils/goalBookFeedback.ts`, `app/src/views/GoalBookView.tsx` sowie in
+  `app/package.json` ausschließlich `test:learner-goal-feedback-ui` und dessen
+  Aufnahme in `test:goal-feedback`; die bereits separat beauftragte lokale
+  `test:teacher-supervision`-Zeile gehört ausdrücklich nicht zu dieser
+  Ausnahme;
+- `app/vite.config.ts` und der neue Package-Consumer-Ersatz
+  `app/src/packageConsumer/learnerGoalFeedbackUnavailable.tsx`, der die
+  Repository-Aktion bereits beim Build vollständig entfernt;
+- `backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicController.java`,
+  `GoalFeedbackPublicProtectionFilter.java` und
+  `GoalFeedbackPublicationRegistry.java` im selben Verzeichnis;
+- `app/src/utils/goalBookFeedback.test.ts`,
+  `app/scripts/testLearnerGoalFeedbackUi.ts`, die beiden zugehörigen
+  `learnerGoalFeedbackUi`-Fixtures sowie
+  `GoalFeedbackPublicControllerTest.java`, `GoalFeedbackBoundaryFilterTest.java`
+  und `GoalFeedbackPublicVisualizationIntegrationTest.java` im vorhandenen
+  Backend-Testpaket;
+- ausschließlich die zur erneuten Hashbindung notwendigen Änderungen an diesem
+  Freeze-Dokument, `contracts/openai/skillpilot-coach-v1/review-freeze.json` und
+  `scripts/check_openai_plugin_review_freeze.mjs`.
+
+Die aktualisierte geschützte Cockpit-Datei ist als fortlaufende Ausnahme
+verankert:
+
+- `app/src/views/LearnerView.tsx`:
+  `d579e459e6450cc6891971bab3a65621a3409a0c5d16ae9c22ce67b24956e0e6`
+  →
+  `f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258`.
+
+Die unmittelbar wirksamen Implementierungsdateien sind ebenfalls
+hashgebunden:
+
+- `app/src/components/LearnerGoalFeedbackAction.tsx` (neu):
+  `b128ce146a555100f407996d24abbaaaafb76428bcd04377435551dbd75b9e15`;
+- `app/src/utils/goalBookFeedback.ts`:
+  `10a461427a5b77aa7e0605d0a7dd803b0c9d301676d1fb70d189370bb65d9890`
+  → `94c9ffc088c85a6925391dd8e96f0134a78ec36ef4da30cee88ae34183e1eee7`;
+- `app/src/views/GoalBookView.tsx`:
+  `8682601cb2a443edae698c00f04a9df5b363a706970c580b0ca5c7c362c38c1e`
+  → `e3ead51b2eca0e1b6674b60873f0f01536ce9e878bf7a15b82ecd3d701f4fa4e`;
+- `app/vite.config.ts`:
+  `87f095cf696cdb2c468257b837b3af61ec5c3c297c21d4e014f884f7903f84cd`
+  → `9c2f36efbd6755554b2ae2aeb5db0ec076e9a28cf3152b96e61ab99fc16735c7`;
+- `app/src/packageConsumer/learnerGoalFeedbackUnavailable.tsx` (neu):
+  `baacb7c10a30ad3d5f01d0ac1d4d8d2185ab7c73ca22d6bb0dce2a36b4fc32da`;
+- `backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicController.java`:
+  `8ffe70fc8688fa7cd42e20053ee6f7ce95a711191d43e0a3026a0947be22e961`
+  → `9f8dee900851026f67accb94507b22574b6c147b8f878f65ddc82a7211ebf18e`;
+- `backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicProtectionFilter.java`:
+  `b76a1c55cd9790e2e7cdbb0dcc8c1772e9206cee2317ae708e65865293316587`
+  → `86f6fe8874904af51b53a389cb5c833ed01f37d079fed20b03e5786c1dd2bcac`;
+- `backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicationRegistry.java`:
+  `39270e4997fc06444ed7a716ca3cc82290579d7723c05e6816cd5cb3fab485da`
+  → `2f5b6a124a6b4600b8e2876d09b898ed93a65a159f5bc0d881f17f3a94e01b11`.
+
+Die fokussierte Browserregression ist mit folgendem SHA-256 gebunden:
+
+- `app/scripts/testLearnerGoalFeedbackUi.ts`:
+  `c0ddf7aaa3c36dd66c8f7993f2431c388fc1cf3fd2f005056e98bb6a8ef35ed5`;
+- `app/scripts/fixtures/learnerGoalFeedbackUi.html`:
+  `e7a99fcb3f0266a428682abaa2c6ddfa4443a0a20c57672a4055d56a99674f9d`;
+- `app/scripts/fixtures/learnerGoalFeedbackUi.tsx`:
+  `0332fad29d6eddc285943e0c3ed79de74c9c3b1ea69103433023d43bc5f11f3b`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

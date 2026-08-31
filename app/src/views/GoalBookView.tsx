@@ -53,6 +53,7 @@ import {
   goalBookRoute,
   type GoalBookSubject,
 } from '../utils/goalBookPublicationRegistry'
+import { goalBookFeedbackUrl } from '../utils/goalBookFeedback'
 
 const copy = {
   de: {
@@ -555,7 +556,7 @@ const GoalPage: React.FC<{
       <section className="mt-5 rounded-xl border border-violet-300 bg-violet-50/70 p-4 dark:border-violet-900 dark:bg-violet-950/25" aria-label={c.feedbackAction}>
         <p className="text-sm leading-6 text-violet-950 dark:text-violet-100">{c.feedbackPrompt}</p>
         <a
-          href={`https://skillpilot.com/lernziel-feedback?${new URLSearchParams({
+          href={goalBookFeedbackUrl({
             bookId: model.book.id,
             goalId: page.goalId,
             edition: model.book.edition,
@@ -563,7 +564,7 @@ const GoalPage: React.FC<{
             goalFingerprint: page.goalFingerprint,
             pageFingerprint: page.pageFingerprint,
             bookDigest: model.digest,
-          }).toString()}`}
+          }, 'https://skillpilot.com/lernziel-feedback')}
           aria-label={language === 'de'
             ? `Feedback zu „${page.title}“`
             : `Feedback on “${page.title}”`}

@@ -28,6 +28,7 @@ public class GoalFeedbackPublicController {
 
     private static final Set<String> LINK_FIELDS = Set.of(
             "bookId", "edition", "goalId", "goalFingerprint", "pageFingerprint", "bookDigest", "page");
+    private static final Set<String> CURRENT_BINDING_FIELDS = Set.of("bookId", "goalId");
     private static final Pattern SAFE_ID = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._:+-]{0,199}");
     private static final Pattern SHA256 = Pattern.compile("sha256:[0-9a-f]{64}");
     private static final Pattern PAGE = Pattern.compile("[1-9][0-9]{0,3}");
@@ -84,6 +85,29 @@ public class GoalFeedbackPublicController {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
                 .body(resolved);
+    }
+
+    @GetMapping(path = "/current-binding", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<LinkBinding> currentBinding(@RequestParam MultiValueMap<String, String> parameters) {
+        if (!parameters.keySet().equals(CURRENT_BINDING_FIELDS)
+                || CURRENT_BINDING_FIELDS.stream()
+                        .anyMatch(key -> parameters.get(key) == null || parameters.get(key).size() != 1)) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Exactly two current-binding parameters are required");
+        }
+        String bookId = one(parameters, "bookId");
+        String goalId = one(parameters, "goalId");
+        if (!SAFE_ID.matcher(bookId).matches() || !SAFE_ID.matcher(goalId).matches()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid current-binding parameter");
+        }
+        LinkBinding binding = publications.resolveCurrentBinding(bookId, goalId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Current published goal binding not found"));
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(binding);
     }
 
     @GetMapping(path = "/visualizations/{digest}")

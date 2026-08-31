@@ -151,6 +151,29 @@ class GoalFeedbackBoundaryFilterTest {
     }
 
     @Test
+    void currentBindingSharesTheBoundedContextWindow() throws Exception {
+        GoalFeedbackPublicProtectionFilter filter = publicFilter(1);
+
+        MockHttpServletRequest binding = new MockHttpServletRequest(
+                "GET", GoalFeedbackPublicProtectionFilter.CURRENT_BINDING_PATH);
+        binding.setRemoteAddr("192.0.2.25");
+        MockHttpServletResponse bindingResponse = new MockHttpServletResponse();
+        MockFilterChain bindingChain = new MockFilterChain();
+        filter.doFilter(binding, bindingResponse, bindingChain);
+        assertThat(bindingChain.getRequest()).isSameAs(binding);
+        assertThat(bindingResponse.getHeader("Cache-Control")).isEqualTo("no-store");
+
+        MockHttpServletRequest context = new MockHttpServletRequest(
+                "GET", GoalFeedbackPublicProtectionFilter.CONTEXT_PATH);
+        context.setRemoteAddr("192.0.2.25");
+        MockHttpServletResponse limitedContext = new MockHttpServletResponse();
+        filter.doFilter(context, limitedContext, new MockFilterChain());
+        assertThat(limitedContext.getStatus()).isEqualTo(429);
+        assertThat(limitedContext.getHeader("Retry-After")).isEqualTo("60");
+        assertThat(limitedContext.getHeader("Cache-Control")).isEqualTo("no-store");
+    }
+
+    @Test
     void localProxyUsesOneValidRealIpAndIgnoresForwardedAddressSpoofing() throws Exception {
         GoalFeedbackPublicProtectionFilter filter = publicFilter(1);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
@@ -20,6 +20,21 @@ import {
 import { getDisplayCourseProfileFilters, getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getClassSetupCopy } from '../utils/curriculumSetupCopy'
+import {
+  buildLinkedClassSession,
+  createTeacherCourse,
+  createTeacherInvitation,
+  deleteTeacherCourse,
+  ensureTeacherWorkspace,
+  getTeacherCourse,
+  isLinkedClassSession,
+  isTeacherSupervisionNotFound,
+  TeacherSupervisionApiError,
+  TEACHER_SUPERVISION_ENABLED,
+  toFragmentInvitationUrl,
+  type TeacherWorkspaceCredential,
+} from '../utils/teacherSupervision'
+import { getTeacherSupervisionCopy } from '../utils/teacherSupervisionCopy'
 
 interface ClassSetupProps {
   landscapes: LandscapeEntry[]
@@ -31,10 +46,31 @@ interface ClassSetupProps {
 
 const normalizeWildcardFilter = (filterId?: string) => filterId ?? 'ALL'
 
+interface PendingTeacherInvitation {
+  credential: TeacherWorkspaceCredential
+  courseId: string
+  invitationId: string
+  memberId: string
+  invitationUrl: string
+  pollingStopped?: boolean
+}
+
+interface PendingCourseCleanup {
+  credential: TeacherWorkspaceCredential
+  courseId: string
+  cleanupRequired: true
+}
+
+type PendingTeacherState = PendingTeacherInvitation | PendingCourseCleanup
+
+const isPendingCourseCleanup = (value: PendingTeacherState): value is PendingCourseCleanup =>
+  'cleanupRequired' in value && value.cleanupRequired === true
+
 export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscapeId, initialSession, onSave, onCancel }) => {
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const copy = getClassSetupCopy(localizedLanguage)
+  const supervisionCopy = getTeacherSupervisionCopy(localizedLanguage)
   const runtimeCatalogState = useRuntimeCurriculumCatalog()
   const offeringSource = useMemo(
     () => resolveCurriculumOfferingSource(runtimeCatalogState),
@@ -50,6 +86,10 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   )
 
   const isEditing = Boolean(initialSession)
+  const isEditingLinked = isLinkedClassSession(initialSession)
+  const [creationMode, setCreationMode] = useState<'generated' | 'linked'>(
+    isEditingLinked ? 'linked' : 'generated',
+  )
   const [className, setClassName] = useState(initialSession?.name ?? '')
   const [selectedLandscapeId, setSelectedLandscapeId] = useState(() => {
     if (
@@ -86,8 +126,20 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
       ?? 'GK+LK'
   ))
   const [studentNames, setStudentNames] = useState('')
+  const [learnerAlias, setLearnerAlias] = useState(initialSession?.students[0]?.name ?? '')
+  const [teacherDisplayName, setTeacherDisplayName] = useState('')
+  const [invitationCourseLabel, setInvitationCourseLabel] = useState(
+    localizedLanguage === 'de' ? 'SkillPilot-Einzelbetreuung' : 'SkillPilot individual supervision',
+  )
+  const [existingSkillpilotId, setExistingSkillpilotId] = useState('')
+  const [pendingInvitation, setPendingInvitation] = useState<PendingTeacherState | null>(null)
+  const [isCheckingConsent, setIsCheckingConsent] = useState(false)
+  const [linkCopied, setLinkCopied] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const completionStartedRef = useRef(false)
+  const completionInFlightRef = useRef(false)
+  const pendingCancelledRef = useRef(false)
 
   const selectedLandscape = useMemo(
     () => subjectLandscapes.find((entry) => entry.meta.landscapeId === selectedLandscapeId)
@@ -222,8 +274,178 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     })
   }
 
+  const completeLinkedClass = useCallback(async (
+    invitation: PendingTeacherInvitation,
+    signal?: AbortSignal,
+  ) => {
+    if (
+      completionStartedRef.current
+      || completionInFlightRef.current
+      || invitation.pollingStopped
+    ) return false
+    completionInFlightRef.current = true
+    setIsCheckingConsent(true)
+    try {
+      const course = await getTeacherCourse(invitation.credential, invitation.courseId, signal)
+      if (pendingCancelledRef.current) return false
+      const activeMember = course.members.find(
+        (member) => member.memberId === invitation.memberId
+          && member.status.trim().toLowerCase() === 'active',
+      )
+      if (!activeMember) {
+        const terminalMember = course.members.find((member) => {
+          if (member.memberId !== invitation.memberId) return false
+          const status = member.status.trim().toLowerCase()
+          return status === 'revoked' || status === 'expired' || status === 'rejected'
+        })
+        if (terminalMember) {
+          setPendingInvitation((current) => current && !isPendingCourseCleanup(current)
+            ? { ...current, pollingStopped: true }
+            : current)
+          setError(supervisionCopy.requestFailed)
+        }
+        return false
+      }
+      const session = buildLinkedClassSession({
+        className: className.trim(),
+        learnerAlias: learnerAlias.trim(),
+        workspaceId: invitation.credential.workspaceId,
+        courseId: invitation.courseId,
+        member: activeMember,
+      })
+      completionStartedRef.current = true
+      setPendingInvitation(null)
+      onSave(session)
+      return true
+    } catch (nextError) {
+      if (signal?.aborted) return false
+      console.warn('Could not check teacher supervision approval', nextError)
+      setError(supervisionCopy.requestFailed)
+      if (
+        isTeacherSupervisionNotFound(nextError)
+        || (nextError instanceof TeacherSupervisionApiError && nextError.status === 401)
+      ) {
+        setPendingInvitation((current) => current && !isPendingCourseCleanup(current)
+          ? { ...current, pollingStopped: true }
+          : current)
+      }
+      return false
+    } finally {
+      completionInFlightRef.current = false
+      if (!signal?.aborted) setIsCheckingConsent(false)
+    }
+  }, [className, learnerAlias, onSave, supervisionCopy.requestFailed])
+
+  useEffect(() => {
+    if (
+      !pendingInvitation
+      || isPendingCourseCleanup(pendingInvitation)
+      || pendingInvitation.pollingStopped
+    ) return
+    const controller = new AbortController()
+    const intervalId = window.setInterval(() => {
+      void completeLinkedClass(pendingInvitation, controller.signal)
+    }, 4_000)
+    return () => {
+      window.clearInterval(intervalId)
+      controller.abort()
+    }
+  }, [completeLinkedClass, pendingInvitation])
+
+  const handleCancelPendingInvitation = async () => {
+    if (!pendingInvitation) return
+    pendingCancelledRef.current = true
+    setIsGenerating(true)
+    setError(null)
+    try {
+      await deleteTeacherCourse(pendingInvitation.credential, pendingInvitation.courseId)
+      setPendingInvitation(null)
+      onCancel()
+    } catch (nextError) {
+      if (isTeacherSupervisionNotFound(nextError)) {
+        setPendingInvitation(null)
+        onCancel()
+        return
+      }
+      console.warn('Could not cancel teacher supervision invitation', nextError)
+      pendingCancelledRef.current = false
+      setError(supervisionCopy.cancelFailed)
+      setPendingInvitation({
+        credential: pendingInvitation.credential,
+        courseId: pendingInvitation.courseId,
+        cleanupRequired: true,
+      })
+    } finally {
+      setIsGenerating(false)
+    }
+  }
+
+  const handleCreateLinked = async () => {
+    if (isEditingLinked && initialSession) {
+      onSave({
+        ...initialSession,
+        name: className.trim(),
+        students: initialSession.students.map((student, index) => index === 0
+          ? { ...student, name: learnerAlias.trim() }
+          : student),
+      })
+      return
+    }
+
+    let credential: TeacherWorkspaceCredential | null = null
+    let courseId = ''
+    try {
+      credential = await ensureTeacherWorkspace()
+      const course = await createTeacherCourse(credential, {
+        courseLabel: invitationCourseLabel.trim(),
+        teacherDisplayName: teacherDisplayName.trim(),
+      })
+      courseId = course.courseId
+      try {
+        const invitation = await createTeacherInvitation(
+          credential,
+          courseId,
+          existingSkillpilotId.trim(),
+        )
+        setExistingSkillpilotId('')
+        setPendingInvitation({
+          credential,
+          courseId,
+          invitationId: invitation.invitationId,
+          memberId: invitation.memberId,
+          invitationUrl: toFragmentInvitationUrl(invitation.invitationUrl),
+        })
+        pendingCancelledRef.current = false
+      } catch (inviteError) {
+        setExistingSkillpilotId('')
+        try {
+          await deleteTeacherCourse(credential, courseId)
+        } catch (cleanupError) {
+          console.warn('Could not clean up incomplete teacher course', cleanupError)
+          setPendingInvitation({ credential, courseId, cleanupRequired: true })
+          setError(supervisionCopy.cancelFailed)
+          return
+        }
+        throw inviteError
+      }
+    } catch (nextError) {
+      console.warn('Could not create teacher supervision invitation', nextError)
+      setError(supervisionCopy.requestFailed)
+    }
+  }
+
   const handleCreate = async (event: React.FormEvent) => {
     event.preventDefault()
+    if (creationMode === 'linked') {
+      setIsGenerating(true)
+      setError(null)
+      try {
+        await handleCreateLinked()
+      } finally {
+        setIsGenerating(false)
+      }
+      return
+    }
     if (rootLandscape && !stageSelection.sek1Selected && !stageSelection.sek2Selected) {
       setError(copy.selectStageFirst)
       return
@@ -327,12 +549,117 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     }
   }
 
+  if (pendingInvitation) {
+    const cleanupRequired = isPendingCourseCleanup(pendingInvitation)
+    return (
+      <div className="max-w-2xl w-full mx-auto bg-sidebar-bg p-8 rounded-xl border border-border-color shadow-xl transition-colors">
+        <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400">{supervisionCopy.invitationTitle}</h2>
+        <p className="mt-3 text-sm leading-6 text-text-secondary">{supervisionCopy.invitationHint}</p>
+        {!cleanupRequired && (
+          <div className="mt-6">
+            <label htmlFor="teacher-invitation-url" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+              {supervisionCopy.invitationLinkLabel}
+            </label>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <input
+                id="teacher-invitation-url"
+                readOnly
+                value={pendingInvitation.invitationUrl}
+                className="min-w-0 flex-1 bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono text-sm"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  const invitationUrl = pendingInvitation.invitationUrl
+                  void navigator.clipboard.writeText(invitationUrl)
+                    .then(() => {
+                      setLinkCopied(true)
+                      window.setTimeout(() => setLinkCopied(false), 2_000)
+                    })
+                    .catch(() => {
+                      const input = document.getElementById('teacher-invitation-url') as HTMLInputElement | null
+                      input?.focus()
+                      input?.select()
+                    })
+                }}
+                className="rounded bg-sky-600 px-4 py-2 font-medium text-white hover:bg-sky-500"
+              >
+                {linkCopied ? supervisionCopy.linkCopied : supervisionCopy.copyLink}
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="mt-6 rounded-xl border border-border-color bg-input-bg/40 p-4 text-sm text-text-secondary">
+          {cleanupRequired
+            ? supervisionCopy.cancelFailed
+            : isCheckingConsent
+              ? supervisionCopy.checking
+              : supervisionCopy.waitingForConsent}
+        </div>
+        {error && <div className="mt-4 text-sm text-amber-700 dark:text-amber-300">{error}</div>}
+        <div className="mt-6 flex flex-col-reverse justify-end gap-3 border-t border-border-color pt-4 sm:flex-row">
+          <button
+            type="button"
+            disabled={isGenerating}
+            onClick={() => void handleCancelPendingInvitation()}
+            className="px-4 py-2 text-text-secondary hover:text-text-primary disabled:opacity-50"
+          >
+            {supervisionCopy.cancelInvitation}
+          </button>
+          {!cleanupRequired && !pendingInvitation.pollingStopped && (
+            <button
+              type="button"
+              disabled={isCheckingConsent}
+              onClick={() => void completeLinkedClass(pendingInvitation)}
+              className="rounded bg-sky-600 px-5 py-2 font-medium text-white hover:bg-sky-500 disabled:opacity-50"
+            >
+              {isCheckingConsent ? supervisionCopy.checking : supervisionCopy.checkNow}
+            </button>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="max-w-4xl w-full mx-auto bg-sidebar-bg p-8 rounded-xl border border-border-color shadow-xl transition-colors">
       <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400 mb-6">
         {isEditing ? copy.editTitle : copy.title}
       </h2>
       <form onSubmit={handleCreate} className="space-y-6">
+        {!isEditing && TEACHER_SUPERVISION_ENABLED && (
+          <fieldset>
+            <legend className="block text-xs uppercase text-text-secondary font-bold mb-2">
+              {supervisionCopy.createModeLabel}
+            </legend>
+            <div className="grid gap-3 md:grid-cols-2">
+              {([
+                ['generated', supervisionCopy.generatedMode, supervisionCopy.generatedModeHint],
+                ['linked', supervisionCopy.linkedMode, supervisionCopy.linkedModeHint],
+              ] as const).map(([mode, label, hint]) => (
+                <label
+                  key={mode}
+                  className={`cursor-pointer rounded-xl border p-4 transition-colors ${creationMode === mode ? 'border-sky-500 bg-sky-50 dark:bg-sky-950/30' : 'border-border-color hover:border-sky-300'}`}
+                >
+                  <span className="flex items-start gap-3">
+                    <input
+                      type="radio"
+                      name="trainer-class-creation-mode"
+                      value={mode}
+                      checked={creationMode === mode}
+                      onChange={() => setCreationMode(mode)}
+                      className="mt-1 h-4 w-4 text-sky-600"
+                    />
+                    <span>
+                      <span className="block font-semibold text-text-primary">{label}</span>
+                      <span className="mt-1 block text-xs leading-5 text-text-secondary">{hint}</span>
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
         <div>
           <label htmlFor="trainer-class-name" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.classNameLabel}</label>
           <input
@@ -345,7 +672,79 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           />
         </div>
 
-        {rootLandscape && (
+        {creationMode === 'linked' && (
+          <div className="space-y-5 rounded-xl border border-sky-200 bg-sky-50/70 p-5 dark:border-sky-900/60 dark:bg-sky-950/20">
+            {isEditingLinked && (
+              <p className="text-sm leading-6 text-text-secondary">{supervisionCopy.linkedEditHint}</p>
+            )}
+            <div>
+              <label htmlFor="trainer-linked-learner-alias" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+                {supervisionCopy.learnerAliasLabel}
+              </label>
+              <input
+                id="trainer-linked-learner-alias"
+                required
+                value={learnerAlias}
+                onChange={(event) => setLearnerAlias(event.target.value)}
+                placeholder={supervisionCopy.learnerAliasPlaceholder}
+                className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary focus:border-sky-500 outline-none"
+              />
+              <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.learnerAliasHint}</p>
+            </div>
+            {!isEditingLinked && (
+              <>
+                <div>
+                  <label htmlFor="trainer-linked-teacher-name" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+                    {supervisionCopy.teacherDisplayNameLabel}
+                  </label>
+                  <input
+                    id="trainer-linked-teacher-name"
+                    required
+                    maxLength={80}
+                    value={teacherDisplayName}
+                    onChange={(event) => setTeacherDisplayName(event.target.value)}
+                    placeholder={supervisionCopy.teacherDisplayNamePlaceholder}
+                    className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary focus:border-sky-500 outline-none"
+                  />
+                  <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.teacherDisplayNameHint}</p>
+                </div>
+                <div>
+                  <label htmlFor="trainer-linked-course-label" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+                    {supervisionCopy.invitationCourseLabel}
+                  </label>
+                  <input
+                    id="trainer-linked-course-label"
+                    required
+                    maxLength={80}
+                    value={invitationCourseLabel}
+                    onChange={(event) => setInvitationCourseLabel(event.target.value)}
+                    placeholder={supervisionCopy.invitationCoursePlaceholder}
+                    className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary focus:border-sky-500 outline-none"
+                  />
+                  <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.invitationCourseHint}</p>
+                </div>
+                <div>
+                  <label htmlFor="trainer-linked-skillpilot-id" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+                    {supervisionCopy.learnerIdLabel}
+                  </label>
+                  <input
+                    id="trainer-linked-skillpilot-id"
+                    required
+                    autoComplete="off"
+                    maxLength={80}
+                    value={existingSkillpilotId}
+                    onChange={(event) => setExistingSkillpilotId(event.target.value)}
+                    placeholder={supervisionCopy.learnerIdPlaceholder}
+                    className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono focus:border-sky-500 outline-none"
+                  />
+                  <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.learnerIdHint}</p>
+                </div>
+              </>
+            )}
+          </div>
+        )}
+
+        {creationMode === 'generated' && rootLandscape && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {effectiveRootFilters.length > 0 && (
               <div>
@@ -390,7 +789,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {creationMode === 'generated' && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="trainer-class-landscape" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.landscapeLabel}</label>
             <select
@@ -458,9 +857,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               </div>
             </div>
           )}
-        </div>
+        </div>}
 
-        {!isEditing && (
+        {!isEditing && creationMode === 'generated' && (
           <div>
             <label htmlFor="trainer-class-students" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.studentsLabel}</label>
             <p className="text-[11px] text-text-secondary mb-2">
@@ -489,7 +888,11 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
             className="px-6 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded font-medium flex items-center gap-2 disabled:opacity-60"
           >
             {isGenerating && <span className="animate-spin">⟳</span>}
-            {isEditing ? copy.submitEdit : copy.submit}
+            {isEditing
+              ? copy.submitEdit
+              : creationMode === 'linked'
+                ? supervisionCopy.createInvitation
+                : copy.submit}
           </button>
         </div>
       </form>

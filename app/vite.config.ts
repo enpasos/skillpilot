@@ -94,6 +94,10 @@ for (const name of PACKAGE_CONSUMER_REPOSITORY_VIEW_MODULES) {
     path.resolve(APP_ROOT, 'src', 'packageConsumer', 'repositoryUnavailableViews.ts'),
   )
 }
+PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.set(
+  path.resolve(APP_ROOT, 'src', 'components', 'LearnerGoalFeedbackAction'),
+  path.resolve(APP_ROOT, 'src', 'packageConsumer', 'learnerGoalFeedbackUnavailable.tsx'),
+)
 
 const stripModuleExtension = (value: string): string => value.replace(/\.(?:[cm]?[jt]sx?)$/u, '')
 const splitModuleSpecifier = (value: string): { path: string; suffix: string } => {
