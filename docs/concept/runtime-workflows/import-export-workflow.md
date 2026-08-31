@@ -61,3 +61,42 @@ The export file is versioned so client-only data can ride along:
 ```
 
 This wrapper keeps the backend contract stable while allowing the frontend to preserve local learning progress.
+
+## Teacher-held local class files
+
+Local trainer classes are a separate portability lane because they contain the
+re-identification mapping between student names and permanent SkillPilot IDs.
+They are not learner-state exports and are never signed by the backend.
+
+New class exports are encrypted entirely in the browser before download:
+
+1. the teacher enters and confirms a unique passphrase of at least fifteen
+   characters; Unicode input is normalized consistently before key derivation;
+2. SkillPilot serializes one validated local `ClassSession` inside a versioned
+   `skillpilot-trainer-class` payload;
+3. PBKDF2-SHA-256 with 600,000 iterations and a fresh 16-byte salt derives an
+   AES-256-GCM key;
+4. AES-GCM uses a fresh 12-byte IV, a 128-bit authentication tag and fixed
+   class-file additional authenticated data; and
+5. only the versioned password envelope is downloaded as a generic
+   `skillpilot-class-YYYY-MM-DD.skillpilot` file. The class name is deliberately
+   absent from the filename.
+
+The envelope has strict, bounded metadata. Algorithm, iteration, version,
+purpose, Base64 encoding, salt, IV, ciphertext and decrypted payload are
+validated before a class can enter browser storage. A recognized encrypted
+envelope never falls back to plaintext parsing. Wrong passwords and changes to
+authenticated encrypted data intentionally produce the same non-technical
+message. Structurally invalid or unsupported envelopes use the generic invalid
+file message without exposing parser or cryptographic internals.
+
+Import still accepts old plaintext `skillpilot-class-*.json` files so existing
+teachers are not locked out. These files pass the same class-session and linked
+membership rejection checks, and the UI explicitly advises exporting them
+again in the protected format. Linked supervision classes remain outside this
+file lane: they use opaque, revocable server memberships and cannot be fully
+exported or imported.
+
+This protection covers downloaded class files at rest. It does not encrypt the
+active browser's local storage, recover forgotten passwords, secure an already
+unlocked device, or replace institutional access and deletion policies.

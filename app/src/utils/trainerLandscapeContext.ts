@@ -206,7 +206,9 @@ export const migrateTrainerClassSession = (session: ClassSession): ClassSession 
   const next: ClassSession = {
     ...session,
     landscapeId: inferredLandscapeId,
-    currentGoalId: undefined,
+  }
+  if (inferredLandscapeId !== session.landscapeId) {
+    next.currentGoalId = undefined
   }
 
   if (isCanonicalGymnasiumLandscapeId(inferredLandscapeId)) {

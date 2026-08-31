@@ -8,6 +8,7 @@ import {
   assertOpenAiPluginReleaseMutationAllowed,
   loadOpenAiPluginReviewFreeze,
   resolveAuthorizedRuntimeExceptionChains,
+  resolveAuthorizedSupplementalFileChains,
   sha256Tree,
   verifyOpenAiPluginReviewFreeze,
 } from "./check_openai_plugin_review_freeze.mjs";
@@ -967,6 +968,89 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295",
       },
     },
+    {
+      id: "2026-08-31-password-protected-trainer-class-export",
+      approvedAt: "2026-08-31",
+      approvedBy: "product-owner",
+      reason:
+        "Protect exported local teacher class rosters and real-name-to-SkillPilot-ID mappings with client-side password encryption.",
+      scope:
+        "In the current first-party Trainer only, replace plaintext local-class downloads with a strictly versioned PBKDF2-SHA-256/AES-256-GCM password envelope, generic filename, password confirmation and non-recoverability guidance; retain bounded legacy plaintext import only as a disclosed migration path, reject downgrade, tampering and linked supervision classes, preserve current class state across current-format roundtrips, and preserve every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+      target: "current-production-first-party-trainer-class-file",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-independent-first-party-trainer-file-protection-no-submitted-openai-contract-or-review-flow-effect",
+      supplementalOnly: true,
+      evidenceFile: {
+        path: "app/scripts/testTrainerClassFileUi.ts",
+        sha256:
+          "5ab65164ffdaa9f42e8de2b4bb7029fce442371fd91105486203dae02eaf488d",
+      },
+      additionalFiles: [
+        {
+          path: "app/package.json",
+          authorizedSha256:
+            "61cb35d26b04e9ff1541713ae7fe8574ce65a660a5ec6d262b662967b65e9f27",
+        },
+        {
+          path: "app/scripts/fixtures/trainerClassFileUi.html",
+          authorizedSha256:
+            "5ef767cabca49daec39eeb74d6e98301f39ab75d1476c0b7d7d579325912e84f",
+        },
+        {
+          path: "app/scripts/fixtures/trainerClassFileUi.tsx",
+          authorizedSha256:
+            "70a50069c24713693d374be337f29b0d9b928406e07604d5a189f2c3d964b137",
+        },
+        {
+          path: "app/src/components/TrainerClassFilePasswordDialog.tsx",
+          authorizedSha256:
+            "3e943665179508e5c55957d4270bc32a8fef0b451e9cedc1ca634d0d571ea253",
+        },
+        {
+          path: "app/src/utils/trainerClassFile.ts",
+          authorizedSha256:
+            "dff80c57aef7009c1294bb58a78b6bd72bdb05565dfadbd789b3ced53aaf8f65",
+        },
+        {
+          path: "app/src/utils/trainerClassFile.test.ts",
+          authorizedSha256:
+            "f6b1b830bb858cbb973f28bfb0410d4df179da9cbb9ffbcf6e89874eab224d68",
+        },
+        {
+          path: "app/src/utils/trainerClassFileCopy.ts",
+          authorizedSha256:
+            "456b7f253362e2d56ceb9061c612e09e387ae05b1cf1bfc47fd8b118b2fe14ea",
+        },
+        {
+          path: "app/src/utils/trainerClassFileCopy.test.ts",
+          authorizedSha256:
+            "d0c958b20c5a0d6026d855351212774be3c17d6d0b3961e08e1eff69723cf719",
+        },
+        {
+          path: "app/src/utils/trainerLandscapeContext.ts",
+          authorizedSha256:
+            "014c47094a89a250d172d93ef93aae7128200c51e21677a345b55fedde806e47",
+        },
+        {
+          path: "app/src/views/TrainerView.tsx",
+          priorAuthorizedSha256:
+            "1d2162e65072870f42a9edf355b1e8082e2c1349dce6b6da2c7578bcab16ec30",
+          authorizedSha256:
+            "5bbe38b12464e4fa128f7299b2a462f791a8f286bff24b9847743877080721ee",
+        },
+        {
+          path: "docs/concept/runtime-workflows/import-export-workflow.md",
+          authorizedSha256:
+            "ab8055fe792b8b2066fa7d41e55fed6067ac5b1be60d4da9886da6bc67daefa5",
+        },
+        {
+          path: "docs/security/data-privacy.md",
+          authorizedSha256:
+            "c8eb88c100e746df3e5b3bee41878088fd7e56f364d7fbc63acf8f67cd96ec2a",
+        },
+      ],
+    },
   ]);
 });
 
@@ -1024,6 +1108,43 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
   assert.throws(
     () => resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, broken),
     /exception chain is discontinuous/u,
+  );
+});
+
+test("supplemental-only review exceptions preserve changed file hash chains", () => {
+  const firstHash = "1".repeat(64);
+  const secondHash = "2".repeat(64);
+  const exceptions = [
+    {
+      id: "first",
+      additionalFiles: [{ path: "app/example.ts", authorizedSha256: firstHash }],
+    },
+    {
+      id: "same-bytes-second-scope",
+      additionalFiles: [{ path: "app/example.ts", authorizedSha256: firstHash }],
+    },
+    {
+      id: "changed-bytes",
+      supplementalOnly: true,
+      additionalFiles: [{
+        path: "app/example.ts",
+        priorAuthorizedSha256: firstHash,
+        authorizedSha256: secondHash,
+      }],
+    },
+  ];
+  const latest = resolveAuthorizedSupplementalFileChains(exceptions);
+  assert.equal(latest.get("app/example.ts")?.authorizedSha256, secondHash);
+  assert.equal(
+    resolveAuthorizedRuntimeExceptionChains([], [exceptions[2]]).size,
+    0,
+  );
+
+  const broken = structuredClone(exceptions);
+  delete broken[2].additionalFiles[0].priorAuthorizedSha256;
+  assert.throws(
+    () => resolveAuthorizedSupplementalFileChains(broken),
+    /supplemental file chain is discontinuous/u,
   );
 });
 

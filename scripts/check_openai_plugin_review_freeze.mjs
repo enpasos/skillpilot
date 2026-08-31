@@ -922,6 +922,89 @@ const expectedAuthorizedRuntimeExceptions = [
         "1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295",
     },
   },
+  {
+    id: "2026-08-31-password-protected-trainer-class-export",
+    approvedAt: "2026-08-31",
+    approvedBy: "product-owner",
+    reason:
+      "Protect exported local teacher class rosters and real-name-to-SkillPilot-ID mappings with client-side password encryption.",
+    scope:
+      "In the current first-party Trainer only, replace plaintext local-class downloads with a strictly versioned PBKDF2-SHA-256/AES-256-GCM password envelope, generic filename, password confirmation and non-recoverability guidance; retain bounded legacy plaintext import only as a disclosed migration path, reject downgrade, tampering and linked supervision classes, preserve current class state across current-format roundtrips, and preserve every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+    target: "current-production-first-party-trainer-class-file",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-independent-first-party-trainer-file-protection-no-submitted-openai-contract-or-review-flow-effect",
+    supplementalOnly: true,
+    evidenceFile: {
+      path: "app/scripts/testTrainerClassFileUi.ts",
+      sha256:
+        "5ab65164ffdaa9f42e8de2b4bb7029fce442371fd91105486203dae02eaf488d",
+    },
+    additionalFiles: [
+      {
+        path: "app/package.json",
+        authorizedSha256:
+          "61cb35d26b04e9ff1541713ae7fe8574ce65a660a5ec6d262b662967b65e9f27",
+      },
+      {
+        path: "app/scripts/fixtures/trainerClassFileUi.html",
+        authorizedSha256:
+          "5ef767cabca49daec39eeb74d6e98301f39ab75d1476c0b7d7d579325912e84f",
+      },
+      {
+        path: "app/scripts/fixtures/trainerClassFileUi.tsx",
+        authorizedSha256:
+          "70a50069c24713693d374be337f29b0d9b928406e07604d5a189f2c3d964b137",
+      },
+      {
+        path: "app/src/components/TrainerClassFilePasswordDialog.tsx",
+        authorizedSha256:
+          "3e943665179508e5c55957d4270bc32a8fef0b451e9cedc1ca634d0d571ea253",
+      },
+      {
+        path: "app/src/utils/trainerClassFile.ts",
+        authorizedSha256:
+          "dff80c57aef7009c1294bb58a78b6bd72bdb05565dfadbd789b3ced53aaf8f65",
+      },
+      {
+        path: "app/src/utils/trainerClassFile.test.ts",
+        authorizedSha256:
+          "f6b1b830bb858cbb973f28bfb0410d4df179da9cbb9ffbcf6e89874eab224d68",
+      },
+      {
+        path: "app/src/utils/trainerClassFileCopy.ts",
+        authorizedSha256:
+          "456b7f253362e2d56ceb9061c612e09e387ae05b1cf1bfc47fd8b118b2fe14ea",
+      },
+      {
+        path: "app/src/utils/trainerClassFileCopy.test.ts",
+        authorizedSha256:
+          "d0c958b20c5a0d6026d855351212774be3c17d6d0b3961e08e1eff69723cf719",
+      },
+      {
+        path: "app/src/utils/trainerLandscapeContext.ts",
+        authorizedSha256:
+          "014c47094a89a250d172d93ef93aae7128200c51e21677a345b55fedde806e47",
+      },
+      {
+        path: "app/src/views/TrainerView.tsx",
+        priorAuthorizedSha256:
+          "1d2162e65072870f42a9edf355b1e8082e2c1349dce6b6da2c7578bcab16ec30",
+        authorizedSha256:
+          "5bbe38b12464e4fa128f7299b2a462f791a8f286bff24b9847743877080721ee",
+      },
+      {
+        path: "docs/concept/runtime-workflows/import-export-workflow.md",
+        authorizedSha256:
+          "ab8055fe792b8b2066fa7d41e55fed6067ac5b1be60d4da9886da6bc67daefa5",
+      },
+      {
+        path: "docs/security/data-privacy.md",
+        authorizedSha256:
+          "c8eb88c100e746df3e5b3bee41878088fd7e56f364d7fbc63acf8f67cd96ec2a",
+      },
+    ],
+  },
 ];
 
 const expectedAuthorizedCopyClarifications = [
@@ -1023,6 +1106,24 @@ export function resolveAuthorizedRuntimeExceptionChains(
     exceptionIds.add(exception.id);
 
     const protectedFile = exception.protectedFile;
+    if (!protectedFile) {
+      assert.equal(
+        exception.supplementalOnly,
+        true,
+        `Authorized runtime exception lacks a protected file without an explicit supplemental-only boundary: ${exception.id}`,
+      );
+      assert.equal(
+        Boolean(exception.additionalFile) || (exception.additionalFiles?.length ?? 0) > 0,
+        true,
+        `Supplemental-only runtime exception lacks pinned files: ${exception.id}`,
+      );
+      continue;
+    }
+    assert.notEqual(
+      exception.supplementalOnly,
+      true,
+      `Authorized runtime exception with a protected file cannot be supplemental-only: ${exception.id}`,
+    );
     const submittedFile = protectedByPath.get(protectedFile?.path);
     assert.ok(
       submittedFile,
@@ -1054,6 +1155,57 @@ export function resolveAuthorizedRuntimeExceptionChains(
       );
     }
     latestByPath.set(protectedFile.path, exception);
+  }
+
+  return latestByPath;
+}
+
+export function resolveAuthorizedSupplementalFileChains(authorizedRuntimeExceptions) {
+  assert.equal(
+    Array.isArray(authorizedRuntimeExceptions),
+    true,
+    "Authorized runtime exceptions must be an array.",
+  );
+  const latestByPath = new Map();
+
+  for (const exception of authorizedRuntimeExceptions) {
+    const files = [
+      ...(exception.additionalFile ? [exception.additionalFile] : []),
+      ...(exception.additionalFiles ?? []),
+    ];
+    for (const file of files) {
+      assert.equal(
+        typeof file.path,
+        "string",
+        `Authorized supplemental file lacks a path: ${exception.id}`,
+      );
+      assert.match(
+        file.authorizedSha256,
+        /^[0-9a-f]{64}$/u,
+        `Authorized supplemental file has an invalid digest: ${file.path}`,
+      );
+      const prior = latestByPath.get(file.path);
+      if (prior && prior.authorizedSha256 !== file.authorizedSha256) {
+        assert.equal(
+          file.priorAuthorizedSha256,
+          prior.authorizedSha256,
+          `Authorized supplemental file chain is discontinuous: ${file.path}`,
+        );
+      } else if (prior && Object.hasOwn(file, "priorAuthorizedSha256")) {
+        assert.equal(
+          file.priorAuthorizedSha256,
+          prior.authorizedSha256,
+          `Authorized supplemental file repeats the wrong prior digest: ${file.path}`,
+        );
+      } else if (!prior) {
+        assert.equal(
+          Object.hasOwn(file, "priorAuthorizedSha256"),
+          false,
+          `First authorized supplemental file entry must not claim a prior digest: ${file.path}`,
+        );
+      }
+      latestByPath.set(file.path, file);
+    }
   }
 
   return latestByPath;
@@ -1151,6 +1303,9 @@ export function verifyOpenAiPluginReviewFreeze({
     freeze.protectedFiles,
     expectedAuthorizedRuntimeExceptions,
   );
+  const latestAuthorizedSupplementalFileByPath = resolveAuthorizedSupplementalFileChains(
+    expectedAuthorizedRuntimeExceptions,
+  );
 
   for (const exception of expectedAuthorizedRuntimeExceptions) {
     let supplementalFileCount = 0;
@@ -1167,18 +1322,18 @@ export function verifyOpenAiPluginReviewFreeze({
       ...(exception.additionalFile ? [exception.additionalFile] : []),
       ...(exception.additionalFiles ?? []),
     ];
-    for (const additionalFile of additionalFiles) {
-      supplementalFileCount += 1;
-      assertFileSha256(
-        safeRepositoryPath(repositoryRoot, additionalFile.path),
-        additionalFile.authorizedSha256,
-        `Authorized review exception changed: ${additionalFile.path}`,
-      );
-    }
+    supplementalFileCount += additionalFiles.length;
     assert.equal(
       supplementalFileCount > 0,
       true,
       `Authorized review exception lacks pinned supplemental evidence: ${exception.id}`,
+    );
+  }
+  for (const [path, file] of latestAuthorizedSupplementalFileByPath) {
+    assertFileSha256(
+      safeRepositoryPath(repositoryRoot, path),
+      file.authorizedSha256,
+      `Authorized review exception changed: ${path}`,
     );
   }
 

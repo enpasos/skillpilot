@@ -75,7 +75,13 @@ or ChatGPT URL.
 For teacher-led usage, the teacher's browser or institution-controlled storage
 may additionally hold class rosters and the mapping between real names and
 SkillPilot IDs. That mapping is intentionally not stored centrally by
-SkillPilot.
+SkillPilot. A downloaded local-class export is therefore always protected in
+the browser with a teacher-chosen password before it leaves the application.
+The versioned file uses PBKDF2-SHA-256 and authenticated AES-256-GCM; SkillPilot
+does not store or recover the password. Older plaintext JSON class exports can
+still be imported for migration, but the UI identifies them as unprotected and
+new exports are never written as plaintext. Linked supervision classes use
+opaque memberships and cannot be exported through this full-class file path.
 
 ### B. Persistent Learning State in the SkillPilot Backend
 
@@ -368,7 +374,9 @@ remain responsible for preserving access keys and identity mappings.
 
 - Learner export/import can carry learning state to another browser context.
 - Teacher-held name-to-ID mappings must be protected outside the SkillPilot
-  backend.
+  backend. SkillPilot's local-class export encrypts downloaded files, but the
+  institution remains responsible for password handling, access-controlled
+  storage and deletion of obsolete files.
 - A password-protected SkillPilot ID file lets learners retain the ID without
   storing it unencrypted.
 - Logging out clears the active browser login but does not delete downloaded
@@ -385,6 +393,11 @@ remain responsible for preserving access keys and identity mappings.
 - OAuth access and refresh tokens are also bearer credentials. They must be
   protected at rest and in transit and must never be copied into prompts or
   diagnostics.
+- Password protection of a downloaded class file does not encrypt the active
+  `skillpilot_classes` browser storage, secure an already unlocked browser, or
+  make a weak/shared password safe. It protects the exported file at rest and
+  detects tampering; it is not a general device-security or GDPR-compliance
+  guarantee.
 - Learners can type or upload personal and sensitive information directly to the
   AI provider. Product guidance must tell them not to do so.
 - The provider processes conversation content according to its own operating,
