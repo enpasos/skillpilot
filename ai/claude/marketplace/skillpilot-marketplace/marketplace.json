@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "skillpilot-marketplace",
+  "description": "Von enpasos bereitgestellter Marketplace für SkillPilot-Plugins",
+  "owner": {
+    "name": "enpasos GmbH",
+    "email": "support@skillpilot.com",
+    "url": "https://skillpilot.com"
+  },
+  "plugins": [
+    {
+      "name": "skillpilot-coach-v1",
+      "displayName": "SkillPilot Coach v1",
+      "source": "./plugins/skillpilot-coach-v1",
+      "description": "Lehrplanorientierte Lernbegleitung mit dem SkillPilot Claude Coach",
+      "strict": true
+    }
+  ]
+}

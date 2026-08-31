@@ -1,0 +1,38 @@
+name: Validate marketplace
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Install the pinned Claude validator
+        run: npm install --global @anthropic-ai/claude-code@2.1.241
+      - name: Verify immutable direct-install artifact parity
+        run: |
+          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.0.2.plugin"
+          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.0.2"
+          curl --proto '=https' --tlsv1.2 --fail --silent --show-error \
+            --output "${artifact}" \
+            "https://skillpilot.com/api/public/claude/plugins/skillpilot-coach-v1/1.0.2/sha256-9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d/skillpilot-coach-v1-1.0.2.plugin"
+          printf '%s  %s\n' \
+            '9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d' \
+            "${artifact}" | sha256sum --check --strict
+          mkdir "${extracted}"
+          unzip -q "${artifact}" -d "${extracted}"
+          diff --recursive --brief --no-dereference \
+            "${extracted}" ./plugins/skillpilot-coach-v1
+      - name: Validate marketplace and plugin
+        run: |
+          claude plugin validate --strict .
+          claude plugin validate --strict ./plugins/skillpilot-coach-v1

@@ -1,0 +1,53 @@
+name: Claude personal marketplace
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/claude-marketplace.yml"
+      - "LICENSE"
+      - "ai/claude/marketplace/**"
+      - "ai/claude/plugin/skillpilot-coach-v1/**"
+      - "backend/src/main/resources/claude-plugin-publication/**"
+      - "docs/deploy/claude-personal-marketplace-release.md"
+      - "scripts/claude_direct_install_beta_release.mjs"
+      - "scripts/claude_direct_install_beta_release.test.mjs"
+      - "scripts/claude_marketplace_release.mjs"
+      - "scripts/claude_marketplace_release.test.mjs"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/claude-marketplace.yml"
+      - "LICENSE"
+      - "ai/claude/marketplace/**"
+      - "ai/claude/plugin/skillpilot-coach-v1/**"
+      - "backend/src/main/resources/claude-plugin-publication/**"
+      - "docs/deploy/claude-personal-marketplace-release.md"
+      - "scripts/claude_direct_install_beta_release.mjs"
+      - "scripts/claude_direct_install_beta_release.test.mjs"
+      - "scripts/claude_marketplace_release.mjs"
+      - "scripts/claude_marketplace_release.test.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - name: Install the pinned Claude validator
+        run: npm install --global @anthropic-ai/claude-code@2.1.241
+      - name: Verify existing direct-install candidate
+        run: node scripts/claude_direct_install_beta_release.mjs verify
+      - name: Test and reproduce marketplace export
+        run: |
+          node --test scripts/claude_marketplace_release.test.mjs
+          node scripts/claude_marketplace_release.mjs check
+          node scripts/claude_marketplace_release.mjs prepare
+          node scripts/claude_marketplace_release.mjs validate-cli
+          node scripts/claude_marketplace_release.mjs smoke-local
+      - name: Verify submitted OpenAI V1 review freeze
+        run: node scripts/check_openai_plugin_review_freeze.mjs
