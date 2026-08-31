@@ -757,8 +757,10 @@ const expectedAuthorizedCopyClarifications = [
       },
       {
         path: "app/scripts/testRootRoutePolicy.ts",
-        sha256:
+        priorSha256:
           "b9d399e5bf42a8b8ba4a48cffd7d89edeb16bde52b7d89a5e9747ee8e2d666e4",
+        sha256:
+          "d0699da8dacafaac489017ed49ab04fb1d5e8b66f38f30b4f03c25c5d49110ad",
       },
       {
         path: "app/src/utils/coachProviderMatrixCopy.ts",
