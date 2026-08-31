@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "lane": "personal_git_marketplace",
+  "target": {
+    "repository": "enpasos/skillpilot-claude-marketplace",
+    "repositoryUrl": "https://github.com/enpasos/skillpilot-claude-marketplace",
+    "defaultBranch": "main",
+    "marketplaceName": "skillpilot-marketplace"
+  },
+  "source": {
+    "templateRoot": "ai/claude/marketplace/skillpilot-marketplace",
+    "pluginRoot": "ai/claude/plugin/skillpilot-coach-v1",
+    "licenseFile": "LICENSE",
+    "publicationFiles": [
+      ".claude-plugin/plugin.json",
+      ".mcp.json",
+      "README.md",
+      "SETUP.md",
+      "skills/skillpilot-coach-v1/SKILL.md",
+      "skills/skillpilot-coach-v1/references/coaching-policy.md"
+    ]
+  },
+  "plugin": {
+    "name": "skillpilot-coach-v1",
+    "source": "./plugins/skillpilot-coach-v1",
+    "version": "1.0.2",
+    "directInstallSha256": "9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d"
+  },
+  "activation": {
+    "state": "prepared_not_published",
+    "firstPartyUiRoute": "controlled_direct_install_beta",
+    "marketplaceUiSwitchAllowed": false,
+    "evidence": [
+      {
+        "id": "public-repository-default-branch",
+        "status": "pending",
+        "revision": null,
+        "treeSha256": null,
+        "candidateVersion": null,
+        "candidateSha256": null,
+        "verifiedAt": null,
+        "evidenceRef": null
+      },
+      {
+        "id": "clean-account-marketplace-install",
+        "status": "pending",
+        "revision": null,
+        "treeSha256": null,
+        "candidateVersion": null,
+        "candidateSha256": null,
+        "verifiedAt": null,
+        "evidenceRef": null
+      },
+      {
+        "id": "uploaded-plugin-migration-and-marketplace-refresh",
+        "status": "pending",
+        "revision": null,
+        "treeSha256": null,
+        "candidateVersion": null,
+        "candidateSha256": null,
+        "verifiedAt": null,
+        "evidenceRef": null
+      }
+    ]
+  }
+}

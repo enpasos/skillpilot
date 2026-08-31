@@ -232,7 +232,7 @@ Submission, review status and publication are external Anthropic actions. Do
 not mark this repository `PUBLISHED` until the actual directory state has been
 verified and recorded by the Product Owner.
 
-## 10. Web-only plugin pilot and public-distribution qualification
+## 10. Plugin pilot, personal marketplace and curated publication
 
 The package at `ai/claude/plugin/skillpilot-coach-v1/` bundles the reusable SkillPilot coaching
 Skill with one declaration for the same remote connector; the connector remains
@@ -242,21 +242,28 @@ support. Each additional surface requires separate acceptance evidence and a
 later reviewed release before SkillPilot advertises it.
 
 The working direct-install pilot proves the paid Claude Web product flow, not
-the reach of Anthropic's official distribution. Anthropic currently documents
-the public Plugins Directory for Cowork and Claude Code, which remain outside
-this Web-only v1 scope. Submission stays blocked until Anthropic explicitly
-confirms that official plugin distribution reaches eligible paid Claude Web
-chat and that evidence is approved for the exact candidate under
-`anthropic-paid-web-distribution-confirmation`.
+an Anthropic-curated listing. Anthropic now documents repository-backed
+personal marketplaces for paid Claude accounts, including installation in
+Claude Web. That technical availability does not expand SkillPilot's tested
+support scope and does not replace exact-candidate acceptance.
+
+SkillPilot's separate personal Git marketplace lane is specified in
+[`claude-personal-marketplace-release.md`](claude-personal-marketplace-release.md).
+It exports only the six reviewed package files into a small standalone
+repository, binds them to the existing version and direct-install SHA-256, and
+requires local, strict CLI, remote-repository, clean-account installation and
+update verification. While its activation state is
+`prepared_not_published`, the current direct-install guide remains the
+first-party route.
 
 The Connectors Directory submission in Section 9 remains an independent
 connector-only route with its own Team/Enterprise publisher gate. It neither
-contains the coaching Skill nor gates plugin submission, and the two routes may
-be submitted in either order. Plugin submission through the Anthropic Console
-requires the documented Console organization role, not a Team or Enterprise
-Claude plan. The published plugin is not available on Claude Free. SkillPilot
-claims neither native mobile-plugin support nor public Claude Code support for
-v1 and targets adults aged 18 or older.
+contains the coaching Skill nor gates personal-marketplace publication, and
+the two routes may proceed in either order. A later Anthropic-curated plugin
+submission remains a third, separate external action. The plugin is not
+available on Claude Free. SkillPilot claims neither native mobile-plugin
+installation nor public Claude Code support for v1 and targets adults aged 18
+or older.
 
 Before submitting the plugin:
 
@@ -264,23 +271,24 @@ Before submitting the plugin:
    `node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs`;
 2. run `claude plugin validate ai/claude/plugin/skillpilot-coach-v1 --strict`
    with the current Claude CLI;
-3. test direct upload/install, OAuth, first-party start, all twelve tools and both MCP
+3. run `node --test scripts/claude_marketplace_release.test.mjs` and
+   `node scripts/claude_marketplace_release.mjs check`;
+4. test direct upload/install, OAuth, first-party start, all twelve tools and both MCP
    Apps in paid Claude Web chat;
-4. verify that the plugin exposes exactly one Skill and one SkillPilot connector
+5. verify that the plugin exposes exactly one Skill and one SkillPilot connector
    and that both MCP Apps are available through that connector;
-5. verify that each new learner session still starts only at
+6. verify that each new learner session still starts only at
    `https://skillpilot.com/`, while OAuth may remain connected;
-6. verify that plugin and Directory installations referencing
+7. verify that plugin and Directory installations referencing
    `https://mcp-claude-v1.skillpilot.com/mcp` may coexist while Claude exposes
    one SkillPilot tool set for the shared server, and that no additional manual
    custom connector is configured for that same URL;
-7. publish the plugin source in the approved public GitHub repository and
+8. publish the generated plugin source in the approved public GitHub repository and
    confirm that the submitted repository path contains no credentials, learner
    sessions, learner data or protected answers; and
-8. obtain explicit Anthropic confirmation that official plugin distribution
-   reaches eligible paid Claude Web chat; direct-install success is not that
-   confirmation; and
-9. only then submit that public GitHub source through the Anthropic Console plugin
+9. verify repository installation, connector OAuth, first-party start and the
+   supported learning flow against the exact public revision; and
+10. only then, if an Anthropic-curated listing is still intended, submit that public GitHub source through the Anthropic Console plugin
    workflow as a Developer, Admin or Owner of the submitting Console
    organization, with its own sanitized evidence.
 
@@ -291,8 +299,9 @@ and the plugin's own SemVer policy.
 
 Authoritative plugin references:
 
-- [Submit a plugin](https://claude.com/docs/plugins/submit)
-- [Plugin overview and documented surfaces](https://claude.com/docs/plugins/overview)
+- [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
+- [Create and distribute a plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces)
+- [Discover and install plugins](https://code.claude.com/docs/en/discover-plugins)
 
 Compatible Skill-only improvements increment the plugin SemVer independently.
 A breaking MCP, OAuth, identity or state contract still requires a separately
