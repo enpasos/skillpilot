@@ -43,6 +43,11 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 - [Feynman Technique for Learning](didactic/feynman-rules.md)
 - [Frontier Goal Selection Strategies & Autopilot](didactic/frontier-goal-selection-strategies-autopilot.md)
+- [Curriculum-Zeitachse, Pufferplanung und Soll-Ist-Lerntempo](didactic/curriculum-time-axis-and-pacing.md)
+  Versionierte Zeitplanung als getrennte Ausführungsebene mit
+  Unterrichtskalender, Clusterblöcken, datierten Meilensteinen, Puffer,
+  Ist-/Soll-Tacho, belastbarer Achievement-Historie und einer Ein-Seiten-Sicht
+  für Lehrkraftplan, Unterrichts-IST und Klassenlernstand.
 - [Learning Velocity](didactic/learning-velocity.md)
 
 ## Runtime Workflows
