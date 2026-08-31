@@ -2,7 +2,7 @@ import { goalBookDefinitionById } from './goalBookPublicationRegistry'
 
 export const GOAL_BOOK_FEEDBACK_SCHEMA_URL =
   'https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json'
-export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION = '2026-08-30.1' as const
+export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION = '2026-08-31.1' as const
 export const GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_LOCALES = ['de', 'en'] as const
 export const GOAL_BOOK_FEEDBACK_CONTEXT_ENDPOINT = '/api/public/goal-feedback/v1/context'
 export const GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT = '/api/public/goal-feedback/v1/submissions'
@@ -12,6 +12,7 @@ const SAFE_EDITION = /^[A-Za-z0-9][A-Za-z0-9._:+-]{0,199}$/u
 const SAFE_SHA256 = /^sha256:[0-9a-f]{64}$/u
 const SAFE_LOCALE = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/u
 const SAFE_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u
+const SAFE_VISUALIZATION_PATH = /^\/api\/public\/goal-feedback\/v1\/visualizations\/[0-9a-f]{64}$/u
 const RFC3339_DATE_TIME = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,9})?(?:Z|([+-])(\d{2}):(\d{2}))$/u
 
 export const GOAL_BOOK_FEEDBACK_CATEGORIES = [
@@ -70,6 +71,11 @@ export interface GoalBookFeedbackResolvedContext {
     title: string
     description: string
     breadcrumbs: string[]
+    visualization: {
+      title: string
+      url: string
+      altText: string
+    } | null
   }
   submissionEndpoint: typeof GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT
 }
@@ -120,6 +126,17 @@ const exactKeys = (value: Record<string, unknown>, expected: readonly string[]):
   const actual = Object.keys(value).sort()
   const wanted = [...expected].sort()
   return actual.length === wanted.length && actual.every((key, index) => key === wanted[index])
+}
+
+const isSafeVisualizationPath = (value: string): boolean => {
+  if (!SAFE_VISUALIZATION_PATH.test(value) || value.includes('%') || value.includes('\\')) return false
+  try {
+    const base = new URL('https://skillpilot.invalid')
+    const resolved = new URL(value, base)
+    return resolved.origin === base.origin && resolved.pathname === value && !resolved.search && !resolved.hash
+  } catch {
+    return false
+  }
 }
 
 const isRfc3339DateTime = (value: unknown): value is string => {
@@ -229,6 +246,21 @@ export const parseGoalBookFeedbackResolvedContext = (
   if (!nonBlank(goal.title, 1_000) || !nonBlank(goal.description, 8_000)) return null
   if (!Array.isArray(goal.breadcrumbs)
     || !goal.breadcrumbs.every((item) => nonBlank(item, 1_000))) return null
+  let visualization: GoalBookFeedbackResolvedContext['goal']['visualization'] = null
+  if (goal.visualization !== undefined && goal.visualization !== null) {
+    const candidate = record(goal.visualization)
+    if (!candidate
+      || !exactKeys(candidate, ['title', 'url', 'altText'])
+      || !nonBlank(candidate.title, 1_000)
+      || !nonBlank(candidate.url, 2_000)
+      || !isSafeVisualizationPath(candidate.url)
+      || !nonBlank(candidate.altText, 4_000)) return null
+    visualization = {
+      title: candidate.title,
+      url: candidate.url,
+      altText: candidate.altText,
+    }
+  }
   return {
     schemaVersion: 1,
     context: context as unknown as GoalBookFeedbackContext,
@@ -236,6 +268,7 @@ export const parseGoalBookFeedbackResolvedContext = (
       title: goal.title,
       description: goal.description,
       breadcrumbs: [...goal.breadcrumbs],
+      visualization,
     },
     submissionEndpoint: GOAL_BOOK_FEEDBACK_SUBMISSION_ENDPOINT,
   }

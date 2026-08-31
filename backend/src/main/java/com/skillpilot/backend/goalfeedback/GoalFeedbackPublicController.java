@@ -1,9 +1,10 @@
 package com.skillpilot.backend.goalfeedback;
 
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.LinkBinding;
-import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.ResolvedContext;
+import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.PublicResolvedContext;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.SubmissionReceipt;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import org.springframework.http.CacheControl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,11 @@ public class GoalFeedbackPublicController {
     private static final Pattern SAFE_ID = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._:+-]{0,199}");
     private static final Pattern SHA256 = Pattern.compile("sha256:[0-9a-f]{64}");
     private static final Pattern PAGE = Pattern.compile("[1-9][0-9]{0,3}");
+    private static final Pattern SHA256_HEX = Pattern.compile("[0-9a-f]{64}");
+    private static final CacheControl VERSIONED_IMAGE_CACHE = CacheControl
+            .maxAge(365, TimeUnit.DAYS)
+            .cachePublic()
+            .immutable();
 
     private final GoalFeedbackPublicationRegistry publications;
     private final GoalFeedbackSubmissionService submissions;
@@ -44,7 +51,7 @@ public class GoalFeedbackPublicController {
     }
 
     @GetMapping(path = "/context", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResolvedContext> context(@RequestParam MultiValueMap<String, String> parameters) {
+    public ResponseEntity<PublicResolvedContext> context(@RequestParam MultiValueMap<String, String> parameters) {
         if (!parameters.keySet().equals(LINK_FIELDS)
                 || LINK_FIELDS.stream().anyMatch(key -> parameters.get(key) == null || parameters.get(key).size() != 1)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Exactly seven context parameters are required");
@@ -65,7 +72,7 @@ public class GoalFeedbackPublicController {
                 || !PAGE.matcher(page).matches()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid context parameter");
         }
-        ResolvedContext resolved = publications.resolve(new LinkBinding(
+        PublicResolvedContext resolved = publications.resolvePublic(new LinkBinding(
                         bookId,
                         edition,
                         goalId,
@@ -77,6 +84,23 @@ public class GoalFeedbackPublicController {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
                 .body(resolved);
+    }
+
+    @GetMapping(path = "/visualizations/{digest}")
+    public ResponseEntity<byte[]> visualization(@PathVariable String digest) {
+        if (!SHA256_HEX.matcher(digest).matches()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Published visualization not found");
+        }
+        GoalFeedbackPublicationRegistry.VisualizationAsset asset = publications
+                .resolvePublicVisualization(digest)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Published visualization not found"));
+        return ResponseEntity.ok()
+                .cacheControl(VERSIONED_IMAGE_CACHE)
+                .eTag('"' + asset.digest() + '"')
+                .contentType(MediaType.parseMediaType(asset.mediaType()))
+                .body(asset.bytes());
     }
 
     @PostMapping(

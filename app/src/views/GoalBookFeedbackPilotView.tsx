@@ -42,7 +42,7 @@ const copy = {
     back: 'Zurück zum Lernzielbuch',
     eyebrow: 'Lernziel-Feedback',
     title: 'Kritik strukturiert einreichen',
-    introduction: 'Die Rückmeldung wird exakt an dieses Lernziel und diese Buchfassung gebunden. Sie wird zentral zwischengespeichert und darf erst nach einer gesonderten Freigabe durch den Betreiber in einer Codex-Sitzung automatisiert und kritisch geprüft werden.',
+    introduction: 'Hier kannst du Hinweise zum Text, zur Einordnung oder zum Bild dieses Lernziels geben. Deine Rückmeldung bleibt genau mit diesem Lernziel und dieser Buchfassung verbunden.',
     loading: 'Die geprüfte Lernzielbindung wird geladen …',
     invalidTitle: 'Feedbacklink nicht gültig',
     invalidText: 'Die Lernziel-ID, Seite oder Buchfassung konnte nicht eindeutig geprüft werden. Bitte öffne den Feedbacklink erneut direkt beim gewünschten Lernziel.',
@@ -51,10 +51,11 @@ const copy = {
     goalId: 'Lernziel-ID',
     edition: 'Buchausgabe',
     page: 'Seite',
+    imageUnavailable: 'Das Lernzielbild konnte nicht geladen werden. Du kannst trotzdem Feedback dazu geben.',
     category: 'Art der Rückmeldung',
     categoryPlaceholder: 'Bitte auswählen',
     observation: 'Was ist dir konkret aufgefallen?',
-    observationHint: 'Beschreibe möglichst genau, was fachlich, sprachlich oder in der Einordnung nicht passt.',
+    observationHint: 'Beschreibe möglichst genau, was am Inhalt, Text, Bild oder an der Einordnung nicht passt.',
     evidence: 'Woran machst du das fest? (optional)',
     evidenceHint: 'Zum Beispiel ein Gegenbeispiel, eine missverständliche Stelle oder eine beobachtete Folge.',
     improvement: 'Wie könnte es besser sein? (optional)',
@@ -62,39 +63,34 @@ const copy = {
     sourceHint: 'Dokumenttitel, Link, Seite oder Abschnitt. Links werden nicht automatisch geöffnet.',
     role: 'Perspektive (optional)',
     rolePlaceholder: 'Keine Angabe',
-    automated: 'Ich verstehe, dass Codex diese Rückmeldung nach gesonderter Freigabe durch den Betreiber automatisiert vorsortieren und prüfen darf. Eine Einsendung ändert das Curriculum nicht automatisch.',
+    automated: 'Ich verstehe, dass die Prüfung technisch unterstützt werden kann. Über Änderungen entscheidet immer eine fachlich verantwortliche Person.',
     send: 'Feedback verbindlich absenden',
     sending: 'Feedback wird gespeichert …',
     submitError: 'Das Feedback konnte nicht gespeichert werden. Es bleibt im Formular erhalten; bitte versuche es später erneut.',
-    successTitle: 'Feedback wurde zentral gespeichert',
-    successText: 'Vielen Dank. Nach gesonderter Freigabe durch den Betreiber kann die Rückmeldung digestgebunden lokal übernommen und in Codex kritisch geprüft werden.',
+    successTitle: 'Feedback wurde gespeichert',
+    successText: 'Vielen Dank. Deine Rückmeldung ist eingegangen und wird vor einer möglichen Änderung fachlich geprüft.',
     receipt: 'Feedback-ID',
-    noPersonalData: 'Bitte keine personenbezogenen Daten, Lernenden-IDs, Chattexte oder Geheimnisse eingeben. Es sind keine Anhänge möglich.',
-    storageNotice: 'Speicherweg: Das Feedback liegt zunächst im aktiven Produktionseingang. Erst nachdem eine digestgebundene lokale Kopie vollständig geschrieben und geprüft wurde, darf Codex den Inhalt dort löschen. Ohne erfolgreiche Übernahme wird der Inhalt nach 30 Tagen beim nächsten täglichen Bereinigungslauf entfernt; im laufenden Betrieb liegt die Obergrenze damit bei 31 Tagen.',
-    privacyNoticeTitle: 'Datenschutzhinweis für Lernziel-Feedback',
-    privacyNoticeDate: 'Stand: 30. August 2026',
+    noPersonalData: 'Bitte beschreibe nur das Lernziel. Gib keine Namen, Lernenden-IDs, Chattexte oder andere personenbezogene oder vertrauliche Angaben ein.',
+    privacyDetailsSummary: 'Datenschutzdetails anzeigen',
+    privacyNoticeTitle: 'Datenschutz für Lernziel-Feedback',
+    privacyNoticeDate: 'Stand: 31. August 2026',
     privacyNoticeVersion: 'Hinweisversion',
-    privacyNoticeIntro: 'Verantwortlich ist die enpasos - Enterprise Patterns & Solutions GmbH. Die Verarbeitung erfolgt nur für die Prüfung und mögliche Verbesserung der veröffentlichten Lernziele auf Grundlage deiner freiwilligen Einwilligung.',
+    privacyNoticeIntro: 'Verantwortlich ist die enpasos - Enterprise Patterns & Solutions GmbH. Wir verarbeiten deine freiwilligen Angaben ausschließlich, um das angezeigte Lernziel zu prüfen und gegebenenfalls zu verbessern.',
     privacyNoticeItems: [
-      'Gespeichert werden die freiwilligen Formularangaben, die gewählte Perspektive, eine zufällige Einsende-ID, Version und Sprache dieses Hinweises sowie die serverseitig bestätigte Lernziel-, Seiten- und Buchbindung. Es werden keine Anhänge, SkillPilot-IDs oder Chatverläufe angefordert.',
-      'Der Inhalt wird zentral im geschützten Produktionseingang gespeichert und darf in eine zugriffsbeschränkte lokale Codex-Entwicklungsablage übertragen werden. Erst nach einer gesonderten Freigabe durch den Betreiber darf eine Codex-Sitzung die lokale Rohdatei lesen; dabei wird der Inhalt durch den von enpasos eingesetzten OpenAI-Codex-Dienst verarbeitet.',
-      'Codex behandelt den Text als nicht vertrauenswürdige externe Kritik, prüft Behauptungen gegen unabhängige Belege und ändert das Curriculum nie automatisch. Eine fachliche Freigabe bleibt erforderlich.',
-      'Nach vollständig geprüfter lokaler Übernahme wird der Inhalt in der aktiven Produktionsdatenbank digestgebunden gelöscht. Nicht übernommener Inhalt und der Inhalt gestrandeter Transfers werden nach 30 Tagen beim nächsten täglichen Bereinigungslauf entfernt; im laufenden Betrieb beträgt die maximale Aufbewahrung 31 Tage. Auf Produktion kann ein inhaltsfreier Auditbeleg aus ID, Digest, Anzahl und Zeitpunkten bestehen bleiben.',
-      'Die lokale Rohdatenkopie bleibt bis zum Abschluss der kritischen Prüfung und einer ausdrücklich beauftragten Verbesserung erhalten und wird anschließend durch den Betreiber entfernt. Bei der Verarbeitung können außerdem inhaltsführende Codex-Sitzungs- und Tool-Protokolle entstehen. Das Entfernen der lokalen Rohdatenkopie löscht diese Protokolle nicht automatisch; für sie gelten die Aufbewahrungs- und Löschkontrollen des eingesetzten OpenAI-Codex-Dienstes.',
-      'Eine Löschung aus den aktiven Systemen schreibt PostgreSQL-WAL oder bereits vorhandene technische Sicherungskopien nicht einzeln um. Ob und wie lange solche Kopien fortbestehen, richtet sich nach der separat betriebenen Infrastruktur; dieser Hinweis sagt dafür keine kürzere Löschfrist zu.',
-      'Du kannst deine Einwilligung jederzeit für die Zukunft widerrufen sowie Auskunft oder Löschung anfragen. Nenne dafür möglichst die angezeigte Feedback-ID. Gesetzliche Rechte und zwingende Aufbewahrungspflichten bleiben unberührt.',
+      'Gespeichert werden die Formularangaben, die gewählte Perspektive, eine zufällige Feedback-ID sowie die Zuordnung zu Lernziel, Buchausgabe und Seite. Anhänge, SkillPilot-IDs und Chatverläufe werden nicht angefordert.',
+      'Unbearbeitetes Feedback wird im laufenden Betrieb spätestens nach 31 Tagen gelöscht. Nach Beginn einer Prüfung wird es nur so lange aufbewahrt, wie es für die Prüfung und eine ausdrücklich beauftragte Verbesserung erforderlich ist.',
+      'Bei der Prüfung können beauftragte technische Dienste und automatisierte Assistenz eingesetzt werden. Änderungen am Curriculum benötigen immer eine fachliche Freigabe.',
+      'Du kannst deine Einwilligung jederzeit für die Zukunft widerrufen sowie Auskunft oder Löschung anfragen. Nenne möglichst die angezeigte Feedback-ID. Gesetzliche Pflichten bleiben unberührt. Bestehende technische Sicherungskopien werden durch eine Löschung aus aktiven Systemen nicht einzeln verändert.',
     ],
     privacyNoticePolicy: 'Allgemeine Datenschutzerklärung',
     privacyNoticeContact: 'Datenschutzkontakt',
-    privacyConsentBefore: 'Ich willige in die Verarbeitung gemäß dem ',
-    privacyConsentLink: 'Datenschutzhinweis für Lernziel-Feedback',
-    privacyConsentAfter: ' ein. Die Einwilligung ist freiwillig und kann für die Zukunft widerrufen werden.',
+    privacyConsent: 'Ich willige in die Verarbeitung meiner Angaben zur Prüfung und Verbesserung dieses Lernziels ein. Die Einwilligung ist freiwillig und kann für die Zukunft widerrufen werden.',
   },
   en: {
     back: 'Back to the learning goal book',
     eyebrow: 'Learning-goal feedback',
     title: 'Submit structured criticism',
-    introduction: 'The feedback is bound to this exact learning goal and book edition. It is held centrally and may be reviewed automatically and critically in a Codex session only after separate authorization by the operator.',
+    introduction: 'Use this form to comment on the text, placement, or image for this learning goal. Your feedback remains bound to this exact learning goal and book edition.',
     loading: 'Loading the verified learning-goal binding …',
     invalidTitle: 'Invalid feedback link',
     invalidText: 'The learning-goal ID, page, or book edition could not be verified unambiguously. Please reopen the feedback link directly from the intended learning goal.',
@@ -103,10 +99,11 @@ const copy = {
     goalId: 'Learning-goal ID',
     edition: 'Book edition',
     page: 'Page',
+    imageUnavailable: 'The learning-goal image could not be loaded. You can still provide feedback about it.',
     category: 'Type of feedback',
     categoryPlaceholder: 'Please select',
     observation: 'What exactly did you notice?',
-    observationHint: 'Describe as precisely as possible what is incorrect in the content, wording, or placement.',
+    observationHint: 'Describe as precisely as possible what is incorrect in the content, wording, image, or placement.',
     evidence: 'What supports your concern? (optional)',
     evidenceHint: 'For example, a counterexample, an ambiguous passage, or an observed consequence.',
     improvement: 'How could it be improved? (optional)',
@@ -114,33 +111,28 @@ const copy = {
     sourceHint: 'Document title, link, page, or section. Links are not opened automatically.',
     role: 'Perspective (optional)',
     rolePlaceholder: 'No answer',
-    automated: 'I understand that Codex may automatically sort and assess this feedback after separate authorization by the operator. A submission never changes the curriculum automatically.',
+    automated: 'I understand that the review may be technically assisted. A qualified person always decides whether the curriculum is changed.',
     send: 'Submit feedback',
     sending: 'Saving feedback …',
     submitError: 'The feedback could not be saved. It remains in the form; please try again later.',
-    successTitle: 'Feedback stored centrally',
-    successText: 'Thank you. After separate authorization by the operator, the digest-bound feedback can be transferred locally and reviewed critically in Codex.',
+    successTitle: 'Feedback saved',
+    successText: 'Thank you. Your feedback has been received and will be reviewed before any possible change.',
     receipt: 'Feedback ID',
-    noPersonalData: 'Do not enter personal data, learner IDs, chat content, or secrets. Attachments are not supported.',
-    storageNotice: 'Storage path: Feedback first remains in the active production inbox. Codex may delete its content there only after a digest-bound local copy has been written and verified in full. Without a successful transfer, the content is removed in the next daily cleanup run after 30 days; while the service is operating, the upper bound is therefore 31 days.',
-    privacyNoticeTitle: 'Privacy notice for learning-goal feedback',
-    privacyNoticeDate: 'Effective: August 30, 2026',
+    noPersonalData: 'Please describe only the learning goal. Do not enter names, learner IDs, chat content, or other personal or confidential information.',
+    privacyDetailsSummary: 'Show privacy details',
+    privacyNoticeTitle: 'Privacy for learning-goal feedback',
+    privacyNoticeDate: 'Effective: August 31, 2026',
     privacyNoticeVersion: 'Notice version',
-    privacyNoticeIntro: 'The controller is enpasos - Enterprise Patterns & Solutions GmbH. We process the submission only to review and potentially improve published learning goals, based on your freely given consent.',
+    privacyNoticeIntro: 'The controller is enpasos - Enterprise Patterns & Solutions GmbH. We process your voluntary information solely to review and, where appropriate, improve the displayed learning goal.',
     privacyNoticeItems: [
-      'We store the voluntary form entries, the selected perspective, a random submission ID, the version and language of this notice, and the server-verified learning-goal, page, and book binding. We do not request attachments, SkillPilot IDs, or chat transcripts.',
-      'The content is stored centrally in the protected production inbox and may be transferred to an access-restricted local Codex development inbox. A Codex session may read the local raw file only after separate authorization by the operator; the content is then processed by the OpenAI Codex service used by enpasos.',
-      'Codex treats the text as untrusted external criticism, checks claims against independent evidence, and never changes the curriculum automatically. Subject-matter approval remains mandatory.',
-      'After a fully verified local transfer, the content is deleted from the active production database using its digest. Content not transferred, including content in a stranded transfer, is removed in the next daily cleanup run after 30 days; while the service is operating, the maximum retention is 31 days. A content-free production audit record consisting of IDs, digests, counts, and timestamps may remain.',
-      'The local raw-data copy is retained until critical review and any expressly commissioned improvement are complete, after which the operator removes it. Processing may also create content-bearing Codex session and tool logs. Removing the local raw-data copy does not automatically delete those logs; they are governed by the retention and deletion controls of the OpenAI Codex service in use.',
-      'Deletion from active systems does not individually rewrite PostgreSQL WAL or existing technical backup copies. Whether and for how long such copies remain depends on the separately operated infrastructure; this notice does not promise a shorter deletion period for them.',
-      'You may withdraw consent for the future at any time and request access or deletion. Please include the displayed feedback ID where possible. Statutory rights and mandatory retention obligations remain unaffected.',
+      'We store the form entries, the selected perspective, a random feedback ID, and the binding to the learning goal, book edition, and page. We do not request attachments, SkillPilot IDs, or chat transcripts.',
+      'Unprocessed feedback is deleted during normal operation no later than 31 days after receipt. Once a review begins, it is retained only as long as needed for that review and any expressly commissioned improvement.',
+      'Commissioned technical services and automated assistance may support the review. Changes to the curriculum always require qualified approval.',
+      'You may withdraw consent for the future at any time and request access or deletion. Please include the displayed feedback ID where possible. Statutory obligations remain unaffected. Existing technical backups are not individually changed when data is deleted from active systems.',
     ],
     privacyNoticePolicy: 'General Privacy Policy',
     privacyNoticeContact: 'Privacy contact',
-    privacyConsentBefore: 'I consent to processing as described in the ',
-    privacyConsentLink: 'learning-goal feedback privacy notice',
-    privacyConsentAfter: '. Consent is voluntary and may be withdrawn for the future.',
+    privacyConsent: 'I consent to the processing of my information to review and improve this learning goal. Consent is voluntary and may be withdrawn for the future.',
   },
 } as const
 
@@ -184,12 +176,29 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
     binding ? { status: 'loading' } : { status: 'invalid-link' }
   ))
   const [submitState, setSubmitState] = useState<SubmitState>({ status: 'idle' })
+  const [failedVisualizationUrl, setFailedVisualizationUrl] = useState<string | null>(null)
+  const [acknowledgements, setAcknowledgements] = useState({
+    bindingSearch: location.search,
+    locale,
+    privacy: false,
+    automated: false,
+  })
   const formRef = useRef<HTMLFormElement>(null)
   const clientSubmissionRef = useRef<{ payloadIdentity: string; id: string } | null>(null)
 
   useEffect(() => {
+    setAcknowledgements({
+      bindingSearch: location.search,
+      locale,
+      privacy: false,
+      automated: false,
+    })
+  }, [locale, location.search])
+
+  useEffect(() => {
     clientSubmissionRef.current = null
     setSubmitState({ status: 'idle' })
+    setFailedVisualizationUrl(null)
     if (!binding) {
       setLoadState({ status: 'invalid-link' })
       return
@@ -226,6 +235,8 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
 
   const bookTarget = binding ? goalBookRoute(binding.bookId) : '/lernzielbuch'
   const backTarget = binding ? `${bookTarget}#goal-${binding.goalId}` : bookTarget
+  const acknowledgementsAreCurrent = acknowledgements.bindingSearch === location.search
+    && acknowledgements.locale === locale
 
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -315,29 +326,6 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
         <h1 className="mt-3 text-3xl font-semibold text-slate-800 dark:text-slate-100">{c.title}</h1>
         <p className="mt-4 text-base leading-7 text-text-primary">{c.introduction}</p>
 
-        <section
-          id="feedback-datenschutz"
-          className="mt-7 scroll-mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-800 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-100"
-          aria-labelledby="feedback-privacy-title"
-        >
-          <h2 id="feedback-privacy-title" className="text-base font-semibold">{c.privacyNoticeTitle}</h2>
-          <p className="mt-1 text-xs text-text-secondary">
-            {c.privacyNoticeDate} · {c.privacyNoticeVersion}: {GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION}
-          </p>
-          <p className="mt-3 text-sm leading-6">{c.privacyNoticeIntro}</p>
-          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6">
-            {c.privacyNoticeItems.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-            <Link to="/privacy" className="font-medium text-sky-700 underline-offset-2 hover:underline dark:text-sky-300">
-              {c.privacyNoticePolicy}
-            </Link>
-            <a href="mailto:support@skillpilot.com" className="font-medium text-sky-700 underline-offset-2 hover:underline dark:text-sky-300">
-              {c.privacyNoticeContact}: support@skillpilot.com
-            </a>
-          </p>
-        </section>
-
         {loadState.status === 'loading' && <p className="mt-8" role="status">{c.loading}</p>}
 
         {(loadState.status === 'invalid-link' || loadState.status === 'unavailable') && (
@@ -359,6 +347,28 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
               <h2 id="feedback-goal-title" className="mt-1 text-xl font-semibold text-violet-950 dark:text-violet-100">
                 {loadState.value.goal.title}
               </h2>
+              {loadState.value.goal.visualization
+                && failedVisualizationUrl !== loadState.value.goal.visualization.url && (
+                <figure className="mt-4 overflow-hidden rounded-xl border border-violet-200 bg-white p-3 dark:border-violet-800 dark:bg-slate-950/60">
+                  <img
+                    src={loadState.value.goal.visualization.url}
+                    alt={loadState.value.goal.visualization.altText}
+                    loading="eager"
+                    decoding="async"
+                    onError={() => setFailedVisualizationUrl(loadState.value.goal.visualization?.url ?? null)}
+                    className="mx-auto max-h-[32rem] w-full object-contain"
+                  />
+                  <figcaption className="mt-2 text-center text-xs text-text-secondary">
+                    {loadState.value.goal.visualization.title}
+                  </figcaption>
+                </figure>
+              )}
+              {loadState.value.goal.visualization
+                && failedVisualizationUrl === loadState.value.goal.visualization.url && (
+                <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-950 dark:border-amber-900 dark:bg-amber-950/35 dark:text-amber-100" role="status">
+                  {c.imageUnavailable}
+                </p>
+              )}
               <p className="mt-2 text-sm leading-6 text-text-primary">{loadState.value.goal.description}</p>
               <dl className="mt-4 grid gap-2 text-xs sm:grid-cols-[9rem_minmax(0,1fr)]">
                 <dt className="font-semibold">{c.goalId}</dt>
@@ -385,9 +395,6 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
               <form ref={formRef} onSubmit={(event) => { void submit(event) }} className="mt-7 space-y-5">
                 <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/35 dark:text-amber-100">
                   {c.noPersonalData}
-                </p>
-                <p className="rounded-lg border border-violet-200 bg-violet-50 px-4 py-3 text-sm leading-6 text-violet-950 dark:border-violet-900 dark:bg-violet-950/30 dark:text-violet-100">
-                  {c.storageNotice}
                 </p>
                 <label className="block text-sm font-semibold text-text-primary">
                   {c.category}
@@ -436,18 +443,69 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
                   <label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
                 </div>
 
+                <details
+                  id="feedback-datenschutz"
+                  className="scroll-mt-6 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-slate-800 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-100"
+                >
+                  <summary className="min-h-6 cursor-pointer text-sm font-semibold">
+                    {c.privacyDetailsSummary}
+                  </summary>
+                  <div className="mt-3 border-t border-slate-200 pt-3 dark:border-slate-700" aria-labelledby="feedback-privacy-title">
+                    <h2 id="feedback-privacy-title" className="text-sm font-semibold">{c.privacyNoticeTitle}</h2>
+                    <p className="mt-1 text-xs text-text-secondary">
+                      {c.privacyNoticeDate} · {c.privacyNoticeVersion}: {GOAL_BOOK_FEEDBACK_PRIVACY_NOTICE_VERSION}
+                    </p>
+                    <p className="mt-3 text-sm leading-6">{c.privacyNoticeIntro}</p>
+                    <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6">
+                      {c.privacyNoticeItems.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                    <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                      <Link to="/privacy" className="font-medium text-sky-700 underline-offset-2 hover:underline dark:text-sky-300">
+                        {c.privacyNoticePolicy}
+                      </Link>
+                      <a href="mailto:support@skillpilot.com" className="font-medium text-sky-700 underline-offset-2 hover:underline dark:text-sky-300">
+                        {c.privacyNoticeContact}: support@skillpilot.com
+                      </a>
+                    </p>
+                  </div>
+                </details>
+
                 <label className="flex items-start gap-3 text-sm leading-6 text-text-primary">
-                  <input type="checkbox" name="privacyAcknowledged" required className="mt-1 size-5 shrink-0" />
-                  <span>
-                    {c.privacyConsentBefore}
-                    <a href="#feedback-datenschutz" className="font-medium text-violet-700 underline-offset-2 hover:underline dark:text-violet-300">
-                      {c.privacyConsentLink}
-                    </a>
-                    {c.privacyConsentAfter}
-                  </span>
+                  <input
+                    type="checkbox"
+                    name="privacyAcknowledged"
+                    required
+                    checked={acknowledgementsAreCurrent && acknowledgements.privacy}
+                    onChange={(event) => setAcknowledgements((current) => {
+                      const sameNotice = current.bindingSearch === location.search && current.locale === locale
+                      return {
+                        bindingSearch: location.search,
+                        locale,
+                        privacy: event.target.checked,
+                        automated: sameNotice ? current.automated : false,
+                      }
+                    })}
+                    className="mt-1 size-5 shrink-0"
+                  />
+                  <span>{c.privacyConsent}</span>
                 </label>
                 <label className="flex items-start gap-3 text-sm leading-6 text-text-primary">
-                  <input type="checkbox" name="automatedProcessingAcknowledged" required className="mt-1 size-5 shrink-0" />
+                  <input
+                    type="checkbox"
+                    name="automatedProcessingAcknowledged"
+                    required
+                    checked={acknowledgementsAreCurrent && acknowledgements.automated}
+                    onChange={(event) => setAcknowledgements((current) => {
+                      const sameNotice = current.bindingSearch === location.search && current.locale === locale
+                      return {
+                        bindingSearch: location.search,
+                        locale,
+                        privacy: sameNotice ? current.privacy : false,
+                        automated: event.target.checked,
+                      }
+                    })}
+                    className="mt-1 size-5 shrink-0"
+                  />
                   <span>{c.automated}</span>
                 </label>
 

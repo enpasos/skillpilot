@@ -40,7 +40,7 @@ const envelope = {
     sourceReference: 'Amtliches Dokument, Abschnitt 3.2, Seite 17.',
     reviewerRole: 'teacher',
   },
-  privacyNoticeVersion: '2026-08-30.1',
+  privacyNoticeVersion: '2026-08-31.1',
   privacyNoticeLocale: 'de',
   privacyAcknowledged: true,
   automatedProcessingAcknowledged: true,
@@ -78,6 +78,11 @@ assert.deepEqual(v2Properties.context, v1Properties.context, 'V2 must preserve t
 
 assert.equal(validate({ ...envelope, automatedProcessingAcknowledged: false }), false)
 assert.equal(validate({ ...envelope, privacyAcknowledged: false }), false)
+assert.equal(
+  validate({ ...envelope, privacyNoticeVersion: '2026-08-30.1' }),
+  true,
+  'historical submissions must remain valid against the published V2 schema',
+)
 assert.equal(validate({ ...envelope, privacyNoticeVersion: '2026-08-30.0' }), false)
 assert.equal(validate({ ...envelope, privacyNoticeLocale: 'de-DE' }), false)
 assert.equal(validate({ ...envelope, privacyNoticeLocale: 'en' }), true)

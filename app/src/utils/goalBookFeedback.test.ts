@@ -36,7 +36,7 @@ const plusBindingSearch = new URLSearchParams({
 assert(parseGoalBookFeedbackLinkBinding(`?${plusBindingSearch}`))
 assert.equal(parseGoalBookFeedbackLinkBinding(`?${plusBindingSearch.replace('goal%2Bvariant', 'a'.repeat(201))}`), null)
 
-const resolved = parseGoalBookFeedbackResolvedContext({
+const resolvedPayload = {
   schemaVersion: 1,
   context: {
     goalId: binding.goalId,
@@ -55,10 +55,43 @@ const resolved = parseGoalBookFeedbackResolvedContext({
     title: 'Brüche vergleichen',
     description: 'Die lernende Person kann Brüche vergleichen.',
     breadcrumbs: ['Mathematik', 'Brüche'],
+    visualization: {
+      title: 'Visualisierung: Brüche vergleichen',
+      url: `/api/public/goal-feedback/v1/visualizations/${'d'.repeat(64)}`,
+      altText: 'Zwei Brüche werden auf einer Zahlengeraden verglichen.',
+    },
   },
   submissionEndpoint: '/api/public/goal-feedback/v1/submissions',
-})
+}
+const resolved = parseGoalBookFeedbackResolvedContext(resolvedPayload)
 assert(resolved)
+assert.equal(
+  resolved.goal.visualization?.url,
+  `/api/public/goal-feedback/v1/visualizations/${'d'.repeat(64)}`,
+)
+const resolvedWithoutVisualization = parseGoalBookFeedbackResolvedContext({
+  ...resolvedPayload,
+  goal: { ...resolvedPayload.goal, visualization: undefined },
+})
+assert(resolvedWithoutVisualization)
+assert.equal(resolvedWithoutVisualization.goal.visualization, null)
+assert.equal(parseGoalBookFeedbackResolvedContext({
+  ...resolvedPayload,
+  goal: {
+    ...resolvedPayload.goal,
+    visualization: { ...resolvedPayload.goal.visualization, url: 'https://example.org/foreign.jpg' },
+  },
+}), null)
+assert.equal(parseGoalBookFeedbackResolvedContext({
+  ...resolvedPayload,
+  goal: {
+    ...resolvedPayload.goal,
+    visualization: {
+      ...resolvedPayload.goal.visualization,
+      url: `/api/public/goal-feedback/v1/visualizations/${'d'.repeat(63)}g`,
+    },
+  },
+}), null)
 assert.equal(parseGoalBookFeedbackResolvedContext({
   ...resolved,
   context: { ...resolved.context, canonicalUrl: 'https://example.org/forged' },
