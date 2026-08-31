@@ -1188,6 +1188,97 @@ Die betroffenen Dateien sind nachvollziehbar gebunden:
   `c34e38f8d9b9d3697376cc46d475c3a47ef98d3936c4e8355fc6b0aa099835ee`
   → `91712c26f31fcee7c32697c51f4da1b929f61742a0fac99a93833a0b08b93d18`.
 
+### 6.21 Eng begrenzte Ausnahme: bestehende lernende Person als Betreuungsklasse verknüpfen
+
+Der Product Owner hat am **31. August 2026** nach der fachlichen Konzeption
+ausdrücklich beauftragt, die zuvor noch nicht aktive Einzelbetreuung mit einer
+bekannten bestehenden SkillPilot-ID tatsächlich umzusetzen. Freigegeben ist
+ausschließlich der unabhängige First-Party-Ablauf für eine verknüpfte,
+schreibgeschützte Betreuungsklasse:
+
+- Die Lehrkraft erzeugt aus der Kursorganisation eine sieben Tage gültige,
+  einmal verwendbare Einladung für die bekannte SkillPilot-ID.
+- Die lernende Person muss die erwartete Anfrage mit genau dieser ID
+  ausdrücklich bestätigen. Die Lehrkraft erhält anschließend eine opake
+  Mitgliedschaft mit Leserechten auf alle dabei freigegebenen Fachprojektionen
+  und deren Lernstände; die dauerhafte SkillPilot-ID und das rohe
+  Personalisierungsdokument werden nicht an die Lehrkraftansicht ausgegeben.
+- Mathematik, Physik und weitere freigegebene Fächer bleiben eine gemeinsame
+  Betreuungsklasse mit umschaltbaren Fachansichten. Eine geänderte
+  Personalisierung wird erst nach erneuter Prüfung und einer ausdrücklichen
+  Übernahme lokal wirksam. Lernziele, Planungen, Lernstände und die
+  Personalisierung können über diesen Weg nicht verändert werden.
+- Offene Einladungen sind reload-sicher, ohne die permanente Lernenden-ID in
+  den Browserzustand aufzunehmen. Antworten zu Lernständen werden vor der
+  Anzeige fail-closed an Mitgliedschaft, Fach und Personalisierungsfingerprint
+  gebunden; ein Fachwechsel löscht den vorherigen Anzeigezustand sofort.
+- Der neue API-Zweig ist durch Same-Site-/JSON-Prüfung, eine 8-KiB-Grenze,
+  begrenzte IP-Zähler und `no-store` geschützt. Widerruf, Kursende und
+  Lernstandslöschung beenden den Zugriff sofort. Terminale Datensätze werden
+  höchstens 30 zusätzliche Tage aufbewahrt und danach im nächsten täglichen
+  Löschlauf entfernt.
+- Der First-Party-Frontend- und Backend-Default ist aktiv. Der isolierte
+  Curriculum-Package-Consumer bleibt explizit deaktiviert; sein HTTP-Smoke
+  verlangt für den Teacher-Supervision-Zweig weiterhin `404`.
+
+Nicht freigegeben sind ein Zugriff ohne Zustimmung, die Übernahme oder Kopie
+der Lernenden-ID in die Klassenkarte, Schreibrechte auf Lernzustand oder
+Personalisierung, eine Erweiterung der eingereichten OpenAI-Tools oder eine
+Änderung von MCP/OAuth, Schemas, MCP-Apps-UI, Coach-, Session-, Identitäts-,
+Review-, Portal-, Fixture- oder Reviewartefakt-Semantik. Diese Ausnahme ist
+keine Deployment- oder Commit-Freigabe.
+
+Die fortlaufende Hashkette der geschützten Backend-Konfiguration lautet:
+
+- `backend/src/main/resources/application.yml`:
+  `15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591`
+  → `83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990`
+  → `7377e3aa197f1156c3ca425b57ff08bde430a451ba1b5f0b27bc1359743c616f`.
+
+Die vollständige freigegebene Quell-, Test-, Konfigurations-, CI- und
+Package-Consumer-Dateimenge ist in
+`contracts/openai/skillpilot-coach-v1/review-freeze.json` einzeln
+hashgebunden. Zentrale Evidenz ist der reale Mathe-/Physik-Browsertest:
+
+- `app/scripts/testTeacherSupervisionTrainerUi.ts`:
+  `5b78c3ef9e337eecc2050e71a1528581f0c89439e1182576dab18b2d7a7b007c`.
+
+Die Package-Consumer-Kette wird ohne Lockerung ihrer Isolation fortgeführt:
+
+- `scripts/run_package_consumer_smoke.py`:
+  `c6ad4a80f0cbd4bbb57789a7ffdd24b89f55c6f658d5908973edd8107f798913`
+  → `4490199905bd4e87b1ed63cb7946545ffed16e26d06daad789e64b5c5c7bcffe`;
+- `contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json`:
+  `91712c26f31fcee7c32697c51f4da1b929f61742a0fac99a93833a0b08b93d18`
+  → `ec5dfbff03ddaccd89371abddc592d9e4a9b29c913115da7a9b8f74abcdeb941`.
+
+Die statische Freeze-Regression wurde ausschließlich um diese beiden
+autorisierten Ausnahmen ergänzt:
+
+- `scripts/check_openai_plugin_review_freeze.test.mjs`:
+  `ecc9a8e4f8d218d4ae581c9a449319dddde33f80b456842d3450f0c904930d29`
+  → `aba99cbfb96a6c3aeff0d96ba622aa6148d4a159d601d811fc19506f9d3e8086`.
+
+### 6.22 Eng begrenzte Ausnahme: Datenschutzhinweis zur Betreuung
+
+Die Aktivierung aus Abschnitt 6.21 erfordert eine zutreffende öffentliche
+Datenschutzinformation. Freigegeben ist deshalb ausschließlich, den deutschen
+und englischen Datenschutzhinweis auf den **31. August 2026** zu datieren, eine
+eigene Sektion zur optionalen schreibgeschützten Betreuung einzufügen und die
+nachfolgenden Abschnittsnummern anzupassen. Beschrieben werden die
+ausdrückliche Freigabe, der begrenzte Leseumfang, die verarbeiteten
+Berechtigungs- und Mitgliedschaftsdaten, der nur lokale Alias, die
+Einladungsfrist, Widerruf und Kursende sowie die in Abschnitt 6.21 gebundene
+Löschfrist. Alle übrigen Datenschutz- und OpenAI-Verträge bleiben unverändert.
+
+Der geschützte Text und seine Regression sind hashgebunden:
+
+- `app/src/utils/privacyViewCopy.ts`:
+  `471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b`
+  → `7bbdc2dd7f88ae7e68c17552dbe44d17b830d55d45c165b65c9b2436563f468b`;
+- `app/src/utils/privacyViewCopy.test.ts`:
+  `1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

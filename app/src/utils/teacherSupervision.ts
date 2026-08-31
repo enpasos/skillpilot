@@ -5,6 +5,7 @@ import type {
   TrainerClassCurriculumConfigEntry,
   TrainerClassCurriculumConfig,
 } from '../trainerTypes'
+import type { MasteryMap } from '../learnerTypes'
 
 const apiBase = (import.meta.env?.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -13,6 +14,17 @@ const API_ROOT = '/api/ui/teacher-supervision/v1'
 export const TEACHER_SUPERVISION_ENABLED = import.meta.env?.VITE_TEACHER_SUPERVISION_ENABLED === 'true'
 
 export const TEACHER_WORKSPACE_STORAGE_KEY = 'skillpilot_teacher_workspace_v1'
+export const TEACHER_PENDING_SUPERVISION_STORAGE_KEY = 'skillpilot_teacher_pending_supervision_v1'
+
+export const readTeacherMasteryValue = (
+  mastery: MasteryMap,
+  canonicalGoalId: string,
+  legacyShortKey?: string,
+): number => {
+  const canonicalValue = mastery[canonicalGoalId]
+  if (canonicalValue !== undefined) return canonicalValue
+  return legacyShortKey ? mastery[legacyShortKey] ?? 0 : 0
+}
 
 export interface TeacherWorkspaceCredential {
   workspaceId: string
@@ -51,6 +63,13 @@ export interface TeacherSupervisionCourse {
   members: TeacherSupervisionMember[]
 }
 
+export interface TeacherMemberMasteryProjection {
+  memberId: string
+  landscapeId: string
+  personalizationFingerprint: string
+  mastery: MasteryMap
+}
+
 export interface TeacherCourseCreated {
   courseId: string
   courseLabel?: string
@@ -85,6 +104,28 @@ interface StoredTeacherWorkspaces {
   version: 1
   credentials: TeacherWorkspaceCredential[]
 }
+
+export interface StoredTeacherPendingInvitation {
+  version: 1
+  kind: 'invitation'
+  workspaceId: string
+  courseId: string
+  memberId: string
+  invitationUrl: string
+  className: string
+  learnerAlias: string
+}
+
+export interface StoredTeacherPendingCleanup {
+  version: 1
+  kind: 'cleanup-required'
+  workspaceId: string
+  courseId: string
+}
+
+export type StoredTeacherPendingSupervision =
+  | StoredTeacherPendingInvitation
+  | StoredTeacherPendingCleanup
 
 export class TeacherSupervisionApiError extends Error {
   readonly status: number
@@ -153,6 +194,22 @@ export const findTeacherWorkspaceCredential = (workspaceId?: string) => {
   const credentials = loadTeacherWorkspaceCredentials()
   if (!workspaceId) return credentials[0] ?? null
   return credentials.find((credential) => credential.workspaceId === workspaceId) ?? null
+}
+
+export const removeTeacherWorkspaceCredential = (expected: TeacherWorkspaceCredential) => {
+  try {
+    const current = loadTeacherWorkspaceCredentials()
+    const matching = current.find((credential) => credential.workspaceId === expected.workspaceId)
+    if (!matching || matching.accessToken !== expected.accessToken) return false
+    const stored: StoredTeacherWorkspaces = {
+      version: 1,
+      credentials: current.filter((credential) => credential.workspaceId !== expected.workspaceId),
+    }
+    localStorage.setItem(TEACHER_WORKSPACE_STORAGE_KEY, JSON.stringify(stored))
+    return true
+  } catch {
+    return false
+  }
 }
 
 const storeTeacherWorkspaceCredential = (credential: TeacherWorkspaceCredential) => {
@@ -237,7 +294,7 @@ export const getTeacherMemberMastery = (
   memberId: string,
   landscapeId: string,
   signal?: AbortSignal,
-) => requestJson<{ mastery: Record<string, number> }>(
+) => requestJson<TeacherMemberMasteryProjection>(
   `/courses/${encodeURIComponent(courseId)}/members/${encodeURIComponent(memberId)}/mastery`,
   {
     method: 'POST',
@@ -306,6 +363,174 @@ export const clearInvitationTokenFragment = () => {
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${window.location.search}`)
 }
 
+const hasExactKeys = (record: Record<string, unknown>, expected: string[]) => {
+  const actual = Object.keys(record).sort()
+  const normalizedExpected = [...expected].sort()
+  return actual.length === normalizedExpected.length
+    && actual.every((key, index) => key === normalizedExpected[index])
+}
+
+const boundedStoredString = (value: unknown, maxLength: number) => (
+  typeof value === 'string' && value.trim() && value.length <= maxLength ? value : null
+)
+
+const normalizePendingSupervision = (value: unknown): StoredTeacherPendingSupervision | null => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null
+  const record = value as Record<string, unknown>
+  if (record.version !== 1) return null
+
+  const workspaceId = boundedStoredString(record.workspaceId, 128)
+  const courseId = boundedStoredString(record.courseId, 128)
+  if (!workspaceId || !courseId) return null
+
+  if (record.kind === 'cleanup-required') {
+    if (!hasExactKeys(record, ['version', 'kind', 'workspaceId', 'courseId'])) return null
+    return {
+      version: 1,
+      kind: 'cleanup-required',
+      workspaceId,
+      courseId,
+    }
+  }
+
+  if (record.kind !== 'invitation' || !hasExactKeys(record, [
+    'version',
+    'kind',
+    'workspaceId',
+    'courseId',
+    'memberId',
+    'invitationUrl',
+    'className',
+    'learnerAlias',
+  ])) return null
+
+  const memberId = boundedStoredString(record.memberId, 128)
+  const invitationUrl = boundedStoredString(record.invitationUrl, 1_024)
+  const className = boundedStoredString(record.className, 1_024)
+  const learnerAlias = boundedStoredString(record.learnerAlias, 1_024)
+  if (!memberId || !invitationUrl || !className || !learnerAlias) return null
+
+  try {
+    return {
+      version: 1,
+      kind: 'invitation',
+      workspaceId,
+      courseId,
+      memberId,
+      invitationUrl: toFragmentInvitationUrl(invitationUrl),
+      className,
+      learnerAlias,
+    }
+  } catch {
+    return null
+  }
+}
+
+const samePendingCourse = (
+  left: Pick<StoredTeacherPendingSupervision, 'workspaceId' | 'courseId'>,
+  right: Pick<StoredTeacherPendingSupervision, 'workspaceId' | 'courseId'>,
+) => left.workspaceId === right.workspaceId && left.courseId === right.courseId
+
+const writePendingSupervision = (
+  value: StoredTeacherPendingSupervision,
+  options: { requireExisting?: boolean } = {},
+) => {
+  try {
+    const normalized = normalizePendingSupervision(value)
+    if (!normalized) return false
+    const currentRaw = localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+    if (!currentRaw && options.requireExisting) return false
+    if (currentRaw) {
+      const current = normalizePendingSupervision(JSON.parse(currentRaw) as unknown)
+      if (!current || !samePendingCourse(current, normalized)) return false
+    }
+    localStorage.setItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY, JSON.stringify(normalized))
+    return true
+  } catch {
+    return false
+  }
+}
+
+export const loadTeacherPendingSupervision = (): StoredTeacherPendingSupervision | null => {
+  try {
+    const raw = localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as unknown
+    const normalized = normalizePendingSupervision(parsed)
+    if (normalized) return normalized
+    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+      const record = parsed as Record<string, unknown>
+      const workspaceId = boundedStoredString(record.workspaceId, 128)
+      const courseId = boundedStoredString(record.courseId, 128)
+      if (workspaceId && courseId) {
+        const cleanup: StoredTeacherPendingCleanup = {
+          version: 1,
+          kind: 'cleanup-required',
+          workspaceId,
+          courseId,
+        }
+        try {
+          localStorage.setItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY, JSON.stringify(cleanup))
+        } catch {
+          // The in-memory cleanup state still prevents polling and preserves the identifiers.
+        }
+        return cleanup
+      }
+    }
+  } catch {
+    // Invalid or unavailable local state must never start polling.
+  }
+  return null
+}
+
+export const getTeacherPendingSupervisionRecordSnapshot = () => {
+  try {
+    return localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+  } catch {
+    return null
+  }
+}
+
+export const hasTeacherPendingSupervisionRecord = () => (
+  getTeacherPendingSupervisionRecordSnapshot() !== null
+)
+
+export const saveTeacherPendingInvitation = (
+  value: Omit<StoredTeacherPendingInvitation, 'version' | 'kind'>,
+) => writePendingSupervision({ version: 1, kind: 'invitation', ...value }, { requireExisting: true })
+
+export const saveTeacherPendingCleanup = (
+  value: Omit<StoredTeacherPendingCleanup, 'version' | 'kind'>,
+  options: { requireExisting?: boolean } = {},
+) => writePendingSupervision({ version: 1, kind: 'cleanup-required', ...value }, options)
+
+export const clearTeacherPendingSupervision = (expected?: { workspaceId: string; courseId: string }) => {
+  try {
+    if (expected) {
+      const currentRaw = localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+      if (!currentRaw) return true
+      const current = normalizePendingSupervision(JSON.parse(currentRaw) as unknown)
+      if (!current) return false
+      if (!samePendingCourse(current, expected)) return true
+    }
+    localStorage.removeItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+    return true
+  } catch {
+    return false
+  }
+}
+
+export const clearTeacherPendingSupervisionSnapshot = (expectedRaw: string) => {
+  try {
+    const currentRaw = localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+    if (currentRaw !== expectedRaw) return true
+    localStorage.removeItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+    return true
+  } catch {
+    return false
+  }
+}
+
 const compactEntry = (entry: TrainerClassCurriculumConfigEntry): TrainerClassCurriculumConfigEntry =>
   Object.fromEntries(Object.entries(entry).filter(([, value]) => value !== undefined)) as unknown as TrainerClassCurriculumConfigEntry
 
@@ -361,6 +586,9 @@ export const buildLinkedClassSession = (input: {
 }): ClassSession => {
   if (!isActiveMembership(input.member.status)) {
     throw new Error('Teacher membership is not active')
+  }
+  if (!input.member.personalizationFingerprint?.trim()) {
+    throw new Error('Teacher membership has no personalization fingerprint')
   }
   const subjects = buildLinkedSubjectContexts(input.member)
   if (subjects.length === 0) throw new Error('Teacher membership has no visible subjects')

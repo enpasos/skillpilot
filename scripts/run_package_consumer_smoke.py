@@ -85,7 +85,7 @@ PINNED_HELPER_SHA256 = {
     "scripts/package_consumer_browser_smoke.cjs": "b328b8ab63f8df6143602a2b2fd71fcf88008b7c4de7e2f9845a1fb476081f6e",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
-    "scripts/package_consumer_smoke_http.py": "233ff0e1e96d40c4763893f4db17aca110cb72e206edc5a59ccad97c1d929964",
+    "scripts/package_consumer_smoke_http.py": "7a9c5943480e9d223367dc4c54164029d936d557d8072c623c669ad5a471668a",
 }
 
 BACKEND_CLASSPATH_RESOURCES = (
@@ -908,6 +908,7 @@ def runtime_configuration() -> dict[str, Any]:
             f"--skillpilot.curriculum.consumer-version={CONSUMER_API_VERSION}",
             "--skillpilot.curriculum.packages.store-directory=/opt/curriculum-store",
             "--skillpilot.curriculum.packages.active-lock=locks/active.json",
+            "--skillpilot.teacher-supervision.enabled=false",
             "--spring.datasource.url=jdbc:h2:mem:consumer-smoke;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE",
             "--spring.datasource.driver-class-name=org.h2.Driver",
             "--spring.datasource.username=sa",

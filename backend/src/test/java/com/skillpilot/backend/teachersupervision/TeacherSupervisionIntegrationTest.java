@@ -40,8 +40,8 @@ class TeacherSupervisionIntegrationTest {
     private static final String ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-    private static final String MATH_SHORT_KEY = "canonical_math_module";
-    private static final String PHYSICS_SHORT_KEY = "canonical_physics_module";
+    private static final String MATH_GOAL_ID = "4b67bed9-06da-40b2-a306-24e9e7dfd390";
+    private static final String PHYSICS_GOAL_ID = "2eecd0e2-a7ca-4568-9b12-3d47706c65fb";
 
     @LocalServerPort
     private int port;
@@ -78,8 +78,8 @@ class TeacherSupervisionIntegrationTest {
         learners.deleteAllById(java.util.List.of(LEARNER_ID, OTHER_LEARNER_ID));
 
         Learner learner = learner(LEARNER_ID, directPersonalization());
-        mastery.save(new Mastery(learner, MATH_SHORT_KEY, 0.75));
-        mastery.save(new Mastery(learner, PHYSICS_SHORT_KEY, 0.5));
+        mastery.save(new Mastery(learner, MATH_GOAL_ID, 0.75));
+        mastery.save(new Mastery(learner, PHYSICS_GOAL_ID, 0.5));
         learners.saveAndFlush(learner(OTHER_LEARNER_ID, directPersonalization()));
     }
 
@@ -87,6 +87,7 @@ class TeacherSupervisionIntegrationTest {
     void explicitGrantProjectsTwoSubjectsWithoutExposingThePermanentLearnerId() throws Exception {
         HttpResponse<String> formWorkspace = http.send(
                 HttpRequest.newBuilder(uri("/workspaces"))
+                        .header("Origin", "http://localhost:5173")
                         .header("Content-Type", "application/x-www-form-urlencoded")
                         .POST(HttpRequest.BodyPublishers.ofString(""))
                         .build(),
@@ -194,8 +195,8 @@ class TeacherSupervisionIntegrationTest {
                 workspaceToken);
         assertThat(mathMastery.statusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(mathMastery.body())
-                .contains(MATH_SHORT_KEY)
-                .doesNotContain(PHYSICS_SHORT_KEY)
+                .contains(MATH_GOAL_ID)
+                .doesNotContain(PHYSICS_GOAL_ID)
                 .doesNotContain(LEARNER_ID);
 
         HttpResponse<String> physicsMastery = post(
@@ -204,8 +205,8 @@ class TeacherSupervisionIntegrationTest {
                 workspaceToken);
         assertThat(physicsMastery.statusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(physicsMastery.body())
-                .contains(PHYSICS_SHORT_KEY)
-                .doesNotContain(MATH_SHORT_KEY)
+                .contains(PHYSICS_GOAL_ID)
+                .doesNotContain(MATH_GOAL_ID)
                 .doesNotContain(LEARNER_ID);
 
         HttpResponse<String> learnerMemberships = post(
@@ -354,6 +355,7 @@ class TeacherSupervisionIntegrationTest {
 
     private HttpResponse<String> post(String path, String body, String bearer) throws Exception {
         HttpRequest.Builder request = HttpRequest.newBuilder(uri(path))
+                .header("Origin", "http://localhost:5173")
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(body, StandardCharsets.UTF_8));
         authorize(request, bearer);
@@ -367,7 +369,9 @@ class TeacherSupervisionIntegrationTest {
     }
 
     private HttpResponse<String> delete(String path, String bearer) throws Exception {
-        HttpRequest.Builder request = HttpRequest.newBuilder(uri(path)).DELETE();
+        HttpRequest.Builder request = HttpRequest.newBuilder(uri(path))
+                .header("Origin", "http://localhost:5173")
+                .DELETE();
         authorize(request, bearer);
         return http.send(request.build(), HttpResponse.BodyHandlers.ofString());
     }

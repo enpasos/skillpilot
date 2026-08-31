@@ -7,6 +7,7 @@ import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import { ThemeProvider } from '../../src/contexts/ThemeContext'
 import type { LandscapeEntry } from '../../src/hooks/useLandscapes'
 import type { ClassSession } from '../../src/trainerTypes'
+import { hasTeacherPendingSupervisionRecord } from '../../src/utils/teacherSupervision'
 import '../../src/index.css'
 
 const rootLandscapeId = 'gymnasium-root'
@@ -42,13 +43,21 @@ const landscapes = [
 
 const Fixture = () => {
   const [saved, setSaved] = useState<ClassSession | null>(null)
+  const [isCreating, setIsCreating] = useState(hasTeacherPendingSupervisionRecord)
   if (saved) return <pre data-testid="saved-linked-session">{JSON.stringify(saved)}</pre>
+  if (!isCreating) {
+    return <button type="button" onClick={() => setIsCreating(true)}>+ Neue Klasse</button>
+  }
   return (
     <ClassSetup
       landscapes={landscapes}
       rootLandscapeId={rootLandscapeId}
-      onSave={setSaved}
-      onCancel={() => undefined}
+      onSave={(session) => {
+        if (sessionStorage.getItem('teacher-supervision-fixture-reject-save') === 'true') return false
+        setSaved(session)
+        return true
+      }}
+      onCancel={() => setIsCreating(false)}
     />
   )
 }

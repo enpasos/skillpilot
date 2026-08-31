@@ -22,13 +22,23 @@ import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getClassSetupCopy } from '../utils/curriculumSetupCopy'
 import {
   buildLinkedClassSession,
+  clearTeacherPendingSupervision,
+  clearTeacherPendingSupervisionSnapshot,
   createTeacherCourse,
   createTeacherInvitation,
+  createTeacherWorkspace,
   deleteTeacherCourse,
   ensureTeacherWorkspace,
+  findTeacherWorkspaceCredential,
+  getTeacherPendingSupervisionRecordSnapshot,
   getTeacherCourse,
+  hasTeacherPendingSupervisionRecord,
   isLinkedClassSession,
   isTeacherSupervisionNotFound,
+  loadTeacherPendingSupervision,
+  removeTeacherWorkspaceCredential,
+  saveTeacherPendingCleanup,
+  saveTeacherPendingInvitation,
   TeacherSupervisionApiError,
   TEACHER_SUPERVISION_ENABLED,
   toFragmentInvitationUrl,
@@ -40,7 +50,7 @@ interface ClassSetupProps {
   landscapes: LandscapeEntry[]
   rootLandscapeId?: string
   initialSession?: ClassSession
-  onSave: (session: ClassSession) => void
+  onSave: (session: ClassSession) => boolean
   onCancel: () => void
 }
 
@@ -49,15 +59,16 @@ const normalizeWildcardFilter = (filterId?: string) => filterId ?? 'ALL'
 interface PendingTeacherInvitation {
   credential: TeacherWorkspaceCredential
   courseId: string
-  invitationId: string
   memberId: string
   invitationUrl: string
   pollingStopped?: boolean
 }
 
 interface PendingCourseCleanup {
-  credential: TeacherWorkspaceCredential
-  courseId: string
+  credential: TeacherWorkspaceCredential | null
+  workspaceId: string | null
+  courseId: string | null
+  storageSnapshot?: string
   cleanupRequired: true
 }
 
@@ -65,6 +76,65 @@ type PendingTeacherState = PendingTeacherInvitation | PendingCourseCleanup
 
 const isPendingCourseCleanup = (value: PendingTeacherState): value is PendingCourseCleanup =>
   'cleanupRequired' in value && value.cleanupRequired === true
+
+interface RestoredPendingTeacherState {
+  pending: PendingTeacherState
+  className?: string
+  learnerAlias?: string
+}
+
+const restorePendingTeacherState = (): RestoredPendingTeacherState | null => {
+  const stored = loadTeacherPendingSupervision()
+  if (!stored) {
+    const storageSnapshot = getTeacherPendingSupervisionRecordSnapshot()
+    return storageSnapshot !== null
+      ? {
+          pending: {
+            credential: null,
+            workspaceId: null,
+            courseId: null,
+            storageSnapshot,
+            cleanupRequired: true,
+          },
+        }
+      : null
+  }
+  const credential = findTeacherWorkspaceCredential(stored.workspaceId)
+  if (!credential) {
+    saveTeacherPendingCleanup(
+      { workspaceId: stored.workspaceId, courseId: stored.courseId },
+      { requireExisting: true },
+    )
+    return {
+      pending: {
+        credential: null,
+        workspaceId: stored.workspaceId,
+        courseId: stored.courseId,
+        cleanupRequired: true,
+      },
+    }
+  }
+  if (stored.kind === 'cleanup-required') {
+    return {
+      pending: {
+        credential,
+        workspaceId: stored.workspaceId,
+        courseId: stored.courseId,
+        cleanupRequired: true,
+      },
+    }
+  }
+  return {
+    pending: {
+      credential,
+      courseId: stored.courseId,
+      memberId: stored.memberId,
+      invitationUrl: stored.invitationUrl,
+    },
+    className: stored.className,
+    learnerAlias: stored.learnerAlias,
+  }
+}
 
 export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscapeId, initialSession, onSave, onCancel }) => {
   const { language } = useLanguage()
@@ -87,10 +157,13 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
   const isEditing = Boolean(initialSession)
   const isEditingLinked = isLinkedClassSession(initialSession)
+  const [restoredPending] = useState<RestoredPendingTeacherState | null>(() => (
+    !isEditing && TEACHER_SUPERVISION_ENABLED ? restorePendingTeacherState() : null
+  ))
   const [creationMode, setCreationMode] = useState<'generated' | 'linked'>(
-    isEditingLinked ? 'linked' : 'generated',
+    isEditingLinked || restoredPending ? 'linked' : 'generated',
   )
-  const [className, setClassName] = useState(initialSession?.name ?? '')
+  const [className, setClassName] = useState(restoredPending?.className ?? initialSession?.name ?? '')
   const [selectedLandscapeId, setSelectedLandscapeId] = useState(() => {
     if (
       initialSession?.landscapeId
@@ -126,13 +199,17 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
       ?? 'GK+LK'
   ))
   const [studentNames, setStudentNames] = useState('')
-  const [learnerAlias, setLearnerAlias] = useState(initialSession?.students[0]?.name ?? '')
+  const [learnerAlias, setLearnerAlias] = useState(
+    restoredPending?.learnerAlias ?? initialSession?.students[0]?.name ?? '',
+  )
   const [teacherDisplayName, setTeacherDisplayName] = useState('')
   const [invitationCourseLabel, setInvitationCourseLabel] = useState(
     localizedLanguage === 'de' ? 'SkillPilot-Einzelbetreuung' : 'SkillPilot individual supervision',
   )
   const [existingSkillpilotId, setExistingSkillpilotId] = useState('')
-  const [pendingInvitation, setPendingInvitation] = useState<PendingTeacherState | null>(null)
+  const [pendingInvitation, setPendingInvitation] = useState<PendingTeacherState | null>(
+    restoredPending?.pending ?? null,
+  )
   const [isCheckingConsent, setIsCheckingConsent] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
@@ -274,6 +351,19 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     })
   }
 
+  const requireCourseCleanup = useCallback((credential: TeacherWorkspaceCredential, courseId: string) => {
+    saveTeacherPendingCleanup(
+      { workspaceId: credential.workspaceId, courseId },
+      { requireExisting: true },
+    )
+    setPendingInvitation({
+      credential,
+      workspaceId: credential.workspaceId,
+      courseId,
+      cleanupRequired: true,
+    })
+  }, [])
+
   const completeLinkedClass = useCallback(async (
     invitation: PendingTeacherInvitation,
     signal?: AbortSignal,
@@ -299,9 +389,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           return status === 'revoked' || status === 'expired' || status === 'rejected'
         })
         if (terminalMember) {
-          setPendingInvitation((current) => current && !isPendingCourseCleanup(current)
-            ? { ...current, pollingStopped: true }
-            : current)
+          requireCourseCleanup(invitation.credential, invitation.courseId)
           setError(supervisionCopy.requestFailed)
         }
         return false
@@ -313,9 +401,19 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         courseId: invitation.courseId,
         member: activeMember,
       })
+      if (!onSave(session)) {
+        setError(supervisionCopy.requestFailed)
+        return false
+      }
+      if (!clearTeacherPendingSupervision({
+        workspaceId: invitation.credential.workspaceId,
+        courseId: invitation.courseId,
+      })) {
+        setError(supervisionCopy.requestFailed)
+        return false
+      }
       completionStartedRef.current = true
       setPendingInvitation(null)
-      onSave(session)
       return true
     } catch (nextError) {
       if (signal?.aborted) return false
@@ -325,16 +423,14 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         isTeacherSupervisionNotFound(nextError)
         || (nextError instanceof TeacherSupervisionApiError && nextError.status === 401)
       ) {
-        setPendingInvitation((current) => current && !isPendingCourseCleanup(current)
-          ? { ...current, pollingStopped: true }
-          : current)
+        requireCourseCleanup(invitation.credential, invitation.courseId)
       }
       return false
     } finally {
       completionInFlightRef.current = false
       if (!signal?.aborted) setIsCheckingConsent(false)
     }
-  }, [className, learnerAlias, onSave, supervisionCopy.requestFailed])
+  }, [className, learnerAlias, onSave, requireCourseCleanup, supervisionCopy.requestFailed])
 
   useEffect(() => {
     if (
@@ -354,30 +450,51 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
   const handleCancelPendingInvitation = async () => {
     if (!pendingInvitation) return
+    const credential = pendingInvitation.credential
+    const courseId = pendingInvitation.courseId
+    if (!credential || !courseId) {
+      setError(supervisionCopy.cancelFailed)
+      return
+    }
     pendingCancelledRef.current = true
     setIsGenerating(true)
     setError(null)
     try {
-      await deleteTeacherCourse(pendingInvitation.credential, pendingInvitation.courseId)
+      await deleteTeacherCourse(credential, courseId)
+      if (!clearTeacherPendingSupervision({ workspaceId: credential.workspaceId, courseId })) {
+        requireCourseCleanup(credential, courseId)
+        setError(supervisionCopy.cancelFailed)
+        return
+      }
       setPendingInvitation(null)
       onCancel()
     } catch (nextError) {
-      if (isTeacherSupervisionNotFound(nextError)) {
-        setPendingInvitation(null)
-        onCancel()
-        return
-      }
       console.warn('Could not cancel teacher supervision invitation', nextError)
       pendingCancelledRef.current = false
       setError(supervisionCopy.cancelFailed)
-      setPendingInvitation({
-        credential: pendingInvitation.credential,
-        courseId: pendingInvitation.courseId,
-        cleanupRequired: true,
-      })
+      requireCourseCleanup(credential, courseId)
     } finally {
       setIsGenerating(false)
     }
+  }
+
+  const handleDiscardBlockedPending = () => {
+    if (!pendingInvitation || !isPendingCourseCleanup(pendingInvitation) || pendingInvitation.credential) return
+    if (!window.confirm(supervisionCopy.pendingLocalDiscardWarning)) return
+    const cleared = pendingInvitation.workspaceId && pendingInvitation.courseId
+      ? clearTeacherPendingSupervision({
+          workspaceId: pendingInvitation.workspaceId,
+          courseId: pendingInvitation.courseId,
+        })
+      : pendingInvitation.storageSnapshot
+        ? clearTeacherPendingSupervisionSnapshot(pendingInvitation.storageSnapshot)
+        : false
+    if (!cleared) {
+      setError(supervisionCopy.cancelFailed)
+      return
+    }
+    setPendingInvitation(null)
+    onCancel()
   }
 
   const handleCreateLinked = async () => {
@@ -396,33 +513,76 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     let courseId = ''
     try {
       credential = await ensureTeacherWorkspace()
-      const course = await createTeacherCourse(credential, {
+      const courseInput = {
         courseLabel: invitationCourseLabel.trim(),
         teacherDisplayName: teacherDisplayName.trim(),
-      })
+      }
+      let course
+      try {
+        course = await createTeacherCourse(credential, courseInput)
+      } catch (courseError) {
+        const canReplaceExpiredCredential = courseError instanceof TeacherSupervisionApiError
+          && courseError.status === 401
+          && !hasTeacherPendingSupervisionRecord()
+          && removeTeacherWorkspaceCredential(credential)
+        if (!canReplaceExpiredCredential) throw courseError
+        credential = await createTeacherWorkspace()
+        course = await createTeacherCourse(credential, courseInput)
+      }
       courseId = course.courseId
+      if (!saveTeacherPendingCleanup({ workspaceId: credential.workspaceId, courseId })) {
+        try {
+          await deleteTeacherCourse(credential, courseId)
+        } catch (cleanupError) {
+          console.warn('Could not clean up untracked teacher course', cleanupError)
+          setPendingInvitation({
+            credential,
+            workspaceId: credential.workspaceId,
+            courseId,
+            cleanupRequired: true,
+          })
+          setError(supervisionCopy.cancelFailed)
+          return
+        }
+        throw new Error('Could not persist pending teacher supervision cleanup marker')
+      }
       try {
         const invitation = await createTeacherInvitation(
           credential,
           courseId,
           existingSkillpilotId.trim(),
         )
+        const invitationUrl = toFragmentInvitationUrl(invitation.invitationUrl)
         setExistingSkillpilotId('')
+        if (!saveTeacherPendingInvitation({
+          workspaceId: credential.workspaceId,
+          courseId,
+          memberId: invitation.memberId,
+          invitationUrl,
+          className: className.trim(),
+          learnerAlias: learnerAlias.trim(),
+        })) {
+          throw new Error('Could not persist pending teacher supervision')
+        }
         setPendingInvitation({
           credential,
           courseId,
-          invitationId: invitation.invitationId,
           memberId: invitation.memberId,
-          invitationUrl: toFragmentInvitationUrl(invitation.invitationUrl),
+          invitationUrl,
         })
         pendingCancelledRef.current = false
       } catch (inviteError) {
         setExistingSkillpilotId('')
         try {
           await deleteTeacherCourse(credential, courseId)
+          if (!clearTeacherPendingSupervision({ workspaceId: credential.workspaceId, courseId })) {
+            requireCourseCleanup(credential, courseId)
+            setError(supervisionCopy.cancelFailed)
+            return
+          }
         } catch (cleanupError) {
           console.warn('Could not clean up incomplete teacher course', cleanupError)
-          setPendingInvitation({ credential, courseId, cleanupRequired: true })
+          requireCourseCleanup(credential, courseId)
           setError(supervisionCopy.cancelFailed)
           return
         }
@@ -551,6 +711,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
   if (pendingInvitation) {
     const cleanupRequired = isPendingCourseCleanup(pendingInvitation)
+    const cleanupBlocked = cleanupRequired && !pendingInvitation.credential
     return (
       <div className="max-w-2xl w-full mx-auto bg-sidebar-bg p-8 rounded-xl border border-border-color shadow-xl transition-colors">
         <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400">{supervisionCopy.invitationTitle}</h2>
@@ -590,7 +751,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           </div>
         )}
         <div className="mt-6 rounded-xl border border-border-color bg-input-bg/40 p-4 text-sm text-text-secondary">
-          {cleanupRequired
+          {cleanupBlocked
+            ? supervisionCopy.pendingLocalDiscardWarning
+            : cleanupRequired
             ? supervisionCopy.cancelFailed
             : isCheckingConsent
               ? supervisionCopy.checking
@@ -598,14 +761,24 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         </div>
         {error && <div className="mt-4 text-sm text-amber-700 dark:text-amber-300">{error}</div>}
         <div className="mt-6 flex flex-col-reverse justify-end gap-3 border-t border-border-color pt-4 sm:flex-row">
-          <button
-            type="button"
-            disabled={isGenerating}
-            onClick={() => void handleCancelPendingInvitation()}
-            className="px-4 py-2 text-text-secondary hover:text-text-primary disabled:opacity-50"
-          >
-            {supervisionCopy.cancelInvitation}
-          </button>
+          {cleanupBlocked ? (
+            <button
+              type="button"
+              onClick={handleDiscardBlockedPending}
+              className="px-4 py-2 text-amber-700 hover:text-amber-600 dark:text-amber-300 dark:hover:text-amber-200"
+            >
+              {supervisionCopy.pendingLocalDiscard}
+            </button>
+          ) : (
+            <button
+              type="button"
+              disabled={isGenerating}
+              onClick={() => void handleCancelPendingInvitation()}
+              className="px-4 py-2 text-text-secondary hover:text-text-primary disabled:opacity-50"
+            >
+              {supervisionCopy.cancelInvitation}
+            </button>
+          )}
           {!cleanupRequired && !pendingInvitation.pollingStopped && (
             <button
               type="button"

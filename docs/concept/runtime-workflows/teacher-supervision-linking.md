@@ -1,6 +1,6 @@
 # Existing-Learner Teacher Supervision
 
-Status: additive MVP, disabled by default
+Status: active first-party WebGUI workflow; package-consumer builds remain disabled
 
 This workflow lets a teacher create one local supervision card for an existing
 SkillPilot learner and use the learner's selected subject contexts without
@@ -12,6 +12,11 @@ Mathematics and Physics as two switchable views of the same membership.
 - The existing learner remains the only owner of Personal Curriculum Level 2.
 - Personal Curriculum, mastery, focus, and planned goals are never copied into
   a second learner.
+- Every currently selected Level-2 subject context is projected into the same
+  local class card. Jurisdiction, stage, duration model, and subject course
+  profile remain tied to the existing learner. A later learner-side change is
+  detected by a canonical personalization fingerprint and is not silently
+  applied in the teacher view.
 - The teacher-facing grant is read-only. It carries only
   `PERSONAL_CURRICULUM_READ` and `MASTERY_READ`.
 - The teacher API never returns the permanent SkillPilot ID or the raw
@@ -32,29 +37,43 @@ Mathematics and Physics as two switchable views of the same membership.
 
 ## Pairing flow
 
-1. The teacher browser creates a capability-owned workspace. The clear
+1. In **+ New class**, the teacher chooses **Link an existing learner**, enters
+   the known SkillPilot ID, and supplies only local labels plus the invitation
+   context. The learner alias never leaves the teacher browser.
+2. The teacher browser creates a capability-owned workspace. The clear
    workspace token is returned once and stored separately from class data.
-2. The browser creates a server course and a seven-day, one-time invitation
+3. The browser creates a server course and a seven-day, one-time invitation
    bound to the specified existing SkillPilot ID.
-3. The invitation URL carries its secret in the URL fragment
+4. The invitation URL carries its secret in the URL fragment
    (`/betreuung#invite=...`). The fragment is not sent in the initial HTTP
    request or as a referrer. Preview and acceptance send the token in a JSON
    request body, never in a path or query string.
-4. The accepting person sees the unverified teacher-provided labels and the
+5. The accepting person sees the unverified teacher-provided labels and the
    exact read capabilities, enters the bound SkillPilot ID, and explicitly
    confirms the request.
-5. The server atomically consumes the invitation token and activates the
+6. The server atomically consumes the invitation token and activates the
    membership. The teacher then receives a minimized projection containing an
    opaque member reference, common scope, selected subjects, and a canonical
    personalization fingerprint.
-6. The teacher browser creates one local supervision card. Subject changes
+7. The teacher browser creates one local supervision card. Subject changes
    update only the active local view; they do not create another learner or
    alter Level 2.
+
+The browser keeps a versioned recovery pointer while confirmation is pending.
+It contains neither the permanent SkillPilot ID nor the workspace capability.
+After a reload, the Trainer opens the pending setup instead of creating a
+second workspace, course, or invitation. Ambiguous or terminal failures become
+a token-free cleanup state; only confirmed course closure removes that state.
+The pending record is cleared after the linked class was durably saved.
 
 Only SHA-256 token digests are persisted. Workspace and invitation tokens use
 256 bits of random entropy. Responses use `Cache-Control: no-store`, and the
 complete teacher-supervision namespace bypasses generic request/response body
-logging.
+logging. The HTTP boundary additionally requires an allowed same-site `Origin`
+for mutating requests, JSON for `POST`, limits request bodies to 8 KiB, and
+uses bounded in-memory per-client windows: 10 workspace creations and 120
+other supervision requests per minute. `X-Real-IP` is trusted only across the
+local reverse-proxy hop; `X-Forwarded-For` is ignored.
 
 ## Server model
 
@@ -69,6 +88,13 @@ The additive Liquibase model consists of:
 Learner foreign keys use database deletion cascades so manual deletion and the
 365-day learner-retention process cannot be blocked by supervision records.
 Closing a course revokes every pending or active membership.
+
+Invitations expire after seven days. Active memberships remain until the
+learner revokes the grant, the teacher closes the course, or the learner state
+is deleted. Expired or revoked memberships and then-empty courses/workspaces
+are removed after a terminal retention period of at most 30 days in the next
+daily cleanup run. Configuration can shorten, but cannot extend, this terminal
+retention ceiling.
 
 ## API boundary
 
@@ -107,14 +133,19 @@ publicly shared identifier (or an authenticated learner account/device
 credential) and a teacher identity. That phase is deliberately not smuggled
 into this additive MVP.
 
-## Rollout gate
+## Activation and rollback
 
-The backend is fail-closed unless
-`skillpilot.teacher-supervision.enabled=true` (or the equivalent relaxed-bound
-environment variable) is set. The WebGUI option is likewise built only with
-`VITE_TEACHER_SUPERVISION_ENABLED=true`.
+The first-party development and production WebGUI builds set
+`VITE_TEACHER_SUPERVISION_ENABLED=true`; the production backend defaults
+`skillpilot.teacher-supervision.enabled` to true. Either side can be disabled
+independently with its corresponding environment variable for a bounded
+rollback. Package-consumer builds explicitly keep the WebGUI option disabled.
 
-Before production enablement, the operator must separately approve and publish
-the applicable privacy/retention wording and operational abuse controls. This
-MVP does not alter the frozen OpenAI Coach v1 contract, learner session
-semantics, MCP/OAuth tools, or provider launch flow.
+`/betreuung` is an explicit SPA deep link, while paths below the API namespace
+remain backend routes. The focused unit, browser, backend integration, HTTP
+boundary, retention, and SPA regressions run in CI through
+`test:teacher-supervision` and the backend test suite.
+
+This workflow is independent of the frozen OpenAI Coach v1 contract. It does
+not change learner sessions, MCP/OAuth tools, provider launch flows, or the
+submitted MCP Apps UI.

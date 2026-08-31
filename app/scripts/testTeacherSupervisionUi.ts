@@ -26,6 +26,19 @@ assert(
   'failed and cancelled wizards clean up their server-side course',
 )
 assert(
+  setupSource.includes('courseError.status === 401')
+    && setupSource.includes('!hasTeacherPendingSupervisionRecord()')
+    && setupSource.includes('removeTeacherWorkspaceCredential(credential)')
+    && setupSource.includes('credential = await createTeacherWorkspace()'),
+  'only a stale 401 credential without pending work is replaced for one explicit retry',
+)
+assert(
+  trainerSource.includes('TEACHER_SUPERVISION_ENABLED && hasTeacherPendingSupervisionRecord()')
+    && trainerSource.includes('if (!persistClasses(next)) return false')
+    && setupSource.indexOf('if (!onSave(session))') < setupSource.indexOf('clearTeacherPendingSupervision({'),
+  'pending setup resumes automatically and clears only after durable class persistence',
+)
+assert(
   setupSource.includes('member.memberId === invitation.memberId')
     && setupSource.includes('memberId: invitation.memberId'),
   'polling links only the exact invited member and never the first active course member',
@@ -91,5 +104,10 @@ assert.match(
   /const getStudentMastery = useMemo\([\s\S]*?const masteryCache = new Map[\s\S]*?\[classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap\]\)/,
   'mastery aggregation cache must be rebuilt when async learner mastery or the active subject changes',
 )
+assert(
+  trainerSource.includes('readTeacherMasteryValue(studentMap, gId, key)')
+    && trainerSource.includes('readTeacherMasteryValue(studentMasteryMap, gId, key)'),
+  'linked trainer mastery prefers current canonical goal IDs and retains only a legacy-key fallback',
+)
 
-console.log('teacher supervision UI security contract tests passed')
+await import('./testTeacherSupervisionTrainerUi')
