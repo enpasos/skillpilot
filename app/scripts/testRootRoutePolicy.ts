@@ -61,6 +61,16 @@ assert.equal(
   'the public plugin download must not synchronize stored learner state into its URL',
 )
 assert.equal(
+  shouldRunApplicationCore('/betreuung'),
+  false,
+  'the public teacher-supervision invitation must not issue catalog, profile, or mastery requests',
+)
+assert.equal(
+  shouldSyncRouteStateToUrl('/betreuung/'),
+  false,
+  'the public teacher-supervision invitation must not synchronize stored learner state into its URL',
+)
+assert.equal(
   shouldRenderSessionSetup({
     pathname: '/learner',
     hasActiveSession: true,

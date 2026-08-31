@@ -237,7 +237,7 @@ const App: React.FC = () => {
     role: role || 'explorer',
     setLearnerMeta,
     skillpilotId: sanitizedSkillpilotId,
-    enabled: normalizedPath !== '/betreuung' && shouldRunApplicationCore(normalizedPath),
+    enabled: shouldRunApplicationCore(normalizedPath),
   })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
   const selectedLandscapeId = core.selectedLandscapeId
