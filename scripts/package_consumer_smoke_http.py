@@ -438,7 +438,22 @@ def run() -> int:
         require("text/html" in headers.get("Content-Type", ""), "app shell is not HTML")
         require('<div id="root"></div>' in text, "app shell has no React root")
         require('/assets/' in text, "app shell has no built frontend asset")
-        return {"status": status, "bytes": len(body), "bodySha256": sha256(body)}
+        supervision_status, _supervision_headers, supervision_body = request(
+            "/api/ui/teacher-supervision/v1/workspaces",
+            method="POST",
+            json_body={},
+        )
+        require(
+            supervision_status == 404,
+            f"first-party teacher supervision is active in the package consumer: {supervision_status}",
+        )
+        return {
+            "status": status,
+            "bytes": len(body),
+            "bodySha256": sha256(body),
+            "teacherSupervisionStatus": supervision_status,
+            "teacherSupervisionBodySha256": sha256(supervision_body),
+        }
 
     @check("catalog.package-discovery")
     def catalog_discovery() -> dict[str, Any]:

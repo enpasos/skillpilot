@@ -51,7 +51,12 @@ Object.defineProperty(globalThis, 'fetch', {
       return Response.json(invitationResponse, { status: 201 })
     }
     if (url.endsWith('/mastery')) {
-      return Response.json({ mastery: { goal_a: 0.75 } })
+      return Response.json({
+        memberId: 'member-1',
+        landscapeId: 'physics',
+        personalizationFingerprint: 'sha256:projection-a',
+        mastery: { goal_a: 0.75 },
+      })
     }
     throw new Error(`Unexpected request ${url}`)
   },
@@ -59,21 +64,53 @@ Object.defineProperty(globalThis, 'fetch', {
 
 const {
   buildLinkedClassSession,
+  clearTeacherPendingSupervision,
+  clearTeacherPendingSupervisionSnapshot,
   createTeacherCourse,
   createTeacherInvitation,
   createTeacherWorkspace,
   findTeacherWorkspaceCredential,
+  getTeacherPendingSupervisionRecordSnapshot,
   getTeacherMemberMastery,
   isLinkedClassSession,
+  loadTeacherPendingSupervision,
+  readTeacherMasteryValue,
+  removeTeacherWorkspaceCredential,
+  saveTeacherPendingCleanup,
+  saveTeacherPendingInvitation,
   selectLinkedSubject,
+  TEACHER_PENDING_SUPERVISION_STORAGE_KEY,
   toFragmentInvitationUrl,
 } = await import('./teacherSupervision')
+
+const canonicalMasteryGoalId = 'cf474eab-1379-4877-907e-58b0892ce734'
+const legacyMasteryGoalKey = 'cf474eab_1379_4877_907e_58b0892ce734'
+assert.equal(
+  readTeacherMasteryValue({ [canonicalMasteryGoalId]: 0.75 }, canonicalMasteryGoalId, legacyMasteryGoalKey),
+  0.75,
+  'teacher mastery reads the canonical UUID key returned by the current backend',
+)
+assert.equal(
+  readTeacherMasteryValue({ [legacyMasteryGoalKey]: 0.5 }, canonicalMasteryGoalId, legacyMasteryGoalKey),
+  0.5,
+  'teacher mastery keeps the legacy normalized-key fallback',
+)
+assert.equal(
+  readTeacherMasteryValue(
+    { [canonicalMasteryGoalId]: 0, [legacyMasteryGoalKey]: 1 },
+    canonicalMasteryGoalId,
+    legacyMasteryGoalKey,
+  ),
+  0,
+  'an explicit canonical zero wins over stale legacy mastery',
+)
 
 const credential = await createTeacherWorkspace()
 assert.deepEqual(credential, { workspaceId: 'workspace-1', accessToken: 'sptw_secret' })
 assert.equal(requests[0].init?.body, '{}', 'workspace creation requires an explicit empty JSON body')
 assert.equal(new Headers(requests[0].init?.headers).get('Content-Type'), 'application/json')
 assert.deepEqual(findTeacherWorkspaceCredential('workspace-1'), credential)
+assert.equal(findTeacherWorkspaceCredential('workspace-missing'), null, 'workspace restoration never falls back to another capability')
 
 await createTeacherCourse(credential, {
   courseLabel: 'SkillPilot-Einzelbetreuung',
@@ -151,5 +188,112 @@ assert.throws(
   /Invalid teacher invitation response/u,
   'query-string invitation secrets are rejected fail-closed',
 )
+
+const permanentLearnerId = '11111111-2222-4333-8444-555555555555'
+assert.equal(saveTeacherPendingInvitation({
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+  memberId: 'member-1',
+  invitationUrl: '/betreuung#invite=spti_pending_secret',
+  className: 'Lokale Einzelbetreuung',
+  learnerAlias: 'Alex',
+}), false, 'an invitation cannot be persisted before its cleanup marker')
+assert.equal(saveTeacherPendingCleanup({ workspaceId: 'workspace-1', courseId: 'course-1' }), true)
+assert.equal(saveTeacherPendingInvitation({
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+  memberId: 'member-1',
+  invitationUrl: '/betreuung#invite=spti_pending_secret',
+  className: 'Lokale Einzelbetreuung',
+  learnerAlias: 'Alex',
+}), true)
+const storedPendingRaw = localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+assert(storedPendingRaw)
+assert.equal(storedPendingRaw.includes(permanentLearnerId), false, 'pending state never stores a SkillPilot ID')
+assert.equal(storedPendingRaw.includes('sptw_secret'), false, 'pending state never stores the workspace capability')
+assert.deepEqual(JSON.parse(storedPendingRaw), {
+  version: 1,
+  kind: 'invitation',
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+  memberId: 'member-1',
+  invitationUrl: 'https://skillpilot.test/betreuung#invite=spti_pending_secret',
+  className: 'Lokale Einzelbetreuung',
+  learnerAlias: 'Alex',
+})
+assert.deepEqual(loadTeacherPendingSupervision(), {
+  version: 1,
+  kind: 'invitation',
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+  memberId: 'member-1',
+  invitationUrl: 'https://skillpilot.test/betreuung#invite=spti_pending_secret',
+  className: 'Lokale Einzelbetreuung',
+  learnerAlias: 'Alex',
+})
+
+assert.equal(saveTeacherPendingCleanup({ workspaceId: 'workspace-1', courseId: 'course-1' }), true)
+assert.deepEqual(loadTeacherPendingSupervision(), {
+  version: 1,
+  kind: 'cleanup-required',
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+})
+assert.equal(clearTeacherPendingSupervision({ workspaceId: 'workspace-other', courseId: 'course-other' }), true)
+assert.notEqual(
+  localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY),
+  null,
+  'a stale tab cannot clear another pending course',
+)
+assert.equal(clearTeacherPendingSupervision({ workspaceId: 'workspace-1', courseId: 'course-1' }), true)
+assert.equal(loadTeacherPendingSupervision(), null)
+
+assert.equal(saveTeacherPendingInvitation({
+  workspaceId: '',
+  courseId: 'course-invalid',
+  memberId: 'member-invalid',
+  invitationUrl: '/betreuung#invite=spti_pending_secret',
+  className: 'Ungültig',
+  learnerAlias: 'Alex',
+}), false, 'invalid pending values are rejected before they reach storage')
+assert.equal(localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY), null)
+
+localStorage.setItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY, JSON.stringify({
+  version: 1,
+  kind: 'invitation',
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+  memberId: 'member-1',
+  invitationUrl: '/betreuung#invite=spti_pending_secret',
+  className: 'Lokale Einzelbetreuung',
+  learnerAlias: 'Alex',
+  skillpilotId: permanentLearnerId,
+}))
+assert.deepEqual(loadTeacherPendingSupervision(), {
+  version: 1,
+  kind: 'cleanup-required',
+  workspaceId: 'workspace-1',
+  courseId: 'course-1',
+}, 'records with unexpected identity fields are reduced to a token-free cleanup pointer')
+const sanitizedPendingRaw = localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY)
+assert(sanitizedPendingRaw)
+assert.equal(sanitizedPendingRaw.includes(permanentLearnerId), false)
+assert.equal(sanitizedPendingRaw.includes('spti_pending_secret'), false)
+assert.equal(clearTeacherPendingSupervision({ workspaceId: 'workspace-1', courseId: 'course-1' }), true)
+localStorage.setItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY, '{"invalid":true}')
+const invalidSnapshot = getTeacherPendingSupervisionRecordSnapshot()
+assert(invalidSnapshot)
+assert.equal(clearTeacherPendingSupervisionSnapshot('{"different":true}'), true)
+assert.equal(localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY), invalidSnapshot)
+assert.equal(clearTeacherPendingSupervisionSnapshot(invalidSnapshot), true)
+assert.equal(localStorage.getItem(TEACHER_PENDING_SUPERVISION_STORAGE_KEY), null)
+
+assert.equal(removeTeacherWorkspaceCredential({
+  workspaceId: 'workspace-1',
+  accessToken: 'sptw_wrong_secret',
+}), false, 'credential cleanup requires the exact retained capability')
+assert.deepEqual(findTeacherWorkspaceCredential('workspace-1'), credential)
+assert.equal(removeTeacherWorkspaceCredential(credential), true)
+assert.equal(findTeacherWorkspaceCredential('workspace-1'), null)
 
 console.log('teacher supervision model and client tests passed')

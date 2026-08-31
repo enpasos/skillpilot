@@ -14,9 +14,31 @@ const deRetentionText = de.sections.find(section => section.title.includes('Spei
   ?.paragraphs.join(' ') ?? ''
 const enRetentionText = en.sections.find(section => section.title.includes('Storage Period'))
   ?.paragraphs.join(' ') ?? ''
+const deTeacherSupervisionText = de.sections.find(section => section.title.includes('Betreuung durch eine Lehrkraft'))
+  ?.paragraphs.join(' ') ?? ''
+const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Teacher Supervision'))
+  ?.paragraphs.join(' ') ?? ''
 
-assert(de.effectiveDate.includes('13. August 2026'), 'German privacy copy carries the current retention date')
-assert(en.effectiveDate.includes('August 13, 2026'), 'English privacy copy carries the current retention date')
+assert(de.effectiveDate.includes('31. August 2026'), 'German privacy copy carries the current supervision date')
+assert(en.effectiveDate.includes('August 31, 2026'), 'English privacy copy carries the current supervision date')
+assert(
+  deTeacherSupervisionText.includes('ausdrücklich bestätigen')
+    && deTeacherSupervisionText.includes('freigegebenen Leserechte')
+    && deTeacherSupervisionText.includes('dauerhafte SkillPilot-ID')
+    && deTeacherSupervisionText.includes('sieben Tagen')
+    && deTeacherSupervisionText.includes('Aufbewahrungsfrist von 30 Tagen')
+    && deTeacherSupervisionText.includes('nächsten täglichen Löschlauf'),
+  'German privacy copy states supervision consent, minimization, expiry, and terminal retention',
+)
+assert(
+  enTeacherSupervisionText.includes('explicitly approve')
+    && enTeacherSupervisionText.includes('approved read capabilities')
+    && enTeacherSupervisionText.includes('permanent SkillPilot ID')
+    && enTeacherSupervisionText.includes('seven days')
+    && enTeacherSupervisionText.includes('30-day retention period')
+    && enTeacherSupervisionText.includes('next daily deletion run'),
+  'English privacy copy states supervision consent, minimization, expiry, and terminal retention',
+)
 assert(
   deAiText.includes('Visible Session')
     && deAiText.includes('OAuth/MCP')

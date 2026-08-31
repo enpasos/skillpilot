@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.skillpilot.backend.teachersupervision.TeacherSupervisionApi;
+import com.skillpilot.backend.teachersupervision.TeacherSupervisionProtectionFilter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -76,7 +76,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         // controller route, whereas getRequestURI() deliberately retains them.
         // Fail closed for the complete reserved prefix so no routable variant can
         // fall through to generic request/response body logging.
-        boolean teacherSupervision = requestUri.startsWith(TeacherSupervisionApi.BASE_PATH);
+        boolean teacherSupervision = TeacherSupervisionProtectionFilter.isProtectedNamespace(request);
         if (teacherSupervision) {
             // Apply this at the filter boundary so malformed or validation-failing
             // capability requests are no-store as well, before a controller runs.

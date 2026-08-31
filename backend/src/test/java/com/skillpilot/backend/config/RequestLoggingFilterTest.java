@@ -76,7 +76,9 @@ class RequestLoggingFilterTest {
                 "/api/ui/teacher-supervision/v1/workspaces",
                 "/api/ui/teacher-supervision/v1/invitations/accept",
                 "/api/ui/teacher-supervision/v1/learner-memberships/list",
-                "/api/ui/teacher-supervision/v1;probe=x/invitations/accept"
+                "/api/ui/teacher-supervision/v1;probe=x/invitations/accept",
+                "/api;probe=x/ui/teacher-supervision/v1/invitations/accept",
+                "/api/ui/teacher-supervision;probe=x/v1/invitations/accept"
         }) {
             MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
             request.setContentType("application/json");
@@ -117,16 +119,20 @@ class RequestLoggingFilterTest {
 
     @Test
     void similarlyPrefixedRouteStillUsesTheGeneralRequestLogger() throws Exception {
-        MockHttpServletRequest request = new MockHttpServletRequest(
-                "POST",
-                "/api/action-regressionevil/v1/verify");
-        MockHttpServletResponse response = new MockHttpServletResponse();
-        MockFilterChain chain = new MockFilterChain();
+        for (String path : new String[] {
+                "/api/action-regressionevil/v1/verify",
+                "/api/ui/teacher-supervision/v10/workspaces",
+                "/api/ui/teacher-supervisionevil/v1/workspaces"
+        }) {
+            MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            MockFilterChain chain = new MockFilterChain();
 
-        filter.doFilter(request, response, chain);
+            filter.doFilter(request, response, chain);
 
-        assertThat(chain.getRequest()).isNotSameAs(request);
-        assertThat(chain.getResponse()).isNotSameAs(response);
+            assertThat(chain.getRequest()).as(path).isNotSameAs(request);
+            assertThat(chain.getResponse()).as(path).isNotSameAs(response);
+        }
     }
 
     @Test

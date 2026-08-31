@@ -727,6 +727,201 @@ const expectedAuthorizedRuntimeExceptions = [
       },
     ],
   },
+  {
+    id: "2026-08-31-existing-learner-teacher-supervision-activation",
+    approvedAt: "2026-08-31",
+    approvedBy: "product-owner",
+    reason:
+      "Let a teacher create one read-only class from one known existing SkillPilot ID while the learner keeps ownership of all approved subject personalizations and learning state.",
+    scope:
+      "In the current first-party WebGUI and backend only, activate the existing-learner supervision flow with a seven-day one-time invitation, explicit matching-learner approval, one opaque teacher membership spanning the approved subject projections, read-only membership-bound mastery access, local-only learner alias, explicit personalization refresh, revocation and course closure; " +
+      "add fail-closed reload recovery, response binding, same-site and size protection, bounded rate limits, terminal-record cleanup, the /betreuung SPA entry, focused CI and package-consumer disablement; never expose the permanent SkillPilot ID or raw personalization document to the teacher, never permit teacher-side learner-state writes, and preserve every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, review-case, portal, fixture and review-artifact contract.",
+    target: "current-production-first-party-web-frontend-and-backend",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-independent-first-party-teacher-supervision-no-submitted-openai-contract-or-review-flow-effect",
+    protectedFile: {
+      path: "backend/src/main/resources/application.yml",
+      submittedSha256:
+        "15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591",
+      priorAuthorizedSha256:
+        "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990",
+      authorizedSha256:
+        "7377e3aa197f1156c3ca425b57ff08bde430a451ba1b5f0b27bc1359743c616f",
+    },
+    evidenceFile: {
+      path: "app/scripts/testTeacherSupervisionTrainerUi.ts",
+      sha256:
+        "5b78c3ef9e337eecc2050e71a1528581f0c89439e1182576dab18b2d7a7b007c",
+    },
+    additionalFiles: [
+      {
+        path: ".github/workflows/ci.yml",
+        authorizedSha256:
+          "7a3f99c29ae88eaef78e86422be940359aaf46839ea3969418e4455f27b412c2",
+      },
+      {
+        path: "app/.env",
+        authorizedSha256:
+          "8bee290c0e575c1c43d0309b40eae4a54433227572feea15d5c769c41b3d4dcd",
+      },
+      {
+        path: "app/.env.production",
+        authorizedSha256:
+          "e12c251a3f7aa563748a4cf077f695a314e6e8a8508446fb4e55e1760fc263b5",
+      },
+      {
+        path: "app/.env.package-consumer",
+        authorizedSha256:
+          "c51d20d7477657ba1894d762915006c8ad94d42d5a3412a51f1e67364459db8a",
+      },
+      {
+        path: "app/scripts/fixtures/teacherSupervisionClassSetupUi.tsx",
+        authorizedSha256:
+          "dddb26242831f3206ea614b1f8af1876268f3dd748aea96945af8a43663db9af",
+      },
+      {
+        path: "app/scripts/fixtures/teacherSupervisionTrainerUi.html",
+        authorizedSha256:
+          "24f5a00f9513a5b92bc2ab3280efac829d16ec243a2eaddc57ec68bbec88a755",
+      },
+      {
+        path: "app/scripts/fixtures/teacherSupervisionTrainerUi.tsx",
+        authorizedSha256:
+          "a0ee4702182ff6c145c02e1840c78a40304b1b3e3c6e3ed9c49142adaebf3345",
+      },
+      {
+        path: "app/scripts/testTeacherSupervisionClassSetupUi.ts",
+        authorizedSha256:
+          "e15d8901b948013a8ae3ab40798c81df4062854b42106988324940db11d20b63",
+      },
+      {
+        path: "app/scripts/testTeacherSupervisionUi.ts",
+        authorizedSha256:
+          "034bc3082a40ab3d5b2ade8ded89d4a00d955aa60f4eaa8613e412f8acb0418d",
+      },
+      {
+        path: "app/src/components/ClassSetup.tsx",
+        authorizedSha256:
+          "f4fd8c1e65b88f23cb806b36461e5fc735e1fcfae5f524bc76223e85fc18488d",
+      },
+      {
+        path: "app/src/utils/teacherSupervision.test.ts",
+        authorizedSha256:
+          "afe163aac7404723c72e8f22f425a6366d02264edd5094cdb788ded740d48527",
+      },
+      {
+        path: "app/src/utils/teacherSupervision.ts",
+        authorizedSha256:
+          "59885c733af39e251b7fe2456b22046cf41df493dc0d2a3e2bbf00c16ece5ae0",
+      },
+      {
+        path: "app/src/utils/teacherSupervisionCopy.ts",
+        authorizedSha256:
+          "db27d3a6798524bc72a8391747109b4a87de2efb283515f7486e4408aa2f016d",
+      },
+      {
+        path: "app/src/views/TrainerView.tsx",
+        authorizedSha256:
+          "1d2162e65072870f42a9edf355b1e8082e2c1349dce6b6da2c7578bcab16ec30",
+      },
+      {
+        path: "app/src/vite-env.d.ts",
+        authorizedSha256:
+          "8e4c11c122e2c5cafd45d33bc2895c6e3e53b21560e71b3589795fb85d2d04ef",
+      },
+      {
+        path: "backend/src/main/java/com/skillpilot/backend/config/RequestLoggingFilter.java",
+        authorizedSha256:
+          "c2a49b601b864e42b298afab975b19654c07cbb94a94c1dd870b96126c421dd5",
+      },
+      {
+        path: "backend/src/main/java/com/skillpilot/backend/controller/SpaController.java",
+        authorizedSha256:
+          "b78716065ce0fa10dccaddbd1a18b6dda8aa13feb1b16d158a55ebf6a9bfa0b9",
+      },
+      {
+        path: "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionProtectionFilter.java",
+        authorizedSha256:
+          "96b726602d5a76ff7ab30624959264e9db50d340c6f9b3c70aee5e7567a93b40",
+      },
+      {
+        path: "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionRetentionCleanupJob.java",
+        authorizedSha256:
+          "d361d712ee055282fe88cb3c20df3650bce26d0ba28da045b6caa7dd7fb1df8e",
+      },
+      {
+        path: "backend/src/test/java/com/skillpilot/backend/config/RequestLoggingFilterTest.java",
+        authorizedSha256:
+          "84423caa8f4ba546c2f6f142663855b4c366f768ea2cd8e9ab8e909a51c6bdce",
+      },
+      {
+        path: "backend/src/test/java/com/skillpilot/backend/controller/SpaControllerTest.java",
+        authorizedSha256:
+          "c887293de2bfbc5167b4b05f8c05b6d643d122c58751b9e77ffafd383363735b",
+      },
+      {
+        path: "backend/src/test/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionIntegrationTest.java",
+        authorizedSha256:
+          "5eb81a24339054a1a6c42d23f0287fedd26e8b701c814d03eb7e380990d01ca0",
+      },
+      {
+        path: "backend/src/test/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionProtectionFilterTest.java",
+        authorizedSha256:
+          "9ac1204a42befa62a401f764183264e65834df41f2ea31f67108e80f23f23c51",
+      },
+      {
+        path: "backend/src/test/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionRetentionCleanupIntegrationTest.java",
+        authorizedSha256:
+          "3edb4c7a7cc10a82fd90bbdc77ea8ca6e2ed78cdae253e31707c291892fc2a64",
+      },
+      {
+        path: "contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json",
+        authorizedSha256:
+          "ec5dfbff03ddaccd89371abddc592d9e4a9b29c913115da7a9b8f74abcdeb941",
+      },
+      {
+        path: "docs/concept/runtime-workflows/teacher-supervision-linking.md",
+        authorizedSha256:
+          "0d3ff0f7c4c9eead3b00ac6b5b80866a10f7cd56ec83175130a93253fc2fd166",
+      },
+      {
+        path: "scripts/package_consumer_smoke_http.py",
+        authorizedSha256:
+          "7a9c5943480e9d223367dc4c54164029d936d557d8072c623c669ad5a471668a",
+      },
+      {
+        path: "scripts/run_package_consumer_smoke.py",
+        authorizedSha256:
+          "4490199905bd4e87b1ed63cb7946545ffed16e26d06daad789e64b5c5c7bcffe",
+      },
+    ],
+  },
+  {
+    id: "2026-08-31-teacher-supervision-privacy-disclosure",
+    approvedAt: "2026-08-31",
+    approvedBy: "product-owner",
+    reason:
+      "Disclose the newly activated optional read-only teacher-supervision processing accurately in the public privacy policy.",
+    scope:
+      "Change only the German and English privacy-policy date, section numbering and teacher-supervision disclosure covering explicit approval, read-only subject and mastery access, stored capability digests and membership data, local-only alias, seven-day one-time invitations, revocation, closure and the bounded terminal-record deletion schedule; preserve all existing legal promises and every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, review-case, portal, fixture and review-artifact contract.",
+    target: "current-production-first-party-privacy-policy",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-accurate-first-party-teacher-supervision-privacy-disclosure-no-submitted-openai-contract-or-review-flow-effect",
+    protectedFile: {
+      path: "app/src/utils/privacyViewCopy.ts",
+      submittedSha256:
+        "471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b",
+      authorizedSha256:
+        "7bbdc2dd7f88ae7e68c17552dbe44d17b830d55d45c165b65c9b2436563f468b",
+    },
+    evidenceFile: {
+      path: "app/src/utils/privacyViewCopy.test.ts",
+      sha256:
+        "1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295",
+    },
+  },
 ];
 
 const expectedAuthorizedCopyClarifications = [

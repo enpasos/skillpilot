@@ -56,9 +56,12 @@ import {
   findTeacherWorkspaceCredential,
   getTeacherCourse,
   getTeacherMemberMastery,
+  hasTeacherPendingSupervisionRecord,
   isLinkedClassSession,
   isTeacherSupervisionNotFound,
+  readTeacherMasteryValue,
   selectLinkedSubject,
+  TEACHER_SUPERVISION_ENABLED,
   type TeacherSupervisionMember,
 } from '../utils/teacherSupervision'
 import { getTeacherSupervisionCopy } from '../utils/teacherSupervisionCopy'
@@ -162,7 +165,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [classes, setClasses] = useState<ClassSession[]>(loadStoredTrainerClasses)
   const [activeClassId, setActiveClassId] = useState<string | null>(loadStoredActiveClassId)
   const [openingClassId, setOpeningClassId] = useState<string | null>(null)
-  const [isCreating, setIsCreating] = useState(false)
+  const [isCreating, setIsCreating] = useState(() => (
+    TEACHER_SUPERVISION_ENABLED && hasTeacherPendingSupervisionRecord()
+  ))
   const [editingClassId, setEditingClassId] = useState<string | null>(null)
   const [isAssigning, setIsAssigning] = useState(false)
   const [selectedGoalId, setSelectedGoalId] = useState<string>('')
@@ -173,6 +178,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [compositionRetryToken, setCompositionRetryToken] = useState(0)
   const [linkedAccessByClass, setLinkedAccessByClass] = useState<Map<string, LinkedAccessState>>(new Map())
   const [linkedValidationRetryToken, setLinkedValidationRetryToken] = useState(0)
+  const linkedMasteryRequestKeyRef = useRef<string | null>(null)
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
     title: string
@@ -412,17 +418,27 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [activeClass, activeClassLandscapeDurationModel, activeClassLandscapeFilterId, activeClassRootDurationModel, activeClassRootFilterId])
   const trainerCompositionRequest = useMemo<TrainerCompositionRequest | null>(() => {
     if (!activeClass || !activeClassPersonalCurriculum) return null
-    if (runtimeCatalogState.mode === 'loading' || runtimeCatalogState.mode === 'unavailable') return null
+    const linkedFailClosedRequest = (reason: string): TrainerCompositionRequest => ({
+      key: `linked-unavailable:${reason}:${activeClass.landscapeId}`,
+      landscapeId: activeClass.landscapeId,
+      url: null,
+    })
+    if (runtimeCatalogState.mode === 'loading' || runtimeCatalogState.mode === 'unavailable') {
+      return activeClassIsLinked
+        ? linkedFailClosedRequest(`catalog-${runtimeCatalogState.mode}`)
+        : null
+    }
 
     const packageRootLandscapeId = runtimeCatalogState.mode === 'package'
       ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, activeClass.landscapeId)
       : undefined
     const rootLandscapeId = packageRootLandscapeId ?? activeClass.rootLandscapeId
+    const compositionScopeEnabled = runtimeCatalogState.mode === 'package'
+      || isRepositoryGymnasiumFramework(activeClassSourceLandscapeEntry?.meta.frameworkId)
     const scope = deriveRuntimeCompositionScope({
       landscapeId: activeClass.landscapeId,
       rootLandscapeId,
-      scopeEnabled: runtimeCatalogState.mode === 'package'
-        || isRepositoryGymnasiumFramework(activeClassSourceLandscapeEntry?.meta.frameworkId),
+      scopeEnabled: compositionScopeEnabled,
       catalogJurisdictions: runtimeCatalogState.mode === 'package'
         ? runtimeCatalogState.catalog.offerings
             .filter((offering) => offering.landscapeId === activeClass.landscapeId)
@@ -432,6 +448,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       activeFilter: activeClass.activeFilter,
       learnerPersonalCurriculum: activeClassPersonalCurriculum,
     })
+
+    if (!scope && activeClassIsLinked && compositionScopeEnabled) {
+      return linkedFailClosedRequest('scope')
+    }
 
     if (runtimeCatalogState.mode === 'repository') {
       if (!scope) return null
@@ -454,11 +474,15 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     const catalogLandscape = runtimeCatalogState.catalog.landscapes.find(
       (candidate) => candidate.landscapeId === activeClass.landscapeId,
     )
-    if (!catalogLandscape) return null
+    if (!catalogLandscape) {
+      return activeClassIsLinked ? linkedFailClosedRequest('catalog-landscape') : null
+    }
     const hasOfferings = runtimeCatalogState.catalog.offerings.some(
       (candidate) => candidate.landscapeId === activeClass.landscapeId,
     )
-    if (!hasOfferings && !catalogLandscape.defaultOfferingId) return null
+    if (!hasOfferings && !catalogLandscape.defaultOfferingId) {
+      return activeClassIsLinked ? linkedFailClosedRequest('catalog-offering') : null
+    }
 
     const requestedScope = scope
       ? Object.entries(scope).reduce<Record<string, string>>((result, [key, value]) => {
@@ -490,6 +514,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     }
   }, [
     activeClass,
+    activeClassIsLinked,
     activeClassPersonalCurriculum,
     activeClassSourceLandscapeEntry?.meta.frameworkId,
     runtimeCatalogState,
@@ -745,11 +770,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           let masteryValue = 0
           if (currentLearnerId === '__ALL__') {
             const key = goalShortKeyMap.get(gId)
-            if (!key) return { masterySum: 0, weightSum: 0 }
             let totalMasteryForGoal = 0
             let studentsCounted = 0
             masteryByStudent.forEach((studentMap) => {
-              const studentMastery = studentMap[key] ?? 0
+              const studentMastery = readTeacherMasteryValue(studentMap, gId, key)
               totalMasteryForGoal += studentMastery
               studentsCounted++
             })
@@ -757,7 +781,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           } else {
             // Existing logic for single student view
             const key = goalShortKeyMap.get(gId)
-            masteryValue = key ? studentMasteryMap?.[key] ?? 0 : 0
+            masteryValue = studentMasteryMap
+              ? readTeacherMasteryValue(studentMasteryMap, gId, key)
+              : 0
           }
           const weight = goal.weight ?? 1
           masterySum = masteryValue * weight
@@ -781,9 +807,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [classGoalIndexAll, currentLearnerId, masteryByStudent, goalShortKeyMap])
 
   const persistClasses = useCallback((items: ClassSession[]) => {
-    setClasses(items)
     try {
       localStorage.setItem('skillpilot_classes', JSON.stringify(items))
+      setClasses(items)
       return true
     } catch (err) {
       console.warn('Could not save classes', err)
@@ -956,7 +982,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'inactive' }))
           return
         }
-        const remoteFingerprint = member.personalizationFingerprint ?? ''
+        const remoteFingerprint = member.personalizationFingerprint?.trim() ?? ''
+        if (!activeLinkedFingerprint?.trim() || !remoteFingerprint) {
+          setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'error' }))
+          return
+        }
         if (remoteFingerprint !== activeLinkedFingerprint) {
           setLinkedAccessByClass((current) => new Map(current).set(activeLinkedClassId, { status: 'changed', member }))
           return
@@ -981,6 +1011,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 
   useEffect(() => {
     if (!activeClass || trainerWorkspace === 'plan') {
+      linkedMasteryRequestKeyRef.current = null
       setMasteryByStudent(new Map())
       setPlannedGoalsByStudent(new Map())
       return
@@ -988,8 +1019,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
 
     if (isLinkedClassSession(activeClass)) {
       setPlannedGoalsByStudent(new Map())
+      setMasteryByStudent(new Map())
       if (activeLinkedAccessStatus !== 'ready') {
-        setMasteryByStudent(new Map())
+        linkedMasteryRequestKeyRef.current = null
         return
       }
 
@@ -999,12 +1031,20 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           && student.id === activeClass.linkedSupervision.memberId,
       )
       if (!credential || !memberStudent) {
+        linkedMasteryRequestKeyRef.current = null
         setMasteryByStudent(new Map())
         setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'missing-token' }))
         return
       }
 
       const controller = new AbortController()
+      const requestKey = [
+        activeClass.id,
+        activeClass.linkedSupervision.memberId,
+        activeClass.landscapeId,
+        activeClass.linkedSupervision.personalizationFingerprint ?? '',
+      ].join('\u0000')
+      linkedMasteryRequestKeyRef.current = requestKey
       void getTeacherMemberMastery(
         credential,
         activeClass.linkedSupervision.courseId,
@@ -1013,20 +1053,53 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         controller.signal,
       )
         .then((response) => {
+          if (controller.signal.aborted || linkedMasteryRequestKeyRef.current !== requestKey) return
+          const expectedFingerprint = activeClass.linkedSupervision.personalizationFingerprint?.trim() ?? ''
+          if (
+            response.memberId !== activeClass.linkedSupervision.memberId
+            || response.landscapeId !== activeClass.landscapeId
+            || !expectedFingerprint
+            || response.personalizationFingerprint !== expectedFingerprint
+          ) {
+            linkedMasteryRequestKeyRef.current = null
+            setMasteryByStudent(new Map())
+            if (
+              response.memberId === activeClass.linkedSupervision.memberId
+              && response.landscapeId === activeClass.landscapeId
+              && response.personalizationFingerprint
+              && response.personalizationFingerprint !== expectedFingerprint
+            ) {
+              setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'checking' }))
+              setLinkedValidationRetryToken((current) => current + 1)
+            } else {
+              setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'error' }))
+            }
+            notifyLoadErrorOnce('trainer-class-data-load', notifications.trainerClassDataLoadFailed)
+            return
+          }
           setMasteryByStudent(new Map([[memberStudent.id, response.mastery ?? {}]]))
           clearReportedLoadError('trainer-class-data-load')
         })
         .catch((nextError) => {
-          if (controller.signal.aborted) return
+          if (controller.signal.aborted || linkedMasteryRequestKeyRef.current !== requestKey) return
+          linkedMasteryRequestKeyRef.current = null
           setMasteryByStudent(new Map())
           if (isTeacherSupervisionNotFound(nextError)) {
             setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'inactive' }))
           } else {
+            setLinkedAccessByClass((current) => new Map(current).set(activeClass.id, { status: 'error' }))
             notifyLoadErrorOnce('trainer-class-data-load', notifications.trainerClassDataLoadFailed)
           }
         })
-      return () => controller.abort()
+      return () => {
+        controller.abort()
+        if (linkedMasteryRequestKeyRef.current === requestKey) {
+          linkedMasteryRequestKeyRef.current = null
+        }
+      }
     }
+
+    linkedMasteryRequestKeyRef.current = null
 
     const controller = new AbortController()
     let cancelled = false
@@ -1122,7 +1195,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (!activeClass || !isLinkedClassSession(activeClass) || activeLinkedAccessStatus !== 'ready') return
     const nextSession = selectLinkedSubject(activeClass, landscapeId)
     if (nextSession === activeClass) return
-    persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))
+    if (!persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))) {
+      onNotify?.('error', notifications.trainerClassSaveFailed)
+      return
+    }
+    linkedMasteryRequestKeyRef.current = null
+    setMasteryByStudent(new Map())
     setSelectedGoalId('')
     setOpeningClassId(nextSession.id)
     onSelectLearner('__ALL__')
@@ -1148,7 +1226,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         }),
         currentGoalId: undefined,
       }
-      persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))
+      if (!persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))) {
+        onNotify?.('error', notifications.trainerClassSaveFailed)
+        return
+      }
+      linkedMasteryRequestKeyRef.current = null
+      setMasteryByStudent(new Map())
       setLinkedAccessByClass((current) => new Map(current).set(nextSession.id, { status: 'ready' }))
       setSelectedGoalId('')
       setOpeningClassId(nextSession.id)
@@ -1493,15 +1576,29 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             setEditingClassId(null)
           }}
           onSave={(session) => {
+            const existingLinked = !editingClass && isLinkedClassSession(session)
+              ? classes.find((current) => (
+                  isLinkedClassSession(current)
+                  && current.linkedSupervision.workspaceId === session.linkedSupervision.workspaceId
+                  && current.linkedSupervision.courseId === session.linkedSupervision.courseId
+                  && current.linkedSupervision.memberId === session.linkedSupervision.memberId
+                )) ?? null
+              : null
+            const persistedSession = existingLinked
+              ? { ...session, id: existingLinked.id }
+              : session
             const next = editingClass
-              ? classes.map((current) => current.id === session.id ? session : current)
-              : [...classes, session]
-            persistClasses(next)
+              ? classes.map((current) => current.id === persistedSession.id ? persistedSession : current)
+              : existingLinked
+                ? classes.map((current) => current.id === existingLinked.id ? persistedSession : current)
+                : [...classes, persistedSession]
+            if (!persistClasses(next)) return false
             if (!editingClass) {
-              handleOpenClass(session)
+              handleOpenClass(persistedSession)
             }
             setIsCreating(false)
             setEditingClassId(null)
+            return true
           }}
         />
       </div>
