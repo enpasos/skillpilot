@@ -598,6 +598,180 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "7c6eaba09fe95aa4334b31d9f5a19b65b4d6655926573a0679db75c4fd87159d",
       },
     },
+    {
+      id: "2026-08-31-learner-cockpit-goal-feedback-entry",
+      approvedAt: "2026-08-31",
+      approvedBy: "product-owner",
+      reason:
+        "Let learners report a weakness noticed while learning directly from the visible Cockpit goal through the existing, fully version-bound learning-goal feedback flow.",
+      scope:
+        "In the current production WebGUI and isolated learning-goal feedback channel only, add one localized learner-only action for the visible published curricular-atomic mathematics or physics goal; " +
+        "resolve its current binding only after a deliberate click through a no-store, rate-limited bookId-plus-goalId lookup against the verified current publication, then navigate to the unchanged exact seven-field /lernziel-feedback route; " +
+        "share the canonical link builder with the learning-goal book, fail with a retryable inline message, suppress duplicate clicks, and add feedback-specific tests; never transmit a SkillPilot, learner, session, chat, mastery, personalization or role identifier, never mutate learner state, never expose the action in trainer, explorer or package-consumer surfaces, " +
+        "and preserve every coach handler, prepared message, session/state/identity/personalization, OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, fixture, and review-artifact contract.",
+      target: "current-production-web-frontend-and-learning-goal-feedback-channel",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-learner-only-entry-into-independent-layer-a-feedback-flow-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/views/LearnerView.tsx",
+        submittedSha256:
+          "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
+        priorAuthorizedSha256:
+          "d579e459e6450cc6891971bab3a65621a3409a0c5d16ae9c22ce67b24956e0e6",
+        authorizedSha256:
+          "f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258",
+      },
+      evidenceFile: {
+        path: "app/scripts/testLearnerGoalFeedbackUi.ts",
+        priorSha256:
+          "c0ddf7aaa3c36dd66c8f7993f2431c388fc1cf3fd2f005056e98bb6a8ef35ed5",
+        sha256:
+          "7f3226c358320b32d3fe4d13f2b23479b70c2473e7dd6a838859604d68a08148",
+      },
+      additionalFiles: [
+        {
+          path: "app/src/components/LearnerGoalFeedbackAction.tsx",
+          priorSha256:
+            "b128ce146a555100f407996d24abbaaaafb76428bcd04377435551dbd75b9e15",
+          authorizedSha256:
+            "8ee652562c7433c71d545a5205dfd14adaa9bc777fec9e48e6886819012f9832",
+        },
+        {
+          path: "app/src/utils/goalBookFeedback.ts",
+          priorSha256:
+            "10a461427a5b77aa7e0605d0a7dd803b0c9d301676d1fb70d189370bb65d9890",
+          authorizedSha256:
+            "94c9ffc088c85a6925391dd8e96f0134a78ec36ef4da30cee88ae34183e1eee7",
+        },
+        {
+          path: "app/src/views/GoalBookView.tsx",
+          priorSha256:
+            "8682601cb2a443edae698c00f04a9df5b363a706970c580b0ca5c7c362c38c1e",
+          authorizedSha256:
+            "e3ead51b2eca0e1b6674b60873f0f01536ce9e878bf7a15b82ecd3d701f4fa4e",
+        },
+        {
+          path: "app/vite.config.ts",
+          priorSha256:
+            "87f095cf696cdb2c468257b837b3af61ec5c3c297c21d4e014f884f7903f84cd",
+          authorizedSha256:
+            "9c2f36efbd6755554b2ae2aeb5db0ec076e9a28cf3152b96e61ab99fc16735c7",
+        },
+        {
+          path: "app/src/packageConsumer/learnerGoalFeedbackUnavailable.tsx",
+          authorizedSha256:
+            "baacb7c10a30ad3d5f01d0ac1d4d8d2185ab7c73ca22d6bb0dce2a36b4fc32da",
+        },
+        {
+          path: "app/scripts/fixtures/learnerGoalFeedbackUi.html",
+          authorizedSha256:
+            "e7a99fcb3f0266a428682abaa2c6ddfa4443a0a20c57672a4055d56a99674f9d",
+        },
+        {
+          path: "app/scripts/fixtures/learnerGoalFeedbackUi.tsx",
+          priorSha256:
+            "0332fad29d6eddc285943e0c3ed79de74c9c3b1ea69103433023d43bc5f11f3b",
+          authorizedSha256:
+            "876237cc4c1ce8c4c23ffe13e38a10c434558d0774dd8f0646ca0f7b37ed11f7",
+        },
+        {
+          path: "backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicController.java",
+          priorSha256:
+            "8ffe70fc8688fa7cd42e20053ee6f7ce95a711191d43e0a3026a0947be22e961",
+          authorizedSha256:
+            "9f8dee900851026f67accb94507b22574b6c147b8f878f65ddc82a7211ebf18e",
+        },
+        {
+          path: "backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicProtectionFilter.java",
+          priorSha256:
+            "b76a1c55cd9790e2e7cdbb0dcc8c1772e9206cee2317ae708e65865293316587",
+          authorizedSha256:
+            "86f6fe8874904af51b53a389cb5c833ed01f37d079fed20b03e5786c1dd2bcac",
+        },
+        {
+          path: "backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicationRegistry.java",
+          priorSha256:
+            "39270e4997fc06444ed7a716ca3cc82290579d7723c05e6816cd5cb3fab485da",
+          authorizedSha256:
+            "2f5b6a124a6b4600b8e2876d09b898ed93a65a159f5bc0d881f17f3a94e01b11",
+        },
+      ],
+    },
+    {
+      id: "2026-08-31-cockpit-goal-feedback-return-navigation",
+      approvedAt: "2026-08-31",
+      approvedBy: "product-owner",
+      reason:
+        "Return learning-goal feedback entered from the learner Cockpit to the exact Cockpit goal instead of the learning-goal book.",
+      scope:
+        "In the current production WebGUI only, pass one exact browser-local Router origin marker when entering the unchanged seven-field /lernziel-feedback route from the learner Cockpit; " +
+        "accept only that one-key marker, derive the return target exclusively from the validated feedback binding and static book publication registry, keep the contextual return link across hard reload and successful submission without automatic navigation, and preserve the existing exact learning-goal-book return for book, PDF and direct entries; " +
+        "never accept an arbitrary return URL or extra query parameter, never transmit the marker to the backend or with the feedback submission, and preserve every backend, coach handler, prepared message, session/state/identity/personalization, OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, portal, OpenAI-review-fixture, and review-artifact contract.",
+      target:
+        "current-production-web-frontend-learning-goal-feedback-return-navigation",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-browser-local-feedback-return-navigation-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/views/LearnerView.tsx",
+        submittedSha256:
+          "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
+        priorAuthorizedSha256:
+          "f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258",
+        authorizedSha256:
+          "f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258",
+      },
+      evidenceFile: {
+        path: "app/scripts/testGoalBookFeedbackUi.ts",
+        priorSha256:
+          "2b0f5b58960a552de1fec27be029703ea36e67c7760e9fd9257b44057021ffce",
+        sha256:
+          "ab3b57db6469cef0d9f7473b90f55690ee1e048c899e8dd90348ebc40481fffc",
+      },
+      additionalFiles: [
+        {
+          path: "app/src/components/LearnerGoalFeedbackAction.tsx",
+          priorSha256:
+            "b128ce146a555100f407996d24abbaaaafb76428bcd04377435551dbd75b9e15",
+          authorizedSha256:
+            "8ee652562c7433c71d545a5205dfd14adaa9bc777fec9e48e6886819012f9832",
+        },
+        {
+          path: "app/src/utils/goalFeedbackReturnNavigation.ts",
+          authorizedSha256:
+            "b4dc8797b1100c0b52f33875ce9f459ab2ac4e1c767dce0879de1e77741f7a7c",
+        },
+        {
+          path: "app/src/views/GoalBookFeedbackPilotView.tsx",
+          priorSha256:
+            "946ecd1ebce142f766081a484ce5b0baaaa67ff5030208b82d2bba5a1a45cc12",
+          authorizedSha256:
+            "78444751bb17278f53dad1022a05facd8546d9ca61fa7fe2faafd73e62e05d1c",
+        },
+        {
+          path: "app/src/utils/goalBookFeedback.test.ts",
+          priorSha256:
+            "bf9d80b60edbb27402b0ca992de94c1cfb177a57f0fc0a4598396b58db5bcc0c",
+          authorizedSha256:
+            "76a3e589539fe12c87a2847b86145bbc70e2f6788696edc0b9730081526b2985",
+        },
+        {
+          path: "app/scripts/fixtures/learnerGoalFeedbackUi.tsx",
+          priorSha256:
+            "0332fad29d6eddc285943e0c3ed79de74c9c3b1ea69103433023d43bc5f11f3b",
+          authorizedSha256:
+            "876237cc4c1ce8c4c23ffe13e38a10c434558d0774dd8f0646ca0f7b37ed11f7",
+        },
+        {
+          path: "app/scripts/testLearnerGoalFeedbackUi.ts",
+          priorSha256:
+            "c0ddf7aaa3c36dd66c8f7993f2431c388fc1cf3fd2f005056e98bb6a8ef35ed5",
+          authorizedSha256:
+            "7f3226c358320b32d3fe4d13f2b23479b70c2473e7dd6a838859604d68a08148",
+        },
+      ],
+    },
   ]);
 });
 
@@ -641,12 +815,12 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
       authorizedSha256: learnerViewException?.protectedFile.authorizedSha256,
     },
     {
-      id: "2026-08-29-retire-obsolete-gymnasium-runtime-cutover",
+      id: "2026-08-31-cockpit-goal-feedback-return-navigation",
       submittedSha256:
         "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
-      hasPriorAuthorizedSha256: false,
+      hasPriorAuthorizedSha256: true,
       authorizedSha256:
-        "d579e459e6450cc6891971bab3a65621a3409a0c5d16ae9c22ce67b24956e0e6",
+        "f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258",
     },
   );
 
