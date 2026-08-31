@@ -24,6 +24,8 @@ import { validateGoalFeedbackInbox } from './validateGoalFeedbackInbox'
 const OPERATOR_TOKEN = 'fixture-operator-token-that-must-never-be-persisted'
 const DIGEST = (character: string) => `sha256:${character.repeat(64)}`
 
+// This fixture intentionally uses the previously published notice version:
+// historical exports must remain verifiable after a newer notice is issued.
 const envelope = {
   $schema: 'https://skillpilot.com/schemas/goal-evidence/v2/goal-public-feedback.schema.json',
   schemaVersion: 2,

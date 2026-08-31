@@ -28,13 +28,19 @@ that prose.
 The checked-in default is disabled. A production operator must complete all of
 the following before enabling intake:
 
-1. Publish the bilingual feedback-specific privacy notice on
-   `/lernziel-feedback#feedback-datenschutz`. It covers purpose, consent,
-   central storage, separately authorized Codex triage, live deletion, the
-   30-day pending threshold, local/session-log retention, the limits of active
-   deletion for WAL and backups, and statutory requests. Every envelope binds
-   the exact notice version `2026-08-30.1` and displayed `de|en` locale. The
-   frozen general Coach privacy text is not silently broadened.
+1. Publish the bilingual, provider-neutral feedback-specific privacy details on
+   `/lernziel-feedback#feedback-datenschutz`. They stay collapsed by default
+   and cover purpose, consent, the processed data, technically assisted review,
+   the 30-day pending threshold, retention after review begins, backup limits,
+   and statutory requests without exposing internal service or storage names.
+   Every new envelope binds the current notice version `2026-08-31.1` and the
+   displayed `de|en` locale. The V2 schema continues to recognize the earlier
+   `2026-08-30.1` version so retained historical envelopes remain verifiable.
+   During the cache-transition window the live endpoint accepts both issued
+   versions and preserves the version actually submitted; new forms emit only
+   `2026-08-31.1`. Retiring the older accepted version requires a separate,
+   cache-aware decision. The frozen general Coach privacy text is not silently
+   broadened.
 2. Generate a distinct, high-entropy token of at least 32 characters. It must
    never equal `SKILLPILOT_AI_API_KEY`, an OAuth secret, or a database password.
 3. Configure `SKILLPILOT_GOAL_FEEDBACK_OPERATOR_TOKEN` in production and in the

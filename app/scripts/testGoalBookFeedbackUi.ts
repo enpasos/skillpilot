@@ -13,6 +13,9 @@ const goalFingerprint = `sha256:${'a'.repeat(64)}`
 const pageFingerprint = `sha256:${'b'.repeat(64)}`
 const bookDigest = `sha256:${'c'.repeat(64)}`
 const manifestFingerprint = `sha256:${'d'.repeat(64)}`
+const visualizationUrl = `/api/public/goal-feedback/v1/visualizations/${'e'.repeat(64)}`
+const visualizationTitle = 'Visualisierung: Rationale Zahlen darstellen und ordnen'
+const visualizationAlt = 'Rationale Zahlen sind auf einer Zahlengeraden eingeordnet.'
 const binding = new URLSearchParams({
   bookId: 'de-gym-mathematik-bundesweit',
   goalId,
@@ -71,9 +74,24 @@ try {
           title: 'Rationale Zahlen darstellen und ordnen',
           description: 'Die lernende Person kann rationale Zahlen auf der Zahlengeraden darstellen und ordnen.',
           breadcrumbs: ['Mathematik', 'Zahlen und Operationen'],
+          visualization: {
+            title: visualizationTitle,
+            url: visualizationUrl,
+            altText: visualizationAlt,
+          },
         },
         submissionEndpoint: '/api/public/goal-feedback/v1/submissions',
       }),
+    })
+  })
+  await page.route(`**${visualizationUrl}`, async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'image/png',
+      body: Buffer.from(
+        'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
+        'base64',
+      ),
     })
   })
   await page.route('**/api/public/goal-feedback/v1/submissions', async (route) => {
@@ -96,21 +114,54 @@ try {
   const fixtureUrl = `${server.baseUrl}/scripts/fixtures/goalBookFeedbackUi.html`
   await page.goto(`${fixtureUrl}?${binding.toString()}`)
   await page.getByRole('heading', { name: 'Kritik strukturiert einreichen' }).waitFor()
-  await page.getByRole('heading', { name: 'Datenschutzhinweis für Lernziel-Feedback' }).waitFor()
-  await page.getByText(/Hinweisversion: 2026-08-30\.1/u).waitFor()
-  await page.getByText(/maximale Aufbewahrung 31 Tage/u).waitFor()
-  await page.getByText(/Erst nach einer gesonderten Freigabe durch den Betreiber darf eine Codex-Sitzung die lokale Rohdatei lesen/u).waitFor()
-  await page.getByText(/Codex-Sitzungs- und Tool-Protokolle entstehen/u).waitFor()
-  await page.getByText(/dieser Hinweis sagt dafür keine kürzere Löschfrist zu/u).waitFor()
-  assert(
-    await page.getByRole('link', { name: 'Allgemeine Datenschutzerklärung' }).getAttribute('href') === '/privacy',
-    'the feedback-specific notice links to the general privacy policy',
-  )
   await page.getByRole('heading', { name: 'Rationale Zahlen darstellen und ordnen' }).waitFor()
+  const visualization = page.getByRole('img', { name: visualizationAlt })
+  await visualization.waitFor()
+  assert(
+    await visualization.evaluate((image) => (image as HTMLImageElement).complete
+      && (image as HTMLImageElement).naturalWidth > 0),
+    'the exact bound learning-goal image loads successfully',
+  )
+  assert(await visualization.getAttribute('src') === visualizationUrl, 'the image uses the server-verified asset path')
   assert(await page.locator('form').count() === 1, 'an exact verified binding exposes one form')
-  await page.getByText(/Erst nachdem eine digestgebundene lokale Kopie vollständig geschrieben und geprüft wurde/u).waitFor()
   assert(await page.getByText(goalId, { exact: true }).count() === 1, 'the exact public goal ID is visible')
   assert(submissions.length === 0, 'loading the form does not submit feedback')
+  const privacyDetails = page.locator('#feedback-datenschutz')
+  assert(await privacyDetails.count() === 1, 'a valid form contains privacy details')
+  assert(!await privacyDetails.evaluate((details) => (details as HTMLDetailsElement).open), 'privacy details start closed')
+  const renderedText = await page.locator('body').textContent() ?? ''
+  assert(
+    !/Codex|OpenAI|PostgreSQL|\bWAL\b|Produktionseingang|production inbox|Entwicklungsablage|development inbox|Rohdatei|raw-data|digestgebunden|Sitzungs- und Tool-Protokolle|session and tool logs/iu.test(renderedText),
+    'the public UI does not expose vendors or internal processing architecture',
+  )
+  await page.getByText('Datenschutzdetails anzeigen', { exact: true }).click()
+  await page.getByRole('heading', { name: 'Datenschutz für Lernziel-Feedback' }).waitFor()
+  await page.getByText(/Hinweisversion: 2026-08-31\.1/u).waitFor()
+  await page.getByText(/spätestens nach 31 Tagen gelöscht/u).waitFor()
+  assert(
+    await page.getByRole('link', { name: 'Allgemeine Datenschutzerklärung' }).getAttribute('href') === '/privacy',
+    'the feedback-specific details link to the general privacy policy',
+  )
+  await page.getByLabel(/willige in die Verarbeitung meiner Angaben/u).check()
+  await page.getByLabel(/Prüfung technisch unterstützt/u).check()
+
+  await page.getByRole('button', { name: 'EN', exact: true }).click()
+  await page.getByText('Show privacy details', { exact: true }).waitFor()
+  await page.getByRole('heading', { name: 'Privacy for learning-goal feedback' }).waitFor()
+  await page.getByText(/Notice version: 2026-08-31\.1/u).waitFor()
+  assert(
+    !/Codex|OpenAI|PostgreSQL|\bWAL\b|production inbox|development inbox|raw-data|digest-bound|session and tool logs/iu.test(await page.locator('body').textContent() ?? ''),
+    'the English public UI does not expose vendors or internal processing architecture',
+  )
+  assert(
+    await page.locator('input[type="checkbox"]:checked').count() === 0,
+    'changing the notice language clears both acknowledgements',
+  )
+  await page.getByRole('button', { name: 'DE', exact: true }).click()
+  assert(
+    await page.locator('input[type="checkbox"]:checked').count() === 0,
+    'switching back does not restore acknowledgements for another displayed notice',
+  )
 
   await page.getByLabel('Art der Rückmeldung').selectOption('source_assignment')
   await page.getByLabel('Was ist dir konkret aufgefallen?').fill('Die angegebene Quellenzuordnung ist zu breit.')
@@ -118,8 +169,8 @@ try {
   await page.getByLabel('Wie könnte es besser sein? (optional)').fill('Eine engere Fundstelle verwenden.')
   await page.getByLabel('Quelle oder Fundstelle (optional)').fill('Offizieller Lehrplan, Seite 42')
   await page.getByLabel('Perspektive (optional)').selectOption('teacher')
-  await page.getByLabel(/willige in die Verarbeitung/u).check()
-  await page.getByLabel(/Codex diese Rückmeldung nach gesonderter Freigabe/u).check()
+  await page.getByLabel(/willige in die Verarbeitung meiner Angaben/u).check()
+  await page.getByLabel(/Prüfung technisch unterstützt/u).check()
   await page.getByRole('button', { name: 'Feedback verbindlich absenden' }).click()
   await page.getByRole('alert').filter({ hasText: 'konnte nicht gespeichert werden' }).waitFor()
   assert(submissions.length === 1, 'a server error does not trigger an automatic retry')
@@ -134,14 +185,14 @@ try {
 
   await page.getByLabel('Wie könnte es besser sein? (optional)').fill('Eine engere und überprüfte Fundstelle verwenden.')
   await page.getByRole('button', { name: 'Feedback verbindlich absenden' }).click()
-  await page.getByRole('heading', { name: 'Feedback wurde zentral gespeichert' }).waitFor()
+  await page.getByRole('heading', { name: 'Feedback wurde gespeichert' }).waitFor()
   assert(submissions.length === 3, 'one edited explicit submission sends one additional request')
   const submission = submissions[2] as Record<string, unknown>
   const envelope = submission.envelope as Record<string, unknown>
   const feedback = envelope.feedback as Record<string, unknown>
   assert(
     envelope.schemaVersion === 2
-      && envelope.privacyNoticeVersion === '2026-08-30.1'
+      && envelope.privacyNoticeVersion === '2026-08-31.1'
       && envelope.privacyNoticeLocale === 'de'
       && envelope.privacyAcknowledged === true
       && envelope.automatedProcessingAcknowledged === true
@@ -159,18 +210,9 @@ try {
   }))
   assert(dimensions.scroll <= dimensions.client, `390px feedback form overflows: ${JSON.stringify(dimensions)}`)
 
-  await page.getByRole('button', { name: 'EN' }).click()
-  await page.getByRole('heading', { name: 'Privacy notice for learning-goal feedback' }).waitFor()
-  await page.getByText(/Notice version: 2026-08-30\.1/u).waitFor()
-  await page.getByText(/maximum retention is 31 days/u).waitFor()
-  await page.getByText(/only after separate authorization by the operator; the content is then processed by the OpenAI Codex service/u).waitFor()
-  await page.getByText(/Codex session and tool logs/u).waitFor()
-  await page.getByText(/does not promise a shorter deletion period/u).waitFor()
-  await page.getByRole('button', { name: 'DE' }).click()
-
   await page.goto(`${fixtureUrl}?${binding.toString()}&goalId=duplicate`)
   await page.getByRole('heading', { name: 'Feedbacklink nicht gültig' }).waitFor()
-  await page.getByRole('heading', { name: 'Datenschutzhinweis für Lernziel-Feedback' }).waitFor()
+  assert(await page.locator('#feedback-datenschutz').count() === 0, 'an invalid link does not show consent details')
   assert(await page.locator('form').count() === 0, 'duplicate binding parameters fail closed without a form')
 
   await page.goto(`${fixtureUrl}?${binding.toString()}&unexpected=secret`)

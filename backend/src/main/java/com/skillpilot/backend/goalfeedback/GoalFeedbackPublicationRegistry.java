@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.Goal;
+import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.GoalVisualization;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.LinkBinding;
+import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.PublicGoal;
+import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.PublicResolvedContext;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.ResolvedContext;
 import com.skillpilot.backend.goalfeedback.GoalFeedbackApi.TrustedContext;
 import java.io.IOException;
@@ -54,10 +57,15 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
     private static final Pattern SHA256 = Pattern.compile("sha256:[0-9a-f]{64}");
     private static final Pattern STABLE_ID = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._:+-]{0,199}");
     private static final Pattern LOCALE = Pattern.compile("[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*");
+    private static final Pattern VISUALIZATION_PATH =
+            Pattern.compile("/assets/goal-visualizations/[A-Za-z0-9/_.-]+");
+    private static final Pattern SHA256_HEX = Pattern.compile("[0-9a-f]{64}");
+    private static final int MAX_VISUALIZATION_BYTES = 8 * 1024 * 1024;
 
     private final URI publicBaseUri;
     private final ObjectMapper objectMapper;
     private final GoalFeedbackCanonicalJson canonicalJson;
+    private final ResourceLoader resourceLoader;
     private final JdbcTemplate jdbc;
     private final TransactionTemplate transactions;
     private final Map<PublicationKey, PublishedBook> staticBooks;
@@ -74,6 +82,7 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
         this.publicBaseUri = validatePublicBaseUri(publicBaseUrl);
         this.objectMapper = objectMapper;
         this.canonicalJson = canonicalJson;
+        this.resourceLoader = resourceLoader;
         this.jdbc = jdbc;
         this.transactions = new TransactionTemplate(transactionManager);
         this.staticBooks = Map.copyOf(loadStaticBooks(objectMapper, resourceLoader));
@@ -126,6 +135,63 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
                 context,
                 new Goal(page.title(), page.description(), page.breadcrumbs()),
                 GoalFeedbackApi.SUBMISSION_ENDPOINT));
+    }
+
+    /**
+     * Adds display-only image metadata to an otherwise unchanged trusted
+     * feedback context. Images come only from a hash-verified static book page
+     * whose complete page identity matches the requested publication.
+     */
+    public Optional<PublicResolvedContext> resolvePublic(LinkBinding binding) {
+        return resolve(binding).map(resolved -> {
+            PublishedVisualization publishedVisualization = staticBooks.values().stream()
+                    .filter(book -> book.id().equals(binding.bookId()))
+                    .map(book -> book.pagesByNumber().get(binding.page()))
+                    .filter(page -> page != null
+                            && page.goalId().equals(binding.goalId())
+                            && page.goalFingerprint().equals(binding.goalFingerprint())
+                            && page.pageFingerprint().equals(binding.pageFingerprint()))
+                    .map(PublishedPage::visualization)
+                    .filter(java.util.Objects::nonNull)
+                    .findFirst()
+                    .orElse(null);
+            GoalVisualization visualization = publishedVisualization == null
+                    ? null
+                    : new GoalVisualization(
+                            publishedVisualization.title(),
+                            GoalFeedbackApi.VISUALIZATION_ENDPOINT_PREFIX
+                                    + publishedVisualization.originalDigest().substring("sha256:".length()),
+                            publishedVisualization.altText());
+            Goal goal = resolved.goal();
+            return new PublicResolvedContext(
+                    resolved.schemaVersion(),
+                    resolved.context(),
+                    new PublicGoal(goal.title(), goal.description(), goal.breadcrumbs(), visualization),
+                    resolved.submissionEndpoint());
+        });
+    }
+
+    /** Serves only bytes whose digest is part of a verified current static book model. */
+    public Optional<VisualizationAsset> resolvePublicVisualization(String digestHex) {
+        if (digestHex == null || !SHA256_HEX.matcher(digestHex).matches()) {
+            return Optional.empty();
+        }
+        String digest = "sha256:" + digestHex;
+        PublishedVisualization visualization = staticBooks.values().stream()
+                .flatMap(book -> book.pagesByNumber().values().stream())
+                .map(PublishedPage::visualization)
+                .filter(java.util.Objects::nonNull)
+                .filter(candidate -> candidate.originalDigest().equals(digest))
+                .findFirst()
+                .orElse(null);
+        if (visualization == null) {
+            return Optional.empty();
+        }
+        Resource resource = resourceLoader.getResource("classpath:static" + visualization.sourceUrl());
+        byte[] bytes = readBoundedVisualization(resource, visualization.sourceUrl());
+        require(sha256(bytes).equals(visualization.originalDigest()),
+                "Goal-book visualization hash mismatch: " + visualization.sourceUrl());
+        return Optional.of(new VisualizationAsset(bytes, visualization.mediaType(), digest));
     }
 
     public boolean isCurrent(LinkBinding binding) {
@@ -317,6 +383,9 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
                     item.put("goalFingerprint", page.goalFingerprint());
                     item.put("pageFingerprint", page.pageFingerprint());
                 });
+        // Presentation-only visualizations intentionally remain outside the
+        // append-only feedback snapshot contract. Existing snapshots therefore
+        // stay byte-identical across this additive public-UI change.
         return canonicalJson.serialize(root);
     }
 
@@ -398,9 +467,10 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
                         "Invalid goal-book breadcrumb: " + bookId + "/" + pageNumber);
                 breadcrumbs.add(breadcrumb.textValue());
             }
+            PublishedVisualization visualization = parseVisualization(page, bookId, pageNumber);
             PublishedPage publishedPage = new PublishedPage(
                     pageNumber, goalId, pageTitle, description, List.copyOf(breadcrumbs),
-                    goalFingerprint, pageFingerprint);
+                    goalFingerprint, pageFingerprint, visualization);
             require(pages.put(pageNumber, publishedPage) == null,
                     "Duplicate goal-book page number: " + bookId + "/" + pageNumber);
             require(goals.add(goalId), "Duplicate goal-book goal ID: " + bookId + "/" + goalId);
@@ -408,11 +478,74 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
         return pages;
     }
 
+    private static PublishedVisualization parseVisualization(JsonNode page, String bookId, int pageNumber) {
+        JsonNode value = page.get("visualization");
+        if (value == null || value.isNull()) {
+            return null;
+        }
+        require(value.isObject(), "Invalid goal-book visualization: " + bookId + "/" + pageNumber);
+        require("image".equals(requiredText(value, "resourceType", 20)),
+                "Unsupported goal-book visualization: " + bookId + "/" + pageNumber);
+        String title = requiredText(value, "title", 1_000);
+        String url = requiredText(value, "url", 2_000);
+        String altText = requiredText(value, "altText", 4_000);
+        String originalDigest = requiredDigest(value, "originalDigest");
+        require(isSafeVisualizationPath(url),
+                "Unsafe goal-book visualization URL: " + bookId + "/" + pageNumber);
+        String mediaType;
+        if (url.endsWith(".jpg") || url.endsWith(".jpeg")) {
+            mediaType = "image/jpeg";
+        } else if (url.endsWith(".png")) {
+            mediaType = "image/png";
+        } else {
+            throw new IllegalStateException(
+                    "Unsupported goal-book visualization media type: " + bookId + "/" + pageNumber);
+        }
+        return new PublishedVisualization(title, url, altText, originalDigest, mediaType);
+    }
+
+    private static boolean isSafeVisualizationPath(String value) {
+        if (!VISUALIZATION_PATH.matcher(value).matches()
+                || value.contains("%")
+                || value.contains("\\")) {
+            return false;
+        }
+        String suffix = value.substring("/assets/goal-visualizations/".length());
+        for (String segment : suffix.split("/", -1)) {
+            if (segment.isEmpty() || ".".equals(segment) || "..".equals(segment)) {
+                return false;
+            }
+        }
+        try {
+            URI uri = URI.create(value);
+            return !uri.isAbsolute()
+                    && value.equals(uri.getRawPath())
+                    && uri.getRawQuery() == null
+                    && uri.getRawFragment() == null;
+        } catch (IllegalArgumentException exception) {
+            return false;
+        }
+    }
+
     private static byte[] read(Resource resource, String label) {
         try (InputStream stream = resource.getInputStream()) {
             return stream.readAllBytes();
         } catch (IOException exception) {
             throw new IllegalStateException("Unable to read goal-book publication resource: " + label, exception);
+        }
+    }
+
+    private static byte[] readBoundedVisualization(Resource resource, String label) {
+        try {
+            long contentLength = resource.contentLength();
+            require(contentLength >= 1 && contentLength <= MAX_VISUALIZATION_BYTES,
+                    "Goal-book visualization size is invalid: " + label);
+            byte[] bytes = read(resource, label);
+            require(bytes.length >= 1 && bytes.length <= MAX_VISUALIZATION_BYTES,
+                    "Goal-book visualization size is invalid: " + label);
+            return bytes;
+        } catch (IOException exception) {
+            throw new IllegalStateException("Unable to inspect goal-book visualization: " + label, exception);
         }
     }
 
@@ -526,6 +659,26 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
 
     private record PublishedPage(
             int pageNumber, String goalId, String title, String description,
-            List<String> breadcrumbs, String goalFingerprint, String pageFingerprint) {
+            List<String> breadcrumbs, String goalFingerprint, String pageFingerprint,
+            PublishedVisualization visualization) {
+    }
+
+    private record PublishedVisualization(
+            String title,
+            String sourceUrl,
+            String altText,
+            String originalDigest,
+            String mediaType) {
+    }
+
+    public record VisualizationAsset(byte[] bytes, String mediaType, String digest) {
+        public VisualizationAsset {
+            bytes = bytes.clone();
+        }
+
+        @Override
+        public byte[] bytes() {
+            return bytes.clone();
+        }
     }
 }

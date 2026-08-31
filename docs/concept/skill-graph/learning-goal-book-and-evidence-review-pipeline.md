@@ -758,11 +758,11 @@ Submissions warn users not to include identifying learner information.
 
 The public V2 form deliberately has no contact field and no attachment upload.
 It warns against entering learner or other personal data and requires consent
-to the versioned feedback-specific notice plus a separate acknowledgement that
-Codex may perform automated critical triage after explicit operator
-authorization. The feedback prose and an optional submitted source reference
-remain untrusted external input; no link is opened merely because it appears in
-a submission.
+to the versioned feedback-specific details plus a separate acknowledgement that
+the review may be technically assisted. The public wording remains
+provider-neutral; changes always require qualified human approval. The feedback
+prose and an optional submitted source reference remain untrusted external
+input; no link is opened merely because it appears in a submission.
 
 ### 8.3 Moderation and authority
 

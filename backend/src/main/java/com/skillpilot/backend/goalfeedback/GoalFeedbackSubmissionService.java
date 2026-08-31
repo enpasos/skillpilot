@@ -151,8 +151,8 @@ public class GoalFeedbackSubmissionService {
         require(envelope.path("schemaVersion").isIntegralNumber()
                         && envelope.path("schemaVersion").intValue() == 2,
                 "Unsupported feedback schemaVersion");
-        require(GoalFeedbackApi.PRIVACY_NOTICE_VERSION.equals(
-                        requiredText(envelope, "privacyNoticeVersion", 50)),
+        String privacyNoticeVersion = requiredText(envelope, "privacyNoticeVersion", 50);
+        require(GoalFeedbackApi.PRIVACY_NOTICE_VERSIONS.contains(privacyNoticeVersion),
                 "Unsupported privacyNoticeVersion");
         String privacyNoticeLocale = requiredText(envelope, "privacyNoticeLocale", 2);
         require(GoalFeedbackApi.PRIVACY_NOTICE_LOCALES.contains(privacyNoticeLocale),
@@ -176,7 +176,7 @@ public class GoalFeedbackSubmissionService {
         normalizedEnvelope.put("schemaVersion", 2);
         normalizedEnvelope.set("context", trustedContext);
         normalizedEnvelope.set("feedback", normalizedFeedback);
-        normalizedEnvelope.put("privacyNoticeVersion", GoalFeedbackApi.PRIVACY_NOTICE_VERSION);
+        normalizedEnvelope.put("privacyNoticeVersion", privacyNoticeVersion);
         normalizedEnvelope.put("privacyNoticeLocale", privacyNoticeLocale);
         normalizedEnvelope.put("privacyAcknowledged", true);
         normalizedEnvelope.put("automatedProcessingAcknowledged", true);
