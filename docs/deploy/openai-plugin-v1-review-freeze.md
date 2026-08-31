@@ -1279,6 +1279,58 @@ Der geschützte Text und seine Regression sind hashgebunden:
 - `app/src/utils/privacyViewCopy.test.ts`:
   `1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295`.
 
+### 6.23 Eng begrenzte Ausnahme: passwortgeschützter lokaler Klassenexport
+
+Der Product Owner hat am **31. August 2026** ausdrücklich beauftragt, das noch
+offene GitHub-Issue #2 selbstständig zu prüfen und, sofern weiterhin nötig,
+inhaltlich zu erledigen. Der aktuelle lokale Klassenexport enthielt weiterhin
+die Zuordnung von Klarnamen zu permanenten SkillPilot-IDs als unverschlüsseltes
+JSON. Freigegeben ist ausschließlich die Behebung dieses First-Party-Risikos:
+
+- Neue Exporte lokaler Klassen werden im Browser mit einer bestätigten,
+  mindestens 15 Zeichen langen einmaligen Passphrase, PBKDF2-SHA-256 und
+  authentifiziertem AES-256-GCM verschlüsselt. Die Passphrase wird konsistent
+  Unicode-normalisiert und weder gespeichert noch protokolliert.
+- Der strikt versionierte Container bindet Zweck, KDF, Cipher und Payload über
+  zusätzliche authentifizierte Daten, verwendet je Export neuen Salt und IV
+  und begrenzt Datei, Metadaten und entschlüsselten Inhalt.
+- Alte Klartext-Klassenexporte bleiben ausschließlich als sichtbar
+  gekennzeichneter Migrationsimport lesbar. Ein erkannter, aber ungültiger
+  verschlüsselter Container darf niemals auf den Klartextpfad zurückfallen.
+- Verknüpfte Betreuungsklassen und opake Teacher-Memberships bleiben von diesem
+  vollständigen Export- und Importpfad ausgeschlossen.
+- Der generische Dateiname enthält keinen Klassennamen. Die Dokumentation
+  grenzt den Schutz heruntergeladener Dateien ausdrücklich von Browser-
+  LocalStorage, entsperrten Geräten, Passwortverwaltung und pauschalen
+  DSGVO-Zusagen ab.
+
+Nicht freigegeben sind Änderungen am eingereichten OpenAI-Paket, MCP/OAuth,
+Tools, Schemas, MCP-Apps-UI, Coach-, Session-, Identitäts-, Review-, Portal-,
+Fixture- oder Reviewartefakt-Vertrag. Der bestehende ChatGPT-v1-Ablauf wird von
+der lokalen Trainer-Dateifunktion weder aufgerufen noch verändert. Eine
+Portalaktion ist nicht erforderlich.
+
+Die fortlaufende Hashkette der bereits durch Abschnitt 6.21 geschützten
+Traineransicht lautet:
+
+- `app/src/views/TrainerView.tsx`:
+  `1d2162e65072870f42a9edf355b1e8082e2c1349dce6b6da2c7578bcab16ec30`
+  → `5bbe38b12464e4fa128f7299b2a462f791a8f286bff24b9847743877080721ee`.
+
+Zentrale Evidenz ist der reale Browser-Roundtrip mit verschlüsseltem Download,
+falschem und richtigem Passwort, Löschung, Wiederimport, Legacy-Migration und
+Abbruch ohne Download:
+
+- `app/scripts/testTrainerClassFileUi.ts`:
+  `5ab65164ffdaa9f42e8de2b4bb7029fce442371fd91105486203dae02eaf488d`.
+
+Der Freeze-Guard bewahrt den bisherigen TrainerView-Hash als Vorgänger und
+prüft bei weiteren eng begrenzten First-Party-Ausnahmen nur den jeweils letzten
+lückenlos verketteten Supplemental-Hash. Gleichbleibende Bytes dürfen für eine
+zweite fachliche Ausnahme erneut gebunden werden; geänderte Bytes benötigen
+zwingend `priorAuthorizedSha256`. Damit wird kein früherer Prüfstand
+überschrieben und kein eingereichter OpenAI-Baseline-Hash umgedeutet.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

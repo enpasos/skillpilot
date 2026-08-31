@@ -8,6 +8,7 @@ import { ClassSetup } from '../components/ClassSetup'
 import { ConfirmModal } from '../components/ConfirmModal'
 import { InlineMathText } from '../components/InlineMathText'
 import { LogoutButton } from '../components/LogoutButton'
+import { TrainerClassFilePasswordDialog } from '../components/TrainerClassFilePasswordDialog'
 import { useCompetenceGraph } from '../hooks/useCompetenceGraph'
 import { useGoalIndex } from '../hooks/useGoalIndex'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
@@ -65,9 +66,29 @@ import {
   type TeacherSupervisionMember,
 } from '../utils/teacherSupervision'
 import { getTeacherSupervisionCopy } from '../utils/teacherSupervisionCopy'
+import { getTrainerClassFileCopy } from '../utils/trainerClassFileCopy'
+import {
+  classifyTrainerClassFileContent,
+  decryptTrainerClassFileContent,
+  encryptTrainerClassFileContent,
+  MAX_TRAINER_CLASS_FILE_SIZE,
+  TRAINER_CLASS_FILE_EXTENSION,
+} from '../utils/trainerClassFile'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
+
+const downloadTrainerClassFile = (content: string) => {
+  const blob = new Blob([content], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = `skillpilot-class-${new Date().toISOString().slice(0, 10)}${TRAINER_CLASS_FILE_EXTENSION}`
+  document.body.appendChild(anchor)
+  anchor.click()
+  document.body.removeChild(anchor)
+  URL.revokeObjectURL(url)
+}
 
 interface TrainerViewProps {
   landscapeEntries: LandscapeEntry[]
@@ -106,6 +127,10 @@ type LinkedAccessState =
   | { status: 'ready' }
   | { status: 'changed'; member: TeacherSupervisionMember }
   | { status: 'missing-token' | 'inactive' | 'error' }
+
+type TrainerClassFileDialogState =
+  | { mode: 'export'; session: ClassSession }
+  | { mode: 'import'; content: string; fileName: string }
 
 const loadStoredTrainerClasses = (): ClassSession[] => {
   try {
@@ -159,6 +184,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const trainerWorkspace = searchParams.get('view') === 'plan' ? 'plan' : 'goals'
   const coursePlanCopy = useMemo(() => getCoursePlanCopy(localizedLanguage), [localizedLanguage])
   const supervisionCopy = useMemo(() => getTeacherSupervisionCopy(localizedLanguage), [localizedLanguage])
+  const classFileCopy = useMemo(() => getTrainerClassFileCopy(localizedLanguage), [localizedLanguage])
   const t = language === 'en' ? en.trainer : de.trainer
   const tExp = language === 'en' ? en.explorer : de.explorer
   const notifications = language === 'en' ? en.notifications : de.notifications
@@ -178,6 +204,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [compositionRetryToken, setCompositionRetryToken] = useState(0)
   const [linkedAccessByClass, setLinkedAccessByClass] = useState<Map<string, LinkedAccessState>>(new Map())
   const [linkedValidationRetryToken, setLinkedValidationRetryToken] = useState(0)
+  const [classFileDialog, setClassFileDialog] = useState<TrainerClassFileDialogState | null>(null)
+  const [classFileBusy, setClassFileBusy] = useState(false)
+  const [classFileError, setClassFileError] = useState('')
+  const classFileOperationRef = useRef(false)
   const linkedMasteryRequestKeyRef = useRef<string | null>(null)
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
@@ -1367,17 +1397,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const handleExportClass = (e: React.MouseEvent, session: ClassSession) => {
     e.stopPropagation()
     if (isLinkedClassSession(session)) return
-    const data = JSON.stringify(session, null, 2)
-    const blob = new Blob([data], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `skillpilot-class-${session.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
-    onNotify?.('success', notifications.classExported)
+    setClassFileError('')
+    setClassFileDialog({ mode: 'export', session })
   }
 
   const removeLocalClass = (id: string) => {
@@ -1474,70 +1495,122 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }
 
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const handleImportClass = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+  const importClassSession = (rawSession: ClassSession, legacy: boolean) => {
+    const session = migrateTrainerClassSession(rawSession)
+    if (
+      session.source === 'linked-supervision'
+      || session.linkedSupervision !== undefined
+      || session.students.some(student => student.accessMode === 'teacher-membership')
+    ) {
+      onNotify?.('error', `${notifications.classImportFailed}: ${supervisionCopy.linkedImportRejected}`)
+      return
+    }
+
+    const notifyImported = () => {
+      onNotify?.(
+        legacy ? 'info' : 'success',
+        legacy ? classFileCopy.importedLegacy : classFileCopy.imported,
+      )
+    }
+    const doImport = (overwrite = false) => {
+      const idx = classes.findIndex(candidate => candidate.id === session.id)
+      if (idx >= 0 && isLinkedClassSession(classes[idx])) {
+        onNotify?.('error', `${notifications.classImportFailed}: ${supervisionCopy.linkedImportRejected}`)
+        setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+        return
+      }
+      let next = classes
+      if (idx >= 0) {
+        if (!overwrite) return
+        next = [...classes]
+        next[idx] = session
+      } else {
+        next = [...classes, session]
+      }
+      if (!persistClasses(next)) return
+      notifyImported()
+      setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
+    }
+
+    const idx = classes.findIndex(candidate => candidate.id === session.id)
+    if (idx >= 0) {
+      setConfirmation({
+        isOpen: true,
+        title: t.importClassDialogTitle,
+        message: interpolateTemplate(t.importClassDialogMessage, { name: session.name }),
+        confirmText: t.importClassDialogConfirm,
+        onConfirm: () => doImport(true),
+      })
+    } else {
+      doImport()
+    }
+  }
+
+  const handleImportClass = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    event.target.value = ''
     if (!file) return
-    const reader = new FileReader()
-    reader.onload = (ev) => {
-      try {
-        const content = ev.target?.result as string
-        const session = JSON.parse(content)
-        if (!session.id || !session.name || !Array.isArray(session.students)) {
-          throw new Error(t.invalidImportFormat)
-        }
-        if (
-          session.source === 'linked-supervision'
-          || session.linkedSupervision
-          || session.students.some((student: { accessMode?: string }) => student?.accessMode === 'teacher-membership')
-        ) {
-          throw new Error(supervisionCopy.linkedImportRejected)
-        }
-        const idx = classes.findIndex((candidate) => candidate.id === session.id)
-        if (idx >= 0 && isLinkedClassSession(classes[idx])) {
-          throw new Error(supervisionCopy.linkedImportRejected)
-        }
-        const doImport = (overwrite = false) => {
-          const idx = classes.findIndex((candidate) => candidate.id === session.id)
-          if (idx >= 0 && isLinkedClassSession(classes[idx])) {
-            onNotify?.('error', `${notifications.classImportFailed}: ${supervisionCopy.linkedImportRejected}`)
-            setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
-            return
-          }
-          let next = classes
-          if (idx >= 0) {
-            if (!overwrite) return
-            next = [...classes]
-            next[idx] = session
-          } else {
-            next = [...classes, session]
-          }
-          if (!persistClasses(next)) {
-            return
-          }
-          onNotify?.('success', notifications.classImported)
-          setConfirmation({ isOpen: false, title: '', message: '', onConfirm: () => { } })
-        }
-        if (idx >= 0) {
-          setConfirmation({
-            isOpen: true,
-            title: t.importClassDialogTitle,
-            message: interpolateTemplate(t.importClassDialogMessage, { name: session.name }),
-            confirmText: t.importClassDialogConfirm,
-            onConfirm: () => doImport(true),
-          })
-        } else {
-          doImport()
-        }
-      } catch (err) {
-        console.error(err)
-        onNotify?.(
-          'error',
-          `${notifications.classImportFailed}: ${(err as Error).message}`,
+    if (file.size > MAX_TRAINER_CLASS_FILE_SIZE) {
+      onNotify?.('error', classFileCopy.importInvalid)
+      return
+    }
+
+    try {
+      const content = await file.text()
+      const classified = classifyTrainerClassFileContent(content)
+      if (classified.kind === 'encrypted') {
+        setClassFileError('')
+        setClassFileDialog({ mode: 'import', content, fileName: file.name })
+        return
+      }
+      importClassSession(classified.session, true)
+    } catch (error) {
+      onNotify?.(
+        'error',
+        (error as Error).message === 'linked-trainer-class-file-not-supported'
+          ? `${notifications.classImportFailed}: ${supervisionCopy.linkedImportRejected}`
+          : classFileCopy.importInvalid,
+      )
+    }
+  }
+
+  const closeClassFileDialog = () => {
+    if (classFileOperationRef.current) return
+    setClassFileDialog(null)
+    setClassFileError('')
+  }
+
+  const handleClassFilePasswordSubmit = async (password: string) => {
+    if (!classFileDialog || classFileOperationRef.current) return
+    classFileOperationRef.current = true
+    setClassFileBusy(true)
+    setClassFileError('')
+    try {
+      if (classFileDialog.mode === 'export') {
+        const content = await encryptTrainerClassFileContent(classFileDialog.session, password)
+        downloadTrainerClassFile(content)
+        setClassFileDialog(null)
+        onNotify?.('success', classFileCopy.exported)
+      } else {
+        const session = await decryptTrainerClassFileContent(classFileDialog.content, password)
+        setClassFileDialog(null)
+        importClassSession(session, false)
+      }
+    } catch (error) {
+      const message = (error as Error).message
+      if (message === 'browser-encryption-unavailable') {
+        setClassFileError(classFileCopy.dialog.encryptionUnavailable)
+      } else {
+        setClassFileError(
+          classFileDialog.mode === 'export'
+            ? classFileCopy.dialog.exportFailed
+            : classFileCopy.dialog.decryptFailed,
         )
       }
-      if (fileInputRef.current) fileInputRef.current.value = ''
+    } finally {
+      classFileOperationRef.current = false
+      setClassFileBusy(false)
     }
-    reader.readAsText(file)
   }
 
   // ----- RENDER -----
@@ -1610,11 +1683,28 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         <ConfirmModal isOpen={confirmation.isOpen} onClose={() => setConfirmation({ ...confirmation, isOpen: false })} onConfirm={confirmation.onConfirm} title={confirmation.title} confirmText={confirmation.confirmText} confirmClassName={confirmation.confirmClassName}>
           {confirmation.message}
         </ConfirmModal>
+        <TrainerClassFilePasswordDialog
+          isOpen={classFileDialog !== null}
+          mode={classFileDialog?.mode ?? 'export'}
+          fileName={classFileDialog?.mode === 'import' ? classFileDialog.fileName : undefined}
+          busy={classFileBusy}
+          error={classFileError}
+          copy={classFileCopy.dialog}
+          onClose={closeClassFileDialog}
+          onClearError={() => setClassFileError('')}
+          onSubmit={(password) => { void handleClassFilePasswordSubmit(password) }}
+        />
         <header className="max-w-4xl mx-auto mb-12 flex justify-between items-center">
           <h1 className="text-3xl font-semibold tracking-tight text-slate-700 dark:text-slate-200 sm:text-4xl">{t.dashboard}</h1>
           <div className="flex gap-3">
             <button onClick={() => fileInputRef.current?.click()} className="border border-border-color hover:bg-gray-200 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-text-secondary transition-colors">{t.import}</button>
-            <input type="file" ref={fileInputRef} onChange={handleImportClass} hidden accept=".json" />
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleImportClass}
+              hidden
+              accept={`${TRAINER_CLASS_FILE_EXTENSION},.json,application/json`}
+            />
             <button
               onClick={() => setIsCreating(true)}
               disabled={!isClassSetupReady}
@@ -1656,7 +1746,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                     <button
                       onClick={(e) => handleExportClass(e, c)}
                       className="p-2 rounded-lg border border-border-color text-text-secondary hover:bg-sky-50 dark:hover:bg-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
-                      title={t.classExportTooltip}
+                      title={classFileCopy.exportTooltip}
                     >
                       <Save size={16} className="pointer-events-none" />
                     </button>
