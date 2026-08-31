@@ -205,6 +205,8 @@ try {
   })
   const context = await browser.newContext({ locale: 'de-DE' })
   await context.addInitScript(({ fixtureClassId, fixtureLandscapeId }) => {
+    if (sessionStorage.getItem('skillpilot_trainer_navigation_seeded') === 'true') return
+    sessionStorage.setItem('skillpilot_trainer_navigation_seeded', 'true')
     localStorage.setItem('skillpilot_lang', 'de')
     localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
     localStorage.setItem('skillpilot_role', 'trainer')
@@ -319,6 +321,30 @@ try {
   assert(
     browserErrors.length === 0,
     `trainer navigation browser errors:\n${browserErrors.join('\n')}`,
+  )
+
+  const historyLengthBeforeTrainerExit = await page.evaluate(() => history.length)
+  await page.getByRole('button', { name: 'Logout / Startseite', exact: true }).click()
+  await page.waitForURL((url) => url.pathname === '/')
+  const logoutState = await page.evaluate(() => ({
+    role: localStorage.getItem('skillpilot_role'),
+    skillpilotId: localStorage.getItem('skillpilot_id'),
+    uiSessionId: sessionStorage.getItem('skillpilot_ui_session_id'),
+    historyLength: history.length,
+  }))
+  assert(
+    logoutState.role === null
+      && logoutState.skillpilotId === null
+      && logoutState.uiSessionId === null,
+    `trainer exit clears session identity before returning to the start page; got ${JSON.stringify(logoutState)}`,
+  )
+  assert(
+    logoutState.historyLength === historyLengthBeforeTrainerExit,
+    'trainer exit replaces the active trainer entry instead of adding another browser-history entry',
+  )
+  assert(
+    browserErrors.length === 0,
+    `trainer exit browser errors:\n${browserErrors.join('\n')}`,
   )
 
   await context.close()
