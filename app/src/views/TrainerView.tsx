@@ -188,6 +188,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   })
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
 
+  const handleTrainerExit = useCallback(() => {
+    if (!onLogout) return
+    onLogout()
+    window.location.replace('/')
+  }, [onLogout])
+
   const handleTrainerWorkspaceChange = useCallback((workspace: 'goals' | 'plan') => {
     const nextSearchParams = new URLSearchParams(searchParams)
     if (workspace === 'plan') {
@@ -1522,7 +1528,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             </button>
             {onLogout && (
               <LogoutButton
-                onLogout={onLogout}
+                onLogout={handleTrainerExit}
                 size="pill"
                 className="border border-border-color hover:bg-rose-100 dark:hover:bg-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700 hover:text-rose-600 dark:hover:text-rose-400 text-text-secondary"
               />
@@ -1681,7 +1687,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           </div>
           <div className="flex items-center gap-2">
             {onLogout && (
-              <LogoutButton onLogout={onLogout} className="text-text-secondary hover:text-rose-600 dark:hover:text-rose-400" />
+              <LogoutButton onLogout={handleTrainerExit} className="text-text-secondary hover:text-rose-600 dark:hover:text-rose-400" />
             )}
           </div>
         </div>
