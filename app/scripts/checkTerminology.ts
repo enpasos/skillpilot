@@ -138,7 +138,7 @@ const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
   {
     ruleId: 'TRM-001',
     path: 'docs/deploy/openai-plugin-v1-review-freeze.md',
-    line: 505,
+    line: 506,
     column: 30,
     found: 'Wissenslandschaften',
     lineSha256: '863fbedf7aef561bd4fd6868d4e7d13d61b0d1a107fbb2b00c8e0fedcd4275e9',
