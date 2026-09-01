@@ -122,6 +122,40 @@ assert.deepEqual(missing.atomicGoalIds, [])
 const cyclicIndex = goalMap(uiGoal('cycle-a', ['cycle-b']), uiGoal('cycle-b', ['cycle-a']))
 assert.equal(resolveAtomicGoalDescendants('cycle-a', cyclicIndex).quality.status, 'invalid')
 
+// Direct composition goal entries may intentionally hide canonical cluster
+// children for presentation. They stay non-atomic and do not invalidate real
+// atomic siblings of a broader planning section.
+const opaqueCompositionCluster = {
+  ...uiGoal('opaque-composition-cluster', [], 'cluster'),
+  extendedData: { compositionEntryKind: 'goalEntry' },
+}
+const opaqueCompositionIndex = goalMap(
+  uiGoal('composition-section', ['a', opaqueCompositionCluster.id]),
+  uiGoal('a'),
+  opaqueCompositionCluster,
+)
+const opaqueCompositionResolution = resolveAtomicGoalDescendants(
+  'composition-section',
+  opaqueCompositionIndex,
+)
+assert.equal(opaqueCompositionResolution.quality.status, 'complete')
+assert.deepEqual(opaqueCompositionResolution.atomicGoalIds, ['a'])
+assert.equal(
+  resolveAtomicGoalDescendants(opaqueCompositionCluster.id, opaqueCompositionIndex).quality.status,
+  'complete',
+)
+assert.deepEqual(
+  resolveAtomicGoalDescendants(opaqueCompositionCluster.id, opaqueCompositionIndex).atomicGoalIds,
+  [],
+)
+assert.equal(
+  resolveAtomicGoalDescendants(
+    'ordinary-empty-cluster',
+    goalMap(uiGoal('ordinary-empty-cluster', [], 'cluster')),
+  ).quality.status,
+  'insufficient',
+)
+
 const staleMilestonePlan = addBlocks(createPlan('stale-milestone'), [{
   id: 'stale-milestone-block',
   kind: 'milestone',

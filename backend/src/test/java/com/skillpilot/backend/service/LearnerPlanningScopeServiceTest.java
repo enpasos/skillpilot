@@ -36,6 +36,14 @@ class LearnerPlanningScopeServiceTest {
             "composition:de-he-gym-math-gk-g9:structure:sek1-g9";
     private static final String DE_PHYSICS_LK_SCOPE_ID =
             "composition:de-de-gym-physics-lk:structure:physics-root";
+    private static final List<String> OPAQUE_PHYSICS_PRESENTATION_CLUSTER_IDS = List.of(
+            "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+            "549a427d-f10a-5537-990e-6fdd7466848b",
+            "9dd7c596-a751-523c-acba-916f73e900a5",
+            "b47a2a23-b56d-5433-9036-075d6bb7c782",
+            "85bbad98-2f48-5d64-85c4-ab6cf67f24c2",
+            "61684ca7-b725-534f-944b-c7645cea1792",
+            "79028c45-90ae-57eb-8016-f5a96af18fa2");
 
     @Autowired
     private LearnerService learnerService;
@@ -206,6 +214,25 @@ class LearnerPlanningScopeServiceTest {
                 .containsExactlyElementsOf(mathBeforeFocus.scopeAtomicGoalIds());
         assertThat(physicsAfterPhysicsFocus.scopeAtomicGoalIds())
                 .containsExactlyElementsOf(physicsBeforeFocus.scopeAtomicGoalIds());
+        assertPlanningScopeContainsOnlyStructuralAtoms(mathBeforeFocus.scopeAtomicGoalIds());
+        assertPlanningScopeContainsOnlyStructuralAtoms(physicsBeforeFocus.scopeAtomicGoalIds());
+    }
+
+    @Test
+    void combinedHessenPhysicsPlanningScopeExcludesOpaquePresentationClusters() {
+        selectHessenG9PhysicsCombined();
+
+        var snapshot = learnerService.getPlanningScope(
+                LEARNER_ID,
+                PHYSICS_LANDSCAPE_ID);
+
+        assertThat(snapshot.scopeAtomicGoalIds())
+                .isNotEmpty()
+                .doesNotHaveDuplicates()
+                .doesNotContainAnyElementsOf(OPAQUE_PHYSICS_PRESENTATION_CLUSTER_IDS);
+        assertThat(snapshot.openAtomicGoalIds())
+                .containsExactlyElementsOf(snapshot.scopeAtomicGoalIds());
+        assertPlanningScopeContainsOnlyStructuralAtoms(snapshot.scopeAtomicGoalIds());
     }
 
     @Test
@@ -277,6 +304,33 @@ class LearnerPlanningScopeServiceTest {
                         "selected", true,
                         "filterId", "GK+LK"))));
         learnerRepository.saveAndFlush(learner);
+    }
+
+    private void selectHessenG9PhysicsCombined() {
+        Learner learner = learnerRepository.findById(LEARNER_ID).orElseThrow();
+        learner.setSelectedCurriculum(CURRICULUM_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig(Map.of(
+                CURRICULUM_ID, Map.of(
+                        "selected", true,
+                        "filterId", "DE-HE",
+                        "stage", "CrossStage",
+                        "durationModel", "G9"),
+                PHYSICS_LANDSCAPE_ID, Map.of(
+                        "selected", true,
+                        "filterId", "GK+LK"))));
+        learnerRepository.saveAndFlush(learner);
+    }
+
+    private void assertPlanningScopeContainsOnlyStructuralAtoms(List<String> goalIds) {
+        assertThat(goalIds).allSatisfy(goalId -> {
+            var structuralGoal = landscapeService.getGoalDefinition(goalId);
+            assertThat(structuralGoal)
+                    .as("structural definition for planning goal %s", goalId)
+                    .isNotNull();
+            assertThat(structuralGoal.getType())
+                    .as("canonical node type for planning goal %s", goalId)
+                    .isNotEqualTo("cluster");
+        });
     }
 
     private boolean isSrsManagedGoal(String goalId) {

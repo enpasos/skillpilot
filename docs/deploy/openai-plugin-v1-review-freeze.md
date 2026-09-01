@@ -1684,6 +1684,66 @@ Die beiden betroffenen Dateien setzen ihre bestehenden Hashketten fort:
   `5f0e079f5debb1a17b6e621d0a333b0462a6c562af7fa51ec99dc0a3e89b9320`
   → `e04c477cfb6121f8daa540a8ac862258a08c2861b30d2122672d22eeb4fca025`.
 
+### 6.30 Eng begrenzte Korrektur: kanonische Atomarität in der Kursplanung
+
+Der Product Owner hat am **1. September 2026** die Korrektur des gemeldeten
+Physik-Planungsfehlers ausdrücklich mit der zusätzlichen Vorgabe beauftragt,
+dass die Lösung fachübergreifend gelten muss. Die reale Ursache lag nicht in
+fehlenden Physikzielen: Direkte `goalEntry`-Referenzen können kanonische
+Cluster für die Lernendendarstellung als opake Blätter projizieren. Der
+Backend-Projektionspfad kennzeichnet diese Präsentationskopien temporär als
+atomar. Der Planungssnapshot hatte deshalb sieben Physik-Übungs- und
+Abiturcluster als Atome gezählt, obwohl ihre unveränderten strukturellen
+Definitionen Cluster bleiben. Die strenge Browserprüfung verwarf daraufhin
+auch einen gültigen Sek-I-Abschnitt mit 118 echten Atomzielen.
+
+Freigegeben ist ausschließlich:
+
+- der read-only Planungssnapshot bestimmt die Atomarität jedes
+  personalisierten `target`-Ziels aus seiner unveränderten strukturellen
+  Definition und niemals aus einer darstellungsbedingt opaken
+  Projektionskopie;
+- direkte opake Composition-`goalEntry`-Cluster bleiben Nicht-Atome und
+  gelangen nicht in `scopeAtomicGoalIds` oder `openAtomicGoalIds`;
+- der Kursplanauflöser überspringt exakt solche opaken Nicht-Atom-Cluster als
+  null zählende Präsentationsgeschwister, damit ihre echten atomaren
+  Geschwister in einem übergeordneten Planabschnitt planbar bleiben;
+- gewöhnliche leere Cluster, fehlende Ziele, Zyklen und Baseline-Abweichungen
+  bleiben unverändert fail-closed;
+- fachneutrale Utility-Regressionen prüfen diese Abgrenzung, und ein realer
+  H2-Servicefall prüft das kanonische Atom-Invariant für Mathematik und Physik
+  sowie die zusammengeführte hessische GK+LK-Physikprojektion, ohne eine feste
+  fachliche Gesamtzahl als Vertragswert einzufrieren.
+
+Die korrigierte hessische Physik-Planbasis enthält damit für GK, LK und GK+LK
+nur noch 393, 460 beziehungsweise 462 kanonische Atome statt 399, 466
+beziehungsweise 469 Zielen einschließlich der fälschlich gezählten Cluster.
+Diese Zahlen sind Regressionsevidenz des aktuellen Layer-A-Stands, kein
+eingefrorener Curriculumvertrag.
+
+Die bestehenden Hashketten werden lückenlos fortgeführt:
+
+- `app/src/utils/localTeacherCoursePlan.test.ts`:
+  `3436f6ea0174e7e2a2ce29467761050e706b1bc5641be92acadb74c988debafc`
+  → `ff52502a72612c8f696a064b6caa64ea1b85ef9416fa07a0a21b6d55bdaef0e7`;
+- `app/src/utils/localTeacherCoursePlan.ts`:
+  `90427e7b2961d395e0ca40fb5b4f24fdc3ed13d60b25c66b3a8b7ff00a97adaf`
+  → `fac1c4031f182ea7cbf35c7bbefe1e8d615a855a7f643e5eec25afbefc03f800`;
+- `backend/src/main/java/com/skillpilot/backend/service/LearnerService.java`:
+  `b94b78fbec5e75a715c91cfbc3f1feeec7475119165761777b6c64646e05f6ac`
+  → `f0efaa113759834f84bb5ce04e758f2574d42608ed288290dde25f51c0f99afc`;
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java`:
+  `f018453aaff183a29f47f1233c42e860771a1043cc9bc33bab158ec378920db6`
+  → `0d9ba6dca1a5d7a50f2ac1d87d8e799a327af98dfe08d01c49194c5a968965b7`.
+
+Fokusunabhängigkeit, unveränderlicher `no-store`-Level-2-Snapshot,
+Direct-ID-Bearer-Grenze, das Modell ohne serverseitige
+Lehrer-Schüler-Beziehung und die übrige Kursplansemantik bleiben unverändert.
+Der eingereichte OpenAI-V1-Vertrag, First-Party-ChatGPT-Start, MCP/OAuth,
+Tools, Schemas, MCP-Apps-UI, Coach-, Session- und Identitätssemantik,
+Reviewfälle, Portalwerte, Fixtures und Reviewartefakte bleiben unberührt. Eine
+Portalaktion ist nicht erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
