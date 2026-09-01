@@ -129,6 +129,7 @@ interface PillVisualMetrics {
   fontWeight: string
   height: number
   iconHeight: number
+  iconColor: string
   iconWidth: number
   lineHeight: string
   paddingBottom: string
@@ -144,10 +145,12 @@ interface PanelVisualState {
 const readPillVisualMetrics = (action: Locator): Promise<PillVisualMetrics> => (
   action.evaluate((element) => {
     const actionStyle = getComputedStyle(element)
+    const icon = element.querySelector<SVGElement>('svg[aria-hidden="true"]')
     const colorValues = [
       actionStyle.backgroundColor,
       actionStyle.borderTopColor,
       actionStyle.color,
+      icon ? getComputedStyle(icon).color : actionStyle.color,
     ]
     const srgbValues: string[] = []
     for (const value of colorValues) {
@@ -166,7 +169,6 @@ const readPillVisualMetrics = (action: Locator): Promise<PillVisualMetrics> => (
       srgbValues.push(`rgb(${red}, ${green}, ${blue})`)
     }
     const actionBounds = element.getBoundingClientRect()
-    const icon = element.querySelector<SVGElement>('svg[aria-hidden="true"]')
     const iconBounds = icon?.getBoundingClientRect()
     return {
       backgroundColor: srgbValues[0]!,
@@ -178,6 +180,7 @@ const readPillVisualMetrics = (action: Locator): Promise<PillVisualMetrics> => (
       fontWeight: actionStyle.fontWeight,
       height: actionBounds.height,
       iconHeight: iconBounds?.height ?? 0,
+      iconColor: srgbValues[3]!,
       iconWidth: iconBounds?.width ?? 0,
       lineHeight: actionStyle.lineHeight,
       paddingBottom: actionStyle.paddingBottom,
@@ -385,7 +388,7 @@ const assertPillContentAndSizing = async (
     )
   }
 
-  const secondaryAccentGroups = [
+  const secondaryActionGroups = [
     {
       label: 'learning',
       testIds: ['public-landing-action-quickstart', 'public-landing-action-faq'],
@@ -412,17 +415,19 @@ const assertPillContentAndSizing = async (
       ],
     },
   ] as const
-  const accentPalette: Array<Pick<PillVisualMetrics, 'backgroundColor' | 'borderColor' | 'color'>> = []
-  for (const group of secondaryAccentGroups) {
+  const restingPalettes: Array<Pick<PillVisualMetrics, 'backgroundColor' | 'borderColor' | 'color'>> = []
+  const restingIconColors: string[] = []
+  for (const group of secondaryActionGroups) {
     const groupMetrics = await Promise.all(
       group.testIds.map((testId) => readPillVisualMetrics(page.getByTestId(testId))),
     )
-    const accent = {
+    const restingPalette = {
       backgroundColor: groupMetrics[0]!.backgroundColor,
       borderColor: groupMetrics[0]!.borderColor,
       color: groupMetrics[0]!.color,
     }
-    accentPalette.push(accent)
+    restingPalettes.push(restingPalette)
+    restingIconColors.push(groupMetrics[0]!.iconColor)
     for (const metrics of groupMetrics) {
       assert.deepEqual(
         {
@@ -430,20 +435,63 @@ const assertPillContentAndSizing = async (
           borderColor: metrics.borderColor,
           color: metrics.color,
         },
-        accent,
-        `${language} ${viewport}: ${group.label} actions share their panel accent`,
+        restingPalette,
+        `${language} ${viewport}: ${group.label} actions share one calm resting treatment`,
       )
       assert(
         contrastRatio(metrics.color, metrics.backgroundColor) >= 4.5,
         `${language} ${viewport}: ${group.label} action text keeps AA contrast`,
       )
+      assert.equal(
+        metrics.iconColor,
+        groupMetrics[0]!.iconColor,
+        `${language} ${viewport}: ${group.label} actions share their quiet icon accent`,
+      )
     }
   }
   assert.equal(
-    new Set(accentPalette.map((accent) => JSON.stringify(accent))).size,
-    secondaryAccentGroups.length,
-    `${language} ${viewport}: every audience panel has its own action accent`,
+    new Set(restingPalettes.map((palette) => JSON.stringify(palette))).size,
+    1,
+    `${language} ${viewport}: secondary actions stay neutral until interaction`,
   )
+  assert.equal(
+    new Set(restingIconColors).size,
+    secondaryActionGroups.length,
+    `${language} ${viewport}: panel identity remains visible through distinct icon accents`,
+  )
+
+  const hoverPalettes: Array<Pick<PillVisualMetrics, 'backgroundColor' | 'borderColor' | 'color'>> = []
+  for (const [index, group] of secondaryActionGroups.entries()) {
+    await page.mouse.move(1, 1)
+    const action = page.getByTestId(group.testIds[0])
+    await action.hover()
+    const hovered = await readPillVisualMetrics(action)
+    const resting = restingPalettes[index]!
+    assert.notDeepEqual(
+      {
+        backgroundColor: hovered.backgroundColor,
+        borderColor: hovered.borderColor,
+        color: hovered.color,
+      },
+      resting,
+      `${language} ${viewport}: ${group.label} action reveals its accent on hover`,
+    )
+    assert(
+      contrastRatio(hovered.color, hovered.backgroundColor) >= 4.5,
+      `${language} ${viewport}: ${group.label} hover action text keeps AA contrast`,
+    )
+    hoverPalettes.push({
+      backgroundColor: hovered.backgroundColor,
+      borderColor: hovered.borderColor,
+      color: hovered.color,
+    })
+  }
+  assert.equal(
+    new Set(hoverPalettes.map((palette) => JSON.stringify(palette))).size,
+    secondaryActionGroups.length,
+    `${language} ${viewport}: every audience panel reveals its own action accent on hover`,
+  )
+  await page.mouse.move(1, 1)
 
   const primaryMetrics = await readPillVisualMetrics(
     page.getByTestId('public-landing-action-learning'),
@@ -451,9 +499,15 @@ const assertPillContentAndSizing = async (
   const learningSecondaryMetrics = await readPillVisualMetrics(
     page.getByTestId('public-landing-action-quickstart'),
   )
-  assert(
-    colorDistance(primaryMetrics.backgroundColor, learningSecondaryMetrics.backgroundColor) >= 80,
-    `${language} ${viewport}: the primary learning pill is clearly highlighted within its panel`,
+  assert.equal(
+    primaryMetrics.backgroundColor,
+    learningSecondaryMetrics.backgroundColor,
+    `${language} ${viewport}: the primary learning pill keeps the same calm resting surface`,
+  )
+  assert.notEqual(
+    primaryMetrics.borderColor,
+    learningSecondaryMetrics.borderColor,
+    `${language} ${viewport}: the primary learning pill remains identifiable by its restrained border`,
   )
   assert.notEqual(
     primaryMetrics.color,
@@ -461,12 +515,8 @@ const assertPillContentAndSizing = async (
     `${language} ${viewport}: the primary learning pill also has a distinct foreground treatment`,
   )
   assert(
-    relativeLuminance(primaryMetrics.backgroundColor) >= 0.4,
-    `${language} ${viewport}: the primary learning pill keeps a bright brand-blue fill`,
-  )
-  assert(
     contrastRatio(primaryMetrics.color, primaryMetrics.backgroundColor) >= 4.5,
-    `${language} ${viewport}: the brighter primary learning pill keeps AA text contrast`,
+    `${language} ${viewport}: the restrained primary learning pill keeps AA text contrast`,
   )
 }
 

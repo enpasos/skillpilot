@@ -514,9 +514,9 @@ const assertClosedDisclosurePill = async (page: Page, language: Language) => {
     'py-1',
     'text-xs',
     'font-medium',
-    'border-emerald-200/90',
-    'bg-emerald-50/80',
-    'text-emerald-800',
+    'border-border-color',
+    'bg-input-bg',
+    'text-text-secondary',
   ]) {
     assert(
       disclosureAppearance.classNames.includes(className),
@@ -1103,8 +1103,8 @@ try {
     await flushBrowserEffects(page)
     const openDisclosureAppearance = await readDisclosurePillAppearance(page)
     for (const activeClassName of [
-      'border-emerald-300/90',
-      'bg-emerald-100/90',
+      'border-emerald-300',
+      'bg-emerald-50/80',
       'text-emerald-900',
     ]) {
       assert(
@@ -1113,9 +1113,9 @@ try {
       )
     }
     for (const closedClassName of [
-      'border-emerald-200/90',
-      'bg-emerald-50/80',
-      'text-emerald-800',
+      'border-border-color',
+      'bg-input-bg',
+      'text-text-secondary',
     ]) {
       assert(
         !openDisclosureAppearance.classNames.includes(closedClassName),
@@ -1244,14 +1244,14 @@ try {
       `${language}: Space closes without changing the disclosure label`,
     )
     assert(
-      reclosedDisclosureClasses.includes('border-emerald-200/90')
-      && reclosedDisclosureClasses.includes('bg-emerald-50/80')
-      && reclosedDisclosureClasses.includes('text-emerald-800'),
-      `${language}: Space restores the closed emerald media-pill styling`,
+      reclosedDisclosureClasses.includes('border-border-color')
+      && reclosedDisclosureClasses.includes('bg-input-bg')
+      && reclosedDisclosureClasses.includes('text-text-secondary'),
+      `${language}: Space restores the calm neutral media-pill styling`,
     )
     assert(
-      !reclosedDisclosureClasses.includes('border-emerald-300/90')
-      && !reclosedDisclosureClasses.includes('bg-emerald-100/90')
+      !reclosedDisclosureClasses.includes('border-emerald-300')
+      && !reclosedDisclosureClasses.includes('bg-emerald-50/80')
       && !reclosedDisclosureClasses.includes('text-emerald-900'),
       `${language}: Space removes the green active styling`,
     )
