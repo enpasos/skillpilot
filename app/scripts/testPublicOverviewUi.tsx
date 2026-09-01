@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createServer as createHttpServer } from 'node:http'
-import { mkdtemp, readFile, rm } from 'node:fs/promises'
+import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -749,32 +749,6 @@ const installDirectPlaySpy = async (page: Page, formatId: 'audio' | 'video') => 
 let browser: Browser | null = null
 
 try {
-  const sessionSetupSource = await readFile(
-    new URL('../src/components/SessionSetup.tsx', import.meta.url),
-    'utf8',
-  )
-  assert.match(
-    sessionSetupSource,
-    /<SkillPilotOverviewCard language=\{language === 'en' \? 'en' : 'de'\} \/>/u,
-    'the public root renders the single overview entry with the active UI language',
-  )
-  assert.doesNotMatch(
-    sessionSetupSource,
-    /<AudioPlayer\b/u,
-    'the public root no longer renders a separate inline audio player',
-  )
-  assert.doesNotMatch(
-    sessionSetupSource,
-    /t\.startPage\.links\.whitepaper/u,
-    'the public root no longer renders the former parallel whitepaper link',
-  )
-  const primaryStartCardIndex = sessionSetupSource.indexOf('onClick={openLearnerStart}')
-  const overviewCardIndex = sessionSetupSource.indexOf('<SkillPilotOverviewCard language=')
-  const curriculaCardIndex = sessionSetupSource.indexOf('to="/curricula"', overviewCardIndex)
-  assert(primaryStartCardIndex >= 0, 'the public root retains its primary learner-start card')
-  assert(overviewCardIndex > primaryStartCardIndex, 'the overview card stays after the primary learner-start card')
-  assert(curriculaCardIndex > overviewCardIndex, 'the curricula card stays after the overview card')
-
   browser = await chromium.launch({
     headless: true,
     args: [

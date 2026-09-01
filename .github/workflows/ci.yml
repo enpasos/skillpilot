@@ -259,6 +259,10 @@ jobs:
         run: npm run test:faq
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+      - name: Test public landing page and overview
+        run: |
+          npm run test:public-landing
+          npm run test:public-overview
       - name: Test existing learner linking
         run: npm run test:existing-learner-linking
       - name: Test trainer course planning

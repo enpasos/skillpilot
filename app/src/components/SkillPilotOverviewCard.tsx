@@ -42,13 +42,14 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
       data-testid="skillpilot-overview-entry"
       className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-emerald-400/70 hover:shadow-md focus-within:border-emerald-500 dark:bg-slate-800/50 dark:hover:border-emerald-500/60 dark:focus-within:border-emerald-400"
     >
-      <h3
+      <h2
         id={headingId}
         data-testid="skillpilot-overview-heading"
-        className="text-lg font-semibold text-text-primary transition-colors group-hover:text-emerald-700 group-focus-within:text-emerald-700 dark:group-hover:text-emerald-300 dark:group-focus-within:text-emerald-300"
+        className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-emerald-700 group-focus-within:text-emerald-700 dark:group-hover:text-emerald-300 dark:group-focus-within:text-emerald-300"
       >
-        {copy.title}
-      </h3>
+        <span>{copy.title}</span>
+        <Compass size={18} className="text-emerald-500" aria-hidden="true" />
+      </h2>
       <p
         data-testid="skillpilot-overview-card-description"
         className="mt-1 text-sm leading-relaxed text-text-secondary"

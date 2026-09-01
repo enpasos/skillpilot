@@ -11,6 +11,7 @@ type Role = 'learner' | 'trainer' | 'explorer'
 
 declare global {
   interface Window {
+    __sessionSetupRoleProbe?: Role[]
     __sessionSetupStartProbe?: Array<{
       id: string
       landscapeId?: string
@@ -23,13 +24,22 @@ const Fixture = () => {
   const [role, setRole] = useState<Role | null>(null)
   const [skillpilotId, setSkillpilotId] = useState('')
 
+  const handleRoleChange = (nextRole: Role | null) => {
+    if (nextRole) {
+      const probe = window.__sessionSetupRoleProbe ?? []
+      probe.push(nextRole)
+      window.__sessionSetupRoleProbe = probe
+    }
+    setRole(nextRole)
+  }
+
   return (
     <MemoryRouter initialEntries={['/']}>
       <LanguageProvider>
         <ThemeProvider>
           <SessionSetup
             role={role}
-            setRole={setRole}
+            setRole={handleRoleChange}
             skillpilotId={skillpilotId}
             setSkillpilotId={setSkillpilotId}
             onStart={(id, landscapeId, startRole) => {
