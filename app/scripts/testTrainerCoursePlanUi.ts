@@ -18,6 +18,23 @@ const rootGoalId = 'trainer-course-plan-root'
 const clusterGoalId = 'trainer-course-plan-mechanics'
 const firstGoalId = 'trainer-course-plan-goal-one'
 const secondGoalId = 'trainer-course-plan-goal-two'
+const personalizedClassId = 'trainer-course-plan-existing-learner-class'
+const personalizedCoursePlanId = `${personalizedClassId}:${landscapeId}`
+const personalizedRootLandscapeId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+const personalizedRootGoalId = 'trainer-course-plan-school-root-goal'
+const personalizedMathRootGoalId = 'trainer-course-plan-math-root'
+const sekOneClusterGoalId = 'trainer-course-plan-sek-one'
+const sekTwoClusterGoalId = 'trainer-course-plan-sek-two'
+const sekOneAtomicGoalIds = Array.from(
+  { length: 259 },
+  (_, index) => `trainer-course-plan-sek-one-${String(index + 1).padStart(3, '0')}`,
+)
+const sekTwoAtomicGoalIds = Array.from(
+  { length: 3 },
+  (_, index) => `trainer-course-plan-sek-two-${String(index + 1).padStart(3, '0')}`,
+)
+const personalizedScopeAtomicGoalIds = [...sekOneAtomicGoalIds, ...sekTwoAtomicGoalIds]
+const personalizedOpenAtomicGoalIds = [...sekOneAtomicGoalIds.slice(206), ...sekTwoAtomicGoalIds]
 
 interface LearnerRequestGate {
   blocked: boolean
@@ -62,6 +79,101 @@ const landscape = {
     goal(firstGoalId, 'Kräfte beschreiben'),
     goal(secondGoalId, 'Bewegungen auswerten'),
   ],
+}
+
+const personalizedGoal = (
+  id: string,
+  title: string,
+  phase: string,
+  contains: string[] = [],
+  tags: string[] = ['GK'],
+) => ({
+  id,
+  title,
+  description: `Die lernende Person kann ${title.toLowerCase()} erklären.`,
+  core: true,
+  weight: 1,
+  tags,
+  dimensionTags: {
+    framework: 'canonical-gymnasium-trainer-course-plan-test',
+    demandLevel: 'AB1',
+    processCompetencies: [],
+    guidingIdeas: [],
+    phase,
+    area: 'Mathematik',
+  },
+  courseLevel: 'GK',
+  requires: [],
+  contains,
+  examples: [],
+  type: contains.length > 0 ? 'cluster' : 'atomic',
+})
+
+const personalizedMathLandscape = {
+  landscapeId,
+  locale: 'de-DE',
+  subject: 'Mathematik',
+  frameworkId: 'canonical-gymnasium-trainer-course-plan-test',
+  title: 'Mathematik Kursplan-Test',
+  description: 'Personalisierte Testlandschaft mit beiden Schulstufen.',
+  filters: [
+    { id: 'all', label: 'Alle' },
+    { id: 'GK', label: 'Grundkurs' },
+  ],
+  goals: [
+    personalizedGoal(
+      personalizedMathRootGoalId,
+      'Mathematik',
+      'GLOBAL',
+      [sekOneClusterGoalId, sekTwoClusterGoalId],
+      ['root', 'GK'],
+    ),
+    personalizedGoal(sekOneClusterGoalId, 'Sekundarstufe I', 'J6', sekOneAtomicGoalIds),
+    ...sekOneAtomicGoalIds.map((id, index) => (
+      personalizedGoal(id, `Sek-I-Ziel ${index + 1}`, 'J6')
+    )),
+    personalizedGoal(sekTwoClusterGoalId, 'Sekundarstufe II', 'E', sekTwoAtomicGoalIds),
+    ...sekTwoAtomicGoalIds.map((id, index) => (
+      personalizedGoal(id, `Sek-II-Ziel ${index + 1}`, 'E')
+    )),
+  ],
+}
+
+const personalizedRootLandscape = {
+  landscapeId: personalizedRootLandscapeId,
+  locale: 'de-DE',
+  subject: 'Gymnasium',
+  frameworkId: 'canonical-gymnasium-trainer-course-plan-test-root',
+  title: 'Gymnasium',
+  description: 'Testwurzel für den personalisierten Kursplan.',
+  filters: [{ id: 'DE-HE', label: 'Hessen' }],
+  goals: [personalizedGoal(
+    personalizedRootGoalId,
+    'Gymnasium',
+    'GLOBAL',
+    [personalizedMathRootGoalId],
+    ['root', 'DE-HE'],
+  )],
+}
+
+const personalizedCompositionView = {
+  viewId: 'trainer-course-plan-cross-stage-view',
+  landscapeId,
+  scope: {
+    schoolForm: 'Gymnasium',
+    jurisdiction: 'DE-HE',
+    stage: 'CrossStage',
+    courseProfile: 'GK',
+  },
+  rootNodes: [{
+    kind: 'structure',
+    id: 'mathematik',
+    label: 'Mathematik',
+    children: [
+      { kind: 'canonicalSubtree', goalId: sekOneClusterGoalId },
+      { kind: 'canonicalSubtree', goalId: sekTwoClusterGoalId },
+    ],
+  }],
 }
 
 const localDateString = (date = new Date()) => {
@@ -311,6 +423,252 @@ try {
   }
 
   await context.close()
+  const personalizedContext = await browser.newContext({
+    locale: 'de-DE',
+    timezoneId: 'Europe/Berlin',
+  })
+  const personalizedToday = localDateString()
+  const personalizedBlockEnd = addDays(personalizedToday, 12)
+  const personalizedConfig = {
+    [personalizedRootLandscapeId]: {
+      selected: true,
+      filterId: 'DE-HE',
+      stage: 'CrossStage',
+    },
+    [landscapeId]: {
+      selected: true,
+      filterId: 'GK',
+    },
+  }
+  await personalizedContext.addInitScript((seed) => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_role', 'trainer')
+    localStorage.setItem('skillpilot_trainer_landscape', seed.landscapeId)
+    localStorage.setItem('skillpilot_active_class', seed.classId)
+    localStorage.setItem('skillpilot_test_trainer_course_plan_goal', seed.routeGoalId)
+    localStorage.setItem('skillpilot_classes', JSON.stringify([{
+      id: seed.classId,
+      name: 'Mathematik Einzelbetreuung',
+      landscapeId: seed.landscapeId,
+      activeFilter: 'DE-HE',
+      rootLandscapeId: seed.rootLandscapeId,
+      personalConfig: seed.personalConfig,
+      students: [{ id: seed.studentId, name: 'Alex', accessMode: 'learner-id' }],
+      currentGoalId: seed.routeGoalId,
+      source: 'existing-learner',
+    }]))
+    localStorage.setItem('skillpilot_teacher_course_plans_v1', JSON.stringify({
+      schemaVersion: 1,
+      plansByClassId: {
+        [seed.coursePlanId]: {
+          schemaVersion: 1,
+          classId: seed.coursePlanId,
+          revision: 1,
+          revisionChangedOn: seed.today,
+          revisionChangedAt: `${seed.today}T00:00:00.000Z`,
+          revisionOrigin: 'initial',
+          createdAt: `${seed.today}T00:00:00.000Z`,
+          updatedAt: `${seed.today}T00:00:00.000Z`,
+          schoolYearLabel: '2026/27',
+          blocks: [{
+            id: 'sek-one-learning-block',
+            kind: 'learning',
+            goalId: seed.sekOneClusterGoalId,
+            title: 'Sek I',
+            startDate: seed.today,
+            endDate: seed.blockEnd,
+          }],
+          revisionHistory: [],
+          coverageEvents: [],
+          coverageAttestations: [],
+        },
+      },
+    }))
+  }, {
+    landscapeId,
+    classId: personalizedClassId,
+    coursePlanId: personalizedCoursePlanId,
+    rootLandscapeId: personalizedRootLandscapeId,
+    personalConfig: personalizedConfig,
+    studentId,
+    routeGoalId: sekOneClusterGoalId,
+    sekOneClusterGoalId,
+    today: personalizedToday,
+    blockEnd: personalizedBlockEnd,
+  })
+
+  const personalizedPage = await personalizedContext.newPage()
+  const personalizedBrowserErrors: string[] = []
+  personalizedPage.on('pageerror', (error) => personalizedBrowserErrors.push(error.message))
+  let releasePlanningScope: (() => void) | undefined
+  const planningScopeHold = new Promise<void>((resolve) => {
+    releasePlanningScope = resolve
+  })
+  await personalizedPage.route('**/api/ui/**', async (route) => {
+    const request = route.request()
+    const url = new URL(request.url())
+    const pathname = url.pathname
+    if (pathname === '/api/ui/curriculum-catalog') {
+      await route.fulfill({ status: 404, body: '' })
+      return
+    }
+    if (pathname === '/api/ui/landscapes') {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ summaries: [personalizedRootLandscape, personalizedMathLandscape] }),
+      })
+      return
+    }
+    if (
+      pathname === `/api/ui/landscapes/${landscapeId}/closure`
+      || pathname === `/api/ui/landscapes/${personalizedRootLandscapeId}/closure`
+    ) {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([personalizedRootLandscape, personalizedMathLandscape]),
+      })
+      return
+    }
+    if (pathname === '/api/ui/composition-views/match') {
+      assert(url.searchParams.get('landscapeId') === landscapeId, 'composition request targets Mathematics')
+      assert(url.searchParams.get('stage') === 'CrossStage', 'Level-2 composition includes both school stages')
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(personalizedCompositionView),
+      })
+      return
+    }
+    if (pathname === `/api/ui/learners/${studentId}`) {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          skillpilotId: studentId,
+          personalCurriculum: JSON.stringify(personalizedConfig),
+        }),
+      })
+      return
+    }
+    if (pathname === `/api/ui/learners/${studentId}/planning-scope`) {
+      assert(request.method() === 'GET', 'planning scope remains read-only')
+      assert(url.searchParams.get('landscapeId') === landscapeId, 'planning scope targets the active subject')
+      assert(!url.searchParams.has('scopeGoalId'), 'landscape baseline is independent of a selected block')
+      await planningScopeHold
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        headers: { 'Cache-Control': 'no-store' },
+        body: JSON.stringify({
+          curriculumId: personalizedRootLandscapeId,
+          landscapeId,
+          scopeAtomicGoalIds: personalizedScopeAtomicGoalIds,
+          totalAtomicGoalCount: personalizedScopeAtomicGoalIds.length,
+          masteredAtomicGoalCount: 206,
+          openAtomicGoalIds: personalizedOpenAtomicGoalIds,
+          capturedAt: `${personalizedToday}T00:00:00.000Z`,
+        }),
+      })
+      return
+    }
+    await route.fulfill({ status: 404, body: '' })
+  })
+
+  const planningScopeRequest = personalizedPage.waitForRequest((request) => (
+    new URL(request.url()).pathname === `/api/ui/learners/${studentId}/planning-scope`
+  ))
+  await personalizedPage.goto(`${server.baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
+  await personalizedPage.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
+  await planningScopeRequest
+  assert(
+    new URL(personalizedPage.url()).pathname.endsWith(`/${sekOneClusterGoalId}`),
+    `the current Level-3 route remains the Sek-I focus goal; got ${personalizedPage.url()}`,
+  )
+
+  await personalizedPage.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
+  const preBaselineForm = personalizedPage
+    .getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
+    .locator('..')
+    .locator('..')
+  const preBaselineGoalValues = await preBaselineForm
+    .getByRole('combobox', { name: 'Lernziel oder Cluster' })
+    .locator('option')
+    .evaluateAll((options) => options.map((option) => (option as HTMLOptionElement).value))
+  assert(
+    preBaselineGoalValues.includes(sekTwoClusterGoalId),
+    'Sek II is selectable from the full Level-2 personalization despite the Sek-I route',
+  )
+  assert(preBaselineGoalValues.includes(sekOneClusterGoalId), 'the existing Sek-I block target remains selectable')
+  await preBaselineForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
+  releasePlanningScope?.()
+
+  try {
+    await personalizedPage.getByText('53 offene von 259 atomaren Zielen verplant', { exact: true }).waitFor()
+  } catch (error) {
+    const body = (await personalizedPage.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
+    throw new Error(`${error instanceof Error ? error.message : String(error)}\nBody: ${body.slice(0, 4_000)}`)
+  }
+  assert(
+    await personalizedPage.getByText('6 von 53 fällig', { exact: true }).count() >= 1,
+    'the existing Sek-I block schedules only its 53 open atoms and has six due today',
+  )
+
+  await personalizedPage.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
+  const sekTwoForm = personalizedPage
+    .getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
+    .locator('..')
+    .locator('..')
+  const sekTwoGoalSelect = sekTwoForm.getByRole('combobox', { name: 'Lernziel oder Cluster' })
+  const sekTwoOption = sekTwoGoalSelect.locator(`option[value="${sekTwoClusterGoalId}"]`)
+  assert(await sekTwoOption.count() === 1, 'Sek II remains selectable after the authoritative baseline is loaded')
+  assert(
+    (await sekTwoOption.textContent())?.includes('3 offen von 3 atomaren Zielen') === true,
+    'the Sek-II option is intersected with the same landscape baseline',
+  )
+  await sekTwoGoalSelect.selectOption(sekTwoClusterGoalId)
+  await sekTwoForm.getByLabel('Von', { exact: true }).fill(addDays(personalizedBlockEnd, 1))
+  await sekTwoForm.getByLabel('Bis einschließlich', { exact: true }).fill(addDays(personalizedBlockEnd, 5))
+  await sekTwoForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
+  await personalizedPage.getByRole('heading', { name: 'Sekundarstufe II', exact: true }).waitFor()
+
+  const persistedPersonalizedPlan = await personalizedPage.evaluate(({ storageKey, coursePlanId }) => {
+    const raw = localStorage.getItem(storageKey)
+    if (!raw) return null
+    const store = JSON.parse(raw) as {
+      plansByClassId?: Record<string, {
+        planningBaseline?: { source?: string; scopeAtomicGoalIds?: string[]; focusGoalIds?: string[] }
+        blocks?: Array<{ goalId?: string }>
+      }>
+    }
+    return store.plansByClassId?.[coursePlanId] ?? null
+  }, {
+    storageKey: 'skillpilot_teacher_course_plans_v1',
+    coursePlanId: personalizedCoursePlanId,
+  })
+  assert(
+    persistedPersonalizedPlan?.planningBaseline?.source === 'learner-planning-landscape-v1',
+    'the course plan persists the focus-independent landscape baseline',
+  )
+  assert(
+    persistedPersonalizedPlan?.planningBaseline?.scopeAtomicGoalIds?.length === 262,
+    'the persisted baseline contains both personalized stages',
+  )
+  assert(
+    !('focusGoalIds' in (persistedPersonalizedPlan?.planningBaseline ?? {})),
+    'the v2 baseline persists no Level-3 focus identifiers',
+  )
+  assert(
+    persistedPersonalizedPlan?.blocks?.some(({ goalId }) => goalId === sekTwoClusterGoalId) === true,
+    'the newly selected Sek-II block is saved locally',
+  )
+  assert(
+    personalizedBrowserErrors.length === 0,
+    `focus-independent course-plan browser errors:\n${personalizedBrowserErrors.join('\n')}`,
+  )
+  await personalizedContext.close()
   console.log('Trainer course-plan UI regression test passed.')
 } finally {
   await browser?.close()

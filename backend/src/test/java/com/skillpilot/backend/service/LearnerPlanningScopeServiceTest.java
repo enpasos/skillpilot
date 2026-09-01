@@ -34,8 +34,6 @@ class LearnerPlanningScopeServiceTest {
     private static final String PHYSICS_LANDSCAPE_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String SEK_ONE_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:sek1-g9";
-    private static final String DE_MATH_LK_SCOPE_ID =
-            "composition:de-de-gym-math-lk:structure:math-root";
     private static final String DE_PHYSICS_LK_SCOPE_ID =
             "composition:de-de-gym-physics-lk:structure:physics-root";
 
@@ -67,36 +65,49 @@ class LearnerPlanningScopeServiceTest {
     }
 
     @Test
-    void explicitSekOneScopeMirrorsAuthoritativeStatsAndReturnsExactlyTheOpenRemainder() {
+    void completeLevelTwoScopeIsIndependentOfLevelThreeFocusAndReturnsExactlyTheOpenRemainder() {
         selectHessenG9Math();
-        learnerService.setPlannedGoals(LEARNER_ID, Set.of(SEK_ONE_SCOPE_ID));
-        var authoritativeState = learnerService.getCoachLearnerState(LEARNER_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
 
         var initial = learnerService.getPlanningScope(
                 LEARNER_ID,
-                MATH_LANDSCAPE_ID,
-                SEK_ONE_SCOPE_ID);
-        var currentFocus = learnerService.getPlanningScope(
-                LEARNER_ID,
-                MATH_LANDSCAPE_ID,
-                null);
+                MATH_LANDSCAPE_ID);
 
         assertThat(initial.curriculumId()).isEqualTo(CURRICULUM_ID);
         assertThat(initial.landscapeId()).isEqualTo(MATH_LANDSCAPE_ID);
-        assertThat(initial.focusGoalIds()).containsExactly(SEK_ONE_SCOPE_ID);
-        assertThat(initial.scopeGoalIds()).isNotEmpty().doesNotHaveDuplicates();
+        assertThat(initial.scopeAtomicGoalIds()).isNotEmpty().doesNotHaveDuplicates();
         assertThat(initial.totalAtomicGoalCount())
-                .isEqualTo(authoritativeState.goals().scope().total_atomic())
-                .isEqualTo(initial.scopeGoalIds().size());
+                .isEqualTo(initial.scopeAtomicGoalIds().size());
         assertThat(initial.masteredAtomicGoalCount()).isZero();
-        assertThat(initial.openAtomicGoalIds()).containsExactlyElementsOf(initial.scopeGoalIds());
-        assertThat(currentFocus.focusGoalIds()).containsExactly(SEK_ONE_SCOPE_ID);
-        assertThat(currentFocus.scopeGoalIds()).containsExactlyElementsOf(initial.scopeGoalIds());
-        assertThat(currentFocus.totalAtomicGoalCount()).isEqualTo(initial.totalAtomicGoalCount());
+        assertThat(initial.openAtomicGoalIds())
+                .containsExactlyElementsOf(initial.scopeAtomicGoalIds());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
+
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(SEK_ONE_SCOPE_ID));
+        var focusedState = learnerService.getCoachLearnerState(LEARNER_ID);
+        var afterFocusChange = learnerService.getPlanningScope(
+                LEARNER_ID,
+                MATH_LANDSCAPE_ID);
+
+        assertThat(afterFocusChange.scopeAtomicGoalIds())
+                .containsExactlyElementsOf(initial.scopeAtomicGoalIds());
+        assertThat(afterFocusChange.openAtomicGoalIds())
+                .containsExactlyElementsOf(initial.openAtomicGoalIds());
+        assertThat(afterFocusChange.totalAtomicGoalCount())
+                .isEqualTo(initial.totalAtomicGoalCount())
+                .isGreaterThan(focusedState.goals().scope().total_atomic());
 
         Learner learner = learnerRepository.findById(LEARNER_ID).orElseThrow();
-        int masteredGoalCount = initial.scopeGoalIds().size() - 53;
-        List<String> masteredGoalIds = initial.scopeGoalIds().subList(0, masteredGoalCount);
+        int masteredGoalCount = initial.scopeAtomicGoalIds().size() - 53;
+        List<String> directlyMasterableGoalIds = initial.scopeAtomicGoalIds().stream()
+                .filter(goalId -> !isSrsManagedGoal(goalId))
+                .toList();
+        assertThat(directlyMasterableGoalIds).hasSizeGreaterThanOrEqualTo(masteredGoalCount);
+        List<String> masteredGoalIds = directlyMasterableGoalIds.subList(0, masteredGoalCount);
+        Set<String> masteredGoalIdSet = Set.copyOf(masteredGoalIds);
+        List<String> expectedOpenGoalIds = initial.scopeAtomicGoalIds().stream()
+                .filter(goalId -> !masteredGoalIdSet.contains(goalId))
+                .toList();
         masteryRepository.saveAllAndFlush(java.util.stream.IntStream.range(0, masteredGoalIds.size())
                 .mapToObj(index -> new Mastery(
                         learner,
@@ -107,20 +118,15 @@ class LearnerPlanningScopeServiceTest {
 
         var snapshot = learnerService.getPlanningScope(
                 LEARNER_ID,
-                MATH_LANDSCAPE_ID,
-                SEK_ONE_SCOPE_ID);
-        var updatedAuthoritativeState = learnerService.getCoachLearnerState(LEARNER_ID);
+                MATH_LANDSCAPE_ID);
 
         assertThat(snapshot.totalAtomicGoalCount()).isEqualTo(initial.totalAtomicGoalCount());
         assertThat(snapshot.masteredAtomicGoalCount()).isEqualTo(masteredGoalCount);
-        assertThat(snapshot.masteredAtomicGoalCount())
-                .isEqualTo(updatedAuthoritativeState.goals().scope().mastered_atomic());
         assertThat(snapshot.openAtomicGoalIds())
                 .hasSize(53)
-                .containsExactlyElementsOf(initial.scopeGoalIds().subList(
-                        masteredGoalCount,
-                        initial.scopeGoalIds().size()));
-        assertThat(snapshot.scopeGoalIds()).containsExactlyElementsOf(initial.scopeGoalIds());
+                .containsExactlyElementsOf(expectedOpenGoalIds);
+        assertThat(snapshot.scopeAtomicGoalIds())
+                .containsExactlyElementsOf(initial.scopeAtomicGoalIds());
         assertThat(snapshot.capturedAt()).isNotNull();
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .singleElement()
@@ -132,36 +138,45 @@ class LearnerPlanningScopeServiceTest {
     }
 
     @Test
-    void currentMultiSubjectFocusIsStrictlyCutToTheRequestedLandscape() {
+    void multiSubjectLevelTwoScopeIsStrictlyCutToTheRequestedLandscapeAndIgnoresFocus() {
         selectNationalMathAndPhysicsLk();
+
+        var mathBeforeFocus = learnerService.getPlanningScope(
+                LEARNER_ID,
+                MATH_LANDSCAPE_ID);
+        var physicsBeforeFocus = learnerService.getPlanningScope(
+                LEARNER_ID,
+                PHYSICS_LANDSCAPE_ID);
+
         learnerService.setScope(
                 LEARNER_ID,
-                List.of(DE_MATH_LK_SCOPE_ID, DE_PHYSICS_LK_SCOPE_ID));
+                List.of(DE_PHYSICS_LK_SCOPE_ID));
 
-        var math = learnerService.getPlanningScope(
+        var mathAfterPhysicsFocus = learnerService.getPlanningScope(
                 LEARNER_ID,
-                MATH_LANDSCAPE_ID,
-                null);
-        var physics = learnerService.getPlanningScope(
+                MATH_LANDSCAPE_ID);
+        var physicsAfterPhysicsFocus = learnerService.getPlanningScope(
                 LEARNER_ID,
-                PHYSICS_LANDSCAPE_ID,
-                null);
+                PHYSICS_LANDSCAPE_ID);
 
-        assertThat(math.focusGoalIds()).containsExactly(DE_MATH_LK_SCOPE_ID);
-        assertThat(math.scopeGoalIds())
+        assertThat(mathBeforeFocus.scopeAtomicGoalIds())
                 .isNotEmpty()
                 .allSatisfy(goalId -> assertThat(landscapeService.getLandscapeIdForGoal(goalId))
                         .isEqualTo(MATH_LANDSCAPE_ID));
-        assertThat(physics.focusGoalIds()).containsExactly(DE_PHYSICS_LK_SCOPE_ID);
-        assertThat(physics.scopeGoalIds())
+        assertThat(physicsBeforeFocus.scopeAtomicGoalIds())
                 .isNotEmpty()
                 .allSatisfy(goalId -> assertThat(landscapeService.getLandscapeIdForGoal(goalId))
                         .isEqualTo(PHYSICS_LANDSCAPE_ID));
-        assertThat(math.scopeGoalIds()).doesNotContainAnyElementsOf(physics.scopeGoalIds());
+        assertThat(mathBeforeFocus.scopeAtomicGoalIds())
+                .doesNotContainAnyElementsOf(physicsBeforeFocus.scopeAtomicGoalIds());
+        assertThat(mathAfterPhysicsFocus.scopeAtomicGoalIds())
+                .containsExactlyElementsOf(mathBeforeFocus.scopeAtomicGoalIds());
+        assertThat(physicsAfterPhysicsFocus.scopeAtomicGoalIds())
+                .containsExactlyElementsOf(physicsBeforeFocus.scopeAtomicGoalIds());
     }
 
     @Test
-    void explicitScopeSnapshotDoesNotPersistOrRepairLevelThreeState() {
+    void levelTwoSnapshotDoesNotPersistOrRepairLevelThreeState() {
         selectHessenG9Math();
         long revisionBefore = learnerRepository.findById(LEARNER_ID)
                 .orElseThrow()
@@ -170,30 +185,32 @@ class LearnerPlanningScopeServiceTest {
 
         var snapshot = learnerService.getPlanningScope(
                 LEARNER_ID,
-                MATH_LANDSCAPE_ID,
-                SEK_ONE_SCOPE_ID);
+                MATH_LANDSCAPE_ID);
 
-        assertThat(snapshot.scopeGoalIds()).isNotEmpty();
+        assertThat(snapshot.scopeAtomicGoalIds()).isNotEmpty();
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
         assertThat(learnerRepository.findById(LEARNER_ID).orElseThrow().getCoachStateRevision())
                 .isEqualTo(revisionBefore);
     }
 
     @Test
-    void unrelatedLandscapeOrScopeFailsClosed() {
+    void unrelatedLandscapeOrIncompletePersonalizationFailsClosed() {
         selectHessenG9Math();
 
         assertThatThrownBy(() -> learnerService.getPlanningScope(
                         LEARNER_ID,
-                        PHYSICS_LANDSCAPE_ID,
-                        SEK_ONE_SCOPE_ID))
+                        PHYSICS_LANDSCAPE_ID))
                 .isInstanceOf(ResponseStatusException.class)
                 .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
                         .isEqualTo(HttpStatus.CONFLICT));
+
+        Learner learner = learnerRepository.findById(LEARNER_ID).orElseThrow();
+        learner.setPersonalCurriculum("{}");
+        learnerRepository.saveAndFlush(learner);
+
         assertThatThrownBy(() -> learnerService.getPlanningScope(
                         LEARNER_ID,
-                        MATH_LANDSCAPE_ID,
-                        "unknown-scope"))
+                        MATH_LANDSCAPE_ID))
                 .isInstanceOf(ResponseStatusException.class)
                 .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
                         .isEqualTo(HttpStatus.CONFLICT));
@@ -212,6 +229,20 @@ class LearnerPlanningScopeServiceTest {
                         "selected", true,
                         "filterId", "GK"))));
         learnerRepository.saveAndFlush(learner);
+    }
+
+    private boolean isSrsManagedGoal(String goalId) {
+        var goal = landscapeService.getGoalDefinition(goalId);
+        if (goal == null) {
+            return false;
+        }
+        Map<String, Object> extendedData = goal.getExtendedData();
+        if (extendedData != null && extendedData.get("vocabularySource") instanceof String) {
+            return true;
+        }
+        return goal.getTags() != null && goal.getTags().stream()
+                .anyMatch(tag -> tag != null
+                        && (tag.startsWith("srs-deck") || "memorization".equals(tag)));
     }
 
     private void selectNationalMathAndPhysicsLk() {

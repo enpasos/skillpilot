@@ -1154,6 +1154,130 @@
           "authorizedSha256": "a700963ddf601553d883848795770eb49e25cf88b7e4f4ee779292af9c8d5098"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-personalized-level-two-course-planning-scope",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Correct the direct-ID course planner so every atomic target in the selected subject's complete Personal Curriculum remains selectable independently of the learner's current focus, while concrete block metrics continue to count only the selected block scope and its capture-time open subset.",
+      "scope": "In the current first-party WebGUI and backend only, replace the focus-bound planning snapshot with a no-store read-only snapshot of all projected atomic targets in the requested subject landscape from the completed Level-2 Personal Curriculum; remove scopeGoalId and focus identifiers from the endpoint and new local baseline; build the planning selector before route/focus supplementation; intersect each selected block's atomic descendants with the landscape baseline and its immutable capture-time open subset; calculate displayed denominators from the union of actually selected block scopes so a 259-atom Sek-I block with 206 mastered remains 53 open of 259 even when personalized Sek-II targets are also selectable; migrate the legacy focus baseline exactly once through a real plan revision that invalidates prior attestations while keeping the new baseline across undo; retain atomic-only counting, the 0.9 mastery threshold, rounded displays, export omission, direct-ID bearer boundary, no teacher-student server relation, and every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+      "target": "current-production-first-party-direct-id-course-planning",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-independent-first-party-level-two-course-planning-correction-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/utils/privacyViewCopy.ts",
+        "submittedSha256": "471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b",
+        "priorAuthorizedSha256": "f8f847135a35a483d84a3d191e2b8e24e63a7f3cf47f8e42ba4a361a3a9bf435",
+        "authorizedSha256": "1424f94d5087a368e45d064dcfde718a4f0958464a32e376f66dddee6fdeb7f4"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testExistingLearnerTrainerUi.ts",
+        "priorSha256": "5ffeac2acbe876435cce35c6999a99e4144f238b0d9edf1f9750871ec6d8daac",
+        "sha256": "f98613ce922ead852f5a3ae0d0bd9eb2c50712f559e127ed7bf6fdbfad531a85"
+      },
+      "additionalFiles": [
+        {
+          "path": "app/scripts/fixtures/trainerCoursePlanUi.tsx",
+          "authorizedSha256": "cbf5ed579c4fe506654239e641dbb9c8f03bd71cfc9c19caa8b246d92e8d52fb"
+        },
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "authorizedSha256": "5a4bdb263c6297a2bdd4add9d958b817484de2b06f35882167db65d9efd0a5cd"
+        },
+        {
+          "path": "app/src/components/CoursePlanPilotView.tsx",
+          "priorAuthorizedSha256": "ba8adf79394c956305c6565e683107f50104ff238c7c24e477b43e8599bac95a",
+          "authorizedSha256": "42e09e55e1dce8bff7f5a7093763cb6e9fe84950f171b15557212c4d24ba5ba1"
+        },
+        {
+          "path": "app/src/coursePlanTypes.ts",
+          "priorAuthorizedSha256": "00cc04518152d792a14b6e2b25773dd02927d04e03099c50c51d85a518c52215",
+          "authorizedSha256": "c8ed29fd16db14f76400cb7701a89bb396f79177f92ab283f178daea7aee07a4"
+        },
+        {
+          "path": "app/src/utils/coursePlanCopy.ts",
+          "priorAuthorizedSha256": "76f736720c646e9154eabe6e00e7ed1fbfd19840e96fdbafea688d0188ef8fe9",
+          "authorizedSha256": "6d8e3cb7a248dbe1a49841ebfdf675c23c5f2d21796716c0f81e9bf696b95cb4"
+        },
+        {
+          "path": "app/src/utils/learnerPlanningScope.ts",
+          "priorAuthorizedSha256": "61f567e16d8c8de39153cbf859811fd1311ac5a10689f4160cbe83a3e4f473c7",
+          "authorizedSha256": "f6b00d08b625b94ab4dd2b04f5b42b396a1758e747a1d7eb3f879d175c05b923"
+        },
+        {
+          "path": "app/src/utils/learnerPlanningScope.test.ts",
+          "authorizedSha256": "e607e8bcad91bee8d41157cfcb81c6e86f41cf4fb7768b8bb088fd2e189db2b5"
+        },
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.test.ts",
+          "priorAuthorizedSha256": "fca925ef48a210e1801a4af2b1201d158a6d7114ec979392a5bebf242fde0bec",
+          "authorizedSha256": "3436f6ea0174e7e2a2ce29467761050e706b1bc5641be92acadb74c988debafc"
+        },
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.ts",
+          "priorAuthorizedSha256": "1730a6c89f07166fbf3c3fa09d581104495d4d03979edb8b8e14703f67023e58",
+          "authorizedSha256": "90427e7b2961d395e0ca40fb5b4f24fdc3ed13d60b25c66b3a8b7ff00a97adaf"
+        },
+        {
+          "path": "app/src/utils/privacyViewCopy.test.ts",
+          "priorAuthorizedSha256": "07119f62c03bd32bb8f19cf8a61b1d6b097ac8a56e60969b4f22bb1baf304877",
+          "authorizedSha256": "a34ce448d4d43d0aa91e6380e6905e375f6ed986e5db27942577f90e82a42a27"
+        },
+        {
+          "path": "app/src/views/TrainerView.tsx",
+          "priorAuthorizedSha256": "2508e4353a4f4d0e354e8bba6184f15101b402e24d20d85bb226ebcaecc6259b",
+          "authorizedSha256": "d308f123474aa23064ec6389c16279066a95016797f4f210cb5880190c118e2b"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerPlanningScopeResponse.java",
+          "priorAuthorizedSha256": "8ee39010db23db76c5953c31df2c354fd72d817942e63f721489e6c927a1d1d0",
+          "authorizedSha256": "ae3d01c4307c2b8d4292ce88fa8d53c52a99be15f695fb055330c80c29f596e2"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+          "priorAuthorizedSha256": "f360904f43a04b73cf6106da4e7c2484d5ffd1f9d781f15e1b5188ab8a25a65a",
+          "authorizedSha256": "6f75a7bb2d53f2abc1c35ad79f27e2fee5526647e1890fbe9bbffb70844f7ab9"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+          "priorAuthorizedSha256": "016c19b1ef0ae8398295852214e57d3727fbbf65fb9f3aa2e4a12133ad31c46f",
+          "authorizedSha256": "b94b78fbec5e75a715c91cfbc3f1feeec7475119165761777b6c64646e05f6ac"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/ui/LearnerUiController.java",
+          "priorAuthorizedSha256": "2d1b7200fc380333e5e00a88922019ed99ca8ee93682bb9a5db166b224d8824b",
+          "authorizedSha256": "4764754fe5b368cb3384ba37c69d58748026e3802c3bf67975de3ddef00a2065"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java",
+          "priorAuthorizedSha256": "e0149aa71c44d4c57d1d70efff8b4f8603a2783a78465896d7232f7b452dfd23",
+          "authorizedSha256": "333f0d3dcdea429a8039b0f5597c52c06eb31f6f7c751250ccf2cfdee77769e7"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/ui/LearnerUiControllerPlanningScopeHttpTest.java",
+          "priorAuthorizedSha256": "58519046dcaef168dec616de53f5a94fcf03874ea43568eb42fdda0f14dc2558",
+          "authorizedSha256": "bd79954980143d9e17e1d6a3f5dee0694cd6b5d0c81fd6ced9d1b36919ec3140"
+        },
+        {
+          "path": "docs/concept/didactic/curriculum-time-axis-and-pacing.md",
+          "priorAuthorizedSha256": "23ee1b49bc86af6f955de06199e82c56f487a2cf39eefae6eccd1717bbecc688",
+          "authorizedSha256": "05a09bb1f92abb762076621cc85af6e02f985d756593ee1bf24da5db8e997bb3"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/existing-learner-teacher-view.md",
+          "priorAuthorizedSha256": "45d7585c2dfb449c0a844d7984b617cb0b5d9da22ee9c82b170fdbd9f7df4081",
+          "authorizedSha256": "8638a688c60d833e6a35d59a69072e9fbcb654f271d3aeca54d40ebf4730c8d6"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/learning-workflow.md",
+          "authorizedSha256": "7bcc18c9c42949dc6b9bc2f3bcfc037f680cfe20ad8d2ae094422b9a91a38dd6"
+        },
+        {
+          "path": "docs/security/data-privacy.md",
+          "priorAuthorizedSha256": "a700963ddf601553d883848795770eb49e25cf88b7e4f4ee779292af9c8d5098",
+          "authorizedSha256": "58e57689fc6a2329a53e1664df1de18971bf5a6498605723f0edca0d28683803"
+        }
+      ]
     }
   ],
   "authorizedCopyClarifications": [

@@ -104,20 +104,6 @@ public class CompositionViewService {
                 List.copyOf(referencedGoalIds));
     }
 
-    /**
-     * Resolves the authored landscape that owns a valid synthetic structure
-     * reference. Unknown views or structure nodes fail closed with {@code
-     * null}.
-     */
-    public String resolveStructureLandscapeId(String syntheticGoalId) {
-        CompositionStructureResolution resolution = resolveStructureReference(syntheticGoalId);
-        if (resolution == null) {
-            return null;
-        }
-        Map<String, Object> view = findViewById(resolution.viewId());
-        return view == null ? null : asString(view.get("landscapeId"));
-    }
-
     public List<CompositionStructureResolution> findRootScopeOptions(String viewId) {
         Map<String, Object> view = findViewById(viewId);
         if (view == null) {

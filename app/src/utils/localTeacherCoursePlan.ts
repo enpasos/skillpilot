@@ -13,6 +13,7 @@ import {
   type CoursePlanDate,
   type CoursePlanParseResult,
   type LearnerCoursePlanBaseline,
+  type LearnerCoursePlanLandscapeBaseline,
   type LearningBlockGoalAssignment,
   type LearningBlockMetrics,
   type TeacherCoursePlan,
@@ -95,6 +96,14 @@ export interface ReviseTeacherCoursePlanInput {
   recordedAt: string
 }
 
+export interface MigrateTeacherCoursePlanBaselineInput {
+  planningBaseline: LearnerCoursePlanLandscapeBaseline
+  blocks?: readonly TeacherCoursePlanBlock[]
+  schoolYearLabel?: string
+  changedOn: CoursePlanDate
+  recordedAt: string
+}
+
 export interface UndoTeacherCoursePlanRevisionInput {
   changedOn: CoursePlanDate
   recordedAt: string
@@ -163,13 +172,12 @@ function normalizeUniqueIds(value: unknown, allowEmpty = true): string[] | null 
 }
 
 export function normalizeLearnerCoursePlanBaseline(value: unknown): LearnerCoursePlanBaseline | null {
-  if (!isRecord(value) || value.source !== 'learner-planning-scope-v1') return null
+  if (
+    !isRecord(value)
+    || (value.source !== 'learner-planning-scope-v1' && value.source !== 'learner-planning-landscape-v1')
+  ) return null
   const curriculumId = normalizedId(value.curriculumId)
   const landscapeId = normalizedId(value.landscapeId)
-  const scopeGoalId = value.scopeGoalId === undefined
-    ? undefined
-    : normalizedId(value.scopeGoalId)
-  const focusGoalIds = normalizeUniqueIds(value.focusGoalIds)
   const scopeAtomicGoalIds = normalizeUniqueIds(value.scopeAtomicGoalIds, false)
   const openAtomicGoalIds = normalizeUniqueIds(value.openAtomicGoalIds)
   const totalAtomicGoalCount = nonNegativeInteger(value.totalAtomicGoalCount)
@@ -178,8 +186,6 @@ export function normalizeLearnerCoursePlanBaseline(value: unknown): LearnerCours
   if (
     !curriculumId
     || !landscapeId
-    || scopeGoalId === null
-    || !focusGoalIds
     || !scopeAtomicGoalIds
     || !openAtomicGoalIds
     || totalAtomicGoalCount === null
@@ -191,6 +197,24 @@ export function normalizeLearnerCoursePlanBaseline(value: unknown): LearnerCours
   ) return null
   const scopeIds = new Set(scopeAtomicGoalIds)
   if (openAtomicGoalIds.some((goalId) => !scopeIds.has(goalId))) return null
+  if (value.source === 'learner-planning-landscape-v1') {
+    return {
+      source: 'learner-planning-landscape-v1',
+      curriculumId,
+      landscapeId,
+      scopeAtomicGoalIds,
+      openAtomicGoalIds,
+      totalAtomicGoalCount,
+      masteredAtomicGoalCount,
+      capturedAt,
+    }
+  }
+
+  const scopeGoalId = value.scopeGoalId === undefined
+    ? undefined
+    : normalizedId(value.scopeGoalId)
+  const focusGoalIds = normalizeUniqueIds(value.focusGoalIds)
+  if (scopeGoalId === null || !focusGoalIds) return null
   return {
     source: 'learner-planning-scope-v1',
     curriculumId,
@@ -209,12 +233,18 @@ function clonePlanningBaseline(
   baseline: LearnerCoursePlanBaseline | undefined,
 ): LearnerCoursePlanBaseline | undefined {
   return baseline
-    ? {
-        ...baseline,
-        focusGoalIds: [...baseline.focusGoalIds],
-        scopeAtomicGoalIds: [...baseline.scopeAtomicGoalIds],
-        openAtomicGoalIds: [...baseline.openAtomicGoalIds],
-      }
+    ? baseline.source === 'learner-planning-scope-v1'
+      ? {
+          ...baseline,
+          focusGoalIds: [...baseline.focusGoalIds],
+          scopeAtomicGoalIds: [...baseline.scopeAtomicGoalIds],
+          openAtomicGoalIds: [...baseline.openAtomicGoalIds],
+        }
+      : {
+          ...baseline,
+          scopeAtomicGoalIds: [...baseline.scopeAtomicGoalIds],
+          openAtomicGoalIds: [...baseline.openAtomicGoalIds],
+        }
     : undefined
 }
 
@@ -229,8 +259,14 @@ function samePlanningBaseline(
   return left.source === right.source
     && left.curriculumId === right.curriculumId
     && left.landscapeId === right.landscapeId
-    && left.scopeGoalId === right.scopeGoalId
-    && sameIds(left.focusGoalIds, right.focusGoalIds)
+    && (
+      left.source !== 'learner-planning-scope-v1'
+      || (
+        right.source === 'learner-planning-scope-v1'
+        && left.scopeGoalId === right.scopeGoalId
+        && sameIds(left.focusGoalIds, right.focusGoalIds)
+      )
+    )
     && sameIds(left.scopeAtomicGoalIds, right.scopeAtomicGoalIds)
     && sameIds(left.openAtomicGoalIds, right.openAtomicGoalIds)
     && left.totalAtomicGoalCount === right.totalAtomicGoalCount
@@ -771,6 +807,44 @@ export function reviseTeacherCoursePlan(
     ...(planningBaseline
       ? { planningBaseline: clonePlanningBaseline(planningBaseline) }
       : {}),
+    blocks: input.blocks ? cloneCoursePlanBlocks(input.blocks) : cloneCoursePlanBlocks(normalized.blocks),
+    revisionHistory: [
+      ...normalized.revisionHistory,
+      snapshotCurrentPlanRevision(normalized),
+    ],
+  }
+  return normalizeTeacherCoursePlan(candidate).plan
+}
+
+export function migrateTeacherCoursePlanBaseline(
+  plan: TeacherCoursePlan,
+  input: MigrateTeacherCoursePlanBaselineInput,
+): TeacherCoursePlan | null {
+  const normalized = normalizeTeacherCoursePlan(plan).plan
+  const requestedBaseline = normalizeLearnerCoursePlanBaseline(input.planningBaseline)
+  if (
+    !normalized
+    || normalized.revisionHistory.length >= TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY
+    || normalized.planningBaseline?.source !== 'learner-planning-scope-v1'
+    || requestedBaseline?.source !== 'learner-planning-landscape-v1'
+    || normalized.planningBaseline.curriculumId !== requestedBaseline.curriculumId
+    || normalized.planningBaseline.landscapeId !== requestedBaseline.landscapeId
+  ) return null
+
+  const candidate: TeacherCoursePlan = {
+    ...normalized,
+    revision: normalized.revision + 1,
+    revisionChangedOn: input.changedOn,
+    revisionChangedAt: input.recordedAt,
+    revisionOrigin: 'edit',
+    restoredFromRevision: undefined,
+    updatedAt: input.recordedAt,
+    ...(input.schoolYearLabel === undefined
+      ? {}
+      : input.schoolYearLabel.trim()
+        ? { schoolYearLabel: input.schoolYearLabel }
+        : { schoolYearLabel: undefined }),
+    planningBaseline: clonePlanningBaseline(requestedBaseline),
     blocks: input.blocks ? cloneCoursePlanBlocks(input.blocks) : cloneCoursePlanBlocks(normalized.blocks),
     revisionHistory: [
       ...normalized.revisionHistory,
@@ -1367,10 +1441,9 @@ export function evaluateTeacherCoursePlan(
     .sort((left, right) => left.date.localeCompare(right.date) || left.id.localeCompare(right.id))[0]
   const metrics: TeacherCoursePlanMetrics = {
     asOf,
-    scopeAtomicGoalCount: normalized.plan.planningBaseline?.totalAtomicGoalCount
-      ?? new Set(
-        assignmentsResult.assignments.flatMap(({ scopeAtomicGoalIds }) => scopeAtomicGoalIds),
-      ).size,
+    scopeAtomicGoalCount: new Set(
+      assignmentsResult.assignments.flatMap(({ scopeAtomicGoalIds }) => scopeAtomicGoalIds),
+    ).size,
     plannedGoalCount: plannedGoalIds.size,
     expectedGoalEquivalent,
     dueGoalIds: chronologicalLearningBlocks(normalized.plan).flatMap(({ block }) => {

@@ -30,6 +30,7 @@ import {
   evaluateTeacherCoursePlan,
   isCourseGoalCovered,
   loadTeacherCoursePlan,
+  migrateTeacherCoursePlanBaseline,
   parseCoursePlanDate,
   resolveAtomicGoalDescendants,
   reviseTeacherCoursePlan,
@@ -207,11 +208,15 @@ export const CoursePlanPilotView = ({
 
   const requiresLearnerBaseline = Boolean(learnerId && landscapeId)
   const hasLearningBlock = plan?.blocks.some((block) => block.kind === 'learning') === true
+  const landscapeBaseline = plan?.planningBaseline?.source === 'learner-planning-landscape-v1'
+    ? plan.planningBaseline
+    : null
   const baselineMatchesContext = !requiresLearnerBaseline
-    || (plan?.planningBaseline?.landscapeId === landscapeId)
+    || !hasLearningBlock
+    || (landscapeBaseline?.landscapeId === landscapeId)
   const needsLearnerBaseline = requiresLearnerBaseline
     && hasLearningBlock
-    && !plan?.planningBaseline
+    && (!plan?.planningBaseline || plan.planningBaseline.source === 'learner-planning-scope-v1')
 
   const evaluation = useMemo(() => (
     plan && !needsLearnerBaseline && baselineMatchesContext
@@ -231,27 +236,34 @@ export const CoursePlanPilotView = ({
   )
 
   const plannableGoalOptions = useMemo(() => {
-    const openGoalIds = plan?.planningBaseline
-      ? new Set(plan.planningBaseline.openAtomicGoalIds)
+    const scopeGoalIds = landscapeBaseline
+      ? new Set(landscapeBaseline.scopeAtomicGoalIds)
+      : null
+    const openGoalIds = landscapeBaseline
+      ? new Set(landscapeBaseline.openAtomicGoalIds)
       : null
     return Array.from(goals.values())
       .map((goal) => {
         const resolution = resolveAtomicGoalDescendants(goal.id, goals, visibleChildrenByParent)
+        const scopeAtomicGoalIds = resolution.quality.status === 'complete'
+          ? scopeGoalIds
+            ? resolution.atomicGoalIds.filter((goalId) => scopeGoalIds.has(goalId))
+            : resolution.atomicGoalIds
+          : []
         return {
           goal,
-          count: resolution.quality.status === 'complete'
-            ? openGoalIds
-              ? resolution.atomicGoalIds.filter((goalId) => openGoalIds.has(goalId)).length
-              : resolution.atomicGoalIds.length
-            : 0,
+          totalCount: scopeAtomicGoalIds.length,
+          count: openGoalIds
+            ? scopeAtomicGoalIds.filter((goalId) => openGoalIds.has(goalId)).length
+            : scopeAtomicGoalIds.length,
         }
       })
-      .filter(({ count }) => count > 0)
+      .filter(({ totalCount }) => totalCount > 0)
       .sort((left, right) => (
         left.goal.phase.localeCompare(right.goal.phase)
         || left.goal.title.localeCompare(right.goal.title, language === 'de' ? 'de-DE' : 'en-GB')
       ))
-  }, [goals, language, plan?.planningBaseline, visibleChildrenByParent])
+  }, [goals, landscapeBaseline, language, visibleChildrenByParent])
 
   const goalOptions = useMemo(() => {
     const normalizedSearch = goalSearch.trim().toLocaleLowerCase(language === 'de' ? 'de-DE' : 'en-GB')
@@ -314,11 +326,14 @@ export const CoursePlanPilotView = ({
       signal: controller.signal,
     }).then((planningBaseline) => {
       if (!active || planRef.current?.revision !== sourceRevision) return
-      const migrated = reviseTeacherCoursePlan(plan, {
+      const revisionInput = {
         planningBaseline,
         changedOn: asOf,
         recordedAt: new Date().toISOString(),
-      })
+      }
+      const migrated = plan.planningBaseline?.source === 'learner-planning-scope-v1'
+        ? migrateTeacherCoursePlanBaseline(plan, revisionInput)
+        : reviseTeacherCoursePlan(plan, revisionInput)
       if (!migrated || !saveTeacherCoursePlan(migrated).ok) {
         throw new Error('Could not persist the authoritative planning basis.')
       }
@@ -454,7 +469,9 @@ export const CoursePlanPilotView = ({
     const nextBlocks = editingBlockId
       ? plan.blocks.map((block) => block.id === editingBlockId ? nextBlock : block)
       : [...plan.blocks, nextBlock]
-    let planningBaseline = plan.planningBaseline
+    let planningBaseline = plan.planningBaseline?.source === 'learner-planning-landscape-v1'
+      ? plan.planningBaseline
+      : undefined
     if (draft.kind === 'learning' && requiresLearnerBaseline && !planningBaseline) {
       if (!learnerId || !landscapeId) {
         setFormError(copy.planningScopeLoadError)
@@ -494,12 +511,15 @@ export const CoursePlanPilotView = ({
         return
       }
     }
-    const revised = reviseTeacherCoursePlan(plan, {
+    const revisionInput = {
       blocks: nextBlocks,
       ...(planningBaseline ? { planningBaseline } : {}),
       changedOn: asOf,
       recordedAt: new Date().toISOString(),
-    })
+    }
+    const revised = plan.planningBaseline?.source === 'learner-planning-scope-v1' && planningBaseline
+      ? migrateTeacherCoursePlanBaseline(plan, { ...revisionInput, planningBaseline })
+      : reviseTeacherCoursePlan(plan, revisionInput)
     if (planningBaseline && draft.kind === 'learning') {
       const validation = revised
         ? evaluateTeacherCoursePlan(revised, goals, asOf, visibleChildrenByParent)
@@ -855,12 +875,20 @@ export const CoursePlanPilotView = ({
                       className="min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none focus:border-sky-500"
                     >
                       <option value="">{copy.goalPlaceholder}</option>
-                      {goalOptions.map(({ goal, count }) => (
-                        <option key={goal.id} value={goal.id}>
+                      {goalOptions.map(({ goal, count, totalCount }) => (
+                        <option
+                          key={goal.id}
+                          value={goal.id}
+                          disabled={draft.kind === 'learning' && Boolean(landscapeBaseline) && count === 0 && goal.id !== draft.goalId}
+                        >
                           {goal.phase !== 'GLOBAL' ? `${goal.phase} · ` : ''}{goal.title} · {
-                            requiresLearnerBaseline && !plan.planningBaseline
+                            draft.kind === 'learning' && requiresLearnerBaseline && !landscapeBaseline
                               ? copy.planningScopeOnSave
-                              : copy.learningGoalCount(count)
+                              : draft.kind === 'learning' && landscapeBaseline
+                                ? language === 'de'
+                                  ? `${count} offen von ${totalCount} atomaren Zielen`
+                                  : `${count} open of ${totalCount} atomic goals`
+                              : copy.learningGoalCount(draft.kind === 'milestone' ? totalCount : count)
                           }
                         </option>
                       ))}

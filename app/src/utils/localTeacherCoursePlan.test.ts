@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
+import './learnerPlanningScope.test'
+
 import {
   TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY,
   type LearnerCoursePlanBaseline,
+  type LearnerCoursePlanLandscapeBaseline,
   type TeacherCoursePlan,
   type TeacherCoursePlanBlock,
 } from '../coursePlanTypes'
@@ -16,6 +19,7 @@ import {
   evaluateTeacherCoursePlan,
   isCourseGoalCovered,
   loadTeacherCoursePlan,
+  migrateTeacherCoursePlanBaseline,
   normalizeTeacherCoursePlan,
   parseCoursePlanDate,
   parseTeacherCoursePlanStore,
@@ -174,28 +178,31 @@ assert.deepEqual(overlapAssignments.assignments, [
   },
 ])
 
-// A learner-derived baseline keeps all 259 target atoms visible for scope
-// reporting while scheduling only the 53 goals that were open when captured.
+// A landscape-wide learner baseline may contain multiple stages. A selected
+// Sek-I block still reports its 259 descendants and schedules only its 53 open
+// atoms, never the complete landscape denominator.
 const sekOneAtoms = Array.from({ length: 259 }, (_, index) => uiGoal(`sek1-g${index + 1}`))
 const sekOneScopeAtomicGoalIds = sekOneAtoms.map(({ id }) => id)
 const sekOneOpenAtomicGoalIds = sekOneScopeAtomicGoalIds.slice(206)
 const sekOneDoneCluster = uiGoal('sek1-done', sekOneScopeAtomicGoalIds.slice(0, 206))
 const sekOneOpenCluster = uiGoal('sek1-open', sekOneOpenAtomicGoalIds)
+const sekTwoAtoms = Array.from({ length: 100 }, (_, index) => uiGoal(`sek2-g${index + 1}`))
+const sekTwoAtomicGoalIds = sekTwoAtoms.map(({ id }) => id)
 const sekOneGoalIndex = goalMap(
   uiGoal('sek1-root', [sekOneDoneCluster.id, sekOneOpenCluster.id]),
+  uiGoal('sek2-root', sekTwoAtomicGoalIds),
   sekOneDoneCluster,
   sekOneOpenCluster,
   ...sekOneAtoms,
+  ...sekTwoAtoms,
 )
-const sekOneBaseline: LearnerCoursePlanBaseline = {
-  source: 'learner-planning-scope-v1',
+const sekOneBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
   curriculumId: 'canonical-mathematics',
   landscapeId: 'canonical-mathematics',
-  scopeGoalId: 'sek1-root',
-  focusGoalIds: ['sek1-root'],
-  scopeAtomicGoalIds: sekOneScopeAtomicGoalIds,
-  openAtomicGoalIds: sekOneOpenAtomicGoalIds,
-  totalAtomicGoalCount: 259,
+  scopeAtomicGoalIds: [...sekOneScopeAtomicGoalIds, ...sekTwoAtomicGoalIds],
+  openAtomicGoalIds: [...sekOneOpenAtomicGoalIds, ...sekTwoAtomicGoalIds],
+  totalAtomicGoalCount: 359,
   masteredAtomicGoalCount: 206,
   capturedAt: '2026-09-01T07:00:00.000Z',
 }
@@ -203,16 +210,9 @@ const sekOnePlan = requirePlan(reviseTeacherCoursePlan(createPlan('sek1-baseline
   planningBaseline: sekOneBaseline,
   blocks: [
     {
-      id: 'sek1-done-block',
+      id: 'sek1-block',
       kind: 'learning',
-      goalId: sekOneDoneCluster.id,
-      startDate: '2026-09-01',
-      endDate: '2026-09-13',
-    },
-    {
-      id: 'sek1-open-block',
-      kind: 'learning',
-      goalId: sekOneOpenCluster.id,
+      goalId: 'sek1-root',
       startDate: '2026-09-01',
       endDate: '2026-09-13',
     },
@@ -233,16 +233,9 @@ assert.equal(sekOneEvaluation.metrics.dueGoalIds.length, 6)
 assert.deepEqual(sekOneEvaluation.metrics.dueGoalIds, sekOneOpenAtomicGoalIds.slice(0, 6))
 assert.deepEqual(sekOneEvaluation.assignments, [
   {
-    blockId: 'sek1-done-block',
-    goalId: sekOneDoneCluster.id,
-    scopeAtomicGoalIds: sekOneScopeAtomicGoalIds.slice(0, 206),
-    atomicGoalIds: [],
-    duplicateAtomicGoalIds: [],
-  },
-  {
-    blockId: 'sek1-open-block',
-    goalId: sekOneOpenCluster.id,
-    scopeAtomicGoalIds: sekOneOpenAtomicGoalIds,
+    blockId: 'sek1-block',
+    goalId: 'sek1-root',
+    scopeAtomicGoalIds: sekOneScopeAtomicGoalIds,
     atomicGoalIds: sekOneOpenAtomicGoalIds,
     duplicateAtomicGoalIds: [],
   },
@@ -319,19 +312,17 @@ const undoBufferBlock: TeacherCoursePlanBlock = {
   startDate: '2026-08-17',
   endDate: '2026-08-19',
 }
-const firstUndoBaseline: LearnerCoursePlanBaseline = {
-  source: 'learner-planning-scope-v1',
+const firstUndoBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
   curriculumId: 'canonical-physics',
   landscapeId: 'canonical-physics',
-  scopeGoalId: 'root',
-  focusGoalIds: ['root'],
   scopeAtomicGoalIds: atoms.map(({ id }) => id),
   openAtomicGoalIds: atoms.slice(2).map(({ id }) => id),
   totalAtomicGoalCount: 10,
   masteredAtomicGoalCount: 2,
   capturedAt: '2026-08-02T09:00:00.000Z',
 }
-const secondUndoBaseline: LearnerCoursePlanBaseline = {
+const secondUndoBaseline: LearnerCoursePlanLandscapeBaseline = {
   ...firstUndoBaseline,
   openAtomicGoalIds: atoms.slice(3).map(({ id }) => id),
   masteredAtomicGoalCount: 3,
@@ -393,6 +384,80 @@ assert.equal(undoOfUndo.schoolYearLabel, undefined)
 assert.deepEqual(undoOfUndo.planningBaseline, firstUndoBaseline)
 assert.deepEqual(undoOfUndo.blocks, [undoBufferBlock])
 assert.deepEqual(undoOfUndo.revisionHistory.map(({ revision }) => revision), [1, 2, 3, 4])
+
+// A persisted focus baseline stays readable but may be replaced exactly once
+// by a landscape baseline. The replacement is a real revision, invalidates an
+// old attestation, and remains authoritative through undo.
+const legacyBaseline: LearnerCoursePlanBaseline = {
+  source: 'learner-planning-scope-v1',
+  curriculumId: 'canonical-physics',
+  landscapeId: 'canonical-physics',
+  scopeGoalId: 'root',
+  focusGoalIds: ['root'],
+  scopeAtomicGoalIds: atoms.slice(0, 4).map(({ id }) => id),
+  openAtomicGoalIds: atoms.slice(2, 4).map(({ id }) => id),
+  totalAtomicGoalCount: 4,
+  masteredAtomicGoalCount: 2,
+  capturedAt: '2026-08-02T09:00:00.000Z',
+}
+let legacyPlan = requirePlan(reviseTeacherCoursePlan(createPlan('legacy-baseline'), {
+  planningBaseline: legacyBaseline,
+  blocks: [undoLearningBlock],
+  changedOn: '2026-08-02',
+  recordedAt: '2026-08-02T10:00:00.000Z',
+}))
+assert.equal(
+  normalizeTeacherCoursePlan(structuredClone(legacyPlan)).plan?.planningBaseline?.source,
+  'learner-planning-scope-v1',
+)
+legacyPlan = requirePlan(appendCourseCoverageAttestation(legacyPlan, {
+  id: 'legacy-attestation',
+  throughDate: '2026-08-03',
+  recordedAt: '2026-08-03T09:30:00.000Z',
+}))
+const migratedBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
+  curriculumId: 'canonical-physics',
+  landscapeId: 'canonical-physics',
+  scopeAtomicGoalIds: atoms.map(({ id }) => id),
+  openAtomicGoalIds: atoms.slice(2).map(({ id }) => id),
+  totalAtomicGoalCount: 10,
+  masteredAtomicGoalCount: 2,
+  capturedAt: '2026-08-03T09:00:00.000Z',
+}
+const migratedPlan = requirePlan(migrateTeacherCoursePlanBaseline(legacyPlan, {
+  planningBaseline: migratedBaseline,
+  changedOn: '2026-08-03',
+  recordedAt: '2026-08-03T10:00:00.000Z',
+}))
+assert.equal(migratedPlan.revision, legacyPlan.revision + 1)
+assert.deepEqual(migratedPlan.planningBaseline, migratedBaseline)
+assert.equal(migratedPlan.revisionHistory.at(-1)?.planningBaseline, undefined)
+assert.equal(migratedPlan.coverageAttestations[0]?.planRevision, legacyPlan.revision)
+assert.equal(
+  evaluateTeacherCoursePlan(migratedPlan, fullGoalIndex, '2026-08-03').coverage?.isAttestedThroughAsOf,
+  false,
+)
+assert.equal(migrateTeacherCoursePlanBaseline(migratedPlan, {
+  planningBaseline: migratedBaseline,
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T10:00:00.000Z',
+}), null, 'a landscape baseline cannot be migrated again')
+assert.equal(reviseTeacherCoursePlan(migratedPlan, {
+  planningBaseline: {
+    ...migratedBaseline,
+    openAtomicGoalIds: atoms.slice(3).map(({ id }) => id),
+    masteredAtomicGoalCount: 3,
+    capturedAt: '2026-08-04T09:00:00.000Z',
+  },
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T10:00:00.000Z',
+}), null, 'an established landscape baseline is immutable')
+const undoAfterMigration = requirePlan(undoLastTeacherCoursePlanRevision(migratedPlan, {
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T11:00:00.000Z',
+}))
+assert.deepEqual(undoAfterMigration.planningBaseline, migratedBaseline)
 
 const blocks: TeacherCoursePlanBlock[] = [
   {

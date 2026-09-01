@@ -90,7 +90,6 @@ public class LearnerUiController {
     public ResponseEntity<LearnerPlanningScopeResponse> getPlanningScope(
             @PathVariable String skillpilotId,
             @RequestParam String landscapeId,
-            @RequestParam(required = false) String scopeGoalId,
             HttpServletResponse response) {
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
@@ -98,8 +97,7 @@ public class LearnerUiController {
                 .cacheControl(CacheControl.noStore())
                 .body(learnerService.getPlanningScope(
                         skillpilotId,
-                        landscapeId,
-                        scopeGoalId));
+                        landscapeId));
     }
 
     @PostMapping("/{skillpilotId}/resume")

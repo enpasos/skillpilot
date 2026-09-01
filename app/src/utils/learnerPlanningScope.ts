@@ -1,11 +1,10 @@
-import type { LearnerCoursePlanBaseline } from '../coursePlanTypes'
+import type { LearnerCoursePlanLandscapeBaseline } from '../coursePlanTypes'
 import { normalizeLearnerCoursePlanBaseline } from './localTeacherCoursePlan'
 
 interface LearnerPlanningScopeResponse {
   curriculumId: unknown
   landscapeId: unknown
-  focusGoalIds: unknown
-  scopeGoalIds: unknown
+  scopeAtomicGoalIds: unknown
   totalAtomicGoalCount: unknown
   masteredAtomicGoalCount: unknown
   openAtomicGoalIds: unknown
@@ -18,7 +17,6 @@ const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 export interface FetchLearnerPlanningScopeInput {
   learnerId: string
   landscapeId: string
-  scopeGoalId?: string
   signal?: AbortSignal
 }
 
@@ -29,11 +27,9 @@ export interface FetchLearnerPlanningScopeInput {
 export async function fetchLearnerPlanningScope({
   learnerId,
   landscapeId,
-  scopeGoalId,
   signal,
-}: FetchLearnerPlanningScopeInput): Promise<LearnerCoursePlanBaseline> {
+}: FetchLearnerPlanningScopeInput): Promise<LearnerCoursePlanLandscapeBaseline> {
   const query = new URLSearchParams({ landscapeId })
-  if (scopeGoalId) query.set('scopeGoalId', scopeGoalId)
   const response = await fetch(
     toApi(`/api/ui/learners/${encodeURIComponent(learnerId)}/planning-scope?${query.toString()}`),
     { cache: 'no-store', signal },
@@ -41,18 +37,20 @@ export async function fetchLearnerPlanningScope({
   if (!response.ok) throw new Error(`Unexpected planning-scope status ${response.status}`)
   const value = await response.json() as LearnerPlanningScopeResponse
   const baseline = normalizeLearnerCoursePlanBaseline({
-    source: 'learner-planning-scope-v1',
+    source: 'learner-planning-landscape-v1',
     curriculumId: value?.curriculumId,
     landscapeId: value?.landscapeId,
-    ...(scopeGoalId ? { scopeGoalId } : {}),
-    focusGoalIds: value?.focusGoalIds,
-    scopeAtomicGoalIds: value?.scopeGoalIds,
+    scopeAtomicGoalIds: value?.scopeAtomicGoalIds,
     openAtomicGoalIds: value?.openAtomicGoalIds,
     totalAtomicGoalCount: value?.totalAtomicGoalCount,
     masteredAtomicGoalCount: value?.masteredAtomicGoalCount,
     capturedAt: value?.capturedAt,
   })
-  if (!baseline || baseline.landscapeId !== landscapeId) {
+  if (
+    !baseline
+    || baseline.source !== 'learner-planning-landscape-v1'
+    || baseline.landscapeId !== landscapeId
+  ) {
     throw new Error('Planning-scope response is inconsistent.')
   }
   return baseline

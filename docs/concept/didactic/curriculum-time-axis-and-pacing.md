@@ -710,15 +710,20 @@ Abschlusssemantiken keine Lernfortschrittsspitzen erzeugen.
 Die UI muss bei der Ein-Punkt-Näherung klar sagen, dass „Ziele pro Woche“ eine
 grobe, vom Zuschnitt der Ziele abhängige Größe ist.
 
-Im lokalen Direkt-ID-Piloten wird der erste Lernabschnitt gegen einen
-unveränderlichen Schnappschuss des aktuellen Cockpit-Fokus geplant. Gezählt
-werden genau die projizierten `target`-Atomziele, die das Cockpit zu diesem
-Zeitpunkt als atomar zählt; Cluster zählen nie. Das Kursplan-Todo ist
-ausschließlich die Teilmenge dieser Ziele mit Mastery unter `0.9`. Ein Stand
-von 259 Atomzielen und 206 gemeisterten Zielen erzeugt daher 53 planbare Ziele.
-Spätere Lernfortschritte ändern diese Planbasis nicht rückwirkend. Ausgegebene
-Soll-Zielzahlen werden auf ganze Ziele gerundet; Raten wie das
-Wochenkontingent werden höchstens mit einer Nachkommastelle dargestellt.
+Im lokalen Direkt-ID-Piloten wird der Planungsraum gegen einen unveränderlichen
+Schnappschuss aller projizierten `target`-Atomziele des vollständigen
+personalisierten Fachumfangs (Level 2) gebildet; Cluster zählen nie. Der
+veränderliche Cockpit-Fokus (Level 3) schränkt diesen Auswahlraum nicht ein.
+Für einen konkreten Lernabschnitt zählen jedoch nur die Atomziele unter dem
+tatsächlich ausgewählten Ziel oder Cluster. Dessen Kursplan-Todo ist
+ausschließlich die beim Schnappschuss noch offene Teilmenge mit Mastery unter
+`0.9`. Ein ausgewählter Sek-I-Abschnitt mit 259 Atomzielen und 206 gemeisterten
+Zielen umfasst daher 53 planbare Ziele – auch wenn der personalisierte
+Fachumfang zusätzlich Sek-II-Ziele enthält. Erst ein eigener Sek-II-Abschnitt
+nimmt diese Ziele in den konkreten Plan auf. Spätere Lernfortschritte ändern
+diese Planbasis nicht rückwirkend. Ausgegebene Soll-Zielzahlen werden auf ganze
+Ziele gerundet; Raten wie das Wochenkontingent werden höchstens mit einer
+Nachkommastelle dargestellt.
 
 ## 7. Kapazität, Unterrichtswochen und Puffer
 
