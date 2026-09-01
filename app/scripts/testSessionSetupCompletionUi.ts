@@ -253,7 +253,7 @@ const openFreshSetupPage = async (
   })
   const apiMetrics = await installApi(page)
   await page.goto(baseUrl)
-  await page.getByRole('button', { name: 'Jetzt starten' }).click().catch((error: unknown) => {
+  await page.getByTestId('public-landing-action-learning').click().catch((error: unknown) => {
     throw new Error(
       `${error instanceof Error ? error.message : String(error)}\nBrowser errors:\n${browserErrors.join('\n')}`,
     )
@@ -302,15 +302,15 @@ try {
   await installApi(termsPage)
   await termsPage.goto(baseUrl)
   assert(
-    await termsPage.getByRole('link', { name: 'Lernzielbuch', exact: true }).count() === 1,
+    await termsPage.getByTestId('public-landing-action-goal-book').count() === 1,
     'the public start page exposes exactly one learning-goal book link',
   )
   assert(
-    await termsPage.getByRole('link', { name: 'Lernzielbuch', exact: true }).getAttribute('href')
+    await termsPage.getByTestId('public-landing-action-goal-book').getAttribute('href')
       === '/lernzielbuch',
     'the public learning-goal book link uses the existing read-only route',
   )
-  await termsPage.getByRole('button', { name: 'Jetzt starten' }).click()
+  await termsPage.getByTestId('public-landing-action-learning').click()
   await termsPage.getByRole('heading', {
     name: 'Bitte akzeptiere die Nutzungsbedingungen, um mit SkillPilot zu starten:',
   }).waitFor()
@@ -335,7 +335,7 @@ try {
   const trainerTermsPage = await trainerTermsContext.newPage()
   await installApi(trainerTermsPage)
   await trainerTermsPage.goto(baseUrl)
-  await trainerTermsPage.getByRole('button', { name: 'Lehrkräfte' }).click()
+  await trainerTermsPage.getByTestId('public-landing-action-course-planning').click()
   await trainerTermsPage.getByRole('heading', {
     name: 'Bitte akzeptiere die Nutzungsbedingungen, um mit SkillPilot zu starten:',
   }).waitFor()
@@ -398,7 +398,7 @@ try {
   })
   await installApi(emptyTrainerPage)
   await emptyTrainerPage.goto(`${baseUrl}?fixture=trainer-app-entry`)
-  await emptyTrainerPage.getByRole('button', { name: 'Lehrkräfte', exact: true }).click()
+  await emptyTrainerPage.getByTestId('public-landing-action-course-planning').click()
   await emptyTrainerPage.getByRole('button', {
     name: 'Kursorganisation öffnen',
     exact: true,
@@ -507,7 +507,7 @@ try {
   const blockedStoragePage = await blockedStorageContext.newPage()
   await installApi(blockedStoragePage)
   await blockedStoragePage.goto(baseUrl)
-  await blockedStoragePage.getByRole('button', { name: 'Jetzt starten' }).click()
+  await blockedStoragePage.getByTestId('public-landing-action-learning').click()
   await blockedStoragePage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
   await blockedStoragePage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
   await blockedStoragePage.getByRole('alert').waitFor()
@@ -698,7 +698,7 @@ try {
     name: /Ich verstehe, dass die SkillPilot-ID/u,
   }).check()
   await freshGeneratedDeletion.page.getByRole('button', { name: 'Endgültig löschen' }).click()
-  await freshGeneratedDeletion.page.getByRole('button', { name: 'Jetzt starten' }).waitFor()
+  await freshGeneratedDeletion.page.getByTestId('public-landing-action-learning').waitFor()
   assert(
     freshGeneratedDeletion.apiMetrics.deletionRequests === 1
       && freshGeneratedDeletion.apiMetrics.lastDeletionConfirmation === generatedLearnerId,
@@ -767,7 +767,7 @@ try {
     name: /Ich verstehe, dass die SkillPilot-ID/u,
   }).check()
   await incomplete.page.getByRole('button', { name: 'Endgültig löschen' }).click()
-  await incomplete.page.getByRole('button', { name: 'Jetzt starten' }).waitFor()
+  await incomplete.page.getByTestId('public-landing-action-learning').waitFor()
   assert(
     incomplete.apiMetrics.deletionRequests === 1
       && incomplete.apiMetrics.lastDeletionConfirmation === incompleteLearnerId,

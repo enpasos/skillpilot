@@ -1987,6 +1987,164 @@ Reviewfälle und -fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und
 Reviewartefakte bleiben unverändert. Deshalb ist weder ein Zurückziehen noch
 eine erneute Einreichung im OpenAI-Portal erforderlich.
 
+### 6.35 Dauerhafte Wirkungsgrenze: evolvierbare öffentliche Landingpage
+
+Der Product Owner hat am **1. September 2026** ausdrücklich freigegeben, die
+Informationsarchitektur und Präsentation der öffentlichen First-Party-
+Startseite fortlaufend weiterzuentwickeln. Diese Freigabe ist keine allgemeine
+Freigabe des bisher in `SessionSetup` mit der Landingpage vermischten
+Startvertrags. Sie führt stattdessen eine dauerhaft prüfbare Wirkungsgrenze ein.
+
+Evolvierbar sind ausschließlich diese drei Präsentationsdateien:
+
+- `app/src/components/PublicLandingPanels.tsx`;
+- `app/src/components/PublicLandingFooter.tsx`;
+- `app/src/utils/publicLandingCopy.ts`.
+
+Sie bilden eine capability-arme Präsentationsinsel. Zulässig sind ihre
+öffentliche Information, Reihenfolge, visuelle Gestaltung, responsives Layout,
+semantische Navigation und lokalisierte Präsentationscopy. Die Insel erhält
+nur Sprache, die weiterhin semantisch geschützte Access-Status-Aussage sowie
+die drei fest gebundenen Einstiegscallbacks **Lernen**, **Kursorganisation**
+und **Explorer**. Direkte Rollenrouten sind ebenso unzulässig wie ein direkter
+Plugin-Einstieg.
+
+Der Freeze-Checker prüft diese Insel unabhängig von ihren Bytes fail-closed:
+
+- nur die ausdrücklich erlaubten Präsentationsimporte und exakt die
+  freigegebenen Props dürfen vorkommen;
+- Netzwerkzugriffe, Browserpersistenz, Cookies, Browserfenster und globale
+  Browserfähigkeiten sind ausgeschlossen;
+- direkte Provider- oder API-URLs, dynamisches Nachladen und rohe HTML-
+  Injektion sind ausgeschlossen;
+- Routerzustand und imperative Navigation bleiben außerhalb der Insel; nur
+  deklarative öffentliche `Link`-Navigation ist zulässig;
+- Coach-, Chat-Start-, Claude-, Terms-, SkillPilot-ID-, Lernendendaten-,
+  Profil- und Sessionimporte sind ausgeschlossen; und
+- die drei Rollenaktionen müssen aus der hashgebundenen
+  `SessionSetup`-Kompositionsnaht stammen.
+
+Die Access-Status-Wahrheit bleibt ein semantischer Vertrag, obwohl sie in der
+Landing-Präsentation erscheint. Der unveränderlich gebundene Browservertrag
+prüft ihre exakte deutsche und englische Aussage, den Vergleichslink, die drei
+Callback-Einstiege über das gemeinsame Terms-Gate, die öffentlichen Routen,
+Zugänglichkeit und die mobile wie breite Darstellung. Eine spätere reine
+Landing-Änderung darf ihre Präsentation verändern, aber nicht diese Aussage
+entfernen, verfälschen oder den gemeinsamen Einstieg umgehen.
+
+`SessionSetup.tsx` bleibt als Controller und stabile Kompositionsnaht
+hashgebunden. Seine Kette wird einmalig fortgeführt:
+
+- `app/src/components/SessionSetup.tsx`:
+  `5f54736d03ec2ba4860894ecc4f13867d0b82728bad1953ef6958bfd63bccf1d`
+  → `d78a8e0aebae245fee604c8b8102f26cd37ffb96542267ce668f8b38a31eebc6`.
+
+Der stabile Browservertrag ist als neue Evidenz gebunden:
+
+- `app/scripts/testPublicLandingContractUi.tsx`:
+  `904ee9e68c32c92e78782999c15f142393c09c97a0506c371911b1ce6ef99c5e`.
+
+Bestehende Test- und CI-Ketten werden vollständig fortgesetzt:
+
+- `.github/workflows/ci.yml`:
+  `50965b7b10fab102463817766d866d2beed01e2d52737752e3d79cf73c421ae5`
+  → `6324e43b893dd036c5c4449a77b3ec7a10dc81727e7d26071f2df6271c2494d5`;
+- `app/package.json`:
+  `eb9c13d41dc76c094b08b62c722cae344cfa2411f31951a038026e7d5c527f46`
+  → `5fcc8ac9a8b9a6577401e5dfb2521080f2297214eec1958fd0c93fe96aa2fdbd`;
+- `app/scripts/fixtures/sessionSetupCompletionUi.tsx`:
+  `bf443605173a8b700a5f794d49ee50a27751b8b0e90e1caa10f8399d9ffad3aa`
+  → `4c63fc282067198ab65feaa682cb668a30a688b40020bc606261c5f373335aea`;
+- `app/scripts/testClaudeV1StartUi.tsx`:
+  `5e833c8525919254db82e3e6d127c00911ec4a8d10408f8216a51d109f66fc8f`
+  → `a4c9b885e378ac5f91b823d0791951ef17ac45a6d0d0cf64f3def6cd9311eb6c`;
+- `app/scripts/testPublicOverviewUi.tsx`:
+  `fe66f2148c198663aa671ce1a1eea4ccdf57b23bfdb4f20287c0c42a832ef757`
+  → `4ab7eb14cf8154a617baee7d49db3d7b4090f035cde7c13a2818f0f2c9270b4b`;
+- `app/scripts/testSessionSetupCompletionUi.ts`:
+  `ba721f824f9e7ef45cca37e8261b09513e9cba486cfdb61cbe12d87fa4812713`
+  → `a8fc5ce9b8a25a55c6723b5a87310272918a32038345c4f7971d2cf298a05b4f`.
+
+Die drei Dateien der Präsentationsinsel werden absichtlich **nicht**
+hashgebunden. Ihr Schutz besteht in der deklarierten Import-, Prop- und
+Effektgrenze sowie im unveränderlichen Browservertrag. Eine weitere reine
+Landing-Präsentationsänderung benötigt daher keine neue Hashausnahme. Jede
+Erweiterung ihrer Fähigkeiten, Props, Imports oder Startwirkung sowie jede
+Änderung an `SessionSetup`, Access-Status, Terms/ID, ChatGPT-/Claude-Handlern,
+Prepared Message oder Session-Lifecycle bleibt dagegen gesperrt und benötigt
+eine neue ausdrückliche Product-Owner-Entscheidung.
+
+OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen,
+Ressourcen, MCP-Apps-UI, Prepared Message, ChatGPT-/Claude-Startwirkung,
+Terms-/ID- und Sessionvertrag, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
+ist weder ein Zurückziehen noch eine erneute Einreichung im OpenAI-Portal
+erforderlich.
+
+### 6.36 Eng begrenzte Ausnahme: konsistente Landing-Interaktionen
+
+Der Product Owner hat am **1. September 2026** ausdrücklich beauftragt, die
+vier öffentlichen Landing-Panels visuell und interaktiv an der bestehenden
+Überblickskarte auszurichten. Die doppelte sichtbare Zeile
+**So startest du in 5 Minuten.** entfällt, weil derselbe Quickstart bereits als
+eindeutig beschriftete Aktion im Lernenden-Panel vorhanden ist.
+
+Freigegeben ist ausschließlich:
+
+- die Aktionspillen der drei Landing-Panels auf Geometrie, Typografie,
+  Icon-plus-Text-Aufbau und Fokusdarstellung der bestehenden
+  Überblicksaktionen abzustimmen;
+- **Jetzt lernen** bei gleicher Geometrie als primäre blaue Aktion sichtbar
+  hervorzuheben;
+- alle vier gleichrangigen Panelüberschriften als semantische zweite Ebene
+  unter dem Seiten-`h1` auszuzeichnen und ihnen ein dekoratives, für
+  Assistenztechnologien ausgeblendetes Icon zu geben;
+- Hover und Fokus innerhalb aller Panels mit demselben ruhigen Rand-,
+  Schatten- und Überschriftenrhythmus darzustellen und die Bereiche semantisch
+  durch Blau für Lernen, Grün für Überblick, Violett für Kursplanung und
+  Amber für Curricula zu unterscheiden; und
+- den primären Lernbutton sowie Footer-Ausgangs-, Hover- und Fokuszustände
+  kontrastfest darzustellen; und
+- ausschließlich die redundante sichtbare Hero-Zeile aus `SessionSetup` zu
+  entfernen. Die weiterhin für den Dokumenttitel verwendete lokalisierte
+  Copy und die Quickstart-Route bleiben erhalten.
+
+Der erweiterte Browservertrag prüft Deutsch und Englisch auf Mobil- und
+Desktopbreite: alle sieben Landing-Aktionen besitzen sichtbares Icon und Text,
+entsprechen der Pillenhöhe der Überblickskarte, **Jetzt lernen** bleibt klar
+primär, alle vier Panels besitzen genau eine `h2`-Überschrift mit dekorativem
+Icon, die vier Interaktionsakzente bleiben unterscheidbar, und die doppelte
+Hero-Zeile ist nicht sichtbar. Routen, drei Callback-Einstiege, Access-Status
+und gemeinsames Terms-Gate werden unverändert weitergeprüft.
+
+Die geschützte Kompositionsdatei setzt ihre Kette fort:
+
+- `app/src/components/SessionSetup.tsx`:
+  `d78a8e0aebae245fee604c8b8102f26cd37ffb96542267ce668f8b38a31eebc6`
+  → `b1ce7a490494df6a72dff7369ad8573dbf1b3b56e7b7643109d621bcf94fe8fa`.
+
+Die außerhalb der evolvierbaren Präsentationsinsel liegende
+Überblickskomponente setzt ihre Kette fort:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `16329baefd5fbbf5d733253508a57661c67e0ba5d49583f6cec119fe5695a77a`
+  → `905dd38a60374992ce368260d13dc44d446c263b5ee9585eae0eee9d947ec055`.
+
+Der zentrale Browservertrag setzt seine Evidenzkette fort:
+
+- `app/scripts/testPublicLandingContractUi.tsx`:
+  `904ee9e68c32c92e78782999c15f142393c09c97a0506c371911b1ce6ef99c5e`
+  → `0b1fe8ddcd5b39bd43ae54f9579899524730e01ce79058a452e41afeb0f8348a`.
+
+Die drei bereits freigegebenen Dateien der evolvierbaren Präsentationsinsel
+bleiben weiterhin absichtlich ungehasht. Die neue Ausnahme erweitert weder
+ihre Props noch ihre Fähigkeiten. Access-Status, Terms-/ID-Gate, ChatGPT- und
+Claude-Handler, Prepared Message, Session- und Lernzustandssemantik,
+OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen,
+Ressourcen, MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
+ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

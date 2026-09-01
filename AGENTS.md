@@ -52,6 +52,21 @@ semantics, package, MCP/OAuth/tools/schemas, MCP Apps UI, review cases, portal
 values, fixtures, or review artifacts. The exact source and regression hashes
 remain fail-closed in the review-freeze record.
 
+The Product Owner clarified on **1 September 2026** that the public root-page
+information architecture and presentation may evolve inside the explicitly
+declared capability-poor landing island. The island currently consists only of
+`PublicLandingPanels.tsx`, `PublicLandingFooter.tsx`, and
+`publicLandingCopy.ts`. It may receive the fixed language/access copy and the
+three role-entry callbacks exposed by the still hash-bound `SessionSetup`, but
+it must not acquire network, storage, cookie, browser-window, provider URL,
+learner-ID, Terms, prepared-message, or session capabilities. The freeze
+checker enforces its exact import/prop/effect boundary and the stable public
+landing browser contract. This presentation freedom does **not** release the
+ChatGPT or Claude handlers, access-status disclosure, Terms/ID gate, prepared
+message, session lifecycle, `SessionSetup` composition seam, OpenAI package,
+MCP/OAuth/tools/schemas/UI, review cases, fixtures, portal values, or review
+artifacts.
+
 Approval, rejection, or a security incident does not silently remove this
 stop. An unfreeze requires an explicit product-owner decision naming the
 reason, exact scope, and target version. After actual publication, `1.0.0`

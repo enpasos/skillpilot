@@ -12,6 +12,10 @@ import {
 
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
 const sessionSetupSource = readFileSync(new URL('../src/components/SessionSetup.tsx', import.meta.url), 'utf8')
+const publicLandingPanelsSource = readFileSync(
+  new URL('../src/components/PublicLandingPanels.tsx', import.meta.url),
+  'utf8',
+)
 const claudeAdapterSource = readFileSync(new URL('../src/utils/claudeCoach.ts', import.meta.url), 'utf8')
 const germanLocaleSource = readFileSync(new URL('../src/locales/de.ts', import.meta.url), 'utf8')
 const englishLocaleSource = readFileSync(new URL('../src/locales/en.ts', import.meta.url), 'utf8')
@@ -119,7 +123,24 @@ assert(
     < activeClaudeUiSource.indexOf('data-testid="claude-plugin-start"'),
   'the one-time plugin setup action is presented before the everyday Claude start',
 )
-assert.match(sessionSetupSource, /to="\/faq\/coach-setup"/u)
+assert.match(
+  sessionSetupSource,
+  /<PublicLandingPanels[\s\S]*accessBanner=\{t\.startPage\.banner\}/u,
+  'the public landing receives the unchanged provider-access banner from SessionSetup',
+)
+const accessLinkTestIdIndex = publicLandingPanelsSource.indexOf(
+  'data-testid="public-landing-access-link"',
+)
+assert(accessLinkTestIdIndex >= 0, 'the public landing exposes one stable access-comparison action')
+const accessLinkSource = publicLandingPanelsSource.slice(
+  publicLandingPanelsSource.lastIndexOf('<Link', accessLinkTestIdIndex),
+  publicLandingPanelsSource.indexOf('</Link>', accessLinkTestIdIndex),
+)
+assert.match(
+  accessLinkSource,
+  /to="\/faq\/coach-setup"/u,
+  'the visible provider-access action keeps the access-comparison route after component extraction',
+)
 assert.match(germanLocaleSource, /\*\*SkillPilot ist kostenlos\.\*\*/u)
 assert.match(germanLocaleSource, /linkLabel: "Zugänge vergleichen"/u)
 assert.doesNotMatch(germanLocaleSource, /nur einen ChatGPT-Account/u)

@@ -8,17 +8,13 @@ import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
+import { Save, ArrowRight, Github, ShieldCheck, Send, MessageCircle, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'opening-setup' | 'setup-opened' | 'launching' | 'launched' | 'fallback' | 'failed'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
-
-// Product-owner decision 2026-08-26: expose the existing read-only learning-goal books
-// from the public start page without changing any coach launch or learner-state semantics.
-const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = true
 
 interface SessionSetupProps {
   role: Role | null
@@ -31,7 +27,8 @@ interface SessionSetupProps {
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
-import { SkillPilotOverviewCard } from './SkillPilotOverviewCard'
+import { PublicLandingPanels } from './PublicLandingPanels'
+import { PublicLandingFooter } from './PublicLandingFooter'
 import { getLegalTermsCopy } from '../utils/legalTermsCopy'
 import {
   acceptCurrentTerms,
@@ -95,8 +92,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const learnerDataManagementCopy = getLearnerDataManagementCopy(language === 'en' ? 'en' : 'de')
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(language)
   const openAiMcpCoachActive = isOpenAiMcpCoachActive(language)
-  const isPublicSkillpilot =
-    typeof window !== 'undefined' && /(^|\.)skillpilot\.com$/i.test(window.location.hostname)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
     return role === 'trainer' ? '' : getStoredLandscapeIdForRole(role)
   })
@@ -976,6 +971,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setShowLogin(true)
   }
 
+  const openRoleStart = (nextRole: Extract<Role, 'trainer' | 'explorer'>) => {
+    setRole(nextRole)
+    resetTransientSetupState(true)
+    setShowLogin(true)
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-chat-bg text-text-primary px-6 py-10 transition-colors relative">
       <div className="w-full flex justify-between items-center mb-6">
@@ -1006,119 +1007,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               SkillPilot
             </h1>
           </div>
-          <Link
-            to={`/quickstart/${language}`}
-            className="flex items-center gap-2 text-text-secondary hover:text-sky-500 transition-colors"
-          >
-
-            <span className="font-medium">{t.startPage.subtitle}</span>
-          </Link>
         </div>
 
         <div className="w-full space-y-5">
           {!showLogin ? (
             <div className="w-full space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
-              {/* Primary start: one shared ID and curriculum flow, followed by an explicit coach choice. */}
-              <div className="relative w-full overflow-hidden rounded-xl border border-border-color bg-white/50 transition-all duration-300 hover:border-sky-300/70 hover:shadow-md dark:bg-slate-800/50 dark:hover:border-sky-500/40">
-                <button
-                  type="button"
-                  onClick={openLearnerStart}
-                  aria-label={t.startPage.cards.gpt.cta}
-                  className="group block w-full p-5 text-left"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="min-w-0 flex-1">
-                      <h3 className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400">
-                        {t.startPage.cards.gpt.title}
-                        <MessageCircle size={18} className="text-sky-500" />
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-text-secondary">
-                        {t.startPage.cards.gpt.description}
-                      </p>
-                    </div>
-                    <ArrowRight className="shrink-0 text-text-secondary transition-all group-hover:translate-x-1 group-hover:text-sky-500" />
-                  </div>
-                </button>
-                {t.startPage.banner && (
-                  <div className="mx-5 mb-4 flex flex-wrap items-start gap-x-2 gap-y-1 border-t border-border-color pt-3 text-xs leading-relaxed text-text-secondary">
-                    <ShieldCheck className="mt-0.5 shrink-0 text-sky-600 dark:text-sky-300" size={16} />
-                    <div className="min-w-0 flex-1 whitespace-pre-line">
-                      {t.startPage.banner.text.split('**').map((part, i) =>
-                        i % 2 === 1 ? <span key={i} className="font-bold text-text-primary">{part}</span> : part
-                      )}{' '}
-                      <Link
-                        to="/faq/coach-setup"
-                        className="font-semibold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-600 dark:text-sky-300 dark:hover:text-sky-200"
-                      >
-                        {t.startPage.banner.linkLabel}
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="w-full">
-                <SkillPilotOverviewCard language={language === 'en' ? 'en' : 'de'} />
-              </div>
-
-              {/* Card 3: Curricula */}
-              <Link
-                to="/curricula"
-                className="group relative block overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-amber-400/50 hover:shadow-md dark:bg-slate-800/50"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-2">
-                      {t.startPage.cards.curricula?.title || 'Curricula'} <Trophy size={18} className="text-amber-500" />
-                    </h3>
-                    <p className="text-sm text-text-secondary mt-1">
-                      {t.startPage.cards.curricula?.description || 'Curriculum champions.'}
-                    </p>
-                  </div>
-                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-amber-500 transition-all" />
-                </div>
-              </Link>
-
-              {/* Direct Access Links for Trainer/Explorer */}
-              <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary items-center flex-wrap">
-                <Link to="/faq" className="hover:text-sky-500 hover:underline transition-colors">
-                  {t.startPage.links.faq}
-                </Link>
-                {PUBLIC_GOAL_BOOK_PROMOTION_ENABLED &&
-                  import.meta.env.MODE !== 'package-consumer' && (
-                    <Link
-                      to="/lernzielbuch"
-                      className="hover:text-sky-500 hover:underline transition-colors"
-                    >
-                      {t.startPage.links.goalBook}
-                    </Link>
-                  )}
-                <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
-                  {t.startPage.links.statistics}
-                </Link>
-                {!isPublicSkillpilot && (
-                  <Link
-                    to="/workbench"
-                    className="hover:text-sky-500 hover:underline transition-colors inline-flex items-center gap-1"
-                  >
-                    <Wrench size={12} />
-                    <span>{t.startPage.links.workbench}</span>
-                  </Link>
-                )}
-                {(['trainer', 'explorer'] as const).map((r) => (
-                  <button
-                    key={r}
-                    onClick={() => {
-                      setRole(r)
-                      resetTransientSetupState(true)
-                      setShowLogin(true)
-                    }}
-                    className="hover:text-sky-500 hover:underline transition-colors"
-                  >
-                    {t.startPage.login.roles[r]}
-                  </button>
-                ))}
-              </div>
+              <PublicLandingPanels
+                language={language === 'en' ? 'en' : 'de'}
+                accessBanner={t.startPage.banner}
+                onStartLearning={openLearnerStart}
+                onOpenCoursePlanning={() => openRoleStart('trainer')}
+                onExploreSkillGraph={() => openRoleStart('explorer')}
+              />
             </div>
           ) : ( // ACTUAL MATCH TARGET BELOW
             <div className="w-full animate-in slide-in-from-bottom-4 duration-300">
@@ -1657,13 +1557,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         showTransferActions={false}
       />
 
-      <div className="mt-10 flex flex-wrap justify-center gap-4 py-6 text-xs text-slate-500">
-        <Link to="/privacy" className="hover:text-slate-300 transition-colors">{t.startPage.footer.privacy}</Link>
-        <span className="text-slate-700">|</span>
-        <Link to="/imprint" className="hover:text-slate-300 transition-colors">{t.startPage.footer.imprint}</Link>
-        <span className="text-slate-700">|</span>
-        <Link to="/legal" className="hover:text-slate-300 transition-colors">{t.startPage.footer.legal}</Link>
-      </div>
+      <PublicLandingFooter language={language === 'en' ? 'en' : 'de'} />
     </div>
   )
 }

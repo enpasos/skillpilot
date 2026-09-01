@@ -1899,6 +1899,210 @@
           "authorizedSha256": "0fd1e0d420f28ac29fc163bab8ccfe818137e11dfdca82cea578542eacde652f"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-evolvable-public-landing-effect-boundary",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Allow the public root-page information architecture and presentation to evolve without weakening the frozen first-party start contract.",
+      "scope": "In the current production first-party root page only, extract the public landing panels, footer and their presentation copy behind one stable SessionSetup composition seam; declare exactly those three files as a capability-poor evolvable presentation island; pass only language, the protected access-status copy and the three fixed role-entry callbacks; enforce no network, persistence, cookies, browser-window or global capabilities, provider URLs, direct learner/trainer/explorer/plugin routes, or Coach, Terms, ID, learner-data, profile or session imports; and bind one stable browser contract plus its CI invocation. Preserve the hash-bound SessionSetup controller and composition seam, truthful provider-access status, Terms/ID gate, ChatGPT and Claude handlers, prepared messages, session lifecycle, package, MCP/OAuth, tools, schemas, annotations, instructions, resources, MCP Apps UI, review cases, fixtures, portal values, reviewer credentials, demo and review artifacts.",
+      "target": "current-production-first-party-public-root-presentation",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-presentation-only-effect-boundary-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/components/SessionSetup.tsx",
+        "submittedSha256": "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        "priorAuthorizedSha256": "5f54736d03ec2ba4860894ecc4f13867d0b82728bad1953ef6958bfd63bccf1d",
+        "authorizedSha256": "d78a8e0aebae245fee604c8b8102f26cd37ffb96542267ce668f8b38a31eebc6"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testPublicLandingContractUi.tsx",
+        "sha256": "904ee9e68c32c92e78782999c15f142393c09c97a0506c371911b1ce6ef99c5e"
+      },
+      "additionalFiles": [
+        {
+          "path": "AGENTS.md",
+          "authorizedSha256": "8a4b34bc7532d3989026ea18525a3a46565cd44b30d51b9ef6c236fdbf25ac27"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "priorAuthorizedSha256": "50965b7b10fab102463817766d866d2beed01e2d52737752e3d79cf73c421ae5",
+          "authorizedSha256": "6324e43b893dd036c5c4449a77b3ec7a10dc81727e7d26071f2df6271c2494d5"
+        },
+        {
+          "path": "app/package.json",
+          "priorAuthorizedSha256": "eb9c13d41dc76c094b08b62c722cae344cfa2411f31951a038026e7d5c527f46",
+          "authorizedSha256": "5fcc8ac9a8b9a6577401e5dfb2521080f2297214eec1958fd0c93fe96aa2fdbd"
+        },
+        {
+          "path": "app/scripts/fixtures/sessionSetupCompletionUi.tsx",
+          "priorAuthorizedSha256": "bf443605173a8b700a5f794d49ee50a27751b8b0e90e1caa10f8399d9ffad3aa",
+          "authorizedSha256": "4c63fc282067198ab65feaa682cb668a30a688b40020bc606261c5f373335aea"
+        },
+        {
+          "path": "app/scripts/testClaudeV1StartUi.tsx",
+          "priorAuthorizedSha256": "5e833c8525919254db82e3e6d127c00911ec4a8d10408f8216a51d109f66fc8f",
+          "authorizedSha256": "a4c9b885e378ac5f91b823d0791951ef17ac45a6d0d0cf64f3def6cd9311eb6c"
+        },
+        {
+          "path": "app/scripts/testPublicOverviewUi.tsx",
+          "priorAuthorizedSha256": "fe66f2148c198663aa671ce1a1eea4ccdf57b23bfdb4f20287c0c42a832ef757",
+          "authorizedSha256": "4ab7eb14cf8154a617baee7d49db3d7b4090f035cde7c13a2818f0f2c9270b4b"
+        },
+        {
+          "path": "app/scripts/testSessionSetupCompletionUi.ts",
+          "priorAuthorizedSha256": "ba721f824f9e7ef45cca37e8261b09513e9cba486cfdb61cbe12d87fa4812713",
+          "authorizedSha256": "a8fc5ce9b8a25a55c6723b5a87310272918a32038345c4f7971d2cf298a05b4f"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "authorizedSha256": "9197d07577a3c5bc08d3f8c925c44e4650505218293f642e59c3d90b67889f5f"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-01-public-landing-interaction-alignment",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Align the public landing panels and actions with the established overview interaction language, add distinct semantic panel accents and remove the redundant visible quickstart hero line.",
+      "scope": "In the current production first-party public root only, align the landing action pills with the existing overview pill geometry and icon-plus-text presentation; keep Learn now visibly primary with contrast-safe states; make each of the four equal panels a level-two section with one decorative heading icon; align their hover and focus-within border, shadow and heading reactions while distinguishing learning in sky, overview in emerald, course planning in violet and curricula in amber; keep footer states contrast-safe; and remove only the redundant visible five-minute hero line from SessionSetup while retaining the localized copy for the document title and the explicit Quickstart action and route. Preserve the evolvable presentation island capability boundary and exact props, the protected access-status statement, the three callback entries and shared Terms/ID gate, ChatGPT and Claude handlers, prepared messages, session and learner-state semantics, package, MCP/OAuth, tools, schemas, annotations, instructions, resources, MCP Apps UI, review cases, fixtures, portal values, reviewer credentials, demo and review artifacts.",
+      "target": "current-production-first-party-public-root-presentation",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-public-landing-presentation-alignment-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/components/SessionSetup.tsx",
+        "submittedSha256": "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        "priorAuthorizedSha256": "d78a8e0aebae245fee604c8b8102f26cd37ffb96542267ce668f8b38a31eebc6",
+        "authorizedSha256": "b1ce7a490494df6a72dff7369ad8573dbf1b3b56e7b7643109d621bcf94fe8fa"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testPublicLandingContractUi.tsx",
+        "priorSha256": "904ee9e68c32c92e78782999c15f142393c09c97a0506c371911b1ce6ef99c5e",
+        "sha256": "0b1fe8ddcd5b39bd43ae54f9579899524730e01ce79058a452e41afeb0f8348a"
+      },
+      "additionalFiles": [
+        {
+          "path": "app/src/components/SkillPilotOverviewCard.tsx",
+          "priorAuthorizedSha256": "16329baefd5fbbf5d733253508a57661c67e0ba5d49583f6cec119fe5695a77a",
+          "authorizedSha256": "905dd38a60374992ce368260d13dc44d446c263b5ee9585eae0eee9d947ec055"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "9197d07577a3c5bc08d3f8c925c44e4650505218293f642e59c3d90b67889f5f",
+          "authorizedSha256": "74fea13fe25d82b70292f1943b79c7955ce366c1f33cd4dc2b07c9616d3f6c76"
+        }
+      ]
+    }
+  ],
+  "evolvablePresentationIslands": [
+    {
+      "id": "public-landing-presentation-v1",
+      "owner": "first-party-webgui",
+      "effectBoundary": "presentation-only-no-network-storage-browser-window-provider-or-start-contract-access",
+      "compositionFile": "app/src/components/SessionSetup.tsx",
+      "compositionRequirements": [
+        "import { PublicLandingPanels } from './PublicLandingPanels'",
+        "import { PublicLandingFooter } from './PublicLandingFooter'",
+        "onStartLearning={openLearnerStart}",
+        "onOpenCoursePlanning={() => openRoleStart('trainer')}",
+        "onExploreSkillGraph={() => openRoleStart('explorer')}"
+      ],
+      "files": [
+        {
+          "path": "app/src/components/PublicLandingPanels.tsx",
+          "propsInterface": "PublicLandingPanelsProps",
+          "allowedProps": [
+            "accessBanner",
+            "language",
+            "onExploreSkillGraph",
+            "onOpenCoursePlanning",
+            "onStartLearning"
+          ],
+          "capabilityProps": [
+            "onExploreSkillGraph",
+            "onOpenCoursePlanning",
+            "onStartLearning"
+          ],
+          "allowedImports": [
+            "../utils/filterLabels",
+            "../utils/publicLandingCopy",
+            "./SkillPilotOverviewCard",
+            "lucide-react",
+            "react",
+            "react-router-dom"
+          ]
+        },
+        {
+          "path": "app/src/components/PublicLandingFooter.tsx",
+          "propsInterface": "PublicLandingFooterProps",
+          "allowedProps": [
+            "language"
+          ],
+          "capabilityProps": [],
+          "allowedImports": [
+            "../utils/filterLabels",
+            "../utils/publicLandingCopy",
+            "react",
+            "react-router-dom"
+          ]
+        },
+        {
+          "path": "app/src/utils/publicLandingCopy.ts",
+          "allowedImports": [
+            "./filterLabels"
+          ]
+        }
+      ],
+      "forbiddenSourcePatterns": [
+        {
+          "label": "network request",
+          "pattern": "\\bfetch\\s*\\(|\\b(?:XMLHttpRequest|WebSocket|EventSource)\\s*\\("
+        },
+        {
+          "label": "browser persistence or cookies",
+          "pattern": "\\b(?:localStorage|sessionStorage|indexedDB)\\b|document\\s*\\.\\s*cookie"
+        },
+        {
+          "label": "browser window or global capability",
+          "pattern": "\\b(?:window|globalThis|navigator|document|location)\\s*(?:\\.|\\[)"
+        },
+        {
+          "label": "provider URL or API endpoint",
+          "pattern": "(?:chatgpt\\.com|claude\\.ai|\\/api\\/)"
+        },
+        {
+          "label": "learner identity, prepared message or session token",
+          "pattern": "\\b(?:skillpilotId|learningSessionId|preparedMessage|sessionToken)\\b"
+        },
+        {
+          "label": "direct protected application route",
+          "pattern": "(?:to|href)\\s*=\\s*[^\\s>]{0,2}\\/(?:learner|trainer|explorer|plugins)(?:[\\/?#]|\\b)"
+        },
+        {
+          "label": "router state or imperative navigation",
+          "pattern": "\\b(?:useLocation|useSearchParams|useNavigate|useHref|useResolvedPath|useParams|useMatch|useNavigation|useRouteLoaderData|useLoaderData|useFetcher|useSubmit)\\s*\\(|<\\s*Navigate\\b|\\bredirect\\s*\\("
+        },
+        {
+          "label": "dynamic code or dependency loading",
+          "pattern": "\\b(?:eval|Function|require)\\s*\\(|\\bimport\\s*\\("
+        },
+        {
+          "label": "raw HTML injection",
+          "pattern": "\\bdangerouslySetInnerHTML\\b"
+        }
+      ],
+      "forbiddenImportFragments": [
+        "api",
+        "chatstart",
+        "claude",
+        "coach",
+        "legalterms",
+        "learnerdata",
+        "learnerprofile",
+        "session",
+        "skillpilotid"
+      ],
+      "evidenceFile": "app/scripts/testPublicLandingContractUi.tsx"
     }
   ],
   "authorizedCopyClarifications": [
