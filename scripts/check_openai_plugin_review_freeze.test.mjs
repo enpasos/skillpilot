@@ -2546,6 +2546,39 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "bde02b26db2fd0afd746b4c7241c007d062640eb60966d026a2fc8c7850b95ac"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-public-landing-neutral-resting-actions",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Reduce the visual intensity of public landing actions by making their resting surfaces neutral while preserving quiet panel identity and a restrained primary learning action.",
+      "scope": "In the current production first-party public root only, give every secondary action pill the same neutral theme-aware resting surface, border and text; preserve the sky, emerald, violet and amber panel identity only through small leading icons and through hover or keyboard-focus reactions; replace the filled Learn now action with the same calm surface plus a restrained sky outline, sky text and small shadow; and keep only the open overview disclosure softly emerald as an explicit active state. Extend only the corresponding landing and overview browser evidence. Preserve action geometry, typography, labels, routes, callbacks, the evolvable presentation-island capability boundary and exact props, the protected access-status statement and shared Terms/ID gate, ChatGPT and Claude handlers, prepared messages, session and learner-state semantics, package, MCP/OAuth, tools, schemas, annotations, instructions, resources, MCP Apps UI, review cases, fixtures, portal values, reviewer credentials, demo and review artifacts.",
+      "target": "current-production-first-party-public-root-presentation-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-public-landing-presentation-only-no-submitted-openai-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "evidenceFile": {
+        "path": "app/scripts/testPublicLandingContractUi.tsx",
+        "priorSha256": "26526b8ed2be687089055d8ed7b59f34ed4c7213e649096e6bcf46ea8bd39301",
+        "sha256": "9afd169e2d90398cb693661c9fed5c6af51182e0c9a0190d738e1297a89e038d"
+      },
+      "additionalFiles": [
+        {
+          "path": "app/src/components/SkillPilotOverviewCard.tsx",
+          "priorAuthorizedSha256": "e2969e96649285c9e831be8a3c787164a09af403f1ea6848929108ccefc724eb",
+          "authorizedSha256": "dff105280ff290e77f08ff7cadf043983bcc999dc78f3d10f88a9be478d7e8f8"
+        },
+        {
+          "path": "app/scripts/testPublicOverviewUi.tsx",
+          "priorAuthorizedSha256": "49282210b0f6343660a17add95ab9c0cd87d365bef20ae02072de88ecc7d8b39",
+          "authorizedSha256": "a923b4bb4fb2828b8f7b9ea3dc406c1ac9b7c68b95f775e29577af6af2f1b54a"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "bde02b26db2fd0afd746b4c7241c007d062640eb60966d026a2fc8c7850b95ac",
+          "authorizedSha256": "783f867a57192b81a36bace57f4e75f795795cae4f3fbfacb6bd1be0b86b264c"
+        }
+      ]
     }
   ]);
 });

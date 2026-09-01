@@ -2262,6 +2262,57 @@ Lernzustandsverhalten, Reviewfälle und -fixtures, Portalwerte,
 Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
 ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.40 Eng begrenzte Ausnahme: ruhige Landing-Aktionshierarchie
+
+Der Product Owner hat am **1. September 2026** die zuvor freigegebenen
+farbigen Ruheflächen der öffentlichen Landing-Aktionen ausdrücklich als zu
+intensiv bewertet. Die vier Panel-Farben sollen weiterhin Orientierung geben,
+aber erst dezent über Icons sowie klar bei Hover, Tastaturfokus und aktivem
+Zustand sichtbar werden.
+
+Freigegeben ist ausschließlich:
+
+- alle sekundären Aktionspillen im Ruhezustand auf dieselbe neutrale,
+  themeabhängige Fläche, Rand- und Textfarbe zurückzuführen;
+- die Panelidentität im Ruhezustand nur über die kleinen Sky-, Emerald-,
+  Violet- und Amber-Icons zu erhalten und die jeweilige Flächen-, Rand- und
+  Textreaktion erst bei Hover oder Fokus einzublenden;
+- **Jetzt lernen** ohne farbige Füllung nur durch eine zurückhaltende
+  Sky-Kontur, Sky-Schrift und einen kleinen Schatten als primäre Aktion zu
+  kennzeichnen; und
+- den geschlossenen Überblicks-Disclosure-Button ebenfalls neutral zu halten,
+  während sein geöffneter Zustand als bewusst aktiver Zustand eine schwache
+  Emerald-Fläche behalten darf.
+
+Die Browserregression prüft weiterhin Deutsch und Englisch auf Mobil- und
+Desktopbreite. Sie bindet nun die gemeinsame neutrale Ruhepalette, vier
+unterscheidbare Icon- und Hover-Akzente, den kontrastfesten zurückhaltenden
+Primärzustand sowie den neutralen geschlossenen und den eindeutig aktiven
+geöffneten Disclosure-Zustand. Geometrie, Typografie, sichtbare Texte,
+Routen, Callback-Einstiege, Access-Status und Terms-/ID-Gate bleiben
+unverändert.
+
+Die außerhalb der evolvierbaren Präsentationsinsel liegende
+Überblickskomponente und ihre Evidenzketten werden dafür eng fortgesetzt:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `e2969e96649285c9e831be8a3c787164a09af403f1ea6848929108ccefc724eb`
+  → `dff105280ff290e77f08ff7cadf043983bcc999dc78f3d10f88a9be478d7e8f8`;
+- `app/scripts/testPublicLandingContractUi.tsx`:
+  `26526b8ed2be687089055d8ed7b59f34ed4c7213e649096e6bcf46ea8bd39301`
+  → `9afd169e2d90398cb693661c9fed5c6af51182e0c9a0190d738e1297a89e038d`;
+- `app/scripts/testPublicOverviewUi.tsx`:
+  `49282210b0f6343660a17add95ab9c0cd87d365bef20ae02072de88ecc7d8b39`
+  → `a923b4bb4fb2828b8f7b9ea3dc406c1ac9b7c68b95f775e29577af6af2f1b54a`.
+
+Die evolvierbare Landing-Präsentationsinsel erhält keine neue Fähigkeit und
+keine neuen Props oder Imports. Access-Status, Terms-/ID-Gate, ChatGPT- und
+Claude-Handler, Prepared Message, Session- und Lernzustandssemantik,
+OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen,
+Ressourcen, MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
+ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
