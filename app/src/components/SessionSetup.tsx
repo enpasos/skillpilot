@@ -8,7 +8,7 @@ import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, ShieldCheck, Send, MessageCircle, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
+import { ArrowRight, Github, ShieldCheck, Send, MessageCircle, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -641,11 +641,25 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }
 
+  function startTrainerSession() {
+    try {
+      localStorage.removeItem('skillpilot_trainer_landscape')
+    } catch {
+      // The obsolete global trainer context must never block the local
+      // course organization from opening.
+    }
+    setSelectedLandscapeId('')
+    onStart('', '', 'trainer')
+  }
+
   const handleAcceptTerms = () => {
     try {
       acceptCurrentTerms(window.localStorage)
       setTermsStorageFailed(false)
       setTermsAccepted(true)
+      if (role === 'trainer') {
+        startTrainerSession()
+      }
     } catch {
       setTermsStorageFailed(true)
     }
@@ -935,14 +949,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
 
     if (role === 'trainer') {
-      try {
-        localStorage.removeItem('skillpilot_trainer_landscape')
-      } catch {
-        // The obsolete global trainer context must never block the local
-        // course organization from opening.
-      }
-      setSelectedLandscapeId('')
-      onStart(effectiveId, '', role)
+      startTrainerSession()
       return
     }
 
@@ -971,7 +978,17 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setShowLogin(true)
   }
 
-  const openRoleStart = (nextRole: Extract<Role, 'trainer' | 'explorer'>) => {
+  const openTrainerStart = () => {
+    setRole('trainer')
+    resetTransientSetupState(true)
+    if (termsAccepted) {
+      startTrainerSession()
+      return
+    }
+    setShowLogin(true)
+  }
+
+  const openRoleStart = (nextRole: Extract<Role, 'explorer'>) => {
     setRole(nextRole)
     resetTransientSetupState(true)
     setShowLogin(true)
@@ -1016,7 +1033,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 language={language === 'en' ? 'en' : 'de'}
                 accessBanner={t.startPage.banner}
                 onStartLearning={openLearnerStart}
-                onOpenCoursePlanning={() => openRoleStart('trainer')}
+                onOpenCoursePlanning={openTrainerStart}
                 onExploreSkillGraph={() => openRoleStart('explorer')}
               />
             </div>
@@ -1249,25 +1266,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </button>
 
                     </div>
-                  </div>
-                )}
-
-                {termsAccepted && role === 'trainer' && (
-                  <div className="space-y-4">
-                    <div className="bg-sky-100 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-500/20 rounded p-3 text-xs text-sky-800 dark:text-sky-200/80 leading-relaxed">
-                      <p className="mb-1 font-bold flex items-center gap-2">
-                        <Save size={16} /> {t.startPage.login.trainerInfo.title}
-                      </p>
-                      <p className="mb-2">
-                        {t.startPage.login.trainerInfo.text}
-                      </p>
-                    </div>
-                    <button
-                      type="submit"
-                      className="w-full rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500"
-                    >
-                      {t.startPage.login.trainerDashboardButton}
-                    </button>
                   </div>
                 )}
 

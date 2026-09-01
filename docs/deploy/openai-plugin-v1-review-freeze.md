@@ -2313,6 +2313,50 @@ Ressourcen, MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte,
 Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
 ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.41 Eng begrenzte Ausnahme: direkter Einstieg in die Kursorganisation
+
+Der Product Owner hat am **1. September 2026** ausdrücklich beauftragt, den
+redundanten Trainer-Zwischenschritt nach **Kursorganisation öffnen** zu
+entfernen. Der bisherige Bildschirm wiederholte lediglich den lokalen
+Speicherhinweis und dieselbe Aktion, bevor er den bereits bestehenden
+Trainer-Start auslöste.
+
+Freigegeben ist ausschließlich:
+
+- bei bereits akzeptierten aktuellen Nutzungsbedingungen den Landing-Button
+  unmittelbar mit dem bestehenden leeren Trainer-Kontext zu starten;
+- bei erstmaliger Nutzung nur das gemeinsame Terms-Gate zu zeigen und nach
+  dessen erfolgreicher Speicherung unmittelbar denselben Trainer-Start
+  auszuführen; und
+- den redundanten Trainer-Hinweis mit seinem zweiten gleich beschrifteten
+  Submit-Button vollständig aus `SessionSetup` zu entfernen.
+
+Die Änderung bleibt fail-closed: Schlägt die Speicherung der Zustimmung fehl,
+wird keine Trainer-Sitzung gestartet. Der Start übergibt weiterhin exakt eine
+leere SkillPilot-ID, eine leere Landschaft und die Rolle `trainer`, entfernt
+den obsoleten globalen Trainer-Landschaftsschlüssel und öffnet `/trainer` ohne
+`l`-Parameter. Für Lernende und Explorer bleibt der Setup-Ablauf unverändert;
+ein React-Effekt wird bewusst nicht verwendet, damit Strict Mode keinen
+doppelten Start auslösen kann.
+
+Die geschützte Kompositionsdatei und ihre Browservertrags-Evidenz setzen ihre
+Hashketten eng fort:
+
+- `app/src/components/SessionSetup.tsx`:
+  `b1ce7a490494df6a72dff7369ad8573dbf1b3b56e7b7643109d621bcf94fe8fa`
+  → `b9fd9dc1e56fc0227a481958f5ce77682f520bafdbd3d2582c990d6889e50a39`;
+- `app/scripts/testSessionSetupCompletionUi.ts`:
+  `a8fc5ce9b8a25a55c6723b5a87310272918a32038345c4f7971d2cf298a05b4f`
+  → `1ad7fb1822176dfbd89b512e5b4b236703704e89b32536568d17d56f5693f57d`.
+
+Die Landing-Präsentationsinsel, ihre Props und Fähigkeiten, Access-Status,
+Terms-Version und -Text, SkillPilot-ID-Gate, ChatGPT- und Claude-Handler,
+Prepared Message, sonstige Session- und Lernzustandssemantik, OpenAI-Package,
+MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen, Ressourcen,
+MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte, Reviewer-Zugangsdaten,
+Demo und Reviewartefakte bleiben unverändert. Deshalb ist keine Aktion im
+OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
