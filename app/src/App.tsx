@@ -237,7 +237,7 @@ const App: React.FC = () => {
     skillpilotId: sanitizedSkillpilotId,
     enabled: shouldRunApplicationCore(normalizedPath),
   })
-  const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
+  const { currentLandscapeEntry, landscapeEntries } = core
   const selectedLandscapeId = core.selectedLandscapeId
   const canRenderAnonymousExplorer = isExplorerRoute && !!selectedLandscapeId
   const renderSessionSetup = shouldRenderSessionSetup({
@@ -395,108 +395,6 @@ const App: React.FC = () => {
       setupClosureRootLandscapeId,
     ],
   )
-
-  const trainerClassSetupLandscapes = useMemo(() => {
-    const setupLandscapeEntries = setupClosureRootLandscapeId
-      && canonicalGymnasiumSetupLandscapeEntries.some(
-        (entry) => entry.meta.landscapeId === setupClosureRootLandscapeId,
-      )
-      ? canonicalGymnasiumSetupLandscapeEntries
-      : landscapeEntries
-    const setupCurrentLandscapeEntry = setupLandscapeEntries.find(
-      (entry) => entry.meta.landscapeId === currentLandscapeEntry?.meta.landscapeId,
-    ) ?? currentLandscapeEntry
-
-    if (
-      setupClosureRootLandscapeId
-      && setupLandscapeEntries.some((entry) => entry.meta.landscapeId === setupClosureRootLandscapeId)
-    ) {
-      return setupLandscapeEntries
-    }
-
-    if (!setupCurrentLandscapeEntry) {
-      return setupLandscapeEntries
-    }
-
-    const entriesById = new Map(setupLandscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
-    const setupGoalIndex = new Map(
-      setupLandscapeEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)),
-    )
-    const getLandscapeRoot = (entry: NonNullable<typeof setupCurrentLandscapeEntry>) =>
-      entry.goals.find((goal) => goal.tags?.includes('root')) ?? entry.goals[0]
-
-    const collectChildLandscapeEntries = (rootEntry: NonNullable<typeof setupCurrentLandscapeEntry>) => {
-      const rootGoal = getLandscapeRoot(rootEntry)
-      const nextChildren: typeof setupLandscapeEntries = []
-      const seenLandscapeIds = new Set<string>()
-
-      for (const childId of rootGoal?.contains ?? []) {
-        const childGoal = setupGoalIndex.get(childId) ?? selectionGoalIndexAll.get(childId)
-        const childLandscapeId = childGoal?.landscapeId
-        if (
-          !childLandscapeId ||
-          childLandscapeId === rootEntry.meta.landscapeId ||
-          seenLandscapeIds.has(childLandscapeId)
-        ) {
-          continue
-        }
-
-        const childEntry = entriesById.get(childLandscapeId)
-        if (!childEntry) {
-          continue
-        }
-
-        nextChildren.push(childEntry)
-        seenLandscapeIds.add(childLandscapeId)
-      }
-
-      return nextChildren
-    }
-
-    const directChildren = collectChildLandscapeEntries(setupCurrentLandscapeEntry)
-    if (directChildren.length > 0) {
-      return [setupCurrentLandscapeEntry, ...directChildren]
-    }
-
-    const parentEntry = setupLandscapeEntries.find((entry) => {
-      if (entry.meta.landscapeId === setupCurrentLandscapeEntry.meta.landscapeId) {
-        return false
-      }
-      return collectChildLandscapeEntries(entry).some(
-        (childEntry) => childEntry.meta.landscapeId === setupCurrentLandscapeEntry.meta.landscapeId,
-      )
-    })
-
-    if (parentEntry) {
-      return [parentEntry, ...collectChildLandscapeEntries(parentEntry)]
-    }
-
-    return [setupCurrentLandscapeEntry]
-  }, [
-    canonicalGymnasiumSetupLandscapeEntries,
-    currentLandscapeEntry,
-    landscapeEntries,
-    selectionGoalIndexAll,
-    setupClosureRootLandscapeId,
-  ])
-  const trainerClassSetupRootLandscapeId = useMemo(() => {
-    if (setupClosureRootLandscapeId) {
-      return setupClosureRootLandscapeId
-    }
-
-    const goalLandscapeById = new Map(
-      trainerClassSetupLandscapes.flatMap((entry) =>
-        entry.goals.map((goal) => [goal.id, entry.meta.landscapeId] as const),
-      ),
-    )
-    return trainerClassSetupLandscapes.find((entry) => {
-      const rootGoal = entry.goals.find((goal) => goal.tags?.includes('root')) ?? entry.goals[0]
-      return rootGoal?.contains.some((goalId) => {
-        const childLandscapeId = goalLandscapeById.get(goalId)
-        return childLandscapeId && childLandscapeId !== entry.meta.landscapeId
-      })
-    })?.meta.landscapeId
-  }, [setupClosureRootLandscapeId, trainerClassSetupLandscapes])
 
   useEffect(() => {
     if (!pendingLandscapeId) return
@@ -829,9 +727,18 @@ const App: React.FC = () => {
     localStorage.setItem('skillpilot_id', sanitizedId)
     localStorage.setItem('skillpilot_role', activeRole)
     const effectiveLandscapeId = activeRole === 'trainer'
-      ? landscapeId
+      ? (landscapeId?.trim() ?? '')
       : normalizeLearnerLandscapeId(landscapeId)
-    if (effectiveLandscapeId) {
+    if (activeRole === 'trainer') {
+      try {
+        localStorage.removeItem('skillpilot_trainer_landscape')
+      } catch {
+        // The retired global trainer context is not required for the local
+        // course organization.
+      }
+      setPendingLandscapeId(effectiveLandscapeId || null)
+      core.setSelectedLandscapeId(effectiveLandscapeId)
+    } else if (effectiveLandscapeId) {
       setPendingLandscapeId(effectiveLandscapeId)
       core.setSelectedLandscapeId(effectiveLandscapeId)
     }
@@ -871,7 +778,7 @@ const App: React.FC = () => {
     return sessionSetupElement
   }
 
-  if (core.runtimeCatalogState.mode === 'unavailable') {
+  if (core.runtimeCatalogState.mode === 'unavailable' && role !== 'trainer') {
     return (
       <div
         className="min-h-screen bg-app-gradient text-slate-100 p-6"
@@ -894,14 +801,17 @@ const App: React.FC = () => {
     return <Navigate to="/" replace />
   }
 
-  // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
-  // This effectively acts as the "Login/Start" screen when context is missing.
+  // Learners and explorers still need a landscape before entering their
+  // workspace. Trainer course organization is the exception: each course owns
+  // its curriculum, so the class overview intentionally starts without one.
   if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
     if (isSetupOnlyRoleRoute) {
-      return <Navigate to="/" replace />
+      if (role !== 'trainer') {
+        return <Navigate to="/" replace />
+      }
+    } else {
+      return sessionSetupElement
     }
-
-    return sessionSetupElement
   }
 
   if (core.loadingLandscapes && role !== 'trainer') {
@@ -912,7 +822,7 @@ const App: React.FC = () => {
     )
   }
 
-  if (core.landscapeError) {
+  if (core.landscapeError && role !== 'trainer') {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
         Fehler beim Laden der Skill-Landschaften: {core.landscapeError.message}
@@ -951,6 +861,7 @@ const App: React.FC = () => {
               getMastery={core.getMasteryValue}
               currentGoal={core.currentGoal}
               onSelectGoal={core.handleSelectAbsolute}
+              onSelectGoalInLandscape={core.handleNavigateToExternal}
               routeGoalId={core.currentRouteGoalId}
               skillpilotId={sanitizedSkillpilotId}
               landscapeId={core.selectedLandscapeId}
@@ -973,9 +884,8 @@ const App: React.FC = () => {
             <TrainerView
               landscapeEntries={core.landscapeEntries}
               loadingLandscapes={core.loadingLandscapes}
+              landscapeError={core.landscapeError}
               runtimeCatalogState={core.runtimeCatalogState}
-              classSetupLandscapes={trainerClassSetupLandscapes}
-              classSetupRootLandscapeId={trainerClassSetupRootLandscapeId}
               onContextChange={core.handleTrainerContextChange}
               routeGoalId={core.currentRouteGoalId}
               currentLearnerId={trainerLearnerId}

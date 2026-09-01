@@ -1744,6 +1744,249 @@ Tools, Schemas, MCP-Apps-UI, Coach-, Session- und Identitätssemantik,
 Reviewfälle, Portalwerte, Fixtures und Reviewartefakte bleiben unberührt. Eine
 Portalaktion ist nicht erforderlich.
 
+### 6.31 Eng begrenzte Ausnahme: persönliche Fachzeitpläne und Planmodus
+
+Der Product Owner hat am **1. September 2026** den lernendenseitigen Gegenpart
+zur lokalen Lehrkraftplanung sowie dessen selbstbestimmte Nutzung im Cockpit
+ausdrücklich freigegeben. Diese Ausnahme gilt ausschließlich für die aktuelle
+First-Party-WebGUI und den gemeinsam genutzten kanonischen Lernendenzustand:
+
+- Unter der dauerhaften SkillPilot-ID kann pro personalisierter Fachlandschaft
+  höchstens ein revisionsgebundener persönlicher Fachzeitplan liegen. Er folgt
+  Export, Rückwärtsimport, Aufbewahrung und Löschung des Lernendendatums.
+- **Im Cockpit bereitstellen** kopiert erst nach Bestätigung einen lokalen
+  Lehrkraftplan. Der Server bindet den Schreibvorgang fail-closed an Lernenden-
+  und Fachkontext, erwartete Revision, aktuelle Personalisierung und
+  Graph-Fingerprint. Neu hinzukommende Ziel-IDs müssen offen sein; bereits im
+  persönlichen Plan enthaltene IDs dürfen beim bestätigten Ersetzen zur
+  Plankontinuität erhalten bleiben. Es entsteht weder eine serverseitige
+  Lehrer-/Klassenbeziehung noch eine automatische Synchronisierung.
+- Das Cockpit liest die Planlage mit `no-store`, zeigt je Fach den kumulativen
+  Stand bis heute und startet das erste Planziel nur durch eine bewusste Aktion.
+  Kalenderfortschritt allein schreibt niemals Fokus, aktives Ziel oder Mastery.
+- **Nach Plan lernen** ist standardmäßig `false`, ausschließlich in der
+  First-Party-WebGUI schaltbar und jederzeit widerrufbar. Solange der Modus
+  aktiv ist, bleibt der allgemeine sequenzielle Autopilot auch ohne nutzbaren
+  Plan unterdrückt.
+- Ein automatischer Handoff nach bestätigtem Abschluss ist nur zulässig, wenn
+  das abgeschlossene Ziel zu mindestens einem aktuell gültigen gespeicherten
+  Plan gehört. Genau ein fälliger, nach `requires` zulässiger Kandidat aus
+  einem Plan mit diesem Abschlussanker hat Vorrang. Nur wenn kein solcher
+  Ankerkandidat existiert, darf genau ein Kandidat über alle gültigen Pläne
+  hinweg folgen. Mehrere Anker- oder Nicht-Ankerkandidaten, ausschließlich
+  veraltete oder ungültige Pläne, kein Plan sowie fehlende oder blockierte
+  fällige Ziele scheitern fail-closed: Der bestehende Fokus bleibt und es wird
+  kein neues aktives Ziel gewählt; das abgeschlossene Ziel darf regulär aus dem
+  aktiven Zustand entfernt werden. Teil-Mastery behält das laufende Ziel.
+- Moduswechsel und erfolgreiche Übergaben verwenden die bestehende
+  `coachStateRevision`-Invalidierung. Der Plan selbst wird dem OpenAI-V1-Coach
+  weder als Feld noch als neue Fähigkeit zugänglich gemacht.
+
+Die Ausnahme hat bewusst eine eng begrenzte beobachtbare Wirkung auf den
+eingereichten V1-Zustandspfad: Hat eine lernende Person den Modus zuvor in der
+First-Party-WebGUI aktiviert, kann der unveränderte V1-Zustands- oder
+Abschlussresponse einen anderen bereits existierenden kanonischen Fokus oder
+`activeGoal` zurückgeben; ebenso bleibt die generische Autopilot-Auswahl dann
+unterdrückt. Das ist keine neue V1-Fähigkeit und darf nicht als „ohne
+Zustandswirkung“ beschrieben werden. Der V1-Coach kann den Modus weder
+aktivieren noch Pläne anlegen, importieren, ersetzen oder anzeigen.
+
+Unverändert bleiben OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen,
+Instruktionen, Ressourcen, MCP-Apps-UI, Prepared Message,
+First-Party-ChatGPT-Start, Identität, Locale und Session-Lifecycle. Die
+eingereichte Review-Fixture bleibt ohne Plan und mit `followLearningPlans=false`;
+Reviewfälle, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte ändern
+sich nicht. Deshalb ist keine Portalaktion erforderlich. Sollte der Planmodus
+später über den Coach angeboten oder die Review-Fixture darauf umgestellt
+werden, wäre diese Bewertung neu vorzunehmen.
+
+Die geschützte Laufzeitdatei setzt ihre Kette fort:
+
+- `app/src/views/LearnerView.tsx`:
+  `f590240f9be5366032e081f39e9ad5617e7b3f9183ecb1291c3ab5af84416258`
+  → `dfc7fd5f131af9a556f25b87ad57b7a3d20809ede2275b8007ebb299152ca82b`.
+
+Der zentrale Cockpit-Regressionsfall
+`app/scripts/testLearnerPlanCockpitUi.ts` ist mit
+`95223838f0b322020432149eced7328a5bcc9fdf68df90cd5893bab2d4d87251`
+gebunden. Alle weiteren 50 Quell-, Migrations-, Test-, Workflow- und
+Dokumentationsdateien einschließlich ihrer lückenlosen Vorhashketten sind in
+`review-freeze.json` einzeln festgeschrieben.
+
+### 6.32 Eng begrenzte Ausnahme: Datenschutzhinweis zum persönlichen Plan
+
+Der Product Owner hat am **1. September 2026** außerdem die notwendige
+wahrheitsgemäße Ergänzung des deutschen und englischen
+First-Party-Datenschutzhinweises freigegeben. Er nennt nun den persönlichen
+Fachzeitplan und `followLearningPlans` als unter der SkillPilot-ID gespeicherte
+Daten, die bestätigte Direct-ID-Kopie aus dem lokalen Lehrkraftplan, die
+Open-only-/Kontinuitätsregel beim Ersetzen, die unveränderte Vollzugriffsgrenze
+der dauerhaften ID sowie die oben beschriebene lernendenseitige Autorisierung,
+Ankerpriorität, Fail-closed-Auswahl und Autopilot-Unterdrückung.
+
+Diese zweite Ausnahme ändert ausschließlich die bereits verlinkte
+First-Party-Datenschutzansicht, ihren Copy-Test und die übereinstimmende
+Sicherheitsdokumentation. Sie ändert keine Runtime, URL, Portalmetadaten,
+OpenAI-Schnittstelle, Review-Fixture oder Reviewartefakte; eine Portalaktion ist
+nicht erforderlich.
+
+Die Hashketten lauten:
+
+- `app/src/utils/privacyViewCopy.ts`:
+  `1424f94d5087a368e45d064dcfde718a4f0958464a32e376f66dddee6fdeb7f4`
+  → `84f888394310125ff1bdde6b0c7c35b881091eb3c22f50e6abb0cfe5534f6efc`;
+- `app/src/utils/privacyViewCopy.test.ts`:
+  `a34ce448d4d43d0aa91e6380e6905e375f6ed986e5db27942577f90e82a42a27`
+  → `2940f594232022f90c3d562290c2fcbddf6bb85eda454d140e5d5c7d34f5388e`;
+- `docs/security/data-privacy.md`:
+  `58e57689fc6a2329a53e1664df1de18971bf5a6498605723f0edca0d28683803`
+  → `179f3acac510a36bffc7eb1c206df715f7cf714550f8f5d920f61c17b249aa08`.
+
+### 6.33 Eng begrenzte Ausnahme: Curriculumwahl pro lokalem Kurs
+
+Der Product Owner hat am **1. September 2026** ausdrücklich freigegeben, die
+bislang vorgelagerte globale Curriculum- und Qualitätsfilterwahl aus dem
+Trainer-Einstieg zu entfernen und vollständig in den jeweiligen lokal
+gespeicherten Kurs zu verlagern. `SessionSetup` öffnet nach der Rollenwahl
+direkt die Kursorganisation; auch ein direkter Aufruf von `/trainer` entfernt
+den nicht mehr verwendeten Browser-Key `skillpilot_trainer_landscape`.
+
+Jede `ClassSession` wählt und speichert nun ihr eigenes Root-Curriculum, Fach
+und die anwendbare Filterkonfiguration. Closure und Anzeigenamen werden pro
+Kurs-Root geladen. Ein bestehender Lernender wird nur lokal übernommen, wenn
+sein persönliches Curriculum genau einem Root zugeordnet werden kann; fehlende,
+widersprüchliche oder gemischte Roots brechen vor dem Speichern fail-closed ab.
+Abgebrochene oder überholte Profil-, Root-Closure- und ID-Erzeugungsanfragen
+werden verworfen, damit kein später lokaler Save mehr ausgelöst wird.
+
+Die lokale Kursliste bleibt auch bei einem nicht verfügbaren Runtime-Katalog
+oder einer fehlerhaften Curriculumübersicht erreichbar. Scheitert erst die
+Closure eines geöffneten Kurses, erhält die Lehrkraft eine verständliche,
+wiederholbare Fehlermeldung und kann ohne Änderung der gespeicherten Kursdaten
+zur Kursliste zurückkehren.
+
+Die Ausnahme wirkt ausschließlich auf die First-Party-Trainerorganisation.
+Lernenden- und Explorer-Auswahl, browserlokale Kursinhaberschaft und die
+Abwesenheit einer serverseitigen Lehrkraft-Klasse-Beziehung bleiben
+unverändert. Ebenso unverändert bleiben der eingereichte ChatGPT-Starthandler,
+Prepared Message und Session-Semantik sowie sämtliche OpenAI-Package-,
+MCP/OAuth-, Tool-, Schema-, Annotations-, Instruktions-, Ressourcen- und
+MCP-Apps-UI-Bytes, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte. Deshalb ist keine Portalaktion
+erforderlich.
+
+Die geschützte Laufzeitdatei setzt ihre vollständige Kette fort:
+
+- `app/src/components/SessionSetup.tsx`:
+  `df4ce08ff28f0a88e70752c1d05373ec37eab1e8af3e59334ab1a73a41169140`
+  → `5f54736d03ec2ba4860894ecc4f13867d0b82728bad1953ef6958bfd63bccf1d`.
+
+Der zentrale Browser-Regressionsfall
+`app/scripts/testSessionSetupCompletionUi.ts` ist über
+`afb66331e9bf1707195b1389d28bfe09839a9c3a130800bc207d6ed9602426fe`
+→ `ba721f824f9e7ef45cca37e8261b09513e9cba486cfdb61cbe12d87fa4812713`
+gebunden. Die weiteren 20 Quell-, Copy-, Fixture-, Test- und
+Konzeptdateien sind in `review-freeze.json` einzeln festgeschrieben. Dabei
+setzen `app/src/locales/de.ts`, `app/src/locales/en.ts` und
+`app/scripts/testRootRoutePolicy.ts` ausdrücklich ihre früheren
+Copy-Clarification-Hashes fort; der Checker prüft auch diesen Übergang
+fail-closed statt frühere Freigaben rückwirkend zu überschreiben.
+
+### 6.34 Eng begrenzte Ausnahme: solide Lehrer- und Schüler-Kursplanung
+
+Der Product Owner hat am **1. September 2026** ausdrücklich beauftragt, die
+bereits freigegebene Kursplanung und ihre Ansicht für Lehrkräfte und Lernende
+gemeinsam solide und gut bedienbar zu machen. Diese Ausnahme härtet nur die
+vorhandenen First-Party-Abläufe; sie führt weder eine serverseitige
+Lehrer-Schüler-Beziehung noch eine automatische Plansynchronisierung ein.
+
+Für die browserlokale Lehrkraftplanung ist ausschließlich freigegeben:
+
+- jeden lokalen Plan an Klasse, Curriculum-Root, Fach und den vollständigen
+  aktuellen Level-2-Kurskontext zu binden und beim Löschen einer Klasse alle
+  zugehörigen Kontext- und Legacy-Planvarianten zu entfernen, ohne Pläne
+  anderer Klassen anzutasten;
+- die Klassenkarten tastaturbedienbar zu machen und ihre eigenständigen
+  Bearbeiten-, Export- und Löschaktionen zugänglich zu beschriften;
+- gespeicherte und noch nicht gespeicherte Entwürfe sichtbar zu unterscheiden;
+- **Im Cockpit bereitstellen** nur für einen weiterhin vollständig
+  berechenbaren Lernplan mit offenen Baseline-Atomen zuzulassen, den konkreten
+  Sperrgrund zu zeigen und eine geöffnete Bestätigung bei jeder relevanten
+  Planänderung zu verwerfen und beim Bestätigen erneut fail-closed zu prüfen;
+- Unterrichtsabdeckung mit einem expliziten Datum bis einschließlich heute zu
+  erfassen, Zukunftsdaten abzulehnen und die getrennte Attestierung weiterhin
+  ausdrücklich als **Stand bis heute** zu führen; und
+- Lehrkraftdaten in `Europe/Berlin` zu berechnen und bei Berliner Mitternacht
+  sowie bei erneuter Sichtbarkeit der Seite zu aktualisieren.
+
+Für den persönlichen Fachzeitplan im Lernenden-Cockpit ist ausschließlich
+freigegeben:
+
+- die heute neu fälligen, davon bereits beherrschten und heute noch offenen
+  Ziele getrennt vom kumulativen Rückstand bis heute darzustellen;
+- als Vorschau ausschließlich den kanonischen Titel eines tatsächlich
+  fälligen und voraussetzungsseitig zulässigen nächsten Ziels anzuzeigen und
+  Fachkarten nach Handlungsdringlichkeit stabil zu sortieren;
+- Planmodus und den dadurch pausierten allgemeinen Autopilot in einer zentralen
+  Einstellung verständlich darzustellen, ohne den gespeicherten
+  Autopilot-Wert stillschweigend umzuschreiben; und
+- nach einem fehlgeschlagenen Refresh sichtbare Daten als veraltet zu
+  kennzeichnen und jede Fortsetzungsaktion bis zu einem erfolgreichen Reload
+  fail-closed zu sperren.
+
+Lehrkraft-Publikation und Lernenden-Read-Model verwenden nun dieselbe
+kumulative Ganzzahlrundung. Lernblöcke werden deterministisch nach Beginn,
+Ende, ursprünglicher Reihenfolge und ID geordnet. Die Zuordnung der offenen
+Atomziele respektiert direkte und effektiv geerbte Voraussetzungen über eine
+stabile topologische Sortierung; Zyklen, unvollständige Baselines und sonstige
+nicht berechenbare Zustände bleiben fail-closed. Kalenderfortschritt allein
+schreibt weiterhin weder Fokus noch aktives Ziel oder Mastery.
+
+Die geschützte Lernendenansicht setzt ihre lückenlose Kette fort:
+
+- `app/src/views/LearnerView.tsx`:
+  `dfc7fd5f131af9a556f25b87ad57b7a3d20809ede2275b8007ebb299152ca82b`
+  → `85c5f1bc093d6111fbfb7b51f8903dd6fb3a93a063e5c8d3a44b22538c8944d4`.
+
+Zentrale weitere Hashketten sind:
+
+- `app/src/views/TrainerView.tsx`:
+  `9a780af40ef83610d3c5b5bddab58c8db04e0c89569b3016f8c7a2c7d579e517`
+  → `67820493aae77176a5959cd35c9e73f2c5b93d565f991c77e03036f10236d9b5`;
+- `app/src/components/CoursePlanPilotView.tsx`:
+  `884f89bd679f53d35310ea1151c385ecb91b36f40d56cb5d427938711bc8a4ec`
+  → `1fdc72ce0def7ca09cdf993b15d755aec35ed26c8dda90f75d74bd18b3e28d35`;
+- `app/src/utils/localTeacherCoursePlan.ts`:
+  `fac1c4031f182ea7cbf35c7bbefe1e8d615a855a7f643e5eec25afbefc03f800`
+  → `24115a036ea49ed0be9f0bcb1d96ece5381f026be42ba15f9864f16994fcdc90`;
+- `app/src/utils/learnerCoursePlanPublication.ts`:
+  `27364171a2a4ddda1b63dfceab1a3ac96bef0cb410aa6e3098a0cb4be40681d9`
+  → `1e78901e87d6894045aceac0c3961b5cb2508a877b9cfac23e2c208d68095a8a`;
+- `backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java`:
+  `13a5d46a5fdbe67909ddbad407ad03b516ac41c703f359de03c25599f38e2772`
+  → `64b38f0c1f25b6fccdfa1409cd293839ddfacef8a616ae40bd060ec94fe04ac8`.
+
+Die neue kontextgebundene Plan-ID-Logik und ihr fokussierter Test sind mit
+`f17991db7d524169b48f4a3b8586352f65b3f7caf981907981b4eb01d4cd673a`
+beziehungsweise
+`4b7f70c6b880be922111181a8a631db50adf436d15c9fc0e5464f3a76e64a449`
+gebunden. Die zentrale Cockpit-Browserregression setzt ihre Kette über
+`95223838f0b322020432149eced7328a5bcc9fdf68df90cd5893bab2d4d87251`
+→ `bf69dd9e1225051f531995f7c81a98c8b98e6cab2464c01bed536dd2066aeaf9`
+fort. Alle 29 betroffenen Quell-, Copy-, Fixture-, Test- und Konzeptdateien
+sind in `review-freeze.json` einzeln und mit ihren vorherigen autorisierten
+Hashes gebunden.
+
+Die dauerhafte SkillPilot-ID bleibt Bearer-Geheimnis und Vollzugriffsschlüssel.
+Der Lehrkraftplan bleibt browserlokal; die Übernahme in den persönlichen Plan
+bleibt eine ausdrücklich bestätigte Einwegkopie. Planmodus bleibt
+standardmäßig aus und für Lernende widerrufbar. OpenAI-Package, MCP/OAuth,
+Tools, Schemas, Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI,
+Prepared Message, ChatGPT-Start, Session-, Identitäts- und Locale-Vertrag,
+Reviewfälle und -fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und
+Reviewartefakte bleiben unverändert. Deshalb ist weder ein Zurückziehen noch
+eine erneute Einreichung im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

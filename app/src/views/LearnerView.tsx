@@ -5,6 +5,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
+import { LearnerPlanTodayCard } from '../components/LearnerPlanTodayCard'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
@@ -57,9 +58,24 @@ import {
 } from '../utils/learnerDataManagement'
 import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 import {
+  continueLearnerLearningPlan,
+  getLearnerLearningPlans,
+  LearnerLearningPlanApiError,
+} from '../utils/learnerLearningPlanApi'
+import { getLearnerLearningPlanCopy } from '../utils/learnerLearningPlanCopy'
+import {
+  formatLearnerLearningPlanDate,
+  isLearnerPlanActionAvailable,
+  millisecondsUntilNextBerlinDateBoundary,
+  selectScopedLearnerLearningPlans,
+  sortLearnerLearningPlansForToday,
+} from '../utils/learnerLearningPlanReadModel'
+import { navigateToLearnerLearningPlanGoal } from '../utils/learnerLearningPlanNavigation'
+import {
   getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
+  isActiveGoalRevealEventType,
   shouldAutoRevealActiveGoal,
 } from '../utils/learnerGoalSelection'
 import { getNextSingleLearnerFocus } from '../utils/learnerFocus'
@@ -87,6 +103,7 @@ import {
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
+import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
 interface LearnerViewProps {
@@ -95,6 +112,7 @@ interface LearnerViewProps {
   getMastery: (goalId: string) => number
   currentGoal: UiGoal | null
   onSelectGoal: (id: string) => void
+  onSelectGoalInLandscape?: (landscapeId: string, goalId: string) => void
   routeGoalId?: string
   skillpilotId: string
   landscapeId: string
@@ -119,10 +137,18 @@ type PersonalCurriculumConfig = Record<string, {
 type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
+  followLearningPlans: boolean
   strictMode: boolean
   showGoalVisualizationsInChat: boolean
 }
 type LearnerStateLoadStatus = 'loading' | 'ready' | 'error'
+
+const cleanLearningPlanSubjectLabel = (title: string) => title
+  .replace(/^Kanonische\s+/iu, '')
+  .replace(/^Canonical\s+/iu, '')
+  .replace(/\s+Pilot\b/giu, '')
+  .replace(/\s*\(Gymnasium,\s*DE\)\s*$/iu, '')
+  .trim()
 
 type LearnerStateRefreshResult = {
   activeGoalId: string | null
@@ -336,6 +362,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   getMastery,
   currentGoal,
   onSelectGoal,
+  onSelectGoalInLandscape,
   routeGoalId,
   skillpilotId,
   landscapeId,
@@ -388,6 +415,31 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [learnerRetentionError, setLearnerRetentionError] = useState<'missing' | 'failed' | null>(null)
   const [learnerDeleteBusy, setLearnerDeleteBusy] = useState(false)
   const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
+  const [learningPlans, setLearningPlans] = useState<LearnerLearningPlansResponse | null>(null)
+  const [learningPlansDataScopeKey, setLearningPlansDataScopeKey] = useState(learnerStateScopeKey)
+  const [learningPlansLoadState, setLearningPlansLoadState] = useState<{
+    scopeKey: string
+    status: LearnerStateLoadStatus
+  }>({
+    scopeKey: learnerStateScopeKey,
+    status: skillpilotId ? 'loading' : 'ready',
+  })
+  const [continuingLearningPlanId, setContinuingLearningPlanId] = useState<string | null>(null)
+  const learningPlansLoadStatus: LearnerStateLoadStatus =
+    learningPlansLoadState.scopeKey === learnerStateScopeKey
+      ? learningPlansLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
+  const scopedLearningPlans = selectScopedLearnerLearningPlans(
+    learningPlans,
+    learningPlansDataScopeKey,
+    learnerStateScopeKey,
+  )
+  const sortedLearningPlans = useMemo(
+    () => sortLearnerLearningPlansForToday(scopedLearningPlans?.plans ?? []),
+    [scopedLearningPlans?.plans],
+  )
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -418,6 +470,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const learnerDataRequestSequenceRef = useRef(0)
   const plannedGoalsRequestSequenceRef = useRef(0)
   const personalCurriculumRefreshSequenceRef = useRef(0)
+  const learningPlansRequestSequenceRef = useRef(0)
+  const learningPlansRefreshInFlightRef = useRef(false)
+  const learningPlanContinueRequestSequenceRef = useRef(0)
   const currentLearnerStateScopeKeyRef = useRef(learnerStateScopeKey)
   currentLearnerStateScopeKeyRef.current = learnerStateScopeKey
   currentSkillpilotIdRef.current = skillpilotId
@@ -429,6 +484,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const location = useLocation()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
+  const learnerLearningPlanCopy = getLearnerLearningPlanCopy(localizedLanguage)
+  const learningPlanSubjectLabels = useMemo(() => new Map(
+    availableLandscapes.map((entry) => [
+      entry.landscapeId,
+      cleanLearningPlanSubjectLabel(entry.title) || entry.title,
+    ]),
+  ), [availableLandscapes])
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(localizedLanguage)
   const openAiMcpCoachActive = isOpenAiMcpCoachActive(localizedLanguage)
   useEffect(() => {
@@ -1126,14 +1188,36 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
 
   // Reveal Active Goal Logic
-  const revealActiveGoal = useCallback(() => {
-    if (!effectiveActiveGoalId || effectiveLearnerParentMap.size === 0) return
+  const revealActiveGoal = useCallback((): boolean => {
+    if (!effectiveActiveGoalId || effectiveLearnerParentMap.size === 0) return false
     const targetId = effectiveActiveGoalId
     setExpandedGoalIds(buildCollapsedFocusPath(targetId))
     if (targetId !== currentRouteGoalId) {
-      onSelectGoal(targetId)
+      const targetLandscapeId = goalIndexAll.get(targetId)?.landscapeId
+      if (!targetLandscapeId) return false
+      return navigateToLearnerLearningPlanGoal(
+        landscapeId,
+        {
+          landscapeId: targetLandscapeId,
+          activeGoalId: targetId,
+        },
+        {
+          selectGoal: onSelectGoal,
+          selectGoalInLandscape: onSelectGoalInLandscape,
+        },
+      )
     }
-  }, [buildCollapsedFocusPath, currentRouteGoalId, effectiveActiveGoalId, effectiveLearnerParentMap, onSelectGoal])
+    return true
+  }, [
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    goalIndexAll,
+    landscapeId,
+    onSelectGoal,
+    onSelectGoalInLandscape,
+  ])
 
   // Reveal Scope (Planned Goals) Logic
   const revealScope = useCallback(() => {
@@ -1181,14 +1265,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })
     if (!initialReveal) return
 
-    hasAppliedInitialGoalRevealRef.current = true
     if (initialReveal === 'active') {
-      revealActiveGoal()
+      if (!revealActiveGoal()) return
+      hasAppliedInitialGoalRevealRef.current = true
       forceActiveGoalRevealRef.current = false
       prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
       pendingActiveGoalRouteSyncRef.current = effectiveActiveGoalId
       return
     }
+    hasAppliedInitialGoalRevealRef.current = true
     revealScope()
   }, [
     currentRouteGoalId,
@@ -1445,8 +1530,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     invalidateLatestRequest(learnerDataRequestSequenceRef)
     invalidateLatestRequest(plannedGoalsRequestSequenceRef)
     invalidateLatestRequest(personalCurriculumRefreshSequenceRef)
+    invalidateLatestRequest(learningPlansRequestSequenceRef)
+    invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
-  }, [learnerStateScopeKey])
+    setContinuingLearningPlanId(null)
+    setLearningPlans(null)
+    setLearningPlansDataScopeKey(learnerStateScopeKey)
+    setLearningPlansLoadState({
+      scopeKey: learnerStateScopeKey,
+      status: skillpilotId ? 'loading' : 'ready',
+    })
+  }, [learnerStateScopeKey, skillpilotId])
 
   useEffect(() => {
     if (guidedPersonalizationGateReason !== 'selection') {
@@ -1573,6 +1667,64 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     ],
 
   )
+
+  const refreshLearningPlans = useCallback(async (): Promise<LearnerLearningPlansResponse | null> => {
+    if (!skillpilotId) {
+      learningPlansRefreshInFlightRef.current = false
+      setLearningPlans(null)
+      setLearningPlansDataScopeKey(learnerStateScopeKey)
+      setLearningPlansLoadState({ scopeKey: learnerStateScopeKey, status: 'ready' })
+      return null
+    }
+    const requestSequence = beginLatestRequest(learningPlansRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learningPlansRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+    learningPlansRefreshInFlightRef.current = true
+    setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
+    try {
+      const response = await getLearnerLearningPlans(skillpilotId, undefined)
+      if (!isCurrentRequest()) return null
+      learningPlansRefreshInFlightRef.current = false
+      setLearningPlans(response)
+      setLearningPlansDataScopeKey(requestScopeKey)
+      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready' })
+      return response
+    } catch (error) {
+      if (!isCurrentRequest()) return null
+      learningPlansRefreshInFlightRef.current = false
+      console.warn('Failed to load learner learning plans', error)
+      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'error' })
+      return null
+    }
+  }, [learnerStateScopeKey, skillpilotId])
+
+  useEffect(() => {
+    if (!skillpilotId) return
+
+    let midnightRefresh: ReturnType<typeof setTimeout> | null = null
+    const scheduleMidnightRefresh = () => {
+      if (midnightRefresh !== null) clearTimeout(midnightRefresh)
+      midnightRefresh = setTimeout(() => {
+        void refreshLearningPlans()
+        scheduleMidnightRefresh()
+      }, millisecondsUntilNextBerlinDateBoundary())
+    }
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === 'visible') void refreshLearningPlans()
+    }
+
+    document.addEventListener('visibilitychange', refreshWhenVisible)
+    scheduleMidnightRefresh()
+    return () => {
+      document.removeEventListener('visibilitychange', refreshWhenVisible)
+      if (midnightRefresh !== null) clearTimeout(midnightRefresh)
+    }
+  }, [refreshLearningPlans, skillpilotId])
 
   const handlePersonalizationGateAction = useCallback(() => {
     if (guidedPersonalizationGateReason === 'scopeError') {
@@ -1759,11 +1911,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (currentGoal?.id === payload.nodeId) {
         setSrsReloadCounter(c => c + 1)
       }
+      void refreshLearningPlans()
       return
     }
 
-    const forceActiveGoalReveal =
-      payload?.type === 'ACTIVE_GOAL_UPDATE' || payload?.type === 'ACTIVE_GOAL_UPDATE_AUTOPILOT'
+    const forceActiveGoalReveal = isActiveGoalRevealEventType(payload?.type)
     if (forceActiveGoalReveal) {
       forceActiveGoalRevealRef.current = true
     }
@@ -1780,6 +1932,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       await Promise.all([
         refreshState(true),
         refreshPlanned(),
+        refreshLearningPlans(),
         onRefresh?.()
       ])
       dispatchLearnerUiRefresh({
@@ -1791,7 +1944,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } finally {
       fullRefreshInFlightRef.current = false
     }
-  }, [refreshState, refreshPlanned, onRefresh, currentGoal?.id, skillpilotId])
+  }, [refreshState, refreshPlanned, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
 
   useEffect(() => {
     if (!campaignContext) return
@@ -1847,7 +2000,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })) return
 
     console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
-    revealActiveGoal()
+    if (!revealActiveGoal()) return
     forceActiveGoalRevealRef.current = false
     prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
     pendingActiveGoalRouteSyncRef.current = currentRouteGoalId ? null : effectiveActiveGoalId
@@ -1861,7 +2014,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // fetchPlanned now handled by refreshPlanned
     refreshPlanned()
     refreshLearnerData()
-  }, [skillpilotId, refreshPlanned, refreshLearnerData])
+    refreshLearningPlans()
+  }, [skillpilotId, refreshPlanned, refreshLearnerData, refreshLearningPlans])
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
     if (!skillpilotId) return;
@@ -2002,6 +2156,98 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     refreshState,
     skillpilotId,
     t.notifications.plannedGoalSaveFailed,
+  ])
+
+  const handleContinueLearningPlan = useCallback(async (planId: string) => {
+    const response = scopedLearningPlans
+    const plan = response?.plans.find((candidate) => candidate.planId === planId)
+    if (
+      !skillpilotId
+      || !response?.followLearningPlans
+      || !plan
+      || plan.stale
+      || !plan.canContinue
+      || !isLearnerPlanActionAvailable(
+        learningPlansLoadStatus,
+        learningPlansRefreshInFlightRef.current,
+      )
+      || continuingLearningPlanId
+      || (plan.landscapeId !== landscapeId && !onSelectGoalInLandscape)
+    ) return
+
+    const requestSequence = beginLatestRequest(learningPlanContinueRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learningPlanContinueRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+    setContinuingLearningPlanId(planId)
+    try {
+      const result = await continueLearnerLearningPlan(skillpilotId, planId, {
+        expectedRevision: plan.revision,
+      })
+      if (!isCurrentRequest()) return
+      invalidateLatestRequest(learnerStateRequestSequenceRef)
+      if (isLearnerStatePayload(result.state)) {
+        applyLearnerStatePayload(result.state, requestScopeKey)
+      } else {
+        await refreshState(true)
+        if (!isCurrentRequest()) return
+      }
+      forceActiveGoalRevealRef.current = true
+      setExpandedGoalIds(buildCollapsedFocusPath(result.activeGoalId))
+      if (result.activeGoalId !== currentRouteGoalId || result.landscapeId !== landscapeId) {
+        pendingActiveGoalRouteSyncRef.current = result.activeGoalId
+        navigateToLearnerLearningPlanGoal(
+          landscapeId,
+          result,
+          {
+            selectGoal: onSelectGoal,
+            selectGoalInLandscape: onSelectGoalInLandscape,
+          },
+        )
+      }
+      await Promise.all([
+        refreshLearningPlans(),
+        onRefresh?.(),
+      ])
+    } catch (error) {
+      if (!isCurrentRequest()) return
+      console.warn('Failed to continue learner learning plan', error)
+      await refreshLearningPlans()
+      const conflict = error instanceof LearnerLearningPlanApiError
+        && (error.status === 409 || error.status === 412)
+      onNotify?.(
+        'error',
+        conflict
+          ? learnerLearningPlanCopy.continueConflict
+          : learnerLearningPlanCopy.continueFailed,
+      )
+    } finally {
+      if (isCurrentRequest()) {
+        setContinuingLearningPlanId((current) => current === planId ? null : current)
+      }
+    }
+  }, [
+    applyLearnerStatePayload,
+    buildCollapsedFocusPath,
+    continuingLearningPlanId,
+    currentRouteGoalId,
+    learnerStateScopeKey,
+    learningPlansLoadStatus,
+    landscapeId,
+    scopedLearningPlans,
+    learnerLearningPlanCopy.continueConflict,
+    learnerLearningPlanCopy.continueFailed,
+    onNotify,
+    onRefresh,
+    onSelectGoal,
+    onSelectGoalInLandscape,
+    refreshLearningPlans,
+    refreshState,
+    skillpilotId,
   ])
 
   // Load personal config from backend
@@ -2303,6 +2549,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const preferencesChanged =
       (learnerData?.learningStrategy ?? 'SEQUENTIAL') !== preferences.strategy
       || (learnerData?.autoPilot ?? true) !== preferences.autoPilot
+      || (learnerData?.followLearningPlans ?? false) !== preferences.followLearningPlans
       || (learnerData?.strictMode ?? false) !== preferences.strictMode
       || (learnerData?.showGoalVisualizationsInChat ?? true) !== preferences.showGoalVisualizationsInChat
 
@@ -2319,6 +2566,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ...prev,
           learningStrategy: preferences.strategy,
           autoPilot: preferences.autoPilot,
+          followLearningPlans: preferences.followLearningPlans,
           strictMode: preferences.strictMode,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
@@ -2353,6 +2601,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           body: JSON.stringify({
             learningStrategy: preferences.strategy,
             autoPilot: preferences.autoPilot,
+            followLearningPlans: preferences.followLearningPlans,
             strictMode: preferences.strictMode,
             showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
           })
@@ -2374,12 +2623,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ...prev,
           learningStrategy: preferences.strategy,
           autoPilot: preferences.autoPilot,
+          followLearningPlans: preferences.followLearningPlans,
           strictMode: preferences.strictMode,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
       }
 
-      await refreshState(true)
+      await Promise.all([
+        refreshState(true),
+        refreshLearningPlans(),
+      ])
     } catch (e) {
       console.warn('Failed to apply personal curriculum setup', e)
       if (configChanged) {
@@ -2396,6 +2649,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onLandscapeChange,
     onScopeDataRefresh,
     personalConfig,
+    refreshLearningPlans,
     refreshState,
     rootLandscapeId,
     skillpilotId,
@@ -3000,6 +3254,97 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <Menu size={20} />
           </button>
         )}
+        {!isGuidedPersonalizationRequired && (
+          learningPlansLoadStatus !== 'ready'
+          || (scopedLearningPlans?.plans.length ?? 0) > 0
+          || scopedLearningPlans?.followLearningPlans === true
+        ) && (
+          <section
+            aria-label={localizedLanguage === 'de' ? 'Meine Fachpläne' : 'My subject plans'}
+            className="mb-6 flex w-full max-w-3xl flex-col gap-4"
+          >
+            {learningPlansLoadStatus === 'loading' && !scopedLearningPlans ? (
+              <p className="rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm text-text-secondary" role="status">
+                {learnerLearningPlanCopy.loading}
+              </p>
+            ) : null}
+            {learningPlansLoadStatus === 'loading' && scopedLearningPlans ? (
+              <p className="rounded-xl border border-sky-200 bg-sky-50/70 p-4 text-sm text-sky-900 dark:border-sky-900/60 dark:bg-sky-950/20 dark:text-sky-100" role="status">
+                {learnerLearningPlanCopy.refreshing}
+              </p>
+            ) : null}
+            {scopedLearningPlans && (scopedLearningPlans.plans.length > 0 || scopedLearningPlans.followLearningPlans) ? (
+              <div className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-sky-200 bg-sky-50/70 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
+                <div>
+                  <h2 className="font-semibold text-text-primary">
+                    {scopedLearningPlans.followLearningPlans
+                      ? learnerLearningPlanCopy.planModeOnTitle
+                      : learnerLearningPlanCopy.planModeOffTitle}
+                  </h2>
+                  <p className="mt-1 leading-6 text-text-secondary">
+                    {scopedLearningPlans.followLearningPlans
+                      ? learnerLearningPlanCopy.planModeOnBody
+                      : learnerLearningPlanCopy.planModeOffBody}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsSetupOpen(true)}
+                  className="min-h-10 shrink-0 rounded-lg border border-sky-300 bg-white px-3 py-2 font-semibold text-sky-800 transition-colors hover:bg-sky-100 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950"
+                >
+                  {learnerLearningPlanCopy.openSettingsAction}
+                </button>
+              </div>
+            ) : null}
+            {learningPlansLoadStatus === 'error' ? (
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
+                <span>
+                  {scopedLearningPlans
+                    ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(scopedLearningPlans.asOf, localizedLanguage))
+                    : learnerLearningPlanCopy.loadFailed}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => { void refreshLearningPlans() }}
+                  className="min-h-10 rounded-lg border border-current px-3 py-2 font-semibold"
+                >
+                  {learnerLearningPlanCopy.retryAction}
+                </button>
+              </div>
+            ) : null}
+            {learningPlansLoadStatus === 'ready'
+              && scopedLearningPlans?.followLearningPlans === true
+              && scopedLearningPlans.plans.length === 0 ? (
+                <div
+                  data-testid="learner-plan-empty"
+                  className="rounded-xl border border-border-color bg-sidebar-bg p-5 text-sm text-text-secondary shadow-sm"
+                  role="status"
+                >
+                  <h2 className="font-semibold text-text-primary">{learnerLearningPlanCopy.noPlansTitle}</h2>
+                  <p className="mt-2 leading-6">{learnerLearningPlanCopy.noPlansBody}</p>
+                </div>
+              ) : null}
+            {sortedLearningPlans.map((plan) => (
+              <LearnerPlanTodayCard
+                key={plan.planId}
+                plan={plan}
+                subjectLabel={learningPlanSubjectLabels.get(plan.landscapeId) ?? plan.landscapeId}
+                language={localizedLanguage}
+                planModeEnabled={scopedLearningPlans?.followLearningPlans === true}
+                nextGoalLabel={plan.nextEligibleGoal
+                  ? goalIndexAll.get(plan.nextEligibleGoal.goalId)?.title
+                  : undefined}
+                staleDataMessage={learningPlansLoadStatus === 'error' && scopedLearningPlans
+                  ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(scopedLearningPlans.asOf, localizedLanguage))
+                  : undefined}
+                actionsDisabled={!isLearnerPlanActionAvailable(learningPlansLoadStatus)}
+                navigationAvailable={plan.landscapeId === landscapeId || !!onSelectGoalInLandscape}
+                isContinuing={continuingLearningPlanId === plan.planId}
+                onContinue={(planId) => { void handleContinueLearningPlan(planId) }}
+              />
+            ))}
+          </section>
+        )}
         {isGuidedPersonalizationRequired ? (
           <div className="flex min-h-full w-full max-w-xl items-center justify-center">
             <div className="rounded-2xl border border-sky-300 bg-white p-6 text-center shadow-sm dark:border-sky-900/60 dark:bg-slate-900">
@@ -3263,6 +3608,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         rootLandscapeId={rootLandscapeId}
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
+        initialFollowLearningPlans={learnerData?.followLearningPlans}
         initialStrictMode={learnerData?.strictMode}
         initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
         personalizationEditor={usesGuidedPersonalCurriculumEditor

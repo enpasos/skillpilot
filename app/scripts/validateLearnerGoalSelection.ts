@@ -8,6 +8,7 @@ import {
   getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
+  isActiveGoalRevealEventType,
   shouldAutoRevealActiveGoal,
 } from '../src/utils/learnerGoalSelection'
 import { getNextSingleLearnerFocus } from '../src/utils/learnerFocus'
@@ -33,6 +34,11 @@ import {
   buildAbi26PersonalCurriculumConfig,
 } from '../src/utils/abi26MatheCampaign'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS } from '../src/utils/personalCurriculumStageScope'
+import {
+  beginLatestRequest,
+  invalidateLatestRequest,
+  isLatestRequestForScope,
+} from '../src/utils/latestRequestSequence'
 
 const explicitRouteSelection = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'root-goal',
@@ -97,6 +103,12 @@ assert.equal(
   }),
   true,
   'An explicit active-goal SSE update must reveal the new active goal even when the cockpit still routes to the old goal.',
+)
+
+assert.equal(
+  isActiveGoalRevealEventType('LEARNING_PLAN_AUTO_HANDOFF'),
+  true,
+  'A server-side learning-plan handoff must force the Cockpit to reveal the new active goal.',
 )
 
 assert.equal(
@@ -294,6 +306,42 @@ assert.equal(
 )
 
 const learnerViewSource = readFileSync('src/views/LearnerView.tsx', 'utf8')
+const continueHandlerStart = learnerViewSource.indexOf('const handleContinueLearningPlan = useCallback')
+const continueHandlerEnd = learnerViewSource.indexOf('\n  // Load personal config from backend', continueHandlerStart)
+assert.ok(continueHandlerStart >= 0 && continueHandlerEnd > continueHandlerStart)
+const continueHandlerSource = learnerViewSource.slice(continueHandlerStart, continueHandlerEnd)
+const continuePostIndex = continueHandlerSource.indexOf('await continueLearnerLearningPlan(')
+const continueScopeGuardIndex = continueHandlerSource.indexOf('if (!isCurrentRequest()) return', continuePostIndex)
+const continueStateApplyIndex = continueHandlerSource.indexOf('applyLearnerStatePayload(', continuePostIndex)
+assert.ok(
+  continuePostIndex >= 0
+    && continueScopeGuardIndex > continuePostIndex
+    && continueStateApplyIndex > continueScopeGuardIndex,
+  'A completed plan-continue request must pass the current learner/scope guard before applying returned state.',
+)
+assert.match(
+  continueHandlerSource,
+  /plan\.landscapeId !== landscapeId && !onSelectGoalInLandscape[\s\S]*?await continueLearnerLearningPlan\(/u,
+  'A cross-subject plan must be rejected before POST when landscape-aware navigation is unavailable.',
+)
+assert.match(
+  learnerViewSource,
+  /invalidateLatestRequest\(learningPlanContinueRequestSequenceRef\)/u,
+  'Changing learner/root scope must invalidate every pending plan-continue response.',
+)
+const planContinueSequence = { current: 0 }
+const pendingPlanContinue = beginLatestRequest(planContinueSequence)
+assert.equal(
+  isLatestRequestForScope(planContinueSequence, pendingPlanContinue, 'learner-b|root-b', 'learner-a|root-a'),
+  false,
+  'A plan-continue response from an earlier learner/root scope must fail closed.',
+)
+invalidateLatestRequest(planContinueSequence)
+assert.equal(
+  isLatestRequestForScope(planContinueSequence, pendingPlanContinue, 'learner-a|root-a', 'learner-a|root-a'),
+  false,
+  'An explicitly invalidated plan-continue response must fail closed even when a scope key is reused.',
+)
 
 assert.deepEqual(
   Array.from(getNextSingleLearnerFocus(['math'], 'math')),

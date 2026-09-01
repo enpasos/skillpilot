@@ -24,6 +24,9 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
   sequentialStrategy: string
   autoPilotTitle: string
   autoPilotDescription: string
+  autoPilotPausedByPlan: string
+  followLearningPlansTitle: string
+  followLearningPlansDescription: string
   strictModeTitle: string
   strictModeDescription: string
   showGoalVisualizationsInChatTitle: string
@@ -36,6 +39,11 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
 export interface ClassSetupCopy extends SharedCurriculumSetupCopy {
   title: string
   editTitle: string
+  curriculumTitle: string
+  curriculumHint: string
+  curriculumLockedHint: string
+  curriculumLoading: string
+  curriculumUnavailable: string
   classNameLabel: string
   classNamePlaceholder: string
   selectSubjectFirst: string
@@ -85,6 +93,9 @@ export const getPersonalCurriculumSetupCopy = (
         sequentialStrategy: 'Schritt für Schritt',
         autoPilotTitle: 'Autopilot aktivieren',
         autoPilotDescription: 'Startet automatisch das nächste Ziel nach Abschluss.',
+        autoPilotPausedByPlan: 'Im Planmodus pausiert. Deine Autopilot-Einstellung bleibt gespeichert und gilt wieder, sobald du „Nach Plan lernen“ ausschaltest.',
+        followLearningPlansTitle: 'Nach Plan lernen',
+        followLearningPlansDescription: 'Nutzt deine persönlichen Fachpläne. Das erste Ziel startest du bewusst; danach folgt SkillPilot einer festen Regel: zuerst dem gerade bearbeiteten Plan, sonst nur einem eindeutig bestimmten fälligen Fachplan.',
         strictModeTitle: 'Strict Mode aktivieren',
         strictModeDescription: 'Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.',
         showGoalVisualizationsInChatTitle: 'Lernzielbilder im Chat anzeigen',
@@ -108,6 +119,9 @@ export const getPersonalCurriculumSetupCopy = (
         sequentialStrategy: 'Step by step',
         autoPilotTitle: 'Enable autopilot',
         autoPilotDescription: 'Automatically starts the next goal after completion.',
+        autoPilotPausedByPlan: 'Paused while plan mode is active. Your autopilot setting stays saved and applies again after you turn off “Learn by plan”.',
+        followLearningPlansTitle: 'Learn by plan',
+        followLearningPlansDescription: 'Uses your personal subject plans. You start the first goal deliberately; after that, SkillPilot follows a fixed rule: first the plan you just worked on, otherwise only one uniquely determined due subject plan.',
         strictModeTitle: 'Enable strict mode',
         strictModeDescription: 'Checks all prerequisites globally, even outside your current focus.',
         showGoalVisualizationsInChatTitle: 'Show learning-goal images in chat',
@@ -131,6 +145,11 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
     ? {
         title: 'Neue Klasse / Kurs anlegen',
         editTitle: 'Klasse / Kurs bearbeiten',
+        curriculumTitle: 'Kurs-Curriculum',
+        curriculumHint: 'Diese Auswahl gilt nur für diesen Kurs. Der Qualitätsfilter hilft beim Finden und wird nicht im Kurs gespeichert.',
+        curriculumLockedHint: 'Das Curriculum eines bestehenden Kurses bleibt fest. Lege für ein anderes Curriculum einen neuen Kurs an.',
+        curriculumLoading: 'Curriculum wird geladen …',
+        curriculumUnavailable: 'Dieses Curriculum konnte nicht geladen werden. Wähle ein anderes Curriculum oder versuche es erneut.',
         classNameLabel: 'Bezeichnung',
         classNamePlaceholder: 'z.B. Physik LK',
         selectSubjectFirst: 'Bitte wähle zuerst ein Fach aus.',
@@ -153,6 +172,11 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
     : {
         title: 'Create Class / Course',
         editTitle: 'Edit Class / Course',
+        curriculumTitle: 'Course curriculum',
+        curriculumHint: 'This selection applies only to this course. The quality filter only helps with discovery and is not stored with the course.',
+        curriculumLockedHint: 'The curriculum of an existing course remains fixed. Create a new course to use a different curriculum.',
+        curriculumLoading: 'Loading curriculum …',
+        curriculumUnavailable: 'This curriculum could not be loaded. Choose another curriculum or try again.',
         classNameLabel: 'Label',
         classNamePlaceholder: 'e.g. Physics advanced course',
         selectSubjectFirst: 'Please choose a subject first.',

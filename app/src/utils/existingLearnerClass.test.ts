@@ -15,6 +15,7 @@ import {
   removeLegacyTeacherSupervisionSessions,
   removeUnsupportedTeacherSessions,
   removeUnsupportedTeacherSessionsFromBrowserStorage,
+  resolveExistingLearnerRootLandscapeId,
   selectExistingLearnerSubject,
 } from './existingLearnerClass'
 
@@ -28,6 +29,9 @@ const personalConfig: TrainerClassCurriculumConfig = {
   ROOT: { selected: true, filterId: 'DE-HE', stage: 'sek2' },
   PHYSICS: { selected: true, filterId: 'LK' },
   MATH: { selected: true, filterId: 'LK' },
+}
+const incompletePersonalConfig: TrainerClassCurriculumConfig = {
+  ...personalConfig,
   UNKNOWN: { selected: true },
 }
 
@@ -42,7 +46,65 @@ assert.deepEqual(
 assert.deepEqual(
   getExistingLearnerSubjectIds(personalConfig, landscapes, 'ROOT'),
   ['MATH', 'PHYSICS'],
-  'subjects follow the runtime catalog and exclude the root and unknown entries',
+  'subjects follow the runtime catalog and exclude the curriculum root',
+)
+assert.deepEqual(
+  getExistingLearnerSubjectIds(personalConfig, [], 'ROOT'),
+  ['PHYSICS', 'MATH'],
+  'an existing learner remains linkable before its course root closure has loaded',
+)
+assert.deepEqual(
+  getExistingLearnerSubjectIds(incompletePersonalConfig, landscapes, 'ROOT'),
+  [],
+  'a loaded but incomplete root closure must fail closed instead of silently dropping configured subjects',
+)
+assert.equal(
+  resolveExistingLearnerRootLandscapeId({
+    profile: {
+      skillpilotId: 'sp_existing_learner',
+      selectedCurriculum: 'ROOT',
+      personalCurriculum: JSON.stringify(personalConfig),
+    },
+    personalConfig,
+  }),
+  'ROOT',
+  'the root curriculum comes from the learner profile rather than a teacher-side picker',
+)
+assert.equal(
+  resolveExistingLearnerRootLandscapeId({
+    profile: {
+      skillpilotId: 'sp_legacy_active_subject',
+      selectedCurriculum: 'MATH',
+      personalCurriculum: JSON.stringify(personalConfig),
+    },
+    personalConfig,
+    availableRootLandscapeIds: ['ROOT'],
+  }),
+  'ROOT',
+  'a legacy active subject must not override the selected catalog root',
+)
+assert.equal(
+  resolveExistingLearnerRootLandscapeId({
+    profile: {
+      skillpilotId: 'sp_flat_learner',
+      selectedCurriculum: 'FLAT',
+      personalCurriculum: JSON.stringify({ FLAT: { selected: true, filterId: 'advanced' } }),
+    },
+    personalConfig: { FLAT: { selected: true, filterId: 'advanced' } },
+  }),
+  'FLAT',
+  'a selected flat curriculum is its own course root',
+)
+assert.throws(
+  () => resolveExistingLearnerRootLandscapeId({
+    profile: {
+      skillpilotId: 'sp_ambiguous_learner',
+      personalCurriculum: JSON.stringify(personalConfig),
+    },
+    personalConfig,
+  }),
+  /invalid-personal-curriculum/u,
+  'multiple selected curricula without a profile root remain fail-closed',
 )
 
 const created = buildExistingLearnerClassSession({
@@ -80,11 +142,24 @@ assert.throws(
 )
 assert.throws(
   () => buildExistingLearnerClassSession({
+    className: 'Unvollständig',
+    learnerAlias: 'Alex',
+    profile: {
+      skillpilotId: 'sp_incomplete',
+      personalCurriculum: JSON.stringify(incompletePersonalConfig),
+    },
+    landscapes,
+    rootLandscapeId: 'ROOT',
+  }),
+  /missing-personalized-subjects/u,
+)
+assert.throws(
+  () => buildExistingLearnerClassSession({
     className: 'Leer',
     learnerAlias: 'Alex',
     profile: {
       skillpilotId: 'sp_empty',
-      personalCurriculum: JSON.stringify({ ROOT: { selected: true } }),
+      personalCurriculum: JSON.stringify({ ROOT: { selected: false } }),
     },
     landscapes,
     rootLandscapeId: 'ROOT',

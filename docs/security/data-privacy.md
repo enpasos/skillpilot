@@ -2,7 +2,8 @@
 
 Status: updated for the current web-started multilingual OpenAI OAuth/MCP App,
 the rollback-only ChatGPT Visible Session, the SkillPilot-ID deletion and
-retention boundary, and the local existing-learner teacher view on 2026-09-01.
+retention boundary, the local existing-learner teacher view, and personal
+subject schedules on 2026-09-01.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
@@ -84,12 +85,36 @@ mutable Level-3 focus does not restrict that planning universe. The browser
 stores those goal IDs, aggregate counts, and capture time as an immutable local
 planning baseline; it does not store the SkillPilot ID or numeric per-goal
 mastery values inside that baseline.
-The view does not change learner-side planned goals and creates no separate
-server-side teacher, class, authorization record, or membership relationship.
+The ordinary teacher view does not change learner-side planned goals and
+creates no separate server-side teacher, class, authorization record, or
+membership relationship.
 
 The teacher view disables learner-state mutations, but that is a frontend
-boundary only. Its separate browser-local teacher course plan remains editable;
-that plan is teacher working data and is not written into the learner record.
+boundary only. Its separate browser-local teacher course plan remains editable
+teacher working data. One explicit, confirmed action can copy the plan label,
+dated blocks, and client-materialized atomic goal IDs into a separate personal
+subject schedule under the known permanent SkillPilot ID. The server validates
+the IDs against the current personalized subject scope. Newly added IDs are
+accepted only while they are open; IDs already present in the personal schedule
+may remain in a confirmed replacement to preserve plan continuity. The write
+transfers no local class ID, alias, coverage journal, attestation, mastery value,
+learner-derived planning baseline, or teacher-plan history and creates no
+teacher-to-learner relation.
+Later local teacher-plan changes are not synchronized. Teacher-entered labels
+and block titles are copied unchanged and may themselves contain personal data.
+The copied schedule remains visible while plan-guided learning is disabled.
+That mode is off by default. The learner starts the first goal deliberately;
+after a confirmed completion, an automatic handoff is considered only if the
+completed goal belongs to at least one currently valid stored plan. SkillPilot
+then derives one due eligible candidate from each valid plan. Exactly one
+candidate from a plan that contains the completed goal takes precedence over
+unrelated candidates. If there is no anchored candidate, exactly one eligible
+candidate across all valid plans is required. Multiple anchored candidates,
+multiple unanchored candidates, only stale or invalid plans, no stored plan, or
+no due eligible goal cause no automatic handoff. The generic Autopilot remains
+suppressed while plan-guided learning is enabled, including in those fail-closed
+cases. Disabling the mode revokes that authorization. Calendar progress alone
+causes no learner-state write.
 Plan exports omit the learner-derived baseline, but teacher-entered free text
 is exported unchanged and may itself contain personal data.
 The permanent SkillPilot ID remains the bearer secret and full-access key for
@@ -120,6 +145,8 @@ The backend stores, among other things:
 - `Mastery`: learning-goal mastery keyed by learner and goal;
 - planned goals and learner configuration, including curriculum,
   personalization, scope, active goal, filters, and synchronized client state;
+- optional personal subject schedules, their revisions and materialized atomic
+  goal IDs, plus the default-off preference for plan-guided learning;
 - static curricula, competence definitions, SRS decks, resources, and review
   metadata.
 

@@ -17,13 +17,19 @@ const classSetupSource = source('src/components/ClassSetup.tsx')
 const trainerViewSource = source('src/views/TrainerView.tsx')
 
 assert(
-  appSource.includes('canonicalGymnasiumSetupLandscapeEntries.some(')
-    && appSource.includes('classSetupRootLandscapeId={trainerClassSetupRootLandscapeId}'),
-  'direct subject trainer setup uses the canonical Gymnasium closure and an explicit root ID',
+  !appSource.includes('trainerClassSetupLandscapes')
+    && !appSource.includes('trainerClassSetupRootLandscapeId')
+    && classSetupSource.includes('useLandscapes(')
+    && classSetupSource.includes('<CurriculumDropdown'),
+  'class setup owns its course-local curriculum selection and closure without an App-level setup context',
 )
 assert(
   classSetupSource.includes('stageSelection.sek1Selected || stageSelection.sek2Selected'),
   'duration offerings are available for both lower- and upper-secondary class scopes',
+)
+assert(
+  classSetupSource.includes('rawGoalId.slice(separatorIndex + 1)'),
+  'course-local subject discovery normalizes prefixed cross-landscape goal references',
 )
 assert(
   classSetupSource.includes('const students: StudentMapping[] = initialSession ? initialSession.students : []')
@@ -193,6 +199,29 @@ const installApi = async (page: Page) => {
 
     if (pathname === '/api/ui/curriculum-catalog') {
       await route.fulfill({ status: 404, body: '' })
+      return
+    }
+    if (pathname === '/api/ui/landscapes') {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          summaries: [{
+            curriculumId: rootLandscapeId,
+            filename: 'trainer-gymnasium-root.json',
+            country: 'DE',
+            region: 'DE',
+            type: 'Gymnasium',
+            level: 'Sekundarstufe I + II',
+            subject: rootLandscape.subject,
+            locale: rootLandscape.locale,
+            description: rootLandscape.description,
+            filters: rootLandscape.filters,
+            title: rootLandscape.title,
+            schoolType: 'Gymnasium',
+          }],
+        }),
+      })
       return
     }
     if (pathname === '/api/ui/composition-views/match') {
@@ -439,8 +468,27 @@ try {
   await page.getByRole('button', { name: /Alle Klassen/u }).click()
   await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
 
+  const draftBaseline = await page.evaluate(() => ({
+    url: window.location.href,
+    classes: localStorage.getItem('skillpilot_classes'),
+    lastLandscape: localStorage.getItem('skillpilot_last_landscape'),
+  }))
   await newClassButton.click()
   await page.getByRole('heading', { name: 'Neue Klasse / Kurs anlegen' }).waitFor()
+  await page.getByLabel('Kurs-Curriculum').waitFor()
+  await page.waitForFunction(
+    ({ selector, expected }) => (document.querySelector(selector) as HTMLSelectElement | null)?.value === expected,
+    { selector: '#trainer-class-root-curriculum', expected: rootLandscapeId },
+  )
+  const draftAfterCurriculumSelection = await page.evaluate(() => ({
+    url: window.location.href,
+    classes: localStorage.getItem('skillpilot_classes'),
+    lastLandscape: localStorage.getItem('skillpilot_last_landscape'),
+  }))
+  assert(
+    JSON.stringify(draftAfterCurriculumSelection) === JSON.stringify(draftBaseline),
+    'a draft course curriculum selection writes neither route state nor local storage',
+  )
   try {
     await page.getByLabel('Sicht / Bundesland').selectOption('DE-HE', { timeout: 10_000 })
   } catch (error) {
@@ -467,6 +515,11 @@ try {
 
   await page.getByTitle('Klasse und Curriculum bearbeiten').click()
   await page.getByRole('heading', { name: 'Klasse / Kurs bearbeiten' }).waitFor()
+  assert(
+    await page.getByLabel('Kurs-Curriculum').inputValue() === rootLandscapeId
+      && await page.getByLabel('Kurs-Curriculum').isDisabled(),
+    'edit shows the course root curriculum while keeping it immutable',
+  )
   assert(
     await page.getByLabel('Bezeichnung').inputValue() === 'Mathe LK – Taunusgymnasium',
     'edit restores the local class label',
@@ -500,15 +553,20 @@ try {
   )
   assert(getLearnerCreateRequests() === 0, 'editing does not issue learner-creation requests')
 
-  const closureRequestCountBeforeCreate = getClosureRequests().length
   await newClassButton.click()
   await page.getByRole('heading', { name: 'Neue Klasse / Kurs anlegen' }).waitFor()
+  await page.waitForFunction(
+    ({ selector, expected }) => (document.querySelector(selector) as HTMLSelectElement | null)?.value === expected,
+    { selector: '#trainer-class-root-curriculum', expected: rootLandscapeId },
+  )
   await page.getByLabel('Bezeichnung').fill('Physik LK – Regressionsklasse')
   await page.getByLabel('Sicht / Bundesland').selectOption('DE-HE')
   await page.getByLabel('Sekundarstufe II', { exact: true }).check()
   await page.getByLabel('Fach / Landscape').selectOption(physicsLandscapeId)
   await page.getByLabel('G9').check()
   await page.getByLabel('Filter / Niveau').selectOption('LK')
+  const closureRequestCountBeforeCreate = getClosureRequests().length
+  const abortedClosureRequestCountBeforeCreate = getAbortedClosureRequests().length
   await page.getByRole('button', { name: 'Klasse anlegen' }).click()
 
   try {
@@ -533,12 +591,18 @@ try {
     `creating and opening a class loads its subject closure exactly once; got ${JSON.stringify(closureRequestsAfterCreate)}`,
   )
   assert(
-    closureRequestsAfterCreate.every((pathname) => pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`),
-    `creating a Physics class never falls back to another landscape closure; got ${JSON.stringify(closureRequestsAfterCreate)}`,
+    closureRequestsAfterCreate.filter((pathname) => pathname === `/api/ui/landscapes/${rootLandscapeId}/closure`).length === 1
+      && closureRequestsAfterCreate.every((pathname) => (
+        pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`
+        || pathname === `/api/ui/landscapes/${rootLandscapeId}/closure`
+      )),
+    `creating a Physics class loads only its subject plus the class-owned root closure for labels; got ${JSON.stringify(closureRequestsAfterCreate)}`,
   )
+  const abortedClosureRequestsAfterCreate = getAbortedClosureRequests()
+    .slice(abortedClosureRequestCountBeforeCreate)
   assert(
-    getAbortedClosureRequests().length === 0,
-    `creating and opening a class does not abort closure loads; got ${JSON.stringify(getAbortedClosureRequests())}`,
+    !abortedClosureRequestsAfterCreate.includes(`/api/ui/landscapes/${physicsLandscapeId}/closure`),
+    `creating and opening a class does not abort its subject closure; got ${JSON.stringify(abortedClosureRequestsAfterCreate)}`,
   )
   const createdClassState = await page.evaluate((className) => {
     const classes = JSON.parse(localStorage.getItem('skillpilot_classes') ?? '[]') as Array<{ id?: string; name?: string }>

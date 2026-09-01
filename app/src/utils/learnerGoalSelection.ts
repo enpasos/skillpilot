@@ -34,6 +34,11 @@ interface FocusMutationRevealTargetInput {
 
 export type InitialLearnerGoalReveal = 'active' | 'scope'
 
+export const isActiveGoalRevealEventType = (eventType?: string): boolean =>
+  eventType === 'ACTIVE_GOAL_UPDATE'
+  || eventType === 'ACTIVE_GOAL_UPDATE_AUTOPILOT'
+  || eventType === 'LEARNING_PLAN_AUTO_HANDOFF'
+
 const firstNonBlankGoalId = (goalIds: Iterable<string>): string | null => {
   for (const goalId of goalIds) {
     const normalizedGoalId = goalId.trim()

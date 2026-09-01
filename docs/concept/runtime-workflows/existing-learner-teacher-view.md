@@ -10,8 +10,9 @@ teacher account, server-side class, authorization record, or membership.
 
 The design intentionally exposes the current identity limitation: a permanent
 SkillPilot ID is not a public identifier with separately scoped permissions. It
-is the bearer secret and full-access key for the learner state. The Trainer UI
-uses it only through read operations, but the credential itself is not
+is the bearer secret and full-access key for the learner state. Apart from the
+explicit, confirmed **Make available in cockpit** plan-copy action, the Trainer
+UI uses it only through read operations; the credential itself is not
 read-only.
 
 ## Product invariants
@@ -24,11 +25,16 @@ read-only.
 - Mathematics, Physics, and other selected subjects are separate switchable
   views of the same local learner record. Each view uses its own landscape and
   cached scope fields.
-- The Trainer UI is functionally read-only for the existing learner's data. It
+- Except for the explicit plan-copy action, the Trainer UI is functionally
+  read-only for the existing learner's data. It
   does not expose controls that change personalization, focus, learner-side
   planned goals, mastery, or other learner state. The teacher may still edit a
-  separate browser-local course plan; that is teacher working data and is not
-  written to the learner record.
+  separate browser-local course plan; that remains independent teacher working
+  data. Only after confirmation may its label, dated blocks, and validated
+  atomic goal IDs be copied into a learner-owned personal subject schedule.
+  The copy contains no local class reference, alias, coverage, attestation,
+  mastery, learner-derived planning baseline, or teacher-plan history and is
+  never synchronized automatically.
 - When the teacher first schedules a learning scope, a dedicated no-store read
   captures every learner-facing atomic target ID in the complete Level-2
   personalization for the selected subject and its open subset. The current
@@ -41,9 +47,10 @@ read-only.
   data.
 - Read-only is a UI contract, not a server capability. Possession of the
   SkillPilot ID grants the ordinary learner access associated with that ID.
-- No new teacher/class/learner relationship, capability, lifecycle,
-  authorization record, or retention record is stored in the SkillPilot
-  backend.
+- No new teacher/class/learner relationship, capability, authorization record,
+  or teacher-owned retention record is stored in the SkillPilot backend. A
+  copied personal subject schedule follows the existing learner lifecycle and
+  is owned solely through the permanent SkillPilot ID.
 - Removing a local class deletes only that browser record. The permanent
   SkillPilot ID remains valid, and copies elsewhere stay usable.
 - A password-encrypted class export may contain the class name, learner alias,
@@ -82,6 +89,24 @@ read-only.
    cached personalization is replaced only after the refreshed local class was
    saved successfully. A failed refresh leaves the prior local record
    unchanged.
+7. **Make available in cockpit** first expands every learning block against the
+   complete personalized subject graph, then shows a replacement confirmation.
+   The server revalidates the subject-local atom IDs and the block focus,
+   admits newly added IDs only while they remain open, allows IDs already in the
+   personal schedule to remain in a confirmed replacement for plan continuity,
+   chronologically removes overlap, and uses an expected revision so a stale
+   local plan cannot overwrite a newer personal copy unnoticed. This write does
+   not change focus, active goal, or mastery.
+
+The copied schedule remains learner-controlled. Plan mode is off by default,
+its first goal is started deliberately, and enabling it suppresses the generic
+Autopilot. After a confirmed completion, a handoff is considered only if the
+completed goal belongs to at least one currently valid stored plan. Exactly one
+eligible candidate from a plan containing that goal then takes precedence; only
+if there is no such candidate may exactly one eligible candidate across all
+valid plans be used. Ties, only stale or invalid plans, no stored plan, and no
+eligible due goal fail closed: the existing focus remains and no new active goal
+is selected; the completed active goal may still be cleared normally.
 
 There is no server push or server-managed personalization fingerprint. If the
 learner changes Level 2 later, reopening the local class or saving it in the
@@ -105,10 +130,11 @@ ID.
 
 For existing-learner classes, every Trainer path that mutates learner data must
 remain disabled or guarded, including individual and bulk learner-side
-planned-goal changes. Editing the separate local teacher course plan is allowed
-because it never writes through a learner endpoint. A future feature that needs
-enforceable read-only access requires a separate scoped credential and cannot
-reuse this direct-ID model while claiming capability isolation.
+planned-goal changes. The sole narrow exception is the confirmed copy into the
+personal subject-schedule endpoint. Editing the separate local teacher course
+plan alone performs no learner write. A future feature that needs enforceable
+read-only access requires a separate scoped credential and cannot reuse this
+direct-ID model while claiming capability isolation.
 
 ## Identity and authorization limitation
 
@@ -164,7 +190,9 @@ must create a new local class with the learner's known permanent SkillPilot ID.
 
 No teacher-specific backend namespace or persistence is needed. Requests use
 the existing learner records and learner endpoints; the server receives the
-SkillPilot ID exactly as it does for ordinary first-party learner access.
+SkillPilot ID exactly as it does for ordinary first-party learner access. The
+personal subject schedule is ordinary learner-owned persistence with no
+teacher, class, invitation, or membership foreign key.
 
 The first-party WebGUI gates creation of these local classes with
 `VITE_EXISTING_LEARNER_LINKING_ENABLED`. Package-consumer builds keep the

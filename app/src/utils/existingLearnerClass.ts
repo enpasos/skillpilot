@@ -19,11 +19,15 @@ export const EXISTING_LEARNER_LINKING_ENABLED =
 export const LEGACY_TEACHER_WORKSPACE_STORAGE_KEY = 'skillpilot_teacher_workspace_v1'
 export const LEGACY_TEACHER_PENDING_STORAGE_KEY = 'skillpilot_teacher_pending_supervision_v1'
 
-interface ExistingLearnerProfile {
+export interface ExistingLearnerProfile {
   skillpilotId: string
   selectedCurriculum?: string
   personalCurriculum: string
 }
+
+const isInternalPersonalCurriculumEntry = (landscapeId: string): boolean => (
+  landscapeId.startsWith('__skillpilot_')
+)
 
 const isRecord = (value: unknown): value is Record<string, unknown> => (
   typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -69,14 +73,89 @@ export const parseExistingLearnerPersonalConfig = (value: string): TrainerClassC
 
 export const getExistingLearnerSubjectIds = (
   personalConfig: TrainerClassCurriculumConfig,
-  landscapes: LandscapeEntry[],
+  landscapes: LandscapeEntry[] = [],
   rootLandscapeId?: string,
-) => landscapes
-  .map((entry) => entry.meta.landscapeId)
-  .filter((landscapeId) => (
+) => {
+  const configuredSubjectIds = Object.keys(personalConfig).filter((landscapeId) => (
     landscapeId !== rootLandscapeId
+    && !isInternalPersonalCurriculumEntry(landscapeId)
     && personalConfig[landscapeId]?.selected === true
   ))
+  if (landscapes.length === 0) {
+    if (configuredSubjectIds.length > 0) return configuredSubjectIds
+    return rootLandscapeId && personalConfig[rootLandscapeId]?.selected === true
+      ? [rootLandscapeId]
+      : []
+  }
+
+  const knownLandscapeIds = new Set(
+    landscapes.map((entry) => entry.meta.landscapeId),
+  )
+  const knownConfiguredSubjectIds = landscapes
+    .map((entry) => entry.meta.landscapeId)
+    .filter((landscapeId) => (
+      configuredSubjectIds.includes(landscapeId)
+      && knownLandscapeIds.has(landscapeId)
+    ))
+  if (configuredSubjectIds.length > 0) {
+    return knownConfiguredSubjectIds.length === configuredSubjectIds.length
+      ? knownConfiguredSubjectIds
+      : []
+  }
+
+  return rootLandscapeId
+    && knownLandscapeIds.has(rootLandscapeId)
+    && personalConfig[rootLandscapeId]?.selected === true
+    ? [rootLandscapeId]
+    : []
+}
+
+export const resolveExistingLearnerRootLandscapeId = (input: {
+  profile: ExistingLearnerProfile
+  personalConfig: TrainerClassCurriculumConfig
+  existingRootLandscapeId?: string
+  fallbackRootLandscapeId?: string
+  availableRootLandscapeIds?: readonly string[]
+}): string => {
+  const selectedConfigIds = Object.keys(input.personalConfig).filter((landscapeId) => (
+    !isInternalPersonalCurriculumEntry(landscapeId)
+    && input.personalConfig[landscapeId]?.selected === true
+  ))
+  const candidates = [
+    input.existingRootLandscapeId,
+    input.fallbackRootLandscapeId,
+  ]
+    .map((landscapeId) => landscapeId?.trim() ?? '')
+    .filter(Boolean)
+
+  const explicitCandidate = candidates.find((landscapeId) => (
+    input.personalConfig[landscapeId]?.selected === true
+  ))
+  if (explicitCandidate) return explicitCandidate
+
+  const selectedAvailableRoots = (input.availableRootLandscapeIds ?? []).filter(
+    (landscapeId) => input.personalConfig[landscapeId]?.selected === true,
+  )
+  if (selectedAvailableRoots.length === 1) return selectedAvailableRoots[0]
+
+  const profileCurriculumId = input.profile.selectedCurriculum?.trim() ?? ''
+  if (
+    profileCurriculumId
+    && input.personalConfig[profileCurriculumId]?.selected === true
+    && (
+      (input.availableRootLandscapeIds?.length ?? 0) === 0
+      || input.availableRootLandscapeIds?.includes(profileCurriculumId)
+    )
+  ) {
+    return profileCurriculumId
+  }
+
+  // A single selected landscape is a valid flat curriculum with no separate
+  // subject module. Multiple selected IDs without a declared root are
+  // ambiguous and must not be guessed from their order or labels.
+  if (selectedConfigIds.length === 1) return selectedConfigIds[0]
+  throw new Error('invalid-personal-curriculum')
+}
 
 const activeFilterFor = (
   personalConfig: TrainerClassCurriculumConfig,

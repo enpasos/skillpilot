@@ -174,6 +174,7 @@ public class LearnerLifecycleService {
         jdbc.update("DELETE FROM planned_goal WHERE skillpilot_id = ?", skillpilotId);
         jdbc.update("DELETE FROM curriculum_champion WHERE skillpilot_id = ?", skillpilotId);
         jdbc.update("DELETE FROM learner_client_state WHERE skillpilot_id = ?", skillpilotId);
+        jdbc.update("DELETE FROM learner_learning_plan WHERE learner_id = ?", skillpilotId);
 
         // A deleted ID must not remain as provenance on a different learner.
         learners.deleteInboundCopySourceReferences(skillpilotId);

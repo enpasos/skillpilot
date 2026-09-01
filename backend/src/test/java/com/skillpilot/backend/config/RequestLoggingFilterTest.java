@@ -71,6 +71,27 @@ class RequestLoggingFilterTest {
     }
 
     @Test
+    void personalLearningPlanRoutesBypassTheGeneralBodyLogger() throws Exception {
+        for (String path : new String[] {
+                "/api/ui/learners/learner-42/learning-plans",
+                "/api/ui/learners/learner-42/learning-plans/by-landscape",
+                "/api/ui/learners/learner-42/learning-plans/8dddb012-7164-4d89-80ce-0e57fcfde31b/continue"
+        }) {
+            MockHttpServletRequest request = new MockHttpServletRequest("PUT", path);
+            request.setContentType("application/json");
+            request.setContent("{\"planLabel\":\"private learner plan\",\"title\":\"private block\"}"
+                    .getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            MockFilterChain chain = new MockFilterChain();
+
+            filter.doFilter(request, response, chain);
+
+            assertThat(chain.getRequest()).as(path).isSameAs(request);
+            assertThat(chain.getResponse()).as(path).isSameAs(response);
+        }
+    }
+
+    @Test
     void forwardingWrapperCannotExposeAnInternalOpenAiBodyToTheLogger() throws Exception {
         MockHttpServletRequest raw = new MockHttpServletRequest(
                 "POST",

@@ -9,6 +9,7 @@ import {
   Pencil,
   Plus,
   RotateCcw,
+  Send,
   ShieldCheck,
   Target,
   Trash2,
@@ -39,7 +40,20 @@ import {
   undoLastTeacherCoursePlanRevision,
 } from '../utils/localTeacherCoursePlan'
 import { getCoursePlanCopy } from '../utils/coursePlanCopy'
+import {
+  materializeLearnerLearningPlanCopy,
+  type LearnerLearningPlanCopy,
+} from '../utils/learnerCoursePlanPublication'
+import {
+  getLearnerLearningPlan,
+  LearnerLearningPlanApiError,
+  saveLearnerLearningPlan,
+} from '../utils/learnerLearningPlanApi'
 import { fetchLearnerPlanningScope } from '../utils/learnerPlanningScope'
+import {
+  berlinDateKey,
+  millisecondsUntilNextBerlinDateBoundary,
+} from '../utils/learnerLearningPlanReadModel'
 import { PacingGauge, type PacingGaugeStatus } from './PacingGauge'
 
 type CoursePlanBlockKind = TeacherCoursePlanBlock['kind']
@@ -63,11 +77,13 @@ interface BlockDraft {
   endDate: string
 }
 
-const localDateString = (date = new Date()) => {
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  return `${year}-${month}-${day}`
+interface PlanPublicationConfirmation {
+  learnerId: string
+  landscapeId: string
+  sourcePlanRevision: number
+  expectedRevision: number
+  existingPlan: boolean
+  copy: LearnerLearningPlanCopy
 }
 
 const randomId = (prefix: string) => {
@@ -83,6 +99,8 @@ const createDraft = (asOf: string): BlockDraft => ({
   startDate: asOf,
   endDate: addCoursePlanDays(asOf, 13) ?? asOf,
 })
+
+const serializeDraft = (draft: BlockDraft) => JSON.stringify(draft)
 
 const formatDate = (value: string, language: 'de' | 'en', options?: Intl.DateTimeFormatOptions) => {
   const parsed = parseCoursePlanDate(value)
@@ -185,12 +203,13 @@ export const CoursePlanPilotView = ({
   onNotify,
 }: CoursePlanPilotViewProps) => {
   const copy = useMemo(() => getCoursePlanCopy(language), [language])
-  const asOf = localDateString()
+  const [asOf, setAsOf] = useState(() => berlinDateKey())
   const initial = useMemo(() => planForClass(classId, asOf), [asOf, classId])
   const [plan, setPlan] = useState<TeacherCoursePlan | null>(initial.plan)
   const [storageInvalid, setStorageInvalid] = useState(initial.storageInvalid)
   const [planLabelDraft, setPlanLabelDraft] = useState(initial.plan?.schoolYearLabel ?? '')
   const [draft, setDraft] = useState<BlockDraft>(() => createDraft(asOf))
+  const [draftBaseline, setDraftBaseline] = useState<string | null>(null)
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null)
   const [showBlockForm, setShowBlockForm] = useState(false)
   const [formError, setFormError] = useState('')
@@ -199,6 +218,12 @@ export const CoursePlanPilotView = ({
   const [baselineLoadState, setBaselineLoadState] = useState<'idle' | 'loading' | 'error'>('idle')
   const [baselineRetry, setBaselineRetry] = useState(0)
   const [savingBlock, setSavingBlock] = useState(false)
+  const [publicationState, setPublicationState] = useState<'idle' | 'checking' | 'saving'>('idle')
+  const [publicationConfirmation, setPublicationConfirmation] = useState<PlanPublicationConfirmation | null>(null)
+  const [publicationMessage, setPublicationMessage] = useState('')
+  const [publicationError, setPublicationError] = useState('')
+  const [coverageEffectiveOn, setCoverageEffectiveOn] = useState(asOf)
+  const previousAsOfRef = useRef(asOf)
   const planRef = useRef(plan)
   const blockFormRef = useRef<HTMLElement | null>(null)
   const blockFormHeadingRef = useRef<HTMLHeadingElement | null>(null)
@@ -206,9 +231,64 @@ export const CoursePlanPilotView = ({
     token: 0,
     controller: null,
   })
+  const publicationRequestRef = useRef<{ token: number; controller: AbortController | null }>({
+    token: 0,
+    controller: null,
+  })
   planRef.current = plan
 
+  useEffect(() => {
+    let boundaryTimer: ReturnType<typeof setTimeout> | null = null
+
+    const refreshDate = () => {
+      const nextAsOf = berlinDateKey()
+      const previousAsOf = previousAsOfRef.current
+      if (nextAsOf === previousAsOf) return
+      previousAsOfRef.current = nextAsOf
+      setCoverageEffectiveOn((current) => current === previousAsOf ? nextAsOf : current)
+      setAsOf(nextAsOf)
+    }
+    const scheduleBoundary = () => {
+      if (boundaryTimer !== null) clearTimeout(boundaryTimer)
+      boundaryTimer = setTimeout(() => {
+        refreshDate()
+        scheduleBoundary()
+      }, millisecondsUntilNextBerlinDateBoundary())
+    }
+    const handleVisibilityChange = () => {
+      if (document.visibilityState !== 'visible') return
+      refreshDate()
+      scheduleBoundary()
+    }
+
+    scheduleBoundary()
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      if (boundaryTimer !== null) clearTimeout(boundaryTimer)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
+
+  const normalizedPublicationLearnerId = learnerId?.trim() ?? ''
+  const normalizedPublicationLandscapeId = landscapeId?.trim() ?? ''
+  const publicationContextKey = JSON.stringify([
+    normalizedPublicationLearnerId,
+    normalizedPublicationLandscapeId,
+  ])
+  const latestPublicationContextRef = useRef({
+    learnerId: normalizedPublicationLearnerId,
+    landscapeId: normalizedPublicationLandscapeId,
+  })
+  const previousPublicationContextKeyRef = useRef(publicationContextKey)
+  latestPublicationContextRef.current = {
+    learnerId: normalizedPublicationLearnerId,
+    landscapeId: normalizedPublicationLandscapeId,
+  }
+
   const requiresLearnerBaseline = Boolean(learnerId && landscapeId)
+  const canPublishToLearner = Boolean(
+    normalizedPublicationLearnerId && normalizedPublicationLandscapeId,
+  )
   const hasLearningBlock = plan?.blocks.some((block) => block.kind === 'learning') === true
   const landscapeBaseline = plan?.planningBaseline?.source === 'learner-planning-landscape-v1'
     ? plan.planningBaseline
@@ -225,6 +305,17 @@ export const CoursePlanPilotView = ({
       ? evaluateTeacherCoursePlan(plan, goals, asOf, visibleChildrenByParent)
       : null
   ), [asOf, baselineMatchesContext, goals, needsLearnerBaseline, plan, visibleChildrenByParent])
+  const planLabelDirty = planLabelDraft.trim() !== (plan?.schoolYearLabel ?? '')
+  const blockDraftDirty = showBlockForm
+    && draftBaseline !== null
+    && serializeDraft(draft) !== draftBaseline
+  const hasUnsavedDraft = planLabelDirty || blockDraftDirty
+  const publicationPlanReady = Boolean(
+    evaluation
+    && evaluation.quality.status !== 'invalid'
+    && evaluation.metrics
+    && evaluation.metrics.plannedGoalCount > 0,
+  )
 
   const assignmentByBlockId = useMemo(() => new Map(
     (evaluation?.assignments ?? []).map((assignment) => [assignment.blockId, assignment]),
@@ -358,7 +449,33 @@ export const CoursePlanPilotView = ({
     saveBlockRequestRef.current.token += 1
     saveBlockRequestRef.current.controller?.abort()
     saveBlockRequestRef.current.controller = null
+    publicationRequestRef.current.token += 1
+    publicationRequestRef.current.controller?.abort()
+    publicationRequestRef.current.controller = null
   }, [])
+
+  useEffect(() => {
+    if (previousPublicationContextKeyRef.current === publicationContextKey) return
+    previousPublicationContextKeyRef.current = publicationContextKey
+    publicationRequestRef.current.token += 1
+    publicationRequestRef.current.controller?.abort()
+    publicationRequestRef.current.controller = null
+    setPublicationState('idle')
+    setPublicationConfirmation(null)
+    setPublicationMessage('')
+    setPublicationError('')
+  }, [publicationContextKey])
+
+  useEffect(() => {
+    if (!hasUnsavedDraft || !publicationConfirmation) return
+    publicationRequestRef.current.token += 1
+    publicationRequestRef.current.controller?.abort()
+    publicationRequestRef.current.controller = null
+    setPublicationState('idle')
+    setPublicationConfirmation(null)
+    setPublicationMessage('')
+    setPublicationError(copy.planChangedDuringSave)
+  }, [copy.planChangedDuringSave, hasUnsavedDraft, publicationConfirmation])
 
   useEffect(() => {
     if (!showBlockForm) return
@@ -376,6 +493,198 @@ export const CoursePlanPilotView = ({
     setSavingBlock(false)
   }
 
+  const cancelPublication = () => {
+    publicationRequestRef.current.token += 1
+    publicationRequestRef.current.controller?.abort()
+    publicationRequestRef.current.controller = null
+    setPublicationState('idle')
+    setPublicationConfirmation(null)
+  }
+
+  const preparePublication = async () => {
+    const currentPlan = planRef.current
+    const normalizedLearnerId = normalizedPublicationLearnerId
+    const normalizedLandscapeId = normalizedPublicationLandscapeId
+    if (
+      !currentPlan
+      || !normalizedLearnerId
+      || !normalizedLandscapeId
+      || hasUnsavedDraft
+      || !publicationPlanReady
+      || publicationState !== 'idle'
+      || publicationRequestRef.current.controller !== null
+    ) return
+
+    const materialized = materializeLearnerLearningPlanCopy({
+      plan: currentPlan,
+      fallbackPlanLabel: classLabel,
+      goals,
+      visibleChildrenByParent,
+    })
+    if (!materialized.ok) {
+      setPublicationConfirmation(null)
+      setPublicationMessage('')
+      setPublicationError(copy.publishUnavailable)
+      onNotify?.('error', copy.publishUnavailable)
+      return
+    }
+    if (materialized.copy.atomicGoalCount === 0) {
+      setPublicationConfirmation(null)
+      setPublicationMessage('')
+      setPublicationError(copy.publishUnavailable)
+      onNotify?.('error', copy.publishUnavailable)
+      return
+    }
+
+    const requestToken = publicationRequestRef.current.token + 1
+    const controller = new AbortController()
+    publicationRequestRef.current = { token: requestToken, controller }
+    const sourcePlanRevision = currentPlan.revision
+    setPublicationState('checking')
+    setPublicationConfirmation(null)
+    setPublicationMessage('')
+    setPublicationError('')
+    try {
+      let existingPlan = false
+      let expectedRevision = 0
+      try {
+        const cockpitPlan = await getLearnerLearningPlan(
+          normalizedLearnerId,
+          normalizedLandscapeId,
+          asOf,
+          { signal: controller.signal },
+        )
+        existingPlan = true
+        expectedRevision = cockpitPlan.revision
+      } catch (error) {
+        if (!(error instanceof LearnerLearningPlanApiError) || error.status !== 404) throw error
+      }
+      if (
+        controller.signal.aborted
+        || publicationRequestRef.current.token !== requestToken
+      ) return
+      const latestContext = latestPublicationContextRef.current
+      if (
+        latestContext.learnerId !== normalizedLearnerId
+        || latestContext.landscapeId !== normalizedLandscapeId
+      ) return
+      if (planRef.current?.revision !== sourcePlanRevision) {
+        setPublicationError(copy.planChangedDuringSave)
+        return
+      }
+      setPublicationConfirmation({
+        learnerId: normalizedLearnerId,
+        landscapeId: normalizedLandscapeId,
+        sourcePlanRevision,
+        expectedRevision,
+        existingPlan,
+        copy: materialized.copy,
+      })
+    } catch (error) {
+      if (controller.signal.aborted || publicationRequestRef.current.token !== requestToken) return
+      console.warn('Could not inspect learner cockpit plan', error)
+      setPublicationError(copy.publishFailed)
+      onNotify?.('error', copy.publishFailed)
+    } finally {
+      if (publicationRequestRef.current.token === requestToken) {
+        publicationRequestRef.current.controller = null
+        setPublicationState('idle')
+      }
+    }
+  }
+
+  const confirmPublication = async () => {
+    const confirmation = publicationConfirmation
+    const normalizedLearnerId = normalizedPublicationLearnerId
+    const normalizedLandscapeId = normalizedPublicationLandscapeId
+    if (
+      !confirmation
+      || !normalizedLearnerId
+      || !normalizedLandscapeId
+      || publicationState !== 'idle'
+      || publicationRequestRef.current.controller !== null
+    ) return
+    if (hasUnsavedDraft) {
+      setPublicationConfirmation(null)
+      setPublicationMessage('')
+      setPublicationError(copy.planChangedDuringSave)
+      return
+    }
+    if (
+      confirmation.learnerId !== normalizedLearnerId
+      || confirmation.landscapeId !== normalizedLandscapeId
+    ) {
+      setPublicationConfirmation(null)
+      setPublicationMessage('')
+      setPublicationError(copy.publishFailed)
+      return
+    }
+    if (planRef.current?.revision !== confirmation.sourcePlanRevision) {
+      setPublicationConfirmation(null)
+      setPublicationError(copy.planChangedDuringSave)
+      return
+    }
+
+    const requestToken = publicationRequestRef.current.token + 1
+    const controller = new AbortController()
+    publicationRequestRef.current = { token: requestToken, controller }
+    setPublicationState('saving')
+    setPublicationMessage('')
+    setPublicationError('')
+    try {
+      const savedPlan = await saveLearnerLearningPlan(
+        normalizedLearnerId,
+        normalizedLandscapeId,
+        {
+          expectedRevision: confirmation.expectedRevision,
+          planLabel: confirmation.copy.planLabel,
+          blocks: confirmation.copy.blocks,
+        },
+        { signal: controller.signal },
+      )
+      if (
+        controller.signal.aborted
+        || publicationRequestRef.current.token !== requestToken
+      ) return
+      const latestContext = latestPublicationContextRef.current
+      if (
+        latestContext.learnerId !== confirmation.learnerId
+        || latestContext.landscapeId !== confirmation.landscapeId
+      ) return
+      const successMessage = copy.publishSuccess(
+        savedPlan.revision,
+        savedPlan.metrics.totalPlanned,
+      )
+      setPublicationConfirmation(null)
+      setPublicationMessage(successMessage)
+      onNotify?.('success', successMessage)
+    } catch (error) {
+      if (controller.signal.aborted || publicationRequestRef.current.token !== requestToken) return
+      const revisionConflict = error instanceof LearnerLearningPlanApiError
+        && error.status === 409
+        && /revision|expectedRevision/iu.test(error.message)
+      const noOpenGoals = error instanceof LearnerLearningPlanApiError
+        && error.status === 409
+        && /no currently open atomic goals/iu.test(error.message)
+      const message = revisionConflict
+        ? copy.publishConflict
+        : noOpenGoals
+          ? copy.publishNoOpenGoals
+          : copy.publishFailed
+      if (!revisionConflict && !noOpenGoals) {
+        console.warn('Could not publish learner cockpit plan', error)
+      }
+      setPublicationConfirmation(null)
+      setPublicationError(message)
+      onNotify?.('error', message)
+    } finally {
+      if (publicationRequestRef.current.token === requestToken) {
+        publicationRequestRef.current.controller = null
+        setPublicationState('idle')
+      }
+    }
+  }
+
   const savePlanLabel = () => {
     if (!plan || planLabelDraft.trim() === (plan.schoolYearLabel ?? '')) return
     revise(plan.blocks, planLabelDraft.trim())
@@ -383,7 +692,9 @@ export const CoursePlanPilotView = ({
 
   const openNewBlock = () => {
     cancelPendingBlockSave()
-    setDraft(createDraft(asOf))
+    const nextDraft = createDraft(asOf)
+    setDraft(nextDraft)
+    setDraftBaseline(serializeDraft(nextDraft))
     setEditingBlockId(null)
     setFormError('')
     setGoalSearch('')
@@ -393,7 +704,7 @@ export const CoursePlanPilotView = ({
 
   const openEditBlock = (block: TeacherCoursePlanBlock) => {
     cancelPendingBlockSave()
-    setDraft(block.kind === 'milestone'
+    const nextDraft = block.kind === 'milestone'
       ? {
           kind: block.kind,
           goalId: block.goalId ?? '',
@@ -407,7 +718,9 @@ export const CoursePlanPilotView = ({
           title: block.title ?? '',
           startDate: block.startDate,
           endDate: block.endDate,
-        })
+        }
+    setDraft(nextDraft)
+    setDraftBaseline(serializeDraft(nextDraft))
     setEditingBlockId(block.id)
     setFormError('')
     setGoalSearch('')
@@ -547,6 +860,7 @@ export const CoursePlanPilotView = ({
     }
     if (persist(revised)) {
       setShowBlockForm(false)
+      setDraftBaseline(null)
       setEditingBlockId(null)
       setFormError('')
       setGoalSearch('')
@@ -564,6 +878,7 @@ export const CoursePlanPilotView = ({
       if (editingBlockId === blockId) {
         setEditingBlockId(null)
         setShowBlockForm(false)
+        setDraftBaseline(null)
       }
     }
   }
@@ -577,6 +892,7 @@ export const CoursePlanPilotView = ({
     if (persist(undone)) {
       setPlanLabelDraft(undone?.schoolYearLabel ?? '')
       setShowBlockForm(false)
+      setDraftBaseline(null)
       setEditingBlockId(null)
       setPendingDeleteId(null)
     }
@@ -584,10 +900,17 @@ export const CoursePlanPilotView = ({
 
   const toggleCoverage = (goalId: string) => {
     if (!plan) return
+    if (
+      !parseCoursePlanDate(coverageEffectiveOn)
+      || compareCoursePlanDates(coverageEffectiveOn, asOf) === 1
+    ) {
+      onNotify?.('error', copy.coverageEffectiveDateInvalid)
+      return
+    }
     persist(toggleCourseGoalCoverage(plan, {
       id: randomId('course-coverage-event'),
       goalId,
-      effectiveOn: asOf,
+      effectiveOn: coverageEffectiveOn,
       recordedAt: new Date().toISOString(),
     }))
   }
@@ -662,6 +985,19 @@ export const CoursePlanPilotView = ({
   const planStatus = statusPresentation(calculationUnavailable ? undefined : metrics.coverageStatus, copy)
   const hasPlanBlocks = plan.blocks.length > 0
   const hasLearningGoals = (metrics?.plannedGoalCount ?? 0) > 0
+  const coverageEffectiveDateIsValid = Boolean(
+    parseCoursePlanDate(coverageEffectiveOn)
+    && compareCoursePlanDates(coverageEffectiveOn, asOf) !== 1,
+  )
+  const publishDisabledReason = publicationState !== 'idle'
+    ? ''
+    : hasUnsavedDraft
+      ? copy.publishDisabledUnsaved
+      : calculationUnavailable
+        ? copy.publishDisabledNotCalculable
+        : !hasLearningGoals
+          ? copy.publishDisabledNoLearningGoals
+          : ''
   const noLearningGoalsLabel = language === 'de'
     ? 'Noch keine Lernziele verplant'
     : 'No learning goals scheduled yet'
@@ -717,6 +1053,25 @@ export const CoursePlanPilotView = ({
               <Download size={17} aria-hidden="true" />
               {copy.exportPlan}
             </button>
+            {canPublishToLearner && (
+              <div className="max-w-xs">
+                <button
+                  type="button"
+                  onClick={() => void preparePublication()}
+                  disabled={!publicationPlanReady || hasUnsavedDraft || publicationState !== 'idle'}
+                  aria-describedby={publishDisabledReason ? 'course-plan-publish-disabled-reason' : undefined}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-500 bg-sidebar-bg px-4 py-2 text-sm font-semibold text-sky-700 transition-colors hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:text-sky-300 dark:hover:bg-sky-950/30"
+                >
+                  <Send size={17} aria-hidden="true" />
+                  {publicationState === 'checking' ? copy.publishPlanLoading : copy.publishPlan}
+                </button>
+                {publishDisabledReason && (
+                  <p id="course-plan-publish-disabled-reason" className="mt-1 text-xs leading-5 text-text-secondary">
+                    {publishDisabledReason}
+                  </p>
+                )}
+              </div>
+            )}
             <button
               type="button"
               onClick={openNewBlock}
@@ -727,6 +1082,71 @@ export const CoursePlanPilotView = ({
             </button>
           </div>
         </header>
+
+        {publicationConfirmation && (
+          <section
+            className="rounded-2xl border-2 border-sky-400 bg-sky-50 p-5 text-sky-950 shadow-sm dark:border-sky-800 dark:bg-sky-950/30 dark:text-sky-100"
+            aria-labelledby="course-plan-publication-title"
+            data-testid="course-plan-publication-confirmation"
+          >
+            <h2 id="course-plan-publication-title" className="text-lg font-semibold">
+              {copy.publishConfirmTitle}
+            </h2>
+            <p className="mt-2 max-w-4xl text-sm leading-6">{copy.publishIndependentCopyBody}</p>
+            <p className="mt-3 text-sm font-semibold">
+              {publicationConfirmation.existingPlan
+                ? copy.publishReplaceBody(publicationConfirmation.expectedRevision)
+                : copy.publishNewBody}
+            </p>
+            <p className="mt-2 text-xs text-sky-800 dark:text-sky-200">
+              {copy.publishGoalCount(publicationConfirmation.copy.atomicGoalCount)}
+              <span aria-hidden="true"> · </span>
+              {publicationConfirmation.copy.blocks.length} {publicationConfirmation.copy.blocks.length === 1
+                ? language === 'de' ? 'Planblock' : 'plan block'
+                : language === 'de' ? 'Planblöcke' : 'plan blocks'}
+            </p>
+            <div className="mt-5 flex flex-wrap justify-end gap-2">
+              <button
+                type="button"
+                onClick={cancelPublication}
+                disabled={publicationState === 'saving'}
+                className="min-h-11 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-slate-800"
+              >
+                {copy.cancel}
+              </button>
+              <button
+                type="button"
+                onClick={() => void confirmPublication()}
+                disabled={publicationState === 'saving'}
+                className="min-h-11 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+              >
+                {publicationState === 'saving'
+                  ? copy.publishPlanSaving
+                  : publicationConfirmation.existingPlan
+                    ? copy.publishConfirmReplace
+                    : copy.publishConfirmNew}
+              </button>
+            </div>
+          </section>
+        )}
+
+        {publicationError && (
+          <p
+            className="rounded-xl border border-rose-300 bg-rose-50 p-4 text-sm font-medium text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100"
+            role="alert"
+          >
+            {publicationError}
+          </p>
+        )}
+
+        {publicationMessage && (
+          <p
+            className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm font-medium text-emerald-950 dark:border-emerald-900/70 dark:bg-emerald-950/30 dark:text-emerald-100"
+            role="status"
+          >
+            {publicationMessage}
+          </p>
+        )}
 
         <section className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <div className="rounded-2xl border border-sky-300 bg-sky-50 p-5 text-sky-950 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100">
@@ -811,7 +1231,13 @@ export const CoursePlanPilotView = ({
             </div>
             <div className="flex flex-wrap items-center gap-2 text-xs text-text-secondary lg:justify-end">
               <span className="rounded-full border border-border-color px-3 py-1.5">{copy.revisionLabel(plan.revision)}</span>
-              <span className="rounded-full border border-border-color px-3 py-1.5">{copy.savedLocally}</span>
+              <span
+                className={`rounded-full border px-3 py-1.5 ${hasUnsavedDraft ? 'border-amber-400 bg-amber-50 text-amber-900 dark:bg-amber-950/30 dark:text-amber-100' : 'border-border-color'}`}
+                role="status"
+                data-testid="course-plan-save-status"
+              >
+                {hasUnsavedDraft ? copy.unsavedLocally : copy.savedLocally}
+              </span>
               <span className="rounded-full border border-border-color px-3 py-1.5">{formatDate(asOf, language)}</span>
             </div>
           </div>
@@ -828,6 +1254,7 @@ export const CoursePlanPilotView = ({
                 onClick={() => {
                   cancelPendingBlockSave()
                   setShowBlockForm(false)
+                  setDraftBaseline(null)
                   setEditingBlockId(null)
                   setFormError('')
                 }}
@@ -1155,9 +1582,26 @@ export const CoursePlanPilotView = ({
             </section>
 
             <section className="space-y-3" aria-labelledby="course-plan-blocks-title">
-              <div>
-                <h2 id="course-plan-blocks-title" className="text-xl font-semibold text-text-primary">{language === 'de' ? 'Planblöcke und Unterrichtsabdeckung' : 'Plan blocks and teaching coverage'}</h2>
-                <p className="mt-1 text-sm text-text-secondary">{copy.coverageBody}</p>
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                  <h2 id="course-plan-blocks-title" className="text-xl font-semibold text-text-primary">{language === 'de' ? 'Planblöcke und Unterrichtsabdeckung' : 'Plan blocks and teaching coverage'}</h2>
+                  <p className="mt-1 text-sm text-text-secondary">{copy.coverageBody}</p>
+                </div>
+                <label className="block max-w-md rounded-xl border border-border-color bg-sidebar-bg p-3">
+                  <span className="text-sm font-semibold text-text-primary">{copy.coverageEffectiveDateLabel}</span>
+                  <input
+                    type="date"
+                    value={coverageEffectiveOn}
+                    max={asOf}
+                    onChange={(event) => setCoverageEffectiveOn(event.target.value)}
+                    aria-describedby="course-plan-coverage-date-hint"
+                    aria-invalid={!coverageEffectiveDateIsValid}
+                    className="mt-2 min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
+                  />
+                  <span id="course-plan-coverage-date-hint" className={`mt-2 block text-xs leading-5 ${coverageEffectiveDateIsValid ? 'text-text-secondary' : 'text-rose-700 dark:text-rose-300'}`}>
+                    {coverageEffectiveDateIsValid ? copy.coverageEffectiveDateHint : copy.coverageEffectiveDateInvalid}
+                  </span>
+                </label>
               </div>
               {sorted.map((block) => {
                 const assignment = assignmentByBlockId.get(block.id)
@@ -1262,6 +1706,7 @@ export const CoursePlanPilotView = ({
                                   type="checkbox"
                                   checked={covered}
                                   onChange={() => toggleCoverage(goalId)}
+                                  disabled={!coverageEffectiveDateIsValid}
                                   className="mt-0.5 h-5 w-5 shrink-0 rounded border-border-color text-violet-600 focus:ring-violet-500"
                                   aria-label={`${covered ? copy.markOpen : copy.markCovered}: ${atomicGoal?.title ?? goalId}`}
                                 />

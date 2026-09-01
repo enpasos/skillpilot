@@ -330,6 +330,7 @@ try {
   const trainerTermsContext = await browser.newContext({ locale: 'de-DE' })
   await trainerTermsContext.addInitScript(() => {
     localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_trainer_landscape', 'obsolete-global-trainer-context')
   })
   const trainerTermsPage = await trainerTermsContext.newPage()
   await installApi(trainerTermsPage)
@@ -344,8 +345,153 @@ try {
   )
   await trainerTermsPage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
   await trainerTermsPage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
-  await trainerTermsPage.getByRole('heading', { name: 'Kurs vorbereiten' }).waitFor()
+  const openCourseOrganization = trainerTermsPage.getByRole('button', {
+    name: 'Kursorganisation öffnen',
+    exact: true,
+  })
+  await openCourseOrganization.waitFor()
+  assert(
+    await trainerTermsPage.getByRole('heading', { name: 'Kurs vorbereiten' }).count() === 0
+      && await trainerTermsPage.getByText('Qualitätsampel', { exact: true }).count() === 0
+      && await trainerTermsPage.getByLabel('Curriculum wählen').count() === 0,
+    'trainer entry does not put a curriculum or quality filter in front of course organization',
+  )
+  await trainerTermsPage.getByText(
+    'Das Curriculum wählst du beim Anlegen des jeweiligen Kurses.',
+    { exact: false },
+  ).waitFor()
+  await openCourseOrganization.click()
+  await trainerTermsPage.waitForFunction(() => (
+    (window as Window & { __sessionSetupStartProbe?: unknown[] })
+      .__sessionSetupStartProbe?.length === 1
+  ))
+  const trainerStart = await trainerTermsPage.evaluate(() => (
+    (window as Window & {
+      __sessionSetupStartProbe?: Array<{
+        id: string
+        landscapeId?: string
+        role?: string
+      }>
+    }).__sessionSetupStartProbe?.[0]
+  ))
+  assert(
+    trainerStart?.id === ''
+      && trainerStart.landscapeId === ''
+      && trainerStart.role === 'trainer'
+      && await trainerTermsPage.evaluate(() => localStorage.getItem('skillpilot_trainer_landscape')) === null,
+    'trainer entry starts course organization with an empty context and removes the obsolete global landscape',
+  )
   await trainerTermsContext.close()
+
+  const emptyTrainerContext = await browser.newContext({ locale: 'de-DE' })
+  await emptyTrainerContext.addInitScript(() => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_trainer_landscape', 'obsolete-global-trainer-context')
+  })
+  const emptyTrainerPage = await emptyTrainerContext.newPage()
+  emptyTrainerPage.setDefaultTimeout(60_000)
+  const emptyTrainerErrors: string[] = []
+  emptyTrainerPage.on('pageerror', (error) => emptyTrainerErrors.push(error.message))
+  emptyTrainerPage.on('console', (message) => {
+    if (message.type() === 'error') emptyTrainerErrors.push(message.text())
+  })
+  await installApi(emptyTrainerPage)
+  await emptyTrainerPage.goto(`${baseUrl}?fixture=trainer-app-entry`)
+  await emptyTrainerPage.getByRole('button', { name: 'Lehrkräfte', exact: true }).click()
+  await emptyTrainerPage.getByRole('button', {
+    name: 'Kursorganisation öffnen',
+    exact: true,
+  }).click()
+  await emptyTrainerPage.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+    .catch(async (error: unknown) => {
+      throw new Error(
+        `${error instanceof Error ? error.message : String(error)}\n`
+        + `URL: ${emptyTrainerPage.url()}\n`
+        + `Body: ${(await emptyTrainerPage.locator('body').innerText()).slice(0, 2_000)}\n`
+        + `Browser errors:\n${emptyTrainerErrors.join('\n')}`,
+      )
+    })
+  assert(
+    new URL(emptyTrainerPage.url()).pathname === '/trainer'
+      && !new URL(emptyTrainerPage.url()).searchParams.has('l')
+      && await emptyTrainerPage.evaluate(() => localStorage.getItem('skillpilot_trainer_landscape')) === null,
+    'the real App starts and renders trainer course organization with an empty landscape context',
+  )
+  await emptyTrainerContext.close()
+
+  const directTrainerContext = await browser.newContext({ locale: 'de-DE' })
+  await directTrainerContext.addInitScript(() => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_role', 'trainer')
+    localStorage.setItem('skillpilot_trainer_landscape', 'obsolete-global-trainer-context')
+  })
+  const directTrainerPage = await directTrainerContext.newPage()
+  directTrainerPage.setDefaultTimeout(60_000)
+  await installApi(directTrainerPage)
+  await directTrainerPage.goto(`${baseUrl}?fixture=trainer-direct-entry`)
+  await directTrainerPage.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+  assert(
+    new URL(directTrainerPage.url()).pathname === '/trainer'
+      && !new URL(directTrainerPage.url()).searchParams.has('l')
+      && await directTrainerPage.evaluate(() => localStorage.getItem('skillpilot_trainer_landscape')) === null,
+    'direct trainer entry also retires the obsolete global curriculum context',
+  )
+  await directTrainerContext.close()
+
+  const unavailableOverviewContext = await browser.newContext({ locale: 'de-DE' })
+  await unavailableOverviewContext.addInitScript(() => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_role', 'trainer')
+  })
+  const unavailableOverviewPage = await unavailableOverviewContext.newPage()
+  unavailableOverviewPage.setDefaultTimeout(60_000)
+  await installApi(unavailableOverviewPage)
+  await unavailableOverviewPage.route(/\/api\/ui\/landscapes(?:\?.*)?$/u, async (route) => {
+    await route.fulfill({ status: 503, body: 'overview unavailable' })
+  })
+  await unavailableOverviewPage.goto(`${baseUrl}?fixture=trainer-direct-entry`)
+  await unavailableOverviewPage.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+  assert(
+    await unavailableOverviewPage.getByText('Fehler beim Laden der Skill-Landschaften', { exact: false }).count() === 0,
+    'an unavailable curriculum overview does not block the local course organization',
+  )
+  await unavailableOverviewContext.close()
+
+  const unavailableCourseContext = await browser.newContext({ locale: 'de-DE' })
+  await unavailableCourseContext.addInitScript((rootLandscapeId) => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_role', 'trainer')
+    localStorage.setItem('skillpilot_classes', JSON.stringify([{
+      id: 'unavailable-course',
+      name: 'Nicht ladbarer Kurs',
+      landscapeId: rootLandscapeId,
+      rootLandscapeId,
+      activeFilter: 'all',
+      personalConfig: { [rootLandscapeId]: { selected: true } },
+      students: [],
+      source: 'local-generated',
+    }]))
+  }, CANONICAL_GYMNASIUM_ROOT_ID)
+  const unavailableCoursePage = await unavailableCourseContext.newPage()
+  unavailableCoursePage.setDefaultTimeout(60_000)
+  await installApi(unavailableCoursePage)
+  await unavailableCoursePage.goto(`${baseUrl}?fixture=trainer-direct-entry`)
+  await unavailableCoursePage.getByText('Nicht ladbarer Kurs', { exact: true }).click()
+  await unavailableCoursePage.getByRole('heading', {
+    name: 'Kurs-Curriculum nicht verfügbar',
+    exact: true,
+  }).waitFor()
+  await unavailableCoursePage.getByText(
+    'Deine lokal gespeicherten Kursdaten bleiben erhalten.',
+    { exact: false },
+  ).waitFor()
+  await unavailableCoursePage.getByRole('button', { name: 'Alle Klassen', exact: true }).click()
+  await unavailableCoursePage.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+  await unavailableCourseContext.close()
 
   const blockedStorageContext = await browser.newContext({ locale: 'de-DE' })
   await blockedStorageContext.addInitScript(() => {

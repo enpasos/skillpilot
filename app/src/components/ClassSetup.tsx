@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { CurriculumDropdown } from './CurriculumDropdown'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
-import type { LandscapeEntry } from '../hooks/useLandscapes'
+import { useLandscapes, type LandscapeEntry } from '../hooks/useLandscapes'
 import type { ClassSession, StudentMapping, TrainerClassCurriculumConfig } from '../trainerTypes'
 import {
   getGlobalStageScopeSelection,
@@ -18,18 +19,29 @@ import {
   resolveCurriculumOfferingSource,
 } from '../utils/durationModel'
 import { getDisplayCourseProfileFilters, getDisplayFiltersForSelection } from '../utils/filterLabels'
+import { isWildcardFilter } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getClassSetupCopy } from '../utils/curriculumSetupCopy'
+import { isRepositoryGymnasiumFramework } from '../utils/curriculumDisplay'
+import type { CurriculumQualityFilter } from '../utils/curriculumQualityTrafficLight'
 import {
   buildExistingLearnerClassSession,
   EXISTING_LEARNER_LINKING_ENABLED,
   fetchExistingLearnerProfile,
+  getExistingLearnerSubjectIds,
   isExistingLearnerClassSession,
+  parseExistingLearnerPersonalConfig,
+  resolveExistingLearnerRootLandscapeId,
 } from '../utils/existingLearnerClass'
 import { getExistingLearnerClassCopy } from '../utils/existingLearnerClassCopy'
+import {
+  fetchLandscapeClosureEntries,
+  landscapeEntriesBelongToRoot,
+} from '../utils/landscapeClosure'
 
 interface ClassSetupProps {
-  landscapes: LandscapeEntry[]
+  /** Legacy fixture fallback; normal course setup loads its own selected closure. */
+  landscapes?: LandscapeEntry[]
   rootLandscapeId?: string
   initialSession?: ClassSession
   onSave: (session: ClassSession) => boolean
@@ -38,58 +50,116 @@ interface ClassSetupProps {
 
 const normalizeWildcardFilter = (filterId?: string) => filterId ?? 'ALL'
 
-export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscapeId, initialSession, onSave, onCancel }) => {
+const getLandscapeRootGoal = (entry: LandscapeEntry | null | undefined) => (
+  entry?.goals.find((goal) => goal.tags?.includes('root')) ?? entry?.goals[0]
+)
+
+const getDirectChildLandscapeEntries = (
+  rootLandscape: LandscapeEntry | null,
+  closure: LandscapeEntry[],
+): LandscapeEntry[] => {
+  if (!rootLandscape) return []
+  const landscapeByGoalId = new Map(
+    closure.flatMap((entry) => entry.goals.map((goal) => [goal.id, entry] as const)),
+  )
+  const children: LandscapeEntry[] = []
+  const seen = new Set<string>()
+  for (const rawGoalId of getLandscapeRootGoal(rootLandscape)?.contains ?? []) {
+    const separatorIndex = rawGoalId.indexOf(':')
+    const goalId = separatorIndex >= 0 && separatorIndex < rawGoalId.length - 1
+      ? rawGoalId.slice(separatorIndex + 1)
+      : rawGoalId
+    const childLandscape = landscapeByGoalId.get(goalId)
+    const childLandscapeId = childLandscape?.meta.landscapeId
+    if (
+      !childLandscape
+      || !childLandscapeId
+      || childLandscapeId === rootLandscape.meta.landscapeId
+      || seen.has(childLandscapeId)
+    ) continue
+    children.push(childLandscape)
+    seen.add(childLandscapeId)
+  }
+  return children
+}
+
+export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes = [], rootLandscapeId, initialSession, onSave, onCancel }) => {
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const copy = getClassSetupCopy(localizedLanguage)
   const existingCopy = getExistingLearnerClassCopy(localizedLanguage)
-  const runtimeCatalogState = useRuntimeCurriculumCatalog()
-  const offeringSource = useMemo(
-    () => resolveCurriculumOfferingSource(runtimeCatalogState),
-    [runtimeCatalogState],
-  )
-  const rootLandscape = useMemo(
-    () => (rootLandscapeId ? landscapes.find((entry) => entry.meta.landscapeId === rootLandscapeId) ?? null : null),
-    [landscapes, rootLandscapeId],
-  )
-  const subjectLandscapes = useMemo(
-    () => landscapes.filter((entry) => entry.meta.landscapeId !== rootLandscapeId),
-    [landscapes, rootLandscapeId],
-  )
-
   const isEditing = Boolean(initialSession)
   const isEditingExisting = isExistingLearnerClassSession(initialSession)
   const [creationMode, setCreationMode] = useState<'generated' | 'existing'>(
     isEditingExisting ? 'existing' : 'generated',
   )
-  const [className, setClassName] = useState(initialSession?.name ?? '')
-  const [selectedLandscapeId, setSelectedLandscapeId] = useState(() => {
+  const initialRootLandscapeId = initialSession?.rootLandscapeId
+    ?? (initialSession ? initialSession.landscapeId : '')
+  const [selectedRootLandscapeId, setSelectedRootLandscapeId] = useState(initialRootLandscapeId)
+  const [curriculumQualityFilter, setCurriculumQualityFilter] = useState<CurriculumQualityFilter>('green')
+  const {
+    landscapeEntries: loadedCourseLandscapes,
+    loadingLandscapes: loadingCourseLandscapes,
+    landscapeError: courseLandscapeError,
+  } = useLandscapes(
+    selectedRootLandscapeId,
+    language,
+    { enabled: creationMode === 'generated' && !!selectedRootLandscapeId },
+  )
+  const {
+    landscapeEntries: availableRootLandscapes,
+    loadingLandscapes: loadingAvailableRootLandscapes,
+  } = useLandscapes(
+    undefined,
+    language,
+    { enabled: creationMode === 'existing' },
+  )
+  const runtimeCatalogState = useRuntimeCurriculumCatalog()
+  const offeringSource = useMemo(
+    () => resolveCurriculumOfferingSource(runtimeCatalogState),
+    [runtimeCatalogState],
+  )
+  const courseLandscapes = useMemo(() => {
+    if (loadedCourseLandscapes.length > 0) return loadedCourseLandscapes
     if (
-      initialSession?.landscapeId
-      && subjectLandscapes.some((entry) => entry.meta.landscapeId === initialSession.landscapeId)
-    ) {
-      return initialSession.landscapeId
-    }
-    const saved = localStorage.getItem('skillpilot_last_landscape')
-    return saved && subjectLandscapes.some((entry) => entry.meta.landscapeId === saved)
-      ? saved
-      : (subjectLandscapes[0]?.meta.landscapeId ?? landscapes[0]?.meta.landscapeId ?? '')
-  })
+      selectedRootLandscapeId
+      && landscapes.some((entry) => entry.meta.landscapeId === selectedRootLandscapeId)
+    ) return landscapes
+    return []
+  }, [landscapes, loadedCourseLandscapes, selectedRootLandscapeId])
+  const rootLandscape = useMemo(
+    () => selectedRootLandscapeId
+      ? courseLandscapes.find((entry) => entry.meta.landscapeId === selectedRootLandscapeId) ?? null
+      : null,
+    [courseLandscapes, selectedRootLandscapeId],
+  )
+  const directSubjectLandscapes = useMemo(
+    () => getDirectChildLandscapeEntries(rootLandscape, courseLandscapes),
+    [courseLandscapes, rootLandscape],
+  )
+  const subjectLandscapes = useMemo(
+    () => directSubjectLandscapes.length > 0
+      ? directSubjectLandscapes
+      : rootLandscape ? [rootLandscape] : [],
+    [directSubjectLandscapes, rootLandscape],
+  )
+  const hasSeparateSubjectSelection = directSubjectLandscapes.length > 0
+  const [className, setClassName] = useState(initialSession?.name ?? '')
+  const [selectedLandscapeId, setSelectedLandscapeId] = useState(initialSession?.landscapeId ?? '')
   const effectiveRootFilters = useMemo(() => rootLandscape?.meta.filters ?? [], [rootLandscape])
   const [selectedRootFilter, setSelectedRootFilter] = useState(() => (
-    (rootLandscapeId ? initialSession?.personalConfig?.[rootLandscapeId]?.filterId : undefined)
-      ?? getDisplayFiltersForSelection(rootLandscape?.meta.filters ?? [], localizedLanguage)[0]?.id
+    (initialRootLandscapeId ? initialSession?.personalConfig?.[initialRootLandscapeId]?.filterId : undefined)
       ?? 'ALL'
   ))
   const [curriculumConfig, setCurriculumConfig] = useState<TrainerClassCurriculumConfig>(() =>
     synchronizePersonalCurriculumStageScope(initialSession?.personalConfig ?? {}, {
-      rootLandscapeId,
+      rootLandscapeId: initialRootLandscapeId || undefined,
       landscapeId: initialSession?.landscapeId,
     }).config
   )
   const [selectedDurationModel, setSelectedDurationModel] = useState(() => (
     initialSession?.personalConfig?.[initialSession.landscapeId]?.durationModel
-      ?? (rootLandscapeId ? initialSession?.personalConfig?.[rootLandscapeId]?.durationModel : undefined)
+      ?? (initialRootLandscapeId ? initialSession?.personalConfig?.[initialRootLandscapeId]?.durationModel : undefined)
       ?? ''
   ))
   const [selectedSubjectFilter, setSelectedSubjectFilter] = useState(() => (
@@ -106,12 +176,13 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   )
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const operationAbortRef = useRef<AbortController | null>(null)
 
   const selectedLandscape = useMemo(
     () => subjectLandscapes.find((entry) => entry.meta.landscapeId === selectedLandscapeId)
-      ?? landscapes.find((entry) => entry.meta.landscapeId === selectedLandscapeId)
+      ?? courseLandscapes.find((entry) => entry.meta.landscapeId === selectedLandscapeId)
       ?? null,
-    [landscapes, selectedLandscapeId, subjectLandscapes],
+    [courseLandscapes, selectedLandscapeId, subjectLandscapes],
   )
   const selectedLandscapeFilters = useMemo(
     () => getDisplayCourseProfileFilters(selectedLandscape?.meta.filters, localizedLanguage),
@@ -121,11 +192,27 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     () => getDisplayFiltersForSelection(effectiveRootFilters, localizedLanguage),
     [effectiveRootFilters, localizedLanguage],
   )
+  const packageRootLandscape = runtimeCatalogState.mode === 'package'
+    ? runtimeCatalogState.catalog.landscapes.find(
+      (entry) => entry.landscapeId === selectedRootLandscapeId,
+    )
+    : undefined
+  const isGymnasiumCurriculum = Boolean(
+    isRepositoryGymnasiumFramework(rootLandscape?.meta.frameworkId)
+    || packageRootLandscape?.schoolForm?.trim().toLocaleLowerCase('de-DE') === 'gymnasium',
+  )
+  const hasGymnasiumStageSupport = isGymnasiumCurriculum && (
+    runtimeCatalogState.mode !== 'package'
+    || runtimeCatalogState.catalog.offerings.some((offering) => (
+      subjectLandscapes.some((entry) => entry.meta.landscapeId === offering.landscapeId)
+      && typeof offering.scope.stage === 'string'
+    ))
+  )
   const stageSelection = getGlobalStageScopeSelection(curriculumConfig, {
-    rootLandscapeId,
+    rootLandscapeId: selectedRootLandscapeId || undefined,
   })
   const shouldRestrictSubjectsToOfferedContent =
-    Boolean(rootLandscape)
+    hasGymnasiumStageSupport
     && (stageSelection.sek1Selected || stageSelection.sek2Selected)
     && (
       offeringSource.mode === 'catalog'
@@ -152,10 +239,11 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     [localizedLanguage],
   )
   const offeredDurationModels = useMemo(
-    () => (stageSelection.sek1Selected || stageSelection.sek2Selected)
+    () => hasGymnasiumStageSupport && (stageSelection.sek1Selected || stageSelection.sek2Selected)
       ? getOfferedGymnasiumDurationModels(selectedLandscapeId, selectedRootFilter, offeringSource)
       : [],
     [
+      hasGymnasiumStageSupport,
       offeringSource,
       selectedLandscapeId,
       selectedRootFilter,
@@ -169,47 +257,55 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   )
   const normalizedSelectedDurationModel = normalizeOfferedDurationModel(selectedDurationModel, offeredDurationModels)
   const showCourseProfileControls =
-    (!stageSelection.sek1Selected || stageSelection.sek2Selected)
-    && selectedLandscapeFilters.length > 0
+    selectedLandscapeFilters.length > 0
+    && (
+      !hasGymnasiumStageSupport
+      || !stageSelection.sek1Selected
+      || stageSelection.sek2Selected
+    )
   const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
   const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 
+  useEffect(() => () => {
+    operationAbortRef.current?.abort()
+    operationAbortRef.current = null
+  }, [])
+
   useEffect(() => {
+    if (!rootLandscape) return
     if (!displayRootFilters.some((filter) => filter.id === selectedRootFilter)) {
       setSelectedRootFilter(displayRootFilters[0]?.id ?? 'ALL')
     }
-  }, [displayRootFilters, selectedRootFilter])
+  }, [displayRootFilters, rootLandscape, selectedRootFilter])
 
   useEffect(() => {
+    if (loadingCourseLandscapes || !rootLandscape) return
     const defaultFilterId = selectedLandscapeFilters[0]?.id ?? 'ALL'
     if (!selectedLandscapeFilters.some((filter) => filter.id === selectedSubjectFilter)) {
       setSelectedSubjectFilter(defaultFilterId)
     }
-  }, [selectedLandscapeFilters, selectedSubjectFilter])
+  }, [loadingCourseLandscapes, rootLandscape, selectedLandscapeFilters, selectedSubjectFilter])
 
   useEffect(() => {
     if (selectableSubjectLandscapes.length === 0) return
     if (!selectableSubjectLandscapes.some((entry) => entry.meta.landscapeId === selectedLandscapeId)) {
       const nextLandscapeId = selectableSubjectLandscapes[0]?.meta.landscapeId ?? ''
       setSelectedLandscapeId(nextLandscapeId)
-      if (nextLandscapeId) {
-        localStorage.setItem('skillpilot_last_landscape', nextLandscapeId)
-      }
     }
   }, [selectableSubjectLandscapes, selectedLandscapeId])
 
   useEffect(() => {
-    if (offeringSource.mode === 'unavailable') return
+    if (!hasGymnasiumStageSupport || offeringSource.mode === 'unavailable') return
     const normalized = normalizeOfferedDurationModel(selectedDurationModel, offeredDurationModels)
     if (normalized !== selectedDurationModel) {
       setSelectedDurationModel(normalized ?? '')
     }
-  }, [offeredDurationModels, offeringSource.mode, selectedDurationModel])
+  }, [hasGymnasiumStageSupport, offeredDurationModels, offeringSource.mode, selectedDurationModel])
 
   const toggleGlobalStageScope = (stageScopeId: string) => {
     setCurriculumConfig((prev) => {
       const currentSelection = getGlobalStageScopeSelection(prev, {
-        rootLandscapeId,
+        rootLandscapeId: selectedRootLandscapeId || undefined,
       })
       const isCurrentlySelected = stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
         ? currentSelection.sek1Selected
@@ -235,24 +331,70 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
             ? nextSelected
             : currentSelection.sek2Selected,
         },
-        { rootLandscapeId },
+        { rootLandscapeId: selectedRootLandscapeId || undefined },
       )
     })
   }
 
-  const handleCreateExisting = async () => {
+  const handleRootCurriculumSelect = (landscapeId: string) => {
+    if (isEditing) return
+    setSelectedRootLandscapeId(landscapeId)
+    setSelectedLandscapeId('')
+    setSelectedRootFilter('ALL')
+    setSelectedSubjectFilter('GK+LK')
+    setSelectedDurationModel('')
+    setCurriculumConfig({})
+    setError(null)
+  }
+
+  const handleCreateExisting = async (signal: AbortSignal) => {
     try {
-      const profile = await fetchExistingLearnerProfile(existingSkillpilotId)
+      const profile = await fetchExistingLearnerProfile(existingSkillpilotId, signal)
+      const personalConfig = parseExistingLearnerPersonalConfig(profile.personalCurriculum)
+      const resolvedRootLandscapeId = resolveExistingLearnerRootLandscapeId({
+        profile,
+        personalConfig,
+        existingRootLandscapeId: isEditingExisting ? initialSession?.rootLandscapeId : undefined,
+        fallbackRootLandscapeId: rootLandscapeId,
+        availableRootLandscapeIds: [
+          ...availableRootLandscapes.map((entry) => (
+            entry.meta.landscapeId
+            || (entry.meta as typeof entry.meta & { curriculumId?: string }).curriculumId
+            || ''
+          )).filter(Boolean),
+          ...landscapes
+            .filter((entry) => entry.meta.landscapeId === rootLandscapeId)
+            .map((entry) => entry.meta.landscapeId),
+        ],
+      })
+      const configuredSubjectIds = getExistingLearnerSubjectIds(
+        personalConfig,
+        [],
+        resolvedRootLandscapeId,
+      )
+      const providedLandscapeIds = new Set(
+        landscapes.map((entry) => entry.meta.landscapeId),
+      )
+      const providedLandscapesAreComplete = landscapeEntriesBelongToRoot(
+        landscapes,
+        resolvedRootLandscapeId,
+      ) && configuredSubjectIds.every((landscapeId) => providedLandscapeIds.has(landscapeId))
+      const existingLearnerLandscapes = providedLandscapesAreComplete
+        ? landscapes
+        : await fetchLandscapeClosureEntries(resolvedRootLandscapeId, language, signal)
+      if (signal.aborted) return
       const session = buildExistingLearnerClassSession({
         className,
         learnerAlias,
         profile,
-        landscapes,
-        rootLandscapeId,
+        landscapes: existingLearnerLandscapes,
+        rootLandscapeId: resolvedRootLandscapeId,
         existing: isEditingExisting ? initialSession : undefined,
       })
+      if (signal.aborted) return
       if (!onSave(session)) throw new Error('local-save-failed')
     } catch (nextError) {
+      if (signal.aborted || (nextError instanceof Error && nextError.name === 'AbortError')) return
       const message = nextError instanceof Error ? nextError.message : ''
       if (message === 'learner-not-found') setError(existingCopy.learnerNotFound)
       else if (message === 'missing-personalized-subjects') setError(existingCopy.noSubjects)
@@ -268,16 +410,26 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   const handleCreate = async (event: React.FormEvent) => {
     event.preventDefault()
     if (creationMode === 'existing') {
+      operationAbortRef.current?.abort()
+      const controller = new AbortController()
+      operationAbortRef.current = controller
       setIsGenerating(true)
       setError(null)
       try {
-        await handleCreateExisting()
+        await handleCreateExisting(controller.signal)
       } finally {
-        setIsGenerating(false)
+        if (operationAbortRef.current === controller) {
+          operationAbortRef.current = null
+          if (!controller.signal.aborted) setIsGenerating(false)
+        }
       }
       return
     }
-    if (rootLandscape && !stageSelection.sek1Selected && !stageSelection.sek2Selected) {
+    if (!selectedRootLandscapeId || loadingCourseLandscapes || courseLandscapeError || !rootLandscape) {
+      setError(copy.curriculumUnavailable)
+      return
+    }
+    if (hasGymnasiumStageSupport && !stageSelection.sek1Selected && !stageSelection.sek2Selected) {
       setError(copy.selectStageFirst)
       return
     }
@@ -286,6 +438,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
       return
     }
 
+    operationAbortRef.current?.abort()
+    const controller = new AbortController()
+    operationAbortRef.current = controller
     setIsGenerating(true)
     setError(null)
     try {
@@ -298,20 +453,31 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
       if (!initialSession) {
         for (const name of names) {
           try {
-            const res = await fetch(toApi('/api/ui/learners'), { method: 'POST' })
+            const res = await fetch(toApi('/api/ui/learners'), {
+              method: 'POST',
+              signal: controller.signal,
+            })
             if (!res.ok) throw new Error(copy.createLearnerFailedStatus(res.status))
             const data = await res.json()
             const id = data.state?.skillpilotId || data.skillpilotId || data.id
             if (!id) throw new Error(copy.missingSkillpilotId)
             students.push({ name, id: String(id) })
           } catch (err) {
+            if (controller.signal.aborted) throw err
             console.error('Failed to create learner for', name, err)
             throw err instanceof Error ? err : new Error(copy.createLearnerFailedGeneric)
           }
         }
       }
 
-      const nextCurriculumConfig: TrainerClassCurriculumConfig = { ...curriculumConfig }
+      const allowedConfigIds = new Set([
+        ...courseLandscapes.map((entry) => entry.meta.landscapeId),
+        GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1,
+        GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2,
+      ])
+      const nextCurriculumConfig: TrainerClassCurriculumConfig = Object.fromEntries(
+        Object.entries(curriculumConfig).filter(([configId]) => allowedConfigIds.has(configId)),
+      )
       subjectLandscapes.forEach((entry) => {
         if (
           entry.meta.landscapeId !== selectedLandscapeId
@@ -339,45 +505,68 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         delete nextSubjectConfig.durationModel
       }
 
-      const personalConfig: TrainerClassCurriculumConfig = synchronizePersonalCurriculumStageScope({
-        ...nextCurriculumConfig,
-        ...(rootLandscape
-          ? {
-              [rootLandscape.meta.landscapeId]: {
-                ...nextCurriculumConfig[rootLandscape.meta.landscapeId],
-                selected: true,
-                filterId: normalizeWildcardFilter(selectedRootFilter),
-              },
-            }
+      const nextRootConfig = {
+        ...nextCurriculumConfig[selectedRootLandscapeId],
+        selected: true,
+        ...(hasSeparateSubjectSelection && effectiveRootFilters.length > 0
+          ? { filterId: normalizeWildcardFilter(selectedRootFilter) }
           : {}),
-        [selectedLandscapeId]: nextSubjectConfig,
-      }, { rootLandscapeId }).config
+      }
+      const personalConfigBase: TrainerClassCurriculumConfig = {
+        ...nextCurriculumConfig,
+        [selectedRootLandscapeId]: nextRootConfig,
+        [selectedLandscapeId]: selectedLandscapeId === selectedRootLandscapeId
+          ? { ...nextRootConfig, ...nextSubjectConfig, selected: true }
+          : nextSubjectConfig,
+      }
+      const personalConfig: TrainerClassCurriculumConfig = hasGymnasiumStageSupport
+        ? synchronizePersonalCurriculumStageScope(
+          personalConfigBase,
+          { rootLandscapeId: selectedRootLandscapeId },
+        ).config
+        : personalConfigBase
+      const storedRootFilter = hasSeparateSubjectSelection && effectiveRootFilters.length > 0
+        ? normalizeWildcardFilter(selectedRootFilter)
+        : 'ALL'
+      const storedSubjectFilter = showCourseProfileControls
+        ? normalizeWildcardFilter(selectedSubjectFilter)
+        : 'ALL'
+      const activeFilter = !isWildcardFilter(storedRootFilter)
+        ? storedRootFilter
+        : !isWildcardFilter(storedSubjectFilter)
+          ? storedSubjectFilter
+          : 'all'
 
       const newClass: ClassSession = {
         ...initialSession,
         id: initialSession?.id ?? crypto.randomUUID(),
         name: className,
         landscapeId: selectedLandscapeId,
-        activeFilter: rootLandscape
-          ? normalizeWildcardFilter(selectedRootFilter).toLowerCase() === 'all'
-            ? 'all'
-            : normalizeWildcardFilter(selectedRootFilter)
-          : showCourseProfileControls && normalizeWildcardFilter(selectedSubjectFilter).toLowerCase() !== 'all'
-            ? normalizeWildcardFilter(selectedSubjectFilter)
-            : 'all',
+        activeFilter,
         personalConfig,
-        rootLandscapeId: rootLandscape?.meta.landscapeId ?? initialSession?.rootLandscapeId,
+        rootLandscapeId: selectedRootLandscapeId,
         students,
         currentGoalId: initialSession?.landscapeId === selectedLandscapeId
           ? initialSession.currentGoalId
           : undefined,
       }
+      if (controller.signal.aborted) return
       onSave(newClass)
     } catch (err) {
+      if (controller.signal.aborted || (err instanceof Error && err.name === 'AbortError')) return
       setError((err as Error).message)
     } finally {
-      setIsGenerating(false)
+      if (operationAbortRef.current === controller) {
+        operationAbortRef.current = null
+        if (!controller.signal.aborted) setIsGenerating(false)
+      }
     }
+  }
+
+  const handleCancel = () => {
+    operationAbortRef.current?.abort()
+    operationAbortRef.current = null
+    onCancel()
   }
 
   return (
@@ -406,7 +595,10 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
                       name="trainer-class-creation-mode"
                       value={mode}
                       checked={creationMode === mode}
-                      onChange={() => setCreationMode(mode)}
+                      onChange={() => {
+                        setCreationMode(mode)
+                        setError(null)
+                      }}
                       className="mt-1 h-4 w-4 text-sky-600"
                     />
                     <span>
@@ -419,6 +611,41 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
             </div>
           </fieldset>
         )}
+
+        {creationMode === 'generated' && (
+          <section className="rounded-xl border border-sky-200 bg-sky-50/60 p-5 dark:border-sky-900/60 dark:bg-sky-950/20">
+            <label
+              htmlFor="trainer-class-root-curriculum"
+              className="block font-semibold text-text-primary"
+            >
+              {copy.curriculumTitle}
+            </label>
+            <p className="mb-4 mt-1 text-xs leading-5 text-text-secondary">
+              {isEditing ? copy.curriculumLockedHint : copy.curriculumHint}
+            </p>
+            <CurriculumDropdown
+              selectId="trainer-class-root-curriculum"
+              currentLandscapeId={selectedRootLandscapeId}
+              onSelect={handleRootCurriculumSelect}
+              qualityFilter={curriculumQualityFilter}
+              onQualityFilterChange={setCurriculumQualityFilter}
+              disabled={isEditing}
+              showCompatibilityViews={false}
+              showQualityFilter
+            />
+            {loadingCourseLandscapes && (
+              <p className="mt-3 text-xs text-text-secondary" role="status">
+                {copy.curriculumLoading}
+              </p>
+            )}
+            {selectedRootLandscapeId && courseLandscapeError && (
+              <p className="mt-3 text-xs font-semibold text-rose-600 dark:text-rose-300" role="alert">
+                {copy.curriculumUnavailable}
+              </p>
+            )}
+          </section>
+        )}
+
         <div>
           <label htmlFor="trainer-class-name" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.classNameLabel}</label>
           <input
@@ -475,8 +702,11 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         )}
 
         {creationMode === 'generated' && rootLandscape && (
+          (hasSeparateSubjectSelection && effectiveRootFilters.length > 0)
+          || hasGymnasiumStageSupport
+        ) && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {effectiveRootFilters.length > 0 && (
+            {hasSeparateSubjectSelection && effectiveRootFilters.length > 0 && (
               <div>
                 <label htmlFor="trainer-class-root-filter" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.rootFilterLabel}</label>
                 <select
@@ -494,7 +724,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               </div>
             )}
 
-            <div>
+            {hasGymnasiumStageSupport && <div>
               <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.stageLabel}</label>
               <div className="flex flex-col gap-2 rounded border border-border-color bg-input-bg/40 p-3">
                 {stageScopeOptions.map((option) => {
@@ -514,21 +744,18 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
                   )
                 })}
               </div>
-            </div>
+            </div>}
 
           </div>
         )}
 
-        {creationMode === 'generated' && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
+        {creationMode === 'generated' && rootLandscape && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {hasSeparateSubjectSelection && <div>
             <label htmlFor="trainer-class-landscape" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.landscapeLabel}</label>
             <select
               id="trainer-class-landscape"
               value={selectedLandscapeId}
-              onChange={(e) => {
-                setSelectedLandscapeId(e.target.value)
-                localStorage.setItem('skillpilot_last_landscape', e.target.value)
-              }}
+              onChange={(e) => setSelectedLandscapeId(e.target.value)}
               className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary transition-colors"
             >
               {selectableSubjectLandscapes.map((entry) => (
@@ -537,9 +764,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
                 </option>
               ))}
             </select>
-          </div>
+          </div>}
 
-          <div>
+          {(showCourseProfileControls || hasGymnasiumStageSupport) && <div>
             <label htmlFor="trainer-class-level-filter" className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.levelFilterLabel}</label>
             {showCourseProfileControls ? (
               <select
@@ -554,12 +781,12 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
                   </option>
                 ))}
               </select>
-            ) : (
+            ) : hasGymnasiumStageSupport ? (
               <div id="trainer-class-level-filter" className="w-full bg-input-bg border border-border-color rounded p-2 text-text-secondary">
                 {stageSelection.sek2Selected ? copy.noAdditionalCourseFilter : copy.courseFilterOnlySek2}
               </div>
-            )}
-          </div>
+            ) : null}
+          </div>}
 
           {durationModelOptions.length > 0 && (
             <div>
@@ -609,12 +836,24 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         {error && <div className="text-sm text-amber-300">{copy.errorPrefix}: {error}</div>}
 
         <div className="flex justify-end gap-3 pt-4 border-t border-border-color">
-          <button type="button" onClick={onCancel} className="px-4 py-2 text-text-secondary hover:text-text-primary transition-colors">
+          <button type="button" onClick={handleCancel} className="px-4 py-2 text-text-secondary hover:text-text-primary transition-colors">
             {copy.cancel}
           </button>
           <button
             type="submit"
-            disabled={isGenerating}
+            disabled={
+              isGenerating
+              || (creationMode === 'generated' && (
+                !selectedRootLandscapeId
+                || loadingCourseLandscapes
+                || !!courseLandscapeError
+                || !rootLandscape
+              ))
+              || (creationMode === 'existing'
+                && loadingAvailableRootLandscapes
+                && !initialSession?.rootLandscapeId
+                && !rootLandscapeId)
+            }
             className="px-6 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded font-medium flex items-center gap-2 disabled:opacity-60"
           >
             {isGenerating && <span className="animate-spin">⟳</span>}

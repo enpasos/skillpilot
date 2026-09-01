@@ -4,5 +4,6 @@ public record PreferencesRequest(
                 String learningStrategy,
                 Boolean autoPilot,
                 Boolean strictMode,
-                Boolean showGoalVisualizationsInChat) {
+                Boolean showGoalVisualizationsInChat,
+                Boolean followLearningPlans) {
 }

@@ -1,0 +1,107 @@
+databaseChangeLog:
+  - changeSet:
+      id: 029-add-learner-learning-plans
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - not:
+            - columnExists:
+                tableName: learner
+                columnName: follow_learning_plans
+        - not:
+            - tableExists:
+                tableName: learner_learning_plan
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: follow_learning_plans
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+        # This is learner-owned state. It deliberately contains no teacher,
+        # class, invitation, or trainer reference.
+        - createTable:
+            tableName: learner_learning_plan
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_learner_learning_plan
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: landscape_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: curriculum_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: scope_fingerprint
+                  type: VARCHAR(71)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: revision
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: plan_label
+                  type: VARCHAR(160)
+              - column:
+                  name: blocks_json
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: captured_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: learner_learning_plan
+            baseColumnNames: learner_id
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            constraintName: fk_learner_learning_plan_learner
+            onDelete: CASCADE
+        - addUniqueConstraint:
+            tableName: learner_learning_plan
+            columnNames: learner_id, landscape_id
+            constraintName: uq_learner_learning_plan_landscape
+        - createIndex:
+            tableName: learner_learning_plan
+            indexName: idx_learner_learning_plan_learner
+            columns:
+              - column:
+                  name: learner_id
+              - column:
+                  name: landscape_id
+              - column:
+                  name: id

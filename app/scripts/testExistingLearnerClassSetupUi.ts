@@ -42,8 +42,36 @@ try {
         contentType: 'application/json',
         body: JSON.stringify({
           skillpilotId: learnerId,
+          selectedCurriculum: 'gymnasium-root',
           personalCurriculum: JSON.stringify({ personalCurriculum }),
         }),
+      })
+      return
+    }
+    if (pathname === '/api/ui/landscapes/gymnasium-root/closure') {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([
+          {
+            landscapeId: 'gymnasium-root',
+            title: 'Gymnasium',
+            subject: 'Gymnasium',
+            goals: [],
+          },
+          {
+            landscapeId: 'math',
+            title: 'Mathematik',
+            subject: 'Mathematik',
+            goals: [],
+          },
+          {
+            landscapeId: 'physics',
+            title: 'Physik',
+            subject: 'Physik',
+            goals: [],
+          },
+        ]),
       })
       return
     }
@@ -54,6 +82,11 @@ try {
   await page.getByRole('heading', { name: 'Neue Klasse / Kurs anlegen' }).waitFor()
   await page.getByText('Bestehende SkillPilot-ID lokal hinzufügen', { exact: true }).click()
 
+  assert.equal(
+    await page.getByLabel('Kurs-Curriculum').count(),
+    0,
+    'an existing SkillPilot ID derives its root from the learner profile without a teacher-side picker',
+  )
   assert.equal(await page.getByText('So erkennt dich die lernende Person').count(), 0)
   assert.equal(await page.getByText('Bezeichnung in der Einladung').count(), 0)
   assert.equal(await page.getByText('Einladung').count(), 0)
@@ -72,6 +105,7 @@ try {
   const saved = JSON.parse(savedText)
   assert.equal(saved.source, 'existing-learner')
   assert.equal(saved.landscapeId, 'math')
+  assert.equal(saved.rootLandscapeId, 'gymnasium-root')
   assert.deepEqual(saved.personalConfig, personalCurriculum)
   assert.deepEqual(saved.students, [{
     id: learnerId,
@@ -82,6 +116,11 @@ try {
     requests.filter((request) => request.pathname === `/api/ui/learners/${learnerId}`).length,
     1,
     'the learner profile is read exactly once during creation',
+  )
+  assert.equal(
+    requests.filter((request) => request.pathname === '/api/ui/landscapes/gymnasium-root/closure').length,
+    1,
+    'the resolved learner root closure is loaded before the local class is saved',
   )
   assert.equal(
     requests.some((request) => request.pathname.includes('teacher-supervision')),
@@ -95,6 +134,61 @@ try {
   )
 
   await context.close()
+
+  const cancellationContext = await browser.newContext({ locale: 'de-DE' })
+  await cancellationContext.addInitScript(() => localStorage.setItem('skillpilot_lang', 'de'))
+  const cancellationPage = await cancellationContext.newPage()
+  let signalClosureStarted: (() => void) | undefined
+  let releaseClosure: (() => void) | undefined
+  const closureStarted = new Promise<void>((resolve) => { signalClosureStarted = resolve })
+  const closureHold = new Promise<void>((resolve) => { releaseClosure = resolve })
+  await cancellationPage.route('**/api/ui/**', async (route) => {
+    const pathname = new URL(route.request().url()).pathname
+    if (pathname === `/api/ui/learners/${learnerId}`) {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          skillpilotId: learnerId,
+          selectedCurriculum: 'gymnasium-root',
+          personalCurriculum: JSON.stringify({ personalCurriculum }),
+        }),
+      })
+      return
+    }
+    if (pathname === '/api/ui/landscapes/gymnasium-root/closure') {
+      signalClosureStarted?.()
+      await closureHold
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([
+          { landscapeId: 'gymnasium-root', title: 'Gymnasium', subject: 'Gymnasium', goals: [] },
+          { landscapeId: 'math', title: 'Mathematik', subject: 'Mathematik', goals: [] },
+          { landscapeId: 'physics', title: 'Physik', subject: 'Physik', goals: [] },
+        ]),
+      }).catch(() => undefined)
+      return
+    }
+    await route.fulfill({ status: 404, body: '' })
+  })
+  await cancellationPage.goto(`${server.baseUrl}/scripts/fixtures/existingLearnerClassSetupUi.html`)
+  await cancellationPage.getByText('Bestehende SkillPilot-ID lokal hinzufügen', { exact: true }).click()
+  await cancellationPage.getByLabel('Bezeichnung', { exact: true }).fill('Nicht speichern')
+  await cancellationPage.getByLabel('Name in deiner Ansicht').fill('Alex')
+  await cancellationPage.getByLabel('Vorhandene SkillPilot-ID').fill(learnerId)
+  await cancellationPage.getByRole('button', { name: 'Klasse lokal anlegen' }).click()
+  await closureStarted
+  await cancellationPage.getByRole('button', { name: 'Abbrechen' }).click()
+  await cancellationPage.getByTestId('cancelled-existing-learner-session').waitFor()
+  releaseClosure?.()
+  await cancellationPage.waitForTimeout(150)
+  assert.equal(
+    await cancellationPage.getByTestId('saved-existing-learner-session').count(),
+    0,
+    'cancelling a slow profile or root-closure load prevents a late local class save',
+  )
+  await cancellationContext.close()
 } finally {
   try {
     await browser?.close()

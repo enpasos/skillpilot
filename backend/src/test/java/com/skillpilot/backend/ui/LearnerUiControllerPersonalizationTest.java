@@ -77,14 +77,15 @@ class LearnerUiControllerPersonalizationTest {
     void preferencesForwardTheOptionalChatVisualizationSetting() {
         controller.updatePreferences(
                 LEARNER_ID,
-                new PreferencesRequest(null, null, null, false));
+                new PreferencesRequest(null, null, null, false, true));
 
         verify(learnerService).setPreferences(
                 LEARNER_ID,
                 null,
                 null,
                 null,
-                false);
+                false,
+                true);
         verifyNoMoreInteractions(learnerService);
     }
 

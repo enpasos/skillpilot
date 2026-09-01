@@ -1,5 +1,5 @@
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
-import { mapLegacyGymnasiumLandscapeIdToCanonical, normalizeTrainerLandscapeId } from './trainerLandscapeContext'
+import { mapLegacyGymnasiumLandscapeIdToCanonical } from './trainerLandscapeContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
@@ -10,7 +10,12 @@ export const getStoredLandscapeIdForRole = (role: Role | null | undefined) => {
   if (typeof window === 'undefined') return ''
   try {
     if (role === 'trainer') {
-      return normalizeTrainerLandscapeId(window.localStorage.getItem('skillpilot_trainer_landscape'))
+      // Trainer scope belongs to the opened ClassSession. Keeping a separate
+      // browser-global curriculum would silently put one course in front of
+      // all others again, so retire the legacy key even on direct /trainer
+      // entry (where SessionSetup is not mounted).
+      window.localStorage.removeItem('skillpilot_trainer_landscape')
+      return ''
     }
     if (role === 'learner') {
       const stored = window.localStorage.getItem('skillpilot_learner_landscape') || ''
