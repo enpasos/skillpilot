@@ -23,6 +23,7 @@ import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdatePersonalCurriculumRequest;
 import com.skillpilot.backend.api.LearnerDataDTO;
+import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
 import com.skillpilot.backend.api.DeleteLearnerRequest;
 import com.skillpilot.backend.api.LearnerRetentionResponse;
 import com.skillpilot.backend.domain.Learner;
@@ -79,6 +80,26 @@ public class LearnerUiController {
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getLearnerState(skillpilotId);
+    }
+
+    @GetMapping("/{skillpilotId}/planning-scope")
+    @Operation(
+            summary = "Get a read-only atomic planning scope snapshot",
+            extensions = @Extension(properties = @ExtensionProperty(
+                    name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public ResponseEntity<LearnerPlanningScopeResponse> getPlanningScope(
+            @PathVariable String skillpilotId,
+            @RequestParam String landscapeId,
+            @RequestParam(required = false) String scopeGoalId,
+            HttpServletResponse response) {
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(learnerService.getPlanningScope(
+                        skillpilotId,
+                        landscapeId,
+                        scopeGoalId));
     }
 
     @PostMapping("/{skillpilotId}/resume")

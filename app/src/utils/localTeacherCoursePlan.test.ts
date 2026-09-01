@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import {
   TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY,
+  type LearnerCoursePlanBaseline,
   type TeacherCoursePlan,
   type TeacherCoursePlanBlock,
 } from '../coursePlanTypes'
@@ -160,16 +161,148 @@ assert.deepEqual(overlapAssignments.assignments, [
   {
     blockId: 'early',
     goalId: 'early-root',
+    scopeAtomicGoalIds: ['g1', 'g2'],
     atomicGoalIds: ['g1', 'g2'],
     duplicateAtomicGoalIds: [],
   },
   {
     blockId: 'late',
     goalId: 'late-root',
+    scopeAtomicGoalIds: ['g2', 'g3'],
     atomicGoalIds: ['g3'],
     duplicateAtomicGoalIds: ['g2'],
   },
 ])
+
+// A learner-derived baseline keeps all 259 target atoms visible for scope
+// reporting while scheduling only the 53 goals that were open when captured.
+const sekOneAtoms = Array.from({ length: 259 }, (_, index) => uiGoal(`sek1-g${index + 1}`))
+const sekOneScopeAtomicGoalIds = sekOneAtoms.map(({ id }) => id)
+const sekOneOpenAtomicGoalIds = sekOneScopeAtomicGoalIds.slice(206)
+const sekOneDoneCluster = uiGoal('sek1-done', sekOneScopeAtomicGoalIds.slice(0, 206))
+const sekOneOpenCluster = uiGoal('sek1-open', sekOneOpenAtomicGoalIds)
+const sekOneGoalIndex = goalMap(
+  uiGoal('sek1-root', [sekOneDoneCluster.id, sekOneOpenCluster.id]),
+  sekOneDoneCluster,
+  sekOneOpenCluster,
+  ...sekOneAtoms,
+)
+const sekOneBaseline: LearnerCoursePlanBaseline = {
+  source: 'learner-planning-scope-v1',
+  curriculumId: 'canonical-mathematics',
+  landscapeId: 'canonical-mathematics',
+  scopeGoalId: 'sek1-root',
+  focusGoalIds: ['sek1-root'],
+  scopeAtomicGoalIds: sekOneScopeAtomicGoalIds,
+  openAtomicGoalIds: sekOneOpenAtomicGoalIds,
+  totalAtomicGoalCount: 259,
+  masteredAtomicGoalCount: 206,
+  capturedAt: '2026-09-01T07:00:00.000Z',
+}
+const sekOnePlan = requirePlan(reviseTeacherCoursePlan(createPlan('sek1-baseline'), {
+  planningBaseline: sekOneBaseline,
+  blocks: [
+    {
+      id: 'sek1-done-block',
+      kind: 'learning',
+      goalId: sekOneDoneCluster.id,
+      startDate: '2026-09-01',
+      endDate: '2026-09-13',
+    },
+    {
+      id: 'sek1-open-block',
+      kind: 'learning',
+      goalId: sekOneOpenCluster.id,
+      startDate: '2026-09-01',
+      endDate: '2026-09-13',
+    },
+  ],
+  changedOn: '2026-09-01',
+  recordedAt: '2026-09-01T08:00:00.000Z',
+}))
+const sekOneEvaluation = evaluateTeacherCoursePlan(
+  sekOnePlan,
+  sekOneGoalIndex,
+  '2026-09-01',
+)
+assert(sekOneEvaluation.metrics)
+assert.equal(sekOneEvaluation.metrics.scopeAtomicGoalCount, 259)
+assert.equal(sekOneEvaluation.metrics.plannedGoalCount, 53)
+assert(Math.abs(sekOneEvaluation.metrics.expectedGoalEquivalent - (53 / 9)) < 1e-12)
+assert.equal(sekOneEvaluation.metrics.dueGoalIds.length, 6)
+assert.deepEqual(sekOneEvaluation.metrics.dueGoalIds, sekOneOpenAtomicGoalIds.slice(0, 6))
+assert.deepEqual(sekOneEvaluation.assignments, [
+  {
+    blockId: 'sek1-done-block',
+    goalId: sekOneDoneCluster.id,
+    scopeAtomicGoalIds: sekOneScopeAtomicGoalIds.slice(0, 206),
+    atomicGoalIds: [],
+    duplicateAtomicGoalIds: [],
+  },
+  {
+    blockId: 'sek1-open-block',
+    goalId: sekOneOpenCluster.id,
+    scopeAtomicGoalIds: sekOneOpenAtomicGoalIds,
+    atomicGoalIds: sekOneOpenAtomicGoalIds,
+    duplicateAtomicGoalIds: [],
+  },
+])
+
+// Rounding is cumulative across blocks: two partial 0.4 expectations produce
+// one due goal overall, never zero per block while the summary displays one.
+const cumulativeRoundingPlan = requirePlan(reviseTeacherCoursePlan(createPlan('rounding'), {
+  blocks: [
+    {
+      id: 'round-a',
+      kind: 'learning',
+      goalId: 'g1',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'round-b',
+      kind: 'learning',
+      goalId: 'g2',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+  ],
+  changedOn: '2026-09-07',
+  recordedAt: '2026-09-07T08:00:00.000Z',
+}))
+const cumulativeRounding = evaluateTeacherCoursePlan(
+  cumulativeRoundingPlan,
+  overlapIndex,
+  '2026-09-08',
+)
+assert(cumulativeRounding.metrics)
+assert(Math.abs(cumulativeRounding.metrics.expectedGoalEquivalent - 0.8) < 1e-12)
+assert.equal(cumulativeRounding.metrics.dueGoalIds.length, 1)
+assert.equal(
+  cumulativeRounding.blocks
+    .filter((metric) => metric.kind === 'learning')
+    .reduce((sum, metric) => sum + (metric.kind === 'learning' ? metric.dueGoalIds.length : 0), 0),
+  1,
+)
+
+// Baseline shape and referential integrity both fail closed.
+const malformedBaselinePlan = structuredClone(sekOnePlan)
+malformedBaselinePlan.planningBaseline!.totalAtomicGoalCount = 258
+assert.equal(normalizeTeacherCoursePlan(malformedBaselinePlan).plan, null)
+assert.equal(normalizeTeacherCoursePlan(malformedBaselinePlan).quality.status, 'invalid')
+
+const missingBaselineGoalPlan = structuredClone(sekOnePlan)
+missingBaselineGoalPlan.planningBaseline!.scopeAtomicGoalIds[0] = 'missing-baseline-goal'
+const missingBaselineGoalEvaluation = evaluateTeacherCoursePlan(
+  missingBaselineGoalPlan,
+  sekOneGoalIndex,
+  '2026-09-01',
+)
+assert.equal(missingBaselineGoalEvaluation.quality.status, 'invalid')
+assert.equal(missingBaselineGoalEvaluation.metrics, null)
+assert(
+  missingBaselineGoalEvaluation.quality.issues.some(({ code }) => code === 'CP-BASELINE-GOAL'),
+)
 
 // Revisions archive their complete prior plan state; undo is itself a new revision.
 const undoLearningBlock: TeacherCoursePlanBlock = {
@@ -186,16 +319,41 @@ const undoBufferBlock: TeacherCoursePlanBlock = {
   startDate: '2026-08-17',
   endDate: '2026-08-19',
 }
+const firstUndoBaseline: LearnerCoursePlanBaseline = {
+  source: 'learner-planning-scope-v1',
+  curriculumId: 'canonical-physics',
+  landscapeId: 'canonical-physics',
+  scopeGoalId: 'root',
+  focusGoalIds: ['root'],
+  scopeAtomicGoalIds: atoms.map(({ id }) => id),
+  openAtomicGoalIds: atoms.slice(2).map(({ id }) => id),
+  totalAtomicGoalCount: 10,
+  masteredAtomicGoalCount: 2,
+  capturedAt: '2026-08-02T09:00:00.000Z',
+}
+const secondUndoBaseline: LearnerCoursePlanBaseline = {
+  ...firstUndoBaseline,
+  openAtomicGoalIds: atoms.slice(3).map(({ id }) => id),
+  masteredAtomicGoalCount: 3,
+  capturedAt: '2026-08-03T09:00:00.000Z',
+}
 const initialUndoPlan = createPlan('undo-class')
 assert.equal(initialUndoPlan.revisionOrigin, 'initial')
 assert.equal(initialUndoPlan.revisionChangedAt, '2026-08-01T08:00:00.000Z')
 assert.deepEqual(initialUndoPlan.revisionHistory, [])
 const firstEdit = requirePlan(reviseTeacherCoursePlan(initialUndoPlan, {
   blocks: [undoLearningBlock],
+  planningBaseline: firstUndoBaseline,
   schoolYearLabel: '2027/28',
   changedOn: '2026-08-02',
   recordedAt: '2026-08-02T10:00:00.000Z',
 }))
+assert.equal(reviseTeacherCoursePlan(firstEdit, {
+  blocks: [undoBufferBlock],
+  planningBaseline: secondUndoBaseline,
+  changedOn: '2026-08-03',
+  recordedAt: '2026-08-03T09:30:00.000Z',
+}), null, 'an established learner-derived planning baseline is immutable')
 const secondEdit = requirePlan(reviseTeacherCoursePlan(firstEdit, {
   blocks: [undoBufferBlock],
   schoolYearLabel: '',
@@ -207,6 +365,7 @@ assert.deepEqual(secondEdit.revisionHistory.map(({ revision }) => revision), [1,
 assert.deepEqual(secondEdit.revisionHistory[1]?.blocks, [undoLearningBlock])
 assert.equal(secondEdit.revisionHistory[1]?.schoolYearLabel, '2027/28')
 assert.equal(secondEdit.revisionHistory[1]?.revisionChangedAt, '2026-08-02T10:00:00.000Z')
+assert.equal(secondEdit.revisionHistory[1]?.planningBaseline, undefined)
 
 const undone = requirePlan(undoLastTeacherCoursePlanRevision(secondEdit, {
   changedOn: '2026-08-04',
@@ -216,6 +375,7 @@ assert.equal(undone.revision, 4)
 assert.equal(undone.revisionOrigin, 'undo')
 assert.equal(undone.restoredFromRevision, 2)
 assert.equal(undone.schoolYearLabel, '2027/28')
+assert.deepEqual(undone.planningBaseline, firstUndoBaseline)
 assert.deepEqual(undone.blocks, [undoLearningBlock])
 assert.deepEqual(undone.revisionHistory.map(({ revision }) => revision), [1, 2, 3])
 assert.deepEqual(undone.revisionHistory[2]?.blocks, [undoBufferBlock])
@@ -230,6 +390,7 @@ assert.equal(undoOfUndo.revision, 5)
 assert.equal(undoOfUndo.revisionOrigin, 'undo')
 assert.equal(undoOfUndo.restoredFromRevision, 3)
 assert.equal(undoOfUndo.schoolYearLabel, undefined)
+assert.deepEqual(undoOfUndo.planningBaseline, firstUndoBaseline)
 assert.deepEqual(undoOfUndo.blocks, [undoBufferBlock])
 assert.deepEqual(undoOfUndo.revisionHistory.map(({ revision }) => revision), [1, 2, 3, 4])
 

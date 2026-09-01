@@ -63,6 +63,7 @@ import com.skillpilot.backend.api.ClientStateSnapshot;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
@@ -107,6 +108,7 @@ import org.springframework.core.io.Resource;
 public class LearnerService {
 
     private static final int MEMORY_PRACTICE_BATCH_LIMIT = 20;
+    private static final double PLANNING_SCOPE_MASTERY_THRESHOLD = 0.9;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
@@ -2549,6 +2551,142 @@ public class LearnerService {
                 curriculumId,
                 learner.getPersonalCurriculum());
         return resolveEffectiveProjectedFocusIds(learner, projection);
+    }
+
+    /**
+     * Returns a side-effect-free snapshot of the current learner-facing atomic
+     * targets for local course planning.
+     *
+     * <p>The requested landscape is mandatory so a multi-subject personal
+     * curriculum cannot accidentally expose another subject's active focus. An
+     * optional scope goal is interpreted only through the same validated
+     * learner-facing focus projection used by the cockpit. Without it, the
+     * learner's effective Level-3 focus is used without persisting a default.
+     * The response contains no teacher identity and creates no relationship or
+     * other server-side state.</p>
+     */
+    @Transactional(readOnly = true)
+    public LearnerPlanningScopeResponse getPlanningScope(
+            String skillpilotId,
+            String landscapeId,
+            String scopeGoalId) {
+        if (landscapeId == null || landscapeId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "landscapeId is required.");
+        }
+
+        Learner learner = getLearner(skillpilotId);
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The learner has no selected curriculum.");
+        }
+
+        String requestedLandscapeId = landscapeId.trim();
+        GoalProjection projection = getGoalProjection(
+                curriculumId,
+                learner.getPersonalCurriculum());
+        if (projection.targetGoalIds().isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The current personal curriculum has no learner-facing target projection.");
+        }
+        boolean landscapeIsActive = projection.targetGoalIds().stream()
+                .anyMatch(goalId -> requestedLandscapeId.equals(
+                        landscapeService.getLandscapeIdForGoal(goalId)));
+        if (!landscapeIsActive) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "landscapeId has no targets in the learner's personal curriculum.");
+        }
+
+        List<String> requestedFocusIds;
+        if (scopeGoalId != null && !scopeGoalId.isBlank()) {
+            requestedFocusIds = resolveProjectedTargetFocusIds(
+                    List.of(scopeGoalId.trim()),
+                    projection);
+            if (requestedFocusIds.isEmpty()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "scopeGoalId is not a learner-facing focus in the current projection.");
+            }
+        } else {
+            requestedFocusIds = resolveEffectiveProjectedFocusIds(learner, projection);
+            if (requestedFocusIds.isEmpty()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "The learner has no effective Level-3 focus.");
+            }
+        }
+
+        List<String> landscapeFocusIds = requestedFocusIds.stream()
+                .filter(focusGoalId -> focusBelongsToPlanningLandscape(
+                        focusGoalId,
+                        requestedLandscapeId,
+                        curriculumId))
+                .filter(focusGoalId -> projectedCountedAtomicTargetIds(
+                                List.of(focusGoalId),
+                                projection)
+                        .stream()
+                        .anyMatch(goalId -> requestedLandscapeId.equals(
+                                landscapeService.getLandscapeIdForGoal(goalId))))
+                .toList();
+        if (landscapeFocusIds.isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The requested focus has no atomic targets in landscapeId.");
+        }
+
+        List<String> scopeGoalIds = projectedCountedAtomicTargetIds(
+                        landscapeFocusIds,
+                        projection)
+                .stream()
+                .filter(goalId -> requestedLandscapeId.equals(
+                        landscapeService.getLandscapeIdForGoal(goalId)))
+                .toList();
+        if (scopeGoalIds.isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The requested landscape focus has no atomic target goals.");
+        }
+
+        Map<String, Double> mastery = getMastery(skillpilotId);
+        List<String> openAtomicGoalIds = scopeGoalIds.stream()
+                .filter(goalId -> mastery.getOrDefault(goalId, 0.0)
+                        < PLANNING_SCOPE_MASTERY_THRESHOLD)
+                .toList();
+        long totalAtomicGoalCount = scopeGoalIds.size();
+        long masteredAtomicGoalCount = totalAtomicGoalCount - openAtomicGoalIds.size();
+
+        return new LearnerPlanningScopeResponse(
+                curriculumId,
+                requestedLandscapeId,
+                landscapeFocusIds,
+                scopeGoalIds,
+                totalAtomicGoalCount,
+                masteredAtomicGoalCount,
+                openAtomicGoalIds,
+                Instant.now());
+    }
+
+    private boolean focusBelongsToPlanningLandscape(
+            String focusGoalId,
+            String requestedLandscapeId,
+            String curriculumId) {
+        if (focusGoalId == null || focusGoalId.isBlank()) {
+            return false;
+        }
+        if (isCompositionStructureGoalId(focusGoalId)) {
+            return compositionViewService != null
+                    && requestedLandscapeId.equals(
+                            compositionViewService.resolveStructureLandscapeId(focusGoalId));
+        }
+        String ownerLandscapeId = landscapeService.getLandscapeIdForGoal(focusGoalId);
+        return ownerLandscapeId == null
+                || ownerLandscapeId.equals(curriculumId)
+                || ownerLandscapeId.equals(requestedLandscapeId);
     }
 
     private List<String> resolveEffectiveProjectedFocusIds(
@@ -6618,6 +6756,39 @@ public class LearnerService {
                 .filter(expanded::contains)
                 .filter(goalId -> isAtomicGoal(projection.visibleGoals().get(goalId)))
                 .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    /**
+     * Uses the same explicit node-type rule as learner goal statistics while
+     * preserving the authored target order. In particular, structural leaves
+     * explicitly typed as clusters are not counted merely because their
+     * {@code contains} list is empty.
+     */
+    private Set<String> projectedCountedAtomicTargetIds(
+            List<String> focusIds,
+            GoalProjection projection) {
+        if (focusIds == null || focusIds.isEmpty() || projection == null) {
+            return Collections.emptySet();
+        }
+        List<String> projectedRoots = resolveProjectedTargetScopeIds(
+                focusIds,
+                projection);
+        if (projectedRoots.isEmpty()) {
+            return Collections.emptySet();
+        }
+        Set<String> expanded = computeScope(
+                projectedRoots,
+                projection.structuralGoals(),
+                Collections.emptyMap());
+        return projection.targetGoalIds().stream()
+                .filter(expanded::contains)
+                .filter(goalId -> isCountedAtomicGoal(
+                        projection.visibleGoals().get(goalId)))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    private boolean isCountedAtomicGoal(LearningGoal goal) {
+        return goal != null && !"cluster".equals(resolveNodeType(goal));
     }
 
     private List<String> findCanonicalFocusAncestorIds(

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   AlertTriangle,
   CalendarDays,
@@ -38,6 +38,7 @@ import {
   undoLastTeacherCoursePlanRevision,
 } from '../utils/localTeacherCoursePlan'
 import { getCoursePlanCopy } from '../utils/coursePlanCopy'
+import { fetchLearnerPlanningScope } from '../utils/learnerPlanningScope'
 import { PacingGauge, type PacingGaugeStatus } from './PacingGauge'
 
 type CoursePlanBlockKind = TeacherCoursePlanBlock['kind']
@@ -47,6 +48,8 @@ interface CoursePlanPilotViewProps {
   classLabel: string
   goals: ReadonlyMap<string, UiGoal>
   visibleChildrenByParent?: ReadonlyMap<string, readonly string[]>
+  learnerId?: string
+  landscapeId?: string
   language: 'de' | 'en'
   onNotify?: (kind: ToastKind, message: string) => void
 }
@@ -175,6 +178,8 @@ export const CoursePlanPilotView = ({
   classLabel,
   goals,
   visibleChildrenByParent,
+  learnerId,
+  landscapeId,
   language,
   onNotify,
 }: CoursePlanPilotViewProps) => {
@@ -190,12 +195,29 @@ export const CoursePlanPilotView = ({
   const [formError, setFormError] = useState('')
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
   const [goalSearch, setGoalSearch] = useState('')
+  const [baselineLoadState, setBaselineLoadState] = useState<'idle' | 'loading' | 'error'>('idle')
+  const [baselineRetry, setBaselineRetry] = useState(0)
+  const [savingBlock, setSavingBlock] = useState(false)
+  const planRef = useRef(plan)
+  const saveBlockRequestRef = useRef<{ token: number; controller: AbortController | null }>({
+    token: 0,
+    controller: null,
+  })
+  planRef.current = plan
+
+  const requiresLearnerBaseline = Boolean(learnerId && landscapeId)
+  const hasLearningBlock = plan?.blocks.some((block) => block.kind === 'learning') === true
+  const baselineMatchesContext = !requiresLearnerBaseline
+    || (plan?.planningBaseline?.landscapeId === landscapeId)
+  const needsLearnerBaseline = requiresLearnerBaseline
+    && hasLearningBlock
+    && !plan?.planningBaseline
 
   const evaluation = useMemo(() => (
-    plan
+    plan && !needsLearnerBaseline && baselineMatchesContext
       ? evaluateTeacherCoursePlan(plan, goals, asOf, visibleChildrenByParent)
       : null
-  ), [asOf, goals, plan, visibleChildrenByParent])
+  ), [asOf, baselineMatchesContext, goals, needsLearnerBaseline, plan, visibleChildrenByParent])
 
   const assignmentByBlockId = useMemo(() => new Map(
     (evaluation?.assignments ?? []).map((assignment) => [assignment.blockId, assignment]),
@@ -208,13 +230,20 @@ export const CoursePlanPilotView = ({
     [evaluation?.coverage?.coveredGoalIds],
   )
 
-  const plannableGoalOptions = useMemo(() => (
-    Array.from(goals.values())
+  const plannableGoalOptions = useMemo(() => {
+    const openGoalIds = plan?.planningBaseline
+      ? new Set(plan.planningBaseline.openAtomicGoalIds)
+      : null
+    return Array.from(goals.values())
       .map((goal) => {
         const resolution = resolveAtomicGoalDescendants(goal.id, goals, visibleChildrenByParent)
         return {
           goal,
-          count: resolution.quality.status === 'complete' ? resolution.atomicGoalIds.length : 0,
+          count: resolution.quality.status === 'complete'
+            ? openGoalIds
+              ? resolution.atomicGoalIds.filter((goalId) => openGoalIds.has(goalId)).length
+              : resolution.atomicGoalIds.length
+            : 0,
         }
       })
       .filter(({ count }) => count > 0)
@@ -222,7 +251,7 @@ export const CoursePlanPilotView = ({
         left.goal.phase.localeCompare(right.goal.phase)
         || left.goal.title.localeCompare(right.goal.title, language === 'de' ? 'de-DE' : 'en-GB')
       ))
-  ), [goals, language, visibleChildrenByParent])
+  }, [goals, language, plan?.planningBaseline, visibleChildrenByParent])
 
   const goalOptions = useMemo(() => {
     const normalizedSearch = goalSearch.trim().toLocaleLowerCase(language === 'de' ? 'de-DE' : 'en-GB')
@@ -235,11 +264,6 @@ export const CoursePlanPilotView = ({
       })
   }, [draft.goalId, goalSearch, language, plannableGoalOptions])
 
-  const visibleAtomicGoalCount = useMemo(() => Array.from(goals.values()).filter((goal) => {
-    const children = visibleChildrenByParent?.get(goal.id) ?? goal.contains ?? []
-    return goal.type === 'atomic' || (goal.type !== 'cluster' && children.length === 0)
-  }).length, [goals, visibleChildrenByParent])
-
   const persist = (nextPlan: TeacherCoursePlan | null) => {
     if (!nextPlan) {
       onNotify?.('error', copy.saveFailed)
@@ -251,19 +275,79 @@ export const CoursePlanPilotView = ({
       onNotify?.('error', copy.saveFailed)
       return false
     }
+    planRef.current = nextPlan
     setPlan(nextPlan)
     setStorageInvalid(false)
     return true
   }
 
-  const revise = (blocks: readonly TeacherCoursePlanBlock[], schoolYearLabel?: string) => {
+  const revise = (
+    blocks: readonly TeacherCoursePlanBlock[],
+    schoolYearLabel?: string,
+    planningBaseline = plan?.planningBaseline,
+  ) => {
     if (!plan) return false
     return persist(reviseTeacherCoursePlan(plan, {
       blocks,
       ...(schoolYearLabel === undefined ? {} : { schoolYearLabel }),
+      ...(planningBaseline ? { planningBaseline } : {}),
       changedOn: asOf,
       recordedAt: new Date().toISOString(),
     }))
+  }
+
+  useEffect(() => {
+    if (!plan || !needsLearnerBaseline || !learnerId || !landscapeId) {
+      setBaselineLoadState('idle')
+      return
+    }
+    const firstLearningBlock = sortedBlocks(plan.blocks).find((block) => block.kind === 'learning')
+    if (!firstLearningBlock || firstLearningBlock.kind !== 'learning') return
+
+    const controller = new AbortController()
+    const sourceRevision = plan.revision
+    let active = true
+    setBaselineLoadState('loading')
+    void fetchLearnerPlanningScope({
+      learnerId,
+      landscapeId,
+      signal: controller.signal,
+    }).then((planningBaseline) => {
+      if (!active || planRef.current?.revision !== sourceRevision) return
+      const migrated = reviseTeacherCoursePlan(plan, {
+        planningBaseline,
+        changedOn: asOf,
+        recordedAt: new Date().toISOString(),
+      })
+      if (!migrated || !saveTeacherCoursePlan(migrated).ok) {
+        throw new Error('Could not persist the authoritative planning basis.')
+      }
+      planRef.current = migrated
+      setPlan(migrated)
+      setStorageInvalid(false)
+      setBaselineLoadState('idle')
+    }).catch((error) => {
+      if (!active || controller.signal.aborted) return
+      console.warn('Could not load learner planning scope', error)
+      setBaselineLoadState('error')
+    })
+    return () => {
+      active = false
+      controller.abort()
+    }
+  }, [asOf, baselineRetry, landscapeId, learnerId, needsLearnerBaseline, plan])
+
+  useEffect(() => () => {
+    saveBlockRequestRef.current.token += 1
+    saveBlockRequestRef.current.controller?.abort()
+    saveBlockRequestRef.current.controller = null
+  }, [])
+
+  const cancelPendingBlockSave = () => {
+    saveBlockRequestRef.current.token += 1
+    saveBlockRequestRef.current.controller?.abort()
+    saveBlockRequestRef.current.controller = null
+    setSavingBlock(false)
   }
 
   const savePlanLabel = () => {
@@ -272,6 +356,7 @@ export const CoursePlanPilotView = ({
   }
 
   const openNewBlock = () => {
+    cancelPendingBlockSave()
     setDraft(createDraft(asOf))
     setEditingBlockId(null)
     setFormError('')
@@ -281,6 +366,7 @@ export const CoursePlanPilotView = ({
   }
 
   const openEditBlock = (block: TeacherCoursePlanBlock) => {
+    cancelPendingBlockSave()
     setDraft(block.kind === 'milestone'
       ? {
           kind: block.kind,
@@ -303,8 +389,8 @@ export const CoursePlanPilotView = ({
     setShowBlockForm(true)
   }
 
-  const saveBlock = () => {
-    if (!plan) return
+  const saveBlock = async () => {
+    if (!plan || savingBlock) return
     if (!parseCoursePlanDate(draft.startDate) || !parseCoursePlanDate(draft.endDate)) {
       setFormError(copy.invalidDateRange)
       return
@@ -368,7 +454,67 @@ export const CoursePlanPilotView = ({
     const nextBlocks = editingBlockId
       ? plan.blocks.map((block) => block.id === editingBlockId ? nextBlock : block)
       : [...plan.blocks, nextBlock]
-    if (revise(nextBlocks)) {
+    let planningBaseline = plan.planningBaseline
+    if (draft.kind === 'learning' && requiresLearnerBaseline && !planningBaseline) {
+      if (!learnerId || !landscapeId) {
+        setFormError(copy.planningScopeLoadError)
+        return
+      }
+      const requestToken = saveBlockRequestRef.current.token + 1
+      const controller = new AbortController()
+      saveBlockRequestRef.current.controller?.abort()
+      saveBlockRequestRef.current = { token: requestToken, controller }
+      const sourceRevision = plan.revision
+      setSavingBlock(true)
+      try {
+        planningBaseline = await fetchLearnerPlanningScope({
+          learnerId,
+          landscapeId,
+          signal: controller.signal,
+        })
+      } catch (error) {
+        if (controller.signal.aborted || saveBlockRequestRef.current.token !== requestToken) return
+        console.warn('Could not establish learner planning scope', error)
+        setFormError(copy.planningScopeLoadError)
+        return
+      } finally {
+        if (saveBlockRequestRef.current.token === requestToken) {
+          saveBlockRequestRef.current.controller = null
+          setSavingBlock(false)
+        }
+      }
+      if (
+        controller.signal.aborted
+        || saveBlockRequestRef.current.token !== requestToken
+        || planRef.current?.revision !== sourceRevision
+      ) {
+        if (!controller.signal.aborted && saveBlockRequestRef.current.token === requestToken) {
+          setFormError(copy.planChangedDuringSave)
+        }
+        return
+      }
+    }
+    const revised = reviseTeacherCoursePlan(plan, {
+      blocks: nextBlocks,
+      ...(planningBaseline ? { planningBaseline } : {}),
+      changedOn: asOf,
+      recordedAt: new Date().toISOString(),
+    })
+    if (planningBaseline && draft.kind === 'learning') {
+      const validation = revised
+        ? evaluateTeacherCoursePlan(revised, goals, asOf, visibleChildrenByParent)
+        : null
+      if (!validation || validation.quality.status === 'invalid' || !validation.metrics) {
+        setFormError(copy.noPlannableGoals)
+        return
+      }
+      const savedAssignment = validation.assignments.find(({ blockId }) => blockId === id)
+      if (!savedAssignment || savedAssignment.atomicGoalIds.length === 0) {
+        setFormError(copy.noPlannableGoals)
+        return
+      }
+    }
+    if (persist(revised)) {
       setShowBlockForm(false)
       setEditingBlockId(null)
       setFormError('')
@@ -426,8 +572,17 @@ export const CoursePlanPilotView = ({
 
   const exportPlan = () => {
     if (!plan) return
-    const personFreePlan = Object.fromEntries(
-      Object.entries(plan).filter(([key]) => key !== 'classId'),
+    const redactedPlan = Object.fromEntries(
+      Object.entries(plan)
+        .filter(([key]) => key !== 'classId' && key !== 'planningBaseline')
+        .map(([key, value]) => [
+          key,
+          key === 'revisionHistory' && Array.isArray(value)
+            ? value.map((snapshot) => Object.fromEntries(
+                Object.entries(snapshot).filter(([snapshotKey]) => snapshotKey !== 'planningBaseline'),
+              ))
+            : value,
+        ]),
     )
     const payload = {
       exportKind: 'skillpilot-local-course-plan-v1',
@@ -436,9 +591,10 @@ export const CoursePlanPilotView = ({
       semantics: {
         plannedProgress: 'local weekday-based draft',
         confirmedTeachingCoverage: 'teacher-confirmed; never mastery',
-        learnerDataIncluded: false,
+        learnerDerivedPlanningBaselineIncluded: false,
+        teacherEnteredFreeTextExportedUnchanged: true,
       },
-      plan: personFreePlan,
+      plan: redactedPlan,
     }
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
@@ -573,7 +729,22 @@ export const CoursePlanPilotView = ({
               <AlertTriangle className="mt-0.5 shrink-0" size={21} aria-hidden="true" />
               <div>
                 <h2 className="font-semibold">{copy.calculationUnavailableTitle}</h2>
-                <p className="mt-1 text-sm leading-6">{copy.calculationUnavailableBody}</p>
+                <p className="mt-1 text-sm leading-6">
+                  {needsLearnerBaseline
+                    ? baselineLoadState === 'loading'
+                      ? copy.planningScopeOnSave
+                      : copy.planningScopeLoadError
+                    : copy.calculationUnavailableBody}
+                </p>
+                {needsLearnerBaseline && baselineLoadState === 'error' && (
+                  <button
+                    type="button"
+                    onClick={() => setBaselineRetry((current) => current + 1)}
+                    className="mt-3 min-h-10 rounded-lg bg-rose-700 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-600"
+                  >
+                    {copy.retryPlanningScope}
+                  </button>
+                )}
               </div>
             </div>
           </section>
@@ -624,6 +795,7 @@ export const CoursePlanPilotView = ({
               <button
                 type="button"
                 onClick={() => {
+                  cancelPendingBlockSave()
                   setShowBlockForm(false)
                   setEditingBlockId(null)
                   setFormError('')
@@ -685,7 +857,11 @@ export const CoursePlanPilotView = ({
                       <option value="">{copy.goalPlaceholder}</option>
                       {goalOptions.map(({ goal, count }) => (
                         <option key={goal.id} value={goal.id}>
-                          {goal.phase !== 'GLOBAL' ? `${goal.phase} · ` : ''}{goal.title} · {copy.learningGoalCount(count)}
+                          {goal.phase !== 'GLOBAL' ? `${goal.phase} · ` : ''}{goal.title} · {
+                            requiresLearnerBaseline && !plan.planningBaseline
+                              ? copy.planningScopeOnSave
+                              : copy.learningGoalCount(count)
+                          }
                         </option>
                       ))}
                     </select>
@@ -758,7 +934,8 @@ export const CoursePlanPilotView = ({
               <button
                 type="button"
                 onClick={saveBlock}
-                className="min-h-11 rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500"
+                disabled={savingBlock || baselineLoadState === 'loading'}
+                className="min-h-11 rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
               >
                 {copy.saveBlock}
               </button>
@@ -798,9 +975,15 @@ export const CoursePlanPilotView = ({
                 <p className="mt-3 text-2xl font-semibold tabular-nums text-text-primary">
                   {calculationUnavailable
                     ? copy.notCalculable
-                    : copy.expectedValue(metrics.expectedGoalEquivalent, metrics.plannedGoalCount)}
+                    : copy.expectedValue(metrics.dueGoalIds.length, metrics.plannedGoalCount)}
                 </p>
-                <p className="mt-1 text-xs text-text-secondary">{calculationUnavailable ? '—' : metrics.plannedGoalCount} / {visibleAtomicGoalCount} {language === 'de' ? 'sichtbare Atomziele verplant' : 'visible atomic goals scheduled'}</p>
+                <p className="mt-1 text-xs text-text-secondary">
+                  {calculationUnavailable
+                    ? '—'
+                    : plan.planningBaseline
+                      ? copy.plannedOpenGoalCount(metrics.plannedGoalCount, metrics.scopeAtomicGoalCount)
+                      : copy.learningGoalCount(metrics.plannedGoalCount)}
+                </p>
               </div>
               <div className="rounded-2xl border border-border-color bg-sidebar-bg p-4">
                 <div className="flex items-center gap-2 text-sm text-text-secondary"><CheckCircle2 size={17} aria-hidden="true" />{copy.coveredLabel}</div>
@@ -855,7 +1038,7 @@ export const CoursePlanPilotView = ({
                   <div>
                     <div className="flex items-center justify-between gap-3 text-xs text-text-secondary">
                       <span>{copy.expectedLabel}</span>
-                      <span className="tabular-nums">{calculationUnavailable ? '—' : `${formatNumber(metrics.expectedGoalEquivalent, language)} / ${metrics.plannedGoalCount}`}</span>
+                      <span className="tabular-nums">{calculationUnavailable ? '—' : `${metrics.dueGoalIds.length} / ${metrics.plannedGoalCount}`}</span>
                     </div>
                     <div className="mt-2 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700" aria-hidden="true">
                       <div className="h-full rounded-full bg-sky-500" style={{ width: `${calculationUnavailable ? 0 : Math.min(100, metrics.plannedGoalCount > 0 ? (metrics.expectedGoalEquivalent / metrics.plannedGoalCount) * 100 : 0)}%` }} />
@@ -1012,7 +1195,7 @@ export const CoursePlanPilotView = ({
                       <div className="mt-5 grid gap-4 sm:grid-cols-3">
                         <div className="rounded-xl bg-chat-bg p-3">
                           <p className="text-xs text-text-secondary">{copy.expectedLabel}</p>
-                          <p className="mt-1 font-semibold tabular-nums text-text-primary">{copy.expectedValue(learningMetric.expectedGoalEquivalent, learningMetric.plannedGoalCount)}</p>
+                          <p className="mt-1 font-semibold tabular-nums text-text-primary">{copy.expectedValue(learningMetric.dueGoalIds.length, learningMetric.plannedGoalCount)}</p>
                         </div>
                         <div className="rounded-xl bg-chat-bg p-3">
                           <p className="text-xs text-text-secondary">{copy.coveredLabel}</p>

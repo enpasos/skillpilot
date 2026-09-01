@@ -12,6 +12,7 @@ import {
   type CoursePlanDataQuality,
   type CoursePlanDate,
   type CoursePlanParseResult,
+  type LearnerCoursePlanBaseline,
   type LearningBlockGoalAssignment,
   type LearningBlockMetrics,
   type TeacherCoursePlan,
@@ -27,6 +28,7 @@ const MAX_PLANS = 500
 const MAX_BLOCKS = 2_000
 const MAX_EVENTS = 100_000
 const MAX_ATTESTATIONS = 10_000
+const MAX_BASELINE_GOALS = 100_000
 const MAX_ID_LENGTH = 240
 const MAX_TITLE_LENGTH = 500
 const MAX_SCHOOL_YEAR_LABEL_LENGTH = 100
@@ -88,6 +90,7 @@ export interface AppendCoverageAttestationInput {
 export interface ReviseTeacherCoursePlanInput {
   blocks?: readonly TeacherCoursePlanBlock[]
   schoolYearLabel?: string
+  planningBaseline?: LearnerCoursePlanBaseline
   changedOn: CoursePlanDate
   recordedAt: string
 }
@@ -147,6 +150,92 @@ function positiveInteger(value: unknown): number | null {
 
 function nonNegativeInteger(value: unknown): number | null {
   return Number.isSafeInteger(value) && Number(value) >= 0 ? Number(value) : null
+}
+
+function normalizeUniqueIds(value: unknown, allowEmpty = true): string[] | null {
+  if (!Array.isArray(value) || value.length > MAX_BASELINE_GOALS || (!allowEmpty && value.length === 0)) {
+    return null
+  }
+  const ids = value.map(normalizedId)
+  if (ids.some((id) => id === null)) return null
+  const normalized = ids as string[]
+  return new Set(normalized).size === normalized.length ? normalized : null
+}
+
+export function normalizeLearnerCoursePlanBaseline(value: unknown): LearnerCoursePlanBaseline | null {
+  if (!isRecord(value) || value.source !== 'learner-planning-scope-v1') return null
+  const curriculumId = normalizedId(value.curriculumId)
+  const landscapeId = normalizedId(value.landscapeId)
+  const scopeGoalId = value.scopeGoalId === undefined
+    ? undefined
+    : normalizedId(value.scopeGoalId)
+  const focusGoalIds = normalizeUniqueIds(value.focusGoalIds)
+  const scopeAtomicGoalIds = normalizeUniqueIds(value.scopeAtomicGoalIds, false)
+  const openAtomicGoalIds = normalizeUniqueIds(value.openAtomicGoalIds)
+  const totalAtomicGoalCount = nonNegativeInteger(value.totalAtomicGoalCount)
+  const masteredAtomicGoalCount = nonNegativeInteger(value.masteredAtomicGoalCount)
+  const capturedAt = normalizedInstant(value.capturedAt)
+  if (
+    !curriculumId
+    || !landscapeId
+    || scopeGoalId === null
+    || !focusGoalIds
+    || !scopeAtomicGoalIds
+    || !openAtomicGoalIds
+    || totalAtomicGoalCount === null
+    || masteredAtomicGoalCount === null
+    || !capturedAt
+    || totalAtomicGoalCount !== scopeAtomicGoalIds.length
+    || masteredAtomicGoalCount > totalAtomicGoalCount
+    || openAtomicGoalIds.length !== totalAtomicGoalCount - masteredAtomicGoalCount
+  ) return null
+  const scopeIds = new Set(scopeAtomicGoalIds)
+  if (openAtomicGoalIds.some((goalId) => !scopeIds.has(goalId))) return null
+  return {
+    source: 'learner-planning-scope-v1',
+    curriculumId,
+    landscapeId,
+    ...(scopeGoalId ? { scopeGoalId } : {}),
+    focusGoalIds,
+    scopeAtomicGoalIds,
+    openAtomicGoalIds,
+    totalAtomicGoalCount,
+    masteredAtomicGoalCount,
+    capturedAt,
+  }
+}
+
+function clonePlanningBaseline(
+  baseline: LearnerCoursePlanBaseline | undefined,
+): LearnerCoursePlanBaseline | undefined {
+  return baseline
+    ? {
+        ...baseline,
+        focusGoalIds: [...baseline.focusGoalIds],
+        scopeAtomicGoalIds: [...baseline.scopeAtomicGoalIds],
+        openAtomicGoalIds: [...baseline.openAtomicGoalIds],
+      }
+    : undefined
+}
+
+function samePlanningBaseline(
+  left: LearnerCoursePlanBaseline,
+  right: LearnerCoursePlanBaseline,
+): boolean {
+  const sameIds = (leftIds: readonly string[], rightIds: readonly string[]) => (
+    leftIds.length === rightIds.length
+    && leftIds.every((goalId, index) => goalId === rightIds[index])
+  )
+  return left.source === right.source
+    && left.curriculumId === right.curriculumId
+    && left.landscapeId === right.landscapeId
+    && left.scopeGoalId === right.scopeGoalId
+    && sameIds(left.focusGoalIds, right.focusGoalIds)
+    && sameIds(left.scopeAtomicGoalIds, right.scopeAtomicGoalIds)
+    && sameIds(left.openAtomicGoalIds, right.openAtomicGoalIds)
+    && left.totalAtomicGoalCount === right.totalAtomicGoalCount
+    && left.masteredAtomicGoalCount === right.masteredAtomicGoalCount
+    && left.capturedAt === right.capturedAt
 }
 
 export function parseCoursePlanDate(value: unknown): ParsedCoursePlanDate | null {
@@ -256,6 +345,9 @@ function normalizeRevisionSnapshot(value: unknown): TeacherCoursePlanRevisionSna
   const schoolYearLabel = value.schoolYearLabel === undefined
     ? undefined
     : normalizedBoundedString(value.schoolYearLabel, MAX_SCHOOL_YEAR_LABEL_LENGTH)
+  const planningBaseline = value.planningBaseline === undefined
+    ? undefined
+    : normalizeLearnerCoursePlanBaseline(value.planningBaseline)
   const blocks = normalizeBlocks(value.blocks)
   if (
     !revision
@@ -264,6 +356,7 @@ function normalizeRevisionSnapshot(value: unknown): TeacherCoursePlanRevisionSna
     || (origin !== 'initial' && origin !== 'edit' && origin !== 'undo')
     || restoredFromRevision === null
     || schoolYearLabel === null
+    || planningBaseline === null
     || !blocks
     || (origin === 'undo' && (!restoredFromRevision || restoredFromRevision >= revision))
     || (origin !== 'undo' && restoredFromRevision !== undefined)
@@ -277,6 +370,7 @@ function normalizeRevisionSnapshot(value: unknown): TeacherCoursePlanRevisionSna
     origin,
     ...(restoredFromRevision ? { restoredFromRevision } : {}),
     ...(schoolYearLabel ? { schoolYearLabel } : {}),
+    ...(planningBaseline ? { planningBaseline } : {}),
     blocks,
   }
 }
@@ -346,6 +440,9 @@ export function normalizeTeacherCoursePlan(value: unknown): NormalizedCoursePlan
   const schoolYearLabel = value.schoolYearLabel === undefined
     ? undefined
     : normalizedBoundedString(value.schoolYearLabel, MAX_SCHOOL_YEAR_LABEL_LENGTH)
+  const planningBaseline = value.planningBaseline === undefined
+    ? undefined
+    : normalizeLearnerCoursePlanBaseline(value.planningBaseline)
   if (
     !classId
     || !revision
@@ -356,6 +453,7 @@ export function normalizeTeacherCoursePlan(value: unknown): NormalizedCoursePlan
     || !createdAt
     || !updatedAt
     || schoolYearLabel === null
+    || planningBaseline === null
     || (revisionOrigin === 'undo' && (!restoredFromRevision || restoredFromRevision >= revision))
     || (revisionOrigin !== 'undo' && restoredFromRevision !== undefined)
     || (revision === 1 && revisionOrigin !== 'initial')
@@ -456,6 +554,7 @@ export function normalizeTeacherCoursePlan(value: unknown): NormalizedCoursePlan
       createdAt,
       updatedAt,
       ...(schoolYearLabel ? { schoolYearLabel } : {}),
+      ...(planningBaseline ? { planningBaseline } : {}),
       blocks: normalizedBlocks,
       revisionHistory,
       coverageEvents,
@@ -646,6 +745,16 @@ export function reviseTeacherCoursePlan(
     !normalized
     || normalized.revisionHistory.length >= TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY
   ) return null
+  const requestedBaseline = input.planningBaseline === undefined
+    ? undefined
+    : normalizeLearnerCoursePlanBaseline(input.planningBaseline)
+  if (input.planningBaseline !== undefined && !requestedBaseline) return null
+  if (
+    normalized.planningBaseline
+    && requestedBaseline
+    && !samePlanningBaseline(normalized.planningBaseline, requestedBaseline)
+  ) return null
+  const planningBaseline = normalized.planningBaseline ?? requestedBaseline
   const candidate: TeacherCoursePlan = {
     ...normalized,
     revision: normalized.revision + 1,
@@ -659,6 +768,9 @@ export function reviseTeacherCoursePlan(
       : input.schoolYearLabel.trim()
         ? { schoolYearLabel: input.schoolYearLabel }
         : { schoolYearLabel: undefined }),
+    ...(planningBaseline
+      ? { planningBaseline: clonePlanningBaseline(planningBaseline) }
+      : {}),
     blocks: input.blocks ? cloneCoursePlanBlocks(input.blocks) : cloneCoursePlanBlocks(normalized.blocks),
     revisionHistory: [
       ...normalized.revisionHistory,
@@ -688,6 +800,7 @@ export function undoLastTeacherCoursePlanRevision(
     restoredFromRevision: restored.revision,
     updatedAt: input.recordedAt,
     schoolYearLabel: restored.schoolYearLabel,
+    planningBaseline: clonePlanningBaseline(normalized.planningBaseline),
     blocks: cloneCoursePlanBlocks(restored.blocks),
     revisionHistory: [
       ...normalized.revisionHistory,
@@ -854,6 +967,22 @@ export function assignAtomicGoalsToLearningBlocks(
   const counted = new Set<string>()
   const assignments: LearningBlockGoalAssignment[] = []
   const issues: CoursePlanDataIssue[] = []
+  const baseline = normalized.plan.planningBaseline
+  const baselineScope = baseline ? new Set(baseline.scopeAtomicGoalIds) : null
+  const baselineOpen = baseline ? new Set(baseline.openAtomicGoalIds) : null
+  if (baseline) {
+    for (const goalId of baseline.scopeAtomicGoalIds) {
+      const goal = goalIndex.get(goalId)
+      const children = goal ? childrenForGoal(goal, visibleChildren) : []
+      if (!goal || (goal.type !== 'atomic' && (goal.type === 'cluster' || children.length > 0))) {
+        issues.push({
+          code: 'CP-BASELINE-GOAL',
+          message: 'The authoritative planning basis references an unavailable or non-atomic goal.',
+          goalId,
+        })
+      }
+    }
+  }
   for (const { block } of chronologicalLearningBlocks(normalized.plan)) {
     const resolution = resolveAtomicGoalDescendants(block.goalId, goalIndex, visibleChildren)
     if (resolution.quality.status !== 'complete') {
@@ -861,22 +990,43 @@ export function assignAtomicGoalsToLearningBlocks(
       assignments.push({
         blockId: block.id,
         goalId: block.goalId,
+        scopeAtomicGoalIds: [],
         atomicGoalIds: [],
         duplicateAtomicGoalIds: [],
       })
       continue
     }
 
+    const scopeAtomicGoalIds = baselineScope
+      ? resolution.atomicGoalIds.filter((goalId) => baselineScope.has(goalId))
+      : resolution.atomicGoalIds
+    if (baselineScope && scopeAtomicGoalIds.length === 0) {
+      issues.push({
+        code: 'CP-GOAL-OUTSIDE-BASELINE',
+        message: 'Learning block contains no goal from the authoritative planning basis.',
+        blockId: block.id,
+        goalId: block.goalId,
+      })
+    }
+    const plannableAtomicGoalIds = baselineOpen
+      ? scopeAtomicGoalIds.filter((goalId) => baselineOpen.has(goalId))
+      : scopeAtomicGoalIds
     const atomicGoalIds: string[] = []
     const duplicateAtomicGoalIds: string[] = []
-    for (const goalId of resolution.atomicGoalIds) {
+    for (const goalId of plannableAtomicGoalIds) {
       if (counted.has(goalId)) duplicateAtomicGoalIds.push(goalId)
       else {
         counted.add(goalId)
         atomicGoalIds.push(goalId)
       }
     }
-    assignments.push({ blockId: block.id, goalId: block.goalId, atomicGoalIds, duplicateAtomicGoalIds })
+    assignments.push({
+      blockId: block.id,
+      goalId: block.goalId,
+      scopeAtomicGoalIds,
+      atomicGoalIds,
+      duplicateAtomicGoalIds,
+    })
   }
 
   if (issues.length > 0) {
@@ -1115,21 +1265,47 @@ export function evaluateTeacherCoursePlan(
   let totalBufferWorkdays = 0
   let remainingBufferWorkdays = 0
   const metricIssues: CoursePlanDataIssue[] = []
+  const learningProgressByBlockId = new Map<string, {
+    expected: number
+    dueGoalIds: string[]
+  }>()
+  let cumulativeExpectedGoalEquivalent = 0
+  let cumulativeRoundedDueGoalCount = 0
+
+  for (const { block } of chronologicalLearningBlocks(normalized.plan)) {
+    const assignment = assignmentByBlockId.get(block.id)
+    const fraction = workdayProgressFraction(block.startDate, block.endDate, asOf)
+    if (!assignment || fraction === null) {
+      metricIssues.push({
+        code: 'CP-WORKDAYS',
+        message: 'Learning block has no usable Monday-to-Friday duration.',
+        blockId: block.id,
+      })
+      continue
+    }
+    const expected = fraction * assignment.atomicGoalIds.length
+    cumulativeExpectedGoalEquivalent += expected
+    const nextRoundedDueGoalCount = Math.round(cumulativeExpectedGoalEquivalent + 1e-9)
+    const blockDueGoalCount = Math.max(
+      0,
+      Math.min(
+        assignment.atomicGoalIds.length,
+        nextRoundedDueGoalCount - cumulativeRoundedDueGoalCount,
+      ),
+    )
+    cumulativeRoundedDueGoalCount += blockDueGoalCount
+    learningProgressByBlockId.set(block.id, {
+      expected,
+      dueGoalIds: assignment.atomicGoalIds.slice(0, blockDueGoalCount),
+    })
+  }
 
   for (const block of normalized.plan.blocks) {
     if (block.kind === 'learning') {
       const assignment = assignmentByBlockId.get(block.id)
-      const fraction = workdayProgressFraction(block.startDate, block.endDate, asOf)
-      if (!assignment || fraction === null) {
-        metricIssues.push({
-          code: 'CP-WORKDAYS',
-          message: 'Learning block has no usable Monday-to-Friday duration.',
-          blockId: block.id,
-        })
-        continue
-      }
-      const expected = fraction * assignment.atomicGoalIds.length
-      const dueGoalIds = assignment.atomicGoalIds.slice(0, Math.floor(expected + 1e-9))
+      const progress = learningProgressByBlockId.get(block.id)
+      if (!assignment || !progress) continue
+      const { expected, dueGoalIds } = progress
       const covered = assignment.atomicGoalIds.filter((goalId) => coveredGoalIds.has(goalId)).length
       expectedGoalEquivalent += expected
       blockMetrics.push({
@@ -1191,6 +1367,10 @@ export function evaluateTeacherCoursePlan(
     .sort((left, right) => left.date.localeCompare(right.date) || left.id.localeCompare(right.id))[0]
   const metrics: TeacherCoursePlanMetrics = {
     asOf,
+    scopeAtomicGoalCount: normalized.plan.planningBaseline?.totalAtomicGoalCount
+      ?? new Set(
+        assignmentsResult.assignments.flatMap(({ scopeAtomicGoalIds }) => scopeAtomicGoalIds),
+      ).size,
     plannedGoalCount: plannedGoalIds.size,
     expectedGoalEquivalent,
     dueGoalIds: chronologicalLearningBlocks(normalized.plan).flatMap(({ block }) => {
