@@ -2,12 +2,11 @@ import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
+import App from '../../src/App'
 import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import { ThemeProvider } from '../../src/contexts/ThemeContext'
-import { TeacherSupervisionConsentView } from '../../src/views/TeacherSupervisionConsentView'
-import '../../src/index.css'
 
-window.history.replaceState({}, '', '/betreuung#invite=spti_browser_secret')
+window.history.replaceState({}, '', '/trainer?l=math&f=DE-HE')
 
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('missing fixture root')
@@ -16,9 +15,7 @@ createRoot(rootElement).render(
   <BrowserRouter>
     <LanguageProvider>
       <ThemeProvider>
-        <StrictMode>
-          <TeacherSupervisionConsentView />
-        </StrictMode>
+        <StrictMode><App /></StrictMode>
       </ThemeProvider>
     </LanguageProvider>
   </BrowserRouter>,

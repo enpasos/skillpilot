@@ -48,7 +48,7 @@
     "test:trainer-gymnasium-scope-ui": "tsx scripts/testTrainerGymnasiumScopeUi.ts",
     "test:trainer-course-plan": "tsx src/utils/localTeacherCoursePlan.test.ts && tsx scripts/testTrainerCoursePlanUi.ts",
     "test:trainer-class-file": "tsx src/utils/trainerClassFile.test.ts && tsx src/utils/trainerClassFileCopy.test.ts && tsx scripts/testTrainerClassFileUi.ts",
-    "test:teacher-supervision": "tsx src/utils/teacherSupervision.test.ts && tsx scripts/testTeacherSupervisionUi.ts && tsx scripts/testTeacherSupervisionConsentUi.ts && tsx scripts/testTeacherSupervisionClassSetupUi.ts && npm run test:trainer-class-file",
+    "test:existing-learner-linking": "tsx src/utils/existingLearnerClass.test.ts && tsx scripts/testExistingLearnerClassSetupUi.ts && tsx scripts/testExistingLearnerTrainerUi.ts && tsx scripts/testExistingLearnerDisabledUi.ts && npm run test:trainer-class-file",
     "test:goal-evidence-profile": "tsx scripts/testGoalEvidenceProfileModel.ts",
     "test:goal-evidence-profile-v2": "tsx scripts/testPositiveGoalEvidenceProfileModel.ts",
     "test:positive-goal-evidence-review": "tsx scripts/testPositiveGoalEvidenceReview.ts",

@@ -1,7 +1,7 @@
 export interface StudentMapping {
-  id: string // SkillPilot-ID (Altklasse) oder opake serverseitige Membership-ID
+  id: string // SkillPilot-ID
   name: string // Klarname, nur lokal gespeichert
-  accessMode?: 'learner-id' | 'teacher-membership'
+  accessMode?: 'learner-id'
 }
 
 export interface TrainerClassCurriculumConfigEntry {
@@ -13,22 +13,6 @@ export interface TrainerClassCurriculumConfigEntry {
 
 export type TrainerClassCurriculumConfig = Record<string, TrainerClassCurriculumConfigEntry>
 
-export interface LinkedSubjectContext {
-  landscapeId: string
-  title: string
-  activeFilter: string
-  personalConfig: TrainerClassCurriculumConfig
-  rootLandscapeId?: string
-}
-
-export interface LinkedSupervision {
-  workspaceId: string
-  courseId: string
-  memberId: string
-  personalizationFingerprint?: string
-  subjects: LinkedSubjectContext[]
-}
-
 export interface ClassSession {
   id: string
   name: string
@@ -38,6 +22,5 @@ export interface ClassSession {
   rootLandscapeId?: string
   students: StudentMapping[]
   currentGoalId?: string
-  source?: 'local-generated' | 'linked-supervision'
-  linkedSupervision?: LinkedSupervision
+  source?: 'local-generated' | 'existing-learner'
 }

@@ -14,30 +14,61 @@ const deRetentionText = de.sections.find(section => section.title.includes('Spei
   ?.paragraphs.join(' ') ?? ''
 const enRetentionText = en.sections.find(section => section.title.includes('Storage Period'))
   ?.paragraphs.join(' ') ?? ''
-const deTeacherSupervisionText = de.sections.find(section => section.title.includes('Betreuung durch eine Lehrkraft'))
+const deTeacherSupervisionText = de.sections.find(section => section.title.includes('bestehender SkillPilot-ID'))
   ?.paragraphs.join(' ') ?? ''
-const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Teacher Supervision'))
+const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Existing SkillPilot ID'))
   ?.paragraphs.join(' ') ?? ''
 
 assert(de.effectiveDate.includes('31. August 2026'), 'German privacy copy carries the current supervision date')
 assert(en.effectiveDate.includes('August 31, 2026'), 'English privacy copy carries the current supervision date')
 assert(
-  deTeacherSupervisionText.includes('ausdrücklich bestätigen')
-    && deTeacherSupervisionText.includes('freigegebenen Leserechte')
-    && deTeacherSupervisionText.includes('dauerhafte SkillPilot-ID')
-    && deTeacherSupervisionText.includes('sieben Tagen')
-    && deTeacherSupervisionText.includes('Aufbewahrungsfrist von 30 Tagen')
-    && deTeacherSupervisionText.includes('nächsten täglichen Löschlauf'),
-  'German privacy copy states supervision consent, minimization, expiry, and terminal retention',
+  deTeacherSupervisionText.includes('Klassennamen')
+    && deTeacherSupervisionText.includes('Namen oder Alias')
+    && deTeacherSupervisionText.includes('lokale Kopie')
+    && deTeacherSupervisionText.includes('normalen SkillPilot-Lernenden-Endpunkte')
+    && deTeacherSupervisionText.includes('keine separate serverseitige Lehrkraft-, Klassen-, Berechtigungs- oder Mitgliedschaftsbeziehung')
+    && deTeacherSupervisionText.includes('funktional nur lesend')
+    && deTeacherSupervisionText.includes('geplante Lernziele')
+    && deTeacherSupervisionText.includes('lokaler Kursplan der Lehrkraft')
+    && deTeacherSupervisionText.includes('nicht in den Datensatz der lernenden Person geschrieben')
+    && deTeacherSupervisionText.includes('Bearer-Geheimnis')
+    && deTeacherSupervisionText.includes('Vollzugriffsschlüssel')
+    && deTeacherSupervisionText.includes('Passwortverschlüsselte Klassenexporte')
+    && deTeacherSupervisionText.includes('dauerhafte SkillPilot-IDs')
+    && deTeacherSupervisionText.includes('lokal gespeicherte Personalisierung'),
+  'German privacy copy states local storage, direct learner-ID access, UI-only read-only behavior, and encrypted-export contents',
 )
 assert(
-  enTeacherSupervisionText.includes('explicitly approve')
-    && enTeacherSupervisionText.includes('approved read capabilities')
-    && enTeacherSupervisionText.includes('permanent SkillPilot ID')
-    && enTeacherSupervisionText.includes('seven days')
-    && enTeacherSupervisionText.includes('30-day retention period')
-    && enTeacherSupervisionText.includes('next daily deletion run'),
-  'English privacy copy states supervision consent, minimization, expiry, and terminal retention',
+  enTeacherSupervisionText.includes('class name')
+    && enTeacherSupervisionText.includes('learner name or alias')
+    && enTeacherSupervisionText.includes('local copy')
+    && enTeacherSupervisionText.includes('normal learner endpoints')
+    && enTeacherSupervisionText.includes('no separate server-side teacher account, class, authorization record, or membership relationship')
+    && enTeacherSupervisionText.includes('functionally read-only')
+    && enTeacherSupervisionText.includes('planned learning goals')
+    && enTeacherSupervisionText.includes('local teacher course plan')
+    && enTeacherSupervisionText.includes('not written to the learner record')
+    && enTeacherSupervisionText.includes('bearer secret')
+    && enTeacherSupervisionText.includes('full-access key')
+    && enTeacherSupervisionText.includes('Password-encrypted class exports')
+    && enTeacherSupervisionText.includes('permanent SkillPilot IDs')
+    && enTeacherSupervisionText.includes('locally stored personalization'),
+  'English privacy copy states local storage, direct learner-ID access, UI-only read-only behavior, and encrypted-export contents',
+)
+assert(
+  !deTeacherSupervisionText.includes('Einladung')
+    && !deTeacherSupervisionText.includes('sieben Tagen')
+    && !deTeacherSupervisionText.includes('Widerruf')
+    && !deTeacherSupervisionText.includes('widerruf')
+    && !deTeacherSupervisionText.includes('30 Tagen')
+    && !deTeacherSupervisionText.includes('Betreuungsmitgliedschaften')
+    && !enTeacherSupervisionText.includes('invitation')
+    && !enTeacherSupervisionText.includes('seven days')
+    && !enTeacherSupervisionText.includes('revoke')
+    && !enTeacherSupervisionText.includes('revocation')
+    && !enTeacherSupervisionText.includes('30-day')
+    && !enTeacherSupervisionText.includes('supervision memberships'),
+  'privacy copy makes no invitation, revocation, membership, seven-day, or thirty-day claims',
 )
 assert(
   deAiText.includes('Visible Session')

@@ -39,9 +39,6 @@ class LearnerRetentionLiquibaseIntegrationTest {
     private static final String REJECTED_ID = "retention-rejected";
     private static final String CLAUDE_SUBJECT = "retention-claude-subject";
     private static final String APP_OAUTH_PRINCIPAL = "openai-v1-app-principal";
-    private static final String TEACHER_WORKSPACE_ID = "4b557af7-00f1-4bb5-a137-12840a81982d";
-    private static final String TEACHER_COURSE_ID = "7ccb3e06-d821-48a3-b34d-b159d286b9b0";
-    private static final String TEACHER_MEMBER_ID = "95943d3c-4cc9-4a24-a177-967896ff86d7";
 
     @Autowired
     private LearnerRepository learners;
@@ -88,22 +85,6 @@ class LearnerRetentionLiquibaseIntegrationTest {
         jdbc.update(
                 "INSERT INTO claude_connection (subject, learner_skillpilot_id, created_at) VALUES (?, ?, ?)",
                 CLAUDE_SUBJECT, DUE_ID, Timestamp.from(now));
-        jdbc.update(
-                "INSERT INTO teacher_workspace (id, access_token_hash, created_at) VALUES (?, ?, ?)",
-                TEACHER_WORKSPACE_ID, "a".repeat(64), Timestamp.from(now));
-        jdbc.update(
-                "INSERT INTO teacher_course "
-                        + "(id, workspace_id, course_label, teacher_display_name, created_at) "
-                        + "VALUES (?, ?, ?, ?, ?)",
-                TEACHER_COURSE_ID, TEACHER_WORKSPACE_ID, "Retention course", "Teacher", Timestamp.from(now));
-        jdbc.update(
-                "INSERT INTO teacher_membership "
-                        + "(member_id, invitation_id, course_id, learner_id, status, "
-                        + "personal_curriculum_read, mastery_read, expires_at, created_at, accepted_at) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                TEACHER_MEMBER_ID, "c1b8b69d-dd32-47d5-86ed-e43ae888dccc",
-                TEACHER_COURSE_ID, DUE_ID, "ACTIVE", true, true,
-                Timestamp.from(now.plusSeconds(300)), Timestamp.from(now), Timestamp.from(now));
 
         // A different learner currently records the due ID as import provenance.
         jdbc.update(
@@ -127,8 +108,6 @@ class LearnerRetentionLiquibaseIntegrationTest {
         assertThat(count("chat_session", "learner_skillpilot_id", DUE_ID)).isZero();
         assertThat(count("openai_de_learning_session", "learner_id", DUE_ID)).isZero();
         assertThat(count("claude_connection", "learner_skillpilot_id", DUE_ID)).isZero();
-        assertThat(count("teacher_membership", "learner_id", DUE_ID)).isZero();
-        assertThat(count("teacher_course", "id", TEACHER_COURSE_ID)).isOne();
         assertThat(count("learner_copy_sources", "source_id", DUE_ID)).isZero();
         assertThat(count("oauth2_authorization", "principal_name", CLAUDE_SUBJECT)).isZero();
         assertThat(count("oauth2_authorization_consent", "principal_name", CLAUDE_SUBJECT)).isZero();

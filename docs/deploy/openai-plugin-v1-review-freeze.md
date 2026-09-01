@@ -1,6 +1,6 @@
 # SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre
 
-**Stand:** 28. August 2026
+**Stand:** 31. August 2026
 
 **Portalstatus:** `Review`
 
@@ -1330,6 +1330,161 @@ lückenlos verketteten Supplemental-Hash. Gleichbleibende Bytes dürfen für ein
 zweite fachliche Ausnahme erneut gebunden werden; geänderte Bytes benötigen
 zwingend `priorAuthorizedSha256`. Damit wird kein früherer Prüfstand
 überschrieben und kein eingereichter OpenAI-Baseline-Hash umgedeutet.
+
+### 6.24 Ablösende Ausnahme: lokale Direktansicht mit bekannter SkillPilot-ID
+
+Der Product Owner hat am **31. August 2026** nach ausdrücklicher Abwägung eines
+abgeleiteten Betreuungsschlüssels entschieden, beim gegenwärtigen
+Identitätsmodell keine zusätzliche Zugriffssicherheit vorzutäuschen. Eine
+dauerhafte SkillPilot-ID ist bereits das Bearer-Geheimnis und der
+Vollzugriffsschlüssel des Lernendenzustands. Eine Einladung oder serverseitige
+Lehrer-Schüler-Verknüpfung würde diese Befugnis nicht begrenzen, wohl aber den
+Workflow verkomplizieren und zusätzliche Beziehungsdaten erzeugen.
+
+Diese Entscheidung löst den in Abschnitt 6.21 freigegebenen Einladungs- und
+Mitgliedschaftsweg vollständig ab. Abschnitt 6.21 und die dazugehörige
+Datenschutzentscheidung in Abschnitt 6.22 bleiben als historische
+Hashnachweise erhalten, beschreiben aber nicht mehr das aktive Produktmodell.
+Freigegeben ist ausschließlich:
+
+- aus der Kursorganisation für genau eine bekannte bestehende SkillPilot-ID
+  eine browserlokale Klasse mit lokalem Alias anzulegen;
+- das vollständige unterstützte Level-2-Personalisierungsbild der ausgewählten
+  Fächer aus dem normalen Lernendenprofil zu übernehmen und Mathematik, Physik
+  sowie weitere ausgewählte Fächer in derselben lokalen Karte umschaltbar
+  darzustellen;
+- beim Öffnen Profil und Mastery mit `cache: no-store` ausschließlich über die
+  normalen Lernenden-Endpunkte zu aktualisieren, ohne die geplanten Lernziele
+  der lernenden Person zu lesen oder zu verändern;
+- die Oberfläche gegenüber Personalisierung, Fokus, lernendenseitiger Planung,
+  Mastery und sonstigem Lernendenzustand funktional nur lesend zu halten. Ein
+  separater lokaler Kursplan der Lehrkraft bleibt als reine Lehrerarbeitskopie
+  editierbar;
+- die Direkt-ID-Klasse über den bereits freigegebenen passwortverschlüsselten
+  Klassenexport aus Abschnitt 6.23 zu sichern. Der Export darf Alias,
+  dauerhafte SkillPilot-ID und lokale Personalisierung enthalten und bleibt
+  deshalb ein Bearer-Secret-Container;
+- die Funktion im First-Party-WebGUI zu aktivieren und im isolierten
+  Package-Consumer sowohl bei der Anlage als auch bei Import und vorbereitetem
+  Browserzustand fail-closed zu deaktivieren;
+- den bisherigen Einladungs-, Zustimmungs-, Workspace-, Kurs- und
+  Mitgliedschaftsweg samt `/betreuung`-Ansicht und Teacher-Supervision-API zu
+  entfernen;
+- die historischen Datenbanktabellen mit einer neuen vorwärtsgerichteten
+  Liquibase-Migration in der Reihenfolge Mitgliedschaft → Kurs → Workspace zu
+  löschen. Die historische Anlage-Migration `027` bleibt unverändert erhalten,
+  damit bestehende Installationen reproduzierbar auf `028` aktualisieren
+  können.
+
+Insbesondere gibt es keine serverseitige Lehrer-Schüler-Beziehung, Einladung,
+Mitgliedschaft, Zustimmung, Widerrufsaktion oder besondere Retention dieses
+Workflows. „Nur lesend“ ist eine Grenze der Traineroberfläche und keine
+Einschränkung der SkillPilot-ID. Wer die ID kennt, besitzt weiterhin den
+normalen vollständigen Lernendenzugriff; Entfernen der lokalen Karte widerruft
+die ID nicht.
+
+**Keine alte Klassenkarte bleibt erhalten.** Beim ersten Trainer-Laden werden
+alle Karten mit `linked-supervision`, `linkedSupervision` oder
+`teacher-membership` aus dem lokalen Klassenbestand entfernt. Gleichzeitig
+werden alte Workspace- und Pending-Credentials, ein betroffener
+Active-Class-Zeiger sowie alle unter der alten Karten-ID gespeicherten lokalen
+Kurspläne entfernt. Ein fehlerhafter anderer lokaler Eintrag darf diese
+Bereinigung nicht zurückrollen. Die Karten werden nicht konvertiert, und alte
+serververknüpfte Klassenimporte bleiben fail-closed abgewiesen. Eine gewünschte
+Betreuung wird mit der bekannten dauerhaften SkillPilot-ID neu angelegt.
+
+Die fortlaufende Hashkette der geschützten Backend-Konfiguration kehrt nach der
+vollständigen Entfernung des Teacher-Supervision-Zweigs auf den zuvor bereits
+autorisierten Feedback-Konfigurationsstand zurück:
+
+- `backend/src/main/resources/application.yml`:
+  `15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591`
+  → `83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990`
+  → `7377e3aa197f1156c3ca425b57ff08bde430a451ba1b5f0b27bc1359743c616f`
+  → `83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990`.
+
+Die zentrale Trainer-Hashkette wird ebenfalls fortgeführt:
+
+- `app/src/views/TrainerView.tsx`:
+  `5bbe38b12464e4fa128f7299b2a462f791a8f286bff24b9847743877080721ee`
+  → `4350de4ced424cb364fb52379900808c46bd55051ebb95e412198277dfd00e11`.
+
+Die maßgebliche Browserregression bindet Direktanlage, Fächerwechsel,
+No-Store-Lesezugriffe, das Verbot von Lernendenwrites, die Löschung der alten
+Karte einschließlich ihrer lokalen Nebendaten und den Schutz gegen eine
+verspätete Wiederherstellung:
+
+- `app/scripts/testExistingLearnerTrainerUi.ts`:
+  `e1de40b61b30bbc415bb57699986506ababef6efafea05b2938d73328b1733a9`.
+
+Die isolierte Package-Consumer-Negativregression ist separat gebunden:
+
+- `app/scripts/testExistingLearnerDisabledUi.ts`:
+  `3223a96db8c1a60e3be9389cd113330bc61a99946ca4e92ab2e4a8b57fa4ae21`.
+
+Die unveränderte historische Anlage und der vorwärtsgerichtete Rückbau sind
+zusammen mit dem echten Upgrade-Test gebunden:
+
+- `backend/src/main/resources/db/changelog/changes/027-add-teacher-supervision.yaml`:
+  `5b63be9390b6fe93f655e2ffa920b6dafdfcb31266e3394232c12fdb8d23519b`;
+- `backend/src/main/resources/db/changelog/changes/028-drop-teacher-supervision.yaml`:
+  `5012717fa21639108f039a8a54109703732e139fc783c0e0ffec47021f2be84f`;
+- `backend/src/test/java/com/skillpilot/backend/migration/TeacherSupervisionRemovalMigrationTest.java`:
+  `1f11dc621d873a02f2c6f2b7ef15a181281bd3d140e08f77692496cd3fef27b1`.
+
+Der vollständige Quell-, Test-, Konfigurations-, CI-, Migrations- und
+Dokumentationsumfang ist in `review-freeze.json` einzeln hashgebunden. Entfernte
+Dateien sind dort als endgültige Tombstones geführt. Das gilt auch für die
+frühere zentrale Evidenz
+`app/scripts/testTeacherSupervisionTrainerUi.ts`; ihr letzter autorisierter
+Hash
+`5b78c3ef9e337eecc2050e71a1528581f0c89439e1182576dab18b2d7a7b007c`
+bleibt in der Kette erhalten, während der Checker ihre Abwesenheit und das
+Verbot einer späteren Wiedereinführung prüft.
+
+Der eingereichte OpenAI-V1-Vertrag, sein First-Party-ChatGPT-Start,
+MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Sessions, Reviewfälle, Portalwerte,
+Fixtures und Reviewartefakte bleiben unverändert. Deshalb ist weder ein
+Zurückziehen noch eine erneute Einreichung im OpenAI-Portal erforderlich.
+
+### 6.25 Ablösende Klarstellung: Datenschutz der lokalen Direkt-ID-Ansicht
+
+Der Product Owner hat am **31. August 2026** entschieden, die durch Abschnitt
+6.24 überholte Datenschutzbeschreibung aus Abschnitt 6.22 vollständig durch
+die tatsächliche lokale Datenverarbeitung zu ersetzen. Die historische
+Hashkette bleibt erhalten; die aktive deutsche und englische Information nennt
+jetzt ausdrücklich:
+
+- lokale Speicherung von Klassenname, Alias, dauerhafter SkillPilot-ID und
+  einer bereinigten Personalisierungskopie im Browser der Lehrkraft;
+- direkte Profil- und Mastery-Lesezugriffe über die normalen
+  Lernenden-Endpunkte ohne serverseitige Lehrerklasse, Berechtigung oder
+  Mitgliedschaft;
+- die funktional nur lesende Grenze gegenüber Lernendendaten sowie die davon
+  getrennte editierbare lokale Lehrerplanung;
+- den Vollzugriffscharakter der dauerhaften ID und die Tatsache, dass lokales
+  Löschen sie weder ungültig macht noch Kopien anderswo entfernt; und
+- den möglichen Inhalt eines bewusst erzeugten passwortverschlüsselten
+  Klassenexports sowie die Begrenzung dieses Schutzes auf die verschlüsselte
+  Datei und ihr geheim gehaltenes Passwort.
+
+Entfallen sind Aussagen über Einladungsfrist, Zustimmung, Mitgliedschaft,
+Widerruf, Kursende und eine besondere 30-tägige Retention, weil keine solchen
+Serverdatensätze mehr erzeugt werden.
+
+Der geschützte Text setzt seine eingereichte Baseline und die historische
+Zwischenfreigabe lückenlos fort:
+
+- `app/src/utils/privacyViewCopy.ts`:
+  `471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b`
+  → `7bbdc2dd7f88ae7e68c17552dbe44d17b830d55d45c165b65c9b2436563f468b`
+  → `4ab1f49f2339b8e2ef3e758e4fb3bedf33e37ae8ca792382c1c79dbc2ae0bab0`;
+- `app/src/utils/privacyViewCopy.test.ts`:
+  `1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295`
+  → `ce06b90403e5b4501908044e9ca6f0954c2176f0cd9478e8ee976a597971b47f`.
+
+Die Klarstellung ändert keine andere Rechtszusage und keinen eingereichten
+OpenAI-Vertrag oder Reviewablauf. Eine Portalaktion ist nicht erforderlich.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den

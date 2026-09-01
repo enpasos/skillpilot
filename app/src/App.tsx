@@ -50,7 +50,6 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
-  '/betreuung',
   ...(IS_PACKAGE_CONSUMER_BUILD ? [] : ['/lernzielbuch', '/lernziel-feedback', ...REPOSITORY_AUTHORING_PATHS]),
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
@@ -72,7 +71,6 @@ const StoryView = lazy(() => import('./views/StoryView').then((module) => ({ def
 const UsersView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/UsersView').then((module) => ({ default: module.UsersView })))
 const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
 const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
-const TeacherSupervisionConsentView = lazy(() => import('./views/TeacherSupervisionConsentView').then((module) => ({ default: module.TeacherSupervisionConsentView })))
 const GoalBookView = IS_PACKAGE_CONSUMER_BUILD
   ? () => null
   : lazy(() => import('./views/GoalBookView').then((module) => ({ default: module.GoalBookView })))
@@ -576,11 +574,6 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Submit structured, version-bound criticism of a published SkillPilot learning goal for critical review.'
           : 'Strukturierte, versionsgebundene Kritik zu einem veröffentlichten SkillPilot-Lernziel zur kritischen Prüfung einreichen.'
-      } else if (path === '/betreuung') {
-        title = `${language === 'en' ? 'Approve supervision' : 'Betreuung freigeben'} | ${baseTitle}`
-        description = language === 'en'
-          ? 'Review, approve, and revoke read-only SkillPilot supervision access.'
-          : 'Lesenden SkillPilot-Betreuungszugriff prüfen, freigeben und widerrufen.'
       } else if (isWhitepaperPath) {
         const overview = getSkillPilotOverviewCopy(metadataLanguage)
         title = `${overview.title} | ${baseTitle}`
@@ -786,7 +779,6 @@ const App: React.FC = () => {
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/imprint" element={<ImprintView />} />
             <Route path="/curricula" element={<CurriculaView />} />
-            <Route path="/betreuung" element={<TeacherSupervisionConsentView />} />
             {!IS_PACKAGE_CONSUMER_BUILD && (
               <>
                 <Route path="/lernzielbuch" element={<GoalBookView />} />

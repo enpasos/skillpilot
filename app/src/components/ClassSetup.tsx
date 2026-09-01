@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
@@ -21,30 +21,12 @@ import { getDisplayCourseProfileFilters, getDisplayFiltersForSelection } from '.
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getClassSetupCopy } from '../utils/curriculumSetupCopy'
 import {
-  buildLinkedClassSession,
-  clearTeacherPendingSupervision,
-  clearTeacherPendingSupervisionSnapshot,
-  createTeacherCourse,
-  createTeacherInvitation,
-  createTeacherWorkspace,
-  deleteTeacherCourse,
-  ensureTeacherWorkspace,
-  findTeacherWorkspaceCredential,
-  getTeacherPendingSupervisionRecordSnapshot,
-  getTeacherCourse,
-  hasTeacherPendingSupervisionRecord,
-  isLinkedClassSession,
-  isTeacherSupervisionNotFound,
-  loadTeacherPendingSupervision,
-  removeTeacherWorkspaceCredential,
-  saveTeacherPendingCleanup,
-  saveTeacherPendingInvitation,
-  TeacherSupervisionApiError,
-  TEACHER_SUPERVISION_ENABLED,
-  toFragmentInvitationUrl,
-  type TeacherWorkspaceCredential,
-} from '../utils/teacherSupervision'
-import { getTeacherSupervisionCopy } from '../utils/teacherSupervisionCopy'
+  buildExistingLearnerClassSession,
+  EXISTING_LEARNER_LINKING_ENABLED,
+  fetchExistingLearnerProfile,
+  isExistingLearnerClassSession,
+} from '../utils/existingLearnerClass'
+import { getExistingLearnerClassCopy } from '../utils/existingLearnerClassCopy'
 
 interface ClassSetupProps {
   landscapes: LandscapeEntry[]
@@ -56,91 +38,11 @@ interface ClassSetupProps {
 
 const normalizeWildcardFilter = (filterId?: string) => filterId ?? 'ALL'
 
-interface PendingTeacherInvitation {
-  credential: TeacherWorkspaceCredential
-  courseId: string
-  memberId: string
-  invitationUrl: string
-  pollingStopped?: boolean
-}
-
-interface PendingCourseCleanup {
-  credential: TeacherWorkspaceCredential | null
-  workspaceId: string | null
-  courseId: string | null
-  storageSnapshot?: string
-  cleanupRequired: true
-}
-
-type PendingTeacherState = PendingTeacherInvitation | PendingCourseCleanup
-
-const isPendingCourseCleanup = (value: PendingTeacherState): value is PendingCourseCleanup =>
-  'cleanupRequired' in value && value.cleanupRequired === true
-
-interface RestoredPendingTeacherState {
-  pending: PendingTeacherState
-  className?: string
-  learnerAlias?: string
-}
-
-const restorePendingTeacherState = (): RestoredPendingTeacherState | null => {
-  const stored = loadTeacherPendingSupervision()
-  if (!stored) {
-    const storageSnapshot = getTeacherPendingSupervisionRecordSnapshot()
-    return storageSnapshot !== null
-      ? {
-          pending: {
-            credential: null,
-            workspaceId: null,
-            courseId: null,
-            storageSnapshot,
-            cleanupRequired: true,
-          },
-        }
-      : null
-  }
-  const credential = findTeacherWorkspaceCredential(stored.workspaceId)
-  if (!credential) {
-    saveTeacherPendingCleanup(
-      { workspaceId: stored.workspaceId, courseId: stored.courseId },
-      { requireExisting: true },
-    )
-    return {
-      pending: {
-        credential: null,
-        workspaceId: stored.workspaceId,
-        courseId: stored.courseId,
-        cleanupRequired: true,
-      },
-    }
-  }
-  if (stored.kind === 'cleanup-required') {
-    return {
-      pending: {
-        credential,
-        workspaceId: stored.workspaceId,
-        courseId: stored.courseId,
-        cleanupRequired: true,
-      },
-    }
-  }
-  return {
-    pending: {
-      credential,
-      courseId: stored.courseId,
-      memberId: stored.memberId,
-      invitationUrl: stored.invitationUrl,
-    },
-    className: stored.className,
-    learnerAlias: stored.learnerAlias,
-  }
-}
-
 export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscapeId, initialSession, onSave, onCancel }) => {
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const copy = getClassSetupCopy(localizedLanguage)
-  const supervisionCopy = getTeacherSupervisionCopy(localizedLanguage)
+  const existingCopy = getExistingLearnerClassCopy(localizedLanguage)
   const runtimeCatalogState = useRuntimeCurriculumCatalog()
   const offeringSource = useMemo(
     () => resolveCurriculumOfferingSource(runtimeCatalogState),
@@ -156,14 +58,11 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   )
 
   const isEditing = Boolean(initialSession)
-  const isEditingLinked = isLinkedClassSession(initialSession)
-  const [restoredPending] = useState<RestoredPendingTeacherState | null>(() => (
-    !isEditing && TEACHER_SUPERVISION_ENABLED ? restorePendingTeacherState() : null
-  ))
-  const [creationMode, setCreationMode] = useState<'generated' | 'linked'>(
-    isEditingLinked || restoredPending ? 'linked' : 'generated',
+  const isEditingExisting = isExistingLearnerClassSession(initialSession)
+  const [creationMode, setCreationMode] = useState<'generated' | 'existing'>(
+    isEditingExisting ? 'existing' : 'generated',
   )
-  const [className, setClassName] = useState(restoredPending?.className ?? initialSession?.name ?? '')
+  const [className, setClassName] = useState(initialSession?.name ?? '')
   const [selectedLandscapeId, setSelectedLandscapeId] = useState(() => {
     if (
       initialSession?.landscapeId
@@ -200,23 +99,13 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   ))
   const [studentNames, setStudentNames] = useState('')
   const [learnerAlias, setLearnerAlias] = useState(
-    restoredPending?.learnerAlias ?? initialSession?.students[0]?.name ?? '',
+    initialSession?.students[0]?.name ?? '',
   )
-  const [teacherDisplayName, setTeacherDisplayName] = useState('')
-  const [invitationCourseLabel, setInvitationCourseLabel] = useState(
-    localizedLanguage === 'de' ? 'SkillPilot-Einzelbetreuung' : 'SkillPilot individual supervision',
+  const [existingSkillpilotId, setExistingSkillpilotId] = useState(
+    isEditingExisting ? initialSession?.students[0]?.id ?? '' : '',
   )
-  const [existingSkillpilotId, setExistingSkillpilotId] = useState('')
-  const [pendingInvitation, setPendingInvitation] = useState<PendingTeacherState | null>(
-    restoredPending?.pending ?? null,
-  )
-  const [isCheckingConsent, setIsCheckingConsent] = useState(false)
-  const [linkCopied, setLinkCopied] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const completionStartedRef = useRef(false)
-  const completionInFlightRef = useRef(false)
-  const pendingCancelledRef = useRef(false)
 
   const selectedLandscape = useMemo(
     () => subjectLandscapes.find((entry) => entry.meta.landscapeId === selectedLandscapeId)
@@ -351,256 +240,38 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     })
   }
 
-  const requireCourseCleanup = useCallback((credential: TeacherWorkspaceCredential, courseId: string) => {
-    saveTeacherPendingCleanup(
-      { workspaceId: credential.workspaceId, courseId },
-      { requireExisting: true },
-    )
-    setPendingInvitation({
-      credential,
-      workspaceId: credential.workspaceId,
-      courseId,
-      cleanupRequired: true,
-    })
-  }, [])
-
-  const completeLinkedClass = useCallback(async (
-    invitation: PendingTeacherInvitation,
-    signal?: AbortSignal,
-  ) => {
-    if (
-      completionStartedRef.current
-      || completionInFlightRef.current
-      || invitation.pollingStopped
-    ) return false
-    completionInFlightRef.current = true
-    setIsCheckingConsent(true)
+  const handleCreateExisting = async () => {
     try {
-      const course = await getTeacherCourse(invitation.credential, invitation.courseId, signal)
-      if (pendingCancelledRef.current) return false
-      const activeMember = course.members.find(
-        (member) => member.memberId === invitation.memberId
-          && member.status.trim().toLowerCase() === 'active',
-      )
-      if (!activeMember) {
-        const terminalMember = course.members.find((member) => {
-          if (member.memberId !== invitation.memberId) return false
-          const status = member.status.trim().toLowerCase()
-          return status === 'revoked' || status === 'expired' || status === 'rejected'
-        })
-        if (terminalMember) {
-          requireCourseCleanup(invitation.credential, invitation.courseId)
-          setError(supervisionCopy.requestFailed)
-        }
-        return false
-      }
-      const session = buildLinkedClassSession({
-        className: className.trim(),
-        learnerAlias: learnerAlias.trim(),
-        workspaceId: invitation.credential.workspaceId,
-        courseId: invitation.courseId,
-        member: activeMember,
+      const profile = await fetchExistingLearnerProfile(existingSkillpilotId)
+      const session = buildExistingLearnerClassSession({
+        className,
+        learnerAlias,
+        profile,
+        landscapes,
+        rootLandscapeId,
+        existing: isEditingExisting ? initialSession : undefined,
       })
-      if (!onSave(session)) {
-        setError(supervisionCopy.requestFailed)
-        return false
-      }
-      if (!clearTeacherPendingSupervision({
-        workspaceId: invitation.credential.workspaceId,
-        courseId: invitation.courseId,
-      })) {
-        setError(supervisionCopy.requestFailed)
-        return false
-      }
-      completionStartedRef.current = true
-      setPendingInvitation(null)
-      return true
+      if (!onSave(session)) throw new Error('local-save-failed')
     } catch (nextError) {
-      if (signal?.aborted) return false
-      console.warn('Could not check teacher supervision approval', nextError)
-      setError(supervisionCopy.requestFailed)
-      if (
-        isTeacherSupervisionNotFound(nextError)
-        || (nextError instanceof TeacherSupervisionApiError && nextError.status === 401)
-      ) {
-        requireCourseCleanup(invitation.credential, invitation.courseId)
-      }
-      return false
-    } finally {
-      completionInFlightRef.current = false
-      if (!signal?.aborted) setIsCheckingConsent(false)
-    }
-  }, [className, learnerAlias, onSave, requireCourseCleanup, supervisionCopy.requestFailed])
-
-  useEffect(() => {
-    if (
-      !pendingInvitation
-      || isPendingCourseCleanup(pendingInvitation)
-      || pendingInvitation.pollingStopped
-    ) return
-    const controller = new AbortController()
-    const intervalId = window.setInterval(() => {
-      void completeLinkedClass(pendingInvitation, controller.signal)
-    }, 4_000)
-    return () => {
-      window.clearInterval(intervalId)
-      controller.abort()
-    }
-  }, [completeLinkedClass, pendingInvitation])
-
-  const handleCancelPendingInvitation = async () => {
-    if (!pendingInvitation) return
-    const credential = pendingInvitation.credential
-    const courseId = pendingInvitation.courseId
-    if (!credential || !courseId) {
-      setError(supervisionCopy.cancelFailed)
-      return
-    }
-    pendingCancelledRef.current = true
-    setIsGenerating(true)
-    setError(null)
-    try {
-      await deleteTeacherCourse(credential, courseId)
-      if (!clearTeacherPendingSupervision({ workspaceId: credential.workspaceId, courseId })) {
-        requireCourseCleanup(credential, courseId)
-        setError(supervisionCopy.cancelFailed)
-        return
-      }
-      setPendingInvitation(null)
-      onCancel()
-    } catch (nextError) {
-      console.warn('Could not cancel teacher supervision invitation', nextError)
-      pendingCancelledRef.current = false
-      setError(supervisionCopy.cancelFailed)
-      requireCourseCleanup(credential, courseId)
-    } finally {
-      setIsGenerating(false)
-    }
-  }
-
-  const handleDiscardBlockedPending = () => {
-    if (!pendingInvitation || !isPendingCourseCleanup(pendingInvitation) || pendingInvitation.credential) return
-    if (!window.confirm(supervisionCopy.pendingLocalDiscardWarning)) return
-    const cleared = pendingInvitation.workspaceId && pendingInvitation.courseId
-      ? clearTeacherPendingSupervision({
-          workspaceId: pendingInvitation.workspaceId,
-          courseId: pendingInvitation.courseId,
-        })
-      : pendingInvitation.storageSnapshot
-        ? clearTeacherPendingSupervisionSnapshot(pendingInvitation.storageSnapshot)
-        : false
-    if (!cleared) {
-      setError(supervisionCopy.cancelFailed)
-      return
-    }
-    setPendingInvitation(null)
-    onCancel()
-  }
-
-  const handleCreateLinked = async () => {
-    if (isEditingLinked && initialSession) {
-      onSave({
-        ...initialSession,
-        name: className.trim(),
-        students: initialSession.students.map((student, index) => index === 0
-          ? { ...student, name: learnerAlias.trim() }
-          : student),
-      })
-      return
-    }
-
-    let credential: TeacherWorkspaceCredential | null = null
-    let courseId = ''
-    try {
-      credential = await ensureTeacherWorkspace()
-      const courseInput = {
-        courseLabel: invitationCourseLabel.trim(),
-        teacherDisplayName: teacherDisplayName.trim(),
-      }
-      let course
-      try {
-        course = await createTeacherCourse(credential, courseInput)
-      } catch (courseError) {
-        const canReplaceExpiredCredential = courseError instanceof TeacherSupervisionApiError
-          && courseError.status === 401
-          && !hasTeacherPendingSupervisionRecord()
-          && removeTeacherWorkspaceCredential(credential)
-        if (!canReplaceExpiredCredential) throw courseError
-        credential = await createTeacherWorkspace()
-        course = await createTeacherCourse(credential, courseInput)
-      }
-      courseId = course.courseId
-      if (!saveTeacherPendingCleanup({ workspaceId: credential.workspaceId, courseId })) {
-        try {
-          await deleteTeacherCourse(credential, courseId)
-        } catch (cleanupError) {
-          console.warn('Could not clean up untracked teacher course', cleanupError)
-          setPendingInvitation({
-            credential,
-            workspaceId: credential.workspaceId,
-            courseId,
-            cleanupRequired: true,
-          })
-          setError(supervisionCopy.cancelFailed)
-          return
-        }
-        throw new Error('Could not persist pending teacher supervision cleanup marker')
-      }
-      try {
-        const invitation = await createTeacherInvitation(
-          credential,
-          courseId,
-          existingSkillpilotId.trim(),
-        )
-        const invitationUrl = toFragmentInvitationUrl(invitation.invitationUrl)
-        setExistingSkillpilotId('')
-        if (!saveTeacherPendingInvitation({
-          workspaceId: credential.workspaceId,
-          courseId,
-          memberId: invitation.memberId,
-          invitationUrl,
-          className: className.trim(),
-          learnerAlias: learnerAlias.trim(),
-        })) {
-          throw new Error('Could not persist pending teacher supervision')
-        }
-        setPendingInvitation({
-          credential,
-          courseId,
-          memberId: invitation.memberId,
-          invitationUrl,
-        })
-        pendingCancelledRef.current = false
-      } catch (inviteError) {
-        setExistingSkillpilotId('')
-        try {
-          await deleteTeacherCourse(credential, courseId)
-          if (!clearTeacherPendingSupervision({ workspaceId: credential.workspaceId, courseId })) {
-            requireCourseCleanup(credential, courseId)
-            setError(supervisionCopy.cancelFailed)
-            return
-          }
-        } catch (cleanupError) {
-          console.warn('Could not clean up incomplete teacher course', cleanupError)
-          requireCourseCleanup(credential, courseId)
-          setError(supervisionCopy.cancelFailed)
-          return
-        }
-        throw inviteError
-      }
-    } catch (nextError) {
-      console.warn('Could not create teacher supervision invitation', nextError)
-      setError(supervisionCopy.requestFailed)
+      const message = nextError instanceof Error ? nextError.message : ''
+      if (message === 'learner-not-found') setError(existingCopy.learnerNotFound)
+      else if (message === 'missing-personalized-subjects') setError(existingCopy.noSubjects)
+      else if (
+        message === 'invalid-personal-curriculum'
+        || message === 'missing-personal-curriculum'
+        || message === 'invalid-learner-profile'
+      ) setError(existingCopy.invalidProfile)
+      else setError(existingCopy.profileUnavailable)
     }
   }
 
   const handleCreate = async (event: React.FormEvent) => {
     event.preventDefault()
-    if (creationMode === 'linked') {
+    if (creationMode === 'existing') {
       setIsGenerating(true)
       setError(null)
       try {
-        await handleCreateLinked()
+        await handleCreateExisting()
       } finally {
         setIsGenerating(false)
       }
@@ -709,106 +380,21 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     }
   }
 
-  if (pendingInvitation) {
-    const cleanupRequired = isPendingCourseCleanup(pendingInvitation)
-    const cleanupBlocked = cleanupRequired && !pendingInvitation.credential
-    return (
-      <div className="max-w-2xl w-full mx-auto bg-sidebar-bg p-8 rounded-xl border border-border-color shadow-xl transition-colors">
-        <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400">{supervisionCopy.invitationTitle}</h2>
-        <p className="mt-3 text-sm leading-6 text-text-secondary">{supervisionCopy.invitationHint}</p>
-        {!cleanupRequired && (
-          <div className="mt-6">
-            <label htmlFor="teacher-invitation-url" className="block text-xs uppercase text-text-secondary font-bold mb-1">
-              {supervisionCopy.invitationLinkLabel}
-            </label>
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <input
-                id="teacher-invitation-url"
-                readOnly
-                value={pendingInvitation.invitationUrl}
-                className="min-w-0 flex-1 bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono text-sm"
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  const invitationUrl = pendingInvitation.invitationUrl
-                  void navigator.clipboard.writeText(invitationUrl)
-                    .then(() => {
-                      setLinkCopied(true)
-                      window.setTimeout(() => setLinkCopied(false), 2_000)
-                    })
-                    .catch(() => {
-                      const input = document.getElementById('teacher-invitation-url') as HTMLInputElement | null
-                      input?.focus()
-                      input?.select()
-                    })
-                }}
-                className="rounded bg-sky-600 px-4 py-2 font-medium text-white hover:bg-sky-500"
-              >
-                {linkCopied ? supervisionCopy.linkCopied : supervisionCopy.copyLink}
-              </button>
-            </div>
-          </div>
-        )}
-        <div className="mt-6 rounded-xl border border-border-color bg-input-bg/40 p-4 text-sm text-text-secondary">
-          {cleanupBlocked
-            ? supervisionCopy.pendingLocalDiscardWarning
-            : cleanupRequired
-            ? supervisionCopy.cancelFailed
-            : isCheckingConsent
-              ? supervisionCopy.checking
-              : supervisionCopy.waitingForConsent}
-        </div>
-        {error && <div className="mt-4 text-sm text-amber-700 dark:text-amber-300">{error}</div>}
-        <div className="mt-6 flex flex-col-reverse justify-end gap-3 border-t border-border-color pt-4 sm:flex-row">
-          {cleanupBlocked ? (
-            <button
-              type="button"
-              onClick={handleDiscardBlockedPending}
-              className="px-4 py-2 text-amber-700 hover:text-amber-600 dark:text-amber-300 dark:hover:text-amber-200"
-            >
-              {supervisionCopy.pendingLocalDiscard}
-            </button>
-          ) : (
-            <button
-              type="button"
-              disabled={isGenerating}
-              onClick={() => void handleCancelPendingInvitation()}
-              className="px-4 py-2 text-text-secondary hover:text-text-primary disabled:opacity-50"
-            >
-              {supervisionCopy.cancelInvitation}
-            </button>
-          )}
-          {!cleanupRequired && !pendingInvitation.pollingStopped && (
-            <button
-              type="button"
-              disabled={isCheckingConsent}
-              onClick={() => void completeLinkedClass(pendingInvitation)}
-              className="rounded bg-sky-600 px-5 py-2 font-medium text-white hover:bg-sky-500 disabled:opacity-50"
-            >
-              {isCheckingConsent ? supervisionCopy.checking : supervisionCopy.checkNow}
-            </button>
-          )}
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="max-w-4xl w-full mx-auto bg-sidebar-bg p-8 rounded-xl border border-border-color shadow-xl transition-colors">
       <h2 className="text-xl font-bold text-sky-600 dark:text-sky-400 mb-6">
         {isEditing ? copy.editTitle : copy.title}
       </h2>
       <form onSubmit={handleCreate} className="space-y-6">
-        {!isEditing && TEACHER_SUPERVISION_ENABLED && (
+        {!isEditing && EXISTING_LEARNER_LINKING_ENABLED && (
           <fieldset>
             <legend className="block text-xs uppercase text-text-secondary font-bold mb-2">
-              {supervisionCopy.createModeLabel}
+              {existingCopy.createModeLabel}
             </legend>
             <div className="grid gap-3 md:grid-cols-2">
               {([
-                ['generated', supervisionCopy.generatedMode, supervisionCopy.generatedModeHint],
-                ['linked', supervisionCopy.linkedMode, supervisionCopy.linkedModeHint],
+                ['generated', existingCopy.generatedMode, existingCopy.generatedModeHint],
+                ['existing', existingCopy.existingMode, existingCopy.existingModeHint],
               ] as const).map(([mode, label, hint]) => (
                 <label
                   key={mode}
@@ -845,75 +431,46 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           />
         </div>
 
-        {creationMode === 'linked' && (
+        {creationMode === 'existing' && (
           <div className="space-y-5 rounded-xl border border-sky-200 bg-sky-50/70 p-5 dark:border-sky-900/60 dark:bg-sky-950/20">
-            {isEditingLinked && (
-              <p className="text-sm leading-6 text-text-secondary">{supervisionCopy.linkedEditHint}</p>
+            {isEditingExisting && (
+              <p className="text-sm leading-6 text-text-secondary">{existingCopy.editHint}</p>
             )}
             <div>
-              <label htmlFor="trainer-linked-learner-alias" className="block text-xs uppercase text-text-secondary font-bold mb-1">
-                {supervisionCopy.learnerAliasLabel}
+              <label htmlFor="trainer-existing-learner-alias" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+                {existingCopy.learnerAliasLabel}
               </label>
               <input
-                id="trainer-linked-learner-alias"
+                id="trainer-existing-learner-alias"
                 required
                 value={learnerAlias}
                 onChange={(event) => setLearnerAlias(event.target.value)}
-                placeholder={supervisionCopy.learnerAliasPlaceholder}
+                placeholder={existingCopy.learnerAliasPlaceholder}
                 className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary focus:border-sky-500 outline-none"
               />
-              <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.learnerAliasHint}</p>
+              <p className="mt-1 text-[11px] text-text-secondary">{existingCopy.learnerAliasHint}</p>
             </div>
-            {!isEditingLinked && (
-              <>
-                <div>
-                  <label htmlFor="trainer-linked-teacher-name" className="block text-xs uppercase text-text-secondary font-bold mb-1">
-                    {supervisionCopy.teacherDisplayNameLabel}
-                  </label>
-                  <input
-                    id="trainer-linked-teacher-name"
-                    required
-                    maxLength={80}
-                    value={teacherDisplayName}
-                    onChange={(event) => setTeacherDisplayName(event.target.value)}
-                    placeholder={supervisionCopy.teacherDisplayNamePlaceholder}
-                    className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary focus:border-sky-500 outline-none"
-                  />
-                  <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.teacherDisplayNameHint}</p>
-                </div>
-                <div>
-                  <label htmlFor="trainer-linked-course-label" className="block text-xs uppercase text-text-secondary font-bold mb-1">
-                    {supervisionCopy.invitationCourseLabel}
-                  </label>
-                  <input
-                    id="trainer-linked-course-label"
-                    required
-                    maxLength={80}
-                    value={invitationCourseLabel}
-                    onChange={(event) => setInvitationCourseLabel(event.target.value)}
-                    placeholder={supervisionCopy.invitationCoursePlaceholder}
-                    className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary focus:border-sky-500 outline-none"
-                  />
-                  <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.invitationCourseHint}</p>
-                </div>
-                <div>
-                  <label htmlFor="trainer-linked-skillpilot-id" className="block text-xs uppercase text-text-secondary font-bold mb-1">
-                    {supervisionCopy.learnerIdLabel}
-                  </label>
-                  <input
-                    id="trainer-linked-skillpilot-id"
-                    required
-                    autoComplete="off"
-                    maxLength={80}
-                    value={existingSkillpilotId}
-                    onChange={(event) => setExistingSkillpilotId(event.target.value)}
-                    placeholder={supervisionCopy.learnerIdPlaceholder}
-                    className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono focus:border-sky-500 outline-none"
-                  />
-                  <p className="mt-1 text-[11px] text-text-secondary">{supervisionCopy.learnerIdHint}</p>
-                </div>
-              </>
-            )}
+            <div>
+              <label htmlFor="trainer-existing-skillpilot-id" className="block text-xs uppercase text-text-secondary font-bold mb-1">
+                {existingCopy.learnerIdLabel}
+              </label>
+              <input
+                id="trainer-existing-skillpilot-id"
+                required
+                readOnly={isEditingExisting}
+                autoComplete="off"
+                maxLength={80}
+                value={existingSkillpilotId}
+                onChange={(event) => setExistingSkillpilotId(event.target.value)}
+                placeholder={existingCopy.learnerIdPlaceholder}
+                className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary font-mono focus:border-sky-500 outline-none read-only:opacity-70"
+              />
+              <p className="mt-1 text-[11px] text-text-secondary">{existingCopy.learnerIdHint}</p>
+            </div>
+            <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/25 dark:text-amber-100">
+              <p className="font-semibold">{existingCopy.fullAccessWarningTitle}</p>
+              <p className="mt-1">{existingCopy.fullAccessWarning}</p>
+            </div>
           </div>
         )}
 
@@ -1062,9 +619,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           >
             {isGenerating && <span className="animate-spin">⟳</span>}
             {isEditing
-              ? copy.submitEdit
-              : creationMode === 'linked'
-                ? supervisionCopy.createInvitation
+              ? isEditingExisting ? existingCopy.update : copy.submitEdit
+              : creationMode === 'existing'
+                ? existingCopy.create
                 : copy.submit}
           </button>
         </div>

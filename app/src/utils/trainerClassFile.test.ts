@@ -42,6 +42,32 @@ const SAMPLE_SESSION: ClassSession = {
   currentGoalId: 'PHYSIK_9_KRAEFTE',
   source: 'local-generated',
 }
+const EXISTING_LEARNER_ID = '0d1b63fa-cb42-4435-ae72-15c6d2e27116'
+const EXISTING_LEARNER_SESSION: ClassSession = {
+  id: 'eb426ca8-991f-49ee-aafe-c096f68f3bd7',
+  name: 'Einzelbetreuung',
+  landscapeId: 'DE_DEU_S_GYM_CANONICAL_MATHEMATIK',
+  activeFilter: 'LK',
+  personalConfig: {
+    DE_DEU_S_GYM_CANONICAL: {
+      selected: true,
+      filterId: 'DE-HE',
+      durationModel: 'G9',
+      stage: 'SEK_II',
+    },
+    DE_DEU_S_GYM_CANONICAL_MATHEMATIK: {
+      selected: true,
+      filterId: 'LK',
+    },
+    DE_DEU_S_GYM_CANONICAL_PHYSIK: {
+      selected: true,
+      filterId: 'LK',
+    },
+  },
+  rootLandscapeId: 'DE_DEU_S_GYM_CANONICAL',
+  students: [{ id: EXISTING_LEARNER_ID, name: 'Alex', accessMode: 'learner-id' }],
+  source: 'existing-learner',
+}
 
 const rejectionMessage = async (operation: () => Promise<unknown>): Promise<string> => {
   try {
@@ -92,6 +118,25 @@ assert.deepEqual(
   await decryptTrainerClassFileContent(firstExport, PASSWORD),
   SAMPLE_SESSION,
   'Unicode and every supported optional field must survive a roundtrip',
+)
+const existingLearnerExport = await encryptTrainerClassFileContent(
+  EXISTING_LEARNER_SESSION,
+  PASSWORD,
+)
+assert.equal(
+  existingLearnerExport.includes(EXISTING_LEARNER_ID),
+  false,
+  'the linked SkillPilot ID must never appear in the encrypted class-file envelope',
+)
+assert.equal(
+  existingLearnerExport.includes('Alex'),
+  false,
+  'the local learner alias must never appear in the encrypted class-file envelope',
+)
+assert.deepEqual(
+  await decryptTrainerClassFileContent(existingLearnerExport, PASSWORD),
+  EXISTING_LEARNER_SESSION,
+  'a local existing-learner class must retain all personalized subjects',
 )
 const canonicalRoundtripSession: ClassSession = {
   ...SAMPLE_SESSION,
@@ -278,6 +323,37 @@ for (const linked of [linkedBySource, linkedByMembership, linkedByCapability]) {
   assert.equal(
     thrownMessage(() => parseLegacyTrainerClassFileContent(JSON.stringify(linked))),
     'linked-trainer-class-file-not-supported',
+  )
+}
+
+for (const invalidExistingLearnerSession of [
+  {
+    ...EXISTING_LEARNER_SESSION,
+    students: [
+      ...EXISTING_LEARNER_SESSION.students,
+      { id: SAMPLE_ID, name: 'Zweite Person', accessMode: 'learner-id' },
+    ],
+  },
+  {
+    ...EXISTING_LEARNER_SESSION,
+    students: [{ id: EXISTING_LEARNER_ID, name: 'Alex' }],
+  },
+  {
+    ...EXISTING_LEARNER_SESSION,
+    personalConfig: undefined,
+  },
+  {
+    ...EXISTING_LEARNER_SESSION,
+    personalConfig: {
+      ...EXISTING_LEARNER_SESSION.personalConfig,
+      [EXISTING_LEARNER_SESSION.landscapeId]: { selected: false, filterId: 'LK' },
+    },
+  },
+]) {
+  assert.equal(
+    thrownMessage(() => sanitizeLocalTrainerClassSession(invalidExistingLearnerSession)),
+    'invalid-trainer-class-file',
+    'existing-learner imports must preserve the one-learner personalized class invariant',
   )
 }
 

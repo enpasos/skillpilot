@@ -23,7 +23,6 @@ public class SpaController {
             "/curricula/**",
             "/lernzielbuch",
             "/lernziel-feedback",
-            "/betreuung",
             "/learner/**",
             "/whitepaper",
             "/whitepaper/{path:[^\\.]*}",
