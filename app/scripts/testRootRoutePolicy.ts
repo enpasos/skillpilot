@@ -168,5 +168,10 @@ assert.match(
   /if \(!shouldSyncRouteStateToUrl\(location\.pathname\)\) \{/u,
   'App core must not synchronize stored route state into the root URL',
 )
+assert.match(
+  appCoreSource,
+  /allowImplicitRoot:\s*role !== 'trainer'/u,
+  'a trainer overview must not acquire the sole package root as a hidden global course context',
+)
 
-console.log('Root route policy passed: 24 guarantees.')
+console.log('Root route policy passed: 25 guarantees.')

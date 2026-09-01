@@ -23,6 +23,7 @@ export interface CoursePlanCopy {
   undoLastChange: string
   undoUnavailable: string
   savedLocally: string
+  unsavedLocally: string
   saveFailed: string
   formTitleNew: string
   formTitleEdit: string
@@ -79,6 +80,9 @@ export interface CoursePlanCopy {
   coverageAttested: string
   coverageOpen: string
   coverageChanged: string
+  coverageEffectiveDateLabel: string
+  coverageEffectiveDateHint: string
+  coverageEffectiveDateInvalid: string
   planStatusTitle: string
   planStatusOnTrack: string
   planStatusWatch: string
@@ -122,6 +126,24 @@ export interface CoursePlanCopy {
   exportPlan: string
   exportHint: string
   exportSuccess: string
+  publishPlan: string
+  publishPlanLoading: string
+  publishPlanSaving: string
+  publishConfirmTitle: string
+  publishIndependentCopyBody: string
+  publishNewBody: string
+  publishReplaceBody: (revision: number) => string
+  publishConfirmNew: string
+  publishConfirmReplace: string
+  publishUnavailable: string
+  publishDisabledUnsaved: string
+  publishDisabledNotCalculable: string
+  publishDisabledNoLearningGoals: string
+  publishNoOpenGoals: string
+  publishConflict: string
+  publishFailed: string
+  publishSuccess: (revision: number, totalPlanned: number) => string
+  publishGoalCount: (count: number) => string
   importNotIncluded: string
   protectedExtensionTitle: string
   protectedExtensionBody: string
@@ -154,6 +176,7 @@ const de: CoursePlanCopy = {
   undoLastChange: 'Letzte Planänderung rückgängig machen',
   undoUnavailable: 'Noch keine Planänderung zum Rückgängigmachen',
   savedLocally: 'Lokal gespeichert',
+  unsavedLocally: 'Nicht gespeicherte Änderungen',
   saveFailed: 'Der Kursplan konnte in diesem Browser nicht gespeichert werden.',
   formTitleNew: 'Neuen Planabschnitt anlegen',
   formTitleEdit: 'Planabschnitt bearbeiten',
@@ -210,6 +233,9 @@ const de: CoursePlanCopy = {
   coverageAttested: 'Datenstand für heute bestätigt',
   coverageOpen: 'Datenstand offen – deshalb keine rote oder grüne Planbewertung',
   coverageChanged: 'Seit der letzten Bestätigung wurde der Plan oder Unterrichtsstand geändert.',
+  coverageEffectiveDateLabel: 'Behandelt am',
+  coverageEffectiveDateHint: 'Dieses Datum gilt für die folgenden Änderungen am Unterrichtsstand. Nachträge verändern dadurch nicht das Tempo der letzten sieben Tage.',
+  coverageEffectiveDateInvalid: 'Bitte wähle ein gültiges Datum, das nicht in der Zukunft liegt.',
   planStatusTitle: 'Heutige Planlage',
   planStatusOnTrack: 'Bestätigte Abdeckung im Sollkorridor',
   planStatusWatch: 'Abweichung bitte einordnen',
@@ -253,6 +279,24 @@ const de: CoursePlanCopy = {
   exportPlan: 'Plan exportieren',
   exportHint: 'Der Export entfernt Klassen-ID und lernstandsbezogene Planungsgrundlage. Eigene Freitexte werden unverändert übernommen – bitte keine personenbezogenen Angaben eintragen.',
   exportSuccess: 'Kursplan exportiert – Freitexte bitte vor Weitergabe prüfen.',
+  publishPlan: 'Im Cockpit bereitstellen',
+  publishPlanLoading: 'Cockpit-Stand wird geprüft …',
+  publishPlanSaving: 'Wird im Cockpit bereitgestellt …',
+  publishConfirmTitle: 'Plan als unabhängige Kopie bereitstellen?',
+  publishIndependentCopyBody: 'Der lokale Lehrerplan bleibt unverändert. SkillPilot kopiert nur Bezeichnung, Zeitblöcke und die darin enthaltenen kanonischen Lernziele in den Fachplan des Lernenden. Klassenbezug, Unterrichtsstand, Lernstand, Bestätigungen und Verlauf werden nicht übertragen. Spätere Änderungen werden nicht automatisch synchronisiert.',
+  publishNewBody: 'Für dieses Fach besteht im Cockpit noch kein Plan.',
+  publishReplaceBody: (revision) => `Im Cockpit besteht bereits ein Fachplan (Revision ${revision}). Beim Bestätigen wird er durch eine neue Revision ersetzt.`,
+  publishConfirmNew: 'Unabhängige Kopie bereitstellen',
+  publishConfirmReplace: 'Fachplan ersetzen',
+  publishUnavailable: 'Der Plan kann nicht sicher bereitgestellt werden, weil er keine vollständig auflösbaren kanonischen atomaren Lernziele enthält.',
+  publishDisabledUnsaved: 'Speichere oder verwirf zuerst die noch offenen Änderungen.',
+  publishDisabledNotCalculable: 'Der Plan muss vollständig berechenbar sein, bevor er bereitgestellt werden kann.',
+  publishDisabledNoLearningGoals: 'Ergänze mindestens einen berechenbaren Lernabschnitt mit atomaren Lernzielen.',
+  publishNoOpenGoals: 'Der Plan enthält für dieses Fach keine noch offenen atomaren Lernziele, die im Cockpit bereitgestellt werden könnten.',
+  publishConflict: 'Der Fachplan im Cockpit wurde inzwischen geändert. Nichts wurde überschrieben. Bitte prüfe den aktuellen Stand erneut.',
+  publishFailed: 'Der Plan konnte nicht im Cockpit bereitgestellt werden.',
+  publishSuccess: (revision, totalPlanned) => `Als unabhängige Kopie im Cockpit bereitgestellt · Revision ${revision} · ${totalPlanned} Lernziel${totalPlanned === 1 ? '' : 'e'} im persönlichen Plan`,
+  publishGoalCount: (count) => `${count} kanonische${count === 1 ? 's' : ''} Atomziel${count === 1 ? '' : 'e'} ${count === 1 ? 'wird' : 'werden'} geprüft. Gespeichert werden daraus nur aktuell offene sowie bereits in diesem persönlichen Fachplan erfasste Ziele.`,
   importNotIncluded: 'Ein Import folgt nach dem sicheren Server- und Berechtigungskonzept.',
   protectedExtensionTitle: 'Lernstand und Leitungssicht bleiben geschützt',
   protectedExtensionBody: 'Klassenstatistik, Einzeldrilldown und eine aggregierte Leitungssicht werden erst mit serverseitiger Kurszuordnung, Zweckbindung und geprüften Berechtigungen freigeschaltet. Dieser lokale Pilot liest einmalig den offenen atomaren Zielbestand für die Planbasis, zeigt daraus nur Plan-Summen und entfernt diese Grundlage beim Export.',
@@ -285,6 +329,7 @@ const en: CoursePlanCopy = {
   undoLastChange: 'Undo the last plan change',
   undoUnavailable: 'No plan change to undo yet',
   savedLocally: 'Saved locally',
+  unsavedLocally: 'Unsaved changes',
   saveFailed: 'The course plan could not be saved in this browser.',
   formTitleNew: 'Add a plan section',
   formTitleEdit: 'Edit plan section',
@@ -341,6 +386,9 @@ const en: CoursePlanCopy = {
   coverageAttested: 'Today’s data status confirmed',
   coverageOpen: 'Data status is open, so no red or green plan rating is shown',
   coverageChanged: 'The plan or teaching status changed since the last confirmation.',
+  coverageEffectiveDateLabel: 'Covered on',
+  coverageEffectiveDateHint: 'This date applies to the following teaching-status changes. Backfilling therefore does not distort the pace of the last seven days.',
+  coverageEffectiveDateInvalid: 'Choose a valid date that is not in the future.',
   planStatusTitle: 'Today’s plan status',
   planStatusOnTrack: 'Confirmed coverage within the target corridor',
   planStatusWatch: 'Please interpret this deviation',
@@ -384,6 +432,24 @@ const en: CoursePlanCopy = {
   exportPlan: 'Export plan',
   exportHint: 'The export removes the class ID and learner-derived planning basis. Your free text is kept unchanged—do not enter personal data.',
   exportSuccess: 'Course plan exported—check free text before sharing.',
+  publishPlan: 'Make available in cockpit',
+  publishPlanLoading: 'Checking the cockpit plan …',
+  publishPlanSaving: 'Making available in the cockpit …',
+  publishConfirmTitle: 'Make this plan available as an independent copy?',
+  publishIndependentCopyBody: 'The local teacher plan remains unchanged. SkillPilot copies only the label, time blocks, and their canonical learning goals into the learner’s subject plan. Class references, teaching coverage, mastery, attestations, and history are not transferred. Later changes are not synchronized automatically.',
+  publishNewBody: 'There is no cockpit plan for this subject yet.',
+  publishReplaceBody: (revision) => `A subject plan already exists in the cockpit (revision ${revision}). Confirming replaces it with a new revision.`,
+  publishConfirmNew: 'Make independent copy available',
+  publishConfirmReplace: 'Replace subject plan',
+  publishUnavailable: 'The plan cannot be made available safely because it contains no fully resolvable canonical atomic learning goals.',
+  publishDisabledUnsaved: 'Save or discard the pending changes first.',
+  publishDisabledNotCalculable: 'The plan must be fully calculable before it can be made available.',
+  publishDisabledNoLearningGoals: 'Add at least one calculable learning section with atomic learning goals.',
+  publishNoOpenGoals: 'The plan contains no remaining open atomic goals for this subject that could be made available in the cockpit.',
+  publishConflict: 'The cockpit subject plan has changed in the meantime. Nothing was overwritten. Please check the current version again.',
+  publishFailed: 'The plan could not be made available in the cockpit.',
+  publishSuccess: (revision, totalPlanned) => `Independent copy made available in the cockpit · revision ${revision} · ${totalPlanned} learning goal${totalPlanned === 1 ? '' : 's'} in the personal plan`,
+  publishGoalCount: (count) => `${count} canonical atomic goal${count === 1 ? '' : 's'} will be checked. Only goals that are currently open or already captured in this personal subject plan will be stored.`,
   importNotIncluded: 'Import follows after the secure server and authorization design.',
   protectedExtensionTitle: 'Learning status and management views remain protected',
   protectedExtensionBody: 'Class statistics, individual drill-down, and an aggregated management view require server-side course ownership, purpose limitation, and verified permissions. This local pilot reads the open atomic goal set once for its planning basis, shows only plan totals derived from it, and removes that basis from exports.',

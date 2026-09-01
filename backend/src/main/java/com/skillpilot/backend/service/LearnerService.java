@@ -5,16 +5,19 @@ import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
 import com.skillpilot.backend.domain.LearnerClientStateId;
+import com.skillpilot.backend.domain.LearnerLearningPlan;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.domain.PlannedGoal;
 import java.time.Clock;
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
+import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.landscape.GoalMappingService;
@@ -40,6 +43,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -64,6 +69,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
@@ -112,6 +118,7 @@ public class LearnerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
+    private static final ZoneId LEARNING_PLAN_ZONE = ZoneId.of("Europe/Berlin");
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
     private static final int DEFAULT_VERIFIED_RECALL_BATCH_SIZE = 10;
     private static final int MAX_VERIFIED_RECALL_BATCH_SIZE = 20;
@@ -122,6 +129,7 @@ public class LearnerService {
     private final LearnerClientStateRepository learnerClientStateRepository;
     private final MasteryRepository masteryRepository;
     private final PlannedGoalRepository plannedGoalRepository;
+    private final LearnerLearningPlanRepository learnerLearningPlanRepository;
     private final LandscapeService landscapeService;
     private final GoalMappingService goalMappingService;
     private final DeckResourceService deckResourceService;
@@ -131,6 +139,7 @@ public class LearnerService {
     private final ApplicationEventPublisher eventPublisher;
     private final TransactionTemplate transactionTemplate;
     private Clock verifiedRecallClock = Clock.systemUTC();
+    private Clock learningPlanClock = Clock.system(LEARNING_PLAN_ZONE);
 
     private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
             "structure",
@@ -180,7 +189,35 @@ public class LearnerService {
                 null,
                 objectMapper,
                 eventPublisher,
-                new NoOpTransactionManager());
+                new NoOpTransactionManager(),
+                null);
+    }
+
+    public LearnerService(
+            LearnerRepository learnerRepository,
+            LearnerClientStateRepository learnerClientStateRepository,
+            MasteryRepository masteryRepository,
+            PlannedGoalRepository plannedGoalRepository,
+            LandscapeService landscapeService,
+            GoalMappingService goalMappingService,
+            DeckResourceService deckResourceService,
+            CompositionViewService compositionViewService,
+            ObjectMapper objectMapper,
+            ApplicationEventPublisher eventPublisher,
+            PlatformTransactionManager transactionManager) {
+        this(
+                learnerRepository,
+                learnerClientStateRepository,
+                masteryRepository,
+                plannedGoalRepository,
+                landscapeService,
+                goalMappingService,
+                deckResourceService,
+                compositionViewService,
+                objectMapper,
+                eventPublisher,
+                transactionManager,
+                null);
     }
 
     @Autowired
@@ -195,11 +232,13 @@ public class LearnerService {
             CompositionViewService compositionViewService,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher,
-            PlatformTransactionManager transactionManager) {
+            PlatformTransactionManager transactionManager,
+            LearnerLearningPlanRepository learnerLearningPlanRepository) {
         this.learnerRepository = learnerRepository;
         this.learnerClientStateRepository = learnerClientStateRepository;
         this.masteryRepository = masteryRepository;
         this.plannedGoalRepository = plannedGoalRepository;
+        this.learnerLearningPlanRepository = learnerLearningPlanRepository;
         this.landscapeService = landscapeService;
         this.goalMappingService = goalMappingService;
         this.deckResourceService = deckResourceService;
@@ -1025,6 +1064,9 @@ public class LearnerService {
         boolean masterySaved = false;
         if (pendingCards == 0 && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.srsState())) {
             persistVerifiedRecallMastery(skillpilotId, context.goal());
+            if (Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+                getLearnerState(skillpilotId, context.goal().getId(), true, true);
+            }
             masterySaved = true;
         }
         return new VerifiedRecallResultResponse(
@@ -1121,7 +1163,7 @@ public class LearnerService {
                 true);
         UnifiedLearnerStateResponse successor = getLearnerState(
                 skillpilotId,
-                context.goal().getId(),
+                masterySaved ? context.goal().getId() : null,
                 true,
                 false);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(
@@ -2520,12 +2562,17 @@ public class LearnerService {
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
 
-        // Clear active goal after mastery and return the new frontier/state
-        learner.setActiveGoalId(null);
-        learner.setLearningState(LearningState.FRONTIER);
+        // A failed/partial plan attempt remains the current work item. This is
+        // intentionally scoped to plan mode so the established default
+        // Autopilot semantics stay unchanged when followLearningPlans=false.
+        boolean completedGoal = masteryValue >= PLANNING_SCOPE_MASTERY_THRESHOLD;
+        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans()) || completedGoal) {
+            learner.setActiveGoalId(null);
+            learner.setLearningState(LearningState.FRONTIER);
+        }
         advanceCoachStateRevision(learner);
 
-        String sequentialAutopilotAnchorGoalId = masteryValue >= 0.9 ? effectiveGoalId : null;
+        String sequentialAutopilotAnchorGoalId = completedGoal ? effectiveGoalId : null;
         UnifiedLearnerStateResponse state = getLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
         return new MasteryUpdateResponse(
@@ -2626,6 +2673,593 @@ public class LearnerService {
                 masteredAtomicGoalCount,
                 openAtomicGoalIds,
                 Instant.now());
+    }
+
+    /**
+     * Binds a learner-owned plan to the current personalized subject projection
+     * and to every graph relation that can affect its focus or frontier order.
+     * Stable atom IDs alone are insufficient: a changed {@code contains} or
+     * {@code requires} edge must make an older plan stale before it can write
+     * Level-3 state.
+     */
+    @Transactional(readOnly = true)
+    public String learningPlanFingerprint(
+            String skillpilotId,
+            String landscapeId,
+            List<LearnerLearningPlanApi.Block> blocks) {
+        List<LearnerLearningPlanApi.Block> effectiveBlocks = blocks == null
+                ? Collections.emptyList()
+                : List.copyOf(blocks);
+        try {
+            validateLearningPlanBlockFoci(skillpilotId, landscapeId, effectiveBlocks);
+            List<LearnerLearningPlanApi.Block> currentOrder =
+                    orderLearningPlanBlocksByPrerequisites(skillpilotId, effectiveBlocks);
+            if (!currentOrder.equals(effectiveBlocks)) {
+                throw new IllegalStateException(
+                        "The current prerequisite graph changes the stored plan order");
+            }
+
+            Learner learner = getLearner(skillpilotId);
+            LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
+            GoalProjection projection = getGoalProjection(
+                    learner.getSelectedCurriculum(),
+                    learner.getPersonalCurriculum());
+            Map<String, List<String>> focusTargetIds = new LinkedHashMap<>();
+            for (LearnerLearningPlanApi.Block block : effectiveBlocks) {
+                if (block == null || !"learning".equals(block.kind())) {
+                    continue;
+                }
+                String focusGoalId = block.goalId();
+                if (focusGoalId == null || focusGoalId.isBlank()) {
+                    if (block.atomicGoalIds() != null) {
+                        for (String atomicGoalId : block.atomicGoalIds()) {
+                            focusTargetIds.put(atomicGoalId, List.of(atomicGoalId));
+                        }
+                    }
+                    continue;
+                }
+                List<String> resolvedTargets = resolveProjectedFocusTargetIds(
+                                focusGoalId,
+                                projection)
+                        .stream()
+                        .filter(projection.targetGoalIds()::contains)
+                        .filter(goalId -> landscapeId.equals(
+                                landscapeService.getLandscapeIdForGoal(goalId)))
+                        .sorted()
+                        .toList();
+                focusTargetIds.put(focusGoalId, resolvedTargets);
+            }
+            return computeLearningPlanFingerprint(
+                    scope,
+                    projection.structuralGoals(),
+                    effectiveBlocks,
+                    focusTargetIds);
+        } catch (ResponseStatusException | IllegalStateException exception) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The personal curriculum or learning graph changed after this plan was captured");
+        }
+    }
+
+    String computeLearningPlanFingerprint(
+            LearnerPlanningScopeResponse scope,
+            Map<String, LearningGoal> structuralGoals,
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, List<String>> focusTargetIds) {
+        if (scope == null) {
+            throw new IllegalStateException("Learning-plan scope is missing");
+        }
+        Map<String, LearningGoal> goals = structuralGoals == null
+                ? Collections.emptyMap()
+                : structuralGoals;
+        Set<String> subjectAtoms = new LinkedHashSet<>(scope.scopeAtomicGoalIds());
+        Map<String, Boolean> reachesSubjectAtom = new HashMap<>();
+        LinkedHashSet<String> subjectPathGoalIds = new LinkedHashSet<>();
+        for (String goalId : goals.keySet()) {
+            if (learningPlanGoalReachesSubjectAtom(
+                    goalId,
+                    subjectAtoms,
+                    goals,
+                    reachesSubjectAtom,
+                    new HashSet<>())) {
+                subjectPathGoalIds.add(goalId);
+            }
+        }
+
+        LinkedHashSet<String> dependencyGoalIds = new LinkedHashSet<>();
+        ArrayDeque<String> dependencyQueue = new ArrayDeque<>();
+        for (String goalId : subjectPathGoalIds) {
+            LearningGoal goal = goals.get(goalId);
+            if (goal == null || goal.getRequires() == null) {
+                continue;
+            }
+            for (String requirement : goal.getRequires()) {
+                String resolved = resolveGoalRef(requirement, goals);
+                if (resolved != null) {
+                    dependencyQueue.add(resolved);
+                }
+            }
+        }
+        while (!dependencyQueue.isEmpty()) {
+            String goalId = dependencyQueue.removeFirst();
+            if (!dependencyGoalIds.add(goalId)) {
+                continue;
+            }
+            LearningGoal goal = goals.get(goalId);
+            if (goal == null) {
+                continue;
+            }
+            for (String reference : learningPlanGraphReferences(goal)) {
+                String resolved = resolveGoalRef(reference, goals);
+                if (resolved != null && !dependencyGoalIds.contains(resolved)) {
+                    dependencyQueue.addLast(resolved);
+                }
+            }
+        }
+
+        LinkedHashSet<String> fingerprintGoalIds = new LinkedHashSet<>(subjectPathGoalIds);
+        fingerprintGoalIds.addAll(dependencyGoalIds);
+        try {
+            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+            updateLearningPlanDigest(digest, "skillpilot-learning-plan-structure-v2");
+            updateLearningPlanDigest(digest, scope.curriculumId());
+            updateLearningPlanDigest(digest, scope.landscapeId());
+            subjectAtoms.stream().sorted().forEach(goalId -> {
+                updateLearningPlanDigest(digest, "subject-atom");
+                updateLearningPlanDigest(digest, goalId);
+            });
+
+            fingerprintGoalIds.stream().sorted().forEach(goalId -> {
+                LearningGoal goal = goals.get(goalId);
+                updateLearningPlanDigest(digest, "goal");
+                updateLearningPlanDigest(digest, goalId);
+                updateLearningPlanDigest(digest, goal == null ? null : goal.getType());
+                updateLearningPlanDigest(digest, goal == null ? null : goal.getNodeKind());
+                updateLearningPlanDigest(digest, goal == null ? null : goal.getSemanticKind());
+                if (goal == null) {
+                    return;
+                }
+                boolean completeDependencyNode = dependencyGoalIds.contains(goalId);
+                normalizedLearningPlanReferences(goal.getContains(), goals).stream()
+                        .filter(childId -> completeDependencyNode || subjectPathGoalIds.contains(childId))
+                        .sorted()
+                        .forEach(childId -> {
+                            updateLearningPlanDigest(digest, "contains");
+                            updateLearningPlanDigest(digest, childId);
+                        });
+                normalizedLearningPlanReferences(goal.getRequires(), goals).stream()
+                        .sorted()
+                        .forEach(requiredId -> {
+                            updateLearningPlanDigest(digest, "requires");
+                            updateLearningPlanDigest(digest, requiredId);
+                        });
+            });
+
+            (focusTargetIds == null ? Collections.<String, List<String>>emptyMap() : focusTargetIds)
+                    .entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByKey())
+                    .forEach(entry -> {
+                        updateLearningPlanDigest(digest, "focus");
+                        updateLearningPlanDigest(digest, entry.getKey());
+                        (entry.getValue() == null ? Collections.<String>emptyList() : entry.getValue())
+                                .stream()
+                                .sorted()
+                                .forEach(targetId -> {
+                                    updateLearningPlanDigest(digest, "focus-target");
+                                    updateLearningPlanDigest(digest, targetId);
+                                });
+                    });
+
+            for (LearnerLearningPlanApi.Block block : blocks == null
+                    ? Collections.<LearnerLearningPlanApi.Block>emptyList()
+                    : blocks) {
+                updateLearningPlanDigest(digest, "block");
+                updateLearningPlanDigest(digest, block.id());
+                updateLearningPlanDigest(digest, block.kind());
+                updateLearningPlanDigest(digest, block.goalId());
+                updateLearningPlanDigest(digest, block.startDate() == null ? null : block.startDate().toString());
+                updateLearningPlanDigest(digest, block.endDate() == null ? null : block.endDate().toString());
+                updateLearningPlanDigest(digest, block.date() == null ? null : block.date().toString());
+                if (block.atomicGoalIds() != null) {
+                    for (String atomicGoalId : block.atomicGoalIds()) {
+                        updateLearningPlanDigest(digest, "block-atom");
+                        updateLearningPlanDigest(digest, atomicGoalId);
+                    }
+                }
+            }
+            return "sha256:" + java.util.HexFormat.of().formatHex(digest.digest());
+        } catch (java.security.NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("Could not fingerprint the current learning-plan structure", exception);
+        }
+    }
+
+    private boolean learningPlanGoalReachesSubjectAtom(
+            String goalId,
+            Set<String> subjectAtoms,
+            Map<String, LearningGoal> goals,
+            Map<String, Boolean> memo,
+            Set<String> visiting) {
+        if (subjectAtoms.contains(goalId)) {
+            return true;
+        }
+        if (memo.containsKey(goalId)) {
+            return memo.get(goalId);
+        }
+        if (!visiting.add(goalId)) {
+            throw new IllegalStateException("Learning-plan graph contains a contains cycle");
+        }
+        LearningGoal goal = goals.get(goalId);
+        boolean reaches = false;
+        if (goal != null && goal.getContains() != null) {
+            for (String childReference : goal.getContains()) {
+                String childId = resolveGoalRef(childReference, goals);
+                if (childId != null && learningPlanGoalReachesSubjectAtom(
+                        childId,
+                        subjectAtoms,
+                        goals,
+                        memo,
+                        visiting)) {
+                    reaches = true;
+                }
+            }
+        }
+        visiting.remove(goalId);
+        memo.put(goalId, reaches);
+        return reaches;
+    }
+
+    private static List<String> learningPlanGraphReferences(LearningGoal goal) {
+        List<String> references = new ArrayList<>();
+        if (goal.getContains() != null) {
+            references.addAll(goal.getContains());
+        }
+        if (goal.getRequires() != null) {
+            references.addAll(goal.getRequires());
+        }
+        return references;
+    }
+
+    private List<String> normalizedLearningPlanReferences(
+            List<String> references,
+            Map<String, LearningGoal> goals) {
+        if (references == null || references.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return references.stream()
+                .filter(Objects::nonNull)
+                .map(reference -> {
+                    String resolved = resolveGoalRef(reference, goals);
+                    return resolved == null ? reference.trim() : resolved;
+                })
+                .filter(reference -> !reference.isBlank())
+                .distinct()
+                .toList();
+    }
+
+    private static void updateLearningPlanDigest(
+            java.security.MessageDigest digest,
+            String value) {
+        byte[] bytes = (value == null ? "<null>" : value).getBytes(StandardCharsets.UTF_8);
+        byte[] length = Integer.toString(bytes.length).getBytes(StandardCharsets.US_ASCII);
+        digest.update(length);
+        digest.update((byte) ':');
+        digest.update(bytes);
+        digest.update((byte) '\n');
+    }
+
+    /**
+     * Validates authored section foci before they become learner-owned plan
+     * state. A focus must resolve inside the current learner-facing target
+     * projection, stay within the requested subject, and contain every
+     * materialized atomic goal of its learning block.
+     */
+    @Transactional(readOnly = true)
+    public void validateLearningPlanBlockFoci(
+            String skillpilotId,
+            String landscapeId,
+            List<LearnerLearningPlanApi.Block> blocks) {
+        if (blocks == null || blocks.isEmpty()) {
+            return;
+        }
+        Learner learner = getLearner(skillpilotId);
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The learner has no selected curriculum.");
+        }
+        String requestedLandscapeId = landscapeId == null ? "" : landscapeId.trim();
+        GoalProjection projection = getGoalProjection(
+                curriculumId,
+                learner.getPersonalCurriculum());
+
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (block == null
+                    || !"learning".equals(block.kind())
+                    || block.goalId() == null
+                    || block.goalId().isBlank()) {
+                continue;
+            }
+            List<String> focusTargetIds = resolveProjectedFocusTargetIds(
+                    block.goalId(),
+                    projection);
+            if (focusTargetIds.isEmpty()) {
+                throw invalidLearningPlanFocus(block.id());
+            }
+
+            LinkedHashSet<String> focusedAtomicIds = new LinkedHashSet<>();
+            boolean crossesSubjectBoundary = false;
+            for (String targetGoalId : focusTargetIds) {
+                LearningGoal structuralGoal = projection.structuralGoals().get(targetGoalId);
+                if (!isCountedAtomicGoal(structuralGoal)) {
+                    continue;
+                }
+                String targetLandscapeId = landscapeService.getLandscapeIdForGoal(targetGoalId);
+                if (!requestedLandscapeId.equals(targetLandscapeId)) {
+                    crossesSubjectBoundary = true;
+                    continue;
+                }
+                focusedAtomicIds.add(targetGoalId);
+            }
+            List<String> blockAtomicIds = block.atomicGoalIds() == null
+                    ? Collections.emptyList()
+                    : block.atomicGoalIds();
+            if (crossesSubjectBoundary
+                    || focusedAtomicIds.isEmpty()
+                    || !focusedAtomicIds.containsAll(blockAtomicIds)) {
+                throw invalidLearningPlanFocus(block.id());
+            }
+        }
+    }
+
+    /**
+     * Orders each learning block by the current effective prerequisite graph.
+     * Kahn's algorithm uses the submitted order as its stable tie-breaker, so
+     * unrelated goals retain their authored sequence.
+     */
+    @Transactional(readOnly = true)
+    public List<LearnerLearningPlanApi.Block> orderLearningPlanBlocksByPrerequisites(
+            String skillpilotId,
+            List<LearnerLearningPlanApi.Block> blocks) {
+        if (blocks == null || blocks.isEmpty()) {
+            return blocks == null ? List.of() : List.copyOf(blocks);
+        }
+        Learner learner = getLearner(skillpilotId);
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The learner has no selected curriculum.");
+        }
+        GoalProjection projection = getGoalProjection(
+                curriculumId,
+                learner.getPersonalCurriculum());
+        Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
+        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(structuralGoals);
+        List<LearnerLearningPlanApi.Block> orderedBlocks = new ArrayList<>(blocks.size());
+
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (!"learning".equals(block.kind())
+                    || block.atomicGoalIds() == null
+                    || block.atomicGoalIds().size() < 2) {
+                orderedBlocks.add(block);
+                continue;
+            }
+            List<String> orderedAtoms = stablePlanTopologicalOrder(
+                    block.atomicGoalIds(),
+                    structuralGoals,
+                    effectiveRequires);
+            orderedBlocks.add(new LearnerLearningPlanApi.Block(
+                    block.id(),
+                    block.kind(),
+                    block.goalId(),
+                    block.title(),
+                    block.startDate(),
+                    block.endDate(),
+                    block.date(),
+                    orderedAtoms));
+        }
+        List<LearnerLearningPlanApi.Block> result = List.copyOf(orderedBlocks);
+        validateLearningPlanDueOrder(result, structuralGoals, effectiveRequires);
+        return result;
+    }
+
+    private void validateLearningPlanDueOrder(
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, List<String>> effectiveRequires) {
+        LinkedHashSet<String> allPlanAtoms = new LinkedHashSet<>();
+        Map<String, LocalDate> dueDates = new HashMap<>();
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (!"learning".equals(block.kind()) || block.atomicGoalIds() == null) {
+                continue;
+            }
+            allPlanAtoms.addAll(block.atomicGoalIds());
+            for (int index = 0; index < block.atomicGoalIds().size(); index++) {
+                dueDates.put(
+                        block.atomicGoalIds().get(index),
+                        scheduledPlanDueDate(
+                                block.startDate(),
+                                block.endDate(),
+                                block.atomicGoalIds().size(),
+                                index + 1));
+            }
+        }
+
+        for (String dependentId : allPlanAtoms) {
+            LinkedHashSet<String> prerequisiteAtoms = new LinkedHashSet<>();
+            for (String prerequisiteRef : effectiveRequires.getOrDefault(
+                    dependentId,
+                    Collections.emptyList())) {
+                collectPlanPrerequisiteAtoms(
+                        prerequisiteRef,
+                        structuralGoals,
+                        allPlanAtoms,
+                        prerequisiteAtoms,
+                        new HashSet<>());
+            }
+            prerequisiteAtoms.remove(dependentId);
+            for (String prerequisiteId : prerequisiteAtoms) {
+                if (dueDates.get(prerequisiteId).isAfter(dueDates.get(dependentId))) {
+                    throw new ResponseStatusException(
+                            org.springframework.http.HttpStatus.BAD_REQUEST,
+                            "Learning-plan schedule makes a dependent goal due before its prerequisite.");
+                }
+            }
+        }
+    }
+
+    private static LocalDate scheduledPlanDueDate(
+            LocalDate start,
+            LocalDate end,
+            int atomCount,
+            int oneBasedPosition) {
+        int workdays = planWorkdaysInclusive(start, end);
+        long numerator = (2L * oneBasedPosition - 1L) * workdays;
+        long denominator = 2L * atomCount;
+        long workdayOrdinal = Math.max(1L, (numerator + denominator - 1L) / denominator);
+        LocalDate date = start;
+        while (isPlanWeekend(date)) {
+            date = date.plusDays(1);
+        }
+        long zeroBasedWorkdays = workdayOrdinal - 1L;
+        date = date.plusWeeks(zeroBasedWorkdays / 5L);
+        int remaining = (int) (zeroBasedWorkdays % 5L);
+        while (remaining > 0) {
+            date = date.plusDays(1);
+            if (!isPlanWeekend(date)) {
+                remaining--;
+            }
+        }
+        return date;
+    }
+
+    private static int planWorkdaysInclusive(LocalDate start, LocalDate end) {
+        long inclusiveDays = java.time.temporal.ChronoUnit.DAYS.between(start, end) + 1L;
+        long workdays = (inclusiveDays / 7L) * 5L;
+        int remainder = (int) (inclusiveDays % 7L);
+        for (int offset = 0; offset < remainder; offset++) {
+            if (!isPlanWeekend(start.plusDays(offset))) {
+                workdays++;
+            }
+        }
+        return Math.toIntExact(workdays);
+    }
+
+    private static boolean isPlanWeekend(LocalDate date) {
+        DayOfWeek day = date.getDayOfWeek();
+        return day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY;
+    }
+
+    private List<String> stablePlanTopologicalOrder(
+            List<String> submittedAtoms,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, List<String>> effectiveRequires) {
+        LinkedHashSet<String> atomSet = new LinkedHashSet<>(submittedAtoms);
+        Map<String, Integer> submittedIndex = new HashMap<>();
+        Map<String, Integer> indegree = new HashMap<>();
+        Map<String, LinkedHashSet<String>> dependents = new HashMap<>();
+        int index = 0;
+        for (String atomId : atomSet) {
+            submittedIndex.put(atomId, index++);
+            indegree.put(atomId, 0);
+            dependents.put(atomId, new LinkedHashSet<>());
+        }
+
+        for (String dependentId : atomSet) {
+            LinkedHashSet<String> prerequisiteAtoms = new LinkedHashSet<>();
+            for (String prerequisiteRef : effectiveRequires.getOrDefault(
+                    dependentId,
+                    Collections.emptyList())) {
+                collectPlanPrerequisiteAtoms(
+                        prerequisiteRef,
+                        structuralGoals,
+                        atomSet,
+                        prerequisiteAtoms,
+                        new HashSet<>());
+            }
+            prerequisiteAtoms.remove(dependentId);
+            for (String prerequisiteId : prerequisiteAtoms) {
+                if (dependents.get(prerequisiteId).add(dependentId)) {
+                    indegree.compute(dependentId, (ignored, value) -> value == null ? 1 : value + 1);
+                }
+            }
+        }
+
+        PriorityQueue<String> ready = new PriorityQueue<>(
+                Comparator.comparingInt(submittedIndex::get));
+        indegree.forEach((goalId, count) -> {
+            if (count == 0) {
+                ready.add(goalId);
+            }
+        });
+        List<String> ordered = new ArrayList<>(atomSet.size());
+        while (!ready.isEmpty()) {
+            String prerequisiteId = ready.remove();
+            ordered.add(prerequisiteId);
+            for (String dependentId : dependents.getOrDefault(
+                    prerequisiteId,
+                    new LinkedHashSet<>())) {
+                int remaining = indegree.computeIfPresent(dependentId, (ignored, value) -> value - 1);
+                if (remaining == 0) {
+                    ready.add(dependentId);
+                }
+            }
+        }
+        if (ordered.size() != atomSet.size()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Learning-plan atoms contain a prerequisite cycle.");
+        }
+        return List.copyOf(ordered);
+    }
+
+    private void collectPlanPrerequisiteAtoms(
+            String goalRef,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> blockAtoms,
+            Set<String> result,
+            Set<String> visiting) {
+        String goalId = resolveGoalRef(goalRef, structuralGoals);
+        if (goalId == null || !visiting.add(goalId)) {
+            return;
+        }
+        LearningGoal goal = structuralGoals.get(goalId);
+        if (goal == null) {
+            visiting.remove(goalId);
+            return;
+        }
+        if (goal.getContains() == null || goal.getContains().isEmpty()) {
+            if (blockAtoms.contains(goalId)) {
+                result.add(goalId);
+            }
+            visiting.remove(goalId);
+            return;
+        }
+        for (String childRef : goal.getContains()) {
+            collectPlanPrerequisiteAtoms(
+                    childRef,
+                    structuralGoals,
+                    blockAtoms,
+                    result,
+                    visiting);
+        }
+        visiting.remove(goalId);
+    }
+
+    /** Locks the owning learner before any learner-plan row lock is acquired. */
+    @Transactional
+    public void acquireLearningPlanMutationLock(String skillpilotId) {
+        learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+    }
+
+    private static ResponseStatusException invalidLearningPlanFocus(String blockId) {
+        return new ResponseStatusException(
+                org.springframework.http.HttpStatus.BAD_REQUEST,
+                "Learning-plan block focus is not a subject-local ancestor of its atomic goals: "
+                        + (blockId == null ? "<unknown>" : blockId));
     }
 
     private List<String> resolveEffectiveProjectedFocusIds(
@@ -2863,32 +3497,52 @@ public class LearnerService {
 
     @Transactional
     public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode) {
-        setPreferences(skillpilotId, learningStrategy, autoPilot, strictMode, null);
+        setPreferences(skillpilotId, learningStrategy, autoPilot, strictMode, null, null);
     }
 
     @Transactional
     public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
             Boolean showGoalVisualizationsInChat) {
+        setPreferences(
+                skillpilotId,
+                learningStrategy,
+                autoPilot,
+                strictMode,
+                showGoalVisualizationsInChat,
+                null);
+    }
+
+    @Transactional
+    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
+            Boolean showGoalVisualizationsInChat, Boolean followLearningPlans) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        boolean changed = false;
+        boolean coachStateChanged = false;
         if (learningStrategy != null) {
-            changed |= !Objects.equals(learner.getLearningStrategy(), learningStrategy);
+            coachStateChanged |= !Objects.equals(learner.getLearningStrategy(), learningStrategy);
             learner.setLearningStrategy(learningStrategy);
         }
         if (autoPilot != null) {
-            changed |= !Objects.equals(learner.getAutoPilot(), autoPilot);
+            coachStateChanged |= !Objects.equals(learner.getAutoPilot(), autoPilot);
             learner.setAutoPilot(autoPilot);
         }
         if (strictMode != null) {
-            changed |= !Objects.equals(learner.getStrictMode(), strictMode);
+            coachStateChanged |= !Objects.equals(learner.getStrictMode(), strictMode);
             learner.setStrictMode(strictMode);
         }
         if (showGoalVisualizationsInChat != null) {
-            changed |= !Objects.equals(learner.getShowGoalVisualizationsInChat(), showGoalVisualizationsInChat);
+            coachStateChanged |= !Objects.equals(
+                    learner.getShowGoalVisualizationsInChat(),
+                    showGoalVisualizationsInChat);
             learner.setShowGoalVisualizationsInChat(showGoalVisualizationsInChat);
         }
-        if (changed) {
+        if (followLearningPlans != null) {
+            coachStateChanged |= !Objects.equals(
+                    learner.getFollowLearningPlans(),
+                    followLearningPlans);
+            learner.setFollowLearningPlans(followLearningPlans);
+        }
+        if (coachStateChanged) {
             advanceCoachStateRevision(learner);
         }
     }
@@ -4676,7 +5330,7 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public List<FrontierGoal> getRichFrontier(String skillpilotId) {
-        return getRichFrontier(skillpilotId, true);
+        return getRichFrontier(skillpilotId, true, null);
     }
 
     /**
@@ -4689,10 +5343,31 @@ public class LearnerService {
      */
     @Transactional(readOnly = true)
     public List<FrontierGoal> getUncompactedRichFrontier(String skillpilotId) {
-        return getRichFrontier(skillpilotId, false);
+        return getRichFrontier(skillpilotId, false, null);
     }
 
     private List<FrontierGoal> getRichFrontier(String skillpilotId, boolean compactFrontier) {
+        return getRichFrontier(skillpilotId, compactFrontier, null);
+    }
+
+    /**
+     * Side-effect-free frontier projection for a prospective learner focus.
+     * Used by learner-owned plans to fail closed before changing Level-3 state.
+     */
+    @Transactional(readOnly = true)
+    public List<FrontierGoal> getUncompactedRichFrontierForFocus(
+            String skillpilotId,
+            List<String> focusGoalIds) {
+        if (focusGoalIds == null || focusGoalIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return getRichFrontier(skillpilotId, false, focusGoalIds);
+    }
+
+    private List<FrontierGoal> getRichFrontier(
+            String skillpilotId,
+            boolean compactFrontier,
+            List<String> prospectiveFocusGoalIds) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
@@ -4721,9 +5396,9 @@ public class LearnerService {
                 : effectivePrereqMastery;
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
-        List<String> projectedFocusIds = resolveEffectiveProjectedFocusIds(
-                learner,
-                projection);
+        List<String> projectedFocusIds = prospectiveFocusGoalIds == null
+                ? resolveEffectiveProjectedFocusIds(learner, projection)
+                : resolveProjectedTargetFocusIds(prospectiveFocusGoalIds, projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(
                 projectedFocusIds,
                 projection);
@@ -5845,6 +6520,22 @@ public class LearnerService {
             ensurePersistedDefaultProjectedFocus(learner, focusProjection);
         }
 
+        Map<String, Double> mastery = getMastery(skillpilotId);
+        boolean followingLearningPlans = Boolean.TRUE.equals(learner.getFollowLearningPlans());
+        List<LearnerLearningPlan> followedLearningPlans = currentFollowedLearningPlans(learner);
+        boolean hasFollowedLearningPlans = !followedLearningPlans.isEmpty();
+        if (allowSideEffects
+                && hasFollowedLearningPlans
+                && sequentialAutopilotAnchorGoalId != null
+                && !sequentialAutopilotAnchorGoalId.isBlank()) {
+            maybeAutoHandoffToLearningPlan(
+                    learner,
+                    followedLearningPlans,
+                    sequentialAutopilotAnchorGoalId,
+                    mastery,
+                    publishTransitionEvents);
+        }
+
         List<FrontierGoal> frontier = getRichFrontier(skillpilotId);
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(frontier);
 
@@ -5906,7 +6597,6 @@ public class LearnerService {
         if (curriculumId != null && !plannedScopeIds.isEmpty()) {
             scope = computeScope(plannedScopeIds, structuralGoals, Collections.emptyMap());
         }
-        Map<String, Double> mastery = getMastery(skillpilotId);
         String storedActiveGoalId = learner.getActiveGoalId();
         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
         boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
@@ -6036,7 +6726,7 @@ public class LearnerService {
         boolean personalizationRequired =
                 personalizationPlan.required() || !personalizationPlan.valid();
 
-        if (allowSideEffects) {
+        if (allowSideEffects && !followingLearningPlans) {
             activeGoalId = maybeAutoActivateFrontierGoal(
                     learner,
                     activeGoalId,
@@ -6115,6 +6805,144 @@ public class LearnerService {
                 nextAllowedActions, activeFilters,
                 learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
     }
+
+    private List<LearnerLearningPlan> currentFollowedLearningPlans(Learner learner) {
+        if (learnerLearningPlanRepository == null
+                || !Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+            return Collections.emptyList();
+        }
+        return learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learner.getSkillpilotId());
+    }
+
+    /**
+     * Hands off only after completing a goal that belongs to a currently valid
+     * plan and only when the subsequent plan choice is deterministic. A due
+     * candidate from a plan containing the completed anchor wins; if that plan
+     * has no candidate, exactly one other eligible plan may follow. Invalid or
+     * stale plans are ignored for activation. While plan-following mode is
+     * enabled, generic Autopilot stays suppressed independently of whether a
+     * usable plan is currently stored.
+     */
+    private void maybeAutoHandoffToLearningPlan(
+            Learner learner,
+            List<LearnerLearningPlan> plans,
+            String completedAnchorGoalId,
+            Map<String, Double> mastery,
+            boolean publishEvent) {
+        String currentActiveGoalId = learner.getActiveGoalId();
+        if (currentActiveGoalId != null
+                && !currentActiveGoalId.isBlank()
+                && mastery.getOrDefault(currentActiveGoalId, 0.0)
+                        < PLANNING_SCOPE_MASTERY_THRESHOLD) {
+            return;
+        }
+
+        LocalDate asOf = LocalDate.now(learningPlanClock);
+        List<LearningPlanHandoffCandidate> candidates = new ArrayList<>();
+        boolean completedAnchorBelongsToValidPlan = false;
+        for (LearnerLearningPlan plan : plans) {
+            try {
+                List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
+                if (!Objects.equals(
+                        plan.getScopeFingerprint(),
+                        learningPlanFingerprint(
+                                learner.getSkillpilotId(),
+                                plan.getLandscapeId(),
+                                blocks))) {
+                    continue;
+                }
+                boolean containsAnchor = blocks.stream()
+                        .filter(Objects::nonNull)
+                        .filter(block -> "learning".equals(block.kind()))
+                        .map(LearnerLearningPlanApi.Block::atomicGoalIds)
+                        .filter(Objects::nonNull)
+                        .anyMatch(goalIds -> goalIds.contains(completedAnchorGoalId));
+                completedAnchorBelongsToValidPlan |= containsAnchor;
+                Optional<LearnerLearningPlanService.DueGoal> selected =
+                        LearnerLearningPlanService.firstEligibleDueGoal(
+                                blocks,
+                                asOf,
+                                mastery,
+                                focusGoalIds -> getUncompactedRichFrontierForFocus(
+                                                learner.getSkillpilotId(),
+                                                focusGoalIds)
+                                        .stream()
+                                        .filter(goal -> "atomic".equals(goal.type()))
+                                        .map(FrontierGoal::id)
+                                        .collect(Collectors.toSet()));
+                if (selected.isEmpty()) {
+                    continue;
+                }
+                LearnerLearningPlanService.DueGoal dueGoal = selected.get();
+                candidates.add(new LearningPlanHandoffCandidate(
+                        plan.getId(),
+                        plan.getLandscapeId(),
+                        dueGoal.focusGoalId(),
+                        dueGoal.atomicGoalId(),
+                        containsAnchor));
+            } catch (ResponseStatusException | IllegalStateException exception) {
+                // A stale, malformed, or no-longer-projectable plan must never
+                // mutate Level-3 state automatically.
+            }
+        }
+
+        Optional<LearningPlanHandoffCandidate> selected = selectLearningPlanHandoffCandidate(
+                completedAnchorBelongsToValidPlan,
+                candidates);
+        if (selected.isEmpty()) {
+            return;
+        }
+        applyLearningPlanHandoff(learner, selected.get(), publishEvent);
+    }
+
+    static Optional<LearningPlanHandoffCandidate> selectLearningPlanHandoffCandidate(
+            boolean completedAnchorBelongsToValidPlan,
+            List<LearningPlanHandoffCandidate> candidates) {
+        if (!completedAnchorBelongsToValidPlan || candidates == null || candidates.isEmpty()) {
+            return Optional.empty();
+        }
+        List<LearningPlanHandoffCandidate> anchored = candidates.stream()
+                .filter(LearningPlanHandoffCandidate::containsCompletedAnchor)
+                .toList();
+        if (anchored.size() == 1) {
+            return Optional.of(anchored.get(0));
+        }
+        if (anchored.size() > 1 || candidates.size() != 1) {
+            return Optional.empty();
+        }
+        return Optional.of(candidates.get(0));
+    }
+
+    private void applyLearningPlanHandoff(
+            Learner learner,
+            LearningPlanHandoffCandidate candidate,
+            boolean publishEvent) {
+        List<PlannedGoal> currentFocus = plannedGoalRepository
+                .findByLearner_SkillpilotId(learner.getSkillpilotId());
+        boolean focusAlreadySelected = currentFocus.size() == 1
+                && candidate.focusGoalId().equals(currentFocus.get(0).getGoalId());
+        if (!focusAlreadySelected) {
+            plannedGoalRepository.deleteAll(currentFocus);
+            plannedGoalRepository.save(new PlannedGoal(learner, candidate.focusGoalId()));
+        }
+        learner.setActiveGoalId(candidate.atomicGoalId());
+        learner.setLearningState(LearningState.TEACHING);
+        advanceCoachStateRevision(learner);
+        if (publishEvent) {
+            eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                    this,
+                    learner.getSkillpilotId(),
+                    "LEARNING_PLAN_AUTO_HANDOFF"));
+        }
+    }
+
+    record LearningPlanHandoffCandidate(
+            UUID planId,
+            String landscapeId,
+            String focusGoalId,
+            String atomicGoalId,
+            boolean containsCompletedAnchor) { }
 
     private String maybeAutoActivateFrontierGoal(
             Learner learner,
@@ -6891,6 +7719,36 @@ public class LearnerService {
         learner.setLearningState(LearningState.TEACHING);
         advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
+    }
+
+    /**
+     * Acquires the learner write lock before a plan transition. An unrelated
+     * active goal may only be replaced after it is mastered; selecting the
+     * same active goal remains idempotent.
+     */
+    @Transactional
+    public void assertLearningPlanMayActivateGoal(
+            String skillpilotId,
+            String proposedGoalId) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        if (proposedGoalId == null || proposedGoalId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "proposedGoalId must not be empty.");
+        }
+        String activeGoalId = learner.getActiveGoalId();
+        if (activeGoalId == null
+                || activeGoalId.isBlank()
+                || activeGoalId.equals(proposedGoalId)) {
+            return;
+        }
+        if (getMastery(skillpilotId).getOrDefault(activeGoalId, 0.0)
+                < PLANNING_SCOPE_MASTERY_THRESHOLD) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "Another unmastered active goal is already in progress.");
+        }
     }
 
     private boolean isExamGoalUnavailableForHardCheck(LearningGoal goal) {
@@ -9571,7 +10429,11 @@ public class LearnerService {
         List<String> planned = hasCompletedPersonalCurriculum(learner)
                 ? getPlannedGoals(skillpilotId)
                 : getStoredPlannedGoals(skillpilotId);
-        return buildSignedLearnerExport(learner, mastery, planned);
+        return buildSignedLearnerExport(
+                learner,
+                mastery,
+                planned,
+                exportPersonalLearningPlans(skillpilotId));
     }
 
     @Transactional(readOnly = true)
@@ -9615,10 +10477,46 @@ public class LearnerService {
     private SignedLearnerDataDTO buildSignedLearnerExport(
             Learner learner,
             Map<String, MasteryEntryDTO> mastery,
-            List<String> plannedGoals) {
-        LearnerDataDTO data = new LearnerDataDTO(learner, mastery, plannedGoals, learner.getCopySources());
+            List<String> plannedGoals,
+            List<LearnerLearningPlanApi.PortablePlan> learningPlans) {
+        LearnerDataDTO data = new LearnerDataDTO(
+                learner,
+                mastery,
+                plannedGoals,
+                learner.getCopySources(),
+                learningPlans);
         String signature = calculateSignature(data);
         return new SignedLearnerDataDTO(data, signature);
+    }
+
+    private List<LearnerLearningPlanApi.PortablePlan> exportPersonalLearningPlans(
+            String skillpilotId) {
+        if (learnerLearningPlanRepository == null) {
+            return List.of();
+        }
+        return learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId)
+                .stream()
+                .map(plan -> new LearnerLearningPlanApi.PortablePlan(
+                        plan.getLandscapeId(),
+                        plan.getPlanLabel(),
+                        readPortableLearningPlanBlocks(plan)))
+                .toList();
+    }
+
+    private List<LearnerLearningPlanApi.Block> readPortableLearningPlanBlocks(
+            LearnerLearningPlan plan) {
+        try {
+            List<LearnerLearningPlanApi.Block> blocks = objectMapper.readValue(
+                    plan.getBlocksJson(),
+                    new TypeReference<List<LearnerLearningPlanApi.Block>>() { });
+            if (blocks == null) {
+                throw new IllegalStateException("Learning-plan blocks are missing");
+            }
+            return List.copyOf(blocks);
+        } catch (Exception exception) {
+            throw new IllegalStateException("Could not export personal learning-plan blocks", exception);
+        }
     }
 
     @Transactional
@@ -9668,6 +10566,8 @@ public class LearnerService {
             existing.setPersonalCurriculum(data.learner().getPersonalCurriculum());
             existing.setShowGoalVisualizationsInChat(
                     !Boolean.FALSE.equals(data.learner().getShowGoalVisualizationsInChat()));
+            existing.setFollowLearningPlans(
+                    Boolean.TRUE.equals(data.learner().getFollowLearningPlans()));
             if (data.learner().getClientState() != null) {
                 existing.setClientState(data.learner().getClientState());
                 existing.setClientStateUpdatedAt(data.learner().getClientStateUpdatedAt());
@@ -9694,6 +10594,103 @@ public class LearnerService {
 
         // Restore Planned Goals
         restoreImportedPlannedGoals(existing, data.plannedGoals());
+        restoreImportedPersonalLearningPlans(existing, data.learningPlans());
+    }
+
+    private void restoreImportedPersonalLearningPlans(
+            Learner learner,
+            List<LearnerLearningPlanApi.PortablePlan> importedPlans) {
+        // An omitted field is a signed pre-plan archive and leaves current
+        // personal plans untouched. A present empty list explicitly clears them.
+        if (importedPlans == null || learnerLearningPlanRepository == null) {
+            return;
+        }
+
+        LinkedHashSet<String> landscapeIds = new LinkedHashSet<>();
+        List<LearnerLearningPlan> restored = new ArrayList<>();
+        for (LearnerLearningPlanApi.PortablePlan portable : importedPlans) {
+            if (portable == null) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "learningPlans must not contain null entries");
+            }
+            String landscapeId = requirePortableText(portable.landscapeId(), "learningPlans.landscapeId", 255);
+            if (!landscapeIds.add(landscapeId)) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "learningPlans must contain at most one plan per landscape");
+            }
+            LearnerPlanningScopeResponse scope = getPlanningScope(
+                    learner.getSkillpilotId(),
+                    landscapeId);
+            List<LearnerLearningPlanApi.Block> normalizedBlocks =
+                    LearnerLearningPlanService.normalizeBlocks(
+                            portable.blocks(),
+                            scope,
+                            Set.of(),
+                            true);
+            validateLearningPlanBlockFoci(
+                    learner.getSkillpilotId(),
+                    landscapeId,
+                    normalizedBlocks);
+            normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
+                    learner.getSkillpilotId(),
+                    normalizedBlocks);
+            LearnerLearningPlan plan = new LearnerLearningPlan();
+            plan.setLearner(learner);
+            plan.setLandscapeId(landscapeId);
+            plan.setCurriculumId(scope.curriculumId());
+            plan.setScopeFingerprint(learningPlanFingerprint(
+                    learner.getSkillpilotId(),
+                    landscapeId,
+                    normalizedBlocks));
+            plan.setRevision(1);
+            plan.setPlanLabel(optionalPortableText(
+                    portable.planLabel(),
+                    "learningPlans.planLabel",
+                    160));
+            try {
+                plan.setBlocksJson(objectMapper.writeValueAsString(normalizedBlocks));
+            } catch (Exception exception) {
+                throw new IllegalStateException("Could not import personal learning-plan blocks", exception);
+            }
+            plan.setCapturedAt(scope.capturedAt());
+            restored.add(plan);
+        }
+
+        learnerLearningPlanRepository.deleteByLearner_SkillpilotId(learner.getSkillpilotId());
+        learnerLearningPlanRepository.flush();
+        if (!restored.isEmpty()) {
+            learnerLearningPlanRepository.saveAll(restored);
+            learnerLearningPlanRepository.flush();
+        }
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                this,
+                learner.getSkillpilotId(),
+                "LEARNING_PLAN_IMPORT"));
+    }
+
+    private static String requirePortableText(String value, String field, int maxLength) {
+        String normalized = optionalPortableText(value, field, maxLength);
+        if (normalized == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    field + " is required");
+        }
+        return normalized;
+    }
+
+    private static String optionalPortableText(String value, String field, int maxLength) {
+        if (value == null || value.isBlank()) {
+            return null;
+        }
+        String normalized = value.trim();
+        if (normalized.length() > maxLength) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    field + " exceeds the supported length");
+        }
+        return normalized;
     }
 
     /**

@@ -1,0 +1,134 @@
+package com.skillpilot.backend.api;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
+
+/** Provider-neutral first-party WebGUI contract for learner-owned time plans. */
+public final class LearnerLearningPlanApi {
+
+    private LearnerLearningPlanApi() {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record Block(
+            String id,
+            String kind,
+            String goalId,
+            String title,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate startDate,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate endDate,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
+            List<String> atomicGoalIds) {
+    }
+
+    public record UpsertRequest(
+            Long expectedRevision,
+            String planLabel,
+            List<Block> blocks) {
+    }
+
+    public record Period(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate startDate,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate endDate) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record CurrentBlock(
+            String blockId,
+            String kind,
+            String title,
+            String goalId,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate startDate,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate endDate) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record Milestone(
+            String blockId,
+            String title,
+            String goalId,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date) {
+    }
+
+    public record Metrics(
+            int dueThroughToday,
+            int completedDueThroughToday,
+            int openDueThroughToday,
+            int dueToday,
+            int completedDueToday,
+            int openDueToday,
+            int totalPlanned) {
+    }
+
+    /** Read-only preview of the next prerequisite-satisfied atomic plan goal. */
+    public record NextEligibleGoal(String goalId) {
+    }
+
+    public record Buffer(int totalWorkdays, int remainingWorkdays) {
+    }
+
+    public record Pace(String status, String reason) {
+    }
+
+    public record PlanSummary(
+            UUID planId,
+            long revision,
+            String landscapeId,
+            String planLabel,
+            boolean stale,
+            Period period,
+            CurrentBlock currentBlock,
+            Milestone nextMilestone,
+            Metrics metrics,
+            Buffer buffer,
+            Pace pace,
+            NextEligibleGoal nextEligibleGoal,
+            String continueReason,
+            boolean canContinue) {
+    }
+
+    public record PlanDetail(
+            UUID planId,
+            long revision,
+            String landscapeId,
+            String planLabel,
+            boolean stale,
+            Period period,
+            CurrentBlock currentBlock,
+            Milestone nextMilestone,
+            Metrics metrics,
+            Buffer buffer,
+            Pace pace,
+            NextEligibleGoal nextEligibleGoal,
+            String continueReason,
+            boolean canContinue,
+            List<Block> blocks) {
+    }
+
+    public record CollectionResponse(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
+            boolean followLearningPlans,
+            List<PlanSummary> plans) {
+    }
+
+    public record ContinueRequest(
+            Long expectedRevision,
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf) {
+    }
+
+    public record ContinueResponse(
+            UUID planId,
+            long revision,
+            String landscapeId,
+            String focusGoalId,
+            String activeGoalId,
+            UnifiedLearnerStateResponse state) {
+    }
+
+    /** Portable signed payload; ownership and database identity are intentionally absent. */
+    public record PortablePlan(String landscapeId, String planLabel, List<Block> blocks) {
+    }
+}

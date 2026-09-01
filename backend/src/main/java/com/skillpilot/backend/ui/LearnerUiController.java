@@ -322,7 +322,8 @@ public class LearnerUiController {
                 request.learningStrategy(),
                 request.autoPilot(),
                 request.strictMode(),
-                request.showGoalVisualizationsInChat()));
+                request.showGoalVisualizationsInChat(),
+                request.followLearningPlans()));
     }
 
     @PutMapping("/{skillpilotId}/personal-curriculum")

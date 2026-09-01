@@ -1,3 +1,9 @@
+import * as React from 'react'
+
+// Direct TSX regression scripts use the classic JSX runtime for this shared
+// component, while the application build uses the automatic runtime.
+void React
+
 export type PacingGaugeStatus = 'unavailable' | 'provisional' | 'behind' | 'watch' | 'on-track' | 'ahead'
 
 export interface PacingGaugeProps {

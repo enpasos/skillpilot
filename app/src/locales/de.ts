@@ -151,7 +151,7 @@ export const de = {
             },
             trainerInfo: {
                 title: "Lokal gespeichert",
-                text: "Kursdaten bleiben auf diesem Gerät."
+                text: "Kursdaten bleiben auf diesem Gerät. Das Curriculum wählst du beim Anlegen des jeweiligen Kurses."
             }
         },
         banner: {

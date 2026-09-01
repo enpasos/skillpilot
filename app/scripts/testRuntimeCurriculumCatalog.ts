@@ -134,6 +134,16 @@ const parsed = parseRuntimeCurriculumCatalog(fixture())
 assert.deepEqual(parsed.rootLandscapeIds, [ROOT_ID])
 assert.equal(selectRuntimeLandscapeId(parsed, ROOT_ID), ROOT_ID)
 assert.equal(selectRuntimeLandscapeId(parsed, 'legacy-hard-coded-root'), ROOT_ID)
+assert.equal(
+  selectRuntimeLandscapeId(parsed, '', { allowImplicitRoot: false }),
+  '',
+  'a single-root package must support an intentionally empty trainer overview context',
+)
+assert.equal(
+  selectRuntimeLandscapeId(parsed, MODULE_ID, { allowImplicitRoot: false }),
+  MODULE_ID,
+  'an explicit course-local package landscape remains selectable without implicit root defaulting',
+)
 assert.equal(findRuntimeRootLandscapeId(parsed, MODULE_ID), ROOT_ID)
 assert.equal(resolveRuntimeOfferingId(parsed, ROOT_ID, null), OFFERING_ID)
 assert.equal(

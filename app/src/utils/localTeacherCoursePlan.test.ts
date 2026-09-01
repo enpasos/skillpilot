@@ -16,6 +16,7 @@ import {
   assignAtomicGoalsToLearningBlocks,
   countCoursePlanWorkdaysInclusive,
   createTeacherCoursePlan,
+  deleteTeacherCoursePlans,
   evaluateTeacherCoursePlan,
   isCourseGoalCovered,
   loadTeacherCoursePlan,
@@ -211,6 +212,79 @@ assert.deepEqual(overlapAssignments.assignments, [
     duplicateAtomicGoalIds: ['g2'],
   },
 ])
+
+// Teacher evaluation and learner publication share one stable prerequisite
+// order. Effective and fallback requires may point at clusters, whose atoms
+// are expanded before Kahn ordering while unrelated authored order stays stable.
+const effectivePrerequisite = uiGoal('effective-prerequisite')
+const fallbackPrerequisite = uiGoal('fallback-prerequisite')
+const prerequisiteOrderIndex = goalMap(
+  uiGoal('prerequisite-order-root', [
+    'effective-dependent',
+    'effective-prerequisite-cluster',
+    'fallback-dependent',
+    'fallback-prerequisite-cluster',
+  ]),
+  {
+    ...uiGoal('effective-dependent'),
+    effectiveRequires: ['effective-prerequisite-cluster'],
+  },
+  uiGoal('effective-prerequisite-cluster', [effectivePrerequisite.id]),
+  effectivePrerequisite,
+  {
+    ...uiGoal('fallback-dependent'),
+    requires: ['fallback-prerequisite-cluster'],
+  },
+  uiGoal('fallback-prerequisite-cluster', [fallbackPrerequisite.id]),
+  fallbackPrerequisite,
+)
+const prerequisiteOrderPlan = addBlocks(createPlan('prerequisite-order'), [{
+  id: 'prerequisite-order-block',
+  kind: 'learning',
+  goalId: 'prerequisite-order-root',
+  startDate: '2026-09-01',
+  endDate: '2026-09-04',
+}])
+const prerequisiteOrderAssignments = assignAtomicGoalsToLearningBlocks(
+  prerequisiteOrderPlan,
+  prerequisiteOrderIndex,
+)
+assert.equal(prerequisiteOrderAssignments.quality.status, 'complete')
+assert.deepEqual(prerequisiteOrderAssignments.assignments[0]?.atomicGoalIds, [
+  'effective-prerequisite',
+  'effective-dependent',
+  'fallback-prerequisite',
+  'fallback-dependent',
+])
+const prerequisiteOrderEvaluation = evaluateTeacherCoursePlan(
+  prerequisiteOrderPlan,
+  prerequisiteOrderIndex,
+  '2026-09-01',
+)
+assert.equal(prerequisiteOrderEvaluation.quality.status, 'insufficient')
+assert.deepEqual(prerequisiteOrderEvaluation.metrics?.dueGoalIds, ['effective-prerequisite'])
+
+const prerequisiteCycleIndex = goalMap(
+  uiGoal('prerequisite-cycle-root', ['cycle-dependent', 'cycle-prerequisite']),
+  { ...uiGoal('cycle-dependent'), effectiveRequires: ['cycle-prerequisite'] },
+  { ...uiGoal('cycle-prerequisite'), effectiveRequires: ['cycle-dependent'] },
+)
+const prerequisiteCycleAssignments = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('prerequisite-cycle'), [{
+    id: 'prerequisite-cycle-block',
+    kind: 'learning',
+    goalId: 'prerequisite-cycle-root',
+    startDate: '2026-09-01',
+    endDate: '2026-09-04',
+  }]),
+  prerequisiteCycleIndex,
+)
+assert.equal(prerequisiteCycleAssignments.quality.status, 'invalid')
+assert.deepEqual(prerequisiteCycleAssignments.assignments[0]?.atomicGoalIds, [])
+assert.equal(
+  prerequisiteCycleAssignments.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-CYCLE',
+)
 
 // A landscape-wide learner baseline may contain multiple stages. A selected
 // Sek-I block still reports its 259 descendants and schedules only its 53 open
@@ -655,6 +729,27 @@ assert.equal(loadTeacherCoursePlan('math-gk', storage).plan?.classId, 'math-gk')
 const persisted = JSON.parse([...stored.values()][0]!) as { schemaVersion: number; plansByClassId: unknown }
 assert.equal(persisted.schemaVersion, 1)
 assert.equal(Object.keys(persisted.plansByClassId as object).length, 2)
+
+const contextualPlanOne = createPlan('teacher-course-plan-v2:class-a:context-one')
+const contextualPlanTwo = createPlan('teacher-course-plan-v2:class-a:context-two')
+const foreignContextualPlan = createPlan('teacher-course-plan-v2:class-b:context-one')
+const legacyClassPlan = createPlan('legacy-class-a')
+assert.equal(saveTeacherCoursePlan(contextualPlanOne, storage).ok, true)
+assert.equal(saveTeacherCoursePlan(contextualPlanTwo, storage).ok, true)
+assert.equal(saveTeacherCoursePlan(foreignContextualPlan, storage).ok, true)
+assert.equal(saveTeacherCoursePlan(legacyClassPlan, storage).ok, true)
+assert.equal(deleteTeacherCoursePlans({
+  exactPlanIds: ['legacy-class-a'],
+  planIdPrefixes: ['teacher-course-plan-v2:class-a:'],
+}, storage).ok, true)
+assert.equal(loadTeacherCoursePlan(contextualPlanOne.classId, storage).plan, null)
+assert.equal(loadTeacherCoursePlan(contextualPlanTwo.classId, storage).plan, null)
+assert.equal(loadTeacherCoursePlan(legacyClassPlan.classId, storage).plan, null)
+assert.equal(
+  loadTeacherCoursePlan(foreignContextualPlan.classId, storage).plan?.classId,
+  foreignContextualPlan.classId,
+  'deleting one class keeps similarly named plans from other classes',
+)
 
 stored.set('skillpilot_teacher_course_plans_v1', '{broken')
 const corruptBeforeWrite = stored.get('skillpilot_teacher_course_plans_v1')

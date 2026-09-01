@@ -62,7 +62,6 @@ import {
   parseSkillpilotIdFileEnvelope,
   SKILLPILOT_ID_FILE_NAME,
 } from '../utils/skillpilotIdFile'
-import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 import {
   clearDeletedLearnerBrowserState,
@@ -99,7 +98,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const isPublicSkillpilot =
     typeof window !== 'undefined' && /(^|\.)skillpilot\.com$/i.test(window.location.hostname)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
-    return getStoredLandscapeIdForRole(role)
+    return role === 'trainer' ? '' : getStoredLandscapeIdForRole(role)
   })
   const [persistedLearnerLandscapeId, setPersistedLearnerLandscapeId] = useState('')
   const [curriculumSaving, setCurriculumSaving] = useState(false)
@@ -126,10 +125,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const pathToken = getLearnerPathToken(location.pathname)
     const deepLinkGoal = params.get('goal') || params.get('g') || pathToken
 
-    if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
-      setSelectedLandscapeId(role === 'trainer'
-        ? normalizeTrainerLandscapeId(deepLinkCurriculum)
-        : normalizeLearnerLandscapeId(deepLinkCurriculum))
+    if (
+      role !== 'trainer'
+      && deepLinkCurriculum
+      && deepLinkCurriculum !== selectedLandscapeId
+    ) {
+      setSelectedLandscapeId(normalizeLearnerLandscapeId(deepLinkCurriculum))
     }
     if (deepLinkGoal && role !== 'learner') {
       setRole('learner')
@@ -938,17 +939,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       persistLearnerStart(effectiveId)
     }
 
-    if (role === 'trainer' && selectedLandscapeId) {
-      const normalizedTrainerLandscapeId = normalizeTrainerLandscapeId(selectedLandscapeId)
-      if (!normalizedTrainerLandscapeId) {
+    if (role === 'trainer') {
+      try {
         localStorage.removeItem('skillpilot_trainer_landscape')
-        setSelectedLandscapeId('')
-        return
+      } catch {
+        // The obsolete global trainer context must never block the local
+        // course organization from opening.
       }
-      if (normalizedTrainerLandscapeId !== selectedLandscapeId) {
-        setSelectedLandscapeId(normalizedTrainerLandscapeId)
-      }
-      localStorage.setItem('skillpilot_trainer_landscape', normalizedTrainerLandscapeId)
+      setSelectedLandscapeId('')
+      onStart(effectiveId, '', role)
+      return
     }
 
     onStart(effectiveId, selectedLandscapeId, role || undefined)
@@ -957,13 +957,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   // Restore persisted selection when the role changes.
   React.useEffect(() => {
     if (role === 'trainer') {
-      const saved = normalizeTrainerLandscapeId(localStorage.getItem('skillpilot_trainer_landscape'))
-      if (saved) {
-        setSelectedLandscapeId(saved)
-      } else {
+      try {
         localStorage.removeItem('skillpilot_trainer_landscape')
-        setSelectedLandscapeId('')
+      } catch {
+        // Browser storage is only a convenience for the local trainer view.
       }
+      setSelectedLandscapeId('')
     } else if (role === 'learner') {
       setSelectedLandscapeId(getStoredLandscapeIdForRole(role))
     } else if (role === 'explorer') {
@@ -1354,17 +1353,25 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 )}
 
                 {termsAccepted && role === 'trainer' && (
-                  <div className="bg-sky-100 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-500/20 rounded p-3 text-xs text-sky-800 dark:text-sky-200/80 leading-relaxed">
-                    <p className="mb-1 font-bold flex items-center gap-2">
-                      <Save size={16} /> {t.startPage.login.trainerInfo.title}
-                    </p>
-                    <p className="mb-2">
-                      {t.startPage.login.trainerInfo.text}
-                    </p>
+                  <div className="space-y-4">
+                    <div className="bg-sky-100 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-500/20 rounded p-3 text-xs text-sky-800 dark:text-sky-200/80 leading-relaxed">
+                      <p className="mb-1 font-bold flex items-center gap-2">
+                        <Save size={16} /> {t.startPage.login.trainerInfo.title}
+                      </p>
+                      <p className="mb-2">
+                        {t.startPage.login.trainerInfo.text}
+                      </p>
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500"
+                    >
+                      {t.startPage.login.trainerDashboardButton}
+                    </button>
                   </div>
                 )}
 
-                {termsAccepted && role && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
+                {termsAccepted && role && role !== 'trainer' && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
                   <LearnerSetupStepCard
                     ref={curriculumStepRef}
                     stepNumber={curriculumPanelCopy.showStepNumber ? 2 : undefined}

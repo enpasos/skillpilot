@@ -477,8 +477,13 @@ export const resolveRuntimeApiHref = (apiBase: string, href: string): string => 
   return new URL(href, `${normalizedBase}/`).toString()
 }
 
-export const selectRuntimeLandscapeId = (catalog: RuntimeCurriculumCatalog, requested?: string | null): string => {
+export const selectRuntimeLandscapeId = (
+  catalog: RuntimeCurriculumCatalog,
+  requested?: string | null,
+  { allowImplicitRoot = true }: { allowImplicitRoot?: boolean } = {},
+): string => {
   if (requested && catalog.landscapes.some((entry) => entry.landscapeId === requested)) return requested
+  if (!allowImplicitRoot) return ''
   return catalog.rootLandscapeIds.length === 1 ? catalog.rootLandscapeIds[0] : ''
 }
 

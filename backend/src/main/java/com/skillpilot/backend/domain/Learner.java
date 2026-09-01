@@ -66,6 +66,9 @@ public class Learner {
     @Column(name = "show_goal_visualizations_in_chat", nullable = false)
     private Boolean showGoalVisualizationsInChat = true;
 
+    @Column(name = "follow_learning_plans", nullable = false)
+    private Boolean followLearningPlans = false;
+
     /**
      * Monotone revision of the learner state shared by the cockpit and all
      * coach transports. This is deliberately learner-scoped rather than
@@ -183,6 +186,15 @@ public class Learner {
         this.showGoalVisualizationsInChat = showGoalVisualizationsInChat;
     }
 
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT)
+    public Boolean getFollowLearningPlans() {
+        return Boolean.TRUE.equals(followLearningPlans);
+    }
+
+    public void setFollowLearningPlans(Boolean followLearningPlans) {
+        this.followLearningPlans = followLearningPlans;
+    }
+
     public long getCoachStateRevision() {
         return coachStateRevision;
     }
@@ -219,6 +231,9 @@ public class Learner {
         }
         if (this.showGoalVisualizationsInChat == null) {
             this.showGoalVisualizationsInChat = true;
+        }
+        if (this.followLearningPlans == null) {
+            this.followLearningPlans = false;
         }
     }
 }

@@ -85,6 +85,12 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || requestUri.startsWith("/api/public/goal-feedback/v1/")
                 || requestUri.equals("/api/operations/goal-feedback/v1")
                 || requestUri.startsWith("/api/operations/goal-feedback/v1/")
+                // Personal plan labels and block titles are learner data and may
+                // contain free text. Keep the complete learner-plan namespace out
+                // of generic request/response body logging.
+                || (requestUri.startsWith("/api/ui/learners/")
+                        && (requestUri.endsWith("/learning-plans")
+                                || requestUri.contains("/learning-plans/")))
                 || requestUri.equals("/api/claude/mcp")
                 || requestUri.startsWith("/api/claude/mcp/")
                 || openAiMcp

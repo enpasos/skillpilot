@@ -51,6 +51,7 @@ interface PersonalCurriculumConfig {
 interface PersonalCurriculumPreferences {
     strategy: 'RANDOM' | 'SEQUENTIAL'
     autoPilot: boolean
+    followLearningPlans: boolean
     strictMode: boolean
     showGoalVisualizationsInChat: boolean
 }
@@ -78,6 +79,7 @@ interface PersonalCurriculumSetupProps {
     rootLandscapeId?: string
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
+    initialFollowLearningPlans?: boolean
     initialStrictMode?: boolean
     initialShowGoalVisualizationsInChat?: boolean
     personalizationEditor?: PersonalCurriculumEditorProps
@@ -94,6 +96,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     rootLandscapeId,
     initialStrategy = 'SEQUENTIAL',
     initialAutoPilot = true,
+    initialFollowLearningPlans = false,
     initialStrictMode = false,
     initialShowGoalVisualizationsInChat = true,
     personalizationEditor,
@@ -172,6 +175,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [config, setConfig] = useState<PersonalCurriculumConfig>(computedInitial)
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
+    const [followLearningPlans, setFollowLearningPlans] = useState<boolean>(initialFollowLearningPlans)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [showGoalVisualizationsInChat, setShowGoalVisualizationsInChat] = useState<boolean>(
         initialShowGoalVisualizationsInChat,
@@ -189,12 +193,31 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const shouldAutoRevealCompatibility = currentLandscapeIsCompatibilityOnly
     const [showCompatibilityChildren, setShowCompatibilityChildren] = useState(shouldAutoRevealCompatibility)
 
+    React.useEffect(() => {
+        setStrategy(initialStrategy)
+        setAutoPilot(initialAutoPilot)
+        setFollowLearningPlans(initialFollowLearningPlans)
+        setStrictMode(initialStrictMode)
+        setShowGoalVisualizationsInChat(initialShowGoalVisualizationsInChat)
+    }, [
+        initialAutoPilot,
+        initialFollowLearningPlans,
+        initialShowGoalVisualizationsInChat,
+        initialStrategy,
+        initialStrictMode,
+        isOpen,
+    ])
+
     const handleStrategyChange = (newStrategy: 'RANDOM' | 'SEQUENTIAL') => {
         setStrategy(newStrategy)
     }
 
     const handleAutoPilotChange = (newAutoPilot: boolean) => {
         setAutoPilot(newAutoPilot)
+    }
+
+    const handleFollowLearningPlansChange = (follow: boolean) => {
+        setFollowLearningPlans(follow)
     }
 
     const handleStrictModeChange = (newStrictMode: boolean) => {
@@ -421,7 +444,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
             setIsApplying(true)
             try {
-                await onPreferencesApply({ strategy, autoPilot, strictMode, showGoalVisualizationsInChat })
+                await onPreferencesApply({ strategy, autoPilot, followLearningPlans, strictMode, showGoalVisualizationsInChat })
                 onClose()
             } finally {
                 setIsApplying(false)
@@ -439,6 +462,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             await onApply(normalizeDurationScopes(config), {
                 strategy,
                 autoPilot,
+                followLearningPlans,
                 strictMode,
                 showGoalVisualizationsInChat,
             })
@@ -742,13 +766,32 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                 <label className="flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
-                                        checked={autoPilot}
-                                        onChange={(e) => handleAutoPilotChange(e.target.checked)}
+                                        checked={followLearningPlans}
+                                        onChange={(e) => handleFollowLearningPlansChange(e.target.checked)}
                                         className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
                                     />
                                     <div>
-                                        <span className="text-sm font-medium text-text-primary">{setupCopy.autoPilotTitle}</span>
-                                        <p className="text-xs text-text-secondary">{setupCopy.autoPilotDescription}</p>
+                                        <span className="text-sm font-medium text-text-primary">{setupCopy.followLearningPlansTitle}</span>
+                                        <p className="text-xs text-text-secondary">{setupCopy.followLearningPlansDescription}</p>
+                                    </div>
+                                </label>
+
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            checked={autoPilot}
+                                            disabled={followLearningPlans}
+                                            onChange={(e) => handleAutoPilotChange(e.target.checked)}
+                                        className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                    />
+                                    <div>
+                                            <span className="text-sm font-medium text-text-primary">{setupCopy.autoPilotTitle}</span>
+                                            <p className="text-xs text-text-secondary">{setupCopy.autoPilotDescription}</p>
+                                            {followLearningPlans && (
+                                                <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300" role="status">
+                                                    {setupCopy.autoPilotPausedByPlan}
+                                                </p>
+                                            )}
                                     </div>
                                 </label>
 

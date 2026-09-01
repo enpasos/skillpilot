@@ -263,9 +263,13 @@ export function useAppCore({
 
   useEffect(() => {
     if (runtimeCatalogState.mode !== 'package') return
-    const normalized = selectRuntimeLandscapeId(runtimeCatalogState.catalog, selectedLandscapeId)
+    const normalized = selectRuntimeLandscapeId(
+      runtimeCatalogState.catalog,
+      selectedLandscapeId,
+      { allowImplicitRoot: role !== 'trainer' },
+    )
     if (normalized !== selectedLandscapeId) setSelectedLandscapeId(normalized)
-  }, [runtimeCatalogState, selectedLandscapeId])
+  }, [role, runtimeCatalogState, selectedLandscapeId])
 
   useEffect(() => {
     if (pendingSearchRef.current === currentSearchString) {

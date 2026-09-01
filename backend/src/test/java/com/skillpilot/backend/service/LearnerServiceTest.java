@@ -21,6 +21,7 @@ import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearnerLearningPlan;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
@@ -30,11 +31,14 @@ import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.service.CompositionViewService.CompositionStructureResolution;
 import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,6 +74,10 @@ public class LearnerServiceTest {
             "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String CANONICAL_PHYSICS_ROOT_SCOPE_ID =
             "bf980fff-b62b-4ea4-a20d-31681a7ad785";
+    private static final String CANONICAL_PHYSICS_LANDSCAPE_ID =
+            "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String CANONICAL_PHYSICS_ORIENTATION_ID =
+            "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
     private static final String CANONICAL_MATH_ORIENTATION_ID =
             "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
     private static final String CANONICAL_E_ONE_SCOPE_ID =
@@ -135,6 +143,9 @@ public class LearnerServiceTest {
     private LearnerService learnerService;
 
     @Autowired
+    private LearnerLearningPlanService learnerLearningPlanService;
+
+    @Autowired
     private LearnerRepository learnerRepository;
 
     @Autowired
@@ -142,6 +153,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private PlannedGoalRepository plannedGoalRepository;
+
+    @Autowired
+    private LearnerLearningPlanRepository learnerLearningPlanRepository;
 
     @Autowired
     private LearnerClientStateRepository learnerClientStateRepository;
@@ -170,7 +184,12 @@ public class LearnerServiceTest {
     @AfterEach
     void tearDown() {
         ReflectionTestUtils.setField(learnerService, "verifiedRecallClock", Clock.systemUTC());
+        ReflectionTestUtils.setField(
+                learnerService,
+                "learningPlanClock",
+                Clock.system(ZoneId.of("Europe/Berlin")));
         learnerClientStateRepository.deleteAll();
+        learnerLearningPlanRepository.deleteAll();
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
         learnerRepository.deleteAll();
@@ -183,6 +202,7 @@ public class LearnerServiceTest {
         Learner persisted = learnerRepository.findById(created.getSkillpilotId()).orElseThrow();
         assertThat(persisted.getLearningStrategy()).isEqualTo("SEQUENTIAL");
         assertThat(persisted.getAutoPilot()).isTrue();
+        assertThat(persisted.getFollowLearningPlans()).isFalse();
     }
 
     @Test
@@ -218,6 +238,7 @@ public class LearnerServiceTest {
         Learner initialLearner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(initialLearner.getCoachStateRevision()).isZero();
         assertThat(initialLearner.getShowGoalVisualizationsInChat()).isTrue();
+        assertThat(initialLearner.getFollowLearningPlans()).isFalse();
         assertThat(learnerService.showGoalVisualizationsInChat(learnerId)).isTrue();
 
         learnerService.setCurriculum(learnerId, CANONICAL_GYMNASIUM_ROOT_ID);
@@ -235,16 +256,36 @@ public class LearnerServiceTest {
         assertThat(learnerRepository.findById(learnerId).orElseThrow()
                 .getCoachStateRevision()).isEqualTo(3L);
 
-        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true, false);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true, false, true);
         Learner updatedLearner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(updatedLearner.getCoachStateRevision()).isEqualTo(4L);
         assertThat(updatedLearner.getShowGoalVisualizationsInChat()).isFalse();
+        assertThat(updatedLearner.getFollowLearningPlans()).isTrue();
         assertThat(learnerService.showGoalVisualizationsInChat(learnerId)).isFalse();
 
-        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true, null);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true, null, null);
         Learner unchangedLearner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(unchangedLearner.getCoachStateRevision()).isEqualTo(4L);
         assertThat(unchangedLearner.getShowGoalVisualizationsInChat()).isFalse();
+        assertThat(unchangedLearner.getFollowLearningPlans()).isTrue();
+    }
+
+    @Test
+    void followLearningPlansPreferenceAdvancesCoachRevisionExactlyOncePerRealChange() {
+        long initialRevision = learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision();
+
+        learnerService.setPreferences(learnerId, null, null, null, null, true);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(initialRevision + 1L);
+
+        learnerService.setPreferences(learnerId, null, null, null, null, true);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(initialRevision + 1L);
+
+        learnerService.setPreferences(learnerId, null, null, null, null, false);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(initialRevision + 2L);
     }
 
     @Test
@@ -331,6 +372,615 @@ public class LearnerServiceTest {
 
         Learner importedLearner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(importedLearner.getCopySources()).isEmpty();
+    }
+
+    @Test
+    void signedExportAndImportCarryOnlyTheLearnerOwnedPortablePlans() throws Exception {
+        selectCompletedCanonicalMathCurriculum();
+        Learner targetConfiguration = learnerRepository.findById(learnerId).orElseThrow();
+
+        Learner source = new Learner();
+        source.setSkillpilotId("personal-plan-export-source");
+        source.setSelectedCurriculum(targetConfiguration.getSelectedCurriculum());
+        source.setPersonalCurriculum(targetConfiguration.getPersonalCurriculum());
+        source.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(source);
+
+        var scope = learnerService.getPlanningScope(
+                source.getSkillpilotId(),
+                CANONICAL_MATH_LANDSCAPE_ID);
+        String atomicGoalId = scope.openAtomicGoalIds().get(0);
+        var blocks = List.of(new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "math-section",
+                "learning",
+                COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID,
+                "Mathematik",
+                java.time.LocalDate.parse("2026-09-01"),
+                java.time.LocalDate.parse("2026-09-30"),
+                null,
+                List.of(atomicGoalId)));
+        LearnerLearningPlan sourcePlan = new LearnerLearningPlan();
+        sourcePlan.setLearner(source);
+        sourcePlan.setLandscapeId(CANONICAL_MATH_LANDSCAPE_ID);
+        sourcePlan.setCurriculumId(scope.curriculumId());
+        sourcePlan.setScopeFingerprint(learnerService.learningPlanFingerprint(
+                source.getSkillpilotId(),
+                CANONICAL_MATH_LANDSCAPE_ID,
+                blocks));
+        sourcePlan.setRevision(7);
+        sourcePlan.setPlanLabel("Mein Matheplan");
+        sourcePlan.setBlocksJson(objectMapper.writeValueAsString(blocks));
+        sourcePlan.setCapturedAt(scope.capturedAt());
+        sourcePlan = learnerLearningPlanRepository.saveAndFlush(sourcePlan);
+        java.util.UUID sourcePlanId = sourcePlan.getId();
+
+        var signed = learnerService.exportLearner(source.getSkillpilotId());
+        assertThat(signed.data().learningPlans())
+                .singleElement()
+                .satisfies(portable -> {
+                    assertThat(portable.landscapeId()).isEqualTo(CANONICAL_MATH_LANDSCAPE_ID);
+                    assertThat(portable.planLabel()).isEqualTo("Mein Matheplan");
+                    assertThat(portable.blocks().get(0).atomicGoalIds()).containsExactly(atomicGoalId);
+                });
+        String portableJson = objectMapper.writeValueAsString(signed.data().learningPlans());
+        assertThat(portableJson)
+                .doesNotContain(source.getSkillpilotId())
+                .doesNotContain("teacher")
+                .doesNotContain("classId")
+                .doesNotContain("planId")
+                .doesNotContain("scopeFingerprint")
+                .doesNotContain("revision");
+
+        learnerService.importLearner(learnerId, signed);
+
+        Learner imported = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(imported.getFollowLearningPlans()).isTrue();
+        assertThat(learnerLearningPlanRepository
+                        .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId))
+                .singleElement()
+                .satisfies(plan -> {
+                    assertThat(plan.getId()).isNotEqualTo(sourcePlanId);
+                    assertThat(plan.getRevision()).isEqualTo(1);
+                    assertThat(plan.getPlanLabel()).isEqualTo("Mein Matheplan");
+                    assertThat(plan.getBlocksJson()).contains(atomicGoalId);
+                });
+    }
+
+    @Test
+    void importAcceptsLegacySignedPayloadWithoutLearningPlansField() throws Exception {
+        Learner source = new Learner();
+        source.setSkillpilotId("legacy-no-plan-field-source");
+        learnerRepository.saveAndFlush(source);
+        var data = new com.skillpilot.backend.api.LearnerDataDTO(
+                source,
+                Map.of(),
+                List.of(),
+                Set.of(),
+                null);
+
+        var legacyJson = objectMapper.createObjectNode();
+        legacyJson.set("learner", objectMapper.valueToTree(source));
+        legacyJson.set("mastery", objectMapper.valueToTree(Map.of()));
+        legacyJson.set("plannedGoals", objectMapper.valueToTree(List.of()));
+        legacyJson.set("copySources", objectMapper.valueToTree(Set.of()));
+        String legacySerialized = objectMapper.writeValueAsString(legacyJson);
+        String currentSerialized = objectMapper.writeValueAsString(data);
+        assertThat(currentSerialized).isEqualTo(legacySerialized);
+        assertThat(currentSerialized).doesNotContain("learningPlans", "followLearningPlans");
+
+        String signingSecret = (String) ReflectionTestUtils.getField(learnerService, "signingSecret");
+        javax.crypto.Mac mac = javax.crypto.Mac.getInstance("HmacSHA256");
+        mac.init(new javax.crypto.spec.SecretKeySpec(
+                signingSecret.getBytes(java.nio.charset.StandardCharsets.UTF_8),
+                "HmacSHA256"));
+        String legacySignature = java.util.HexFormat.of().formatHex(mac.doFinal(
+                legacySerialized.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+
+        assertThatCode(() -> learnerService.importLearner(
+                        learnerId,
+                        new com.skillpilot.backend.api.SignedLearnerDataDTO(data, legacySignature)))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void signedPlanImportRejectsAtomicGoalsOutsideThePersonalSubjectScope() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner targetConfiguration = learnerRepository.findById(learnerId).orElseThrow();
+        Learner source = new Learner();
+        source.setSkillpilotId("invalid-plan-source");
+        source.setSelectedCurriculum(targetConfiguration.getSelectedCurriculum());
+        source.setPersonalCurriculum(targetConfiguration.getPersonalCurriculum());
+        learnerRepository.saveAndFlush(source);
+
+        var invalidBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "foreign-section",
+                "learning",
+                COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID,
+                "Fachfremder Inhalt",
+                java.time.LocalDate.parse("2026-09-01"),
+                java.time.LocalDate.parse("2026-09-30"),
+                null,
+                List.of(CANONICAL_PHYSICS_ROOT_SCOPE_ID));
+        var portable = new com.skillpilot.backend.api.LearnerLearningPlanApi.PortablePlan(
+                CANONICAL_MATH_LANDSCAPE_ID,
+                "Manipulierter Plan",
+                List.of(invalidBlock));
+        var data = new com.skillpilot.backend.api.LearnerDataDTO(
+                source,
+                Map.of(),
+                List.of(),
+                Set.of(),
+                List.of(portable));
+        String signature = ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "calculateSignature",
+                data);
+
+        assertThatThrownBy(() -> learnerService.importLearner(
+                        learnerId,
+                        new com.skillpilot.backend.api.SignedLearnerDataDTO(data, signature)))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode())
+                                .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
+        assertThat(learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId)).isEmpty();
+    }
+
+    @Test
+    void learningPlanBlockFocusMustStayInSubjectAndContainItsMaterializedAtoms() {
+        selectCompletedCanonicalMathCurriculum();
+        var scope = learnerService.getPlanningScope(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(scope.scopeAtomicGoalIds()).contains(CANONICAL_MATH_ORIENTATION_ID);
+
+        var validBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "math-root",
+                "learning",
+                COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID,
+                "Mathematik",
+                java.time.LocalDate.parse("2026-09-01"),
+                java.time.LocalDate.parse("2026-09-30"),
+                null,
+                List.of(CANONICAL_MATH_ORIENTATION_ID));
+        assertThatCode(() -> learnerService.validateLearningPlanBlockFoci(
+                        learnerId,
+                        CANONICAL_MATH_LANDSCAPE_ID,
+                        List.of(validBlock)))
+                .doesNotThrowAnyException();
+
+        var foreignFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "foreign-focus",
+                "learning",
+                CANONICAL_PHYSICS_ROOT_SCOPE_ID,
+                "Falsches Fach",
+                validBlock.startDate(),
+                validBlock.endDate(),
+                null,
+                validBlock.atomicGoalIds());
+        var unrelatedMathFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "unrelated-focus",
+                "learning",
+                COMPOSITION_J8_SCOPE_ID,
+                "Falscher Abschnitt",
+                validBlock.startDate(),
+                validBlock.endDate(),
+                null,
+                validBlock.atomicGoalIds());
+
+        for (var invalid : List.of(foreignFocus, unrelatedMathFocus)) {
+            assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                            learnerId,
+                            CANONICAL_MATH_LANDSCAPE_ID,
+                            List.of(invalid)))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                            assertThat(exception.getStatusCode())
+                                    .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
+        }
+    }
+
+    @Test
+    void learningPlanActivationGuardPreservesAnotherUnmasteredActiveGoal() {
+        selectCompletedCanonicalMathCurriculum();
+        var scope = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(scope.openAtomicGoalIds()).hasSizeGreaterThan(1);
+        String activeGoalId = scope.openAtomicGoalIds().get(0);
+        String proposedGoalId = scope.openAtomicGoalIds().get(1);
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(activeGoalId);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+
+        assertThatThrownBy(() -> learnerService.assertLearningPlanMayActivateGoal(
+                        learnerId,
+                        proposedGoalId))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode())
+                                .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                .isEqualTo(activeGoalId);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID);
+
+        assertThatCode(() -> learnerService.assertLearningPlanMayActivateGoal(
+                        learnerId,
+                        activeGoalId))
+                .doesNotThrowAnyException();
+
+        masteryRepository.saveAndFlush(new Mastery(learner, activeGoalId, 1.0));
+        assertThatCode(() -> learnerService.assertLearningPlanMayActivateGoal(
+                        learnerId,
+                        proposedGoalId))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void learnerPlanPersistsPrerequisitesBeforeDependentsWithoutReorderingUnrelatedBlocks() {
+        selectCompletedCanonicalMathCurriculum();
+        var scope = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(scope.openAtomicGoalIds())
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID);
+        var reversed = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "representations",
+                "learning",
+                CANONICAL_REPRESENTATION_CLUSTER_ID,
+                "Darstellungen",
+                java.time.LocalDate.parse("2026-09-01"),
+                java.time.LocalDate.parse("2026-09-02"),
+                null,
+                List.of(CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        var created = learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Topologischer Plan",
+                        List.of(reversed)),
+                java.time.LocalDate.parse("2026-09-01"));
+
+        assertThat(created.blocks().get(0).atomicGoalIds()).containsExactly(
+                CANONICAL_CHOOSE_REPRESENTATION_ID,
+                CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(created.metrics().dueThroughToday()).isEqualTo(1);
+        assertThat(learnerLearningPlanRepository
+                        .findByLearner_SkillpilotIdAndLandscapeId(
+                                learnerId,
+                                CANONICAL_MATH_LANDSCAPE_ID))
+                .get()
+                .extracting(LearnerLearningPlan::getBlocksJson)
+                .asString()
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID)
+                .contains(CANONICAL_CREATE_REPRESENTATION_ID);
+    }
+
+    @Test
+    void learnerPlanRejectsDependentScheduledBeforeItsPrerequisiteAcrossBlocks() {
+        selectCompletedCanonicalMathCurriculum();
+        var dependent = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "dependent",
+                "learning",
+                null,
+                "Abhaengiges Ziel",
+                java.time.LocalDate.parse("2026-09-01"),
+                java.time.LocalDate.parse("2026-09-01"),
+                null,
+                List.of(CANONICAL_CREATE_REPRESENTATION_ID));
+        var prerequisite = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "prerequisite",
+                "learning",
+                null,
+                "Voraussetzung",
+                java.time.LocalDate.parse("2026-09-02"),
+                java.time.LocalDate.parse("2026-09-02"),
+                null,
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksByPrerequisites(
+                        learnerId,
+                        List.of(dependent, prerequisite)))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode())
+                                .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
+    }
+
+    @Test
+    void followedPlanStartsExplicitlyThenHandsOffAfterCompletionEvenWithAutopilotDisabled() {
+        prepareRepresentationLearningPlan();
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+
+        var beforeExplicitStart = learnerService.getLearnerState(learnerId);
+        assertThat(beforeExplicitStart.activeGoal()).isNull();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+        var completion = learnerService.setMastery(
+                learnerId,
+                new MasteryUpdateRequest(
+                        Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0),
+                        CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        assertThat(completion.activeGoal()).isNotNull();
+        assertThat(completion.activeGoal().id())
+                .isEqualTo(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                .isEqualTo(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void completingAnUnrelatedGoalDoesNotStartTheFirstGoalOfAStoredPlan() {
+        prepareRepresentationLearningPlan();
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_MATH_ROOT_SCOPE_ID));
+        assertThat(learnerService.getRichFrontier(learnerId))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID);
+        learnerService.setActiveGoal(learnerId, CANONICAL_MATH_SEK_ONE_ORIENTATION_ID);
+
+        var completion = learnerService.setMastery(
+                learnerId,
+                new MasteryUpdateRequest(
+                        Map.of(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID, 1.0),
+                        CANONICAL_MATH_SEK_ONE_ORIENTATION_ID));
+
+        assertThat(completion.activeGoal()).isNull();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
+    }
+
+    @Test
+    void followedPlanKeepsAnUnfinishedActiveGoal() {
+        prepareRepresentationLearningPlan();
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var partial = learnerService.setMastery(
+                learnerId,
+                new MasteryUpdateRequest(
+                        Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 0.5),
+                        CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        assertThat(partial.activeGoal()).isNotNull();
+        assertThat(partial.activeGoal().id())
+                .isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                .isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+    }
+
+    @Test
+    void completionHandsOffToTheOnlyEligiblePlanInAnotherPersonalizedSubject() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "DE-HE",
+                    "stage": "CrossStage",
+                    "durationModel": "G9"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "GK"
+                  },
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                    "selected": true,
+                    "filterId": "GK"
+                  }
+                }
+                """));
+        learnerRepository.saveAndFlush(learner);
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_REPRESENTATION_CLUSTER_ID));
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                        learnerId,
+                        List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerService.getPlanningScope(learnerId, CANONICAL_PHYSICS_LANDSCAPE_ID)
+                        .openAtomicGoalIds())
+                .contains(CANONICAL_PHYSICS_ORIENTATION_ID);
+
+        LocalDate planDate = LocalDate.parse("2026-09-01");
+        ZoneId berlin = ZoneId.of("Europe/Berlin");
+        ReflectionTestUtils.setField(
+                learnerService,
+                "learningPlanClock",
+                Clock.fixed(planDate.atStartOfDay(berlin).toInstant(), berlin));
+        learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Mathematik",
+                        List.of(new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                "math",
+                                "learning",
+                                CANONICAL_REPRESENTATION_CLUSTER_ID,
+                                "Mathematik",
+                                planDate,
+                                planDate,
+                                null,
+                                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID)))),
+                planDate);
+        learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_PHYSICS_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Physik",
+                        List.of(new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                "physics",
+                                "learning",
+                                CANONICAL_PHYSICS_ROOT_SCOPE_ID,
+                                "Physik",
+                                planDate,
+                                planDate,
+                                null,
+                                List.of(CANONICAL_PHYSICS_ORIENTATION_ID)))),
+                planDate);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var completion = learnerService.setMastery(
+                learnerId,
+                new MasteryUpdateRequest(
+                        Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0),
+                        CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        assertThat(completion.activeGoal()).isNotNull();
+        assertThat(completion.activeGoal().id()).isEqualTo(CANONICAL_PHYSICS_ORIENTATION_ID);
+        assertThat(landscapeService.getLandscapeIdForGoal(completion.activeGoal().id()))
+                .isEqualTo(CANONICAL_PHYSICS_LANDSCAPE_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_PHYSICS_ROOT_SCOPE_ID);
+    }
+
+    @Test
+    void followingWithoutAStoredPlanSuppressesGenericAutopilotButLeavesManualFrontier() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_REPRESENTATION_CLUSTER_ID));
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.activeGoal()).isNull();
+        assertThat(state.frontier())
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(state.nextAllowedActions()).contains("setActiveGoal");
+    }
+
+    @Test
+    void stalePlanFingerprintFailsClosedAfterCompletion() {
+        prepareRepresentationLearningPlan();
+        LearnerLearningPlan plan = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdAndLandscapeId(
+                        learnerId,
+                        CANONICAL_MATH_LANDSCAPE_ID)
+                .orElseThrow();
+        plan.setScopeFingerprint("sha256:stale-structure");
+        learnerLearningPlanRepository.saveAndFlush(plan);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var completion = learnerService.setMastery(
+                learnerId,
+                new MasteryUpdateRequest(
+                        Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0),
+                        CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        assertThat(completion.activeGoal()).isNull();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void completedAnchorPlanWinsDeterministicallyAndAmbiguityFailsClosed() {
+        var anchor = new LearnerService.LearningPlanHandoffCandidate(
+                java.util.UUID.randomUUID(),
+                "math",
+                "math-focus",
+                "math-next",
+                true);
+        var unrelated = new LearnerService.LearningPlanHandoffCandidate(
+                java.util.UUID.randomUUID(),
+                "physics",
+                "physics-focus",
+                "physics-next",
+                false);
+        var secondAnchor = new LearnerService.LearningPlanHandoffCandidate(
+                java.util.UUID.randomUUID(),
+                "chemistry",
+                "chemistry-focus",
+                "chemistry-next",
+                true);
+
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(anchor, unrelated)))
+                .contains(anchor);
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(unrelated)))
+                .contains(unrelated);
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(false, List.of(unrelated)))
+                .isEmpty();
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(
+                        unrelated,
+                        new LearnerService.LearningPlanHandoffCandidate(
+                                java.util.UUID.randomUUID(),
+                                "biology",
+                                "biology-focus",
+                                "biology-next",
+                                false))))
+                .isEmpty();
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(anchor, secondAnchor)))
+                .isEmpty();
+    }
+
+    @Test
+    void learningPlanFingerprintChangesWhenStructureChangesWithoutChangingAtomicScope() {
+        var scope = new com.skillpilot.backend.api.LearnerPlanningScopeResponse(
+                "curriculum",
+                "math",
+                List.of("atom-a", "atom-b"),
+                2,
+                0,
+                List.of("atom-a", "atom-b"),
+                Instant.parse("2026-09-01T00:00:00Z"));
+        var block = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "block",
+                "learning",
+                "focus",
+                "Plan",
+                LocalDate.parse("2026-09-01"),
+                LocalDate.parse("2026-09-02"),
+                null,
+                List.of("atom-a", "atom-b"));
+        Map<String, LearningGoal> base = new LinkedHashMap<>();
+        base.put("root", goal("root", List.of(), List.of("focus")));
+        base.put("focus", goal("focus", List.of(), List.of("atom-a", "atom-b")));
+        base.put("atom-a", goal("atom-a", List.of(), List.of()));
+        base.put("atom-b", goal("atom-b", List.of("atom-a"), List.of()));
+
+        String fingerprint = learnerService.computeLearningPlanFingerprint(
+                scope,
+                base,
+                List.of(block),
+                Map.of("focus", List.of("atom-a", "atom-b")));
+
+        Map<String, LearningGoal> changedRequires = new LinkedHashMap<>(base);
+        changedRequires.put("atom-b", goal("atom-b", List.of(), List.of()));
+        Map<String, LearningGoal> changedContains = new LinkedHashMap<>(base);
+        changedContains.put("root", goal("root", List.of(), List.of("focus", "atom-a")));
+
+        assertThat(learnerService.computeLearningPlanFingerprint(
+                        scope,
+                        changedRequires,
+                        List.of(block),
+                        Map.of("focus", List.of("atom-a", "atom-b"))))
+                .isNotEqualTo(fingerprint);
+        assertThat(learnerService.computeLearningPlanFingerprint(
+                        scope,
+                        changedContains,
+                        List.of(block),
+                        Map.of("focus", List.of("atom-a", "atom-b"))))
+                .isNotEqualTo(fingerprint);
+        assertThat(learnerService.computeLearningPlanFingerprint(
+                        scope,
+                        base,
+                        List.of(block),
+                        Map.of("focus", List.of("atom-b"))))
+                .isNotEqualTo(fingerprint);
     }
 
     @Test
@@ -1789,6 +2439,82 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void verifiedRecallCompletionHandsOffToTheNextGoalInTheSameValidPlanWithOneRevision() {
+        prepareMemoryThenRepresentationLearningPlan();
+
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                20);
+        List<String> cardIds = prompt.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+        assertThat(cardIds).hasSize(prompt.totalCards());
+        long beforeRevision = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+
+        var response = learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt(),
+                        cardIds.stream()
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                                .toList()));
+
+        assertThat(response.masterySaved()).isTrue();
+        assertThat(response.successor().activeGoal()).isNotNull();
+        assertThat(response.successor().activeGoal().id())
+                .isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(beforeRevision + 1);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void legacyVerifiedRecallCompletionAlsoHandsOffWithOneRevision() {
+        prepareMemoryThenRepresentationLearningPlan();
+
+        var prompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, false));
+        long beforeFinalRevision = -1L;
+        com.skillpilot.backend.api.VerifiedRecallResultResponse finalResult = null;
+        while ("ready".equals(prompt.status())) {
+            if (prompt.pendingCards() == 1) {
+                beforeFinalRevision = learnerRepository.findById(learnerId)
+                        .orElseThrow()
+                        .getCoachStateRevision();
+            }
+            finalResult = learnerService.recordVerifiedRecallResult(
+                    learnerId,
+                    "de",
+                    new VerifiedRecallResultRequest(
+                            SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                            prompt.cardId(),
+                            true,
+                            "korrekt"));
+            prompt = finalResult.next();
+        }
+
+        assertThat(finalResult).isNotNull();
+        assertThat(finalResult.masterySaved()).isTrue();
+        assertThat(beforeFinalRevision).isNotNegative();
+        Learner successor = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(successor.getActiveGoalId()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(successor.getCoachStateRevision()).isEqualTo(beforeFinalRevision + 1);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
     void verifiedRecallTrustedCustomSizeCarriesIntoTheNextCompleteBatch() {
         activateSekOneCoreFormulaFlashcards();
 
@@ -2440,6 +3166,46 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
     }
 
+    private void prepareMemoryThenRepresentationLearningPlan() {
+        activateSekOneCoreFormulaFlashcards();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+
+        LocalDate planDate = LocalDate.parse("2026-09-01");
+        ZoneId berlin = ZoneId.of("Europe/Berlin");
+        ReflectionTestUtils.setField(
+                learnerService,
+                "learningPlanClock",
+                Clock.fixed(planDate.atStartOfDay(berlin).toInstant(), berlin));
+        learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Memory und Darstellungen",
+                        List.of(
+                                new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                        "memory",
+                                        "learning",
+                                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                        "Lernkarten",
+                                        planDate,
+                                        planDate,
+                                        null,
+                                        List.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID)),
+                                new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                        "representations",
+                                        "learning",
+                                        CANONICAL_REPRESENTATION_CLUSTER_ID,
+                                        "Darstellungen",
+                                        planDate,
+                                        planDate,
+                                        null,
+                                        List.of(CANONICAL_CHOOSE_REPRESENTATION_ID)))),
+                planDate);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+    }
+
     private void selectCompletedCanonicalMathCurriculum() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
@@ -2458,6 +3224,45 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+    }
+
+    private void prepareRepresentationLearningPlan() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_REPRESENTATION_CLUSTER_ID));
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                        learnerId,
+                        List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        ReflectionTestUtils.setField(
+                learnerService,
+                "learningPlanClock",
+                Clock.fixed(
+                        LocalDate.parse("2026-09-02")
+                                .atStartOfDay(ZoneId.of("Europe/Berlin"))
+                                .toInstant(),
+                        ZoneId.of("Europe/Berlin")));
+        var block = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "representations",
+                "learning",
+                CANONICAL_REPRESENTATION_CLUSTER_ID,
+                "Darstellungen",
+                LocalDate.parse("2026-09-01"),
+                LocalDate.parse("2026-09-02"),
+                null,
+                List.of(
+                        CANONICAL_CHOOSE_REPRESENTATION_ID,
+                        CANONICAL_CREATE_REPRESENTATION_ID));
+        learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Darstellungen",
+                        List.of(block)),
+                LocalDate.parse("2026-09-02"));
     }
 
     private void selectCompletedHessenSekTwoLkCurriculum() {

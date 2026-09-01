@@ -5,10 +5,12 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Download } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { getTeacherCoursePlanStorageId } from '../src/utils/teacherCoursePlanContext'
 
 const learnerId = '11111111-2222-4333-8444-555555555555'
+const secondLearnerId = '66666666-7777-4888-8999-000000000000'
 const classId = 'existing-learner-class'
-const mathCoursePlanId = `${classId}:math`
+const secondClassId = 'existing-learner-class-second-root'
 const legacyClassId = 'retired-server-linked-class'
 const personalConfig = {
   root: { selected: true, filterId: 'DE-HE', stage: 'sek2' },
@@ -18,6 +20,24 @@ const personalConfig = {
 const refreshedPersonalConfig = {
   ...personalConfig,
   math: { selected: true, filterId: 'GK' },
+}
+const mathCoursePlanId = getTeacherCoursePlanStorageId({
+  id: classId,
+  name: 'Direkte Einzelbetreuung',
+  landscapeId: 'math',
+  activeFilter: 'DE-HE',
+  rootLandscapeId: 'root',
+  personalConfig,
+  students: [{ id: learnerId, name: 'Alex', accessMode: 'learner-id' }],
+  source: 'existing-learner',
+})
+const secondStoredPersonalConfig = {
+  'other-root': { selected: true, filterId: 'DE-BY', stage: 'sek2' },
+  chemistry: { selected: true, filterId: 'STALE' },
+}
+const secondRefreshedPersonalConfig = {
+  ...secondStoredPersonalConfig,
+  chemistry: { selected: true, filterId: 'REFRESHED' },
 }
 
 const goal = (id: string, title: string, contains: string[] = []) => ({
@@ -56,6 +76,14 @@ const physicsRootGoal = {
   ...goal('physics-root', 'Physik-Ziel'),
   tags: ['root', 'LK'],
 }
+const otherRootGoal = {
+  ...goal('other-school-root', 'Anderes Curriculum', ['chemistry-root']),
+  tags: ['root', 'DE-BY'],
+}
+const chemistryRootGoal = {
+  ...goal('chemistry-root', 'Chemie-Ziel'),
+  tags: ['root'],
+}
 const landscapes = [
   {
     landscapeId: 'root',
@@ -83,6 +111,26 @@ const landscapes = [
     description: 'Physik test',
     filters: [{ id: 'LK', label: 'Leistungskurs' }],
     goals: [physicsRootGoal],
+  },
+]
+const otherLandscapes = [
+  {
+    landscapeId: 'other-root',
+    locale: 'de-DE',
+    subject: 'Anderes Curriculum',
+    title: 'Anderes Curriculum',
+    description: 'Second test root',
+    filters: [{ id: 'DE-BY', label: 'Bayern' }],
+    goals: [otherRootGoal],
+  },
+  {
+    landscapeId: 'chemistry',
+    locale: 'de-DE',
+    subject: 'Chemie',
+    title: 'Chemie',
+    description: 'Chemie test',
+    filters: [{ id: 'REFRESHED', label: 'Aktualisiert' }],
+    goals: [chemistryRootGoal],
   },
 ]
 
@@ -146,6 +194,16 @@ try {
         students: [{ id: seed.learnerId, name: 'Alex', accessMode: 'learner-id' }],
         source: 'existing-learner',
       },
+      {
+        id: seed.secondClassId,
+        name: 'Zweite Einzelbetreuung',
+        landscapeId: 'chemistry',
+        activeFilter: 'STALE',
+        rootLandscapeId: 'other-root',
+        personalConfig: seed.secondStoredPersonalConfig,
+        students: [{ id: seed.secondLearnerId, name: 'Bea', accessMode: 'learner-id' }],
+        source: 'existing-learner',
+      },
     ]))
     localStorage.setItem('skillpilot_teacher_course_plans_v1', JSON.stringify({
       schemaVersion: 1,
@@ -182,7 +240,16 @@ try {
         },
       },
     }))
-  }, { learnerId, classId, legacyClassId, mathCoursePlanId, personalConfig })
+  }, {
+    learnerId,
+    secondLearnerId,
+    classId,
+    secondClassId,
+    legacyClassId,
+    mathCoursePlanId,
+    personalConfig,
+    secondStoredPersonalConfig,
+  })
 
   const page = await context.newPage()
   const requests: Array<{ pathname: string; method: string }> = []
@@ -212,12 +279,16 @@ try {
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify({ summaries: landscapes }),
+        body: JSON.stringify({ summaries: [...landscapes, ...otherLandscapes] }),
       })
       return
     }
-    if (/^\/api\/ui\/landscapes\/(?:math|physics)\/closure$/u.test(pathname)) {
+    if (/^\/api\/ui\/landscapes\/(?:root|math|physics)\/closure$/u.test(pathname)) {
       await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(landscapes) })
+      return
+    }
+    if (/^\/api\/ui\/landscapes\/(?:other-root|chemistry)\/closure$/u.test(pathname)) {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(otherLandscapes) })
       return
     }
     if (pathname === `/api/ui/learners/${learnerId}`) {
@@ -235,6 +306,17 @@ try {
           personalCurriculum: JSON.stringify(
             delayedRequest ? refreshedPersonalConfig : personalConfig,
           ),
+        }),
+      })
+      return
+    }
+    if (pathname === `/api/ui/learners/${secondLearnerId}`) {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          skillpilotId: secondLearnerId,
+          personalCurriculum: JSON.stringify(secondRefreshedPersonalConfig),
         }),
       })
       return
@@ -280,11 +362,40 @@ try {
     pending: localStorage.getItem('skillpilot_teacher_pending_supervision_v1'),
     coursePlans: JSON.parse(localStorage.getItem('skillpilot_teacher_course_plans_v1') ?? '{}'),
   }))
-  assert.deepEqual(browserState.classes.map((item: { id: string }) => item.id), [classId])
+  assert.deepEqual(
+    browserState.classes.map((item: { id: string }) => item.id),
+    [classId, secondClassId],
+  )
   assert.equal(browserState.workspace, null)
   assert.equal(browserState.pending, null)
   assert.deepEqual(Object.keys(browserState.coursePlans.plansByClassId), [mathCoursePlanId])
 
+  await page.getByText('Direkte Einzelbetreuung', { exact: true }).click()
+  await page.getByText('Diese Lehreransicht liest Lernstand und Personalisierung.', { exact: false }).waitFor()
+  await page.getByRole('button', { name: /Alle Klassen/u }).click()
+  await page.getByText('Zweite Einzelbetreuung', { exact: true }).click()
+  await page.getByText('Diese Lehreransicht liest Lernstand und Personalisierung.', { exact: false }).waitFor()
+  await page.waitForFunction(({ storedClassId, expectedConfig }) => {
+    const classes = JSON.parse(localStorage.getItem('skillpilot_classes') ?? '[]') as Array<{
+      id: string
+      personalConfig?: unknown
+    }>
+    return JSON.stringify(classes.find((item) => item.id === storedClassId)?.personalConfig)
+      === JSON.stringify(expectedConfig)
+  }, { storedClassId: secondClassId, expectedConfig: secondRefreshedPersonalConfig })
+  assert.equal(
+    await page.getByLabel('Fachansicht').locator('option:checked').textContent(),
+    'Chemie',
+    'switching between existing-learner courses must use the newly opened course root closure',
+  )
+  await page.getByRole('button', { name: /Alle Klassen/u }).click()
+  await page.getByText('Zweite Einzelbetreuung', { exact: true })
+    .locator('xpath=../..')
+    .getByTitle('Klasse löschen')
+    .click()
+  await page.getByRole('heading', { name: 'Klasse löschen', exact: true }).waitFor()
+  await page.getByRole('button', { name: 'Löschen', exact: true }).click()
+  await page.getByText('Zweite Einzelbetreuung', { exact: true }).waitFor({ state: 'detached' })
   await page.getByText('Direkte Einzelbetreuung', { exact: true }).click()
   await page.getByText('Diese Lehreransicht liest Lernstand und Personalisierung.', { exact: false }).waitFor()
   await page.getByRole('button', { name: 'Plan & Lage', exact: true }).click()

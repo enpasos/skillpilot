@@ -151,7 +151,7 @@ export const en = {
             },
             trainerInfo: {
                 title: "Stored locally",
-                text: "Course data stays on this device."
+                text: "Course data stays on this device. Choose the curriculum when creating each course."
             }
         },
         banner: {

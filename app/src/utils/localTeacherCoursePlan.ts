@@ -59,6 +59,11 @@ export interface CoursePlanWriteResult {
   quality: CoursePlanDataQuality
 }
 
+export interface DeleteTeacherCoursePlansInput {
+  exactPlanIds?: readonly string[]
+  planIdPrefixes?: readonly string[]
+}
+
 export interface NormalizedCoursePlanResult {
   plan: TeacherCoursePlan | null
   quality: CoursePlanDataQuality
@@ -692,6 +697,53 @@ export function loadTeacherCoursePlan(
   return { plan: result.store.plansByClassId[normalizedClassId] ?? null, quality: result.quality }
 }
 
+export function deleteTeacherCoursePlans(
+  input: DeleteTeacherCoursePlansInput,
+  storage?: StorageWriter,
+): CoursePlanWriteResult {
+  const target = storage ?? (
+    typeof globalThis !== 'undefined' && 'localStorage' in globalThis
+      ? globalThis.localStorage
+      : null
+  )
+  if (!target) {
+    return {
+      ok: false,
+      quality: quality('invalid', [{ code: 'CP-STORE-UNAVAILABLE', message: 'Local storage is unavailable.' }]),
+    }
+  }
+  const loaded = loadTeacherCoursePlanStore(target)
+  if (loaded.quality.status === 'invalid') return { ok: false, quality: loaded.quality }
+
+  const exactPlanIds = new Set(
+    (input.exactPlanIds ?? []).map(normalizedId).filter((value): value is string => Boolean(value)),
+  )
+  const planIdPrefixes = (input.planIdPrefixes ?? [])
+    .map((value) => value.trim())
+    .filter(Boolean)
+  const plansByClassId = Object.fromEntries(
+    Object.entries(loaded.store.plansByClassId).filter(([planId]) => (
+      !exactPlanIds.has(planId)
+      && !planIdPrefixes.some((prefix) => planId.startsWith(prefix))
+    )),
+  )
+  if (Object.keys(plansByClassId).length === Object.keys(loaded.store.plansByClassId).length) {
+    return { ok: true, quality: quality('complete') }
+  }
+  try {
+    target.setItem(TEACHER_COURSE_PLAN_STORAGE_KEY, JSON.stringify({
+      schemaVersion: TEACHER_COURSE_PLAN_SCHEMA_VERSION,
+      plansByClassId,
+    }))
+    return { ok: true, quality: quality('complete') }
+  } catch {
+    return {
+      ok: false,
+      quality: quality('invalid', [{ code: 'CP-STORE-WRITE', message: 'Local course plans could not be written.' }]),
+    }
+  }
+}
+
 export function saveTeacherCoursePlan(
   plan: TeacherCoursePlan,
   storage?: StorageWriter,
@@ -1026,6 +1078,170 @@ export function resolveAtomicGoalDescendants(
   return { atomicGoalIds, quality: quality('complete') }
 }
 
+function resolvePlanGoalReference(
+  goalRef: string,
+  goalIndex: ReadonlyMap<string, UiGoal>,
+): string | null {
+  if (!goalRef) return null
+  if (goalIndex.has(goalRef)) return goalRef
+  const separator = goalRef.indexOf(':')
+  if (separator >= 0) {
+    const unqualified = goalRef.slice(separator + 1)
+    if (goalIndex.has(unqualified)) return unqualified
+  }
+  const suffix = `:${goalRef}`
+  for (const goalId of goalIndex.keys()) {
+    if (goalId.endsWith(suffix)) return goalId
+  }
+  return null
+}
+
+function collectPlanPrerequisiteAtoms(
+  goalRef: string,
+  goalIndex: ReadonlyMap<string, UiGoal>,
+  planAtomicGoalIds: ReadonlySet<string>,
+  result: Set<string>,
+  visiting: Set<string>,
+): boolean {
+  const goalId = resolvePlanGoalReference(goalRef, goalIndex)
+  if (!goalId) return true
+  if (!visiting.add(goalId)) return false
+  const goal = goalIndex.get(goalId)
+  if (!goal) {
+    visiting.delete(goalId)
+    return true
+  }
+  if (goal.contains.length === 0) {
+    if (planAtomicGoalIds.has(goalId)) result.add(goalId)
+    visiting.delete(goalId)
+    return true
+  }
+  for (const childRef of goal.contains) {
+    if (!collectPlanPrerequisiteAtoms(
+      childRef,
+      goalIndex,
+      planAtomicGoalIds,
+      result,
+      visiting,
+    )) {
+      visiting.delete(goalId)
+      return false
+    }
+  }
+  visiting.delete(goalId)
+  return true
+}
+
+function orderPlanAtomicGoalsByPrerequisites(
+  authoredAtomicGoalIds: readonly string[],
+  goalIndex: ReadonlyMap<string, UiGoal>,
+): AtomicGoalResolution {
+  const atomicGoalIds = [...new Set(authoredAtomicGoalIds)]
+  const atomicGoalSet = new Set(atomicGoalIds)
+  const authoredIndex = new Map(atomicGoalIds.map((goalId, index) => [goalId, index]))
+  const indegree = new Map(atomicGoalIds.map((goalId) => [goalId, 0]))
+  const dependents = new Map(atomicGoalIds.map((goalId) => [goalId, new Set<string>()]))
+
+  for (const dependentId of atomicGoalIds) {
+    const dependent = goalIndex.get(dependentId)
+    if (!dependent) {
+      return {
+        atomicGoalIds: [],
+        quality: quality('invalid', [{
+          code: 'CP-GOAL-MISSING',
+          message: 'Referenced goal is unavailable.',
+          goalId: dependentId,
+        }]),
+      }
+    }
+    const prerequisiteAtoms = new Set<string>()
+    for (const prerequisiteRef of dependent.effectiveRequires ?? dependent.requires) {
+      if (!collectPlanPrerequisiteAtoms(
+        prerequisiteRef,
+        goalIndex,
+        atomicGoalSet,
+        prerequisiteAtoms,
+        new Set(),
+      )) {
+        return {
+          atomicGoalIds: [],
+          quality: quality('invalid', [{
+            code: 'CP-GOAL-PREREQUISITE-CYCLE',
+            message: 'Goal prerequisite expansion contains a cycle.',
+            goalId: dependentId,
+          }]),
+        }
+      }
+    }
+    prerequisiteAtoms.delete(dependentId)
+    for (const prerequisiteId of prerequisiteAtoms) {
+      const prerequisiteDependents = dependents.get(prerequisiteId)
+      if (prerequisiteDependents?.has(dependentId)) continue
+      prerequisiteDependents?.add(dependentId)
+      indegree.set(dependentId, (indegree.get(dependentId) ?? 0) + 1)
+    }
+  }
+
+  const ready: number[] = []
+  const pushReady = (goalId: string) => {
+    const index = authoredIndex.get(goalId)
+    if (index === undefined) return
+    ready.push(index)
+    let child = ready.length - 1
+    while (child > 0) {
+      const parent = Math.floor((child - 1) / 2)
+      if (ready[parent]! <= ready[child]!) break
+      ;[ready[parent], ready[child]] = [ready[child]!, ready[parent]!]
+      child = parent
+    }
+  }
+  const popReady = (): string | null => {
+    const first = ready[0]
+    if (first === undefined) return null
+    const last = ready.pop()
+    if (ready.length > 0 && last !== undefined) {
+      ready[0] = last
+      let parent = 0
+      while (true) {
+        const left = parent * 2 + 1
+        const right = left + 1
+        let smallest = parent
+        if (left < ready.length && ready[left]! < ready[smallest]!) smallest = left
+        if (right < ready.length && ready[right]! < ready[smallest]!) smallest = right
+        if (smallest === parent) break
+        ;[ready[parent], ready[smallest]] = [ready[smallest]!, ready[parent]!]
+        parent = smallest
+      }
+    }
+    return atomicGoalIds[first] ?? null
+  }
+  atomicGoalIds.forEach((goalId) => {
+    if (indegree.get(goalId) === 0) pushReady(goalId)
+  })
+  const ordered: string[] = []
+  while (ready.length > 0) {
+    const prerequisiteId = popReady()
+    if (!prerequisiteId) break
+    ordered.push(prerequisiteId)
+    for (const dependentId of dependents.get(prerequisiteId) ?? []) {
+      const remaining = (indegree.get(dependentId) ?? 0) - 1
+      indegree.set(dependentId, remaining)
+      if (remaining === 0) pushReady(dependentId)
+    }
+  }
+
+  if (ordered.length !== atomicGoalIds.length) {
+    return {
+      atomicGoalIds: [],
+      quality: quality('invalid', [{
+        code: 'CP-GOAL-PREREQUISITE-CYCLE',
+        message: 'Learning-plan atoms contain a prerequisite cycle.',
+      }]),
+    }
+  }
+  return { atomicGoalIds: ordered, quality: quality('complete') }
+}
+
 function chronologicalLearningBlocks(plan: TeacherCoursePlan) {
   return plan.blocks
     .map((block, index) => ({ block, index }))
@@ -1095,20 +1311,30 @@ export function assignAtomicGoalsToLearningBlocks(
     const plannableAtomicGoalIds = baselineOpen
       ? scopeAtomicGoalIds.filter((goalId) => baselineOpen.has(goalId))
       : scopeAtomicGoalIds
-    const atomicGoalIds: string[] = []
+    const authoredAtomicGoalIds: string[] = []
     const duplicateAtomicGoalIds: string[] = []
     for (const goalId of plannableAtomicGoalIds) {
       if (counted.has(goalId)) duplicateAtomicGoalIds.push(goalId)
-      else {
-        counted.add(goalId)
-        atomicGoalIds.push(goalId)
-      }
+      else authoredAtomicGoalIds.push(goalId)
     }
+    const ordered = orderPlanAtomicGoalsByPrerequisites(authoredAtomicGoalIds, goalIndex)
+    if (ordered.quality.status !== 'complete') {
+      issues.push(...ordered.quality.issues.map((issue) => ({ ...issue, blockId: block.id })))
+      assignments.push({
+        blockId: block.id,
+        goalId: block.goalId,
+        scopeAtomicGoalIds,
+        atomicGoalIds: [],
+        duplicateAtomicGoalIds,
+      })
+      continue
+    }
+    ordered.atomicGoalIds.forEach((goalId) => counted.add(goalId))
     assignments.push({
       blockId: block.id,
       goalId: block.goalId,
       scopeAtomicGoalIds,
-      atomicGoalIds,
+      atomicGoalIds: ordered.atomicGoalIds,
       duplicateAtomicGoalIds,
     })
   }
