@@ -1648,6 +1648,42 @@ First-Party-ChatGPT-Start, MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Coach-,
 Session- und Identitätssemantik, Reviewfälle, Portalwerte, Fixtures und
 Reviewartefakte bleiben unberührt. Eine Portalaktion ist nicht erforderlich.
 
+### 6.29 Eng begrenzte Korrektur: sichtbares Bearbeitungsformular im Kursplan
+
+Der Product Owner hat am **1. September 2026** mit dem Hinweis „der Bearbeiten
+Knopf ist tot“ die Korrektur der vorhandenen Bearbeitungsaktion in der lokalen
+First-Party-Kursplanung beauftragt. Der Klick-Handler öffnete und befüllte das
+Formular bereits korrekt, fügte es aber weit oberhalb des sichtbaren
+Lernabschnitts in den eigenen Scrollbereich ein. Browser-Scroll-Anchoring hielt
+die angeklickte Karte im Bild, sodass das geöffnete Formular unsichtbar blieb.
+
+Freigegeben ist ausschließlich:
+
+- das bereits vorhandene Formular beim Anlegen oder Bearbeiten in den
+  sichtbaren Kursplanbereich zu scrollen und den Tastaturfokus auf seine
+  Überschrift zu setzen;
+- Lernziel, Titel und Datumswerte weiterhin unverändert aus dem gewählten
+  Planabschnitt zu übernehmen;
+- einen Browser-Regressionsfall zu ergänzen, der aus einer heruntergescrollten
+  Lernabschnittskarte **Bearbeiten** aufruft, Sichtbarkeit, Fokus und die
+  vorausgefüllten Werte prüft und anschließend ohne Mutation abbricht.
+
+Unverändert bleiben Speicherung, lernendenabgeleitete Planbasis, Abdeckung,
+Rückgängig, Export, Berechnungssemantik, Direct-ID-Grenze und alle übrigen
+Trainerabläufe. Der eingereichte OpenAI-V1-Vertrag, First-Party-ChatGPT-Start,
+MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Coach-, Session- und
+Identitätssemantik, Reviewfälle, Portalwerte, Fixtures und Reviewartefakte
+bleiben unberührt. Eine Portalaktion ist nicht erforderlich.
+
+Die beiden betroffenen Dateien setzen ihre bestehenden Hashketten fort:
+
+- `app/src/components/CoursePlanPilotView.tsx`:
+  `42e09e55e1dce8bff7f5a7093763cb6e9fe84950f171b15557212c4d24ba5ba1`
+  → `c2ab3b62b60836ebbd39caa63779a0c7aaebc25934074e0e1d6e23961356f424`;
+- `app/scripts/testTrainerCoursePlanUi.ts`:
+  `5f0e079f5debb1a17b6e621d0a333b0462a6c562af7fa51ec99dc0a3e89b9320`
+  → `e04c477cfb6121f8daa540a8ac862258a08c2861b30d2122672d22eeb4fca025`.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

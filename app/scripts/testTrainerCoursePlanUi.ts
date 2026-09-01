@@ -387,6 +387,35 @@ try {
   await page.getByRole('button', { name: 'Stand bis heute vollständig nachgetragen', exact: true }).click()
   assert(await page.getByText('Datenstand für heute bestätigt', { exact: true }).count() >= 1, 'explicit teacher attestation enables the current coverage status')
 
+  const coursePlanScroller = page.getByTestId('trainer-course-plan-view')
+  const editMechanicsButton = mechanicsBlock.getByRole('button', { name: 'Bearbeiten', exact: true })
+  await editMechanicsButton.scrollIntoViewIfNeeded()
+  const scrollTopBeforeEdit = await coursePlanScroller.evaluate((element) => element.scrollTop)
+  assert(scrollTopBeforeEdit > 0, 'the edit regression starts from the scrolled plan block')
+  await editMechanicsButton.click()
+  const editFormHeading = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true })
+  await editFormHeading.waitFor()
+  const editFormIsInView = await editFormHeading.evaluate((heading) => {
+    const scroller = heading.closest<HTMLElement>('[data-testid="trainer-course-plan-view"]')
+    if (!scroller) return false
+    const headingRect = heading.getBoundingClientRect()
+    const scrollerRect = scroller.getBoundingClientRect()
+    return headingRect.top >= scrollerRect.top && headingRect.bottom <= scrollerRect.bottom
+  })
+  assert(editFormIsInView, 'editing scrolls the existing plan-section form into the visible plan workspace')
+  assert(
+    await editFormHeading.evaluate((heading) => document.activeElement === heading),
+    'editing moves keyboard focus to the plan-section form heading',
+  )
+  const editForm = page.locator('section').filter({ has: editFormHeading })
+  assert(
+    await editForm.getByRole('combobox', { name: 'Lernziel oder Cluster' }).inputValue() === clusterGoalId,
+    'the visible edit form is prefilled with the existing curriculum target',
+  )
+  assert(await editForm.getByLabel('Von', { exact: true }).inputValue() === today, 'the edit form keeps the existing start date')
+  assert(await editForm.getByLabel('Bis einschließlich', { exact: true }).inputValue() === blockEnd, 'the edit form keeps the existing end date')
+  await editForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
+
   await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const milestoneFormHeading = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
   await milestoneFormHeading.waitFor()

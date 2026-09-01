@@ -200,6 +200,8 @@ export const CoursePlanPilotView = ({
   const [baselineRetry, setBaselineRetry] = useState(0)
   const [savingBlock, setSavingBlock] = useState(false)
   const planRef = useRef(plan)
+  const blockFormRef = useRef<HTMLElement | null>(null)
+  const blockFormHeadingRef = useRef<HTMLHeadingElement | null>(null)
   const saveBlockRequestRef = useRef<{ token: number; controller: AbortController | null }>({
     token: 0,
     controller: null,
@@ -357,6 +359,15 @@ export const CoursePlanPilotView = ({
     saveBlockRequestRef.current.controller?.abort()
     saveBlockRequestRef.current.controller = null
   }, [])
+
+  useEffect(() => {
+    if (!showBlockForm) return
+    const form = blockFormRef.current
+    const heading = blockFormHeadingRef.current
+    if (!form || !heading) return
+    form.scrollIntoView({ block: 'start' })
+    heading.focus({ preventScroll: true })
+  }, [editingBlockId, showBlockForm])
 
   const cancelPendingBlockSave = () => {
     saveBlockRequestRef.current.token += 1
@@ -807,9 +818,9 @@ export const CoursePlanPilotView = ({
         </section>
 
         {showBlockForm && (
-          <section className="rounded-2xl border-2 border-sky-300 bg-sidebar-bg p-5 shadow-sm dark:border-sky-800" aria-labelledby="course-plan-form-title">
+          <section ref={blockFormRef} className="scroll-mt-4 rounded-2xl border-2 border-sky-300 bg-sidebar-bg p-5 shadow-sm dark:border-sky-800" aria-labelledby="course-plan-form-title">
             <div className="flex items-center justify-between gap-3">
-              <h2 id="course-plan-form-title" className="text-lg font-semibold text-text-primary">
+              <h2 ref={blockFormHeadingRef} id="course-plan-form-title" tabIndex={-1} className="text-lg font-semibold text-text-primary">
                 {editingBlockId ? copy.formTitleEdit : copy.formTitleNew}
               </h2>
               <button
