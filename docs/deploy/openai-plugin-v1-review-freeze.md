@@ -2208,6 +2208,30 @@ Ressourcen, MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte,
 Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
 ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.38 Eng begrenzte Ausnahme: vollständiger LF-Hashabschluss
+
+Die zweite CI-Ausführung hat am **1. September 2026** dieselbe historische
+Zeilenendenabweichung noch für `PreferencesRequest.java` offengelegt. Ein
+anschließender vollständiger Vergleich aller **181** aktuell autorisierten
+Einzeldateien mit ihren Git-`HEAD`-Blobs bestätigt, dass dies die einzige noch
+verbleibende Worktree-/Repository-Abweichung ist.
+
+Die Datei wird inhaltlich nicht geändert. Ausschließlich die append-only
+Freeze-Bindung wird vom früher erfassten lokalen Mixed-EOL-Hash auf die bereits
+eingecheckten und von GitHub Actions ausgecheckten kanonischen LF-Bytes
+fortgesetzt:
+
+- `backend/src/main/java/com/skillpilot/backend/api/PreferencesRequest.java`:
+  `0b40c8bb2fdac8ceeba587dabf49274239d10d1df2c32cf2ba0c95659bc2c6e5`
+  → `59c172ba67a18adf2bf6914409264329a9cede50dbba7fe62a7f571e06546a23`.
+
+Der systematische Blobvergleich ist damit vollständig grün. Es ändern sich
+weder Java-Quellsemantik noch Runtime-, Session-, Identitäts- oder
+Lernzustandsverhalten. OpenAI-Package, MCP/OAuth, Tools, Schemas,
+Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Reviewfälle und
+-fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben
+unverändert. Deshalb ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
