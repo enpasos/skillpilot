@@ -2119,6 +2119,34 @@
           "authorizedSha256": "783f867a57192b81a36bace57f4e75f795795cae4f3fbfacb6bd1be0b86b264c"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-direct-trainer-course-organization-entry",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Remove the redundant trainer confirmation screen so the public Course organization action enters the existing local trainer workspace directly after the required Terms acceptance.",
+      "scope": "In the current production first-party public trainer entry only, when the current Terms are already accepted, invoke the existing empty-context trainer start directly from the Course organization landing action; when Terms are not yet accepted, show only the shared Terms gate and invoke that same start immediately after successful acceptance storage; remove the redundant trainer-only local-storage notice and duplicate submit button. Preserve the exact empty SkillPilot ID, empty landscape and trainer role payload, obsolete global trainer-landscape cleanup, /trainer route without an l parameter, fail-closed Terms storage behavior, learner and explorer setup flows, the landing presentation-island props and capability boundary, access-status copy, ChatGPT and Claude handlers, prepared messages, all other session and learner-state semantics, package, MCP/OAuth, tools, schemas, annotations, instructions, resources, MCP Apps UI, review cases, fixtures, portal values, reviewer credentials, demo and review artifacts.",
+      "target": "current-production-first-party-public-trainer-entry-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-first-party-trainer-entry-shortcut-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/components/SessionSetup.tsx",
+        "submittedSha256": "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        "priorAuthorizedSha256": "b1ce7a490494df6a72dff7369ad8573dbf1b3b56e7b7643109d621bcf94fe8fa",
+        "authorizedSha256": "b9fd9dc1e56fc0227a481958f5ce77682f520bafdbd3d2582c990d6889e50a39"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testSessionSetupCompletionUi.ts",
+        "priorSha256": "a8fc5ce9b8a25a55c6723b5a87310272918a32038345c4f7971d2cf298a05b4f",
+        "sha256": "1ad7fb1822176dfbd89b512e5b4b236703704e89b32536568d17d56f5693f57d"
+      },
+      "additionalFiles": [
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "783f867a57192b81a36bace57f4e75f795795cae4f3fbfacb6bd1be0b86b264c",
+          "authorizedSha256": "45911396d7908ac0ed3e4548e7ede3c2ee2a5181b8e7e524db82ac7433e4e2fd"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [
@@ -2131,7 +2159,7 @@
         "import { PublicLandingPanels } from './PublicLandingPanels'",
         "import { PublicLandingFooter } from './PublicLandingFooter'",
         "onStartLearning={openLearnerStart}",
-        "onOpenCoursePlanning={() => openRoleStart('trainer')}",
+        "onOpenCoursePlanning={openTrainerStart}",
         "onExploreSkillGraph={() => openRoleStart('explorer')}"
       ],
       "files": [

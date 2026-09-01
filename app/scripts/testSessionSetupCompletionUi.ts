@@ -345,22 +345,6 @@ try {
   )
   await trainerTermsPage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
   await trainerTermsPage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
-  const openCourseOrganization = trainerTermsPage.getByRole('button', {
-    name: 'Kursorganisation öffnen',
-    exact: true,
-  })
-  await openCourseOrganization.waitFor()
-  assert(
-    await trainerTermsPage.getByRole('heading', { name: 'Kurs vorbereiten' }).count() === 0
-      && await trainerTermsPage.getByText('Qualitätsampel', { exact: true }).count() === 0
-      && await trainerTermsPage.getByLabel('Curriculum wählen').count() === 0,
-    'trainer entry does not put a curriculum or quality filter in front of course organization',
-  )
-  await trainerTermsPage.getByText(
-    'Das Curriculum wählst du beim Anlegen des jeweiligen Kurses.',
-    { exact: false },
-  ).waitFor()
-  await openCourseOrganization.click()
   await trainerTermsPage.waitForFunction(() => (
     (window as Window & { __sessionSetupStartProbe?: unknown[] })
       .__sessionSetupStartProbe?.length === 1
@@ -378,8 +362,16 @@ try {
     trainerStart?.id === ''
       && trainerStart.landscapeId === ''
       && trainerStart.role === 'trainer'
+      && await trainerTermsPage.getByRole('button', {
+        name: 'Kursorganisation öffnen',
+        exact: true,
+      }).count() === 0
+      && await trainerTermsPage.getByText(
+        'Das Curriculum wählst du beim Anlegen des jeweiligen Kurses.',
+        { exact: false },
+      ).count() === 0
       && await trainerTermsPage.evaluate(() => localStorage.getItem('skillpilot_trainer_landscape')) === null,
-    'trainer entry starts course organization with an empty context and removes the obsolete global landscape',
+    'accepting the required Terms starts course organization directly with an empty context and no redundant confirmation',
   )
   await trainerTermsContext.close()
 
@@ -399,10 +391,6 @@ try {
   await installApi(emptyTrainerPage)
   await emptyTrainerPage.goto(`${baseUrl}?fixture=trainer-app-entry`)
   await emptyTrainerPage.getByTestId('public-landing-action-course-planning').click()
-  await emptyTrainerPage.getByRole('button', {
-    name: 'Kursorganisation öffnen',
-    exact: true,
-  }).click()
   await emptyTrainerPage.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
     .catch(async (error: unknown) => {
       throw new Error(
@@ -415,8 +403,12 @@ try {
   assert(
     new URL(emptyTrainerPage.url()).pathname === '/trainer'
       && !new URL(emptyTrainerPage.url()).searchParams.has('l')
+      && await emptyTrainerPage.getByText(
+        'Das Curriculum wählst du beim Anlegen des jeweiligen Kurses.',
+        { exact: false },
+      ).count() === 0
       && await emptyTrainerPage.evaluate(() => localStorage.getItem('skillpilot_trainer_landscape')) === null,
-    'the real App starts and renders trainer course organization with an empty landscape context',
+    'the real App opens trainer course organization directly with an empty landscape context',
   )
   await emptyTrainerContext.close()
 
