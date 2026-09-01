@@ -138,6 +138,39 @@ class LearnerPlanningScopeServiceTest {
     }
 
     @Test
+    void combinedHessenG9MathPlanningScopeIncludesCrossPhaseCompositionTargetAtoms() {
+        selectHessenG9MathCombined();
+
+        var snapshot = learnerService.getPlanningScope(
+                LEARNER_ID,
+                MATH_LANDSCAPE_ID);
+
+        assertThat(snapshot.scopeAtomicGoalIds())
+                .hasSizeGreaterThanOrEqualTo(15)
+                .doesNotHaveDuplicates()
+                .contains(
+                        "49f9059a-876c-5051-8146-d008b5cc691c",
+                        "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+                        "6a66b4f5-d36e-5b53-91ad-cf25a849d66b",
+                        "10efb267-9733-5db3-a807-03f4cf54e336",
+                        "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+                        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+                        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+                        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+                        "911f3200-1dbc-59a6-90df-c883c77de39c",
+                        "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+                        "1b664036-3c29-5d94-9f42-97069aaa2c53",
+                        "315093d4-515a-542c-b776-d72a12763d1a",
+                        "dc12f281-f161-572b-a973-8405ae9b2498",
+                        "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+                        "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2");
+        assertThat(snapshot.totalAtomicGoalCount())
+                .isEqualTo(snapshot.scopeAtomicGoalIds().size());
+        assertThat(snapshot.openAtomicGoalIds())
+                .containsExactlyElementsOf(snapshot.scopeAtomicGoalIds());
+    }
+
+    @Test
     void multiSubjectLevelTwoScopeIsStrictlyCutToTheRequestedLandscapeAndIgnoresFocus() {
         selectNationalMathAndPhysicsLk();
 
@@ -228,6 +261,21 @@ class LearnerPlanningScopeServiceTest {
                 MATH_LANDSCAPE_ID, Map.of(
                         "selected", true,
                         "filterId", "GK"))));
+        learnerRepository.saveAndFlush(learner);
+    }
+
+    private void selectHessenG9MathCombined() {
+        Learner learner = learnerRepository.findById(LEARNER_ID).orElseThrow();
+        learner.setSelectedCurriculum(CURRICULUM_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig(Map.of(
+                CURRICULUM_ID, Map.of(
+                        "selected", true,
+                        "filterId", "DE-HE",
+                        "stage", "CrossStage",
+                        "durationModel", "G9"),
+                MATH_LANDSCAPE_ID, Map.of(
+                        "selected", true,
+                        "filterId", "GK+LK"))));
         learnerRepository.saveAndFlush(learner);
     }
 

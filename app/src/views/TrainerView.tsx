@@ -688,14 +688,9 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     routeGoalId,
     trainerCompositionRequest,
   ])
-  const coursePlanProjectedTrainerLandscapeEntries = useMemo(
-    () => trainerCompositionRequest
-      ? levelTwoProjectedTrainerLandscapeEntries.map(
-          (entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry,
-        )
-      : levelTwoProjectedTrainerLandscapeEntries,
-    [levelTwoProjectedTrainerLandscapeEntries, trainerCompositionRequest],
-  )
+  // The authored Level-2 composition is authoritative for planning. Its canonical
+  // nodes may carry legacy phase metadata that presentation normalization hides.
+  const coursePlanProjectedTrainerLandscapeEntries = levelTwoProjectedTrainerLandscapeEntries
   const activeLandscapeEntry = useMemo(
     () => projectedTrainerLandscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
     [activeClass, projectedTrainerLandscapeEntries],

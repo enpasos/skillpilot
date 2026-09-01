@@ -1570,6 +1570,34 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "58e57689fc6a2329a53e1664df1de18971bf5a6498605723f0edca0d28683803"
       }
     ]
+  },
+  {
+    "id": "2026-09-01-course-plan-composition-target-projection-correction",
+    "approvedAt": "2026-09-01",
+    "approvedBy": "product-owner",
+    "reason": "Correct the first-party course-plan Level-2 projection so presentation-only phase normalization cannot remove valid backend-authoritative combined GK+LK composition targets, while preserving the normal cockpit projection and fail-closed baseline validation.",
+    "scope": "In the current first-party WebGUI course planner only, build the selectable Level-2 planning tree directly from the backend-authoritative Personal Curriculum composition projection before learner-facing presentation phase normalization; retain that normalization for the normal cockpit tree, retain strict rejection of any baseline target absent from the planning index, and add browser and backend regressions for a merged G9 GK+LK scope containing a Q4 target beneath an E-labelled canonical branch; preserve focus independence, atomic-only counting, the no-store read-only planning snapshot, direct-ID bearer boundary, no teacher-student server relation, and every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+    "target": "current-production-first-party-direct-id-course-planning",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-independent-first-party-course-plan-composition-target-projection-correction-no-submitted-openai-contract-or-review-flow-effect",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/scripts/testTrainerCoursePlanUi.ts",
+        "priorAuthorizedSha256": "5a4bdb263c6297a2bdd4add9d958b817484de2b06f35882167db65d9efd0a5cd",
+        "authorizedSha256": "5f0e079f5debb1a17b6e621d0a333b0462a6c562af7fa51ec99dc0a3e89b9320"
+      },
+      {
+        "path": "app/src/views/TrainerView.tsx",
+        "priorAuthorizedSha256": "d308f123474aa23064ec6389c16279066a95016797f4f210cb5880190c118e2b",
+        "authorizedSha256": "17cda4583d728d546513c875edb8cf95a0cffdff69893c436eb8e5ec9fa9682c"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java",
+        "priorAuthorizedSha256": "333f0d3dcdea429a8039b0f5597c52c06eb31f6f7c751250ccf2cfdee77769e7",
+        "authorizedSha256": "f018453aaff183a29f47f1233c42e860771a1043cc9bc33bab158ec378920db6"
+      }
+    ]
   }
 ];
 
