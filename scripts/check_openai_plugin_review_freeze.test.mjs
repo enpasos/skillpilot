@@ -1644,6 +1644,29 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "f018453aaff183a29f47f1233c42e860771a1043cc9bc33bab158ec378920db6"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-course-plan-edit-form-visibility",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Restore the apparently dead course-plan edit action by bringing the already-opened plan-section form into the visible scroll workspace and moving keyboard focus to its heading.",
+      "scope": "In the current first-party WebGUI course planner only, keep the existing edit handler, draft values, local persistence, immutable learner-derived planning baseline, coverage, undo, export and calculation semantics unchanged; when the new or existing plan-section form opens, scroll that form into the visible course-plan workspace and move programmatic keyboard focus to its heading; add a focused browser regression that starts from a scrolled learning-section card, clicks Edit, verifies the visible focused prefilled form and then cancels without mutation; preserve every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+      "target": "current-production-first-party-direct-id-course-planning",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-independent-first-party-course-plan-edit-visibility-correction-no-submitted-openai-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "5f0e079f5debb1a17b6e621d0a333b0462a6c562af7fa51ec99dc0a3e89b9320",
+          "authorizedSha256": "e04c477cfb6121f8daa540a8ac862258a08c2861b30d2122672d22eeb4fca025"
+        },
+        {
+          "path": "app/src/components/CoursePlanPilotView.tsx",
+          "priorAuthorizedSha256": "42e09e55e1dce8bff7f5a7093763cb6e9fe84950f171b15557212c4d24ba5ba1",
+          "authorizedSha256": "c2ab3b62b60836ebbd39caa63779a0c7aaebc25934074e0e1d6e23961356f424"
+        }
+      ]
     }
   ]);
 });
