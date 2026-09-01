@@ -997,6 +997,16 @@ export function resolveAtomicGoalDescendants(
     }
 
     if (children.length === 0) {
+      if (
+        goal.type === 'cluster'
+        && goal.extendedData?.compositionEntryKind === 'goalEntry'
+      ) {
+        // A direct composition goalEntry can intentionally present a canonical
+        // cluster as an opaque leaf. It remains non-atomic for planning and must
+        // not invalidate otherwise plannable atomic siblings.
+        visited.add(goalId)
+        return
+      }
       issues.push({ code: 'CP-GOAL-EMPTY-CLUSTER', message: 'Cluster has no visible atomic goals.', goalId })
       return
     }

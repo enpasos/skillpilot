@@ -2595,11 +2595,14 @@ public class LearnerService {
                     org.springframework.http.HttpStatus.CONFLICT,
                     "The current personal curriculum has no learner-facing target projection.");
         }
+        // Direct composition goalEntries may retype canonical clusters for an
+        // opaque learner-facing presentation. Planning counts must retain the
+        // stable structural atom/cluster semantics instead of that display copy.
         List<String> scopeAtomicGoalIds = projection.targetGoalIds().stream()
                 .filter(goalId -> requestedLandscapeId.equals(
                         landscapeService.getLandscapeIdForGoal(goalId)))
                 .filter(goalId -> isCountedAtomicGoal(
-                        projection.visibleGoals().get(goalId)))
+                        projection.structuralGoals().get(goalId)))
                 .toList();
         if (scopeAtomicGoalIds.isEmpty()) {
             throw new ResponseStatusException(

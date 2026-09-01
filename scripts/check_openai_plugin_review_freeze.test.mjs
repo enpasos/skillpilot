@@ -1667,6 +1667,39 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "c2ab3b62b60836ebbd39caa63779a0c7aaebc25934074e0e1d6e23961356f424"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-course-plan-canonical-atomicity-parity",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Correct the first-party course-plan atomicity boundary so presentation-only opaque composition entries cannot enter an atomic planning baseline or invalidate valid atomic siblings in a broader plan section.",
+      "scope": "In the current first-party WebGUI course planner and its read-only learner planning-scope endpoint only, classify personalized planning targets from their unchanged structural goal definitions rather than presentation-only projected copies; exclude canonical clusters that a direct composition goalEntry renders as opaque leaves from the atomic baseline; when resolving a broader plan section, treat exactly such opaque non-atomic goalEntry clusters as zero-count presentation siblings while retaining fail-closed handling for ordinary empty clusters, missing goals, cycles and every baseline mismatch; add fachneutral utility coverage plus real H2 Mathematics-and-Physics and combined Hessen GK+LK Physics regressions; preserve focus independence, the immutable no-store Level-2 snapshot, direct-ID bearer boundary, no teacher-student server relation, and every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+      "target": "current-production-first-party-direct-id-course-planning",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-independent-first-party-course-plan-canonical-atomicity-correction-no-submitted-openai-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.test.ts",
+          "priorAuthorizedSha256": "3436f6ea0174e7e2a2ce29467761050e706b1bc5641be92acadb74c988debafc",
+          "authorizedSha256": "ff52502a72612c8f696a064b6caa64ea1b85ef9416fa07a0a21b6d55bdaef0e7"
+        },
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.ts",
+          "priorAuthorizedSha256": "90427e7b2961d395e0ca40fb5b4f24fdc3ed13d60b25c66b3a8b7ff00a97adaf",
+          "authorizedSha256": "fac1c4031f182ea7cbf35c7bbefe1e8d615a855a7f643e5eec25afbefc03f800"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+          "priorAuthorizedSha256": "b94b78fbec5e75a715c91cfbc3f1feeec7475119165761777b6c64646e05f6ac",
+          "authorizedSha256": "f0efaa113759834f84bb5ce04e758f2574d42608ed288290dde25f51c0f99afc"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java",
+          "priorAuthorizedSha256": "f018453aaff183a29f47f1233c42e860771a1043cc9bc33bab158ec378920db6",
+          "authorizedSha256": "0d9ba6dca1a5d7a50f2ac1d87d8e799a327af98dfe08d01c49194c5a968965b7"
+        }
+      ]
     }
   ]);
 });
