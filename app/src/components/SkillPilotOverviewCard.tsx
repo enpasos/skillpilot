@@ -71,7 +71,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
                 to={to}
                 data-testid={`skillpilot-overview-format-${target}`}
                 aria-label={`${label}: ${action}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-violet-200/80 bg-violet-50/70 px-2.5 py-1 transition-colors hover:border-violet-400 hover:bg-violet-100 hover:text-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:border-violet-700/50 dark:bg-violet-950/30 dark:hover:border-violet-500 dark:hover:bg-violet-950/60 dark:hover:text-violet-200 dark:focus-visible:ring-offset-slate-900"
+                className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200/90 bg-emerald-50/80 px-2.5 py-1 text-emerald-800 transition-colors hover:border-emerald-400 hover:bg-emerald-100 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/70 dark:hover:text-emerald-100 dark:focus-visible:ring-emerald-400 dark:focus-visible:ring-offset-slate-900"
               >
                 <Icon size={14} aria-hidden="true" />
                 {label}
@@ -85,7 +85,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
               aria-expanded={isDisclosureOpen}
               aria-controls={disclosurePanelId}
               onClick={() => setIsDisclosureOpen((current) => !current)}
-              className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-offset-slate-900 ${isDisclosureOpen ? 'border-emerald-300/80 bg-emerald-50/80 text-emerald-800 hover:border-emerald-400 hover:bg-emerald-100 hover:text-emerald-900 dark:border-emerald-600/70 dark:bg-emerald-950/40 dark:text-emerald-200 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/60 dark:hover:text-emerald-100' : 'border-violet-200/80 bg-violet-50/70 text-text-secondary hover:border-violet-400 hover:bg-violet-100 hover:text-violet-800 dark:border-violet-700/50 dark:bg-violet-950/30 dark:hover:border-violet-500 dark:hover:bg-violet-950/60 dark:hover:text-violet-200'}`}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-emerald-400 dark:focus-visible:ring-offset-slate-900 ${isDisclosureOpen ? 'border-emerald-300/90 bg-emerald-100/90 text-emerald-900 hover:border-emerald-400 hover:bg-emerald-200/80 hover:text-emerald-950 dark:border-emerald-600/70 dark:bg-emerald-900/60 dark:text-emerald-100 dark:hover:border-emerald-500 dark:hover:bg-emerald-900/80' : 'border-emerald-200/90 bg-emerald-50/80 text-emerald-800 hover:border-emerald-400 hover:bg-emerald-100 hover:text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/40 dark:text-emerald-200 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/70 dark:hover:text-emerald-100'}`}
             >
               <Compass
                 size={14}

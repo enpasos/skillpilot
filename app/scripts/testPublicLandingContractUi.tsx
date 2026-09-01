@@ -230,6 +230,22 @@ const colorDistance = (left: string, right: string) => {
   return Math.hypot(...leftRgb.map((channel, index) => channel - rightRgb[index]!))
 }
 
+const relativeLuminance = (value: string) => {
+  const channels = parseRgb(value).map((channel) => {
+    const normalized = channel / 255
+    return normalized <= 0.04045
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4
+  })
+  return 0.2126 * channels[0]! + 0.7152 * channels[1]! + 0.0722 * channels[2]!
+}
+
+const contrastRatio = (foreground: string, background: string) => {
+  const values = [relativeLuminance(foreground), relativeLuminance(background)]
+    .sort((left, right) => right - left)
+  return (values[0]! + 0.05) / (values[1]! + 0.05)
+}
+
 const isChromaticColor = (value: string) => {
   const channels = parseRgb(value)
   return Math.max(...channels) - Math.min(...channels) >= 20
@@ -367,34 +383,90 @@ const assertPillContentAndSizing = async (
       },
       `${language} ${viewport}: ${testId} shares the overview pill geometry and typography`,
     )
-    if (testId !== 'public-landing-action-learning') {
+  }
+
+  const secondaryAccentGroups = [
+    {
+      label: 'learning',
+      testIds: ['public-landing-action-quickstart', 'public-landing-action-faq'],
+    },
+    {
+      label: 'overview',
+      testIds: [
+        'skillpilot-overview-format-audio',
+        'skillpilot-overview-format-video',
+        'skillpilot-overview-format-whitepaper',
+        'skillpilot-overview-disclosure-toggle',
+      ],
+    },
+    {
+      label: 'teaching',
+      testIds: ['public-landing-action-course-planning'],
+    },
+    {
+      label: 'curricula',
+      testIds: [
+        'public-landing-action-explorer',
+        'public-landing-action-goal-book',
+        'public-landing-action-curriculum-champions',
+      ],
+    },
+  ] as const
+  const accentPalette: Array<Pick<PillVisualMetrics, 'backgroundColor' | 'borderColor' | 'color'>> = []
+  for (const group of secondaryAccentGroups) {
+    const groupMetrics = await Promise.all(
+      group.testIds.map((testId) => readPillVisualMetrics(page.getByTestId(testId))),
+    )
+    const accent = {
+      backgroundColor: groupMetrics[0]!.backgroundColor,
+      borderColor: groupMetrics[0]!.borderColor,
+      color: groupMetrics[0]!.color,
+    }
+    accentPalette.push(accent)
+    for (const metrics of groupMetrics) {
       assert.deepEqual(
         {
           backgroundColor: metrics.backgroundColor,
           borderColor: metrics.borderColor,
           color: metrics.color,
         },
-        {
-          backgroundColor: referenceMetrics.backgroundColor,
-          borderColor: referenceMetrics.borderColor,
-          color: referenceMetrics.color,
-        },
-        `${language} ${viewport}: ${testId} shares the overview pill's quiet secondary treatment`,
+        accent,
+        `${language} ${viewport}: ${group.label} actions share their panel accent`,
+      )
+      assert(
+        contrastRatio(metrics.color, metrics.backgroundColor) >= 4.5,
+        `${language} ${viewport}: ${group.label} action text keeps AA contrast`,
       )
     }
   }
+  assert.equal(
+    new Set(accentPalette.map((accent) => JSON.stringify(accent))).size,
+    secondaryAccentGroups.length,
+    `${language} ${viewport}: every audience panel has its own action accent`,
+  )
 
   const primaryMetrics = await readPillVisualMetrics(
     page.getByTestId('public-landing-action-learning'),
   )
+  const learningSecondaryMetrics = await readPillVisualMetrics(
+    page.getByTestId('public-landing-action-quickstart'),
+  )
   assert(
-    colorDistance(primaryMetrics.backgroundColor, referenceMetrics.backgroundColor) >= 80,
-    `${language} ${viewport}: the primary learning pill is clearly highlighted against secondary pills`,
+    colorDistance(primaryMetrics.backgroundColor, learningSecondaryMetrics.backgroundColor) >= 80,
+    `${language} ${viewport}: the primary learning pill is clearly highlighted within its panel`,
   )
   assert.notEqual(
     primaryMetrics.color,
-    referenceMetrics.color,
+    learningSecondaryMetrics.color,
     `${language} ${viewport}: the primary learning pill also has a distinct foreground treatment`,
+  )
+  assert(
+    relativeLuminance(primaryMetrics.backgroundColor) >= 0.4,
+    `${language} ${viewport}: the primary learning pill keeps a bright brand-blue fill`,
+  )
+  assert(
+    contrastRatio(primaryMetrics.color, primaryMetrics.backgroundColor) >= 4.5,
+    `${language} ${viewport}: the brighter primary learning pill keeps AA text contrast`,
   )
 }
 

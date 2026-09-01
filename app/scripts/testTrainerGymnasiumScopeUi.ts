@@ -369,7 +369,11 @@ try {
     return button?.disabled === false
   })
 
-  const classCard = page.getByText('Mathe LK – Taunusgymnasium', { exact: true }).locator('..').locator('..')
+  const openClassButton = page.getByRole('button', {
+    name: 'Kurs Mathe LK – Taunusgymnasium öffnen',
+    exact: true,
+  })
+  const classCard = page.getByRole('article').filter({ has: openClassButton })
   const classCardText = (await classCard.textContent() ?? '').replace(/\s+/gu, ' ')
   assert(classCardText.includes('Mathematik'), 'existing class card shows the readable subject')
   assert(classCardText.includes('Hessen (DE-HE)'), 'existing class card shows the jurisdiction')
@@ -379,18 +383,40 @@ try {
   assert(!classCardText.includes(mathLandscapeId), 'existing class card does not expose the raw landscape UUID')
 
   const compositionRequestCountBeforeOpen = getCompositionViewRequests().length
-  await classCard.click()
-  await page.getByTestId('trainer-composition-loading').waitFor()
-  assert(
-    await page.getByText('Frühe Geometrie und Raumvorstellungen', { exact: true }).count() === 0,
-    'the broad lower-secondary node never flashes while the class composition view is loading',
-  )
+  await page.evaluate((distractorTitle) => {
+    const probe = {
+      observer: null as MutationObserver | null,
+      seen: document.body.innerText.includes(distractorTitle),
+    }
+    probe.observer = new MutationObserver(() => {
+      probe.seen ||= document.body.innerText.includes(distractorTitle)
+    })
+    probe.observer.observe(document.body, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    })
+    ;(window as Window & {
+      __trainerDistractorFlashProbe?: typeof probe
+    }).__trainerDistractorFlashProbe = probe
+  }, 'Frühe Geometrie und Raumvorstellungen')
+  await openClassButton.click()
   await page.waitForURL((url) => url.pathname === `/trainer/${mathRootGoalId}`)
   const trainerTreePanel = page.getByTestId('trainer-competence-tree-panel')
   await trainerTreePanel.getByText('Sekundarstufe II (LK)', { exact: true }).waitFor()
+  const distractorEverVisible = await page.evaluate(() => {
+    const probe = (window as Window & {
+      __trainerDistractorFlashProbe?: {
+        observer: MutationObserver | null
+        seen: boolean
+      }
+    }).__trainerDistractorFlashProbe
+    probe?.observer?.disconnect()
+    return probe?.seen ?? true
+  })
   assert(
-    await trainerTreePanel.getByText('Frühe Geometrie und Raumvorstellungen', { exact: true }).count() === 0,
-    'the trainer tree excludes the lower-secondary distractor from an upper-secondary class',
+    !distractorEverVisible,
+    'the trainer tree never flashes the lower-secondary distractor while opening an upper-secondary class',
   )
   assert(
     await trainerTreePanel.getByText('Sekundarstufe II (LK)', { exact: true }).count() === 1,
@@ -455,7 +481,7 @@ try {
   await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
 
   setMathCompositionNoMatch(true)
-  await classCard.click()
+  await openClassButton.click()
   await page.getByText(
     'Für diese Klassenauswahl konnte keine passende Curriculumansicht geladen werden.',
     { exact: true },

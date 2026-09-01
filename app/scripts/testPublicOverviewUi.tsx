@@ -514,9 +514,9 @@ const assertClosedDisclosurePill = async (page: Page, language: Language) => {
     'py-1',
     'text-xs',
     'font-medium',
-    'border-violet-200/80',
-    'bg-violet-50/70',
-    'text-text-secondary',
+    'border-emerald-200/90',
+    'bg-emerald-50/80',
+    'text-emerald-800',
   ]) {
     assert(
       disclosureAppearance.classNames.includes(className),
@@ -1103,9 +1103,9 @@ try {
     await flushBrowserEffects(page)
     const openDisclosureAppearance = await readDisclosurePillAppearance(page)
     for (const activeClassName of [
-      'border-emerald-300/80',
-      'bg-emerald-50/80',
-      'text-emerald-800',
+      'border-emerald-300/90',
+      'bg-emerald-100/90',
+      'text-emerald-900',
     ]) {
       assert(
         openDisclosureAppearance.classNames.includes(activeClassName),
@@ -1113,9 +1113,9 @@ try {
       )
     }
     for (const closedClassName of [
-      'border-violet-200/80',
-      'bg-violet-50/70',
-      'text-text-secondary',
+      'border-emerald-200/90',
+      'bg-emerald-50/80',
+      'text-emerald-800',
     ]) {
       assert(
         !openDisclosureAppearance.classNames.includes(closedClassName),
@@ -1244,15 +1244,15 @@ try {
       `${language}: Space closes without changing the disclosure label`,
     )
     assert(
-      reclosedDisclosureClasses.includes('border-violet-200/80')
-      && reclosedDisclosureClasses.includes('bg-violet-50/70')
-      && reclosedDisclosureClasses.includes('text-text-secondary'),
-      `${language}: Space restores the closed violet media-pill styling`,
+      reclosedDisclosureClasses.includes('border-emerald-200/90')
+      && reclosedDisclosureClasses.includes('bg-emerald-50/80')
+      && reclosedDisclosureClasses.includes('text-emerald-800'),
+      `${language}: Space restores the closed emerald media-pill styling`,
     )
     assert(
-      !reclosedDisclosureClasses.includes('border-emerald-300/80')
-      && !reclosedDisclosureClasses.includes('bg-emerald-50/80')
-      && !reclosedDisclosureClasses.includes('text-emerald-800'),
+      !reclosedDisclosureClasses.includes('border-emerald-300/90')
+      && !reclosedDisclosureClasses.includes('bg-emerald-100/90')
+      && !reclosedDisclosureClasses.includes('text-emerald-900'),
       `${language}: Space removes the green active styling`,
     )
     assert(

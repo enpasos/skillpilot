@@ -2145,6 +2145,69 @@ Ressourcen, MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte,
 Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
 ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.37 Eng begrenzte Ausnahme: Panel-Farben und CI-Stabilität
+
+Der Product Owner hat am **1. September 2026** die visuelle Differenzierung der
+vier öffentlichen Landing-Panels präzisiert und zugleich ausdrücklich
+beauftragt, den Stand zu pushen und die CI fehlerfrei herzustellen.
+
+Die Aktionspillen behalten ihre gemeinsame Geometrie, Typografie und
+Icon-plus-Text-Sprache, übernehmen aber nun die semantische Farbe ihres
+jeweiligen Panels: Blau für Lernen, Grün für Überblick, Violett für
+Kursplanung und Amber für Curricula. **Jetzt lernen** verwendet ein helles
+Sky-Blau mit dunkler Schrift statt eines optisch schweren dunklen Blaus. Der
+Browserregressionsvertrag prüft die vier unterscheidbaren Aktionspaletten,
+gleiche Farben innerhalb eines Panels, unveränderte Pillengeometrie sowie
+mindestens WCAG-AA-Textkontrast; der primäre Button muss zusätzlich als heller
+Farbkörper erhalten bleiben.
+
+Die außerhalb der evolvierbaren Präsentationsinsel liegende
+Überblickskomponente und ihre Evidenzketten werden dafür eng fortgesetzt:
+
+- `app/src/components/SkillPilotOverviewCard.tsx`:
+  `905dd38a60374992ce368260d13dc44d446c263b5ee9585eae0eee9d947ec055`
+  → `e2969e96649285c9e831be8a3c787164a09af403f1ea6848929108ccefc724eb`;
+- `app/scripts/testPublicLandingContractUi.tsx`:
+  `0b1fe8ddcd5b39bd43ae54f9579899524730e01ce79058a452e41afeb0f8348a`
+  → `26526b8ed2be687089055d8ed7b59f34ed4c7213e649096e6bcf46ea8bd39301`;
+- `app/scripts/testPublicOverviewUi.tsx`:
+  `4ab7eb14cf8154a617baee7d49db3d7b4090f035cde7c13a2818f0f2c9270b4b`
+  → `49282210b0f6343660a17add95ab9c0cd87d365bef20ae02072de88ecc7d8b39`.
+
+Zwei CI-Regressionen werden ausschließlich in ihren Tests stabilisiert. Der
+Lernzielbuch-Linktest prüft die bereits freigegebene Promotionsentscheidung an
+ihrem neuen Präsentationsort statt weiterhin in `SessionSetup`; die
+Kursbereichsregression klickt den semantisch benannten Kurs-Button und
+beobachtet während des vollständigen Öffnungsvorgangs, dass niemals ein
+fachfremder Sek-I-Knoten aufblitzt. Die geprüfte Produktwirkung bleibt dabei
+unverändert:
+
+- `app/src/views/WorkbenchView.test.ts`:
+  `97e2c090d00859dd0389dbccdfe226b187293bcbac6d0ada1cddd4ae313a59d6`
+  → `a4dc3fa0280b4f4f26119ce0aee05e18568b5c7eefb7441cabafd30333194cc5`;
+- `app/scripts/testTrainerGymnasiumScopeUi.ts`:
+  `ea7fafb68df3aac09a12d56423913f51609df9b469426fac8b8f677f9b37bac2`
+  → `5bd0514f46dee4a2e8b5e3d590eac9c38b3b1b0e654a04d87249fffe3f2d7308`.
+
+Die erste CI-Ausführung hat außerdem offengelegt, dass für
+`LearnerDataDTO.java` irrtümlich der Hash einer lokalen Datei mit gemischten
+Zeilenenden statt der bereits eingecheckten kanonischen LF-Bytes gebunden war.
+Die Datei wird inhaltlich nicht geändert; ausschließlich die Bindung wird auf
+die vom Repository und von GitHub Actions tatsächlich ausgecheckten Bytes
+korrigiert:
+
+- `backend/src/main/java/com/skillpilot/backend/api/LearnerDataDTO.java`:
+  `fdb2f5db5ea3cf4d61a9c863d3677181976ddb1d9e1ff3da6029cc64b08eb67a`
+  → `e45e90c12dc708dd0880c17ef270ee06c3de141f984ab14b7a0f7906770e0b7c`.
+
+Die Landing-Präsentationsinsel erhält keine neue Fähigkeit und keine neuen
+Props oder Imports. Access-Status, Terms-/ID-Gate, ChatGPT- und
+Claude-Handler, Prepared Message, Session- und Lernzustandssemantik,
+OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen,
+Ressourcen, MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
+ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
