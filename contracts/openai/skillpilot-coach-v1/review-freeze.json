@@ -2063,6 +2063,29 @@
           "authorizedSha256": "7b109a7940d59f9888c670291c017a8b20da237064dc906b88b5a39d824e242c"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-trainer-course-plan-disabled-reason-ci-stability",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Make the already authorized trainer course-plan browser evidence wait deterministically for the disabled publication reason before asserting its accessibility binding and exact copy.",
+      "scope": "In test-only browser evidence, replace the immediate non-waiting count assertion for the existing course-plan publication-disabled explanation with an explicit wait for its stable element followed by exact aria-describedby and unchanged-copy assertions. Preserve every product source byte and all course-planning, publication, runtime, session, identity, learner-state, package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, fixture, portal, reviewer, demo and artifact behavior.",
+      "target": "trainer-course-plan-browser-evidence-determinism-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-test-only-wait-stability-no-runtime-openai-v1-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "c4c63a5fbe70aea4562b582de6644b0baee79c83e74708bdb9795b364a48136b",
+          "authorizedSha256": "b28cdee8db212e2f1d8fa468420744a0d031a1d33aa1abacd6da701f1e2a59f1"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "7b109a7940d59f9888c670291c017a8b20da237064dc906b88b5a39d824e242c",
+          "authorizedSha256": "bde02b26db2fd0afd746b4c7241c007d062640eb60966d026a2fc8c7850b95ac"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [
