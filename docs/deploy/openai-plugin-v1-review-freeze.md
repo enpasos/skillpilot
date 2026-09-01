@@ -1546,6 +1546,63 @@ Coach-, Session- und Identitätssemantik, Reviewfälle, Portalwerte, Fixtures un
 Reviewartefakte bleiben unverändert. Eine Portalaktion ist deshalb nicht
 erforderlich.
 
+### 6.27 Eng begrenzte Korrektur: vollständiger personalisierter Planungsraum
+
+Der Product Owner hat am **1. September 2026** die Planungsgrenze aus Abschnitt
+6.26 ausdrücklich korrigiert: Planbar ist der vollständige personalisierte
+Fachumfang (Level 2). Der veränderliche Cockpit-Fokus (Level 3) darf den
+Auswahlraum nicht einschränken. Ein Fokus auf Sekundarstufe I darf deshalb
+personalisierte Ziele der Sekundarstufe II im Kursplan nicht ausblenden.
+
+Diese Freigabe ersetzt ausschließlich die in Abschnitt 6.26 beschriebene
+Fokusbindung und bewahrt dessen übrige Grenzen. Freigegeben ist:
+
+- der bestehende `cache: no-store`-Leseendpunkt liefert für die angeforderte
+  Fachlandschaft alle deduplizierten, atomaren `target`-Ziele der vollständigen
+  Level-2-Personalisierung und deren beim Erfassen noch offene Teilmenge;
+- der Endpunkt nimmt keinen `scopeGoalId` entgegen, liest oder speichert keine
+  Level-3-Fokus-IDs und bleibt unter der gewöhnlichen
+  SkillPilot-ID-Zugriffsgrenze ohne Lehrer-Schüler-Beziehung oder Schreibzugriff;
+- die Kursplanauswahl wird aus der reinen Personal-/Composition-Projektion vor
+  jeder routen- oder fokusbezogenen Cockpit-Projektion aufgebaut;
+- ein konkreter Planblock zählt nur die Atomziele unter seinem tatsächlich
+  ausgewählten Ziel oder Cluster. Sein Todo ist die Schnittmenge dieses
+  Blockumfangs mit der unveränderlich erfassten offenen Teilmenge. Der Nenner
+  der Plananzeige ist die deduplizierte Vereinigung der tatsächlich
+  verplanten Blockumfänge, nicht der gesamte personalisierte Fachumfang;
+- ein Sek-I-Block mit 259 Atomzielen und 206 beim Erfassen gemeisterten Zielen
+  zeigt daher weiterhin 53 offene von 259 Zielen. Zusätzliche personalisierte
+  Sek-II-Ziele werden erst durch einen eigenen Sek-II-Block Teil der
+  Planmetriken;
+- bestehende fokusgebundene lokale Baselines bleiben lesbar, werden vor der
+  nächsten Lernabschnittsplanung aber einmalig in einer echten Planrevision auf
+  die neue fachweite Baseline migriert. Dadurch gelten frühere
+  Unterrichtsbestätigungen nicht irrtümlich für den erweiterten Umfang. Die
+  neue Baseline bleibt über Bearbeiten und Rückgängig unveränderlich.
+
+Die bestehenden Hashketten werden dabei lückenlos fortgeführt:
+
+- `app/src/utils/privacyViewCopy.ts`:
+  `f8f847135a35a483d84a3d191e2b8e24e63a7f3cf47f8e42ba4a361a3a9bf435`
+  → `1424f94d5087a368e45d064dcfde718a4f0958464a32e376f66dddee6fdeb7f4`;
+- `app/scripts/testExistingLearnerTrainerUi.ts`:
+  `5ffeac2acbe876435cce35c6999a99e4144f238b0d9edf1f9750871ec6d8daac`
+  → `f98613ce922ead852f5a3ae0d0bd9eb2c50712f559e127ed7bf6fdbfad531a85`;
+- `app/src/views/TrainerView.tsx`:
+  `2508e4353a4f4d0e354e8bba6184f15101b402e24d20d85bb226ebcaecc6259b`
+  → `d308f123474aa23064ec6389c16279066a95016797f4f210cb5880190c118e2b`.
+
+Der vollständige Quell-, Test- und Dokumentationsumfang dieser Korrektur ist in
+`review-freeze.json` einzeln hashgebunden.
+
+Atomdefinition, Mastery-Schwelle, ganzzahlige Sollrundung,
+Ein-Nachkommastellen-Raten, Exportgrenze und die funktional nur lesende
+Lehreroberfläche bleiben gegenüber Abschnitt 6.26 unverändert. Die Korrektur
+ändert keinen eingereichten OpenAI-Vertrag, First-Party-ChatGPT-Start,
+MCP/OAuth-, Tool-, Schema-, MCP-Apps-UI-, Coach-, Session-, Identitäts-,
+Reviewfall-, Portal-, Fixture- oder Reviewartefakt-Vertrag. Eine Portalaktion
+ist nicht erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

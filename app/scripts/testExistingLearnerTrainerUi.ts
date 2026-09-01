@@ -258,8 +258,7 @@ try {
         body: JSON.stringify({
           curriculumId: 'root',
           landscapeId: 'math',
-          focusGoalIds: ['math-root'],
-          scopeGoalIds: mathAtomicGoalIds,
+          scopeAtomicGoalIds: mathAtomicGoalIds,
           totalAtomicGoalCount: 259,
           masteredAtomicGoalCount: 206,
           openAtomicGoalIds: mathAtomicGoalIds.slice(206),
@@ -303,6 +302,8 @@ try {
   assert.equal(storedDirectPlan.planningBaseline.totalAtomicGoalCount, 259)
   assert.equal(storedDirectPlan.planningBaseline.masteredAtomicGoalCount, 206)
   assert.equal(storedDirectPlan.planningBaseline.openAtomicGoalIds.length, 53)
+  assert.equal(storedDirectPlan.planningBaseline.source, 'learner-planning-landscape-v1')
+  assert.equal('focusGoalIds' in storedDirectPlan.planningBaseline, false)
   assert.equal(storedDirectPlan.revision, 2)
   assert.equal(storedDirectPlan.revisionHistory.length, 1)
   assert.equal(storedDirectPlan.coverageAttestations[0].planRevision, 1)

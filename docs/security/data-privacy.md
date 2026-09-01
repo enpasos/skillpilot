@@ -2,7 +2,7 @@
 
 Status: updated for the current web-started multilingual OpenAI OAuth/MCP App,
 the rollback-only ChatGPT Visible Session, the SkillPilot-ID deletion and
-retention boundary, and the local existing-learner teacher view on 2026-08-31.
+retention boundary, and the local existing-learner teacher view on 2026-09-01.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
@@ -78,10 +78,12 @@ SkillPilot IDs, and cached Level-2 personalization. That local class mapping is
 not stored centrally by SkillPilot. The existing-learner teacher view reads the
 normal learner profile and mastery endpoints directly with the permanent ID.
 When the teacher first schedules a learning scope, one additional no-store
-read derives the current Level-3 focus, its atomic target IDs, and their
-not-yet-mastered subset. The browser stores those focus and goal IDs, aggregate
-counts, and capture time as an immutable local planning baseline; it does not
-store the SkillPilot ID or numeric per-goal mastery values inside that baseline.
+read derives every atomic target ID in the learner's complete Level-2
+personalization for the selected subject and its not-yet-mastered subset. The
+mutable Level-3 focus does not restrict that planning universe. The browser
+stores those goal IDs, aggregate counts, and capture time as an immutable local
+planning baseline; it does not store the SkillPilot ID or numeric per-goal
+mastery values inside that baseline.
 The view does not change learner-side planned goals and creates no separate
 server-side teacher, class, authorization record, or membership relationship.
 

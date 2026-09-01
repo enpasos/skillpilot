@@ -12,8 +12,7 @@ import java.util.Set;
 public record LearnerPlanningScopeResponse(
         String curriculumId,
         String landscapeId,
-        List<String> focusGoalIds,
-        List<String> scopeGoalIds,
+        List<String> scopeAtomicGoalIds,
         long totalAtomicGoalCount,
         long masteredAtomicGoalCount,
         List<String> openAtomicGoalIds,
@@ -22,20 +21,24 @@ public record LearnerPlanningScopeResponse(
     public LearnerPlanningScopeResponse {
         requireText(curriculumId, "curriculumId");
         requireText(landscapeId, "landscapeId");
-        focusGoalIds = immutableDistinctIds(focusGoalIds, "focusGoalIds", false);
-        scopeGoalIds = immutableDistinctIds(scopeGoalIds, "scopeGoalIds", false);
+        scopeAtomicGoalIds = immutableDistinctIds(
+                scopeAtomicGoalIds,
+                "scopeAtomicGoalIds",
+                false);
         openAtomicGoalIds = immutableDistinctIds(openAtomicGoalIds, "openAtomicGoalIds", true);
         if (capturedAt == null) {
             throw new IllegalArgumentException("capturedAt is required");
         }
-        if (totalAtomicGoalCount != scopeGoalIds.size()) {
-            throw new IllegalArgumentException("totalAtomicGoalCount must equal scopeGoalIds size");
+        if (totalAtomicGoalCount != scopeAtomicGoalIds.size()) {
+            throw new IllegalArgumentException(
+                    "totalAtomicGoalCount must equal scopeAtomicGoalIds size");
         }
         if (masteredAtomicGoalCount < 0 || masteredAtomicGoalCount > totalAtomicGoalCount) {
             throw new IllegalArgumentException("masteredAtomicGoalCount is outside the atomic scope");
         }
-        if (!Set.copyOf(scopeGoalIds).containsAll(openAtomicGoalIds)) {
-            throw new IllegalArgumentException("openAtomicGoalIds must be a subset of scopeGoalIds");
+        if (!Set.copyOf(scopeAtomicGoalIds).containsAll(openAtomicGoalIds)) {
+            throw new IllegalArgumentException(
+                    "openAtomicGoalIds must be a subset of scopeAtomicGoalIds");
         }
         if (masteredAtomicGoalCount != totalAtomicGoalCount - openAtomicGoalIds.size()) {
             throw new IllegalArgumentException("atomic mastery counts are inconsistent");

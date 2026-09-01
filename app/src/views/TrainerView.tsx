@@ -85,6 +85,27 @@ const readMasteryValue = (
   return legacyShortKey ? mastery[legacyShortKey] ?? 0 : 0
 }
 
+const collectGoalIdsBelowEntryRoots = (
+  entry: LandscapeEntry | null,
+  goalIndex: ReadonlyMap<string, UiGoal>,
+) => {
+  const goalIds = new Set<string>()
+  const pendingGoalIds = (entry?.goals ?? [])
+    .filter((goal) => (goal.tags ?? []).includes('root'))
+    .map((goal) => goal.id)
+  while (pendingGoalIds.length > 0) {
+    const goalId = pendingGoalIds.pop()
+    if (!goalId || goalIds.has(goalId)) continue
+    const goal = goalIndex.get(goalId)
+    if (!goal) continue
+    goalIds.add(goalId)
+    ;(goal.contains ?? []).forEach((childId) => {
+      if (!goalIds.has(childId)) pendingGoalIds.push(childId)
+    })
+  }
+  return goalIds
+}
+
 const downloadTrainerClassFile = (content: string) => {
   const blob = new Blob([content], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
@@ -626,7 +647,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     () => applyGoalPlacementProjection(landscapeEntries, activeClassFilterIds),
     [activeClassFilterIds, landscapeEntries],
   )
-  const projectedTrainerLandscapeEntries = useMemo(() => {
+  const levelTwoProjectedTrainerLandscapeEntries = useMemo(() => {
     if (!trainerCompositionRequest) {
       return placementProjectedTrainerLandscapeEntries
     }
@@ -646,18 +667,35 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       compositionSourceEntries,
       matchedTrainerCompositionView,
     )
-    const routeProjectedEntries = applyMatchedCompositionRouteGoalProjection(
-      compositionProjectedEntries,
-      routeGoalId,
-    )
-    return routeProjectedEntries.map((entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry)
+    return compositionProjectedEntries
   }, [
     landscapeEntries,
     matchedTrainerCompositionView,
     placementProjectedTrainerLandscapeEntries,
+    trainerCompositionRequest,
+  ])
+  const projectedTrainerLandscapeEntries = useMemo(() => {
+    if (!trainerCompositionRequest) {
+      return levelTwoProjectedTrainerLandscapeEntries
+    }
+    const routeProjectedEntries = applyMatchedCompositionRouteGoalProjection(
+      levelTwoProjectedTrainerLandscapeEntries,
+      routeGoalId,
+    )
+    return routeProjectedEntries.map((entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry)
+  }, [
+    levelTwoProjectedTrainerLandscapeEntries,
     routeGoalId,
     trainerCompositionRequest,
   ])
+  const coursePlanProjectedTrainerLandscapeEntries = useMemo(
+    () => trainerCompositionRequest
+      ? levelTwoProjectedTrainerLandscapeEntries.map(
+          (entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry,
+        )
+      : levelTwoProjectedTrainerLandscapeEntries,
+    [levelTwoProjectedTrainerLandscapeEntries, trainerCompositionRequest],
+  )
   const activeLandscapeEntry = useMemo(
     () => projectedTrainerLandscapeEntries.find((entry) => entry.meta.landscapeId === activeClass?.landscapeId) ?? null,
     [activeClass, projectedTrainerLandscapeEntries],
@@ -673,22 +711,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   )
   const trainerCompositionTargetGoalIds = useMemo(() => {
     if (!matchedTrainerCompositionView || !activeLandscapeEntry) return null
-
-    const targetGoalIds = new Set<string>()
-    const pendingGoalIds = activeLandscapeEntry.goals
-      .filter((goal) => (goal.tags ?? []).includes('root'))
-      .map((goal) => goal.id)
-    while (pendingGoalIds.length > 0) {
-      const goalId = pendingGoalIds.pop()
-      if (!goalId || targetGoalIds.has(goalId)) continue
-      const goal = classGoalIndexAll.get(goalId)
-      if (!goal) continue
-      targetGoalIds.add(goalId)
-      ;(goal.contains ?? []).forEach((childId) => {
-        if (!targetGoalIds.has(childId)) pendingGoalIds.push(childId)
-      })
-    }
-    return targetGoalIds
+    return collectGoalIdsBelowEntryRoots(activeLandscapeEntry, classGoalIndexAll)
   }, [activeLandscapeEntry, classGoalIndexAll, matchedTrainerCompositionView])
   const goalMatchesActiveClassConfig = useCallback((goal: UiGoal | null | undefined) => {
     if (!goal) return false
@@ -705,21 +728,55 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     }
     return goalMatchesFilters(goal, activeClassFilterIds)
   }, [activeClass, activeClassFilterIds, trainerCompositionTargetGoalIds])
+  const coursePlanActiveLandscapeEntry = useMemo(
+    () => coursePlanProjectedTrainerLandscapeEntries.find(
+      (entry) => entry.meta.landscapeId === activeClass?.landscapeId,
+    ) ?? null,
+    [activeClass, coursePlanProjectedTrainerLandscapeEntries],
+  )
+  const coursePlanAllGoals = useMemo(
+    () => coursePlanProjectedTrainerLandscapeEntries.flatMap((entry) => entry.goals),
+    [coursePlanProjectedTrainerLandscapeEntries],
+  )
+  const { goalIndexAll: coursePlanGoalIndexAll } = useGoalIndex(coursePlanAllGoals)
+  const coursePlanVisibleChildrenByParent = useMemo(
+    () => matchedTrainerCompositionView ? buildDirectChildrenMap(coursePlanGoalIndexAll) : undefined,
+    [coursePlanGoalIndexAll, matchedTrainerCompositionView],
+  )
+  const coursePlanCompositionTargetGoalIds = useMemo(() => {
+    if (!matchedTrainerCompositionView || !coursePlanActiveLandscapeEntry) return null
+    return collectGoalIdsBelowEntryRoots(coursePlanActiveLandscapeEntry, coursePlanGoalIndexAll)
+  }, [coursePlanActiveLandscapeEntry, coursePlanGoalIndexAll, matchedTrainerCompositionView])
+  const coursePlanGoalMatchesActiveClassConfig = useCallback((goal: UiGoal | null | undefined) => {
+    if (!goal) return false
+    if (!activeClass) return true
+    if (coursePlanCompositionTargetGoalIds) {
+      return coursePlanCompositionTargetGoalIds.has(goal.id)
+    }
+    if (!goalMatchesGlobalStageScope(
+      goal,
+      activeClass.personalConfig ?? {},
+      { rootLandscapeId: activeClass.rootLandscapeId },
+    )) {
+      return false
+    }
+    return goalMatchesFilters(goal, activeClassFilterIds)
+  }, [activeClass, activeClassFilterIds, coursePlanCompositionTargetGoalIds])
   const coursePlanGoalIndex = useMemo(() => {
     const result = new Map<string, UiGoal>()
-    classGoalIndexAll.forEach((goal, goalId) => {
-      if (goalMatchesActiveClassConfig(goal)) result.set(goalId, goal)
+    coursePlanGoalIndexAll.forEach((goal, goalId) => {
+      if (coursePlanGoalMatchesActiveClassConfig(goal)) result.set(goalId, goal)
     })
     return result
-  }, [classGoalIndexAll, goalMatchesActiveClassConfig])
+  }, [coursePlanGoalIndexAll, coursePlanGoalMatchesActiveClassConfig])
   const coursePlanChildrenByParent = useMemo(() => {
     const result = new Map<string, string[]>()
     coursePlanGoalIndex.forEach((goal) => {
-      const childIds = trainerVisibleChildrenByParent?.get(goal.id) ?? goal.contains ?? []
+      const childIds = coursePlanVisibleChildrenByParent?.get(goal.id) ?? goal.contains ?? []
       result.set(goal.id, childIds.filter((childId) => coursePlanGoalIndex.has(childId)))
     })
     return result
-  }, [coursePlanGoalIndex, trainerVisibleChildrenByParent])
+  }, [coursePlanGoalIndex, coursePlanVisibleChildrenByParent])
   const classRootGoals = useMemo(() => {
     if (!activeClass) {
       return [] as UiGoal[]

@@ -8,7 +8,7 @@ export type CoursePlanDate = string
  * Immutable, learner-derived planning basis. It stores only curriculum goal
  * identifiers and aggregate counts; no learner ID or individual mastery value.
  */
-export interface LearnerCoursePlanBaseline {
+export interface LegacyLearnerCoursePlanBaseline {
   source: 'learner-planning-scope-v1'
   curriculumId: string
   landscapeId: string
@@ -20,6 +20,21 @@ export interface LearnerCoursePlanBaseline {
   masteredAtomicGoalCount: number
   capturedAt: string
 }
+
+export interface LearnerCoursePlanLandscapeBaseline {
+  source: 'learner-planning-landscape-v1'
+  curriculumId: string
+  landscapeId: string
+  scopeAtomicGoalIds: string[]
+  openAtomicGoalIds: string[]
+  totalAtomicGoalCount: number
+  masteredAtomicGoalCount: number
+  capturedAt: string
+}
+
+export type LearnerCoursePlanBaseline =
+  | LegacyLearnerCoursePlanBaseline
+  | LearnerCoursePlanLandscapeBaseline
 
 export interface LearningCoursePlanBlock {
   id: string

@@ -62,6 +62,13 @@ their own path.
   missing stage information never means both stages; ambiguous scope requests
   require clarification.
 
+The local teacher course planner also derives its selectable goal universe from
+this committed Level-2 projection, separated by subject landscape. It does not
+use the learner's mutable Level-3 focus as a filter: for example, a current
+lower-secondary focus must not hide personalized upper-secondary mathematics
+from the planning selector. The scope and metrics of a concrete plan block are
+still determined only by the cluster or goal actually selected for that block.
+
 ### Step 3: Focus and Active Atomic Goal
 The learner can define focus at two different levels.
 
