@@ -876,8 +876,12 @@ try {
     exact: true,
   })
   assert(await earlyPublishButton.isDisabled(), 'publication stays disabled while the learning plan cannot be calculated')
+  const earlyPublishDisabledReason = personalizedPage.locator('#course-plan-publish-disabled-reason')
+  await earlyPublishDisabledReason.waitFor()
   assert(
-    await personalizedPage.getByText('Der Plan muss vollständig berechenbar sein, bevor er bereitgestellt werden kann.', { exact: true }).count() === 1,
+    await earlyPublishButton.getAttribute('aria-describedby') === 'course-plan-publish-disabled-reason'
+      && (await earlyPublishDisabledReason.textContent())?.trim()
+        === 'Der Plan muss vollständig berechenbar sein, bevor er bereitgestellt werden kann.',
     'the disabled publication action explains the missing calculation basis',
   )
   assert(

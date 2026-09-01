@@ -2232,6 +2232,36 @@ Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Reviewfälle und
 -fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben
 unverändert. Deshalb ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.39 Eng begrenzte Ausnahme: deterministische Kursplan-UI-Evidenz
+
+Der anschließende GitHub-Lauf hat am **1. September 2026** einen rein
+testseitigen Zeitablauffehler in der bereits autorisierten
+Kursplan-Browser-Evidenz sichtbar gemacht. Der Test prüfte unmittelbar mit
+`count()`, obwohl diese Playwright-Abfrage nicht auf das zum deaktivierten
+Button gehörende Erklärungselement wartet. Unter der Last des vollständigen
+CI-Laufs wurde deshalb einmal der deaktivierte Button vor seiner stabilen
+Erklärungsanzeige beobachtet; die unveränderte Landingpage-Prüfung, der
+Kursplan selbst und alle vorherigen Produktprüfungen waren grün.
+
+Die Ausnahme erlaubt ausschließlich, in
+`app/scripts/testTrainerCoursePlanUi.ts` zuerst auf das bereits vorhandene
+Element `course-plan-publish-disabled-reason` zu warten und anschließend seine
+bestehende `aria-describedby`-Bindung sowie den unveränderten deutschen Text
+exakt zu prüfen. Produktcode, UI-Text und Kursplanverhalten ändern sich nicht.
+Der Test wurde lokal dreimal hintereinander erfolgreich ausgeführt.
+
+Die bestehende Hashkette wird append-only fortgesetzt:
+
+- `app/scripts/testTrainerCoursePlanUi.ts`:
+  `c4c63a5fbe70aea4562b582de6644b0baee79c83e74708bdb9795b364a48136b`
+  → `b28cdee8db212e2f1d8fa468420744a0d031a1d33aa1abacd6da701f1e2a59f1`.
+
+OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen,
+Ressourcen, MCP-Apps-UI, Runtime-, Session-, Identitäts- und
+Lernzustandsverhalten, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
+ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
