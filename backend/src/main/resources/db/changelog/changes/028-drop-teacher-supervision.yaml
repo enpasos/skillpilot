@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 028-drop-teacher-supervision
+      author: skillpilot
+      runInTransaction: true
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: teacher_membership
+        - tableExists:
+            tableName: teacher_course
+        - tableExists:
+            tableName: teacher_workspace
+      changes:
+        # Drop the dependent tables first. Do not cascade: an unexpected
+        # external reference must stop the migration instead of being removed.
+        - dropTable:
+            tableName: teacher_membership
+            cascadeConstraints: false
+        - dropTable:
+            tableName: teacher_course
+            cascadeConstraints: false
+        - dropTable:
+            tableName: teacher_workspace
+            cascadeConstraints: false

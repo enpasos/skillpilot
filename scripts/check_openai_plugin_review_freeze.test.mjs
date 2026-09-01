@@ -1051,6 +1051,348 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
         },
       ],
     },
+    {
+      "id": "2026-08-31-retire-server-linked-teacher-supervision",
+      "approvedAt": "2026-08-31",
+      "approvedBy": "product-owner",
+      "reason": "Replace the server-linked invitation and membership model with an honest browser-local teacher view based directly on a known full-access SkillPilot ID, and remove every legacy supervision class card instead of retaining or migrating it.",
+      "scope": "In the current first-party WebGUI and backend only, let a teacher create one local read-only UI class for one known existing learner ID, copy the learner's complete selected-subject personalization into that local card, refresh profile and mastery through the ordinary learner endpoints, switch between all selected subjects, allow only password-encrypted local export, purge all legacy linked-supervision cards and their browser credentials, reject their import, remove the invitation route and server supervision implementation, and drop the three obsolete relationship tables through an append-only Liquibase migration; create no teacher-student relationship, invitation, membership, consent, revocation or retention record, make no claim that the read-only UI restricts the bearer authority of the ID, keep the package consumer disabled, and preserve every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, review-case, portal, fixture and review-artifact contract.",
+      "target": "current-production-first-party-web-frontend-and-backend",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-independent-first-party-local-known-id-view-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "backend/src/main/resources/application.yml",
+        "submittedSha256": "15b120a2799148b10f9963fcae6fc998d4f1356b13489be9b6dc89c59161f591",
+        "priorAuthorizedSha256": "7377e3aa197f1156c3ca425b57ff08bde430a451ba1b5f0b27bc1359743c616f",
+        "authorizedSha256": "83df7973dc6bea7457d8398b55a600b5de2a4349dd32dd6faccef37a488b2990"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testExistingLearnerTrainerUi.ts",
+        "sha256": "e1de40b61b30bbc415bb57699986506ababef6efafea05b2938d73328b1733a9"
+      },
+      "additionalFiles": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "priorAuthorizedSha256": "7a3f99c29ae88eaef78e86422be940359aaf46839ea3969418e4455f27b412c2",
+          "authorizedSha256": "d75fa8c2d565c0ddf1781457a3096581ad6c9cbc322b1d5dcab2b5c349a9a625"
+        },
+        {
+          "path": "app/.env",
+          "priorAuthorizedSha256": "8bee290c0e575c1c43d0309b40eae4a54433227572feea15d5c769c41b3d4dcd",
+          "authorizedSha256": "3368d3cb9133c2924a231c16dfd7afe2a66988db15220e464c5a22610fbe6170"
+        },
+        {
+          "path": "app/.env.package-consumer",
+          "priorAuthorizedSha256": "c51d20d7477657ba1894d762915006c8ad94d42d5a3412a51f1e67364459db8a",
+          "authorizedSha256": "96e4007f883c8ce55729b4359905d6f9f595044ce80ac6ec924ff74968cf073e"
+        },
+        {
+          "path": "app/.env.production",
+          "priorAuthorizedSha256": "e12c251a3f7aa563748a4cf077f695a314e6e8a8508446fb4e55e1760fc263b5",
+          "authorizedSha256": "14eca491850e233d7658c9b60f6d46fdd307b3b4124642e7b20021ab0f0bfdbf"
+        },
+        {
+          "path": "app/package.json",
+          "priorAuthorizedSha256": "61cb35d26b04e9ff1541713ae7fe8574ce65a660a5ec6d262b662967b65e9f27",
+          "authorizedSha256": "c2bb74d825ea1d1a16bafd0954ef52e8272551ba7b479cf7f816fec31cc54175"
+        },
+        {
+          "path": "app/scripts/fixtures/existingLearnerClassSetupUi.html",
+          "authorizedSha256": "c86ba600cef023f50b579c295b0a8d9d9a2627048ff0ef9d804361769b63362b"
+        },
+        {
+          "path": "app/scripts/fixtures/existingLearnerClassSetupUi.tsx",
+          "authorizedSha256": "48161cd1c8b1a3a992095403915c5e0bb2c0cb7432707eabaa0ad6c020c76f82"
+        },
+        {
+          "path": "app/scripts/fixtures/existingLearnerTrainerUi.html",
+          "authorizedSha256": "03f1790eaca384dde516f1ff1826773d03fdbc6892a1f2f13079e3b86cf6d4ab"
+        },
+        {
+          "path": "app/scripts/fixtures/existingLearnerTrainerUi.tsx",
+          "authorizedSha256": "92332a285ad7377808a96fb44b26ab71a09c582b99892974c94f5d678e1aedf0"
+        },
+        {
+          "path": "app/scripts/testExistingLearnerClassSetupUi.ts",
+          "authorizedSha256": "1dfd2c662a97f61f9a30c2d71f3e0d86f41188ff9d1e3653b250e1c991de1e62"
+        },
+        {
+          "path": "app/scripts/testExistingLearnerDisabledUi.ts",
+          "authorizedSha256": "3223a96db8c1a60e3be9389cd113330bc61a99946ca4e92ab2e4a8b57fa4ae21"
+        },
+        {
+          "path": "app/scripts/fixtures/teacherSupervisionClassSetupUi.html",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/fixtures/teacherSupervisionClassSetupUi.tsx",
+          "priorAuthorizedSha256": "dddb26242831f3206ea614b1f8af1876268f3dd748aea96945af8a43663db9af",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/fixtures/teacherSupervisionConsentUi.html",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/fixtures/teacherSupervisionConsentUi.tsx",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/fixtures/teacherSupervisionTrainerUi.html",
+          "priorAuthorizedSha256": "24f5a00f9513a5b92bc2ab3280efac829d16ec243a2eaddc57ec68bbec88a755",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/fixtures/teacherSupervisionTrainerUi.tsx",
+          "priorAuthorizedSha256": "a0ee4702182ff6c145c02e1840c78a40304b1b3e3c6e3ed9c49142adaebf3345",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/testTeacherSupervisionClassSetupUi.ts",
+          "priorAuthorizedSha256": "e15d8901b948013a8ae3ab40798c81df4062854b42106988324940db11d20b63",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/testTeacherSupervisionConsentUi.ts",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/testTeacherSupervisionTrainerUi.ts",
+          "priorAuthorizedSha256": "5b78c3ef9e337eecc2050e71a1528581f0c89439e1182576dab18b2d7a7b007c",
+          "deleted": true
+        },
+        {
+          "path": "app/scripts/testTeacherSupervisionUi.ts",
+          "priorAuthorizedSha256": "034bc3082a40ab3d5b2ade8ded89d4a00d955aa60f4eaa8613e412f8acb0418d",
+          "deleted": true
+        },
+        {
+          "path": "app/src/App.tsx",
+          "authorizedSha256": "c11ec44b676026e9cf77345e087a7c0e7ad4119c04634a949684e5ae61b552e7"
+        },
+        {
+          "path": "app/src/components/ClassSetup.tsx",
+          "priorAuthorizedSha256": "f4fd8c1e65b88f23cb806b36461e5fc735e1fcfae5f524bc76223e85fc18488d",
+          "authorizedSha256": "ba1fd82e8c0da143a7fd973e702067467f2b8cf66f1e3e88a65ea17910616eea"
+        },
+        {
+          "path": "app/src/trainerTypes.ts",
+          "authorizedSha256": "289b08c175ce85400b9301e2532080bc5260eb3ca98647ecd1997cb1d8186a5c"
+        },
+        {
+          "path": "app/src/utils/existingLearnerClass.test.ts",
+          "authorizedSha256": "60803e7ccdda12a675701ad7620a43116837feae155dcd089873ec4b84cf30a2"
+        },
+        {
+          "path": "app/src/utils/existingLearnerClass.ts",
+          "authorizedSha256": "0d3526be7d170a66443310217302c68d6d9543c01857be7490ad6cd68b862439"
+        },
+        {
+          "path": "app/src/utils/existingLearnerClassCopy.ts",
+          "authorizedSha256": "be5a0c6a1ddaf413db1313389c7a85a45884a6db93c8c65f3852dcdb61d5a510"
+        },
+        {
+          "path": "app/src/utils/teacherSupervision.test.ts",
+          "priorAuthorizedSha256": "afe163aac7404723c72e8f22f425a6366d02264edd5094cdb788ded740d48527",
+          "deleted": true
+        },
+        {
+          "path": "app/src/utils/teacherSupervision.ts",
+          "priorAuthorizedSha256": "59885c733af39e251b7fe2456b22046cf41df493dc0d2a3e2bbf00c16ece5ae0",
+          "deleted": true
+        },
+        {
+          "path": "app/src/utils/teacherSupervisionCopy.ts",
+          "priorAuthorizedSha256": "db27d3a6798524bc72a8391747109b4a87de2efb283515f7486e4408aa2f016d",
+          "deleted": true
+        },
+        {
+          "path": "app/src/utils/trainerClassFile.test.ts",
+          "priorAuthorizedSha256": "f6b1b830bb858cbb973f28bfb0410d4df179da9cbb9ffbcf6e89874eab224d68",
+          "authorizedSha256": "a71bf5e8835c9758ca636647eb7844d03f77c0604c72452087505069aebe3b48"
+        },
+        {
+          "path": "app/src/utils/trainerClassFile.ts",
+          "priorAuthorizedSha256": "dff80c57aef7009c1294bb58a78b6bd72bdb05565dfadbd789b3ced53aaf8f65",
+          "authorizedSha256": "626c6fd9b39891a1ab36964da6a2ca0233237ddc6025b61f552ee9978d849995"
+        },
+        {
+          "path": "app/src/views/TeacherSupervisionConsentView.tsx",
+          "deleted": true
+        },
+        {
+          "path": "app/src/views/TrainerView.tsx",
+          "priorAuthorizedSha256": "5bbe38b12464e4fa128f7299b2a462f791a8f286bff24b9847743877080721ee",
+          "authorizedSha256": "4350de4ced424cb364fb52379900808c46bd55051ebb95e412198277dfd00e11"
+        },
+        {
+          "path": "app/src/vite-env.d.ts",
+          "priorAuthorizedSha256": "8e4c11c122e2c5cafd45d33bc2895c6e3e53b21560e71b3589795fb85d2d04ef",
+          "authorizedSha256": "00477dcdf891495ba2fde3702856878d7289a6264ae11d509fcc3c71c5eabc95"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/config/RequestLoggingFilter.java",
+          "priorAuthorizedSha256": "c2a49b601b864e42b298afab975b19654c07cbb94a94c1dd870b96126c421dd5",
+          "authorizedSha256": "456f025a2473262acc1fc4a12c6d3add51bbfe29113e9dfa1e3b4f6597fe45ed"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/controller/SpaController.java",
+          "priorAuthorizedSha256": "b78716065ce0fa10dccaddbd1a18b6dda8aa13feb1b16d158a55ebf6a9bfa0b9",
+          "authorizedSha256": "f8de93df0f1f7bda412b2a1f084aa32db0571b7c5c20d2d99fcbc28684a843d2"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/ConditionalOnTeacherSupervisionEnabled.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherCourse.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherCourseRepository.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherMembership.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherMembershipRepository.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherMembershipStatus.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherPersonalizationProjector.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionApi.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionController.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionProtectionFilter.java",
+          "priorAuthorizedSha256": "96b726602d5a76ff7ab30624959264e9db50d340c6f9b3c70aee5e7567a93b40",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionRetentionCleanupJob.java",
+          "priorAuthorizedSha256": "d361d712ee055282fe88cb3c20df3650bce26d0ba28da045b6caa7dd7fb1df8e",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionService.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionTokenCodec.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherWorkspace.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/teachersupervision/TeacherWorkspaceRepository.java",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/main/resources/db/changelog/db.changelog-master.yaml",
+          "authorizedSha256": "7a9b411483f4d60833bf211a1334bfca11e78920a57c9581644d635d272c16fc"
+        },
+        {
+          "path": "backend/src/main/resources/db/changelog/changes/027-add-teacher-supervision.yaml",
+          "authorizedSha256": "5b63be9390b6fe93f655e2ffa920b6dafdfcb31266e3394232c12fdb8d23519b"
+        },
+        {
+          "path": "backend/src/main/resources/db/changelog/changes/028-drop-teacher-supervision.yaml",
+          "authorizedSha256": "5012717fa21639108f039a8a54109703732e139fc783c0e0ffec47021f2be84f"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/config/RequestLoggingFilterTest.java",
+          "priorAuthorizedSha256": "84423caa8f4ba546c2f6f142663855b4c366f768ea2cd8e9ab8e909a51c6bdce",
+          "authorizedSha256": "813ceda2488ff5e4e510780fbf6e4af6092913fad0508bd057ac0933a5880400"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/controller/SpaControllerTest.java",
+          "priorAuthorizedSha256": "c887293de2bfbc5167b4b05f8c05b6d643d122c58751b9e77ffafd383363735b",
+          "authorizedSha256": "49cde62b02527f729db84b08d7e7d78be32245ff0ac55a476ab3ccccf4998022"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/migration/TeacherSupervisionRemovalMigrationTest.java",
+          "authorizedSha256": "1f11dc621d873a02f2c6f2b7ef15a181281bd3d140e08f77692496cd3fef27b1"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerRetentionLiquibaseIntegrationTest.java",
+          "authorizedSha256": "3c2eeb2abae421186383bc979b17ec4d36d8e64e0c4997a4320811170324d358"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionIntegrationTest.java",
+          "priorAuthorizedSha256": "5eb81a24339054a1a6c42d23f0287fedd26e8b701c814d03eb7e380990d01ca0",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionProtectionFilterTest.java",
+          "priorAuthorizedSha256": "9ac1204a42befa62a401f764183264e65834df41f2ea31f67108e80f23f23c51",
+          "deleted": true
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/teachersupervision/TeacherSupervisionRetentionCleanupIntegrationTest.java",
+          "priorAuthorizedSha256": "3edb4c7a7cc10a82fd90bbdc77ea8ca6e2ed78cdae253e31707c291892fc2a64",
+          "deleted": true
+        },
+        {
+          "path": "docs/concept/index.md",
+          "authorizedSha256": "17afe5586b013ae2cd4021b52422ce420103ba4e78ba62909d65d7ec319657bf"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/existing-learner-teacher-view.md",
+          "authorizedSha256": "4e1f8de385641f244279093c9eba0b52e5f96a240aee5c04db6b1b0a485413cf"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/import-export-workflow.md",
+          "priorAuthorizedSha256": "ab8055fe792b8b2066fa7d41e55fed6067ac5b1be60d4da9886da6bc67daefa5",
+          "authorizedSha256": "78e222b297d62baeb1544c546bfd846b3d1f5e880cce5ea2680593a5f7046d40"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/teacher-supervision-linking.md",
+          "priorAuthorizedSha256": "0d3ff0f7c4c9eead3b00ac6b5b80866a10f7cd56ec83175130a93253fc2fd166",
+          "deleted": true
+        },
+        {
+          "path": "docs/security/data-privacy.md",
+          "priorAuthorizedSha256": "c8eb88c100e746df3e5b3bee41878088fd7e56f364d7fbc63acf8f67cd96ec2a",
+          "authorizedSha256": "ba5ffcad3a2db2507d115e189454ba526a41cc074ee358a0eb59484efaecfad0"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-31-direct-id-teacher-view-privacy-correction",
+      "approvedAt": "2026-08-31",
+      "approvedBy": "product-owner",
+      "reason": "Replace the obsolete invitation and membership disclosure with an accurate description of the browser-local direct-ID teacher view and its real bearer-secret boundary.",
+      "scope": "Change only the German and English privacy-policy teacher-view disclosure and its regression: state that the local browser stores the alias, full SkillPilot ID and copied personalization, that opening the card reads profile and mastery through ordinary learner endpoints without creating a server-side teacher-student relationship, that the UI is read-only but knowledge of the ID still grants the same full learner access, and that a password-encrypted class export contains the ID; remove obsolete invitation, approval, membership, revocation and bounded terminal-retention claims while preserving every other legal promise and every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, review-case, portal, fixture and review-artifact contract.",
+      "target": "current-production-first-party-privacy-policy",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-accurate-local-direct-id-privacy-correction-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/utils/privacyViewCopy.ts",
+        "submittedSha256": "471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b",
+        "priorAuthorizedSha256": "7bbdc2dd7f88ae7e68c17552dbe44d17b830d55d45c165b65c9b2436563f468b",
+        "authorizedSha256": "4ab1f49f2339b8e2ef3e758e4fb3bedf33e37ae8ca792382c1c79dbc2ae0bab0"
+      },
+      "evidenceFile": {
+        "path": "app/src/utils/privacyViewCopy.test.ts",
+        "priorSha256": "1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295",
+        "sha256": "ce06b90403e5b4501908044e9ca6f0954c2176f0cd9478e8ee976a597971b47f"
+      }
+    }
   ]);
 });
 
@@ -1145,6 +1487,78 @@ test("supplemental-only review exceptions preserve changed file hash chains", ()
   assert.throws(
     () => resolveAuthorizedSupplementalFileChains(broken),
     /supplemental file chain is discontinuous/u,
+  );
+
+  const retired = structuredClone(exceptions);
+  retired.push({
+    id: "retired-file",
+    additionalFiles: [{
+      path: "app/example.ts",
+      priorAuthorizedSha256: secondHash,
+      deleted: true,
+    }],
+  });
+  assert.equal(
+    resolveAuthorizedSupplementalFileChains(retired).get("app/example.ts")?.deleted,
+    true,
+  );
+
+  const ambiguousDeletion = structuredClone(retired);
+  ambiguousDeletion.at(-1).additionalFiles[0].authorizedSha256 = secondHash;
+  assert.throws(
+    () => resolveAuthorizedSupplementalFileChains(ambiguousDeletion),
+    /must not claim an authorized digest/u,
+  );
+
+  const evidenceExceptions = [
+    {
+      id: "first-evidence",
+      evidenceFile: {
+        path: "app/evidence.ts",
+        priorSha256: "0".repeat(64),
+        sha256: firstHash,
+      },
+    },
+    {
+      id: "changed-evidence",
+      evidenceFile: {
+        path: "app/evidence.ts",
+        priorSha256: firstHash,
+        sha256: secondHash,
+      },
+    },
+  ];
+  assert.equal(
+    resolveAuthorizedSupplementalFileChains(evidenceExceptions)
+      .get("app/evidence.ts")?.authorizedSha256,
+    secondHash,
+  );
+
+  evidenceExceptions.push({
+    id: "retired-evidence",
+    additionalFiles: [{
+      path: "app/evidence.ts",
+      priorAuthorizedSha256: secondHash,
+      deleted: true,
+    }],
+  });
+  assert.equal(
+    resolveAuthorizedSupplementalFileChains(evidenceExceptions)
+      .get("app/evidence.ts")?.deleted,
+    true,
+  );
+
+  const restoredEvidence = structuredClone(evidenceExceptions);
+  restoredEvidence.push({
+    id: "restored-evidence",
+    additionalFiles: [{
+      path: "app/evidence.ts",
+      authorizedSha256: firstHash,
+    }],
+  });
+  assert.throws(
+    () => resolveAuthorizedSupplementalFileChains(restoredEvidence),
+    /cannot be reintroduced/u,
   );
 });
 

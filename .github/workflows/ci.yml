@@ -259,8 +259,8 @@ jobs:
         run: npm run test:faq
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
-      - name: Test teacher supervision UI
-        run: npm run test:teacher-supervision
+      - name: Test existing learner linking
+        run: npm run test:existing-learner-linking
       - name: Test read-only learning-goal book UI
         run: npm run test:goal-book-ui
       - name: Test compact completed session setup

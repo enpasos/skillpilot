@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.skillpilot.backend.teachersupervision.TeacherSupervisionProtectionFilter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -68,20 +67,6 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         }
         boolean openAiMcp = isInternalOpenAiV1(requestUri);
         if (!requestUri.startsWith("/api") && !openAiMcp) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        // Spring may remove path parameters such as `;probe=x` while matching a
-        // controller route, whereas getRequestURI() deliberately retains them.
-        // Fail closed for the complete reserved prefix so no routable variant can
-        // fall through to generic request/response body logging.
-        boolean teacherSupervision = TeacherSupervisionProtectionFilter.isProtectedNamespace(request);
-        if (teacherSupervision) {
-            // Apply this at the filter boundary so malformed or validation-failing
-            // capability requests are no-store as well, before a controller runs.
-            response.setHeader("Cache-Control", "no-store");
-            response.setHeader("Pragma", "no-cache");
             filterChain.doFilter(request, response);
             return;
         }

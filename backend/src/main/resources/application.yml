@@ -44,13 +44,6 @@ spring:
 
 skillpilot:
   public-base-url: ${SKILLPILOT_PUBLIC_BASE_URL:https://skillpilot.com}
-  teacher-supervision:
-    enabled: ${SKILLPILOT_TEACHER_SUPERVISION_ENABLED:true}
-    retention:
-      terminal: ${SKILLPILOT_TEACHER_SUPERVISION_TERMINAL_RETENTION:P30D}
-      batch-size: ${SKILLPILOT_TEACHER_SUPERVISION_RETENTION_BATCH_SIZE:250}
-      cleanup-interval-ms: ${SKILLPILOT_TEACHER_SUPERVISION_RETENTION_CLEANUP_INTERVAL_MS:86400000}
-      initial-delay-ms: ${SKILLPILOT_TEACHER_SUPERVISION_RETENTION_INITIAL_DELAY_MS:60000}
   goal-feedback:
     enabled: ${SKILLPILOT_GOAL_FEEDBACK_ENABLED:false}
     operator-token: ${SKILLPILOT_GOAL_FEEDBACK_OPERATOR_TOKEN:}

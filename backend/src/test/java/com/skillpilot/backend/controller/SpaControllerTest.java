@@ -46,17 +46,4 @@ class SpaControllerTest {
                 .andExpect(forwardedUrl("/index.html"));
     }
 
-    @Test
-    void teacherSupervisionConsentDeepLinkForwardsToSpaIndex() throws Exception {
-        mockMvc.perform(get("/betreuung"))
-                .andExpect(status().isOk())
-                .andExpect(forwardedUrl("/index.html"));
-    }
-
-    @Test
-    void teacherSupervisionApiPathIsNotForwardedToSpaIndex() throws Exception {
-        mockMvc.perform(get("/api/ui/teacher-supervision/v1/workspaces"))
-                .andExpect(status().isNotFound())
-                .andExpect(forwardedUrl(null));
-    }
 }

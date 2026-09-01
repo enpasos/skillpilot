@@ -207,7 +207,11 @@ export const sanitizeLocalTrainerClassSession = (value: unknown): ClassSession =
 
   const source = optionalBoundedString(session, 'source')
   if (source === 'linked-supervision') linkedSession()
-  if (source !== undefined && source !== 'local-generated') return invalidFile()
+  if (
+    source !== undefined
+    && source !== 'local-generated'
+    && source !== 'existing-learner'
+  ) return invalidFile()
 
   const studentValues = session.students
   if (!Array.isArray(studentValues) || studentValues.length > MAX_CLASS_STUDENTS) {
@@ -222,6 +226,18 @@ export const sanitizeLocalTrainerClassSession = (value: unknown): ClassSession =
     : undefined
   const rootLandscapeId = optionalBoundedString(session, 'rootLandscapeId')
   const currentGoalId = optionalBoundedString(session, 'currentGoalId')
+
+  if (
+    source === 'existing-learner'
+    && (
+      students.length !== 1
+      || students[0]?.accessMode !== 'learner-id'
+      || personalConfig === undefined
+      || personalConfig[requireBoundedString(session.landscapeId)]?.selected !== true
+    )
+  ) {
+    invalidFile()
+  }
 
   return {
     id: requireBoundedString(session.id),

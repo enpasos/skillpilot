@@ -1,8 +1,8 @@
 # Data Privacy and Storage Concept
 
 Status: updated for the current web-started multilingual OpenAI OAuth/MCP App,
-the rollback-only ChatGPT Visible Session, and the SkillPilot-ID deletion and
-retention boundary on 2026-08-13.
+the rollback-only ChatGPT Visible Session, the SkillPilot-ID deletion and
+retention boundary, and the local existing-learner teacher view on 2026-08-31.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
@@ -73,15 +73,32 @@ with the prepared message. The permanent ID is not placed in the launch message
 or ChatGPT URL.
 
 For teacher-led usage, the teacher's browser or institution-controlled storage
-may additionally hold class rosters and the mapping between real names and
-SkillPilot IDs. That mapping is intentionally not stored centrally by
-SkillPilot. A downloaded local-class export is therefore always protected in
-the browser with a teacher-chosen password before it leaves the application.
-The versioned file uses PBKDF2-SHA-256 and authenticated AES-256-GCM; SkillPilot
-does not store or recover the password. Older plaintext JSON class exports can
-still be imported for migration, but the UI identifies them as unprotected and
-new exports are never written as plaintext. Linked supervision classes use
-opaque memberships and cannot be exported through this full-class file path.
+may additionally hold local class names, learner names or aliases, permanent
+SkillPilot IDs, and cached Level-2 personalization. That local class mapping is
+not stored centrally by SkillPilot. The existing-learner teacher view reads
+the normal learner profile and mastery endpoints directly with the permanent
+ID; it does not read or change learner-side planned goals and creates no
+separate server-side teacher, class, authorization record, or membership
+relationship.
+
+The teacher view disables learner-state mutations, but that is a frontend
+boundary only. Its separate browser-local teacher course plan remains editable;
+that plan is teacher working data and is not written into the learner record.
+The permanent SkillPilot ID remains the bearer secret and full-access key for
+the learner state. Anyone who obtains it can use the ordinary learner interfaces
+with the powers attached to the ID. After a local class is deleted, the ID
+remains valid and unchanged.
+
+A downloaded local-class export is therefore always protected in the browser
+with a teacher-chosen password before it leaves the application. The versioned
+file uses PBKDF2-SHA-256 and authenticated AES-256-GCM; SkillPilot does not
+store or recover the password. Its encrypted payload may contain the local
+class name, learner alias, permanent SkillPilot ID, and personalization.
+Older plaintext JSON class exports can still be imported for migration, but
+the UI identifies them as unprotected and new exports are never written as
+plaintext. File encryption protects the downloaded file at rest; it does not
+encrypt browser local storage, secure an unlocked device, invalidate the ID,
+or make the ID read-only after decryption.
 
 ### B. Persistent Learning State in the SkillPilot Backend
 

@@ -91,11 +91,17 @@ message. Structurally invalid or unsupported envelopes use the generic invalid
 file message without exposing parser or cryptographic internals.
 
 Import still accepts old plaintext `skillpilot-class-*.json` files so existing
-teachers are not locked out. These files pass the same class-session and linked
-membership rejection checks, and the UI explicitly advises exporting them
-again in the protected format. Linked supervision classes remain outside this
-file lane: they use opaque, revocable server memberships and cannot be fully
-exported or imported.
+teachers are not locked out. These files pass the same strict class-session
+validation, and the UI explicitly advises exporting them again in the
+protected format.
+
+An existing-learner teacher-view class is part of this local file lane. Its
+encrypted payload may contain the local class name, learner name or alias,
+permanent SkillPilot ID, and cached Level-2 personalization. The file must
+therefore be treated as a bearer-secret container: decrypting it restores an
+ID with the same full learner access as before export. Export encryption does
+not turn that ID into a read-only capability or create a server-side teacher,
+class, authorization record, or membership relationship.
 
 This protection covers downloaded class files at rest. It does not encrypt the
 active browser's local storage, recover forgotten passwords, secure an already

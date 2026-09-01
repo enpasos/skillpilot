@@ -53,10 +53,10 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 ## Runtime Workflows
 
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
-- [Existing-Learner Teacher Supervision](runtime-workflows/teacher-supervision-linking.md)
-  Read-only, revocable linking of one existing learner and all selected subject
-  contexts into a teacher-owned supervision card, including the current
-  permanent-ID identity limitation and rollout gate.
+- [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
+  Functionally read-only local teacher view over the normal learner endpoints,
+  including local ID/personalization storage, encrypted class files, and the
+  permanent ID's unchanged full-access boundary.
 - [Import/Export Workflow](runtime-workflows/import-export-workflow.md)
 - [Client-State Sync](runtime-workflows/client-state-sync.md)
 - [Verhaltensintegration des MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
