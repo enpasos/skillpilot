@@ -2040,6 +2040,29 @@
           "authorizedSha256": "40df95a50c4c59a0c95597f4fd02a5309adeb283dc4ee5901e41bfb2adf26b9c"
         }
       ]
+    },
+    {
+      "id": "2026-09-01-authorized-file-lf-hash-closure",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Close the final platform-dependent review-freeze digest mismatch by binding PreferencesRequest.java to the canonical LF bytes already stored in Git.",
+      "scope": "Correct only the stored digest for backend/src/main/java/com/skillpilot/backend/api/PreferencesRequest.java from the previously captured local mixed-line-ending bytes to the canonical LF repository bytes after a complete audit of all 181 currently authorized files found no other worktree/repository mismatch. Preserve the Java source semantics and every runtime, session, identity, learner-state, package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, fixture, portal, reviewer, demo and artifact byte or behavior.",
+      "target": "review-freeze-authorized-file-byte-portability-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-digest-correction-to-existing-repository-bytes-no-runtime-openai-v1-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/api/PreferencesRequest.java",
+          "priorAuthorizedSha256": "0b40c8bb2fdac8ceeba587dabf49274239d10d1df2c32cf2ba0c95659bc2c6e5",
+          "authorizedSha256": "59c172ba67a18adf2bf6914409264329a9cede50dbba7fe62a7f571e06546a23"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "40df95a50c4c59a0c95597f4fd02a5309adeb283dc4ee5901e41bfb2adf26b9c",
+          "authorizedSha256": "7b109a7940d59f9888c670291c017a8b20da237064dc906b88b5a39d824e242c"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [
