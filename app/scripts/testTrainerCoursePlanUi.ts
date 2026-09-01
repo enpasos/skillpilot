@@ -23,8 +23,12 @@ const personalizedCoursePlanId = `${personalizedClassId}:${landscapeId}`
 const personalizedRootLandscapeId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 const personalizedRootGoalId = 'trainer-course-plan-school-root-goal'
 const personalizedMathRootGoalId = 'trainer-course-plan-math-root'
+const personalizedCompositionViewId = 'merged:de-he-gym-math-lk-g9+de-he-gym-math-gk-g9'
 const sekOneClusterGoalId = 'trainer-course-plan-sek-one'
 const sekTwoClusterGoalId = 'trainer-course-plan-sek-two'
+const sekTwoEClusterGoalId = 'trainer-course-plan-sek-two-e-phase'
+const sekOneScopeGoalId = `composition:${personalizedCompositionViewId}:structure:sek1-g9`
+const sekTwoScopeGoalId = `composition:${personalizedCompositionViewId}:structure:sek2-gk-lk`
 const sekOneAtomicGoalIds = Array.from(
   { length: 259 },
   (_, index) => `trainer-course-plan-sek-one-${String(index + 1).padStart(3, '0')}`,
@@ -33,8 +37,17 @@ const sekTwoAtomicGoalIds = Array.from(
   { length: 3 },
   (_, index) => `trainer-course-plan-sek-two-${String(index + 1).padStart(3, '0')}`,
 )
-const personalizedScopeAtomicGoalIds = [...sekOneAtomicGoalIds, ...sekTwoAtomicGoalIds]
-const personalizedOpenAtomicGoalIds = [...sekOneAtomicGoalIds.slice(206), ...sekTwoAtomicGoalIds]
+const crossPhaseLkGoalId = '49f9059a-876c-5051-8146-d008b5cc691c'
+const personalizedScopeAtomicGoalIds = [
+  ...sekOneAtomicGoalIds,
+  ...sekTwoAtomicGoalIds,
+  crossPhaseLkGoalId,
+]
+const personalizedOpenAtomicGoalIds = [
+  ...sekOneAtomicGoalIds.slice(206),
+  ...sekTwoAtomicGoalIds,
+  crossPhaseLkGoalId,
+]
 
 interface LearnerRequestGate {
   blocked: boolean
@@ -102,7 +115,11 @@ const personalizedGoal = (
     phase,
     area: 'Mathematik',
   },
-  courseLevel: 'GK',
+  courseLevel: tags.includes('GK') && tags.includes('LK')
+    ? 'both'
+    : tags.includes('LK')
+      ? 'LK'
+      : 'GK',
   requires: [],
   contains,
   examples: [],
@@ -119,6 +136,8 @@ const personalizedMathLandscape = {
   filters: [
     { id: 'all', label: 'Alle' },
     { id: 'GK', label: 'Grundkurs' },
+    { id: 'LK', label: 'Leistungskurs' },
+    { id: 'GK+LK', label: 'Grund- und Leistungskurs' },
   ],
   goals: [
     personalizedGoal(
@@ -126,16 +145,36 @@ const personalizedMathLandscape = {
       'Mathematik',
       'GLOBAL',
       [sekOneClusterGoalId, sekTwoClusterGoalId],
-      ['root', 'GK'],
+      ['root', 'GK', 'LK'],
     ),
     personalizedGoal(sekOneClusterGoalId, 'Sekundarstufe I', 'J6', sekOneAtomicGoalIds),
     ...sekOneAtomicGoalIds.map((id, index) => (
       personalizedGoal(id, `Sek-I-Ziel ${index + 1}`, 'J6')
     )),
-    personalizedGoal(sekTwoClusterGoalId, 'Sekundarstufe II', 'E', sekTwoAtomicGoalIds),
+    personalizedGoal(
+      sekTwoClusterGoalId,
+      'Sekundarstufe II',
+      'GLOBAL',
+      [sekTwoEClusterGoalId, ...sekTwoAtomicGoalIds.slice(1)],
+      ['GK', 'LK'],
+    ),
+    personalizedGoal(
+      sekTwoEClusterGoalId,
+      'E.4 Exponentialfunktionen',
+      'E',
+      [sekTwoAtomicGoalIds[0]!, crossPhaseLkGoalId],
+      ['GK', 'LK'],
+    ),
     ...sekTwoAtomicGoalIds.map((id, index) => (
       personalizedGoal(id, `Sek-II-Ziel ${index + 1}`, 'E')
     )),
+    personalizedGoal(
+      crossPhaseLkGoalId,
+      'Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)',
+      'Q4',
+      [],
+      ['LK'],
+    ),
   ],
 }
 
@@ -157,21 +196,32 @@ const personalizedRootLandscape = {
 }
 
 const personalizedCompositionView = {
-  viewId: 'trainer-course-plan-cross-stage-view',
+  viewId: personalizedCompositionViewId,
   landscapeId,
   scope: {
     schoolForm: 'Gymnasium',
     jurisdiction: 'DE-HE',
     stage: 'CrossStage',
-    courseProfile: 'GK',
+    durationModel: 'G9',
+    courseProfile: 'GK+LK',
   },
   rootNodes: [{
     kind: 'structure',
     id: 'mathematik',
     label: 'Mathematik',
     children: [
-      { kind: 'canonicalSubtree', goalId: sekOneClusterGoalId },
-      { kind: 'canonicalSubtree', goalId: sekTwoClusterGoalId },
+      {
+        kind: 'structure',
+        id: 'sek1-g9',
+        label: 'Sekundarstufe I',
+        children: [{ kind: 'canonicalSubtree', goalId: sekOneClusterGoalId }],
+      },
+      {
+        kind: 'structure',
+        id: 'sek2-gk-lk',
+        label: 'Sekundarstufe II (GK + LK)',
+        children: [{ kind: 'canonicalSubtree', goalId: sekTwoClusterGoalId }],
+      },
     ],
   }],
 }
@@ -434,10 +484,11 @@ try {
       selected: true,
       filterId: 'DE-HE',
       stage: 'CrossStage',
+      durationModel: 'G9',
     },
     [landscapeId]: {
       selected: true,
-      filterId: 'GK',
+      filterId: 'GK+LK',
     },
   }
   await personalizedContext.addInitScript((seed) => {
@@ -474,7 +525,7 @@ try {
           blocks: [{
             id: 'sek-one-learning-block',
             kind: 'learning',
-            goalId: seed.sekOneClusterGoalId,
+            goalId: seed.sekOneScopeGoalId,
             title: 'Sek I',
             startDate: seed.today,
             endDate: seed.blockEnd,
@@ -493,7 +544,7 @@ try {
     personalConfig: personalizedConfig,
     studentId,
     routeGoalId: sekOneClusterGoalId,
-    sekOneClusterGoalId,
+    sekOneScopeGoalId,
     today: personalizedToday,
     blockEnd: personalizedBlockEnd,
   })
@@ -535,6 +586,8 @@ try {
     if (pathname === '/api/ui/composition-views/match') {
       assert(url.searchParams.get('landscapeId') === landscapeId, 'composition request targets Mathematics')
       assert(url.searchParams.get('stage') === 'CrossStage', 'Level-2 composition includes both school stages')
+      assert(url.searchParams.get('durationModel') === 'G9', 'Level-2 composition uses the G9 duration model')
+      assert(url.searchParams.get('courseProfile') === 'GK+LK', 'Level-2 composition merges GK and LK')
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -584,7 +637,7 @@ try {
   await personalizedPage.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
   await planningScopeRequest
   assert(
-    new URL(personalizedPage.url()).pathname.endsWith(`/${sekOneClusterGoalId}`),
+    decodeURIComponent(new URL(personalizedPage.url()).pathname).endsWith(`/${sekOneClusterGoalId}`),
     `the current Level-3 route remains the Sek-I focus goal; got ${personalizedPage.url()}`,
   )
 
@@ -598,10 +651,10 @@ try {
     .locator('option')
     .evaluateAll((options) => options.map((option) => (option as HTMLOptionElement).value))
   assert(
-    preBaselineGoalValues.includes(sekTwoClusterGoalId),
+    preBaselineGoalValues.includes(sekTwoScopeGoalId),
     'Sek II is selectable from the full Level-2 personalization despite the Sek-I route',
   )
-  assert(preBaselineGoalValues.includes(sekOneClusterGoalId), 'the existing Sek-I block target remains selectable')
+  assert(preBaselineGoalValues.includes(sekOneScopeGoalId), 'the existing synthetic Sek-I target remains selectable')
   await preBaselineForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
   releasePlanningScope?.()
 
@@ -622,17 +675,17 @@ try {
     .locator('..')
     .locator('..')
   const sekTwoGoalSelect = sekTwoForm.getByRole('combobox', { name: 'Lernziel oder Cluster' })
-  const sekTwoOption = sekTwoGoalSelect.locator(`option[value="${sekTwoClusterGoalId}"]`)
+  const sekTwoOption = sekTwoGoalSelect.locator(`option[value="${sekTwoScopeGoalId}"]`)
   assert(await sekTwoOption.count() === 1, 'Sek II remains selectable after the authoritative baseline is loaded')
   assert(
-    (await sekTwoOption.textContent())?.includes('3 offen von 3 atomaren Zielen') === true,
-    'the Sek-II option is intersected with the same landscape baseline',
+    (await sekTwoOption.textContent())?.includes('4 offen von 4 atomaren Zielen') === true,
+    'the synthetic Sek-II option retains the cross-phase Q4 target from the authoritative baseline',
   )
-  await sekTwoGoalSelect.selectOption(sekTwoClusterGoalId)
+  await sekTwoGoalSelect.selectOption(sekTwoScopeGoalId)
   await sekTwoForm.getByLabel('Von', { exact: true }).fill(addDays(personalizedBlockEnd, 1))
   await sekTwoForm.getByLabel('Bis einschließlich', { exact: true }).fill(addDays(personalizedBlockEnd, 5))
   await sekTwoForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
-  await personalizedPage.getByRole('heading', { name: 'Sekundarstufe II', exact: true }).waitFor()
+  await personalizedPage.getByRole('heading', { name: 'Sekundarstufe II (GK + LK)', exact: true }).waitFor()
 
   const persistedPersonalizedPlan = await personalizedPage.evaluate(({ storageKey, coursePlanId }) => {
     const raw = localStorage.getItem(storageKey)
@@ -653,7 +706,7 @@ try {
     'the course plan persists the focus-independent landscape baseline',
   )
   assert(
-    persistedPersonalizedPlan?.planningBaseline?.scopeAtomicGoalIds?.length === 262,
+    persistedPersonalizedPlan?.planningBaseline?.scopeAtomicGoalIds?.length === 263,
     'the persisted baseline contains both personalized stages',
   )
   assert(
@@ -661,8 +714,8 @@ try {
     'the v2 baseline persists no Level-3 focus identifiers',
   )
   assert(
-    persistedPersonalizedPlan?.blocks?.some(({ goalId }) => goalId === sekTwoClusterGoalId) === true,
-    'the newly selected Sek-II block is saved locally',
+    persistedPersonalizedPlan?.blocks?.some(({ goalId }) => goalId === sekTwoScopeGoalId) === true,
+    'the newly selected synthetic Sek-II block is saved locally',
   )
   assert(
     personalizedBrowserErrors.length === 0,

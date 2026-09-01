@@ -1603,6 +1603,51 @@ MCP/OAuth-, Tool-, Schema-, MCP-Apps-UI-, Coach-, Session-, Identitäts-,
 Reviewfall-, Portal-, Fixture- oder Reviewartefakt-Vertrag. Eine Portalaktion
 ist nicht erforderlich.
 
+### 6.28 Eng begrenzte Korrektur: Composition-Ziele im Kursplan erhalten
+
+Die in Abschnitt 6.27 freigegebene vollständige Level-2-Planung wurde am
+**1. September 2026** innerhalb desselben Product-Owner-Auftrags korrigiert.
+Eine ausschließlich für die Cockpit-Darstellung bestimmte Phasen-Normalisierung
+hatte in der zusammengeführten hessischen G9-GK+LK-Komposition 15 gültige
+atomare LK-/Q4-Ziele aus dem Kursplanindex entfernt. Die unveränderte strenge
+Baseline-Prüfung erkannte diese Abweichung anschließend fail-closed und verwarf
+den gesamten Planblock.
+
+Freigegeben ist ausschließlich:
+
+- der Kursplan baut seinen auswählbaren Level-2-Baum direkt aus der
+  backend-autoritativ projizierten Personal-Curriculum-Komposition auf;
+- der normale Cockpitbaum behält seine bisherige
+  Darstellungsnormalisierung;
+- die strenge `CP-BASELINE-GOAL`-Prüfung bleibt unverändert und verwirft
+  weiterhin jeden Plan, dessen Baseline-Ziel im Planungsindex fehlt;
+- ein Browser-Regressionsfall bildet die zusammengeführte G9-GK+LK-Struktur
+  mit einem Q4-LK-Atom unter einem E-markierten kanonischen Zweig nach und
+  prüft Auswahl, 4-von-4-Umfang und tatsächliches Speichern des synthetischen
+  Sek-II-Planblocks;
+- ein H2-Service-Regressionsfall belegt, dass die 15 bekannten
+  Composition-Targets in der autoritativen Fachbaseline enthalten bleiben.
+
+Die bestehenden Hashketten werden lückenlos fortgeführt:
+
+- `app/scripts/testTrainerCoursePlanUi.ts`:
+  `5a4bdb263c6297a2bdd4add9d958b817484de2b06f35882167db65d9efd0a5cd`
+  → `5f0e079f5debb1a17b6e621d0a333b0462a6c562af7fa51ec99dc0a3e89b9320`;
+- `app/src/views/TrainerView.tsx`:
+  `d308f123474aa23064ec6389c16279066a95016797f4f210cb5880190c118e2b`
+  → `17cda4583d728d546513c875edb8cf95a0cffdff69893c436eb8e5ec9fa9682c`;
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java`:
+  `333f0d3dcdea429a8039b0f5597c52c06eb31f6f7c751250ccf2cfdee77769e7`
+  → `f018453aaff183a29f47f1233c42e860771a1043cc9bc33bab158ec378920db6`.
+
+Die Korrektur ist auf die aktuelle First-Party-WebGUI-Kursplanung begrenzt.
+Fokusunabhängigkeit, atomare Zählung, `no-store`-Lesesnapshot,
+Direct-ID-Bearer-Grenze und das Modell ohne serverseitige
+Lehrer-Schüler-Beziehung bleiben unverändert. Der eingereichte OpenAI-V1-Vertrag,
+First-Party-ChatGPT-Start, MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Coach-,
+Session- und Identitätssemantik, Reviewfälle, Portalwerte, Fixtures und
+Reviewartefakte bleiben unberührt. Eine Portalaktion ist nicht erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
