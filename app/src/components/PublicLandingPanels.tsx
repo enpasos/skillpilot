@@ -33,11 +33,20 @@ const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = true
 const panelClassName =
   'group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:shadow-md focus-within:shadow-md dark:bg-slate-800/50'
 
-const secondaryActionClassName =
-  'inline-flex items-center gap-1.5 rounded-full border border-violet-200/80 bg-violet-50/70 px-2.5 py-1 text-xs font-medium text-text-secondary transition-colors hover:border-violet-400 hover:bg-violet-100 hover:text-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:border-violet-700/50 dark:bg-violet-950/30 dark:hover:border-violet-500 dark:hover:bg-violet-950/60 dark:hover:text-violet-200 dark:focus-visible:ring-offset-slate-900'
+const actionClassName =
+  'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+
+const learningActionClassName =
+  `${actionClassName} border-sky-200/90 bg-sky-50/80 text-sky-800 hover:border-sky-400 hover:bg-sky-100 hover:text-sky-900 focus-visible:ring-sky-600 dark:border-sky-700/60 dark:bg-sky-950/40 dark:text-sky-200 dark:hover:border-sky-500 dark:hover:bg-sky-950/70 dark:hover:text-sky-100 dark:focus-visible:ring-sky-400`
+
+const teachingActionClassName =
+  `${actionClassName} border-violet-200/90 bg-violet-50/80 text-violet-800 hover:border-violet-400 hover:bg-violet-100 hover:text-violet-900 focus-visible:ring-violet-600 dark:border-violet-700/60 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:border-violet-500 dark:hover:bg-violet-950/70 dark:hover:text-violet-100 dark:focus-visible:ring-violet-400`
+
+const curriculaActionClassName =
+  `${actionClassName} border-amber-200/90 bg-amber-50/80 text-amber-900 hover:border-amber-400 hover:bg-amber-100 hover:text-amber-950 focus-visible:ring-amber-600 dark:border-amber-700/60 dark:bg-amber-950/40 dark:text-amber-200 dark:hover:border-amber-500 dark:hover:bg-amber-950/70 dark:hover:text-amber-100 dark:focus-visible:ring-amber-400`
 
 const primaryActionClassName =
-  'inline-flex items-center gap-1.5 rounded-full border border-sky-700 bg-sky-700 px-2.5 py-1 text-xs font-medium text-white shadow-sm transition-colors hover:border-sky-800 hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:border-sky-700 dark:bg-sky-700 dark:hover:border-sky-800 dark:hover:bg-sky-800 dark:focus-visible:ring-offset-slate-900'
+  `${actionClassName} border-sky-600 bg-sky-400 text-sky-950 shadow-sm hover:bg-sky-300 focus-visible:ring-sky-600 dark:border-sky-500 dark:bg-sky-400 dark:text-sky-950 dark:hover:bg-sky-300 dark:focus-visible:ring-sky-300`
 
 const violetPanelClassName =
   'hover:border-violet-400/70 focus-within:border-violet-500 dark:hover:border-violet-500/60 dark:focus-within:border-violet-400'
@@ -95,7 +104,7 @@ export const PublicLandingPanels = ({
             <Link
               to={`/quickstart/${language}`}
               data-testid="public-landing-action-quickstart"
-              className={secondaryActionClassName}
+              className={learningActionClassName}
             >
               <Timer size={14} aria-hidden="true" />
               <span>{copy.learning.quickstartAction}</span>
@@ -105,7 +114,7 @@ export const PublicLandingPanels = ({
             <Link
               to="/faq"
               data-testid="public-landing-action-faq"
-              className={secondaryActionClassName}
+              className={learningActionClassName}
             >
               <CircleHelp size={14} aria-hidden="true" />
               <span>{copy.learning.faqAction}</span>
@@ -165,7 +174,7 @@ export const PublicLandingPanels = ({
             type="button"
             onClick={onOpenCoursePlanning}
             data-testid="public-landing-action-course-planning"
-            className={secondaryActionClassName}
+            className={teachingActionClassName}
           >
             <ClipboardList size={14} aria-hidden="true" />
             <span>{copy.teaching.primaryAction}</span>
@@ -190,7 +199,7 @@ export const PublicLandingPanels = ({
               type="button"
               onClick={onExploreSkillGraph}
               data-testid="public-landing-action-explorer"
-              className={secondaryActionClassName}
+              className={curriculaActionClassName}
             >
               <Network size={14} aria-hidden="true" />
               <span>{copy.curricula.explorerAction}</span>
@@ -201,7 +210,7 @@ export const PublicLandingPanels = ({
               <Link
                 to="/lernzielbuch"
                 data-testid="public-landing-action-goal-book"
-                className={secondaryActionClassName}
+                className={curriculaActionClassName}
               >
                 <BookOpenText size={14} aria-hidden="true" />
                 <span>{copy.curricula.goalBookAction}</span>
@@ -212,7 +221,7 @@ export const PublicLandingPanels = ({
             <Link
               to="/curricula"
               data-testid="public-landing-action-curriculum-champions"
-              className={secondaryActionClassName}
+              className={curriculaActionClassName}
             >
               <Trophy size={14} aria-hidden="true" />
               <span>{copy.curricula.championsAction}</span>

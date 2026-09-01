@@ -39,8 +39,8 @@ for (const language of ['de', 'en'] as const) {
   )
 }
 
-const sessionSetupSource = readFileSync(
-  new URL('../components/SessionSetup.tsx', import.meta.url),
+const publicLandingPanelsSource = readFileSync(
+  new URL('../components/PublicLandingPanels.tsx', import.meta.url),
   'utf8',
 )
 const publicSitemap = readFileSync(
@@ -49,7 +49,7 @@ const publicSitemap = readFileSync(
 )
 
 ensure(
-  /const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = true/u.test(sessionSetupSource),
+  /const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = true/u.test(publicLandingPanelsSource),
   'the explicit product-owner decision must expose the read-only learning-goal book on the public start page',
 )
 ensure(
