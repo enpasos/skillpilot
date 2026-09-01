@@ -29,6 +29,14 @@ read-only.
   planned goals, mastery, or other learner state. The teacher may still edit a
   separate browser-local course plan; that is teacher working data and is not
   written to the learner record.
+- When the teacher first schedules a learning scope, a dedicated no-store read
+  captures the current Cockpit focus, its learner-facing atomic target IDs,
+  and their open subset. That immutable local baseline prevents already
+  mastered goals from becoming new course-plan work and prevents later
+  learning from rewriting the original plan. It contains focus and goal IDs,
+  aggregate counts, and a timestamp, but no SkillPilot ID or numeric per-goal
+  mastery values. Plan exports omit the baseline entirely; teacher-entered
+  free text remains unchanged and may itself contain personal data.
 - Read-only is a UI contract, not a server capability. Possession of the
   SkillPilot ID grants the ordinary learner access associated with that ID.
 - No new teacher/class/learner relationship, capability, lifecycle,
@@ -61,7 +69,12 @@ read-only.
 5. When the class is opened, the Trainer refreshes the ordinary learner profile
    and reads current mastery through the ordinary learner endpoints for that
    ID. The rendered tree is limited by the active local subject view and its
-   Level-2 projection. It does not read or change the learner's planned goals.
+   Level-2 projection. The first course-plan learning section additionally
+   reads `GET /api/ui/learners/{skillpilotId}/planning-scope` with
+   `cache: no-store`. This endpoint uses the learner's effective Level-3 focus
+   and derives its goal set from the same target projection, atomic node rule,
+   and mastery threshold as the Cockpit. It performs no write and never changes
+   the learner's planned goals.
 6. Editing and saving the class also reloads the current learner profile. The
    cached personalization is replaced only after the refreshed local class was
    saved successfully. A failed refresh leaves the prior local record

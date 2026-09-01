@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict'
+import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
-import { chromium, type Browser } from 'playwright'
+import { chromium, type Browser, type Download } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
 
 const learnerId = '11111111-2222-4333-8444-555555555555'
 const classId = 'existing-learner-class'
+const mathCoursePlanId = `${classId}:math`
 const legacyClassId = 'retired-server-linked-class'
 const personalConfig = {
   root: { selected: true, filterId: 'DE-HE', stage: 'sek2' },
@@ -18,13 +20,13 @@ const refreshedPersonalConfig = {
   math: { selected: true, filterId: 'GK' },
 }
 
-const goal = (id: string, title: string) => ({
+const goal = (id: string, title: string, contains: string[] = []) => ({
   id,
   title,
   description: `Die lernende Person kann ${title.toLowerCase()} erklären.`,
   core: true,
   weight: 1,
-  tags: ['root', 'LK'],
+  tags: ['LK'],
   dimensionTags: {
     framework: 'existing-learner-test',
     demandLevel: 'AB1',
@@ -34,12 +36,25 @@ const goal = (id: string, title: string) => ({
     area: 'Test',
   },
   requires: [],
-  contains: [],
+  contains,
   examples: [],
+  type: contains.length > 0 ? 'cluster' : 'atomic',
 })
+const mathAtomicGoals = Array.from({ length: 259 }, (_, index) => (
+  goal(`math-atomic-${String(index + 1).padStart(3, '0')}`, `Mathematik-Ziel ${index + 1}`)
+))
+const mathAtomicGoalIds = mathAtomicGoals.map(({ id }) => id)
+const mathRootGoal = {
+  ...goal('math-root', 'Mathematik-Ziel', mathAtomicGoalIds),
+  tags: ['root', 'LK'],
+}
 const rootGoal = {
-  ...goal('school-root', 'Gymnasium'),
-  contains: ['math-root', 'physics-root'],
+  ...goal('school-root', 'Gymnasium', ['math-root', 'physics-root']),
+  tags: ['root', 'DE-HE'],
+}
+const physicsRootGoal = {
+  ...goal('physics-root', 'Physik-Ziel'),
+  tags: ['root', 'LK'],
 }
 const landscapes = [
   {
@@ -58,7 +73,7 @@ const landscapes = [
     title: 'Mathematik',
     description: 'Mathematik test',
     filters: [{ id: 'LK', label: 'Leistungskurs' }],
-    goals: [goal('math-root', 'Mathematik-Ziel')],
+    goals: [mathRootGoal, ...mathAtomicGoals],
   },
   {
     landscapeId: 'physics',
@@ -67,11 +82,16 @@ const landscapes = [
     title: 'Physik',
     description: 'Physik test',
     filters: [{ id: 'LK', label: 'Leistungskurs' }],
-    goals: [goal('physics-root', 'Physik-Ziel')],
+    goals: [physicsRootGoal],
   },
 ]
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
+const readDownload = async (download: Download) => {
+  const path = await download.path()
+  assert(path, 'course-plan export has a local download path')
+  return readFile(path, 'utf8')
+}
 const server = await startViteTestServer(
   appRoot,
   'scripts/fixtures/existingLearnerTrainerUi.html',
@@ -132,14 +152,42 @@ try {
       plansByClassId: {
         [seed.legacyClassId]: { classId: seed.legacyClassId },
         [`${seed.legacyClassId}:math`]: { classId: `${seed.legacyClassId}:math` },
+        [seed.mathCoursePlanId]: {
+          schemaVersion: 1,
+          classId: seed.mathCoursePlanId,
+          revision: 1,
+          revisionChangedOn: '2026-08-01',
+          revisionChangedAt: '2026-08-01T08:00:00.000Z',
+          revisionOrigin: 'initial',
+          createdAt: '2026-08-01T08:00:00.000Z',
+          updatedAt: '2026-08-31T08:00:00.000Z',
+          schoolYearLabel: '2026/27',
+          blocks: [{
+            id: 'sek-one-learning-block',
+            kind: 'learning',
+            goalId: 'math-root',
+            title: 'Sek I',
+            startDate: '2026-09-01',
+            endDate: '2026-09-13',
+          }],
+          revisionHistory: [],
+          coverageEvents: [],
+          coverageAttestations: [{
+            id: 'legacy-attestation',
+            throughDate: '2026-09-01',
+            recordedAt: '2026-08-31T08:00:00.000Z',
+            planRevision: 1,
+            coverageEventCount: 0,
+          }],
+        },
       },
     }))
-  }, { learnerId, classId, legacyClassId, personalConfig })
+  }, { learnerId, classId, legacyClassId, mathCoursePlanId, personalConfig })
 
   const page = await context.newPage()
   const requests: Array<{ pathname: string; method: string }> = []
   const browserErrors: string[] = []
-  let profileRequestCount = 0
+  let delayNextProfileRequest = false
   let markDelayedProfileRequested: (() => void) | undefined
   let releaseDelayedProfileResponse: (() => void) | undefined
   const delayedProfileRequested = new Promise<void>((resolve) => {
@@ -173,8 +221,9 @@ try {
       return
     }
     if (pathname === `/api/ui/learners/${learnerId}`) {
-      profileRequestCount += 1
-      if (profileRequestCount === 2) {
+      const delayedRequest = delayNextProfileRequest
+      if (delayedRequest) {
+        delayNextProfileRequest = false
         markDelayedProfileRequested?.()
         await delayedProfileResponse
       }
@@ -184,7 +233,7 @@ try {
         body: JSON.stringify({
           skillpilotId: learnerId,
           personalCurriculum: JSON.stringify(
-            profileRequestCount === 2 ? refreshedPersonalConfig : personalConfig,
+            delayedRequest ? refreshedPersonalConfig : personalConfig,
           ),
         }),
       })
@@ -195,6 +244,27 @@ try {
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({ mastery: { 'math-root': 1, 'physics-root': 0.5 } }),
+      })
+      return
+    }
+    if (pathname === `/api/ui/learners/${learnerId}/planning-scope`) {
+      const requestUrl = new URL(request.url())
+      assert.equal(requestUrl.searchParams.get('landscapeId'), 'math')
+      assert.equal(requestUrl.searchParams.has('scopeGoalId'), false)
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        headers: { 'Cache-Control': 'no-store' },
+        body: JSON.stringify({
+          curriculumId: 'root',
+          landscapeId: 'math',
+          focusGoalIds: ['math-root'],
+          scopeGoalIds: mathAtomicGoalIds,
+          totalAtomicGoalCount: 259,
+          masteredAtomicGoalCount: 206,
+          openAtomicGoalIds: mathAtomicGoalIds.slice(206),
+          capturedAt: '2026-09-01T06:00:00.000Z',
+        }),
       })
       return
     }
@@ -214,13 +284,60 @@ try {
   assert.deepEqual(browserState.classes.map((item: { id: string }) => item.id), [classId])
   assert.equal(browserState.workspace, null)
   assert.equal(browserState.pending, null)
-  assert.deepEqual(browserState.coursePlans.plansByClassId, {})
+  assert.deepEqual(Object.keys(browserState.coursePlans.plansByClassId), [mathCoursePlanId])
 
   await page.getByText('Direkte Einzelbetreuung', { exact: true }).click()
   await page.getByText('Diese Lehreransicht liest Lernstand und Personalisierung.', { exact: false }).waitFor()
+  await page.getByRole('button', { name: 'Plan & Lage', exact: true }).click()
+  await page.getByText('53 offene von 259 atomaren Zielen verplant', { exact: true }).waitFor()
+  const roundedDueValues = page.getByText('6 von 53 fällig', { exact: true })
+  await roundedDueValues.first().waitFor()
+  assert.equal(await roundedDueValues.count(), 2)
+  await page.getByText('Wochenkontingent: 29,4 Ziele/Woche', { exact: true }).waitFor()
+  assert.equal(await page.getByText(/29\.444444/u).count(), 0)
+
+  const storedDirectPlan = await page.evaluate((storageId) => {
+    const store = JSON.parse(localStorage.getItem('skillpilot_teacher_course_plans_v1') ?? '{}')
+    return store.plansByClassId?.[storageId]
+  }, mathCoursePlanId)
+  assert.equal(storedDirectPlan.planningBaseline.totalAtomicGoalCount, 259)
+  assert.equal(storedDirectPlan.planningBaseline.masteredAtomicGoalCount, 206)
+  assert.equal(storedDirectPlan.planningBaseline.openAtomicGoalIds.length, 53)
+  assert.equal(storedDirectPlan.revision, 2)
+  assert.equal(storedDirectPlan.revisionHistory.length, 1)
+  assert.equal(storedDirectPlan.coverageAttestations[0].planRevision, 1)
+  assert.equal(JSON.stringify(storedDirectPlan).includes(learnerId), false)
+
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Plan exportieren', exact: true }).click()
+  const exportedPlan = await readDownload(await downloadPromise)
+  assert.equal(exportedPlan.includes('planningBaseline'), false)
+  assert.equal(exportedPlan.includes('openAtomicGoalIds'), false)
+  assert.equal(exportedPlan.includes(learnerId), false)
+  const parsedExport = JSON.parse(exportedPlan)
+  assert.equal(parsedExport.semantics.learnerDerivedPlanningBaselineIncluded, false)
+  assert.equal(parsedExport.semantics.teacherEnteredFreeTextExportedUnchanged, true)
+  assert.equal('learnerDataIncluded' in parsedExport.semantics, false)
+
+  const planningScopeCacheModes = await page.evaluate((pathname) => {
+    const trackedWindow = window as typeof window & {
+      __existingLearnerFetches?: Array<{ url: string; cache?: RequestCache }>
+    }
+    return (trackedWindow.__existingLearnerFetches ?? [])
+      .filter((request) => new URL(request.url, location.href).pathname === pathname)
+      .map((request) => request.cache)
+  }, `/api/ui/learners/${learnerId}/planning-scope`)
+  assert.ok(
+    planningScopeCacheModes.length > 0
+      && planningScopeCacheModes.every((cache) => cache === 'no-store'),
+    'planning-scope reads must bypass browser caches',
+  )
+
   const subjectSelect = page.getByLabel('Fachansicht')
   assert.deepEqual(await subjectSelect.locator('option').allTextContents(), ['Mathematik', 'Physik'])
   await subjectSelect.selectOption('physics')
+  await page.getByRole('button', { name: 'Lernziele', exact: true }).click()
+  await page.waitForURL((url) => !url.searchParams.has('view'))
   await page.getByRole('heading', { name: 'Physik-Ziel', exact: true }).waitFor()
 
   assert.equal(requests.some((request) => request.pathname.endsWith('/planned')), false)
@@ -242,6 +359,7 @@ try {
 
   await page.getByRole('button', { name: /Alle Klassen/u }).click()
   await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+  delayNextProfileRequest = true
   await page.getByText('Direkte Einzelbetreuung', { exact: true }).click()
   await delayedProfileRequested
   await page.getByRole('button', { name: /Alle Klassen/u }).click()

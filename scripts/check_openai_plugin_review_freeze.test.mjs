@@ -1392,6 +1392,106 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
         "priorSha256": "1f96b817433fa322c5f48e23f32c4b686e47af2bb63d9ba9e9d6ca245c8af295",
         "sha256": "ce06b90403e5b4501908044e9ca6f0954c2176f0cd9478e8ee976a597971b47f"
       }
+    },
+    {
+      "id": "2026-09-01-direct-id-course-plan-open-atomic-baseline",
+      "approvedAt": "2026-09-01",
+      "approvedBy": "product-owner",
+      "reason": "Correct direct-ID course planning so its immutable local baseline mirrors the learner's current Cockpit focus, counts only projected atomic targets, and schedules only targets open at capture with rounded displays.",
+      "scope": "In the current first-party WebGUI and backend only, add one no-store read-only planning-scope endpoint under the ordinary learner-ID boundary; derive the current effective Level-3 focus and the same projected target atoms and mastery threshold as the Cockpit without writing learner state or creating a teacher-student relationship; capture focus IDs, atomic scope IDs, open atomic IDs, aggregate counts and timestamp once in the browser-local teacher plan; keep that baseline immutable across edits and undo, invalidate old coverage attestations through a real plan revision, plan only the open subset, round cumulative due-goal displays consistently and rates to at most one decimal, omit the learner-derived baseline from plan exports while warning that teacher free text remains unchanged, disclose the local processing accurately, add focused frontend/backend/browser/CI regressions, and preserve every submitted OpenAI package, MCP/OAuth/tool/schema/MCP-Apps-UI, coach, session, identity, review-case, portal, fixture and review-artifact contract.",
+      "target": "current-production-first-party-direct-id-course-planning",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-independent-first-party-local-course-planning-no-submitted-openai-contract-or-review-flow-effect",
+      "protectedFile": {
+        "path": "app/src/utils/privacyViewCopy.ts",
+        "submittedSha256": "471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b",
+        "priorAuthorizedSha256": "4ab1f49f2339b8e2ef3e758e4fb3bedf33e37ae8ca792382c1c79dbc2ae0bab0",
+        "authorizedSha256": "f8f847135a35a483d84a3d191e2b8e24e63a7f3cf47f8e42ba4a361a3a9bf435"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testExistingLearnerTrainerUi.ts",
+        "priorSha256": "e1de40b61b30bbc415bb57699986506ababef6efafea05b2938d73328b1733a9",
+        "sha256": "5ffeac2acbe876435cce35c6999a99e4144f238b0d9edf1f9750871ec6d8daac"
+      },
+      "additionalFiles": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "priorAuthorizedSha256": "d75fa8c2d565c0ddf1781457a3096581ad6c9cbc322b1d5dcab2b5c349a9a625",
+          "authorizedSha256": "0c9c45ae1701e1f5ca3a9d98bad15c06040c721da1a689232acd76dbc416b351"
+        },
+        {
+          "path": "app/src/components/CoursePlanPilotView.tsx",
+          "authorizedSha256": "ba8adf79394c956305c6565e683107f50104ff238c7c24e477b43e8599bac95a"
+        },
+        {
+          "path": "app/src/coursePlanTypes.ts",
+          "authorizedSha256": "00cc04518152d792a14b6e2b25773dd02927d04e03099c50c51d85a518c52215"
+        },
+        {
+          "path": "app/src/utils/coursePlanCopy.ts",
+          "authorizedSha256": "76f736720c646e9154eabe6e00e7ed1fbfd19840e96fdbafea688d0188ef8fe9"
+        },
+        {
+          "path": "app/src/utils/learnerPlanningScope.ts",
+          "authorizedSha256": "61f567e16d8c8de39153cbf859811fd1311ac5a10689f4160cbe83a3e4f473c7"
+        },
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.test.ts",
+          "authorizedSha256": "fca925ef48a210e1801a4af2b1201d158a6d7114ec979392a5bebf242fde0bec"
+        },
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.ts",
+          "authorizedSha256": "1730a6c89f07166fbf3c3fa09d581104495d4d03979edb8b8e14703f67023e58"
+        },
+        {
+          "path": "app/src/utils/privacyViewCopy.test.ts",
+          "priorAuthorizedSha256": "ce06b90403e5b4501908044e9ca6f0954c2176f0cd9478e8ee976a597971b47f",
+          "authorizedSha256": "07119f62c03bd32bb8f19cf8a61b1d6b097ac8a56e60969b4f22bb1baf304877"
+        },
+        {
+          "path": "app/src/views/TrainerView.tsx",
+          "priorAuthorizedSha256": "4350de4ced424cb364fb52379900808c46bd55051ebb95e412198277dfd00e11",
+          "authorizedSha256": "2508e4353a4f4d0e354e8bba6184f15101b402e24d20d85bb226ebcaecc6259b"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerPlanningScopeResponse.java",
+          "authorizedSha256": "8ee39010db23db76c5953c31df2c354fd72d817942e63f721489e6c927a1d1d0"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+          "authorizedSha256": "f360904f43a04b73cf6106da4e7c2484d5ffd1f9d781f15e1b5188ab8a25a65a"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+          "authorizedSha256": "016c19b1ef0ae8398295852214e57d3727fbbf65fb9f3aa2e4a12133ad31c46f"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/ui/LearnerUiController.java",
+          "authorizedSha256": "2d1b7200fc380333e5e00a88922019ed99ca8ee93682bb9a5db166b224d8824b"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java",
+          "authorizedSha256": "e0149aa71c44d4c57d1d70efff8b4f8603a2783a78465896d7232f7b452dfd23"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/ui/LearnerUiControllerPlanningScopeHttpTest.java",
+          "authorizedSha256": "58519046dcaef168dec616de53f5a94fcf03874ea43568eb42fdda0f14dc2558"
+        },
+        {
+          "path": "docs/concept/didactic/curriculum-time-axis-and-pacing.md",
+          "authorizedSha256": "23ee1b49bc86af6f955de06199e82c56f487a2cf39eefae6eccd1717bbecc688"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/existing-learner-teacher-view.md",
+          "priorAuthorizedSha256": "4e1f8de385641f244279093c9eba0b52e5f96a240aee5c04db6b1b0a485413cf",
+          "authorizedSha256": "45d7585c2dfb449c0a844d7984b617cb0b5d9da22ee9c82b170fdbd9f7df4081"
+        },
+        {
+          "path": "docs/security/data-privacy.md",
+          "priorAuthorizedSha256": "ba5ffcad3a2db2507d115e189454ba526a41cc074ee358a0eb59484efaecfad0",
+          "authorizedSha256": "a700963ddf601553d883848795770eb49e25cf88b7e4f4ee779292af9c8d5098"
+        }
+      ]
     }
   ]);
 });

@@ -1486,6 +1486,66 @@ Zwischenfreigabe lückenlos fort:
 Die Klarstellung ändert keine andere Rechtszusage und keinen eingereichten
 OpenAI-Vertrag oder Reviewablauf. Eine Portalaktion ist nicht erforderlich.
 
+### 6.26 Eng begrenzte Ausnahme: atomare Restziele als lokale Planbasis
+
+Der Product Owner hat am **1. September 2026** die Korrektur der lokalen
+Kursplanung für eine Direkt-ID-Klasse beauftragt. Als Planumfang gilt nicht ein
+ungefilterter Landschaftsbaum und auch nicht der bereits beherrschte Anteil,
+sondern exakt der aktuelle Cockpit-Fokus der lernenden Person: gezählt werden
+nur projizierte atomare `target`-Ziele; verplant wird daraus nur die beim
+erstmaligen Erfassen noch offene Teilmenge. Ein Cockpit-Stand von 259 atomaren
+Zielen mit 206 beherrschten Zielen ergibt deshalb eine Planbasis von 53 offenen
+Zielen.
+
+Freigegeben ist ausschließlich:
+
+- ein `cache: no-store`-Leseendpunkt unter der gewöhnlichen
+  SkillPilot-ID-Zugriffsgrenze, der für die angeforderte Landschaft den
+  effektiven Level-3-Fokus, dieselbe Zielprojektion, Atomdefinition,
+  Mastery-Aufbereitung und Schwelle wie das Cockpit verwendet;
+- die einmalige Speicherung von Fokus-IDs, atomaren Umfangs-IDs, offenen
+  atomaren Ziel-IDs, Summen und Erfassungszeitpunkt in der browserlokalen
+  Lehrerplanung. Diese Planbasis bleibt über Bearbeiten und Rückgängig
+  unveränderlich;
+- die Begrenzung aller Planblöcke auf diese offene atomare Teilmenge sowie eine
+  kumulativ konsistente Ganzzahlrundung der fälligen Zielzahlen. Raten werden
+  höchstens mit einer Nachkommastelle angezeigt;
+- eine echte Planrevision bei der Migration alter Direkt-ID-Pläne ohne
+  Planbasis. Dadurch werden frühere Unterrichtsbestätigungen nicht fälschlich
+  auf den neu bestimmten Umfang übertragen;
+- das Weglassen der lernendenabgeleiteten Planbasis aus einem Kursplanexport.
+  Freitext der Lehrkraft wird dagegen unverändert exportiert; Oberfläche,
+  Exporthinweis und Datenschutzhinweis benennen diese Grenze ausdrücklich.
+
+Der Endpunkt erzeugt keine Lehrer-Schüler-Beziehung, schreibt weder
+Personalisierung noch Fokus, Planung oder Mastery der lernenden Person und
+ändert den in Abschnitt 6.24 festgelegten Bearer-Secret-Charakter der
+SkillPilot-ID nicht.
+
+Die bestehenden Hashketten werden wie folgt fortgeführt:
+
+- `app/src/utils/privacyViewCopy.ts`:
+  `471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b`
+  → `7bbdc2dd7f88ae7e68c17552dbe44d17b830d55d45c165b65c9b2436563f468b`
+  → `4ab1f49f2339b8e2ef3e758e4fb3bedf33e37ae8ca792382c1c79dbc2ae0bab0`
+  → `f8f847135a35a483d84a3d191e2b8e24e63a7f3cf47f8e42ba4a361a3a9bf435`;
+- `app/src/utils/privacyViewCopy.test.ts`:
+  `ce06b90403e5b4501908044e9ca6f0954c2176f0cd9478e8ee976a597971b47f`
+  → `07119f62c03bd32bb8f19cf8a61b1d6b097ac8a56e60969b4f22bb1baf304877`;
+- `app/src/views/TrainerView.tsx`:
+  `4350de4ced424cb364fb52379900808c46bd55051ebb95e412198277dfd00e11`
+  → `2508e4353a4f4d0e354e8bba6184f15101b402e24d20d85bb226ebcaecc6259b`;
+- `app/scripts/testExistingLearnerTrainerUi.ts`:
+  `e1de40b61b30bbc415bb57699986506ababef6efafea05b2938d73328b1733a9`
+  → `5ffeac2acbe876435cce35c6999a99e4144f238b0d9edf1f9750871ec6d8daac`.
+
+Der vollständige Quell-, Test-, CI- und Dokumentationsumfang ist in
+`review-freeze.json` einzeln hashgebunden. Der eingereichte OpenAI-V1-Vertrag,
+sein First-Party-ChatGPT-Start, MCP/OAuth, Tools, Schemas, MCP-Apps-UI,
+Coach-, Session- und Identitätssemantik, Reviewfälle, Portalwerte, Fixtures und
+Reviewartefakte bleiben unverändert. Eine Portalaktion ist deshalb nicht
+erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

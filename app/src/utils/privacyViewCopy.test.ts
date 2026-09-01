@@ -19,41 +19,53 @@ const deTeacherSupervisionText = de.sections.find(section => section.title.inclu
 const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Existing SkillPilot ID'))
   ?.paragraphs.join(' ') ?? ''
 
-assert(de.effectiveDate.includes('31. August 2026'), 'German privacy copy carries the current supervision date')
-assert(en.effectiveDate.includes('August 31, 2026'), 'English privacy copy carries the current supervision date')
+assert(de.effectiveDate.includes('1. September 2026'), 'German privacy copy carries the current planning-snapshot date')
+assert(en.effectiveDate.includes('September 1, 2026'), 'English privacy copy carries the current planning-snapshot date')
 assert(
   deTeacherSupervisionText.includes('Klassennamen')
     && deTeacherSupervisionText.includes('Namen oder Alias')
     && deTeacherSupervisionText.includes('lokale Kopie')
     && deTeacherSupervisionText.includes('normalen SkillPilot-Lernenden-Endpunkte')
+    && deTeacherSupervisionText.includes('aktuellen Fokus der lernenden Person')
+    && deTeacherSupervisionText.includes('atomaren Ziele dieses Umfangs')
+    && deTeacherSupervisionText.includes('noch nicht gemeistert')
+    && deTeacherSupervisionText.includes('feste Planungsgrundlage')
+    && deTeacherSupervisionText.includes('weder die SkillPilot-ID noch einzelne numerische Mastery-Werte')
     && deTeacherSupervisionText.includes('keine separate serverseitige Lehrkraft-, Klassen-, Berechtigungs- oder Mitgliedschaftsbeziehung')
     && deTeacherSupervisionText.includes('funktional nur lesend')
     && deTeacherSupervisionText.includes('geplante Lernziele')
     && deTeacherSupervisionText.includes('lokaler Kursplan der Lehrkraft')
     && deTeacherSupervisionText.includes('nicht in den Datensatz der lernenden Person geschrieben')
+    && deTeacherSupervisionText.includes('Freitexte werden jedoch unverändert exportiert')
     && deTeacherSupervisionText.includes('Bearer-Geheimnis')
     && deTeacherSupervisionText.includes('Vollzugriffsschlüssel')
     && deTeacherSupervisionText.includes('Passwortverschlüsselte Klassenexporte')
     && deTeacherSupervisionText.includes('dauerhafte SkillPilot-IDs')
     && deTeacherSupervisionText.includes('lokal gespeicherte Personalisierung'),
-  'German privacy copy states local storage, direct learner-ID access, UI-only read-only behavior, and encrypted-export contents',
+  'German privacy copy states local planning-snapshot storage, direct learner-ID access, UI-only read-only behavior, and export boundaries',
 )
 assert(
   enTeacherSupervisionText.includes('class name')
     && enTeacherSupervisionText.includes('learner name or alias')
     && enTeacherSupervisionText.includes('local copy')
     && enTeacherSupervisionText.includes('normal learner endpoints')
+    && enTeacherSupervisionText.includes('current focus')
+    && enTeacherSupervisionText.includes('atomic goals in that scope')
+    && enTeacherSupervisionText.includes('not yet mastered')
+    && enTeacherSupervisionText.includes('fixed planning basis')
+    && enTeacherSupervisionText.includes('neither the SkillPilot ID nor individual numeric mastery values')
     && enTeacherSupervisionText.includes('no separate server-side teacher account, class, authorization record, or membership relationship')
     && enTeacherSupervisionText.includes('functionally read-only')
     && enTeacherSupervisionText.includes('planned learning goals')
     && enTeacherSupervisionText.includes('local teacher course plan')
     && enTeacherSupervisionText.includes('not written to the learner record')
+    && enTeacherSupervisionText.includes('free text is exported unchanged')
     && enTeacherSupervisionText.includes('bearer secret')
     && enTeacherSupervisionText.includes('full-access key')
     && enTeacherSupervisionText.includes('Password-encrypted class exports')
     && enTeacherSupervisionText.includes('permanent SkillPilot IDs')
     && enTeacherSupervisionText.includes('locally stored personalization'),
-  'English privacy copy states local storage, direct learner-ID access, UI-only read-only behavior, and encrypted-export contents',
+  'English privacy copy states local planning-snapshot storage, direct learner-ID access, UI-only read-only behavior, and export boundaries',
 )
 assert(
   !deTeacherSupervisionText.includes('Einladung')

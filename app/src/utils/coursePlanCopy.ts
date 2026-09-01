@@ -47,7 +47,12 @@ export interface CoursePlanCopy {
   missingGoal: string
   missingTitle: string
   noPlannableGoals: string
+  planningScopeOnSave: string
+  planningScopeLoadError: string
+  planChangedDuringSave: string
+  retryPlanningScope: string
   learningGoalCount: (count: number) => string
+  plannedOpenGoalCount: (open: number, total: number) => string
   duplicatedGoalCount: (count: number) => string
   timelineTitle: string
   timelineHint: string
@@ -173,7 +178,12 @@ const de: CoursePlanCopy = {
   missingGoal: 'Bitte wähle ein Lernziel oder einen Cluster.',
   missingTitle: 'Bitte gib eine verständliche Bezeichnung ein.',
   noPlannableGoals: 'Dieser Eintrag enthält keine planbaren atomaren Lernziele.',
+  planningScopeOnSave: 'Offene atomare Ziele werden aus dem aktuellen Cockpit-Stand ermittelt …',
+  planningScopeLoadError: 'Die offenen atomaren Lernziele konnten nicht sicher ermittelt werden. Der Abschnitt wurde nicht gespeichert.',
+  planChangedDuringSave: 'Der Plan wurde während des Ladens geändert. Bitte speichere den Abschnitt erneut.',
+  retryPlanningScope: 'Erneut laden',
   learningGoalCount: (count) => `${count} Lernziel${count === 1 ? '' : 'e'}`,
+  plannedOpenGoalCount: (open, total) => `${open} offene von ${total} atomaren Zielen verplant`,
   duplicatedGoalCount: (count) => `${count} Lernziel${count === 1 ? '' : 'e'} bereits in einem früheren Abschnitt eingeplant`,
   timelineTitle: 'Textueller Kursplan',
   timelineHint: 'Chronologisch sortiert. Ein Lernziel zählt beim ersten eingeplanten Auftreten zum Soll.',
@@ -239,13 +249,13 @@ const de: CoursePlanCopy = {
   studentExact: (value, total) => `${value} von ${total} fälligen Zielen`,
   studentClassMedian: (lower, upper, total) => `Median: ${lower}–${upper} von ${total} fälligen Zielen`,
   studentLoadedCount: (loaded, total) => `${loaded} von ${total} Lernständen geladen`,
-  studentPrivacyHint: 'Keine Rangliste und kein Export von Namen oder Lernständen. Einzelsichten sind in diesem lokalen Pilot noch nicht freigeschaltet.',
+  studentPrivacyHint: 'Keine Rangliste und kein Export der lernstandsbezogenen Planungsgrundlage. Eigene Freitexte können personenbezogene Angaben enthalten.',
   exportPlan: 'Plan exportieren',
-  exportHint: 'Der Export enthält Zeitplan und Unterrichtsdokumentation, aber keine Namen, Schülerlisten, SkillPilot-IDs oder Lernstände.',
-  exportSuccess: 'Personenfreier Kursplan exportiert.',
+  exportHint: 'Der Export entfernt Klassen-ID und lernstandsbezogene Planungsgrundlage. Eigene Freitexte werden unverändert übernommen – bitte keine personenbezogenen Angaben eintragen.',
+  exportSuccess: 'Kursplan exportiert – Freitexte bitte vor Weitergabe prüfen.',
   importNotIncluded: 'Ein Import folgt nach dem sicheren Server- und Berechtigungskonzept.',
   protectedExtensionTitle: 'Lernstand und Leitungssicht bleiben geschützt',
-  protectedExtensionBody: 'Klassenstatistik, Einzeldrilldown und eine aggregierte Leitungssicht werden erst mit serverseitiger Kurszuordnung, Zweckbindung und geprüften Berechtigungen freigeschaltet. Dieser lokale Pilot lädt, zeigt und exportiert keine Schülerlernstände.',
+  protectedExtensionBody: 'Klassenstatistik, Einzeldrilldown und eine aggregierte Leitungssicht werden erst mit serverseitiger Kurszuordnung, Zweckbindung und geprüften Berechtigungen freigeschaltet. Dieser lokale Pilot liest einmalig den offenen atomaren Zielbestand für die Planbasis, zeigt daraus nur Plan-Summen und entfernt diese Grundlage beim Export.',
 }
 
 const en: CoursePlanCopy = {
@@ -299,7 +309,12 @@ const en: CoursePlanCopy = {
   missingGoal: 'Please choose a learning goal or cluster.',
   missingTitle: 'Please enter a clear label.',
   noPlannableGoals: 'This entry contains no plannable atomic learning goals.',
+  planningScopeOnSave: 'Open atomic goals are being determined from the current cockpit state …',
+  planningScopeLoadError: 'The open atomic learning goals could not be determined safely. The section was not saved.',
+  planChangedDuringSave: 'The plan changed while the goals were loading. Please save the section again.',
+  retryPlanningScope: 'Try again',
   learningGoalCount: (count) => `${count} learning goal${count === 1 ? '' : 's'}`,
+  plannedOpenGoalCount: (open, total) => `${open} open of ${total} atomic goals scheduled`,
   duplicatedGoalCount: (count) => `${count} goal${count === 1 ? '' : 's'} already scheduled in an earlier section`,
   timelineTitle: 'Text course plan',
   timelineHint: 'Sorted chronologically. A goal counts toward the target when it first appears in the plan.',
@@ -365,13 +380,13 @@ const en: CoursePlanCopy = {
   studentExact: (value, total) => `${value} of ${total} due goals`,
   studentClassMedian: (lower, upper, total) => `Median: ${lower}–${upper} of ${total} due goals`,
   studentLoadedCount: (loaded, total) => `${loaded} of ${total} learning records loaded`,
-  studentPrivacyHint: 'No ranking and no export of names or learning status. Individual views are not enabled in this local pilot.',
+  studentPrivacyHint: 'No ranking and no export of the learner-derived planning basis. Your free text may contain personal data.',
   exportPlan: 'Export plan',
-  exportHint: 'The export contains schedule and teaching documentation, but no names, roster, SkillPilot IDs, or learning status.',
-  exportSuccess: 'Person-free course plan exported.',
+  exportHint: 'The export removes the class ID and learner-derived planning basis. Your free text is kept unchanged—do not enter personal data.',
+  exportSuccess: 'Course plan exported—check free text before sharing.',
   importNotIncluded: 'Import follows after the secure server and authorization design.',
   protectedExtensionTitle: 'Learning status and management views remain protected',
-  protectedExtensionBody: 'Class statistics, individual drill-down, and an aggregated management view will only be enabled with server-side course ownership, purpose limitation, and verified permissions. This local pilot does not load, display, or export learner status.',
+  protectedExtensionBody: 'Class statistics, individual drill-down, and an aggregated management view require server-side course ownership, purpose limitation, and verified permissions. This local pilot reads the open atomic goal set once for its planning basis, shows only plan totals derived from it, and removes that basis from exports.',
 }
 
 export const getCoursePlanCopy = (language: LabelLanguage): CoursePlanCopy => (

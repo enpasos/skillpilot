@@ -75,15 +75,21 @@ or ChatGPT URL.
 For teacher-led usage, the teacher's browser or institution-controlled storage
 may additionally hold local class names, learner names or aliases, permanent
 SkillPilot IDs, and cached Level-2 personalization. That local class mapping is
-not stored centrally by SkillPilot. The existing-learner teacher view reads
-the normal learner profile and mastery endpoints directly with the permanent
-ID; it does not read or change learner-side planned goals and creates no
-separate server-side teacher, class, authorization record, or membership
-relationship.
+not stored centrally by SkillPilot. The existing-learner teacher view reads the
+normal learner profile and mastery endpoints directly with the permanent ID.
+When the teacher first schedules a learning scope, one additional no-store
+read derives the current Level-3 focus, its atomic target IDs, and their
+not-yet-mastered subset. The browser stores those focus and goal IDs, aggregate
+counts, and capture time as an immutable local planning baseline; it does not
+store the SkillPilot ID or numeric per-goal mastery values inside that baseline.
+The view does not change learner-side planned goals and creates no separate
+server-side teacher, class, authorization record, or membership relationship.
 
 The teacher view disables learner-state mutations, but that is a frontend
 boundary only. Its separate browser-local teacher course plan remains editable;
 that plan is teacher working data and is not written into the learner record.
+Plan exports omit the learner-derived baseline, but teacher-entered free text
+is exported unchanged and may itself contain personal data.
 The permanent SkillPilot ID remains the bearer secret and full-access key for
 the learner state. Anyone who obtains it can use the ordinary learner interfaces
 with the powers attached to the ID. After a local class is deleted, the ID

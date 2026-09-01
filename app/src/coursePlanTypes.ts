@@ -4,6 +4,23 @@ export const TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY = 250
 
 export type CoursePlanDate = string
 
+/**
+ * Immutable, learner-derived planning basis. It stores only curriculum goal
+ * identifiers and aggregate counts; no learner ID or individual mastery value.
+ */
+export interface LearnerCoursePlanBaseline {
+  source: 'learner-planning-scope-v1'
+  curriculumId: string
+  landscapeId: string
+  scopeGoalId?: string
+  focusGoalIds: string[]
+  scopeAtomicGoalIds: string[]
+  openAtomicGoalIds: string[]
+  totalAtomicGoalCount: number
+  masteredAtomicGoalCount: number
+  capturedAt: string
+}
+
 export interface LearningCoursePlanBlock {
   id: string
   kind: 'learning'
@@ -73,6 +90,7 @@ export interface TeacherCoursePlanRevisionSnapshot {
   origin: TeacherCoursePlanRevisionOrigin
   restoredFromRevision?: number
   schoolYearLabel?: string
+  planningBaseline?: LearnerCoursePlanBaseline
   blocks: TeacherCoursePlanBlock[]
 }
 
@@ -87,6 +105,7 @@ export interface TeacherCoursePlan {
   createdAt: string
   updatedAt: string
   schoolYearLabel?: string
+  planningBaseline?: LearnerCoursePlanBaseline
   blocks: TeacherCoursePlanBlock[]
   revisionHistory: TeacherCoursePlanRevisionSnapshot[]
   coverageEvents: CourseCoverageEvent[]
@@ -120,6 +139,7 @@ export interface CoursePlanParseResult {
 export interface LearningBlockGoalAssignment {
   blockId: string
   goalId: string
+  scopeAtomicGoalIds: string[]
   atomicGoalIds: string[]
   duplicateAtomicGoalIds: string[]
 }
@@ -169,6 +189,7 @@ export interface CourseCoverageSnapshot {
 
 export interface TeacherCoursePlanMetrics {
   asOf: CoursePlanDate
+  scopeAtomicGoalCount: number
   plannedGoalCount: number
   expectedGoalEquivalent: number
   dueGoalIds: string[]
