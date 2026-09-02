@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ef2f3a00d531dd669b1997c9860f7d15eff32372d1249595a9a46110512b165e",
+  "reviewInputFingerprint": "sha256:64c9c7305dcfdd3f99175d3c634dbcb685d929359cf3b932b1ead8e7352c2a91",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-independent-a",
+      "runIds": [
+        "math-b022-round-a-openai-gpt-5.6-sol-20260902"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-independent-b",
+      "runIds": [
+        "math-b022-rb-run-20260902-01"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-terra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+      "firstRecordId": "math-b022-round-a-openai-gpt-5.6-sol-20260902-record-001",
+      "secondRecordId": "math-b022-rb-record-01",
+      "firstRunId": "math-b022-round-a-openai-gpt-5.6-sol-20260902",
+      "secondRunId": "math-b022-rb-run-20260902-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

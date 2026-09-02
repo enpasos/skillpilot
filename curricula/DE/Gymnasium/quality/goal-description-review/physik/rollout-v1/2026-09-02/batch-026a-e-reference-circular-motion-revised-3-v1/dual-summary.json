@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c576838f7b0afde0976ab2c100f0d60d8022d2cb5605ab05dc8c7432b4c5db6a",
+  "reviewInputFingerprint": "sha256:0a3a6b2d2c7d8da6a6fb2887713c3aa996c238c99d6e62866db31c10fe1d5efa",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b026a-round-a-gpt-5.6-sol-high-none"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra-high-fork-none"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-terra::gpt-5.6-terra"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRecordId": "physik-b026a-a-01",
+      "secondRecordId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.record-001",
+      "firstRunId": "physik-b026a-round-a-gpt-5.6-sol-high-none",
+      "secondRunId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra-high-fork-none",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "firstRecordId": "physik-b026a-a-02",
+      "secondRecordId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.record-002",
+      "firstRunId": "physik-b026a-round-a-gpt-5.6-sol-high-none",
+      "secondRunId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra-high-fork-none",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "firstRecordId": "physik-b026a-a-03",
+      "secondRecordId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.record-003",
+      "firstRunId": "physik-b026a-round-a-gpt-5.6-sol-high-none",
+      "secondRunId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra-high-fork-none",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b031t-round-a-atomicity-review-20260902",
+  "campaignId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:35df31c85bb210b0f9d34f5c4a22e44c8e584a6216fc7de2643cef4704decef5",
+  "bundleFingerprint": "sha256:1c4bf20b47232852423c4ae04495865a4a8ed4de934194b0fc18369a32275504",
+  "bookDigest": "sha256:2ab528cc5d3f7b38a52d306901f2632686c8e1b82fdc20b73a3a5fcb2e1762eb",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:a949ce741b6a04ce64ac51695ca52644a040fb67f8c920a7b900c62c73d6df78",
+  "independenceGroupId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:35df31c85bb210b0f9d34f5c4a22e44c8e584a6216fc7de2643cef4704decef5"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T19:06:34.000Z",
+  "completedAt": "2026-09-02T19:07:19.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:9f17fa5032fd597b6c054e3f6cddd4327e78c84234f056fa86bc552c1bad1054",
+  "toolchainVersion": "goal-description-review-v1"
+}

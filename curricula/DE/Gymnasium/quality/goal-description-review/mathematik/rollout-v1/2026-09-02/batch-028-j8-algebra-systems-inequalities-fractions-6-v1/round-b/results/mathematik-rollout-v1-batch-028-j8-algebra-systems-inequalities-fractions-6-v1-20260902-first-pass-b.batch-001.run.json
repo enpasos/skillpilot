@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b028-first-pass-b-codex-20260902-152639",
+  "campaignId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-b",
+  "roundId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:49334be7de7884d9a3faeee3cc6d049966b551b178d418033f2eef7f7b46fcbf",
+  "bundleFingerprint": "sha256:781cf34036aa8135021e341dbb4493e0bc32b7a549cb10f301582b70a5bb956a",
+  "bookDigest": "sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "modelVersion": "unspecified",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:9fb1f505082e2f80a243a5eee4b55de3dbcf2024820959dfb74cb00b674474e1",
+  "independenceGroupId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e42c208d-9555-43cc-92f5-5bb4c0688726",
+    "f17935b0-189f-5e0c-988d-ce508b710097",
+    "15512e77-31e3-5222-8a6b-84791618e5ce",
+    "76478e47-5ff9-5de1-b601-5e6e436ad855",
+    "797ee047-b8dd-45cf-880e-98571a56c690",
+    "0a154cbd-1218-4553-835c-a754e9901bba"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:9e501439281afa68e250496be3ee2f66a51a9e8564578746bb032c486e1794a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:49334be7de7884d9a3faeee3cc6d049966b551b178d418033f2eef7f7b46fcbf"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T15:26:39Z",
+  "completedAt": "2026-09-02T15:29:49Z",
+  "status": "completed",
+  "outputDigest": "sha256:f693f1e7618f26bc0361e5f687908c0be4f08f6f3bbec40eb26c14ec0c30d1c5",
+  "toolchainVersion": "manual-schema-check-v1"
+}

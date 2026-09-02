@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `c420e0be-1e74-4050-834c-d8da7f41095a`
 - Titel: Bruchterme strukturieren, erweitern und kürzen
-- Beschreibung: Die lernende Person kann die Struktur von Bruchtermen erkennen, sie auch mithilfe des Distributivgesetzes erweitern oder kürzen und die Verfahren mit Bezügen zu früheren Algebraideen erläutern.
+- Beschreibung: Die lernende Person kann die Faktor- und Summenstruktur von Bruchtermen erkennen, zur Strukturierung bei Bedarf das Distributivgesetz nutzen, Zähler und Nenner mit demselben Faktor erweitern oder gemeinsame Faktoren kürzen und unter Beachtung der Definitionsbedingungen begründen, warum die Umformungen wertgleich sind.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Bruchterme strukturieren, erweitern und kürzen
-Beschreibung: Die lernende Person kann die Struktur von Bruchtermen erkennen, sie auch mithilfe des Distributivgesetzes erweitern oder kürzen und die Verfahren mit Bezügen zu früheren Algebraideen erläutern.
+Beschreibung: Die lernende Person kann die Faktor- und Summenstruktur von Bruchtermen erkennen, zur Strukturierung bei Bedarf das Distributivgesetz nutzen, Zähler und Nenner mit demselben Faktor erweitern oder gemeinsame Faktoren kürzen und unter Beachtung der Definitionsbedingungen begründen, warum die Umformungen wertgleich sind.
 
 Zusatzanweisung:
 Pflichtinhalt:

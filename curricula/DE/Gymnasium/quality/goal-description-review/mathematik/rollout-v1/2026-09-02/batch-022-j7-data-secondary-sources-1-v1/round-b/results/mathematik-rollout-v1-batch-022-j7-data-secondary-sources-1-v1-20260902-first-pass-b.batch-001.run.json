@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b022-rb-run-20260902-01",
+  "campaignId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-b",
+  "roundId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:def9efec9ecc1a50b0a84146ca7fed9974e3bf11d40e0a4537db5c9e3f25b667",
+  "bundleFingerprint": "sha256:ef2f3a00d531dd669b1997c9860f7d15eff32372d1249595a9a46110512b165e",
+  "bookDigest": "sha256:c3065c772b4c7e05eff3e15d77beae43088b4b9759b9e7e03e2855a09a3ea5a2",
+  "provider": "openai",
+  "model": "gpt-5.6-terra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:079c08a1cd720e34829b7c30983380a560f9fdb0a68c452872c3b973d26d99f8",
+  "independenceGroupId": "mathematik-rollout-v1-batch-022-j7-data-secondary-sources-1-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:913ebd34a9eceae17f5b66ebde4130daf3c917c2cbb479a24a00ca5a440d77b5"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:def9efec9ecc1a50b0a84146ca7fed9974e3bf11d40e0a4537db5c9e3f25b667"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T09:10:07+02:00",
+  "completedAt": "2026-09-02T09:10:42+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:3d3cf6730a2f180be60edf8a510b8a6c3f82ae6524a73535714e832b5b279589",
+  "toolchainVersion": "codex-gpt-5.6-terra-2026-09-02"
+}

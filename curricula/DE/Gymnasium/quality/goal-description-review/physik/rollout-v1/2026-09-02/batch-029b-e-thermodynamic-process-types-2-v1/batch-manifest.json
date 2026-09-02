@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029b-e-thermodynamic-process-types-2-v1.config.json",
+  "configDigest": "sha256:30d33172b6038cc9096419ba017434ad12249a803fed1fc9c66f9a656ac5bd7c",
+  "goalIds": [
+    "fb73c94b-6a23-5351-8fef-db2c2533e361",
+    "7fe3022f-fad0-5f41-af1c-d55ff214ebc6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:87cffbb8d1d6f03e1eb1513568eba051ac3e8a618c1d4a0633905db99660937f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fc04ea92fdb95fe9fdce2b99381d3d34691b8c16c2dc6fe6ecad3d3e0b5cadb7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0bb6abd98f300a67a77bd0803f2337ed631685ac9f58710561b0594eb0fdf3b0",
+    "reviewInputFingerprint": "sha256:3e04e9a7ed623f5f09e260b781e50a20ec273990cedea9b0185633d6da5ac1da",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-a",
+        "campaignDigest": "sha256:5a91b0c55bcfe38f4da6c529e611082fc6cc05ad6fd5b4a48fa0673bfee4832f",
+        "roundId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:98b2e70410ee3740055928c3017364b1309a839fbf724268fa18de047f2ee5c0"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-b",
+        "campaignDigest": "sha256:1d19affcabf7ab1ec6a6bae9879178097e87461c8ea65221a2ac84612afff5be",
+        "roundId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4699b7bd8c89bf9c47ba589f049c8dd2242dc1331c37fb43b028685b5e0384fb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

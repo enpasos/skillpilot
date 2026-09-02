@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
+import { mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   buildPositiveGoalEvidenceCandidateRecords,
+  replaceFileAtomically,
 } from './materializePositiveGoalEvidenceCandidates'
 import type { PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 import type { PositiveGoalEvidenceReviewConfig } from './positiveGoalEvidenceReview'
@@ -76,5 +78,96 @@ await assert.rejects(
   }),
   /must match the configured scope exactly and in order/u,
 )
+
+const atomicWriteDirectory = await mkdtemp(join(tmpdir(), 'skillpilot-positive-evidence-atomic-'))
+try {
+  const targetPath = join(atomicWriteDirectory, 'review.jsonl')
+  const expectedBytes = Buffer.from('{"goalId":"new"}\n')
+  await writeFile(targetPath, '{"goalId":"old"}\n')
+  await replaceFileAtomically(targetPath, expectedBytes)
+  assert.deepEqual(await readFile(targetPath), expectedBytes)
+  assert.deepEqual(await readdir(atomicWriteDirectory), ['review.jsonl'])
+} finally {
+  await rm(atomicWriteDirectory, { recursive: true, force: true })
+}
+
+const targetPath = '/repository/review.jsonl'
+const oldTargetBytes = Buffer.from('{"goalId":"old"}\n')
+const replacementBytes = Buffer.from('{"goalId":"new"}\n')
+let targetBytes = oldTargetBytes
+let temporaryPath = ''
+const temporaryFiles = new Map<string, Buffer>()
+const operationOrder: string[] = []
+await replaceFileAtomically(targetPath, replacementBytes, {
+  writeFile: async (path, bytes, options) => {
+    assert.notEqual(path, targetPath)
+    assert.equal(dirname(path), dirname(targetPath))
+    assert.equal(options.flag, 'wx')
+    assert.deepEqual(targetBytes, oldTargetBytes)
+    temporaryPath = path
+    temporaryFiles.set(path, Buffer.from(bytes))
+    operationOrder.push('write-temp')
+  },
+  rename: async (sourcePath, destinationPath) => {
+    assert.equal(sourcePath, temporaryPath)
+    assert.equal(destinationPath, targetPath)
+    assert.deepEqual(targetBytes, oldTargetBytes)
+    targetBytes = temporaryFiles.get(sourcePath) ?? Buffer.alloc(0)
+    temporaryFiles.delete(sourcePath)
+    operationOrder.push('rename')
+  },
+  rm: async () => {
+    assert.fail('Successful atomic replacement must not need cleanup')
+  },
+})
+assert.deepEqual(operationOrder, ['write-temp', 'rename'])
+assert.deepEqual(targetBytes, replacementBytes)
+assert.equal(temporaryFiles.size, 0)
+
+const renameFailure = new Error('simulated rename failure')
+targetBytes = oldTargetBytes
+temporaryPath = ''
+await assert.rejects(
+  replaceFileAtomically(targetPath, replacementBytes, {
+    writeFile: async (path, bytes) => {
+      temporaryPath = path
+      temporaryFiles.set(path, Buffer.from(bytes))
+    },
+    rename: async () => {
+      throw renameFailure
+    },
+    rm: async (path, options) => {
+      assert.equal(path, temporaryPath)
+      assert.equal(options.force, true)
+      temporaryFiles.delete(path)
+    },
+  }),
+  (error) => error === renameFailure,
+)
+assert.deepEqual(targetBytes, oldTargetBytes)
+assert.equal(temporaryFiles.size, 0)
+
+const writeFailure = new Error('simulated partial temporary write failure')
+temporaryPath = ''
+await assert.rejects(
+  replaceFileAtomically(targetPath, replacementBytes, {
+    writeFile: async (path, bytes) => {
+      temporaryPath = path
+      temporaryFiles.set(path, Buffer.from(bytes.subarray(0, 4)))
+      throw writeFailure
+    },
+    rename: async () => {
+      assert.fail('A failed temporary write must never be renamed')
+    },
+    rm: async (path, options) => {
+      assert.equal(path, temporaryPath)
+      assert.equal(options.force, true)
+      temporaryFiles.delete(path)
+    },
+  }),
+  (error) => error === writeFailure,
+)
+assert.deepEqual(targetBytes, oldTargetBytes)
+assert.equal(temporaryFiles.size, 0)
 
 console.log(`Positive understanding-evidence candidate materializer self-test passed: ${records.length} profile(s).`)

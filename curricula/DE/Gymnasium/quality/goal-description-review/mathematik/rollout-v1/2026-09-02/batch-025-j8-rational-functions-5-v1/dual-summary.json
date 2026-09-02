@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b8093a9d560528894628786ad1168a4bc70078851813f662eeab2d22f2ca4e19",
+  "reviewInputFingerprint": "sha256:8da1ee0f542ac87f80e93861ea2395eed2776986b2abf43067f30d6303c8de2e",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-b025-j8-rational-functions-round-a-codex-20260902-01"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-b025-round-b-gpt5-codex-20260902"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "firstRecordId": "mathematik-b025-rational-functions-a-001",
+      "secondRecordId": "mathematik-b025-round-b-001",
+      "firstRunId": "mathematik-b025-j8-rational-functions-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b025-round-b-gpt5-codex-20260902",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "firstRecordId": "mathematik-b025-rational-functions-a-002",
+      "secondRecordId": "mathematik-b025-round-b-002",
+      "firstRunId": "mathematik-b025-j8-rational-functions-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b025-round-b-gpt5-codex-20260902",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+      "firstRecordId": "mathematik-b025-rational-functions-a-003",
+      "secondRecordId": "mathematik-b025-round-b-003",
+      "firstRunId": "mathematik-b025-j8-rational-functions-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b025-round-b-gpt5-codex-20260902",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+      "firstRecordId": "mathematik-b025-rational-functions-a-004",
+      "secondRecordId": "mathematik-b025-round-b-004",
+      "firstRunId": "mathematik-b025-j8-rational-functions-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b025-round-b-gpt5-codex-20260902",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "firstRecordId": "mathematik-b025-rational-functions-a-005",
+      "secondRecordId": "mathematik-b025-round-b-005",
+      "firstRunId": "mathematik-b025-j8-rational-functions-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b025-round-b-gpt5-codex-20260902",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

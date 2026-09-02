@@ -103,15 +103,33 @@ npm --prefix app run test:goal-description-rollout-synthesis
 npm --prefix app run test:goal-description-rollout-batch
 ```
 
-The generic resolution materializer is deliberately limited to a fully green
-current batch with two independent `keep` decisions per goal. The manifest,
-not a transient CLI preference, explicitly selects one record's concrete
-understanding evidence; its own fingerprint binds all batch, canonical,
-dual-summary, run, result, and record digests. Generated V1 resolutions cite
-that manifest fingerprint and record any differing review emphasis as
-AI-synthesis dissent. Any `revise`, `split_review`, or `block` record still
-requires curriculum adjudication and a fresh current keep/keep recheck; the
-tool fails closed instead of manufacturing a resolution or human attestation.
+The generic resolution materializer accepts only records for the exact current
+canonical goal context. Strict closure has two forms:
+
+- two independent current `keep` records; or
+- exactly one current `keep` plus one current `revise`, but only when the
+  manifest chooses `keep_current`, binds the proposed bilingual revision
+  exactly as `revisionDissent`, and explicitly rejects that replacement while
+  retaining the current canonical text.
+
+The second form does not adopt or approve the proposed revision. A
+`split_review` or `block` record remains open, and any other decision
+combination fails closed. The manifest, not a transient CLI preference,
+selects one record's concrete understanding evidence; its own fingerprint
+binds all batch, canonical, dual-summary, run, result, and record digests.
+Generated V1 resolutions cite that manifest fingerprint and record differing
+review emphasis or an explicitly rejected revision as AI-synthesis dissent.
+
+If curriculum adjudication instead adopts a proposed revision into the
+canonical German and English text, the pre-revision inputs, fingerprints, and
+records are intentionally stale and cannot close the revised goal. Prepare a
+new post-revision batch and run two fresh independent blind rounds against the
+new canonical context. Only those new current records may support strict
+closure under the same rules above; normally two `keep` records are synthesized
+with `current_after_revision` to preserve the revision history. The original
+`revise` record remains adjudication provenance, not one of the two final
+current reviews. The tool never manufactures a resolution or human
+attestation.
 For deterministic bytes, `synthesizedAt` is exactly one second after the latest
 bound run `completedAt`. Batch-manifest, dual-summary, canonical-landscape, and
 synthesis-manifest bindings use SHA-256 of the exact file bytes; the logical

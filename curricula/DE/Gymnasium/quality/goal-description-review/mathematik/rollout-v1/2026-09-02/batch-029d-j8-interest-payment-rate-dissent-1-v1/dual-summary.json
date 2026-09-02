@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:dc5100af36c5af0707243404178c4814614f9fced2c5aeb04e0e206b402512af",
+  "reviewInputFingerprint": "sha256:7313074f684f4834e70f135b0f2988212a6986bb5d02d9381d5f30d4294c4ca4",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-independent-b",
+      "runIds": [
+        "math-b029d-round-b-openai-codex-20260902"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "firstRecordId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-first-pass-a.batch-001.record-001",
+      "secondRecordId": "math-b029d-round-b-f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "firstRunId": "mathematik-rollout-v1-batch-029d-j8-interest-payment-rate-dissent-1-v1-20260902-first-pass-a.batch-001.run-001",
+      "secondRunId": "math-b029d-round-b-openai-codex-20260902",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b028-e-chaos-gravitation-worldviews-6-20260902-round-b-subject-review-001",
+  "campaignId": "physik-rollout-v1-batch-028-e-chaos-gravitation-worldviews-6-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-028-e-chaos-gravitation-worldviews-6-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-028-e-chaos-gravitation-worldviews-6-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:4ed2eb807d9b1af4a7032f2932dee1baa9feeb6260faa651d840b7fbe9464f63",
+  "bundleFingerprint": "sha256:48860b779852a473aeaaeb688bd54fdd4048dd1eae81322325ed3c1ef443b18f",
+  "bookDigest": "sha256:cb9caccd94c53a47874f1eb070c8186627377005e26b9888aeb034243d3bc7a7",
+  "provider": "OpenAI",
+  "model": "gpt-5.6",
+  "modelVersion": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c011642599f931d64737ad5a99b31dd5dfc7655fbc13f4e01e5dd2874aecc75d",
+  "independenceGroupId": "physik-rollout-v1-batch-028-e-chaos-gravitation-worldviews-6-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "76fd0ab2-079a-516e-a33b-170355336d40",
+    "92d8f398-0c9f-523c-88d7-44165b6b4768",
+    "156edddc-ce8d-580d-8d17-d9376d59e60e",
+    "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+    "25edd154-b1d8-546c-94a5-88502b6725cd",
+    "481ffd56-d585-56fe-b525-ed423e30eed3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:396ede0cc1f2464829e93eeb885505c4b1bd9f4838afe34c6e7223e5f259a815"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4ed2eb807d9b1af4a7032f2932dee1baa9feeb6260faa651d840b7fbe9464f63"
+    }
+  ],
+  "startedAt": "2026-09-02T10:20:00+02:00",
+  "completedAt": "2026-09-02T10:31:42+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:7620612d62bbf7e9701bc40c35d35185747d75cda8d925ba1018c37822e1ef0a",
+  "toolchainVersion": "codex-workspace-v1"
+}

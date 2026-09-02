@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-31T12:07:48.239Z
+Generated: 2026-09-02T18:17:23.491Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,16 +16,16 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1174 |
-| Atomare Ziele im Visualisierungs-Scope | 792 |
-| Ziele mit primaerem Visualisierungslink | 721 |
-| Coverage | 91.0% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 792 |
+| Alle Ziele in der Landschaft | 1177 |
+| Atomare Ziele im Visualisierungs-Scope | 793 |
+| Ziele mit primaerem Visualisierungslink | 720 |
+| Coverage | 90.8% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 793 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 232 |
-| Offene Provider-Deferred-Ziele | 71 |
+| Review-Ledger-Dateien | 236 |
+| Offene Provider-Deferred-Ziele | 73 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 1 |
 | `approved` | 20 |
-| `pilot` | 700 |
+| `pilot` | 699 |
 
 ## Ledger Decisions
 
@@ -49,7 +49,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_user_issue_correction` | 8 |
 | `accepted_context_visualization` | 2 |
 | `accepted_documented_repo_native_fallback` | 3 |
-| `accepted_existing_asset` | 8 |
+| `accepted_existing_asset` | 11 |
 | `accepted_pilot` | 604 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
@@ -59,6 +59,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
+| `accepted_pilot_after_targeted_correction` | 1 |
 | `accepted_pilot_after_targeted_layout_correction` | 1 |
 | `accepted_pilot_after_targeted_topology_correction` | 1 |
 | `accepted_pilot_after_third_attempt` | 5 |
@@ -72,7 +73,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
-| `deferred_provider_limitation` | 89 |
+| `deferred_provider_limitation` | 91 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -92,8 +93,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-220.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-formula-domain-correction-2026-09-02.md` |
+| Latest ledger status | `completed_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -102,7 +103,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 71 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 73 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -131,7 +132,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | mathematik-structural-split-deferred-2026-08-16 | `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `deferred_provider_limitation` |
 
-Weitere 51 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 53 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 

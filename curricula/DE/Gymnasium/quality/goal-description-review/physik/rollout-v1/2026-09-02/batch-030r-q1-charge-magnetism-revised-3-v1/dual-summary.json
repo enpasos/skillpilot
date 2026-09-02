@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:93ad397d02fabf973e341a84985868c167e91709b3cf78fdb5b5c05abb7bcbdb",
+  "reviewInputFingerprint": "sha256:7216d0bf37c804d7b25818c95146e7f331f06b223013390998425463780801a8",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b030r-20260902-first-pass-a-codex"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-independent-b",
+      "runIds": [
+        "physik-b030r-revised3-first-pass-b-codex-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+      "firstRecordId": "physik-b030r-20260902-first-pass-a.001",
+      "secondRecordId": "physik-b030r-revised3-b-a6e48b88",
+      "firstRunId": "physik-b030r-20260902-first-pass-a-codex",
+      "secondRunId": "physik-b030r-revised3-first-pass-b-codex-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+      "firstRecordId": "physik-b030r-20260902-first-pass-a.002",
+      "secondRecordId": "physik-b030r-revised3-b-0924162b",
+      "firstRunId": "physik-b030r-20260902-first-pass-a-codex",
+      "secondRunId": "physik-b030r-revised3-first-pass-b-codex-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+      "firstRecordId": "physik-b030r-20260902-first-pass-a.003",
+      "secondRecordId": "physik-b030r-revised3-b-9854589c",
+      "firstRunId": "physik-b030r-20260902-first-pass-a-codex",
+      "secondRunId": "physik-b030r-revised3-first-pass-b-codex-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

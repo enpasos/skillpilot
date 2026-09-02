@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-b.batch-001.openai-terra-subject-reviewer-r1",
+  "campaignId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f14783f59de251e93ff203a47b24175ea98443dcbe9c7ed8be8dc27ff1b71160",
+  "bundleFingerprint": "sha256:e6d79d9e90c4c720a8a59e88119328cc0e444b4fee39ff6b76a88c140c59fbe0",
+  "bookDigest": "sha256:ca31ab0542ebaa820ab3567409f3d2df22f1da35f1baf0380b4556a0fc3d38cb",
+  "provider": "openai",
+  "model": "gpt-5.6-terra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:7dbd042a57623ab2a6a18fa349bf224ec65668e49215be469a977ff7b197cc62",
+  "independenceGroupId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:b165d58a89da9bf371f28c899b38a181fe5b7980e975ac780552ca3ff669a36f"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:72cc184c5ea8e519a0d526938ce0397a6c96650d35e2c16a7afcc96cd0d24b1b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f14783f59de251e93ff203a47b24175ea98443dcbe9c7ed8be8dc27ff1b71160"
+    }
+  ],
+  "startedAt": "2026-09-02T09:22:03+02:00",
+  "completedAt": "2026-09-02T09:23:03+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:b0a941547e81943c39baee895b38bb74b9e76903555d849182962341cd518811",
+  "toolchainVersion": "codex-campaign-review-v1"
+}

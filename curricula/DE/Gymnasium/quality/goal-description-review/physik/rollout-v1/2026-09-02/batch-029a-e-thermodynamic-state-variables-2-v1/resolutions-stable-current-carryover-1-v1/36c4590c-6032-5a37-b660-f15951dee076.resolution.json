@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-b029a-stable1-current-carryover-v1-resolution-36c4590c-6032-5a37-b660-f15951dee076",
+  "goal": {
+    "goalId": "36c4590c-6032-5a37-b660-f15951dee076",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:c927279bab63357bc23a7f07e0cf651a361f196c19a15d55b8ebc9fbfbdb1c46",
+    "pageFingerprint": "sha256:f9a55d524213405da33bff4af616c1ee8d9143c5dbc7e02efe97ec8f9504d849",
+    "goalReviewContextFingerprint": "sha256:25859942dce00690508e3ebc46ffaebdcd3430f4381c35e4da7b8ca313ef250a",
+    "finalText": {
+      "titleDe": "Entropie E01: Zustandsgrößen vs. Prozessgrößen",
+      "titleEn": "Entropy E01: State Variables vs. Process Quantities",
+      "descriptionDe": "Die lernende Person unterscheidet Zustandsgrößen ($p, V, T, U, S$) von Prozessgrößen ($Q, W$) und erklärt, warum $Q$ und $W$ vom Weg abhängen, $\\Delta U$ und $\\Delta S$ aber nicht.",
+      "descriptionEn": "The learner distinguishes state variables ($p, V, T, U, S$) from process quantities ($Q, W$) and explains why $Q$ and $W$ are path-dependent while $\\Delta U$ and $\\Delta S$ are not."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-a",
+      "campaignDigest": "sha256:22a32270cbc30724227e77632db47269695d29dfea2e7964588d01e957a12296",
+      "roundId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:0462b9b8c55500787ad283b3b5d3f22c44692660da661bb9d23d07bce147d9c0",
+      "goalReviewContextFingerprint": "sha256:25859942dce00690508e3ebc46ffaebdcd3430f4381c35e4da7b8ca313ef250a",
+      "batchId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-gpt-5-physik-b029a-round-a-20260902",
+      "runManifestDigest": "sha256:a5ff057579ac2acfdf07c150a0bb838e2ad7f5a8fe41e98af955dbac1353cb23",
+      "resultsDigest": "sha256:ce5a0480b1cc52890ffb703d4558894b3c6a92005e6d2df5daf938395ff67af2",
+      "recordId": "openai-gpt-5-physik-b029a-round-a-20260902-36c4590c",
+      "recordDigest": "sha256:6ebae8d88c6ad4a2daf348baf83845e37048239bf9f066924435812e1ab106d3"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-b",
+      "campaignDigest": "sha256:26914b15d73485c5aeb3a12a542cc0812140980e993a450f71474dbeba691e58",
+      "roundId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:0462b9b8c55500787ad283b3b5d3f22c44692660da661bb9d23d07bce147d9c0",
+      "goalReviewContextFingerprint": "sha256:25859942dce00690508e3ebc46ffaebdcd3430f4381c35e4da7b8ca313ef250a",
+      "batchId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-b.batch-001",
+      "runId": "physik-b029a-round-b-openai-gpt5-20260902",
+      "runManifestDigest": "sha256:d31363ef99abdcd68f038fd9c051ce329d02d428b7f895767ff40f736195543c",
+      "resultsDigest": "sha256:c2cb2130835ace1b19e43b5670cd140f14e9b4f51df5b1e0921f9dc96908f25d",
+      "recordId": "physik-b029a-round-b-review-36c4590c-6032-5a37-b660-f15951dee076",
+      "recordDigest": "sha256:dc5e4ff909546c85f79a171c462cd56a374b355e4dfff1c32d04c51bda5f17e4"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9db1fa8a9a7ba907091139fbf37b9dc818968c2cf1b129a3cf5c405f5839ed72"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-1-v1.json",
+    "manifestId": "physik-b029a-stable1-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:fea9889ade923d3ca5797cd7c73a4c98b5a75b263b3077837eed2f275ee99a0e",
+    "manifestFingerprint": "sha256:a15a521892f181f1521b5d0207f4b3cd2acdf760123ef0faccc91b6937a38c03",
+    "decisionId": "physik-b029a-stable1-synthesis-openai-codex-20260902-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b029a-stable1-synthesis-openai-codex-20260902-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Physics B029A stable-current carryover synthesis candidate",
+    "synthesizedAt": "2026-09-02T14:00:37.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten bilingualen Wortlaut als fachlich korrekt, kohärent und prüfbar. Die zweite Runde liefert die ausgewählte, besonders systemgrenzenbewusste Evidenzfassung; die erste bleibt vollständig als unabhängige KEEP-Bestätigung gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording as scientifically correct, coherent, and assessable. The second round supplies the selected evidence formulation with particularly explicit attention to the system boundary; the first remains fully bound as an independent KEEP confirmation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass p, V, T, U und S den Gleichgewichtszustand eines festgelegten Systems kennzeichnen und ihre Änderungen zwischen zwei Zuständen nur von den Endpunkten abhängen, während Wärme Q und Arbeit W Energieübertragungen über die Systemgrenze während eines konkreten Prozesswegs bezeichnen und deshalb wegabhängig sind.",
+      "essentialUnderstandingEn": "The learner understands that p, V, T, U, and S characterize the equilibrium state of a specified system and that their changes between two states depend only on the endpoints, whereas heat Q and work W denote energy transfers across the system boundary during a particular process path and are therefore path-dependent.",
+      "observablePerformanceDe": "Für zwei unterschiedliche Prozesswege zwischen denselben Gleichgewichtszuständen kennzeichnet die lernende Person Zustands- und Prozessgrößen, begründet, warum ΔU und ΔS für beide Wege gleich sind, zeigt anhand einer konsistenten Energiebilanz, wie sich Q und W unterscheiden können, und behandelt Wärme und Arbeit nicht als im System gespeicherte Größen.",
+      "observablePerformanceEn": "For two different process paths between the same equilibrium states, the learner identifies state and process quantities, justifies why ΔU and ΔS are the same for both paths, uses a consistent energy balance to show how Q and W may differ, and does not treat heat or work as quantities stored in the system.",
+      "transferExpectationDe": "In einer neuen Aufgabe werden Prozessweg und Systemgrenze verändert, etwa durch einen zusätzlichen irreversiblen Schritt zwischen denselben Endzuständen; die lernende Person bestimmt erneut, welche Änderungen endpunktabhängig bleiben und welche Wärme- und Arbeitsübertragungen sich ändern können.",
+      "transferExpectationEn": "In a fresh task, the process path and system boundary are changed, for example by adding an irreversible step between the same end states; the learner again determines which changes remain endpoint-dependent and which heat and work transfers may change."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a251b436e86d237b1a0c8a5694894a0c32ffcdb81bde04f6a6951e75caadeecb",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:839c6f60fc662967b51df25df201b29f2c1aef7577d0364a7f5a60c1c866d3a4"
+}

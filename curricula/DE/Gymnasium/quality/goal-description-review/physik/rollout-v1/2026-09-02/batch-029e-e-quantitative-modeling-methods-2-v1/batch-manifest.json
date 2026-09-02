@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029e-e-quantitative-modeling-methods-2-v1.config.json",
+  "configDigest": "sha256:e3dd01e4012cf3d544fc5ca7f5a1de664164d1213c3cca995398a71d629e445b",
+  "goalIds": [
+    "b615830a-e8b0-5754-81e0-99da98343a8d",
+    "ac25ffe3-fd42-592d-a937-79cc13460313"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:87cffbb8d1d6f03e1eb1513568eba051ac3e8a618c1d4a0633905db99660937f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:de15779eea95af86cd57656e3eabb092cd05eefb9a5ca1347d3acc3a2e3dde8f",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0efd111bdee7372c914a6789f4c69ab147caa4abca0429228ab5a3de016b87af",
+    "reviewInputFingerprint": "sha256:cd771129ff00c6e2aa63b083801c3e48b8b0a66147629b0adf231818b6ca6fad",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-a",
+        "campaignDigest": "sha256:d8fbc77445ff9259427992ed1b3d16c303829af4862232e671e170b12bd2ca03",
+        "roundId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:57908a0354663281abc9e0b7a1eda0e5a8ec5ff8ba982d4c00087e290e57db25"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-b",
+        "campaignDigest": "sha256:f5037fb1bd6fb4217bd74e835fae84fede229616282306715a7910ff6811e157",
+        "roundId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-029e-e-quantitative-modeling-methods-2-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8c9a0c25c12252ad880bd3557bbda6f4ecd30c00dc30df8b732b3f9d72bfcfd5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

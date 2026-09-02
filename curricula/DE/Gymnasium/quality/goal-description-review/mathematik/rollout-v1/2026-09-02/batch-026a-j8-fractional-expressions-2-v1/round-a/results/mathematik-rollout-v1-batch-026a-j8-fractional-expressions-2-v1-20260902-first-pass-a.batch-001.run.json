@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-b026a-j8-fractional-expressions-2-round-a-20260902",
+  "campaignId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-a",
+  "roundId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:91150ac66b73cb56d465a23bd181c5250794e2f700a98c87eaaf6006827d1b0e",
+  "bundleFingerprint": "sha256:9dafafcc0b3deffaad1e4998d6d0f7071f6595e4484bd76857629e0f31723849",
+  "bookDigest": "sha256:56e6abe204042ce071ad8be53e473423ac1c5f60e9ccaa96b94d033bd4cb6996",
+  "provider": "openai",
+  "model": "gpt-5-codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:2f96f3c731de95cbd2092feeda5276e7f2becb50219a30cda3764792858bc769",
+  "independenceGroupId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c420e0be-1e74-4050-834c-d8da7f41095a",
+    "f7a9a0b4-ec64-468f-8da4-59c5055eac1d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:91150ac66b73cb56d465a23bd181c5250794e2f700a98c87eaaf6006827d1b0e"
+    }
+  ],
+  "startedAt": "2026-09-02T12:18:58Z",
+  "completedAt": "2026-09-02T12:18:58Z",
+  "status": "completed",
+  "outputDigest": "sha256:7a613d777e889d265959e415890e18e4b162ce8125afcf1a46195e8bd90059ed",
+  "toolchainVersion": "codex-review-run-v1"
+}

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `15b56a1e-3eec-52ca-82fa-b4df9ce88415`
 - Titel: Astronomische Weltbilder zeitlich einordnen (GK)
-- Beschreibung: Die lernende Person kann zentrale astronomische Weltbilder (ptolemäisch, kopernikanisch, newtonsch) grob zeitlich einordnen.
+- Beschreibung: Die lernende Person kann die ptolemäischen, kopernikanischen und newtonschen astronomischen Weltbilder in eine grobe chronologische Reihenfolge bringen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Astronomische Weltbilder zeitlich einordnen (GK)
-Beschreibung: Die lernende Person kann zentrale astronomische Weltbilder (ptolemäisch, kopernikanisch, newtonsch) grob zeitlich einordnen.
+Beschreibung: Die lernende Person kann die ptolemäischen, kopernikanischen und newtonschen astronomischen Weltbilder in eine grobe chronologische Reihenfolge bringen.
 
 Zusatzanweisung:
 Pflichtinhalt:

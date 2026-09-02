@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-021-j7-linear-equations-1-v1.config.json",
+  "configDigest": "sha256:a25b0cd2f9f7b17edb86d1d86ba64170e470c6a3b68c14ab5944609324ded361",
+  "goalIds": [
+    "325771e1-602d-4bca-a199-a8f39a2d3dee"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 792,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2e5cbbea6883370014fabaf911426a2c5324d0b37ccbf78f9abceeb1e60d3fe1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3a3f0c3e11d574ddf2e1f33596063d9446d4d1c732635c516ae5b8680e161889",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:83daa4c30b0890b1f0ccc70b12f11f4fb9385af80f0bf2957820e67c47644e71",
+    "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-a",
+        "campaignDigest": "sha256:6cf9de86cacc74e5809b47f208483c6a2d11d35b4fd172c4f4baa5ad26d46a68",
+        "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a16066a0f2d7a8a57e611d17393ee637cce93f368dcf8ca1261bb1649277dd40"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-b",
+        "campaignDigest": "sha256:29b770b0438986eda032d942afb3c0913e19d280268f818a3332ebc613e333c4",
+        "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d25a8544311b2dc51b482b226ac6fff033cd274bf6de18b434d3c212e485d55f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

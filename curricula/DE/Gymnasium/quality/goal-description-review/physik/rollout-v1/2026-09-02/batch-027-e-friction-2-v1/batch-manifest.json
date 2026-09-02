@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-027-e-friction-2-v1.config.json",
+  "configDigest": "sha256:e7689b03df80cb4734e526c2b78a59f9e79340ac85f213afaa114bc860345434",
+  "goalIds": [
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:49ad2b63e515cb7f6a5bdf69fe77067ff674ec99d940f9d0a51a3c078ed3711a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ca31ab0542ebaa820ab3567409f3d2df22f1da35f1baf0380b4556a0fc3d38cb",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e6d79d9e90c4c720a8a59e88119328cc0e444b4fee39ff6b76a88c140c59fbe0",
+    "reviewInputFingerprint": "sha256:5959a1ea4f5dfa407ff9103e5e5c29bc3512163b334967c24a7b25bcb8f69eb9",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-a",
+        "campaignDigest": "sha256:b3f84a52cc4925e2c2ed4a2dfc955d9457f3ca5d5502fa417b0184d2fc9e7786",
+        "roundId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7b00aaeafff575d17dcf84a83dcbecf7ced5db5d942774557fbada6e59eaa856"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-b",
+        "campaignDigest": "sha256:0b6e96dd29f4b7f9a76c4c73554568697c6b9f94411568fbcb9c1b1cbe03593e",
+        "roundId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-027-e-friction-2-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f14783f59de251e93ff203a47b24175ea98443dcbe9c7ed8be8dc27ff1b71160"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

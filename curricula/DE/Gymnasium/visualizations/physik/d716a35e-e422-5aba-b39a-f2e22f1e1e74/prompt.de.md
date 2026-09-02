@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `d716a35e-e422-5aba-b39a-f2e22f1e1e74`
 - Titel: Wellenphänomene: Brechung, Reflexion, Beugung
-- Beschreibung: Die lernende Person kann Brechung, Reflexion und Beugung als charakteristische Wellenphänomene beschreiben und mithilfe von Beispielen (z. B. Wellenwanne) qualitativ deuten.
+- Beschreibung: Die lernende Person kann Reflexion, Brechung und Beugung anhand von Wellenfronten voneinander unterscheiden und ihre charakteristischen Veränderungen mithilfe des Huygens’schen Prinzips unter den jeweiligen Randbedingungen qualitativ erklären.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Wellenphänomene: Brechung, Reflexion, Beugung
-Beschreibung: Die lernende Person kann Brechung, Reflexion und Beugung als charakteristische Wellenphänomene beschreiben und mithilfe von Beispielen (z. B. Wellenwanne) qualitativ deuten.
+Beschreibung: Die lernende Person kann Reflexion, Brechung und Beugung anhand von Wellenfronten voneinander unterscheiden und ihre charakteristischen Veränderungen mithilfe des Huygens’schen Prinzips unter den jeweiligen Randbedingungen qualitativ erklären.
 
 Zusatzanweisung:
 Edit the supplied infographic while preserving the already correct refraction and diffraction panels.

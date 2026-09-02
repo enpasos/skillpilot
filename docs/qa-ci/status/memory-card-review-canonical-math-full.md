@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 792 |
-| goals without memory need | 753 |
+| ordinary atomic goals reviewed | 793 |
+| goals without memory need | 754 |
 | goals with intentional memory support | 39 |
 | goals needing developer review | 0 |
 | primary cards in scope | 64 |
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 284 | 2 | 7 | 0 |
-| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 286 | 2 | 10 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 287 | 2 | 7 | 0 |
+| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 287 | 2 | 10 | 0 |
 
 ## Memory-Required Goals
 
@@ -55,8 +55,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | GLOBAL: Scheitelpunkte quadratischer Funktionen bestimmen (`3e4032bd-4d8c-4e72-bfdd-64a34df053c9`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
 | J10: Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen (`f9fdb733-5838-4983-888a-05624eabbe17`) | `de_gymnasium_math_analysis_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | J10: Logarithmus definieren und einfache Werte bestimmen (`3c1d6ce7-099e-4267-9ff2-3d1526209a89`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
-| J8: Geradengleichungen linearer Funktionen aufstellen (`ae772695-d55e-4cc5-81bc-6605272759b4`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
-| J8: Laplace-Experimente auswerten (`5ab17678-bba7-4e6b-9aff-5a909e24d40e`) | `de_gymnasium_math_stochastics_core` | Laplace-Bedingung und Laplace-Formel sind ein enger, notwendiger Abrufbaustein; die fachliche Auswertung und Interpretation bleiben im gewöhnlichen Lernziel und in Aufgaben verankert. |
+| J8: Geradengleichungen linearer Funktionen aufstellen (`ae772695-d55e-4cc5-81bc-6605272759b4`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | B024-Nachprüfung: Der Memory-Anteil bleibt auf die kompakte Formel- und Notationssicherheit zur Geradengleichung begrenzt; die drei Datenlagen werden durch Verstehen und Aufgabenpraxis gesichert. |
+| J8: Laplace-Experimente auswerten (`5ab17678-bba7-4e6b-9aff-5a909e24d40e`) | `de_gymnasium_math_stochastics_core` | Die Bedingung gleichwahrscheinlicher Elementarergebnisse und das Verhältnis günstig zu möglich sind ein enger Abrufbaustein; Modellwahl, Darstellung, Deutung und Transfer verbleiben im gewöhnlichen Lernziel und in Aufgaben. |
 | J8: Potenzgesetze mit ganzzahligen Exponenten anwenden (`6596405a-9728-41df-9163-53670ec2a937`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
 | J9: Abstände, Beträge und Mittelpunkte im Raum berechnen (`a8ff2666-8df3-4253-8021-3efe42114e40`) | `de_gymnasium_math_linalg_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
 | J9: Quadratische Gleichungen lösen (`9023226b-fc17-412b-807c-2bb45cd551d5`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b030r-revised3-first-pass-b-codex-run-001",
+  "campaignId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5067588e7436f7a80fd735d28a5dfc392cce170e7b54d273affca017c18b8e53",
+  "bundleFingerprint": "sha256:93ad397d02fabf973e341a84985868c167e91709b3cf78fdb5b5c05abb7bcbdb",
+  "bookDigest": "sha256:8df75bebfc0759327030b2094d7d22870a3a1c60be36f91af9b99bdb6efbdd89",
+  "provider": "OpenAI",
+  "model": "Codex GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:d00b81ad72fe0123621d6e5ce1ebf2447b0ccabe89e1564a3eddbb80d71fccf7",
+  "independenceGroupId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+    "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+    "9854589c-5feb-4942-b90f-311ddf36eb78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e74f80914e18f013445d93a3a6bef0fa92c132552ec3b8132266716809eae6e0"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:9db20907adfc24c2e03be24326b5ee1a5a56285c4289db1b5daa71eca656fa2b"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:3d920cd02862a1ea25c36841c74e6128405bb100a4b8432d1937215c145b0c08"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5067588e7436f7a80fd735d28a5dfc392cce170e7b54d273affca017c18b8e53"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T16:08:32.000Z",
+  "completedAt": "2026-09-02T16:14:45.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:108a1d3d70bdc65dd374b382cbb0f6f3492e1fd259d562161d610de1fd4d4d1d",
+  "toolchainVersion": "goal-description-review-v1"
+}

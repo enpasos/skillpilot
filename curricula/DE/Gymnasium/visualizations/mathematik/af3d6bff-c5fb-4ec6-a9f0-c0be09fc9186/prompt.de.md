@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186`
 - Titel: Lineare Funktionen beschreiben
-- Beschreibung: Die lernende Person kann Geraden durch Gleichungen, Tabellen und Graphen darstellen sowie Steigung und Achsenabschnitt in einfachen Situationen deuten.
+- Beschreibung: Die lernende Person kann lineare Funktionen durch Gleichungen, Wertetabellen und Graphen darstellen sowie die Bedeutung von Steigung und y-Achsenabschnitt in einfachen Situationen deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Lineare Funktionen beschreiben
-Beschreibung: Die lernende Person kann Geraden durch Gleichungen, Tabellen und Graphen darstellen sowie Steigung und Achsenabschnitt in einfachen Situationen deuten.
+Beschreibung: Die lernende Person kann lineare Funktionen durch Gleichungen, Wertetabellen und Graphen darstellen sowie die Bedeutung von Steigung und y-Achsenabschnitt in einfachen Situationen deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:

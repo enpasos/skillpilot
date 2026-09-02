@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e160acb4-5b88-509e-8055-2653df420c65`
 - Titel: Wellengleichung formulieren
-- Beschreibung: Die lernende Person kann die harmonische Wellengleichung aufstellen und Parameter interpretieren.
+- Beschreibung: Die lernende Person kann eine harmonische Wellengleichung aufstellen und Amplitude, Frequenz, Wellenlänge, Phase sowie Ausbreitungsrichtung aus ihren Parametern deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Wellengleichung formulieren
-Beschreibung: Die lernende Person kann die harmonische Wellengleichung aufstellen und Parameter interpretieren.
+Beschreibung: Die lernende Person kann eine harmonische Wellengleichung aufstellen und Amplitude, Frequenz, Wellenlänge, Phase sowie Ausbreitungsrichtung aus ihren Parametern deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:

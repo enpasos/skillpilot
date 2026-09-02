@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-b025c-3f1a97d2-final-current-keep-v1-resolution-3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+  "goal": {
+    "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:63844e0c5b5a23fae50360e4069f8fc54a07ecd6d6ebcb9d7f4405691d1cb092",
+    "pageFingerprint": "sha256:86590804288370562d6940d2314e0d1d82882218fb7b0fd2058065616664a79f",
+    "goalReviewContextFingerprint": "sha256:22423cffa823bde4691fff13c352acef2201d61815c3756e84076e2cedc81c1a",
+    "finalText": {
+      "titleDe": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
+      "titleEn": "Determine parameters of simple hyperbolas from graphs",
+      "descriptionDe": "Die lernende Person kann bei einem gegebenen Graphen einer Funktion der Form f(x) = a/(x - d) + e mit a ≠ 0 die Parameter d und e aus den Asymptoten sowie a mithilfe eines weiteren Graphenpunkts bestimmen und den rekonstruierten Funktionsterm am Graphen prüfen.",
+      "descriptionEn": "Given the graph of a function of the form f(x) = a/(x - d) + e with a ≠ 0, the learner can determine d and e from the asymptotes, determine a using one additional point on the graph, and check the reconstructed function expression against the graph."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-a",
+      "campaignDigest": "sha256:e5f6b38cb7ce9b5d67a878960a92f1e8b66930362c75413ff518b4aa35f8623a",
+      "roundId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:aa2b8a2f16dd316cef759db5215f7cd75a9c13245f1db5bf103ab02aa9f39210",
+      "goalReviewContextFingerprint": "sha256:22423cffa823bde4691fff13c352acef2201d61815c3756e84076e2cedc81c1a",
+      "batchId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-a.batch-001",
+      "runId": "mathematik-b025c-20260902-round-a-batch-001-openai-gpt-5-run-001",
+      "runManifestDigest": "sha256:2812315997a06b4fca05c87fd5013b4cbb041f212503e42a6c45a72e237ffe52",
+      "resultsDigest": "sha256:03f5811df242f8cd84854a1d493dd61ae16b1eefb3311536640f83a9bcdff060",
+      "recordId": "mathematik-b025c-20260902-round-a-3f1a97d2-record-001",
+      "recordDigest": "sha256:8527f995bd70c9981963285bc1066fd0a90146052bee761f52f3dccabc47f3a4"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-b",
+      "campaignDigest": "sha256:7cbd865c1d8e7cf14b6157a6da85b7250eff669d18a8c82445f1c14e1b88a422",
+      "roundId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:aa2b8a2f16dd316cef759db5215f7cd75a9c13245f1db5bf103ab02aa9f39210",
+      "goalReviewContextFingerprint": "sha256:22423cffa823bde4691fff13c352acef2201d61815c3756e84076e2cedc81c1a",
+      "batchId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-b.batch-001",
+      "runId": "mathematik-b025c-round-b-openai-gpt5-20260902-run-001",
+      "runManifestDigest": "sha256:ff0dda23c735dd740949e14f1a4b7cc116a73d5ff1815e7c443657f49ab76ab2",
+      "resultsDigest": "sha256:dbf919808502819570b94145f44149bf34dc3983d26ce113ad5066cd6e55823c",
+      "recordId": "mathematik-b025c-round-b-openai-gpt5-20260902-run-001.goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "recordDigest": "sha256:4e449bdad8cad0cd2e2a3fdbb3f8febc2ad381c9ff05b9ff72e967fb6755da2c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:e7583dc9b065a29e6523efb313f5bd384d60e795cf9080ac7d15d8ab133d14b5"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.final-current-keep-1-v1.json",
+    "manifestId": "mathematik-b025c-3f1a97d2-final-keep-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:655808cdb022d1006b404bcc7fe0775f3f4ed736db1aff04082517aba5a28238",
+    "manifestFingerprint": "sha256:cca1631d55ed1983d2ec33da2c6fc4dd9b56709de96a109b2ffaf285da9546db",
+    "decisionId": "mathematik-b025c-3f1a97d2-final-keep-synthesis-openai-codex-20260902-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b025c-3f1a97d2-final-keep-synthesis-openai-codex-20260902-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B025c 3f1a97d2 deterministic final KEEP synthesis candidate",
+    "synthesizedAt": "2026-09-02T11:50:20.550Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle zweisprachige Beschreibung unverändert mit KEEP und verlangen ein positives Understanding-Evidence-Profil. Für die Evidenz wird Runde B gewählt: Sie bindet die eindeutige Bestimmung des verbleibenden Parameters ausdrücklich an a = (y_0 - e)(x_0 - d), verlangt die selbstständige Zuordnung beider Asymptoten und prüft den Transfer bei veränderter Verschiebung, Achsenskalierung und Astlage zusätzlich an einem zweiten, nicht zur Bestimmung von a verwendeten Graphenpunkt. Runde A bleibt vollständig als unabhängige Bestätigung gebunden und ergänzt die Deutung von Vorzeichen und Betrag von a.",
+    "rationaleEn": "Both independent blind reviews confirm the current bilingual description unchanged with KEEP and require a positive understanding-evidence profile. Round B is selected for the evidence: it explicitly binds the unique determination of the remaining parameter to a = (y_0 - e)(x_0 - d), requires independent assignment of both asymptotes, and tests transfer under changed translation, axis scale, and branch positions at an additional graph point not used to determine a. Round A remains fully bound as an independent confirmation and adds the interpretation of the sign and magnitude of a.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass bei f(x) = a/(x - d) + e die senkrechte Asymptote x = d und die waagerechte Asymptote y = e die Verschiebung festlegen und dass ein weiterer Graphenpunkt (x_0 | y_0) mit x_0 ≠ d über a = (y_0 - e)(x_0 - d) den verbleibenden Parameter eindeutig bestimmt.",
+      "essentialUnderstandingEn": "The learner understands that for f(x) = a/(x - d) + e, the vertical asymptote x = d and the horizontal asymptote y = e determine the translation, and that an additional point (x_0, y_0) on the graph with x_0 ≠ d uniquely determines the remaining parameter through a = (y_0 - e)(x_0 - d).",
+      "observablePerformanceDe": "Die lernende Person liest an einem vorgelegten Graphen beide Asymptoten und einen weiteren Punkt selbstständig ab, ordnet d und e korrekt zu, berechnet a, gibt den vollständigen Funktionsterm an und begründet die Rückprüfung anhand von Asymptoten, Punkt und Astlage.",
+      "observablePerformanceEn": "Given a graph, the learner independently reads off both asymptotes and one additional point, assigns d and e correctly, calculates a, states the complete function expression, and justifies the check using the asymptotes, the point, and the positions of the branches.",
+      "transferExpectationDe": "Bei einem unabhängig vorgelegten Graphen mit anders verschobenen Asymptoten, veränderter Achsenskalierung und gegenüber dem Ausgangsfall umgekehrter Astlage rekonstruiert die lernende Person den Term mit demselben Zusammenhang und prüft ihn zusätzlich an einem zweiten Graphenpunkt, der nicht zur Bestimmung von a verwendet wurde.",
+      "transferExpectationEn": "For an independently presented graph with differently shifted asymptotes, a changed axis scale, and branch positions corresponding to the opposite sign of a from the initial case, the learner reconstructs the expression using the same relationship and additionally checks it at a second graph point that was not used to determine a."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f64956f6457d405c0aab317263a427c7d18543777d6528705523f3bc39e90fc4",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:006cc13a91ce59d8df5d4a7815a16d2c738a6c7c20a14abf1c63511694399940"
+}

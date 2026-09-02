@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b029-j8-interest-spreadsheet-parameters-current-v1",
+  "reviewedAt": "2026-09-02T18:59:02.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-029-positive-understanding-candidate-author-2026-09-02",
+  "goals": [
+    {
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "reason": "DE: Das Profil macht den Zinssatz als relative Änderung je Zinsperiode und als einzigen zu variierenden Parameter eines periodischen Finanzmodells sichtbar. Es verlangt eine selbst erstellte Tabellenstruktur, systematisches Eingrenzen durch benachbarte Versuchswerte sowie eine Prüfung von Zielabweichung, Einheit und Plausibilität. Zwei unabhängige Fälle wechseln von einem wachsenden Guthaben ohne Zahlungen zu einer Restschuld mit festen Tilgungszahlungen und veränderter Vorzeichen- und Buchungslogik; die gebundene Visualisierung bleibt Lernhilfe und ist keine Antwortvorlage. EN: The profile makes the interest rate visible as a relative change per interest period and as the sole parameter varied in a periodic financial model. It requires a learner-built spreadsheet structure, systematic bracketing with neighbouring trial values, and checks of target deviation, unit, and plausibility. Two independent cases vary from a growing balance without payments to a remaining debt with fixed repayments and changed sign and transaction-order logic; the bound visualization remains learning support rather than an answer template.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "interest-rate-in-periodic-balance-model",
+            "essentialUnderstandingDe": "Ein Zinssatz beschreibt eine relative Veränderung je festgelegter Zinsperiode. In einem periodischen Finanzmodell wird der Zinsbetrag aus dem jeweils maßgeblichen Bestand berechnet; zusammen mit gegebenen Ein- oder Auszahlungen und deren Buchungszeitpunkt bestimmt er den Bestand der nächsten Periode. Prozentangabe, Dezimalfaktor und Periodenbezug müssen zueinander passen.",
+            "essentialUnderstandingEn": "An interest rate describes a relative change per specified interest period. In a periodic financial model, the interest amount is calculated from the balance relevant at that point; together with any given deposits or payments and their timing, it determines the next period's balance. The percentage, decimal factor, and period reference must be consistent.",
+            "observablePerformanceDe": "Die lernende Person übersetzt eine neue einfache Finanzsituation selbstständig in eine Tabellenkalkulation mit sinnvoll beschrifteten Spalten für Periode, Bestand, Zinsen und gegebenenfalls Zahlungen. Sie verwendet konsistente Zellbezüge und Vorzeichen, kennzeichnet den Zinssatz als gesuchte Größe und erklärt, warum seine Änderung alle nachfolgenden Bestände beeinflusst.",
+            "observablePerformanceEn": "The learner independently translates a new simple financial situation into a spreadsheet with meaningfully labelled columns for period, balance, interest, and, where applicable, payments. The learner uses consistent cell references and signs, identifies the interest rate as the unknown quantity, and explains why changing it affects every subsequent balance."
+          },
+          {
+            "id": "systematic-rate-estimation-and-context-check",
+            "essentialUnderstandingDe": "Wenn Anfangsbestand, Laufzeit, Zahlungen und Zielbestand festgehalten werden, verändert der Zinssatz den berechneten Verlauf systematisch. Eine tabellarische Näherung wird begründet, indem benachbarte Versuchszinssätze den Zielwert eingrenzen und die gewählte Genauigkeit zur Daten- und Kontextgenauigkeit passt.",
+            "essentialUnderstandingEn": "When the initial balance, duration, payments, and target balance are held fixed, the interest rate changes the calculated progression systematically. A spreadsheet estimate is justified by neighbouring trial rates that bracket the target value and by choosing a precision appropriate to the data and context.",
+            "observablePerformanceDe": "Die lernende Person variiert selbstständig nur den Zinssatz, ermittelt zwei benachbarte Versuchswerte mit Zielabweichungen auf unterschiedlichen Seiten oder begründet den nächstpassenden Wert, und gibt das Ergebnis als Prozent je Zinsperiode an. Sie prüft den vollständigen Kontoverlauf, die Abweichung vom Zielwert sowie Größenordnung und Plausibilität im Sachkontext.",
+            "observablePerformanceEn": "The learner independently varies only the interest rate, identifies two neighbouring trial values whose target deviations lie on opposite sides or justifies the closest admissible value, and reports the result as a percentage per interest period. The learner checks the complete balance progression, the deviation from the target, and the magnitude and plausibility in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "interest-rate-in-periodic-balance-model",
+            "systematic-rate-estimation-and-context-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "balance-direction-and-cash-flow",
+            "textDe": "Wachsendes Guthaben ohne regelmäßige Zahlung oder sinkende Restschuld mit fest vorgegebener Tilgungszahlung",
+            "textEn": "A growing balance without regular payments or a decreasing remaining debt with a fixed repayment"
+          },
+          {
+            "id": "transaction-order",
+            "textDe": "Reine Verzinsung eines Bestands oder Verzinsung mit einer ausdrücklich vor- beziehungsweise nachschüssigen Zahlung",
+            "textEn": "Interest applied to a balance alone or interest combined with an explicitly beginning-of-period or end-of-period payment"
+          },
+          {
+            "id": "target-and-precision",
+            "textDe": "Endguthaben oder Restschuld als Zielgröße sowie unterschiedlich begründete Genauigkeit des periodischen Zinssatzes",
+            "textEn": "A final balance or remaining debt as the target quantity and differing justified precision for the periodic interest rate"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "savings-balance-interest-rate",
+            "taskDemandDe": "Ein Guthaben von 2.000 € wird fünf Jahre ohne weitere Einzahlungen jeweils am Jahresende verzinst und beträgt danach 2.318,55 €. Erstelle eine Tabellenkalkulation, bestimme den jährlichen Zinssatz näherungsweise auf 0,1 Prozentpunkte und begründe das Ergebnis mithilfe benachbarter Versuchszinssätze und des Kontoverlaufs.",
+            "taskDemandEn": "A balance of €2,000 earns interest at the end of each year for five years without further deposits and is then worth €2,318.55. Build a spreadsheet, estimate the annual interest rate to 0.1 percentage points, and justify the result using neighbouring trial rates and the balance progression.",
+            "expectedPerformanceDe": "Die lernende Person bildet den Bestand periodisch mit Anfangsbestand mal 1 plus Dezimalzinssatz fort, variiert ausschließlich diesen Zinssatz und erhält etwa 3,0 % pro Jahr. Sie zeigt beispielsweise, dass 2,9 % zu rund 2.307,31 €, 3,0 % zu rund 2.318,55 € und 3,1 % zu rund 2.329,83 € führen, und prüft damit Zielnähe, Einheit und plausible Wachstumsrichtung.",
+            "expectedPerformanceEn": "The learner updates the balance period by period by multiplying the opening balance by one plus the decimal interest rate, varies only that rate, and obtains about 3.0% per year. For example, the learner shows that 2.9% gives about €2,307.31, 3.0% about €2,318.55, and 3.1% about €2,329.83, thereby checking closeness to the target, the unit, and the plausible direction of growth.",
+            "understandingFocusDe": "Der direkte Fall prüft den periodischen Prozentfaktor, konsistente Tabellenbezüge und die begründete Eingrenzung eines unbekannten Zinssatzes bei sonst festen Größen.",
+            "understandingFocusEn": "The direct case tests the periodic percentage factor, consistent spreadsheet references, and justified bracketing of an unknown interest rate while all other quantities remain fixed."
+          },
+          {
+            "id": "remaining-debt-interest-rate-transfer",
+            "taskDemandDe": "Eine Restschuld von 5.000 € wird zuerst jährlich verzinst; anschließend werden am Ende jedes Jahres 1.000 € gezahlt. Nach vier Jahren beträgt die Restschuld 1.602,83 €. Bestimme mit einer neu aufgebauten Tabelle den jährlichen Zinssatz näherungsweise auf 0,1 Prozentpunkte und erkläre die Vorzeichen- und Buchungsreihenfolge.",
+            "taskDemandEn": "A remaining debt of €5,000 first accrues annual interest, after which €1,000 is paid at the end of each year. After four years the remaining debt is €1,602.83. Use a newly constructed spreadsheet to estimate the annual interest rate to 0.1 percentage points and explain the signs and transaction order.",
+            "expectedPerformanceDe": "Die lernende Person verwendet die Aktualisierung neuer Bestand gleich alter Bestand mal 1 plus Dezimalzinssatz minus 1.000 € und erhält etwa 4,0 % pro Jahr. Die Vergleichswerte von rund 1.586,68 € bei 3,9 % und 1.619,03 € bei 4,1 % grenzen das Ergebnis ein; der vollständige Verlauf bestätigt, dass höhere Zinsen bei gleicher Zahlung eine höhere Restschuld erzeugen.",
+            "expectedPerformanceEn": "The learner uses the update rule new balance equals old balance times one plus the decimal interest rate minus €1,000 and obtains about 4.0% per year. Comparison values of about €1,586.68 at 3.9% and €1,619.03 at 4.1% bracket the result; the complete progression confirms that a higher interest rate produces a higher remaining debt when the payment is fixed.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft denselben unbekannten Parameter in einem abnehmenden Schuldenmodell mit festem Geldabfluss und ausdrücklicher Buchungsreihenfolge.",
+            "understandingFocusEn": "The independent transfer tests the same unknown parameter in a decreasing debt model with a fixed cash outflow and an explicit transaction order."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "reason": "DE: Das Profil fasst Laufzeit als erste ganze Zins- oder Zahlungsperiode, in der eine kontextgebundene Zielbedingung erfüllt ist. Es verlangt eine selbstständig fortgesetzte Tabelle, den Vergleich mit der unmittelbar vorherigen Periode und eine korrekte Zeitdeutung. Zwei unabhängige Fälle wechseln von einem wachsenden Guthaben mit Mindestziel zu einer sinkenden Restschuld mit Höchstziel und monatlichen Zahlungen. EN: The profile treats duration as the first whole interest or payment period in which a contextual target condition is met. It requires an independently extended spreadsheet, comparison with the immediately preceding period, and correct interpretation of time. Two independent cases vary from a growing balance with a minimum target to a decreasing remaining debt with a maximum target and monthly payments.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "duration-as-first-target-period",
+            "essentialUnderstandingDe": "Die Laufzeit ist in diesem diskreten Finanzmodell die Anzahl der festgelegten Zins- oder Zahlungsperioden bis die Zielbedingung erstmals erfüllt ist. Die Startzeile beschreibt den Zeitpunkt null; deshalb unterscheiden sich Zeilennummer, Anzahl der Aktualisierungsschritte und verstrichene Zeit. Bei einem Mindest- oder Höchstziel belegt die unmittelbar vorherige Periode, dass die gefundene ganze Periodenzahl minimal ist.",
+            "essentialUnderstandingEn": "In this discrete financial model, the term is the number of specified interest or payment periods until the target condition is met for the first time. The initial row represents time zero, so the row number, number of update steps, and elapsed time must be distinguished. For a minimum or maximum target, the immediately preceding period establishes that the identified whole number of periods is minimal.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einer neuen Tabelle den Anfangszeitpunkt als Periode null, identifiziert die erste Zeile, die das vorgegebene Guthaben- oder Restschuldziel erfüllt, vergleicht sie mit der vorherigen Zeile und deutet die Zahl der Aktualisierungsschritte in der im Kontext genannten Zeiteinheit.",
+            "observablePerformanceEn": "In a new spreadsheet, the learner labels the initial time as period zero, identifies the first row that meets the specified balance or remaining-debt target, compares it with the preceding row, and interprets the number of update steps in the time unit stated in the context."
+          },
+          {
+            "id": "construct-progression-and-check-term",
+            "essentialUnderstandingDe": "Bei gegebenem Anfangsbestand, Zinssatz und gegebenenfalls regelmäßiger Zahlung legt die periodische Aktualisierungsregel den gesamten Kontoverlauf fest. Zinsperiode, Zahlungsperiode, Buchungszeitpunkt und Zielrichtung müssen konsistent modelliert werden; Rundungen dürfen die erste Zielerreichung nicht unbemerkt um eine Periode verschieben.",
+            "essentialUnderstandingEn": "Given an initial balance, an interest rate, and, where applicable, a regular payment, the periodic update rule determines the complete balance progression. The interest period, payment period, transaction timing, and target direction must be modelled consistently; rounding must not silently shift the first attainment of the target by one period.",
+            "observablePerformanceDe": "Die lernende Person erstellt die Aktualisierungsregel mit passenden Zellbezügen und Vorzeichen, setzt die Tabelle bis über die Zielgrenze fort und prüft die gefundene Laufzeit anhand des unverfrüht gerundeten Verlaufs. Sie begründet, warum die Zielbedingung in keiner früheren Periode erfüllt ist und ob das Ergebnis als Jahre, Monate oder andere Perioden zu berichten ist.",
+            "observablePerformanceEn": "The learner constructs the update rule with appropriate cell references and signs, extends the spreadsheet beyond the target boundary, and checks the identified duration against the progression before premature rounding. The learner explains why the target condition is not met in any earlier period and whether the result should be reported as years, months, or another period unit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "duration-as-first-target-period",
+            "construct-progression-and-check-term"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-direction",
+            "textDe": "Erstes Erreichen oder Überschreiten eines Sparziels gegenüber erstem Erreichen oder Unterschreiten einer Zielrestschuld",
+            "textEn": "First reaching or exceeding a savings target versus first reaching or falling below a target remaining debt"
+          },
+          {
+            "id": "period-and-cash-flow-structure",
+            "textDe": "Jährliche reine Verzinsung oder monatliche Verzinsung mit einer festen Zahlung am Periodenende",
+            "textEn": "Annual interest without payments or monthly interest with a fixed payment at the end of each period"
+          },
+          {
+            "id": "time-interpretation",
+            "textDe": "Zinsperioden, Zahlungsperioden und daraus folgende Kalenderzeiteinheit bei ausdrücklich festgelegtem Startzeitpunkt",
+            "textEn": "Interest periods, payment periods, and the resulting calendar-time unit with an explicitly specified initial time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "savings-target-first-interest-period",
+            "taskDemandDe": "Ein Guthaben von 1.000 € wird ohne weitere Einzahlungen jährlich mit 5 % verzinst. Bestimme mit einer Tabellenkalkulation, nach wie vielen vollständigen Zinsperioden erstmals mindestens 1.200 € vorhanden sind. Weise mit der vorherigen Tabellenzeile nach, dass die Laufzeit nicht kürzer ist, und deute die Periodenzahl als Zeit.",
+            "taskDemandEn": "A balance of €1,000 earns 5% annual interest without further deposits. Use a spreadsheet to determine after how many complete interest periods the balance first reaches at least €1,200. Use the preceding row to show that the duration is not shorter, and interpret the period count as time.",
+            "expectedPerformanceDe": "Die lernende Person beginnt mit Periode 0 bei 1.000 € und setzt den Bestand mit dem Faktor 1,05 fort. Nach drei Perioden stehen rund 1.157,63 € und nach vier Perioden rund 1.215,51 € in der Tabelle; damit wird das Ziel erstmals nach vier Zinsperioden beziehungsweise vier Jahren erreicht.",
+            "expectedPerformanceEn": "The learner begins with period 0 at €1,000 and updates the balance using the factor 1.05. The spreadsheet shows about €1,157.63 after three periods and about €1,215.51 after four, so the target is first reached after four interest periods, or four years.",
+            "understandingFocusDe": "Der direkte Fall prüft Startzeile, diskrete Periodenzählung, erste Zielüberschreitung und die zeitliche Interpretation ohne regelmäßige Zahlungen.",
+            "understandingFocusEn": "The direct case tests the initial row, discrete period counting, first crossing of a target, and interpretation as elapsed time without regular payments."
+          },
+          {
+            "id": "debt-target-payment-period-transfer",
+            "taskDemandDe": "Eine Restschuld von 3.000 € wird zu Beginn jedes Monats mit 1 % auf den bisherigen Bestand verzinst; danach werden am Monatsende 500 € gezahlt. Bestimme mit einer neuen Tabelle die erste Zahlungsperiode, nach der die Restschuld höchstens 1.800 € beträgt, und prüfe die vorherige Periode sowie die Buchungsreihenfolge.",
+            "taskDemandEn": "A remaining debt of €3,000 accrues 1% interest on the existing balance at the start of each month, after which €500 is paid at the end of the month. Use a new spreadsheet to determine the first payment period after which the remaining debt is at most €1,800, and check the preceding period and the transaction order.",
+            "expectedPerformanceDe": "Die lernende Person verwendet je Monat neuer Bestand gleich alter Bestand mal 1,01 minus 500 €. Die Restschuld beträgt nach einer Periode 2.530,00 €, nach zwei Perioden 2.055,30 € und nach drei Perioden rund 1.575,85 €. Da die zweite Periode das Ziel noch nicht erfüllt, beträgt die gesuchte Laufzeit drei Zahlungsperioden beziehungsweise drei Monate.",
+            "expectedPerformanceEn": "For each month, the learner uses new balance equals old balance times 1.01 minus €500. The remaining debt is €2,530.00 after one period, €2,055.30 after two, and about €1,575.85 after three. Because the second period does not yet meet the target, the required duration is three payment periods, or three months.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft die Laufzeit in einem abnehmenden Modell mit Höchstziel, monatlicher Zahlungsperiode und ausdrücklicher Zins-vor-Zahlung-Reihenfolge.",
+            "understandingFocusEn": "The independent transfer tests duration in a decreasing model with a maximum target, monthly payment periods, and an explicit interest-before-payment order."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "reason": "DE: Das Profil bindet den gesuchten Tilgungsbetrag beziehungsweise Sparbeitrag als regelmäßigen Geldbetrag in eine periodische Restschuld- oder Guthabenentwicklung ein und grenzt ihn vom prozentualen Zinssatz ab. Es verlangt eine systematische tabellarische Näherung bei festem Finanzziel sowie eine Prüfung des gesamten Verlaufs. Zwei unabhängige Fälle wechseln von nachschüssigem Sparen zu nachschüssiger Schuldentilgung; die gebundene Visualisierung bleibt Lernhilfe und ist keine Antwortvorlage. EN: The profile embeds the unknown repayment amount or savings contribution as a regular monetary amount in a periodic remaining-debt or balance progression and distinguishes it from the percentage interest rate. It requires systematic spreadsheet estimation for a fixed financial target and a check of the complete progression. Two independent cases vary from end-of-period saving to end-of-period debt repayment; the bound visualization remains learning support rather than an answer template.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "regular-payment-in-periodic-balance-model",
+            "essentialUnderstandingDe": "Ein regelmäßiger Tilgungsbetrag oder Sparbeitrag ist ein Geldbetrag je Zahlungsperiode und kein prozentualer Zinssatz. Im periodischen Modell erhöht ein Sparbeitrag das Guthaben, während ein Tilgungsbetrag die Restschuld vermindert; zusammen mit dem Zinsbetrag und dem Buchungszeitpunkt bestimmt dieser feste Geldfluss den nächsten Bestand.",
+            "essentialUnderstandingEn": "A regular repayment amount or savings contribution is a monetary amount per payment period, not a percentage interest rate. In the periodic model, a savings contribution increases the balance whereas a repayment amount reduces the remaining debt; together with the interest amount and transaction timing, this fixed cash flow determines the next balance.",
+            "observablePerformanceDe": "Die lernende Person übersetzt eine neue Spar- oder Tilgungssituation selbstständig in eine Tabellenkalkulation, beschriftet Bestände, Zinsen und Zahlungen mit passenden Einheiten und verwendet den gesuchten regelmäßigen Geldbetrag mit sachgerechtem Vorzeichen und Buchungszeitpunkt in jeder Periode.",
+            "observablePerformanceEn": "The learner independently translates a new savings or repayment situation into a spreadsheet, labels balances, interest, and payments with appropriate units, and uses the unknown regular monetary amount in every period with the sign and transaction timing appropriate to the context."
+          },
+          {
+            "id": "systematic-payment-estimation-and-progression-check",
+            "essentialUnderstandingDe": "Bei festem Anfangsbestand, Zinssatz, Laufzeit und Finanzziel verändert die Höhe der regelmäßigen Zahlung den Endbestand systematisch. Eine tragfähige Näherung entsteht durch gezieltes Variieren dieses einen Geldbetrags, Eingrenzen des Zielwerts und eine zum Kontext passende Rundung; der gesamte Restschuld- oder Guthabenverlauf muss dabei sachlich plausibel bleiben.",
+            "essentialUnderstandingEn": "With the initial balance, interest rate, duration, and financial target fixed, the size of the regular payment changes the final balance systematically. A defensible estimate is obtained by deliberately varying this one monetary amount, bracketing the target, and rounding appropriately for the context; the complete remaining-debt or savings progression must remain plausible.",
+            "observablePerformanceDe": "Die lernende Person hält alle gegebenen Größen fest, variiert selbstständig nur den Tilgungsbetrag oder Sparbeitrag und vergleicht benachbarte Zahlungswerte anhand ihrer Zielabweichung. Sie gibt den Betrag in Euro je Zahlungsperiode an und prüft Endwert, Zwischenbestände, Zahlungsrichtung und Rundungsentscheidung im Sachkontext.",
+            "observablePerformanceEn": "The learner holds all given quantities fixed, independently varies only the repayment amount or savings contribution, and compares neighbouring payment values through their deviations from the target. The learner reports the amount in euros per payment period and checks the final value, intermediate balances, payment direction, and rounding decision in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "regular-payment-in-periodic-balance-model",
+            "systematic-payment-estimation-and-progression-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "payment-purpose-and-sign",
+            "textDe": "Regelmäßiger Sparbeitrag als Zufluss oder regelmäßiger Tilgungsbetrag als Abfluss aus dem Schuldenbestand",
+            "textEn": "A regular savings contribution as an inflow or a regular repayment amount as an outflow from the debt balance"
+          },
+          {
+            "id": "payment-timing",
+            "textDe": "Zahlung zu Beginn oder am Ende einer Periode mit entsprechend unterschiedlicher verzinster Basis",
+            "textEn": "Payment at the beginning or end of a period, producing a correspondingly different interest-bearing balance"
+          },
+          {
+            "id": "financial-target-and-rounding",
+            "textDe": "Vorgegebenes Endguthaben oder vorgegebene Zielrestschuld sowie Rundung auf ganze Euro oder Cent",
+            "textEn": "A specified final savings balance or target remaining debt and rounding to whole euros or cents"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "regular-savings-contribution",
+            "taskDemandDe": "Zu einem Anfangsguthaben von 1.000 € werden drei Jahre lang jeweils am Jahresende gleiche Sparbeiträge eingezahlt; zuvor wird der vorhandene Bestand mit 2 % pro Jahr verzinst. Das Zielguthaben beträgt 2.438,39 €. Erstelle eine Tabelle, bestimme den jährlichen Sparbeitrag näherungsweise auf ganze Euro und prüfe den Guthabenverlauf.",
+            "taskDemandEn": "Equal savings contributions are deposited at the end of each year for three years into an initial balance of €1,000; before each deposit, the existing balance earns 2% annual interest. The target balance is €2,438.39. Build a spreadsheet, estimate the annual savings contribution to the nearest euro, and check the balance progression.",
+            "expectedPerformanceDe": "Die lernende Person verwendet neuer Bestand gleich alter Bestand mal 1,02 plus Sparbeitrag und variiert nur diesen Beitrag. Mit 450 € ergeben sich nacheinander 1.470,00 €, 1.949,40 € und 2.438,39 €; 449 € führen zu rund 2.435,33 € und 451 € zu rund 2.441,45 €. Sie begründet damit 450 € je Jahr und die positive Zahlungsrichtung.",
+            "expectedPerformanceEn": "The learner uses new balance equals old balance times 1.02 plus the savings contribution and varies only that contribution. A contribution of €450 produces successive balances of €1,470.00, €1,949.40, and €2,438.39; €449 gives about €2,435.33 and €451 about €2,441.45. The learner thereby justifies €450 per year and the positive payment direction.",
+            "understandingFocusDe": "Der direkte Fall prüft den regelmäßigen Geldzufluss nach der Verzinsung, die systematische Variation genau dieses Betrags und die Kontrolle aller Zwischenbestände.",
+            "understandingFocusEn": "The direct case tests a regular cash inflow after interest is applied, systematic variation of that amount alone, and checking of every intermediate balance."
+          },
+          {
+            "id": "regular-repayment-amount-transfer",
+            "taskDemandDe": "Eine Restschuld von 5.000 € wird vier Jahre lang zunächst mit 4 % pro Jahr verzinst; am Jahresende wird jeweils derselbe Betrag gezahlt. Nach der vierten Zahlung soll die Restschuld möglichst nahe bei 1.200 € liegen. Bestimme den jährlichen Tilgungsbetrag mit einer neu aufgebauten Tabelle näherungsweise auf Cent und prüfe den gesamten Restschuldverlauf.",
+            "taskDemandEn": "A remaining debt of €5,000 first accrues 4% annual interest in each of four years, after which the same amount is paid at year end. After the fourth payment, the remaining debt should be as close as possible to €1,200. Use a newly constructed spreadsheet to estimate the annual repayment amount to the nearest cent and check the complete debt progression.",
+            "expectedPerformanceDe": "Die lernende Person verwendet neuer Bestand gleich alter Bestand mal 1,04 minus Tilgungsbetrag, hält Zinssatz und vier Perioden fest und erhält etwa 1.094,86 € je Jahr. Dieser Betrag führt zu rund 1.200,01 € Restschuld; 1.094,85 € ergeben rund 1.200,05 € und 1.094,87 € rund 1.199,97 €. Sie deutet das Minuszeichen als Schuldenabbau und begründet die Cent-Näherung aus der Zielabweichung.",
+            "expectedPerformanceEn": "The learner uses new balance equals old balance times 1.04 minus the repayment amount, holds the interest rate and four periods fixed, and obtains about €1,094.86 per year. This amount gives a remaining debt of about €1,200.01; €1,094.85 gives about €1,200.05 and €1,094.87 about €1,199.97. The learner interprets the minus sign as debt reduction and justifies the cent-level estimate from the target deviation.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft denselben unbekannten regelmäßigen Geldbetrag als Schuldenabfluss, mit veränderter Zielrichtung, Vorzeichenlogik und Rundungsgenauigkeit.",
+            "understandingFocusEn": "The independent transfer tests the same unknown regular monetary amount as a cash outflow from debt, with a changed target direction, sign convention, and rounding precision."
+          }
+        ]
+      }
+    }
+  ]
+}

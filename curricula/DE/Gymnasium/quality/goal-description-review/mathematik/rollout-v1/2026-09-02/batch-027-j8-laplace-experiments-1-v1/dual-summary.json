@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:244faa1a1bacb25f8eb84d50019473a2f3c6ef90b727ba53ef4c528240b1d1c4",
+  "reviewInputFingerprint": "sha256:2798fab5320188c4408811953df0ac9860e1bf53dba4ca989c854e15550addb1",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-b027-round-a-codex-20260902-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-independent-b",
+      "runIds": [
+        "math-b027-j8-laplace-first-pass-b-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "firstRecordId": "mathematik-b027-round-a-laplace-experiments-001",
+      "secondRecordId": "math-b027-j8-laplace-first-pass-b-001-5ab17678",
+      "firstRunId": "mathematik-b027-round-a-codex-20260902-01",
+      "secondRunId": "math-b027-j8-laplace-first-pass-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

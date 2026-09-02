@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9ededefc481a30da9e2289cdb38a3942b837ab1a01c8a917651d72ba600d1959",
+  "reviewInputFingerprint": "sha256:c7eb33ed5f17db3b9a28bf3ce1096b88e59cd97b5752da3d66ff9e69ed6b7cf6",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b026-round-a-gpt-5.6-sol-high-fork-none"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-terra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRecordId": "physik-b026-a-sol-high:68c90ba6-c438-463c-9a53-cf61062d416a",
+      "secondRecordId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.68c90ba6-c438-463c-9a53-cf61062d416a",
+      "firstRunId": "physik-b026-round-a-gpt-5.6-sol-high-fork-none",
+      "secondRunId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "firstRecordId": "physik-b026-a-sol-high:ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "secondRecordId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "firstRunId": "physik-b026-round-a-gpt-5.6-sol-high-fork-none",
+      "secondRunId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "firstRecordId": "physik-b026-a-sol-high:e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "secondRecordId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "firstRunId": "physik-b026-round-a-gpt-5.6-sol-high-fork-none",
+      "secondRunId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

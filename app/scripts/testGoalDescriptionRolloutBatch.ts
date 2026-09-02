@@ -13,6 +13,7 @@ import {
 import {
   buildGoalDescriptionRolloutSubsetModel,
   loadGoalDescriptionRolloutBatchConfig,
+  loadGoalDescriptionRolloutInFlightLedger,
   selectGoalDescriptionRolloutCandidates,
 } from './materializeGoalDescriptionRolloutBatch'
 import {
@@ -414,8 +415,51 @@ try {
     () => loadGoalDescriptionRolloutBatchConfig(relative(repositoryRoot, invalidConfigPath)),
     /Invalid goal-description rollout batch config/u,
   )
+
+  const activeConfigPath = join(configDirectory, 'active.config.json')
+  const secondActiveConfigPath = join(configDirectory, 'second-active.config.json')
+  const validConfig = {
+    ...invalidConfig,
+    goalIds: ['goal-1'],
+  }
+  await writeFile(activeConfigPath, `${JSON.stringify(validConfig, null, 2)}\n`)
+  await writeFile(secondActiveConfigPath, `${JSON.stringify({
+    ...validConfig,
+    batchId: 'fixture-config-2',
+    bookId: 'fixture-config-book-2',
+  }, null, 2)}\n`)
+
+  const ledgerPath = join(configDirectory, 'in-flight-ledger.json')
+  const ledger = {
+    $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json',
+    schemaVersion: 1,
+    ledgerContract: 'goal-description-rollout-in-flight-ledger-v1',
+    activeBatchConfigPaths: [relative(repositoryRoot, activeConfigPath)],
+  }
+  await writeFile(ledgerPath, `${JSON.stringify(ledger, null, 2)}\n`)
+  const loadedLedger = await loadGoalDescriptionRolloutInFlightLedger(
+    relative(repositoryRoot, ledgerPath),
+  )
+  assert.deepEqual(
+    loadedLedger.activeBatches.map(({ config }) => config.goalIds),
+    [['goal-1']],
+    'The persistent ledger resolves and validates each active batch config.',
+  )
+
+  await writeFile(ledgerPath, `${JSON.stringify({
+    ...ledger,
+    activeBatchConfigPaths: [
+      relative(repositoryRoot, activeConfigPath),
+      relative(repositoryRoot, secondActiveConfigPath),
+    ],
+  }, null, 2)}\n`)
+  await assert.rejects(
+    () => loadGoalDescriptionRolloutInFlightLedger(relative(repositoryRoot, ledgerPath)),
+    /Duplicate active in-flight claim for goal-1/u,
+    'Distinct active batches must not claim the same goal in one subject/base binding.',
+  )
 } finally {
   await rm(configDirectory, { recursive: true, force: true })
 }
 
-console.log('Goal-description rollout batch self-test passed: exact subset bindings, topological fail-closed order, standalone denominator independence, group-local drift rejection, and deterministic selection.')
+console.log('Goal-description rollout batch self-test passed: exact subset bindings, topological fail-closed order, standalone denominator independence, group-local drift rejection, persistent in-flight claim validation, and deterministic selection.')

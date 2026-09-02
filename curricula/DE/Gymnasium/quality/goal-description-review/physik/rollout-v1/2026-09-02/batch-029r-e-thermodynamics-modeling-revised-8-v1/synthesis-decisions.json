@@ -1,0 +1,272 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B029r subject synthesis candidate",
+  "synthesizedAt": "2026-09-02T14:55:33.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902",
+    "batchManifestDigest": "sha256:3154337f07268f417c49a806595d362f940d0f5eea5beef7bcdad427875f0a89",
+    "configDigest": "sha256:b76a833eebc2786653071d461e02234e989fa177a626c70481755f663ba7566a",
+    "bundleFingerprint": "sha256:81950ef6bc43e1ed3e7f58a89bc1842ba57493e725504dd1e53221242b5b4dd7",
+    "bookDigest": "sha256:3d18cc91b9444418aece3f26eabf60b09d2afa653347699b395b968694bd3f5c",
+    "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+    "dualSummaryDigest": "sha256:2c5b81a7a8c3935f904309c8ec8562ee3d81424f4c8e557b8f6423990b47b9a3",
+    "canonicalLandscapeDigest": "sha256:388e26ea071727043ad5a1f95f955ddf25923e0b038634432ecfb1786628fc10"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-a",
+      "campaignDigest": "sha256:f0f34e8d1507c7aece8a6407ad5072798cbc1e8c63b2da6d783fafd4a8e18d3d",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b6dc898a8f03a9d78d03092937552f50f49806643ef799cae847a7bdbecc7c8c",
+      "runId": "openai-gpt-5.6-sol-physics-b029r-round-a-20260902",
+      "runManifestDigest": "sha256:4e9abd18d0b45e022a9c629fa1fcc1005189241950703cc06bd40a22c5cc2205",
+      "resultsDigest": "sha256:be51edcc8e9ce1c02de9a8defa26a5ae7507ac5c78820d080112e550eac95d29"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-b",
+      "campaignDigest": "sha256:671399d8c2ad1d1a3caf521b27d35bd592eca7d8d6584e7a81d62f213d724fa2",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:58518f85ccf4fad71739405a28c84d108f2eac3ca03ccdb6741f7edc890362ee",
+      "runId": "openai-gpt-5-physik-b029r-round-b-20260902",
+      "runManifestDigest": "sha256:b085440b9e8d1f9129f17b5d1e056b2f39406eeba51f4b0d2c5528c8e0afab2a",
+      "resultsDigest": "sha256:60ca8bd8a20dc2a293d42d1120af50aec90b73d1c55ef7616e1ae12bafaa59e3"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "cd1903a5-d70a-5320-9124-b6b24917ba14",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:444201e7a166a2d4cee738a76b8ef9ddba6376f2a25773885f99aca4ab21f799",
+      "pageFingerprint": "sha256:9662c635dae423cb14ba0985037eb3e5e5c4c930c658f99b7581565a32f23300",
+      "goalReviewContextFingerprint": "sha256:64b39fe440ae9f350ec3a96031f47db61080784aba885cbe4cc6e4acffec5f46",
+      "finalText": {
+        "titleDe": "Zustandsgrößen und ideales Gasgesetz anwenden",
+        "titleEn": "Apply State Variables and Ideal Gas Law",
+        "descriptionDe": "Die lernende Person kann für ein ideales Gas Druck p, Volumen V, absolute Temperatur T und Stoffmenge n in SI-Einheiten verwenden, ihren Zusammenhang pV = nRT erklären, eine fehlende Zustandsgröße bestimmen und das Ergebnis anhand der Einheit und der erwarteten Größenordnung auf Plausibilität prüfen.",
+        "descriptionEn": "For an ideal gas, the learner can use pressure p, volume V, absolute temperature T, and amount of substance n in SI units, explain their relationship pV = nRT, determine a missing state variable, and check the result for plausibility using its unit and expected order of magnitude."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-cd1903a5",
+          "recordDigest": "sha256:70d19af4d8754041e3381524e3c0fb48673fb943a1b8ad8a59b4f140bef447fa"
+        },
+        "second": {
+          "recordId": "physik-b029r-cd1903a5-round-b-20260902",
+          "recordDigest": "sha256:ce35ced6fa5d128cd7e4e548b08eca8c7b6b85894213cbc9cd18281e71f197c4"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den präzisierten bilingualen Zieltext mit KEEP. Er bindet das ideale Gasmodell, absolute Temperatur und SI-Einheiten an Erklärung, Bestimmung einer fehlenden Zustandsgröße und eine Kontrolle über Einheit und Größenordnung, ohne die Zustandsbeziehung als Prozessursache misszuverstehen. Runde B wird für die Understanding Evidence gewählt, weil sie ideales Gasmodell, Gleichgewichtszustand und konsistente Einheiten ausdrücklich verbindet und im Transfer eine strukturell veränderte Versuchsanordnung statt bloßer Formeleinsetzung verlangt; Runde A bleibt vollständig als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the refined bilingual goal text with KEEP. It links the ideal-gas model, absolute temperature, and SI units to explanation, determination of a missing state variable, and checks using units and order of magnitude without mistaking the state relation for a process cause. Round B is selected for the understanding evidence because it explicitly connects the ideal-gas model, equilibrium state, and consistent units and requires transfer to a structurally changed setup rather than mere formula substitution; Round A remains fully bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:87b9ef3c1c46797bd4fb3b593ad2b5314d2557d94978734ade88243c8ad5c4d0",
+      "pageFingerprint": "sha256:650bff899507ef0e1bd4f0809eaa46b769993df58d33f66d960fb5560e88510a",
+      "goalReviewContextFingerprint": "sha256:73925fdb15fe3337be88d7ea0d31bcf39acba6c5a62503891957fd0fb84b3f1c",
+      "finalText": {
+        "titleDe": "Isochore, isobare und isotherme Zustandsänderungen berechnen",
+        "titleEn": "Calculate Isochoric, Isobaric, and Isothermal State Changes",
+        "descriptionDe": "Die lernende Person kann isochore (V konstant), isobare (p konstant) und isotherme (T konstant) Zustandsänderungen einer festen Stoffmenge eines idealen Gases anhand der jeweils konstanten Zustandsgröße unterscheiden, den passenden Zusammenhang der übrigen Größen begründen und damit fehlende Größen bestimmen.",
+        "descriptionEn": "The learner can distinguish isochoric (constant V), isobaric (constant p), and isothermal (constant T) changes of a fixed amount of ideal gas by the state variable held constant, justify the corresponding relationship between the remaining variables, and use it to determine missing quantities."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-fb73c94b",
+          "recordDigest": "sha256:3e397a5f41dc11b4fed3319abfcee20dfcb8d60764e3cfa11b3dacc28164474f"
+        },
+        "second": {
+          "recordId": "physik-b029r-fb73c94b-round-b-20260902",
+          "recordDigest": "sha256:cac9ee78f7cf6f1cb5102fa3aaf5b9fa435897091db3761d3ee565e549c5df7d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass die drei Prozessarten über ihre jeweils konstante Zustandsgröße bei fester Stoffmenge definiert und die Beziehungen der übrigen Größen aus dem idealen Gasgesetz begründet werden. Unterscheiden, Herleiten und Bestimmen bilden dabei eine zusammenhängende Kompetenz. Runde A liefert die stärkere Understanding Evidence, weil sie verbale Beschreibung, Tabelle und Diagramm sowie direkte und umgekehrte Änderungsrichtung ausdrücklich variiert; Runde B bleibt als vollständige unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP that the three process types are defined by the state variable held constant for a fixed amount of gas and that the relationships among the remaining variables are justified from the ideal-gas law. Distinguishing, deriving, and determining form one coherent competency. Round A provides the stronger understanding evidence because it explicitly varies verbal descriptions, tables, diagrams, and direct versus reversed change; Round B remains fully bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-003",
+      "goalId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4320453e4068b63bd9894a20ae3fde7725c301eb3d81498fb1fe88372e08d5e4",
+      "pageFingerprint": "sha256:77bea0192e97bc5321121e4d3ea8ddef7b410f9fcffe2d494f4f419014c02b26",
+      "goalReviewContextFingerprint": "sha256:67eeb2dc80d9829be687d3c8c3012e00bfc424e11602ed6ed8409d94684f2477",
+      "finalText": {
+        "titleDe": "Adiabatische Zustandsänderungen",
+        "titleEn": "Adiabatic Processes",
+        "descriptionDe": "Die lernende Person kann adiabatische Zustandsänderungen eines idealen Gases als Prozesse ohne Wärmeaustausch über die Systemgrenze beschreiben, qualitativ erklären, wie Arbeit bei Kompression oder Expansion die innere Energie und Temperatur verändert, sowie idealisierte quasistatische Verläufe im p-V-Diagramm skizzieren und von isothermen Zustandsänderungen abgrenzen.",
+        "descriptionEn": "The learner can describe adiabatic changes of an ideal gas as processes with no heat transfer across the system boundary, explain qualitatively how work during compression or expansion changes internal energy and temperature, and sketch idealized quasistatic paths in a p-V diagram and distinguish them from isothermal changes."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-7fe3022f",
+          "recordDigest": "sha256:f640c4bace4444556a62a0ec0f7c4824db8181a0a8764ca7e45f3171c8d73f57"
+        },
+        "second": {
+          "recordId": "physik-b029r-7fe3022f-round-b-20260902",
+          "recordDigest": "sha256:c74f06d9800e0384fe56adb84b6fab315497bc870b0d965302e48917d14e6178"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP die fachlich korrekte Kette aus adiabatischer Systemgrenze, fehlendem Wärmeaustausch, Arbeitsübertragung, Änderung von innerer Energie und Temperatur sowie dem idealisierten quasistatischen p-V-Verlauf im Vergleich zur Isotherme. Runde B wird für die Understanding Evidence gewählt, weil sie Q = 0 ausdrücklich gegen konstante Temperatur abgrenzt, System und Prozessrichtung sichtbar macht und den Vergleich durch denselben Ausgangszustand präzisiert; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP the scientifically correct chain from an adiabatic system boundary and no heat transfer through work transfer and changes in internal energy and temperature to the idealized quasistatic p-V path relative to an isotherm. Round B is selected for the understanding evidence because it explicitly distinguishes Q = 0 from constant temperature, makes the system and process direction visible, and sharpens the comparison through the same initial state; Round A remains fully bound."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-004",
+      "goalId": "7982cd8e-2151-59e7-858d-c1361c5d249e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:297b5f72e833788b59dde258f29b6eb053c370e8be340c50b537789aa05b32d2",
+      "pageFingerprint": "sha256:97e4e35f7653c27c63fcf22b4abf3bd748e45903de593d1c62bd349d9e383a87",
+      "goalReviewContextFingerprint": "sha256:7307e7588d84d12c2e8fd3bf8f975b300fbed77708e9faee93ea8a715c2943a8",
+      "finalText": {
+        "titleDe": "Prozessarbeit bei Volumenänderungen bestimmen",
+        "titleEn": "Determine Process Work for Volume Changes",
+        "descriptionDe": "Die lernende Person kann die Prozessarbeit bei Volumenänderungen in einfachen Fällen, insbesondere bei isobaren Prozessen, mit einer ausgewiesenen Vorzeichenkonvention berechnen, im p-V-Diagramm als vorzeichenbehaftete Fläche unter dem Prozessweg deuten und das Vorzeichen aus der Prozessrichtung begründen.",
+        "descriptionEn": "The learner can calculate process work for volume changes in simple cases, especially isobaric processes, using an explicit sign convention, interpret it in a p-V diagram as the signed area under the process path, and justify its sign from the process direction."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-7982cd8e",
+          "recordDigest": "sha256:d5dbf0f6645e77fccbb1d6193b98c5ab4247d6364510ba2534a6799d87338b5d"
+        },
+        "second": {
+          "recordId": "physik-b029r-7982cd8e-round-b-20260902",
+          "recordDigest": "sha256:0ed12e44d13d79271d5dd411108da53d39af9c7652bbd00bb2cc6c5e7f2782c8"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass der aktuelle Text die konventionsabhängige Vorzeichenfrage ausdrücklich löst, Rechnung und vorzeichenbehaftete p-V-Fläche verbindet und das Vorzeichen aus der Prozessrichtung begründen lässt. Runde B wird für die Understanding Evidence gewählt, weil sie Systemgrenze, Wegabhängigkeit, Pa·m³ = J, vorzeichenbehaftete Fläche und den Vergleich verschiedener Prozesswege besonders vollständig zu einer prüfbaren Evidenzkette verbindet; Runde A bleibt als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP that the current text explicitly resolves the convention-dependent sign, connects calculation with the signed p-V area, and requires the sign to be justified from process direction. Round B is selected for the understanding evidence because it most completely combines the system boundary, path dependence, Pa·m³ = J, signed area, and comparison of different process paths into one assessable evidence chain; Round A remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-005",
+      "goalId": "93ece389-78c5-5141-9ef1-c68bd558306e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:28425b6acab4b554d5f0414dd29dd8def28f76fdff2ee506d6c6d49e72a177ad",
+      "pageFingerprint": "sha256:bc650f1c7fa0859d128e6b62d58791daab70575e62be48413ea5ddd48fedd097",
+      "goalReviewContextFingerprint": "sha256:c65fec8b4a4fed945930432bb0b464ac07ea471cf3fc7a2aa97ae7e41a501b66",
+      "finalText": {
+        "titleDe": "Wärmemengen mit C_V und C_P berechnen",
+        "titleEn": "Calculate Heat Quantities with C_V and C_P",
+        "descriptionDe": "Die lernende Person kann bei isochoren beziehungsweise isobaren Prozessen die übertragene Wärmemenge mit Q = n·C_V·ΔT beziehungsweise Q = n·C_P·ΔT unter der Annahme näherungsweise konstanter molarer Wärmekapazitäten berechnen und erklären, warum die passende Wärmekapazität von der Prozessbedingung abhängt.",
+        "descriptionEn": "The learner can calculate the heat transferred in isochoric or isobaric processes using Q = n·C_V·ΔT or Q = n·C_P·ΔT, assuming approximately constant molar heat capacities, and explain why the appropriate heat capacity depends on the process condition."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-93ece389",
+          "recordDigest": "sha256:00017988e38711a397a5faf81638b32b514fb3e3e03764adc0af29e5bba761ad"
+        },
+        "second": {
+          "recordId": "physik-b029r-93ece389-round-b-20260902",
+          "recordDigest": "sha256:358cfbfb4638985b79b1826f06bcaab9d012cb1b3f2dcb0d8d6bcc087acad397"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass der Zieltext C_V und C_P als molare Wärmekapazitäten an isochore beziehungsweise isobare Bedingungen bindet, ihre näherungsweise Konstanz ausweist und die Wahl nicht nur anwenden, sondern über die Prozessbedingung erklären lässt. Runde A wird für die Understanding Evidence gewählt, weil sie Erwärmen und Abkühlen, Vorzeichen, Einheiten und den Vergleich gleicher Temperaturänderungen einschließlich Volumenarbeit besonders klar prüfbar macht; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP that the goal text binds the molar heat capacities C_V and C_P to isochoric and isobaric conditions respectively, states their approximate constancy, and requires the choice to be explained from the process condition rather than merely applied. Round A is selected for the understanding evidence because it makes heating and cooling, signs, units, and comparison at equal temperature change including volume work especially assessable; Round B remains fully bound."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-006",
+      "goalId": "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6d332569535eaec88f2ff3416fceae03c9fcaa1bb511b2f6a2ceefc4f69e21a0",
+      "pageFingerprint": "sha256:8b0d4a9ac0e042ec7a352455e28e37a280959e339a2d932b72bd6cd61d80d9be",
+      "goalReviewContextFingerprint": "sha256:a606b2065e69135845535cf8ed15f93ae806612fd3b45a52465d6faac7a9f60f",
+      "finalText": {
+        "titleDe": "Energieentwertung vs. Energieverbrauch",
+        "titleEn": "Energy Degradation vs. Energy Consumption",
+        "descriptionDe": "Die lernende Person kann den alltagssprachlichen „Energieverbrauch“ von der physikalischen Energieerhaltung abgrenzen und erklären, dass bei vollständig bilanziertem System die Energie erhalten bleibt, ihre Nutzbarkeit für einen gewünschten Zweck bei irreversiblen Umwandlungen durch Entropieerzeugung jedoch abnimmt.",
+        "descriptionEn": "The learner can distinguish the everyday phrase “energy consumption” from physical energy conservation and explain that, for a fully accounted system, energy remains conserved while its usability for a desired purpose decreases through entropy production in irreversible transformations."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-cbdc0b5f",
+          "recordDigest": "sha256:1ef45020b808ea41928237dd7ec3e48bed0485e109ac900b8a8652e568c9c2bc"
+        },
+        "second": {
+          "recordId": "physik-b029r-cbdc0b5f-round-b-20260902",
+          "recordDigest": "sha256:7918e6b14e62938cb34fb0de253cd4eb0410dc8ddd9554fc9e55e24716dab5c5"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP die Trennung von alltagssprachlichem Energieverbrauch und physikalischer Erhaltung sowie die Erklärung sinkender zweckbezogener Nutzbarkeit durch irreversible Entropieerzeugung bei vollständiger Bilanz. Runde B wird für die Understanding Evidence gewählt, weil sie Systemgrenze und Nutzungszweck explizit verbindet und beim Transfer auf eine geänderte Grenze oder Abwärmenutzung zwischen unveränderter Erhaltung und veränderter Nutzbarkeitsbewertung unterscheidet; Runde A bleibt gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP the distinction between colloquial energy consumption and physical conservation and the explanation of reduced purpose-specific usefulness through irreversible entropy production in a complete balance. Round B is selected for the understanding evidence because it explicitly connects system boundary and intended use and, when transferring to a changed boundary or waste-heat use, distinguishes unchanged conservation from a changed usefulness assessment; Round A remains bound."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-007",
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7fd41467577af57ba1137045b65bf277b264c84ee55810adae49bd0209153ba",
+      "pageFingerprint": "sha256:3728f38687691b12179856075d11c9ca73f38afdbc1351888d55234a2c334105",
+      "goalReviewContextFingerprint": "sha256:4a0739967e1dfb70c321bd272567b8a0d6c9318d35ee548c35f6a826cadced31",
+      "finalText": {
+        "titleDe": "Signifikante Stellen korrekt verwenden",
+        "titleEn": "Use Significant Figures Correctly",
+        "descriptionDe": "Die lernende Person kann Rechenergebnisse passend zur angegebenen Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten auf eine sinnvolle Zahl signifikanter Stellen runden, Zwischenwerte mit ausreichender Genauigkeit weiterführen und Scheingenauigkeit vermeiden.",
+        "descriptionEn": "The learner can round calculated results to a meaningful number of significant figures consistent with the stated precision or uncertainty of the input data, carry intermediate values with sufficient precision, and avoid false precision."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-b615830a",
+          "recordDigest": "sha256:326500d200ca90f906afa2ddd1081d8890e1da16679091ce565f3c7ff9e51261"
+        },
+        "second": {
+          "recordId": "physik-b029r-b615830a-round-b-20260902",
+          "recordDigest": "sha256:dcae50ea72e729bbff69d3518553056a16a2e3372cddd0048640055269d12e5d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass der Zieltext signifikante Stellen an die Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten bindet, ausreichend genaue Zwischenwerte fordert und Scheingenauigkeit ausdrücklich vermeidet. Runde A wird für die Understanding Evidence gewählt, weil sie die epistemische Bedeutung der Ergebnisziffern, Schutzstellen, wissenschaftliche Notation und ausdrücklich angegebene Unsicherheiten besonders breit prüfbar macht; Runde B bleibt als unabhängige Bestätigung vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP that the goal text ties significant figures to the precision or uncertainty of the input data, requires sufficiently precise intermediate values, and explicitly avoids false precision. Round A is selected for the understanding evidence because it makes the epistemic meaning of reported digits, guard digits, scientific notation, and explicitly stated uncertainties especially broadly assessable; Round B remains fully bound as independent confirmation."
+    },
+    {
+      "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-008",
+      "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0a6767d08a98a8d3204302708b6e51126fb3f543dcc8ff131d2ac95ba556ebcd",
+      "pageFingerprint": "sha256:0910b59303de76c57cb4ee017236f1f88f94f760a2a065fccc33233effae7c22",
+      "goalReviewContextFingerprint": "sha256:69166b3d335daf7aadf08608a604d8a0256d48a1a1069c06b81591c2a09f64e5",
+      "finalText": {
+        "titleDe": "Methode: Modellbildung mit Tabellenkalkulation",
+        "titleEn": "Method: Modeling with Spreadsheets",
+        "descriptionDe": "Die lernende Person kann ein Bewegungsmodell mit Anfangsbedingungen und endlichen Zeitschritten als Differenzenverfahren in einer Tabellenkalkulation umsetzen, Parameter systematisch variieren und Simulationsergebnisse im Hinblick auf den Bewegungsverlauf, die Modellannahmen und die Zeitschrittweite interpretieren.",
+        "descriptionEn": "The learner can implement a motion model with initial conditions and finite time steps using a finite-difference method in a spreadsheet, vary parameters systematically, and interpret the simulation results in terms of the motion, model assumptions, and time-step size."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5.6-sol-physics-b029r-a-ac25ffe3",
+          "recordDigest": "sha256:2d35351399d162a4f904f1b92c161b7190e9c5018d498d3ac4de0d99f8b132f3"
+        },
+        "second": {
+          "recordId": "physik-b029r-ac25ffe3-round-b-20260902",
+          "recordDigest": "sha256:9fc0432a692284492fa8dddf6fddfdf0beb878fbe4302d10cf38ef42b4063ece"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP den zusammenhängenden Modellierungsablauf aus Anfangsbedingungen, endlichen Zeitschritten, Tabellenkalkulation, kontrollierter Parametervariation und Interpretation hinsichtlich Bewegungsverlauf, Modellannahmen und Zeitschrittweite. Runde A wird für die Understanding Evidence gewählt, weil sie gekoppelte Aktualisierungsregeln, kontrollierte Parametervariation und insbesondere die Trennung von physikalischem Modellfehler und zeitschrittbedingtem Numerikfehler an einem veränderten Bewegungsgesetz besonders klar herausarbeitet; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm with KEEP the coherent modelling workflow comprising initial conditions, finite time steps, spreadsheet implementation, controlled parameter variation, and interpretation in terms of motion, model assumptions, and step size. Round A is selected for the understanding evidence because it highlights coupled update rules, controlled parameter variation, and especially the distinction between physical-model error and time-step-dependent numerical error in a changed law of motion; Round B remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:8ce1d6b69bc042508a5db0dbb776bd5bd204b4967e76246f14040d3fce01f06d"
+}

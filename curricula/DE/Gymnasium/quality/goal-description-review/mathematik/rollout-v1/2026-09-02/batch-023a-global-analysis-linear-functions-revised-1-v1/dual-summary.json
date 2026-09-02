@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:42c9b5362f626255cd1abbc32a898cb241e17b3f06c62481947259b7d389cc0c",
+  "reviewInputFingerprint": "sha256:75cbdaf84191ec45b22c870f35644a518e14d1fe8c07047832cb1d36be03aa53",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-b023a-round-a-gpt5-codex-20260902"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-first-pass-b.batch-001.run-gpt-5-6-subject"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6::gpt-5.6"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "firstRecordId": "mathematik-b023a-round-a-gpt5-codex-20260902.af3d6bff",
+      "secondRecordId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-first-pass-b.batch-001.record-af3d6bff",
+      "firstRunId": "mathematik-b023a-round-a-gpt5-codex-20260902",
+      "secondRunId": "mathematik-rollout-v1-batch-023a-global-analysis-linear-functions-revised-1-v1-20260902-first-pass-b.batch-001.run-gpt-5-6-subject",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

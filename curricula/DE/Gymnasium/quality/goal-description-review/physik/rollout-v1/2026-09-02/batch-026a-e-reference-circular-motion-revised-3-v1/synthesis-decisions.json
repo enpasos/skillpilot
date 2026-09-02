@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b026a-reference-circular-motion-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B026a subject synthesis candidate",
+  "synthesizedAt": "2026-09-02T06:50:40.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902",
+    "batchManifestDigest": "sha256:464f7bcd708138d2b99761d56ddb2159f7345d7d4db9a40a0bb174ab43baf521",
+    "configDigest": "sha256:2d1a2323f59a5274ed5e54690bc9d71f6432259a12335f9cdc7fbf00349b91cb",
+    "bundleFingerprint": "sha256:c576838f7b0afde0976ab2c100f0d60d8022d2cb5605ab05dc8c7432b4c5db6a",
+    "bookDigest": "sha256:a048070a24da277baa4058054a7042913115f684e32703f688ebcaef06947085",
+    "reviewInputFingerprint": "sha256:0a3a6b2d2c7d8da6a6fb2887713c3aa996c238c99d6e62866db31c10fe1d5efa",
+    "dualSummaryDigest": "sha256:67e5be740564bf7566a127e569d46749153250eb671bed68ef8a2b34b1ea6d99",
+    "canonicalLandscapeDigest": "sha256:c3a4194af06cf007ab591c59a48381c24e203abf07f8138316b75f2130cc588b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-a",
+      "campaignDigest": "sha256:80f600d36d9d88e961faece8fe0b0baf001946db52b687a679f8362feca59f66",
+      "roundId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:0a3a6b2d2c7d8da6a6fb2887713c3aa996c238c99d6e62866db31c10fe1d5efa",
+      "batchId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:2047df2ea9d5abc85f5240e75fab06f3beab0bd1ec0642c5b974a54bc08c901d",
+      "runId": "physik-b026a-round-a-gpt-5.6-sol-high-none",
+      "runManifestDigest": "sha256:3c8e0ab0770b6d0370415229850ffd55f15c12e43d4297f0a2fc7e31d4607548",
+      "resultsDigest": "sha256:fa3f641789b804fb0ada3c589a622efe43ce0caeac2e9a53a50424645cbd8107"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-b",
+      "campaignDigest": "sha256:58d64daa2af5c0c0609f3d1f702d151e309ea1fb02a71b525dfee3c24ff9f5f8",
+      "roundId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:0a3a6b2d2c7d8da6a6fb2887713c3aa996c238c99d6e62866db31c10fe1d5efa",
+      "batchId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e93badd822d7984ea39d1c2d0aa4459ae577aac388477d309f672ac780a2c70d",
+      "runId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra-high-fork-none",
+      "runManifestDigest": "sha256:7abf579f73c720015fe17958800848217484f1a94dbb1ffbcc869746710c8ee6",
+      "resultsDigest": "sha256:b79b5a20d03988fd4ba49d4e35f0d91a3d3b44fe851388b09174d0d50823cc86"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b026a-reference-circular-motion-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1a8df2f516b4dd0164c664f2b6145cc196613a01378b47b1c240aef736207f1e",
+      "pageFingerprint": "sha256:1c9f2a2ae654e11fdee11937b9b470b33612c41c4aa2b67e0ff8d77ca6852967",
+      "goalReviewContextFingerprint": "sha256:f1310108a572edc5a2d8d71eda00baee83838d55cce007acf69f0ccaab2322ec",
+      "finalText": {
+        "titleDe": "Bezugssysteme und Geschwindigkeitsüberlagerung",
+        "titleEn": "Reference Frames and Velocity Superposition",
+        "descriptionDe": "Die lernende Person kann für eine Bewegung ein geeignetes Bezugssystem wählen und Relativgeschwindigkeiten vektoriell überlagern, um die resultierende Bewegung zu bestimmen und zu erklären.",
+        "descriptionEn": "The learner can choose a suitable frame of reference for a motion and combine relative velocities vectorially to determine and explain the resulting motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b026a-a-01",
+          "recordDigest": "sha256:3f332ff52c8d7b6069c5cfb2255627ce61a225ca09eddd0aea69b1042c56a904"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.record-001",
+          "recordDigest": "sha256:d4a478aca944a96587a2191ac2041f9e2086ea834e1c4a45a7d74826bdad56e5"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass die revidierte bilinguale Beschreibung Bezugssystemwahl, vektorielle Überlagerung relativer Geschwindigkeiten sowie Bestimmung und Erklärung der resultierenden Bewegung präzise als eine kohärente Kompetenz fasst. Der aktuelle Text bleibt daher unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie zusätzlich die fachlich wichtigen Rollen von Richtung, Koordinatenwahl und Vorzeichen bindet und einen Transfer mit nicht parallelen Bewegungsrichtungen ausdrücklich fordert; die zweite Runde bestätigt denselben Kern ohne einen besseren Abdeckungsumfang.",
+      "rationaleEn": "Both independent blind reviews confirm that the revised bilingual description precisely frames the choice of reference frame, vector combination of relative velocities, and determination and explanation of the resulting motion as one coherent competence. The current text is therefore retained. The first round is selected for the understanding evidence because it additionally binds the important roles of direction, coordinate choice, and signs and explicitly requires transfer to non-parallel motion directions; the second round confirms the same core without broader useful coverage."
+    },
+    {
+      "decisionId": "physik-b026a-reference-circular-motion-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca0beaf2296704bea98de1d32e02a6c8a2e0a42144884d28f7e7ae384f8c3afe",
+      "pageFingerprint": "sha256:2a02d989bc2125f60d95bc1492d6c64c45f415efe75ed826200a17ec1ac0a533",
+      "goalReviewContextFingerprint": "sha256:e09c7d832285006afaa041ed09457d619d71cc44f532cc349a03841cfd00c9c7",
+      "finalText": {
+        "titleDe": "Bahn- und Winkelgeschwindigkeit",
+        "titleEn": "Tangential and Angular Speed",
+        "descriptionDe": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+        "descriptionEn": "The learner can define and calculate tangential speed and angular speed in circular motion and explain their relationship v = ωr."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b026a-a-02",
+          "recordDigest": "sha256:2ed355d7614c4bf6c249bf1253ee9f0c9dfcda851643b96fb78864a39a0a11a9"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.record-002",
+          "recordDigest": "sha256:8e4cbf9a1b9ba4c1f5c4a745e622ed047e0e5511bc58953bbae2e945e83c0eac"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews beurteilen Definition, Berechnung und Erklärung von Bahn- und Winkelgeschwindigkeit über v = ωr als fachlich korrekte, atomare und in beiden Sprachfassungen parallele Kompetenz. Der aktuelle Text bleibt deshalb unverändert. Die erste Runde wird für die Understanding Evidence gewählt, weil sie neben Bogenlänge und Radius auch die tangentiale Richtung der Bahngeschwindigkeit, die Herleitung aus s = rφ sowie einen transferorientierten Vergleich bei gleicher Umlaufzeit ausdrücklich zusammenführt.",
+      "rationaleEn": "Both independent blind reviews judge defining, calculating, and explaining tangential and angular speed through v = ωr to be a technically correct, atomic competence expressed equivalently in both languages. The current text is therefore retained. The first round is selected for the understanding evidence because, in addition to arc length and radius, it explicitly combines the tangential direction of velocity, the derivation from s = rφ, and a transfer-oriented comparison at equal period."
+    },
+    {
+      "decisionId": "physik-b026a-reference-circular-motion-synthesis-openai-codex-20260902-decision-003",
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:604462bece5282bc5175d657291adb1f8f004141675d32b949bd9007e850b140",
+      "pageFingerprint": "sha256:d0606187633bc2100ad0df0567118c6876eb4c8f3c6659ca63c840d0ed21cc84",
+      "goalReviewContextFingerprint": "sha256:a570373fe0153565635c48da139242fe99fc302fb6180b870334b33737330404",
+      "finalText": {
+        "titleDe": "Zentripetalkraft als Resultierende herleiten",
+        "titleEn": "Derive Centripetal Force as the Net Inward Force",
+        "descriptionDe": "Die lernende Person kann für eine gleichförmige Kreisbewegung herleiten, dass die zum Mittelpunkt gerichtete resultierende Kraft den Betrag F_z = mv²/r hat, und bei jeweils konstanten übrigen Größen erklären, wie dieser von Masse, Geschwindigkeit und Radius abhängt.",
+        "descriptionEn": "The learner can derive that, for uniform circular motion, the net force directed toward the centre has magnitude F_c = mv²/r and, with the other quantities held constant, explain how this magnitude depends on mass, speed, and radius."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b026a-a-03",
+          "recordDigest": "sha256:1a834a256808309559c875c9612fbc184ef2ed0b05bda5abf5857ec61ef58d5b"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-b.batch-001.record-003",
+          "recordDigest": "sha256:953f7a5b7c37d0ab78b63307a3585e5772e2ae37b233c58d4ecdf224378444af"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass die revidierte Beschreibung die Gültigkeitsbedingung gleichförmiger Kreisbewegung, die nach innen gerichtete Resultierende, die Herleitung von F_z = mv²/r und die Abhängigkeiten bei jeweils konstanten übrigen Größen vollständig und bilingual konsistent benennt. Der aktuelle Text bleibt unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie ausdrücklich aus der Richtungsänderung des Geschwindigkeitsvektors über a_z = v²/r und die Grundgleichung der Mechanik herleitet, reale Einzelkräfte von ihrer Resultierenden trennt und den verbreiteten Fehlgedanken einer zusätzlichen Zentripetalkraft im Transfer prüfbar ausschließt.",
+      "rationaleEn": "Both independent blind reviews confirm that the revised description fully and consistently states the condition of uniform circular motion, the inward net force, the derivation of F_c = mv²/r, and the dependences with the other quantities held constant in both languages. The current text is retained. The first round is selected for the understanding evidence because it explicitly derives the result from the change in velocity direction through a_c = v²/r and Newton's second law, distinguishes the actual component forces from their resultant, and makes the common misconception of an additional centripetal force testable in transfer."
+    }
+  ],
+  "manifestFingerprint": "sha256:af64fa4c1fa752f203503f9d8920010a9fd91cfd3e5f986aac0124dd7d958be1"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-resolution-7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+  "goal": {
+    "goalId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4320453e4068b63bd9894a20ae3fde7725c301eb3d81498fb1fe88372e08d5e4",
+    "pageFingerprint": "sha256:77bea0192e97bc5321121e4d3ea8ddef7b410f9fcffe2d494f4f419014c02b26",
+    "goalReviewContextFingerprint": "sha256:67eeb2dc80d9829be687d3c8c3012e00bfc424e11602ed6ed8409d94684f2477",
+    "finalText": {
+      "titleDe": "Adiabatische Zustandsänderungen",
+      "titleEn": "Adiabatic Processes",
+      "descriptionDe": "Die lernende Person kann adiabatische Zustandsänderungen eines idealen Gases als Prozesse ohne Wärmeaustausch über die Systemgrenze beschreiben, qualitativ erklären, wie Arbeit bei Kompression oder Expansion die innere Energie und Temperatur verändert, sowie idealisierte quasistatische Verläufe im p-V-Diagramm skizzieren und von isothermen Zustandsänderungen abgrenzen.",
+      "descriptionEn": "The learner can describe adiabatic changes of an ideal gas as processes with no heat transfer across the system boundary, explain qualitatively how work during compression or expansion changes internal energy and temperature, and sketch idealized quasistatic paths in a p-V diagram and distinguish them from isothermal changes."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-a",
+      "campaignDigest": "sha256:f0f34e8d1507c7aece8a6407ad5072798cbc1e8c63b2da6d783fafd4a8e18d3d",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:67eeb2dc80d9829be687d3c8c3012e00bfc424e11602ed6ed8409d94684f2477",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-gpt-5.6-sol-physics-b029r-round-a-20260902",
+      "runManifestDigest": "sha256:4e9abd18d0b45e022a9c629fa1fcc1005189241950703cc06bd40a22c5cc2205",
+      "resultsDigest": "sha256:be51edcc8e9ce1c02de9a8defa26a5ae7507ac5c78820d080112e550eac95d29",
+      "recordId": "openai-gpt-5.6-sol-physics-b029r-a-7fe3022f",
+      "recordDigest": "sha256:f640c4bace4444556a62a0ec0f7c4824db8181a0a8764ca7e45f3171c8d73f57"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-b",
+      "campaignDigest": "sha256:671399d8c2ad1d1a3caf521b27d35bd592eca7d8d6584e7a81d62f213d724fa2",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:67eeb2dc80d9829be687d3c8c3012e00bfc424e11602ed6ed8409d94684f2477",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b.batch-001",
+      "runId": "openai-gpt-5-physik-b029r-round-b-20260902",
+      "runManifestDigest": "sha256:b085440b9e8d1f9129f17b5d1e056b2f39406eeba51f4b0d2c5528c8e0afab2a",
+      "resultsDigest": "sha256:60ca8bd8a20dc2a293d42d1120af50aec90b73d1c55ef7616e1ae12bafaa59e3",
+      "recordId": "physik-b029r-7fe3022f-round-b-20260902",
+      "recordDigest": "sha256:c74f06d9800e0384fe56adb84b6fab315497bc870b0d965302e48917d14e6178"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2c5b81a7a8c3935f904309c8ec8562ee3d81424f4c8e557b8f6423990b47b9a3"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:3331b694a70e69b2f2555c29ad8fb204497e99b7f9ca4981aa1cae6a898463c5",
+    "manifestFingerprint": "sha256:8ce1d6b69bc042508a5db0dbb776bd5bd204b4967e76246f14040d3fce01f06d",
+    "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Physics B029r subject synthesis candidate",
+    "synthesizedAt": "2026-09-02T14:55:33.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP die fachlich korrekte Kette aus adiabatischer Systemgrenze, fehlendem Wärmeaustausch, Arbeitsübertragung, Änderung von innerer Energie und Temperatur sowie dem idealisierten quasistatischen p-V-Verlauf im Vergleich zur Isotherme. Runde B wird für die Understanding Evidence gewählt, weil sie Q = 0 ausdrücklich gegen konstante Temperatur abgrenzt, System und Prozessrichtung sichtbar macht und den Vergleich durch denselben Ausgangszustand präzisiert; Runde A bleibt vollständig gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm with KEEP the scientifically correct chain from an adiabatic system boundary and no heat transfer through work transfer and changes in internal energy and temperature to the idealized quasistatic p-V path relative to an isotherm. Round B is selected for the understanding evidence because it explicitly distinguishes Q = 0 from constant temperature, makes the system and process direction visible, and sharpens the comparison through the same initial state; Round A remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass adiabatisch Q = 0 über die gewählte Systemgrenze bedeutet, nicht konstante Temperatur: Bei einem idealen Gas verändert Arbeit am oder durch das Gas dessen innere Energie und damit die Temperatur; ein quasistatischer adiabatischer p-V-Verlauf unterscheidet sich deshalb vom isothermen Verlauf.",
+      "essentialUnderstandingEn": "The learner understands that adiabatic means Q = 0 across the chosen system boundary, not constant temperature: work done on or by an ideal gas changes its internal energy and therefore its temperature, so a quasistatic adiabatic p-V path differs from an isothermal path.",
+      "observablePerformanceDe": "Für eine unabhängig vorgelegte Kompression oder Expansion legt die lernende Person das Gas als System fest, kennzeichnet den fehlenden Wärmeaustausch, erklärt die Richtung von Arbeitsübertragung, Änderung der inneren Energie und Temperatur und skizziert einen dazu passenden adiabatischen Prozessweg im p-V-Diagramm im Vergleich zu einer Isotherme durch denselben Ausgangszustand.",
+      "observablePerformanceEn": "For an independently presented compression or expansion, the learner defines the gas as the system, identifies the absence of heat transfer, explains the directions of work transfer and changes in internal energy and temperature, and sketches a corresponding adiabatic path in a p-V diagram compared with an isotherm through the same initial state.",
+      "transferExpectationDe": "Beim Wechsel von rascher gut isolierter Expansion zu einem Prozess mit relevantem Wärmeeintrag prüft die lernende Person die Systemgrenze erneut, entscheidet, ob die adiabatische Beschreibung noch trägt, und sagt begründet voraus, wie sich Temperaturänderung und p-V-Verlauf gegenüber dem adiabatischen Grenzfall verändern.",
+      "transferExpectationEn": "When the situation changes from rapid well-insulated expansion to a process with appreciable heat input, the learner reassesses the system boundary, decides whether the adiabatic description still applies, and predicts with reasons how the temperature change and p-V path differ from the adiabatic limiting case."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-9541e66b2b0a5e39e7bbd0b677b327779187a23aa0aecc37ec58ec124cc56730",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:cda3e78723040bf0260dc63984dec06b1f8579567cf4f9e556a7ce9d2ea9f9ff"
+}

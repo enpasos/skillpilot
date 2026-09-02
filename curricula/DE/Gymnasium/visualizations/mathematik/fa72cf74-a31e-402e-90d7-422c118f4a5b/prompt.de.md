@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `fa72cf74-a31e-402e-90d7-422c118f4a5b`
 - Titel: Umgekehrt proportionale Größen mit Hyperbeln beschreiben
-- Beschreibung: Die lernende Person kann umgekehrt proportionale Größen als Spezialfall einfacher gebrochen-rationaler Funktionen erkennen und den Zusammenhang am Graphen auch in naturwissenschaftlichen Kontexten erläutern.
+- Beschreibung: Die lernende Person kann umgekehrt proportionale Größen an einem konstanten Produkt erkennen, sie durch Funktionen der Form y = k/x mit k ≠ 0 beschreiben und den zugehörigen Hyperbelgraphen auch in naturwissenschaftlichen Kontexten deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Umgekehrt proportionale Größen mit Hyperbeln beschreiben
-Beschreibung: Die lernende Person kann umgekehrt proportionale Größen als Spezialfall einfacher gebrochen-rationaler Funktionen erkennen und den Zusammenhang am Graphen auch in naturwissenschaftlichen Kontexten erläutern.
+Beschreibung: Die lernende Person kann umgekehrt proportionale Größen an einem konstanten Produkt erkennen, sie durch Funktionen der Form y = k/x mit k ≠ 0 beschreiben und den zugehörigen Hyperbelgraphen auch in naturwissenschaftlichen Kontexten deuten.
 
 Zusatzanweisung:
 Erzeuge eine fachlich korrekte, fokussierte Infografik zu umgekehrt proportionalen Größen.

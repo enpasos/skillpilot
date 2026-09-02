@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `158e1c19-7ccb-4c8c-931c-b685951ab161`
 - Titel: Fortschreitende ebene Transversalwellen und Momentanbilder beschreiben
-- Beschreibung: Die lernende Person kann eine fortschreitende ebene Transversalwelle beschreiben und die Auslenkungen s(x,t) für festgehaltene Orte beziehungsweise Zeitpunkte deuten, insbesondere als Momentanbild einer Welle.
+- Beschreibung: Die lernende Person kann eine fortschreitende ebene Transversalwelle beschreiben und s(x,t) sowohl als zeitlichen Verlauf der Auslenkung an einem festen Ort als auch als räumliches Momentanbild zu einem festen Zeitpunkt deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Fortschreitende ebene Transversalwellen und Momentanbilder beschreiben
-Beschreibung: Die lernende Person kann eine fortschreitende ebene Transversalwelle beschreiben und die Auslenkungen s(x,t) für festgehaltene Orte beziehungsweise Zeitpunkte deuten, insbesondere als Momentanbild einer Welle.
+Beschreibung: Die lernende Person kann eine fortschreitende ebene Transversalwelle beschreiben und s(x,t) sowohl als zeitlichen Verlauf der Auslenkung an einem festen Ort als auch als räumliches Momentanbild zu einem festen Zeitpunkt deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e7131fe3-1da6-5555-80ec-fb6bdf8fcc29`
 - Titel: Doppler-Effekt in der Medizin
-- Beschreibung: Nutzung von Ultraschall und Doppler-Effekt zur Messung von Strömungsgeschwindigkeiten (z. B. Blutfluss). Frequenzverschiebung bei bewegtem Sender/Empfänger.
+- Beschreibung: Die lernende Person kann erklären, wie die Frequenzverschiebung von an bewegten Blutbestandteilen gestreutem Ultraschall von deren Geschwindigkeitskomponente in Strahlrichtung abhängt, und daraus bei bekanntem Einschallwinkel die Strömungsgeschwindigkeit bestimmen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Doppler-Effekt in der Medizin
-Beschreibung: Nutzung von Ultraschall und Doppler-Effekt zur Messung von Strömungsgeschwindigkeiten (z. B. Blutfluss). Frequenzverschiebung bei bewegtem Sender/Empfänger.
+Beschreibung: Die lernende Person kann erklären, wie die Frequenzverschiebung von an bewegten Blutbestandteilen gestreutem Ultraschall von deren Geschwindigkeitskomponente in Strahlrichtung abhängt, und daraus bei bekanntem Einschallwinkel die Strömungsgeschwindigkeit bestimmen.
 
 Zusatzanweisung:
 Create a fresh German medical Doppler-ultrasound infographic with one internally consistent direction. Place the probe above a slanted blood vessel and aim the ultrasound beam into it. Draw blood moving toward the probe along the vessel; therefore label the received echo frequency f_echo > f₀ and a positive frequency shift. Show the outgoing wave and reflected echo, plus Δf = 2f₀v cos(θ)/c. State „Bewegung zum Schallkopf → höhere Echo-Frequenz“. Do not draw flow away from the probe with a higher frequency.

@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Bezugssysteme und Superpositionsprinzip
+# Lernzielvisualisierung: Bezugssysteme und Geschwindigkeitsüberlagerung
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `68c90ba6-c438-463c-9a53-cf61062d416a`
-- Titel: Bezugssysteme und Superpositionsprinzip
-- Beschreibung: Die lernende Person kann geeignete Bezugssysteme für Bewegungen wählen und das Superpositionsprinzip für Bewegungs- und Kraftüberlagerungen qualitativ erklären.
+- Titel: Bezugssysteme und Geschwindigkeitsüberlagerung
+- Beschreibung: Die lernende Person kann für eine Bewegung ein geeignetes Bezugssystem wählen und Relativgeschwindigkeiten vektoriell überlagern, um die resultierende Bewegung zu bestimmen und zu erklären.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Bezugssysteme und Superpositionsprinzip
-Beschreibung: Die lernende Person kann geeignete Bezugssysteme für Bewegungen wählen und das Superpositionsprinzip für Bewegungs- und Kraftüberlagerungen qualitativ erklären.
+Titel: Bezugssysteme und Geschwindigkeitsüberlagerung
+Beschreibung: Die lernende Person kann für eine Bewegung ein geeignetes Bezugssystem wählen und Relativgeschwindigkeiten vektoriell überlagern, um die resultierende Bewegung zu bestimmen und zu erklären.
 
 Zusatzanweisung:
 Pflichtinhalt:
@@ -62,4 +62,4 @@ Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Das vorhandene Nano-Banana-Pro-Asset wurde nach der Zielpräzisierung erneut bei voller Auflösung geprüft. Es zeigt ausschließlich Bezugssystemwahl und vektorielle Geschwindigkeitsüberlagerung, schließt das Vektordreieck korrekt und enthält keine Kraftüberlagerung; die Bildbytes bleiben daher unverändert.

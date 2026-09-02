@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b021-linear-equations-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B021 mathematics subject synthesis candidate",
+  "synthesizedAt": "2026-09-02T05:42:34.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902",
+    "batchManifestDigest": "sha256:fd5cd6428e2f427935aa23b7da1ca5573f30de72a2c2530ab7357e1eab48b359",
+    "configDigest": "sha256:a25b0cd2f9f7b17edb86d1d86ba64170e470c6a3b68c14ab5944609324ded361",
+    "bundleFingerprint": "sha256:83daa4c30b0890b1f0ccc70b12f11f4fb9385af80f0bf2957820e67c47644e71",
+    "bookDigest": "sha256:3a3f0c3e11d574ddf2e1f33596063d9446d4d1c732635c516ae5b8680e161889",
+    "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+    "dualSummaryDigest": "sha256:a796cb648269e733b3bfcd3caf600aa0faf472ac017362616035646b0ae094a7",
+    "canonicalLandscapeDigest": "sha256:fd042a8b6236cd5905940dc338a8a91c7316048d023ac22da75bd0c43fddabb1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-a",
+      "campaignDigest": "sha256:6cf9de86cacc74e5809b47f208483c6a2d11d35b4fd172c4f4baa5ad26d46a68",
+      "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+      "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a16066a0f2d7a8a57e611d17393ee637cce93f368dcf8ca1261bb1649277dd40",
+      "runId": "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol",
+      "runManifestDigest": "sha256:d64753c7b43f748754edc9cfbeab5dc0b650afdb97fb1b09c2ca11865589a2e2",
+      "resultsDigest": "sha256:99c7f1e586ccdae60f771b8c142c9148edd261e093696ca49c1a969964dde098"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-b",
+      "campaignDigest": "sha256:29b770b0438986eda032d942afb3c0913e19d280268f818a3332ebc613e333c4",
+      "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+      "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d25a8544311b2dc51b482b226ac6fff033cd274bf6de18b434d3c212e485d55f",
+      "runId": "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra",
+      "runManifestDigest": "sha256:d007bcfc29b4480e8b4d90148420587c377066a3d604dd3a14a519ec80b974c0",
+      "resultsDigest": "sha256:2234e92e1bc89aaffd8c90e609be7e09b3b7c19fc2829a537a7fcfa91c07a5c5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b021-linear-equations-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:88d34b69f1855f319672c01a36c2ac631a027b23e9853e6263a21aab3c83d7b9",
+      "pageFingerprint": "sha256:8594bf0eda07b59c60c4db2518e49a2083efd116dbad621aa9ebda24ab7ce694",
+      "goalReviewContextFingerprint": "sha256:2a70e76aac38ab053f65b4443af84c53fc70a00a747cc69eb95fc167dc1f4012",
+      "finalText": {
+        "titleDe": "Lineare Gleichungen systematisch lösen",
+        "titleEn": "Solve linear equations systematically",
+        "descriptionDe": "Die lernende Person kann lineare Gleichungen mit Äquivalenzumformungen systematisch lösen, Lösungswege begründen und Ergebnisse durch Einsetzen prüfen.",
+        "descriptionEn": "The learner can solve linear equations systematically using equivalent transformations, justify solution paths, and check results by substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol.record-001",
+          "recordDigest": "sha256:f8dd1ae8f1d21962ff1aedb9e038cddc978744434d9c259d133c3ad97283046b"
+        },
+        "second": {
+          "recordId": "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra.record-001",
+          "recordDigest": "sha256:8d796ca10adb55911f4189308f77876f71101145c41af09316c6a0e0447aabd9"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass systematisches Lösen, Begründung der äquivalenzerhaltenden Schritte und Einsetzprobe eine kohärente Kompetenz bilden und in beiden Sprachfassungen bereits klar benannt sind. Der kanonische Text bleibt deshalb unverändert. Für die Evidence wird die etwas vollständigere erste Runde ausgewählt, weil sie neben Variablen auf beiden Seiten auch Klammern und rationale Zahlen als echte Variationsachsen des Transfers bindet; die zweite, ebenfalls gültige Fassung bleibt als alternative Akzentsetzung dokumentiert.",
+      "rationaleEn": "Both independent blind reviews confirm that systematic solving, justification of solution-preserving transformations, and checking by substitution form one coherent competence and are already stated clearly in both language versions. The canonical text is therefore retained. The slightly more complete first-round evidence is selected because it binds variables on both sides, parentheses, and rational numbers as genuine transfer variation axes; the likewise valid second formulation remains documented as an alternative emphasis."
+    }
+  ],
+  "manifestFingerprint": "sha256:9ce4720160cc75651754a20c05abeda678d5074a33a0645083801a0e34c0fe47"
+}

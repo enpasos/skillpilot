@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b031s-round-a-independent-20260902",
+  "campaignId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:4bb87a31ec0cb527d145dcb685c08947682cb322fd30198768928d02b095f059",
+  "bundleFingerprint": "sha256:eeb16ef008566de809c0d02b71575816ebf3bea43e0d79235ba57622564fd688",
+  "bookDigest": "sha256:2b9233fa9afa6b9e5ae2ad9d41a4c95ef529931c9aec05b650a1e8473b8165f5",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:cb70297fbbb14ff4ac43fb7277dc0bd1427506ba88a0326948c4b015bf1e1f1c",
+  "independenceGroupId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+    "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+    "1c430e0a-b63e-5729-8715-a96a5a68740f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4bb87a31ec0cb527d145dcb685c08947682cb322fd30198768928d02b095f059"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T19:00:56.000Z",
+  "completedAt": "2026-09-02T19:03:16.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:6f3b9d21ac8e80594a8cae4153cffb76783d141dd5883798a6ce0d52cf1bbc1c",
+  "toolchainVersion": "codex-review-v1"
+}

@@ -326,8 +326,14 @@
     },
     {
       "legacyGoalId": "71e28934-eefb-5600-aaa6-7991b1162d4b",
-      "canonicalGoalId": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
-      "matchType": "exact",
+      "canonicalGoalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "matchType": "partial",
+      "reviewDecisionId": "71e28934-eefb-5600-aaa6-7991b1162d4b"
+    },
+    {
+      "legacyGoalId": "71e28934-eefb-5600-aaa6-7991b1162d4b",
+      "canonicalGoalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "matchType": "partial",
       "reviewDecisionId": "71e28934-eefb-5600-aaa6-7991b1162d4b"
     },
     {
@@ -854,7 +860,13 @@
     },
     {
       "legacyGoalId": "40b2829a-35fd-5e6e-96ba-20ec6928940d",
-      "canonicalGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "canonicalGoalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "matchType": "partial",
+      "reviewDecisionId": "40b2829a-35fd-5e6e-96ba-20ec6928940d"
+    },
+    {
+      "legacyGoalId": "40b2829a-35fd-5e6e-96ba-20ec6928940d",
+      "canonicalGoalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
       "matchType": "partial",
       "reviewDecisionId": "40b2829a-35fd-5e6e-96ba-20ec6928940d"
     },
@@ -2438,13 +2450,13 @@
     },
     {
       "legacyGoalId": "by-math-m8-5-40b2829a-s02-ecb5961c3d",
-      "canonicalGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "canonicalGoalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
       "matchType": "partial",
       "reviewDecisionId": "by-math-m8-5-40b2829a-s02-ecb5961c3d"
     },
     {
       "legacyGoalId": "by-math-m8-5-40b2829a-s03-a2262e2861",
-      "canonicalGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "canonicalGoalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
       "matchType": "partial",
       "reviewDecisionId": "by-math-m8-5-40b2829a-s03-a2262e2861"
     },
@@ -5377,12 +5389,13 @@
       "sourceSpan": "zeichnen den Graphen einer gebrochen-rationalen Funktion der Form einschließlich seiner Asymptoten und ermitteln umgekehrt anhand des Graphen einer solchen Funktion die zugehörigen Werte der Parameter.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "19a6bc8e-9851-4cf1-adf3-6898e08eb567"
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "3f1a97d2-7de6-5799-81f2-39782c3e54d7"
       ],
-      "matchType": "exact",
-      "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
-      "reviewedAt": "2026-05-07",
-      "reviewer": "codex",
+      "matchType": "partial",
+      "rationale": "Die LehrplanPLUS-Anforderung enthält zwei fachlich selbständige Richtungen: Graph und Asymptoten aus dem Term zeichnen sowie umgekehrt Parameter aus einem gegebenen Graphen bestimmen. Sie wird deshalb nachvollziehbar auf beide atomaren Split-Ziele verteilt; jede einzelne Kante deckt nur einen Teil des Source-Ziels ab.",
+      "reviewedAt": "2026-09-02",
+      "reviewer": "codex-math-b025-structural-split",
       "evidence": {
         "method": "legacy-by-mapping-projected-to-source-extraction",
         "sourceTopicCode": "M8.3",
@@ -5524,17 +5537,19 @@
       "sourceSpan": "bestimmen relative Häufigkeiten von Ereignissen auch selbst durchgeführter Zufallsexperimente. Zur Auswertung und Simulation von Zufallsexperimenten verwenden sie ein Tabellenkalkulationsprogramm, wobei sie absoluten von relativem Zellbezug unterscheiden.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+        "8823e26e-694c-581b-9adf-4db7db6f43c9",
+        "4aa70ad4-171d-5671-a864-c0c7758fa0ed"
       ],
       "matchType": "partial",
-      "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
-      "reviewedAt": "2026-05-07",
-      "reviewer": "codex",
+      "rationale": "Relative Häufigkeiten aus selbst durchgeführten Zufallsexperimenten und ihre softwaregestützte Auswertung werden durch die kanonischen Ziele zu empirischen Häufigkeiten und Simulationen abgedeckt; das theoretische Laplace-Ziel wird nicht mehr als Ersatz für empirische Auswertung verwendet.",
+      "reviewedAt": "2026-09-02",
+      "reviewer": "codex-math-b027-laplace-adjudication-2026-09-02",
       "evidence": {
-        "method": "legacy-by-mapping-projected-to-source-extraction",
+        "method": "b027-description-scope-reconciliation",
         "sourceTopicCode": "M8.5",
         "sourceDocumentKey": "JGST8",
-        "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect"
+        "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect",
+        "reconciledGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
       }
     },
     {
@@ -10369,19 +10384,20 @@
       "sourceSpan": "Sie erläutern die Aussage des empirischen Gesetzes der großen Zahlen anhand konkreter Beispiele",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+        "b7cc2fc4-c695-5a97-93b0-3a619c632ca8"
       ],
       "matchType": "partial",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 40b2829a-35fd-5e6e-96ba-20ec6928940d; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "rationale": "Die Aussage des empirischen Gesetzes der großen Zahlen ist exakt im eigenständigen kanonischen Lernziel verankert und wird nicht dem theoretischen Laplace-Ziel zugerechnet.",
+      "reviewedAt": "2026-09-02",
+      "reviewer": "codex-math-b027-laplace-adjudication-2026-09-02",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "b027-description-scope-reconciliation",
         "parentSourceGoalId": "40b2829a-35fd-5e6e-96ba-20ec6928940d",
         "sourceSplitIndex": 2,
         "sourceSplitPartCount": 3,
         "sourceTopicCode": "M8.5",
-        "sourceDocumentKey": "JGST8"
+        "sourceDocumentKey": "JGST8",
+        "reconciledGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
       }
     },
     {
@@ -10390,19 +10406,20 @@
       "sourceSpan": "nutzen entsprechend relative Häufigkeiten als sinnvolle Schätzwerte für Wahrscheinlichkeiten.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+        "8823e26e-694c-581b-9adf-4db7db6f43c9"
       ],
       "matchType": "partial",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 40b2829a-35fd-5e6e-96ba-20ec6928940d; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "rationale": "Relative Häufigkeiten als Schätzwerte für Wahrscheinlichkeiten gehören zum eigenständigen kanonischen Ziel für empirische Häufigkeiten und bleiben vom theoretischen Laplace-Modell getrennt.",
+      "reviewedAt": "2026-09-02",
+      "reviewer": "codex-math-b027-laplace-adjudication-2026-09-02",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "b027-description-scope-reconciliation",
         "parentSourceGoalId": "40b2829a-35fd-5e6e-96ba-20ec6928940d",
         "sourceSplitIndex": 3,
         "sourceSplitPartCount": 3,
         "sourceTopicCode": "M8.5",
-        "sourceDocumentKey": "JGST8"
+        "sourceDocumentKey": "JGST8",
+        "reconciledGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
       }
     },
     {

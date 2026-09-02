@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:83312137d45c8c11123f48e991b9d7c18cd92b215f4425cccbe7074f84d4fa75",
+  "reviewInputFingerprint": "sha256:b5de4a41901cb9f22abde28f7e038499ad26f931d82cca6c1acc17f5e74a4486",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b027b-round-a-codex-20260902-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.openai-gpt-5-6-subject-review"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6::gpt-5.6"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "firstRecordId": "physik-b027b-round-a-friction-qualitative-001",
+      "secondRecordId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.record-001",
+      "firstRunId": "physik-b027b-round-a-codex-20260902-01",
+      "secondRunId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.openai-gpt-5-6-subject-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "firstRecordId": "physik-b027b-round-a-friction-model-002",
+      "secondRecordId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.record-002",
+      "firstRunId": "physik-b027b-round-a-codex-20260902-01",
+      "secondRunId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.openai-gpt-5-6-subject-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

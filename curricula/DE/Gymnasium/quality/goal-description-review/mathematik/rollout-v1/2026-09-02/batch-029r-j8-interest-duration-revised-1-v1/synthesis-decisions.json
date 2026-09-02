@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b029r-interest-duration-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Mathematics B029r subject synthesis candidate",
+  "synthesizedAt": "2026-09-02T17:49:23.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902",
+    "batchManifestDigest": "sha256:b536cb1e361c550a0fc5f5630efe88a925b2e7af394e41beb4f4181f8a0f134c",
+    "configDigest": "sha256:d2ad236b6da9e54abeb73783d7084fb393879b441c9661cb22dd9d99a4279eb1",
+    "bundleFingerprint": "sha256:8c1798dd6b58dc41b4bb522bb5c9771f127c3478027792e702a5e9e40dc4559c",
+    "bookDigest": "sha256:e2771e72c605d885e6d8b04d944d6a61e8ea114ee4e077873be1e13dca14c703",
+    "reviewInputFingerprint": "sha256:f2b17bff4b126710dec5ec0d961dd721d285042bf110dbe3feea411be14e15b1",
+    "dualSummaryDigest": "sha256:432f7e2a8afb2127fbb54632351b572d243502f751cdbfa72e5cc29eb4e79dfd",
+    "canonicalLandscapeDigest": "sha256:40d313a87998d8d9ec508a09166ebdf97fa07630f7865a109dd87c3df3363761"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-a",
+      "campaignDigest": "sha256:347aa08e61c735b91ee2d779c40b5c9b476c5b4fa2fc234e8f08187d3783b89c",
+      "roundId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:f2b17bff4b126710dec5ec0d961dd721d285042bf110dbe3feea411be14e15b1",
+      "batchId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:5fb3571378c3ac86f7593e162c73dd8c415ac2fcb78d290980cb4a742716d5ef",
+      "runId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-first-pass-a.batch-001.run-001",
+      "runManifestDigest": "sha256:42735afd42b3e76d3f4df65ed1b0b2fe276c4772cb062370712c9906e26cc2be",
+      "resultsDigest": "sha256:c6494ece5a5080ec116e3582c9a7d66312f400a06c75f663742cbd0d02a20f95"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-b",
+      "campaignDigest": "sha256:24ad3c3d8067ab17fc81e184c9b70ba0fca2246e4a66a2d63b758c8e59897678",
+      "roundId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:f2b17bff4b126710dec5ec0d961dd721d285042bf110dbe3feea411be14e15b1",
+      "batchId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7bdd9580cd7c4f9a15c2ca6520b190ed2503af248b89c9844e3d144b67bfb737",
+      "runId": "mathematik-b029r-round-b-gpt5-subject-review-20260902",
+      "runManifestDigest": "sha256:090526ada40c960fd1da7b444a1da24f5075bae7274f1bafd89413c0015b8459",
+      "resultsDigest": "sha256:17956da8dd94753e1604657fd2cd4bb5dc42bc9d3ba5a45529a7f7a9bac2b8dc"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b029r-interest-duration-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1f66ced7442e582404dd43691a883309c0eaadd5d106a95880c880ae0c6a7215",
+      "pageFingerprint": "sha256:e0f9a03f147ece6d18756413075b0b34d8c6622786ecf71a7189c33ffc8e7c27",
+      "goalReviewContextFingerprint": "sha256:95f8b79f251026467c82c9fb0f4cbecdc2fce0a93d54d9574f236e020cee9659",
+      "finalText": {
+        "titleDe": "Laufzeit tabellarisch näherungsweise bestimmen",
+        "titleEn": "Estimate duration using a spreadsheet",
+        "descriptionDe": "Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen als Anzahl der Zins- oder Zahlungsperioden näherungsweise bestimmen und das Ergebnis im Kontext prüfen.",
+        "descriptionEn": "The learner can use a spreadsheet to estimate the term in simple financial situations as a number of interest or payment periods and check the result in context."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-rollout-v1-batch-029r-j8-interest-duration-revised-1-v1-20260902-first-pass-a.batch-001.record-001",
+          "recordDigest": "sha256:7834f4dd37d5cc921dd3a0d2fc6ea8f0631e03c28dc7892f2d3846cf62667e83"
+        },
+        "second": {
+          "recordId": "mathematik-b029r-round-b-record-001",
+          "recordDigest": "sha256:7478bddb13cd6c61a350d36bf4ec73452ad9ee7c024d9924271b3d69160b86ba"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die präzisierte bilinguale Beschreibung unverändert mit KEEP. Sie macht die Laufzeit eindeutig als Anzahl der Zins- oder Zahlungsperioden prüfbar, ohne den ursprünglichen Tabellenkalkulations- und Finanzkontext zu erweitern. Für das positive Understanding-Evidence-Profil wird Runde B gewählt, weil sie die periodische Fortschreibung, das Eingrenzen zwischen dem letzten Stand vor und dem ersten Stand bei Zielerreichung sowie Perioden-, Zeit- und Kontextprüfung besonders geschlossen verbindet; Runde A bleibt vollständig als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the clarified bilingual description unchanged with KEEP. It makes the term unambiguously assessable as a number of interest or payment periods without expanding the original spreadsheet and financial context. Round B is selected for the positive understanding-evidence profile because it particularly coherently connects periodic updating, bracketing between the last state before and the first state at target attainment, and checks of period, time, and context; Round A remains fully bound as an independent confirmation."
+    }
+  ],
+  "manifestFingerprint": "sha256:46032a82dc0446f56d5f5fdd96540ec612d22cd98345960fb22dd5fe2017b1e8"
+}

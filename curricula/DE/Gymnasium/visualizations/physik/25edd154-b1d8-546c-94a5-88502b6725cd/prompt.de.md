@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `25edd154-b1d8-546c-94a5-88502b6725cd`
 - Titel: Geozentrisches und heliozentrisches Weltbild vergleichen (GK)
-- Beschreibung: Die lernende Person kann geozentrisches und heliozentrisches Weltbild anhand zentraler Strukturmerkmale vergleichen.
+- Beschreibung: Die lernende Person kann das geozentrische und das heliozentrische Weltbild vergleichen, indem sie Mittelpunkt, Stellung und zugeschriebene Bewegungen von Erde, Sonne und Planeten gegenüberstellt.
 
 ## Generator
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,35 +27,32 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Geozentrisches und heliozentrisches Weltbild vergleichen (GK)
-Beschreibung: Die lernende Person kann geozentrisches und heliozentrisches Weltbild anhand zentraler Strukturmerkmale vergleichen.
+Titel: Geozentrisches und heliozentrisches Weltbild vergleichen
+Beschreibung: Die lernende Person kann das geozentrische und das heliozentrische Weltbild vergleichen, indem sie Mittelpunkt, Stellung und zugeschriebene Bewegungen von Erde, Sonne und Planeten gegenüberstellt.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Bearbeite das beigefügte vorhandene Bild so eng wie möglich. Bewahre den hellblauen Hintergrund, den einfachen freundlichen Cartoon-/Infografikstil, das Querformat, die Zweispalten-Komposition, Farben, Linienbreiten, Typografie, Abstände und die vorhandene visuelle Hierarchie.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a two-column German comparison infographic.
-- Visible title exactly: `Geozentrisches und heliozentrisches Weltbild vergleichen`.
-- Left column title: `Geozentrisch`.
-  - Show Earth at the center labelled `Erde`.
-  - Show Sun and planets on circular paths around Earth.
-  - Labels: `Erde im Zentrum`, `komplizierte Schleifen/ Epizyklen`.
-- Right column title: `Heliozentrisch`.
-  - Show Sun at the center labelled `Sonne`.
-  - Show Earth as one planet on an orbit around the Sun.
-  - Labels: `Sonne im Zentrum`, `Erde ist ein Planet`.
-- Add a bottom comparison row: `Bezugspunkt des Modells` with `Erde` under geocentric and `Sonne` under heliocentric.
-- Orbit lines must have no arrowheads.
-- Strict arrow rule: no arrowheads anywhere in the image. Epicycles are plain small loops/circles only, never curved arrows. Do not use circular direction arrows or decorative arrows.
+Pflichtkorrektur:
+
+- Entferne im linken geozentrischen Panel sämtliche zusätzlich eingezeichneten kleinen Epizykel-Schleifen sowie beide Beschriftungen „komplizierte Schleifen/ Epizyklen“ einschließlich ihrer Verbindungslinien.
+- Stelle beide Seiten als bewusst vereinfachte historische Modellskizzen mit schlichten kreisförmigen Bahnlinien ohne Pfeilspitzen dar. Behaupte oder suggeriere nicht, Epizykel seien ausschließlich ein Merkmal des geozentrischen Modells; frühe geozentrische und kopernikanisch-heliozentrische Modelle verwendeten beide Kreisbewegungen und Hilfskreise.
+- Der einzige hervorgehobene Vergleich ist der Bezugsmittelpunkt und die Anordnung: links Erde im Zentrum, rechts Sonne im Zentrum und die Erde eindeutig als einer der Planeten.
+- Lass die Erde rechts klar als Erde erkennbar und richte die Beschriftung „Erde ist ein Planet“ eindeutig auf die Erde, nicht auf einen Mond oder einen anderen Himmelskörper.
+
+Sichtbarer Text, der erhalten bleiben soll:
+
+- Titel: „Geozentrisches und heliozentrisches Weltbild vergleichen“
+- Spaltentitel: „Geozentrisch“ und „Heliozentrisch“
+- Objektlabels: „Erde“ links und „Sonne“ rechts
+- Kernaussagen: „Erde im Zentrum“, „Sonne im Zentrum“, „Erde ist ein Planet“
+- Untere Vergleichszeile: „Bezugspunkt des Modells“ mit „Erde“ links und „Sonne“ rechts
 
 Vermeiden:
 
-- Do not swap the centers.
-- Do not put the Sun at the center in the geocentric panel.
-- Do not put Earth at the center in the heliocentric panel.
-- Do not draw movement arrows on orbit lines.
-- Do not draw arrowheads on epicycles, labels, loops, comparison rows, or decorative elements.
-- Do not claim that the heliocentric model alone is Newton's gravitational explanation.
+- Keine neue historische oder physikalische Behauptung, keine Jahreszahlen, keine Gravitationserklärung und keine Zusatzthemen.
+- Keine Pfeilspitzen, Bewegungsrichtungen, Wasserzeichen, technischen Kennungen, Dateinamen, Plattform-, Produkt-, Schulform- oder Publikumshinweise.
+- Keine veränderte Schreibweise, keine abgeschnittenen Texte, keine doppelten Planeten und keine vertauschten Mittelpunkte.
 ```
 
 ## Review-Notiz

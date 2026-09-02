@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-b025a-stable4-positive-understanding-evidence-v1-20260902",
+  "artifactType": "positive-understanding-evidence-carryover-receipt",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "sourceBatchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902",
+  "sourceBindings": [
+    {
+      "role": "stable4_compatibility_receipt",
+      "path": "stable-current-carryover-4-v1.compatibility-receipt.json",
+      "sha256": "sha256:0d84682f0ee778a189fe18d5b137d67f99f8f07cfe0e4434789980220d58b3bf"
+    },
+    {
+      "role": "stable4_synthesis_manifest",
+      "path": "synthesis-decisions.stable-current-carryover-4-v1.json",
+      "sha256": "sha256:f78d0b94182cd098d16bdc9f11101b00e8537abd9d40ddedf382759646fd6904"
+    },
+    {
+      "role": "stable4_resolution_index",
+      "path": "resolution-index.stable-current-carryover-4-v1.json",
+      "sha256": "sha256:b2c80e5750110c970c056de6912f43c58ac83906b4db7727020ab0f10dbbf04d"
+    },
+    {
+      "role": "round_a_records",
+      "path": "round-a/results/mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:edc5cc0df123ef4386fe54968ea0aaab7c78ef8c79b62ffac8fa9745887e5979"
+    },
+    {
+      "role": "round_b_records",
+      "path": "round-b/results/mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:f12403dd7d66c9e4f552b96982a9ec5af69eb49f837921887e8d42a7e3d2c53f"
+    }
+  ],
+  "evidenceArtifacts": {
+    "config": {
+      "path": "../../../../../goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-025a-j8-rational-functions-stable4-current-v1.config.json",
+      "sha256": "sha256:8787e7abe9ac5a26028b0bb4835659ac47de7d6566db8d795d4afdba5957565d"
+    },
+    "candidates": {
+      "path": "../../../../../goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-025a-j8-rational-functions-stable4-current-v1.candidates.json",
+      "sha256": "sha256:844c38a40165d8b598926a3c305d990d0896a4b51496b0df3aa4978b461e5f43"
+    },
+    "review": {
+      "path": "../../../../../goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-025a-j8-rational-functions-stable4-current-v1.review.jsonl",
+      "sha256": "sha256:a3d0ab92d6fe2d673cf920818e6f5c0d99dc30a1424d58eced10db18196eed5c",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "goalCount": 4
+    }
+  },
+  "selectedEvidence": [
+    {
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "round": "B",
+      "recordId": "math-b025a-round-b-34ba4714"
+    },
+    {
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "round": "A",
+      "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:002"
+    },
+    {
+      "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "round": "A",
+      "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:004"
+    },
+    {
+      "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "round": "B",
+      "recordId": "math-b025a-round-b-fa72cf74"
+    }
+  ],
+  "excludedFreshGoalIds": [
+    "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+    "3f1a97d2-7de6-5799-81f2-39782c3e54d7"
+  ],
+  "safeguards": {
+    "selectedEvidenceRecordsAreKeepAndCreate": true,
+    "profilesAreContentSpecific": true,
+    "profilesAreAiCandidatesOnly": true,
+    "goalCriteriaAndReviewedResourceFingerprintsAreMaterialized": true,
+    "revisedGoalIsExcluded": true,
+    "successorContextChangedGoalIsExcluded": true
+  }
+}

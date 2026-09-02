@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b027a-round-a-gpt-5-20260902",
+  "campaignId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:87662267402b0bc4033fc318509721ad775476f0a3c4bfa15768ad690c1919ed",
+  "bundleFingerprint": "sha256:e885075c22b7a63cb25d7e9b7ebba1e1430e1d0d7d64ddad26bbc880f9f96989",
+  "bookDigest": "sha256:f333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:86e6937c32bc819976e145758094ad7624305bd4238e4f4843321f8174ba69b6",
+  "independenceGroupId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:4c0f930cfe082bacb9779b7b8d78943091ab0ceab7cde35b395a8fd6cc164422"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:87662267402b0bc4033fc318509721ad775476f0a3c4bfa15768ad690c1919ed"
+    }
+  ],
+  "startedAt": "2026-09-02T07:45:00Z",
+  "completedAt": "2026-09-02T07:52:29Z",
+  "status": "completed",
+  "outputDigest": "sha256:f9aec9bdf8adb1da8fc254754fe90ec634e14d7699c80c7272338aba51af879a",
+  "toolchainVersion": "skillpilot-goal-description-review-v1"
+}

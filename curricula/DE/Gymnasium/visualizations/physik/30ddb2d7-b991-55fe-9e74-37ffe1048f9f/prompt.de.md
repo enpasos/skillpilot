@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `30ddb2d7-b991-55fe-9e74-37ffe1048f9f`
 - Titel: Geradlinige Bewegung mit Reibung modellieren
-- Beschreibung: Die lernende Person kann geradlinige Bewegungen mit Reibung mithilfe von Kräftegrößen und einfachen Bewegungsgleichungen beschreiben und qualitativ vorhersagen.
+- Beschreibung: Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Geradlinige Bewegung mit Reibung modellieren
-Beschreibung: Die lernende Person kann geradlinige Bewegungen mit Reibung mithilfe von Kräftegrößen und einfachen Bewegungsgleichungen beschreiben und qualitativ vorhersagen.
+Beschreibung: Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.
 
 Zusatzanweisung:
 Regenerate the complete image while preserving the useful force diagram of a body on a horizontal surface.

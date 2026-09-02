@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b029dr-interest-payment-amount-final-keep-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Mathematics B029dr final KEEP synthesis candidate",
+  "synthesizedAt": "2026-09-02T18:43:34.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902",
+    "batchManifestDigest": "sha256:421a28a31e941241503bcd5d38999f0005cba7c051598b1650a1f243deeca4ac",
+    "configDigest": "sha256:370dc0ce33927fe8ab2d4c33bb7b421417a66c7dd5fca5f256cafb8e2a6a392f",
+    "bundleFingerprint": "sha256:801d3a1c2e5ad734c21ab9e9b7cff7f4d0dce457a6c3ca0ac75afd37f5b53c56",
+    "bookDigest": "sha256:79229f65885846f3c88d2e3d230b8b0030bff30e30890b35b40be97e15c65505",
+    "reviewInputFingerprint": "sha256:adb38994f52013becff55cd66e77d9eba11e2c8ffc268d3814351920d23a9427",
+    "dualSummaryDigest": "sha256:291b810e0498654a8092bba73758419d218f16ed4d6cb5d07b095b88219ab6d4",
+    "canonicalLandscapeDigest": "sha256:40d313a87998d8d9ec508a09166ebdf97fa07630f7865a109dd87c3df3363761"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-a",
+      "campaignDigest": "sha256:c56925c3eb0bd70fa976576d88ebc7cfd8763a4c5acc302f1191421f689708a3",
+      "roundId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:adb38994f52013becff55cd66e77d9eba11e2c8ffc268d3814351920d23a9427",
+      "batchId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d731999c3aa34c3767e13678f192616832ce4b2c360d9d194be84aeffa26bcc0",
+      "runId": "mathematik-b029dr-round-a-independent-20260902",
+      "runManifestDigest": "sha256:e1711ea0d359c9ad40a900036f06c5a0a37d4538c3cceb44b701871c2698af8f",
+      "resultsDigest": "sha256:201b5f15f7a990bfefde070c242663f2d2b686981a3a137e38225d7f809a1407"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-b",
+      "campaignDigest": "sha256:56df3cc68a4fe165be8eafcd66b58788945783230d2da492b24f2a7cca603ca1",
+      "roundId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:adb38994f52013becff55cd66e77d9eba11e2c8ffc268d3814351920d23a9427",
+      "batchId": "mathematik-rollout-v1-batch-029dr-j8-interest-payment-amount-final-recheck-1-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:cba0012ecac2c36b2f0d6e4a2c26d64ffe2af2a84d5d8fa36dd14d271d23a823",
+      "runId": "mathematik-b029dr-round-b-run-001",
+      "runManifestDigest": "sha256:638b23567d233023d0505d948ee12af19bfde28b576d039711cd5b344d405125",
+      "resultsDigest": "sha256:8a4a207cdc209f565ee85cc57d4c7b9f86966c8650ff34e66841c0f343a78e87"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b029dr-interest-payment-amount-final-keep-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d8dca52c8cd622600b90f3e04ed2153e80a6ab0f3ec97c3b9e3df764d357f192",
+      "pageFingerprint": "sha256:a56a5c6ca34ebe26952e1d4e7b028247e2bdfa09103943a41fc391bad37d9a90",
+      "goalReviewContextFingerprint": "sha256:9f6aa6f99cfe71926b4d6866da4e7a582c73fe959a4256d2504ccd42a30578c9",
+      "finalText": {
+        "titleDe": "Tilgung oder Sparrate tabellarisch näherungsweise bestimmen",
+        "titleEn": "Estimate repayment or savings rate using a spreadsheet",
+        "descriptionDe": "Die lernende Person kann mit einer Tabellenkalkulation einen regelmäßigen Tilgungsbetrag oder eine regelmäßige Sparrate für ein vorgegebenes Finanzziel näherungsweise bestimmen und anhand der berechneten Restschuld- oder Guthabenentwicklung im Kontext prüfen.",
+        "descriptionEn": "The learner can use a spreadsheet to estimate the regular repayment amount or savings contribution needed for a given financial target and check it in context using the calculated development of the remaining debt or balance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b029dr-round-a-f6574cdc-20260902",
+          "recordDigest": "sha256:234d93d3b2f2ccfc1da70b111bcd16e8eadaeae4670d90f6e0676be9ccc4a813"
+        },
+        "second": {
+          "recordId": "mathematik-b029dr-round-b-record-001",
+          "recordDigest": "sha256:77b69b77688bb41fca3cffd39a36792321b0d9c9902b19512b85924cb04ec25a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den aktuellen zweisprachigen Zieltext mit KEEP und empfehlen ein positives Understanding-Evidence-Profil. Der Text benennt das Tabellenkalkulationsmodell, den zu bestimmenden regelmäßigen Tilgungs- oder Sparbetrag, das vorgegebene Finanzziel, die notwendige Näherung und die kontextbezogene Prüfung anhand der Restschuld- oder Guthabenentwicklung; ein verbleibender fachlicher oder prüfungsbezogener Mangel ist nicht belegt. Für die Resolution wird die Evidenz aus Runde B gewählt, weil sie den regelmäßigen Betrag ausdrücklich als Modellparameter aus Anfangsbestand, Verzinsung und Laufzeit erklärt, die periodische Entwicklung und die begründete Näherungsgenauigkeit beobachtbar macht und den Transfer zwischen Darlehenstilgung und Ansparen prüft. Runde A bleibt vollständig als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current bilingual goal text with KEEP and recommend a positive understanding-evidence profile. The text identifies the spreadsheet model, the regular repayment or savings amount to be determined, the stated financial target, the required approximation, and the contextual check using the development of the remaining debt or balance; no remaining subject-matter or assessment defect is evidenced. The resolution selects Round B's evidence because it explicitly explains the regular amount as a model parameter together with the initial balance, interest, and term, makes the period-by-period development and justified approximation observable, and tests transfer between loan repayment and saving toward a target. Round A remains fully bound as an independent confirmation."
+    }
+  ],
+  "manifestFingerprint": "sha256:f7654138d82ddbb995caf0e1dd308c5b0219f1c358ac9ad066ff225693612833"
+}

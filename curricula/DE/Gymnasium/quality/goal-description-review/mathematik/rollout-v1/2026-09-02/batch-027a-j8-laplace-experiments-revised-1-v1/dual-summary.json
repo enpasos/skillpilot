@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1860b1c4e938348d4b64c01474a9398c37e842de31acbcaff87a88c17e1fa138",
+  "reviewInputFingerprint": "sha256:208d2a2592601f9d1a20dcc7493d78aa4bb43323d117d77ad7439916c7ccbdbb",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-independent-a",
+      "runIds": [
+        "openai-gpt-5.6-sol-math-b027a-round-a-20260902"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-independent-b",
+      "runIds": [
+        "openai-gpt-5-mathematik-b027a-round-b-20260902"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "firstRecordId": "openai-gpt-5.6-sol-math-b027a-round-a-5ab17678-20260902",
+      "secondRecordId": "mathematik-b027a-5ab17678-round-b-20260902",
+      "firstRunId": "openai-gpt-5.6-sol-math-b027a-round-a-20260902",
+      "secondRunId": "openai-gpt-5-mathematik-b027a-round-b-20260902",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

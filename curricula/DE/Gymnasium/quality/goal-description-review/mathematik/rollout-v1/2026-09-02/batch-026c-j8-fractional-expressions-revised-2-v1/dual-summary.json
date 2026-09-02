@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:307e27eff4f887c17e2cdab04649a6923547211d25e8586876471131a4cd786d",
+  "reviewInputFingerprint": "sha256:d03c38436b8eb33b38fd4843c1181f7e5db94b27e1e2cf7ef3c3e70effa735b3",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-b026c-round-a-codex-20260902-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-b026c-round-b-blind-review-20260902-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+      "firstRecordId": "mathematik-b026c-round-a-fraction-structure-001",
+      "secondRecordId": "mathematik-b026c-round-b-c420e0be-review-20260902-001",
+      "firstRunId": "mathematik-b026c-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b026c-round-b-blind-review-20260902-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+      "firstRecordId": "mathematik-b026c-round-a-common-denominator-002",
+      "secondRecordId": "mathematik-b026c-round-b-f7a9a0b4-review-20260902-002",
+      "firstRunId": "mathematik-b026c-round-a-codex-20260902-01",
+      "secondRunId": "mathematik-b026c-round-b-blind-review-20260902-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

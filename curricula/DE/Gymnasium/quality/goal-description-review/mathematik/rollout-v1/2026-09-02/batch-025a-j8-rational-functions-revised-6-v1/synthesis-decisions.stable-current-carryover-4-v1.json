@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B025a stable-four adjudicated carryover synthesis candidate",
+  "synthesizedAt": "2026-09-02T10:26:29.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902",
+    "batchManifestDigest": "sha256:3efe310bf6c5f681167c31af4c79e2a6f58147797b8f0c23677fc34381dfdad3",
+    "configDigest": "sha256:70aea2c4339922e4f6cf41abcb9fe01334031ee3e1b3740c7a4fa20d0d940619",
+    "bundleFingerprint": "sha256:468962192c8d694458ad7ff2244ddcb84d8970197e8fc5bff1509b8343d7bffc",
+    "bookDigest": "sha256:12d9d918ee355330ec73b4403d702201e8d3ea399ee1cafda68baa02d5374925",
+    "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+    "dualSummaryDigest": "sha256:d62714510e3db08ca6033ac8a4aee9059c23d145771364bf53fa31959a6a7dc6",
+    "canonicalLandscapeDigest": "sha256:fcaa71a8d3d7d8bd8aaa6f235cc20f3c1980194c3c3789a5353a60ad31e86ac2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-a",
+      "campaignDigest": "sha256:3398fdc709ea5ab6b6dce0ea3f807aa1eb90c3e78d8e155cc18f04b04afea2f3",
+      "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+      "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:0e2c6fcdc94285b0efcada2fad538ca224ca462a65d7e0c69dce4977ec559c34",
+      "runId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258",
+      "runManifestDigest": "sha256:bb9eb42af0dd16313e0da7dcd2ea398a43ece75b3d7a2154fe4eec858fa664f6",
+      "resultsDigest": "sha256:edc5cc0df123ef4386fe54968ea0aaab7c78ef8c79b62ffac8fa9745887e5979"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-b",
+      "campaignDigest": "sha256:ce016dfb27fcfcaef647d1931470327ad6f9d0c5f481b7905e0eb9cbbdf95e8e",
+      "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+      "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ad5f1f6713076eda0ee2d664f6a40545ac4ff2db555ade63e26b936f1e368559",
+      "runId": "mathematik-b025a-20260902-round-b-run-001",
+      "runManifestDigest": "sha256:bb505147a8e8eb3db2830a1cdc4123c0e755608963f593a08658dd574487cce1",
+      "resultsDigest": "sha256:f12403dd7d66c9e4f552b96982a9ec5af69eb49f837921887e8d42a7e3d2c53f"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d0ffb8390eb1c634eaafbeb555267ba26cba562a178d3792a5ad5feaea787e97",
+      "pageFingerprint": "sha256:12165db35154877fb93281ec77e7fdd045ffc69111bdb31743b738a4f1fdcf64",
+      "goalReviewContextFingerprint": "sha256:e60f37f3f81fe0e1fd5d34a36a347caa2ef7d5ead0958850ae91993aa483b75b",
+      "finalText": {
+        "titleDe": "Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen",
+        "titleEn": "Determine domains of simple rational functions",
+        "descriptionDe": "Die lernende Person kann bei einfachen gebrochen-rationalen Funktionen unzulässige Werte erkennen, die Definitionsmenge angeben und sie am Term begründen.",
+        "descriptionEn": "The learner can identify excluded values of simple rational functions, state the domain, and justify it from the expression."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:001",
+          "recordDigest": "sha256:e44ff88b186d56257edc0050dc57158892b1711de97eff504b2f49589b3f3053"
+        },
+        "second": {
+          "recordId": "math-b025a-round-b-34ba4714",
+          "recordDigest": "sha256:192e611cf091d8e49905b2acb3cd5afd0b22459dc1f1c3c6c83be48bb8370cb7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle Kompetenz zu Nennernullstellen und Definitionsmenge. Runde B wird ausgewählt, weil sie die Fortgeltung ursprünglicher Ausschlüsse nach einer scheinbaren Kürzung als besonders starken Transferfall konkretisiert; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current competency concerning denominator zeros and domain. Round B is selected because it makes the persistence of original exclusions after apparent cancellation a particularly strong transfer case; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d787023ecbe65a9cb55901ad03b3fd6881a43d14e127de01c898433702175d88",
+      "pageFingerprint": "sha256:0dfa8fea2482c881fd82a6edc942bb7ec2400172bdb887bbff0d9a360fdcb28e",
+      "goalReviewContextFingerprint": "sha256:534f7d8ffb11b7c67bd629c037ac8e03b2475fe7019d4d1f0deefcd9993ce6f0",
+      "finalText": {
+        "titleDe": "Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen bestimmen",
+        "titleEn": "Determine axis intercepts of simple rational functions",
+        "descriptionDe": "Die lernende Person kann Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen aus Termen und Graphen bestimmen und ihre Bedeutung im Koordinatensystem erklären.",
+        "descriptionEn": "The learner can determine axis intercepts of simple rational functions from terms and graphs and explain their meaning in the coordinate system."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:002",
+          "recordDigest": "sha256:23444852d6a52074876b41d21bd44bd9f6580e883359530fefe07f623b559409"
+        },
+        "second": {
+          "recordId": "math-b025a-round-b-0c8b59cb",
+          "recordDigest": "sha256:226c746dcbb44ca265f2a169db857603843b5bf88f38a3e042787dfc1e4b70a2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle Kompetenz zu Achsenschnittpunkten aus Term und Graph. Runde A wird ausgewählt, weil sie Existenz, Koordinatenbedeutung und den fehlenden Schnittpunkt in einer geschlossenen Evidenzkette verbindet; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current competency concerning intercepts from expressions and graphs. Round A is selected because it combines existence, coordinate meaning, and an absent intercept in one coherent evidence chain; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902-decision-003",
+      "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ac59cf7a670eb70a10c452fa084624f83848b417ff84bfe78b14318f53b9ffa8",
+      "pageFingerprint": "sha256:eaa5cd6a18120256c0342da8ae2bca51cef2921163086ac16dc264daa0e85df2",
+      "goalReviewContextFingerprint": "sha256:6e7cedfe0c9c8a8b3413778416cf05ab7aa0242644b934733ad6c641e871a183",
+      "finalText": {
+        "titleDe": "Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
+        "titleEn": "Draw graphs of simple hyperbolas with asymptotes",
+        "descriptionDe": "Die lernende Person kann zu Funktionen der Form f(x) = a/(x - d) + e mit a ≠ 0 die senkrechte und waagerechte Asymptote bestimmen und einen zu den Parametern passenden Hyperbelgraphen zeichnen.",
+        "descriptionEn": "The learner can determine the vertical and horizontal asymptotes of functions of the form f(x) = a/(x - d) + e with a ≠ 0 and draw a hyperbola graph consistent with the parameters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:004",
+          "recordDigest": "sha256:5fdd07f6330a3c96c6ea08421d7df541222d8e8e80fda1872dd366b5f6d76f26"
+        },
+        "second": {
+          "recordId": "math-b025a-round-b-bc6e4c14",
+          "recordDigest": "sha256:f29f11cf9b6616bfe1d0917c50fc87ea455a04697e20465bec8fc6934314bd5f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen das atomare Zeichenziel. Runde A wird ausgewählt, weil sie Asymptoten, geeignete Punkte, beide Äste und eine abschließende Prüfung an den Parameterwirkungen vollständig sichtbar macht; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the atomic graph-drawing goal. Round A is selected because it makes the asymptotes, suitable points, both branches, and a final check against the parameter effects fully observable; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902-decision-004",
+      "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:57e9895e9d93bf52f9ea51f3d21280bfdc7efc02001881191baca8fb175615f0",
+      "pageFingerprint": "sha256:a4bb08f61b4ecad234ec5f255627ad1c493d0d4f80d19e4712782686a375440c",
+      "goalReviewContextFingerprint": "sha256:9e19d69e43f78a1441c62d3b5b013bc82decebb502e5b0ececb8e1076ff17c4f",
+      "finalText": {
+        "titleDe": "Umgekehrt proportionale Größen mit Hyperbeln beschreiben",
+        "titleEn": "Describe inverse proportionality using hyperbolas",
+        "descriptionDe": "Die lernende Person kann umgekehrt proportionale Größen an einem konstanten Produkt erkennen, sie durch Funktionen der Form y = k/x mit k ≠ 0 beschreiben und den zugehörigen Hyperbelgraphen auch in naturwissenschaftlichen Kontexten deuten.",
+        "descriptionEn": "The learner can recognize inversely proportional quantities by their constant product, describe them with functions of the form y = k/x with k ≠ 0, and interpret the corresponding hyperbola graph, including in science-related contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:006",
+          "recordDigest": "sha256:c6b8d40721bf0a5cec1c36d9d86700f899864e279af267ff6f2398612b0a272f"
+        },
+        "second": {
+          "recordId": "math-b025a-round-b-fa72cf74",
+          "recordDigest": "sha256:7f41c33d526bd9fd358e94368479e107458b3e9c260cfe001377829a6518970b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die Modellierung umgekehrter Proportionalität. Runde B wird ausgewählt, weil sie konstantes Produkt, Term, kontextbezogenen Graphenast und Modellgrenzen besonders geschlossen zusammenführt; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the modeling of inverse proportionality. Round B is selected because it particularly coherently combines constant product, expression, context-relevant graph branch, and model limitations; Round A remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:b4d89db5b512306c6384e9a02c0db7626557645354444812247580e28907d906"
+}

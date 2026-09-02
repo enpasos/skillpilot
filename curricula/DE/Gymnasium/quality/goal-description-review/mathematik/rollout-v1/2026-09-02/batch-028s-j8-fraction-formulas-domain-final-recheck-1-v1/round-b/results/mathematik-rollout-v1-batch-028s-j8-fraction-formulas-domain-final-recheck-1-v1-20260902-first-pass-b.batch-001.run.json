@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b.batch-001.run-001",
+  "campaignId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-b",
+  "roundId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:856531a8f8fb76aba4c06a9e6a81f021b3bc26e57bae6e8812c298931e6916df",
+  "bundleFingerprint": "sha256:3caf8c800c2fd9bbbd1c4541bd8a65931a2ab5da9e35861246366bd5c878c465",
+  "bookDigest": "sha256:86bc2fc7caefc2be311581c162cf9db65b9f2d5ab53f4cc4b6cfd9d6abf53c1d",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:dc531e96d80a52cdbef1fe4ad48ebe614b0e0df824b20d1236531a507d4a920d",
+  "independenceGroupId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0a154cbd-1218-4553-835c-a754e9901bba"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:7c4515b64bf285060f0344b68c830c28f5a6cd5c44359d881617ed8330f74a95"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:2192d0c2ae34a371f8765a9b77486f1a272c054f55e5ec12fbd7b4196c1c5c83"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0b8838ce756fdfed8311c555748af6f45b3c4728da81b9121ddf4b9e5a5049fb"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:856531a8f8fb76aba4c06a9e6a81f021b3bc26e57bae6e8812c298931e6916df"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T16:45:18Z",
+  "completedAt": "2026-09-02T16:47:46Z",
+  "status": "completed",
+  "outputDigest": "sha256:587fb1aa25b0a3a76866b30d7a3cf6c62c9de8e35ba314a88014d04e8429632e",
+  "toolchainVersion": "goal-description-review-v1"
+}

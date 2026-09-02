@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-29T04:59:29.061Z
+Generated: 2026-09-02T18:17:23.855Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 86 |
+| Review-Ledger-Dateien | 87 |
 | Offene Provider-Deferred-Ziele | 48 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
@@ -45,8 +45,10 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
 | `accepted_documented_repo_native_fallback` | 1 |
+| `accepted_existing_asset` | 8 |
 | `accepted_existing_asset_as_cluster_overview` | 8 |
 | `accepted_existing_asset_metadata_rebound` | 15 |
+| `accepted_existing_asset_unchanged_goal` | 2 |
 | `accepted_pilot` | 281 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_fresh_ai_review` | 281 |
@@ -72,8 +74,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-085.md` |
-| Latest ledger status | - |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-088.md` |
+| Latest ledger status | `accepted_existing_assets_after_description_review` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 

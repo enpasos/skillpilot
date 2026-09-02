@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-resolution-5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+  "goal": {
+    "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:82ebc4d9042a48ebe4e0a8037aeb9b5a205769558910d648e7a7c398bd26b3df",
+    "pageFingerprint": "sha256:143dfb3a63c3259e02d073e590b805c7c8431652cc0c602bf54433249c116212",
+    "goalReviewContextFingerprint": "sha256:00f7fbeca5895ab44c97e080eda58945f35020d087b9893980a99b9d008fea44",
+    "finalText": {
+      "titleDe": "Laplace-Experimente auswerten",
+      "titleEn": "Evaluate Laplace experiments",
+      "descriptionDe": "Die lernende Person kann anhand der Versuchsanordnung begründen, ob ein einfaches Zufallsexperiment als Laplace-Experiment modelliert werden kann, seine Ergebnismenge und Ereignisse tabellarisch oder grafisch darstellen sowie im Laplace-Fall theoretische Ereigniswahrscheinlichkeiten als Anteil der günstigen an allen möglichen gleichwahrscheinlichen Elementarergebnissen bestimmen und deuten.",
+      "descriptionEn": "The learner can use the setup of a simple random experiment to justify whether it can be modelled as a Laplace experiment, represent its sample space and events in a table or graph, and, in the Laplace case, determine and interpret theoretical event probabilities as the proportion of favourable outcomes among all possible equally likely elementary outcomes."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-a",
+      "campaignDigest": "sha256:6bac72f6cbcfab94fca6b3bd4e91c99cb726feef26cb2ee5c47a659832ec39b2",
+      "roundId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:208d2a2592601f9d1a20dcc7493d78aa4bb43323d117d77ad7439916c7ccbdbb",
+      "goalReviewContextFingerprint": "sha256:00f7fbeca5895ab44c97e080eda58945f35020d087b9893980a99b9d008fea44",
+      "batchId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-gpt-5.6-sol-math-b027a-round-a-20260902",
+      "runManifestDigest": "sha256:d1322a119fb71778271a86f6ec11907cc4a53a14c028a75278b4d6735363ef97",
+      "resultsDigest": "sha256:608a3ef4738a33d3ddc4a49f5db1264ab8b8bab59f646d60f59f6384ddd4c7e3",
+      "recordId": "openai-gpt-5.6-sol-math-b027a-round-a-5ab17678-20260902",
+      "recordDigest": "sha256:8be3a19b4189ba5a3de05a39a9de7927e49508a21694156fe94a217052695788"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-b",
+      "campaignDigest": "sha256:5b2729e9ba3756764d481b8dcf5292544fe7313636b0bc26b7bcdad398c56ec8",
+      "roundId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:208d2a2592601f9d1a20dcc7493d78aa4bb43323d117d77ad7439916c7ccbdbb",
+      "goalReviewContextFingerprint": "sha256:00f7fbeca5895ab44c97e080eda58945f35020d087b9893980a99b9d008fea44",
+      "batchId": "mathematik-rollout-v1-batch-027a-j8-laplace-experiments-revised-1-v1-20260902-first-pass-b.batch-001",
+      "runId": "openai-gpt-5-mathematik-b027a-round-b-20260902",
+      "runManifestDigest": "sha256:01728ef4b27ec3853c1f452eaeb5a3dab3c72ebec5e3314bdc77d4aa4bfc6dc1",
+      "resultsDigest": "sha256:7a909aa35dce04411645710153adba45e3e1bf38ec8b4b34da62af75aedf9a55",
+      "recordId": "mathematik-b027a-5ab17678-round-b-20260902",
+      "recordDigest": "sha256:c041fd051689916b76a19bd04f9bbb80d80fc7d1fc0af0b5d4c73f088817a2b7"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75454e451172dece846bc35f9ce992957e5595a4b3a577bef177c70ff0f3f346"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-b027a-laplace-final-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:1e3df16f0cb1e7cd57552de18445a5a685d8e810e5526e270d2cb86f30795c6a",
+    "manifestFingerprint": "sha256:a4543a0c6a8d1d5c82064a48dd705ea1049383ff5ddf77e2043c57cd57c8795f",
+    "decisionId": "mathematik-b027a-laplace-final-synthesis-openai-codex-20260902-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b027a-laplace-final-synthesis-openai-codex-20260902-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B027a mathematics subject synthesis candidate",
+    "synthesizedAt": "2026-09-02T14:26:55.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den fachlich präzisierten deutschen und englischen Zieltext mit KEEP. Die Kompetenz bildet eine geschlossene Auswertungskette aus begründeter Laplace-Modellwahl, Darstellung von Ergebnismenge und Ereignis, Bestimmung der theoretischen Ereigniswahrscheinlichkeit und kontextbezogener Deutung; empirische Häufigkeiten bleiben bewusst in getrennten Lernzielen. Für das Understanding-Evidence-Profil wird Runde B gewählt, weil sie die Abgrenzung von Modellwahrscheinlichkeit und beobachteter relativer Häufigkeit sowie einen unabhängigen Transfer auf eine veränderte Symmetrie besonders klar operationalisiert. Runde A bleibt als vollständige unabhängige Bestätigung gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm the technically refined German and English goal text with KEEP. The competency forms a coherent evaluation chain comprising justified selection of a Laplace model, representation of the sample space and event, determination of theoretical event probability, and contextual interpretation; empirical frequencies intentionally remain in separate goals. Round B is selected for the understanding-evidence profile because it operationalizes especially clearly the distinction between model probability and observed relative frequency and an independent transfer to changed symmetry. Round A remains fully bound as independent confirmation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass ein Laplace-Modell nur dann gerechtfertigt ist, wenn alle Elementarergebnisse als gleich wahrscheinlich angenommen werden können, dass Ereignisse Teilmengen der Ergebnismenge sind und dass deshalb P(E)=|E|/|Ω| den Anteil der günstigen Elementarergebnisse beschreibt; diese Modellwahrscheinlichkeit ist von einer beobachteten relativen Häufigkeit zu unterscheiden.",
+      "essentialUnderstandingEn": "The learner understands that a Laplace model is justified only when all elementary outcomes can be assumed to be equally likely, that events are subsets of the sample space, and that P(E)=|E|/|Ω| therefore describes the proportion of favourable elementary outcomes; this model probability is distinct from an observed relative frequency.",
+      "observablePerformanceDe": "Zu einem neu vorgelegten einfachen Zufallsexperiment beschreibt die lernende Person die Elementarergebnisse, stellt Ω und ein Ereignis tabellarisch oder grafisch dar, begründet anhand der Versuchsanordnung und notwendiger Annahmen die Gleichwahrscheinlichkeit, berechnet im zulässigen Laplace-Modell die Ereigniswahrscheinlichkeit durch Abzählen und deutet Zähler, Nenner und Ergebnis im Kontext.",
+      "observablePerformanceEn": "For a newly presented simple random experiment, the learner describes the elementary outcomes, represents Ω and an event in a table or graph, uses the setup and necessary assumptions to justify equal likelihood, calculates the event probability by counting within a valid Laplace model, and interprets the numerator, denominator, and result in context.",
+      "transferExpectationDe": "Bei einer strukturell veränderten Versuchsanordnung, etwa einem Würfel mit veränderter Symmetrie oder einem Glücksrad mit unterschiedlich großen Feldern, prüft die lernende Person erneut die Gleichwahrscheinlichkeit, passt Ergebnismenge und Ereignisdarstellung an und verwendet die Laplace-Regel nur dann; andernfalls erklärt sie, warum das Abzählverhältnis nicht genügt und welche zusätzliche Wahrscheinlichkeitsinformation erforderlich wäre.",
+      "transferExpectationEn": "For a structurally changed setup, such as a die with altered symmetry or a spinner with unequal sectors, the learner reassesses equal likelihood, adapts the sample space and event representation, and uses the Laplace rule only when justified; otherwise, the learner explains why the counting ratio is insufficient and what additional probability information would be needed."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-59f8fb8b59fd67f916c5d95f348fdcd2d26748b5f8578f075e738d72edc1ba4f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:60fed5520c3f4122155bbcc1b77e59c057ae0032404810cda6d11680f9b8b38d"
+}

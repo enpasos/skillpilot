@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029a-e-thermodynamic-state-variables-2-v1.config.json",
+  "configDigest": "sha256:a7e5ef187eb608c3ce88e7e468a7891af1b0088bca9ac362c0afa0c3867f87c6",
+  "goalIds": [
+    "cd1903a5-d70a-5320-9124-b6b24917ba14",
+    "36c4590c-6032-5a37-b660-f15951dee076"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:87cffbb8d1d6f03e1eb1513568eba051ac3e8a618c1d4a0633905db99660937f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1cfe6a4c15fdef8edbf468911df54d29325f434fd080b0efae3e9e160261b289",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a3253771f9db5ab2ac2a11c2642e9fd2fea3a4fd33e5dcd87e4bf1488e8e28a8",
+    "reviewInputFingerprint": "sha256:0462b9b8c55500787ad283b3b5d3f22c44692660da661bb9d23d07bce147d9c0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-a",
+        "campaignDigest": "sha256:22a32270cbc30724227e77632db47269695d29dfea2e7964588d01e957a12296",
+        "roundId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4a93209d0cc72b8646ec625b602bda9a3b2c4ed6e46ae945dd71524398c376a5"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-b",
+        "campaignDigest": "sha256:26914b15d73485c5aeb3a12a542cc0812140980e993a450f71474dbeba691e58",
+        "roundId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-029a-e-thermodynamic-state-variables-2-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b7f9baa209d0f1624ef92a9d0722a7e303d62c016780f8eb9568475b32b3cebc"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

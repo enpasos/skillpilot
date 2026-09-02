@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.run-001",
+  "campaignId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:8b266eeb3e07db204fe2ad1f0c698d282ecc5f4cbf88ee19e10c39230f320325",
+  "bundleFingerprint": "sha256:6251eb20aa2bef5e00985f88cd2e2bd410471af64d3a6152feacce5d0baf23df",
+  "bookDigest": "sha256:a739ec960e6277a37d55dacb9af5fbeeaf22e5dbee30544d2905322bb2024ef2",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c9e2d497e6a1f3483b1328d622b3285410641d30d91836ec6bf3f6870335262f",
+  "independenceGroupId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+    "9854589c-5feb-4942-b90f-311ddf36eb78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:c1643f6c98c4be9b19d0bb57a7a088fbd4642779eed6204f89f7d121f3ffb296"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8b266eeb3e07db204fe2ad1f0c698d282ecc5f4cbf88ee19e10c39230f320325"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T16:41:53Z",
+  "completedAt": "2026-09-02T16:46:30Z",
+  "status": "completed",
+  "outputDigest": "sha256:622aa5266826357c8f42b86ed7ad67349d3f4baefe4508318b351138ed13a74e",
+  "toolchainVersion": "goal-description-review-v1"
+}

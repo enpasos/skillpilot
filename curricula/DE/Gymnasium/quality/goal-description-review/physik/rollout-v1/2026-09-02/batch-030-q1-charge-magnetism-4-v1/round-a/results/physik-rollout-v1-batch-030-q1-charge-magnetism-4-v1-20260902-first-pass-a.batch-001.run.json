@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-review-a-physics-b030-57nCDY",
+  "campaignId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:a6d92e023030851ddf00f3d2009b87a64d6f0ae050a11d6c2214081b310cadd5",
+  "bundleFingerprint": "sha256:7afd40b6bad76a153f2eeed5bfc57edfb8c7aafea71e4dc54c26c4de6c6b06a2",
+  "bookDigest": "sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:5520270f7e36e05816a18a4b9fd41ebd3c2687712530edf0f05f3f7d2a55c24c",
+  "independenceGroupId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+    "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+    "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+    "9854589c-5feb-4942-b90f-311ddf36eb78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a6d92e023030851ddf00f3d2009b87a64d6f0ae050a11d6c2214081b310cadd5"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:eeebc36d5c02d1eaf7f58311ee9edabc3c4c06188b3bad5b16e675d2eaf0cff7"
+    }
+  ],
+  "startedAt": "2026-09-02T15:29:15.000Z",
+  "completedAt": "2026-09-02T15:35:06.056Z",
+  "status": "completed",
+  "outputDigest": "sha256:bebf6199e353443e04a18e020cf17f1fea2f56e1e12d70b06f175b9ce1a9658a",
+  "toolchainVersion": "codex-gpt5-review-a-v1"
+}
