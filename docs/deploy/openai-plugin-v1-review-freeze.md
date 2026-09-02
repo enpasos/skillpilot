@@ -2357,6 +2357,36 @@ MCP-Apps-UI, Reviewfälle und -fixtures, Portalwerte, Reviewer-Zugangsdaten,
 Demo und Reviewartefakte bleiben unverändert. Deshalb ist keine Aktion im
 OpenAI-Portal erforderlich.
 
+### 6.42 Eng begrenzte Ausnahme: kalendertagsfeste Kursplan-Browser-Evidenz
+
+Der Product Owner hat am **2. September 2026** die ausschließlich testseitige
+Korrektur des beim Datumswechsel sichtbar gewordenen Kursplan-CI-Fehlers
+freigegeben. Die Browser-Evidenz verwendet feste Plandaten vom 1. bis
+13. September 2026 und prüft den dazu gehörenden Sollstand vom 1. September,
+bezog ihren Berechnungsstichtag aber irrtümlich aus dem jeweils aktuellen
+Berliner Kalendertag. Am 2. September zeigte das unveränderte Produkt deshalb
+korrekt `12 von 53 fällig`, während der Test weiterhin den fixturegebundenen
+Wert `6 von 53 fällig` erwartete.
+
+Freigegeben ist ausschließlich, in
+`app/scripts/testExistingLearnerTrainerUi.ts` unmittelbar nach dem Erzeugen
+der Playwright-Seite und vor dem Laden der Fixture die Browserzeit auf
+`2026-09-01T06:00:00.000Z` festzusetzen. Damit stammen Plandaten,
+Berechnungsstichtag und Assertions aus demselben unveränderlichen
+Testszenario. Produktcode, UI-Text und Kursplanverhalten werden nicht geändert.
+
+Die bestehende Hashkette wird append-only fortgesetzt:
+
+- `app/scripts/testExistingLearnerTrainerUi.ts`:
+  `616fc99ac1c6565afa1ca9e7dae2922cd96f49533ed9f802e471b4e862cf22bd`
+  → `92a79bedfaa8307feeef4b134cfb48db1a6d7f0a701e300f32e6ba61422a661f`.
+
+OpenAI-Package, MCP/OAuth, Tools, Schemas, Annotationen, Instruktionen,
+Ressourcen, MCP-Apps-UI, Runtime-, Session-, Identitäts- und
+Lernzustandsverhalten, Reviewfälle und -fixtures, Portalwerte,
+Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
+ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

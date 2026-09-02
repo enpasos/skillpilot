@@ -2439,6 +2439,29 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "45911396d7908ac0ed3e4548e7ede3c2ee2a5181b8e7e524db82ac7433e4e2fd"
       }
     ]
+  },
+  {
+    "id": "2026-09-02-existing-learner-course-plan-calendar-determinism",
+    "approvedAt": "2026-09-02",
+    "approvedBy": "product-owner",
+    "reason": "Make the already authorized existing-learner course-plan browser evidence independent of the wall-clock date by binding its calculation date to the fixed plan fixture.",
+    "scope": "In test-only browser evidence, set the Playwright page clock to 2026-09-01T06:00:00.000Z immediately after page creation and before loading the existing fixture whose plan and assertions already represent 1 September 2026. Preserve every product source byte and all course-planning, publication, runtime, session, identity, learner-state, package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, fixture, portal, reviewer, demo and artifact behavior.",
+    "target": "existing-learner-course-plan-browser-evidence-calendar-determinism-only",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-test-only-fixed-clock-no-runtime-openai-v1-contract-or-review-flow-effect",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/scripts/testExistingLearnerTrainerUi.ts",
+        "priorAuthorizedSha256": "616fc99ac1c6565afa1ca9e7dae2922cd96f49533ed9f802e471b4e862cf22bd",
+        "authorizedSha256": "92a79bedfaa8307feeef4b134cfb48db1a6d7f0a701e300f32e6ba61422a661f"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "45911396d7908ac0ed3e4548e7ede3c2ee2a5181b8e7e524db82ac7433e4e2fd",
+        "authorizedSha256": "7a42c0f5839bc62267250573db9b447d6f10ed538fde3c268382221fb6e1559d"
+      }
+    ]
   }
 ];
 
