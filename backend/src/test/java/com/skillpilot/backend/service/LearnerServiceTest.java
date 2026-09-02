@@ -138,6 +138,7 @@ public class LearnerServiceTest {
     private static final String J8_EXAM_TASK_6_ID = "fbf10244-9e55-597a-98d4-006d972a5c41";
     private static final String J8_EXAM_TASK_7_ID = "10a77422-6ceb-57ce-a90f-0ebc1179aaae";
     private static final String J8_EXAM_TASK_8_ID = "a70d4194-1f95-5dc4-884d-8ca856663601";
+    private static final String J8_EXAM_TASK_9_ID = "0d2cfddc-7af6-5709-819f-929e6cf9c192";
 
     @Autowired
     private LearnerService learnerService;
@@ -1287,7 +1288,7 @@ public class LearnerServiceTest {
                 J8_EXAM_TASK_5_ID,
                 J8_EXAM_TASK_6_ID,
                 J8_EXAM_TASK_8_ID);
-        Set<String> completedExamTaskIds = Set.of(J8_EXAM_TASK_3_ID, J8_EXAM_TASK_7_ID);
+        Set<String> completedExamTaskIds = Set.of(J8_EXAM_TASK_3_ID, J8_EXAM_TASK_7_ID, J8_EXAM_TASK_9_ID);
         Set<String> allExamTaskIds = new LinkedHashSet<>(remainingExamTaskIds);
         allExamTaskIds.addAll(completedExamTaskIds);
         Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
@@ -1310,7 +1311,7 @@ public class LearnerServiceTest {
                     .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, sourceJ8AtomicGoalIds));
             assertThat(sourceJ8AtomicGoalIds)
                     .as(viewId)
-                    .hasSize(53)
+                    .hasSize(55)
                     .containsAll(directExamRequirementIds);
         }
         CompositionStructureResolution j8Scope = compositionViewService
@@ -1323,7 +1324,7 @@ public class LearnerServiceTest {
         Set<String> additionalCompetencyAtomicGoalIds = new LinkedHashSet<>();
         additionalCompetencies.referencedGoalIds()
                 .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, additionalCompetencyAtomicGoalIds));
-        assertThat(j8AtomicGoalIds).hasSize(53);
+        assertThat(j8AtomicGoalIds).hasSize(55);
         assertThat(additionalCompetencyAtomicGoalIds)
                 .isNotEmpty()
                 .doesNotContainAnyElementsOf(allExamTaskIds);
@@ -1350,7 +1351,7 @@ public class LearnerServiceTest {
 
         var resumedCoachState = learnerService.getCoachLearnerState(learnerId);
 
-        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(53);
+        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(55);
         assertThat(resumedCoachState.goals().scope().mastered_atomic())
                 .isEqualTo(formerlyCompletedAtomicGoalIds.size());
         assertThat(resumedCoachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
@@ -1365,7 +1366,7 @@ public class LearnerServiceTest {
 
         var coachState = learnerService.getCoachLearnerState(learnerId);
 
-        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(53);
+        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(55);
         assertThat(coachState.goals().scope().mastered_atomic())
                 .isEqualTo(coachState.goals().scope().total_atomic() - remainingExamTaskIds.size());
         assertThat(coachState.goals().scope().total_atomic()

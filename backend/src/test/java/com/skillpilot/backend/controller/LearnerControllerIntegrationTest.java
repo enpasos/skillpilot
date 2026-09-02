@@ -1322,22 +1322,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "236", "236" },
-                { "DE-BE", "235", "235" },
-                { "DE-BW", "255", "255" },
-                { "DE-BY", "224", "224" },
-                { "DE-HB", "209", "209" },
-                { "DE-HE", "322", "376" },
-                { "DE-HH", "235", "235" },
-                { "DE-MV", "235", "235" },
-                { "DE-NI", "235", "235" },
-                { "DE-NW", "235", "235" },
-                { "DE-RP", "157", "164" },
-                { "DE-SH", "221", "228" },
-                { "DE-SL", "235", "235" },
-                { "DE-SN", "235", "235" },
-                { "DE-ST", "235", "235" },
-                { "DE-TH", "236", "236" }
+                { "DE-BB", "238", "238" },
+                { "DE-BE", "237", "237" },
+                { "DE-BW", "256", "256" },
+                { "DE-BY", "226", "226" },
+                { "DE-HB", "211", "211" },
+                { "DE-HE", "324", "378" },
+                { "DE-HH", "237", "237" },
+                { "DE-MV", "237", "237" },
+                { "DE-NI", "237", "237" },
+                { "DE-NW", "237", "237" },
+                { "DE-RP", "158", "165" },
+                { "DE-SH", "222", "229" },
+                { "DE-SL", "237", "237" },
+                { "DE-SN", "237", "237" },
+                { "DE-ST", "237", "237" },
+                { "DE-TH", "238", "238" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1373,12 +1373,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "736", "767" },
-                { "DE-HE", "LK", "862", "893" },
-                { "DE-RP", "GK", "576", "583" },
-                { "DE-RP", "LK", "687", "694" },
-                { "DE-SH", "GK", "621", "628" },
-                { "DE-SH", "LK", "717", "724" }
+                { "DE-HE", "GK", "738", "769" },
+                { "DE-HE", "LK", "864", "895" },
+                { "DE-RP", "GK", "577", "584" },
+                { "DE-RP", "LK", "688", "695" },
+                { "DE-SH", "GK", "622", "629" },
+                { "DE-SH", "LK", "718", "725" }
         };
         SoftAssertions softly = new SoftAssertions();
 
