@@ -252,6 +252,7 @@ try {
   })
 
   const page = await context.newPage()
+  await page.clock.setFixedTime(new Date('2026-09-01T06:00:00.000Z'))
   const requests: Array<{ pathname: string; method: string }> = []
   const browserErrors: string[] = []
   let delayNextProfileRequest = false
