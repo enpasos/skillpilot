@@ -1,0 +1,87 @@
+name: Claude Support Synthetic
+
+on:
+  workflow_dispatch:
+    inputs:
+      exercise_alert:
+        description: Fail intentionally after a passing live check to test alert delivery
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: '17 * * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '.nvmrc'
+      - '.github/workflows/claude-support-synthetic.yml'
+      - 'ai/claude/plugin/skillpilot-coach-v1/**'
+      - 'scripts/claude_support_synthetic.mjs'
+      - 'scripts/claude_support_synthetic.test.mjs'
+      - 'scripts/claude_direct_install_beta_release.mjs'
+      - 'backend/src/main/resources/claude-plugin-publication/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.nvmrc'
+      - '.github/workflows/claude-support-synthetic.yml'
+      - 'ai/claude/plugin/skillpilot-coach-v1/**'
+      - 'scripts/claude_support_synthetic.mjs'
+      - 'scripts/claude_support_synthetic.test.mjs'
+      - 'scripts/claude_direct_install_beta_release.mjs'
+      - 'backend/src/main/resources/claude-plugin-publication/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  unit:
+    name: Synthetic Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Use Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .nvmrc
+      - name: Test read-only synthetic
+        run: node --test scripts/claude_support_synthetic.test.mjs
+
+  live:
+    name: Live Read-Only Synthetic
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Use Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .nvmrc
+      - name: Verify public Claude support surface
+        shell: bash
+        run: |
+          set -o pipefail
+          node scripts/claude_support_synthetic.mjs verify \
+            | tee "$RUNNER_TEMP/claude-support-synthetic.json"
+      - name: Exercise alert route intentionally
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.exercise_alert }}
+        run: |
+          echo "::error title=Intentional Claude support alert drill::The live synthetic passed; this workflow now fails intentionally to verify alert delivery."
+          exit 1
+      - name: Retain sanitized synthetic result
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: claude-support-synthetic-${{ github.run_id }}
+          path: ${{ runner.temp }}/claude-support-synthetic.json
+          if-no-files-found: ignore
+          retention-days: 14

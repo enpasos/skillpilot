@@ -78,10 +78,24 @@ class ClaudeV1SecurityChainIntegrationTest {
     }
 
     @Test
-    void discoveryAndPrivacyRemainPublicButLegacyBindingRoutesAreGone() throws Exception {
+    void discoveryAndBilingualPrivacyRemainPublicButLegacyBindingRoutesAreGone() throws Exception {
         assertEquals(200, sendGet(ClaudeV1Contract.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH).statusCode());
         assertEquals(200, sendGet(ClaudeV1Contract.INTERNAL_AUTH_SERVER_METADATA_PATH).statusCode());
-        assertEquals(200, sendGet(ClaudeV1Contract.INTERNAL_PRIVACY_PATH).statusCode());
+        HttpResponse<String> privacy = sendGet(ClaudeV1Contract.INTERNAL_PRIVACY_PATH);
+        assertEquals(200, privacy.statusCode());
+        assertTrue(privacy.headers().firstValue("Content-Type").orElse("").startsWith("text/html"));
+        assertTrue(privacy.body().contains("id=\"deutsch\" class=\"language-section\" lang=\"de\""));
+        assertTrue(privacy.body().contains("id=\"english\" class=\"language-section\" lang=\"en\""));
+        assertTrue(privacy.body().contains("Start ausschließlich bei SkillPilot"));
+        assertTrue(privacy.body().contains("Sessions start only at SkillPilot"));
+        assertTrue(privacy.body().contains("https://skillpilot.com/privacy"));
+        assertTrue(privacy.body().contains("https://www.anthropic.com/legal/consumer-terms"));
+        assertTrue(privacy.body().contains("https://www.anthropic.com/legal/privacy"));
+        assertFalse(privacy.body().contains("Anthropic PBC"));
+        assertTrue(privacy.body().contains("support@skillpilot.com"));
+        assertFalse(
+                privacy.body().replace("support@skillpilot.com", "").contains("@"),
+                "the public privacy page must not publish another email address");
         String retiredConnectPath = ClaudeV1Contract.INTERNAL_BASE_PATH + "/connect";
         assertEquals(404, sendGet(retiredConnectPath).statusCode());
         assertEquals(404, sendGet(retiredConnectPath + "/details").statusCode());

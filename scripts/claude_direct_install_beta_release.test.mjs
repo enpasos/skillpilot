@@ -16,7 +16,9 @@ import {
   loadDirectInstallBetaLane,
   prepareClaudeDirectInstallBetaPublication,
   validateClaudePluginPublicationIndex,
+  validateDirectInstallBetaExactClientEvidence,
   validateDirectInstallBetaLane,
+  validateDirectInstallBetaPrivacyEvidence,
   verifyClaudeDirectInstallBetaPublication,
   verifyPublicClaudeDirectInstallBetaPublication,
 } from "./claude_direct_install_beta_release.mjs";
@@ -25,6 +27,11 @@ const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const laneRelativePath =
   "ai/claude/plugin/skillpilot-coach-v1/release/direct-install-beta.json";
+const exactClientEvidenceRelativeRoot =
+  "ai/claude/plugin/skillpilot-coach-v1/release/evidence/controlled-direct-install-beta";
+const privacyEvidenceRelativeRoot = exactClientEvidenceRelativeRoot;
+const privacyNoticeRelativePath =
+  "backend/src/main/resources/claude-connector-v1/privacy.html";
 const manifestRelativePath =
   "ai/claude/plugin/skillpilot-coach-v1/.claude-plugin/plugin.json";
 const publicationRelativeRoot =
@@ -32,12 +39,43 @@ const publicationRelativeRoot =
 const canonicalLane = JSON.parse(
   readFileSync(resolve(repositoryRoot, laneRelativePath), "utf8"),
 );
+const canonicalExactClientEvidence = JSON.parse(
+  readFileSync(
+    resolve(
+      repositoryRoot,
+      exactClientEvidenceRelativePath(canonicalLane.candidate.version),
+    ),
+    "utf8",
+  ),
+);
+const canonicalPrivacyEvidence = JSON.parse(
+  readFileSync(
+    resolve(
+      repositoryRoot,
+      privacyEvidenceRelativePath(canonicalLane.candidate.version),
+    ),
+    "utf8",
+  ),
+);
+const canonicalPrivacyNotice = readFileSync(
+  resolve(repositoryRoot, privacyNoticeRelativePath),
+);
 const fixtureVersion = "1.2.3";
 const preparedAt = "2026-08-25T12:34:56.000Z";
 const deterministicBytes = Buffer.from("deterministic Claude plugin fixture\n");
 
 test("production direct-install lane has the isolated, fail-closed beta semantics", () => {
   validateDirectInstallBetaLane(canonicalLane);
+  validateDirectInstallBetaExactClientEvidence(
+    canonicalExactClientEvidence,
+    canonicalLane,
+  );
+  validateDirectInstallBetaPrivacyEvidence(
+    canonicalPrivacyEvidence,
+    canonicalLane,
+    repositoryRoot,
+  );
+  loadDirectInstallBetaLane(repositoryRoot);
   assert.equal(canonicalLane.lane, "controlled_direct_install_beta");
   assert.deepEqual(canonicalLane.officialDistribution, {
     anthropicConsole: "deferred",
@@ -66,6 +104,29 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
   assert.equal(canonicalLane.readiness.controlledBetaReady, true);
   assert.equal(canonicalLane.readiness.guidedFirstPartyBetaReady, true);
   assert.equal(canonicalLane.readiness.openPublicBetaReady, false);
+  const privacyBlocker = canonicalLane.readiness.openPublicBetaBlockers.find(
+    ({ id }) => id === "privacy-approval",
+  );
+  assert.deepEqual(privacyBlocker, {
+    id: "privacy-approval",
+    status: "pass",
+    evidenceRef: privacyEvidenceRelativePath(canonicalLane.candidate.version),
+  });
+  assert.ok(
+    canonicalLane.readiness.openPublicBetaBlockers
+      .filter(({ id }) => id !== "privacy-approval")
+      .every(
+      ({ status, evidenceRef }) => status === "pending" && evidenceRef === null,
+      ),
+  );
+  assert.equal(canonicalExactClientEvidence.status, "pending");
+  assert.ok(
+    canonicalExactClientEvidence.checks.every(({ status }) => status === "pending"),
+  );
+  assert.equal(canonicalPrivacyEvidence.status, "pass");
+  assert.ok(
+    canonicalPrivacyEvidence.checks.every(({ status }) => status === "pass"),
+  );
 });
 
 test("public verification checks the SPA route, exact index, immutable headers and artifact bytes", async () => {
@@ -282,6 +343,9 @@ test("prepare writes only the closed index and immutable versioned artifact, the
     assert.deepEqual(listFixtureFiles(root), [
       manifestRelativePath,
       laneRelativePath,
+      exactClientEvidenceRelativePath(fixtureVersion),
+      privacyEvidenceRelativePath(fixtureVersion),
+      privacyNoticeRelativePath,
       `${publicationRelativeRoot}/index.json`,
       `${publicationRelativeRoot}/${artifactRelativePath}`,
     ]);
@@ -327,7 +391,12 @@ test("verify rejects a stored artifact whose bytes no longer match its index", (
 test("prepare never rebinds an existing version to different bytes", () => {
   const firstBytes = Buffer.from("first immutable bytes");
   const secondBytes = Buffer.from("different immutable bytes");
-  withFixture(({ root, lanePath }) => {
+  withFixture(({
+    root,
+    lanePath,
+    exactClientEvidencePath,
+    privacyEvidencePath,
+  }) => {
     const first = prepareClaudeDirectInstallBetaPublication({
       repositoryRoot: root,
       preparedAt,
@@ -337,6 +406,8 @@ test("prepare never rebinds an existing version to different bytes", () => {
     const lane = readJson(lanePath);
     lane.candidate.sha256 = sha256(secondBytes);
     writeJson(lanePath, lane);
+    writeJson(exactClientEvidencePath, fixtureExactClientEvidence(lane));
+    writeJson(privacyEvidencePath, fixturePrivacyEvidence(lane));
     assert.throws(
       () => prepareClaudeDirectInstallBetaPublication({
         repositoryRoot: root,
@@ -476,6 +547,300 @@ test("lane readiness distinguishes the guided first-party beta from open-public 
     () => validateDirectInstallBetaLane(missingRealClientEvidence),
     /controlledBetaEvidence IDs mismatch/u,
   );
+
+  const pendingBlockerWithEvidence = clone(canonicalLane);
+  const pendingLegalBlocker = pendingBlockerWithEvidence.readiness
+    .openPublicBetaBlockers.find(({ id }) => id === "legal-approval");
+  pendingLegalBlocker.evidenceRef =
+    "external-evidence:premature";
+  assert.throws(
+    () => validateDirectInstallBetaLane(pendingBlockerWithEvidence),
+    /pending open-public blocker legal-approval\.evidenceRef/u,
+  );
+
+  const passingBlockerWithoutEvidence = clone(canonicalLane);
+  const passingPrivacyBlocker = passingBlockerWithoutEvidence.readiness
+    .openPublicBetaBlockers.find(({ id }) => id === "privacy-approval");
+  passingPrivacyBlocker.evidenceRef = null;
+  assert.throws(
+    () => validateDirectInstallBetaLane(passingBlockerWithoutEvidence),
+    /passing open-public blocker privacy-approval\.evidenceRef/u,
+  );
+  passingPrivacyBlocker.evidenceRef =
+    "external-evidence:privacy-approval";
+  assert.throws(
+    () => validateDirectInstallBetaLane(passingBlockerWithoutEvidence),
+    /passing open-public blocker privacy-approval\.evidenceRef mismatch/u,
+  );
+  passingPrivacyBlocker.evidenceRef =
+    privacyEvidenceRelativePath(canonicalLane.candidate.version);
+  validateDirectInstallBetaLane(passingBlockerWithoutEvidence);
+});
+
+test("exact-client evidence is closed, candidate-bound and derived from every client check", () => {
+  const cases = [
+    ["version drift", (evidence) => { evidence.candidate.version = "1.0.3"; }, /candidate version mismatch/u],
+    ["digest drift", (evidence) => { evidence.candidate.sha256 = "0".repeat(64); }, /candidate SHA-256 mismatch/u],
+    ["download drift", (evidence) => { evidence.candidate.downloadUrl += "?download=1"; }, /candidate download URL mismatch/u],
+    ["unknown check", (evidence) => { evidence.checks[0].id = "different-check"; }, /check identifiers mismatch/u],
+    ["unearned pass", (evidence) => { evidence.status = "pass"; }, /status must be derived/u],
+    ["premature evidence reference", (evidence) => { evidence.externalEvidenceId = "external:premature"; }, /pending exact-client evidence.externalEvidenceId/u],
+  ];
+  for (const [name, mutate, pattern] of cases) {
+    const evidence = clone(canonicalExactClientEvidence);
+    mutate(evidence);
+    assert.throws(
+      () => validateDirectInstallBetaExactClientEvidence(evidence, canonicalLane),
+      pattern,
+      name,
+    );
+  }
+});
+
+test("privacy evidence is closed, candidate-bound and byte-bound to the bilingual notice", () => {
+  const cases = [
+    [
+      "version drift",
+      (evidence) => { evidence.candidate.version = "1.0.3"; },
+      /candidate version mismatch/u,
+    ],
+    [
+      "candidate digest drift",
+      (evidence) => { evidence.candidate.sha256 = "0".repeat(64); },
+      /candidate SHA-256 mismatch/u,
+    ],
+    [
+      "notice path drift",
+      (evidence) => { evidence.notice.sourcePath = "privacy.html"; },
+      /notice source path mismatch/u,
+    ],
+    [
+      "notice digest drift",
+      (evidence) => { evidence.notice.sourceSha256 = "0".repeat(64); },
+      /notice source SHA-256 mismatch/u,
+    ],
+    [
+      "public URL drift",
+      (evidence) => { evidence.notice.publicUrl += "?language=en"; },
+      /notice public URL mismatch/u,
+    ],
+    [
+      "language order drift",
+      (evidence) => { evidence.notice.languages.reverse(); },
+      /notice languages mismatch/u,
+    ],
+    [
+      "unknown check",
+      (evidence) => { evidence.checks[0].id = "different-check"; },
+      /check identifiers mismatch/u,
+    ],
+    [
+      "unearned pass",
+      (evidence) => { evidence.checks[0].status = "pending"; },
+      /status must be derived/u,
+    ],
+    [
+      "premature approval",
+      (evidence) => {
+        evidence.status = "pending";
+        for (const check of evidence.checks) {
+          check.status = "pending";
+        }
+        evidence.approvedRole = null;
+        evidence.approvedAt = null;
+      },
+      /pending privacy evidence.approvedBy/u,
+    ],
+  ];
+  for (const [name, mutate, pattern] of cases) {
+    const evidence = clone(canonicalPrivacyEvidence);
+    mutate(evidence);
+    assert.throws(
+      () => validateDirectInstallBetaPrivacyEvidence(
+        evidence,
+        canonicalLane,
+        repositoryRoot,
+      ),
+      pattern,
+      name,
+    );
+  }
+});
+
+test("privacy evidence rejects semantically incomplete or executable notice bytes even with a matching digest", () => {
+  withFixture(({ root, privacyEvidencePath, privacyNoticePath }) => {
+    const evidence = readJson(privacyEvidencePath);
+    const withoutEnglishLifetime = Buffer.from(
+      canonicalPrivacyNotice
+        .toString("utf8")
+        .replace("exactly 24 hours", "for about one day"),
+    );
+    writeFileSync(privacyNoticePath, withoutEnglishLifetime);
+    evidence.notice.sourceSha256 = sha256(withoutEnglishLifetime);
+    writeJson(privacyEvidencePath, evidence);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /missing required bilingual content: exactly 24 hours/u,
+    );
+
+    const relaxedContentSecurityPolicy = Buffer.from(
+      canonicalPrivacyNotice
+        .toString("utf8")
+        .replace("base-uri 'none';", "base-uri 'none'; connect-src *;"),
+    );
+    writeFileSync(privacyNoticePath, relaxedContentSecurityPolicy);
+    evidence.notice.sourceSha256 = sha256(relaxedContentSecurityPolicy);
+    writeJson(privacyEvidencePath, evidence);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /Content Security Policy mismatch/u,
+    );
+
+    const privateEmailDisclosure = Buffer.from(
+      canonicalPrivacyNotice
+        .toString("utf8")
+        .replace(
+          "Privacy requests:",
+          "Private escalation: matthias.unverzagt@enpasos.com; Privacy requests:",
+        ),
+    );
+    writeFileSync(privacyNoticePath, privateEmailDisclosure);
+    evidence.notice.sourceSha256 = sha256(privateEmailDisclosure);
+    writeJson(privacyEvidencePath, evidence);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /must not publish another email address/u,
+    );
+
+    const executable = Buffer.from(
+      canonicalPrivacyNotice
+        .toString("utf8")
+        .replace("</body>", "<script>location.reload()</script></body>"),
+    );
+    writeFileSync(privacyNoticePath, executable);
+    evidence.notice.sourceSha256 = sha256(executable);
+    writeJson(privacyEvidencePath, evidence);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /must not contain script/u,
+    );
+  });
+});
+
+test("lane loading requires privacy evidence and accepts only the exact approved binding", () => {
+  withFixture(({
+    root,
+    lanePath,
+    privacyEvidencePath,
+    privacyEvidenceRelativePath: evidenceRef,
+  }) => {
+    const pendingEvidence = readJson(privacyEvidencePath);
+    rmSync(privacyEvidencePath);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /Direct-install privacy evidence is missing/u,
+    );
+    writeJson(privacyEvidencePath, pendingEvidence);
+
+    const mismatched = readJson(privacyEvidencePath);
+    mismatched.notice.sourceSha256 = "0".repeat(64);
+    writeJson(privacyEvidencePath, mismatched);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /notice source SHA-256 mismatch/u,
+    );
+
+    const pending = pendingPrivacyEvidence(
+      fixturePrivacyEvidence(readJson(lanePath)),
+    );
+    writeJson(privacyEvidencePath, pending);
+    const pendingLane = readJson(lanePath);
+    const pendingBlocker = pendingLane.readiness.openPublicBetaBlockers.find(
+      ({ id }) => id === "privacy-approval",
+    );
+    pendingBlocker.status = "pending";
+    pendingBlocker.evidenceRef = null;
+    writeJson(lanePath, pendingLane);
+    assert.equal(loadDirectInstallBetaLane(root).readiness.openPublicBetaReady, false);
+
+    const approved = fixturePrivacyEvidence(readJson(lanePath));
+    writeJson(privacyEvidencePath, approved);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /privacy blocker and candidate evidence status mismatch/u,
+    );
+
+    const approvedLane = readJson(lanePath);
+    const blocker = approvedLane.readiness.openPublicBetaBlockers.find(
+      ({ id }) => id === "privacy-approval",
+    );
+    blocker.status = "pass";
+    blocker.evidenceRef = evidenceRef;
+    writeJson(lanePath, approvedLane);
+    const loaded = loadDirectInstallBetaLane(root);
+    assert.equal(loaded.readiness.openPublicBetaReady, false);
+  });
+});
+
+test("lane loading requires exact-client evidence and accepts a fully approved candidate binding", () => {
+  withFixture(({ root, lanePath, exactClientEvidencePath, exactClientEvidenceRelativePath: evidenceRef }) => {
+    const pendingEvidence = readJson(exactClientEvidencePath);
+    rmSync(exactClientEvidencePath);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /Direct-install exact-client evidence is missing/u,
+    );
+    writeJson(exactClientEvidencePath, pendingEvidence);
+
+    const pendingLane = loadDirectInstallBetaLane(root);
+    assert.equal(
+      pendingLane.readiness.openPublicBetaBlockers.find(
+        ({ id }) => id === "exact-client-acceptance",
+      ).status,
+      "pending",
+    );
+
+    const mismatched = readJson(exactClientEvidencePath);
+    mismatched.candidate.sha256 = "0".repeat(64);
+    writeJson(exactClientEvidencePath, mismatched);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /candidate SHA-256 mismatch/u,
+    );
+
+    const approved = fixtureExactClientEvidence(readJson(lanePath));
+    approved.status = "pass";
+    approved.observedAt = "2026-09-01T10:00:00.000Z";
+    approved.clients.web.browserVersion = "Example Browser 1.0";
+    approved.clients.web.claudeModel = "Example Claude Model";
+    approved.clients.android.appVersion = "1.2.3";
+    approved.clients.android.androidVersion = "Android 16";
+    approved.clients.android.claudeModel = "Example Claude Model";
+    for (const check of approved.checks) {
+      check.status = "pass";
+    }
+    approved.externalEvidenceId = "external-evidence:exact-client-1.2.3";
+    approved.externalEvidenceSha256 = "a".repeat(64);
+    approved.redactionConfirmed = true;
+    approved.approvedBy = "product-owner";
+    approved.approvedAt = "2026-09-01T10:05:00.000Z";
+    writeJson(exactClientEvidencePath, approved);
+
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /blocker and candidate evidence status mismatch/u,
+    );
+
+    const approvedLane = readJson(lanePath);
+    const blocker = approvedLane.readiness.openPublicBetaBlockers.find(
+      ({ id }) => id === "exact-client-acceptance",
+    );
+    blocker.status = "pass";
+    blocker.evidenceRef = evidenceRef;
+    writeJson(lanePath, approvedLane);
+    const loaded = loadDirectInstallBetaLane(root);
+    assert.equal(loaded.readiness.openPublicBetaReady, false);
+  });
 });
 
 test("lane requirements keep backend contract types fail-closed", () => {
@@ -567,7 +932,19 @@ async function withPreparedFixtureAsync(callback) {
       version: fixtureVersion,
       sha256: sha256(deterministicBytes),
     };
+    rebindFixtureLaneEvidenceRefs(fixtureLane);
     writeJson(lanePath, fixtureLane);
+    writeJson(
+      resolve(root, exactClientEvidenceRelativePath(fixtureVersion)),
+      fixtureExactClientEvidence(fixtureLane),
+    );
+    const privacyNoticePath = resolve(root, privacyNoticeRelativePath);
+    mkdirSync(dirname(privacyNoticePath), { recursive: true });
+    writeFileSync(privacyNoticePath, canonicalPrivacyNotice);
+    writeJson(
+      resolve(root, privacyEvidenceRelativePath(fixtureVersion)),
+      fixturePrivacyEvidence(fixtureLane),
+    );
     prepareClaudeDirectInstallBetaPublication({
       repositoryRoot: root,
       preparedAt,
@@ -584,6 +961,11 @@ function withFixture(callback, candidateBytes = deterministicBytes) {
   const packageRoot = resolve(root, "ai/claude/plugin/skillpilot-coach-v1");
   const manifestPath = resolve(root, manifestRelativePath);
   const lanePath = resolve(root, laneRelativePath);
+  const evidenceRelativePath = exactClientEvidenceRelativePath(fixtureVersion);
+  const exactClientEvidencePath = resolve(root, evidenceRelativePath);
+  const privacyEvidenceRef = privacyEvidenceRelativePath(fixtureVersion);
+  const privacyEvidencePath = resolve(root, privacyEvidenceRef);
+  const privacyNoticePath = resolve(root, privacyNoticeRelativePath);
   const publicationRoot = resolve(root, publicationRelativeRoot);
   try {
     writeJson(manifestPath, {
@@ -595,8 +977,24 @@ function withFixture(callback, candidateBytes = deterministicBytes) {
       version: fixtureVersion,
       sha256: sha256(candidateBytes),
     };
+    rebindFixtureLaneEvidenceRefs(fixtureLane);
     writeJson(lanePath, fixtureLane);
-    callback({ root, packageRoot, manifestPath, lanePath, publicationRoot });
+    writeJson(exactClientEvidencePath, fixtureExactClientEvidence(fixtureLane));
+    mkdirSync(dirname(privacyNoticePath), { recursive: true });
+    writeFileSync(privacyNoticePath, canonicalPrivacyNotice);
+    writeJson(privacyEvidencePath, fixturePrivacyEvidence(fixtureLane));
+    callback({
+      root,
+      packageRoot,
+      manifestPath,
+      lanePath,
+      publicationRoot,
+      exactClientEvidencePath,
+      exactClientEvidenceRelativePath: evidenceRelativePath,
+      privacyEvidencePath,
+      privacyEvidenceRelativePath: privacyEvidenceRef,
+      privacyNoticePath,
+    });
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -614,6 +1012,63 @@ function fixtureBuilder(bytes, calls = []) {
       entries: [],
     };
   };
+}
+
+function fixtureExactClientEvidence(lane) {
+  const evidence = clone(canonicalExactClientEvidence);
+  evidence.id = `direct-install-exact-client-${lane.candidate.version}`;
+  evidence.candidate = {
+    version: lane.candidate.version,
+    sha256: lane.candidate.sha256,
+    downloadUrl:
+      `https://skillpilot.com${lane.publication.downloadBasePath}/` +
+      `${lane.plugin.id}/${lane.candidate.version}/` +
+      `sha256-${lane.candidate.sha256}/` +
+      `${lane.plugin.id}-${lane.candidate.version}.plugin`,
+  };
+  return evidence;
+}
+
+function fixturePrivacyEvidence(lane) {
+  const evidence = clone(canonicalPrivacyEvidence);
+  evidence.id = `direct-install-privacy-approval-${lane.candidate.version}`;
+  evidence.candidate = {
+    version: lane.candidate.version,
+    sha256: lane.candidate.sha256,
+  };
+  evidence.notice.sourceSha256 = sha256(canonicalPrivacyNotice);
+  return evidence;
+}
+
+function pendingPrivacyEvidence(evidence) {
+  const pending = clone(evidence);
+  pending.status = "pending";
+  for (const check of pending.checks) {
+    check.status = "pending";
+  }
+  pending.approvedBy = null;
+  pending.approvedRole = null;
+  pending.approvedAt = null;
+  return pending;
+}
+
+function rebindFixtureLaneEvidenceRefs(lane) {
+  const privacyBlocker = lane.readiness.openPublicBetaBlockers.find(
+    ({ id }) => id === "privacy-approval",
+  );
+  if (privacyBlocker.status === "pass") {
+    privacyBlocker.evidenceRef = privacyEvidenceRelativePath(
+      lane.candidate.version,
+    );
+  }
+}
+
+function exactClientEvidenceRelativePath(version) {
+  return `${exactClientEvidenceRelativeRoot}/${version}-exact-client.json`;
+}
+
+function privacyEvidenceRelativePath(version) {
+  return `${privacyEvidenceRelativeRoot}/${version}-privacy-approval.json`;
 }
 
 function listFixtureFiles(root) {

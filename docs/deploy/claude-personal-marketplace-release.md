@@ -101,6 +101,28 @@ fully validate the embedded plugin's skills and related components.
 SkillPilot MCP endpoint, and removes the isolated profile. It does not modify
 the operator's normal Claude configuration.
 
+## Support readiness precondition
+
+Follow the
+[Claude support readiness runbook](claude-support-readiness-runbook.md) before
+first publication. Its public synthetic is credential-free and read-only; it
+checks the immutable direct-install publication, legal and privacy pages,
+application readiness, connector OAuth discovery, and the unauthenticated MCP
+challenge:
+
+```bash
+node --test scripts/claude_support_synthetic.test.mjs
+node scripts/claude_support_synthetic.mjs verify
+```
+
+The committed drill file is only an incomplete template. Support readiness
+remains blocked until accountable support, operations and security owners have
+proved mailbox access, scheduled-alert delivery, intentional failed-run
+delivery, incident containment and recovery for the exact candidate. A backup
+is preferred; without one, the Product Owner must accept and rehearse the
+documented single-owner promotion-pause contingency. A green synthetic alone
+does not authorize a gate change or publication.
+
 ## First publication
 
 Repository creation and pushing are explicit external publication actions.
@@ -216,10 +238,13 @@ Claude client proves otherwise. In Claude Code the explicit diagnostic path is:
 
 Rollback is a new, higher SemVer release that restores reviewed content. Never
 force-push `main`, delete history, or reuse an old version with different
-bytes.
+bytes. Connector containment and recovery follow the
+[support readiness and incident runbook](claude-support-readiness-runbook.md),
+including the frozen OpenAI differential and candidate-bound evidence.
 
 ## References
 
+- [Claude support readiness and incident runbook](claude-support-readiness-runbook.md)
 - [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 - [Create and distribute a plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces)
 - [Discover and install plugins](https://code.claude.com/docs/en/discover-plugins)
