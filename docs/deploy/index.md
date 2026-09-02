@@ -17,6 +17,7 @@ This page groups deployment-facing operational documentation.
 - [SkillPilot Claude Connector: Einrichtung und Nutzung (DE)](claude-connector-v1-user-guide.de.md)
 - [SkillPilot Claude Connector v1: release and rollback runbook](claude-connector-v1-release.md)
 - [SkillPilot Claude personal Git marketplace: release runbook](claude-personal-marketplace-release.md)
+- [Claude personal marketplace: support readiness and incident runbook](claude-support-readiness-runbook.md)
 
 ## Maintenance
 

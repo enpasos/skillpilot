@@ -3,10 +3,13 @@
 This repository is the personal Git marketplace for **SkillPilot Coach v1**.
 It contains the same reviewed plugin files as the SkillPilot direct-install
 package, but distributes them through a repository that Claude can update.
+This personal marketplace is published independently by SkillPilot. It is not
+reviewed, endorsed, curated, or verified by Anthropic.
 
 ## Install in Claude
 
-Plugins require a paid Claude plan. In Claude, open **Customize → Plugins**.
+Plugins require a paid Claude plan, and SkillPilot's Claude integration is for
+adults aged 18 or older. In Claude, open **Customize → Plugins**.
 Under **Personal plugins**, choose **+ → Add marketplace → Add from a
 repository** and enter:
 
@@ -42,10 +45,18 @@ session. The plugin version is maintained only in
 ## Trust and support
 
 - Homepage: <https://skillpilot.com>
-- Privacy: <https://skillpilot.com/privacy>
-- Terms: <https://skillpilot.com/legal>
+- SkillPilot privacy policy (DE/EN): <https://skillpilot.com/privacy>
+- Claude connector privacy notice (DE/EN):
+  <https://mcp-claude-v1.skillpilot.com/privacy>
+- SkillPilot terms: <https://skillpilot.com/legal>
+- Anthropic Consumer Terms: <https://www.anthropic.com/legal/consumer-terms>
+- Anthropic Privacy Policy: <https://www.anthropic.com/legal/privacy>
 - Support: <support@skillpilot.com>
 - License: Apache-2.0
+
+SkillPilot's terms govern the SkillPilot service. The Claude account,
+conversations, and provider-side processing are third-party services governed
+separately by Anthropic's Consumer Terms and Privacy Policy.
 
 This repository is generated from the reviewed SkillPilot source. It must not
 contain credentials, learner data, sessions, protected answers, build tooling,

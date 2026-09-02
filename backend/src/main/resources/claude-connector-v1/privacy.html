@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none';">
   <meta name="referrer" content="no-referrer">
-  <title>SkillPilot Claude Connector — Datenschutzerklärung</title>
+  <title>SkillPilot Claude Connector — Datenschutzerklärung / Privacy Policy</title>
   <style>
     body {
       background: #0f172a;
@@ -17,50 +17,103 @@
       margin: 0 auto;
     }
     h1 { color: #38bdf8; font-size: 2rem; margin-bottom: 8px; }
-    h2 { color: #94a3b8; font-size: 1.3rem; margin-top: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+    h2 { color: #38bdf8; font-size: 1.5rem; margin-top: 40px; }
+    h3 { color: #94a3b8; font-size: 1.3rem; margin-top: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
     p, li { color: #cbd5e1; font-size: 1rem; }
     .badge { display: inline-block; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-weight: 600; margin-bottom: 16px; }
     a { color: #38bdf8; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; margin: 24px 0; }
+    .language-nav { display: flex; gap: 16px; margin: 16px 0 24px; }
+    .language-section + .language-section { border-top: 1px solid rgba(255,255,255,0.18); margin-top: 48px; padding-top: 8px; }
   </style>
 </head>
 <body>
-  <div class="badge">Stand: August 2026</div>
-  <h1>Datenschutzerklärung — SkillPilot Claude Connector v1</h1>
-  <p>Diese Datenschutzerklärung informiert über die Verarbeitung personenbezogener bzw. pseudonymer Daten bei der Nutzung des SkillPilot Claude Connectors.</p>
+  <div class="badge">Stand / Last updated: 1 September 2026</div>
+  <h1>SkillPilot Claude Connector v1 — Datenschutzerklärung / Privacy Policy</h1>
+  <nav class="language-nav" aria-label="Sprachauswahl / Language selection">
+    <a href="#deutsch" lang="de">Deutsch</a>
+    <a href="#english" lang="en">English</a>
+  </nav>
 
-  <div class="box">
-    <strong>Wichtiger Hinweis zum Mindestalter (18+):</strong><br>
-    Die Nutzung dieses Connectors über Claude.ai / Anthropic richtet sich nach den Nutzungsbedingungen von Anthropic ausschließlich an volljährige Personen (ab 18 Jahren).
-  </div>
+  <main>
+    <section id="deutsch" class="language-section" lang="de" aria-labelledby="deutsch-heading">
+      <h2 id="deutsch-heading">Deutsch</h2>
+      <p>Diese Datenschutzerklärung informiert über die Verarbeitung personenbezogener bzw. pseudonymer Daten bei der Nutzung des SkillPilot Claude Connectors.</p>
+      <p>Ergänzend gilt die <a href="https://skillpilot.com/privacy">allgemeine SkillPilot-Datenschutzerklärung</a>.</p>
 
-  <h2>1. Verantwortliche Stelle</h2>
-  <p>Verantwortlich für die Datenverarbeitung auf den Systemen von SkillPilot ist die enpasos – Enterprise Patterns &amp; Solutions GmbH, Heuhohlweg 42, D-61462 Königstein. Datenschutzanfragen: <a href="mailto:support@skillpilot.com">support@skillpilot.com</a>.</p>
+      <div class="box">
+        <strong>Wichtiger Hinweis zum Mindestalter (18+):</strong><br>
+        Die Nutzung dieses Connectors über Claude.ai / Anthropic richtet sich nach den Nutzungsbedingungen von Anthropic ausschließlich an volljährige Personen (ab 18 Jahren).
+      </div>
 
-  <h2>2. Zweck und Funktionsweise der Datenverarbeitung</h2>
-  <p>Der SkillPilot Claude Connector ermöglicht es volljährigen Lernenden, ihren bestehenden pseudonymen SkillPilot-Lernstand in Anthropic Claude für personalisiertes KI-Coaching zu nutzen.</p>
-  <ul>
-    <li><strong>Start ausschließlich bei SkillPilot:</strong> Eine neue Lernsitzung wird über <a href="https://skillpilot.com/">Lernen starten</a> in der gemeinsamen SkillPilot-Weboberfläche vorbereitet. Die permanente SkillPilot-ID bleibt dabei in der SkillPilot-Weboberfläche und im SkillPilot-Core.</li>
-    <li><strong>Zeitlich begrenzte Lernsitzung:</strong> Claude erhält in der vorbereiteten Startnachricht nur eine zufällige, opake Sitzungskennung. SkillPilot übergibt diese Nachricht nach Ihrer ausdrücklichen Auswahl über den einzigen <code>q</code>-Parameter von <code>https://claude.ai/new</code> an das Eingabefeld; Claude sendet sie nicht automatisch. Die Kennung ist ab ihrer Ausgabe genau 24 Stunden gültig und kann in Claude weder verlängert noch erneuert werden.</li>
-    <li><strong>Getrennte Berechtigungen:</strong> Die OAuth-Verbindung authentifiziert nur das installierte Plugin bzw. den Connector. Sie enthält keine permanente SkillPilot-ID und wählt keinen Lernstand aus. Auf Lernstandsdaten kann der Connector nur mit einer zusätzlich gültigen 24-Stunden-Sitzungskennung zugreifen.</li>
-    <li><strong>Keine Weitergabe der permanenten ID:</strong> Claude und Anthropic erhalten zu keinem Zeitpunkt die permanente SkillPilot-ID, eine SkillPilot-ID-Datei oder deren Passwort.</li>
-  </ul>
+      <h3>1. Verantwortliche Stelle</h3>
+      <p>Verantwortlich für die Datenverarbeitung auf den Systemen von SkillPilot ist die enpasos – Enterprise Patterns &amp; Solutions GmbH, Heuhohlweg 42, D-61462 Königstein. Datenschutzanfragen: <a href="mailto:support@skillpilot.com">support@skillpilot.com</a>.</p>
 
-  <h2>3. An Claude übermittelte Daten</h2>
-  <p>Während einer Coaching-Sitzung in Claude ruft das System über standardisierte MCP-Tools projektbezogene Lernstandsdaten ab:</p>
-  <ul>
-    <li>Aktuelles Thema und Lernziele des gewählten Curriculums</li>
-    <li>Lernstand und Mastery-Werte (ohne persönliche Klartextidentifikatoren)</li>
-    <li>Ergebnisse von Überprüfungen (Verified Recall / Prüfungsbewertungen)</li>
-  </ul>
+      <h3>2. Zweck und Funktionsweise der Datenverarbeitung</h3>
+      <p>Der SkillPilot Claude Connector ermöglicht es volljährigen Lernenden, ihren bestehenden pseudonymen SkillPilot-Lernstand in Anthropic Claude für personalisiertes KI-Coaching zu nutzen.</p>
+      <ul>
+        <li><strong>Start ausschließlich bei SkillPilot:</strong> Eine neue Lernsitzung wird über <a href="https://skillpilot.com/">Lernen starten</a> in der gemeinsamen SkillPilot-Weboberfläche vorbereitet. Die permanente SkillPilot-ID bleibt dabei in der SkillPilot-Weboberfläche und im SkillPilot-Core.</li>
+        <li><strong>Zeitlich begrenzte Lernsitzung:</strong> Claude erhält in der vorbereiteten Startnachricht nur eine zufällige, opake Sitzungskennung. SkillPilot übergibt diese Nachricht nach Ihrer ausdrücklichen Auswahl über den einzigen <code>q</code>-Parameter von <code>https://claude.ai/new</code> an das Eingabefeld; Claude sendet sie nicht automatisch. Die Kennung ist ab ihrer Ausgabe genau 24 Stunden gültig und kann in Claude weder verlängert noch erneuert werden.</li>
+        <li><strong>Getrennte Berechtigungen:</strong> Die OAuth-Verbindung authentifiziert nur das installierte Plugin bzw. den Connector. Sie enthält keine permanente SkillPilot-ID und wählt keinen Lernstand aus. Auf Lernstandsdaten kann der Connector nur mit einer zusätzlich gültigen 24-Stunden-Sitzungskennung zugreifen.</li>
+        <li><strong>Keine Weitergabe der permanenten ID:</strong> Claude und Anthropic erhalten zu keinem Zeitpunkt die permanente SkillPilot-ID, eine SkillPilot-ID-Datei oder deren Passwort.</li>
+      </ul>
 
-  <h2>4. Speicherdauer und Widerruf (Revocation)</h2>
-  <p>Die klare Sitzungskennung wird nicht gespeichert; SkillPilot speichert nur ihren anbieterspezifischen HMAC-Prüfwert. Jede normale Lernsitzung endet absolut nach 24 Stunden. Sitzungsgebundene Idempotenz- und Sicherheitsnachweise enden spätestens mit der zugehörigen Lernsitzung. Abgelaufene Datensätze werden regelmäßig entfernt.</p>
-  <p>OAuth-Access-Token für die rein technische Plugin-Verbindung sind kurzlebig; die derzeit vorgesehene Gültigkeit beträgt höchstens eine Stunde. Rotierende Refresh-Tokens sind derzeit höchstens 30 Tage gültig. Eine Erneuerung dieser technischen Verbindung verlängert keine Lernsitzung und stellt keinen Lernstandszugriff her.</p>
-  <p>Sie können die technische Verbindung über die von Claude aufgerufene OAuth-Revocation-Schnittstelle trennen. Dabei werden die zugehörigen OAuth-Autorisierungen ungültig. Der eigentliche SkillPilot-Lernstand, die permanente SkillPilot-ID und Verbindungen anderer Anbieter bleiben unverändert.</p>
+      <h3>3. An Claude übermittelte Daten</h3>
+      <p>Während einer Coaching-Sitzung in Claude ruft das System über standardisierte MCP-Tools projektbezogene Lernstandsdaten ab:</p>
+      <ul>
+        <li>Aktuelles Thema und Lernziele des gewählten Curriculums</li>
+        <li>Lernstand und Mastery-Werte (ohne persönliche Klartextidentifikatoren)</li>
+        <li>Ergebnisse von Überprüfungen (Verified Recall / Prüfungsbewertungen)</li>
+      </ul>
 
-  <h2>5. Datenverarbeitung durch Anthropic</h2>
-  <p>Für die Datenverarbeitung innerhalb von Claude (Prompts, Antworten, Chatverlauf) gelten zusätzlich die Nutzungsbedingungen und Datenschutzbestimmungen der Anthropic PBC.</p>
+      <h3>4. Speicherdauer und Widerruf (Revocation)</h3>
+      <p>Die klare Sitzungskennung wird nicht gespeichert; SkillPilot speichert nur ihren anbieterspezifischen HMAC-Prüfwert. Jede normale Lernsitzung endet absolut nach 24 Stunden. Sitzungsgebundene Idempotenz- und Sicherheitsnachweise enden spätestens mit der zugehörigen Lernsitzung. Abgelaufene Datensätze werden regelmäßig entfernt.</p>
+      <p>OAuth-Access-Token für die rein technische Plugin-Verbindung sind kurzlebig; die derzeit vorgesehene Gültigkeit beträgt höchstens eine Stunde. Rotierende Refresh-Tokens sind derzeit höchstens 30 Tage gültig. Eine Erneuerung dieser technischen Verbindung verlängert keine Lernsitzung und stellt keinen Lernstandszugriff her.</p>
+      <p>Sie können die technische Verbindung über die von Claude aufgerufene OAuth-Revocation-Schnittstelle trennen. Dabei werden die zugehörigen OAuth-Autorisierungen ungültig. Der eigentliche SkillPilot-Lernstand, die permanente SkillPilot-ID und Verbindungen anderer Anbieter bleiben unverändert.</p>
+
+      <h3>5. Datenverarbeitung durch Anthropic</h3>
+      <p>Für die Datenverarbeitung innerhalb von Claude (Prompts, Antworten, Chatverlauf) gelten zusätzlich die <a href="https://www.anthropic.com/legal/consumer-terms">Nutzungsbedingungen</a> und <a href="https://www.anthropic.com/legal/privacy">Datenschutzbestimmungen</a> von Anthropic.</p>
+    </section>
+
+    <section id="english" class="language-section" lang="en" aria-labelledby="english-heading">
+      <h2 id="english-heading">English</h2>
+      <p>This Privacy Policy explains how personal or pseudonymous data is processed when you use the SkillPilot Claude Connector.</p>
+      <p>The <a href="https://skillpilot.com/privacy">general SkillPilot Privacy Policy</a> also applies.</p>
+
+      <div class="box">
+        <strong>Important minimum-age notice (18+):</strong><br>
+        Under Anthropic's terms of service, this connector is intended exclusively for adults aged 18 or older when used through Claude.ai / Anthropic.
+      </div>
+
+      <h3>1. Controller</h3>
+      <p>The controller for data processing on SkillPilot systems is enpasos – Enterprise Patterns &amp; Solutions GmbH, Heuhohlweg 42, D-61462 Königstein, Germany. Privacy requests: <a href="mailto:support@skillpilot.com">support@skillpilot.com</a>.</p>
+
+      <h3>2. Purpose and operation of data processing</h3>
+      <p>The SkillPilot Claude Connector enables adult learners to use their existing pseudonymous SkillPilot learning state in Anthropic Claude for personalized AI coaching.</p>
+      <ul>
+        <li><strong>Sessions start only at SkillPilot:</strong> A new learning session is prepared through <a href="https://skillpilot.com/">Start learning</a> in the shared SkillPilot web interface. The permanent SkillPilot ID remains in the SkillPilot web interface and SkillPilot Core.</li>
+        <li><strong>Time-limited learning session:</strong> In the prepared start message, Claude receives only a random, opaque session identifier. After your explicit selection, SkillPilot passes this message to the input field using the sole <code>q</code> parameter of <code>https://claude.ai/new</code>; Claude does not send it automatically. The identifier is valid for exactly 24 hours from the time it is issued and cannot be extended or renewed in Claude.</li>
+        <li><strong>Separate authorization:</strong> The OAuth connection authenticates only the installed plugin or connector. It contains no permanent SkillPilot ID and does not select a learning state. The connector can access learning-state data only with an additionally valid 24-hour session identifier.</li>
+        <li><strong>No disclosure of the permanent ID:</strong> Claude and Anthropic never receive the permanent SkillPilot ID, a SkillPilot ID file, or its password.</li>
+      </ul>
+
+      <h3>3. Data transmitted to Claude</h3>
+      <p>During a coaching session in Claude, the system retrieves project-related learning-state data through standardized MCP tools:</p>
+      <ul>
+        <li>The current topic and learning goals of the selected curriculum</li>
+        <li>Learning state and mastery values (without personal clear-text identifiers)</li>
+        <li>Results of assessments (Verified Recall / exam evaluations)</li>
+      </ul>
+
+      <h3>4. Retention and revocation</h3>
+      <p>The clear-text session identifier is not stored; SkillPilot stores only its provider-specific HMAC verification value. Every normal learning session expires absolutely after 24 hours. Session-bound idempotency and security records expire no later than the associated learning session. Expired records are removed regularly.</p>
+      <p>OAuth access tokens for the purely technical plugin connection are short-lived; the currently intended validity is no more than one hour. Rotating refresh tokens are currently valid for no more than 30 days. Renewing this technical connection neither extends a learning session nor establishes access to a learning state.</p>
+      <p>You can disconnect the technical connection through the OAuth revocation endpoint invoked by Claude. This invalidates the associated OAuth authorizations. The underlying SkillPilot learning state, the permanent SkillPilot ID, and connections from other providers remain unchanged.</p>
+
+      <h3>5. Data processing by Anthropic</h3>
+      <p>Anthropic's <a href="https://www.anthropic.com/legal/consumer-terms">Consumer Terms of Service</a> and <a href="https://www.anthropic.com/legal/privacy">Privacy Policy</a> additionally apply to data processing within Claude, including prompts, responses, and chat history.</p>
+    </section>
+  </main>
 </body>
 </html>

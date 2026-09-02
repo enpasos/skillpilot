@@ -22,9 +22,15 @@ const laneRelativePath =
   "ai/claude/plugin/skillpilot-coach-v1/release/direct-install-beta.json";
 const packageRelativeRoot = "ai/claude/plugin/skillpilot-coach-v1";
 const manifestRelativePath = `${packageRelativeRoot}/.claude-plugin/plugin.json`;
+const exactClientEvidenceRelativeRoot =
+  `${packageRelativeRoot}/release/evidence/controlled-direct-install-beta`;
+const privacyEvidenceRelativeRoot = exactClientEvidenceRelativeRoot;
+const privacyNoticeRelativePath =
+  "backend/src/main/resources/claude-connector-v1/privacy.html";
 const expectedPublicationRoot =
   "backend/src/main/resources/claude-plugin-publication";
 const expectedDownloadBasePath = "/api/public/claude/plugins";
+const expectedPublicOrigin = "https://skillpilot.com";
 const expectedControlledEvidence = new Map([
   ["local-package-structural-and-unit-validation", "local_validation"],
   ["local-reproducible-plugin-archive", "local_validation"],
@@ -39,6 +45,25 @@ const expectedOpenPublicBlockers = new Set([
   "support-readiness",
   "exact-client-acceptance",
 ]);
+const exactClientBlockerId = "exact-client-acceptance";
+const privacyBlockerId = "privacy-approval";
+const expectedExactClientChecks = [
+  "web-single-plugin-bundled-connector-oauth",
+  "first-party-fresh-session-handoff",
+  "web-coaching-and-both-mcp-apps",
+  "web-goal-visualization-after-goal-change",
+  "android-context-and-both-mcp-apps",
+  "android-voice-current-context",
+  "no-duplicate-or-protected-data-disclosure",
+];
+const expectedPrivacyChecks = [
+  "bilingual-de-en-complete",
+  "controller-and-support-disclosed",
+  "age-and-anthropic-boundary-disclosed",
+  "session-identifier-and-oauth-boundary-accurate",
+  "data-retention-and-revocation-accurate",
+  "static-page-security-and-no-tracking",
+];
 const compareCodeUnits = (left, right) =>
   left < right ? -1 : left > right ? 1 : 0;
 
@@ -51,6 +76,43 @@ export function loadDirectInstallBetaLane(repositoryRoot = defaultRepositoryRoot
   assertRegularFile(lanePath, "Direct-install beta lane");
   const lane = readJson(lanePath, "Direct-install beta lane");
   validateDirectInstallBetaLane(lane);
+  const evidenceRelativePath = exactClientEvidenceRelativePath(
+    lane.candidate.version,
+  );
+  const evidencePath = resolveWithin(
+    repositoryRoot,
+    evidenceRelativePath,
+    "Direct-install exact-client evidence",
+  );
+  assertRegularFile(evidencePath, "Direct-install exact-client evidence");
+  const evidence = readJson(
+    evidencePath,
+    "Direct-install exact-client evidence",
+  );
+  validateDirectInstallBetaExactClientEvidence(evidence, lane);
+  validateExactClientEvidenceBinding(lane, evidence, evidenceRelativePath);
+  const privacyEvidencePath = privacyEvidenceRelativePath(
+    lane.candidate.version,
+  );
+  const resolvedPrivacyEvidencePath = resolveWithin(
+    repositoryRoot,
+    privacyEvidencePath,
+    "Direct-install privacy evidence",
+  );
+  assertRegularFile(
+    resolvedPrivacyEvidencePath,
+    "Direct-install privacy evidence",
+  );
+  const privacyEvidence = readJson(
+    resolvedPrivacyEvidencePath,
+    "Direct-install privacy evidence",
+  );
+  validateDirectInstallBetaPrivacyEvidence(
+    privacyEvidence,
+    lane,
+    repositoryRoot,
+  );
+  validatePrivacyEvidenceBinding(lane, privacyEvidence, privacyEvidencePath);
   return lane;
 }
 
@@ -262,13 +324,45 @@ export function validateDirectInstallBetaLane(lane) {
     assertRecord(blocker, `open-public blocker ${String(blocker?.id)}`);
     assertExactKeys(
       blocker,
-      ["id", "status"],
+      ["id", "status", "evidenceRef"],
       `open-public blocker ${String(blocker.id)}`,
     );
     assertOneOf(
       blocker.status,
       ["pass", "pending"],
       `open-public blocker ${blocker.id}.status`,
+    );
+    if (blocker.status === "pending") {
+      assertEqual(
+        blocker.evidenceRef,
+        null,
+        `pending open-public blocker ${blocker.id}.evidenceRef`,
+      );
+    } else {
+      assertNonEmptyString(
+        blocker.evidenceRef,
+        `passing open-public blocker ${blocker.id}.evidenceRef`,
+      );
+    }
+  }
+  const exactClientBlocker = openPublicBlockers.find(
+    ({ id }) => id === exactClientBlockerId,
+  );
+  if (exactClientBlocker.status === "pass") {
+    assertEqual(
+      exactClientBlocker.evidenceRef,
+      exactClientEvidenceRelativePath(lane.candidate.version),
+      `passing open-public blocker ${exactClientBlockerId}.evidenceRef`,
+    );
+  }
+  const privacyBlocker = openPublicBlockers.find(
+    ({ id }) => id === privacyBlockerId,
+  );
+  if (privacyBlocker.status === "pass") {
+    assertEqual(
+      privacyBlocker.evidenceRef,
+      privacyEvidenceRelativePath(lane.candidate.version),
+      `passing open-public blocker ${privacyBlockerId}.evidenceRef`,
     );
   }
   const derivedOpenPublicBetaReady = openPublicBlockers.every(
@@ -279,6 +373,510 @@ export function validateDirectInstallBetaLane(lane) {
     derivedOpenPublicBetaReady,
     "lane.readiness.openPublicBetaReady must be derived from every named public-beta blocker",
   );
+}
+
+export function validateDirectInstallBetaExactClientEvidence(evidence, lane) {
+  validateDirectInstallBetaLane(lane);
+  assertRecord(evidence, "Direct-install exact-client evidence");
+  assertExactKeys(
+    evidence,
+    [
+      "schemaVersion",
+      "id",
+      "lane",
+      "status",
+      "candidate",
+      "observedAt",
+      "accountPlan",
+      "clients",
+      "fixtureKind",
+      "checks",
+      "externalEvidenceId",
+      "externalEvidenceSha256",
+      "redactionConfirmed",
+      "approvedBy",
+      "approvedAt",
+    ],
+    "Direct-install exact-client evidence",
+  );
+  assertEqual(evidence.schemaVersion, 1, "exact-client evidence.schemaVersion");
+  assertEqual(
+    evidence.id,
+    `direct-install-exact-client-${lane.candidate.version}`,
+    "exact-client evidence.id",
+  );
+  assertEqual(evidence.lane, lane.lane, "exact-client evidence.lane");
+
+  assertRecord(evidence.candidate, "exact-client evidence.candidate");
+  assertExactKeys(
+    evidence.candidate,
+    ["version", "sha256", "downloadUrl"],
+    "exact-client evidence.candidate",
+  );
+  assertEqual(
+    evidence.candidate.version,
+    lane.candidate.version,
+    "exact-client evidence candidate version",
+  );
+  assertEqual(
+    evidence.candidate.sha256,
+    lane.candidate.sha256,
+    "exact-client evidence candidate SHA-256",
+  );
+  const expectedFilename = `${lane.plugin.id}-${lane.candidate.version}.plugin`;
+  const expectedDownloadUrl = new URL(
+    buildDownloadUrl(
+      lane,
+      lane.candidate.version,
+      lane.candidate.sha256,
+      expectedFilename,
+    ),
+    expectedPublicOrigin,
+  ).href;
+  assertEqual(
+    evidence.candidate.downloadUrl,
+    expectedDownloadUrl,
+    "exact-client evidence candidate download URL",
+  );
+
+  assertEqual(
+    evidence.accountPlan,
+    lane.requirements.plan,
+    "exact-client evidence.accountPlan",
+  );
+  assertEqual(
+    evidence.fixtureKind,
+    "synthetic_or_authorized_adult",
+    "exact-client evidence.fixtureKind",
+  );
+  assertRecord(evidence.clients, "exact-client evidence.clients");
+  assertExactKeys(
+    evidence.clients,
+    ["web", "android"],
+    "exact-client evidence.clients",
+  );
+  assertRecord(evidence.clients.web, "exact-client evidence.clients.web");
+  assertExactKeys(
+    evidence.clients.web,
+    ["browserVersion", "claudeModel"],
+    "exact-client evidence.clients.web",
+  );
+  assertRecord(evidence.clients.android, "exact-client evidence.clients.android");
+  assertExactKeys(
+    evidence.clients.android,
+    ["appVersion", "androidVersion", "claudeModel"],
+    "exact-client evidence.clients.android",
+  );
+
+  if (!Array.isArray(evidence.checks)) {
+    throw new Error("exact-client evidence.checks must be an array.");
+  }
+  assertJsonEqual(
+    evidence.checks.map(({ id }) => id),
+    expectedExactClientChecks,
+    "exact-client evidence check identifiers",
+  );
+  for (const check of evidence.checks) {
+    assertRecord(check, `exact-client evidence check ${String(check?.id)}`);
+    assertExactKeys(
+      check,
+      ["id", "status"],
+      `exact-client evidence check ${String(check.id)}`,
+    );
+    assertOneOf(
+      check.status,
+      ["pass", "pending"],
+      `exact-client evidence check ${check.id}.status`,
+    );
+  }
+  const derivedStatus = evidence.checks.every(({ status }) => status === "pass")
+    ? "pass"
+    : "pending";
+  assertEqual(
+    evidence.status,
+    derivedStatus,
+    "exact-client evidence.status must be derived from every named client check",
+  );
+  assertBoolean(
+    evidence.redactionConfirmed,
+    "exact-client evidence.redactionConfirmed",
+  );
+
+  if (evidence.status === "pending") {
+    for (const [label, value] of [
+      ["observedAt", evidence.observedAt],
+      ["clients.web.browserVersion", evidence.clients.web.browserVersion],
+      ["clients.web.claudeModel", evidence.clients.web.claudeModel],
+      ["clients.android.appVersion", evidence.clients.android.appVersion],
+      ["clients.android.androidVersion", evidence.clients.android.androidVersion],
+      ["clients.android.claudeModel", evidence.clients.android.claudeModel],
+      ["externalEvidenceId", evidence.externalEvidenceId],
+      ["externalEvidenceSha256", evidence.externalEvidenceSha256],
+      ["approvedBy", evidence.approvedBy],
+      ["approvedAt", evidence.approvedAt],
+    ]) {
+      assertEqual(value, null, `pending exact-client evidence.${label}`);
+    }
+    assertEqual(
+      evidence.redactionConfirmed,
+      false,
+      "pending exact-client evidence.redactionConfirmed",
+    );
+    return;
+  }
+
+  assertCanonicalTimestamp(evidence.observedAt, "exact-client evidence.observedAt");
+  assertNonEmptyString(
+    evidence.clients.web.browserVersion,
+    "exact-client evidence.clients.web.browserVersion",
+  );
+  assertNonEmptyString(
+    evidence.clients.web.claudeModel,
+    "exact-client evidence.clients.web.claudeModel",
+  );
+  assertNonEmptyString(
+    evidence.clients.android.appVersion,
+    "exact-client evidence.clients.android.appVersion",
+  );
+  assertNonEmptyString(
+    evidence.clients.android.androidVersion,
+    "exact-client evidence.clients.android.androidVersion",
+  );
+  assertNonEmptyString(
+    evidence.clients.android.claudeModel,
+    "exact-client evidence.clients.android.claudeModel",
+  );
+  assertNonEmptyString(
+    evidence.externalEvidenceId,
+    "exact-client evidence.externalEvidenceId",
+  );
+  if (!/^[0-9a-f]{64}$/u.test(evidence.externalEvidenceSha256 ?? "")) {
+    throw new Error(
+      "exact-client evidence.externalEvidenceSha256 must be a lowercase SHA-256 digest.",
+    );
+  }
+  assertEqual(
+    evidence.redactionConfirmed,
+    true,
+    "passing exact-client evidence.redactionConfirmed",
+  );
+  assertNonEmptyString(evidence.approvedBy, "exact-client evidence.approvedBy");
+  assertCanonicalTimestamp(evidence.approvedAt, "exact-client evidence.approvedAt");
+  if (evidence.approvedAt < evidence.observedAt) {
+    throw new Error(
+      "exact-client evidence.approvedAt must not precede observedAt.",
+    );
+  }
+}
+
+function validateExactClientEvidenceBinding(
+  lane,
+  evidence,
+  evidenceRelativePath,
+) {
+  const blocker = lane.readiness.openPublicBetaBlockers.find(
+    ({ id }) => id === exactClientBlockerId,
+  );
+  assertEqual(
+    blocker.status,
+    evidence.status,
+    "exact-client blocker and candidate evidence status",
+  );
+  assertEqual(
+    blocker.evidenceRef,
+    evidence.status === "pass" ? evidenceRelativePath : null,
+    "exact-client blocker and candidate evidence reference",
+  );
+}
+
+function exactClientEvidenceRelativePath(version) {
+  assertSemanticVersion(version, "exact-client evidence candidate version");
+  return `${exactClientEvidenceRelativeRoot}/${version}-exact-client.json`;
+}
+
+export function validateDirectInstallBetaPrivacyEvidence(
+  evidence,
+  lane,
+  repositoryRoot = defaultRepositoryRoot,
+) {
+  validateDirectInstallBetaLane(lane);
+  assertRecord(evidence, "Direct-install privacy evidence");
+  assertExactKeys(
+    evidence,
+    [
+      "schemaVersion",
+      "id",
+      "lane",
+      "status",
+      "candidate",
+      "notice",
+      "checks",
+      "approvedBy",
+      "approvedRole",
+      "approvedAt",
+    ],
+    "Direct-install privacy evidence",
+  );
+  assertEqual(evidence.schemaVersion, 1, "privacy evidence.schemaVersion");
+  assertEqual(
+    evidence.id,
+    `direct-install-privacy-approval-${lane.candidate.version}`,
+    "privacy evidence.id",
+  );
+  assertEqual(evidence.lane, lane.lane, "privacy evidence.lane");
+  assertOneOf(
+    evidence.status,
+    ["pass", "pending"],
+    "privacy evidence.status",
+  );
+
+  assertRecord(evidence.candidate, "privacy evidence.candidate");
+  assertExactKeys(
+    evidence.candidate,
+    ["version", "sha256"],
+    "privacy evidence.candidate",
+  );
+  assertEqual(
+    evidence.candidate.version,
+    lane.candidate.version,
+    "privacy evidence candidate version",
+  );
+  assertEqual(
+    evidence.candidate.sha256,
+    lane.candidate.sha256,
+    "privacy evidence candidate SHA-256",
+  );
+
+  assertRecord(evidence.notice, "privacy evidence.notice");
+  assertExactKeys(
+    evidence.notice,
+    ["sourcePath", "sourceSha256", "publicUrl", "languages"],
+    "privacy evidence.notice",
+  );
+  assertEqual(
+    evidence.notice.sourcePath,
+    privacyNoticeRelativePath,
+    "privacy evidence notice source path",
+  );
+  if (!/^[0-9a-f]{64}$/u.test(evidence.notice.sourceSha256 ?? "")) {
+    throw new Error(
+      "privacy evidence.notice.sourceSha256 must be a lowercase SHA-256 digest.",
+    );
+  }
+  assertEqual(
+    evidence.notice.publicUrl,
+    lane.plugin.privacyUrl,
+    "privacy evidence notice public URL",
+  );
+  assertJsonEqual(
+    evidence.notice.languages,
+    ["de", "en"],
+    "privacy evidence notice languages",
+  );
+  const noticePath = resolveWithin(
+    repositoryRoot,
+    evidence.notice.sourcePath,
+    "Privacy notice source",
+  );
+  assertRegularFile(noticePath, "Privacy notice source");
+  const noticeBytes = readFileSync(noticePath);
+  assertEqual(
+    sha256(noticeBytes),
+    evidence.notice.sourceSha256,
+    "privacy evidence notice source SHA-256",
+  );
+  validateClaudePrivacyNotice(noticeBytes.toString("utf8"));
+
+  if (!Array.isArray(evidence.checks)) {
+    throw new Error("privacy evidence.checks must be an array.");
+  }
+  assertJsonEqual(
+    evidence.checks.map(({ id }) => id),
+    expectedPrivacyChecks,
+    "privacy evidence check identifiers",
+  );
+  for (const check of evidence.checks) {
+    assertRecord(check, `privacy evidence check ${String(check?.id)}`);
+    assertExactKeys(
+      check,
+      ["id", "status"],
+      `privacy evidence check ${String(check.id)}`,
+    );
+    assertOneOf(
+      check.status,
+      ["pass", "pending"],
+      `privacy evidence check ${check.id}.status`,
+    );
+  }
+  const derivedStatus = evidence.checks.every(({ status }) => status === "pass")
+    ? "pass"
+    : "pending";
+  assertEqual(
+    evidence.status,
+    derivedStatus,
+    "privacy evidence.status must be derived from every named privacy check",
+  );
+
+  if (evidence.status === "pending") {
+    for (const [label, value] of [
+      ["approvedBy", evidence.approvedBy],
+      ["approvedRole", evidence.approvedRole],
+      ["approvedAt", evidence.approvedAt],
+    ]) {
+      assertEqual(value, null, `pending privacy evidence.${label}`);
+    }
+    return;
+  }
+
+  assertNonEmptyString(evidence.approvedBy, "privacy evidence.approvedBy");
+  assertNonEmptyString(evidence.approvedRole, "privacy evidence.approvedRole");
+  assertCanonicalTimestamp(evidence.approvedAt, "privacy evidence.approvedAt");
+}
+
+function validatePrivacyEvidenceBinding(lane, evidence, evidenceRelativePath) {
+  const blocker = lane.readiness.openPublicBetaBlockers.find(
+    ({ id }) => id === privacyBlockerId,
+  );
+  assertEqual(
+    blocker.status,
+    evidence.status,
+    "privacy blocker and candidate evidence status",
+  );
+  assertEqual(
+    blocker.evidenceRef,
+    evidence.status === "pass" ? evidenceRelativePath : null,
+    "privacy blocker and candidate evidence reference",
+  );
+}
+
+function privacyEvidenceRelativePath(version) {
+  assertSemanticVersion(version, "privacy evidence candidate version");
+  return `${privacyEvidenceRelativeRoot}/${version}-privacy-approval.json`;
+}
+
+function validateClaudePrivacyNotice(html) {
+  if (typeof html !== "string" || html.length === 0) {
+    throw new Error("Claude privacy notice must be non-empty UTF-8 HTML.");
+  }
+  const expectedContentSecurityPolicy =
+    "default-src 'none'; style-src 'self' 'unsafe-inline'; " +
+    "frame-ancestors 'none'; base-uri 'none';";
+  const contentSecurityPolicyMeta = html.match(
+    /<meta\b(?=[^>]*\bhttp-equiv="Content-Security-Policy")(?=[^>]*\bcontent="([^"]*)")[^>]*>/iu,
+  );
+  if (contentSecurityPolicyMeta === null) {
+    throw new Error(
+      "Claude privacy notice is missing restrictive Content Security Policy.",
+    );
+  }
+  assertEqual(
+    contentSecurityPolicyMeta[1],
+    expectedContentSecurityPolicy,
+    "Claude privacy notice Content Security Policy",
+  );
+  for (const [label, pattern] of [
+    [
+      "German language section",
+      /<section\b(?=[^>]*\bid="deutsch")(?=[^>]*\blang="de")[^>]*>/iu,
+    ],
+    [
+      "English language section",
+      /<section\b(?=[^>]*\bid="english")(?=[^>]*\blang="en")[^>]*>/iu,
+    ],
+    [
+      "no-referrer policy",
+      /<meta\b[^>]*name="referrer"[^>]*content="no-referrer"[^>]*>/iu,
+    ],
+  ]) {
+    if (!pattern.test(html)) {
+      throw new Error(`Claude privacy notice is missing ${label}.`);
+    }
+  }
+
+  const requiredMarkers = [
+    "Mindestalter (18+)",
+    "Verantwortlich für die Datenverarbeitung",
+    "Start ausschließlich bei SkillPilot",
+    "genau 24 Stunden",
+    "Getrennte Berechtigungen",
+    "Keine Weitergabe der permanenten ID",
+    "Aktuelles Thema und Lernziele",
+    "HMAC-Prüfwert",
+    "höchstens eine Stunde",
+    "höchstens 30 Tage",
+    "OAuth-Revocation-Schnittstelle",
+    "minimum-age notice (18+)",
+    "The controller for data processing",
+    "Sessions start only at SkillPilot",
+    "exactly 24 hours",
+    "Separate authorization",
+    "No disclosure of the permanent ID",
+    "The current topic and learning goals",
+    "HMAC verification value",
+    "no more than one hour",
+    "no more than 30 days",
+    "OAuth revocation endpoint",
+    "enpasos – Enterprise Patterns &amp; Solutions GmbH",
+    "support@skillpilot.com",
+  ];
+  for (const marker of requiredMarkers) {
+    if (!html.includes(marker)) {
+      throw new Error(
+        `Claude privacy notice is missing required bilingual content: ${marker}.`,
+      );
+    }
+  }
+  const noticeWithoutPublicSupportAddress = html.replaceAll(
+    "support@skillpilot.com",
+    "",
+  );
+  if (/(?:@|&#0*64;|&#x0*40;|%40)/iu.test(noticeWithoutPublicSupportAddress)) {
+    throw new Error(
+      "Claude privacy notice must not publish another email address.",
+    );
+  }
+
+  const requiredRepeatedLinks = [
+    "https://skillpilot.com/privacy",
+    "https://www.anthropic.com/legal/consumer-terms",
+    "https://www.anthropic.com/legal/privacy",
+  ];
+  for (const link of requiredRepeatedLinks) {
+    if (countOccurrences(html, `href="${link}"`) !== 2) {
+      throw new Error(
+        `Claude privacy notice must link ${link} exactly once per language.`,
+      );
+    }
+  }
+
+  const allowedLinks = new Set([
+    "#deutsch",
+    "#english",
+    "https://skillpilot.com/privacy",
+    "https://skillpilot.com/",
+    "mailto:support@skillpilot.com",
+    "https://www.anthropic.com/legal/consumer-terms",
+    "https://www.anthropic.com/legal/privacy",
+  ]);
+  for (const match of html.matchAll(/\bhref="([^"]+)"/giu)) {
+    if (!allowedLinks.has(match[1])) {
+      throw new Error(
+        `Claude privacy notice contains an unapproved link target: ${match[1]}.`,
+      );
+    }
+  }
+  for (const [label, pattern] of [
+    ["script", /<script\b/iu],
+    ["frame", /<(?:iframe|frame)\b/iu],
+    ["form control", /<(?:form|input|button|textarea|select)\b/iu],
+    ["embedded object", /<(?:object|embed)\b/iu],
+    ["subresource source", /\bsrc\s*=/iu],
+    ["automatic refresh", /http-equiv="refresh"/iu],
+  ]) {
+    if (pattern.test(html)) {
+      throw new Error(`Claude privacy notice must not contain ${label}.`);
+    }
+  }
 }
 
 export function validateClaudePluginPublicationIndex(index, lane, manifest = null) {
@@ -1164,6 +1762,17 @@ function resolveWithin(root, repositoryPath, label) {
     throw new Error(`${label} escapes the repository root: ${repositoryPath}.`);
   }
   return resolvedPath;
+}
+
+function countOccurrences(value, fragment) {
+  let count = 0;
+  let offset = 0;
+  while (true) {
+    const index = value.indexOf(fragment, offset);
+    if (index < 0) return count;
+    count += 1;
+    offset = index + fragment.length;
+  }
 }
 
 function sha256(bytes) {

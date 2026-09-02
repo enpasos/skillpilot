@@ -200,13 +200,17 @@ Before submission, practically verify this order:
 2. set `SKILLPILOT_CLAUDE_CONNECTOR_V1_ENABLED=false`;
 3. restart the existing SkillPilot service and wait for readiness;
 4. revoke or expire Claude v1 transport tokens and learner sessions according
-   to the incident procedure;
+   to the approved restricted procedure referenced by the
+   [support readiness and incident runbook](claude-support-readiness-runbook.md);
 5. repeat all frozen OpenAI v1 checks;
 6. restore the known-good shared artifact only if the artifact itself is faulty.
 
 Do not delete provider tables or use `git reset --hard` as an operational
 rollback. Record timing, operator, observed interruption, results and recovery
-in the external evidence store.
+in the external evidence store. The support-readiness gate remains blocked
+until named support, operations and security owners have completed the
+candidate-bound mailbox, alert, containment and recovery drill defined in that
+runbook.
 
 ## 9. Directory submission
 

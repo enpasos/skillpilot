@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "direct-install-privacy-approval-1.0.2",
+  "lane": "controlled_direct_install_beta",
+  "status": "pass",
+  "candidate": {
+    "version": "1.0.2",
+    "sha256": "9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d"
+  },
+  "notice": {
+    "sourcePath": "backend/src/main/resources/claude-connector-v1/privacy.html",
+    "sourceSha256": "5b4ec481111f3fa07d914f3170098a6efcb3939bff624ac21ab05b7ffa854397",
+    "publicUrl": "https://mcp-claude-v1.skillpilot.com/privacy",
+    "languages": [
+      "de",
+      "en"
+    ]
+  },
+  "checks": [
+    {
+      "id": "bilingual-de-en-complete",
+      "status": "pass"
+    },
+    {
+      "id": "controller-and-support-disclosed",
+      "status": "pass"
+    },
+    {
+      "id": "age-and-anthropic-boundary-disclosed",
+      "status": "pass"
+    },
+    {
+      "id": "session-identifier-and-oauth-boundary-accurate",
+      "status": "pass"
+    },
+    {
+      "id": "data-retention-and-revocation-accurate",
+      "status": "pass"
+    },
+    {
+      "id": "static-page-security-and-no-tracking",
+      "status": "pass"
+    }
+  ],
+  "approvedBy": "Dr. Matthias Unverzagt",
+  "approvedRole": "product-owner",
+  "approvedAt": "2026-09-01T21:37:06.000Z"
+}
