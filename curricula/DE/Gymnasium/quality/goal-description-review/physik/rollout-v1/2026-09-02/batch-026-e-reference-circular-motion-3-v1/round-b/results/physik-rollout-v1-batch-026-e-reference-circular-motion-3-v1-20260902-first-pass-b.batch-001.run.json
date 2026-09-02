@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001.gpt-5.6-terra",
+  "campaignId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:51474fe865ca6252b94ee02fdf7952dd1768718c82ba947e591c1a6726f20f97",
+  "bundleFingerprint": "sha256:9ededefc481a30da9e2289cdb38a3942b837ab1a01c8a917651d72ba600d1959",
+  "bookDigest": "sha256:013f7db6032440d2b6984aeca8bd408120f50c1c9967cd08732089c0b4835002",
+  "provider": "openai",
+  "model": "gpt-5.6-terra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:ccdca311a224bdf378ad9d6f6a1d8ae2e49758f0322138ed704a87068dd9c985",
+  "independenceGroupId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "68c90ba6-c438-463c-9a53-cf61062d416a",
+    "ec7a0a68-730b-5c94-ac72-a937508f8303",
+    "e918b31f-6f39-5dee-ade6-3617080fb24f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:51474fe865ca6252b94ee02fdf7952dd1768718c82ba947e591c1a6726f20f97"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:00f4546946ccea5f2588d0bfb5caab15905f6f4ab717fa6c5516abe34be8f675"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T06:03:30.000Z",
+  "completedAt": "2026-09-02T06:04:46.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:59cf2873346d0c355c521844686c8500236a11d5c5f45855d85ea96f0406e3c3",
+  "toolchainVersion": "codex-gpt-5.6-terra-high-fork-none"
+}

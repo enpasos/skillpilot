@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `f7a9a0b4-ec64-468f-8da4-59c5055eac1d`
 - Titel: Bruchterme auf einen gemeinsamen Nenner bringen
-- Beschreibung: Die lernende Person kann Bruchterme durch Erweitern und Strukturieren auf einen geeigneten gemeinsamen Nenner bringen und den Hauptnenner begründen.
+- Beschreibung: Die lernende Person kann aus der Faktorstruktur der Nenner einen geeigneten gemeinsamen Nenner bestimmen, jeden Bruchterm mit den fehlenden Faktoren erweitern und unter Beachtung der Definitionsbedingungen die Wertgleichheit der Umformungen begründen.
 
 ## Generator
 

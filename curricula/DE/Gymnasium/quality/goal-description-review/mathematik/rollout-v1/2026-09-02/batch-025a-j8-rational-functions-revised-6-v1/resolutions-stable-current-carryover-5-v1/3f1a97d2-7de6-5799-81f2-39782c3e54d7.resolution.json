@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b025a-stable5-current-carryover-v1-resolution-3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+  "goal": {
+    "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:63844e0c5b5a23fae50360e4069f8fc54a07ecd6d6ebcb9d7f4405691d1cb092",
+    "pageFingerprint": "sha256:0be7adab09d98873decd19f6b5bfc9663d422747f3a78e41967134792dc2e1d2",
+    "goalReviewContextFingerprint": "sha256:a0175f21dcf6290ae325fa2f443eb6bc26761b0b8139bfd8559cb37739f1002a",
+    "finalText": {
+      "titleDe": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
+      "titleEn": "Determine parameters of simple hyperbolas from graphs",
+      "descriptionDe": "Die lernende Person kann bei einem gegebenen Graphen einer Funktion der Form f(x) = a/(x - d) + e mit a ≠ 0 die Parameter d und e aus den Asymptoten sowie a mithilfe eines weiteren Graphenpunkts bestimmen und den rekonstruierten Funktionsterm am Graphen prüfen.",
+      "descriptionEn": "Given the graph of a function of the form f(x) = a/(x - d) + e with a ≠ 0, the learner can determine d and e from the asymptotes, determine a using one additional point on the graph, and check the reconstructed function expression against the graph."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-a",
+      "campaignDigest": "sha256:3398fdc709ea5ab6b6dce0ea3f807aa1eb90c3e78d8e155cc18f04b04afea2f3",
+      "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+      "goalReviewContextFingerprint": "sha256:a0175f21dcf6290ae325fa2f443eb6bc26761b0b8139bfd8559cb37739f1002a",
+      "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258",
+      "runManifestDigest": "sha256:bb9eb42af0dd16313e0da7dcd2ea398a43ece75b3d7a2154fe4eec858fa664f6",
+      "resultsDigest": "sha256:edc5cc0df123ef4386fe54968ea0aaab7c78ef8c79b62ffac8fa9745887e5979",
+      "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:005",
+      "recordDigest": "sha256:b2b813ea496585b5dc5223514d558ca5f4e38dfb3d37246da95ac5b7fbf5d527"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-b",
+      "campaignDigest": "sha256:ce016dfb27fcfcaef647d1931470327ad6f9d0c5f481b7905e0eb9cbbdf95e8e",
+      "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+      "goalReviewContextFingerprint": "sha256:a0175f21dcf6290ae325fa2f443eb6bc26761b0b8139bfd8559cb37739f1002a",
+      "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b.batch-001",
+      "runId": "mathematik-b025a-20260902-round-b-run-001",
+      "runManifestDigest": "sha256:bb505147a8e8eb3db2830a1cdc4123c0e755608963f593a08658dd574487cce1",
+      "resultsDigest": "sha256:f12403dd7d66c9e4f552b96982a9ec5af69eb49f837921887e8d42a7e3d2c53f",
+      "recordId": "math-b025a-round-b-3f1a97d2",
+      "recordDigest": "sha256:0d82689aec4073dc0bd5837c5e369510c22dc99e52c2612b253e91d825efce21"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d62714510e3db08ca6033ac8a4aee9059c23d145771364bf53fa31959a6a7dc6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-5-v1.json",
+    "manifestId": "mathematik-b025a-stable5-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:a013265057202885b5ed0fed0f23194b908c3b3da5ad4aa71667a3408fece6db",
+    "manifestFingerprint": "sha256:a44358e870e4851c96a7d2d2b7f10095ea707a2a552336fcde04587d76380ef6",
+    "decisionId": "mathematik-b025a-stable5-synthesis-openai-codex-20260902-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b025a-stable5-synthesis-openai-codex-20260902-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B025a stable-five adjudicated carryover synthesis candidate",
+    "synthesizedAt": "2026-09-02T10:26:29.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die inverse Rekonstruktionskompetenz. Runde A wird ausgewählt, weil sie die Formel a = (y - e)(x - d), die vollständige Parametergewinnung und die unabhängige Graphenprüfung am klarsten verbindet; Runde B bleibt vollständig gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm the inverse reconstruction competency. Round A is selected because it most clearly connects the formula a = (y - e)(x - d), complete parameter recovery, and an independent check against the graph; Round B remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Asymptoten eines Graphen der Form f(x) = a/(x - d) + e legen d und e fest; jeder weitere Graphenpunkt (x | y) bestimmt a durch die Beziehung a = (y - e)(x - d). Der rekonstruierte Term muss Asymptoten, Punktlage und Astorientierung gemeinsam wiedergeben.",
+      "essentialUnderstandingEn": "The asymptotes of a graph of the form f(x) = a/(x - d) + e determine d and e; any additional point (x, y) on the graph determines a through a = (y - e)(x - d). The reconstructed expression must reproduce the asymptotes, point location, and branch orientation together.",
+      "observablePerformanceDe": "Die lernende Person liest selbstständig d und e aus den Asymptoten eines gegebenen Graphen ab, verwendet einen geeigneten Graphenpunkt zur Berechnung von a, formuliert den Funktionsterm und prüft ihn an mindestens einem weiteren sichtbaren Graphenmerkmal.",
+      "observablePerformanceEn": "The learner independently reads d and e from the asymptotes of a given graph, uses a suitable point on the graph to calculate a, formulates the function expression, and checks it against at least one additional visible feature of the graph.",
+      "transferExpectationDe": "Bei einem neuen Hyperbelgraphen mit anderer Achsenskalierung, verschobenen Asymptoten und einem nutzbaren Punkt auf dem anderen Ast rekonstruiert die lernende Person die drei Parameter und überprüft den Term trotz der veränderten grafischen Darstellung.",
+      "transferExpectationEn": "For a new hyperbola graph with a different axis scale, shifted asymptotes, and a usable point on the other branch, the learner reconstructs all three parameters and verifies the expression despite the changed graphical representation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7075ce14e4d299157704329cf01c19d3a50c4391c522ed3c216e291aecbdd4a9",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1ef128c3af7e01f749fff56a0e792f4e1dfff150ba1bce56b2003e234f4c4016"
+}

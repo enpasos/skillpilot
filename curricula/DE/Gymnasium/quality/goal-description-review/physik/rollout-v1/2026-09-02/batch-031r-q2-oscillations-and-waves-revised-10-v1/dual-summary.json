@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0231c6c04e96c40dcfbfd4e084e47de9bffbe8bd27c8b5c7d72ad0b5705f71dd",
+  "reviewInputFingerprint": "sha256:05320965e38c5bbf750c485a5dfb7a3f8dad9fc96309d6e8e866064519a4a2d3",
+  "goalCount": 10,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b031r-a-b001-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-independent-b",
+      "runIds": [
+        "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 10,
+    "unavailable": 0,
+    "requiresSynthesis": 10
+  },
+  "goals": [
+    {
+      "goalId": "d03f1cb6-c224-53db-ad91-76cc7827978d",
+      "firstRecordId": "physik-b031r-a-b001-record-001",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:001",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "158e1c19-7ccb-4c8c-931c-b685951ab161",
+      "firstRecordId": "physik-b031r-a-b001-record-002",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:002",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+      "firstRecordId": "physik-b031r-a-b001-record-003",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:003",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "85157cf0-7f68-5aea-b375-0f9797008cc9",
+      "firstRecordId": "physik-b031r-a-b001-record-004",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:004",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f47a7fa0-b929-5264-b038-b83fd682967f",
+      "firstRecordId": "physik-b031r-a-b001-record-005",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:005",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+      "firstRecordId": "physik-b031r-a-b001-record-006",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:006",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+      "firstRecordId": "physik-b031r-a-b001-record-007",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:007",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e160acb4-5b88-509e-8055-2653df420c65",
+      "firstRecordId": "physik-b031r-a-b001-record-008",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:008",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "215f5558-562c-5686-b649-931f324c7983",
+      "firstRecordId": "physik-b031r-a-b001-record-009",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:009",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1c430e0a-b63e-5729-8715-a96a5a68740f",
+      "firstRecordId": "physik-b031r-a-b001-record-010",
+      "secondRecordId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001:010",
+      "firstRunId": "physik-b031r-a-b001-run-001",
+      "secondRunId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

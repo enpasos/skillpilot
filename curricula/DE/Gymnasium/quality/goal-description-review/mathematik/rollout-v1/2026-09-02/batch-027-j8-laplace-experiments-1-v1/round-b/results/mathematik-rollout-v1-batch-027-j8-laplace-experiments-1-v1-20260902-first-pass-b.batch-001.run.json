@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b027-j8-laplace-first-pass-b-001",
+  "campaignId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-b",
+  "roundId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:021cce1a173c65102e81017ee856c4670af03bfbd7f0b9d0e9d04aa0c8f50be4",
+  "bundleFingerprint": "sha256:244faa1a1bacb25f8eb84d50019473a2f3c6ef90b727ba53ef4c528240b1d1c4",
+  "bookDigest": "sha256:62f5abc90046e01c4baaffe4e920c032904ae9605f56e77327ed406544d4478e",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:021cce1a173c65102e81017ee856c4670af03bfbd7f0b9d0e9d04aa0c8f50be4"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-02T13:48:30Z",
+  "completedAt": "2026-09-02T13:49:21Z",
+  "status": "completed",
+  "outputDigest": "sha256:2021623d3deb5ec711e1f0f1d030c7a1ab2dbaa7b159c2f94d61071e302c4dbd",
+  "toolchainVersion": "codex-v1"
+}

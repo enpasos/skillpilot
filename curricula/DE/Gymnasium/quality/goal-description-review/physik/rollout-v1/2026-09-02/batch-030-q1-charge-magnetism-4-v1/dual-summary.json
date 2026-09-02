@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7afd40b6bad76a153f2eeed5bfc57edfb8c7aafea71e4dc54c26c4de6c6b06a2",
+  "reviewInputFingerprint": "sha256:f66aeb114d0b207f23a09e97eeb80e0a27f2089b9a98a2aed4a1ae9e2062dfe9",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-independent-a",
+      "runIds": [
+        "codex-review-a-physics-b030-57nCDY"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-independent-b",
+      "runIds": [
+        "physics-b030-first-pass-b-codex-20260902-153209"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::unspecified"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+      "firstRecordId": "codex-review-a-physics-b030-57nCDY.001",
+      "secondRecordId": "physics-b030-first-pass-b-codex-20260902-153209.r001",
+      "firstRunId": "codex-review-a-physics-b030-57nCDY",
+      "secondRunId": "physics-b030-first-pass-b-codex-20260902-153209",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+      "firstRecordId": "codex-review-a-physics-b030-57nCDY.002",
+      "secondRecordId": "physics-b030-first-pass-b-codex-20260902-153209.r002",
+      "firstRunId": "codex-review-a-physics-b030-57nCDY",
+      "secondRunId": "physics-b030-first-pass-b-codex-20260902-153209",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+      "firstRecordId": "codex-review-a-physics-b030-57nCDY.003",
+      "secondRecordId": "physics-b030-first-pass-b-codex-20260902-153209.r003",
+      "firstRunId": "codex-review-a-physics-b030-57nCDY",
+      "secondRunId": "physics-b030-first-pass-b-codex-20260902-153209",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+      "firstRecordId": "codex-review-a-physics-b030-57nCDY.004",
+      "secondRecordId": "physics-b030-first-pass-b-codex-20260902-153209.r004",
+      "firstRunId": "codex-review-a-physics-b030-57nCDY",
+      "secondRunId": "physics-b030-first-pass-b-codex-20260902-153209",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

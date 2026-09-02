@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-first-pass-b.batch-001.run-001",
+  "campaignId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ad43ef7b8d9d15f2a1ee0d3dedb7c86174f6804eced70d60c02b1b8f89230749",
+  "bundleFingerprint": "sha256:6d4f161104e7b0bbca4ec2ddfbf7345c77d1af7207b7c0c9ae7521b1a1ddd0fe",
+  "bookDigest": "sha256:040c45b27e2a146cd225f72b38c5d5f2f48113fe66bcfdadf9fb1bbcb15f37cc",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:24efb999ba0d931b0d5da044527d3fb7ab7833e041739ed12231dc2f304ce5d1",
+  "independenceGroupId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "481ffd56-d585-56fe-b525-ed423e30eed3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ad43ef7b8d9d15f2a1ee0d3dedb7c86174f6804eced70d60c02b1b8f89230749"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T11:25:50.063Z",
+  "completedAt": "2026-09-02T11:25:50.063Z",
+  "status": "completed",
+  "outputDigest": "sha256:29b98b195759c1ca4577e42981063e32a32fe8acab91bda72cd903bc82275ed7",
+  "toolchainVersion": "goal-description-review-v1"
+}

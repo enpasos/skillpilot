@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `9854589c-5feb-4942-b90f-311ddf36eb78`
 - Titel: Geladene Teilchen in homogenen magnetischen Feldern untersuchen
-- Beschreibung: Die lernende Person kann die Bewegung geladener Teilchen in homogenen magnetischen Feldern untersuchen, die Lorentzkraft fachlich nutzen und einfache Bahnformen qualitativ deuten.
+- Beschreibung: Die lernende Person kann vorgegebene oder simulierte Bahnen geladener Teilchen in homogenen Magnetfeldern mithilfe der Lorentzkraft vergleichen, aus Feldrichtung und Umlaufsinn das Ladungsvorzeichen erschließen und für Bewegungen senkrecht zur Feldrichtung unter sonst gleichen Bedingungen aus Krümmungsvergleichen qualitative Auswirkungen von Änderungen der Masse, Geschwindigkeit oder Feldstärke ableiten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Geladene Teilchen in homogenen magnetischen Feldern untersuchen
-Beschreibung: Die lernende Person kann die Bewegung geladener Teilchen in homogenen magnetischen Feldern untersuchen, die Lorentzkraft fachlich nutzen und einfache Bahnformen qualitativ deuten.
+Beschreibung: Die lernende Person kann vorgegebene oder simulierte Bahnen geladener Teilchen in homogenen Magnetfeldern mithilfe der Lorentzkraft vergleichen, aus Feldrichtung und Umlaufsinn das Ladungsvorzeichen erschließen und für Bewegungen senkrecht zur Feldrichtung unter sonst gleichen Bedingungen aus Krümmungsvergleichen qualitative Auswirkungen von Änderungen der Masse, Geschwindigkeit oder Feldstärke ableiten.
 
 Zusatzanweisung:
 Create a new, minimal, geometrically exact German educational infographic. Draw one complete circle inside a rectangle filled with crosses × for B into the page. Place a positive particle at the bottommost point of the circle, not outside the field. At that same bottom point draw v horizontally to the right, tangent to the circle, and F_L vertically upward toward the marked circle centre. These directions satisfy q>0 and v × B. Add F_L = qvB and r = mv/(qB). Do not draw an incoming line, transition curve, parabola, spiral or S-curve. At a second point, if present, v must again be tangent and F_L exactly radial inward.

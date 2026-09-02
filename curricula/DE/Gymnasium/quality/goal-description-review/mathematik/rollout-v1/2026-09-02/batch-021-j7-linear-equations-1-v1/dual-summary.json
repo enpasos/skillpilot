@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:83daa4c30b0890b1f0ccc70b12f11f4fb9385af80f0bf2957820e67c47644e71",
+  "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-terra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "firstRecordId": "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol.record-001",
+      "secondRecordId": "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra.record-001",
+      "firstRunId": "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol",
+      "secondRunId": "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

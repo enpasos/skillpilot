@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `e7131fe3-1da6-5555-80ec-fb6bdf8fcc29`
 - Titel: Doppler-Effekt in der Medizin
-- Beschreibung: Nutzung von Ultraschall und Doppler-Effekt zur Messung von Strömungsgeschwindigkeiten (z. B. Blutfluss). Frequenzverschiebung bei bewegtem Sender/Empfänger.
+- Beschreibung: Die lernende Person kann erklären, wie die Frequenzverschiebung von an bewegten Blutbestandteilen gestreutem Ultraschall von deren Geschwindigkeitskomponente in Strahlrichtung abhängt, und daraus bei bekanntem Einschallwinkel die Strömungsgeschwindigkeit bestimmen.
 
 ## Generator
 

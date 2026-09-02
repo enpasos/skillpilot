@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b028-stable3-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Mathematics B028 consensus-stable three carryover synthesis candidate",
+  "synthesizedAt": "2026-09-02T15:29:50.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902",
+    "batchManifestDigest": "sha256:981a627adf002096de4b81a1a0fb76cadf6cf8f4e6eaf3bd5d7f9b1d81ad067a",
+    "configDigest": "sha256:49a09b6e49f796ae7a5474b5ca7c06a76985fe59a346afa22705b381f3b2a97d",
+    "bundleFingerprint": "sha256:781cf34036aa8135021e341dbb4493e0bc32b7a549cb10f301582b70a5bb956a",
+    "bookDigest": "sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800",
+    "reviewInputFingerprint": "sha256:2dcee5e6c127ea42de4ff4c935798ff16dbbee160ed97329851d9709df8fa256",
+    "dualSummaryDigest": "sha256:23b88a85c06f421083a40971482af35051a8cdcabe87fe517a01137211e2bdb6",
+    "canonicalLandscapeDigest": "sha256:80d3859390be46a9d9012839432688814258bff8cf09b0a5b6b17956a8db78cf"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-a",
+      "campaignDigest": "sha256:ef18bc5e158dd7776323f20682abfdece9bfea6f8daeb244d1002d6589f4a71c",
+      "roundId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:2dcee5e6c127ea42de4ff4c935798ff16dbbee160ed97329851d9709df8fa256",
+      "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f498089948884ebe0b009ecf27d07f6099ecc61579c6bc352fe353422d20cd51",
+      "runId": "codex-review-a-math-b028-rEU6NK",
+      "runManifestDigest": "sha256:12f29b37bdec5aba6ceacd30ea2cd1002266337758bf8eabfd38d6e9019a0c09",
+      "resultsDigest": "sha256:dd1dc3a4eb5694c13c2bc910925a6951aabf1af731270853863fd909cecc75e8"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-b",
+      "campaignDigest": "sha256:ee2a61b497d69181b96cabc943e208c50fabf1c4ee25005b9136d66ad7fe8870",
+      "roundId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:2dcee5e6c127ea42de4ff4c935798ff16dbbee160ed97329851d9709df8fa256",
+      "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:49334be7de7884d9a3faeee3cc6d049966b551b178d418033f2eef7f7b46fcbf",
+      "runId": "math-b028-first-pass-b-codex-20260902-152639",
+      "runManifestDigest": "sha256:9dad61039dbed45fd07aa4efeb98325b3289b0a1ad1dcfd2cdd073c07fd401f7",
+      "resultsDigest": "sha256:f693f1e7618f26bc0361e5f687908c0be4f08f6f3bbec40eb26c14ec0c30d1c5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b028-stable3-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9e8b7f2914956c279da4f23fbb943a3194c4eb4cc446eabe53a08eef214d5a77",
+      "pageFingerprint": "sha256:1c1a98a777fd50c3061f7d5657c6a954853119dd5a3434b54bcfbeb3c8493a75",
+      "goalReviewContextFingerprint": "sha256:d2626bbee332c15df8f201ddcbf6b52051a5da8b18b80d655e583986d7a913fe",
+      "finalText": {
+        "titleDe": "Lineare Ungleichungen lösen und Lösungsmengen darstellen",
+        "titleEn": "Solve linear inequalities and represent solution sets",
+        "descriptionDe": "Die lernende Person kann lineare Ungleichungen mit Äquivalenzumformungen lösen, bei Multiplikation oder Division durch negative Zahlen die Ordnungsrichtung korrekt umkehren und die Lösungsmenge auf der Zahlengeraden oder in Intervallschreibweise darstellen.",
+        "descriptionEn": "The learner can solve linear inequalities using equivalent transformations, correctly reverse the inequality when multiplying or dividing by a negative number, and represent the solution set on a number line or using interval notation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-review-a-math-b028-rEU6NK.002",
+          "recordDigest": "sha256:10f4e32a4a7aca2d562259ddfa09e3554b4f9583e394d6b33412b20dd4d51662"
+        },
+        "second": {
+          "recordId": "math-b028-first-pass-b-codex-20260902-152639.r002",
+          "recordDigest": "sha256:7c8f815624d25702e0ce4d6822040fee099450e4819ea52d851c9ea8c4a69d69"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz zu linearen Ungleichungen. Runde B wird ausgewählt, weil sie Vorzeichenwechsel sowie offene und geschlossene Randpunkte besonders klar mit den äquivalenten Darstellungen der Lösungsmenge verbindet; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency concerning linear inequalities. Round B is selected because it particularly clearly connects sign reversal and open or closed endpoints with equivalent representations of the solution set; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b028-stable3-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "15512e77-31e3-5222-8a6b-84791618e5ce",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:55deddef6e9553077c85c3c88d019a02e64cb2e73bb4c6af30e91186059b006b",
+      "pageFingerprint": "sha256:a9a59beabe00dc56393312e38763eb5dc3c311fa005e7e0c73de9db3335a3fea",
+      "goalReviewContextFingerprint": "sha256:a6ff94ced0883f8c142d0c3b8b7172cf1409ed38d3daeca575d63bfa0b27328a",
+      "finalText": {
+        "titleDe": "Bruchterme addieren und subtrahieren",
+        "titleEn": "Add and subtract fractional expressions",
+        "descriptionDe": "Die lernende Person kann Bruchterme mit geeigneten Hauptnennern addieren und subtrahieren und die Umformungsschritte nachvollziehbar begründen.",
+        "descriptionEn": "The learner can add and subtract fractional expressions using suitable common denominators and justify the transformation steps clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-review-a-math-b028-rEU6NK.003",
+          "recordDigest": "sha256:1b1a6646311ababf1fd62bf3d1d8a1c2a33d1e4d76673351964382c27aea84b2"
+        },
+        "second": {
+          "recordId": "math-b028-first-pass-b-codex-20260902-152639.r003",
+          "recordDigest": "sha256:7c2a7e5f5ffbecb8ab2344b80ff9927753052e819bdac4db5cea95f95ce3f8a2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz zum Addieren und Subtrahieren von Bruchtermen. Runde A wird ausgewählt, weil sie wertgleiches Erweitern und die Vorzeichenwirkung auf den gesamten Zähler besonders explizit macht; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency concerning addition and subtraction of fractional expressions. Round A is selected because it makes equivalent scaling and the effect of signs on the entire numerator particularly explicit; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b028-stable3-synthesis-openai-codex-20260902-decision-003",
+      "goalId": "76478e47-5ff9-5de1-b601-5e6e436ad855",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6a92aeffed41301f459fb7982616cd82b994e42afd865118e233ec3ef8a89e29",
+      "pageFingerprint": "sha256:545ece27b421e0f189d498d3272707ba07c41610030417d0dcf145a90831728d",
+      "goalReviewContextFingerprint": "sha256:5baceed0b4ae2aa29afe82fa187d3d34c31a9690fad17459f364cb3fb6067f4f",
+      "finalText": {
+        "titleDe": "Bruchterme multiplizieren und dividieren",
+        "titleEn": "Multiply and divide fractional expressions",
+        "descriptionDe": "Die lernende Person kann Bruchterme multiplizieren und dividieren, Definitionsbedingungen beachten und die entstehenden Terme sinnvoll kürzen.",
+        "descriptionEn": "The learner can multiply and divide fractional expressions, respect domain restrictions, and simplify the resulting expressions appropriately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-review-a-math-b028-rEU6NK.004",
+          "recordDigest": "sha256:e90f58c0d5ae72d5170f71977382a5ec495340b60ba47759b6180d548a2b120b"
+        },
+        "second": {
+          "recordId": "math-b028-first-pass-b-codex-20260902-152639.r004",
+          "recordDigest": "sha256:d1431d4cd1495254f9ad68a669a33392017776e1c44fee75d9191d14d03848d1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die unveränderte Kompetenz zum Multiplizieren und Dividieren von Bruchtermen. Runde A wird ausgewählt, weil sie die Ausschlüsse aus ursprünglichen Nennern und aus dem Divisor sowie faktorbasiertes Kürzen besonders geschlossen verbindet; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged competency concerning multiplication and division of fractional expressions. Round A is selected because it particularly coherently connects exclusions from original denominators and from the divisor with factor-based cancellation; Round B remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:92b0345d9e6614b992007df11fb2048fa350cec75dcbbd262ece8a8d605050eb"
+}

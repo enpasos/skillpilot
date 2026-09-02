@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `5fd45dbc-0eb1-591b-99a9-7386336f1456`
 - Titel: Reibungskräfte qualitativ verstehen
-- Beschreibung: Die lernende Person kann Haft- und Gleitreibung voneinander unterscheiden, Reibungskräfte qualitativ beschreiben und ihre Bedeutung für Bewegungen erläutern.
+- Beschreibung: Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Reibungskräfte qualitativ verstehen
-Beschreibung: Die lernende Person kann Haft- und Gleitreibung voneinander unterscheiden, Reibungskräfte qualitativ beschreiben und ihre Bedeutung für Bewegungen erläutern.
+Beschreibung: Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.
 
 Zusatzanweisung:
 Pflichtinhalt:

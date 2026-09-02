@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-resolution-f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+  "goal": {
+    "goalId": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:126fafa413d71c6a986b268149dabb4e80a21ccb855737c2e2534048756c5f9e",
+    "pageFingerprint": "sha256:60af0872d127744d95ed3207e45ec1d34d4e3be186011c03a8858233c9c7a3a1",
+    "goalReviewContextFingerprint": "sha256:1837a859f1366099977f690150f4bf151135b350185dcb512bd7c5e9e7dbce52",
+    "finalText": {
+      "titleDe": "Bruchterme auf einen gemeinsamen Nenner bringen",
+      "titleEn": "Bring fractional expressions to a common denominator",
+      "descriptionDe": "Die lernende Person kann aus der Faktorstruktur der Nenner einen geeigneten gemeinsamen Nenner bestimmen, jeden Bruchterm mit den fehlenden Faktoren erweitern und unter Beachtung der Definitionsbedingungen die Wertgleichheit der Umformungen begründen.",
+      "descriptionEn": "The learner can use the factor structure of the denominators to determine a suitable common denominator, multiply each numerator and denominator by the missing factors, and, taking domain restrictions into account, justify that the transformations preserve value."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-a",
+      "campaignDigest": "sha256:1d783cb5e8414ddcda7afbcd3c1a8db8a51313d455f066eb83d142b5306df92a",
+      "roundId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:d03c38436b8eb33b38fd4843c1181f7e5db94b27e1e2cf7ef3c3e70effa735b3",
+      "goalReviewContextFingerprint": "sha256:1837a859f1366099977f690150f4bf151135b350185dcb512bd7c5e9e7dbce52",
+      "batchId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-first-pass-a.batch-001",
+      "runId": "mathematik-b026c-round-a-codex-20260902-01",
+      "runManifestDigest": "sha256:da8cf7e7054b64b3a13585f649821c7b202588fb609fb7a52641867ab7c9e3ed",
+      "resultsDigest": "sha256:49e38dcc65eb526dfd38b44755548c5ac825d96f02b67fee2f5535151dfd7adf",
+      "recordId": "mathematik-b026c-round-a-common-denominator-002",
+      "recordDigest": "sha256:7c5a7e8a013c046163bd013f8f5324ffd8a178ee95ba44422c5886ff03d326e3"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-b",
+      "campaignDigest": "sha256:bc9482e45dae7363f58a3fc4c891b4d64443947ace557cd07150252dbc8fd2d9",
+      "roundId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:d03c38436b8eb33b38fd4843c1181f7e5db94b27e1e2cf7ef3c3e70effa735b3",
+      "goalReviewContextFingerprint": "sha256:1837a859f1366099977f690150f4bf151135b350185dcb512bd7c5e9e7dbce52",
+      "batchId": "mathematik-rollout-v1-batch-026c-j8-fractional-expressions-revised-2-v1-20260902-first-pass-b.batch-001",
+      "runId": "mathematik-b026c-round-b-blind-review-20260902-001",
+      "runManifestDigest": "sha256:1721e047cf950daa524fcf973a633856edf37d3f5df89893491847698f0d850d",
+      "resultsDigest": "sha256:80749d75e67dfde9719d1514b1a05ff37e006d4f1c719fa9d6fc8a2725939cf9",
+      "recordId": "mathematik-b026c-round-b-f7a9a0b4-review-20260902-002",
+      "recordDigest": "sha256:4890a222edcb92e770450aa3132709f2cabe420e08456450d9c41f9e5b8bd77b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:fecd0da5f9daa49e441b6113c7174551beca223836ec0a6811e0dade97b0fed8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-b026c-fractional-expressions-final-keep-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:ce921635cafd588c309bf425563c6939222a4a7f603259756aa79fd928a9130f",
+    "manifestFingerprint": "sha256:46eb10ed43a62c1e9671e5e0d7151052b9ae7942a22ec06202173c1ad44570b2",
+    "decisionId": "mathematik-b026c-fractional-expressions-final-keep-synthesis-openai-codex-20260902-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b026c-fractional-expressions-final-keep-synthesis-openai-codex-20260902-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B026c deterministic final KEEP synthesis candidate",
+    "synthesizedAt": "2026-09-02T13:12:16.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den aktuellen zweisprachigen Zieltext mit KEEP und verlangen ein positives Understanding-Evidence-Profil. Für die Resolution wird die Evidenz aus Runde A gewählt, weil sie die notwendige Vielfachheit der Nennerfaktoren, die daraus hergeleiteten fehlenden Erweiterungsfaktoren, die fortbestehenden Definitionsausschlüsse und einen Transferfall mit erst nach Faktorisierung sichtbarem gemeinsamen Faktor in einer geschlossenen Verständnisprüfung zusammenführt. Runde B bleibt vollständig gebunden und bestätigt zusätzlich die selbstständige Kontrolle der gleichen Nenner und der Wertgleichheit.",
+    "rationaleEn": "Both independent blind reviews confirm the current bilingual goal text with KEEP and require a positive understanding-evidence profile. The resolution selects Round A's evidence because it combines the required multiplicities of denominator factors, the missing expansion factors derived from them, the continuing domain exclusions, and a transfer case whose common factor becomes visible only after factoring into one coherent understanding check. Round B remains fully bound and additionally confirms independent verification of matching denominators and preservation of value.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass ein gemeinsamer Nenner die Faktoren jedes Ausgangsnenners in mindestens der jeweils benötigten Vielfachheit enthalten muss. Für jeden Bruchterm ergeben sich daraus genau die noch fehlenden Faktoren, mit denen Zähler und Nenner gemeinsam erweitert werden; dadurch bleibt der Wert für zulässige Variablenwerte erhalten, während die ursprünglichen Definitionsausschlüsse fortgelten.",
+      "essentialUnderstandingEn": "The learner understands that a common denominator must contain the factors of every original denominator with at least the multiplicity required in each case. This determines the factors still missing for each fractional expression, by which its numerator and denominator are multiplied together; the value is thereby preserved for admissible variable values, while the original domain exclusions remain in force.",
+      "observablePerformanceDe": "Die lernende Person faktorisiert gegebene Nenner soweit nötig, benennt einen geeigneten gemeinsamen Nenner, bestimmt für jeden Bruchterm den fehlenden Erweiterungsfaktor und erweitert vollständig. Sie gibt die ausgeschlossenen Werte an und begründet anhand der Faktorstruktur, weshalb jeder Ausgangsnenner im gemeinsamen Nenner enthalten ist und weshalb die einzelnen Umformungen wertgleich sind.",
+      "observablePerformanceEn": "The learner factors given denominators as far as needed, states a suitable common denominator, determines the missing expansion factor for each fractional expression, and completes each expansion. The learner states the excluded values and uses the factor structure to justify both why every original denominator is contained in the common denominator and why each transformation preserves value.",
+      "transferExpectationDe": "Bei einem neuen Paar von Bruchtermen, dessen Nenner einen gemeinsamen Faktor erst nach einer Faktorisierung erkennen lassen und bei dem ein Faktor mehrfach vorkommt, konstruiert die lernende Person einen geeigneten gemeinsamen Nenner, leitet die unterschiedlichen Erweiterungsfaktoren her und begründet die Lösung einschließlich der ursprünglichen Definitionsbedingungen.",
+      "transferExpectationEn": "For a new pair of fractional expressions whose denominators reveal a shared factor only after factoring and in which one factor occurs repeatedly, the learner constructs a suitable common denominator, derives the different expansion factors, and justifies the solution including the original domain restrictions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b7af6b35890cbd1ceba0a08ab41bd5080b49546a1c4ac0cc9c06e79b4e7d17bc",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:371fb42dfe14908c8c38187c7a1ff84891bbd4a06d0c1174abf649471adb060c"
+}

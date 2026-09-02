@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-resolution-93ece389-78c5-5141-9ef1-c68bd558306e",
+  "goal": {
+    "goalId": "93ece389-78c5-5141-9ef1-c68bd558306e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:28425b6acab4b554d5f0414dd29dd8def28f76fdff2ee506d6c6d49e72a177ad",
+    "pageFingerprint": "sha256:bc650f1c7fa0859d128e6b62d58791daab70575e62be48413ea5ddd48fedd097",
+    "goalReviewContextFingerprint": "sha256:c65fec8b4a4fed945930432bb0b464ac07ea471cf3fc7a2aa97ae7e41a501b66",
+    "finalText": {
+      "titleDe": "Wärmemengen mit C_V und C_P berechnen",
+      "titleEn": "Calculate Heat Quantities with C_V and C_P",
+      "descriptionDe": "Die lernende Person kann bei isochoren beziehungsweise isobaren Prozessen die übertragene Wärmemenge mit Q = n·C_V·ΔT beziehungsweise Q = n·C_P·ΔT unter der Annahme näherungsweise konstanter molarer Wärmekapazitäten berechnen und erklären, warum die passende Wärmekapazität von der Prozessbedingung abhängt.",
+      "descriptionEn": "The learner can calculate the heat transferred in isochoric or isobaric processes using Q = n·C_V·ΔT or Q = n·C_P·ΔT, assuming approximately constant molar heat capacities, and explain why the appropriate heat capacity depends on the process condition."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-a",
+      "campaignDigest": "sha256:f0f34e8d1507c7aece8a6407ad5072798cbc1e8c63b2da6d783fafd4a8e18d3d",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:c65fec8b4a4fed945930432bb0b464ac07ea471cf3fc7a2aa97ae7e41a501b66",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-gpt-5.6-sol-physics-b029r-round-a-20260902",
+      "runManifestDigest": "sha256:4e9abd18d0b45e022a9c629fa1fcc1005189241950703cc06bd40a22c5cc2205",
+      "resultsDigest": "sha256:be51edcc8e9ce1c02de9a8defa26a5ae7507ac5c78820d080112e550eac95d29",
+      "recordId": "openai-gpt-5.6-sol-physics-b029r-a-93ece389",
+      "recordDigest": "sha256:00017988e38711a397a5faf81638b32b514fb3e3e03764adc0af29e5bba761ad"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-b",
+      "campaignDigest": "sha256:671399d8c2ad1d1a3caf521b27d35bd592eca7d8d6584e7a81d62f213d724fa2",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:c65fec8b4a4fed945930432bb0b464ac07ea471cf3fc7a2aa97ae7e41a501b66",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b.batch-001",
+      "runId": "openai-gpt-5-physik-b029r-round-b-20260902",
+      "runManifestDigest": "sha256:b085440b9e8d1f9129f17b5d1e056b2f39406eeba51f4b0d2c5528c8e0afab2a",
+      "resultsDigest": "sha256:60ca8bd8a20dc2a293d42d1120af50aec90b73d1c55ef7616e1ae12bafaa59e3",
+      "recordId": "physik-b029r-93ece389-round-b-20260902",
+      "recordDigest": "sha256:358cfbfb4638985b79b1826f06bcaab9d012cb1b3f2dcb0d8d6bcc087acad397"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2c5b81a7a8c3935f904309c8ec8562ee3d81424f4c8e557b8f6423990b47b9a3"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:3331b694a70e69b2f2555c29ad8fb204497e99b7f9ca4981aa1cae6a898463c5",
+    "manifestFingerprint": "sha256:8ce1d6b69bc042508a5db0dbb776bd5bd204b4967e76246f14040d3fce01f06d",
+    "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Physics B029r subject synthesis candidate",
+    "synthesizedAt": "2026-09-02T14:55:33.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass der Zieltext C_V und C_P als molare Wärmekapazitäten an isochore beziehungsweise isobare Bedingungen bindet, ihre näherungsweise Konstanz ausweist und die Wahl nicht nur anwenden, sondern über die Prozessbedingung erklären lässt. Runde A wird für die Understanding Evidence gewählt, weil sie Erwärmen und Abkühlen, Vorzeichen, Einheiten und den Vergleich gleicher Temperaturänderungen einschließlich Volumenarbeit besonders klar prüfbar macht; Runde B bleibt vollständig gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm with KEEP that the goal text binds the molar heat capacities C_V and C_P to isochoric and isobaric conditions respectively, states their approximate constancy, and requires the choice to be explained from the process condition rather than merely applied. Round A is selected for the understanding evidence because it makes heating and cooling, signs, units, and comparison at equal temperature change including volume work especially assessable; Round B remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht C_V und C_P als molare Wärmekapazitäten unter unterschiedlichen Randbedingungen: Bei isochorer Erwärmung entfällt Volumenarbeit, während bei isobarer Erwärmung ein Teil der zugeführten Wärme auch mit Expansion verbunden ist; deshalb muss die Prozessbedingung die Wahl der Wärmekapazität bestimmen.",
+      "essentialUnderstandingEn": "The learner understands C_V and C_P as molar heat capacities under different boundary conditions: isochoric heating involves no volume work, whereas isobaric heating also involves expansion, so the process condition must determine the choice of heat capacity.",
+      "observablePerformanceDe": "Zu einem isochoren oder isobaren Heiz- beziehungsweise Kühlprozess identifiziert die lernende Person die Randbedingung, wählt und begründet C_V oder C_P, berechnet Q mit Stoffmenge, Temperaturänderung und konsistenten Einheiten und deutet Betrag und Vorzeichen als Wärmeübertragung zum oder vom Gas.",
+      "observablePerformanceEn": "For an isochoric or isobaric heating or cooling process, the learner identifies the boundary condition, selects and justifies C_V or C_P, calculates Q from amount of substance and temperature change with consistent units, and interprets its magnitude and sign as heat transferred to or from the gas.",
+      "transferExpectationDe": "Bei einem neuen Vergleich zweier Prozesse mit derselben Stoffmenge und Temperaturänderung, aber unterschiedlicher Randbedingung, bestimmt die lernende Person die jeweiligen Wärmemengen und erklärt den Unterschied durch die zusätzlich auftretende Volumenarbeit, solange die molaren Wärmekapazitäten näherungsweise konstant angenommen werden dürfen.",
+      "transferExpectationEn": "In a new comparison of two processes with the same amount of substance and temperature change but different boundary conditions, the learner determines the respective heat transfers and explains the difference through the additional volume work, as long as the molar heat capacities may be treated as approximately constant."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f65a42c5fb262f3bba7b9de862df1af67445ab91ff367259d107824321ccd55f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1a42f0dc2b38b48fc86af5f8072d6ddcefbe53d58acff8cd2e35edcc5af3e8fa"
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b025c-3f1a97d2-final-keep-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B025c 3f1a97d2 deterministic final KEEP synthesis candidate",
+  "synthesizedAt": "2026-09-02T11:50:20.550Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902",
+    "batchManifestDigest": "sha256:e54bdbab23eefcf60bb0a3531fa35d48ff1ee8e5395c4f780914ff128ea4aa97",
+    "configDigest": "sha256:36b73190144d9b4da17f3000c35e86c38c0b897fd008bd3fa77ac9895d4bfbcc",
+    "bundleFingerprint": "sha256:8c4ab91ee59196a87a4a131d52c8563c0c542c241ea1ca26b80d09e0b5789984",
+    "bookDigest": "sha256:7d247102c4a4025de19eab3c4c70f97e8c1d7d4aaf4a8a4659d0988f4e366b0f",
+    "reviewInputFingerprint": "sha256:aa2b8a2f16dd316cef759db5215f7cd75a9c13245f1db5bf103ab02aa9f39210",
+    "dualSummaryDigest": "sha256:e7583dc9b065a29e6523efb313f5bd384d60e795cf9080ac7d15d8ab133d14b5",
+    "canonicalLandscapeDigest": "sha256:fcaa71a8d3d7d8bd8aaa6f235cc20f3c1980194c3c3789a5353a60ad31e86ac2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-a",
+      "campaignDigest": "sha256:e5f6b38cb7ce9b5d67a878960a92f1e8b66930362c75413ff518b4aa35f8623a",
+      "roundId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:aa2b8a2f16dd316cef759db5215f7cd75a9c13245f1db5bf103ab02aa9f39210",
+      "batchId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e64e03a5355ada6db87b263748b125d3d4a1b896e663a6c7fffa32593d05c900",
+      "runId": "mathematik-b025c-20260902-round-a-batch-001-openai-gpt-5-run-001",
+      "runManifestDigest": "sha256:2812315997a06b4fca05c87fd5013b4cbb041f212503e42a6c45a72e237ffe52",
+      "resultsDigest": "sha256:03f5811df242f8cd84854a1d493dd61ae16b1eefb3311536640f83a9bcdff060"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-b",
+      "campaignDigest": "sha256:7cbd865c1d8e7cf14b6157a6da85b7250eff669d18a8c82445f1c14e1b88a422",
+      "roundId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:aa2b8a2f16dd316cef759db5215f7cd75a9c13245f1db5bf103ab02aa9f39210",
+      "batchId": "mathematik-rollout-v1-batch-025c-j8-rational-terms-from-graphs-recheck-1-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:43a62ca3b157dfa845aeeb6409947248bdb84703087e6df0ceaa08950779e01f",
+      "runId": "mathematik-b025c-round-b-openai-gpt5-20260902-run-001",
+      "runManifestDigest": "sha256:ff0dda23c735dd740949e14f1a4b7cc116a73d5ff1815e7c443657f49ab76ab2",
+      "resultsDigest": "sha256:dbf919808502819570b94145f44149bf34dc3983d26ce113ad5066cd6e55823c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b025c-3f1a97d2-final-keep-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:63844e0c5b5a23fae50360e4069f8fc54a07ecd6d6ebcb9d7f4405691d1cb092",
+      "pageFingerprint": "sha256:86590804288370562d6940d2314e0d1d82882218fb7b0fd2058065616664a79f",
+      "goalReviewContextFingerprint": "sha256:22423cffa823bde4691fff13c352acef2201d61815c3756e84076e2cedc81c1a",
+      "finalText": {
+        "titleDe": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
+        "titleEn": "Determine parameters of simple hyperbolas from graphs",
+        "descriptionDe": "Die lernende Person kann bei einem gegebenen Graphen einer Funktion der Form f(x) = a/(x - d) + e mit a ≠ 0 die Parameter d und e aus den Asymptoten sowie a mithilfe eines weiteren Graphenpunkts bestimmen und den rekonstruierten Funktionsterm am Graphen prüfen.",
+        "descriptionEn": "Given the graph of a function of the form f(x) = a/(x - d) + e with a ≠ 0, the learner can determine d and e from the asymptotes, determine a using one additional point on the graph, and check the reconstructed function expression against the graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b025c-20260902-round-a-3f1a97d2-record-001",
+          "recordDigest": "sha256:8527f995bd70c9981963285bc1066fd0a90146052bee761f52f3dccabc47f3a4"
+        },
+        "second": {
+          "recordId": "mathematik-b025c-round-b-openai-gpt5-20260902-run-001.goal-3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+          "recordDigest": "sha256:4e449bdad8cad0cd2e2a3fdbb3f8febc2ad381c9ff05b9ff72e967fb6755da2c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle zweisprachige Beschreibung unverändert mit KEEP und verlangen ein positives Understanding-Evidence-Profil. Für die Evidenz wird Runde B gewählt: Sie bindet die eindeutige Bestimmung des verbleibenden Parameters ausdrücklich an a = (y_0 - e)(x_0 - d), verlangt die selbstständige Zuordnung beider Asymptoten und prüft den Transfer bei veränderter Verschiebung, Achsenskalierung und Astlage zusätzlich an einem zweiten, nicht zur Bestimmung von a verwendeten Graphenpunkt. Runde A bleibt vollständig als unabhängige Bestätigung gebunden und ergänzt die Deutung von Vorzeichen und Betrag von a.",
+      "rationaleEn": "Both independent blind reviews confirm the current bilingual description unchanged with KEEP and require a positive understanding-evidence profile. Round B is selected for the evidence: it explicitly binds the unique determination of the remaining parameter to a = (y_0 - e)(x_0 - d), requires independent assignment of both asymptotes, and tests transfer under changed translation, axis scale, and branch positions at an additional graph point not used to determine a. Round A remains fully bound as an independent confirmation and adds the interpretation of the sign and magnitude of a."
+    }
+  ],
+  "manifestFingerprint": "sha256:cca1631d55ed1983d2ec33da2c6fc4dd9b56709de96a109b2ffaf285da9546db"
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-b023-rb-subject-reviewer-openai-gpt-5.6-terra-20260902T092713+0200",
+  "campaignId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-b",
+  "roundId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e7914bfe3a3baeb18658fbb1c23735390fef8ab8b1b32039ad6eceb8433250dd",
+  "bundleFingerprint": "sha256:cd87fa87ebfb379f7afe0dcc67b870bd11856459078903daac1902a182033194",
+  "bookDigest": "sha256:5d8ed9a0b33cf9d509c3e3b9c06156519fde9f71d2b408e83ebc77d59b3fc83a",
+  "provider": "openai",
+  "model": "gpt-5.6-terra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:41e39ec7c807ef0e0d4be7c03c8e4c8e71e7011efec43c200d70188c797b188b"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:99c3e64fc90c034bf7fa5ce1bd6a4832a1d7518d04c1babaf3f6d96034159276"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:2be523caf25a07841d599da21eb308617df80afc3e855740169c80dab3f5ca54"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:abd6130f44f7dc555fa633dfa3ba68c5adcac85dfb65d3bf0626b286ed041fdf"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:4f71d467d2fc9466ba1e7515db6845fd9583ae251c09ea4f2d772d4412f8fff0"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0cbb2ad54ae9a56621322f742854a990b9944dea957c0d38d056e3952d937f6f"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:08e2fdfb0e106591899920378ccb40c5964af0917ec8a5def43d2c987e01880b"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e7914bfe3a3baeb18658fbb1c23735390fef8ab8b1b32039ad6eceb8433250dd"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:3de815d6bd748509ecbbda27f0eac733ee550822f6dc8ba7d351fafa79a2122d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T09:27:13+02:00",
+  "completedAt": "2026-09-02T09:27:50+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:91a0680e00bddfcf7cc17bac92d46f11aff929f84873af0d7cb5e836b8a1511f",
+  "toolchainVersion": "codex-agent-2026-09-02"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258",
+  "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-a",
+  "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:0e2c6fcdc94285b0efcada2fad538ca224ca462a65d7e0c69dce4977ec559c34",
+  "bundleFingerprint": "sha256:468962192c8d694458ad7ff2244ddcb84d8970197e8fc5bff1509b8343d7bffc",
+  "bookDigest": "sha256:12d9d918ee355330ec73b4403d702201e8d3ea399ee1cafda68baa02d5374925",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:b42b4ba93f3db8257fc19748941948360b0b0124337b00592b4c0eb6e1aca56e",
+  "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+    "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+    "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+    "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+    "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+    "fa72cf74-a31e-402e-90d7-422c118f4a5b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0e2c6fcdc94285b0efcada2fad538ca224ca462a65d7e0c69dce4977ec559c34"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-02T10:20:25Z",
+  "completedAt": "2026-09-02T10:24:50Z",
+  "status": "completed",
+  "outputDigest": "sha256:edc5cc0df123ef4386fe54968ea0aaab7c78ef8c79b62ffac8fa9745887e5979",
+  "toolchainVersion": "openai-codex-gpt-5"
+}

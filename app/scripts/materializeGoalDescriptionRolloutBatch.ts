@@ -68,6 +68,13 @@ const INDEX_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-description-review/v1/goal-description-standalone-batch-resolution-index.schema.json',
 )
+const IN_FLIGHT_LEDGER_SCHEMA_PATH = resolve(
+  REPOSITORY_ROOT,
+  'contracts/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json',
+)
+export const DEFAULT_GOAL_DESCRIPTION_ROLLOUT_IN_FLIGHT_LEDGER_PATH = (
+  'curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json'
+)
 
 type Digest = `sha256:${string}`
 
@@ -87,6 +94,13 @@ export type GoalDescriptionRolloutBatchConfig = {
   criteriaPath: string
   publicRoot?: string
   printDerivativeProfile?: GoalBookPrintDerivativeProfile
+}
+
+export type GoalDescriptionRolloutInFlightLedger = {
+  $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json'
+  schemaVersion: 1
+  ledgerContract: 'goal-description-rollout-in-flight-ledger-v1'
+  activeBatchConfigPaths: string[]
 }
 
 type PreparedRoundBinding = {
@@ -251,13 +265,17 @@ const validatorsPromise = Promise.all([
   readFile(CONFIG_SCHEMA_PATH, 'utf8'),
   readFile(MANIFEST_SCHEMA_PATH, 'utf8'),
   readFile(INDEX_SCHEMA_PATH, 'utf8'),
-]).then(([config, manifest, index]) => {
+  readFile(IN_FLIGHT_LEDGER_SCHEMA_PATH, 'utf8'),
+]).then(([config, manifest, index, inFlightLedger]) => {
   const ajv = new Ajv2020({ allErrors: true, strict: true })
   return {
     ajv,
     config: ajv.compile(parseJson<Record<string, unknown>>(config, CONFIG_SCHEMA_PATH)),
     manifest: ajv.compile(parseJson<Record<string, unknown>>(manifest, MANIFEST_SCHEMA_PATH)),
     index: ajv.compile(parseJson<Record<string, unknown>>(index, INDEX_SCHEMA_PATH)),
+    inFlightLedger: ajv.compile(
+      parseJson<Record<string, unknown>>(inFlightLedger, IN_FLIGHT_LEDGER_SCHEMA_PATH),
+    ),
   }
 })
 
@@ -277,6 +295,44 @@ export const loadGoalDescriptionRolloutBatchConfig = async (
     configBytes,
     configPath,
     outputDirectory: repositoryPath(config.outputDirectory, 'batch outputDirectory'),
+  }
+}
+
+export const loadGoalDescriptionRolloutInFlightLedger = async (
+  configuredPath = DEFAULT_GOAL_DESCRIPTION_ROLLOUT_IN_FLIGHT_LEDGER_PATH,
+) => {
+  const ledgerPath = repositoryPath(configuredPath, 'in-flight work ledger')
+  const ledgerBytes = await readFile(ledgerPath)
+  const raw = parseJson<unknown>(ledgerBytes, ledgerPath)
+  const validators = await validatorsPromise
+  if (!validators.inFlightLedger(raw)) {
+    throw new Error(
+      `Invalid goal-description rollout in-flight ledger: ${validators.ajv.errorsText(validators.inFlightLedger.errors, { separator: '; ' })}`,
+    )
+  }
+  const ledger = raw as GoalDescriptionRolloutInFlightLedger
+  const activeBatches = await Promise.all(
+    ledger.activeBatchConfigPaths.map((configPath) => loadGoalDescriptionRolloutBatchConfig(configPath)),
+  )
+  const claims = new Map<string, string>()
+  for (const activeBatch of activeBatches) {
+    const binding = `${activeBatch.config.subject}\u0000${activeBatch.config.baseGoalBookConfigPath}`
+    for (const goalId of activeBatch.config.goalIds) {
+      const claimKey = `${binding}\u0000${goalId}`
+      const previousConfigPath = claims.get(claimKey)
+      if (previousConfigPath) {
+        throw new Error(
+          `Duplicate active in-flight claim for ${goalId}: ${previousConfigPath} and ${relativeRepositoryPath(activeBatch.configPath, 'active batch config')}`,
+        )
+      }
+      claims.set(claimKey, relativeRepositoryPath(activeBatch.configPath, 'active batch config'))
+    }
+  }
+  return {
+    ledger,
+    ledgerBytes,
+    ledgerPath,
+    activeBatches,
   }
 }
 
@@ -1255,6 +1311,7 @@ export const selectGoalDescriptionRolloutBatch = async ({
   maximumGoalCount,
   strategy,
   excludeConfigPaths = [],
+  inFlightLedgerPath = DEFAULT_GOAL_DESCRIPTION_ROLLOUT_IN_FLIGHT_LEDGER_PATH,
 }: {
   rolloutConfigPath: string
   baseGoalBookConfigPath: string
@@ -1262,11 +1319,13 @@ export const selectGoalDescriptionRolloutBatch = async ({
   maximumGoalCount: number
   strategy: GoalDescriptionRolloutSelectionStrategy
   excludeConfigPaths?: string[]
+  inFlightLedgerPath?: string
 }) => {
-  const [report, base, excludeConfigs] = await Promise.all([
+  const [report, base, excludeConfigs, inFlightLedger] = await Promise.all([
     generateDeepUnderstandingRollout(rolloutConfigPath),
     loadGoalBookBuildInputs(baseGoalBookConfigPath),
     Promise.all(excludeConfigPaths.map((configPath) => loadGoalDescriptionRolloutBatchConfig(configPath))),
+    loadGoalDescriptionRolloutInFlightLedger(inFlightLedgerPath),
   ])
   if (report.blockingIssueCount > 0) {
     throw new Error(`Cannot select from a rollout report with ${report.blockingIssueCount} blocking issues`)
@@ -1299,6 +1358,17 @@ export const selectGoalDescriptionRolloutBatch = async ({
       )
     }
   }
+  const activeSubjectBatches = inFlightLedger.activeBatches.filter(({ config }) => (
+    config.subject === subject
+  ))
+  const mismatchedActiveBatch = activeSubjectBatches.find(({ config }) => (
+    config.baseGoalBookConfigPath !== baseGoalBookConfigPath
+  ))
+  if (mismatchedActiveBatch) {
+    throw new Error(
+      `Active in-flight batch ${relativeRepositoryPath(mismatchedActiveBatch.configPath, 'active batch config')} is not bound to ${subject} and ${baseGoalBookConfigPath}`,
+    )
+  }
   const denominator = await assertCurrentFullAtomicBase(base)
   if (subjectReport.denominator !== denominator) {
     throw new Error(
@@ -1319,9 +1389,21 @@ export const selectGoalDescriptionRolloutBatch = async ({
   }
   const metadataByGoalId = new Map(landscape.goals.map((goal) => [String(goal.id), goal]))
   const explicitlyExcludedGoalIds = [...new Set(excludeConfigs.flatMap(({ config }) => config.goalIds))]
+  const inFlightExcludedGoalIds = [
+    ...new Set(activeSubjectBatches.flatMap(({ config }) => config.goalIds)),
+  ]
+  const staleInFlightGoalIds = inFlightExcludedGoalIds.filter((goalId) => (
+    subjectReport.strictCompleteGoalIds.includes(goalId)
+  ))
+  if (staleInFlightGoalIds.length > 0) {
+    throw new Error(
+      `In-flight ledger still claims strict-complete goals for ${subject}: ${staleInFlightGoalIds.join(', ')}`,
+    )
+  }
   const completedOrExcludedGoalIds = new Set([
     ...subjectReport.strictCompleteGoalIds,
     ...explicitlyExcludedGoalIds,
+    ...inFlightExcludedGoalIds,
   ])
   const goals = selectGoalDescriptionRolloutCandidates({
     model: base.model,
@@ -1344,6 +1426,15 @@ export const selectGoalDescriptionRolloutBatch = async ({
     baseBookDigest: base.model.digest,
     liveCurricularAtomicDenominator: denominator,
     strictCompleteCount: subjectReport.strictComplete,
+    inFlightLedgerPath: relativeRepositoryPath(
+      inFlightLedger.ledgerPath,
+      'in-flight work ledger',
+    ),
+    inFlightBatchConfigPaths: activeSubjectBatches.map(({ configPath }) => (
+      relativeRepositoryPath(configPath, 'active batch config')
+    )),
+    inFlightExcludedGoalCount: inFlightExcludedGoalIds.length,
+    inFlightExcludedGoalIds,
     explicitlyExcludedGoalCount: explicitlyExcludedGoalIds.length,
     explicitlyExcludedGoalIds,
     remainingBeforeSelection: denominator - subjectReport.strictComplete,
@@ -1396,12 +1487,13 @@ const parseSelectionArgs = (args: string[]) => {
     '--max-goals',
     '--strategy',
     '--exclude-config',
+    '--in-flight-ledger',
   ])
   for (let index = 1; index < args.length; index += 2) {
     const key = args[index]
     const value = args[index + 1]
     if (!allowed.has(key) || !value) {
-      throw new Error('Usage: tsx scripts/materializeGoalDescriptionRolloutBatch.ts select --rollout-config <config.json> --base-config <goal-book-config.json> --subject <id> [--max-goals 20] [--strategy landscape-order|coherent-area-phase]')
+      throw new Error('Usage: tsx scripts/materializeGoalDescriptionRolloutBatch.ts select --rollout-config <config.json> --base-config <goal-book-config.json> --subject <id> [--max-goals 20] [--strategy landscape-order|coherent-area-phase] [--in-flight-ledger <ledger.json>] [--exclude-config <batch.config.json> ...]')
     }
     if (key === '--exclude-config') {
       excludeConfigPaths.push(value)
@@ -1418,6 +1510,8 @@ const parseSelectionArgs = (args: string[]) => {
   }
   const maximumGoalCount = Number(values.get('--max-goals') ?? '20')
   const strategy = values.get('--strategy') ?? 'coherent-area-phase'
+  const inFlightLedgerPath = values.get('--in-flight-ledger')
+    ?? DEFAULT_GOAL_DESCRIPTION_ROLLOUT_IN_FLIGHT_LEDGER_PATH
   if (strategy !== 'landscape-order' && strategy !== 'coherent-area-phase') {
     throw new Error('--strategy must be landscape-order or coherent-area-phase')
   }
@@ -1428,6 +1522,7 @@ const parseSelectionArgs = (args: string[]) => {
     maximumGoalCount,
     strategy: strategy as GoalDescriptionRolloutSelectionStrategy,
     excludeConfigPaths,
+    inFlightLedgerPath,
   }
 }
 

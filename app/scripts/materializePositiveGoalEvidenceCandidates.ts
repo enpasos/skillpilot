@@ -1,7 +1,7 @@
-import { createHash } from 'node:crypto'
+import { createHash, randomUUID } from 'node:crypto'
 import { existsSync } from 'node:fs'
-import { readFile, writeFile } from 'node:fs/promises'
-import { dirname, relative, resolve, sep } from 'node:path'
+import { readFile, rename, rm, writeFile } from 'node:fs/promises'
+import { basename, dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
@@ -52,6 +52,18 @@ type SemanticKindLedger = {
   }>
 }
 
+export type AtomicWriteOperations = {
+  writeFile: (path: string, bytes: Buffer, options: { flag: 'wx' }) => Promise<void>
+  rename: (temporaryPath: string, targetPath: string) => Promise<void>
+  rm: (path: string, options: { force: true }) => Promise<void>
+}
+
+const DEFAULT_ATOMIC_WRITE_OPERATIONS: AtomicWriteOperations = {
+  writeFile,
+  rename,
+  rm,
+}
+
 const sha256 = (value: Buffer | string): Digest => (
   `sha256:${createHash('sha256').update(value).digest('hex')}`
 )
@@ -86,6 +98,36 @@ const duplicates = (values: readonly string[]) => {
 const sameOrderedValues = (left: readonly string[], right: readonly string[]) => (
   left.length === right.length && left.every((value, index) => value === right[index])
 )
+
+export const replaceFileAtomically = async (
+  targetPath: string,
+  bytes: Buffer,
+  operations: AtomicWriteOperations = DEFAULT_ATOMIC_WRITE_OPERATIONS,
+) => {
+  const temporaryPath = resolve(
+    dirname(targetPath),
+    `.${basename(targetPath)}.${process.pid}.${randomUUID()}.tmp`,
+  )
+  let committed = false
+  let failed = false
+  let failure: unknown
+  try {
+    await operations.writeFile(temporaryPath, bytes, { flag: 'wx' })
+    await operations.rename(temporaryPath, targetPath)
+    committed = true
+  } catch (error) {
+    failed = true
+    failure = error
+  }
+  if (!committed) {
+    try {
+      await operations.rm(temporaryPath, { force: true })
+    } catch (cleanupError) {
+      if (!failed) throw cleanupError
+    }
+  }
+  if (failed) throw failure
+}
 
 const resourceDigestsForGoal = async (
   goal: LearningGoal,
@@ -248,7 +290,7 @@ const main = async () => {
   const expectedBytes = Buffer.from(`${records.map((record) => JSON.stringify(record)).join('\n')}\n`)
   const reviewPath = repositoryPath(config.reviewPath, 'reviewPath')
   if (args.write) {
-    await writeFile(reviewPath, expectedBytes)
+    await replaceFileAtomically(reviewPath, expectedBytes)
   } else {
     const actualBytes = await readFile(reviewPath)
     if (!actualBytes.equals(expectedBytes)) {

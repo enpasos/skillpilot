@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b030r-stable1-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B030r consensus-stable one carryover synthesis candidate",
+  "synthesizedAt": "2026-09-02T16:15:20.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902",
+    "batchManifestDigest": "sha256:faac03f4157fa1d87bd3a37e82671f25b47b58e5c004378628bec28ecd1531a2",
+    "configDigest": "sha256:cfeef0c972ee3a446ee3b98f56b4fa935500ca99889784218b4e5b675be12326",
+    "bundleFingerprint": "sha256:93ad397d02fabf973e341a84985868c167e91709b3cf78fdb5b5c05abb7bcbdb",
+    "bookDigest": "sha256:8df75bebfc0759327030b2094d7d22870a3a1c60be36f91af9b99bdb6efbdd89",
+    "reviewInputFingerprint": "sha256:7216d0bf37c804d7b25818c95146e7f331f06b223013390998425463780801a8",
+    "dualSummaryDigest": "sha256:feca32f98749e36b8ccfb7611f8fdef0dc50eb2a1d99bce1d38dbb90a133efaf",
+    "canonicalLandscapeDigest": "sha256:b643589d6692a632ace446d96614d1524092dd5455fff06c22220b6ce186ed5e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-a",
+      "campaignDigest": "sha256:a81ebb6d68b9c9997e124480b2fa38302f8416a73428b9dcb144f743cf8c2088",
+      "roundId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:7216d0bf37c804d7b25818c95146e7f331f06b223013390998425463780801a8",
+      "batchId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e0f95fb4daa278b10c9c960d2373e0375d24d9a768597ee327590dfe88d70268",
+      "runId": "physik-b030r-20260902-first-pass-a-codex",
+      "runManifestDigest": "sha256:df5fe35fcf0056c6f6bc490572c074d3afdf2adef82e60d84157b66d844a3301",
+      "resultsDigest": "sha256:59c22bc7eb1218a8c92b175ae0d77e8ea4dcff6efbfbe9ca8bc091ac169de2af"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-b",
+      "campaignDigest": "sha256:c6bd836a40d6de369dcdfc745ac1f510123bfe551e52dc8f77e584f8341c1613",
+      "roundId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:7216d0bf37c804d7b25818c95146e7f331f06b223013390998425463780801a8",
+      "batchId": "physik-rollout-v1-batch-030r-q1-charge-magnetism-revised-3-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:5067588e7436f7a80fd735d28a5dfc392cce170e7b54d273affca017c18b8e53",
+      "runId": "physik-b030r-revised3-first-pass-b-codex-run-001",
+      "runManifestDigest": "sha256:6925215272616f3c9c64bfa9307a8a8aefb084496a94a7a62e0d6ec4c00ae866",
+      "resultsDigest": "sha256:108a1d3d70bdc65dd374b382cbb0f6f3492e1fd259d562161d610de1fd4d4d1d"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b030r-stable1-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:de62d996dae3750abf32d5bb9c382f40504f57cfe115abdff80aa7e7a3d1323d",
+      "pageFingerprint": "sha256:9db6649ba5adc776f136e0307a32be8a97981facbbb34d2d7639523cb17f839a",
+      "goalReviewContextFingerprint": "sha256:1515e33ccb4eebda0f95b04f5f6b257e40c711600b444e2910637a7318b73dc2",
+      "finalText": {
+        "titleDe": "Ladungsphänomene und Reibungselektrizität",
+        "titleEn": "Charge Phenomena and Frictional Electricity",
+        "descriptionDe": "Die lernende Person kann Anziehung und Abstoßung elektrisch geladener Körper sowie Ladungstrennung durch Reibung phänomenologisch untersuchen und die beobachteten Wechselwirkungen mit einem qualitativen Kraftbegriff beschreiben.",
+        "descriptionEn": "The learner can phenomenologically investigate attraction and repulsion between electrically charged bodies and charge separation through friction, and describe the observed interactions using a qualitative concept of force."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b030r-20260902-first-pass-a.001",
+          "recordDigest": "sha256:45c5b0068ae2a149eccb4f3896e7a8b5ede1c58c9d9ab4c2f0803f126a7f903f"
+        },
+        "second": {
+          "recordId": "physik-b030r-revised3-b-a6e48b88",
+          "recordDigest": "sha256:ec713e43e41ec14bfd7a835ba5759317ad61644c33896884278c95143b68d90a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle Kompetenz zu Ladungsphänomenen und Reibungselektrizität. Runde B wird ausgewählt, weil sie sicheren Versuchsaufbau, kontrollierte Variation und die epistemische Trennung zwischen beobachteter Bewegung sowie erschlossener Kraft- und Ladungsbeschreibung besonders präzise verbindet; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current competency concerning charge phenomena and frictional electricity. Round B is selected because it particularly precisely connects a safe experimental setup, controlled variation, and the epistemic distinction between observed motion and the inferred descriptions of force and charge; Round A remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:5d272024590decda5827b77b95025a879943e1ebcd4c893ce73aedf60c7e4948"
+}

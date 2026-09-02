@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-resolution-fb73c94b-6a23-5351-8fef-db2c2533e361",
+  "goal": {
+    "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:87b9ef3c1c46797bd4fb3b593ad2b5314d2557d94978734ade88243c8ad5c4d0",
+    "pageFingerprint": "sha256:650bff899507ef0e1bd4f0809eaa46b769993df58d33f66d960fb5560e88510a",
+    "goalReviewContextFingerprint": "sha256:73925fdb15fe3337be88d7ea0d31bcf39acba6c5a62503891957fd0fb84b3f1c",
+    "finalText": {
+      "titleDe": "Isochore, isobare und isotherme Zustandsänderungen berechnen",
+      "titleEn": "Calculate Isochoric, Isobaric, and Isothermal State Changes",
+      "descriptionDe": "Die lernende Person kann isochore (V konstant), isobare (p konstant) und isotherme (T konstant) Zustandsänderungen einer festen Stoffmenge eines idealen Gases anhand der jeweils konstanten Zustandsgröße unterscheiden, den passenden Zusammenhang der übrigen Größen begründen und damit fehlende Größen bestimmen.",
+      "descriptionEn": "The learner can distinguish isochoric (constant V), isobaric (constant p), and isothermal (constant T) changes of a fixed amount of ideal gas by the state variable held constant, justify the corresponding relationship between the remaining variables, and use it to determine missing quantities."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-a",
+      "campaignDigest": "sha256:f0f34e8d1507c7aece8a6407ad5072798cbc1e8c63b2da6d783fafd4a8e18d3d",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:73925fdb15fe3337be88d7ea0d31bcf39acba6c5a62503891957fd0fb84b3f1c",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-gpt-5.6-sol-physics-b029r-round-a-20260902",
+      "runManifestDigest": "sha256:4e9abd18d0b45e022a9c629fa1fcc1005189241950703cc06bd40a22c5cc2205",
+      "resultsDigest": "sha256:be51edcc8e9ce1c02de9a8defa26a5ae7507ac5c78820d080112e550eac95d29",
+      "recordId": "openai-gpt-5.6-sol-physics-b029r-a-fb73c94b",
+      "recordDigest": "sha256:3e397a5f41dc11b4fed3319abfcee20dfcb8d60764e3cfa11b3dacc28164474f"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-b",
+      "campaignDigest": "sha256:671399d8c2ad1d1a3caf521b27d35bd592eca7d8d6584e7a81d62f213d724fa2",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:73925fdb15fe3337be88d7ea0d31bcf39acba6c5a62503891957fd0fb84b3f1c",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b.batch-001",
+      "runId": "openai-gpt-5-physik-b029r-round-b-20260902",
+      "runManifestDigest": "sha256:b085440b9e8d1f9129f17b5d1e056b2f39406eeba51f4b0d2c5528c8e0afab2a",
+      "resultsDigest": "sha256:60ca8bd8a20dc2a293d42d1120af50aec90b73d1c55ef7616e1ae12bafaa59e3",
+      "recordId": "physik-b029r-fb73c94b-round-b-20260902",
+      "recordDigest": "sha256:cac9ee78f7cf6f1cb5102fa3aaf5b9fa435897091db3761d3ee565e549c5df7d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2c5b81a7a8c3935f904309c8ec8562ee3d81424f4c8e557b8f6423990b47b9a3"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:3331b694a70e69b2f2555c29ad8fb204497e99b7f9ca4981aa1cae6a898463c5",
+    "manifestFingerprint": "sha256:8ce1d6b69bc042508a5db0dbb776bd5bd204b4967e76246f14040d3fce01f06d",
+    "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Physics B029r subject synthesis candidate",
+    "synthesizedAt": "2026-09-02T14:55:33.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass die drei Prozessarten über ihre jeweils konstante Zustandsgröße bei fester Stoffmenge definiert und die Beziehungen der übrigen Größen aus dem idealen Gasgesetz begründet werden. Unterscheiden, Herleiten und Bestimmen bilden dabei eine zusammenhängende Kompetenz. Runde A liefert die stärkere Understanding Evidence, weil sie verbale Beschreibung, Tabelle und Diagramm sowie direkte und umgekehrte Änderungsrichtung ausdrücklich variiert; Runde B bleibt als vollständige unabhängige Bestätigung gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm with KEEP that the three process types are defined by the state variable held constant for a fixed amount of gas and that the relationships among the remaining variables are justified from the ideal-gas law. Distinguishing, deriving, and determining form one coherent competency. Round A provides the stronger understanding evidence because it explicitly varies verbal descriptions, tables, diagrams, and direct versus reversed change; Round B remains fully bound as independent confirmation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass bei fester Stoffmenge eines idealen Gases die jeweils konstante Zustandsgröße den Prozess kennzeichnet und aus pV = nRT unterschiedliche Beziehungen folgen: isochor sind p und T proportional, isobar V und T proportional und isotherm bleibt pV konstant, jeweils mit absoluter Temperatur.",
+      "essentialUnderstandingEn": "The learner understands that, for a fixed amount of ideal gas, the state variable held constant identifies the process and that pV = nRT yields different relations: p is proportional to T isochorically, V is proportional to T isobarically, and pV remains constant isothermally, always using absolute temperature.",
+      "observablePerformanceDe": "Aus einer verbalen Beschreibung, Messwerttabelle oder einfachen Prozessdarstellung erkennt und begründet die lernende Person die Prozessart, leitet den passenden reduzierten Zusammenhang aus dem idealen Gasgesetz ab, sagt den Änderungstrend voraus und bestimmt eine fehlende Zustandsgröße mit konsistenten Einheiten.",
+      "observablePerformanceEn": "From a verbal description, data table, or simple process representation, the learner identifies and justifies the process type, derives the appropriate reduced relation from the ideal gas law, predicts the direction of change, and determines a missing state variable with consistent units.",
+      "transferExpectationDe": "Bei einer unabhängig vorgelegten Zustandsänderung in einer anderen Darstellung oder mit umgekehrter Prozessrichtung entscheidet die lernende Person erneut, welche Größe konstant ist, passt die Beziehung an und prüft das berechnete Ergebnis an der erwarteten proportionalen oder umgekehrt proportionalen Änderung.",
+      "transferExpectationEn": "For an independently presented state change in a different representation or with the process direction reversed, the learner again determines which quantity is constant, adapts the relation, and checks the calculated result against the expected direct or inverse change."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-591839fb01744dffde5c8b88e6d979f578cc65062efa6c55492934d662c5d110",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c5a139b22002078b30cc69931ac0d0fc23e0e0bab62ddc9de51918f1ac9496cd"
+}

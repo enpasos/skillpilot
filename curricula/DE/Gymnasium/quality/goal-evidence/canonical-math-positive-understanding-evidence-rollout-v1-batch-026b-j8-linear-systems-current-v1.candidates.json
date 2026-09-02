@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b026b-j8-linear-systems-current-v1",
+  "reviewedAt": "2026-09-02T12:21:43.000Z",
+  "reviewer": "codex-math-b026b-linear-systems-positive-understanding-candidate-2026-09-02",
+  "sourceBindings": {
+    "sourceBatchId": "mathematik-rollout-v1-batch-026b-j8-linear-systems-1-v1-20260902",
+    "selectedEvidenceRound": "A",
+    "roundARecordId": "mathematik-b026b-round-a-546bf0b3-20260902",
+    "roundARecordDigest": "sha256:21390da65473972eefbebcbb7feb4fe81e595c84ee4206d3b2e5e5045eca0a47",
+    "roundBRecordId": "mathematik-b026b-round-b-546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+    "roundBRecordDigest": "sha256:2ef01999ad0789b00296834ffb9f93e9d1bced60a0d3d5c38804217e2aaa9598",
+    "synthesisDigest": "sha256:f7b93e8ea40d59a5cf64cd52fc18ce18a178b823817274433eaf7cb9336e46df",
+    "resolutionIndexDigest": "sha256:d9fb0c56920cd64571781ab841b8042f0da52afce1465217891ec296924dfcb9"
+  },
+  "goals": [
+    {
+      "goalId": "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+      "reason": "DE: Das Profil übernimmt den fachlich stärkeren Kern der gewählten Runde A und verbindet simultane Erfüllung, Schnittmenge, Lösungsmengentyp, äquivalente rechnerische Umformung, Probe und Kontextdeutung. Den zusätzlichen Transferkern aus Runde B führt es als gemischte grafisch-algebraische Vorgabe in einem veränderten Sachkontext aus. Zwei voneinander unabhängige Fälle verlangen grafische und rechnerische Lösung, Prüfung und Deutung ohne Visualisierung als Antwortvorlage. EN: The profile adopts the stronger mathematical core from the selected Round A and connects simultaneous satisfaction, intersection, solution-set type, equivalent algebraic transformation, verification, and contextual interpretation. It adds Round B's transfer core as mixed graphical and algebraic givens in a changed real-world context. Two independent cases require graphical and algebraic solution, checking, and interpretation without using a visualization as an answer template.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "B026b independent-confirmation binding: selected Round A mathematik-b026b-round-a-546bf0b3-20260902 (sha256:21390da65473972eefbebcbb7feb4fe81e595c84ee4206d3b2e5e5045eca0a47); confirming Round B mathematik-b026b-round-b-546bf0b3-6921-416b-a2ef-8fd37d429dc7 (sha256:2ef01999ad0789b00296834ffb9f93e9d1bced60a0d3d5c38804217e2aaa9598); synthesis sha256:f7b93e8ea40d59a5cf64cd52fc18ce18a178b823817274433eaf7cb9336e46df; resolution index sha256:d9fb0c56920cd64571781ab841b8042f0da52afce1465217891ec296924dfcb9. Round B remains preserved as independent confirmation of KEEP/create and contributes the changed-representation transfer while the strict resolution selects evidenceRound=first."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "simultaneous-solution-and-representations",
+            "essentialUnderstandingDe": "Ein geordnetes Zahlenpaar ist genau dann Lösung eines linearen Gleichungssystems, wenn es beide Gleichungen gleichzeitig erfüllt. Im Koordinatensystem ist die Lösungsmenge die Schnittmenge der beiden Geraden; grafische und rechnerische Lösung beschreiben daher dasselbe mathematische Objekt, und Einsetzen in beide Gleichungen überprüft es.",
+            "essentialUnderstandingEn": "An ordered pair is a solution of a system of linear equations exactly when it satisfies both equations simultaneously. In the coordinate plane, the solution set is the intersection of the two lines; graphical and algebraic solution therefore describe the same mathematical object, and substitution into both equations verifies it.",
+            "observablePerformanceDe": "Die lernende Person stellt ein unbekanntes einfaches System als zwei Geraden dar, bestimmt seine Lösungsmenge grafisch und mit einem frei gewählten korrekten rechnerischen Verfahren, gleicht beide Ergebnisse ab und prüft jedes gefundene Zahlenpaar in beiden Ausgangsgleichungen.",
+            "observablePerformanceEn": "The learner represents an unfamiliar simple system as two lines, determines its solution set graphically and with a valid algebraic method of their choice, reconciles both results, and checks every ordered pair found in both original equations."
+          },
+          {
+            "id": "solution-set-regimes-and-context",
+            "essentialUnderstandingDe": "Je nach Lagebeziehung der Geraden hat ein lineares Gleichungssystem genau eine, keine oder unendlich viele Lösungen; rechnerisch zeigt sich dies als Zahlenpaar, Widerspruch oder Identität. Im Sachkontext erhalten die Koordinaten eine Bedeutung und die Lösungsmenge muss mit gegebenen Größenbereichen und Einheiten verträglich sein.",
+            "essentialUnderstandingEn": "Depending on the relative position of the lines, a system of linear equations has exactly one, no, or infinitely many solutions; algebraically, these outcomes appear as an ordered pair, a contradiction, or an identity. In context, the coordinates have a meaning and the solution set must be compatible with the stated domains and units.",
+            "observablePerformanceDe": "Die lernende Person klassifiziert die Lösungsmenge aus Graph und Rechnung, begründet den Zusammenhang mit Schnittpunkt, Parallelität oder identischen Geraden und erklärt, was eine eindeutige, leere oder unendliche Lösungsmenge in der gegebenen Situation bedeutet.",
+            "observablePerformanceEn": "The learner classifies the solution set from the graph and the algebra, justifies its connection to intersecting, parallel, or identical lines, and explains what a unique, empty, or infinite solution set means in the given situation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "simultaneous-solution-and-representations",
+            "solution-set-regimes-and-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solution-set-regime",
+            "textDe": "Genau eine, keine oder unendlich viele Lösungen durch schneidende, parallele oder identische Geraden",
+            "textEn": "Exactly one, no, or infinitely many solutions from intersecting, parallel, or identical lines"
+          },
+          {
+            "id": "given-representation",
+            "textDe": "Zwei Gleichungen, zwei Graphen oder eine gemischte Vorgabe aus Graph und Gleichung",
+            "textEn": "Two equations, two graphs, or mixed givens consisting of a graph and an equation"
+          },
+          {
+            "id": "algebraic-solution-route",
+            "textDe": "Einsetzungs-, Gleichsetzungs- oder Additionsverfahren bei gleichbleibender Lösungsmenge",
+            "textEn": "Substitution, equating, or elimination while preserving the solution set"
+          },
+          {
+            "id": "context-and-units",
+            "textDe": "Veränderte Größen, zulässige Wertebereiche und Einheiten in alltagsnahen Situationen",
+            "textEn": "Changed quantities, permissible domains, and units in real-world situations"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "taxi-tariff-unique-intersection",
+            "taskDemandDe": "Zwei Taxitarife werden für Strecken x ≥ 0 durch y = 2x + 8 und y = 3x + 4 beschrieben, wobei x in Kilometern und y in Euro angegeben ist. Bestimme grafisch und rechnerisch, bei welcher Strecke beide Preise gleich sind, prüfe das Zahlenpaar in beiden Gleichungen und deute beide Koordinaten samt Einheiten.",
+            "taskDemandEn": "Two taxi tariffs for distances x ≥ 0 are described by y = 2x + 8 and y = 3x + 4, where x is measured in kilometres and y in euros. Determine graphically and algebraically at what distance both prices are equal, verify the ordered pair in both equations, and interpret both coordinates with their units.",
+            "expectedPerformanceDe": "Die lernende Person ermittelt den Schnittpunkt (4|16), erhält dasselbe Ergebnis mit einem korrekten rechnerischen Verfahren, prüft 16 = 2·4 + 8 = 3·4 + 4 und erklärt, dass beide Fahrten bei 4 km jeweils 16 Euro kosten.",
+            "expectedPerformanceEn": "The learner determines the intersection (4, 16), obtains the same result with a valid algebraic method, verifies 16 = 2·4 + 8 = 3·4 + 4, and explains that both journeys cost 16 euros at a distance of 4 km.",
+            "understandingFocusDe": "Die eindeutige Lösung wird als simultane Erfüllung, Geradenschnittpunkt und bedeutungsvolles Größenpaar koordiniert.",
+            "understandingFocusEn": "The unique solution is coordinated as simultaneous satisfaction, a line intersection, and a meaningful pair of quantities."
+          },
+          {
+            "id": "mixed-representation-empty-solution",
+            "taskDemandDe": "Für zwei Wasserbehälter beschreibt ein vorgelegter Graph den ersten Füllstand und verläuft durch (0|5) und (2|9); der zweite Füllstand ist durch y = 2x + 7 gegeben. Bestimme ohne Lösungsvorlage grafisch und rechnerisch, ob beide Behälter für x ≥ 0 jemals denselben Füllstand haben, und deute die Lösungsmenge im Kontext.",
+            "taskDemandEn": "For two water tanks, a supplied graph describes the first water level and passes through (0, 5) and (2, 9); the second water level is given by y = 2x + 7. Without a solution template, determine graphically and algebraically whether the tanks ever have the same water level for x ≥ 0, and interpret the solution set in context.",
+            "expectedPerformanceDe": "Die lernende Person erkennt aus dem Graphen y = 2x + 5, zeichnet beziehungsweise vergleicht die parallelen Geraden und erhält rechnerisch den Widerspruch 5 = 7. Sie gibt die leere Lösungsmenge an und erklärt, dass der zweite Behälter bei gleicher Füllrate stets zwei Einheiten mehr enthält.",
+            "expectedPerformanceEn": "The learner identifies y = 2x + 5 from the graph, draws or compares the parallel lines, and obtains the contradiction 5 = 7 algebraically. The learner states that the solution set is empty and explains that the second tank always contains two units more at the same filling rate.",
+            "understandingFocusDe": "Der unabhängige Transfer verbindet eine gemischte Darstellung mit dem Fall ohne Lösung und einer dazu passenden Kontextaussage.",
+            "understandingFocusEn": "The independent transfer connects mixed representations to the no-solution case and an appropriate contextual conclusion."
+          }
+        ]
+      }
+    }
+  ]
+}

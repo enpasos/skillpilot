@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `0d2a4690-d891-503b-96f4-42c2de48fd8b`
 - Titel: Physik der Musikinstrumente
-- Beschreibung: Erzeugung von Tönen durch stehende Wellen in Saiten (Gitarre, Klavier) und Luftsäulen (Orgel, Blasinstrumente). Zusammenhang von Frequenz, Wellenlänge und Instrumentenlänge.
+- Beschreibung: Die lernende Person kann erklären, wie die Randbedingungen die möglichen stehenden Wellenmoden in Saiten und Luftsäulen festlegen und dadurch die möglichen Töne bestimmen, und den Zusammenhang zwischen Instrumentenlänge, möglichen Wellenlängen und Frequenzen qualitativ ableiten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Physik der Musikinstrumente
-Beschreibung: Erzeugung von Tönen durch stehende Wellen in Saiten (Gitarre, Klavier) und Luftsäulen (Orgel, Blasinstrumente). Zusammenhang von Frequenz, Wellenlänge und Instrumentenlänge.
+Beschreibung: Die lernende Person kann erklären, wie die Randbedingungen die möglichen stehenden Wellenmoden in Saiten und Luftsäulen festlegen und dadurch die möglichen Töne bestimmen, und den Zusammenhang zwischen Instrumentenlänge, möglichen Wellenlängen und Frequenzen qualitativ ableiten.
 
 Zusatzanweisung:
 Pflichtinhalt:

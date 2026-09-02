@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1.config.json",
+  "configDigest": "sha256:50d2370e1c176c2214f8fd9a8fb05e5f668708416b9bb96e1d8d3d67c7359e1f",
+  "goalIds": [
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:6a0dc11150e456ca496441a9e969da4a895e9fff6e31e777c5b3d0272aff410f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:2ab528cc5d3f7b38a52d306901f2632686c8e1b82fdc20b73a3a5fcb2e1762eb",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:1c4bf20b47232852423c4ae04495865a4a8ed4de934194b0fc18369a32275504",
+    "reviewInputFingerprint": "sha256:a1cae180894690fb3cffe592a8a70fe31b82a3b4587ecb7833317d49b7a28265",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-a",
+        "campaignDigest": "sha256:ad3870cba134f7c28b28e0117ac9ab7a916bd6d3e9cb9bd744375251eb0f3031",
+        "roundId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:35df31c85bb210b0f9d34f5c4a22e44c8e584a6216fc7de2643cef4704decef5"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-b",
+        "campaignDigest": "sha256:ca47eb262b959416b6c37e7760211984a967274168ac25dcaa6327f4324ef519",
+        "roundId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:aaec847810ee8aef0c5172f65ee3ed47644d944f6982d93d272706672b78397e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

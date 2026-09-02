@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028a-e-chaos-gravitation-worldviews-revised-6-v1.config.json",
+  "configDigest": "sha256:2c2670775eacad816d2de435988ee525effba0cf60314ae9c753bd0291f0bd6e",
+  "goalIds": [
+    "76fd0ab2-079a-516e-a33b-170355336d40",
+    "92d8f398-0c9f-523c-88d7-44165b6b4768",
+    "156edddc-ce8d-580d-8d17-d9376d59e60e",
+    "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+    "25edd154-b1d8-546c-94a5-88502b6725cd",
+    "481ffd56-d585-56fe-b525-ed423e30eed3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:523398f7a1c64528e6242e64a13ba59dea1855197cbd13054723e4ddfc4a7b9f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c05e6b52093285c08bd9ab28720a1a8e84e45d52dae9355b4a1544a0db012f7c",
+    "reviewInputFingerprint": "sha256:ce4c58486b4075228a023078a5b4637ac3cfe5585d997aff3a3433587eb06e7f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-a",
+        "campaignDigest": "sha256:c75c83e9b5f3f3c355b0f0c7e26f92f99c1c1f2aee5f05c4c19780a086353342",
+        "roundId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:64be6b8f89d3351eac24912d738bdb21227c14c8ee549e7ec4b1f80df7d98e09"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-b",
+        "campaignDigest": "sha256:98fa8c1e685daf4c88b6a6c25bd6a2c3ebd590b01ebed1a4bf222be9a18ed3ae",
+        "roundId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:56dadf73b62449e3ca29bf5ab6d67825e8d22a0ea1bc74ee1d9929e72fe4d93d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

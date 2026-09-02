@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b026-round-a-gpt-5.6-sol-high-fork-none",
+  "campaignId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ed658c42d8694d4f92951f8bce63162f61ae6a3066ded23636aa050e535f16cc",
+  "bundleFingerprint": "sha256:9ededefc481a30da9e2289cdb38a3942b837ab1a01c8a917651d72ba600d1959",
+  "bookDigest": "sha256:013f7db6032440d2b6984aeca8bd408120f50c1c9967cd08732089c0b4835002",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:bece03cfc7adbf649e51a976b95f5984e5184fec6622c5ff8e2ddcbcb06afb97",
+  "independenceGroupId": "physik-rollout-v1-batch-026-e-reference-circular-motion-3-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "68c90ba6-c438-463c-9a53-cf61062d416a",
+    "ec7a0a68-730b-5c94-ac72-a937508f8303",
+    "e918b31f-6f39-5dee-ade6-3617080fb24f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ed658c42d8694d4f92951f8bce63162f61ae6a3066ded23636aa050e535f16cc"
+    }
+  ],
+  "startedAt": "2026-09-02T06:03:30Z",
+  "completedAt": "2026-09-02T06:04:47Z",
+  "status": "completed",
+  "outputDigest": "sha256:3bdbe7d1603aa14d7a91aeb3c5a852a27fa24c7c9b663e3c6791dcb659637680",
+  "toolchainVersion": "codex-campaign-review-v1"
+}

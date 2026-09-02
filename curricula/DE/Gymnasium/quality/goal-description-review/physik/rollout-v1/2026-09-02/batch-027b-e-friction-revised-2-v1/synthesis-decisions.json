@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b027b-friction-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B027b subject synthesis candidate",
+  "synthesizedAt": "2026-09-02T08:15:01.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902",
+    "batchManifestDigest": "sha256:198326f58b0f82ff6976dfcdec9f2efa5f3eec08f84cbc3563495cf3693cbcf6",
+    "configDigest": "sha256:1c1b512303b8197a6dd78eef8761edc63521dd4b93955bd5b0c2156500bf76ee",
+    "bundleFingerprint": "sha256:83312137d45c8c11123f48e991b9d7c18cd92b215f4425cccbe7074f84d4fa75",
+    "bookDigest": "sha256:3650eb4ecf7a76a8b643a58b837d7be9d3675be398ab74288e0831a7dd4e5216",
+    "reviewInputFingerprint": "sha256:b5de4a41901cb9f22abde28f7e038499ad26f931d82cca6c1acc17f5e74a4486",
+    "dualSummaryDigest": "sha256:7456a9a591ecdbbe90084887af24af2de92bd11bba65fd97b24291dea75b4dea",
+    "canonicalLandscapeDigest": "sha256:782ac03b79275727bc59f77a47600d29a287c8ce4b0bbc1150ca347b566fa30f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-a",
+      "campaignDigest": "sha256:8db0711f51dcde06a978398bdfd473b7f02401adcf4d62e6af790f23d83b9d0b",
+      "roundId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:b5de4a41901cb9f22abde28f7e038499ad26f931d82cca6c1acc17f5e74a4486",
+      "batchId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ba2b940c7865c40b31d7950e880f0688c7947e1ca0c0c2d7aff1084be5409648",
+      "runId": "physik-b027b-round-a-codex-20260902-01",
+      "runManifestDigest": "sha256:07d886d6a53152e00ccc74db0496764de1afb9b29be74bf89ee9a22b2dffe8c3",
+      "resultsDigest": "sha256:83c7aee7da510342480ee7f2c91ace7a8bab992f4202eecbc82509df4049a8d9"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-b",
+      "campaignDigest": "sha256:db0b1d193e9dbcf301c987954287f37789266685e8c60092b9f92bf8a2ac4e4d",
+      "roundId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:b5de4a41901cb9f22abde28f7e038499ad26f931d82cca6c1acc17f5e74a4486",
+      "batchId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:5c6324e0cabbeed1983523f43376f961c8a2b54db73cca11e5333f8a59520518",
+      "runId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.openai-gpt-5-6-subject-review",
+      "runManifestDigest": "sha256:4a4fb319d0dabfe74ef0e738dba7b0726d019eb8c860f88bce034645b1c388fb",
+      "resultsDigest": "sha256:c64bacd3cb85d1d1d21afcc60acfb9dc43803ca6bb842b751d0975c5452d0909"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b027b-friction-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5dbb5fe030f4a9bed533009de8b9c6da9a2e028f778fa081f6810395e37d1726",
+      "pageFingerprint": "sha256:156c19265f68519307de2bde00fe531d95a5326f0a38549b351ab159ca879dcf",
+      "goalReviewContextFingerprint": "sha256:4955eaafd67ddb9e7bc2cfc0a4a05b53879332acbb93755cfe4acba30a6f91e0",
+      "finalText": {
+        "titleDe": "Reibungskräfte qualitativ verstehen",
+        "titleEn": "Qualitatively Understand Frictional Forces",
+        "descriptionDe": "Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.",
+        "descriptionEn": "The learner can distinguish static and sliding friction by whether relative motion at the contact is impending or occurring, draw the frictional force opposite that relative motion or tendency to move, and explain its effect on the motion."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b027b-round-a-friction-qualitative-001",
+          "recordDigest": "sha256:2ddced5cc3c9df439ad3e1385ffc74259689c3442559a054f41beca121f0bba9"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.record-001",
+          "recordDigest": "sha256:b6931df63341c25a30dc1838cc393cd3f5d1ce982b905b9d6ba455b0e67d176e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass der final revidierte deutsche und englische Text Haft- und Gleitreibung eindeutig an drohende beziehungsweise bestehende Relativbewegung an der Kontaktfläche bindet, die Reibungskraft ausdrücklich entgegengerichtet einzeichnen lässt und ihre Bewegungswirkung als kohärente qualitative Kompetenz erfasst. Der aktuelle Text bleibt deshalb unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie zusätzlich beide Kontaktpartner, den betrachteten Körper, die übrigen Kräfte und den Transfer von einer horizontalen auf eine geneigte Kontaktfläche ausdrücklich zusammenführt.",
+      "rationaleEn": "Both independent blind reviews confirm that the finally revised German and English text unambiguously binds static and sliding friction to impending or existing relative motion at the contact, explicitly requires the frictional force to be drawn in the opposing direction, and captures its effect on motion as one coherent qualitative competence. The current text is therefore retained. The first round is selected for the understanding evidence because it additionally combines both contacting bodies, the selected body, the other forces, and transfer from a horizontal to an inclined contact surface."
+    },
+    {
+      "decisionId": "physik-b027b-friction-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bd202f6b04ea79c9f533b80d1603e4f0f3764d3bcfb98815541e425bfe804418",
+      "pageFingerprint": "sha256:e13324ba15dcb298a0415741e4053bbac4135a88e236ff2478a29db0cdeaaf28",
+      "goalReviewContextFingerprint": "sha256:04e2f9196bd5b20b3f19c127065df7be7f159c0b888332669a841e3de22d9fa7",
+      "finalText": {
+        "titleDe": "Geradlinige Bewegung mit Reibung modellieren",
+        "titleEn": "Model Rectilinear Motion with Friction",
+        "descriptionDe": "Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.",
+        "descriptionEn": "The learner can model rectilinear motion with friction under clearly stated simple modelling assumptions by balancing the forces with a consistently chosen positive direction, determining the acceleration from the resultant force, and using appropriate simple equations of motion to describe and qualitatively predict the motion."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b027b-round-a-friction-model-002",
+          "recordDigest": "sha256:837463a98b40415304c6e38a45e49aa30ae75ba44b65092b9dd6ef0cc1e4635a"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.record-002",
+          "recordDigest": "sha256:908332fe1546cf05b2e4e96659e099742140b7ef27f727a743229ba5e0889140"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass die finale bilinguale Beschreibung die vollständige Modellkette klar bindet: einfache Modellannahmen benennen, positive Richtung konsistent wählen, Kräfte gerichtet bilanzieren, aus der Resultierenden die Beschleunigung bestimmen und mit passenden einfachen Bewegungsgleichungen den Verlauf beschreiben und qualitativ vorhersagen. Der aktuelle Text bleibt unverändert. Die erste Runde wird für die Understanding Evidence gewählt, weil sie außerdem Systemabgrenzung, Einheitenprüfung sowie den wichtigen Transfer auf umgekehrte Anfangsbewegung mit möglichem Abbremsen, Stillstand oder Richtungswechsel ausdrücklich prüfbar macht.",
+      "rationaleEn": "Both independent blind reviews confirm that the final bilingual description clearly binds the complete modelling chain: state simple modelling assumptions, choose a positive direction consistently, balance directed forces, determine acceleration from the resultant, and use appropriate simple equations of motion to describe and qualitatively predict the course of motion. The current text is retained. The first round is selected for the understanding evidence because it additionally makes system definition, unit checking, and the important transfer to reversed initial motion with possible slowing, stopping, or reversal explicitly testable."
+    }
+  ],
+  "manifestFingerprint": "sha256:188bd15d8a8c654a34c7f20551e206c8fd614061704e3220ddd60fb2cf420452"
+}

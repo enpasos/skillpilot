@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1.config.json",
+  "configDigest": "sha256:c886efbf7e1944ba1af04dec20980fd04f283c895e07906dd6e64b7655ad1624",
+  "goalIds": [
+    "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+    "9854589c-5feb-4942-b90f-311ddf36eb78"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:41652cfebefa09a9a4cf1a114f727af9e594b896fd91d5266a64bc34fdbe3f52"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a739ec960e6277a37d55dacb9af5fbeeaf22e5dbee30544d2905322bb2024ef2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6251eb20aa2bef5e00985f88cd2e2bd410471af64d3a6152feacce5d0baf23df",
+    "reviewInputFingerprint": "sha256:f141023339c0a746dc5d1d83d930134beb328c60a7b888434ba64cf8f6617967",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-a",
+        "campaignDigest": "sha256:e039b4a8da8052322490b3d5bc881725e25fd5ff1dc07c687e305a3a77308f31",
+        "roundId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8b266eeb3e07db204fe2ad1f0c698d282ecc5f4cbf88ee19e10c39230f320325"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-b",
+        "campaignDigest": "sha256:8e859b4c6cda3d6cf8db764f8fb453ea7cf8e6b87b32e91f947ee2009599fb25",
+        "roundId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:2da57f48fac3bf3309e73ff6f521546f6e0f43a35c19f98718e52b4e24c3cbd6"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

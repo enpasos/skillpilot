@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026a-j8-fractional-expressions-2-v1.config.json",
+  "configDigest": "sha256:744b71817c6e4b95e6e9ce73ca6cfee161c0979be036edb00d9305df19dbe16b",
+  "goalIds": [
+    "c420e0be-1e74-4050-834c-d8da7f41095a",
+    "f7a9a0b4-ec64-468f-8da4-59c5055eac1d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 793,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d98bf2fb31a46e765c1c1507dfc4bc31177b3ad558501516e3a7fc10a76f6c37"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:56e6abe204042ce071ad8be53e473423ac1c5f60e9ccaa96b94d033bd4cb6996",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9dafafcc0b3deffaad1e4998d6d0f7071f6595e4484bd76857629e0f31723849",
+    "reviewInputFingerprint": "sha256:9ae8ac8150506ce47339a5e11a84b2ec367f9314f94d169b491a9902c6723804",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-a",
+        "campaignDigest": "sha256:2b6289248392c3a5a823a312b9ce87cbc9a83e2c173fcbd411222d408865b7d4",
+        "roundId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:91150ac66b73cb56d465a23bd181c5250794e2f700a98c87eaaf6006827d1b0e"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-b",
+        "campaignDigest": "sha256:086bf08a6c7148bb3c816ef6d650fc94bdf985084a8f67356e9906c61a2f0aec",
+        "roundId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:3fc6d5e03e481ec1b9724a8917fc34fa3f232b6c09e70f8c7c1c5d82900b6a10"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

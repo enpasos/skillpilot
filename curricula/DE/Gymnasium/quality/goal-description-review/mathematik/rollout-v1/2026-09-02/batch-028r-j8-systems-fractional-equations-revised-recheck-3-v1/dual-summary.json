@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f28472cb44a61df422950e8f26a4997a2c76a1c1ca9e7c2567518b99934b27cd",
+  "reviewInputFingerprint": "sha256:7a455e4bd5db8f5198384428a3c1e0c1309a5515afe4f681c6a513a6f249f8a4",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-b028r-20260902-first-pass-a-codex"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-b028r-recheck3-first-pass-b-codex-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "firstRecordId": "mathematik-b028r-20260902-first-pass-a.001",
+      "secondRecordId": "mathematik-b028r-recheck3-b-e42c208d",
+      "firstRunId": "mathematik-b028r-20260902-first-pass-a-codex",
+      "secondRunId": "mathematik-b028r-recheck3-first-pass-b-codex-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "firstRecordId": "mathematik-b028r-20260902-first-pass-a.002",
+      "secondRecordId": "mathematik-b028r-recheck3-b-797ee047",
+      "firstRunId": "mathematik-b028r-20260902-first-pass-a-codex",
+      "secondRunId": "mathematik-b028r-recheck3-first-pass-b-codex-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0a154cbd-1218-4553-835c-a754e9901bba",
+      "firstRecordId": "mathematik-b028r-20260902-first-pass-a.003",
+      "secondRecordId": "mathematik-b028r-recheck3-b-0a154cbd",
+      "firstRunId": "mathematik-b028r-20260902-first-pass-a-codex",
+      "secondRunId": "mathematik-b028r-recheck3-first-pass-b-codex-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

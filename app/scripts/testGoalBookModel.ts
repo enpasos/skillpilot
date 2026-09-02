@@ -57,7 +57,7 @@ const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
   + 'calibration-v2/2026-08-25/thales-current/bundle/book-model.json'
 )
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:2e5cbbea6883370014fabaf911426a2c5324d0b37ccbf78f9abceeb1e60d3fe1'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:bb22b432b2ac9bfe89d94d2688c74fd39262eef2924c5ac41e1d39bb0613b266'
 
 const goal = ({
   id,
@@ -997,10 +997,10 @@ const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
 )), 'utf8')
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 792)
+assert.equal(nationalAtlas.book.pageCount, 793)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 792)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 793)
 assert.equal(nationalAtlas.digest, EXPECTED_NATIONAL_MATH_MODEL_DIGEST)
 assert.equal(
   `${JSON.stringify(nationalAtlas, null, 2)}\n`,

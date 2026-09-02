@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `fc34449a-fbf4-574c-884f-ecdf48b42d2e`
 - Titel: Laufzeit tabellarisch näherungsweise bestimmen
-- Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.
+- Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen als Anzahl der Zins- oder Zahlungsperioden näherungsweise bestimmen und das Ergebnis im Kontext prüfen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Laufzeit tabellarisch näherungsweise bestimmen
-Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.
+Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen als Anzahl der Zins- oder Zahlungsperioden näherungsweise bestimmen und das Ergebnis im Kontext prüfen.
 
 Zusatzanweisung:
 Pflichtinhalt:

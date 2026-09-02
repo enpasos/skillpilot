@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-b027-j8-laplace-experiments-adjudication-20260902-v1",
+  "status": "applied_locally_pending_fresh_dual_review",
+  "appendOnly": true,
+  "adjudicatedAt": "2026-09-02",
+  "adjudicator": "codex-autonomous-ai-adjudication",
+  "humanApprovalClaimed": false,
+  "sourceBindings": {
+    "dualSummary": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-027-j8-laplace-experiments-1-v1/dual-summary.json",
+      "sha256": "sha256:fdb71efbd20e793f5920ad34f5d4e7ec818c5f2aa7e0f61af6de4f66a8ec9c76",
+      "requiresSynthesis": 1
+    },
+    "roundARecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-027-j8-laplace-experiments-1-v1/round-a/results/mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:2261cfe427808954e2d355ecdf9d498fd167ae028e12572e3e677c80519ab730"
+    },
+    "roundARun": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-027-j8-laplace-experiments-1-v1/round-a/results/mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:7df000a6a856335df2c8f761147dd9187560840a37d562b8f5967800f21cc251"
+    },
+    "roundBRecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-027-j8-laplace-experiments-1-v1/round-b/results/mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:2021623d3deb5ec711e1f0f1d030c7a1ab2dbaa7b159c2f94d61071e302c4dbd"
+    },
+    "roundBRun": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-027-j8-laplace-experiments-1-v1/round-b/results/mathematik-rollout-v1-batch-027-j8-laplace-experiments-1-v1-20260902-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:e90598c735f1d2e740958cfe72f68f214b83ee4d79b60f8b75106641b312150f"
+    }
+  },
+  "decisions": [
+    {
+      "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "reviewedGoalFingerprint": "sha256:997df347c33cd21ff9489086c44607a57da289328a67ad0d353f8f3428c971cb",
+      "decision": "revise_without_split",
+      "descriptionDe": "Die lernende Person kann anhand der Versuchsanordnung begründen, ob ein einfaches Zufallsexperiment als Laplace-Experiment modelliert werden kann, seine Ergebnismenge und Ereignisse tabellarisch oder grafisch darstellen sowie im Laplace-Fall theoretische Ereigniswahrscheinlichkeiten als Anteil der günstigen an allen möglichen gleichwahrscheinlichen Elementarergebnissen bestimmen und deuten.",
+      "descriptionEn": "The learner can use the setup of a simple random experiment to justify whether it can be modelled as a Laplace experiment, represent its sample space and events in a table or graph, and, in the Laplace case, determine and interpret theoretical event probabilities as the proportion of favourable outcomes among all possible equally likely elementary outcomes.",
+      "rationale": "Both independent reviews require a local clarification rather than a split. The adopted wording makes model admissibility, sample-space/event representation, and the favourable-to-possible ratio observable as one coherent J8 workflow while explicitly separating theoretical Laplace probability from empirical relative frequency."
+    }
+  ],
+  "sourceReconciliation": {
+    "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+    "reviewSha256": "sha256:019219748e513f6c74731af985c37e717f6eabbd062decdf7bcac56c4a81eace",
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+    "mappingSha256": "sha256:388f47948b5bef00274c0a465bda27ba31f88abae46f5385ce45e919a92d2011",
+    "reconciledSourceGoalIds": [
+      "40b2829a-35fd-5e6e-96ba-20ec6928940d",
+      "by-math-m8-5-40b2829a-s02-ecb5961c3d",
+      "by-math-m8-5-40b2829a-s03-a2262e2861"
+    ],
+    "rationale": "Empirical frequency, simulation, the empirical law of large numbers, and probability estimation are now bound to their existing dedicated canonical goals instead of being overclaimed by the theoretical Laplace goal."
+  },
+  "unchangedBoundaries": {
+    "title": true,
+    "goalId": true,
+    "graphEdges": true,
+    "applicability": true,
+    "assessments": true,
+    "imageBytes": true
+  },
+  "visualizationBinding": {
+    "assetPath": "curricula/DE/Gymnasium/visualizations/mathematik/5ab17678-bba7-4e6b-9aff-5a909e24d40e/5ab17678-bba7-4e6b-9aff-5a909e24d40e.jpg",
+    "sha256": "sha256:a6694046cfc48c0a1d6edb0ffbcdec69688e81ea17332da143878b1272f238da",
+    "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+    "compatibilityRationale": "The existing image correctly shows a fair die, the sample space, an event, equal elementary probabilities, and the favourable-to-possible ratio. It is retained as the Laplace-case illustration and is not used as evidence for empirical frequency."
+  },
+  "followUpBoundary": {
+    "batch": "batch-027a-j8-laplace-experiments-revised-1-v1",
+    "freshIndependentReviewRoundsRequired": 2,
+    "reviewRecordsCreatedHere": false,
+    "positiveUnderstandingEvidenceProfilesCreatedHere": false,
+    "centralStrictResolutionsCreatedHere": false
+  },
+  "canonicalApplication": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "sha256:553922eb97a23eda75cf7604ddaca9c6940079b267a0a93c4b926da54eec73e8"
+  }
+}

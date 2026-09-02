@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-b025-j8-rational-functions-adjudication-20260902-v1",
+  "status": "applied_locally_pending_disjoint_follow_up_review",
+  "appendOnly": true,
+  "adjudicatedAt": "2026-09-02",
+  "sourceBindings": {
+    "dualSummary": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-025-j8-rational-functions-5-v1/dual-summary.json",
+      "sha256": "sha256:91a619956ce7a9eece20f100bf4a053926e12ff4ce930bd90d401211fdd4e6c1",
+      "requiresSynthesis": 5
+    },
+    "roundARecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-025-j8-rational-functions-5-v1/round-a/results/mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:7ec4cffc88322fe7e7ac4be4fe8a1ba69e10cd90dbff284e47113992955b799a"
+    },
+    "roundBRecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-025-j8-rational-functions-5-v1/round-b/results/mathematik-rollout-v1-batch-025-j8-rational-functions-5-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:880aac82882a0e5dd2acf8555e4940757117696819f213342698aa8f99d07f48"
+    }
+  },
+  "decisions": [
+    {
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "decision": "keep_unchanged",
+      "reviewedGoalFingerprint": "sha256:d0ffb8390eb1c634eaafbeb555267ba26cba562a178d3792a5ad5feaea787e97"
+    },
+    {
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "decision": "keep_unchanged",
+      "reviewedGoalFingerprint": "sha256:d787023ecbe65a9cb55901ad03b3fd6881a43d14e127de01c898433702175d88"
+    },
+    {
+      "goalId": "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+      "decision": "revise",
+      "descriptionDe": "Die lernende Person kann bei Funktionen der Form f(x) = a/(x - d) + e mit a ≠ 0 beschreiben, wie die Parameter a, d und e den Graphen verschieben, strecken, stauchen oder spiegeln.",
+      "descriptionEn": "The learner can describe how the parameters a, d, and e translate, stretch, compress, or reflect the graph of functions of the form f(x) = a/(x - d) + e with a ≠ 0."
+    },
+    {
+      "goalId": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+      "decision": "split_review_implemented",
+      "retainedAs": "curricularArea",
+      "type": "cluster",
+      "weight": 2,
+      "requires": [],
+      "contains": [
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "3f1a97d2-7de6-5799-81f2-39782c3e54d7"
+      ]
+    },
+    {
+      "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "decision": "revise",
+      "descriptionDe": "Die lernende Person kann umgekehrt proportionale Größen an einem konstanten Produkt erkennen, sie durch Funktionen der Form y = k/x mit k ≠ 0 beschreiben und den zugehörigen Hyperbelgraphen auch in naturwissenschaftlichen Kontexten deuten.",
+      "descriptionEn": "The learner can recognize inversely proportional quantities by their constant product, describe them with functions of the form y = k/x with k ≠ 0, and interpret the corresponding hyperbola graph, including in science-related contexts."
+    }
+  ],
+  "newAtomicGoals": [
+    {
+      "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "shortKey": "canonical_math_sek1_j8_rational_graph_drawing_from_terms",
+      "semanticAtomic": true
+    },
+    {
+      "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "shortKey": "canonical_math_sek1_j8_rational_terms_from_graphs",
+      "semanticAtomic": true,
+      "requiresAtomicGoalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807"
+    }
+  ],
+  "referenceRebindings": [
+    {
+      "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "from": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+      "to": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807"
+    },
+    {
+      "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "from": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+      "to": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807"
+    }
+  ],
+  "sourceMappingAdjudication": {
+    "DE-BW": [
+      "bc6e4c14-d4f7-537e-8e83-9b5c0086e807"
+    ],
+    "DE-BY": [
+      "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "3f1a97d2-7de6-5799-81f2-39782c3e54d7"
+    ],
+    "DE-HE": [
+      "bc6e4c14-d4f7-537e-8e83-9b5c0086e807"
+    ]
+  },
+  "visualizationBindings": {
+    "existingAssetsUnchanged": [
+      {
+        "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "sha256": "sha256:dbc97b3bae8cd3194cfc7fd073429a98131e8d37ea527ea4c47305eaca24381c"
+      },
+      {
+        "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "sha256": "sha256:8c6ad3e2f741bc2a830e2bc1a630164ec2538150e479760342ace20d5298460c"
+      },
+      {
+        "goalId": "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "sha256": "sha256:f200a43dd367286e098cb6dc5b7eded800d8ce65d715c31484a15779fbcb1ce0"
+      },
+      {
+        "goalId": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+        "sha256": "sha256:21cf8cabc15fc0cf3e6e274590237ea75dda6be1295d1ba4458eb1393a94aa78",
+        "role": "retained_cluster_overview"
+      },
+      {
+        "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "sha256": "sha256:8b00c2627f460e593dbdae70687dd3cdfd8940c989b3d28729d76b022d691049"
+      }
+    ],
+    "newAtomicGoalDisposition": "deferred_provider_limitation",
+    "newAssetBytesCreated": false
+  },
+  "followUpBoundary": {
+    "batch": "batch-025a-j8-rational-functions-revised-6-v1",
+    "reviewRecordsCreatedHere": false,
+    "positiveUnderstandingEvidenceProfilesCreatedHere": false,
+    "centralStrictResolutionsCreatedHere": false,
+    "normalFinalizerForcedAgainstChangedCanonical": false
+  },
+  "canonicalApplication": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "sha256:5269c8634d0e839db077fe64e8946ff8934909372921e9844d8e1f5b6826628d"
+  }
+}

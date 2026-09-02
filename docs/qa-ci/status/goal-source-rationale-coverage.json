@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-29T07:58:20.503Z",
+  "generatedAt": "2026-09-02T18:17:09.271Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-08-29T05:35:29.138Z",
+    "generatedAt": "2026-09-02T18:16:48.392Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
-      "requestedGoals": 737,
-      "resolvedGoals": 737,
-      "goalsWithClassicSourceRoute": 737,
+      "requestedGoals": 738,
+      "resolvedGoals": 738,
+      "goalsWithClassicSourceRoute": 738,
       "goalsWithoutClassicSourceRoute": 0,
-      "goalsWithMemSparqlConsistentRoute": 224
+      "goalsWithMemSparqlConsistentRoute": 227
     },
     "request": {
       "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -586,7 +586,8 @@
         "6596405a-9728-41df-9163-53670ec2a937",
         "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
         "34ba4714-a0ff-4a48-857f-d2481cbe0441",
-        "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
         "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
         "fa72cf74-a31e-402e-90d7-422c118f4a5b",
         "f65ab452-1884-57b0-9be3-c7d9e4944891",
@@ -766,28 +767,28 @@
     }
   },
   "summary": {
-    "totalGoals": 1174,
-    "atomicLeaves": 919,
-    "relevantAtomicLeaves": 792,
-    "memoryOrNonContentLeaves": 127,
-    "clusters": 255,
-    "containsRelations": 1294,
-    "requiresRelations": 2441,
-    "runtimeItems": 737,
-    "runtimeItemsInLandscape": 737,
+    "totalGoals": 1177,
+    "atomicLeaves": 921,
+    "relevantAtomicLeaves": 793,
+    "memoryOrNonContentLeaves": 128,
+    "clusters": 256,
+    "containsRelations": 1297,
+    "requiresRelations": 2447,
+    "runtimeItems": 738,
+    "runtimeItemsInLandscape": 738,
     "runtimeItemsMissingFromLandscape": 0,
-    "runtimeGoalsWithClassicSourceRationale": 737,
-    "runtimeGoalsWithMemSparqlConsistentRoute": 224,
-    "relevantLeavesWithClassicSourceRationale": 737,
-    "relevantLeavesWithMemSparqlConsistentRoute": 224,
+    "runtimeGoalsWithClassicSourceRationale": 738,
+    "runtimeGoalsWithMemSparqlConsistentRoute": 227,
+    "relevantLeavesWithClassicSourceRationale": 738,
+    "relevantLeavesWithMemSparqlConsistentRoute": 227,
     "relevantLeavesMissingRuntimeSourceRationale": 55,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 255,
+    "clustersWithoutDirectRuntimeSourceRationale": 256,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
     "relevantLeafClassicCoveragePercent": 93.1,
-    "relevantLeafMemCoveragePercent": 28.3
+    "relevantLeafMemCoveragePercent": 28.6
   },
   "buckets": {
     "byPhase": [
@@ -816,7 +817,7 @@
         "key": "Q3",
         "totalRelevantLeaves": 76,
         "leavesWithClassicSourceRationale": 73,
-        "leavesWithMemSparqlConsistentRoute": 13,
+        "leavesWithMemSparqlConsistentRoute": 16,
         "missingRelevantLeaves": 3
       },
       {
@@ -856,8 +857,8 @@
       },
       {
         "key": "J8",
-        "totalRelevantLeaves": 38,
-        "leavesWithClassicSourceRationale": 38,
+        "totalRelevantLeaves": 39,
+        "leavesWithClassicSourceRationale": 39,
         "leavesWithMemSparqlConsistentRoute": 16,
         "missingRelevantLeaves": 0
       },
@@ -881,13 +882,13 @@
         "key": "unknown",
         "totalRelevantLeaves": 386,
         "leavesWithClassicSourceRationale": 338,
-        "leavesWithMemSparqlConsistentRoute": 67,
+        "leavesWithMemSparqlConsistentRoute": 70,
         "missingRelevantLeaves": 48
       },
       {
         "key": "Analysis",
-        "totalRelevantLeaves": 125,
-        "leavesWithClassicSourceRationale": 119,
+        "totalRelevantLeaves": 126,
+        "leavesWithClassicSourceRationale": 120,
         "leavesWithMemSparqlConsistentRoute": 36,
         "missingRelevantLeaves": 6
       },
@@ -9887,18 +9888,39 @@
         "classification": "covered_runtime_classic_mem_pending"
       },
       {
-        "id": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
-        "shortKey": "canonical_math_sek1_j8_rational_graphs_asymptotes",
-        "title": "Graphen und Asymptoten einfacher Hyperbeln deuten",
+        "id": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "shortKey": "canonical_math_sek1_j8_rational_graph_drawing_from_terms",
+        "title": "Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
         "type": "atomic",
         "phase": "J8",
         "area": "Analysis",
-        "topicCode": "CANONICAL.MATH.SEK1.J8.3B",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.RATIONAL_FUNCTIONS.GRAPH_DRAWING_FROM_TERMS",
         "pathTitles": [
           "Mathematik",
           "Jahrgangsstufe 8",
           "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
-          "Graphen und Asymptoten einfacher Hyperbeln deuten"
+          "Graphen, Asymptoten und Parameter einfacher Hyperbeln",
+          "Graphen einfacher Hyperbeln mit Asymptoten zeichnen"
+        ],
+        "runtimeCovered": true,
+        "classicSourceRoute": true,
+        "memSparqlStatus": "mem_sparql_review_needed",
+        "classification": "covered_runtime_classic_mem_pending"
+      },
+      {
+        "id": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+        "shortKey": "canonical_math_sek1_j8_rational_terms_from_graphs",
+        "title": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
+        "type": "atomic",
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.RATIONAL_FUNCTIONS.TERMS_FROM_GRAPHS",
+        "pathTitles": [
+          "Mathematik",
+          "Jahrgangsstufe 8",
+          "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
+          "Graphen, Asymptoten und Parameter einfacher Hyperbeln",
+          "Parameter einfacher Hyperbeln aus Graphen bestimmen"
         ],
         "runtimeCovered": true,
         "classicSourceRoute": true,
@@ -11693,26 +11715,6 @@
         "classification": "covered_runtime_classic_mem_pending"
       },
       {
-        "id": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
-        "shortKey": null,
-        "title": "Zufallsexperimente mit Software simulieren",
-        "type": "atomic",
-        "phase": "Q3",
-        "area": "unknown",
-        "topicCode": null,
-        "pathTitles": [
-          "Mathematik",
-          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
-          "Stochastik, Tests und Statistik (Sek II)",
-          "Urnenmodelle und Simulationen",
-          "Zufallsexperimente mit Software simulieren"
-        ],
-        "runtimeCovered": true,
-        "classicSourceRoute": true,
-        "memSparqlStatus": "mem_sparql_not_configured",
-        "classification": "covered_runtime_classic_mem_pending"
-      },
-      {
         "id": "c2831918-26f1-421e-90fb-ce707689594e",
         "shortKey": null,
         "title": "Bedingte und gemeinsame Wahrscheinlichkeiten im Kontext unterscheiden",
@@ -11937,50 +11939,6 @@
           "Wahrscheinlichkeiten und Verteilungen (Sek II)",
           "Grundlegende Begriffe und Methoden der Stochastik",
           "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)"
-        ],
-        "runtimeCovered": true,
-        "classicSourceRoute": true,
-        "memSparqlStatus": "mem_sparql_not_configured",
-        "classification": "covered_runtime_classic_mem_pending"
-      },
-      {
-        "id": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
-        "shortKey": "canonical_math_q3_explain_empirical_law_of_large_numbers",
-        "title": "Das empirische Gesetz der großen Zahlen erläutern",
-        "type": "atomic",
-        "phase": "Q3",
-        "area": "unknown",
-        "topicCode": null,
-        "pathTitles": [
-          "Mathematik",
-          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
-          "Stochastik, Tests und Statistik (Sek II)",
-          "Wahrscheinlichkeiten und Verteilungen (Sek II)",
-          "Grundlegende Begriffe und Methoden der Stochastik",
-          "Statistischen Wahrscheinlichkeitsbegriff anwenden",
-          "Das empirische Gesetz der großen Zahlen erläutern"
-        ],
-        "runtimeCovered": true,
-        "classicSourceRoute": true,
-        "memSparqlStatus": "mem_sparql_not_configured",
-        "classification": "covered_runtime_classic_mem_pending"
-      },
-      {
-        "id": "8823e26e-694c-581b-9adf-4db7db6f43c9",
-        "shortKey": "canonical_math_q3_determine_frequencies_and_estimate_probabilities",
-        "title": "Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen",
-        "type": "atomic",
-        "phase": "Q3",
-        "area": "unknown",
-        "topicCode": null,
-        "pathTitles": [
-          "Mathematik",
-          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
-          "Stochastik, Tests und Statistik (Sek II)",
-          "Wahrscheinlichkeiten und Verteilungen (Sek II)",
-          "Grundlegende Begriffe und Methoden der Stochastik",
-          "Statistischen Wahrscheinlichkeitsbegriff anwenden",
-          "Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen"
         ],
         "runtimeCovered": true,
         "classicSourceRoute": true,
@@ -15743,6 +15701,25 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+        "shortKey": "canonical_math_sek1_j8_rational_graphs_asymptotes",
+        "title": "Graphen, Asymptoten und Parameter einfacher Hyperbeln",
+        "type": "cluster",
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.3B",
+        "pathTitles": [
+          "Mathematik",
+          "Jahrgangsstufe 8",
+          "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
+          "Graphen, Asymptoten und Parameter einfacher Hyperbeln"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
         "shortKey": "canonical_math_analyze_linear_functions_rechnerisch",
         "title": "Lineare Funktionen rechnerisch untersuchen",
@@ -17222,8 +17199,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1294,
-      "requiresRelationsPending": 2441
+      "containsRelationsPending": 1297,
+      "requiresRelationsPending": 2447
     }
   },
   "rows": [
@@ -34820,8 +34797,8 @@
     {
       "id": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
       "shortKey": "canonical_math_sek1_j8_rational_graphs_asymptotes",
-      "title": "Graphen und Asymptoten einfacher Hyperbeln deuten",
-      "type": "atomic",
+      "title": "Graphen, Asymptoten und Parameter einfacher Hyperbeln",
+      "type": "cluster",
       "phase": "J8",
       "area": "Analysis",
       "topicCode": "CANONICAL.MATH.SEK1.J8.3B",
@@ -34829,7 +34806,47 @@
         "Mathematik",
         "Jahrgangsstufe 8",
         "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
-        "Graphen und Asymptoten einfacher Hyperbeln deuten"
+        "Graphen, Asymptoten und Parameter einfacher Hyperbeln"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "shortKey": "canonical_math_sek1_j8_rational_graph_drawing_from_terms",
+      "title": "Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
+      "type": "atomic",
+      "phase": "J8",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J8.RATIONAL_FUNCTIONS.GRAPH_DRAWING_FROM_TERMS",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 8",
+        "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
+        "Graphen, Asymptoten und Parameter einfacher Hyperbeln",
+        "Graphen einfacher Hyperbeln mit Asymptoten zeichnen"
+      ],
+      "runtimeCovered": true,
+      "classicSourceRoute": true,
+      "memSparqlStatus": "mem_sparql_review_needed",
+      "classification": "covered_runtime_classic_mem_pending"
+    },
+    {
+      "id": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "shortKey": "canonical_math_sek1_j8_rational_terms_from_graphs",
+      "title": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
+      "type": "atomic",
+      "phase": "J8",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J8.RATIONAL_FUNCTIONS.TERMS_FROM_GRAPHS",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 8",
+        "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
+        "Graphen, Asymptoten und Parameter einfacher Hyperbeln",
+        "Parameter einfacher Hyperbeln aus Graphen bestimmen"
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
@@ -35258,6 +35275,25 @@
         "Jahrgangsstufe 8",
         "Prüfungen Jahrgangsstufe 8",
         "Mathematische Notation und Symbole deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "0d2cfddc-7af6-5709-819f-929e6cf9c192",
+      "shortKey": "canonical_math_j8_structural_split_follow_up_j8_rational_terms_from_graphs",
+      "title": "Parameter einer Hyperbel aus Asymptoten und einem Punkt bestimmen",
+      "type": "atomic",
+      "phase": "J8",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J8.STRUCTURAL_SPLIT.RATIONAL_TERMS_FROM_GRAPHS",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 8",
+        "Prüfungen Jahrgangsstufe 8",
+        "Parameter einer Hyperbel aus Asymptoten und einem Punkt bestimmen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
@@ -38831,8 +38867,8 @@
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
-      "memSparqlStatus": "mem_sparql_not_configured",
-      "classification": "covered_runtime_classic_mem_pending"
+      "memSparqlStatus": "mem_sparql_consistent",
+      "classification": "covered_runtime_classic_and_mem"
     },
     {
       "id": "6fd35cc4-c375-4e58-b6f1-5382d8422906",
@@ -39165,8 +39201,8 @@
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
-      "memSparqlStatus": "mem_sparql_not_configured",
-      "classification": "covered_runtime_classic_mem_pending"
+      "memSparqlStatus": "mem_sparql_consistent",
+      "classification": "covered_runtime_classic_and_mem"
     },
     {
       "id": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
@@ -39209,8 +39245,8 @@
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
-      "memSparqlStatus": "mem_sparql_not_configured",
-      "classification": "covered_runtime_classic_mem_pending"
+      "memSparqlStatus": "mem_sparql_consistent",
+      "classification": "covered_runtime_classic_and_mem"
     },
     {
       "id": "1769fcdc-33a6-586f-9b15-17f6f32579cf",

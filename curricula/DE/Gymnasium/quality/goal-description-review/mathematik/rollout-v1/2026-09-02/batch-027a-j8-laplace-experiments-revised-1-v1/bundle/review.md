@@ -1,0 +1,53 @@
+# AI review input: Mathematik B027a – J8: Laplace-Experimente nach fachlicher Präzisierung
+
+- Book ID: `de-gym-math-j8-laplace-experiments-revised-1-v1-20260902`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:63781569288b5f4aa894737ca205adf8f847622d31c7c43f67953b67aac51695`
+- Selected goals: 1
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Laplace-Experimente auswerten
+
+- Full learning-goal ID: `5ab17678-bba7-4e6b-9aff-5a909e24d40e`
+- Goal fingerprint: `sha256:82ebc4d9042a48ebe4e0a8037aeb9b5a205769558910d648e7a7c398bd26b3df`
+- Page fingerprint: `sha256:143dfb3a63c3259e02d073e590b805c7c8431652cc0c602bf54433249c116212`
+- Topic path: Mathematik > Sekundarstufe I > Jahrgangsstufe 8
+
+### Canonical description
+
+Die lernende Person kann anhand der Versuchsanordnung begründen, ob ein einfaches Zufallsexperiment als Laplace-Experiment modelliert werden kann, seine Ergebnismenge und Ereignisse tabellarisch oder grafisch darstellen sowie im Laplace-Fall theoretische Ereigniswahrscheinlichkeiten als Anteil der günstigen an allen möglichen gleichwahrscheinlichen Elementarergebnissen bestimmen und deuten.
+
+### Visualization
+
+/assets/goal-visualizations/mathematik/5ab17678-bba7-4e6b-9aff-5a909e24d40e/5ab17678-bba7-4e6b-9aff-5a909e24d40e.jpg
+
+- original digest: `sha256:a6694046cfc48c0a1d6edb0ffbcdec69688e81ea17332da143878b1272f238da`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Mathematik? – Entdecken, Muster & Alltag — `65365dce-f33f-49d8-9516-42f75883aa86` (outside this book)
+- Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten — `b819973b-4cad-48a4-9f7e-f74b5e75ea6c` (outside this book)
+- Statistische Daten aus Sekundärquellen entnehmen — `bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Verknüpfte Ereignisse mit Mengen- und Vierfelderdarstellungen strukturieren — `759485a9-51c0-4261-af7d-caa3c0e5d68b` (outside this book)
+- Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen — `efc3506a-5f35-4d77-9498-d70a091a470b` (outside this book)
+- Laplace-Wahrscheinlichkeiten mit relativen Häufigkeiten vergleichen — `5a2371fd-74ce-5013-932e-35d3713aeaf7` (outside this book)
+- Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen — `3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6` (outside this book)
+
+### Evidence-profile candidate
+
+No evidence-profile record is bound to this page.

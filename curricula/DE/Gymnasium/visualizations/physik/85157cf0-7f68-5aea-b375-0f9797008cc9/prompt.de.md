@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `85157cf0-7f68-5aea-b375-0f9797008cc9`
 - Titel: Interferenz in der Technik (ANC)
-- Beschreibung: Active Noise Cancellation (Antischall) als destruktive Interferenz. Bewertung von Lärmschutzmaßnahmen.
+- Beschreibung: Die lernende Person kann Active Noise Cancellation als gezielt erzeugte destruktive Interferenz erklären und seine Eignung als Lärmschutzmaßnahme anhand der physikalischen Wirkungsweise, Wirksamkeit und Grenzen bewerten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Interferenz in der Technik (ANC)
-Beschreibung: Active Noise Cancellation (Antischall) als destruktive Interferenz. Bewertung von Lärmschutzmaßnahmen.
+Beschreibung: Die lernende Person kann Active Noise Cancellation als gezielt erzeugte destruktive Interferenz erklären und seine Eignung als Lärmschutzmaßnahme anhand der physikalischen Wirkungsweise, Wirksamkeit und Grenzen bewerten.
 
 Zusatzanweisung:
 Pflichtinhalt:

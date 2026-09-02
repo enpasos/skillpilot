@@ -1,10 +1,10 @@
-# Bildrekonstruktionsprompt: Graphen und Asymptoten einfacher Hyperbeln deuten
+# Bildrekonstruktionsprompt: Graphen, Asymptoten und Parameter einfacher Hyperbeln
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `19a6bc8e-9851-4cf1-adf3-6898e08eb567`
-- Titel: Graphen und Asymptoten einfacher Hyperbeln deuten
-- Beschreibung: Die lernende Person kann Graphen einfacher gebrochen-rationaler Funktionen mitsamt Asymptoten zeichnen und aus einem gegebenen Graphen passende Parameter zurückgewinnen.
+- Titel: Graphen, Asymptoten und Parameter einfacher Hyperbeln
+- Beschreibung: Fachlicher Cluster für das Zeichnen einfacher Hyperbelgraphen mit ihren Asymptoten und die umgekehrte Bestimmung passender Funktionsparameter aus einem gegebenen Graphen.
 
 ## Generator
 
@@ -18,7 +18,7 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Diagramm auf einem hellblauen Hintergrund mit subtilen, stilisierten weißen Wolkenformen. Oben links steht der Titel in großer, schwarzer Schrift: 'Graphen und Asymptoten einfacher Hyperbeln deuten'.
+Ein klares, lehrreiches Diagramm auf einem hellblauen Hintergrund mit subtilen, stilisierten weißen Wolkenformen. Oben links steht der Cluster-Titel in großer, schwarzer Schrift: 'Graphen, Asymptoten und Parameter einfacher Hyperbeln'.
 
 Im linken und mittleren Bereich befindet sich ein kartesisches Koordinatensystem. Die horizontale x-Achse reicht von -2 bis 6, ist mit Pfeilspitze nach rechts versehen und mit 'x' beschriftet. Sie hat Teilstriche und Zahlen bei -2, -1, 0, 1, 2, 3, 4, 5, 6. Die vertikale y-Achse reicht von -2 bis 6, ist mit Pfeilspitze nach oben versehen und mit 'y' beschriftet. Sie hat Teilstriche und Zahlen bei -2, 0, 1, 2, 3, 4, 5, 6. Der Ursprung (0,0) ist deutlich markiert.
 

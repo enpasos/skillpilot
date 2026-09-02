@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `215f5558-562c-5686-b649-931f324c7983`
 - Titel: Phasensprünge bei Reflexion
-- Beschreibung: Die lernende Person kann Phasensprünge an festen und losen Enden erklären und mathematisch beschreiben.
+- Beschreibung: Die lernende Person kann erklären und mathematisch beschreiben, warum eine eindimensionale Auslenkungswelle bei der Reflexion am festen Ende einen Phasensprung von π und am losen Ende keinen Phasensprung erfährt.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Phasensprünge bei Reflexion
-Beschreibung: Die lernende Person kann Phasensprünge an festen und losen Enden erklären und mathematisch beschreiben.
+Beschreibung: Die lernende Person kann erklären und mathematisch beschreiben, warum eine eindimensionale Auslenkungswelle bei der Reflexion am festen Ende einen Phasensprung von π und am losen Ende keinen Phasensprung erfährt.
 
 Zusatzanweisung:
 Pflichtinhalt:

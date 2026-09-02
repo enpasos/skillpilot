@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `a6e48b88-51ed-5942-bdb8-8d2192652e0d`
 - Titel: Ladungsphänomene und Reibungselektrizität
-- Beschreibung: Phänomenologischer Einstieg: Anziehung und Abstoßung, Ladungstrennung durch Reibung (Ballon, Haare) und der qualitative Kraftbegriff.
+- Beschreibung: Die lernende Person kann Anziehung und Abstoßung elektrisch geladener Körper sowie Ladungstrennung durch Reibung phänomenologisch untersuchen und die beobachteten Wechselwirkungen mit einem qualitativen Kraftbegriff beschreiben.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Ladungsphänomene und Reibungselektrizität
-Beschreibung: Phänomenologischer Einstieg: Anziehung und Abstoßung, Ladungstrennung durch Reibung (Ballon, Haare) und der qualitative Kraftbegriff.
+Beschreibung: Die lernende Person kann Anziehung und Abstoßung elektrisch geladener Körper sowie Ladungstrennung durch Reibung phänomenologisch untersuchen und die beobachteten Wechselwirkungen mit einem qualitativen Kraftbegriff beschreiben.
 
 Zusatzanweisung:
 Pflichtinhalt:

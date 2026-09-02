@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `f47a7fa0-b929-5264-b038-b83fd682967f`
 - Titel: Ultraschall in Medizin und Technik
-- Beschreibung: Ultraschallortung und Bildgebung als Anwendung mechanischer Wellen. Reflexion, Laufzeit und Auflösung qualitativ einordnen.
+- Beschreibung: Die lernende Person kann erklären, wie Ultraschallortung und -bildgebung Reflexionen und Laufzeiten mechanischer Wellen nutzen, und die erreichbare räumliche Auflösung qualitativ einordnen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Ultraschall in Medizin und Technik
-Beschreibung: Ultraschallortung und Bildgebung als Anwendung mechanischer Wellen. Reflexion, Laufzeit und Auflösung qualitativ einordnen.
+Beschreibung: Die lernende Person kann erklären, wie Ultraschallortung und -bildgebung Reflexionen und Laufzeiten mechanischer Wellen nutzen, und die erreichbare räumliche Auflösung qualitativ einordnen.
 
 Zusatzanweisung:
 Use case: scientific-educational

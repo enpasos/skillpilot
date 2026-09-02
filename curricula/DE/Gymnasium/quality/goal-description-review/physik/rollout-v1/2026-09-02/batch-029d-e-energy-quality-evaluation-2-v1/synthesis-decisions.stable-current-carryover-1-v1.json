@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b029d-stable1-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B029D stable-current carryover synthesis candidate",
+  "synthesizedAt": "2026-09-02T14:00:37.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902",
+    "batchManifestDigest": "sha256:24d24403e9cadfbf6f87933c08fda046d65953e9d193369dfce10299e2aed34f",
+    "configDigest": "sha256:bb3f2f6f93e341194fc47e971375a518185c241d813adc659fbf0834135d79b6",
+    "bundleFingerprint": "sha256:cb62a11ff721fe11c2c079002fa8de6d40e8b4afbba2b5c1d8420f534130292e",
+    "bookDigest": "sha256:8a74c7534e4d3c318d13bee32caf7c8186c29e6c67f9be6f5100087a1e77669a",
+    "reviewInputFingerprint": "sha256:b97f533d711a1765ea0e25b922d6830730af81b62c4e622e468c51d87b0129b0",
+    "dualSummaryDigest": "sha256:a22b7356bbbb81cc7e82c29e5976108acccd425f898b8bd1f72779f13d2a25fe",
+    "canonicalLandscapeDigest": "sha256:388e26ea071727043ad5a1f95f955ddf25923e0b038634432ecfb1786628fc10"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-a",
+      "campaignDigest": "sha256:4f8f63bd797c137f69cecb8088494a16b85af8b20d26606034e6c068679c8f3e",
+      "roundId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:b97f533d711a1765ea0e25b922d6830730af81b62c4e622e468c51d87b0129b0",
+      "batchId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3b79d2d3f9e559dfec921cf870b778a7c68c8f42adea0452a98786f3acd8cb88",
+      "runId": "openai-gpt-5-physik-b029d-round-a-20260902",
+      "runManifestDigest": "sha256:e405b477fd10b19bd71a9c44b192682dc7bea6917368f2c144503d67477b03d2",
+      "resultsDigest": "sha256:428dc2f33885c6f2d5fb2f6d216bf7aac19e8549afacf149a29db6bbf2b068e0"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-b",
+      "campaignDigest": "sha256:66f5716e117a75cc79bc2b21c8fbdce4940fc0af1a2d87ff349abbf566940733",
+      "roundId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:b97f533d711a1765ea0e25b922d6830730af81b62c4e622e468c51d87b0129b0",
+      "batchId": "physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:76821df5a0de524a0c80a9e02a1337f98153df5af6d947ca6b1b70290426c4cd",
+      "runId": "physik-b029d-round-b-openai-gpt5-20260902",
+      "runManifestDigest": "sha256:ec038d48ef13dd1abe9aa5ef00071157c9b105a8cde4e26b399e821b4d341a91",
+      "resultsDigest": "sha256:827fc4e30e0b3fff2bcfb198974ee83eeea67ed5820301c8e8262e1166b7554d"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b029d-stable1-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:78934d067c473ced1313861c72f0aacaab6fd8bb44407063befcd0fad188d047",
+      "pageFingerprint": "sha256:9f85aeadd84f30644a1776828085137103c5349d54f573c2222d0e9db4b9fa4f",
+      "goalReviewContextFingerprint": "sha256:8382e87c73b1569f02a0e206c46ef2072141d7a2e667e3f115e197e3125feff9",
+      "finalText": {
+        "titleDe": "Energiesparmaßnahmen physikalisch bewerten",
+        "titleEn": "Physically Evaluate Energy Saving Measures",
+        "descriptionDe": "Die lernende Person kann Energiesparmaßnahmen mit Wirkungsgraden, Energieumwandlungen und Verlustmechanismen physikalisch bewerten.",
+        "descriptionEn": "The learner can physically evaluate energy-saving measures using efficiencies, energy conversions, and loss mechanisms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "openai-gpt-5-physik-b029d-round-a-20260902-aed9161b",
+          "recordDigest": "sha256:1a987e03228e8c4542c71670a7f3dea70155a5f03f228e7edf46b7ec24763a74"
+        },
+        "second": {
+          "recordId": "physik-b029d-round-b-review-aed9161b-ddc4-559c-be8f-baeeddf224f3",
+          "recordDigest": "sha256:3fc97560953f41874891b6f91b8ab46aa1718a6fd4d184fde7c5c1c65bdc5e10"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den unveränderten bilingualen Wortlaut als fachlich korrekt, kohärent und prüfbar. Die erste Runde liefert die ausgewählte kompakte Evidenzfassung; die zweite bleibt vollständig als unabhängige KEEP-Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the unchanged bilingual wording as scientifically correct, coherent, and assessable. The first round supplies the selected concise evidence formulation; the second remains fully bound as an independent KEEP confirmation."
+    }
+  ],
+  "manifestFingerprint": "sha256:d6896e2c3f97a0d4737681c79e8730cfa38bc4ca5360a1ff52e3cc25c52c2128"
+}

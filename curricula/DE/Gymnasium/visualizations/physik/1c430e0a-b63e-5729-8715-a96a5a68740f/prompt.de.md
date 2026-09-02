@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `1c430e0a-b63e-5729-8715-a96a5a68740f`
 - Titel: Wellenpakete
-- Beschreibung: Gruppengeschwindigkeit und Dispersion von Wellenpaketen deuten.
+- Beschreibung: Die lernende Person kann bei einem schmalbandigen Wellenpaket die Gruppengeschwindigkeit als Geschwindigkeit seiner Hüllkurve deuten und erklären, wie frequenzabhängige Ausbreitung (Dispersion) seine Form und Breite verändert.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Wellenpakete
-Beschreibung: Gruppengeschwindigkeit und Dispersion von Wellenpaketen deuten.
+Beschreibung: Die lernende Person kann bei einem schmalbandigen Wellenpaket die Gruppengeschwindigkeit als Geschwindigkeit seiner Hüllkurve deuten und erklären, wie frequenzabhängige Ausbreitung (Dispersion) seine Form und Breite verändert.
 
 Zusatzanweisung:
 Pflichtinhalt:

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b025a-stable4-current-carryover-v1-resolution-bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+  "goal": {
+    "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ac59cf7a670eb70a10c452fa084624f83848b417ff84bfe78b14318f53b9ffa8",
+    "pageFingerprint": "sha256:eaa5cd6a18120256c0342da8ae2bca51cef2921163086ac16dc264daa0e85df2",
+    "goalReviewContextFingerprint": "sha256:6e7cedfe0c9c8a8b3413778416cf05ab7aa0242644b934733ad6c641e871a183",
+    "finalText": {
+      "titleDe": "Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
+      "titleEn": "Draw graphs of simple hyperbolas with asymptotes",
+      "descriptionDe": "Die lernende Person kann zu Funktionen der Form f(x) = a/(x - d) + e mit a ≠ 0 die senkrechte und waagerechte Asymptote bestimmen und einen zu den Parametern passenden Hyperbelgraphen zeichnen.",
+      "descriptionEn": "The learner can determine the vertical and horizontal asymptotes of functions of the form f(x) = a/(x - d) + e with a ≠ 0 and draw a hyperbola graph consistent with the parameters."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-a",
+      "campaignDigest": "sha256:3398fdc709ea5ab6b6dce0ea3f807aa1eb90c3e78d8e155cc18f04b04afea2f3",
+      "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+      "goalReviewContextFingerprint": "sha256:6e7cedfe0c9c8a8b3413778416cf05ab7aa0242644b934733ad6c641e871a183",
+      "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258",
+      "runManifestDigest": "sha256:bb9eb42af0dd16313e0da7dcd2ea398a43ece75b3d7a2154fe4eec858fa664f6",
+      "resultsDigest": "sha256:edc5cc0df123ef4386fe54968ea0aaab7c78ef8c79b62ffac8fa9745887e5979",
+      "recordId": "openai-codex-f9b0c8d8-ae94-465a-b098-38f2937e6258:record:004",
+      "recordDigest": "sha256:5fdd07f6330a3c96c6ea08421d7df541222d8e8e80fda1872dd366b5f6d76f26"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-b",
+      "campaignDigest": "sha256:ce016dfb27fcfcaef647d1931470327ad6f9d0c5f481b7905e0eb9cbbdf95e8e",
+      "roundId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:c0ba60ed2592cd7185b272033b8873605708d15dcadd5a2e462fce9ef49eeb65",
+      "goalReviewContextFingerprint": "sha256:6e7cedfe0c9c8a8b3413778416cf05ab7aa0242644b934733ad6c641e871a183",
+      "batchId": "mathematik-rollout-v1-batch-025a-j8-rational-functions-revised-6-v1-20260902-first-pass-b.batch-001",
+      "runId": "mathematik-b025a-20260902-round-b-run-001",
+      "runManifestDigest": "sha256:bb505147a8e8eb3db2830a1cdc4123c0e755608963f593a08658dd574487cce1",
+      "resultsDigest": "sha256:f12403dd7d66c9e4f552b96982a9ec5af69eb49f837921887e8d42a7e3d2c53f",
+      "recordId": "math-b025a-round-b-bc6e4c14",
+      "recordDigest": "sha256:f29f11cf9b6616bfe1d0917c50fc87ea455a04697e20465bec8fc6934314bd5f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d62714510e3db08ca6033ac8a4aee9059c23d145771364bf53fa31959a6a7dc6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-4-v1.json",
+    "manifestId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:f78d0b94182cd098d16bdc9f11101b00e8537abd9d40ddedf382759646fd6904",
+    "manifestFingerprint": "sha256:b4d89db5b512306c6384e9a02c0db7626557645354444812247580e28907d906",
+    "decisionId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b025a-stable4-synthesis-openai-codex-20260902-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B025a stable-four adjudicated carryover synthesis candidate",
+    "synthesizedAt": "2026-09-02T10:26:29.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen das atomare Zeichenziel. Runde A wird ausgewählt, weil sie Asymptoten, geeignete Punkte, beide Äste und eine abschließende Prüfung an den Parameterwirkungen vollständig sichtbar macht; Runde B bleibt vollständig gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm the atomic graph-drawing goal. Round A is selected because it makes the asymptotes, suitable points, both branches, and a final check against the parameter effects fully observable; Round B remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Für f(x) = a/(x - d) + e sind x = d und y = e die senkrechte beziehungsweise waagerechte Asymptote. Vorzeichen und Betrag von a bestimmen die Lage und Form der beiden Äste, die sich den Asymptoten annähern, sie aber nicht schneiden.",
+      "essentialUnderstandingEn": "For f(x) = a/(x - d) + e, x = d and y = e are the vertical and horizontal asymptotes, respectively. The sign and magnitude of a determine the position and shape of the two branches, which approach but do not cross the asymptotes.",
+      "observablePerformanceDe": "Die lernende Person liest selbstständig a, d und e aus einem gegebenen Term ab, trägt beide Asymptoten ein, bestimmt geeignete Punkte auf beiden Ästen und zeichnet einen Graphen, dessen Astlage und Annäherungsverhalten zu den Parametern passen.",
+      "observablePerformanceEn": "The learner independently reads a, d, and e from a given expression, draws both asymptotes, determines suitable points on both branches, and draws a graph whose branch orientation and approach behavior are consistent with the parameters.",
+      "transferExpectationDe": "Zu einem neuen Term mit gleichzeitiger horizontaler und vertikaler Verschiebung sowie geändertem Vorzeichen von a konstruiert die lernende Person die Asymptoten und einen passenden Hyperbelgraphen und prüft die Zeichnung an den Parameterwirkungen.",
+      "transferExpectationEn": "For a new expression with simultaneous horizontal and vertical translations and a changed sign of a, the learner constructs the asymptotes and a matching hyperbola graph and checks the drawing against the parameter effects."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-dca80ad641337ed75fdd78c2c37098599af3b6495e52f8d6075a214e258e40b0",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2291f2ac7de0ebbf7a6e5cc100f863b295e68a9cc6aa129df25ea76640714807"
+}

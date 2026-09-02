@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b024a-linear-functions-follow-up-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B024a mathematics subject synthesis candidate",
+  "synthesizedAt": "2026-09-02T08:53:21.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902",
+    "batchManifestDigest": "sha256:a4fa5e6ad06e9241a1dd95128cd337f72a3452a5f37fb30226754585ead4fd21",
+    "configDigest": "sha256:a0f7b1a350f4f1876cd0cba2a61ada3972857c9fefa361fd506ee446984aa8d0",
+    "bundleFingerprint": "sha256:8f5614c9267db72ec387fd1ac143da656c2fa8db777b24e4311dd9e0008a7409",
+    "bookDigest": "sha256:3a2a01df50b506d364cf4b888751ce7329c0b41a7324ec802aae0f5c3fe39be8",
+    "reviewInputFingerprint": "sha256:ef243a477b1bffc871d270311317f5921d5c7d4e274dfea31e0f4a14c3b5e6b1",
+    "dualSummaryDigest": "sha256:69eb0a6ff8f4fc083749af063890d677ddead3603e2721d437e29fbcbb89078d",
+    "canonicalLandscapeDigest": "sha256:8c8195b4ee7965adfa76d0a0841aa223eb3e20839e86ab2299a04f0dbea606c1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-a",
+      "campaignDigest": "sha256:3e0bd3cd0eed280ca15baa3cbd3fd126ff3dbb9bfceeb63577623fafb17c0797",
+      "roundId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:ef243a477b1bffc871d270311317f5921d5c7d4e274dfea31e0f4a14c3b5e6b1",
+      "batchId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4f14e454dccf592dc95aca023fee7ed6a9d07999eb0ae904eb8f8f8d51d0757c",
+      "runId": "math-b024a-round-a-openai-gpt-5.6-sol-20260902t104833",
+      "runManifestDigest": "sha256:d4a3dc1f64386dcf0b0c52da5f9c762f253a4d2b2eaa11c8abc55a4a51e4a995",
+      "resultsDigest": "sha256:a0447968546d0c153205a8e115a6af510e9c588f52004e7f5ae39f24b273cd00"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-b",
+      "campaignDigest": "sha256:e3c88b0019274fe1718fd886fd51ab2d4665d1c0d10b81e11b34a8db1cdfbc67",
+      "roundId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:ef243a477b1bffc871d270311317f5921d5c7d4e274dfea31e0f4a14c3b5e6b1",
+      "batchId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:653ea08713eb13176fc318c184e2616fb21bc2fce6dae32e0a4d40a5b886b645",
+      "runId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216",
+      "runManifestDigest": "sha256:cbf0b577f7e0213114f6754435e5d9aa99568d2bde00b42f487f15fda60b43d0",
+      "resultsDigest": "sha256:c0615601c28114436c29c7d13399dd5e488cbf4ff15167b0bd4ea22bf45c6ee5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b024a-linear-functions-follow-up-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "ae772695-d55e-4cc5-81bc-6605272759b4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:456bd72b73f56141497e3f78057512d58f3a0d841b9b56afc5f502648095f12f",
+      "pageFingerprint": "sha256:7ebcb509a382511954a36fdcc48ceacb2a93010e94406ed81709a81b2bd57a41",
+      "goalReviewContextFingerprint": "sha256:1925398d466a0e1582f82cf5ed07aa96778d77f58d47faffbafe24418ac60bb4",
+      "finalText": {
+        "titleDe": "Geradengleichungen linearer Funktionen aufstellen",
+        "titleEn": "Set up equations of linear functions",
+        "descriptionDe": "Die lernende Person kann die Gleichung einer linearen Funktion in der Form y = mx + b aus Steigung und y-Achsenabschnitt, aus Steigung und einem Punkt oder aus zwei verschiedenen Punkten des Graphen aufstellen.",
+        "descriptionEn": "The learner can set up the equation of a linear function in the form y = mx + b from its slope and y-intercept, from its slope and one point, or from two distinct points on its graph."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b024a-a-001-ae772695",
+          "recordDigest": "sha256:f36b3e4adc06aa6573515f54c2719d9a8bea80700996ccb0f5eb888366b5bd41"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216.goal-001",
+          "recordDigest": "sha256:1abb8ab00db44cb444e5839e07a86531096d15af8463e92f16cab3fc5c32b45d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass die drei Ausgangslagen – Steigung und y-Achsenabschnitt, Steigung und ein Punkt sowie zwei verschiedene Graphenpunkte – Varianten derselben atomaren Kompetenz sind und im aktuellen deutschen und englischen Text fachlich präzise sowie semantisch parallel beschrieben werden. Der revidierte kanonische Text bleibt deshalb unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie die Bedeutung von m als konstanter Änderung und von b als Funktionswert bei x = 0 mit der jeweiligen Parameterbestimmung verbindet, alle drei Datenlagen ausdrücklich prüfbar macht und die hergeleitete Gleichung an sämtlichen Vorgaben rückprüfen lässt. Ihr Transfer auf eine fallende Gerade ohne Punkt auf der y-Achse wahrt die Zielgrenze und verlangt mehr als einen bloßen Zahlentausch.",
+      "rationaleEn": "Both independent blind reviews confirm that the three starting configurations – slope and y-intercept, slope and one point, and two distinct graph points – are variants of the same atomic competence and are described precisely and with semantic parity in the current German and English text. The revised canonical text is therefore retained unchanged. The first round is selected for the understanding evidence because it connects the meaning of m as constant change and b as the function value at x = 0 with the corresponding parameter determination, makes all three data configurations explicitly assessable, and requires the derived equation to be checked against every given condition. Its transfer to a decreasing line with neither point on the y-axis remains within scope and requires more than a mere number change."
+    },
+    {
+      "decisionId": "mathematik-b024a-linear-functions-follow-up-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:364e15caa35025390522e5fe76510dec265ef94175aa98ad75fc49fcddc79621",
+      "pageFingerprint": "sha256:07afe95e492674be0e39c652e42439ec78ba2f1af57a5104759124e82c5cbbd4",
+      "goalReviewContextFingerprint": "sha256:2aa01463d9606f82748719087bdec0c88fdd1a3589495d51415d7a2e8e3626f9",
+      "finalText": {
+        "titleDe": "Nullstellen linearer Funktionen berechnen",
+        "titleEn": "Calculate roots of linear functions",
+        "descriptionDe": "Die lernende Person kann die Nullstelle einer linearen Funktion rechnerisch bestimmen und als Schnittpunkt des Graphen mit der x-Achse deuten.",
+        "descriptionEn": "The learner can calculate the root of a linear function and interpret it as the intersection of the graph with the x-axis."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b024a-a-002-4acca6ef",
+          "recordDigest": "sha256:071aff846e30ea2e5eccac3dc2c20b39db8ab389e88bbd4a5e50ab54e4052b0d"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216.goal-002",
+          "recordDigest": "sha256:a117ef946294eea93baa87561a6eaba17a3fb150cdd5da9eade00a15b49aeaae"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass rechnerisches Bestimmen und Deuten als Schnittpunkt mit der x-Achse einen einzigen kohärenten Zusammenhang bilden und in beiden aktuellen Sprachfassungen klar, korrekt und atomar gefasst sind. Der revidierte kanonische Text bleibt deshalb unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie die Äquivalenz von f(x₀) = 0 und dem Graphenpunkt (x₀|0), die Eindeutigkeit im nicht konstanten linearen Fall, nachvollziehbares äquivalentes Umformen und die Einsetzprobe geschlossen verbindet. Der Transfer auf eine fallende oder anders dargestellte Funktion und auf die Bedeutung eines verschwindenden Sachwerts prüft denselben Zusammenhang in einer substanziell veränderten Darstellung beziehungsweise einem neuen Kontext.",
+      "rationaleEn": "Both independent blind reviews confirm that calculating a root and interpreting it as the intersection with the x-axis form one coherent relationship and are stated clearly, correctly, and atomically in both current language versions. The revised canonical text is therefore retained unchanged. The first round is selected for the understanding evidence because it forms a complete chain from the equivalence between f(x₀) = 0 and the graph point (x₀, 0), through uniqueness in the non-constant linear case and traceable equivalent transformations, to verification by substitution. Transfer to a decreasing or differently represented function and to the meaning of a quantity becoming zero assesses the same relationship in a substantially changed representation or new context."
+    },
+    {
+      "decisionId": "mathematik-b024a-linear-functions-follow-up-synthesis-openai-codex-20260902-decision-003",
+      "goalId": "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9bcb76936bf40d94756af6ad009a589b6696b7283dae802c49ff8648a20078c4",
+      "pageFingerprint": "sha256:1f6b4816377a5a10e2f1ba45c46b33c3436a5ef9e281e23938eb430e31ff4dc6",
+      "goalReviewContextFingerprint": "sha256:2e22c9ce88ca2a95e7d3fb31b30b2356934919b71c5e706722526238031367b3",
+      "finalText": {
+        "titleDe": "Schnittpunkte zweier Geraden berechnen",
+        "titleEn": "Calculate intersections of two lines",
+        "descriptionDe": "Die lernende Person kann den Schnittpunkt zweier Geraden rechnerisch bestimmen und das Ergebnis als gemeinsamen Punkt beider Graphen deuten.",
+        "descriptionEn": "The learner can calculate the intersection of two lines and interpret the result as the common point of both graphs."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b024a-a-003-2f598bc7",
+          "recordDigest": "sha256:79da6276e2ee70fa1ae58306a65960d98991b86f158030c39510b1295d51563f"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216.goal-003",
+          "recordDigest": "sha256:f1712fe73d69a07a6cae552ed6e56797340dc9088b7bf22788c51c3071b56a5d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass das rechnerische Bestimmen eines Geradenschnittpunkts und seine Deutung als gemeinsamer Punkt beider Graphen untrennbare Teile einer atomaren Kompetenz sind und der aktuelle deutsche und englische Text fachlich gleichwertig formuliert ist. Der revidierte kanonische Text bleibt deshalb unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie die gemeinsame Erfüllung beider Gleichungen, das Gleichsetzen der Funktionswerte, die Bestimmung beider Koordinaten und die doppelte Einsetzprobe vollständig verkettet und den betrachteten Fall ausdrücklich auf zwei eindeutig schneidende Geraden begrenzt. Der Transfer auf zwei positive Steigungen oder eine zunächst umzuformende Gleichung prüft die Struktur unabhängig von der vertrauten Bildform, ohne die spätere Klassifikation paralleler oder identischer Geraden vorwegzunehmen.",
+      "rationaleEn": "Both independent blind reviews confirm that calculating the intersection of two lines and interpreting it as the common point of both graphs are inseparable parts of one atomic competence, and that the current German and English text is technically equivalent. The revised canonical text is therefore retained unchanged. The first round is selected for the understanding evidence because it fully links simultaneous satisfaction of both equations, equating the function values, determining both coordinates, and checking by substitution in both equations, while explicitly limiting the assessed case to two lines with a unique intersection. Transfer to two positive slopes or an equation that first needs rearranging tests the structure independently of the familiar visual form without pre-empting the later classification of parallel or coincident lines."
+    }
+  ],
+  "manifestFingerprint": "sha256:0d3692ce472ffb6020041868914af9a08bf91664e13449c9363e3ef429871305"
+}

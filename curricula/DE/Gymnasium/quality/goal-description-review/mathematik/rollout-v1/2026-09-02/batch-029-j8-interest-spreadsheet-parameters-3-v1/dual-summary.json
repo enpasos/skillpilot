@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e0f808dbc9a457da593ab1db40c0324804a8903341413dd7ba45802a76175007",
+  "reviewInputFingerprint": "sha256:5befcd939b61eb2ba51b9d7330e1814b9ffc713dba0c4c7db7c90ed25705a1fb",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-b029-round-b-gpt5-subject-review-20260902"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "firstRecordId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.record-001",
+      "secondRecordId": "mathematik-b029-round-b-record-001",
+      "firstRunId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-b029-round-b-gpt5-subject-review-20260902",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "firstRecordId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.record-002",
+      "secondRecordId": "mathematik-b029-round-b-record-002",
+      "firstRunId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-b029-round-b-gpt5-subject-review-20260902",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "firstRecordId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.record-003",
+      "secondRecordId": "mathematik-b029-round-b-record-003",
+      "firstRunId": "mathematik-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-3-v1-20260902-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-b029-round-b-gpt5-subject-review-20260902",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

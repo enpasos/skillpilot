@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-resolution-b615830a-e8b0-5754-81e0-99da98343a8d",
+  "goal": {
+    "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b7fd41467577af57ba1137045b65bf277b264c84ee55810adae49bd0209153ba",
+    "pageFingerprint": "sha256:3728f38687691b12179856075d11c9ca73f38afdbc1351888d55234a2c334105",
+    "goalReviewContextFingerprint": "sha256:4a0739967e1dfb70c321bd272567b8a0d6c9318d35ee548c35f6a826cadced31",
+    "finalText": {
+      "titleDe": "Signifikante Stellen korrekt verwenden",
+      "titleEn": "Use Significant Figures Correctly",
+      "descriptionDe": "Die lernende Person kann Rechenergebnisse passend zur angegebenen Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten auf eine sinnvolle Zahl signifikanter Stellen runden, Zwischenwerte mit ausreichender Genauigkeit weiterführen und Scheingenauigkeit vermeiden.",
+      "descriptionEn": "The learner can round calculated results to a meaningful number of significant figures consistent with the stated precision or uncertainty of the input data, carry intermediate values with sufficient precision, and avoid false precision."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-a",
+      "campaignDigest": "sha256:f0f34e8d1507c7aece8a6407ad5072798cbc1e8c63b2da6d783fafd4a8e18d3d",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:4a0739967e1dfb70c321bd272567b8a0d6c9318d35ee548c35f6a826cadced31",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-a.batch-001",
+      "runId": "openai-gpt-5.6-sol-physics-b029r-round-a-20260902",
+      "runManifestDigest": "sha256:4e9abd18d0b45e022a9c629fa1fcc1005189241950703cc06bd40a22c5cc2205",
+      "resultsDigest": "sha256:be51edcc8e9ce1c02de9a8defa26a5ae7507ac5c78820d080112e550eac95d29",
+      "recordId": "openai-gpt-5.6-sol-physics-b029r-a-b615830a",
+      "recordDigest": "sha256:326500d200ca90f906afa2ddd1081d8890e1da16679091ce565f3c7ff9e51261"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-b",
+      "campaignDigest": "sha256:671399d8c2ad1d1a3caf521b27d35bd592eca7d8d6584e7a81d62f213d724fa2",
+      "roundId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:d9a1a7d7a342cc4cdbcbbe24250ab48249927214f3b2a0b3c6b58a89978e3eb6",
+      "goalReviewContextFingerprint": "sha256:4a0739967e1dfb70c321bd272567b8a0d6c9318d35ee548c35f6a826cadced31",
+      "batchId": "physik-rollout-v1-batch-029r-e-thermodynamics-modeling-revised-8-v1-20260902-first-pass-b.batch-001",
+      "runId": "openai-gpt-5-physik-b029r-round-b-20260902",
+      "runManifestDigest": "sha256:b085440b9e8d1f9129f17b5d1e056b2f39406eeba51f4b0d2c5528c8e0afab2a",
+      "resultsDigest": "sha256:60ca8bd8a20dc2a293d42d1120af50aec90b73d1c55ef7616e1ae12bafaa59e3",
+      "recordId": "physik-b029r-b615830a-round-b-20260902",
+      "recordDigest": "sha256:dcae50ea72e729bbff69d3518553056a16a2e3372cddd0048640055269d12e5d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2c5b81a7a8c3935f904309c8ec8562ee3d81424f4c8e557b8f6423990b47b9a3"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:3331b694a70e69b2f2555c29ad8fb204497e99b7f9ca4981aa1cae6a898463c5",
+    "manifestFingerprint": "sha256:8ce1d6b69bc042508a5db0dbb776bd5bd204b4967e76246f14040d3fce01f06d",
+    "decisionId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-007"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b029r-thermodynamics-modeling-final-synthesis-openai-codex-20260902-decision-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Physics B029r subject synthesis candidate",
+    "synthesizedAt": "2026-09-02T14:55:33.000Z",
+    "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen mit KEEP, dass der Zieltext signifikante Stellen an die Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten bindet, ausreichend genaue Zwischenwerte fordert und Scheingenauigkeit ausdrücklich vermeidet. Runde A wird für die Understanding Evidence gewählt, weil sie die epistemische Bedeutung der Ergebnisziffern, Schutzstellen, wissenschaftliche Notation und ausdrücklich angegebene Unsicherheiten besonders breit prüfbar macht; Runde B bleibt als unabhängige Bestätigung vollständig gebunden.",
+    "rationaleEn": "Both independent blind reviews confirm with KEEP that the goal text ties significant figures to the precision or uncertainty of the input data, requires sufficiently precise intermediate values, and explicitly avoids false precision. Round A is selected for the understanding evidence because it makes the epistemic meaning of reported digits, guard digits, scientific notation, and explicitly stated uncertainties especially broadly assessable; Round B remains fully bound as independent confirmation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht signifikante Stellen als Ausdruck der durch Eingangsdaten und Messunsicherheit begrenzten Aussagekraft eines Ergebnisses, nicht als bloße Schreibregel; vorzeitiges Runden kann das Endergebnis zusätzlich verfälschen, während zu viele ausgegebene Stellen Scheingenauigkeit erzeugen.",
+      "essentialUnderstandingEn": "The learner understands significant figures as expressing the limited information warranted by input data and measurement uncertainty, not merely as a formatting rule; premature rounding can further distort the final result, whereas reporting too many digits creates false precision.",
+      "observablePerformanceDe": "Für eine Rechnung mit unterschiedlich genau angegebenen Messwerten begründet die lernende Person die angemessene Ergebnisgenauigkeit aus den Eingangsdaten beziehungsweise ihrer Unsicherheit, führt Zwischenwerte mit Reserve weiter, rundet erst das Endergebnis und gibt es mit Einheit ohne nicht gerechtfertigte Stellen an.",
+      "observablePerformanceEn": "For a calculation using measurements reported with different precision, the learner justifies the appropriate result precision from the input data or their uncertainty, carries guard digits in intermediate values, rounds only the final result, and reports it with a unit and no unjustified digits.",
+      "transferExpectationDe": "Bei einer neuen Datendarstellung mit Dezimalschreibweise, wissenschaftlicher Notation oder ausdrücklich genannten Unsicherheiten erkennt die lernende Person unabhängig, welche Stellen aussagekräftig sind, und korrigiert ein Ergebnis, das durch frühes Runden oder zu viele Ziffern irreführend dargestellt ist.",
+      "transferExpectationEn": "For a new data presentation using decimal notation, scientific notation, or explicitly stated uncertainties, the learner independently determines which digits are warranted and corrects a result made misleading by premature rounding or by too many reported digits."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0dcc69211b09052da71de9b9cf24cfc99bc4175f0a9ea09bbfe2d1e0f4b47c7b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a03189432550275b78a3ebd550bdab2dcb5342f2bcc87b9e8524a83a1706fe74"
+}

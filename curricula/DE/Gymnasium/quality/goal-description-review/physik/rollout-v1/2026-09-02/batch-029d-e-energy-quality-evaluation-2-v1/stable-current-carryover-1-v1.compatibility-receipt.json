@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b029d-stable-current-carryover-1-v1-20260902",
+  "purpose": "Hash-bound carryover of exactly the one consensus-stable B029D goal while the other source-batch goal receives fresh post-revision blind review.",
+  "source": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1.config.json",
+    "configSha256": "sha256:bb3f2f6f93e341194fc47e971375a518185c241d813adc659fbf0834135d79b6",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/batch-manifest.json",
+    "batchManifestSha256": "sha256:24d24403e9cadfbf6f87933c08fda046d65953e9d193369dfce10299e2aed34f",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/dual-summary.json",
+    "dualSummarySha256": "sha256:a22b7356bbbb81cc7e82c29e5976108acccd425f898b8bd1f72779f13d2a25fe",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "semanticKindLedgerSha256": "sha256:80f35c789db98eb815c0a571d3511610591968912ab9f12af5fc2d86cb875cb8",
+    "curriculumAtomicDenominator": 461,
+    "roundA": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/round-a/results/physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "recordsSha256": "sha256:428dc2f33885c6f2d5fb2f6d216bf7aac19e8549afacf149a29db6bbf2b068e0",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/round-a/results/physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-a.batch-001.run.json",
+      "runSha256": "sha256:4471939240ed385bb391a763b2cb793f414ba0b09cc54d17c1c6c539d38762e5"
+    },
+    "roundB": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/round-b/results/physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "recordsSha256": "sha256:827fc4e30e0b3fff2bcfb198974ee83eeea67ed5820301c8e8262e1166b7554d",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/round-b/results/physik-rollout-v1-batch-029d-e-energy-quality-evaluation-2-v1-20260902-first-pass-b.batch-001.run.json",
+      "runSha256": "sha256:cefce7f689e22707818dab89d40da2e0a9549292254e59ecbbe0b752e97e2331"
+    }
+  },
+  "currentCanonicalLandscape": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "sha256:388e26ea071727043ad5a1f95f955ddf25923e0b038634432ecfb1786628fc10"
+  },
+  "compatibilityRebase": {
+    "status": "accepted_exact_stable_page_rebase",
+    "reason": "The accepted B029 wording revisions change the full Physics Atlas and this source subset, while the claimed stable goal page remains byte-exact in the rebuilt current Atlas subset.",
+    "sourceBaseBookDigest": "sha256:87cffbb8d1d6f03e1eb1513568eba051ac3e8a618c1d4a0633905db99660937f",
+    "sourceSubsetBookDigest": "sha256:8a74c7534e4d3c318d13bee32caf7c8186c29e6c67f9be6f5100087a1e77669a",
+    "currentBaseBookDigest": "sha256:c1d8e18c06d7c0f96a59f400879a5224460c1875206aff0e7da9d2472c50cd29",
+    "currentSubsetBookDigest": "sha256:05c98d28cd6ee54012e33a2b57d831dc2d0de7bc0f4b00c66e17f43dd4cf6e16",
+    "postRevisionSnapshot": {
+      "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029r-e-thermodynamics-modeling-revised-8-v1/batch-manifest.json",
+      "batchManifestDigest": "sha256:3154337f07268f417c49a806595d362f940d0f5eea5beef7bcdad427875f0a89",
+      "baseBookDigest": "sha256:c1d8e18c06d7c0f96a59f400879a5224460c1875206aff0e7da9d2472c50cd29",
+      "bookModelDigest": "sha256:3d18cc91b9444418aece3f26eabf60b09d2afa653347699b395b968694bd3f5c",
+      "bundleFingerprint": "sha256:81950ef6bc43e1ed3e7f58a89bc1842ba57493e725504dd1e53221242b5b4dd7"
+    },
+    "fullAtlasDigestChangedAtPostRevisionSnapshot": true,
+    "currentSubsetDiffersFromSourceSubset": true,
+    "stableGoalPage": {
+      "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+      "sourceGoalFingerprint": "sha256:78934d067c473ced1313861c72f0aacaab6fd8bb44407063befcd0fad188d047",
+      "currentGoalFingerprint": "sha256:78934d067c473ced1313861c72f0aacaab6fd8bb44407063befcd0fad188d047",
+      "sourcePageFingerprint": "sha256:9f85aeadd84f30644a1776828085137103c5349d54f573c2222d0e9db4b9fa4f",
+      "currentPageFingerprint": "sha256:9f85aeadd84f30644a1776828085137103c5349d54f573c2222d0e9db4b9fa4f",
+      "exactPageContext": true
+    }
+  },
+  "currentCanonicalContext": {
+    "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+    "canonicalContext": {
+      "shortKey": null,
+      "phase": null,
+      "core": null,
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "competencyRefs": [],
+      "sourceRef": null,
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticAtomic": null,
+      "semanticKind": null,
+      "applicabilitySemantics": {
+        "fromRequires": null,
+        "mappingInheritance": null,
+        "projection": null
+      },
+      "requires": [
+        "f7f2c254-1663-5861-bed7-a32c00495b19",
+        "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+      ],
+      "contains": [],
+      "examples": []
+    },
+    "fingerprint": "sha256:293d9986d1648d26abf3807700c3802e19d229aa606954bf6ae79696cea8df5e"
+  },
+  "claimedGoalIds": [
+    "aed9161b-ddc4-559c-be8f-baeeddf224f3"
+  ],
+  "explicitlyExcludedFreshGoalIds": [
+    "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73"
+  ],
+  "adjudication": {
+    "currentTextKeptGoalIds": [
+      "aed9161b-ddc4-559c-be8f-baeeddf224f3"
+    ],
+    "adoptedRevisionFreshGoalIds": [
+      "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73"
+    ]
+  },
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-1-v1.json",
+  "synthesisManifestDigest": "sha256:9668f13fb6aed21189b788c28e4249cbe3a9237c05b43ff9363bae2557459b3d",
+  "synthesisManifestFingerprint": "sha256:d6896e2c3f97a0d4737681c79e8730cfa38bc4ca5360a1ff52e3cc25c52c2128",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-1-v1.json",
+  "resolutionIndexDigest": "sha256:2b2feb124f66e69d2c7b027377a3c5c398a0951fc54aeb79f27276153a57348c",
+  "safeguards": {
+    "sourceRunsRecordsAndDualSummaryByteBound": true,
+    "twoIndependentKeepDecisionsRequired": true,
+    "selectedEvidenceRoundMustBeKeep": true,
+    "currentBilingualTextAndDirectContextRequired": true,
+    "currentAtlasStablePageRequiredByteExact": true,
+    "stableAndFreshScopesDisjointAndComplete": true,
+    "canonicalLandscapeAndSemanticKindLedgerByteBound": true,
+    "openAiReviewFreezeRequiredBeforeWrite": true
+  },
+  "materializationPlanSha256": "sha256:09f54c500eff82c51c3c463be2130f8c1470a97d4916b2b4c13788200f9c63b0"
+}

@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `f6574cdc-e29c-5a8f-a009-9f28b3bcf9be`
 - Titel: Tilgung oder Sparrate tabellarisch näherungsweise bestimmen
-- Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation eine Tilgung oder Sparrate in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.
+- Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation einen regelmäßigen Tilgungsbetrag oder eine regelmäßige Sparrate für ein vorgegebenes Finanzziel näherungsweise bestimmen und anhand der berechneten Restschuld- oder Guthabenentwicklung im Kontext prüfen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Tilgung oder Sparrate tabellarisch näherungsweise bestimmen
-Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation eine Tilgung oder Sparrate in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.
+Beschreibung: Die lernende Person kann mit einer Tabellenkalkulation einen regelmäßigen Tilgungsbetrag oder eine regelmäßige Sparrate für ein vorgegebenes Finanzziel näherungsweise bestimmen und anhand der berechneten Restschuld- oder Guthabenentwicklung im Kontext prüfen.
 
 Zusatzanweisung:
 Pflichtinhalt:

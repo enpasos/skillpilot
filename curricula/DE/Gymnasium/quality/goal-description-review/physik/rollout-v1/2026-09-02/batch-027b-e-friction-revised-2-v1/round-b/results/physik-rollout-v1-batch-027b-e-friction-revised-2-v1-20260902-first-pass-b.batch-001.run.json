@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001.openai-gpt-5-6-subject-review",
+  "campaignId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5c6324e0cabbeed1983523f43376f961c8a2b54db73cca11e5333f8a59520518",
+  "bundleFingerprint": "sha256:83312137d45c8c11123f48e991b9d7c18cd92b215f4425cccbe7074f84d4fa75",
+  "bookDigest": "sha256:3650eb4ecf7a76a8b643a58b837d7be9d3675be398ab74288e0831a7dd4e5216",
+  "provider": "openai",
+  "model": "gpt-5.6",
+  "modelVersion": "gpt-5.6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:afefeae4fd3cb0434ffd66c59c22ea483bfe79ed81e9ab06519b8816ae54a9bc",
+  "independenceGroupId": "physik-rollout-v1-batch-027b-e-friction-revised-2-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a7b89f4e7df0714a782f7552c7d8e3b177084f2b34a64e4920a7da5dd4019cda"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5c6324e0cabbeed1983523f43376f961c8a2b54db73cca11e5333f8a59520518"
+    }
+  ],
+  "startedAt": "2026-09-02T10:00:00+02:00",
+  "completedAt": "2026-09-02T10:15:00+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:c64bacd3cb85d1d1d21afcc60acfb9dc43803ca6bb842b751d0975c5452d0909",
+  "toolchainVersion": "codex-cli"
+}

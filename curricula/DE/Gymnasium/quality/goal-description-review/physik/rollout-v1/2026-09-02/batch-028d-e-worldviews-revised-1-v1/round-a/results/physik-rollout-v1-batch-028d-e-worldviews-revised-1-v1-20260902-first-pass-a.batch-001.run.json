@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b028d-20260902-round-a-run-001",
+  "bundleFingerprint": "sha256:6d4f161104e7b0bbca4ec2ddfbf7345c77d1af7207b7c0c9ae7521b1a1ddd0fe",
+  "bookDigest": "sha256:040c45b27e2a146cd225f72b38c5d5f2f48113fe66bcfdadf9fb1bbcb15f37cc",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:859b271bcaec3c6f2ecc041ab43643b5911e918c7c3fbe470b33e5f941c50147",
+  "independenceGroupId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "481ffd56-d585-56fe-b525-ed423e30eed3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:bcf438cf4bd79da4669fc61d1ca5f0d3f8ebc067fe6dccd1bc074becff34a91f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T13:10:00+02:00",
+  "completedAt": "2026-09-02T13:14:50+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:56bf38a5ea9e1478560277db2a2f271c48bcd046c40d2a03a68501eacb4fcdb4",
+  "toolchainVersion": "codex",
+  "campaignId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-028d-e-worldviews-revised-1-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:bcf438cf4bd79da4669fc61d1ca5f0d3f8ebc067fe6dccd1bc074becff34a91f"
+}

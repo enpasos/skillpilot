@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `92d8f398-0c9f-523c-88d7-44165b6b4768`
 - Titel: Massenanziehung qualitativ beschreiben
-- Beschreibung: Die lernende Person kann die gegenseitige Anziehung von Massen in Alltagssituationen beschreiben und erste qualitative Aussagen zur Stärke der Gravitationswirkung machen.
+- Beschreibung: Die lernende Person kann die gegenseitige gravitative Anziehung zweier Massen in Alltagssituationen beschreiben und qualitativ erläutern, dass die Gravitationskraft bei sonst gleichen Bedingungen mit jeder der beiden Massen zunimmt und mit wachsendem Abstand ihrer Mittelpunkte abnimmt.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Massenanziehung qualitativ beschreiben
-Beschreibung: Die lernende Person kann die gegenseitige Anziehung von Massen in Alltagssituationen beschreiben und erste qualitative Aussagen zur Stärke der Gravitationswirkung machen.
+Beschreibung: Die lernende Person kann die gegenseitige gravitative Anziehung zweier Massen in Alltagssituationen beschreiben und qualitativ erläutern, dass die Gravitationskraft bei sonst gleichen Bedingungen mit jeder der beiden Massen zunimmt und mit wachsendem Abstand ihrer Mittelpunkte abnimmt.
 
 Zusatzanweisung:
 Pflichtinhalt:

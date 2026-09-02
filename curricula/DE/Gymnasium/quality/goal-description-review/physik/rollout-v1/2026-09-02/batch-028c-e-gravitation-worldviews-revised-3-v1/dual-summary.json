@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9ba2bb487f08bb04ddaa75332c7c2ef4e457ed3c74d5339971fe08f33a3e999e",
+  "reviewInputFingerprint": "sha256:12de706916ae95db42b3b9e04bf2da6559b032bfa2539a4d3acfdcd1a2d69740",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-a-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-independent-b",
+      "runIds": [
+        "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "firstRecordId": "physik-b028c-a-156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "secondRecordId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3:record:001",
+      "firstRunId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-a-run-001",
+      "secondRunId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+      "firstRecordId": "physik-b028c-a-15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+      "secondRecordId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3:record:002",
+      "firstRunId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-a-run-001",
+      "secondRunId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "481ffd56-d585-56fe-b525-ed423e30eed3",
+      "firstRecordId": "physik-b028c-a-481ffd56-d585-56fe-b525-ed423e30eed3",
+      "secondRecordId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3:record:003",
+      "firstRunId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-a-run-001",
+      "secondRunId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

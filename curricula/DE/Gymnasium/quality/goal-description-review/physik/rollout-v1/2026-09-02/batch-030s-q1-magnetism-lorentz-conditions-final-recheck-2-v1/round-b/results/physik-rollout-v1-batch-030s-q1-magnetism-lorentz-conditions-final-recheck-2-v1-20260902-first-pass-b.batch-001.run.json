@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001.run-001",
+  "campaignId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2da57f48fac3bf3309e73ff6f521546f6e0f43a35c19f98718e52b4e24c3cbd6",
+  "bundleFingerprint": "sha256:6251eb20aa2bef5e00985f88cd2e2bd410471af64d3a6152feacce5d0baf23df",
+  "bookDigest": "sha256:a739ec960e6277a37d55dacb9af5fbeeaf22e5dbee30544d2905322bb2024ef2",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:dc531e96d80a52cdbef1fe4ad48ebe614b0e0df824b20d1236531a507d4a920d",
+  "independenceGroupId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+    "9854589c-5feb-4942-b90f-311ddf36eb78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:39b16a401219d7271056ac756043a478d69602c443f2e8f8fec86dfda560edb7"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:2b9b12a80e5301061200befe14977d97ea35189e7dfd312a8cc3e5fe3db77c88"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:8bf919d0fc727d3b55b22cf448ba97d5d183b9b344c9db7033d80c8cc2bcff9f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2da57f48fac3bf3309e73ff6f521546f6e0f43a35c19f98718e52b4e24c3cbd6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T16:45:18Z",
+  "completedAt": "2026-09-02T16:47:46Z",
+  "status": "completed",
+  "outputDigest": "sha256:bbbfec9aa790464303799283c5826b0c8df7a18515c8bf8538c96a3b2bf5fc33",
+  "toolchainVersion": "goal-description-review-v1"
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b028r-stable2-synthesis-openai-codex-20260902",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Mathematics B028r consensus-stable two carryover synthesis candidate",
+  "synthesizedAt": "2026-09-02T16:14:46.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902",
+    "batchManifestDigest": "sha256:43789adc82da5ef498329a7c12fc42c97732006aa1e54dcf4fa344b24bf19005",
+    "configDigest": "sha256:744a18165747421c8798e2b31e0d8a6c8f1ddfada5b5cd596a309d9daebbcd7f",
+    "bundleFingerprint": "sha256:f28472cb44a61df422950e8f26a4997a2c76a1c1ca9e7c2567518b99934b27cd",
+    "bookDigest": "sha256:8deacb913cbd2b456e6756fbc47d4bb433c3a1639699104b6e294f44b7927931",
+    "reviewInputFingerprint": "sha256:7a455e4bd5db8f5198384428a3c1e0c1309a5515afe4f681c6a513a6f249f8a4",
+    "dualSummaryDigest": "sha256:3e9ce38b07b721214265c155cce1ab1fc2ec81b3c8274981550ae89e360bf3f4",
+    "canonicalLandscapeDigest": "sha256:80d3859390be46a9d9012839432688814258bff8cf09b0a5b6b17956a8db78cf"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-a",
+      "campaignDigest": "sha256:b44ccfee18803b7c7998640e07bee1ce4e13c98f540af97a1255e57019215277",
+      "roundId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:7a455e4bd5db8f5198384428a3c1e0c1309a5515afe4f681c6a513a6f249f8a4",
+      "batchId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a76c5029c3348e4f29c46706df356704b3e6695400db5f402230e92b43f4aed5",
+      "runId": "mathematik-b028r-20260902-first-pass-a-codex",
+      "runManifestDigest": "sha256:36b60bfbd43e0be7011ef9e05a4e55e5d18467b90553232918062697a4b11d7a",
+      "resultsDigest": "sha256:561fe3dc405ea4c604cb78972c37c225bdc7343ae4b4f253685811ce252c9d46"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-b",
+      "campaignDigest": "sha256:798e5520ea22203b50c862dab2d55b4941f80df0d88b702371105347ab58f6be",
+      "roundId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:7a455e4bd5db8f5198384428a3c1e0c1309a5515afe4f681c6a513a6f249f8a4",
+      "batchId": "mathematik-rollout-v1-batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1-20260902-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6e64d2a659c4b68e1a446437bfb6bd53140dc5c55bec6c584ec239cbc217754c",
+      "runId": "mathematik-b028r-recheck3-first-pass-b-codex-run-001",
+      "runManifestDigest": "sha256:2e9894fed974838db59abf0b95654e6ba1c479955053887f5c7833a0736a861d",
+      "resultsDigest": "sha256:bc17062d4f88b76ffb66344a877bc2435f4a9b953c40f4c2cfbab0331d3980f2"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b028r-stable2-synthesis-openai-codex-20260902-decision-001",
+      "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2ec004288c6a0a0b1879a2e2d1622e6d31e277a49a02d1f72606b0de124c82e1",
+      "pageFingerprint": "sha256:f93309996a00e2fbef42c37653c332a869551052129b5c0d2237cd4a2c8e6e12",
+      "goalReviewContextFingerprint": "sha256:f634ea2a227e65e30689bf87606037a9187a32ee2d652dd2ae0c3821eb7c874a",
+      "finalText": {
+        "titleDe": "Lineare Gleichungssysteme mit zwei Variablen lösen und Lösungsvielfalt untersuchen",
+        "titleEn": "Solve systems of linear equations with two variables and examine solution multiplicity",
+        "descriptionDe": "Die lernende Person kann lineare Gleichungssysteme mit zwei Variablen grafisch und rechnerisch lösen, Fragen der Lösbarkeit und Lösungsvielfalt untersuchen und die Ergebnisse fachsprachlich begründen.",
+        "descriptionEn": "The learner can solve systems of linear equations with two variables graphically and algebraically, investigate solvability and solution multiplicity, and justify the results using correct terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b028r-20260902-first-pass-a.001",
+          "recordDigest": "sha256:8aae443a4e82414bb58ad687c44628ea8240a115601b78968378d8b83999d8d2"
+        },
+        "second": {
+          "recordId": "mathematik-b028r-recheck3-b-e42c208d",
+          "recordDigest": "sha256:2e5dc7b959bc41521c10b005d3acc3a25a7f7b7cdfc02046cbed509949a3a8c8"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle Kompetenz zu linearen Gleichungssystemen und ihrer Lösungsvielfalt. Runde B wird ausgewählt, weil sie den Abgleich von algebraischer und grafischer Darstellung mit der Einordnung in eine, keine oder unendlich viele Lösungen besonders geschlossen operationalisiert; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current competency concerning systems of linear equations and solution multiplicity. Round B is selected because it particularly coherently operationalizes the reconciliation of algebraic and graphical representations with classification into one, no, or infinitely many solutions; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b028r-stable2-synthesis-openai-codex-20260902-decision-002",
+      "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fa64b47113afd0a603fda05f724b14d3c3476f8efd699e494b6787c54e8d5dd5",
+      "pageFingerprint": "sha256:3bd9df5808603cbb143e006007c8cda5490a724f09ed4393bd2821bf41baa0bc",
+      "goalReviewContextFingerprint": "sha256:9fdabb672176bef1483048a34437389c629205bde3b355777bea540f7cefde0d",
+      "finalText": {
+        "titleDe": "Bruchgleichungen lösen und als Schnittprobleme deuten",
+        "titleEn": "Solve fractional equations and interpret them as intersection problems",
+        "descriptionDe": "Die lernende Person kann Bruchgleichungen unter Angabe und Beachtung der gemeinsamen Definitionsmenge rechnerisch lösen und ihre Lösungen in einfachen Fällen als x-Koordinaten der Schnittpunkte der Graphen beider Gleichungsseiten deuten.",
+        "descriptionEn": "The learner can solve fractional equations algebraically while stating and respecting their common domain and, in simple cases, interpret their solutions as the x-coordinates of the intersections of the graphs of both sides."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b028r-20260902-first-pass-a.002",
+          "recordDigest": "sha256:0a5d3319d22864c8663bb286e2e6ac981f9506817ddce61a756aa7cbbebb3357"
+        },
+        "second": {
+          "recordId": "mathematik-b028r-recheck3-b-797ee047",
+          "recordDigest": "sha256:9c02c7cdb35f5dbd850c348cf9a1977f26e633ca0cad2d0f59652e3206f75a49"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die aktuelle Kompetenz zu Bruchgleichungen und ihrer Deutung als Schnittproblem. Runde A wird ausgewählt, weil sie gemeinsame Definitionsmenge, ausgeschlossene Kandidaten und die Zuordnung gültiger Lösungen zu Graphenschnittpunkten besonders klar miteinander verbindet; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current competency concerning fractional equations and their interpretation as intersection problems. Round A is selected because it particularly clearly connects the common domain, excluded candidates, and the correspondence of valid solutions with graph intersections; Round B remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:85ed7f8608008dcf92a3042a2a38082a8711d1c98592bf448730a0d2cbf98f61"
+}

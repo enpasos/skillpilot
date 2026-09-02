@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b031r-q2-oscillations-waves-20260902-round-b-run-001",
+  "campaignId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5567d939a622100df437173c765a38c7208bf93394482bdbe0f0e44db3745458",
+  "bundleFingerprint": "sha256:0231c6c04e96c40dcfbfd4e084e47de9bffbe8bd27c8b5c7d72ad0b5705f71dd",
+  "bookDigest": "sha256:097494ba698b1955d58edc0ecb783037d94dac6232708427a855ab38f48b8a28",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "158e1c19-7ccb-4c8c-931c-b685951ab161",
+    "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+    "85157cf0-7f68-5aea-b375-0f9797008cc9",
+    "f47a7fa0-b929-5264-b038-b83fd682967f",
+    "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+    "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+    "e160acb4-5b88-509e-8055-2653df420c65",
+    "215f5558-562c-5686-b649-931f324c7983",
+    "1c430e0a-b63e-5729-8715-a96a5a68740f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5567d939a622100df437173c765a38c7208bf93394482bdbe0f0e44db3745458"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-02T17:50:00.000Z",
+  "completedAt": "2026-09-02T18:10:00.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:aa0d6276f8d69b2842f0ef6b8bef1cfd25658f829a0a7391a85541d84908b381",
+  "toolchainVersion": "codex-gpt-5"
+}

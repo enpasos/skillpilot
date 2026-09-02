@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-b026a-j8-fractional-expressions-adjudication-20260902-v1",
+  "status": "applied_locally_pending_fresh_dual_review",
+  "appendOnly": true,
+  "adjudicatedAt": "2026-09-02",
+  "adjudicator": "codex-autonomous-ai-adjudication",
+  "humanApprovalClaimed": false,
+  "sourceBindings": {
+    "dualSummary": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026a-j8-fractional-expressions-2-v1/dual-summary.json",
+      "sha256": "sha256:76b31c466050fe0c8b6bec37409db1db121aafd6ce9a03931ba4f3f70a034eb7",
+      "requiresSynthesis": 2
+    },
+    "roundARecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026a-j8-fractional-expressions-2-v1/round-a/results/mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:7a613d777e889d265959e415890e18e4b162ce8125afcf1a46195e8bd90059ed"
+    },
+    "roundARun": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026a-j8-fractional-expressions-2-v1/round-a/results/mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:a67e94ebb81b3f5bdde2f447cc8c98caea98de4c854c3e707ec102a234d11e24"
+    },
+    "roundBRecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026a-j8-fractional-expressions-2-v1/round-b/results/mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:d39cee227c5a22d47c8ed596f768b8aaedbb3db2810f87b5ff1d2e7cbbe8abf0"
+    },
+    "roundBRun": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026a-j8-fractional-expressions-2-v1/round-b/results/mathematik-rollout-v1-batch-026a-j8-fractional-expressions-2-v1-20260902-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:bdcabb9282cc696030cf8101265a248836a54c8434aed59dc727d0ba803c8346"
+    }
+  },
+  "decisions": [
+    {
+      "goalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+      "reviewedGoalFingerprint": "sha256:41ec64f035afe90f95a56633ec9c93f9df743764285fc6866adf1b29d64c1ff8",
+      "decision": "revise_without_split",
+      "descriptionDe": "Die lernende Person kann die Faktor- und Summenstruktur von Bruchtermen erkennen, zur Strukturierung bei Bedarf das Distributivgesetz nutzen, Zähler und Nenner mit demselben Faktor erweitern oder gemeinsame Faktoren kürzen und unter Beachtung der Definitionsbedingungen begründen, warum die Umformungen wertgleich sind.",
+      "descriptionEn": "The learner can identify the factor and sum structure of fractional expressions, use the distributive law when needed to reveal that structure, multiply the numerator and denominator by the same factor or cancel common factors, and, taking domain restrictions into account, justify why the transformations preserve value.",
+      "rationale": "Both operations are inverse applications of one value-preservation invariant. LehrplanPLUS M8.4 deliberately combines structure recognition, expanding, cancelling, the distributive law, and explanation in one competence, and its reviewed mapping to this goal is exact. The split dissent is therefore resolved by sharpening the common invariant rather than creating redundant nodes."
+    },
+    {
+      "goalId": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+      "reviewedGoalFingerprint": "sha256:d8aaa850c42ca10eca697980817195215b1726e3f0d9a958d9b03e258808dad9",
+      "decision": "revise",
+      "descriptionDe": "Die lernende Person kann aus der Faktorstruktur der Nenner einen geeigneten gemeinsamen Nenner bestimmen, jeden Bruchterm mit den fehlenden Faktoren erweitern und unter Beachtung der Definitionsbedingungen die Wertgleichheit der Umformungen begründen.",
+      "descriptionEn": "The learner can use the factor structure of the denominators to determine a suitable common denominator, multiply each numerator and denominator by the missing factors, and, taking domain restrictions into account, justify that the transformations preserve value.",
+      "rationale": "The revision aligns both languages, makes the denominator-factor reasoning and equivalent expansion observable, and avoids imposing an unqualified least-common-polynomial claim that the normative source does not require."
+    }
+  ],
+  "unchangedBoundaries": {
+    "titles": true,
+    "goalIds": true,
+    "graphEdges": true,
+    "applicability": true,
+    "mappingsAndProvenance": true,
+    "assessments": true,
+    "imageBytes": true
+  },
+  "visualizationBindings": {
+    "existingAssetsUnchanged": [
+      {
+        "goalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "sha256": "sha256:8d4244a5475dd5cdaf7b014e59bf9a1ac075935b260383f0264ba85cc1583c6d"
+      },
+      {
+        "goalId": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "sha256": "sha256:0ef9054efef372d20f0b34222f2dd6ff2b0c9f36c687678e433cd5a662964f4a"
+      }
+    ],
+    "compatibilityRationale": "The reviewed images already show factorization, cancellation of common factors only, domain restrictions, value-preserving expansion, and a justified common denominator; the revised descriptions narrow and clarify those same visible concepts."
+  },
+  "followUpBoundary": {
+    "batch": "batch-026c-j8-fractional-expressions-revised-2-v1",
+    "freshIndependentReviewRoundsRequired": 2,
+    "reviewRecordsCreatedHere": false,
+    "positiveUnderstandingEvidenceProfilesCreatedHere": false,
+    "centralStrictResolutionsCreatedHere": false
+  },
+  "canonicalApplication": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "sha256:8b1e32e16cf67fd408c9b5fb46108d259cc07ac621dab3032d2c562e43b129db"
+  }
+}

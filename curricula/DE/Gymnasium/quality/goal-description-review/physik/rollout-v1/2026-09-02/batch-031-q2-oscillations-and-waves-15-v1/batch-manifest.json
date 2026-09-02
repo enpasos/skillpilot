@@ -1,0 +1,68 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1.config.json",
+  "configDigest": "sha256:5609e6989d5fdd0dd49136a88a79f3e7068165d719a4df801626cc8d3f7c5fcc",
+  "goalIds": [
+    "d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "158e1c19-7ccb-4c8c-931c-b685951ab161",
+    "68020906-e615-462e-a56f-dd1ccc14b8d7",
+    "9dba2826-b179-59f0-8d91-5916079e5abe",
+    "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+    "85157cf0-7f68-5aea-b375-0f9797008cc9",
+    "f47a7fa0-b929-5264-b038-b83fd682967f",
+    "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+    "d5772db3-120c-5c37-ab46-2336d02236b0",
+    "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+    "e160acb4-5b88-509e-8055-2653df420c65",
+    "215f5558-562c-5686-b649-931f324c7983",
+    "1c430e0a-b63e-5729-8715-a96a5a68740f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:41652cfebefa09a9a4cf1a114f727af9e594b896fd91d5266a64bc34fdbe3f52"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d3a458768d02c7748d5b24689fd84adb084b239488fb05832c67b6281c638a82",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:786da9aa4eb24dbf080496a80d538f5b01db92510c860c7ae1d5c3b528cda517",
+    "reviewInputFingerprint": "sha256:2e6809f41ed0c589fdaa2156b5e40665bf85e886fb4c0fb5e0a792277b2ec969",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-a",
+        "campaignDigest": "sha256:c3eed37aab06f514113742cd61c3991e4283ef5190f70b196c8c3f0f2a04cf15",
+        "roundId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-independent-a",
+        "batchId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:67e50b6cf342f522251545eacba37b8ddd842de939121506c90bfe0a18b63e60"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-b",
+        "campaignDigest": "sha256:56349bea141196e2f1eb0010784d3668248fa36bd86b62173cb2284377ee893f",
+        "roundId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-independent-b",
+        "batchId": "physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:bfaae40f5aa789fc247f0c8d2262a4b7524a8487f630a58f4cb2341a15afa5cf"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

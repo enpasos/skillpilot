@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-resolution-325771e1-602d-4bca-a199-a8f39a2d3dee",
+  "goal": {
+    "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:88d34b69f1855f319672c01a36c2ac631a027b23e9853e6263a21aab3c83d7b9",
+    "pageFingerprint": "sha256:8594bf0eda07b59c60c4db2518e49a2083efd116dbad621aa9ebda24ab7ce694",
+    "goalReviewContextFingerprint": "sha256:2a70e76aac38ab053f65b4443af84c53fc70a00a747cc69eb95fc167dc1f4012",
+    "finalText": {
+      "titleDe": "Lineare Gleichungen systematisch lösen",
+      "titleEn": "Solve linear equations systematically",
+      "descriptionDe": "Die lernende Person kann lineare Gleichungen mit Äquivalenzumformungen systematisch lösen, Lösungswege begründen und Ergebnisse durch Einsetzen prüfen.",
+      "descriptionEn": "The learner can solve linear equations systematically using equivalent transformations, justify solution paths, and check results by substitution."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-a",
+      "campaignDigest": "sha256:6cf9de86cacc74e5809b47f208483c6a2d11d35b4fd172c4f4baa5ad26d46a68",
+      "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-a",
+      "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+      "goalReviewContextFingerprint": "sha256:2a70e76aac38ab053f65b4443af84c53fc70a00a747cc69eb95fc167dc1f4012",
+      "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-a.batch-001",
+      "runId": "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol",
+      "runManifestDigest": "sha256:d64753c7b43f748754edc9cfbeab5dc0b650afdb97fb1b09c2ca11865589a2e2",
+      "resultsDigest": "sha256:99c7f1e586ccdae60f771b8c142c9148edd261e093696ca49c1a969964dde098",
+      "recordId": "mathematik-b021-round-a-blind-20260902-gpt-5-6-sol.record-001",
+      "recordDigest": "sha256:f8dd1ae8f1d21962ff1aedb9e038cddc978744434d9c259d133c3ad97283046b"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-b",
+      "campaignDigest": "sha256:29b770b0438986eda032d942afb3c0913e19d280268f818a3332ebc613e333c4",
+      "roundId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-independent-b",
+      "reviewInputFingerprint": "sha256:09978ce59a37d48b55cf8cf4c13c4c1b58997fd5b50727524a9ddede8f491b54",
+      "goalReviewContextFingerprint": "sha256:2a70e76aac38ab053f65b4443af84c53fc70a00a747cc69eb95fc167dc1f4012",
+      "batchId": "mathematik-rollout-v1-batch-021-j7-linear-equations-1-v1-20260902-first-pass-b.batch-001",
+      "runId": "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra",
+      "runManifestDigest": "sha256:d007bcfc29b4480e8b4d90148420587c377066a3d604dd3a14a519ec80b974c0",
+      "resultsDigest": "sha256:2234e92e1bc89aaffd8c90e609be7e09b3b7c19fc2829a537a7fcfa91c07a5c5",
+      "recordId": "mathematik-b021-round-b-blind-20260902-gpt-5-6-terra.record-001",
+      "recordDigest": "sha256:8d796ca10adb55911f4189308f77876f71101145c41af09316c6a0e0447aabd9"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:a796cb648269e733b3bfcd3caf600aa0faf472ac017362616035646b0ae094a7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-b021-linear-equations-synthesis-openai-codex-20260902",
+    "manifestDigest": "sha256:bbaf0bb6c505c5ce778f05ba234c41021598ade609b8710efdaaa4c20f0eab5c",
+    "manifestFingerprint": "sha256:9ce4720160cc75651754a20c05abeda678d5074a33a0645083801a0e34c0fe47",
+    "decisionId": "mathematik-b021-linear-equations-synthesis-openai-codex-20260902-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b021-linear-equations-synthesis-openai-codex-20260902-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex B021 mathematics subject synthesis candidate",
+    "synthesizedAt": "2026-09-02T05:42:34.000Z",
+    "rationaleDe": "Beide unabhängigen Blindreviews bestätigen, dass systematisches Lösen, Begründung der äquivalenzerhaltenden Schritte und Einsetzprobe eine kohärente Kompetenz bilden und in beiden Sprachfassungen bereits klar benannt sind. Der kanonische Text bleibt deshalb unverändert. Für die Evidence wird die etwas vollständigere erste Runde ausgewählt, weil sie neben Variablen auf beiden Seiten auch Klammern und rationale Zahlen als echte Variationsachsen des Transfers bindet; die zweite, ebenfalls gültige Fassung bleibt als alternative Akzentsetzung dokumentiert.",
+    "rationaleEn": "Both independent blind reviews confirm that systematic solving, justification of solution-preserving transformations, and checking by substitution form one coherent competence and are already stated clearly in both language versions. The canonical text is therefore retained. The slightly more complete first-round evidence is selected because it binds variables on both sides, parentheses, and rational numbers as genuine transfer variation axes; the likewise valid second formulation remains documented as an alternative emphasis.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass eine Äquivalenzumformung die Lösungsmenge einer Gleichung erhält, weil auf beide Seiten dieselbe zulässige Operation angewendet wird, und dass die Variable durch eine begründete Folge solcher Umformungen isoliert werden kann.",
+      "essentialUnderstandingEn": "The learner understands that an equivalent transformation preserves an equation's solution set because the same permissible operation is applied to both sides, and that the variable can be isolated through a justified sequence of such transformations.",
+      "observablePerformanceDe": "Die lernende Person löst selbstständig eine lineare Gleichung, benennt und begründet jeden Umformungsschritt anhand der erhaltenen Gleichheit und prüft den gefundenen Wert durch Einsetzen in die Ausgangsgleichung.",
+      "observablePerformanceEn": "The learner independently solves a linear equation, identifies and justifies each transformation step in terms of preserving the equality, and checks the resulting value by substituting it into the original equation.",
+      "transferExpectationDe": "In einer neuen linearen Gleichung, bei der die Variable auf beiden Seiten vorkommt und Klammern oder rationale Zahlen eine andere Reihenfolge der Umformungen erfordern, wählt und begründet die lernende Person einen geeigneten Lösungsweg und prüft die Lösung in der ursprünglichen Gleichung.",
+      "transferExpectationEn": "For a new linear equation in which the variable occurs on both sides and parentheses or rational numbers require a different order of transformations, the learner chooses and justifies a suitable solution path and checks the solution in the original equation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a4601bf28c4df6779452b6a3bd99779f5f3185d5f849b4ac4d71b1d29417b015",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f096bfeb9a4d7511f27a1b628448d8999417e4b2c7e20a4673d25bbc3055d985"
+}

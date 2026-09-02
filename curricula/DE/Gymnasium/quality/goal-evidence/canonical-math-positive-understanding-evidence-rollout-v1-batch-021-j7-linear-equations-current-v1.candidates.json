@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b021-j7-linear-equations-current-v1",
+  "reviewedAt": "2026-09-02T05:46:51.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-021-j7-linear-equations-profile-author-candidate-2026-09-02",
+  "goals": [
+    {
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "reason": "DE: Das Profil operationalisiert die drei im Lernziel verbundenen Leistungen: das Erhalten der Lösungsmenge durch zulässige Äquivalenzumformungen, das strukturabhängig geplante Isolieren der Variablen und die Probe in der ursprünglichen Gleichung. Drei frische Fälle variieren Variablenposition, Klammerstruktur, rationale Koeffizienten und die Richtung der Leistung vom eigenen Lösungsweg zur Prüfung und Reparatur eines fremden Weges. Ungleichungen, Bruchgleichungen mit variablen Nennern, Gleichungssysteme sowie die Klassifikation unterschiedlicher Lösungsanzahlen bleiben ausdrücklich außerhalb des Profils. Die gebundene Visualisierung dient nur als Lernunterstützung; weder ihr hervorgehobenes Beispiel noch dessen Lösung werden als Evidence übernommen. Keine menschliche Freigabe und kein Profil-Review-Lauf werden behauptet. EN: The profile operationalizes the three performances connected in the learning goal: preserving the solution set through valid equivalent transformations, isolating the variable through a structure-sensitive plan, and checking in the original equation. Three fresh cases vary variable placement, parenthetical structure, rational coefficients, and the performance direction from constructing a solution path to auditing and repairing another path. Inequalities, equations with variable denominators, systems of equations, and classification by number of solutions remain explicitly outside the profile. The bound visualization serves only as learning support; neither its highlighted example nor its solution is used as evidence. No human approval or profile-review run is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "equivalent-transformations-preserve-solution-set",
+            "essentialUnderstandingDe": "Eine Äquivalenzumformung erhält die Lösungsmenge einer Gleichung: Auf beide Seiten wird dieselbe zulässige Operation angewendet, wobei Multiplikation oder Division nur mit einer von null verschiedenen Zahl erfolgt; außerdem darf ein Term durch einen nach den Rechengesetzen gleichen Term ersetzt werden. Deshalb haben aufeinanderfolgende Gleichungszeilen dieselben Lösungen.",
+            "essentialUnderstandingEn": "An equivalent transformation preserves an equation's solution set: the same permissible operation is applied to both sides, with multiplication or division only by a nonzero number; an expression may also be replaced by an equal expression according to the laws of arithmetic. Therefore, successive equation lines have the same solutions.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet bei einer neuen linearen Gleichung jeden wesentlichen Übergang, nennt die auf beide Seiten angewendete Operation beziehungsweise das verwendete Rechengesetz und erklärt, warum dadurch die Lösungsmenge erhalten bleibt.",
+            "observablePerformanceEn": "For a fresh linear equation, the learner identifies each essential transition, states the operation applied to both sides or the arithmetic law used, and explains why the solution set is thereby preserved."
+          },
+          {
+            "id": "structure-sensitive-systematic-isolation",
+            "essentialUnderstandingDe": "Ein systematischer Lösungsweg richtet sich nach der Struktur der Gleichung: Klammern und gleichartige Terme werden zweckmäßig bearbeitet, Variablenterme und konstante Terme werden geordnet zusammengeführt und der von null verschiedene Koeffizient der Variablen wird schließlich auf 1 normiert. Verschiedene Reihenfolgen sind möglich, sofern jeder Schritt äquivalent und die Kette nachvollziehbar bleibt.",
+            "essentialUnderstandingEn": "A systematic solution path responds to the equation's structure: parentheses and like terms are handled purposefully, variable terms and constant terms are collected in an organized way, and the variable's nonzero coefficient is finally normalized to 1. Different orders are possible as long as every step is equivalent and the chain remains transparent.",
+            "observablePerformanceDe": "Die lernende Person wählt für eine unbekannte lineare Gleichung, auch mit Variablen auf beiden Seiten, Klammern oder rationalen Koeffizienten, eine passende Reihenfolge von Umformungen, führt sie fehlerfrei bis zur isolierten Variablen aus und begründet die Wahl der wesentlichen Schritte.",
+            "observablePerformanceEn": "For an unfamiliar linear equation, including one with variables on both sides, parentheses, or rational coefficients, the learner chooses a suitable order of transformations, carries it out accurately until the variable is isolated, and justifies the choice of the essential steps."
+          },
+          {
+            "id": "substitution-checks-original-equality",
+            "essentialUnderstandingDe": "Ein gefundener Wert ist durch Einsetzen geprüft, wenn er in der ursprünglichen Gleichung für beide Seiten denselben Zahlenwert erzeugt. Die Probe bezieht sich auf die Ausgangsgleichung und überprüft damit die gesamte Umformungskette, nicht nur deren letzte Zeile.",
+            "essentialUnderstandingEn": "A value found is checked by substitution when it produces the same numerical value on both sides of the original equation. The check uses the initial equation and therefore verifies the entire transformation chain, not merely its final line.",
+            "observablePerformanceDe": "Die lernende Person setzt den gefundenen Wert in beide Seiten der ursprünglichen Gleichung ein, berechnet beide Seiten getrennt, stellt ihre Gleichheit fest und formuliert daraus die bestätigte Lösung.",
+            "observablePerformanceEn": "The learner substitutes the value found into both sides of the original equation, evaluates the two sides separately, establishes their equality, and states the confirmed solution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "equivalent-transformations-preserve-solution-set",
+            "structure-sensitive-systematic-isolation",
+            "substitution-checks-original-equality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "variable-placement",
+            "textDe": "Variable nur auf einer Gleichungsseite oder Variablenterme auf beiden Seiten",
+            "textEn": "Variable on only one side of the equation or variable terms on both sides"
+          },
+          {
+            "id": "expression-structure",
+            "textDe": "Bereits zusammengefasste Terme oder zunächst aufzulösende Klammern und zusammenzufassende gleichartige Terme",
+            "textEn": "Already simplified expressions or parentheses to expand and like terms to combine first"
+          },
+          {
+            "id": "coefficient-and-sign-structure",
+            "textDe": "Ganzzahlige oder rationale Koeffizienten ohne variable Nenner sowie positive oder negative Lösung",
+            "textEn": "Integer or rational coefficients without variable denominators, together with a positive or negative solution"
+          },
+          {
+            "id": "evidence-direction",
+            "textDe": "Einen eigenen begründeten Umformungsweg konstruieren oder einen vorgelegten Weg auf Äquivalenz prüfen, korrigieren und fortsetzen",
+            "textEn": "Construct a justified transformation path or audit a supplied path for equivalence, correct it, and continue it"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-integer-equation",
+            "taskDemandDe": "Löse 7x − 9 = 26 systematisch. Notiere und begründe jede Äquivalenzumformung und prüfe den gefundenen Wert in der Ausgangsgleichung.",
+            "taskDemandEn": "Solve 7x − 9 = 26 systematically. Record and justify each equivalent transformation and check the value found in the original equation.",
+            "expectedPerformanceDe": "Die lernende Person addiert begründet 9 auf beiden Seiten und erhält 7x = 35, dividiert beide Seiten durch die von null verschiedene Zahl 7 und erhält x = 5. Anschließend setzt sie 5 in die Ausgangsgleichung ein und bestätigt mit 7 · 5 − 9 = 26 die Gleichheit beider Seiten.",
+            "expectedPerformanceEn": "The learner justifiably adds 9 to both sides to obtain 7x = 35, divides both sides by the nonzero number 7 to obtain x = 5, and then substitutes 5 into the original equation, confirming with 7 · 5 − 9 = 26 that both sides are equal.",
+            "understandingFocusDe": "Der Grundfall prüft, ob jeder Rechenschritt als lösungsmengenerhaltende Operation auf beiden Seiten begründet und die Lösung unabhängig in der Ausgangsgleichung bestätigt wird.",
+            "understandingFocusEn": "The base case tests whether every calculation step is justified as a solution-set-preserving operation on both sides and whether the solution is independently confirmed in the original equation."
+          },
+          {
+            "id": "parentheses-both-sides-negative-solution",
+            "taskDemandDe": "Löse 3(x − 4) + 5 = 5x + 1. Wähle selbst eine zweckmäßige Reihenfolge der Umformungen, begründe die wesentlichen Schritte und führe die Einsetzprobe in der ursprünglichen Gleichung aus.",
+            "taskDemandEn": "Solve 3(x − 4) + 5 = 5x + 1. Choose a suitable order of transformations, justify the essential steps, and carry out the substitution check in the original equation.",
+            "expectedPerformanceDe": "Die lernende Person löst die Klammer mit dem Distributivgesetz auf und fasst zu 3x − 7 = 5x + 1 zusammen. In einer gültigen Äquivalenzkette isoliert sie x und erhält unabhängig von der gewählten zulässigen Reihenfolge x = −4. Die Probe liefert links 3(−4 − 4) + 5 = −19 und rechts 5 · (−4) + 1 = −19.",
+            "expectedPerformanceEn": "The learner expands the parentheses using the distributive law and simplifies to 3x − 7 = 5x + 1. Through a valid chain of equivalent transformations, the learner isolates x and obtains x = −4 regardless of the permissible order chosen. The check gives 3(−4 − 4) + 5 = −19 on the left and 5 · (−4) + 1 = −19 on the right.",
+            "understandingFocusDe": "Variablen auf beiden Seiten, eine Klammer und eine negative Lösung verlangen eine strukturabhängige Planung statt der Wiederholung des einfachen Bildbeispiels.",
+            "understandingFocusEn": "Variables on both sides, a parenthesis, and a negative solution require structure-sensitive planning rather than repetition of the simple example shown in the visualization."
+          },
+          {
+            "id": "audit-rational-coefficient-path",
+            "taskDemandDe": "Für die Gleichung (3/4)x − 2 = (1/4)x + 5 wird als erster Schritt ‚mit 4 multiplizieren‘ angegeben, danach aber 3x − 2 = x + 5 notiert. Prüfe diesen Übergang auf Äquivalenz, korrigiere ihn, löse die Gleichung vollständig und prüfe die Lösung in der Ausgangsgleichung.",
+            "taskDemandEn": "For the equation (3/4)x − 2 = (1/4)x + 5, the stated first step is ‘multiply by 4,’ but the next line is written as 3x − 2 = x + 5. Audit this transition for equivalence, correct it, solve the equation completely, and check the solution in the original equation.",
+            "expectedPerformanceDe": "Die lernende Person erklärt, dass beim Multiplizieren mit 4 jeder Term auf beiden Seiten erfasst werden muss, und korrigiert die Zeile zu 3x − 8 = x + 20. Sie führt eine gültige Äquivalenzkette zu 2x = 28 und x = 14 fort. Durch Einsetzen erhält sie auf beiden Seiten der Ausgangsgleichung 17/2 und bestätigt damit die Lösung.",
+            "expectedPerformanceEn": "The learner explains that multiplying by 4 must affect every term on both sides and corrects the line to 3x − 8 = x + 20. The learner continues with a valid chain of equivalent transformations to 2x = 28 and x = 14. Substitution gives 17/2 on both sides of the original equation, confirming the solution.",
+            "understandingFocusDe": "Die umgekehrte Leistung vom Prüfen eines fremden Weges zur eigenen Korrektur zeigt, ob Äquivalenz als Kontrollprinzip verstanden und auf rationale Koeffizienten ohne variable Nenner übertragen wird.",
+            "understandingFocusEn": "Reversing the performance from auditing another path to making an independent correction shows whether equivalence is understood as a checking principle and transferred to rational coefficients without variable denominators."
+          }
+        ]
+      }
+    }
+  ]
+}

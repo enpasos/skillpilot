@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3caf8c800c2fd9bbbd1c4541bd8a65931a2ab5da9e35861246366bd5c878c465",
+  "reviewInputFingerprint": "sha256:771980433900866a60b021d426ca7156006adbe592148bc96de5dbfae81b7638",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5.6-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0a154cbd-1218-4553-835c-a754e9901bba",
+      "firstRecordId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-a.run-001.0a154cbd-1218-4553-835c-a754e9901bba",
+      "secondRecordId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b.batch-001.run-001.record-001",
+      "firstRunId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-a.run-001",
+      "secondRunId": "mathematik-rollout-v1-batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1-20260902-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

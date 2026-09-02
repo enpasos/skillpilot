@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e08ebab16ffdf7d89ec9a72611c3136009270cc8943644150f77a5c0895ede01",
+  "reviewInputFingerprint": "sha256:8bc00b049e8d7632a8dd4df554c044aa13b5aab9b12b42900c413b5b66a02b81",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-028e-e-worldviews-revised-1-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-028e-e-worldviews-revised-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-028e-e-worldviews-revised-1-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b028e-round-a-codex-20260902-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-028e-e-worldviews-revised-1-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-028e-e-worldviews-revised-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-028e-e-worldviews-revised-1-v1-20260902-independent-b",
+      "runIds": [
+        "physik-b028e-round-b-blind-review-20260902-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::GPT-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "481ffd56-d585-56fe-b525-ed423e30eed3",
+      "firstRecordId": "physik-b028e-round-a-worldviews-001",
+      "secondRecordId": "physik-b028e-round-b-481ffd56-review-20260902-001",
+      "firstRunId": "physik-b028e-round-a-codex-20260902-01",
+      "secondRunId": "physik-b028e-round-b-blind-review-20260902-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "openai-codex-34ebfe97-1038-40b0-aec8-f9ef3762faf3",
+  "campaignId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:dd26ea8327ad63d7b12808375ccd8f511466e7f518fb310311f98988fbae1813",
+  "bundleFingerprint": "sha256:9ba2bb487f08bb04ddaa75332c7c2ef4e457ed3c74d5339971fe08f33a3e999e",
+  "bookDigest": "sha256:6b6154444bcf9e958ea57609f371d9897428095fef3749690cfefc72650c3788",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:57907073bcb9cba6de99ed2f6f970d8d050114c61fe9abb5ab93a368141a56dc",
+  "independenceGroupId": "physik-rollout-v1-batch-028c-e-gravitation-worldviews-revised-3-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "156edddc-ce8d-580d-8d17-d9376d59e60e",
+    "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+    "481ffd56-d585-56fe-b525-ed423e30eed3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:dd26ea8327ad63d7b12808375ccd8f511466e7f518fb310311f98988fbae1813"
+    }
+  ],
+  "startedAt": "2026-09-02T10:49:54Z",
+  "completedAt": "2026-09-02T10:52:13Z",
+  "status": "completed",
+  "outputDigest": "sha256:10cf847d212fcf8e30a3bfd6d2d082301e3ca22bf3f9bf2412f0aca4b8a51fd2",
+  "toolchainVersion": "openai-codex-gpt-5"
+}

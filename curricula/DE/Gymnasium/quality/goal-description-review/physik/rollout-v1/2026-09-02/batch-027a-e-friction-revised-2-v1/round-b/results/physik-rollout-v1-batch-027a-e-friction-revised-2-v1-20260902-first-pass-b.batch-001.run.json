@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b027a-e-friction-revised-2-20260902-round-b-subject-review-001",
+  "campaignId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:269ff6b94c8b3dacbcd579567c76bf273f13418163db9069d628350af20246b3",
+  "bundleFingerprint": "sha256:e885075c22b7a63cb25d7e9b7ebba1e1430e1d0d7d64ddad26bbc880f9f96989",
+  "bookDigest": "sha256:f333c11015483162b7e92eeaf4dafcaaa28591b4e1c8e9a508501f93c8821904",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:7d21a8f3f9116558149481417db84ccec3f5fd83d869b2f1a347f69ad6789824",
+  "independenceGroupId": "physik-rollout-v1-batch-027a-e-friction-revised-2-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:4c0f930cfe082bacb9779b7b8d78943091ab0ceab7cde35b395a8fd6cc164422"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:269ff6b94c8b3dacbcd579567c76bf273f13418163db9069d628350af20246b3"
+    }
+  ],
+  "startedAt": "2026-09-02T09:42:00+02:00",
+  "completedAt": "2026-09-02T09:50:30+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:4a6ffbb6b506f24f33cae4d2fd56d15d09bf3da3d7f744bf4eb43668567a351e",
+  "toolchainVersion": "goal-description-review-campaign-v2"
+}

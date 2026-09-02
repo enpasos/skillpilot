@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `0924162b-46d0-5c56-93bc-33e1f5ac6886`
 - Titel: Magnetisierung und Permanentmagnete
-- Beschreibung: Die lernende Person kann in einer oberstufengerechten Modellierung erklären, wie Permanentmagnetismus aus mikroskopischen Kreisströmen/Spins und ausgerichteten Elementarmagneten entsteht, und den Zusammenhang zur makroskopischen Feldwirkung herstellen.
+- Beschreibung: Die lernende Person kann in einem oberstufengerechten Modell erklären, wie die Vorzugsorientierung mikroskopischer magnetischer Momente Magnetisierung und eine makroskopische Feldwirkung hervorruft und wie eine bleibende Vorzugsorientierung dieser Momente Permanentmagnetismus erklärt.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Magnetisierung und Permanentmagnete
-Beschreibung: Die lernende Person kann in einer oberstufengerechten Modellierung erklären, wie Permanentmagnetismus aus mikroskopischen Kreisströmen/Spins und ausgerichteten Elementarmagneten entsteht, und den Zusammenhang zur makroskopischen Feldwirkung herstellen.
+Beschreibung: Die lernende Person kann in einem oberstufengerechten Modell erklären, wie die Vorzugsorientierung mikroskopischer magnetischer Momente Magnetisierung und eine makroskopische Feldwirkung hervorruft und wie eine bleibende Vorzugsorientierung dieser Momente Permanentmagnetismus erklärt.
 
 Zusatzanweisung:
 Pflichtinhalt:

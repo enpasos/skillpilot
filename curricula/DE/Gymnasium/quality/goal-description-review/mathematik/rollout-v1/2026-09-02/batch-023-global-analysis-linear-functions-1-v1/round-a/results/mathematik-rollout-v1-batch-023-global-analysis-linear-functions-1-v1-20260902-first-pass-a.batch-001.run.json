@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b023-a-subject-openai-gpt-5.6-sol-20260902-01",
+  "campaignId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-a",
+  "roundId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f93a290c3b16bc95b3b70336ee51de85f7dfa797791e1951937afa3cac1840ca",
+  "bundleFingerprint": "sha256:cd87fa87ebfb379f7afe0dcc67b870bd11856459078903daac1902a182033194",
+  "bookDigest": "sha256:5d8ed9a0b33cf9d509c3e3b9c06156519fde9f71d2b408e83ebc77d59b3fc83a",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:a7f587bf16024cb66ac479451d66c7bfb3020c04f01d31ee2a804a29ad773c6d",
+  "independenceGroupId": "mathematik-rollout-v1-batch-023-global-analysis-linear-functions-1-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f93a290c3b16bc95b3b70336ee51de85f7dfa797791e1951937afa3cac1840ca"
+    }
+  ],
+  "startedAt": "2026-09-02T09:30:03+02:00",
+  "completedAt": "2026-09-02T09:32:39+02:00",
+  "status": "completed",
+  "outputDigest": "sha256:f85d128a7e90496c7576774318a2d3e9363abd431ccaf4a8c2c90828d82678ba",
+  "toolchainVersion": "codex-reviewer-v1"
+}

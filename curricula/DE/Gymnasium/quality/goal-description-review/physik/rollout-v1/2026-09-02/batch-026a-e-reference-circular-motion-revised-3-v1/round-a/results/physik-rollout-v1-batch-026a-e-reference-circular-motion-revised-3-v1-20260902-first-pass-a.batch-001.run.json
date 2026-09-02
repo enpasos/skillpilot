@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b026a-round-a-gpt-5.6-sol-high-none",
+  "campaignId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:2047df2ea9d5abc85f5240e75fab06f3beab0bd1ec0642c5b974a54bc08c901d",
+  "bundleFingerprint": "sha256:c576838f7b0afde0976ab2c100f0d60d8022d2cb5605ab05dc8c7432b4c5db6a",
+  "bookDigest": "sha256:a048070a24da277baa4058054a7042913115f684e32703f688ebcaef06947085",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:bb097b47d594838cfa247b7b91ae41fb358325416ebfe92e80d3a71b4868f651",
+  "independenceGroupId": "physik-rollout-v1-batch-026a-e-reference-circular-motion-revised-3-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "68c90ba6-c438-463c-9a53-cf61062d416a",
+    "ec7a0a68-730b-5c94-ac72-a937508f8303",
+    "e918b31f-6f39-5dee-ade6-3617080fb24f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2047df2ea9d5abc85f5240e75fab06f3beab0bd1ec0642c5b974a54bc08c901d"
+    }
+  ],
+  "startedAt": "2026-09-02T06:49:09Z",
+  "completedAt": "2026-09-02T06:50:39Z",
+  "status": "completed",
+  "outputDigest": "sha256:fa3f641789b804fb0ada3c589a622efe43ce0caeac2e9a53a50424645cbd8107",
+  "toolchainVersion": "goal-description-review-v1"
+}

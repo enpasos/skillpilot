@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b024a-j8-linear-functions-revised-current-v1",
+  "reviewedAt": "2026-09-02T09:02:23.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-024a-positive-understanding-candidate-author-2026-09-02",
+  "goals": [
+    {
+      "goalId": "ae772695-d55e-4cc5-81bc-6605272759b4",
+      "reason": "DE: Das Profil prüft das Aufstellen von y = mx + b in allen drei beanspruchten Datenlagen. Es macht die Rollen von m und b, die Punktbedingung, den Änderungsquotienten und eine unabhängige Rückprüfung sichtbar. Drei frische Demonstrationen variieren die gegebenen Informationen, das Vorzeichen der Steigung und den Wechsel zwischen rein mathematischen Daten und einem Sachzusammenhang. Plausible Verwechslungen – vertauschte Parameter, Übernahme der y-Koordinate eines beliebigen Punktes als b und Kehrwertbildung beim Änderungsquotienten – müssen positiv erkannt, widerlegt und berichtigt werden. Die Zielvisualisierung bleibt reine Lernhilfe und wird in keiner Demonstration vorgelegt oder als Evidenz verwendet. EN: The profile assesses setting up y = mx + b in all three claimed data configurations. It makes the roles of m and b, the point condition, the rate of change, and an independent check observable. Three fresh demonstrations vary the information given, the sign of the slope, and the shift between purely mathematical data and a real-world context. Plausible confusions – swapping the parameters, using the y-coordinate of an arbitrary point as b, and taking the reciprocal rate of change – must be positively identified, refuted, and corrected. The goal visualization remains learning support only and is neither supplied in any demonstration nor used as evidence.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "parameter-roles-and-point-condition",
+            "essentialUnderstandingDe": "In y = mx + b beschreibt m die konstante Änderung von y pro Einheit von x und b den Funktionswert bei x = 0. Jeder Punkt (x|y) des Graphen erfüllt die Gleichung; deshalb liefert ein gegebener Punkt zusammen mit m eine Bedingung, aus der b bestimmt werden kann.",
+            "essentialUnderstandingEn": "In y = mx + b, m describes the constant change in y per unit of x, and b is the function value at x = 0. Every point (x, y) on the graph satisfies the equation; therefore, a given point together with m provides a condition from which b can be determined.",
+            "observablePerformanceDe": "Die lernende Person ordnet gegebene Steigung und y-Achsenabschnitt den richtigen Termstellen zu oder setzt einen gegebenen Punkt in y = mx + b ein, bestimmt den fehlenden Parameter und begründet, warum eine y-Koordinate nur bei x = 0 unmittelbar der y-Achsenabschnitt ist.",
+            "observablePerformanceEn": "The learner assigns a given slope and y-intercept to the correct positions in the expression or substitutes a given point into y = mx + b, determines the missing parameter, and explains why a y-coordinate is directly the y-intercept only when x = 0."
+          },
+          {
+            "id": "two-points-determine-slope-and-intercept",
+            "essentialUnderstandingDe": "Zwei verschiedene Punkte eines linearen Funktionsgraphen bestimmen zuerst die Steigung als Verhältnis der zugehörigen Änderungen Δy/Δx und danach durch eine der beiden Punktbedingungen den y-Achsenabschnitt. Die Reihenfolge der Punkte darf wechseln, solange Zähler und Nenner gemeinsam in derselben Reihenfolge gebildet werden.",
+            "essentialUnderstandingEn": "Two distinct points on the graph of a linear function first determine the slope as the ratio of the corresponding changes Δy/Δx and then determine the y-intercept through either point condition. The order of the points may be reversed as long as numerator and denominator use the same order.",
+            "observablePerformanceDe": "Die lernende Person berechnet aus zwei neuen Punkten m mit konsistent geordneten Differenzen, bestimmt b durch Einsetzen, gibt die vollständige Funktionsgleichung an und erläutert anhand der Einheiten oder Koordinaten, warum Δx/Δy im Allgemeinen nicht die gesuchte Steigung ist.",
+            "observablePerformanceEn": "From two new points, the learner calculates m using consistently ordered differences, determines b by substitution, states the complete function equation, and uses the units or coordinates to explain why Δx/Δy is generally not the required slope."
+          },
+          {
+            "id": "equation-cross-check-and-error-correction",
+            "essentialUnderstandingDe": "Eine aufgestellte Geradengleichung ist nur dann mit den Ausgangsdaten vereinbar, wenn ihre Parameter die gegebene Steigung und den gegebenen Achsenabschnitt wiedergeben und jeder vorgegebene Punkt die Gleichung erfüllt. Diese Bedingungen erlauben eine vom Lösungsweg unabhängige Kontrolle.",
+            "essentialUnderstandingEn": "A constructed line equation agrees with the original data only if its parameters reproduce the given slope and intercept and every given point satisfies the equation. These conditions provide a check that is independent of the solution path.",
+            "observablePerformanceDe": "Die lernende Person prüft die eigene oder eine vorgeschlagene Gleichung an allen gegebenen Bedingungen, identifiziert eine konkrete unpassende Parameter- oder Punktzuordnung und berichtigt die Gleichung mit einer mathematischen Begründung.",
+            "observablePerformanceEn": "The learner checks their own or a proposed equation against every given condition, identifies a specific incompatible parameter or point assignment, and corrects the equation with a mathematical justification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameter-roles-and-point-condition",
+            "two-points-determine-slope-and-intercept",
+            "equation-cross-check-and-error-correction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "given-information",
+            "textDe": "Steigung und y-Achsenabschnitt, Steigung und beliebiger Punkt oder zwei verschiedene Punkte als Ausgangsdaten",
+            "textEn": "Slope and y-intercept, slope and an arbitrary point, or two distinct points as the starting data"
+          },
+          {
+            "id": "slope-structure",
+            "textDe": "Positive oder negative, ganzzahlige oder gebrochene Steigung sowie Punkte außerhalb der y-Achse",
+            "textEn": "Positive or negative, integer or fractional slope, with points away from the y-axis"
+          },
+          {
+            "id": "mathematical-or-contextual-data",
+            "textDe": "Reine Koordinatenangaben oder zwei Messwerte in einem einfachen Zusammenhang mit passenden Einheiten",
+            "textEn": "Pure coordinate data or two measurements in a simple context with appropriate units"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-slope-and-intercept-with-swapped-proposal",
+            "taskDemandDe": "Eine lineare Funktion hat die Steigung m = 2,4 und den y-Achsenabschnitt b = -3. Stelle ihre Gleichung auf und prüfe sie an den Punkten (0|-3) und (5|9). Eine vorgeschlagene Lösung lautet y = -3x + 2,4. Entscheide begründet, ob sie passt, und berichtige sie gegebenenfalls.",
+            "taskDemandEn": "A linear function has slope m = 2.4 and y-intercept b = -3. Set up its equation and check it using the points (0, -3) and (5, 9). A proposed solution is y = -3x + 2.4. Decide with justification whether it fits and correct it if necessary.",
+            "expectedPerformanceDe": "Die lernende Person erhält y = 2,4x - 3, weist mit f(0) = -3 und f(5) = 9 die Übereinstimmung nach und verwirft y = -3x + 2,4, weil dort Steigung und y-Achsenabschnitt vertauscht sind und schon der Punkt (0|-3) die Gleichung nicht erfüllt.",
+            "expectedPerformanceEn": "The learner obtains y = 2.4x - 3, verifies agreement through f(0) = -3 and f(5) = 9, and rejects y = -3x + 2.4 because the slope and y-intercept are swapped and even the point (0, -3) does not satisfy that equation.",
+            "understandingFocusDe": "Der direkte Fall prüft die Parameterrollen und eine unabhängige Punktkontrolle, ohne eine vorgegebene Lernvisualisierung wiederzuerkennen.",
+            "understandingFocusEn": "The direct case assesses the roles of the parameters and an independent point check without relying on recognition of a supplied learning visualization."
+          },
+          {
+            "id": "negative-slope-and-arbitrary-point",
+            "taskDemandDe": "Eine Gerade hat die Steigung m = -1,5 und geht durch P(4|1). Stelle ihre Gleichung in der Form y = mx + b auf. Jemand setzt b = 1 und schlägt y = -1,5x + 1 vor. Prüfe den Vorschlag am Punkt P und erkläre die Verwechslung.",
+            "taskDemandEn": "A line has slope m = -1.5 and passes through P(4, 1). Set up its equation in the form y = mx + b. Someone sets b = 1 and proposes y = -1.5x + 1. Check the proposal at P and explain the confusion.",
+            "expectedPerformanceDe": "Die lernende Person verwendet 1 = -1,5 · 4 + b, bestimmt b = 7 und erhält y = -1,5x + 7. Sie zeigt, dass der Vorschlag für x = 4 den Wert -5 statt 1 liefert, und erklärt, dass die y-Koordinate eines Punktes mit x = 4 nicht der Funktionswert bei x = 0 ist.",
+            "expectedPerformanceEn": "The learner uses 1 = -1.5 · 4 + b, determines b = 7, and obtains y = -1.5x + 7. They show that the proposal gives -5 rather than 1 when x = 4 and explain that the y-coordinate of a point with x = 4 is not the function value at x = 0.",
+            "understandingFocusDe": "Der zweite Fall wechselt zu negativer Steigung und einem Punkt außerhalb der y-Achse; dadurch wird die Punktbedingung statt einer bloßen Parameterablesung sichtbar.",
+            "understandingFocusEn": "The second case changes to a negative slope and a point away from the y-axis, making the point condition rather than mere parameter reading observable."
+          },
+          {
+            "id": "water-volume-from-two-measurements",
+            "taskDemandDe": "Beim gleichmäßigen Ablassen eines Behälters werden nach 2 Minuten 86 Liter und nach 7 Minuten 61 Liter gemessen. Stelle die lineare Funktionsgleichung V(t) für das Volumen in Litern nach t Minuten auf und prüfe beide Messwerte. Eine andere Rechnung verwendet (7 - 2)/(61 - 86) = -0,2 als Steigung. Beurteile und berichtige diesen Ansatz.",
+            "taskDemandEn": "While a tank is drained at a constant rate, measurements show 86 litres after 2 minutes and 61 litres after 7 minutes. Set up the linear function V(t) for the volume in litres after t minutes and check both measurements. Another calculation uses (7 - 2)/(61 - 86) = -0.2 as the slope. Evaluate and correct this approach.",
+            "expectedPerformanceDe": "Die lernende Person berechnet m = (61 - 86)/(7 - 2) = -5 Liter pro Minute, bestimmt aus 86 = -5 · 2 + b den Wert b = 96 Liter und erhält V(t) = -5t + 96. Sie bestätigt V(2) = 86 und V(7) = 61 und weist den Kehrwert -0,2 Minuten pro Liter als unpassend zurück, weil gesucht die Volumenänderung pro Zeitänderung ist.",
+            "expectedPerformanceEn": "The learner calculates m = (61 - 86)/(7 - 2) = -5 litres per minute, uses 86 = -5 · 2 + b to determine b = 96 litres, and obtains V(t) = -5t + 96. They confirm V(2) = 86 and V(7) = 61 and reject the reciprocal value -0.2 minutes per litre because the required rate is change in volume per change in time.",
+            "understandingFocusDe": "Der unabhängige Transfer verbindet zwei Punkte ohne Messung bei t = 0 mit Einheiten und einer begründeten Unterscheidung von Änderungsquotient und Kehrwert.",
+            "understandingFocusEn": "The independent transfer combines two points with no measurement at t = 0, units, and a justified distinction between the rate of change and its reciprocal."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "reason": "DE: Das Profil bindet die rechnerische Bedingung f(x₀) = 0 an den Graphenpunkt (x₀|0), verlangt nachvollziehbare äquivalente Umformungen und eine unabhängige Einsetzprobe. Zwei frische Fälle wechseln Vorzeichenstruktur und Kontext. Dabei werden typische Verwechslungen von Nullstelle, y-Achsenabschnitt, Steigung und Koordinatenreihenfolge positiv erkannt und mathematisch widerlegt. Die Zielvisualisierung wird nur als Lernhilfe gebunden; weder ihr Beispiel noch ihre markierte Lösung dient als Evidenz. EN: The profile binds the computational condition f(x₀) = 0 to the graph point (x₀, 0), requires traceable equivalent transformations, and includes an independent substitution check. Two fresh cases change the sign structure and context. Typical confusions involving the root, y-intercept, slope, and coordinate order are positively identified and mathematically refuted. The goal visualization is bound only as learning support; neither its example nor its highlighted solution is used as evidence.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "zero-condition-and-axis-intersection",
+            "essentialUnderstandingDe": "Eine Nullstelle x₀ ist ein Eingabewert mit f(x₀) = 0. Deshalb liegt der zugehörige Graphenpunkt (x₀|0) auf der x-Achse; x₀ ist weder der y-Achsenabschnitt noch die zweite Koordinate dieses Punktes.",
+            "essentialUnderstandingEn": "A root x₀ is an input value for which f(x₀) = 0. Therefore, the corresponding graph point (x₀, 0) lies on the x-axis; x₀ is neither the y-intercept nor the second coordinate of this point.",
+            "observablePerformanceDe": "Die lernende Person formuliert für eine neue lineare Funktion die Gleichung f(x) = 0, ordnet der berechneten Zahl den Punkt (x₀|0) zu und erklärt anhand der Achsenbedeutung, warum ein vertauschtes Koordinatenpaar nicht dieselbe Nullstelle darstellt.",
+            "observablePerformanceEn": "For a new linear function, the learner formulates the equation f(x) = 0, associates the calculated number with the point (x₀, 0), and uses the meaning of the axes to explain why a reversed coordinate pair does not represent the same root."
+          },
+          {
+            "id": "equivalent-solution-and-substitution-check",
+            "essentialUnderstandingDe": "Bei einer nicht konstanten linearen Funktion führt äquivalentes Umformen von mx + b = 0 zum einzigen x-Wert, für den der Funktionswert null ist. Das Einsetzen des Ergebnisses prüft unabhängig, ob Vorzeichen und Rechenschritte stimmen.",
+            "essentialUnderstandingEn": "For a non-constant linear function, equivalent transformations of mx + b = 0 lead to the unique x-value for which the function value is zero. Substituting the result provides an independent check of the signs and calculation steps.",
+            "observablePerformanceDe": "Die lernende Person löst f(x) = 0 mit nachvollziehbaren Äquivalenzumformungen, setzt den erhaltenen Wert in den ursprünglichen Funktionsterm ein und berichtigt einen vorgeschlagenen Wert, wenn dessen Funktionswert nicht null ist.",
+            "observablePerformanceEn": "The learner solves f(x) = 0 using traceable equivalent transformations, substitutes the resulting value into the original function expression, and corrects a proposed value when its function value is not zero."
+          },
+          {
+            "id": "root-meaning-in-a-context",
+            "essentialUnderstandingDe": "In einem linearen Sachzusammenhang bezeichnet die Nullstelle den Eingabewert, bei dem die modellierte abhängige Größe den Wert null erreicht. Die Bedeutung und Einheit des berechneten x-Werts folgen daher aus der Eingabegröße, nicht aus der Steigung oder dem Anfangswert.",
+            "essentialUnderstandingEn": "In a linear real-world context, the root is the input value at which the modelled dependent quantity reaches zero. The meaning and unit of the calculated x-value therefore come from the input quantity, not from the slope or initial value.",
+            "observablePerformanceDe": "Die lernende Person deutet eine berechnete Nullstelle mit der passenden Eingabegröße und Einheit, verbindet sie mit dem x-Achsen-Schnittpunkt und weist eine Deutung des Steigungsbetrags oder Anfangswerts als Nullstelle begründet zurück.",
+            "observablePerformanceEn": "The learner interprets a calculated root using the appropriate input quantity and unit, connects it to the x-axis intersection, and justifiably rejects an interpretation of the slope magnitude or initial value as the root."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "zero-condition-and-axis-intersection",
+            "equivalent-solution-and-substitution-check",
+            "root-meaning-in-a-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "coefficient-and-root-sign",
+            "textDe": "Positive oder negative Steigung sowie positive oder negative Nullstelle, einschließlich gebrochener Koeffizienten",
+            "textEn": "Positive or negative slope and positive or negative root, including fractional coefficients"
+          },
+          {
+            "id": "pure-function-or-context",
+            "textDe": "Reiner Funktionsterm mit Graphenpunkt oder lineare Abnahme einer benannten Größe mit Einheit",
+            "textEn": "Pure function expression with a graph point or linear decrease of a named quantity with a unit"
+          },
+          {
+            "id": "candidate-error-check",
+            "textDe": "Vorzeichenfehler, vertauschte Punktkoordinaten oder Verwechslung der Nullstelle mit Steigung beziehungsweise Anfangswert",
+            "textEn": "Sign error, reversed point coordinates, or confusion of the root with the slope or initial value"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fractional-slope-and-negative-root",
+            "taskDemandDe": "Gegeben ist f(x) = 2/3 x + 4. Bestimme die Nullstelle rechnerisch, prüfe sie durch Einsetzen und gib den Schnittpunkt mit der x-Achse an. Eine vorgeschlagene Lösung nennt x = 6 und den Punkt (0|6). Prüfe beide Angaben und erkläre die Fehler.",
+            "taskDemandEn": "Given f(x) = 2/3 x + 4, calculate the root, check it by substitution, and state the intersection with the x-axis. A proposed solution gives x = 6 and the point (0, 6). Check both statements and explain the errors.",
+            "expectedPerformanceDe": "Die lernende Person löst 2/3 x + 4 = 0 zu x₀ = -6, bestätigt f(-6) = 0 und gibt (-6|0) an. Sie zeigt, dass f(6) = 8 statt 0 ist, und erklärt, dass beim x-Achsen-Schnittpunkt die zweite Koordinate null sein muss.",
+            "expectedPerformanceEn": "The learner solves 2/3 x + 4 = 0 to obtain x₀ = -6, confirms f(-6) = 0, and states (-6, 0). They show that f(6) = 8 rather than 0 and explain that the second coordinate of an x-axis intersection must be zero.",
+            "understandingFocusDe": "Der erste Fall prüft Vorzeichen, Bruchkoeffizient, Einsetzprobe und die begründete Übersetzung vom Nullstellenwert zum Graphenpunkt.",
+            "understandingFocusEn": "The first case assesses signs, a fractional coefficient, substitution checking, and the justified translation from the root value to the graph point."
+          },
+          {
+            "id": "printing-credit-depletion",
+            "taskDemandDe": "Das Restguthaben einer Druckkarte wird durch C(t) = 54 - 4,5t beschrieben, wobei t die Zahl gleich großer Druckpakete und C(t) das Guthaben in Euro ist. Bestimme rechnerisch, nach wie vielen Paketen das Modell ein Guthaben von 0 Euro liefert, prüfe das Ergebnis und deute den zugehörigen Graphenpunkt. Jemand nennt 4,5 Pakete als Nullstelle, weil 4,5 vor t steht. Beurteile diese Aussage.",
+            "taskDemandEn": "The remaining credit on a printing card is described by C(t) = 54 - 4.5t, where t is the number of equal print batches and C(t) is the credit in euros. Calculate after how many batches the model gives a credit of EUR 0, check the result, and interpret the corresponding graph point. Someone names 4.5 batches as the root because 4.5 is the coefficient of t. Evaluate this statement.",
+            "expectedPerformanceDe": "Die lernende Person löst 54 - 4,5t = 0 zu t = 12, bestätigt C(12) = 0 und deutet (12|0) als den Modellpunkt für zwölf Druckpakete, an dem kein Guthaben verbleibt. Sie weist 4,5 als Betrag der Guthabenabnahme pro Paket und nicht als Nullstelle aus; C(4,5) ist nicht null.",
+            "expectedPerformanceEn": "The learner solves 54 - 4.5t = 0 to obtain t = 12, confirms C(12) = 0, and interprets (12, 0) as the model point after twelve print batches when no credit remains. They identify 4.5 as the magnitude of the credit decrease per batch rather than the root; C(4.5) is not zero.",
+            "understandingFocusDe": "Der unabhängige Transfer wechselt von einer abstrakten Funktion zu einer linearen Abnahme und verlangt, Rechenergebnis, Graphenpunkt, Einheit und Parameterbedeutung auseinanderzuhalten.",
+            "understandingFocusEn": "The independent transfer changes from an abstract function to a linear decrease and requires the learner to distinguish the calculated result, graph point, unit, and parameter meaning."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "reason": "DE: Das Profil macht den Schnittpunkt als Lösung beider Geradengleichungen, die Gleichheit der Funktionswerte und die Bestimmung beider Koordinaten sichtbar. Zwei frische, voneinander unabhängige Fälle wechseln von zwei abstrakten Geraden mit positiven Steigungen zu einem Kostenvergleich mit Einheiten. In beiden Fällen muss ein plausibler, aber nicht gemeinsamer Punkt durch Einsetzen in beide Funktionen erkannt und berichtigt werden. Parallele oder identische Geraden werden nicht als zusätzliche Klassifikationskompetenz importiert. Die Zielvisualisierung bleibt Lernhilfe und wird weder vorgelegt noch als Evidenz benutzt. EN: The profile makes observable that an intersection solves both line equations, that the function values are equal there, and that both coordinates must be determined. Two fresh, independent cases change from two abstract lines with positive slopes to a cost comparison with units. In both cases, a plausible point that is not common to both graphs must be identified by substitution into both functions and corrected. Parallel or coincident lines are not imported as an additional classification competence. The goal visualization remains learning support and is neither supplied nor used as evidence.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "common-point-and-equal-values",
+            "essentialUnderstandingDe": "Ein Schnittpunkt S(xₛ|yₛ) liegt auf beiden Geraden. Daher liefern beide Funktionsgleichungen für denselben Wert xₛ denselben Wert yₛ, und die Koordinaten des Schnittpunkts erfüllen beide Gleichungen zugleich.",
+            "essentialUnderstandingEn": "An intersection S(xₛ, yₛ) lies on both lines. Therefore, both function equations give the same value yₛ for the same value xₛ, and the coordinates of the intersection satisfy both equations simultaneously.",
+            "observablePerformanceDe": "Die lernende Person begründet für zwei neue, eindeutig schneidende Geraden die Gleichsetzung der Funktionswerte oder einen mathematisch gleichwertigen Lösungsweg und erklärt, warum dessen Lösung die erste Koordinate des gemeinsamen Punkts liefert.",
+            "observablePerformanceEn": "For two new lines with a unique intersection, the learner justifies equating the function values or a mathematically equivalent solution method and explains why its solution gives the first coordinate of the common point."
+          },
+          {
+            "id": "determine-both-coordinates",
+            "essentialUnderstandingDe": "Die Lösung der Gleichung für gleiche Funktionswerte bestimmt zunächst xₛ. Erst das Einsetzen dieses Werts in eine der Geradengleichungen bestimmt yₛ; eine einzelne Zahl oder nur eine erfüllte Gleichung beschreibt noch keinen nachgewiesenen Schnittpunkt.",
+            "essentialUnderstandingEn": "Solving the equation for equal function values first determines xₛ. Only substituting this value into one of the line equations determines yₛ; a single number or satisfaction of only one equation does not yet establish an intersection point.",
+            "observablePerformanceDe": "Die lernende Person bestimmt beide Koordinaten eines Schnittpunkts, notiert sie in der richtigen Reihenfolge und erläutert die unterschiedliche Rolle des gelösten x-Werts und des anschließend berechneten gemeinsamen y-Werts.",
+            "observablePerformanceEn": "The learner determines both coordinates of an intersection, records them in the correct order, and explains the different roles of the solved x-value and the subsequently calculated common y-value."
+          },
+          {
+            "id": "double-substitution-and-interpretation",
+            "essentialUnderstandingDe": "Ein berechneter Punkt ist genau dann als gemeinsamer Punkt bestätigt, wenn das Einsetzen seiner x-Koordinate in beide Funktionsterme dieselbe y-Koordinate ergibt. In einem Sachzusammenhang bedeutet der Schnittpunkt deshalb die Eingabesituation, in der beide abhängigen Größen denselben Wert besitzen.",
+            "essentialUnderstandingEn": "A calculated point is confirmed as a common point exactly when substituting its x-coordinate into both function expressions produces the same y-coordinate. In a real-world context, the intersection therefore represents the input situation in which both dependent quantities have the same value.",
+            "observablePerformanceDe": "Die lernende Person prüft einen berechneten oder vorgeschlagenen Punkt in beiden Ausgangsgleichungen, korrigiert eine nicht gemeinsame Koordinate begründet und deutet bei einem Kontextfall beide Koordinaten mit ihren Größen und Einheiten.",
+            "observablePerformanceEn": "The learner checks a calculated or proposed point in both original equations, justifiably corrects a coordinate that is not common to both lines, and interprets both coordinates with their quantities and units in a contextual case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "common-point-and-equal-values",
+            "determine-both-coordinates",
+            "double-substitution-and-interpretation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "line-parameter-structure",
+            "textDe": "Zwei positive Steigungen mit unterschiedlichem Betrag oder zwei positive Kostenraten mit verschiedenen Anfangswerten",
+            "textEn": "Two positive slopes of different magnitudes or two positive cost rates with different initial values"
+          },
+          {
+            "id": "abstract-or-contextual-meaning",
+            "textDe": "Abstrakte Geradengleichungen und Koordinaten oder zwei Kostenfunktionen mit Mengen- und Geldeinheiten",
+            "textEn": "Abstract line equations and coordinates or two cost functions with quantity and currency units"
+          },
+          {
+            "id": "verification-target",
+            "textDe": "Fehlerhafte zweite Koordinate oder scheinbar plausibler Eingabewert, bei dem nur eine oder keine Gleichheit erfüllt ist",
+            "textEn": "Incorrect second coordinate or a seemingly plausible input value at which only one or neither equality is satisfied"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-positive-slopes",
+            "taskDemandDe": "Gegeben sind g(x) = 1,5x - 2 und h(x) = 0,5x + 4. Bestimme ihren Schnittpunkt rechnerisch, begründe deinen Ansatz und prüfe beide Koordinaten in den Ausgangsgleichungen. Eine vorgeschlagene Lösung lautet S(6|5). Beurteile und berichtige sie.",
+            "taskDemandEn": "Given g(x) = 1.5x - 2 and h(x) = 0.5x + 4, calculate their intersection, justify your approach, and check both coordinates in the original equations. A proposed solution is S(6, 5). Evaluate and correct it.",
+            "expectedPerformanceDe": "Die lernende Person setzt 1,5x - 2 = 0,5x + 4 oder verwendet einen gleichwertigen rechnerischen Weg, erhält xₛ = 6 und anschließend g(6) = h(6) = 7. Sie gibt S(6|7) an und verwirft S(6|5), weil die zweite Koordinate weder g(6) noch h(6) entspricht.",
+            "expectedPerformanceEn": "The learner sets 1.5x - 2 = 0.5x + 4 or uses an equivalent computational method, obtains xₛ = 6, and then finds g(6) = h(6) = 7. They state S(6, 7) and reject S(6, 5) because its second coordinate equals neither g(6) nor h(6).",
+            "understandingFocusDe": "Der abstrakte Fall mit zwei positiven Steigungen verhindert die bloße Wiederholung des vertrauten Bilds einer steigenden und einer fallenden Geraden und verlangt die doppelte Gleichungsprüfung.",
+            "understandingFocusEn": "The abstract case with two positive slopes prevents mere repetition of the familiar picture of one increasing and one decreasing line and requires checking both equations."
+          },
+          {
+            "id": "mobile-plan-equal-cost",
+            "taskDemandDe": "Zwei Mobilfunktarife kosten für n Gesprächsminuten A(n) = 5 + 0,18n Euro und B(n) = 11 + 0,12n Euro. Bestimme rechnerisch, bei welcher Minutenzahl beide Tarife gleich viel kosten und wie hoch dieser gemeinsame Preis ist. Prüfe beide Werte in den Kostenfunktionen. Jemand behauptet, bei n = 50 seien die Tarife gleich teuer. Beurteile die Behauptung.",
+            "taskDemandEn": "For n call minutes, two mobile plans cost A(n) = 5 + 0.18n euros and B(n) = 11 + 0.12n euros. Calculate the number of minutes at which both plans cost the same and determine that common price. Check both values in the cost functions. Someone claims that the plans have equal cost at n = 50. Evaluate the claim.",
+            "expectedPerformanceDe": "Die lernende Person löst 5 + 0,18n = 11 + 0,12n zu n = 100 und berechnet A(100) = B(100) = 23 Euro. Sie deutet (100|23) als gemeinsamen Punkt: Bei 100 Minuten kosten beide Tarife 23 Euro. Für n = 50 erhält sie A(50) = 14 Euro und B(50) = 17 Euro und widerlegt damit die Behauptung.",
+            "expectedPerformanceEn": "The learner solves 5 + 0.18n = 11 + 0.12n to obtain n = 100 and calculates A(100) = B(100) = EUR 23. They interpret (100, 23) as the common point: at 100 minutes, both plans cost EUR 23. For n = 50, they obtain A(50) = EUR 14 and B(50) = EUR 17, thereby refuting the claim.",
+            "understandingFocusDe": "Der unabhängige Transfer wechselt in einen Kostenkontext und prüft, ob die lernende Person gleiche Funktionswerte, beide Schnittpunktkoordinaten und deren Einheiten zusammenhängend deuten kann.",
+            "understandingFocusEn": "The independent transfer changes to a cost context and assesses whether the learner can coherently interpret equal function values, both intersection coordinates, and their units."
+          }
+        ]
+      }
+    }
+  ]
+}

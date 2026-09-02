@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b029b-round-b-openai-gpt5-20260902",
+  "campaignId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:4699b7bd8c89bf9c47ba589f049c8dd2242dc1331c37fb43b028685b5e0384fb",
+  "bundleFingerprint": "sha256:0bb6abd98f300a67a77bd0803f2337ed631685ac9f58710561b0594eb0fdf3b0",
+  "bookDigest": "sha256:fc04ea92fdb95fe9fdce2b99381d3d34691b8c16c2dc6fe6ecad3d3e0b5cadb7",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot.goal-description-understanding-evidence-review.v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:75d370a58d8d834d02f7f94e39ac7df1cbe0b1cf72c3329277ea378ad07a9fc0",
+  "independenceGroupId": "physik-rollout-v1-batch-029b-e-thermodynamic-process-types-2-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "fb73c94b-6a23-5351-8fef-db2c2533e361",
+    "7fe3022f-fad0-5f41-af1c-d55ff214ebc6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4699b7bd8c89bf9c47ba589f049c8dd2242dc1331c37fb43b028685b5e0384fb"
+    }
+  ],
+  "startedAt": "2026-09-02T13:54:38Z",
+  "completedAt": "2026-09-02T14:00:36Z",
+  "status": "completed",
+  "outputDigest": "sha256:dbbf04fb699188591d8f5c73fd8188584fbe0f998ec656ba537a02bb33589ca0",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

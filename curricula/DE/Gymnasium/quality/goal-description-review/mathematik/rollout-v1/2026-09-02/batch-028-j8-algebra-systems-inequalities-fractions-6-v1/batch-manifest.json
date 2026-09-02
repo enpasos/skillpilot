@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-028-j8-algebra-systems-inequalities-fractions-6-v1.config.json",
+  "configDigest": "sha256:49a09b6e49f796ae7a5474b5ca7c06a76985fe59a346afa22705b381f3b2a97d",
+  "goalIds": [
+    "e42c208d-9555-43cc-92f5-5bb4c0688726",
+    "f17935b0-189f-5e0c-988d-ce508b710097",
+    "15512e77-31e3-5222-8a6b-84791618e5ce",
+    "76478e47-5ff9-5de1-b601-5e6e436ad855",
+    "797ee047-b8dd-45cf-880e-98571a56c690",
+    "0a154cbd-1218-4553-835c-a754e9901bba"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 793,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:1f5d2ad8968a2220fc10ddcc8096c6f439799928b92f5f55993d57f1230a0e22"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:95da8393c3e44772b0a2b0325935aeee32d4df5ebeed5a205e808a99de095800",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:781cf34036aa8135021e341dbb4493e0bc32b7a549cb10f301582b70a5bb956a",
+    "reviewInputFingerprint": "sha256:2dcee5e6c127ea42de4ff4c935798ff16dbbee160ed97329851d9709df8fa256",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-a",
+        "campaignDigest": "sha256:ef18bc5e158dd7776323f20682abfdece9bfea6f8daeb244d1002d6589f4a71c",
+        "roundId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f498089948884ebe0b009ecf27d07f6099ecc61579c6bc352fe353422d20cd51"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-b",
+        "campaignDigest": "sha256:ee2a61b497d69181b96cabc943e208c50fabf1c4ee25005b9136d66ad7fe8870",
+        "roundId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-028-j8-algebra-systems-inequalities-fractions-6-v1-20260902-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:49334be7de7884d9a3faeee3cc6d049966b551b178d418033f2eef7f7b46fcbf"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

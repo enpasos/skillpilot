@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `481ffd56-d585-56fe-b525-ed423e30eed3`
 - Titel: Entwicklung astronomischer Weltbilder rekonstruieren (LK)
-- Beschreibung: Die lernende Person kann die Entwicklung des astronomischen Weltbildes von Ptolemäus bis Newton fachlich und zeitlich strukturieren.
+- Beschreibung: Die lernende Person kann die Entwicklung astronomischer Weltbilder von Ptolemäus über Kopernikus und Kepler bis Newton chronologisch rekonstruieren, den Stationen zentrale Modellannahmen oder Neuerungen zuordnen und die Übergänge anhand dieser Veränderungen begründen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Entwicklung astronomischer Weltbilder rekonstruieren (LK)
-Beschreibung: Die lernende Person kann die Entwicklung des astronomischen Weltbildes von Ptolemäus bis Newton fachlich und zeitlich strukturieren.
+Beschreibung: Die lernende Person kann die Entwicklung astronomischer Weltbilder von Ptolemäus über Kopernikus und Kepler bis Newton chronologisch rekonstruieren, den Stationen zentrale Modellannahmen oder Neuerungen zuordnen und die Übergänge anhand dieser Veränderungen begründen.
 
 Zusatzanweisung:
 Pflichtinhalt:

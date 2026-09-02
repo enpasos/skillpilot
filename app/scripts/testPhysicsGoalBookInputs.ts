@@ -126,6 +126,46 @@ const NATIONAL_PHYSICS_VIEW_IDS = new Set([
   'de-de-gym-sekii-physics-gk',
   'de-de-gym-sekii-physics-lk',
 ])
+const GRAVITATION_ROOT_GOAL_ID = '0ade0d10-8b32-5a95-a1a9-8ac64e2a8089'
+const GRAVITATION_LK_ONLY_PROJECTION_ROOTS = [
+  {
+    goalId: '16caf92e-2800-57d1-946c-5b92ce848a96',
+    kind: 'goalEntry',
+  },
+  {
+    goalId: '89cadf81-143b-5f6b-82bd-29ba20d92a1b',
+    kind: 'goalEntry',
+  },
+  {
+    goalId: '423e21b9-0d0c-5709-899d-7ab738b55e36',
+    kind: 'canonicalSubtree',
+  },
+] as const
+const GRAVITATION_LK_ONLY_GOAL_IDS = [
+  ...GRAVITATION_LK_ONLY_PROJECTION_ROOTS.map(({ goalId }) => goalId),
+  '481ffd56-d585-56fe-b525-ed423e30eed3',
+  '1b833656-cd16-5b21-973a-9810960dcfd2',
+  'c968d263-8be4-5cf9-b320-e95398fe648f',
+] as const
+const GRAVITATION_COMPOSITION_JURISDICTIONS = [
+  'bb', 'be', 'hb', 'he', 'hh', 'mv', 'ni', 'nw', 'rp', 'sh', 'sl', 'sn', 'st', 'th',
+] as const
+const EXPECTED_GRAVITATION_GK_VIEW_IDS = new Set([
+  'de-de-gym-physics-gk',
+  'de-de-gym-sekii-physics-gk',
+  ...GRAVITATION_COMPOSITION_JURISDICTIONS.flatMap((jurisdiction) => [
+    `de-${jurisdiction}-gym-physics-gk`,
+    `de-${jurisdiction}-gym-sekii-physics-gk`,
+  ]),
+])
+const EXPECTED_GRAVITATION_LK_VIEW_IDS = new Set([
+  'de-de-gym-physics-lk',
+  'de-de-gym-sekii-physics-lk',
+  ...GRAVITATION_COMPOSITION_JURISDICTIONS.flatMap((jurisdiction) => [
+    `de-${jurisdiction}-gym-physics-lk`,
+    `de-${jurisdiction}-gym-sekii-physics-lk`,
+  ]),
+])
 const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   '31a2ef52-114b-4d2c-a720-6ef5a390b6dc',
   '32b896b9-f2f1-4d4e-96ad-e869ac3d3759',
@@ -1233,6 +1273,8 @@ const allPhysicsViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIREC
 assert.equal(allPhysicsViewPaths.length, 69, 'Physics projection QA must bind all 69 composition views')
 const validatedNationalPhysicsViewIds = new Set<string>()
 const validatedStrictBwBySekIViewIds = new Set<string>()
+const validatedGravitationGkViewIds = new Set<string>()
+const validatedGravitationLkViewIds = new Set<string>()
 
 allPhysicsViewPaths.forEach((viewPath) => {
   const view = normalizeCompositionView(readJson(viewPath))
@@ -1246,6 +1288,41 @@ allPhysicsViewPaths.forEach((viewPath) => {
   assert.deepEqual(errors, [], `invalid Physics composition view ${viewPath}`)
 
   const visibleGoalIds = collectVisibleGoalIds(compilation.compiledRootNodes)
+  const gravitationRootIsTarget = visibleGoalIds.has(GRAVITATION_ROOT_GOAL_ID)
+  const authoredGravitationProjectionRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
+    .filter(({ goalId }) => GRAVITATION_LK_ONLY_PROJECTION_ROOTS.some((root) => root.goalId === goalId))
+    .sort((left, right) => compareCodePoints(left.goalId, right.goalId))
+  if (view.scope.courseProfile === 'GK') {
+    GRAVITATION_LK_ONLY_GOAL_IDS.forEach((goalId) => {
+      assert(
+        !visibleGoalIds.has(goalId),
+        `${view.viewId} must not expose LK-only gravitation goal ${goalId} as a GK target`,
+      )
+    })
+    if (gravitationRootIsTarget) {
+      assert.deepEqual(
+        authoredGravitationProjectionRoots,
+        [...GRAVITATION_LK_ONLY_PROJECTION_ROOTS]
+          .sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
+        `${view.viewId} must retain all three explicit gravitation prerequisiteOnly overrides`,
+      )
+      validatedGravitationGkViewIds.add(view.viewId)
+    }
+  }
+  if (view.scope.courseProfile === 'LK' && gravitationRootIsTarget) {
+    assert.deepEqual(
+      authoredGravitationProjectionRoots,
+      [],
+      `${view.viewId} must not downgrade LK gravitation targets to prerequisite-only`,
+    )
+    GRAVITATION_LK_ONLY_GOAL_IDS.forEach((goalId) => {
+      assert(
+        visibleGoalIds.has(goalId),
+        `${view.viewId} must retain LK gravitation target ${goalId}`,
+      )
+    })
+    validatedGravitationLkViewIds.add(view.viewId)
+  }
   if (
     (view.scope.jurisdiction === 'DE-BW' || view.scope.jurisdiction === 'DE-BY')
     && view.scope.stage === 'CrossStage'
@@ -1444,6 +1521,16 @@ assert.deepEqual(
     'de-by-gym-physics-lk',
   ],
   'Physics projection QA must bind all strict BW/BY CrossStage Sek-I routes',
+)
+assert.deepEqual(
+  [...validatedGravitationGkViewIds].sort(compareCodePoints),
+  [...EXPECTED_GRAVITATION_GK_VIEW_IDS].sort(compareCodePoints),
+  'Physics projection QA must bind exactly the 30 GK views with the broad gravitation target',
+)
+assert.deepEqual(
+  [...validatedGravitationLkViewIds].sort(compareCodePoints),
+  [...EXPECTED_GRAVITATION_LK_VIEW_IDS].sort(compareCodePoints),
+  'Physics projection QA must bind exactly the 30 matching LK views with the broad gravitation target',
 )
 
 const atlasCurricularAtomicGoalIds = new Set<string>()

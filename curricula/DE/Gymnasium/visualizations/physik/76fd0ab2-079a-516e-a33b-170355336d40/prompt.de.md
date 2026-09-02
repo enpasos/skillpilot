@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `76fd0ab2-079a-516e-a33b-170355336d40`
 - Titel: Grenzen der Vorhersagbarkeit (Chaos)
-- Beschreibung: Deterministisches Chaos in mechanischen Systemen. Verständnis, dass kleine Änderungen der Anfangsbedingungen zu großen Abweichungen führen (Schmetterlingseffekt).
+- Beschreibung: Die lernende Person kann an mechanischen Systemen erklären, dass bei deterministischem Chaos geringfügig verschiedene Anfangsbedingungen mit der Zeit zu stark auseinanderlaufenden Bewegungsverläufen führen und dadurch langfristige Vorhersagen begrenzt sind.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Grenzen der Vorhersagbarkeit (Chaos)
-Beschreibung: Deterministisches Chaos in mechanischen Systemen. Verständnis, dass kleine Änderungen der Anfangsbedingungen zu großen Abweichungen führen (Schmetterlingseffekt).
+Beschreibung: Die lernende Person kann an mechanischen Systemen erklären, dass bei deterministischem Chaos geringfügig verschiedene Anfangsbedingungen mit der Zeit zu stark auseinanderlaufenden Bewegungsverläufen führen und dadurch langfristige Vorhersagen begrenzt sind.
 
 Zusatzanweisung:
 Pflichtinhalt:

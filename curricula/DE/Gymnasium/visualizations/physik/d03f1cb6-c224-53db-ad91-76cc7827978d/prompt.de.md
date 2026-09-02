@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `d03f1cb6-c224-53db-ad91-76cc7827978d`
 - Titel: Harmonische Schwingung verstehen
-- Beschreibung: Die lernende Person kann eine harmonische Schwingung als periodischen Vorgang beschreiben und sie im t-s-Diagramm anhand von Feder- oder Fadenpendel experimentell untersuchen.
+- Beschreibung: Die lernende Person kann eine harmonische Schwingung als sinusförmiges periodisches Modell beschreiben und anhand eines t-s-Diagramms experimentell untersuchen, inwieweit die Bewegung eines Federpendels im linearen Bereich oder eines Fadenpendels bei kleinen Winkelauslenkungen diesem Modell entspricht.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Harmonische Schwingung verstehen
-Beschreibung: Die lernende Person kann eine harmonische Schwingung als periodischen Vorgang beschreiben und sie im t-s-Diagramm anhand von Feder- oder Fadenpendel experimentell untersuchen.
+Beschreibung: Die lernende Person kann eine harmonische Schwingung als sinusförmiges periodisches Modell beschreiben und anhand eines t-s-Diagramms experimentell untersuchen, inwieweit die Bewegung eines Federpendels im linearen Bereich oder eines Fadenpendels bei kleinen Winkelauslenkungen diesem Modell entspricht.
 
 Zusatzanweisung:
 Pflichtinhalt:

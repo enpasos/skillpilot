@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `156edddc-ce8d-580d-8d17-d9376d59e60e`
 - Titel: Gravitationsfeld als Feldgröße einführen
-- Beschreibung: Die lernende Person kann das Gravitationsfeld als Verallgemeinerung des Kraftbegriffs einführen und einfache Feldlinienbilder für zentrale Massen skizzieren.
+- Beschreibung: Die lernende Person kann das Gravitationsfeld als ortsabhängige Vektorgröße erklären, die der Gravitationskraft auf einen Probekörper pro Masse dieses Probekörpers entspricht, und das radialsymmetrische Feld einer zentralen Masse durch nach innen gerichtete Feldlinien darstellen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Gravitationsfeld als Feldgröße einführen
-Beschreibung: Die lernende Person kann das Gravitationsfeld als Verallgemeinerung des Kraftbegriffs einführen und einfache Feldlinienbilder für zentrale Massen skizzieren.
+Beschreibung: Die lernende Person kann das Gravitationsfeld als ortsabhängige Vektorgröße erklären, die der Gravitationskraft auf einen Probekörper pro Masse dieses Probekörpers entspricht, und das radialsymmetrische Feld einer zentralen Masse durch nach innen gerichtete Feldlinien darstellen.
 
 Zusatzanweisung:
 Pflichtinhalt:

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b028a-round-a-codex-20260902",
+  "campaignId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-a",
+  "roundId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:64be6b8f89d3351eac24912d738bdb21227c14c8ee549e7ec4b1f80df7d98e09",
+  "bundleFingerprint": "sha256:c05e6b52093285c08bd9ab28720a1a8e84e45d52dae9355b4a1544a0db012f7c",
+  "bookDigest": "sha256:7ee8ccd8ce79ca14a51784f9420f20e556c6836b69ce47ea44b9fc20a5846489",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-028a-e-chaos-gravitation-worldviews-revised-6-v1-20260902-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "76fd0ab2-079a-516e-a33b-170355336d40",
+    "92d8f398-0c9f-523c-88d7-44165b6b4768",
+    "156edddc-ce8d-580d-8d17-d9376d59e60e",
+    "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+    "25edd154-b1d8-546c-94a5-88502b6725cd",
+    "481ffd56-d585-56fe-b525-ed423e30eed3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:acafd4da375c193e1d7a52df315325d349e7eb9bb787c6fdd35bf506c4815a5a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:64be6b8f89d3351eac24912d738bdb21227c14c8ee549e7ec4b1f80df7d98e09"
+    }
+  ],
+  "startedAt": "2026-09-02T08:43:00Z",
+  "completedAt": "2026-09-02T09:10:44Z",
+  "status": "completed",
+  "outputDigest": "sha256:361e260a1fef1dfa415b16f33308f096dbc2cc07971d8900dc590bebd2d33b0c",
+  "toolchainVersion": "codex-review-agent-v1"
+}

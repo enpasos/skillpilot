@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b030-first-pass-b-codex-20260902-153209",
+  "campaignId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-b",
+  "roundId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:27b982e09730ff88629fa8201fde8d38cd6db12e8e75209cb6683338d3b60ff3",
+  "bundleFingerprint": "sha256:7afd40b6bad76a153f2eeed5bfc57edfb8c7aafea71e4dc54c26c4de6c6b06a2",
+  "bookDigest": "sha256:f99fb32c05c8b568d86f31f439e11201bf9c1f69c201582bcbd0b11aefdc327f",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "modelVersion": "unspecified",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:9fb1f505082e2f80a243a5eee4b55de3dbcf2024820959dfb74cb00b674474e1",
+  "independenceGroupId": "physik-rollout-v1-batch-030-q1-charge-magnetism-4-v1-20260902-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+    "25998fed-ea4d-4c3e-b606-e965b5d7f290",
+    "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+    "9854589c-5feb-4942-b90f-311ddf36eb78"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:7ca2d8af7bfdb2cca44e0c674e97d3c622d063d11c62d504147a769f7cc8df21"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:27b982e09730ff88629fa8201fde8d38cd6db12e8e75209cb6683338d3b60ff3"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-02T15:32:09Z",
+  "completedAt": "2026-09-02T15:34:24Z",
+  "status": "completed",
+  "outputDigest": "sha256:09791b3704e1d6cc0bac3a08f321ebd00b09993628805eaab65bc9ebd067344d",
+  "toolchainVersion": "manual-schema-check-v1"
+}

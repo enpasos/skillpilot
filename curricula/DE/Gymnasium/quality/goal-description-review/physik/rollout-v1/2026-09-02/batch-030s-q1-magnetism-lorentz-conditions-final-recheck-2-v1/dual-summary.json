@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6251eb20aa2bef5e00985f88cd2e2bd410471af64d3a6152feacce5d0baf23df",
+  "reviewInputFingerprint": "sha256:f141023339c0a746dc5d1d83d930134beb328c60a7b888434ba64cf8f6617967",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-5.6-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+      "firstRecordId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.run-001.0924162b-46d0-5c56-93bc-33e1f5ac6886",
+      "secondRecordId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001.run-001.record-001",
+      "firstRunId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+      "firstRecordId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.run-001.9854589c-5feb-4942-b90f-311ddf36eb78",
+      "secondRecordId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001.run-001.record-002",
+      "firstRunId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1-20260902-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8f5614c9267db72ec387fd1ac143da656c2fa8db777b24e4311dd9e0008a7409",
+  "reviewInputFingerprint": "sha256:ef243a477b1bffc871d270311317f5921d5c7d4e274dfea31e0f4a14c3b5e6b1",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-a",
+      "roundId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-independent-a",
+      "runIds": [
+        "math-b024a-round-a-openai-gpt-5.6-sol-20260902t104833"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-b",
+      "roundId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5.6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "ae772695-d55e-4cc5-81bc-6605272759b4",
+      "firstRecordId": "math-b024a-a-001-ae772695",
+      "secondRecordId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216.goal-001",
+      "firstRunId": "math-b024a-round-a-openai-gpt-5.6-sol-20260902t104833",
+      "secondRunId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "firstRecordId": "math-b024a-a-002-4acca6ef",
+      "secondRecordId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216.goal-002",
+      "firstRunId": "math-b024a-round-a-openai-gpt-5.6-sol-20260902t104833",
+      "secondRunId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "firstRecordId": "math-b024a-a-003-2f598bc7",
+      "secondRecordId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216.goal-003",
+      "firstRunId": "math-b024a-round-a-openai-gpt-5.6-sol-20260902t104833",
+      "secondRunId": "mathematik-rollout-v1-batch-024a-j8-linear-functions-revised-3-v1-20260902-first-pass-b.codex-gpt-5-6-20260902-105216",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

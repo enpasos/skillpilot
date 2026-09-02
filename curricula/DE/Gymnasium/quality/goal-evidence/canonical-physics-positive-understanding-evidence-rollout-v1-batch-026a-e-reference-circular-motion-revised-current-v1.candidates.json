@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b026a-e-reference-circular-motion-revised-v1",
+  "reviewedAt": "2026-09-02T06:58:01.000Z",
+  "reviewer": "codex-physics-b026a-positive-understanding-candidate-author-2026-09-02",
+  "goals": [
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "reason": "DE: Das Profil macht die bezugssystemabhängige Vektorbeziehung positiv sichtbar: Es verlangt die explizite Benennung von Körpern und Bezugssystemen, eine begründete Referenzwahl sowie eine richtungs- und komponentenbewusste Überlagerung. Zwei unabhängige Fälle verändern sowohl Beobachterbezug als auch Bewegungsgeometrie; die Visualisierung ist nur gebundener Ressourcenkontext und weder Vorlage noch Evidenz. EN: The profile makes the frame-dependent vector relationship positively observable: it requires explicit identification of bodies and frames, a justified frame choice, and a direction- and component-aware combination. Two independent cases change both the observer frame and the motion geometry; the visualization is only bound resource context and neither a template nor evidence.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "frame-choice-and-relative-quantity",
+            "essentialUnderstandingDe": "Eine Geschwindigkeit beschreibt die Bewegung eines Körpers relativ zu einem gewählten Bezugssystem. Welche Geschwindigkeit erklärt werden soll, bestimmt daher, welche Körper, Beobachter und Bezugssysteme unterschieden und welcher Bezug begründet gewählt werden müssen.",
+            "essentialUnderstandingEn": "A velocity describes the motion of a body relative to a chosen reference frame. The velocity to be explained therefore determines which bodies, observers, and frames must be distinguished and which reference must be chosen with justification.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einer neuen Bewegungssituation die beteiligten Körper und Bezugssysteme, formuliert die gesuchte relative Geschwindigkeit und wählt ein Bezugssystem, dessen Eignung sie für diese Frage begründet.",
+            "observablePerformanceEn": "In a new motion situation, the learner identifies the bodies and reference frames involved, states the relative velocity being sought, and chooses a frame whose suitability is justified for that question."
+          },
+          {
+            "id": "directed-vector-combination",
+            "essentialUnderstandingDe": "Relativgeschwindigkeiten sind gerichtete Größen. Die Geschwindigkeit eines Körpers in einem gewählten Bezugssystem ergibt sich aus einer konsistent gerichteten Vektor- oder Komponentenüberlagerung, sodass Vorzeichen, Richtung und Betrag zur beschriebenen Bewegung passen müssen.",
+            "essentialUnderstandingEn": "Relative velocities are directed quantities. The velocity of a body in a chosen frame results from a consistently directed vector or component combination, so sign, direction, and magnitude must fit the motion being described.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder erläutert passende Geschwindigkeitsvektoren beziehungsweise Komponenten, überlagert sie nachvollziehbar und prüft das Ergebnis durch eine qualitative Richtungsprognose und eine Erklärung aus dem gewählten Bezugssystem.",
+            "observablePerformanceEn": "The learner constructs or explains suitable velocity vectors or components, combines them transparently, and checks the result through a qualitative direction prediction and an explanation from the chosen reference frame."
+          },
+          {
+            "id": "changed-observer-transfer",
+            "essentialUnderstandingDe": "Bei einem Wechsel des Beobachterbezugs oder bei nicht parallelen Bewegungen muss die Bewegungsbeschreibung neu aus den relativen Vektoren aufgebaut werden. Unterschiedliche Geschwindigkeitsangaben sind dann verschiedene, jeweils konsistente Beschreibungen derselben Bewegung und kein Widerspruch.",
+            "essentialUnderstandingEn": "When the observer frame changes or the motions are not parallel, the motion description must be rebuilt from the relative vectors. Different velocity statements are then different, internally consistent descriptions of the same motion rather than a contradiction.",
+            "observablePerformanceDe": "Für einen veränderten Beobachter oder eine zweidimensionale Bewegungsanordnung sagt die lernende Person zunächst die erwartete Bewegungsrichtung voraus, bestimmt anschließend die resultierende Geschwindigkeit und erklärt, warum sich ihre Beschreibung gegenüber einem anderen Bezugssystem ändert.",
+            "observablePerformanceEn": "For a changed observer or a two-dimensional motion arrangement, the learner first predicts the expected direction of motion, then determines the resulting velocity and explains why its description changes relative to another reference frame."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["frame-choice-and-relative-quantity", "directed-vector-combination", "changed-observer-transfer"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "observer-frame",
+            "textDe": "Ufer-, Fahrzeug- oder mitbewegtes Bezugssystem mit jeweils anderer gesuchter Relativgeschwindigkeit",
+            "textEn": "Shore, vehicle, or co-moving reference frame with a different relative velocity sought in each case"
+          },
+          {
+            "id": "motion-geometry",
+            "textDe": "Parallele Bewegungen auf einer Linie oder nicht parallele Bewegungen mit zwei Komponenten",
+            "textEn": "Parallel motions on one line or non-parallel motions with two components"
+          },
+          {
+            "id": "available-representation",
+            "textDe": "Verbale Situationsbeschreibung, Vektorskizze oder tabellarisch gegebene Komponenten, die erst einer Bewegungsbeschreibung zugeordnet werden müssen",
+            "textEn": "Verbal situation description, vector sketch, or tabulated components that must first be assigned to a motion description"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "walker-on-moving-train",
+            "taskDemandDe": "Ein Zug fährt gleichförmig mit 18 m/s nach Osten. Eine Person geht im Zug mit 1,5 m/s nach Osten. Beschreibe die Geschwindigkeit der Person aus Sicht des Zuges und aus Sicht des Bodens, kennzeichne die Bezugssysteme und begründe die jeweilige Vektorüberlagerung.",
+            "taskDemandEn": "A train travels uniformly eastward at 18 m/s. A person walks eastward in the train at 1.5 m/s. Describe the person's velocity from the train and ground frames, identify the reference frames, and justify the vector combination in each case.",
+            "expectedPerformanceDe": "Die lernende Person trennt Gehgeschwindigkeit relativ zum Zug und Zuggeschwindigkeit relativ zum Boden, ordnet beide gerichteten Größen derselben Ost-Richtung zu, bestimmt 1,5 m/s beziehungsweise 19,5 m/s in den passenden Bezugssystemen und erklärt, warum beide Angaben gleichzeitig zutreffen.",
+            "expectedPerformanceEn": "The learner separates walking velocity relative to the train from train velocity relative to the ground, assigns both directed quantities to the same eastward direction, determines 1.5 m/s and 19.5 m/s in the appropriate frames, and explains why both statements are simultaneously valid.",
+            "understandingFocusDe": "Der lineare Fall prüft die explizite Referenzwahl und die Bedeutung der relativen Größen, nicht bloß eine Addition ohne Bezug.",
+            "understandingFocusEn": "The one-dimensional case tests explicit frame selection and the meaning of relative quantities, not merely addition without a reference."
+          },
+          {
+            "id": "boat-crossing-current",
+            "taskDemandDe": "Ein Boot bewegt sich relativ zum Wasser mit 3,0 m/s senkrecht zum Ufer nach Norden; die Strömung bewegt das Wasser mit 2,0 m/s nach Osten relativ zum Ufer. Zeichne oder beschreibe die Geschwindigkeitsvektoren, sage die Fahrtrichtung relativ zum Ufer voraus und bestimme die resultierende Geschwindigkeit des Boots relativ zum Ufer.",
+            "taskDemandEn": "A boat moves northward, perpendicular to the shore, at 3.0 m/s relative to the water; the current moves the water eastward at 2.0 m/s relative to the shore. Draw or describe the velocity vectors, predict the direction of travel relative to the shore, and determine the boat's resulting velocity relative to the shore.",
+            "expectedPerformanceDe": "Die lernende Person benennt Wasser und Ufer als verschiedene Bezugssysteme, überlagert einen Nord- und einen Ost-Vektor zu den Komponenten (2,0; 3,0) m/s, bestimmt den Betrag √13 m/s ≈ 3,61 m/s und die Richtung 33,7° östlich von Nord und gibt beide nur zusammen mit dem Bezugssystem an.",
+            "expectedPerformanceEn": "The learner identifies water and shore as different reference frames, combines a northward and an eastward vector into components (2.0; 3.0) m/s, determines the magnitude √13 m/s ≈ 3.61 m/s and the direction 33.7° east of north, and states both only together with the reference frame.",
+            "understandingFocusDe": "Der neue zweidimensionale Fall prüft unabhängigen Transfer der gerichteten Überlagerung statt Wiedererkennen einer vorgegebenen Darstellung.",
+            "understandingFocusEn": "The fresh two-dimensional case tests independent transfer of directed combination rather than recognition of a supplied representation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "reason": "DE: Das Profil verbindet die Definitionen von Winkel- und Bahngeschwindigkeit mit Bogenlänge, Einheiten, tangentialer Bewegungsrichtung und der Struktur v = ωr. Die Fälle wechseln Radius, Darstellungsform und feste Größe, sodass die Beziehung erklärt und übertragen werden muss statt nur Zahlen einzusetzen. Es gibt keine gebundene Visualisierung; kein Fall verwendet eine vorgegebene Visualisierung als Evidenz. EN: The profile connects the definitions of angular and tangential speed with arc length, units, tangential direction, and the structure v = ωr. The cases change radius, representation, and the quantity held fixed, so the relationship must be explained and transferred rather than merely used for substitution. There is no bound visualization; no case uses a supplied visualization as evidence.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "distinguish-angular-and-tangential-meaning",
+            "essentialUnderstandingDe": "Die Winkelgeschwindigkeit beschreibt die Winkeländerung pro Zeit, während die Bahngeschwindigkeit die pro Zeit entlang der Kreisbahn zurückgelegte Strecke beschreibt und tangential zur Bahn gerichtet ist. Die Größen haben deshalb unterschiedliche Bedeutungen und Einheiten.",
+            "essentialUnderstandingEn": "Angular speed describes angular change per unit time, whereas tangential speed describes distance travelled along the circular path per unit time and is directed tangentially to the path. The quantities therefore have different meanings and units.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus einer neuen Kreisbewegung passende Winkeländerungen, Bogenlängen und Zeiten, definiert daraus ω und v mit Einheiten und erklärt an der Bewegungsgeometrie die tangentiale Richtung von v.",
+            "observablePerformanceEn": "From a new circular motion, the learner identifies appropriate angular changes, arc lengths, and times, defines ω and v with units, and explains from the motion geometry why v is tangential."
+          },
+          {
+            "id": "derive-and-interpret-radius-relation",
+            "essentialUnderstandingDe": "Für denselben durchlaufenen Winkel gilt s = rφ. Aus den zeitbezogenen Größen folgt daher v = ωr: Bei gleicher Winkelgeschwindigkeit ist die Bahngeschwindigkeit an einem größeren Radius größer, weil pro Zeit eine längere Bogenstrecke zurückgelegt wird.",
+            "essentialUnderstandingEn": "For the same angle swept out, s = rφ. The time-based quantities therefore give v = ωr: at the same angular speed, tangential speed is greater at a larger radius because a longer arc distance is travelled per unit time.",
+            "observablePerformanceDe": "Die lernende Person leitet v = ωr aus Bogenlänge und Zeit her, nutzt dabei konsistente Winkel- und Längeneinheiten und erklärt vor einer Rechnung, welche Größe sich bei geändertem Radius oder geänderter Winkelgeschwindigkeit wie verändert.",
+            "observablePerformanceEn": "The learner derives v = ωr from arc length and time, uses consistent angular and length units, and explains before calculating how a quantity changes when radius or angular speed changes."
+          },
+          {
+            "id": "same-rotation-fresh-transfer",
+            "essentialUnderstandingDe": "Punkte eines starren rotierenden Körpers haben dieselbe Winkelgeschwindigkeit, aber bei unterschiedlichen Radien unterschiedliche Bahngeschwindigkeiten. Wird statt der Winkelgeschwindigkeit die Umlaufzeit festgehalten, beschreibt sie dieselbe Drehung pro Zeit und muss mit dem Radius zusammen gedacht werden.",
+            "essentialUnderstandingEn": "Points on a rigid rotating body have the same angular speed but different tangential speeds at different radii. When the period rather than angular speed is held fixed, it describes the same rotation per unit time and must be considered together with radius.",
+            "observablePerformanceDe": "Die lernende Person vergleicht in einem neuen Rotationsfall Punkte mit verschiedenen Radien oder Bewegungen mit gleicher Umlaufzeit, sagt Gleichheiten und Unterschiede begründet voraus und überprüft diese anschließend mit v = ωr oder einer äquivalent hergeleiteten Beziehung.",
+            "observablePerformanceEn": "In a new rotation case, the learner compares points at different radii or motions with the same period, predicts equalities and differences with justification, and then checks them using v = ωr or an equivalently derived relationship."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["distinguish-angular-and-tangential-meaning", "derive-and-interpret-radius-relation", "same-rotation-fresh-transfer"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "radius-position",
+            "textDe": "Punkte nahe der Achse oder am Rand desselben starren rotierenden Körpers",
+            "textEn": "Points near the axis or at the rim of the same rigid rotating body"
+          },
+          {
+            "id": "fixed-quantity",
+            "textDe": "Gleiche Winkelgeschwindigkeit, gleiche Umlaufzeit oder gleiche Bahngeschwindigkeit bei verändertem Radius",
+            "textEn": "Same angular speed, same period, or same tangential speed with a changed radius"
+          },
+          {
+            "id": "motion-information",
+            "textDe": "Gegebene Winkeländerung und Zeit, Anzahl von Umdrehungen pro Zeit oder gegebene Bogenlänge mit Zeit",
+            "textEn": "Given angular change and time, number of revolutions per time, or given arc length with time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-points-on-turntable",
+            "taskDemandDe": "Eine starre Drehscheibe vollführt 0,80 Umdrehungen pro Sekunde. Punkt A liegt 0,10 m, Punkt B 0,30 m von der Achse entfernt. Bestimme für beide Punkte die Winkelgeschwindigkeit und die Bahngeschwindigkeit, erkläre die Einheiten und begründe ohne bloße Zahleneinsetzung, warum nur eine der beiden Größen für A und B gleich ist.",
+            "taskDemandEn": "A rigid turntable completes 0.80 revolutions per second. Point A is 0.10 m and point B is 0.30 m from the axis. Determine angular speed and tangential speed for both points, explain the units, and justify without mere numerical substitution why only one of the two quantities is the same for A and B.",
+            "expectedPerformanceDe": "Die lernende Person wandelt die gemeinsame Drehung pro Zeit in ω = 1,6π rad/s für beide Punkte um, bestimmt mit v = ωr vA = 0,16π m/s ≈ 0,503 m/s und vB = 0,48π m/s ≈ 1,51 m/s, nennt rad/s und m/s passend und erklärt die Differenz über die verschieden langen Bogenstrecken pro Zeit.",
+            "expectedPerformanceEn": "The learner converts the common rotation per time into ω = 1.6π rad/s for both points, determines vA = 0.16π m/s ≈ 0.503 m/s and vB = 0.48π m/s ≈ 1.51 m/s using v = ωr, uses rad/s and m/s appropriately, and explains the difference through the different arc distances travelled per unit time.",
+            "understandingFocusDe": "Der Fall prüft die begriffliche Unterscheidung und die Radiusstruktur an einem gemeinsamen Rotationssystem.",
+            "understandingFocusEn": "The case tests the conceptual distinction and radius structure within one common rotation system."
+          },
+          {
+            "id": "rotating-drum-period-change",
+            "taskDemandDe": "Eine Trommel mit Radius 0,25 m benötigt für eine Umdrehung 0,50 s. Danach wird bei unverändertem Radius die Umlaufzeit auf 1,0 s verändert. Leite aus einer Umdrehung die Beziehung zwischen Umlaufzeit, Winkel- und Bahngeschwindigkeit her, sage die Änderungen voraus und bestimme die neuen Größen.",
+            "taskDemandEn": "A drum of radius 0.25 m takes 0.50 s for one revolution. The period is then changed to 1.0 s while the radius remains unchanged. Derive the relationship between period, angular speed, and tangential speed from one revolution, predict the changes, and determine the new quantities.",
+            "expectedPerformanceDe": "Die lernende Person ordnet einer Umdrehung 2π rad und eine Bogenlänge 2πr zu, bestimmt zunächst ω = 4π rad/s und v = π m/s, erklärt, dass bei verdoppelter Umlaufzeit sowohl ω als auch v halbiert werden, und bestimmt danach ω = 2π rad/s und v = π/2 m/s mit konsistenten Einheiten und tangentialer Bewegungsrichtung.",
+            "expectedPerformanceEn": "The learner assigns 2π rad and an arc length of 2πr to one revolution, first determines ω = 4π rad/s and v = π m/s, explains that doubling the period halves both ω and v, and then determines ω = 2π rad/s and v = π/2 m/s with consistent units and tangential direction of motion.",
+            "understandingFocusDe": "Der veränderte Zeitbezug erzwingt Transfer von der Radiusvariation auf dieselbe zugrunde liegende Beziehung zwischen Winkel, Weg und Zeit.",
+            "understandingFocusEn": "The changed time basis requires transfer from radius variation to the same underlying relationship among angle, distance, and time."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "reason": "DE: Das Profil hält die Zentripetalkraft ausdrücklich als zum Mittelpunkt gerichtete Resultierende fest, nicht als zusätzliche Kraftart. Es verlangt eine Herleitung aus Richtungsänderung der Geschwindigkeit und Grundgleichung der Mechanik sowie eine parametergesteuerte Erklärung bei konstanten übrigen Größen. Zwei frische Systeme lassen unterschiedliche reale Wechselwirkungen dieselbe Resultierende liefern; die gebundene Visualisierung ist nur Ressourcenkontext und weder Antwortvorlage noch Evidenz. EN: The profile explicitly retains centripetal force as the inward net force, not an additional force type. It requires a derivation from the change in velocity direction and Newton's second law, plus a parameter-controlled explanation with the other quantities held fixed. Two fresh systems let different real interactions supply the same resultant; the bound visualization is only resource context and neither an answer template nor evidence.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "velocity-direction-requires-inward-acceleration",
+            "essentialUnderstandingDe": "Bei gleichförmiger Kreisbewegung bleibt der Betrag der Geschwindigkeit konstant, ihre Richtung ändert sich jedoch fortlaufend. Diese Richtungsänderung verlangt eine zum Mittelpunkt gerichtete Beschleunigung mit dem Betrag a_z = v²/r; die Bedingung gleichförmig begrenzt die Aussage.",
+            "essentialUnderstandingEn": "In uniform circular motion, the magnitude of velocity remains constant but its direction changes continuously. This change of direction requires an acceleration directed toward the centre with magnitude a_c = v²/r; the condition of uniform motion bounds the statement.",
+            "observablePerformanceDe": "Die lernende Person erläutert an einer selbst erstellten Skizze von Geschwindigkeitsvektoren oder deren Änderung die nach innen gerichtete Beschleunigung, begründet a_z = v²/r für die gleichförmige Kreisbewegung und benennt die Bedingung, unter der diese Herleitung angewendet wird.",
+            "observablePerformanceEn": "Using a self-created sketch of velocity vectors or their change, the learner explains the inward acceleration, justifies a_c = v²/r for uniform circular motion, and states the condition under which this derivation is applied."
+          },
+          {
+            "id": "net-force-not-extra-force",
+            "essentialUnderstandingDe": "Nach der Grundgleichung der Mechanik muss die Vektorsumme der tatsächlich wirkenden Kräfte die nach innen gerichtete Beschleunigung verursachen. Die Zentripetalkraft bezeichnet diese Resultierende und ist keine zusätzliche Kraft neben etwa Seilkraft, Reibung oder Gewichtskraft.",
+            "essentialUnderstandingEn": "By Newton's second law, the vector sum of the actual forces must cause the inward acceleration. Centripetal force names this resultant and is not an additional force alongside forces such as tension, friction, or weight.",
+            "observablePerformanceDe": "Die lernende Person zeichnet oder beschreibt für einen neuen Kreisbewegungsfall nur die realen wirkenden Kräfte, bildet deren zum Mittelpunkt gerichtete Resultierende und erklärt mit F_z = ma_z, warum deren Betrag F_z = mv²/r ist, ohne eine zusätzliche Zentripetalkraft einzuzeichnen.",
+            "observablePerformanceEn": "For a new circular-motion case, the learner draws or describes only the real forces acting, forms their inward resultant, and explains using F_c = ma_c why its magnitude is F_c = mv²/r without drawing an additional centripetal force."
+          },
+          {
+            "id": "controlled-parameter-dependence-transfer",
+            "essentialUnderstandingDe": "Bei konstanten übrigen Größen ist die erforderliche nach innen gerichtete Resultierende proportional zur Masse, proportional zum Quadrat der Geschwindigkeit und umgekehrt proportional zum Radius. Eine Änderung muss deshalb jeweils unter klar benannten konstant gehaltenen Größen gedeutet werden.",
+            "essentialUnderstandingEn": "With the other quantities held constant, the required inward resultant is proportional to mass, proportional to the square of speed, and inversely proportional to radius. A change must therefore be interpreted with the quantities held constant clearly named each time.",
+            "observablePerformanceDe": "Die lernende Person sagt für eine neue gezielte Parameteränderung vor der Rechnung Richtung und Faktoränderung der Resultierenden voraus, begründet etwa eine Verdopplung von v mit dem Faktor vier und prüft das Ergebnis anschließend auf Einheiten und physikalische Plausibilität.",
+            "observablePerformanceEn": "For a new deliberate parameter change, the learner predicts the direction and factor change of the resultant before calculating, justifies, for example, doubling v with a factor of four, and then checks the result for units and physical plausibility."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["velocity-direction-requires-inward-acceleration", "net-force-not-extra-force", "controlled-parameter-dependence-transfer"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "real-interaction-supplying-resultant",
+            "textDe": "Seilkraft, Haftreibung oder eine andere gegebene reale Wechselwirkung liefert die zum Mittelpunkt gerichtete Resultierende",
+            "textEn": "Tension, static friction, or another given real interaction supplies the inward resultant"
+          },
+          {
+            "id": "controlled-parameter-change",
+            "textDe": "Änderung von Masse, Geschwindigkeit oder Radius bei ausdrücklich konstant gehaltenen übrigen Größen",
+            "textEn": "Change of mass, speed, or radius with the other quantities explicitly held constant"
+          },
+          {
+            "id": "force-representation",
+            "textDe": "Geschwindigkeitsänderungs-Skizze, Kräftebild oder verbale Beschreibung, aus der die reale Kräftebilanz erst konstruiert werden muss",
+            "textEn": "Velocity-change sketch, force diagram, or verbal description from which the real force balance must first be constructed"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mass-on-horizontal-string",
+            "taskDemandDe": "Ein Körper der Masse 0,50 kg bewegt sich auf einer horizontalen, reibungsarmen Fläche an einem gespannten Seil mit 4,0 m/s auf einem Kreis mit Radius 2,0 m. Leite die erforderliche nach innen gerichtete Resultierende her, zeichne die realen horizontalen Kräfte und erkläre, welche Rolle die Seilkraft spielt.",
+            "taskDemandEn": "A 0.50 kg body moves on a horizontal frictionless surface on a taut string at 4.0 m/s in a circle of radius 2.0 m. Derive the required inward resultant, draw the real horizontal forces, and explain the role of the tension force.",
+            "expectedPerformanceDe": "Die lernende Person begründet aus der Richtungsänderung der Geschwindigkeit a_z = v²/r, erhält F_z = 4,0 N, zeichnet die Seilkraft als einzige horizontale reale Kraft zum Mittelpunkt und erläutert, dass sie hier die Resultierende und nicht zusätzlich zu einer Zentripetalkraft wirkt.",
+            "expectedPerformanceEn": "The learner justifies a_c = v²/r from the change in velocity direction, obtains F_c = 4.0 N, draws tension as the sole real horizontal force toward the centre, and explains that here it is the resultant rather than a force in addition to centripetal force.",
+            "understandingFocusDe": "Der Fall prüft die zusammenhängende Herleitung und die Unterscheidung zwischen realer Kraft und Bezeichnung der Resultierenden.",
+            "understandingFocusEn": "The case tests the connected derivation and the distinction between a real force and the name of the resultant."
+          },
+          {
+            "id": "car-on-level-curve-speed-change",
+            "taskDemandDe": "Ein Auto fährt auf einer ebenen Kreisbahn mit Radius 50 m. Bei 10 m/s liefert die Haftreibung die erforderliche nach innen gerichtete Resultierende. Bestimme, wie sich deren Betrag ändert, wenn bei gleichem Auto und Radius die Geschwindigkeit auf 20 m/s steigt, und erkläre anhand eines Kräftebilds, warum keine zusätzliche Kraftart hinzukommt.",
+            "taskDemandEn": "A car travels on a level circular path of radius 50 m. At 10 m/s, static friction supplies the required inward resultant. Determine how its magnitude changes when the speed rises to 20 m/s while the same car and radius are retained, and explain with a force diagram why no additional force type is added.",
+            "expectedPerformanceDe": "Die lernende Person hält Masse und Radius ausdrücklich konstant, sagt vor der Rechnung eine Vervierfachung der Resultierenden voraus, begründet sie mit der quadratischen Geschwindigkeitsabhängigkeit und zeichnet die Haftreibung als reale nach innen gerichtete Kraft, die in diesem Fall die Resultierende bildet.",
+            "expectedPerformanceEn": "The learner explicitly holds mass and radius constant, predicts a fourfold resultant before calculating, justifies it through the quadratic speed dependence, and draws static friction as the real inward force that forms the resultant in this case.",
+            "understandingFocusDe": "Der veränderte reale Mechanismus und die gezielte Geschwindigkeitsänderung prüfen unabhängigen Transfer der Resultierendenidee und der kontrollierten Parameterabhängigkeit.",
+            "understandingFocusEn": "The changed real mechanism and deliberate speed change test independent transfer of the resultant idea and controlled parameter dependence."
+          }
+        ]
+      }
+    }
+  ]
+}
