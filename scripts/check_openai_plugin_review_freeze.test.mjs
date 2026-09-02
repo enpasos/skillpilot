@@ -2630,6 +2630,29 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "7a42c0f5839bc62267250573db9b447d6f10ed538fde3c268382221fb6e1559d"
         }
       ]
+    },
+    {
+      "id": "2026-09-02-j8-layer-a-regression-count",
+      "approvedAt": "2026-09-02",
+      "approvedBy": "product-owner",
+      "reason": "Align the existing J8 regression fixture with the reviewed Layer A split of one compound goal and the added ninth year-level exam while preserving the same six remaining selectable exam tasks.",
+      "scope": "In test-only backend evidence, update the J8 atomic count from 53 to 55 and classify the new ninth exam task with the already completed tasks. Preserve every product source byte and all runtime, session, identity, learner-state, package, MCP/OAuth/tool/schema/MCP-Apps-UI, review-case, fixture, portal, reviewer, demo and artifact behavior.",
+      "target": "j8-layer-a-regression-fixture-current-count-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-test-only-layer-a-count-alignment-no-runtime-openai-v1-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+          "priorAuthorizedSha256": "709d6e320153ac1fdeabae425a292c3fd409d68a3542b7353d7b77016d27a792",
+          "authorizedSha256": "2582fea64da9b7858d3a4c8930c1b0ad93af98499e51cb88cf3701860ded637d"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "7a42c0f5839bc62267250573db9b447d6f10ed538fde3c268382221fb6e1559d",
+          "authorizedSha256": "b922dd5d43085a06ab4294ada37429b3b3e1800fd5fb8c598c130ec1aa3ea18d"
+        }
+      ]
     }
   ]);
 });

@@ -2387,6 +2387,37 @@ Lernzustandsverhalten, Reviewfälle und -fixtures, Portalwerte,
 Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben unverändert. Deshalb
 ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.43 Eng begrenzte Ausnahme: J8-Test an fortgeschriebenes Layer A binden
+
+Der Product Owner hat am **2. September 2026** im Rahmen der ausdrücklich
+beauftragten CI-Stabilisierung die rein testseitige Anpassung des bestehenden
+J8-Regressionsfalls an das fortgeschriebene öffentliche Curriculum freigegeben.
+Layer A enthält nach der fachlich begründeten Teilung eines zusammengesetzten
+Lernziels und der Ergänzung einer neunten Jahrgangsprüfung nun 55 statt 53
+atomare J8-Ziele. Die sechs im Testszenario noch offenen Prüfungsaufgaben
+bleiben unverändert; die neue neunte Aufgabe wird wie die bereits erledigten
+Aufgaben 3 und 7 als abgeschlossen markiert.
+
+Freigegeben ist ausschließlich, in
+`backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java`
+die erwartete aktuelle Layer-A-Zielanzahl auf 55 zu setzen und die neue
+Prüfungsaufgabe 9 in die vorhandene Menge abgeschlossener Prüfungsaufgaben
+aufzunehmen. Die weiterhin geprüfte Zustandssemantik bleibt unverändert:
+Nach Abschluss aller sonstigen Ziele sind exakt dieselben sechs Aufgaben
+auswählbar.
+
+Die bestehende Hashkette wird append-only fortgesetzt:
+
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java`:
+  `709d6e320153ac1fdeabae425a292c3fd409d68a3542b7353d7b77016d27a792`
+  → `2582fea64da9b7858d3a4c8930c1b0ad93af98499e51cb88cf3701860ded637d`.
+
+Es ändern sich keine Produktquellen und kein Runtime-, Session-, Identitäts-
+oder Lernzustandsverhalten. OpenAI-Package, MCP/OAuth, Tools, Schemas,
+Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Reviewfälle und
+-fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben
+unverändert. Deshalb ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
