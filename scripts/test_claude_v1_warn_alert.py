@@ -763,6 +763,21 @@ class DeploymentContractTest(unittest.TestCase):
         runbook = RUNBOOK_PATH.read_text(encoding="utf-8")
         self.assertNotIn("journalctl -u skillpilot --lines=1 --output=cat", runbook)
 
+    def test_runbook_stops_for_real_receipt_before_activation(self) -> None:
+        runbook = RUNBOOK_PATH.read_text(encoding="utf-8")
+        start = runbook.index("Run the production commands only")
+        end = runbook.index("The route test proves SMTP acceptance only", start)
+        production_sequence = runbook[start:end]
+        route_test = "install_claude_v1_warn_alert.sh test-route"
+        receipt = "Stop here and confirm that the test message actually arrived"
+        activate = "install_claude_v1_warn_alert.sh activate"
+        self.assertLess(
+            production_sequence.index(route_test), production_sequence.index(receipt)
+        )
+        self.assertLess(
+            production_sequence.index(receipt), production_sequence.index(activate)
+        )
+
     def test_runbook_binds_the_owner_accepted_mailbox_password_policy(self) -> None:
         runbook = RUNBOOK_PATH.read_text(encoding="utf-8")
         for expected in (

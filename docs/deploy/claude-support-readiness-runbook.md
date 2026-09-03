@@ -169,6 +169,13 @@ git rev-parse --verify HEAD
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest scripts/test_claude_v1_warn_alert.py
 sudo bash scripts/install_claude_v1_warn_alert.sh configure
 sudo bash scripts/install_claude_v1_warn_alert.sh test-route
+```
+
+Stop here and confirm that the test message actually arrived through the
+private channel. Only after that independent receipt check succeeds, activate
+the monitor:
+
+```bash
 sudo bash scripts/install_claude_v1_warn_alert.sh activate
 sudo bash scripts/install_claude_v1_warn_alert.sh status
 ```
