@@ -37,7 +37,7 @@ import org.springframework.test.context.TestPropertySource;
  * Integration proof for the Claude 1.0.3 completion boundary.
  *
  * <p>The MCP adapter, {@code CoachToolFacade}, {@link LearnerService}, repositories and canonical
- * curriculum graph are all real. The test deliberately does not replace or spy on the canonical
+ * skill graph are all real. The test deliberately does not replace or spy on the canonical
  * service boundary: a successor is proven to be backend-selected because it is absent from the
  * request and appears identically in both canonical persistence and the returned Claude context.</p>
  */
