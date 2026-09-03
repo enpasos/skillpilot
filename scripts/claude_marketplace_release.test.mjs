@@ -47,7 +47,7 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
-test("production marketplace lane is fail-closed before external publication", () => {
+test("production marketplace lane pins the published revision while acceptance remains fail-closed", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.target.repository, "enpasos/skillpilot-claude-marketplace");
@@ -58,19 +58,22 @@ test("production marketplace lane is fail-closed before external publication", (
     "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
   );
   assert.deepEqual(lane.activation, {
-    state: "prepared_not_published",
+    state: "published_pending_acceptance",
     firstPartyUiRoute: "controlled_direct_install_beta",
     marketplaceUiSwitchAllowed: false,
     evidence: [
       {
         id: "public-repository-default-branch",
-        status: "pending",
-        revision: null,
-        treeSha256: null,
-        candidateVersion: null,
-        candidateSha256: null,
-        verifiedAt: null,
-        evidenceRef: null,
+        status: "pass",
+        revision: "de29c45e8ac293675b79e40619da0cf50ff7ed2f",
+        treeSha256:
+          "0191e65c14bf73586af618c62662fbb808f205f339b2cc1ad1c823a538ff5a6f",
+        candidateVersion: "1.0.4",
+        candidateSha256:
+          "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
+        verifiedAt: "2026-09-03T21:17:30.000Z",
+        evidenceRef:
+          "https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/33807012558",
       },
       {
         id: "clean-account-marketplace-install",
