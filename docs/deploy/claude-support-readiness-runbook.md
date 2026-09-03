@@ -42,7 +42,8 @@ the SHA-256 of each final bundle.
 | Covered support hours | No fixed staffed window; best effort; no guaranteed SLA | Active public promotion pauses during an unmonitored absence. |
 | Internal response objectives | Best effort; no guaranteed response time | On discovery of a security or privacy incident, pause promotion and contain the connector as necessary as soon as practicable. |
 | Workflow alert route | Accountable owner's private GitHub notification route | The private delivery address stays only in restricted evidence; delivery and acknowledgement still require a drill. |
-| Redacted Claude error-log alert | `NOT CONFIGURED - BLOCKING` | Alert on the existing provider-scoped WARN signal without exporting request bodies, IDs, sessions or tokens; route it to the accountable owner through a private internal channel. |
+| Redacted Claude error-log alert | `PREPARED IN REPOSITORY - BLOCKING` (`SP-CLAUDE-WARN-ALERT-V1`) | The fail-closed host monitor, protected-credential installer and hermetic tests are prepared. Production activation, receipt, redaction and rate-limit drill evidence are still required. |
+| Controlled WARN drill invoker | `UNASSIGNED - BLOCKING` | Approve an exact-MCP invocation method that can submit the reviewed stale-state arguments without exposing OAuth/session material or asking the model to violate the connector's current-version instruction. |
 | Restricted revocation procedure | `UNASSIGNED - BLOCKING` | Record the approved external procedure identifier and access owners; never put secrets or live commands here. |
 
 The supported product boundary is the one documented in the
@@ -96,6 +97,180 @@ may retain the allowlisted operation name and duration, but it must not export
 request or response bodies, learner identifiers, sessions, OAuth values or
 tokens. The public synthetic durations provide a bounded external latency
 signal; they are not authenticated tool-latency metrics.
+
+### Install the redacted provider-WARN route
+
+`SP-CLAUDE-WARN-ALERT-V1` is a separately activated host-operations control.
+It is not another connector process: it opens no port, exposes no endpoint,
+does not modify the backend and reads only the journal of the existing
+`skillpilot.service`. The router accepts the exact Spring Boot WARN envelope
+and one of the twelve frozen Claude v1 operation names. It then creates a new
+message from only the trusted journal UTC time, canonical operation name and
+bounded integer duration; the original journal line is never passed to SMTP.
+
+IONOS documents `smtp.ionos.de` with SSL/TLS on port `465`, the full mail
+address as username and the mailbox password. This monitor implements port 465
+as TLS from connection start. IONOS documents port `587` with STARTTLS as an
+alternative when port 465 appears to be blocked; this monitor has no automatic
+fallback or encryption downgrade. IONOS also requires TLS 1.2 or newer. Before
+`configure`, enable IONOS Webmail 2FA on the technical mailbox and create one
+dedicated App Password named for the Claude WARN monitor. IONOS requires an App
+Password for mail clients after Webmail 2FA is enabled. This procedure is
+deliberately stricter than the basic SMTP setup: never enter the normal mailbox
+password into this monitor.
+
+- [IONOS SMTP server settings](https://www.ionos.de/hilfe/e-mail/allgemeine-themen/serverinformationen-fuer-imap-pop3-und-smtp/)
+- [IONOS TLS 1.2 requirement](https://www.ionos.de/hilfe/e-mail/ssl-verschluesselung-fuer-e-mail/verschluesselung-ssltls-in-einem-e-mail-programm-aktivieren/)
+- [IONOS 2FA and App Passwords](https://www.ionos.de/hilfe/e-mail/webmail-nutzen/e-mail-bestaetigung-in-zwei-schritten-aktivieren-und-konfigurieren/)
+
+Do not put the technical mailbox address, App Password or private recipient in
+Git, shell history, a command argument, an environment variable or drill
+evidence. The installer reads all three values directly and privately from the
+operator terminal, stores the source credentials as root-owned mode `0600`
+files, and systemd exposes read-only copies only inside the monitor service.
+
+Before activation, inspect the real host without printing its environment:
+
+```bash
+sudo systemctl cat skillpilot
+sudo systemctl show skillpilot \
+  --property=User,Group,WorkingDirectory,StandardOutput,StandardError
+systemctl --version
+```
+
+The fixed production assumption is the existing `skillpilot.service`; service
+name overrides are deliberately unsupported. The host must run systemd 247 or
+newer. The installer enforces this minimum for `DynamicUser`, `LoadCredential`
+and `StateDirectory`. Its sandboxed route-test unit machine-checks journal
+access and the Spring Boot console envelope without printing a raw backend log
+record. `test-route` is an explicit external mail send and remains separate
+from configuration. Run the production commands only from a reviewed,
+committed and pushed source commit in a clean production checkout. The first
+command below must print nothing; retain the 40-character source commit in the
+restricted evidence bundle:
+
+```bash
+git status --porcelain=v1
+git rev-parse --verify HEAD
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest scripts/test_claude_v1_warn_alert.py
+sudo bash scripts/install_claude_v1_warn_alert.sh configure
+sudo bash scripts/install_claude_v1_warn_alert.sh test-route
+sudo bash scripts/install_claude_v1_warn_alert.sh activate
+sudo bash scripts/install_claude_v1_warn_alert.sh status
+```
+
+The route test proves SMTP acceptance only. Confirm actual receipt through the
+private channel before activation. The monitor fails closed on malformed
+credentials, state or journal cursors and uses neither plaintext SMTP transport
+nor a STARTTLS downgrade. It reserves rate-limit state atomically before
+every network access and makes exactly one SMTP attempt: no automatic SMTP
+retry is permitted. Repeat attempts for the same operation are suppressed for
+one hour, with at most four SMTP attempts per hour and twelve per rolling 24
+hours globally. An SMTP failure consumes its reserved slot and stops the
+monitor visibly without automatic restart. First run `deactivate` to remove the
+still-enabled failed state, then repair or rotate the credentials, repeat the
+sandboxed route test, confirm receipt, and explicitly activate the monitor
+again. It never puts an SMTP server error, journal line, thread, PID, path,
+cursor or credential value in its own diagnostics.
+
+Credential repair and planned rotation use an atomic replacement while the
+monitor is inactive. Keep the previous IONOS App Password valid until the new
+route test has actually arrived and `status` passes; then revoke the previous
+App Password at IONOS. Never paste either password into chat or evidence:
+
+```bash
+sudo bash scripts/install_claude_v1_warn_alert.sh deactivate
+sudo bash scripts/install_claude_v1_warn_alert.sh rotate
+sudo bash scripts/install_claude_v1_warn_alert.sh test-route
+# Confirm actual receipt through the private channel.
+sudo bash scripts/install_claude_v1_warn_alert.sh activate
+sudo bash scripts/install_claude_v1_warn_alert.sh status
+```
+
+The monitor's `systemd-journal` supplementary group necessarily permits it to
+read more of the host journal than the one requested unit. This residual host
+permission is contained by the fixed `journalctl --unit skillpilot.service`
+argument, the second `_SYSTEMD_UNIT` check, the exact logger/envelope parser,
+the typed redaction boundary and the systemd sandbox. Do not broaden the group,
+service name, accepted logger or parser. If the stored journal cursor is
+vacuumed or becomes invalid, the monitor fails closed; an authorized operator
+must investigate and deliberately reinitialize the state rather than silently
+tailing from a new position. After the cause and the last accepted/suppressed
+attempt have been reconciled, the explicit recovery sequence is:
+
+```bash
+sudo bash scripts/install_claude_v1_warn_alert.sh deactivate
+sudo bash scripts/install_claude_v1_warn_alert.sh reset-state
+sudo bash scripts/install_claude_v1_warn_alert.sh activate
+sudo bash scripts/install_claude_v1_warn_alert.sh status
+```
+
+`reset-state` requires the exact interactive confirmation phrase and deletes
+only the monitor cursor, attempt budget, runtime marker and lock file. That
+state is not recoverable; resetting it before investigation can hide delivery
+history and release a previously consumed send budget.
+
+After activation, run the criterion-6 controlled drill only through the
+reviewed exact-MCP test client or authorized synthetic harness, never as an
+ordinary learner prompt and never by improvising a raw OAuth request:
+
+1. Use a fresh authorized test learner session. Call
+   `get_skillpilot_coach_context` and require an existing `activeGoal.id` plus a
+   top-level `stateVersion` `S > 0`; otherwise abort the drill. Keep the session,
+   goal and raw context only in the restricted live test context.
+2. Call `set_skillpilot_active_goal` once with that same active goal,
+   `redirect: false`, a fresh UUID `clientRequestId` and
+   `expectedStateVersion: S - 1`. Expect `isError: true` and
+   `errorCode: STALE_STATE`, with `currentStateVersion` still equal to `S`.
+   The monotonic revision mismatch is checked before the mutation callback;
+   the already-active goal is a second nonmutation guard.
+3. Reload `get_skillpilot_coach_context`. Require the top-level state version
+   still to equal `S` and compare the active goal, focus, mastery, frontier and
+   progress projection with the pre-drill values. Retain only
+   `state_unchanged=true`, not the raw learner state.
+4. Confirm exactly one received mail whose variable body fields are only
+   `Signal`, `UTC`, `Operation`, `DurationMs`, and the procedure identifier;
+   all other body copy and headers are fixed.
+5. Within one hour, repeat step 2 with a second fresh UUID and the same stale
+   version. Require `STALE_STATE` with `currentStateVersion: S`, reload context
+   again, repeat the step-3 projection comparison and only then record the
+   second `state_unchanged=true`. Expect no second mail. The monitor must emit
+   the fixed marker `suppressed_operation` instead of opening SMTP a second
+   time. Any intervening revision change invalidates rather than merely delays
+   the drill.
+
+Capture only fixed monitor markers and bounded process properties, starting at
+the recorded drill UTC time; never print an unfiltered backend journal record:
+
+```bash
+set -o pipefail
+sudo systemctl show skillpilot-claude-v1-warn-alert \
+  --property=SubState,NRestarts,MemoryCurrent
+sudo journalctl -u skillpilot-claude-v1-warn-alert \
+  --since 'YYYY-MM-DD HH:MM:SS UTC' \
+  --grep='^INFO claude_v1_warn_alert (alert_smtp_accepted|suppressed_operation)$' \
+  --output=cat --no-pager
+sudo journalctl -u skillpilot.service \
+  --since 'YYYY-MM-DD HH:MM:SS UTC' \
+  --grep="Claude v1 operation 'set_skillpilot_active_goal' completed with error in [0-9]+ ms$" \
+  --output=cat --no-pager | wc -l
+sudo bash scripts/install_claude_v1_warn_alert.sh status
+node scripts/claude_support_synthetic.mjs verify
+./scripts/verify_openai_v1_public_edge.sh
+```
+
+Require `SubState=running`, `NRestarts=0`, `MemoryCurrent` below the unit's
+128 MiB hard limit, one `alert_smtp_accepted`, one `suppressed_operation`, a
+backend WARN count of exactly two, a passing Claude public synthetic and a
+passing frozen OpenAI public-edge smoke. Start only with an unused
+`set_skillpilot_active_goal` cooldown and available global attempt budget; on a
+new installation that means no prior provider WARN has been accepted since
+activation. Do not reset live state merely to manufacture an available slot.
+Record only the candidate/source/tree binding, those sanitized outcomes, UTC
+send/receipt/acknowledgement times and the immutable evidence-bundle SHA-256.
+Never retain the test session, OAuth material, raw journal record, mailbox
+headers or private recipient in public release files. Until this production
+drill and its private evidence are complete, the table above remains blocking.
 
 ## Safe Intake
 
@@ -155,8 +330,15 @@ owner under the approved incident process.
 Use the
 [support-readiness drill template](https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/release/support-readiness-drill.template.md)
 as a checklist, then store the completed evidence outside the public
-repository. The committed file is intentionally a pending template and is not
-release evidence.
+repository. In the external copy, extend `Redacted Provider Error Alert` with
+the approved invoker procedure identifier, both sanitized `STALE_STATE`
+outcomes, both `state_unchanged=true` decisions, one accepted/one suppressed
+monitor-marker count, the backend WARN count of two, `NRestarts`, bounded
+`MemoryCurrent`, and the route receipt/acknowledgement timestamps required
+above. Do not add raw tool arguments or learner state. The committed file is
+intentionally a pending candidate template and is not release evidence; this
+runbook's additional required fields cannot be omitted merely because they are
+not embedded in that template.
 
 ## Minimum Pass Criteria
 
