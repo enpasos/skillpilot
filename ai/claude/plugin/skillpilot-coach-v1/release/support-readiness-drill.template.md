@@ -32,7 +32,7 @@
 | Covered support hours | No fixed staffed window; best effort; no guaranteed SLA |
 | Approved internal response objectives | Best effort; on discovery of a security or privacy incident, pause promotion and contain the connector as necessary as soon as practicable |
 | Best-effort monitoring boundary | Product Owner accepted on 2026-09-03: no host-side per-operation email monitor and no real-time detection or SLA claim; the production deployment must not include a related SMTP credential |
-| Restricted revocation procedure identifier | `UNASSIGNED - BLOCKING` |
+| Restricted revocation procedure identifier | `SP-CLAUDE-V1-IR-001` version `1.0.0`; `draft`, isolated rehearsal and approval still blocking |
 | Single-owner absence and promotion-pause contingency | Accepted by the Product Owner: pause active public promotion during unmonitored absence; do not disable the repository or existing installations solely because the owner is absent; on return inspect mail and workflow notifications and run the live synthetic before resuming promotion |
 
 ## Support Mailbox Drill
@@ -50,6 +50,7 @@
 | Primary received | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
 | Assigned backup received | `NOT APPLICABLE` if none is assigned | `UNASSIGNED - BLOCKING` when applicable |
 | Reply received | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
+| Mailbox account-security or accepted residual-risk decision | `UNASSIGNED - BLOCKING`; restricted evidence reference only, no credential or recovery details |
 
 ## Synthetic And Workflow Notification Drill
 
@@ -99,30 +100,138 @@ duplicates the separate exact-client acceptance gate.
 | Unsupported-claim review result | `pending` |
 | Production absence verification | `UNASSIGNED - BLOCKING`; must cover the WARN-to-email service and related SMTP or technical-mailbox credential |
 
-## Containment And Recovery Drill
+## Isolated Restricted-Revocation Rehearsal
 
-- [ ] An authorized synthetic or empty test context was used; no learner data
-      was involved.
-- [ ] Incident declaration and marketplace-promotion pause were timed.
-- [ ] Claude TLS vhost disable, provider flag disable and readiness recovery
-      followed the approved connector rollback order.
-- [ ] The restricted provider-scoped token and learner-session revocation or
-      expiry procedure was exercised by its authorized owner.
-- [ ] Every frozen OpenAI v1 differential check passed after containment.
-- [ ] The known-good Claude candidate was recovered and the live synthetic
-      passed again.
-- [ ] Clean-client acceptance was repeated where the scenario required it.
+This exercise runs the exact destructive procedure against disposable
+PostgreSQL fixtures. It has no production impact and does not use real user
+credentials or learner data.
 
-| Event | Canonical UTC timestamp | Result or evidence reference |
-| --- | --- | --- |
-| Detection | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| Incident declared | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| Promotion paused | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| Connector contained | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| Revocation/expiry procedure completed | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| OpenAI differential completed | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| Claude recovery completed | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
-| Incident closed | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
+- [ ] The reviewed repository source was bound by SHA-256.
+- [ ] Dedicated Claude-v1 OAuth and learner-session fixtures were present.
+- [ ] Negative OpenAI and retired-Claude-beta controls, including the historic
+      shared hosted-client-ID case, were present.
+- [ ] The exact transaction deleted only Claude-v1 authorizations and
+      Claude-v1 learner sessions and cascaded only their idempotency records.
+- [ ] Negative provider controls and durable curriculum/mastery state outside
+      the scoped Claude-v1 sessions remained unchanged.
+- [ ] A deliberately invalid scope/postcondition fixture caused a complete
+      rollback.
+- [ ] A deliberately poisoned PostgreSQL `search_path` did not redirect the
+      procedure from the fixed production schema.
+- [ ] A concurrent OAuth writer was excluded for the bounded transaction.
+- [ ] Row-level security, table inheritance, an unexpected cascading foreign
+      key, a user DELETE trigger, and a contradictory Claude-v1
+      provider/principal shape each failed closed before mutation.
+- [ ] An execute attempt with a different database-target fingerprint failed
+      closed without mutation.
+- [ ] Evidence contains only counts, timestamps, hashes and results; it
+      contains no row values, credentials, session hashes or learner IDs.
+
+| Field | Value |
+| --- | --- |
+| Environment | `isolated_disposable_postgresql`; never production |
+| Production impact | `none` |
+| Revocation scope | `dedicated_fixture_only` |
+| Procedure ID | `SP-CLAUDE-V1-IR-001` |
+| Procedure version | `1.0.0` |
+| Procedure SHA-256 | `UNASSIGNED - BLOCKING` |
+| Drill incident ID | `UNASSIGNED - BLOCKING` |
+| Start (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| End (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Planned aggregate counts | `UNASSIGNED - BLOCKING` |
+| Applied aggregate counts | `UNASSIGNED - BLOCKING`; must equal the plan and use the same procedure SHA-256 |
+| Planned/applied database target SHA-256 | `UNASSIGNED - BLOCKING`; must match for the same disposable database generation |
+| OpenAI negative-control result/count | `UNASSIGNED - BLOCKING` |
+| Retired-beta negative-control result/count | `UNASSIGNED - BLOCKING` |
+| Durable learner-state negative-control result/count | `UNASSIGNED - BLOCKING` |
+| Fail-closed rollback result | `UNASSIGNED - BLOCKING` |
+| Poisoned-search-path result | `UNASSIGNED - BLOCKING` |
+| Concurrent-writer exclusion result | `UNASSIGNED - BLOCKING` |
+| Wrong-target-fingerprint result | `UNASSIGNED - BLOCKING` |
+| RLS/inheritance/cascade/trigger/provider-scope guard result | `UNASSIGNED - BLOCKING` |
+| External evidence reference | `UNASSIGNED - BLOCKING` |
+
+## Production Read-Only Revocation Readiness
+
+This check installs the reviewed one-shot source and runs only `plan`. It
+validates the connection configured in the environment inherited by the active
+`skillpilot.service`, binds the connected database generation to a non-secret
+target fingerprint, and validates its live schema without changing a
+production row. It does not independently attest the Spring datasource or a
+compromised host. It never authorizes a later `execute`; an actual incident
+requires a fresh plan after containment.
+
+- [ ] The source path was clean in the exact recorded commit.
+- [ ] The installed copy at
+      `/usr/local/libexec/skillpilot/claude_v1_revoke` was byte-identical,
+      `root:root`, a regular non-symlink file, and mode `0755`.
+- [ ] `plan` completed from the effective environment of the unchanged running
+      SkillPilot application JVM in the `skillpilot.service` cgroup and returned
+      only sanitized aggregate counts and the database-target fingerprint.
+- [ ] The source SHA-256, installed SHA-256 and plan `toolSha256` were equal.
+- [ ] The root boundary, systemd unit, running process, inherited environment
+      and deployed application classpath were treated as trusted and showed no
+      reason for integrity suspicion. Otherwise no host-side `execute` is
+      permitted and the independently verified DBA response path applies.
+- [ ] No production database mutation, revocation or restore was performed.
+
+| Field | Value |
+| --- | --- |
+| Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
+| Procedure ID and version | `SP-CLAUDE-V1-IR-001` version `1.0.0` |
+| Source/installed/plan SHA-256 | `UNASSIGNED - BLOCKING`; all three must match |
+| Installed owner, group and mode | `UNASSIGNED - BLOCKING`; must be `root:root 755` |
+| Read-only plan incident ID | `UNASSIGNED - BLOCKING` |
+| Plan timestamp (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Planned aggregate counts | `UNASSIGNED - BLOCKING` |
+| Planned database target SHA-256 | `UNASSIGNED - BLOCKING`; a restart, failover, role or endpoint change invalidates it |
+| Trusted-host precondition | `UNASSIGNED - BLOCKING`; required for this host-side procedure |
+| Database mutation | `none` |
+| Sanitized plan-result evidence reference | `UNASSIGNED - BLOCKING` |
+
+## Production Containment And Recovery Rehearsal
+
+This exercise proves the reversible production controls in an explicitly
+approved maintenance window. It does not bulk-revoke real OAuth grants or
+learner sessions. Production-wide revocation remains incident-only under the
+restricted procedure.
+
+- [ ] An authorized empty or disposable adult test context was used; no
+      learner data was retained in evidence.
+- [ ] Marketplace promotion was paused and the maintenance start was timed.
+- [ ] Only the Claude-v1 TLS vhost was replaced by the reviewed root-owned
+      deny-only containment vhost; source and installed SHA-256 matched, Nginx
+      reloaded cleanly, and a fresh request returned the distinctive containment
+      header plus HTTP `404`.
+- [ ] The Claude-v1 provider flag was set to `false`, the shared service was
+      restarted, and application readiness recovered.
+- [ ] Claude-v1 was unreachable while every frozen OpenAI v1 differential
+      check passed.
+- [ ] The unchanged known-good backend flag was re-enabled, the service was
+      restarted, and application readiness passed before the same reviewed TLS
+      vhost was restored and Nginx reloaded.
+- [ ] No unchanged artifact was needlessly redeployed during the drill.
+- [ ] The live synthetic and required clean adult test-client acceptance
+      passed after recovery.
+- [ ] No production database mutation, revocation or restore occurred.
+
+| Field | Value |
+| --- | --- |
+| Environment | `production` |
+| Production impact | `short_shared_service_restart`; observed duration required |
+| Revocation scope | `none_during_rehearsal`; production bulk revocation is incident-only |
+| Deployed server-build revision (40 characters) | `UNASSIGNED - BLOCKING` |
+| Active and containment Claude-v1 TLS-vhost SHA-256 | `UNASSIGNED - BLOCKING` |
+| Detection/scenario start (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Promotion paused (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Connector contained (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Application readiness recovered (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Shared-service interruption observed | `UNASSIGNED - BLOCKING` |
+| OpenAI differential completed (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Claude recovery completed (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Live synthetic and clean-client result | `UNASSIGNED - BLOCKING` |
+| Production database mutation/revocation/restore | `none` |
+| External evidence reference | `UNASSIGNED - BLOCKING` |
 
 ## Sanitized Support Scenarios
 
