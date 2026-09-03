@@ -35,7 +35,7 @@ the SHA-256 of each final bundle.
 
 | Responsibility | Current value | Readiness requirement |
 | --- | --- | --- |
-| Public intake | `support@skillpilot.com` | Mailbox round trip and access by the accountable responder and every assigned backup must be evidenced. |
+| Public intake | `support@skillpilot.com` | Mailbox round trip, access by the accountable responder and every assigned backup, and the current account-security or explicitly accepted residual-risk decision must be evidenced in the restricted store. |
 | Accountable support owner | Dr. Matthias Unverzagt (also Product Owner) | Owns intake and incident declaration. |
 | Backup support owner | None; Product Owner accepted the single-owner risk | Pause active public promotion during an unmonitored absence; the repository and existing installations need not be disabled solely because the owner is absent. |
 | Operations owner | Dr. Matthias Unverzagt | Authorized to execute connector containment and recovery. |
@@ -44,7 +44,7 @@ the SHA-256 of each final bundle.
 | Internal response objectives | Best effort; no guaranteed response time | On discovery of a security or privacy incident, pause promotion and contain the connector as necessary as soon as practicable. |
 | Workflow alert route | Accountable owner's private GitHub notification route | The private delivery address stays only in restricted evidence; delivery and acknowledgement still require a drill. |
 | Authenticated-tool detection | `BEST-EFFORT REACTIVE BETA - ACCEPTED` | There is no host-side per-operation email monitor and no real-time detection or SLA claim. Signals are the best-effort scheduled public synthetic, the configured GitHub workflow-failure notification route, support reports and targeted inspection of the provider-bounded operation-error record. |
-| Restricted revocation procedure | `UNASSIGNED - BLOCKING` | Record the approved external procedure identifier and access owners; never put secrets or live commands here. |
+| Restricted revocation procedure | `SP-CLAUDE-V1-IR-001` version `1.0.0` (`draft`; isolated rehearsal and approval still blocking) | The operations and security owner is Dr. Matthias Unverzagt. The reviewed one-shot source and tests are [`scripts/claude_v1_revoke.py`](https://github.com/enpasos/skillpilot/blob/main/scripts/claude_v1_revoke.py) and [`scripts/test_claude_v1_revoke.py`](https://github.com/enpasos/skillpilot/blob/main/scripts/test_claude_v1_revoke.py). Keep incident-specific commands, access details and evidence only in the approved restricted evidence store; never commit secrets or live values. |
 
 The supported product boundary is the one documented in the
 [Claude connector user guide](claude-connector-v1-user-guide.md) and the
@@ -155,6 +155,161 @@ owner under the approved incident process.
 | An authenticated tool fails while the public synthetic passes | Reproduce only if needed with the authorized adult test fixture, then filter for the provider-bounded Claude v1 operation-error record without copying surrounding journal records or raw learner data. | Operations and security owners; pause promotion if integrity, privacy or a systematic fault is suspected. |
 | Provider-wide client failure while SkillPilot checks pass | Record the provider status as an external dependency and avoid changing SkillPilot bytes. | Support owner monitors recovery; no SkillPilot rollback without SkillPilot evidence. |
 
+## Restricted Revocation Tool Contract
+
+`SP-CLAUDE-V1-IR-001` is a root-only, one-shot incident tool, not a daemon,
+endpoint or normal deployment step. Install only the reviewed source from the
+exact approved commit. First verify that this path is unchanged in that commit,
+record its SHA-256, then install it byte-identically:
+
+```bash
+SKILLPILOT_APPROVED_COMMIT=REVIEWED_40_CHARACTER_COMMIT
+test "$(git rev-parse --verify HEAD^{commit})" = \
+  "${SKILLPILOT_APPROVED_COMMIT}"
+git ls-files --error-unmatch scripts/claude_v1_revoke.py
+git cat-file -e \
+  "${SKILLPILOT_APPROVED_COMMIT}:scripts/claude_v1_revoke.py"
+git diff --exit-code "${SKILLPILOT_APPROVED_COMMIT}" -- \
+  scripts/claude_v1_revoke.py
+sha256sum scripts/claude_v1_revoke.py
+sudo install -d -o root -g root -m 0755 \
+  /usr/local/libexec/skillpilot
+sudo install -o root -g root -m 0755 \
+  scripts/claude_v1_revoke.py \
+  /usr/local/libexec/skillpilot/claude_v1_revoke
+sudo sha256sum /usr/local/libexec/skillpilot/claude_v1_revoke
+sudo stat -c '%U:%G %a %n' \
+  /usr/local/libexec/skillpilot/claude_v1_revoke
+```
+
+The two hashes must match and the installed metadata must be exactly
+`root:root 755`. Never run the deploy user's writable source copy. The
+installed tool refuses another path, owner or mode. It derives one candidate
+PostgreSQL connection only from the five `POSTGRES_*` values inherited by the
+uniquely identified SkillPilot application JVM inside the active
+`skillpilot.service` cgroup, passes only those values to `psql`, and never
+prints them. The connected server returns a non-secret `targetSha256` binding
+the database name, effective database role, database OID, server address and
+port, and PostgreSQL postmaster start time. This deliberately supports the
+current `bootRun` service topology, whose systemd `MainPID` can be the Gradle
+wrapper rather than the application JVM. It invokes only fixed, root-owned and
+non-replaceable system command paths. It fails closed if the service exposes a
+direct Spring datasource, config or profile override, an external
+`application*` configuration file in a default search location, another
+EnvironmentFile, an unexpected database-name shape, more or fewer than one
+matching application JVM, or a changing service process.
+
+This is an operational guard, not host-attestation. It does not introspect
+Spring objects and cannot independently prove which datasource a modified
+application classpath selected. It trusts the host's root boundary, systemd
+unit, running process, inherited environment and deployed application
+classpath. The current `bootRun` classpath is writable by the deployment user.
+If host, deployment-account, checkout, process, configuration or classpath
+integrity is in doubt, do not run `execute` on that host. Keep the public edge
+contained, perform revocation from an independently verified DBA-controlled
+database path, and rebuild the host from reviewed immutable artifacts. Moving
+production to a digest-bound, root-owned immutable application artifact is a
+separate hardening improvement before a broader-than-beta rollout.
+
+Before support readiness can pass, run only its read-only production plan and
+retain the single sanitized JSON result in the restricted evidence store:
+
+```bash
+sudo /usr/local/libexec/skillpilot/claude_v1_revoke plan \
+  --procedure-id SP-CLAUDE-V1-IR-001 \
+  --incident-id SPDRILL-YYYYMMDD-NNN
+```
+
+`plan` validates the connected production schema, migrations, exact Claude-v1
+scope and database-target guards without changing a row. The owner must review
+whether the four aggregate counts are plausible and retain `targetSha256` with
+the plan. A database restart, failover, changed role or changed connection
+target changes that fingerprint and invalidates the plan. Unexpected counts or
+any failed guard stop the procedure; they are not repaired by broadening the
+scope. The `REVIEWED_40_CHARACTER_COMMIT` placeholder deliberately keeps the
+installation example inert until the approved commit exists.
+
+The prepublication plan never authorizes an `execute`. During an actual
+incident, replace the installed active Claude-v1 vhost bytes at the same include
+path with the reviewed deny-only
+[`skillpilot-claude-connector-v1-contained.conf`](https://github.com/enpasos/skillpilot/blob/main/deploy/nginx/skillpilot-claude-connector-v1-contained.conf),
+set the Claude-v1 backend flag to `false`, restart the shared service to
+readiness, validate Nginx and reload it. The root-owned containment file must be
+mode `0644`; its source and installed SHA-256 must match. A fresh TLS request to
+`/mcp` must return both HTTP `404` and
+`X-SkillPilot-Claude-V1-Containment: SP-CLAUDE-V1-CONTAINED-1`. This distinctive
+response proves that a new connection reached the loaded deny-only generation,
+not merely a disabled backend through an old proxy worker.
+
+```bash
+sha256sum deploy/nginx/skillpilot-claude-connector-v1-contained.conf
+sudo install -o root -g root -m 0644 \
+  deploy/nginx/skillpilot-claude-connector-v1-contained.conf \
+  /etc/nginx/skillpilot-claude-connector-v1.conf
+sudo sha256sum /etc/nginx/skillpilot-claude-connector-v1.conf
+sudo nginx -t
+sudo systemctl reload nginx
+curl --silent --show-error --proto '=https' --max-time 10 --dump-header - \
+  --output /dev/null \
+  https://mcp-claude-v1.skillpilot.com/mcp
+```
+
+Then repeat `plan` with the incident's `SPINC-...` identifier. Only then may the
+security owner copy those four fresh counts, that plan's `targetSha256` and its
+`toolSha256` into an `execute` using the same incident identifier:
+
+```bash
+sudo /usr/local/libexec/skillpilot/claude_v1_revoke plan \
+  --procedure-id SP-CLAUDE-V1-IR-001 \
+  --incident-id SPINC-YYYYMMDD-NNN
+```
+
+```bash
+sudo /usr/local/libexec/skillpilot/claude_v1_revoke execute \
+  --procedure-id SP-CLAUDE-V1-IR-001 \
+  --incident-id SPINC-YYYYMMDD-NNN \
+  --expect-oauth PLAN_OAUTH_COUNT \
+  --expect-consents PLAN_CONSENT_COUNT \
+  --expect-sessions PLAN_SESSION_COUNT \
+  --expect-idempotency PLAN_IDEMPOTENCY_COUNT \
+  --expect-target-sha256 PLAN_TARGET_SHA256 \
+  --expect-tool-sha256 PLAN_TOOL_SHA256 \
+  --confirm REVOKE-CLAUDE-V1-AUTHORIZATIONS-AND-SESSIONS
+```
+
+The placeholders deliberately make this example non-executable. `execute`
+requires all values, the exact tool hash, the Claude-v1 flag explicitly
+`false`, an unchanged running service and the exact root-owned deny-only Nginx
+vhost at `/etc/nginx/skillpilot-claude-connector-v1.conf`. The proxy check binds
+that file's SHA-256, verifies that the loaded on-disk configuration contains no
+Claude-v1 upstream, and requires the distinctive header plus `404` from a fresh
+credential-free loopback TLS request. It locks the six involved tables before
+the destructive transaction takes its first snapshot. This can briefly delay
+OAuth writes for other providers, while reads remain available. Row-level
+security, table inheritance, unexpected cascading foreign keys, user DELETE
+triggers or rewrite rules abort before mutation. The transaction either deletes
+the exact current Claude-v1 aggregate scope or rolls back. The target
+fingerprint must still match after the table locks are acquired, so a stale plan
+from a different database instance, role, endpoint or postmaster generation is
+rejected. It forces synchronous local commit and refuses a PostgreSQL server
+with `fsync` disabled so a reported commit is not merely buffered process
+state.
+
+The result is always one sanitized JSON object. `status: "applied"` is the only
+ordinary success. `status: "applied_but_containment_unverified"` means the
+reported aggregate deletion counts committed but the final service or live
+containment recheck failed. `status: "apply_outcome_unverified"` means the
+database client did not return trustworthy commit evidence; only the expected
+counts and expected target fingerprint are reported. For either non-success
+status, keep containment in place, run a fresh `plan` to establish the current
+state, and never retry with guessed or stale values.
+
+Any change to the procedure's scope, SQL, guards, CLI/operator contract or
+database-target resolution requires a new procedure version, a new isolated
+rehearsal, review, and byte-identical production installation. Earlier
+evidence becomes stale. Version `1.0.0` must never name different destructive
+semantics.
+
 ## Incident Containment And Recovery
 
 1. Open an incident record, assign severity and owners, record UTC detection,
@@ -168,9 +323,15 @@ owner under the approved incident process.
    [connector rollback drill](claude-connector-v1-release.md#8-rollback-drill).
    Those production actions require incident authority; this runbook does not
    execute them.
-4. The security owner invokes the approved restricted revocation procedure.
-   Until its identifier, owners and rehearsal evidence replace the blocking
-   placeholder above, support readiness cannot pass.
+4. The security owner runs a fresh `plan`, checks its aggregate counts and
+   target fingerprint, and invokes the count-, target- and tool-hash-bound
+   `execute` form of the approved restricted revocation procedure. It revokes
+   both Claude-v1 transport
+   authorizations and independent Claude-v1 learner sessions, is irreversible,
+   and must never restore revoked credentials from a backup. Use only the
+   installed copy described above. Until the versioned procedure has passed
+   its isolated rehearsal, read-only production plan and approval, support
+   readiness cannot pass.
 5. Repeat the frozen OpenAI differential checks after containment and before
    recovery. A Claude response must not silently alter the OpenAI v1 edge,
    package, tools, schemas, UI, sessions or review artifacts.
@@ -179,6 +340,52 @@ owner under the approved incident process.
    bytes, delete history or force-push `main`.
 7. Close the incident only after the synthetic, clean-client acceptance and
    relevant rollback/recovery checks pass and the accountable owners sign off.
+
+## Two-Part Prepublication Rehearsal
+
+The personal-marketplace beta proves revocation and production recovery in two
+separate exercises. This avoids deleting real user credentials merely to test
+an emergency control, while still exercising the exact destructive procedure
+before it is needed under incident pressure.
+
+1. **Restricted-revocation readiness.** The repository integration test runs
+   the exact embedded transaction from `SP-CLAUDE-V1-IR-001` version `1.0.0`
+   against a disposable PostgreSQL database containing dedicated Claude-v1
+   fixtures plus negative OpenAI and retired-Claude-beta controls. It must also
+   prove rollback on a late failure, resistance to a poisoned `search_path`,
+   exclusion of a concurrent OAuth writer, rejection of row-level security and
+   table inheritance, and rejection of unexpected cascades, DELETE triggers
+   and contradictory provider/principal shapes. The transaction must delete
+   only the provider/version-scoped Claude-v1 OAuth authorizations and
+   Claude-v1 learning sessions while preserving the negative controls and
+   durable curriculum/mastery state outside those sessions. Separately,
+   install the same source byte-identically as `root:root` mode `0755` and run
+   only its read-only `plan` against production. Retain only aggregate counts,
+   the non-secret target fingerprint, timestamps, procedure/version hashes and
+   pass/fail results; never retain row values, tokens, session hashes or learner
+   identifiers.
+2. **Production containment/recovery rehearsal.** In an explicitly approved
+   maintenance window, pause promotion, replace only the Claude-v1 TLS vhost
+   with the reviewed deny-only containment vhost and reload Nginx, set the
+   Claude-v1 feature flag to `false`, restart the shared service, and prove the
+   distinctive containment response while application readiness and the frozen
+   OpenAI v1 differential remain healthy. Re-enable the unchanged known-good
+   backend flag, restart the service and prove readiness while the deny-only
+   vhost remains loaded; only then restore the same reviewed active TLS vhost
+   and reload Nginx. Do not redeploy unchanged artifacts merely for the drill.
+   Then repeat the live synthetic and required clean adult test-client check and
+   record the observed interruption.
+
+The Product Owner accepted on 3 September 2026 that the production rehearsal
+does not bulk-revoke real OAuth grants or learner sessions. Production-wide
+revocation is reserved for an actual security or data-boundary incident and is
+then executed only after containment by the authorized operations/security
+owner. Recovery after revocation means a fresh OAuth connection and a new
+first-party learning session; it never means restoring revoked records.
+
+This two-part beta evidence does not weaken or satisfy the stricter independent
+Connector Directory rollback gate in
+[the connector release runbook](claude-connector-v1-release.md#8-rollback-drill).
 
 ## Record The Drill
 
@@ -214,14 +421,25 @@ reproducible marketplace-tree SHA-256:
    boundary, candidate-specific deployment evidence confirms that no host-side
    WARN-to-email service or SMTP credential is installed for it, and neither
    release nor support material claims real-time monitoring or an SLA;
-7. the connector containment, restricted revocation, frozen OpenAI
-   differential and known-good recovery drill is completed without learner
-   data or secrets in evidence;
-8. at least one sanitized support scenario is triaged end to end by the
+7. the exact versioned restricted revocation procedure has passed the isolated
+   disposable-database rehearsal, including negative OpenAI and retired-beta
+   controls, transaction rollback, fixed-schema, concurrent-writer, row-level
+   security, table-inheritance, cascade, trigger and provider-scope checks,
+   without learner data, credentials or row values in evidence;
+8. its byte-identical production copy is installed as `root:root` mode `0755`,
+   the trusted-host precondition is explicitly confirmed, and a successful
+   read-only `plan` has validated the configured running-service connection,
+   target fingerprint and connected production schema without a database
+   mutation;
+9. the production connector containment, frozen OpenAI differential and
+   known-good recovery rehearsal has passed in an approved maintenance window,
+   without bulk-revoking real credentials and with the observed shared-service
+   interruption recorded;
+10. at least one sanitized support scenario is triaged end to end by the
    accountable responder and, when assigned, one by the backup; without a
    backup, the single-owner absence and promotion-pause contingency is
    rehearsed instead; and
-9. the Product Owner reviews the complete evidence and explicitly authorizes
+11. the Product Owner reviews the complete evidence and explicitly authorizes
    the later gate-status change.
 
 Missing, stale or candidate-mismatched evidence fails closed. A green

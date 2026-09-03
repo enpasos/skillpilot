@@ -62,6 +62,8 @@ The repository sources are:
 
 - `deploy/nginx/skillpilot-claude-acme.conf`
 - `deploy/nginx/skillpilot-claude-connector-v1.conf`
+- `deploy/nginx/skillpilot-claude-connector-v1-contained.conf` (deny-only
+  incident replacement; never load it together with the active TLS vhost)
 
 Install each as a root-owned file in `/etc/nginx/` and include it exactly once
 from the nginx `http` context. Preserve byte-identical backups and hashes of the
@@ -196,14 +198,19 @@ claim until its own acceptance evidence exists.
 
 Before submission, practically verify this order:
 
-1. remove or disable the Claude TLS vhost include and reload nginx;
+1. replace the active Claude TLS vhost bytes at the same include path with the
+   reviewed deny-only `skillpilot-claude-connector-v1-contained.conf`, reload
+   nginx, and verify its distinctive containment header plus HTTP `404`;
 2. set `SKILLPILOT_CLAUDE_CONNECTOR_V1_ENABLED=false`;
 3. restart the existing SkillPilot service and wait for readiness;
 4. revoke or expire Claude v1 transport tokens and learner sessions according
    to the approved restricted procedure referenced by the
    [support readiness and incident runbook](claude-support-readiness-runbook.md);
 5. repeat all frozen OpenAI v1 checks;
-6. restore the known-good shared artifact only if the artifact itself is faulty.
+6. restore the known-good shared artifact only if the artifact itself is faulty;
+   otherwise re-enable the known-good backend and prove readiness while the
+   deny-only vhost is still loaded, then restore the reviewed active vhost and
+   reload nginx.
 
 Do not delete provider tables or use `git reset --hard` as an operational
 rollback. Record timing, operator, observed interruption, results and recovery

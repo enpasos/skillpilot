@@ -19,12 +19,16 @@ on:
       - 'backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'backend/src/main/resources/claude-connector-v1/**'
       - 'backend/src/main/resources/claude-plugin-publication/**'
+      - 'backend/src/main/resources/db/changelog/**'
+      - 'backend/src/main/resources/application.yml'
       - 'backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'deploy/nginx/skillpilot-claude-*.conf'
       - 'scripts/check_claude_connector_v1_release.mjs'
       - 'scripts/check_claude_connector_v1_release.test.mjs'
       - 'scripts/claude_direct_install_beta_release.mjs'
       - 'scripts/claude_direct_install_beta_release.test.mjs'
+      - 'scripts/claude_v1_revoke.py'
+      - 'scripts/test_claude_v1_revoke.py'
       - '.github/workflows/docs_checks.yml'
   pull_request:
     branches: [ main ]
@@ -40,12 +44,16 @@ on:
       - 'backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'backend/src/main/resources/claude-connector-v1/**'
       - 'backend/src/main/resources/claude-plugin-publication/**'
+      - 'backend/src/main/resources/db/changelog/**'
+      - 'backend/src/main/resources/application.yml'
       - 'backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'deploy/nginx/skillpilot-claude-*.conf'
       - 'scripts/check_claude_connector_v1_release.mjs'
       - 'scripts/check_claude_connector_v1_release.test.mjs'
       - 'scripts/claude_direct_install_beta_release.mjs'
       - 'scripts/claude_direct_install_beta_release.test.mjs'
+      - 'scripts/claude_v1_revoke.py'
+      - 'scripts/test_claude_v1_revoke.py'
       - '.github/workflows/docs_checks.yml'
 
 permissions:
@@ -71,6 +79,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: app/package-lock.json
+      - name: Use Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
       - name: Install dependencies
         run: npm ci
       - name: Test Claude direct-install beta release guard
@@ -79,6 +91,9 @@ jobs:
       - name: Verify Claude direct-install beta publication
         working-directory: .
         run: node scripts/claude_direct_install_beta_release.mjs verify
+      - name: Test Claude v1 revocation guard units
+        working-directory: .
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v scripts.test_claude_v1_revoke.ClaudeV1RevokeUnitTest
       - name: Check Generated Documentation Notices
         run: npm run check:generated-doc-notices
       - name: Check Generated Status Registry
@@ -89,6 +104,40 @@ jobs:
         run: npm run check:docs-indexes
       - name: Check Terminology
         run: npm run check:terminology
+
+  claude-revocation-postgres:
+    name: Claude Revocation PostgreSQL 15
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres@sha256:9b1d34adbce1dd07ee6e94b4a2cf698884b89bd44a6c9c12f5da8f3acbfe4957
+        env:
+          POSTGRES_PASSWORD: skillpilot-test-only
+          POSTGRES_DB: skillpilot_revoke_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d skillpilot_revoke_test"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-client
+      - name: Test exact Claude v1 revocation transaction
+        env:
+          SKILLPILOT_CLAUDE_V1_REVOKE_TEST_DSN: postgresql://postgres:skillpilot-test-only@127.0.0.1:5432/skillpilot_revoke_test
+          SKILLPILOT_CLAUDE_V1_REVOKE_TEST_CONFIRM: USE-LOCAL-DISPOSABLE-POSTGRES
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -m unittest -v scripts.test_claude_v1_revoke
 
   docs-build:
     name: MkDocs Build
