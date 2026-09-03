@@ -117,11 +117,14 @@ node scripts/claude_support_synthetic.mjs verify
 
 The committed drill file is only an incomplete template. Support readiness
 remains blocked until accountable support, operations and security owners have
-proved mailbox access, scheduled-alert delivery, intentional failed-run
-delivery, incident containment and recovery for the exact candidate. A backup
-is preferred; without one, the Product Owner must accept and rehearse the
-documented single-owner promotion-pause contingency. A green synthetic alone
-does not authorize a gate change or publication.
+proved mailbox access, operation of the scheduled public synthetic, intentional
+failed-run notification delivery, recorded Product Owner acceptance of the
+best-effort monitoring boundary, and incident containment and recovery for the
+exact candidate. This personal-marketplace beta has no host-side per-operation
+email monitor and makes no real-time detection or SLA claim. A backup is
+preferred; without one, the Product Owner must accept and rehearse the documented
+single-owner promotion-pause contingency. A green synthetic alone does not
+authorize a gate change or publication.
 
 ## First publication
 

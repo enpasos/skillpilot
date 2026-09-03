@@ -31,9 +31,9 @@
 | Security owner | Dr. Matthias Unverzagt |
 | Covered support hours | No fixed staffed window; best effort; no guaranteed SLA |
 | Approved internal response objectives | Best effort; on discovery of a security or privacy incident, pause promotion and contain the connector as necessary as soon as practicable |
-| Redacted Claude error-log alert route | `UNASSIGNED - BLOCKING` |
+| Best-effort monitoring boundary | Product Owner accepted on 2026-09-03: no host-side per-operation email monitor and no real-time detection or SLA claim; the production deployment must not include a related SMTP credential |
 | Restricted revocation procedure identifier | `UNASSIGNED - BLOCKING` |
-| Single-owner absence and promotion-pause contingency | Accepted by the Product Owner: pause active public promotion during unmonitored absence; do not disable the repository or existing installations solely because the owner is absent; on return inspect mail and alerts and run the live synthetic before resuming promotion |
+| Single-owner absence and promotion-pause contingency | Accepted by the Product Owner: pause active public promotion during unmonitored absence; do not disable the repository or existing installations solely because the owner is absent; on return inspect mail and workflow notifications and run the live synthetic before resuming promotion |
 
 ## Support Mailbox Drill
 
@@ -51,7 +51,7 @@
 | Assigned backup received | `NOT APPLICABLE` if none is assigned | `UNASSIGNED - BLOCKING` when applicable |
 | Reply received | `UNASSIGNED - BLOCKING` | `UNASSIGNED - BLOCKING` |
 
-## Synthetic And Alert Drill
+## Synthetic And Workflow Notification Drill
 
 - [ ] Unit-test workflow run passed for this source commit.
 - [ ] Scheduled or manual live synthetic passed for this exact candidate.
@@ -62,33 +62,42 @@
 - [ ] Primary alert route delivered the intentional failure.
 - [ ] Every assigned backup alert route delivered the intentional failure, or
       the approved single-owner contingency was rehearsed.
-- [ ] Both responders identified it as a drill and acknowledged it.
+- [ ] Every assigned responder identified it as a drill and acknowledged it.
 
 | Field | Value |
 | --- | --- |
 | Passing workflow-run URL | `UNASSIGNED - BLOCKING` |
 | Passing result JSON SHA-256 | `UNASSIGNED - BLOCKING` |
 | Intentional-failure workflow-run URL | `UNASSIGNED - BLOCKING` |
-| Alert triggered (canonical UTC) | `UNASSIGNED - BLOCKING` |
+| Workflow notification triggered (canonical UTC) | `UNASSIGNED - BLOCKING` |
 | Primary recipient and delivery time | `UNASSIGNED - BLOCKING` |
 | Primary acknowledgement time | `UNASSIGNED - BLOCKING` |
 | Assigned backup recipient and delivery time | `NOT APPLICABLE` if none is assigned |
 | Assigned backup acknowledgement time | `NOT APPLICABLE` if none is assigned |
 
-## Redacted Provider Error Alert
+## Best-Effort Authenticated-Tool Detection Boundary
 
-- [ ] A restricted alert consumes the existing Claude-v1 operation-error WARN
-      signal without exporting bodies, IDs, sessions, capabilities or tokens.
-- [ ] An authorized synthetic or staging operation error triggered the alert.
-- [ ] The accountable recipient received and acknowledged it.
-- [ ] The retained alert was inspected for data minimization.
+The Product Owner accepts that authenticated tool failures may be discovered
+only through a support report, a related public-surface failure or a manual
+check. The personal-marketplace beta has no proactive per-operation monitor,
+real-time detection promise or SLA. This template neither satisfies nor
+duplicates the separate exact-client acceptance gate.
+
+- [ ] Release and support material was checked for unsupported monitoring,
+      detection-time or response-time claims.
+- [ ] The deployment plan adds neither a WARN-to-email service nor an SMTP or
+      technical-mailbox credential to the production host.
+- [ ] Candidate-specific production evidence confirms that neither artifact is
+      installed or retained.
+- [ ] During triage, the operator can filter only the provider-bounded Claude v1
+      operation-error record without retaining surrounding journal entries,
+      raw learner state, credentials or request and response bodies.
 
 | Field | Value |
 | --- | --- |
-| Controlled error time (canonical UTC) | `UNASSIGNED - BLOCKING` |
-| Alert delivery and acknowledgement time | `UNASSIGNED - BLOCKING` |
-| Sanitized alert evidence reference | `UNASSIGNED - BLOCKING` |
-| Redaction review result | `pending` |
+| Product Owner boundary decision | `accepted`; 2026-09-03 |
+| Unsupported-claim review result | `pending` |
+| Production absence verification | `UNASSIGNED - BLOCKING`; must cover the WARN-to-email service and related SMTP or technical-mailbox credential |
 
 ## Containment And Recovery Drill
 
