@@ -86,7 +86,7 @@ def journal_record(
 def write_credentials(directory: Path) -> MODULE.Credentials:
     values = {
         MODULE.SMTP_USERNAME_CREDENTIAL: "technical-sender@example.com",
-        MODULE.SMTP_PASSWORD_CREDENTIAL: "AppPassword-SENTINEL-123",
+        MODULE.SMTP_PASSWORD_CREDENTIAL: "MailboxPassword-SENTINEL-123",
         MODULE.RECIPIENT_CREDENTIAL: "private-recipient@example.net",
     }
     for name, value in values.items():
@@ -670,6 +670,10 @@ class DeploymentContractTest(unittest.TestCase):
         self.assertIn("/dev/tty", installer)
         self.assertIn("read -r -s", installer)
         self.assertIn("root:root:600", installer)
+        self.assertIn(
+            "Kennwort des dedizierten IONOS-Alarm-Postfachs", installer
+        )
+        self.assertNotIn("App-Passwort", installer)
         self.assertNotIn("set -x", installer)
         self.assertNotIn("SKILLPILOT_CLAUDE_SMTP_PASSWORD", installer)
         self.assertNotIn("alerts@", installer)
@@ -758,6 +762,25 @@ class DeploymentContractTest(unittest.TestCase):
     def test_runbook_never_prints_an_unfiltered_backend_journal_record(self) -> None:
         runbook = RUNBOOK_PATH.read_text(encoding="utf-8")
         self.assertNotIn("journalctl -u skillpilot --lines=1 --output=cat", runbook)
+
+    def test_runbook_binds_the_owner_accepted_mailbox_password_policy(self) -> None:
+        runbook = RUNBOOK_PATH.read_text(encoding="utf-8")
+        for expected in (
+            "decided not to enable IONOS Webmail 2FA",
+            "uses the normal password of the dedicated",
+            "alert mailbox, not an App Password",
+            "used exclusively to send system alerts",
+            "stores no confidential inbound mail",
+            "long, random, unique and not used anywhere else",
+            "root-owned mode `0600` source credentials",
+            "replaces only the local credential",
+            "it does not change the password at IONOS",
+            "old local credential is not a usable rollback",
+            "controlled alerting interruption",
+        ):
+            self.assertIn(expected, runbook)
+        self.assertNotIn("enable IONOS Webmail 2FA on", runbook)
+        self.assertNotIn("Keep the previous IONOS App Password", runbook)
 
 
 if __name__ == "__main__":

@@ -113,18 +113,32 @@ address as username and the mailbox password. This monitor implements port 465
 as TLS from connection start. IONOS documents port `587` with STARTTLS as an
 alternative when port 465 appears to be blocked; this monitor has no automatic
 fallback or encryption downgrade. IONOS also requires TLS 1.2 or newer. Before
-`configure`, enable IONOS Webmail 2FA on the technical mailbox and create one
-dedicated App Password named for the Claude WARN monitor. IONOS requires an App
-Password for mail clients after Webmail 2FA is enabled. This procedure is
-deliberately stricter than the basic SMTP setup: never enter the normal mailbox
-password into this monitor.
+an operator enables Webmail 2FA, IONOS accepts the mailbox password for SMTP;
+after Webmail 2FA is enabled, IONOS requires an App Password for mail clients.
+
+On 3 September 2026, the Product Owner decided not to enable IONOS Webmail 2FA
+for this technical mailbox and accepted the resulting residual risk for this
+route. This deployment therefore uses the normal password of the dedicated
+alert mailbox, not an App Password. The exception remains valid only while all
+of these controls remain true:
+
+- the mailbox is used exclusively to send system alerts and not for ordinary
+  correspondence;
+- it stores no confidential inbound mail;
+- its password is long, random, unique and not used anywhere else; and
+- the password is stored only in root-owned mode `0600` source credentials and
+  exposed to the service through systemd's read-only credential copy.
+
+If any control ceases to hold, keep this alert route deactivated until the
+mailbox is remediated or migrated to a separately revocable credential. Never
+reuse an IONOS customer-account password or another mailbox's password here.
 
 - [IONOS SMTP server settings](https://www.ionos.de/hilfe/e-mail/allgemeine-themen/serverinformationen-fuer-imap-pop3-und-smtp/)
 - [IONOS TLS 1.2 requirement](https://www.ionos.de/hilfe/e-mail/ssl-verschluesselung-fuer-e-mail/verschluesselung-ssltls-in-einem-e-mail-programm-aktivieren/)
 - [IONOS 2FA and App Passwords](https://www.ionos.de/hilfe/e-mail/webmail-nutzen/e-mail-bestaetigung-in-zwei-schritten-aktivieren-und-konfigurieren/)
 
-Do not put the technical mailbox address, App Password or private recipient in
-Git, shell history, a command argument, an environment variable or drill
+Do not put the technical mailbox address, mailbox password or private recipient
+in Git, shell history, a command argument, an environment variable or drill
 evidence. The installer reads all three values directly and privately from the
 operator terminal, stores the source credentials as root-owned mode `0600`
 files, and systemd exposes read-only copies only inside the monitor service.
@@ -173,13 +187,21 @@ sandboxed route test, confirm receipt, and explicitly activate the monitor
 again. It never puts an SMTP server error, journal line, thread, PID, path,
 cursor or credential value in its own diagnostics.
 
-Credential repair and planned rotation use an atomic replacement while the
-monitor is inactive. Keep the previous IONOS App Password valid until the new
-route test has actually arrived and `status` passes; then revoke the previous
-App Password at IONOS. Never paste either password into chat or evidence:
+The installer command `rotate` atomically replaces only the local credential
+files while the monitor is inactive; it does not change the password at IONOS.
+A planned provider-password rotation is therefore a two-system, non-atomic
+operation. Because this exception uses the mailbox password, IONOS does not
+provide an overlap between old and new credentials: first deactivate the
+route, then change the dedicated mailbox password at IONOS, replace the local
+credential and test actual delivery before reactivation. Once the IONOS change
+is applied, the old local credential is not a usable rollback. If the route
+test fails, keep the monitor deactivated and repair the IONOS or local value. A
+planned rotation therefore includes a controlled alerting interruption. Never
+paste the old or new password into chat, a command or evidence:
 
 ```bash
 sudo bash scripts/install_claude_v1_warn_alert.sh deactivate
+# Change the mailbox password at IONOS; rotate below changes local files only.
 sudo bash scripts/install_claude_v1_warn_alert.sh rotate
 sudo bash scripts/install_claude_v1_warn_alert.sh test-route
 # Confirm actual receipt through the private channel.

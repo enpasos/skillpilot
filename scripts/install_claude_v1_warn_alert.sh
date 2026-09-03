@@ -330,12 +330,12 @@ configure_credentials() {
 
   IFS= read -r -p "SMTP-Benutzeradresse des technischen Postfachs: " smtp_username </dev/tty
   IFS= read -r -p "Private interne Zieladresse: " recipient </dev/tty
-  IFS= read -r -s -p "Eigenes IONOS App-Passwort für den Alarmdienst: " smtp_password </dev/tty
+  IFS= read -r -s -p "Kennwort des dedizierten IONOS-Alarm-Postfachs: " smtp_password </dev/tty
   printf '\n' >/dev/tty
-  IFS= read -r -s -p "App-Passwort wiederholen: " smtp_password_confirmation </dev/tty
+  IFS= read -r -s -p "Postfachkennwort wiederholen: " smtp_password_confirmation </dev/tty
   printf '\n' >/dev/tty
   if [ "${smtp_password}" != "${smtp_password_confirmation}" ]; then
-    echo "Abbruch: Die App-Passwörter stimmen nicht überein." >&2
+    echo "Abbruch: Die Postfachkennwörter stimmen nicht überein." >&2
     exit 1
   fi
 
