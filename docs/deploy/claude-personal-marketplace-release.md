@@ -18,8 +18,9 @@ has `activation.state = prepared_not_published`, that repository is not a
 supported installation source. The first-party `/plugins` page must continue
 to use the controlled direct-install beta. Local export success never changes
 that state by itself. The current direct-install lane still reports
-`openPublicBetaReady = false`; privacy approval, legal approval, support
-readiness and exact-client acceptance therefore remain publication blockers.
+`openPublicBetaReady = false`; legal approval, support readiness and
+exact-client acceptance therefore remain publication blockers. Privacy approval
+is already recorded as `pass` for the current candidate.
 
 ## Why this is a separate repository
 

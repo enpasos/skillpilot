@@ -309,7 +309,11 @@ export function validateClaudeMarketplaceManifest(
     ["name", "email", "url"],
     "marketplace.json.owner",
   );
-  assertEqual(marketplace.owner.name, "enpasos GmbH", "marketplace.json.owner.name");
+  assertEqual(
+    marketplace.owner.name,
+    "enpasos - Enterprise Patterns & Solutions GmbH",
+    "marketplace.json.owner.name",
+  );
   assertEqual(
     marketplace.owner.email,
     "support@skillpilot.com",
