@@ -100,6 +100,12 @@ class ClaudeV1GoalVisualizationContractTest {
                 .containsEntry("stateVersion", (int) STATE_VERSION)
                 .containsKey("goalVisualization")
                 .hasEntrySatisfying(
+                        "goalVisualization",
+                        visualization -> assertThat(map(visualization))
+                                .containsEntry(
+                                        "altText",
+                                        "Didaktische Visualisierung zum Lernziel „Use radians“."))
+                .hasEntrySatisfying(
                         "presentationInstruction",
                         instruction -> assertThat(instruction.toString())
                                 .contains("previously unseen pair", "immediate next SkillPilot tool"));
@@ -117,6 +123,12 @@ class ClaudeV1GoalVisualizationContractTest {
 
         assertThat(first.isError()).isFalse();
         assertThat(explicitReShow.isError()).isFalse();
+        assertThat(first.content())
+                .singleElement()
+                .isInstanceOfSatisfying(
+                        McpSchema.TextContent.class,
+                        content -> assertThat(content.text())
+                                .isEqualTo("Freigegebenes Lernzielbild bereitgestellt."));
         assertThat(first.structuredContent()).isEqualTo(explicitReShow.structuredContent());
         assertThat(map(first.structuredContent()))
                 .containsOnlyKeys("goalVisualization")
@@ -129,6 +141,16 @@ class ClaudeV1GoalVisualizationContractTest {
                                         "https://skillpilot.com/assets/goal-visualizations/visual-goal.png"));
         assertThat(first.meta()).isNull();
         assertThat(explicitReShow.meta()).isNull();
+    }
+
+    @Test
+    void fullContextUsesThePersistedSessionLocaleInsteadOfTheModelLanguage() throws Exception {
+        McpSchema.CallToolResult contextResult = call(
+                ClaudeV1Contract.TOOL_GET_COACH_CONTEXT,
+                Map.of("language", "en"));
+
+        assertThat(payload(contextResult))
+                .containsEntry("language", "de");
     }
 
     @Test
@@ -196,7 +218,7 @@ class ClaudeV1GoalVisualizationContractTest {
                 null,
                 GOAL_ID,
                 "primary",
-                "A coordinate system for the learning goal.",
+                null,
                 "approved");
         return new FrontierGoal(
                 GOAL_ID,

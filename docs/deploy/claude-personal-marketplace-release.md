@@ -1,10 +1,11 @@
 # SkillPilot Claude personal marketplace release
 
 This runbook governs the repository-backed personal marketplace for
-`skillpilot-coach-v1`. It is a distribution lane for the existing Claude
-plugin, not an Anthropic-curated or Anthropic-verified listing, and it does not
-change the plugin's MCP, OAuth, identity, coaching, or supported-surface
-contract.
+`skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
+marketplace mechanism itself does not alter that candidate. It is not an
+Anthropic-curated or Anthropic-verified listing. The current 1.0.3 candidate
+intentionally changes the still-pre-public 1.0.2 coaching and mastery-tool
+contract as described below, without changing the frozen OpenAI v1 lane.
 
 The canonical target is:
 
@@ -26,10 +27,12 @@ is already recorded as `pass` for the current candidate.
 
 Anthropic accepts a Git repository containing
 `.claude-plugin/marketplace.json` as a personal marketplace. The SkillPilot
-monorepo is unsuitable as that repository: it is far larger than Anthropic's
-documented 512 MB marketplace-repository archive limit and exposes unrelated
-project history. The target repository is therefore a small generated
-publication tree.
+monorepo is unsuitable as that repository: its GitHub repository size is
+currently several GiB, its default branch has no marketplace manifest at the
+repository root, and Claude Web does not document a sparse-checkout option for
+the personal **Add from a repository** flow. Exposing the complete application
+repository would also broaden the publication surface far beyond the reviewed
+plugin. The target repository is therefore a small generated publication tree.
 
 The generator copies exactly the six files in the existing `publicationFiles`
 allowlist. It never copies package tests, builders, release evidence, learner
@@ -41,12 +44,12 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.0.2`
+- Current candidate version: `1.0.3`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
 - Current direct-install SHA-256:
-  `9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d`
+  `659ceaa95f0432541cd7323f6dbfdc58da81cea2c9d7778bf39ee6aaab9f121e`
 
 Anthropic allows a marketplace entry name to differ from the embedded plugin
 name. SkillPilot intentionally keeps the technical name equal, but Claude still
@@ -54,16 +57,45 @@ stores a marketplace-qualified installation record. That is why migration from
 an uploaded copy remains explicit. No `version` is repeated in
 `marketplace.json`.
 
+## Pre-public 1.0.3 hard cutover
+
+Version 1.0.3 is the intended first Marketplace publication. Version 1.0.2 was
+used only by two controlled users and was never published through this
+Marketplace. Both controlled installations must therefore be replaced with
+the exact 1.0.3 candidate and exercised from fresh SkillPilot learning contexts;
+mixed 1.0.2/1.0.3 operation is not an accepted compatibility mode.
+
+This is an intentionally incompatible pre-public contract correction:
+
+- Claude decides only whether the current active goal is complete.
+- The mastery tool no longer accepts a model-selected orientation path or next
+  goal.
+- The backend persists the completion, selects the successor and returns the
+  canonical context that Claude must continue with.
+
+The immutable 1.0.2 package and its 1.0.2 evidence remain historical records.
+They are not overwritten, rebound to new bytes, or promoted as a fallback.
+The candidate-specific 1.0.3 exact-client evidence starts at `pending` even
+though generic controlled-beta observations remain valid.
+
 ## Local preparation and validation
 
-Start with a clean worktree and run the frozen OpenAI and existing Claude
-release checks first:
+Start with a clean worktree and run the frozen OpenAI checks first:
 
 ```bash
 node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/openai_plugin_release.mjs verify
 node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
+```
+
+For a new candidate version, store the deterministic package additively and
+then verify the resulting publication index. `verify` alone is expected to
+fail before this first `prepare`, because the index still names the preceding
+candidate:
+
+```bash
+node scripts/claude_direct_install_beta_release.mjs prepare
 node scripts/claude_direct_install_beta_release.mjs verify
 ```
 
@@ -181,10 +213,16 @@ revision before activation:
 5. Exercise the intended coaching flow and both interactive MCP Apps on every
    surface that SkillPilot intends to advertise. Anthropic's technical
    availability is not SkillPilot acceptance evidence.
-6. Test migration from the previously uploaded plugin: remove only the old
+6. In Claude Web, complete an active goal and independently prove both that the
+   completion was persisted and that the next active goal is exactly the
+   backend-selected successor returned in the canonical mastery response.
+7. Repeat both proofs in native Claude Android Voice mode. A conversational
+   statement that the goal was saved or a visually plausible next goal is not
+   sufficient evidence.
+8. Test migration from the previously uploaded plugin: remove only the old
    SkillPilot plugin, add the marketplace, install once, reconnect if Claude
    asks, and verify a new SkillPilot-started session.
-7. Refresh the marketplace in Claude and confirm that migration and refresh do
+9. Refresh the marketplace in Claude and confirm that migration and refresh do
    not require another file upload. A real version-to-version update becomes a
    mandatory release gate beginning with the next Marketplace version.
 
@@ -218,13 +256,16 @@ preparation does not grant that exception.
 For any plugin-content change:
 
 1. make and review the plugin change in the canonical SkillPilot repository;
-2. increment `plugin.json` SemVer in the same change (`1.0.2` becomes at least
-   `1.0.3`);
-3. rebuild and bind a new direct-install artifact; never rebind `1.0.2` to new
-   bytes;
-4. update the marketplace lane's version and direct-install SHA-256 and reset
-   all earlier pass evidence to `pending`; candidate-bound validation rejects
-   stale evidence;
+2. increment `plugin.json` SemVer in the same change (`1.0.3` becomes at least
+   `1.0.4`);
+3. rebuild and bind a new direct-install artifact; never rebind an existing
+   version to new bytes;
+4. update the marketplace lane's version and direct-install SHA-256, create or
+   rebind every candidate- or revision-bound evidence record as `pending`, and
+   reject stale evidence. Reusable generic controlled-beta capability
+   observations may remain `pass` only while their capability and preconditions
+   are unchanged; rerun the current local package, archive and setup checks
+   before retaining those local results;
 5. update `CHANGELOG.md`;
 6. run all local checks above and prepare a new tree;
 7. publish through a target-repository pull request;

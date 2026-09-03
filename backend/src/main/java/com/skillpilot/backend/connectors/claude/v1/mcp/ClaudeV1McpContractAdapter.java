@@ -11,7 +11,6 @@ import com.skillpilot.backend.api.MemoryPracticeCard;
 import com.skillpilot.backend.api.MemoryPracticeResponse;
 import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
 import com.skillpilot.backend.api.MemoryPracticeStartRequest;
-import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
@@ -73,7 +72,6 @@ public class ClaudeV1McpContractAdapter {
     private static final String ARG_REDIRECT = "redirect";
     private static final String ARG_WORK_FEEDBACK = "workFeedback";
     private static final String ARG_OUTCOME_FEEDBACK = "outcomeFeedback";
-    private static final String ARG_ORIENTATION_PATH_ID = "orientationPathId";
     private static final String ARG_EXPECTED_STATE_VERSION = "expectedStateVersion";
     private static final String ARG_CLIENT_REQUEST_ID = "clientRequestId";
     private static final String ARG_BATCH_CAPABILITY = "batchCapability";
@@ -112,12 +110,17 @@ public class ClaudeV1McpContractAdapter {
             "Reload coach context now. If the newest result contains goalVisualization, follow "
                     + "that result's presentationInstruction before any learner-facing response.";
     static final String MASTERY_CONTINUATION_INSTRUCTION =
-            "Reload coach context now. If the newest result contains goalVisualization, follow that "
-                    + "result's presentationInstruction before any learner-facing response. Then give the "
+            "Use the returned context as the authoritative canonical backend state; do not reload it. "
+                    + "If that context contains goalVisualization, follow its presentationInstruction before "
+                    + "any learner-facing response. Then give the "
                     + "learner one concise, natural response that explains what went well, what still needs "
-                    + "practice, and the active goal or next learning step returned after reload. Do not "
+                    + "practice, and only the active goal or next action supplied by that returned context. Do not "
                     + "display feedback field names, completion markers, state revisions or other technical "
                     + "metadata.";
+    static final String LEGACY_MASTERY_REPLAY_INSTRUCTION =
+            "This is an exact replay of a completion recorded before successor contexts were embedded. "
+                    + "Reload coach context now and continue only from that canonical backend state. Do not "
+                    + "repeat the mastery write.";
     private static final Map<String, Set<String>> ALLOWED_ARGUMENTS = Map.ofEntries(
             Map.entry(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Set.of(ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION,
@@ -133,7 +136,7 @@ public class ClaudeV1McpContractAdapter {
             Map.entry(ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL, Set.of(
                     ARG_GOAL_ID, ARG_REDIRECT, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_SET_MASTERY, Set.of(
-                    ARG_GOAL_ID, ARG_WORK_FEEDBACK, ARG_OUTCOME_FEEDBACK, ARG_ORIENTATION_PATH_ID,
+                    ARG_GOAL_ID, ARG_WORK_FEEDBACK, ARG_OUTCOME_FEEDBACK,
                     ARG_EVALUATION_CAPABILITY, ARG_EARNED_POINTS, ARG_EXPECTED_STATE_VERSION,
                     ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL, Set.of(ARG_LANGUAGE)),
@@ -264,19 +267,23 @@ public class ClaudeV1McpContractAdapter {
                 or written responses. Supply specific evidence-based content in both required feedback
                 fields, but present it afterwards as one natural response without field labels or
                 technical metadata. Do not treat praise, repetition or a single guided answer as
-                evidence. Never use normal mastery for a memory goal.
+                evidence. Never use normal mastery for a memory goal. The model decides only whether
+                the active goal is complete. It must never choose, infer or activate a successor as
+                part of completion; use the full canonical successor context returned by the write.
 
                 Orientation is motivational, not subject assessment. Use orientationOutlook as the
-                complete authoritative map; do not invent paths or applications. A learner
-                merely selecting one offered path starts the tailored follow-up and is not completion.
+                complete authoritative content map when it is present; do not invent paths or
+                applications when it is absent. A learner merely selecting one offered possibility
+                starts the tailored follow-up and is not completion or progression input.
                 Complete orientation only after a meaningful response to that follow-up or an
-                explicit request to continue directly. Pass a selected pathId unchanged as
-                orientationPathId. Orientation completion never certifies subject mastery.
+                explicit request to continue directly. Record only completion; the backend alone
+                determines what follows. Orientation completion never certifies subject mastery.
 
                 Concurrency: pass the expectedStateVersion you last received on every write, along
                 with a fresh UUID clientRequestId. On STALE_STATE, reload context and retry with the
-                new version; never guess a version. After a successful focus, active-goal or mastery
-                write, follow its instruction and reload context before continuing to coach.
+                new version; never guess a version. After a successful focus or active-goal write,
+                follow its instruction and reload context before continuing to coach. A successful
+                mastery write already returns its full successor context; use it without another read.
 
                 Goal images: whenever the newest successful coach-context result contains
                 goalVisualization, form the pair from goalVisualization.goalId and that result's
@@ -284,8 +291,8 @@ public class ClaudeV1McpContractAdapter {
                 if a different pair was rendered earlier, call render_skillpilot_goal_visualization
                 exactly once as the immediate next SkillPilot tool before any learner-facing response,
                 copying the pair to goalId and expectedStateVersion. A repeated pair creates no
-                automatic call. After a successful focus, active-goal or mastery write, reload context
-                first and apply this rule to the new result. If the learner explicitly asks to show
+                automatic call. After a successful focus or active-goal write, reload context first;
+                after a mastery write, apply this rule directly to its returned successor context. If the learner explicitly asks to show
                 the current image again, reload the current context exactly once and, if it still
                 contains goalVisualization, make one new one-shot render call with that fresh pair;
                 never retry otherwise. The renderer result is only a UI receipt and does not prove
@@ -468,11 +475,6 @@ public class ClaudeV1McpContractAdapter {
                                         "Specific feedback on learner work present in the current conversation, including spoken or written responses."),
                                 ARG_OUTCOME_FEEDBACK, boundedStringSchema(
                                         "Why the evidence does or does not establish completion."),
-                                ARG_ORIENTATION_PATH_ID, Map.of(
-                                        "type", "string",
-                                        "minLength", 1,
-                                        "maxLength", MAX_IDENTIFIER_LENGTH,
-                                        "description", "Exact pathId from orientationOutlook; omit only for explicit direct continuation."),
                                 ARG_EVALUATION_CAPABILITY, Map.of(
                                         "type", "string",
                                         "description", "Opaque value from get_skillpilot_exam_evaluation, copied unchanged."),
@@ -924,10 +926,13 @@ public class ClaudeV1McpContractAdapter {
     // ---------------------------------------------------------------- read tools
 
     private Map<String, Object> getCoachContext(String connectionId, Map<String, Object> arguments) {
-        String language = language(arguments);
+        language(arguments);
         return sessionCoordinator.read(
                 connectionId,
-                ctx -> contextProjector.projectContext(ctx.skillpilotId(), ctx.stateVersion(), language)).value();
+                ctx -> contextProjector.projectContext(
+                        ctx.skillpilotId(),
+                        ctx.stateVersion(),
+                        ctx.communicationLocale())).value();
     }
 
     private UiPayload renderGoalVisualization(
@@ -935,11 +940,12 @@ public class ClaudeV1McpContractAdapter {
             Map<String, Object> arguments) {
         String goalId = requiredIdentifier(arguments, ARG_GOAL_ID);
         long expectedStateVersion = requiredStateVersion(arguments);
-        String language = language(arguments);
+        language(arguments);
         return sessionCoordinator.read(connectionId, ctx -> {
             requireCurrentStateVersion(expectedStateVersion, ctx.stateVersion());
+            String communicationLocale = ctx.communicationLocale();
             Map<String, Object> context = contextProjector.projectContext(
-                    ctx.skillpilotId(), ctx.stateVersion(), language);
+                    ctx.skillpilotId(), ctx.stateVersion(), communicationLocale);
             Map<String, Object> visualization = mapValue(context.get("goalVisualization"));
             if (visualization == null || !goalId.equals(visualization.get("goalId"))) {
                 throw new ToolConflictException(
@@ -947,7 +953,7 @@ public class ClaudeV1McpContractAdapter {
             }
             return new UiPayload(
                     localized(
-                            language,
+                            communicationLocale,
                             "Freigegebenes Lernzielbild bereitgestellt.",
                             "Approved learning-goal image provided."),
                     Map.of("goalVisualization", visualization),
@@ -1275,13 +1281,11 @@ public class ClaudeV1McpContractAdapter {
         String goalId = requiredIdentifier(arguments, ARG_GOAL_ID);
         String workFeedback = requiredBoundedString(arguments, ARG_WORK_FEEDBACK, MAX_FEEDBACK_LENGTH);
         String outcomeFeedback = requiredBoundedString(arguments, ARG_OUTCOME_FEEDBACK, MAX_FEEDBACK_LENGTH);
-        String orientationPathId = optionalBoundedString(
-                arguments, ARG_ORIENTATION_PATH_ID, MAX_IDENTIFIER_LENGTH);
         String evaluationCapability = optionalString(arguments, ARG_EVALUATION_CAPABILITY);
         Double earnedPoints = optionalDouble(arguments, ARG_EARNED_POINTS);
         long expectedStateVersion = requiredStateVersion(arguments);
         String clientRequestId = requiredClientRequestId(arguments);
-        String language = language(arguments);
+        language(arguments);
 
         ClaudeV1SessionCoordinator.Outcome<Map<String, Object>> outcome = sessionCoordinator.mutate(
                 connectionId,
@@ -1299,9 +1303,6 @@ public class ClaudeV1McpContractAdapter {
                         throw new ToolInputException(
                                 "Normal coach mastery is permitted only for the active non-memory atomic goal.");
                     }
-
-                    OrientationOutlook.Path selectedOrientationPath = validateOrientationPath(
-                            ctx.skillpilotId(), active, orientationPathId, language);
 
                     if (isExamGoal(active)) {
                         applyExamMasteryRules(
@@ -1333,21 +1334,43 @@ public class ClaudeV1McpContractAdapter {
                         throw new IllegalStateException(
                                 "The canonical mastery operation returned an inconsistent completion result.");
                     }
-                    if (selectedOrientationPath != null) {
-                        activateFirstAvailableOrientationPathGoal(
-                                ctx.skillpilotId(), selectedOrientationPath);
+                    long successorStateVersion = ctx.currentStateVersion();
+                    Map<String, Object> successorContext = contextProjector.projectMasteryContext(
+                            ctx.skillpilotId(),
+                            successorStateVersion,
+                            ctx.communicationLocale(),
+                            state.curriculum(),
+                            result.update());
+                    if (!Objects.equals(successorContext.get("stateVersion"), successorStateVersion)) {
+                        throw new IllegalStateException(
+                                "The canonical successor projection returned an inconsistent state revision.");
                     }
-                    Map<String, Object> saved = new LinkedHashMap<>();
-                    saved.put("savedGoalId", result.update().savedGoalId());
-                    saved.put("savedMastery", result.update().savedMastery());
-                    return saved;
+                    Map<String, Object> response = successResponse(successorStateVersion);
+                    response.put("savedGoalId", result.update().savedGoalId());
+                    response.put("savedMastery", result.update().savedMastery());
+                    response.put("context", successorContext);
+                    response.put("presentationInstruction", MASTERY_CONTINUATION_INSTRUCTION);
+                    if (earnedPoints != null) {
+                        response.put("earnedPoints", earnedPoints);
+                    }
+                    return response;
                 });
 
-        Map<String, Object> response = successResponse(outcome.stateVersion());
-        response.putAll(outcome.value());
-        response.put("presentationInstruction", MASTERY_CONTINUATION_INSTRUCTION);
-        if (earnedPoints != null) {
-            response.put("earnedPoints", earnedPoints);
+        Map<String, Object> response = new LinkedHashMap<>(outcome.value());
+        if (!response.containsKey("context")) {
+            Map<String, Object> legacyReplay = successResponse(outcome.stateVersion());
+            legacyReplay.putAll(response);
+            legacyReplay.put("presentationInstruction", LEGACY_MASTERY_REPLAY_INSTRUCTION);
+            if (earnedPoints != null) {
+                legacyReplay.put("earnedPoints", earnedPoints);
+            }
+            return legacyReplay;
+        }
+        Object embeddedStateVersion = response.get("stateVersion");
+        if (!(embeddedStateVersion instanceof Number number)
+                || number.longValue() != outcome.stateVersion()) {
+            throw new IllegalStateException(
+                    "The stored mastery response has an inconsistent state revision.");
         }
         return response;
     }
@@ -1385,57 +1408,6 @@ public class ClaudeV1McpContractAdapter {
             throw new ToolConflictException(
                     "The exam has not been passed. Give complete feedback and stay on the same exam goal; "
                             + "do not save mastery.");
-        }
-    }
-
-    private OrientationOutlook.Path validateOrientationPath(
-            String skillpilotId,
-            FrontierGoal active,
-            String orientationPathId,
-            String language) {
-        if (!isOrientationGoal(active)) {
-            if (orientationPathId != null) {
-                throw new ToolInputException(
-                        "orientationPathId is valid only for the active orientation goal.");
-            }
-            return null;
-        }
-        if (orientationPathId == null) {
-            return null;
-        }
-        OrientationOutlook outlook = coachToolFacade.getOrientationOutlook(skillpilotId, language);
-        if (outlook == null
-                || !active.id().equals(outlook.orientationGoalId())
-                || outlook.paths() == null) {
-            throw new ToolConflictException("The current orientation map is no longer available.");
-        }
-        return outlook.paths().stream()
-                .filter(Objects::nonNull)
-                .filter(path -> orientationPathId.equals(path.pathId()))
-                .findFirst()
-                .orElseThrow(() -> new ToolInputException(
-                        "orientationPathId is not part of the current orientation map."));
-    }
-
-    private void activateFirstAvailableOrientationPathGoal(
-            String skillpilotId,
-            OrientationOutlook.Path selectedPath) {
-        if (selectedPath.relatedGoalIds() == null || selectedPath.relatedGoalIds().isEmpty()) {
-            throw new ToolConflictException("The selected orientation path has no reviewed entry goal.");
-        }
-        Set<String> relatedGoalIds = new LinkedHashSet<>(selectedPath.relatedGoalIds());
-        List<FrontierGoal> frontier = coachToolFacade.getUncompactedFrontier(skillpilotId);
-        if (frontier == null || frontier.isEmpty()) {
-            return;
-        }
-        FrontierGoal selected = frontier.stream()
-                .filter(Objects::nonNull)
-                .filter(goal -> "atomic".equals(goal.type()))
-                .filter(goal -> relatedGoalIds.contains(goal.id()))
-                .findFirst()
-                .orElse(null);
-        if (selected != null) {
-            coachToolFacade.setActiveGoal(skillpilotId, new ActiveGoalRequest(selected.id(), false));
         }
     }
 

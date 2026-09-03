@@ -52,8 +52,12 @@ const expectedExactClientChecks = [
   "first-party-fresh-session-handoff",
   "web-coaching-and-both-mcp-apps",
   "web-goal-visualization-after-goal-change",
+  "web-active-goal-completion-persisted",
+  "web-backend-selected-successor",
   "android-context-and-both-mcp-apps",
   "android-voice-current-context",
+  "android-voice-active-goal-completion-persisted",
+  "android-voice-backend-selected-successor",
   "no-duplicate-or-protected-data-disclosure",
 ];
 const expectedPrivacyChecks = [

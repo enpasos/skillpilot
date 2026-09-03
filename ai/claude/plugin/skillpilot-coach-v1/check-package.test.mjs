@@ -79,7 +79,7 @@ test("rejects incomplete coverage of the twelve-tool contract", () => {
   });
 });
 
-test("rejects loss of the mandatory post-reload goal-visualization render", () => {
+test("rejects loss of the mandatory post-write goal-visualization render", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
       /immediate next\s+SkillPilot tool/u,
@@ -87,7 +87,32 @@ test("rejects loss of the mandatory post-reload goal-visualization render", () =
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /one immediate goal-visualization render per unseen goal\/state pair/u,
+      /one immediate goal-visualization render per unseen goal\/state pair from the authoritative post-write context/u,
+    );
+  });
+});
+
+test("rejects model-selected progression after completion", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /Decide only whether the active goal is complete\. Never choose, infer or activate\s+its successor as part of the completion write\./u,
+      "Decide that the goal is complete, then choose and activate the next goal yourself.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /leave successor selection exclusively to the backend/u,
+    );
+  });
+});
+
+test("rejects restoration of an orientation progression identifier", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => (
+      `${value}\nPass orientationPathId to select the next goal.\n`
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /must not expose an orientation or successor selection identifier/u,
     );
   });
 });
