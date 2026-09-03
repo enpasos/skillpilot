@@ -401,7 +401,14 @@ reached through the main or OpenAI origin.
 - Leave the dormant `/api/claude/mcp` path untouched during the freeze. New
   credentials and resource audiences must be invalid there, so it is not a
   fallback or compatibility route.
-- Do not add a listener, loopback port, JVM or systemd unit for Claude.
+- Do not add a connector listener, loopback port, JVM or connector-runtime
+  systemd unit for Claude. The provider-bounded WARN monitor required by the
+  support-readiness runbook is a separate host-operations control, not another
+  connector deployable: it may only read the existing `skillpilot.service`
+  journal, opens no listener or API, sends only the fixed redacted alert fields,
+  and must not alter or supervise the backend runtime. It is installed and
+  activated separately by an authorized operator rather than by the normal
+  application deployment.
 
 ---
 
@@ -945,8 +952,11 @@ The following decisions are already made by this revision:
   SkillPilot;
 - OAuth and optional `offline_access` remain long-lived technical transport
   only and never select, mint, renew or extend a learner session;
-- the connector runs in the existing deployable and JVM; no additional process,
-  port, datasource or systemd unit is created;
+- the connector runs in the existing deployable and JVM; no additional
+  connector process, port, datasource or connector-runtime systemd unit is
+  created. The separately activated, read-only host WARN monitor defined by the
+  support-readiness runbook remains outside the connector runtime and has no
+  listener, application state or request path;
 - old beta stays dormant;
 - public MCP/issuer origin is `mcp-claude-v1.skillpilot.com`;
 - Claude v1 exposes exactly twelve tools and two content-addressed MCP Apps UI

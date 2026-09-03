@@ -19,6 +19,10 @@ on:
       - 'scripts/claude_support_synthetic.mjs'
       - 'scripts/claude_support_synthetic.test.mjs'
       - 'scripts/claude_direct_install_beta_release.mjs'
+      - 'scripts/claude_v1_warn_alert.py'
+      - 'scripts/test_claude_v1_warn_alert.py'
+      - 'scripts/install_claude_v1_warn_alert.sh'
+      - 'deploy/claude-observability/**'
       - 'backend/src/main/resources/claude-plugin-publication/**'
   pull_request:
     branches: [ main ]
@@ -29,6 +33,10 @@ on:
       - 'scripts/claude_support_synthetic.mjs'
       - 'scripts/claude_support_synthetic.test.mjs'
       - 'scripts/claude_direct_install_beta_release.mjs'
+      - 'scripts/claude_v1_warn_alert.py'
+      - 'scripts/test_claude_v1_warn_alert.py'
+      - 'scripts/install_claude_v1_warn_alert.sh'
+      - 'deploy/claude-observability/**'
       - 'backend/src/main/resources/claude-plugin-publication/**'
 
 permissions:
@@ -50,6 +58,17 @@ jobs:
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: .nvmrc
+      - name: Use Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.10'
+      - name: Test redacted provider WARN alert router
+        run: |
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest scripts/test_claude_v1_warn_alert.py
+          bash -n scripts/install_claude_v1_warn_alert.sh
+          systemd-analyze verify \
+            deploy/claude-observability/skillpilot-claude-v1-warn-alert.service \
+            deploy/claude-observability/skillpilot-claude-v1-warn-alert-test.service
       - name: Test read-only synthetic
         run: node --test scripts/claude_support_synthetic.test.mjs
 
