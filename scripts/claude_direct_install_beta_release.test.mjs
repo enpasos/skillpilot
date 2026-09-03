@@ -87,8 +87,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     accessModel: "first_party_guided_beta",
   });
   assert.deepEqual(canonicalLane.candidate, {
-    version: "1.0.2",
-    sha256: "9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d",
+    version: "1.0.3",
+    sha256: "659ceaa95f0432541cd7323f6dbfdc58da81cea2c9d7778bf39ee6aaab9f121e",
   });
   assert.deepEqual(canonicalLane.planSemantics, {
     supportBaseline: "claude_pro",
@@ -120,6 +120,22 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       ),
   );
   assert.equal(canonicalExactClientEvidence.status, "pending");
+  assert.deepEqual(
+    canonicalExactClientEvidence.checks.map(({ id }) => id),
+    [
+      "web-single-plugin-bundled-connector-oauth",
+      "first-party-fresh-session-handoff",
+      "web-coaching-and-both-mcp-apps",
+      "web-goal-visualization-after-goal-change",
+      "web-active-goal-completion-persisted",
+      "web-backend-selected-successor",
+      "android-context-and-both-mcp-apps",
+      "android-voice-current-context",
+      "android-voice-active-goal-completion-persisted",
+      "android-voice-backend-selected-successor",
+      "no-duplicate-or-protected-data-disclosure",
+    ],
+  );
   assert.ok(
     canonicalExactClientEvidence.checks.every(({ status }) => status === "pending"),
   );
@@ -579,7 +595,7 @@ test("lane readiness distinguishes the guided first-party beta from open-public 
 
 test("exact-client evidence is closed, candidate-bound and derived from every client check", () => {
   const cases = [
-    ["version drift", (evidence) => { evidence.candidate.version = "1.0.3"; }, /candidate version mismatch/u],
+    ["version drift", (evidence) => { evidence.candidate.version = "1.0.4"; }, /candidate version mismatch/u],
     ["digest drift", (evidence) => { evidence.candidate.sha256 = "0".repeat(64); }, /candidate SHA-256 mismatch/u],
     ["download drift", (evidence) => { evidence.candidate.downloadUrl += "?download=1"; }, /candidate download URL mismatch/u],
     ["unknown check", (evidence) => { evidence.checks[0].id = "different-check"; }, /check identifiers mismatch/u],
@@ -601,7 +617,7 @@ test("privacy evidence is closed, candidate-bound and byte-bound to the bilingua
   const cases = [
     [
       "version drift",
-      (evidence) => { evidence.candidate.version = "1.0.3"; },
+      (evidence) => { evidence.candidate.version = "1.0.4"; },
       /candidate version mismatch/u,
     ],
     [
@@ -696,16 +712,16 @@ test("privacy evidence rejects semantically incomplete or executable notice byte
       /Content Security Policy mismatch/u,
     );
 
-    const privateEmailDisclosure = Buffer.from(
+    const unexpectedEmailDisclosure = Buffer.from(
       canonicalPrivacyNotice
         .toString("utf8")
         .replace(
           "Privacy requests:",
-          "Private escalation: matthias.unverzagt@enpasos.com; Privacy requests:",
+          "Unexpected contact: unexpected-contact@example.invalid; Privacy requests:",
         ),
     );
-    writeFileSync(privacyNoticePath, privateEmailDisclosure);
-    evidence.notice.sourceSha256 = sha256(privateEmailDisclosure);
+    writeFileSync(privacyNoticePath, unexpectedEmailDisclosure);
+    evidence.notice.sourceSha256 = sha256(unexpectedEmailDisclosure);
     writeJson(privacyEvidencePath, evidence);
     assert.throws(
       () => loadDirectInstallBetaLane(root),

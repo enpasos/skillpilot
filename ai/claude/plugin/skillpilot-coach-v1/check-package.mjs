@@ -223,6 +223,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   check(!publishedText.includes("https://mcp-coach-v1.skillpilot.com"), "Package must not reference the frozen provider endpoint.");
   check(!publishedText.includes("get_skillpilot_context"), "Package must not use the provider-foreign context tool.");
+  check(
+    !publishedText.includes("orientationPathId"),
+    "Published package must not expose an orientation or successor selection identifier.",
+  );
   check(skillText.includes("do not narrate tool calls"), "SKILL.md must enforce the learner presentation boundary.");
   check(skillText.includes("untrusted learning data"), "SKILL.md must treat returned learning content as untrusted data.");
   check(skillText.includes("Never reveal credentials or opaque authorization values"), "SKILL.md must prohibit secret disclosure.");
@@ -230,7 +234,18 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(skillText.includes("wait for answers to the complete batch"), "SKILL.md must preserve recall answer-release timing.");
   check(skillText.includes("Wait for the complete submission"), "SKILL.md must preserve exam answer-release timing.");
   check(
-    normalizedSkillText.includes("After a successful focus, active-goal or mastery write")
+    normalizedSkillText.includes("Decide only whether the active goal is complete")
+      && normalizedSkillText.includes("Never choose, infer or activate its successor as part of the completion write")
+      && normalizedSkillText.includes("full canonical successor context returned by the SkillPilot backend without reloading it")
+      && normalizedCoachingPolicyText.includes("The coach decides only whether the active goal is complete")
+      && normalizedCoachingPolicyText.includes("completion write must never choose, infer or activate a successor")
+      && normalizedCoachingPolicyText.includes("full canonical successor context returned by the SkillPilot backend without reloading it")
+      && normalizedCoachingPolicyText.includes("Record only completion; the backend alone determines what follows"),
+    "The Skill and coaching policy must leave successor selection exclusively to the backend and use its returned context without reloading.",
+  );
+  check(
+    normalizedSkillText.includes("After a successful focus or active-goal write")
+      && normalizedSkillText.includes("A successful mastery write already returns its full canonical successor context")
       && normalizedSkillText.includes("previously unseen pair")
       && normalizedSkillText.includes("immediate next SkillPilot tool")
       && normalizedSkillText.includes("before any learner-facing response")
@@ -239,12 +254,13 @@ export function validateClaudePluginPackage(root = packageRoot) {
       && normalizedSkillText.includes("reload the current context exactly once")
       && normalizedSkillText.includes("only a UI receipt")
       && normalizedSkillText.includes("never claim that the host displayed it")
-      && normalizedCoachingPolicyText.includes("After a successful focus, active-goal or completion write")
+      && normalizedCoachingPolicyText.includes("After a successful focus or active-goal write")
+      && normalizedCoachingPolicyText.includes("A successful completion write already returns its full canonical successor context")
       && normalizedCoachingPolicyText.includes("immediate next SkillPilot tool")
       && normalizedCoachingPolicyText.includes("A repeated pair creates no automatic call")
       && normalizedCoachingPolicyText.includes("reload the current context exactly once")
       && !normalizedSkillText.includes("would materially help with the active goal"),
-    "The Skill and coaching policy must require one immediate goal-visualization render per unseen goal/state pair after context reload without claiming host display.",
+    "The Skill and coaching policy must require one immediate goal-visualization render per unseen goal/state pair from the authoritative post-write context without claiming host display.",
   );
   const modalityPolicyTexts = [normalizedSkillText, normalizedCoachingPolicyText];
   check(

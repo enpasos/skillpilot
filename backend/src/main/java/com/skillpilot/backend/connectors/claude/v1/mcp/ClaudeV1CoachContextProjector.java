@@ -5,6 +5,7 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -75,7 +76,39 @@ public class ClaudeV1CoachContextProjector {
     public Map<String, Object> projectContext(String skillpilotId, long stateVersion, String language) {
         UnifiedLearnerStateResponse rawState = coachToolFacade.getLearnerState(skillpilotId);
         UnifiedLearnerStateResponse projectedState = coachStateProjection.project(rawState);
+        return projectContext(skillpilotId, stateVersion, language, projectedState, false);
+    }
 
+    Map<String, Object> projectMasteryContext(
+            String skillpilotId,
+            long stateVersion,
+            String language,
+            LandscapeSummary curriculum,
+            MasteryUpdateResponse update) {
+        MasteryUpdateResponse projectedUpdate = coachStateProjection.project(update);
+        if (projectedUpdate == null) {
+            throw new IllegalArgumentException("Mastery update is required for successor projection.");
+        }
+        UnifiedLearnerStateResponse projectedState = new UnifiedLearnerStateResponse(
+                null,
+                curriculum,
+                projectedUpdate.frontier(),
+                projectedUpdate.goals(),
+                projectedUpdate.nextAllowedActions(),
+                List.of(),
+                Set.of(),
+                projectedUpdate.learningState(),
+                projectedUpdate.activeGoal(),
+                projectedUpdate.stateMachine());
+        return projectContext(skillpilotId, stateVersion, language, projectedState, true);
+    }
+
+    private Map<String, Object> projectContext(
+            String skillpilotId,
+            long stateVersion,
+            String language,
+            UnifiedLearnerStateResponse projectedState,
+            boolean suppressCompetingFrontier) {
         Map<String, Object> context = new LinkedHashMap<>();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
@@ -112,18 +145,23 @@ public class ClaudeV1CoachContextProjector {
         }
 
         if (isOrientationGoal(activeGoal)) {
-            context.put("orientationOutlook", projectOrientationOutlook(
+            Map<String, Object> orientationOutlook = projectOrientationOutlook(
                     coachToolFacade.getOrientationOutlook(skillpilotId, language),
-                    activeGoal.id()));
+                    activeGoal.id());
+            if (orientationOutlook != null) {
+                context.put("orientationOutlook", orientationOutlook);
+            }
         }
 
         List<FrontierGoal> frontier = projectedState.frontier();
         String activeGoalId = activeGoal == null ? null : activeGoal.id();
-        context.put("frontier", frontier == null ? List.of() : frontier.stream()
-                .filter(Objects::nonNull)
-                .filter(goal -> !Objects.equals(activeGoalId, goal.id()))
-                .map(this::formatGoal)
-                .toList());
+        context.put("frontier", frontier == null || (suppressCompetingFrontier && activeGoalId != null)
+                ? List.of()
+                : frontier.stream()
+                        .filter(Objects::nonNull)
+                        .filter(goal -> !Objects.equals(activeGoalId, goal.id()))
+                        .map(this::formatGoal)
+                        .toList());
 
         LearnerGoals goals = projectedState.goals();
         if (goals != null) {
@@ -346,20 +384,23 @@ public class ClaudeV1CoachContextProjector {
             return null;
         }
         Map<String, Object> projected = new LinkedHashMap<>();
-        projected.put("orientationGoalId", outlook.orientationGoalId());
         projected.put("paths", outlook.paths().stream()
                 .filter(Objects::nonNull)
                 .map(path -> {
                     Map<String, Object> item = new LinkedHashMap<>();
-                    item.put("pathId", path.pathId());
                     item.put("title", path.title());
                     item.put("learningOutlook", path.learningOutlook());
                     item.put("practicalContexts",
                             path.practicalContexts() == null ? List.of() : path.practicalContexts());
-                    item.put("representativeGoals",
-                            path.representativeGoals() == null ? List.of() : path.representativeGoals());
-                    // relatedGoalIds is an internal transition allowlist and is deliberately not
-                    // exposed to the model.
+                    item.put("representativeGoals", path.representativeGoals() == null
+                            ? List.of()
+                            : path.representativeGoals().stream()
+                                    .filter(Objects::nonNull)
+                                    .filter(goal -> goal.title() != null && !goal.title().isBlank())
+                                    .map(goal -> Map.of("title", goal.title()))
+                                    .toList());
+                    // Path, goal and transition identifiers are deliberately omitted: the
+                    // orientation map can personalize motivation but cannot select progression.
                     return item;
                 })
                 .toList());

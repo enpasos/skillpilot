@@ -13,7 +13,9 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
+import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeSummary;
@@ -24,6 +26,130 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class ClaudeV1CoachContextProjectorTest {
+
+    @Test
+    void orientationContextOmitsAnUnavailableOutlookInsteadOfPublishingNull() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade toolFacade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector =
+                new ClaudeV1CoachContextProjector(stateProjection, toolFacade);
+        FrontierGoal activeGoal = orientationGoal();
+        UnifiedLearnerStateResponse state = stateWithActiveGoal(activeGoal);
+        when(toolFacade.getLearnerState("internal-learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(toolFacade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+        when(toolFacade.getOrientationOutlook("internal-learner", "de")).thenReturn(null);
+
+        Map<String, Object> context = projector.projectContext("internal-learner", 7, "de");
+
+        assertFalse(context.containsKey("orientationOutlook"));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void orientationContextPublishesMotivationalContentWithoutTransitionIdentifiers() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade toolFacade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector =
+                new ClaudeV1CoachContextProjector(stateProjection, toolFacade);
+        FrontierGoal activeGoal = orientationGoal();
+        UnifiedLearnerStateResponse state = stateWithActiveGoal(activeGoal);
+        OrientationOutlook outlook = new OrientationOutlook(
+                activeGoal.id(),
+                List.of(new OrientationOutlook.Path(
+                        "internal-path-id",
+                        "Technik verstehen",
+                        "Du lernst, technische Systeme zu erklären.",
+                        List.of("Smartphone"),
+                        List.of(new OrientationOutlook.GoalReference(
+                                "internal-goal-id", "Funkwellen untersuchen")),
+                        List.of("internal-transition-goal"))));
+        when(toolFacade.getLearnerState("internal-learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(toolFacade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+        when(toolFacade.getOrientationOutlook("internal-learner", "de")).thenReturn(outlook);
+
+        Map<String, Object> context = projector.projectContext("internal-learner", 7, "de");
+
+        Map<String, Object> projected = (Map<String, Object>) context.get("orientationOutlook");
+        assertNotNull(projected);
+        assertEquals(Set.of("paths"), projected.keySet());
+        List<Map<String, Object>> paths = (List<Map<String, Object>>) projected.get("paths");
+        assertEquals(1, paths.size());
+        assertEquals(
+                Set.of("title", "learningOutlook", "practicalContexts", "representativeGoals"),
+                paths.getFirst().keySet());
+        assertEquals(
+                List.of(Map.of("title", "Funkwellen untersuchen")),
+                paths.getFirst().get("representativeGoals"));
+        String visibleProjection = projected.toString();
+        assertFalse(visibleProjection.contains("internal-path-id"));
+        assertFalse(visibleProjection.contains("internal-goal-id"));
+        assertFalse(visibleProjection.contains("internal-transition-goal"));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void normalContextKeepsEligibleRedirectGoalsButOmitsTheActiveDuplicate() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade toolFacade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector =
+                new ClaudeV1CoachContextProjector(stateProjection, toolFacade);
+        FrontierGoal backendSelected = goal("backend-selected", List.of());
+        FrontierGoal competingA = goal("competing-a", List.of());
+        FrontierGoal competingB = goal("competing-b", List.of());
+        UnifiedLearnerStateResponse state = state(
+                backendSelected,
+                List.of(backendSelected, competingA, competingB),
+                "teachActiveGoal");
+        when(toolFacade.getLearnerState("internal-learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(toolFacade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+
+        Map<String, Object> context = projector.projectContext("internal-learner", 11, "de");
+
+        assertEquals("backend-selected", ((Map<String, Object>) context.get("activeGoal")).get("id"));
+        List<Map<String, Object>> frontier = (List<Map<String, Object>>) context.get("frontier");
+        assertEquals(List.of("competing-a", "competing-b"), frontier.stream()
+                .map(item -> item.get("id").toString())
+                .toList());
+        assertEquals(
+                "teachActiveGoal",
+                ((Map<String, Object>) context.get("stateMachine")).get("requiredAction"));
+        assertFalse(frontier.toString().contains("backend-selected"));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void backendFrontierRemainsVisibleOnlyWhenNoGoalIsActive() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade toolFacade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector =
+                new ClaudeV1CoachContextProjector(stateProjection, toolFacade);
+        FrontierGoal candidateA = goal("candidate-a", List.of());
+        FrontierGoal candidateB = goal("candidate-b", List.of());
+        UnifiedLearnerStateResponse state = state(
+                null,
+                List.of(candidateA, candidateB),
+                "setActiveGoal");
+        when(toolFacade.getLearnerState("internal-learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(toolFacade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+
+        Map<String, Object> context = projector.projectContext("internal-learner", 12, "de");
+
+        List<Map<String, Object>> frontier = (List<Map<String, Object>>) context.get("frontier");
+        assertEquals(List.of("candidate-a", "candidate-b"), frontier.stream()
+                .map(item -> item.get("id").toString())
+                .toList());
+        assertEquals(
+                "setActiveGoal",
+                ((Map<String, Object>) context.get("stateMachine")).get("requiredAction"));
+    }
 
     @Test
     void contextOmitsMaintainerDescriptionFilterInventoryAndCompatibilityMetadata() {
@@ -353,6 +479,60 @@ class ClaudeV1CoachContextProjectorTest {
                 null,
                 null,
                 false);
+    }
+
+    private FrontierGoal orientationGoal() {
+        return new FrontierGoal(
+                "orientation-goal",
+                "Warum dieses Fach?",
+                "Entdecke, was du in diesem Fach verstehen und gestalten kannst.",
+                "atomic",
+                "tutor",
+                "orientation",
+                null,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                false);
+    }
+
+    private UnifiedLearnerStateResponse stateWithActiveGoal(FrontierGoal activeGoal) {
+        return new UnifiedLearnerStateResponse(
+                null,
+                curriculum(),
+                List.of(activeGoal),
+                new LearnerGoals(List.of(activeGoal), 1, 1, null, null, false),
+                List.of("setMastery"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeGoal,
+                null);
+    }
+
+    private UnifiedLearnerStateResponse state(
+            FrontierGoal activeGoal,
+            List<FrontierGoal> frontier,
+            String requiredAction) {
+        return new UnifiedLearnerStateResponse(
+                null,
+                curriculum(),
+                frontier,
+                new LearnerGoals(frontier, 0, frontier.size(), null, null, false),
+                List.of(),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeGoal,
+                new StateMachineInfo(
+                        "TEACHING",
+                        requiredAction,
+                        frontier,
+                        List.of(),
+                        activeGoal));
     }
 
     private PersonalizationPlan.CompletedDecision decision(

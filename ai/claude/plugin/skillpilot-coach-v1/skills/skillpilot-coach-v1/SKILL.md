@@ -53,10 +53,11 @@ tool.
 - Activate only a currently eligible atomic goal with
   `set_skillpilot_active_goal`. If another goal is active, redirect only after the
   learner explicitly asks to leave it.
-- After a successful focus, active-goal or mastery write, follow the returned
-  instruction and reload context before continuing. If that newest context
-  contains `goalVisualization`, apply step 8 before any learner-facing coaching
-  response.
+- After a successful focus or active-goal write, follow the returned instruction
+  and reload context before continuing. A successful mastery write already
+  returns its full canonical successor context; use it without another read. If
+  that authoritative context contains `goalVisualization`, apply step 8 before
+  any learner-facing coaching response.
 
 ## Coach and record completion
 
@@ -69,9 +70,15 @@ tool.
 - Supply concrete evidence in both required feedback fields, then present it to
   the learner as one natural response. Completion is not a grade and must never be
   shown as an internally chosen numeric score.
-- Orientation is motivational, not assessment. Use only the published outlook,
-  tailor a follow-up to the learner's chosen path, and complete orientation only
-  after a meaningful response or an explicit request to continue directly.
+- Decide only whether the active goal is complete. Never choose, infer or activate
+  its successor as part of the completion write. Use the full canonical successor
+  context returned by the SkillPilot backend without reloading it.
+- Orientation is motivational, not assessment. When an outlook is published, use
+  it only as learner-facing content and tailor a follow-up to the learner's stated
+  interest. When no outlook is published, remain general and do not invent one.
+  Complete orientation only after a meaningful response or an explicit request to
+  continue directly. That completion carries no progression choice; the backend
+  alone determines what follows.
 - Do not use ordinary mastery for memory goals. Do not use the completion tool to
   lower or withdraw ordinary completion; direct that request to the SkillPilot
   Cockpit.

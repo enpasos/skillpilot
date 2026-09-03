@@ -52,10 +52,10 @@ test("production marketplace lane is fail-closed before external publication", (
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.target.repository, "enpasos/skillpilot-claude-marketplace");
   assert.equal(lane.plugin.name, "skillpilot-coach-v1");
-  assert.equal(lane.plugin.version, "1.0.2");
+  assert.equal(lane.plugin.version, "1.0.3");
   assert.equal(
     lane.plugin.directInstallSha256,
-    "9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d",
+    "659ceaa95f0432541cd7323f6dbfdc58da81cea2c9d7778bf39ee6aaab9f121e",
   );
   assert.deepEqual(lane.activation, {
     state: "prepared_not_published",
@@ -208,7 +208,7 @@ test("marketplace activation state is derived from revision-bound evidence", () 
   );
 
   const staleCandidateEvidence = structuredClone(repositoryPublished);
-  staleCandidateEvidence.plugin.version = "1.0.3";
+  staleCandidateEvidence.plugin.version = "1.0.4";
   staleCandidateEvidence.plugin.directInstallSha256 = "f".repeat(64);
   assert.throws(
     () => validateClaudeMarketplaceLane(staleCandidateEvidence),
@@ -239,7 +239,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.0.2");
+    assert.equal(prepared.version, "1.0.3");
     assert.equal(prepared.files.length, 11);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -298,7 +298,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.0.2",
+                version: "1.0.3",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
