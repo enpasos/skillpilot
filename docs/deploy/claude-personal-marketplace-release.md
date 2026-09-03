@@ -3,9 +3,9 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. The current 1.0.3 candidate
-intentionally changes the still-pre-public 1.0.2 coaching and mastery-tool
-contract as described below, without changing the frozen OpenAI v1 lane.
+Anthropic-curated or Anthropic-verified listing. The current 1.0.4 candidate
+adds a learner-facing coaching correction to the still-pre-public 1.0.3
+candidate as described below, without changing the frozen OpenAI v1 lane.
 
 The canonical target is:
 
@@ -20,8 +20,13 @@ supported installation source. The first-party `/plugins` page must continue
 to use the controlled direct-install beta. Local export success never changes
 that state by itself. The current direct-install lane still reports
 `openPublicBetaReady = false`; legal approval, support readiness and
-exact-client acceptance therefore remain publication blockers. Privacy approval
-is already recorded as `pass` for the current candidate.
+exact-client acceptance therefore remain activation blockers. Privacy approval
+is already recorded as `pass` for the current candidate. The bounded first
+repository publication may occur with exact-client acceptance still `pending`
+so that acceptance can be performed through the Marketplace installation
+itself, but only after the local, supply-chain and OpenAI-freeze checks below
+and explicit Product Owner approval. That publication does not make the
+Marketplace the first-party primary route.
 
 ## Why this is a separate repository
 
@@ -44,12 +49,12 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.0.3`
+- Current candidate version: `1.0.4`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
 - Current direct-install SHA-256:
-  `659ceaa95f0432541cd7323f6dbfdc58da81cea2c9d7778bf39ee6aaab9f121e`
+  `46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963`
 
 Anthropic allows a marketplace entry name to differ from the embedded plugin
 name. SkillPilot intentionally keeps the technical name equal, but Claude still
@@ -57,26 +62,43 @@ stores a marketplace-qualified installation record. That is why migration from
 an uploaded copy remains explicit. No `version` is repeated in
 `marketplace.json`.
 
-## Pre-public 1.0.3 hard cutover
+## Pre-public 1.0.4 hard cutover
 
-Version 1.0.3 is the intended first Marketplace publication. Version 1.0.2 was
-used only by two controlled users and was never published through this
-Marketplace. Both controlled installations must therefore be replaced with
-the exact 1.0.3 candidate and exercised from fresh SkillPilot learning contexts;
-mixed 1.0.2/1.0.3 operation is not an accepted compatibility mode.
+Version 1.0.4 is the intended first Marketplace publication. Versions 1.0.2
+and 1.0.3 were used only by two controlled users and were never published
+through this Marketplace. They are not used for the 1.0.4 acceptance. The two
+controlled users must install the exact 1.0.4 candidate from the Marketplace
+after its bounded repository publication and exercise it from fresh SkillPilot
+learning contexts; mixed 1.0.2/1.0.3/1.0.4 operation is not an accepted release
+mode.
 
-This is an intentionally incompatible pre-public contract correction:
+Version 1.0.3 established the intentionally incompatible pre-public correction
+in which Claude decides only whether the current active goal is complete and
+the backend persists the completion, selects the successor and returns its
+canonical context. Version 1.0.4 preserves that API, tool schema, OAuth,
+session and persistence contract while correcting its learner-facing
+application:
 
-- Claude decides only whether the current active goal is complete.
-- The mastery tool no longer accepts a model-selected orientation path or next
-  goal.
-- The backend persists the completion, selects the successor and returns the
-  canonical context that Claude must continue with.
+- Policy, instruction, tool-schema, parameter, retry and private-deliberation
+  mechanics stay out of learner-facing text and speech.
+- After the tailored orientation exchange, a clear start or continuation
+  intent completes the orientation without another confirmation loop. Claude
+  writes that completion immediately and continues only after the backend has
+  confirmed it.
+- Ordinary mastery feedback remains learner-facing, while an orientation
+  transition is presented without mastery grading or internal bookkeeping.
+- A topic used to personalize the current conversation is never described as a
+  durable remembered preference; the current connector has no such memory
+  feature.
 
-The immutable 1.0.2 package and its 1.0.2 evidence remain historical records.
-They are not overwritten, rebound to new bytes, or promoted as a fallback.
-The candidate-specific 1.0.3 exact-client evidence starts at `pending` even
-though generic controlled-beta observations remain valid.
+The immutable 1.0.2 and 1.0.3 packages and their version-specific evidence
+remain historical records. They are not overwritten, rebound to new bytes, or
+promoted as a fallback. The candidate-specific 1.0.4 exact-client evidence
+starts at `pending` even though generic controlled-beta observations remain
+valid. It is deliberately completed through the Marketplace install rather
+than another direct-upload round. Its privacy approval reuses only the
+unchanged, byte-identical privacy notice; it is still a separate record bound
+to the 1.0.4 candidate digest.
 
 ## Local preparation and validation
 
@@ -134,14 +156,16 @@ fully validate the embedded plugin's skills and related components.
 SkillPilot MCP endpoint, and removes the isolated profile. It does not modify
 the operator's normal Claude configuration.
 
-## Support readiness precondition
+## Support readiness activation precondition
 
 Follow the
 [Claude support readiness runbook](claude-support-readiness-runbook.md) before
-first publication. Its public synthetic is credential-free and read-only; it
-checks the immutable direct-install publication, legal and privacy pages,
-application readiness, connector OAuth discovery, and the unauthenticated MCP
-challenge:
+activation and the first-party route switch. The bounded repository publication
+does not satisfy or bypass this gate. Its public synthetic is credential-free
+and read-only; run it before the repository publication and again for
+activation. It checks the immutable direct-install publication, legal and
+privacy pages, application readiness, connector OAuth discovery, and the
+unauthenticated MCP challenge:
 
 ```bash
 node --test scripts/claude_support_synthetic.test.mjs
@@ -165,8 +189,14 @@ Repository creation and pushing are explicit external publication actions.
 They are intentionally not part of the normal application deploy and are not
 performed by the exporter.
 
-Only after Product Owner approval and after every open-public-beta blocker in
-`release/direct-install-beta.json` has status `pass`:
+After the bounded local package, reproducibility, marketplace, public synthetic
+and OpenAI-freeze checks pass, the Product Owner may explicitly
+approve the first public repository publication while the candidate-specific
+exact-client evidence is still `pending`. This is required to perform the
+first exact-client acceptance through the Marketplace itself; it is not public
+activation and does not authorize the first-party UI switch.
+
+After that explicit approval:
 
 1. Create the public repository `enpasos/skillpilot-claude-marketplace` with
    `main` as its default branch.
@@ -192,6 +222,12 @@ Only after Product Owner approval and after every open-public-beta blocker in
    profile, installs the plugin, and reports the full Git revision. It fails if
    the remote default branch moves during that verification window.
 
+6. In a separate revision-bound evidence change, record only the verified
+   `public-repository-default-branch` item as `pass`. This derives
+   `activation.state = published_pending_acceptance`; the other Marketplace
+   evidence remains `pending`, `marketplaceUiSwitchAllowed` remains `false`,
+   and `firstPartyUiRoute` remains `controlled_direct_install_beta`.
+
 Use the full HTTPS URL in end-user instructions. In Claude Code the
 `owner/repository` shorthand can select SSH and therefore surprise users who
 do not have GitHub SSH credentials.
@@ -202,7 +238,7 @@ The generated workflow and remote byte check prove supply-chain integrity;
 they do not prove the user journey. Record all of this against the exact remote
 revision before activation:
 
-1. On a clean eligible paid Claude account, add the repository under
+1. On a clean eligible paid Claude account, add the now-public repository under
    **Customize → Plugins → Personal plugins → + → Add marketplace → Add from a
    repository**.
 2. Confirm that exactly one `SkillPilot Coach v1` entry appears and install it.
@@ -213,12 +249,16 @@ revision before activation:
 5. Exercise the intended coaching flow and both interactive MCP Apps on every
    surface that SkillPilot intends to advertise. Anthropic's technical
    availability is not SkillPilot acceptance evidence.
-6. In Claude Web, complete an active goal and independently prove both that the
-   completion was persisted and that the next active goal is exactly the
-   backend-selected successor returned in the canonical mastery response.
-7. Repeat both proofs in native Claude Android Voice mode. A conversational
-   statement that the goal was saved or a visually plausible next goal is not
-   sufficient evidence.
+6. In Claude Web, engage with one tailored orientation follow-up and then say
+   `Machen wir so, dann fangen wir einfach an.` Prove that this clear start
+   intent is persisted as orientation completion without another confirmation
+   loop and that the next active goal is exactly the backend-selected successor
+   returned in the canonical mastery response. Confirm that no policy,
+   instruction, private-deliberation, lazy-loading, schema, parameter or retry
+   mechanics are narrated and that no durable anchor-memory promise is made.
+7. Repeat the complete scenario and every assertion independently in native
+   Claude Android Voice mode. A conversational statement that the goal was
+   saved or a visually plausible next goal is not sufficient evidence.
 8. Test migration from the previously uploaded plugin: remove only the old
    SkillPilot plugin, add the marketplace, install once, reconnect if Claude
    asks, and verify a new SkillPilot-started session.
@@ -226,14 +266,16 @@ revision before activation:
    not require another file upload. A real version-to-version update becomes a
    mandatory release gate beginning with the next Marketplace version.
 
-Only after the public repository, clean-account installation, and
-upload-to-marketplace migration/refresh evidence are all approved may a
-separate Product Owner change set mark each evidence object `pass`. Every pass
-record requires the same 40-character remote revision, a canonical UTC
-timestamp, the exported tree SHA-256, the current candidate version and
-direct-install SHA-256, and a non-empty evidence reference. Stale evidence
-therefore becomes invalid when either candidate or remote tree changes. Only
-then may that change set derive the activation fields as:
+Only after the public repository, clean-account installation,
+upload-to-marketplace migration/refresh, candidate-specific Web and Android
+Voice acceptance, and every remaining direct-install activation blocker are
+approved may a separate Product Owner change set mark all remaining evidence
+objects `pass`. Every Marketplace pass record requires the same 40-character
+remote revision, a canonical UTC timestamp, the exported tree SHA-256, the
+current candidate version and direct-install SHA-256, and a non-empty evidence
+reference. Stale evidence therefore becomes invalid when either candidate or
+remote tree changes. Only then may that change set derive the activation fields
+as:
 
 ```json
 {
@@ -256,8 +298,8 @@ preparation does not grant that exception.
 For any plugin-content change:
 
 1. make and review the plugin change in the canonical SkillPilot repository;
-2. increment `plugin.json` SemVer in the same change (`1.0.3` becomes at least
-   `1.0.4`);
+2. increment `plugin.json` SemVer in the same change (`1.0.4` becomes at least
+   `1.0.5`);
 3. rebuild and bind a new direct-install artifact; never rebind an existing
    version to new bytes;
 4. update the marketplace lane's version and direct-install SHA-256, create or

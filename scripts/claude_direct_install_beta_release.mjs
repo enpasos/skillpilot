@@ -54,10 +54,18 @@ const expectedExactClientChecks = [
   "web-goal-visualization-after-goal-change",
   "web-active-goal-completion-persisted",
   "web-backend-selected-successor",
+  "web-no-policy-instruction-or-internal-deliberation-narration",
+  "web-no-lazy-schema-parameter-or-retry-narration",
+  "web-clear-start-intent-saved-without-extra-confirmation",
+  "web-no-durable-anchor-memory-claim",
   "android-context-and-both-mcp-apps",
   "android-voice-current-context",
   "android-voice-active-goal-completion-persisted",
   "android-voice-backend-selected-successor",
+  "android-voice-no-policy-instruction-or-internal-deliberation-narration",
+  "android-voice-no-lazy-schema-parameter-or-retry-narration",
+  "android-voice-clear-start-intent-saved-without-extra-confirmation",
+  "android-voice-no-durable-anchor-memory-claim",
   "no-duplicate-or-protected-data-disclosure",
 ];
 const expectedPrivacyChecks = [

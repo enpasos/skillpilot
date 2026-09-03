@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.4 - 2026-09-03
+
+- Keep policy, instruction, tool-schema, parameter, retry and private
+  deliberation mechanics out of learner-facing text and speech; present only
+  the useful coaching result.
+- Treat a clear start or continuation intent after the tailored orientation
+  exchange as completion without another confirmation loop, persist it before
+  continuing, and use only the backend-selected successor.
+- Keep ordinary mastery feedback distinct from the silent orientation
+  transition and prohibit unsupported promises to remember a learner's topic
+  preference as durable state.
+- Require exact-candidate acceptance for these behaviors in Claude Web and
+  native Android Voice mode before Marketplace activation and the first-party
+  route switch.
+
 ## 1.0.3 - 2026-09-03
 
 - Prepare the first public personal Git marketplace candidate. Publication
