@@ -158,7 +158,15 @@ class ClaudeV1MasteryContractTest {
                 .containsEntry("savedMastery", 1.0)
                 .doesNotContainKeys("activatedGoalId", "orientationPathId", "successorGoalId")
                 .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
-                        .contains("returned context", "canonical backend state", "do not reload")
+                        .isEqualTo(ClaudeV1McpContractAdapter.ORIENTATION_MASTERY_CONTINUATION_INSTRUCTION)
+                        .contains(
+                                "returned context",
+                                "canonical backend state",
+                                "do not reload",
+                                "continue immediately and naturally",
+                                "Do not repeat the submitted feedback",
+                                "Do not ask for another confirmation")
+                        .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("Reload coach context now"));
         assertThat(payload(replay)).isEqualTo(resultPayload);
 
@@ -209,6 +217,62 @@ class ClaudeV1MasteryContractTest {
         verify(coachToolFacade, times(1)).getLearnerState(learnerId);
         verify(coachToolFacade, never()).getOrientationOutlook(any(), any());
         verify(coachToolFacade, never()).setActiveGoal(any(), any(ActiveGoalRequest.class));
+    }
+
+    @Test
+    void ordinaryCompletionRetainsTheEvidenceFeedbackPresentationContract() throws Exception {
+        FrontierGoal activeGoal = goal(ACTIVE_GOAL_ID, "content");
+        FrontierGoal backendNext = goal(BACKEND_NEXT_GOAL_ID, "content");
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(activeGoal, List.of(activeGoal), "teachActiveGoal"));
+        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class)))
+                .thenAnswer(invocation -> {
+                    Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+                    learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
+                    learnerRepository.save(learner);
+                    return new CoachToolFacade.MasteryResult(
+                            CoachToolFacade.MasteryStatus.UPDATED,
+                            successfulUpdate(backendNext),
+                            null,
+                            null);
+                });
+
+        Map<String, Object> resultPayload = payload(callMastery(Map.of(), UUID.randomUUID().toString()));
+
+        assertThat(resultPayload)
+                .containsEntry(
+                        "presentationInstruction",
+                        ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION)
+                .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
+                        .contains("what went well", "what still needs practice", "active goal or next action")
+                        .doesNotContain("previous orientation's completion"));
+    }
+
+    @Test
+    void unexpectedMasteryFailureIsOpaqueAndNeverStoredAsAReplay() throws Exception {
+        FrontierGoal activeGoal = goal(ACTIVE_GOAL_ID, "orientation");
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(activeGoal, List.of(activeGoal), "orientActiveGoal"));
+        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class)))
+                .thenThrow(new IllegalStateException(
+                        "failed to lazily initialize a collection; parameter analysis says retry identically"));
+        String requestId = UUID.randomUUID().toString();
+
+        McpSchema.CallToolResult result = callMastery(Map.of(), requestId);
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("status", "ERROR")
+                .containsEntry("errorCode", "INTERNAL_ERROR")
+                .containsEntry("message", "The operation could not be completed.")
+                .allSatisfy((key, value) -> assertThat(value.toString())
+                        .doesNotContain("lazily", "parameter analysis", "retry identically"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        assertThat(idempotencyRepository.findLive(
+                        sessionTokens.hash(connectionId),
+                        requestId,
+                        java.time.Instant.now()))
+                .isEmpty();
     }
 
     @Test
@@ -291,6 +355,24 @@ class ClaudeV1MasteryContractTest {
                 null,
                 null,
                 false);
+    }
+
+    private MasteryUpdateResponse successfulUpdate(FrontierGoal backendNext) {
+        return new MasteryUpdateResponse(
+                true,
+                ACTIVE_GOAL_ID,
+                1.0,
+                List.of(backendNext),
+                List.of("setMastery"),
+                "TEACHING",
+                backendNext,
+                new StateMachineInfo(
+                        "TEACHING",
+                        "teachActiveGoal",
+                        List.of(backendNext),
+                        List.of(),
+                        backendNext),
+                null);
     }
 
     private Map<String, Object> payload(McpSchema.CallToolResult result) throws Exception {

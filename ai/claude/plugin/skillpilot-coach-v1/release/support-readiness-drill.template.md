@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.0.3` |
-| Candidate SHA-256 | `659ceaa95f0432541cd7323f6dbfdc58da81cea2c9d7778bf39ee6aaab9f121e` |
+| Candidate version | `1.0.4` |
+| Candidate SHA-256 | `46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,11 +84,27 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.0.3 exact-client gate remains `pending` until the controlled Web and
-Android Voice clients independently prove both that the active-goal completion
-was persisted and that the following active goal came from the backend's
-returned canonical context. Do not infer either result from a successful tool
-call, a rendered card, or a conversational claim alone.
+The 1.0.4 exact-client gate remains `pending` until a fresh Marketplace install
+on the controlled Web and Android Voice clients independently completes the
+same orientation scenario. No additional 1.0.4 direct-upload acceptance round
+is required before the bounded repository publication.
+After one tailored motivational response, use the clear continuation phrase
+`Machen wir so, dann fangen wir einfach an.` On each surface prove that the
+orientation completion was persisted without another confirmation loop and
+that the following active goal came from the backend's returned canonical
+context. The learner-facing response must not narrate policy or instructions,
+private deliberation, lazy loading, schemas, parameters, tool retries or other
+connector mechanics, and it must not promise to remember an anchor topic as
+durable learner state. Do not infer any result from a successful tool call, a
+rendered card, or a conversational claim alone.
+
+- [ ] Claude Web completed the exact orientation scenario without policy,
+      instruction or private-deliberation narration.
+- [ ] Claude Web exposed no lazy-loading, schema, parameter or retry mechanics.
+- [ ] Claude Web persisted the clear start intent without another confirmation
+      and continued only with the backend-selected successor.
+- [ ] Claude Web made no unsupported durable anchor-memory promise.
+- [ ] Native Claude Android Voice completed the same four checks independently.
 
 - [ ] Release and support material was checked for unsupported monitoring,
       detection-time or response-time claims.

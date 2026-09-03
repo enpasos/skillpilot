@@ -87,8 +87,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     accessModel: "first_party_guided_beta",
   });
   assert.deepEqual(canonicalLane.candidate, {
-    version: "1.0.3",
-    sha256: "659ceaa95f0432541cd7323f6dbfdc58da81cea2c9d7778bf39ee6aaab9f121e",
+    version: "1.0.4",
+    sha256: "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
   });
   assert.deepEqual(canonicalLane.planSemantics, {
     supportBaseline: "claude_pro",
@@ -129,10 +129,18 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-goal-visualization-after-goal-change",
       "web-active-goal-completion-persisted",
       "web-backend-selected-successor",
+      "web-no-policy-instruction-or-internal-deliberation-narration",
+      "web-no-lazy-schema-parameter-or-retry-narration",
+      "web-clear-start-intent-saved-without-extra-confirmation",
+      "web-no-durable-anchor-memory-claim",
       "android-context-and-both-mcp-apps",
       "android-voice-current-context",
       "android-voice-active-goal-completion-persisted",
       "android-voice-backend-selected-successor",
+      "android-voice-no-policy-instruction-or-internal-deliberation-narration",
+      "android-voice-no-lazy-schema-parameter-or-retry-narration",
+      "android-voice-clear-start-intent-saved-without-extra-confirmation",
+      "android-voice-no-durable-anchor-memory-claim",
       "no-duplicate-or-protected-data-disclosure",
     ],
   );
@@ -595,7 +603,7 @@ test("lane readiness distinguishes the guided first-party beta from open-public 
 
 test("exact-client evidence is closed, candidate-bound and derived from every client check", () => {
   const cases = [
-    ["version drift", (evidence) => { evidence.candidate.version = "1.0.4"; }, /candidate version mismatch/u],
+    ["version drift", (evidence) => { evidence.candidate.version = "1.0.5"; }, /candidate version mismatch/u],
     ["digest drift", (evidence) => { evidence.candidate.sha256 = "0".repeat(64); }, /candidate SHA-256 mismatch/u],
     ["download drift", (evidence) => { evidence.candidate.downloadUrl += "?download=1"; }, /candidate download URL mismatch/u],
     ["unknown check", (evidence) => { evidence.checks[0].id = "different-check"; }, /check identifiers mismatch/u],
@@ -617,7 +625,7 @@ test("privacy evidence is closed, candidate-bound and byte-bound to the bilingua
   const cases = [
     [
       "version drift",
-      (evidence) => { evidence.candidate.version = "1.0.4"; },
+      (evidence) => { evidence.candidate.version = "1.0.5"; },
       /candidate version mismatch/u,
     ],
     [
