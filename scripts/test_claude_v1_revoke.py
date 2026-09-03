@@ -660,7 +660,7 @@ class ClaudeV1RevokeUnitTest(unittest.TestCase):
         self.assertEqual(raised.exception.counts, (1, 2, 3, 4))
         self.assertEqual(raised.exception.target_sha256, TEST_TARGET_SHA256)
 
-    def test_root_commands_use_fixed_non_replaceable_paths(self) -> None:
+    def test_root_commands_use_fixed_path_independent_anchors(self) -> None:
         self.assertEqual(
             revoke.TRUSTED_COMMAND_PATHS,
             {
@@ -681,10 +681,231 @@ class ClaudeV1RevokeUnitTest(unittest.TestCase):
         unsafe = mock.Mock(st_mode=stat_mode(0o777), st_uid=0, st_gid=0)
         with (
             mock.patch.object(Path, "lstat", return_value=unsafe),
+            mock.patch.object(revoke, "_validate_secure_parent_directories"),
             self.assertRaises(revoke.ToolError) as raised,
         ):
             revoke._require_command("psql")
         self.assertEqual(raised.exception.code, "unsafe_psql_command")
+
+    def test_root_command_accepts_only_a_fully_validated_symlink_chain(self) -> None:
+        anchor = Path("/usr/bin/psql")
+        alternative = Path("/etc/alternatives/pgsql-psql")
+        target = Path("/usr/pgsql-18/bin/psql")
+        metadata = {
+            anchor: mock.Mock(st_mode=symlink_stat_mode(), st_uid=0, st_gid=0),
+            alternative: mock.Mock(st_mode=symlink_stat_mode(), st_uid=0, st_gid=0),
+            target: mock.Mock(st_mode=stat_mode(0o755), st_uid=0, st_gid=0),
+        }
+        links = {
+            anchor: "/etc/alternatives/pgsql-psql",
+            alternative: "/usr/pgsql-18/bin/psql",
+        }
+
+        with (
+            mock.patch.object(
+                Path,
+                "lstat",
+                autospec=True,
+                side_effect=lambda path: metadata[path],
+            ),
+            mock.patch.object(
+                revoke.os,
+                "readlink",
+                side_effect=lambda path: links[path],
+            ),
+            mock.patch.object(
+                revoke, "_validate_secure_parent_directories"
+            ) as validate_parents,
+            mock.patch.dict(revoke.os.environ, {"PATH": "/tmp/attacker"}, clear=True),
+        ):
+            self.assertEqual(revoke._require_command("psql"), str(target))
+
+        self.assertEqual(
+            [call.args[0] for call in validate_parents.call_args_list],
+            [anchor, alternative, target],
+        )
+
+    def test_root_command_resolves_a_safe_relative_symlink(self) -> None:
+        anchor = Path("/usr/bin/psql")
+        target = Path("/usr/pgsql-18/bin/psql")
+        metadata = {
+            anchor: mock.Mock(st_mode=symlink_stat_mode(), st_uid=0, st_gid=0),
+            target: mock.Mock(st_mode=stat_mode(0o755), st_uid=0, st_gid=0),
+        }
+        with (
+            mock.patch.object(
+                Path,
+                "lstat",
+                autospec=True,
+                side_effect=lambda path: metadata[path],
+            ),
+            mock.patch.object(
+                revoke.os,
+                "readlink",
+                return_value="../pgsql-18/bin/psql",
+            ),
+            mock.patch.object(revoke, "_validate_secure_parent_directories"),
+        ):
+            self.assertEqual(revoke._require_command("psql"), str(target))
+
+    def test_root_command_rejects_unsafe_symlink_chains(self) -> None:
+        anchor = Path("/usr/bin/psql")
+        alternative = Path("/etc/alternatives/pgsql-psql")
+        target = Path("/usr/pgsql-18/bin/psql")
+        safe_link = mock.Mock(st_mode=symlink_stat_mode(), st_uid=0, st_gid=0)
+
+        cases = (
+            (
+                "non-root link",
+                {anchor: mock.Mock(st_mode=symlink_stat_mode(), st_uid=1000, st_gid=0)},
+                {anchor: str(target)},
+                False,
+            ),
+            (
+                "non-root link group",
+                {anchor: mock.Mock(st_mode=symlink_stat_mode(), st_uid=0, st_gid=1000)},
+                {anchor: str(target)},
+                False,
+            ),
+            (
+                "dangling target",
+                {anchor: safe_link},
+                {anchor: str(target)},
+                True,
+            ),
+            (
+                "cycle",
+                {anchor: safe_link, alternative: safe_link},
+                {anchor: str(alternative), alternative: str(anchor)},
+                False,
+            ),
+            (
+                "unsafe final mode",
+                {
+                    anchor: safe_link,
+                    target: mock.Mock(st_mode=stat_mode(0o775), st_uid=0, st_gid=0),
+                },
+                {anchor: str(target)},
+                False,
+            ),
+            (
+                "non-root final owner",
+                {
+                    anchor: safe_link,
+                    target: mock.Mock(st_mode=stat_mode(0o755), st_uid=1000, st_gid=0),
+                },
+                {anchor: str(target)},
+                False,
+            ),
+            (
+                "non-executable final target",
+                {
+                    anchor: safe_link,
+                    target: mock.Mock(st_mode=stat_mode(0o644), st_uid=0, st_gid=0),
+                },
+                {anchor: str(target)},
+                False,
+            ),
+            (
+                "special final mode",
+                {
+                    anchor: safe_link,
+                    target: mock.Mock(st_mode=stat_mode(0o4755), st_uid=0, st_gid=0),
+                },
+                {anchor: str(target)},
+                False,
+            ),
+            (
+                "non-regular final target",
+                {
+                    anchor: safe_link,
+                    target: mock.Mock(st_mode=0o040755, st_uid=0, st_gid=0),
+                },
+                {anchor: str(target)},
+                False,
+            ),
+        )
+
+        for label, metadata, links, dangling in cases:
+
+            def lstat(path: Path) -> mock.Mock:
+                if dangling and path == target:
+                    raise FileNotFoundError(target)
+                return metadata[path]
+
+            with (
+                self.subTest(label=label),
+                mock.patch.object(Path, "lstat", autospec=True, side_effect=lstat),
+                mock.patch.object(
+                    revoke.os,
+                    "readlink",
+                    side_effect=lambda path: links[path],
+                ),
+                mock.patch.object(revoke, "_validate_secure_parent_directories"),
+                self.assertRaises(revoke.ToolError) as raised,
+            ):
+                revoke._require_command("psql")
+            self.assertEqual(raised.exception.code, "unsafe_psql_command")
+
+        with (
+            mock.patch.object(Path, "lstat", return_value=safe_link),
+            mock.patch.object(revoke.os, "readlink", side_effect=OSError("unreadable")),
+            mock.patch.object(revoke, "_validate_secure_parent_directories"),
+            self.assertRaises(revoke.ToolError) as unreadable,
+        ):
+            revoke._require_command("psql")
+        self.assertEqual(unreadable.exception.code, "unsafe_psql_command")
+
+        with (
+            mock.patch.object(Path, "lstat", return_value=safe_link),
+            mock.patch.object(revoke.os, "readlink", return_value=str(alternative)),
+            mock.patch.object(revoke, "_validate_secure_parent_directories"),
+            mock.patch.object(revoke, "MAX_TRUSTED_COMMAND_SYMLINKS", 1),
+            self.assertRaises(revoke.ToolError) as too_long,
+        ):
+            revoke._require_command("psql")
+        self.assertEqual(too_long.exception.code, "unsafe_psql_command")
+
+    def test_root_command_rejects_an_unsafe_intermediate_parent(self) -> None:
+        alternative = Path("/etc/alternatives/pgsql-psql")
+        safe_link = mock.Mock(st_mode=symlink_stat_mode(), st_uid=0, st_gid=0)
+
+        def validate(path: Path, **_: str) -> None:
+            if path == alternative:
+                raise revoke.ToolError("unsafe_command_parent")
+
+        with (
+            mock.patch.object(Path, "lstat", return_value=safe_link),
+            mock.patch.object(revoke.os, "readlink", return_value=str(alternative)),
+            mock.patch.object(
+                revoke, "_validate_secure_parent_directories", side_effect=validate
+            ),
+            self.assertRaises(revoke.ToolError) as raised,
+        ):
+            revoke._require_command("psql")
+        self.assertEqual(raised.exception.code, "unsafe_command_parent")
+
+    def test_database_subprocess_uses_the_resolved_command_target(self) -> None:
+        resolved_target = "/usr/pgsql-18/bin/psql"
+        completed = subprocess.CompletedProcess(
+            args=[resolved_target],
+            returncode=0,
+            stdout=revoke.RESULT_PREFIX + f"0|0|0|0|{TEST_TARGET_SHA256}\n",
+            stderr="",
+        )
+        process_environment = {
+            "POSTGRES_HOST": "db.internal",
+            "POSTGRES_PORT": "5432",
+            "POSTGRES_DB": "skillpilot",
+            "POSTGRES_USER": "skillpilot",
+            "POSTGRES_PASSWORD": "secret",
+        }
+        with (
+            mock.patch.object(revoke, "_require_command", return_value=resolved_target),
+            mock.patch.object(revoke.subprocess, "run", return_value=completed) as run,
+        ):
+            revoke._run_psql(revoke.PLAN_SQL, process_environment)
+        self.assertEqual(run.call_args.args[0][0], resolved_target)
 
     def test_nginx_guard_allows_acme_only_but_rejects_the_internal_proxy(self) -> None:
         acme_only = subprocess.CompletedProcess(
@@ -905,6 +1126,10 @@ class ClaudeV1RevokeUnitTest(unittest.TestCase):
 
 def stat_mode(permissions: int) -> int:
     return 0o100000 | permissions
+
+
+def symlink_stat_mode() -> int:
+    return 0o120000 | 0o777
 
 
 class ClaudeV1RevokePostgresIntegrationTest(unittest.TestCase):

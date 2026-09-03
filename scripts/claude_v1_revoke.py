@@ -38,6 +38,7 @@ TRUSTED_COMMAND_PATHS = {
     "psql": Path("/usr/bin/psql"),
     "systemctl": Path("/usr/bin/systemctl"),
 }
+MAX_TRUSTED_COMMAND_SYMLINKS = 8
 CLAUDE_V1_ORIGIN = "mcp-claude-v1.skillpilot.com"
 CONTAINMENT_CONFIG_PATH = Path("/etc/nginx/skillpilot-claude-connector-v1.conf")
 CONTAINMENT_CONFIG_SHA256 = (
@@ -546,27 +547,55 @@ def _require_command(name: str) -> str:
     path = TRUSTED_COMMAND_PATHS.get(name)
     if path is None:
         raise ToolError(f"missing_{name.replace('-', '_')}")
-    try:
-        metadata = path.lstat()
-    except OSError as exc:
-        raise ToolError(f"missing_{name.replace('-', '_')}") from exc
-    permissions = stat.S_IMODE(metadata.st_mode)
-    if (
-        stat.S_ISLNK(metadata.st_mode)
-        or not stat.S_ISREG(metadata.st_mode)
-        or metadata.st_uid != 0
-        or metadata.st_gid != 0
-        or permissions & 0o022
-        or not permissions & 0o111
-        or metadata.st_mode & (stat.S_ISUID | stat.S_ISGID | stat.S_ISVTX)
-    ):
-        raise ToolError(f"unsafe_{name.replace('-', '_')}_command")
-    _validate_secure_parent_directories(
-        path,
-        unavailable_code="command_parent_unavailable",
-        unsafe_code="unsafe_command_parent",
-    )
-    return str(path)
+    missing_code = f"missing_{name.replace('-', '_')}"
+    unsafe_code = f"unsafe_{name.replace('-', '_')}_command"
+    candidate = Path(os.path.abspath(os.fspath(path)))
+    visited: set[Path] = set()
+    symlink_count = 0
+
+    while True:
+        if candidate in visited:
+            raise ToolError(unsafe_code)
+        visited.add(candidate)
+        _validate_secure_parent_directories(
+            candidate,
+            unavailable_code="command_parent_unavailable",
+            unsafe_code="unsafe_command_parent",
+        )
+        try:
+            metadata = candidate.lstat()
+        except OSError as exc:
+            code = missing_code if symlink_count == 0 else unsafe_code
+            raise ToolError(code) from exc
+
+        if stat.S_ISLNK(metadata.st_mode):
+            if (
+                metadata.st_uid != 0
+                or metadata.st_gid != 0
+                or symlink_count >= MAX_TRUSTED_COMMAND_SYMLINKS
+            ):
+                raise ToolError(unsafe_code)
+            try:
+                link_target = Path(os.readlink(candidate))
+            except (OSError, UnicodeError, ValueError) as exc:
+                raise ToolError(unsafe_code) from exc
+            if not link_target.is_absolute():
+                link_target = candidate.parent / link_target
+            candidate = Path(os.path.abspath(os.fspath(link_target)))
+            symlink_count += 1
+            continue
+
+        permissions = stat.S_IMODE(metadata.st_mode)
+        if (
+            not stat.S_ISREG(metadata.st_mode)
+            or metadata.st_uid != 0
+            or metadata.st_gid != 0
+            or permissions & 0o022
+            or not permissions & 0o111
+            or metadata.st_mode & (stat.S_ISUID | stat.S_ISGID | stat.S_ISVTX)
+        ):
+            raise ToolError(unsafe_code)
+        return str(candidate)
 
 
 def _validate_installed_tool(expected_sha256: str) -> None:

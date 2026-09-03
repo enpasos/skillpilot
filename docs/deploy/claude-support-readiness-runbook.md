@@ -192,8 +192,14 @@ prints them. The connected server returns a non-secret `targetSha256` binding
 the database name, effective database role, database OID, server address and
 port, and PostgreSQL postmaster start time. This deliberately supports the
 current `bootRun` service topology, whose systemd `MainPID` can be the Gradle
-wrapper rather than the application JVM. It invokes only fixed, root-owned and
-non-replaceable system command paths. It fails closed if the service exposes a
+wrapper rather than the application JVM. It invokes only fixed,
+PATH-independent system-command anchors. A regular anchor is accepted
+directly. A distribution-managed symlink anchor is accepted only through a
+bounded, cycle-free chain in which every link is `root:root`, every lexical
+parent directory is root-owned and not writable by group or others, and the
+final target is a `root:root`, non-writable regular executable without special
+mode bits. The resolved final target, not the symlink anchor, is executed. It
+fails closed if the service exposes a
 direct Spring datasource, config or profile override, an external
 `application*` configuration file in a default search location, another
 EnvironmentFile, an unexpected database-name shape, more or fewer than one
