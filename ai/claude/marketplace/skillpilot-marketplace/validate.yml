@@ -20,13 +20,13 @@ jobs:
         run: npm install --global @anthropic-ai/claude-code@2.1.241
       - name: Verify immutable direct-install artifact parity
         run: |
-          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.0.plugin"
-          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.0"
+          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.1.plugin"
+          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.1"
           curl --proto '=https' --tlsv1.2 --fail --silent --show-error \
             --output "${artifact}" \
-            "https://skillpilot.com/api/public/claude/plugins/skillpilot-coach-v1/1.1.0/sha256-ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca/skillpilot-coach-v1-1.1.0.plugin"
+            "https://skillpilot.com/api/public/claude/plugins/skillpilot-coach-v1/1.1.1/sha256-b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351/skillpilot-coach-v1-1.1.1.plugin"
           printf '%s  %s\n' \
-            'ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca' \
+            'b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351' \
             "${artifact}" | sha256sum --check --strict
           mkdir "${extracted}"
           unzip -q "${artifact}" -d "${extracted}"

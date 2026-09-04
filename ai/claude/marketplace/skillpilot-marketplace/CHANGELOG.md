@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.1 - 2026-09-04
+
+- Guide the learner directly from the daily overview to the current planned
+  goal, and expose current and continuable subjects for natural chat requests
+  such as “now Physics” or “back to Math”.
+- Refresh the authoritative per-subject progress after completion and continue
+  from the returned successor, including after Verified Recall.
+- Distinguish a finished day, a paused plan and unavailable plan work without
+  presenting generic goal-selection menus or inventing further daily tasks.
+- Keep all fourteen tools and preserve the existing session and installation
+  boundaries. All exact-candidate external acceptance remains pending.
+- Replace 1.1.0 as the sole current candidate while retaining its immutable
+  artifact and release dossier as historical evidence.
+
 ## 1.1.0 - 2026-09-04
 
 - Make every learning-session start plan-first: report the due, currently

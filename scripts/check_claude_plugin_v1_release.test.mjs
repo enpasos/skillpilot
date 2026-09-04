@@ -32,10 +32,10 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
-  assert.equal(result.pluginVersion, "1.1.0");
+  assert.equal(result.pluginVersion, "1.1.1");
 
   const baseline = readJson(repositoryRoot, `${releasePath}/contract-baseline.json`);
-  assert.equal(baseline.pluginVersion, "1.1.0");
+  assert.equal(baseline.pluginVersion, "1.1.1");
   assert.equal(baseline.remoteContract.tools.length, 14);
   assert.ok(baseline.remoteContract.tools.includes("resume_skillpilot_learning_plan"));
   assert.ok(baseline.remoteContract.tools.includes("switch_skillpilot_learning_plan_subject"));
@@ -96,6 +96,19 @@ test("the retired 1.0.4 publication metadata remains immutable history", (t) => 
   assert.match(
     result.errors.join("\n"),
     /Historical plugin release file changed: 1\.0\.4\/marketplace-publication\.json/u,
+  );
+});
+
+test("the 1.1.0 replacement dossier remains immutable history", (t) => {
+  const fixture = createFixture(t);
+  const historicalPath = resolve(fixture, releasePath, "history/1.1.0/direct-install-beta.json");
+  writeFileSync(historicalPath, `${readFileSync(historicalPath, "utf8")}\n`, "utf8");
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(
+    result.errors.join("\n"),
+    /Historical plugin release file changed: 1\.1\.0\/direct-install-beta\.json/u,
   );
 });
 

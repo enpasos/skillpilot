@@ -930,7 +930,9 @@ class LearnerLearningPlanServiceIntegrationTest {
                         1,
                         0,
                         1,
-                        1));
+                        1,
+                        false,
+                        true));
         assertThat(status.totals()).isEqualTo(
                 new LearnerPlanTodayStatus.Totals(2, 1, 1, 3));
         verify(eventPublisher, never()).publishEvent(any());
@@ -1025,8 +1027,47 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(status.subjects()).singleElement().satisfies(subject -> {
             assertThat(subject.subjectLabel()).isEqualTo("Mathematik");
             assertThat(subject.openToday()).isEqualTo(1);
+            assertThat(subject.current()).isTrue();
+            assertThat(subject.canContinue()).isTrue();
         });
         assertThat(status.resumeAvailable()).isFalse();
+    }
+
+    @Test
+    void todayStatusOffersExplicitPhysicsSwitchWhileMathIsActiveButNotAfterPhysicsIsDone() {
+        learner.setFollowLearningPlans(true);
+        learner.setActiveGoalId("atom-a");
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-p")));
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Math", List.of(learning("math", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Physics", List.of(learningWithFocus(
+                        "physics", "physics-focus", "2026-09-04", "2026-09-04", "atom-p"))), TODAY);
+        clearInvocations(eventPublisher);
+
+        LearnerPlanTodayStatus duringMath = service.getTodayStatus(LEARNER_ID, "de");
+
+        assertThat(duringMath.resumeAvailable()).isFalse();
+        assertThat(duringMath.subjects()).filteredOn(subject -> "Physik".equals(subject.subjectLabel()))
+                .singleElement().satisfies(subject -> {
+                    assertThat(subject.current()).isFalse();
+                    assertThat(subject.canContinue()).isTrue();
+                });
+
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-p", 1.0));
+        LearnerPlanTodayStatus physicsDone = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(physicsDone.subjects()).filteredOn(subject -> "Physik".equals(subject.subjectLabel()))
+                .singleElement().satisfies(subject -> {
+                    assertThat(subject.openToday()).isZero();
+                    assertThat(subject.completedToday()).isEqualTo(1);
+                    assertThat(subject.canContinue()).isFalse();
+                });
+        assertThat(learner.getActiveGoalId()).isEqualTo("atom-a");
+        verify(eventPublisher, never()).publishEvent(any());
     }
 
     private static LearnerPlanningScopeResponse scope(List<String> all, List<String> open) {

@@ -26,7 +26,7 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.0";
+const expectedPluginVersion = "1.1.1";
 const expectedHistoricalReleaseFiles = new Map([
   [
     "1.0.0/contract-baseline.json",
@@ -56,6 +56,13 @@ const expectedHistoricalReleaseFiles = new Map([
     "1.0.4/support-readiness-drill.template.md",
     "bd95af3fca52496d32c98183b2454b874645ac1f4ccf68da806f67c626764cb8",
   ],
+  ["1.1.0/contract-baseline.json", "049afdb7a3919e0d59f57976ff70613363e6053a9a901d32d1a39dad5639c4f3"],
+  ["1.1.0/direct-install-beta.json", "f69455a5fca2a545c416f7121697d881f764ff3a8a155ae06bf97bd2873e4fc5"],
+  ["1.1.0/evidence-manifest.json", "3069acb409fa968d02c88ebcbc58900ae8c5a8276baea56368a848b18be192eb"],
+  ["1.1.0/lifecycle.json", "6deb28d6c4a29862ce00acc14c675f852a0088f167be43ae1cfd8f3cd52328ca"],
+  ["1.1.0/marketplace-publication.json", "eceae94c85c47a575310d1a9b6a08be9163e19e67486dcda8bcb30d1ecdba363"],
+  ["1.1.0/release-gates.json", "de71f6fdf93515cbdb4982ecd1affefe925ea9c1d75414c8347d7b69065016e8"],
+  ["1.1.0/support-readiness-drill.template.md", "77146c1b97cb995a65226105ab69812248a68828ba072e1c75afe8805ffd92ba"],
 ]);
 const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
 const expectedTools = [
@@ -164,7 +171,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.0.",
+      "Every plugin release document must use Claude plugin version 1.1.1.",
     );
   }
 
@@ -764,7 +771,7 @@ function verifyHistoricalReleaseHistory(repositoryRoot, check) {
   }
   check(
     sameSet(actualFiles, [...expectedHistoricalReleaseFiles.keys()]),
-    "Historical plugin release inventory must retain the complete immutable 1.0.0 dossier and 1.0.4 publication metadata.",
+    "Historical plugin release inventory must retain the complete immutable 1.0.0 and 1.1.0 dossiers and 1.0.4 publication metadata.",
   );
 }
 

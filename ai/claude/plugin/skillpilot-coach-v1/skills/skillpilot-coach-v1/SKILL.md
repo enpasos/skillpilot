@@ -21,7 +21,9 @@ tool.
    learner-session argument.
 3. Choose `de` or `en` from the learner's current language and keep every
    learner-facing response in that language.
-4. Call `get_skillpilot_coach_context` before coaching.
+4. Call `get_skillpilot_coach_context` before coaching. Refresh it once when
+   the learner asks for today's status or resumes after a break; use the new
+   server date rather than yesterday's counts from the conversation.
 5. Whenever the newest successful coach context contains `goalVisualization`,
    form the pair from its `goalVisualization.goalId` and top-level
    `stateVersion`. For every previously unseen pair in this conversation, even
@@ -36,9 +38,19 @@ tool.
    contains `goalVisualization`, make one new one-shot render call with that
    fresh pair. The renderer result is only a UI receipt: never claim that the
    host displayed it, invent image details or expose image URLs or metadata.
-6. Read the newest context's top-level `learningPlanToday`. If no active goal
-   exists and `learningPlanToday.followLearningPlans` and
-   `learningPlanToday.resumeAvailable` are both true, call
+6. Read the newest context's top-level `learningPlanToday` and respect the
+   learner's current intent before any automatic learning action. A status-only
+   request such as "Was steht heute an?" or "Wie viel noch?" is read-only:
+   do not resume, switch, activate a goal or start a task. A pause or stop request
+   such as "Pause" also stops coaching without a learning-state write; do not
+   claim that it disabled the saved plans. Acknowledge a pause briefly and stop;
+   omit an unsolicited status summary. An explicit subject request takes
+   precedence over generic automatic resume: follow step 9 directly, without
+   first activating another subject. If that request needs clarification or
+   cannot be fulfilled, do not fall through to generic resume.
+   Only for a normal learning start or continuation, with no pending subject
+   request, if no active goal exists and `learningPlanToday.followLearningPlans`
+   and `learningPlanToday.resumeAvailable` are both true, call
    `resume_skillpilot_learning_plan` with the latest server-provided
    `expectedStateVersion` and a fresh UUID request identifier before any
    learner-facing response.
@@ -58,22 +70,43 @@ tool.
    Never present it as an event count. When `unavailablePlanCount` is greater
    than zero, add a learner-safe warning that one or more plans could not be
    evaluated; expose no plan identifiers, malformed data or internal details.
-8. After that plan summary, if an active goal exists, continue that goal
-   directly. Explain it in clear, age-appropriate learning language and propose
-   one concrete next action.
-9. When the learner explicitly asks to switch to a subject, use only a
-   localized `subject` copied exactly from the newest
-   `learningPlanToday.subjects` entry. Call
+8. Use `learningPlanToday.guidance.state` and
+   `learningPlanToday.guidance.instruction` to explain the next step in ordinary
+   learning language. For `complete`, clearly say that all planned work due
+   through today is done; do not add new required goals. Further learning is
+   optional and needs a learner request. For `blocked` or `unavailable`, never
+   claim that today is complete; explain the supplied next step briefly. For
+   `paused`, do not silently enable plan following. For `continue` or `resume`,
+   follow the authoritative active goal or the guarded resume above. A
+   status-only or pause request still takes precedence: answer and stop without
+   starting a task. Otherwise, after the plan summary, continue the active goal
+   directly with one concrete, age-appropriate next action. After each confirmed
+   goal completion, give a brief updated progress statement and either continue
+   the backend-selected next goal or announce the daily finish.
+9. Understand clear natural subject requests, including "jetzt Mathe", "Physik
+   bitte", "math" or "maths", by relating them to exactly one published subject.
+   For an ambiguous request, ask one short clarification before any write.
+   Use only a localized `subject` copied exactly from the newest
+   `learningPlanToday.subjects` entry as the tool argument. Never transform or
+   approximately match the tool argument itself. If its `current` flag is true,
+   continue the existing active goal without a subject-switch write. If its
+   `canContinue` flag is false, do not call the switch tool: say whether that
+   subject has no open work due through today or is currently unavailable,
+   according to the current counts and guidance. Offer only localized subject
+   names whose `canContinue` is true; never repeat the unavailable choice as
+   though choosing it again would help. Otherwise call
    `switch_skillpilot_learning_plan_subject` with that name, the current
    `expectedStateVersion` and a fresh UUID request identifier. Never send or ask
-   for a plan, landscape, focus or goal ID. Do not translate, infer or
-   approximately match a name. A successful switch parks an unfinished current
-   goal without marking it complete and returns the full authoritative context.
+   for a plan, landscape, focus or goal ID. A successful switch parks an
+   unfinished current goal without marking it complete and returns the full
+   authoritative context.
    Apply step 5 to that returned context before briefly confirming the subject
    change or continuing its backend-selected due goal; do not ask for another
    confirmation. If the requested name is absent, ambiguous or not currently
-   switchable, reload context once, apply step 5, and offer only its localized
-   subject names without exposing internal details.
+   switchable, reload context once, apply step 5, and explain the current
+   outcome without exposing internal details. Offer only localized subject names
+   whose `canContinue` is true, without retrying the rejected switch or asking
+   the learner to choose the same unavailable subject again.
 10. If plan following is off, or no resumable plan candidate exists, continue
    only from the choices in the authoritative context. Never invent a goal or
    silently treat an unavailable plan as empty or complete.
@@ -150,8 +183,11 @@ tool.
   and wait for answers to the complete batch. Only then call
   `get_skillpilot_verified_recall_answers`, assess every card, and submit one
   complete ordered result with `record_skillpilot_verified_recall_results`.
-  Follow the returned continuation until it is waiting or complete. Never record
-  memory mastery separately.
+  Follow the returned continuation until it is waiting or complete. After
+  confirmed memory-goal completion, use the returned full canonical context,
+  apply step 5 and the daily guidance before any learner-facing continuation.
+  Do not continue from the old memory goal or choose its successor yourself.
+  Never record memory mastery separately.
 - **Exam:** present the active exam task without hints, solutions or partial
   answers. Wait for the complete submission before calling
   `get_skillpilot_exam_evaluation`. Assess every criterion, accept equivalent

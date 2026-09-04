@@ -133,7 +133,7 @@ public class LearnerLearningPlanService {
                     asOf,
                     communicationLocale,
                     enabled,
-                    activeGoalId);
+                    activeGoalInProgress ? activeGoalId : null);
             if (evaluation.isPresent()) {
                 subjects.add(evaluation.get().status());
                 resumeAvailable |= !activeGoalInProgress
@@ -164,14 +164,14 @@ public class LearnerLearningPlanService {
             String communicationLocale,
             boolean enabled,
             String activeGoalId) {
-        final LearnerLearningPlanApi.PlanSummary summary;
+        final Evaluation evaluation;
         try {
-            summary = summarize(
+            evaluation = summarize(
                     skillpilotId,
                     plan,
                     asOf,
                     enabled,
-                    activeGoalId).summary();
+                    activeGoalId);
         } catch (ResponseStatusException exception) {
             if (exception.getStatusCode().is5xxServerError()) {
                 throw exception;
@@ -180,6 +180,7 @@ public class LearnerLearningPlanService {
         } catch (IllegalStateException | NullPointerException exception) {
             return Optional.empty();
         }
+        LearnerLearningPlanApi.PlanSummary summary = evaluation.summary();
         if (summary.stale()) {
             return Optional.empty();
         }
@@ -200,7 +201,9 @@ public class LearnerLearningPlanService {
                         metrics.dueToday(),
                         metrics.completedDueToday(),
                         metrics.openDueToday(),
-                        openOverdue),
+                        openOverdue,
+                        activeGoalId != null && atomicIds(evaluation.blocks()).contains(activeGoalId),
+                        enabled && summary.nextEligibleGoal() != null),
                 summary.canContinue()));
     }
 

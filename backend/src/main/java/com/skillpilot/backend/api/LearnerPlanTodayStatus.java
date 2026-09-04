@@ -30,7 +30,21 @@ public record LearnerPlanTodayStatus(
             int dueToday,
             int completedToday,
             int openToday,
-            int openOverdue) {
+            int openOverdue,
+            boolean current,
+            boolean canContinue) {
+
+        /** Count-only callers cannot authorize a subject transition. */
+        public SubjectStatus(
+                String landscapeId,
+                String subjectLabel,
+                int dueToday,
+                int completedToday,
+                int openToday,
+                int openOverdue) {
+            this(landscapeId, subjectLabel, dueToday, completedToday, openToday, openOverdue,
+                    false, false);
+        }
     }
 
     /** Sum of the daily counts from all entries in {@link #subjects()}. */

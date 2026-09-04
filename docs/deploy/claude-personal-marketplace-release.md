@@ -3,7 +3,7 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.0 is the sole
+Anthropic-curated or Anthropic-verified listing. Version 1.1.1 is the sole
 current replacement candidate. It adds plan-first multi-subject daily guidance
 and automatic backend-authorized plan resume without changing the frozen
 OpenAI v1 lane. Version 1.0.4 and its evidence remain historical records only;
@@ -19,7 +19,7 @@ As long as
 `ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json`
 has `activation.state = prepared_not_published`, that repository is not a
 supported installation source. The first-party `/plugins` page must keep every
-Claude installation route unavailable until the exact 1.1.0 direct-install or
+Claude installation route unavailable until the exact 1.1.1 direct-install or
 Marketplace route is deliberately opened for testing. It must not offer 1.0.4
 as a fallback. A Marketplace route additionally requires a verified repository
 and a candidate- and revision-bound Product Owner approval in
@@ -57,12 +57,12 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.0`
+- Current candidate version: `1.1.1`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
 - Current direct-install SHA-256:
-  `ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca`
+  `b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351`
 
 Anthropic allows a marketplace entry name to differ from the embedded plugin
 name. SkillPilot intentionally keeps the technical name equal, but Claude still
@@ -70,14 +70,14 @@ stores a marketplace-qualified installation record. That is why migration from
 an uploaded copy remains explicit. No `version` is repeated in
 `marketplace.json`.
 
-## 1.1.0 hard cutover
+## 1.1.1 hard cutover
 
-Version 1.1.0 fully replaces every earlier package. The public Marketplace
+Version 1.1.1 fully replaces every earlier package. The public Marketplace
 repository and the direct-install registry may retain old Git or immutable
 artifact history, but first-party instructions, the current publication index
-and acceptance runs must name only 1.1.0. Mixed 1.0.x/1.1.0 operation and
+and acceptance runs must name only 1.1.1. Mixed 1.0.x/1.1.1 operation and
 fallback to 1.0.4 are not accepted release modes. The Marketplace route remains
-`prepared_not_published` until its exact 1.1.0 repository tree is published and
+`prepared_not_published` until its exact 1.1.1 repository tree is published and
 verified; its earlier 1.0.4 repository revision cannot satisfy that gate.
 
 Version 1.0.3 established the historical pre-public correction
@@ -85,7 +85,7 @@ in which Claude decides only whether the current active goal is complete and
 the backend persists the completion, selects the successor and returns its
 canonical context. Version 1.0.4 preserves that API, tool schema, OAuth,
 session and persistence contract while correcting its learner-facing
-application. Version 1.1.0 preserves those rules and adds:
+application. Version 1.1.1 preserves those rules and adds:
 
 - At each normal start or resume, Claude first reports per-subject goals due
   today, the subset currently mastered, goals still open today, open backlog,
@@ -117,9 +117,9 @@ The retained 1.0.4 corrections were:
   durable remembered preference; the current connector has no such memory
   feature.
 
-The immutable 1.0.2, 1.0.3 and 1.0.4 packages and their version-specific
+The immutable 1.0.2, 1.0.3, 1.0.4 and 1.1.0 packages and their version-specific
 evidence remain historical records. They are not overwritten, rebound to new
-bytes, or promoted as a fallback. Every 1.1.0 exact-client, privacy,
+bytes, or promoted as a fallback. Every 1.1.1 exact-client, privacy,
 Marketplace-repository, installation, migration and guide-decision record
 starts at `pending`; no earlier approval transfers to the new candidate.
 
@@ -268,7 +268,7 @@ recommended installation and update route.
 That historical decision was recorded separately as
 `activation.firstPartyGuideDecision`. It was bound to the 1.0.4 candidate
 version and digest plus the verified repository revision and tree digest. It
-does not authorize the 1.1.0 route.
+does not authorize the 1.1.1 route.
 
 The switch is deliberately narrower than full Marketplace acceptance:
 
@@ -280,7 +280,7 @@ The switch is deliberately narrower than full Marketplace acceptance:
 - no Anthropic-curated, Anthropic-verified, or generally released status is
   claimed.
 
-For 1.1.0 the guide decision is reset to `pending`, the route is
+For 1.1.1 the guide decision is reset to `pending`, the route is
 `controlled_direct_install_beta`, and `marketplaceUiSwitchAllowed` is `false`.
 Until a new exact-candidate decision and verified repository exist, the
 first-party guide must expose neither the historical Marketplace install nor
@@ -328,6 +328,10 @@ revision before activation:
 10. Repeat the complete scenario and every assertion independently in native
    Claude Android Voice mode. A conversational statement that the goal was
    saved or a visually plausible next goal is not sufficient evidence.
+   Also cover “jetzt Physik”, “zurück zu Mathe”, a status-only request,
+   updated per-subject progress after Verified Recall, the final daily goal,
+   and paused or blocked plans. The final daily goal must lead to a clear
+   completion message; a generic focus menu must not replace the active plan.
 11. Test migration from the previously uploaded plugin: remove only the old
    SkillPilot plugin, add the marketplace, install once, reconnect if Claude
    asks, and verify a new SkillPilot-started session.
@@ -355,7 +359,7 @@ as:
 }
 ```
 
-Only a new 1.1.0 decision may make the first-party `/plugins` guide
+Only a new 1.1.1 decision may make the first-party `/plugins` guide
 Marketplace-first. It must preserve the scoped cleanup, connector OAuth, and
 return-to-SkillPilot steps. No 1.0.4 direct-download fallback is permitted.
 Because those WebGUI files are hash-bound by the active OpenAI review freeze,
@@ -367,8 +371,8 @@ hashes.
 For any plugin-content change:
 
 1. make and review the plugin change in the canonical SkillPilot repository;
-2. increment `plugin.json` SemVer in the same change (`1.1.0` becomes at least
-   `1.1.1`);
+2. increment `plugin.json` SemVer in the same change (`1.1.1` becomes at least
+   `1.1.2`);
 3. rebuild and bind a new direct-install artifact; never rebind an existing
    version to new bytes;
 4. update the marketplace lane's version and direct-install SHA-256, create or

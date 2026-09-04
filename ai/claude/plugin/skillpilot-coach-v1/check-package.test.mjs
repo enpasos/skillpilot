@@ -12,15 +12,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.0", () => {
+test("rejects a replacement candidate version other than 1.1.1", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.0"',
+      '"version": "1.1.1"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.0/u,
+      /replacement candidate must be version 1\.1\.1/u,
     );
   });
 });
@@ -274,15 +274,106 @@ test("rejects automatic resume without the authoritative availability gate", () 
   });
 });
 
-test("rejects approximate or model-invented planned subject switching", () => {
+test("rejects transformed subject tool arguments while allowing natural learner wording", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
-      /Do not translate, infer or\s+approximately match a name\./u,
-      "Translate or approximately match the learner's requested subject.",
+      /Never transform or\s+approximately match the tool argument itself\./u,
+      "Translate or approximately match the subject tool argument.",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
       /switch subjects only through an exact localized current-plan subject/u,
+    );
+  });
+});
+
+test("rejects automatic learning on status-only or pause requests", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /do not resume, switch, activate a goal or start a task\./u,
+      "Start a task even when only today's status was requested.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /keep status and pause requests read-only/u,
+    );
+  });
+});
+
+test("rejects activating another subject before honoring an explicit choice", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      /An explicit subject request takes\s+precedence over generic automatic resume/u,
+      "Generic automatic resume takes precedence over an explicit subject request",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /honor an explicit subject before automatic resume/u,
+    );
+  });
+});
+
+test("rejects requiring exact learner wording for an unambiguous natural subject request", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      '"jetzt Mathe"',
+      '"exact displayed subject only"',
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /exact localized current-plan subject/u,
+    );
+  });
+});
+
+test("rejects assigning new required goals after daily completion", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      /do not add new\s+required goals\./u,
+      "add new required goals automatically.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /distinguish completion from blocked, unavailable or paused plans/u,
+    );
+  });
+});
+
+test("rejects calling blocked or unavailable plans complete", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /never\s+claim that today is complete/u,
+      "say that today is complete",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /distinguish completion from blocked, unavailable or paused plans/u,
+    );
+  });
+});
+
+test("rejects repeated offers of subjects that cannot currently continue", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replaceAll(
+      /Offer only\s+localized subject names whose `canContinue` is true/gu,
+      "Offer every subject again even if it cannot continue",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /avoid current-subject no-ops and unavailable-subject choice loops/u,
+    );
+  });
+});
+
+test("rejects stale memory-goal continuation after confirmed Recall completion", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /After\s+confirmed memory-goal completion, use the returned full canonical context/u,
+      "After confirmed memory-goal completion, keep using the old memory goal",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /authoritative post-Recall completion context/u,
     );
   });
 });
@@ -468,15 +559,15 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.0 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.1 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
-      "The 1.1.0 package already passed every exact-client check",
+      "The 1.1.1 package already passed every exact-client check",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.0 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.1 exact-candidate acceptance/u,
     );
   });
 });

@@ -23,12 +23,12 @@ const validIndex = {
     {
       id: 'skillpilot-coach-v1',
       name: 'SkillPilot Claude Coach',
-      version: '1.1.0',
+      version: '1.1.1',
       status: 'beta',
-      filename: 'skillpilot-coach-v1-1.1.0.plugin',
+      filename: 'skillpilot-coach-v1-1.1.1.plugin',
       bytes: 42_000,
       sha256: digest,
-      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/1.1.0/sha256-${digest}/skillpilot-coach-v1-1.1.0.plugin`,
+      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/1.1.1/sha256-${digest}/skillpilot-coach-v1-1.1.1.plugin`,
       sourceUrl: 'https://github.com/enpasos/skillpilot',
       privacyUrl: 'https://skillpilot.com/privacy',
       termsUrl: 'https://skillpilot.com/legal',
@@ -155,7 +155,7 @@ assert.throws(
 )
 
 const nonCanonicalDownload = cloneValidIndex()
-nonCanonicalDownload.plugins[0]!.downloadUrl = '/api/public/claude/plugins/skillpilot-coach-v1-1.1.0.plugin'
+nonCanonicalDownload.plugins[0]!.downloadUrl = '/api/public/claude/plugins/skillpilot-coach-v1-1.1.1.plugin'
 assert.throws(
   () => parseClaudePluginPublicationIndex(nonCanonicalDownload),
   /downloadUrl must match the versioned SHA-256 artifact path/u,
@@ -182,20 +182,22 @@ assert.throws(
   /sha256 must contain 64 hexadecimal characters/u,
 )
 
-const staleVersion = cloneValidIndex()
-staleVersion.plugins[0]!.version = '1.0.4'
-staleVersion.plugins[0]!.filename = 'skillpilot-coach-v1-1.0.4.plugin'
-staleVersion.plugins[0]!.downloadUrl = `/api/public/claude/plugins/skillpilot-coach-v1/1.0.4/sha256-${digest}/skillpilot-coach-v1-1.0.4.plugin`
-assert.throws(
-  () => parseClaudePluginPublicationIndex(staleVersion),
-  /version must equal 1\.1\.0/u,
-  'the first-party guide must fail closed instead of offering historical Claude 1.0.4',
-)
+for (const retiredVersion of ['1.0.4', '1.1.0']) {
+  const staleVersion = cloneValidIndex()
+  staleVersion.plugins[0]!.version = retiredVersion
+  staleVersion.plugins[0]!.filename = `skillpilot-coach-v1-${retiredVersion}.plugin`
+  staleVersion.plugins[0]!.downloadUrl = `/api/public/claude/plugins/skillpilot-coach-v1/${retiredVersion}/sha256-${digest}/skillpilot-coach-v1-${retiredVersion}.plugin`
+  assert.throws(
+    () => parseClaudePluginPublicationIndex(staleVersion),
+    /version must equal 1\.1\.1/u,
+    `the first-party guide must fail closed instead of offering historical Claude ${retiredVersion}`,
+  )
+}
 
 const wrongPlugin = cloneValidIndex()
 wrongPlugin.plugins[0]!.id = 'different-plugin'
-wrongPlugin.plugins[0]!.filename = 'different-plugin-1.1.0.plugin'
-wrongPlugin.plugins[0]!.downloadUrl = `/api/public/claude/plugins/different-plugin/1.1.0/sha256-${digest}/different-plugin-1.1.0.plugin`
+wrongPlugin.plugins[0]!.filename = 'different-plugin-1.1.1.plugin'
+wrongPlugin.plugins[0]!.downloadUrl = `/api/public/claude/plugins/different-plugin/1.1.1/sha256-${digest}/different-plugin-1.1.1.plugin`
 assert.throws(
   () => parseClaudePluginPublicationIndex(wrongPlugin),
   /id must equal skillpilot-coach-v1/u,

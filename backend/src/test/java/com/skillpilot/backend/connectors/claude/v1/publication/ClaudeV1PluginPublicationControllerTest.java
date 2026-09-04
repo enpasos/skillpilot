@@ -25,8 +25,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 class ClaudeV1PluginPublicationControllerTest {
 
     private static final String PLUGIN_ID = "skillpilot-coach-v1";
-    private static final String VERSION = "1.1.0";
-    private static final String FILENAME = "skillpilot-coach-v1-1.1.0.plugin";
+    private static final String VERSION = "1.1.1";
+    private static final String FILENAME = "skillpilot-coach-v1-1.1.1.plugin";
     private static final byte[] PLUGIN_BYTES = "deterministic-plugin-fixture\n"
             .getBytes(StandardCharsets.UTF_8);
 

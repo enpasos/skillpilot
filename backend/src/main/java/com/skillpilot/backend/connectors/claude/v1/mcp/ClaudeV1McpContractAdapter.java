@@ -252,7 +252,11 @@ public class ClaudeV1McpContractAdapter {
                 Daily learning plan: treat learningPlanToday as the complete authoritative daily
                 workload across all current subject plans. For every newest successful context, first
                 perform any immediate goalVisualization render required by the Goal images rule below.
-                Then inspect learningPlanToday. If no activeGoal is returned and
+                Then follow learningPlanToday.guidance, which owns the current daily next step.
+                Answer a status-only question or respect a pause without starting a goal or exercise.
+                A clear explicit subject request takes priority over generic resume: select its
+                published subject directly, without first activating another subject. Otherwise,
+                for a normal learning start, if no activeGoal is returned and
                 learningPlanToday.resumeAvailable is true, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
                 any learner-facing response. Do not ask for confirmation and do not select a plan,
@@ -265,16 +269,30 @@ public class ClaudeV1McpContractAdapter {
                 continue the returned activeGoal. If these counts later change, report the updated
                 counts naturally. Do not repeat unchanged counts on every turn.
 
+                For guidance.state=complete, clearly say that today's work including backlog is done
+                and no more plan goals are required today. Do not automatically start future goals,
+                widen focus or send the learner to the Web application. For blocked or unavailable,
+                explain the remaining work or missing plan status without claiming completion; any
+                necessary planning correction belongs to the teacher. Never infer completion from
+                resumeAvailable=false alone. Apply the same guidance to full successor contexts after
+                ordinary mastery and confirmed Verified Recall mastery.
+
                 When the learner explicitly asks to change to a subject named in the newest
                 learningPlanToday.subjects list, copy that entry's localized subject value exactly
-                and call switch_skillpilot_learning_plan_subject with the current stateVersion and a
-                fresh UUID. This explicit switch may park an unfinished active goal without marking
+                and, if canContinue=true and current=false, call
+                switch_skillpilot_learning_plan_subject with the current stateVersion and a
+                fresh UUID. If current=true, continue that active goal without a switch write.
+                Understand an unambiguous everyday subject request such as “Mathe” or “maths” as the
+                corresponding published Mathematics subject; only the tool argument must use the exact
+                published label. If the request fits more than one subject, ask one short clarification.
+                This explicit switch may park an unfinished active goal without marking
                 it complete; the backend alone selects the first due prerequisite-safe goal in that
                 subject. Do not ask for a plan, landscape, focus or goal identifier, and never put one
-                into this tool call. Do not infer, translate or approximately match a subject name.
-                If the named subject is absent, ambiguous or cannot currently supply an eligible due
-                goal, keep the canonical state unchanged and ask the learner to choose one of the
-                subject names in the refreshed daily-plan context. Continue from the full context
+                into this tool call. Never invent or alter the published subject argument.
+                If a subject has no openToday or openOverdue goals, say its work is done for today;
+                do not try to switch or offer it repeatedly. For an absent or currently unavailable
+                subject, explain briefly and offer only entries with canContinue=true. After a conflict,
+                refresh once and apply these same rules. Continue from the full context
                 returned by a successful subject switch, perform any goalVisualization render it
                 requires, and only then confirm the switch and continue without another confirmation.
 
@@ -440,6 +458,8 @@ public class ClaudeV1McpContractAdapter {
                 "Resume SkillPilot Learning Plan",
                 "Selects the authoritative next due goal across all current subject plans when no "
                         + "learning goal is active. The server chooses the date, plan, subject and goal. "
+                        + "Use for a normal learning start with resumeAvailable=true; an explicit subject "
+                        + "request takes priority, and status-only or pause requests do not start a goal. "
                         + "Returns a fresh complete coach context and advances learner state.",
                 objectSchema(
                         List.of(ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID),
@@ -454,7 +474,9 @@ public class ClaudeV1McpContractAdapter {
                 ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
                 "Switch SkillPilot Learning Plan Subject",
                 "Switches an explicit learner request to exactly one localized subject name copied "
-                        + "from the newest learningPlanToday.subjects entry. The server resolves the "
+                        + "from a newest learningPlanToday.subjects entry with canContinue=true and current=false. "
+                        + "Everyday names may identify an unambiguous published subject; copy its exact label. "
+                        + "An already current subject needs no switch write. The server resolves the "
                         + "current plan and selects its first due prerequisite-safe goal; this parks an "
                         + "unfinished previous goal without marking it complete. Never pass any plan, "
                         + "landscape, focus or goal identifier. Returns a fresh complete coach context.",
@@ -1757,7 +1779,8 @@ public class ClaudeV1McpContractAdapter {
                         throw new IllegalStateException("The canonical recall operation returned no result.");
                     }
 
-                    Map<String, Object> summary = new LinkedHashMap<String, Object>();
+                    long successorStateVersion = ctx.currentStateVersion();
+                    Map<String, Object> summary = successResponse(successorStateVersion);
                     summary.put("verifiedCards", batch.verifiedCards());
                     summary.put("pendingCards", batch.pendingCards());
                     summary.put("masterySaved", batch.masterySaved());
@@ -1765,14 +1788,57 @@ public class ClaudeV1McpContractAdapter {
                             connectionId,
                             ctx.skillpilotId(),
                             claim.goalId(),
-                            ctx.currentStateVersion(),
+                            successorStateVersion,
                             language,
                             batch.next()));
+                    if (batch.masterySaved()) {
+                        if (!claim.goalId().equals(batch.masteryGoalId())
+                                || batch.pendingCards() != 0
+                                || !"complete".equals(batch.next().status())) {
+                            throw new IllegalStateException(
+                                    "The canonical recall completion is inconsistent.");
+                        }
+                        // The canonical recall write already saves mastery and performs any
+                        // plan handoff. Read its successor while holding the same learner lock;
+                        // no additional mastery, goal-selection or reconciliation write occurs.
+                        Map<String, Object> context = contextProjector.projectContext(
+                                ctx.skillpilotId(),
+                                successorStateVersion,
+                                ctx.communicationLocale());
+                        if (!Objects.equals(context.get("stateVersion"), successorStateVersion)) {
+                            throw new IllegalStateException(
+                                    "The recall successor context has an inconsistent state revision.");
+                        }
+                        summary.put("context", context);
+                        summary.put("presentationInstruction", MASTERY_CONTINUATION_INSTRUCTION
+                                + " Do not request recall answers or record another mastery update.");
+                    }
                     return summary;
                 });
 
-        Map<String, Object> response = successResponse(outcome.stateVersion());
-        response.putAll(outcome.value());
+        Map<String, Object> response = new LinkedHashMap<>(outcome.value());
+        if (!response.containsKey("stateVersion")) {
+            // Exact replays written by earlier connector versions contain only the
+            // recall summary. Reload their current context without repeating the write.
+            Map<String, Object> legacyReplay = successResponse(outcome.stateVersion());
+            legacyReplay.putAll(response);
+            if (Boolean.TRUE.equals(response.get("masterySaved"))) {
+                legacyReplay.put("presentationInstruction", POST_WRITE_RELOAD_INSTRUCTION
+                        + " The recall completion was already saved. Do not repeat the recall-result "
+                        + "write or record another mastery update.");
+            }
+            return legacyReplay;
+        }
+        Object embeddedStateVersion = response.get("stateVersion");
+        if (!(embeddedStateVersion instanceof Number number)
+                || number.longValue() != outcome.stateVersion()
+                || (Boolean.TRUE.equals(response.get("masterySaved"))
+                        && (!(response.get("context") instanceof Map<?, ?> context)
+                                || !(context.get("stateVersion") instanceof Number contextVersion)
+                                || contextVersion.longValue() != outcome.stateVersion()))) {
+            throw new IllegalStateException(
+                    "The stored recall response has an inconsistent state revision.");
+        }
         return response;
     }
 

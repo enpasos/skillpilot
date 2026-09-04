@@ -3042,6 +3042,248 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "21ef6ad425973b34f96dad6ab5914ecc62a005a5caa796261cd529527d360919"
       }
     ]
+  },
+  {
+    "id": "2026-09-04-claude-simple-planned-chat-1.1.1",
+    "approvedAt": "2026-09-04",
+    "approvedBy": "product-owner",
+    "reason": "Make the existing planned learner workflow as simple and reliable as possible in chat, including daily progress, natural subject requests and seamless verified-recall completion.",
+    "scope": "Refine only the authorized Claude plan-first replacement as version 1.1.1: expose current/available subject flags and authoritative daily guidance without identifiers; prioritize explicit natural subject requests using exact published tool arguments; keep status-only questions and pauses read-only; distinguish completed, blocked, unavailable and paused planning without suppressing ordinary non-plan learning or offering future frontier goals as daily duties; return the canonical successor context after confirmed Verified Recall with idempotent replay; bind source, regression, package, distribution and pending exact-client evidence; preserve the immutable 1.1.0 archive/history, OpenAI 1.0.0 review contract and dormant 1.1 candidate, existing launch/session/identity/locale semantics and 24-hour renewal boundary; perform no external publication or deployment.",
+    "target": "local-claude-coach-1.1.1-full-replacement-candidate",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-no-submitted-openai-contract-or-review-flow-effect-no-publication-or-deployment",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "ai/claude/connector-v1/release/contract-baseline.json",
+        "priorAuthorizedSha256": "a638a16824c2b395bca4caf5a77312f0f3dd78b5be6e63d4dc2b47f5a5989bc5",
+        "authorizedSha256": "a42f957bfa10c2d32168789f9e29d2dcdf25fd65c24d64df55ef0035a63cef51"
+      },
+      {
+        "path": "ai/claude/marketplace/skillpilot-marketplace/CHANGELOG.md",
+        "priorAuthorizedSha256": "43fddbda9b32e27ce81d7bd1db24b4186dd7103e76a23e321e09992c99c7afb0",
+        "authorizedSha256": "a118c84efb86aaf7ab96b33a0a39f72f80a1861d44a2676708511f6581dd5c41"
+      },
+      {
+        "path": "ai/claude/marketplace/skillpilot-marketplace/README.md",
+        "priorAuthorizedSha256": "e67842ee18fef0cec331985875b69b0a29035f5a873f177244ea03381ab81e55",
+        "authorizedSha256": "01d79b743ad38dbc44b4ea09d714f80a7fb580d4225a41a55ade97660d8ac11f"
+      },
+      {
+        "path": "ai/claude/marketplace/skillpilot-marketplace/validate.yml",
+        "priorAuthorizedSha256": "9711f864040aba37e495ff39815ae688e51db8779acf749b221d4696b561273b",
+        "authorizedSha256": "96d31401034dc4337c1fa5c80d00ca753a89d6e86917cfc5871fc2ea5bdbc8f5"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/.claude-plugin/plugin.json",
+        "priorAuthorizedSha256": "9c52618e2499a31cfc4bdcaabb0f6ee11ac5e08efc912b8e1a397e3b5f59d87a",
+        "authorizedSha256": "ce7f8b153342c378855aef32bcd5d6fa5e997afa319df51ef6562ef594ca05be"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/README.md",
+        "priorAuthorizedSha256": "d146c091612754585fbe7e198543f71b9814de03337b745bfc7b1038f3c44198",
+        "authorizedSha256": "63d3c29386cd56e505f1a49e8eac62ba5f9cef886ed028e7beb2e1548c62e238"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/SETUP.md",
+        "priorAuthorizedSha256": "5f8b3e08098a07a0f0e600b2f07a63f97a3c6b17441db8667fbe9096a53aa390",
+        "authorizedSha256": "b9c75065e76097ce7d325295db24ce7e3280e739c2e692510765c25f7cf4bae8"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/check-package.mjs",
+        "priorAuthorizedSha256": "ae708d7b5ad2743ad5d30f7507d76abf0d2472e5020181f90e4cadfe0e52caa8",
+        "authorizedSha256": "88cb3e7795756e3e48b1fadea7dc977d9e9b5d1b7e7f30f19032265b979f40c1"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs",
+        "priorAuthorizedSha256": "2961fbdb9544ccc0a8a5473266d2c6abb95c6708927c1d6611e3faae83c7cc6d",
+        "authorizedSha256": "56e720a0c93066638acb49274c7cd7cbfda168bd128d808e6535a1311f671540"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/contract-baseline.json",
+        "priorAuthorizedSha256": "049afdb7a3919e0d59f57976ff70613363e6053a9a901d32d1a39dad5639c4f3",
+        "authorizedSha256": "223d81c06a912d245f1398a49480f6dc3c98f2c00749854fa39113dfd79de4d6"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/direct-install-beta.json",
+        "priorAuthorizedSha256": "f69455a5fca2a545c416f7121697d881f764ff3a8a155ae06bf97bd2873e4fc5",
+        "authorizedSha256": "adbf4f050116d855e87897a7e532771cf2d6944e6396d0c652acf724781bb86f"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/evidence-manifest.json",
+        "priorAuthorizedSha256": "3069acb409fa968d02c88ebcbc58900ae8c5a8276baea56368a848b18be192eb",
+        "authorizedSha256": "4511ac93c6121dd1b4f93773ac630e866b43ea14c44938962056a858dc4ef1a3"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/evidence/controlled-direct-install-beta/1.1.1-exact-client.json",
+        "authorizedSha256": "7954db6bcbb9ef12546e065efa71ae8b4537da85f675e6256708d7547ea16385"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/evidence/controlled-direct-install-beta/1.1.1-privacy-approval.json",
+        "authorizedSha256": "93c08e9a78c73926c9198c43de597080c063a392a6f6cd02c4fc1dca206b0ee7"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/contract-baseline.json",
+        "authorizedSha256": "049afdb7a3919e0d59f57976ff70613363e6053a9a901d32d1a39dad5639c4f3"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/direct-install-beta.json",
+        "authorizedSha256": "f69455a5fca2a545c416f7121697d881f764ff3a8a155ae06bf97bd2873e4fc5"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/evidence-manifest.json",
+        "authorizedSha256": "3069acb409fa968d02c88ebcbc58900ae8c5a8276baea56368a848b18be192eb"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/lifecycle.json",
+        "authorizedSha256": "6deb28d6c4a29862ce00acc14c675f852a0088f167be43ae1cfd8f3cd52328ca"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/marketplace-publication.json",
+        "authorizedSha256": "eceae94c85c47a575310d1a9b6a08be9163e19e67486dcda8bcb30d1ecdba363"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/release-gates.json",
+        "authorizedSha256": "de71f6fdf93515cbdb4982ecd1affefe925ea9c1d75414c8347d7b69065016e8"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/support-readiness-drill.template.md",
+        "authorizedSha256": "77146c1b97cb995a65226105ab69812248a68828ba072e1c75afe8805ffd92ba"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/lifecycle.json",
+        "priorAuthorizedSha256": "6deb28d6c4a29862ce00acc14c675f852a0088f167be43ae1cfd8f3cd52328ca",
+        "authorizedSha256": "39dc2a5fddba686f910dfdd55b19de0116f309259650b3fa273f11a756b74c4a"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json",
+        "priorAuthorizedSha256": "eceae94c85c47a575310d1a9b6a08be9163e19e67486dcda8bcb30d1ecdba363",
+        "authorizedSha256": "e03e63e6725253a1b46c4db7a68ffabc2455ed5b9d76e49f662e4298688d7adf"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/release-gates.json",
+        "priorAuthorizedSha256": "de71f6fdf93515cbdb4982ecd1affefe925ea9c1d75414c8347d7b69065016e8",
+        "authorizedSha256": "1f681bafad9422f6a6fe7622e821dcbbb93b2db88973ef5f6fb110c09eff18d5"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/support-readiness-drill.template.md",
+        "priorAuthorizedSha256": "77146c1b97cb995a65226105ab69812248a68828ba072e1c75afe8805ffd92ba",
+        "authorizedSha256": "161fc615a5a2aa947c8ec2c056e8caf0efea9946573254816be975a9db7be787"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md",
+        "priorAuthorizedSha256": "0ea179013e6434283363e186721b17c14246badbf103dca455003f1d639988d5",
+        "authorizedSha256": "bf1c22ecf564104473ea3cf1a0ddd9a098edb9b52a87fca618b24b74ddb817f5"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/references/coaching-policy.md",
+        "priorAuthorizedSha256": "eb4744bc5bd785c90e3e205e1886b54bd3376bffd9a6559a04259a2e89771872",
+        "authorizedSha256": "71c19b972523e3e4af0a9bff87f442b7717ad4a62630dbfe1d14fd48a066294b"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.test.ts",
+        "priorAuthorizedSha256": "6c9270c567dc65cec195fbd6ab3acb04f5664e9b35e50434c48f3ec8ff9b7e79",
+        "authorizedSha256": "b92e4498f231c06e74a6354be642554922d80122333bb2c0c053fb0d2d826d3c"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.ts",
+        "priorAuthorizedSha256": "215c10d1a6001ac308406549a5bcf868505ba289614da5e48b87119c010fc329",
+        "authorizedSha256": "163dec2b14ff3b110b02c4f609a0a13a3487690727de5d59ebf5e697a3dd9535"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerPlanTodayStatus.java",
+        "priorAuthorizedSha256": "51fd840bbfb3a1c4de09574d85bd3ea22b8dd58fd951a8e04e59eb3beedce370",
+        "authorizedSha256": "25b233c511e7859827be147138d7951097903fd56c24b7cd55d9a7c7f4775f51"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/ClaudeV1Properties.java",
+        "priorAuthorizedSha256": "a0e677218edce63ea9b3e62aadfcb78fef5a5e776688e894fee13916ab66e0f2",
+        "authorizedSha256": "b23b295eb281b8b60f38c22984f6fd3f1eb6dcd807c10072f835b13ba626d6d4"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CoachContextProjector.java",
+        "priorAuthorizedSha256": "9dbf0dac351fce677819646af8ed4ed963d85d4f0a3b697cc81c23a0c5ccee8f",
+        "authorizedSha256": "9fc61a6ceea775ac7c84dafb6e22eabddad524c29fc89bdc45c582eb8aaf9b47"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+        "priorAuthorizedSha256": "401c12eaed81d572c2d46d9fca5793d1bd773c6f0f1f0ae62790f68c4c7f11d6",
+        "authorizedSha256": "117f585efed75b4f22dfd005cceb8e34e0f34a5fcf48e36253994b1950e6a13a"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+        "priorAuthorizedSha256": "7fc940ee1c5230da92eb4e71473fa30426a6909e63bbaaa425e4b2fd1cb98da2",
+        "authorizedSha256": "925ac3c2aae7f832d360aedc3f46b4b2248664219e37b080b6b24d63e1fce676"
+      },
+      {
+        "path": "backend/src/main/resources/claude-plugin-publication/index.json",
+        "priorAuthorizedSha256": "32cc55b1f027a03e15954b703df30f1a9baae8ecc0d2596ef5f0c83a96f3f6e5",
+        "authorizedSha256": "1570ea834a20a68efda77c9d185278515efe09360009a09ac114fd71c176ad27"
+      },
+      {
+        "path": "backend/src/main/resources/claude-plugin-publication/skillpilot-coach-v1/1.1.1/sha256-b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351/skillpilot-coach-v1-1.1.1.plugin",
+        "authorizedSha256": "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CoachContextProjectorTest.java",
+        "priorAuthorizedSha256": "483a78ffff39f0b2388ba6c56ee6a5cbc0d59500b24366c31d311ef2666f2cf8",
+        "authorizedSha256": "4e5445070f7e598f63fee2f85e9dcec19e6b8a7cf2a93a8be2fa00cf9d54a8c2"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractTest.java",
+        "priorAuthorizedSha256": "87b6053423345cfc972ab2f1c445563b00ee01bb5787d9cffcf773331ea3bc1b",
+        "authorizedSha256": "d2e277e1f41fffe8e631d63479829f11b18f4912f2313c5d9c5bf8f6a8522f69"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1VerifiedRecallLearningPlanContractTest.java",
+        "authorizedSha256": "7dd936378b5939c3c45720f919d6adcc876a69faff91c443a945fcd09d7c7014"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/publication/ClaudeV1PluginPublicationControllerTest.java",
+        "priorAuthorizedSha256": "33fe27f232eba4be6783343836031b7bcdecfeee2d15801ab7a6427057912ef4",
+        "authorizedSha256": "8ec2bf68676be1e5db17c7dd78446d9cabf371456734062378c5aae233a8d3ca"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+        "priorAuthorizedSha256": "d72ab90e7b3407c1e485bbe5d4b8d043e23cfeb624b29a506e93f1923e81d7b1",
+        "authorizedSha256": "5bcbe35bde8c5098a4e1d20446141155208a0e5dfeaa2844e5cf446084bac8ea"
+      },
+      {
+        "path": "docs/deploy/claude-personal-marketplace-release.md",
+        "priorAuthorizedSha256": "5c259fd74f2880617edd8a03c06ad0cd3d457213a82fe70c8204eba399b03233",
+        "authorizedSha256": "5f20e8de03f765bfe5f93e185ea5a1272f7867126e3335047f9fe3b70b44eb55"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "4f9f13c08d7e69b8fec305605814ba645bc4f856603d8f0866fde6538d6fab0f",
+        "authorizedSha256": "e17c0f7a70565fe992e2295cb89edfe013e7ccebaae71786cf77eb1b6854415e"
+      },
+      {
+        "path": "scripts/check_claude_plugin_v1_release.mjs",
+        "priorAuthorizedSha256": "23bec23a689ffad54e5a08525ee9e421192311e51dde316ae0d3f2cccbecf5c5",
+        "authorizedSha256": "ee4e159d0b95eb4e0377d0863f42ad18dc7a888cf420aa26053caee4b67c3793"
+      },
+      {
+        "path": "scripts/check_claude_plugin_v1_release.test.mjs",
+        "priorAuthorizedSha256": "500dd2e09f9966b8d2d08a525adfa1d295bb800a8cefcb33e6faa7abe8cbb0e6",
+        "authorizedSha256": "180b5250bf42b9c8f5e6f38d383e71314246d96ccc3bdff13abb60a3a04aa026"
+      },
+      {
+        "path": "scripts/claude_direct_install_beta_release.mjs",
+        "priorAuthorizedSha256": "f0f375c041c598204954934358ce4bf4ada64979af0f7439dd6e563f8e3d4628",
+        "authorizedSha256": "d86b4db39fce1d64962ce7f676f6d7fccb16fc29a3f7072b5a1cd11fdff687a5"
+      },
+      {
+        "path": "scripts/claude_direct_install_beta_release.test.mjs",
+        "priorAuthorizedSha256": "d0c5f411271f90a3c267471178d093bd469aa020b78d1d5470344d0ce448787f",
+        "authorizedSha256": "771538ebd3221c8459b8a72b06689dfbec217f2bf2481bfab508730116ad9b68"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.test.mjs",
+        "priorAuthorizedSha256": "386295f431c0334114c2ee0a7ad4b6fdb20fd940c208be8e52286d4e4270b568",
+        "authorizedSha256": "883e7733da3434abd90533f637371f34cf731d290920ce6999a73b3c5f9f33bc"
+      }
+    ]
   }
 ];
 

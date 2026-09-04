@@ -88,8 +88,8 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
-    void publishesTheAdditiveClaudeBackendAsVersionOneOneZero() {
-        assertEquals("1.1.0", properties.getServerVersion());
+    void publishesTheGuidedClaudeBackendAsVersionOneOneOne() {
+        assertEquals("1.1.1", properties.getServerVersion());
     }
 
     @Test
@@ -488,8 +488,22 @@ class ClaudeV1McpContractTest {
         assertTrue(normalizedInstructions.contains(
                 "Never call the resume tool while an activeGoal is present"));
         assertTrue(normalizedInstructions.contains(
-                "copy that entry's localized subject value exactly and call "
+                "copy that entry's localized subject value exactly and, if canContinue=true and current=false, call "
                         + "switch_skillpilot_learning_plan_subject"));
+        assertTrue(normalizedInstructions.contains(
+                "A clear explicit subject request takes priority over generic resume"));
+        assertTrue(normalizedInstructions.contains(
+                "Answer a status-only question or respect a pause without starting a goal or exercise"));
+        assertTrue(normalizedInstructions.contains(
+                "If current=true, continue that active goal without a switch write"));
+        assertTrue(normalizedInstructions.contains(
+                "only the tool argument must use the exact published label"));
+        assertTrue(normalizedInstructions.contains(
+                "Never infer completion from resumeAvailable=false alone"));
+        assertTrue(normalizedInstructions.contains(
+                "Do not automatically start future goals, widen focus or send the learner to the Web application"));
+        assertTrue(normalizedInstructions.contains(
+                "offer only entries with canContinue=true"));
         assertTrue(normalizedInstructions.contains(
                 "This explicit switch may park an unfinished active goal without marking it complete"));
         assertTrue(normalizedInstructions.contains(

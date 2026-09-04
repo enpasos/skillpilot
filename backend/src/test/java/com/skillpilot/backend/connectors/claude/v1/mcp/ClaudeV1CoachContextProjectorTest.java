@@ -45,9 +45,9 @@ class ClaudeV1CoachContextProjectorTest {
                 true,
                 List.of(
                         new LearnerPlanTodayStatus.SubjectStatus(
-                                "private-math-a", "Mathematik\n", 3, 1, 2, 4),
+                                "private-math-a", "Mathematik\n", 3, 1, 2, 4, true, true),
                         new LearnerPlanTodayStatus.SubjectStatus(
-                                "private-physics", "Physik", 4, 1, 3, 2),
+                                "private-physics", "Physik", 4, 1, 3, 2, false, true),
                         new LearnerPlanTodayStatus.SubjectStatus(
                                 "private-math-b", "Mathematik", 2, 1, 1, 1),
                         new LearnerPlanTodayStatus.SubjectStatus(
@@ -72,12 +72,16 @@ class ClaudeV1CoachContextProjectorTest {
                 List.of(
                         Map.of(
                                 "subject", "Mathematik",
+                                "current", false,
+                                "canContinue", false,
                                 "dueToday", 5,
                                 "completedToday", 2,
                                 "openToday", 3,
                                 "openOverdue", 5),
                         Map.of(
                                 "subject", "Physik",
+                                "current", false,
+                                "canContinue", true,
                                 "dueToday", 4,
                                 "completedToday", 1,
                                 "openToday", 3,
@@ -94,6 +98,92 @@ class ClaudeV1CoachContextProjectorTest {
 
         Map<String, Object> withActiveGoal = projector.projectLearningPlanToday(today, true);
         assertEquals(false, withActiveGoal.get("resumeAvailable"));
+        List<Map<String, Object>> activeSubjects = (List<Map<String, Object>>) withActiveGoal.get("subjects");
+        assertEquals(true, activeSubjects.getFirst().get("current"));
+        assertEquals(false, activeSubjects.getFirst().get("canContinue"),
+                "Merged equal subject names must not authorize an ambiguous switch");
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void finishedDailyPlanEndsTheAssignmentInsteadOfOfferingFutureFrontierGoals() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(stateProjection, facade);
+        UnifiedLearnerStateResponse state = state(null, List.of(goal("tomorrows-goal", List.of())), "setActiveGoal");
+        when(facade.getLearnerState("learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(facade.getPersonalizationPlan("learner")).thenReturn(PersonalizationPlan.complete(List.of()));
+        when(facade.getLearningPlanTodayStatus("learner", "de")).thenReturn(dailyStatus(true, false, 0, 0, 0));
+
+        Map<String, Object> context = projector.projectContext("learner", 15, "de");
+
+        assertEquals(List.of(), context.get("frontier"));
+        assertEquals(Map.of("state", "learningPlan", "requiredAction", "complete"), context.get("stateMachine"));
+        Map<String, Object> daily = (Map<String, Object>) context.get("learningPlanToday");
+        Map<String, Object> guidance = (Map<String, Object>) daily.get("guidance");
+        assertEquals("complete", guidance.get("state"));
+        assertTrue(guidance.get("instruction").toString().contains("no more plan goals are required today"));
+        assertFalse(context.toString().contains("tomorrows-goal"));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void dailyGuidanceDistinguishesBacklogBlockedUnavailablePausedAndAvailableWork() {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class));
+        List<LearnerPlanTodayStatus> snapshots = List.of(
+                dailyStatus(true, false, 0, 0, 0),
+                dailyStatus(true, false, 0, 2, 0),
+                dailyStatus(true, false, 2, 0, 0),
+                dailyStatus(true, false, 0, 0, 1),
+                dailyStatus(false, true, 2, 0, 0),
+                dailyStatus(true, true, 2, 0, 0));
+        assertEquals(List.of("complete", "blocked", "blocked", "unavailable", "paused", "resume"),
+                snapshots.stream().map(status -> (Map<String, Object>) projector
+                        .projectLearningPlanToday(status, false).get("guidance"))
+                        .map(guidance -> guidance.get("state")).toList());
+        assertEquals("continue", ((Map<String, Object>) projector
+                .projectLearningPlanToday(snapshots.getFirst(), true).get("guidance")).get("state"),
+                "A previously chosen active goal must not be silently discarded");
+        LearnerPlanTodayStatus missingPlans = new LearnerPlanTodayStatus(
+                LocalDate.of(2026, 9, 4), true, false, List.of(),
+                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0), 0);
+        assertEquals("unavailable", ((Map<String, Object>) projector
+                .projectLearningPlanToday(missingPlans, false).get("guidance")).get("state"));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void disabledPlanGuidancePreservesOrdinaryLearningAndNavigation() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(stateProjection, facade);
+        UnifiedLearnerStateResponse state = state(null, List.of(goal("regular-goal", List.of())), "setActiveGoal");
+        when(facade.getLearnerState("learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(facade.getPersonalizationPlan("learner")).thenReturn(PersonalizationPlan.complete(List.of()));
+        when(facade.getLearningPlanTodayStatus("learner", "de")).thenReturn(dailyStatus(false, false, 2, 0, 0));
+
+        Map<String, Object> context = projector.projectContext("learner", 15, "de");
+
+        List<Map<String, Object>> frontier = (List<Map<String, Object>>) context.get("frontier");
+        assertEquals("regular-goal", frontier.getFirst().get("id"));
+        assertEquals("setActiveGoal", ((Map<String, Object>) context.get("stateMachine")).get("requiredAction"));
+        Map<String, Object> daily = (Map<String, Object>) context.get("learningPlanToday");
+        Map<String, Object> guidance = (Map<String, Object>) daily.get("guidance");
+        assertEquals("paused", guidance.get("state"));
+        assertTrue(guidance.get("instruction").toString().contains(
+                "For a normal learning request, continue the regular authoritative active goal or frontier"));
+        assertEquals(false, daily.get("resumeAvailable"));
+    }
+
+    private static LearnerPlanTodayStatus dailyStatus(
+            boolean enabled, boolean resumable, int openToday, int overdue, int unavailable) {
+        return new LearnerPlanTodayStatus(LocalDate.of(2026, 9, 4), enabled, resumable,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "math", "Mathematik", 2, 2 - openToday, openToday, overdue, false, resumable)),
+                new LearnerPlanTodayStatus.Totals(2, 2 - openToday, openToday, overdue), unavailable);
     }
 
     @Test

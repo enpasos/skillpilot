@@ -47,15 +47,15 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
-test("production marketplace lane prepares the 1.1.0 replacement with all external evidence pending", () => {
+test("production marketplace lane prepares the 1.1.1 replacement with all external evidence pending", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.target.repository, "enpasos/skillpilot-claude-marketplace");
   assert.equal(lane.plugin.name, "skillpilot-coach-v1");
-  assert.equal(lane.plugin.version, "1.1.0");
+  assert.equal(lane.plugin.version, "1.1.1");
   assert.equal(
     lane.plugin.directInstallSha256,
-    "ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca",
+    "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351",
   );
   assert.deepEqual(lane.activation, {
     state: "prepared_not_published",
@@ -321,7 +321,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.0");
+    assert.equal(prepared.version, "1.1.1");
     assert.equal(prepared.files.length, 11);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -380,7 +380,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.0",
+                version: "1.1.1",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
