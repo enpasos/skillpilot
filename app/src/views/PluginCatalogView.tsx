@@ -20,6 +20,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
   CLAUDE_CONNECTOR_PRIVACY_URL,
+  CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_PLUGIN_BETA_REQUIREMENTS,
   CLAUDE_PLUGIN_PUBLICATION_INDEX_URL,
@@ -31,16 +32,16 @@ const copy = {
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: 'Geführte Marketplace-Einrichtung des SkillPilot Claude Coach mit Claude Pro.',
+    subtitle: 'Geführte Einrichtung der aktuellen SkillPilot-Claude-1.1-Beta mit Claude Pro.',
     cardTitle: 'SkillPilot Coach v1',
-    betaNotice: 'Marketplace-Beta',
-    betaDescription: 'Der SkillPilot Marketplace ist der empfohlene Installations- und Updateweg in der SkillPilot-Beta. Er wird von SkillPilot unabhängig von Anthropic bereitgestellt und ist nicht von Anthropic kuratiert oder verifiziert.',
-    loading: 'Aktuelle Fallback-Version wird geladen …',
-    loadErrorTitle: 'Der Direkt-Upload-Fallback konnte nicht geladen werden.',
-    loadErrorText: 'Die Marketplace-Anleitung bleibt nutzbar. Bitte versuche den Fallback später erneut; ohne gültigen Veröffentlichungsindex bieten wir aus Sicherheitsgründen keinen Datei-Download an.',
+    betaNotice: 'Claude-Beta 1.1',
+    betaDescription: 'Die planorientierte Version 1.1 ersetzt die bisherige Claude-Variante vollständig. Bis der persönliche Marketplace ebenfalls nachweislich auf 1.1 aktualisiert ist, erfolgt die Einrichtung über die lokal struktur- und hashgeprüfte 1.1-Plugin-Datei. Die kandidatengenaue Abnahme in Claude steht noch aus.',
+    loading: 'Aktuelle Plugin-Version wird geladen …',
+    loadErrorTitle: 'Die aktuelle Plugin-Datei konnte nicht geladen werden.',
+    loadErrorText: 'Bitte versuche es später erneut. Ohne gültigen Veröffentlichungsindex bieten wir aus Sicherheitsgründen weder eine ältere Datei noch einen anderen Installationsweg an.',
     retry: 'Erneut versuchen',
-    emptyTitle: 'Derzeit steht keine geprüfte Plugin-Datei als Fallback bereit.',
-    emptyText: 'Die Marketplace-Installation ist davon nicht betroffen.',
+    emptyTitle: 'Derzeit steht keine aktuelle 1.1-Plugin-Datei bereit.',
+    emptyText: 'Eine ältere Claude-Variante wird nicht als Ersatz angeboten.',
     guideTitle: 'Über den SkillPilot Marketplace installieren',
     guideIntro: 'Lass deinen ursprünglichen SkillPilot-Tab geöffnet und führe diese fünf Schritte in Claude Web durch.',
     stepOpenTitle: 'Plugin-Liste öffnen',
@@ -79,15 +80,15 @@ const copy = {
     returnToSkillPilot: 'Zurück zu SkillPilot',
     updateTitle: 'Updates über den Marketplace',
     updateBody: 'Öffne in Claude den „SkillPilot Marketplace“ und wähle „Aktualisieren“. Starte danach über SkillPilot eine neue Claude-Session. Ein erneuter Datei-Upload ist nicht erforderlich.',
-    fallbackTitle: 'Direkt-Upload nur als Fallback',
-    fallbackIntro: 'Nutze diesen Weg nur, wenn „Aus einem Repository hinzufügen“ in deinem Claude-Konto nicht verfügbar ist oder die Marketplace-Installation scheitert.',
-    fallbackActions: [
-      'Entferne vor dem Datei-Upload eine bereits vorhandene SkillPilot-Coach-Installation.',
-      'Lade die aktuelle geprüfte .plugin-Datei herunter und installiere sie in Claude über „Hinzufügen“.',
+    directInstallTitle: 'Aktuelle Plugin-Datei installieren',
+    directInstallIntro: 'Installiere ausschließlich die hier ausgewiesene aktuelle Version. Sie ersetzt jede ältere SkillPilot-Coach-Installation.',
+    directInstallActions: [
+      'Entferne vor dem Datei-Upload nur eine bereits vorhandene SkillPilot-Coach-Installation. Andere Plugins und Konnektoren bleiben unverändert.',
+      'Lade die lokal struktur- und hashgeprüfte 1.1-.plugin-Datei herunter und wähle in Claude Web unter „Hinzufügen“ den Upload einer Plugin-Datei.',
       'Aktiviere das Plugin und verbinde bei Bedarf den enthaltenen SkillPilot-Konnektor.',
     ],
-    fallbackCheck: 'Installiere Marketplace- und Datei-Version nicht gleichzeitig. Updates über den Fallback erfolgen manuell durch erneuten Download und Upload.',
-    technicalDetails: 'Version und Integritätsdaten des Fallbacks',
+    directInstallCheck: 'Füge keinen zweiten manuellen SkillPilot-Konnektor hinzu und trage keine MCP-URL ein. Updates erfolgen bis zur nachweislichen Marketplace-Aktualisierung auf 1.1 durch erneuten Download und Upload.',
+    technicalDetails: 'Version und Integritätsdaten',
     status: 'Status',
     betaStatus: 'Beta',
     version: 'Version',
@@ -95,22 +96,23 @@ const copy = {
     fileSize: 'Dateigröße',
     checksum: 'SHA-256',
     download: 'Plugin-Datei herunterladen',
-    requirementsTitle: 'Voraussetzungen und getesteter Weg',
+    requirementsTitle: 'Voraussetzungen und Teststatus',
     supportedPlan: 'Unterstützter Beta-Tarif',
     installationSurface: 'Installation',
     age: (minimumAge: number) => `Nur für Personen ab ${minimumAge} Jahren.`,
-    plan: 'Claude Pro ist der von SkillPilot unterstützte und getestete Beta-Pfad.',
-    planDetail: 'Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. SkillPilot hat diesen Beta-Weg bisher nur mit Claude Pro getestet und unterstützt ihn dafür.',
-    install: 'Claude Web: SkillPilot Marketplace aus dem öffentlichen GitHub-Repository hinzufügen → „SkillPilot Coach v1“ installieren → enthaltenen SkillPilot-Konnektor prüfen.',
+    plan: 'Claude Pro ist der für den 1.1-Betatest vorgesehene und technisch unterstützte Pfad.',
+    planDetail: 'Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. Die kandidatengenaue Abnahme von SkillPilot 1.1 mit Claude Pro steht noch aus.',
+    install: 'Claude Web: aktuelle .plugin-Datei herunterladen → nur eine ältere SkillPilot-Coach-Installation entfernen → Datei hochladen → enthaltenen SkillPilot-Konnektor prüfen.',
     connectAndStart: 'Erst wenn „SkillPilot Coach v1“ installiert und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.',
-    android: 'Die anschließende Nutzung in Claude für Android wurde mit demselben Claude-Konto getestet. Interaktive UI-Komponenten können dabei je nach Client oder Turn fehlen; Aufgaben bleiben über Text oder Sprache vollständig lösbar.',
-    voiceTested: 'Der Voice Mode wurde von SkillPilot im Beta-Test erprobt. Interaktive UI-Komponenten werden darin nicht durchgängig garantiert. Das ist keine Funktionsgarantie von Anthropic.',
-    voiceUntested: 'Der Voice Mode gehört nicht zum getesteten Umfang dieser Version.',
-    independentTitle: 'Unabhängiger Beta-Test',
+    android: 'Claude für Android ist als anschließender Nutzungspfad mit demselben Claude-Konto vorgesehen. Die kandidatengenaue Abnahme von Version 1.1 auf Android steht noch aus.',
+    voiceTested: 'Der Voice Mode ist für Version 1.1 kandidatengenau bestätigt. Interaktive UI-Komponenten werden darin nicht durchgängig garantiert. Das ist keine Funktionsgarantie von Anthropic.',
+    voiceUntested: 'Die kandidatengenaue Abnahme des Voice Mode für Version 1.1 steht noch aus.',
+    independentTitle: 'Unabhängiger Beta-Kandidat',
     independentText: 'Dieses Plugin wird von SkillPilot bereitgestellt. Es ist nicht offiziell von Anthropic verifiziert, gesponsert oder garantiert.',
-    testedSurfaces: 'Getestete Oberflächen',
+    testedSurfaces: 'Kandidatengenau bestätigte Oberflächen',
+    noTestedSurfaces: 'Für Version 1.1 noch ausstehend.',
     links: 'Dokumentation und Kontakt',
-    source: 'Marketplace-Repository',
+    source: 'Quellcode',
     privacy: 'Datenschutz',
     terms: 'Nutzungsbedingungen',
     support: 'Support',
@@ -122,16 +124,16 @@ const copy = {
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: 'Guided marketplace setup for the SkillPilot Claude Coach with Claude Pro.',
+    subtitle: 'Guided setup for the current SkillPilot Claude 1.1 beta with Claude Pro.',
     cardTitle: 'SkillPilot Coach v1',
-    betaNotice: 'Marketplace beta',
-    betaDescription: 'The SkillPilot Marketplace is the recommended installation and update route in the SkillPilot beta. It is independently provided by SkillPilot and is not curated or verified by Anthropic.',
-    loading: 'Loading the current fallback version …',
-    loadErrorTitle: 'The direct-upload fallback could not be loaded.',
-    loadErrorText: 'The marketplace guide remains available. Please try the fallback again later; for security reasons, no file download is offered without a valid publication index.',
+    betaNotice: 'Claude beta 1.1',
+    betaDescription: 'The plan-first version 1.1 fully replaces the previous Claude variant. Until the personal marketplace is demonstrably updated to 1.1 as well, setup uses the locally structure- and hash-verified 1.1 plugin file. Exact-candidate acceptance in Claude is still pending.',
+    loading: 'Loading the current plugin version …',
+    loadErrorTitle: 'The current plugin file could not be loaded.',
+    loadErrorText: 'Please try again later. Without a valid publication index, no older file or alternative installation route is offered for security reasons.',
     retry: 'Try again',
-    emptyTitle: 'There is currently no verified plugin file available as a fallback.',
-    emptyText: 'Marketplace installation is not affected.',
+    emptyTitle: 'There is currently no current 1.1 plugin file available.',
+    emptyText: 'An older Claude variant is not offered as a substitute.',
     guideTitle: 'Install from the SkillPilot Marketplace',
     guideIntro: 'Keep your original SkillPilot tab open and complete these five steps in Claude Web.',
     stepOpenTitle: 'Open the plugin list',
@@ -170,15 +172,15 @@ const copy = {
     returnToSkillPilot: 'Return to SkillPilot',
     updateTitle: 'Updates through the marketplace',
     updateBody: 'Open the SkillPilot Marketplace in Claude and select Update. Then start a new Claude session through SkillPilot. No new file upload is required.',
-    fallbackTitle: 'Direct upload only as a fallback',
-    fallbackIntro: 'Use this route only if Add from a repository is unavailable for your Claude account or marketplace installation fails.',
-    fallbackActions: [
-      'Before uploading the file, remove any existing SkillPilot Coach installation.',
-      'Download the current verified .plugin file and install it in Claude through Add.',
+    directInstallTitle: 'Install the current plugin file',
+    directInstallIntro: 'Install only the current version shown here. It replaces every older SkillPilot Coach installation.',
+    directInstallActions: [
+      'Before uploading the file, remove only an existing SkillPilot Coach installation. Leave other plugins and connectors unchanged.',
+      'Download the locally structure- and hash-verified 1.1 .plugin file and, in Claude Web, choose the plugin-file upload under Add.',
       'Enable the plugin and connect the bundled SkillPilot connector if necessary.',
     ],
-    fallbackCheck: 'Do not install the marketplace and file-uploaded versions at the same time. Fallback updates require downloading and uploading the new file manually.',
-    technicalDetails: 'Fallback version and integrity details',
+    directInstallCheck: 'Do not add a second manual SkillPilot connector or enter an MCP URL. Until the marketplace is demonstrably updated to 1.1, updates require downloading and uploading the current file again.',
+    technicalDetails: 'Version and integrity details',
     status: 'Status',
     betaStatus: 'Beta',
     version: 'Version',
@@ -186,22 +188,23 @@ const copy = {
     fileSize: 'File size',
     checksum: 'SHA-256',
     download: 'Download plugin file',
-    requirementsTitle: 'Requirements and tested route',
+    requirementsTitle: 'Requirements and test status',
     supportedPlan: 'Supported beta plan',
     installationSurface: 'Installation',
     age: (minimumAge: number) => `Only for people aged ${minimumAge} or older.`,
-    plan: 'Claude Pro is the beta route supported and tested by SkillPilot.',
-    planDetail: 'Anthropic also offers plugins on other paid plans. SkillPilot has so far tested and supports this beta route only with Claude Pro.',
-    install: 'Claude Web: add the SkillPilot Marketplace from its public GitHub repository → install SkillPilot Coach v1 → check the bundled SkillPilot connector.',
+    plan: 'Claude Pro is the intended and technically supported route for the 1.1 beta test.',
+    planDetail: 'Anthropic also offers plugins on other paid plans. Exact-candidate acceptance of SkillPilot 1.1 with Claude Pro is still pending.',
+    install: 'Claude Web: download the current .plugin file → remove only an older SkillPilot Coach installation → upload the file → check the bundled SkillPilot connector.',
     connectAndStart: 'Setup is complete only after “SkillPilot Coach v1” is installed and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.',
-    android: 'Subsequent use in Claude for Android was tested with the same Claude account. Interactive UI components may be absent depending on the client or turn; tasks remain fully solvable through text or speech.',
-    voiceTested: 'Voice mode was exercised in SkillPilot beta testing. Interactive UI components are not guaranteed consistently there. This is not a functionality guarantee from Anthropic.',
-    voiceUntested: 'Voice mode is outside the tested scope of this version.',
-    independentTitle: 'Independent beta test',
+    android: 'Claude for Android is the intended subsequent-use route with the same Claude account. Exact-candidate acceptance of version 1.1 on Android is still pending.',
+    voiceTested: 'Voice mode is confirmed for the exact 1.1 candidate. Interactive UI components are not guaranteed consistently there. This is not a functionality guarantee from Anthropic.',
+    voiceUntested: 'Exact-candidate acceptance of voice mode for version 1.1 is still pending.',
+    independentTitle: 'Independent beta candidate',
     independentText: 'This plugin is provided by SkillPilot. It is not officially verified, sponsored, or guaranteed by Anthropic.',
-    testedSurfaces: 'Tested surfaces',
+    testedSurfaces: 'Exact-candidate confirmed surfaces',
+    noTestedSurfaces: 'Still pending for version 1.1.',
     links: 'Documentation and contact',
-    source: 'Marketplace repository',
+    source: 'Source code',
     privacy: 'Privacy',
     terms: 'Terms of use',
     support: 'Support',
@@ -302,7 +305,11 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
       label: text.officialGuide,
       href: 'https://support.claude.com/en/articles/13837440-use-plugins-in-claude',
     },
-    { label: text.source, href: CLAUDE_MARKETPLACE_REPOSITORY_URL },
+    {
+      label: text.source,
+      href: plugin?.sourceUrl
+        ?? 'https://github.com/enpasos/skillpilot/tree/main/ai/claude/plugin/skillpilot-coach-v1',
+    },
     { label: text.privacy, href: plugin?.privacyUrl ?? CLAUDE_CONNECTOR_PRIVACY_URL },
     { label: text.terms, href: plugin?.termsUrl ?? 'https://skillpilot.com/legal' },
     { label: text.support, href: supportHref },
@@ -337,11 +344,13 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
       </div>
 
       <div className="space-y-8 p-6 sm:p-8">
-        <section
-          data-testid="claude-plugin-install-guide"
-          aria-labelledby={`${cardId}-install-guide`}
-          className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6"
-        >
+        {CLAUDE_MARKETPLACE_INSTALLATION_ENABLED && (
+          <>
+            <section
+              data-testid="claude-plugin-install-guide"
+              aria-labelledby={`${cardId}-install-guide`}
+              className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6"
+            >
           <h3 id={`${cardId}-install-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">
             {text.guideTitle}
           </h3>
@@ -460,21 +469,27 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
               </Link>
             </li>
           </ol>
-        </section>
+            </section>
 
-        <aside className="flex gap-3 rounded-2xl border border-emerald-300 bg-emerald-50 p-5 dark:border-emerald-800 dark:bg-emerald-950/30">
-          <RefreshCw className="mt-0.5 shrink-0 text-emerald-700 dark:text-emerald-300" size={22} aria-hidden="true" />
-          <div>
-            <h3 className="font-semibold text-emerald-950 dark:text-emerald-100">{text.updateTitle}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-emerald-950 dark:text-emerald-100">{text.updateBody}</p>
-          </div>
-        </aside>
+            <aside className="flex gap-3 rounded-2xl border border-emerald-300 bg-emerald-50 p-5 dark:border-emerald-800 dark:bg-emerald-950/30">
+              <RefreshCw className="mt-0.5 shrink-0 text-emerald-700 dark:text-emerald-300" size={22} aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold text-emerald-950 dark:text-emerald-100">{text.updateTitle}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-emerald-950 dark:text-emerald-100">{text.updateBody}</p>
+              </div>
+            </aside>
+          </>
+        )}
 
-        <details data-testid="claude-plugin-direct-upload-fallback" className="rounded-2xl border border-border-color bg-slate-50 p-4 dark:bg-slate-950/35">
-          <summary className="cursor-pointer font-semibold text-slate-900 dark:text-white">
-            {text.fallbackTitle}
-          </summary>
-          <p className="mt-3 text-sm leading-relaxed text-text-secondary">{text.fallbackIntro}</p>
+        <section
+          data-testid="claude-plugin-direct-upload-guide"
+          aria-labelledby={`${cardId}-direct-upload-guide`}
+          className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6"
+        >
+          <h3 id={`${cardId}-direct-upload-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">
+            {text.directInstallTitle}
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-text-secondary">{text.directInstallIntro}</p>
 
           {!publication && !loadError && (
             <div className="mt-4 flex items-center gap-3 rounded-xl border border-border-color bg-white/70 p-4 text-sm text-text-secondary dark:bg-slate-900/50" role="status">
@@ -507,9 +522,9 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
 
           {plugin && publication && (
             <div className="mt-4 space-y-4">
-              <InstructionActions actions={text.fallbackActions} testId="claude-plugin-direct-upload-navigation" />
+              <InstructionActions actions={text.directInstallActions} testId="claude-plugin-direct-upload-navigation" />
               <p className="rounded-xl bg-amber-50 px-3 py-2 text-sm font-medium leading-relaxed text-amber-950 dark:bg-amber-950/50 dark:text-amber-100">
-                {text.fallbackCheck}
+                {text.directInstallCheck}
               </p>
               <a
                 href={plugin.downloadUrl}
@@ -546,7 +561,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
               </div>
             </div>
           )}
-        </details>
+        </section>
 
         <section aria-labelledby={`${cardId}-requirements`}>
             <h3 id={`${cardId}-requirements`} className="text-xl font-semibold text-slate-900 dark:text-white">
@@ -589,7 +604,9 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
                 <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.android}</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.testedSurfaces}</p>
                 <p className="mt-1 text-sm text-text-secondary">
-                  {requirements.testedSurfaces.map((surface) => formatSurface(surface, language)).join(' · ')}
+                  {requirements.testedSurfaces.length > 0
+                    ? requirements.testedSurfaces.map((surface) => formatSurface(surface, language)).join(' · ')
+                    : text.noTestedSurfaces}
                 </p>
               </div>
             </li>

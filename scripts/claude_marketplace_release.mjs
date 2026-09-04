@@ -881,7 +881,7 @@ function validateMarketplaceTemplates(paths, lane) {
     "Connect the SkillPilot connector included in the plugin",
     "Do not add a second custom connector or enter an MCP URL manually",
     "return to <https://skillpilot.com/> and start each new learning session",
-    "does not broaden SkillPilot's tested product scope",
+    "current candidate boundaries and pending exact-client acceptance",
   ]) {
     assertIncludes(
       normalizedReadme,

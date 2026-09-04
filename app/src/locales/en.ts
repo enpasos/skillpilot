@@ -98,7 +98,7 @@ export const en = {
             openAiMcpDisconnectFailed: "The ChatGPT connection could not be disconnected. Please try again.",
             claudeBetaTitle: "Claude learning coach",
             claudeBetaBadge: "v1",
-            claudeBetaHint: "The beta route requires Claude Pro. Set up the plugin once in Claude Web; afterwards, you can also learn on Android with the same Claude account.",
+            claudeBetaHint: "The 1.1 beta candidate is intended for Claude Pro. Set up the plugin once in Claude Web. Exact acceptance in Web, Android, and voice mode is still pending.",
             claudeAdultsOnly: "According to the provider, Claude.ai is only available to users aged 18 or older.",
             claudeSetupTitle: "Follow these steps",
             claudeSetupStepOne: "Open the installation page, download the current plugin file, and upload it in Claude Web under Customize → Plugins.",
@@ -155,7 +155,7 @@ export const en = {
             }
         },
         banner: {
-            text: "**SkillPilot is free.** Currently, only the Claude beta is available. A paid Claude plan is required; Claude Pro is the plan currently supported and tested. ChatGPT access is awaiting approval and cannot currently be used.",
+            text: "**SkillPilot is free.** Currently, only the Claude 1.1 beta candidate is offered. A paid Claude plan is required; SkillPilot currently supports Claude Pro. Exact 1.1 client acceptance in Claude Web, Android, and voice mode is still pending. ChatGPT access is awaiting approval and cannot currently be used.",
             linkLabel: "Compare access options"
         },
         links: {

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "pluginIdentity": "skillpilot-coach-v1",
+  "candidateVersion": "1.1.0",
+  "status": "LOCAL_CANDIDATE_ONLY",
+  "baseContract": {
+    "version": "1.0.0",
+    "tree": "ai/openai plugin/skillpilot-coach-v1",
+    "treeDigestAlgorithm": "review-freeze-sha256-v1:path-nul-bytes-nul-content-sha256-lf",
+    "treeSha256": "32582795363ff26cde71c5255dd78461f35d40bd7f2993c86751ba1032b159cb",
+    "files": [
+      {
+        "path": ".app.json",
+        "bytes": 128,
+        "sha256": "6a5ccebca9932df7ce8e8069fd11445fefac21ae2441d0af2f4baf61f20a8952"
+      },
+      {
+        "path": ".codex-plugin/plugin.json",
+        "bytes": 1818,
+        "sha256": "2692b38d601d3297c31a81a503d3e6f754f27d21fa1bd61e7f9d28dc3d594300"
+      },
+      {
+        "path": ".mcp.json",
+        "bytes": 138,
+        "sha256": "951550967891b1091b27f175fa9c83c5b3f47eb45cffd4b5654423039a06829c"
+      },
+      {
+        "path": "assets/favicon-96x96.png",
+        "bytes": 2858,
+        "sha256": "4fcfde09b5cec8834d807b050d96c388e70c47c876e92c7f017a3be2bfe49d4d"
+      },
+      {
+        "path": "assets/web-app-manifest-512x512.png",
+        "bytes": 14619,
+        "sha256": "abacb5b257a9d2ac1d277d87af0a6dd10d30ca64ecadab960a76a99e04c5affa"
+      },
+      {
+        "path": "release/lifecycle.json",
+        "bytes": 404,
+        "sha256": "5ee277c0171c8ba832190fa4fb04a34c3dfd60adf19f1c2865ce3ad17b47f110"
+      },
+      {
+        "path": "release/line.json",
+        "bytes": 3154,
+        "sha256": "8c6dd665d17bdc7dab51f01c71c0c069ac5dd6299a1ddc5f56da021a21bc283e"
+      },
+      {
+        "path": "release-notes/1.0.0.md",
+        "bytes": 5938,
+        "sha256": "cac7947b08de5badc4ea84886eb5e63fe57a92a334f49c520e91473825bd9253"
+      },
+      {
+        "path": "skills/skillpilot-coach-v1/agents/openai.yaml",
+        "bytes": 645,
+        "sha256": "b1e91a9392df579c75a5f55b9bf56e992102489a8d88f16267d1c7c37628d196"
+      },
+      {
+        "path": "skills/skillpilot-coach-v1/references/coaching-policy.md",
+        "bytes": 20382,
+        "sha256": "5d945f12f10f0c4e3637fed4860240e6f9c266761c8683a64c1813be3f58c213"
+      },
+      {
+        "path": "skills/skillpilot-coach-v1/SKILL.md",
+        "bytes": 9626,
+        "sha256": "8da4327a7fc45d4266bff6e44fe65e3ee2343a9a168890fc0e3855016b13a441"
+      }
+    ],
+    "mcpContractSha256": "d2f08a66efa3488e5f87758de41688a18ce47ba2951bb2d3147e522d1fd30b38"
+  },
+  "featureGate": {
+    "property": "skillpilot.openai.coach.v1.daily-plan-tools-enabled",
+    "defaultEnabled": false
+  },
+  "candidateArtifacts": {
+    "skill": {
+      "path": "SKILL.md",
+      "bytes": 2789,
+      "sha256": "f5cbe1ab953a29a58f6eede54432f2643dada6eb9ec1591294403850fbb65849"
+    },
+    "releaseNotes": "release-notes.md"
+  },
+  "toolSurface": {
+    "disabledToolCount": 12,
+    "enabledToolCount": 14,
+    "addedTools": [
+      "get_skillpilot_daily_plan",
+      "resume_skillpilot_learning_plan"
+    ]
+  },
+  "runtimeProof": {
+    "gradleProject": "backend",
+    "testClass": "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest"
+  },
+  "activation": {
+    "productionEnabled": false,
+    "prepareAllowed": false,
+    "publishAllowed": false,
+    "portalMutationAllowed": false,
+    "reviewFreezeLifted": false
+  }
+}

@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
+import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
@@ -43,6 +44,9 @@ class ClaudeV1McpContractTest {
     @Autowired
     private ClaudeV1CoachContextProjector contextProjector;
 
+    @Autowired
+    private ClaudeV1Properties properties;
+
     private McpSchema.Tool tool(String name) {
         return contractAdapter.toolSpecifications().stream()
                 .map(McpStatelessServerFeatures.SyncToolSpecification::tool)
@@ -64,9 +68,9 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
-    void publishesExactlyTheTwelveApprovedTools() {
+    void publishesExactlyTheFourteenApprovedTools() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contractAdapter.toolSpecifications();
-        assertEquals(12, tools.size());
+        assertEquals(14, tools.size());
 
         Set<String> published = tools.stream()
                 .map(specification -> specification.tool().name())
@@ -79,6 +83,13 @@ class ClaudeV1McpContractTest {
         assertTrue(published.contains(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION));
         assertTrue(published.contains(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE));
         assertTrue(published.contains(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD));
+        assertTrue(published.contains(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN));
+        assertTrue(published.contains(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT));
+    }
+
+    @Test
+    void publishesTheAdditiveClaudeBackendAsVersionOneOneZero() {
+        assertEquals("1.1.0", properties.getServerVersion());
     }
 
     @Test
@@ -154,7 +165,7 @@ class ClaudeV1McpContractTest {
 
     @Test
     void everyToolRequiresLearningSessionIdIncludingAppOnlyMemoryReview() {
-        assertEquals(12, ClaudeV1Contract.ALL_TOOL_NAMES.size());
+        assertEquals(14, ClaudeV1Contract.ALL_TOOL_NAMES.size());
         assertTrue(ClaudeV1Contract.ALL_TOOL_NAMES.contains(
                 ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD));
         for (String toolName : ClaudeV1Contract.ALL_TOOL_NAMES) {
@@ -310,6 +321,55 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
+    void planResumeTakesNoPlanSubjectDateOrGoalFromTheModel() {
+        @SuppressWarnings("unchecked")
+        Map<String, Object> properties = (Map<String, Object>) schemaOf(
+                ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN).get("properties");
+
+        assertEquals(
+                Set.of(
+                        "expectedStateVersion",
+                        "clientRequestId",
+                        "language",
+                        "learningSessionId"),
+                properties.keySet());
+        assertEquals(
+                Set.of("expectedStateVersion", "clientRequestId", "learningSessionId"),
+                Set.copyOf(requiredOf(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN)));
+        assertFalse(properties.containsKey("planId"));
+        assertFalse(properties.containsKey("landscapeId"));
+        assertFalse(properties.containsKey("subject"));
+        assertFalse(properties.containsKey("asOf"));
+        assertFalse(properties.containsKey("goalId"));
+    }
+
+    @Test
+    void planSubjectSwitchTakesOnlyAFreshLocalizedNameAndNoInternalIdentifier() {
+        @SuppressWarnings("unchecked")
+        Map<String, Object> properties = (Map<String, Object>) schemaOf(
+                ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT).get("properties");
+
+        assertEquals(
+                Set.of(
+                        "subject",
+                        "expectedStateVersion",
+                        "clientRequestId",
+                        "language",
+                        "learningSessionId"),
+                properties.keySet());
+        assertEquals(
+                Set.of("subject", "expectedStateVersion", "clientRequestId", "learningSessionId"),
+                Set.copyOf(requiredOf(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT)));
+        assertFalse(properties.containsKey("planId"));
+        assertFalse(properties.containsKey("landscapeId"));
+        assertFalse(properties.containsKey("focusGoalId"));
+        assertFalse(properties.containsKey("goalId"));
+        assertFalse(properties.containsKey("asOf"));
+        assertTrue(properties.get("subject").toString().contains(
+                "newest learningPlanToday.subjects"));
+    }
+
+    @Test
     void masteryIsCanonicalCompletionRatherThanAModelSelectedNumber() {
         @SuppressWarnings("unchecked")
         Map<String, Object> properties =
@@ -419,6 +479,21 @@ class ClaudeV1McpContractTest {
         assertTrue(normalizedInstructions.contains(
                 "Do not invent or imply an anchor-memory feature or persistence operation"));
         assertTrue(instructions.contains("follow the returned next continuation immediately"));
+        assertTrue(normalizedInstructions.contains(
+                "treat learningPlanToday as the complete authoritative daily workload across all current subject plans"));
+        assertTrue(normalizedInstructions.contains(
+                "immediately call resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID"));
+        assertTrue(normalizedInstructions.contains(
+                "Do not ask for confirmation and do not select a plan, subject, date or goal yourself"));
+        assertTrue(normalizedInstructions.contains(
+                "Never call the resume tool while an activeGoal is present"));
+        assertTrue(normalizedInstructions.contains(
+                "copy that entry's localized subject value exactly and call "
+                        + "switch_skillpilot_learning_plan_subject"));
+        assertTrue(normalizedInstructions.contains(
+                "This explicit switch may park an unfinished active goal without marking it complete"));
+        assertTrue(normalizedInstructions.contains(
+                "Do not ask for a plan, landscape, focus or goal identifier"));
         assertTrue(instructions.contains("Normal flashcard practice is separate from Verified Recall"));
         assertTrue(instructions.contains("Ordinary coach dialogue must never"));
         assertTrue(normalizedInstructions.contains("render_skillpilot_goal_visualization exactly once"));

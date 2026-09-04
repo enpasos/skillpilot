@@ -5,6 +5,7 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
@@ -110,8 +111,14 @@ public class ClaudeV1CoachContextProjector {
             UnifiedLearnerStateResponse projectedState,
             boolean suppressCompetingFrontier) {
         Map<String, Object> context = new LinkedHashMap<>();
+        FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
+        context.put(
+                "learningPlanToday",
+                projectLearningPlanToday(
+                        coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language),
+                        activeGoal != null));
         context.put("curriculum", projectCurriculum(projectedState.curriculum()));
         List<Map<String, Object>> learningContext = projectLearningContext(
                 coachToolFacade.getPersonalizationPlan(skillpilotId), language);
@@ -130,7 +137,6 @@ public class ClaudeV1CoachContextProjector {
             context.put("stateMachine", stateMachineContext);
         }
 
-        FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("activeGoal", formatGoal(activeGoal));
 
         if (coachToolFacade.showGoalVisualizationsInChat(skillpilotId)) {
@@ -172,6 +178,127 @@ public class ClaudeV1CoachContextProjector {
         }
 
         return context;
+    }
+
+    /**
+     * Reduces the provider-neutral plan status to bounded learner-facing daily counts.
+     *
+     * <p>Opaque landscape and plan identifiers never cross the Claude boundary. If multiple
+     * current plans use the same localized subject label, their daily requirements are added.</p>
+     */
+    Map<String, Object> projectLearningPlanToday(
+            LearnerPlanTodayStatus status,
+            boolean hasActiveGoal) {
+        if (status == null) {
+            return Map.of(
+                    "followLearningPlans", false,
+                    "resumeAvailable", false,
+                    "subjects", List.of(),
+                    "totals", dailyCounts(0, 0, 0, 0),
+                    "unavailablePlanCount", 0);
+        }
+
+        Map<String, DailyCounts> bySubject = new java.util.TreeMap<>(
+                String.CASE_INSENSITIVE_ORDER.thenComparing(java.util.Comparator.naturalOrder()));
+        int unavailablePlanCount = Math.max(0, status.unavailablePlanCount());
+        List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
+                status.subjects() == null ? List.of() : status.subjects();
+        for (LearnerPlanTodayStatus.SubjectStatus subject : rawSubjects) {
+            String label = subject == null ? null : safeSubjectLabel(subject.subjectLabel());
+            if (label == null || !validDailyCounts(subject)) {
+                unavailablePlanCount++;
+                continue;
+            }
+            DailyCounts counts = new DailyCounts(
+                    subject.dueToday(),
+                    subject.completedToday(),
+                    subject.openToday(),
+                    subject.openOverdue());
+            bySubject.merge(label, counts, DailyCounts::add);
+        }
+
+        List<Map<String, Object>> subjects = new java.util.ArrayList<>();
+        DailyCounts totals = new DailyCounts(0, 0, 0, 0);
+        for (Map.Entry<String, DailyCounts> entry : bySubject.entrySet()) {
+            DailyCounts counts = entry.getValue();
+            Map<String, Object> subject = new LinkedHashMap<>();
+            subject.put("subject", entry.getKey());
+            subject.putAll(dailyCounts(
+                    counts.dueToday(),
+                    counts.completedToday(),
+                    counts.openToday(),
+                    counts.openOverdue()));
+            subjects.add(Map.copyOf(subject));
+            totals = totals.add(counts);
+        }
+
+        Map<String, Object> projected = new LinkedHashMap<>();
+        if (status.asOf() != null) {
+            projected.put("asOf", status.asOf().toString());
+        }
+        projected.put("followLearningPlans", status.followLearningPlans());
+        projected.put("subjects", List.copyOf(subjects));
+        projected.put("totals", dailyCounts(
+                totals.dueToday(),
+                totals.completedToday(),
+                totals.openToday(),
+                totals.openOverdue()));
+        projected.put(
+                "resumeAvailable",
+                status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
+        projected.put("unavailablePlanCount", unavailablePlanCount);
+        return Map.copyOf(projected);
+    }
+
+    private boolean validDailyCounts(LearnerPlanTodayStatus.SubjectStatus subject) {
+        return subject != null
+                && subject.dueToday() >= 0
+                && subject.completedToday() >= 0
+                && subject.openToday() >= 0
+                && subject.openOverdue() >= 0
+                && (long) subject.completedToday() + subject.openToday() == subject.dueToday();
+    }
+
+    private Map<String, Object> dailyCounts(
+            int dueToday,
+            int completedToday,
+            int openToday,
+            int openOverdue) {
+        Map<String, Object> counts = new LinkedHashMap<>();
+        counts.put("dueToday", dueToday);
+        counts.put("completedToday", completedToday);
+        counts.put("openToday", openToday);
+        counts.put("openOverdue", openOverdue);
+        return Map.copyOf(counts);
+    }
+
+    private String safeSubjectLabel(String rawLabel) {
+        if (rawLabel == null) {
+            return null;
+        }
+        String label = rawLabel
+                .replaceAll("[\\p{Cc}\\p{Cf}]+", " ")
+                .replaceAll("\\s+", " ")
+                .trim();
+        if (label.isEmpty()) {
+            return null;
+        }
+        return bounded(label, 120);
+    }
+
+    private record DailyCounts(
+            int dueToday,
+            int completedToday,
+            int openToday,
+            int openOverdue) {
+
+        DailyCounts add(DailyCounts other) {
+            return new DailyCounts(
+                    Math.addExact(dueToday, other.dueToday),
+                    Math.addExact(completedToday, other.completedToday),
+                    Math.addExact(openToday, other.openToday),
+                    Math.addExact(openOverdue, other.openOverdue));
+        }
     }
 
     /**

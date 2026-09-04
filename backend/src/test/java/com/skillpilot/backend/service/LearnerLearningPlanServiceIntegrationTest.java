@@ -15,10 +15,13 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
+import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import java.time.Clock;
@@ -63,6 +66,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     private LearnerService learnerService;
 
     private final ApplicationEventPublisher eventPublisher = mock(ApplicationEventPublisher.class);
+    private final LandscapeService landscapeService = mock(LandscapeService.class);
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -82,6 +86,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                 learnerService,
                 objectMapper,
                 eventPublisher,
+                landscapeService,
                 Clock.fixed(TODAY.atStartOfDay(zone).toInstant(), zone));
         when(learnerService.getLearner(LEARNER_ID)).thenReturn(learner);
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of());
@@ -100,6 +105,10 @@ class LearnerLearningPlanServiceIntegrationTest {
                         learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID)));
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
+        when(landscapeService.getById(LANDSCAPE_ID))
+                .thenReturn(landscape(LANDSCAPE_ID, "Mathematik"));
+        when(landscapeService.getById(PHYSICS_LANDSCAPE_ID))
+                .thenReturn(landscape(PHYSICS_LANDSCAPE_ID, "Physik"));
     }
 
     @Test
@@ -200,7 +209,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getUncompactedRichFrontierForFocus(
                         LEARNER_ID,
                         List.of("block-focus")))
-                .thenReturn(List.of(frontier("atom-a")));
+                .thenReturn(List.of(frontier("atom-c")));
 
         LearnerLearningPlanApi.PlanDetail created = service.upsert(
                 LEARNER_ID,
@@ -227,7 +236,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(created.metrics().dueThroughToday()).isEqualTo(1);
         assertThat(created.metrics().dueToday()).isEqualTo(1);
         assertThat(created.nextEligibleGoal()).isEqualTo(
-                new LearnerLearningPlanApi.NextEligibleGoal("atom-a"));
+                new LearnerLearningPlanApi.NextEligibleGoal("atom-c"));
     }
 
     @Test
@@ -850,6 +859,176 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(learner.getActiveGoalId()).isEqualTo("other-active");
     }
 
+    @Test
+    void todayStatusAddsValidSubjectPlansAndLocalizesTheirLabels() {
+        learner.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(
+                        List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        List.of("atom-a", "atom-b", "atom-c", "atom-d")));
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of(
+                "atom-a", 1.0,
+                "atom-d", 1.0));
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                LEARNER_ID,
+                List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-d")));
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                LEARNER_ID,
+                List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-q")));
+
+        service.upsert(
+                LEARNER_ID,
+                LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Math plan",
+                        List.of(learning(
+                                "math-block",
+                                "2026-09-01",
+                                "2026-09-04",
+                                "atom-a",
+                                "atom-b",
+                                "atom-c",
+                                "atom-d"))),
+                TODAY);
+        service.upsert(
+                LEARNER_ID,
+                PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Physics plan",
+                        List.of(learningWithFocus(
+                                "physics-block",
+                                "physics-focus",
+                                "2026-09-03",
+                                "2026-09-04",
+                                "atom-p",
+                                "atom-q"))),
+                TODAY);
+        clearInvocations(eventPublisher);
+
+        LearnerPlanTodayStatus status = service.getTodayStatus(LEARNER_ID, "en-GB");
+
+        assertThat(status.asOf()).isEqualTo(TODAY);
+        assertThat(status.followLearningPlans()).isTrue();
+        assertThat(status.resumeAvailable()).isTrue();
+        assertThat(status.unavailablePlanCount()).isZero();
+        assertThat(status.subjects()).containsExactly(
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        LANDSCAPE_ID,
+                        "Mathematics",
+                        1,
+                        1,
+                        0,
+                        2),
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        PHYSICS_LANDSCAPE_ID,
+                        "Physics",
+                        1,
+                        0,
+                        1,
+                        1));
+        assertThat(status.totals()).isEqualTo(
+                new LearnerPlanTodayStatus.Totals(2, 1, 1, 3));
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void todayStatusExcludesStaleAndMalformedPlansFromSubjectsAndTotals() {
+        LearnerLearningPlanApi.PlanDetail math = service.upsert(
+                LEARNER_ID,
+                LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Math plan",
+                        List.of(learning(
+                                "math-block",
+                                "2026-09-01",
+                                "2026-09-04",
+                                "atom-a"))),
+                TODAY);
+        LearnerLearningPlanApi.PlanDetail physics = service.upsert(
+                LEARNER_ID,
+                PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Physics plan",
+                        List.of(learningWithFocus(
+                                "physics-block",
+                                "physics-focus",
+                                "2026-09-01",
+                                "2026-09-04",
+                                "atom-p"))),
+                TODAY);
+
+        var stale = planRepository.findById(math.planId()).orElseThrow();
+        stale.setScopeFingerprint("sha256:stale");
+        planRepository.saveAndFlush(stale);
+        var malformed = planRepository.findById(physics.planId()).orElseThrow();
+        malformed.setBlocksJson("{not-json");
+        planRepository.saveAndFlush(malformed);
+
+        LearnerPlanTodayStatus status = service.getTodayStatus(LEARNER_ID, "de-DE");
+
+        assertThat(status.subjects()).isEmpty();
+        assertThat(status.resumeAvailable()).isFalse();
+        assertThat(status.totals()).isEqualTo(
+                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0));
+        assertThat(status.unavailablePlanCount()).isEqualTo(2);
+    }
+
+    @Test
+    void todayStatusAlwaysUsesTheEuropeBerlinCalendarDate() {
+        LearnerLearningPlanService utcClockService = new LearnerLearningPlanService(
+                planRepository,
+                learnerService,
+                objectMapper,
+                eventPublisher,
+                landscapeService,
+                Clock.fixed(
+                        Instant.parse("2026-09-03T22:30:00Z"),
+                        ZoneId.of("UTC")));
+
+        LearnerPlanTodayStatus status = utcClockService.getTodayStatus(LEARNER_ID, "de-DE");
+
+        assertThat(status.asOf()).isEqualTo(TODAY);
+    }
+
+    @Test
+    void todayStatusDoesNotOfferResumeWhileTheSelectedPlanGoalIsStillInProgress() {
+        learner.setFollowLearningPlans(true);
+        learner.setActiveGoalId("atom-a");
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                LEARNER_ID,
+                List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+
+        service.upsert(
+                LEARNER_ID,
+                LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Math plan",
+                        List.of(learning(
+                                "math-block",
+                                "2026-09-04",
+                                "2026-09-04",
+                                "atom-a"))),
+                TODAY);
+
+        LearnerPlanTodayStatus status = service.getTodayStatus(LEARNER_ID, "de-DE");
+
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.subjectLabel()).isEqualTo("Mathematik");
+            assertThat(subject.openToday()).isEqualTo(1);
+        });
+        assertThat(status.resumeAvailable()).isFalse();
+    }
+
     private static LearnerPlanningScopeResponse scope(List<String> all, List<String> open) {
         return scopeFor(LANDSCAPE_ID, all, open);
     }
@@ -920,6 +1099,13 @@ class LearnerLearningPlanServiceIntegrationTest {
                 null,
                 null,
                 null);
+    }
+
+    private static SkillLandscape landscape(String landscapeId, String subject) {
+        SkillLandscape landscape = new SkillLandscape();
+        landscape.setLandscapeId(landscapeId);
+        landscape.setSubject(subject);
+        return landscape;
     }
 
     private static void assertStatus(Runnable operation, HttpStatus status) {

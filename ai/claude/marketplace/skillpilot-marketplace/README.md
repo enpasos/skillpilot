@@ -6,6 +6,11 @@ package, but distributes them through a repository that Claude can update.
 This personal marketplace is published independently by SkillPilot. It is not
 reviewed, endorsed, curated, or verified by Anthropic.
 
+Version 1.1.0 completely replaces earlier versions. Do not retain or reinstall
+1.0.4 as a fallback. The 1.1.0 Marketplace update and its exact-client
+acceptance must be verified before SkillPilot presents this repository as an
+available installation route.
+
 ## Install in Claude
 
 Plugins require a paid Claude plan, and SkillPilot's Claude integration is for
@@ -25,12 +30,17 @@ MCP URL manually.
 Then return to <https://skillpilot.com/> and start each new learning session
 there through the established SkillPilot handoff.
 
+In the resulting chat, SkillPilot first reports every valid subject plan and
+can resume the backend-selected goal automatically. An explicit request such as
+“switch to Physics” changes only the current learning subject; all valid plans
+continue to contribute to today's requirements.
+
 If an uploaded SkillPilot plugin is already installed, remove only that old
 SkillPilot plugin before installing this marketplace version. Do not remove
 unrelated plugins or separately installed connectors.
 
-The marketplace distribution does not broaden SkillPilot's tested product
-scope. The exact supported and tested surfaces are documented in the plugin's
+The marketplace distribution does not broaden SkillPilot's product scope.
+The current candidate boundaries and pending exact-client acceptance are documented in the plugin's
 [README](./plugins/skillpilot-coach-v1/README.md) and
 [setup guide](./plugins/skillpilot-coach-v1/SETUP.md).
 

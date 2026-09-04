@@ -50,7 +50,8 @@ Claude mit folgenden Eigenschaften:
   `CoachToolFacade` und `CoachStateProjection`;
 - gemeinsamer kanonischer Lernfortschritt für WebGUI, ChatGPT und Claude mit
   optimistischer Nebenläufigkeitskontrolle;
-- genau zwölf Werkzeuge für Lernbegleitung, Lernzielvisualisierung, normale
+- genau vierzehn Werkzeuge für Lernbegleitung, planmäßigen Fachwechsel,
+  Lernzielvisualisierung, normale
   Karteikartenübung, Level-3-Fokus, aktives Lernziel, Mastery, Verified Recall
   und Prüfungsmodus;
 - keine Änderung der Personal-Curriculum-Konfiguration auf Level 2;
@@ -62,7 +63,7 @@ Claude mit folgenden Eigenschaften:
 - in v1 keine Hooks oder Subagents und keine Behauptung von Desktop-Chat- oder
   Cowork-Plugin-Unterstützung; zusätzliche Oberflächen benötigen eigene
   Abnahme- und Versionsentscheidungen;
-- der im Plugin deklarierte Remote-Connector besitzt OAuth, MCP, alle zwölf
+- der im Plugin deklarierte Remote-Connector besitzt OAuth, MCP, alle vierzehn
   Tools und beide MCP Apps UI-Ressourcen; das Plugin dupliziert diese
   Implementierungen nicht;
 - Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung.
@@ -428,7 +429,7 @@ Resource gebunden.
    Base64url-Zeichen und HMAC-Integrität.
 4. `ClaudeV1LearningSessionService` setzt `SESSION_TTL` exakt auf 24 Stunden;
    Nutzung verschiebt das Ende nicht.
-5. Jede der zwölf Tool-Schemas verlangt `learningSessionId`; das gilt explizit
+5. Jede der vierzehn Tool-Schemas verlangt `learningSessionId`; das gilt explizit
    auch für `review_skillpilot_memory_practice_card`.
 6. Toolaufrufe prüfen Learner-Session und Connector-OAuth getrennt. OAuth und
    `offline_access` dürfen keine Lernsession auswählen, ausstellen, erneuern
@@ -449,7 +450,7 @@ Review-Guard, OAuth-Refresh bei abgelaufener Session, Log-Redaktion sowie
 strikte Web-Handoff-Allowlist mit exakt einem `q`-Parameter und ohne permanente
 ID, Zusatzparameter, Fragment, Zugangsdaten, Fremdhost oder Auto-Send.
 
-**Abnahme:** Eine bestehende Testperson startet über SkillPilot; alle zwölf
+**Abnahme:** Eine bestehende Testperson startet über SkillPilot; alle vierzehn
 Tools funktionieren nur mit der aktuellen Session; nach exakt 24 Stunden ist
 ein neuer Start nötig, während der Connector verbunden bleiben darf; Claude
 sieht nie die permanente ID.
@@ -501,14 +502,17 @@ Mutation; Beta- und OpenAI-Datensätze bleiben unangetastet.
 
 ### WP6 — MCP-Vertrag und providerisolierte MCP Apps
 
-**Zweck:** Die kleinste sichere Claude-v1-Werkzeugoberfläche mit Parität der
-zwölf Lernverantwortlichkeiten bereitstellen.
+**Zweck:** Die kleinste sichere Claude-v1-Werkzeugoberfläche mit den zwölf
+gemeinsamen Lernverantwortlichkeiten plus backend-autorisiertem automatischem
+Planfortsetzen und explizitem planmäßigem Fachwechsel bereitstellen.
 
 Vorgesehene Namen und Annotationen:
 
 | MCP-Tool | Klasse | Annotation | Fachliche Grenze |
 | --- | --- | --- | --- |
-| `get_skillpilot_coach_context` | read | `readOnlyHint: true` | projizierter aktueller Zustand, keine versteckte Mutation |
+| `get_skillpilot_coach_context` | read | `readOnlyHint: true` | projizierter aktueller Zustand plus fachbezogene Tageszahlen aller gültigen Pläne, ohne Plan-/Landscape-IDs und ohne versteckte Mutation |
+| `resume_skillpilot_learning_plan` | write | `destructiveHint: true` | nur ohne aktives Ziel und bei autoritativem `resumeAvailable`; Backend wählt das Ziel und liefert den vollständigen kanonischen Kontext |
+| `switch_skillpilot_learning_plan_subject` | write | `destructiveHint: true` | exakt ein lokalisierter `subject`-Wert aus dem aktuellen Tagesplankontext; Backend parkt ein unfertiges Ziel und wählt das fällige Ziel dieses Fachs, ohne Plan-/Landscape-/Focus-/Goal-ID vom Modell |
 | `render_skillpilot_goal_visualization` | read + App | `readOnlyHint: true` | freigegebenes Bild nur für das exakte aktive Ziel und den aktuellen Zustand |
 | `start_skillpilot_memory_practice` | read + App | `readOnlyHint: true` | private vollständige Fälligkeitsauswahl, keine Mastery-Mutation |
 | `review_skillpilot_memory_practice_card` | app-only write | `destructiveHint: false` | exakt angezeigte Karte; nur Wiederholungsplan, niemals Mastery |
@@ -539,21 +543,30 @@ die Server Instructions.
    bindet.
 5. `set_skillpilot_focus` akzeptiert ausschließlich eine aktuell durch die
    kanonische Fassade publizierte `selectionGoalIds`-Liste.
-6. `set_skillpilot_mastery` akzeptiert nur das aktive atomare Ziel und bildet
+6. `resume_skillpilot_learning_plan` akzeptiert nur die aktuelle
+   `expectedStateVersion` und eine frische `clientRequestId`, wenn kein aktives
+   Ziel läuft und der Kontext `resumeAvailable` meldet. Es aktiviert
+   ausschließlich das vom Backend bestimmte Ziel.
+7. `switch_skillpilot_learning_plan_subject` akzeptiert nur einen exakten
+   lokalisierten `subject`-Wert aus dem aktuellen `learningPlanToday`-Kontext,
+   die aktuelle `expectedStateVersion` und eine frische `clientRequestId`.
+   Plan-, Landscape-, Focus- und Goal-IDs sind keine Modellparameter; unbekannte,
+   mehrdeutige oder nicht wechselbare Fächer scheitern ohne Mutation.
+8. `set_skillpilot_mastery` akzeptiert nur das aktive atomare Ziel und bildet
    Orientation, normale Kompetenz, Memory und Exam getrennt ab.
-7. Toolantworten sind größenbegrenzt, zweisprachig projizierbar und enthalten
+9. Toolantworten sind größenbegrenzt, zweisprachig projizierbar und enthalten
    klare, maschinenlesbare Fehlercodes für Input, Auth, Conflict, Stale State
    und Capability-Mismatch.
-8. Keine Catch-all-API und kein freies URL-, Method- oder Query-Argument.
-9. Beide UI-Ressourcen sind content-addressed und nutzen den MCP-Apps-MIME-Typ.
+10. Keine Catch-all-API und kein freies URL-, Method- oder Query-Argument.
+11. Beide UI-Ressourcen sind content-addressed und nutzen den MCP-Apps-MIME-Typ.
    Vorderseite, Rückseite und Review-Capability einer Karte stehen nur in
    Component-Metadaten; der modell-sichtbare Receipt enthält nur begrenzten
    Status und Fortschritt.
-10. Das Review-Tool ist nur für die App sichtbar und bindet Verbindung, Ziel,
+12. Das Review-Tool ist nur für die App sichtbar und bindet Verbindung, Ziel,
     Karte, Ausgaberevision und Ablaufzeit kryptographisch. Es akzeptiert nur
     `not_known` oder `known` und eine frische `clientRequestId`.
 
-**Abnahme:** Toolkatalog enthält exakt zwölf freigegebene Werkzeuge, zwei
+**Abnahme:** Toolkatalog enthält exakt vierzehn freigegebene Werkzeuge, zwei
 Ressourcen, korrekte Schemas und Annotationen; alle gültigen Aufrufe liefern
 fachliche Antworten statt generischer 400/500-Fehler. Normale Kartenpraxis ist
 in Tests von Verified Recall und Mastery getrennt.
@@ -680,11 +693,11 @@ Veröffentlichung belegen.
 
 **Real-Client-Abnahme:**
 
-- alle zwölf Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
+- alle vierzehn Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
 - das öffentliche Plugin frisch in Claude Web Chat installieren und dort
   separat prüfen;
 - prüfen, dass der Coaching-Skill auf der Web-Oberfläche greift, während
-  OAuth, alle zwölf Tools und beide MCP Apps ausschließlich aus dem einmal
+  OAuth, alle vierzehn Tools und beide MCP Apps ausschließlich aus dem einmal
   verbundenen Remote-Connector stammen;
 - beide MCP Apps mit privaten Kartenmetadaten und app-only Review testen;
 - nachweisen, dass v1 keine Hooks oder Subagents enthält und weder Desktop Chat
@@ -842,13 +855,13 @@ wenn alle folgenden Punkte erfüllt sind:
 - Claude.ai besteht OAuth mit PKCE S256;
 - jede Lernsitzung startet über `https://skillpilot.com/` und
   erhält ausschließlich eine opake `spc_`-Kennung für exakt 24 Stunden;
-- alle zwölf Tools einschließlich des app-only Review-Tools verlangen dieselbe
+- alle vierzehn Tools einschließlich des app-only Review-Tools verlangen dieselbe
   aktuelle `learningSessionId`;
 - OAuth und `offline_access` bleiben reiner Connectortransport und können keine
   Lernsitzung auswählen, erzeugen, erneuern oder verlängern;
 - Claude erhält nie die permanente SkillPilot-ID, eine ID-Datei oder deren
   Passwort;
-- alle zwölf freigegebenen Tools haben genaue Schemas, Titel und korrekte
+- alle vierzehn freigegebenen Tools haben genaue Schemas, Titel und korrekte
   Anthropic-Annotationen;
 - beide content-addressed MCP Apps sind deterministisch gebaut; private
   Kartendaten bleiben component-only und das Review-Tool app-only;
@@ -871,7 +884,7 @@ wenn alle folgenden Punkte erfüllt sind:
 
 Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation
 für berechtigte bezahlte Nutzer von Claude Web Chat. Der Coaching-Skill ist nur
-für diese Web-Oberfläche im V1-Veröffentlichungsumfang; OAuth, MCP, alle zwölf
+für diese Web-Oberfläche im V1-Veröffentlichungsumfang; OAuth, MCP, alle vierzehn
 Tools und beide MCP Apps bleiben Eigentum des einmal verbundenen
 Remote-Connectors. V1 enthält
 keine Hooks oder Subagents und beansprucht weder Desktop Chat noch Cowork als
@@ -885,7 +898,7 @@ wenn:
 
 - der lokale Paketcheck und die offizielle Prüfung mit
   `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` bestehen;
-- Installation, OAuth, First-Party-Start, alle zwölf Tools und beide MCP Apps
+- Installation, OAuth, First-Party-Start, alle vierzehn Tools und beide MCP Apps
   in Claude Web Chat getestet wurden;
 - der Skill genau einmal wirksam ist. Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit. Die beiden MCP Apps stammen weiterhin aus dem Remote-Connector;
 - kein zusätzlicher manueller Custom Connector für dieselbe Remote-MCP-URL

@@ -21,8 +21,8 @@ interface LanguageExpectation {
 
 const expectedByLanguage: Record<Language, LanguageExpectation> = {
   de: {
-    accessNotice: 'SkillPilot ist kostenlos. Aktuell nutzbar ist nur die Claude-Beta. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; unterstützt und getestet ist derzeit Claude Pro. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.',
-    accessSummary: 'Aktuell ist nur die Claude-Beta nutzbar; ChatGPT wartet auf Freigabe.',
+    accessNotice: 'SkillPilot ist kostenlos. Aktuell angeboten wird ausschließlich der Claude-1.1-Betakandidat. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; SkillPilot unterstützt derzeit Claude Pro. Die exakte 1.1-Client-Abnahme in Claude Web, Android und Voice Mode steht noch aus. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.',
+    accessSummary: 'Angeboten wird derzeit der Claude-1.1-Betakandidat; seine exakte Client-Abnahme und die ChatGPT-Freigabe stehen noch aus.',
     footerLabels: ['Statistiken', 'Nutzungsbedingungen', 'Datenschutz', 'Impressum'],
     landingPillLabels: [
       'Jetzt lernen',
@@ -43,8 +43,8 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
     removedHeroLine: 'So startest du in 5 Minuten',
   },
   en: {
-    accessNotice: 'SkillPilot is free. Currently, only the Claude beta is available. A paid Claude plan is required; Claude Pro is the plan currently supported and tested. ChatGPT access is awaiting approval and cannot currently be used.',
-    accessSummary: 'Currently, only the Claude beta is available; ChatGPT is awaiting approval.',
+    accessNotice: 'SkillPilot is free. Currently, only the Claude 1.1 beta candidate is offered. A paid Claude plan is required; SkillPilot currently supports Claude Pro. Exact 1.1 client acceptance in Claude Web, Android, and voice mode is still pending. ChatGPT access is awaiting approval and cannot currently be used.',
+    accessSummary: 'The Claude 1.1 beta candidate is currently offered; its exact client acceptance and ChatGPT approval are still pending.',
     footerLabels: ['Statistics', 'Terms of Use', 'Privacy', 'Imprint'],
     landingPillLabels: [
       'Learn now',

@@ -13,12 +13,14 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,73 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class ClaudeV1CoachContextProjectorTest {
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void contextPublishesOnlySanitizedAdditiveDailyPlanCounts() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade toolFacade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                stateProjection,
+                toolFacade,
+                "https://skillpilot.com");
+        UnifiedLearnerStateResponse state = state(null, List.of(), "setActiveGoal");
+        LearnerPlanTodayStatus today = new LearnerPlanTodayStatus(
+                LocalDate.of(2026, 9, 4),
+                true,
+                true,
+                List.of(
+                        new LearnerPlanTodayStatus.SubjectStatus(
+                                "private-math-a", "Mathematik\n", 3, 1, 2, 4),
+                        new LearnerPlanTodayStatus.SubjectStatus(
+                                "private-physics", "Physik", 4, 1, 3, 2),
+                        new LearnerPlanTodayStatus.SubjectStatus(
+                                "private-math-b", "Mathematik", 2, 1, 1, 1),
+                        new LearnerPlanTodayStatus.SubjectStatus(
+                                "private-invalid", "Private invalid subject", 1, 1, 1, 0)),
+                new LearnerPlanTodayStatus.Totals(999, 999, 999, 999),
+                2);
+        when(toolFacade.getLearnerState("internal-learner")).thenReturn(state);
+        when(stateProjection.project(state)).thenReturn(state);
+        when(toolFacade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+        when(toolFacade.getLearningPlanTodayStatus("internal-learner", "de")).thenReturn(today);
+
+        Map<String, Object> context = projector.projectContext("internal-learner", 12, "de");
+
+        Map<String, Object> projected =
+                (Map<String, Object>) context.get("learningPlanToday");
+        assertEquals("2026-09-04", projected.get("asOf"));
+        assertEquals(true, projected.get("followLearningPlans"));
+        assertEquals(true, projected.get("resumeAvailable"));
+        assertEquals(3, projected.get("unavailablePlanCount"));
+        assertEquals(
+                List.of(
+                        Map.of(
+                                "subject", "Mathematik",
+                                "dueToday", 5,
+                                "completedToday", 2,
+                                "openToday", 3,
+                                "openOverdue", 5),
+                        Map.of(
+                                "subject", "Physik",
+                                "dueToday", 4,
+                                "completedToday", 1,
+                                "openToday", 3,
+                                "openOverdue", 2)),
+                projected.get("subjects"));
+        assertEquals(
+                Map.of(
+                        "dueToday", 9,
+                        "completedToday", 3,
+                        "openToday", 6,
+                        "openOverdue", 7),
+                projected.get("totals"));
+        assertFalse(projected.toString().contains("private-"));
+
+        Map<String, Object> withActiveGoal = projector.projectLearningPlanToday(today, true);
+        assertEquals(false, withActiveGoal.get("resumeAvailable"));
+    }
 
     @Test
     void orientationContextOmitsAnUnavailableOutlookInsteadOfPublishingNull() {

@@ -1,6 +1,11 @@
 export const CLAUDE_PLUGIN_PUBLICATION_INDEX_URL = '/api/public/claude/plugins/index.json'
 export const CLAUDE_MARKETPLACE_REPOSITORY_URL = 'https://github.com/enpasos/skillpilot-claude-marketplace'
 export const CLAUDE_CONNECTOR_PRIVACY_URL = 'https://mcp-claude-v1.skillpilot.com/privacy'
+export const CLAUDE_PLUGIN_CURRENT_VERSION = '1.1.0'
+// The public marketplace repository still contains the historical 1.0.4
+// package. Keep it out of the first-party guide until the exact 1.1.0
+// repository revision has been published and accepted.
+export const CLAUDE_MARKETPLACE_INSTALLATION_ENABLED = false
 
 export interface ClaudePluginRequirements {
   minimumAge: number
@@ -14,8 +19,8 @@ export const CLAUDE_PLUGIN_BETA_REQUIREMENTS = {
   minimumAge: 18,
   plan: 'claude-pro',
   installSurface: 'claude-web',
-  testedSurfaces: ['claude-web', 'claude-android'],
-  voiceMode: true,
+  testedSurfaces: [],
+  voiceMode: false,
 } satisfies ClaudePluginRequirements
 
 export interface ClaudePluginPublication {
@@ -121,8 +126,8 @@ const parseRequirements = (value: unknown, path: string): ClaudePluginRequiremen
     return publicationError(`${path}.minimumAge must be a safe integer of at least 18`)
   }
 
-  if (!Array.isArray(value.testedSurfaces) || value.testedSurfaces.length === 0) {
-    return publicationError(`${path}.testedSurfaces must be a non-empty string array`)
+  if (!Array.isArray(value.testedSurfaces)) {
+    return publicationError(`${path}.testedSurfaces must be a string array`)
   }
   const testedSurfaces = value.testedSurfaces.map((surface, index) => {
     if (typeof surface !== 'string' || !surface.trim()) {
@@ -174,10 +179,16 @@ const parsePlugin = (value: unknown, index: number): ClaudePluginPublication => 
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(id)) {
     return publicationError(`${path}.id must be a lowercase kebab-case identifier`)
   }
+  if (id !== 'skillpilot-coach-v1') {
+    return publicationError(`${path}.id must equal skillpilot-coach-v1`)
+  }
 
   const version = requiredString(value, 'version', path)
   if (!/^[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z]+(?:\.[0-9A-Za-z]+)*)?$/u.test(version)) {
     return publicationError(`${path}.version must be a semantic version`)
+  }
+  if (version !== CLAUDE_PLUGIN_CURRENT_VERSION) {
+    return publicationError(`${path}.version must equal ${CLAUDE_PLUGIN_CURRENT_VERSION}`)
   }
 
   const status = requiredString(value, 'status', path)

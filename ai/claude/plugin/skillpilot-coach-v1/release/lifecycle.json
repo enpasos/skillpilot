@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.0.0",
+  "pluginVersion": "1.1.0",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -11,7 +11,7 @@
     "claude_pro_android_chat"
   ],
   "distributionQualification": {
-    "directInstallPilot": "observed_paid_web_and_claude_pro_account_direct_install_then_native_android_chat",
+    "directInstallPilot": "historical_pre_1_1_paid_web_and_claude_pro_account_direct_install_then_native_android_chat",
     "androidDirectInstallAcceptance": "pending",
     "androidDirectInstallEvidenceId": null,
     "androidPublicListingVerification": "not_verified",
@@ -28,9 +28,9 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-08-24",
+    "approvedAt": "2026-09-04",
     "approvedBy": "product-owner",
-    "scope": "Claude public plugin v1 package for eligible paid Web chat and verified Claude Pro Android use after account-level direct installation, independent release lane, validation and Anthropic plugin-console submission.",
+    "scope": "Claude public plugin v1 version 1.1.0 as the complete replacement candidate for eligible paid Web chat and intended Claude Pro Android use after account-level installation; exact-candidate Web, Android and Voice acceptance remains pending before submission.",
     "excludes": [
       "Submitted OpenAI SkillPilot Coach v1.0.0 and every effect covered by its active review freeze",
       "Connector Directory lifecycle, gates and Team/Enterprise submission access"
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.0.0",
+    "version": "1.1.0",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "The pre-submission candidate may still change under Product Owner control. Submission freezes the exact candidate digest; publication makes 1.0.0 immutable and later breaking work starts on a new major line."
+    "compatibilityPolicy": "The pre-submission candidate may still change under Product Owner control. Version 1.1.0 is the sole current replacement candidate; submission freezes its exact digest, while retained 1.0.x records remain immutable history rather than installation fallbacks."
   },
   "stateTransitions": [
     {

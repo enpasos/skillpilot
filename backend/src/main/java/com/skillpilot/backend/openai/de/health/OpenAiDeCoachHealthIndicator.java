@@ -8,6 +8,7 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.health.contributor.Health;
@@ -21,6 +22,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
 
     public static final String CONTRIBUTOR_NAME = "openAiDeCoach";
     public static final int EXPECTED_TOOL_COUNT = 12;
+    public static final int EXPECTED_DAILY_PLAN_TOOL_COUNT = 14;
 
     private final OpenAiDeProperties properties;
     private final boolean contractAvailable;
@@ -28,12 +30,24 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     private final String contractHash;
     private final String curriculumRevision;
     private final boolean mcpEnabled;
+    private final int expectedToolCount;
 
     public OpenAiDeCoachHealthIndicator(
             OpenAiDeProperties properties,
             Optional<OpenAiDeV1McpContractAdapter> contract,
             Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
             @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled) {
+        this(properties, contract, curriculumRevisionProvider, mcpEnabled, false);
+    }
+
+    @Autowired
+    public OpenAiDeCoachHealthIndicator(
+            OpenAiDeProperties properties,
+            Optional<OpenAiDeV1McpContractAdapter> contract,
+            Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
+            @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled,
+            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:false}")
+                    boolean dailyPlanToolsEnabled) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);
@@ -43,6 +57,9 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .filter(value -> !value.isBlank())
                 .orElse("unavailable");
         this.mcpEnabled = mcpEnabled;
+        this.expectedToolCount = dailyPlanToolsEnabled
+                ? EXPECTED_DAILY_PLAN_TOOL_COUNT
+                : EXPECTED_TOOL_COUNT;
     }
 
     @Override
@@ -71,7 +88,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 OpenAiDeV1PublicContractValidation.inspect(properties);
         boolean rateLimitEnabled = properties.getRateLimit().isEnabled();
         boolean rateLimitConfigured = validRateLimit(properties.getRateLimit());
-        boolean contractReady = contractToolCount == EXPECTED_TOOL_COUNT;
+        boolean contractReady = contractToolCount == expectedToolCount;
         boolean serverBuildConfigured = properties.getServerBuild() != null
                 && !properties.getServerBuild().isBlank()
                 && !OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD.equals(
@@ -147,7 +164,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .withDetail("secureConfigurationViolations", secureMode.violations())
                 .withDetail("contractAvailable", contractAvailable)
                 .withDetail("contractToolCount", contractToolCount)
-                .withDetail("contractExpectedToolCount", EXPECTED_TOOL_COUNT)
+                .withDetail("contractExpectedToolCount", expectedToolCount)
                 .withDetail("contractHash", contractHash);
         return health.build();
     }

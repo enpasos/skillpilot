@@ -32,6 +32,13 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
+  assert.equal(result.pluginVersion, "1.1.0");
+
+  const baseline = readJson(repositoryRoot, `${releasePath}/contract-baseline.json`);
+  assert.equal(baseline.pluginVersion, "1.1.0");
+  assert.equal(baseline.remoteContract.tools.length, 14);
+  assert.ok(baseline.remoteContract.tools.includes("resume_skillpilot_learning_plan"));
+  assert.ok(baseline.remoteContract.tools.includes("switch_skillpilot_learning_plan_subject"));
 
   assert.equal(gates.submissionReady, false);
   assert.equal(gates.connectorDirectoryDependency, "none");
@@ -47,6 +54,66 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   assert.match(
     attemptedSubmission.errors.join("\n"),
     /Expected plugin lifecycle READY_FOR_SUBMISSION, found PRE_SUBMISSION/u,
+  );
+});
+
+test("the complete 1.0.0 release dossier remains immutable history", (t) => {
+  const fixture = createFixture(t);
+  const historicalBaselinePath = resolve(
+    fixture,
+    releasePath,
+    "history/1.0.0/contract-baseline.json",
+  );
+  writeFileSync(
+    historicalBaselinePath,
+    `${readFileSync(historicalBaselinePath, "utf8")}\n`,
+    "utf8",
+  );
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(
+    result.errors.join("\n"),
+    /Historical plugin release file changed: 1\.0\.0\/contract-baseline\.json/u,
+  );
+});
+
+test("the retired 1.0.4 publication metadata remains immutable history", (t) => {
+  const fixture = createFixture(t);
+  const historicalMarketplacePath = resolve(
+    fixture,
+    releasePath,
+    "history/1.0.4/marketplace-publication.json",
+  );
+  writeFileSync(
+    historicalMarketplacePath,
+    `${readFileSync(historicalMarketplacePath, "utf8")}\n`,
+    "utf8",
+  );
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(
+    result.errors.join("\n"),
+    /Historical plugin release file changed: 1\.0\.4\/marketplace-publication\.json/u,
+  );
+});
+
+test("the retired thirteen-tool gate name cannot return", (t) => {
+  const fixture = createFixture(t);
+  const gates = readJson(fixture, `${releasePath}/release-gates.json`);
+  const gate = gates.gates.find(
+    ({ id }) => id === "remote-mcp-contract-fourteen-tools-two-apps",
+  );
+  assert.ok(gate);
+  gate.id = "remote-mcp-contract-thirteen-tools-two-apps";
+  writeJson(fixture, `${releasePath}/release-gates.json`, gates);
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(
+    result.errors.join("\n"),
+    /independent public-plugin gate set exactly/u,
   );
 });
 

@@ -13,12 +13,14 @@ import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerLearningPlan;
+import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
@@ -27,6 +29,71 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 class LearnerLearningPlanServiceTest {
+
+    @Test
+    void globalDueSlotsStayMonotoneAcrossIdenticalOverlappingBlocks() {
+        var first = learningBlock(
+                "first-block",
+                "2026-09-07",
+                "2026-09-10",
+                List.of("first-goal"));
+        var second = learningBlock(
+                "second-block",
+                "2026-09-07",
+                "2026-09-10",
+                List.of("second-goal"));
+        List<LearnerLearningPlanApi.Block> blocks = List.of(first, second);
+
+        List<String> monday = LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                blocks, LocalDate.parse("2026-09-07"));
+        List<String> tuesday = LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                blocks, LocalDate.parse("2026-09-08"));
+        List<String> wednesday = LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                blocks, LocalDate.parse("2026-09-09"));
+        List<String> thursday = LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                blocks, LocalDate.parse("2026-09-10"));
+
+        assertThat(monday).containsExactly("first-goal");
+        assertThat(tuesday).containsExactlyElementsOf(monday);
+        assertThat(wednesday).containsExactly("first-goal", "second-goal");
+        assertThat(thursday).containsExactlyElementsOf(wednesday);
+        assertThat(List.of(monday.size(), tuesday.size(), wednesday.size(), thursday.size()))
+                .containsExactly(1, 1, 2, 2);
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(blocks))
+                .containsExactlyInAnyOrderEntriesOf(Map.of(
+                        "first-goal", LocalDate.parse("2026-09-07"),
+                        "second-goal", LocalDate.parse("2026-09-09")));
+    }
+
+    @Test
+    void globalDueSlotsPrioritizeLaterStartingEarlierDeadlineWithoutMissingEitherBlock() {
+        var longBlock = learningBlock(
+                "long-block",
+                "2026-09-07",
+                "2026-09-11",
+                List.of("long-1", "long-2"));
+        var shortBlock = learningBlock(
+                "short-block",
+                "2026-09-08",
+                "2026-09-09",
+                List.of("short-1", "short-2"));
+        List<LearnerLearningPlanApi.Block> blocks = List.of(longBlock, shortBlock);
+
+        Map<String, LocalDate> dueDates = LearnerLearningPlanService
+                .scheduledAtomicGoalDueDatesForSchedule(blocks);
+
+        assertThat(dueDates).containsExactlyInAnyOrderEntriesOf(Map.of(
+                "short-1", LocalDate.parse("2026-09-08"),
+                "short-2", LocalDate.parse("2026-09-08"),
+                "long-1", LocalDate.parse("2026-09-09"),
+                "long-2", LocalDate.parse("2026-09-10")));
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                        blocks, LocalDate.parse("2026-09-08")))
+                .containsExactly("short-1", "short-2");
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                        blocks, LocalDate.parse("2026-09-11")))
+                .containsExactly("long-1", "long-2", "short-1", "short-2");
+    }
 
     @Test
     void concurrentFirstCreateIsReportedAsRevisionConflict() {
@@ -40,6 +107,7 @@ class LearnerLearningPlanServiceTest {
                 learners,
                 objectMapper,
                 events,
+                mock(LandscapeService.class),
                 Clock.fixed(Instant.parse("2026-09-04T08:00:00Z"), zone));
 
         Learner learner = new Learner();
@@ -81,5 +149,21 @@ class LearnerLearningPlanServiceTest {
                 .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
                         assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
         verify(events, never()).publishEvent(any());
+    }
+
+    private static LearnerLearningPlanApi.Block learningBlock(
+            String id,
+            String startDate,
+            String endDate,
+            List<String> atomicGoalIds) {
+        return new LearnerLearningPlanApi.Block(
+                id,
+                "learning",
+                null,
+                id,
+                LocalDate.parse(startDate),
+                LocalDate.parse(endDate),
+                null,
+                atomicGoalIds);
     }
 }

@@ -61,9 +61,11 @@ that only the other client can observe.
    session, no permanent SkillPilot ID and no second query parameter. Claude's
    warning for externally supplied content is expected. The session is never
    repeated in normal Claude prose.
-5. Confirm `tools/list` publishes exactly these twelve tools and no prompt:
+5. Confirm `tools/list` publishes exactly these fourteen tools and no prompt:
 
    - `get_skillpilot_coach_context`
+   - `resume_skillpilot_learning_plan`
+   - `switch_skillpilot_learning_plan_subject`
    - `render_skillpilot_goal_visualization`
    - `start_skillpilot_memory_practice`
    - `review_skillpilot_memory_practice_card`
@@ -115,7 +117,9 @@ recorded browser addresses.
 
 | Tool | Prepared fixture and call | Required evidence |
 | --- | --- | --- |
-| `get_skillpilot_coach_context` | Load the reset profile in DE and EN. | Inspector sees the bounded current curriculum/state payload without permanent ID, token, answer key or unrestricted state dump. Hosted Claude summarizes the active learning goal and next step without exposing internal field names. |
+| `get_skillpilot_coach_context` | Load the reset profile in DE and EN with valid Mathematics and Physics plans. | Inspector sees the bounded current curriculum/state payload, including one localized daily-plan row per valid subject plus totals and an unavailable-plan count, without plan/landscape IDs, permanent ID, token, answer key or unrestricted state dump. Hosted Claude reports due, currently mastered, open-today and overdue counts for both subjects before active-goal coaching. |
+| `resume_skillpilot_learning_plan` | Use a context with no active goal and `learningPlanToday.resumeAvailable=true`; pass its current `stateVersion` as `expectedStateVersion` plus a fresh UUID request ID. Repeat with an active goal, `resumeAvailable=false`, stale state and replay. | Only the exact available state activates the backend-selected plan goal once and returns its full canonical context. Every unavailable, active, stale or replay case fails closed or remains idempotent; Claude never substitutes a Web **Weiterlernen** detour. |
+| `switch_skillpilot_learning_plan_subject` | Start with an unfinished Mathematics goal and copy the exact localized Physics `subject` from the current `learningPlanToday.subjects`, together with the current `stateVersion` and a fresh UUID request ID. Repeat with an unknown, translated, ambiguous or not-switchable subject, a stale state and replay. | The exact valid request parks Mathematics without mastery, activates the backend-selected due Physics goal once and returns its full canonical context. Invalid, stale and ambiguous requests leave state unchanged; no plan, landscape, focus or goal ID is accepted from the model. Hosted Claude continues Physics without a confirmation loop and can switch back by the same rule. |
 | `render_skillpilot_goal_visualization` | Load a context that publishes an approved visualization, then pass its exact goal and current revision. | The dedicated component renders the approved image; the model-visible result contains only the bounded visualization projection. A foreign goal, stale revision or unavailable image fails closed. |
 | `start_skillpilot_memory_practice` | Reset to an active memory goal with due cards and pass its exact goal and current revision. | The dedicated component receives the bounded due-card batch in private result metadata. Claude's model-visible result contains only status/progress and no card front, back or review capability. Starting practice changes neither mastery nor learner state. |
 | `review_skillpilot_memory_practice_card` | In the component, rate exactly the displayed card as `not_known` and then `known`, using its unchanged capability, current revision and a fresh UUID request ID. | The app-only call updates only that card's repetition schedule and advances state once. It never changes mastery or the active goal, and no private card content enters the model-visible result. |
@@ -234,7 +238,7 @@ commit recordings or screenshots containing learner data.
 ## Pass condition
 
 The gate passes only when the SkillPilot Directory connector candidate supplies
-both connector-provided MCP Apps; all twelve tools and both resources work with
+both connector-provided MCP Apps; all fourteen tools and both resources work with
 valid input in their applicable clients; every tool
 requires the same current `learningSessionId`; a fresh first-party `spc_`
 session expires exactly after 24 hours without being extended by connector

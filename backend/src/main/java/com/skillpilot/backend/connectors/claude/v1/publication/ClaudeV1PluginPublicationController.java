@@ -56,8 +56,7 @@ public final class ClaudeV1PluginPublicationController {
     private static final String EXPECTED_STATUS = "beta";
     private static final String EXPECTED_PLAN = "claude-pro";
     private static final String EXPECTED_INSTALL_SURFACE = "claude-web";
-    private static final List<String> EXPECTED_TESTED_SURFACES = List.of(
-            "claude-web", "claude-android");
+    private static final List<String> EXPECTED_TESTED_SURFACES = List.of();
     private static final Pattern PLUGIN_ID_PATTERN = Pattern.compile("[a-z0-9]+(?:-[a-z0-9]+)*");
     private static final Pattern VERSION_PATTERN = Pattern.compile(
             "[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z]+(?:\\.[0-9A-Za-z]+)*)?");
@@ -243,7 +242,7 @@ public final class ClaudeV1PluginPublicationController {
                 || !EXPECTED_INSTALL_SURFACE.equals(requirements.installSurface())
                 || requirements.testedSurfaces() == null
                 || !EXPECTED_TESTED_SURFACES.equals(requirements.testedSurfaces())
-                || !Boolean.TRUE.equals(requirements.voiceMode())) {
+                || !Boolean.FALSE.equals(requirements.voiceMode())) {
             return false;
         }
         Set<String> uniqueSurfaces = new HashSet<>();

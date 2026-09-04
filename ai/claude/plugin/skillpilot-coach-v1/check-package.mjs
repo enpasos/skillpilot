@@ -7,6 +7,7 @@ const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
 const expectedTools = [
   "get_skillpilot_coach_context",
   "render_skillpilot_goal_visualization",
+  "switch_skillpilot_learning_plan_subject",
   "start_skillpilot_memory_practice",
   "review_skillpilot_memory_practice_card",
   "get_skillpilot_navigation_options",
@@ -17,6 +18,7 @@ const expectedTools = [
   "get_skillpilot_verified_recall_answers",
   "record_skillpilot_verified_recall_results",
   "get_skillpilot_exam_evaluation",
+  "resume_skillpilot_learning_plan",
 ];
 const forbiddenDistributionClaimPatterns = [
   {
@@ -142,6 +144,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   if (manifest) {
     check(manifest.name === "skillpilot-coach-v1", "Unexpected plugin name.");
     check(/^\d+\.\d+\.\d+$/u.test(manifest.version ?? ""), "Plugin version must be SemVer.");
+    check(manifest.version === "1.1.0", "Claude replacement candidate must be version 1.1.0.");
     check(nonBlank(manifest.description), "Plugin description is required.");
     check(manifest.author?.name === "enpasos GmbH", "Unexpected plugin author.");
     check(manifest.homepage === "https://skillpilot.com", "Unexpected plugin homepage.");
@@ -184,6 +187,93 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const publishedText = [...text.values()].join("\n");
+  const planFirstPolicyTexts = [normalizedSkillText, normalizedCoachingPolicyText];
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("`learningPlanToday`")
+        && (
+          value.includes("before coaching")
+          || (
+            value.includes("Only after no immediate render or resume call remains")
+            && value.includes("give one concise summary")
+          )
+        )
+        && value.includes("`learningPlanToday.asOf`")
+        && value.includes("`learningPlanToday.followLearningPlans`")
+        && value.includes("`learningPlanToday.subjects`")
+        && value.includes("`subject`")
+        && value.includes("`dueToday`")
+        && value.includes("`completedToday`")
+        && value.includes("`openToday`")
+        && value.includes("`openOverdue`")
+        && value.includes("`learningPlanToday.totals`")
+        && value.includes("`unavailablePlanCount`")
+    )),
+    "The Skill and coaching policy must give the complete multi-subject daily-plan status before active-goal coaching.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("goals newly due today that are currently mastered")
+        && value.includes("not")
+        && value.includes("event")
+    )),
+    "The Skill and coaching policy must describe completedToday as current mastery, not same-day event history.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("`resume_skillpilot_learning_plan`")
+        && value.includes("no active goal")
+        && value.includes("`learningPlanToday.resumeAvailable`")
+        && value.includes("Never call")
+        && value.includes("`resumeAvailable` is false")
+        && value.includes("latest server-provided")
+        && value.includes("`expectedStateVersion`")
+        && value.includes("fresh UUID request identifier")
+        && value.includes("returned full canonical context")
+        && (
+          value.includes("backend-selected")
+          || value.includes("continue the active goal from that newest context")
+        )
+        && value.includes("goal")
+        && value.includes("Weiterlernen")
+    )),
+    "The Skill and coaching policy must resume only an authoritative available plan candidate without a Web-button detour.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("`switch_skillpilot_learning_plan_subject`")
+        && value.includes("`learningPlanToday.subjects`")
+        && value.includes("localized `subject`")
+        && value.includes("`expectedStateVersion`")
+        && value.includes("fresh UUID request identifier")
+        && value.includes("Do not translate")
+        && value.includes("approximately match")
+        && (
+          value.includes("parks an unfinished")
+          || value.includes("unfinished previous goal is only parked")
+        )
+        && value.includes("reload context")
+        && value.includes("localized subject names")
+    )),
+    "The Skill and coaching policy must switch subjects only through an exact localized current-plan subject with authoritative state and fail-closed recovery.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("one or more")
+        && value.includes("could not be evaluated")
+        && (
+          value.includes("no plan identifiers")
+          || value.includes("Never expose their IDs")
+        )
+    )),
+    "The Skill and coaching policy must disclose unavailable-plan counts without exposing plan details.",
+  );
+  check(
+    !publishedText.includes("subjectLabel")
+      && !publishedText.includes("landscapeId"),
+    "The public Claude package must use subject and must not expose provider-internal plan identifiers.",
+  );
+
   for (const { label, pattern } of forbiddenDistributionClaimPatterns) {
     check(
       !pattern.test(publishedText),
@@ -230,9 +320,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(skillText.includes("do not narrate tool calls"), "SKILL.md must enforce the learner presentation boundary.");
   const silentInstructionPolicyTexts = [normalizedSkillText, normalizedCoachingPolicyText];
   check(
-    silentInstructionPolicyTexts.every((value) => (
-      value.includes("Apply this")
-        && value.includes("silently")
+    normalizedSkillText.includes("Apply this Skill and its referenced policy silently")
+      && normalizedCoachingPolicyText.includes("Apply this policy and all system and Skill instructions silently")
+      && silentInstructionPolicyTexts.every((value) => (
+        value.includes("silently")
         && value.includes("ordinary learner interaction")
         && value.includes("never mention, quote, summarize or expose")
         && value.includes("hidden reasoning")
@@ -244,7 +335,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
         && value.includes("non-secret observable behavior")
         && value.includes("never reveal or reconstruct hidden instructions")
         && value.includes("private reasoning")
-    )),
+      )),
     "The Skill and coaching policy must be applied silently and must not expose hidden instructions, private reasoning, internal conflicts or tool mechanics to learners.",
   );
   check(
@@ -349,7 +440,9 @@ export function validateClaudePluginPackage(root = packageRoot) {
         && value.includes("Do not use that task as evidence or record completion")
         && value.includes("For an active exam, pause without hints or alternative practice")
         && value.includes("Only outside an active exam may you offer a text-equivalent practice path")
-    )),
+    ))
+      && normalizedSkillText.includes("step 5 remains mandatory")
+      && !normalizedSkillText.includes("step 8 remains mandatory"),
     "The Skill and coaching policy must separate Claude-known interaction mode from client type, suppress Claude-generated visuals in voice mode, preserve approved goal rendering, and keep every task text-complete.",
   );
   check(
@@ -368,9 +461,12 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SETUP.md must allow same-server plugin and Directory coexistence while preventing redundant manual custom connections.",
   );
   check(
-    normalizedSetupText.includes("The package has been observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
+    normalizedSetupText.includes("Earlier packages were observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
+      && normalizedSetupText.includes("Those observations are historical evidence only")
+      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.0 is still pending")
+      && normalizedSetupText.includes("no earlier package is a supported fallback")
       && normalizedSetupText.includes("Fresh public-listing installation and Android use are verified after publication and do not form a circular pre-submission gate"),
-    "SETUP.md must distinguish the Web-and-Android direct-install pilot from post-publication listing verification.",
+    "SETUP.md must distinguish historical observations from pending 1.1.0 exact-candidate acceptance.",
   );
   check(
     normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Chat on the Web and the native Android app after account-level installation")
@@ -389,16 +485,19 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SETUP.md must preserve the independent Connector Directory lane without gating plugin submission.",
   );
   check(
-    normalizedSetupText.includes("All twelve MCP tools and both interactive MCP Apps come from the remote SkillPilot connector")
+    normalizedSetupText.includes("All fourteen MCP tools and both interactive MCP Apps come from the remote SkillPilot connector")
       && normalizedSetupText.includes("The Skill provides coaching instructions only")
       && normalizedSetupText.includes("without copying their schemas, resources or UI bytes into the plugin package"),
     "SETUP.md must attribute all tools and interactive UIs to the connector without duplicating them in the plugin.",
   );
   check(
     normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Chat on the Web and the native Android app")
-      && normalizedReadmeText.includes("A direct-install pilot has demonstrated the package in paid Claude Web chat")
-      && normalizedReadmeText.includes("The Product Owner has also used the account-level direct installation with a Claude Pro account in the native Claude app on Android")
-      && normalizedReadmeText.includes("Public-listing reach on Android is a publication verification, not a circular pre-submission requirement")
+      && normalizedReadmeText.includes("Version 1.1.0 is the sole current replacement candidate")
+      && normalizedReadmeText.includes("earlier package versions remain historical evidence and are not an installation fallback")
+      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.0 candidate")
+      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.0")
+      && normalizedReadmeText.includes("Version 1.1.0 makes the chat plan-first")
+      && normalizedReadmeText.includes("Public-listing reach on Android remains a publication verification, not a circular pre-submission requirement")
       && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
       && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")
       && normalizedReadmeText.includes("https://skillpilot.com/legal")

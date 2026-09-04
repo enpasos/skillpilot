@@ -98,7 +98,7 @@ export const de = {
             openAiMcpDisconnectFailed: "Die ChatGPT-Verbindung konnte gerade nicht getrennt werden. Bitte versuche es erneut.",
             claudeBetaTitle: "Claude-Lerncoach",
             claudeBetaBadge: "v1",
-            claudeBetaHint: "Für den Beta-Test brauchst du Claude Pro. Richte das Plugin einmal in Claude Web ein; danach kannst du mit demselben Claude-Konto auch auf Android lernen.",
+            claudeBetaHint: "Der 1.1-Betakandidat ist für Claude Pro vorgesehen. Richte das Plugin einmal in Claude Web ein. Die exakte Abnahme in Web, Android und Voice Mode steht noch aus.",
             claudeAdultsOnly: "Claude.ai ist laut Anbieter erst ab 18 Jahren nutzbar.",
             claudeSetupTitle: "So gehst du vor",
             claudeSetupStepOne: "Öffne die Installationsseite, lade die aktuelle Plugin-Datei herunter und lade sie in Claude Web unter Customize („Anpassen“) → Plugins hoch.",
@@ -155,7 +155,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**SkillPilot ist kostenlos.** Aktuell nutzbar ist nur die Claude-Beta. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; unterstützt und getestet ist derzeit Claude Pro. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.",
+            text: "**SkillPilot ist kostenlos.** Aktuell angeboten wird ausschließlich der Claude-1.1-Betakandidat. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; SkillPilot unterstützt derzeit Claude Pro. Die exakte 1.1-Client-Abnahme in Claude Web, Android und Voice Mode steht noch aus. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.",
             linkLabel: "Zugänge vergleichen"
         },
         links: {

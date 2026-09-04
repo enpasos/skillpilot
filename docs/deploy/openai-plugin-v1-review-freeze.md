@@ -2606,7 +2606,15 @@ freigegeben:
   kumulative Rundung an jedem relevanten Werktag begrenzt nachzuvollziehen;
   jede fällige Planmenge muss gegenüber den im selben Fachplan enthaltenen
   Voraussetzungen abgeschlossen sein, und die Aufwandsgrenze bleibt
-  fail-closed; sowie
+  fail-closed;
+- bei überlappenden Lernblöcken jeden neuen globalen Fälligkeitsslot
+  deterministisch genau einmal dem bereits begonnenen Block mit dem frühesten
+  Ende zuzuweisen. Innerhalb eines Blocks wird ausschließlich der nächste
+  Atom-Prefix verwendet. Damit wächst die konkrete Fälligkeitsmenge von Tag zu
+  Tag monoton, ihre Größe bleibt exakt die einmal gerundete Summe der
+  erwarteten Zieläquivalente, und jeder Block ist spätestens an seinem Ende
+  vollständig fällig. Backend und Lehrerplanung verwenden dieselben
+  Slot-Daten; sowie
 - eine Planung, für die innerhalb dieser Grenzen keine konfliktfreie
   Reihenfolge gefunden wurde, weiterhin vor dem ersten Schreiben atomar
   abzulehnen. Der First-Party-Endpunkt darf dafür nur den
@@ -2639,3 +2647,122 @@ Review-Fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte
 bleiben unverändert. Die eingereichte Review-Fixture enthält weiterhin keine
 Fachpläne und `followLearningPlans=false`; deshalb ist keine Aktion im
 OpenAI-Portal erforderlich.
+
+### 6.47 Eng begrenzte Ausnahme: planorientierter Claude Coach 1.1 als vollständiger Ersatz
+
+Der Product Owner hat am **4. September 2026** ausdrücklich freigegeben, die
+bisherige Claude-Variante vollständig durch **SkillPilot Claude Coach 1.1** zu
+ersetzen. Frühere Claude-Pakete bleiben unveränderliche historische Evidenz,
+sind aber weder aktuelle Variante noch empfohlener Installationsweg oder
+Fallback. Der öffentliche persönliche Git-Marketplace enthält bis zu seiner
+erneuten kandidatengenauen Veröffentlichung weiterhin die historische Version
+1.0.4 und wird deshalb in der First-Party-Anleitung fail-closed ausgeblendet.
+Die sichtbare Anleitung akzeptiert ausschließlich den hashgebundenen
+1.1.0-Direktinstallationskandidaten; ein alter, abweichender oder ungültiger
+Index bietet keinen Download an.
+
+Für die gemeinsame providerneutrale Planprojektion und den Claude-1.1-Vertrag
+ist ausschließlich freigegeben:
+
+- für jeden gültigen aktuellen Fachplan die heute neu fälligen Ziele, die davon
+  aktuell bereits beherrschten Ziele, die heute noch offenen Ziele und offene
+  Rückstände getrennt zu berechnen und über alle Fachpläne zu addieren;
+- `completedToday` ausschließlich als aktuellen Beherrschungsstand innerhalb
+  der heute neu fälligen Menge zu verwenden; mangels Ereignishistorie wird
+  damit keine Beherrschung *an diesem Tag* behauptet;
+- veraltete, ungültige oder nicht sicher lokalisierbare Fachpläne aus allen
+  Summen auszuschließen und lediglich ihre anonyme Anzahl zu melden;
+- im öffentlichen Chat-Kontext nur Datum, Planmodus, lokalisierte Fachnamen,
+  Zählwerte, Summen, anonyme Nichtverfügbarkeitsanzahl und die boolesche
+  Fortsetzbarkeit zu liefern; Plan-, Landscape- und andere interne IDs werden
+  nicht übertragen;
+- zu Beginn einer Lernsession die Werte aller gültigen Fächer knapp zu nennen,
+  Rückstände separat auszuweisen und unveränderte Werte nicht in jeder Antwort
+  zu wiederholen;
+- ein bereits laufendes unbeherrschtes Lernziel unverändert fortzusetzen; und
+- nur wenn kein Lernziel läuft und der autoritative Status
+  `resumeAvailable=true` liefert, mit dem neuen Write-Tool
+  `resume_skillpilot_learning_plan` ohne Rückfrage das serverseitig gewählte
+  nächste fällige, offene und voraussetzungssichere Planziel zu aktivieren.
+  Der Write erhält weder Plan noch Fach, Datum oder Ziel als Auswahlparameter,
+  bleibt an Lernsession, Write-Scope, `expectedStateVersion` und
+  `clientRequestId` gebunden, verbietet erfolgreiche No-ops und liefert den
+  vollständigen neuen kanonischen Kontext zurück; und
+- auf einen ausdrücklichen Lernendenwunsch wie „Wechsle zu Physik“ mit
+  `switch_skillpilot_learning_plan_subject` zu reagieren. Das Tool akzeptiert
+  ausschließlich einen lokalisierten Fachnamen aus dem frischen
+  `learningPlanToday`, niemals eine Plan-, Landscape- oder Ziel-ID. Der Server
+  löst genau einen gültigen Fachplan auf, parkt das bisherige Ziel ohne
+  Beherrschungsänderung und aktiviert dessen erstes fälliges,
+  voraussetzungssicheres Ziel. Unbekannte, mehrdeutige, bereits aktive oder
+  derzeit nicht fortsetzbare Fächer werden ohne interne IDs fail-closed
+  abgelehnt. Auch dieser Write ist versionsgeschützt, idempotent und liefert
+  den vollständigen kanonischen Folgezustand.
+
+Die Claude-Paketversion, Skill- und Policy-Texte, der Connector-Vertrag mit nun
+14 Tools, die lokal reproduzierbare 1.1.0-Archivdatei, der aktuelle
+First-Party-Index, die Direktinstallations- und Marketplace-Release-Metadaten,
+die deutsche und englische Connector-Datenschutzseite sowie ihre strukturellen
+Prüfungen dürfen genau für diesen Ersatz fortgeschrieben werden. Alle
+Exact-Client-, Privacy-, Legal-, Support- und Marketplace-Evidenzen, die für
+1.1.0 noch nicht tatsächlich erbracht wurden, bleiben ausdrücklich
+`pending`; frühere Beobachtungen werden nicht übernommen. Es erfolgt in diesem
+Arbeitsschritt keine externe Marketplace-Veröffentlichung und keine
+Behauptung einer Anthropic-Abnahme.
+
+Insbesondere weist der aktuelle 1.1-Publikationsindex bis zur jeweils
+kandidatengenauen Abnahme `testedSurfaces: []` und `voiceMode: false` aus. Die
+sichtbare First-Party-Anleitung und der öffentliche Zugangsvergleich dürfen
+Claude Pro, Web, Android und Voice nur als vorgesehenen beziehungsweise
+technisch unterstützten 1.1-Betatestpfad mit noch ausstehender Abnahme
+beschreiben. Sie dürfen die historische Erprobung früherer Claude-Pakete nicht
+als aktuellen 1.1-Nachweis darstellen.
+
+ChatGPT-Start-Handler, Prepared Message, OpenAI-Portalwerte, eingereichtes
+OpenAI-Paket, Review-Snapshot, Reviewfälle, Fixture, Demo und
+MCP-Apps-UI bleiben unverändert. Die konkreten Quell-, Paket-, Datenschutz-,
+Release-, Test- und Dokumentationsbytes werden in der append-only
+Hashkette von `review-freeze.json` gebunden.
+
+### 6.48 Eng begrenzte Ausnahme: lokaler OpenAI-Coach-1.1-Kandidat bei unverändertem Reviewvertrag
+
+Der Product Owner hat am **4. September 2026** zugleich die lokale Vorbereitung
+eines späteren planorientierten OpenAI-Coach-1.1-Kandidaten freigegeben. Diese
+Freigabe hebt den aktiven Review-Freeze von **SkillPilot Coach 1.0.0** nicht auf
+und aktiviert den Kandidaten weder lokal in der Standardkonfiguration noch in
+Produktion.
+
+Der eingereichte Vertrag bleibt bei ausgeschaltetem, standardmäßig auf `false`
+stehenden Feature-Flag exakt unverändert: dieselben 12 Tools, dieselben
+Instruktionen und Schemas sowie der eingefrorene Contract-Fingerprint
+`d2f08a66efa3488e5f87758de41688a18ce47ba2951bb2d3147e522d1fd30b38`.
+Auch der kanonische Paketbaum
+`ai/openai plugin/skillpilot-coach-v1`, der eingefrorene Draft-Snapshot, die
+öffentliche Endpoint- und OAuth-Linie, Portalwerte, Reviewfälle, Fixture, Demo
+und Reviewartefakte bleiben bytegenau unverändert.
+
+Nur bei einem später ausdrücklich gesetzten 1.1-Flag darf derselbe Backend-Build
+additiv genau zwei weitere Tools ausweisen:
+
+- `get_skillpilot_daily_plan` liest nach dem vollständigen Kontext die
+  datensparsame additive Fachübersicht; eine im Kontext veröffentlichte
+  Lernzielvisualisierung bleibt dabei der zwingend unmittelbar nächste
+  Darstellungsschritt; und
+- `resume_skillpilot_learning_plan` darf ausschließlich nach einem frischen
+  Status mit `resumeAvailable=true` und ohne aktives Lernziel denselben
+  versionsgeschützten, idempotenten providerneutralen Reconcile-Pfad verwenden.
+
+Die 1.1-Instruktionen benennen alle gültigen Fächer, unterscheiden heute neu
+fällig, davon aktuell beherrscht, heute offen und Rückstand, erfinden keine
+Planaufgaben und vergleichen Fächer weder nach Tempo noch Leistung. Der
+separate lokale Kandidatendeskriptor und sein deterministischer Checker müssen
+zugleich den unveränderten 1.0-Vertrag und den additiven 14-Tool-Kandidaten
+nachweisen. Es werden kein `prepare`, kein Portal-Save, kein MCP-Rescan, kein
+Upload, keine Veröffentlichung und keine Produktionsaktivierung ausgeführt.
+
+Da der geschützte OpenAI-Backend-Quellbaum damit ausschließlich dormant
+erweiterbar wird, behält `review-freeze.json` seinen eingereichten Baumhash als
+Baseline und führt den ausdrücklich autorisierten neuen Baumhash in einer
+separaten append-only Hashkette. Der Freeze-Prüfer akzeptiert diese Kette nur,
+wenn die ursprüngliche Baseline unverändert im Record steht; jede spätere
+Abweichung benötigt erneut eine ausdrücklich freigegebene Folgeausnahme.

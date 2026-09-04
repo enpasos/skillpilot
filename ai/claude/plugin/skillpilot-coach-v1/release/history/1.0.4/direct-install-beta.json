@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "lane": "controlled_direct_install_beta",
+  "channel": "beta",
+  "officialDistribution": {
+    "anthropicConsole": "deferred",
+    "connectorsDirectory": "deferred"
+  },
+  "publication": {
+    "resourceRoot": "backend/src/main/resources/claude-plugin-publication",
+    "downloadBasePath": "/api/public/claude/plugins",
+    "accessModel": "first_party_guided_beta"
+  },
+  "candidate": {
+    "version": "1.0.4",
+    "sha256": "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963"
+  },
+  "plugin": {
+    "id": "skillpilot-coach-v1",
+    "name": "SkillPilot Coach v1",
+    "status": "beta",
+    "sourceUrl": "https://github.com/enpasos/skillpilot/tree/main/ai/claude/plugin/skillpilot-coach-v1",
+    "privacyUrl": "https://mcp-claude-v1.skillpilot.com/privacy",
+    "termsUrl": "https://skillpilot.com/legal",
+    "supportEmail": "support@skillpilot.com"
+  },
+  "planSemantics": {
+    "supportBaseline": "claude_pro",
+    "technicalRequirement": "paid_claude_plan"
+  },
+  "requirements": {
+    "minimumAge": 18,
+    "plan": "claude-pro",
+    "installSurface": "claude-web",
+    "testedSurfaces": [
+      "claude-web",
+      "claude-android"
+    ],
+    "voiceMode": true
+  },
+  "readiness": {
+    "controlledBetaReady": true,
+    "guidedFirstPartyBetaReady": true,
+    "openPublicBetaReady": false,
+    "controlledBetaEvidence": [
+      {
+        "id": "local-package-structural-and-unit-validation",
+        "kind": "local_validation",
+        "status": "pass",
+        "evidenceRef": "check-package-structural-pass-and-package-unit-tests"
+      },
+      {
+        "id": "local-reproducible-plugin-archive",
+        "kind": "local_validation",
+        "status": "pass",
+        "evidenceRef": "byte-identical-buildClaudePluginPackage-runs"
+      },
+      {
+        "id": "first-party-guided-plugin-setup",
+        "kind": "local_validation",
+        "status": "pass",
+        "evidenceRef": "testClaudeV1StartUi-and-claudePluginPublication"
+      },
+      {
+        "id": "real-client-claude-pro-web-direct-install",
+        "kind": "real_client",
+        "status": "pass",
+        "evidenceRef": "product-owner-observation-2026-08-25"
+      },
+      {
+        "id": "real-client-claude-pro-android-account-use",
+        "kind": "real_client",
+        "status": "pass",
+        "evidenceRef": "product-owner-observation-2026-08-25"
+      },
+      {
+        "id": "real-client-claude-pro-android-voice-mode",
+        "kind": "real_client",
+        "status": "pass",
+        "evidenceRef": "product-owner-observation-2026-08-25"
+      }
+    ],
+    "openPublicBetaBlockers": [
+      {
+        "id": "privacy-approval",
+        "status": "pass",
+        "evidenceRef": "ai/claude/plugin/skillpilot-coach-v1/release/evidence/controlled-direct-install-beta/1.0.4-privacy-approval.json"
+      },
+      {
+        "id": "legal-approval",
+        "status": "pending",
+        "evidenceRef": null
+      },
+      {
+        "id": "support-readiness",
+        "status": "pending",
+        "evidenceRef": null
+      },
+      {
+        "id": "exact-client-acceptance",
+        "status": "pending",
+        "evidenceRef": null
+      }
+    ]
+  }
+}

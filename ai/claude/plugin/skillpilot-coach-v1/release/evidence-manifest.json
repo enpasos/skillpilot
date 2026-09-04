@@ -2,53 +2,47 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.0.0",
-  "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
-  "candidateRevision": "45a76331fa24113f1f91180ff9ef79a66e90d122",
-  "policy": "Store only non-secret evidence references and SHA-256 digests. A recorded or approved entry must bind to this exact plugin candidate digest and revision; plugin submission and publication remain fail-closed until the required external records are approved.",
+  "pluginVersion": "1.1.0",
+  "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
+  "candidateRevision": "a5d8bd6347f7a021aee25c6602c7a5e5796cccb4",
+  "policy": "Store only non-secret evidence references and SHA-256 digests. Every current 1.1.0 entry starts pending and a recorded or approved entry must bind to this exact candidate digest and revision; no 1.0.x approval transfers. The immutable 1.0.0 dossier remains under release/history/1.0.0. Plugin submission and publication remain fail-closed until the required external records are approved.",
   "entries": [
     {
       "id": "openai-review-freeze-final-plugin-candidate",
       "kind": "automated-check-record",
-      "status": "approved",
+      "status": "reference_required",
       "description": "Final OpenAI review-freeze differential for the exact Claude plugin candidate.",
-      "gateIds": [
-        "openai-review-freeze"
-      ],
+      "gateIds": ["openai-review-freeze"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
-      "candidateRevision": "45a76331fa24113f1f91180ff9ef79a66e90d122",
-      "externalEvidenceId": "github-actions-job:https://github.com/enpasos/skillpilot/actions/runs/32761461912/job/97541135719",
-      "sha256": "d6126f4fcde5305f81f4095bde75398e638e28119d8bf097118906fa8e48dbbd",
-      "approvedBy": "codex-release-audit",
-      "approvedAt": "2026-08-24T18:19:30Z"
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
     },
     {
       "id": "plugin-package-structural-final-candidate",
       "kind": "automated-check-record",
-      "status": "approved",
+      "status": "reference_required",
       "description": "Structural package validation for the exact public plugin archive inputs.",
-      "gateIds": [
-        "plugin-package-structural-check"
-      ],
+      "gateIds": ["plugin-package-structural-check"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
-      "candidateRevision": "45a76331fa24113f1f91180ff9ef79a66e90d122",
-      "externalEvidenceId": "github-actions-job:https://github.com/enpasos/skillpilot/actions/runs/32761461912/job/97541135719",
-      "sha256": "d6126f4fcde5305f81f4095bde75398e638e28119d8bf097118906fa8e48dbbd",
-      "approvedBy": "codex-release-audit",
-      "approvedAt": "2026-08-24T18:19:30Z"
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
     },
     {
       "id": "anthropic-plugin-cli-validation-final-candidate",
       "kind": "anthropic-cli-record",
       "status": "reference_required",
       "description": "Strict Anthropic plugin CLI validation for the exact public plugin candidate.",
-      "gateIds": [
-        "anthropic-plugin-cli-validation"
-      ],
+      "gateIds": ["anthropic-plugin-cli-validation"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -58,29 +52,25 @@
     {
       "id": "reproducible-plugin-archive-final-candidate",
       "kind": "artifact-reproducibility-record",
-      "status": "approved",
+      "status": "reference_required",
       "description": "Two independent builds proving byte-identical deterministic plugin archives.",
-      "gateIds": [
-        "reproducible-plugin-archive"
-      ],
+      "gateIds": ["reproducible-plugin-archive"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
-      "candidateRevision": "45a76331fa24113f1f91180ff9ef79a66e90d122",
-      "externalEvidenceId": "github-actions-job:https://github.com/enpasos/skillpilot/actions/runs/32761461912/job/97541135719",
-      "sha256": "d6126f4fcde5305f81f4095bde75398e638e28119d8bf097118906fa8e48dbbd",
-      "approvedBy": "codex-release-audit",
-      "approvedAt": "2026-08-24T18:19:30Z"
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
     },
     {
       "id": "remote-mcp-contract-final-plugin-candidate",
       "kind": "remote-contract-acceptance-record",
       "status": "reference_required",
-      "description": "Remote SkillPilot MCP contract acceptance for twelve tools and both MCP Apps.",
-      "gateIds": [
-        "remote-mcp-contract-twelve-tools-two-apps"
-      ],
+      "description": "Remote SkillPilot MCP contract acceptance for fourteen tools and both MCP Apps.",
+      "gateIds": ["remote-mcp-contract-fourteen-tools-two-apps"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -92,11 +82,9 @@
       "kind": "real-client-acceptance-record",
       "status": "reference_required",
       "description": "Eligible paid Claude Web Chat installation and end-to-end learning-flow acceptance.",
-      "gateIds": [
-        "paid-web-chat-real-client"
-      ],
+      "gateIds": ["paid-web-chat-real-client"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -108,11 +96,9 @@
       "kind": "android-real-client-acceptance-record",
       "status": "reference_required",
       "description": "Exact-candidate acceptance proving account-level direct installation on Claude Pro, connector OAuth, the intended SkillPilot learning flow, and both interactive MCP Apps in the native Claude Android app. This does not prove installation from Android, public-listing reach or iOS support.",
-      "gateIds": [
-        "android-direct-install-real-client"
-      ],
+      "gateIds": ["android-direct-install-real-client"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -124,11 +110,9 @@
       "kind": "security-acceptance-record",
       "status": "reference_required",
       "description": "First-party 24-hour learning-session creation, expiry and learner-control acceptance.",
-      "gateIds": [
-        "first-party-24h-learning-session"
-      ],
+      "gateIds": ["first-party-24h-learning-session"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -140,11 +124,9 @@
       "kind": "security-acceptance-record",
       "status": "reference_required",
       "description": "OAuth transport identity and first-party learner-session separation acceptance.",
-      "gateIds": [
-        "oauth-learner-session-separation"
-      ],
+      "gateIds": ["oauth-learner-session-separation"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -156,11 +138,9 @@
       "kind": "security-acceptance-record",
       "status": "reference_required",
       "description": "Permanent SkillPilot-ID and retired ID-file nondisclosure acceptance.",
-      "gateIds": [
-        "permanent-id-nondisclosure"
-      ],
+      "gateIds": ["permanent-id-nondisclosure"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -172,11 +152,9 @@
       "kind": "adversarial-security-record",
       "status": "reference_required",
       "description": "Negative, replay, origin-enforcement, secret-redaction and log-redaction acceptance.",
-      "gateIds": [
-        "negative-replay-origin-redaction"
-      ],
+      "gateIds": ["negative-replay-origin-redaction"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -188,11 +166,9 @@
       "kind": "approval-record",
       "status": "reference_required",
       "description": "Privacy, legal, support-owner and security-owner approval for public plugin distribution.",
-      "gateIds": [
-        "privacy-legal-support-approval"
-      ],
+      "gateIds": ["privacy-legal-support-approval"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -204,11 +180,9 @@
       "kind": "submission-metadata-approval",
       "status": "reference_required",
       "description": "Approved public plugin-console name, description, paid Web and verified Android surfaces, legal URLs and candidate archive metadata.",
-      "gateIds": [
-        "anthropic-plugin-submission-metadata"
-      ],
+      "gateIds": ["anthropic-plugin-submission-metadata"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -218,29 +192,25 @@
     {
       "id": "public-github-source-final-plugin-candidate",
       "kind": "public-source-security-review",
-      "status": "approved",
+      "status": "reference_required",
       "description": "Approved public GitHub repository URL and candidate path, with a sanitized review proving that the submitted source contains no credentials, learner sessions, learner data or protected answers.",
-      "gateIds": [
-        "public-github-source-sanitization"
-      ],
+      "gateIds": ["public-github-source-sanitization"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
-      "candidateRevision": "45a76331fa24113f1f91180ff9ef79a66e90d122",
-      "externalEvidenceId": "github-tree:https://github.com/enpasos/skillpilot/tree/45a76331fa24113f1f91180ff9ef79a66e90d122/ai/claude/plugin/skillpilot-coach-v1",
-      "sha256": "07eab39c3b67af8a04f4d177ed9c01c41da49ea8a25b587586ad37d53671488f",
-      "approvedBy": "codex-release-audit",
-      "approvedAt": "2026-08-24T18:19:30Z"
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
     },
     {
       "id": "anthropic-console-submitter-role-final-candidate",
       "kind": "submitter-authorization-record",
       "status": "reference_required",
       "description": "Sanitized authorization evidence that the submitting Anthropic Console organization member has the Developer, Admin or Owner role required for plugin submission.",
-      "gateIds": [
-        "anthropic-console-submitter-role"
-      ],
+      "gateIds": ["anthropic-console-submitter-role"],
       "lifecycleStates": [],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -253,10 +223,8 @@
       "status": "reference_required",
       "description": "Anthropic plugin-console receipt proving submission of this exact frozen plugin candidate.",
       "gateIds": [],
-      "lifecycleStates": [
-        "SUBMITTED"
-      ],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "lifecycleStates": ["SUBMITTED"],
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,
@@ -269,10 +237,8 @@
       "status": "reference_required",
       "description": "Fresh installation from the actual public listing, not a retained direct installation, plus successful native Android end-to-end use of this exact frozen plugin candidate.",
       "gateIds": [],
-      "lifecycleStates": [
-        "PUBLISHED"
-      ],
-      "candidateContractSha256": "9f765d5646add9e54a1d47b6598ddcece77ece1c3d1e54ff8064270398440dbb",
+      "lifecycleStates": ["PUBLISHED"],
+      "candidateContractSha256": "22048cab5a165d09f3a4712a02c7904b38ade833496cf2f07a0c9cfc8ffaf621",
       "candidateRevision": null,
       "externalEvidenceId": null,
       "sha256": null,

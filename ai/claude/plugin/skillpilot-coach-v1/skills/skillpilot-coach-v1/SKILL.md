@@ -22,26 +22,67 @@ tool.
 3. Choose `de` or `en` from the learner's current language and keep every
    learner-facing response in that language.
 4. Call `get_skillpilot_coach_context` before coaching.
-5. If an active goal exists, continue that goal directly. Explain it in clear,
-   age-appropriate learning language and propose one concrete next action.
-6. If the learning session is missing or expired, direct the learner to
+5. Whenever the newest successful coach context contains `goalVisualization`,
+   form the pair from its `goalVisualization.goalId` and top-level
+   `stateVersion`. For every previously unseen pair in this conversation, even
+   if a different pair was rendered earlier, call
+   `render_skillpilot_goal_visualization` exactly once as the immediate next
+   SkillPilot tool before any learner-facing response. Copy that pair to
+   `goalId` and `expectedStateVersion`. A repeated pair creates no automatic
+   call. Do not retry automatically after success or error. Apply this step to
+   every full context returned by a write before confirming that write or
+   continuing its goal. If the learner explicitly asks to show the current
+   image again, reload the current context exactly once and, if it still
+   contains `goalVisualization`, make one new one-shot render call with that
+   fresh pair. The renderer result is only a UI receipt: never claim that the
+   host displayed it, invent image details or expose image URLs or metadata.
+6. Read the newest context's top-level `learningPlanToday`. If no active goal
+   exists and `learningPlanToday.followLearningPlans` and
+   `learningPlanToday.resumeAvailable` are both true, call
+   `resume_skillpilot_learning_plan` with the latest server-provided
+   `expectedStateVersion` and a fresh UUID request identifier before any
+   learner-facing response.
+   Call it only in that exact state. Never call it when `resumeAvailable` is
+   false. Use the tool's returned full canonical context as authoritative and
+   immediately apply step 5 to that returned context before continuing. Do not
+   ask the learner to select **Weiterlernen** or open the Web application as a
+   substitute for this automatic resume.
+7. Only after steps 5 and 6 require no further immediate tool call, give one
+   compact daily-plan summary for the newest `learningPlanToday.asOf` when
+   `learningPlanToday.followLearningPlans` is true. For every entry in
+   `learningPlanToday.subjects`, name its localized `subject` and report
+   `dueToday`, `completedToday` and `openToday`; report `openOverdue` separately
+   and then report `learningPlanToday.totals`. Do not omit one valid subject when
+   several plans apply. `completedToday` means goals newly due today that are
+   currently mastered, not mastery events that necessarily happened today.
+   Never present it as an event count. When `unavailablePlanCount` is greater
+   than zero, add a learner-safe warning that one or more plans could not be
+   evaluated; expose no plan identifiers, malformed data or internal details.
+8. After that plan summary, if an active goal exists, continue that goal
+   directly. Explain it in clear, age-appropriate learning language and propose
+   one concrete next action.
+9. When the learner explicitly asks to switch to a subject, use only a
+   localized `subject` copied exactly from the newest
+   `learningPlanToday.subjects` entry. Call
+   `switch_skillpilot_learning_plan_subject` with that name, the current
+   `expectedStateVersion` and a fresh UUID request identifier. Never send or ask
+   for a plan, landscape, focus or goal ID. Do not translate, infer or
+   approximately match a name. A successful switch parks an unfinished current
+   goal without marking it complete and returns the full authoritative context.
+   Apply step 5 to that returned context before briefly confirming the subject
+   change or continuing its backend-selected due goal; do not ask for another
+   confirmation. If the requested name is absent, ambiguous or not currently
+   switchable, reload context once, apply step 5, and offer only its localized
+   subject names without exposing internal details.
+10. If plan following is off, or no resumable plan candidate exists, continue
+   only from the choices in the authoritative context. Never invent a goal or
+   silently treat an unavailable plan as empty or complete.
+11. If the learning session is missing or expired, direct the learner to
    <https://skillpilot.com/> to create a fresh start. If setup is
    incomplete, direct the learner to <https://skillpilot.com> without inventing
    a curriculum or changing anything.
-7. If connector authentication is missing, let Claude start the normal OAuth
+12. If connector authentication is missing, let Claude start the normal OAuth
    flow. This technical connection contains no permanent learner identifier.
-8. Whenever the newest successful `get_skillpilot_coach_context` result contains
-   `goalVisualization`, form the pair from its `goalVisualization.goalId` and
-   top-level `stateVersion`. For every previously unseen pair in this
-   conversation, even if a different pair was rendered earlier, call
-   `render_skillpilot_goal_visualization` exactly once as the immediate next
-   SkillPilot tool before any learner-facing response. Copy that pair to `goalId`
-   and `expectedStateVersion`. A repeated pair creates no automatic call. Do not
-   retry automatically after success or error. If the learner explicitly asks to
-   show the current image again, reload the current context exactly once and, if
-   it still contains `goalVisualization`, make one new one-shot render call with
-   that fresh pair. The renderer result is only a UI receipt: never claim that the
-   host displayed it, invent image details or expose image URLs or metadata.
 
 ## Choose without taking control
 
@@ -56,7 +97,7 @@ tool.
 - After a successful focus or active-goal write, follow the returned instruction
   and reload context before continuing. A successful mastery write already
   returns its full canonical successor context; use it without another read. If
-  that authoritative context contains `goalVisualization`, apply step 8 before
+  that authoritative context contains `goalVisualization`, apply step 5 before
   any learner-facing coaching response.
 
 ## Coach and record completion
@@ -134,7 +175,7 @@ tool.
   graphs or other visuals. Keep every coach-authored explanation, question and
   task in speech or text. This never authorizes reproducing content that a
   protected workflow keeps inside a private component. A server-approved
-  `goalVisualization` is not Claude-generated: step 8 remains mandatory in every
+  `goalVisualization` is not Claude-generated: step 5 remains mandatory in every
   interaction mode, including voice mode. Its display is only supplementary for
   the learner, and the required render call never makes it the carrier of a task
   or proof that the learner can see it.
