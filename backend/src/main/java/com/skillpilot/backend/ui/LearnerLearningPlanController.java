@@ -1,6 +1,7 @@
 package com.skillpilot.backend.ui;
 
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.service.LearningPlanPrerequisiteScheduleConflictException;
 import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
@@ -11,6 +12,7 @@ import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +40,14 @@ public class LearnerLearningPlanController {
         this.learningPlans = learningPlans;
         this.learners = learners;
         this.lifecycle = lifecycle;
+    }
+
+    @ExceptionHandler(LearningPlanPrerequisiteScheduleConflictException.class)
+    public ResponseEntity<LearnerLearningPlanApi.ErrorResponse> handlePrerequisiteScheduleConflict() {
+        return ResponseEntity.badRequest()
+                .cacheControl(CacheControl.noStore())
+                .body(new LearnerLearningPlanApi.ErrorResponse(
+                        LearnerLearningPlanApi.PREREQUISITE_SCHEDULE_CONFLICT_ERROR_CODE));
     }
 
     @GetMapping

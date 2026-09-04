@@ -109,6 +109,7 @@ try {
   page.on('pageerror', (pageError) => browserErrors.push(pageError.message))
   const activationBodies: unknown[] = []
   let failNextActivation = false
+  let failNextActivationWithScheduleConflict = false
   let returnIncoherentActivation = false
   let failPhysicsRead = false
   const serverPlans = new Map<string, ReturnType<typeof planDetail> | null>([
@@ -153,6 +154,17 @@ try {
       && url.pathname === `/api/ui/learners/${learnerId}/learning-plans/activate`
     ) {
       activationBodies.push(request.postDataJSON())
+      if (failNextActivationWithScheduleConflict) {
+        failNextActivationWithScheduleConflict = false
+        await route.fulfill({
+          status: 400,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            errorCode: 'LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT',
+          }),
+        })
+        return
+      }
       if (failNextActivation) {
         failNextActivation = false
         await route.fulfill({ status: 409, body: 'atomic activation rejected' })
@@ -317,6 +329,22 @@ try {
     await page.getByText('Im Cockpit · aktuell', { exact: true }).count() === 1
       && await page.getByText('Im Cockpit · kein lokaler Entwurf', { exact: true }).count() === 1,
     'a rejected batch does not claim or render a partial status change',
+  )
+
+  failNextActivationWithScheduleConflict = true
+  await page.getByRole('button', {
+    name: 'Planung mit 2 Fachplänen wirksam machen',
+    exact: true,
+  }).click()
+  await page.getByTestId('trainer-learning-plan-activation-confirmation')
+    .getByRole('button', { name: 'Jetzt wirksam machen', exact: true })
+    .click()
+  await page.getByRole('alert').filter({
+    hasText: 'nicht automatisch voraussetzungsgerecht verteilt werden',
+  }).waitFor()
+  assert(
+    await page.getByRole('alert').filter({ hasText: 'Es wurde nichts übernommen.' }).count() === 1,
+    'a prerequisite schedule conflict receives a safe, actionable teacher message',
   )
 
   const physicsPlan = serverPlans.get(physicsLandscapeId)

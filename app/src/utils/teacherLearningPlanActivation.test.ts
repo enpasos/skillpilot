@@ -75,6 +75,29 @@ assert.equal(
   'canonical ordering still rejects a semantic atomic-goal difference',
 )
 
+const twoAtomCopy: LearnerLearningPlanCopy = {
+  ...localCopy,
+  atomicGoalCount: 3,
+  blocks: localCopy.blocks.map((block) => (
+    block.id === 'earlier-block-created-later' && block.kind === 'learning'
+      ? { ...block, atomicGoalIds: ['prerequisite', 'dependent'] }
+      : block
+  )),
+}
+assert.equal(
+  learnerPlanCopyMatchesServer(twoAtomCopy, {
+    ...serverPlan,
+    metrics: { ...serverPlan.metrics, totalPlanned: 3 },
+    blocks: serverPlan.blocks.map((block) => (
+      block.id === 'earlier-block-created-later' && block.kind === 'learning'
+        ? { ...block, atomicGoalIds: ['dependent', 'prerequisite'] }
+        : block
+    )),
+  }),
+  false,
+  'a server-side in-block permutation remains fail-closed until the exact result is confirmed',
+)
+
 assert.equal(
   learnerPlanCopyMatchesServer(localCopy, {
     ...serverPlan,

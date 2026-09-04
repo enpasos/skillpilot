@@ -2623,6 +2623,36 @@ const expectedAuthorizedRuntimeExceptions = [
     "additionalFiles": [
       {"path":"docs/security/data-privacy.md","priorAuthorizedSha256":"179f3acac510a36bffc7eb1c206df715f7cf714550f8f5d920f61c17b249aa08","authorizedSha256":"01972aa9cd839fcbc78e3b3322b6aa6e21368b7b7104a90e933c431445f22f42"}
     ]
+  },
+  {
+    "id": "2026-09-04-parallel-subject-plan-prerequisite-scheduling",
+    "approvedAt": "2026-09-04",
+    "approvedBy": "product-owner",
+    "reason": "Keep every valid subject plan active in parallel and add its daily requirements while making prerequisite-safe due goals available for automatic learner guidance.",
+    "scope": "In the current first-party Trainer and Learner planning flow only, preserve already valid subject plans exactly; detect position-based and cumulative due-set prerequisite conflicts within each subject plan; attempt a bounded deterministic repair by reordering atoms only inside their existing learning blocks; require an exact final validation with the same cumulative runtime rounding; retain subjects, block assignment, dates, titles and parallel daily addition; and reject atomically with one whitelisted detail-free error code when the repair or shared operation budget cannot establish a safe order. Preserve strict activation response comparison, automatic first-due eligible goal selection, subject switching, all OpenAI and Claude packages, provider starts, MCP/OAuth/tools/schemas/UI, sessions, review cases, fixtures, portal values and review artifacts.",
+    "target": "current-production-first-party-parallel-subject-plan-prerequisite-scheduling-only",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-first-party-plan-scheduling-repair-with-unchanged-v1-interface-review-fixture-and-portal-metadata",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {"path":"app/scripts/testTrainerLearningPlanActivationUi.ts","priorAuthorizedSha256":"c7b5b5250e3d2ab6d8b9e32005c757897d4e30d33569fb74a16e110c4e3905a5","authorizedSha256":"bb5c0933f21ec3c907cd609c137fc37d0473b4f4bc971f84db6db562f94b1bb6"},
+      {"path":"app/src/components/TrainerLearningPlanActivation.tsx","priorAuthorizedSha256":"df24317a1ce1d8d7445c94044fe90f9f35dcef0128a63734fc2d5ac12cb5b61b","authorizedSha256":"65b42faf7221e7705a11c7641702680cb2c31646ef70e4727c302bf5697727da"},
+      {"path":"app/src/utils/learnerLearningPlanApi.test.ts","priorAuthorizedSha256":"154f43601f2a6e3de91e29f7f9bcbce5ea740447c814120b608605b5236f2b0a","authorizedSha256":"98bf9e5d9cee01e867fde55508f2dac2e3635928d2c13a0a38a2e7348bb68880"},
+      {"path":"app/src/utils/learnerLearningPlanApi.ts","priorAuthorizedSha256":"680443ff86bf1f49700aab056a4163dcf3a2f11cb9a5c66ef9e142ce3695ff5f","authorizedSha256":"2a1e2d9b062a27833bf750293087d3141e513444553e00b0feca06fc673c6b88"},
+      {"path":"app/src/utils/localTeacherCoursePlan.test.ts","priorAuthorizedSha256":"165947dabb5affecd4d013c20e3dea27e1dcf5a9cbd6e46579f81aa787a50a62","authorizedSha256":"2beaf8a8887053c8bfb917832c1cce8c27dbc33a755560d3510acb794b7ecd83"},
+      {"path":"app/src/utils/localTeacherCoursePlan.ts","priorAuthorizedSha256":"24115a036ea49ed0be9f0bcb1d96ece5381f026be42ba15f9864f16994fcdc90","authorizedSha256":"27b55e1836d4135bb8518a35409eba29e944fcceb748ffbf0fef6b6285c6469a"},
+      {"path":"app/src/utils/teacherLearningPlanActivation.test.ts","priorAuthorizedSha256":"b4907cda6ed646d699ddfcefcaf0efece20bc4df8c0351ff0e6c36b049282d23","authorizedSha256":"3603f539fb15c7b878d2e5f728b552c6c9977d5789a6e8e9aa504031f5600523"},
+      {"path":"backend/src/main/java/com/skillpilot/backend/api/LearnerLearningPlanApi.java","priorAuthorizedSha256":"6dc8666fc2621a611b94fd50574b37bfc0558aff0f490a0f9ee5b7a4f83fb039","authorizedSha256":"4c54427b4cc0b05ab5ac86613750bbde3ddc785fac981d4451e5d1a0ca77528b"},
+      {"path":"backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java","priorAuthorizedSha256":"112d62b2c819aeeac14ff0243777ed41299251789ac50243d590b1c4b206e366","authorizedSha256":"0e8be4ddc1757547272c022c0487d416b255905efe182fa64a48f5a2da594bef"},
+      {"path":"backend/src/main/java/com/skillpilot/backend/service/LearnerService.java","priorAuthorizedSha256":"7d238b418cc4f584925274d80b75539a070647facc8aaf2968ffb6da83400132","authorizedSha256":"817b89394233a250152c97d6660ffaa92a5fb0c266cd4e64cc790e6a1252dace"},
+      {"path":"backend/src/main/java/com/skillpilot/backend/service/LearningPlanPrerequisiteScheduleConflictException.java","authorizedSha256":"58637c2f3d6112f219bc4368f52fabe08f9e63c70d5a199b45286088a2920b4d"},
+      {"path":"backend/src/main/java/com/skillpilot/backend/ui/LearnerLearningPlanController.java","priorAuthorizedSha256":"e64f0001d38eaa1075c2f6854ac0a4e44d40f34bcc245763c965b4f4f23b73d2","authorizedSha256":"e7fa576971f4482256aa6c5494a4a8d1453e7f0ced023a381fb753c4e3dfd276"},
+      {"path":"backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java","priorAuthorizedSha256":"59c03e7e41442f00b7d9a6dd9d579f27593c33f01e7574627510fe7c0be8423e","authorizedSha256":"7451c6c42d4d3c6060851ff05d579dacb0dc799826c17e879863ab5614889627"},
+      {"path":"backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java","priorAuthorizedSha256":"d5b73983fd188fc321bc9ee65cf217364af4141155b92ba83b9f08e02490a3d7","authorizedSha256":"85ce843669d90e26edf436be21f51693f48581d8f7f86bcf321c8f4c46d84d3e"},
+      {"path":"backend/src/test/java/com/skillpilot/backend/ui/LearnerLearningPlanControllerHttpTest.java","priorAuthorizedSha256":"ab1b5b33ae1bd4f1a1c86ecb47c796f6e89e230440cded4ef8c2b80933831475","authorizedSha256":"b0c24e1cf0f38f353d9312e975f9036009b28a5256389c872874579a92e49faa"},
+      {"path":"docs/concept/didactic/curriculum-time-axis-and-pacing.md","priorAuthorizedSha256":"451253eb2e63a99b5d3c7279afbd77882ea13913113334a2d5892619d5de61d9","authorizedSha256":"b30a00f5fbf828e30a38af81fa9382deddda7f9ccb0cb8a48a60c90fd1ed1b32"},
+      {"path":"docs/deploy/openai-plugin-v1-review-freeze.md","priorAuthorizedSha256":"88bd4edb36327e25ff713329375b8725ece8ea2ffbbf4ef617687b65215bf57c","authorizedSha256":"f225cc82295abd1495c90544716f05105e520b1808c110edf286d2eebf205fa4"}
+    ]
   }
 ];
 

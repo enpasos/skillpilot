@@ -46,6 +46,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.io.InputStream;
@@ -122,6 +123,9 @@ public class LearnerService {
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
     private static final int DEFAULT_VERIFIED_RECALL_BATCH_SIZE = 10;
     private static final int MAX_VERIFIED_RECALL_BATCH_SIZE = 20;
+    private static final int MAX_LEARNING_PLAN_SCHEDULE_CHECK_WORKDAYS = 1_000;
+    private static final int MAX_LEARNING_PLAN_REPAIR_ITERATIONS = 64;
+    private static final long MAX_LEARNING_PLAN_SCHEDULE_CHECK_OPERATIONS = 50_000_000L;
     private static final Object COACH_STATE_REVISION_TRANSACTION_RESOURCE =
             LearnerService.class.getName() + ".coachStateRevision";
 
@@ -3014,9 +3018,9 @@ public class LearnerService {
     }
 
     /**
-     * Orders each learning block by the current effective prerequisite graph.
-     * Kahn's algorithm uses the submitted order as its stable tie-breaker, so
-     * unrelated goals retain their authored sequence.
+     * Keeps an already valid plan order and otherwise repairs prerequisite
+     * scheduling across the whole subject plan. Atoms never leave their
+     * submitted block; only their positions inside that block may change.
      */
     @Transactional(readOnly = true)
     public List<LearnerLearningPlanApi.Block> orderLearningPlanBlocksByPrerequisites(
@@ -3037,45 +3041,264 @@ public class LearnerService {
                 learner.getPersonalCurriculum());
         Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(structuralGoals);
-        List<LearnerLearningPlanApi.Block> orderedBlocks = new ArrayList<>(blocks.size());
+        List<String> submittedAtoms = blocks.stream()
+                .filter(block -> "learning".equals(block.kind()))
+                .filter(block -> block.atomicGoalIds() != null)
+                .flatMap(block -> block.atomicGoalIds().stream())
+                .toList();
+        Map<String, LinkedHashSet<String>> prerequisitesByDependent =
+                planPrerequisitesByDependent(
+                        submittedAtoms,
+                        structuralGoals,
+                        effectiveRequires);
+        return orderLearningPlanBlocksForPrerequisites(blocks, prerequisitesByDependent);
+    }
 
+    /** Core fixed-block scheduler, package-visible for focused graph regressions. */
+    List<LearnerLearningPlanApi.Block> orderLearningPlanBlocksForPrerequisites(
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, ? extends Collection<String>> submittedPrerequisitesByDependent) {
+        List<String> submittedAtoms = blocks.stream()
+                .filter(block -> "learning".equals(block.kind()))
+                .filter(block -> block.atomicGoalIds() != null)
+                .flatMap(block -> block.atomicGoalIds().stream())
+                .toList();
+        LinkedHashSet<String> planAtoms = new LinkedHashSet<>(submittedAtoms);
+        Map<String, LinkedHashSet<String>> prerequisitesByDependent = new LinkedHashMap<>();
+        for (String dependentId : planAtoms) {
+            LinkedHashSet<String> plannedPrerequisites = new LinkedHashSet<>();
+            Collection<String> submittedPrerequisites = submittedPrerequisitesByDependent
+                    .get(dependentId);
+            if (submittedPrerequisites == null) {
+                submittedPrerequisites = List.of();
+            }
+            for (String prerequisiteId : submittedPrerequisites) {
+                if (planAtoms.contains(prerequisiteId) && !dependentId.equals(prerequisiteId)) {
+                    plannedPrerequisites.add(prerequisiteId);
+                }
+            }
+            prerequisitesByDependent.put(dependentId, plannedPrerequisites);
+        }
+        List<String> topologicalOrder = stablePlanTopologicalOrder(
+                submittedAtoms,
+                prerequisitesByDependent);
+        List<LocalDate> activeWorkdays = learningPlanActiveWorkdays(blocks);
+        LearningPlanScheduleCheckBudget scheduleCheckBudget =
+                new LearningPlanScheduleCheckBudget();
+
+        if (hasValidLearningPlanSchedule(
+                blocks,
+                prerequisitesByDependent,
+                activeWorkdays,
+                scheduleCheckBudget)) {
+            return List.copyOf(blocks);
+        }
+
+        Map<String, LinkedHashSet<String>> dependentsByPrerequisite = new HashMap<>();
+        topologicalOrder.forEach(goalId ->
+                dependentsByPrerequisite.put(goalId, new LinkedHashSet<>()));
+        prerequisitesByDependent.forEach((dependentId, prerequisiteIds) ->
+                prerequisiteIds.forEach(prerequisiteId ->
+                        dependentsByPrerequisite
+                                .computeIfAbsent(prerequisiteId, ignored -> new LinkedHashSet<>())
+                                .add(dependentId)));
+
+        Map<String, LocalDate> firstPossibleDue = new HashMap<>();
+        Map<String, LocalDate> lastPossibleDue = new HashMap<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
             if (!"learning".equals(block.kind())
                     || block.atomicGoalIds() == null
-                    || block.atomicGoalIds().size() < 2) {
-                orderedBlocks.add(block);
+                    || block.atomicGoalIds().isEmpty()) {
                 continue;
             }
-            List<String> orderedAtoms = stablePlanTopologicalOrder(
-                    block.atomicGoalIds(),
-                    structuralGoals,
-                    effectiveRequires);
-            orderedBlocks.add(new LearnerLearningPlanApi.Block(
-                    block.id(),
-                    block.kind(),
-                    block.goalId(),
-                    block.title(),
+            LocalDate firstDue = scheduledPlanDueDate(
                     block.startDate(),
                     block.endDate(),
-                    block.date(),
-                    orderedAtoms));
+                    block.atomicGoalIds().size(),
+                    1);
+            LocalDate lastDue = scheduledPlanDueDate(
+                    block.startDate(),
+                    block.endDate(),
+                    block.atomicGoalIds().size(),
+                    block.atomicGoalIds().size());
+            block.atomicGoalIds().forEach(goalId -> {
+                firstPossibleDue.put(goalId, firstDue);
+                lastPossibleDue.put(goalId, lastDue);
+            });
         }
-        List<LearnerLearningPlanApi.Block> result = List.copyOf(orderedBlocks);
-        validateLearningPlanDueOrder(result, structuralGoals, effectiveRequires);
-        return result;
+        List<LearnerLearningPlanApi.Block> repaired = repairLearningPlanDueOrderSequence(
+                blocks,
+                topologicalOrder,
+                prerequisitesByDependent,
+                dependentsByPrerequisite,
+                firstPossibleDue,
+                lastPossibleDue,
+                activeWorkdays,
+                scheduleCheckBudget,
+                true);
+        if (repaired == null) {
+            repaired = repairLearningPlanDueOrderSequence(
+                    blocks,
+                    topologicalOrder,
+                    prerequisitesByDependent,
+                    dependentsByPrerequisite,
+                    firstPossibleDue,
+                    lastPossibleDue,
+                    activeWorkdays,
+                    scheduleCheckBudget,
+                    false);
+        }
+        if (repaired == null) {
+            throw new LearningPlanPrerequisiteScheduleConflictException();
+        }
+        return List.copyOf(repaired);
     }
 
-    private void validateLearningPlanDueOrder(
+    private List<LocalDate> learningPlanActiveWorkdays(
+            List<LearnerLearningPlanApi.Block> blocks) {
+        TreeSet<LocalDate> activeWorkdays = new TreeSet<>();
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (!"learning".equals(block.kind())
+                    || block.atomicGoalIds() == null
+                    || block.atomicGoalIds().isEmpty()) {
+                continue;
+            }
+            LocalDate start = block.startDate();
+            LocalDate end = block.endDate();
+            if (start == null || end == null || end.isBefore(start)) {
+                throw new LearningPlanPrerequisiteScheduleConflictException();
+            }
+            LocalDate date = start;
+            while (true) {
+                if (!isPlanWeekend(date)
+                        && activeWorkdays.add(date)
+                        && activeWorkdays.size()
+                                > MAX_LEARNING_PLAN_SCHEDULE_CHECK_WORKDAYS) {
+                    throw new LearningPlanPrerequisiteScheduleConflictException();
+                }
+                if (date.equals(end)) {
+                    break;
+                }
+                date = date.plusDays(1);
+            }
+        }
+        return List.copyOf(activeWorkdays);
+    }
+
+    private LearningPlanDueCheck learningPlanScheduleCheck(
             List<LearnerLearningPlanApi.Block> blocks,
-            Map<String, LearningGoal> structuralGoals,
-            Map<String, List<String>> effectiveRequires) {
-        LinkedHashSet<String> allPlanAtoms = new LinkedHashSet<>();
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent,
+            List<LocalDate> activeWorkdays,
+            LearningPlanScheduleCheckBudget scheduleCheckBudget) {
+        long learningBlockCount = blocks.stream()
+                .filter(block -> "learning".equals(block.kind()))
+                .count();
+        long atomCount = blocks.stream()
+                .filter(block -> "learning".equals(block.kind()))
+                .filter(block -> block.atomicGoalIds() != null)
+                .mapToLong(block -> block.atomicGoalIds().size())
+                .sum();
+        long prerequisiteEdgeCount = prerequisitesByDependent.values().stream()
+                .mapToLong(Set::size)
+                .sum();
+        long positionCheckOperations = atomCount + prerequisiteEdgeCount;
+        long perDayOperations = 2L * atomCount
+                + prerequisiteEdgeCount
+                + 10L * learningBlockCount;
+        long cumulativeCheckOperations = prerequisiteEdgeCount == 0L
+                ? 0L
+                : perDayOperations * activeWorkdays.size();
+        scheduleCheckBudget.consume(positionCheckOperations + cumulativeCheckOperations);
+
+        LearningPlanDueCheck positionCheck = learningPlanDueCheck(
+                blocks,
+                prerequisitesByDependent);
+        if (prerequisiteEdgeCount == 0L) {
+            return positionCheck;
+        }
+        Map<LearningPlanDuePair, LearningPlanDueViolation> violationsByPair =
+                new LinkedHashMap<>();
+        positionCheck.violations().forEach(violation ->
+                rememberLearningPlanDueViolation(violationsByPair, violation));
+        for (LocalDate asOf : activeWorkdays) {
+            List<String> dueGoalIds = LearnerLearningPlanService
+                    .dueAtomicGoalIdsForSchedule(blocks, asOf);
+            Set<String> dueGoalIdSet = new HashSet<>(dueGoalIds);
+            for (String dependentId : dueGoalIds) {
+                Set<String> prerequisiteIds = prerequisitesByDependent.get(dependentId);
+                if (prerequisiteIds == null) {
+                    continue;
+                }
+                for (String prerequisiteId : prerequisiteIds) {
+                    if (!dueGoalIdSet.contains(prerequisiteId)) {
+                        LocalDate prerequisitePositionDue = positionCheck
+                                .dueDates()
+                                .get(prerequisiteId);
+                        if (prerequisitePositionDue == null) {
+                            throw new LearningPlanPrerequisiteScheduleConflictException();
+                        }
+                        rememberLearningPlanDueViolation(
+                                violationsByPair,
+                                new LearningPlanDueViolation(
+                                        dependentId,
+                                        prerequisiteId,
+                                        asOf,
+                                        prerequisitePositionDue.isAfter(asOf)
+                                                ? prerequisitePositionDue
+                                                : asOf));
+                    }
+                }
+            }
+        }
+        return new LearningPlanDueCheck(
+                positionCheck.dueDates(),
+                List.copyOf(violationsByPair.values()));
+    }
+
+    private void rememberLearningPlanDueViolation(
+            Map<LearningPlanDuePair, LearningPlanDueViolation> violationsByPair,
+            LearningPlanDueViolation violation) {
+        LearningPlanDuePair pair = new LearningPlanDuePair(
+                violation.dependentId(),
+                violation.prerequisiteId());
+        LearningPlanDueViolation existing = violationsByPair.get(pair);
+        if (existing == null) {
+            violationsByPair.put(pair, violation);
+            return;
+        }
+        violationsByPair.put(
+                pair,
+                new LearningPlanDueViolation(
+                        violation.dependentId(),
+                        violation.prerequisiteId(),
+                        existing.earlierPriority().isBefore(violation.earlierPriority())
+                                ? existing.earlierPriority()
+                                : violation.earlierPriority(),
+                        existing.laterPriority().isAfter(violation.laterPriority())
+                                ? existing.laterPriority()
+                                : violation.laterPriority()));
+    }
+
+    private boolean hasValidLearningPlanSchedule(
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent,
+            List<LocalDate> activeWorkdays,
+            LearningPlanScheduleCheckBudget scheduleCheckBudget) {
+        return learningPlanScheduleCheck(
+                blocks,
+                prerequisitesByDependent,
+                activeWorkdays,
+                scheduleCheckBudget).violations().isEmpty();
+    }
+
+    private LearningPlanDueCheck learningPlanDueCheck(
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent) {
         Map<String, LocalDate> dueDates = new HashMap<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
             if (!"learning".equals(block.kind()) || block.atomicGoalIds() == null) {
                 continue;
             }
-            allPlanAtoms.addAll(block.atomicGoalIds());
             for (int index = 0; index < block.atomicGoalIds().size(); index++) {
                 dueDates.put(
                         block.atomicGoalIds().get(index),
@@ -3087,7 +3310,223 @@ public class LearnerService {
             }
         }
 
-        for (String dependentId : allPlanAtoms) {
+        List<LearningPlanDueViolation> violations = new ArrayList<>();
+        prerequisitesByDependent.forEach((dependentId, prerequisiteIds) -> {
+            LocalDate dependentDue = dueDates.get(dependentId);
+            for (String prerequisiteId : prerequisiteIds) {
+                LocalDate prerequisiteDue = dueDates.get(prerequisiteId);
+                if (prerequisiteDue != null
+                        && dependentDue != null
+                        && prerequisiteDue.isAfter(dependentDue)) {
+                    violations.add(new LearningPlanDueViolation(
+                            dependentId,
+                            prerequisiteId,
+                            dependentDue,
+                            prerequisiteDue));
+                }
+            }
+        });
+        return new LearningPlanDueCheck(dueDates, List.copyOf(violations));
+    }
+
+    private List<LearnerLearningPlanApi.Block> repairLearningPlanDueOrderSequence(
+            List<LearnerLearningPlanApi.Block> blocks,
+            List<String> topologicalOrder,
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent,
+            Map<String, LinkedHashSet<String>> dependentsByPrerequisite,
+            Map<String, LocalDate> firstPossibleDue,
+            Map<String, LocalDate> lastPossibleDue,
+            List<LocalDate> activeWorkdays,
+            LearningPlanScheduleCheckBudget scheduleCheckBudget,
+            boolean prerequisitesEarlierFirst) {
+        LearningPlanRepairAttempt firstDirection =
+                repairLearningPlanDueOrderDirection(
+                        blocks,
+                        topologicalOrder,
+                        prerequisitesByDependent,
+                        dependentsByPrerequisite,
+                        prerequisitesEarlierFirst ? lastPossibleDue : firstPossibleDue,
+                        activeWorkdays,
+                        scheduleCheckBudget,
+                        prerequisitesEarlierFirst);
+        if (firstDirection.valid()) {
+            return firstDirection.blocks();
+        }
+
+        LearningPlanRepairAttempt secondDirection =
+                repairLearningPlanDueOrderDirection(
+                        firstDirection.blocks(),
+                        topologicalOrder,
+                        prerequisitesByDependent,
+                        dependentsByPrerequisite,
+                        prerequisitesEarlierFirst ? firstPossibleDue : lastPossibleDue,
+                        activeWorkdays,
+                        scheduleCheckBudget,
+                        !prerequisitesEarlierFirst);
+        return secondDirection.valid() ? secondDirection.blocks() : null;
+    }
+
+    private LearningPlanRepairAttempt repairLearningPlanDueOrderDirection(
+            List<LearnerLearningPlanApi.Block> blocks,
+            List<String> topologicalOrder,
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent,
+            Map<String, LinkedHashSet<String>> dependentsByPrerequisite,
+            Map<String, LocalDate> initialPriority,
+            List<LocalDate> activeWorkdays,
+            LearningPlanScheduleCheckBudget scheduleCheckBudget,
+            boolean prerequisitesEarlier) {
+        Map<String, LocalDate> priorityByGoalId = new HashMap<>(initialPriority);
+        propagateLearningPlanPriority(
+                topologicalOrder,
+                prerequisitesByDependent,
+                dependentsByPrerequisite,
+                priorityByGoalId,
+                prerequisitesEarlier);
+
+        List<LearnerLearningPlanApi.Block> currentBlocks = List.copyOf(blocks);
+        int maxIterations = Math.max(
+                32,
+                Math.min(
+                        MAX_LEARNING_PLAN_REPAIR_ITERATIONS,
+                        topologicalOrder.size()));
+        for (int iteration = 0; iteration < maxIterations; iteration++) {
+            List<LearnerLearningPlanApi.Block> ordered = orderLearningPlanBlocksByPriority(
+                    currentBlocks,
+                    priorityByGoalId);
+            LearningPlanDueCheck checked = learningPlanScheduleCheck(
+                    ordered,
+                    prerequisitesByDependent,
+                    activeWorkdays,
+                    scheduleCheckBudget);
+            currentBlocks = ordered;
+            if (checked.violations().isEmpty()) {
+                return new LearningPlanRepairAttempt(ordered, true);
+            }
+
+            boolean changed = false;
+            for (LearningPlanDueViolation violation : checked.violations()) {
+                String goalId = prerequisitesEarlier
+                        ? violation.prerequisiteId()
+                        : violation.dependentId();
+                LocalDate requestedPriority = prerequisitesEarlier
+                        ? violation.earlierPriority()
+                        : violation.laterPriority();
+                LocalDate currentPriority = priorityByGoalId.get(goalId);
+                if (currentPriority != null
+                        && requestedPriority != null
+                        && (prerequisitesEarlier
+                                ? requestedPriority.isBefore(currentPriority)
+                                : requestedPriority.isAfter(currentPriority))) {
+                    priorityByGoalId.put(goalId, requestedPriority);
+                    changed = true;
+                }
+            }
+            if (!changed) {
+                return new LearningPlanRepairAttempt(ordered, false);
+            }
+            propagateLearningPlanPriority(
+                    topologicalOrder,
+                    prerequisitesByDependent,
+                    dependentsByPrerequisite,
+                    priorityByGoalId,
+                    prerequisitesEarlier);
+        }
+        return new LearningPlanRepairAttempt(currentBlocks, false);
+    }
+
+    private void propagateLearningPlanPriority(
+            List<String> topologicalOrder,
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent,
+            Map<String, LinkedHashSet<String>> dependentsByPrerequisite,
+            Map<String, LocalDate> priorityByGoalId,
+            boolean prerequisitesEarlier) {
+        if (prerequisitesEarlier) {
+            for (int index = topologicalOrder.size() - 1; index >= 0; index--) {
+                String dependentId = topologicalOrder.get(index);
+                LocalDate dependentPriority = priorityByGoalId.get(dependentId);
+                Set<String> prerequisiteIds = prerequisitesByDependent.get(dependentId);
+                if (prerequisiteIds == null) {
+                    continue;
+                }
+                for (String prerequisiteId : prerequisiteIds) {
+                    LocalDate prerequisitePriority = priorityByGoalId.get(prerequisiteId);
+                    if (prerequisitePriority != null
+                            && dependentPriority != null
+                            && prerequisitePriority.isAfter(dependentPriority)) {
+                        priorityByGoalId.put(prerequisiteId, dependentPriority);
+                    }
+                }
+            }
+            return;
+        }
+        for (String prerequisiteId : topologicalOrder) {
+            LocalDate prerequisitePriority = priorityByGoalId.get(prerequisiteId);
+            Set<String> dependentIds = dependentsByPrerequisite.get(prerequisiteId);
+            if (dependentIds == null) {
+                continue;
+            }
+            for (String dependentId : dependentIds) {
+                LocalDate dependentPriority = priorityByGoalId.get(dependentId);
+                if (prerequisitePriority != null
+                        && dependentPriority != null
+                        && prerequisitePriority.isAfter(dependentPriority)) {
+                    priorityByGoalId.put(dependentId, prerequisitePriority);
+                }
+            }
+        }
+    }
+
+    private List<LearnerLearningPlanApi.Block> orderLearningPlanBlocksByPriority(
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, LocalDate> priorityByGoalId) {
+        Map<String, Integer> currentOrderIndex = new HashMap<>();
+        int currentIndex = 0;
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (!"learning".equals(block.kind()) || block.atomicGoalIds() == null) {
+                continue;
+            }
+            for (String goalId : block.atomicGoalIds()) {
+                currentOrderIndex.putIfAbsent(goalId, currentIndex++);
+            }
+        }
+        List<LearnerLearningPlanApi.Block> orderedBlocks = new ArrayList<>(blocks.size());
+        Comparator<String> byPriority = Comparator
+                .comparing(
+                        (String goalId) -> priorityByGoalId.get(goalId),
+                        Comparator.nullsLast(Comparator.naturalOrder()))
+                .thenComparingInt(goalId -> currentOrderIndex.getOrDefault(
+                        goalId,
+                        Integer.MAX_VALUE))
+                .thenComparing(goalId -> goalId);
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (!"learning".equals(block.kind())
+                    || block.atomicGoalIds() == null
+                    || block.atomicGoalIds().size() < 2) {
+                orderedBlocks.add(block);
+                continue;
+            }
+            List<String> orderedAtoms = new ArrayList<>(block.atomicGoalIds());
+            orderedAtoms.sort(byPriority);
+            orderedBlocks.add(new LearnerLearningPlanApi.Block(
+                    block.id(),
+                    block.kind(),
+                    block.goalId(),
+                    block.title(),
+                    block.startDate(),
+                    block.endDate(),
+                    block.date(),
+                    List.copyOf(orderedAtoms)));
+        }
+        return List.copyOf(orderedBlocks);
+    }
+
+    private Map<String, LinkedHashSet<String>> planPrerequisitesByDependent(
+            List<String> planAtoms,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, List<String>> effectiveRequires) {
+        LinkedHashSet<String> planAtomSet = new LinkedHashSet<>(planAtoms);
+        Map<String, LinkedHashSet<String>> prerequisitesByDependent = new LinkedHashMap<>();
+        for (String dependentId : planAtomSet) {
             LinkedHashSet<String> prerequisiteAtoms = new LinkedHashSet<>();
             for (String prerequisiteRef : effectiveRequires.getOrDefault(
                     dependentId,
@@ -3095,18 +3534,44 @@ public class LearnerService {
                 collectPlanPrerequisiteAtoms(
                         prerequisiteRef,
                         structuralGoals,
-                        allPlanAtoms,
+                        planAtomSet,
                         prerequisiteAtoms,
                         new HashSet<>());
             }
             prerequisiteAtoms.remove(dependentId);
-            for (String prerequisiteId : prerequisiteAtoms) {
-                if (dueDates.get(prerequisiteId).isAfter(dueDates.get(dependentId))) {
-                    throw new ResponseStatusException(
-                            org.springframework.http.HttpStatus.BAD_REQUEST,
-                            "Learning-plan schedule makes a dependent goal due before its prerequisite.");
-                }
+            prerequisitesByDependent.put(dependentId, prerequisiteAtoms);
+        }
+        return prerequisitesByDependent;
+    }
+
+    private record LearningPlanDueViolation(
+            String dependentId,
+            String prerequisiteId,
+            LocalDate earlierPriority,
+            LocalDate laterPriority) {
+    }
+
+    private record LearningPlanDuePair(String dependentId, String prerequisiteId) {
+    }
+
+    private record LearningPlanDueCheck(
+            Map<String, LocalDate> dueDates,
+            List<LearningPlanDueViolation> violations) {
+    }
+
+    private record LearningPlanRepairAttempt(
+            List<LearnerLearningPlanApi.Block> blocks,
+            boolean valid) {
+    }
+
+    private static final class LearningPlanScheduleCheckBudget {
+        private long remaining = MAX_LEARNING_PLAN_SCHEDULE_CHECK_OPERATIONS;
+
+        private void consume(long operations) {
+            if (operations < 0L || operations > remaining) {
+                throw new LearningPlanPrerequisiteScheduleConflictException();
             }
+            remaining -= operations;
         }
     }
 
@@ -3154,8 +3619,7 @@ public class LearnerService {
 
     private List<String> stablePlanTopologicalOrder(
             List<String> submittedAtoms,
-            Map<String, LearningGoal> structuralGoals,
-            Map<String, List<String>> effectiveRequires) {
+            Map<String, LinkedHashSet<String>> prerequisitesByDependent) {
         LinkedHashSet<String> atomSet = new LinkedHashSet<>(submittedAtoms);
         Map<String, Integer> submittedIndex = new HashMap<>();
         Map<String, Integer> indegree = new HashMap<>();
@@ -3168,19 +3632,11 @@ public class LearnerService {
         }
 
         for (String dependentId : atomSet) {
-            LinkedHashSet<String> prerequisiteAtoms = new LinkedHashSet<>();
-            for (String prerequisiteRef : effectiveRequires.getOrDefault(
-                    dependentId,
-                    Collections.emptyList())) {
-                collectPlanPrerequisiteAtoms(
-                        prerequisiteRef,
-                        structuralGoals,
-                        atomSet,
-                        prerequisiteAtoms,
-                        new HashSet<>());
+            Set<String> prerequisiteIds = prerequisitesByDependent.get(dependentId);
+            if (prerequisiteIds == null) {
+                continue;
             }
-            prerequisiteAtoms.remove(dependentId);
-            for (String prerequisiteId : prerequisiteAtoms) {
+            for (String prerequisiteId : prerequisiteIds) {
                 if (dependents.get(prerequisiteId).add(dependentId)) {
                     indegree.compute(dependentId, (ignored, value) -> value == null ? 1 : value + 1);
                 }
@@ -3198,9 +3654,11 @@ public class LearnerService {
         while (!ready.isEmpty()) {
             String prerequisiteId = ready.remove();
             ordered.add(prerequisiteId);
-            for (String dependentId : dependents.getOrDefault(
-                    prerequisiteId,
-                    new LinkedHashSet<>())) {
+            Set<String> dependentIds = dependents.get(prerequisiteId);
+            if (dependentIds == null) {
+                continue;
+            }
+            for (String dependentId : dependentIds) {
                 int remaining = indegree.computeIfPresent(dependentId, (ignored, value) -> value - 1);
                 if (remaining == 0) {
                     ready.add(dependentId);

@@ -942,7 +942,22 @@ public class LearnerLearningPlanService {
     private List<String> dueAtomicGoalIds(
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf) {
-        return dueGoals(blocks, asOf).stream().map(DueGoal::atomicGoalId).toList();
+        return dueAtomicGoalIdsForSchedule(blocks, asOf);
+    }
+
+    /**
+     * Returns the exact cumulative due assignment used by learner-plan runtime
+     * evaluation. Package visibility lets plan-order validation reuse the same
+     * rounding semantics without exposing the internal due-block model.
+     */
+    static List<String> dueAtomicGoalIdsForSchedule(
+            List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf) {
+        LinkedHashSet<String> due = new LinkedHashSet<>();
+        for (DueBlock dueBlock : dueLearningBlocks(blocks, asOf)) {
+            due.addAll(dueBlock.atomicGoalIds());
+        }
+        return List.copyOf(due);
     }
 
     private List<DueGoal> dueGoals(

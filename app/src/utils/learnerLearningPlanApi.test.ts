@@ -418,6 +418,21 @@ await assert.rejects(
     && error.message === 'Plan revision conflict',
 )
 
+await assert.rejects(
+  () => activateLearnerLearningPlans('learner-42', activationRequest, {
+    fetchImpl: async () => new Response(JSON.stringify({
+      errorCode: 'LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT',
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    }),
+  }),
+  (error: unknown) => error instanceof LearnerLearningPlanApiError
+    && error.status === 400
+    && error.errorCode === 'LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT'
+    && !error.message.includes('PREREQUISITE_SCHEDULE_CONFLICT'),
+)
+
 const withinOneSecond = (actual: number, expected: number) => {
   assert.ok(actual >= expected, `${actual} must not precede ${expected}`)
   assert.ok(actual <= expected + 1_001, `${actual} must stay within one second of ${expected}`)

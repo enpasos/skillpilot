@@ -658,6 +658,233 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void learnerPlanKeepsAnAlreadyDueValidCrossBlockOrderExactly() {
+        selectCompletedCanonicalMathCurriculum();
+        var prerequisiteBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "same-due-prerequisites",
+                "learning",
+                null,
+                "Voraussetzungen am selben Tag",
+                java.time.LocalDate.parse("2026-09-07"),
+                java.time.LocalDate.parse("2026-09-09"),
+                null,
+                List.of(
+                        CANONICAL_MATH_SEK_ONE_ORIENTATION_ID,
+                        CANONICAL_CHOOSE_REPRESENTATION_ID,
+                        J8_EXAM_TASK_3_ID));
+        var dependentBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "later-dependent",
+                "learning",
+                null,
+                "Spaeteres abhaengiges Ziel",
+                java.time.LocalDate.parse("2026-09-08"),
+                java.time.LocalDate.parse("2026-09-08"),
+                null,
+                List.of(CANONICAL_CREATE_REPRESENTATION_ID));
+
+        assertThat(learnerService.orderLearningPlanBlocksByPrerequisites(
+                        learnerId,
+                        List.of(prerequisiteBlock, dependentBlock)))
+                .containsExactly(prerequisiteBlock, dependentBlock);
+    }
+
+    @Test
+    void learnerPlanRepairsPrerequisiteDueAfterDependentAcrossFixedBlocks() {
+        selectCompletedCanonicalMathCurriculum();
+        var prerequisiteBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "prerequisite-block",
+                "learning",
+                null,
+                "Voraussetzung und unabhaengiges Ziel",
+                java.time.LocalDate.parse("2026-09-07"),
+                java.time.LocalDate.parse("2026-09-08"),
+                null,
+                List.of(
+                        CANONICAL_MATH_SEK_ONE_ORIENTATION_ID,
+                        CANONICAL_CHOOSE_REPRESENTATION_ID));
+        var dependentBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "dependent-block",
+                "learning",
+                null,
+                "Abhaengiges Ziel",
+                java.time.LocalDate.parse("2026-09-07"),
+                java.time.LocalDate.parse("2026-09-08"),
+                null,
+                List.of(CANONICAL_CREATE_REPRESENTATION_ID));
+
+        var ordered = learnerService.orderLearningPlanBlocksByPrerequisites(
+                learnerId,
+                List.of(prerequisiteBlock, dependentBlock));
+
+        assertThat(ordered).extracting(com.skillpilot.backend.api.LearnerLearningPlanApi.Block::id)
+                .containsExactly("prerequisite-block", "dependent-block");
+        assertThat(ordered.get(0).startDate()).isEqualTo(prerequisiteBlock.startDate());
+        assertThat(ordered.get(0).endDate()).isEqualTo(prerequisiteBlock.endDate());
+        assertThat(ordered.get(0).atomicGoalIds()).containsExactly(
+                CANONICAL_CHOOSE_REPRESENTATION_ID,
+                CANONICAL_MATH_SEK_ONE_ORIENTATION_ID);
+        assertThat(ordered.get(1)).isEqualTo(dependentBlock);
+        assertThat(learnerService.orderLearningPlanBlocksByPrerequisites(learnerId, ordered))
+                .containsExactlyElementsOf(ordered);
+    }
+
+    @Test
+    void learnerPlanCombinesEarlierAndLaterRepairAcrossFixedBlocks() {
+        var blockA = learningPlanBlock(
+                "block-a",
+                "2026-09-07",
+                "2026-09-08",
+                List.of("a0", "a1"));
+        var blockB = learningPlanBlock(
+                "block-b",
+                "2026-09-07",
+                "2026-09-08",
+                List.of("b0", "b1"));
+        Map<String, Set<String>> prerequisitesByDependent = Map.of(
+                "a0", Set.of("b0", "b1"),
+                "a1", Set.of("b1"),
+                "b0", Set.of(),
+                "b1", Set.of());
+
+        var ordered = learnerService.orderLearningPlanBlocksForPrerequisites(
+                List.of(blockA, blockB),
+                prerequisitesByDependent);
+
+        assertThat(ordered).extracting(com.skillpilot.backend.api.LearnerLearningPlanApi.Block::id)
+                .containsExactly("block-a", "block-b");
+        assertThat(ordered.get(0).atomicGoalIds()).containsExactly("a1", "a0");
+        assertThat(ordered.get(1).atomicGoalIds()).containsExactly("b1", "b0");
+    }
+
+    @Test
+    void learnerPlanRejectsCumulativeTuesdayConflictThatPerBlockMidpointsMiss() {
+        var prerequisiteBlock = learningPlanBlock(
+                "prerequisite-block",
+                "2026-09-07",
+                "2026-09-11",
+                List.of("prerequisite"));
+        var dependentBlock = learningPlanBlock(
+                "dependent-block",
+                "2026-09-07",
+                "2026-09-11",
+                List.of("dependent"));
+
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                List.of(prerequisiteBlock, dependentBlock),
+                LocalDate.parse("2026-09-08")))
+                .containsExactly("dependent");
+        assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksForPrerequisites(
+                        List.of(prerequisiteBlock, dependentBlock),
+                        Map.of(
+                                "prerequisite", Set.of(),
+                                "dependent", Set.of("prerequisite"))))
+                .isInstanceOf(LearningPlanPrerequisiteScheduleConflictException.class);
+    }
+
+    @Test
+    void learnerPlanRepairsPositionViolationEvenWhenCumulativeDownSetIsSafe() {
+        var prerequisiteBlock = learningPlanBlock(
+                "dense-prerequisite-block",
+                "2026-09-01",
+                "2026-09-02",
+                List.of("unrelated-0", "unrelated-1", "prerequisite"));
+        var dependentBlock = learningPlanBlock(
+                "dependent-block",
+                "2026-09-01",
+                "2026-09-02",
+                List.of("dependent"));
+
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                List.of(prerequisiteBlock, dependentBlock),
+                LocalDate.parse("2026-09-01")))
+                .containsExactly("unrelated-0", "unrelated-1");
+
+        var ordered = learnerService.orderLearningPlanBlocksForPrerequisites(
+                List.of(prerequisiteBlock, dependentBlock),
+                Map.of(
+                        "unrelated-0", Set.of(),
+                        "unrelated-1", Set.of(),
+                        "prerequisite", Set.of(),
+                        "dependent", Set.of("prerequisite")));
+
+        assertThat(ordered.get(0).atomicGoalIds())
+                .containsExactly("prerequisite", "unrelated-0", "unrelated-1");
+        assertThat(ordered.get(1)).isEqualTo(dependentBlock);
+    }
+
+    @Test
+    void learnerPlanUsesCumulativeViolationToPullPrerequisiteForward() {
+        var prerequisiteBlock = learningPlanBlock(
+                "prerequisite-block",
+                "2026-09-01",
+                "2026-09-03",
+                List.of("independent-a", "prerequisite"));
+        var dependentBlock = learningPlanBlock(
+                "dependent-block",
+                "2026-09-01",
+                "2026-09-03",
+                List.of("independent-b", "dependent"));
+
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                List.of(prerequisiteBlock, dependentBlock),
+                LocalDate.parse("2026-09-02")))
+                .containsExactly("independent-a", "independent-b", "dependent");
+
+        var ordered = learnerService.orderLearningPlanBlocksForPrerequisites(
+                List.of(prerequisiteBlock, dependentBlock),
+                Map.of(
+                        "independent-a", Set.of(),
+                        "prerequisite", Set.of(),
+                        "independent-b", Set.of(),
+                        "dependent", Set.of("prerequisite")));
+
+        assertThat(ordered.get(0).atomicGoalIds())
+                .containsExactly("prerequisite", "independent-a");
+        assertThat(ordered.get(1)).isEqualTo(dependentBlock);
+    }
+
+    @Test
+    void learnerPlanRejectsMoreThanOneThousandActiveWorkdaysBeforeDueSweep() {
+        LocalDate start = LocalDate.parse("2026-01-01");
+        var oversizedBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "oversized-block",
+                "learning",
+                null,
+                "oversized-block",
+                start,
+                start.plusDays(1_400),
+                null,
+                List.of("goal"));
+
+        assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksForPrerequisites(
+                        List.of(oversizedBlock),
+                        Map.of("goal", Set.of())))
+                .isInstanceOf(LearningPlanPrerequisiteScheduleConflictException.class);
+    }
+
+    @Test
+    void learnerPlanRejectsScheduleChecksBeyondTheSharedOperationBudget() {
+        List<String> goalIds = new ArrayList<>();
+        Map<String, Set<String>> prerequisitesByDependent = new LinkedHashMap<>();
+        for (int index = 0; index < 320; index++) {
+            String goalId = "budget-goal-" + index;
+            prerequisitesByDependent.put(goalId, new LinkedHashSet<>(goalIds));
+            goalIds.add(goalId);
+        }
+        LocalDate start = LocalDate.parse("2026-01-01");
+        var denseBlock = learningPlanBlock(
+                "dense-budget-block",
+                start.toString(),
+                start.plusDays(1_399).toString(),
+                goalIds);
+
+        assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksForPrerequisites(
+                        List.of(denseBlock),
+                        prerequisitesByDependent))
+                .isInstanceOf(LearningPlanPrerequisiteScheduleConflictException.class);
+    }
+
+    @Test
     void learnerPlanRejectsDependentScheduledBeforeItsPrerequisiteAcrossBlocks() {
         selectCompletedCanonicalMathCurriculum();
         var dependent = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
@@ -682,7 +909,9 @@ public class LearnerServiceTest {
         assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksByPrerequisites(
                         learnerId,
                         List.of(dependent, prerequisite)))
-                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                .isInstanceOfSatisfying(
+                        LearningPlanPrerequisiteScheduleConflictException.class,
+                        exception ->
                         assertThat(exception.getStatusCode())
                                 .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
     }
@@ -3427,6 +3656,22 @@ public class LearnerServiceTest {
         } catch (Exception exception) {
             throw new AssertionError("Invalid test personalization fixture", exception);
         }
+    }
+
+    private static com.skillpilot.backend.api.LearnerLearningPlanApi.Block learningPlanBlock(
+            String id,
+            String startDate,
+            String endDate,
+            List<String> atomicGoalIds) {
+        return new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                id,
+                "learning",
+                null,
+                id,
+                LocalDate.parse(startDate),
+                LocalDate.parse(endDate),
+                null,
+                atomicGoalIds);
     }
 
     private static LearningGoal goal(String id, List<String> requires, List<String> contains) {

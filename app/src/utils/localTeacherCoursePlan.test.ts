@@ -264,6 +264,308 @@ const prerequisiteOrderEvaluation = evaluateTeacherCoursePlan(
 assert.equal(prerequisiteOrderEvaluation.quality.status, 'insufficient')
 assert.deepEqual(prerequisiteOrderEvaluation.metrics?.dueGoalIds, ['effective-prerequisite'])
 
+// Cross-block dependencies use the same per-position due-date formula as the
+// backend. The prerequisite was originally second in the Sek-I block (due
+// 2026-09-10), while its dependent was due 2026-09-09 in the overlapping
+// Sek-II block. Both atoms stay in their authored blocks, but the prerequisite
+// moves to the first Sek-I position and is therefore due on 2026-09-08.
+const crossBlockPrerequisiteIndex = goalMap(
+  uiGoal('sek-one-root', ['sek-one-unrelated', 'prerequisite']),
+  uiGoal('sek-one-unrelated'),
+  uiGoal('prerequisite'),
+  uiGoal('sek-two-root', ['dependent']),
+  { ...uiGoal('dependent'), requires: ['prerequisite'] },
+)
+const crossBlockPrerequisitePlan = addBlocks(createPlan('cross-block-prerequisite'), [
+  {
+    id: 'sek-one-block',
+    kind: 'learning',
+    goalId: 'sek-one-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-11',
+  },
+  {
+    id: 'sek-two-block',
+    kind: 'learning',
+    goalId: 'sek-two-root',
+    startDate: '2026-09-08',
+    endDate: '2026-09-11',
+  },
+])
+const crossBlockPrerequisiteAssignments = assignAtomicGoalsToLearningBlocks(
+  crossBlockPrerequisitePlan,
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(crossBlockPrerequisiteAssignments.quality.status, 'complete')
+assert.deepEqual(crossBlockPrerequisiteAssignments.assignments, [
+  {
+    blockId: 'sek-one-block',
+    goalId: 'sek-one-root',
+    scopeAtomicGoalIds: ['sek-one-unrelated', 'prerequisite'],
+    atomicGoalIds: ['prerequisite', 'sek-one-unrelated'],
+    duplicateAtomicGoalIds: [],
+  },
+  {
+    blockId: 'sek-two-block',
+    goalId: 'sek-two-root',
+    scopeAtomicGoalIds: ['dependent'],
+    atomicGoalIds: ['dependent'],
+    duplicateAtomicGoalIds: [],
+  },
+])
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    crossBlockPrerequisitePlan,
+    crossBlockPrerequisiteIndex,
+    '2026-09-08',
+  ).metrics?.dueGoalIds,
+  ['prerequisite'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    crossBlockPrerequisitePlan,
+    crossBlockPrerequisiteIndex,
+    '2026-09-09',
+  ).metrics?.dueGoalIds,
+  ['prerequisite', 'dependent'],
+)
+assert.deepEqual(
+  assignAtomicGoalsToLearningBlocks(
+    crossBlockPrerequisitePlan,
+    crossBlockPrerequisiteIndex,
+  ),
+  crossBlockPrerequisiteAssignments,
+  'cross-block prerequisite repair is deterministic and idempotent',
+)
+
+// Some overlapping plans need both repair directions. Pulling b1 forward in
+// B yields [b1,b0], after which the dependent-later pass must retain that
+// intermediate order while turning A into [a1,a0].
+const combinedRepairIndex = goalMap(
+  uiGoal('combined-a-root', ['a0', 'a1']),
+  { ...uiGoal('a0'), requires: ['b0', 'b1'] },
+  { ...uiGoal('a1'), requires: ['b1'] },
+  uiGoal('combined-b-root', ['b0', 'b1']),
+  uiGoal('b0'),
+  uiGoal('b1'),
+)
+const combinedRepairAssignments = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('combined-cross-block-repair'), [
+    {
+      id: 'combined-a-block',
+      kind: 'learning',
+      goalId: 'combined-a-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'combined-b-block',
+      kind: 'learning',
+      goalId: 'combined-b-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-09',
+    },
+  ]),
+  combinedRepairIndex,
+)
+assert.equal(combinedRepairAssignments.quality.status, 'complete')
+assert.deepEqual(
+  combinedRepairAssignments.assignments.find(({ blockId }) => blockId === 'combined-a-block')
+    ?.atomicGoalIds,
+  ['a1', 'a0'],
+)
+assert.deepEqual(
+  combinedRepairAssignments.assignments.find(({ blockId }) => blockId === 'combined-b-block')
+    ?.atomicGoalIds,
+  ['b1', 'b0'],
+)
+
+// Per-position dates alone are insufficient. In two parallel one-atom
+// Monday-to-Friday blocks both atoms independently become due on Wednesday,
+// but cumulative rounding makes only the dependent due on Tuesday. With no
+// within-block reorder available, publication must fail closed.
+const cumulativeOnlyViolation = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('cumulative-only-prerequisite-violation'), [
+    {
+      id: 'cumulative-prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'cumulative-dependent-block',
+      kind: 'learning',
+      goalId: 'sek-two-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+  ]),
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(cumulativeOnlyViolation.quality.status, 'invalid')
+assert.equal(
+  cumulativeOnlyViolation.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+const overlongPrerequisiteSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('overlong-prerequisite-schedule'), [{
+    id: 'overlong-block',
+    kind: 'learning',
+    goalId: 'overlong-root',
+    startDate: '2026-01-01',
+    endDate: '2030-12-31',
+  }]),
+  goalMap(
+    uiGoal('overlong-root', ['overlong-prerequisite', 'overlong-dependent']),
+    uiGoal('overlong-prerequisite'),
+    { ...uiGoal('overlong-dependent'), requires: ['overlong-prerequisite'] },
+  ),
+)
+assert.equal(overlongPrerequisiteSchedule.quality.status, 'invalid')
+assert.equal(
+  overlongPrerequisiteSchedule.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+// The active-workday cap alone is not an operations bound: a locally supplied
+// plan may combine exactly 1,000 workdays with thousands of atoms. Validation
+// must reject that shape before a synchronous day-by-goal sweep can stall the
+// browser, even though its submitted prerequisite order is already valid.
+const operationBudgetAtomIds = Array.from(
+  { length: 8_000 },
+  (_, index) => `budget-atom-${index}`,
+)
+const operationBudgetGoals = operationBudgetAtomIds.map((goalId, index) => (
+  index === operationBudgetAtomIds.length - 1
+    ? { ...uiGoal(goalId), requires: [operationBudgetAtomIds[0]!] }
+    : uiGoal(goalId)
+))
+const operationBudgetSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('operation-budget-schedule'), [{
+    id: 'operation-budget-block',
+    kind: 'learning',
+    goalId: 'operation-budget-root',
+    startDate: '2026-01-05',
+    endDate: '2029-11-03',
+  }]),
+  goalMap(
+    uiGoal('operation-budget-root', operationBudgetAtomIds),
+    ...operationBudgetGoals,
+  ),
+)
+assert.equal(countCoursePlanWorkdaysInclusive('2026-01-05', '2029-11-03'), 1_000)
+assert.equal(operationBudgetSchedule.quality.status, 'invalid')
+assert.equal(
+  operationBudgetSchedule.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+// A fixed one-day dependent block before a fixed one-day prerequisite block
+// cannot be repaired by reordering. Such a plan must not be marked ready.
+const impossibleCrossBlockSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('impossible-cross-block-prerequisite'), [
+    {
+      id: 'dependent-block',
+      kind: 'learning',
+      goalId: 'sek-two-root',
+      startDate: '2026-09-09',
+      endDate: '2026-09-09',
+    },
+    {
+      id: 'prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
+      startDate: '2026-09-10',
+      endDate: '2026-09-10',
+    },
+  ]),
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(impossibleCrossBlockSchedule.quality.status, 'invalid')
+assert.equal(
+  impossibleCrossBlockSchedule.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+// Equal due dates are valid: the backend rejects only a prerequisite that is
+// strictly later, so parallel same-day blocks must remain publishable.
+const sameDayCrossBlockSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('same-day-cross-block-prerequisite'), [
+    {
+      id: 'same-day-dependent-block',
+      kind: 'learning',
+      goalId: 'sek-two-root',
+      startDate: '2026-09-09',
+      endDate: '2026-09-09',
+    },
+    {
+      id: 'same-day-prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
+      startDate: '2026-09-09',
+      endDate: '2026-09-09',
+    },
+  ]),
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(sameDayCrossBlockSchedule.quality.status, 'complete')
+assert.deepEqual(
+  sameDayCrossBlockSchedule.assignments.map(({ blockId, atomicGoalIds }) => ({
+    blockId,
+    atomicGoalIds,
+  })),
+  [
+    { blockId: 'same-day-dependent-block', atomicGoalIds: ['dependent'] },
+    { blockId: 'same-day-prerequisite-block', atomicGoalIds: ['prerequisite'] },
+  ],
+)
+
+// A valid plan stays byte-for-byte stable even if a priority-based repair
+// could move a prerequisite between two same-day slots unnecessarily.
+const alreadyValidCrossBlockIndex = goalMap(
+  uiGoal('valid-first-root', ['valid-unrelated', 'valid-prerequisite', 'valid-tail']),
+  uiGoal('valid-unrelated'),
+  uiGoal('valid-prerequisite'),
+  uiGoal('valid-tail'),
+  uiGoal('valid-second-root', ['valid-dependent']),
+  { ...uiGoal('valid-dependent'), requires: ['valid-prerequisite'] },
+)
+const alreadyValidCrossBlockSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('already-valid-cross-block-prerequisite'), [
+    {
+      id: 'valid-first-block',
+      kind: 'learning',
+      goalId: 'valid-first-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-09',
+    },
+    {
+      id: 'valid-second-block',
+      kind: 'learning',
+      goalId: 'valid-second-root',
+      startDate: '2026-09-08',
+      endDate: '2026-09-08',
+    },
+  ]),
+  alreadyValidCrossBlockIndex,
+)
+assert.equal(alreadyValidCrossBlockSchedule.quality.status, 'complete')
+assert.deepEqual(
+  alreadyValidCrossBlockSchedule.assignments.map(({ blockId, atomicGoalIds }) => ({
+    blockId,
+    atomicGoalIds,
+  })),
+  [
+    {
+      blockId: 'valid-first-block',
+      atomicGoalIds: ['valid-unrelated', 'valid-prerequisite', 'valid-tail'],
+    },
+    { blockId: 'valid-second-block', atomicGoalIds: ['valid-dependent'] },
+  ],
+)
+
 const prerequisiteCycleIndex = goalMap(
   uiGoal('prerequisite-cycle-root', ['cycle-dependent', 'cycle-prerequisite']),
   { ...uiGoal('cycle-dependent'), effectiveRequires: ['cycle-prerequisite'] },
