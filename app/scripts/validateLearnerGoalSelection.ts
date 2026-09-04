@@ -306,28 +306,66 @@ assert.equal(
 )
 
 const learnerViewSource = readFileSync('src/views/LearnerView.tsx', 'utf8')
-const continueHandlerStart = learnerViewSource.indexOf('const handleContinueLearningPlan = useCallback')
-const continueHandlerEnd = learnerViewSource.indexOf('\n  // Load personal config from backend', continueHandlerStart)
+const continueHandlerStart = learnerViewSource.indexOf('const handleContinueCurrentPlanGoal = useCallback')
+const continueHandlerEnd = learnerViewSource.indexOf('\n  const handleSwitchLearningPlan = useCallback', continueHandlerStart)
 assert.ok(continueHandlerStart >= 0 && continueHandlerEnd > continueHandlerStart)
 const continueHandlerSource = learnerViewSource.slice(continueHandlerStart, continueHandlerEnd)
-const continuePostIndex = continueHandlerSource.indexOf('await continueLearnerLearningPlan(')
-const continueScopeGuardIndex = continueHandlerSource.indexOf('if (!isCurrentRequest()) return', continuePostIndex)
-const continueStateApplyIndex = continueHandlerSource.indexOf('applyLearnerStatePayload(', continuePostIndex)
-assert.ok(
-  continuePostIndex >= 0
-    && continueScopeGuardIndex > continuePostIndex
-    && continueStateApplyIndex > continueScopeGuardIndex,
-  'A completed plan-continue request must pass the current learner/scope guard before applying returned state.',
-)
 assert.match(
   continueHandlerSource,
-  /plan\.landscapeId !== landscapeId && !onSelectGoalInLandscape[\s\S]*?await continueLearnerLearningPlan\(/u,
-  'A cross-subject plan must be rejected before POST when landscape-aware navigation is unavailable.',
+  /focusLearnerGoalContent\(effectiveActiveGoalId\)[\s\S]*?navigateToLearnerLearningPlanGoal\(/u,
+  'Continuing the current plan goal must reveal it before falling back to route navigation.',
+)
+const switchHandlerStart = learnerViewSource.indexOf('const handleSwitchLearningPlan = useCallback')
+const switchHandlerEnd = learnerViewSource.indexOf('\n  const retryLearningPlans = useCallback', switchHandlerStart)
+assert.ok(switchHandlerStart >= 0 && switchHandlerEnd > switchHandlerStart)
+const switchHandlerSource = learnerViewSource.slice(switchHandlerStart, switchHandlerEnd)
+const switchPostIndex = switchHandlerSource.indexOf('await switchLearnerLearningPlan(')
+const switchScopeGuardIndex = switchHandlerSource.indexOf('if (!isCurrentRequest()) return', switchPostIndex)
+const switchStateApplyIndex = switchHandlerSource.indexOf('applyLearningPlanTransition(', switchPostIndex)
+assert.ok(
+  switchPostIndex >= 0
+    && switchScopeGuardIndex > switchPostIndex
+    && switchStateApplyIndex > switchScopeGuardIndex,
+  'A completed plan-switch request must pass the current learner/scope guard before applying returned state.',
+)
+assert.match(
+  switchHandlerSource,
+  /plan\.landscapeId !== landscapeId && !onSelectGoalInLandscape[\s\S]*?await switchLearnerLearningPlan\(/u,
+  'A cross-subject plan switch must be rejected before POST when landscape-aware navigation is unavailable.',
 )
 assert.match(
   learnerViewSource,
   /invalidateLatestRequest\(learningPlanContinueRequestSequenceRef\)/u,
   'Changing learner/root scope must invalidate every pending plan-continue response.',
+)
+const transitionApplyStart = learnerViewSource.indexOf('const applyLearningPlanTransition = useCallback')
+const transitionApplyEnd = learnerViewSource.indexOf(
+  '\n  const handleContinueCurrentPlanGoal = useCallback',
+  transitionApplyStart,
+)
+assert.ok(transitionApplyStart >= 0 && transitionApplyEnd > transitionApplyStart)
+const transitionApplySource = learnerViewSource.slice(transitionApplyStart, transitionApplyEnd)
+const transitionPlannedInvalidationIndex = transitionApplySource.indexOf(
+  'invalidateLatestRequest(plannedGoalsRequestSequenceRef)',
+)
+const transitionEmbeddedStateApplyIndex = transitionApplySource.indexOf('applyLearnerStatePayload(')
+assert.ok(
+  transitionPlannedInvalidationIndex >= 0
+    && transitionEmbeddedStateApplyIndex > transitionPlannedInvalidationIndex,
+  'A learning-plan transition must invalidate an older planned-goals request before applying its authoritative state.',
+)
+const plannedGoalsSequence = { current: 0 }
+const pendingPlannedGoalsRefresh = beginLatestRequest(plannedGoalsSequence)
+invalidateLatestRequest(plannedGoalsSequence)
+assert.equal(
+  isLatestRequestForScope(
+    plannedGoalsSequence,
+    pendingPlannedGoalsRefresh,
+    'learner-a|root-a',
+    'learner-a|root-a',
+  ),
+  false,
+  'An older planned-goals response must fail closed after a learning-plan transition in the same scope.',
 )
 const planContinueSequence = { current: 0 }
 const pendingPlanContinue = beginLatestRequest(planContinueSequence)
@@ -368,6 +406,16 @@ assert.equal(
   getLearnerViewCopy('en').revealActiveGoalTitle,
   'Go to active goal',
   'The active-goal tooltip must use the English-only copy in English.',
+)
+assert.equal(
+  getLearnerViewCopy('de').openGoalMenuLabel,
+  'Lernzielmenü öffnen',
+  'The mobile learner menu needs a localized German accessible name.',
+)
+assert.equal(
+  getLearnerViewCopy('en').openGoalMenuLabel,
+  'Open learning-goal menu',
+  'The mobile learner menu needs a localized English accessible name.',
 )
 assert.match(
   learnerViewSource,

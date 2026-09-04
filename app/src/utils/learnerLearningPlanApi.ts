@@ -1,4 +1,6 @@
 import type {
+  ActivateLearnerLearningPlansRequest,
+  ActivateLearnerLearningPlansResponse,
   ContinueLearnerLearningPlanRequest,
   ContinueLearnerLearningPlanResponse,
   LearnerLearningPlanBlock,
@@ -7,8 +9,11 @@ import type {
   LearnerLearningPlanDetail,
   LearnerLearningPlanMilestone,
   LearnerLearningPlanSummary,
+  LearnerLearningPlanTransitionResponse,
   LearnerLearningPlansResponse,
+  ReconcileLearnerLearningPlansRequest,
   SaveLearnerLearningPlanRequest,
+  SwitchLearnerLearningPlanRequest,
 } from '../learnerLearningPlanTypes'
 import { sanitizeSkillpilotId } from './skillpilotId'
 
@@ -339,6 +344,22 @@ export const buildContinueLearnerLearningPlanEndpoint = (
   apiBase?: string,
 ) => `${learnerPlansBase(skillpilotId, apiBase)}/${requiredSegment(planId, 'Missing learning-plan ID')}/continue`
 
+export const buildReconcileLearnerLearningPlansEndpoint = (
+  skillpilotId: string,
+  apiBase?: string,
+) => `${learnerPlansBase(skillpilotId, apiBase)}/reconcile`
+
+export const buildSwitchLearnerLearningPlanEndpoint = (
+  skillpilotId: string,
+  planId: string,
+  apiBase?: string,
+) => `${learnerPlansBase(skillpilotId, apiBase)}/${requiredSegment(planId, 'Missing learning-plan ID')}/switch`
+
+export const buildActivateLearnerLearningPlansEndpoint = (
+  skillpilotId: string,
+  apiBase?: string,
+) => `${learnerPlansBase(skillpilotId, apiBase)}/activate`
+
 const readJsonResponse = async (response: Response): Promise<unknown> => {
   if (!response.ok) {
     const message = (await response.text()).trim()
@@ -420,6 +441,102 @@ const parseContinueResponse = (value: unknown): ContinueLearnerLearningPlanRespo
   }
 }
 
+const optionalInteger = (value: unknown, field: string): number | null => {
+  if (value === null || value === undefined) return null
+  return requiredInteger(value, field)
+}
+
+const parseTransitionResponse = (
+  value: unknown,
+): LearnerLearningPlanTransitionResponse | null => {
+  if (value === null || value === undefined) return null
+  const source = asRecord(value, 'Invalid learning-plan transition response')
+  const parsed: LearnerLearningPlanTransitionResponse = {
+    planId: optionalString(source.planId),
+    revision: optionalInteger(source.revision, 'revision'),
+    landscapeId: optionalString(source.landscapeId),
+    focusGoalId: optionalString(source.focusGoalId),
+    activeGoalId: optionalString(source.activeGoalId),
+    changed: requiredBoolean(source.changed, 'changed'),
+    state: asRecord(source.state, 'Invalid learning-plan transition response: state'),
+  }
+  const targetContext = [
+    parsed.planId,
+    parsed.revision,
+    parsed.landscapeId,
+    parsed.focusGoalId,
+  ]
+  if (parsed.activeGoalId && targetContext.some((value) => value === null)) {
+    throw new Error('Invalid learning-plan transition response: selected target is incomplete')
+  }
+  if (!parsed.activeGoalId && targetContext.some((value) => value !== null)) {
+    throw new Error('Invalid learning-plan transition response: target context without active goal')
+  }
+  return parsed
+}
+
+const parseActivateResponse = (value: unknown): ActivateLearnerLearningPlansResponse => {
+  const source = asRecord(value, 'Invalid learning-plan activation response')
+  if (!Array.isArray(source.plans)) {
+    throw new Error('Invalid learning-plan activation response: plans')
+  }
+  const plans = source.plans.map(parseLearnerLearningPlanDetail)
+  if (
+    new Set(plans.map(({ planId }) => planId)).size !== plans.length
+    || new Set(plans.map(({ landscapeId }) => landscapeId)).size !== plans.length
+  ) {
+    throw new Error('Invalid learning-plan activation response: duplicate plan')
+  }
+  if (source.followLearningPlans !== true) {
+    throw new Error('Invalid learning-plan activation response: followLearningPlans')
+  }
+  const parsed: ActivateLearnerLearningPlansResponse = {
+    asOf: parseDate(source.asOf, 'asOf'),
+    followLearningPlans: true,
+    plans,
+    selectedPlanId: optionalString(source.selectedPlanId),
+    selectedLandscapeId: optionalString(source.selectedLandscapeId),
+    focusGoalId: optionalString(source.focusGoalId),
+    activeGoalId: optionalString(source.activeGoalId),
+    state: asRecord(source.state, 'Invalid learning-plan activation response: state'),
+  }
+  const selection = [
+    parsed.selectedPlanId,
+    parsed.selectedLandscapeId,
+    parsed.focusGoalId,
+    parsed.activeGoalId,
+  ]
+  const hasSelection = selection.some((value) => value !== null)
+  if (hasSelection && selection.some((value) => value === null)) {
+    throw new Error('Invalid learning-plan activation response: selection is incomplete')
+  }
+  if (parsed.selectedPlanId) {
+    const selectedPlan = parsed.plans.find((plan) => plan.planId === parsed.selectedPlanId)
+    if (!selectedPlan || selectedPlan.landscapeId !== parsed.selectedLandscapeId) {
+      throw new Error('Invalid learning-plan activation response: selected plan')
+    }
+  }
+  return parsed
+}
+
+const readOptionalJsonResponse = async (response: Response): Promise<unknown | null> => {
+  if (!response.ok) {
+    const message = (await response.text()).trim()
+    throw new LearnerLearningPlanApiError(
+      message || `Learning-plan request failed (${response.status})`,
+      response.status,
+    )
+  }
+  if (response.status === 204) return null
+  const text = await response.text()
+  if (!text.trim()) return null
+  try {
+    return JSON.parse(text) as unknown
+  } catch {
+    throw new Error('Invalid learning-plan response')
+  }
+}
+
 export const continueLearnerLearningPlan = async (
   skillpilotId: string,
   planId: string,
@@ -437,4 +554,59 @@ export const continueLearnerLearningPlan = async (
     },
   )
   return parseContinueResponse(await readJsonResponse(response))
+}
+
+export const reconcileLearnerLearningPlans = async (
+  skillpilotId: string,
+  request: ReconcileLearnerLearningPlansRequest,
+  options: LearnerLearningPlanRequestOptions = {},
+): Promise<LearnerLearningPlanTransitionResponse | null> => {
+  const response = await (options.fetchImpl ?? fetch)(
+    buildReconcileLearnerLearningPlansEndpoint(skillpilotId, options.apiBase),
+    {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...request, asOf: parseDate(request.asOf, 'asOf') }),
+      signal: options.signal,
+    },
+  )
+  return parseTransitionResponse(await readOptionalJsonResponse(response))
+}
+
+export const switchLearnerLearningPlan = async (
+  skillpilotId: string,
+  planId: string,
+  request: SwitchLearnerLearningPlanRequest,
+  options: LearnerLearningPlanRequestOptions = {},
+): Promise<LearnerLearningPlanTransitionResponse | null> => {
+  const response = await (options.fetchImpl ?? fetch)(
+    buildSwitchLearnerLearningPlanEndpoint(skillpilotId, planId, options.apiBase),
+    {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...request, asOf: parseDate(request.asOf, 'asOf') }),
+      signal: options.signal,
+    },
+  )
+  return parseTransitionResponse(await readOptionalJsonResponse(response))
+}
+
+export const activateLearnerLearningPlans = async (
+  skillpilotId: string,
+  request: ActivateLearnerLearningPlansRequest,
+  options: LearnerLearningPlanRequestOptions = {},
+): Promise<ActivateLearnerLearningPlansResponse> => {
+  const response = await (options.fetchImpl ?? fetch)(
+    buildActivateLearnerLearningPlansEndpoint(skillpilotId, options.apiBase),
+    {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...request, asOf: parseDate(request.asOf, 'asOf') }),
+      signal: options.signal,
+    },
+  )
+  return parseActivateResponse(await readJsonResponse(response))
 }

@@ -89,24 +89,27 @@ Year, phase, or module choices are focus over program structure; they are not
 silently converted into canonical learning goals. A focus change does not
 rewrite the Personal Curriculum.
 
-An optional learner-owned subject schedule can make a due frontier goal
-available through the Cockpit action **Start next planned goal**. Plan mode is
-off by default, and enabling it is the learner's revocable authorization. The
-first goal is selected deliberately. After a confirmed completion, the backend
-considers an automatic handoff only if the completed goal belongs to at least
-one currently valid stored plan, then derives at most one due eligible candidate
-per valid subject plan. Exactly one candidate from a plan that contains the
-completed goal takes precedence over unrelated candidates. If there is no such
-anchored candidate, exactly one eligible candidate across all valid plans is
-required. Multiple anchored candidates, multiple unanchored candidates, only
-stale or invalid plans, no stored plan, or no due eligible goal fail closed: the
-existing focus remains and no new active goal is selected; the completed active
-goal may still be cleared normally. The generic Autopilot remains suppressed
-whenever plan mode is enabled, including when no plan can supply a candidate.
-Every handoff revalidates the schedule against the complete personalized subject
-scope, never bypasses `requires`, and does not replace a still-unmastered active
-goal. Cross-subject continuation changes the subject route and active goal
-together. Calendar progress alone never writes focus, active goal, or mastery.
+Optional learner-owned subject schedules are presented as one guided learning
+plan even though every subject retains its own revision and validation boundary.
+The confirmed first-party teacher action **Make planning effective** validates
+and replaces all included subject schedules atomically, enables plan-guided
+learning, and immediately selects the first due frontier goal. A learner who
+opens an already effective plan with no active goal triggers the same
+idempotent foreground reconciliation; there is no separate **Start next planned
+goal** step.
+
+An unfinished active goal remains selected while learning continues normally.
+The learner can nevertheless choose another subject explicitly. That foreground
+action parks the previous goal without changing mastery, revalidates the chosen
+subject schedule, selects its next due eligible goal, changes the subject route,
+and brings the goal visibly into focus. After confirmed completion, a due
+eligible candidate from a valid plan containing the completed goal has priority;
+otherwise valid subject plans are ranked deterministically by due urgency and
+stable subject identity. Stale or invalid plans are never used, and `requires`
+is never bypassed. If no valid due candidate exists, no replacement goal is
+invented. Plan-guided learning remains revocably pausable by the learner, and
+the generic Autopilot remains suppressed while it is enabled. Calendar progress
+alone never writes focus, active goal, or mastery.
 
 When focus is widened, the backend follows the learner-facing ancestor path
 toward the root and publishes valid broader ancestors that add unmastered

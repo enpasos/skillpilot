@@ -9,6 +9,7 @@ import { ConfirmModal } from '../components/ConfirmModal'
 import { InlineMathText } from '../components/InlineMathText'
 import { LogoutButton } from '../components/LogoutButton'
 import { TrainerClassFilePasswordDialog } from '../components/TrainerClassFilePasswordDialog'
+import { TrainerLearningPlanActivation } from '../components/TrainerLearningPlanActivation'
 import { useCompetenceGraph } from '../hooks/useCompetenceGraph'
 import { useGoalIndex } from '../hooks/useGoalIndex'
 import { useLandscapes, type LandscapeEntry } from '../hooks/useLandscapes'
@@ -252,6 +253,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [classFileDialog, setClassFileDialog] = useState<TrainerClassFileDialogState | null>(null)
   const [classFileBusy, setClassFileBusy] = useState(false)
   const [classFileError, setClassFileError] = useState('')
+  const [coursePlanActivationRefreshToken, setCoursePlanActivationRefreshToken] = useState(0)
+  const [coursePlanHasUnsavedDraft, setCoursePlanHasUnsavedDraft] = useState(false)
   const classFileOperationRef = useRef(false)
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
@@ -1371,6 +1374,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onContextChange(nextSession.landscapeId, nextSession.activeFilter, null, { replace: true })
   }
 
+  const handleLocalCoursePlanChange = useCallback(() => {
+    setCoursePlanActivationRefreshToken((current) => current + 1)
+  }, [])
+
   const handleSelectGoal = (id: string) => {
     if (!activeClass || id === routeGoalId) return
     onContextChange(activeClass.landscapeId, trainerContextFilter, id)
@@ -1963,6 +1970,22 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             learnerId={activeCoursePlanLearnerId || undefined}
             landscapeId={activeClassIsExistingLearner ? activeClass.landscapeId : undefined}
             language={localizedLanguage}
+            sharedActivationAvailable={activeClassIsExistingLearner}
+            sharedActivationPanel={activeClassIsExistingLearner ? (
+              <TrainerLearningPlanActivation
+                classSession={activeClass}
+                learnerId={activeCoursePlanLearnerId}
+                landscapeEntries={activeExistingLearnerLandscapeEntries}
+                runtimeCatalogState={runtimeCatalogState}
+                language={localizedLanguage}
+                refreshToken={coursePlanActivationRefreshToken}
+                hasUnsavedActiveDraft={coursePlanHasUnsavedDraft}
+                onSelectSubject={handleExistingLearnerSubjectChange}
+                onNotify={onNotify}
+              />
+            ) : undefined}
+            onLocalPlanChange={activeClassIsExistingLearner ? handleLocalCoursePlanChange : undefined}
+            onDraftStateChange={activeClassIsExistingLearner ? setCoursePlanHasUnsavedDraft : undefined}
             onNotify={onNotify}
           />
         )

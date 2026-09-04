@@ -2,14 +2,20 @@ import assert from 'node:assert/strict'
 import type { LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
 import {
   LearnerLearningPlanApiError,
+  activateLearnerLearningPlans,
+  buildActivateLearnerLearningPlansEndpoint,
   buildContinueLearnerLearningPlanEndpoint,
   buildLearnerLearningPlanEndpoint,
   buildLearnerLearningPlansEndpoint,
+  buildReconcileLearnerLearningPlansEndpoint,
+  buildSwitchLearnerLearningPlanEndpoint,
   continueLearnerLearningPlan,
   getLearnerLearningPlan,
   getLearnerLearningPlans,
   parseLearnerLearningPlansResponse,
+  reconcileLearnerLearningPlans,
   saveLearnerLearningPlan,
+  switchLearnerLearningPlan,
 } from './learnerLearningPlanApi'
 import {
   formatLearnerLearningPlanDate,
@@ -101,6 +107,22 @@ assert.equal(
     'https://api.example.test/',
   ),
   'https://api.example.test/api/ui/learners/learner-42/learning-plans/plan%2Fmath/continue',
+)
+assert.equal(
+  buildReconcileLearnerLearningPlansEndpoint('learner-42', 'https://api.example.test/'),
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans/reconcile',
+)
+assert.equal(
+  buildSwitchLearnerLearningPlanEndpoint(
+    'learner-42',
+    'plan/math',
+    'https://api.example.test/',
+  ),
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans/plan%2Fmath/switch',
+)
+assert.equal(
+  buildActivateLearnerLearningPlansEndpoint('learner-42', 'https://api.example.test/'),
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans/activate',
 )
 
 const parsed = parseLearnerLearningPlansResponse({
@@ -235,6 +257,157 @@ const continued = await continueLearnerLearningPlan(
 assert.equal(capturedInit?.method, 'POST')
 assert.equal(capturedInit?.body, JSON.stringify({ expectedRevision: 3 }))
 assert.equal(continued.activeGoalId, 'analysis-1')
+
+responseBody = {
+  planId: 'plan-math',
+  revision: 3,
+  landscapeId: 'math/sek-ii',
+  focusGoalId: 'analysis-root',
+  activeGoalId: 'analysis-1',
+  changed: true,
+  state: { stateMachine: { activeGoal: { id: 'analysis-1' } } },
+}
+const reconciled = await reconcileLearnerLearningPlans(
+  'learner-42',
+  { asOf: '2026-09-10' },
+  { apiBase: 'https://api.example.test', fetchImpl },
+)
+assert.equal(
+  capturedUrl,
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans/reconcile',
+)
+assert.equal(capturedInit?.method, 'POST')
+assert.equal(capturedInit?.credentials, 'include')
+assert.equal(capturedInit?.body, JSON.stringify({ asOf: '2026-09-10' }))
+assert.equal(reconciled?.changed, true)
+assert.equal(reconciled?.activeGoalId, 'analysis-1')
+
+responseBody = {
+  planId: 'plan-physics',
+  revision: 7,
+  landscapeId: 'physics/sek-ii',
+  focusGoalId: 'mechanics-root',
+  activeGoalId: 'mechanics-1',
+  changed: true,
+  state: { stateMachine: { activeGoal: { id: 'mechanics-1' } } },
+}
+const switched = await switchLearnerLearningPlan(
+  'learner-42',
+  'plan-physics',
+  { expectedRevision: 7, asOf: '2026-09-10' },
+  { apiBase: 'https://api.example.test', fetchImpl },
+)
+assert.equal(
+  capturedUrl,
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans/plan-physics/switch',
+)
+assert.equal(capturedInit?.body, JSON.stringify({ expectedRevision: 7, asOf: '2026-09-10' }))
+assert.equal(switched?.landscapeId, 'physics/sek-ii')
+
+responseBody = null
+assert.equal(
+  await reconcileLearnerLearningPlans(
+    'learner-42',
+    { asOf: '2026-09-10' },
+    { apiBase: 'https://api.example.test', fetchImpl },
+  ),
+  null,
+)
+
+const activationRequest = {
+  asOf: '2026-09-10',
+  plans: [{
+    landscapeId: 'math/sek-ii',
+    expectedRevision: 3,
+    planLabel: 'Mathematik bis zum Abitur',
+    blocks: saveRequest.blocks,
+  }],
+}
+responseBody = {
+  asOf: '2026-09-10',
+  followLearningPlans: true,
+  plans: [planDetail],
+  selectedPlanId: 'plan-math',
+  selectedLandscapeId: 'math/sek-ii',
+  focusGoalId: 'analysis-root',
+  activeGoalId: 'analysis-1',
+  state: { stateMachine: { activeGoal: { id: 'analysis-1' } } },
+}
+const activated = await activateLearnerLearningPlans(
+  'learner-42',
+  activationRequest,
+  { apiBase: 'https://api.example.test', fetchImpl },
+)
+assert.equal(
+  capturedUrl,
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans/activate',
+)
+assert.equal(capturedInit?.method, 'POST')
+assert.equal(capturedInit?.body, JSON.stringify(activationRequest))
+assert.equal(activated.followLearningPlans, true)
+assert.equal(activated.plans[0]?.blocks[0]?.id, 'block-analysis')
+assert.equal(activated.selectedLandscapeId, 'math/sek-ii')
+
+responseBody = {
+  changed: false,
+  state: { stateMachine: { activeGoal: null } },
+}
+const noTransition = await reconcileLearnerLearningPlans(
+  'learner-42',
+  { asOf: '2026-09-10' },
+  { apiBase: 'https://api.example.test', fetchImpl },
+)
+assert.deepEqual(noTransition, {
+  planId: null,
+  revision: null,
+  landscapeId: null,
+  focusGoalId: null,
+  activeGoalId: null,
+  changed: false,
+  state: { stateMachine: { activeGoal: null } },
+})
+
+responseBody = {
+  changed: true,
+  state: { stateMachine: { activeGoal: null } },
+}
+const clearedCompletedPointer = await reconcileLearnerLearningPlans(
+  'learner-42',
+  { asOf: '2026-09-10' },
+  { apiBase: 'https://api.example.test', fetchImpl },
+)
+assert.equal(clearedCompletedPointer?.changed, true)
+assert.equal(clearedCompletedPointer?.activeGoalId, null)
+
+responseBody = {
+  planId: 'plan-math',
+  changed: true,
+  state: { stateMachine: { activeGoal: null } },
+}
+await assert.rejects(
+  () => reconcileLearnerLearningPlans(
+    'learner-42',
+    { asOf: '2026-09-10' },
+    { apiBase: 'https://api.example.test', fetchImpl },
+  ),
+  /target context without active goal/u,
+)
+
+responseBody = {
+  asOf: '2026-09-10',
+  followLearningPlans: true,
+  plans: [planDetail],
+  selectedPlanId: 'plan-math',
+  state: { stateMachine: { activeGoal: null } },
+}
+await assert.rejects(
+  () => activateLearnerLearningPlans(
+    'learner-42',
+    activationRequest,
+    { apiBase: 'https://api.example.test', fetchImpl },
+  ),
+  /selection is incomplete/u,
+)
 
 await assert.rejects(
   () => getLearnerLearningPlans('learner-42', '2026-09-10', {

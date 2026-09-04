@@ -5,7 +5,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { LearnerPlanTodayCard } from '../components/LearnerPlanTodayCard'
+import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
@@ -58,9 +58,10 @@ import {
 } from '../utils/learnerDataManagement'
 import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 import {
-  continueLearnerLearningPlan,
   getLearnerLearningPlans,
   LearnerLearningPlanApiError,
+  reconcileLearnerLearningPlans,
+  switchLearnerLearningPlan,
 } from '../utils/learnerLearningPlanApi'
 import { getLearnerLearningPlanCopy } from '../utils/learnerLearningPlanCopy'
 import {
@@ -424,7 +425,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     scopeKey: learnerStateScopeKey,
     status: skillpilotId ? 'loading' : 'ready',
   })
-  const [continuingLearningPlanId, setContinuingLearningPlanId] = useState<string | null>(null)
+  const [learningPlanActionId, setLearningPlanActionId] = useState<string | null>(null)
+  const [learningPlanActionError, setLearningPlanActionError] = useState<string | null>(null)
+  const [learningPlanActionsBlocked, setLearningPlanActionsBlocked] = useState(false)
+  const [learningPlanTransitionLandscapeId, setLearningPlanTransitionLandscapeId] = useState<string | null>(null)
   const learningPlansLoadStatus: LearnerStateLoadStatus =
     learningPlansLoadState.scopeKey === learnerStateScopeKey
       ? learningPlansLoadState.status
@@ -473,6 +477,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const learningPlansRequestSequenceRef = useRef(0)
   const learningPlansRefreshInFlightRef = useRef(false)
   const learningPlanContinueRequestSequenceRef = useRef(0)
+  const learningPlanTransitionInFlightRef = useRef(createSynchronousInFlightGuard())
+  const learningPlanReconcileAttemptedKeyRef = useRef<string | null>(null)
+  const pendingPlanGoalFocusRef = useRef<string | null>(null)
+  const learnerGoalContentRef = useRef<HTMLDivElement | null>(null)
   const currentLearnerStateScopeKeyRef = useRef(learnerStateScopeKey)
   currentLearnerStateScopeKeyRef.current = learnerStateScopeKey
   currentSkillpilotIdRef.current = skillpilotId
@@ -592,6 +600,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const currentRouteGoalId = routeGoalId ?? ''
   const selectedId = currentRouteGoalId || currentGoal?.id || rootGoals[0]?.id || ''
   const effectiveActiveGoalId = stateActiveGoalId
+  const activeLearningPlanLandscapeId = effectiveActiveGoalId
+    ? goalIndexAll.get(effectiveActiveGoalId)?.landscapeId
+      ?? learningPlanTransitionLandscapeId
+      ?? landscapeId
+    : null
   const hasTrackedCampaignOpenRef = useRef(false)
   const guidedPersonalizationRefreshInFlightRef = useRef(0)
   const [guidedPersonalizationRefreshing, setGuidedPersonalizationRefreshing] = useState(false)
@@ -1219,6 +1232,33 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onSelectGoalInLandscape,
   ])
 
+  const focusLearnerGoalContent = useCallback((goalId: string) => {
+    pendingPlanGoalFocusRef.current = goalId
+    if (currentGoal?.id !== goalId || currentRouteGoalId !== goalId) return
+    window.requestAnimationFrame(() => {
+      if (pendingPlanGoalFocusRef.current !== goalId) return
+      const target = learnerGoalContentRef.current
+      if (!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target.focus({ preventScroll: true })
+      pendingPlanGoalFocusRef.current = null
+    })
+  }, [currentGoal?.id, currentRouteGoalId])
+
+  useEffect(() => {
+    const pendingGoalId = pendingPlanGoalFocusRef.current
+    if (!pendingGoalId || currentGoal?.id !== pendingGoalId || currentRouteGoalId !== pendingGoalId) return
+    const frame = window.requestAnimationFrame(() => {
+      if (pendingPlanGoalFocusRef.current !== pendingGoalId) return
+      const target = learnerGoalContentRef.current
+      if (!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target.focus({ preventScroll: true })
+      pendingPlanGoalFocusRef.current = null
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [currentGoal?.id, currentRouteGoalId, landscapeId])
+
   // Reveal Scope (Planned Goals) Logic
   const revealScope = useCallback(() => {
     if (effectiveLearnerParentMap.size === 0 || plannedGoals.size === 0) return
@@ -1533,7 +1573,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
-    setContinuingLearningPlanId(null)
+    learningPlanTransitionInFlightRef.current = createSynchronousInFlightGuard()
+    learningPlanReconcileAttemptedKeyRef.current = null
+    pendingPlanGoalFocusRef.current = null
+    setLearningPlanActionId(null)
+    setLearningPlanActionError(null)
+    setLearningPlanActionsBlocked(false)
+    setLearningPlanTransitionLandscapeId(null)
     setLearningPlans(null)
     setLearningPlansDataScopeKey(learnerStateScopeKey)
     setLearningPlansLoadState({
@@ -2158,21 +2204,104 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     t.notifications.plannedGoalSaveFailed,
   ])
 
-  const handleContinueLearningPlan = useCallback(async (planId: string) => {
+  const applyLearningPlanTransition = useCallback(async (
+    result: Awaited<ReturnType<typeof reconcileLearnerLearningPlans>>,
+    requestScopeKey: string,
+    isCurrentRequest: () => boolean,
+  ) => {
+    if (!result || !isCurrentRequest()) return
+
+    invalidateLatestRequest(learnerStateRequestSequenceRef)
+    invalidateLatestRequest(plannedGoalsRequestSequenceRef)
+    if (isLearnerStatePayload(result.state)) {
+      applyLearnerStatePayload(result.state, requestScopeKey)
+    } else {
+      await refreshState(true)
+      if (!isCurrentRequest()) return
+    }
+
+    if (!result.activeGoalId) return
+    const targetLandscapeId = result.landscapeId
+      ?? goalIndexAll.get(result.activeGoalId)?.landscapeId
+    if (!targetLandscapeId) return
+
+    setLearningPlanTransitionLandscapeId(targetLandscapeId)
+    forceActiveGoalRevealRef.current = true
+    setExpandedGoalIds(buildCollapsedFocusPath(result.activeGoalId))
+    focusLearnerGoalContent(result.activeGoalId)
+    if (result.activeGoalId === currentRouteGoalId && targetLandscapeId === landscapeId) return
+
+    pendingActiveGoalRouteSyncRef.current = result.activeGoalId
+    const navigated = navigateToLearnerLearningPlanGoal(
+      landscapeId,
+      {
+        landscapeId: targetLandscapeId,
+        activeGoalId: result.activeGoalId,
+      },
+      {
+        selectGoal: onSelectGoal,
+        selectGoalInLandscape: onSelectGoalInLandscape,
+      },
+    )
+    if (!navigated) {
+      throw new Error('learning-plan-navigation-unavailable')
+    }
+  }, [
+    applyLearnerStatePayload,
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    focusLearnerGoalContent,
+    goalIndexAll,
+    landscapeId,
+    onSelectGoal,
+    onSelectGoalInLandscape,
+    refreshState,
+  ])
+
+  const handleContinueCurrentPlanGoal = useCallback(() => {
+    if (!effectiveActiveGoalId || !activeLearningPlanLandscapeId) return
+    focusLearnerGoalContent(effectiveActiveGoalId)
+    if (effectiveActiveGoalId === currentRouteGoalId && activeLearningPlanLandscapeId === landscapeId) return
+    pendingActiveGoalRouteSyncRef.current = effectiveActiveGoalId
+    navigateToLearnerLearningPlanGoal(
+      landscapeId,
+      {
+        landscapeId: activeLearningPlanLandscapeId,
+        activeGoalId: effectiveActiveGoalId,
+      },
+      {
+        selectGoal: onSelectGoal,
+        selectGoalInLandscape: onSelectGoalInLandscape,
+      },
+    )
+  }, [
+    activeLearningPlanLandscapeId,
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    focusLearnerGoalContent,
+    landscapeId,
+    onSelectGoal,
+    onSelectGoalInLandscape,
+  ])
+
+  const handleSwitchLearningPlan = useCallback(async (planId: string) => {
     const response = scopedLearningPlans
     const plan = response?.plans.find((candidate) => candidate.planId === planId)
+    const requestGuard = learningPlanTransitionInFlightRef.current
     if (
       !skillpilotId
       || !response?.followLearningPlans
       || !plan
       || plan.stale
-      || !plan.canContinue
+      || plan.metrics.openDueThroughToday === 0
+      || !plan.nextEligibleGoal
       || !isLearnerPlanActionAvailable(
         learningPlansLoadStatus,
         learningPlansRefreshInFlightRef.current,
       )
-      || continuingLearningPlanId
+      || learningPlanActionsBlocked
       || (plan.landscapeId !== landscapeId && !onSelectGoalInLandscape)
+      || !requestGuard.tryStart()
     ) return
 
     const requestSequence = beginLatestRequest(learningPlanContinueRequestSequenceRef)
@@ -2183,70 +2312,140 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       currentLearnerStateScopeKeyRef.current,
       requestScopeKey,
     )
-    setContinuingLearningPlanId(planId)
+    setLearningPlanActionId(planId)
+    setLearningPlanActionError(null)
     try {
-      const result = await continueLearnerLearningPlan(skillpilotId, planId, {
+      const result = await switchLearnerLearningPlan(skillpilotId, planId, {
         expectedRevision: plan.revision,
+        asOf: response.asOf,
       })
       if (!isCurrentRequest()) return
-      invalidateLatestRequest(learnerStateRequestSequenceRef)
-      if (isLearnerStatePayload(result.state)) {
-        applyLearnerStatePayload(result.state, requestScopeKey)
-      } else {
-        await refreshState(true)
-        if (!isCurrentRequest()) return
+      if (!result?.activeGoalId || !result.landscapeId) {
+        throw new Error('learning-plan-switch-without-target')
       }
-      forceActiveGoalRevealRef.current = true
-      setExpandedGoalIds(buildCollapsedFocusPath(result.activeGoalId))
-      if (result.activeGoalId !== currentRouteGoalId || result.landscapeId !== landscapeId) {
-        pendingActiveGoalRouteSyncRef.current = result.activeGoalId
-        navigateToLearnerLearningPlanGoal(
-          landscapeId,
-          result,
-          {
-            selectGoal: onSelectGoal,
-            selectGoalInLandscape: onSelectGoalInLandscape,
-          },
-        )
-      }
+      await applyLearningPlanTransition(result, requestScopeKey, isCurrentRequest)
+      if (!isCurrentRequest()) return
+      setLearningPlanActionsBlocked(false)
       await Promise.all([
         refreshLearningPlans(),
         onRefresh?.(),
       ])
     } catch (error) {
       if (!isCurrentRequest()) return
-      console.warn('Failed to continue learner learning plan', error)
-      await refreshLearningPlans()
+      console.warn('Failed to switch learner learning plan', error)
+      const refreshed = await refreshLearningPlans()
+      if (!isCurrentRequest()) return
+      setLearningPlanActionsBlocked(!refreshed)
       const conflict = error instanceof LearnerLearningPlanApiError
         && (error.status === 409 || error.status === 412)
-      onNotify?.(
-        'error',
-        conflict
-          ? learnerLearningPlanCopy.continueConflict
-          : learnerLearningPlanCopy.continueFailed,
-      )
+      const message = conflict
+        ? learnerLearningPlanCopy.continueConflict
+        : learnerLearningPlanCopy.switchFailed
+      setLearningPlanActionError(message)
+      onNotify?.('error', message)
     } finally {
+      requestGuard.finish()
       if (isCurrentRequest()) {
-        setContinuingLearningPlanId((current) => current === planId ? null : current)
+        setLearningPlanActionId((current) => current === planId ? null : current)
       }
     }
   }, [
-    applyLearnerStatePayload,
-    buildCollapsedFocusPath,
-    continuingLearningPlanId,
-    currentRouteGoalId,
-    learnerStateScopeKey,
-    learningPlansLoadStatus,
+    applyLearningPlanTransition,
     landscapeId,
-    scopedLearningPlans,
     learnerLearningPlanCopy.continueConflict,
-    learnerLearningPlanCopy.continueFailed,
+    learnerLearningPlanCopy.switchFailed,
+    learnerStateScopeKey,
+    learningPlanActionsBlocked,
+    learningPlansLoadStatus,
     onNotify,
     onRefresh,
-    onSelectGoal,
     onSelectGoalInLandscape,
     refreshLearningPlans,
-    refreshState,
+    scopedLearningPlans,
+    skillpilotId,
+  ])
+
+  const retryLearningPlans = useCallback(async () => {
+    setLearningPlanActionError(null)
+    setLearningPlanActionsBlocked(false)
+    learningPlanReconcileAttemptedKeyRef.current = null
+    await Promise.all([
+      refreshState(true),
+      refreshLearningPlans(),
+    ])
+  }, [refreshLearningPlans, refreshState])
+
+  useEffect(() => {
+    const response = scopedLearningPlans
+    if (
+      !skillpilotId
+      || learnerStateLoadStatus !== 'ready'
+      || learningPlansLoadStatus !== 'ready'
+      || !response?.followLearningPlans
+      || response.plans.length === 0
+      || effectiveActiveGoalId
+      || learningPlanActionsBlocked
+    ) return
+
+    const reconcileKey = [
+      learnerStateScopeKey,
+      response.asOf,
+      ...response.plans
+        .map((plan) => `${plan.planId}:${plan.revision}`)
+        .sort(),
+    ].join('|')
+    if (learningPlanReconcileAttemptedKeyRef.current === reconcileKey) return
+    const requestGuard = learningPlanTransitionInFlightRef.current
+    if (!requestGuard.tryStart()) return
+    learningPlanReconcileAttemptedKeyRef.current = reconcileKey
+
+    const requestSequence = beginLatestRequest(learningPlanContinueRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learningPlanContinueRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+    setLearningPlanActionId('reconcile')
+    setLearningPlanActionError(null)
+
+    void (async () => {
+      try {
+        const result = await reconcileLearnerLearningPlans(skillpilotId, { asOf: response.asOf })
+        if (!isCurrentRequest()) return
+        await applyLearningPlanTransition(result, requestScopeKey, isCurrentRequest)
+        if (!isCurrentRequest()) return
+        setLearningPlanActionsBlocked(false)
+        await Promise.all([
+          refreshLearningPlans(),
+          onRefresh?.(),
+        ])
+      } catch (error) {
+        if (!isCurrentRequest()) return
+        console.warn('Failed to reconcile learner learning plans', error)
+        setLearningPlanActionsBlocked(true)
+        setLearningPlanActionError(learnerLearningPlanCopy.reconcileFailed)
+        onNotify?.('error', learnerLearningPlanCopy.reconcileFailed)
+      } finally {
+        requestGuard.finish()
+        if (isCurrentRequest()) {
+          setLearningPlanActionId((current) => current === 'reconcile' ? null : current)
+        }
+      }
+    })()
+  }, [
+    applyLearningPlanTransition,
+    effectiveActiveGoalId,
+    learnerLearningPlanCopy.reconcileFailed,
+    learnerStateLoadStatus,
+    learnerStateScopeKey,
+    learningPlanActionsBlocked,
+    learningPlansLoadStatus,
+    onNotify,
+    onRefresh,
+    refreshLearningPlans,
+    scopedLearningPlans,
     skillpilotId,
   ])
 
@@ -3104,6 +3303,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       )}
 
       <aside
+        id="learner-goal-sidebar"
         className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
           fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
@@ -3162,10 +3362,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <ThemeToggle />
             {isMobile && (
               <button
+                type="button"
+                aria-label={learnerViewCopy.closeGoalMenuLabel}
+                title={learnerViewCopy.closeGoalMenuLabel}
                 onClick={() => setIsSidebarOpen(false)}
-                className="p-1 ml-1 text-text-secondary hover:text-red-400"
+                className="ml-1 inline-flex min-h-11 min-w-11 items-center justify-center text-text-secondary hover:text-red-400"
               >
-                <X size={20} />
+                <X size={20} aria-hidden="true" />
               </button>
             )}
           </div>
@@ -3244,14 +3447,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         )}
       </aside>
 
-      <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center relative">
+      <main
+        data-testid="learner-main-content"
+        className="relative flex flex-1 flex-col items-center overflow-y-auto bg-chat-bg p-6 pt-16 md:pt-6"
+      >
         {/* Mobile Toggle Button */}
         {isMobile && !isSidebarOpen && (
           <button
-            className="absolute top-4 left-4 p-2 text-text-secondary hover:text-sky-400 z-10 bg-white/50 dark:bg-slate-900/50 rounded-md backdrop-blur-sm border border-border-color shadow-sm"
+            type="button"
+            data-testid="learner-mobile-menu-button"
+            aria-label={learnerViewCopy.openGoalMenuLabel}
+            aria-controls="learner-goal-sidebar"
+            aria-expanded="false"
+            title={learnerViewCopy.openGoalMenuLabel}
+            className="absolute left-4 top-4 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border-color bg-white/50 text-text-secondary shadow-sm backdrop-blur-sm hover:text-sky-400 dark:bg-slate-900/50"
             onClick={() => setIsSidebarOpen(true)}
           >
-            <Menu size={20} />
+            <Menu size={20} aria-hidden="true" />
           </button>
         )}
         {!isGuidedPersonalizationRequired && (
@@ -3273,39 +3485,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 {learnerLearningPlanCopy.refreshing}
               </p>
             ) : null}
-            {scopedLearningPlans && (scopedLearningPlans.plans.length > 0 || scopedLearningPlans.followLearningPlans) ? (
-              <div className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-sky-200 bg-sky-50/70 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
-                <div>
-                  <h2 className="font-semibold text-text-primary">
-                    {scopedLearningPlans.followLearningPlans
-                      ? learnerLearningPlanCopy.planModeOnTitle
-                      : learnerLearningPlanCopy.planModeOffTitle}
-                  </h2>
-                  <p className="mt-1 leading-6 text-text-secondary">
-                    {scopedLearningPlans.followLearningPlans
-                      ? learnerLearningPlanCopy.planModeOnBody
-                      : learnerLearningPlanCopy.planModeOffBody}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsSetupOpen(true)}
-                  className="min-h-10 shrink-0 rounded-lg border border-sky-300 bg-white px-3 py-2 font-semibold text-sky-800 transition-colors hover:bg-sky-100 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950"
-                >
-                  {learnerLearningPlanCopy.openSettingsAction}
-                </button>
-              </div>
-            ) : null}
-            {learningPlansLoadStatus === 'error' ? (
+            {learningPlansLoadStatus === 'error' && !scopedLearningPlans ? (
               <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
-                <span>
-                  {scopedLearningPlans
-                    ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(scopedLearningPlans.asOf, localizedLanguage))
-                    : learnerLearningPlanCopy.loadFailed}
-                </span>
+                <span>{learnerLearningPlanCopy.loadFailed}</span>
                 <button
                   type="button"
-                  onClick={() => { void refreshLearningPlans() }}
+                  onClick={() => { void retryLearningPlans() }}
                   className="min-h-10 rounded-lg border border-current px-3 py-2 font-semibold"
                 >
                   {learnerLearningPlanCopy.retryAction}
@@ -3324,25 +3509,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   <p className="mt-2 leading-6">{learnerLearningPlanCopy.noPlansBody}</p>
                 </div>
               ) : null}
-            {sortedLearningPlans.map((plan) => (
-              <LearnerPlanTodayCard
-                key={plan.planId}
-                plan={plan}
-                subjectLabel={learningPlanSubjectLabels.get(plan.landscapeId) ?? plan.landscapeId}
+            {scopedLearningPlans && sortedLearningPlans.length > 0 ? (
+              <LearnerPlanTodayOverview
+                plans={sortedLearningPlans}
                 language={localizedLanguage}
-                planModeEnabled={scopedLearningPlans?.followLearningPlans === true}
-                nextGoalLabel={plan.nextEligibleGoal
-                  ? goalIndexAll.get(plan.nextEligibleGoal.goalId)?.title
-                  : undefined}
-                staleDataMessage={learningPlansLoadStatus === 'error' && scopedLearningPlans
+                planModeEnabled={scopedLearningPlans.followLearningPlans}
+                subjectLabel={(planLandscapeId) => (
+                  learningPlanSubjectLabels.get(planLandscapeId) ?? planLandscapeId
+                )}
+                goalLabel={(goalId) => goalIndexAll.get(goalId)?.title}
+                activeGoalId={effectiveActiveGoalId}
+                activeLandscapeId={activeLearningPlanLandscapeId}
+                actionsDisabled={
+                  !isLearnerPlanActionAvailable(
+                    learningPlansLoadStatus,
+                    learningPlansRefreshInFlightRef.current,
+                  )
+                  || learningPlanActionsBlocked
+                }
+                navigationAvailable={(planLandscapeId) => (
+                  planLandscapeId === landscapeId || !!onSelectGoalInLandscape
+                )}
+                isReconciling={learningPlanActionId === 'reconcile'}
+                switchingPlanId={learningPlanActionId === 'reconcile' ? null : learningPlanActionId}
+                staleDataMessage={learningPlansLoadStatus === 'error'
                   ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(scopedLearningPlans.asOf, localizedLanguage))
                   : undefined}
-                actionsDisabled={!isLearnerPlanActionAvailable(learningPlansLoadStatus)}
-                navigationAvailable={plan.landscapeId === landscapeId || !!onSelectGoalInLandscape}
-                isContinuing={continuingLearningPlanId === plan.planId}
-                onContinue={(planId) => { void handleContinueLearningPlan(planId) }}
+                actionError={learningPlanActionError ?? undefined}
+                onContinue={handleContinueCurrentPlanGoal}
+                onSwitch={(planId) => { void handleSwitchLearningPlan(planId) }}
+                onOpenSettings={() => setIsSetupOpen(true)}
+                onRetry={() => { void retryLearningPlans() }}
               />
-            ))}
+            ) : null}
           </section>
         )}
         {isGuidedPersonalizationRequired ? (
@@ -3361,7 +3560,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           </div>
         ) : currentGoal ? (
-          <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div
+            ref={learnerGoalContentRef}
+            data-testid="learner-current-goal"
+            tabIndex={-1}
+            className="w-full max-w-3xl scroll-mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500 focus:outline-none"
+          >
             {/* Check for SRS Tag */}
             {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
                 <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">

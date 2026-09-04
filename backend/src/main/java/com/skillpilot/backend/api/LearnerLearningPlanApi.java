@@ -30,6 +30,19 @@ public final class LearnerLearningPlanApi {
             List<Block> blocks) {
     }
 
+    /** One subject plan in an atomic multi-subject activation request. */
+    public record ActivationPlan(
+            String landscapeId,
+            Long expectedRevision,
+            String planLabel,
+            List<Block> blocks) {
+    }
+
+    public record ActivateRequest(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
+            List<ActivationPlan> plans) {
+    }
+
     public record Period(
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate startDate,
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate endDate) {
@@ -123,6 +136,35 @@ public final class LearnerLearningPlanApi {
             UUID planId,
             long revision,
             String landscapeId,
+            String focusGoalId,
+            String activeGoalId,
+            UnifiedLearnerStateResponse state) {
+    }
+
+    public record ReconcileRequest(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf) {
+    }
+
+    /** Authoritative result of an automatic or explicitly requested plan transition. */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record TransitionResponse(
+            UUID planId,
+            Long revision,
+            String landscapeId,
+            String focusGoalId,
+            String activeGoalId,
+            boolean changed,
+            UnifiedLearnerStateResponse state) {
+    }
+
+    /** Atomic publication result for one or more independently stored subject plans. */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record ActivateResponse(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
+            boolean followLearningPlans,
+            List<PlanDetail> plans,
+            UUID selectedPlanId,
+            String selectedLandscapeId,
             String focusGoalId,
             String activeGoalId,
             UnifiedLearnerStateResponse state) {

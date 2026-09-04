@@ -129,6 +129,72 @@ class LearnerLearningPlanControllerHttpTest {
     }
 
     @Test
+    void activateAcceptsMultipleSubjectsAndReturnsTheAutomaticallySelectedGoal() throws Exception {
+        LearnerLearningPlanApi.ActivateResponse response = new LearnerLearningPlanApi.ActivateResponse(
+                AS_OF,
+                true,
+                List.of(detail()),
+                PLAN_ID,
+                LANDSCAPE_ID,
+                "physics-focus",
+                "atom-1",
+                mock(com.skillpilot.backend.api.UnifiedLearnerStateResponse.class));
+        when(learningPlans.activatePlans(eq(LEARNER_ID), any())).thenReturn(response);
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/activate", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "asOf": "2026-09-04",
+                                  "plans": [{
+                                    "landscapeId": "physics/sek-ii",
+                                    "expectedRevision": 0,
+                                    "planLabel": "Physik",
+                                    "blocks": [{
+                                      "id": "b1",
+                                      "kind": "learning",
+                                      "goalId": "physics-focus",
+                                      "startDate": "2026-09-01",
+                                      "endDate": "2026-09-04",
+                                      "atomicGoalIds": ["atom-1"]
+                                    }]
+                                  }]
+                                }
+                                """))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(jsonPath("$.followLearningPlans").value(true))
+                .andExpect(jsonPath("$.selectedLandscapeId").value(LANDSCAPE_ID))
+                .andExpect(jsonPath("$.activeGoalId").value("atom-1"));
+
+        InOrder ordered = inOrder(learners, learningPlans);
+        ordered.verify(learners).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learningPlans).activatePlans(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void reconcileUsesAnExplicitPostAndMayReturnAnIdempotentNoOp() throws Exception {
+        LearnerLearningPlanApi.TransitionResponse response =
+                new LearnerLearningPlanApi.TransitionResponse(
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        false,
+                        mock(com.skillpilot.backend.api.UnifiedLearnerStateResponse.class));
+        when(learningPlans.reconcile(eq(LEARNER_ID), any())).thenReturn(response);
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/reconcile", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"asOf\":\"2026-09-04\"}"))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(jsonPath("$.changed").value(false))
+                .andExpect(jsonPath("$.planId").doesNotExist());
+    }
+
+    @Test
     void continueUsesPlanIdAndReturnsTheAuthoritativeStateEnvelope() throws Exception {
         LearnerLearningPlanApi.ContinueResponse response = new LearnerLearningPlanApi.ContinueResponse(
                 PLAN_ID,
@@ -146,6 +212,29 @@ class LearnerLearningPlanControllerHttpTest {
                 .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
                 .andExpect(jsonPath("$.planId").value(PLAN_ID.toString()))
                 .andExpect(jsonPath("$.focusGoalId").value("atom-1"))
+                .andExpect(jsonPath("$.activeGoalId").value("atom-1"));
+    }
+
+    @Test
+    void switchUsesPlanIdAndReturnsTheNewSubjectPointer() throws Exception {
+        LearnerLearningPlanApi.TransitionResponse response =
+                new LearnerLearningPlanApi.TransitionResponse(
+                        PLAN_ID,
+                        1L,
+                        LANDSCAPE_ID,
+                        "physics-focus",
+                        "atom-1",
+                        true,
+                        mock(com.skillpilot.backend.api.UnifiedLearnerStateResponse.class));
+        when(learningPlans.switchPlan(eq(LEARNER_ID), eq(PLAN_ID), any())).thenReturn(response);
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/{planId}/switch", LEARNER_ID, PLAN_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"expectedRevision\":1,\"asOf\":\"2026-09-04\"}"))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(jsonPath("$.changed").value(true))
+                .andExpect(jsonPath("$.landscapeId").value(LANDSCAPE_ID))
                 .andExpect(jsonPath("$.activeGoalId").value("atom-1"));
     }
 

@@ -2481,6 +2481,90 @@ Schemas, Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Reviewfälle und
 -fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben
 unverändert. Deshalb ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.45 Eng begrenzte Ausnahme: gemeinsame Fachplanung mit automatischer Lernführung
+
+Der Product Owner hat am **4. September 2026** nach Prüfung des vorgeschlagenen
+Ablaufs ausdrücklich freigegeben, persönliche Mathematik-, Physik- und weitere
+Fachpläne in der First-Party-WebGUI wie eine gemeinsame wirksame Planung zu
+führen. Die frühere Vorgabe eines separaten manuellen Erststarts und einer bei
+mehreren geeigneten Fachplänen ausbleibenden Auswahl aus Abschnitt 6.31 wird nur
+für diesen genau beschriebenen Ablauf ersetzt; alle übrigen Grenzen der
+persönlichen Fachzeitpläne bleiben bestehen.
+
+Für die lokale Lehrkraftplanung ist ausschließlich freigegeben:
+
+- alle vorbereiteten und bereits im Cockpit vorhandenen, noch gültigen
+  Fachpläne sichtbar zu einem vollständigen Aktivierungssatz
+  zusammenzustellen;
+- Revision, Personal-Curriculum-Fingerprint, Blockfokus, Atomziele und
+  Voraussetzungen jedes enthaltenen Fachplans vor dem ersten Schreiben zu
+  prüfen und den gesamten Satz anschließend in einer Transaktion zu speichern
+  oder vollständig zu verwerfen;
+- bei fehlenden gültigen Altplänen im Aktivierungsrequest fail-closed vor jeder
+  Mutation abzubrechen, damit kein verborgener Plan später als
+  Übergabekandidat weiterwirkt;
+- mit derselben ausdrücklich bestätigten Vordergrundaktion **Planung wirksam
+  machen** den weiterhin lernendenseitig pausierbaren Modus **Nach Plan lernen**
+  einzuschalten und unmittelbar das erste fällige, offene und nach `requires`
+  zulässige Atomziel auszuwählen; und
+- die bestehende Einzelfachkopie nur als nachrangige Aktualisierung
+  auszuweisen; sie ist keine gemeinsame Aktivierung und startet für sich kein
+  Planungspaket.
+
+Für das Lernenden-Cockpit ist ausschließlich freigegeben:
+
+- alle gültigen Fachpläne in einer kompakten gemeinsamen **Heute**-Ansicht zu
+  zeigen und `openDueThroughToday` einschließlich Rückstand als fachübergreifende
+  offene Anzahl auszuweisen, ohne daraus einen Tempo- oder Leistungsvergleich
+  zwischen Fächern zu berechnen;
+- das laufende Lernziel mit einer einzigen **Weiterlernen**-Aktion sichtbar in
+  den Fokus zu bringen und Fachdaten erst auf Wunsch aufzuklappen; auf dem
+  mobilen Learner-Layout bleibt der benannte 44-Pixel-Menüschalter räumlich
+  oberhalb der Heute-Karte und überdeckt weder Überschrift noch Aktion;
+- einen ausdrücklichen Fachwechsel anzubieten, der das unvollständige bisherige
+  Ziel ohne Mastery-Änderung parkt und nur nach erneuter Prüfung von Revision,
+  Fingerprint, Fälligkeit und Frontier ein Ziel des gewählten Fachs aktiviert;
+- beim Cockpit-Start genau dann einen idempotenten Reconcile-POST auszuführen,
+  wenn Planmodus und Fachpläne vorhanden sind, aber kein aktives Ziel besteht;
+  ein laufendes Ziel wird dabei nie verdrängt; und
+- nach bestätigtem Abschluss zunächst einen geeigneten Kandidaten aus einem
+  Plan mit Abschlussanker zu wählen und andernfalls gültige Fachpläne
+  deterministisch nach Blockende, Blockbeginn, Fach-ID, Ziel-ID und Plan-ID zu
+  ordnen. Gibt es keinen zulässigen fälligen Kandidaten, wird kein Ersatzziel
+  erfunden.
+
+Aktivierung, Reconcile und Fachwechsel sind ausschließlich ausdrückliche
+First-Party-Vordergrundwrites unter der bekannten SkillPilot-ID. Kalenderzeit,
+GET-Requests, Forecasts und lokale Lehrkraftänderungen allein verändern weder
+Fokus, aktives Ziel noch Mastery. Veraltete oder ungültige Pläne werden nicht
+für automatische Übergaben verwendet. Request-Sperren, Scope-Sequenzen und
+autoritative Response-Prüfungen verhindern Doppelklick- sowie veraltete
+Antwort-Rennen. Der Erfolgsvergleich kanonisiert ausschließlich dieselbe
+chronologische Blockreihenfolge wie das Backend; abweichende Fachdaten,
+Atomziele oder Datumswerte bleiben fail-closed. Fehler behaupten keinen
+Teilerfolg.
+
+Die notwendige deutsche und englische Datenschutzcopy beschreibt die atomare
+Mehrfachkopie, den automatischen Erststart, das Parken ohne Mastery-Änderung,
+die deterministische Übergabe und die unveränderte Direct-ID-Bearer-Grenze
+wahrheitsgemäß. Die begrenzte beobachtbare Wirkung auf einen späteren
+OpenAI-V1-Zustandsresponse bleibt dieselbe Wirkungsklasse wie in Abschnitt
+6.31: Nach einer First-Party-Aktivierung kann der unveränderte Coach einen
+anderen bereits existierenden kanonischen Fokus oder `activeGoal` lesen. Der
+V1-Coach kann weiterhin weder Pläne anlegen, aktivieren, wechseln, ersetzen
+noch anzeigen.
+
+Die Laufzeitfreigabe und ihre notwendige Datenschutzfortschreibung sind in
+`review-freeze.json` als zwei eng gekoppelte Ausnahme-Einträge append-only mit
+den exakten Quell-, Copy-, Fixture-, Test- und Konzeptbytes sowie ihren
+vorhandenen Hashketten gebunden. OpenAI- und Claude-Package-Bytes, MCP/OAuth, Tools, Schemas,
+Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Prepared Messages,
+First-Party-Provider-Start, Identität, Locale und Session-Lifecycle bleiben
+unverändert. Die eingereichte Review-Fixture bleibt ohne Fachpläne und mit
+`followLearningPlans=false`; Reviewfälle, Portalwerte, Reviewer-Zugangsdaten,
+Demo und Reviewartefakte ändern sich nicht. Deshalb ist keine Aktion im
+OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

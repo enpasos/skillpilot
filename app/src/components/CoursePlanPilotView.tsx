@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   AlertTriangle,
   CalendarDays,
@@ -66,6 +66,10 @@ interface CoursePlanPilotViewProps {
   learnerId?: string
   landscapeId?: string
   language: 'de' | 'en'
+  sharedActivationPanel?: ReactNode
+  sharedActivationAvailable?: boolean
+  onLocalPlanChange?: () => void
+  onDraftStateChange?: (hasUnsavedDraft: boolean) => void
   onNotify?: (kind: ToastKind, message: string) => void
 }
 
@@ -200,6 +204,10 @@ export const CoursePlanPilotView = ({
   learnerId,
   landscapeId,
   language,
+  sharedActivationPanel,
+  sharedActivationAvailable = false,
+  onLocalPlanChange,
+  onDraftStateChange,
   onNotify,
 }: CoursePlanPilotViewProps) => {
   const copy = useMemo(() => getCoursePlanCopy(language), [language])
@@ -317,6 +325,11 @@ export const CoursePlanPilotView = ({
     && evaluation.metrics.plannedGoalCount > 0,
   )
 
+  useEffect(() => {
+    onDraftStateChange?.(hasUnsavedDraft)
+    return () => onDraftStateChange?.(false)
+  }, [hasUnsavedDraft, onDraftStateChange])
+
   const assignmentByBlockId = useMemo(() => new Map(
     (evaluation?.assignments ?? []).map((assignment) => [assignment.blockId, assignment]),
   ), [evaluation?.assignments])
@@ -383,6 +396,7 @@ export const CoursePlanPilotView = ({
     planRef.current = nextPlan
     setPlan(nextPlan)
     setStorageInvalid(false)
+    onLocalPlanChange?.()
     return true
   }
 
@@ -433,6 +447,7 @@ export const CoursePlanPilotView = ({
       planRef.current = migrated
       setPlan(migrated)
       setStorageInvalid(false)
+      onLocalPlanChange?.()
       setBaselineLoadState('idle')
     }).catch((error) => {
       if (!active || controller.signal.aborted) return
@@ -443,7 +458,7 @@ export const CoursePlanPilotView = ({
       active = false
       controller.abort()
     }
-  }, [asOf, baselineRetry, landscapeId, learnerId, needsLearnerBaseline, plan])
+  }, [asOf, baselineRetry, landscapeId, learnerId, needsLearnerBaseline, onLocalPlanChange, plan])
 
   useEffect(() => () => {
     saveBlockRequestRef.current.token += 1
@@ -1060,10 +1075,16 @@ export const CoursePlanPilotView = ({
                   onClick={() => void preparePublication()}
                   disabled={!publicationPlanReady || hasUnsavedDraft || publicationState !== 'idle'}
                   aria-describedby={publishDisabledReason ? 'course-plan-publish-disabled-reason' : undefined}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-500 bg-sidebar-bg px-4 py-2 text-sm font-semibold text-sky-700 transition-colors hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:text-sky-300 dark:hover:bg-sky-950/30"
+                  className={`inline-flex min-h-11 items-center gap-2 rounded-lg border bg-sidebar-bg px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${sharedActivationAvailable
+                    ? 'border-border-color font-medium text-text-secondary hover:border-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950/30'
+                    : 'border-sky-500 font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30'}`}
                 >
                   <Send size={17} aria-hidden="true" />
-                  {publicationState === 'checking' ? copy.publishPlanLoading : copy.publishPlan}
+                  {publicationState === 'checking'
+                    ? copy.publishPlanLoading
+                    : sharedActivationAvailable
+                      ? language === 'de' ? 'Nur dieses Fach aktualisieren' : 'Update this subject only'
+                      : copy.publishPlan}
                 </button>
                 {publishDisabledReason && (
                   <p id="course-plan-publish-disabled-reason" className="mt-1 text-xs leading-5 text-text-secondary">
@@ -1082,6 +1103,8 @@ export const CoursePlanPilotView = ({
             </button>
           </div>
         </header>
+
+        {sharedActivationPanel}
 
         {publicationConfirmation && (
           <section

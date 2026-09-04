@@ -1591,31 +1591,29 @@ bleiben ausdrücklich Bestandteil anderer Planhorizonte.
 ### Level 3a — Fokus
 
 Ein aktueller Zeitblock kann passende Fokusoptionen priorisieren oder auf der
-Zeitachse hervorheben. Ohne eine ausdrückliche lernendenseitige Autorisierung
-setzt er den Fokus nicht automatisch um und ersetzt nicht die bestehenden
-Fokusregeln. Ein persönlicher Fokus darf begründet vom Klassenblock abweichen.
+Zeitachse hervorheben. Die bestätigte First-Party-Aktion **Planung wirksam
+machen** aktiviert die gemeinsam ausgewählten persönlichen Fachpläne atomar,
+schaltet **Nach Plan lernen** ein und übernimmt unmittelbar das erste fällige,
+frontier-fähige Ziel. Beim späteren Öffnen des Cockpits führt ein ausdrücklicher
+idempotenter Reconcile-Request denselben Schritt aus, falls der Modus aktiv,
+aber kein Ziel ausgewählt ist. Es gibt keinen separaten manuellen Erststart.
 
-Eine lernende Person kann den jederzeit widerrufbaren Modus **Nach Plan
-lernen** aktivieren. Damit autorisiert sie ausschließlich ihren eigenen,
-SkillPilot-ID-gebundenen persönlichen Plan, an klaren Fortsetzungsgrenzen den
-Level-3-Fokus und anschließend ein offenes Frontier-Ziel des wirksamen
-Planabschnitts zu setzen. Das erste Ziel wird mit der bewussten Aktion
-**Nächstes Planziel starten** übernommen. Nach einem bestätigten Abschluss darf
-ein automatischer Handoff nur erwogen werden, wenn das abgeschlossene Ziel zu
-mindestens einem aktuell gültigen gespeicherten Plan gehört. Dann hat genau ein
-fälliger und frontier-fähiger Kandidat aus einem Plan, der das abgeschlossene
-Ziel enthält, Vorrang vor fachfremden Kandidaten. Fehlt ein solcher
-Ankerkandidat, muss über alle gültigen Pläne hinweg genau ein geeigneter Kandidat
-feststehen. Das bloße Verstreichen eines Datums, ein Forecast oder eine
-Lehrerplanänderung löst keinen Hintergrundwrite aus. Eine bewusst geöffnete
-Lernzielroute und ein noch laufendes aktives Ziel werden nicht verdrängt.
+Ein noch laufendes aktives Ziel wird im normalen Lernfluss nicht verdrängt. Die
+lernende Person kann aber bewusst ein anderes Fach wählen. Dieser explizite
+Vordergrundwrite parkt das bisherige Ziel ohne Mastery-Änderung, prüft den
+gewählten Fachplan erneut und setzt dessen nächstes fälliges Frontier-Ziel samt
+Fokus und Fachroute. Nach einem bestätigten Abschluss haben geeignete Ziele aus
+einem gültigen Plan mit Abschlussanker Vorrang; andernfalls werden geeignete
+Fachpläne nach Fälligkeit und stabiler Fachidentität deterministisch geordnet.
+Das bloße Verstreichen eines Datums, ein Forecast oder eine lokale
+Lehrerplanänderung löst keinen Hintergrundwrite aus.
 
-Der Planmodus verändert weder Level 2 noch Mastery oder `requires`. Gibt es
-mehrere Ankerkandidaten, mehrere Kandidaten ohne Anker, ausschließlich veraltete
-oder ungültige Planbindungen, keinen gespeicherten Plan oder kein
-frontier-fähiges fälliges Atomziel, bleibt der Fokus unverändert. Solange der
-Planmodus eingeschaltet ist, bleibt auch in diesen Fällen der allgemeine
-Autopilot unterdrückt; Auswahl beziehungsweise Blocker werden sichtbar gemacht.
+Der Planmodus verändert weder Level 2 noch Mastery oder `requires`. Veraltete
+oder ungültige Planbindungen werden übersprungen. Gibt es keinen gültigen
+gespeicherten Plan oder kein frontier-fähiges fälliges Atomziel, wird kein
+Ersatzziel erfunden. Solange der Planmodus eingeschaltet ist, bleibt auch in
+diesen Fällen der allgemeine Autopilot unterdrückt; Blocker werden sichtbar
+gemacht. Die lernende Person kann den Modus jederzeit pausieren.
 
 Das heutige Backend-Modell `planned_goal` bleibt Level-3-Fokus. Es wird nicht
 um Datumsfelder erweitert und nicht als Curriculum-Zeitplan umgedeutet.
@@ -2310,43 +2308,41 @@ ID-Besitzgrenzen ohne ein zusätzliches Rollen- oder Einladungsmodell:
   Personal Curriculum bindet den Plan an den Umfang, für den er erfasst wurde;
   nach einer relevanten Personalisierungsänderung erscheint der Plan als
   veraltet und verändert den Fokus nicht.
-- Die Lerneinstellung **Nach Plan lernen** ist standardmäßig aus und jederzeit
-  widerrufbar. Auch im eingeschalteten Modus findet kein Datums- oder
-  Hintergrundwrite statt. **Nächstes Planziel starten** übernimmt das erste
-  Ziel bewusst. Nach einem bestätigten Abschluss darf SkillPilot den nächsten
-  Planabschnitt und das nächste Ziel nur automatisch übernehmen, wenn das
-  abgeschlossene Ziel zu mindestens einem aktuell gültigen gespeicherten Plan
-  gehört. Genau ein fälliger, noch offener und nach `requires`
-  frontier-fähiger Kandidat aus einem Plan, der das abgeschlossene Ziel enthält,
-  hat dann Vorrang vor anderen Fachplänen. Fehlt ein solcher Ankerkandidat, muss
-  über alle gültigen Pläne hinweg genau ein geeigneter Kandidat feststehen.
-  Mehrere Ankerkandidaten, mehrere Kandidaten ohne Anker, ausschließlich
-  veraltete oder ungültige Pläne, kein gespeicherter Plan, kein geeigneter
-  Kandidat oder ein laufendes Ziel lassen den bestehenden Fokus vollständig
-  unverändert und wählen kein neues aktives Ziel; das abgeschlossene Ziel darf
-  regulär aus dem aktiven Zustand entfernt werden. Der allgemeine Autopilot
-  bleibt bei eingeschaltetem Planmodus auch dann unterdrückt. Seine gespeicherte
-  Einstellung bleibt erhalten, wird aber in den Einstellungen sichtbar als
-  pausiert und nicht bedienbar ausgewiesen; Grund beziehungsweise Auswahl
-  werden sichtbar.
+- **Nach Plan lernen** ist ohne wirksame Planung standardmäßig aus und jederzeit
+  durch die lernende Person pausierbar. Die bestätigte gemeinsame Aktivierung
+  mehrerer Fachpläne ist ein atomarer Vordergrundwrite unter der bekannten
+  SkillPilot-ID: Sie ersetzt entweder alle Fachkopien oder keine, schaltet den
+  Modus ein und übernimmt unmittelbar das erste fällige, noch offene und nach
+  `requires` frontier-fähige Ziel. Ein idempotenter Reconcile beim Cockpit-Start
+  schließt nur den Zustand „Planmodus an, aber kein aktives Ziel“; er verdrängt
+  kein laufendes Ziel und schreibt bei fehlendem Kandidaten nichts um.
+- Nach einem bestätigten Abschluss hat ein geeigneter Kandidat aus einem Plan,
+  der das abgeschlossene Ziel enthält, Vorrang. Danach werden weitere gültige
+  Fachpläne deterministisch nach Handlungsdringlichkeit und stabiler
+  Fachidentität berücksichtigt. Ausschließlich veraltete oder ungültige Pläne,
+  kein gespeicherter Plan oder kein geeignetes fälliges Ziel erzeugen kein
+  Ersatzziel. Der allgemeine Autopilot bleibt bei eingeschaltetem Planmodus auch
+  dann unterdrückt.
+- Ein ausdrücklicher Fachwechsel darf ein unvollständiges Ziel parken. Er
+  verändert dessen Mastery nicht, revalidiert Revision, Personal-Curriculum-
+  Fingerprint und Voraussetzungen des Zielfachs und aktiviert nur ein dort
+  tatsächlich fälliges Frontier-Ziel.
 
-Das Cockpit zeigt für jeden Fachplan eine eigene, kompakte Karte mit
-Planbezeichnung, aktuellem Abschnitt, Zeitraum, nächstem Meilenstein,
-verbleibendem Puffer, dem nächsten aktuell zulässigen Ziel sowie zwei klar
-getrennten Ebenen: **heute neu fällig / davon beherrscht / heute noch offen**
-und kumulativ **fällig bis heute / davon bereits beherrscht / noch offen**.
-Der Rückstand aus früheren Tagen wird gesondert ausgewiesen. „Davon
-beherrscht“ ist dabei weiterhin eine heutige Bestandsprojektion und darf nicht
-als „heute geschafft“ bezeichnet werden: Die heutige Mastery-Tabelle belegt
-keinen unveränderlichen Zeitpunkt des erstmaligen Erreichens. Fachkarten mit
-einer möglichen oder überfälligen Handlung stehen vor erledigten oder
-veralteten Karten. Während einer Aktualisierung bleiben alte Karten zur
-Orientierung sichtbar, aber sämtliche Planaktionen sind bis zum erfolgreichen
-Abschluss gesperrt; nach einem Fehler werden Standdatum und Sperre ausdrücklich
-angezeigt. Aus demselben Grund bleibt der Sieben-Tage-Status zunächst neutral
-und nennt die fehlende Ereignisgrundlage. Fachpläne werden nicht in einen
-fachübergreifenden Tempozeiger oder eine scheinbar vergleichbare
-Gesamtgeschwindigkeit zusammengerechnet.
+Das Cockpit zeigt alle Fachpläne in einer gemeinsamen kompakten
+**Heute**-Führung. Sie nennt zuerst die Summe **heute noch offen** über alle
+gültigen Pläne; dafür zählt `openDueThroughToday` einschließlich Rückstand.
+Darunter stehen kurze Fachzeilen mit aktuellem Fach, offenem Umfang und einer
+direkten Weiterlern- beziehungsweise Wechselaktion. Planbezeichnung, aktueller
+Abschnitt, Zeitraum, Meilenstein, Puffer sowie **heute neu fällig / davon
+beherrscht / heute noch offen** und kumulativ **fällig bis heute / davon bereits
+beherrscht / noch offen** bleiben in aufklappbaren Fachdaten erreichbar. „Davon
+beherrscht“ ist weiterhin eine heutige Bestandsprojektion und darf nicht als
+„heute geschafft“ bezeichnet werden. Fachzeilen mit Handlung stehen stabil vor
+erledigten oder veralteten Plänen. Während einer Aktualisierung bleiben alte
+Daten zur Orientierung sichtbar, alle Planaktionen sind jedoch gesperrt; nach
+einem Fehler werden Standdatum und Sperre ausdrücklich angezeigt. Fachpläne
+werden weder in einen fachübergreifenden Tempozeiger noch in eine scheinbar
+vergleichbare Gesamtgeschwindigkeit zusammengerechnet.
 
 Lehrer- und Lernendenprojektion verwenden dieselbe kumulative Rundung über
 chronologisch geordnete Lernblöcke. Innerhalb eines Blocks werden Atomziele
