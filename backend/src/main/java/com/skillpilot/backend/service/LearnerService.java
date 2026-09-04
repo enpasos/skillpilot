@@ -6817,12 +6817,11 @@ public class LearnerService {
 
     /**
      * Hands off only after completing a goal that belongs to a currently valid
-     * plan and only when the subsequent plan choice is deterministic. A due
-     * candidate from a plan containing the completed anchor wins; if that plan
-     * has no candidate, exactly one other eligible plan may follow. Invalid or
-     * stale plans are ignored for activation. While plan-following mode is
-     * enabled, generic Autopilot stays suppressed independently of whether a
-     * usable plan is currently stored.
+     * plan. A due candidate from a plan containing the completed anchor wins;
+     * otherwise the oldest due candidate is selected deterministically across
+     * subjects. Invalid or stale plans are ignored for activation. While
+     * plan-following mode is enabled, generic Autopilot stays suppressed
+     * independently of whether a usable plan is currently stored.
      */
     private void maybeAutoHandoffToLearningPlan(
             Learner learner,
@@ -6880,6 +6879,8 @@ public class LearnerService {
                         plan.getLandscapeId(),
                         dueGoal.focusGoalId(),
                         dueGoal.atomicGoalId(),
+                        dueGoal.blockStartDate(),
+                        dueGoal.blockEndDate(),
                         containsAnchor));
             } catch (ResponseStatusException | IllegalStateException exception) {
                 // A stale, malformed, or no-longer-projectable plan must never
@@ -6905,13 +6906,19 @@ public class LearnerService {
         List<LearningPlanHandoffCandidate> anchored = candidates.stream()
                 .filter(LearningPlanHandoffCandidate::containsCompletedAnchor)
                 .toList();
-        if (anchored.size() == 1) {
-            return Optional.of(anchored.get(0));
-        }
-        if (anchored.size() > 1 || candidates.size() != 1) {
-            return Optional.empty();
-        }
-        return Optional.of(candidates.get(0));
+        List<LearningPlanHandoffCandidate> pool = anchored.isEmpty() ? candidates : anchored;
+        return pool.stream().min(Comparator
+                .comparing(
+                        LearningPlanHandoffCandidate::blockEndDate,
+                        Comparator.nullsLast(LocalDate::compareTo))
+                .thenComparing(
+                        LearningPlanHandoffCandidate::blockStartDate,
+                        Comparator.nullsLast(LocalDate::compareTo))
+                .thenComparing(
+                        LearningPlanHandoffCandidate::landscapeId,
+                        Comparator.nullsLast(String::compareTo))
+                .thenComparing(LearningPlanHandoffCandidate::atomicGoalId)
+                .thenComparing(LearningPlanHandoffCandidate::planId));
     }
 
     private void applyLearningPlanHandoff(
@@ -6942,6 +6949,8 @@ public class LearnerService {
             String landscapeId,
             String focusGoalId,
             String atomicGoalId,
+            LocalDate blockStartDate,
+            LocalDate blockEndDate,
             boolean containsCompletedAnchor) { }
 
     private String maybeAutoActivateFrontierGoal(
@@ -7720,6 +7729,102 @@ public class LearnerService {
         advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
     }
+
+    /**
+     * Applies one server-authored learning-plan transition with a single state
+     * revision. Replacing the pointer parks any previous goal without touching
+     * mastery. Plan-package activation can defer publication until every plan
+     * row has been stored successfully.
+     */
+    @Transactional
+    public LearningPlanTransitionResult applyLearningPlanTransition(
+            String skillpilotId,
+            boolean enableFollowing,
+            boolean replaceActiveGoal,
+            String focusGoalId,
+            String activeGoalId,
+            boolean publishEvent,
+            String changeType) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        String normalizedFocusGoalId = focusGoalId == null || focusGoalId.isBlank()
+                ? null
+                : focusGoalId.trim();
+        String normalizedActiveGoalId = activeGoalId == null || activeGoalId.isBlank()
+                ? null
+                : activeGoalId.trim();
+        if (!replaceActiveGoal && (normalizedFocusGoalId != null || normalizedActiveGoalId != null)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "focusGoalId and activeGoalId require replaceActiveGoal");
+        }
+        if (replaceActiveGoal && normalizedActiveGoalId != null && normalizedFocusGoalId == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "focusGoalId is required when activating a learning-plan goal");
+        }
+        if (normalizedActiveGoalId != null) {
+            assertPersonalizationCompleteForLearning(learner);
+            boolean eligible = getUncompactedRichFrontierForFocus(
+                            skillpilotId,
+                            List.of(normalizedFocusGoalId))
+                    .stream()
+                    .filter(goal -> "atomic".equals(goal.type()))
+                    .anyMatch(goal -> normalizedActiveGoalId.equals(goal.id()));
+            if (!eligible) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "activeGoalId must be an atomic goal from the requested plan focus frontier");
+            }
+        }
+
+        boolean changed = false;
+        if (enableFollowing && !Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+            learner.setFollowLearningPlans(true);
+            changed = true;
+        }
+        if (replaceActiveGoal) {
+            if (normalizedFocusGoalId != null) {
+                List<PlannedGoal> currentFocus = plannedGoalRepository
+                        .findByLearner_SkillpilotId(skillpilotId);
+                boolean focusAlreadySelected = currentFocus.size() == 1
+                        && normalizedFocusGoalId.equals(currentFocus.get(0).getGoalId());
+                if (!focusAlreadySelected) {
+                    plannedGoalRepository.deleteAll(currentFocus);
+                    plannedGoalRepository.save(new PlannedGoal(learner, normalizedFocusGoalId));
+                    changed = true;
+                }
+            }
+            if (!Objects.equals(learner.getActiveGoalId(), normalizedActiveGoalId)) {
+                learner.setActiveGoalId(normalizedActiveGoalId);
+                changed = true;
+            }
+            LearningState requestedState = normalizedActiveGoalId == null
+                    ? LearningState.FRONTIER
+                    : LearningState.TEACHING;
+            if (learner.getLearningState() != requestedState) {
+                learner.setLearningState(requestedState);
+                changed = true;
+            }
+        }
+        if (changed) {
+            advanceCoachStateRevision(learner);
+            learnerRepository.save(learner);
+            if (publishEvent) {
+                eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                        this,
+                        skillpilotId,
+                        changeType == null || changeType.isBlank()
+                                ? "LEARNING_PLAN_TRANSITION"
+                                : changeType));
+            }
+        }
+        return new LearningPlanTransitionResult(changed, getLearnerState(skillpilotId));
+    }
+
+    public record LearningPlanTransitionResult(
+            boolean changed,
+            UnifiedLearnerStateResponse state) { }
 
     /**
      * Acquires the learner write lock before a plan transition. An unrelated

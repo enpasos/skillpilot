@@ -82,6 +82,36 @@ public class LearnerLearningPlanController {
                 .body(detail);
     }
 
+    @PostMapping(value = "/activate", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<LearnerLearningPlanApi.ActivateResponse> activatePlans(
+            @PathVariable String skillpilotId,
+            @RequestBody LearnerLearningPlanApi.ActivateRequest request,
+            HttpServletResponse response) {
+        noStore(response);
+        LearnerLearningPlanApi.ActivateResponse result = lifecycle.withActivity(skillpilotId, () -> {
+            learners.assertWritableLearningSession(skillpilotId);
+            return learningPlans.activatePlans(skillpilotId, request);
+        });
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(result);
+    }
+
+    @PostMapping(value = "/reconcile", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<LearnerLearningPlanApi.TransitionResponse> reconcile(
+            @PathVariable String skillpilotId,
+            @RequestBody LearnerLearningPlanApi.ReconcileRequest request,
+            HttpServletResponse response) {
+        noStore(response);
+        LearnerLearningPlanApi.TransitionResponse result = lifecycle.withActivity(skillpilotId, () -> {
+            learners.assertWritableLearningSession(skillpilotId);
+            return learningPlans.reconcile(skillpilotId, request);
+        });
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(result);
+    }
+
     @PostMapping(value = "/{planId}/continue", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LearnerLearningPlanApi.ContinueResponse> continuePlan(
             @PathVariable String skillpilotId,
@@ -92,6 +122,22 @@ public class LearnerLearningPlanController {
         LearnerLearningPlanApi.ContinueResponse result = lifecycle.withActivity(skillpilotId, () -> {
             learners.assertWritableLearningSession(skillpilotId);
             return learningPlans.continuePlan(skillpilotId, planId, request);
+        });
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(result);
+    }
+
+    @PostMapping(value = "/{planId}/switch", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<LearnerLearningPlanApi.TransitionResponse> switchPlan(
+            @PathVariable String skillpilotId,
+            @PathVariable UUID planId,
+            @RequestBody LearnerLearningPlanApi.ContinueRequest request,
+            HttpServletResponse response) {
+        noStore(response);
+        LearnerLearningPlanApi.TransitionResponse result = lifecycle.withActivity(skillpilotId, () -> {
+            learners.assertWritableLearningSession(skillpilotId);
+            return learningPlans.switchPlan(skillpilotId, planId, request);
         });
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())

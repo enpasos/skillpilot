@@ -1,6 +1,23 @@
 import type { LabelLanguage } from './filterLabels'
 
 export interface LearnerLearningPlanCopy {
+  todayTitle: string
+  todayOpen: (count: number) => string
+  todayDone: string
+  todayScope: (subjectCount: number) => string
+  includesBacklog: string
+  currentSubjectBadge: string
+  currentGoalLabel: string
+  continueLearningAction: string
+  switchSubjectAction: (subject: string) => string
+  switchBusy: string
+  preparingNextGoal: string
+  detailsAction: string
+  openCount: (count: number) => string
+  subjectDone: string
+  subjectBlocked: string
+  switchFailed: string
+  reconcileFailed: string
   cardTitle: (subject: string) => string
   cardDescription: string
   planPeriodLabel: string
@@ -51,6 +68,27 @@ export const getLearnerLearningPlanCopy = (
   language: LabelLanguage,
 ): LearnerLearningPlanCopy => language === 'de'
   ? {
+      todayTitle: 'Heute',
+      todayOpen: (count) => count === 1
+        ? '1 Planziel ist bis heute noch offen.'
+        : `${count} Planziele sind bis heute noch offen.`,
+      todayDone: 'Für heute ist in deinen gültigen Fachplänen alles erledigt.',
+      todayScope: (subjectCount) => subjectCount === 1
+        ? '1 gültiger Fachplan'
+        : `${subjectCount} gültige Fachpläne`,
+      includesBacklog: 'Rückstände aus früheren Tagen sind mitgezählt.',
+      currentSubjectBadge: 'Aktuelles Fach',
+      currentGoalLabel: 'Du lernst gerade',
+      continueLearningAction: 'Weiterlernen',
+      switchSubjectAction: (subject) => `Zu ${subject} wechseln`,
+      switchBusy: 'Fach wird gewechselt …',
+      preparingNextGoal: 'SkillPilot wählt dein nächstes fälliges Lernziel aus …',
+      detailsAction: 'Plandetails',
+      openCount: (count) => count === 1 ? '1 Ziel offen' : `${count} Ziele offen`,
+      subjectDone: 'Bis heute erledigt',
+      subjectBlocked: 'Offen, aber Voraussetzungen fehlen noch',
+      switchFailed: 'Das Fach konnte nicht gewechselt werden. Dein bisheriges Lernziel bleibt erhalten.',
+      reconcileFailed: 'Das nächste Planziel konnte nicht automatisch ausgewählt werden. Dein Lernstand blieb unverändert.',
       cardTitle: (subject) => `Mein Plan für ${subject}`,
       cardDescription: 'Dein fachlicher Planstand bis einschließlich heute.',
       planPeriodLabel: 'Planzeitraum',
@@ -78,7 +116,7 @@ export const getLearnerLearningPlanCopy = (
       planModeOffTitle: 'Planmodus ist ausgeschaltet',
       planModeOffBody: 'Der Plan bleibt sichtbar. Aktiviere „Nach Plan lernen“ in den Einstellungen, damit SkillPilot das nächste fällige Ziel auswählen kann.',
       planModeOnTitle: 'Nach Plan lernen ist aktiv',
-      planModeOnBody: 'Du startest das erste fällige Ziel bewusst. Danach folgt SkillPilot nur einem eindeutig bestimmten, gültigen Fachplan.',
+      planModeOnBody: 'SkillPilot wählt das erste fällige Ziel und führt dich danach automatisch weiter. Du kannst das Fach jederzeit mit einem Klick wechseln.',
       openSettingsAction: 'Einstellungen öffnen',
       noPlansTitle: 'Noch kein persönlicher Fachplan vorhanden',
       noPlansBody: '„Nach Plan lernen“ ist aktiv. Ohne Fachplan startet SkillPilot kein Lernziel automatisch; du kannst weiterhin selbst ein Ziel aus deiner Lernzielübersicht auswählen.',
@@ -97,6 +135,27 @@ export const getLearnerLearningPlanCopy = (
       staleData: (date) => `Aktualisierung fehlgeschlagen. Angezeigt wird der letzte Stand vom ${date}; Planaktionen sind bis zum erneuten Laden gesperrt.`,
     }
   : {
+      todayTitle: 'Today',
+      todayOpen: (count) => count === 1
+        ? '1 planned goal is still open through today.'
+        : `${count} planned goals are still open through today.`,
+      todayDone: 'Everything due through today is complete in your valid subject plans.',
+      todayScope: (subjectCount) => subjectCount === 1
+        ? '1 valid subject plan'
+        : `${subjectCount} valid subject plans`,
+      includesBacklog: 'Open work from earlier days is included.',
+      currentSubjectBadge: 'Current subject',
+      currentGoalLabel: 'You are learning',
+      continueLearningAction: 'Continue learning',
+      switchSubjectAction: (subject) => `Switch to ${subject}`,
+      switchBusy: 'Switching subject…',
+      preparingNextGoal: 'SkillPilot is selecting your next due learning goal…',
+      detailsAction: 'Plan details',
+      openCount: (count) => count === 1 ? '1 goal open' : `${count} goals open`,
+      subjectDone: 'Complete through today',
+      subjectBlocked: 'Open, but prerequisites are still missing',
+      switchFailed: 'The subject could not be switched. Your previous learning goal remains unchanged.',
+      reconcileFailed: 'The next planned goal could not be selected automatically. Your learning state was not changed.',
       cardTitle: (subject) => `My plan for ${subject}`,
       cardDescription: 'Your subject plan status through today.',
       planPeriodLabel: 'Plan period',
@@ -124,7 +183,7 @@ export const getLearnerLearningPlanCopy = (
       planModeOffTitle: 'Plan mode is off',
       planModeOffBody: 'The plan remains visible. Enable “Learn according to plan” in settings so SkillPilot can select the next due goal.',
       planModeOnTitle: 'Learn by plan is active',
-      planModeOnBody: 'You deliberately start the first due goal. After that, SkillPilot follows only one uniquely determined valid subject plan.',
+      planModeOnBody: 'SkillPilot selects the first due goal and then guides you automatically. You can switch subjects with one click at any time.',
       openSettingsAction: 'Open settings',
       noPlansTitle: 'No personal subject plan yet',
       noPlansBody: '“Learn according to plan” is enabled. Without a subject plan, SkillPilot does not start a goal automatically; you can still select a goal yourself from your learning-goal overview.',

@@ -2251,6 +2251,211 @@
           "authorizedSha256": "f3f3533585b6ae53bbd2935bc49f1e57397a37034f13d848bd9ab5e7046c2b00"
         }
       ]
+    },
+    {
+      "id": "2026-09-04-shared-subject-plan-guidance",
+      "approvedAt": "2026-09-04",
+      "approvedBy": "product-owner",
+      "reason": "Make the independently stored Mathematics, Physics, and other subject schedules effective as one simple guided plan, select the first due eligible goal automatically, and give the learner one compact Today view with an explicit subject switch.",
+      "scope": "In the current first-party Trainer and Learner WebGUI only, atomically validate and replace the complete set of current subject plans, enable followLearningPlans in the same confirmed foreground action, select or reconcile the first due frontier goal automatically, present the cumulative open-through-today count across valid subjects, keep plan details collapsed, continue the current goal visibly, allow an explicit subject switch that parks without changing mastery, and perform deterministic anchored-then-due handoff. Require every current stored plan in activation, strict revisions, current Europe/Berlin mutation dates, personal-curriculum fingerprints, prerequisites, synchronous request guards, scope-safe responses, and fail-closed errors. Preserve the subordinate single-subject copy as update-only, the learner pause control, direct-ID bearer boundary, absence of server-side teacher/class membership and automatic sync, OpenAI and Claude packages, provider starts, MCP/OAuth/tools/schemas/UI, sessions, review cases, fixtures, portal values and review artifacts.",
+      "target": "current-production-first-party-shared-subject-plan-guidance-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-first-party-plan-state-evolution-with-unchanged-v1-interface-and-review-fixture",
+      "protectedFile": {
+        "path": "app/src/views/LearnerView.tsx",
+        "submittedSha256": "ec694882cdc5c9eb7e635723715a719f9588b0f2f06f8c57c579f060f7540ed7",
+        "priorAuthorizedSha256": "85c5f1bc093d6111fbfb7b51f8903dd6fb3a93a063e5c8d3a44b22538c8944d4",
+        "authorizedSha256": "24a074b0d63d73bc73e859ab1429eed7cf36144fbddb8e16cbac57959e95b632"
+      },
+      "evidenceFile": {
+        "path": "app/scripts/testLearnerPlanCockpitUi.ts",
+        "priorSha256": "bf69dd9e1225051f531995f7c81a98c8b98e6cab2464c01bed536dd2066aeaf9",
+        "sha256": "d39d34888d8a980b992ba2fd593e68bbab652aac8d414132d672def1686a6601"
+      },
+      "additionalFiles": [
+        {
+          "path": "app/package.json",
+          "priorAuthorizedSha256": "5fcc8ac9a8b9a6577401e5dfb2521080f2297214eec1958fd0c93fe96aa2fdbd",
+          "authorizedSha256": "57c3044890cfbb43ef31093524fd6e02f662b4ed76ad09e4f218ce6a0df56ea9"
+        },
+        {
+          "path": "app/scripts/fixtures/learnerPlanCockpitUi.tsx",
+          "priorAuthorizedSha256": "b2caf30b094c25a45438c6eb9232fb3a5cf28017c786df1e7b8a85aefb88a552",
+          "authorizedSha256": "442b2686af3000dca015dc23407588ae3ec45e0bf73cc455514b49a4d4afd446"
+        },
+        {
+          "path": "app/scripts/fixtures/learnerViewMobilePlanChromeUi.html",
+          "authorizedSha256": "fdd72ede81477a80a6934b08ce3275db4a13b9c407a5666c25ed37115461a03a"
+        },
+        {
+          "path": "app/scripts/fixtures/learnerViewMobilePlanChromeUi.tsx",
+          "authorizedSha256": "f19c75444ab45fb832beb3dbf09490c94ba26ca1817c154efc3981e243e3431f"
+        },
+        {
+          "path": "app/scripts/fixtures/trainerLearningPlanActivationUi.html",
+          "authorizedSha256": "516040e5afd7557df50778dd5cf8aef999e89ff5382be3ba3fd7f1cf2e690039"
+        },
+        {
+          "path": "app/scripts/fixtures/trainerLearningPlanActivationUi.tsx",
+          "authorizedSha256": "3dbc02cd0af8156d60b2f8b60b1f9ae83968be25e46dd88dca3411d81d0b3e5a"
+        },
+        {
+          "path": "app/scripts/testLearnerPlanTodayCardUi.tsx",
+          "priorAuthorizedSha256": "6b9b20b3c780fc91b885f5ae39f38def82d0a8e42d5c0be608ab18dd17ac001d",
+          "authorizedSha256": "798efa3640fc909bb5cdfbc7205a7f7c05348eb8d03bd059fefa253e98eb41d8"
+        },
+        {
+          "path": "app/scripts/testLearnerViewMobilePlanChromeUi.ts",
+          "authorizedSha256": "14ddd0e6c6eef9775dbcfe9f24145518d128fce640c0b55194576279d200f90b"
+        },
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "b28cdee8db212e2f1d8fa468420744a0d031a1d33aa1abacd6da701f1e2a59f1",
+          "authorizedSha256": "4717636e706116c7adc4d58f3ca09e0de0fabe35d48cf27fc07b67a48f1f56a9"
+        },
+        {
+          "path": "app/scripts/testTrainerLearningPlanActivationUi.ts",
+          "authorizedSha256": "c7b5b5250e3d2ab6d8b9e32005c757897d4e30d33569fb74a16e110c4e3905a5"
+        },
+        {
+          "path": "app/scripts/validateLearnerGoalSelection.ts",
+          "priorAuthorizedSha256": "c8fc3612e4a364aae087d62b1ca8bce2d2645ba0e2d2ac77c297c1c3e0a309b0",
+          "authorizedSha256": "a3fb8803dfd24b0a4aacfa65625ebdeae2d9130ea4c654ed61a51bb48b9899be"
+        },
+        {
+          "path": "app/src/components/CoursePlanPilotView.tsx",
+          "priorAuthorizedSha256": "1fdc72ce0def7ca09cdf993b15d755aec35ed26c8dda90f75d74bd18b3e28d35",
+          "authorizedSha256": "099a4f9fcb24437160a78cfaddc8dae997a08c6412586beabb44b38e3b3ff455"
+        },
+        {
+          "path": "app/src/components/LearnerPlanTodayOverview.tsx",
+          "authorizedSha256": "5b79f44f650a0207df1f9ac6336f39778edfe0eba2386bc553e2176568c65145"
+        },
+        {
+          "path": "app/src/components/TrainerLearningPlanActivation.tsx",
+          "authorizedSha256": "df24317a1ce1d8d7445c94044fe90f9f35dcef0128a63734fc2d5ac12cb5b61b"
+        },
+        {
+          "path": "app/src/learnerLearningPlanTypes.ts",
+          "priorAuthorizedSha256": "a44b27d9d1761a1f6b12907f1205724f5d4544bd07cbcb881a3214f1187a66c4",
+          "authorizedSha256": "e2a8f620b8dd201f5019fbbe11f20cc972e279e6883cf69fdaade13ab3a3fd1a"
+        },
+        {
+          "path": "app/src/utils/curriculumSetupCopy.ts",
+          "priorAuthorizedSha256": "939a1e4603d82d325f278291e7c14b81bea5b8fa5ad5181f05d5d00617854a02",
+          "authorizedSha256": "d85355df2bd438c8c84be2039126adb2456bf1ddb2e26bf22106fb0ed197f398"
+        },
+        {
+          "path": "app/src/utils/learnerLearningPlanApi.test.ts",
+          "priorAuthorizedSha256": "5a68c747e85301185274f070cb680710c881e9a27974a1d2b0414893a2500787",
+          "authorizedSha256": "154f43601f2a6e3de91e29f7f9bcbce5ea740447c814120b608605b5236f2b0a"
+        },
+        {
+          "path": "app/src/utils/learnerLearningPlanApi.ts",
+          "priorAuthorizedSha256": "3b28b3d41ad202a460a00149811053e68866afe91b134f7eadb025e67384e2ed",
+          "authorizedSha256": "680443ff86bf1f49700aab056a4163dcf3a2f11cb9a5c66ef9e142ce3695ff5f"
+        },
+        {
+          "path": "app/src/utils/learnerLearningPlanCopy.ts",
+          "priorAuthorizedSha256": "1b12315671b1a8f9878aaef58f05af028f140ad2aadd38bbdc86bc7dd8ee1506",
+          "authorizedSha256": "60fd476e305cce6142cf013b60fa3b9bb9f20ab163599d0afb91e01b25b639c7"
+        },
+        {
+          "path": "app/src/utils/learnerViewCopy.ts",
+          "authorizedSha256": "17adf4db635ea5aead918a55cc198c55835d4a22696ed3ad59fff22cd0f31980"
+        },
+        {
+          "path": "app/src/utils/teacherLearningPlanActivation.test.ts",
+          "authorizedSha256": "b4907cda6ed646d699ddfcefcaf0efece20bc4df8c0351ff0e6c36b049282d23"
+        },
+        {
+          "path": "app/src/utils/teacherLearningPlanActivation.ts",
+          "authorizedSha256": "2fdacdb500c54586d7531c4c4b4ec4736c876811712b6156d6107df0e80b47c3"
+        },
+        {
+          "path": "app/src/views/TrainerView.tsx",
+          "priorAuthorizedSha256": "67820493aae77176a5959cd35c9e73f2c5b93d565f991c77e03036f10236d9b5",
+          "authorizedSha256": "33695f4c9a758bb304bff58e79e557ec122a677030573647738738ee071b9e82"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerLearningPlanApi.java",
+          "priorAuthorizedSha256": "19e62dc1ab9a816d700b9f2afd319814deedd7e03b311e8edc854e4fe43af4d4",
+          "authorizedSha256": "6dc8666fc2621a611b94fd50574b37bfc0558aff0f490a0f9ee5b7a4f83fb039"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+          "priorAuthorizedSha256": "64b38f0c1f25b6fccdfa1409cd293839ddfacef8a616ae40bd060ec94fe04ac8",
+          "authorizedSha256": "112d62b2c819aeeac14ff0243777ed41299251789ac50243d590b1c4b206e366"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+          "priorAuthorizedSha256": "44f9d795a52191cdf1013bfde9ced19369eaea9eea809b6c5d4f6b4e7df9abed",
+          "authorizedSha256": "7d238b418cc4f584925274d80b75539a070647facc8aaf2968ffb6da83400132"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/ui/LearnerLearningPlanController.java",
+          "priorAuthorizedSha256": "4d126028a02e53a79a140d3434ee0adb963f4f7448a8ba6e22ee4fef84794afc",
+          "authorizedSha256": "e64f0001d38eaa1075c2f6854ac0a4e44d40f34bcc245763c965b4f4f23b73d2"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+          "priorAuthorizedSha256": "af5a0588187c9a5973d68fd442efb6e8ecb7ececec4014ffa5f0c83fa10baad7",
+          "authorizedSha256": "59c03e7e41442f00b7d9a6dd9d579f27593c33f01e7574627510fe7c0be8423e"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+          "priorAuthorizedSha256": "2582fea64da9b7858d3a4c8930c1b0ad93af98499e51cb88cf3701860ded637d",
+          "authorizedSha256": "d5b73983fd188fc321bc9ee65cf217364af4141155b92ba83b9f08e02490a3d7"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/ui/LearnerLearningPlanControllerHttpTest.java",
+          "priorAuthorizedSha256": "e7629f43fe64c1e779784a85d3e4d19f359cb3b06dc259d5ffabad9e90fa580c",
+          "authorizedSha256": "ab1b5b33ae1bd4f1a1c86ecb47c796f6e89e230440cded4ef8c2b80933831475"
+        },
+        {
+          "path": "docs/concept/didactic/curriculum-time-axis-and-pacing.md",
+          "priorAuthorizedSha256": "0fd1e0d420f28ac29fc163bab8ccfe818137e11dfdca82cea578542eacde652f",
+          "authorizedSha256": "451253eb2e63a99b5d3c7279afbd77882ea13913113334a2d5892619d5de61d9"
+        },
+        {
+          "path": "docs/concept/runtime-workflows/learning-workflow.md",
+          "priorAuthorizedSha256": "47914cfe3f2d3fac00b88c1e7563e20a2086bd4efe91b435d6336cad6be8bd7e",
+          "authorizedSha256": "e4cb6403a094278947f7fe76d2d955ffe87805130d3faeb86789d597646e2dbb"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "f3f3533585b6ae53bbd2935bc49f1e57397a37034f13d848bd9ab5e7046c2b00",
+          "authorizedSha256": "88bd4edb36327e25ff713329375b8725ece8ea2ffbbf4ef617687b65215bf57c"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-04-shared-subject-plan-privacy-disclosure",
+      "approvedAt": "2026-09-04",
+      "approvedBy": "product-owner",
+      "reason": "Accurately disclose atomic complete-plan activation, automatic first-goal selection, the subordinate single-subject update, explicit subject switching without mastery changes, deterministic handoff, learner pause control, and the unchanged permanent-ID access boundary.",
+      "scope": "Change only the German and English first-party privacy view, its focused copy regression, and matching security documentation to describe the approved shared subject-plan behavior accurately. Preserve the privacy route, all non-planning disclosures, product runtime outside the separately authorized shared-plan exception, OpenAI and Claude packages, MCP/OAuth/tools/schemas/UI, provider starts, sessions, review cases, fixtures, portal values and review artifacts.",
+      "target": "current-production-first-party-shared-subject-plan-privacy-policy",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-accurate-privacy-disclosure-with-no-v1-interface-review-fixture-or-portal-metadata-change",
+      "protectedFile": {
+        "path": "app/src/utils/privacyViewCopy.ts",
+        "submittedSha256": "471f7cbdaf8c5a4db6ebddfad3ffebf54a8e2a44a253994f2ff258d02ba77f8b",
+        "priorAuthorizedSha256": "84f888394310125ff1bdde6b0c7c35b881091eb3c22f50e6abb0cfe5534f6efc",
+        "authorizedSha256": "ccaa5c81f2616f669c5ab63b8495326d8a1b2a2d82f06e78ffa0a260bb4190cf"
+      },
+      "evidenceFile": {
+        "path": "app/src/utils/privacyViewCopy.test.ts",
+        "priorSha256": "2940f594232022f90c3d562290c2fcbddf6bb85eda454d140e5d5c7d34f5388e",
+        "sha256": "848c7bb5f5ea885a8f8f607d660382abafe5322d562d856c0873ebecc8112f5d"
+      },
+      "additionalFiles": [
+        {
+          "path": "docs/security/data-privacy.md",
+          "priorAuthorizedSha256": "179f3acac510a36bffc7eb1c206df715f7cf714550f8f5d920f61c17b249aa08",
+          "authorizedSha256": "01972aa9cd839fcbc78e3b3322b6aa6e21368b7b7104a90e933c431445f22f42"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [

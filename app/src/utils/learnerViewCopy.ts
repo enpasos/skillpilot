@@ -9,6 +9,8 @@ export interface LearnerViewCopy {
   importSystemMessage: string
   revealMarkedScopeTitle: string
   revealActiveGoalTitle: string
+  openGoalMenuLabel: string
+  closeGoalMenuLabel: string
   memoryGoalModeTitle: string
   memoryGoalModeBody: string
   memoryModeLabel: string
@@ -42,6 +44,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         importSystemMessage: 'Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.',
         revealMarkedScopeTitle: 'Gehe zum markierten Scope',
         revealActiveGoalTitle: 'Gehe zum aktiven Ziel',
+        openGoalMenuLabel: 'Lernzielmenü öffnen',
+        closeGoalMenuLabel: 'Lernzielmenü schließen',
         memoryGoalModeTitle: 'Karteikarten lernen',
         memoryGoalModeBody: 'Lerne hier mit Karteikarten oder starte die harte Prüfung mit dem Lerncoach. Dabei wird die Antwort ohne Kartenhilfe abgefragt und anschließend gespeichert.',
         memoryModeLabel: 'Modus',
@@ -72,6 +76,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         importSystemMessage: 'A network or system error occurred during import.',
         revealMarkedScopeTitle: 'Go to marked scope',
         revealActiveGoalTitle: 'Go to active goal',
+        openGoalMenuLabel: 'Open learning-goal menu',
+        closeGoalMenuLabel: 'Close learning-goal menu',
         memoryGoalModeTitle: 'Learn with flashcards',
         memoryGoalModeBody: 'Learn here with flashcards or start strict verification with the Learning Coach. The answer is recalled without card help and then saved.',
         memoryModeLabel: 'Mode',

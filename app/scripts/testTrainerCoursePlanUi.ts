@@ -872,7 +872,7 @@ try {
   await personalizedPage.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
   await planningScopeRequest
   const earlyPublishButton = personalizedPage.getByRole('button', {
-    name: 'Im Cockpit bereitstellen',
+    name: 'Nur dieses Fach aktualisieren',
     exact: true,
   })
   assert(await earlyPublishButton.isDisabled(), 'publication stays disabled while the learning plan cannot be calculated')
@@ -967,7 +967,7 @@ try {
   )
 
   const publishButton = personalizedPage.getByRole('button', {
-    name: 'Im Cockpit bereitstellen',
+    name: 'Nur dieses Fach aktualisieren',
     exact: true,
   })
   assert(await publishButton.count() === 1, 'a linked learner and subject expose the explicit cockpit publication action')

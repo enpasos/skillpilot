@@ -102,19 +102,22 @@ learner-derived planning baseline, or teacher-plan history and creates no
 teacher-to-learner relation.
 Later local teacher-plan changes are not synchronized. Teacher-entered labels
 and block titles are copied unchanged and may themselves contain personal data.
-The copied schedule remains visible while plan-guided learning is disabled.
-That mode is off by default. The learner starts the first goal deliberately;
-after a confirmed completion, an automatic handoff is considered only if the
-completed goal belongs to at least one currently valid stored plan. SkillPilot
-then derives one due eligible candidate from each valid plan. Exactly one
-candidate from a plan that contains the completed goal takes precedence over
-unrelated candidates. If there is no anchored candidate, exactly one eligible
-candidate across all valid plans is required. Multiple anchored candidates,
-multiple unanchored candidates, only stale or invalid plans, no stored plan, or
-no due eligible goal cause no automatic handoff. The generic Autopilot remains
-suppressed while plan-guided learning is enabled, including in those fail-closed
-cases. Disabling the mode revokes that authorization. Calendar progress alone
-causes no learner-state write.
+The confirmed first-party action **Make planning effective** validates the
+complete set of current subject plans before writing and then stores all
+independent subject copies or none. The subordinate **Update this subject
+only** action replaces only that subject copy and by itself neither enables
+plan-guided learning nor selects a goal. Under the known permanent SkillPilot
+ID, the shared foreground action enables plan-guided learning and immediately
+selects the first due goal whose prerequisites are satisfied. The learner can
+pause the mode at any time.
+An explicit subject switch parks an unfinished active goal without changing
+mastery and selects an eligible due goal in the chosen subject. After confirmed
+completion, a valid plan containing the completed goal has priority; otherwise
+valid plans are considered in deterministic due-urgency and subject order.
+Stale or invalid plans are not used, and no replacement is invented when no due
+eligible goal exists. The generic Autopilot remains suppressed while
+plan-guided learning is enabled. Calendar progress alone causes no learner-state
+write.
 Plan exports omit the learner-derived baseline, but teacher-entered free text
 is exported unchanged and may itself contain personal data.
 The permanent SkillPilot ID remains the bearer secret and full-access key for
@@ -146,7 +149,8 @@ The backend stores, among other things:
 - planned goals and learner configuration, including curriculum,
   personalization, scope, active goal, filters, and synchronized client state;
 - optional personal subject schedules, their revisions and materialized atomic
-  goal IDs, plus the default-off preference for plan-guided learning;
+  goal IDs, plus the current preference for plan-guided learning (initially off
+  until a confirmed plan activation enables it);
 - static curricula, competence definitions, SRS decks, resources, and review
   metadata.
 

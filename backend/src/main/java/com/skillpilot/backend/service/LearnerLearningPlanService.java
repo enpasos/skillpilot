@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.HexFormat;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -47,6 +48,7 @@ public class LearnerLearningPlanService {
     static final double MASTERY_THRESHOLD = 0.9;
     private static final int MAX_BLOCKS = 500;
     private static final int MAX_ATOMIC_IDS = 10_000;
+    private static final int MAX_ACTIVATION_PLANS = 50;
     private static final int MAX_BLOCK_TITLE_LENGTH = 500;
     private static final long MAX_BLOCK_SPAN_DAYS = 36_600;
     private static final LocalDate MIN_PLAN_DATE = LocalDate.of(0, 1, 1);
@@ -131,63 +133,18 @@ public class LearnerLearningPlanService {
         if (request == null) {
             throw badRequest("request is required");
         }
-        long expectedRevision = requireExpectedRevision(request.expectedRevision());
         String normalizedLandscapeId = requireText(landscapeId, "landscapeId", 255);
-        String planLabel = optionalText(request.planLabel(), "planLabel", 160);
 
         learners.acquireLearningPlanMutationLock(skillpilotId);
         Learner learner = learners.getLearner(skillpilotId);
-        LearnerPlanningScopeResponse scope = learners.getPlanningScope(skillpilotId, normalizedLandscapeId);
-        Optional<LearnerLearningPlan> existing = plans.findForUpdate(skillpilotId, normalizedLandscapeId);
-        if (existing.isEmpty() && expectedRevision != 0) {
-            throw conflict("expectedRevision must be 0 when creating a learning plan");
-        }
-        if (existing.isPresent() && existing.get().getRevision() != expectedRevision) {
-            throw conflict("Learning plan revision conflict");
-        }
-
-        List<LearnerLearningPlanApi.Block> existingBlocks = existing
-                .map(this::readBlocks)
-                .orElseGet(List::of);
-        Set<String> previouslyCaptured = atomicIds(existingBlocks);
-        List<LearnerLearningPlanApi.Block> normalizedBlocks = normalizeBlocks(
-                request.blocks(),
-                scope,
-                previouslyCaptured,
-                false);
-        learners.validateLearningPlanBlockFoci(
+        PreparedPlan prepared = preparePlan(
                 skillpilotId,
+                learner,
                 normalizedLandscapeId,
-                normalizedBlocks);
-        normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
-                skillpilotId,
-                normalizedBlocks);
-
-        LearnerLearningPlan plan = existing.orElseGet(LearnerLearningPlan::new);
-        if (existing.isEmpty()) {
-            plan.setLearner(learner);
-            plan.setLandscapeId(normalizedLandscapeId);
-            plan.setRevision(1);
-        } else {
-            plan.setRevision(plan.getRevision() + 1);
-        }
-        plan.setCurriculumId(scope.curriculumId());
-        plan.setScopeFingerprint(learners.learningPlanFingerprint(
-                skillpilotId,
-                normalizedLandscapeId,
-                normalizedBlocks));
-        plan.setPlanLabel(planLabel);
-        plan.setBlocksJson(writeBlocks(normalizedBlocks));
-        plan.setCapturedAt(scope.capturedAt());
-        LearnerLearningPlan saved;
-        try {
-            saved = plans.saveAndFlush(plan);
-        } catch (DataIntegrityViolationException exception) {
-            if (existing.isEmpty()) {
-                throw conflict("A learning plan for this landscape was created concurrently");
-            }
-            throw exception;
-        }
+                request.expectedRevision(),
+                request.planLabel(),
+                request.blocks());
+        LearnerLearningPlan saved = persistPreparedPlan(prepared);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(
                 this,
                 skillpilotId,
@@ -200,6 +157,276 @@ public class LearnerLearningPlanService {
                 Boolean.TRUE.equals(learner.getFollowLearningPlans()),
                 learner.getActiveGoalId());
         return detail(evaluation.summary(), evaluation.blocks());
+    }
+
+    /**
+     * Atomically materializes every submitted subject plan and turns the set
+     * into the learner's active guided plan package. All revisions, scopes,
+     * block foci, and fingerprints are validated before the first row changes.
+     */
+    @Transactional
+    public LearnerLearningPlanApi.ActivateResponse activatePlans(
+            String skillpilotId,
+            LearnerLearningPlanApi.ActivateRequest request) {
+        if (request == null) {
+            throw badRequest("request is required");
+        }
+        LocalDate asOf = requireCurrentMutationDate(request.asOf(), "activation");
+        if (request.plans() == null || request.plans().isEmpty()) {
+            throw badRequest("plans must not be empty");
+        }
+        if (request.plans().size() > MAX_ACTIVATION_PLANS) {
+            throw badRequest("plans exceeds the supported limit");
+        }
+
+        LinkedHashMap<String, LearnerLearningPlanApi.ActivationPlan> requestedByLandscape =
+                new LinkedHashMap<>();
+        for (LearnerLearningPlanApi.ActivationPlan requested : request.plans()) {
+            if (requested == null) {
+                throw badRequest("plans must not contain null entries");
+            }
+            String landscapeId = requireText(requested.landscapeId(), "landscapeId", 255);
+            if (requestedByLandscape.putIfAbsent(landscapeId, requested) != null) {
+                throw badRequest("landscapeId must be unique within an activation request");
+            }
+        }
+
+        learners.acquireLearningPlanMutationLock(skillpilotId);
+        Learner learner = learners.getLearner(skillpilotId);
+        assertNoCurrentStoredPlanIsHidden(skillpilotId, requestedByLandscape.keySet());
+        List<PreparedPlan> preparedPlans = requestedByLandscape.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(entry -> preparePlan(
+                        skillpilotId,
+                        learner,
+                        entry.getKey(),
+                        entry.getValue().expectedRevision(),
+                        entry.getValue().planLabel(),
+                        entry.getValue().blocks()))
+                .toList();
+
+        List<LearnerLearningPlan> savedPlans = new ArrayList<>();
+        for (PreparedPlan prepared : preparedPlans) {
+            savedPlans.add(persistPreparedPlan(prepared));
+        }
+
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        String previousActiveGoalId = learner.getActiveGoalId();
+        Optional<PlanGoalCandidate> selected = findPreservedActiveCandidate(
+                skillpilotId,
+                savedPlans,
+                previousActiveGoalId,
+                mastery);
+        if (selected.isEmpty()) {
+            selected = firstCandidateAcrossPlans(skillpilotId, savedPlans, asOf, mastery, true);
+        }
+
+        LearnerService.LearningPlanTransitionResult transition;
+        if (selected.isPresent()) {
+            PlanGoalCandidate candidate = selected.get();
+            transition = learners.applyLearningPlanTransition(
+                    skillpilotId,
+                    true,
+                    true,
+                    candidate.dueGoal().focusGoalId(),
+                    candidate.dueGoal().atomicGoalId(),
+                    false,
+                    "LEARNING_PLAN_PACKAGE_ACTIVATED");
+        } else {
+            transition = learners.applyLearningPlanTransition(
+                    skillpilotId,
+                    true,
+                    true,
+                    null,
+                    null,
+                    false,
+                    "LEARNING_PLAN_PACKAGE_ACTIVATED");
+        }
+
+        String effectiveActiveGoalId = selected
+                .map(candidate -> candidate.dueGoal().atomicGoalId())
+                .orElse(null);
+        List<LearnerLearningPlanApi.PlanDetail> details = savedPlans.stream()
+                .map(plan -> {
+                    Evaluation evaluation = summarize(
+                            skillpilotId,
+                            plan,
+                            asOf,
+                            true,
+                            effectiveActiveGoalId);
+                    return detail(evaluation.summary(), evaluation.blocks());
+                })
+                .toList();
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                this,
+                skillpilotId,
+                "LEARNING_PLAN_PACKAGE_ACTIVATED"));
+
+        PlanGoalCandidate selectedCandidate = selected.orElse(null);
+        return new LearnerLearningPlanApi.ActivateResponse(
+                asOf,
+                true,
+                details,
+                selectedCandidate == null ? null : selectedCandidate.plan().getId(),
+                selectedCandidate == null ? null : selectedCandidate.plan().getLandscapeId(),
+                selectedCandidate == null ? null : selectedCandidate.dueGoal().focusGoalId(),
+                effectiveActiveGoalId,
+                transition.state());
+    }
+
+    private void assertNoCurrentStoredPlanIsHidden(
+            String skillpilotId,
+            Set<String> requestedLandscapeIds) {
+        List<String> omittedCurrentPlans = new ArrayList<>();
+        for (LearnerLearningPlan stored : plans
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId)) {
+            if (requestedLandscapeIds.contains(stored.getLandscapeId())) {
+                continue;
+            }
+            try {
+                List<LearnerLearningPlanApi.Block> blocks = readBlocks(stored);
+                boolean current = Objects.equals(
+                        stored.getScopeFingerprint(),
+                        learners.learningPlanFingerprint(
+                                skillpilotId,
+                                stored.getLandscapeId(),
+                                blocks));
+                if (current) {
+                    omittedCurrentPlans.add(stored.getLandscapeId());
+                }
+            } catch (ResponseStatusException exception) {
+                if (exception.getStatusCode().is5xxServerError()) {
+                    throw exception;
+                }
+                // A no-longer-projectable plan is stale and cannot become a
+                // later automatic transition candidate.
+            } catch (IllegalStateException exception) {
+                // Malformed stored plans fail closed during reconciliation and
+                // therefore do not need to block replacement of the live set.
+            }
+        }
+        if (!omittedCurrentPlans.isEmpty()) {
+            throw conflict("Activation must include every current stored learning plan: "
+                    + String.join(", ", omittedCurrentPlans));
+        }
+    }
+
+    /** Explicit subject switch; unlike the legacy continue action it may park another goal. */
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse switchPlan(
+            String skillpilotId,
+            UUID planId,
+            LearnerLearningPlanApi.ContinueRequest request) {
+        if (request == null) {
+            throw badRequest("request is required");
+        }
+        if (planId == null) {
+            throw badRequest("planId is required");
+        }
+        long expectedRevision = requireExpectedRevision(request.expectedRevision());
+        LocalDate asOf = requireCurrentMutationDate(request.asOf(), "switch");
+
+        learners.acquireLearningPlanMutationLock(skillpilotId);
+        Learner learner = learners.getLearner(skillpilotId);
+        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+            throw conflict("Following learning plans is not enabled for this learner");
+        }
+        LearnerLearningPlan plan = requireCurrentPlan(skillpilotId, planId, expectedRevision);
+        List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        DueGoal dueGoal = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
+                .orElseThrow(() -> conflict("No open due atomic goal is currently on the learner frontier"));
+        PlanGoalCandidate candidate = new PlanGoalCandidate(plan, dueGoal);
+
+        LearnerService.LearningPlanTransitionResult transition =
+                learners.applyLearningPlanTransition(
+                        skillpilotId,
+                        false,
+                        true,
+                        dueGoal.focusGoalId(),
+                        dueGoal.atomicGoalId(),
+                        true,
+                        "LEARNING_PLAN_SUBJECT_SWITCH");
+        return transition(candidate, dueGoal.atomicGoalId(), transition.changed(), transition.state());
+    }
+
+    /**
+     * Idempotent explicit repair point used when plan mode is active but no
+     * learning goal is selected. Reads remain side-effect free.
+     */
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse reconcile(
+            String skillpilotId,
+            LearnerLearningPlanApi.ReconcileRequest request) {
+        if (request == null) {
+            throw badRequest("request is required");
+        }
+        LocalDate asOf = requireCurrentMutationDate(request.asOf(), "reconcile");
+        learners.acquireLearningPlanMutationLock(skillpilotId);
+        Learner learner = learners.getLearner(skillpilotId);
+        String previousActiveGoalId = learner.getActiveGoalId();
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+
+        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans())
+                || (previousActiveGoalId != null
+                        && !previousActiveGoalId.isBlank()
+                        && mastery.getOrDefault(previousActiveGoalId, 0.0) < MASTERY_THRESHOLD)) {
+            return new LearnerLearningPlanApi.TransitionResponse(
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    false,
+                    learners.getCoachLearnerState(skillpilotId));
+        }
+
+        List<LearnerLearningPlan> currentPlans = plans
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
+        Optional<PlanGoalCandidate> selected = firstCandidateAcrossPlans(
+                skillpilotId,
+                currentPlans,
+                asOf,
+                mastery,
+                false);
+        boolean parkedCompletedPointer = previousActiveGoalId != null && !previousActiveGoalId.isBlank();
+        if (selected.isEmpty()) {
+            LearnerService.LearningPlanTransitionResult transition = parkedCompletedPointer
+                    ? learners.applyLearningPlanTransition(
+                            skillpilotId,
+                            false,
+                            true,
+                            null,
+                            null,
+                            true,
+                            "LEARNING_PLAN_RECONCILED")
+                    : new LearnerService.LearningPlanTransitionResult(
+                            false,
+                            learners.getCoachLearnerState(skillpilotId));
+            return new LearnerLearningPlanApi.TransitionResponse(
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    transition.changed(),
+                    transition.state());
+        }
+
+        PlanGoalCandidate candidate = selected.get();
+        LearnerService.LearningPlanTransitionResult transition = learners.applyLearningPlanTransition(
+                skillpilotId,
+                false,
+                true,
+                candidate.dueGoal().focusGoalId(),
+                candidate.dueGoal().atomicGoalId(),
+                true,
+                "LEARNING_PLAN_RECONCILED");
+        return transition(
+                candidate,
+                candidate.dueGoal().atomicGoalId(),
+                transition.changed(),
+                transition.state());
     }
 
     @Transactional
@@ -220,23 +447,9 @@ public class LearnerLearningPlanService {
             throw conflict("Following learning plans is not enabled for this learner");
         }
 
-        LearnerLearningPlan plan = plans.findByIdForUpdate(skillpilotId, planId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Learning plan not found"));
-        if (plan.getRevision() != expectedRevision) {
-            throw conflict("Learning plan revision conflict");
-        }
-
-        List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
-        if (!Objects.equals(
-                plan.getScopeFingerprint(),
-                learners.learningPlanFingerprint(skillpilotId, plan.getLandscapeId(), blocks))) {
-            throw conflict("The personal curriculum changed after this learning plan was captured");
-        }
-
-        LocalDate asOf = LocalDate.now(clock);
-        if (request.asOf() != null && !asOf.equals(request.asOf())) {
-            throw badRequest("asOf for continue must equal the current server date in Europe/Berlin");
-        }
+        LearnerLearningPlan plan = requireCurrentPlan(skillpilotId, planId, expectedRevision);
+        List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
+        LocalDate asOf = requireCurrentMutationDate(request.asOf(), "continue");
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
         DueGoal selected = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
                 .orElseThrow(() -> conflict("No open due atomic goal is currently on the learner frontier"));
@@ -251,6 +464,194 @@ public class LearnerLearningPlanService {
                 plan.getLandscapeId(),
                 selected.focusGoalId(),
                 selected.atomicGoalId(),
+                state);
+    }
+
+    private PreparedPlan preparePlan(
+            String skillpilotId,
+            Learner learner,
+            String landscapeId,
+            Long requestedRevision,
+            String requestedPlanLabel,
+            List<LearnerLearningPlanApi.Block> requestedBlocks) {
+        long expectedRevision = requireExpectedRevision(requestedRevision);
+        String planLabel = optionalText(requestedPlanLabel, "planLabel", 160);
+        LearnerPlanningScopeResponse scope = learners.getPlanningScope(skillpilotId, landscapeId);
+        Optional<LearnerLearningPlan> existing = plans.findForUpdate(skillpilotId, landscapeId);
+        if (existing.isEmpty() && expectedRevision != 0) {
+            throw conflict("expectedRevision must be 0 when creating a learning plan");
+        }
+        if (existing.isPresent() && existing.get().getRevision() != expectedRevision) {
+            throw conflict("Learning plan revision conflict");
+        }
+
+        List<LearnerLearningPlanApi.Block> existingBlocks = existing
+                .map(this::readBlocks)
+                .orElseGet(List::of);
+        List<LearnerLearningPlanApi.Block> normalizedBlocks = normalizeBlocks(
+                requestedBlocks,
+                scope,
+                atomicIds(existingBlocks),
+                false);
+        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks);
+        normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
+                skillpilotId,
+                normalizedBlocks);
+        String fingerprint = learners.learningPlanFingerprint(
+                skillpilotId,
+                landscapeId,
+                normalizedBlocks);
+        return new PreparedPlan(
+                learner,
+                landscapeId,
+                planLabel,
+                scope,
+                existing,
+                normalizedBlocks,
+                fingerprint);
+    }
+
+    private LearnerLearningPlan persistPreparedPlan(PreparedPlan prepared) {
+        LearnerLearningPlan plan = prepared.existing().orElseGet(LearnerLearningPlan::new);
+        if (prepared.existing().isEmpty()) {
+            plan.setLearner(prepared.learner());
+            plan.setLandscapeId(prepared.landscapeId());
+            plan.setRevision(1);
+        } else {
+            plan.setRevision(plan.getRevision() + 1);
+        }
+        plan.setCurriculumId(prepared.scope().curriculumId());
+        plan.setScopeFingerprint(prepared.fingerprint());
+        plan.setPlanLabel(prepared.planLabel());
+        plan.setBlocksJson(writeBlocks(prepared.blocks()));
+        plan.setCapturedAt(prepared.scope().capturedAt());
+        try {
+            return plans.saveAndFlush(plan);
+        } catch (DataIntegrityViolationException exception) {
+            if (prepared.existing().isEmpty()) {
+                throw conflict("A learning plan for this landscape was created concurrently");
+            }
+            throw exception;
+        }
+    }
+
+    private LearnerLearningPlan requireCurrentPlan(
+            String skillpilotId,
+            UUID planId,
+            long expectedRevision) {
+        LearnerLearningPlan plan = plans.findByIdForUpdate(skillpilotId, planId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Learning plan not found"));
+        if (plan.getRevision() != expectedRevision) {
+            throw conflict("Learning plan revision conflict");
+        }
+        return plan;
+    }
+
+    private List<LearnerLearningPlanApi.Block> requireCurrentBlocks(
+            String skillpilotId,
+            LearnerLearningPlan plan) {
+        List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
+        if (!Objects.equals(
+                plan.getScopeFingerprint(),
+                learners.learningPlanFingerprint(skillpilotId, plan.getLandscapeId(), blocks))) {
+            throw conflict("The personal curriculum changed after this learning plan was captured");
+        }
+        return blocks;
+    }
+
+    private Optional<PlanGoalCandidate> findPreservedActiveCandidate(
+            String skillpilotId,
+            List<LearnerLearningPlan> activatedPlans,
+            String activeGoalId,
+            Map<String, Double> mastery) {
+        if (activeGoalId == null
+                || activeGoalId.isBlank()
+                || mastery.getOrDefault(activeGoalId, 0.0) >= MASTERY_THRESHOLD) {
+            return Optional.empty();
+        }
+        List<PlanGoalCandidate> candidates = new ArrayList<>();
+        for (LearnerLearningPlan plan : activatedPlans) {
+            for (LearnerLearningPlanApi.Block block : readBlocks(plan)) {
+                if ("learning".equals(block.kind())
+                        && block.atomicGoalIds() != null
+                        && block.atomicGoalIds().contains(activeGoalId)) {
+                    String focusGoalId = block.goalId() == null || block.goalId().isBlank()
+                            ? activeGoalId
+                            : block.goalId();
+                    boolean remainsEligible = learners.getUncompactedRichFrontierForFocus(
+                                    skillpilotId,
+                                    List.of(focusGoalId))
+                            .stream()
+                            .filter(goal -> "atomic".equals(goal.type()))
+                            .anyMatch(goal -> activeGoalId.equals(goal.id()));
+                    if (!remainsEligible) {
+                        continue;
+                    }
+                    candidates.add(new PlanGoalCandidate(
+                            plan,
+                            new DueGoal(
+                                    activeGoalId,
+                                    focusGoalId,
+                                    block.startDate(),
+                                    block.endDate())));
+                }
+            }
+        }
+        return candidates.stream().min(planCandidateComparator());
+    }
+
+    private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
+            String skillpilotId,
+            List<LearnerLearningPlan> candidatePlans,
+            LocalDate asOf,
+            Map<String, Double> mastery,
+            boolean failOnInvalidPlan) {
+        List<PlanGoalCandidate> candidates = new ArrayList<>();
+        for (LearnerLearningPlan plan : candidatePlans) {
+            try {
+                List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
+                firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
+                        .ifPresent(dueGoal -> candidates.add(new PlanGoalCandidate(plan, dueGoal)));
+            } catch (ResponseStatusException exception) {
+                if (failOnInvalidPlan || exception.getStatusCode().is5xxServerError()) {
+                    throw exception;
+                }
+            } catch (IllegalStateException exception) {
+                if (failOnInvalidPlan) {
+                    throw exception;
+                }
+            }
+        }
+        return candidates.stream().min(planCandidateComparator());
+    }
+
+    private static Comparator<PlanGoalCandidate> planCandidateComparator() {
+        return Comparator
+                .comparing(
+                        (PlanGoalCandidate candidate) -> candidate.dueGoal().blockEndDate(),
+                        Comparator.nullsLast(LocalDate::compareTo))
+                .thenComparing(
+                        candidate -> candidate.dueGoal().blockStartDate(),
+                        Comparator.nullsLast(LocalDate::compareTo))
+                .thenComparing(
+                        candidate -> candidate.plan().getLandscapeId(),
+                        Comparator.nullsLast(String::compareTo))
+                .thenComparing(candidate -> candidate.dueGoal().atomicGoalId())
+                .thenComparing(candidate -> candidate.plan().getId());
+    }
+
+    private static LearnerLearningPlanApi.TransitionResponse transition(
+            PlanGoalCandidate candidate,
+            String activeGoalId,
+            boolean changed,
+            UnifiedLearnerStateResponse state) {
+        return new LearnerLearningPlanApi.TransitionResponse(
+                candidate.plan().getId(),
+                candidate.plan().getRevision(),
+                candidate.plan().getLandscapeId(),
+                candidate.dueGoal().focusGoalId(),
+                activeGoalId,
+                changed,
                 state);
     }
 
@@ -373,7 +774,11 @@ public class LearnerLearningPlanService {
                         .filter(frontierIds::contains)
                         .findFirst();
                 if (selected.isPresent()) {
-                    return Optional.of(new DueGoal(selected.get(), block.goalId()));
+                    return Optional.of(new DueGoal(
+                            selected.get(),
+                            block.goalId(),
+                            block.startDate(),
+                            block.endDate()));
                 }
                 continue;
             }
@@ -384,7 +789,11 @@ public class LearnerLearningPlanService {
                 boolean eligible = frontierIdsForFocus.apply(List.of(atomicGoalId))
                         .contains(atomicGoalId);
                 if (eligible) {
-                    return Optional.of(new DueGoal(atomicGoalId, atomicGoalId));
+                    return Optional.of(new DueGoal(
+                            atomicGoalId,
+                            atomicGoalId,
+                            block.startDate(),
+                            block.endDate()));
                 }
             }
         }
@@ -548,7 +957,9 @@ public class LearnerLearningPlanService {
                 if (due.add(atomicGoalId)) {
                     result.add(new DueGoal(
                             atomicGoalId,
-                            blockFocus == null || blockFocus.isBlank() ? atomicGoalId : blockFocus));
+                            blockFocus == null || blockFocus.isBlank() ? atomicGoalId : blockFocus,
+                            block.startDate(),
+                            block.endDate()));
                 }
             }
         }
@@ -728,6 +1139,15 @@ public class LearnerLearningPlanService {
         return requested == null ? LocalDate.now(clock) : requested;
     }
 
+    private LocalDate requireCurrentMutationDate(LocalDate requested, String action) {
+        LocalDate current = LocalDate.now(clock);
+        if (requested != null && !current.equals(requested)) {
+            throw badRequest("asOf for " + action
+                    + " must equal the current server date in Europe/Berlin");
+        }
+        return current;
+    }
+
     private static long requireExpectedRevision(Long revision) {
         if (revision == null || revision < 0) {
             throw badRequest("expectedRevision must be zero or positive");
@@ -843,7 +1263,26 @@ public class LearnerLearningPlanService {
             List<LearnerLearningPlanApi.Block> blocks) {
     }
 
-    record DueGoal(String atomicGoalId, String focusGoalId) {
+    private record PreparedPlan(
+            Learner learner,
+            String landscapeId,
+            String planLabel,
+            LearnerPlanningScopeResponse scope,
+            Optional<LearnerLearningPlan> existing,
+            List<LearnerLearningPlanApi.Block> blocks,
+            String fingerprint) {
+    }
+
+    private record PlanGoalCandidate(
+            LearnerLearningPlan plan,
+            DueGoal dueGoal) {
+    }
+
+    record DueGoal(
+            String atomicGoalId,
+            String focusGoalId,
+            LocalDate blockStartDate,
+            LocalDate blockEndDate) {
     }
 
     private record DueBlock(LearnerLearningPlanApi.Block block, List<String> atomicGoalIds) {

@@ -5,8 +5,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -45,6 +47,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     private static final String LEARNER_ID = "learner-plan-h2";
     private static final String CURRICULUM_ID = "curriculum";
     private static final String LANDSCAPE_ID = "math";
+    private static final String PHYSICS_LANDSCAPE_ID = "physics";
     private static final Instant CAPTURED_AT = Instant.parse("2026-09-01T08:00:00Z");
     private static final LocalDate TODAY = LocalDate.parse("2026-09-04");
 
@@ -84,9 +87,17 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of());
         when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
                 .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c"), List.of("atom-a", "atom-b")));
+        when(learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID))
+                .thenReturn(scopeFor(
+                        PHYSICS_LANDSCAPE_ID,
+                        List.of("atom-p", "atom-q"),
+                        List.of("atom-p", "atom-q")));
         when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(LANDSCAPE_ID), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID)));
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(PHYSICS_LANDSCAPE_ID), any()))
+                .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
+                        learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID)));
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
     }
@@ -258,6 +269,230 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void multiSubjectActivationPublishesAtomicallyAndSelectsTheOldestDueEligibleGoal() {
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                        LEARNER_ID,
+                        List.of("math-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                        LEARNER_ID,
+                        List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-p")));
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(
+                        LEARNER_ID,
+                        true,
+                        true,
+                        "physics-focus",
+                        "atom-p",
+                        false,
+                        "LEARNING_PLAN_PACKAGE_ACTIVATED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+
+        LearnerLearningPlanApi.ActivateResponse response = service.activatePlans(
+                LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(
+                        TODAY,
+                        List.of(
+                                new LearnerLearningPlanApi.ActivationPlan(
+                                        LANDSCAPE_ID,
+                                        0L,
+                                        "Mathematik",
+                                        List.of(learningWithFocus(
+                                                "math-block",
+                                                "math-focus",
+                                                "2026-09-01",
+                                                "2026-09-04",
+                                                "atom-a"))),
+                                new LearnerLearningPlanApi.ActivationPlan(
+                                        PHYSICS_LANDSCAPE_ID,
+                                        0L,
+                                        "Physik",
+                                        List.of(learningWithFocus(
+                                                "physics-block",
+                                                "physics-focus",
+                                                "2026-08-20",
+                                                "2026-09-04",
+                                                "atom-p"))))));
+
+        assertThat(response.followLearningPlans()).isTrue();
+        assertThat(response.selectedLandscapeId()).isEqualTo(PHYSICS_LANDSCAPE_ID);
+        assertThat(response.focusGoalId()).isEqualTo("physics-focus");
+        assertThat(response.activeGoalId()).isEqualTo("atom-p");
+        assertThat(response.state()).isSameAs(state);
+        assertThat(response.plans())
+                .extracting(LearnerLearningPlanApi.PlanDetail::landscapeId)
+                .containsExactly(LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID);
+        assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID))
+                .extracting(plan -> plan.getLandscapeId())
+                .containsExactly(LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID);
+        verify(learnerService).applyLearningPlanTransition(
+                LEARNER_ID,
+                true,
+                true,
+                "physics-focus",
+                "atom-p",
+                false,
+                "LEARNING_PLAN_PACKAGE_ACTIVATED");
+        verify(eventPublisher, times(1)).publishEvent(any(LearnerStateChangedEvent.class));
+    }
+
+    @Test
+    void activationReconcilesThePlanFocusEvenWhenTheActiveAtomIsPreserved() {
+        learner.setActiveGoalId("atom-p");
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                        LEARNER_ID,
+                        List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-p")));
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(
+                        LEARNER_ID,
+                        true,
+                        true,
+                        "physics-focus",
+                        "atom-p",
+                        false,
+                        "LEARNING_PLAN_PACKAGE_ACTIVATED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+
+        LearnerLearningPlanApi.ActivateResponse response = service.activatePlans(
+                LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(
+                        TODAY,
+                        List.of(new LearnerLearningPlanApi.ActivationPlan(
+                                PHYSICS_LANDSCAPE_ID,
+                                0L,
+                                "Physik",
+                                List.of(learningWithFocus(
+                                        "physics-block",
+                                        "physics-focus",
+                                        "2026-09-01",
+                                        "2026-09-04",
+                                        "atom-p"))))));
+
+        assertThat(response.activeGoalId()).isEqualTo("atom-p");
+        assertThat(response.focusGoalId()).isEqualTo("physics-focus");
+        assertThat(response.state()).isSameAs(state);
+        verify(learnerService).applyLearningPlanTransition(
+                LEARNER_ID,
+                true,
+                true,
+                "physics-focus",
+                "atom-p",
+                false,
+                "LEARNING_PLAN_PACKAGE_ACTIVATED");
+    }
+
+    @Test
+    void invalidSecondSubjectLeavesExistingPlanAndLearnerStateUntouched() {
+        LearnerLearningPlanApi.PlanDetail existing = service.upsert(
+                LEARNER_ID,
+                LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Vorher",
+                        List.of(learning("math-block", "2026-09-01", "2026-09-04", "atom-a"))),
+                TODAY);
+        clearInvocations(learnerService, eventPublisher);
+
+        assertStatus(
+                () -> service.activatePlans(
+                        LEARNER_ID,
+                        new LearnerLearningPlanApi.ActivateRequest(
+                                TODAY,
+                                List.of(
+                                        new LearnerLearningPlanApi.ActivationPlan(
+                                                LANDSCAPE_ID,
+                                                existing.revision(),
+                                                "Darf nicht gespeichert werden",
+                                                List.of(learning(
+                                                        "math-block",
+                                                        "2026-09-01",
+                                                        "2026-09-04",
+                                                        "atom-b"))),
+                                        new LearnerLearningPlanApi.ActivationPlan(
+                                                PHYSICS_LANDSCAPE_ID,
+                                                0L,
+                                                "Ungültig",
+                                                List.of(learningWithFocus(
+                                                        "physics-block",
+                                                        "physics-focus",
+                                                        "2026-09-01",
+                                                        "2026-09-04",
+                                                        "unknown-physics-atom")))))),
+                HttpStatus.BAD_REQUEST);
+
+        assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID))
+                .singleElement()
+                .satisfies(plan -> {
+                    assertThat(plan.getLandscapeId()).isEqualTo(LANDSCAPE_ID);
+                    assertThat(plan.getRevision()).isEqualTo(1);
+                    assertThat(plan.getPlanLabel()).isEqualTo("Vorher");
+                    assertThat(plan.getBlocksJson()).contains("atom-a").doesNotContain("atom-b");
+                });
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(),
+                any(Boolean.class),
+                any(Boolean.class),
+                any(),
+                any(),
+                any(Boolean.class),
+                any());
+        verify(eventPublisher, never()).publishEvent(any());
+        assertThat(learner.getFollowLearningPlans()).isFalse();
+        assertThat(learner.getActiveGoalId()).isNull();
+    }
+
+    @Test
+    void activationRejectsAnOmittedCurrentStoredPlanBeforeAnyMutation() {
+        service.upsert(
+                LEARNER_ID,
+                LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Mathematik",
+                        List.of(learning("math-block", "2026-09-01", "2026-09-04", "atom-a"))),
+                TODAY);
+        clearInvocations(learnerService, eventPublisher);
+
+        assertStatus(
+                () -> service.activatePlans(
+                        LEARNER_ID,
+                        new LearnerLearningPlanApi.ActivateRequest(
+                                TODAY,
+                                List.of(new LearnerLearningPlanApi.ActivationPlan(
+                                        PHYSICS_LANDSCAPE_ID,
+                                        0L,
+                                        "Physik",
+                                        List.of(learningWithFocus(
+                                                "physics-block",
+                                                "physics-focus",
+                                                "2026-09-01",
+                                                "2026-09-04",
+                                                "atom-p")))))),
+                HttpStatus.CONFLICT);
+
+        assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID))
+                .singleElement()
+                .satisfies(plan -> {
+                    assertThat(plan.getLandscapeId()).isEqualTo(LANDSCAPE_ID);
+                    assertThat(plan.getRevision()).isEqualTo(1);
+                    assertThat(plan.getPlanLabel()).isEqualTo("Mathematik");
+                });
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(),
+                any(Boolean.class),
+                any(Boolean.class),
+                any(),
+                any(),
+                any(Boolean.class),
+                any());
+        verify(eventPublisher, never()).publishEvent(any());
+        assertThat(learner.getFollowLearningPlans()).isFalse();
+    }
+
+    @Test
     void blockTitlesAcceptFiveHundredCharactersAndRejectFiveHundredOne() {
         String acceptedTitle = "x".repeat(500);
         LearnerLearningPlanApi.Block accepted = new LearnerLearningPlanApi.Block(
@@ -416,6 +651,134 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void explicitSubjectSwitchParksAnotherGoalAndStillReconcilesFocusForTheSameAtom() {
+        learner.setFollowLearningPlans(true);
+        learner.setActiveGoalId("atom-a");
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                        LEARNER_ID,
+                        List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-p")));
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(
+                        LEARNER_ID,
+                        false,
+                        true,
+                        "physics-focus",
+                        "atom-p",
+                        true,
+                        "LEARNING_PLAN_SUBJECT_SWITCH"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+        LearnerLearningPlanApi.PlanDetail physics = service.upsert(
+                LEARNER_ID,
+                PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Physik",
+                        List.of(learningWithFocus(
+                                "physics-block",
+                                "physics-focus",
+                                "2026-09-01",
+                                "2026-09-04",
+                                "atom-p"))),
+                TODAY);
+
+        LearnerLearningPlanApi.TransitionResponse response = service.switchPlan(
+                LEARNER_ID,
+                physics.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(physics.revision(), TODAY));
+
+        assertThat(response.changed()).isTrue();
+        assertThat(response.landscapeId()).isEqualTo(PHYSICS_LANDSCAPE_ID);
+        assertThat(response.activeGoalId()).isEqualTo("atom-p");
+        assertThat(response.state()).isSameAs(state);
+        verify(learnerService).applyLearningPlanTransition(
+                LEARNER_ID,
+                false,
+                true,
+                "physics-focus",
+                "atom-p",
+                true,
+                "LEARNING_PLAN_SUBJECT_SWITCH");
+
+        learner.setActiveGoalId("atom-p");
+        LearnerLearningPlanApi.TransitionResponse samePointer = service.switchPlan(
+                LEARNER_ID,
+                physics.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(physics.revision(), TODAY));
+        assertThat(samePointer.changed()).isTrue();
+        verify(learnerService, times(2)).applyLearningPlanTransition(
+                LEARNER_ID,
+                false,
+                true,
+                "physics-focus",
+                "atom-p",
+                true,
+                "LEARNING_PLAN_SUBJECT_SWITCH");
+    }
+
+    @Test
+    void reconcileSelectsOnceAndThenNoOpsWhileAnIncompleteGoalIsActive() {
+        learner.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getUncompactedRichFrontierForFocus(
+                        LEARNER_ID,
+                        List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-p")));
+        UnifiedLearnerStateResponse selectedState = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(
+                        LEARNER_ID,
+                        false,
+                        true,
+                        "physics-focus",
+                        "atom-p",
+                        true,
+                        "LEARNING_PLAN_RECONCILED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, selectedState));
+        service.upsert(
+                LEARNER_ID,
+                PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(
+                        0L,
+                        "Physik",
+                        List.of(learningWithFocus(
+                                "physics-block",
+                                "physics-focus",
+                                "2026-08-20",
+                                "2026-09-04",
+                                "atom-p"))),
+                TODAY);
+
+        LearnerLearningPlanApi.TransitionResponse selected = service.reconcile(
+                LEARNER_ID,
+                new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(selected.changed()).isTrue();
+        assertThat(selected.activeGoalId()).isEqualTo("atom-p");
+
+        learner.setActiveGoalId("atom-p");
+        UnifiedLearnerStateResponse noOpState = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.getCoachLearnerState(LEARNER_ID)).thenReturn(noOpState);
+        LearnerLearningPlanApi.TransitionResponse noOp = service.reconcile(
+                LEARNER_ID,
+                new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+
+        assertThat(noOp.changed()).isFalse();
+        assertThat(noOp.planId()).isNull();
+        assertThat(noOp.landscapeId()).isNull();
+        assertThat(noOp.focusGoalId()).isNull();
+        assertThat(noOp.activeGoalId()).isNull();
+        assertThat(noOp.state()).isSameAs(noOpState);
+        verify(learnerService, times(1)).applyLearningPlanTransition(
+                LEARNER_ID,
+                false,
+                true,
+                "physics-focus",
+                "atom-p",
+                true,
+                "LEARNING_PLAN_RECONCILED");
+    }
+
+    @Test
     void activeUnmasteredGoalDisablesAndRejectsPlanContinueBeforeAnyStateMutation() {
         learner.setFollowLearningPlans(true);
         learner.setActiveGoalId("other-active");
@@ -451,9 +814,16 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     private static LearnerPlanningScopeResponse scope(List<String> all, List<String> open) {
+        return scopeFor(LANDSCAPE_ID, all, open);
+    }
+
+    private static LearnerPlanningScopeResponse scopeFor(
+            String landscapeId,
+            List<String> all,
+            List<String> open) {
         return new LearnerPlanningScopeResponse(
                 CURRICULUM_ID,
-                LANDSCAPE_ID,
+                landscapeId,
                 all,
                 all.size(),
                 all.size() - open.size(),
@@ -466,10 +836,19 @@ class LearnerLearningPlanServiceIntegrationTest {
             String start,
             String end,
             String... atomIds) {
+        return learningWithFocus(id, "block-focus", start, end, atomIds);
+    }
+
+    private static LearnerLearningPlanApi.Block learningWithFocus(
+            String id,
+            String focusGoalId,
+            String start,
+            String end,
+            String... atomIds) {
         return new LearnerLearningPlanApi.Block(
                 id,
                 "learning",
-                "block-focus",
+                focusGoalId,
                 id,
                 LocalDate.parse(start),
                 LocalDate.parse(end),

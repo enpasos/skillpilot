@@ -889,25 +889,108 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void completedAnchorPlanWinsDeterministicallyAndAmbiguityFailsClosed() {
+    void planPackageActivationEnablesFollowingAndSelectsTheFirstGoalWithoutAnotherAction() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+        LocalDate planDate = LocalDate.now(ZoneId.of("Europe/Berlin"));
+        var block = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                "representations",
+                "learning",
+                CANONICAL_REPRESENTATION_CLUSTER_ID,
+                "Darstellungen",
+                planDate,
+                planDate,
+                null,
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        var activation = learnerLearningPlanService.activatePlans(
+                learnerId,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.ActivateRequest(
+                        planDate,
+                        List.of(new com.skillpilot.backend.api.LearnerLearningPlanApi.ActivationPlan(
+                                CANONICAL_MATH_LANDSCAPE_ID,
+                                0L,
+                                "Mathematik",
+                                List.of(block)))));
+
+        Learner activated = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(activation.followLearningPlans()).isTrue();
+        assertThat(activation.selectedLandscapeId()).isEqualTo(CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(activation.activeGoalId()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(activation.state().activeGoal().id()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(activated.getFollowLearningPlans()).isTrue();
+        assertThat(activated.getActiveGoalId()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void learningPlanTransitionParksWithoutChangingMasteryAndUsesOneRevision() {
+        prepareRepresentationLearningPlan();
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+        Learner before = learnerRepository.findById(learnerId).orElseThrow();
+        long revisionBeforeParking = before.getCoachStateRevision();
+        Map<String, Double> masteryBeforeParking = new LinkedHashMap<>(
+                learnerService.getMastery(learnerId));
+
+        LearnerService.LearningPlanTransitionResult transition =
+                learnerService.applyLearningPlanTransition(
+                        learnerId,
+                        true,
+                        true,
+                        null,
+                        null,
+                        false,
+                        "LEARNING_PLAN_PACKAGE_ACTIVATED");
+
+        Learner parked = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(transition.changed()).isTrue();
+        assertThat(parked.getFollowLearningPlans()).isTrue();
+        assertThat(parked.getActiveGoalId()).isNull();
+        assertThat(parked.getLearningState()).isEqualTo(LearningState.FRONTIER);
+        assertThat(parked.getCoachStateRevision()).isEqualTo(revisionBeforeParking + 1);
+        assertThat(learnerService.getMastery(learnerId)).isEqualTo(masteryBeforeParking);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void completedAnchorPlanWinsThenCrossSubjectHandoffUsesOldestDueCandidate() {
         var anchor = new LearnerService.LearningPlanHandoffCandidate(
-                java.util.UUID.randomUUID(),
+                java.util.UUID.fromString("00000000-0000-0000-0000-000000000001"),
                 "math",
                 "math-focus",
                 "math-next",
+                LocalDate.parse("2026-09-01"),
+                LocalDate.parse("2026-09-08"),
                 true);
         var unrelated = new LearnerService.LearningPlanHandoffCandidate(
-                java.util.UUID.randomUUID(),
+                java.util.UUID.fromString("00000000-0000-0000-0000-000000000002"),
                 "physics",
                 "physics-focus",
                 "physics-next",
+                LocalDate.parse("2026-08-20"),
+                LocalDate.parse("2026-08-27"),
                 false);
         var secondAnchor = new LearnerService.LearningPlanHandoffCandidate(
-                java.util.UUID.randomUUID(),
+                java.util.UUID.fromString("00000000-0000-0000-0000-000000000003"),
                 "chemistry",
                 "chemistry-focus",
                 "chemistry-next",
+                LocalDate.parse("2026-09-01"),
+                LocalDate.parse("2026-09-05"),
                 true);
+        var secondUnrelated = new LearnerService.LearningPlanHandoffCandidate(
+                java.util.UUID.fromString("00000000-0000-0000-0000-000000000004"),
+                "biology",
+                "biology-focus",
+                "biology-next",
+                LocalDate.parse("2026-08-25"),
+                LocalDate.parse("2026-08-30"),
+                false);
 
         assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(anchor, unrelated)))
                 .contains(anchor);
@@ -915,17 +998,12 @@ public class LearnerServiceTest {
                 .contains(unrelated);
         assertThat(LearnerService.selectLearningPlanHandoffCandidate(false, List.of(unrelated)))
                 .isEmpty();
-        assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(
-                        unrelated,
-                        new LearnerService.LearningPlanHandoffCandidate(
-                                java.util.UUID.randomUUID(),
-                                "biology",
-                                "biology-focus",
-                                "biology-next",
-                                false))))
-                .isEmpty();
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(
+                        true,
+                        List.of(secondUnrelated, unrelated)))
+                .contains(unrelated);
         assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(anchor, secondAnchor)))
-                .isEmpty();
+                .contains(secondAnchor);
     }
 
     @Test
