@@ -1,13 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   ArrowLeft,
   CalendarClock,
+  Check,
+  Copy,
   Download,
   ExternalLink,
-  FileArchive,
   RefreshCw,
   ShieldCheck,
   Smartphone,
+  Store,
   Volume2,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -17,9 +19,11 @@ import { PublicPageHeader } from '../components/PublicPageHeader'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
+  CLAUDE_CONNECTOR_PRIVACY_URL,
+  CLAUDE_MARKETPLACE_REPOSITORY_URL,
+  CLAUDE_PLUGIN_BETA_REQUIREMENTS,
   CLAUDE_PLUGIN_PUBLICATION_INDEX_URL,
   loadClaudePluginPublicationIndex,
-  type ClaudePluginPublication,
   type ClaudePluginPublicationIndex,
 } from '../utils/claudePluginPublication'
 
@@ -27,50 +31,63 @@ const copy = {
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: 'Geführte Beta-Einrichtung des SkillPilot Claude Coach mit Claude Pro.',
-    betaNotice: 'Beta-Download',
-    betaDescription: 'Dieser Direkt-Download ist der aktuell von SkillPilot unterstützte Beta-Weg. Das Plugin ist nicht im offiziellen Anthropic-Marktplatz veröffentlicht.',
-    loading: 'Aktuelle Plugin-Version wird geladen …',
-    loadErrorTitle: 'Die Plugin-Version konnte nicht geladen werden.',
-    loadErrorText: 'Bitte versuche es später erneut. Aus Sicherheitsgründen bieten wir ohne einen gültigen Veröffentlichungsindex keinen Download an.',
+    subtitle: 'Geführte Marketplace-Einrichtung des SkillPilot Claude Coach mit Claude Pro.',
+    cardTitle: 'SkillPilot Coach v1',
+    betaNotice: 'Marketplace-Beta',
+    betaDescription: 'Der SkillPilot Marketplace ist der empfohlene Installations- und Updateweg in der SkillPilot-Beta. Er wird von SkillPilot unabhängig von Anthropic bereitgestellt und ist nicht von Anthropic kuratiert oder verifiziert.',
+    loading: 'Aktuelle Fallback-Version wird geladen …',
+    loadErrorTitle: 'Der Direkt-Upload-Fallback konnte nicht geladen werden.',
+    loadErrorText: 'Die Marketplace-Anleitung bleibt nutzbar. Bitte versuche den Fallback später erneut; ohne gültigen Veröffentlichungsindex bieten wir aus Sicherheitsgründen keinen Datei-Download an.',
     retry: 'Erneut versuchen',
-    emptyTitle: 'Derzeit steht kein Beta-Plugin zum Download bereit.',
-    emptyText: 'Sobald eine geprüfte Version veröffentlicht ist, erscheint sie hier.',
-    guideTitle: 'Plugin vollständig einrichten',
-    guideIntro: 'Lass deinen ursprünglichen SkillPilot-Tab geöffnet und führe alle fünf Schritte in dieser Reihenfolge in Claude Web durch.',
-    stepCleanupTitle: 'Alte SkillPilot-Plugins entfernen',
-    stepCleanupBody: 'Öffne jetzt Claude Web und gehe zur Plugin-Liste:',
-    stepCleanupActions: [
-      'Klicke unten links auf deinen Namen bzw. dein Profil und öffne „Einstellungen“. Falls „Anpassen“ (Customize) bereits direkt in der Hauptseitenleiste erscheint, kannst du es dort unmittelbar öffnen.',
-      'Wähle links unter „Anpassen“ den Punkt „Plugins“.',
-      'Suche in der Liste nach vorhandenen Plugin-Einträgen mit „SkillPilot“ im Namen.',
-      'Öffne bei jedem alten SkillPilot-Plugin das Menü und wähle „Entfernen“ bzw. das Papierkorb-Symbol. Entferne dabei keine anderen Plugins und keine separat vorhandenen Konnektoren. Wenn kein alter Eintrag vorhanden ist, gehe direkt zu Schritt 3.',
+    emptyTitle: 'Derzeit steht keine geprüfte Plugin-Datei als Fallback bereit.',
+    emptyText: 'Die Marketplace-Installation ist davon nicht betroffen.',
+    guideTitle: 'Über den SkillPilot Marketplace installieren',
+    guideIntro: 'Lass deinen ursprünglichen SkillPilot-Tab geöffnet und führe diese fünf Schritte in Claude Web durch.',
+    stepOpenTitle: 'Plugin-Liste öffnen',
+    stepOpenBody: 'Öffne Claude Web und gehe zur persönlichen Plugin-Verwaltung:',
+    stepOpenActions: [
+      'Öffne „Anpassen“ (Customize) → „Plugins“ → „Deine Plugins“ (Your plugins).',
+      'Falls dort bereits ein per Datei installiertes „SkillPilot Coach v1“ steht, entferne nur dieses alte SkillPilot-Plugin. Entferne keine anderen Plugins und trenne vorhandene Konnektoren nicht manuell.',
+      'Klicke oben rechts auf „Hinzufügen“ und wähle „Marketplace hinzufügen“.',
     ],
-    stepCleanupCheck: 'Bevor du fortfährst, darf kein älteres SkillPilot-Plugin mehr in der Liste stehen.',
-    stepDownloadTitle: 'Plugin-Datei herunterladen',
-    stepDownloadBody: 'Lade die unten angebotene, von SkillPilot geprüfte Version herunter.',
-    stepInstallTitle: 'Aktuelle Plugin-Datei hinzufügen',
-    stepInstallBody: 'Bleibe in der Claude-Plugin-Liste und installiere jetzt nur die aktuelle Datei:',
+    stepOpenCheck: 'Marketplace- und Datei-Version dürfen nicht gleichzeitig installiert sein. Wenn du SkillPilot neu installierst, ist kein Entfernen nötig.',
+    stepMarketplaceTitle: 'SkillPilot Marketplace hinzufügen',
+    stepMarketplaceBody: 'Wähle „Aus einem Repository hinzufügen“, füge die folgende vollständige Adresse ein und bestätige:',
+    repositoryLabel: 'GitHub-Repository des SkillPilot Marketplace',
+    copyRepository: 'Adresse kopieren',
+    repositoryCopied: 'Adresse kopiert',
+    repositoryCopyFailed: 'Kopieren nicht möglich. Markiere die Adresse und kopiere sie manuell.',
+    stepMarketplaceCheck: 'Verwende die vollständige HTTPS-Adresse.',
+    stepInstallTitle: 'SkillPilot Coach installieren',
+    stepInstallBody: 'Öffne den neu hinzugefügten „SkillPilot Marketplace“ und installiere das Plugin:',
     stepInstallActions: [
-      'Klicke oben rechts auf „Hinzufügen“ und wähle die Option zum Hochladen einer benutzerdefinierten Plugin-Datei.',
-      'Wähle die soeben heruntergeladene .plugin-Datei aus und bestätige den Upload.',
+      'Wähle „SkillPilot Coach v1“ und klicke auf „Installieren“.',
       'Falls Claude beim neuen Eintrag einen Schalter zum Aktivieren zeigt, aktiviere das Plugin.',
     ],
-    stepInstallCheck: 'Du bist richtig, wenn im Fenster oben „Plugins“ und rechts „Hinzufügen“ steht. Nach dem Upload erscheint „SkillPilot Coach v1“ genau einmal in der Liste.',
+    stepInstallCheck: 'Nach der Installation erscheint „SkillPilot Coach v1“ genau einmal unter „Deine Plugins“.',
     stepConnectorTitle: 'Enthaltenen SkillPilot-Konnektor verbinden',
-    stepConnectorBody: 'Der Datei-Upload allein reicht noch nicht. Aktiviere anschließend den im Plugin enthaltenen Konnektor:',
+    stepConnectorBody: 'Prüfe anschließend den im Plugin enthaltenen Konnektor:',
     stepConnectorActions: [
-      'Öffne den neu installierten Eintrag „SkillPilot Coach v1“.',
-      'Öffne innerhalb des Plugins den Tab „Konnektoren“ (Connectors).',
-      'Wähle den enthaltenen Konnektor „SkillPilot“ und klicke auf „Verbinden“ (Connect).',
-      'Folge der angezeigten Anmeldung und Freigabe bis Claude den Konnektor als verbunden anzeigt.',
+      'Öffne „SkillPilot Coach v1“ und darin den Tab „Konnektoren“ (Connectors).',
+      'Wähle den enthaltenen Konnektor „skillpilot“. Steht dort bereits „Verbunden“, ist nichts weiter nötig.',
+      'Andernfalls klicke auf „Verbinden“ (Connect) und schließe Anmeldung und Freigabe ab.',
     ],
     stepConnectorCheck: 'Verwende ausschließlich den im Plugin enthaltenen SkillPilot-Konnektor. Füge keinen zweiten manuellen SkillPilot-Konnektor hinzu und trage keine MCP-URL ein.',
     openClaudeWeb: 'Claude Web öffnen',
     stepReturnTitle: 'Zu SkillPilot zurückkehren',
-    stepReturnBody: 'Wechsle zurück zum ursprünglichen SkillPilot-Tab. Prüfe dort dein Lernprofil und Curriculum und wähle anschließend „Schritt 2: Mit Claude starten“.',
+    stepReturnBody: 'Wechsle zurück zum ursprünglichen SkillPilot-Tab. Prüfe dort dein Lernprofil und Curriculum und wähle anschließend „Mit Claude starten“. Beginne auch spätere neue Lernsessions immer auf SkillPilot.com.',
     returnToSkillPilot: 'Zurück zu SkillPilot',
-    technicalDetails: 'Version und technische Prüfdaten',
+    updateTitle: 'Updates über den Marketplace',
+    updateBody: 'Öffne in Claude den „SkillPilot Marketplace“ und wähle „Aktualisieren“. Starte danach über SkillPilot eine neue Claude-Session. Ein erneuter Datei-Upload ist nicht erforderlich.',
+    fallbackTitle: 'Direkt-Upload nur als Fallback',
+    fallbackIntro: 'Nutze diesen Weg nur, wenn „Aus einem Repository hinzufügen“ in deinem Claude-Konto nicht verfügbar ist oder die Marketplace-Installation scheitert.',
+    fallbackActions: [
+      'Entferne vor dem Datei-Upload eine bereits vorhandene SkillPilot-Coach-Installation.',
+      'Lade die aktuelle geprüfte .plugin-Datei herunter und installiere sie in Claude über „Hinzufügen“.',
+      'Aktiviere das Plugin und verbinde bei Bedarf den enthaltenen SkillPilot-Konnektor.',
+    ],
+    fallbackCheck: 'Installiere Marketplace- und Datei-Version nicht gleichzeitig. Updates über den Fallback erfolgen manuell durch erneuten Download und Upload.',
+    technicalDetails: 'Version und Integritätsdaten des Fallbacks',
     status: 'Status',
     betaStatus: 'Beta',
     version: 'Version',
@@ -83,18 +100,17 @@ const copy = {
     installationSurface: 'Installation',
     age: (minimumAge: number) => `Nur für Personen ab ${minimumAge} Jahren.`,
     plan: 'Claude Pro ist der von SkillPilot unterstützte und getestete Beta-Pfad.',
-    planDetail: 'Andere bezahlte Claude-Tarife können Plugins technisch ebenfalls unterstützen, gehören aber nicht zu diesem SkillPilot-Beta-Supportpfad.',
-    install: 'Claude Web: alte SkillPilot-Plugins entfernen → aktuelle .plugin-Datei hochladen → im neuen Plugin den enthaltenen SkillPilot-Konnektor verbinden.',
+    planDetail: 'Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. SkillPilot hat diesen Beta-Weg bisher nur mit Claude Pro getestet und unterstützt ihn dafür.',
+    install: 'Claude Web: SkillPilot Marketplace aus dem öffentlichen GitHub-Repository hinzufügen → „SkillPilot Coach v1“ installieren → enthaltenen SkillPilot-Konnektor prüfen.',
     connectAndStart: 'Erst wenn „SkillPilot Coach v1“ installiert und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.',
     android: 'Die anschließende Nutzung in Claude für Android wurde mit demselben Claude-Konto getestet. Interaktive UI-Komponenten können dabei je nach Client oder Turn fehlen; Aufgaben bleiben über Text oder Sprache vollständig lösbar.',
     voiceTested: 'Der Voice Mode wurde von SkillPilot im Beta-Test erprobt. Interaktive UI-Komponenten werden darin nicht durchgängig garantiert. Das ist keine Funktionsgarantie von Anthropic.',
     voiceUntested: 'Der Voice Mode gehört nicht zum getesteten Umfang dieser Version.',
-    update: 'Updates erfolgen manuell: neue Version hier herunterladen und erneut installieren.',
     independentTitle: 'Unabhängiger Beta-Test',
     independentText: 'Dieses Plugin wird von SkillPilot bereitgestellt. Es ist nicht offiziell von Anthropic verifiziert, gesponsert oder garantiert.',
     testedSurfaces: 'Getestete Oberflächen',
     links: 'Dokumentation und Kontakt',
-    source: 'Quellcode',
+    source: 'Marketplace-Repository',
     privacy: 'Datenschutz',
     terms: 'Nutzungsbedingungen',
     support: 'Support',
@@ -106,50 +122,63 @@ const copy = {
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: 'Guided beta setup for the SkillPilot Claude Coach with Claude Pro.',
-    betaNotice: 'Beta download',
-    betaDescription: 'This direct download is the beta route currently supported by SkillPilot. The plugin is not published in the official Anthropic marketplace.',
-    loading: 'Loading the current plugin version …',
-    loadErrorTitle: 'The plugin version could not be loaded.',
-    loadErrorText: 'Please try again later. For security reasons, no download is offered without a valid publication index.',
+    subtitle: 'Guided marketplace setup for the SkillPilot Claude Coach with Claude Pro.',
+    cardTitle: 'SkillPilot Coach v1',
+    betaNotice: 'Marketplace beta',
+    betaDescription: 'The SkillPilot Marketplace is the recommended installation and update route in the SkillPilot beta. It is independently provided by SkillPilot and is not curated or verified by Anthropic.',
+    loading: 'Loading the current fallback version …',
+    loadErrorTitle: 'The direct-upload fallback could not be loaded.',
+    loadErrorText: 'The marketplace guide remains available. Please try the fallback again later; for security reasons, no file download is offered without a valid publication index.',
     retry: 'Try again',
-    emptyTitle: 'There is currently no beta plugin available for download.',
-    emptyText: 'A reviewed version will appear here as soon as it is published.',
-    guideTitle: 'Complete the plugin setup',
-    guideIntro: 'Keep your original SkillPilot tab open and complete all five steps in this order in Claude Web.',
-    stepCleanupTitle: 'Remove old SkillPilot plugins',
-    stepCleanupBody: 'Now open Claude Web and go to the plugin list:',
-    stepCleanupActions: [
-      'Click your name or profile in the lower-left corner and open Settings. If Customize already appears in the main sidebar, you can open it there directly.',
-      'Under Customize on the left, select Plugins.',
-      'Look through the list for existing plugin entries with “SkillPilot” in their name.',
-      'Open the menu for every old SkillPilot plugin and select Remove or the trash icon. Do not remove unrelated plugins or separately existing connectors. If there is no old entry, continue directly with step 3.',
+    emptyTitle: 'There is currently no verified plugin file available as a fallback.',
+    emptyText: 'Marketplace installation is not affected.',
+    guideTitle: 'Install from the SkillPilot Marketplace',
+    guideIntro: 'Keep your original SkillPilot tab open and complete these five steps in Claude Web.',
+    stepOpenTitle: 'Open the plugin list',
+    stepOpenBody: 'Open Claude Web and go to your personal plugin management:',
+    stepOpenActions: [
+      'Open Customize → Plugins → Your plugins.',
+      'If a file-uploaded “SkillPilot Coach v1” is already listed, remove only that old SkillPilot plugin. Do not remove other plugins or manually disconnect existing connectors.',
+      'Select Add in the upper-right corner, then Add marketplace.',
     ],
-    stepCleanupCheck: 'Before continuing, make sure no older SkillPilot plugin remains in the list.',
-    stepDownloadTitle: 'Download the plugin file',
-    stepDownloadBody: 'Download the SkillPilot-verified version offered below.',
-    stepInstallTitle: 'Add the current plugin file',
-    stepInstallBody: 'Stay in Claude’s plugin list and install only the current file:',
+    stepOpenCheck: 'Do not install the marketplace and file-uploaded versions at the same time. There is nothing to remove for a new SkillPilot installation.',
+    stepMarketplaceTitle: 'Add the SkillPilot Marketplace',
+    stepMarketplaceBody: 'Select Add from a repository, enter the following complete address, and confirm:',
+    repositoryLabel: 'GitHub repository for the SkillPilot Marketplace',
+    copyRepository: 'Copy address',
+    repositoryCopied: 'Address copied',
+    repositoryCopyFailed: 'Could not copy the address. Select it and copy it manually.',
+    stepMarketplaceCheck: 'Use the complete HTTPS address.',
+    stepInstallTitle: 'Install SkillPilot Coach',
+    stepInstallBody: 'Open the newly added SkillPilot Marketplace and install the plugin:',
     stepInstallActions: [
-      'Click Add in the upper-right corner and choose the option to upload a custom plugin file.',
-      'Select the .plugin file you just downloaded and confirm the upload.',
+      'Select SkillPilot Coach v1 and choose Install.',
       'If Claude shows an enable switch on the new entry, enable the plugin.',
     ],
-    stepInstallCheck: 'You are in the right place when the window says “Plugins” at the top and shows “Add” on the right. After upload, “SkillPilot Coach v1” appears exactly once in the list.',
+    stepInstallCheck: 'After installation, “SkillPilot Coach v1” appears exactly once under Your plugins.',
     stepConnectorTitle: 'Connect the bundled SkillPilot connector',
-    stepConnectorBody: 'Uploading the file is not enough. Next, activate the connector included in the plugin:',
+    stepConnectorBody: 'Next, check the connector included in the plugin:',
     stepConnectorActions: [
-      'Open the newly installed “SkillPilot Coach v1” entry.',
-      'Inside the plugin, open the Connectors tab.',
-      'Select the included “SkillPilot” connector and click Connect.',
-      'Complete the displayed sign-in and approval flow until Claude shows the connector as connected.',
+      'Open SkillPilot Coach v1, then open its Connectors tab.',
+      'Select the included skillpilot connector. If it already says Connected, no further action is needed.',
+      'Otherwise select Connect and complete sign-in and approval.',
     ],
     stepConnectorCheck: 'Use only the SkillPilot connector bundled with the plugin. Do not add a second manual SkillPilot connector or enter an MCP URL.',
     openClaudeWeb: 'Open Claude Web',
     stepReturnTitle: 'Return to SkillPilot',
-    stepReturnBody: 'Return to your original SkillPilot tab. Check your learning profile and curriculum, then select “Step 2: Start with Claude.”',
+    stepReturnBody: 'Return to your original SkillPilot tab. Check your learning profile and curriculum, then select “Start with Claude.” Start every later new learning session at SkillPilot.com as well.',
     returnToSkillPilot: 'Return to SkillPilot',
-    technicalDetails: 'Version and technical verification details',
+    updateTitle: 'Updates through the marketplace',
+    updateBody: 'Open the SkillPilot Marketplace in Claude and select Update. Then start a new Claude session through SkillPilot. No new file upload is required.',
+    fallbackTitle: 'Direct upload only as a fallback',
+    fallbackIntro: 'Use this route only if Add from a repository is unavailable for your Claude account or marketplace installation fails.',
+    fallbackActions: [
+      'Before uploading the file, remove any existing SkillPilot Coach installation.',
+      'Download the current verified .plugin file and install it in Claude through Add.',
+      'Enable the plugin and connect the bundled SkillPilot connector if necessary.',
+    ],
+    fallbackCheck: 'Do not install the marketplace and file-uploaded versions at the same time. Fallback updates require downloading and uploading the new file manually.',
+    technicalDetails: 'Fallback version and integrity details',
     status: 'Status',
     betaStatus: 'Beta',
     version: 'Version',
@@ -162,18 +191,17 @@ const copy = {
     installationSurface: 'Installation',
     age: (minimumAge: number) => `Only for people aged ${minimumAge} or older.`,
     plan: 'Claude Pro is the beta route supported and tested by SkillPilot.',
-    planDetail: 'Other paid Claude plans may technically support plugins as well, but they are outside this SkillPilot beta support route.',
-    install: 'Claude Web: remove old SkillPilot plugins → upload the current .plugin file → connect the bundled SkillPilot connector inside the new plugin.',
+    planDetail: 'Anthropic also offers plugins on other paid plans. SkillPilot has so far tested and supports this beta route only with Claude Pro.',
+    install: 'Claude Web: add the SkillPilot Marketplace from its public GitHub repository → install SkillPilot Coach v1 → check the bundled SkillPilot connector.',
     connectAndStart: 'Setup is complete only after “SkillPilot Coach v1” is installed and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.',
     android: 'Subsequent use in Claude for Android was tested with the same Claude account. Interactive UI components may be absent depending on the client or turn; tasks remain fully solvable through text or speech.',
     voiceTested: 'Voice mode was exercised in SkillPilot beta testing. Interactive UI components are not guaranteed consistently there. This is not a functionality guarantee from Anthropic.',
     voiceUntested: 'Voice mode is outside the tested scope of this version.',
-    update: 'Updates are manual: download the new version here and install it again.',
     independentTitle: 'Independent beta test',
     independentText: 'This plugin is provided by SkillPilot. It is not officially verified, sponsored, or guaranteed by Anthropic.',
     testedSurfaces: 'Tested surfaces',
     links: 'Documentation and contact',
-    source: 'Source code',
+    source: 'Marketplace repository',
     privacy: 'Privacy',
     terms: 'Terms of use',
     support: 'Support',
@@ -230,8 +258,9 @@ const formatPlan = (plan: string) => (
 )
 
 interface PublicationCardProps {
-  plugin: ClaudePluginPublication
-  preparedAt: string
+  publication: ClaudePluginPublicationIndex | null
+  loadError: boolean
+  onRetry: () => void
   language: SupportedLanguage
 }
 
@@ -256,19 +285,37 @@ const InstructionActions: React.FC<InstructionActionsProps> = ({ actions, testId
   </ol>
 )
 
-const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, language }) => {
+const PublicationCard: React.FC<PublicationCardProps> = ({
+  publication,
+  loadError,
+  onRetry,
+  language,
+}) => {
   const text = copy[language]
-  const supportHref = `mailto:${plugin.supportEmail}`
+  const plugin = publication?.plugins[0]
+  const requirements = plugin?.requirements ?? CLAUDE_PLUGIN_BETA_REQUIREMENTS
+  const cardId = plugin?.id ?? 'skillpilot-coach-v1'
+  const [repositoryCopyState, setRepositoryCopyState] = useState<'idle' | 'copied' | 'failed'>('idle')
+  const supportHref = `mailto:${plugin?.supportEmail ?? 'support@skillpilot.com'}`
   const externalLinks = [
     {
       label: text.officialGuide,
       href: 'https://support.claude.com/en/articles/13837440-use-plugins-in-claude',
     },
-    { label: text.source, href: plugin.sourceUrl },
-    { label: text.privacy, href: plugin.privacyUrl },
-    { label: text.terms, href: plugin.termsUrl },
+    { label: text.source, href: CLAUDE_MARKETPLACE_REPOSITORY_URL },
+    { label: text.privacy, href: plugin?.privacyUrl ?? CLAUDE_CONNECTOR_PRIVACY_URL },
+    { label: text.terms, href: plugin?.termsUrl ?? 'https://skillpilot.com/legal' },
     { label: text.support, href: supportHref },
   ]
+
+  const copyRepositoryUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(CLAUDE_MARKETPLACE_REPOSITORY_URL)
+      setRepositoryCopyState('copied')
+    } catch {
+      setRepositoryCopyState('failed')
+    }
+  }
 
   return (
     <article className="overflow-hidden rounded-3xl border border-border-color bg-white/85 shadow-xl shadow-slate-900/5 dark:bg-slate-900/70">
@@ -279,56 +326,39 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
               {text.betaNotice}
             </span>
             <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
-              {plugin.name}
+              {text.cardTitle}
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700 dark:text-slate-200">
               {text.betaDescription}
             </p>
           </div>
-          <FileArchive size={44} className="shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
+          <Store size={44} className="shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
         </div>
       </div>
 
       <div className="space-y-8 p-6 sm:p-8">
         <section
           data-testid="claude-plugin-install-guide"
-          aria-labelledby={`${plugin.id}-install-guide`}
+          aria-labelledby={`${cardId}-install-guide`}
           className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6"
         >
-          <h3 id={`${plugin.id}-install-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">
+          <h3 id={`${cardId}-install-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">
             {text.guideTitle}
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.guideIntro}</p>
           <ol className="mt-5 space-y-4">
-            <li data-testid="claude-plugin-install-step-download" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+            <li data-testid="claude-plugin-install-step-open" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
               <div className="flex items-start gap-3">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">1</span>
-                <div>
-                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepDownloadTitle}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepDownloadBody}</p>
-                </div>
-              </div>
-              <a
-                href={plugin.downloadUrl}
-                download={plugin.filename}
-                className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-sky-600 dark:hover:bg-sky-500 dark:focus-visible:ring-offset-slate-900"
-              >
-                <Download size={18} aria-hidden="true" />
-                {text.download}
-              </a>
-            </li>
-            <li data-testid="claude-plugin-install-step-cleanup" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
-              <div className="flex items-start gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">2</span>
                 <div className="min-w-0">
-                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepCleanupTitle}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepCleanupBody}</p>
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepOpenTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepOpenBody}</p>
                   <InstructionActions
-                    actions={text.stepCleanupActions}
-                    testId="claude-plugin-cleanup-navigation"
+                    actions={text.stepOpenActions}
+                    testId="claude-plugin-marketplace-open-navigation"
                   />
-                  <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs font-medium leading-relaxed text-amber-950 dark:bg-amber-950/50 dark:text-amber-100">
-                    {text.stepCleanupCheck}
+                  <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-sm font-medium leading-relaxed text-amber-950 dark:bg-amber-950/50 dark:text-amber-100">
+                    {text.stepOpenCheck}
                   </p>
                 </div>
               </div>
@@ -342,7 +372,46 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
                 <ExternalLink size={16} aria-hidden="true" />
               </a>
             </li>
-            <li data-testid="claude-plugin-install-step-upload" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+            <li data-testid="claude-plugin-install-step-marketplace" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+              <div className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">2</span>
+                <div className="min-w-0">
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepMarketplaceTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepMarketplaceBody}</p>
+                  <div className="mt-3 rounded-xl border border-sky-300 bg-sky-100 p-3 text-sky-950 dark:border-sky-800 dark:bg-sky-950/60 dark:text-sky-100">
+                    <label className="block text-xs font-semibold" htmlFor={`${cardId}-marketplace-url`}>
+                      {text.repositoryLabel}
+                    </label>
+                    <input
+                      id={`${cardId}-marketplace-url`}
+                      className="mt-2 w-full rounded-lg border border-sky-300 bg-white px-3 py-2 font-mono text-xs text-slate-950 dark:border-sky-700 dark:bg-slate-950 dark:text-sky-100 sm:text-sm"
+                      readOnly
+                      value={CLAUDE_MARKETPLACE_REPOSITORY_URL}
+                      onFocus={(event) => event.currentTarget.select()}
+                    />
+                    <button
+                      type="button"
+                      onClick={copyRepositoryUrl}
+                      className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-100 dark:bg-sky-600 dark:hover:bg-sky-500 dark:focus-visible:ring-offset-sky-950"
+                    >
+                      {repositoryCopyState === 'copied'
+                        ? <Check size={17} aria-hidden="true" />
+                        : <Copy size={17} aria-hidden="true" />}
+                      {repositoryCopyState === 'copied' ? text.repositoryCopied : text.copyRepository}
+                    </button>
+                    {repositoryCopyState === 'failed' && (
+                      <p className="mt-2 text-sm font-medium text-red-800 dark:text-red-200" role="alert">
+                        {text.repositoryCopyFailed}
+                      </p>
+                    )}
+                  </div>
+                  <p className="mt-3 rounded-xl bg-sky-100 px-3 py-2 text-sm font-medium leading-relaxed text-sky-950 dark:bg-sky-950/70 dark:text-sky-100">
+                    {text.stepMarketplaceCheck}
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li data-testid="claude-plugin-install-step-install" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
               <div className="flex items-start gap-3">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">3</span>
                 <div className="min-w-0">
@@ -350,9 +419,9 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
                   <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepInstallBody}</p>
                   <InstructionActions
                     actions={text.stepInstallActions}
-                    testId="claude-plugin-upload-navigation"
+                    testId="claude-plugin-marketplace-install-navigation"
                   />
-                  <p className="mt-3 rounded-xl bg-sky-100 px-3 py-2 text-xs font-medium leading-relaxed text-sky-950 dark:bg-sky-950/70 dark:text-sky-100">
+                  <p className="mt-3 rounded-xl bg-sky-100 px-3 py-2 text-sm font-medium leading-relaxed text-sky-950 dark:bg-sky-950/70 dark:text-sky-100">
                     {text.stepInstallCheck}
                   </p>
                 </div>
@@ -368,7 +437,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
                     actions={text.stepConnectorActions}
                     testId="claude-plugin-connector-navigation"
                   />
-                  <p className="mt-3 rounded-xl bg-emerald-50 px-3 py-2 text-xs font-medium leading-relaxed text-emerald-950 dark:bg-emerald-950/50 dark:text-emerald-100">
+                  <p className="mt-3 rounded-xl bg-emerald-50 px-3 py-2 text-sm font-medium leading-relaxed text-emerald-950 dark:bg-emerald-950/50 dark:text-emerald-100">
                     {text.stepConnectorCheck}
                   </p>
                 </div>
@@ -393,49 +462,103 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
           </ol>
         </section>
 
-        <details className="rounded-2xl border border-border-color bg-slate-50 p-4 dark:bg-slate-950/35">
-          <summary className="cursor-pointer font-semibold text-slate-900 dark:text-white">
-            {text.technicalDetails}
-          </summary>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.status}</dt>
-              <dd className="mt-1 font-semibold text-slate-900 dark:text-white">
-                {plugin.status === 'beta' ? text.betaStatus : plugin.status}
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.version}</dt>
-              <dd className="mt-1 font-mono font-semibold text-slate-900 dark:text-white">{plugin.version}</dd>
-            </div>
-            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.preparedAt}</dt>
-              <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatPreparedAt(preparedAt, language)}</dd>
-            </div>
-            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.fileSize}</dt>
-              <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatBytes(plugin.bytes, language)}</dd>
-            </div>
-          </dl>
-          <div className="mt-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.checksum}</p>
-            <code className="mt-2 block break-all rounded-xl border border-border-color bg-slate-950 px-4 py-3 text-xs leading-relaxed text-emerald-300 sm:text-sm">
-              {plugin.sha256}
-            </code>
+        <aside className="flex gap-3 rounded-2xl border border-emerald-300 bg-emerald-50 p-5 dark:border-emerald-800 dark:bg-emerald-950/30">
+          <RefreshCw className="mt-0.5 shrink-0 text-emerald-700 dark:text-emerald-300" size={22} aria-hidden="true" />
+          <div>
+            <h3 className="font-semibold text-emerald-950 dark:text-emerald-100">{text.updateTitle}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-emerald-950 dark:text-emerald-100">{text.updateBody}</p>
           </div>
+        </aside>
+
+        <details data-testid="claude-plugin-direct-upload-fallback" className="rounded-2xl border border-border-color bg-slate-50 p-4 dark:bg-slate-950/35">
+          <summary className="cursor-pointer font-semibold text-slate-900 dark:text-white">
+            {text.fallbackTitle}
+          </summary>
+          <p className="mt-3 text-sm leading-relaxed text-text-secondary">{text.fallbackIntro}</p>
+
+          {!publication && !loadError && (
+            <div className="mt-4 flex items-center gap-3 rounded-xl border border-border-color bg-white/70 p-4 text-sm text-text-secondary dark:bg-slate-900/50" role="status">
+              <CalendarClock className="animate-pulse" size={20} aria-hidden="true" />
+              {text.loading}
+            </div>
+          )}
+
+          {loadError && (
+            <div className="mt-4 rounded-xl border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30" role="alert">
+              <p className="font-semibold text-red-900 dark:text-red-100">{text.loadErrorTitle}</p>
+              <p className="mt-2 text-sm leading-relaxed text-red-900 dark:text-red-100">{text.loadErrorText}</p>
+              <button
+                type="button"
+                onClick={onRetry}
+                className="mt-3 inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2.5 font-semibold text-white hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-red-50 dark:focus-visible:ring-offset-red-950"
+              >
+                <RefreshCw size={18} aria-hidden="true" />
+                {text.retry}
+              </button>
+            </div>
+          )}
+
+          {publication && !plugin && (
+            <div className="mt-4 rounded-xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/50">
+              <p className="font-semibold text-slate-900 dark:text-white">{text.emptyTitle}</p>
+              <p className="mt-2 text-sm text-text-secondary">{text.emptyText}</p>
+            </div>
+          )}
+
+          {plugin && publication && (
+            <div className="mt-4 space-y-4">
+              <InstructionActions actions={text.fallbackActions} testId="claude-plugin-direct-upload-navigation" />
+              <p className="rounded-xl bg-amber-50 px-3 py-2 text-sm font-medium leading-relaxed text-amber-950 dark:bg-amber-950/50 dark:text-amber-100">
+                {text.fallbackCheck}
+              </p>
+              <a
+                href={plugin.downloadUrl}
+                download={plugin.filename}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-slate-400 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
+              >
+                <Download size={18} aria-hidden="true" />
+                {text.download}
+              </a>
+              <div>
+                <h4 className="font-semibold text-slate-900 dark:text-white">{text.technicalDetails}</h4>
+                <dl className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="rounded-xl bg-slate-100/80 p-3 dark:bg-slate-800/70">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.status}</dt>
+                    <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{plugin.status === 'beta' ? text.betaStatus : plugin.status}</dd>
+                  </div>
+                  <div className="rounded-xl bg-slate-100/80 p-3 dark:bg-slate-800/70">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.version}</dt>
+                    <dd className="mt-1 font-mono font-semibold text-slate-900 dark:text-white">{plugin.version}</dd>
+                  </div>
+                  <div className="rounded-xl bg-slate-100/80 p-3 dark:bg-slate-800/70">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.preparedAt}</dt>
+                    <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatPreparedAt(publication.preparedAt, language)}</dd>
+                  </div>
+                  <div className="rounded-xl bg-slate-100/80 p-3 dark:bg-slate-800/70">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.fileSize}</dt>
+                    <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatBytes(plugin.bytes, language)}</dd>
+                  </div>
+                </dl>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.checksum}</p>
+                <code className="mt-2 block break-all rounded-xl border border-border-color bg-slate-950 px-4 py-3 text-xs leading-relaxed text-emerald-300 sm:text-sm">
+                  {plugin.sha256}
+                </code>
+              </div>
+            </div>
+          )}
         </details>
 
-        <section aria-labelledby={`${plugin.id}-requirements`}>
-          <h3 id={`${plugin.id}-requirements`} className="text-xl font-semibold text-slate-900 dark:text-white">
-            {text.requirementsTitle}
-          </h3>
-          <ul className="mt-4 grid gap-3 lg:grid-cols-2">
+        <section aria-labelledby={`${cardId}-requirements`}>
+            <h3 id={`${cardId}-requirements`} className="text-xl font-semibold text-slate-900 dark:text-white">
+              {text.requirementsTitle}
+            </h3>
+            <ul className="mt-4 grid gap-3 lg:grid-cols-2">
             <li className="flex gap-3 rounded-2xl border border-border-color p-4">
               <ShieldCheck className="mt-0.5 shrink-0 text-emerald-700 dark:text-emerald-400" size={22} aria-hidden="true" />
               <div>
-                <p className="font-semibold text-slate-900 dark:text-white">{text.age(plugin.requirements.minimumAge)}</p>
+                <p className="font-semibold text-slate-900 dark:text-white">{text.age(requirements.minimumAge)}</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.supportedPlan}</p>
-                <p className="mt-1 font-semibold text-slate-900 dark:text-white">{formatPlan(plugin.requirements.plan)}</p>
+                <p className="mt-1 font-semibold text-slate-900 dark:text-white">{formatPlan(requirements.plan)}</p>
                 <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.plan}</p>
                 <p className="mt-1 text-xs leading-relaxed text-text-secondary">{text.planDetail}</p>
                 <p className="mt-2 text-xs leading-relaxed text-text-secondary">
@@ -455,7 +578,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
               <Download className="mt-0.5 shrink-0 text-sky-700 dark:text-sky-400" size={22} aria-hidden="true" />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.installationSurface}</p>
-                <p className="mt-1 font-semibold text-slate-900 dark:text-white">{formatSurface(plugin.requirements.installSurface, language)}</p>
+                <p className="mt-1 font-semibold text-slate-900 dark:text-white">{formatSurface(requirements.installSurface, language)}</p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.install}</p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.connectAndStart}</p>
               </div>
@@ -466,21 +589,17 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
                 <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.android}</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.testedSurfaces}</p>
                 <p className="mt-1 text-sm text-text-secondary">
-                  {plugin.requirements.testedSurfaces.map((surface) => formatSurface(surface, language)).join(' · ')}
+                  {requirements.testedSurfaces.map((surface) => formatSurface(surface, language)).join(' · ')}
                 </p>
               </div>
             </li>
             <li className="flex gap-3 rounded-2xl border border-border-color p-4">
               <Volume2 className="mt-0.5 shrink-0 text-amber-700 dark:text-amber-400" size={22} aria-hidden="true" />
               <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-100">
-                {plugin.requirements.voiceMode ? text.voiceTested : text.voiceUntested}
+                {requirements.voiceMode ? text.voiceTested : text.voiceUntested}
               </p>
             </li>
-            <li className="flex gap-3 rounded-2xl border border-border-color p-4 lg:col-span-2">
-              <RefreshCw className="mt-0.5 shrink-0 text-slate-700 dark:text-slate-300" size={22} aria-hidden="true" />
-              <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.update}</p>
-            </li>
-          </ul>
+            </ul>
         </section>
 
         <aside className="rounded-2xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-950/30">
@@ -488,8 +607,8 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
           <p className="mt-2 text-sm leading-relaxed text-amber-950 dark:text-amber-100">{text.independentText}</p>
         </aside>
 
-        <section aria-labelledby={`${plugin.id}-links`}>
-          <h3 id={`${plugin.id}-links`} className="text-lg font-semibold text-slate-900 dark:text-white">{text.links}</h3>
+        <section aria-labelledby={`${cardId}-links`}>
+          <h3 id={`${cardId}-links`} className="text-lg font-semibold text-slate-900 dark:text-white">{text.links}</h3>
           <div className="mt-3 flex flex-wrap gap-2">
             {externalLinks.map((link) => (
               <a
@@ -536,17 +655,6 @@ export const PluginCatalogView: React.FC = () => {
     setRequestVersion((current) => current + 1)
   }
 
-  const cards = useMemo(() => (
-    publication?.plugins.map((plugin) => (
-      <PublicationCard
-        key={plugin.id}
-        plugin={plugin}
-        preparedAt={publication.preparedAt}
-        language={selectedLanguage}
-      />
-    )) ?? []
-  ), [publication, selectedLanguage])
-
   return (
     <div className="min-h-screen bg-chat-bg px-4 py-6 text-text-primary transition-colors sm:px-6 lg:px-10">
       <main className="mx-auto w-full max-w-6xl">
@@ -567,36 +675,12 @@ export const PluginCatalogView: React.FC = () => {
         <PublicPageHeader align="left" title={text.title} subtitle={text.subtitle} />
 
         <div className="mt-8">
-          {!publication && !loadError && (
-            <div className="flex items-center gap-3 rounded-2xl border border-border-color bg-white/70 p-5 text-text-secondary dark:bg-slate-900/50" role="status">
-              <CalendarClock className="animate-pulse" size={22} aria-hidden="true" />
-              {text.loading}
-            </div>
-          )}
-
-          {loadError && (
-            <section className="rounded-3xl border border-red-300 bg-red-50 p-6 dark:border-red-800 dark:bg-red-950/30" role="alert">
-              <h2 className="text-xl font-semibold text-red-900 dark:text-red-100">{text.loadErrorTitle}</h2>
-              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-red-900 dark:text-red-100">{text.loadErrorText}</p>
-              <button
-                type="button"
-                onClick={retry}
-                className="mt-4 inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2.5 font-semibold text-white hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-red-50 dark:focus-visible:ring-offset-red-950"
-              >
-                <RefreshCw size={18} aria-hidden="true" />
-                {text.retry}
-              </button>
-            </section>
-          )}
-
-          {publication && publication.plugins.length === 0 && (
-            <section className="rounded-3xl border border-border-color bg-white/70 p-6 dark:bg-slate-900/50">
-              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{text.emptyTitle}</h2>
-              <p className="mt-2 text-text-secondary">{text.emptyText}</p>
-            </section>
-          )}
-
-          {cards.length > 0 && <div className="space-y-8">{cards}</div>}
+          <PublicationCard
+            publication={publication}
+            loadError={loadError}
+            onRetry={retry}
+            language={selectedLanguage}
+          />
         </div>
 
         <p className="mt-8 text-center text-xs text-text-secondary">

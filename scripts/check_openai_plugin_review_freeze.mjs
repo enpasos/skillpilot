@@ -2485,6 +2485,64 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "b922dd5d43085a06ab4294ada37429b3b3e1800fd5fb8c598c130ec1aa3ea18d"
       }
     ]
+  },
+  {
+    "id": "2026-09-03-claude-marketplace-first-party-guide",
+    "approvedAt": "2026-09-03",
+    "approvedBy": "product-owner",
+    "reason": "After the verified personal Git marketplace publication and confirmed migration of both controlled users, make the Marketplace the recommended first-party Claude beta installation and update route while retaining direct upload as an explicit fallback.",
+    "scope": "Change only the German and English /plugins installation guide, public repository copy action, route metadata, focused regressions, and the candidate- and revision-bound Claude marketplace guide decision, validator and runbook. The clipboard action may only write the fixed public HTTPS repository URL; it may not read clipboard data, persist state or add network access. Preserve pending clean-account, refresh, legal, support and exact-client evidence; preserve ChatGPT/OpenAI and Claude packages, handlers, MCP/OAuth/tools/schemas/UI/session/state/review artifacts.",
+    "target": "current-production-controlled-claude-marketplace-guide-only",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-claude-only-marketplace-guide-no-submitted-openai-contract-or-review-flow-effect",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/src/views/PluginCatalogView.tsx",
+        "priorAuthorizedSha256": "548aa480c96d76d1a2f9403c4631a74d6d891565c62a0b5197fd59e4092a8e5a",
+        "authorizedSha256": "73c36c7ebb58ec0b6ea66f4c0fa73298e5107c06fbd98b04e0a82209138e9100"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.ts",
+        "authorizedSha256": "b9d15d02d84a44d1208c5e02157139f64171c364e92462b223f477fd9725a9ce"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.test.ts",
+        "priorAuthorizedSha256": "f6efd1d17ff352bbd4943d967577eab475a636515949d159505b066a7936a6c2",
+        "authorizedSha256": "fc0e79cc9121445db85a2016b36f520681e9f82c762d506a285404106cabafb8"
+      },
+      {
+        "path": "app/src/App.tsx",
+        "priorAuthorizedSha256": "8781db5376bbeaa2376a12b689135e881f53ae89e4d61141d64130dbec83db87",
+        "authorizedSha256": "86acdb6813795da03dd42b0c0080862de0d0fd099cd5f9ead07c1e6952566306"
+      },
+      {
+        "path": "app/scripts/testRootRoutePolicy.ts",
+        "priorAuthorizedSha256": "6a96e4a628f181cb4e7cd324a1c2a29baac3da5f54fafc9fff3c3ee4475752c4",
+        "authorizedSha256": "2fb61a14854858a783aabdda372fd85b802cba5d95e02469c3d1decbf4438f3d"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json",
+        "authorizedSha256": "6db56658c333bcf5fc688bcdb274dd74a7d3df957f97e28793672a091da7e965"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.mjs",
+        "authorizedSha256": "fbd8ce38fe2678d29ec64673f8a03910105168129ec7aa8b98ed6e9a22f10974"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.test.mjs",
+        "authorizedSha256": "f280584ca40ec97332034cfba99c54993265bca10441a02dedb0a0883b1702f4"
+      },
+      {
+        "path": "docs/deploy/claude-personal-marketplace-release.md",
+        "authorizedSha256": "da96db3618002fb4016e4a785527aea16f3a47823b914151027bad84628f04b0"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "b922dd5d43085a06ab4294ada37429b3b3e1800fd5fb8c598c130ec1aa3ea18d",
+        "authorizedSha256": "f3f3533585b6ae53bbd2935bc49f1e57397a37034f13d848bd9ab5e7046c2b00"
+      }
+    ]
   }
 ];
 
