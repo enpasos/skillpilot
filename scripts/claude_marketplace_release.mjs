@@ -134,6 +134,7 @@ export function validateClaudeMarketplaceLane(lane) {
       "state",
       "firstPartyUiRoute",
       "marketplaceUiSwitchAllowed",
+      "firstPartyGuideDecision",
       "evidence",
     ],
     "lane.activation",
@@ -156,6 +157,81 @@ export function validateClaudeMarketplaceLane(lane) {
     lane.activation.marketplaceUiSwitchAllowed,
     "lane.activation.marketplaceUiSwitchAllowed",
   );
+  assertRecord(
+    lane.activation.firstPartyGuideDecision,
+    "lane.activation.firstPartyGuideDecision",
+  );
+  assertExactKeys(
+    lane.activation.firstPartyGuideDecision,
+    [
+      "status",
+      "approvedAt",
+      "approvedBy",
+      "candidateVersion",
+      "candidateSha256",
+      "repositoryRevision",
+      "repositoryTreeSha256",
+      "evidenceRef",
+    ],
+    "lane.activation.firstPartyGuideDecision",
+  );
+  const guideDecision = lane.activation.firstPartyGuideDecision;
+  assertOneOf(
+    guideDecision.status,
+    ["pending", "approved"],
+    "lane.activation.firstPartyGuideDecision.status",
+  );
+  if (guideDecision.status === "pending") {
+    for (const field of [
+      "approvedAt",
+      "approvedBy",
+      "candidateVersion",
+      "candidateSha256",
+      "repositoryRevision",
+      "repositoryTreeSha256",
+      "evidenceRef",
+    ]) {
+      assertEqual(
+        guideDecision[field],
+        null,
+        `pending first-party guide decision ${field}`,
+      );
+    }
+  } else {
+    assertCanonicalTimestamp(
+      guideDecision.approvedAt,
+      "lane.activation.firstPartyGuideDecision.approvedAt",
+    );
+    assertEqual(
+      guideDecision.approvedBy,
+      "product-owner",
+      "lane.activation.firstPartyGuideDecision.approvedBy",
+    );
+    assertEqual(
+      guideDecision.candidateVersion,
+      lane.plugin.version,
+      "lane.activation.firstPartyGuideDecision.candidateVersion",
+    );
+    assertEqual(
+      guideDecision.candidateSha256,
+      lane.plugin.directInstallSha256,
+      "lane.activation.firstPartyGuideDecision.candidateSha256",
+    );
+    if (!/^[0-9a-f]{40}$/u.test(guideDecision.repositoryRevision ?? "")) {
+      throw new Error(
+        "lane.activation.firstPartyGuideDecision.repositoryRevision must be a full lowercase Git SHA.",
+      );
+    }
+    if (!/^[0-9a-f]{64}$/u.test(guideDecision.repositoryTreeSha256 ?? "")) {
+      throw new Error(
+        "lane.activation.firstPartyGuideDecision.repositoryTreeSha256 must be a lowercase SHA-256 digest.",
+      );
+    }
+    assertNonEmptyString(
+      guideDecision.evidenceRef,
+      "lane.activation.firstPartyGuideDecision.evidenceRef",
+    );
+  }
   if (!Array.isArray(lane.activation.evidence)) {
     throw new Error("lane.activation.evidence must be an array.");
   }
@@ -250,6 +326,25 @@ export function validateClaudeMarketplaceLane(lane) {
   }
   const repositoryPublished =
     lane.activation.evidence[0]?.status === "pass";
+  const guideSwitchApproved = guideDecision.status === "approved";
+  if (guideSwitchApproved) {
+    assertEqual(
+      repositoryPublished,
+      true,
+      "Approved first-party marketplace guidance requires a verified public repository",
+    );
+    assertEqual(
+      guideDecision.repositoryRevision,
+      lane.activation.evidence[0].revision,
+      "first-party guide decision and repository evidence revision",
+    );
+    assertEqual(
+      guideDecision.repositoryTreeSha256,
+      lane.activation.evidence[0].treeSha256,
+      "first-party guide decision and repository evidence tree SHA-256",
+    );
+  }
+  const expectedUiSwitch = repositoryPublished && guideSwitchApproved;
   const allEvidencePassed =
     passingEvidence.length === expectedExternalEvidence.length;
   const expectedState = allEvidencePassed
@@ -264,15 +359,15 @@ export function validateClaudeMarketplaceLane(lane) {
   );
   assertEqual(
     lane.activation.marketplaceUiSwitchAllowed,
-    allEvidencePassed,
-    "lane.activation.marketplaceUiSwitchAllowed must be derived from published verification",
+    expectedUiSwitch,
+    "lane.activation.marketplaceUiSwitchAllowed must be derived from repository verification and the Product Owner guide decision",
   );
   assertEqual(
     lane.activation.firstPartyUiRoute,
-    allEvidencePassed
+    expectedUiSwitch
       ? "personal_git_marketplace"
       : "controlled_direct_install_beta",
-    "lane.activation.firstPartyUiRoute must remain on the direct-install fallback until publication is verified",
+    "lane.activation.firstPartyUiRoute must match the approved first-party guide decision",
   );
 }
 

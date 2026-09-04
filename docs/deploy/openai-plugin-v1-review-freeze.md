@@ -2418,6 +2418,69 @@ Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Reviewfälle und
 -fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben
 unverändert. Deshalb ist keine Aktion im OpenAI-Portal erforderlich.
 
+### 6.44 Eng begrenzte Ausnahme: Marketplace-first-Anleitung für die Claude-Beta
+
+Der Product Owner hat am **3. September 2026** nach der verifizierten
+Veröffentlichung des persönlichen Git-Marketplace und der bestätigten Migration
+beider kontrollierten Benutzer freigegeben, die ersteigene `/plugins`-Anleitung
+vom bisherigen Datei-Upload auf den Marketplace als empfohlenen
+Installations- und Updateweg umzustellen. Der Direkt-Upload bleibt als
+ausdrücklich bezeichneter Fallback erhalten.
+
+Die Freigabe umfasst ausschließlich:
+
+- die deutsche und englische Fünf-Schritte-Anleitung für Claude Web;
+- die gebundene öffentliche Repository-Adresse mit einer reinen
+  `navigator.clipboard.writeText`-Aktion für genau diese Adresse;
+- weiterhin sichtbare Alters-, Tarif- und Testumfang-Hinweise, auch wenn der
+  optionale Download-Index ausfällt;
+- die zugehörigen `/plugins`-Metadaten und fokussierten Regressionstests; und
+- eine eigenständige, kandidat- und revisionsgebundene Product-Owner-
+  Entscheidung im Claude-Marketplace-Release-Modell.
+
+`published_pending_acceptance`, alle noch offenen Marketplace-Evidenzen und
+`openPublicBetaReady = false` bleiben unverändert. Die Guide-Entscheidung
+behauptet weder Clean-Account-, Refresh-, Legal-, Support- noch
+Exact-Client-Abnahme und ist kein Anthropic-Listing. Der Marketplace-Validator
+leitet nur den kontrollierten First-Party-Anleitungsweg aus verifiziertem
+Repository plus dieser Entscheidung ab; die vollständige Veröffentlichung bleibt
+weiterhin an alle bisherigen Evidenzen gebunden.
+
+Die bestehenden Hashketten werden append-only fortgesetzt:
+
+- `app/src/views/PluginCatalogView.tsx`:
+  `548aa480c96d76d1a2f9403c4631a74d6d891565c62a0b5197fd59e4092a8e5a`
+  → `73c36c7ebb58ec0b6ea66f4c0fa73298e5107c06fbd98b04e0a82209138e9100`;
+- `app/src/utils/claudePluginPublication.test.ts`:
+  `f6efd1d17ff352bbd4943d967577eab475a636515949d159505b066a7936a6c2`
+  → `fc0e79cc9121445db85a2016b36f520681e9f82c762d506a285404106cabafb8`;
+- `app/src/App.tsx`:
+  `8781db5376bbeaa2376a12b689135e881f53ae89e4d61141d64130dbec83db87`
+  → `86acdb6813795da03dd42b0c0080862de0d0fd099cd5f9ead07c1e6952566306`;
+- `app/scripts/testRootRoutePolicy.ts`:
+  `6a96e4a628f181cb4e7cd324a1c2a29baac3da5f54fafc9fff3c3ee4475752c4`
+  → `2fb61a14854858a783aabdda372fd85b802cba5d95e02469c3d1decbf4438f3d`.
+
+Neu gebunden werden die eng zugehörigen Hilfs-, Release- und
+Dokumentationsdateien mit folgenden Hashes:
+
+- `app/src/utils/claudePluginPublication.ts`:
+  `b9d15d02d84a44d1208c5e02157139f64171c364e92462b223f477fd9725a9ce`;
+- `ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json`:
+  `6db56658c333bcf5fc688bcdb274dd74a7d3df957f97e28793672a091da7e965`;
+- `scripts/claude_marketplace_release.mjs`:
+  `fbd8ce38fe2678d29ec64673f8a03910105168129ec7aa8b98ed6e9a22f10974`;
+- `scripts/claude_marketplace_release.test.mjs`:
+  `f280584ca40ec97332034cfba99c54993265bca10441a02dedb0a0883b1702f4`;
+- `docs/deploy/claude-personal-marketplace-release.md`:
+  `da96db3618002fb4016e4a785527aea16f3a47823b914151027bad84628f04b0`.
+
+ChatGPT- und Claude-Start-Handler, Prepared Messages, Session-, Identitäts-
+und Lernzustandssemantik, OpenAI- und Claude-Package-Bytes, MCP/OAuth, Tools,
+Schemas, Annotationen, Instruktionen, Ressourcen, MCP-Apps-UI, Reviewfälle und
+-fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte bleiben
+unverändert. Deshalb ist keine Aktion im OpenAI-Portal erforderlich.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

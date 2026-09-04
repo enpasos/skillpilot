@@ -59,8 +59,21 @@ test("production marketplace lane pins the published revision while acceptance r
   );
   assert.deepEqual(lane.activation, {
     state: "published_pending_acceptance",
-    firstPartyUiRoute: "controlled_direct_install_beta",
-    marketplaceUiSwitchAllowed: false,
+    firstPartyUiRoute: "personal_git_marketplace",
+    marketplaceUiSwitchAllowed: true,
+    firstPartyGuideDecision: {
+      status: "approved",
+      approvedAt: "2026-09-03T21:57:24.000Z",
+      approvedBy: "product-owner",
+      candidateVersion: "1.0.4",
+      candidateSha256:
+        "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
+      repositoryRevision: "de29c45e8ac293675b79e40619da0cf50ff7ed2f",
+      repositoryTreeSha256:
+        "0191e65c14bf73586af618c62662fbb808f205f339b2cc1ad1c823a538ff5a6f",
+      evidenceRef:
+        "product-owner-confirmation-2026-09-03-both-controlled-users-migrated",
+    },
     evidence: [
       {
         id: "public-repository-default-branch",
@@ -138,6 +151,8 @@ test("public activation cannot bypass the existing open-public-beta blockers", (
   activated.activation.state = "published_verified";
   activated.activation.firstPartyUiRoute = "personal_git_marketplace";
   activated.activation.marketplaceUiSwitchAllowed = true;
+  activated.activation.firstPartyGuideDecision.repositoryRevision = "a".repeat(40);
+  activated.activation.firstPartyGuideDecision.repositoryTreeSha256 = "e".repeat(64);
   activated.activation.evidence = activated.activation.evidence.map((evidence) => ({
     ...evidence,
     status: "pass",
@@ -161,6 +176,18 @@ test("marketplace activation state is derived from revision-bound evidence", () 
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   const repositoryPublished = structuredClone(lane);
   repositoryPublished.activation.state = "published_pending_acceptance";
+  repositoryPublished.activation.firstPartyUiRoute = "controlled_direct_install_beta";
+  repositoryPublished.activation.marketplaceUiSwitchAllowed = false;
+  repositoryPublished.activation.firstPartyGuideDecision = {
+    status: "pending",
+    approvedAt: null,
+    approvedBy: null,
+    candidateVersion: null,
+    candidateSha256: null,
+    repositoryRevision: null,
+    repositoryTreeSha256: null,
+    evidenceRef: null,
+  };
   repositoryPublished.activation.evidence[0] = {
     ...repositoryPublished.activation.evidence[0],
     status: "pass",
@@ -231,6 +258,48 @@ test("marketplace activation state is derived from revision-bound evidence", () 
       "f".repeat(64),
     ),
     /generated marketplace tree and approved evidence mismatch/u,
+  );
+});
+
+test("a Product Owner decision can switch only the controlled first-party guide", () => {
+  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  assert.equal(lane.activation.state, "published_pending_acceptance");
+  assert.equal(lane.activation.firstPartyUiRoute, "personal_git_marketplace");
+  assert.equal(lane.activation.marketplaceUiSwitchAllowed, true);
+  assert.equal(lane.activation.firstPartyGuideDecision.status, "approved");
+  assert.deepEqual(
+    lane.activation.evidence.map(({ status }) => status),
+    ["pass", "pending", "pending"],
+  );
+
+  const withoutDecision = structuredClone(lane);
+  withoutDecision.activation.firstPartyUiRoute = "controlled_direct_install_beta";
+  withoutDecision.activation.marketplaceUiSwitchAllowed = false;
+  withoutDecision.activation.firstPartyGuideDecision = {
+    status: "pending",
+    approvedAt: null,
+    approvedBy: null,
+    candidateVersion: null,
+    candidateSha256: null,
+    repositoryRevision: null,
+    repositoryTreeSha256: null,
+    evidenceRef: null,
+  };
+  validateClaudeMarketplaceLane(withoutDecision);
+
+  const dishonestSwitch = structuredClone(withoutDecision);
+  dishonestSwitch.activation.firstPartyUiRoute = "personal_git_marketplace";
+  dishonestSwitch.activation.marketplaceUiSwitchAllowed = true;
+  assert.throws(
+    () => validateClaudeMarketplaceLane(dishonestSwitch),
+    /must be derived from repository verification and the Product Owner guide decision/u,
+  );
+
+  const staleDecision = structuredClone(lane);
+  staleDecision.activation.firstPartyGuideDecision.candidateVersion = "1.0.3";
+  assert.throws(
+    () => validateClaudeMarketplaceLane(staleDecision),
+    /firstPartyGuideDecision\.candidateVersion mismatch/u,
   );
 });
 

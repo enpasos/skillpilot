@@ -1,4 +1,6 @@
 export const CLAUDE_PLUGIN_PUBLICATION_INDEX_URL = '/api/public/claude/plugins/index.json'
+export const CLAUDE_MARKETPLACE_REPOSITORY_URL = 'https://github.com/enpasos/skillpilot-claude-marketplace'
+export const CLAUDE_CONNECTOR_PRIVACY_URL = 'https://mcp-claude-v1.skillpilot.com/privacy'
 
 export interface ClaudePluginRequirements {
   minimumAge: number
@@ -7,6 +9,14 @@ export interface ClaudePluginRequirements {
   testedSurfaces: string[]
   voiceMode: boolean
 }
+
+export const CLAUDE_PLUGIN_BETA_REQUIREMENTS = {
+  minimumAge: 18,
+  plan: 'claude-pro',
+  installSurface: 'claude-web',
+  testedSurfaces: ['claude-web', 'claude-android'],
+  voiceMode: true,
+} satisfies ClaudePluginRequirements
 
 export interface ClaudePluginPublication {
   id: string

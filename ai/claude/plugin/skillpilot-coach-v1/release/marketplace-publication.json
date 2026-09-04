@@ -28,8 +28,18 @@
   },
   "activation": {
     "state": "published_pending_acceptance",
-    "firstPartyUiRoute": "controlled_direct_install_beta",
-    "marketplaceUiSwitchAllowed": false,
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
+    "firstPartyGuideDecision": {
+      "status": "approved",
+      "approvedAt": "2026-09-03T21:57:24.000Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.0.4",
+      "candidateSha256": "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
+      "repositoryRevision": "de29c45e8ac293675b79e40619da0cf50ff7ed2f",
+      "repositoryTreeSha256": "0191e65c14bf73586af618c62662fbb808f205f339b2cc1ad1c823a538ff5a6f",
+      "evidenceRef": "product-owner-confirmation-2026-09-03-both-controlled-users-migrated"
+    },
     "evidence": [
       {
         "id": "public-repository-default-branch",

@@ -53,12 +53,12 @@ assert.equal(
 assert.equal(
   shouldRunApplicationCore('/plugins'),
   false,
-  'the public plugin download must not issue catalog, profile, or mastery requests',
+  'the public plugin guide must not issue catalog, profile, or mastery requests',
 )
 assert.equal(
   shouldSyncRouteStateToUrl('/plugins/'),
   false,
-  'the public plugin download must not synchronize stored learner state into its URL',
+  'the public plugin guide must not synchronize stored learner state into its URL',
 )
 assert.equal(
   shouldRunApplicationCore('/betreuung'),
@@ -137,6 +137,21 @@ assert.match(
   appSource,
   /path === '\/plugins'\s*\? 'noindex, nofollow'/u,
   'the controlled plugin beta route must remain excluded from search indexing',
+)
+assert.match(
+  appSource,
+  /'Claude Marketplace beta'\s*:\s*'Claude-Marketplace-Beta'/u,
+  'the plugin guide metadata must describe the Marketplace beta rather than the retired primary download route',
+)
+assert.match(
+  appSource,
+  /Guided setup and updates for the SkillPilot Claude Coach through the SkillPilot Marketplace/u,
+  'the English plugin guide description must identify Marketplace setup and updates',
+)
+assert.match(
+  appSource,
+  /Geführte Einrichtung und Updates des SkillPilot Claude Coach über den SkillPilot Marketplace/u,
+  'the German plugin guide description must identify Marketplace setup and updates',
 )
 assert.doesNotMatch(
   coachSetupSource,

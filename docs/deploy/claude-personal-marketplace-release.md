@@ -16,17 +16,20 @@ https://github.com/enpasos/skillpilot-claude-marketplace
 As long as
 `ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json`
 has `activation.state = prepared_not_published`, that repository is not a
-supported installation source. The first-party `/plugins` page must continue
-to use the controlled direct-install beta. Local export success never changes
-that state by itself. The current direct-install lane still reports
+supported installation source. The first-party `/plugins` page must also keep
+the controlled direct-install beta as its primary route until the public
+repository is verified and `activation.firstPartyGuideDecision` records a
+candidate- and revision-bound Product Owner approval. Local export success
+never changes either state by itself. The current direct-install lane still reports
 `openPublicBetaReady = false`; legal approval, support readiness and
 exact-client acceptance therefore remain activation blockers. Privacy approval
 is already recorded as `pass` for the current candidate. The bounded first
 repository publication may occur with exact-client acceptance still `pending`
 so that acceptance can be performed through the Marketplace installation
 itself, but only after the local, supply-chain and OpenAI-freeze checks below
-and explicit Product Owner approval. That publication does not make the
-Marketplace the first-party primary route.
+and explicit Product Owner approval. Repository publication alone does not
+make the Marketplace the first-party primary route. A separate controlled-beta
+guide decision can do so without claiming that full public acceptance passed.
 
 ## Why this is a separate repository
 
@@ -160,8 +163,9 @@ the operator's normal Claude configuration.
 
 Follow the
 [Claude support readiness runbook](claude-support-readiness-runbook.md) before
-activation and the first-party route switch. The bounded repository publication
-does not satisfy or bypass this gate. Its public synthetic is credential-free
+full public activation. The bounded repository publication and the separately
+approved controlled-beta installation guide do not satisfy or bypass this
+gate. Its public synthetic is credential-free
 and read-only; run it before the repository publication and again for
 activation. It checks the immutable direct-install publication, legal and
 privacy pages, application readiness, connector OAuth discovery, and the
@@ -225,12 +229,43 @@ After that explicit approval:
 6. In a separate revision-bound evidence change, record only the verified
    `public-repository-default-branch` item as `pass`. This derives
    `activation.state = published_pending_acceptance`; the other Marketplace
-   evidence remains `pending`, `marketplaceUiSwitchAllowed` remains `false`,
-   and `firstPartyUiRoute` remains `controlled_direct_install_beta`.
+   evidence remains `pending`. Without a separate, candidate-bound
+   `firstPartyGuideDecision`, `marketplaceUiSwitchAllowed` remains `false` and
+   `firstPartyUiRoute` remains `controlled_direct_install_beta`.
 
 Use the full HTTPS URL in end-user instructions. In Claude Code the
 `owner/repository` shorthand can select SSH and therefore surprise users who
 do not have GitHub SSH credentials.
+
+## Controlled-beta first-party guide switch
+
+After the verified repository publication, the Product Owner confirmed on
+**3 September 2026** that both controlled users had migrated from the uploaded
+plugin to the exact Marketplace candidate. The Product Owner then explicitly
+requested that the first-party installation guide use the Marketplace as the
+recommended installation and update route.
+
+This decision is recorded separately as
+`activation.firstPartyGuideDecision`. It is bound to the current candidate
+version and digest plus the verified repository revision and tree digest. The
+validator derives `marketplaceUiSwitchAllowed` and `firstPartyUiRoute` from
+that decision together with the verified repository; a stale candidate,
+repository revision, or tree fails closed.
+
+The switch is deliberately narrower than full Marketplace acceptance:
+
+- `activation.state` remains `published_pending_acceptance`;
+- clean-account installation and migration/refresh evidence remain `pending`;
+- direct-install legal, support, and exact-client blockers remain `pending`;
+- `openPublicBetaReady` remains `false`;
+- the direct `.plugin` download remains a labelled fallback; and
+- no Anthropic-curated, Anthropic-verified, or generally released status is
+  claimed.
+
+The `/plugins` guide therefore explains the already authorized controlled-beta
+channel while the remaining release evidence is collected. The Product Owner
+guide decision must be reset to `pending` for every new candidate or changed
+Marketplace repository tree.
 
 ## Real-client acceptance and activation
 
@@ -270,7 +305,8 @@ Only after the public repository, clean-account installation,
 upload-to-marketplace migration/refresh, candidate-specific Web and Android
 Voice acceptance, and every remaining direct-install activation blocker are
 approved may a separate Product Owner change set mark all remaining evidence
-objects `pass`. Every Marketplace pass record requires the same 40-character
+objects `pass`. The earlier controlled-beta guide decision is not evidence for
+any of those checks. Every Marketplace pass record requires the same 40-character
 remote revision, a canonical UTC timestamp, the exported tree SHA-256, the
 current candidate version and direct-install SHA-256, and a non-empty evidence
 reference. Stale evidence therefore becomes invalid when either candidate or
@@ -285,13 +321,13 @@ as:
 }
 ```
 
-That later change may update the first-party `/plugins` guide to make the
-marketplace primary. It must preserve the existing scoped cleanup, connector
-OAuth, and return-to-SkillPilot steps. The direct-download route should remain
-an explicitly labelled fallback during migration. Because those WebGUI files
-are hash-bound by the active OpenAI review freeze, the UI change also needs a
-narrow Product Owner exception and updated freeze hashes; this publication
-preparation does not grant that exception.
+The first-party `/plugins` guide may already be Marketplace-first only under
+the separately recorded controlled-beta decision above. It must preserve the
+scoped cleanup, connector OAuth, and return-to-SkillPilot steps. The
+direct-download route remains an explicitly labelled fallback during
+migration. Because those WebGUI files are hash-bound by the active OpenAI
+review freeze, the UI change also needs a narrow Product Owner exception and
+updated freeze hashes.
 
 ## Subsequent releases
 
