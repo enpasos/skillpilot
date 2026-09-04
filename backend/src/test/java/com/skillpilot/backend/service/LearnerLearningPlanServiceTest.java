@@ -3,9 +3,12 @@ package com.skillpilot.backend.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +32,46 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 class LearnerLearningPlanServiceTest {
+
+    @Test
+    void previewUsesBerlinTodayAndOnlyUnlockedRepositoryReads() {
+        LearnerLearningPlanRepository plans = mock(LearnerLearningPlanRepository.class);
+        LearnerService learners = mock(LearnerService.class);
+        ApplicationEventPublisher events = mock(ApplicationEventPublisher.class);
+        LearnerLearningPlanService service = new LearnerLearningPlanService(
+                plans, learners, new ObjectMapper().findAndRegisterModules(), events,
+                mock(LandscapeService.class),
+                Clock.fixed(Instant.parse("2026-09-03T23:30:00Z"), ZoneId.of("UTC")));
+        Learner learner = new Learner();
+        learner.setSkillpilotId("preview-learner");
+        when(learners.getLearner("preview-learner")).thenReturn(learner);
+        when(learners.getPlanningScope("preview-learner", "math"))
+                .thenReturn(new LearnerPlanningScopeResponse("curriculum", "math",
+                        List.of("atom-a"), 1, 0, List.of("atom-a"), Instant.parse("2026-09-03T23:30:00Z")));
+        when(learners.orderLearningPlanBlocksByPrerequisites(eq("preview-learner"), any()))
+                .thenAnswer(invocation -> invocation.getArgument(1));
+        when(learners.learningPlanFingerprint(eq("preview-learner"), eq("math"), any())).thenReturn("current");
+        when(learners.getMastery("preview-learner")).thenReturn(Map.of());
+        var plan = new LearnerLearningPlanApi.ActivationPlan("math", 0L, "Draft",
+                List.of(learningBlock("block", "2026-09-04", "2026-09-04", List.of("atom-a"))));
+
+        var preview = service.previewPlans("preview-learner",
+                new LearnerLearningPlanApi.ActivateRequest(null, List.of(plan)));
+
+        assertThat(preview.asOf()).isEqualTo(LocalDate.parse("2026-09-04"));
+        assertThat(preview.days()).hasSize(7);
+        assertThat(preview.days().get(0).totals().dueToday()).isEqualTo(1);
+        assertThatThrownBy(() -> service.previewPlans("preview-learner",
+                new LearnerLearningPlanApi.ActivateRequest(LocalDate.parse("2026-09-03"), List.of(plan))))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
+        verify(plans).findByLearner_SkillpilotIdOrderByLandscapeIdAsc("preview-learner");
+        verify(plans).findByLearner_SkillpilotIdAndLandscapeId("preview-learner", "math");
+        verifyNoMoreInteractions(plans);
+        verify(learners, never()).acquireLearningPlanMutationLock(any());
+        verify(learners).getMastery("preview-learner");
+        verifyNoInteractions(events);
+    }
 
     @Test
     void globalDueSlotsStayMonotoneAcrossIdenticalOverlappingBlocks() {

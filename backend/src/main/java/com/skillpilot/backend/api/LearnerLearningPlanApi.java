@@ -83,6 +83,21 @@ public final class LearnerLearningPlanApi {
             int totalPlanned) {
     }
 
+    /** Read-only draft projection; mastery is held at today's observed values. */
+    public record PreviewSubject(String landscapeId, Metrics metrics) {
+    }
+
+    public record PreviewDay(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
+            List<PreviewSubject> subjects,
+            Metrics totals) {
+    }
+
+    public record PreviewResponse(
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
+            List<PreviewDay> days) {
+    }
+
     /** Read-only preview of the next prerequisite-satisfied atomic plan goal. */
     public record NextEligibleGoal(String goalId) {
     }

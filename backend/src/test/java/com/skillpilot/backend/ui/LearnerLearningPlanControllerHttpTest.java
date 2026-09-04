@@ -3,6 +3,7 @@ package com.skillpilot.backend.ui;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -29,10 +30,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.server.ResponseStatusException;
 
 class LearnerLearningPlanControllerHttpTest {
 
@@ -60,6 +63,72 @@ class LearnerLearningPlanControllerHttpTest {
                         new LearnerLearningPlanController(learningPlans, learners, lifecycle))
                 .setMessageConverters(new MappingJackson2HttpMessageConverter(objectMapper))
                 .build();
+    }
+
+    @Test
+    void draftPreviewUsesReadAccessAndDoesNotTouchRetentionOrActivatePlans() throws Exception {
+        LearnerLearningPlanApi.Metrics metrics = new LearnerLearningPlanApi.Metrics(4, 1, 3, 2, 1, 1, 8);
+        LearnerLearningPlanApi.PreviewResponse response = new LearnerLearningPlanApi.PreviewResponse(
+                AS_OF, java.util.stream.IntStream.range(0, 7)
+                        .mapToObj(offset -> new LearnerLearningPlanApi.PreviewDay(AS_OF.plusDays(offset),
+                                List.of(new LearnerLearningPlanApi.PreviewSubject(LANDSCAPE_ID, metrics)), metrics))
+                        .toList());
+        when(learningPlans.previewPlans(eq(LEARNER_ID), any())).thenReturn(response);
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/preview", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"asOf":"2026-09-04","plans":[{
+                                  "landscapeId":"physics/sek-ii","expectedRevision":0,
+                                  "planLabel":"Unsaved draft","blocks":[]
+                                }]}
+                                """))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(jsonPath("$.asOf").value(AS_OF.toString()))
+                .andExpect(jsonPath("$.days.length()").value(7))
+                .andExpect(jsonPath("$.days[6].date").value(AS_OF.plusDays(6).toString()))
+                .andExpect(jsonPath("$.days[0].subjects[0].landscapeId").value(LANDSCAPE_ID))
+                .andExpect(jsonPath("$.days[0].subjects[0].metrics.openDueToday").value(1))
+                .andExpect(jsonPath("$.days[0].totals.openDueThroughToday").value(3))
+                .andExpect(jsonPath("$.followLearningPlans").doesNotExist())
+                .andExpect(jsonPath("$.activeGoalId").doesNotExist());
+
+        InOrder ordered = inOrder(learners, learningPlans);
+        ordered.verify(learners).assertActiveLearnerRouteAccess(LEARNER_ID);
+        ordered.verify(learningPlans).previewPlans(eq(LEARNER_ID), any());
+        ordered.verifyNoMoreInteractions();
+        verifyNoInteractions(lifecycle);
+    }
+
+    @Test
+    void draftPreviewRejectsUnauthorizedLearnerBeforeReadingDraftData() throws Exception {
+        doThrow(new ResponseStatusException(HttpStatus.FORBIDDEN, "Not the active learner"))
+                .when(learners).assertActiveLearnerRouteAccess(LEARNER_ID);
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/preview", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"asOf\":\"2026-09-04\",\"plans\":[]}"))
+                .andExpect(status().isForbidden())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"));
+
+        verifyNoInteractions(learningPlans, lifecycle);
+    }
+
+    @Test
+    void draftPreviewReturnsSafePrerequisiteConflictWithoutPlanOrLearnerDetails() throws Exception {
+        when(learningPlans.previewPlans(eq(LEARNER_ID), any()))
+                .thenThrow(new LearningPlanPrerequisiteScheduleConflictException());
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/preview", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"asOf\":\"2026-09-04\",\"plans\":[]}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(content().string("{\"errorCode\":\""
+                        + LearnerLearningPlanApi.PREREQUISITE_SCHEDULE_CONFLICT_ERROR_CODE + "\"}"));
+
+        verifyNoInteractions(lifecycle);
     }
 
     @Test

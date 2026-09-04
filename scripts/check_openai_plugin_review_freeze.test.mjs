@@ -3453,6 +3453,123 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "883e7733da3434abd90533f637371f34cf731d290920ce6999a73b3c5f9f33bc"
         }
       ]
+    },
+    {
+      "id": "2026-09-04-course-planning-ux-and-readonly-preview",
+      "approvedAt": "2026-09-04",
+      "approvedBy": "product-owner",
+      "reason": "Implement the approved interactive course-planning draft with a compact shared subject overview, separated editing and teaching, and an authoritative additive learner preview.",
+      "scope": "Only first-party Trainer course planning: expose backend-confirmed activation state, compact editable sections and separate plan, learner-preview and teaching views; preserve unsaved forms across internal views and confirm discarding on subject, course, workspace and logout actions; add a read-only UI preview for seven calendar days using unchanged activation validation and chat/runtime metrics without learner, plan, revision, selection, preference, event, lock or retention writes; require the valid preview before explicit atomic activation, reject stale or incomplete subject snapshots including newly created local plans; preserve ordinary class privacy and local teaching coverage semantics. No OpenAI or Claude tools, packages, versions, provider UI resources, launch/session/identity/locale behaviour, review artifacts, publication or production activation changes.",
+      "target": "first-party-course-planning-ux-with-readonly-seven-day-preview",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-no-submitted-openai-contract-or-review-flow-effect-no-publication-or-deployment",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/fixtures/trainerLearningPlanActivationUi.tsx",
+          "priorAuthorizedSha256": "3dbc02cd0af8156d60b2f8b60b1f9ae83968be25e46dd88dca3411d81d0b3e5a",
+          "authorizedSha256": "facd275e5f85f26e72b3a68d390bf665ea2a4f9a5efe1f3a27617ab9c9d0ed5c"
+        },
+        {
+          "path": "app/scripts/testExistingLearnerTrainerUi.ts",
+          "priorAuthorizedSha256": "92a79bedfaa8307feeef4b134cfb48db1a6d7f0a701e300f32e6ba61422a661f",
+          "authorizedSha256": "11256251c535ac7f0b2f7bd09a42c8144547435e7f72587368bef04d48f18024"
+        },
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "4717636e706116c7adc4d58f3ca09e0de0fabe35d48cf27fc07b67a48f1f56a9",
+          "authorizedSha256": "7d0eda970a5be32da445ee59706454862105e6e6b12ea74d03ebd73974ba4da8"
+        },
+        {
+          "path": "app/scripts/testTrainerLearningPlanActivationUi.ts",
+          "priorAuthorizedSha256": "bb5c0933f21ec3c907cd609c137fc37d0473b4f4bc971f84db6db562f94b1bb6",
+          "authorizedSha256": "56a358f03fd1ca3aab9efa622d138fc81c8cfd0f0f8974c5fbc2ae39162873e3"
+        },
+        {
+          "path": "app/src/components/CoursePlanPilotView.tsx",
+          "priorAuthorizedSha256": "099a4f9fcb24437160a78cfaddc8dae997a08c6412586beabb44b38e3b3ff455",
+          "authorizedSha256": "4acf81fc411f9ea14a4f50b5fde2ca6ad7ba085a0ee37ece0c7cd18433e99925"
+        },
+        {
+          "path": "app/src/components/TrainerLearningPlanActivation.tsx",
+          "priorAuthorizedSha256": "65b42faf7221e7705a11c7641702680cb2c31646ef70e4727c302bf5697727da",
+          "authorizedSha256": "18db8a3522fe039027e4e12128f2376d02abf3209683b66d65421e603cd7b8d6"
+        },
+        {
+          "path": "app/src/components/TrainerLearningPlanPreview.tsx",
+          "authorizedSha256": "9bea47c31929f4764ef5d1740b92f629470acfbb5b0456bd749dce5d9ef324ef"
+        },
+        {
+          "path": "app/src/learnerLearningPlanTypes.ts",
+          "priorAuthorizedSha256": "e2a8f620b8dd201f5019fbbe11f20cc972e279e6883cf69fdaade13ab3a3fd1a",
+          "authorizedSha256": "6bc8e86b94979ea0afc2c4a0883aaa75e3570802e72e6268cbafdb961f06cc49"
+        },
+        {
+          "path": "app/src/utils/coursePlanCopy.ts",
+          "priorAuthorizedSha256": "9a6e2fb8e7190bf4ad46738beca518c953d97ec9dff30d7bc9003b9544654439",
+          "authorizedSha256": "8b8e5e69bbcbd8b45be3a8ac0a7ef7fe5a9025172eb72688cc70db8c55bcd11c"
+        },
+        {
+          "path": "app/src/utils/learnerLearningPlanApi.test.ts",
+          "priorAuthorizedSha256": "98bf9e5d9cee01e867fde55508f2dac2e3635928d2c13a0a38a2e7348bb68880",
+          "authorizedSha256": "26311198857c795cd24b0b81e2854bca5767e5745781bbd4c3f648c37b926b10"
+        },
+        {
+          "path": "app/src/utils/learnerLearningPlanApi.ts",
+          "priorAuthorizedSha256": "2a1e2d9b062a27833bf750293087d3141e513444553e00b0feca06fc673c6b88",
+          "authorizedSha256": "82a698f22dc29307eaec03a2543d154bbe4f6b9d5bf7674fb40699d74a101632"
+        },
+        {
+          "path": "app/src/utils/teacherLearningPlanActivation.test.ts",
+          "priorAuthorizedSha256": "3603f539fb15c7b878d2e5f728b552c6c9977d5789a6e8e9aa504031f5600523",
+          "authorizedSha256": "3ebeb603a6d2db8d1c0a176f9fd103a8c51ad8884f18058ca1cd544302f7db3f"
+        },
+        {
+          "path": "app/src/utils/teacherLearningPlanActivation.ts",
+          "priorAuthorizedSha256": "2fdacdb500c54586d7531c4c4b4ec4736c876811712b6156d6107df0e80b47c3",
+          "authorizedSha256": "72c22df370572bbff9605ded9c987b44b492602ece8d80cdf5cbb78b7df8c7bc"
+        },
+        {
+          "path": "app/src/views/TrainerView.tsx",
+          "priorAuthorizedSha256": "33695f4c9a758bb304bff58e79e557ec122a677030573647738738ee071b9e82",
+          "authorizedSha256": "72524c9b1d650e8d3f6f9cdbc2fcd2cdf350abda672a83f72fb56b7905dfdb23"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerLearningPlanApi.java",
+          "priorAuthorizedSha256": "4c54427b4cc0b05ab5ac86613750bbde3ddc785fac981d4451e5d1a0ca77528b",
+          "authorizedSha256": "ff24b76f25c8e39521ef6777ae2e8e943102bc5fb440fc52023345c742e00a4c"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+          "priorAuthorizedSha256": "925ac3c2aae7f832d360aedc3f46b4b2248664219e37b080b6b24d63e1fce676",
+          "authorizedSha256": "ce14e8f77a00e297e8ce7225bc4a64776d82254b294dbbbd344959e719dd0e7a"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/ui/LearnerLearningPlanController.java",
+          "priorAuthorizedSha256": "e7fa576971f4482256aa6c5494a4a8d1453e7f0ced023a381fb753c4e3dfd276",
+          "authorizedSha256": "37ec7dfa5f157b59c1b63f4ab72c57cbcef2ce16cc677182b551780df7688021"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+          "priorAuthorizedSha256": "5bcbe35bde8c5098a4e1d20446141155208a0e5dfeaa2844e5cf446084bac8ea",
+          "authorizedSha256": "363b909ea734b981d684ecfcf0f75fccaad2948726597b5b3eddbe32398acfaa"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceTest.java",
+          "priorAuthorizedSha256": "4cdfa7e7af1c4aecc47f40b7df75ce479cb93282b769d7300e32db21965596ec",
+          "authorizedSha256": "57f8acee5d5141f5c0fd4b8966a1e5501b131f5ed4476d12e4dc26061d8453e7"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/ui/LearnerLearningPlanControllerHttpTest.java",
+          "priorAuthorizedSha256": "b0c24e1cf0f38f353d9312e975f9036009b28a5256389c872874579a92e49faa",
+          "authorizedSha256": "9b2ffa0c9ea5faa86548dfc33fa40c127c0848c47d2408e216979ce7692d4727"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "e17c0f7a70565fe992e2295cb89edfe013e7ccebaae71786cf77eb1b6854415e",
+          "authorizedSha256": "9df1f8c0e0712a69acafece79789c8fc2de7237c782f2538701a8fca2d7a5444"
+        }
+      ]
     }
   ]);
 });

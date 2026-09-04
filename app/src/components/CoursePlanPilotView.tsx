@@ -6,6 +6,7 @@ import {
   Clock3,
   Download,
   Info,
+  MoreHorizontal,
   Pencil,
   Plus,
   RotateCcw,
@@ -55,8 +56,10 @@ import {
   millisecondsUntilNextBerlinDateBoundary,
 } from '../utils/learnerLearningPlanReadModel'
 import { PacingGauge, type PacingGaugeStatus } from './PacingGauge'
+import { ConfirmModal } from './ConfirmModal'
 
 type CoursePlanBlockKind = TeacherCoursePlanBlock['kind']
+export type CoursePlanSection = 'plan' | 'preview' | 'teaching'
 
 interface CoursePlanPilotViewProps {
   classId: string
@@ -68,6 +71,9 @@ interface CoursePlanPilotViewProps {
   language: 'de' | 'en'
   sharedActivationPanel?: ReactNode
   sharedActivationAvailable?: boolean
+  sharedPreviewPanel?: ReactNode
+  section?: CoursePlanSection
+  onSectionChange?: (section: CoursePlanSection) => void
   onLocalPlanChange?: () => void
   onDraftStateChange?: (hasUnsavedDraft: boolean) => void
   onNotify?: (kind: ToastKind, message: string) => void
@@ -206,11 +212,21 @@ export const CoursePlanPilotView = ({
   language,
   sharedActivationPanel,
   sharedActivationAvailable = false,
+  sharedPreviewPanel,
+  section: controlledSection,
+  onSectionChange,
   onLocalPlanChange,
   onDraftStateChange,
   onNotify,
 }: CoursePlanPilotViewProps) => {
   const copy = useMemo(() => getCoursePlanCopy(language), [language])
+  const [localSection, setLocalSection] = useState<CoursePlanSection>('plan')
+  const section = controlledSection ?? localSection
+  const changeSection = (next: CoursePlanSection) => {
+    setLocalSection(next)
+    onSectionChange?.(next)
+  }
+  const moreActionsRef = useRef<HTMLDetailsElement | null>(null)
   const [asOf, setAsOf] = useState(() => berlinDateKey())
   const initial = useMemo(() => planForClass(classId, asOf), [asOf, classId])
   const [plan, setPlan] = useState<TeacherCoursePlan | null>(initial.plan)
@@ -222,6 +238,7 @@ export const CoursePlanPilotView = ({
   const [showBlockForm, setShowBlockForm] = useState(false)
   const [formError, setFormError] = useState('')
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
+  const [pendingDraftAction, setPendingDraftAction] = useState<(() => void) | null>(null)
   const [goalSearch, setGoalSearch] = useState('')
   const [baselineLoadState, setBaselineLoadState] = useState<'idle' | 'loading' | 'error'>('idle')
   const [baselineRetry, setBaselineRetry] = useState(0)
@@ -318,6 +335,13 @@ export const CoursePlanPilotView = ({
     && draftBaseline !== null
     && serializeDraft(draft) !== draftBaseline
   const hasUnsavedDraft = planLabelDirty || blockDraftDirty
+  const guardDraftReplacement = (action: () => void, includeLabel = false) => {
+    if (blockDraftDirty || (includeLabel && planLabelDirty)) {
+      setPendingDraftAction(() => action)
+    } else {
+      action()
+    }
+  }
   const publicationPlanReady = Boolean(
     evaluation
     && evaluation.quality.status !== 'invalid'
@@ -493,13 +517,13 @@ export const CoursePlanPilotView = ({
   }, [copy.planChangedDuringSave, hasUnsavedDraft, publicationConfirmation])
 
   useEffect(() => {
-    if (!showBlockForm) return
+    if (!showBlockForm || section !== 'plan') return
     const form = blockFormRef.current
     const heading = blockFormHeadingRef.current
     if (!form || !heading) return
     form.scrollIntoView({ block: 'start' })
     heading.focus({ preventScroll: true })
-  }, [editingBlockId, showBlockForm])
+  }, [editingBlockId, section, showBlockForm])
 
   const cancelPendingBlockSave = () => {
     saveBlockRequestRef.current.token += 1
@@ -705,7 +729,8 @@ export const CoursePlanPilotView = ({
     revise(plan.blocks, planLabelDraft.trim())
   }
 
-  const openNewBlock = () => {
+  const openNewBlock = () => guardDraftReplacement(() => {
+    changeSection('plan')
     cancelPendingBlockSave()
     const nextDraft = createDraft(asOf)
     setDraft(nextDraft)
@@ -715,9 +740,10 @@ export const CoursePlanPilotView = ({
     setGoalSearch('')
     setPendingDeleteId(null)
     setShowBlockForm(true)
-  }
+  })
 
-  const openEditBlock = (block: TeacherCoursePlanBlock) => {
+  const openEditBlock = (block: TeacherCoursePlanBlock) => guardDraftReplacement(() => {
+    changeSection('plan')
     cancelPendingBlockSave()
     const nextDraft = block.kind === 'milestone'
       ? {
@@ -741,7 +767,7 @@ export const CoursePlanPilotView = ({
     setGoalSearch('')
     setPendingDeleteId(null)
     setShowBlockForm(true)
-  }
+  })
 
   const saveBlock = async () => {
     if (!plan || savingBlock) return
@@ -898,7 +924,8 @@ export const CoursePlanPilotView = ({
     }
   }
 
-  const undoLastChange = () => {
+  const undoLastChange = () => guardDraftReplacement(() => {
+    cancelPendingBlockSave()
     if (!plan) return
     const undone = undoLastTeacherCoursePlanRevision(plan, {
       changedOn: asOf,
@@ -911,7 +938,7 @@ export const CoursePlanPilotView = ({
       setEditingBlockId(null)
       setPendingDeleteId(null)
     }
-  }
+  }, true)
 
   const toggleCoverage = (goalId: string) => {
     if (!plan) return
@@ -1034,239 +1061,7 @@ export const CoursePlanPilotView = ({
   const sorted = sortedBlocks(plan.blocks)
   const historyLength = plan.revisionHistory.length
 
-  return (
-    <main className="min-w-0 flex-1 overflow-y-auto bg-chat-bg p-4 sm:p-6 lg:p-10" data-testid="trainer-course-plan-view">
-      <div className="mx-auto max-w-7xl space-y-6">
-        <header className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-300">
-              <span>{copy.planTab}</span>
-              <span aria-hidden="true">·</span>
-              <span>{copy.localPreviewBadge}</span>
-            </div>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-text-primary">{copy.title}</h1>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-text-secondary">{copy.subtitle}</p>
-            <p className="mt-1 truncate text-sm font-medium text-text-primary" title={classLabel}>{classLabel}</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={undoLastChange}
-              disabled={historyLength === 0}
-              title={historyLength === 0 ? copy.undoUnavailable : copy.undoLastChange}
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-sky-400 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/30"
-            >
-              <RotateCcw size={17} aria-hidden="true" />
-              {copy.undoLastChange}
-            </button>
-            <button
-              type="button"
-              onClick={exportPlan}
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950/30"
-              title={copy.exportHint}
-            >
-              <Download size={17} aria-hidden="true" />
-              {copy.exportPlan}
-            </button>
-            {canPublishToLearner && (
-              <div className="max-w-xs">
-                <button
-                  type="button"
-                  onClick={() => void preparePublication()}
-                  disabled={!publicationPlanReady || hasUnsavedDraft || publicationState !== 'idle'}
-                  aria-describedby={publishDisabledReason ? 'course-plan-publish-disabled-reason' : undefined}
-                  className={`inline-flex min-h-11 items-center gap-2 rounded-lg border bg-sidebar-bg px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${sharedActivationAvailable
-                    ? 'border-border-color font-medium text-text-secondary hover:border-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950/30'
-                    : 'border-sky-500 font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30'}`}
-                >
-                  <Send size={17} aria-hidden="true" />
-                  {publicationState === 'checking'
-                    ? copy.publishPlanLoading
-                    : sharedActivationAvailable
-                      ? language === 'de' ? 'Nur dieses Fach aktualisieren' : 'Update this subject only'
-                      : copy.publishPlan}
-                </button>
-                {publishDisabledReason && (
-                  <p id="course-plan-publish-disabled-reason" className="mt-1 text-xs leading-5 text-text-secondary">
-                    {publishDisabledReason}
-                  </p>
-                )}
-              </div>
-            )}
-            <button
-              type="button"
-              onClick={openNewBlock}
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500"
-            >
-              <Plus size={18} aria-hidden="true" />
-              {copy.addBlock}
-            </button>
-          </div>
-        </header>
-
-        {sharedActivationPanel}
-
-        {publicationConfirmation && (
-          <section
-            className="rounded-2xl border-2 border-sky-400 bg-sky-50 p-5 text-sky-950 shadow-sm dark:border-sky-800 dark:bg-sky-950/30 dark:text-sky-100"
-            aria-labelledby="course-plan-publication-title"
-            data-testid="course-plan-publication-confirmation"
-          >
-            <h2 id="course-plan-publication-title" className="text-lg font-semibold">
-              {copy.publishConfirmTitle}
-            </h2>
-            <p className="mt-2 max-w-4xl text-sm leading-6">{copy.publishIndependentCopyBody}</p>
-            <p className="mt-3 text-sm font-semibold">
-              {publicationConfirmation.existingPlan
-                ? copy.publishReplaceBody(publicationConfirmation.expectedRevision)
-                : copy.publishNewBody}
-            </p>
-            <p className="mt-2 text-xs text-sky-800 dark:text-sky-200">
-              {copy.publishGoalCount(publicationConfirmation.copy.atomicGoalCount)}
-              <span aria-hidden="true"> · </span>
-              {publicationConfirmation.copy.blocks.length} {publicationConfirmation.copy.blocks.length === 1
-                ? language === 'de' ? 'Planblock' : 'plan block'
-                : language === 'de' ? 'Planblöcke' : 'plan blocks'}
-            </p>
-            <div className="mt-5 flex flex-wrap justify-end gap-2">
-              <button
-                type="button"
-                onClick={cancelPublication}
-                disabled={publicationState === 'saving'}
-                className="min-h-11 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-slate-800"
-              >
-                {copy.cancel}
-              </button>
-              <button
-                type="button"
-                onClick={() => void confirmPublication()}
-                disabled={publicationState === 'saving'}
-                className="min-h-11 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
-              >
-                {publicationState === 'saving'
-                  ? copy.publishPlanSaving
-                  : publicationConfirmation.existingPlan
-                    ? copy.publishConfirmReplace
-                    : copy.publishConfirmNew}
-              </button>
-            </div>
-          </section>
-        )}
-
-        {publicationError && (
-          <p
-            className="rounded-xl border border-rose-300 bg-rose-50 p-4 text-sm font-medium text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100"
-            role="alert"
-          >
-            {publicationError}
-          </p>
-        )}
-
-        {publicationMessage && (
-          <p
-            className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm font-medium text-emerald-950 dark:border-emerald-900/70 dark:bg-emerald-950/30 dark:text-emerald-100"
-            role="status"
-          >
-            {publicationMessage}
-          </p>
-        )}
-
-        <section className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-          <div className="rounded-2xl border border-sky-300 bg-sky-50 p-5 text-sky-950 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-0.5 shrink-0" size={22} aria-hidden="true" />
-              <div>
-                <h2 className="font-semibold">{copy.teacherLeadsTitle}</h2>
-                <p className="mt-1 text-sm leading-6">{copy.teacherLeadsBody}</p>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100">
-            <div className="flex items-start gap-3">
-              <Info className="mt-0.5 shrink-0" size={21} aria-hidden="true" />
-              <div>
-                <h2 className="font-semibold">{copy.localPreviewTitle}</h2>
-                <p className="mt-1 text-sm leading-6">{copy.localPreviewBody}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={`rounded-2xl border p-5 ${decisionClassName}`} aria-labelledby="course-plan-decision-title">
-          <h2 id="course-plan-decision-title" className="font-semibold">{copy.decisionTitle}</h2>
-          <p className="mt-2 text-sm leading-6">{decisionText}</p>
-        </section>
-
-        {calculationUnavailable && hasPlanBlocks && (
-          <section className="rounded-2xl border border-rose-300 bg-rose-50 p-5 text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100" role="alert">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="mt-0.5 shrink-0" size={21} aria-hidden="true" />
-              <div>
-                <h2 className="font-semibold">{copy.calculationUnavailableTitle}</h2>
-                <p className="mt-1 text-sm leading-6">
-                  {needsLearnerBaseline
-                    ? baselineLoadState === 'loading'
-                      ? copy.planningScopeOnSave
-                      : copy.planningScopeLoadError
-                    : copy.calculationUnavailableBody}
-                </p>
-                {needsLearnerBaseline && baselineLoadState === 'error' && (
-                  <button
-                    type="button"
-                    onClick={() => setBaselineRetry((current) => current + 1)}
-                    className="mt-3 min-h-10 rounded-lg bg-rose-700 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-600"
-                  >
-                    {copy.retryPlanningScope}
-                  </button>
-                )}
-              </div>
-            </div>
-          </section>
-        )}
-
-        <section className="rounded-2xl border border-border-color bg-sidebar-bg p-5">
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-            <div>
-              <label className="block">
-                <span className="text-sm font-semibold text-text-primary">{copy.schoolYearLabel}</span>
-                <input
-                  value={planLabelDraft}
-                  onChange={(event) => setPlanLabelDraft(event.target.value)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter') {
-                      event.preventDefault()
-                      savePlanLabel()
-                    }
-                  }}
-                  maxLength={100}
-                  placeholder={copy.schoolYearPlaceholder}
-                  className="mt-2 min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
-                />
-              </label>
-              <button
-                type="button"
-                onClick={savePlanLabel}
-                disabled={planLabelDraft.trim() === (plan.schoolYearLabel ?? '')}
-                className="mt-2 min-h-10 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-primary transition-colors hover:border-sky-400 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/30"
-              >
-                {copy.savePlanLabel}
-              </button>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 text-xs text-text-secondary lg:justify-end">
-              <span className="rounded-full border border-border-color px-3 py-1.5">{copy.revisionLabel(plan.revision)}</span>
-              <span
-                className={`rounded-full border px-3 py-1.5 ${hasUnsavedDraft ? 'border-amber-400 bg-amber-50 text-amber-900 dark:bg-amber-950/30 dark:text-amber-100' : 'border-border-color'}`}
-                role="status"
-                data-testid="course-plan-save-status"
-              >
-                {hasUnsavedDraft ? copy.unsavedLocally : copy.savedLocally}
-              </span>
-              <span className="rounded-full border border-border-color px-3 py-1.5">{formatDate(asOf, language)}</span>
-            </div>
-          </div>
-        </section>
-
-        {showBlockForm && (
+  const blockForm = showBlockForm ? (
           <section ref={blockFormRef} className="scroll-mt-4 rounded-2xl border-2 border-sky-300 bg-sidebar-bg p-5 shadow-sm dark:border-sky-800" aria-labelledby="course-plan-form-title">
             <div className="flex items-center justify-between gap-3">
               <h2 ref={blockFormHeadingRef} id="course-plan-form-title" tabIndex={-1} className="text-lg font-semibold text-text-primary">
@@ -1430,9 +1225,194 @@ export const CoursePlanPilotView = ({
               </button>
             </div>
           </section>
+        ) : null
+
+  return (
+    <main className="min-w-0 flex-1 overflow-y-auto bg-chat-bg p-4 sm:p-6 lg:p-8" data-testid="trainer-course-plan-view">
+      <div className="mx-auto max-w-6xl space-y-5">
+        <header className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-300">{language === 'de' ? 'Kurse planen' : 'Course planning'}</p>
+            <h1 className="mt-1 break-words text-2xl font-semibold tracking-tight text-text-primary sm:text-3xl">{language === 'de' ? 'Planung für' : 'Planning for'} {classLabel}</h1>
+            <p className="mt-2 text-sm text-text-secondary">{sharedActivationAvailable
+              ? language === 'de' ? 'Fächer gemeinsam planen. Der Schüler wird im Chat geführt.' : 'Plan subjects together. The learner is guided in chat.'
+              : language === 'de' ? 'Abschnitte und Termine planen. Unterricht getrennt dokumentieren.' : 'Plan sections and dates. Document teaching separately.'}</p>
+          </div>
+          <details ref={moreActionsRef} className="relative shrink-0" onKeyDown={(event) => {
+            if (event.key === 'Escape' && moreActionsRef.current) {
+              moreActionsRef.current.open = false
+              moreActionsRef.current.querySelector('summary')?.focus()
+            }
+          }}>
+            <summary aria-label={language === 'de' ? 'Weitere Aktionen' : 'More actions'} className="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center rounded-lg border border-border-color bg-sidebar-bg text-text-primary focus-visible:outline-sky-500"><MoreHorizontal size={22} /></summary>
+            <div className="absolute right-0 z-20 mt-2 flex w-72 max-w-[80vw] flex-col gap-2 rounded-xl border border-border-color bg-sidebar-bg p-3 shadow-xl" onClick={(event) => {
+              const button = event.target instanceof Element ? event.target.closest('button') : null
+              if (button && !button.disabled && moreActionsRef.current) moreActionsRef.current.open = false
+            }}>
+            <button
+              type="button"
+              onClick={undoLastChange}
+              disabled={historyLength === 0}
+              title={historyLength === 0 ? copy.undoUnavailable : copy.undoLastChange}
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-sky-400 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/30"
+            >
+              <RotateCcw size={17} aria-hidden="true" />
+              {copy.undoLastChange}
+            </button>
+            <button
+              type="button"
+              onClick={exportPlan}
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950/30"
+              title={copy.exportHint}
+            >
+              <Download size={17} aria-hidden="true" />
+              {copy.exportPlan}
+            </button>
+            {canPublishToLearner && (
+              <div className="max-w-xs">
+                <button
+                  type="button"
+                  onClick={() => void preparePublication()}
+                  disabled={!publicationPlanReady || hasUnsavedDraft || publicationState !== 'idle'}
+                  aria-describedby={publishDisabledReason ? 'course-plan-publish-disabled-reason' : undefined}
+                  className={`inline-flex min-h-11 items-center gap-2 rounded-lg border bg-sidebar-bg px-4 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${sharedActivationAvailable
+                    ? 'border-border-color font-medium text-text-secondary hover:border-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950/30'
+                    : 'border-sky-500 font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30'}`}
+                >
+                  <Send size={17} aria-hidden="true" />
+                  {publicationState === 'checking'
+                    ? copy.publishPlanLoading
+                    : sharedActivationAvailable
+                      ? language === 'de' ? 'Nur dieses Fach aktualisieren' : 'Update this subject only'
+                      : copy.publishPlan}
+                </button>
+                {publishDisabledReason && (
+                  <p id="course-plan-publish-disabled-reason" className="mt-1 text-xs leading-5 text-text-secondary">
+                    {publishDisabledReason}
+                  </p>
+                )}
+              </div>
+            )}
+
+            </div>
+          </details>
+        </header>
+        {sharedActivationPanel}
+        <p role="status" data-testid="course-plan-save-status" className={`text-xs ${hasUnsavedDraft ? 'font-medium text-amber-800 dark:text-amber-200' : 'text-text-secondary'}`}>
+          {hasUnsavedDraft ? copy.unsavedLocally : copy.savedLocally}
+          {sharedActivationAvailable && !hasUnsavedDraft && <span> · {language === 'de' ? 'Für den Schüler gelten nur übernommene Änderungen.' : 'Only applied changes affect the learner.'}</span>}
+        </p>
+        {publicationConfirmation && (
+          <section
+            className="rounded-2xl border-2 border-sky-400 bg-sky-50 p-5 text-sky-950 shadow-sm dark:border-sky-800 dark:bg-sky-950/30 dark:text-sky-100"
+            aria-labelledby="course-plan-publication-title"
+            data-testid="course-plan-publication-confirmation"
+          >
+            <h2 id="course-plan-publication-title" className="text-lg font-semibold">
+              {copy.publishConfirmTitle}
+            </h2>
+            <p className="mt-2 max-w-4xl text-sm leading-6">{copy.publishIndependentCopyBody}</p>
+            <p className="mt-3 text-sm font-semibold">
+              {publicationConfirmation.existingPlan
+                ? copy.publishReplaceBody(publicationConfirmation.expectedRevision)
+                : copy.publishNewBody}
+            </p>
+            <p className="mt-2 text-xs text-sky-800 dark:text-sky-200">
+              {copy.publishGoalCount(publicationConfirmation.copy.atomicGoalCount)}
+              <span aria-hidden="true"> · </span>
+              {publicationConfirmation.copy.blocks.length} {publicationConfirmation.copy.blocks.length === 1
+                ? language === 'de' ? 'Planblock' : 'plan block'
+                : language === 'de' ? 'Planblöcke' : 'plan blocks'}
+            </p>
+            <div className="mt-5 flex flex-wrap justify-end gap-2">
+              <button
+                type="button"
+                onClick={cancelPublication}
+                disabled={publicationState === 'saving'}
+                className="min-h-11 rounded-lg border border-border-color bg-sidebar-bg px-4 py-2 text-sm font-medium text-text-primary hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-slate-800"
+              >
+                {copy.cancel}
+              </button>
+              <button
+                type="button"
+                onClick={() => void confirmPublication()}
+                disabled={publicationState === 'saving'}
+                className="min-h-11 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+              >
+                {publicationState === 'saving'
+                  ? copy.publishPlanSaving
+                  : publicationConfirmation.existingPlan
+                    ? copy.publishConfirmReplace
+                    : copy.publishConfirmNew}
+              </button>
+            </div>
+          </section>
         )}
 
-        {!hasPlanBlocks ? (
+        {publicationError && (
+          <p
+            className="rounded-xl border border-rose-300 bg-rose-50 p-4 text-sm font-medium text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100"
+            role="alert"
+          >
+            {publicationError}
+          </p>
+        )}
+
+        {publicationMessage && (
+          <p
+            className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm font-medium text-emerald-950 dark:border-emerald-900/70 dark:bg-emerald-950/30 dark:text-emerald-100"
+            role="status"
+          >
+            {publicationMessage}
+          </p>
+        )}
+
+
+        <nav aria-label={language === 'de' ? 'Planungsbereiche' : 'Planning sections'} className="flex flex-wrap gap-1 border-b border-border-color">
+          {([
+            ['plan', language === 'de' ? 'Plan bearbeiten' : 'Edit plan'],
+            ...(sharedActivationAvailable ? [['preview', language === 'de' ? 'Schülervorschau' : 'Learner preview']] : []),
+            ['teaching', language === 'de' ? 'Unterricht & Verlauf' : 'Teaching & history'],
+          ] as [CoursePlanSection, string][]).map(([value, label]) => (
+            <button key={value} type="button" aria-current={section === value ? 'page' : undefined} aria-controls={`course-plan-section-${value}`} onClick={() => changeSection(value)} className={`min-h-11 border-b-2 px-3 py-3 text-sm font-medium transition-colors ${section === value ? 'border-sky-600 text-sky-700 dark:text-sky-300' : 'border-transparent text-text-secondary hover:text-text-primary'}`}>{label}</button>
+          ))}
+        </nav>
+        <div id="course-plan-section-plan" hidden={section !== 'plan'} className="space-y-4">
+        {calculationUnavailable && hasPlanBlocks && (
+          <section className="rounded-2xl border border-rose-300 bg-rose-50 p-5 text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100" role="alert">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="mt-0.5 shrink-0" size={21} aria-hidden="true" />
+              <div>
+                <h2 className="font-semibold">{copy.calculationUnavailableTitle}</h2>
+                <p className="mt-1 text-sm leading-6">
+                  {needsLearnerBaseline
+                    ? baselineLoadState === 'loading'
+                      ? copy.planningScopeOnSave
+                      : copy.planningScopeLoadError
+                    : copy.calculationUnavailableBody}
+                </p>
+                {needsLearnerBaseline && baselineLoadState === 'error' && (
+                  <button
+                    type="button"
+                    onClick={() => setBaselineRetry((current) => current + 1)}
+                    className="mt-3 min-h-10 rounded-lg bg-rose-700 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-600"
+                  >
+                    {copy.retryPlanningScope}
+                  </button>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div><h2 className="text-lg font-semibold text-text-primary">{language === 'de' ? 'Planabschnitte' : 'Plan sections'}</h2><p className="mt-1 text-sm text-text-secondary">{language === 'de' ? 'Was soll bis wann gelernt werden?' : 'What should be learned by when?'}</p></div>
+            <button type="button" onClick={openNewBlock} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-300 bg-sidebar-bg px-4 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30"><Plus size={18} />{copy.addBlock}</button>
+          </div>
+          {editingBlockId === null && blockForm}
+          {!hasPlanBlocks ? (
+
           <section className="rounded-2xl border-2 border-dashed border-border-color bg-sidebar-bg p-6 sm:p-10" data-testid="course-plan-empty-state">
             <div className="mx-auto max-w-3xl text-center">
               <CalendarDays className="mx-auto text-sky-500" size={38} aria-hidden="true" />
@@ -1456,8 +1436,108 @@ export const CoursePlanPilotView = ({
               </button>
             </div>
           </section>
-        ) : (
-          <>
+
+          ) : (
+            <section className="space-y-3" aria-label={language === 'de' ? 'Planabschnitte bearbeiten' : 'Edit plan sections'}>
+              {sorted.map((block) => {
+                const assignment = assignmentByBlockId.get(block.id)
+                const title = block.kind === 'learning' ? block.title || goals.get(block.goalId)?.title || block.goalId : block.title
+                const workdays = block.kind === 'milestone' ? 0 : countCoursePlanWorkdaysInclusive(block.startDate, block.endDate) ?? 0
+                return (
+                  <article key={block.id} className="rounded-xl border border-border-color bg-sidebar-bg p-4" data-testid="course-plan-block">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1 basis-56">
+                        <p className="text-xs font-medium text-text-secondary">{block.kind === 'learning' ? copy.kindLearning : block.kind === 'buffer' ? copy.kindBuffer : copy.kindMilestone} · {formatDateRange(block, language)}</p>
+                        <h3 className="mt-1 break-words font-semibold text-text-primary">{title}</h3>
+                        <p className="mt-1 text-sm text-text-secondary">{block.kind === 'learning'
+                          ? assignment ? copy.learningGoalCount(assignment.atomicGoalIds.length) : copy.notCalculable
+                          : block.kind === 'buffer' ? `${workdays} ${language === 'de' ? 'geschützte Werktage' : 'protected weekdays'}` : copy.kindMilestone}</p>
+                        {assignment && assignment.duplicateAtomicGoalIds.length > 0 && <p className="mt-1 text-xs text-amber-800 dark:text-amber-200">{copy.duplicatedGoalCount(assignment.duplicateAtomicGoalIds.length)}</p>}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <button type="button" onClick={() => openEditBlock(block)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm text-text-primary hover:bg-sky-50 dark:hover:bg-sky-950/30"><Pencil size={15} />{copy.edit}</button>
+                        <button type="button" onClick={() => removeBlock(block.id)} className={`inline-flex min-h-11 items-center gap-2 rounded-lg border px-3 py-2 text-sm ${pendingDeleteId === block.id ? 'border-rose-600 bg-rose-600 text-white' : 'border-border-color text-text-secondary hover:border-rose-400'}`}><Trash2 size={15} />{pendingDeleteId === block.id ? copy.removeConfirm : copy.remove}</button>
+                      </div>
+                    </div>
+                    {invalidBlockIds.has(block.id) && <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">{copy.blockNotCalculable}</p>}
+                    {editingBlockId === block.id && <div className="mt-4">{blockForm}</div>}
+                    {assignment && assignment.atomicGoalIds.length > 0 && <details className="mt-3 border-t border-border-color pt-2"><summary className="min-h-10 cursor-pointer py-2 text-sm text-text-secondary">{language === 'de' ? 'Enthaltene Lernziele' : 'Included learning goals'}</summary><ul className="space-y-2 pb-2 text-sm text-text-primary">{assignment.atomicGoalIds.map((id) => <li key={id}>{goals.get(id)?.title ?? id}</li>)}</ul></details>}
+                  </article>
+                )
+              })}
+            </section>
+          )}
+          <details className="rounded-xl border border-border-color bg-sidebar-bg"><summary className="min-h-11 cursor-pointer px-4 py-3 text-sm font-medium text-text-secondary">{language === 'de' ? 'Planname & Details' : 'Plan name & details'}</summary>
+        <section className="rounded-2xl border border-border-color bg-sidebar-bg p-5">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div>
+              <label className="block">
+                <span className="text-sm font-semibold text-text-primary">{copy.schoolYearLabel}</span>
+                <input
+                  value={planLabelDraft}
+                  onChange={(event) => setPlanLabelDraft(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                      event.preventDefault()
+                      savePlanLabel()
+                    }
+                  }}
+                  maxLength={100}
+                  placeholder={copy.schoolYearPlaceholder}
+                  className="mt-2 min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
+                />
+              </label>
+              <button
+                type="button"
+                onClick={savePlanLabel}
+                disabled={planLabelDraft.trim() === (plan.schoolYearLabel ?? '')}
+                className="mt-2 min-h-10 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-primary transition-colors hover:border-sky-400 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/30"
+              >
+                {copy.savePlanLabel}
+              </button>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-xs text-text-secondary lg:justify-end">
+              <span className="rounded-full border border-border-color px-3 py-1.5">{copy.revisionLabel(plan.revision)}</span>
+
+              <span className="rounded-full border border-border-color px-3 py-1.5">{formatDate(asOf, language)}</span>
+            </div>
+          </div>
+        </section>
+
+
+          </details>
+        </div>
+        <div id="course-plan-section-preview" hidden={section !== 'preview'}>{sharedPreviewPanel}</div>
+        <div id="course-plan-section-teaching" hidden={section !== 'teaching'} className="space-y-5">
+          <div><h2 className="text-lg font-semibold text-text-primary">{language === 'de' ? 'Unterricht & Verlauf' : 'Teaching & history'}</h2><p className="mt-1 text-sm text-text-secondary">{language === 'de' ? 'Was wurde im Unterricht behandelt? Diese Dokumentation ist kein Nachweis der Beherrschung durch den Schüler.' : 'What was covered in class? This record does not establish learner mastery.'}</p></div>
+        <section className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+          <div className="rounded-2xl border border-sky-300 bg-sky-50 p-5 text-sky-950 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100">
+            <div className="flex items-start gap-3">
+              <ShieldCheck className="mt-0.5 shrink-0" size={22} aria-hidden="true" />
+              <div>
+                <h2 className="font-semibold">{copy.teacherLeadsTitle}</h2>
+                <p className="mt-1 text-sm leading-6">{copy.teacherLeadsBody}</p>
+              </div>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100">
+            <div className="flex items-start gap-3">
+              <Info className="mt-0.5 shrink-0" size={21} aria-hidden="true" />
+              <div>
+                <h2 className="font-semibold">{copy.localPreviewTitle}</h2>
+                <p className="mt-1 text-sm leading-6">{copy.localPreviewBody}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={`rounded-2xl border p-5 ${decisionClassName}`} aria-labelledby="course-plan-decision-title">
+          <h2 id="course-plan-decision-title" className="font-semibold">{copy.decisionTitle}</h2>
+          <p className="mt-2 text-sm leading-6">{decisionText}</p>
+        </section>
+
+
+          {hasPlanBlocks && <>
             <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label={copy.planStatusTitle}>
               <div className="rounded-2xl border border-border-color bg-sidebar-bg p-4">
                 <div className="flex items-center gap-2 text-sm text-text-secondary"><Target size={17} aria-hidden="true" />{copy.expectedLabel}</div>
@@ -1647,7 +1727,7 @@ export const CoursePlanPilotView = ({
                 const rowStatus = statusPresentation(learningMetric?.coverageStatus, copy)
                 const blockCalculationUnavailable = invalidBlockIds.has(block.id)
                 return (
-                  <article key={block.id} className="rounded-2xl border border-border-color bg-sidebar-bg p-5" data-testid="course-plan-block">
+                  <article key={block.id} className="rounded-2xl border border-border-color bg-sidebar-bg p-5" data-testid="course-plan-teaching-block">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
@@ -1762,9 +1842,17 @@ export const CoursePlanPilotView = ({
                 <p className="mt-2 text-sm leading-6">{copy.protectedExtensionBody}</p>
               </div>
             </section>
-          </>
-        )}
+
+          </>}
+        </div>
       </div>
+      <ConfirmModal isOpen={pendingDraftAction !== null} onClose={() => setPendingDraftAction(null)} onConfirm={() => {
+        const action = pendingDraftAction
+        setPendingDraftAction(null)
+        action?.()
+      }} title={language === 'de' ? 'Ungespeicherte Eingaben verwerfen?' : 'Discard unsaved changes?'} confirmText={language === 'de' ? 'Verwerfen und fortfahren' : 'Discard and continue'}>
+        {language === 'de' ? 'Der gespeicherte Plan bleibt erhalten. Die noch nicht gespeicherten Eingaben werden verworfen.' : 'The saved plan is kept. Unsaved form changes will be discarded.'}
+      </ConfirmModal>
     </main>
   )
 }

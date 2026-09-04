@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CompetenceTree } from '../components/CompetenceTree'
-import { CoursePlanPilotView } from '../components/CoursePlanPilotView'
+import { CoursePlanPilotView, type CoursePlanSection } from '../components/CoursePlanPilotView'
 import { GoalCard } from '../components/GoalCard'
 import { NeighborSection } from '../components/NeighborSection'
 import { ClassSetup } from '../components/ClassSetup'
@@ -10,6 +10,7 @@ import { InlineMathText } from '../components/InlineMathText'
 import { LogoutButton } from '../components/LogoutButton'
 import { TrainerClassFilePasswordDialog } from '../components/TrainerClassFilePasswordDialog'
 import { TrainerLearningPlanActivation } from '../components/TrainerLearningPlanActivation'
+import { TrainerLearningPlanPreview } from '../components/TrainerLearningPlanPreview'
 import { useCompetenceGraph } from '../hooks/useCompetenceGraph'
 import { useGoalIndex } from '../hooks/useGoalIndex'
 import { useLandscapes, type LandscapeEntry } from '../hooks/useLandscapes'
@@ -17,7 +18,7 @@ import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
 
-import { BookOpenCheck, CalendarRange, Pencil, Save, ShieldCheck, Trash2 } from 'lucide-react'
+import { BookOpenCheck, CalendarRange, Pencil, Save, Trash2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
@@ -255,6 +256,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const [classFileError, setClassFileError] = useState('')
   const [coursePlanActivationRefreshToken, setCoursePlanActivationRefreshToken] = useState(0)
   const [coursePlanHasUnsavedDraft, setCoursePlanHasUnsavedDraft] = useState(false)
+  const [coursePlanSection, setCoursePlanSection] = useState<CoursePlanSection>('plan')
   const classFileOperationRef = useRef(false)
   const [confirmation, setConfirmation] = useState<{
     isOpen: boolean
@@ -270,23 +272,66 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     onConfirm: () => { },
   })
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
+  const draftNavigationOriginRef = useRef<HTMLElement | null>(null)
+  const closeConfirmation = () => {
+    setConfirmation((current) => ({ ...current, isOpen: false }))
+    const origin = draftNavigationOriginRef.current
+    draftNavigationOriginRef.current = null
+    if (origin?.isConnected) origin.focus({ preventScroll: true })
+  }
+
+  const leavePlanSafely = useCallback((action: () => void) => {
+    if (!coursePlanHasUnsavedDraft) {
+      action()
+      return
+    }
+    draftNavigationOriginRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    setConfirmation({
+      isOpen: true,
+      title: localizedLanguage === 'de' ? 'Ungespeicherte Änderungen verwerfen?' : 'Discard unsaved changes?',
+      message: localizedLanguage === 'de'
+        ? 'Deine zuletzt gespeicherte Planung bleibt erhalten. Noch nicht gespeicherte Eingaben gehen beim Wechsel verloren.'
+        : 'Your last saved plan is kept. Unsaved inputs will be lost when you leave.',
+      confirmText: localizedLanguage === 'de' ? 'Verwerfen und wechseln' : 'Discard and continue',
+      onConfirm: () => {
+        draftNavigationOriginRef.current = null
+        setConfirmation((current) => ({ ...current, isOpen: false }))
+        action()
+      },
+    })
+  }, [coursePlanHasUnsavedDraft, localizedLanguage])
+
+  useEffect(() => {
+    if (!coursePlanHasUnsavedDraft) return
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault()
+      event.returnValue = ''
+    }
+    window.addEventListener('beforeunload', warn)
+    return () => window.removeEventListener('beforeunload', warn)
+  }, [coursePlanHasUnsavedDraft])
 
   const handleTrainerExit = useCallback(() => {
     if (!onLogout) return
-    onLogout()
-    window.location.replace('/')
-  }, [onLogout])
+    leavePlanSafely(() => {
+      onLogout()
+      window.location.replace('/')
+    })
+  }, [leavePlanSafely, onLogout])
 
   const handleTrainerWorkspaceChange = useCallback((workspace: 'goals' | 'plan') => {
+    if ((searchParams.get('view') === 'plan') === (workspace === 'plan')) return
     const nextSearchParams = new URLSearchParams(searchParams)
     if (workspace === 'plan') {
       nextSearchParams.set('view', 'plan')
-      onSelectLearner('__ALL__')
     } else {
       nextSearchParams.delete('view')
     }
-    setSearchParams(nextSearchParams)
-  }, [onSelectLearner, searchParams, setSearchParams])
+    leavePlanSafely(() => {
+      if (workspace === 'plan') onSelectLearner('__ALL__')
+      setSearchParams(nextSearchParams)
+    })
+  }, [leavePlanSafely, onSelectLearner, searchParams, setSearchParams])
 
   const classRootLandscapeIds = useMemo(() => Array.from(new Set(
     classes
@@ -1350,9 +1395,12 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }
 
   const handleShowAllClasses = () => {
-    setOpeningClassId(null)
-    setSelectedGoalId('')
-    onContextChange('', 'all', null)
+    leavePlanSafely(() => {
+      setOpeningClassId(null)
+      setSelectedGoalId('')
+      setCoursePlanSection('plan')
+      onContextChange('', 'all', null)
+    })
   }
 
   const handleExistingLearnerSubjectChange = (landscapeId: string) => {
@@ -1362,16 +1410,22 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       landscapeId,
       activeExistingLearnerLandscapeEntries,
     )
-    if (nextSession === activeClass) return
-    if (!persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))) {
-      onNotify?.('error', notifications.trainerClassSaveFailed)
+    if (nextSession === activeClass) {
+      setCoursePlanSection('plan')
       return
     }
-    setMasteryByStudent(new Map())
-    setSelectedGoalId('')
-    setOpeningClassId(nextSession.id)
-    onSelectLearner('__ALL__')
-    onContextChange(nextSession.landscapeId, nextSession.activeFilter, null, { replace: true })
+    leavePlanSafely(() => {
+      if (!persistClasses(classes.map((session) => session.id === nextSession.id ? nextSession : session))) {
+        onNotify?.('error', notifications.trainerClassSaveFailed)
+        return
+      }
+      setMasteryByStudent(new Map())
+      setCoursePlanSection('plan')
+      setSelectedGoalId('')
+      setOpeningClassId(nextSession.id)
+      onSelectLearner('__ALL__')
+      onContextChange(nextSession.landscapeId, nextSession.activeFilter, null, { replace: true })
+    })
   }
 
   const handleLocalCoursePlanChange = useCallback(() => {
@@ -1739,7 +1793,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   if (!activeClass) {
     return (
       <div className="min-h-screen bg-chat-bg p-12 text-text-primary">
-        <ConfirmModal isOpen={confirmation.isOpen} onClose={() => setConfirmation({ ...confirmation, isOpen: false })} onConfirm={confirmation.onConfirm} title={confirmation.title} confirmText={confirmation.confirmText} confirmClassName={confirmation.confirmClassName}>
+        <ConfirmModal isOpen={confirmation.isOpen} onClose={closeConfirmation} onConfirm={confirmation.onConfirm} title={confirmation.title} confirmText={confirmation.confirmText} confirmClassName={confirmation.confirmClassName}>
           {confirmation.message}
         </ConfirmModal>
         <TrainerClassFilePasswordDialog
@@ -1848,10 +1902,10 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }
   return (
     <div className={`flex h-screen bg-chat-bg text-text-primary overflow-hidden ${trainerWorkspace === 'plan' ? 'flex-col md:flex-row' : ''}`}>
-      <ConfirmModal isOpen={confirmation.isOpen} onClose={() => setConfirmation({ ...confirmation, isOpen: false })} onConfirm={confirmation.onConfirm} title={confirmation.title} confirmText={confirmation.confirmText} confirmClassName={confirmation.confirmClassName}>
+      <ConfirmModal isOpen={confirmation.isOpen} onClose={closeConfirmation} onConfirm={confirmation.onConfirm} title={confirmation.title} confirmText={confirmation.confirmText} confirmClassName={confirmation.confirmClassName}>
         {confirmation.message}
       </ConfirmModal>
-      <aside className={`${trainerWorkspace === 'plan' ? 'max-h-[42vh] w-full md:max-h-none md:w-72' : 'w-72'} border-r border-border-color bg-sidebar-bg flex flex-col flex-shrink-0`}>
+      <aside className={`${trainerWorkspace === 'plan' ? 'w-full md:w-56' : 'w-72'} border-r border-border-color bg-sidebar-bg flex flex-col flex-shrink-0`}>
         <div className="p-4 border-b border-border-color flex justify-between items-start">
           <div>
             <button onClick={handleShowAllClasses} className="text-xs text-text-secondary hover:text-text-primary mb-2">← {t.allClasses}</button>
@@ -1864,7 +1918,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           </div>
         </div>
 
-        {isExistingLearnerClassSession(activeClass) && (
+        {isExistingLearnerClassSession(activeClass) && trainerWorkspace !== 'plan' && (
           <div className="border-b border-border-color p-3">
             <label htmlFor="trainer-existing-learner-subject" className="mb-1 block text-[10px] font-bold uppercase tracking-wider text-text-secondary">
               {existingLearnerCopy.subjectSwitchLabel}
@@ -1919,12 +1973,14 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
         </nav>
 
         {trainerWorkspace === 'plan' ? (
-          <div className="flex-1 overflow-y-auto p-4">
-            <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-100">
-              <ShieldCheck className="mb-3" size={22} aria-hidden="true" />
-              <p className="font-semibold">{coursePlanCopy.localPreviewTitle}</p>
-              <p className="mt-2 leading-6 opacity-90">{coursePlanCopy.studentPrivacyHint}</p>
-            </div>
+          <div className="hidden flex-1 overflow-y-auto p-4 md:block">
+            <p className="text-xs leading-6 text-text-secondary">{activeClassIsExistingLearner
+              ? localizedLanguage === 'de' ? 'Du planst den Rahmen. SkillPilot führt den Schüler im Chat durch seine Aufgaben.' : 'You plan the learning path. SkillPilot guides the learner through their work in chat.'
+              : coursePlanCopy.teacherLeadsBody}</p>
+            <details className="mt-5 text-xs text-text-secondary">
+              <summary className="cursor-pointer font-semibold">{localizedLanguage === 'de' ? 'Speicherung & Datenschutz' : 'Storage & privacy'}</summary>
+              <p className="mt-2 leading-5">{coursePlanCopy.studentPrivacyHint}</p>
+            </details>
           </div>
         ) : (
           <div className="flex-1 overflow-y-auto p-2 space-y-1">
@@ -1970,6 +2026,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             learnerId={activeCoursePlanLearnerId || undefined}
             landscapeId={activeClassIsExistingLearner ? activeClass.landscapeId : undefined}
             language={localizedLanguage}
+            section={coursePlanSection}
+            onSectionChange={setCoursePlanSection}
             sharedActivationAvailable={activeClassIsExistingLearner}
             sharedActivationPanel={activeClassIsExistingLearner ? (
               <TrainerLearningPlanActivation
@@ -1981,11 +2039,24 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                 refreshToken={coursePlanActivationRefreshToken}
                 hasUnsavedActiveDraft={coursePlanHasUnsavedDraft}
                 onSelectSubject={handleExistingLearnerSubjectChange}
+                onPreview={() => setCoursePlanSection('preview')}
                 onNotify={onNotify}
               />
             ) : undefined}
+            sharedPreviewPanel={activeClassIsExistingLearner && coursePlanSection === 'preview' ? (
+              <TrainerLearningPlanPreview
+                classSession={activeClass}
+                learnerId={activeCoursePlanLearnerId}
+                landscapeEntries={activeExistingLearnerLandscapeEntries}
+                runtimeCatalogState={runtimeCatalogState}
+                language={localizedLanguage}
+                refreshToken={coursePlanActivationRefreshToken}
+                hasUnsavedActiveDraft={coursePlanHasUnsavedDraft}
+                onSelectSubject={handleExistingLearnerSubjectChange}
+              />
+            ) : undefined}
             onLocalPlanChange={activeClassIsExistingLearner ? handleLocalCoursePlanChange : undefined}
-            onDraftStateChange={activeClassIsExistingLearner ? setCoursePlanHasUnsavedDraft : undefined}
+            onDraftStateChange={setCoursePlanHasUnsavedDraft}
             onNotify={onNotify}
           />
         )

@@ -218,3 +218,13 @@ export interface ActivateLearnerLearningPlansResponse {
   activeGoalId: string | null
   state: Record<string, unknown>
 }
+
+/** Read-only projection of the proposed batch using the learner's current mastery. */
+export interface PreviewLearnerLearningPlansResponse {
+  asOf: LearnerLearningPlanDate
+  days: Array<{
+    date: LearnerLearningPlanDate
+    subjects: Array<{ landscapeId: string; metrics: LearnerLearningPlanMetrics }>
+    totals: LearnerLearningPlanMetrics
+  }>
+}

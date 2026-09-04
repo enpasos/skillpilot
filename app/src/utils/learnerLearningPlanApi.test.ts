@@ -13,6 +13,8 @@ import {
   getLearnerLearningPlan,
   getLearnerLearningPlans,
   parseLearnerLearningPlansResponse,
+  parsePreviewLearnerLearningPlansResponse,
+  previewLearnerLearningPlans,
   reconcileLearnerLearningPlans,
   saveLearnerLearningPlan,
   switchLearnerLearningPlan,
@@ -449,5 +451,46 @@ withinOneSecond(
   millisecondsUntilNextBerlinDateBoundary(Date.parse('2026-10-24T22:00:00Z')),
   25 * 60 * 60 * 1_000,
 )
+
+const previewRequest = {
+  asOf: '2026-10-24',
+  plans: [{ landscapeId: planDetail.landscapeId, expectedRevision: 3, blocks: [] }],
+}
+const previewResponse = {
+  asOf: previewRequest.asOf,
+  days: Array.from({ length: 7 }, (_, index) => ({
+    date: `2026-10-${24 + index}`,
+    subjects: [{ landscapeId: planDetail.landscapeId, metrics: planDetail.metrics }],
+    totals: planDetail.metrics,
+  })),
+}
+assert.deepEqual(parsePreviewLearnerLearningPlansResponse(previewResponse, previewRequest), previewResponse)
+for (const invalid of [
+  { ...previewResponse, asOf: '2026-10-25' },
+  { ...previewResponse, days: previewResponse.days.slice(1) },
+  { ...previewResponse, days: previewResponse.days.map((day, index) => index === 1 ? { ...day, date: '2026-10-26' } : day) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, subjects: [] })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, subjects: [...day.subjects, ...day.subjects] })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, subjects: [{ ...day.subjects[0], landscapeId: 'unexpected' }] })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, totals: { ...day.totals, totalPlanned: day.totals.totalPlanned + 1 } })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, totals: { ...day.totals, openDueToday: -1 } })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, totals: { ...day.totals, dueToday: 1.5 } })) },
+]) assert.throws(() => parsePreviewLearnerLearningPlansResponse(invalid, previewRequest), /Invalid learning-plan/u)
+const previewController = new AbortController()
+let previewRequestCount = 0
+assert.deepEqual(await previewLearnerLearningPlans('learner-42', previewRequest, {
+  signal: previewController.signal,
+  fetchImpl: (async (url, init) => {
+    previewRequestCount += 1
+    assert.equal(url, '/api/ui/learners/learner-42/learning-plans/preview')
+    assert.equal(init?.method, 'POST')
+    assert.equal(init?.credentials, 'include')
+    assert.equal(init?.cache, 'no-store')
+    assert.equal(init?.signal, previewController.signal)
+    assert.deepEqual(JSON.parse(String(init?.body)), previewRequest)
+    return new Response(JSON.stringify(previewResponse), { status: 200 })
+  }) as typeof fetch,
+}), previewResponse)
+assert.equal(previewRequestCount, 1, 'preview never invokes activation or other writes')
 
 console.log('Learner learning-plan API tests passed')
