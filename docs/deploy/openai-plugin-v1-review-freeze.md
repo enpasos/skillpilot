@@ -2766,3 +2766,57 @@ Baseline und führt den ausdrücklich autorisierten neuen Baumhash in einer
 separaten append-only Hashkette. Der Freeze-Prüfer akzeptiert diese Kette nur,
 wenn die ursprüngliche Baseline unverändert im Record steht; jede spätere
 Abweichung benötigt erneut eine ausdrücklich freigegebene Folgeausnahme.
+
+### 6.49 Eng begrenzte Ausnahme: einfache Chat-Führung im Claude Coach 1.1.1
+
+Der Product Owner hat am **4. September 2026** die zuverlässige und möglichst
+einfache Führung von Lernenden mit bestehenden Plänen im Chat beauftragt. Die
+Korrektur wird als **Claude Coach 1.1.1** vorbereitet; das bereits gebundene
+1.1.0-Archiv und seine historische Release-Evidenz bleiben unverändert. 1.1.1
+ersetzt den aktuellen Claude-Kandidaten vollständig, ohne parallelen alten
+Installationsweg. Die Zahl der Claude-Tools bleibt bei 14.
+
+Die Freigabe umfasst ausschließlich folgende Verfeinerungen des in 6.47
+autorisierten Workflows und ihre paketgenauen Regressionen und Release-Nachweise:
+
+- Die datensparsame Fachübersicht ergänzt boolesche Angaben zum aktuellen Fach
+  und zur tatsächlichen Fortsetzbarkeit. Ein laufendes Ziel in einem anderen
+  Fach verhindert den ausdrücklich gewünschten Fachwechsel nicht. Nicht
+  startbare, bereits aktuelle oder heute abgeschlossene Fächer erzeugen keine
+  wiederholten erfolglosen Wechselversuche.
+- Eindeutige natürliche Fachwünsche wie „Mathe“ werden auf den frisch vom Backend
+  veröffentlichten Fachnamen abgebildet. Das Tool erhält weiterhin ausschließlich
+  diesen exakten Namen; Mehrdeutigkeit wird kurz geklärt. Ein expliziter Fachwunsch
+  hat Vorrang vor dem generischen automatischen Start.
+- Reine Statusfragen und eine ausdrücklich gewünschte Pause lösen keinen
+  Planstart und keine neue Aufgabe aus. Ausgeschalteter Planmodus verhindert
+  keine gewöhnliche, vom Lernenden gewünschte Sitzung außerhalb der Planung.
+- Das Backend unterscheidet laufendes Lernen, verfügbaren Start, erledigte
+  Tagesanforderungen, blockierte offene Aufgaben und nicht sicher auswertbare
+  Planung. Tagesabschluss setzt voraus, dass auch offene Rückstände erledigt
+  sind und keine nicht auswertbaren Pläne fehlen. Generische Frontier-Ziele
+  werden im geführten Plankontext nicht als zusätzliche heutige Pflicht angeboten.
+  Künftige Ziele oder eine Fokuserweiterung beginnen nicht automatisch nach
+  Tagesabschluss; Planungskorrekturen bleiben Aufgabe der Lehrkraft.
+- Nach bestätigtem Verified-Recall-Abschluss enthält dieselbe idempotente
+  Antwort den aktuellen vollständigen Nachfolgekontext mit Tageszahlen und
+  gegebenenfalls nächstem Fach. Es erfolgt kein zusätzlicher Mastery- oder
+  Auswahlwrite. Historische Wiederholungsantworten ohne Nachfolgekontext
+  verlangen genau einen lesenden Kontext-Reload.
+
+Vorhandene Pläne müssen dafür weder gelöscht noch neu angelegt werden. Die
+Semantik der Zählwerte aus 6.47 und die kanonischen Voraussetzungen-, Mastery-
+und Übergaberegeln bleiben erhalten. Die normalen First-Party-Start-Handler,
+Prepared Messages, Identität, Locale, Session-Bindung und absolute
+24-Stunden-Laufzeit bleiben unverändert. Nach Ablauf ist weiterhin ein neuer
+Start über SkillPilot erforderlich; eine vollständig chatinterne Erneuerung
+wird nicht behauptet.
+
+Alle noch nicht tatsächlich erbrachten 1.1.1-Exact-Client-, Datenschutz-,
+Support- und Marketplace-Nachweise bleiben `pending`; historische Abnahmen
+werden nicht übertragen. Die Freigabe umfasst keine externe Veröffentlichung
+oder Produktionsaktivierung. Der eingereichte OpenAI-Coach-1.0.0-Vertrag,
+sein Paket, Review-Snapshot, Portal, Reviewfälle, Fixture, Demo und UI-Bytes
+bleiben unverändert, ebenso der lokale standardmäßig deaktivierte
+OpenAI-1.1-Kandidat. Die konkreten Claude-, gemeinsamen Status-, Test-,
+Release- und Dokumentationsbytes werden append-only in der Freeze-Kette gebunden.

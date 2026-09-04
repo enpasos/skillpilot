@@ -87,8 +87,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     accessModel: "first_party_guided_beta",
   });
   assert.deepEqual(canonicalLane.candidate, {
-    version: "1.1.0",
-    sha256: "ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca",
+    version: "1.1.1",
+    sha256: "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351",
   });
   assert.deepEqual(canonicalLane.planSemantics, {
     supportBaseline: "claude_pro",
@@ -132,6 +132,11 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-learning-plan-today-all-subjects",
       "web-learning-plan-automatic-resume",
       "web-learning-plan-subject-switch",
+      "web-learning-plan-natural-subject-requests",
+      "web-learning-plan-status-only-without-subject-change",
+      "web-learning-plan-progress-and-successor-after-verified-recall",
+      "web-learning-plan-day-complete-without-goal-menu",
+      "web-learning-plan-paused-and-blocked-plan-guidance",
       "web-goal-visualization-after-goal-change",
       "web-active-goal-completion-persisted",
       "web-backend-selected-successor",
@@ -144,6 +149,11 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "android-voice-learning-plan-today-all-subjects",
       "android-voice-learning-plan-automatic-resume",
       "android-voice-learning-plan-subject-switch",
+      "android-voice-learning-plan-natural-subject-requests",
+      "android-voice-learning-plan-status-only-without-subject-change",
+      "android-voice-learning-plan-progress-and-successor-after-verified-recall",
+      "android-voice-learning-plan-day-complete-without-goal-menu",
+      "android-voice-learning-plan-paused-and-blocked-plan-guidance",
       "android-voice-active-goal-completion-persisted",
       "android-voice-backend-selected-successor",
       "android-voice-no-policy-instruction-or-internal-deliberation-narration",

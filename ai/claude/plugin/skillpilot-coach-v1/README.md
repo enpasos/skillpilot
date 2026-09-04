@@ -2,16 +2,16 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.0 is the sole
+Claude Chat on the Web and the native Android app. Version 1.1.1 is the sole
 current replacement candidate; earlier package versions remain historical
 evidence and are not an installation fallback.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.0 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.1 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.0. The earlier Android observation also
+pending until they are verified for 1.1.1. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -42,7 +42,7 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.0 makes the chat plan-first. At the beginning of a learning session,
+Version 1.1.1 makes the chat plan-first. At the beginning of a learning session,
 Claude reports today's requirements and progress for every valid subject plan,
 including overdue work, and then continues or resumes the backend-selected goal
 without requiring a Web-app button.
@@ -52,12 +52,20 @@ contribute to the day's requirements. The backend parks an unfinished goal and
 selects the due goal for the requested subject without exposing plan or goal
 identifiers.
 
+Within a valid learning session, the learner can simply return to the chat and
+say “weiter” or “now Physics”. Claude names the remaining work briefly and
+starts the next concrete explanation or task. A status question reports the
+plan without changing the current subject. After an ordinary goal or Verified
+Recall finishes, Claude uses the refreshed progress and backend-selected
+successor. When every due goal is complete, it says that today's plan is done;
+blocked or unavailable work is not presented as completed.
+
 SkillPilot Coach v1 does not claim support for Claude Free, iOS, installation
 from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.0 or public
+The historical direct-install observations are not evidence for 1.1.1 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

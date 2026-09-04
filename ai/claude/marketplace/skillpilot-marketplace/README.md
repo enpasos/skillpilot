@@ -6,8 +6,8 @@ package, but distributes them through a repository that Claude can update.
 This personal marketplace is published independently by SkillPilot. It is not
 reviewed, endorsed, curated, or verified by Anthropic.
 
-Version 1.1.0 completely replaces earlier versions. Do not retain or reinstall
-1.0.4 as a fallback. The 1.1.0 Marketplace update and its exact-client
+Version 1.1.1 completely replaces earlier versions. Do not retain or reinstall
+1.0.4 as a fallback. The 1.1.1 Marketplace update and its exact-client
 acceptance must be verified before SkillPilot presents this repository as an
 available installation route.
 

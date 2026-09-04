@@ -4,13 +4,13 @@
 
 SkillPilot has two deliberately separate Claude package routes:
 
-- **Current 1.1.0 replacement candidate:** install it only through an explicitly
+- **Current 1.1.1 replacement candidate:** install it only through an explicitly
   opened SkillPilot candidate test. It contains the coaching Skill and one
   declaration for the same remote SkillPilot connector. Earlier packages were
   observed in paid Claude Web chat and, after account-level direct installation
   on Claude Pro, in the native Claude app on Android. Those observations are
   historical evidence only: exact-candidate Web, Android and Voice acceptance
-  for 1.1.0 is still pending, and no earlier package is a supported fallback.
+  for 1.1.1 is still pending, and no earlier package is a supported fallback.
 - **Separate connector-only installation:** use the published **SkillPilot**
   entry in the **Connectors Directory** only when a connector without the
   coaching Skill is deliberately required. The Connectors Directory remains a
@@ -31,10 +31,10 @@ All fourteen MCP tools and both interactive MCP Apps come from the remote
 SkillPilot connector. The Skill provides coaching instructions only. Neither
 the Skill nor the plugin shell implements or duplicates the tools or UIs.
 
-## Current 1.1.0 candidate test
+## Current 1.1.1 candidate test
 
 1. On an eligible paid Claude account, open **Plugins**, upload the exact
-   **SkillPilot Coach v1** 1.1.0 candidate supplied for the test and enable it.
+   **SkillPilot Coach v1** 1.1.1 candidate supplied for the test and enable it.
    Do not use an earlier package as a fallback. Do not describe this
    account-level direct installation as an official Directory publication or
    as installation from inside Android.
@@ -61,7 +61,7 @@ the Skill nor the plugin shell implements or duplicates the tools or UIs.
    > offen sind, und lerne dann automatisch mit mir weiter.
 
 An earlier account-level package was used successfully with Claude Pro in the
-native Claude app on Android. Exact-candidate 1.1.0 acceptance must still
+native Claude app on Android. Exact-candidate 1.1.1 acceptance must still
 exercise the daily multi-subject plan summary, automatic plan resume, bundled
 connector, an explicit switch between two planned subjects, OAuth, intended
 SkillPilot learning flow and both interactive MCP Apps. The current SkillPilot
@@ -76,6 +76,17 @@ chats, publish it, or ask the learner to type it separately. When the 24 hours
 have elapsed, return to the first-party start page and create a new session.
 Reconnect the plugin-bundled connector only if Claude reports that its
 technical OAuth connection is no longer active.
+
+## Learning with an existing plan
+
+Once the session has started, stay in the chat. “Weiter” continues the current
+goal or the next available planned goal. “Jetzt Physik” or “zurück zu Mathe”
+selects that planned subject when it has available work, without an additional
+confirmation. “Was fehlt mir heute?” asks only for the current daily progress.
+The coach reports the requirements and progress of every valid subject, updates
+them after completion, and clearly marks when all due work is finished. A plan
+that is paused, blocked or unavailable is explained briefly and is never
+silently replaced by an unrelated goal-selection menu.
 
 The connector always requires OAuth. It needs no custom request headers and no
 manually registered client ID. OAuth authorizes only the technical connector
@@ -97,7 +108,7 @@ governed by Anthropic.
 
 Historical direct-install evidence demonstrates the Web surface and a native
 Android use on Claude Pro for an earlier package, but it does not validate
-1.1.0 or settle whether Anthropic's official plugin distribution serves either
+1.1.1 or settle whether Anthropic's official plugin distribution serves either
 surface. Public-listing reach is verified after publication against the exact
 candidate.
 

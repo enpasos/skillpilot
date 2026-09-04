@@ -114,11 +114,10 @@ public class ClaudeV1CoachContextProjector {
         FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
-        context.put(
-                "learningPlanToday",
-                projectLearningPlanToday(
-                        coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language),
-                        activeGoal != null));
+        Map<String, Object> dailyPlan = projectLearningPlanToday(
+                coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null);
+        context.put("learningPlanToday", dailyPlan);
+        boolean guidedPlan = Boolean.TRUE.equals(dailyPlan.get("followLearningPlans"));
         context.put("curriculum", projectCurriculum(projectedState.curriculum()));
         List<Map<String, Object>> learningContext = projectLearningContext(
                 coachToolFacade.getPersonalizationPlan(skillpilotId), language);
@@ -135,6 +134,16 @@ public class ClaudeV1CoachContextProjector {
                 stateMachineContext.put("modeOptions", stateMachine.modeOptions());
             }
             context.put("stateMachine", stateMachineContext);
+        }
+
+        // Generic focus/frontier choices are not today's assignment. In plan mode the
+        // backend's daily guidance is the next action; explicit navigation still has
+        // its dedicated tool, but finishing today must not look like a new goal picker.
+        if (guidedPlan && activeGoal == null) {
+            Map<?, ?> guidance = (Map<?, ?>) dailyPlan.get("guidance");
+            context.put("stateMachine", Map.of(
+                    "state", "learningPlan",
+                    "requiredAction", guidance.get("state")));
         }
 
         context.put("activeGoal", formatGoal(activeGoal));
@@ -161,7 +170,8 @@ public class ClaudeV1CoachContextProjector {
 
         List<FrontierGoal> frontier = projectedState.frontier();
         String activeGoalId = activeGoal == null ? null : activeGoal.id();
-        context.put("frontier", frontier == null || (suppressCompetingFrontier && activeGoalId != null)
+        context.put("frontier", frontier == null || guidedPlan
+                || (suppressCompetingFrontier && activeGoalId != null)
                 ? List.of()
                 : frontier.stream()
                         .filter(Objects::nonNull)
@@ -195,10 +205,11 @@ public class ClaudeV1CoachContextProjector {
                     "resumeAvailable", false,
                     "subjects", List.of(),
                     "totals", dailyCounts(0, 0, 0, 0),
-                    "unavailablePlanCount", 0);
+                    "unavailablePlanCount", 0,
+                    "guidance", dailyPlanGuidance("unavailable"));
         }
 
-        Map<String, DailyCounts> bySubject = new java.util.TreeMap<>(
+        Map<String, DailySubject> bySubject = new java.util.TreeMap<>(
                 String.CASE_INSENSITIVE_ORDER.thenComparing(java.util.Comparator.naturalOrder()));
         int unavailablePlanCount = Math.max(0, status.unavailablePlanCount());
         List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
@@ -214,15 +225,21 @@ public class ClaudeV1CoachContextProjector {
                     subject.completedToday(),
                     subject.openToday(),
                     subject.openOverdue());
-            bySubject.merge(label, counts, DailyCounts::add);
+            bySubject.merge(label,
+                    new DailySubject(counts, subject.current(), subject.canContinue(), 1),
+                    DailySubject::add);
         }
 
         List<Map<String, Object>> subjects = new java.util.ArrayList<>();
         DailyCounts totals = new DailyCounts(0, 0, 0, 0);
-        for (Map.Entry<String, DailyCounts> entry : bySubject.entrySet()) {
-            DailyCounts counts = entry.getValue();
+        for (Map.Entry<String, DailySubject> entry : bySubject.entrySet()) {
+            DailySubject value = entry.getValue();
+            DailyCounts counts = value.counts();
             Map<String, Object> subject = new LinkedHashMap<>();
             subject.put("subject", entry.getKey());
+            subject.put("current", hasActiveGoal && value.current());
+            subject.put("canContinue", status.followLearningPlans() && value.planCount() == 1
+                    && value.canContinue() && (counts.openToday() > 0 || counts.openOverdue() > 0));
             subject.putAll(dailyCounts(
                     counts.dueToday(),
                     counts.completedToday(),
@@ -247,7 +264,42 @@ public class ClaudeV1CoachContextProjector {
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
         projected.put("unavailablePlanCount", unavailablePlanCount);
+        boolean canResume = Boolean.TRUE.equals(projected.get("resumeAvailable"));
+        String guidanceState = !status.followLearningPlans() ? "paused"
+                : hasActiveGoal ? "continue"
+                : canResume ? "resume"
+                : status.asOf() == null || subjects.isEmpty() ? "unavailable"
+                : totals.openToday() > 0 || totals.openOverdue() > 0 ? "blocked"
+                : unavailablePlanCount > 0 ? "unavailable"
+                : "complete";
+        projected.put("guidance", dailyPlanGuidance(guidanceState));
         return Map.copyOf(projected);
+    }
+
+    private Map<String, Object> dailyPlanGuidance(String state) {
+        String instruction = switch (state) {
+            case "continue" -> "Continue the current active goal directly. Report changed daily counts briefly; "
+                    + "a clear request for a different available subject takes priority. A status-only question "
+                    + "or request to pause needs no new exercise or write.";
+            case "resume" -> "For a normal learning start, resume the backend-selected due goal without asking "
+                    + "for confirmation. A clear subject request takes priority: use its exact published subject "
+                    + "with canContinue=true instead of a preliminary generic resume. For a status-only question "
+                    + "or pause, report the status without starting a goal.";
+            case "complete" -> "The complete evaluated workload due through today, including backlog, is done. "
+                    + "Say clearly that no more plan goals are required today. Do not select a future goal, widen "
+                    + "the focus or send the learner to the Web application. Extra learning is optional and "
+                    + "requires an explicit learner request; this does not mean the entire plan is finished.";
+            case "blocked" -> "Some due goals remain open, but none can currently be started. Do not call today "
+                    + "complete, invent a goal or offer the same unavailable subject again. Explain this briefly "
+                    + "and suggest that the teacher check the plan; do not make the learner repair it in the Web app.";
+            case "paused" -> "Automatic plan guidance is off. Do not automatically resume a plan. "
+                    + "For a normal learning request, continue the regular authoritative active goal or frontier. "
+                    + "For a status-only question or an explicit pause, do not start a new exercise.";
+            default -> "The full daily workload cannot currently be confirmed. Report only the available "
+                    + "subject counts, do not claim today is complete, and suggest that the teacher check the "
+                    + "plan. Do not send the learner through plan configuration.";
+        };
+        return Map.of("state", state, "instruction", instruction);
     }
 
     private boolean validDailyCounts(LearnerPlanTodayStatus.SubjectStatus subject) {
@@ -298,6 +350,13 @@ public class ClaudeV1CoachContextProjector {
                     Math.addExact(completedToday, other.completedToday),
                     Math.addExact(openToday, other.openToday),
                     Math.addExact(openOverdue, other.openOverdue));
+        }
+    }
+
+    private record DailySubject(DailyCounts counts, boolean current, boolean canContinue, int planCount) {
+        DailySubject add(DailySubject other) {
+            return new DailySubject(counts.add(other.counts), current || other.current,
+                    canContinue || other.canContinue, Math.addExact(planCount, other.planCount));
         }
     }
 

@@ -144,7 +144,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   if (manifest) {
     check(manifest.name === "skillpilot-coach-v1", "Unexpected plugin name.");
     check(/^\d+\.\d+\.\d+$/u.test(manifest.version ?? ""), "Plugin version must be SemVer.");
-    check(manifest.version === "1.1.0", "Claude replacement candidate must be version 1.1.0.");
+    check(manifest.version === "1.1.1", "Claude replacement candidate must be version 1.1.1.");
     check(nonBlank(manifest.description), "Plugin description is required.");
     check(manifest.author?.name === "enpasos GmbH", "Unexpected plugin author.");
     check(manifest.homepage === "https://skillpilot.com", "Unexpected plugin homepage.");
@@ -192,11 +192,8 @@ export function validateClaudePluginPackage(root = packageRoot) {
     planFirstPolicyTexts.every((value) => (
       value.includes("`learningPlanToday`")
         && (
-          value.includes("before coaching")
-          || (
-            value.includes("Only after no immediate render or resume call remains")
-            && value.includes("give one concise summary")
-          )
+          value.includes("Only after steps 5 and 6 require no further immediate tool call, give one compact daily-plan summary")
+          || value.includes("Only after no immediate render or resume call remains, give one concise summary")
         )
         && value.includes("`learningPlanToday.asOf`")
         && value.includes("`learningPlanToday.followLearningPlans`")
@@ -246,8 +243,11 @@ export function validateClaudePluginPackage(root = packageRoot) {
         && value.includes("localized `subject`")
         && value.includes("`expectedStateVersion`")
         && value.includes("fresh UUID request identifier")
-        && value.includes("Do not translate")
-        && value.includes("approximately match")
+        && value.includes("Never transform or approximately match the tool argument itself")
+        && value.includes("exactly one published subject")
+        && value.includes('"jetzt Mathe"')
+        && value.includes('"maths"')
+        && value.includes("ask one short clarification before any write")
         && (
           value.includes("parks an unfinished")
           || value.includes("unfinished previous goal is only parked")
@@ -256,6 +256,54 @@ export function validateClaudePluginPackage(root = packageRoot) {
         && value.includes("localized subject names")
     )),
     "The Skill and coaching policy must switch subjects only through an exact localized current-plan subject with authoritative state and fail-closed recovery.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("status-only request")
+        && value.includes('"Was steht heute an?"')
+        && value.includes('"Wie viel noch?"')
+        && value.includes("read-only: do not resume, switch, activate a goal or start a task")
+        && value.includes("pause or stop request")
+        && value.includes("stops coaching without a learning-state write")
+        && value.includes("do not claim that it disabled the saved plans")
+        && value.includes("An explicit subject request takes precedence over generic automatic resume")
+        && value.includes("without first activating another subject")
+        && value.includes("do not fall through to generic resume")
+    )),
+    "The Skill and coaching policy must keep status and pause requests read-only and honor an explicit subject before automatic resume.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("`learningPlanToday.guidance.state`")
+        && value.includes("`learningPlanToday.guidance.instruction`")
+        && ["complete", "blocked", "unavailable", "paused", "continue", "resume"]
+          .every((state) => value.includes(`\`${state}\``))
+        && value.includes("all planned work due through today is done")
+        && value.includes("do not add new required goals")
+        && value.includes("Further learning is optional and needs a learner request")
+        && value.includes("never claim that today is complete")
+        && value.includes("do not silently enable plan following")
+    )),
+    "The Skill and coaching policy must use authoritative daily guidance and distinguish completion from blocked, unavailable or paused plans.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("`current` flag is true")
+        && value.includes("without a subject-switch write")
+        && value.includes("`canContinue` flag is false, do not call the switch tool")
+        && value.includes("Offer only localized subject names whose `canContinue` is true")
+        && value.includes("without retrying the rejected switch")
+        && value.includes("same unavailable subject again")
+    )),
+    "The Skill and coaching policy must avoid current-subject no-ops and unavailable-subject choice loops.",
+  );
+  check(
+    planFirstPolicyTexts.every((value) => (
+      value.includes("After confirmed memory-goal completion, use the returned full canonical context")
+        && value.includes("daily guidance before any learner-facing continuation")
+        && value.includes("Do not continue from the old memory goal or choose its successor yourself")
+    )),
+    "The Skill and coaching policy must continue from the authoritative post-Recall completion context.",
   );
   check(
     planFirstPolicyTexts.every((value) => (
@@ -463,10 +511,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(
     normalizedSetupText.includes("Earlier packages were observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
       && normalizedSetupText.includes("Those observations are historical evidence only")
-      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.0 is still pending")
+      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.1 is still pending")
       && normalizedSetupText.includes("no earlier package is a supported fallback")
       && normalizedSetupText.includes("Fresh public-listing installation and Android use are verified after publication and do not form a circular pre-submission gate"),
-    "SETUP.md must distinguish historical observations from pending 1.1.0 exact-candidate acceptance.",
+    "SETUP.md must distinguish historical observations from pending 1.1.1 exact-candidate acceptance.",
   );
   check(
     normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Chat on the Web and the native Android app after account-level installation")
@@ -492,11 +540,11 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   check(
     normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Chat on the Web and the native Android app")
-      && normalizedReadmeText.includes("Version 1.1.0 is the sole current replacement candidate")
+      && normalizedReadmeText.includes("Version 1.1.1 is the sole current replacement candidate")
       && normalizedReadmeText.includes("earlier package versions remain historical evidence and are not an installation fallback")
-      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.0 candidate")
-      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.0")
-      && normalizedReadmeText.includes("Version 1.1.0 makes the chat plan-first")
+      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.1 candidate")
+      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.1")
+      && normalizedReadmeText.includes("Version 1.1.1 makes the chat plan-first")
       && normalizedReadmeText.includes("Public-listing reach on Android remains a publication verification, not a circular pre-submission requirement")
       && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
       && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")
