@@ -1,7 +1,7 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.20
-**Datum:** August 2026
+**Version:** 1.0.21
+**Datum:** September 2026
 **Projekt:** SkillPilot
 
 ---
@@ -11,6 +11,8 @@
 SkillPilot dockt an **bestehende Curricula** an und nutzt sie als **normative Source of Truth** (z.B. staatliche Lehrpläne, Modulhandbücher, Standards wie CEFR). SkillPilot ersetzt diese Standards nicht, sondern übersetzt sie in einen versionierten, maschinenlesbaren **Skill-Graph** als operatives Modell. Lernende, Lehrkräfte und ein KI-Lerncoach nutzen diesen Graphen als maschinenlesbare Landkarte. So kann der Lernende von seinem aktuellen **Skill-Stand** sicher zu seinen **Skill-Zielen** navigieren. Die laufzeitliche Autorität für Lernstand, Persönliches Curriculum, aktuellen Fokus, aktives Ziel, Regeln und nächste Schritte liegt im Backend-State; der KI-Lerncoach führt dabei dialogisch auf Basis dieser **exakten Backend-Logik**.
 
 Dazu erfasst das System Lernerfolge auf atomaren Skill-Zielen und leitet daraus den **Beherrschungsgrad** für übergeordnete Themen ab. Auf dieser Basis führt der Weg über die **nächsten erreichbaren Skill-Ziele** systematisch hin zu den individuellen Bildungszielen.
+
+**Lernpläne ergänzen diese Navigation um den zeitlichen Rahmen:** Welche Teile des persönlichen Curriculums sollen bis wann erreicht werden? In der lokal implementierten Erweiterung für plan-geführtes Lernen werden die Tagesanforderungen aller geplanten Fächer zusammengeführt. Der Coach zeigt den Stand im Chat und führt zum nächsten lernbaren Ziel, ohne dass Lernende selbst Planabschnitte oder Lernziele verwalten müssen (siehe Abschnitt 3.4).
 
 Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der Praxis sowie über den **Open-Source-Workflow** (Issues/Pull Requests).
 
@@ -180,6 +182,49 @@ SkillPilot nutzt bereits freigegebene Übungs- und Prüfungsknoten für passende
 - **Backend (didaktische Routenlogik):** Die Ziel-Route ist keine freie KI-Berechnung, sondern eine im Curriculum modellierte **Teilroute im größeren Graphen** unter DAG-Constraints. Das bedeutet: Die menschlichen Lehrplan-Autor:innen (Champions) behalten die pädagogische Kontrolle. Das **Persönliche Curriculum (Level 2)** wird ausschließlich in der First-Party-SkillPilot-Weboberfläche konfiguriert. SkillPilot Coach v1 fragt diese Konfiguration nicht ab und verändert sie nicht. Im Chat kann der Lerncoach nur den aktuellen Fokus und das aktive Ziel (**Level 3**) über vom Backend freigegebene Optionen und nach Zustimmung der lernenden Person ändern.
 - **UI/UX (Routen-Visualisierung):** In der First-Party-Weboberfläche konfigurieren Lernende ihr Persönliches Curriculum. Im Cockpit sehen und ändern sie den aktuellen Fokus und das aktive Ziel; die Oberfläche zeigt Fortschritt und nächste erreichbare Ziele innerhalb dieses Kontexts.
 - **KI-Lerncoach (Didaktischer Kontext):** Der Lerncoach arbeitet strikt auf Basis des bestätigten Kontexts, des aktuellen Fokus und der vom Backend erlaubten Übergänge und erklärt transparent, warum der aktuelle Schritt sinnvoll ist.
+
+### 3.4 Vom Lehrplan zum Lernalltag: Lernplan und geführter Coach
+
+Ein navigierbarer Lehrplan beantwortet noch nicht die Alltagsfrage: **„Was muss ich heute lernen, und wie weit bin ich schon?“** Dafür verbindet SkillPilot das persönliche Curriculum mit einer zeitlichen Lernplanung und der Führung durch den Coach.
+
+**Umsetzungsstand dieser Erweiterung (4. September 2026):** Fachübergreifende Planung und Schülervorschau sind lokal implementiert; die plan-geführte Chatführung ist im Claude-Coach-1.1.1-Kandidaten vorbereitet. Der lokale OpenAI-1.1-Kandidat bleibt deaktiviert. Dieser Abschnitt erweitert nicht den eingereichten OpenAI-Coach-1.0.0-Reviewvertrag und behauptet weder Produktionsverfügbarkeit noch abgeschlossene Client-Abnahmen.
+
+![Vom persönlichen Curriculum über die gemeinsame Fachplanung zur täglichen Führung im Chat; bestätigter Lernfortschritt fließt in die nächste Berechnung ein. Schematische Darstellung.](learning-plan.de.svg)
+
+#### Die Lehrkraft plant den Rahmen
+
+Das **Persönliche Curriculum** bestimmt, welche Kompetenzen zum gewählten Bildungskontext gehören. Der **Lernplan** legt fest, welche Themen oder Lernzielgruppen in welchen Zeiträumen bearbeitet werden sollen. Er ergänzt den Skill-Graphen, ersetzt aber weder seine Lernziele noch deren Voraussetzungen. Soll der gesamte Lehrplan durchlaufen werden, muss die Planung dessen vorgesehenen Umfang abdecken; ein abgeschlossener Teilplan ist nicht automatisch ein abgeschlossener Lehrplan.
+
+Unter **„Kurse planen“** werden Lernabschnitte, Zeiträume, Puffer und Termine vorbereitet. Fachpläne, etwa für Mathematik und Physik, gelten **gemeinsam**: Die Anforderungen eines Tages addieren sich über alle Fächer. Der Wechsel des aktuellen Fachs schaltet keinen anderen Fachplan ab und schreibt keine Reihenfolge „erst Mathe vollständig, dann Physik“ vor. Überschneidende Abschnitte innerhalb eines Fachplans zählen dasselbe Lernziel nicht doppelt.
+
+Die **Schülervorschau** zeigt vor der Übernahme die heutigen Anforderungen und die nächsten sieben Kalendertage. Sie verwendet dieselbe Berechnung wie der Chat. Grundlage ist eine Werktagsplanung von Montag bis Freitag, keine automatische Optimierung nach Stundenplan oder Ferien. Lernzielzahlen sind keine Lernminuten und keine Garantie, einen Termin zu erreichen. Die Lehrkraft prüft Umfang und Belastung und passt bei Bedarf die Planung an.
+
+Entwürfe bleiben zunächst auf dem Planungsgerät. Erst die ausdrückliche gemeinsame Bestätigung macht sie beim Schüler wirksam; spätere Entwurfsänderungen wirken nicht ungeprüft in laufendes Lernen hinein. **Unterrichtsabdeckung ist nicht Schüler-Mastery:** Die Dokumentation „im Unterricht behandelt“ bescheinigt noch keine individuelle Beherrschung.
+
+#### Der Schüler lernt im Chat
+
+Bei aktivem Planmodus und gültiger Lernsession hält SkillPilot die Organisation im Hintergrund:
+
+1. **Orientieren:** Der Coach nennt für jedes Fach die heute neu fälligen Ziele, wie viele davon bereits beherrscht sind, wie viele noch offen sind und welche Rückstände hinzukommen.
+2. **Automatisch anknüpfen:** Ein gültiges laufendes Ziel wird fortgesetzt; andernfalls wird ein fälliges, nach den Voraussetzungen lernbares Ziel gewählt, sofern eines verfügbar ist. Die gemeinsame Aktivierung kann dieses erste Ziel bereits auswählen. Es ist kein zusätzlicher Klick auf „Weiterlernen“ oder eine manuelle Zielsuche nötig.
+3. **Lernen und Fortschritt prüfen:** Der Coach erklärt, stellt Aufgaben und begleitet die Bearbeitung. Erst nach den geltenden Evidenzregeln gespeicherter Fortschritt verändert den Lernstand und damit die Tageszahlen. Danach führt der plan-geführte Ablauf zum nächsten zulässigen Schritt.
+4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind alle wirksamen Fachpläne zuverlässig auswertbar und sämtliche bis heute fälligen Ziele einschließlich Rückständen erledigt, meldet der Coach den Tagesabschluss. Künftige Ziele werden nicht automatisch zu zusätzlicher heutiger Pflicht.
+
+Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt eine Pause. Sind offene Ziele wegen Voraussetzungen oder ungültiger Planung nicht erreichbar, meldet der Coach die Blockade statt einen Tagesabschluss oder eine Ersatzpflicht zu erfinden. Planungskorrekturen bleiben auf der Planungsseite. Nach Ablauf der Lernsession ist weiterhin ein neuer Start über SkillPilot erforderlich; die Chatführung verlängert die Session nicht.
+
+#### Beispiel: Mathematik und Physik an einem Tag
+
+Die folgenden Zahlen sind ein **Rechenbeispiel**, keine Live-Daten:
+
+- **Mathematik:** 4 heute neu fällige Ziele, davon 2 beherrscht und 2 noch offen; zusätzlich 1 offenes Ziel aus früheren Tagen.
+- **Physik:** 3 heute neu fällige Ziele, davon 1 beherrscht und 2 noch offen; zusätzlich 2 offene Ziele aus früheren Tagen.
+- **Gesamt:** 7 heute neu fällige Ziele, davon 3 beherrscht und 4 noch offen; zusammen mit 3 Rückständen bleiben **7 Ziele zu bearbeiten**.
+
+Der Coach kann daraus kurz sagen: **„Von den heute fälligen Zielen beherrschst du in Mathe 2 von 4 und in Physik 1 von 3. Mit den Rückständen bleiben insgesamt 7 Ziele offen. Wir machen mit deinem aktuellen Matheziel weiter; du kannst auch zu Physik wechseln.“** Dieses Beispiel setzt ein gültiges, noch offenes Matheziel und ein aktuell startbares Physikziel voraus.
+
+„Davon beherrscht“ bezeichnet den aktuellen Lernstand innerhalb der heute fälligen Ziele, **nicht zwingend heute neu erreichte Erfolge**. Die sieben offenen Ziele ergeben sich aus vier offenen neuen Tageszielen plus drei Rückständen. Rückstände bleiben sichtbar, werden aber nicht als täglich neue Lernziele mehrfach zur Wochenlast addiert.
+
+Damit wird der Lehrplan zu einem begleiteten Lernweg: **Die Lehrkraft verantwortet Umfang und Zeitrahmen, SkillPilot berechnet die nächsten zulässigen Schritte, der Coach führt den Dialog und der Schüler konzentriert sich auf das Lernen.**
 
 ---
 
