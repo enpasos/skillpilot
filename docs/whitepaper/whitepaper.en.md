@@ -1,7 +1,7 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.20
-**Date:** August 2026
+**Version:** 1.0.21
+**Date:** September 2026
 **Project:** SkillPilot
 
 ---
@@ -11,6 +11,8 @@
 SkillPilot connects to **existing curricula** and uses them as the **normative source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a versioned, machine-readable **skill graph** as an operational model. Learners, teachers, and an AI learning coach use this graph as a machine-readable map. This allows the learner to move safely from their current **skill state** to their **skill goals**. Runtime authority for learning state, Personal Curriculum, current focus, active goal, rules, and next steps sits in the backend state; the AI learning coach leads the dialogue by relying on this **exact backend logic**.
 
 To achieve this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
+
+**Learning plans add a time frame to this navigation:** Which parts of the Personal Curriculum should be achieved by when? In the locally implemented plan-guided learning extension, daily requirements from all planned subjects are combined. The coach reports progress in chat and guides the learner to the next learnable goal, without requiring learners to manage plan sections or select learning goals themselves (see section 3.4).
 
 Quality assurance is anchored in a practice-driven **Champion program** and the **open-source workflow** (Issues/PRs).
 
@@ -184,6 +186,49 @@ SkillPilot already uses approved practice and assessment nodes for suitable scop
 - **Backend (didactic route logic):** The target route is not a free AI computation. It is a **modeled sub-route inside the larger graph** under DAG constraints. This means human curriculum authors (champions) retain pedagogical control. The **Personal Curriculum (Level 2)** is configured exclusively in the first-party SkillPilot web app. SkillPilot Coach v1 neither asks for nor changes that configuration. In chat, the learning coach can change only the current focus and active goal (**Level 3**), using backend-approved options and with the learner's consent.
 - **UI/UX (route visualization):** Learners configure their Personal Curriculum in the first-party web app. In the Cockpit, they can see and change the current focus and active goal; the interface shows progress and next reachable goals within that context.
 - **AI learning coach (didactic context):** The learning coach operates strictly on the confirmed context, current focus, and transitions allowed by the backend, and explains transparently why the current step is appropriate.
+
+### 3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance
+
+A navigable curriculum does not yet answer the everyday question: **“What do I need to learn today, and how far have I got?”** SkillPilot addresses this by connecting the Personal Curriculum to a timed learning plan and guidance from the coach.
+
+**Implementation status of this extension (4 September 2026):** Cross-subject planning and learner preview are implemented locally; plan-guided chat is prepared in the Claude Coach 1.1.1 candidate. The local OpenAI 1.1 candidate remains disabled. This section does not extend the submitted OpenAI Coach 1.0.0 review contract or claim production availability or completed client acceptance tests.
+
+![From the Personal Curriculum through joint subject planning to daily guidance in chat; confirmed learning progress feeds into the next calculation. Schematic illustration.](learning-plan.en.svg)
+
+#### The Teacher Plans the Framework
+
+The **Personal Curriculum** defines which competencies belong to the selected education context. The **learning plan** specifies which topics or groups of learning goals should be addressed within which periods. It complements the skill graph without replacing its goals or prerequisites. To work through an entire curriculum, the plan must cover its intended scope; completing a partial plan does not automatically mean completing the curriculum.
+
+Under **“Course planning”**, teachers prepare learning sections, date ranges, buffer time, and milestones. Subject plans, for example for mathematics and physics, apply **together**: their daily requirements add up across all subjects. Switching the current subject does not deactivate another subject plan or impose an order such as “finish all of mathematics before physics.” Overlapping sections within a subject plan do not count the same goal twice.
+
+The **learner preview** shows today's requirements and the next seven calendar days before changes are applied. It uses the same calculation as the chat. The baseline schedules weekdays from Monday to Friday; it does not automatically optimize around timetables or holidays. Goal counts are not learning minutes or a guarantee of meeting a deadline. The teacher reviews scope and workload and adjusts the plan when necessary.
+
+Drafts initially remain on the planning device. Only explicit joint confirmation makes them effective for the learner; later draft edits do not silently alter ongoing learning. **Teaching coverage is not learner mastery:** recording “covered in class” does not establish an individual's competence.
+
+#### The Learner Works in Chat
+
+With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:
+
+1. **Orient:** For each subject, the coach reports newly due goals for today, how many are already mastered, how many remain open, and any backlog.
+2. **Resume automatically:** A valid ongoing goal is continued; otherwise, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
+3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and daily figures. The plan-guided flow then leads to the next permitted step.
+4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once all effective subject plans can be evaluated reliably and all goals due through today including backlog are completed, the coach reports the day's completion. Future goals do not automatically become extra duties for today.
+
+A status-only question does not start a new task; a requested pause remains a pause. If prerequisites or invalid planning block open goals, the coach reports the blockage instead of inventing completion or a replacement duty. Plan corrections remain on the planning side. An expired learning session still requires a fresh start through SkillPilot; chat guidance does not extend the session.
+
+#### Example: Mathematics and Physics on the Same Day
+
+The figures below are an **illustrative calculation**, not live data:
+
+- **Mathematics:** 4 newly due goals today, of which 2 are mastered and 2 remain open; plus 1 open goal from earlier days.
+- **Physics:** 3 newly due goals today, of which 1 is mastered and 2 remain open; plus 2 open goals from earlier days.
+- **Total:** 7 newly due goals today, of which 3 are mastered and 4 remain open; together with 3 backlog goals, **7 goals remain to be addressed**.
+
+The coach can summarize this as: **“Of today's due goals, you have mastered 2 of 4 in mathematics and 1 of 3 in physics. Including backlog, 7 goals remain open in total. We will continue your current mathematics goal; you can also switch to physics.”** This example assumes a valid, unfinished mathematics goal and a physics goal that can currently be started.
+
+“Already mastered” describes the current learning state among today's due goals, **not necessarily achievements newly earned today**. The seven remaining goals are four open newly due goals plus three backlog goals. Backlog stays visible but is not repeatedly added to the weekly workload as newly due goals every day.
+
+This turns the curriculum into a guided learning path: **The teacher owns scope and timing, SkillPilot calculates the next permitted steps, the coach leads the dialogue, and the learner concentrates on learning.**
 
 ---
 
