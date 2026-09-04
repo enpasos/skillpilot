@@ -1,7 +1,7 @@
 import type { TeacherCoursePlan } from '../coursePlanTypes'
 import type { UiGoal } from '../goalTypes'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
-import type { LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
+import type { ActivateLearnerLearningPlansRequest, LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
 import type { ClassSession } from '../trainerTypes'
 import {
   applyCompositionViewProjection,
@@ -10,7 +10,7 @@ import {
 } from './compositionViewRuntime'
 import { normalizeCompositionView } from './authoring/compositionViewAuthoring'
 import { isRepositoryGymnasiumFramework } from './curriculumDisplay'
-import { selectExistingLearnerSubject } from './existingLearnerClass'
+import { getExistingLearnerSubjectIds, selectExistingLearnerSubject } from './existingLearnerClass'
 import { goalMatchesFilters } from './goalFilters'
 import { applyGoalPlacementProjection } from './goalPlacementProjection'
 import { materializeLearnerLearningPlanCopy, type LearnerLearningPlanCopy } from './learnerCoursePlanPublication'
@@ -24,6 +24,7 @@ import {
 } from './runtimeCurriculumCatalog'
 import { getTeacherCoursePlanStorageId } from './teacherCoursePlanContext'
 import { buildDirectChildrenMap } from './treeProjectionRuntime'
+import { getLearnerLearningPlan, getLearnerLearningPlans, LearnerLearningPlanApiError } from './learnerLearningPlanApi'
 
 export type TeacherLearningPlanActivationStatus =
   | 'draft'
@@ -46,6 +47,96 @@ export interface TeacherLearningPlanActivationSubject {
   status: TeacherLearningPlanActivationStatus
   issue: string | null
 }
+
+export interface TeacherLearningPlanContext {
+  classSession: ClassSession
+  learnerId: string
+  landscapeEntries: LandscapeEntry[]
+  runtimeCatalogState: RuntimeCurriculumCatalogState
+  language: 'de' | 'en'
+}
+
+export interface TeacherLearningPlanActivationSnapshot {
+  asOf: string
+  followLearningPlans: boolean
+  subjects: TeacherLearningPlanActivationSubject[]
+}
+
+/** Read both the mode and the revision-checked subject copies; existence alone is not activation. */
+export const loadTeacherLearningPlanActivation = async (
+  context: TeacherLearningPlanContext,
+  asOf: string,
+  signal?: AbortSignal,
+): Promise<TeacherLearningPlanActivationSnapshot> => {
+  const { classSession, learnerId, landscapeEntries, runtimeCatalogState, language } = context
+  const subjectIds = getExistingLearnerSubjectIds(
+    classSession.personalConfig ?? {}, landscapeEntries, classSession.rootLandscapeId,
+  )
+  const collection = await getLearnerLearningPlans(learnerId, asOf, { signal })
+  if (collection.asOf !== asOf) throw new Error('learning-plan-date-mismatch')
+  if (collection.plans.some((plan) => !plan.stale && !subjectIds.includes(plan.landscapeId))) {
+    throw new Error('learning-plan-subject-scope-changed')
+  }
+  const subjects = await Promise.all(subjectIds.map(async (landscapeId, index) => {
+    const entry = landscapeEntries.find((entry) => entry.meta.landscapeId === landscapeId)
+    const label = entry?.meta.subject?.trim() || entry?.meta.title?.trim()
+      || (language === 'de' ? `Fach ${index + 1}` : `Subject ${index + 1}`)
+    let serverPlan: LearnerLearningPlanDetail | null = null
+    let serverAvailable = true
+    const summary = collection.plans.find((plan) => plan.landscapeId === landscapeId)
+    try {
+      serverPlan = await getLearnerLearningPlan(learnerId, landscapeId, asOf, { signal })
+      serverAvailable = Boolean(summary && summary.planId === serverPlan.planId
+        && summary.revision === serverPlan.revision && summary.stale === serverPlan.stale)
+    } catch (error) {
+      if (signal?.aborted) throw error
+      serverAvailable = error instanceof LearnerLearningPlanApiError && error.status === 404 && !summary
+    }
+    const subject = await loadTeacherLearningPlanActivationSubject({
+      classSession, landscapeId, label, landscapeEntries, runtimeCatalogState,
+      serverPlan, serverAvailable, signal,
+    })
+    if (!collection.followLearningPlans && (subject.status === 'current' || subject.status === 'cockpit-only')) {
+      return { ...subject, status: 'ready' as const }
+    }
+    return subject
+  }))
+  return { asOf, followLearningPlans: collection.followLearningPlans, subjects }
+}
+
+export const teacherLearningPlanActivationRequest = (
+  asOf: string,
+  subjects: readonly TeacherLearningPlanActivationSubject[],
+): ActivateLearnerLearningPlansRequest => ({
+  asOf,
+  plans: subjects.filter((subject) => subject.copy !== null).map((subject) => ({
+    landscapeId: subject.landscapeId,
+    expectedRevision: subject.expectedRevision,
+    planLabel: subject.copy!.planLabel,
+    blocks: subject.copy!.blocks,
+  })),
+})
+
+export const teacherLearningPlanSubjectsBlocked = (subjects: readonly TeacherLearningPlanActivationSubject[]) => (
+  subjects.some((subject) => subject.status === 'unavailable'
+    || ((Boolean(subject.serverPlan) || Boolean(subject.localPlan?.blocks.length)) && !subject.copy))
+)
+
+export const teacherLearningPlanDraftsMatch = (
+  subjects: readonly TeacherLearningPlanActivationSubject[],
+  storage?: StorageReader,
+) => (
+  subjects.every((subject) => {
+    const current = loadTeacherCoursePlan(subject.storageId, storage)
+    if (current.quality.status !== 'complete') return false
+    if (subject.activationSource === 'server') return !current.plan?.blocks.length
+    if (subject.activationSource === null && !subject.copy && !subject.serverPlan) {
+      return !current.plan?.blocks.length
+    }
+    return subject.activationSource === 'local' && Boolean(current.plan)
+      && JSON.stringify(current.plan) === JSON.stringify(subject.localPlan)
+  })
+)
 
 interface SubjectProjection {
   goals: ReadonlyMap<string, UiGoal>
@@ -439,7 +530,7 @@ export const loadTeacherLearningPlanActivationSubject = async ({
     })
     const materialized = materializeLearnerLearningPlanCopy({
       plan: loaded.plan,
-      fallbackPlanLabel: classSession.name,
+      fallbackPlanLabel: label,
       goals: projection.goals,
       visibleChildrenByParent: projection.visibleChildrenByParent,
     })

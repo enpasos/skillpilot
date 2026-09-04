@@ -269,7 +269,9 @@ const personalizedCompositionView = {
   }],
 }
 
-const localDateString = (date = new Date()) => {
+const fixtureTime = new Date('2026-09-04T08:00:00.000Z')
+
+const localDateString = (date = fixtureTime) => {
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
@@ -331,6 +333,67 @@ const readDownload = async (download: Download) => {
   return readFile(path, 'utf8')
 }
 
+const openPlanActions = async (page: Page) => {
+  const summary = page.locator('summary[aria-label="Weitere Aktionen"]')
+  if (await summary.locator('..').getAttribute('open') === null) await summary.click()
+}
+
+const closePlanActions = async (page: Page) => {
+  const summary = page.locator('summary[aria-label="Weitere Aktionen"]')
+  if (await summary.locator('..').getAttribute('open') !== null) await summary.press('Escape')
+}
+
+const openPlanName = async (page: Page) => {
+  const summary = page.locator('summary').filter({ hasText: 'Planname & Details' })
+  if (await summary.locator('..').getAttribute('open') === null) await summary.click()
+}
+
+const cancelDiscardChanges = async (page: Page) => {
+  const heading = page.getByRole('heading', { name: 'Ungespeicherte Änderungen verwerfen?', exact: true })
+  await heading.waitFor()
+  await heading.locator('..').getByRole('button', { name: 'Abbrechen', exact: true }).click()
+  await heading.waitFor({ state: 'detached' })
+}
+
+const cancelLocalDraftReplacement = async (page: Page) => {
+  const heading = page.getByRole('heading', { name: 'Ungespeicherte Eingaben verwerfen?', exact: true })
+  await heading.waitFor()
+  await heading.locator('..').getByRole('button', { name: 'Abbrechen', exact: true }).click()
+  await heading.waitFor({ state: 'detached' })
+}
+
+const captureLinkedPlanningScreenshots = async (page: Page, prefix: string) => {
+  await closePlanActions(page)
+  const planNameSummary = page.locator('summary').filter({ hasText: 'Planname & Details' })
+  if (await planNameSummary.locator('..').getAttribute('open') !== null) await planNameSummary.click()
+  for (const viewport of [
+    { name: 'desktop', width: 1440, height: 1000 },
+    { name: 'mobile', width: 390, height: 844 },
+  ]) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height })
+    await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+    await page.getByTestId('trainer-course-plan-view').evaluate((element) => { element.scrollTop = 0 })
+    await page.screenshot({ path: `${prefix}-${viewport.name}.png`, fullPage: true })
+    if (viewport.name === 'mobile') {
+      await page.getByRole('heading', { name: 'Planabschnitte', exact: true }).evaluate((heading) => heading.scrollIntoView({ block: 'start' }))
+      await page.screenshot({ path: `${prefix}-mobile-sections.png`, fullPage: true })
+    }
+    await page.getByRole('navigation', { name: 'Planungsbereiche', exact: true }).getByRole('button', { name: 'Schülervorschau', exact: true }).click()
+    await page.getByTestId('trainer-learning-plan-preview-summary').waitFor()
+    await page.getByRole('heading', { name: 'Das bedeutet die Planung für den Schüler', exact: true }).evaluate((heading) => heading.scrollIntoView({ block: 'start' }))
+    const overflow = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      document: document.documentElement.scrollWidth,
+      planner: document.querySelector('[data-testid="trainer-course-plan-view"]')?.scrollWidth,
+      plannerViewport: document.querySelector('[data-testid="trainer-course-plan-view"]')?.clientWidth,
+    }))
+    assert(overflow.document <= overflow.viewport && overflow.planner === overflow.plannerViewport, `the ${viewport.name} linked planning/preview view has no horizontal overflow: ${JSON.stringify(overflow)}`)
+    await page.screenshot({ path: `${prefix}-preview-${viewport.name}.png`, fullPage: true })
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+}
+
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const trainerViewSource = await readFile(
   fileURLToPath(new URL('../src/views/TrainerView.tsx', import.meta.url)),
@@ -387,6 +450,7 @@ try {
   })
 
   const page = await context.newPage()
+  await page.clock.install({ time: fixtureTime })
   const browserErrors: string[] = []
   const learnerRequests: string[] = []
   const failedLearnerRequests: string[] = []
@@ -404,7 +468,7 @@ try {
   await openCourseButton.focus()
   await page.keyboard.press('Enter')
   try {
-    await page.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
+    await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
   } catch (error) {
     const body = (await page.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
     throw new Error(`${error instanceof Error ? error.message : String(error)}\nURL: ${page.url()}\nBody: ${body.slice(0, 2_000)}`)
@@ -413,7 +477,9 @@ try {
 
   const url = new URL(page.url())
   assert(url.searchParams.get('view') === 'plan', 'the plan workspace is represented in the trainer URL')
-  assert(await page.getByText('Die Lehrkraft führt', { exact: true }).count() === 1, 'teacher agency is the first plan-page framing')
+  assert(!(await page.getByText('Die Lehrkraft führt', { exact: true }).isVisible()), 'teaching guidance does not precede editing in the plan workspace')
+  assert(await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).getAttribute('aria-current') === 'page', 'planning opens in the editing view')
+  assert(await page.getByRole('button', { name: 'Schülervorschau', exact: true }).count() === 0, 'local-only courses offer no learner-specific preview')
   assert(await page.getByText(studentName, { exact: true }).count() === 0, 'the local plan workspace does not render learner names')
   assert(
     await page.getByRole('button', { name: 'Im Cockpit bereitstellen', exact: true }).count() === 0,
@@ -447,19 +513,26 @@ try {
   assert(await page.getByText('2 Lernziele', { exact: true }).count() >= 1, 'the selected cluster is expanded to two planning units')
 
   const mechanicsBlock = page.getByTestId('course-plan-block').filter({ has: page.getByRole('heading', { name: 'Mechanik', exact: true }) })
-  await mechanicsBlock.getByText('Enthaltene Lernziele und Unterrichtsstand', { exact: true }).click()
+  assert(await mechanicsBlock.getByRole('checkbox').count() === 0, 'compact planning cards do not expose teaching-coverage controls')
+  await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
+  assert(await page.getByText('Die Lehrkraft führt', { exact: true }).isVisible(), 'teacher agency remains visible in its dedicated workspace')
+  const mechanicsTeachingBlock = page.getByTestId('course-plan-teaching-block').filter({ has: page.getByRole('heading', { name: 'Mechanik', exact: true }) })
+  await mechanicsTeachingBlock.getByText('Enthaltene Lernziele und Unterrichtsstand', { exact: true }).click()
   const coverageEffectiveOn = addDays(today, -8)
   await page.getByLabel(/^Behandelt am/u).fill(coverageEffectiveOn)
-  await mechanicsBlock.getByRole('checkbox', { name: /Kräfte beschreiben/u }).check()
+  await mechanicsTeachingBlock.getByRole('checkbox', { name: /Kräfte beschreiben/u }).check()
   assert(await page.getByText('Mindestens 1 von 2 bestätigt', { exact: true }).count() >= 1, 'unattested coverage is presented as a lower bound')
   await page.getByRole('button', { name: 'Stand bis heute vollständig nachgetragen', exact: true }).click()
   assert(await page.getByText('Datenstand für heute bestätigt', { exact: true }).count() >= 1, 'explicit teacher attestation enables the current coverage status')
+  await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
 
+  await page.setViewportSize({ width: 1280, height: 360 })
   const coursePlanScroller = page.getByTestId('trainer-course-plan-view')
+  await coursePlanScroller.evaluate((element) => { element.scrollTop = element.scrollHeight })
   const editMechanicsButton = mechanicsBlock.getByRole('button', { name: 'Bearbeiten', exact: true })
   await editMechanicsButton.scrollIntoViewIfNeeded()
   const scrollTopBeforeEdit = await coursePlanScroller.evaluate((element) => element.scrollTop)
-  assert(scrollTopBeforeEdit > 0, 'the edit regression starts from the scrolled plan block')
+  assert(scrollTopBeforeEdit > 0, 'editing starts from a compact plan card scrolled into view')
   await editMechanicsButton.click()
   const editFormHeading = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true })
   await editFormHeading.waitFor()
@@ -475,19 +548,39 @@ try {
     await editFormHeading.evaluate((heading) => document.activeElement === heading),
     'editing moves keyboard focus to the plan-section form heading',
   )
-  const editForm = page.locator('section').filter({ has: editFormHeading })
+  const editForm = editFormHeading.locator('..').locator('..')
   assert(
     await editForm.getByRole('combobox', { name: 'Lernziel oder Cluster' }).inputValue() === clusterGoalId,
     'the visible edit form is prefilled with the existing curriculum target',
   )
   assert(await editForm.getByLabel('Von', { exact: true }).inputValue() === today, 'the edit form keeps the existing start date')
   assert(await editForm.getByLabel('Bis einschließlich', { exact: true }).inputValue() === blockEnd, 'the edit form keeps the existing end date')
+  const unsavedBlockEnd = addDays(blockEnd, 2)
+  await editForm.getByLabel('Bis einschließlich', { exact: true }).fill(unsavedBlockEnd)
+  const storageBeforeDraftNavigation = await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
+  const urlBeforeDraftNavigation = page.url()
+  await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
+  assert(!(await editFormHeading.isVisible()), 'switching to teaching hides the editor without presenting a second form')
+  await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+  assert(await editForm.getByLabel('Bis einschließlich', { exact: true }).inputValue() === unsavedBlockEnd, 'switching internal views preserves the unsaved block draft')
+  await page.getByTestId('trainer-goals-tab').click()
+  await cancelDiscardChanges(page)
+  assert(await page.getByTestId('trainer-goals-tab').evaluate((button) => document.activeElement === button), 'cancelling a workspace change restores keyboard focus to its trigger')
+  assert(page.url() === urlBeforeDraftNavigation, 'cancelling a workspace change preserves the URL and active plan context')
+  assert(await editForm.getByLabel('Bis einschließlich', { exact: true }).inputValue() === unsavedBlockEnd, 'cancelling a workspace change preserves a local-only course draft')
+  await page.getByRole('button', { name: /Alle Klassen/u }).click()
+  await cancelDiscardChanges(page)
+  assert(await page.getByRole('button', { name: /Alle Klassen/u }).evaluate((button) => document.activeElement === button), 'cancelling return to the course list restores focus to its trigger')
+  assert(page.url() === urlBeforeDraftNavigation, 'cancelling return to the course list keeps the current route')
+  assert(await editForm.getByLabel('Bis einschließlich', { exact: true }).inputValue() === unsavedBlockEnd, 'cancelling return to the course list keeps the editor values')
+  assertJsonEqual(await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), storageBeforeDraftNavigation, 'tab navigation and cancelled exits neither save nor replace the draft')
   await editForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
+  await page.setViewportSize({ width: 1280, height: 720 })
 
   await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const milestoneFormHeading = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
   await milestoneFormHeading.waitFor()
-  const milestoneForm = page.locator('section').filter({ has: milestoneFormHeading })
+  const milestoneForm = milestoneFormHeading.locator('..').locator('..')
   await milestoneForm.getByRole('combobox').first().selectOption('milestone')
   await milestoneForm.getByRole('combobox', { name: 'Lernziel oder Cluster' }).selectOption(clusterGoalId)
   await milestoneForm.getByLabel(/^Bezeichnung/u).fill('Mechanik-Aufgaben sicher bearbeiten')
@@ -502,7 +595,7 @@ try {
   await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const secondFormHeading = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
   await secondFormHeading.waitFor()
-  const secondForm = page.locator('section').filter({ has: secondFormHeading })
+  const secondForm = secondFormHeading.locator('..').locator('..')
   await secondForm.getByRole('combobox').first().selectOption('buffer')
   await secondForm.getByLabel('Bezeichnung', { exact: true }).fill('Reserve')
   await secondForm.getByLabel('Von', { exact: true }).fill(addDays(today, 14))
@@ -510,13 +603,38 @@ try {
   await secondForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
   await page.getByRole('heading', { name: 'Reserve', exact: true }).waitFor()
 
+  await mechanicsBlock.getByRole('button', { name: 'Bearbeiten', exact: true }).click()
+  const guardedEditForm = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true }).locator('..').locator('..')
+  await guardedEditForm.getByLabel(/^Bezeichnung/u).fill('Noch nicht gespeicherter Abschnittstitel')
+  const planBeforeGuardedActions = await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
+  await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
+  await cancelLocalDraftReplacement(page)
+  assert(await guardedEditForm.getByLabel(/^Bezeichnung/u).inputValue() === 'Noch nicht gespeicherter Abschnittstitel', 'cancelling a new-section action keeps the existing unsaved editor')
+  await page.getByTestId('course-plan-block').filter({ has: page.getByRole('heading', { name: 'Mechanik-Aufgaben sicher bearbeiten', exact: true }) }).getByRole('button', { name: 'Bearbeiten', exact: true }).click()
+  await cancelLocalDraftReplacement(page)
+  assert(await guardedEditForm.getByLabel(/^Bezeichnung/u).inputValue() === 'Noch nicht gespeicherter Abschnittstitel', 'cancelling another-section edit keeps the current draft title')
+  assert(await guardedEditForm.getByLabel('Von', { exact: true }).inputValue() === today, 'cancelling another-section edit does not replace the current section dates')
+  await openPlanActions(page)
+  await page.getByRole('button', { name: 'Letzte Planänderung rückgängig machen', exact: true }).click()
+  await cancelLocalDraftReplacement(page)
+  assert(await guardedEditForm.getByLabel(/^Bezeichnung/u).inputValue() === 'Noch nicht gespeicherter Abschnittstitel', 'cancelling undo leaves the draft intact')
+  assertJsonEqual(await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), planBeforeGuardedActions, 'cancelled add/edit/undo actions leave every saved plan revision unchanged')
+  await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
+  await page.getByRole('button', { name: 'Verwerfen und fortfahren', exact: true }).click()
+  const newFormAfterDiscard = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true }).locator('..').locator('..')
+  assert(await newFormAfterDiscard.getByLabel(/^Bezeichnung/u).inputValue() === '', 'only an explicit discard replaces the draft with a fresh section')
+  assertJsonEqual(await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), planBeforeGuardedActions, 'discarding a form does not change the saved plan')
+  await newFormAfterDiscard.getByRole('button', { name: 'Abbrechen', exact: true }).click()
+  await openPlanActions(page)
   await page.getByRole('button', { name: 'Letzte Planänderung rückgängig machen', exact: true }).click()
   await page.getByRole('heading', { name: 'Reserve', exact: true }).waitFor({ state: 'detached' })
   assert(await page.getByRole('heading', { name: 'Mechanik', exact: true }).count() === 1, 'undo creates a new revision while restoring the previous plan')
 
   const downloadPromise = page.waitForEvent('download')
+  await openPlanActions(page)
   await page.getByRole('button', { name: 'Plan exportieren', exact: true }).click()
   const exported = await readDownload(await downloadPromise)
+  await closePlanActions(page)
   assert(!exported.includes(classId), 'plan export omits the local class ID')
   assert(!exported.includes(studentId), 'plan export omits learner SkillPilot IDs')
   assert(!exported.includes(studentName), 'plan export omits learner names')
@@ -552,7 +670,7 @@ try {
   await page.getByTestId('trainer-goals-tab').click()
   await learnerRequestStarted
   await page.getByTestId('trainer-plan-tab').click()
-  await page.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
+  await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
   learnerRequestGate.blocked = false
   learnerRequestGate.releases.splice(0).forEach((release) => release())
   await page.waitForTimeout(100)
@@ -583,7 +701,7 @@ try {
   })
   await page.goto(`${server.baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
   try {
-    await page.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
+    await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
   } catch (error) {
     const body = (await page.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
     throw new Error(`${error instanceof Error ? error.message : String(error)}\nURL: ${page.url()}\nBody: ${body.slice(0, 2_000)}`)
@@ -702,9 +820,58 @@ try {
   })
 
   const personalizedPage = await personalizedContext.newPage()
+  await personalizedPage.clock.install({ time: fixtureTime })
   const personalizedBrowserErrors: string[] = []
   const learnerPlanWrites: unknown[] = []
+  const learnerPlanPreviewBodies: unknown[] = []
+  const unexpectedLearnerWrites: string[] = []
   const existingLearnerPlanRevision = 7
+  const learnerPlanDetail = ({
+    revision,
+    planLabel,
+    blocks,
+  }: {
+    revision: number
+    planLabel: string
+    blocks: unknown[]
+  }) => {
+    const submittedAtomicGoalIds = blocks.flatMap((block) => {
+      if (typeof block !== 'object' || block === null) return []
+      const atomicGoalIds = (block as { atomicGoalIds?: unknown }).atomicGoalIds
+      return Array.isArray(atomicGoalIds) ? atomicGoalIds.filter((value): value is string => typeof value === 'string') : []
+    })
+    const storedAtomicGoalIds = new Set(
+      submittedAtomicGoalIds.filter((goalId) => personalizedOpenAtomicGoalIds.includes(goalId)),
+    )
+    return {
+      planId: landscapeId,
+      revision,
+      landscapeId,
+      planLabel,
+      stale: false,
+      period: {
+        startDate: personalizedToday,
+        endDate: addDays(personalizedBlockEnd, 5),
+      },
+      currentBlock: null,
+      nextMilestone: null,
+      metrics: {
+        dueThroughToday: 0,
+        completedDueThroughToday: 0,
+        openDueThroughToday: 0,
+        dueToday: 0,
+        completedDueToday: 0,
+        openDueToday: 0,
+        totalPlanned: storedAtomicGoalIds.size,
+      },
+      buffer: { totalWorkdays: 0, remainingWorkdays: 0 },
+      pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
+      nextEligibleGoal: null,
+      continueReason: 'no-open-due-frontier-goal',
+      canContinue: false,
+      blocks,
+    }
+  }
   personalizedPage.on('pageerror', (error) => personalizedBrowserErrors.push(error.message))
   let releasePlanningScope: (() => void) | undefined
   const planningScopeHold = new Promise<void>((resolve) => {
@@ -714,6 +881,12 @@ try {
     const request = route.request()
     const url = new URL(request.url())
     const pathname = url.pathname
+    if (
+      pathname.startsWith(`/api/ui/learners/${studentId}`)
+      && request.method() !== 'GET'
+      && !(request.method() === 'POST' && pathname.endsWith('/learning-plans/preview'))
+      && !(request.method() === 'PUT' && pathname.endsWith('/learning-plans/by-landscape'))
+    ) unexpectedLearnerWrites.push(`${request.method()} ${pathname}`)
     if (pathname === '/api/ui/curriculum-catalog') {
       await route.fulfill({ status: 404, body: '' })
       return
@@ -781,63 +954,78 @@ try {
       })
       return
     }
+    if (pathname === `/api/ui/learners/${studentId}/learning-plans`) {
+      assert(request.method() === 'GET', 'the shared planning header only reads the learner collection')
+      assert(url.searchParams.get('asOf') === personalizedToday, 'collection lookup is bound to the current Berlin date')
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        headers: { 'Cache-Control': 'no-store' },
+        body: JSON.stringify({
+          asOf: personalizedToday,
+          followLearningPlans: true,
+          plans: [learnerPlanDetail({
+            revision: existingLearnerPlanRevision,
+            planLabel: 'Bestehender Fachplan',
+            blocks: [],
+          })],
+        }),
+      })
+      return
+    }
+    if (pathname === `/api/ui/learners/${studentId}/learning-plans/preview`) {
+      assert(request.method() === 'POST', 'the read-only preview uses the dedicated calculation endpoint')
+      const body = request.postDataJSON() as {
+        asOf: string
+        plans: Array<{ landscapeId: string; expectedRevision: number; blocks: unknown[] }>
+      }
+      assert(body.asOf === personalizedToday, 'the preview is bound to the current Berlin date')
+      assertJsonEqual(body.plans.map(({ landscapeId, expectedRevision }) => ({ landscapeId, expectedRevision })), [{ landscapeId, expectedRevision: existingLearnerPlanRevision }], 'the preview sends the exact current learner-plan revision')
+      learnerPlanPreviewBodies.push(body)
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        headers: { 'Cache-Control': 'no-store' },
+        body: JSON.stringify({
+          asOf: body.asOf,
+          days: Array.from({ length: 7 }, (_, index) => {
+            const date = addDays(body.asOf, index)
+            const isWeekday = (date: string) => {
+              const day = new Date(`${date}T12:00:00.000Z`).getUTCDay()
+              return day > 0 && day < 6
+            }
+            const dueToday = isWeekday(date) ? 6 : 0
+            const dueThroughToday = Array.from({ length: index + 1 }, (_, day) => addDays(body.asOf, day)).filter(isWeekday).length * 6
+            const metrics = {
+              dueThroughToday,
+              completedDueThroughToday: 2,
+              openDueThroughToday: dueThroughToday - 2,
+              dueToday,
+              completedDueToday: index === 0 ? 2 : 0,
+              openDueToday: dueToday - (index === 0 ? 2 : 0),
+              totalPlanned: personalizedOpenAtomicGoalIds.length,
+            }
+            return {
+              date,
+              subjects: [{ landscapeId, metrics }],
+              totals: metrics,
+            }
+          }),
+        }),
+      })
+      return
+    }
     if (
       pathname === `/api/ui/learners/${studentId}/learning-plans/by-landscape`
       && url.searchParams.get('landscapeId') === landscapeId
     ) {
-      const detail = ({
-        revision,
-        planLabel,
-        blocks,
-      }: {
-        revision: number
-        planLabel: string
-        blocks: unknown[]
-      }) => {
-        const submittedAtomicGoalIds = blocks.flatMap((block) => {
-          if (typeof block !== 'object' || block === null) return []
-          const atomicGoalIds = (block as { atomicGoalIds?: unknown }).atomicGoalIds
-          return Array.isArray(atomicGoalIds) ? atomicGoalIds.filter((value): value is string => typeof value === 'string') : []
-        })
-        const storedAtomicGoalIds = new Set(
-          submittedAtomicGoalIds.filter((goalId) => personalizedOpenAtomicGoalIds.includes(goalId)),
-        )
-        return ({
-        planId: landscapeId,
-        revision,
-        landscapeId,
-        planLabel,
-        stale: false,
-        period: {
-          startDate: personalizedToday,
-          endDate: addDays(personalizedBlockEnd, 5),
-        },
-        currentBlock: null,
-        nextMilestone: null,
-        metrics: {
-          dueThroughToday: 0,
-          completedDueThroughToday: 0,
-          openDueThroughToday: 0,
-          dueToday: 0,
-          completedDueToday: 0,
-          openDueToday: 0,
-          totalPlanned: storedAtomicGoalIds.size,
-        },
-        buffer: { totalWorkdays: 0, remainingWorkdays: 0 },
-        pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
-        nextEligibleGoal: null,
-        continueReason: 'no-open-due-frontier-goal',
-        canContinue: false,
-        blocks,
-        })
-      }
       if (request.method() === 'GET') {
         assert(url.searchParams.get('asOf') === personalizedToday, 'publication reads the current learner plan revision with an explicit date')
         await route.fulfill({
           status: 200,
           contentType: 'application/json',
           headers: { 'Cache-Control': 'no-store' },
-          body: JSON.stringify(detail({
+          body: JSON.stringify(learnerPlanDetail({
             revision: existingLearnerPlanRevision,
             planLabel: 'Bestehender Fachplan',
             blocks: [],
@@ -854,7 +1042,7 @@ try {
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify(detail({
+        body: JSON.stringify(learnerPlanDetail({
           revision: existingLearnerPlanRevision + 1,
           planLabel: body.planLabel ?? '',
           blocks: body.blocks ?? [],
@@ -869,8 +1057,9 @@ try {
     new URL(request.url()).pathname === `/api/ui/learners/${studentId}/planning-scope`
   ))
   await personalizedPage.goto(`${server.baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
-  await personalizedPage.getByRole('heading', { name: 'Plan & Lage', exact: true }).waitFor()
+  await personalizedPage.getByRole('heading', { name: 'Planung für Mathematik Einzelbetreuung', exact: true }).waitFor()
   await planningScopeRequest
+  await openPlanActions(personalizedPage)
   const earlyPublishButton = personalizedPage.getByRole('button', {
     name: 'Nur dieses Fach aktualisieren',
     exact: true,
@@ -888,6 +1077,7 @@ try {
     decodeURIComponent(new URL(personalizedPage.url()).pathname).endsWith(`/${sekOneClusterGoalId}`),
     `the current Level-3 route remains the Sek-I focus goal; got ${personalizedPage.url()}`,
   )
+  await closePlanActions(personalizedPage)
 
   await personalizedPage.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const preBaselineForm = personalizedPage
@@ -907,6 +1097,7 @@ try {
   releasePlanningScope?.()
 
   try {
+    await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
     await personalizedPage.getByText('53 offene von 259 atomaren Zielen verplant', { exact: true }).waitFor()
   } catch (error) {
     const body = (await personalizedPage.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
@@ -916,6 +1107,8 @@ try {
     await personalizedPage.getByText('6 von 53 fällig', { exact: true }).count() >= 1,
     'the existing Sek-I block schedules only its 53 open atoms and has six due today',
   )
+
+  await personalizedPage.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
 
   await personalizedPage.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const sekTwoForm = personalizedPage
@@ -966,12 +1159,14 @@ try {
     'the newly selected synthetic Sek-II block is saved locally',
   )
 
+  await openPlanActions(personalizedPage)
   const publishButton = personalizedPage.getByRole('button', {
     name: 'Nur dieses Fach aktualisieren',
     exact: true,
   })
   assert(await publishButton.count() === 1, 'a linked learner and subject expose the explicit cockpit publication action')
   assert(!(await publishButton.isDisabled()), 'a calculable learning plan with atomic goals enables publication')
+  await openPlanName(personalizedPage)
   const planLabelInput = personalizedPage.getByLabel('Schuljahr / Planbezeichnung', { exact: true })
   await planLabelInput.fill('Noch nicht gespeichert')
   assert(await publishButton.isDisabled(), 'publication is disabled while the plan label draft is unsaved')
@@ -983,7 +1178,36 @@ try {
     await personalizedPage.getByTestId('course-plan-save-status').getByText('Nicht gespeicherte Änderungen', { exact: true }).count() === 1,
     'the plan status exposes the unsaved label draft',
   )
+  const storedPlanBeforePreview = await personalizedPage.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
+  const previewsBeforeUnsavedNavigation = learnerPlanPreviewBodies.length
+  await closePlanActions(personalizedPage)
+  await personalizedPage.getByRole('navigation', { name: 'Planungsbereiche', exact: true }).getByRole('button', { name: 'Schülervorschau', exact: true }).click()
+  await personalizedPage.getByText('Speichere oder verwirf zuerst die Änderungen im Fachplan. Die Vorschau darf keine ungespeicherten Änderungen übergehen.', { exact: true }).waitFor()
+  assert(learnerPlanPreviewBodies.length === previewsBeforeUnsavedNavigation, 'an unsaved draft blocks preview calculation instead of silently previewing a different plan')
+  assert(await personalizedPage.getByTestId('trainer-learning-plan-preview-summary').count() === 0, 'an unsaved draft displays no stale daily totals')
+  await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
+  await personalizedPage.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+  await openPlanName(personalizedPage)
+  assert(await planLabelInput.inputValue() === 'Noch nicht gespeichert', 'a linked learner plan preserves the unsaved label across both other views')
+  assertJsonEqual(await personalizedPage.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), storedPlanBeforePreview, 'preview and teaching navigation do not silently persist a draft')
   await planLabelInput.fill('2026/27')
+  await personalizedPage.getByRole('navigation', { name: 'Planungsbereiche', exact: true }).getByRole('button', { name: 'Schülervorschau', exact: true }).click()
+  const learnerPreview = personalizedPage.getByTestId('trainer-learning-plan-preview')
+  await learnerPreview.getByText('Bis heute insgesamt noch offen: 4 Lernziele über alle Fächer.', { exact: true }).waitFor()
+  const subjectPreview = learnerPreview.getByRole('list', { name: 'Tagesanforderungen nach Fach', exact: true })
+  assert(await subjectPreview.getByRole('heading', { name: 'Mathematik', exact: true }).count() === 1, 'the preview labels its authoritative daily workload by subject')
+  const previewCount = (label: string) => subjectPreview.getByText(label, { exact: true }).locator('..').locator('dd').textContent()
+  assertJsonEqual(await Promise.all(['Heute neu fällig', 'Davon bereits beherrscht', 'Heute noch offen', 'Offen aus früheren Tagen'].map(previewCount)), ['6', '2', '4', '0'], 'the preview renders backend counts without conflating today and backlog')
+  assert(await learnerPreview.getByRole('region', { name: 'Wochenvorschau', exact: true }).locator('tbody tr').count() === 7, 'the learner preview shows exactly seven calendar days')
+  assert(learnerPlanPreviewBodies.length > previewsBeforeUnsavedNavigation, 'restoring the saved draft enables the read-only calculation')
+  assert(learnerPlanWrites.length === 0 && unexpectedLearnerWrites.length === 0, 'opening and reading a preview never activates plans, changes focus, or records mastery')
+  assertJsonEqual(await personalizedPage.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), storedPlanBeforePreview, 'the successful preview does not modify the local teacher plan')
+  await personalizedPage.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+  if (process.env.SKILLPILOT_COURSE_PLAN_SCREENSHOT_LINKED_PREFIX) {
+    await captureLinkedPlanningScreenshots(personalizedPage, process.env.SKILLPILOT_COURSE_PLAN_SCREENSHOT_LINKED_PREFIX)
+  }
+  await openPlanActions(personalizedPage)
+  await openPlanName(personalizedPage)
   assert(!(await publishButton.isDisabled()), 'restoring the persisted label re-enables publication')
   await publishButton.click()
   const publicationConfirmation = personalizedPage.getByTestId('course-plan-publication-confirmation')
@@ -1012,6 +1236,7 @@ try {
     'an invalidated confirmation explains that the plan must be checked again',
   )
   await planLabelInput.fill('2026/27')
+  await openPlanActions(personalizedPage)
   await publishButton.click()
   await personalizedPage.getByTestId('course-plan-publication-confirmation').waitFor()
   await publicationConfirmation.getByRole('button', { name: 'Fachplan ersetzen', exact: true }).click()
@@ -1064,6 +1289,7 @@ try {
     personalizedBrowserErrors.length === 0,
     `focus-independent course-plan browser errors:\n${personalizedBrowserErrors.join('\n')}`,
   )
+  assertJsonEqual(unexpectedLearnerWrites, [], 'planning UI navigation never invokes unrelated learner writes')
   await personalizedContext.close()
   console.log('Trainer course-plan UI regression test passed.')
 } finally {

@@ -399,7 +399,10 @@ try {
   await page.getByText('Zweite Einzelbetreuung', { exact: true }).waitFor({ state: 'detached' })
   await page.getByText('Direkte Einzelbetreuung', { exact: true }).click()
   await page.getByText('Diese Lehreransicht liest Lernstand und Personalisierung.', { exact: false }).waitFor()
-  await page.getByRole('button', { name: 'Plan & Lage', exact: true }).click()
+  await page.getByRole('button', { name: 'Planung', exact: true }).click()
+  await page.getByRole('heading', { name: 'Planabschnitte', exact: true }).waitFor()
+  assert.equal(await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).getAttribute('aria-current'), 'page')
+  await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
   await page.getByText('53 offene von 259 atomaren Zielen verplant', { exact: true }).waitFor()
   const roundedDueValues = page.getByText('6 von 53 fällig', { exact: true })
   await roundedDueValues.first().waitFor()
@@ -421,6 +424,7 @@ try {
   assert.equal(storedDirectPlan.coverageAttestations[0].planRevision, 1)
   assert.equal(JSON.stringify(storedDirectPlan).includes(learnerId), false)
 
+  await page.locator('summary[aria-label="Weitere Aktionen"]').click()
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Plan exportieren', exact: true }).click()
   const exportedPlan = await readDownload(await downloadPromise)
@@ -446,11 +450,12 @@ try {
     'planning-scope reads must bypass browser caches',
   )
 
-  const subjectSelect = page.getByLabel('Fachansicht')
-  assert.deepEqual(await subjectSelect.locator('option').allTextContents(), ['Mathematik', 'Physik'])
-  await subjectSelect.selectOption('physics')
   await page.getByRole('button', { name: 'Lernziele', exact: true }).click()
   await page.waitForURL((url) => !url.searchParams.has('view'))
+  const subjectSelect = page.getByLabel('Fachansicht')
+  await subjectSelect.waitFor({ state: 'visible' })
+  assert.deepEqual(await subjectSelect.locator('option').allTextContents(), ['Mathematik', 'Physik'])
+  await subjectSelect.selectOption('physics')
   await page.getByRole('heading', { name: 'Physik-Ziel', exact: true }).waitFor()
 
   assert.equal(requests.some((request) => request.pathname.endsWith('/planned')), false)

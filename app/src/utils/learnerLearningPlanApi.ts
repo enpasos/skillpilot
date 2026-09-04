@@ -8,9 +8,11 @@ import type {
   LearnerLearningPlanCurrentBlock,
   LearnerLearningPlanDetail,
   LearnerLearningPlanMilestone,
+  LearnerLearningPlanMetrics,
   LearnerLearningPlanSummary,
   LearnerLearningPlanTransitionResponse,
   LearnerLearningPlansResponse,
+  PreviewLearnerLearningPlansResponse,
   ReconcileLearnerLearningPlansRequest,
   SaveLearnerLearningPlanRequest,
   SwitchLearnerLearningPlanRequest,
@@ -639,4 +641,93 @@ export const activateLearnerLearningPlans = async (
     },
   )
   return parseActivateResponse(await readJsonResponse(response))
+}
+
+const parsePreviewMetrics = (value: unknown): LearnerLearningPlanMetrics => {
+  const source = asRecord(value, 'Invalid learning-plan preview: metrics')
+  const metrics: LearnerLearningPlanMetrics = {
+    dueThroughToday: requiredInteger(source.dueThroughToday, 'metrics.dueThroughToday'),
+    completedDueThroughToday: requiredInteger(source.completedDueThroughToday, 'metrics.completedDueThroughToday'),
+    openDueThroughToday: requiredInteger(source.openDueThroughToday, 'metrics.openDueThroughToday'),
+    dueToday: requiredInteger(source.dueToday, 'metrics.dueToday'),
+    completedDueToday: requiredInteger(source.completedDueToday, 'metrics.completedDueToday'),
+    openDueToday: requiredInteger(source.openDueToday, 'metrics.openDueToday'),
+    totalPlanned: requiredInteger(source.totalPlanned, 'metrics.totalPlanned'),
+  }
+  if (
+    metrics.completedDueThroughToday > metrics.dueThroughToday
+    || metrics.openDueThroughToday !== metrics.dueThroughToday - metrics.completedDueThroughToday
+    || metrics.dueThroughToday > metrics.totalPlanned
+    || metrics.completedDueToday > metrics.dueToday
+    || metrics.openDueToday !== metrics.dueToday - metrics.completedDueToday
+    || metrics.dueToday > metrics.dueThroughToday
+    || metrics.completedDueToday > metrics.completedDueThroughToday
+    || metrics.openDueToday > metrics.openDueThroughToday
+  ) throw new Error('Invalid learning-plan preview: metrics.cardinality')
+  return metrics
+}
+
+export const parsePreviewLearnerLearningPlansResponse = (
+  value: unknown,
+  request: ActivateLearnerLearningPlansRequest,
+): PreviewLearnerLearningPlansResponse => {
+  const source = asRecord(value, 'Invalid learning-plan preview')
+  const asOf = parseDate(source.asOf, 'asOf')
+  if (asOf !== request.asOf || !Array.isArray(source.days) || source.days.length !== 7) {
+    throw new Error('Invalid learning-plan preview: period')
+  }
+  const expectedSubjects = new Set(request.plans.map((plan) => plan.landscapeId))
+  if (!expectedSubjects.size || expectedSubjects.size !== request.plans.length) {
+    throw new Error('Invalid learning-plan preview: requested subjects')
+  }
+  const days = source.days.map((value, index) => {
+    const day = asRecord(value, 'Invalid learning-plan preview: day')
+    const date = parseDate(day.date, 'day.date')
+    const expectedDate = new Date(`${asOf}T00:00:00Z`)
+    expectedDate.setUTCDate(expectedDate.getUTCDate() + index)
+    if (date !== expectedDate.toISOString().slice(0, 10) || !Array.isArray(day.subjects)) {
+      throw new Error('Invalid learning-plan preview: day order')
+    }
+    const subjects = day.subjects.map((value) => {
+      const subject = asRecord(value, 'Invalid learning-plan preview: subject')
+      return {
+        landscapeId: requiredString(subject.landscapeId, 'subject.landscapeId'),
+        metrics: parsePreviewMetrics(subject.metrics),
+      }
+    })
+    if (
+      subjects.length !== expectedSubjects.size
+      || new Set(subjects.map((subject) => subject.landscapeId)).size !== subjects.length
+      || subjects.some((subject) => !expectedSubjects.has(subject.landscapeId))
+    ) throw new Error('Invalid learning-plan preview: subjects')
+    const totals = parsePreviewMetrics(day.totals)
+    for (const key of Object.keys(totals) as Array<keyof LearnerLearningPlanMetrics>) {
+      const sum = subjects.reduce((total, subject) => total + subject.metrics[key], 0)
+      if (!Number.isSafeInteger(sum) || totals[key] !== sum) {
+        throw new Error('Invalid learning-plan preview: totals')
+      }
+    }
+    return { date, subjects, totals }
+  })
+  return { asOf, days }
+}
+
+export const previewLearnerLearningPlans = async (
+  skillpilotId: string,
+  request: ActivateLearnerLearningPlansRequest,
+  options: LearnerLearningPlanRequestOptions = {},
+): Promise<PreviewLearnerLearningPlansResponse> => {
+  const normalizedRequest = { ...request, asOf: parseDate(request.asOf, 'asOf') }
+  const response = await (options.fetchImpl ?? fetch)(
+    `${learnerPlansBase(skillpilotId, options.apiBase)}/preview`,
+    {
+      method: 'POST',
+      credentials: 'include',
+      cache: 'no-store',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(normalizedRequest),
+      signal: options.signal,
+    },
+  )
+  return parsePreviewLearnerLearningPlansResponse(await readJsonResponse(response), normalizedRequest)
 }

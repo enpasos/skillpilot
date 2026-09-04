@@ -54,6 +54,7 @@ public class LearnerLearningPlanService {
     private static final int MAX_BLOCKS = 500;
     private static final int MAX_ATOMIC_IDS = 10_000;
     private static final int MAX_ACTIVATION_PLANS = 50;
+    private static final int PREVIEW_DAYS = 7;
     private static final int MAX_BLOCK_TITLE_LENGTH = 500;
     private static final long MAX_BLOCK_SPAN_DAYS = 36_600;
     private static final LocalDate MIN_PLAN_DATE = LocalDate.of(0, 1, 1);
@@ -323,6 +324,55 @@ public class LearnerLearningPlanService {
     }
 
     /**
+     * Evaluates the complete unsaved draft set using activation's normalization
+     * and the runtime's exact due/mastery metrics. No entity is mutated, no row
+     * is write-locked, and the same current mastery snapshot is used for all
+     * seven calendar days; future successes are deliberately not predicted.
+     */
+    @Transactional(readOnly = true)
+    public LearnerLearningPlanApi.PreviewResponse previewPlans(
+            String skillpilotId,
+            LearnerLearningPlanApi.ActivateRequest request) {
+        if (request == null) {
+            throw badRequest("request is required");
+        }
+        LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
+        if (request.asOf() != null && !asOf.equals(request.asOf())) {
+            throw badRequest("asOf for preview must equal the current server date in Europe/Berlin");
+        }
+        LinkedHashMap<String, LearnerLearningPlanApi.ActivationPlan> requestedByLandscape =
+                requestedActivationPlans(request);
+        Learner learner = learners.getLearner(skillpilotId);
+        assertNoCurrentStoredPlanIsHidden(skillpilotId, requestedByLandscape.keySet());
+        List<PreparedPlan> preparedPlans = requestedByLandscape.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(entry -> preparePlan(
+                        skillpilotId,
+                        learner,
+                        entry.getKey(),
+                        entry.getValue().expectedRevision(),
+                        entry.getValue().planLabel(),
+                        entry.getValue().blocks(),
+                        false))
+                .toList();
+        Map<String, Double> mastery = Map.copyOf(learners.getMastery(skillpilotId));
+        List<LearnerLearningPlanApi.PreviewDay> days = new ArrayList<>();
+        for (int offset = 0; offset < PREVIEW_DAYS; offset++) {
+            LocalDate date = asOf.plusDays(offset);
+            List<LearnerLearningPlanApi.PreviewSubject> subjects = preparedPlans.stream()
+                    .map(plan -> new LearnerLearningPlanApi.PreviewSubject(
+                            plan.landscapeId(), metrics(plan.blocks(), date, mastery)))
+                    .toList();
+            LearnerLearningPlanApi.Metrics totals = new LearnerLearningPlanApi.Metrics(0, 0, 0, 0, 0, 0, 0);
+            for (LearnerLearningPlanApi.PreviewSubject subject : subjects) {
+                totals = addMetrics(totals, subject.metrics());
+            }
+            days.add(new LearnerLearningPlanApi.PreviewDay(date, subjects, totals));
+        }
+        return new LearnerLearningPlanApi.PreviewResponse(asOf, List.copyOf(days));
+    }
+
+    /**
      * Atomically materializes every submitted subject plan and turns the set
      * into the learner's active guided plan package. All revisions, scopes,
      * block foci, and fingerprints are validated before the first row changes.
@@ -335,24 +385,8 @@ public class LearnerLearningPlanService {
             throw badRequest("request is required");
         }
         LocalDate asOf = requireCurrentMutationDate(request.asOf(), "activation");
-        if (request.plans() == null || request.plans().isEmpty()) {
-            throw badRequest("plans must not be empty");
-        }
-        if (request.plans().size() > MAX_ACTIVATION_PLANS) {
-            throw badRequest("plans exceeds the supported limit");
-        }
-
         LinkedHashMap<String, LearnerLearningPlanApi.ActivationPlan> requestedByLandscape =
-                new LinkedHashMap<>();
-        for (LearnerLearningPlanApi.ActivationPlan requested : request.plans()) {
-            if (requested == null) {
-                throw badRequest("plans must not contain null entries");
-            }
-            String landscapeId = requireText(requested.landscapeId(), "landscapeId", 255);
-            if (requestedByLandscape.putIfAbsent(landscapeId, requested) != null) {
-                throw badRequest("landscapeId must be unique within an activation request");
-            }
-        }
+                requestedActivationPlans(request);
 
         learners.acquireLearningPlanMutationLock(skillpilotId);
         Learner learner = learners.getLearner(skillpilotId);
@@ -435,6 +469,30 @@ public class LearnerLearningPlanService {
                 selectedCandidate == null ? null : selectedCandidate.dueGoal().focusGoalId(),
                 effectiveActiveGoalId,
                 transition.state());
+    }
+
+    private LinkedHashMap<String, LearnerLearningPlanApi.ActivationPlan> requestedActivationPlans(
+            LearnerLearningPlanApi.ActivateRequest request) {
+        if (request.plans() == null || request.plans().isEmpty()) {
+            throw badRequest("plans must not be empty");
+        }
+        if (request.plans().size() > MAX_ACTIVATION_PLANS) {
+            throw badRequest("plans exceeds the supported limit");
+        }
+
+        LinkedHashMap<String, LearnerLearningPlanApi.ActivationPlan> requestedByLandscape =
+                new LinkedHashMap<>();
+        for (LearnerLearningPlanApi.ActivationPlan requested : request.plans()) {
+            if (requested == null) {
+                throw badRequest("plans must not contain null entries");
+            }
+            String landscapeId = requireText(requested.landscapeId(), "landscapeId", 255);
+            if (requestedByLandscape.putIfAbsent(landscapeId, requested) != null) {
+                throw badRequest("landscapeId must be unique within an activation request");
+            }
+        }
+
+        return requestedByLandscape;
     }
 
     private void assertNoCurrentStoredPlanIsHidden(
@@ -637,10 +695,24 @@ public class LearnerLearningPlanService {
             Long requestedRevision,
             String requestedPlanLabel,
             List<LearnerLearningPlanApi.Block> requestedBlocks) {
+        return preparePlan(skillpilotId, learner, landscapeId, requestedRevision,
+                requestedPlanLabel, requestedBlocks, true);
+    }
+
+    private PreparedPlan preparePlan(
+            String skillpilotId,
+            Learner learner,
+            String landscapeId,
+            Long requestedRevision,
+            String requestedPlanLabel,
+            List<LearnerLearningPlanApi.Block> requestedBlocks,
+            boolean forUpdate) {
         long expectedRevision = requireExpectedRevision(requestedRevision);
         String planLabel = optionalText(requestedPlanLabel, "planLabel", 160);
         LearnerPlanningScopeResponse scope = learners.getPlanningScope(skillpilotId, landscapeId);
-        Optional<LearnerLearningPlan> existing = plans.findForUpdate(skillpilotId, landscapeId);
+        Optional<LearnerLearningPlan> existing = forUpdate
+                ? plans.findForUpdate(skillpilotId, landscapeId)
+                : plans.findByLearner_SkillpilotIdAndLandscapeId(skillpilotId, landscapeId);
         if (existing.isEmpty() && expectedRevision != 0) {
             throw conflict("expectedRevision must be 0 when creating a learning plan");
         }
@@ -838,19 +910,7 @@ public class LearnerLearningPlanService {
         }
 
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        List<String> due = dueAtomicGoalIds(blocks, asOf);
-        Set<String> dueBeforeToday = Set.copyOf(dueAtomicGoalIds(blocks, asOf.minusDays(1)));
-        List<String> dueToday = due.stream()
-                .filter(goalId -> !dueBeforeToday.contains(goalId))
-                .toList();
-        int completed = (int) due.stream()
-                .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
-                .count();
-        int completedToday = (int) dueToday.stream()
-                .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
-                .count();
-        int openDue = due.size() - completed;
-        int openDueToday = dueToday.size() - completedToday;
+        LearnerLearningPlanApi.Metrics metrics = metrics(blocks, asOf, mastery);
         Optional<DueGoal> eligible = !stale
                 ? firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
                 : Optional.empty();
@@ -877,14 +937,7 @@ public class LearnerLearningPlanService {
                 period(blocks),
                 currentBlock(blocks, asOf).orElse(null),
                 nextMilestone(blocks, asOf).orElse(null),
-                new LearnerLearningPlanApi.Metrics(
-                        due.size(),
-                        completed,
-                        openDue,
-                        dueToday.size(),
-                        completedToday,
-                        openDueToday,
-                        atomicIds(blocks).size()),
+                metrics,
                 buffer(blocks, asOf),
                 new LearnerLearningPlanApi.Pace(
                         "neutral",
@@ -895,6 +948,45 @@ public class LearnerLearningPlanService {
                 continueReason,
                 canContinue);
         return new Evaluation(summary, blocks);
+    }
+
+    /** Shared, side-effect-free calculation for published plans and draft previews. */
+    private LearnerLearningPlanApi.Metrics metrics(
+            List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf,
+            Map<String, Double> mastery) {
+        List<String> due = dueAtomicGoalIds(blocks, asOf);
+        Set<String> dueBeforeToday = Set.copyOf(dueAtomicGoalIds(blocks, asOf.minusDays(1)));
+        List<String> dueToday = due.stream()
+                .filter(goalId -> !dueBeforeToday.contains(goalId))
+                .toList();
+        int completed = (int) due.stream()
+                .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
+                .count();
+        int completedToday = (int) dueToday.stream()
+                .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
+                .count();
+        return new LearnerLearningPlanApi.Metrics(
+                due.size(),
+                completed,
+                due.size() - completed,
+                dueToday.size(),
+                completedToday,
+                dueToday.size() - completedToday,
+                atomicIds(blocks).size());
+    }
+
+    private static LearnerLearningPlanApi.Metrics addMetrics(
+            LearnerLearningPlanApi.Metrics left,
+            LearnerLearningPlanApi.Metrics right) {
+        return new LearnerLearningPlanApi.Metrics(
+                Math.addExact(left.dueThroughToday(), right.dueThroughToday()),
+                Math.addExact(left.completedDueThroughToday(), right.completedDueThroughToday()),
+                Math.addExact(left.openDueThroughToday(), right.openDueThroughToday()),
+                Math.addExact(left.dueToday(), right.dueToday()),
+                Math.addExact(left.completedDueToday(), right.completedDueToday()),
+                Math.addExact(left.openDueToday(), right.openDueToday()),
+                Math.addExact(left.totalPlanned(), right.totalPlanned()));
     }
 
     private Optional<DueGoal> firstEligibleDueGoal(

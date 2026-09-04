@@ -1,26 +1,28 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { AlertTriangle, CheckCircle2, Layers3, Pencil, RefreshCw, Send } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, Eye, Layers3, Pencil, RefreshCw, Send } from 'lucide-react'
 
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { ToastKind } from '../hooks/useToast'
-import type { LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
+import type { LearnerLearningPlanDetail, PreviewLearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ClassSession } from '../trainerTypes'
 import {
   activateLearnerLearningPlans,
-  getLearnerLearningPlan,
+  previewLearnerLearningPlans,
   LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT,
   LearnerLearningPlanApiError,
 } from '../utils/learnerLearningPlanApi'
-import { berlinDateKey } from '../utils/learnerLearningPlanReadModel'
-import { loadTeacherCoursePlan } from '../utils/localTeacherCoursePlan'
+import { berlinDateKey, millisecondsUntilNextBerlinDateBoundary } from '../utils/learnerLearningPlanReadModel'
 import type { RuntimeCurriculumCatalogState } from '../utils/runtimeCurriculumCatalog'
 import {
   learnerPlanCopyMatchesServer,
-  loadTeacherLearningPlanActivationSubject,
+  loadTeacherLearningPlanActivation,
+  teacherLearningPlanActivationRequest,
+  teacherLearningPlanDraftsMatch,
   type TeacherLearningPlanActivationStatus,
   type TeacherLearningPlanActivationSubject,
 } from '../utils/teacherLearningPlanActivation'
 import { getExistingLearnerSubjectIds } from '../utils/existingLearnerClass'
+import { TrainerLearningPlanPreviewSummary } from './TrainerLearningPlanPreview'
 
 interface TrainerLearningPlanActivationProps {
   classSession: ClassSession
@@ -31,34 +33,44 @@ interface TrainerLearningPlanActivationProps {
   refreshToken: number
   hasUnsavedActiveDraft: boolean
   onSelectSubject: (landscapeId: string) => void
+  onPreview?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
 }
 
 interface ActivationSnapshot {
+  context: unknown
   asOf: string
   subjects: TeacherLearningPlanActivationSubject[]
+  allSubjects: TeacherLearningPlanActivationSubject[]
+  preview: PreviewLearnerLearningPlansResponse
 }
 
 const copyFor = (language: 'de' | 'en') => language === 'de'
   ? {
       eyebrow: 'Gemeinsame Lernplanung',
-      title: 'Fachpläne gemeinsam wirksam machen',
-      body: 'SkillPilot prüft alle vorbereiteten Fachpläne und aktiviert sie mit einer Bestätigung gemeinsam. Das erste fällige Lernziel startet automatisch.',
+      title: 'Alle Fächer gemeinsam',
+      body: 'Die Tagesanforderungen aller aktiven Fächer zählen zusammen. Der Schüler wird im Chat automatisch geführt.',
       loading: 'Fachpläne werden geprüft …',
       retry: 'Erneut prüfen',
       edit: 'Fachplan bearbeiten',
-      activate: (count: number) => `Planung mit ${count} Fachplänen wirksam machen`,
+      activate: 'Für Schüler aktivieren',
+      update: 'Änderungen übernehmen',
+      current: 'Aktiv für den Schüler',
+      preview: 'Schülervorschau',
+      localOnly: 'Entwürfe nur auf diesem Gerät · erst nach Bestätigung beim Schüler wirksam',
+      paused: 'Planbegleitetes Lernen ist derzeit ausgeschaltet.',
       noPlans: 'Noch ist kein berechenbarer Fachplan vorbereitet.',
       blocked: 'Mindestens ein angelegter Fachplan ist noch nicht vollständig berechenbar. Öffne das Fach und korrigiere den Entwurf, bevor du die Planung gemeinsam aktivierst.',
       unavailable: 'Der Cockpit-Stand konnte nicht zuverlässig geprüft werden. Die gemeinsame Aktivierung bleibt deshalb gesperrt.',
-      confirmTitle: 'Alle Fachpläne gemeinsam aktivieren?',
-      confirmBody: 'Dieser eine Schritt ersetzt die aufgeführten Fachpläne im Cockpit atomar, schaltet planbegleitetes Lernen ein und wählt sofort das erste fällige, zulässige Lernziel aus.',
+      scopeChanged: 'Beim Schüler gibt es weitere gültige Fachpläne, die in dieser Fächerauswahl fehlen. Prüfe das persönliche Curriculum und aktualisiere die Fächerauswahl, bevor du die gemeinsame Planung übernimmst.',
+      confirmTitle: 'Diese Planung für den Schüler übernehmen?',
+      confirmBody: 'Die aufgeführten Fächer werden gemeinsam übernommen. Planbegleitetes Lernen wird eingeschaltet und ein fälliges, zulässiges Lernziel startet automatisch.',
       cancel: 'Abbrechen',
-      confirm: 'Jetzt wirksam machen',
+      confirm: 'Planung jetzt übernehmen',
       saving: 'Wird wirksam gemacht …',
       successStarted: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Das erste fällige Lernziel ist ausgewählt.`,
       successIdle: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Heute ist kein startbares Planziel fällig.`,
-      rejected: 'Die gemeinsame Aktivierung wurde atomar abgelehnt. Kein Fachplan wird als neu wirksam dargestellt. Bitte prüfe die Planung und versuche es erneut.',
+      rejected: 'Die Planung konnte nicht übernommen werden. Es wurde kein Fachplan geändert. Bitte prüfe den aktuellen Stand und versuche es erneut.',
       prerequisiteScheduleConflict: 'Ein Fachplan konnte in den gewählten Zeiträumen nicht automatisch voraussetzungsgerecht verteilt werden. Öffne den Fachplan und passe die überlappenden Lernabschnitte an. Es wurde nichts übernommen.',
       outcomeUnknown: 'Das Ergebnis der gemeinsamen Aktivierung konnte nicht sicher bestätigt werden. Es wird kein Fachplan als neu wirksam dargestellt. Bitte prüfe zuerst den Cockpit-Stand erneut.',
       changed: 'Ein Fachplan hat sich während der Bestätigung geändert. Bitte prüfe die gemeinsame Planung erneut.',
@@ -66,33 +78,39 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       unsaved: 'Speichere oder verwirf zuerst die Änderungen im aktuell geöffneten Fachplan.',
       status: {
         draft: 'Entwurf',
-        'not-ready': 'Nicht bereit',
-        ready: 'Bereit',
-        current: 'Im Cockpit · aktuell',
-        'cockpit-only': 'Im Cockpit · kein lokaler Entwurf',
-        'update-required': 'Aktualisierung nötig',
+        'not-ready': 'Prüfung nötig',
+        ready: 'Bereit zur Aktivierung',
+        current: 'Aktiv für den Schüler',
+        'cockpit-only': 'Aktiv · kein lokaler Entwurf',
+        'update-required': 'Änderungen noch nicht übernommen',
         unavailable: 'Prüfung nicht möglich',
       } satisfies Record<TeacherLearningPlanActivationStatus, string>,
     }
   : {
       eyebrow: 'Shared learning plan',
-      title: 'Activate subject plans together',
-      body: 'SkillPilot checks every prepared subject plan and activates them together with one confirmation. The first due goal starts automatically.',
+      title: 'All subjects together',
+      body: 'Daily requirements from every active subject add up. The learner is guided automatically in the chat.',
       loading: 'Checking subject plans …',
       retry: 'Check again',
       edit: 'Edit subject plan',
-      activate: (count: number) => `Activate planning with ${count} subject plans`,
+      activate: 'Activate for learner',
+      update: 'Apply changes',
+      current: 'Active for learner',
+      preview: 'Learner preview',
+      localOnly: 'Drafts on this device only · applied to the learner after confirmation',
+      paused: 'Plan-guided learning is currently switched off.',
       noPlans: 'No calculable subject plan has been prepared yet.',
       blocked: 'At least one existing subject plan is not fully calculable. Open that subject and correct the draft before activating the shared planning.',
       unavailable: 'The cockpit state could not be checked reliably, so shared activation remains unavailable.',
-      confirmTitle: 'Activate all subject plans together?',
-      confirmBody: 'This one step atomically replaces the listed cockpit plans, enables plan-guided learning, and immediately selects the first due eligible goal.',
+      scopeChanged: 'The learner has other valid subject plans missing from this subject selection. Check the personal curriculum and update the subject selection before applying the shared planning.',
+      confirmTitle: 'Apply this planning for the learner?',
+      confirmBody: 'The listed subjects will be applied together. Plan-guided learning will be enabled and a due eligible goal will start automatically.',
       cancel: 'Cancel',
-      confirm: 'Activate now',
+      confirm: 'Apply planning now',
       saving: 'Activating …',
       successStarted: (count: number) => `${count} subject plans are active together. The first due goal is selected.`,
       successIdle: (count: number) => `${count} subject plans are active together. No eligible plan goal is due today.`,
-      rejected: 'The shared activation was rejected atomically. No subject plan is shown as newly active. Check the planning and try again.',
+      rejected: 'The planning could not be applied. No subject plan was changed. Check the current state and try again.',
       prerequisiteScheduleConflict: 'A subject plan could not be distributed prerequisite-safely across the selected periods automatically. Open that subject plan and adjust the overlapping learning sections. Nothing was applied.',
       outcomeUnknown: 'The result of the shared activation could not be confirmed safely. No subject plan is shown as newly active. Check the cockpit state first.',
       changed: 'A subject plan changed during confirmation. Check the shared planning again.',
@@ -100,11 +118,11 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       unsaved: 'Save or discard the changes in the currently open subject plan first.',
       status: {
         draft: 'Draft',
-        'not-ready': 'Not ready',
-        ready: 'Ready',
-        current: 'In cockpit · current',
-        'cockpit-only': 'In cockpit · no local draft',
-        'update-required': 'Update required',
+        'not-ready': 'Needs checking',
+        ready: 'Ready to activate',
+        current: 'Active for learner',
+        'cockpit-only': 'Active · no local draft',
+        'update-required': 'Changes not applied yet',
         unavailable: 'Cannot verify',
       } satisfies Record<TeacherLearningPlanActivationStatus, string>,
     }
@@ -134,10 +152,15 @@ export const TrainerLearningPlanActivation = ({
   refreshToken,
   hasUnsavedActiveDraft,
   onSelectSubject,
+  onPreview,
   onNotify,
 }: TrainerLearningPlanActivationProps) => {
   const copy = useMemo(() => copyFor(language), [language])
   const [subjects, setSubjects] = useState<TeacherLearningPlanActivationSubject[]>([])
+  const [followLearningPlans, setFollowLearningPlans] = useState(false)
+  const [loadedContext, setLoadedContext] = useState<unknown>(null)
+  const [checkedAsOf, setCheckedAsOf] = useState('')
+  const [checkedRefreshToken, setCheckedRefreshToken] = useState(refreshToken)
   const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading')
   const [reloadToken, setReloadToken] = useState(0)
   const [confirmation, setConfirmation] = useState<ActivationSnapshot | null>(null)
@@ -148,6 +171,9 @@ export const TrainerLearningPlanActivation = ({
   const prepareInFlightRef = useRef(false)
   const activationInFlightRef = useRef(false)
   const activationRequestTokenRef = useRef(0)
+  const prepareControllerRef = useRef<AbortController | null>(null)
+  const activeContextRef = useRef<unknown>(null)
+  const confirmationHeadingRef = useRef<HTMLHeadingElement>(null)
   const hasUnsavedActiveDraftRef = useRef(hasUnsavedActiveDraft)
   hasUnsavedActiveDraftRef.current = hasUnsavedActiveDraft
 
@@ -158,63 +184,52 @@ export const TrainerLearningPlanActivation = ({
   ), [classSession.personalConfig, classSession.rootLandscapeId, landscapeEntries])
   const subjectKey = subjectIds.join('\u0000')
 
-  const loadSubjects = useCallback(async (asOf: string, signal?: AbortSignal) => {
-    const entriesById = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
-    const serverStates = await Promise.all(subjectIds.map(async (landscapeId) => {
-      try {
-        const plan = await getLearnerLearningPlan(learnerId, landscapeId, asOf, { signal })
-        return { landscapeId, plan, available: true }
-      } catch (loadError) {
-        if (signal?.aborted) throw loadError
-        if (loadError instanceof LearnerLearningPlanApiError && loadError.status === 404) {
-          return { landscapeId, plan: null, available: true }
-        }
-        return { landscapeId, plan: null, available: false }
-      }
-    }))
-    const serverByLandscape = new Map(serverStates.map((state) => [state.landscapeId, state]))
-    return Promise.all(subjectIds.map((landscapeId, index) => {
-      const entry = entriesById.get(landscapeId)
-      const label = entry?.meta.subject?.trim()
-        || entry?.meta.title?.trim()
-        || (language === 'de' ? `Fach ${index + 1}` : `Subject ${index + 1}`)
-      const server = serverByLandscape.get(landscapeId)
-      return loadTeacherLearningPlanActivationSubject({
-        classSession,
-        landscapeId,
-        label,
-        landscapeEntries,
-        runtimeCatalogState,
-        serverPlan: server?.plan ?? null,
-        serverAvailable: server?.available === true,
-        signal,
-      })
-    }))
-  }, [classSession, landscapeEntries, language, learnerId, runtimeCatalogState, subjectIds])
+  const context = useMemo(() => ({ classSession, learnerId, landscapeEntries, runtimeCatalogState, language }),
+    [classSession, learnerId, landscapeEntries, runtimeCatalogState, language])
+  activeContextRef.current = context
+  const loadSubjects = useCallback((asOf: string, signal?: AbortSignal) => (
+    loadTeacherLearningPlanActivation(context, asOf, signal)
+  ), [context])
 
   useEffect(() => {
     const controller = new AbortController()
     const token = loadRequestTokenRef.current + 1
     loadRequestTokenRef.current = token
     setLoadState('loading')
+    setActivationState('idle')
     setConfirmation(null)
     setMessage('')
     setError('')
-    void loadSubjects(berlinDateKey(), controller.signal).then((nextSubjects) => {
+    void loadSubjects(berlinDateKey(), controller.signal).then((snapshot) => {
       if (controller.signal.aborted || loadRequestTokenRef.current !== token) return
-      setSubjects(nextSubjects)
+      setSubjects(snapshot.subjects)
+      setFollowLearningPlans(snapshot.followLearningPlans)
+      setLoadedContext(context)
+      setCheckedAsOf(snapshot.asOf)
+      setCheckedRefreshToken(refreshToken)
       setLoadState('ready')
     }).catch((loadError) => {
       if (controller.signal.aborted || loadRequestTokenRef.current !== token) return
       console.warn('Could not inspect shared teacher learning plans', loadError)
       setLoadState('error')
+      if (loadError instanceof Error && loadError.message === 'learning-plan-subject-scope-changed') setError(copy.scopeChanged)
     })
-    return () => controller.abort()
-  }, [loadSubjects, refreshToken, reloadToken, subjectKey])
+    const timer = window.setTimeout(() => setReloadToken((value) => value + 1), millisecondsUntilNextBerlinDateBoundary())
+    return () => {
+      controller.abort()
+      prepareControllerRef.current?.abort()
+      loadRequestTokenRef.current += 1
+      activationRequestTokenRef.current += 1
+      prepareInFlightRef.current = false
+      activationInFlightRef.current = false
+      window.clearTimeout(timer)
+    }
+  }, [context, copy.scopeChanged, loadSubjects, refreshToken, reloadToken, subjectKey])
 
   useEffect(() => {
     if (!hasUnsavedActiveDraft || !confirmation || activationState !== 'idle') return
     loadRequestTokenRef.current += 1
+    prepareControllerRef.current?.abort()
     prepareInFlightRef.current = false
     setConfirmation(null)
     setMessage('')
@@ -222,19 +237,33 @@ export const TrainerLearningPlanActivation = ({
     setLoadState('ready')
   }, [activationState, confirmation, copy.changed, hasUnsavedActiveDraft])
 
-  const activatableSubjects = subjects.filter((subject) => subject.copy !== null)
-  const hasBlockingPlan = subjects.some((subject) => (
+  useEffect(() => {
+    if (!confirmation || confirmation.context !== context || hasUnsavedActiveDraft) return
+    confirmationHeadingRef.current?.scrollIntoView({ block: 'nearest' })
+    confirmationHeadingRef.current?.focus({ preventScroll: true })
+  }, [confirmation, context, hasUnsavedActiveDraft])
+
+  const snapshotIsCurrent = loadedContext === context && checkedRefreshToken === refreshToken && checkedAsOf === berlinDateKey()
+  const currentSubjects = snapshotIsCurrent ? subjects : []
+  const activatableSubjects = currentSubjects.filter((subject) => subject.copy !== null)
+  const hasBlockingPlan = currentSubjects.some((subject) => (
     (Boolean(subject.serverPlan) || Boolean(subject.localPlan?.blocks.length))
     && !subject.copy
   ))
   const hasUnavailableState = loadState === 'error'
-    || subjects.some((subject) => subject.status === 'unavailable')
+    || currentSubjects.some((subject) => subject.status === 'unavailable')
+  const allCurrent = followLearningPlans && activatableSubjects.length > 0
+    && !hasBlockingPlan && !hasUnavailableState
+    && activatableSubjects.every((subject) => subject.status === 'current' || subject.status === 'cockpit-only')
+  const hasActivePlans = followLearningPlans && currentSubjects.some((subject) => subject.serverPlan !== null)
   const activationDisabled = loadState !== 'ready'
     || activationState !== 'idle'
     || activatableSubjects.length === 0
     || hasBlockingPlan
     || hasUnavailableState
     || hasUnsavedActiveDraft
+    || allCurrent
+    || !snapshotIsCurrent
 
   const prepareActivation = async () => {
     if (
@@ -244,6 +273,8 @@ export const TrainerLearningPlanActivation = ({
       || hasUnsavedActiveDraftRef.current
     ) return
     prepareInFlightRef.current = true
+    const controller = new AbortController()
+    prepareControllerRef.current = controller
     const token = loadRequestTokenRef.current + 1
     loadRequestTokenRef.current = token
     const asOf = berlinDateKey()
@@ -251,10 +282,14 @@ export const TrainerLearningPlanActivation = ({
     setMessage('')
     setError('')
     try {
-      const latest = await loadSubjects(asOf)
-      if (loadRequestTokenRef.current !== token) return
+      const snapshot = await loadSubjects(asOf, controller.signal)
+      if (controller.signal.aborted || loadRequestTokenRef.current !== token || activeContextRef.current !== context) return
+      const latest = snapshot.subjects
       setSubjects(latest)
-      setLoadState('ready')
+      setFollowLearningPlans(snapshot.followLearningPlans)
+      setLoadedContext(context)
+      setCheckedAsOf(asOf)
+      setCheckedRefreshToken(refreshToken)
       const latestActivatable = latest.filter((subject) => subject.copy !== null)
       const latestBlocked = latest.some((subject) => (
         (Boolean(subject.serverPlan) || Boolean(subject.localPlan?.blocks.length))
@@ -269,20 +304,38 @@ export const TrainerLearningPlanActivation = ({
       ) {
         if (hasUnsavedActiveDraftRef.current) setError(copy.changed)
         else if (berlinDateKey() !== asOf) setError(copy.dayChanged)
+        setLoadState('ready')
         return
       }
-      setConfirmation({ asOf, subjects: latestActivatable })
+      const preview = await previewLearnerLearningPlans(learnerId,
+        teacherLearningPlanActivationRequest(asOf, latestActivatable), { signal: controller.signal })
+      if (controller.signal.aborted || loadRequestTokenRef.current !== token || activeContextRef.current !== context) return
+      setLoadState('ready')
+      if (hasUnsavedActiveDraftRef.current || !teacherLearningPlanDraftsMatch(latest)) {
+        setError(copy.changed)
+        return
+      }
+      if (berlinDateKey() !== asOf) { setError(copy.dayChanged); return }
+      setConfirmation({ context, asOf, subjects: latestActivatable, allSubjects: latest, preview })
     } catch (loadError) {
+      if (controller.signal.aborted || loadRequestTokenRef.current !== token) return
       console.warn('Could not prepare shared teacher learning plans', loadError)
-      if (loadRequestTokenRef.current === token) setLoadState('error')
+      setLoadState('error')
+      setError(loadError instanceof LearnerLearningPlanApiError
+        && loadError.errorCode === LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT
+        ? copy.prerequisiteScheduleConflict
+        : loadError instanceof Error && loadError.message === 'learning-plan-subject-scope-changed'
+          ? copy.scopeChanged : copy.unavailable)
     } finally {
-      prepareInFlightRef.current = false
+      if (loadRequestTokenRef.current === token) prepareInFlightRef.current = false
     }
   }
 
   const confirmActivation = async () => {
     if (
       !confirmation
+      || confirmation.context !== context
+      || !snapshotIsCurrent
       || activationState !== 'idle'
       || activationInFlightRef.current
       || hasUnsavedActiveDraftRef.current
@@ -299,17 +352,7 @@ export const TrainerLearningPlanActivation = ({
       setReloadToken((current) => current + 1)
       return
     }
-    const changed = confirmation.subjects.some((subject) => {
-      const current = loadTeacherCoursePlan(subject.storageId)
-      if (current.quality.status !== 'complete') return true
-      if (subject.activationSource === 'server') {
-        return Boolean(current.plan?.blocks.length)
-      }
-      return subject.activationSource !== 'local'
-        || !current.plan
-        || current.plan.revision !== subject.localPlan?.revision
-        || JSON.stringify(current.plan) !== JSON.stringify(subject.localPlan)
-    })
+    const changed = !teacherLearningPlanDraftsMatch(confirmation.allSubjects)
     if (changed) {
       setConfirmation(null)
       setError(copy.changed)
@@ -323,16 +366,9 @@ export const TrainerLearningPlanActivation = ({
     setMessage('')
     setError('')
     try {
-      const response = await activateLearnerLearningPlans(learnerId, {
-        asOf: confirmation.asOf,
-        plans: confirmation.subjects.map((subject) => ({
-          landscapeId: subject.landscapeId,
-          expectedRevision: subject.expectedRevision,
-          planLabel: subject.copy!.planLabel,
-          blocks: subject.copy!.blocks,
-        })),
-      })
-      if (activationRequestTokenRef.current !== token) return
+      const response = await activateLearnerLearningPlans(learnerId,
+        teacherLearningPlanActivationRequest(confirmation.asOf, confirmation.subjects))
+      if (activationRequestTokenRef.current !== token || activeContextRef.current !== context) return
       const responseByLandscape = new Map(
         response.plans.map((plan) => [plan.landscapeId, plan]),
       )
@@ -373,6 +409,7 @@ export const TrainerLearningPlanActivation = ({
         ? copy.successStarted(confirmation.subjects.length)
         : copy.successIdle(confirmation.subjects.length)
       setConfirmation(null)
+      setFollowLearningPlans(true)
       setMessage(successMessage)
       onNotify?.('success', successMessage)
       const serverByLandscape = responseByLandscape as Map<string, LearnerLearningPlanDetail>
@@ -391,7 +428,7 @@ export const TrainerLearningPlanActivation = ({
         }
       }))
     } catch (activationError) {
-      if (activationRequestTokenRef.current !== token) return
+      if (activationRequestTokenRef.current !== token || activeContextRef.current !== context) return
       console.warn('Could not activate shared teacher learning plans', activationError)
       setConfirmation(null)
       const requestWasDefinitelyRejected = activationError instanceof LearnerLearningPlanApiError
@@ -427,40 +464,42 @@ export const TrainerLearningPlanActivation = ({
 
   return (
     <section
-      className="rounded-2xl border-2 border-violet-300 bg-violet-50/70 p-5 text-violet-950 shadow-sm dark:border-violet-900/70 dark:bg-violet-950/20 dark:text-violet-100"
+      className="rounded-2xl border border-border-color bg-white p-4 text-text-primary shadow-sm dark:bg-slate-950"
       aria-labelledby="trainer-learning-plan-activation-title"
       data-testid="trainer-learning-plan-activation"
     >
-      <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+      <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:justify-between">
         <div className="min-w-0">
-          <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+          <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-300">
             <Layers3 size={16} aria-hidden="true" />
             {copy.eyebrow}
           </p>
-          <h2 id="trainer-learning-plan-activation-title" className="mt-2 text-xl font-semibold">
+          <h2 id="trainer-learning-plan-activation-title" className="mt-1 text-lg font-semibold">
             {copy.title}
           </h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 opacity-90">{copy.body}</p>
+          <p className="mt-1 max-w-3xl text-sm leading-5 text-text-secondary">{copy.body}</p>
         </div>
         <div className="flex shrink-0 flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setReloadToken((current) => current + 1)}
             disabled={loadState === 'loading' || activationState === 'saving'}
+            aria-label={copy.retry}
+            title={copy.retry}
             className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-violet-300 bg-sidebar-bg px-3 py-2 text-sm font-medium text-text-primary hover:bg-violet-100 disabled:cursor-wait disabled:opacity-50 dark:border-violet-800 dark:hover:bg-violet-950/40"
           >
             <RefreshCw size={16} aria-hidden="true" />
-            {copy.retry}
           </button>
+          {onPreview && <button type="button" onClick={onPreview} disabled={activationState === 'saving'} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-medium disabled:opacity-50"><Eye size={16} aria-hidden="true" />{copy.preview}</button>}
           <button
             type="button"
             onClick={() => void prepareActivation()}
             disabled={activationDisabled}
             aria-describedby={explanation ? 'trainer-learning-plan-activation-explanation' : undefined}
-            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-violet-700 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-sky-700 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <Send size={17} aria-hidden="true" />
-            {copy.activate(activatableSubjects.length)}
+            {allCurrent ? <CheckCircle2 size={17} aria-hidden="true" /> : <Send size={17} aria-hidden="true" />}
+            {allCurrent ? copy.current : hasActivePlans ? copy.update : copy.activate}
           </button>
         </div>
       </div>
@@ -468,28 +507,25 @@ export const TrainerLearningPlanActivation = ({
       {loadState === 'loading' ? (
         <p className="mt-4 text-sm" role="status">{copy.loading}</p>
       ) : (
-        <ul className="mt-4 grid gap-2 lg:grid-cols-2" aria-label={copy.eyebrow}>
-          {subjects.map((subject) => (
-            <li key={subject.landscapeId} className="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-violet-200 bg-sidebar-bg p-3 dark:border-violet-900/60">
-              <div className="min-w-0">
-                <p className="truncate text-sm font-semibold text-text-primary">{subject.label}</p>
-                <span className={`mt-1 inline-flex rounded-full border px-2 py-0.5 text-xs font-semibold ${statusClassName(subject.status)}`}>
-                  {copy.status[subject.status]}
-                </span>
-              </div>
+        <ul className="mt-3 flex flex-wrap gap-2" aria-label={copy.eyebrow}>
+          {currentSubjects.map((subject) => (
+            <li key={subject.landscapeId} className="max-w-full">
               <button
                 type="button"
                 onClick={() => onSelectSubject(subject.landscapeId)}
-                className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-xs font-medium text-text-primary hover:border-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/30"
+                disabled={activationState === 'saving'}
+                className={`inline-flex min-h-11 max-w-full items-center gap-2 rounded-xl border px-3 py-2 text-left hover:ring-2 hover:ring-sky-200 disabled:opacity-50 ${statusClassName(subject.status)} ${subject.landscapeId === classSession.landscapeId ? 'ring-2 ring-sky-400 ring-offset-1' : ''}`}
                 aria-label={`${copy.edit}: ${subject.label}`}
+                aria-pressed={subject.landscapeId === classSession.landscapeId}
               >
-                <Pencil size={15} aria-hidden="true" />
-                {copy.edit}
+                <span className="min-w-0"><span className="block text-sm font-semibold">{subject.label}</span><span className="block text-xs">{copy.status[subject.status]}</span></span>
+                <Pencil size={14} className="shrink-0" aria-hidden="true" />
               </button>
             </li>
           ))}
         </ul>
       )}
+      <p className="mt-2 text-xs leading-5 text-text-secondary">{copy.localOnly}{loadState === 'ready' && !followLearningPlans && currentSubjects.some((subject) => subject.serverPlan) ? ` · ${copy.paused}` : ''}</p>
 
       {explanation && loadState !== 'loading' && (
         <p id="trainer-learning-plan-activation-explanation" className="mt-3 flex items-start gap-2 text-sm leading-6" role={hasUnavailableState ? 'alert' : undefined}>
@@ -498,15 +534,11 @@ export const TrainerLearningPlanActivation = ({
         </p>
       )}
 
-      {confirmation && (
+      {confirmation && snapshotIsCurrent && confirmation.context === context && confirmation.asOf === berlinDateKey() && (
         <div className="mt-5 rounded-xl border border-violet-400 bg-white p-4 text-text-primary dark:bg-slate-950" data-testid="trainer-learning-plan-activation-confirmation">
-          <h3 className="font-semibold">{copy.confirmTitle}</h3>
+          <h3 ref={confirmationHeadingRef} tabIndex={-1} className="font-semibold outline-none">{copy.confirmTitle}</h3>
           <p className="mt-2 text-sm leading-6 text-text-secondary">{copy.confirmBody}</p>
-          <ul className="mt-3 list-inside list-disc text-sm">
-            {confirmation.subjects.map((subject) => (
-              <li key={subject.landscapeId}>{subject.label}</li>
-            ))}
-          </ul>
+          <div className="mt-4"><TrainerLearningPlanPreviewSummary preview={confirmation.preview} subjects={confirmation.subjects} language={language} compact /></div>
           <div className="mt-4 flex flex-wrap justify-end gap-2">
             <button
               type="button"

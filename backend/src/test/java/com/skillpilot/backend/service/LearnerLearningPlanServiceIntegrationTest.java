@@ -112,6 +112,161 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void draftPreviewUsesAdditiveRuntimeMetricsWithoutChangingExistingPlansOrLearnerState() {
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        List.of("atom-a", "atom-b", "atom-c", "atom-d")));
+        List<LearnerLearningPlanApi.Block> mathBlocks = List.of(
+                learning("backlog", "2026-09-03", "2026-09-03", "atom-a"),
+                learning("today-1", "2026-09-04", "2026-09-04", "atom-b"),
+                learning("today-2", "2026-09-04", "2026-09-04", "atom-c", "atom-b"),
+                learning("future", "2026-09-07", "2026-09-10", "atom-d"));
+        List<LearnerLearningPlanApi.Block> physicsBlocks = List.of(
+                learning("backlog", "2026-09-03", "2026-09-03", "atom-p"),
+                learning("today", "2026-09-04", "2026-09-04", "atom-q"));
+        LearnerLearningPlanApi.PlanDetail math = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Math original", mathBlocks), TODAY);
+        LearnerLearningPlanApi.PlanDetail physics = service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physics original", physicsBlocks), TODAY);
+        learner.setActiveGoalId("already-active");
+        when(learnerService.getMastery(LEARNER_ID))
+                .thenReturn(Map.of("atom-a", 0.5, "atom-b", 0.9, "atom-q", 1.0));
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        List.of("atom-a", "atom-c", "atom-d")));
+        when(learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID))
+                .thenReturn(scopeFor(PHYSICS_LANDSCAPE_ID,
+                        List.of("atom-p", "atom-q"), List.of("atom-p")));
+        LearnerLearningPlanApi.ActivateRequest request = new LearnerLearningPlanApi.ActivateRequest(
+                TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(PHYSICS_LANDSCAPE_ID,
+                                physics.revision(), "Physics draft", physicsBlocks),
+                        new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID,
+                                math.revision(), "Math draft", mathBlocks)));
+        clearInvocations(learnerService, eventPublisher);
+
+        LearnerLearningPlanApi.PreviewResponse preview = service.previewPlans(LEARNER_ID, request);
+
+        assertThat(preview.asOf()).isEqualTo(TODAY);
+        assertThat(preview.days()).hasSize(7);
+        assertThat(preview.days()).extracting(LearnerLearningPlanApi.PreviewDay::date)
+                .containsExactly(TODAY, TODAY.plusDays(1), TODAY.plusDays(2), TODAY.plusDays(3),
+                        TODAY.plusDays(4), TODAY.plusDays(5), TODAY.plusDays(6));
+        assertThat(preview.days().get(0).subjects())
+                .containsExactly(
+                        new LearnerLearningPlanApi.PreviewSubject(LANDSCAPE_ID,
+                                new LearnerLearningPlanApi.Metrics(3, 1, 2, 2, 1, 1, 4)),
+                        new LearnerLearningPlanApi.PreviewSubject(PHYSICS_LANDSCAPE_ID,
+                                new LearnerLearningPlanApi.Metrics(2, 1, 1, 1, 1, 0, 2)));
+        assertThat(preview.days().get(0).totals())
+                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 3, 2, 1, 6));
+        // Weekends remain visible. Backlog is not mistaken for newly assigned work.
+        assertThat(preview.days().get(1).totals())
+                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 0, 0, 0, 6));
+        assertThat(preview.days().get(2).totals()).isEqualTo(preview.days().get(1).totals());
+        // Runtime rounds the four-day block's first 0.25 goal down on Monday.
+        assertThat(preview.days().get(3).totals())
+                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 0, 0, 0, 6));
+        // Tuesday's newly assigned goal adds to today's unresolved backlog; no future success is invented.
+        assertThat(preview.days().get(4).totals())
+                .isEqualTo(new LearnerLearningPlanApi.Metrics(6, 2, 4, 1, 0, 1, 6));
+        assertThat(learner.getFollowLearningPlans()).isFalse();
+        assertThat(learner.getActiveGoalId()).isEqualTo("already-active");
+        assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).planLabel()).isEqualTo("Math original");
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).revision()).isEqualTo(math.revision());
+        assertThat(service.getPlan(LEARNER_ID, PHYSICS_LANDSCAPE_ID, TODAY).planLabel())
+                .isEqualTo("Physics original");
+        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(eventPublisher, never()).publishEvent(any());
+
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, true, true,
+                null, null, false, "LEARNING_PLAN_PACKAGE_ACTIVATED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true,
+                        mock(UnifiedLearnerStateResponse.class)));
+        LearnerLearningPlanApi.ActivateResponse activated = service.activatePlans(LEARNER_ID, request);
+        assertThat(activated.plans()).extracting(LearnerLearningPlanApi.PlanDetail::metrics)
+                .containsExactlyElementsOf(preview.days().get(0).subjects().stream()
+                        .map(LearnerLearningPlanApi.PreviewSubject::metrics).toList());
+    }
+
+    @Test
+    void newDraftPreviewDoesNotCreateStoredPlans() {
+        LearnerLearningPlanApi.PreviewResponse preview = service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 0L, "Draft",
+                                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"))),
+                        new LearnerLearningPlanApi.ActivationPlan(PHYSICS_LANDSCAPE_ID, 0L, "Draft",
+                                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-p"))))));
+
+        assertThat(preview.days().get(0).totals().openDueToday()).isEqualTo(2);
+        assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID)).isEmpty();
+        assertThat(learner.getFollowLearningPlans()).isFalse();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
+        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void draftPreviewFailsClosedOnStaleRevisionHiddenSubjectOrUnavailableScope() {
+        List<LearnerLearningPlanApi.Block> blocks =
+                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"));
+        service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Original", blocks), TODAY);
+        clearInvocations(learnerService, eventPublisher);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 0L, "Stale", blocks)))),
+                HttpStatus.CONFLICT);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(PHYSICS_LANDSCAPE_ID, 0L, "Hidden math",
+                                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-p")))))),
+                HttpStatus.CONFLICT);
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Scope unavailable"));
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 1L, "Unavailable", blocks)))),
+                HttpStatus.CONFLICT);
+        assertThat(planRepository.findByLearner_SkillpilotIdAndLandscapeId(LEARNER_ID, LANDSCAPE_ID))
+                .get().satisfies(plan -> {
+                    assertThat(plan.getRevision()).isEqualTo(1);
+                    assertThat(plan.getPlanLabel()).isEqualTo("Original");
+                });
+        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void draftPreviewRejectsInvalidDatesDuplicateSubjectsAndUnboundedRequests() {
+        LearnerLearningPlanApi.ActivationPlan plan = new LearnerLearningPlanApi.ActivationPlan(
+                LANDSCAPE_ID, 0L, "Draft", List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a")));
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY.minusDays(1), List.of(plan))),
+                HttpStatus.BAD_REQUEST);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY.plusDays(1), List.of(plan))),
+                HttpStatus.BAD_REQUEST);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(plan, plan))),
+                HttpStatus.BAD_REQUEST);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, java.util.Collections.nCopies(51, plan))),
+                HttpStatus.BAD_REQUEST);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of())), HttpStatus.BAD_REQUEST);
+        assertStatus(() -> service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 0L, "Empty", List.of())))),
+                HttpStatus.BAD_REQUEST);
+        assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID)).isEmpty();
+        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
     void createMaterializesOnlyOpenAtomsAndDeduplicatesInChronologicalBlockOrder() {
         LearnerLearningPlanApi.PlanDetail created = service.upsert(
                 LEARNER_ID,

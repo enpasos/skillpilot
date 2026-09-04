@@ -92,6 +92,19 @@ public class LearnerLearningPlanController {
                 .body(detail);
     }
 
+    /** POST carries unsaved drafts, but does not count as learner activity or mutate state. */
+    @PostMapping(value = "/preview", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<LearnerLearningPlanApi.PreviewResponse> previewPlans(
+            @PathVariable String skillpilotId,
+            @RequestBody LearnerLearningPlanApi.ActivateRequest request,
+            HttpServletResponse response) {
+        noStore(response);
+        learners.assertActiveLearnerRouteAccess(skillpilotId);
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(learningPlans.previewPlans(skillpilotId, request));
+    }
+
     @PostMapping(value = "/activate", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LearnerLearningPlanApi.ActivateResponse> activatePlans(
             @PathVariable String skillpilotId,

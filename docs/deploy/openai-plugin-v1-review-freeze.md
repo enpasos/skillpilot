@@ -2820,3 +2820,42 @@ sein Paket, Review-Snapshot, Portal, Reviewfälle, Fixture, Demo und UI-Bytes
 bleiben unverändert, ebenso der lokale standardmäßig deaktivierte
 OpenAI-1.1-Kandidat. Die konkreten Claude-, gemeinsamen Status-, Test-,
 Release- und Dokumentationsbytes werden append-only in der Freeze-Kette gebunden.
+
+### 6.50 Eng begrenzte Ausnahme: vereinfachte First-Party-Kursplanung mit Schülervorschau
+
+Der Product Owner hat am **4. September 2026** nach Prüfung eines interaktiven
+Entwurfs dessen Umsetzung für „Kurse planen“ freigegeben. Die Freigabe betrifft
+ausschließlich die unabhängige First-Party-Planungsoberfläche und eine lesende
+Vorschau der bereits autorisierten gemeinsamen Fachplanung:
+
+- Eine kompakte Fachübersicht unterscheidet gespeicherte Entwürfe von der
+  tatsächlich aktiven Planung. Der Planmodus wird vom Backend gelesen; das
+  bloße Vorhandensein gespeicherter Fachpläne bedeutet nicht „aktiv“.
+- „Plan bearbeiten“, „Schülervorschau“ und „Unterricht & Verlauf“ trennen die
+  Aufgaben. Bearbeitbare Abschnitte stehen direkt im Arbeitsbereich; das
+  Formular öffnet sichtbar am Abschnitt mit Tastaturfokus. Interne Wechsel
+  erhalten Eingaben. Fach-, Kurs-, Arbeitsbereichs- und Logout-Aktionen fragen
+  vor dem Verwerfen ungespeicherter Eingaben nach.
+- Die First-Party-Route `POST /api/ui/learners/{id}/learning-plans/preview`
+  berechnet sieben Kalendertage ab dem aktuellen Berliner Datum mit denselben
+  Prüfungen, Voraussetzungen, Normalisierungen und Tagesmetriken wie Aktivierung
+  und Chat. Anforderungen aller Fächer werden addiert; Überschneidungen innerhalb
+  eines Fachplans werden nach den bestehenden Regeln genau einmal zugeordnet.
+  Der aktuelle Lernstand bleibt ein Snapshot, keine Prognose künftiger Erfolge.
+- Die Vorschau nutzt ausschließlich den vorhandenen lesenden Routenzugang,
+  antwortet mit `no-store` und erzeugt keine Plan-, Revisions-, Auswahl-,
+  Präferenz-, Ereignis-, Sperr- oder Retention-Aktivitätsänderung. Nicht gespeicherte
+  Formulareingaben, veraltete Revisionen und nicht vollständig prüfbare Fachpläne
+  verhindern eine irreführende Vorschau oder Aktivierung.
+- Erst die ausdrückliche abschließende Bestätigung nutzt die unveränderte
+  atomare Aktivierung. Die Vorschau ist davor Pflicht. Unterrichtsabdeckung
+  bleibt lokale Dokumentation und setzt keine Schüler-Mastery.
+
+Die Freigabe ändert weder OpenAI- noch Claude-Tools, Pakete, Versionen,
+MCP-/OAuth-Verträge, UI-Ressourcen, Prepared Messages, Launch-Handler,
+Schüler-Sitzungen, Identität, Locale, Reviewfälle oder Veröffentlichungsstatus.
+Der eingereichte OpenAI-Coach 1.0.0, der deaktivierte lokale 1.1-Kandidat und der
+Claude-1.1.1-Kandidat bleiben unverändert. Es erfolgen keine externe Publikation,
+Portaländerung oder Produktionsaktivierung. Die eng begrenzten First-Party-,
+Service- und Regressionsdateien werden append-only mit ihren konkreten Hashes
+gebunden; frühere Freigaben und die eingereichten Bytes bleiben unverändert.

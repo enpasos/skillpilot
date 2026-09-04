@@ -3,6 +3,7 @@ import React, { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { TrainerLearningPlanActivation } from '../../src/components/TrainerLearningPlanActivation'
+import { TrainerLearningPlanPreview } from '../../src/components/TrainerLearningPlanPreview'
 import type { LandscapeEntry } from '../../src/hooks/useLandscapes'
 import type { ClassSession } from '../../src/trainerTypes'
 import {
@@ -128,6 +129,7 @@ const physicsStorageId = getTeacherCoursePlanStorageId({
   ...classSession,
   landscapeId: physicsLandscapeId,
 })
+const runtimeCatalogState = { mode: 'repository' as const }
 
 if (sessionStorage.getItem('trainer-activation-plans-seeded') !== '1') {
   sessionStorage.setItem('trainer-activation-plans-seeded', '1')
@@ -139,10 +141,15 @@ const Fixture = () => {
   const [selectedSubject, setSelectedSubject] = useState(mathLandscapeId)
   const [hasUnsavedDraft, setHasUnsavedDraft] = useState(false)
   const [refreshToken, setRefreshToken] = useState(0)
+  const [showPreview, setShowPreview] = useState(false)
+  const [showPlanning, setShowPlanning] = useState(true)
+  const [notification, setNotification] = useState('')
   return (
     <main className="min-h-screen bg-chat-bg p-6 text-text-primary">
       <p data-testid="selected-subject">{selectedSubject}</p>
+      <span data-testid="activation-notification" data-message={notification} />
       <div className="mb-4 flex gap-2">
+        <button type="button" onClick={() => { setShowPlanning((value) => !value); setNotification('') }}>Planungsansicht verlassen</button>
         <button type="button" onClick={() => setHasUnsavedDraft((current) => !current)}>
           {hasUnsavedDraft ? 'Entwurf speichern' : 'Entwurf ändern'}
         </button>
@@ -157,16 +164,28 @@ const Fixture = () => {
           Lokalen Physikplan löschen
         </button>
       </div>
-      <TrainerLearningPlanActivation
+      {showPlanning && <TrainerLearningPlanActivation
         classSession={classSession}
         learnerId={learnerId}
         landscapeEntries={landscapeEntries}
-        runtimeCatalogState={{ mode: 'repository' }}
+        runtimeCatalogState={runtimeCatalogState}
         language="de"
         refreshToken={refreshToken}
         hasUnsavedActiveDraft={hasUnsavedDraft}
         onSelectSubject={setSelectedSubject}
-      />
+        onPreview={() => setShowPreview((value) => !value)}
+        onNotify={(_kind, message) => setNotification(message)}
+      />}
+      {showPreview && <TrainerLearningPlanPreview
+        classSession={classSession}
+        learnerId={learnerId}
+        landscapeEntries={landscapeEntries}
+        runtimeCatalogState={runtimeCatalogState}
+        language="de"
+        refreshToken={refreshToken}
+        hasUnsavedActiveDraft={hasUnsavedDraft}
+        onSelectSubject={setSelectedSubject}
+      />}
     </main>
   )
 }
