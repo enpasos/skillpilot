@@ -2576,3 +2576,66 @@ dauerhaften Published-Sperre. Im selben begrenzten Arbeitsschritt wird der
 reale Publish mit dem bestehenden `record-published`-Verfahren dokumentiert.
 Ab dann ist `1.0.0` dauerhaft unveränderlich; jede Weiterentwicklung beginnt
 als neue SemVer-Kandidatin.
+
+### 6.46 Eng begrenzte Ausnahme: voraussetzungssichere parallele Fachpläne
+
+Der Product Owner hat am **4. September 2026** nach der beobachteten atomaren
+Ablehnung der gemeinsamen Mathematik- und Physikplanung ausdrücklich
+klargestellt: Jeder Fachplan gilt gleichzeitig; die Anforderungen aller
+gültigen Fachpläne für einen Kalendertag werden addiert. Eine Reihenfolge
+zwischen Mathematik, Physik oder weiteren Fächern darf weder aus
+Voraussetzungen noch aus der automatischen Lernführung entstehen. Die
+bestehenden Pläne sollen ohne Löschen und Neuanlage wirksam werden können.
+
+Zur eng begrenzten Fehlerbehebung in der First-Party-Planung ist ausschließlich
+freigegeben:
+
+- die wirksamen Voraussetzungen vor der Veröffentlichung über alle
+  Lernblöcke **desselben** Fachplans gegen die exakt berechneten
+  Fälligkeitstage zu prüfen;
+- eine bereits gültige Atomreihenfolge vollständig unverändert zu erhalten;
+- bei einer blockübergreifenden Kollision eine begrenzte deterministische
+  Korrektur allein durch die Reihenfolge der Atomziele innerhalb ihrer bereits
+  vorhandenen Lernblöcke zu versuchen; akzeptiert wird ausschließlich ein
+  anschließend exakt validiertes Ergebnis, Atomziele wechseln weder Fach noch
+  Block, und Blockfokus, Titel, Beginn und Ende bleiben unverändert;
+- dieselbe Prüfung im Backend gegen die autoritative Projektion und deren
+  `effectiveRequires` zu wiederholen, das Ergebnis exakt zu validieren und
+  Voraussetzungen mit demselben Fälligkeitstag zuzulassen;
+- zusätzlich die tatsächlich im Lehrer- und Lernenden-Read-Model verwendete
+  kumulative Rundung an jedem relevanten Werktag begrenzt nachzuvollziehen;
+  jede fällige Planmenge muss gegenüber den im selben Fachplan enthaltenen
+  Voraussetzungen abgeschlossen sein, und die Aufwandsgrenze bleibt
+  fail-closed; sowie
+- eine Planung, für die innerhalb dieser Grenzen keine konfliktfreie
+  Reihenfolge gefunden wurde, weiterhin vor dem ersten Schreiben atomar
+  abzulehnen. Der First-Party-Endpunkt darf dafür nur den
+  fest gebundenen Fehlercode
+  `LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT` ohne Ziel-IDs, interne
+  Begründung oder Stackdetails liefern; die WebGUI übersetzt ihn in eine
+  handlungsorientierte deutsche oder englische Meldung und behauptet keinen
+  Teilerfolg.
+
+Die Korrektur serialisiert keine Fachpläne. Mathematik, Physik und weitere
+Fächer werden weiter unabhängig gespeichert, gemeinsam aktiviert und im
+Lernenden-Cockpit parallel geführt. `openDueThroughToday` bleibt die Summe der
+offenen Anforderungen aller gültigen Fachpläne einschließlich Rückständen;
+Fachwechsel, automatische Auswahl des ersten fälligen zulässigen Ziels und
+deterministische Übergabe bleiben unverändert. Der strenge Erfolgsvergleich
+akzeptiert weiterhin keine abweichende Atomreihenfolge, damit Lehrer- und
+Lernendenprojektion bei einem unerwarteten serverseitigen Reorder fail-closed
+bleiben.
+
+Die Regression bindet den real beobachteten lösbaren Slot-Typ, bereits gültige
+Bestandsreihenfolgen, gleiche Fälligkeitstage, einen unlösbaren Fall, die
+atomare Ablehnung, den sicheren Fehler-Envelope und die lokalisierte
+Lehrkraftmeldung. Die bestehende Cockpit-Evidenz für die Addition mehrerer
+Fachpläne und den ausdrücklichen Fachwechsel bleibt unverändert gültig.
+
+OpenAI- und Claude-Package-Bytes, MCP/OAuth, Tools, Schemas, Annotationen,
+Instruktionen, Ressourcen, MCP-Apps-UI, Prepared Messages,
+First-Party-Provider-Start, Identität, Locale, Session-Lifecycle, Reviewfälle,
+Review-Fixtures, Portalwerte, Reviewer-Zugangsdaten, Demo und Reviewartefakte
+bleiben unverändert. Die eingereichte Review-Fixture enthält weiterhin keine
+Fachpläne und `followLearningPlans=false`; deshalb ist keine Aktion im
+OpenAI-Portal erforderlich.

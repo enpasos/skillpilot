@@ -2331,6 +2331,10 @@ ID-Besitzgrenzen ohne ein zusätzliches Rollen- oder Einladungsmodell:
 Das Cockpit zeigt alle Fachpläne in einer gemeinsamen kompakten
 **Heute**-Führung. Sie nennt zuerst die Summe **heute noch offen** über alle
 gültigen Pläne; dafür zählt `openDueThroughToday` einschließlich Rückstand.
+Die Fachpläne laufen dabei parallel: Es gibt keine Reihenfolge „erst
+Mathematik, dann Physik“. Die Anforderungen jedes gültigen Fachplans gelten
+für denselben Kalendertag und werden in dieser Summe addiert; die lernende
+Person kann zwischen den Fächern wechseln.
 Darunter stehen kurze Fachzeilen mit aktuellem Fach, offenem Umfang und einer
 direkten Weiterlern- beziehungsweise Wechselaktion. Planbezeichnung, aktueller
 Abschnitt, Zeitraum, Meilenstein, Puffer sowie **heute neu fällig / davon
@@ -2347,10 +2351,20 @@ vergleichbare Gesamtgeschwindigkeit zusammengerechnet.
 Lehrer- und Lernendenprojektion verwenden dieselbe kumulative Rundung über
 chronologisch geordnete Lernblöcke. Innerhalb eines Blocks werden Atomziele
 stabil nach ihren wirksamen Voraussetzungen topologisch geordnet; unabhängige
-Ziele behalten ihre redaktionelle Reihenfolge. Dadurch meinen beide Ansichten
-nicht nur dieselbe Anzahl, sondern dieselben konkreten bis zum Stichtag
-fälligen Ziele. Eine blockübergreifend unmögliche Voraussetzungslage wird beim
-Speichern weiterhin fail-closed abgelehnt.
+Ziele behalten soweit möglich ihre redaktionelle Reihenfolge. Vor der
+Veröffentlichung werden außerdem alle Lernblöcke desselben Fachplans gemeinsam
+gegen ihre berechneten Fälligkeitstage geprüft. Bei einer blockübergreifenden
+Kollision versucht SkillPilot eine deterministische Korrektur ausschließlich
+durch die Reihenfolge der Atomziele innerhalb ihrer bereits gewählten Blöcke.
+Akzeptiert wird nur ein anschließend für alle relevanten Plantermine exakt
+voraussetzungsgültiges Ergebnis. Diese Endprüfung verwendet auch an jedem
+relevanten Werktag dieselbe kumulative Rundung wie die Lehrer- und
+Lernendenansicht; ihr Aufwand ist begrenzt und überschreitende Pläne bleiben
+fail-closed. Zielzuordnung, Blockdaten und die parallelen Fachpläne bleiben
+unverändert. Dadurch meinen beide Ansichten nicht nur dieselbe Anzahl, sondern
+dieselben konkreten bis zum Stichtag fälligen Ziele. Wird innerhalb dieser
+Grenzen keine konfliktfreie Reihenfolge gefunden, bleibt die Veröffentlichung
+fail-closed.
 
 ## 20. Umsetzung in Stufen
 

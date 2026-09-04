@@ -8,6 +8,7 @@ import type { ClassSession } from '../trainerTypes'
 import {
   activateLearnerLearningPlans,
   getLearnerLearningPlan,
+  LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT,
   LearnerLearningPlanApiError,
 } from '../utils/learnerLearningPlanApi'
 import { berlinDateKey } from '../utils/learnerLearningPlanReadModel'
@@ -58,6 +59,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       successStarted: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Das erste fällige Lernziel ist ausgewählt.`,
       successIdle: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Heute ist kein startbares Planziel fällig.`,
       rejected: 'Die gemeinsame Aktivierung wurde atomar abgelehnt. Kein Fachplan wird als neu wirksam dargestellt. Bitte prüfe die Planung und versuche es erneut.',
+      prerequisiteScheduleConflict: 'Ein Fachplan konnte in den gewählten Zeiträumen nicht automatisch voraussetzungsgerecht verteilt werden. Öffne den Fachplan und passe die überlappenden Lernabschnitte an. Es wurde nichts übernommen.',
       outcomeUnknown: 'Das Ergebnis der gemeinsamen Aktivierung konnte nicht sicher bestätigt werden. Es wird kein Fachplan als neu wirksam dargestellt. Bitte prüfe zuerst den Cockpit-Stand erneut.',
       changed: 'Ein Fachplan hat sich während der Bestätigung geändert. Bitte prüfe die gemeinsame Planung erneut.',
       dayChanged: 'Seit der Prüfung hat ein neuer Kalendertag begonnen. Bitte prüfe die gemeinsame Planung erneut.',
@@ -91,6 +93,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       successStarted: (count: number) => `${count} subject plans are active together. The first due goal is selected.`,
       successIdle: (count: number) => `${count} subject plans are active together. No eligible plan goal is due today.`,
       rejected: 'The shared activation was rejected atomically. No subject plan is shown as newly active. Check the planning and try again.',
+      prerequisiteScheduleConflict: 'A subject plan could not be distributed prerequisite-safely across the selected periods automatically. Open that subject plan and adjust the overlapping learning sections. Nothing was applied.',
       outcomeUnknown: 'The result of the shared activation could not be confirmed safely. No subject plan is shown as newly active. Check the cockpit state first.',
       changed: 'A subject plan changed during confirmation. Check the shared planning again.',
       dayChanged: 'A new calendar day began after the check. Check the shared planning again.',
@@ -396,7 +399,12 @@ export const TrainerLearningPlanActivation = ({
         && activationError.status < 500
         && activationError.status !== 408
         && activationError.status !== 429
-      const failureMessage = requestWasDefinitelyRejected ? copy.rejected : copy.outcomeUnknown
+      const failureMessage = activationError instanceof LearnerLearningPlanApiError
+        && activationError.errorCode === LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT
+        ? copy.prerequisiteScheduleConflict
+        : requestWasDefinitelyRejected
+          ? copy.rejected
+          : copy.outcomeUnknown
       setError(failureMessage)
       onNotify?.('error', failureMessage)
     } finally {

@@ -30,6 +30,8 @@ const MAX_BLOCKS = 2_000
 const MAX_EVENTS = 100_000
 const MAX_ATTESTATIONS = 10_000
 const MAX_BASELINE_GOALS = 100_000
+const MAX_PREREQUISITE_SCHEDULE_WORKDAYS = 1_000
+const MAX_PREREQUISITE_SCHEDULE_OPERATIONS = 8_000_000
 const MAX_ID_LENGTH = 240
 const MAX_TITLE_LENGTH = 500
 const MAX_SCHOOL_YEAR_LABEL_LENGTH = 100
@@ -327,9 +329,11 @@ export function countCoursePlanWorkdaysInclusive(
   const end = parseCoursePlanDate(endDate)
   if (!start || !end || start.epochDay > end.epochDay) return null
 
-  let workdays = 0
-  for (let epochDay = start.epochDay; epochDay <= end.epochDay; epochDay += 1) {
-    const weekday = new Date(epochDay * DAY_IN_MILLISECONDS).getUTCDay()
+  const inclusiveDays = end.epochDay - start.epochDay + 1
+  let workdays = Math.floor(inclusiveDays / 7) * 5
+  const remainingDays = inclusiveDays % 7
+  for (let offset = 0; offset < remainingDays; offset += 1) {
+    const weekday = new Date((start.epochDay + offset) * DAY_IN_MILLISECONDS).getUTCDay()
     if (weekday !== 0 && weekday !== 6) workdays += 1
   }
   return workdays
@@ -1132,21 +1136,27 @@ function collectPlanPrerequisiteAtoms(
   return true
 }
 
+interface OrderedPlanAtomicGoalResolution extends AtomicGoalResolution {
+  prerequisitesByDependent: Map<string, Set<string>>
+}
+
 function orderPlanAtomicGoalsByPrerequisites(
   authoredAtomicGoalIds: readonly string[],
   goalIndex: ReadonlyMap<string, UiGoal>,
-): AtomicGoalResolution {
+): OrderedPlanAtomicGoalResolution {
   const atomicGoalIds = [...new Set(authoredAtomicGoalIds)]
   const atomicGoalSet = new Set(atomicGoalIds)
   const authoredIndex = new Map(atomicGoalIds.map((goalId, index) => [goalId, index]))
   const indegree = new Map(atomicGoalIds.map((goalId) => [goalId, 0]))
   const dependents = new Map(atomicGoalIds.map((goalId) => [goalId, new Set<string>()]))
+  const prerequisitesByDependent = new Map<string, Set<string>>()
 
   for (const dependentId of atomicGoalIds) {
     const dependent = goalIndex.get(dependentId)
     if (!dependent) {
       return {
         atomicGoalIds: [],
+        prerequisitesByDependent,
         quality: quality('invalid', [{
           code: 'CP-GOAL-MISSING',
           message: 'Referenced goal is unavailable.',
@@ -1165,6 +1175,7 @@ function orderPlanAtomicGoalsByPrerequisites(
       )) {
         return {
           atomicGoalIds: [],
+          prerequisitesByDependent,
           quality: quality('invalid', [{
             code: 'CP-GOAL-PREREQUISITE-CYCLE',
             message: 'Goal prerequisite expansion contains a cycle.',
@@ -1174,6 +1185,7 @@ function orderPlanAtomicGoalsByPrerequisites(
       }
     }
     prerequisiteAtoms.delete(dependentId)
+    prerequisitesByDependent.set(dependentId, prerequisiteAtoms)
     for (const prerequisiteId of prerequisiteAtoms) {
       const prerequisiteDependents = dependents.get(prerequisiteId)
       if (prerequisiteDependents?.has(dependentId)) continue
@@ -1233,13 +1245,14 @@ function orderPlanAtomicGoalsByPrerequisites(
   if (ordered.length !== atomicGoalIds.length) {
     return {
       atomicGoalIds: [],
+      prerequisitesByDependent,
       quality: quality('invalid', [{
         code: 'CP-GOAL-PREREQUISITE-CYCLE',
         message: 'Learning-plan atoms contain a prerequisite cycle.',
       }]),
     }
   }
-  return { atomicGoalIds: ordered, quality: quality('complete') }
+  return { atomicGoalIds: ordered, prerequisitesByDependent, quality: quality('complete') }
 }
 
 function chronologicalLearningBlocks(plan: TeacherCoursePlan) {
@@ -1254,6 +1267,479 @@ function chronologicalLearningBlocks(plan: TeacherCoursePlan) {
       || left.index - right.index
       || left.block.id.localeCompare(right.block.id)
     ))
+}
+
+function scheduledLearningGoalDueDate(
+  block: Extract<TeacherCoursePlanBlock, { kind: 'learning' }>,
+  workdays: number,
+  atomCount: number,
+  oneBasedPosition: number,
+): CoursePlanDate | null {
+  if (
+    !Number.isSafeInteger(workdays)
+    || workdays < 1
+    || !Number.isSafeInteger(atomCount)
+    || atomCount < 1
+    || !Number.isSafeInteger(oneBasedPosition)
+    || oneBasedPosition < 1
+    || oneBasedPosition > atomCount
+  ) return null
+
+  // Keep this formula in lockstep with the backend's scheduledPlanDueDate:
+  // an atom becomes due when the rounded cumulative block share first reaches
+  // its one-based position.
+  const numerator = (2 * oneBasedPosition - 1) * workdays
+  const denominator = 2 * atomCount
+  const workdayOrdinal = Math.max(1, Math.ceil(numerator / denominator))
+  let dueDate = block.startDate
+  while (true) {
+    const parsed = parseCoursePlanDate(dueDate)
+    if (!parsed) return null
+    const weekday = new Date(parsed.epochDay * DAY_IN_MILLISECONDS).getUTCDay()
+    if (weekday !== 0 && weekday !== 6) break
+    const next = addCoursePlanDays(dueDate, 1)
+    if (!next) return null
+    dueDate = next
+  }
+
+  let remainingWorkdays = workdayOrdinal - 1
+  const completeWeeks = Math.floor(remainingWorkdays / 5)
+  if (completeWeeks > 0) {
+    const next = addCoursePlanDays(dueDate, completeWeeks * 7)
+    if (!next) return null
+    dueDate = next
+    remainingWorkdays %= 5
+  }
+  while (remainingWorkdays > 0) {
+    const next = addCoursePlanDays(dueDate, 1)
+    if (!next) return null
+    dueDate = next
+    const parsed = parseCoursePlanDate(dueDate)
+    if (!parsed) return null
+    const weekday = new Date(parsed.epochDay * DAY_IN_MILLISECONDS).getUTCDay()
+    if (weekday !== 0 && weekday !== 6) remainingWorkdays -= 1
+  }
+  return dueDate
+}
+
+function relevantLearningWorkdays(plan: TeacherCoursePlan): CoursePlanDate[] | null {
+  const intervals = chronologicalLearningBlocks(plan)
+    .map(({ block }) => {
+      const start = parseCoursePlanDate(block.startDate)
+      const end = parseCoursePlanDate(block.endDate)
+      return start && end ? { start: start.epochDay, end: end.epochDay } : null
+    })
+  if (intervals.some((interval) => interval === null)) return null
+
+  const merged: Array<{ start: number; end: number }> = []
+  for (const interval of (intervals as Array<{ start: number; end: number }>).sort((left, right) => (
+    left.start - right.start || left.end - right.end
+  ))) {
+    const previous = merged.at(-1)
+    if (previous && interval.start <= previous.end + 1) {
+      previous.end = Math.max(previous.end, interval.end)
+    } else {
+      merged.push({ ...interval })
+    }
+  }
+
+  const workdays: CoursePlanDate[] = []
+  for (const interval of merged) {
+    for (let epochDay = interval.start; epochDay <= interval.end; epochDay += 1) {
+      const date = new Date(epochDay * DAY_IN_MILLISECONDS)
+      const weekday = date.getUTCDay()
+      if (weekday === 0 || weekday === 6) continue
+      workdays.push(date.toISOString().slice(0, 10))
+      if (workdays.length > MAX_PREREQUISITE_SCHEDULE_WORKDAYS) return null
+    }
+  }
+  return workdays
+}
+
+interface ScheduledAssignmentBlock {
+  assignment: LearningBlockGoalAssignment
+  dueDates: CoursePlanDate[]
+}
+
+interface PrerequisiteDueViolation {
+  dependentId: string
+  prerequisiteId: string
+  earlierPriority: CoursePlanDate
+  laterPriority: CoursePlanDate
+}
+
+function prerequisiteScheduleQuality(
+  assignments: readonly LearningBlockGoalAssignment[],
+  violation?: PrerequisiteDueViolation,
+): CoursePlanDataQuality {
+  const dependentAssignment = violation
+    ? assignments.find(({ atomicGoalIds }) => atomicGoalIds.includes(violation.dependentId))
+    : undefined
+  return quality('invalid', [{
+    code: 'CP-GOAL-PREREQUISITE-SCHEDULE',
+    message: 'Learning-plan schedule makes a dependent goal due before its prerequisite.',
+    ...(dependentAssignment ? { blockId: dependentAssignment.blockId } : {}),
+    ...(violation ? { goalId: violation.dependentId } : {}),
+  }])
+}
+
+function orderLearningBlockAssignmentsByPrerequisites(
+  plan: TeacherCoursePlan,
+  assignments: readonly LearningBlockGoalAssignment[],
+  goalIndex: ReadonlyMap<string, UiGoal>,
+): LearningBlockAssignmentsResult {
+  const authoredAtomicGoalIds = assignments.flatMap(({ atomicGoalIds }) => atomicGoalIds)
+  if (authoredAtomicGoalIds.length < 2) {
+    return { assignments: [...assignments], quality: quality('complete') }
+  }
+
+  const globallyOrdered = orderPlanAtomicGoalsByPrerequisites(authoredAtomicGoalIds, goalIndex)
+  if (globallyOrdered.quality.status !== 'complete') {
+    return { assignments: [...assignments], quality: globallyOrdered.quality }
+  }
+  const prerequisitesByDependent = globallyOrdered.prerequisitesByDependent
+  const dependentsByPrerequisite = new Map(
+    globallyOrdered.atomicGoalIds.map((goalId) => [goalId, new Set<string>()]),
+  )
+  prerequisitesByDependent.forEach((prerequisiteAtoms, dependentId) => {
+    prerequisiteAtoms.forEach((prerequisiteId) => {
+      dependentsByPrerequisite.get(prerequisiteId)?.add(dependentId)
+    })
+  })
+
+  const learningBlockById = new Map(
+    chronologicalLearningBlocks(plan).map(({ block }) => [block.id, block]),
+  )
+  const scheduledBlocks: ScheduledAssignmentBlock[] = []
+  const firstPossibleDue = new Map<string, CoursePlanDate>()
+  const lastPossibleDue = new Map<string, CoursePlanDate>()
+  for (const assignment of assignments) {
+    if (assignment.atomicGoalIds.length === 0) continue
+    const block = learningBlockById.get(assignment.blockId)
+    if (!block) {
+      return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+    }
+    const workdays = countCoursePlanWorkdaysInclusive(block.startDate, block.endDate)
+    if (workdays === null || workdays === 0) {
+      return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+    }
+    const dueDates = assignment.atomicGoalIds.map((_, index) => (
+      scheduledLearningGoalDueDate(block, workdays, assignment.atomicGoalIds.length, index + 1)
+    ))
+    if (dueDates.some((dueDate) => dueDate === null)) {
+      return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+    }
+    const validDueDates = dueDates as CoursePlanDate[]
+    scheduledBlocks.push({ assignment, dueDates: validDueDates })
+    assignment.atomicGoalIds.forEach((goalId) => {
+      firstPossibleDue.set(goalId, validDueDates[0]!)
+      lastPossibleDue.set(goalId, validDueDates.at(-1)!)
+    })
+  }
+
+  const orderByPriority = (
+    currentAssignments: readonly LearningBlockGoalAssignment[],
+    priorityByGoalId: ReadonlyMap<string, CoursePlanDate>,
+  ): LearningBlockGoalAssignment[] => {
+    const currentIndex = new Map(
+      currentAssignments
+        .flatMap(({ atomicGoalIds }) => atomicGoalIds)
+        .map((goalId, index) => [goalId, index]),
+    )
+    return currentAssignments.map((assignment) => ({
+      ...assignment,
+      atomicGoalIds: [...assignment.atomicGoalIds].sort((left, right) => (
+        (priorityByGoalId.get(left) ?? '').localeCompare(priorityByGoalId.get(right) ?? '')
+        || (currentIndex.get(left) ?? 0) - (currentIndex.get(right) ?? 0)
+        || left.localeCompare(right)
+      )),
+    }))
+  }
+
+  const dueViolations = (
+    orderedAssignments: readonly LearningBlockGoalAssignment[],
+  ): { dueByGoalId: Map<string, CoursePlanDate>; violations: PrerequisiteDueViolation[] } | null => {
+    const dueByGoalId = new Map<string, CoursePlanDate>()
+    const orderedByBlockId = new Map(
+      orderedAssignments.map((assignment) => [assignment.blockId, assignment.atomicGoalIds]),
+    )
+    for (const { assignment, dueDates } of scheduledBlocks) {
+      const ordered = orderedByBlockId.get(assignment.blockId)
+      if (!ordered || ordered.length !== dueDates.length) return null
+      ordered.forEach((goalId, index) => dueByGoalId.set(goalId, dueDates[index]!))
+    }
+    const violations: PrerequisiteDueViolation[] = []
+    for (const dependentId of globallyOrdered.atomicGoalIds) {
+      const dependentDue = dueByGoalId.get(dependentId)
+      if (!dependentDue) return null
+      for (const prerequisiteId of prerequisitesByDependent.get(dependentId) ?? []) {
+        const prerequisiteDue = dueByGoalId.get(prerequisiteId)
+        if (!prerequisiteDue) return null
+        if (prerequisiteDue > dependentDue) {
+          violations.push({
+            dependentId,
+            prerequisiteId,
+            earlierPriority: dependentDue,
+            laterPriority: prerequisiteDue,
+          })
+        }
+      }
+    }
+    return { dueByGoalId, violations }
+  }
+
+  const hasPlanPrerequisites = [...prerequisitesByDependent.values()]
+    .some((prerequisites) => prerequisites.size > 0)
+  const scheduleWorkdays = hasPlanPrerequisites ? relevantLearningWorkdays(plan) : []
+  if (!scheduleWorkdays) {
+    return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+  }
+  const atomicGoalCount = globallyOrdered.atomicGoalIds.length
+  const prerequisiteEdgeCount = [...prerequisitesByDependent.values()]
+    .reduce((sum, prerequisites) => sum + prerequisites.size, 0)
+  const learningBlockCount = learningBlockById.size
+  const blockSortFactor = Math.max(1, Math.ceil(Math.log2(learningBlockCount + 1)))
+  const atomSortFactor = Math.max(1, Math.ceil(Math.log2(atomicGoalCount + 1)))
+  const validationOperationCost = atomicGoalCount
+    + prerequisiteEdgeCount
+    + learningBlockCount
+    + scheduleWorkdays.length * (
+      atomicGoalCount
+      + prerequisiteEdgeCount
+      + learningBlockCount * blockSortFactor
+    )
+  const propagationOperationCost = atomicGoalCount + prerequisiteEdgeCount
+  const repairIterationOperationCost = propagationOperationCost
+    + learningBlockCount
+    + atomicGoalCount * atomSortFactor
+  let remainingScheduleOperations = MAX_PREREQUISITE_SCHEDULE_OPERATIONS
+  const consumeScheduleOperations = (operationCost: number) => {
+    if (
+      !Number.isSafeInteger(operationCost)
+      || operationCost < 0
+      || operationCost > remainingScheduleOperations
+    ) return false
+    remainingScheduleOperations -= operationCost
+    return true
+  }
+  const validateSchedule = (
+    orderedAssignments: readonly LearningBlockGoalAssignment[],
+  ): { dueByGoalId: Map<string, CoursePlanDate>; violations: PrerequisiteDueViolation[] } | null => {
+    if (!consumeScheduleOperations(validationOperationCost)) return null
+    const positionValidation = dueViolations(orderedAssignments)
+    if (!positionValidation) return null
+
+    const violationsByPair = new Map<string, PrerequisiteDueViolation>()
+    const rememberViolation = (violation: PrerequisiteDueViolation) => {
+      const key = `${violation.prerequisiteId}\u0000${violation.dependentId}`
+      const current = violationsByPair.get(key)
+      if (!current) {
+        violationsByPair.set(key, violation)
+        return
+      }
+      if (violation.earlierPriority < current.earlierPriority) {
+        current.earlierPriority = violation.earlierPriority
+      }
+      if (violation.laterPriority > current.laterPriority) {
+        current.laterPriority = violation.laterPriority
+      }
+    }
+    positionValidation.violations.forEach(rememberViolation)
+
+    for (const asOf of scheduleWorkdays) {
+      const cumulative = cumulativeLearningProgressAt(plan, orderedAssignments, asOf)
+      if (cumulative.invalidBlockIds.length > 0) return null
+      const dueGoalIds = new Set(
+        scheduledBlocks.flatMap(({ assignment }) => (
+          cumulative.progressByBlockId.get(assignment.blockId)?.dueGoalIds ?? []
+        )),
+      )
+      for (const dependentId of globallyOrdered.atomicGoalIds) {
+        if (!dueGoalIds.has(dependentId)) continue
+        for (const prerequisiteId of prerequisitesByDependent.get(dependentId) ?? []) {
+          if (dueGoalIds.has(prerequisiteId)) continue
+          const prerequisitePositionDue = positionValidation.dueByGoalId.get(prerequisiteId)
+          if (!prerequisitePositionDue) return null
+          rememberViolation({
+            dependentId,
+            prerequisiteId,
+            earlierPriority: asOf,
+            laterPriority: prerequisitePositionDue > asOf ? prerequisitePositionDue : asOf,
+          })
+        }
+      }
+    }
+    return {
+      dueByGoalId: positionValidation.dueByGoalId,
+      violations: [...violationsByPair.values()],
+    }
+  }
+
+  // A schedule that is already valid is authoritative teacher input. Keeping
+  // it byte-for-byte stable avoids unrelated reorder churn in existing plans
+  // and keeps the activation response comparison deterministic.
+  const submittedSchedule = validateSchedule(assignments)
+  if (!submittedSchedule) {
+    return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+  }
+  if (submittedSchedule.violations.length === 0) {
+    return { assignments: [...assignments], quality: quality('complete') }
+  }
+
+  interface ScheduleAttempt {
+    validAssignments: LearningBlockGoalAssignment[] | null
+    lastAssignments: LearningBlockGoalAssignment[]
+    validationFailed: boolean
+  }
+  const attemptSchedule = (
+    startingAssignments: readonly LearningBlockGoalAssignment[],
+    repair: 'prerequisites-earlier' | 'dependents-later',
+  ): ScheduleAttempt => {
+    const priorityByGoalId = new Map(
+      repair === 'prerequisites-earlier' ? lastPossibleDue : firstPossibleDue,
+    )
+    const propagatePriority = () => {
+      if (repair === 'prerequisites-earlier') {
+        for (const dependentId of [...globallyOrdered.atomicGoalIds].reverse()) {
+          for (const prerequisiteId of prerequisitesByDependent.get(dependentId) ?? []) {
+            const prerequisitePriority = priorityByGoalId.get(prerequisiteId)
+            const dependentPriority = priorityByGoalId.get(dependentId)
+            if (prerequisitePriority && dependentPriority && prerequisitePriority > dependentPriority) {
+              priorityByGoalId.set(prerequisiteId, dependentPriority)
+            }
+          }
+        }
+        return
+      }
+      for (const prerequisiteId of globallyOrdered.atomicGoalIds) {
+        for (const dependentId of dependentsByPrerequisite.get(prerequisiteId) ?? []) {
+          const prerequisitePriority = priorityByGoalId.get(prerequisiteId)
+          const dependentPriority = priorityByGoalId.get(dependentId)
+          if (prerequisitePriority && dependentPriority && prerequisitePriority > dependentPriority) {
+            priorityByGoalId.set(dependentId, prerequisitePriority)
+          }
+        }
+      }
+    }
+    if (!consumeScheduleOperations(propagationOperationCost)) {
+      return {
+        validAssignments: null,
+        lastAssignments: [...startingAssignments],
+        validationFailed: true,
+      }
+    }
+    propagatePriority()
+    let currentAssignments = [...startingAssignments]
+    for (let iteration = 0; iteration < 64; iteration += 1) {
+      if (!consumeScheduleOperations(repairIterationOperationCost)) {
+        return {
+          validAssignments: null,
+          lastAssignments: currentAssignments,
+          validationFailed: true,
+        }
+      }
+      const orderedAssignments = orderByPriority(currentAssignments, priorityByGoalId)
+      const checked = validateSchedule(orderedAssignments)
+      if (!checked) {
+        return {
+          validAssignments: null,
+          lastAssignments: orderedAssignments,
+          validationFailed: true,
+        }
+      }
+      if (checked.violations.length === 0) {
+        return {
+          validAssignments: orderedAssignments,
+          lastAssignments: orderedAssignments,
+          validationFailed: false,
+        }
+      }
+
+      let changed = false
+      for (const violation of checked.violations) {
+        if (repair === 'prerequisites-earlier') {
+          const currentPriority = priorityByGoalId.get(violation.prerequisiteId)
+          if (currentPriority && violation.earlierPriority < currentPriority) {
+            priorityByGoalId.set(violation.prerequisiteId, violation.earlierPriority)
+            changed = true
+          }
+        } else {
+          const currentPriority = priorityByGoalId.get(violation.dependentId)
+          if (currentPriority && violation.laterPriority > currentPriority) {
+            priorityByGoalId.set(violation.dependentId, violation.laterPriority)
+            changed = true
+          }
+        }
+      }
+      if (!changed) {
+        return {
+          validAssignments: null,
+          lastAssignments: orderedAssignments,
+          validationFailed: false,
+        }
+      }
+      currentAssignments = orderedAssignments
+      propagatePriority()
+    }
+    return {
+      validAssignments: null,
+      lastAssignments: currentAssignments,
+      validationFailed: false,
+    }
+  }
+
+  // Repairs compose: the second direction starts from the first direction's
+  // stable intermediate order. Trying both direction orders covers plans that
+  // need prerequisites pulled forward in one block and dependents pushed back
+  // in another. The bounded heuristic never claims completeness; exact
+  // position and cumulative validations remain authoritative and fail closed.
+  const earlierFirst = attemptSchedule(assignments, 'prerequisites-earlier')
+  if (earlierFirst.validationFailed) {
+    return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+  }
+  let orderedAssignments = earlierFirst.validAssignments
+  if (!orderedAssignments) {
+    const laterSecond = attemptSchedule(
+      earlierFirst.lastAssignments,
+      'dependents-later',
+    )
+    if (laterSecond.validationFailed) {
+      return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+    }
+    orderedAssignments = laterSecond.validAssignments
+  }
+  if (!orderedAssignments) {
+    const laterFirst = attemptSchedule(assignments, 'dependents-later')
+    if (laterFirst.validationFailed) {
+      return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+    }
+    if (laterFirst.validAssignments) {
+      orderedAssignments = laterFirst.validAssignments
+    } else {
+      const earlierSecond = attemptSchedule(
+        laterFirst.lastAssignments,
+        'prerequisites-earlier',
+      )
+      if (earlierSecond.validationFailed) {
+        return { assignments: [...assignments], quality: prerequisiteScheduleQuality(assignments) }
+      }
+      orderedAssignments = earlierSecond.validAssignments
+    }
+  }
+  if (!orderedAssignments) {
+    return {
+      assignments: [...assignments],
+      quality: prerequisiteScheduleQuality(assignments, submittedSchedule.violations[0]),
+    }
+  }
+  const checked = validateSchedule(orderedAssignments)
+  if (!checked || checked.violations.length > 0) {
+    return {
+      assignments: [...assignments],
+      quality: prerequisiteScheduleQuality(assignments, checked?.violations[0]),
+    }
+  }
+  return { assignments: orderedAssignments, quality: quality('complete') }
 }
 
 export function assignAtomicGoalsToLearningBlocks(
@@ -1348,7 +1834,7 @@ export function assignAtomicGoalsToLearningBlocks(
       ),
     }
   }
-  return { assignments, quality: quality('complete') }
+  return orderLearningBlockAssignmentsByPrerequisites(normalized.plan, assignments, goalIndex)
 }
 
 function workdayProgressFraction(
@@ -1368,6 +1854,50 @@ function workdayProgressFraction(
   const elapsed = countCoursePlanWorkdaysInclusive(startDate, asOf)
   if (elapsed === null) return null
   return elapsed / total
+}
+
+interface CumulativeLearningProgress {
+  progressByBlockId: Map<string, { expected: number; dueGoalIds: string[] }>
+  invalidBlockIds: string[]
+}
+
+function cumulativeLearningProgressAt(
+  plan: TeacherCoursePlan,
+  assignments: readonly LearningBlockGoalAssignment[],
+  asOf: CoursePlanDate,
+): CumulativeLearningProgress {
+  const assignmentByBlockId = new Map(
+    assignments.map((assignment) => [assignment.blockId, assignment]),
+  )
+  const progressByBlockId = new Map<string, { expected: number; dueGoalIds: string[] }>()
+  const invalidBlockIds: string[] = []
+  let cumulativeExpectedGoalEquivalent = 0
+  let cumulativeRoundedDueGoalCount = 0
+
+  for (const { block } of chronologicalLearningBlocks(plan)) {
+    const assignment = assignmentByBlockId.get(block.id)
+    const fraction = workdayProgressFraction(block.startDate, block.endDate, asOf)
+    if (!assignment || fraction === null) {
+      invalidBlockIds.push(block.id)
+      continue
+    }
+    const expected = fraction * assignment.atomicGoalIds.length
+    cumulativeExpectedGoalEquivalent += expected
+    const nextRoundedDueGoalCount = Math.round(cumulativeExpectedGoalEquivalent + 1e-9)
+    const blockDueGoalCount = Math.max(
+      0,
+      Math.min(
+        assignment.atomicGoalIds.length,
+        nextRoundedDueGoalCount - cumulativeRoundedDueGoalCount,
+      ),
+    )
+    cumulativeRoundedDueGoalCount += blockDueGoalCount
+    progressByBlockId.set(block.id, {
+      expected,
+      dueGoalIds: assignment.atomicGoalIds.slice(0, blockDueGoalCount),
+    })
+  }
+  return { progressByBlockId, invalidBlockIds }
 }
 
 function coverageSetAt(
@@ -1575,40 +2105,19 @@ export function evaluateTeacherCoursePlan(
   let totalBufferWorkdays = 0
   let remainingBufferWorkdays = 0
   const metricIssues: CoursePlanDataIssue[] = []
-  const learningProgressByBlockId = new Map<string, {
-    expected: number
-    dueGoalIds: string[]
-  }>()
-  let cumulativeExpectedGoalEquivalent = 0
-  let cumulativeRoundedDueGoalCount = 0
-
-  for (const { block } of chronologicalLearningBlocks(normalized.plan)) {
-    const assignment = assignmentByBlockId.get(block.id)
-    const fraction = workdayProgressFraction(block.startDate, block.endDate, asOf)
-    if (!assignment || fraction === null) {
-      metricIssues.push({
-        code: 'CP-WORKDAYS',
-        message: 'Learning block has no usable Monday-to-Friday duration.',
-        blockId: block.id,
-      })
-      continue
-    }
-    const expected = fraction * assignment.atomicGoalIds.length
-    cumulativeExpectedGoalEquivalent += expected
-    const nextRoundedDueGoalCount = Math.round(cumulativeExpectedGoalEquivalent + 1e-9)
-    const blockDueGoalCount = Math.max(
-      0,
-      Math.min(
-        assignment.atomicGoalIds.length,
-        nextRoundedDueGoalCount - cumulativeRoundedDueGoalCount,
-      ),
-    )
-    cumulativeRoundedDueGoalCount += blockDueGoalCount
-    learningProgressByBlockId.set(block.id, {
-      expected,
-      dueGoalIds: assignment.atomicGoalIds.slice(0, blockDueGoalCount),
+  const cumulativeProgress = cumulativeLearningProgressAt(
+    normalized.plan,
+    assignmentsResult.assignments,
+    asOf,
+  )
+  cumulativeProgress.invalidBlockIds.forEach((blockId) => {
+    metricIssues.push({
+      code: 'CP-WORKDAYS',
+      message: 'Learning block has no usable Monday-to-Friday duration.',
+      blockId,
     })
-  }
+  })
+  const learningProgressByBlockId = cumulativeProgress.progressByBlockId
 
   for (const block of normalized.plan.blocks) {
     if (block.kind === 'learning') {

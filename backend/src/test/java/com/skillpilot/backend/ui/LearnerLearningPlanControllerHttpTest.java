@@ -10,12 +10,14 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.service.LearningPlanPrerequisiteScheduleConflictException;
 import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
@@ -170,6 +172,32 @@ class LearnerLearningPlanControllerHttpTest {
         InOrder ordered = inOrder(learners, learningPlans);
         ordered.verify(learners).assertWritableLearningSession(LEARNER_ID);
         ordered.verify(learningPlans).activatePlans(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void activationReturnsWhitelistedCodeForPrerequisiteScheduleConflict() throws Exception {
+        when(learningPlans.activatePlans(eq(LEARNER_ID), any()))
+                .thenThrow(new LearningPlanPrerequisiteScheduleConflictException());
+
+        mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/activate", LEARNER_ID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "asOf": "2026-09-04",
+                                  "plans": [{
+                                    "landscapeId": "physics/sek-ii",
+                                    "expectedRevision": 0,
+                                    "planLabel": "Physik",
+                                    "blocks": []
+                                  }]
+                                }
+                                """))
+                .andExpect(status().isBadRequest())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(content().string(
+                        "{\"errorCode\":\""
+                                + LearnerLearningPlanApi.PREREQUISITE_SCHEDULE_CONFLICT_ERROR_CODE
+                                + "\"}"));
     }
 
     @Test

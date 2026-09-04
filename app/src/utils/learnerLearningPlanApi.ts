@@ -23,13 +23,25 @@ export interface LearnerLearningPlanRequestOptions {
   signal?: AbortSignal
 }
 
+export const LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT =
+  'LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT' as const
+
+export type LearnerLearningPlanApiErrorCode =
+  | typeof LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT
+
 export class LearnerLearningPlanApiError extends Error {
   readonly status: number
+  readonly errorCode: LearnerLearningPlanApiErrorCode | null
 
-  constructor(message: string, status: number) {
+  constructor(
+    message: string,
+    status: number,
+    errorCode: LearnerLearningPlanApiErrorCode | null = null,
+  ) {
     super(message)
     this.name = 'LearnerLearningPlanApiError'
     this.status = status
+    this.errorCode = errorCode
   }
 }
 
@@ -360,13 +372,34 @@ export const buildActivateLearnerLearningPlansEndpoint = (
   apiBase?: string,
 ) => `${learnerPlansBase(skillpilotId, apiBase)}/activate`
 
+const parseWhitelistedErrorCode = (body: string): LearnerLearningPlanApiErrorCode | null => {
+  try {
+    const value = JSON.parse(body) as unknown
+    if (typeof value !== 'object' || value === null || Array.isArray(value)) return null
+    const errorCode = (value as Record<string, unknown>).errorCode
+    return errorCode === LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT
+      ? errorCode
+      : null
+  } catch {
+    return null
+  }
+}
+
+const learningPlanApiError = (body: string, status: number) => {
+  const errorCode = parseWhitelistedErrorCode(body)
+  return new LearnerLearningPlanApiError(
+    errorCode
+      ? `Learning-plan request failed (${status})`
+      : body || `Learning-plan request failed (${status})`,
+    status,
+    errorCode,
+  )
+}
+
 const readJsonResponse = async (response: Response): Promise<unknown> => {
   if (!response.ok) {
     const message = (await response.text()).trim()
-    throw new LearnerLearningPlanApiError(
-      message || `Learning-plan request failed (${response.status})`,
-      response.status,
-    )
+    throw learningPlanApiError(message, response.status)
   }
   try {
     return await response.json()
@@ -522,10 +555,7 @@ const parseActivateResponse = (value: unknown): ActivateLearnerLearningPlansResp
 const readOptionalJsonResponse = async (response: Response): Promise<unknown | null> => {
   if (!response.ok) {
     const message = (await response.text()).trim()
-    throw new LearnerLearningPlanApiError(
-      message || `Learning-plan request failed (${response.status})`,
-      response.status,
-    )
+    throw learningPlanApiError(message, response.status)
   }
   if (response.status === 204) return null
   const text = await response.text()

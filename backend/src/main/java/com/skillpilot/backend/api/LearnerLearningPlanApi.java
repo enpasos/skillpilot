@@ -9,7 +9,14 @@ import java.util.UUID;
 /** Provider-neutral first-party WebGUI contract for learner-owned time plans. */
 public final class LearnerLearningPlanApi {
 
+    public static final String PREREQUISITE_SCHEDULE_CONFLICT_ERROR_CODE =
+            "LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT";
+
     private LearnerLearningPlanApi() {
+    }
+
+    /** Safe first-party error envelope; details remain server-side. */
+    public record ErrorResponse(String errorCode) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -338,6 +338,43 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void activationClassifiesPrerequisiteScheduleConflictWithoutPublishingAPlan() {
+        when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
+                .thenThrow(new LearningPlanPrerequisiteScheduleConflictException());
+
+        assertThatThrownBy(() -> service.activatePlans(
+                        LEARNER_ID,
+                        new LearnerLearningPlanApi.ActivateRequest(
+                                TODAY,
+                                List.of(new LearnerLearningPlanApi.ActivationPlan(
+                                        PHYSICS_LANDSCAPE_ID,
+                                        0L,
+                                        "Physik",
+                                        List.of(learningWithFocus(
+                                                "physics-block",
+                                                "physics-focus",
+                                                "2026-09-01",
+                                                "2026-09-10",
+                                                "atom-p",
+                                                "atom-q")))))))
+                .isInstanceOfSatisfying(
+                        LearningPlanPrerequisiteScheduleConflictException.class,
+                        exception -> assertThat(exception.getStatusCode())
+                                .isEqualTo(HttpStatus.BAD_REQUEST));
+
+        assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID))
+                .isEmpty();
+        verify(learnerService, never()).applyLearningPlanTransition(
+                eq(LEARNER_ID),
+                eq(true),
+                eq(true),
+                any(),
+                any(),
+                eq(false),
+                eq("LEARNING_PLAN_PACKAGE_ACTIVATED"));
+    }
+
+    @Test
     void activationReconcilesThePlanFocusEvenWhenTheActiveAtomIsPreserved() {
         learner.setActiveGoalId("atom-p");
         learnerRepository.saveAndFlush(learner);
