@@ -5,11 +5,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerLearningPlan;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
+import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -30,7 +33,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.UUID;
 import java.util.function.Function;
 import org.springframework.http.HttpStatus;
@@ -61,6 +66,7 @@ public class LearnerLearningPlanService {
     private final LearnerService learners;
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
+    private final LandscapeService landscapeService;
     private final Clock clock;
 
     @Autowired
@@ -68,8 +74,15 @@ public class LearnerLearningPlanService {
             LearnerLearningPlanRepository plans,
             LearnerService learners,
             ObjectMapper objectMapper,
-            ApplicationEventPublisher eventPublisher) {
-        this(plans, learners, objectMapper, eventPublisher, Clock.system(PLAN_ZONE));
+            ApplicationEventPublisher eventPublisher,
+            LandscapeService landscapeService) {
+        this(
+                plans,
+                learners,
+                objectMapper,
+                eventPublisher,
+                landscapeService,
+                Clock.system(PLAN_ZONE));
     }
 
     LearnerLearningPlanService(
@@ -77,12 +90,159 @@ public class LearnerLearningPlanService {
             LearnerService learners,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher,
+            LandscapeService landscapeService,
             Clock clock) {
         this.plans = plans;
         this.learners = learners;
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
+        this.landscapeService = landscapeService;
         this.clock = clock;
+    }
+
+    /**
+     * Returns today's additive workload across every valid subject plan.
+     *
+     * <p>The date is always derived in Europe/Berlin. {@code completedToday}
+     * means "currently mastered among the goals newly due today"; the mastery
+     * store does not provide an event-backed completion date. Stale or
+     * malformed plans fail closed and are represented only by the anonymous
+     * unavailable-plan counter.</p>
+     */
+    @Transactional(readOnly = true)
+    public LearnerPlanTodayStatus getTodayStatus(
+            String skillpilotId,
+            String communicationLocale) {
+        LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
+        Learner learner = learners.getLearner(skillpilotId);
+        boolean enabled = Boolean.TRUE.equals(learner.getFollowLearningPlans());
+        String activeGoalId = learner.getActiveGoalId();
+        boolean activeGoalInProgress = activeGoalId != null
+                && !activeGoalId.isBlank()
+                && learners.getMastery(skillpilotId).getOrDefault(activeGoalId, 0.0)
+                        < MASTERY_THRESHOLD;
+        List<LearnerPlanTodayStatus.SubjectStatus> subjects = new ArrayList<>();
+        int unavailablePlanCount = 0;
+        boolean resumeAvailable = false;
+
+        for (LearnerLearningPlan plan : plans
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId)) {
+            Optional<TodaySubjectEvaluation> evaluation = todayStatus(
+                    skillpilotId,
+                    plan,
+                    asOf,
+                    communicationLocale,
+                    enabled,
+                    activeGoalId);
+            if (evaluation.isPresent()) {
+                subjects.add(evaluation.get().status());
+                resumeAvailable |= !activeGoalInProgress
+                        && evaluation.get().resumeAvailable();
+            } else {
+                unavailablePlanCount++;
+            }
+        }
+
+        LearnerPlanTodayStatus.Totals totals = new LearnerPlanTodayStatus.Totals(
+                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::dueToday).sum(),
+                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::completedToday).sum(),
+                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::openToday).sum(),
+                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::openOverdue).sum());
+        return new LearnerPlanTodayStatus(
+                asOf,
+                enabled,
+                resumeAvailable,
+                List.copyOf(subjects),
+                totals,
+                unavailablePlanCount);
+    }
+
+    private Optional<TodaySubjectEvaluation> todayStatus(
+            String skillpilotId,
+            LearnerLearningPlan plan,
+            LocalDate asOf,
+            String communicationLocale,
+            boolean enabled,
+            String activeGoalId) {
+        final LearnerLearningPlanApi.PlanSummary summary;
+        try {
+            summary = summarize(
+                    skillpilotId,
+                    plan,
+                    asOf,
+                    enabled,
+                    activeGoalId).summary();
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) {
+                throw exception;
+            }
+            return Optional.empty();
+        } catch (IllegalStateException | NullPointerException exception) {
+            return Optional.empty();
+        }
+        if (summary.stale()) {
+            return Optional.empty();
+        }
+
+        Optional<String> subjectLabel = localizedSubjectLabel(
+                plan.getLandscapeId(),
+                communicationLocale);
+        if (subjectLabel.isEmpty()) {
+            return Optional.empty();
+        }
+
+        LearnerLearningPlanApi.Metrics metrics = summary.metrics();
+        int openOverdue = metrics.openDueThroughToday() - metrics.openDueToday();
+        return Optional.of(new TodaySubjectEvaluation(
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        plan.getLandscapeId(),
+                        subjectLabel.get(),
+                        metrics.dueToday(),
+                        metrics.completedDueToday(),
+                        metrics.openDueToday(),
+                        openOverdue),
+                summary.canContinue()));
+    }
+
+    private Optional<String> localizedSubjectLabel(
+            String landscapeId,
+            String communicationLocale) {
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        if (landscape == null) {
+            return Optional.empty();
+        }
+        String subject = optionalLabel(landscape.getSubject());
+        if (subject == null) {
+            return Optional.empty();
+        }
+        if (communicationLocale == null
+                || !communicationLocale.trim().toLowerCase(Locale.ROOT).startsWith("en")) {
+            return Optional.of(subject);
+        }
+        return Optional.of(switch (subject.toLowerCase(Locale.ROOT)) {
+            case "mathematik" -> "Mathematics";
+            case "physik" -> "Physics";
+            case "chemie" -> "Chemistry";
+            case "biologie" -> "Biology";
+            case "informatik" -> "Computer Science";
+            case "wirtschaftswissenschaften" -> "Economics";
+            case "politik und wirtschaft" -> "Politics and Economics";
+            case "deutsch" -> "German";
+            case "englisch" -> "English";
+            case "französisch" -> "French";
+            case "latein" -> "Latin";
+            case "geschichte" -> "History";
+            default -> subject;
+        });
+    }
+
+    private static String optionalLabel(String value) {
+        return value == null || value.isBlank() ? null : value.trim();
+    }
+
+    private record TodaySubjectEvaluation(
+            LearnerPlanTodayStatus.SubjectStatus status,
+            boolean resumeAvailable) {
     }
 
     @Transactional(readOnly = true)
@@ -981,10 +1141,51 @@ public class LearnerLearningPlanService {
         return List.copyOf(result);
     }
 
-    /** Mirrors the teacher planner: accumulate exact equivalents, then round once across blocks. */
+    /**
+     * Returns the immutable global due-slot assignment for one cutoff date.
+     *
+     * <p>The global rounded target count is monotone. Each newly available slot
+     * is assigned to the earliest-ending started block and consumes exactly the
+     * next atom of that block. Consequently, later evaluations only extend the
+     * due prefixes; an atom that was due can never disappear again.</p>
+     */
     private static List<DueBlock> dueLearningBlocks(
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf) {
+        LearningDueSchedule schedule = learningDueSchedule(blocks);
+        List<DueBlock> dueBlocks = new ArrayList<>();
+        for (ScheduledDueBlock scheduledBlock : schedule.blocks()) {
+            int dueCount = 0;
+            while (dueCount < scheduledBlock.dueDates().size()
+                    && !scheduledBlock.dueDates().get(dueCount).isAfter(asOf)) {
+                dueCount++;
+            }
+            dueBlocks.add(new DueBlock(
+                    scheduledBlock.block(),
+                    scheduledBlock.block().atomicGoalIds().stream().limit(dueCount).toList()));
+        }
+        return List.copyOf(dueBlocks);
+    }
+
+    /**
+     * Actual per-goal due dates used by runtime evaluation. Package visibility
+     * keeps prerequisite validation on the same schedule instead of a separate
+     * block-local approximation.
+     */
+    static Map<String, LocalDate> scheduledAtomicGoalDueDatesForSchedule(
+            List<LearnerLearningPlanApi.Block> blocks) {
+        LinkedHashMap<String, LocalDate> dueDates = new LinkedHashMap<>();
+        for (ScheduledDueBlock scheduledBlock : learningDueSchedule(blocks).blocks()) {
+            List<String> atomicGoalIds = scheduledBlock.block().atomicGoalIds();
+            for (int index = 0; index < atomicGoalIds.size(); index++) {
+                dueDates.put(atomicGoalIds.get(index), scheduledBlock.dueDates().get(index));
+            }
+        }
+        return Map.copyOf(dueDates);
+    }
+
+    private static LearningDueSchedule learningDueSchedule(
+            List<LearnerLearningPlanApi.Block> blocks) {
         List<IndexedBlock> indexedLearningBlocks = new ArrayList<>();
         for (int index = 0; index < blocks.size(); index++) {
             LearnerLearningPlanApi.Block block = blocks.get(index);
@@ -1001,29 +1202,203 @@ public class LearnerLearningPlanService {
                 .thenComparing(IndexedBlock::sortEndDate)
                 .thenComparingInt(IndexedBlock::originalIndex)
                 .thenComparing(entry -> entry.block().id()));
-        List<DueBlock> dueBlocks = new ArrayList<>();
-        double cumulativeExpected = 0.0;
-        int cumulativeRounded = 0;
+
+        List<ScheduledBlockState> states = new ArrayList<>();
         for (IndexedBlock indexedBlock : indexedLearningBlocks) {
             LearnerLearningPlanApi.Block block = indexedBlock.block();
             int size = block.atomicGoalIds().size();
-            double fraction;
-            if (size == 0 || asOf.isBefore(block.startDate())) {
-                fraction = 0.0;
-            } else if (!asOf.isBefore(block.endDate())) {
-                fraction = 1.0;
-            } else {
-                int total = workdaysInclusive(block.startDate(), block.endDate());
-                int elapsed = workdaysInclusive(block.startDate(), asOf);
-                fraction = total == 0 ? 0.0 : (double) elapsed / total;
+            if (size == 0) {
+                states.add(new ScheduledBlockState(
+                        indexedBlock,
+                        null,
+                        null,
+                        0));
+                continue;
             }
-            cumulativeExpected += fraction * size;
-            int nextRounded = (int) Math.round(cumulativeExpected + 1e-9);
-            int dueCount = Math.max(0, Math.min(size, nextRounded - cumulativeRounded));
-            cumulativeRounded += dueCount;
-            dueBlocks.add(new DueBlock(block, block.atomicGoalIds().stream().limit(dueCount).toList()));
+            int totalWorkdays = workdaysInclusive(block.startDate(), block.endDate());
+            if (totalWorkdays == 0) {
+                throw new IllegalStateException("learning block must contain a workday");
+            }
+            LocalDate firstWorkday = firstPlanWorkday(block.startDate());
+            LocalDate lastWorkday = lastPlanWorkday(block.endDate());
+            if (firstWorkday.isAfter(lastWorkday)) {
+                throw new IllegalStateException("learning block must contain a workday");
+            }
+            states.add(new ScheduledBlockState(
+                    indexedBlock,
+                    firstWorkday,
+                    lastWorkday,
+                    totalWorkdays));
         }
-        return List.copyOf(dueBlocks);
+
+        List<ScheduledBlockState> nonEmptyStates = states.stream()
+                .filter(state -> state.size() > 0)
+                .toList();
+        if (!nonEmptyStates.isEmpty()) {
+            assignGlobalDueSlots(nonEmptyStates);
+        }
+
+        List<ScheduledDueBlock> scheduledBlocks = states.stream()
+                .map(state -> new ScheduledDueBlock(
+                        state.block(),
+                        List.copyOf(state.dueDates())))
+                .toList();
+        return new LearningDueSchedule(scheduledBlocks);
+    }
+
+    private static void assignGlobalDueSlots(List<ScheduledBlockState> states) {
+        LocalDate lastScheduleDate = states.stream()
+                .map(ScheduledBlockState::lastWorkday)
+                .max(LocalDate::compareTo)
+                .orElseThrow();
+        TreeMap<LocalDate, ScheduleBoundary> boundaries = new TreeMap<>();
+        for (ScheduledBlockState state : states) {
+            boundaries.computeIfAbsent(state.firstWorkday(), ignored -> new ScheduleBoundary())
+                    .starts().add(state);
+            if (state.lastWorkday().isBefore(lastScheduleDate)) {
+                LocalDate stopDate = addPlanWorkdays(state.lastWorkday(), 1);
+                boundaries.computeIfAbsent(stopDate, ignored -> new ScheduleBoundary())
+                        .stops().add(state);
+            }
+        }
+
+        Comparator<ScheduledBlockState> earliestDeadlineFirst = Comparator
+                .comparing((ScheduledBlockState state) -> state.block().endDate())
+                .thenComparing(state -> state.block().startDate())
+                .thenComparingInt(ScheduledBlockState::originalIndex)
+                .thenComparing(state -> state.block().id());
+        PriorityQueue<ScheduledBlockState> eligible = new PriorityQueue<>(earliestDeadlineFirst);
+        LinkedHashSet<ScheduledBlockState> active = new LinkedHashSet<>();
+        List<LocalDate> boundaryDates = List.copyOf(boundaries.keySet());
+        double cumulativeExpectedBefore = 0.0;
+        long roundedBefore = 0L;
+
+        for (int boundaryIndex = 0; boundaryIndex < boundaryDates.size(); boundaryIndex++) {
+            LocalDate segmentStart = boundaryDates.get(boundaryIndex);
+            ScheduleBoundary boundary = boundaries.get(segmentStart);
+            for (ScheduledBlockState stopped : boundary.stops()) {
+                active.remove(stopped);
+                if (stopped.assignedCount() != stopped.size()) {
+                    throw new IllegalStateException("global due-slot schedule missed a block deadline");
+                }
+            }
+            for (ScheduledBlockState started : boundary.starts()) {
+                active.add(started);
+                eligible.add(started);
+            }
+
+            LocalDate segmentEnd = boundaryIndex + 1 < boundaryDates.size()
+                    ? addPlanWorkdays(boundaryDates.get(boundaryIndex + 1), -1)
+                    : lastScheduleDate;
+            if (segmentEnd.isBefore(segmentStart)) {
+                continue;
+            }
+            int segmentWorkdays = workdaysInclusive(segmentStart, segmentEnd);
+            double dailyExpected = 0.0;
+            for (ScheduledBlockState state : states) {
+                if (active.contains(state)) {
+                    dailyExpected += (double) state.size() / state.totalWorkdays();
+                }
+            }
+            double cumulativeExpectedEnd = cumulativeExpectedBefore
+                    + dailyExpected * segmentWorkdays;
+            long roundedEnd = Math.round(cumulativeExpectedEnd + 1e-9);
+            for (long slot = roundedBefore + 1L; slot <= roundedEnd; slot++) {
+                int ordinal = earliestSegmentOrdinal(
+                        slot,
+                        cumulativeExpectedBefore,
+                        dailyExpected,
+                        segmentWorkdays);
+                LocalDate dueDate = addPlanWorkdays(segmentStart, ordinal - 1L);
+                ScheduledBlockState state = nextEligibleBlock(eligible);
+                state.assign(dueDate);
+                if (state.assignedCount() < state.size()) {
+                    eligible.add(state);
+                }
+            }
+            cumulativeExpectedBefore = cumulativeExpectedEnd;
+            roundedBefore = roundedEnd;
+        }
+
+        int totalGoals = states.stream().mapToInt(ScheduledBlockState::size).sum();
+        if (roundedBefore != totalGoals
+                || states.stream().anyMatch(state -> state.assignedCount() != state.size())) {
+            throw new IllegalStateException("global due-slot schedule is incomplete");
+        }
+    }
+
+    private static int earliestSegmentOrdinal(
+            long slot,
+            double expectedBefore,
+            double dailyExpected,
+            int segmentWorkdays) {
+        if (!(dailyExpected > 0.0)) {
+            throw new IllegalStateException("global due-slot schedule has no eligible capacity");
+        }
+        double threshold = slot - 0.5 - 1e-9;
+        int ordinal = (int) Math.ceil((threshold - expectedBefore) / dailyExpected);
+        ordinal = Math.max(1, Math.min(segmentWorkdays, ordinal));
+        while (ordinal > 1
+                && Math.round(expectedBefore + dailyExpected * (ordinal - 1L) + 1e-9)
+                        >= slot) {
+            ordinal--;
+        }
+        while (ordinal <= segmentWorkdays
+                && Math.round(expectedBefore + dailyExpected * ordinal + 1e-9) < slot) {
+            ordinal++;
+        }
+        if (ordinal > segmentWorkdays) {
+            throw new IllegalStateException("global due-slot date could not be resolved");
+        }
+        return ordinal;
+    }
+
+    private static ScheduledBlockState nextEligibleBlock(
+            PriorityQueue<ScheduledBlockState> eligible) {
+        ScheduledBlockState state = eligible.poll();
+        while (state != null && state.assignedCount() >= state.size()) {
+            state = eligible.poll();
+        }
+        if (state == null) {
+            throw new IllegalStateException("global due-slot schedule has no started block");
+        }
+        return state;
+    }
+
+    private static LocalDate firstPlanWorkday(LocalDate date) {
+        LocalDate result = date;
+        while (result.getDayOfWeek() == DayOfWeek.SATURDAY
+                || result.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            result = result.plusDays(1);
+        }
+        return result;
+    }
+
+    private static LocalDate lastPlanWorkday(LocalDate date) {
+        LocalDate result = date;
+        while (result.getDayOfWeek() == DayOfWeek.SATURDAY
+                || result.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            result = result.minusDays(1);
+        }
+        return result;
+    }
+
+    private static LocalDate addPlanWorkdays(LocalDate date, long offset) {
+        if (offset == 0L) {
+            return date;
+        }
+        long direction = offset > 0L ? 1L : -1L;
+        long remaining = Math.abs(offset);
+        LocalDate result = date.plusWeeks(direction * (remaining / 5L));
+        remaining %= 5L;
+        while (remaining > 0L) {
+            result = result.plusDays(direction);
+            DayOfWeek day = result.getDayOfWeek();
+            if (day != DayOfWeek.SATURDAY && day != DayOfWeek.SUNDAY) {
+                remaining--;
+            }
+        }
+        return result;
     }
 
     private LearnerLearningPlanApi.Period period(List<LearnerLearningPlanApi.Block> blocks) {
@@ -1301,5 +1676,81 @@ public class LearnerLearningPlanService {
     }
 
     private record DueBlock(LearnerLearningPlanApi.Block block, List<String> atomicGoalIds) {
+    }
+
+    private record LearningDueSchedule(List<ScheduledDueBlock> blocks) {
+    }
+
+    private record ScheduledDueBlock(
+            LearnerLearningPlanApi.Block block,
+            List<LocalDate> dueDates) {
+    }
+
+    private static final class ScheduledBlockState {
+        private final IndexedBlock indexedBlock;
+        private final LocalDate firstWorkday;
+        private final LocalDate lastWorkday;
+        private final int totalWorkdays;
+        private final List<LocalDate> dueDates = new ArrayList<>();
+
+        private ScheduledBlockState(
+                IndexedBlock indexedBlock,
+                LocalDate firstWorkday,
+                LocalDate lastWorkday,
+                int totalWorkdays) {
+            this.indexedBlock = indexedBlock;
+            this.firstWorkday = firstWorkday;
+            this.lastWorkday = lastWorkday;
+            this.totalWorkdays = totalWorkdays;
+        }
+
+        private int originalIndex() {
+            return indexedBlock.originalIndex();
+        }
+
+        private LearnerLearningPlanApi.Block block() {
+            return indexedBlock.block();
+        }
+
+        private int size() {
+            return block().atomicGoalIds().size();
+        }
+
+        private LocalDate firstWorkday() {
+            return firstWorkday;
+        }
+
+        private LocalDate lastWorkday() {
+            return lastWorkday;
+        }
+
+        private int totalWorkdays() {
+            return totalWorkdays;
+        }
+
+        private List<LocalDate> dueDates() {
+            return dueDates;
+        }
+
+        private int assignedCount() {
+            return dueDates.size();
+        }
+
+        private void assign(LocalDate dueDate) {
+            dueDates.add(dueDate);
+        }
+    }
+
+    private static final class ScheduleBoundary {
+        private final List<ScheduledBlockState> starts = new ArrayList<>();
+        private final List<ScheduledBlockState> stops = new ArrayList<>();
+
+        private List<ScheduledBlockState> starts() {
+            return starts;
+        }
+
+        private List<ScheduledBlockState> stops() {
+            return stops;
+        }
     }
 }

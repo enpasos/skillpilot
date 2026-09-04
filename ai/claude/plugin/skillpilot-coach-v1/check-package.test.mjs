@@ -9,7 +9,20 @@ import { validateClaudePluginPackage } from "./check-package.mjs";
 const packageRoot = dirname(fileURLToPath(import.meta.url));
 
 test("validates the checked-in Claude plugin package", () => {
-  assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 12 });
+  assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
+});
+
+test("rejects a replacement candidate version other than 1.1.0", () => {
+  withPackageCopy((root) => {
+    mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
+      '"version": "1.1.0"',
+      '"version": "1.0.4"',
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /replacement candidate must be version 1\.1\.0/u,
+    );
+  });
 });
 
 test("rejects a provider-foreign MCP endpoint", () => {
@@ -199,13 +212,91 @@ test("rejects progression chosen by Claude after clear orientation readiness", (
   });
 });
 
-test("rejects incomplete coverage of the twelve-tool contract", () => {
+test("rejects incomplete coverage of the fourteen-tool contract", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
-      "`get_skillpilot_exam_evaluation`",
-      "the exam evaluation operation",
+      "`switch_skillpilot_learning_plan_subject`",
+      "the planned subject-switch operation",
     ));
-    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /get_skillpilot_exam_evaluation/u);
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /switch_skillpilot_learning_plan_subject/u);
+  });
+});
+
+test("rejects coaching before the complete multi-subject daily-plan summary", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      /Only after no immediate render or resume call remains, give one concise summary/u,
+      "Coach the active goal before giving one concise summary",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /complete multi-subject daily-plan status before active-goal coaching/u,
+    );
+  });
+});
+
+test("rejects a provider-internal subject label field in the public plan contract", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "localized `subject`",
+      "localized `subjectLabel`",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /must use subject and must not expose provider-internal plan identifiers/u,
+    );
+  });
+});
+
+test("rejects event-history claims for completedToday", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /goals newly due today that are\s+currently\s+mastered/u,
+      "mastery events recorded during the current day",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /completedToday as current mastery, not same-day event history/u,
+    );
+  });
+});
+
+test("rejects automatic resume without the authoritative availability gate", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /Never call it when `resumeAvailable` is\s+false\./u,
+      "Call it even when `resumeAvailable` is false.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /resume only an authoritative available plan candidate/u,
+    );
+  });
+});
+
+test("rejects approximate or model-invented planned subject switching", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /Do not translate, infer or\s+approximately match a name\./u,
+      "Translate or approximately match the learner's requested subject.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /switch subjects only through an exact localized current-plan subject/u,
+    );
+  });
+});
+
+test("rejects silent omission of unavailable plan status", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /that one or more plans could\s+not be\s+evaluated;\s+expose\s+no plan identifiers/u,
+      "that every plan was evaluated successfully",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /disclose unavailable-plan counts without exposing plan details/u,
+    );
   });
 });
 
@@ -278,6 +369,19 @@ test("rejects suppressing approved goal rendering in voice mode", () => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
       /A server-approved\s+`goalVisualization` is not Claude-generated/u,
       "A server-approved `goalVisualization` follows the same suppression rule",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /preserve approved goal rendering/u,
+    );
+  });
+});
+
+test("rejects a stale goal-visualization step reference", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "step 5 remains mandatory",
+      "step 8 remains mandatory",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
@@ -364,15 +468,15 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of the Web-and-Android direct-install pilot with public listing", () => {
+test("rejects conflation of historical observations with 1.1.0 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /The package has been observed in paid Claude Web chat\s+and, after account-level direct installation on Claude Pro, in the native\s+Claude app on Android/u,
-      "The direct-install pilot proves official public distribution",
+      /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
+      "The 1.1.0 package already passed every exact-client check",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish the Web-and-Android direct-install pilot from post-publication listing verification/u,
+      /distinguish historical observations from pending 1\.1\.0 exact-candidate acceptance/u,
     );
   });
 });
@@ -432,7 +536,7 @@ test("rejects Claude Free, iOS or Android in-app installation claims", () => {
 test("rejects attribution of connector tools or UIs to the plugin shell", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /All twelve MCP tools and both interactive MCP Apps come from the remote\s+SkillPilot connector/u,
+      /All fourteen MCP tools and both interactive MCP Apps come from the remote\s+SkillPilot connector/u,
       "The plugin shell supplies the MCP tools and interactive MCP Apps",
     ));
     assert.match(
@@ -456,7 +560,7 @@ test("rejects appended contradictory Claude distribution claims", () => {
     ["Markdown line wrap", "The SkillPilot plugin supports\nClaude Desktop Chat."],
     ["passive modal", "The SkillPilot plugin can be used in Claude Cowork."],
     ["coexistence prohibition", "Plugin and Directory installations must never coexist."],
-    ["plugin tool ownership", "The plugin shell owns all twelve tools and both MCP Apps UIs."],
+    ["plugin tool ownership", "The plugin shell owns all fourteen tools and both MCP Apps UIs."],
   ]) {
     withPackageCopy((root) => {
       mutate(root, "SETUP.md", (value) => `${value}\n${appendedClaim}\n`);

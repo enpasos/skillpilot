@@ -47,46 +47,40 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
-test("production marketplace lane pins the published revision while acceptance remains fail-closed", () => {
+test("production marketplace lane prepares the 1.1.0 replacement with all external evidence pending", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.target.repository, "enpasos/skillpilot-claude-marketplace");
   assert.equal(lane.plugin.name, "skillpilot-coach-v1");
-  assert.equal(lane.plugin.version, "1.0.4");
+  assert.equal(lane.plugin.version, "1.1.0");
   assert.equal(
     lane.plugin.directInstallSha256,
-    "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
+    "ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca",
   );
   assert.deepEqual(lane.activation, {
-    state: "published_pending_acceptance",
-    firstPartyUiRoute: "personal_git_marketplace",
-    marketplaceUiSwitchAllowed: true,
+    state: "prepared_not_published",
+    firstPartyUiRoute: "controlled_direct_install_beta",
+    marketplaceUiSwitchAllowed: false,
     firstPartyGuideDecision: {
-      status: "approved",
-      approvedAt: "2026-09-03T21:57:24.000Z",
-      approvedBy: "product-owner",
-      candidateVersion: "1.0.4",
-      candidateSha256:
-        "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
-      repositoryRevision: "de29c45e8ac293675b79e40619da0cf50ff7ed2f",
-      repositoryTreeSha256:
-        "0191e65c14bf73586af618c62662fbb808f205f339b2cc1ad1c823a538ff5a6f",
-      evidenceRef:
-        "product-owner-confirmation-2026-09-03-both-controlled-users-migrated",
+      status: "pending",
+      approvedAt: null,
+      approvedBy: null,
+      candidateVersion: null,
+      candidateSha256: null,
+      repositoryRevision: null,
+      repositoryTreeSha256: null,
+      evidenceRef: null,
     },
     evidence: [
       {
         id: "public-repository-default-branch",
-        status: "pass",
-        revision: "de29c45e8ac293675b79e40619da0cf50ff7ed2f",
-        treeSha256:
-          "0191e65c14bf73586af618c62662fbb808f205f339b2cc1ad1c823a538ff5a6f",
-        candidateVersion: "1.0.4",
-        candidateSha256:
-          "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
-        verifiedAt: "2026-09-03T21:17:30.000Z",
-        evidenceRef:
-          "https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/33807012558",
+        status: "pending",
+        revision: null,
+        treeSha256: null,
+        candidateVersion: null,
+        candidateSha256: null,
+        verifiedAt: null,
+        evidenceRef: null,
       },
       {
         id: "clean-account-marketplace-install",
@@ -151,8 +145,16 @@ test("public activation cannot bypass the existing open-public-beta blockers", (
   activated.activation.state = "published_verified";
   activated.activation.firstPartyUiRoute = "personal_git_marketplace";
   activated.activation.marketplaceUiSwitchAllowed = true;
-  activated.activation.firstPartyGuideDecision.repositoryRevision = "a".repeat(40);
-  activated.activation.firstPartyGuideDecision.repositoryTreeSha256 = "e".repeat(64);
+  activated.activation.firstPartyGuideDecision = {
+    status: "approved",
+    approvedAt: "2026-08-31T18:01:00.000Z",
+    approvedBy: "product-owner",
+    candidateVersion: activated.plugin.version,
+    candidateSha256: activated.plugin.directInstallSha256,
+    repositoryRevision: "a".repeat(40),
+    repositoryTreeSha256: "e".repeat(64),
+    evidenceRef: "product-owner-decision",
+  };
   activated.activation.evidence = activated.activation.evidence.map((evidence) => ({
     ...evidence,
     status: "pass",
@@ -261,33 +263,20 @@ test("marketplace activation state is derived from revision-bound evidence", () 
   );
 });
 
-test("a Product Owner decision can switch only the controlled first-party guide", () => {
+test("a Product Owner decision can switch only after repository evidence is recorded", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
-  assert.equal(lane.activation.state, "published_pending_acceptance");
-  assert.equal(lane.activation.firstPartyUiRoute, "personal_git_marketplace");
-  assert.equal(lane.activation.marketplaceUiSwitchAllowed, true);
-  assert.equal(lane.activation.firstPartyGuideDecision.status, "approved");
+  assert.equal(lane.activation.state, "prepared_not_published");
+  assert.equal(lane.activation.firstPartyUiRoute, "controlled_direct_install_beta");
+  assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
+  assert.equal(lane.activation.firstPartyGuideDecision.status, "pending");
   assert.deepEqual(
     lane.activation.evidence.map(({ status }) => status),
-    ["pass", "pending", "pending"],
+    ["pending", "pending", "pending"],
   );
 
-  const withoutDecision = structuredClone(lane);
-  withoutDecision.activation.firstPartyUiRoute = "controlled_direct_install_beta";
-  withoutDecision.activation.marketplaceUiSwitchAllowed = false;
-  withoutDecision.activation.firstPartyGuideDecision = {
-    status: "pending",
-    approvedAt: null,
-    approvedBy: null,
-    candidateVersion: null,
-    candidateSha256: null,
-    repositoryRevision: null,
-    repositoryTreeSha256: null,
-    evidenceRef: null,
-  };
-  validateClaudeMarketplaceLane(withoutDecision);
+  validateClaudeMarketplaceLane(lane);
 
-  const dishonestSwitch = structuredClone(withoutDecision);
+  const dishonestSwitch = structuredClone(lane);
   dishonestSwitch.activation.firstPartyUiRoute = "personal_git_marketplace";
   dishonestSwitch.activation.marketplaceUiSwitchAllowed = true;
   assert.throws(
@@ -296,6 +285,27 @@ test("a Product Owner decision can switch only the controlled first-party guide"
   );
 
   const staleDecision = structuredClone(lane);
+  staleDecision.activation.state = "published_pending_acceptance";
+  staleDecision.activation.evidence[0] = {
+    ...staleDecision.activation.evidence[0],
+    status: "pass",
+    revision: "a".repeat(40),
+    treeSha256: "b".repeat(64),
+    candidateVersion: lane.plugin.version,
+    candidateSha256: lane.plugin.directInstallSha256,
+    verifiedAt: "2026-09-04T10:00:00.000Z",
+    evidenceRef: "release-evidence/public-repository-default-branch",
+  };
+  staleDecision.activation.firstPartyGuideDecision = {
+    status: "approved",
+    approvedAt: "2026-09-04T10:01:00.000Z",
+    approvedBy: "product-owner",
+    candidateVersion: "1.0.4",
+    candidateSha256: lane.plugin.directInstallSha256,
+    repositoryRevision: "a".repeat(40),
+    repositoryTreeSha256: "b".repeat(64),
+    evidenceRef: "product-owner-decision",
+  };
   staleDecision.activation.firstPartyGuideDecision.candidateVersion = "1.0.3";
   assert.throws(
     () => validateClaudeMarketplaceLane(staleDecision),
@@ -311,7 +321,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.0.4");
+    assert.equal(prepared.version, "1.1.0");
     assert.equal(prepared.files.length, 11);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -370,7 +380,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.0.4",
+                version: "1.1.0",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {

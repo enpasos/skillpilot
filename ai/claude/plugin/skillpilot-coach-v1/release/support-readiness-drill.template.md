@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.0.4` |
-| Candidate SHA-256 | `46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963` |
+| Candidate version | `1.1.0` |
+| Candidate SHA-256 | `ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,10 +84,10 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.0.4 exact-client gate remains `pending` until a fresh Marketplace install
-on the controlled Web and Android Voice clients independently completes the
-same orientation scenario. No additional 1.0.4 direct-upload acceptance round
-is required before the bounded repository publication.
+The 1.1.0 exact-client gate remains `pending` until a fresh Marketplace or
+explicit exact-candidate install on the controlled Web and Android Voice
+clients independently completes the daily-plan, automatic-resume and
+orientation scenarios. No earlier package or evidence satisfies this gate.
 After one tailored motivational response, use the clear continuation phrase
 `Machen wir so, dann fangen wir einfach an.` On each surface prove that the
 orientation completion was persisted without another confirmation loop and
@@ -100,11 +100,17 @@ rendered card, or a conversational claim alone.
 
 - [ ] Claude Web completed the exact orientation scenario without policy,
       instruction or private-deliberation narration.
+- [ ] Claude Web reported every valid subject's today-due, currently mastered,
+      still-open and overdue counts plus totals before coaching.
+- [ ] Claude Web warned safely about unavailable plans without exposing plan or
+      landscape identifiers or presenting partial totals as complete.
+- [ ] Claude Web resumed the backend-selected plan goal only when the
+      authoritative `resumeAvailable` flag was true, without a Web-app button.
 - [ ] Claude Web exposed no lazy-loading, schema, parameter or retry mechanics.
 - [ ] Claude Web persisted the clear start intent without another confirmation
       and continued only with the backend-selected successor.
 - [ ] Claude Web made no unsupported durable anchor-memory promise.
-- [ ] Native Claude Android Voice completed the same four checks independently.
+- [ ] Native Claude Android Voice completed all checks independently.
 
 - [ ] Release and support material was checked for unsupported monitoring,
       detection-time or response-time claims.

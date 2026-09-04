@@ -3105,22 +3105,20 @@ public class LearnerService {
 
         Map<String, LocalDate> firstPossibleDue = new HashMap<>();
         Map<String, LocalDate> lastPossibleDue = new HashMap<>();
+        Map<String, LocalDate> scheduledDueDates = LearnerLearningPlanService
+                .scheduledAtomicGoalDueDatesForSchedule(blocks);
         for (LearnerLearningPlanApi.Block block : blocks) {
             if (!"learning".equals(block.kind())
                     || block.atomicGoalIds() == null
                     || block.atomicGoalIds().isEmpty()) {
                 continue;
             }
-            LocalDate firstDue = scheduledPlanDueDate(
-                    block.startDate(),
-                    block.endDate(),
-                    block.atomicGoalIds().size(),
-                    1);
-            LocalDate lastDue = scheduledPlanDueDate(
-                    block.startDate(),
-                    block.endDate(),
-                    block.atomicGoalIds().size(),
-                    block.atomicGoalIds().size());
+            LocalDate firstDue = scheduledDueDates.get(block.atomicGoalIds().get(0));
+            LocalDate lastDue = scheduledDueDates.get(
+                    block.atomicGoalIds().get(block.atomicGoalIds().size() - 1));
+            if (firstDue == null || lastDue == null) {
+                throw new LearningPlanPrerequisiteScheduleConflictException();
+            }
             block.atomicGoalIds().forEach(goalId -> {
                 firstPossibleDue.put(goalId, firstDue);
                 lastPossibleDue.put(goalId, lastDue);
@@ -3202,81 +3200,18 @@ public class LearnerService {
                 .mapToLong(Set::size)
                 .sum();
         long positionCheckOperations = atomCount + prerequisiteEdgeCount;
-        long perDayOperations = 2L * atomCount
-                + prerequisiteEdgeCount
-                + 10L * learningBlockCount;
-        long cumulativeCheckOperations = prerequisiteEdgeCount == 0L
-                ? 0L
-                : perDayOperations * activeWorkdays.size();
-        scheduleCheckBudget.consume(positionCheckOperations + cumulativeCheckOperations);
+        long scheduleOperations = atomCount
+                + 10L * learningBlockCount
+                + activeWorkdays.size();
+        scheduleCheckBudget.consume(positionCheckOperations + scheduleOperations);
 
+        // The global due-slot schedule is monotone, so comparing its actual
+        // per-goal due dates is both necessary and sufficient for every
+        // cumulative prerequisite frontier.
         LearningPlanDueCheck positionCheck = learningPlanDueCheck(
                 blocks,
                 prerequisitesByDependent);
-        if (prerequisiteEdgeCount == 0L) {
-            return positionCheck;
-        }
-        Map<LearningPlanDuePair, LearningPlanDueViolation> violationsByPair =
-                new LinkedHashMap<>();
-        positionCheck.violations().forEach(violation ->
-                rememberLearningPlanDueViolation(violationsByPair, violation));
-        for (LocalDate asOf : activeWorkdays) {
-            List<String> dueGoalIds = LearnerLearningPlanService
-                    .dueAtomicGoalIdsForSchedule(blocks, asOf);
-            Set<String> dueGoalIdSet = new HashSet<>(dueGoalIds);
-            for (String dependentId : dueGoalIds) {
-                Set<String> prerequisiteIds = prerequisitesByDependent.get(dependentId);
-                if (prerequisiteIds == null) {
-                    continue;
-                }
-                for (String prerequisiteId : prerequisiteIds) {
-                    if (!dueGoalIdSet.contains(prerequisiteId)) {
-                        LocalDate prerequisitePositionDue = positionCheck
-                                .dueDates()
-                                .get(prerequisiteId);
-                        if (prerequisitePositionDue == null) {
-                            throw new LearningPlanPrerequisiteScheduleConflictException();
-                        }
-                        rememberLearningPlanDueViolation(
-                                violationsByPair,
-                                new LearningPlanDueViolation(
-                                        dependentId,
-                                        prerequisiteId,
-                                        asOf,
-                                        prerequisitePositionDue.isAfter(asOf)
-                                                ? prerequisitePositionDue
-                                                : asOf));
-                    }
-                }
-            }
-        }
-        return new LearningPlanDueCheck(
-                positionCheck.dueDates(),
-                List.copyOf(violationsByPair.values()));
-    }
-
-    private void rememberLearningPlanDueViolation(
-            Map<LearningPlanDuePair, LearningPlanDueViolation> violationsByPair,
-            LearningPlanDueViolation violation) {
-        LearningPlanDuePair pair = new LearningPlanDuePair(
-                violation.dependentId(),
-                violation.prerequisiteId());
-        LearningPlanDueViolation existing = violationsByPair.get(pair);
-        if (existing == null) {
-            violationsByPair.put(pair, violation);
-            return;
-        }
-        violationsByPair.put(
-                pair,
-                new LearningPlanDueViolation(
-                        violation.dependentId(),
-                        violation.prerequisiteId(),
-                        existing.earlierPriority().isBefore(violation.earlierPriority())
-                                ? existing.earlierPriority()
-                                : violation.earlierPriority(),
-                        existing.laterPriority().isAfter(violation.laterPriority())
-                                ? existing.laterPriority()
-                                : violation.laterPriority()));
+        return positionCheck;
     }
 
     private boolean hasValidLearningPlanSchedule(
@@ -3294,21 +3229,8 @@ public class LearnerService {
     private LearningPlanDueCheck learningPlanDueCheck(
             List<LearnerLearningPlanApi.Block> blocks,
             Map<String, LinkedHashSet<String>> prerequisitesByDependent) {
-        Map<String, LocalDate> dueDates = new HashMap<>();
-        for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!"learning".equals(block.kind()) || block.atomicGoalIds() == null) {
-                continue;
-            }
-            for (int index = 0; index < block.atomicGoalIds().size(); index++) {
-                dueDates.put(
-                        block.atomicGoalIds().get(index),
-                        scheduledPlanDueDate(
-                                block.startDate(),
-                                block.endDate(),
-                                block.atomicGoalIds().size(),
-                                index + 1));
-            }
-        }
+        Map<String, LocalDate> dueDates = LearnerLearningPlanService
+                .scheduledAtomicGoalDueDatesForSchedule(blocks);
 
         List<LearningPlanDueViolation> violations = new ArrayList<>();
         prerequisitesByDependent.forEach((dependentId, prerequisiteIds) -> {
@@ -3551,9 +3473,6 @@ public class LearnerService {
             LocalDate laterPriority) {
     }
 
-    private record LearningPlanDuePair(String dependentId, String prerequisiteId) {
-    }
-
     private record LearningPlanDueCheck(
             Map<String, LocalDate> dueDates,
             List<LearningPlanDueViolation> violations) {
@@ -3573,43 +3492,6 @@ public class LearnerService {
             }
             remaining -= operations;
         }
-    }
-
-    private static LocalDate scheduledPlanDueDate(
-            LocalDate start,
-            LocalDate end,
-            int atomCount,
-            int oneBasedPosition) {
-        int workdays = planWorkdaysInclusive(start, end);
-        long numerator = (2L * oneBasedPosition - 1L) * workdays;
-        long denominator = 2L * atomCount;
-        long workdayOrdinal = Math.max(1L, (numerator + denominator - 1L) / denominator);
-        LocalDate date = start;
-        while (isPlanWeekend(date)) {
-            date = date.plusDays(1);
-        }
-        long zeroBasedWorkdays = workdayOrdinal - 1L;
-        date = date.plusWeeks(zeroBasedWorkdays / 5L);
-        int remaining = (int) (zeroBasedWorkdays % 5L);
-        while (remaining > 0) {
-            date = date.plusDays(1);
-            if (!isPlanWeekend(date)) {
-                remaining--;
-            }
-        }
-        return date;
-    }
-
-    private static int planWorkdaysInclusive(LocalDate start, LocalDate end) {
-        long inclusiveDays = java.time.temporal.ChronoUnit.DAYS.between(start, end) + 1L;
-        long workdays = (inclusiveDays / 7L) * 5L;
-        int remainder = (int) (inclusiveDays % 7L);
-        for (int offset = 0; offset < remainder; offset++) {
-            if (!isPlanWeekend(start.plusDays(offset))) {
-                workdays++;
-            }
-        }
-        return Math.toIntExact(workdays);
     }
 
     private static boolean isPlanWeekend(LocalDate date) {

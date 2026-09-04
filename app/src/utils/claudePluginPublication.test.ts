@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url'
 
 import {
   CLAUDE_CONNECTOR_PRIVACY_URL,
+  CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_PLUGIN_BETA_REQUIREMENTS,
+  CLAUDE_PLUGIN_CURRENT_VERSION,
   CLAUDE_PLUGIN_PUBLICATION_INDEX_URL,
   loadClaudePluginPublicationIndex,
   parseClaudePluginPublicationIndex,
@@ -21,12 +23,12 @@ const validIndex = {
     {
       id: 'skillpilot-coach-v1',
       name: 'SkillPilot Claude Coach',
-      version: '1.0.2',
+      version: '1.1.0',
       status: 'beta',
-      filename: 'skillpilot-coach-v1-1.0.2.plugin',
+      filename: 'skillpilot-coach-v1-1.1.0.plugin',
       bytes: 42_000,
       sha256: digest,
-      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/1.0.2/sha256-${digest}/skillpilot-coach-v1-1.0.2.plugin`,
+      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/1.1.0/sha256-${digest}/skillpilot-coach-v1-1.1.0.plugin`,
       sourceUrl: 'https://github.com/enpasos/skillpilot',
       privacyUrl: 'https://skillpilot.com/privacy',
       termsUrl: 'https://skillpilot.com/legal',
@@ -35,8 +37,8 @@ const validIndex = {
         minimumAge: 18,
         plan: 'claude-pro',
         installSurface: 'claude-web',
-        testedSurfaces: ['claude-web', 'claude-android'],
-        voiceMode: true,
+        testedSurfaces: [] as string[],
+        voiceMode: false,
       },
     },
   ],
@@ -49,8 +51,8 @@ assert.equal(CLAUDE_PLUGIN_PUBLICATION_INDEX_URL, '/api/public/claude/plugins/in
 assert.equal(parsed.schemaVersion, 1)
 assert.equal(parsed.channel, 'beta')
 assert.equal(parsed.plugins[0]?.requirements.minimumAge, 18)
-assert.equal(parsed.plugins[0]?.requirements.voiceMode, true)
-assert.deepEqual(parsed.plugins[0]?.requirements.testedSurfaces, ['claude-web', 'claude-android'])
+assert.equal(parsed.plugins[0]?.requirements.voiceMode, false)
+assert.deepEqual(parsed.plugins[0]?.requirements.testedSurfaces, [])
 
 const originalFetch = globalThis.fetch
 let requestedUrl = ''
@@ -66,7 +68,7 @@ globalThis.fetch = async (input, init) => {
 try {
   const loaded = await loadClaudePluginPublicationIndex()
   assert.equal(requestedUrl, CLAUDE_PLUGIN_PUBLICATION_INDEX_URL)
-  assert.equal(loaded.plugins[0]?.version, '1.0.2')
+  assert.equal(loaded.plugins[0]?.version, CLAUDE_PLUGIN_CURRENT_VERSION)
 } finally {
   globalThis.fetch = originalFetch
 }
@@ -113,11 +115,13 @@ assert.throws(
   /preparedAt must be a canonical UTC date-time/u,
 )
 
-const emptySurfaces = cloneValidIndex()
-emptySurfaces.plugins[0]!.requirements.testedSurfaces = []
+const nonArraySurfaces = cloneValidIndex() as unknown as {
+  plugins: Array<{ requirements: { testedSurfaces: unknown } }>
+}
+nonArraySurfaces.plugins[0]!.requirements.testedSurfaces = 'claude-web'
 assert.throws(
-  () => parseClaudePluginPublicationIndex(emptySurfaces),
-  /testedSurfaces must be a non-empty string array/u,
+  () => parseClaudePluginPublicationIndex(nonArraySurfaces),
+  /testedSurfaces must be a string array/u,
 )
 
 const duplicateSurfaces = cloneValidIndex()
@@ -151,7 +155,7 @@ assert.throws(
 )
 
 const nonCanonicalDownload = cloneValidIndex()
-nonCanonicalDownload.plugins[0]!.downloadUrl = '/api/public/claude/plugins/skillpilot-coach-v1-1.0.2.plugin'
+nonCanonicalDownload.plugins[0]!.downloadUrl = '/api/public/claude/plugins/skillpilot-coach-v1-1.1.0.plugin'
 assert.throws(
   () => parseClaudePluginPublicationIndex(nonCanonicalDownload),
   /downloadUrl must match the versioned SHA-256 artifact path/u,
@@ -178,6 +182,25 @@ assert.throws(
   /sha256 must contain 64 hexadecimal characters/u,
 )
 
+const staleVersion = cloneValidIndex()
+staleVersion.plugins[0]!.version = '1.0.4'
+staleVersion.plugins[0]!.filename = 'skillpilot-coach-v1-1.0.4.plugin'
+staleVersion.plugins[0]!.downloadUrl = `/api/public/claude/plugins/skillpilot-coach-v1/1.0.4/sha256-${digest}/skillpilot-coach-v1-1.0.4.plugin`
+assert.throws(
+  () => parseClaudePluginPublicationIndex(staleVersion),
+  /version must equal 1\.1\.0/u,
+  'the first-party guide must fail closed instead of offering historical Claude 1.0.4',
+)
+
+const wrongPlugin = cloneValidIndex()
+wrongPlugin.plugins[0]!.id = 'different-plugin'
+wrongPlugin.plugins[0]!.filename = 'different-plugin-1.1.0.plugin'
+wrongPlugin.plugins[0]!.downloadUrl = `/api/public/claude/plugins/different-plugin/1.1.0/sha256-${digest}/different-plugin-1.1.0.plugin`
+assert.throws(
+  () => parseClaudePluginPublicationIndex(wrongPlugin),
+  /id must equal skillpilot-coach-v1/u,
+)
+
 const productionIndexPath = resolve(
   dirname(fileURLToPath(import.meta.url)),
   '../../../backend/src/main/resources/claude-plugin-publication/index.json',
@@ -187,6 +210,7 @@ const productionIndex = parseClaudePluginPublicationIndex(
 )
 assert.equal(productionIndex.plugins.length, 1)
 assert.equal(productionIndex.plugins[0]?.id, 'skillpilot-coach-v1')
+assert.equal(productionIndex.plugins[0]?.version, CLAUDE_PLUGIN_CURRENT_VERSION)
 assert.equal(productionIndex.plugins[0]?.requirements.plan, 'claude-pro')
 assert.deepEqual(productionIndex.plugins[0]?.requirements, CLAUDE_PLUGIN_BETA_REQUIREMENTS)
 assert.equal(productionIndex.plugins[0]?.privacyUrl, CLAUDE_CONNECTOR_PRIVACY_URL)
@@ -206,23 +230,24 @@ const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as
 assert.equal(
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   marketplaceLane.target?.repositoryUrl,
-  'the first-party guide must use the repository URL from the marketplace publication lane',
+  'the dormant marketplace lane must retain its canonical repository URL',
 )
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
-  'personal_git_marketplace',
-  'the Marketplace-first guide requires the personal Git marketplace route',
+  'controlled_direct_install_beta',
+  'Claude 1.1 must use the controlled direct-install route until exact marketplace evidence exists',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
-  true,
-  'the Marketplace-first guide must remain fail-closed without an approved UI switch',
+  false,
+  'the historical public marketplace must not be presented for Claude 1.1',
 )
 assert.equal(
   marketplaceLane.activation?.firstPartyGuideDecision?.status,
-  'approved',
-  'the Marketplace-first guide requires an explicit Product Owner decision',
+  'pending',
+  'a future marketplace switch needs fresh exact-version evidence',
 )
+assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
 
 const pluginCatalogSource = readFileSync(
   resolve(
@@ -231,82 +256,36 @@ const pluginCatalogSource = readFileSync(
   ),
   'utf8',
 )
-const openStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-open"')
-const marketplaceStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-marketplace"')
-const installStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-install"')
-const connectorStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-connector"')
-const returnStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-return"')
-const fallbackIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-direct-upload-fallback"')
-const fallbackDownloadIndex = pluginCatalogSource.indexOf('href={plugin.downloadUrl}')
-assert.match(pluginCatalogSource, /data-testid="claude-plugin-install-guide"/u)
+const directGuideIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-direct-upload-guide"')
+const directDownloadIndex = pluginCatalogSource.indexOf('href={plugin.downloadUrl}')
+const requirementsIndex = pluginCatalogSource.indexOf('aria-labelledby={`${cardId}-requirements`}')
+assert(directGuideIndex >= 0, 'the direct-upload guide must be present')
 assert(
-  openStepIndex >= 0
-    && openStepIndex < marketplaceStepIndex
-    && marketplaceStepIndex < installStepIndex
-    && installStepIndex < connectorStepIndex
-    && connectorStepIndex < returnStepIndex,
-  'the primary guide orders plugin navigation, marketplace addition, installation, bundled connector activation, and return',
-)
-assert(
-  fallbackIndex > returnStepIndex && fallbackDownloadIndex > fallbackIndex,
-  'the direct download remains available only after the complete marketplace guide in the labelled fallback',
+  directDownloadIndex > directGuideIndex && requirementsIndex > directDownloadIndex,
+  'the current Claude 1.1 download is the primary guide before secondary requirements',
 )
 assert.match(pluginCatalogSource, /download=\{plugin\.filename\}/u)
-assert.match(pluginCatalogSource, /href="https:\/\/claude\.ai"/u)
-assert.match(pluginCatalogSource, /value=\{CLAUDE_MARKETPLACE_REPOSITORY_URL\}/u)
-assert.match(pluginCatalogSource, /navigator\.clipboard\.writeText\(CLAUDE_MARKETPLACE_REPOSITORY_URL\)/u)
+assert.match(pluginCatalogSource, /CLAUDE_MARKETPLACE_INSTALLATION_ENABLED &&/u)
 assert.match(pluginCatalogSource, /const requirements = plugin\?\.requirements \?\? CLAUDE_PLUGIN_BETA_REQUIREMENTS/u)
 assert.doesNotMatch(pluginCatalogSource, /\{plugin && \(\s*<section aria-labelledby=\{`\$\{cardId\}-requirements`\}/u)
-assert.match(pluginCatalogSource, /testId="claude-plugin-marketplace-open-navigation"/u)
-assert.match(pluginCatalogSource, /testId="claude-plugin-marketplace-install-navigation"/u)
-assert.match(pluginCatalogSource, /testId="claude-plugin-connector-navigation"/u)
 assert.match(pluginCatalogSource, /testId="claude-plugin-direct-upload-navigation"/u)
 for (const requiredNavigationCopy of [
-  'Marketplace-Beta',
-  'empfohlene Installations- und Updateweg',
-  '„Anpassen“ (Customize) → „Plugins“ → „Deine Plugins“ (Your plugins)',
-  'entferne nur dieses alte SkillPilot-Plugin',
-  'Entferne keine anderen Plugins und trenne vorhandene Konnektoren nicht manuell',
-  '„Marketplace hinzufügen“',
-  '„Aus einem Repository hinzufügen“',
-  'SkillPilot Marketplace hinzufügen',
-  'Adresse kopieren',
-  'Adresse kopiert',
-  'SkillPilot Coach installieren',
-  '„SkillPilot Coach v1“ und klicke auf „Installieren“',
-  'Enthaltenen SkillPilot-Konnektor verbinden',
-  'Tab „Konnektoren“ (Connectors)',
-  'klicke auf „Verbinden“ (Connect)',
-  'Anmeldung und Freigabe ab',
+  'Claude-Beta 1.1',
+  'planorientierte Version 1.1 ersetzt die bisherige Claude-Variante vollständig',
+  'Aktuelle Plugin-Datei installieren',
+  'ausschließlich die hier ausgewiesene aktuelle Version',
+  'Andere Plugins und Konnektoren bleiben unverändert',
+  'Upload einer Plugin-Datei',
   'keinen zweiten manuellen SkillPilot-Konnektor',
   'keine MCP-URL',
-  'Updates über den Marketplace',
-  'Ein erneuter Datei-Upload ist nicht erforderlich',
-  'Direkt-Upload nur als Fallback',
-  'Marketplace- und Datei-Version nicht gleichzeitig',
-  'Marketplace beta',
-  'recommended installation and update route',
-  'Customize → Plugins → Your plugins',
-  'remove only that old SkillPilot plugin',
-  'Do not remove other plugins or manually disconnect existing connectors',
-  'Add marketplace',
-  'Add from a repository',
-  'Add the SkillPilot Marketplace',
-  'Copy address',
-  'Address copied',
-  'Install SkillPilot Coach',
-  'Select SkillPilot Coach v1 and choose Install',
-  'Connect the bundled SkillPilot connector',
-  'open its Connectors tab',
-  'select Connect',
-  'complete sign-in and approval',
+  'Claude beta 1.1',
+  'plan-first version 1.1 fully replaces the previous Claude variant',
+  'Install the current plugin file',
+  'Install only the current version shown here',
+  'Leave other plugins and connectors unchanged',
+  'plugin-file upload',
   'Do not add a second manual SkillPilot connector',
   'enter an MCP URL',
-  'Updates through the marketplace',
-  'No new file upload is required',
-  'Direct upload only as a fallback',
-  'Do not install the marketplace and file-uploaded versions at the same time',
-  'not curated or verified by Anthropic',
 ]) {
   assert(
     pluginCatalogSource.includes(requiredNavigationCopy),
@@ -317,10 +296,11 @@ assert.match(pluginCatalogSource, /to="\/"/u)
 assert.match(pluginCatalogSource, /Claude Pro/u)
 assert.match(pluginCatalogSource, /Android/u)
 assert.match(pluginCatalogSource, /Voice Mode|Voice mode/u)
-assert.match(pluginCatalogSource, /<details/u)
+assert.doesNotMatch(pluginCatalogSource, /claude-plugin-direct-upload-fallback/u)
 assert.doesNotMatch(pluginCatalogSource, /mcp-claude-v1\.skillpilot\.com/u)
 assert.doesNotMatch(pluginCatalogSource, /benutzerdefinierten Konnektor hinzufügen|Add custom connector/u)
 assert.doesNotMatch(pluginCatalogSource, /Beta-Download|Beta download/u)
 assert.doesNotMatch(pluginCatalogSource, /aktuell von SkillPilot unterstützte Beta-Weg|beta route currently supported/u)
+assert.doesNotMatch(pluginCatalogSource, /1\.0\.4/u)
 
 console.log('Claude plugin publication index tests passed')

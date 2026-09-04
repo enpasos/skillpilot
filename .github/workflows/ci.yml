@@ -119,6 +119,8 @@ jobs:
         run: node scripts/check_openai_plugin_review_freeze.mjs
       - name: Validate SkillPilot Coach source and current submission contract
         run: node scripts/check_openai_plugin_versioning.mjs
+      - name: Validate local plan-first OpenAI 1.1 candidate boundary
+        run: node --test scripts/check_openai_coach_v11_candidate.test.mjs
       - name: Test and validate approved OpenAI review video
         run: |
           node scripts/verify_openai_review_video.test.mjs

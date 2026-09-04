@@ -183,7 +183,7 @@ the separate Product, QA and Legal approvals; a successful script run does not
 replace those approvals.
 
 Follow the repository test plan at
-`ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all twelve tools and
+`ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all fourteen tools and
 both content-addressed MCP Apps resources in the pinned MCP Inspector and in a
 fresh Claude.ai connector session started only through
 `https://skillpilot.com/`. Confirm that every tool, including the
@@ -247,7 +247,7 @@ verified and recorded by the Product Owner.
 
 The package at `ai/claude/plugin/skillpilot-coach-v1/` bundles the reusable SkillPilot coaching
 Skill with one declaration for the same remote connector; the connector remains
-the sole owner of all twelve tools and both MCP Apps UIs. SkillPilot Coach v1
+the sole owner of all fourteen tools and both MCP Apps UIs. SkillPilot Coach v1
 contains no hooks or subagents. It does not claim Claude Desktop Chat or Cowork
 support. Each additional surface requires separate acceptance evidence and a
 later reviewed release before SkillPilot advertises it.
@@ -284,22 +284,30 @@ Before submitting the plugin:
    with the current Claude CLI;
 3. run `node --test scripts/claude_marketplace_release.test.mjs` and
    `node scripts/claude_marketplace_release.mjs check`;
-4. test direct upload/install, OAuth, first-party start, all twelve tools and both MCP
+4. test direct upload/install, OAuth, first-party start, all fourteen tools and both MCP
    Apps in paid Claude Web chat;
-5. verify that the plugin exposes exactly one Skill and one SkillPilot connector
+5. verify that the initial context reports due, currently mastered, open-today
+   and overdue counts for every valid subject plan without plan or landscape
+   identifiers, and that automatic resume succeeds only with no active goal and
+   authoritative `resumeAvailable=true`;
+6. verify an explicit switch from Mathematics to Physics and back using only
+   the exact localized subject names from the current daily-plan context; the
+   unfinished goal is parked without mastery, all plans continue to count and
+   no plan, landscape, focus or goal ID crosses the model boundary;
+7. verify that the plugin exposes exactly one Skill and one SkillPilot connector
    and that both MCP Apps are available through that connector;
-6. verify that each new learner session still starts only at
+8. verify that each new learner session still starts only at
    `https://skillpilot.com/`, while OAuth may remain connected;
-7. verify that plugin and Directory installations referencing
+9. verify that plugin and Directory installations referencing
    `https://mcp-claude-v1.skillpilot.com/mcp` may coexist while Claude exposes
    one SkillPilot tool set for the shared server, and that no additional manual
    custom connector is configured for that same URL;
-8. publish the generated plugin source in the approved public GitHub repository and
+10. publish the generated plugin source in the approved public GitHub repository and
    confirm that the submitted repository path contains no credentials, learner
    sessions, learner data or protected answers; and
-9. verify repository installation, connector OAuth, first-party start and the
+11. verify repository installation, connector OAuth, first-party start and the
    supported learning flow against the exact public revision; and
-10. only then, if an Anthropic-curated listing is still intended, submit that public GitHub source through the Anthropic Console plugin
+12. only then, if an Anthropic-curated listing is still intended, submit that public GitHub source through the Anthropic Console plugin
    workflow as a Developer, Admin or Owner of the submitting Console
    organization, with its own sanitized evidence.
 

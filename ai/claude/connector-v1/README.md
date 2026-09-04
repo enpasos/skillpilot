@@ -42,10 +42,10 @@ Directory claim until that client has its own recorded acceptance run.
 - The public SkillPilot plugin is the preferred complete installation for
   eligible paid Claude Web chat users. It bundles the coaching Skill with a
   declaration for this same remote connector; the connector continues to own
-  the twelve SkillPilot tools and both MCP Apps UIs. This v1 plugin makes no
+  the fourteen SkillPilot tools and both MCP Apps UIs. This v1 plugin makes no
   claim of Claude Desktop Chat or Cowork support.
 - The Connectors Directory entry is an independent connector-only distribution
-  route. It provides the same twelve tools and two UIs after OAuth, but not the
+  route. It provides the same fourteen tools and two UIs after OAuth, but not the
   coaching Skill. Its Team/Enterprise publisher gate does not apply to plugin
   submission, and Directory publication is not a prerequisite for the plugin.
 - The plugin and published Directory entry may coexist when both reference
@@ -63,8 +63,9 @@ Directory claim until that client has its own recorded acceptance run.
   visualization and private normal flashcard practice; no `ui/open-link`
 - Previously advertised hash URIs remain passively readable with their exact
   bytes after a compatible UI update; tools bind only the two current URIs
-- Tool surface: exactly twelve purpose-built learning tools, including one
-  app-only card-review tool
+- Tool surface: exactly fourteen purpose-built learning tools, including
+  backend-authorized automatic learning-plan resume, explicit switching among
+  current valid subject plans and one app-only card-review tool
 
 The version-neutral `skillpilot` slug is a candidate until the Product Owner
 confirms it in the portal. Anthropic makes the slug permanent on publication.

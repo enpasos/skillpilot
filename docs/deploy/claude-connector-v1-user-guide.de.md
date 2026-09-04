@@ -21,11 +21,22 @@ ID-Datei noch ihr Passwort.
 
 Das Plugin stellt den wiederverwendbaren SkillPilot-Coaching-Skill bereit und
 deklariert denselben entfernten Konnektor für bezahlten Claude Web-Chat. Der
-entfernte Konnektor liefert alle zwölf
+entfernte Konnektor liefert alle vierzehn
 SkillPilot-Werkzeuge und beide interaktiven Oberflächen für Lernzielbilder und
 Karteikarten. SkillPilot Coach v1 enthält keine Hooks oder Subagents und sagt
 keine Plugin-Unterstützung für Desktop-Chat oder Cowork zu. Zusätzliche
 Oberflächen benötigen eigene Abnahmebelege und eine später geprüfte Version.
+
+Bei jedem normalen Start oder Fortsetzen nennt Claude zuerst für jeden gültigen
+Fachplan die heute fälligen, aktuell beherrschten, noch offenen und überfälligen
+Lernziele. Ist kein Ziel aktiv und meldet das Backend einen verfügbaren
+Kandidaten, setzt Claude automatisch mit dem vom Backend gewählten Ziel fort;
+ein **Weiterlernen**-Knopf in der Webanwendung ist dafür nicht nötig. Plan- und
+Landschaftskennungen werden nicht an Claude übermittelt.
+Du kannst Claude auffordern, zu einem anderen Fach aus dem heutigen Plan zu
+wechseln, zum Beispiel „Wechsle zu Physik“. Alle gültigen Fachpläne gelten
+weiter; der Konnektor wechselt nur das aktuelle Lernfach und setzt dort mit dem
+vom Backend gewählten fälligen Ziel fort.
 
 Das Connectors Directory bleibt ein unabhängiger Weg nur für den Konnektor mit
 eigenem Team-/Enterprise-Gate auf Herausgeberseite. Es ist keine Voraussetzung
@@ -70,6 +81,7 @@ Screenshot davon. Die permanente SkillPilot-ID wird dabei nicht übertragen.
 - ein Lernzielbild anzeigen;
 - normale Karteikarten in der interaktiven Oberfläche üben;
 - dich beim aktiven Lernziel coachen lassen;
+- direkt zwischen Fächern deiner heute gültigen Lernpläne wechseln;
 - Verified Recall oder eine Prüfungsaufgabe durchführen;
 - einen belegten Abschluss speichern.
 

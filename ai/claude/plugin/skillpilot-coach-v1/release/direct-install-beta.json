@@ -12,8 +12,8 @@
     "accessModel": "first_party_guided_beta"
   },
   "candidate": {
-    "version": "1.0.4",
-    "sha256": "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963"
+    "version": "1.1.0",
+    "sha256": "ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca"
   },
   "plugin": {
     "id": "skillpilot-coach-v1",
@@ -32,15 +32,12 @@
     "minimumAge": 18,
     "plan": "claude-pro",
     "installSurface": "claude-web",
-    "testedSurfaces": [
-      "claude-web",
-      "claude-android"
-    ],
-    "voiceMode": true
+    "testedSurfaces": [],
+    "voiceMode": false
   },
   "readiness": {
-    "controlledBetaReady": true,
-    "guidedFirstPartyBetaReady": true,
+    "controlledBetaReady": false,
+    "guidedFirstPartyBetaReady": false,
     "openPublicBetaReady": false,
     "controlledBetaEvidence": [
       {
@@ -64,27 +61,27 @@
       {
         "id": "real-client-claude-pro-web-direct-install",
         "kind": "real_client",
-        "status": "pass",
-        "evidenceRef": "product-owner-observation-2026-08-25"
+        "status": "pending",
+        "evidenceRef": null
       },
       {
         "id": "real-client-claude-pro-android-account-use",
         "kind": "real_client",
-        "status": "pass",
-        "evidenceRef": "product-owner-observation-2026-08-25"
+        "status": "pending",
+        "evidenceRef": null
       },
       {
         "id": "real-client-claude-pro-android-voice-mode",
         "kind": "real_client",
-        "status": "pass",
-        "evidenceRef": "product-owner-observation-2026-08-25"
+        "status": "pending",
+        "evidenceRef": null
       }
     ],
     "openPublicBetaBlockers": [
       {
         "id": "privacy-approval",
-        "status": "pass",
-        "evidenceRef": "ai/claude/plugin/skillpilot-coach-v1/release/evidence/controlled-direct-install-beta/1.0.4-privacy-approval.json"
+        "status": "pending",
+        "evidenceRef": null
       },
       {
         "id": "legal-approval",

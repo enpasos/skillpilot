@@ -345,8 +345,8 @@ test("Claude distribution validators reject append-only contradictory claims", (
     ["public Claude Code DE", "Das SkillPilot-Plugin unterstützt öffentliches Claude Code."],
     ["coexistence EN", "Plugin and Directory installations must never coexist."],
     ["coexistence DE", "Plugin und Directory-Installationen dürfen niemals koexistieren."],
-    ["plugin ownership EN", "The plugin shell owns all twelve tools and both MCP Apps UIs."],
-    ["plugin ownership DE", "Die Plugin-Shell besitzt alle zwölf Tools und beide MCP Apps UI-Ressourcen."],
+    ["plugin ownership EN", "The plugin shell owns all fourteen tools and both MCP Apps UIs."],
+    ["plugin ownership DE", "Die Plugin-Shell besitzt alle vierzehn Tools und beide MCP Apps UI-Ressourcen."],
   ]) {
     const errors = validateClaudeDistributionClaimSafety(
       concept,
@@ -388,9 +388,23 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
       result.lifecycleState,
     ),
   );
-  assert.equal(result.toolCount, 12);
+  assert.equal(result.toolCount, 14);
   assert.equal(result.requiredGateCount, 23);
   assert.equal(result.blockers.length, result.requiredPendingCount);
+
+  const gates = readJson("ai/claude/connector-v1/release-gates.json");
+  assert.ok(gates.gates.some(
+    ({ id }) => id === "mcp-inspector-all-fourteen-tools-two-resources",
+  ));
+  assert.ok(gates.gates.some(
+    ({ id }) => id === "hosted-claude-all-fourteen-tools-two-apps",
+  ));
+  assert.equal(
+    gates.gates.some(({ id }) => (
+      id.includes("all-thirteen-tools") || id.includes("all-twelve-tools")
+    )),
+    false,
+  );
 });
 
 test("Claude MCP App carousel is reproducible, private and approval-gated", () => {

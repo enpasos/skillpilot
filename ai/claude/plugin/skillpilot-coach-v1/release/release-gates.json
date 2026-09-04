@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.0.0",
-  "updatedAt": "2026-08-24",
+  "pluginVersion": "1.1.0",
+  "updatedAt": "2026-09-04",
   "submissionChannel": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
   "submissionReady": false,
@@ -17,7 +17,7 @@
       "id": "openai-review-freeze",
       "owner": "Release",
       "required": true,
-      "status": "pass",
+      "status": "pending",
       "evidence": [
         "openai-review-freeze-final-plugin-candidate"
       ]
@@ -26,7 +26,7 @@
       "id": "plugin-package-structural-check",
       "owner": "Release",
       "required": true,
-      "status": "pass",
+      "status": "pending",
       "evidence": [
         "plugin-package-structural-final-candidate"
       ]
@@ -44,13 +44,13 @@
       "id": "reproducible-plugin-archive",
       "owner": "Release",
       "required": true,
-      "status": "pass",
+      "status": "pending",
       "evidence": [
         "reproducible-plugin-archive-final-candidate"
       ]
     },
     {
-      "id": "remote-mcp-contract-twelve-tools-two-apps",
+      "id": "remote-mcp-contract-fourteen-tools-two-apps",
       "owner": "Backend/QA",
       "required": true,
       "status": "pending",
@@ -134,7 +134,7 @@
       "id": "public-github-source-sanitization",
       "owner": "Release/Security/Privacy",
       "required": true,
-      "status": "pass",
+      "status": "pending",
       "evidence": [
         "public-github-source-final-plugin-candidate"
       ]

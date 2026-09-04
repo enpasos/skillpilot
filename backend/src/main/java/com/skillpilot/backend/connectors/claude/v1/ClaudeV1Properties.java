@@ -20,7 +20,7 @@ public class ClaudeV1Properties {
     private String publicDocumentationUrl = ClaudeV1Contract.DEFAULT_PUBLIC_DOCUMENTATION_URL;
     private String internalBasePath = ClaudeV1Contract.INTERNAL_BASE_PATH;
     private String serverName = "SkillPilot Claude Connector";
-    private String serverVersion = "1.0.0";
+    private String serverVersion = "1.1.0";
     private String signingSecret;
     private String capabilitySecret;
     private Duration accessTokenTtl = Duration.ofHours(1);

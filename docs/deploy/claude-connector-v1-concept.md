@@ -41,8 +41,10 @@ The following decisions are part of this concept:
   internal paths in the shared process.
 - The new package is fail-closed and disabled by default through a new property
   namespace. It neither enables nor reuses the paused beta.
-- Claude v1 exposes the same twelve learning responsibilities as the ChatGPT
-  package through provider-specific schemas and carries two Claude-specific,
+- Claude v1 exposes the twelve shared learning responsibilities plus
+  backend-authorized automatic plan resume and an explicit learning-plan
+  subject switch through provider-specific schemas and
+  carries two Claude-specific,
   content-addressed MCP Apps resources: the approved learning-goal image and
   private normal flashcard practice.
 - Normal flashcard practice changes only the reviewed card's repetition
@@ -53,7 +55,7 @@ The following decisions are part of this concept:
 - Claude v1 contains no hooks or subagents and does not claim Desktop Chat or
   Cowork plugin support. Additional surfaces require their own acceptance
   evidence and a later reviewed release.
-- The remote connector owns OAuth, MCP, all twelve tools and both MCP Apps UI
+- The remote connector owns OAuth, MCP, all fourteen tools and both MCP Apps UI
   resources. The plugin contributes the reusable coaching Skill and connector
   declaration; it does not duplicate the tool or UI implementation.
 - The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission.
@@ -136,7 +138,7 @@ The commercial v1 decision is therefore:
 | Personal Curriculum Level 2 | Configured only in the SkillPilot WebGUI | Same boundary; Claude cannot create or rewrite it |
 | Verified Recall | Server-owned complete batch, protected answer release and atomic result write | Same invariant and canonical backend rules |
 | Exam mode | Capability-bound evaluation and mastery after a complete visible submission | Same invariant and canonical backend rules |
-| Public tool surface | Exactly 12 tools | Exactly 12 provider-isolated tools with the same learning responsibilities |
+| Public tool surface | Exactly 12 tools | Exactly 14 provider-isolated tools: the shared learning responsibilities plus backend-authorized plan resume and explicit planned-subject switching |
 | Learning-goal visualization | Prominent MCP Apps image component | Dedicated content-addressed MCP App for the approved active-goal image |
 | Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Dedicated private MCP App; reviews update only scheduling, never mastery; Verified Recall remains separate |
 | Provider UI support | Submitted SkillPilot scope is ChatGPT Web | Public plugin is the preferred complete installation for eligible paid Claude Web chat users; the declared remote connector owns the provider-isolated tools and MCP Apps UI |
@@ -277,7 +279,7 @@ server, second connection pool or embedded model runtime.
    metadata, authorization-server discovery, learner-free OAuth authorization,
    CIMD clients, PKCE, token rotation, revocation, audience checks, and the
    separate first-party learner-session boundary.
-3. **Coach contract.** Implement all twelve provider-isolated tools, the two
+3. **Coach contract.** Implement all fourteen provider-isolated tools, the two
    content-addressed MCP Apps resources, current SkillPilot state, Verified
    Recall, and exam-capability invariants.
 4. **State and resource boundary.** Complete optimistic concurrency,
@@ -461,7 +463,7 @@ separate:
    SkillPilot then opens only `https://claude.ai/new` with the prepared prompt
    URL-encoded in exactly one `q` parameter. Claude prefills the composer, but
    the learner reviews and sends the message deliberately.
-5. Every one of the twelve tools requires that unchanged
+5. Every one of the fourteen tools requires that unchanged
    `learningSessionId`, including the app-only memory-review tool.
 6. On expiry, the user starts again in SkillPilot. OAuth refresh cannot mint,
    renew or extend the learner session and no connector reconnect is needed.
@@ -579,11 +581,13 @@ of Level 2 configuration, while its caller-selected/per-card Verified Recall
 flow predates the current canonical semantics.
 
 The exact submitted schemas are frozen only after Claude acceptance. The
-candidate surface contains exactly twelve narrow tools:
+candidate surface contains exactly fourteen narrow tools:
 
 | Tool responsibility | Class | Required semantics |
 | --- | --- | --- |
-| Get current coach context | read | No pending-launch consumption, retention timestamp write, or hidden mutation |
+| Get current coach context | read | No pending-launch consumption, retention timestamp write, or hidden mutation; includes plan-first daily counts for every valid subject without plan or landscape IDs |
+| Resume current learning plan | write | Only with no active goal and authoritative `resumeAvailable`; exact `expectedStateVersion` plus idempotency; backend chooses the goal and returns full canonical context |
+| Switch the current planned subject | write | Exact localized `subject` copied from the current daily-plan context, current state and idempotency; backend parks an unfinished goal and chooses the due goal for that subject without accepting plan, landscape, focus or goal IDs |
 | Render active-goal visualization | read + MCP App | Exact active atomic goal and current state only; approved image only; no generated substitute |
 | Start normal memory practice | read + MCP App | Private bounded due-card batch in component-only metadata; no mastery mutation |
 | Review one normal-practice card | app-only write | Exact displayed card and short-lived learner-session/goal/card/state capability; schedule only, never mastery |
@@ -790,7 +794,7 @@ Claude v1 has no hooks or subagents and claims neither Desktop Chat nor Cowork
 plugin support. Each additional surface requires a separately versioned and
 accepted change. Native mobile plugin support is not part of this claim.
 
-The remote connector remains the single owner of OAuth, MCP, all twelve tools
+The remote connector remains the single owner of OAuth, MCP, all fourteen tools
 and both MCP Apps UIs. The plugin must not copy those implementations. A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server. An additional manually configured Custom Connector for that same URL is unnecessary and should be avoided.
 
 The Connectors Directory remains a separate connector-only distribution route
@@ -897,7 +901,7 @@ Until that decision, dormant code is safer than an unauthorized cleanup.
 
 The public plugin has an independent acceptance lane for eligible paid Claude
 Web chat users. Local and official package validation, fresh installation,
-OAuth, First-Party start, twelve-tool and two-MCP-App tests must pass on that
+OAuth, First-Party start, fourteen-tool and two-MCP-App tests must pass on that
 claimed surface. V1 claims neither Desktop Chat nor Cowork plugin support and
 must expose no hooks or subagents. These plugin results do not replace, weaken
 or block the independent connector-only Directory gate above.
@@ -949,7 +953,7 @@ The following decisions are already made by this revision:
   port, datasource or systemd unit is created;
 - old beta stays dormant;
 - public MCP/issuer origin is `mcp-claude-v1.skillpilot.com`;
-- Claude v1 exposes exactly twelve tools and two content-addressed MCP Apps UI
+- Claude v1 exposes exactly fourteen tools and two content-addressed MCP Apps UI
   resources for the approved goal image and private normal flashcard practice;
 - normal flashcard reviews affect scheduling only and are never mastery;
 - the hosted connector adds EUR 0 to the user's provider-plan cost and has no
@@ -961,7 +965,7 @@ The following decisions are already made by this revision:
 - the plugin Skill is scoped to that Web surface, declares the same remote
   connector, exposes no v1 hooks or subagents and claims neither Desktop Chat
   nor Cowork support;
-- the remote connector owns OAuth, MCP, all twelve tools and both MCP Apps;
+- the remote connector owns OAuth, MCP, all fourteen tools and both MCP Apps;
 - the Connectors Directory remains an independent connector-only route with
   its own Team/Enterprise submission gate and is not a prerequisite for plugin
   submission;

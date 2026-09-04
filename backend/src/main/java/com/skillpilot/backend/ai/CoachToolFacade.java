@@ -2,6 +2,8 @@ package com.skillpilot.backend.ai;
 
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MemoryPracticeResponse;
 import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
@@ -26,17 +28,22 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
+import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
@@ -114,6 +121,7 @@ public class CoachToolFacade {
     private final ChatSessionService chatSessionService;
     private final CoachStateProjection coachStateProjection;
     private final LearnerLifecycleService learnerLifecycle;
+    private final LearnerLearningPlanService learnerLearningPlanService;
     private final ThreadLocal<SessionActivityScope> activeSessionActivity = new ThreadLocal<>();
 
     public CoachToolFacade(
@@ -121,15 +129,217 @@ public class CoachToolFacade {
             ChatSessionService chatSessionService,
             CoachStateProjection coachStateProjection,
             LearnerLifecycleService learnerLifecycle) {
+        this(
+                learnerService,
+                chatSessionService,
+                coachStateProjection,
+                learnerLifecycle,
+                null);
+    }
+
+    @Autowired
+    public CoachToolFacade(
+            LearnerService learnerService,
+            ChatSessionService chatSessionService,
+            CoachStateProjection coachStateProjection,
+            LearnerLifecycleService learnerLifecycle,
+            LearnerLearningPlanService learnerLearningPlanService) {
         this.learnerService = learnerService;
         this.chatSessionService = chatSessionService;
         this.coachStateProjection = coachStateProjection;
         this.learnerLifecycle = learnerLifecycle;
+        this.learnerLearningPlanService = learnerLearningPlanService;
     }
 
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getCoachLearnerState(skillpilotId);
+    }
+
+    /** Provider-neutral read model for the additive workload of all valid subject plans. */
+    public LearnerPlanTodayStatus getLearningPlanTodayStatus(
+            String skillpilotId,
+            String communicationLocale) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return requireLearningPlanService().getTodayStatus(skillpilotId, communicationLocale);
+    }
+
+    /**
+     * Resumes the authoritative plan only when the preceding read gate proves
+     * that reconciliation can select a new goal. A successful no-op is
+     * forbidden because OpenAI writes must never advance stateVersion without
+     * a shared learner-state change.
+     */
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse resumeLearningPlan(
+            String skillpilotId,
+            String communicationLocale) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        LearnerLearningPlanService plans = requireLearningPlanService();
+        LearnerPlanTodayStatus status = plans.getTodayStatus(skillpilotId, communicationLocale);
+        if (!status.resumeAvailable()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "No resumable learning-plan goal is currently available");
+        }
+        LearnerLearningPlanApi.TransitionResponse transition = plans.reconcile(
+                skillpilotId,
+                new LearnerLearningPlanApi.ReconcileRequest(null));
+        if (transition == null || !transition.changed() || transition.state() == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Learning-plan reconciliation did not change the learner state");
+        }
+        return transition;
+    }
+
+    /**
+     * Switches to the one current subject plan identified by its freshly
+     * localized learner-facing name.
+     *
+     * <p>The caller never supplies a plan, landscape, focus or goal ID. The
+     * learner lock is acquired before resolving the current daily-plan
+     * projection, and the existing revision-checked subject-switch workflow
+     * remains authoritative for choosing a due frontier goal. Equal localized
+     * names are deliberately ambiguous and fail closed.</p>
+     */
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse switchLearningPlanSubject(
+            String skillpilotId,
+            String communicationLocale,
+            String subjectName) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        String requestedSubject = requirePublishedSubjectName(subjectName);
+        LearnerLearningPlanService plans = requireLearningPlanService();
+
+        // Serialize subject-name resolution with plan edits and transitions.
+        // The downstream switch verifies the selected plan revision again.
+        learnerService.acquireLearningPlanMutationLock(skillpilotId);
+        LearnerPlanTodayStatus status = plans.getTodayStatus(skillpilotId, communicationLocale);
+        if (status == null || !status.followLearningPlans()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Learning-plan subject switching is not currently available");
+        }
+
+        List<LearnerPlanTodayStatus.SubjectStatus> matches = status.subjects() == null
+                ? List.of()
+                : status.subjects().stream()
+                        .filter(Objects::nonNull)
+                        .filter(subject -> subject.landscapeId() != null
+                                && !subject.landscapeId().isBlank())
+                        .filter(CoachToolFacade::isPublishedPlanSubject)
+                        .filter(subject -> requestedSubject.equals(
+                                publishedSubjectName(subject.subjectLabel())))
+                        .toList();
+        if (matches.size() != 1) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "The requested subject is not an unambiguous current learning-plan subject");
+        }
+
+        LearnerPlanTodayStatus.SubjectStatus selectedSubject = matches.get(0);
+        LocalDate asOf = status.asOf();
+        if (asOf == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Learning-plan subject switching is not currently available");
+        }
+
+        final LearnerLearningPlanApi.PlanDetail selectedPlan;
+        try {
+            selectedPlan = plans.getPlan(
+                    skillpilotId,
+                    selectedSubject.landscapeId(),
+                    asOf);
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) {
+                throw exception;
+            }
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "The requested subject cannot be switched right now");
+        }
+        if (selectedPlan == null
+                || selectedPlan.planId() == null
+                || selectedPlan.stale()
+                || !Objects.equals(selectedPlan.landscapeId(), selectedSubject.landscapeId())) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "The requested subject cannot be switched right now");
+        }
+
+        final LearnerLearningPlanApi.TransitionResponse transition;
+        try {
+            transition = plans.switchPlan(
+                    skillpilotId,
+                    selectedPlan.planId(),
+                    new LearnerLearningPlanApi.ContinueRequest(
+                            selectedPlan.revision(),
+                            asOf));
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) {
+                throw exception;
+            }
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "The requested subject cannot be switched right now");
+        }
+        if (transition == null
+                || !transition.changed()
+                || transition.state() == null
+                || transition.activeGoalId() == null
+                || transition.activeGoalId().isBlank()
+                || activeGoal(transition.state()) == null
+                || !transition.activeGoalId().equals(activeGoal(transition.state()).id())) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "The requested subject cannot be switched right now");
+        }
+        return transition;
+    }
+
+    private static String requirePublishedSubjectName(String subjectName) {
+        String normalized = publishedSubjectName(subjectName);
+        if (normalized == null || !normalized.equals(subjectName)) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "subject must be copied exactly from the current daily-plan context");
+        }
+        return normalized;
+    }
+
+    /** Mirrors the bounded learner-facing subject projection without exposing IDs. */
+    private static String publishedSubjectName(String rawSubjectName) {
+        if (rawSubjectName == null) {
+            return null;
+        }
+        String normalized = rawSubjectName
+                .replaceAll("[\\p{Cc}\\p{Cf}]+", " ")
+                .replaceAll("\\s+", " ")
+                .trim();
+        if (normalized.isEmpty()) {
+            return null;
+        }
+        return normalized.length() <= 120 ? normalized : normalized.substring(0, 120);
+    }
+
+    private static boolean isPublishedPlanSubject(
+            LearnerPlanTodayStatus.SubjectStatus subject) {
+        return publishedSubjectName(subject.subjectLabel()) != null
+                && subject.dueToday() >= 0
+                && subject.completedToday() >= 0
+                && subject.openToday() >= 0
+                && subject.openOverdue() >= 0
+                && (long) subject.completedToday() + subject.openToday()
+                        == subject.dueToday();
+    }
+
+    private LearnerLearningPlanService requireLearningPlanService() {
+        if (learnerLearningPlanService == null) {
+            throw new IllegalStateException("Learning-plan tools are not configured.");
+        }
+        return learnerLearningPlanService;
     }
 
     /** Owns one complete legacy ID-based coach request. */

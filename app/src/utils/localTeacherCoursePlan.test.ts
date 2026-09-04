@@ -264,11 +264,9 @@ const prerequisiteOrderEvaluation = evaluateTeacherCoursePlan(
 assert.equal(prerequisiteOrderEvaluation.quality.status, 'insufficient')
 assert.deepEqual(prerequisiteOrderEvaluation.metrics?.dueGoalIds, ['effective-prerequisite'])
 
-// Cross-block dependencies use the same per-position due-date formula as the
-// backend. The prerequisite was originally second in the Sek-I block (due
-// 2026-09-10), while its dependent was due 2026-09-09 in the overlapping
-// Sek-II block. Both atoms stay in their authored blocks, but the prerequisite
-// moves to the first Sek-I position and is therefore due on 2026-09-08.
+// Cross-block dependencies use the same immutable global slots as the backend.
+// EDF completes the earlier-starting Sek-I block before the dependent, so the
+// already valid authored prefix remains untouched.
 const crossBlockPrerequisiteIndex = goalMap(
   uiGoal('sek-one-root', ['sek-one-unrelated', 'prerequisite']),
   uiGoal('sek-one-unrelated'),
@@ -302,7 +300,7 @@ assert.deepEqual(crossBlockPrerequisiteAssignments.assignments, [
     blockId: 'sek-one-block',
     goalId: 'sek-one-root',
     scopeAtomicGoalIds: ['sek-one-unrelated', 'prerequisite'],
-    atomicGoalIds: ['prerequisite', 'sek-one-unrelated'],
+    atomicGoalIds: ['sek-one-unrelated', 'prerequisite'],
     duplicateAtomicGoalIds: [],
   },
   {
@@ -319,7 +317,7 @@ assert.deepEqual(
     crossBlockPrerequisiteIndex,
     '2026-09-08',
   ).metrics?.dueGoalIds,
-  ['prerequisite'],
+  ['sek-one-unrelated'],
 )
 assert.deepEqual(
   evaluateTeacherCoursePlan(
@@ -327,7 +325,7 @@ assert.deepEqual(
     crossBlockPrerequisiteIndex,
     '2026-09-09',
   ).metrics?.dueGoalIds,
-  ['prerequisite', 'dependent'],
+  ['sek-one-unrelated', 'prerequisite'],
 )
 assert.deepEqual(
   assignAtomicGoalsToLearningBlocks(
@@ -338,9 +336,8 @@ assert.deepEqual(
   'cross-block prerequisite repair is deterministic and idempotent',
 )
 
-// Some overlapping plans need both repair directions. Pulling b1 forward in
-// B yields [b1,b0], after which the dependent-later pass must retain that
-// intermediate order while turning A into [a1,a0].
+// EDF handles the earlier B deadline before A, so this overlapping prerequisite
+// graph is already valid and the authored prefixes remain byte-for-byte stable.
 const combinedRepairIndex = goalMap(
   uiGoal('combined-a-root', ['a0', 'a1']),
   { ...uiGoal('a0'), requires: ['b0', 'b1'] },
@@ -372,31 +369,30 @@ assert.equal(combinedRepairAssignments.quality.status, 'complete')
 assert.deepEqual(
   combinedRepairAssignments.assignments.find(({ blockId }) => blockId === 'combined-a-block')
     ?.atomicGoalIds,
-  ['a1', 'a0'],
+  ['a0', 'a1'],
 )
 assert.deepEqual(
   combinedRepairAssignments.assignments.find(({ blockId }) => blockId === 'combined-b-block')
     ?.atomicGoalIds,
-  ['b1', 'b0'],
+  ['b0', 'b1'],
 )
 
-// Per-position dates alone are insufficient. In two parallel one-atom
-// Monday-to-Friday blocks both atoms independently become due on Wednesday,
-// but cumulative rounding makes only the dependent due on Tuesday. With no
-// within-block reorder available, publication must fail closed.
+// The actual global slot date is authoritative. With two tied one-atom blocks,
+// an authored dependent-first block order is unsatisfiable because there is no
+// within-block reorder that can move the prerequisite into the first slot.
 const cumulativeOnlyViolation = assignAtomicGoalsToLearningBlocks(
   addBlocks(createPlan('cumulative-only-prerequisite-violation'), [
-    {
-      id: 'cumulative-prerequisite-block',
-      kind: 'learning',
-      goalId: 'prerequisite',
-      startDate: '2026-09-07',
-      endDate: '2026-09-11',
-    },
     {
       id: 'cumulative-dependent-block',
       kind: 'learning',
       goalId: 'sek-two-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'cumulative-prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
       startDate: '2026-09-07',
       endDate: '2026-09-11',
     },
@@ -429,10 +425,8 @@ assert.equal(
   'CP-GOAL-PREREQUISITE-SCHEDULE',
 )
 
-// The active-workday cap alone is not an operations bound: a locally supplied
-// plan may combine exactly 1,000 workdays with thousands of atoms. Validation
-// must reject that shape before a synchronous day-by-goal sweep can stall the
-// browser, even though its submitted prerequisite order is already valid.
+// The immutable-slot scheduler scales with blocks plus atoms instead of a
+// day-by-goal sweep, so a valid 1,000-workday plan stays usable.
 const operationBudgetAtomIds = Array.from(
   { length: 8_000 },
   (_, index) => `budget-atom-${index}`,
@@ -456,11 +450,7 @@ const operationBudgetSchedule = assignAtomicGoalsToLearningBlocks(
   ),
 )
 assert.equal(countCoursePlanWorkdaysInclusive('2026-01-05', '2029-11-03'), 1_000)
-assert.equal(operationBudgetSchedule.quality.status, 'invalid')
-assert.equal(
-  operationBudgetSchedule.quality.issues[0]?.code,
-  'CP-GOAL-PREREQUISITE-SCHEDULE',
-)
+assert.equal(operationBudgetSchedule.quality.status, 'complete')
 
 // A fixed one-day dependent block before a fixed one-day prerequisite block
 // cannot be repaired by reordering. Such a plan must not be marked ready.
@@ -686,6 +676,113 @@ assert.equal(
     .filter((metric) => metric.kind === 'learning')
     .reduce((sum, metric) => sum + (metric.kind === 'learning' ? metric.dueGoalIds.length : 0), 0),
   1,
+)
+
+// Global due slots are immutable: equal overlapping blocks may not exchange
+// which concrete atom represents the same rounded total on later days.
+const monotoneOverlapIndex = goalMap(
+  uiGoal('monotone-first-root', ['monotone-first-goal']),
+  uiGoal('monotone-second-root', ['monotone-second-goal']),
+  uiGoal('monotone-first-goal'),
+  uiGoal('monotone-second-goal'),
+)
+const monotoneOverlapPlan = addBlocks(createPlan('monotone-overlap'), [
+  {
+    id: 'first-block',
+    kind: 'learning',
+    goalId: 'monotone-first-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-10',
+  },
+  {
+    id: 'second-block',
+    kind: 'learning',
+    goalId: 'monotone-second-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-10',
+  },
+])
+const monotoneDailyDue = [
+  '2026-09-07',
+  '2026-09-08',
+  '2026-09-09',
+  '2026-09-10',
+].map((asOf) => {
+  const evaluation = evaluateTeacherCoursePlan(monotoneOverlapPlan, monotoneOverlapIndex, asOf)
+  assert(evaluation.metrics)
+  assert.equal(
+    evaluation.metrics.dueGoalIds.length,
+    Math.round(evaluation.metrics.expectedGoalEquivalent + 1e-9),
+  )
+  return evaluation.metrics.dueGoalIds
+})
+assert.deepEqual(monotoneDailyDue, [
+  ['monotone-first-goal'],
+  ['monotone-first-goal'],
+  ['monotone-first-goal', 'monotone-second-goal'],
+  ['monotone-first-goal', 'monotone-second-goal'],
+])
+for (let day = 1; day < monotoneDailyDue.length; day += 1) {
+  assert(monotoneDailyDue[day - 1]!.every((goalId) => monotoneDailyDue[day]!.includes(goalId)))
+}
+
+// A later-starting block with the earlier deadline receives the first slots,
+// then the long block still reaches its full prefix by its own end date.
+const deadlineOverlapIndex = goalMap(
+  uiGoal('long-root', ['long-1', 'long-2']),
+  uiGoal('short-root', ['short-1', 'short-2']),
+  uiGoal('long-1'),
+  uiGoal('long-2'),
+  uiGoal('short-1'),
+  uiGoal('short-2'),
+)
+const deadlineOverlapPlan = addBlocks(createPlan('deadline-overlap'), [
+  {
+    id: 'long-block',
+    kind: 'learning',
+    goalId: 'long-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-11',
+  },
+  {
+    id: 'short-block',
+    kind: 'learning',
+    goalId: 'short-root',
+    startDate: '2026-09-08',
+    endDate: '2026-09-09',
+  },
+])
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-08',
+  ).metrics?.dueGoalIds,
+  ['short-1', 'short-2'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-09',
+  ).metrics?.dueGoalIds,
+  ['long-1', 'short-1', 'short-2'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-10',
+  ).metrics?.dueGoalIds,
+  ['long-1', 'long-2', 'short-1', 'short-2'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-11',
+  ).metrics?.dueGoalIds,
+  ['long-1', 'long-2', 'short-1', 'short-2'],
 )
 
 // Baseline shape and referential integrity both fail closed.

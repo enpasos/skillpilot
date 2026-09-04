@@ -39,7 +39,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
       primaryAction: 'Jetzt lernen',
       quickstartAction: '5-Minuten-Quickstart',
       faqAction: 'FAQ',
-      accessSummary: 'Aktuell ist nur die Claude-Beta nutzbar; ChatGPT wartet auf Freigabe.',
+      accessSummary: 'Angeboten wird derzeit der Claude-1.1-Betakandidat; seine exakte Client-Abnahme und die ChatGPT-Freigabe stehen noch aus.',
     },
     teaching: {
       title: 'Kurse planen',
@@ -68,7 +68,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
       primaryAction: 'Learn now',
       quickstartAction: '5-minute quickstart',
       faqAction: 'FAQ',
-      accessSummary: 'Currently, only the Claude beta is available; ChatGPT is awaiting approval.',
+      accessSummary: 'The Claude 1.1 beta candidate is currently offered; its exact client acceptance and ChatGPT approval are still pending.',
     },
     teaching: {
       title: 'Plan courses',

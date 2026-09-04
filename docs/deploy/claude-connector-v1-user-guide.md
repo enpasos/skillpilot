@@ -20,11 +20,21 @@ file nor its password.
 
 The plugin provides the reusable SkillPilot coaching Skill and declares the same
 remote connector in paid Claude Web chat. The remote
-connector supplies all twelve SkillPilot tools and both interactive UIs for
+connector supplies all fourteen SkillPilot tools and both interactive UIs for
 learning-goal images and flashcard practice. SkillPilot Coach v1 contains no
 hooks or subagents and makes no claim of Desktop Chat or Cowork plugin support.
 Additional surfaces require separate acceptance evidence and a later reviewed
 release.
+
+At every normal start or resume, Claude first reports today's due, currently
+mastered, still-open and overdue goal counts for every valid subject plan. If
+no goal is active and the backend reports an available candidate, Claude
+resumes that backend-selected goal automatically; no Web **Continue learning**
+button is required. Plan and landscape identifiers are not sent to Claude.
+You can ask Claude to switch to another subject named in today's plan, for
+example “switch to Physics.” Every valid subject plan still applies; the
+connector changes only the current learning subject and continues the
+backend-selected due goal there.
 
 The Connectors Directory remains a separate connector-only route with its own
 Team/Enterprise publisher gate. It is not a prerequisite for plugin submission
@@ -66,6 +76,7 @@ screenshot containing it. The permanent SkillPilot ID is not transferred.
 - display an approved learning-goal image;
 - practise normal flashcards in the interactive UI;
 - receive coaching for the active goal;
+- switch directly between subjects in today's valid learning plans;
 - run Verified Recall or an exam task;
 - record a completion supported by suitable evidence.
 

@@ -77,9 +77,12 @@ assert(
   (['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const)
     .every(variantId => row(de, 'current-access').cells[variantId].status === 'planned')
     && row(de, 'current-access').cells['claude-free'].status === 'unavailable'
-    && row(de, 'current-access').cells['claude-pro-max'].status === 'tested'
+    && row(de, 'current-access').cells['claude-pro-max'].status === 'conditional'
+    && row(en, 'current-access').cells['claude-pro-max'].status === 'conditional'
+    && row(de, 'current-access').cells['claude-pro-max'].note?.includes('1.1-Client-Abnahme')
+    && row(en, 'current-access').cells['claude-pro-max'].note?.includes('1.1 client acceptance')
     && row(de, 'current-access').cells['claude-team-enterprise'].status === 'planned',
-  'only the controlled Claude Pro direct-install beta is presented as currently tested',
+  'the controlled Claude Pro 1.1 direct-install candidate is presented as conditional with exact-client acceptance pending',
 )
 for (const chatGptVariant of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
   const deCurrentAccess = row(de, 'current-access').cells[chatGptVariant]
@@ -132,7 +135,7 @@ assert(
     && row(en, 'browser-devices').cells['claude-pro-max'].value.includes('Claude Web')
     && row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Android')
     && row(en, 'browser-devices').cells['claude-pro-max'].value.includes('Android'),
-  'Claude device copy states only the tested Web and Android route',
+  'Claude device copy limits the intended candidate route to Web and Android',
 )
 for (const fullPluginRow of ['current-access', 'provider-plan', 'cost', 'start-path', 'session-duration', 'learning-features', 'photo-upload', 'browser-devices', 'dictation']) {
   assert(
@@ -171,18 +174,29 @@ assert(
   'the matrix tells learners not to share their prepared start or chat',
 )
 assert(
-  row(de, 'native-mobile-app').cells['claude-pro-max'].status === 'tested'
-    && row(en, 'native-mobile-app').cells['claude-pro-max'].status === 'tested'
+  row(de, 'native-mobile-app').cells['claude-pro-max'].status === 'conditional'
+    && row(en, 'native-mobile-app').cells['claude-pro-max'].status === 'conditional'
+    && row(de, 'native-mobile-app').cells['claude-pro-max'].note?.includes('Abnahme steht noch aus')
+    && row(en, 'native-mobile-app').cells['claude-pro-max'].note?.includes('acceptance is still pending')
     && row(de, 'native-mobile-app').cells['claude-pro-max'].note?.includes('keine Installation direkt')
     && row(en, 'native-mobile-app').cells['claude-pro-max'].note?.includes('no installation from inside'),
-  'the native Android route is limited to the observed post-Web-install beta path',
+  'the native Android route is an unaccepted 1.1 target limited to post-Web installation',
 )
 assert(
-  row(de, 'voice-mode').cells['claude-pro-max'].status === 'tested'
-    && row(en, 'voice-mode').cells['claude-pro-max'].status === 'tested'
+  row(de, 'voice-mode').cells['claude-pro-max'].status === 'conditional'
+    && row(en, 'voice-mode').cells['claude-pro-max'].status === 'conditional'
+    && row(de, 'voice-mode').cells['claude-pro-max'].value.includes('Abnahme ausstehend')
+    && row(en, 'voice-mode').cells['claude-pro-max'].value.includes('acceptance pending')
     && row(de, 'voice-mode').cells['claude-pro-max'].note?.includes('nicht garantiert')
     && row(en, 'voice-mode').cells['claude-pro-max'].note?.includes('not guaranteed'),
-  'Claude Pro voice mode is presented as beta-tested without a UI-display guarantee',
+  'Claude Pro voice mode is presented as an unaccepted 1.1 target without a UI-display guarantee',
+)
+assert(
+  deRows.every(matrixRow => matrixRow.cells['claude-pro-max'].status !== 'tested')
+    && enRows.every(matrixRow => matrixRow.cells['claude-pro-max'].status !== 'tested')
+    && de.caveat.includes('Frühere Tests anderer Paketversionen gelten nicht für 1.1')
+    && en.caveat.includes('Tests of earlier package versions do not apply to 1.1'),
+  'the current Claude 1.1 candidate never inherits a tested status from an earlier package',
 )
 for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
   assert(
@@ -193,7 +207,7 @@ for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as c
 }
 
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('25') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
+  assert(copy.asOf.includes('4') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
   assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, voice, and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')

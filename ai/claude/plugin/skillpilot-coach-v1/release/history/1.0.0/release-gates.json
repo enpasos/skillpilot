@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
+  "pluginIdentity": "skillpilot-coach-v1",
+  "pluginVersion": "1.0.0",
+  "updatedAt": "2026-08-24",
+  "submissionChannel": "ANTHROPIC_PLUGIN_CONSOLE",
+  "connectorDirectoryDependency": "none",
+  "submissionReady": false,
+  "statusSemantics": {
+    "pass": "Every named evidence ID resolves to an approved manifest record bound to this plugin candidateContractSha256 and exact baseRevision.",
+    "pending": "Required plugin work, independent acceptance evidence or approval is still outstanding.",
+    "blocked": "The plugin gate cannot proceed until its named dependency is resolved."
+  },
+  "gates": [
+    {
+      "id": "openai-review-freeze",
+      "owner": "Release",
+      "required": true,
+      "status": "pass",
+      "evidence": [
+        "openai-review-freeze-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "plugin-package-structural-check",
+      "owner": "Release",
+      "required": true,
+      "status": "pass",
+      "evidence": [
+        "plugin-package-structural-final-candidate"
+      ]
+    },
+    {
+      "id": "anthropic-plugin-cli-validation",
+      "owner": "Release",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "anthropic-plugin-cli-validation-final-candidate"
+      ]
+    },
+    {
+      "id": "reproducible-plugin-archive",
+      "owner": "Release",
+      "required": true,
+      "status": "pass",
+      "evidence": [
+        "reproducible-plugin-archive-final-candidate"
+      ]
+    },
+    {
+      "id": "remote-mcp-contract-twelve-tools-two-apps",
+      "owner": "Backend/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "remote-mcp-contract-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "paid-web-chat-real-client",
+      "owner": "QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "paid-web-chat-real-client-final-candidate"
+      ]
+    },
+    {
+      "id": "android-direct-install-real-client",
+      "owner": "QA/Product Owner",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "android-direct-install-real-client-final-candidate"
+      ]
+    },
+    {
+      "id": "first-party-24h-learning-session",
+      "owner": "Backend/Product/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "first-party-session-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "oauth-learner-session-separation",
+      "owner": "Security/Backend/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "oauth-session-separation-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "permanent-id-nondisclosure",
+      "owner": "Security/Product/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "permanent-id-nondisclosure-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "negative-replay-origin-redaction",
+      "owner": "Security/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "negative-replay-origin-redaction-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "privacy-legal-support-approval",
+      "owner": "Product/Legal/Security",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "privacy-legal-support-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "anthropic-plugin-submission-metadata",
+      "owner": "Product Owner/Release",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "anthropic-plugin-submission-metadata-final-candidate"
+      ]
+    },
+    {
+      "id": "public-github-source-sanitization",
+      "owner": "Release/Security/Privacy",
+      "required": true,
+      "status": "pass",
+      "evidence": [
+        "public-github-source-final-plugin-candidate"
+      ]
+    },
+    {
+      "id": "anthropic-console-submitter-role",
+      "owner": "Product Owner/Release",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "anthropic-console-submitter-role-final-candidate"
+      ]
+    }
+  ]
+}

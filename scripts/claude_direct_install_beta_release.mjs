@@ -51,6 +51,9 @@ const expectedExactClientChecks = [
   "web-single-plugin-bundled-connector-oauth",
   "first-party-fresh-session-handoff",
   "web-coaching-and-both-mcp-apps",
+  "web-learning-plan-today-all-subjects",
+  "web-learning-plan-automatic-resume",
+  "web-learning-plan-subject-switch",
   "web-goal-visualization-after-goal-change",
   "web-active-goal-completion-persisted",
   "web-backend-selected-successor",
@@ -60,12 +63,16 @@ const expectedExactClientChecks = [
   "web-no-durable-anchor-memory-claim",
   "android-context-and-both-mcp-apps",
   "android-voice-current-context",
+  "android-voice-learning-plan-today-all-subjects",
+  "android-voice-learning-plan-automatic-resume",
+  "android-voice-learning-plan-subject-switch",
   "android-voice-active-goal-completion-persisted",
   "android-voice-backend-selected-successor",
   "android-voice-no-policy-instruction-or-internal-deliberation-narration",
   "android-voice-no-lazy-schema-parameter-or-retry-narration",
   "android-voice-clear-start-intent-saved-without-extra-confirmation",
   "android-voice-no-durable-anchor-memory-claim",
+  "learning-plan-unavailable-count-safe-warning",
   "no-duplicate-or-protected-data-disclosure",
 ];
 const expectedPrivacyChecks = [
@@ -73,6 +80,7 @@ const expectedPrivacyChecks = [
   "controller-and-support-disclosed",
   "age-and-anthropic-boundary-disclosed",
   "session-identifier-and-oauth-boundary-accurate",
+  "daily-plan-subject-counts-without-plan-identifiers",
   "data-retention-and-revocation-accurate",
   "static-page-security-and-no-tracking",
 ];
@@ -242,14 +250,12 @@ export function validateDirectInstallBetaLane(lane) {
     "claude-web",
     "lane.requirements.installSurface",
   );
-  for (const testedSurface of ["claude-web", "claude-android"]) {
-    if (!lane.requirements.testedSurfaces.includes(testedSurface)) {
-      throw new Error(
-        `lane.requirements.testedSurfaces must include ${testedSurface}.`,
-      );
-    }
-  }
-  assertEqual(lane.requirements.voiceMode, true, "lane.requirements.voiceMode");
+  assertEqual(
+    lane.requirements.testedSurfaces.length,
+    0,
+    "lane.requirements.testedSurfaces.length",
+  );
+  assertEqual(lane.requirements.voiceMode, false, "lane.requirements.voiceMode");
 
   assertRecord(lane.readiness, "lane.readiness");
   assertExactKeys(
@@ -303,10 +309,18 @@ export function validateDirectInstallBetaLane(lane) {
       ["pass", "pending"],
       `controlled evidence ${evidence.id}.status`,
     );
-    assertNonEmptyString(
-      evidence.evidenceRef,
-      `controlled evidence ${evidence.id}.evidenceRef`,
-    );
+    if (evidence.status === "pending") {
+      assertEqual(
+        evidence.evidenceRef,
+        null,
+        `pending controlled evidence ${evidence.id}.evidenceRef`,
+      );
+    } else {
+      assertNonEmptyString(
+        evidence.evidenceRef,
+        `passing controlled evidence ${evidence.id}.evidenceRef`,
+      );
+    }
   }
   const derivedControlledBetaReady = controlledEvidence.every(
     ({ status }) => status === "pass",
@@ -812,6 +826,8 @@ function validateClaudePrivacyNotice(html) {
     "genau 24 Stunden",
     "Getrennte Berechtigungen",
     "Keine Weitergabe der permanenten ID",
+    "Planbezogener Tagesstand pro Fach",
+    "Plan- und Landschaftskennungen werden nicht an Claude übermittelt",
     "Aktuelles Thema und Lernziele",
     "HMAC-Prüfwert",
     "höchstens eine Stunde",
@@ -823,6 +839,8 @@ function validateClaudePrivacyNotice(html) {
     "exactly 24 hours",
     "Separate authorization",
     "No disclosure of the permanent ID",
+    "Daily plan status per subject",
+    "plan and landscape identifiers are not transmitted to Claude",
     "The current topic and learning goals",
     "HMAC verification value",
     "no more than one hour",
@@ -983,7 +1001,7 @@ export function prepareClaudeDirectInstallBetaPublication({
 } = {}) {
   const paths = releasePaths(repositoryRoot);
   const lane = loadDirectInstallBetaLane(repositoryRoot);
-  assertControlledBetaReady(lane);
+  assertCandidatePreparationReady(lane);
   const manifest = loadPluginManifest(paths.manifestPath, lane);
   assertCanonicalTimestamp(preparedAt, "preparedAt");
 
@@ -1032,7 +1050,7 @@ export function verifyClaudeDirectInstallBetaPublication({
 } = {}) {
   const paths = releasePaths(repositoryRoot);
   const lane = loadDirectInstallBetaLane(repositoryRoot);
-  assertControlledBetaReady(lane);
+  assertCandidatePreparationReady(lane);
   const manifest = loadPluginManifest(paths.manifestPath, lane);
   assertRegularFile(paths.indexPath, "Claude plugin publication index");
   const index = readJson(paths.indexPath, "Claude plugin publication index");
@@ -1232,10 +1250,16 @@ function validatePluginManifest(manifest, lane) {
   assertEqual(manifest.version, lane.candidate.version, "Claude plugin candidate version");
 }
 
-function assertControlledBetaReady(lane) {
-  if (lane.readiness.controlledBetaReady !== true) {
+function assertCandidatePreparationReady(lane) {
+  const localEvidence = lane.readiness.controlledBetaEvidence.filter(
+    ({ kind }) => kind === "local_validation",
+  );
+  if (
+    localEvidence.length === 0
+    || !localEvidence.every(({ status }) => status === "pass")
+  ) {
     throw new Error(
-      "Controlled direct-install beta publication requires every named local and real-client evidence to pass.",
+      "Direct-install candidate preparation requires every named local validation to pass.",
     );
   }
 }
@@ -1321,11 +1345,8 @@ function validateRequirements(requirements, label) {
   }
   assertNonEmptyString(requirements.plan, `${label}.plan`);
   assertNonEmptyString(requirements.installSurface, `${label}.installSurface`);
-  if (
-    !Array.isArray(requirements.testedSurfaces) ||
-    requirements.testedSurfaces.length === 0
-  ) {
-    throw new Error(`${label}.testedSurfaces must be a non-empty string list.`);
+  if (!Array.isArray(requirements.testedSurfaces)) {
+    throw new Error(`${label}.testedSurfaces must be a string list.`);
   }
   const seen = new Set();
   for (const [index, surface] of requirements.testedSurfaces.entries()) {

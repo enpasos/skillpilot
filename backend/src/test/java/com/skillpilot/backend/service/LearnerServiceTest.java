@@ -689,7 +689,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void learnerPlanRepairsPrerequisiteDueAfterDependentAcrossFixedBlocks() {
+    void learnerPlanKeepsAuthoredOrderWhenGlobalSlotsAlreadyPutPrerequisiteFirst() {
         selectCompletedCanonicalMathCurriculum();
         var prerequisiteBlock = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
                 "prerequisite-block",
@@ -721,15 +721,15 @@ public class LearnerServiceTest {
         assertThat(ordered.get(0).startDate()).isEqualTo(prerequisiteBlock.startDate());
         assertThat(ordered.get(0).endDate()).isEqualTo(prerequisiteBlock.endDate());
         assertThat(ordered.get(0).atomicGoalIds()).containsExactly(
-                CANONICAL_CHOOSE_REPRESENTATION_ID,
-                CANONICAL_MATH_SEK_ONE_ORIENTATION_ID);
+                CANONICAL_MATH_SEK_ONE_ORIENTATION_ID,
+                CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(ordered.get(1)).isEqualTo(dependentBlock);
         assertThat(learnerService.orderLearningPlanBlocksByPrerequisites(learnerId, ordered))
                 .containsExactlyElementsOf(ordered);
     }
 
     @Test
-    void learnerPlanCombinesEarlierAndLaterRepairAcrossFixedBlocks() {
+    void learnerPlanRejectsTiedDependentFirstBlockThatCannotMoveBehindPrerequisites() {
         var blockA = learningPlanBlock(
                 "block-a",
                 "2026-09-07",
@@ -746,18 +746,14 @@ public class LearnerServiceTest {
                 "b0", Set.of(),
                 "b1", Set.of());
 
-        var ordered = learnerService.orderLearningPlanBlocksForPrerequisites(
-                List.of(blockA, blockB),
-                prerequisitesByDependent);
-
-        assertThat(ordered).extracting(com.skillpilot.backend.api.LearnerLearningPlanApi.Block::id)
-                .containsExactly("block-a", "block-b");
-        assertThat(ordered.get(0).atomicGoalIds()).containsExactly("a1", "a0");
-        assertThat(ordered.get(1).atomicGoalIds()).containsExactly("b1", "b0");
+        assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksForPrerequisites(
+                        List.of(blockA, blockB),
+                        prerequisitesByDependent))
+                .isInstanceOf(LearningPlanPrerequisiteScheduleConflictException.class);
     }
 
     @Test
-    void learnerPlanRejectsCumulativeTuesdayConflictThatPerBlockMidpointsMiss() {
+    void learnerPlanRejectsDependentFirstGlobalSlotWithoutAReorderPosition() {
         var prerequisiteBlock = learningPlanBlock(
                 "prerequisite-block",
                 "2026-09-07",
@@ -770,11 +766,11 @@ public class LearnerServiceTest {
                 List.of("dependent"));
 
         assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
-                List.of(prerequisiteBlock, dependentBlock),
+                List.of(dependentBlock, prerequisiteBlock),
                 LocalDate.parse("2026-09-08")))
                 .containsExactly("dependent");
         assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksForPrerequisites(
-                        List.of(prerequisiteBlock, dependentBlock),
+                        List.of(dependentBlock, prerequisiteBlock),
                         Map.of(
                                 "prerequisite", Set.of(),
                                 "dependent", Set.of("prerequisite"))))
@@ -782,7 +778,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void learnerPlanRepairsPositionViolationEvenWhenCumulativeDownSetIsSafe() {
+    void learnerPlanKeepsDensePrefixWhenPrerequisiteAndDependentShareFinalSlotDate() {
         var prerequisiteBlock = learningPlanBlock(
                 "dense-prerequisite-block",
                 "2026-09-01",
@@ -808,12 +804,12 @@ public class LearnerServiceTest {
                         "dependent", Set.of("prerequisite")));
 
         assertThat(ordered.get(0).atomicGoalIds())
-                .containsExactly("prerequisite", "unrelated-0", "unrelated-1");
+                .containsExactly("unrelated-0", "unrelated-1", "prerequisite");
         assertThat(ordered.get(1)).isEqualTo(dependentBlock);
     }
 
     @Test
-    void learnerPlanUsesCumulativeViolationToPullPrerequisiteForward() {
+    void learnerPlanKeepsPrefixWhenGlobalSlotsAlreadyMakePrerequisiteDueEarlier() {
         var prerequisiteBlock = learningPlanBlock(
                 "prerequisite-block",
                 "2026-09-01",
@@ -828,7 +824,7 @@ public class LearnerServiceTest {
         assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
                 List.of(prerequisiteBlock, dependentBlock),
                 LocalDate.parse("2026-09-02")))
-                .containsExactly("independent-a", "independent-b", "dependent");
+                .containsExactly("independent-a", "prerequisite", "independent-b");
 
         var ordered = learnerService.orderLearningPlanBlocksForPrerequisites(
                 List.of(prerequisiteBlock, dependentBlock),
@@ -839,7 +835,7 @@ public class LearnerServiceTest {
                         "dependent", Set.of("prerequisite")));
 
         assertThat(ordered.get(0).atomicGoalIds())
-                .containsExactly("prerequisite", "independent-a");
+                .containsExactly("independent-a", "prerequisite");
         assertThat(ordered.get(1)).isEqualTo(dependentBlock);
     }
 
@@ -863,7 +859,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void learnerPlanRejectsScheduleChecksBeyondTheSharedOperationBudget() {
+    void learnerPlanAcceptsDenseValidPrerequisitesWithoutADayByGoalSweep() {
         List<String> goalIds = new ArrayList<>();
         Map<String, Set<String>> prerequisitesByDependent = new LinkedHashMap<>();
         for (int index = 0; index < 320; index++) {
@@ -878,10 +874,10 @@ public class LearnerServiceTest {
                 start.plusDays(1_399).toString(),
                 goalIds);
 
-        assertThatThrownBy(() -> learnerService.orderLearningPlanBlocksForPrerequisites(
+        assertThat(learnerService.orderLearningPlanBlocksForPrerequisites(
                         List.of(denseBlock),
                         prerequisitesByDependent))
-                .isInstanceOf(LearningPlanPrerequisiteScheduleConflictException.class);
+                .containsExactly(denseBlock);
     }
 
     @Test

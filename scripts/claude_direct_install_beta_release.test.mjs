@@ -87,8 +87,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     accessModel: "first_party_guided_beta",
   });
   assert.deepEqual(canonicalLane.candidate, {
-    version: "1.0.4",
-    sha256: "46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963",
+    version: "1.1.0",
+    sha256: "ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca",
   });
   assert.deepEqual(canonicalLane.planSemantics, {
     supportBaseline: "claude_pro",
@@ -98,26 +98,29 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     minimumAge: 18,
     plan: "claude-pro",
     installSurface: "claude-web",
-    testedSurfaces: ["claude-web", "claude-android"],
-    voiceMode: true,
+    testedSurfaces: [],
+    voiceMode: false,
   });
-  assert.equal(canonicalLane.readiness.controlledBetaReady, true);
-  assert.equal(canonicalLane.readiness.guidedFirstPartyBetaReady, true);
+  assert.equal(canonicalLane.readiness.controlledBetaReady, false);
+  assert.equal(canonicalLane.readiness.guidedFirstPartyBetaReady, false);
   assert.equal(canonicalLane.readiness.openPublicBetaReady, false);
+  assert.ok(
+    canonicalLane.readiness.controlledBetaEvidence
+      .filter(({ status }) => status === "pending")
+      .every(({ evidenceRef }) => evidenceRef === null),
+  );
   const privacyBlocker = canonicalLane.readiness.openPublicBetaBlockers.find(
     ({ id }) => id === "privacy-approval",
   );
   assert.deepEqual(privacyBlocker, {
     id: "privacy-approval",
-    status: "pass",
-    evidenceRef: privacyEvidenceRelativePath(canonicalLane.candidate.version),
+    status: "pending",
+    evidenceRef: null,
   });
   assert.ok(
-    canonicalLane.readiness.openPublicBetaBlockers
-      .filter(({ id }) => id !== "privacy-approval")
-      .every(
+    canonicalLane.readiness.openPublicBetaBlockers.every(
       ({ status, evidenceRef }) => status === "pending" && evidenceRef === null,
-      ),
+    ),
   );
   assert.equal(canonicalExactClientEvidence.status, "pending");
   assert.deepEqual(
@@ -126,6 +129,9 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-single-plugin-bundled-connector-oauth",
       "first-party-fresh-session-handoff",
       "web-coaching-and-both-mcp-apps",
+      "web-learning-plan-today-all-subjects",
+      "web-learning-plan-automatic-resume",
+      "web-learning-plan-subject-switch",
       "web-goal-visualization-after-goal-change",
       "web-active-goal-completion-persisted",
       "web-backend-selected-successor",
@@ -135,21 +141,34 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-no-durable-anchor-memory-claim",
       "android-context-and-both-mcp-apps",
       "android-voice-current-context",
+      "android-voice-learning-plan-today-all-subjects",
+      "android-voice-learning-plan-automatic-resume",
+      "android-voice-learning-plan-subject-switch",
       "android-voice-active-goal-completion-persisted",
       "android-voice-backend-selected-successor",
       "android-voice-no-policy-instruction-or-internal-deliberation-narration",
       "android-voice-no-lazy-schema-parameter-or-retry-narration",
       "android-voice-clear-start-intent-saved-without-extra-confirmation",
       "android-voice-no-durable-anchor-memory-claim",
+      "learning-plan-unavailable-count-safe-warning",
       "no-duplicate-or-protected-data-disclosure",
     ],
   );
   assert.ok(
     canonicalExactClientEvidence.checks.every(({ status }) => status === "pending"),
   );
-  assert.equal(canonicalPrivacyEvidence.status, "pass");
+  assert.equal(canonicalPrivacyEvidence.status, "pending");
+  assert.deepEqual(
+    canonicalPrivacyEvidence.checks.find(
+      ({ id }) => id === "daily-plan-subject-counts-without-plan-identifiers",
+    ),
+    {
+      id: "daily-plan-subject-counts-without-plan-identifiers",
+      status: "pending",
+    },
+  );
   assert.ok(
-    canonicalPrivacyEvidence.checks.every(({ status }) => status === "pass"),
+    canonicalPrivacyEvidence.checks.every(({ status }) => status === "pending"),
   );
 });
 
@@ -346,7 +365,7 @@ test("prepare writes only the closed index and immutable versioned artifact, the
       `/api/public/claude/plugins/${artifactRelativePath}`,
     );
     assert.deepEqual(index.plugins[0].requirements, canonicalLane.requirements);
-    assert.equal(index.plugins[0].requirements.voiceMode, true);
+    assert.equal(index.plugins[0].requirements.voiceMode, false);
     assert.deepEqual(
       readdirSync(publicationRoot).sort(),
       ["index.json", "skillpilot-coach-v1"],
@@ -543,6 +562,8 @@ test("verify rejects physical entries outside the closed one-plugin registry", (
 test("lane readiness distinguishes the guided first-party beta from open-public readiness", () => {
   const controlledPending = clone(canonicalLane);
   controlledPending.readiness.controlledBetaEvidence[0].status = "pending";
+  controlledPending.readiness.controlledBetaEvidence[0].evidenceRef = null;
+  controlledPending.readiness.controlledBetaReady = true;
   assert.throws(
     () => validateDirectInstallBetaLane(controlledPending),
     /controlledBetaReady must be derived/u,
@@ -550,6 +571,14 @@ test("lane readiness distinguishes the guided first-party beta from open-public 
   controlledPending.readiness.controlledBetaReady = false;
   controlledPending.readiness.guidedFirstPartyBetaReady = false;
   validateDirectInstallBetaLane(controlledPending);
+
+  const pendingControlledWithEvidence = clone(controlledPending);
+  pendingControlledWithEvidence.readiness.controlledBetaEvidence[0].evidenceRef =
+    "external-evidence:premature";
+  assert.throws(
+    () => validateDirectInstallBetaLane(pendingControlledWithEvidence),
+    /pending controlled evidence local-package-structural-and-unit-validation\.evidenceRef/u,
+  );
 
   const dishonestGuidedClaim = clone(controlledPending);
   dishonestGuidedClaim.readiness.guidedFirstPartyBetaReady = true;
@@ -585,6 +614,7 @@ test("lane readiness distinguishes the guided first-party beta from open-public 
   const passingBlockerWithoutEvidence = clone(canonicalLane);
   const passingPrivacyBlocker = passingBlockerWithoutEvidence.readiness
     .openPublicBetaBlockers.find(({ id }) => id === "privacy-approval");
+  passingPrivacyBlocker.status = "pass";
   passingPrivacyBlocker.evidenceRef = null;
   assert.throws(
     () => validateDirectInstallBetaLane(passingBlockerWithoutEvidence),
@@ -660,18 +690,13 @@ test("privacy evidence is closed, candidate-bound and byte-bound to the bilingua
     ],
     [
       "unearned pass",
-      (evidence) => { evidence.checks[0].status = "pending"; },
+      (evidence) => { evidence.status = "pass"; },
       /status must be derived/u,
     ],
     [
       "premature approval",
       (evidence) => {
-        evidence.status = "pending";
-        for (const check of evidence.checks) {
-          check.status = "pending";
-        }
-        evidence.approvedRole = null;
-        evidence.approvedAt = null;
+        evidence.approvedBy = "premature-approver";
       },
       /pending privacy evidence.approvedBy/u,
     ],
@@ -705,6 +730,22 @@ test("privacy evidence rejects semantically incomplete or executable notice byte
     assert.throws(
       () => loadDirectInstallBetaLane(root),
       /missing required bilingual content: exactly 24 hours/u,
+    );
+
+    const withoutDailyPlanIdentifierBoundary = Buffer.from(
+      canonicalPrivacyNotice
+        .toString("utf8")
+        .replace(
+          "plan and landscape identifiers are not transmitted to Claude",
+          "identifiers may be transmitted to Claude",
+        ),
+    );
+    writeFileSync(privacyNoticePath, withoutDailyPlanIdentifierBoundary);
+    evidence.notice.sourceSha256 = sha256(withoutDailyPlanIdentifierBoundary);
+    writeJson(privacyEvidencePath, evidence);
+    assert.throws(
+      () => loadDirectInstallBetaLane(root),
+      /missing required bilingual content: plan and landscape identifiers are not transmitted to Claude/u,
     );
 
     const relaxedContentSecurityPolicy = Buffer.from(
@@ -788,6 +829,13 @@ test("lane loading requires privacy evidence and accepts only the exact approved
     assert.equal(loadDirectInstallBetaLane(root).readiness.openPublicBetaReady, false);
 
     const approved = fixturePrivacyEvidence(readJson(lanePath));
+    approved.status = "pass";
+    for (const check of approved.checks) {
+      check.status = "pass";
+    }
+    approved.approvedBy = "product-owner";
+    approved.approvedRole = "product-owner";
+    approved.approvedAt = "2026-09-01T10:05:00.000Z";
     writeJson(privacyEvidencePath, approved);
     assert.throws(
       () => loadDirectInstallBetaLane(root),
@@ -871,7 +919,7 @@ test("lane requirements keep backend contract types fail-closed", () => {
   const cases = [
     ["Boolean voice mode", (lane) => { lane.requirements.voiceMode = "beta-tested"; }],
     ["integer minimum age", (lane) => { lane.requirements.minimumAge = "18"; }],
-    ["non-empty tested surfaces", (lane) => { lane.requirements.testedSurfaces = []; }],
+    ["tested surfaces list", (lane) => { lane.requirements.testedSurfaces = "claude-web"; }],
   ];
   for (const [name, mutate] of cases) {
     const lane = clone(canonicalLane);

@@ -4,6 +4,7 @@ import {
   existsSync,
   lstatSync,
   mkdtempSync,
+  readdirSync,
   readFileSync,
   rmSync,
 } from "node:fs";
@@ -21,13 +22,46 @@ import {
 const defaultRepositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = "ai/claude/plugin/skillpilot-coach-v1";
 const releaseRoot = `${pluginRoot}/release`;
+const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.0.0";
+const expectedPluginVersion = "1.1.0";
+const expectedHistoricalReleaseFiles = new Map([
+  [
+    "1.0.0/contract-baseline.json",
+    "2b3f1bc1fdc60c72c5168590b1899fb0360500da5be208a578eaa3d82ca65058",
+  ],
+  [
+    "1.0.0/evidence-manifest.json",
+    "e50c542b86765dc60107930a6fcf267db820aa4096c9c33fe467792f79aa9557",
+  ],
+  [
+    "1.0.0/lifecycle.json",
+    "400e350edc1192b54cadc57daeb832b61dfe760ed5b0329b8d7e1f581720d311",
+  ],
+  [
+    "1.0.0/release-gates.json",
+    "6fa535653113636334bb1ea5d76d003c36afc572d1cb68db961d5cbbb6c1237e",
+  ],
+  [
+    "1.0.4/direct-install-beta.json",
+    "992857d4fd32aab856d61a584ff96d5276c47df8bf446587fbab6ad757c26c03",
+  ],
+  [
+    "1.0.4/marketplace-publication.json",
+    "6db56658c333bcf5fc688bcdb274dd74a7d3df957f97e28793672a091da7e965",
+  ],
+  [
+    "1.0.4/support-readiness-drill.template.md",
+    "bd95af3fca52496d32c98183b2454b874645ac1f4ccf68da806f67c626764cb8",
+  ],
+]);
 const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
 const expectedTools = [
   "get_skillpilot_coach_context",
+  "resume_skillpilot_learning_plan",
+  "switch_skillpilot_learning_plan_subject",
   "render_skillpilot_goal_visualization",
   "start_skillpilot_memory_practice",
   "review_skillpilot_memory_practice_card",
@@ -49,7 +83,7 @@ const expectedRequiredGates = [
   "plugin-package-structural-check",
   "anthropic-plugin-cli-validation",
   "reproducible-plugin-archive",
-  "remote-mcp-contract-twelve-tools-two-apps",
+  "remote-mcp-contract-fourteen-tools-two-apps",
   "paid-web-chat-real-client",
   "android-direct-install-real-client",
   "first-party-24h-learning-session",
@@ -112,6 +146,7 @@ export function verifyClaudePluginV1Release({
     safeRepositoryPath(repositoryRoot, pluginRoot),
   );
   errors.push(...packageValidation.errors.map((error) => `Plugin package: ${error}`));
+  verifyHistoricalReleaseHistory(repositoryRoot, check);
 
   check(gates.schemaVersion === 1, "Unsupported plugin release-gates schemaVersion.");
   check(lifecycle.schemaVersion === 1, "Unsupported plugin lifecycle schemaVersion.");
@@ -129,7 +164,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.0.0.",
+      "Every plugin release document must use Claude plugin version 1.1.0.",
     );
   }
 
@@ -156,11 +191,11 @@ export function verifyClaudePluginV1Release({
       "paid_claude_web_chat",
       "claude_pro_android_chat",
     ]),
-    "Plugin lifecycle must scope v1 to eligible paid Claude Web chat and verified Claude Pro Android use after account-level installation.",
+    "Plugin lifecycle must scope the 1.1 candidate to eligible paid Claude Web chat and intended Claude Pro Android use pending exact-candidate acceptance.",
   );
   check(
     lifecycle?.distributionQualification?.directInstallPilot
-        === "observed_paid_web_and_claude_pro_account_direct_install_then_native_android_chat"
+        === "historical_pre_1_1_paid_web_and_claude_pro_account_direct_install_then_native_android_chat"
       && ["pending", "approved"].includes(
         lifecycle?.distributionQualification?.androidDirectInstallAcceptance,
       )
@@ -173,7 +208,7 @@ export function verifyClaudePluginV1Release({
       && [null, "anthropic-plugin-android-public-listing-verification"].includes(
         lifecycle?.distributionQualification?.androidPublicListingEvidenceId,
       ),
-    "Plugin lifecycle must distinguish observed paid Web and Claude Pro Android direct-install use from exact-candidate acceptance and post-publication Android listing verification.",
+    "Plugin lifecycle must distinguish historical pre-1.1 paid Web and Claude Pro Android observations from exact 1.1 acceptance and post-publication Android listing verification.",
   );
   check(
     sameSet(lifecycle?.excludedClaims, [
@@ -189,7 +224,7 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-08-24"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-04"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
       && /Claude public plugin v1/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
@@ -693,6 +728,44 @@ function loadConnectorContractBaselineBinding(repositoryRoot) {
     baseRevision: baseline.baseRevision,
     candidateContractSha256: baseline.candidateContractSha256,
   };
+}
+
+function verifyHistoricalReleaseHistory(repositoryRoot, check) {
+  const historyRoot = safeRepositoryPath(repositoryRoot, historicalReleaseRoot);
+  const actualFiles = [];
+  for (const versionEntry of readdirSync(historyRoot, { withFileTypes: true })) {
+    const version = versionEntry.name;
+    check(
+      versionEntry.isDirectory() && !versionEntry.isSymbolicLink(),
+      `Historical plugin release entry must be a directory: ${version}`,
+    );
+    if (!versionEntry.isDirectory() || versionEntry.isSymbolicLink()) continue;
+    for (const fileEntry of readdirSync(resolve(historyRoot, version), {
+      withFileTypes: true,
+    })) {
+      const relativePath = `${version}/${fileEntry.name}`;
+      actualFiles.push(relativePath);
+      check(
+        fileEntry.isFile() && !fileEntry.isSymbolicLink(),
+        `Historical plugin release entry must be a regular file: ${relativePath}`,
+      );
+      const expectedDigest = expectedHistoricalReleaseFiles.get(relativePath);
+      check(
+        expectedDigest !== undefined,
+        `Unexpected historical plugin release file: ${relativePath}`,
+      );
+      if (expectedDigest !== undefined && fileEntry.isFile()) {
+        check(
+          sha256(readFileSync(resolve(historyRoot, relativePath))) === expectedDigest,
+          `Historical plugin release file changed: ${relativePath}`,
+        );
+      }
+    }
+  }
+  check(
+    sameSet(actualFiles, [...expectedHistoricalReleaseFiles.keys()]),
+    "Historical plugin release inventory must retain the complete immutable 1.0.0 dossier and 1.0.4 publication metadata.",
+  );
 }
 
 function connectorContractRecord(kind, entry) {

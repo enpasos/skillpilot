@@ -76,6 +76,9 @@ public final class ClaudeV1Contract {
     public static final Set<String> LOOPBACK_CALLBACK_HOSTS = Set.of("127.0.0.1", "localhost");
 
     public static final String TOOL_GET_COACH_CONTEXT = "get_skillpilot_coach_context";
+    public static final String TOOL_RESUME_LEARNING_PLAN = "resume_skillpilot_learning_plan";
+    public static final String TOOL_SWITCH_LEARNING_PLAN_SUBJECT =
+            "switch_skillpilot_learning_plan_subject";
     public static final String TOOL_RENDER_GOAL_VISUALIZATION =
             "render_skillpilot_goal_visualization";
     public static final String TOOL_START_MEMORY_PRACTICE =
@@ -95,6 +98,8 @@ public final class ClaudeV1Contract {
 
     public static final List<String> ALL_TOOL_NAMES = List.of(
             TOOL_GET_COACH_CONTEXT,
+            TOOL_RESUME_LEARNING_PLAN,
+            TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
             TOOL_RENDER_GOAL_VISUALIZATION,
             TOOL_START_MEMORY_PRACTICE,
             TOOL_REVIEW_MEMORY_PRACTICE_CARD,
@@ -119,6 +124,8 @@ public final class ClaudeV1Contract {
 
     /** Tools that mutate canonical learner state; they additionally require the write scope. */
     public static final Set<String> WRITE_TOOL_NAMES = Set.of(
+            TOOL_RESUME_LEARNING_PLAN,
+            TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
             TOOL_REVIEW_MEMORY_PRACTICE_CARD,
             TOOL_SET_FOCUS,
             TOOL_SET_ACTIVE_GOAL,

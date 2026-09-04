@@ -3,9 +3,11 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. The current 1.0.4 candidate
-adds a learner-facing coaching correction to the still-pre-public 1.0.3
-candidate as described below, without changing the frozen OpenAI v1 lane.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.0 is the sole
+current replacement candidate. It adds plan-first multi-subject daily guidance
+and automatic backend-authorized plan resume without changing the frozen
+OpenAI v1 lane. Version 1.0.4 and its evidence remain historical records only;
+they are not a supported installation or rollback fallback.
 
 The canonical target is:
 
@@ -16,14 +18,17 @@ https://github.com/enpasos/skillpilot-claude-marketplace
 As long as
 `ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json`
 has `activation.state = prepared_not_published`, that repository is not a
-supported installation source. The first-party `/plugins` page must also keep
-the controlled direct-install beta as its primary route until the public
-repository is verified and `activation.firstPartyGuideDecision` records a
-candidate- and revision-bound Product Owner approval. Local export success
-never changes either state by itself. The current direct-install lane still reports
-`openPublicBetaReady = false`; legal approval, support readiness and
-exact-client acceptance therefore remain activation blockers. Privacy approval
-is already recorded as `pass` for the current candidate. The bounded first
+supported installation source. The first-party `/plugins` page must keep every
+Claude installation route unavailable until the exact 1.1.0 direct-install or
+Marketplace route is deliberately opened for testing. It must not offer 1.0.4
+as a fallback. A Marketplace route additionally requires a verified repository
+and a candidate- and revision-bound Product Owner approval in
+`activation.firstPartyGuideDecision`. Local export success never changes either
+state by itself. The current direct-install lane reports
+`controlledBetaReady = false`, `guidedFirstPartyBetaReady = false` and
+`openPublicBetaReady = false`; exact-candidate Web, Android and Voice
+acceptance, privacy approval, legal approval, support readiness and
+exact-client acceptance therefore remain blockers. The bounded first
 repository publication may occur with exact-client acceptance still `pending`
 so that acceptance can be performed through the Marketplace installation
 itself, but only after the local, supply-chain and OpenAI-freeze checks below
@@ -52,12 +57,12 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.0.4`
+- Current candidate version: `1.1.0`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
 - Current direct-install SHA-256:
-  `46e35fb1ce382f26a977abf07b6c6f57ad98f5612ab332612dd84aea3a807963`
+  `ecb6e2d255699162a3221518d32eb4ee9de918cb5fce254f1cd67da0ac59f4ca`
 
 Anthropic allows a marketplace entry name to differ from the embedded plugin
 name. SkillPilot intentionally keeps the technical name equal, but Claude still
@@ -65,22 +70,40 @@ stores a marketplace-qualified installation record. That is why migration from
 an uploaded copy remains explicit. No `version` is repeated in
 `marketplace.json`.
 
-## Pre-public 1.0.4 hard cutover
+## 1.1.0 hard cutover
 
-Version 1.0.4 is the intended first Marketplace publication. Versions 1.0.2
-and 1.0.3 were used only by two controlled users and were never published
-through this Marketplace. They are not used for the 1.0.4 acceptance. The two
-controlled users must install the exact 1.0.4 candidate from the Marketplace
-after its bounded repository publication and exercise it from fresh SkillPilot
-learning contexts; mixed 1.0.2/1.0.3/1.0.4 operation is not an accepted release
-mode.
+Version 1.1.0 fully replaces every earlier package. The public Marketplace
+repository and the direct-install registry may retain old Git or immutable
+artifact history, but first-party instructions, the current publication index
+and acceptance runs must name only 1.1.0. Mixed 1.0.x/1.1.0 operation and
+fallback to 1.0.4 are not accepted release modes. The Marketplace route remains
+`prepared_not_published` until its exact 1.1.0 repository tree is published and
+verified; its earlier 1.0.4 repository revision cannot satisfy that gate.
 
-Version 1.0.3 established the intentionally incompatible pre-public correction
+Version 1.0.3 established the historical pre-public correction
 in which Claude decides only whether the current active goal is complete and
 the backend persists the completion, selects the successor and returns its
 canonical context. Version 1.0.4 preserves that API, tool schema, OAuth,
 session and persistence contract while correcting its learner-facing
-application:
+application. Version 1.1.0 preserves those rules and adds:
+
+- At each normal start or resume, Claude first reports per-subject goals due
+  today, the subset currently mastered, goals still open today, open backlog,
+  and cross-subject totals from the authoritative `learningPlanToday` context.
+- The current-mastery count is never described as an event log of work
+  completed during that calendar day.
+- Every valid subject plan contributes to the day. Unavailable plans produce a
+  safe partial-data warning without plan or landscape identifiers.
+- With no active goal, Claude calls
+  `resume_skillpilot_learning_plan` only when the authoritative context says a
+  candidate is available, and then continues the backend-selected goal without
+  a Web-app **Weiterlernen** detour.
+- The fourteenth connector-owned tool,
+  `switch_skillpilot_learning_plan_subject`, switches only to an exact
+  localized subject from the current daily-plan context. It parks an unfinished
+  goal without mastery while every valid plan continues to count.
+
+The retained 1.0.4 corrections were:
 
 - Policy, instruction, tool-schema, parameter, retry and private-deliberation
   mechanics stay out of learner-facing text and speech.
@@ -94,14 +117,11 @@ application:
   durable remembered preference; the current connector has no such memory
   feature.
 
-The immutable 1.0.2 and 1.0.3 packages and their version-specific evidence
-remain historical records. They are not overwritten, rebound to new bytes, or
-promoted as a fallback. The candidate-specific 1.0.4 exact-client evidence
-starts at `pending` even though generic controlled-beta observations remain
-valid. It is deliberately completed through the Marketplace install rather
-than another direct-upload round. Its privacy approval reuses only the
-unchanged, byte-identical privacy notice; it is still a separate record bound
-to the 1.0.4 candidate digest.
+The immutable 1.0.2, 1.0.3 and 1.0.4 packages and their version-specific
+evidence remain historical records. They are not overwritten, rebound to new
+bytes, or promoted as a fallback. Every 1.1.0 exact-client, privacy,
+Marketplace-repository, installation, migration and guide-decision record
+starts at `pending`; no earlier approval transfers to the new candidate.
 
 ## Local preparation and validation
 
@@ -237,20 +257,18 @@ Use the full HTTPS URL in end-user instructions. In Claude Code the
 `owner/repository` shorthand can select SSH and therefore surprise users who
 do not have GitHub SSH credentials.
 
-## Controlled-beta first-party guide switch
+## Historical 1.0.4 controlled-beta guide switch
 
-After the verified repository publication, the Product Owner confirmed on
+After the 1.0.4 repository publication, the Product Owner confirmed on
 **3 September 2026** that both controlled users had migrated from the uploaded
 plugin to the exact Marketplace candidate. The Product Owner then explicitly
 requested that the first-party installation guide use the Marketplace as the
 recommended installation and update route.
 
-This decision is recorded separately as
-`activation.firstPartyGuideDecision`. It is bound to the current candidate
-version and digest plus the verified repository revision and tree digest. The
-validator derives `marketplaceUiSwitchAllowed` and `firstPartyUiRoute` from
-that decision together with the verified repository; a stale candidate,
-repository revision, or tree fails closed.
+That historical decision was recorded separately as
+`activation.firstPartyGuideDecision`. It was bound to the 1.0.4 candidate
+version and digest plus the verified repository revision and tree digest. It
+does not authorize the 1.1.0 route.
 
 The switch is deliberately narrower than full Marketplace acceptance:
 
@@ -258,14 +276,15 @@ The switch is deliberately narrower than full Marketplace acceptance:
 - clean-account installation and migration/refresh evidence remain `pending`;
 - direct-install legal, support, and exact-client blockers remain `pending`;
 - `openPublicBetaReady` remains `false`;
-- the direct `.plugin` download remains a labelled fallback; and
+- the then-current direct `.plugin` download remained a labelled fallback; and
 - no Anthropic-curated, Anthropic-verified, or generally released status is
   claimed.
 
-The `/plugins` guide therefore explains the already authorized controlled-beta
-channel while the remaining release evidence is collected. The Product Owner
-guide decision must be reset to `pending` for every new candidate or changed
-Marketplace repository tree.
+For 1.1.0 the guide decision is reset to `pending`, the route is
+`controlled_direct_install_beta`, and `marketplaceUiSwitchAllowed` is `false`.
+Until a new exact-candidate decision and verified repository exist, the
+first-party guide must expose neither the historical Marketplace install nor
+the 1.0.4 direct download as an available fallback.
 
 ## Real-client acceptance and activation
 
@@ -281,23 +300,38 @@ revision before activation:
    not add a second custom connector or enter the MCP URL manually.
 4. Return to `https://skillpilot.com/` and start a new learning session through
    the established first-party handoff.
-5. Exercise the intended coaching flow and both interactive MCP Apps on every
+5. Confirm that the initial response reports every valid subject plan with
+   today-due, currently mastered, still-open and overdue counts plus totals.
+   Prove that an unavailable plan produces only the safe partial-data warning
+   and no plan or landscape identifier, and that the mastered-today figure is
+   not described as a same-day event log.
+6. With no active goal, prove that Claude calls
+   `resume_skillpilot_learning_plan` only when `resumeAvailable` is true, uses
+   the returned canonical context and continues the backend-selected goal
+   without asking for the Web-app **Weiterlernen** button. Also prove that no
+   resume call occurs when the flag is false.
+7. Exercise the intended coaching flow and both interactive MCP Apps on every
    surface that SkillPilot intends to advertise. Anthropic's technical
    availability is not SkillPilot acceptance evidence.
-6. In Claude Web, engage with one tailored orientation follow-up and then say
+8. Ask Claude to switch from Mathematics to Physics and back. Prove that it
+   copies only exact localized subject names from the current daily-plan
+   context, parks unfinished work without mastery, continues the backend-selected
+   due goal without confirmation and never submits a plan, landscape, focus or
+   goal ID.
+9. In Claude Web, engage with one tailored orientation follow-up and then say
    `Machen wir so, dann fangen wir einfach an.` Prove that this clear start
    intent is persisted as orientation completion without another confirmation
    loop and that the next active goal is exactly the backend-selected successor
    returned in the canonical mastery response. Confirm that no policy,
    instruction, private-deliberation, lazy-loading, schema, parameter or retry
    mechanics are narrated and that no durable anchor-memory promise is made.
-7. Repeat the complete scenario and every assertion independently in native
+10. Repeat the complete scenario and every assertion independently in native
    Claude Android Voice mode. A conversational statement that the goal was
    saved or a visually plausible next goal is not sufficient evidence.
-8. Test migration from the previously uploaded plugin: remove only the old
+11. Test migration from the previously uploaded plugin: remove only the old
    SkillPilot plugin, add the marketplace, install once, reconnect if Claude
    asks, and verify a new SkillPilot-started session.
-9. Refresh the marketplace in Claude and confirm that migration and refresh do
+12. Refresh the marketplace in Claude and confirm that migration and refresh do
    not require another file upload. A real version-to-version update becomes a
    mandatory release gate beginning with the next Marketplace version.
 
@@ -321,21 +355,20 @@ as:
 }
 ```
 
-The first-party `/plugins` guide may already be Marketplace-first only under
-the separately recorded controlled-beta decision above. It must preserve the
-scoped cleanup, connector OAuth, and return-to-SkillPilot steps. The
-direct-download route remains an explicitly labelled fallback during
-migration. Because those WebGUI files are hash-bound by the active OpenAI
-review freeze, the UI change also needs a narrow Product Owner exception and
-updated freeze hashes.
+Only a new 1.1.0 decision may make the first-party `/plugins` guide
+Marketplace-first. It must preserve the scoped cleanup, connector OAuth, and
+return-to-SkillPilot steps. No 1.0.4 direct-download fallback is permitted.
+Because those WebGUI files are hash-bound by the active OpenAI review freeze,
+the UI change also needs a narrow Product Owner exception and updated freeze
+hashes.
 
 ## Subsequent releases
 
 For any plugin-content change:
 
 1. make and review the plugin change in the canonical SkillPilot repository;
-2. increment `plugin.json` SemVer in the same change (`1.0.4` becomes at least
-   `1.0.5`);
+2. increment `plugin.json` SemVer in the same change (`1.1.0` becomes at least
+   `1.1.1`);
 3. rebuild and bind a new direct-install artifact; never rebind an existing
    version to new bytes;
 4. update the marketplace lane's version and direct-install SHA-256, create or

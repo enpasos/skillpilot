@@ -31,6 +31,8 @@ const expectedPrivacyUrl = `${expectedBaseUrl}/privacy`;
 const expectedLearnerStartUrl = "https://skillpilot.com/";
 const expectedTools = [
   "get_skillpilot_coach_context",
+  "resume_skillpilot_learning_plan",
+  "switch_skillpilot_learning_plan_subject",
   "render_skillpilot_goal_visualization",
   "start_skillpilot_memory_practice",
   "review_skillpilot_memory_practice_card",
@@ -52,8 +54,8 @@ const expectedRequiredGates = [
   "public-docs-online",
   "public-edge-and-oauth",
   "openai-production-differential",
-  "mcp-inspector-all-twelve-tools-two-resources",
-  "hosted-claude-all-twelve-tools-two-apps",
+  "mcp-inspector-all-fourteen-tools-two-resources",
+  "hosted-claude-all-fourteen-tools-two-apps",
   "negative-and-replay-cases",
   "first-party-24h-learning-session",
   "permanent-id-and-id-file-nondisclosure",
@@ -1260,7 +1262,7 @@ export function validateClaudeDistributionDocumentation(concept, implementationP
       && /contains no hooks or subagents|has no hooks or subagents/u.test(concept)
       && /does not claim Desktop Chat or\s+Cowork plugin support/u.test(concept)
       && /Native mobile plugin support is not claimed/u.test(concept)
-      && /remote connector owns OAuth, MCP, all twelve tools and both MCP Apps UI/u.test(concept),
+      && /remote connector owns OAuth, MCP, all fourteen tools and both MCP Apps UI/u.test(concept),
     "Claude concept must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
   );
   check(
@@ -1273,7 +1275,7 @@ export function validateClaudeDistributionDocumentation(concept, implementationP
       && /keine Hooks oder Subagents/u.test(implementationPlan)
       && /keine Behauptung von Desktop-Chat- oder\s+Cowork-Plugin-Unterstützung/u.test(implementationPlan)
       && /keine Behauptung nativer mobiler Plugin-Unterstützung/u.test(implementationPlan)
-      && /Remote-Connector besitzt OAuth, MCP, alle zwölf\s+Tools und beide MCP Apps UI-Ressourcen/u.test(implementationPlan),
+      && /Remote-Connector besitzt OAuth, MCP, alle vierzehn\s+Tools und beide MCP Apps UI-Ressourcen/u.test(implementationPlan),
     "Claude implementation plan must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
   );
   check(
@@ -1468,7 +1470,7 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   const actualTools = [...contract.matchAll(
     /public static final String TOOL_[A-Z_]+\s*=\s*"([^"]+)";/gu,
   )].map((match) => match[1]);
-  check(sameSet(actualTools, expectedTools), "Java contract must publish exactly the twelve approved tools.");
+  check(sameSet(actualTools, expectedTools), "Java contract must publish exactly the fourteen approved tools.");
   check(actualTools.every((name) => codePointLength(name) <= 64), "Every Claude tool name must contain at most 64 characters.");
   check(
     contract.includes(`"${expectedDocumentationUrl}"`),
@@ -1500,10 +1502,12 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
     "OAuth resource_documentation must not point at the privacy page.",
   );
   for (const fragment of [
-    "publishesExactlyTheTwelveApprovedTools",
+    "publishesExactlyTheFourteenApprovedTools",
     "everyToolCarriesRealMcpAnnotationsNotMetaHints",
     "readAndWriteToolSetsCoverTheWholeCatalogue",
     "everyWriteToolDemandsConcurrencyAndIdempotencyArguments",
+    "planResumeTakesNoPlanSubjectDateOrGoalFromTheModel",
+    "planSubjectSwitchTakesOnlyAFreshLocalizedNameAndNoInternalIdentifier",
     "solutionReleasingToolsRequireACapability",
     'schemaOf(toolName).get("additionalProperties")',
     "publishesTwoActiveByteAddressedClaudeResourcesWithHostOnlyUiDomainAndPassiveRetention",
@@ -1649,6 +1653,12 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     "English user guide must separate Directory submission, document same-server coexistence and avoid unsupported claims.",
   );
   check(
+    /ask Claude to switch to another subject named in today's plan/u.test(guide)
+      && /Every valid subject plan still applies/u.test(guide)
+      && /backend-selected due goal/u.test(guide),
+    "English user guide must explain explicit planned-subject switching without replacing other plans.",
+  );
+  check(
     /Team-\/Enterprise-Gate/u.test(guideDe)
       && /keine Voraussetzung\s+für die Plugin-Einreichung/u.test(guideDe)
       && /Plugin und\s+Directory-Eintrag dürfen gleichzeitig bestehen/u.test(guideDe)
@@ -1656,18 +1666,28 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
       && /native Nutzung des Plugins auf Mobilgeräten wird\s+nicht zugesagt/u.test(guideDe),
     "German user guide must separate Directory submission, document same-server coexistence and avoid unsupported claims.",
   );
+  check(
+    /zu einem anderen Fach aus dem heutigen Plan zu\s+wechseln/u.test(guideDe)
+      && /Alle gültigen Fachpläne gelten\s+weiter/u.test(guideDe)
+      && /vom Backend gewählten fälligen Ziel/u.test(guideDe),
+    "German user guide must explain explicit planned-subject switching without replacing other plans.",
+  );
   check(runbook.includes("--submission-ready"), "Release runbook must include the strict gate.");
   check(
-    runbook.includes("## 10. Web-only plugin pilot and public-distribution qualification")
-      && /working direct-install pilot proves the paid Claude Web product flow, not\s+the reach of Anthropic's official distribution/u.test(runbook)
-      && /Submission stays blocked until Anthropic explicitly\s+confirms that official plugin distribution reaches eligible paid Claude Web\s+chat/u.test(runbook)
+    runbook.includes("## 10. Plugin pilot, personal marketplace and curated publication")
+      && /working direct-install pilot proves the paid Claude Web product flow, not\s+an Anthropic-curated listing/u.test(runbook)
+      && /activation state is\s+`prepared_not_published`/u.test(runbook)
+      && /current direct-install guide remains the\s+first-party route/u.test(runbook)
       && /does not claim Claude Desktop Chat or Cowork\s+support/u.test(runbook)
-      && /neither\s+contains the coaching Skill nor gates plugin submission/u.test(runbook)
-      && /two routes may\s+be submitted in either order/u.test(runbook)
+      && /neither\s+contains the coaching Skill nor gates personal-marketplace publication/u.test(runbook)
+      && /two routes may proceed in either order/u.test(runbook)
+      && /Anthropic-curated plugin\s+submission remains a third, separate external action/u.test(runbook)
       && /Developer, Admin or Owner/u.test(runbook)
       && /plugin and Directory installations referencing\s+`https:\/\/mcp-claude-v1\.skillpilot\.com\/mcp` may coexist/u.test(runbook)
-      && /no additional manual\s+custom connector is configured for that same URL/u.test(runbook),
-    "Release runbook must define the independent Anthropic Console plugin publication lane.",
+      && /no additional manual\s+custom connector is configured for that same URL/u.test(runbook)
+      && /all fourteen tools/u.test(runbook)
+      && /explicit switch from Mathematics to Physics and back/u.test(runbook),
+    "Release runbook must define the independent direct-install, personal-marketplace and Anthropic Console publication lanes.",
   );
   check(runbook.includes("rollback"), "Release runbook must include rollback guidance.");
   check(
