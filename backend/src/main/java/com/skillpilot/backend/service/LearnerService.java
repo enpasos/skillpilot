@@ -126,6 +126,8 @@ public class LearnerService {
     private static final int MAX_LEARNING_PLAN_SCHEDULE_CHECK_WORKDAYS = 1_000;
     private static final int MAX_LEARNING_PLAN_REPAIR_ITERATIONS = 64;
     private static final long MAX_LEARNING_PLAN_SCHEDULE_CHECK_OPERATIONS = 50_000_000L;
+    private static final int MAX_LEARNING_PLAN_GRAPH_NODES = 100_000;
+    private static final int MAX_LEARNING_PLAN_GRAPH_REFERENCES = 1_000_000;
     private static final Object COACH_STATE_REVISION_TRANSACTION_RESOURCE =
             LearnerService.class.getName() + ".coachStateRevision";
 
@@ -2680,11 +2682,161 @@ public class LearnerService {
     }
 
     /**
-     * Binds a learner-owned plan to the current personalized subject projection
-     * and to every graph relation that can affect its focus or frontier order.
-     * Stable atom IDs alone are insufficient: a changed {@code contains} or
-     * {@code requires} edge must make an older plan stale before it can write
-     * Level-3 state.
+     * Checks current executability, not historical graph identity. Stored v2
+     * fingerprints remain capture evidence and are never rewritten by this read.
+     * Unplanned additions and content-only edits do not invalidate unchanged
+     * blocks. Missing targets, changed foci or prerequisite schedules do.
+     */
+    @Transactional(readOnly = true)
+    public boolean isLearningPlanCompatible(
+            String skillpilotId,
+            String capturedCurriculumId,
+            String landscapeId,
+            List<LearnerLearningPlanApi.Block> storedBlocks) {
+        try {
+            LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
+            if (!Objects.equals(capturedCurriculumId, scope.curriculumId())
+                    || !Objects.equals(landscapeId, scope.landscapeId())) {
+                return false;
+            }
+            List<LearnerLearningPlanApi.Block> normalized = LearnerLearningPlanService.normalizeBlocks(
+                    storedBlocks, scope, Set.of(), true);
+            if (!normalized.equals(storedBlocks)) {
+                return false;
+            }
+            validateLearningPlanBlockFoci(skillpilotId, landscapeId, storedBlocks);
+            validateLearningPlanCurrentGraph(skillpilotId, storedBlocks);
+            return orderLearningPlanBlocksByPrerequisites(skillpilotId, storedBlocks).equals(storedBlocks);
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) {
+                throw exception;
+            }
+            return false;
+        } catch (IllegalStateException | IllegalArgumentException | NullPointerException exception) {
+            return false;
+        }
+    }
+
+    void validateLearningPlanCurrentGraph(
+            String skillpilotId, List<LearnerLearningPlanApi.Block> blocks) {
+        Learner learner = getLearner(skillpilotId);
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        validateLearningPlanCompatibilityGraph(blocks, projection.structuralGoals());
+    }
+
+    /** Validates only graph data needed by the captured atoms; never tests mastery. */
+    void validateLearningPlanCompatibilityGraph(
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<String, LearningGoal> goals) {
+        if (goals == null || goals.isEmpty() || goals.size() > MAX_LEARNING_PLAN_GRAPH_NODES) {
+            throw new IllegalStateException("Learning-plan graph is missing or exceeds the supported bound");
+        }
+        Map<String, List<String>> parents = new HashMap<>();
+        int references = 0;
+        for (LearningGoal goal : goals.values()) {
+            for (String ref : learningPlanGraphReferences(goal)) {
+                if (++references > MAX_LEARNING_PLAN_GRAPH_REFERENCES) {
+                    throw new IllegalStateException("Learning-plan graph exceeds the supported reference bound");
+                }
+            }
+            for (String ref : goal.getContains() == null ? List.<String>of() : goal.getContains()) {
+                String child = resolveGoalRef(ref, goals);
+                if (child != null) {
+                    parents.computeIfAbsent(child, ignored -> new ArrayList<>()).add(goal.getId());
+                }
+            }
+        }
+        List<String> atoms = blocks.stream().filter(block -> "learning".equals(block.kind()))
+                .flatMap(block -> block.atomicGoalIds().stream()).toList();
+        // Detect relevant contains cycles before inherited-requirement resolution.
+        assertLearningPlanGraphAcyclic(atoms, goals,
+                goalId -> parents.getOrDefault(goalId, List.of()));
+        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(goals);
+        Set<String> dependencies = new LinkedHashSet<>();
+        ArrayDeque<String> pending = new ArrayDeque<>(atoms);
+        int examined = 0;
+        while (!pending.isEmpty()) {
+            String goalId = pending.removeFirst();
+            if (!goals.containsKey(goalId)) {
+                throw new IllegalStateException("Learning-plan graph target is missing");
+            }
+            if (!dependencies.add(goalId)) {
+                continue;
+            }
+            List<String> refs = new ArrayList<>(learningPlanGraphReferences(goals.get(goalId)));
+            refs.addAll(effectiveRequires.getOrDefault(goalId, List.of()));
+            for (String ref : refs) {
+                if (++examined > MAX_LEARNING_PLAN_GRAPH_REFERENCES) {
+                    throw new IllegalStateException("Learning-plan dependency closure exceeds the supported bound");
+                }
+                String resolved = resolveGoalRef(ref, goals);
+                if (resolved == null) {
+                    throw new IllegalStateException("Learning-plan graph reference is missing");
+                }
+                pending.addLast(resolved);
+            }
+        }
+        // The model guarantees DAGs per edge kind, not for contains + requires
+        // together. In particular a parent may legitimately require its child.
+        assertLearningPlanGraphAcyclic(dependencies, goals,
+                goalId -> goals.get(goalId).getContains() == null ? List.of() : goals.get(goalId).getContains());
+        assertLearningPlanGraphAcyclic(dependencies, goals, goalId -> {
+            List<String> refs = new ArrayList<>(effectiveRequires.getOrDefault(goalId, List.of()));
+            if (goals.get(goalId).getRequires() != null) {
+                refs.addAll(goals.get(goalId).getRequires());
+            }
+            return refs;
+        });
+        assertLearningPlanGraphAcyclic(dependencies, goals,
+                goalId -> parents.getOrDefault(goalId, List.of()));
+    }
+
+    private Set<String> assertLearningPlanGraphAcyclic(
+            Collection<String> roots,
+            Map<String, LearningGoal> goals,
+            java.util.function.Function<String, List<String>> referencesForGoal) {
+        Map<String, Boolean> completed = new HashMap<>();
+        ArrayDeque<Map.Entry<String, java.util.Iterator<String>>> stack = new ArrayDeque<>();
+        int examinedReferences = 0;
+        for (String root : roots) {
+            if (completed.containsKey(root)) {
+                continue;
+            }
+            if (!goals.containsKey(root)) {
+                throw new IllegalStateException("Learning-plan graph target is missing");
+            }
+            completed.put(root, false);
+            stack.push(Map.entry(root, referencesForGoal.apply(root).iterator()));
+            while (!stack.isEmpty()) {
+                var frame = stack.peek();
+                if (!frame.getValue().hasNext()) {
+                    completed.put(frame.getKey(), true);
+                    stack.pop();
+                    continue;
+                }
+                if (++examinedReferences > MAX_LEARNING_PLAN_GRAPH_REFERENCES) {
+                    throw new IllegalStateException("Learning-plan dependency closure exceeds the supported bound");
+                }
+                String next = resolveGoalRef(frame.getValue().next(), goals);
+                if (next == null || Boolean.FALSE.equals(completed.get(next))) {
+                    throw new IllegalStateException("Learning-plan graph has a missing reference or cycle");
+                }
+                if (completed.containsKey(next)) {
+                    continue;
+                }
+                completed.put(next, false);
+                stack.push(Map.entry(next, referencesForGoal.apply(next).iterator()));
+            }
+        }
+        return completed.keySet();
+    }
+
+    /**
+     * Records the personalized subject projection and graph structure at an
+     * explicit plan capture. This v2 digest is historical audit evidence, not a
+     * validity predicate: current execution uses isLearningPlanCompatible and
+     * still requires the current frontier before any Level-3 write.
      */
     @Transactional(readOnly = true)
     public String learningPlanFingerprint(
@@ -7183,12 +7335,8 @@ public class LearnerService {
         for (LearnerLearningPlan plan : plans) {
             try {
                 List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
-                if (!Objects.equals(
-                        plan.getScopeFingerprint(),
-                        learningPlanFingerprint(
-                                learner.getSkillpilotId(),
-                                plan.getLandscapeId(),
-                                blocks))) {
+                if (!isLearningPlanCompatible(
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), blocks)) {
                     continue;
                 }
                 boolean containsAnchor = blocks.stream()
