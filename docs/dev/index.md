@@ -88,6 +88,8 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Semantic Atomicity Review Workbench Plan](semantic-atomicity-review-workbench-plan.md)
 - [Meine Lernziele Node Ordering](my-goals-node-ordering.md)
 - [Teacher View Stability Analysis Request](teacher-view-stability-analysis-request.md)
+- [Lernzielbuch und Zeitplanung: zweite Ausbaustufe](teacher-goal-book-phase-two.md)
+  Wiederaufnahmenotiz für lokale Unterrichtsbündel und druckbare Arbeitsunterlagen; Umsetzung zurückgestellt.
 
 ## Platform Notes
 
