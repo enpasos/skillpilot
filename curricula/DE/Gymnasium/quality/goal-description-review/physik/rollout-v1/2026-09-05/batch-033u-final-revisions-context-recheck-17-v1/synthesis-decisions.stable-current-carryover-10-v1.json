@@ -1,0 +1,328 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B033u bounded stable-current synthesis candidate",
+  "synthesizedAt": "2026-09-05T01:01:59.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905",
+    "batchManifestDigest": "sha256:35d9e1351a48704b757e3a739ff74a0029b0464103bdab3ab49af02ea0d0c5d9",
+    "configDigest": "sha256:f3703983040ee30c9df469ec7d36e54c5272f090b162ac494f3e46c4bc56ba55",
+    "bundleFingerprint": "sha256:c53e2b48260d3705793f5912d13a2d00d9c69b83852775bfa220cfee8faa9532",
+    "bookDigest": "sha256:3b30fc29374d5a1a45f022ad50fe2c53797a930d2975644b05d3020e15fb2b02",
+    "reviewInputFingerprint": "sha256:a3438972fffe01e5d1cc6ccd7851391edf1950760afc2e823bfb992e7feda06c",
+    "dualSummaryDigest": "sha256:a9c01ad1399a9183979b4b728dc50770ef48acce1d59127d2345d7dbf44f3607",
+    "canonicalLandscapeDigest": "sha256:8813c385f07d2b7865148d6b571c04ab41212e63736a8327c526565d18608e1f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-a",
+      "campaignDigest": "sha256:2ff76ce46dcc98bb742708ea21296f33006fcd807a246dc97e98a003b4194ee4",
+      "roundId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:a3438972fffe01e5d1cc6ccd7851391edf1950760afc2e823bfb992e7feda06c",
+      "batchId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ac63aac372924a47c842ddfb4316dad74a3c868e03699198d9823e844b38df5d",
+      "runId": "physik-b033u-final-recheck-17-round-a-codex",
+      "runManifestDigest": "sha256:0dc2a783074819736c3574b718ae1e45e7b9d48c01e7a71aea80b21f0567419d",
+      "resultsDigest": "sha256:f838f0066d09817635dcc00537a1a96476302830a9d565b8200d4547a11c8b8b"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-b",
+      "campaignDigest": "sha256:dc68429f39641a2206d2232794f49033321b7ea0f22df37ba06a9ef248f19923",
+      "roundId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:a3438972fffe01e5d1cc6ccd7851391edf1950760afc2e823bfb992e7feda06c",
+      "batchId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:39133efecd61e4e5df662b2d4b3f8746a120be3d5c581ff7d25b09fd65f4b619",
+      "runId": "physik-b033u-round-b-openai-gpt5-20260905-001",
+      "runManifestDigest": "sha256:89881aaa8654c7bca2ca08d93a661b1ff63c65c0f43138797858e5a5fa6be874",
+      "resultsDigest": "sha256:53ac6414c7e24365367de853ad9fd1448c181f9ba70ee47da3f96afad784a305"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-001",
+      "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1aea3ee758ea2ad2a8ef809397a79ecb3d6c1cc5e31e565eac560c9e0f77e5fb",
+      "pageFingerprint": "sha256:e98519648ea0d60bdd97089b33e43949da98706ed33dfd32a40c40b7084dea4c",
+      "goalReviewContextFingerprint": "sha256:9aeb6f9ebc54c167179296b68afb08b212778e0c6e3813b0637c39e3f72c13be",
+      "finalText": {
+        "titleDe": "Kondensator und Feld im Plattenkondensator",
+        "titleEn": "Capacitors and the Field in a Parallel-Plate Capacitor",
+        "descriptionDe": "Die lernende Person kann das Feld eines idealisierten Plattenkondensators fern von Randeffekten als homogen beschreiben, seine Feldstärke bestimmen und bei vollständiger Füllung mit einem homogenen Dielektrikum die Kapazität mit $C=\\varepsilon_0\\varepsilon_r\\frac{A}{d}$ berechnen sowie ihre Abhängigkeit von Geometrie und Dielektrikum erläutern.",
+        "descriptionEn": "The learner can describe the field of an idealized parallel-plate capacitor away from edge effects as uniform, determine its field strength, and, when it is completely filled with a homogeneous dielectric, calculate the capacitance using $C=\\varepsilon_0\\varepsilon_r\\frac{A}{d}$ and explain its dependence on geometry and dielectric."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-001",
+          "recordDigest": "sha256:904bf39b91febcedef917cb18b6e9d9065e8ca17389276e57520776ae1346d0d"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.001",
+          "recordDigest": "sha256:8d76504da2970179aeceb56a49f470b25d264d652f620820dce3d29e1d649036"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Homogenitätsnäherung, Feldstärke, Kapazitätsbeziehung und die Bedingung eines vollständig füllenden homogenen Dielektrikums bilden eine fachlich geschlossene Modellkompetenz. Runde B wird gewählt, weil sie Näherungen, Einheiten und Abhängigkeiten beobachtbar macht und im Transfer feste Spannung von fester Plattenladung unterscheidet.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. The uniform-field approximation, field strength, capacitance relation, and condition of a completely filling homogeneous dielectric form one coherent modeling competency. Round B is selected because it makes approximations, units, and dependencies observable and distinguishes fixed voltage from fixed plate charge in transfer."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-002",
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8ddf2aa3c20db5fbf4266efd09d01e7c47d0abbb0addfdffd5ca64ca8456b29d",
+      "pageFingerprint": "sha256:c67eadcbd07058a574149ee3bc19e7272a1db24a9614eaba06be20731a342982",
+      "goalReviewContextFingerprint": "sha256:87fd8e1740dff7cda3ca3b7d5bef4edee9992d21d3d933d256f12fd9dd9a91c9",
+      "finalText": {
+        "titleDe": "Elektrisches Potenzial berechnen",
+        "titleEn": "Calculate Electric Potential",
+        "descriptionDe": "Die lernende Person kann in vorgegebenen elektrischen Feldern bei festgelegtem Potenzialnullpunkt Potenziale an Punkten bestimmen, Spannungen als Potenzialdifferenzen berechnen sowie Äquipotentiallinien konstruieren und zur Darstellung und Auswertung der Felder deuten.",
+        "descriptionEn": "The learner can determine potentials at points in given electric fields relative to a specified zero of potential, calculate voltages as potential differences, and construct and interpret equipotential lines to represent and analyze the fields."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-002",
+          "recordDigest": "sha256:461f7c1bdf5e8ef4d909a9d871fde46dfae547f76c39c4320895fd1387d4152d"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.002",
+          "recordDigest": "sha256:7f0049d3afb746abb745c64f5f225f7bdc886f53e5eaf08a098d7c8a42dc2558"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Potenzialnullpunkt, Spannung als Potenzialdifferenz und Äquipotentialdarstellung sind fachlich eindeutig und gemeinsam prüfbar. Runde B wird gewählt, weil sie Vorzeichenkonvention, räumliche Potenzialänderung und den invarianten Anteil einer Nullpunktverschiebung in einem neuen Feld explizit operationalisiert.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. The potential reference, voltage as a potential difference, and equipotential representation are scientifically unambiguous and jointly assessable. Round B is selected because it explicitly operationalizes sign convention, spatial potential change, and the invariant effect of shifting the reference in a fresh field."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-003",
+      "goalId": "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fe1a117810ccff3c3dd510ece9af3aee7b830deca7e64513202238459e586b8b",
+      "pageFingerprint": "sha256:c849ad2f616f4185701e7ce05c579a67f30adc32b15c2f54d8aac1e54c34578a",
+      "goalReviewContextFingerprint": "sha256:29be7be64a73fe60fc3e15ae51e6b5861c4be4963d38005a312066bb38e4d061",
+      "finalText": {
+        "titleDe": "Physikalische Prinzipien des Corti-Organs aus Quellen erschließen",
+        "titleEn": "Derive Physical Principles of the Organ of Corti from Sources",
+        "descriptionDe": "Die lernende Person kann aus vorgegebenen, belegten Quellen nachvollziehen, wie die Relativbewegung von Basilar- und Tektorialmembran die Stereozilien der Haarzellen auslenkt und dadurch mechanische Schwingungen in elektrische Rezeptorsignale überführt werden, die Grenzen dieser vereinfachten Wirkungskette kennzeichnen und die Erklärung fachsprachlich strukturiert präsentieren.",
+        "descriptionEn": "Using provided, cited sources, the learner can explain how relative motion of the basilar and tectorial membranes deflects hair-cell stereocilia and thereby converts mechanical vibrations into electrical receptor signals, identify the limits of this simplified causal chain, and present the explanation in a structured form using subject-specific language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-003",
+          "recordDigest": "sha256:c7c0ef1fce3524fb98d6a8a889c6e655139c27efcb71239aa281e282c8589a48"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.003",
+          "recordDigest": "sha256:52e68a399d140e6549f41485d71ccf1cc39019fd0428efd35e1e43c4ff03d29b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Die quellengebundene Kette von Membranrelativbewegung über Stereozilienauslenkung zum elektrischen Rezeptorsignal ist konkret, fachsprachlich prüfbar und ausdrücklich als vereinfachtes Modell begrenzt. Runde B wird gewählt, weil sie Quellenbefund, Modellschluss und konkrete Auslassungen sauber trennt und auf veränderte Quellen überträgt.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. The source-bound chain from relative membrane motion through stereocilia deflection to electrical receptor signaling is concrete, assessable in disciplinary language, and explicitly bounded as a simplified model. Round B is selected because it cleanly separates source evidence, model inference, and specific omissions and transfers them to changed sources."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-004",
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3dca221124a48d4dbf18935e94d6daa9bd697540ed2bfad0da8da60d1c0a062d",
+      "pageFingerprint": "sha256:e08404fc0b8e1df48d201c7d6932afa877a5902b8c22cac3362f4260db92dbdf",
+      "goalReviewContextFingerprint": "sha256:aaf26a8f164249f8e638807e1191be37b1936d6b127fc18f5bf251e5c74c50d9",
+      "finalText": {
+        "titleDe": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
+        "titleEn": "Model the resting potential across a selectively permeable membrane",
+        "descriptionDe": "Die lernende Person kann das Ruhepotenzial in einem vereinfachten passiven Membranmodell als Ergebnis des Zusammenspiels von konzentrationsgetriebener Diffusion, elektrischer Gegenwirkung und selektiver Membranpermeabilität modellieren und erläutern, dass aktive Transportprozesse die Konzentrationsgradienten langfristig aufrechterhalten, aber nicht Bestandteil dieses passiven Modells sind.",
+        "descriptionEn": "The learner can model the resting potential in a simplified passive membrane model as the result of the interplay among concentration-driven diffusion, electrical opposition, and selective membrane permeability and explain that active transport processes maintain the concentration gradients over time but are not part of this passive model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-004",
+          "recordDigest": "sha256:7fd14f0b7d6e1de6373dd5f63561041e3009e8e4143d31f2a2a81bb701afbc03"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.004",
+          "recordDigest": "sha256:c1234ed4454832684ed9a16f06bb5532d812a91116a8572a014a21ec8606785d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Das passive Membranmodell verbindet Diffusion, elektrische Gegenwirkung und selektive Permeabilität, während aktive Transporte fachlich korrekt als langfristige Gradientenerhaltung außerhalb des passiven Modells markiert bleiben. Runde B prüft diese Trennung besonders klar bei veränderten Gradienten, Permeabilitäten und Pumpenbedingungen.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. The passive membrane model connects diffusion, electrical counteraction, and selective permeability, while active transport is correctly identified as long-term maintenance of gradients outside the passive model. Round B assesses this distinction especially clearly under changed gradients, permeabilities, and pump conditions."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-005",
+      "goalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cdc486b7b74c6c5f17ea4070bbc73a896227eba17fd09dc68324b40a1d172a5b",
+      "pageFingerprint": "sha256:ce2017c5cbc0264a75d7573558a5560fbe20267b1bbfee4a38c9a0387d885365",
+      "goalReviewContextFingerprint": "sha256:94535093ce8208b377cdb1b2ba48a205e7b2d08e09b1311ccfad57195cf80e8e",
+      "finalText": {
+        "titleDe": "Millikan-Versuch und Elementarladung",
+        "titleEn": "Millikan Experiment and Elementary Charge",
+        "descriptionDe": "Die lernende Person kann den Millikan-Versuch im Schwebefall erläutern und damit die Quantelung elektrischer Ladung über die Elementarladung e begründen.",
+        "descriptionEn": "The learner can explain the Millikan hover experiment and use it to justify charge quantization via the elementary charge e."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-007",
+          "recordDigest": "sha256:e78856d78624c9a115e07483dc8dee12537336c2f0fdebf7bdf869ac730dfbc1"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.007",
+          "recordDigest": "sha256:8063d242fe2b726848105617843d5d05db810c9873e79087d0f6774e7b889ab2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Kräftegleichgewicht im Schwebefall und der Schluss von vielen gemessenen Tröpfchenladungen auf ein gemeinsames Ladungsquantum sind als zusammenhängende experimentelle Begründung gefasst. Runde B wird gewählt, weil sie Einheiten, Unsicherheiten, Ladungsvorzeichen und die Tragfähigkeit der Ensembleaussage in einem neuen Datensatz mitprüft.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. Force balance in suspension and the inference from many measured droplet charges to a common charge quantum form one connected experimental justification. Round B is selected because it also assesses units, uncertainties, charge sign, and the robustness of the ensemble claim in a fresh data set."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-006",
+      "goalId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a04462bff41ededf5431c157dce9b2dec3cce443db76147a582ccead311c9cec",
+      "pageFingerprint": "sha256:aff3bba1ddc97b1151fe3b4b5918035b2b0a9ef187d59275d0a8e9148a34a3a5",
+      "goalReviewContextFingerprint": "sha256:778e2f7dede0a3981bb7d4ad0dc15ca2fbeb013ac0f19fa18ef5d87f3375e867",
+      "finalText": {
+        "titleDe": "Elektromagnetischen Schwingkreis analysieren",
+        "titleEn": "Analyze Electromagnetic Oscillating Circuit",
+        "descriptionDe": "Die lernende Person kann einen einfachen LC-Schwingkreis beschreiben, charakteristische Größen wie Periodendauer, Frequenz und Amplituden angeben und die periodische Energieumwandlung qualitativ erklären.",
+        "descriptionEn": "The learner can describe a simple LC oscillating circuit, state characteristic quantities like period, frequency, and amplitudes, and qualitatively explain periodic energy conversion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-010",
+          "recordDigest": "sha256:705229e30a9f110b59c8857ea38fe4785e28fb3bf86b7743137c7bcbc09d1be7"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.010",
+          "recordDigest": "sha256:45e7ffed9d9402baa06cf973d67573dc371ff80046d6aa83eeaa28526d03039c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Zeitgrößen, Amplituden und die periodische Umwandlung zwischen elektrischer und magnetischer Feldenergie sind im idealisierten LC-Modell kohärent verbunden. Runde B wird gewählt, weil sie Zeitdiagramme an markanten Zuständen erklärt und Änderungen von L, C, Anfangsenergie sowie die Grenze durch Verluste auf einen neuen Kreis überträgt.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. Time quantities, amplitudes, and periodic conversion between electric- and magnetic-field energy are coherently connected in the idealized LC model. Round B is selected because it explains time graphs at characteristic states and transfers changes in L, C, initial energy, and the limitation caused by losses to a fresh circuit."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-007",
+      "goalId": "73b309ed-1aab-5778-8494-d9b65f5a352b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cf0a58f3310407365ae8ce08c882066aceea899664baa171b1cb50410a890b7f",
+      "pageFingerprint": "sha256:648dcdf77bc0a4a39eef69ca4a4d44f75f8e1259cd2e67f04d65135631e4c122",
+      "goalReviewContextFingerprint": "sha256:95ba98591cd9607a1881c5e18d87bf06247a5bd1ee8e3d93aa8b44a2b21bbe72",
+      "finalText": {
+        "titleDe": "Polarisation und Dielektrika deuten",
+        "titleEn": "Interpret Polarization and Dielectrics",
+        "descriptionDe": "Die lernende Person kann Polarisation in Nichtleitern erklären und materialabhängige Permittivität in Berechnungen nutzen.",
+        "descriptionEn": "The learner can explain polarization in non-conductors and use material-dependent permittivity in calculations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-011",
+          "recordDigest": "sha256:71c2fe0e7508d1fd070c918bfa9d48512c7923f49a86d16ea0fb42daf635e087"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.011",
+          "recordDigest": "sha256:b94446d983946b6561a4686f06e7f1a000c322a063e290f800aae0cc218d153f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Gebundene Ladungsverschiebung beziehungsweise Dipolausrichtung, makroskopische Polarisation und materialabhängige Permittivität werden fachlich korrekt mit der jeweiligen elektrischen Randbedingung verbunden. Runde B macht freie und gebundene Ladung sowie feste Spannung gegenüber fester freier Ladung im Transfer ausdrücklich unterscheidbar.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. Bound-charge displacement or dipole alignment, macroscopic polarization, and material-dependent permittivity are correctly connected to the applicable electrical boundary condition. Round B explicitly distinguishes free from bound charge and fixed voltage from fixed free charge in transfer."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-008",
+      "goalId": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e413f7f4ec055f4caba50511c80799f060e1e0306826123c06565d18bd720010",
+      "pageFingerprint": "sha256:2ecef3fca326ef5ed87e41d9e9853edb92363d7330b64c952cdd682e0b9c7dd7",
+      "goalReviewContextFingerprint": "sha256:fb7bd1dbf760851f1b273044aa1a95a6c14c13f19cabf71853348343c2086176",
+      "finalText": {
+        "titleDe": "Flächenladungsdichte nutzen",
+        "titleEn": "Use Surface Charge Density",
+        "descriptionDe": "Die lernende Person kann die Flächenladungsdichte als Ladung pro Fläche definieren und sie zur Beschreibung geladener Platten im Kondensatormodell verwenden.",
+        "descriptionEn": "The learner can define surface charge density as charge per area and use it to describe charged plates in the capacitor model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-013",
+          "recordDigest": "sha256:e45110d766fbdb093b863bd9ceafeb852477e2998a5f39b6e5df267542135e8c"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.013",
+          "recordDigest": "sha256:cf188e02559c1dfeba0876d38690205c29881c0b0fac5fedd67a426dc2a5425b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Die vorzeichenbehaftete Flächenladungsdichte als Ladung pro belegter Fläche und ihre Verwendung im idealisierten Plattenmodell sind klar definiert und prüfbar. Runde B wird gewählt, weil sie Vorzeichen, Einheit, Umkehrrechnung, Gleichverteilungsannahme und Randbereichsgrenze in einer veränderten Geometrie verbindet.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. Signed surface charge density as charge per occupied area and its use in the idealized plate model are clearly defined and assessable. Round B is selected because it connects sign, unit, inverse calculation, the uniform-distribution assumption, and the edge-region limitation in a changed geometry."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-009",
+      "goalId": "38e0ff49-f132-44c8-b17a-73dada5344db",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8b261ecaf8f8433ce64c7395a9c78cc8b833de11dc8cad9f930cda3df423c435",
+      "pageFingerprint": "sha256:294767c719172ac8fec59978fcac5c586980bb13afb204ddfe9947519f801f10",
+      "goalReviewContextFingerprint": "sha256:40bd0b8fe2e85b39bea0d170f93bfec110f32861d127b6e0616fb1b06c666f5e",
+      "finalText": {
+        "titleDe": "Plattenkondensatorfeld über Flächenladungsdichte herleiten",
+        "titleEn": "Derive the Plate-Capacitor Field from Surface Charge Density",
+        "descriptionDe": "Die lernende Person kann den Zusammenhang zwischen Flächenladungsdichte und elektrischer Feldstärke im Plattenkondensator mathematisch herleiten und die Modellannahmen benennen.",
+        "descriptionEn": "The learner can mathematically derive the relationship between surface charge density and electric field strength in a plate capacitor and state the model assumptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-014",
+          "recordDigest": "sha256:3b5875c1fb54155a4963756271ac1f6725c305e3a4e71a9db397263f9b0d9b67"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.014",
+          "recordDigest": "sha256:b2f076a8bb72b069c215e79ff642089064f601eb9f28a28b9719ccc2f645a157"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Die Herleitung aus Symmetrie und Überlagerung der Beiträge zweier idealisierter Flächen trennt Ergebnis und Modellannahmen fachlich sauber. Runde B wird gewählt, weil sie Richtungen und Vorzeichen verfolgt und die Herleitung auf Einzelplatte, homogenes Dielektrikum und endliche Plattengeometrie überträgt.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. The derivation from symmetry and superposition of two idealized sheet contributions cleanly separates the result from its model assumptions. Round B is selected because it tracks directions and signs and transfers the derivation to a single sheet, a homogeneous dielectric, and finite plate geometry."
+    },
+    {
+      "decisionId": "physik-b033u-stable-current-carryover-10-v1-openai-codex-20260905-decision-010",
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1d2c3a50258baaa8083a37088df83e35bbf2c2676c76eae5f4bc3a1431ed4267",
+      "pageFingerprint": "sha256:8576b4dfbc3fc956d7a550e039a1733ba46a428a034a8fd731d648b6378da91c",
+      "goalReviewContextFingerprint": "sha256:c09a3aa0c41888840469dc90499a8b1f2b46aadaf160e97219b47c74814660ad",
+      "finalText": {
+        "titleDe": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+        "titleEn": "Relate electric dipole fields to ECG signals",
+        "descriptionDe": "Die lernende Person kann elektrische Potenziale und Äquipotentiallinien eines Dipolfeldes experimentell oder in einer Simulation untersuchen und erklären, wie ein zeitlich veränderliches Dipolmodell des Herzens mit den zwischen Oberflächenelektroden gemessenen EKG-Potenzialdifferenzen zusammenhängt und wo die Grenzen dieser Näherung liegen.",
+        "descriptionEn": "The learner can investigate electric potentials and equipotential lines of a dipole field experimentally or in a simulation and explain how a time-varying dipole model of the heart relates to ECG potential differences measured between surface electrodes and where this approximation is limited."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033u-a-015",
+          "recordDigest": "sha256:aa8b54db46bd341ae5a6885fac08d68c1a7a2292183973a944c7840a684e45cf"
+        },
+        "second": {
+          "recordId": "physik-b033u-round-b-openai-gpt5-20260905-001.record.015",
+          "recordDigest": "sha256:022cca719889c411011ca93b34a385c39d293e785a2db3690897e4e451601f16"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Das zeitabhängige Dipolmodell, die räumliche Potenzialverteilung und die zwischen Oberflächenelektroden gemessene Potenzialdifferenz werden korrekt miteinander und mit konkreten Modellgrenzen verknüpft. Runde B wird gewählt, weil sie Experiment beziehungsweise Simulation, Messgeometrie und Modellabweichung in neuen Elektroden- und Dipolanordnungen unterscheidet.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. The time-dependent dipole model, spatial potential distribution, and potential difference measured between surface electrodes are correctly connected and bounded by concrete model limitations. Round B is selected because it distinguishes experiment or simulation, measurement geometry, and model deviation in fresh electrode and dipole arrangements."
+    }
+  ],
+  "manifestFingerprint": "sha256:5a915bce27ede06c1fea6f95cab2b10fcf56e6f400617816f5f854eca9c98b51"
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b033w-round-a-gpt5-20260905",
+  "campaignId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-a",
+  "roundId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:00d8f7c9457388b14c113bde47d2315ec47790d9e154b23b5ba9cc15071debef",
+  "bundleFingerprint": "sha256:96b802aeccdb8a0bf6f059bb2c46f0281f8187c42af1b339bc1e2785b1410a0c",
+  "bookDigest": "sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:22920f2e4b3db45dc91d8ae44330b1efc91d8804addd3879c2b7d673a3169ed2",
+  "independenceGroupId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+    "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+    "330808f6-789a-583d-86df-e271a7683d8b",
+    "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+    "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+    "0b08aed8-3c0f-5b38-844c-1bb363abbf68",
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "74a74132-fa39-541c-8d3c-696cf228452d",
+    "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+    "a684bec1-ba59-59d0-98d2-4ca37236f64c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:64db2e0f792bf57171ff888eaf38dcb3139a150494cf12a3377f1e081ca7b97e"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:5f494e5585e689857865b691a8ed78cf38d555eb88ad56093a479cfd9350eb4a"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:b9b0afdb3fe8f984ca7592261f81d63cf432614398b7b75f5a5531faec41eb41"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:fab1ff8ab5c3d952bf0e383757459733324263f75a7d391e9bb42b929f579160"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:00d8f7c9457388b14c113bde47d2315ec47790d9e154b23b5ba9cc15071debef"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-05T01:58:46.000Z",
+  "completedAt": "2026-09-05T02:02:11.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:00af759c9d326df935a274344b1e201f10478db5d51e1abdc41a0519af89b207",
+  "toolchainVersion": "goal-description-review-v1"
+}

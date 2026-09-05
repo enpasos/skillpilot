@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-031x-q2-harmonic-wave-final-recheck-3-v1.config.json",
+  "configDigest": "sha256:77d05d8129948bf9a50adaccada7b861cd9a6816ae8a41573a41502e8ef9beeb",
+  "goalIds": [
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "bf559969-a05c-58b5-82c5-3d719d96555d",
+    "68020906-e615-462e-a56f-dd1ccc14b8d7"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:8b3f56053f8bf43931d86933431a8148589bc53d97a6cd3b6d28187cdcb636c9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fc36ae7c7eaa4b9aefa81493c42a24bfcf9269aaa29da235fdd51108e269fddc",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2579806453deb5aa339db25cb1fae7a5e5475725ebd37db100859481ad26124f",
+    "reviewInputFingerprint": "sha256:0b1adc9b5b0219bd92b216053ad3dcbc4b17680afd26ae8aa1feaaf800e93bee",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-a",
+        "campaignDigest": "sha256:825e1dcd3519080f47a9e41f59585856a73c784a2a53debc0841db6b3dce9712",
+        "roundId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-independent-a",
+        "batchId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a3199315ac8c81e14884d54794565bfb38643151e11e8f39582c466b6282c563"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-b",
+        "campaignDigest": "sha256:2a48d27ae5d81b72949b649a7d5236e2ead9d9fefd8ef4f946d415280c7dec27",
+        "roundId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-independent-b",
+        "batchId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d6911aa8f66fad43e449841c3917cadd0580b1a1e6274f5bc56ed7e6595ea8e9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

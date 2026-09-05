@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-b031s-stable-current-carryover-1-v1-20260905",
+  "purpose": "Hash-bound bounded carryover of exactly the one current B031s goal confirmed KEEP by both blind rounds; the four changed or context-affected goals remain excluded for a fresh final recheck.",
+  "sourceBatchId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905",
+  "sourceCampaignGoalCount": 5,
+  "claimedGoalIds": [
+    "fa0b6b69-ce54-4711-90e6-26f27249cd71"
+  ],
+  "claimedGoalCount": 1,
+  "excludedGoalIds": [
+    "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+    "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+    "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
+    "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+  ],
+  "excludedGoalCount": 4,
+  "sourceDualSummaryDigest": "sha256:e763c748526d3873b42827e324b54eb42f602a6e70ba81fbcf0b7c322c228ef4",
+  "importedBundleFingerprint": "sha256:0ae401539a7651e4ae8ae9fd2fdcdcb56f183377ea84c327e6693ce82803ae09",
+  "currentCanonicalLandscapeDigest": "sha256:fc9f46796df2fc558d679ef2662c850846c8c1bc01340b3424116dce684d3332",
+  "authoringPath": "stable-current-carryover-1-v1.authoring.json",
+  "authoringDigest": "sha256:9e940b2d3c5664f2c06274a15abdf43b5266075522ef294cd58a94fb4c141a10",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-1-v1.json",
+  "resolutionIndexFormat": "legacy-schema-v1-partial-group",
+  "rationale": [
+    "The one claimed bilingual text and context is exact-current and both independent source decisions are KEEP.",
+    "The four named excluded goals changed or inherit changed context and receive no resolution, evidence profile, or progress claim from this carryover.",
+    "The source campaign contains five goals while this bounded carryover contains one; the partial-group compatibility index represents only the claimed stable subset.",
+    "Every individual resolution is freshly validated against both source rounds, the dual summary, and the current canonical landscape.",
+    "This receipt changes no canonical text, graph, central configuration, in-flight ownership, assessment, memory, or visualization bytes and registers no central progress."
+  ],
+  "safeguards": {
+    "individualResolutionsFreshlyValidated": true,
+    "exactKeepKeepRequired": true,
+    "excludedScopeFailsClosed": true,
+    "staleCanonicalContextFailsClosed": true,
+    "positiveEvidenceValidatedSeparately": true,
+    "centralRegistrationPerformed": false
+  }
+}

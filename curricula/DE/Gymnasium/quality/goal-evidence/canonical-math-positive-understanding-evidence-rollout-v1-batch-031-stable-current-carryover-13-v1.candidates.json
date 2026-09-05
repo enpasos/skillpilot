@@ -1,0 +1,750 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b031-stable-current-carryover-13-v1",
+  "reviewedAt": "2026-09-05T21:00:00.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-031-stable13-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "e02c58a2-2a32-49bd-b110-7b307e0317fb",
+      "reason": "DE: Das Profil prüft den Funktionsbegriff über Eindeutigkeit, Größenrollen und die konsistente Bedeutung geordneter Paare in Tabelle, selbst erzeugtem Graph und Term. Zwei voneinander unabhängige Kontexte wechseln zwischen funktionaler Rekonstruktion und begründeter Zurückweisung einer nicht eindeutigen Zuordnung; keine Bildressource liefert die Antwort. EN: The profile assesses the function concept through single-valuedness, quantity roles, and consistent meaning of ordered pairs in a table, learner-produced graph, and expression. Two independent contexts vary between reconstructing a function and justifiably rejecting a non-single-valued relation; no image resource supplies the answer.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "function-as-single-valued-mapping",
+            "essentialUnderstandingDe": "Eine Funktion ordnet jedem Wert ihres ausdrücklich festgelegten Definitionsbereichs genau einen Funktionswert zu. Verschiedene Eingaben dürfen denselben Ausgabewert haben; eine Eingabe mit zwei Ausgaben verletzt dagegen die Funktionsbedingung.",
+            "essentialUnderstandingEn": "A function assigns exactly one output to every input in its explicitly specified domain. Different inputs may share an output, but one input with two outputs violates the function condition.",
+            "observablePerformanceDe": "Die lernende Person benennt unabhängige und abhängige Größe, entscheidet für neue Zuordnungen begründet über die Funktionseigenschaft und bezieht die Entscheidung auf den Definitionsbereich.",
+            "observablePerformanceEn": "The learner identifies independent and dependent quantities, justifies whether fresh mappings are functions, and relates the decision to the domain."
+          },
+          {
+            "id": "function-representations-share-pairs",
+            "essentialUnderstandingDe": "Tabelle, Graph und Term können dieselbe Funktion darstellen, weil sie dieselben geordneten Eingabe-Ausgabe-Paare codieren; eine endliche Tabelle bestimmt ohne zusätzliche Annahme über die Funktionsklasse keinen eindeutigen Term.",
+            "essentialUnderstandingEn": "A table, graph, and expression can represent the same function because they encode the same ordered input-output pairs; without an additional function-class assumption, a finite table does not determine a unique expression.",
+            "observablePerformanceDe": "Die lernende Person koordiniert einzelne Werte zwischen den drei Darstellungen, erzeugt einen Graphen selbst aus Daten und kennzeichnet, welche Fortsetzung aus den Angaben sicher beziehungsweise nur modellhaft ist.",
+            "observablePerformanceEn": "The learner coordinates individual values across the three representations, produces a graph independently from data, and states which continuation is certain and which is only model-based."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["function-as-single-valued-mapping", "function-representations-share-pairs"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "mapping-status", "textDe": "eindeutige Funktion oder nicht eindeutige Relation", "textEn": "single-valued function or non-single-valued relation"},
+          {"id": "representation", "textDe": "Sachtext, Tabelle, selbst gezeichneter Graph oder Term", "textEn": "context, table, learner-drawn graph, or expression"},
+          {"id": "domain", "textDe": "diskreter endlicher oder kontinuierlicher festgelegter Definitionsbereich", "textEn": "discrete finite or specified continuous domain"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bicycle-rental-function-transfer",
+            "taskDemandDe": "Ein Fahrradverleih berechnet für ganze Stunden h∈{0,1,2,3,4} den Preis C(h)=4+2,5h Euro. Erstelle eine Wertetabelle und einen eigenen Koordinatengraphen, benenne die Größenrollen und erkläre, ob Zwischenwerte wie h=1,5 im gegebenen Modell zulässig sind.",
+            "taskDemandEn": "A bicycle rental charges C(h)=4+2.5h euros for whole hours h∈{0,1,2,3,4}. Create a value table and your own coordinate graph, identify the quantity roles, and explain whether intermediate values such as h=1.5 are allowed in the stated model.",
+            "expectedPerformanceDe": "Die lernende Person berechnet eindeutige Paare (h|C(h)), zeichnet nur die fünf zulässigen Punkte, bezeichnet h als unabhängig und C als abhängig und verwirft 1,5 wegen des diskreten Definitionsbereichs, nicht wegen des Terms.",
+            "expectedPerformanceEn": "The learner calculates unique pairs (h,C(h)), plots only the five admissible points, identifies h as independent and C as dependent, and rejects 1.5 because of the discrete domain rather than the expression.",
+            "understandingFocusDe": "Unabhängiger Transfer zu einem diskreten Kontext, in dem Term und Definitionsbereich gemeinsam gedeutet werden müssen.",
+            "understandingFocusEn": "Independent transfer to a discrete context in which expression and domain must be interpreted together."
+          },
+          {
+            "id": "temperature-city-relation-transfer",
+            "taskDemandDe": "Eine Tabelle ordnet jeder Temperatur T die an diesem Tag beobachteten Städte zu: 18°C→A, 18°C→B, 21°C→C. Entscheide für beide Richtungen Stadt↦Temperatur und Temperatur↦Stadt, ob eine Funktion vorliegt, und begründe ohne Graphvorlage.",
+            "taskDemandEn": "A table assigns observed cities to each temperature T on a given day: 18°C→A, 18°C→B, 21°C→C. For both directions city↦temperature and temperature↦city, decide whether the relation is a function and justify without a graph template.",
+            "expectedPerformanceDe": "Bei je einem Messwert pro Stadt ist Stadt↦Temperatur funktional, obwohl A und B denselben Wert haben dürfen; Temperatur↦Stadt ist wegen zweier Ausgaben zu 18°C nicht funktional. Die Geltung ist auf den genannten Tag und die erfassten Städte begrenzt.",
+            "expectedPerformanceEn": "With one measurement per city, city↦temperature is a function even though A and B may share a value; temperature↦city is not a function because 18°C has two outputs. The claim is limited to the stated day and recorded cities.",
+            "understandingFocusDe": "Unabhängiger Transfer zur Richtungsabhängigkeit der Eindeutigkeit und zur Kontextgrenze.",
+            "understandingFocusEn": "Independent transfer to direction-dependent single-valuedness and a contextual boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+      "reason": "DE: Das Profil prüft aktiven Wechsel zwischen Tabelle, eigenständig erzeugtem Graph und Term sowie Kontrollschritte über gemeinsame Wertepaare. Zwei unabhängige Fälle variieren Ausgangsdarstellung, Achsenskalierung und Fehlerdiagnose; ein endlicher Datensatz wird nur bei benannter Funktionsfamilie zu einem eindeutigen Term fortgesetzt. EN: The profile assesses active conversion among table, independently produced graph, and expression together with checks using shared ordered pairs. Two independent cases vary the starting representation, axis scale, and error diagnosis; a finite data set is extended to a unique expression only when a function family is specified.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "representation-conversion-preserves-values",
+            "essentialUnderstandingDe": "Beim Darstellungswechsel müssen Definitionswerte und zugehörige Funktionswerte als dieselben geordneten Paare erhalten bleiben; Achsenbeschriftung und Maßstab sind Teil der Graphinformation.",
+            "essentialUnderstandingEn": "When changing representation, inputs and their corresponding outputs must be preserved as the same ordered pairs; axis labels and scale are part of the graph information.",
+            "observablePerformanceDe": "Die lernende Person erzeugt aus einer neuen Tabelle oder einem Term die jeweils anderen Darstellungen, beschriftet Achsen und kontrolliert mindestens zwei Wertepaare durch Rückeinsetzen.",
+            "observablePerformanceEn": "Starting from a fresh table or expression, the learner creates the other representations, labels axes, and checks at least two ordered pairs by substitution."
+          },
+          {
+            "id": "representation-consistency-and-uniqueness",
+            "essentialUnderstandingDe": "Widersprechen sich Darstellungen an einem Wertepaar, können sie nicht dieselbe Funktion zeigen. Aus endlich vielen Punkten folgt ein eindeutiger affiner Term nur unter der Zusatzannahme einer affinen Funktion und bei hinreichenden unterschiedlichen Eingaben.",
+            "essentialUnderstandingEn": "If representations disagree at an ordered pair, they cannot show the same function. A finite set of points determines a unique affine expression only under the assumption of an affine function and with enough distinct inputs.",
+            "observablePerformanceDe": "Die lernende Person findet und korrigiert einen Darstellungswiderspruch und nennt die Zusatzannahme, die eine Termrekonstruktion rechtfertigt.",
+            "observablePerformanceEn": "The learner finds and corrects a cross-representation inconsistency and states the additional assumption that justifies reconstructing an expression."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["representation-conversion-preserves-values", "representation-consistency-and-uniqueness"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "starting-form", "textDe": "Term oder ungleichmäßig gewählte Tabelle", "textEn": "expression or non-uniformly sampled table"},
+          {"id": "axis-scale", "textDe": "bei null beginnende oder versetzte und unterschiedlich skalierte Achsen", "textEn": "zero-based or shifted and differently scaled axes"},
+          {"id": "task-direction", "textDe": "Darstellungen erzeugen oder Widerspruch diagnostizieren", "textEn": "produce representations or diagnose inconsistency"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "affine-expression-transfer",
+            "taskDemandDe": "Für f(x)=−1,5x+4 und x∈[−2,4] erstelle eine Tabelle zu x=−2,0,1,5 und 4 sowie einen eigenen Graphen mit x-Schritten von 1 und y-Schritten von 2. Prüfe zwei Graphpunkte am Term und erkläre die Interpolation zwischen den Punkten.",
+            "taskDemandEn": "For f(x)=−1.5x+4 on x∈[−2,4], create a table for x=−2,0,1.5,4 and your own graph using x-steps of 1 and y-steps of 2. Check two plotted points in the expression and explain interpolation between points.",
+            "expectedPerformanceDe": "Die lernende Person berechnet 7, 4, 1,75 und −2, trägt die Punkte unter korrekter Skala ein und verbindet sie wegen des kontinuierlichen Definitionsintervalls und der affinen Termform geradlinig; die Aussage endet bei x=−2 und 4.",
+            "expectedPerformanceEn": "The learner calculates 7, 4, 1.75, and −2, plots the points using the correct scale, and joins them linearly because the domain is continuous and the expression affine; the claim ends at x=−2 and 4.",
+            "understandingFocusDe": "Unabhängiger Transfer vom Term zu zwei Darstellungen mit Skalen- und Definitionsbereichskontrolle.",
+            "understandingFocusEn": "Independent transfer from an expression to two representations with checks of scale and domain."
+          },
+          {
+            "id": "inconsistent-table-transfer",
+            "taskDemandDe": "Eine als affin bezeichnete Funktion enthält die Tabellenpaare (−1|5), (1|1), (3|−3), (5|−6). Bestimme aus den ersten drei Paaren einen Term, prüfe die vierte Zeile und beschreibe den korrekten Graphen ohne eine vorhandene Abbildung zu verwenden.",
+            "taskDemandEn": "A function stated to be affine has table pairs (−1,5), (1,1), (3,−3), (5,−6). Determine an expression from the first three pairs, check the fourth row, and describe the correct graph without using an existing image.",
+            "expectedPerformanceDe": "Die Steigung ist −2 und der Term f(x)=−2x+3; für x=5 müsste −7 statt −6 stehen. Die lernende Person korrigiert die Zeile und beschreibt eine Gerade durch die konsistenten Punkte; ohne die Affinitätsannahme wäre der Term aus wenigen Punkten nicht eindeutig.",
+            "expectedPerformanceEn": "The slope is −2 and the expression f(x)=−2x+3; at x=5 the output should be −7, not −6. The learner corrects the row and describes a line through the consistent points; without the affine assumption, a few points would not determine a unique expression.",
+            "understandingFocusDe": "Unabhängiger Transfer von Tabelle zu Term und Fehlerdiagnose mit expliziter Eindeutigkeitsgrenze.",
+            "understandingFocusEn": "Independent transfer from table to expression and error diagnosis with an explicit uniqueness boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+      "reason": "DE: Das Profil verlangt begründete äquivalente Umformungen mit Rechengesetzen und trennt algebraische Gültigkeit von einzelnen Wertproben. Zwei unabhängige Fälle wechseln zwischen konstruktiver Mehrschrittumformung und Fehlerdiagnose; Definitionsbereich und nicht äquivalente Operationen werden explizit begrenzt. EN: The profile requires justified equivalent transformations using arithmetic laws and distinguishes algebraic validity from individual substitution checks. Two independent cases vary between constructive multi-step transformation and error diagnosis; domain and non-equivalent operations are explicitly bounded.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "equivalence-through-laws",
+            "essentialUnderstandingDe": "Kommutativ-, Assoziativ- und Distributivgesetz ändern nur die Schreibweise und erhalten den Termwert für alle Werte des gemeinsamen Definitionsbereichs; Klammern und Minuszeichen gehören vollständig zur verteilten Struktur.",
+            "essentialUnderstandingEn": "The commutative, associative, and distributive laws change only the form and preserve value for every input in the common domain; brackets and minus signs belong to the full distributed structure.",
+            "observablePerformanceDe": "Die lernende Person formt einen neuen verschachtelten Term schrittweise um, benennt das jeweilige Gesetz und behandelt negative Faktoren fehlerfrei.",
+            "observablePerformanceEn": "The learner transforms a fresh nested expression step by step, names the law used, and handles negative factors correctly."
+          },
+          {
+            "id": "equivalence-check-and-domain",
+            "essentialUnderstandingDe": "Rückumformung kann Äquivalenz allgemein begründen; einzelne Wertproben können Fehler entdecken, beweisen aber keine allgemeine Äquivalenz. Operationen wie Division durch einen variablen Ausdruck können den Definitionsbereich verändern.",
+            "essentialUnderstandingEn": "Reversing a transformation can justify equivalence generally; individual substitutions can detect errors but do not prove general equivalence. Operations such as division by a variable expression may change the domain.",
+            "observablePerformanceDe": "Die lernende Person identifiziert einen ungültigen Schritt, gibt ein Gegenbeispiel oder eine Rückumformung an und vergleicht die Definitionsbereiche.",
+            "observablePerformanceEn": "The learner identifies an invalid step, supplies a counterexample or reverse transformation, and compares the domains."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["equivalence-through-laws", "equivalence-check-and-domain"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "law-direction", "textDe": "Ausmultiplizieren, Umsortieren oder Ausklammern", "textEn": "expanding, rearranging, or factoring"},
+          {"id": "sign-structure", "textDe": "positive, negative oder verschachtelte Vorfaktoren", "textEn": "positive, negative, or nested factors"},
+          {"id": "validation", "textDe": "Rückumformung, Gegenbeispiel oder Definitionsbereichsvergleich", "textEn": "reverse transformation, counterexample, or domain comparison"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "nested-distributive-transfer",
+            "taskDemandDe": "Forme −3(2x−(x−4))+5x äquivalent und möglichst einfach um. Begründe jede Gleichheit mit Klammerregel, Distributiv-, Assoziativ- oder Kommutativgesetz und prüfe durch Rückstrukturierung.",
+            "taskDemandEn": "Transform −3(2x−(x−4))+5x equivalently into a simplest useful form. Justify every equality using bracket rules and the distributive, associative, or commutative law, and check by reconstructing the original structure.",
+            "expectedPerformanceDe": "Die lernende Person erhält innen x+4, dann −3x−12+5x und schließlich 2x−12; das Minus vor der inneren Klammer und der Faktor −3 werden auf alle betroffenen Summanden verteilt.",
+            "expectedPerformanceEn": "The learner obtains x+4 inside, then −3x−12+5x, and finally 2x−12; the minus before the inner bracket and factor −3 are distributed to every affected term.",
+            "understandingFocusDe": "Unabhängiger Transfer zu einer verschachtelten Vorzeichenstruktur mit allgemeiner Rückprüfung.",
+            "understandingFocusEn": "Independent transfer to a nested sign structure with a general reverse check."
+          },
+          {
+            "id": "domain-loss-transfer",
+            "taskDemandDe": "Beurteile die Behauptung, (x²−1)/(x−1) und x+1 seien ohne Einschränkung derselbe Term. Erkläre die Umformung, vergleiche die Definitionsbereiche und beurteile, was Wertproben bei x=2 und x=1 zeigen.",
+            "taskDemandEn": "Assess the claim that (x²−1)/(x−1) and x+1 are the same expression without restriction. Explain the transformation, compare domains, and assess what substitutions at x=2 and x=1 show.",
+            "expectedPerformanceDe": "Nach Faktorisieren darf x−1 nur für x≠1 gekürzt werden; auf diesem gemeinsamen Bereich stimmen die Werte überein, bei x=1 ist der Bruch undefiniert, während x+1 den Wert 2 hat. Die Probe bei 2 beweist keine uneingeschränkte Äquivalenz.",
+            "expectedPerformanceEn": "After factorization, x−1 may be cancelled only for x≠1; values agree on this common domain, but at x=1 the fraction is undefined while x+1 equals 2. The check at 2 does not prove unrestricted equivalence.",
+            "understandingFocusDe": "Unabhängiger Transfer zur Geltungsgrenze äquivalenter Umformungen durch Definitionsbereichsverlust.",
+            "understandingFocusEn": "Independent transfer to the boundary of equivalent transformation caused by domain loss."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "reason": "DE: Das Profil prüft Faktorisieren als rückwärts angewandtes Distributivgesetz und verlangt eine vollständige Rückmultiplikationskontrolle. Zwei unabhängige Fälle variieren negativen Zahlenfaktor, mehrere Variablen und den zugrunde gelegten Koeffizientenbereich; weitergehende Spezialverfahren werden nicht vorausgesetzt. EN: The profile assesses factoring as the distributive law in reverse and requires a complete expansion check. Two independent cases vary a negative numerical factor, several variables, and the coefficient domain; more advanced special methods are not assumed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "common-factor-structure",
+            "essentialUnderstandingDe": "Ein gemeinsamer Faktor muss in jedem Summanden enthalten sein; nach dem Ausklammern stehen die jeweiligen Quotienten in der Klammer. Ein negativer Faktor kann zweckmäßig sein, wenn dadurch der führende Klammersummand positiv wird.",
+            "essentialUnderstandingEn": "A common factor must divide every term; after factoring, the respective quotients remain inside the brackets. A negative factor can be useful when it makes the leading bracket term positive.",
+            "observablePerformanceDe": "Die lernende Person bestimmt bei einem neuen Term einen sinnvollen gemeinsamen Zahlen- und Variablenfaktor und begründet die Klammersummanden.",
+            "observablePerformanceEn": "For a fresh expression, the learner determines a useful common numerical and variable factor and justifies the terms inside the brackets."
+          },
+          {
+            "id": "factorization-check-and-domain",
+            "essentialUnderstandingDe": "Vollständiges Rückmultiplizieren muss jeden ursprünglichen Summanden mit richtigem Vorzeichen erzeugen. Ob weiter faktorisiert werden kann, hängt vom erlaubten Koeffizientenbereich und den verfügbaren Verfahren ab.",
+            "essentialUnderstandingEn": "Full expansion must reproduce every original term with the correct sign. Whether further factorization is possible depends on the permitted coefficient domain and available methods.",
+            "observablePerformanceDe": "Die lernende Person prüft die Produktform vollständig und kennzeichnet korrekt, ob im genannten Bereich kein weiterer gemeinsamer Faktor existiert.",
+            "observablePerformanceEn": "The learner checks the product form fully and correctly states when no further common factor exists in the specified domain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["common-factor-structure", "factorization-check-and-domain"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "factor-sign", "textDe": "positiver oder negativer gemeinsamer Faktor", "textEn": "positive or negative common factor"},
+          {"id": "variable-content", "textDe": "eine oder mehrere gemeinsame Variablenpotenzen", "textEn": "one or several common variable powers"},
+          {"id": "coefficient-domain", "textDe": "ganzzahlige oder ausdrücklich reelle Koeffizienten", "textEn": "integer or explicitly real coefficients"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-multivariable-factor-transfer",
+            "taskDemandDe": "Faktorisiere −18a²b+24ab²−6ab vollständig durch einen gemeinsamen Faktor so, dass der erste Klammersummand positiv ist, und prüfe durch Rückmultiplikation.",
+            "taskDemandEn": "Factor −18a²b+24ab²−6ab completely by a common factor so that the first term inside the brackets is positive, and verify by expansion.",
+            "expectedPerformanceDe": "Die lernende Person wählt −6ab und erhält −6ab(3a−4b+1); die vollständige Rückmultiplikation reproduziert alle drei Summanden und Vorzeichen.",
+            "expectedPerformanceEn": "The learner chooses −6ab and obtains −6ab(3a−4b+1); full expansion reproduces all three terms and signs.",
+            "understandingFocusDe": "Unabhängiger Transfer zu negativem Faktor, mehreren Variablen und vollständiger Kontrolle.",
+            "understandingFocusEn": "Independent transfer to a negative factor, several variables, and a complete check."
+          },
+          {
+            "id": "coefficient-domain-transfer",
+            "taskDemandDe": "Faktorisiere 12x²−18x zunächst durch den größten gemeinsamen ganzzahligen Faktor. Beurteile anschließend getrennt, ob x²+2 im Bereich reeller Koeffizienten durch gemeinsame Faktoren weiter zerlegt werden kann.",
+            "taskDemandEn": "First factor 12x²−18x using the greatest common integer factor. Then assess separately whether x²+2 can be factored further by common factors over real coefficients.",
+            "expectedPerformanceDe": "Die lernende Person erhält 6x(2x−3) und prüft dies. Für x²+2 erkennt sie keinen gemeinsamen Summandenfaktor und keine reellen linearen Nullstellen; das Profil verlangt hier keine komplexe Faktorisierung.",
+            "expectedPerformanceEn": "The learner obtains 6x(2x−3) and checks it. For x²+2 the learner identifies no common term factor and no real linear roots; complex factorization is outside this profile.",
+            "understandingFocusDe": "Unabhängiger Transfer zur begründeten Grenze des Faktorisierens im benannten Zahlenbereich.",
+            "understandingFocusEn": "Independent transfer to the justified limit of factoring in the stated number domain."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+      "reason": "DE: Das Profil prüft Ausmultiplizieren und Zusammenfassen als zwei getrennte, aber verkettete Strukturentscheidungen. Zwei unabhängige Fälle variieren mehrere Klammern, negative Vorfaktoren und absichtliche Fehler; nur Terme mit identischem Variablenteil dürfen zusammengefasst werden. EN: The profile assesses expansion and collection as two distinct but chained structural decisions. Two independent cases vary multiple brackets, negative factors, and deliberate errors; only terms with identical variable parts may be collected.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "complete-distribution-and-signs",
+            "essentialUnderstandingDe": "Beim Distributivgesetz wird der Vorfaktor mit jedem Summanden der Klammer multipliziert; ein Minus vor einer Klammer ändert beim Auflösen alle Vorzeichen der betroffenen Summanden.",
+            "essentialUnderstandingEn": "Under the distributive law, the outside factor multiplies every term inside the bracket; a minus before a bracket changes all signs of the affected terms when expanded.",
+            "observablePerformanceDe": "Die lernende Person expandiert neue ein- und mehrgliedrige Klammerprodukte vollständig und erklärt jede Vorzeichenentscheidung.",
+            "observablePerformanceEn": "The learner fully expands fresh single- and multi-term bracket products and explains every sign decision."
+          },
+          {
+            "id": "collect-like-terms-and-check",
+            "essentialUnderstandingDe": "Nur Summanden mit identischem Variablenteil und gleicher Potenzstruktur sind gleichartig; ihre Koeffizienten können addiert werden. Eine Wertprobe kann einen Fehler anzeigen, während Rückfaktorisierung die Struktur allgemeiner prüft.",
+            "essentialUnderstandingEn": "Only terms with identical variable parts and powers are like terms; their coefficients may be added. A substitution can reveal an error, while refactoring checks the structure more generally.",
+            "observablePerformanceDe": "Die lernende Person ordnet und fasst nur gleichartige Terme zusammen, diagnostiziert eine unzulässige Zusammenfassung und kontrolliert die Endform.",
+            "observablePerformanceEn": "The learner orders and collects only like terms, diagnoses an invalid collection, and checks the final form."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["complete-distribution-and-signs", "collect-like-terms-and-check"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "bracket-count", "textDe": "eine oder mehrere zu verknüpfende Klammern", "textEn": "one or several linked brackets"},
+          {"id": "sign-pattern", "textDe": "positive Faktoren oder führendes Minus", "textEn": "positive factors or a leading minus"},
+          {"id": "response", "textDe": "eigenständig vereinfachen oder Fehler fachlich diagnostizieren", "textEn": "simplify independently or diagnose an error precisely"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-bracket-expansion-transfer",
+            "taskDemandDe": "Multipliziere (2x−3)(x+4)−2(x²−x+5) aus, fasse gleichartige Terme zusammen und prüfe die Endform an x=1 sowie durch Rückverfolgung der Distributivschritte.",
+            "taskDemandEn": "Expand (2x−3)(x+4)−2(x²−x+5), collect like terms, and check the final form at x=1 and by tracing the distributive steps backward.",
+            "expectedPerformanceDe": "Die lernende Person erhält zunächst 2x²+5x−12−2x²+2x−10 und schließlich 7x−22; x²-Terme heben sich auf, während x- und Konstantenterme getrennt gesammelt werden.",
+            "expectedPerformanceEn": "The learner first obtains 2x²+5x−12−2x²+2x−10 and finally 7x−22; the x² terms cancel while x terms and constants are collected separately.",
+            "understandingFocusDe": "Unabhängiger Transfer zu zwei Distributivstrukturen, führendem Minus und vollständiger Kontrolle.",
+            "understandingFocusEn": "Independent transfer to two distributive structures, a leading minus, and a complete check."
+          },
+          {
+            "id": "invalid-collection-transfer",
+            "taskDemandDe": "Eine Lösung behauptet 3a(2a−b)−(a²−4b)=5a²+b. Prüfe jeden Schritt, korrigiere den Term und erkläre, warum ab- und b-Terme nicht gleichartig sind.",
+            "taskDemandEn": "A solution claims 3a(2a−b)−(a²−4b)=5a²+b. Check every step, correct the expression, and explain why ab and b terms are not like terms.",
+            "expectedPerformanceDe": "Korrekt ist 6a²−3ab−a²+4b=5a²−3ab+4b. Die Variablenteile ab und b unterscheiden sich, daher dürfen ihre Koeffizienten nicht zusammengefasst werden.",
+            "expectedPerformanceEn": "The correct result is 6a²−3ab−a²+4b=5a²−3ab+4b. The variable parts ab and b differ, so their coefficients cannot be collected.",
+            "understandingFocusDe": "Unabhängiger Transfer zur Fehlerdiagnose und zur Geltungsgrenze des Zusammenfassens.",
+            "understandingFocusEn": "Independent transfer to error diagnosis and the boundary for collecting terms."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
+      "reason": "DE: Das Profil prüft die Bedeutung und Reichweite von Implikation, Äquivalenz, Mengenzugehörigkeit und Intervallgrenzen in eigenen Worten. Zwei unabhängige Fälle wechseln logische und mengentheoretische Notation; Grundmenge und Definitionsbereich werden als notwendige Geltungsangaben expliziert. EN: The profile assesses the meaning and scope of implication, equivalence, membership, and interval endpoints in the learner's own words. Two independent cases vary logical and set notation; universe and domain are made explicit as necessary validity conditions.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "logical-symbol-direction",
+            "essentialUnderstandingDe": "A⇒B behauptet nur die Folgerung von A nach B; A⇔B behauptet beide Richtungen. Eine unzulässige Umkehrung wird durch ein Gegenbeispiel widerlegt, und die Wahrheit hängt von der angegebenen Grundmenge ab.",
+            "essentialUnderstandingEn": "A⇒B asserts only inference from A to B; A⇔B asserts both directions. An invalid converse is refuted by a counterexample, and truth depends on the stated universe.",
+            "observablePerformanceDe": "Die lernende Person übersetzt neue symbolische Aussagen vollständig, trennt Hin- und Rückrichtung und ersetzt ein falsches Äquivalenzzeichen durch die begründete Relation.",
+            "observablePerformanceEn": "The learner translates fresh symbolic statements completely, distinguishes forward and converse directions, and replaces an incorrect equivalence sign with the justified relation."
+          },
+          {
+            "id": "membership-and-interval-scope",
+            "essentialUnderstandingDe": "x∈M bedeutet Elementzugehörigkeit; offene und geschlossene Intervallklammern geben an, ob Randwerte enthalten sind. Eine Intervallaussage ist ohne Zahlbereich und Randkonvention unvollständig.",
+            "essentialUnderstandingEn": "x∈M expresses membership; open and closed interval brackets state whether endpoints are included. An interval statement is incomplete without a number domain and endpoint convention.",
+            "observablePerformanceDe": "Die lernende Person wechselt zwischen verbaler Bedingung, Mengen- und Intervallschreibweise und prüft Randwerte einzeln.",
+            "observablePerformanceEn": "The learner converts among verbal conditions, set notation, and interval notation and checks endpoints individually."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["logical-symbol-direction", "membership-and-interval-scope"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "symbol-family", "textDe": "Implikation/Äquivalenz oder Zugehörigkeit/Intervall", "textEn": "implication/equivalence or membership/interval"},
+          {"id": "direction", "textDe": "symbolische Aussage lesen oder verbale Aussage formalisieren", "textEn": "read a symbolic statement or formalize a verbal statement"},
+          {"id": "domain", "textDe": "natürliche, ganze oder reelle Grundmenge mit Randpunkten", "textEn": "natural, integer, or real universe with endpoints"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "implication-converse-transfer",
+            "taskDemandDe": "Über der Grundmenge der ganzen Zahlen steht: n ist durch 4 teilbar ⇔ n ist gerade. Übersetze beide Richtungen, entscheide über ihre Wahrheit und repariere die Symbolverwendung mit einem Gegenbeispiel.",
+            "taskDemandEn": "Over the integers, the statement says: n is divisible by 4 ⇔ n is even. Translate both directions, decide their truth, and repair the symbol use with a counterexample.",
+            "expectedPerformanceDe": "Teilbarkeit durch 4 impliziert Geradheit; die Rückrichtung ist wegen n=2 falsch. Richtig ist daher „durch 4 teilbar ⇒ gerade“, nicht die Äquivalenz.",
+            "expectedPerformanceEn": "Divisibility by 4 implies evenness; the converse is false because n=2. The correct notation is therefore “divisible by 4 ⇒ even,” not equivalence.",
+            "understandingFocusDe": "Unabhängiger Transfer zu logischer Richtung, Gegenbeispiel und benannter Grundmenge.",
+            "understandingFocusEn": "Independent transfer to logical direction, counterexample, and a stated universe."
+          },
+          {
+            "id": "interval-membership-transfer",
+            "taskDemandDe": "Formuliere „x ist reell, größer als −2 und höchstens 5“ als Intervall- und Mengenschreibweise. Prüfe x=−2, x=5 und x=5,01 und erkläre jedes verwendete Symbol.",
+            "taskDemandEn": "Express “x is real, greater than −2, and at most 5” in interval and set notation. Check x=−2, x=5, and x=5.01 and explain every symbol used.",
+            "expectedPerformanceDe": "Die lernende Person schreibt x∈(−2,5] beziehungsweise {x∈ℝ | −2<x≤5}; −2 ist ausgeschlossen, 5 enthalten und 5,01 ausgeschlossen.",
+            "expectedPerformanceEn": "The learner writes x∈(−2,5] or {x∈ℝ | −2<x≤5}; −2 is excluded, 5 included, and 5.01 excluded.",
+            "understandingFocusDe": "Unabhängiger Transfer zu Zugehörigkeit, Randklammern und Definitionsbereich ohne Bildabhängigkeit.",
+            "understandingFocusEn": "Independent transfer to membership, endpoint brackets, and domain without image dependence."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "reason": "DE: Das Profil verlangt begründete Winkelketten aus Schnitt-, Parallelitäts- und Zerlegungsvoraussetzungen statt Messung oder optischem Eindruck. Zwei unabhängige, vollständig textlich definierte Fälle wechseln Parallelenfigur und Vieleck; ohne gesicherte Parallelität oder euklidische ebene Figur gelten die verwendeten Beziehungen nicht. EN: The profile requires justified angle chains from intersection, parallelism, and decomposition conditions rather than measurement or appearance. Two independent fully verbal cases vary a parallel-line configuration and a polygon; without established parallelism or a Euclidean planar figure, the used relations do not apply.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "angle-relations-from-conditions",
+            "essentialUnderstandingDe": "Scheitel- und Nebenwinkel folgen aus einem Schnitt; Stufen- und Wechselwinkelbeziehungen benötigen parallele Geraden. Eine nicht maßstäbliche oder gedrehte Lage ändert diese satzmäßigen Beziehungen nicht.",
+            "essentialUnderstandingEn": "Vertical and supplementary angles follow from an intersection; corresponding and alternate angle relations require parallel lines. A non-scale or rotated configuration does not change these theorem-based relations.",
+            "observablePerformanceDe": "Die lernende Person bestimmt unbekannte Winkel und nennt bei jedem Schritt die Beziehung samt notwendiger Voraussetzung.",
+            "observablePerformanceEn": "The learner determines unknown angles and names the relation and necessary condition at every step."
+          },
+          {
+            "id": "triangle-polygon-decomposition",
+            "essentialUnderstandingDe": "Die Winkelsumme im euklidischen Dreieck beträgt 180°; ein einfaches n-Eck lässt sich von einem Eckpunkt in n−2 Dreiecke zerlegen, woraus (n−2)·180° folgt. Selbstüberschneidende Figuren benötigen eine andere Behandlung.",
+            "essentialUnderstandingEn": "The angle sum of a Euclidean triangle is 180°; a simple n-gon can be divided from one vertex into n−2 triangles, giving (n−2)·180°. Self-intersecting figures require different treatment.",
+            "observablePerformanceDe": "Die lernende Person begründet eine Vieleckwinkelsumme durch eigene Zerlegung und nutzt sie in einer nachvollziehbaren Winkelkette.",
+            "observablePerformanceEn": "The learner justifies a polygon angle sum through an independent decomposition and uses it in a transparent angle chain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["angle-relations-from-conditions", "triangle-polygon-decomposition"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "figure-family", "textDe": "geschnittene Parallelen, Dreieck oder einfaches Vieleck", "textEn": "intersected parallels, triangle, or simple polygon"},
+          {"id": "orientation", "textDe": "Standardlage oder gedrehte textlich beschriebene Lage", "textEn": "standard or rotated verbally specified configuration"},
+          {"id": "condition-status", "textDe": "gesicherte Parallelität oder bewusst fehlende Voraussetzung", "textEn": "established parallelism or deliberately missing condition"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parallel-angle-chain-transfer",
+            "taskDemandDe": "Die Geraden g und h sind parallel. Eine Transversale t schneidet g in A und h in B. Der innenliegende Winkel rechts von t bei A beträgt 68°. Bestimme den innenliegenden Winkel links von t bei B und seinen Nebenwinkel; begründe ohne Zeichnungsmessung. Beurteile anschließend den Fall ohne die Angabe g∥h.",
+            "taskDemandEn": "Lines g and h are parallel. A transversal t meets g at A and h at B. The interior angle to the right of t at A is 68°. Determine the interior angle to the left of t at B and its supplementary angle; justify without measuring a diagram. Then assess the case without the statement g∥h.",
+            "expectedPerformanceDe": "Über Wechselwinkel erhält die lernende Person 68° bei B und über Nebenwinkel 112°. Ohne gesicherte Parallelität ist der Wechselwinkelschluss nicht zulässig, selbst wenn eine Skizze parallel aussieht.",
+            "expectedPerformanceEn": "Using alternate angles, the learner obtains 68° at B and then 112° by supplementary angles. Without established parallelism, the alternate-angle inference is invalid even if a sketch looks parallel.",
+            "understandingFocusDe": "Unabhängiger Transfer zu einer textlich fixierten Parallelenfigur und ihrer zentralen Geltungsbedingung.",
+            "understandingFocusEn": "Independent transfer to a verbally fixed parallel-line configuration and its central validity condition."
+          },
+          {
+            "id": "hexagon-decomposition-transfer",
+            "taskDemandDe": "Ein einfaches konvexes Sechseck hat fünf Innenwinkel 110°, 125°, 130°, 140° und 115°. Leite seine Winkelsumme durch Dreieckszerlegung her und bestimme den sechsten Winkel. Erkläre, warum die Herleitung nicht unverändert auf ein selbstüberschneidendes Sechseck übertragen wird.",
+            "taskDemandEn": "A simple convex hexagon has five interior angles of 110°, 125°, 130°, 140°, and 115°. Derive its angle sum by triangulation and determine the sixth angle. Explain why the derivation is not transferred unchanged to a self-intersecting hexagon.",
+            "expectedPerformanceDe": "Vier Dreiecke ergeben 720°; die bekannten Winkel summieren sich zu 620°, also beträgt der letzte 100°. Die Zerlegung setzt ein einfaches ebenes Vieleck mit der üblichen Innenwinkeldeutung voraus.",
+            "expectedPerformanceEn": "Four triangles give 720°; the known angles total 620°, so the final angle is 100°. The decomposition assumes a simple planar polygon with the usual interior-angle interpretation.",
+            "understandingFocusDe": "Unabhängiger Transfer von lokalen Winkelbeziehungen zur Vieleckzerlegung mit Modellgrenze.",
+            "understandingFocusEn": "Independent transfer from local angle relations to polygon decomposition with a model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "reason": "DE: Das Profil verankert Zylindervolumen in konstanter Grundfläche mal senkrechter Höhe und verlangt konsistente Einheiten sowie Sachprüfung. Zwei unabhängige Behälterfälle wechseln gesuchte Größe, Durchmesser/Radius und Füllhöhe; schiefe, verformte oder nicht kreiszylindrische Körper werden nicht stillschweigend erfasst. EN: The profile anchors cylinder volume in constant base area times perpendicular height and requires consistent units and contextual checks. Two independent container cases vary the unknown, diameter/radius, and fill height; oblique, deformed, or non-circular cylinders are not silently included.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "cylinder-volume-structure",
+            "essentialUnderstandingDe": "Für einen geraden Kreiszylinder mit Radius r und senkrechter Höhe h gilt V=G·h=πr²h, weil alle zur Grundfläche parallelen Querschnitte kongruent sind; ein gegebener Durchmesser muss halbiert werden.",
+            "essentialUnderstandingEn": "For a right circular cylinder with radius r and perpendicular height h, V=G·h=πr²h because all cross-sections parallel to the base are congruent; a given diameter must be halved.",
+            "observablePerformanceDe": "Die lernende Person identifiziert Radius, senkrechte Höhe und gegebenenfalls Füllhöhe, baut die Rechnung aus G·h auf und kann eine fehlende Größe rückwärts bestimmen.",
+            "observablePerformanceEn": "The learner identifies radius, perpendicular height, and where relevant fill height, builds the calculation from G·h, and can determine a missing quantity in reverse."
+          },
+          {
+            "id": "volume-units-and-model-boundary",
+            "essentialUnderstandingDe": "Längeneinheiten müssen vor dem Quadrieren und Multiplizieren vereinheitlicht werden; 1 dm³=1 l und 1 cm³=1 ml. Das Modell gilt nur, soweit der reale Innenraum näherungsweise ein gerader Kreiszylinder mit konstantem Querschnitt ist.",
+            "essentialUnderstandingEn": "Length units must be made consistent before squaring and multiplying; 1 dm³=1 L and 1 cm³=1 mL. The model applies only insofar as the real interior is approximately a right circular cylinder with constant cross-section.",
+            "observablePerformanceDe": "Die lernende Person führt Kubikeinheiten korrekt, prüft Größenordnung oder Rückrechnung und benennt konstruktive Abweichungen, die die Modellkapazität verändern.",
+            "observablePerformanceEn": "The learner handles cubic units correctly, checks magnitude or reverse calculation, and states structural deviations that change the modelled capacity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["cylinder-volume-structure", "volume-units-and-model-boundary"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "given-measure", "textDe": "Radius oder Durchmesser in verschiedenen Längeneinheiten", "textEn": "radius or diameter in different length units"},
+          {"id": "unknown", "textDe": "Volumen, Füllhöhe oder erforderlicher Radius", "textEn": "volume, fill height, or required radius"},
+          {"id": "realism", "textDe": "idealer Kreiszylinder oder Behälter mit benannter Wand-/Formabweichung", "textEn": "ideal circular cylinder or container with a stated wall/shape deviation"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rain-barrel-capacity-transfer",
+            "taskDemandDe": "Eine innen kreiszylindrische Regentonne hat Innendurchmesser 80 cm und ist 1,10 m hoch. Sie ist bis 15 cm unter den Rand gefüllt. Bestimme die Wassermenge in Litern und prüfe die Behauptung „etwa 500 l“; alle Angaben sind textlich, keine Abbildung ist erforderlich.",
+            "taskDemandEn": "A rain barrel with a circular cylindrical interior has an inside diameter of 80 cm and height 1.10 m. It is filled to 15 cm below the rim. Determine the water amount in litres and check the claim “about 500 L”; all data are verbal and no diagram is required.",
+            "expectedPerformanceDe": "Mit r=0,40 m und Füllhöhe 0,95 m erhält die lernende Person V≈π·0,16·0,95≈0,478 m³≈478 l; 500 l ist als grobe Schätzung plausibel, aber nicht der berechnete Wert.",
+            "expectedPerformanceEn": "Using r=0.40 m and fill height 0.95 m, the learner obtains V≈π·0.16·0.95≈0.478 m³≈478 L; 500 L is plausible as a rough estimate but is not the calculated value.",
+            "understandingFocusDe": "Unabhängiger Transfer zu Durchmesser, Füllhöhe, Einheitentransfer und Kontextplausibilität.",
+            "understandingFocusEn": "Independent transfer to diameter, fill height, unit conversion, and contextual plausibility."
+          },
+          {
+            "id": "required-can-height-transfer",
+            "taskDemandDe": "Eine ideale zylindrische Dose soll innen 750 ml fassen und hat Innenradius 5 cm. Bestimme die notwendige Innenhöhe und erläutere, warum Außenmaße, gewölbter Boden oder Wandstärke die reale Produktplanung begrenzen.",
+            "taskDemandEn": "An ideal cylindrical can must hold 750 mL internally and has an inside radius of 5 cm. Determine the required internal height and explain why outside dimensions, a curved base, or wall thickness limit real product planning.",
+            "expectedPerformanceDe": "Die lernende Person setzt 750 cm³=π·25 cm²·h und erhält h≈9,55 cm. Sie unterscheidet das ideale Innenvolumen von Außenvolumen und nichtzylindrischen konstruktiven Anteilen.",
+            "expectedPerformanceEn": "The learner sets 750 cm³=π·25 cm²·h and obtains h≈9.55 cm. The learner distinguishes ideal internal volume from external volume and non-cylindrical structural parts.",
+            "understandingFocusDe": "Unabhängiger Transfer zur Rückrechnung einer Länge und zur expliziten Modellgrenze.",
+            "understandingFocusEn": "Independent transfer to solving backward for a length and to an explicit model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+      "reason": "DE: Das Profil prüft Radius-Tangenten- und Umfangswinkelbeziehungen als voraussetzungsgebundene Sätze, nicht durch Messen einer Skizze. Zwei unabhängige textliche Konfigurationen wechseln Lage- und Winkelargument; Berührpunkt, gleicher Bogen und Kreislage werden als Geltungsbedingungen expliziert. EN: The profile assesses radius-tangent and inscribed-angle relations as theorems with conditions, not by measuring a diagram. Two independent verbal configurations vary positional and angle reasoning; contact point, common arc, and points lying on the circle are made explicit as validity conditions.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "radius-tangent-condition",
+            "essentialUnderstandingDe": "Eine Tangente berührt den Kreis in genau einem Punkt T; der Radius OT steht dort senkrecht auf der Tangente. Ein beliebiger Radius ist nicht notwendig senkrecht zu einer anderswo liegenden Geraden.",
+            "essentialUnderstandingEn": "A tangent touches the circle at exactly one point T; radius OT is perpendicular to the tangent there. An arbitrary radius is not necessarily perpendicular to a line located elsewhere.",
+            "observablePerformanceDe": "Die lernende Person ergänzt den Radius zum benannten Berührpunkt und leitet damit Winkel oder Lagebeziehungen nachvollziehbar her.",
+            "observablePerformanceEn": "The learner adds the radius to the named contact point and uses it to derive angle or positional relations transparently."
+          },
+          {
+            "id": "inscribed-central-angle-condition",
+            "essentialUnderstandingDe": "Umfangswinkel über demselben Bogen sind gleich und halb so groß wie der zugehörige Mittelpunktswinkel. Die Zuordnung gilt nur, wenn Scheitel und Endpunkte wie angegeben auf demselben Kreis liegen und derselbe Bogen gemeint ist.",
+            "essentialUnderstandingEn": "Inscribed angles subtending the same arc are equal and half the corresponding central angle. The relation applies only when vertices and endpoints lie on the stated circle and the same arc is intended.",
+            "observablePerformanceDe": "Die lernende Person identifiziert Sehne, Bogen sowie Mittel- und Umfangswinkel und begründet die Rechnung über den gemeinsamen Bogen.",
+            "observablePerformanceEn": "The learner identifies the chord, arc, central angle, and inscribed angle and justifies the calculation through the common arc."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["radius-tangent-condition", "inscribed-central-angle-condition"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "relation", "textDe": "Radius-Tangente oder Mittel-/Umfangswinkel", "textEn": "radius-tangent or central/inscribed angle"},
+          {"id": "unknown", "textDe": "Winkelmaß oder Lagebeziehung", "textEn": "angle measure or positional relation"},
+          {"id": "condition", "textDe": "vollständig gegebene Voraussetzung oder fehlender Berührpunkt/Bogenbezug", "textEn": "complete condition or missing contact-point/arc reference"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "tangent-triangle-transfer",
+            "taskDemandDe": "Ein Kreis mit Mittelpunkt O wird in T von einer Geraden tangiert. Ein Punkt P liegt auf der Tangente, OT=6 cm und OP=10 cm. Bestimme PT und begründe die Dreiecksart ausschließlich aus den Lagebedingungen.",
+            "taskDemandEn": "A circle with centre O is tangent to a line at T. Point P lies on the tangent, OT=6 cm, and OP=10 cm. Determine PT and justify the triangle type solely from the positional conditions.",
+            "expectedPerformanceDe": "OT steht wegen des Berührpunkts senkrecht auf PT, also ist OTP rechtwinklig; mit Pythagoras folgt PT=√(100−36)=8 cm. Ohne die Tangentenangabe wäre der rechte Winkel nicht gesichert.",
+            "expectedPerformanceEn": "Because T is the contact point, OT is perpendicular to PT, so OTP is right-angled; Pythagoras gives PT=√(100−36)=8 cm. Without the tangent condition, the right angle would not be established.",
+            "understandingFocusDe": "Unabhängiger Transfer von einer Kreisbeziehung zu einer rechnerischen Dreiecksfolgerung mit Voraussetzungskontrolle.",
+            "understandingFocusEn": "Independent transfer from a circle relation to a numerical triangle inference with condition checking."
+          },
+          {
+            "id": "same-chord-angle-transfer",
+            "taskDemandDe": "A und B liegen auf einem Kreis mit Mittelpunkt O; der kleinere Mittelpunktswinkel AOB beträgt 136°. C und D liegen auf dem gegenüberliegenden Kreisbogen AB. Bestimme ∠ACB und ∠ADB und erkläre, warum ein Punkt außerhalb des Kreises nicht dieselbe Folgerung erlaubt.",
+            "taskDemandEn": "A and B lie on a circle with centre O; the minor central angle AOB is 136°. C and D lie on the opposite arc AB. Determine ∠ACB and ∠ADB and explain why a point outside the circle would not allow the same conclusion.",
+            "expectedPerformanceDe": "Beide Umfangswinkel überspannen den kleineren Bogen AB und sind 68°. Gleichheit und Halbierung beruhen auf derselben Sehne/demselben Bogen und Scheiteln auf dem Kreis; ein äußerer Scheitel erfüllt die Voraussetzung nicht.",
+            "expectedPerformanceEn": "Both inscribed angles subtend the minor arc AB and equal 68°. Equality and halving rely on the same chord/arc and vertices on the circle; an external vertex does not satisfy the condition.",
+            "understandingFocusDe": "Unabhängiger Transfer zu gemeinsamem Bogen, mehreren Umfangswinkeln und klarer Geltungsgrenze.",
+            "understandingFocusEn": "Independent transfer to a common arc, multiple inscribed angles, and a clear validity boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+      "reason": "DE: Das Profil prüft den Satz des Thales samt Begründung und Umkehrung als Ortslinienaussage. Zwei unabhängige Fälle wechseln vom allgemeinen Winkelargument zur Konstruktion aller Lösungen mit einer zweiten Ortslinie; ein echter Durchmesser, ein Kreispunkt und eine nicht entartete Strecke sind explizite Geltungsbedingungen. EN: The profile assesses Thales' theorem together with its justification and converse as a locus statement. Two independent cases vary from a general angle argument to constructing all solutions with a second locus; a genuine diameter, a point on the circle, and a non-degenerate segment are explicit validity conditions.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "thales-theorem-justification",
+            "essentialUnderstandingDe": "Liegt C auf dem Kreis mit Durchmesser AB, so ist ∠ACB=90°. Die Begründung nutzt den Mittelpunkt M, die gleichen Radien MA=MB=MC, zwei gleichschenklige Dreiecke und die Winkelsumme.",
+            "essentialUnderstandingEn": "If C lies on the circle with diameter AB, then ∠ACB=90°. The justification uses centre M, equal radii MA=MB=MC, two isosceles triangles, and the angle sum.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert die Begründung in einer neuen Lage, kennzeichnet die Voraussetzungen und leitet den rechten Winkel statt ihn zu messen.",
+            "observablePerformanceEn": "The learner reconstructs the justification in a fresh orientation, identifies the conditions, and derives rather than measures the right angle."
+          },
+          {
+            "id": "thales-converse-locus",
+            "essentialUnderstandingDe": "Umgekehrt liegen alle Punkte C mit ∠ACB=90° auf dem Thaleskreis über der nicht entarteten Strecke AB; je nach Aufgabenraum gehören ein oder beide Halbkreise zur Ortslinie. Zusatzbedingungen werden durch Schnitt mit weiteren Ortslinien erfüllt.",
+            "essentialUnderstandingEn": "Conversely, all points C with ∠ACB=90° lie on the Thales circle over non-degenerate segment AB; depending on the task domain, one or both semicircles belong to the locus. Additional conditions are met by intersecting other loci.",
+            "observablePerformanceDe": "Die lernende Person konstruiert den Thaleskreis, schneidet ihn mit einer zweiten Ortslinie und begründet Anzahl und Vollständigkeit der Lösungen.",
+            "observablePerformanceEn": "The learner constructs the Thales circle, intersects it with a second locus, and justifies the number and completeness of solutions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["thales-theorem-justification", "thales-converse-locus"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "reasoning-direction", "textDe": "Kreislage zu rechtem Winkel oder rechter Winkel zur Kreislage", "textEn": "circle membership to right angle or right angle to circle membership"},
+          {"id": "task-type", "textDe": "Begründung oder Ortslinienkonstruktion", "textEn": "justification or locus construction"},
+          {"id": "solution-domain", "textDe": "ein Halbkreis, beide Halbkreise oder Schnitt mit weiterer Ortslinie", "textEn": "one semicircle, both semicircles, or intersection with another locus"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "isosceles-proof-transfer",
+            "taskDemandDe": "A und B sind Endpunkte eines Kreisdurchmessers, M ist der Mittelpunkt und C ein weiterer Kreispunkt. Begründe ohne fertige Beweisabbildung, warum ∠ACB=90°, indem du die Winkel bei A und B mit den Teilwinkeln bei C verknüpfst.",
+            "taskDemandEn": "A and B are endpoints of a circle diameter, M is the centre, and C is another point on the circle. Without a completed proof diagram, justify why ∠ACB=90° by relating the angles at A and B to the two parts of the angle at C.",
+            "expectedPerformanceDe": "Aus MA=MC und MB=MC entstehen zwei gleichschenklige Dreiecke. Sind die Basiswinkel α und β, so liefert die Winkelsumme des großen Dreiecks 2α+2β=180°, also α+β=∠ACB=90°.",
+            "expectedPerformanceEn": "MA=MC and MB=MC form two isosceles triangles. If their base angles are α and β, the large triangle's angle sum gives 2α+2β=180°, hence α+β=∠ACB=90°.",
+            "understandingFocusDe": "Unabhängiger Transfer zur vollständigen Satzbegründung aus Radius- und Winkeleigenschaften.",
+            "understandingFocusEn": "Independent transfer to a complete theorem justification from radius and angle properties."
+          },
+          {
+            "id": "two-locus-construction-transfer",
+            "taskDemandDe": "Für eine Strecke AB der Länge 10 cm werden alle Punkte C gesucht, für die ∠ACB=90° und AC=6 cm gilt. Beschreibe die Konstruktion ohne Bildvorlage, bestimme die Anzahl der Lösungen in der ganzen Ebene und begründe Vollständigkeit sowie den Grenzfall A=B.",
+            "taskDemandEn": "For a 10 cm segment AB, find all points C satisfying ∠ACB=90° and AC=6 cm. Describe the construction without an image template, determine the number of solutions in the whole plane, and justify completeness and the boundary case A=B.",
+            "expectedPerformanceDe": "Die lernende Person schneidet den Thaleskreis mit Mittelpunkt der Strecke und Radius 5 cm mit dem Kreis um A von Radius 6 cm; es entstehen zwei spiegelbildliche Schnittpunkte. Jeder zulässige Punkt muss auf beiden Ortslinien liegen; bei A=B ist kein Durchmesser einer nicht entarteten Strecke gegeben.",
+            "expectedPerformanceEn": "The learner intersects the Thales circle centred at the segment midpoint with radius 5 cm and the circle centred at A with radius 6 cm; two reflected intersections result. Every admissible point must lie on both loci; when A=B there is no diameter of a non-degenerate segment.",
+            "understandingFocusDe": "Unabhängiger Transfer zur Umkehrung, Schnitt zweier Ortslinien und expliziter Geltungsgrenze.",
+            "understandingFocusEn": "Independent transfer to the converse, intersection of two loci, and an explicit validity boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+      "reason": "DE: Das Profil koordiniert verbale Ereignisse, Mengenoperationen, selbst erzeugte Mengendiagramme und Vierfeldertafeln als Darstellungen derselben vier disjunkten Bereiche. Zwei unabhängige Kontexte wechseln empirische Eigenschaften und endlichen Ergebnisraum; gemeinsame Grundgesamtheit, Vollständigkeit und fehlende Doppelzählung bilden die Modellgrenzen. EN: The profile coordinates verbal events, set operations, learner-produced set diagrams, and contingency tables as representations of the same four disjoint regions. Two independent contexts vary empirical attributes and a finite sample space; a common universe, completeness, and absence of double counting form the model boundaries.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "combined-events-as-set-operations",
+            "essentialUnderstandingDe": "A∩B bedeutet gemeinsames Eintreten, A∪B mindestens eines und Aᶜ das Nichteintreten innerhalb derselben Grundmenge. „Genau eines“ ist (A∩Bᶜ)∪(Aᶜ∩B), nicht die gesamte Vereinigung.",
+            "essentialUnderstandingEn": "A∩B means joint occurrence, A∪B at least one, and Aᶜ non-occurrence within the same universe. “Exactly one” is (A∩Bᶜ)∪(Aᶜ∩B), not the entire union.",
+            "observablePerformanceDe": "Die lernende Person übersetzt neue verbale Verknüpfungen korrekt in Mengenschreibweise und ordnet sie den passenden disjunkten Bereichen zu.",
+            "observablePerformanceEn": "The learner correctly translates fresh verbal combinations into set notation and assigns them to the appropriate disjoint regions."
+          },
+          {
+            "id": "set-diagram-table-equivalence",
+            "essentialUnderstandingDe": "Mengendiagramm und Vierfeldertafel zerlegen dieselbe Grundgesamtheit in A∩B, A∩Bᶜ, Aᶜ∩B und Aᶜ∩Bᶜ; alle Fälle müssen genau einmal vorkommen und die Rand- und Gesamtsummen müssen stimmen.",
+            "essentialUnderstandingEn": "A set diagram and contingency table partition the same universe into A∩B, A∩Bᶜ, Aᶜ∩B, and Aᶜ∩Bᶜ; every case must appear exactly once and marginal and grand totals must agree.",
+            "observablePerformanceDe": "Die lernende Person erstellt beide Darstellungen aus Text oder Daten, wechselt zwischen ihnen und prüft vier Zellen sowie Summen auf Konsistenz.",
+            "observablePerformanceEn": "The learner creates both representations from text or data, converts between them, and checks the four cells and totals for consistency."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["combined-events-as-set-operations", "set-diagram-table-equivalence"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "context", "textDe": "empirische Befragung oder endlicher Laplace-Ergebnisraum", "textEn": "empirical survey or finite equally likely sample space"},
+          {"id": "source-form", "textDe": "verbale Angaben, Mengenliste oder teilweise Tabelle", "textEn": "verbal data, set list, or partial table"},
+          {"id": "event-expression", "textDe": "und, mindestens eines, genau eines oder keines", "textEn": "both, at least one, exactly one, or neither"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "club-survey-transfer",
+            "taskDemandDe": "Von 100 Lernenden besuchen 60 die Sport-AG A, 45 die Musik-AG B und 25 beide. Erstelle ohne Vorlage eine Vierfeldertafel und ein Mengendiagramm und gib die Bereiche für genau eine AG, mindestens eine AG und keine AG formal und numerisch an.",
+            "taskDemandEn": "Of 100 learners, 60 attend sports club A, 45 music club B, and 25 both. Without a template, create a contingency table and set diagram and give the regions for exactly one club, at least one club, and neither club formally and numerically.",
+            "expectedPerformanceDe": "Die vier disjunkten Bereiche sind 25, 35 nur A, 20 nur B und 20 keines. Genau eines umfasst 55, mindestens eines 80 und keines 20; alle vier Zellen summieren sich zu 100.",
+            "expectedPerformanceEn": "The four disjoint regions are 25, 35 A only, 20 B only, and 20 neither. Exactly one contains 55, at least one 80, and neither 20; all four cells total 100.",
+            "understandingFocusDe": "Unabhängiger Transfer zur vollständigen Datenzerlegung und zu drei sprachlich verschiedenen Verknüpfungen.",
+            "understandingFocusEn": "Independent transfer to complete data partitioning and three verbally distinct combinations."
+          },
+          {
+            "id": "die-events-transfer",
+            "taskDemandDe": "Beim einmaligen fairen Würfeln sei A={2,4,6} und B={4,5,6}. Erstelle die vier Felder als Ergebnismengen, übersetze A∪B, A∩Bᶜ und (A∪B)ᶜ in Worte und erkläre die Grenze, falls A und B aus verschiedenen Versuchen stammten.",
+            "taskDemandEn": "For one roll of a fair die let A={2,4,6} and B={4,5,6}. Create the four cells as outcome sets, translate A∪B, A∩Bᶜ, and (A∪B)ᶜ into words, and explain the limitation if A and B came from different trials.",
+            "expectedPerformanceDe": "A∩B={4,6}, nur A={2}, nur B={5}, keines={1,3}; die Ausdrücke bedeuten gerade oder größer als 3, gerade aber nicht größer als 3 und weder gerade noch größer als 3. Eine gemeinsame Vierfelderzerlegung setzt denselben Ergebnisraum desselben Versuchs voraus.",
+            "expectedPerformanceEn": "A∩B={4,6}, A only={2}, B only={5}, neither={1,3}; the expressions mean even or greater than 3, even but not greater than 3, and neither even nor greater than 3. A common contingency partition requires the same sample space from the same trial.",
+            "understandingFocusDe": "Unabhängiger Transfer von Häufigkeitsdaten zu exakten Mengen und zur gemeinsamen-Grundmenge-Grenze.",
+            "understandingFocusEn": "Independent transfer from frequency data to exact sets and the common-universe boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4ac925cf-3862-4810-be2a-d92efff7d735",
+      "reason": "DE: Das Profil leitet Wahrscheinlichkeiten verknüpfter Ereignisse aus disjunkten Tabellenzellen her und begründet den Überlappungsterm der Additionsregel. Zwei unabhängige Datensituationen wechseln vollständige und ergänzungsbedürftige Angaben sowie eine fehlerhafte Bezugsmenge; relative Häufigkeiten bleiben Schätzungen für die angegebene Population. EN: The profile derives probabilities of combined events from disjoint table cells and justifies the overlap term in the addition rule. Two independent data settings vary complete and incomplete information and an incorrect reference population; relative frequencies remain estimates for the stated population.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "addition-rule-with-overlap",
+            "essentialUnderstandingDe": "P(A∪B)=P(A)+P(B)−P(A∩B), weil der Schnitt beim einfachen Addieren doppelt gezählt würde; nur bei disjunkten Ereignissen ist der Schnitt null und die verkürzte Regel zulässig.",
+            "essentialUnderstandingEn": "P(A∪B)=P(A)+P(B)−P(A∩B) because simple addition counts the intersection twice; only for disjoint events is the intersection zero and the shorter rule valid.",
+            "observablePerformanceDe": "Die lernende Person entnimmt Schnitt-, Rand- und Vereinigungsanteile, leitet die passende Regel aus disjunkten Bereichen her und erkennt eine Doppelzählung.",
+            "observablePerformanceEn": "The learner extracts intersection, marginal, and union proportions, derives the appropriate rule from disjoint regions, and identifies double counting."
+          },
+          {
+            "id": "relative-frequency-reference",
+            "essentialUnderstandingDe": "Tabellenhäufigkeiten werden durch die Größe der ausdrücklich betrachteten Grundgesamtheit geteilt; ein Wechsel der Bezugsmenge ändert die Wahrscheinlichkeit. Empirische relative Häufigkeiten beschreiben die Stichprobe und sind nur unter zusätzlichen Annahmen Schätzer für eine größere Population.",
+            "essentialUnderstandingEn": "Table counts are divided by the size of the explicitly considered reference population; changing the denominator changes the probability. Empirical relative frequencies describe the sample and estimate a larger population only under additional assumptions.",
+            "observablePerformanceDe": "Die lernende Person ergänzt fehlende Zellen, wählt den korrekten Nenner, prüft Summen und interpretiert den berechneten Anteil mit präzisem Ereignis- und Populationsbezug.",
+            "observablePerformanceEn": "The learner completes missing cells, chooses the correct denominator, checks totals, and interprets the calculated proportion with a precise event and population reference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["addition-rule-with-overlap", "relative-frequency-reference"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "overlap", "textDe": "überlappende oder tatsächlich disjunkte Ereignisse", "textEn": "overlapping or genuinely disjoint events"},
+          {"id": "data-completeness", "textDe": "vollständige Vierfeldertafel oder fehlende Schnittzelle", "textEn": "complete contingency table or missing intersection cell"},
+          {"id": "reference-population", "textDe": "gesamte Stichprobe oder ausdrücklich eingeschränkte Teilgruppe", "textEn": "entire sample or explicitly restricted subgroup"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "transport-overlap-transfer",
+            "taskDemandDe": "Unter 200 Befragten nutzen 90 regelmäßig Bus A, 80 Fahrrad B und 30 beides. Berechne P(A∪B), begründe die Additionsregel über disjunkte Tabellenfelder und interpretiere das Ergebnis als relative Häufigkeit.",
+            "taskDemandEn": "Among 200 respondents, 90 regularly use bus A, 80 bicycle B, and 30 both. Calculate P(A∪B), justify the addition rule through disjoint table cells, and interpret the result as a relative frequency.",
+            "expectedPerformanceDe": "Die Vereinigung umfasst 90+80−30=140 Personen, also 0,70. Die lernende Person zeigt alternativ 60 nur A, 50 nur B und 30 beide und deutet 70% der Befragten, nicht automatisch 70% der Gesamtbevölkerung.",
+            "expectedPerformanceEn": "The union contains 90+80−30=140 people, hence 0.70. Alternatively, the learner shows 60 A only, 50 B only, and 30 both, and interprets 70% of respondents, not automatically 70% of the whole population.",
+            "understandingFocusDe": "Unabhängiger Transfer zur Überlappungskorrektur und zur empirischen Populationsgrenze.",
+            "understandingFocusEn": "Independent transfer to overlap correction and the empirical population boundary."
+          },
+          {
+            "id": "missing-intersection-denominator-transfer",
+            "taskDemandDe": "Von 150 Lernenden wählen 95 Wahlfach A, 60 Wahlfach B und 20 keines. Bestimme die fehlende Schnittzahl und P(A∪B). Beurteile eine Lösung, die durch 130 statt 150 teilt, und vergleiche mit dem Sonderfall disjunkter Ereignisse.",
+            "taskDemandEn": "Of 150 learners, 95 choose elective A, 60 elective B, and 20 neither. Determine the missing intersection count and P(A∪B). Assess a solution that divides by 130 rather than 150, and compare with the special case of disjoint events.",
+            "expectedPerformanceDe": "A∪B umfasst 130, daher ist der Schnitt 95+60−130=25 und P(A∪B)=130/150=13/15. Der Nenner 130 würde auf die bereits eingeschränkte Vereinigung konditionieren; disjunkt könnten 95 und 60 bei nur 150 Personen ohnehin nicht zugleich gelten.",
+            "expectedPerformanceEn": "A∪B contains 130, so the intersection is 95+60−130=25 and P(A∪B)=130/150=13/15. Denominator 130 would condition on the already restricted union; moreover, 95 and 60 could not both be disjoint within only 150 people.",
+            "understandingFocusDe": "Unabhängiger Transfer zu fehlender Zelle, Bezugsmenge und Plausibilitätsgrenze der Disjunktheit.",
+            "understandingFocusEn": "Independent transfer to a missing cell, reference population, and the plausibility boundary of disjointness."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+      "reason": "DE: Das Profil verbindet Ähnlichkeit, Parallelitätsvoraussetzung und konsistente Zuordnung entsprechender Strecken mit einer plausiblen Verhältnisrechnung. Zwei unabhängige Fälle wechseln indirekte Messung und abstrakte Strahlenfigur; bloßes Aussehen, ungesicherte Parallelität und perspektivische Verzerrung werden als Geltungsgrenzen benannt. EN: The profile connects similarity, the parallelism condition, and consistent correspondence of segments with a plausible proportion calculation. Two independent cases vary indirect measurement and an abstract ray configuration; mere appearance, unestablished parallelism, and perspective distortion are stated as validity boundaries.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "similarity-correspondence",
+            "essentialUnderstandingDe": "Ähnliche Figuren haben gleiche entsprechende Winkel und einen einheitlichen Maßstabsfaktor für alle entsprechenden Seiten. Die Seitenzuordnung muss aus Winkeln und Lage begründet werden, nicht aus der Reihenfolge genannter Längen.",
+            "essentialUnderstandingEn": "Similar figures have equal corresponding angles and one common scale factor for all corresponding sides. Side correspondence must be justified from angles and position, not from the order in which lengths are listed.",
+            "observablePerformanceDe": "Die lernende Person identifiziert ähnliche Dreiecke, ordnet Seiten konsistent zu, bestimmt den Faktor und prüft eine berechnete Länge auf Größenordnung.",
+            "observablePerformanceEn": "The learner identifies similar triangles, matches sides consistently, determines the factor, and checks a calculated length for magnitude."
+          },
+          {
+            "id": "intercept-theorem-conditions",
+            "essentialUnderstandingDe": "Schneiden zwei parallele Geraden zwei Strahlen mit gemeinsamem Scheitel, entstehen ähnliche Dreiecke und proportionale Strahlenabschnitte. Ohne gesicherte Parallelität folgt die Verhältnisgleichung nicht; reale Messmodelle benötigen zusätzlich passende Ebene und vernachlässigbare Verzerrung.",
+            "essentialUnderstandingEn": "When two parallel lines intersect two rays with a common vertex, similar triangles and proportional ray segments result. Without established parallelism the proportion does not follow; real measurement models additionally require an appropriate plane and negligible distortion.",
+            "observablePerformanceDe": "Die lernende Person benennt Scheitel, parallele Querlinien und korrespondierende Strecken, stellt eine gültige Verhältnisgleichung auf und verweigert sie bei fehlender Voraussetzung.",
+            "observablePerformanceEn": "The learner identifies the vertex, parallel cross-lines, and corresponding segments, sets up a valid proportion, and refuses it when a condition is missing."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["similarity-correspondence", "intercept-theorem-conditions"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "context", "textDe": "indirekte reale Messung oder abstrakte Strahlenfigur", "textEn": "indirect real measurement or abstract ray configuration"},
+          {"id": "orientation", "textDe": "aufrechte, gedrehte oder verschachtelte Zuordnung", "textEn": "upright, rotated, or nested correspondence"},
+          {"id": "condition-status", "textDe": "begründete Parallelität/Ähnlichkeit oder bewusst fehlende Voraussetzung", "textEn": "justified parallelism/similarity or deliberately missing condition"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shadow-measurement-transfer",
+            "taskDemandDe": "Zur selben Zeit wirft eine 1,60 m hohe Stange auf ebenem Boden einen 2,00 m langen Schatten; ein Baum wirft einen 7,50 m langen Schatten. Bestimme die Baumhöhe, begründe die Ähnlichkeit und nenne Bedingungen, unter denen das Schattenmodell scheitert.",
+            "taskDemandEn": "At the same time, a 1.60 m pole casts a 2.00 m shadow on level ground; a tree casts a 7.50 m shadow. Determine the tree height, justify similarity, and state conditions under which the shadow model fails.",
+            "expectedPerformanceDe": "Parallele Sonnenstrahlen und senkrechte Objekte auf derselben ebenen Fläche liefern ähnliche rechtwinklige Dreiecke; h/7,5=1,6/2 ergibt h=6,0 m. Unebener Boden, geneigter Baum oder unterschiedliche Zeitpunkte verletzen das Modell.",
+            "expectedPerformanceEn": "Parallel sunlight and vertical objects on the same level plane produce similar right triangles; h/7.5=1.6/2 gives h=6.0 m. Uneven ground, a leaning tree, or different times violate the model.",
+            "understandingFocusDe": "Unabhängiger Transfer zur indirekten Messung mit fachlich begründeter Modellgrenze.",
+            "understandingFocusEn": "Independent transfer to indirect measurement with a technically justified model boundary."
+          },
+          {
+            "id": "nested-rays-transfer",
+            "taskDemandDe": "Von S gehen zwei Strahlen aus. A und C liegen in dieser Reihenfolge auf dem ersten, B und D auf dem zweiten; AB ist parallel zu CD. Gegeben sind SA=3 cm, SC=7,5 cm und SB=4 cm. Bestimme SD, begründe die Streckenzuordnung und beurteile den Fall ohne AB∥CD.",
+            "taskDemandEn": "Two rays start at S. A and C lie in that order on the first, B and D on the second; AB is parallel to CD. Given SA=3 cm, SC=7.5 cm, and SB=4 cm, determine SD, justify the segment correspondence, and assess the case without AB∥CD.",
+            "expectedPerformanceDe": "Die Dreiecke SAB und SCD sind ähnlich; SA/SC=SB/SD liefert 3/7,5=4/SD und damit SD=10 cm. Ohne Parallelität sind entsprechende Winkel und somit die Verhältnisgleichung nicht gesichert.",
+            "expectedPerformanceEn": "Triangles SAB and SCD are similar; SA/SC=SB/SD gives 3/7.5=4/SD and hence SD=10 cm. Without parallelism, corresponding angles and therefore the proportion are not established.",
+            "understandingFocusDe": "Unabhängiger Transfer zu verschachtelter Strahlenfigur, Seitenkorrespondenz und Voraussetzungskontrolle.",
+            "understandingFocusEn": "Independent transfer to a nested ray configuration, side correspondence, and condition checking."
+          }
+        ]
+      }
+    }
+  ]
+}

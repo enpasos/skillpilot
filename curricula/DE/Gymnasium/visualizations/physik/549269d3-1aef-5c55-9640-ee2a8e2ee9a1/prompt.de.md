@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `549269d3-1aef-5c55-9640-ee2a8e2ee9a1`
 - Titel: Polarisation und Schwingungsebene
-- Beschreibung: Die lernende Person kann lineare Polarisation von Licht beschreiben, den Begriff der Schwingungsebene einführen und einfache Anwendungen polarisierender Elemente erläutern.
+- Beschreibung: Die lernende Person kann lineare Polarisation von Licht anhand der festen Schwingungsrichtung des elektrischen Feldes beschreiben, die zugehörige Schwingungsebene kennzeichnen und einfache Anwendungen polarisierender Elemente erläutern.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Polarisation und Schwingungsebene
-Beschreibung: Die lernende Person kann lineare Polarisation von Licht beschreiben, den Begriff der Schwingungsebene einführen und einfache Anwendungen polarisierender Elemente erläutern.
+Beschreibung: Die lernende Person kann lineare Polarisation von Licht anhand der festen Schwingungsrichtung des elektrischen Feldes beschreiben, die zugehörige Schwingungsebene kennzeichnen und einfache Anwendungen polarisierender Elemente erläutern.
 
 Zusatzanweisung:
 Pflichtinhalt:

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033s-stable-current-adjudicated-2-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B033s bounded subject synthesis candidate",
+  "synthesizedAt": "2026-09-05T00:02:29.790Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905",
+    "batchManifestDigest": "sha256:1badc22727d7a23f00b5b487f5f4f4429f7173036ccc8297a48a7ed9245868b5",
+    "configDigest": "sha256:65c46fc15e9f0ece83b2b938030f387f74820e16b1a371d30d46528710517d0f",
+    "bundleFingerprint": "sha256:a425fe37a5a134033ee3668f07f2dcef690a2dbf665700eae768c00e407de444",
+    "bookDigest": "sha256:b4fce2b1e11f5b7879ae9c72b8820ee696ed3611af0fd34c1b2517391d4fa73c",
+    "reviewInputFingerprint": "sha256:877359982d94978321d9ba1074b7349e5b1583dca0105bf97546fe8815136d4c",
+    "dualSummaryDigest": "sha256:aae9a2b765e2a0eb64dd6788dcceca992422c80190f0b53de9761ec81c05594c",
+    "canonicalLandscapeDigest": "sha256:ff32c4d3d8b5162bf150c652e0b1919d4ecd2485c5ddbf760da0b55ab3d234a4"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-a",
+      "campaignDigest": "sha256:66dee9fe5b7b505eccae0b6e08d276e418020d6480b4ec1513252529a7fa399d",
+      "roundId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:877359982d94978321d9ba1074b7349e5b1583dca0105bf97546fe8815136d4c",
+      "batchId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a96b7fb1488ee3a1a1d0c0e49149b3355221b8d03f346b813948a05292a25eb4",
+      "runId": "physik-b033s-round-a-fresh-codex-gpt5-20260905t000040z",
+      "runManifestDigest": "sha256:979c8ac4880bc80411ce6d91ef4cd9c2999efe77b6f896ebb936c0f190ad01fd",
+      "resultsDigest": "sha256:fd75939f6e20e81271b28cc173a7c6d678559ed1fd31a08ebf5f8a236cf70e21"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-b",
+      "campaignDigest": "sha256:c67960fc1f601f879cf2b34cc4660f566c1234d68945a62aac52860a9af4201f",
+      "roundId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:877359982d94978321d9ba1074b7349e5b1583dca0105bf97546fe8815136d4c",
+      "batchId": "physik-rollout-v1-batch-033s-dependent-context-final-recheck-8-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:5a025cf4947394d9b18fbacd8ae5f88ebbdf34cc00508ecfc4fd15709c7db060",
+      "runId": "phys-b033s-round-b-gpt5-20260905",
+      "runManifestDigest": "sha256:32d9a225ef23d19a8ef8f63ddc2c1b91c69493e5b9cf13ff679e3bd8b21bcf35",
+      "resultsDigest": "sha256:828b40f459ec3fae8a9fc204edf6104fe2fbe7eae4efa03baf2f5c801d7291b0"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033s-stable-current-adjudicated-2-v1-openai-codex-20260905-decision-001",
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a3caf98a10f32d80b186f7af0ce8081890839cb7fdc966b8d54934e801b9514c",
+      "pageFingerprint": "sha256:86f7a240575abbd79ce99485991d72f5b0ead44ef38e5d447d762363ab7fed59",
+      "goalReviewContextFingerprint": "sha256:121333af800a10aa1b1bb3586d2ff8f2c7af1b27c7b073a6fec158e5b8516b28",
+      "finalText": {
+        "titleDe": "Strahlungsrisiken mit physikalischen Größen beurteilen",
+        "titleEn": "Assess Radiation Risks Using Physical Quantities",
+        "descriptionDe": "Die lernende Person kann Strahlungsrisiken fachlich beurteilen, indem sie Aktivität als Quellenkenngröße von einer zur Fragestellung passenden Dosisgröße unterscheidet, die Energiedeposition pro Masseneinheit oder eine daraus abgeleitete strahlenschutzbezogene Gewichtung beschreibt, und dabei je nach Expositionssituation Strahlungsart, Expositionsdauer, Geometrie und Abstand, Abschirmung sowie Unsicherheit berücksichtigt.",
+        "descriptionEn": "The learner can assess radiation risks by distinguishing activity as a source quantity from a dose quantity appropriate to the question that describes deposited energy per unit mass or a radiation-protection weighting derived from it and, as appropriate to the exposure situation, accounting for radiation type, exposure duration, geometry and distance, shielding, and uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033s-round-a-fresh-codex-gpt5-20260905t000040z.record-002",
+          "recordDigest": "sha256:bc678a3f345e22fc436d6ff79f800fe491deea5b5c1d34f981439ec9f1ee0d69"
+        },
+        "second": {
+          "recordId": "phys-b033s-round-b-gpt5-20260905:002",
+          "recordDigest": "sha256:48138642d3865a92bf59dfd5e2aad7f415c1f2eb2a003deec6038e8e23f77f2d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Schlussprüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Er trennt Aktivität als Quellenkenngröße von einer fragestellungsgerechten Dosisgröße und bindet Strahlungsart, Dauer, Geometrie, Abstand, Abschirmung und Unsicherheit an eine fachliche AB3-Beurteilung. Die zweite Runde wird wegen ihrer besonders expliziten Auswahl von Aktivität, absorbierter oder gewichteter Dosis und ihrer systematischen Unsicherheitsbehandlung als Understanding-Evidence gewählt; Runde A bleibt vollständig als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent final reviews confirm the current bilingual wording with KEEP. It distinguishes activity as a source quantity from a dose quantity appropriate to the question and connects radiation type, duration, geometry, distance, shielding, and uncertainty to an evidence-based AB3 assessment. The second round is selected for understanding evidence because it makes the choice among activity, absorbed dose, and weighted dose particularly explicit and treats uncertainty systematically; round A remains fully bound as an independent confirmation."
+    },
+    {
+      "decisionId": "physik-b033s-stable-current-adjudicated-2-v1-openai-codex-20260905-decision-002",
+      "goalId": "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4754f13aa689fd69814e88edb1247e038ba9fb86e1987134b681c9e6acc6fe95",
+      "pageFingerprint": "sha256:daf44846607105339c2bb60fe1149fba3aa74951628f36c0c28ca88dc492b1d4",
+      "goalReviewContextFingerprint": "sha256:5ba25ff666ae38d3e50bad7e8a3cc5203c486db056fa25dcfd82eef894f75373",
+      "finalText": {
+        "titleDe": "Influenz bei Leitern untersuchen",
+        "titleEn": "Investigate Electrostatic Induction in Conductors",
+        "descriptionDe": "Die lernende Person kann Influenz bei Leitern experimentell beschreiben, die Ladungsverschiebung im äußeren elektrischen Feld erklären und das Ergebnis mit Feldlinienbildern verknüpfen.",
+        "descriptionEn": "The learner can describe electrostatic induction in conductors experimentally, explain charge displacement in an external electric field, and connect the result to field-line diagrams."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033s-round-a-fresh-codex-gpt5-20260905t000040z.record-003",
+          "recordDigest": "sha256:bed25acc330620d058928c72078381b764b8f3d1ad2156b8de5b9d2860801cc2"
+        },
+        "second": {
+          "recordId": "phys-b033s-round-b-gpt5-20260905:003",
+          "recordDigest": "sha256:cde728f44b690b22e5118e374a9a190fb4c2c59545288619a95f2647f19aeda5"
+        }
+      },
+      "rationaleDe": "Die Synthese behält den aktuellen bilingualen Wortlaut bei. Experimentelle Beschreibung, Erklärung der Ladungsverschiebung im äußeren Feld und Deutung durch Feldlinienbilder bilden bereits eine kohärente, prüfbare Influenzkompetenz. Elektrostatisches Gleichgewicht und Ladungserhaltung sind fachlich wichtige Mechanismus- und Geltungsbedingungen, werden aber präziser im positiven Evidenzprofil operationalisiert, ohne den kanonischen Text unnötig zu verdichten. Runde A liefert dafür die kompatible KEEP-Evidenz; der Revisionsvorschlag aus Runde B bleibt exakt gebunden und ausdrücklich verworfen.",
+      "rationaleEn": "The synthesis retains the current bilingual wording. Experimental description, explanation of charge displacement in an external field, and interpretation through field-line diagrams already form one coherent and assessable electrostatic-induction competency. Electrostatic equilibrium and charge conservation are important mechanism and validity conditions, but they are operationalised more precisely in the positive evidence profile without unnecessarily densifying the canonical text. Round A supplies the compatible KEEP evidence; round B's revision proposal remains exactly bound and is explicitly rejected.",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "proposedDescriptionDe": "Die lernende Person kann Influenz an einem Leiter in einem äußeren elektrischen Feld experimentell untersuchen, die Ladungsumverteilung bis zum elektrostatischen Gleichgewicht unter Wahrung der Gesamtladung erklären und die resultierende Feldstruktur in Feldlinienbildern deuten.",
+        "proposedDescriptionEn": "The learner can experimentally investigate electrostatic induction in a conductor placed in an external electric field, explain the redistribution of charge up to electrostatic equilibrium while conserving total charge, and interpret the resulting field structure in field-line diagrams.",
+        "disposition": "rejected_keep_current",
+        "rationaleDe": "Der aktuelle Text deckt Experiment, Ladungsverschiebung und Feldlinien-Deutung bereits als zusammenhängende Influenzkompetenz ab. Die zusätzliche Gleichgewichts- und Erhaltungstiefe wird als verbindliche positive Evidenzerwartung aufgenommen; sie erfordert keine Änderung des kanonischen Lernzieltexts.",
+        "rationaleEn": "The current wording already covers experiment, charge displacement, and field-line interpretation as one coherent induction competency. The additional equilibrium and conservation depth is included as a required positive evidence expectation and does not require changing the canonical goal wording."
+      }
+    }
+  ],
+  "manifestFingerprint": "sha256:a1c39e4c5728a480aefd71bfb53567902cb39f48b56bd12cda7346609b989c9d"
+}

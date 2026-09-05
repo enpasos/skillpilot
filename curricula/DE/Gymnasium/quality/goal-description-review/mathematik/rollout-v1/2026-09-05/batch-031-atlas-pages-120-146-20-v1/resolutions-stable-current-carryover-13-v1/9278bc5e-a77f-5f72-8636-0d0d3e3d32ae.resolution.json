@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
+  "goal": {
+    "goalId": "9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:d59917c6607e282bfdb8caf05e259f4c73418ebc5026f5df5bf97a868cca348c",
+    "pageFingerprint": "sha256:807e601758208ed17cd5feac5d7e899937d0cabebb15ce0db81b883372022b64",
+    "goalReviewContextFingerprint": "sha256:6470dc8ac5238f4bd8726139a0ac936d71cd9b00200c8f9ce8b66092f1178093",
+    "finalText": {
+      "titleDe": "Notation und Symbole deuten",
+      "titleEn": "Interpret notation and symbols",
+      "descriptionDe": "Die lernende Person kann gebräuchliche mathematische Symbole und Notationen korrekt deuten (z. B. $\\Rightarrow$, $\\Leftrightarrow$, $\\in$, Intervalle) und in eigenen Worten erklären.",
+      "descriptionEn": "The learner can interpret common mathematical symbols and notation correctly (e.g. $\\Rightarrow$, $\\Leftrightarrow$, $\\in$, intervals) and explain them in their own words."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:6470dc8ac5238f4bd8726139a0ac936d71cd9b00200c8f9ce8b66092f1178093",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-9278bc5e",
+      "recordDigest": "sha256:8a69b122318e9ae2ce350aa1de29aa401d2e959871a8394bd6ba9816a5008b09"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:6470dc8ac5238f4bd8726139a0ac936d71cd9b00200c8f9ce8b66092f1178093",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-009",
+      "recordDigest": "sha256:0cd069fa3377a3863d1215a70b906c48985bc2abd3bc02691760d35d41704709"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide unabhängigen Runden bestätigen das Ziel mit KEEP. Runde A liefert die stärkere Evidenz, weil sie Implikation und Äquivalenz über ein Gegenbeispiel zur unzulässigen Umkehrung trennt, Element- und Intervallnotation einschließlich Randpunkten erfasst und die Reichweite mehrerer Symbole in einer neuen Aussage prüfen lässt.",
+    "rationaleEn": "Both independent rounds confirm the goal with KEEP. Round A provides stronger evidence because it distinguishes implication from equivalence through a counterexample to an invalid converse, covers membership and interval notation including endpoints, and assesses the scope of several symbols in a fresh statement.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht mathematische Symbole als Aussagen mit unterschiedlichen logischen Rollen, insbesondere dass eine Implikation nur eine Folgerungsrichtung ausdrückt, eine Äquivalenz beide Richtungen und das Elementzeichen die Zugehörigkeit zu einer Menge; Intervallklammern codieren die Einbeziehung von Randpunkten.",
+      "essentialUnderstandingEn": "The learner understands mathematical symbols as statements with different logical roles, in particular that implication expresses only one direction of inference, equivalence expresses both directions, and the membership symbol expresses belonging to a set; interval brackets encode whether endpoints are included.",
+      "observablePerformanceDe": "Die lernende Person liest symbolische Aussagen korrekt in eigenen Worten, schreibt verbale Aussagen mit passenden Symbolen, unterscheidet Folgerung und Äquivalenz durch ein Gegenbeispiel zur unzulässigen Umkehrung und deutet offene sowie abgeschlossene Intervalle am Zahlenstrahl.",
+      "observablePerformanceEn": "The learner reads symbolic statements correctly in their own words, writes verbal statements using suitable symbols, distinguishes implication from equivalence using a counterexample to an invalid converse, and interprets open and closed intervals on a number line.",
+      "transferExpectationDe": "Bei einer neuen Kette aus Mengen-, Intervall- und Folgerungssymbolen zerlegt die lernende Person die Gesamtaussage, erklärt die Reichweite jedes Symbols und repariert eine Stelle, an der fälschlich eine Äquivalenz statt einer Implikation behauptet wird.",
+      "transferExpectationEn": "For a fresh chain of set, interval, and implication symbols, the learner decomposes the full statement, explains the scope of each symbol, and repairs a point at which equivalence is incorrectly claimed instead of implication."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:77424984fb04e16b3821843e3022789ead462ec7e34c2c8f44abdfd0406ce251"
+}

@@ -1,0 +1,1197 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b030-atlas-context-recheck-18-current-v1",
+  "reviewedAt": "2026-09-05T20:00:00.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-030-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "reason": "DE: Das Profil prüft die Mittelsenkrechte als Ortslinie und als konstruierte Gerade, nicht als erinnerte Schrittfolge. Drei selbstständige Fälle variieren Lage, Maßstab und Aufgabenrichtung; Mittelpunkt, rechter Winkel und gleiche Endpunktabstände dienen als voneinander unterscheidbare Kontrollen. EN: The profile assesses the perpendicular bisector as both a locus and a constructed line, not as a memorized sequence. Three independent cases vary position, scale, and task direction; midpoint, right angle, and equal endpoint distances provide distinct checks.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "perpendicular-bisector-construction",
+            "essentialUnderstandingDe": "Die Mittelsenkrechte einer nicht entarteten Strecke verläuft durch deren Mittelpunkt und steht senkrecht auf ihr; beim Zirkelverfahren müssen die Radien größer als die halbe Streckenlänge sein, damit zwei Kreisbogenschnittpunkte entstehen.",
+            "essentialUnderstandingEn": "The perpendicular bisector of a non-degenerate segment passes through its midpoint and is perpendicular to it; in the compass construction the radii must exceed half the segment length so that two arc intersections exist.",
+            "observablePerformanceDe": "Die lernende Person konstruiert die Gerade mit Geodreieck oder Zirkel, dokumentiert die entscheidenden Schritte und prüft Mittelpunkt sowie rechten Winkel.",
+            "observablePerformanceEn": "The learner constructs the line with a set square or compass, documents the decisive steps, and checks both midpoint and right angle."
+          },
+          {
+            "id": "perpendicular-bisector-locus",
+            "essentialUnderstandingDe": "Genau die Punkte der Mittelsenkrechten haben zu beiden Endpunkten gleichen Abstand; diese Ortslinieneigenschaft begründet Konstruktion und Rückschluss.",
+            "essentialUnderstandingEn": "Exactly the points on the perpendicular bisector are equidistant from the two endpoints; this locus property justifies both construction and converse reasoning.",
+            "observablePerformanceDe": "Die lernende Person nutzt gleiche Abstände in einem neuen Fall zur Begründung oder erkennt einen Punkt mit ungleichen Abständen als nicht auf der Ortslinie liegend.",
+            "observablePerformanceEn": "In a new case, the learner uses equal distances as justification or identifies a point with unequal distances as not lying on the locus."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["perpendicular-bisector-construction", "perpendicular-bisector-locus"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "segment-position", "textDe": "waagerechte, schräge oder nahezu senkrechte Strecke", "textEn": "horizontal, oblique, or nearly vertical segment"},
+          {"id": "tool-and-scale", "textDe": "Geodreieck oder Zirkel bei veränderter Streckenlänge", "textEn": "set square or compass at a changed segment length"},
+          {"id": "reasoning-direction", "textDe": "Konstruktion prüfen oder Ortslinienzugehörigkeit folgern", "textEn": "check a construction or infer locus membership"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "slanted-segment-base",
+            "taskDemandDe": "Konstruiere zu einer schräg liegenden Strecke AB der Länge 7 cm die Mittelsenkrechte mit dem Zirkel und begründe die Wahl des Radius sowie die Gerade durch die beiden Bogenschnittpunkte.",
+            "taskDemandEn": "For an oblique 7 cm segment AB, construct its perpendicular bisector with a compass and justify the radius choice and the line through the two arc intersections.",
+            "expectedPerformanceDe": "Die lernende Person wählt einen Radius über 3,5 cm, erzeugt zwei Schnittpunkte mit gleichen Abständen zu A und B und verbindet sie; die Gerade schneidet AB im Mittelpunkt rechtwinklig.",
+            "expectedPerformanceEn": "The learner chooses a radius greater than 3.5 cm, creates two intersections equidistant from A and B, and joins them; the line meets AB perpendicularly at its midpoint.",
+            "understandingFocusDe": "Direkter Nachweis von Konstruktion, Radiusbedingung und Ortslinienbegründung ohne vorgegebenes Bild.",
+            "understandingFocusEn": "Direct evidence of construction, radius condition, and locus justification without a supplied image."
+          },
+          {
+            "id": "coordinate-check-transfer",
+            "taskDemandDe": "Für A(−2|1) und B(4|5) behauptet jemand, P(0|4) liege auf der Mittelsenkrechten. Prüfe die Behauptung rechnerisch und beschreibe, wie die Gerade geometrisch zu AB liegt.",
+            "taskDemandEn": "For A(−2,1) and B(4,5), someone claims that P(0,4) lies on the perpendicular bisector. Check the claim algebraically and describe how the line is positioned relative to AB.",
+            "expectedPerformanceDe": "Die lernende Person vergleicht die quadrierten Abstände PA² = 13 und PB² = 17, verwirft die Behauptung und nennt Mittelpunkt- sowie Senkrechtbedingung der tatsächlichen Geraden.",
+            "expectedPerformanceEn": "The learner compares squared distances PA² = 13 and PB² = 17, rejects the claim, and states the midpoint and perpendicular conditions of the actual line.",
+            "understandingFocusDe": "Erster unabhängiger Transfer vom Zeichnen zur Koordinatenprüfung und zum negativen Ortslinienfall.",
+            "understandingFocusEn": "First independent transfer from construction to a coordinate check and a negative locus case."
+          },
+          {
+            "id": "equidistant-location-transfer",
+            "taskDemandDe": "Zwei Messstationen A und B sind durch eine textlich angegebene 12-km-Strecke verbunden. Bestimme und begründe die Menge aller möglichen Standorte einer dritten Station, die von A und B gleich weit entfernt sein soll; nenne die Grenze bei A = B.",
+            "taskDemandEn": "Two monitoring stations A and B are connected by a stated 12 km segment. Determine and justify all possible locations of a third station that must be equally distant from A and B; state the limit when A = B.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt die gesamte Mittelsenkrechte statt eines Einzelpunkts und begründet sie über gleiche Abstände; bei zusammenfallenden Endpunkten ist die übliche eindeutige Mittelsenkrechte einer Strecke nicht definiert.",
+            "expectedPerformanceEn": "The learner describes the entire perpendicular bisector rather than one point and justifies it through equal distances; for coincident endpoints the usual unique perpendicular bisector of a segment is not defined.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur Ortslinienmodellierung mit expliziter Geltungsgrenze.",
+            "understandingFocusEn": "Second independent transfer to locus modelling with an explicit validity boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "reason": "DE: Das Profil verbindet die Konstruktion des inneren Winkelhalbierendenstrahls mit der Ortslinieneigenschaft gleicher senkrechter Abstände. Drei Fälle wechseln Winkelgröße, Darstellungsart und Schlussrichtung; gestreckte oder nicht eindeutig bezeichnete Außenwinkel werden als Geltungsgrenze behandelt. EN: The profile connects construction of the interior angle-bisector ray with the locus property of equal perpendicular distances. Three cases vary angle size, representation, and direction of inference; straight or ambiguously specified exterior angles are treated as boundaries.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "angle-bisector-construction",
+            "essentialUnderstandingDe": "Die innere Winkelhalbierende teilt einen nicht gestreckten Winkel in zwei gleich große Teilwinkel; die symmetrischen Kreisbogenkonstruktionen erzwingen diese Gleichheit.",
+            "essentialUnderstandingEn": "The interior angle bisector divides a non-straight angle into two equal angles; the symmetric arc construction enforces that equality.",
+            "observablePerformanceDe": "Die lernende Person konstruiert bei spitzen und stumpfen Winkeln den richtigen inneren Strahl, dokumentiert die Kreisbögen und prüft gleiche Teilwinkel.",
+            "observablePerformanceEn": "For acute and obtuse angles, the learner constructs the correct interior ray, documents the arcs, and checks equal sub-angles."
+          },
+          {
+            "id": "angle-bisector-locus",
+            "essentialUnderstandingDe": "Ein Punkt im Winkelinneren liegt genau dann auf der Winkelhalbierenden, wenn seine senkrechten Abstände zu beiden Schenkeln gleich sind.",
+            "essentialUnderstandingEn": "A point in the interior of an angle lies on its angle bisector exactly when its perpendicular distances to the two sides are equal.",
+            "observablePerformanceDe": "Die lernende Person prüft die beiden Lotabstände oder nutzt deren Gleichheit zur Begründung, ohne schräg gemessene Abstände zu verwechseln.",
+            "observablePerformanceEn": "The learner checks the two perpendicular distances or uses their equality in justification without confusing them with oblique distances."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["angle-bisector-construction", "angle-bisector-locus"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "angle-size", "textDe": "spitzer oder stumpfer nicht gestreckter Winkel", "textEn": "acute or obtuse non-straight angle"},
+          {"id": "verification", "textDe": "gleiche Teilwinkel oder gleiche Lotabstände", "textEn": "equal sub-angles or equal perpendicular distances"},
+          {"id": "inference", "textDe": "Strahl konstruieren oder Punktzugehörigkeit entscheiden", "textEn": "construct the ray or decide point membership"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "obtuse-angle-base",
+            "taskDemandDe": "Konstruiere mit Zirkel und Geodreieck die innere Winkelhalbierende eines textlich vorgegebenen Winkels von 124° und erkläre, warum die beiden Teilwinkel gleich groß sind.",
+            "taskDemandEn": "Using compass and set square, construct the interior bisector of a verbally specified 124° angle and explain why the two resulting angles are equal.",
+            "expectedPerformanceDe": "Die lernende Person erzeugt auf beiden Schenkeln gleich weit entfernte Punkte, schlägt von ihnen gleich große Bögen und verbindet deren inneren Schnittpunkt mit dem Scheitel; beide Teilwinkel messen 62°.",
+            "expectedPerformanceEn": "The learner marks equally distant points on the sides, draws equal arcs from them, and connects their interior intersection to the vertex; both sub-angles measure 62°.",
+            "understandingFocusDe": "Direkter Nachweis der symmetrischen Konstruktion bei einem stumpfen Winkel ohne Bildvorlage.",
+            "understandingFocusEn": "Direct evidence of the symmetric construction for an obtuse angle without an image template."
+          },
+          {
+            "id": "corridor-location-transfer",
+            "taskDemandDe": "Zwei gerade Wände treffen sich unter 70°. Beschreibe alle Punkte im Raumwinkel, an denen eine Leuchte zu beiden Wänden denselben kürzesten Abstand besitzt, und begründe die Antwort.",
+            "taskDemandEn": "Two straight walls meet at 70°. Describe all points inside the angle where a lamp has the same shortest distance from both walls, and justify the answer.",
+            "expectedPerformanceDe": "Die lernende Person nennt den inneren Winkelhalbierendenstrahl und erklärt, dass kürzeste Wandabstände Lotstrecken sind; beliebige gleich lange schräge Verbindungen wären kein gültiges Kriterium.",
+            "expectedPerformanceEn": "The learner identifies the interior angle-bisector ray and explains that shortest wall distances are perpendicular segments; arbitrary equal oblique connections would not be a valid criterion.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zur Ortslinie in einem räumlich beschriebenen Kontext.",
+            "understandingFocusEn": "First independent transfer to a locus in a verbally described spatial context."
+          },
+          {
+            "id": "distance-membership-transfer",
+            "taskDemandDe": "Ein Punkt P liegt im Inneren eines 96°-Winkels. Seine Lotabstände zu den Schenkeln betragen 3,2 cm und 4,1 cm. Entscheide, ob P auf der Winkelhalbierenden liegt, und erläutere, welche Zusatzfestlegung bei einem Außenwinkel nötig wäre.",
+            "taskDemandEn": "A point P lies inside a 96° angle. Its perpendicular distances to the sides are 3.2 cm and 4.1 cm. Decide whether P lies on the angle bisector and explain what additional specification would be needed for an exterior angle.",
+            "expectedPerformanceDe": "Die lernende Person verwirft die Zugehörigkeit wegen ungleicher Lotabstände; bei einem Außenwinkel muss der gemeinte Winkelbereich beziehungsweise die innere oder äußere Halbierende eindeutig benannt sein.",
+            "expectedPerformanceEn": "The learner rejects membership because the perpendicular distances differ; for an exterior angle the intended angle region or the interior versus exterior bisector must be specified unambiguously.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer als negativer Fall mit sprachlicher Geltungsgrenze.",
+            "understandingFocusEn": "Second independent transfer as a negative case with a specification boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "reason": "DE: Das Profil prüft Seiten- und Winkelklassifikationen als begründete Eigenschaften statt als Bildetiketten. Drei Fälle erzwingen Mehrfachklassifikation, Schlussfolgern aus Teilangaben und das Erkennen unmöglicher Kombinationen; stets gelten nicht entartete euklidische Dreiecke. EN: The profile assesses side- and angle-based classifications as justified properties rather than visual labels. Three cases require multiple classification, inference from partial data, and detection of impossible combinations; the domain is non-degenerate Euclidean triangles.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "triangle-class-properties",
+            "essentialUnderstandingDe": "Rechtwinklig, spitzwinklig und stumpfwinklig sind sich ausschließende Winkelklassen; gleichschenklig und gleichseitig sind Seitenklassen, wobei nach üblicher inklusiver Definition jedes gleichseitige Dreieck auch gleichschenklig ist.",
+            "essentialUnderstandingEn": "Right, acute, and obtuse are mutually exclusive angle classes; isosceles and equilateral are side classes, and under the usual inclusive definition every equilateral triangle is also isosceles.",
+            "observablePerformanceDe": "Die lernende Person klassifiziert neue Dreiecke anhand gegebener Maße, nennt alle zutreffenden Klassen und begründet sie mit Definitionen und Winkelsumme.",
+            "observablePerformanceEn": "The learner classifies new triangles from stated measurements, names all applicable classes, and justifies them using definitions and the angle sum."
+          },
+          {
+            "id": "triangle-property-inference",
+            "essentialUnderstandingDe": "Gleiche Seiten liegen gleichen gegenüberliegenden Winkeln gegenüber; die Eigenschaften erlauben Folgerungen, aber unvollständige Angaben rechtfertigen nicht immer eine eindeutige Klasse.",
+            "essentialUnderstandingEn": "Equal sides face equal opposite angles; the properties support deductions, but incomplete data do not always justify a unique class.",
+            "observablePerformanceDe": "Die lernende Person leitet fehlende Winkel oder Seitenbeziehungen her und kennzeichnet, wenn mehrere Klassen mit den Angaben vereinbar bleiben.",
+            "observablePerformanceEn": "The learner derives missing angles or side relations and identifies when more than one class remains compatible with the data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["triangle-class-properties", "triangle-property-inference"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "given-information", "textDe": "Seitenlängen, Winkelmaße oder gemischte Teilangaben", "textEn": "side lengths, angle measures, or mixed partial data"},
+          {"id": "classification-overlap", "textDe": "eine Winkelklasse und null, eine oder mehrere Seitenklassen", "textEn": "one angle class and zero, one, or multiple side classes"},
+          {"id": "decision-type", "textDe": "klassifizieren, folgern oder Unmöglichkeit nachweisen", "textEn": "classify, infer, or prove impossibility"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mixed-classification-base",
+            "taskDemandDe": "Ein Dreieck hat die Winkel 45°, 45° und 90°. Klassifiziere es vollständig nach Winkeln und Seiten und begründe jede Bezeichnung.",
+            "taskDemandEn": "A triangle has angles 45°, 45°, and 90°. Classify it fully by angles and sides and justify every label.",
+            "expectedPerformanceDe": "Die lernende Person nennt rechtwinklig und gleichschenklig; der 90°-Winkel bestimmt die Winkelklasse, die gleichen 45°-Winkel erzwingen zwei gleiche gegenüberliegende Seiten.",
+            "expectedPerformanceEn": "The learner identifies the triangle as right and isosceles; the 90° angle determines the angle class, and the equal 45° angles imply two equal opposite sides.",
+            "understandingFocusDe": "Direkter Nachweis über die unabhängige Kombination von Winkel- und Seitenklasse.",
+            "understandingFocusEn": "Direct evidence through the independent combination of an angle class and a side class."
+          },
+          {
+            "id": "partial-data-transfer",
+            "taskDemandDe": "In einem nicht entarteten Dreieck sind zwei Seiten gleich lang und der eingeschlossene Winkel beträgt 40°. Bestimme die übrigen Winkel und klassifiziere das Dreieck; erkläre, welche Seite welchem Winkel gegenüberliegt.",
+            "taskDemandEn": "In a non-degenerate triangle, two sides are equal and their included angle is 40°. Determine the remaining angles and classify the triangle; explain which side is opposite which angle.",
+            "expectedPerformanceDe": "Die lernende Person erhält zwei Basiswinkel von je 70° und klassifiziert das Dreieck als gleichschenklig und spitzwinklig; sie begründet dies über gleiche Gegenseiten und die Winkelsumme.",
+            "expectedPerformanceEn": "The learner obtains two base angles of 70° each and classifies the triangle as isosceles and acute, justifying this through equal opposite angles and the angle sum.",
+            "understandingFocusDe": "Erster unabhängiger Transfer vom Erkennen zum Herleiten aus Seiten- und Winkelbeziehungen.",
+            "understandingFocusEn": "First independent transfer from recognition to deduction using side-angle relationships."
+          },
+          {
+            "id": "impossible-claim-transfer",
+            "taskDemandDe": "Beurteile die Behauptung: Ein gleichseitiges Dreieck könne stumpfwinklig sein, wenn es nur groß genug gezeichnet werde. Begründe ohne Rückgriff auf eine Abbildung und nenne die Modellgrenze entarteter Dreiecke.",
+            "taskDemandEn": "Assess the claim that an equilateral triangle can be obtuse if drawn large enough. Justify without referring to a picture and state the boundary posed by degenerate triangles.",
+            "expectedPerformanceDe": "Die lernende Person folgert aus drei gleichen Seiten drei gleiche Winkel von je 60° und widerlegt die Größenabhängigkeit; bei kollinearen Eckpunkten liegt kein nicht entartetes Dreieck dieser Klassifikation vor.",
+            "expectedPerformanceEn": "The learner infers three equal 60° angles from three equal sides and rejects dependence on scale; collinear vertices do not form a non-degenerate triangle in this classification.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer als Gegenbegründung mit Skaleninvarianz und Geltungsgrenze.",
+            "understandingFocusEn": "Second independent transfer as a rebuttal involving scale invariance and a domain boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "reason": "DE: Das Profil verlangt die wechselseitige Übersetzung zwischen räumlichem Tupel, Achsenbewegungen und kontextueller Ortsangabe. Drei text- und datenbasierte Fälle variieren Ursprung, Achsenrichtung und Einheit; Koordinaten werden als bezugssystemabhängig vom geometrischen Punkt unterschieden. EN: The profile requires two-way translation among a spatial tuple, movements along axes, and contextual location. Three text- and data-based cases vary origin, axis direction, and unit; coordinates are distinguished as reference-system dependent from the geometric point.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "spatial-tuple-coordination",
+            "essentialUnderstandingDe": "Ein Tupel (x|y|z) gibt gerichtete Koordinaten relativ zu festgelegtem Ursprung, Achsen und Maßstab an; Reihenfolge, Vorzeichen und Einheit tragen Bedeutung.",
+            "essentialUnderstandingEn": "A tuple (x,y,z) gives directed coordinates relative to a specified origin, axes, and scale; order, signs, and units carry meaning.",
+            "observablePerformanceDe": "Die lernende Person übersetzt neue Tupel in präzise Achsenbewegungen und textliche Ortsangaben sowie umgekehrt, ohne Koordinaten zu vertauschen.",
+            "observablePerformanceEn": "The learner translates new tuples into precise axis movements and verbal locations and vice versa without swapping coordinates."
+          },
+          {
+            "id": "coordinate-frame-boundary",
+            "essentialUnderstandingDe": "Derselbe geometrische Punkt erhält bei verschobenem Ursprung oder geänderten Achsen andere Koordinaten; ohne festgelegtes Koordinatensystem ist ein Tupel keine vollständige Ortsangabe.",
+            "essentialUnderstandingEn": "The same geometric point receives different coordinates after shifting the origin or changing axes; without a specified coordinate system a tuple is not a complete location.",
+            "observablePerformanceDe": "Die lernende Person berechnet bei einer einfachen Ursprungsverschiebung das neue Tupel und erklärt zugleich, warum der reale Punkt unverändert bleibt.",
+            "observablePerformanceEn": "For a simple origin shift, the learner calculates the new tuple and explains why the physical point nevertheless remains unchanged."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["spatial-tuple-coordination", "coordinate-frame-boundary"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "representation-direction", "textDe": "Tupel zu Sprache oder Sprache zu Tupel", "textEn": "tuple to language or language to tuple"},
+          {"id": "frame", "textDe": "fester oder verschobener Ursprung bei gleich gerichteten Achsen", "textEn": "fixed or shifted origin with axes retaining their directions"},
+          {"id": "context-unit", "textDe": "abstrakte Längeneinheiten, Meter oder Regalpositionen", "textEn": "abstract length units, metres, or shelving positions"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "warehouse-tuple-base",
+            "taskDemandDe": "In einem Lager zeigen x nach Osten, y nach Norden und z nach oben; eine Einheit ist 1 m. Deute P(−3|4|2) in Worten und gib die Achsenwege vom Ursprung an.",
+            "taskDemandEn": "In a warehouse, x points east, y north, and z upward; one unit is 1 m. Interpret P(−3,4,2) verbally and state the axis movements from the origin.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt 3 m nach Westen, 4 m nach Norden und 2 m nach oben und ordnet jedes Vorzeichen der festgelegten Achse zu.",
+            "expectedPerformanceEn": "The learner describes 3 m west, 4 m north, and 2 m upward and relates each sign to its specified axis.",
+            "understandingFocusDe": "Direkter Nachweis der Tupel-, Sprach- und Kontextkoordination ohne Bildquelle.",
+            "understandingFocusEn": "Direct evidence of tuple, language, and context coordination without an image source."
+          },
+          {
+            "id": "verbal-to-tuple-transfer",
+            "taskDemandDe": "Vom Ursprung eines Messsystems liegt ein Sensor 5 Einheiten in positiver x-Richtung, 2 in negativer y-Richtung und auf der Ebene z = 7. Gib sein Tupel an und erläutere die Bedeutung der Null, falls die Höhe stattdessen z = 0 wäre.",
+            "taskDemandEn": "From the origin of a measuring system, a sensor lies 5 units in positive x, 2 in negative y, and in the plane z = 7. Give its tuple and explain the meaning of zero if its height were instead z = 0.",
+            "expectedPerformanceDe": "Die lernende Person gibt (5|−2|7) an; z = 0 bedeutete Lage in der xy-Ebene und nicht fehlende Information.",
+            "expectedPerformanceEn": "The learner gives (5,−2,7); z = 0 would mean location in the xy-plane, not missing information.",
+            "understandingFocusDe": "Erster unabhängiger Transfer von textlicher Bewegung zum Tupel und zur Bedeutung einer Koordinate null.",
+            "understandingFocusEn": "First independent transfer from verbal movement to a tuple and the meaning of a zero coordinate."
+          },
+          {
+            "id": "origin-shift-transfer",
+            "taskDemandDe": "Ein Punkt hat im System O die Koordinaten (6|−1|3). Der neue Ursprung O' liegt im alten System bei (2|4|1), die Achsenrichtungen und Einheiten bleiben gleich. Bestimme die neuen Koordinaten und erkläre die Geltungsgrenze der Rechnung.",
+            "taskDemandEn": "A point has coordinates (6,−1,3) in system O. The new origin O' is at (2,4,1) in the old system, while axis directions and units stay unchanged. Determine the new coordinates and explain the calculation's boundary.",
+            "expectedPerformanceDe": "Die lernende Person subtrahiert den neuen Ursprung und erhält (4|−5|2); sie erklärt, dass diese einfache Subtraktion nur bei unveränderten Achsenrichtungen und Maßstäben gilt.",
+            "expectedPerformanceEn": "The learner subtracts the new origin and obtains (4,−5,2), explaining that this simple subtraction applies only when axis directions and scales remain unchanged.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur Bezugssystemabhängigkeit mit expliziter Modellgrenze.",
+            "understandingFocusEn": "Second independent transfer to reference-frame dependence with an explicit model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "reason": "DE: Das Profil unterscheidet dieselbe Tupeldarstellung semantisch als Orts- oder Verschiebungsvektor. Drei Fälle variieren Bezugspunkt, Pfeilstart und Ursprung; der Unterschied zwischen Translationsinvarianz einer Verschiebung und Koordinatenabhängigkeit eines Ortsvektors wird explizit geprüft. EN: The profile distinguishes the same tuple representation semantically as a position or displacement vector. Three cases vary reference point, arrow start, and origin; the contrast between translation invariance of displacement and coordinate dependence of a position vector is assessed explicitly.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "position-displacement-distinction",
+            "essentialUnderstandingDe": "Ein Ortsvektor führt vom festgelegten Ursprung zu einem Punkt; ein Verschiebungsvektor beschreibt die gerichtete Differenz zwischen Start- und Endpunkt und kann parallel verschoben werden.",
+            "essentialUnderstandingEn": "A position vector runs from the specified origin to a point; a displacement vector describes the directed difference between a start and endpoint and may be translated parallel to itself.",
+            "observablePerformanceDe": "Die lernende Person ordnet ein Vektortupel aus dem Kontext der richtigen Rolle zu, nennt Start und Ziel und erklärt Vorzeichen und Richtung.",
+            "observablePerformanceEn": "The learner assigns a vector tuple to the correct contextual role, identifies start and endpoint, and explains signs and direction."
+          },
+          {
+            "id": "origin-change-invariance",
+            "essentialUnderstandingDe": "Bei einer reinen Ursprungsverschiebung ändern sich die Ortsvektoren zu beiden Punkten, ihre Differenz und damit der Verschiebungsvektor bleiben jedoch gleich; bei gedrehten Achsen ändern sich auch seine Komponenten.",
+            "essentialUnderstandingEn": "Under a pure shift of origin, the position vectors to both points change, but their difference and hence the displacement vector remain the same; if axes rotate, its components also change.",
+            "observablePerformanceDe": "Die lernende Person berechnet Orts- und Verschiebungsvektoren vor und nach einer Ursprungsverschiebung und erklärt die unterschiedliche Reaktion.",
+            "observablePerformanceEn": "The learner calculates position and displacement vectors before and after an origin shift and explains their different responses."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["position-displacement-distinction", "origin-change-invariance"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "vector-role", "textDe": "Ortsvektor vom Ursprung oder Verschiebung zwischen zwei Punkten", "textEn": "position vector from the origin or displacement between two points"},
+          {"id": "direction", "textDe": "Vorwärts- oder Rückwärtsverschiebung mit umgekehrten Vorzeichen", "textEn": "forward or reverse displacement with reversed signs"},
+          {"id": "reference-frame", "textDe": "ursprünglicher oder parallel verschobener Ursprung", "textEn": "original or parallel-shifted origin"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-vector-roles-base",
+            "taskDemandDe": "Im selben Koordinatensystem liegen A(2|−1|3) und B(5|4|1). Bestimme den Ortsvektor von B und den Verschiebungsvektor von A nach B und erkläre den Bedeutungsunterschied.",
+            "taskDemandEn": "In the same coordinate system, A(2,−1,3) and B(5,4,1) are given. Determine B's position vector and the displacement vector from A to B, and explain the difference in meaning.",
+            "expectedPerformanceDe": "Die lernende Person erhält OB = (5|4|1) und AB = (3|5|−2); nur der erste Pfeil beginnt notwendig im Ursprung, der zweite bindet Anfang A und Ende B.",
+            "expectedPerformanceEn": "The learner obtains OB = (5,4,1) and AB = (3,5,−2); only the first arrow necessarily begins at the origin, while the second binds start A and end B.",
+            "understandingFocusDe": "Direkter Nachweis der beiden Rollen bei gleicher Notation.",
+            "understandingFocusEn": "Direct evidence of the two roles under the same notation."
+          },
+          {
+            "id": "reverse-route-transfer",
+            "taskDemandDe": "Eine Drohne verschiebt sich vom Punkt C(−1|6|2) nach D(4|2|5). Gib die Verschiebung hin und zurück an und deute die Komponenten verbal.",
+            "taskDemandEn": "A drone moves from C(−1,6,2) to D(4,2,5). Give the displacement in both directions and interpret the components verbally.",
+            "expectedPerformanceDe": "Die lernende Person berechnet CD = (5|−4|3) und DC = (−5|4|−3) und erklärt, dass Start-Ziel-Vertauschung jede Komponente negiert.",
+            "expectedPerformanceEn": "The learner calculates CD = (5,−4,3) and DC = (−5,4,−3), explaining that reversing start and endpoint negates every component.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu Richtung, Differenzbildung und Gegenvektor.",
+            "understandingFocusEn": "First independent transfer to direction, subtraction, and the opposite vector."
+          },
+          {
+            "id": "shifted-origin-transfer",
+            "taskDemandDe": "Der Ursprung wird bei unveränderten Achsen um s = (10|−2|1) verschoben. Erkläre und berechne, wie sich die Ortsvektoren zu A und B aus dem Grundfall sowie AB ändern; grenze den Fall einer Achsendrehung ab.",
+            "taskDemandEn": "With axes unchanged, the origin is shifted by s = (10,−2,1). Explain and calculate how the position vectors to A and B from the base case and AB change; distinguish the case of rotated axes.",
+            "expectedPerformanceDe": "Die neuen Ortsvektoren sind OA' = A−s und OB' = B−s, während OB'−OA' = B−A = AB bleibt; bei gedrehten Achsen bliebe der geometrische Pfeil, nicht aber dasselbe Komponententupel.",
+            "expectedPerformanceEn": "The new position vectors are OA' = A−s and OB' = B−s, while OB'−OA' = B−A = AB remains unchanged; with rotated axes the geometric arrow, but not the same component tuple, would remain.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur Invarianz und ihrer Geltungsgrenze.",
+            "understandingFocusEn": "Second independent transfer to invariance and its validity boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "reason": "DE: Das Profil prüft Kollinearität über einen einzigen gemeinsamen Skalarfaktor in allen Komponenten und verbindet dies mit paralleler oder antiparalleler Richtung. Drei Fälle umfassen positives, negatives und unentscheidbares beziehungsweise ausgeschlossenes Nullvektor-Verhalten; eine bloße komponentenweise Ähnlichkeit genügt nicht. EN: The profile assesses collinearity through one common scalar factor across all components and links it to parallel or antiparallel direction. Three cases cover positive, negative, and specified zero-vector behaviour; component-wise resemblance alone is insufficient.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "common-scalar-test",
+            "essentialUnderstandingDe": "Zwei von null verschiedene Vektoren sind genau dann kollinear, wenn ein einziger Skalar λ alle Komponentenbeziehungen v = λu erfüllt; getrennte Faktoren je Komponente sind kein Nachweis.",
+            "essentialUnderstandingEn": "Two nonzero vectors are collinear exactly when one scalar λ satisfies every component relation v = λu; separate factors for different components do not establish collinearity.",
+            "observablePerformanceDe": "Die lernende Person bestimmt oder widerlegt einen gemeinsamen Faktor, nutzt auch Nullkomponenten korrekt und begründet positive wie negative Entscheidungen.",
+            "observablePerformanceEn": "The learner determines or refutes a common factor, handles zero components correctly, and justifies both positive and negative decisions."
+          },
+          {
+            "id": "geometric-direction-meaning",
+            "essentialUnderstandingDe": "Ein positiver Faktor bedeutet gleiche, ein negativer entgegengesetzte Richtung; die Vektorlängen ändern sich um |λ|. Die Behandlung des Nullvektors hängt von der ausdrücklich verwendeten Konvention ab.",
+            "essentialUnderstandingEn": "A positive factor means the same direction and a negative factor the opposite direction; lengths scale by |λ|. Treatment of the zero vector depends on the convention explicitly adopted.",
+            "observablePerformanceDe": "Die lernende Person deutet den gefundenen Faktor geometrisch und benennt bei einem Nullvektor die vereinbarte Geltungsgrenze statt durch null zu dividieren.",
+            "observablePerformanceEn": "The learner interprets the factor geometrically and states the adopted boundary for a zero vector rather than dividing by zero."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["common-scalar-test", "geometric-direction-meaning"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "decision", "textDe": "kollineares oder nicht kollineares Vektorpaar", "textEn": "collinear or non-collinear vector pair"},
+          {"id": "factor-sign", "textDe": "positiver oder negativer gemeinsamer Faktor", "textEn": "positive or negative common factor"},
+          {"id": "component-pattern", "textDe": "nur von null verschiedene Komponenten oder enthaltene Nullkomponenten", "textEn": "only nonzero components or included zero components"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-factor-base",
+            "taskDemandDe": "Prüfe u = (2|−3|1) und v = (−6|9|−3) auf Kollinearität und deute einen möglichen Faktor geometrisch.",
+            "taskDemandEn": "Test u = (2,−3,1) and v = (−6,9,−3) for collinearity and interpret any factor geometrically.",
+            "expectedPerformanceDe": "Die lernende Person zeigt v = −3u in allen drei Komponenten und deutet entgegengesetzte Richtung bei dreifacher Länge.",
+            "expectedPerformanceEn": "The learner shows v = −3u in all three components and interprets opposite direction with triple length.",
+            "understandingFocusDe": "Direkter positiver Nachweis mit negativem Skalarfaktor.",
+            "understandingFocusEn": "Direct positive evidence using a negative scalar factor."
+          },
+          {
+            "id": "mismatch-transfer",
+            "taskDemandDe": "Prüfe p = (4|2|−6) und q = (10|5|−12). Begründe die Entscheidung so, dass ein zufälliges Übereinstimmen zweier Komponenten nicht genügt.",
+            "taskDemandEn": "Test p = (4,2,−6) and q = (10,5,−12). Justify the decision so that accidental agreement in two components is shown to be insufficient.",
+            "expectedPerformanceDe": "Aus den ersten beiden Komponenten folgt λ = 2,5, die dritte würde dann −15 statt −12 ergeben; daher sind die Vektoren nicht kollinear.",
+            "expectedPerformanceEn": "The first two components imply λ = 2.5, but the third would then be −15 rather than −12; therefore the vectors are not collinear.",
+            "understandingFocusDe": "Erster unabhängiger Transfer als negativer Fall, der alle Komponenten erzwingt.",
+            "understandingFocusEn": "First independent transfer as a negative case that requires all components."
+          },
+          {
+            "id": "zero-component-transfer",
+            "taskDemandDe": "Prüfe a = (0|3|−6) und b = (0|−1|2). Diskutiere anschließend getrennt den Fall a = (0|0|0) unter der Konvention, dass für die Richtungsprüfung nur von null verschiedene Vektoren zugelassen sind.",
+            "taskDemandEn": "Test a = (0,3,−6) and b = (0,−1,2). Then discuss separately the case a = (0,0,0) under the convention that only nonzero vectors are admitted for directional collinearity.",
+            "expectedPerformanceDe": "Die lernende Person findet b = −a/3; die gemeinsamen Nullkomponenten widersprechen nicht. Den Nullvektor-Fall schließt sie nach der vorgegebenen Richtungskonvention aus, statt einen Faktor über Division zu erzwingen.",
+            "expectedPerformanceEn": "The learner finds b = −a/3; the matching zero components do not contradict this. The zero-vector case is excluded under the stated directional convention rather than forcing a factor by division.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer mit Nullkomponenten und ausdrücklich gesetzter Definitionsgrenze.",
+            "understandingFocusEn": "Second independent transfer involving zero components and an explicitly stated definitional boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "reason": "DE: Das Profil verbindet Winkel im Grundintervall mit Punktkoordinaten am Einheitskreis, Vorzeichen und allen zulässigen Umkehrlösungen. Drei Fälle wechseln Funktion, Quadrant und exakten beziehungsweise näherungsweisen Wert; der Wertebereich [−1,1] und die Randpunktkonvention für 0 und 2π begrenzen die Aussagen. EN: The profile connects angles in the base interval with unit-circle coordinates, signs, and all admissible inverse solutions. Three cases vary function, quadrant, and exact versus approximate value; the range [−1,1] and the endpoint convention for 0 and 2π bound the claims.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "unit-circle-coordinate-meaning",
+            "essentialUnderstandingDe": "Am Einheitskreis ist cos α die x- und sin α die y-Koordinate des zu α gehörenden Punktes; Vorzeichen ergeben sich aus dem Quadranten, und der Winkel wird im Bogenmaß gemessen.",
+            "essentialUnderstandingEn": "On the unit circle, cos α is the x-coordinate and sin α the y-coordinate of the point belonging to α; signs follow from the quadrant, and the angle is measured in radians.",
+            "observablePerformanceDe": "Die lernende Person bestimmt oder erklärt Werte und Vorzeichen für neue Winkel zwischen 0 und 2π und ordnet sie den korrekten Koordinaten zu.",
+            "observablePerformanceEn": "The learner determines or explains values and signs for new angles from 0 to 2π and assigns them to the correct coordinates."
+          },
+          {
+            "id": "inverse-angle-solutions",
+            "essentialUnderstandingDe": "Ein zulässiger Sinus- oder Kosinuswert kann im Grundintervall mehrere Winkel besitzen; Symmetrie und Quadranten liefern alle Lösungen. Werte außerhalb [−1,1] besitzen keine reelle Einheitskreislösung, und 0 sowie 2π dürfen nicht unbeabsichtigt doppelt gezählt werden.",
+            "essentialUnderstandingEn": "An admissible sine or cosine value can correspond to several angles in the base interval; symmetry and quadrants yield all solutions. Values outside [−1,1] have no real unit-circle solution, and 0 and 2π must not be unintentionally double-counted.",
+            "observablePerformanceDe": "Die lernende Person gibt alle Lösungen unter einer benannten Intervallkonvention an, begründet sie und verwirft unzulässige Vorgaben.",
+            "observablePerformanceEn": "The learner gives all solutions under a stated interval convention, justifies them, and rejects inadmissible values."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["unit-circle-coordinate-meaning", "inverse-angle-solutions"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "coordinate-function", "textDe": "Sinus als y- oder Kosinus als x-Koordinate", "textEn": "sine as y-coordinate or cosine as x-coordinate"},
+          {"id": "solution-structure", "textDe": "ein, zwei oder kein zulässiger Winkel unter klarer Randkonvention", "textEn": "one, two, or no admissible angles under a clear endpoint convention"},
+          {"id": "value-form", "textDe": "exakter besonderer Wert oder begründete Näherung", "textEn": "exact special value or justified approximation"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sine-solutions-base",
+            "taskDemandDe": "Bestimme alle α in 0 ≤ α < 2π mit sin α = −√3/2 und begründe Quadranten und Einheitskreiskoordinate ohne vorgegebenes Bild.",
+            "taskDemandEn": "Determine all α with 0 ≤ α < 2π and sin α = −√3/2, justifying the quadrants and unit-circle coordinate without a supplied image.",
+            "expectedPerformanceDe": "Die lernende Person nutzt den Referenzwinkel π/3, wählt wegen negativer y-Koordinate die Quadranten III und IV und erhält 4π/3 und 5π/3.",
+            "expectedPerformanceEn": "The learner uses reference angle π/3, selects quadrants III and IV because the y-coordinate is negative, and obtains 4π/3 and 5π/3.",
+            "understandingFocusDe": "Direkter Nachweis von Koordinatendeutung, Vorzeichen und vollständiger Lösungsmenge.",
+            "understandingFocusEn": "Direct evidence of coordinate meaning, sign, and a complete solution set."
+          },
+          {
+            "id": "cosine-approximation-transfer",
+            "taskDemandDe": "Ein Punkt des Einheitskreises hat x-Koordinate 0,30. Gib alle zugehörigen Winkel in 0 ≤ α < 2π näherungsweise an und erkläre, warum es zwei sind.",
+            "taskDemandEn": "A unit-circle point has x-coordinate 0.30. Give all corresponding angles in 0 ≤ α < 2π approximately and explain why there are two.",
+            "expectedPerformanceDe": "Die lernende Person berechnet α₁ ≈ arccos(0,30) ≈ 1,266 und α₂ = 2π−α₁ ≈ 5,017; beide liegen wegen positiver x-Koordinate in I beziehungsweise IV.",
+            "expectedPerformanceEn": "The learner calculates α₁ ≈ arccos(0.30) ≈ 1.266 and α₂ = 2π−α₁ ≈ 5.017; positive x places them in quadrants I and IV.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu Kosinus, Näherungswert und Spiegelung an der x-Achse.",
+            "understandingFocusEn": "First independent transfer to cosine, approximation, and reflection across the x-axis."
+          },
+          {
+            "id": "inadmissible-and-endpoint-transfer",
+            "taskDemandDe": "Beurteile getrennt cos α = 1,2 und sin α = 0 für 0 ≤ α ≤ 2π. Gib für den zweiten Fall alle formal enthaltenen Winkel an und erläutere die geometrische Doppelbeschreibung des Startpunkts.",
+            "taskDemandEn": "Assess separately cos α = 1.2 and sin α = 0 for 0 ≤ α ≤ 2π. For the second case give all formally included angles and explain the geometric double description of the starting point.",
+            "expectedPerformanceDe": "Die lernende Person verwirft 1,2 außerhalb des Wertebereichs; für sin α = 0 nennt sie 0, π und 2π und erklärt, dass 0 und 2π denselben Kreispunkt beschreiben, hier aber beide Intervallendpunkte enthalten sind.",
+            "expectedPerformanceEn": "The learner rejects 1.2 as outside the range; for sin α = 0 the learner gives 0, π, and 2π and explains that 0 and 2π represent the same circle point but both endpoints are included here.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zu Wertebereich und expliziter Randpunktkonvention.",
+            "understandingFocusEn": "Second independent transfer to range and an explicit endpoint convention."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "reason": "DE: Das Profil koordiniert Bogenmaß, Gradmaß, dimensionsloses Termargument und den zeitlichen Verlauf periodischer Prozesse. Drei Fälle variieren Periodendauer, Einheit und Richtung der Übersetzung; nur gleichförmige Phasenfortschritte beziehungsweise ausdrücklich gegebene trigonometrische Modelle erlauben die lineare Zeit-Winkel-Zuordnung. EN: The profile coordinates radians, degrees, dimensionless function arguments, and the temporal course of periodic processes. Three cases vary period, unit, and translation direction; linear time-angle mapping is valid only for uniform phase progress or an explicitly given trigonometric model.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "radian-conversion-and-term",
+            "essentialUnderstandingDe": "180° entsprechen π rad; Bogenmaß ist als Verhältnis von Bogenlänge zu Radius dimensionslos und ist das natürliche Winkelmaß im Argument trigonometrischer Funktionen.",
+            "essentialUnderstandingEn": "180° equals π radians; radian measure is the dimensionless ratio of arc length to radius and is the natural angle measure in trigonometric function arguments.",
+            "observablePerformanceDe": "Die lernende Person wandelt neue Winkel sicher in beide Richtungen um und setzt ausschließlich ein zum Term und zur Einheit passendes Bogenmaß ein.",
+            "observablePerformanceEn": "The learner reliably converts new angles in both directions and inserts only a radian measure consistent with the expression and units."
+          },
+          {
+            "id": "periodic-phase-interpretation",
+            "essentialUnderstandingDe": "Bei einem Prozess mit Periodendauer T entspricht eine volle Periode einer Phasenänderung von 2π; bei gleichförmigem Phasenfortschritt gilt ω = 2π/T und die Einheiten von ω und Zeit müssen ein dimensionsloses Argument ergeben.",
+            "essentialUnderstandingEn": "For a process with period T, one full cycle corresponds to a phase change of 2π; with uniform phase progress, ω = 2π/T and the units of ω and time must produce a dimensionless argument.",
+            "observablePerformanceDe": "Die lernende Person deutet Bogenmaßangaben als Anteile einer Periode, bestimmt passende Zeiten oder Phasen und kontrolliert Periodizität und Einheiten.",
+            "observablePerformanceEn": "The learner interprets radian measures as fractions of a period, determines matching times or phases, and checks periodicity and units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["radian-conversion-and-term", "periodic-phase-interpretation"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "conversion-direction", "textDe": "Grad zu Bogenmaß oder Bogenmaß zu Grad", "textEn": "degrees to radians or radians to degrees"},
+          {"id": "process-period", "textDe": "Sekunden-, Minuten- oder Stundenperiode", "textEn": "period measured in seconds, minutes, or hours"},
+          {"id": "unknown", "textDe": "Phase, Zeitpunkt oder Termkoeffizient bestimmen", "textEn": "determine phase, time, or expression coefficient"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rotating-marker-base",
+            "taskDemandDe": "Ein Marker durchläuft bei gleichförmiger Drehung in 12 s einen Kreis. Gib die Phase nach 3 s im Bogen- und Gradmaß an und formuliere ein passendes Sinusargument für die Zeit t in Sekunden.",
+            "taskDemandEn": "A marker completes a circle in 12 s at uniform rotation. Give the phase after 3 s in radians and degrees and formulate a suitable sine argument for time t in seconds.",
+            "expectedPerformanceDe": "Die lernende Person erhält ω = 2π/12 = π/6 s⁻¹, nach 3 s die Phase π/2 = 90° und das Argument (π/6)t; Einheit und Viertelperiode stimmen.",
+            "expectedPerformanceEn": "The learner obtains ω = 2π/12 = π/6 s⁻¹, phase π/2 = 90° after 3 s, and argument (π/6)t; the units and quarter-cycle interpretation agree.",
+            "understandingFocusDe": "Direkter Nachweis der Zeit-Phasen-Koordination und Einheitenkontrolle.",
+            "understandingFocusEn": "Direct evidence of time-phase coordination and unit checking."
+          },
+          {
+            "id": "tide-phase-transfer",
+            "taskDemandDe": "Ein idealisiertes Gezeitenmodell besitzt eine Periodendauer von 12 h. Zu welchen Zeiten nach einem Maximum entsprechen die Phasen π/3 und 5π/3? Begründe über Periodenanteile, nicht durch eine Bildablesung.",
+            "taskDemandEn": "An idealized tide model has a period of 12 h. At what times after a maximum do phases π/3 and 5π/3 occur? Justify through fractions of a period, not by reading an image.",
+            "expectedPerformanceDe": "Die lernende Person nutzt t = αT/(2π) und erhält 2 h beziehungsweise 10 h; beide Angaben werden modulo 12 h periodisch wiederholt.",
+            "expectedPerformanceEn": "The learner uses t = αT/(2π) and obtains 2 h and 10 h; both repeat modulo 12 h.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu umgekehrter Bestimmung und zyklischer Mehrdeutigkeit.",
+            "understandingFocusEn": "First independent transfer to inverse determination and cyclic ambiguity."
+          },
+          {
+            "id": "nonuniform-boundary-transfer",
+            "taskDemandDe": "Eine Bewegung benötigt für das erste Kreishalbsegment 2 s und für das zweite 6 s. Beurteile, ob die Phase stets mit α(t) = 2πt/8 beschrieben werden darf, und rechne 225° in Bogenmaß um.",
+            "taskDemandEn": "A motion takes 2 s for the first semicircle and 6 s for the second. Assess whether its phase may always be described by α(t) = 2πt/8, and convert 225° to radians.",
+            "expectedPerformanceDe": "Die lernende Person erhält 225° = 5π/4, verwirft aber die lineare Phase für die nicht gleichförmige Bewegung; aus der Gesamtperiode allein folgt nur die mittlere, nicht die momentane Phasengeschwindigkeit.",
+            "expectedPerformanceEn": "The learner obtains 225° = 5π/4 but rejects the linear phase for nonuniform motion; the total period determines only an average, not instantaneous phase speed.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer mit klarer Geltungsgrenze des linearen Periodenmodells.",
+            "understandingFocusEn": "Second independent transfer with a clear validity boundary for the linear phase model."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "reason": "DE: Das Profil lässt Sinus und Kosinus als y- und x-Koordinaten einer gleichförmigen Einheitskreisbewegung entstehen und verlangt daraus selbst erzeugte Graphmerkmale. Drei Fälle variieren Startpunkt, Drehrichtung und Koordinatenfunktion, bleiben aber bewusst bei Grundfunktionen mit Amplitude 1 und Periode 2π. EN: The profile derives sine and cosine as the y- and x-coordinates of uniform unit-circle motion and requires independently produced graph features. Three cases vary starting point, direction, and coordinate function while deliberately remaining within base functions of amplitude 1 and period 2π.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "circle-to-function-trace",
+            "essentialUnderstandingDe": "Bei gegen den Uhrzeigersinn wachsendem Winkel α hat der Einheitskreispunkt die Koordinaten (cos α|sin α); deren getrennte Verläufe erzeugen die Kosinus- und Sinusgraphen.",
+            "essentialUnderstandingEn": "As angle α increases counterclockwise, the unit-circle point has coordinates (cos α,sin α); tracing the coordinates separately produces the cosine and sine graphs.",
+            "observablePerformanceDe": "Die lernende Person ordnet markanten Kreispositionen selbstständig Funktionswerte zu und skizziert daraus beide Graphen über mindestens eine Periode.",
+            "observablePerformanceEn": "The learner independently maps characteristic circle positions to function values and uses them to sketch both graphs over at least one period."
+          },
+          {
+            "id": "base-function-features",
+            "essentialUnderstandingDe": "Beide Grundfunktionen besitzen Wertebereich [−1,1] und Periode 2π; ihre Nullstellen und Extrema sind um π/2 gegeneinander verschoben. Diese Aussagen gelten hier für die Einheitskreis-Grundfunktionen, nicht automatisch für transformierte Modelle.",
+            "essentialUnderstandingEn": "Both base functions have range [−1,1] and period 2π; their zeros and extrema are shifted by π/2 relative to one another. These claims concern the unit-circle base functions, not transformed models automatically.",
+            "observablePerformanceDe": "Die lernende Person benennt Amplitude, Nullstellen, Extrema und Phasenbeziehung aus dem Koordinatenverlauf und erklärt statt nur aufzuzählen.",
+            "observablePerformanceEn": "The learner identifies amplitude, zeros, extrema, and phase relation from the coordinate trace and explains them rather than merely listing them."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["circle-to-function-trace", "base-function-features"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "coordinate", "textDe": "x-Koordinate als Kosinus oder y-Koordinate als Sinus", "textEn": "x-coordinate as cosine or y-coordinate as sine"},
+          {"id": "motion-direction", "textDe": "gegen oder mit dem Uhrzeigersinn bei benannter Winkelkonvention", "textEn": "counterclockwise or clockwise under a stated angle convention"},
+          {"id": "starting-position", "textDe": "Start bei (1|0) oder an einer anderen markanten Kreisposition", "textEn": "start at (1,0) or another characteristic circle position"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coordinate-table-base",
+            "taskDemandDe": "Erstelle ohne Graphvorlage für α = 0, π/2, π, 3π/2 und 2π die Einheitskreiskoordinaten und skizziere daraus sin α und cos α über eine Periode. Markiere Nullstellen und Extrema.",
+            "taskDemandEn": "Without a graph template, create the unit-circle coordinates for α = 0, π/2, π, 3π/2, and 2π and use them to sketch sin α and cos α over one period. Mark zeros and extrema.",
+            "expectedPerformanceDe": "Die lernende Person erzeugt die Wertepaare (1|0), (0|1), (−1|0), (0|−1), (1|0) und trägt x- und y-Folge korrekt als Kosinus beziehungsweise Sinus auf; Wertebereich und Periode werden erklärt.",
+            "expectedPerformanceEn": "The learner generates coordinate pairs (1,0), (0,1), (−1,0), (0,−1), (1,0) and correctly plots the x and y sequences as cosine and sine; range and period are explained.",
+            "understandingFocusDe": "Direkter Nachweis der Entstehung beider Grundgraphen aus derselben Kreisbewegung.",
+            "understandingFocusEn": "Direct evidence that both base graphs arise from the same circle motion."
+          },
+          {
+            "id": "clockwise-motion-transfer",
+            "taskDemandDe": "Ein Punkt startet bei (1|0) und bewegt sich mit zunehmendem Parameter t im Uhrzeigersinn. Bestimme seine x- und y-Koordinatenfunktionen und erkläre, welche der Grundgraphen unverändert bleibt und welcher gespiegelt wird.",
+            "taskDemandEn": "A point starts at (1,0) and moves clockwise as parameter t increases. Determine its x- and y-coordinate functions and explain which base graph stays unchanged and which is reflected.",
+            "expectedPerformanceDe": "Die lernende Person nutzt den Winkel −t: x(t) = cos(−t) = cos t, y(t) = sin(−t) = −sin t; sie begründet gerade beziehungsweise ungerade Symmetrie über die Kreispositionen.",
+            "expectedPerformanceEn": "The learner uses angle −t: x(t) = cos(−t) = cos t and y(t) = sin(−t) = −sin t, justifying even and odd symmetry through circle positions.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu geänderter Bewegungsrichtung und Symmetrie.",
+            "understandingFocusEn": "First independent transfer to changed motion direction and symmetry."
+          },
+          {
+            "id": "quarter-turn-start-transfer",
+            "taskDemandDe": "Ein Punkt startet bei (0|1) und läuft gegen den Uhrzeigersinn mit Winkelzuwachs t. Beschreibe den Verlauf seiner y-Koordinate, vergleiche ihn mit sin t und begrenze die Aussage auf gleichförmige Einheitskreisbewegung.",
+            "taskDemandEn": "A point starts at (0,1) and moves counterclockwise with angular increment t. Describe its y-coordinate trace, compare it with sin t, and limit the claim to uniform unit-circle motion.",
+            "expectedPerformanceDe": "Die lernende Person erkennt y(t) = sin(t+π/2) = cos t und erläutert die Verschiebung um eine Viertelperiode; andere Radien oder nicht gleichförmiger Winkelzuwachs würden Amplitude beziehungsweise Zeitparametrisierung ändern.",
+            "expectedPerformanceEn": "The learner recognizes y(t) = sin(t+π/2) = cos t and explains the quarter-period shift; other radii or nonuniform angular progress would change amplitude or time parametrization.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zu Startphase und Modellgrenze der Grundfunktion.",
+            "understandingFocusEn": "Second independent transfer to starting phase and the base function's model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "reason": "DE: Das Profil bindet a, b, c und d an Mittellinie, Amplitude, Periodenlänge und Phasenverschiebung und berücksichtigt die Nicht-Eindeutigkeit äquivalenter Terme. Drei datenbasierte Fälle wechseln Sinus/Kosinus, Vorzeichen und Kontext; a ≠ 0 und b ≠ 0 markieren den nicht entarteten Standardfall. EN: The profile binds a, b, c, and d to midline, amplitude, period, and phase shift and accounts for non-uniqueness of equivalent expressions. Three data-based cases vary sine/cosine, signs, and context; a ≠ 0 and b ≠ 0 mark the non-degenerate standard case.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "parameter-feature-relations",
+            "essentialUnderstandingDe": "Für y = a sin(bx+c)+d sind |a| die Amplitude, d die Mittellinie, 2π/|b| die Periodenlänge und −c/b eine Phasenverschiebung; Vorzeichen von a beeinflusst die Orientierung.",
+            "essentialUnderstandingEn": "For y = a sin(bx+c)+d, |a| is amplitude, d the midline, 2π/|b| the period, and −c/b a phase shift; the sign of a affects orientation.",
+            "observablePerformanceDe": "Die lernende Person liest oder bestimmt die Parameter aus neuen Merkmalen und erklärt jede Größe einschließlich Einheit und Vorzeichenwirkung.",
+            "observablePerformanceEn": "The learner reads or determines parameters from fresh features and explains each quantity, including units and sign effects."
+          },
+          {
+            "id": "equivalent-parameterizations",
+            "essentialUnderstandingDe": "Wegen Periodizität und Sinus-Kosinus-Beziehungen kann dieselbe Funktion mehrere Parameterdarstellungen besitzen; eine gefundene Darstellung muss durch charakteristische Werte geprüft werden. Bei a = 0 oder b = 0 entarten Amplitude beziehungsweise Periodeninterpretation.",
+            "essentialUnderstandingEn": "Because of periodicity and sine-cosine identities, the same function can have multiple parameter representations; a proposed representation must be checked with characteristic values. For a = 0 or b = 0, amplitude or period interpretation degenerates.",
+            "observablePerformanceDe": "Die lernende Person formuliert einen passenden Term, prüft Mittellinie, Extrema, Periode und Phase und erkennt eine äquivalente Alternative.",
+            "observablePerformanceEn": "The learner formulates a suitable expression, checks midline, extrema, period, and phase, and recognizes an equivalent alternative."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["parameter-feature-relations", "equivalent-parameterizations"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "base-function", "textDe": "Sinus- oder Kosinusdarstellung", "textEn": "sine or cosine representation"},
+          {"id": "parameter-sign", "textDe": "positive oder negative Amplitude sowie positive oder negative Phase", "textEn": "positive or negative amplitude and positive or negative phase"},
+          {"id": "source", "textDe": "Term, charakteristische Daten oder Sachkontext", "textEn": "expression, characteristic data, or context"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "term-feature-base",
+            "taskDemandDe": "Bestimme und deute Amplitude, Mittellinie, Periodenlänge und Phasenverschiebung von y = −3 sin(2x−π/2)+4. Prüfe die Verschiebung an einem charakteristischen Argument.",
+            "taskDemandEn": "Determine and interpret amplitude, midline, period, and phase shift of y = −3 sin(2x−π/2)+4. Check the shift at a characteristic argument.",
+            "expectedPerformanceDe": "Die lernende Person erhält Amplitude 3, Mittellinie 4, Periode π und Verschiebung π/4 nach rechts; das Minus spiegelt den Sinusverlauf an der Mittellinie.",
+            "expectedPerformanceEn": "The learner obtains amplitude 3, midline 4, period π, and a shift π/4 to the right; the minus sign reflects the sine trace across the midline.",
+            "understandingFocusDe": "Direkter Nachweis der korrekten Relation −c/b statt bloßer Deutung von c.",
+            "understandingFocusEn": "Direct evidence of the correct relation −c/b rather than merely interpreting c."
+          },
+          {
+            "id": "feature-to-expression-transfer",
+            "taskDemandDe": "Eine periodische Funktion hat Mittellinie −1, Maximum 4, Minimum −6, Periode 8 und erreicht bei x = 2 erstmals nach x = 0 ein Maximum. Gib einen passenden Kosinusterm an und prüfe ihn rechnerisch.",
+            "taskDemandEn": "A periodic function has midline −1, maximum 4, minimum −6, period 8, and reaches its first maximum after x = 0 at x = 2. Give a suitable cosine expression and check it algebraically.",
+            "expectedPerformanceDe": "Die lernende Person nutzt Amplitude 5, b = π/4 und beispielsweise y = 5 cos((π/4)(x−2))−1; Einsetzen bei x = 2 und vier Einheiten später bestätigt Maximum und Minimum.",
+            "expectedPerformanceEn": "The learner uses amplitude 5, b = π/4, and for example y = 5 cos((π/4)(x−2))−1; substitution at x = 2 and four units later confirms maximum and minimum.",
+            "understandingFocusDe": "Erster unabhängiger Transfer von Merkmalen zum Term mit eigener Prüfung.",
+            "understandingFocusEn": "First independent transfer from features to an expression with an independent check."
+          },
+          {
+            "id": "equivalent-tide-model-transfer",
+            "taskDemandDe": "Ein Wasserstand schwankt zwischen 1 m und 5 m mit Periode 6 h und liegt bei t = 0 im Maximum. Formuliere je einen äquivalenten Sinus- und Kosinusterm und erkläre, warum Parameterwerte nicht eindeutig sind; nenne den Gültigkeitsbereich des Modells.",
+            "taskDemandEn": "A water level oscillates between 1 m and 5 m with a 6 h period and is at its maximum at t = 0. Formulate equivalent sine and cosine expressions and explain why parameter values are not unique; state the model's validity domain.",
+            "expectedPerformanceDe": "Die lernende Person gibt etwa h(t)=3+2cos(πt/3) und h(t)=3+2sin(πt/3+π/2) an und prüft Gleichheit; das idealisierte Modell gilt nur im betrachteten Zeitraum bei annähernd stabiler periodischer Dynamik.",
+            "expectedPerformanceEn": "The learner gives, for example, h(t)=3+2cos(πt/3) and h(t)=3+2sin(πt/3+π/2) and checks equivalence; the idealized model applies only over the considered interval with approximately stable periodic dynamics.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zu Kontext, äquivalenten Parametrisierungen und Modellgrenze.",
+            "understandingFocusEn": "Second independent transfer to context, equivalent parameterizations, and a model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "reason": "DE: Das Profil bestimmt Nullstellen, Extrem- und Wendepunkte aus Symmetrie, Periodizität und Transformationen ohne Differenzialrechnung. Drei Fälle variieren Grundfunktion, Phasenlage und Vertikalverschiebung; insbesondere wird geprüft, wann eine Verschiebung Nullstellen beseitigt. EN: The profile determines zeros, extrema, and inflection points from symmetry, periodicity, and transformations without calculus. Three cases vary base function, phase, and vertical shift; in particular, it assesses when a shift removes zeros.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "characteristic-points-from-transformation",
+            "essentialUnderstandingDe": "Bekannte charakteristische Phasen der Sinus- und Kosinusgrundfunktion werden durch horizontale Skalierung und Verschiebung auf x-Werte übertragen; a und d bestimmen zugehörige y-Werte und Orientierung.",
+            "essentialUnderstandingEn": "Known characteristic phases of the base sine and cosine functions are mapped to x-values by horizontal scaling and shifting; a and d determine the corresponding y-values and orientation.",
+            "observablePerformanceDe": "Die lernende Person bestimmt in einem neuen endlichen Intervall charakteristische Punkte, erklärt die Transformation und prüft sie durch Einsetzen, ohne Ableitungen zu verwenden.",
+            "observablePerformanceEn": "In a fresh finite interval, the learner determines characteristic points, explains the transformation, and checks them by substitution without using derivatives."
+          },
+          {
+            "id": "symmetry-periodicity-and-limits",
+            "essentialUnderstandingDe": "Symmetrie und Periodizität setzen gefundene Punkte fort; eine Vertikalverschiebung verändert jedoch die Nullstellengleichung und kann Zahl oder Existenz von Nullstellen ändern. Endpunkte des geforderten Intervalls müssen separat geprüft werden.",
+            "essentialUnderstandingEn": "Symmetry and periodicity extend known points; however, a vertical shift changes the zero equation and can alter the number or existence of zeros. Endpoints of the requested interval must be checked separately.",
+            "observablePerformanceDe": "Die lernende Person erzeugt weitere Punkte über Symmetrie oder Periodenverschiebung und entscheidet anhand des Wertebereichs, ob Nullstellen möglich sind.",
+            "observablePerformanceEn": "The learner generates further points by symmetry or period shifts and uses the range to decide whether zeros are possible."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["characteristic-points-from-transformation", "symmetry-periodicity-and-limits"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "base-function", "textDe": "Sinus oder Kosinus", "textEn": "sine or cosine"},
+          {"id": "transformation", "textDe": "horizontale Skalierung, Phasen- oder Vertikalverschiebung", "textEn": "horizontal scaling, phase shift, or vertical shift"},
+          {"id": "point-type", "textDe": "Nullstelle, Extrempunkt oder Wendepunkt in einem endlichen Intervall", "textEn": "zero, extremum, or inflection point in a finite interval"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shifted-sine-base",
+            "taskDemandDe": "Bestimme für f(x)=2sin(x−π/2)+1 im Intervall 0 ≤ x ≤ 2π ohne Differenzialrechnung alle Extrem- und Wendepunkte. Begründe aus Grundphasen, Symmetrie und Verschiebung.",
+            "taskDemandEn": "For f(x)=2sin(x−π/2)+1 on 0 ≤ x ≤ 2π, determine all extrema and inflection points without calculus. Justify using base phases, symmetry, and shifts.",
+            "expectedPerformanceDe": "Die lernende Person verschiebt die Sinusphasen um π/2, erhält Maximum (π|3), Minimum (0|−1) beziehungsweise am periodischen Rand (2π|−1) und Wendepunkte (π/2|1), (3π/2|1), wobei Randdoppelungen erklärt werden.",
+            "expectedPerformanceEn": "The learner shifts sine phases by π/2, obtains maximum (π,3), minimum (0,−1) and the periodic endpoint (2π,−1), and inflection points (π/2,1) and (3π/2,1), explaining endpoint duplication.",
+            "understandingFocusDe": "Direkter Nachweis der Punktübertragung und Intervallkontrolle ohne Ableitung.",
+            "understandingFocusEn": "Direct evidence of point transformation and interval checking without differentiation."
+          },
+          {
+            "id": "cosine-period-transfer",
+            "taskDemandDe": "Für g(x)=−3cos(2x)+1 bestimme im Intervall 0 ≤ x < 2π alle Extrempunkte und leite weitere aus Periodizität und Symmetrie her. Prüfe charakteristische Werte durch Einsetzen.",
+            "taskDemandEn": "For g(x)=−3cos(2x)+1 on 0 ≤ x < 2π, determine all extrema and derive further ones from periodicity and symmetry. Check characteristic values by substitution.",
+            "expectedPerformanceDe": "Die lernende Person erkennt Periode π, Minima bei x=0 und π mit y=−2 sowie Maxima bei x=π/2 und 3π/2 mit y=4; das offene rechte Ende verhindert Doppelzählung bei 2π.",
+            "expectedPerformanceEn": "The learner recognizes period π, minima at x=0 and π with y=−2, and maxima at x=π/2 and 3π/2 with y=4; the open right endpoint prevents duplication at 2π.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu Kosinus, negativer Amplitude und verkürzter Periode.",
+            "understandingFocusEn": "First independent transfer to cosine, negative amplitude, and a shortened period."
+          },
+          {
+            "id": "zero-existence-transfer",
+            "taskDemandDe": "Vergleiche h(x)=2sin x+1 und k(x)=2sin x+3 hinsichtlich ihrer Nullstellen, ohne zu differenzieren. Bestimme für h die Nullstellen in 0 ≤ x < 2π und begründe für k die Existenzentscheidung über den Wertebereich.",
+            "taskDemandEn": "Compare h(x)=2sin x+1 and k(x)=2sin x+3 with respect to zeros, without differentiating. Determine the zeros of h on 0 ≤ x < 2π and justify the existence decision for k from its range.",
+            "expectedPerformanceDe": "Für h löst die lernende Person sin x=−1/2 und erhält 7π/6 sowie 11π/6; k hat Wertebereich [1,5] und daher keine Nullstelle.",
+            "expectedPerformanceEn": "For h the learner solves sin x=−1/2 and obtains 7π/6 and 11π/6; k has range [1,5] and therefore no zero.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur Geltungsgrenze bloßer Musterverschiebung bei Nullstellen.",
+            "understandingFocusEn": "Second independent transfer to the limit of merely shifting memorized zero patterns."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "reason": "DE: Das Profil begründet die Ableitungsverläufe der Grundfunktionen grafisch aus lokalen Steigungen, nicht aus Formelabruf. Drei Fälle variieren Sinus, Kosinus und eine textlich angegebene veränderte Skalierung; die Schlussweise gilt für diese glatten Grundgraphen und ist kein allgemeiner Beweis für beliebige periodische Funktionen. EN: The profile justifies derivative traces of the base functions graphically from local slopes, not formula recall. Three cases vary sine, cosine, and a verbally specified changed scale; the reasoning applies to these smooth base graphs and is not a general proof for arbitrary periodic functions.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "slope-to-derivative-trace",
+            "essentialUnderstandingDe": "Die y-Werte der Ableitungsfunktion geben lokale Graphsteigungen wieder: positiv beim Steigen, negativ beim Fallen und null bei waagerechten Tangenten; größte Beträge treten bei den steilsten Stellen auf.",
+            "essentialUnderstandingEn": "The derivative function's y-values represent local graph slopes: positive while rising, negative while falling, and zero at horizontal tangents; greatest magnitudes occur at the steepest points.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus Verlauf und Tangenteninformationen einen plausiblen Ableitungsgraphen und erklärt Vorzeichen, Nullstellen und Extremwerte der Ableitung.",
+            "observablePerformanceEn": "The learner constructs a plausible derivative graph from trace and tangent information and explains signs, zeros, and extrema of the derivative."
+          },
+          {
+            "id": "sine-cosine-phase-link",
+            "essentialUnderstandingDe": "Der Sinus hat den Kosinus als Ableitung; beim Kosinus liefert die fallende Anfangsbewegung −sin. Die Viertelperiodenbeziehung folgt aus den Steigungsmustern, nicht bloß aus einer Merkhilfe.",
+            "essentialUnderstandingEn": "Sine has cosine as its derivative; cosine's initially decreasing trace gives −sine. The quarter-period relation follows from slope patterns rather than merely from a mnemonic.",
+            "observablePerformanceDe": "Die lernende Person identifiziert beide Ableitungsfunktionen aus grafischen Merkmalen, begründet das Minuszeichen und prüft markante Stellen.",
+            "observablePerformanceEn": "The learner identifies both derivative functions from graphical features, justifies the minus sign, and checks characteristic points."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["slope-to-derivative-trace", "sine-cosine-phase-link"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "source-function", "textDe": "Sinus- oder Kosinusgrundfunktion", "textEn": "base sine or cosine function"},
+          {"id": "evidence-mode", "textDe": "Monotonieintervalle, waagerechte Tangenten oder Steilheit", "textEn": "monotonic intervals, horizontal tangents, or steepness"},
+          {"id": "scale", "textDe": "Standardachsen oder ausdrücklich veränderte vertikale Skalierung", "textEn": "standard axes or explicitly changed vertical scale"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sine-derivative-base",
+            "taskDemandDe": "Beschreibe für f(x)=sin x auf 0 ≤ x ≤ 2π die steigenden und fallenden Intervalle, waagerechten Tangenten und steilsten Stellen. Skizziere daraus f' ohne die Ableitungsformel vorauszusetzen.",
+            "taskDemandEn": "For f(x)=sin x on 0 ≤ x ≤ 2π, describe increasing and decreasing intervals, horizontal tangents, and steepest points. Use these to sketch f' without assuming the derivative formula.",
+            "expectedPerformanceDe": "Die lernende Person setzt f'=0 bei π/2 und 3π/2, positive beziehungsweise negative Werte passend zur Monotonie und Maximalwerte 1 beziehungsweise −1 bei 0, π und 2π; daraus entsteht cos x.",
+            "expectedPerformanceEn": "The learner places f'=0 at π/2 and 3π/2, positive or negative values according to monotonicity, and values 1 or −1 at 0, π, and 2π; this produces cos x.",
+            "understandingFocusDe": "Direkter grafischer Nachweis aus lokalen Steigungseigenschaften.",
+            "understandingFocusEn": "Direct graphical evidence from local slope properties."
+          },
+          {
+            "id": "cosine-sign-transfer",
+            "taskDemandDe": "Leite analog aus dem Verlauf von g(x)=cos x den Graphen von g' her und erkläre insbesondere das Vorzeichen unmittelbar rechts von x=0 sowie an x=π/2.",
+            "taskDemandEn": "Analogously derive the graph of g' from g(x)=cos x and explain in particular the sign just to the right of x=0 and at x=π/2.",
+            "expectedPerformanceDe": "Da cos x nach dem Maximum bei 0 fällt, ist g' zunächst negativ; bei π/2 ist die Abnahme am steilsten und g'=−1. Der vollständige Verlauf ist −sin x.",
+            "expectedPerformanceEn": "Because cos x decreases after its maximum at 0, g' is initially negative; at π/2 the decrease is steepest and g'=−1. The full trace is −sin x.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zum Kosinus und zur Begründung des Minuszeichens.",
+            "understandingFocusEn": "First independent transfer to cosine and justification of the minus sign."
+          },
+          {
+            "id": "scaled-trace-transfer",
+            "taskDemandDe": "Ein Graph hat denselben horizontalen Verlauf wie sin x, aber alle y-Werte und Tangentensteigungen sind verdoppelt. Beschreibe den zugehörigen Ableitungsgraphen und erläutere, warum Periodizität allein diese Aussage nicht begründen würde.",
+            "taskDemandEn": "A graph has the same horizontal trace as sin x, but all y-values and tangent slopes are doubled. Describe its derivative graph and explain why periodicity alone would not justify the conclusion.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die Funktion 2sin x und aus den verdoppelten Steigungen den Ableitungsverlauf 2cos x; eine beliebige periodische Funktion kann andere lokale Steigungen besitzen.",
+            "expectedPerformanceEn": "The learner recognizes 2sin x and infers derivative trace 2cos x from doubled slopes; an arbitrary periodic function can have different local slopes.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zu Skalierung und Geltungsgrenze des grafischen Arguments.",
+            "understandingFocusEn": "Second independent transfer to scaling and the graphical argument's validity boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "reason": "DE: Das Profil prüft die Kettenregel als Zusammenspiel von äußerer trigonometrischer Ableitung am inneren Argument und innerem Faktor b. Drei Fälle wechseln Sinus/Kosinus, Vorzeichen und Phase; x wird im Bogenmaß verstanden, und b = 0 wird als konstanter Grenzfall erkannt. EN: The profile assesses the chain rule as the interaction of the outer trigonometric derivative evaluated at the inner argument and the inner factor b. Three cases vary sine/cosine, signs, and phase; x is understood in radians, and b = 0 is recognized as a constant boundary case.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "trigonometric-chain-rule",
+            "essentialUnderstandingDe": "Für u(x)=b(x−c) gilt [a sin u+d]'=ab cos u und [a cos u+d]'=−ab sin u; die äußere Ableitung wird bei u(x) ausgewertet und mit u'=b multipliziert.",
+            "essentialUnderstandingEn": "For u(x)=b(x−c), [a sin u+d]'=ab cos u and [a cos u+d]'=−ab sin u; the outer derivative is evaluated at u(x) and multiplied by u'=b.",
+            "observablePerformanceDe": "Die lernende Person leitet neue transformierte Sinus- und Kosinusfunktionen korrekt ab und erklärt Herkunft von Faktor, Vorzeichen und unverändertem inneren Argument.",
+            "observablePerformanceEn": "The learner correctly differentiates fresh transformed sine and cosine functions and explains the origins of the factor, sign, and unchanged inner argument."
+          },
+          {
+            "id": "chain-rule-check-and-boundary",
+            "essentialUnderstandingDe": "Eine Ableitung lässt sich an charakteristischen Stellen, über Einheiten oder durch Vergleich lokaler Steilheit prüfen. Der Faktor b setzt Bogenmaß voraus; bei b=0 ist die Funktion konstant und die übliche Periodendeutung entartet.",
+            "essentialUnderstandingEn": "A derivative can be checked at characteristic points, through units, or by comparison with local steepness. Factor b assumes radians; when b=0 the function is constant and the usual period interpretation degenerates.",
+            "observablePerformanceDe": "Die lernende Person prüft einen Ableitungsterm durch Einsetzen einer geeigneten Stelle und erkennt fehlenden Faktor, falsches Vorzeichen oder einen konstanten Grenzfall.",
+            "observablePerformanceEn": "The learner checks a derivative expression by substituting a suitable point and detects a missing factor, wrong sign, or constant boundary case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["trigonometric-chain-rule", "chain-rule-check-and-boundary"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "outer-function", "textDe": "Sinus oder Kosinus", "textEn": "sine or cosine"},
+          {"id": "inner-transformation", "textDe": "positiver oder negativer Faktor sowie veränderte Phase", "textEn": "positive or negative factor and changed phase"},
+          {"id": "check", "textDe": "symbolisches Vereinfachen oder Prüfung an charakteristischer Stelle", "textEn": "symbolic simplification or check at a characteristic point"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "transformed-sine-base",
+            "taskDemandDe": "Leite f(x)=3sin(2(x−π/4))+5 ab, erkläre jeden Faktor und prüfe f'(π/4) anhand der lokalen Phase.",
+            "taskDemandEn": "Differentiate f(x)=3sin(2(x−π/4))+5, explain every factor, and check f'(π/4) from the local phase.",
+            "expectedPerformanceDe": "Die lernende Person erhält f'(x)=6cos(2(x−π/4)); bei x=π/4 ist das innere Argument 0 und f'=6, passend zur maximal positiven Steigung.",
+            "expectedPerformanceEn": "The learner obtains f'(x)=6cos(2(x−π/4)); at x=π/4 the inner argument is 0 and f'=6, consistent with maximum positive slope.",
+            "understandingFocusDe": "Direkter Nachweis von äußerer Ableitung, innerem Faktor und Phasenprüfung.",
+            "understandingFocusEn": "Direct evidence of outer derivative, inner factor, and phase check."
+          },
+          {
+            "id": "negative-cosine-transfer",
+            "taskDemandDe": "Leite g(t)=−4cos(−3(t+1))+2 ab und vereinfache den Term unter Nutzung der Symmetrie von Sinus. Begründe das resultierende Vorzeichen.",
+            "taskDemandEn": "Differentiate g(t)=−4cos(−3(t+1))+2 and simplify using sine symmetry. Justify the resulting sign.",
+            "expectedPerformanceDe": "Zunächst ergibt die Kettenregel −12sin(−3(t+1)); wegen sin(−z)=−sin z ist dies 12sin(3(t+1)). Die lernende Person verfolgt beide Minuszeichen nachvollziehbar.",
+            "expectedPerformanceEn": "The chain rule first gives −12sin(−3(t+1)); since sin(−z)=−sin z, this is 12sin(3(t+1)). The learner tracks both minus signs transparently.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu Kosinus, negativem Innenfaktor und äquivalenter Form.",
+            "understandingFocusEn": "First independent transfer to cosine, a negative inner factor, and an equivalent form."
+          },
+          {
+            "id": "constant-boundary-transfer",
+            "taskDemandDe": "Untersuche h(x)=7sin(0·(x−4))−2. Bestimme h' und erkläre, warum die Formel 2π/|b| hier keine Periodenlänge liefert; vergleiche mit h₁(x)=7sin(0,1(x−4))−2.",
+            "taskDemandEn": "Investigate h(x)=7sin(0·(x−4))−2. Determine h' and explain why 2π/|b| gives no period here; compare with h₁(x)=7sin(0.1(x−4))−2.",
+            "expectedPerformanceDe": "Die lernende Person erkennt h≡−2 und h'=0; Division durch b=0 ist unzulässig. Für h₁ entsteht h₁'=0,7cos(0,1(x−4)) mit endlicher Periode 20π.",
+            "expectedPerformanceEn": "The learner recognizes h≡−2 and h'=0; division by b=0 is invalid. For h₁, h₁'=0.7cos(0.1(x−4)) with finite period 20π.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zum entarteten Grenzfall und zur Geltungsgrenze der Parameterformeln.",
+            "understandingFocusEn": "Second independent transfer to a degenerate boundary case and the limits of parameter formulas."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "reason": "DE: Das Profil bindet einen berechneten Ableitungswert an Zeitpunkt, Vorzeichen, lokale Änderungsrichtung und zusammengesetzte Einheit im jeweiligen trigonometrischen Modell. Drei Fälle variieren Kontext, Phase und Vergleichsfrage; momentane Rate, mittlere Rate und langfristiger Verlauf werden ausdrücklich getrennt. EN: The profile binds a calculated derivative value to time, sign, local direction of change, and compound unit in the relevant trigonometric model. Three cases vary context, phase, and comparison question; instantaneous rate, average rate, and long-term behaviour are explicitly separated.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "local-rate-context-meaning",
+            "essentialUnderstandingDe": "f'(t₀) ist die momentane lokale Änderungsrate der modellierten Größe bezüglich t am Zeitpunkt t₀; ihr Vorzeichen gibt lokale Zu- oder Abnahme an, und ihre Einheit ist Zielgröße pro Zeiteinheit.",
+            "essentialUnderstandingEn": "f'(t₀) is the instantaneous local rate of change of the modelled quantity with respect to t at time t₀; its sign indicates local increase or decrease, and its unit is output quantity per unit time.",
+            "observablePerformanceDe": "Die lernende Person bestimmt einen Ableitungswert, nennt Zeitpunkt und zusammengesetzte Einheit und formuliert eine sachlich genaue lokale Aussage einschließlich Vorzeichen.",
+            "observablePerformanceEn": "The learner determines a derivative value, states the time and compound unit, and formulates a precise local contextual claim including sign."
+          },
+          {
+            "id": "instantaneous-vs-average-boundary",
+            "essentialUnderstandingDe": "Ein einzelner Ableitungswert beschreibt weder die mittlere Änderung über ein Intervall noch den gesamten periodischen Verlauf; Aussagen gelten nur innerhalb des angegebenen Modellintervalls und unter den Modellannahmen.",
+            "essentialUnderstandingEn": "A single derivative value describes neither average change over an interval nor the entire periodic course; claims apply only within the stated model interval and under its assumptions.",
+            "observablePerformanceDe": "Die lernende Person grenzt eine lokale Deutung gegen Intervall- oder Extrapolationsbehauptungen ab und vergleicht bei Bedarf mit einem Differenzenquotienten.",
+            "observablePerformanceEn": "The learner distinguishes a local interpretation from interval or extrapolation claims and, when required, compares it with a difference quotient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["local-rate-context-meaning", "instantaneous-vs-average-boundary"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "context", "textDe": "Höhe, Temperatur oder Wasserstand", "textEn": "height, temperature, or water level"},
+          {"id": "rate-sign", "textDe": "positive, negative oder verschwindende lokale Rate", "textEn": "positive, negative, or zero local rate"},
+          {"id": "comparison", "textDe": "momentane Rate oder mittlere Änderung über ein Intervall", "textEn": "instantaneous rate or average change over an interval"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ferris-wheel-base",
+            "taskDemandDe": "Die Höhe eines Sitzes wird für 0≤t≤40 s durch h(t)=12−10cos(πt/20) in Metern modelliert. Bestimme h'(10) und deute Wert, Vorzeichen und Einheit.",
+            "taskDemandEn": "For 0≤t≤40 s, a seat's height is modelled by h(t)=12−10cos(πt/20) metres. Determine h'(10) and interpret its value, sign, and unit.",
+            "expectedPerformanceDe": "Die lernende Person erhält h'(t)=(π/2)sin(πt/20) und h'(10)=π/2 m/s; der Sitz steigt zu diesem Zeitpunkt lokal mit etwa 1,57 m/s.",
+            "expectedPerformanceEn": "The learner obtains h'(t)=(π/2)sin(πt/20) and h'(10)=π/2 m/s; at that instant the seat is locally rising at about 1.57 m/s.",
+            "understandingFocusDe": "Direkter Nachweis von Ableitung, lokaler Deutung und zusammengesetzter Einheit.",
+            "understandingFocusEn": "Direct evidence of differentiation, local interpretation, and compound unit."
+          },
+          {
+            "id": "temperature-sign-transfer",
+            "taskDemandDe": "Für 0≤t≤24 h gilt T(t)=18+4sin(π(t−6)/12) in °C. Bestimme T'(15) und erkläre, was daraus lokal folgt und was nicht über den Rest des Tages folgt.",
+            "taskDemandEn": "For 0≤t≤24 h, T(t)=18+4sin(π(t−6)/12) °C. Determine T'(15) and explain what follows locally and what does not follow about the rest of the day.",
+            "expectedPerformanceDe": "Die lernende Person erhält T'(15)=(π/3)cos(3π/4)=−π√2/6 °C/h; die Temperatur fällt um 15 Uhr momentan, daraus folgt weder monotones Fallen bis Tagesende noch dieselbe Rate über ein Intervall.",
+            "expectedPerformanceEn": "The learner obtains T'(15)=(π/3)cos(3π/4)=−π√2/6 °C/h; temperature is falling instantaneously at 15:00, but this implies neither monotonic decrease to day's end nor the same rate over an interval.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu negativem Vorzeichen und begrenzter lokaler Aussage.",
+            "understandingFocusEn": "First independent transfer to a negative sign and a bounded local claim."
+          },
+          {
+            "id": "instantaneous-average-transfer",
+            "taskDemandDe": "Ein Wasserstand wird auf 0≤t≤6 h durch w(t)=3+sin(πt/3) in Metern beschrieben. Vergleiche w'(3) mit der mittleren Änderungsrate auf [2,4] und beurteile die Behauptung, beide müssten gleich sein.",
+            "taskDemandEn": "On 0≤t≤6 h, a water level is described by w(t)=3+sin(πt/3) metres. Compare w'(3) with the average rate on [2,4] and assess the claim that they must be equal.",
+            "expectedPerformanceDe": "Die lernende Person erhält w'(3)=−π/3 m/h, während die mittlere Rate [w(4)−w(2)]/2=−√3/2 m/h beträgt; lokale Tangentensteigung und Intervallquotient werden klar getrennt.",
+            "expectedPerformanceEn": "The learner obtains w'(3)=−π/3 m/h, whereas the average rate [w(4)−w(2)]/2=−√3/2 m/h; local tangent slope and the interval quotient are clearly distinguished.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur zentralen Geltungsgrenze eines einzelnen Ableitungswerts.",
+            "understandingFocusEn": "Second independent transfer to the central validity boundary of a single derivative value."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "reason": "DE: Das Profil vergleicht trigonometrische und ganzrationale Modelle strukturell und verlangt eine begründete Wahl für lokalen Datenbereich oder langfristige Fortsetzung. Drei Fälle variieren Term, Messdaten und Prognosehorizont; gute lokale Anpassung wird ausdrücklich nicht mit globaler Gültigkeit gleichgesetzt. EN: The profile compares trigonometric and polynomial models structurally and requires a justified choice for a local data range or long-term continuation. Three cases vary expression, data, and forecast horizon; good local fit is explicitly not equated with global validity.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "function-class-structure",
+            "essentialUnderstandingDe": "Nicht konstante Sinus- und Kosinusmodelle sind periodisch und beschränkt; nicht konstante ganzrationale Funktionen sind nicht periodisch und ihr langfristiges Verhalten wird vom höchsten Potenzterm bestimmt. Nullstellen, Symmetrien und Extrema hängen von konkreten Parametern ab.",
+            "essentialUnderstandingEn": "Nonconstant sine and cosine models are periodic and bounded; nonconstant polynomials are not periodic and their long-term behaviour is governed by the leading term. Zeros, symmetries, and extrema depend on the specific parameters.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei neue Modelle anhand relevanter Merkmale, belegt Aussagen am Term und vermeidet unzulässige Verallgemeinerungen.",
+            "observablePerformanceEn": "The learner compares two fresh models using relevant features, supports claims from the expressions, and avoids invalid generalizations."
+          },
+          {
+            "id": "model-choice-and-validity",
+            "essentialUnderstandingDe": "Die geeignete Modellklasse hängt von Prozessmechanismus, Datenintervall und Verwendungszweck ab; ein Polynom kann einen periodischen Verlauf lokal annähern, liefert aber ohne Begründung keine periodische Langzeitprognose.",
+            "essentialUnderstandingEn": "The suitable model class depends on process mechanism, data interval, and intended use; a polynomial can approximate a periodic trace locally but does not provide a justified periodic long-term forecast.",
+            "observablePerformanceDe": "Die lernende Person wählt für einen neuen Kontext ein Modell, nennt den Geltungsbereich und erklärt, warum die Alternative lokal brauchbar, aber außerhalb des Datenbereichs riskant sein kann.",
+            "observablePerformanceEn": "For a fresh context, the learner chooses a model, states its validity range, and explains why the alternative may work locally yet be risky outside the data interval."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["function-class-structure", "model-choice-and-validity"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "evidence-source", "textDe": "Funktionsterme, Messwerttabelle oder verbaler Prozess", "textEn": "function expressions, measurement table, or verbal process"},
+          {"id": "horizon", "textDe": "lokale Interpolation oder langfristige Extrapolation", "textEn": "local interpolation or long-term extrapolation"},
+          {"id": "feature", "textDe": "Periodizität, Beschränktheit, Symmetrie, Nullstellen oder Extremverhalten", "textEn": "periodicity, boundedness, symmetry, zeros, or extremal behaviour"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expression-comparison-base",
+            "taskDemandDe": "Vergleiche f(x)=2sin x+1 und p(x)=−0,2x²+2x+1 hinsichtlich Periodizität, Beschränktheit, Symmetrie, Nullstellen und langfristigem Verlauf. Begründe, welche Aussagen klassenbedingt und welche parameterspezifisch sind.",
+            "taskDemandEn": "Compare f(x)=2sin x+1 and p(x)=−0.2x²+2x+1 in terms of periodicity, boundedness, symmetry, zeros, and long-term behaviour. Explain which claims follow from the class and which are parameter-specific.",
+            "expectedPerformanceDe": "Die lernende Person erkennt f als periodisch mit Wertebereich [−1,3], p als nicht periodische nach unten geöffnete Parabel mit p(x)→−∞ für |x|→∞; Symmetrieachsen und Nullstellen werden aus den konkreten Termen statt pauschal zugeordnet.",
+            "expectedPerformanceEn": "The learner identifies f as periodic with range [−1,3] and p as a nonperiodic downward-opening parabola with p(x)→−∞ as |x|→∞; symmetry axes and zeros are assigned from the specific expressions rather than generically.",
+            "understandingFocusDe": "Direkter struktureller Vergleich mit Trennung von Klassen- und Parametermerkmalen.",
+            "understandingFocusEn": "Direct structural comparison distinguishing class and parameter features."
+          },
+          {
+            "id": "seasonal-data-transfer",
+            "taskDemandDe": "Monatliche Temperaturmittel wiederholen sich näherungsweise jährlich. Ein kubisches Polynom und ein Sinusmodell passen die zwölf Werte ähnlich gut. Entscheide für Interpolation innerhalb des Jahres und Prognosen über fünf Jahre und begründe Modellgrenzen ohne Graphvorlage.",
+            "taskDemandEn": "Monthly mean temperatures repeat approximately each year. A cubic polynomial and a sine model fit the twelve values similarly well. Decide for interpolation within the year and forecasts over five years, justifying model limits without a graph template.",
+            "expectedPerformanceDe": "Die lernende Person lässt beide Modelle nur bei geprüfter lokaler Passung für Zwischenwerte zu, bevorzugt für wiederkehrende Mehrjahresstruktur das periodische Modell und begrenzt auch dieses wegen Wetterstreuung und möglicher Trends.",
+            "expectedPerformanceEn": "The learner permits either model for interpolation only after checking local fit, prefers the periodic model for recurring multi-year structure, and still limits it because of weather variation and possible trends.",
+            "understandingFocusDe": "Erster unabhängiger Transfer von Termmerkmalen zu zweckabhängiger Modellwahl.",
+            "understandingFocusEn": "First independent transfer from expression features to purpose-dependent model choice."
+          },
+          {
+            "id": "local-polynomial-transfer",
+            "taskDemandDe": "Nahe t=0 wird cos t durch q(t)=1−t²/2 angenähert. Vergleiche beide für kleine |t| und für t=20 und beurteile die Aussage, q beschreibe deshalb eine periodische Schwingung.",
+            "taskDemandEn": "Near t=0, cos t is approximated by q(t)=1−t²/2. Compare them for small |t| and for t=20, and assess the claim that q therefore describes a periodic oscillation.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die brauchbare lokale Näherung, aber q(20)=−199 außerhalb des Kosinuswertebereichs [−1,1] und fehlende Periodizität; lokale Übereinstimmung überträgt sich nicht auf den Langzeitverlauf.",
+            "expectedPerformanceEn": "The learner recognizes the useful local approximation but notes q(20)=−199 outside cosine's range [−1,1] and the absence of periodicity; local agreement does not transfer to long-term behaviour.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur Trennung lokaler Approximation und globaler Gültigkeit.",
+            "understandingFocusEn": "Second independent transfer distinguishing local approximation from global validity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "reason": "DE: Das Profil verlangt Planung, Konstruktion, Dokumentation und Prüfung eines durch zulässige Seiten- und Winkelangaben bestimmten Dreiecks. Drei textbasierte Fälle variieren SSS, SWS und WSW; Existenzbedingungen, die Mehrdeutigkeit von SSW und Spiegelbildkongruenz begrenzen den Anspruch. EN: The profile requires planning, construction, documentation, and checking of a triangle determined by admissible side and angle data. Three text-based cases vary SSS, SAS, and ASA; existence conditions, SSA ambiguity, and mirror-image congruence bound the claim.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "congruence-guided-construction",
+            "essentialUnderstandingDe": "Zulässige Angaben nach SSS, SWS, WSW oder dem eindeutigen SSW-Sonderfall bestimmen ein Dreieck bis auf Kongruenz; der passende Fall steuert die Konstruktionsreihenfolge.",
+            "essentialUnderstandingEn": "Admissible data under SSS, SAS, ASA, or an unambiguous special SSA case determine a triangle up to congruence; the applicable case guides the construction order.",
+            "observablePerformanceDe": "Die lernende Person erkennt den Kongruenzfall, konstruiert mit Zirkel und Geodreieck und dokumentiert jeden Schritt mit Bezug auf die Ausgangsdaten.",
+            "observablePerformanceEn": "The learner identifies the congruence case, constructs with compass and set square, and documents every step with reference to the original data."
+          },
+          {
+            "id": "construction-existence-and-check",
+            "essentialUnderstandingDe": "Eine Konstruktion ist nur gültig, wenn alle Ausgangsangaben und Existenzbedingungen erfüllt sind; gespiegelte Lösungen sind kongruent, während ungeprüfte SSW-Daten null, eine oder zwei Lösungen liefern können.",
+            "essentialUnderstandingEn": "A construction is valid only when all original data and existence conditions are satisfied; reflected solutions are congruent, whereas unchecked SSA data may yield zero, one, or two solutions.",
+            "observablePerformanceDe": "Die lernende Person misst oder begründet alle vorgegebenen Größen nach, prüft Dreiecksungleichung beziehungsweise Winkelsumme und benennt Mehrdeutigkeit statt willkürlich zu wählen.",
+            "observablePerformanceEn": "The learner rechecks or justifies every given quantity, checks the triangle inequality or angle sum, and states ambiguity rather than choosing arbitrarily."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["congruence-guided-construction", "construction-existence-and-check"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "congruence-case", "textDe": "SSS, SWS oder WSW", "textEn": "SSS, SAS, or ASA"},
+          {"id": "orientation", "textDe": "Lösung ober- oder unterhalb der gewählten Grundseite", "textEn": "solution above or below the chosen base"},
+          {"id": "validity", "textDe": "zulässiger Datensatz oder erkannte Nicht- beziehungsweise Mehrdeutigkeit", "textEn": "admissible data or recognized impossibility or ambiguity"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sas-construction-base",
+            "taskDemandDe": "Konstruiere ein Dreieck mit b=6 cm, c=4 cm und eingeschlossenem Winkel α=55°. Benenne den Kongruenzfall, dokumentiere die Schritte und prüfe alle drei Angaben.",
+            "taskDemandEn": "Construct a triangle with b=6 cm, c=4 cm, and included angle α=55°. Name the congruence case, document the steps, and check all three data.",
+            "expectedPerformanceDe": "Die lernende Person erkennt SWS, zeichnet die beiden Seiten am 55°-Winkel, verbindet die Endpunkte und kontrolliert Längen und eingeschlossenen Winkel; die Spiegelkonstruktion ist kongruent.",
+            "expectedPerformanceEn": "The learner identifies SAS, draws the two sides at the 55° angle, joins their endpoints, and checks lengths and included angle; the reflected construction is congruent.",
+            "understandingFocusDe": "Direkter Nachweis von fallgeleiteter Planung, Konstruktion und vollständiger Kontrolle.",
+            "understandingFocusEn": "Direct evidence of case-guided planning, construction, and complete checking."
+          },
+          {
+            "id": "sss-construction-transfer",
+            "taskDemandDe": "Konstruiere aus a=5 cm, b=7 cm und c=8 cm ein Dreieck, begründe die Existenz vorab und erläutere, warum zwei Kreisschnittpunkte keine zwei verschiedenen Kongruenzklassen erzeugen.",
+            "taskDemandEn": "Construct a triangle from a=5 cm, b=7 cm, and c=8 cm, justify existence beforehand, and explain why two circle intersections do not create two different congruence classes.",
+            "expectedPerformanceDe": "Die lernende Person prüft die Dreiecksungleichungen, verwendet eine Grundseite und zwei Kreise und erkennt die beiden Schnittpunkte als Spiegelbilder mit gleichen Seitenlängen.",
+            "expectedPerformanceEn": "The learner checks the triangle inequalities, uses one side as a base with two circles, and recognizes the two intersections as mirror images with equal side lengths.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zu SSS, Existenzbedingung und Spiegelbildkongruenz.",
+            "understandingFocusEn": "First independent transfer to SSS, an existence condition, and mirror-image congruence."
+          },
+          {
+            "id": "asa-and-ssa-boundary-transfer",
+            "taskDemandDe": "Konstruiere zunächst aus c=7 cm, α=50° und β=65° ein Dreieck. Beurteile anschließend getrennt, ob die Angaben a=5 cm, b=7 cm und α=35° ohne Zusatzprüfung stets eindeutig sind.",
+            "taskDemandEn": "First construct a triangle from c=7 cm, α=50°, and β=65°. Then assess separately whether a=5 cm, b=7 cm, and α=35° are always unambiguous without an additional check.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert den WSW-Fall eindeutig bis auf Spiegelung und kontrolliert γ=65°. Den SSW-Datensatz erkennt sie als potenziell mehrdeutig und fordert Schnittpunkt- beziehungsweise Sinussatzprüfung statt pauschaler Eindeutigkeit.",
+            "expectedPerformanceEn": "The learner constructs the ASA case uniquely up to reflection and checks γ=65°. The SSA data are recognized as potentially ambiguous, requiring an intersection or sine-rule check rather than assumed uniqueness.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zu einem anderen Kongruenzfall und zur Grenze der zulässigen Angaben.",
+            "understandingFocusEn": "Second independent transfer to another congruence case and the boundary of admissible data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "reason": "DE: Das Profil unterscheidet Höhe, Mittelsenkrechte, Seitenhalbierende und Winkelhalbierende ausschließlich über ihre definierenden Beziehungen. Drei selbst erstellte Fälle variieren Dreiecksform, inneren beziehungsweise äußeren Schnitt und Zuordnungsrichtung; spezielle symmetrische Dreiecke, in denen Linien zusammenfallen, werden als Grenze der visuellen Unterscheidung behandelt. EN: The profile distinguishes altitude, perpendicular bisector, median, and angle bisector solely through their defining relations. Three self-produced cases vary triangle shape, interior versus exterior intersection, and matching direction; symmetric triangles in which lines coincide are treated as a limit of visual discrimination.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "special-line-definitions",
+            "essentialUnderstandingDe": "Eine Höhe geht durch einen Eckpunkt und steht senkrecht auf der Gegenseite oder ihrer Verlängerung; eine Mittelsenkrechte steht senkrecht auf einer Seite in deren Mittelpunkt; eine Seitenhalbierende verbindet Eckpunkt und gegenüberliegenden Seitenmittelpunkt; eine Winkelhalbierende teilt einen Eckwinkel.",
+            "essentialUnderstandingEn": "An altitude passes through a vertex and is perpendicular to the opposite side or its extension; a perpendicular bisector is perpendicular to a side at its midpoint; a median joins a vertex to the opposite side's midpoint; an angle bisector divides a vertex angle.",
+            "observablePerformanceDe": "Die lernende Person benennt eine Linie aus ihren Beziehungen, beschreibt sie fachsprachlich und ordnet sie in einer selbst erzeugten Skizze korrekt zu.",
+            "observablePerformanceEn": "The learner names a line from its relations, describes it precisely, and assigns it correctly in a self-produced sketch."
+          },
+          {
+            "id": "special-line-overlap-and-boundary",
+            "essentialUnderstandingDe": "Die vier Definitionen sind unabhängig; in gleichschenkligen oder gleichseitigen Dreiecken können mehrere besondere Linien geometrisch zusammenfallen. Bei stumpfen Dreiecken können Höhen die Seitenverlängerungen treffen.",
+            "essentialUnderstandingEn": "The four definitions are independent; in isosceles or equilateral triangles several special lines may coincide geometrically. In obtuse triangles, altitudes may meet extensions of sides.",
+            "observablePerformanceDe": "Die lernende Person prüft jede zutreffende Definition statt eine Linie nur nach Lage zu benennen und akzeptiert äußere Höhenfußpunkte bei passenden Dreiecken.",
+            "observablePerformanceEn": "The learner checks every applicable definition rather than naming a line by appearance alone and accepts exterior altitude feet where appropriate."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["special-line-definitions", "special-line-overlap-and-boundary"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "triangle-shape", "textDe": "ungleichseitiges, gleichschenkliges oder stumpfwinkliges Dreieck", "textEn": "scalene, isosceles, or obtuse triangle"},
+          {"id": "identification-direction", "textDe": "Definition zu Linie oder Linie zu Definition", "textEn": "definition to line or line to definition"},
+          {"id": "intersection-location", "textDe": "Seite, Seitenverlängerung, Mittelpunkt oder Winkelinneres", "textEn": "side, side extension, midpoint, or angle interior"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "scalene-line-set-base",
+            "taskDemandDe": "Zeichne ein ungleichseitiges spitzwinkliges Dreieck ABC. Konstruiere von A aus Höhe, Seitenhalbierende und Winkelhalbierende sowie die Mittelsenkrechte von BC; beschrifte jede Linie mit ihrer definierenden Eigenschaft.",
+            "taskDemandEn": "Draw a scalene acute triangle ABC. From A construct the altitude, median, and angle bisector, and also the perpendicular bisector of BC; label each line with its defining property.",
+            "expectedPerformanceDe": "Die lernende Person erzeugt vier im Allgemeinen verschiedene Linien und kennzeichnet rechten Winkel, Seitenmittelpunkt, gegenüberliegenden Eckpunktbezug beziehungsweise gleiche Teilwinkel korrekt.",
+            "expectedPerformanceEn": "The learner produces four generally distinct lines and correctly marks the right angle, side midpoint, relation to the opposite vertex, or equal sub-angles.",
+            "understandingFocusDe": "Direkter Nachweis der vier Definitionen in einer selbst erzeugten, nicht symmetrischen Situation.",
+            "understandingFocusEn": "Direct evidence of all four definitions in a self-generated nonsymmetric situation."
+          },
+          {
+            "id": "obtuse-altitude-transfer",
+            "taskDemandDe": "Ein Dreieck ABC ist bei B stumpfwinklig. Beschreibe ohne vorgegebene Abbildung, wo die Höhen von A und C die gegenüberliegenden Geraden treffen können, und grenze sie von den Mittelsenkrechten ab.",
+            "taskDemandEn": "Triangle ABC is obtuse at B. Without a supplied diagram, describe where the altitudes from A and C may meet the opposite lines and distinguish them from perpendicular bisectors.",
+            "expectedPerformanceDe": "Die lernende Person lässt die Höhen auf Verlängerungen von BC beziehungsweise AB treffen und bindet sie an die Eckpunkte; Mittelsenkrechten müssen dagegen durch Seitenmittelpunkte gehen und nicht durch Eckpunkte.",
+            "expectedPerformanceEn": "The learner allows the altitudes to meet extensions of BC and AB and binds them to the vertices; perpendicular bisectors instead pass through side midpoints and need not pass through vertices.",
+            "understandingFocusDe": "Erster unabhängiger Transfer zum äußeren Höhenfußpunkt und zur begrifflichen Abgrenzung.",
+            "understandingFocusEn": "First independent transfer to an exterior altitude foot and conceptual distinction."
+          },
+          {
+            "id": "coincident-lines-transfer",
+            "taskDemandDe": "In einem gleichschenkligen Dreieck mit AB=AC wird die Gerade vom Scheitel A zum Mittelpunkt von BC betrachtet. Zeige, welche besonderen Linien sie zugleich ist, und erkläre, warum bloßes Aussehen in diesem Fall nicht zur eindeutigen Benennung reicht.",
+            "taskDemandEn": "In an isosceles triangle with AB=AC, consider the line from apex A to the midpoint of BC. Show which special lines it is simultaneously and explain why appearance alone does not give a unique name here.",
+            "expectedPerformanceDe": "Die lernende Person begründet, dass die Symmetrieachse zugleich Seitenhalbierende, Höhe, Winkelhalbierende des Scheitelwinkels und Mittelsenkrechte von BC ist; jede Bezeichnung wird über ihre eigene Definition geprüft.",
+            "expectedPerformanceEn": "The learner explains that the symmetry axis is simultaneously the median, altitude, apex-angle bisector, and perpendicular bisector of BC; every label is checked against its own definition.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur Überlappung von Begriffen als Geltungsgrenze visueller Klassifikation.",
+            "understandingFocusEn": "Second independent transfer to overlapping concepts as a limit of visual classification."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "reason": "DE: Das Profil prüft Seitenhalbierende als Verbindung eines Eckpunkts mit dem Mittelpunkt der Gegenseite und verlangt Konstruktion plus Kontrolle. Drei Fälle variieren Dreiecksform, gewählte Seite und Koordinatenprüfung; Senkrecht- oder Winkelhalbierung wird ausdrücklich nicht vorausgesetzt, und Aussagen über Schwerpunktkonkurrenz liegen außerhalb dieses Ziels. EN: The profile assesses a median as joining a vertex to the midpoint of the opposite side and requires both construction and checking. Three cases vary triangle shape, chosen side, and coordinate verification; perpendicularity or angle bisection is explicitly not assumed, and centroid concurrency claims lie outside this goal.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "median-construction",
+            "essentialUnderstandingDe": "Die Seitenhalbierende zu einer Seite entsteht, indem deren Mittelpunkt konstruiert und mit dem gegenüberliegenden Eckpunkt verbunden wird; jedes nicht entartete Dreieck besitzt zu jeder Seite eine solche Gerade.",
+            "essentialUnderstandingEn": "The median to a side is obtained by constructing that side's midpoint and joining it to the opposite vertex; every non-degenerate triangle has one such line for each side.",
+            "observablePerformanceDe": "Die lernende Person konstruiert für neue Dreiecke die Seitenmittelpunkte und verbindet jeden mit dem richtigen gegenüberliegenden Eckpunkt, wobei die Schritte dokumentiert werden.",
+            "observablePerformanceEn": "For fresh triangles, the learner constructs side midpoints and joins each to the correct opposite vertex, documenting the steps."
+          },
+          {
+            "id": "median-verification-and-distinction",
+            "essentialUnderstandingDe": "Geprüft wird durch gleiche Teilstrecken auf der Gegenseite und den Eckpunktbezug; eine Seitenhalbierende muss im allgemeinen weder senkrecht auf der Seite stehen noch einen Eckwinkel halbieren.",
+            "essentialUnderstandingEn": "Verification uses equal subsegments on the opposite side and the relation to the vertex; in general, a median need neither be perpendicular to the side nor bisect a vertex angle.",
+            "observablePerformanceDe": "Die lernende Person kontrolliert den Mittelpunkt und weist falsche Konstruktionen zurück, die nur Senkrecht- oder Winkelbedingungen erfüllen.",
+            "observablePerformanceEn": "The learner checks the midpoint and rejects incorrect constructions that satisfy only perpendicular or angle conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["median-construction", "median-verification-and-distinction"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "triangle-shape", "textDe": "spitzes, stumpfes oder rechtwinkliges ungleichseitiges Dreieck", "textEn": "acute, obtuse, or right scalene triangle"},
+          {"id": "target-side", "textDe": "Seitenhalbierende zu unterschiedlichen Gegenseiten", "textEn": "median to different opposite sides"},
+          {"id": "verification-mode", "textDe": "Zirkel-/Linealkontrolle oder Koordinatenmittelpunkt", "textEn": "compass/ruler check or coordinate midpoint"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-medians-base",
+            "taskDemandDe": "Zeichne ein ungleichseitiges Dreieck ABC und konstruiere alle drei Seitenhalbierenden, indem du jeden Seitenmittelpunkt bestimmst. Dokumentiere für jede Gerade den zugehörigen Eckpunkt und die halbierte Gegenseite.",
+            "taskDemandEn": "Draw a scalene triangle ABC and construct all three medians by determining every side midpoint. For each line, document its corresponding vertex and bisected opposite side.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert M_a auf BC mit BM_a=M_aC und verbindet A mit M_a, analog für die beiden anderen Seiten; die Prüfung bezieht sich jeweils auf gleiche Teilstrecken.",
+            "expectedPerformanceEn": "The learner constructs M_a on BC with BM_a=M_aC and joins A to M_a, analogously for the other sides; each check uses equal subsegments.",
+            "understandingFocusDe": "Direkter Nachweis der vollständigen Konstruktion und eindeutigen Eckpunkt-Seiten-Zuordnung.",
+            "understandingFocusEn": "Direct evidence of complete construction and unambiguous vertex-side matching."
+          },
+          {
+            "id": "coordinate-median-transfer",
+            "taskDemandDe": "Gegeben sind A(1|5), B(−3|−1) und C(7|3). Bestimme den Mittelpunkt von BC, formuliere die Seitenhalbierende von A parametrisch und prüfe, ob der Punkt P(3|2) auf ihr liegt.",
+            "taskDemandEn": "Given A(1,5), B(−3,−1), and C(7,3), determine the midpoint of BC, write the median from A parametrically, and check whether P(3,2) lies on it.",
+            "expectedPerformanceDe": "Die lernende Person erhält M=(2|1), die Gerade x=A+t(M−A)=(1|5)+t(1|−4); P führt aus der x-Komponente zu t=2, aber dann y=−3 statt 2, liegt also nicht auf der Seitenhalbierenden.",
+            "expectedPerformanceEn": "The learner obtains M=(2,1) and line x=A+t(M−A)=(1,5)+t(1,−4); P gives t=2 from the x-component but then y=−3 rather than 2, so it is not on the median.",
+            "understandingFocusDe": "Erster unabhängiger Transfer von der Zirkelkonstruktion zu Mittelpunkt und Geradenprüfung in Koordinaten.",
+            "understandingFocusEn": "First independent transfer from compass construction to midpoint and line verification in coordinates."
+          },
+          {
+            "id": "false-perpendicular-claim-transfer",
+            "taskDemandDe": "Jemand behauptet: Jede Seitenhalbierende sei zugleich eine Mittelsenkrechte und Winkelhalbierende. Widerlege die Behauptung an einem selbst gewählten ungleichseitigen Dreieck und nenne den Sonderfall, in dem mehrere Eigenschaften zusammenfallen können.",
+            "taskDemandEn": "Someone claims that every median is also a perpendicular bisector and an angle bisector. Refute the claim using a scalene triangle of your own choice and state a special case in which several properties can coincide.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert eine Medianlinie über den Seitenmittelpunkt und zeigt, dass sie im gewählten Fall weder senkrecht steht noch den Eckwinkel halbiert; im gleichschenkligen Dreieck kann die Medianlinie zur Basis diese Eigenschaften zusätzlich besitzen.",
+            "expectedPerformanceEn": "The learner constructs a median through the side midpoint and shows that in the chosen case it is neither perpendicular nor angle-bisecting; in an isosceles triangle the median to the base may additionally have these properties.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur begrifflichen Abgrenzung und ihrem Symmetrie-Sonderfall; Schwerpunktkonkurrenz wird nicht vorausgesetzt.",
+            "understandingFocusEn": "Second independent transfer to conceptual distinction and its symmetry special case; centroid concurrency is not assumed."
+          }
+        ]
+      }
+    }
+  ]
+}

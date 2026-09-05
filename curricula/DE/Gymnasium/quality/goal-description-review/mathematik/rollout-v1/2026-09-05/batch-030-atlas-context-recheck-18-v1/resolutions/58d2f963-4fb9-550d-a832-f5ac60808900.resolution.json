@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-resolution-58d2f963-4fb9-550d-a832-f5ac60808900",
+  "goal": {
+    "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:019b103903500ef91caeadb83218a753fe8d708b031c65d2a747f237e9cb7328",
+    "pageFingerprint": "sha256:89efbbeca5f2e7d30ad412d3bb50c7741fcf2c8003ed3b21051652f6b58f8d8c",
+    "goalReviewContextFingerprint": "sha256:53af453c03f59781b647f1bebb56fb2b4070bdaf7e103482d32da3a168d3bfd6",
+    "finalText": {
+      "titleDe": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+      "titleEn": "Differentiate transformed sine and cosine functions using the chain rule",
+      "descriptionDe": "Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.",
+      "descriptionEn": "The learner can differentiate functions of the form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ or $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ using the chain rule and explain the role of the inner linear transformation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-a",
+      "campaignDigest": "sha256:a217a7586aff4e520f05f1f96adcd8dc174aeeefd2dab38b47ad651520d63e66",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "goalReviewContextFingerprint": "sha256:53af453c03f59781b647f1bebb56fb2b4070bdaf7e103482d32da3a168d3bfd6",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "runManifestDigest": "sha256:bf56ce1bf1e81ec01e3ad54f3ed6611eae7a43815e038ffe6d20ad500e1592bd",
+      "resultsDigest": "sha256:a1249e669cb125274bea20b1a0201c9f30961651729bb69b1994d89db2b0e571",
+      "recordId": "mathematik-b030-atlas-context-recheck-a-record-013",
+      "recordDigest": "sha256:dd6ed69b9e033ec2c838a00f711d52d656d9548a0fd4347988a318b775b84a29"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-b",
+      "campaignDigest": "sha256:70cb69393ff4a12787240d27c30c2d0f933742bb18230f2e6f194b442822d682",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "goalReviewContextFingerprint": "sha256:53af453c03f59781b647f1bebb56fb2b4070bdaf7e103482d32da3a168d3bfd6",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:3d3d4435d09327a9b8c50d5033b10c1338e76965b8033809edcba14f128b7c7c",
+      "resultsDigest": "sha256:83d636c8419981f63489931dfbb62712ccd949f1ec14900c00c6712966f62b82",
+      "recordId": "mathematik-b030-b-r13-trig-chain-rule",
+      "recordDigest": "sha256:08fdde6a19112ced71c7c84da972d99d04bec565db9ede0c0006db8156fe4516"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:e39c6377655c66470ad7c61b22deea31649467cc06d732bf94e4cae07941dd8c"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905",
+    "manifestDigest": "sha256:9c27f7417c99d459d4879725600e84188a9d0d5bb6aee17e77d6937545dfb89e",
+    "manifestFingerprint": "sha256:d6a9e6537309194fb0d2135badf125a27a9109a468e09fa52fae26a8bf1af05e",
+    "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-013"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-013",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B030 subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T22:52:47.928Z",
+    "rationaleDe": "Beide unabhängigen Runden bestätigen das Ableiten der angegebenen transformierten Sinus- und Kosinusfunktionen und das Erklären des inneren linearen Faktors als fachlich korrekte Kettenregelkompetenz. Der aktuelle Text bleibt unverändert. Runde A ist stärker, weil sie die äußere Ableitung am inneren Argument und den Faktor b ausdrücklich verbindet und Vorzeichen, Phase und inneren Faktor an veränderten Sinus- und Kosinusfällen kontrollieren lässt; Runde B bleibt vollständig gebunden.",
+    "rationaleEn": "Both independent rounds confirm differentiating the stated transformed sine and cosine functions and explaining the effect of the inner linear factor as a mathematically correct chain-rule competence. The current text is retained. Round A is stronger because it explicitly connects evaluation of the outer derivative at the inner argument with factor b and checks sign, phase, and the inner factor in changed sine and cosine cases; Round B remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei der Verkettung wird die Ableitung der äußeren Sinus- oder Kosinusfunktion an der inneren Stelle mit der inneren Ableitung b multipliziert; a skaliert das Ergebnis, c verschiebt die Phase und die additive Konstante d trägt nichts zur Ableitung bei.",
+      "essentialUnderstandingEn": "For the composition, the derivative of the outer sine or cosine function at the inner input is multiplied by the inner derivative b; a scales the result, c shifts the phase, and the additive constant d contributes nothing to the derivative.",
+      "observablePerformanceDe": "Die lernende Person leitet transformierte Sinus- und Kosinusterme schrittweise ab, kennzeichnet innere und äußere Funktion und erklärt insbesondere den zusätzlichen Faktor b sowie die Rollen von a, c und d im Ergebnis.",
+      "observablePerformanceEn": "The learner differentiates transformed sine and cosine terms step by step, identifies the inner and outer functions, and explains in particular the additional factor b and the roles of a, c, and d in the result.",
+      "transferExpectationDe": "Bei einer äquivalent, aber anders geschriebenen inneren linearen Funktion oder bei negativen Transformationsparametern erkennt die lernende Person die Verkettung, bestimmt die innere Ableitung und prüft Vorzeichen, Faktor und Phasenlage des Ergebnisses.",
+      "transferExpectationEn": "For an equivalent but differently written inner linear function or negative transformation parameters, the learner recognizes the composition, determines the inner derivative, and checks the sign, factor, and phase of the result."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-4fde5ebc3db958905313c624be3f4a3dbcbfe3b80f18b66ed2093b36c69018c7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e8d9ac6358d4f9660f7a7870da9706b78f0e0ec885f0652e28f3a2dd8fe2f831"
+}

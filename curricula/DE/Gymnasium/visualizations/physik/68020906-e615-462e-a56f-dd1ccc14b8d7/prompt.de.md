@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `68020906-e615-462e-a56f-dd1ccc14b8d7`
 - Titel: Longitudinal- und Transversalwellen unterscheiden
-- Beschreibung: Die lernende Person kann Longitudinal- und Transversalwellen anhand der Schwingungsrichtung, Ausbreitungsrichtung und charakteristischer Beispiele unterscheiden.
+- Beschreibung: Die lernende Person kann Longitudinal- und Transversalwellen danach unterscheiden, ob die lokale Schwingungsrichtung parallel beziehungsweise senkrecht zur Ausbreitungsrichtung verläuft, und charakteristische Beispiele anhand dieses Kriteriums begründet zuordnen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Longitudinal- und Transversalwellen unterscheiden
-Beschreibung: Die lernende Person kann Longitudinal- und Transversalwellen anhand der Schwingungsrichtung, Ausbreitungsrichtung und charakteristischer Beispiele unterscheiden.
+Beschreibung: Die lernende Person kann Longitudinal- und Transversalwellen danach unterscheiden, ob die lokale Schwingungsrichtung parallel beziehungsweise senkrecht zur Ausbreitungsrichtung verläuft, und charakteristische Beispiele anhand dieses Kriteriums begründet zuordnen.
 
 Zusatzanweisung:
 Pflichtinhalt:

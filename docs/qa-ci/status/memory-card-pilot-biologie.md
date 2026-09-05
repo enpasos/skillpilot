@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/reportMemoryCardPilotDossier.ts`
 > Source of truth: `docs/qa-ci/status/curriculum-quality-status.json`
 
-Erzeugt aus `docs/qa-ci/status/curriculum-quality-status.json`; Status-Snapshot erzeugt am 2026-06-01T21:13:21.801Z.
+Erzeugt aus `docs/qa-ci/status/curriculum-quality-status.json`; Status-Snapshot erzeugt am 2026-09-05T04:20:39.737Z.
 
 Dieses Dossier ist ein reproduzierbares semantisches Vorbereitungsartefakt. Es ist keine `CQR-302`-Konfiguration, kein Entscheidungsledger und kein `M6`-Anspruch.
 

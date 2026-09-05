@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:eeb16ef008566de809c0d02b71575816ebf3bea43e0d79235ba57622564fd688",
+  "reviewInputFingerprint": "sha256:a4a628ebd2b79edc738079e305a46f088c2d8e99294a0285c49d3377fef34dd5",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b031s-round-a-independent-20260902"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "d03f1cb6-c224-53db-ad91-76cc7827978d",
+      "firstRecordId": "physik-b031s-round-a-d03f1cb6-20260902",
+      "secondRecordId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5.record-001",
+      "firstRunId": "physik-b031s-round-a-independent-20260902",
+      "secondRunId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+      "firstRecordId": "physik-b031s-round-a-e7131fe3-20260902",
+      "secondRecordId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5.record-002",
+      "firstRunId": "physik-b031s-round-a-independent-20260902",
+      "secondRunId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+      "firstRecordId": "physik-b031s-round-a-0d2a4690-20260902",
+      "secondRecordId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5.record-003",
+      "firstRunId": "physik-b031s-round-a-independent-20260902",
+      "secondRunId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1c430e0a-b63e-5729-8715-a96a5a68740f",
+      "firstRecordId": "physik-b031s-round-a-1c430e0a-20260902",
+      "secondRecordId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5.record-004",
+      "firstRunId": "physik-b031s-round-a-independent-20260902",
+      "secondRunId": "physik-rollout-v1-batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1-20260902-first-pass-b.batch-001.openai-gpt5",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

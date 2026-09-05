@@ -1004,8 +1004,8 @@
     },
     {
       "legacyGoalId": "33ded94e-32cc-5c9d-b583-17039df865d2",
-      "canonicalGoalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
-      "matchType": "exact",
+      "canonicalGoalId": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+      "matchType": "partial",
       "reviewDecisionId": "33ded94e-32cc-5c9d-b583-17039df865d2"
     },
     {
@@ -2541,13 +2541,13 @@
     {
       "legacyGoalId": "by-math-m9-1-ff811135-s02-57b6175837",
       "canonicalGoalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
-      "matchType": "exact",
+      "matchType": "partial",
       "reviewDecisionId": "by-math-m9-1-ff811135-s02-57b6175837"
     },
     {
       "legacyGoalId": "by-math-m9-1-ff811135-s03-c5a02f22dc",
-      "canonicalGoalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
-      "matchType": "exact",
+      "canonicalGoalId": "f9e21454-857c-5a6a-8367-32a34fc0026b",
+      "matchType": "partial",
       "reviewDecisionId": "by-math-m9-1-ff811135-s03-c5a02f22dc"
     },
     {
@@ -2576,7 +2576,7 @@
     },
     {
       "legacyGoalId": "by-math-m9-2-1-c74ac5a2-s02-8b94049257",
-      "canonicalGoalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "canonicalGoalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
       "matchType": "exact",
       "reviewDecisionId": "by-math-m9-2-1-c74ac5a2-s02-8b94049257"
     },
@@ -5746,14 +5746,18 @@
         "7676b0f9-340d-4a91-ab1f-92745a8f88db"
       ],
       "matchType": "exact",
-      "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
-      "reviewedAt": "2026-05-07",
-      "reviewer": "codex",
+      "rationale": "Der als erster Source-Extraction-Aspekt erhaltene Lehrplantext zum indirekten Beweis der Irrationalität von √2 entspricht dem auf genau diese Beweisdeutung verengten kanonischen Ziel.",
+      "reviewedAt": "2026-09-05",
+      "reviewer": "codex-mathematics-b032-adjudication-2026-09-05",
       "evidence": {
-        "method": "legacy-by-mapping-projected-to-source-extraction",
+        "method": "batch-032-source-bound-structural-split-review",
         "sourceTopicCode": "M9.1",
         "sourceDocumentKey": "JGST9",
-        "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect"
+        "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect",
+        "adjudication": "mathematik-b032-2026-09-05",
+        "retainedCanonicalGoalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "newCanonicalGoalId": "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "routedAspect": "indirect-irrationality-proof"
       }
     },
     {
@@ -6062,16 +6066,20 @@
       "sourceSpan": "beschreiben für Funktionen mit Termen der Form a ⋅ xn in Abhängigkeit von a und n den Verlauf des zugehörigen Graphen sowie seine Symmetrie; zur Untersuchung und Veranschaulichung nutzen sie auch eine dynamische Mathematiksoftware.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "66077296-a8f8-4645-938b-7c3424cb2f14"
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533"
       ],
-      "matchType": "exact",
-      "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
-      "reviewedAt": "2026-05-07",
-      "reviewer": "codex",
+      "matchType": "partial",
+      "rationale": "Der Quelltext behandelt Funktionen a · x^n mit natürlichem Exponenten, Parameterwirkung, Graphverlauf und Symmetrie und gehört deshalb zum kanonischen Potenzfunktionsziel 30c013ac. Da dieses auch ganzzahlige Exponenten und einen allgemeineren Eigenschaftenvergleich umfasst, ist die Kante konservativ partial; die frühere Wurzelfunktionskante 66077296 war fachlich unbelegt.",
+      "reviewedAt": "2026-09-05",
+      "reviewer": "codex-mathematics-b032-adjudication-2026-09-05",
       "evidence": {
-        "method": "legacy-by-mapping-projected-to-source-extraction",
+        "method": "batch-032-source-bound-mapping-correction",
         "sourceTopicCode": "M9.5",
-        "sourceDocumentKey": "JGST9"
+        "sourceDocumentKey": "JGST9",
+        "adjudication": "mathematik-b032-2026-09-05",
+        "previousCanonicalGoalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "correctedCanonicalGoalId": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+        "correctionBasis": "official-source-span-a-times-x-to-n-graph-and-symmetry"
       }
     },
     {
@@ -10704,17 +10712,21 @@
       "canonicalGoalIds": [
         "7676b0f9-340d-4a91-ab1f-92745a8f88db"
       ],
-      "matchType": "exact",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel ff811135-d54c-532a-82e1-a3ef98a1feeb; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "matchType": "partial",
+      "rationale": "Die Reflexion über die zentrale Bedeutung des Beweisens wird durch das konkrete indirekte Beweisziel nur exemplarisch angebahnt und deshalb konservativ partial zugeordnet.",
+      "reviewedAt": "2026-09-05",
+      "reviewer": "codex-mathematics-b032-adjudication-2026-09-05",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "batch-032-source-bound-structural-split-review",
         "parentSourceGoalId": "ff811135-d54c-532a-82e1-a3ef98a1feeb",
         "sourceSplitIndex": 2,
         "sourceSplitPartCount": 3,
         "sourceTopicCode": "M9.1",
-        "sourceDocumentKey": "JGST9"
+        "sourceDocumentKey": "JGST9",
+        "adjudication": "mathematik-b032-2026-09-05",
+        "retainedCanonicalGoalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "newCanonicalGoalId": "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "routedAspect": "indirect-irrationality-proof"
       }
     },
     {
@@ -10723,19 +10735,23 @@
       "sourceSpan": "Sie begründen die Notwendigkeit, die Menge der rationalen Zahlen zu erweitern, nennen Quadratwurzeln und andere irrationale Zahlen (u. a. π) als Beispiele reeller nicht rationaler Zahlen und sind sich der kulturhistorischen Bedeutung dieser Zahlbereichserweiterung bewusst.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "7676b0f9-340d-4a91-ab1f-92745a8f88db"
+        "f9e21454-857c-5a6a-8367-32a34fc0026b"
       ],
-      "matchType": "exact",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel ff811135-d54c-532a-82e1-a3ef98a1feeb; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "matchType": "partial",
+      "rationale": "Die Notwendigkeit der Erweiterung zu den reellen Zahlen und Beispiele irrationaler Zahlen sind durch den neuen Child abgedeckt; die zusätzlich genannte kulturhistorische Bedeutung bleibt außerhalb dieses atomaren Ziels, daher partial.",
+      "reviewedAt": "2026-09-05",
+      "reviewer": "codex-mathematics-b032-adjudication-2026-09-05",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "batch-032-source-bound-structural-split-review",
         "parentSourceGoalId": "ff811135-d54c-532a-82e1-a3ef98a1feeb",
         "sourceSplitIndex": 3,
         "sourceSplitPartCount": 3,
         "sourceTopicCode": "M9.1",
-        "sourceDocumentKey": "JGST9"
+        "sourceDocumentKey": "JGST9",
+        "adjudication": "mathematik-b032-2026-09-05",
+        "retainedCanonicalGoalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "newCanonicalGoalId": "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "routedAspect": "real-number-extension-and-classification"
       }
     },
     {
@@ -10828,19 +10844,23 @@
       "sourceSpan": "sie bestimmen für Beispiele derart angegebener Funktionen jeweils die Anzahl der Nullstellen und die Lösungen der zugehörigen Gleichung. Zur Untersuchung und Veranschaulichung dieser Zusammenhänge nutzen sie auch eine dynamische Mathematiksoftware.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "5bced7dc-6557-4af1-9e70-d87f850d3b7f"
+        "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600"
       ],
       "matchType": "exact",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel c74ac5a2-32bb-5c9c-af1a-627fe7b55782; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "rationale": "Der eigenständige Source-Extraction-Aspekt verlangt die Anzahl der Nullstellen sowie die graphische und rechnerische Bestimmung der Lösungen der zugehörigen Gleichung. Er entspricht damit exakt dem adjudizierten neuen kanonischen Nullstellenziel; die reine Parameterwirkung bleibt am Parent-Aspekt c74ac5a2.",
+      "reviewedAt": "2026-09-05",
+      "reviewer": "codex-mathematics-b032r-vertex-form-split-adjudication-2026-09-05",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "batch-032r-source-exact-structural-split-adjudication",
         "parentSourceGoalId": "c74ac5a2-32bb-5c9c-af1a-627fe7b55782",
         "sourceSplitIndex": 2,
         "sourceSplitPartCount": 2,
         "sourceTopicCode": "M9.2.1",
-        "sourceDocumentKey": "JGST9"
+        "sourceDocumentKey": "JGST9",
+        "adjudication": "mathematik-b032r-vertex-form-split-2026-09-05",
+        "retainedCanonicalGoalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+        "newCanonicalGoalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
+        "routedAspect": "vertex-form-zeros-and-equation-solutions"
       }
     },
     {

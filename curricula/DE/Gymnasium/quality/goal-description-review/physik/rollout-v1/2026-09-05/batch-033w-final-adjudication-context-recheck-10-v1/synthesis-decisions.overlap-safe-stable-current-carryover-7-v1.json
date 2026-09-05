@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-physics-b033w-final-adjudication-2026-09-05",
+  "synthesizedAt": "2026-09-05T02:03:51.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905",
+    "batchManifestDigest": "sha256:bfcc5295632b374d305ca2848afc3a38817808550c30b7fdf2a718ef0fd4c8b9",
+    "configDigest": "sha256:d2d3f86e5ec00fee902a8677ce9bc4815281c7cfacc35697e263ac43de0b2eb6",
+    "bundleFingerprint": "sha256:96b802aeccdb8a0bf6f059bb2c46f0281f8187c42af1b339bc1e2785b1410a0c",
+    "bookDigest": "sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9",
+    "reviewInputFingerprint": "sha256:0ea27e49abd75781abc5968748b506fe53a9663a332a7dd9bf393d5a27907900",
+    "dualSummaryDigest": "sha256:fc9a2a36d72ba239c738f0742505bba8d79bb95138d8a9053adc18d015917664",
+    "canonicalLandscapeDigest": "sha256:feab56ab0e3d0c8cfce8a48f41aceabdda2e45c86512e6746b0a303b9a297736"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-a",
+      "campaignDigest": "sha256:535376e93652a0e86ace79b84bfaaf708462edf8fed1a80d14c8da7c3d9806a6",
+      "roundId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:0ea27e49abd75781abc5968748b506fe53a9663a332a7dd9bf393d5a27907900",
+      "batchId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:00d8f7c9457388b14c113bde47d2315ec47790d9e154b23b5ba9cc15071debef",
+      "runId": "physik-b033w-round-a-gpt5-20260905",
+      "runManifestDigest": "sha256:db15b8479a86877aef61f17b38f42814b8ac2d66b960b63fae3e53663ef9adc0",
+      "resultsDigest": "sha256:00af759c9d326df935a274344b1e201f10478db5d51e1abdc41a0519af89b207"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-b",
+      "campaignDigest": "sha256:eebf288171c755a199f282ed2c1a5c8f1cfdbc574a1b333fa8ac2b52af7e2c9c",
+      "roundId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:0ea27e49abd75781abc5968748b506fe53a9663a332a7dd9bf393d5a27907900",
+      "batchId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:dac12547b8d65decc28c8e2c9676e2d200f36881d1d48336c5b20913f8d58cbb",
+      "runId": "codex-b033w-round-b-2018751b-83ab-4c27-a0a0-c91e66fcf619",
+      "runManifestDigest": "sha256:8086cace0d2a95502d7369bf39b33c1416d0b38de54ab64e4c64c008a6ce6b63",
+      "resultsDigest": "sha256:ac4554de37f15d3c53788024655390d5f0557198f0bf38d73010f10a24437b73"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-001",
+      "goalId": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:44bbf88482f5c34b9dc3e28516b41da2992d30d7bbc1cbca5cbe7c29adcd7ce3",
+      "pageFingerprint": "sha256:5860925b1c41e0dbc8fc33ae42929b8f4d1bd44c69b5ad587ee6158b20c09dc3",
+      "goalReviewContextFingerprint": "sha256:54ae06963705e456b4fedc34e6a1b9681848515a833efb657b9f73ffb995e08d",
+      "finalText": {
+        "titleDe": "Braunsche Röhre (Oszilloskop)",
+        "titleEn": "Cathode-Ray Tube (Oscilloscope)",
+        "descriptionDe": "Die lernende Person kann erklären, wie in der Braunschen Röhre das von einer Ablenkspannung erzeugte elektrische Feld die vertikale Lage des Elektronenstrahls auf dem Leuchtschirm bestimmt und eine Zeitbasis den Strahl horizontal führt, sodass ein Oszilloskop den zeitlichen Spannungsverlauf darstellt; eine magnetische Ablenkung kann sie davon qualitativ unterscheiden.",
+        "descriptionEn": "The learner can explain how, in a cathode-ray tube, the electric field produced by a deflection voltage determines the electron beam's vertical position on the fluorescent screen and a time base sweeps the beam horizontally so that an oscilloscope displays voltage as a function of time; they can qualitatively distinguish magnetic deflection from this process."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-5fda8623",
+          "recordDigest": "sha256:c4d628806711412238d7d563381781d21ce292f6277c9cf37bdfd61b6899bff9"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-01",
+          "recordDigest": "sha256:94aec1202e0409c592692022978831937e2e11991f14299b84fadf4d5ba40034"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen den aktuellen zweisprachigen Text zur vertikalen elektrischen Ablenkung, horizontalen Zeitbasis und qualitativen Abgrenzung magnetischer Ablenkung; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the current bilingual text on vertical electric deflection, the horizontal time base, and the qualitative distinction from magnetic deflection; the second round supplies the selected concrete understanding evidence."
+    },
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-002",
+      "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a84495d204bf0ccdc70a5ff739b8482f6bbbe9581f4b95a095a45cb029f4149",
+      "pageFingerprint": "sha256:449dcea6d359006701de256a59d03b3f8a1218c5c38b6d7bf3f64dab57f12b00",
+      "goalReviewContextFingerprint": "sha256:a9511f3cfc0d6bbc8e10eb2a3f77f678d8126880bce1cbb9efb57fa08daabadd",
+      "finalText": {
+        "titleDe": "Methode: Lösungsansatz für DGL (Exponentialfunktion)",
+        "titleEn": "Method: Exponential Ansatz for Differential Equations",
+        "descriptionDe": "Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen, in denen die Änderungsrate proportional zur Zustandsgröße ist (z. B. bei der RC-Entladung), einen passenden Exponentialansatz wählen und durch Ableiten prüfen, ob er die Differenzialgleichung und die Anfangsbedingung erfüllt.",
+        "descriptionEn": "The learner can choose an appropriate exponential ansatz for simple physics differential equations in which the rate of change is proportional to the state variable (e.g., RC discharge) and verify by differentiation that it satisfies the differential equation and the initial condition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-09f2cdbd",
+          "recordDigest": "sha256:d102db7ef91039ff032eec989cabbf49d18d43bd729ebceb1606ede0dfc57020"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-02",
+          "recordDigest": "sha256:bf766e8f5e0067e5ebf6d3858beb0e754cf63a6620f55a29589a7e6994053987"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die klar begrenzte Methode für proportionalitätsbestimmte Differenzialgleichungen einschließlich Ableitungs- und Anfangsbedingungsprüfung; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the clearly bounded method for proportional-rate differential equations, including differentiation and initial-condition checks; the second round supplies the selected concrete understanding evidence."
+    },
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-003",
+      "goalId": "330808f6-789a-583d-86df-e271a7683d8b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f32ac38681fcb83aa1a83da591e53770c6178a9ab61bf5ad485060e97325f959",
+      "pageFingerprint": "sha256:d06b6370a785c8c9adc2b6f15fbc0a2dcffe57ebd8bb4dcae5792ee6cfd6812c",
+      "goalReviewContextFingerprint": "sha256:fa4d1c7564efe756c6bd02b0c9ba950f030eff69f24eb41c65c710a1c1591320",
+      "finalText": {
+        "titleDe": "Differenzialgleichung des RC-Kreises lösen",
+        "titleEn": "Solve the RC Circuit Differential Equation",
+        "descriptionDe": "Die lernende Person kann für die Entladung eines Kondensators aus einer konsistenten Strom- und Spannungskonvention sowie den Beziehungen U_R = RI und Q = CU die Differenzialgleichung aufstellen, sie mit der Anfangsbedingung lösen und die exponentielle Lösung einschließlich der Zeitkonstante RC physikalisch deuten.",
+        "descriptionEn": "The learner can use a consistent current and voltage convention together with the relations U_R = RI and Q = CU to set up the differential equation for a discharging capacitor, solve it with the initial condition, and physically interpret the exponential solution, including the time constant RC."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-330808f6",
+          "recordDigest": "sha256:9dd9b2e93dd1770f9abb848dc4d3f373ff823f7516ce596329f75ea35c86f98e"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-03",
+          "recordDigest": "sha256:2dc95f0d4a1eef641926c2ddc7af9eee51d35a3d21652862797b739d06b8137a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die zusammenhängende Modellierungs-, Lösungs- und Deutungskompetenz für die RC-Entladung mit konsistenter Vorzeichenkonvention; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the coherent modelling, solution, and interpretation competence for RC discharge with a consistent sign convention; the second round supplies the selected concrete understanding evidence."
+    },
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-004",
+      "goalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:26e89f2828faf59cc690206a305c090e7764dad5526ed0586d2c0c921b6d2362",
+      "pageFingerprint": "sha256:9b2e2445f70b2eb4d1b0209ca0386bb35245f602c38221c79e7fab20d80620ac",
+      "goalReviewContextFingerprint": "sha256:060ce288073d764c9c1fc6098467046bb20b6cab4f0615c16e77885194ac3be1",
+      "finalText": {
+        "titleDe": "Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären",
+        "titleEn": "Explain saltatory conduction through active regeneration and membrane properties",
+        "descriptionDe": "Die lernende Person kann erklären, wie spannungsabhängige Natriumkanäle die Depolarisation des Aktionspotenzials an Ranvier-Schnürringen regenerieren und Kaliumkanäle zur Repolarisation beitragen, während der erhöhte Membranwiderstand und die verringerte Membrankapazität myelinisierter Internodien eine schnelle passive Ausbreitung mit geringen Leckströmen ermöglichen, und passive Ausbreitung von aktiver Regeneration unterscheiden.",
+        "descriptionEn": "The learner can explain how voltage-gated sodium channels regenerate action-potential depolarization at nodes of Ranvier and potassium channels contribute to repolarization, while the increased membrane resistance and reduced membrane capacitance of myelinated internodes enable rapid passive spread with little leakage, and distinguish passive spread from active regeneration."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-8fbae050",
+          "recordDigest": "sha256:94753462f2bae9bc6c9c4f461913fc2dbc28106846775cb6cc3cb5c93a1c8c56"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-05",
+          "recordDigest": "sha256:183fcf55fd5a4397e575c23a48fdc5ae815f49241bafe6b4c49f79d4ba10426c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die kausale Einheit aus passiver internodaler Ausbreitung, aktiver Regeneration und den unterschiedlichen Kanalrollen; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the causal unity of passive internodal spread, active regeneration, and the distinct channel roles; the second round supplies the selected concrete understanding evidence."
+    },
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-005",
+      "goalId": "0b08aed8-3c0f-5b38-844c-1bb363abbf68",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5f5a002fb35e5c48a150d410e90000bf5d89f1a4b2817b21335c3df8756f3504",
+      "pageFingerprint": "sha256:1cdc1e4e04c5ee1832aecd43d4446279dbf68c77364246bf33e9834f98d1b2ca",
+      "goalReviewContextFingerprint": "sha256:d799f7c13b149db5f01981f6eb725fce52ca69ad26b917dc73d6881bff0964aa",
+      "finalText": {
+        "titleDe": "Biologische und künstliche neuronale Verschaltungen mit einem gemeinsamen Modell vergleichen",
+        "titleEn": "Compare Biological and Artificial Neural Circuits Using a Shared Model",
+        "descriptionDe": "Die lernende Person kann in gegebenen Diagrammen erregende und hemmende Verknüpfungen als gewichtete Beiträge zu einer Ausgabe deuten, dieses Verschaltungsmodell auf eine optische Täuschung und ein einfaches künstliches neuronales Netz übertragen und die Grenzen der Analogie benennen.",
+        "descriptionEn": "The learner can interpret excitatory and inhibitory connections in given diagrams as weighted contributions to an output, transfer this circuit model to an optical illusion and a simple artificial neural network, and identify the limits of the analogy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-0b08aed8",
+          "recordDigest": "sha256:69a304afcbf5100f5cfc546e9ca3a111b4db6328261c55e268097560c80a9b8b"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-06",
+          "recordDigest": "sha256:808125216bedebb9cff37c9abda2c0134a370da7f19595d1ce4df45351d4595b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die einzelne Vergleichskompetenz über ein gemeinsames gewichtetes Verschaltungsmodell einschließlich der Grenzen der biologisch-technischen Analogie; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the single comparison competence based on a shared weighted circuit model, including the limits of the biological-technical analogy; the second round supplies the selected concrete understanding evidence."
+    },
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-006",
+      "goalId": "74a74132-fa39-541c-8d3c-696cf228452d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27a9f8ca048e8fd9a07622eeaf562319bcb7411b70ebb1ca1b4f47523e5cfa68",
+      "pageFingerprint": "sha256:5ed9de1e68e33b74b2f1b57e0268ccd4b2f1322bf3cfb1dd18e5e744aa694c56",
+      "goalReviewContextFingerprint": "sha256:e52f180e505164f3bb8377b6a255341bae2d7d8370c7efa7e78b3fcf2d86d264",
+      "finalText": {
+        "titleDe": "Linearbeschleuniger modellieren",
+        "titleEn": "Model Linear Accelerator",
+        "descriptionDe": "Die lernende Person kann lineare Beschleunigerstufen über die Energiezunahme einer Ladung im elektrischen Feld klassisch modellieren und begründen, warum bei Geschwindigkeiten, die nicht mehr klein gegenüber der Lichtgeschwindigkeit sind, relativistische Beziehungen für Energie und Impuls erforderlich werden.",
+        "descriptionEn": "The learner can model linear accelerator stages classically through the energy gained by a charge in an electric field and justify why relativistic relations for energy and momentum are required when speeds are no longer small compared with the speed of light."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-74a74132",
+          "recordDigest": "sha256:4df801cae81f71577a997547101452a2e1c846871ea1a3f6b42436d4892550d7"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-08",
+          "recordDigest": "sha256:4820fc8685487c32a8d9e395003841e7a9ac36c05cc2bdf8be0eba7114259784"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen das klassische Stufenmodell des Linearbeschleunigers zusammen mit seiner relativistischen Geltungsgrenze; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the classical staged linear-accelerator model together with its relativistic validity boundary; the second round supplies the selected concrete understanding evidence."
+    },
+    {
+      "decisionId": "physik-b033w-overlap-safe-stable-current-carryover-7-v1-openai-codex-20260905-decision-007",
+      "goalId": "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ab45273b4c215ac4b12bda92207fc8d799388adb31fbfd480a76a80b62d68951",
+      "pageFingerprint": "sha256:3f21ee2d2174f5bb8b8064f3eb89623699f5cf81f6969fcf79c1667b4e833a8f",
+      "goalReviewContextFingerprint": "sha256:7cb978965feab2bf00955a95a837336fb0d70c1f25efc9b045781059ec6cd1fb",
+      "finalText": {
+        "titleDe": "Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger",
+        "titleEn": "Excursus: Relativistic Energy and Momentum in a Linear Accelerator",
+        "descriptionDe": "Die lernende Person kann am Beispiel eines Linearbeschleunigers erläutern, warum klassische Energie- und Impulsbeziehungen für Geschwindigkeiten nahe der Lichtgeschwindigkeit versagen, und die historische Bezeichnung „relativistische Massenzunahme“ so einordnen, dass die Ruhemasse invariant bleibt und die Zunahme von Energie und Impuls relativistisch beschrieben wird.",
+        "descriptionEn": "Using a linear accelerator as an example, the learner can explain why classical energy and momentum relations fail at speeds near the speed of light and contextualize the historical term “relativistic mass increase” by recognizing that rest mass remains invariant while increases in energy and momentum are described relativistically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033w-a-20260905-8d34228c",
+          "recordDigest": "sha256:9fb84296d6cde54d18a2ec72a4ef08b09ab0b07612e92aca1fb47ee19174a314"
+        },
+        "second": {
+          "recordId": "b033w-round-b-2018751b-record-09",
+          "recordDigest": "sha256:16170b51501c1adb405ca13acca7f606c6f4536d2b4999d1cfd4b73b2dd6f9dd"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die moderne Einordnung unveränderter Ruhemasse sowie relativistisch wachsender Energie und Impuls im Linearbeschleuniger; die zweite Runde liefert die ausgewählte konkrete Verständnisevidenz.",
+      "rationaleEn": "Both independent rounds confirm the modern account of invariant rest mass and relativistically increasing energy and momentum in a linear accelerator; the second round supplies the selected concrete understanding evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:8808ee2727042a0c7948b0aab5d5eefe8f5c352a2fa6d57da1f52a33aeba61d9"
+}

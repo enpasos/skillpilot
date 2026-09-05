@@ -327,3 +327,170 @@ Damit ist der Arbeitsbaum ein commit-fähiger, deterministisch fortsetzbarer
 Zwischenstand. B029 und B031 bleiben im In-flight-Ledger und zählen bis zu
 Resolution, Evidence-v2 und zentraler Registrierung ausdrücklich nicht zum
 Fortschritt. Nach diesem Nachweis wird die fachliche Bearbeitung angehalten.
+
+## Commit-fähiger Zwischenstopp am 5. September 2026
+
+Die fachliche Ausweitung wird nach der erneuten Stabilisierung wieder
+angehalten. Der streng validierte Rollout-Stand lautet:
+
+- Mathematik: 235 von 795 atomaren Zielen, also 29,6 Prozent; 560 offen.
+- Physik: 272 von 464 atomaren Zielen, also 58,6 Prozent; 192 offen.
+- zentrale blockierende Probleme: 0.
+
+Gegenüber dem vorherigen 234er-Zwischenstand erfüllt
+`f9e21454-857c-5a6a-8367-32a34fc0026b` nun zusätzlich das bislang offene
+Bildabdeckungsgate. Deshalb steigt der strenge End-to-End-Zähler um eins; es
+ist kein neu gestarteter Beschreibungsreview. Das unveränderte bilinguale
+Evidence-Profil wurde nach tatsächlicher visueller Kontextprüfung durch Root
+und einen unabhängigen Prüfer neu an den ergänzten Bildbezug gebunden.
+Die menschliche Profilfreigabe bleibt ausdrücklich offen.
+
+Nur zwei Ziele, deren aktueller fachlicher Kontext gegenüber ihrer früheren
+Prüfung verändert war, wurden für diesen Abschluss frisch doppelt blind
+geprüft. `f17935b0-189f-5e0c-988d-ce508b710097` (lineare Ungleichungen) und
+`7badac4d-2874-5b3a-87e8-bf8f4440b2a6` (Leiter, Nichtleiter und Halbleiter)
+erhielten jeweils zweimal `keep` und `create`; ihre aktuellen Resolutionen und
+Evidence-v2-Profile sind zentral registriert. Drei weitere kontextveränderte
+Altprüfungen wurden bewusst nicht mechanisch neu gebunden und nicht kurzfristig
+neu geprüft: `46bdcc16-418f-417a-89cf-033d7ae6c8cc`,
+`82597dfb-0ec6-4a77-abaf-e1d6bdd12041` und
+`f74c691b-0b76-54e0-8fd6-a22211994e0a`. Sie sind über gefilterte
+Eigentümerartefakte aus dem gezählten Zwischenstand herausgenommen und werden
+erst nach einer späteren vollständigen Doppelprüfung wieder angerechnet.
+
+Der In-flight-Ledger enthält beim Freeze genau drei fortsetzbare Arbeiten:
+
+1. Mathematik B032s, vier Ziele: beide Runden und die Dual-Summary sind
+   vollständig. Für `5bced7dc-6557-4af1-9e70-d87f850d3b7f` und
+   `f7dcf8c8-06c1-5972-b02a-9d35e5ab7600` stimmen beide Runden auf `keep`
+   überein. Bei `f8704a7b-e93d-4e32-b0f9-1b171545fe28` und
+   `e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e` ist die Atomizität ausdrücklich zu
+   synthetisieren; fachlich zu prüfen sind Definition gegenüber Näherung der
+   Quadratwurzel sowie Achsen-/Vorzeicheninformationen gegenüber
+   Extremum-/Monotonie-/Wertemengeninformationen.
+2. Mathematik B033, zwanzig disjunkte Atlasziele: beide Blindrunden und die
+   Dual-Summary sind vollständig; alle zwanzig Entscheidungen benötigen noch
+   die regelkonforme Synthese. Es wurde nichts vorzeitig registriert.
+3. Physik B033z, neun Relativitätsziele: der aktuelle Batch ist vorbereitet und
+   geprüft; beide Blindrunden stehen noch aus.
+
+Vor dem nächsten fachlichen Weiterlauf steht zunächst der ausdrücklich
+gewünschte Verfahrensreview an: sichere Wiederverwendung aktueller Nachweise,
+disjunkte Batch-Zuständigkeit, Kosten der beiden unabhängigen Runden und
+frühzeitige Prüfung aller abhängigen Gates. Die Qualitätsanforderungen und
+geschützten Floors werden dabei nicht abgesenkt.
+
+Vor teuren PDF- und Frontend-Builds müssen künftig alle günstigen Vorprüfungen
+gemeinsam grün sein: Graph und Kompositionssichten, Assessment-Routen,
+semantische und Evidence-Nachweise, Memory-Reviews, verpflichtende
+Bildabdeckung, Transparenzinventar sowie Paket-Zähler und Provenienzbindungen.
+Einzelne grüne Teilprüfungen reichen nicht als Startsignal für die abschließende
+Artefakterzeugung; dies vermeidet wiederholte Buch-Builds bei später entdeckten
+Abhängigkeitsänderungen.
+
+Danach wird beim Wiedereinstieg ausschließlich in dieser Reihenfolge fortgesetzt:
+B032s synthetisieren und gegebenenfalls sauber aufspalten, danach B033
+synthetisieren, anschließend die beiden B033z-Blindrunden durchführen. Erst
+vollständige Resolutionen plus aktuelle Evidence-v2-Profile dürfen den
+Fortschrittszähler wieder erhöhen. Neue Batches werden davor nicht ausgewählt.
+
+Die Stabilisierung hat keine Bilder neu generiert oder bestehende Bildbytes
+ersetzt. Für fünf abgespaltene Ziele werden fachlich passende vorhandene
+Abbildungen byte-identisch wiederverwendet. Da der Asset-Validator den
+Lernziel-Eigentümer im Dateipfad verlangt, erhalten die Kinder eigene Kopien
+mit dokumentierter Herkunft und zielbezogener Bildprüfung. Die drei bewusst
+ausgesetzten Ziele und alle unvollständigen
+In-flight-Batches bleiben aus den Prozentzahlen ausgeschlossen. Nach den
+abschließenden Reproduzierbarkeits-, Reifegrad-, Lernzielbuch-, Build-,
+Transparenz- und Freeze-Gates wird dieser Stand bis zur ausdrücklichen
+Wiederaufnahme eingefroren.
+
+### Technischer Abschlussnachweis: lokal abgeschlossen
+
+Am 5. September sind nach dem letzten fachlichen Route-Repair bereits bestätigt:
+
+- strenger Fortschritt 235/795 Mathematik und 272/464 Physik; null zentrale
+  Blocker, kein neues Review-Batch und keine neu generierten Bildbytes;
+- Bildabdeckung einschließlich Deferrals vollständig: Mathematik 722 aktive
+  Bilder und 73 dokumentierte Deferrals, Physik 415 und 49, jeweils null
+  reguläre Bildlücken; Originale und fünf Kindkopien sind hashgleich;
+- Transparenzinventar aktuell: 5.740 kanonische Gesamtknoten, 1.531
+  Visualisierungslinks und 1.519 Dateien mit C2PA-Containermarkern;
+  der vollständige Inventarcheck besteht;
+- Curriculum-CI vollständig bestanden: 54 von 54 Prüfungen, 297
+  Kompositionssichten und alle neun geschützten M6-Floors; der abschließende
+  Modell-Konformitätslauf einschließlich Gegenproben und bytegleichem
+  Wiederholungsbuild ist bestanden. Der Lauf verwendet
+  `SKILLPILOT_SOURCE_PDF_MODE=committed-bindings` und
+  `SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false`; dies ist keine Freigabe einer
+  vollständigen externen Paketveröffentlichung;
+- beide finalen Bücher einschließlich der fünf Bildzuordnungen gebaut:
+  Mathematik 795 Zielseiten plus zehn Vorspannseiten, Physik 464 plus sechs.
+  Vollständige Buchpipeline und separater Publication-Check bestanden;
+  PDF-SHA256 Mathematik
+  `c5669db502d52a25b3136f52091a36fd43a548770bd794ace05c745850355c99`,
+  Physik `518b1ed952380c32f1c8029c362db03655a2d9c93f798c38e735d4f145ffbd1f`;
+- Runtime-Ressourcen abgeglichen und abschließender Produktions-Frontend-Build
+  bestanden; Frontend-Shell-, Transparenz-Artefakt-, Transparenzinventar- und
+  Quellenbegründungs-Artefaktprüfungen ebenfalls bestanden;
+- vollständiges Lint grün; Authoring-Skripte nur typseitig bereinigt, nicht
+  erneut ausgeführt;
+- OpenAI-1.0.0-Review-Freeze und exakter Snapshot-Vergleich grün; nach der
+  belegten Marketplace-Copy-Korrektur sind 91 Node-Regressionen bestanden
+  (13 Freeze, 12 Marketplace, 45 OpenAI-Release, 21 Direct-Install-Release),
+  außerdem Publication- und Dokumentationschecks;
+- vollständiger Backend-Lauf vor der abschließenden Testdatumkorrektur mit
+  Corretto 25.0.2: 1.549 Tests, davon 1.547 bestanden, einer übersprungen und
+  genau der unten benannte Test fehlgeschlagen.
+  Die zuvor reparierten Fixtures und der unveränderte J8-Fokuserweiterungstest
+  sind in diesem Gesamtlauf bestanden;
+- nach der genehmigten, ausschließlich testseitigen Datumkorrektur alle 88
+  Tests von `LearnerServiceTest` am Samstag, 5. September, bestanden; zusätzlich
+  besteht der unveränderte Integrationstest
+  `LearnerLearningPlanServiceIntegrationTest.draftPreviewUsesAdditiveRuntimeMetricsWithoutChangingExistingPlansOrLearnerState`,
+  der die produktive Fälligkeitsauswertung über Freitag, Samstag, Sonntag und
+  Montag prüft. Produktcode und sämtliche Assertions sind unverändert. Die
+  Wiederholungsprüfung wurde deshalb auf die betroffene Klasse und diese
+  ergänzende Regression begrenzt; es wird kein erneuter vollständiger
+  Backend-Lauf nach der Testdatumkorrektur behauptet;
+- die zusätzliche Freeze-Ausnahme ist unter Abschnitt 6.52 dokumentiert.
+  Alle 50 früheren Ausnahmen, die übrigen Freeze-Felder und der bisherige
+  Dokumentationstext sind nachweislich unverändert; genau ein Eintrag für
+  Testdatei und Dokumentationsnachtrag wurde ergänzt. Alle 58 erneut
+  ausgeführten Freeze-/OpenAI-Release-Regressionen sowie Freeze-, exakter
+  OpenAI-Snapshot-, Plugin-/Versionierungs- und Dokumentationschecks bestehen.
+
+Der Arbeitsbaum ist **lokal für den Commit konsolidiert und geprüft**:
+Die CQR-104-Projektionsregel ist mit den präzisen CPV-211-Ausnahmen abgeglichen;
+beide Fächer haben wieder M6 und alle neun geschützten Floors bestehen. Die
+abschließende Bildabdeckungsprüfung fand fünf bislang unbebilderte Split-Kinder;
+deren begrenzte Bildwiederverwendung ist inzwischen vollständig geprüft.
+Die exakten Layer-A-Zähler der Paket-Konformitätsbaseline sind abgeglichen;
+zwei zusätzliche Redistribution-Assetrecords bleiben wahrheitsgemäß
+`pending-human-review`/`review-required`. Alle 736 vorherigen Assetentscheidungen
+und vier Klassenentscheidungen sind unverändert. Konformitätslauf und finale
+Buch-/Frontend-Erzeugung sind abgeschlossen. Der letzte bekannte technische
+Fehler betraf den Backend-Test
+`planPackageActivationEnablesFollowingAndSelectsTheFirstGoalWithoutAnotherAction`:
+Sein eintägiger Lernblock enthielt am Samstag keinen Arbeitstag. Der Product
+Owner hat die eng begrenzte Korrektur und Freeze-Hashfortschreibung am
+5. September ausdrücklich genehmigt. Der Testblock liegt nun auf dem letzten
+Freitag einschließlich heute, die Aktivierung weiterhin am aktuellen Berliner
+Datum. Die oben dokumentierten Wiederholungsprüfungen sind bestanden.
+Diese Testkorrektur ist eine Abschlussarbeit, keine Freigabe für weitere
+fachliche Reviewrunden. Es wurde kein Commit und kein Deployment dieses
+Arbeitsbaums ausgeführt; eine erfolgreiche Remote-CI nach dem späteren Push
+wird nicht vorweggenommen. Das Gesamtziel bleibt unvollständig und die
+fachliche Bearbeitung angehalten.
+
+Die unabhängig beauftragte Claude-Marketplace-Veröffentlichung 1.1.1 ist in
+PR #2 gemergt und an die verifizierte öffentliche Revision gebunden. Das ist
+keine Bestätigung einer erfolgreichen Aktualisierung einzelner Claude-Web-
+Accounts. Der konkret gezeigte Web-Dialog verweigert das erneute Hinzufügen
+mit „Dieser Marketplace wurde bereits hinzugefügt“ und aktualisiert damit
+nachweislich nicht die weiterhin sichtbare 1.0.4-Installation. Ein manueller
+Web-Refresh ist nicht belegt; die Anleitung erfindet weder Updateknöpfe noch
+Lösch-/Neuinstallations-Workarounds. Organisations- und Claude-Code-Dokumentation
+werden nicht als persönlicher Web-Akzeptanznachweis übertragen. Ein
+First-Party-Deployment oder ein Commit dieses Zwischenstands ist damit nicht
+erfolgt.

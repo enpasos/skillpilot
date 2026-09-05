@@ -2,10 +2,10 @@ export const CLAUDE_PLUGIN_PUBLICATION_INDEX_URL = '/api/public/claude/plugins/i
 export const CLAUDE_MARKETPLACE_REPOSITORY_URL = 'https://github.com/enpasos/skillpilot-claude-marketplace'
 export const CLAUDE_CONNECTOR_PRIVACY_URL = 'https://mcp-claude-v1.skillpilot.com/privacy'
 export const CLAUDE_PLUGIN_CURRENT_VERSION = '1.1.1'
-// The public marketplace repository still contains the historical 1.0.4
-// package. Keep it out of the first-party guide until the exact 1.1.1
-// repository revision has been published and accepted.
-export const CLAUDE_MARKETPLACE_INSTALLATION_ENABLED = false
+// The exact 1.1.1 marketplace revision and controlled-beta guide decision
+// are bound in marketplace-publication.json and checked by the regression.
+// Real-client acceptance remains pending and is not implied by this guide.
+export const CLAUDE_MARKETPLACE_INSTALLATION_ENABLED = true
 
 export interface ClaudePluginRequirements {
   minimumAge: number

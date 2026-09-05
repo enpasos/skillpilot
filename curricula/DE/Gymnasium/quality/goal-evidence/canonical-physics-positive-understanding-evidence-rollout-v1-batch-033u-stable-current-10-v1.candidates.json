@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b033u-stable-current-10-v1",
+  "reviewedAt": "2026-09-05T01:02:00.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-033u-stable-current-10-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-001 und physik-b033u-round-b-openai-gpt5-20260905-001.record.001. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-001 and physik-b033u-round-b-openai-gpt5-20260905-001.record.001. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Beim idealisierten Plattenkondensator ist das Feld zwischen hinreichend großen parallelen Platten fern der Ränder homogen; bei vorgegebener Spannung gilt dort $E=U/d$. Die Kapazität $C=Q/U$ ist eine Eigenschaft von Geometrie und Material und beträgt bei vollständiger homogener Füllung $C=\\varepsilon_0\\varepsilon_r A/d$.",
+            "essentialUnderstandingEn": "In the idealized parallel-plate capacitor, the field between sufficiently large parallel plates is uniform away from the edges; for a specified voltage, $E=U/d$ there. The capacitance $C=Q/U$ is a property of geometry and material and, with complete homogeneous filling, is $C=\\varepsilon_0\\varepsilon_r A/d$.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet an einer gegebenen Anordnung die Modellannahmen, bestimmt aus Spannung und Plattenabstand die Feldstärke, berechnet die Kapazität mit konsistenten SI-Einheiten und erläutert getrennt, wie Fläche, Abstand und relative Permittivität das Ergebnis beeinflussen.",
+            "observablePerformanceEn": "For a given arrangement, the learner identifies the model assumptions, determines field strength from voltage and plate separation, calculates capacitance with consistent SI units, and separately explains how area, separation, and relative permittivity affect the result."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Ein idealisierter Plattenkondensator besitzt bei großen parallelen Platten und vernachlässigbaren Randeffekten näherungsweise ein homogenes Innenfeld. Feldstärke und Kapazität verknüpfen Spannung, Plattenabstand, Plattenfläche und die Permittivität eines vollständig füllenden homogenen Dielektrikums unter jeweils angegebenen elektrischen Randbedingungen.",
+            "essentialUnderstandingEn": "An idealized parallel-plate capacitor with large parallel plates and negligible edge effects has an approximately uniform internal field. Field strength and capacitance relate voltage, plate separation, plate area, and the permittivity of a homogeneous dielectric that completely fills the gap under the stated electrical boundary conditions.",
+            "observablePerformanceDe": "Die lernende Person skizziert für einen gegebenen Plattenkondensator das Feld, bestimmt Feldstärke und Kapazität mit korrekten Größen und Einheiten und begründet die verwendeten Näherungen sowie die Abhängigkeiten von A, d und εr, statt nur Werte in Formeln einzusetzen.",
+            "observablePerformanceEn": "For a given parallel-plate capacitor, the learner sketches the field, determines field strength and capacitance with correct quantities and units, and justifies the approximations and the dependencies on A, d, and εr rather than merely substituting values into formulas."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Für einen neuen vollständig gefüllten Kondensator mit veränderter Plattenfläche, verändertem Abstand oder anderem Dielektrikum sagt die lernende Person die Änderungen von Feldstärke und Kapazität unter klar benannter Randbedingung voraus; bei Randfeldern oder nur teilweiser Füllung erkennt sie die Grenze der verwendeten Formeln.",
+            "taskDemandEn": "For a new fully filled capacitor with a changed plate area, separation, or dielectric, the learner predicts the changes in field strength and capacitance under a clearly stated boundary condition; when edge fields or only partial filling are present, the learner recognizes the limit of the formulas used.",
+            "expectedPerformanceDe": "Die lernende Person kennzeichnet an einer gegebenen Anordnung die Modellannahmen, bestimmt aus Spannung und Plattenabstand die Feldstärke, berechnet die Kapazität mit konsistenten SI-Einheiten und erläutert getrennt, wie Fläche, Abstand und relative Permittivität das Ergebnis beeinflussen.",
+            "expectedPerformanceEn": "For a given arrangement, the learner identifies the model assumptions, determines field strength from voltage and plate separation, calculates capacitance with consistent SI units, and separately explains how area, separation, and relative permittivity affect the result.",
+            "understandingFocusDe": "Beim idealisierten Plattenkondensator ist das Feld zwischen hinreichend großen parallelen Platten fern der Ränder homogen; bei vorgegebener Spannung gilt dort $E=U/d$. Die Kapazität $C=Q/U$ ist eine Eigenschaft von Geometrie und Material und beträgt bei vollständiger homogener Füllung $C=\\varepsilon_0\\varepsilon_r A/d$.",
+            "understandingFocusEn": "In the idealized parallel-plate capacitor, the field between sufficiently large parallel plates is uniform away from the edges; for a specified voltage, $E=U/d$ there. The capacitance $C=Q/U$ is a property of geometry and material and, with complete homogeneous filling, is $C=\\varepsilon_0\\varepsilon_r A/d$."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Bei einer neuen Anordnung mit verändertem Plattenabstand, veränderter Fläche oder einem anderen vollständig füllenden Dielektrikum sagt die lernende Person die Änderungen von Feldstärke und Kapazität voraus und unterscheidet dabei einen festgehaltenen Spannungswert von einer festgehaltenen Plattenladung.",
+            "taskDemandEn": "For a new arrangement with a changed plate separation, plate area, or completely filling dielectric, the learner predicts the changes in field strength and capacitance while distinguishing fixed voltage from fixed plate charge.",
+            "expectedPerformanceDe": "Die lernende Person skizziert für einen gegebenen Plattenkondensator das Feld, bestimmt Feldstärke und Kapazität mit korrekten Größen und Einheiten und begründet die verwendeten Näherungen sowie die Abhängigkeiten von A, d und εr, statt nur Werte in Formeln einzusetzen.",
+            "expectedPerformanceEn": "For a given parallel-plate capacitor, the learner sketches the field, determines field strength and capacitance with correct quantities and units, and justifies the approximations and the dependencies on A, d, and εr rather than merely substituting values into formulas.",
+            "understandingFocusDe": "Ein idealisierter Plattenkondensator besitzt bei großen parallelen Platten und vernachlässigbaren Randeffekten näherungsweise ein homogenes Innenfeld. Feldstärke und Kapazität verknüpfen Spannung, Plattenabstand, Plattenfläche und die Permittivität eines vollständig füllenden homogenen Dielektrikums unter jeweils angegebenen elektrischen Randbedingungen.",
+            "understandingFocusEn": "An idealized parallel-plate capacitor with large parallel plates and negligible edge effects has an approximately uniform internal field. Field strength and capacitance relate voltage, plate separation, plate area, and the permittivity of a homogeneous dielectric that completely fills the gap under the stated electrical boundary conditions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-002 und physik-b033u-round-b-openai-gpt5-20260905-001.record.002. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-002 and physik-b033u-round-b-openai-gpt5-20260905-001.record.002. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Das elektrische Potenzial ist eine skalare, vom gewählten Nullpunkt abhängige Größe; physikalisch messbare Spannungen sind Potenzialdifferenzen und bleiben bei einer gemeinsamen Verschiebung des Nullpunkts unverändert. Äquipotentiallinien verbinden gleiche Potenziale, stehen lokal senkrecht zu elektrischen Feldlinien und ihre räumliche Dichte bildet den Betrag des Potenzialgefälles ab.",
+            "essentialUnderstandingEn": "Electric potential is a scalar quantity that depends on the chosen zero; physically measurable voltages are potential differences and remain unchanged when the zero is shifted uniformly. Equipotential lines connect equal potentials, are locally perpendicular to electric field lines, and their spatial density represents the magnitude of the potential gradient.",
+            "observablePerformanceDe": "Die lernende Person bestimmt in einem vorgegebenen Feld Potenziale relativ zu einem benannten Nullpunkt, berechnet Spannungen mit korrektem Vorzeichen und Einheit, konstruiert passende Äquipotentiallinien und nutzt deren Verlauf und Abstand, um Feldrichtung und Änderungen der Feldstärke zu begründen.",
+            "observablePerformanceEn": "In a given field, the learner determines potentials relative to a stated zero, calculates voltages with the correct sign and unit, constructs suitable equipotential lines, and uses their course and spacing to justify field direction and changes in field strength."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Das elektrische Potenzial ist eine skalare, nur relativ zu einem festgelegten Nullpunkt bestimmte Größe; eine Spannung ist die Differenz zweier Potenziale. Äquipotentiallinien verbinden Punkte gleichen Potenzials und koordinieren die räumliche Potenzialdarstellung mit dem elektrischen Feld.",
+            "essentialUnderstandingEn": "Electric potential is a scalar quantity defined only relative to a specified zero, and a voltage is the difference between two potentials. Equipotential lines connect points of equal potential and coordinate the spatial potential representation with the electric field.",
+            "observablePerformanceDe": "Die lernende Person bestimmt in einem vorgegebenen Feld Potenziale und Potenzialdifferenzen mit konsistenter Vorzeichenkonvention, konstruiert passende Äquipotentiallinien und erklärt anhand der Darstellung, in welcher Richtung und wie stark sich das Potenzial räumlich ändert.",
+            "observablePerformanceEn": "In a given field, the learner determines potentials and potential differences using a consistent sign convention, constructs suitable equipotential lines, and uses the representation to explain the direction and magnitude of spatial potential change."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "In einem neuen Feld mit anderer Geometrie oder einem verschobenen Potenzialnullpunkt konstruiert und deutet die lernende Person die Äquipotentialdarstellung erneut und erklärt, welche Punktpotenziale sich ändern und warum Spannungen sowie das dargestellte Feld gleich bleiben oder sich geometriebedingt ändern.",
+            "taskDemandEn": "In a new field with a different geometry or a shifted zero of potential, the learner reconstructs and interprets the equipotential representation and explains which point potentials change and why voltages and the represented field remain the same or change because of the geometry.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt in einem vorgegebenen Feld Potenziale relativ zu einem benannten Nullpunkt, berechnet Spannungen mit korrektem Vorzeichen und Einheit, konstruiert passende Äquipotentiallinien und nutzt deren Verlauf und Abstand, um Feldrichtung und Änderungen der Feldstärke zu begründen.",
+            "expectedPerformanceEn": "In a given field, the learner determines potentials relative to a stated zero, calculates voltages with the correct sign and unit, constructs suitable equipotential lines, and uses their course and spacing to justify field direction and changes in field strength.",
+            "understandingFocusDe": "Das elektrische Potenzial ist eine skalare, vom gewählten Nullpunkt abhängige Größe; physikalisch messbare Spannungen sind Potenzialdifferenzen und bleiben bei einer gemeinsamen Verschiebung des Nullpunkts unverändert. Äquipotentiallinien verbinden gleiche Potenziale, stehen lokal senkrecht zu elektrischen Feldlinien und ihre räumliche Dichte bildet den Betrag des Potenzialgefälles ab.",
+            "understandingFocusEn": "Electric potential is a scalar quantity that depends on the chosen zero; physically measurable voltages are potential differences and remain unchanged when the zero is shifted uniformly. Equipotential lines connect equal potentials, are locally perpendicular to electric field lines, and their spatial density represents the magnitude of the potential gradient."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Für eine neue Ladungs- oder Elektrodenanordnung beziehungsweise einen verschobenen Potenzialnullpunkt konstruiert die lernende Person die Potenzialdarstellung neu und begründet, welche absoluten Potenzialwerte sich ändern und warum die messbaren Spannungen unverändert bleiben oder sich aufgrund der Geometrie ändern.",
+            "taskDemandEn": "For a new charge or electrode arrangement, or for a shifted zero of potential, the learner reconstructs the potential representation and explains which absolute potential values change and why measurable voltages either remain unchanged or change because of the geometry.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt in einem vorgegebenen Feld Potenziale und Potenzialdifferenzen mit konsistenter Vorzeichenkonvention, konstruiert passende Äquipotentiallinien und erklärt anhand der Darstellung, in welcher Richtung und wie stark sich das Potenzial räumlich ändert.",
+            "expectedPerformanceEn": "In a given field, the learner determines potentials and potential differences using a consistent sign convention, constructs suitable equipotential lines, and uses the representation to explain the direction and magnitude of spatial potential change.",
+            "understandingFocusDe": "Das elektrische Potenzial ist eine skalare, nur relativ zu einem festgelegten Nullpunkt bestimmte Größe; eine Spannung ist die Differenz zweier Potenziale. Äquipotentiallinien verbinden Punkte gleichen Potenzials und koordinieren die räumliche Potenzialdarstellung mit dem elektrischen Feld.",
+            "understandingFocusEn": "Electric potential is a scalar quantity defined only relative to a specified zero, and a voltage is the difference between two potentials. Equipotential lines connect points of equal potential and coordinate the spatial potential representation with the electric field."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-003 und physik-b033u-round-b-openai-gpt5-20260905-001.record.003. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-003 and physik-b033u-round-b-openai-gpt5-20260905-001.record.003. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Für die vereinfachte physikalische Wirkungskette ist die Relativbewegung von Basilar- und Tektorialmembran entscheidend: Sie lenkt Stereozilien aus und koppelt damit die mechanische Schwingung an ein elektrisches Rezeptorsignal. Die Kette ist ein quellengebundenes Modell und bildet nicht sämtliche biologischen Zwischenschritte oder Rückkopplungen ab.",
+            "essentialUnderstandingEn": "In the simplified physical causal chain, the relative motion of the basilar and tectorial membranes is decisive: it deflects stereocilia and thereby couples mechanical vibration to an electrical receptor signal. The chain is a source-bound model and does not represent every biological intermediate step or feedback process.",
+            "observablePerformanceDe": "Aus einem neuen Satz belegter Text- und Bildquellen entnimmt die lernende Person die relevanten Aussagen, ordnet sie zu einer fachsprachlich klaren Ursache-Wirkungs-Kette, unterscheidet Quellenbefund von modellierender Schlussfolgerung und begründet mindestens eine konkrete Grenze der Vereinfachung.",
+            "observablePerformanceEn": "From a new set of cited textual and visual sources, the learner extracts the relevant statements, organizes them into a technically clear causal chain, distinguishes source evidence from a modeling inference, and justifies at least one concrete limitation of the simplification."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Die vereinfachte Wirkungskette des Corti-Organs verbindet die Relativbewegung von Basilar- und Tektorialmembran mit der Auslenkung der Stereozilien und der Umwandlung mechanischer Schwingungen in elektrische Rezeptorsignale. Sie ist ein quellenbasiertes Modell mit benennbaren Auslassungen und Grenzen, nicht die direkte Beobachtung aller Zwischenschritte.",
+            "essentialUnderstandingEn": "The simplified causal chain of the organ of Corti connects relative motion of the basilar and tectorial membranes to stereocilia deflection and the conversion of mechanical vibrations into electrical receptor signals. It is a source-based model with identifiable omissions and limits, not a direct observation of every intermediate step.",
+            "observablePerformanceDe": "Aus vorgegebenen belegten Quellen extrahiert die lernende Person die tragenden Aussagen, ordnet sie in einer fachsprachlichen Ursache-Wirkungs-Darstellung, trennt Quellenbefund von Modellschluss und kennzeichnet konkret, welche biologischen oder mechanischen Details die Vereinfachung nicht erklärt.",
+            "observablePerformanceEn": "From provided cited sources, the learner extracts the supporting claims, organizes them in a technically accurate causal representation, separates source evidence from model inference, and identifies specific biological or mechanical details that the simplification does not explain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Bei einer unabhängig vorgelegten Quelle mit veränderter Richtung oder Phasenlage der Relativbewegung rekonstruiert die lernende Person, wie sich die Auslenkung der Stereozilien in der vereinfachten Kette verändert, und prüft, welche Aussage über das Rezeptorsignal die Quelle tatsächlich trägt.",
+            "taskDemandEn": "Given an independently presented source in which the direction or phase relation of the relative motion is changed, the learner reconstructs how stereocilia deflection changes in the simplified chain and checks which claim about the receptor signal is actually supported by the source.",
+            "expectedPerformanceDe": "Aus einem neuen Satz belegter Text- und Bildquellen entnimmt die lernende Person die relevanten Aussagen, ordnet sie zu einer fachsprachlich klaren Ursache-Wirkungs-Kette, unterscheidet Quellenbefund von modellierender Schlussfolgerung und begründet mindestens eine konkrete Grenze der Vereinfachung.",
+            "expectedPerformanceEn": "From a new set of cited textual and visual sources, the learner extracts the relevant statements, organizes them into a technically clear causal chain, distinguishes source evidence from a modeling inference, and justifies at least one concrete limitation of the simplification.",
+            "understandingFocusDe": "Für die vereinfachte physikalische Wirkungskette ist die Relativbewegung von Basilar- und Tektorialmembran entscheidend: Sie lenkt Stereozilien aus und koppelt damit die mechanische Schwingung an ein elektrisches Rezeptorsignal. Die Kette ist ein quellengebundenes Modell und bildet nicht sämtliche biologischen Zwischenschritte oder Rückkopplungen ab.",
+            "understandingFocusEn": "In the simplified physical causal chain, the relative motion of the basilar and tectorial membranes is decisive: it deflects stereocilia and thereby couples mechanical vibration to an electrical receptor signal. The chain is a source-bound model and does not represent every biological intermediate step or feedback process."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Mit einem neuen Satz belegter Quellen zu einem anderen Frequenzbereich oder zu einer veränderten Funktion von Haarzellen rekonstruiert die lernende Person dieselbe Transduktionskette, gleicht abweichende Darstellungen ab und prüft, welche Modellgrenzen nun bedeutsam werden.",
+            "taskDemandEn": "Using a new set of cited sources about a different frequency region or altered hair-cell function, the learner reconstructs the same transduction chain, reconciles differing representations, and determines which model limits now matter.",
+            "expectedPerformanceDe": "Aus vorgegebenen belegten Quellen extrahiert die lernende Person die tragenden Aussagen, ordnet sie in einer fachsprachlichen Ursache-Wirkungs-Darstellung, trennt Quellenbefund von Modellschluss und kennzeichnet konkret, welche biologischen oder mechanischen Details die Vereinfachung nicht erklärt.",
+            "expectedPerformanceEn": "From provided cited sources, the learner extracts the supporting claims, organizes them in a technically accurate causal representation, separates source evidence from model inference, and identifies specific biological or mechanical details that the simplification does not explain.",
+            "understandingFocusDe": "Die vereinfachte Wirkungskette des Corti-Organs verbindet die Relativbewegung von Basilar- und Tektorialmembran mit der Auslenkung der Stereozilien und der Umwandlung mechanischer Schwingungen in elektrische Rezeptorsignale. Sie ist ein quellenbasiertes Modell mit benennbaren Auslassungen und Grenzen, nicht die direkte Beobachtung aller Zwischenschritte.",
+            "understandingFocusEn": "The simplified causal chain of the organ of Corti connects relative motion of the basilar and tectorial membranes to stereocilia deflection and the conversion of mechanical vibrations into electrical receptor signals. It is a source-based model with identifiable omissions and limits, not a direct observation of every intermediate step."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-004 und physik-b033u-round-b-openai-gpt5-20260905-001.record.004. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-004 and physik-b033u-round-b-openai-gpt5-20260905-001.record.004. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Im vereinfachten passiven Membranmodell treibt ein Konzentrationsunterschied die Diffusion permeabler Ionen, während die entstehende Ladungstrennung eine elektrische Gegenwirkung aufbaut. Selektive Permeabilität bestimmt, welche Ionen beitragen; das Ruhepotenzial ist ein dynamischer Gleichgewichtszustand des Modells, während aktive Transporte nur die vorausgesetzten Gradienten langfristig erhalten.",
+            "essentialUnderstandingEn": "In the simplified passive membrane model, a concentration difference drives diffusion of permeant ions while the resulting charge separation builds an opposing electrical effect. Selective permeability determines which ions contribute; the resting potential is a dynamic equilibrium state of the model, whereas active transport only maintains the assumed gradients over longer times.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder deutet ein gegebenes passives Membranmodell, sagt Richtung von Diffusion und elektrischer Gegenwirkung voraus, erklärt Vorzeichen und Annäherung des Membranpotenzials und trennt die im Modell enthaltenen passiven Vorgänge ausdrücklich von der langfristigen Wirkung aktiver Transporte.",
+            "observablePerformanceEn": "The learner constructs or interprets a given passive membrane model, predicts the directions of diffusion and electrical opposition, explains the sign and approach of the membrane potential, and explicitly separates the passive processes represented in the model from the long-term action of active transport."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Im vereinfachten passiven Membranmodell treiben Konzentrationsunterschiede Ionen zur Diffusion, während die dadurch entstehende Ladungstrennung eine elektrische Gegenwirkung erzeugt. Selektive Permeabilität bestimmt, welche Ionen beitragen; aktive Transporte erhalten die Gradienten langfristig, gehören aber nicht zur passiven Gleichgewichtsbildung des Modells.",
+            "essentialUnderstandingEn": "In the simplified passive membrane model, concentration differences drive ion diffusion while the resulting charge separation creates an opposing electric effect. Selective permeability determines which ions contribute; active transport maintains the gradients over time but is not part of the model's passive equilibration.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder erläutert für vorgegebene Konzentrationen und Permeabilitäten ein passives Membranmodell, sagt Vorzeichen und Entwicklung des Membranpotenzials voraus, begründet das Gleichgewicht der chemischen und elektrischen Triebkräfte und trennt diese Erklärung von der Rolle aktiver Pumpen.",
+            "observablePerformanceEn": "For given concentrations and permeabilities, the learner constructs or explains a passive membrane model, predicts the sign and development of the membrane potential, justifies the balance of chemical and electrical driving forces, and separates this explanation from the role of active pumps."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Bei umgekehrtem Konzentrationsgradienten oder veränderter selektiver Permeabilität sagt die lernende Person in einem neuen Fall Richtung und qualitative Größe des resultierenden Potenzials voraus und erläutert, wie die Aussage ohne langfristige Aufrechterhaltung der Gradienten begrenzt ist.",
+            "taskDemandEn": "When the concentration gradient is reversed or selective permeability is changed in a new case, the learner predicts the direction and qualitative magnitude of the resulting potential and explains how the claim is limited when the gradients are not maintained over the long term.",
+            "expectedPerformanceDe": "Die lernende Person erstellt oder deutet ein gegebenes passives Membranmodell, sagt Richtung von Diffusion und elektrischer Gegenwirkung voraus, erklärt Vorzeichen und Annäherung des Membranpotenzials und trennt die im Modell enthaltenen passiven Vorgänge ausdrücklich von der langfristigen Wirkung aktiver Transporte.",
+            "expectedPerformanceEn": "The learner constructs or interprets a given passive membrane model, predicts the directions of diffusion and electrical opposition, explains the sign and approach of the membrane potential, and explicitly separates the passive processes represented in the model from the long-term action of active transport.",
+            "understandingFocusDe": "Im vereinfachten passiven Membranmodell treibt ein Konzentrationsunterschied die Diffusion permeabler Ionen, während die entstehende Ladungstrennung eine elektrische Gegenwirkung aufbaut. Selektive Permeabilität bestimmt, welche Ionen beitragen; das Ruhepotenzial ist ein dynamischer Gleichgewichtszustand des Modells, während aktive Transporte nur die vorausgesetzten Gradienten langfristig erhalten.",
+            "understandingFocusEn": "In the simplified passive membrane model, a concentration difference drives diffusion of permeant ions while the resulting charge separation builds an opposing electrical effect. Selective permeability determines which ions contribute; the resting potential is a dynamic equilibrium state of the model, whereas active transport only maintains the assumed gradients over longer times."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Bei vertauschtem Konzentrationsgradienten, geänderter Ionenpermeabilität oder blockiertem aktivem Transport sagt die lernende Person in einer neuen Modellsituation voraus, was das passive Modell kurzfristig liefert und was es für die langfristige Aufrechterhaltung nicht erklären kann.",
+            "taskDemandEn": "When the concentration gradient is reversed, ion permeability is changed, or active transport is blocked, the learner predicts in a new model situation what the passive model yields in the short term and what it cannot explain about long-term maintenance.",
+            "expectedPerformanceDe": "Die lernende Person erstellt oder erläutert für vorgegebene Konzentrationen und Permeabilitäten ein passives Membranmodell, sagt Vorzeichen und Entwicklung des Membranpotenzials voraus, begründet das Gleichgewicht der chemischen und elektrischen Triebkräfte und trennt diese Erklärung von der Rolle aktiver Pumpen.",
+            "expectedPerformanceEn": "For given concentrations and permeabilities, the learner constructs or explains a passive membrane model, predicts the sign and development of the membrane potential, justifies the balance of chemical and electrical driving forces, and separates this explanation from the role of active pumps.",
+            "understandingFocusDe": "Im vereinfachten passiven Membranmodell treiben Konzentrationsunterschiede Ionen zur Diffusion, während die dadurch entstehende Ladungstrennung eine elektrische Gegenwirkung erzeugt. Selektive Permeabilität bestimmt, welche Ionen beitragen; aktive Transporte erhalten die Gradienten langfristig, gehören aber nicht zur passiven Gleichgewichtsbildung des Modells.",
+            "understandingFocusEn": "In the simplified passive membrane model, concentration differences drive ion diffusion while the resulting charge separation creates an opposing electric effect. Selective permeability determines which ions contribute; active transport maintains the gradients over time but is not part of the model's passive equilibration."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-007 und physik-b033u-round-b-openai-gpt5-20260905-001.record.007. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-007 and physik-b033u-round-b-openai-gpt5-20260905-001.record.007. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Im Schwebefall eines Öltröpfchens gleicht die elektrische Kraft bei bekannter Feldstärke die effektive Gewichtskraft aus, sodass seine Ladung aus beobachtbaren beziehungsweise zuvor bestimmten Größen erschlossen wird. Erst der Vergleich vieler ermittelter Tröpfchenladungen mit Messunsicherheiten stützt die Aussage, dass Ladung in ganzzahligen Vielfachen der Elementarladung auftritt.",
+            "essentialUnderstandingEn": "For an oil droplet hovering in equilibrium, the electric force at a known field strength balances the effective weight, so its charge is inferred from observable or previously determined quantities. Only comparison of many inferred droplet charges with their measurement uncertainties supports the claim that charge occurs in integer multiples of the elementary charge.",
+            "observablePerformanceDe": "Anhand sicher bereitgestellter Daten oder einer Simulation zeichnet die lernende Person das Kräftebild, formuliert die Schwebe-Bedingung mit Richtungen und Einheiten, bestimmt eine Tröpfchenladung und wertet mehrere Ergebnisse so aus, dass Messwert, berechnete Größe und Schluss auf ein gemeinsames $e$ unterscheidbar bleiben.",
+            "observablePerformanceEn": "Using safely supplied data or a simulation, the learner draws the force diagram, formulates the hovering condition with directions and units, determines a droplet charge, and evaluates several results while keeping the measurement, the calculated quantity, and the inference of a common $e$ distinct."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Im Schwebefall des Millikan-Versuchs gleicht die elektrische Kraft auf ein geladenes Tröpfchen dessen effektive Gewichtskraft aus, sodass seine Ladung aus Messgrößen erschlossen wird. Erst die Auswertung vieler Tröpfchen und die Vereinbarkeit ihrer Ladungen mit ganzzahligen Vielfachen eines gemeinsamen Werts stützt die Quantelung mit der Elementarladung e.",
+            "essentialUnderstandingEn": "In the hovering case of the Millikan experiment, the electric force on a charged droplet balances its effective weight, allowing its charge to be inferred from measured quantities. Only the analysis of many droplets and the consistency of their charges with integer multiples of a common value supports quantization in terms of the elementary charge e.",
+            "observablePerformanceDe": "Anhand bereitgestellter sicher erhobener Messdaten zeichnet die lernende Person das Kräftegleichgewicht, bestimmt Tröpfchenladungen mit Einheiten und Unsicherheiten und begründet aus der Gesamtheit der Werte, ob und mit welcher Genauigkeit ein gemeinsames Ladungsquantum gestützt wird.",
+            "observablePerformanceEn": "Using safely supplied measurement data, the learner draws the force balance, determines droplet charges with units and uncertainties, and uses the complete set of values to justify whether and with what precision a common charge quantum is supported."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Für ein neues Tröpfchen mit anderer Masse, umgekehrter Feldrichtung oder realistischen Messstreuungen sagt die lernende Person die nötige Feldstärke beziehungsweise das Ladungsvorzeichen voraus und prüft, ob die gesamte Datenreihe die Quantelung weiterhin trägt oder keine eindeutige Folgerung erlaubt.",
+            "taskDemandEn": "For a new droplet with a different mass, a reversed field direction, or realistic measurement scatter, the learner predicts the required field strength or charge sign and checks whether the full data set still supports quantization or permits no unambiguous conclusion.",
+            "expectedPerformanceDe": "Anhand sicher bereitgestellter Daten oder einer Simulation zeichnet die lernende Person das Kräftebild, formuliert die Schwebe-Bedingung mit Richtungen und Einheiten, bestimmt eine Tröpfchenladung und wertet mehrere Ergebnisse so aus, dass Messwert, berechnete Größe und Schluss auf ein gemeinsames $e$ unterscheidbar bleiben.",
+            "expectedPerformanceEn": "Using safely supplied data or a simulation, the learner draws the force diagram, formulates the hovering condition with directions and units, determines a droplet charge, and evaluates several results while keeping the measurement, the calculated quantity, and the inference of a common $e$ distinct.",
+            "understandingFocusDe": "Im Schwebefall eines Öltröpfchens gleicht die elektrische Kraft bei bekannter Feldstärke die effektive Gewichtskraft aus, sodass seine Ladung aus beobachtbaren beziehungsweise zuvor bestimmten Größen erschlossen wird. Erst der Vergleich vieler ermittelter Tröpfchenladungen mit Messunsicherheiten stützt die Aussage, dass Ladung in ganzzahligen Vielfachen der Elementarladung auftritt.",
+            "understandingFocusEn": "For an oil droplet hovering in equilibrium, the electric force at a known field strength balances the effective weight, so its charge is inferred from observable or previously determined quantities. Only comparison of many inferred droplet charges with their measurement uncertainties supports the claim that charge occurs in integer multiples of the elementary charge."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Für einen neuen Datensatz mit anderer Feldrichtung, anderen Tröpfcheneigenschaften oder größerer Messstreuung bestimmt die lernende Person Ladungsvorzeichen und -beträge erneut und beurteilt, ob die Quantelungsaussage trotz der veränderten Messqualität tragfähig bleibt.",
+            "taskDemandEn": "For a new data set with a different field direction, different droplet properties, or greater measurement scatter, the learner redetermines charge signs and magnitudes and judges whether the quantization claim remains supported despite the changed measurement quality.",
+            "expectedPerformanceDe": "Anhand bereitgestellter sicher erhobener Messdaten zeichnet die lernende Person das Kräftegleichgewicht, bestimmt Tröpfchenladungen mit Einheiten und Unsicherheiten und begründet aus der Gesamtheit der Werte, ob und mit welcher Genauigkeit ein gemeinsames Ladungsquantum gestützt wird.",
+            "expectedPerformanceEn": "Using safely supplied measurement data, the learner draws the force balance, determines droplet charges with units and uncertainties, and uses the complete set of values to justify whether and with what precision a common charge quantum is supported.",
+            "understandingFocusDe": "Im Schwebefall des Millikan-Versuchs gleicht die elektrische Kraft auf ein geladenes Tröpfchen dessen effektive Gewichtskraft aus, sodass seine Ladung aus Messgrößen erschlossen wird. Erst die Auswertung vieler Tröpfchen und die Vereinbarkeit ihrer Ladungen mit ganzzahligen Vielfachen eines gemeinsamen Werts stützt die Quantelung mit der Elementarladung e.",
+            "understandingFocusEn": "In the hovering case of the Millikan experiment, the electric force on a charged droplet balances its effective weight, allowing its charge to be inferred from measured quantities. Only the analysis of many droplets and the consistency of their charges with integer multiples of a common value supports quantization in terms of the elementary charge e."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-010 und physik-b033u-round-b-openai-gpt5-20260905-001.record.010. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-010 and physik-b033u-round-b-openai-gpt5-20260905-001.record.010. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Im idealen LC-Schwingkreis tauschen das elektrische Feld des Kondensators und das magnetische Feld der Spule periodisch Energie aus. Ladung beziehungsweise Kondensatorspannung und Stromstärke sind phasenverschoben; Periodendauer, Frequenz und die jeweiligen Amplituden beschreiben denselben zeitlichen Vorgang, während reale Verluste das Idealmodell begrenzen.",
+            "essentialUnderstandingEn": "In an ideal LC circuit, the capacitor's electric field and the inductor's magnetic field exchange energy periodically. Charge or capacitor voltage and current are phase shifted; period, frequency, and the respective amplitudes describe the same time-dependent process, while real losses limit the ideal model.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einem LC-Schaltbild Kondensator und Spule ihren Feldenergien zu, konstruiert oder deutet zueinander passende Zeitdiagramme von Ladung, Stromstärke und Energie, bestimmt Periodendauer und Frequenz aus der Darstellung und erklärt Energieerhaltung und Phasenlage qualitativ.",
+            "observablePerformanceEn": "In an LC circuit diagram, the learner associates the capacitor and inductor with their field energies, constructs or interprets mutually consistent time graphs of charge, current, and energy, determines period and frequency from the representation, and qualitatively explains energy conservation and phase relation."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Im idealisierten LC-Schwingkreis wechseln sich Ladung beziehungsweise Spannung am Kondensator und Strom in der Spule periodisch ab. Dabei wird Energie zwischen elektrischem Feld des Kondensators und magnetischem Feld der Spule umgewandelt; im verlustfreien Modell bleibt die Gesamtenergie erhalten, während Periodendauer, Frequenz und Amplituden den Verlauf kennzeichnen.",
+            "essentialUnderstandingEn": "In an idealized LC circuit, capacitor charge or voltage and inductor current vary periodically. Energy is exchanged between the capacitor's electric field and the inductor's magnetic field; in the lossless model total energy is conserved, while period, frequency, and amplitudes characterize the evolution.",
+            "observablePerformanceDe": "Die lernende Person ordnet für einen vorgegebenen LC-Kreis qualitative Zeitdiagramme von Ladung, Strom und den beiden Energieformen einander zu, kennzeichnet Periodendauer, Frequenz und Amplituden und erklärt an markanten Zeitpunkten Richtung und Ursache der Energieumwandlung.",
+            "observablePerformanceEn": "For a given LC circuit, the learner coordinates qualitative time graphs of charge, current, and the two energy forms, identifies period, frequency, and amplitudes, and explains the direction and cause of energy conversion at characteristic times."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Beginnt ein neuer idealisierter Fall statt mit geladenem Kondensator mit maximalem Spulenstrom oder mit veränderten Bauteilwerten, sagt die lernende Person die verschobene Abfolge der Energieformen sowie die qualitative Änderung der Schwingungszeitskala voraus und kennzeichnet bei Dämpfung die Modellgrenze.",
+            "taskDemandEn": "If a new idealized case starts with maximum inductor current rather than a charged capacitor, or uses changed component values, the learner predicts the shifted sequence of energy forms and the qualitative change in oscillation time scale and identifies damping as a model limitation.",
+            "expectedPerformanceDe": "Die lernende Person ordnet in einem LC-Schaltbild Kondensator und Spule ihren Feldenergien zu, konstruiert oder deutet zueinander passende Zeitdiagramme von Ladung, Stromstärke und Energie, bestimmt Periodendauer und Frequenz aus der Darstellung und erklärt Energieerhaltung und Phasenlage qualitativ.",
+            "expectedPerformanceEn": "In an LC circuit diagram, the learner associates the capacitor and inductor with their field energies, constructs or interprets mutually consistent time graphs of charge, current, and energy, determines period and frequency from the representation, and qualitatively explains energy conservation and phase relation.",
+            "understandingFocusDe": "Im idealen LC-Schwingkreis tauschen das elektrische Feld des Kondensators und das magnetische Feld der Spule periodisch Energie aus. Ladung beziehungsweise Kondensatorspannung und Stromstärke sind phasenverschoben; Periodendauer, Frequenz und die jeweiligen Amplituden beschreiben denselben zeitlichen Vorgang, während reale Verluste das Idealmodell begrenzen.",
+            "understandingFocusEn": "In an ideal LC circuit, the capacitor's electric field and the inductor's magnetic field exchange energy periodically. Charge or capacitor voltage and current are phase shifted; period, frequency, and the respective amplitudes describe the same time-dependent process, while real losses limit the ideal model."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Für einen neuen LC-Kreis mit veränderter Induktivität, Kapazität oder Anfangsenergie sagt die lernende Person qualitativ voraus, wie sich Zeitskala, Amplituden und Energieaustausch ändern, und kennzeichnet bei ergänzten Verlusten ausdrücklich die Grenze des idealen Erhaltungsmodells.",
+            "taskDemandEn": "For a new LC circuit with changed inductance, capacitance, or initial energy, the learner qualitatively predicts changes in time scale, amplitudes, and energy exchange and, if losses are introduced, explicitly identifies the limit of the ideal conservation model.",
+            "expectedPerformanceDe": "Die lernende Person ordnet für einen vorgegebenen LC-Kreis qualitative Zeitdiagramme von Ladung, Strom und den beiden Energieformen einander zu, kennzeichnet Periodendauer, Frequenz und Amplituden und erklärt an markanten Zeitpunkten Richtung und Ursache der Energieumwandlung.",
+            "expectedPerformanceEn": "For a given LC circuit, the learner coordinates qualitative time graphs of charge, current, and the two energy forms, identifies period, frequency, and amplitudes, and explains the direction and cause of energy conversion at characteristic times.",
+            "understandingFocusDe": "Im idealisierten LC-Schwingkreis wechseln sich Ladung beziehungsweise Spannung am Kondensator und Strom in der Spule periodisch ab. Dabei wird Energie zwischen elektrischem Feld des Kondensators und magnetischem Feld der Spule umgewandelt; im verlustfreien Modell bleibt die Gesamtenergie erhalten, während Periodendauer, Frequenz und Amplituden den Verlauf kennzeichnen.",
+            "understandingFocusEn": "In an idealized LC circuit, capacitor charge or voltage and inductor current vary periodically. Energy is exchanged between the capacitor's electric field and the inductor's magnetic field; in the lossless model total energy is conserved, while period, frequency, and amplitudes characterize the evolution."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "73b309ed-1aab-5778-8494-d9b65f5a352b",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-011 und physik-b033u-round-b-openai-gpt5-20260905-001.record.011. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-011 and physik-b033u-round-b-openai-gpt5-20260905-001.record.011. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Ein äußeres elektrisches Feld verschiebt oder orientiert gebundene Ladungen in einem Nichtleiter und erzeugt Polarisation; die dadurch entstehenden gebundenen Ladungen verändern das makroskopische Feld. Die materialabhängige Permittivität beschreibt diese Antwort im verwendeten linearen, homogenen Dielektrikumsmodell und beeinflusst dort Feld- und Kapazitätsbeziehungen.",
+            "essentialUnderstandingEn": "An external electric field displaces or orients bound charges in an insulator and produces polarization; the resulting bound charges modify the macroscopic field. Material-dependent permittivity describes this response in the linear, homogeneous dielectric model being used and affects field and capacitance relations there.",
+            "observablePerformanceDe": "Die lernende Person erklärt an einer mikroskopischen und einer makroskopischen Darstellung, wie Polarisation gebundene Oberflächenladungen und Feldänderung verknüpft, unterscheidet Nichtleiter von freier Ladungsleitung und setzt $\\varepsilon=\\varepsilon_0\\varepsilon_r$ in einer passenden Kondensatorrechnung mit korrekten Einheiten ein.",
+            "observablePerformanceEn": "Using a microscopic and a macroscopic representation, the learner explains how polarization connects bound surface charge with a field change, distinguishes an insulator from free-charge conduction, and uses $\\varepsilon=\\varepsilon_0\\varepsilon_r$ in an appropriate capacitor calculation with correct units."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Ein äußeres elektrisches Feld verschiebt in einem Nichtleiter gebundene Ladungen beziehungsweise richtet vorhandene Dipole aus. Die daraus entstehende Polarisation verändert das makroskopische Feld; die materialabhängige Permittivität beschreibt diese Antwort, deren rechnerische Wirkung von der elektrischen Randbedingung, etwa fester freier Ladung oder fester Spannung, abhängt.",
+            "essentialUnderstandingEn": "An external electric field displaces bound charges in an insulator or aligns existing dipoles. The resulting polarization changes the macroscopic field; material-dependent permittivity describes this response, whose calculated effect depends on the electrical boundary condition, such as fixed free charge or fixed voltage.",
+            "observablePerformanceDe": "Die lernende Person erklärt für ein Dielektrikum die Entstehung gebundener Polarisationsladungen, unterscheidet sie von freien Plattenladungen und nutzt ε beziehungsweise εr mit korrekten Einheiten und einer ausdrücklich genannten Randbedingung in einer Kondensator- oder Feldberechnung.",
+            "observablePerformanceEn": "For a dielectric, the learner explains the formation of bound polarization charge, distinguishes it from free plate charge, and uses ε or εr with correct units and an explicitly stated boundary condition in a capacitor or field calculation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Für ein neues Dielektrikum mit anderer relativer Permittivität oder eine geänderte Randbedingung mit festgehaltener freier Ladung beziehungsweise Spannung sagt die lernende Person Feld- und Kapazitätsänderungen voraus und nennt, wann das lineare homogene Modell nicht ausreicht.",
+            "taskDemandEn": "For a new dielectric with a different relative permittivity or a changed boundary condition with free charge or voltage held fixed, the learner predicts changes in field and capacitance and states when the linear homogeneous model is insufficient.",
+            "expectedPerformanceDe": "Die lernende Person erklärt an einer mikroskopischen und einer makroskopischen Darstellung, wie Polarisation gebundene Oberflächenladungen und Feldänderung verknüpft, unterscheidet Nichtleiter von freier Ladungsleitung und setzt $\\varepsilon=\\varepsilon_0\\varepsilon_r$ in einer passenden Kondensatorrechnung mit korrekten Einheiten ein.",
+            "expectedPerformanceEn": "Using a microscopic and a macroscopic representation, the learner explains how polarization connects bound surface charge with a field change, distinguishes an insulator from free-charge conduction, and uses $\\varepsilon=\\varepsilon_0\\varepsilon_r$ in an appropriate capacitor calculation with correct units.",
+            "understandingFocusDe": "Ein äußeres elektrisches Feld verschiebt oder orientiert gebundene Ladungen in einem Nichtleiter und erzeugt Polarisation; die dadurch entstehenden gebundenen Ladungen verändern das makroskopische Feld. Die materialabhängige Permittivität beschreibt diese Antwort im verwendeten linearen, homogenen Dielektrikumsmodell und beeinflusst dort Feld- und Kapazitätsbeziehungen.",
+            "understandingFocusEn": "An external electric field displaces or orients bound charges in an insulator and produces polarization; the resulting bound charges modify the macroscopic field. Material-dependent permittivity describes this response in the linear, homogeneous dielectric model being used and affects field and capacitance relations there."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Beim Wechsel zu einem Material mit anderer Permittivität oder beim Übergang von einem angeschlossenen zu einem isolierten Kondensator sagt die lernende Person in einer neuen Situation voraus, welche Größen konstant bleiben und wie sich Feld, Ladung oder Kapazität dadurch ändern.",
+            "taskDemandEn": "When changing to a material with a different permittivity or moving from a connected to an isolated capacitor, the learner predicts in a new situation which quantities remain fixed and how the field, charge, or capacitance consequently changes.",
+            "expectedPerformanceDe": "Die lernende Person erklärt für ein Dielektrikum die Entstehung gebundener Polarisationsladungen, unterscheidet sie von freien Plattenladungen und nutzt ε beziehungsweise εr mit korrekten Einheiten und einer ausdrücklich genannten Randbedingung in einer Kondensator- oder Feldberechnung.",
+            "expectedPerformanceEn": "For a dielectric, the learner explains the formation of bound polarization charge, distinguishes it from free plate charge, and uses ε or εr with correct units and an explicitly stated boundary condition in a capacitor or field calculation.",
+            "understandingFocusDe": "Ein äußeres elektrisches Feld verschiebt in einem Nichtleiter gebundene Ladungen beziehungsweise richtet vorhandene Dipole aus. Die daraus entstehende Polarisation verändert das makroskopische Feld; die materialabhängige Permittivität beschreibt diese Antwort, deren rechnerische Wirkung von der elektrischen Randbedingung, etwa fester freier Ladung oder fester Spannung, abhängt.",
+            "understandingFocusEn": "An external electric field displaces bound charges in an insulator or aligns existing dipoles. The resulting polarization changes the macroscopic field; material-dependent permittivity describes this response, whose calculated effect depends on the electrical boundary condition, such as fixed free charge or fixed voltage."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-013 und physik-b033u-round-b-openai-gpt5-20260905-001.record.013. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-013 and physik-b033u-round-b-openai-gpt5-20260905-001.record.013. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Die Flächenladungsdichte $\\sigma=Q/A$ beschreibt mit Vorzeichen, wie viel freie Ladung im idealisierten Modell pro Plattenfläche verteilt ist; sie ist von Gesamtladung und Fläche gemeinsam abhängig und von einer Volumenladungsdichte zu unterscheiden. Für parallele Kondensatorplatten kennzeichnen entgegengesetzte Vorzeichen die beiden Platten.",
+            "essentialUnderstandingEn": "Surface charge density $\\sigma=Q/A$ describes, with sign, how much free charge is distributed per plate area in the idealized model; it depends jointly on total charge and area and must be distinguished from a volume charge density. For parallel capacitor plates, opposite signs characterize the two plates.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus zwei der Größen $Q$, $A$ und $\\sigma$ die dritte mit Vorzeichen und Einheit, trägt die Verteilung in ein Plattenmodell ein und erklärt, weshalb gleiche Gesamtladung auf größerer Fläche eine kleinere Flächenladungsdichte ergibt.",
+            "observablePerformanceEn": "From two of the quantities $Q$, $A$, and $\\sigma$, the learner determines the third with sign and unit, represents the distribution in a plate model, and explains why the same total charge spread over a larger area gives a smaller surface charge density."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Die Flächenladungsdichte σ beschreibt die vorzeichenbehaftete freie Ladung Q pro belegter Fläche A einer Platte. Im idealisierten Kondensatormodell erlaubt sie, Gesamtladung und Plattenfläche von der räumlich näherungsweise gleichmäßigen Ladungsverteilung zu unterscheiden.",
+            "essentialUnderstandingEn": "Surface charge density σ describes the signed free charge Q per occupied area A of a plate. In the idealized capacitor model, it distinguishes total charge and plate area from an approximately uniform spatial charge distribution.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus Q und A eine Flächenladungsdichte mit Vorzeichen und Einheit C/m², rekonstruiert umgekehrt eine Plattenladung und erläutert in einer Skizze, welche Gleichverteilungsannahme das Kondensatormodell dabei verwendet.",
+            "observablePerformanceEn": "The learner determines surface charge density from Q and A with sign and units of C/m², reconstructs a plate charge in the reverse direction, and uses a sketch to explain the uniform-distribution assumption made by the capacitor model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Für Platten mit veränderter Fläche, umgekehrter Polung oder ungleich vorgegebenen Ladungsmengen entscheidet die lernende Person in einem neuen Fall, welche Flächenladungsdichten das ideale Kondensatormodell zulässt, berechnet sie und kennzeichnet gegebenenfalls die Modellabweichung.",
+            "taskDemandEn": "For plates with a changed area, reversed polarity, or unequal specified charge amounts, the learner decides in a new case which surface charge densities are compatible with the ideal capacitor model, calculates them, and identifies any deviation from that model.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt aus zwei der Größen $Q$, $A$ und $\\sigma$ die dritte mit Vorzeichen und Einheit, trägt die Verteilung in ein Plattenmodell ein und erklärt, weshalb gleiche Gesamtladung auf größerer Fläche eine kleinere Flächenladungsdichte ergibt.",
+            "expectedPerformanceEn": "From two of the quantities $Q$, $A$, and $\\sigma$, the learner determines the third with sign and unit, represents the distribution in a plate model, and explains why the same total charge spread over a larger area gives a smaller surface charge density.",
+            "understandingFocusDe": "Die Flächenladungsdichte $\\sigma=Q/A$ beschreibt mit Vorzeichen, wie viel freie Ladung im idealisierten Modell pro Plattenfläche verteilt ist; sie ist von Gesamtladung und Fläche gemeinsam abhängig und von einer Volumenladungsdichte zu unterscheiden. Für parallele Kondensatorplatten kennzeichnen entgegengesetzte Vorzeichen die beiden Platten.",
+            "understandingFocusEn": "Surface charge density $\\sigma=Q/A$ describes, with sign, how much free charge is distributed per plate area in the idealized model; it depends jointly on total charge and area and must be distinguished from a volume charge density. For parallel capacitor plates, opposite signs characterize the two plates."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Wenn dieselbe Ladung auf eine anders große Platte verteilt oder bei gleicher Fläche Betrag beziehungsweise Vorzeichen der Ladung verändert wird, sagt die lernende Person für den neuen Kondensator die Änderung von σ voraus und grenzt Randbereiche von der idealisierten gleichmäßigen Beschreibung ab.",
+            "taskDemandEn": "If the same charge is distributed over a differently sized plate, or if charge magnitude or sign changes at fixed area, the learner predicts the change in σ for the new capacitor and distinguishes edge regions from the idealized uniform description.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt aus Q und A eine Flächenladungsdichte mit Vorzeichen und Einheit C/m², rekonstruiert umgekehrt eine Plattenladung und erläutert in einer Skizze, welche Gleichverteilungsannahme das Kondensatormodell dabei verwendet.",
+            "expectedPerformanceEn": "The learner determines surface charge density from Q and A with sign and units of C/m², reconstructs a plate charge in the reverse direction, and uses a sketch to explain the uniform-distribution assumption made by the capacitor model.",
+            "understandingFocusDe": "Die Flächenladungsdichte σ beschreibt die vorzeichenbehaftete freie Ladung Q pro belegter Fläche A einer Platte. Im idealisierten Kondensatormodell erlaubt sie, Gesamtladung und Plattenfläche von der räumlich näherungsweise gleichmäßigen Ladungsverteilung zu unterscheiden.",
+            "understandingFocusEn": "Surface charge density σ describes the signed free charge Q per occupied area A of a plate. In the idealized capacitor model, it distinguishes total charge and plate area from an approximately uniform spatial charge distribution."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "38e0ff49-f132-44c8-b17a-73dada5344db",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-014 und physik-b033u-round-b-openai-gpt5-20260905-001.record.014. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-014 and physik-b033u-round-b-openai-gpt5-20260905-001.record.014. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Für ideal ausgedehnte, parallele Platten mit homogener freier Flächenladungsdichte überlagern sich die Beiträge beider Platten zwischen ihnen zu einem homogenen Feld und außerhalb zur Aufhebung; im homogenen Medium folgt $E=\\sigma/\\varepsilon$. Endliche Platten, Randfelder und inhomogene Materialien begrenzen diese Beziehung.",
+            "essentialUnderstandingEn": "For ideally extended parallel plates with uniform free surface charge density, the contributions of the two plates superpose to form a uniform field between them and cancel outside; in a homogeneous medium, $E=\\sigma/\\varepsilon$. Finite plates, edge fields, and inhomogeneous materials limit this relation.",
+            "observablePerformanceDe": "Die lernende Person leitet den Zusammenhang mit einem gültigen mathematischen Weg aus den gebundenen Voraussetzungen her, führt Richtung, Vorzeichen, Einheiten und den Faktor aus der Überlagerung beider Platten konsistent und benennt die Annahmen, unter denen Innen- und Außenfeld so beschrieben werden.",
+            "observablePerformanceEn": "Using a valid mathematical route from the stated prerequisites, the learner derives the relation, consistently tracks direction, sign, units, and the factor arising from superposition of both plates, and states the assumptions under which the inner and outer fields are described in this way."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Für zwei große parallele, entgegengesetzt geladene Platten ergibt sich das Feld aus der Überlagerung der Felder beider Flächenladungen: Zwischen den Platten addieren sich die Beiträge, außerhalb heben sie sich im idealen Grenzfall auf. Der Zusammenhang zwischen E und σ setzt die benannte Permittivität, gleichmäßige Ladungsverteilung und vernachlässigbare Randeffekte voraus.",
+            "essentialUnderstandingEn": "For two large parallel plates carrying opposite charge, the field results from superposing the fields of the two surface charge distributions: between the plates the contributions add, while outside they cancel in the ideal limit. The relation between E and σ assumes the stated permittivity, a uniform charge distribution, and negligible edge effects.",
+            "observablePerformanceDe": "Die lernende Person leitet mit Symmetrie und Überlagerung aus dem Feld einer einzelnen idealisierten geladenen Fläche den Feldbetrag zwischen den Kondensatorplatten her, verfolgt Vorzeichen und Richtungen und kennzeichnet jeden Schritt, der von einer Modellannahme abhängt.",
+            "observablePerformanceEn": "Using symmetry and superposition, the learner derives the field magnitude between capacitor plates from the field of one idealized charged sheet, tracks signs and directions, and identifies every step that depends on a model assumption."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Für einen neuen Fall mit homogenem Dielektrikum oder endlichen Platten passt die lernende Person die Beziehung über die passende Permittivität an beziehungsweise erklärt, warum Randfelder eine ortsunabhängige Feldstärke verhindern, ohne die ideale Herleitung unbesehen zu übertragen.",
+            "taskDemandEn": "For a new case with a homogeneous dielectric or finite plates, the learner adapts the relation using the appropriate permittivity or explains why edge fields prevent a position-independent field strength, rather than transferring the ideal derivation uncritically.",
+            "expectedPerformanceDe": "Die lernende Person leitet den Zusammenhang mit einem gültigen mathematischen Weg aus den gebundenen Voraussetzungen her, führt Richtung, Vorzeichen, Einheiten und den Faktor aus der Überlagerung beider Platten konsistent und benennt die Annahmen, unter denen Innen- und Außenfeld so beschrieben werden.",
+            "expectedPerformanceEn": "Using a valid mathematical route from the stated prerequisites, the learner derives the relation, consistently tracks direction, sign, units, and the factor arising from superposition of both plates, and states the assumptions under which the inner and outer fields are described in this way.",
+            "understandingFocusDe": "Für ideal ausgedehnte, parallele Platten mit homogener freier Flächenladungsdichte überlagern sich die Beiträge beider Platten zwischen ihnen zu einem homogenen Feld und außerhalb zur Aufhebung; im homogenen Medium folgt $E=\\sigma/\\varepsilon$. Endliche Platten, Randfelder und inhomogene Materialien begrenzen diese Beziehung.",
+            "understandingFocusEn": "For ideally extended parallel plates with uniform free surface charge density, the contributions of the two plates superpose to form a uniform field between them and cancel outside; in a homogeneous medium, $E=\\sigma/\\varepsilon$. Finite plates, edge fields, and inhomogeneous materials limit this relation."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Bei einer neuen Situation mit nur einer geladenen Fläche, einem vollständig füllenden homogenen Dielektrikum oder einer endlichen Plattengeometrie entscheidet die lernende Person, welche Beiträge und Annahmen der Herleitung erhalten bleiben und wo der ideale Zusammenhang angepasst oder nur näherungsweise verwendet werden darf.",
+            "taskDemandEn": "For a new situation involving a single charged sheet, a homogeneous dielectric completely filling the gap, or finite plate geometry, the learner determines which contributions and assumptions of the derivation remain valid and where the ideal relation must be adjusted or used only approximately.",
+            "expectedPerformanceDe": "Die lernende Person leitet mit Symmetrie und Überlagerung aus dem Feld einer einzelnen idealisierten geladenen Fläche den Feldbetrag zwischen den Kondensatorplatten her, verfolgt Vorzeichen und Richtungen und kennzeichnet jeden Schritt, der von einer Modellannahme abhängt.",
+            "expectedPerformanceEn": "Using symmetry and superposition, the learner derives the field magnitude between capacitor plates from the field of one idealized charged sheet, tracks signs and directions, and identifies every step that depends on a model assumption.",
+            "understandingFocusDe": "Für zwei große parallele, entgegengesetzt geladene Platten ergibt sich das Feld aus der Überlagerung der Felder beider Flächenladungen: Zwischen den Platten addieren sich die Beiträge, außerhalb heben sie sich im idealen Grenzfall auf. Der Zusammenhang zwischen E und σ setzt die benannte Permittivität, gleichmäßige Ladungsverteilung und vernachlässigbare Randeffekte voraus.",
+            "understandingFocusEn": "For two large parallel plates carrying opposite charge, the field results from superposing the fields of the two surface charge distributions: between the plates the contributions add, while outside they cancel in the ideal limit. The relation between E and σ assumes the stated permittivity, a uniform charge distribution, and negligible edge effects."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "reason": "DE: Das Profil kombiniert die zwei unabhängig erzeugten, aktuellen KEEP-Evidenzblöcke physik-b033u-a-015 und physik-b033u-round-b-openai-gpt5-20260905-001.record.015. Beide vollständigen DE/EN-Fassungen werden als verpflichtende Verständniserwartungen und als zwei frische Transferfälle erhalten; gemeinsame Variationsachsen erzwingen geänderte Bedingungen, Darstellungswechsel und eine explizite Modellgrenze. EN: The profile combines the two independently generated, current KEEP evidence blocks physik-b033u-a-015 and physik-b033u-round-b-openai-gpt5-20260905-001.record.015. Both complete DE/EN formulations are retained as required understanding expectations and as two fresh transfer cases; shared variation axes require changed conditions, a representation change, and an explicit model boundary.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "independent-review-a-understanding",
+            "essentialUnderstandingDe": "Ein elektrischer Dipol erzeugt eine räumliche Potenzialverteilung, deren Äquipotentiallinien von Dipolrichtung, Abstand und Geometrie abhängen. Im zeitabhängigen Herz-Dipolmodell erfassen zwei Oberflächenelektroden nur die Potenzialdifferenz ihrer Orte; das Signal hängt daher von Dipolentwicklung und Ableitungsrichtung ab, während Körpergeometrie, Leitfähigkeit und räumlich verteilte Quellen die Ein-Dipol-Näherung begrenzen.",
+            "essentialUnderstandingEn": "An electric dipole produces a spatial potential distribution whose equipotential lines depend on dipole direction, distance, and geometry. In the time-dependent heart-dipole model, two surface electrodes capture only the potential difference between their locations; the signal therefore depends on dipole evolution and lead direction, while body geometry, conductivity, and spatially distributed sources limit the single-dipole approximation.",
+            "observablePerformanceDe": "Die lernende Person erhebt in einem sicheren Modellversuch oder einer Simulation Potenziale, konstruiert daraus Äquipotentiallinien, sagt für ein gegebenes Elektrodenpaar Vorzeichen und qualitative Größe der gemessenen Differenz voraus und trennt Messwert, rekonstruierte Potenzialkarte und Herz-Dipolmodell einschließlich konkreter Grenzen.",
+            "observablePerformanceEn": "In a safe model experiment or simulation, the learner obtains potentials, constructs equipotential lines from them, predicts the sign and qualitative magnitude of the measured difference for a given electrode pair, and distinguishes the measured value, the reconstructed potential map, and the heart-dipole model, including concrete limitations."
+          },
+          {
+            "id": "independent-review-b-understanding",
+            "essentialUnderstandingDe": "Ein zeitlich veränderliches elektrisches Dipolmodell des Herzens erzeugt in einem leitfähigen Körpermodell eine räumliche Potenzialverteilung. Ein EKG misst nicht den Dipol direkt, sondern zeitabhängige Potenzialdifferenzen zwischen Oberflächenelektroden, die von Dipolrichtung, -stärke, Elektrodenposition und den Vereinfachungen des Körpermodells abhängen.",
+            "essentialUnderstandingEn": "A time-varying electric dipole model of the heart produces a spatial potential distribution in a conducting body model. An ECG does not measure the dipole directly; it measures time-dependent potential differences between surface electrodes that depend on dipole direction and magnitude, electrode position, and the simplifications of the body model.",
+            "observablePerformanceDe": "Die lernende Person untersucht in einem sicheren Experiment oder einer Simulation Potenzialwerte und Äquipotentiallinien eines Dipolfeldes, sagt für vorgegebene Elektroden die gemessene Potenzialdifferenz voraus und erklärt eine EKG-Spur als modellvermittelte Messung einschließlich konkreter Grenzen der Dipol- und Leiterannahmen.",
+            "observablePerformanceEn": "In a safe experiment or simulation, the learner investigates potential values and equipotential lines of a dipole field, predicts the measured potential difference for specified electrodes, and explains an ECG trace as a model-mediated measurement, including specific limits of the dipole and conductor assumptions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-review-a-understanding",
+            "independent-review-b-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-physical-condition",
+            "textDe": "Mindestens eine relevante Größe, Geometrie, Rand- oder Anfangsbedingung wird gegenüber dem Ausgangsfall verändert.",
+            "textEn": "At least one relevant quantity, geometry, boundary condition, or initial condition is changed from the original case."
+          },
+          {
+            "id": "changed-evidence-representation",
+            "textDe": "Die fachliche Information liegt in einer anderen geeigneten Darstellung vor, etwa als Diagramm, Datensatz, Skizze, Formel, Simulation oder belegte Quelle.",
+            "textEn": "The scientific information is supplied in another suitable representation, such as a diagram, data set, sketch, formula, simulation, or evidenced source."
+          },
+          {
+            "id": "model-validity-boundary",
+            "textDe": "Ein Fall erfüllt die idealisierenden Annahmen, der andere enthält eine benannte Nichtidealität oder Informationsgrenze.",
+            "textEn": "One case satisfies the idealizing assumptions, while the other contains a stated non-ideality or information limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-independent-case-a",
+            "taskDemandDe": "Werden in einem neuen Fall Elektroden vertauscht oder versetzt beziehungsweise die Dipolrichtung gedreht, sagt die lernende Person die Änderung von Vorzeichen und Amplitude der EKG-Potenzialdifferenz voraus und begründet, welche Abweichungen das vereinfachte Modell nicht erklären kann.",
+            "taskDemandEn": "When a new case reverses or relocates the electrodes or rotates the dipole direction, the learner predicts the change in sign and amplitude of the ECG potential difference and explains which deviations the simplified model cannot account for.",
+            "expectedPerformanceDe": "Die lernende Person erhebt in einem sicheren Modellversuch oder einer Simulation Potenziale, konstruiert daraus Äquipotentiallinien, sagt für ein gegebenes Elektrodenpaar Vorzeichen und qualitative Größe der gemessenen Differenz voraus und trennt Messwert, rekonstruierte Potenzialkarte und Herz-Dipolmodell einschließlich konkreter Grenzen.",
+            "expectedPerformanceEn": "In a safe model experiment or simulation, the learner obtains potentials, constructs equipotential lines from them, predicts the sign and qualitative magnitude of the measured difference for a given electrode pair, and distinguishes the measured value, the reconstructed potential map, and the heart-dipole model, including concrete limitations.",
+            "understandingFocusDe": "Ein elektrischer Dipol erzeugt eine räumliche Potenzialverteilung, deren Äquipotentiallinien von Dipolrichtung, Abstand und Geometrie abhängen. Im zeitabhängigen Herz-Dipolmodell erfassen zwei Oberflächenelektroden nur die Potenzialdifferenz ihrer Orte; das Signal hängt daher von Dipolentwicklung und Ableitungsrichtung ab, während Körpergeometrie, Leitfähigkeit und räumlich verteilte Quellen die Ein-Dipol-Näherung begrenzen.",
+            "understandingFocusEn": "An electric dipole produces a spatial potential distribution whose equipotential lines depend on dipole direction, distance, and geometry. In the time-dependent heart-dipole model, two surface electrodes capture only the potential difference between their locations; the signal therefore depends on dipole evolution and lead direction, while body geometry, conductivity, and spatially distributed sources limit the single-dipole approximation."
+          },
+          {
+            "id": "fresh-independent-case-b",
+            "taskDemandDe": "Bei vertauschten oder versetzten Elektroden, gedrehter Dipolrichtung oder einem nicht homogenen Leitermodell sagt die lernende Person für einen neuen Fall Vorzeichen und qualitative Signaländerung voraus und erläutert, welche Abweichung auf Messgeometrie und welche auf eine Modellgrenze zurückgeht.",
+            "taskDemandEn": "For a new case with swapped or repositioned electrodes, a rotated dipole direction, or a nonuniform conductor model, the learner predicts the sign and qualitative signal change and explains which difference arises from measurement geometry and which from a model limit.",
+            "expectedPerformanceDe": "Die lernende Person untersucht in einem sicheren Experiment oder einer Simulation Potenzialwerte und Äquipotentiallinien eines Dipolfeldes, sagt für vorgegebene Elektroden die gemessene Potenzialdifferenz voraus und erklärt eine EKG-Spur als modellvermittelte Messung einschließlich konkreter Grenzen der Dipol- und Leiterannahmen.",
+            "expectedPerformanceEn": "In a safe experiment or simulation, the learner investigates potential values and equipotential lines of a dipole field, predicts the measured potential difference for specified electrodes, and explains an ECG trace as a model-mediated measurement, including specific limits of the dipole and conductor assumptions.",
+            "understandingFocusDe": "Ein zeitlich veränderliches elektrisches Dipolmodell des Herzens erzeugt in einem leitfähigen Körpermodell eine räumliche Potenzialverteilung. Ein EKG misst nicht den Dipol direkt, sondern zeitabhängige Potenzialdifferenzen zwischen Oberflächenelektroden, die von Dipolrichtung, -stärke, Elektrodenposition und den Vereinfachungen des Körpermodells abhängen.",
+            "understandingFocusEn": "A time-varying electric dipole model of the heart produces a spatial potential distribution in a conducting body model. An ECG does not measure the dipole directly; it measures time-dependent potential differences between surface electrodes that depend on dipole direction and magnitude, electrode position, and the simplifications of the body model."
+          }
+        ]
+      }
+    }
+  ]
+}

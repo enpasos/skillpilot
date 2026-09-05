@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-031t-trigonometric-reflection-final-recheck-4-v1.config.json",
+  "configDigest": "sha256:df20df5be5d9146e94e645bf3892a2e60b8982c87d45ba3432f9c1430b4dff2b",
+  "goalIds": [
+    "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+    "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+    "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
+    "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 793,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:6125e69426cff2f5e879c720f1fdef8dcfebdf25a0dfc26671b85a7211503fcb"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1fe22166b37c4615739052a23774e2478095f4c4a99c986d9d6a75d649084b39",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6d3fdffa54c990a41e41bf6082d3bf583a843a486e6f04b042c91d49243db475",
+    "reviewInputFingerprint": "sha256:0300fabafb7db3e26058335432700e04167fce3e959554f26f6e9eadb9a0084e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-a",
+        "campaignDigest": "sha256:4dc3109f79c7cc522575c7f4fa8dc6320733f478d55b1f371106ebf095a6e746",
+        "roundId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a636243afa8d6c44e551c73884117d6e627bf298c86d7090b0f92589a467d48d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-b",
+        "campaignDigest": "sha256:4229469c865088eeead5f77f8cd5cd414792e6768d574c53e7a18b2048619f3c",
+        "roundId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-v1-20260905-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b822a10ebe1cc52c8933c7d519df9aaa5604d521bcf5f8d0b1104b66b41f54c2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b7260d9c96a56999f2df7a33703037bcdd574408daaf9d400833b0cd76d7db2f",
+  "reviewInputFingerprint": "sha256:a7f822bb000637445c359b34f0c6a627d6229301431731ddb0bef2a34b9200da",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-a",
+      "roundId": "mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-independent-a",
+      "runIds": [
+        "mathematik-b032-round-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-b",
+      "roundId": "mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-independent-b",
+      "runIds": [
+        "math-b032-round-b-gpt5-20260905"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "6596405a-9728-41df-9163-53670ec2a937",
+      "firstRecordId": "mathematik-b032-round-a-record-001",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:01",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "firstRecordId": "mathematik-b032-round-a-record-002",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:02",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+      "firstRecordId": "mathematik-b032-round-a-record-003",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:03",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+      "firstRecordId": "mathematik-b032-round-a-record-004",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:04",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+      "firstRecordId": "mathematik-b032-round-a-record-005",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:05",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+      "firstRecordId": "mathematik-b032-round-a-record-006",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:06",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7fad6a57-cda1-5dee-a55e-877be64ba992",
+      "firstRecordId": "mathematik-b032-round-a-record-007",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:07",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68505a32-3b1d-57b2-a495-00b4097eb50d",
+      "firstRecordId": "mathematik-b032-round-a-record-008",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:08",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+      "firstRecordId": "mathematik-b032-round-a-record-009",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:09",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+      "firstRecordId": "mathematik-b032-round-a-record-010",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:10",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+      "firstRecordId": "mathematik-b032-round-a-record-011",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:11",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "firstRecordId": "mathematik-b032-round-a-record-012",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:12",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+      "firstRecordId": "mathematik-b032-round-a-record-013",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:13",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "71a483ba-9680-4654-bb5e-5ab5427f0919",
+      "firstRecordId": "mathematik-b032-round-a-record-014",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:14",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "firstRecordId": "mathematik-b032-round-a-record-015",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:15",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+      "firstRecordId": "mathematik-b032-round-a-record-016",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:16",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e663cc67-5249-55db-b103-357b58a1ca91",
+      "firstRecordId": "mathematik-b032-round-a-record-017",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:17",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e322310f-f33a-485d-bc23-2412a6b8fa12",
+      "firstRecordId": "mathematik-b032-round-a-record-018",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:18",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "firstRecordId": "mathematik-b032-round-a-record-019",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:19",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+      "firstRecordId": "mathematik-b032-round-a-record-020",
+      "secondRecordId": "math-b032-round-b-gpt5-20260905:20",
+      "firstRunId": "mathematik-b032-round-a-run-001",
+      "secondRunId": "math-b032-round-b-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

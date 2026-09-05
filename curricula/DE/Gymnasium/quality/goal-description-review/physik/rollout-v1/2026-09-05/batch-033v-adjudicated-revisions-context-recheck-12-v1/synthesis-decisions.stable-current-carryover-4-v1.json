@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033v-stable-current-carryover-4-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B033v bounded stable-current synthesis candidate",
+  "synthesizedAt": "2026-09-05T01:28:04.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905",
+    "batchManifestDigest": "sha256:48bc094a6a87b884e0047524f6bd6bdf2c6a43d65936ace6e2d3b43744cc3516",
+    "configDigest": "sha256:cb267a3a8614867c0157fd1eb8bd93b6191d38ac56593e1b2a8c3ea4afd11bea",
+    "bundleFingerprint": "sha256:3047a62085dacc40bd6f1d1367a8081a2e57fe12de3a21464cece9b929d3e3f7",
+    "bookDigest": "sha256:1364f7f376abadd3e3d5b32938cd0f3d00d1595936f8072df6756b9fc876c312",
+    "reviewInputFingerprint": "sha256:223e9eebdce008c206136c00d44fa814451e4e859c3f25540b4c50ebff539089",
+    "dualSummaryDigest": "sha256:9cff577645a52fbf4049b323e9a03c0c06a9dd9a00754c4292337b1f14924857",
+    "canonicalLandscapeDigest": "sha256:b9aa70f008a09f85e6209fbfe34bd6341f1ffb9596f484f13e5a079327c40f95"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-a",
+      "campaignDigest": "sha256:cd04b194ce0d9ac6a0afa3bfac6f0c764eb71bbbf2433712e2a0ff6b10371c75",
+      "roundId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:223e9eebdce008c206136c00d44fa814451e4e859c3f25540b4c50ebff539089",
+      "batchId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:bffde586f70b87f1ced6b4526df2ae4a262f8264d722e25d2f3b314b79d1d63f",
+      "runId": "physik-b033v-round-a-20260905-codex-gpt5",
+      "runManifestDigest": "sha256:a0bb12db09035ff0bbc8da72d8b91637e5bed4f397ff3a2935be7cc325095ef6",
+      "resultsDigest": "sha256:bdd810b9597626ebfda69d6b9b85aeff2b4f7a6c213dece0a91e54600ef5f777"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-b",
+      "campaignDigest": "sha256:3e153ff795f29f49531b659aa9e874db1082296d26a0fd986400809ad81fad20",
+      "roundId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:223e9eebdce008c206136c00d44fa814451e4e859c3f25540b4c50ebff539089",
+      "batchId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:3981b8fe33891841de37e5ebd362a20e8c56b609670929f469ffa6521aa5f140",
+      "runId": "physik-b033v-round-b-openai-gpt5-20260905",
+      "runManifestDigest": "sha256:13436c11d76ef55eb3081ad0cfefa9d399e56daccb8b4c557ab79e4c009ced85",
+      "resultsDigest": "sha256:7160b732c280e63f4e34093a088e1bcc7d3554145cb3798db2abc6903a7ddf6b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033v-stable-current-carryover-4-v1-openai-codex-20260905-decision-001",
+      "goalId": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b91087c9aac1c5a29ce9968aeea843973145871f15d09914253045e728794f54",
+      "pageFingerprint": "sha256:905ecb37c99993f0df899a54ded62aa80b1a8b8811e5b7669c84e09c7106c641",
+      "goalReviewContextFingerprint": "sha256:f5a398a885b1444f7462917fee1fcbb31560dc2902a64259193b6f139fc1273a",
+      "finalText": {
+        "titleDe": "Auf- und Entladen eines Kondensators",
+        "titleEn": "Charging and Discharging a Capacitor",
+        "descriptionDe": "Die lernende Person kann elektrische Stromstärke als durch einen Leiterquerschnitt transportierte Ladung pro Zeitintervall deuten, Richtung und zeitlichen Verlauf des Stroms beim Auf- und Entladen eines Kondensators qualitativ erklären und vorhersagen, wie bei gleicher Anfangsspannung ein größerer Widerstand den Betrag des Anfangsstroms verringert und wie das Produkt aus Widerstand und Kapazität die charakteristische Lade- beziehungsweise Entladezeit festlegt.",
+        "descriptionEn": "The learner can interpret electric current as charge transferred through a conductor cross-section per time interval, qualitatively explain the direction and time course of the current while a capacitor charges and discharges, and predict how, for the same initial voltage, greater resistance reduces the magnitude of the initial current and how the product of resistance and capacitance sets the characteristic charging or discharging time."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033v-round-a-20260905-codex-gpt5.001",
+          "recordDigest": "sha256:3dd488209153d23b7015ec6abb86cb550731b9dbb84f6b8670fb08d35c524482"
+        },
+        "second": {
+          "recordId": "physik-b033v-round-b-record-001",
+          "recordDigest": "sha256:a5e5039a972c21a3a9c14d1cc51bfd994b6d0ec74d68a35e4445c940dadd3d90"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen B033v-Prüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Ladungstransport pro Zeit, Stromrichtung und zeitlicher Verlauf sowie die getrennten Wirkungen von Anfangswiderstand und RC-Zeitkonstante bilden eine fachlich geschlossene qualitative Transientenkompetenz. Runde B wird gewählt, weil sie Stromrichtung, Anfangsstrom und Zeitmaßstab an neuen Schaltungen beobachtbar trennt und auf geänderte Widerstände, Kapazitäten und Polaritäten überträgt.",
+      "rationaleEn": "Both independent B033v reviews confirm the current bilingual wording with KEEP. Charge transfer per time, current direction and time course, and the distinct effects of initial resistance and the RC time constant form one coherent qualitative transient competency. Round B is selected because it observably separates current direction, initial current, and time scale in fresh circuits and transfers them to changed resistances, capacitances, and polarities."
+    },
+    {
+      "decisionId": "physik-b033v-stable-current-carryover-4-v1-openai-codex-20260905-decision-002",
+      "goalId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:af44b933c2b221a68a287b14c09e2fc63042d95f3c10739f6c95e04e2e5f1ba1",
+      "pageFingerprint": "sha256:6c505970a4ff2cbd17641805e4a6dd60e24194976e635ffa833f49b00e04530b",
+      "goalReviewContextFingerprint": "sha256:2b3050322941c4699eb6e6cccc0b4b3d637ddbdef40b843edd49ee1b934912e9",
+      "finalText": {
+        "titleDe": "Energie des elektrischen Feldes",
+        "titleEn": "Energy of the Electric Field",
+        "descriptionDe": "Die lernende Person kann die im elektrischen Feld eines Kondensators gespeicherte Energie mithilfe von Ladung, Spannung und Kapazität berechnen und an Anwendungen erläutern, wie beim Laden Energie in das Feld übertragen und beim Entladen an angeschlossene Systeme abgegeben wird.",
+        "descriptionEn": "The learner can calculate the energy stored in a capacitor's electric field using charge, voltage, and capacitance and use applications to explain how energy is transferred into the field during charging and delivered to connected systems during discharging."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033v-round-a-20260905-codex-gpt5.002",
+          "recordDigest": "sha256:d1f44ae4f4e311df5ac16f984749ae6557938cd16887ffc20377ff9eabd942b3"
+        },
+        "second": {
+          "recordId": "physik-b033v-round-b-record-002",
+          "recordDigest": "sha256:fd479a95128a6c0170293a4fcc7f5de7abc6ba10fc9d9c1e47cc9d89a6213813"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen B033v-Prüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Berechnung der gespeicherten Feldenergie und Erklärung ihres Transfers beim Laden und Entladen sind zwei konsistente Darstellungen desselben Kondensatorsystems. Runde B wird gewählt, weil sie Größenwahl, Einheiten, Systemgrenze und Energiefluss an einer neuen Anwendung einschließlich veränderter Kapazität und Spannung prüft.",
+      "rationaleEn": "Both independent B033v reviews confirm the current bilingual wording with KEEP. Calculating stored field energy and explaining its transfer during charging and discharging are two consistent representations of the same capacitor system. Round B is selected because it assesses quantity selection, units, system boundary, and energy flow in a fresh application with changed capacitance and voltage."
+    },
+    {
+      "decisionId": "physik-b033v-stable-current-carryover-4-v1-openai-codex-20260905-decision-003",
+      "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:02ab710558f68965ef1c9de441694298a462f44db900ac77523e13cce7946550",
+      "pageFingerprint": "sha256:4ab2a1c537b0d4668e314995a1ae8597bf3977bf8e8a38fe6053504ff7ce8350",
+      "goalReviewContextFingerprint": "sha256:0de457dd77653999800ad6d91d0b0259d435beca428477cc619566989cacc183",
+      "finalText": {
+        "titleDe": "Geladene Teilchen in homogenen elektrischen Feldern untersuchen",
+        "titleEn": "Investigate Charged Particles in Homogeneous Electric Fields",
+        "descriptionDe": "Die lernende Person kann die Bewegung geladener Teilchen in homogenen elektrischen Feldern untersuchen, die Richtung der Feldkraft aus Feldrichtung und Ladungsvorzeichen bestimmen, Änderungen der elektrischen potenziellen und kinetischen Energie miteinander verknüpfen und einfache Bahnformen aus Anfangsbewegung, Ladungsvorzeichen und Feldrichtung qualitativ deuten.",
+        "descriptionEn": "The learner can investigate the motion of charged particles in uniform electric fields, determine the direction of the electric force from the field direction and the sign of the charge, relate changes in electric potential energy and kinetic energy, and qualitatively interpret simple trajectories from the initial motion, charge sign, and field direction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033v-round-a-20260905-codex-gpt5.003",
+          "recordDigest": "sha256:95ee0cb9aa317d107910502172d73337e01df4c726f7b29c7fcf57b3964bcc75"
+        },
+        "second": {
+          "recordId": "physik-b033v-round-b-record-003",
+          "recordDigest": "sha256:2070f34cc55cf76e1cb3f6a5fed9ec33b52a4c02d5c22b309bddc6a95132be01"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen B033v-Prüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Feldkraftrichtung, gekoppelte Änderungen potenzieller und kinetischer Energie sowie die qualitative Bahnform beschreiben konsistent dieselbe Teilchenbewegung im homogenen elektrischen Feld. Runde B wird gewählt, weil sie Ladungsvorzeichen, Anfangsbewegung und Feldrichtung an einem neuen Fall variiert und eine begründete Vorhersage von Kraft, Energie und Bahn verlangt.",
+      "rationaleEn": "Both independent B033v reviews confirm the current bilingual wording with KEEP. Electric-force direction, coupled changes in potential and kinetic energy, and qualitative trajectory shape consistently describe the same particle motion in a uniform electric field. Round B is selected because it varies charge sign, initial motion, and field direction in a fresh case and requires a justified prediction of force, energy, and trajectory."
+    },
+    {
+      "decisionId": "physik-b033v-stable-current-carryover-4-v1-openai-codex-20260905-decision-004",
+      "goalId": "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:70d39cfcd4e5d3a201c7455fa099fcdfaf682f09b62b23d81083de962de36590",
+      "pageFingerprint": "sha256:c060349125934ee6cfad6adec945ec15e3ae30f2e2c5f395116cb58e0a21d483",
+      "goalReviewContextFingerprint": "sha256:8edd418c4638d86eb8c3ae0a7c4274f818e867ad6b38e8030ac0e3db555e2e42",
+      "finalText": {
+        "titleDe": "Massenspektrometer als Feldanwendung beschreiben",
+        "titleEn": "Describe the Mass Spectrometer as an Application of Fields",
+        "descriptionDe": "Die lernende Person kann das Massenspektrometer als technische Anwendung elektrischer und magnetischer Felder beschreiben und die Trennung geladener Teilchen nach dem Verhältnis von Masse und Ladung qualitativ erläutern.",
+        "descriptionEn": "The learner can describe the mass spectrometer as a technical application of electric and magnetic fields and qualitatively explain the separation of charged particles by their mass-to-charge ratio."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033v-round-a-20260905-codex-gpt5.011",
+          "recordDigest": "sha256:3ac72786472600df00c1caf1f15e9f62c91251fe7a886059b639831e4bfae9c3"
+        },
+        "second": {
+          "recordId": "physik-b033v-round-b-record-011",
+          "recordDigest": "sha256:b1eee622d7eaa79dddb79594b7417c2b9697d8dc9b149e2e89307ccaafd57b2e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen B033v-Prüfungen bestätigen den aktuellen bilingualen Text mit KEEP. Geschwindigkeitsselektion, anschließende magnetische Ablenkung und Auswertung des Auftrefforts bilden eine zusammenhängende Funktions- und Modellanalyse des Massenspektrometers. Runde B wird gewählt, weil sie Kraftbilanz, Bahnkrümmung und den Schluss auf Masse beziehungsweise Isotop bei geänderten Feldstärken und Ladungen in einem neuen Gerätefall beobachtbar macht.",
+      "rationaleEn": "Both independent B033v reviews confirm the current bilingual wording with KEEP. Velocity selection, subsequent magnetic deflection, and evaluation of the impact position form one connected functional and model analysis of the mass spectrometer. Round B is selected because it makes force balance, path curvature, and the inference of mass or isotope observable in a fresh apparatus case with changed field strengths and charges."
+    }
+  ],
+  "manifestFingerprint": "sha256:766eddf82477bb3a0f8b4917addf4f104ebbea4bbc79375b657b58d9c533333c"
+}

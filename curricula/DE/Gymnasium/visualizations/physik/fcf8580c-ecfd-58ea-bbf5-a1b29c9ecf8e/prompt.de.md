@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e`
 - Titel: Charakteristische Schwingungsgrößen
-- Beschreibung: Die lernende Person kann die Größen Auslenkung, Amplitude, Periodendauer und Frequenz definieren, deren Zusammenhang beschreiben und die Schwingungsgleichung qualitativ deuten.
+- Beschreibung: Die lernende Person kann Auslenkung, Amplitude, Periodendauer und Frequenz einer harmonischen Schwingung definieren, den Zusammenhang $f = 1/T$ erläutern und eine Gleichung für die Auslenkung in Abhängigkeit von der Zeit mithilfe dieser Größen qualitativ deuten.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Charakteristische Schwingungsgrößen
-Beschreibung: Die lernende Person kann die Größen Auslenkung, Amplitude, Periodendauer und Frequenz definieren, deren Zusammenhang beschreiben und die Schwingungsgleichung qualitativ deuten.
+Beschreibung: Die lernende Person kann Auslenkung, Amplitude, Periodendauer und Frequenz einer harmonischen Schwingung definieren, den Zusammenhang $f = 1/T$ erläutern und eine Gleichung für die Auslenkung in Abhängigkeit von der Zeit mithilfe dieser Größen qualitativ deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:

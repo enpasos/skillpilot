@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1`
 - Titel: Interferometer verstehen
-- Beschreibung: Die lernende Person kann Funktionsweise eines Interferometers erläutern und Auswertungen durchführen.
+- Beschreibung: Die lernende Person kann die Funktionsweise eines Interferometers über die Aufteilung kohärenten Lichts auf unterschiedliche optische Wege und seine Überlagerung erklären und aus Änderungen des Interferenzsignals optische Weglängenunterschiede bestimmen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Interferometer verstehen
-Beschreibung: Die lernende Person kann Funktionsweise eines Interferometers erläutern und Auswertungen durchführen.
+Beschreibung: Die lernende Person kann die Funktionsweise eines Interferometers über die Aufteilung kohärenten Lichts auf unterschiedliche optische Wege und seine Überlagerung erklären und aus Änderungen des Interferenzsignals optische Weglängenunterschiede bestimmen.
 
 Zusatzanweisung:
 Use case: scientific-educational.

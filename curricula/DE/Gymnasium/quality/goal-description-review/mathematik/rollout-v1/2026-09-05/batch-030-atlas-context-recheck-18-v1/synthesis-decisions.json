@@ -1,0 +1,552 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Mathematics B030 subject synthesis candidate",
+  "synthesizedAt": "2026-09-04T22:52:47.928Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905",
+    "batchManifestDigest": "sha256:eab0c4b16bb6f6bf629df8b82c5a702459d425752d9d9d9d87832f587cd6411d",
+    "configDigest": "sha256:3365e77b454db7d99d580552ae25deabb42ea1bf62060c3a08d1fe33068728b5",
+    "bundleFingerprint": "sha256:799d53cea473d59e634c28e053766d196dca2044f2aa36342c0a612c31e5b49d",
+    "bookDigest": "sha256:c3124acc435a15c60c3ed1ebcaeee0134cfb0c208f334bbdfd565545b67ba093",
+    "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+    "dualSummaryDigest": "sha256:e39c6377655c66470ad7c61b22deea31649467cc06d732bf94e4cae07941dd8c",
+    "canonicalLandscapeDigest": "sha256:40d313a87998d8d9ec508a09166ebdf97fa07630f7865a109dd87c3df3363761"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-a",
+      "campaignDigest": "sha256:a217a7586aff4e520f05f1f96adcd8dc174aeeefd2dab38b47ad651520d63e66",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d318890ba07094f880dea161ef691e3d61d6abaed6014d7533ba34cebd7d43c1",
+      "runId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "runManifestDigest": "sha256:bf56ce1bf1e81ec01e3ad54f3ed6611eae7a43815e038ffe6d20ad500e1592bd",
+      "resultsDigest": "sha256:a1249e669cb125274bea20b1a0201c9f30961651729bb69b1994d89db2b0e571"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-b",
+      "campaignDigest": "sha256:70cb69393ff4a12787240d27c30c2d0f933742bb18230f2e6f194b442822d682",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7302b368ed5eac484ed5fef56dc9ada4ecc05e17ec5cd01208062e86a6779d80",
+      "runId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:3d3d4435d09327a9b8c50d5033b10c1338e76965b8033809edcba14f128b7c7c",
+      "resultsDigest": "sha256:83d636c8419981f63489931dfbb62712ccd949f1ec14900c00c6712966f62b82"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-001",
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dc4dca8134d1219547f517d7be16083e560c3fe8b89d43b3604c77c872a55961",
+      "pageFingerprint": "sha256:03aebb11536ca781936888b453a9cd38839699f60b16edb0196ad1602a7209a7",
+      "goalReviewContextFingerprint": "sha256:793effd47778333a2bf88a7caab8f437f2491dfa32679d3bca6729b865a8ba0e",
+      "finalText": {
+        "titleDe": "Mittelsenkrechten konstruieren und begründen",
+        "titleEn": "Construct and justify perpendicular bisectors",
+        "descriptionDe": "Die lernende Person kann die Mittelsenkrechte einer Strecke mit Geodreieck und Zirkel konstruieren und die Konstruktion mithilfe gleicher Abstände zu den Endpunkten begründen.",
+        "descriptionEn": "The learner can construct the perpendicular bisector of a segment using a set square and compass and justify the construction using equal distances from the segment endpoints."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-001",
+          "recordDigest": "sha256:55f47eab7f8d8034318a766aabea200d666efa421baa48da1e45ff466256f77c"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r01-perpendicular-bisectors",
+          "recordDigest": "sha256:a801dcfbe48476e6ac8701e835c9feb4bf4bbc8a7964a7bf5550b49a63ed9ef0"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen die bilinguale Beschreibung als fachlich korrekt, atomar und konkret prüfbar: Konstruktion und Begründung über die Ortslinieneigenschaft bilden eine kohärente Kompetenz. Der aktuelle Text bleibt unverändert. Runde B liefert die stärkere Understanding Evidence, weil sie neben gleichen Abständen auch Mittelpunkt und rechten Winkel als unabhängige Prüfkriterien bindet und die Konstruktion auf eine Strecke in veränderter Lage überträgt; Runde A bleibt vollständig als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the bilingual description as mathematically correct, atomic, and concretely assessable: construction and justification through the locus property form one coherent competence. The current text is retained. Round B provides the stronger understanding evidence because it binds the midpoint and right angle as checks independent of equal distances and transfers the construction to a segment in a changed position; Round A remains fully bound as independent confirmation."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-002",
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6e9ee93b9dd50d95bafb3a9a603c33b27209e727e86fe4a89de47ec120f7243e",
+      "pageFingerprint": "sha256:e8ea416e59d6ab9a5d0df34348dd754f6c8f14c87df367107864eeeae1707939",
+      "goalReviewContextFingerprint": "sha256:ac03e81c353851d5f51cd0fab9594ad413714fd364d7c9296e57e3c5bf790c48",
+      "finalText": {
+        "titleDe": "Winkelhalbierende konstruieren und begründen",
+        "titleEn": "Construct and justify angle bisectors",
+        "descriptionDe": "Die lernende Person kann die Winkelhalbierende eines Winkels mit Geodreieck und Zirkel konstruieren und die Konstruktion mithilfe gleicher Abstände zu den Schenkeln begründen.",
+        "descriptionEn": "The learner can construct the bisector of an angle using a set square and compass and justify the construction using equal distances from the sides of the angle."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-002",
+          "recordDigest": "sha256:8bb67d81c1daab998a6b1c0aa6e3e94e0205ec9dba734b47a03efbc9311fb9bf"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r02-angle-bisectors",
+          "recordDigest": "sha256:54487e5fc74cae7df7567b6aa1e8ba38e3f432328a42df600eb961a27d0d1dc2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen Konstruktion und Abstandsbegründung der Winkelhalbierenden als eine fachlich geschlossene, bilinguale Kompetenz. Der aktuelle Text bleibt unverändert. Runde B wird gewählt, weil sie spitze und stumpfe Winkel variiert, den richtigen inneren Strahl verlangt und gleiche senkrechte Abstände zu beiden Schenkeln als belastbares Prüfkriterium nutzt; Runde A bleibt als unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the construction and distance-based justification of an angle bisector as one coherent bilingual competence. The current text is retained. Round B is selected because it varies acute and obtuse angles, requires the correct interior ray, and uses equal perpendicular distances to the two sides as a robust check; Round A remains bound as independent confirmation."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-003",
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:45f918b14aea004e9a6d2f27a473bc87823afa37e3b9581096fedffa4203af1e",
+      "pageFingerprint": "sha256:6b918adb6b956c5996bfb2657d0dda640c53941dea92a454554ce611247ec913",
+      "goalReviewContextFingerprint": "sha256:156a811a03c7ab32f6e6a7c0f146431dd24ae9df07fe1c4fbc0863a321a41025",
+      "finalText": {
+        "titleDe": "Besondere Dreiecke untersuchen",
+        "titleEn": "Analyze special triangles",
+        "descriptionDe": "Die lernende Person kann rechtwinklige, spitzwinklige, stumpfwinklige, gleichschenklige und gleichseitige Dreiecke anhand ihrer Seiten- und Winkeleigenschaften identifizieren und beschreiben sowie passende Eigenschaften in einfachen Begründungen nutzen.",
+        "descriptionEn": "The learner can identify and describe right, acute, obtuse, isosceles, and equilateral triangles from their side and angle properties and use appropriate properties in simple justifications."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-003",
+          "recordDigest": "sha256:aabd662648a23fb5cca9c8e07d8b489a8e9c2f45b569b47fcc01b818c3ab1412"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r03-special-triangles",
+          "recordDigest": "sha256:7a7d9f07f6c67cb864d947454f11ed3d902623c853ca2dff5f0a62835e82c8a1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bewerten das Erkennen, Beschreiben und begründende Nutzen der Eigenschaften besonderer Dreiecke als fachlich korrekt, lernendengerecht und in beiden Sprachen äquivalent. Der aktuelle Text bleibt unverändert. Runde A bietet die stärkere Evidence, weil sie die sich gegenseitig ausschließenden Winkelklassen von den überlappenden Seitenklassen trennt, Mehrfachklassifikationen zulässt und auch aus unvollständigen Angaben begründen lässt; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews judge identifying, describing, and using properties of special triangles in justification to be mathematically correct, learner-facing, and equivalent across both languages. The current text is retained. Round A offers the stronger evidence because it separates mutually exclusive angle classes from overlapping side classes, permits multiple classifications, and requires reasoning from incomplete information; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-004",
+      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c8493b7928d52723eab6e05ff780394aebc7cc0a9374487b4f371807f0948511",
+      "pageFingerprint": "sha256:e5ec3e1ab61a707cf64decb7796519cf757ad91ddf58cd36dc5ff710e9d4d9a1",
+      "goalReviewContextFingerprint": "sha256:7ed49294438913f30601c84789db972bc1e085f8e984450ce871e413e5302fd4",
+      "finalText": {
+        "titleDe": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "titleEn": "Express and interpret points in the spatial coordinate system as tuples",
+        "descriptionDe": "Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+        "descriptionEn": "The learner can represent points in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple location data in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-004",
+          "recordDigest": "sha256:301ca8e445dc8f60a6591b2c2e3eb2afcad58a60164610d466a78e2272faa26c"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r04-spatial-points-tuples",
+          "recordDigest": "sha256:3a0cf2746c3741f237521eb2c146b51701e7685165c959ac3ea3f0b1e98d0b87"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen die Darstellung räumlicher Punkte als Tupel samt fachsprachlicher Deutung und Kontextbezug als kohärente, prüfbare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B ist stärker, weil sie Tupel, textliche Ortsangabe und eigenständige Skizze wechselseitig koordiniert und beim Wechsel des Ursprungs zwischen unverändertem Punkt und veränderten Koordinaten unterscheidet; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm representing spatial points as tuples, interpreting their entries precisely, and explaining contextual locations as a coherent assessable competence. The current text is retained. Round B is stronger because it coordinates tuples, verbal locations, and an independently produced sketch in both directions and distinguishes an unchanged point from changed coordinates when the origin is moved; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-005",
+      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4c0c8744a4bb7bec52b8ad9068628d6b0628021844a26419c55f9e4f466ef07b",
+      "pageFingerprint": "sha256:63f93fae0db30970ddddb9d8836f15ce9ba8324044a0ee9f06eeddd163af312a",
+      "goalReviewContextFingerprint": "sha256:d5acb16dd3cc809fd63bf575371e979c90354aeafb5476057f8dd3be6b2e1c95",
+      "finalText": {
+        "titleDe": "Vektoren als Orts- und Verschiebungsvektoren deuten",
+        "titleEn": "Interpret vectors as position and displacement vectors",
+        "descriptionDe": "Die lernende Person kann Vektoren in Tupeldarstellung als Orts- oder Verschiebungsvektoren deuten und ihre geometrische Bedeutung in einfachen Situationen erklären.",
+        "descriptionEn": "The learner can interpret vectors in tuple form as position or displacement vectors and explain their geometric meaning in simple situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-005",
+          "recordDigest": "sha256:ce1f5596bafc17d37e8ed94c042df1319b6d503a7790e7d281bfd2efe160e9eb"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r05-position-displacement-vectors",
+          "recordDigest": "sha256:02edf9e26392d5589aca2b5f6270482f61bdebf498e433513774613fc4852388"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die Deutung eines Vektortupels als Orts- oder Verschiebungsvektor und die Erklärung seiner geometrischen Bedeutung als fachlich korrekte, atomare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B liefert die stärkere Evidence, weil sie denselben Vektor in beiden Rollen vergleicht und beim verschobenen Ursprung korrekt herausarbeitet, dass sich Ortsvektoren ändern, während eine Verschiebung zwischen zwei Punkten invariant bleibt; Runde A bleibt gebunden.",
+      "rationaleEn": "Both independent rounds confirm interpreting a vector tuple as a position or displacement vector and explaining its geometric meaning as a mathematically correct atomic competence. The current text is retained. Round B provides the stronger evidence because it compares the same vector in both roles and correctly shows under a shifted origin that position vectors change while the displacement between two points remains invariant; Round A remains bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-006",
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c4255e80d2d1dc84d9c24da090466f4d00ff8d7467b99605b9cdcf733f9dc4f2",
+      "pageFingerprint": "sha256:43184caf93264e34b0ec0ecea9b03e58d91578191d1dffbc411ac8aae081b131",
+      "goalReviewContextFingerprint": "sha256:497e0b2208d309f699c73747cbe700b03ccf52478e6497830f954e31f8c3f8da",
+      "finalText": {
+        "titleDe": "Kollinearität von Vektoren prüfen",
+        "titleEn": "Check collinearity of vectors",
+        "descriptionDe": "Die lernende Person kann in einfachen kollinearen und nicht kollinearen Fällen prüfen, ob Vektoren kollinear sind, und die Prüfung geometrisch oder rechnerisch begründen.",
+        "descriptionEn": "The learner can check in simple collinear and non-collinear cases whether vectors are collinear and justify the check geometrically or algebraically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-006",
+          "recordDigest": "sha256:6a26a5794c5b922c59e56a258c51eefaf6ba3ed50295ab1f19ae2ff948402444"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r06-vector-collinearity",
+          "recordDigest": "sha256:d5b7109fc49ecdb421750001c4cb80a9e9021a3001b54c2ef90e93f2f9aa9c3a"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen das Prüfen und geometrische oder rechnerische Begründen von Kollinearität in positiven und negativen einfachen Fällen als eindeutig assessierbare Kompetenz. Der aktuelle Text bleibt unverändert. Runde A ist stärker, weil sie sowohl kollineare als auch nicht kollineare Paare über einen gemeinsamen Skalarfaktor in sämtlichen Komponenten prüfen lässt und die geometrische Bedeutung parallel beziehungsweise antiparallel ausdrücklich bindet; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm checking and geometrically or algebraically justifying collinearity in simple positive and negative cases as an unambiguously assessable competence. The current text is retained. Round A is stronger because it requires both collinear and non-collinear pairs to be tested using one common scalar factor across all components and explicitly binds the geometric meaning of parallel or antiparallel direction; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-007",
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a8d7d3950f9a884bd5f006f9f40ad0181f08b2c408dcc44d92c8b87b4a66d157",
+      "pageFingerprint": "sha256:0d0607a6c3f748e013ae76b4782b42dfbcec89cbb9b39d064644d3944eb1b19b",
+      "goalReviewContextFingerprint": "sha256:19fe41e90838af9455af670ebdb253cb35c077e0908e7e6a00e4ace120143364",
+      "finalText": {
+        "titleDe": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+        "titleEn": "Interpret sine and cosine values on the unit circle in radians and determine angles",
+        "descriptionDe": "Die lernende Person kann Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2π am Einheitskreis veranschaulichen, Vorzeichen sicher bestimmen und zu vorgegebenen Sinus- oder Kosinuswerten passende Winkelgrößen angeben.",
+        "descriptionEn": "The learner can illustrate sine and cosine values for angles between 0 and 2π on the unit circle, determine signs reliably, and identify suitable angles for given sine or cosine values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-007",
+          "recordDigest": "sha256:f6219bb9c2100c9ccc9ef6bcb041ef014b885d163199026b9f380fe84332562e"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r07-unit-circle-radians-values",
+          "recordDigest": "sha256:0693b05c4625392a44a2017a100da25606a51827e275f61d168b2c549485cfb7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die Verknüpfung von Einheitskreis, Vorzeichen sowie dem Bestimmen passender Winkel im Intervall von 0 bis 2π als fachlich geschlossene und bilingual parallele Kompetenz. Der aktuelle Text bleibt unverändert. Runde B wird gewählt, weil sie unzulässige Werte beziehungsweise Lösungen ausschließen lässt, Randpunktkonventionen berücksichtigt und neue Quadranten- und Wertfälle statt bloßer Wiederholung fordert; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent rounds confirm linking the unit circle, signs, and determination of matching angles on the interval from 0 to 2π as a coherent competence with bilingual parity. The current text is retained. Round B is selected because it requires inadmissible values or solutions to be rejected, respects endpoint conventions, and uses fresh quadrant and value cases rather than repetition; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-008",
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4b69a86f27703a9da520d781e3af5b39d631b798dfcf7f05e43f52d39ec8d37f",
+      "pageFingerprint": "sha256:af38ffec801f917d669933eb41d66f94e4f60a51f160f96194f9cfeaa49387d0",
+      "goalReviewContextFingerprint": "sha256:ccfb86d329b53ce9d8037910b743c98393692037ee3ad1df9cf65cfbbe2e4ae4",
+      "finalText": {
+        "titleDe": "Bogenmaß in periodischen Prozessen nutzen",
+        "titleEn": "Use radian measure in periodic processes",
+        "descriptionDe": "Die lernende Person kann das Bogenmaß als Winkelmaß in trigonometrischen Funktionstermen verwenden, zwischen Grad- und Bogenmaß wechseln und Bogenmaßangaben im Verlauf periodischer Prozesse deuten.",
+        "descriptionEn": "The learner can use radian measure as an angle measure in trigonometric function terms, convert between degrees and radians, and interpret radian values in periodic processes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-008",
+          "recordDigest": "sha256:7e6d6642784a661e556efd899338730e74629d73959e3ca9b3b311db239053aa"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r08-radian-periodic-processes",
+          "recordDigest": "sha256:013672c754c640e0334ce767f565ec1ebdc6d079b2b51e57cbb05d4fea8e3141"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen das Nutzen des Bogenmaßes in Funktionstermen, das Umrechnen und die Deutung im Verlauf periodischer Prozesse als eine zusammenhängende Darstellungskompetenz. Der aktuelle Text bleibt unverändert. Runde B ist stärker, weil sie Winkel, Zeitvariable, Periodendauer und Termargument mit konsistenten Einheiten koordiniert und diese Beziehungen auf einen veränderten periodischen Prozess überträgt; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm using radians in function expressions, converting angle measures, and interpreting them over a periodic process as one coherent representational competence. The current text is retained. Round B is stronger because it coordinates angle, time variable, period, and function argument with consistent units and transfers these relationships to a changed periodic process; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-009",
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:62fb4895c2520f2ebd38b0ed46d0784bd16ed90cbec481145f701f8ac24d7bd5",
+      "pageFingerprint": "sha256:0f6a42fc7d806e43d05e5f054a86dcad48275925c453ca14d0c5915de9362004",
+      "goalReviewContextFingerprint": "sha256:288a4af7321399381581628f30e78dec802297553f019aad33a3a4ab879acd20",
+      "finalText": {
+        "titleDe": "Sinus- und Kosinusfunktionen verstehen",
+        "titleEn": "Understand sine and cosine functions",
+        "descriptionDe": "Die lernende Person kann erklären, wie Sinus- und Kosinusfunktionen als Koordinatenverläufe einer Kreisbewegung entstehen, ihre Graphen skizzieren sowie Amplitude und Nullstellen als charakteristische Merkmale benennen.",
+        "descriptionEn": "The learner can explain how sine and cosine functions arise as coordinate traces of circular motion, sketch their graphs, and identify amplitude and zeros as characteristic features."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-009",
+          "recordDigest": "sha256:71b3c61b1f6961092452c810ba1ef38d865881c2134e54aa9a75c16845abe88c"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r09-sine-cosine-functions",
+          "recordDigest": "sha256:f03fbb38c29c4d341a56d121136da5ef582a6b02b7049170a3ecf79aed5bca94"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die Entstehung der Sinus- und Kosinusfunktionen aus den Koordinaten einer Kreisbewegung samt Skizze und charakteristischen Merkmalen als fachlich richtige Basiskompetenz. Der aktuelle Text bleibt unverändert. Runde B bietet die stärkere Evidence, weil sie über eine volle Periode Kreisposition, beide Koordinatenverläufe, Wertebereich, Extrema, Nullstellen und Phasenbeziehung zusammenführt, ohne die nachfolgende allgemeine Parameterbestimmung vorwegzunehmen; Runde A bleibt gebunden.",
+      "rationaleEn": "Both independent rounds confirm deriving sine and cosine functions from the coordinates of circular motion, sketching them, and naming characteristic features as a mathematically sound foundational competence. The current text is retained. Round B provides the stronger evidence because it connects circle position, both coordinate traces, range, extrema, zeros, and phase relation over a full period without pre-empting the subsequent general parameter competency; Round A remains bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-010",
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:70944a923ab0a81276dffe1c609255296acf419f8e07f9b7859f1c3d6b39df6d",
+      "pageFingerprint": "sha256:46bba7bec9828c07e8e72e8e96736071622914f3962fb8b119c249e9de030848",
+      "goalReviewContextFingerprint": "sha256:f20c77a8a5d79051d5dc540bf630dc47c6d86d8b01006cf83486730b0ecbb665",
+      "finalText": {
+        "titleDe": "Parameter periodischer Funktionen deuten",
+        "titleEn": "Interpret parameters of periodic functions",
+        "descriptionDe": "Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \\cdot \\sin(bx+c)+d$ bestimmen.",
+        "descriptionEn": "The learner can interpret amplitude, period, phase shift and vertical shift and determine corresponding parameters in terms $y = a \\cdot \\sin(bx+c)+d$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-010",
+          "recordDigest": "sha256:41b989013bff46722cdac80972c0808f6234d8e64ab89f5800eb1170591f8d70"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r10-periodic-parameters",
+          "recordDigest": "sha256:18bfd19ded71f88b1c1adc2dbd615decec947f90e71f067e347861c527d0a4a0"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen das Interpretieren und Bestimmen von Amplitude, Periodenlänge, Phasen- und Vertikalverschiebung in der angegebenen Funktionsfamilie als kohärente, prüfbare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B ist stärker, weil sie die Phasenverschiebung präzise als −c/b behandelt, äquivalente Termdarstellungen berücksichtigt und die Parameter aus neuen Graph- und Kontextdaten statt durch Schemaeinsetzen erschließen lässt; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm interpreting and determining amplitude, period, horizontal shift, and vertical shift in the stated function family as a coherent assessable competence. The current text is retained. Round B is stronger because it handles the horizontal shift precisely as −c/b, accounts for equivalent expression forms, and requires parameters to be inferred from fresh graph and context data rather than by template substitution; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-011",
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:359837688e5282b577978c5994665a5ec87996225604a883506f04fad8dda4ec",
+      "pageFingerprint": "sha256:2542c5b5b7abafa8bab33763c6e496e2b5a088f58e5e270fef92ba3cf67eacdf",
+      "goalReviewContextFingerprint": "sha256:e72976096bdba0fb02499425af955f2c3ac66eba9c472787eb0ba5ff86f2b959",
+      "finalText": {
+        "titleDe": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+        "titleEn": "Determine characteristic points of trigonometric functions using symmetry",
+        "descriptionDe": "Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstellen, Extrempunkte und Wendepunkte ohne Differenzialrechnung aus Periodizität, Amplitude, Verschiebungen und Symmetrieargumenten bestimmen.",
+        "descriptionEn": "The learner can determine zeros, extrema, and inflection points of sine and cosine functions without calculus by using periodicity, amplitude, shifts, and symmetry arguments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-011",
+          "recordDigest": "sha256:61e3671dd0ecb72c40947522a4b2a78907267de82e87fb0441544f619f1071f3"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r11-trig-characteristic-points",
+          "recordDigest": "sha256:929c9e62bb85d0097e7088df12a65dc68320062ab702eb6c93301830b0e03053"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen das Bestimmen charakteristischer Punkte aus Periodizität, Amplitude, Verschiebung und Symmetrie ohne Differenzialrechnung als fachlich geschlossen und assessierbar. Der aktuelle Text bleibt unverändert. Runde A ist stärker, weil sie neben symmetrischer Fortsetzung ausdrücklich prüft, dass eine Vertikalverschiebung Anzahl oder Existenz von Nullstellen ändern kann, und damit eine zentrale Geltungsgrenze bloßen Musterverschiebens abdeckt; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent rounds confirm determining characteristic points from periodicity, amplitude, shifts, and symmetry without calculus as mathematically coherent and assessable. The current text is retained. Round A is stronger because, in addition to symmetric continuation, it explicitly tests that a vertical shift can change the number or existence of zeros, thereby covering a central limit of merely shifting memorized patterns; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-012",
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:81215dcc7a3fb0976b9b097ecf5bbb152694c3f0c092087966306dc7accb347b",
+      "pageFingerprint": "sha256:cb469d0271fad5f8dbb31ca5a7b8fb409fcc87d5ca764d30510aa385c3b8a09c",
+      "goalReviewContextFingerprint": "sha256:3c0b5a035379ba352b17433b2a1c42c9dca6004a8943b6af519705d62bd99646",
+      "finalText": {
+        "titleDe": "Ableitungen von Sinus und Kosinus grafisch begründen",
+        "titleEn": "Justify sine and cosine derivatives graphically",
+        "descriptionDe": "Die lernende Person kann aus dem Verlauf der Sinus- und Kosinusgraphen die Ableitungsfunktionen durch grafisches Differenzieren begründen und die Vorzeichen- und Extremstellenzusammenhänge erklären.",
+        "descriptionEn": "The learner can justify the derivative functions from the graphs of sine and cosine by graphical differentiation and explain the relationships between signs and extrema."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-012",
+          "recordDigest": "sha256:cb4d0e2b7397ffae54acc38a0fa1e2e70608dbfe34b80ab25f5d1a9b1dcd0698"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r12-graphical-trig-derivatives",
+          "recordDigest": "sha256:31fe0c405e0fa8c45bb935369150d24526e9a0455b477d767bd8cd2da87e9d62"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen das grafische Differenzieren der Grundfunktionen Sinus und Kosinus samt Erklärung von Vorzeichen- und Extremstellenzusammenhängen als verständnisorientierte, atomare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B wird gewählt, weil sie konsequent bei den beiden benannten Grundfunktionen bleibt, steigende und fallende Intervalle sowie waagerechte Tangenten mit dem Ableitungsverlauf verbindet und reinen Formelabruf ausdrücklich ausschließt; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm graphical differentiation of the basic sine and cosine functions together with explaining sign and extremum relationships as an understanding-oriented atomic competence. The current text is retained. Round B is selected because it remains strictly within the two named base functions, connects increasing and decreasing intervals and horizontal tangents to the derivative trace, and explicitly excludes mere formula recall; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-013",
+      "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:019b103903500ef91caeadb83218a753fe8d708b031c65d2a747f237e9cb7328",
+      "pageFingerprint": "sha256:89efbbeca5f2e7d30ad412d3bb50c7741fcf2c8003ed3b21051652f6b58f8d8c",
+      "goalReviewContextFingerprint": "sha256:53af453c03f59781b647f1bebb56fb2b4070bdaf7e103482d32da3a168d3bfd6",
+      "finalText": {
+        "titleDe": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+        "titleEn": "Differentiate transformed sine and cosine functions using the chain rule",
+        "descriptionDe": "Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.",
+        "descriptionEn": "The learner can differentiate functions of the form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ or $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ using the chain rule and explain the role of the inner linear transformation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-013",
+          "recordDigest": "sha256:dd6ed69b9e033ec2c838a00f711d52d656d9548a0fd4347988a318b775b84a29"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r13-trig-chain-rule",
+          "recordDigest": "sha256:08fdde6a19112ced71c7c84da972d99d04bec565db9ede0c0006db8156fe4516"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen das Ableiten der angegebenen transformierten Sinus- und Kosinusfunktionen und das Erklären des inneren linearen Faktors als fachlich korrekte Kettenregelkompetenz. Der aktuelle Text bleibt unverändert. Runde A ist stärker, weil sie die äußere Ableitung am inneren Argument und den Faktor b ausdrücklich verbindet und Vorzeichen, Phase und inneren Faktor an veränderten Sinus- und Kosinusfällen kontrollieren lässt; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent rounds confirm differentiating the stated transformed sine and cosine functions and explaining the effect of the inner linear factor as a mathematically correct chain-rule competence. The current text is retained. Round A is stronger because it explicitly connects evaluation of the outer derivative at the inner argument with factor b and checks sign, phase, and the inner factor in changed sine and cosine cases; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-014",
+      "goalId": "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:13761a3571fec8db30a834417a15165bdb6ac465c641656b6474cfd31b966e0d",
+      "pageFingerprint": "sha256:d4225c9209212ad5c66a1363bf0f1c35c4545ead6d5a382f2cca7cea9cd843d1",
+      "goalReviewContextFingerprint": "sha256:910ccd0128307a6f56717b5fa81737bc284fdb0a28a8ee3bbda255e8e751903e",
+      "finalText": {
+        "titleDe": "Ableitungswerte trigonometrischer Modelle im Kontext interpretieren",
+        "titleEn": "Interpret derivative values of trigonometric models in context",
+        "descriptionDe": "Die lernende Person kann die Ableitung einer trigonometrischen Modellfunktion an einer Stelle bestimmen und den Wert als lokale Änderungsrate im jeweiligen Sachzusammenhang interpretieren.",
+        "descriptionEn": "The learner can determine the derivative of a trigonometric model function at a point and interpret the value as a local rate of change in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-014",
+          "recordDigest": "sha256:2132a9846c179971f85cf80f6ae7170903fe6bd37d831e7c37a00b32f32ea9f4"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r14-trig-derivative-context",
+          "recordDigest": "sha256:f717e1a8a9e789f5c5798a1113d20f57fef2b06aa359b6cc68b816a73b6f4617"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen das Bestimmen eines Ableitungswerts und seine Deutung als lokale Änderungsrate mit Sachbezug als eine kohärente Modellierungskompetenz. Der aktuelle Text bleibt unverändert. Runde A ist stärker, weil sie Bedeutung, Vorzeichen und zusammengesetzte Einheit bindet und die lokale momentane Rate klar von einer mittleren Änderung über ein Intervall beziehungsweise vom gesamten Verlauf trennt; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm determining a derivative value and interpreting it as a local rate of change in context as one coherent modelling competence. The current text is retained. Round A is stronger because it binds meaning, sign, and compound unit and clearly distinguishes the local instantaneous rate from an average change over an interval or from the behaviour of the entire process; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-015",
+      "goalId": "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b524158ebea50cbdad2c4414c37a352505608fd6f1c77fee22ac02f5d1d5f452",
+      "pageFingerprint": "sha256:1bbdef72aad982130306b4fffcbf215099eb00252a4223866b0c476f8d35b201",
+      "goalReviewContextFingerprint": "sha256:1b35b89b8a25339b87f4c5c62b84a13529feb48475897f861b6824dfc21b1a9d",
+      "finalText": {
+        "titleDe": "Trigonometrische und ganzrationale Funktionen vergleichen",
+        "titleEn": "Compare trigonometric and polynomial functions",
+        "descriptionDe": "Die lernende Person kann trigonometrische Modelle mit ganzrationalen Funktionen hinsichtlich Periodizität, Symmetrie, Nullstellen, Extremverhalten und langfristigem Verlauf vergleichen und die Grenzen der jeweiligen Modellklasse begründen.",
+        "descriptionEn": "The learner can compare trigonometric models with polynomial functions with regard to periodicity, symmetry, zeros, extrema, and long-term behavior and justify the limits of each model class."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-015",
+          "recordDigest": "sha256:002c46f9125be0b5eabb0cd456232f0e5fc2fb3ca3a49e2e1eace93d68dd9683"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r15-trig-polynomial-comparison",
+          "recordDigest": "sha256:8ee80cca0ae6a390d622cf60cbd4a1828ce198de3f3e1a35be721c82b54fa094"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen den Vergleich trigonometrischer und ganzrationaler Modelle anhand struktureller Merkmale und begründeter Modellgrenzen als fachlich gehaltvolle, prüfbare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B bietet die stärkere Evidence, weil sie Term, Daten und verbale Situation variiert, lokale Passung von langfristiger Extrapolation trennt und Periodizität, Beschränktheit, Symmetrie, Nullstellen und Extremverhalten auf veränderte Horizonte überträgt; Runde A bleibt gebunden.",
+      "rationaleEn": "Both independent rounds confirm comparing trigonometric and polynomial models through structural features and justified model limits as a substantive assessable competence. The current text is retained. Round B provides the stronger evidence because it varies expression, data, and verbal situation, separates local fit from long-term extrapolation, and transfers periodicity, boundedness, symmetry, zeros, and extremal behaviour to changed horizons; Round A remains bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-016",
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f9564c7842c2190915f104d884b98ffd4c38527d0af89a54bf00a9808e596cda",
+      "pageFingerprint": "sha256:e929e3378ad4f90944fe0960a079d4f3cbfff9cc324e76a0fbc0bf04a43f123f",
+      "goalReviewContextFingerprint": "sha256:fa6bbccb9a260cb3e1277f22e0b6bf6e877a713c2de9adca3875611a1ace1632",
+      "finalText": {
+        "titleDe": "Dreiecke aus Kongruenzangaben konstruieren",
+        "titleEn": "Construct triangles from congruence data",
+        "descriptionDe": "Die lernende Person kann ein durch zulässige Seiten- und Winkelangaben bestimmtes Dreieck mit Geodreieck und Zirkel konstruieren und die Konstruktionsschritte nachvollziehbar dokumentieren.",
+        "descriptionEn": "The learner can construct a triangle determined by valid side and angle data using a set square and compass and document the construction steps clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-016",
+          "recordDigest": "sha256:4d638499423fea14c5469f8949f699e77099db96a263e15d9986c706a25a145f"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r16-congruence-triangle-construction",
+          "recordDigest": "sha256:0d1a5bfdfe2943a2aed822bebb899126b36ca37c6a1ffbc9317c8dd7dcbccc03"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen Konstruktion und nachvollziehbare Dokumentation eines durch zulässige Angaben bestimmten Dreiecks als eine fachlich kohärente Kompetenz. Der aktuelle Text bleibt unverändert. Runde B ist stärker, weil sie den passenden Kongruenzfall identifizieren, die Konstruktion mit allen ursprünglichen Angaben prüfen und auf einen andersartigen zulässigen Datensatz übertragen lässt; zudem berücksichtigt sie die aktuelle Atlas-Platzierung in genau den sechs sichtbaren Länderkontexten. Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm constructing and transparently documenting a triangle determined by admissible data as one mathematically coherent competence. The current text is retained. Round B is stronger because it requires identification of the applicable congruence case, verification against every original datum, and transfer to a different admissible data set; it also reflects the current atlas placement in exactly the six visible state contexts. Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-017",
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0035f46a870444ad0a58a14ef5fd692dac43531f18df3e00e3c76ad45d0b1806",
+      "pageFingerprint": "sha256:71f853b4a93727b763bff0ad898c39d3fdf5143f8a0f1d0b23c6897f261f4ef0",
+      "goalReviewContextFingerprint": "sha256:d4169dbeaf23a3bd58b22ab6427127b7b288e441d0d50523b3b49811cfd1f9f2",
+      "finalText": {
+        "titleDe": "Besondere Linien in Dreiecken beschreiben",
+        "titleEn": "Describe special lines in triangles",
+        "descriptionDe": "Die lernende Person kann besondere Linien in Dreiecken wie Höhe, Mittelsenkrechte, Seitenhalbierende und Winkelhalbierende erkennen, fachsprachlich beschreiben und in Skizzen zuordnen.",
+        "descriptionEn": "The learner can identify special lines in triangles such as altitudes, perpendicular bisectors, medians, and angle bisectors, describe them using mathematical language, and assign them in sketches."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-017",
+          "recordDigest": "sha256:5b76801054cbc01ac72ce664eba98326af3a621ce0238e7a901b6be2974f414d"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r17-special-triangle-lines",
+          "recordDigest": "sha256:6739d7743857e6cf13fd270f4c70064d1bcb2820ac820c9bb6837eb90519f760"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen das Erkennen, fachsprachliche Beschreiben und Zuordnen der vier besonderen Linien als zusammengehörige begriffliche Unterscheidungskompetenz. Der aktuelle Text bleibt unverändert. Runde B ist stärker, weil sie die definierenden Beziehungen zu Seite, Mittelpunkt, Eckpunkt und Winkel ausdrücklich gegeneinander abgrenzt, Höhen auf Seitenverlängerungen einschließt und die aktuelle Atlas-Platzierung in den fünf sichtbaren Länderkontexten korrekt bindet; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent rounds confirm recognizing, precisely describing, and matching the four special triangle lines as one coherent conceptual discrimination competence. The current text is retained. Round B is stronger because it explicitly distinguishes their defining relations to a side, midpoint, vertex, and angle, includes altitudes meeting extensions of sides, and correctly binds the current atlas placement in the five visible state contexts; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-018",
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d42470e39d832ff587d0f490bf9d2768e4456292e3cecf14ce7092cac0b4ca8f",
+      "pageFingerprint": "sha256:671fc983ad78880904a051d58aef1a1525fa9332ce785ee60c571d83b631f5ae",
+      "goalReviewContextFingerprint": "sha256:3027cfc6db82b97c1243f67f0d386c197397af19dc43d8c76c399a38a3521dc5",
+      "finalText": {
+        "titleDe": "Seitenhalbierende in Dreiecken konstruieren",
+        "titleEn": "Construct medians in triangles",
+        "descriptionDe": "Die lernende Person kann zu einem gegebenen Dreieck die Seitenhalbierenden durch Konstruktion der Seitenmittelpunkte und Verbinden mit den gegenüberliegenden Eckpunkten konstruieren und prüfen.",
+        "descriptionEn": "For a given triangle, the learner can construct the medians by constructing each side midpoint and joining it to the opposite vertex, and can check the result."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b030-atlas-context-recheck-a-record-018",
+          "recordDigest": "sha256:1483445e1553bf333e3203e93082819127177280ceeb5ea288901a7a13782086"
+        },
+        "second": {
+          "recordId": "mathematik-b030-b-r18-triangle-medians",
+          "recordDigest": "sha256:87cfddda7d3161e490dff190d222d0a04eedb6712a45a108e6a71b37f089ace9"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen die Konstruktion und Prüfung von Seitenhalbierenden über Seitenmittelpunkte und gegenüberliegende Eckpunkte als fachlich korrekte, atomare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B liefert die stärkere Evidence, weil sie die Seitenhalbierende ausdrücklich von Mittelsenkrechter, Höhe und Winkelhalbierender abgrenzt, den Prüfweg bindet und die durch die Supplement-Grenze tatsächlich sichtbare Atlas-Platzierung auf Hessen und Thüringen beschränkt; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both blind reviews confirm constructing and checking medians through side midpoints and opposite vertices as a mathematically correct atomic competence. The current text is retained. Round B provides the stronger evidence because it explicitly distinguishes a median from a perpendicular bisector, altitude, and angle bisector, binds the verification method, and limits the atlas placement to Hesse and Thuringia as actually visible through the supplement boundary; Round A remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:d6a9e6537309194fb0d2135badf125a27a9109a468e09fa52fae26a8bf1af05e"
+}

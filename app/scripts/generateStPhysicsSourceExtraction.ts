@@ -364,9 +364,25 @@ const batch025RationalesBySourceGoalId = new Map<string, string>([
   ]
 ])
 
+// Batch 033 narrowed the canonical ionising-radiation target to concrete
+// applications. Generic occurrences of "Strahlung" in these Sek-II sources
+// are therefore no longer evidence for that target.
+const batch033RemovedRadiationSourceGoalIds = new Set([
+  'st-phys-sekii-st-schuljahrgange-11-12-gan-welleneigenschaften-des-lichtes-057-6cd4b9f5',
+  'st-phys-sekii-st-schuljahrgange-11-12-gan-magnetisches-feld-094-e48fb600',
+  'st-phys-sekii-st-schuljahrgange-11-12-gan-aufgabenpraktikum-181-cf855af8',
+  'st-phys-sekii-st-schuljahrgange-11-12-ean-welleneigenschaften-des-lichtes-247-6cd4b9f5',
+  'st-phys-sekii-st-schuljahrgange-11-12-ean-welleneigenschaften-des-lichtes-253-acaa4425',
+  'st-phys-sekii-st-schuljahrgange-11-12-ean-magnetisches-feld-329-e48fb600',
+  'st-phys-sekii-st-schuljahrgange-11-12-ean-eigenschaften-von-quantenobjekten-396-84a8f4e6',
+  'st-phys-sekii-st-schuljahrgange-11-12-ean-aufgabenpraktikum-461-f372183f',
+  'st-phys-sekii-st-schuljahrgange-11-12-wahlpflichtfach-korper-in-statischen-feldern-497-e48fb600',
+  'st-phys-sekii-st-schuljahrgange-11-12-wahlpflichtfach-wellen-546-48c13aa6',
+])
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch025RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch025RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch033RemovedRadiationSourceGoalIds.has(sourceGoalId) && goalId === target.radiation)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
     ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
     ...(batch025TargetsBySourceGoalId[sourceGoalId] ?? []),
@@ -801,18 +817,23 @@ const buildExtraction = (config: ExtractionConfig) => {
   const decisions: MappingDecision[] = sourceGoals.map((sourceGoal) => {
     const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferCanonicalGoalIds(sourceGoal, config.stage))
     const batch025Rationale = batch025RationalesBySourceGoalId.get(sourceGoal.id)
+    const batch033Touched = batch033RemovedRadiationSourceGoalIds.has(sourceGoal.id)
     return {
       sourceGoalId: sourceGoal.id,
       topicCode: sourceGoal.topicCode,
       sourceSpan: sourceGoal.sourceSpan,
       decision: 'mapped',
       canonicalGoalIds,
-      rationale: batch025Rationale ?? (
+      rationale: batch033Touched
+        ? 'Batch-033-Fachreview: Diese Quelle behandelt keine konkrete Anwendung ionisierender Strahlung; die frühere generische Strahlungszuordnung wurde entfernt, andere geprüfte Ziele bleiben erhalten.'
+        : batch025Rationale ?? (
         canonicalGoalIds.length > 1
           ? 'Das amtliche Sachsen-Anhalt-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.'
           : 'Das amtliche Sachsen-Anhalt-Source-Ziel ist inhaltlich durch den angegebenen kanonischen Physik-Teilbaum abgedeckt; die Zuordnung auf ein Sammelziel ist eine fachliche Abdeckungsentscheidung.'),
-      reviewedAt: batch025Rationale ? '2026-08-29' : '2026-05-11',
-      reviewer: batch025Rationale ? 'codex-physics-batch-025-motion-split-2026-08-29' : 'codex',
+      reviewedAt: batch033Touched ? '2026-09-05' : batch025Rationale ? '2026-08-29' : '2026-05-11',
+      reviewer: batch033Touched
+        ? 'codex-physics-batch-033-source-mapping-adjudication-2026-09-05'
+        : batch025Rationale ? 'codex-physics-batch-025-motion-split-2026-08-29' : 'codex',
     }
   })
 

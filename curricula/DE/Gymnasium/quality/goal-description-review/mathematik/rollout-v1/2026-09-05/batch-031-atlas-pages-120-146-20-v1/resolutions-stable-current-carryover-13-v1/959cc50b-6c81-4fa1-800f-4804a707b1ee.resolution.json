@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-959cc50b-6c81-4fa1-800f-4804a707b1ee",
+  "goal": {
+    "goalId": "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:6de991dfc3c57e818204d9c8a387c394d989eebe5ee691dc4e1b933fbc59047a",
+    "pageFingerprint": "sha256:f61f11d537a1c5659dd7b3969ecfdd70c1a02cddd5d51d143b190b55f751bb7a",
+    "goalReviewContextFingerprint": "sha256:c871b9fe1280eb036b2f4164599bcc5186f3f2f7be0e440b9c97e7e29986d62e",
+    "finalText": {
+      "titleDe": "Terme mit Rechengesetzen und Distributivgesetz äquivalent umformen",
+      "titleEn": "Transform expressions equivalently using arithmetic laws and the distributive law",
+      "descriptionDe": "Die lernende Person kann Terme mit Rechengesetzen und insbesondere mit dem Distributivgesetz äquivalent umformen und die eingesetzten Schritte fachsprachlich begründen.",
+      "descriptionEn": "The learner can transform expressions equivalently using arithmetic laws and especially the distributive law, and justify the steps using correct mathematical language."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:c871b9fe1280eb036b2f4164599bcc5186f3f2f7be0e440b9c97e7e29986d62e",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-959cc50b",
+      "recordDigest": "sha256:b40f747d9bc013c3905cc1d2c2ea75d922dabd9b7325600ff8542237327d13c3"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:c871b9fe1280eb036b2f4164599bcc5186f3f2f7be0e440b9c97e7e29986d62e",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-003",
+      "recordDigest": "sha256:82166d97f05929d378792a7d6d42fee4ec2719efc0925f166e359e7284172c0e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-959cc50b-6c81-4fa1-800f-4804a707b1ee",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen den unveränderten Text mit KEEP. Runde A ist qualitativ stärker, weil sie Äquivalenz für alle zulässigen Variablenwerte von einer bloßen Wertprobe unterscheidet, das Distributivgesetz in beide Richtungen erfasst und verschachtelte Klammern, negative Faktoren sowie die Diagnose einer nicht äquivalenten Umformung einbezieht.",
+    "rationaleEn": "Both rounds confirm the unchanged text with KEEP. Round A is qualitatively stronger because it distinguishes equivalence for all admissible variable values from a mere substitution check, covers the distributive law in both directions, and includes nested brackets, negative factors, and diagnosis of a non-equivalent transformation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht äquivalente Termumformungen als Änderungen der Schreibweise, die den Termwert für alle zulässigen Variablenwerte erhalten, und versteht insbesondere das Distributivgesetz in beiden Richtungen sowie die Bedeutung von Klammern und Vorzeichen.",
+      "essentialUnderstandingEn": "The learner understands equivalent transformations of expressions as changes in form that preserve the value for every admissible variable value, and understands in particular the distributive law in both directions and the roles of brackets and signs.",
+      "observablePerformanceDe": "Die lernende Person formt einen Term schrittweise äquivalent um, benennt für jede Gleichheit das verwendete Rechengesetz, behandelt negative Faktoren und Klammern korrekt und prüft die Äquivalenz durch Rückumformung oder geeignete Wertproben, ohne die Probe mit einem allgemeinen Beweis zu verwechseln.",
+      "observablePerformanceEn": "The learner transforms an expression equivalently step by step, names the arithmetic law used for each equality, handles negative factors and brackets correctly, and checks equivalence by reversing the transformation or using suitable substitutions without confusing a check with a general proof.",
+      "transferExpectationDe": "Bei einem neuen Term mit verschachtelter Klammer und negativem gemeinsamen Faktor wählt die lernende Person selbst zwischen Ausmultiplizieren, Zusammenfassen und Ausklammern, begründet die Reihenfolge und identifiziert eine vorgelegte nicht äquivalente Umformung.",
+      "transferExpectationEn": "For a fresh expression with nested brackets and a negative common factor, the learner independently chooses among expansion, collection, and factorization, justifies the order, and identifies a presented non-equivalent transformation."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f994161147cca34e2a53f5e7d28d4bcd116b26b08687fa1997449f99799a2a9d"
+}

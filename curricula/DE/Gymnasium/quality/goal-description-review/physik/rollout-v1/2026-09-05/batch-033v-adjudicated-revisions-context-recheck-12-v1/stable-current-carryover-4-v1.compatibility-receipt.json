@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b033v-stable-current-carryover-4-v1-20260905",
+  "purpose": "Fail-closed bounded materialization of exactly four exact-current KEEP/KEEP Physics B033v goals; five revised goals, two stale direct-context goals, and one already-central strict goal remain excluded.",
+  "sourceBatchId": "physik-rollout-v1-batch-033v-adjudicated-revisions-context-recheck-12-v1-20260905",
+  "sourceCampaignGoalCount": 12,
+  "source": {
+    "configPath": "batch-033v-adjudicated-revisions-context-recheck-12-v1.config.json",
+    "configDigest": "sha256:cb267a3a8614867c0157fd1eb8bd93b6191d38ac56593e1b2a8c3ea4afd11bea",
+    "batchManifestPath": "batch-manifest.json",
+    "batchManifestDigest": "sha256:48bc094a6a87b884e0047524f6bd6bdf2c6a43d65936ace6e2d3b43744cc3516",
+    "dualSummaryPath": "dual-summary.json",
+    "dualSummaryDigest": "sha256:9cff577645a52fbf4049b323e9a03c0c06a9dd9a00754c4292337b1f14924857",
+    "canonicalLandscapeDigest": "sha256:b9aa70f008a09f85e6209fbfe34bd6341f1ffb9596f484f13e5a079327c40f95",
+    "semanticKindLedgerDigest": "sha256:d8878107c4da80e2b58ec41a803f9af942398c33596b55255e768d3ca3cd2284",
+    "authoringPath": "stable-current-carryover-4-v1.authoring.json",
+    "authoringDigest": "sha256:70320f7c12a16cf26fc9e9227580275025bd0399f829dce0d956ea8171ba3ab9"
+  },
+  "claimedGoalIds": [
+    "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+    "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+    "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+    "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c"
+  ],
+  "claimedGoalCount": 4,
+  "explicitlyExcludedChangedGoalIds": [
+    "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+    "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+    "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+    "330808f6-789a-583d-86df-e271a7683d8b",
+    "8d34228c-da38-5c1e-97cc-571f3eafb9f4"
+  ],
+  "explicitlyExcludedContextStaleGoalIds": [
+    "74a74132-fa39-541c-8d3c-696cf228452d",
+    "0b08aed8-3c0f-5b38-844c-1bb363abbf68"
+  ],
+  "explicitlyExcludedAlreadyCentralStrictGoalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+  "currentPrerequisiteContexts": [
+    {
+      "goalId": "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        }
+      ]
+    },
+    {
+      "goalId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        }
+      ]
+    },
+    {
+      "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+      "prerequisites": [
+        {
+          "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "titleDe": "Grundgleichung der Mechanik anwenden",
+          "canonicalContextFingerprint": "sha256:ecc70a39f94677ddab45f120d0f1f3836618cce8f05a24cf2477fa0e34d0982a"
+        },
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        }
+      ]
+    },
+    {
+      "goalId": "3f17d0d2-562d-4c1c-9ebc-1a1a43f28f9c",
+      "prerequisites": [
+        {
+          "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+          "titleDe": "Geladene Teilchen in homogenen elektrischen Feldern untersuchen",
+          "canonicalContextFingerprint": "sha256:e062b42811bf32f4f51486761051f5d652eabde080615083a94cf1d083460c8a"
+        },
+        {
+          "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+          "titleDe": "Geladene Teilchen in homogenen magnetischen Feldern untersuchen",
+          "canonicalContextFingerprint": "sha256:3129ba8a0d07f4d657cc479757ad0d9cef23b630dd7ac71a222b551a07dcdb65"
+        }
+      ]
+    }
+  ],
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-4-v1.json",
+  "synthesisManifestDigest": "sha256:b0ba5723b0e458222c6af6d712deaed0a7d8c7e81efea55f7690d2a79d894763",
+  "synthesisManifestFingerprint": "sha256:766eddf82477bb3a0f8b4917addf4f104ebbea4bbc79375b657b58d9c533333c",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-4-v1.json",
+  "resolutionIndexDigest": "sha256:99c1abbf436dede1a90e7b1b5968be3313cb09b7fa181680d9d3553c625620b4",
+  "noCentralRolloutRegistration": true,
+  "safeguards": {
+    "exactCampaignPartitionRequired": true,
+    "exactKeepKeepDecisionPairsRequired": true,
+    "reviewedBilingualTextAndCanonicalContextMustRemainCurrent": true,
+    "directPrerequisiteIdsAndTitlesMustRemainCurrent": true,
+    "changedGoalsMustRemainExcluded": true,
+    "changedDirectContextGoalsMustRemainExcluded": true,
+    "alreadyCentralStrictGoalMustRemainExcluded": true,
+    "centralRegistrationMustRemainUniqueAndUnmodified": true,
+    "individualResolutionsFreshlyValidated": true,
+    "centralRegistrationPerformed": false
+  }
+}

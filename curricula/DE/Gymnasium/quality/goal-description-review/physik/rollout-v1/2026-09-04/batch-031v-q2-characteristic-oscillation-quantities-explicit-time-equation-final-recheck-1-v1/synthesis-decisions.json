@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b031v-characteristic-oscillation-quantities-final-synthesis-openai-codex-20260904",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex B031v physics subject synthesis candidate",
+  "synthesizedAt": "2026-09-04T21:43:42.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904",
+    "batchManifestDigest": "sha256:2a6074caa5112e12d8b9cfe3062cd54df6498928d2c1a153f5557e34e7dfbc71",
+    "configDigest": "sha256:55d491b19ac393f972d892bc21291d84fb93c11b48521dbef5b0409047666a1b",
+    "bundleFingerprint": "sha256:1562082297be016d3fe70052ddfdfd2ff859b76f509d3c42c5eeecaad9154297",
+    "bookDigest": "sha256:2c9783a575ab4bdef4857bd864bcd3f7f73b84f41211bab6b2dab556646b5a20",
+    "reviewInputFingerprint": "sha256:632dc01f4ed0ba7d3cdf862d98b70565d198365b84eb0e4a91956b2936590310",
+    "dualSummaryDigest": "sha256:6bc272b047b77031d2637b94b23c0cc7dc52c974d2db2db59579f902cff5f020",
+    "canonicalLandscapeDigest": "sha256:4ef04f0baf289b70a8d91745daa3665441fcd2064d19066fd4855808ebce56e1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-a",
+      "campaignDigest": "sha256:e7d811c479100e70dca8b81bcbe71f7288321c9ebf3d30f947144b2e0a6e79c6",
+      "roundId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-independent-a",
+      "reviewInputFingerprint": "sha256:632dc01f4ed0ba7d3cdf862d98b70565d198365b84eb0e4a91956b2936590310",
+      "batchId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:5b9f240a57a61f6d28e4c25a1b35fd2caf151d97127a449e9781910bb3d6e37b",
+      "runId": "reviewer-codex-b031v-round-a-20260904T213533Z",
+      "runManifestDigest": "sha256:c597e683d9c3c985cdae5ee2d3658c96593443858a4ab0cc0947befcdf161028",
+      "resultsDigest": "sha256:5eba324c8db654dd5411ed4b2f495bfa35c51544770fc68cdc779e4cb045b3a7"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-b",
+      "campaignDigest": "sha256:0ee8300d598b871a31db5297b12473271a4fa07d62dc36fddd19b7887942112c",
+      "roundId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-independent-b",
+      "reviewInputFingerprint": "sha256:632dc01f4ed0ba7d3cdf862d98b70565d198365b84eb0e4a91956b2936590310",
+      "batchId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b3b0e52c790badd8b1dbb66e3cd356b3828251ee990810f3cfdda0fe3967ead3",
+      "runId": "skillpilot-physics-reviewer-codex-fc32c34b-e522-470b-a28b-5d20f91fb88b",
+      "runManifestDigest": "sha256:d567282b2031b26f133fc9e22fc26087e9d79360505753a3ca6c067b8b9dfa79",
+      "resultsDigest": "sha256:7fddf9c65d821067187361ca09d16d2802349fb3eb8f8403aea018a421cecd48"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b031v-characteristic-oscillation-quantities-final-synthesis-openai-codex-20260904-decision-001",
+      "goalId": "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1c2bfc011a0037065c5864b7c81cda575c7a85d334884220080c76b49e714bd",
+      "pageFingerprint": "sha256:08c3287c9554b1b78000924bfa9166cfe29f4c3fe774b32d11e0b17d7fc1f887",
+      "goalReviewContextFingerprint": "sha256:5bd528397ca890f3fb7452cee5da0188f765185b8137fdc9b48172a3ba0d6533",
+      "finalText": {
+        "titleDe": "Charakteristische Schwingungsgrößen",
+        "titleEn": "Characteristic Oscillation Quantities",
+        "descriptionDe": "Die lernende Person kann Auslenkung, Amplitude, Periodendauer und Frequenz einer harmonischen Schwingung definieren, den Zusammenhang $f = 1/T$ erläutern und eine Gleichung für die Auslenkung in Abhängigkeit von der Zeit mithilfe dieser Größen qualitativ deuten.",
+        "descriptionEn": "The learner can define displacement, amplitude, period, and frequency of a harmonic oscillation, explain the relationship $f = 1/T$, and qualitatively interpret an equation for displacement as a function of time in terms of these quantities."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "reviewer-codex-b031v-round-a-20260904T213533Z-record-fcf8580c",
+          "recordDigest": "sha256:5f4a2782eed967c8cd951b644bb63f6a67f40e8908423858ac944808c24845bd"
+        },
+        "second": {
+          "recordId": "skillpilot-physics-review-record-fcf8580c-fc32c34b",
+          "recordDigest": "sha256:425c80b95790e4ecc11fd864f31e1f3a008781e808d8563dac5002aaba11f503"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den nach der vorangegangenen Revision aktuellen deutschen und englischen Zieltext mit KEEP. Die Formulierung meint nun eindeutig eine Auslenkung-Zeit-Gleichung, verbindet die Definitionen von Auslenkung, Amplitude, Periodendauer und Frequenz mit $f = 1/T$ und verlangt deren qualitative Deutung in derselben kohärenten Darstellung. Für das Understanding-Evidence-Profil wird Runde A gewählt, weil sie die Größen und Einheiten vollständig unterscheidet, die Gleichungsparameter mit Gleichgewichtsdurchgängen, Extremwerten und Wiederholung verbindet und im Transfer sowohl den Wechsel von $T$ zu $f$ als auch eine Verschiebung des Zeitnullpunkts prüft. Runde B bleibt als vollständige unabhängige Bestätigung gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current German and English goal text after the preceding revision with KEEP. The wording now unambiguously refers to a displacement-time equation, connects the definitions of displacement, amplitude, period, and frequency with $f = 1/T$, and requires their qualitative interpretation within the same coherent representation. Round A is selected for the understanding-evidence profile because it fully distinguishes the quantities and units, connects the equation parameters with equilibrium crossings, extrema, and repetition, and tests transfer through both a change from $T$ to $f$ and a shift of the time origin. Round B remains fully bound as independent confirmation."
+    }
+  ],
+  "manifestFingerprint": "sha256:c115a741948c563bfbb4f279063258d139b9780a818fc8073d60ccf450c1d33f"
+}

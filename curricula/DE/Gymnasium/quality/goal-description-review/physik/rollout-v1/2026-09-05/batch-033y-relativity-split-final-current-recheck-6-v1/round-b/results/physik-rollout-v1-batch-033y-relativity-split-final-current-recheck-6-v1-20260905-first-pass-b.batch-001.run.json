@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "openai-gpt5-physik-b033y-round-b-20260905",
+  "campaignId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-b",
+  "roundId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:df4ab5f60f3d4d5281307ca55f775f515a22653897d07f10cac8eb81bf3bc011",
+  "bundleFingerprint": "sha256:a8e6809ea7a0f9430db8238ecf1c60f02da563a10278206c9009953b886c93d5",
+  "bookDigest": "sha256:aa21fe4b0f69b011504998bc5ad5e0f0580be083c52dcf88912205cb1417ada0",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:95c1b3eb778516677628123b66552e8abfbef7adc5ee16cd971cf42bfab5662e",
+  "independenceGroupId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+    "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+    "512f81af-1480-56a8-ae52-af3aa1a6a859",
+    "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+    "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+    "a08e33db-d821-457b-86dd-870e7648c5f4"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:112df25fc0bd39641139aad4ecf065a87b50f9ad5398de0e25ad7e0ca08893c1"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:df4ab5f60f3d4d5281307ca55f775f515a22653897d07f10cac8eb81bf3bc011"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-05T03:08:39Z",
+  "completedAt": "2026-09-05T03:11:19Z",
+  "status": "completed",
+  "outputDigest": "sha256:39e35a95bab9c47eec3610b865282c7df67231bf7355fbab74fce44d6c045ec7",
+  "toolchainVersion": "codex-agent-v1"
+}

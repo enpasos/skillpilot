@@ -1118,7 +1118,9 @@ public class LearnerServiceTest {
         selectCompletedCanonicalMathCurriculum();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
-        LocalDate planDate = LocalDate.now(ZoneId.of("Europe/Berlin"));
+        LocalDate asOf = LocalDate.now(ZoneId.of("Europe/Berlin"));
+        LocalDate planDate = asOf.with(
+                java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.FRIDAY));
         var block = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
                 "representations",
                 "learning",
@@ -1132,7 +1134,7 @@ public class LearnerServiceTest {
         var activation = learnerLearningPlanService.activatePlans(
                 learnerId,
                 new com.skillpilot.backend.api.LearnerLearningPlanApi.ActivateRequest(
-                        planDate,
+                        asOf,
                         List.of(new com.skillpilot.backend.api.LearnerLearningPlanApi.ActivationPlan(
                                 CANONICAL_MATH_LANDSCAPE_ID,
                                 0L,

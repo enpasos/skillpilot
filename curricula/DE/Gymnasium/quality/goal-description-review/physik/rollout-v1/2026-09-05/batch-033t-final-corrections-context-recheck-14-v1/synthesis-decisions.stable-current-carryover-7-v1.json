@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B033t bounded stable-current-seven synthesis candidate",
+  "synthesizedAt": "2026-09-05T23:59:01.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905",
+    "batchManifestDigest": "sha256:22cb092972acce19d4860606c1b2299344b2670ee712d94b4b693750cec078df",
+    "configDigest": "sha256:ac02af703e8dd8db1c44a21bb3d28995100cdeb7f5765d4427825091e76a0343",
+    "bundleFingerprint": "sha256:af166879d3ba5f4936838afdd7dfcefcd24c9fbf5e7a45319bd7325e4195b743",
+    "bookDigest": "sha256:f135baf7a032ef084f20f8010cceef762e9cab1ea8686ca159d1402279d7036e",
+    "reviewInputFingerprint": "sha256:8e69d956d18e3aa503fcd8445f22cce1519f01f8a7f57217627f18c92e937680",
+    "dualSummaryDigest": "sha256:a922c98c4bc59bd513fb2cd6add6fca0f87dd7fc44eea8cb0ffade15b8ce6d0b",
+    "canonicalLandscapeDigest": "sha256:8813c385f07d2b7865148d6b571c04ab41212e63736a8327c526565d18608e1f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-a",
+      "campaignDigest": "sha256:477580a02e5f8d37065651e80b84999d959878d06efad7689b3591c629d7e8bc",
+      "roundId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:8e69d956d18e3aa503fcd8445f22cce1519f01f8a7f57217627f18c92e937680",
+      "batchId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e5107b74549023d792caf7790cd00ae396b6de8efd1a79082ae296407a639e3b",
+      "runId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z",
+      "runManifestDigest": "sha256:5dcd38b186b431289cae4f855644c37c02478585ac41df1f78ed034e296bbc2b",
+      "resultsDigest": "sha256:93f5a5c1b9c5ab8255616f28a38c7444cd6feabed02edf65696a08e0c9cf9ba0"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-b",
+      "campaignDigest": "sha256:655cb226da0bdea947af98d940415c651c61e1199771f413d89c631480146a0f",
+      "roundId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:8e69d956d18e3aa503fcd8445f22cce1519f01f8a7f57217627f18c92e937680",
+      "batchId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c9566b46b99cf5e6a78a191479b5180c8a30b71dbcfb794e98309ad48987ee29",
+      "runId": "physik-b033t-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:124cc5db102fc8d1a6b6eae9281a9f8389753dd1e5daaf4453630077e60e90e6",
+      "resultsDigest": "sha256:89955f0d04bf33a9f99c59e48375407a4026f66de376d4ca53381486b4d658a8"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-001",
+      "goalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5bce6ea2d9debd2eb6dd7a8fd2fa2a83171938e8dcc85e915c6c95d1511d033b",
+      "pageFingerprint": "sha256:78020bf51fcf83d8bddd109d3cb74afb31f70e118b72ae21d4c5fee5619107e0",
+      "goalReviewContextFingerprint": "sha256:9b77e95febc12c4e47d0d18cbf636c74103d0e5d7f48633a12caa6e6401f5da9",
+      "finalText": {
+        "titleDe": "Arbeit, Spannung und Potenzial im E-Feld",
+        "titleEn": "Work, Voltage, and Potential in Electric Fields",
+        "descriptionDe": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden.",
+        "descriptionEn": "The learner can interpret the voltage between two points as a potential difference and, with an explicit sign convention, in terms of work or change in potential energy per unit charge, and apply the magnitude relation |U| = E·d in a uniform electric field for a separation parallel to the field lines."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-001",
+          "recordDigest": "sha256:7508dd6524bb5c9b05b7df4b1800b397b4cb263630f12efca8b2c7c3a0e044cf"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-1730c01d-20260905",
+          "recordDigest": "sha256:89891b519303df1d45a44ba80a3b9710f3842cbe59185d1a0014bfffa3cc6ed7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die fachlich kontrollierte Trennung von Potenzialdifferenz, Arbeit und Energieänderung sowie die Geltungsbedingungen von |U| = E·d. Eigener Text und direkter Voraussetzungskontext sind nach dem B033-Final-Follow-up bytegleich zum Reviewstand.",
+      "rationaleEn": "Both independent rounds confirm the controlled distinction among potential difference, work, and energy change and the validity conditions of |U| = E·d. The goal text and direct prerequisite context remain byte-identical to the reviewed state after the B033 final follow-up."
+    },
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-002",
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0ebb0a4a1a2cc08e30ba3c36d913ddca48115b62d90e7cc8fbb3ccfcce0e04e5",
+      "pageFingerprint": "sha256:5d4b04cc6cdf51ccb20285d37738e30e4b9ea39fed8fcae1c576aa687cd84a1a",
+      "goalReviewContextFingerprint": "sha256:771741c0a8e5c287f7e0526edb302d86a080624803ee96d68d785efd4804790c",
+      "finalText": {
+        "titleDe": "Leiter, Nichtleiter und Halbleiter",
+        "titleEn": "Conductors, Insulators, and Semiconductors",
+        "descriptionDe": "Die lernende Person kann Leiter, Nichtleiter und Halbleiter anhand ihrer typischen elektrischen Leitfähigkeit unter vergleichbaren Bedingungen unterscheiden und Beispiele aus Technik und Alltag begründet zuordnen.",
+        "descriptionEn": "The learner can distinguish conductors, insulators, and semiconductors by their typical electrical conductivity under comparable conditions and justify the classification of examples from technology and everyday life."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-003",
+          "recordDigest": "sha256:0ec851a7c2a7691946d98a5495da55994d609987eb0b5abb6ac717a35f528a1d"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-7badac4d-20260905",
+          "recordDigest": "sha256:4d117394ddeccd999d831deeeb0396fc917874bef715aef0b3ddce1f83cdccc3"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die bedingungsbewusste Leitfähigkeitsklassifikation und begründete Zuordnung. Eigener Text und direkter Voraussetzungskontext sind nach dem B033-Final-Follow-up unverändert.",
+      "rationaleEn": "Both rounds confirm the condition-aware conductivity classification and justified assignment. The goal text and direct prerequisite context are unchanged after the B033 final follow-up."
+    },
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-003",
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c6efec78796cfdcaf140097dab80920d856bd38f6b3d0c45ed70772e151a6feb",
+      "pageFingerprint": "sha256:e503c6570a3738224cf9144c8798503c062c1fffffd7c10f41fc67d6291c4476",
+      "goalReviewContextFingerprint": "sha256:b9bc9c7a751e1f97fc797a6c1e27c247e4b8e0e53503a305b293d33123224887",
+      "finalText": {
+        "titleDe": "Bändermodell und Dotierung",
+        "titleEn": "Band Model and Doping",
+        "descriptionDe": "Die lernende Person kann das qualitative Bändermodell für Leiter und Halbleiter beschreiben und erklären, wie Dotierung die Leitfähigkeit beeinflusst.",
+        "descriptionEn": "The learner can describe the qualitative band model for conductors and semiconductors and explain how doping influences conductivity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-004",
+          "recordDigest": "sha256:c74c29f2995c02f4349fa52beb038a6b52f4a1050017313a916ee85ef6664b39"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-df010b2b-20260905",
+          "recordDigest": "sha256:6c3e3534e6a136450abb32eb59913de6dc7032720078c50fbdaee2dcf6b85a27"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das qualitative Bändermodell und die korrekte Erklärung der Dotierungswirkung. Das Ziel und sein direkter stabiler Vorgänger 7bad… sind unverändert.",
+      "rationaleEn": "Both rounds confirm the qualitative band model and the correct explanation of doping effects. The goal and its direct stable prerequisite 7bad… are unchanged."
+    },
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-004",
+      "goalId": "b9fcbad4-a855-54b7-8017-4caac1e2ffb7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:90428f2e13fc0523a807965e7901aaae6c2b0c4d4eef49ec25860418e00383df",
+      "pageFingerprint": "sha256:c1334e727858ef00886891f277b5a42a0b4d6c3acc677252dbe6222a02747b70",
+      "goalReviewContextFingerprint": "sha256:8f37ce7e89e26a0a6ad57f88901df88486b90eac2162a20bb6ccd50200649fdc",
+      "finalText": {
+        "titleDe": "Lokalität und Verschränkung einordnen",
+        "titleEn": "Classify Locality and Entanglement",
+        "descriptionDe": "Die lernende Person kann Verschränkung als nichtklassische Korrelation zwischen räumlich getrennten Messungen erklären, erläutern, wie entsprechende Experimente lokale realistische Modelle begrenzen, und dies von überlichtschneller Signalübertragung unterscheiden.",
+        "descriptionEn": "The learner can explain entanglement as a non-classical correlation between spatially separated measurements, describe how corresponding experiments constrain local realistic models, and distinguish this from faster-than-light signalling."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-006",
+          "recordDigest": "sha256:6265e1a0429cee1d7c305f49cb1e70c76b2700f1c06c6507135cdf9f88900e0d"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-b9fcbad4-20260905",
+          "recordDigest": "sha256:2d59cc6b1ca44ad1dddd1688ab4d04ae9a938a29293b3ba1124db3ef5cc247e1"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die operationale Trennung von nichtklassischer Korrelation, Grenze lokaler realistischer Modelle und No-Signalling. Eigener Text und direkter Voraussetzungskontext sind unverändert.",
+      "rationaleEn": "Both rounds confirm the operational distinction among non-classical correlation, constraints on local realistic models, and no-signalling. The goal text and direct prerequisite context are unchanged."
+    },
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-005",
+      "goalId": "bdaa56ad-6257-58a3-a633-8a6339f72f09",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:802bea22f9aeef0b92a827dda6a9b08b73b2846c8068f51c5ed0317c43a7a432",
+      "pageFingerprint": "sha256:513cb1309ca17c840716c95b0bdd2345b35795ad0596177fa838aea048dae3e3",
+      "goalReviewContextFingerprint": "sha256:33192261025299f03850a9eb4a59b55e85d070eedb69dbff7aed12ccd0190f56",
+      "finalText": {
+        "titleDe": "Innenohr mit Resonanzmodellen erklären",
+        "titleEn": "Explain the inner ear using resonance models",
+        "descriptionDe": "Die lernende Person kann die frequenzabhängige Schwingungsantwort der Basilarmembran mit mechanischen Resonanzmodellen erklären, den Ort des Antwortmaximums der Frequenz und die Schwingungsamplitude der mechanischen Antwortstärke zuordnen und das Modell von der nachfolgenden sensorischen und neuronalen Wahrnehmung abgrenzen.",
+        "descriptionEn": "The learner can use mechanical resonance models to explain the frequency-dependent vibrational response of the basilar membrane, relate the location of the response maximum to frequency and the vibration amplitude to mechanical response strength, and distinguish the model from subsequent sensory and neural perception."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-007",
+          "recordDigest": "sha256:81bd09a6f2184064cd1bfb2cabe1b167dba4a6b90ebc8c1ba99e0ada5555a8d6"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-bdaa56ad-20260905",
+          "recordDigest": "sha256:274b0e343e65792831e6b16198c732ed919afb314521165bb2237c5d33069cac"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Frequenz-Orts-Zuordnung, mechanische Amplitudendeutung und die Grenze zur Wahrnehmung als kohärente Modellkompetenz. Eigener Text und direkter Voraussetzungskontext sind unverändert.",
+      "rationaleEn": "Both rounds confirm frequency-to-place mapping, interpretation of mechanical amplitude, and the boundary to perception as a coherent modelling competence. The goal text and direct prerequisite context are unchanged."
+    },
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-006",
+      "goalId": "8cdef591-6ddb-5151-8c74-a80be0271079",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:46ed7cf7b864cabf50dcd2f12fafc6a0323e0e99fb636614b99f51d596814af6",
+      "pageFingerprint": "sha256:c72409521d46e50d9ce2dd83794e69eb98ceeb80e9bf24e1d621050230e2eb57",
+      "goalReviewContextFingerprint": "sha256:9173e24a6952325634373956400c204d7e0998596223fd7e5b61058996eeed6b",
+      "finalText": {
+        "titleDe": "Membran- und Axialwiderstand im passiven Axonmodell untersuchen",
+        "titleEn": "Investigate membrane and axial resistance in a passive axon model",
+        "descriptionDe": "Die lernende Person kann Potenzialverläufe in einem passiven Widerstandsleitermodell messen und mathematisch beschreiben sowie begründen, warum ein größerer Membranwiderstand die räumliche Abschwächung verringert, ein größerer Axialwiderstand sie dagegen verstärkt.",
+        "descriptionEn": "The learner can measure and mathematically describe potential profiles in a passive cable model and justify why greater membrane resistance reduces spatial attenuation whereas greater axial resistance increases it."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-011",
+          "recordDigest": "sha256:cb948b02f6031e24991474e33cc0a0435122c116342661b8e2854d4f84c6f5ee"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-8cdef591-20260905",
+          "recordDigest": "sha256:a41fec3197f2bb15fa8d87484a1e0caa7b526ea9a51da233cc9a7bb2ee640b86"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Messung, mathematische Beschreibung und die entgegengesetzten Wirkungen von Membran- und Axialwiderstand im passiven Kabelmodell. Eigener Text und direkter Voraussetzungskontext sind unverändert.",
+      "rationaleEn": "Both rounds confirm measurement, mathematical description, and the opposing effects of membrane and axial resistance in the passive cable model. The goal text and direct prerequisite context are unchanged."
+    },
+    {
+      "decisionId": "physik-b033t-stable-current-carryover-7-v1-openai-codex-20260905-decision-007",
+      "goalId": "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:72dcd8b6871f008a119ae67b6eb427e4e4ca2681005a7e3dab603a57617fe073",
+      "pageFingerprint": "sha256:862f3c7a82047a7b9f6fc8156d29a2d97fb53da7c6fa8ac7b9a91153a07ac030",
+      "goalReviewContextFingerprint": "sha256:2f5c75891f1b41e35109a7d12f98f071a3e53fd66a1da315eb1c69ac026d5f0d",
+      "finalText": {
+        "titleDe": "Passive Signalleitung mit Kondensator-Ladekurven vergleichen",
+        "titleEn": "Compare passive signal conduction with capacitor charging curves",
+        "descriptionDe": "Die lernende Person kann den lokalen zeitlichen Signalaufbau eines passiven Axonsegments mit einer Kondensator-Lade- oder Entladekurve vergleichen, durch ein exponentielles RC-Modell mathematisch beschreiben und von der zusätzlichen räumlichen Abschwächung gekoppelter Segmente abgrenzen.",
+        "descriptionEn": "The learner can compare the local time course of a signal in a passive axon segment with a capacitor charging or discharging curve, describe it mathematically using an exponential RC model, and distinguish it from the additional spatial attenuation across coupled segments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033t-round-a-fresh-codex-gpt5-20260905t235000z.record-012",
+          "recordDigest": "sha256:9b1f5350100c66737ac822d62db6f2e90812bb5d3eb2d3963e8e814e71adc4f8"
+        },
+        "second": {
+          "recordId": "physics-b033t-b-3aaac6ad-20260905",
+          "recordDigest": "sha256:3416380621bc87c86429b5bb85a48c794c770bce83617919fc7f0ba3e06025c3"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die mathematische RC-Modellierung und die wesentliche Trennung von lokalem Zeitverlauf und räumlicher Abschwächung. Eigener Text und direkter Voraussetzungskontext sind unverändert.",
+      "rationaleEn": "Both rounds confirm the mathematical RC model and the essential distinction between local temporal response and spatial attenuation. The goal text and direct prerequisite context are unchanged."
+    }
+  ],
+  "manifestFingerprint": "sha256:2795199613546ed1c9cf26af7940e3c4143cc8224f992714cf2453c147e7a549"
+}

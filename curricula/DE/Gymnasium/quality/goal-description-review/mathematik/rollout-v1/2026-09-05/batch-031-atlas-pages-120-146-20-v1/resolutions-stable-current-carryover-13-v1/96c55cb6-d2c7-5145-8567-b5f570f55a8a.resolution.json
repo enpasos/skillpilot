@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+  "goal": {
+    "goalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:0acb474f1a0d9efdeba52bac49cd04e381c70705e75851ac4d46c7d949ec1ba1",
+    "pageFingerprint": "sha256:2eb9f304d21426c6272b763028c7a3ba93fe9b5d4850a442488ec36860e6d738",
+    "goalReviewContextFingerprint": "sha256:f8f71cbd914cf8c4efe86f499d761655b3a4b2848104d911b4dc1ca8ce72d620",
+    "finalText": {
+      "titleDe": "Algebraische Terme faktorisieren",
+      "titleEn": "Factor algebraic expressions",
+      "descriptionDe": "Die lernende Person kann bei geeigneten algebraischen Termen gemeinsame Faktoren erkennen, ausklammern und durch Rückmultiplikation prüfen.",
+      "descriptionEn": "The learner can identify and factor out common factors in suitable algebraic expressions and verify the factorisation by expansion."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:f8f71cbd914cf8c4efe86f499d761655b3a4b2848104d911b4dc1ca8ce72d620",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-96c55cb6",
+      "recordDigest": "sha256:8e3c3d6f4c2f09483d7e42b27f0281e2ff9b829f15eb9432aa8938770075a352"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:f8f71cbd914cf8c4efe86f499d761655b3a4b2848104d911b4dc1ca8ce72d620",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-005",
+      "recordDigest": "sha256:cd866cdcc4251c04e5df9a89101e58c26d500e01df72e705ae1501977cb1949b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen das Ziel mit KEEP. Runde A liefert die stärkere Evidenz, weil sie Zahlen- und Variablenfaktoren, vollständiges Faktorisieren im verlangten Zahlenbereich, negative gemeinsame Faktoren und das begründete Erkennen eines dort nicht weiter faktorisierbaren Terms zusammenführt.",
+    "rationaleEn": "Both rounds confirm the goal with KEEP. Round A provides stronger evidence because it combines numerical and variable factors, complete factorization in the specified number domain, negative common factors, and justified recognition of an expression that cannot be factored further there.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht Ausklammern als Umkehrung des Distributivgesetzes: Ein in allen Summanden enthaltener Faktor wird vor die Klammer gezogen, während der Termwert unverändert bleibt.",
+      "essentialUnderstandingEn": "The learner understands factoring out as reversing the distributive law: a factor contained in every term is moved outside the brackets while the value of the expression remains unchanged.",
+      "observablePerformanceDe": "Die lernende Person erkennt in einem algebraischen Term einen gemeinsamen Zahlen- oder Variablenfaktor, bestimmt die verbleibenden Klammersummanden, faktorisiert vollständig im verlangten Zahlenbereich und bestätigt die Äquivalenz durch Rückmultiplikation.",
+      "observablePerformanceEn": "The learner identifies a common numerical or variable factor in an algebraic expression, determines the remaining terms inside the brackets, factors completely within the required number domain, and confirms equivalence by expansion.",
+      "transferExpectationDe": "Bei einem neuen Term mit negativem gemeinsamen Faktor und einem Summanden ohne sichtbar geschriebenen Variablenfaktor entscheidet die lernende Person, was ausgeklammert werden kann, begründet die Wahl und erkennt auch einen Term, der dort nicht weiter faktorisierbar ist.",
+      "transferExpectationEn": "For a fresh expression with a negative common factor and one term without an explicitly written variable factor, the learner decides what can be factored out, justifies the choice, and also recognizes an expression that cannot be factored further in the given setting."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2dac5bc633aa93cc185628c59439998054dc8ddf764e8ec5290be02dba4945a2"
+}

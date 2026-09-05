@@ -119,7 +119,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   'e71fd490-de7e-557a-b364-fd06b0fcd769': [
     '68020906-e615-462e-a56f-dd1ccc14b8d7',
-    'cb0ced6d-b7c1-5b7d-9922-8c394f6030e8',
+    'bf559969-a05c-58b5-82c5-3d719d96555d',
   ],
   '47055c72-d69c-5753-b0b7-e0a7792ff01f': [
     'd716a35e-e422-5aba-b39a-f2e22f1e1e74',
@@ -149,8 +149,10 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '97c0dd4b-ec5c-50b6-adb8-2eba5e18c736': [
     'a684bec1-ba59-59d0-98d2-4ca37236f64c',
+    '512f81af-1480-56a8-ae52-af3aa1a6a859',
     'a08e33db-d821-457b-86dd-870e7648c5f4',
     '19aef2ed-eb46-55b1-9486-ee83f7520bb6',
+    '0c305cf9-3923-51cf-a9ae-5849edc99c9f',
     '6ebb6182-f221-5f4c-b112-4ac72b104321',
     'da26294f-4316-5bd5-a37a-bd89397b3b8b',
     'd2e6f87d-795b-5631-a7cc-0bfb5dc5142e',
@@ -158,6 +160,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   'c891a1aa-1c38-5959-9560-38dd60d0e702': [
     'a684bec1-ba59-59d0-98d2-4ca37236f64c',
     '19aef2ed-eb46-55b1-9486-ee83f7520bb6',
+    '0c305cf9-3923-51cf-a9ae-5849edc99c9f',
     '6ebb6182-f221-5f4c-b112-4ac72b104321',
   ],
   '7f2458f7-fa1a-5453-8519-a54b35568fe7': [
@@ -447,7 +450,6 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '9d44489c-a946-59a8-95ca-6a71380994ca': [
     '9678afc1-44ca-54fb-b280-29336d45a928',
-    'f06c581a-7157-584e-a692-99bcd613cff9',
   ],
   'bfb0ae08-1542-55a6-b1cb-63941facf9e2': [
     'bdaa56ad-6257-58a3-a633-8a6339f72f09',
@@ -1192,7 +1194,6 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   'a91fa2d4-7c0e-53a0-807a-2bd6b26fa1a2': [
     'b378c8b3-5e83-5abf-8243-b0f345037bfc',
     '979e0d0d-8933-4ace-814f-f28060ad280f',
-    'e5c08365-a0d3-592c-ad8e-d2c2c6e2b717',
   ],
   'a4461a25-8e68-5f80-ab23-0c3f61af59db': [
     '7f0798cb-5966-5dcb-beb3-84f637ab6139',
@@ -1323,13 +1324,11 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
     'ef6d5067-96b0-5388-87dd-5ac4e6a3e313',
   ],
   '3d5eace7-5496-50f6-9bda-bc3e8ac40cb5': [
-    'e5c08365-a0d3-592c-ad8e-d2c2c6e2b717',
     '6e7c35e0-7a38-5996-a42e-005038eff0db',
     '5492f0e0-cbae-574e-a853-182616205ed3',
   ],
   '321e53bc-850f-5127-945b-1f461b1d0c60': [
     'b1ad9493-acca-5366-9ecd-4b7bf7edaf4a',
-    'e5c08365-a0d3-592c-ad8e-d2c2c6e2b717',
   ],
   'd889c4dd-eb1b-57a0-8e71-cd9ddf57f8a4': [
     'a12fddce-0215-58d9-bd91-21be8a960d25',
@@ -1591,7 +1590,6 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
     '8eb6456b-d915-50ed-a076-2b23c2e5420c',
   ],
   '720a5037-0bc6-5e67-8aba-24d03168f898': [
-    'e5c08365-a0d3-592c-ad8e-d2c2c6e2b717',
     '6e7c35e0-7a38-5996-a42e-005038eff0db',
     '5492f0e0-cbae-574e-a853-182616205ed3',
   ],
@@ -1606,7 +1604,6 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '1b2cc723-d403-5948-9897-b2c5f022612a': [
     'b1ad9493-acca-5366-9ecd-4b7bf7edaf4a',
-    'e5c08365-a0d3-592c-ad8e-d2c2c6e2b717',
   ],
   'da143538-8478-5175-a759-2fdd0b39f77c': [
     'a12fddce-0215-58d9-bd91-21be8a960d25',

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001",
+  "campaignId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-a",
+  "roundId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:12c2c95f3d01ca65826b408cbedba92b70bdbe693c4cc57668a9e016852f23a7",
+  "bundleFingerprint": "sha256:b4a32198f14308aa5bb61cc853727e85974dd6d350786f5aa4877ab4aa47470f",
+  "bookDigest": "sha256:d623673decd13f81bb69d50361c86539f51f6939203ce14bf63613095dd155d1",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:b6530c5ea6e27e329daf8fd9d181390e6108bc84b307f7169bd67c686d24c99f",
+  "independenceGroupId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "bf559969-a05c-58b5-82c5-3d719d96555d",
+    "158e1c19-7ccb-4c8c-931c-b685951ab161",
+    "68020906-e615-462e-a56f-dd1ccc14b8d7",
+    "9dba2826-b179-59f0-8d91-5916079e5abe"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:12c2c95f3d01ca65826b408cbedba92b70bdbe693c4cc57668a9e016852f23a7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-04T22:05:13Z",
+  "completedAt": "2026-09-04T22:08:11Z",
+  "status": "completed",
+  "outputDigest": "sha256:018b6e8d270f5f9517a0e8f2a282fc9e06df1251980e49805dd41befb9b0c676",
+  "toolchainVersion": "codex-cli"
+}

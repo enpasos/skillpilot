@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033za-checkpoint-route-context-recheck-1-v1-synthesis",
+  "manifestFingerprint": "sha256:d4e1e934d06e70697f9a9c0743087e271ab68d4ab33e6b8aed0466ea2b7eb90c",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-5 bounded synthesis",
+  "synthesizedAt": "2026-09-05T04:29:26.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905",
+    "batchManifestDigest": "sha256:fc5f7dc3ab0a8a1bf84363272595c69a662c81c07c71376f0ab20c1314027b8c",
+    "configDigest": "sha256:494e195773bb4c027bdcb05432df53342c0d0903554cd524e2dbc5707a2ac534",
+    "bundleFingerprint": "sha256:0361d67cdc30699a41ebafba2b868ce6a1415b84078b1f920b3ead6fcd8a0f0e",
+    "bookDigest": "sha256:f2ef5445839e2db3f832cd501e04d9e4115e3e678652b9211b2e41adb7f71090",
+    "reviewInputFingerprint": "sha256:c9bd37a240047b420bad98aa45a0130230da36434118111a89385a603f1393e0",
+    "dualSummaryDigest": "sha256:62c69edcf2bdff79f4ba2602b5026a63743c283a46607b31e54b06428733b73c",
+    "canonicalLandscapeDigest": "sha256:13df14b969466eeca81a46e7e7431eb66661b0f537fb9b3bfe2648c55f6315ec"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-a",
+      "campaignDigest": "sha256:cabf78ebbbfd457b5f1eaa3f8d8580ded49e7b5fac68c43cfd50b2da58980860",
+      "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:c9bd37a240047b420bad98aa45a0130230da36434118111a89385a603f1393e0",
+      "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9d0695fa36f4137dab7137542f524c6b121fdc641ef4e551c031fec4655ee367",
+      "runId": "codex-round-a-physik-b033za-20260905",
+      "runManifestDigest": "sha256:b72bb3a03380ef6fbf92af070779b569e980b5597886fa21848b6e836a5a4741",
+      "resultsDigest": "sha256:3262d5aa194686065ccc116844069bbb2f3ab88605302fd32c00d82d5ba1a6a5"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-b",
+      "campaignDigest": "sha256:738590fb1948f9291a26288eed8d74501eba32b3a463d54ef5cb414bb21232ce",
+      "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:c9bd37a240047b420bad98aa45a0130230da36434118111a89385a603f1393e0",
+      "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:8f18030871cfe7d571f20ef71c7b2979a470f901126596ade9b786634d47c5bf",
+      "runId": "physics-b033za-b-openai-gpt5-run-v1",
+      "runManifestDigest": "sha256:befa3e730effd9c044db6580ac240dd88fc3518fa330783dd43759b182c37c56",
+      "resultsDigest": "sha256:46bc9d4d2eb7dfba4299c4acc80f54f96a9a67b7ce170863d4dafaf5e8428b85"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033za-checkpoint-route-context-recheck-7badac4d-v1",
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0ebb0a4a1a2cc08e30ba3c36d913ddca48115b62d90e7cc8fbb3ccfcce0e04e5",
+      "pageFingerprint": "sha256:6c11af29417858a7b707d3525705f658c2b8e7ac7ae324c6ea3d17740a82814b",
+      "goalReviewContextFingerprint": "sha256:4e23c199ca69427fc50fc6df61cdd133e0247403fbc405b11b8685ce6ea78062",
+      "finalText": {
+        "titleDe": "Leiter, Nichtleiter und Halbleiter",
+        "titleEn": "Conductors, Insulators, and Semiconductors",
+        "descriptionDe": "Die lernende Person kann Leiter, Nichtleiter und Halbleiter anhand ihrer typischen elektrischen Leitfähigkeit unter vergleichbaren Bedingungen unterscheiden und Beispiele aus Technik und Alltag begründet zuordnen.",
+        "descriptionEn": "The learner can distinguish conductors, insulators, and semiconductors by their typical electrical conductivity under comparable conditions and justify the classification of examples from technology and everyday life."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033za-round-a-7badac4d-20260905",
+          "recordDigest": "sha256:0d5cf12c50160f6a7493e86d8161229bbc9341af94ee18cf7ee80a4b5070aa6e"
+        },
+        "second": {
+          "recordId": "physics-b033za-b-7badac4d-record-v1",
+          "recordDigest": "sha256:6f3e0660caa02c6fccf69e713753df8ae6bdad5e0f3d0efe139254e444f0d302"
+        }
+      },
+      "rationaleDe": "Beide unabhängig validierten aktuellen Reviews entscheiden keep und bestätigen die klare, bilinguale, stufenneutrale Klassifikationskompetenz; der kanonische Wortlaut bleibt deshalb unverändert. Für die Understanding Evidence wird die erste Runde gewählt, weil sie Leitfähigkeitsdaten, Vergleichsbedingungen und die Unterscheidung zwischen Datenangabe und daraus abgeleiteter Kategorie unmittelbar am beanspruchten Kern hält. Die ergänzende Betonung von Probe, Schaltung und Geometrie in der zweiten Runde ist fachlich vereinbar, aber für dieses AB1-Lernziel nicht erforderlich.",
+      "rationaleEn": "Both independently validated current reviews decide keep and confirm the clear, bilingual, stage-neutral classification competence, so the canonical wording remains unchanged. The first round is selected for the understanding evidence because it keeps conductivity data, comparison conditions, and the distinction between reported data and the category inferred from them directly tied to the claimed core. The second round's additional emphasis on specimen, circuit, and geometry is scientifically compatible but not required for this AB1 goal."
+    }
+  ]
+}

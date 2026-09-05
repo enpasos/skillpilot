@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f58e7b80d94a779f794159ab692e6853bdc6c24b7cc6de0fff4df5f89544ccca",
+  "reviewInputFingerprint": "sha256:265765455f1ca491efa81fa79f3d28b1aa87ce06d7416dad35083c94af1d1d7a",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-a",
+      "roundId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-independent-a",
+      "runIds": [
+        "codex-round-a-mathematik-b032t-20260905"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-b",
+      "roundId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-independent-b",
+      "runIds": [
+        "math-b032t-b-openai-gpt5-run-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+      "firstRecordId": "mathematik-b032t-round-a-f17935b0-20260905",
+      "secondRecordId": "math-b032t-b-f17935b0-record-v1",
+      "firstRunId": "codex-round-a-mathematik-b032t-20260905",
+      "secondRunId": "math-b032t-b-openai-gpt5-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

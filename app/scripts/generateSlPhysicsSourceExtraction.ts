@@ -180,6 +180,7 @@ const target = {
   lcOscillation: 'ac4ba260-6086-5fcc-bea2-c06f1425a1cc',
   waves: 'dc38c943-11f6-5f4f-945b-67e330814727',
   waveBasics: 'cb0ced6d-b7c1-5b7d-9922-8c394f6030e8',
+  harmonicMechanicalWaveGeneration: 'bf559969-a05c-58b5-82c5-3d719d96555d',
   wavePhenomena: 'd716a35e-e422-5aba-b39a-f2e22f1e1e74',
   waveInterference: '224243cd-5a53-5d6e-bed5-564cca167a80',
   standingWaves: 'd5772db3-120c-5c37-ab46-2336d02236b0',
@@ -213,6 +214,8 @@ const target = {
 const currentWaveTargetsBySourceGoalId: Record<string, string[]> = {
   'sl-phys-seki-sl-ph-seki-8-nw-2024-p33-002-ab9d7888': [target.thermometer],
   'sl-phys-seki-sl-ph-seki-8-nw-2024-p33-008-f8abcc56': [target.expansion],
+  'sl-phys-sekii-sl-ph-sekii-gk-2023-p33-017-1e54b115': [target.harmonicMechanicalWaveGeneration],
+  'sl-phys-sekii-sl-ph-sekii-lk-2023-p42-012-62d89aaf': [target.harmonicMechanicalWaveGeneration],
 }
 
 const currentWaveRemovedTargetsBySourceGoalId: Record<string, string[]> = {

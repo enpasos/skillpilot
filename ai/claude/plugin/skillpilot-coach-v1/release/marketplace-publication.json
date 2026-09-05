@@ -27,29 +27,29 @@
     "directInstallSha256": "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351"
   },
   "activation": {
-    "state": "prepared_not_published",
-    "firstPartyUiRoute": "controlled_direct_install_beta",
-    "marketplaceUiSwitchAllowed": false,
+    "state": "published_pending_acceptance",
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
     "firstPartyGuideDecision": {
-      "status": "pending",
-      "approvedAt": null,
-      "approvedBy": null,
-      "candidateVersion": null,
-      "candidateSha256": null,
-      "repositoryRevision": null,
-      "repositoryTreeSha256": null,
-      "evidenceRef": null
+      "status": "approved",
+      "approvedAt": "2026-09-05T06:38:00.000Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.1.1",
+      "candidateSha256": "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351",
+      "repositoryRevision": "5cc7aba22ddf90ab8273cd6c15b71e8186781fc3",
+      "repositoryTreeSha256": "8c6c67b46763224d901a65b35408dad7752f6c7db08203fd38cf0f568a74c5d3",
+      "evidenceRef": "docs/deploy/openai-plugin-v1-review-freeze.md#651-eng-begrenzte-ausnahme-claude-111-marketplace-veroeffentlichung-und-updateanleitung"
     },
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "5cc7aba22ddf90ab8273cd6c15b71e8186781fc3",
+        "treeSha256": "8c6c67b46763224d901a65b35408dad7752f6c7db08203fd38cf0f568a74c5d3",
+        "candidateVersion": "1.1.1",
+        "candidateSha256": "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351",
+        "verifiedAt": "2026-09-05T06:38:00.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/2"
       },
       {
         "id": "clean-account-marketplace-install",

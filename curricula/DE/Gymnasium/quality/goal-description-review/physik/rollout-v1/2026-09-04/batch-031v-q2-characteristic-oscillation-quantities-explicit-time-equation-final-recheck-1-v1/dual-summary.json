@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1562082297be016d3fe70052ddfdfd2ff859b76f509d3c42c5eeecaad9154297",
+  "reviewInputFingerprint": "sha256:632dc01f4ed0ba7d3cdf862d98b70565d198365b84eb0e4a91956b2936590310",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-a",
+      "roundId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-independent-a",
+      "runIds": [
+        "reviewer-codex-b031v-round-a-20260904T213533Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-b",
+      "roundId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1-20260904-independent-b",
+      "runIds": [
+        "skillpilot-physics-reviewer-codex-fc32c34b-e522-470b-a28b-5d20f91fb88b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+      "firstRecordId": "reviewer-codex-b031v-round-a-20260904T213533Z-record-fcf8580c",
+      "secondRecordId": "skillpilot-physics-review-record-fcf8580c-fc32c34b",
+      "firstRunId": "reviewer-codex-b031v-round-a-20260904T213533Z",
+      "secondRunId": "skillpilot-physics-reviewer-codex-fc32c34b-e522-470b-a28b-5d20f91fb88b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

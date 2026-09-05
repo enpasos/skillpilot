@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-032r-q3-electromagnetic-waves-final-recheck-7-v1.config.json",
+  "configDigest": "sha256:6e67671195d0e022b70edece3ae4ffef432a383ad171291ebf9255e2a9bc652b",
+  "goalIds": [
+    "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+    "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+    "6270e558-d657-5363-a6b2-e49a032a453b",
+    "91683676-01cf-5003-80fa-a04d043b4e61",
+    "4c919da9-157a-5a14-a725-f7343975c9ab",
+    "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+    "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 462,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:a0ea2b558b2677afc350aaa818aea2cbba9f18a4db955328cb4b3c0b11983a2c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3bb109193d062409a322fbe1753718d7bfbb93b2f01623efea6153888d4600fe",
+    "reviewInputFingerprint": "sha256:2a9429b7d9748b16eeae34757e4d7650b2a72888673bfcd58478c154ca961805",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-a",
+        "campaignDigest": "sha256:c2c1ccfb512c03d65cfba3ef7146a119b427d585e834ac38bf17061b97344784",
+        "roundId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-independent-a",
+        "batchId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:5877e804b1e7eba9a874ac79894369c0fcb26d9a86c5a1bbef0bba7bea4cb380"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-b",
+        "campaignDigest": "sha256:35b9a78fd53cae4339c97a05fe1330c2c2534344236f43a3793194bd7b1d3694",
+        "roundId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-independent-b",
+        "batchId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:bd747826848bb4a632f429959da3f0c70613cadee2185db839f9b6a2da73f16d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

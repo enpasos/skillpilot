@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b031u-q2-quantities-round-b-run-20260904",
+  "campaignId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-b",
+  "roundId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:af8ca4bb69f662b967e7edccf1c8669023bda44bb70740fda82d3c6e8516e229",
+  "bundleFingerprint": "sha256:ffa35e2491a23278b78fa4481c72656e2880e7a03979cea84890e47c3d861c93",
+  "bookDigest": "sha256:b369c2ec8f5d2f52e4eba013bb71700c2516456f7dfb475ccf4a4ad02b57eb11",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:69905e9200180928f67cab0d22638fd71051c24a21cbe1c4f9eeb6dc0c50525f",
+  "independenceGroupId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:af8ca4bb69f662b967e7edccf1c8669023bda44bb70740fda82d3c6e8516e229"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-04T21:27:14Z",
+  "completedAt": "2026-09-04T21:27:49Z",
+  "status": "completed",
+  "outputDigest": "sha256:c8761201950df0a1448a3f117c47ac2ec74a8de4581bb8c7cc04599c95af757a",
+  "toolchainVersion": "codex-agent"
+}

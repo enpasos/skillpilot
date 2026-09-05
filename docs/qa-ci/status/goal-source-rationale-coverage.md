@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-02T18:17:09.271Z
+Generated: 2026-09-05T06:46:05.942Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1177 |
-| Atomare Blattleernziele | 921 |
-| Davon relevant fuer Quellenbegruendung | 793 |
+| Alle Mathematik-Ziele | 1179 |
+| Atomare Blattleernziele | 923 |
+| Davon relevant fuer Quellenbegruendung | 795 |
 | Memory-/Nicht-Content-Blattziele | 128 |
 | Clusterziele | 256 |
-| Runtime-Quellenbegruendungen | 738 |
-| Runtime-Ziele mit klassischem Quellenweg | 738 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 227 |
-| Relevante Blattziele mit klassischem Quellenweg | 738/793 (93.1%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 227/793 (28.6%) |
+| Runtime-Quellenbegruendungen | 740 |
+| Runtime-Ziele mit klassischem Quellenweg | 740 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 228 |
+| Relevante Blattziele mit klassischem Quellenweg | 740/795 (93.1%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 228/795 (28.7%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 55 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/256 |
 | Cluster ohne direkte Runtime-Quellenbegruendung | 256 |
-| contains-Relationen mit Begruendungstext | 0/1297 |
+| contains-Relationen mit Begruendungstext | 0/1300 |
 | requires-Relationen mit Begruendungstext | 0/2447 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 738 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 740 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -49,8 +49,8 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Q3 | 76 | 73 (96.1%) | 16 (21.1%) | 3 |
 | J10 | 58 | 58 (100.0%) | 21 (36.2%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 10 (20.8%) | 0 |
+| J9 | 46 | 46 (100.0%) | 19 (41.3%) | 0 |
 | J7 | 45 | 45 (100.0%) | 17 (37.8%) | 0 |
-| J9 | 44 | 44 (100.0%) | 18 (40.9%) | 0 |
 | J6 | 43 | 43 (100.0%) | 22 (51.2%) | 0 |
 | J8 | 39 | 39 (100.0%) | 16 (41.0%) | 0 |
 | J5 | 36 | 36 (100.0%) | 23 (63.9%) | 0 |
@@ -61,11 +61,11 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
 | unknown | 386 | 338 (87.6%) | 70 (18.1%) | 48 |
-| Analysis | 126 | 120 (95.2%) | 36 (28.6%) | 6 |
+| Analysis | 127 | 121 (95.3%) | 37 (29.1%) | 6 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
 | Geometry | 81 | 81 (100.0%) | 40 (49.4%) | 0 |
 | LinearAlgebra | 68 | 68 (100.0%) | 7 (10.3%) | 0 |
-| Algebra | 55 | 55 (100.0%) | 33 (60.0%) | 0 |
+| Algebra | 56 | 56 (100.0%) | 33 (58.9%) | 0 |
 | Arithmetic | 46 | 46 (100.0%) | 24 (52.2%) | 0 |
 | Measurement | 11 | 11 (100.0%) | 4 (36.4%) | 0 |
 | Data | 10 | 10 (100.0%) | 8 (80.0%) | 0 |
@@ -225,7 +225,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Kongruenzbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Kongruenzbeziehungen ebener Figuren untersuchen |
 | Längen- und Winkelbeziehungen einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Längen- und Winkelbeziehungen einfacher Körper untersuchen |
 
-Weitere 431 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 432 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -298,5 +298,5 @@ Weitere 196 Eintraege stehen in der JSON-Begleitdatei.
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-02T18:16:48.392Z
+- Runtime index generated: 2026-09-05T02:50:50.988Z
 

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033za-checkpoint-route-context-recheck-1-v1.config.json",
+  "configDigest": "sha256:494e195773bb4c027bdcb05432df53342c0d0903554cd524e2dbc5707a2ac534",
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:8b3f56053f8bf43931d86933431a8148589bc53d97a6cd3b6d28187cdcb636c9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:f2ef5445839e2db3f832cd501e04d9e4115e3e678652b9211b2e41adb7f71090",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0361d67cdc30699a41ebafba2b868ce6a1415b84078b1f920b3ead6fcd8a0f0e",
+    "reviewInputFingerprint": "sha256:c9bd37a240047b420bad98aa45a0130230da36434118111a89385a603f1393e0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-a",
+        "campaignDigest": "sha256:cabf78ebbbfd457b5f1eaa3f8d8580ded49e7b5fac68c43cfd50b2da58980860",
+        "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-a",
+        "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:9d0695fa36f4137dab7137542f524c6b121fdc641ef4e551c031fec4655ee367"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-b",
+        "campaignDigest": "sha256:738590fb1948f9291a26288eed8d74501eba32b3a463d54ef5cb414bb21232ce",
+        "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-b",
+        "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8f18030871cfe7d571f20ef71c7b2979a470f901126596ade9b786634d47c5bf"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

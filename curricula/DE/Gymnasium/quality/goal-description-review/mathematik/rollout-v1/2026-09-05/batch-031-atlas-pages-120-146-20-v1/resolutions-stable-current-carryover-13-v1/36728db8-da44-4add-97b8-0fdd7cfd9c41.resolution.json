@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-36728db8-da44-4add-97b8-0fdd7cfd9c41",
+  "goal": {
+    "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:75d2fcb31bed32fd0cd73cb208ee2cdee5d0a00440c26e37dd96330478c9d22b",
+    "pageFingerprint": "sha256:4da26d300dcb092d015848dde3025d77c81e21f12bf05f6c2fae1b2cdc97d877",
+    "goalReviewContextFingerprint": "sha256:5d91f2cdb9f9191b7ebaadcc690f5df7479eec99a92db30d93e34a9fd195df30",
+    "finalText": {
+      "titleDe": "Satz des Thales begründen und anwenden",
+      "titleEn": "Justify and apply Thales' theorem",
+      "descriptionDe": "Die lernende Person kann den Satz des Thales an Zeichnungen und Dreiecken begründen, rechtwinklige Dreiecke im Halbkreis erkennen und den Satz in einfachen Konstruktionen und Aufgaben anwenden.",
+      "descriptionEn": "The learner can justify Thales' theorem using diagrams and triangles, identify right triangles in a semicircle, and apply the theorem in simple constructions and problems."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:5d91f2cdb9f9191b7ebaadcc690f5df7479eec99a92db30d93e34a9fd195df30",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-36728db8",
+      "recordDigest": "sha256:c7592aa2162450c48cce29ae140a50c7152370a16bc9dded1b871e7b0b5f8b98"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:5d91f2cdb9f9191b7ebaadcc690f5df7479eec99a92db30d93e34a9fd195df30",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-016",
+      "recordDigest": "sha256:fcd51dcf7e81b0e155a964f446eb1249646bea13a973d1977d4e9123f5996a22"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-36728db8-da44-4add-97b8-0fdd7cfd9c41",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen den Satz-des-Thales-Text mit KEEP. Runde A ist qualitativ stärker, weil sie den Satz über Radien, gleichschenklige Teildreiecke und Winkelsumme begründen lässt, auch die Umkehrung als Ortslinie erfasst und die Vollständigkeit mehrerer Lösungen beim Schnitt mit einer zweiten Ortslinie prüft.",
+    "rationaleEn": "Both rounds confirm the Thales-theorem text with KEEP. Round A is qualitatively stronger because it requires justification through radii, isosceles component triangles, and the angle sum, also covers the converse as a locus, and assesses completeness of multiple solutions when intersecting a second locus.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht den Satz des Thales als Zusammenhang zwischen einem Durchmesser AB eines Kreises und dem rechten Umfangswinkel ACB für einen Punkt C auf dem Halbkreis und versteht auch die Umkehrung als Ortsliniencharakterisierung.",
+      "essentialUnderstandingEn": "The learner understands Thales' theorem as the relationship between a diameter AB of a circle and the right inscribed angle ACB for a point C on the semicircle, and also understands the converse as a locus characterization.",
+      "observablePerformanceDe": "Die lernende Person begründet den Satz anhand von Mittelpunkt, Radien, gleichschenkligen Teildreiecken und Winkelsumme, erkennt die Voraussetzungen in einer Skizze und nutzt den Thaleskreis, um einen rechten Winkel zu konstruieren oder eine fehlende Größe herzuleiten.",
+      "observablePerformanceEn": "The learner justifies the theorem using the center, radii, isosceles component triangles, and angle sum, identifies the conditions in a diagram, and uses the Thales circle to construct a right angle or derive a missing quantity.",
+      "transferExpectationDe": "Bei einer neuen Ortslinienaufgabe mit vorgegebener Strecke und zusätzlicher Abstandsbedingung konstruiert die lernende Person alle möglichen Punkte mit rechtem Blickwinkel, schneidet den Thaleskreis mit der zweiten Ortslinie und begründet Anzahl und Vollständigkeit der Lösungen.",
+      "transferExpectationEn": "In a fresh locus problem with a given segment and an additional distance condition, the learner constructs all possible points from which the segment subtends a right angle, intersects the Thales circle with the second locus, and justifies the number and completeness of the solutions."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2f601428eb4405e67527102f6e9676a36af617f6b6be820214a9f88d68bd4453"
+}

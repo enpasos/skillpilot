@@ -3301,6 +3301,110 @@
           "authorizedSha256": "9df1f8c0e0712a69acafece79789c8fc2de7237c782f2538701a8fca2d7a5444"
         }
       ]
+    },
+    {
+      "id": "2026-09-05-claude-111-marketplace-publication-and-guide",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Publish the unchanged Claude 1.1.1 candidate through the existing personal Git Marketplace and restore the explicitly requested Marketplace-only first-party installation and update guidance.",
+      "scope": "Only the candidate- and revision-bound Marketplace publication evidence and approved controlled-beta guide, German and English /plugins update and installation copy, its route switch, focused publication regressions and runbook. Bind verified public revision 5cc7aba22ddf90ab8273cd6c15b71e8186781fc3 and its closed eleven-file tree; preserve pending real-account installation, migration/refresh, Web/Android/Voice, privacy, legal and support acceptance and openPublicBetaReady=false. Preserve scoped old-upload cleanup, bundled connector OAuth, fixed public repository copy and return to SkillPilot. No direct-upload alternative, account mutation or first-party deployment; no changes to immutable OpenAI or Claude packages, MCP/OAuth/tools/schemas/MCP Apps resources, provider launch handlers, prepared messages, session, identity, locale, portal or review artifacts.",
+      "target": "claude-1.1.1-personal-marketplace-publication-and-controlled-beta-guide",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-claude-marketplace-guide-only-no-submitted-openai-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/views/PluginCatalogView.tsx",
+          "priorAuthorizedSha256": "64cbfb9932be0236e38efa0e545d10abaf381ad1c79254719262285c4dcf2e38",
+          "authorizedSha256": "651661bbae99d81e4d9fd912757d91ebe3c81e1674f9fba5cb91a365c8bcee8d"
+        },
+        {
+          "path": "app/src/utils/claudePluginPublication.ts",
+          "priorAuthorizedSha256": "163dec2b14ff3b110b02c4f609a0a13a3487690727de5d59ebf5e697a3dd9535",
+          "authorizedSha256": "ed46297a44a25cb0395e186c377430df93ddc740ae4110d35a0efaad6651fa56"
+        },
+        {
+          "path": "app/src/utils/claudePluginPublication.test.ts",
+          "priorAuthorizedSha256": "b92e4498f231c06e74a6354be642554922d80122333bb2c0c053fb0d2d826d3c",
+          "authorizedSha256": "7098ac737a6dcf997c5c9b938c1c70b3cfec4711b68f775e0e013019ac41969e"
+        },
+        {
+          "path": "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json",
+          "priorAuthorizedSha256": "e03e63e6725253a1b46c4db7a68ffabc2455ed5b9d76e49f662e4298688d7adf",
+          "authorizedSha256": "af0645ea06200122e4d1144e1a4b1d73c769cd0292743e5be623df471363aa01"
+        },
+        {
+          "path": "scripts/claude_marketplace_release.test.mjs",
+          "priorAuthorizedSha256": "883e7733da3434abd90533f637371f34cf731d290920ce6999a73b3c5f9f33bc",
+          "authorizedSha256": "7bd98278771763d95518bf486a399264e0d0a68e91ae7aba3ebc96ef8aab5bb0"
+        },
+        {
+          "path": "docs/deploy/claude-personal-marketplace-release.md",
+          "priorAuthorizedSha256": "5f20e8de03f765bfe5f93e185ea5a1272f7867126e3335047f9fe3b70b44eb55",
+          "authorizedSha256": "af36f91a6effafb4a4bf3469c9110ef8c360c1827bbede5555488c2d1892fa5b"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "9df1f8c0e0712a69acafece79789c8fc2de7237c782f2538701a8fca2d7a5444",
+          "authorizedSha256": "e702360779c603313710b1184f354a88403b82b0f6538ccf3bfe7587500792b0"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-05-claude-web-marketplace-guide-evidence-correction",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Correct the already authorized Marketplace-only guide against the Product Owner screenshots under the same section 6.51 approval; do not invent a working update action.",
+      "scope": "Copy and focused regression only: new-source setup uses the observed repository URL, automatic synchronization switch and Synchronisieren button. Re-adding the existing source reports Dieser Marketplace wurde bereits hinzugefuegt and proves no update; the manual existing-account Claude Web refresh route remains unverified. Require installed version 1.1.1 and the bundled connector before returning to SkillPilot. English labels are translations of observed German controls. Preserve all prior approval hashes, pending real-client acceptance and openPublicBetaReady=false. No new capability, handler, account mutation, deletion/reinstallation workaround, upload route, deployment, immutable OpenAI or Claude package, MCP/OAuth/tool/schema/UI/session/identity/locale or review-artifact change.",
+      "target": "claude-1.1.1-personal-marketplace-controlled-beta-guide-copy",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-existing-guide-approval-copy-evidence-correction-only",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/views/PluginCatalogView.tsx",
+          "priorAuthorizedSha256": "651661bbae99d81e4d9fd912757d91ebe3c81e1674f9fba5cb91a365c8bcee8d",
+          "authorizedSha256": "77d26d3c572b41ea24066aec6b08c119c505b031b7a0b1edf99af4da78d389cb"
+        },
+        {
+          "path": "app/src/utils/claudePluginPublication.test.ts",
+          "priorAuthorizedSha256": "7098ac737a6dcf997c5c9b938c1c70b3cfec4711b68f775e0e013019ac41969e",
+          "authorizedSha256": "2a14208a19c5f33ebd66625ef880926deefb602d52b66a4f40dd93afb112beda"
+        },
+        {
+          "path": "docs/deploy/claude-personal-marketplace-release.md",
+          "priorAuthorizedSha256": "af36f91a6effafb4a4bf3469c9110ef8c360c1827bbede5555488c2d1892fa5b",
+          "authorizedSha256": "4222145a7a7feebb22c5657499ca5f527ce35649eeb195ad6d1ff46357a75201"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "e702360779c603313710b1184f354a88403b82b0f6538ccf3bfe7587500792b0",
+          "authorizedSha256": "f01c23d84f2a04ad81e52bceffc308d1973a262ad798f2782c7c4c0d67edb430"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-05-weekday-safe-learning-plan-activation-test",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Fix the explicitly approved weekend-only backend activation test failure without changing product behavior or assertions.",
+      "scope": "Only LearnerServiceTest.planPackageActivationEnablesFollowingAndSelectsTheFirstGoalWithoutAnotherAction: keep asOf at the current Europe/Berlin date, place the one-day learning block on previousOrSame(FRIDAY), and activate with asOf. Preserve every assertion, all other test cases, system time and production code. Append only this test and the section 6.52 documentation hash to the existing freeze chain and its exact checker/regression expectations. No OpenAI or Claude package, MCP/OAuth/tool/schema/resource/UI/launch/session/identity/locale/state behavior, portal, reviewer credential, review artifact or deployment change.",
+      "target": "backend-learning-plan-activation-test-fixture-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-test-date-fixture-only-no-submitted-contract-or-review-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+          "priorAuthorizedSha256": "0105dcec686ce142d729b77e435665f50d535a53bcfc1f35637d79138e5b8ec2",
+          "authorizedSha256": "90d7a903ad90dfcaa35f03fc5d6d4b7a467cf59a6300d74f30ccf569528b0d87"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "f01c23d84f2a04ad81e52bceffc308d1973a262ad798f2782c7c4c0d67edb430",
+          "authorizedSha256": "4b312aa53015e64c013a44cd82c93774b39d647f14f053fe689e7c6438ed07ab"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [

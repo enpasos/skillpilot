@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-b033w-round-b-2018751b-83ab-4c27-a0a0-c91e66fcf619",
+  "campaignId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-b",
+  "roundId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:dac12547b8d65decc28c8e2c9676e2d200f36881d1d48336c5b20913f8d58cbb",
+  "bundleFingerprint": "sha256:96b802aeccdb8a0bf6f059bb2c46f0281f8187c42af1b339bc1e2785b1410a0c",
+  "bookDigest": "sha256:9844c1000e60e34648396056ce0cbc10d85fcd484f79087d5f28c57df1f68db9",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:753ba575b6f0a86be56d6e7a57cf6dfe71629b31f9d0fd85b80d36d10d9c9a84",
+  "independenceGroupId": "physik-rollout-v1-batch-033w-final-adjudication-context-recheck-10-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+    "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+    "330808f6-789a-583d-86df-e271a7683d8b",
+    "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+    "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+    "0b08aed8-3c0f-5b38-844c-1bb363abbf68",
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "74a74132-fa39-541c-8d3c-696cf228452d",
+    "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+    "a684bec1-ba59-59d0-98d2-4ca37236f64c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:0f4ad575b08ba19d5ca08c88e78e230c1593b2f69ecf2c0346e5c5b6d6b4d6c8"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:dac12547b8d65decc28c8e2c9676e2d200f36881d1d48336c5b20913f8d58cbb"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-05T01:59:44.000Z",
+  "completedAt": "2026-09-05T02:03:50.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:ac4554de37f15d3c53788024655390d5f0557198f0bf38d73010f10a24437b73",
+  "toolchainVersion": "goal-description-review-v1"
+}

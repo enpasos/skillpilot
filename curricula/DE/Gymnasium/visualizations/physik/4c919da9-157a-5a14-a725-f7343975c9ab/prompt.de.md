@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `4c919da9-157a-5a14-a725-f7343975c9ab`
 - Titel: Stehende elektromagnetische Wellen
-- Beschreibung: Die lernende Person kann stehende elektromagnetische Wellen im eindimensionalen Fall qualitativ beschreiben und Beispiele für Resonatoren benennen.
+- Beschreibung: Die lernende Person kann eindimensionale stehende elektromagnetische Wellen als Überlagerung gegenläufiger Wellen mit festen Knoten und Bäuchen erklären und Resonatorbeispiele über ihre Randbedingungen einordnen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Stehende elektromagnetische Wellen
-Beschreibung: Die lernende Person kann stehende elektromagnetische Wellen im eindimensionalen Fall qualitativ beschreiben und Beispiele für Resonatoren benennen.
+Beschreibung: Die lernende Person kann eindimensionale stehende elektromagnetische Wellen als Überlagerung gegenläufiger Wellen mit festen Knoten und Bäuchen erklären und Resonatorbeispiele über ihre Randbedingungen einordnen.
 
 Zusatzanweisung:
 Use case: scientific-educational

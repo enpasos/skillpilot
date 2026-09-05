@@ -280,11 +280,54 @@ The switch is deliberately narrower than full Marketplace acceptance:
 - no Anthropic-curated, Anthropic-verified, or generally released status is
   claimed.
 
-For 1.1.1 the guide decision is reset to `pending`, the route is
-`controlled_direct_install_beta`, and `marketplaceUiSwitchAllowed` is `false`.
-Until a new exact-candidate decision and verified repository exist, the
-first-party guide must expose neither the historical Marketplace install nor
-the 1.0.4 direct download as an available fallback.
+For each replacement candidate, that historical guide decision is reset to
+`pending` until a new exact-candidate decision and verified repository exist.
+Neither the historical Marketplace install nor the 1.0.4 direct download may
+be offered as an available fallback.
+
+## 1.1.1 publication and controlled-beta update route
+
+On **5 September 2026**, the Product Owner explicitly required updates through
+the Marketplace and merged [publication PR #2](https://github.com/enpasos/skillpilot-claude-marketplace/pull/2).
+The public default branch was subsequently verified with
+`node scripts/claude_marketplace_release.mjs verify-repository`:
+
+- revision: `5cc7aba22ddf90ab8273cd6c15b71e8186781fc3`;
+- closed publication inventory: 11 files;
+- tree SHA-256: `8c6c67b46763224d901a65b35408dad7752f6c7db08203fd38cf0f568a74c5d3`;
+- version: `1.1.1`, byte-identical to the bound immutable plugin artifact;
+- strict Marketplace and plugin validation plus isolated Git-source install:
+  passed; [default-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/33950192311)
+  passed as well.
+
+Only `public-repository-default-branch` is recorded as `pass`. The separately
+approved first-party guide decision binds this exact candidate, revision and
+tree. The guide directs installation and updates through the Marketplace and
+does not expose a file-upload alternative. The user's Claude Web screenshots
+show no Update action on the installed 1.0.4 plugin. They do show this route:
+**Hinzufügen → Marketplace hinzufügen → Aus einem Repository hinzufügen**,
+the existing public repository URL, an enabled **Automatisch synchronisieren**
+switch and a **Synchronisieren** button. The dialog describes automatic sync
+as keeping plugins current when the GitHub repository changes. These are the
+observed German labels; English guide labels are translations, not a separately
+verified English-client observation.
+
+The subsequent screenshot after pressing **Synchronisieren** reports
+**Dieser Marketplace wurde bereits hinzugefügt.** This route adds a source;
+it did not refresh the existing source in this account. Keep the observed
+synchronization steps for new installations only. An existing-account manual
+refresh route in this Web UI is not yet verified and must not be presented as
+working. Check the installed plugin details for 1.1.1 before starting a new
+session from SkillPilot. The resulting installed version and absence of
+duplicate installations still need real-client confirmation. Do not prescribe
+an unobserved Update button, delete the existing installation or claim a
+completed acceptance run.
+
+`activation.state` remains `published_pending_acceptance`. Clean-account
+installation, real-account migration/refresh, Web/Android/Voice, privacy,
+legal and support acceptance remain pending; `openPublicBetaReady` stays false.
+The exact guide-only authorization is documented in
+[the OpenAI review-freeze exception](openai-plugin-v1-review-freeze.md#651-eng-begrenzte-ausnahme-claude-111-marketplace-veroeffentlichung-und-updateanleitung).
 
 ## Real-client acceptance and activation
 

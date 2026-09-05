@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b031-stable-current-carryover-1-v3-20260905",
+  "purpose": "Hash-bound carryover of exactly 1 current KEEP/KEEP consensus goals from B031; every other source-batch goal remains explicitly excluded.",
+  "source": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1.config.json",
+    "configSha256": "sha256:5609e6989d5fdd0dd49136a88a79f3e7068165d719a4df801626cc8d3f7c5fcc",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/batch-manifest.json",
+    "batchManifestSha256": "sha256:5468711bd78326cd277b2625e60a7521e64a2bcd374fb081cad655df53b1cfcc",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/dual-summary.json",
+    "dualSummarySha256": "sha256:379a29e8b355706fcb94e7fcddef3c9ef7346162c3fdcd753341e8633a6d00a6",
+    "roundA": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/round-a/results/physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "recordsSha256": "sha256:b8f7f07a9ed3c0eb02fe84ca0d1710593e55ce3c58a566d51b72419434d818ec",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/round-a/results/physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-a.batch-001.run.json",
+      "runSha256": "sha256:66af1beb066dd951dff8837300dededb8a559a507db884f1aaa83edc84ccdcb8"
+    },
+    "roundB": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/round-b/results/physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "recordsSha256": "sha256:f826ea76af38760ad1ef5b567c178134b87c96e229059a451f4b2c1d1cfe12f1",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/round-b/results/physik-rollout-v1-batch-031-q2-oscillations-and-waves-15-v1-20260902-first-pass-b.batch-001.run.json",
+      "runSha256": "sha256:0ef57baf7a4e4ceec55e5d5b5c4357052d70a363970e86ed67446172c0043165"
+    }
+  },
+  "currentRuntimeSnapshot": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "baseGoalBookConfigSha256": "sha256:f2ae7c25c2f288ead6796db39aaed38b6c813e6e2c2496024cb5f127bdd73190",
+    "canonicalLandscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "canonicalLandscapeSha256": "sha256:bb7d8ef730cc58ed920b8203f69c51f4c7159577fdee2666849e0bd18f451eaa",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "semanticKindLedgerSha256": "sha256:edd84697377ff8498ded077ecaaf31175188f8dc5c79789bb559b0d00c94e80e",
+    "currentBaseBookDigest": "sha256:a993875f0769c4c8a1f481f9dfa2c9eb0923a945399d2859b7cb699d8d555a95",
+    "currentSubsetBookDigest": "sha256:476bc91f09119b9ecdd90c451fa24766e86cf86ec4903b9857a183f98fc06873",
+    "capturedAtMaterializationExecution": true
+  },
+  "compatibilityRebase": {
+    "status": "accepted_exact_current_direct_context",
+    "reason": "Review-contract page fingerprints remain byte-bound to the two blind runs. Current Atlas goal and page fingerprints are rebuilt only at execution; contextual page drift is allowed only while the goal fingerprint, bilingual text, and direct canonical context remain exact.",
+    "sourceBaseBookDigest": "sha256:41652cfebefa09a9a4cf1a114f727af9e594b896fd91d5266a64bc34fdbe3f52",
+    "sourceSubsetBookDigest": "sha256:d3a458768d02c7748d5b24689fd84adb084b239488fb05832c67b6281c638a82",
+    "currentBindings": [
+      {
+        "goalId": "d5772db3-120c-5c37-ab46-2336d02236b0",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "85157cf0-7f68-5aea-b375-0f9797008cc9"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:5883f0d6132a084fcc27b9fa1865a14c553ba5e61020f55f319428a042bfe334",
+        "sourceGoalFingerprint": "sha256:e5d6eef73fd8229a5aa0ddadcdbaf2d2079910026ad072b8c6435812a348ae93",
+        "currentGoalFingerprint": "sha256:e5d6eef73fd8229a5aa0ddadcdbaf2d2079910026ad072b8c6435812a348ae93",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:5a435331613abbb12a984ce939f09b7d2b038a993c777898c22ae196c2851a30",
+        "currentPageFingerprint": "sha256:5a435331613abbb12a984ce939f09b7d2b038a993c777898c22ae196c2851a30",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:0f0c4b2412ecfe3dc8cc39df25c12bd61ca8364f2990fee130f9db3cfbabee07"
+      }
+    ]
+  },
+  "claimedGoalIds": [
+    "d5772db3-120c-5c37-ab46-2336d02236b0"
+  ],
+  "explicitlyExcludedGoalIds": [
+    "d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "158e1c19-7ccb-4c8c-931c-b685951ab161",
+    "68020906-e615-462e-a56f-dd1ccc14b8d7",
+    "9dba2826-b179-59f0-8d91-5916079e5abe",
+    "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+    "85157cf0-7f68-5aea-b375-0f9797008cc9",
+    "f47a7fa0-b929-5264-b038-b83fd682967f",
+    "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+    "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+    "e160acb4-5b88-509e-8055-2653df420c65",
+    "215f5558-562c-5686-b649-931f324c7983",
+    "1c430e0a-b63e-5729-8715-a96a5a68740f"
+  ],
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-1-v3.json",
+  "synthesisManifestDigest": "sha256:02d2d8a04f4fbd0434eca9034be2f37340557593ea6aeb82b631c21e2425f5f7",
+  "synthesisManifestFingerprint": "sha256:d802476ad9362d4e4a85ebfc3374af1dc7efd7f8578bcbeeb36866cca22cf63e",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-1-v3.json",
+  "resolutionIndexDigest": "sha256:b58782a5c840bf924121e197c7a94022a65fb77719a4c29e313afbbd98bb5541",
+  "safeguards": {
+    "sourceConfigManifestDualSummaryRunsAndRecordsByteBound": true,
+    "twoIndependentKeepDecisionsRequired": true,
+    "selectedEvidenceRoundMustBeKeep": true,
+    "currentBilingualTextRequiredExact": true,
+    "currentGoalFingerprintRequiredExact": true,
+    "currentDirectCanonicalContextRequiredExactAndRefingerprintedAtExecution": true,
+    "currentAtlasPageFingerprintCapturedAtExecutionWithoutClaimingHistoricalEquality": true,
+    "stableAndExcludedScopesDisjointAndComplete": true,
+    "currentRuntimeReboundImmediatelyBeforeWrite": true,
+    "separateBatchResolutionIndex": true,
+    "openAiReviewFreezeRequiredBeforeWrite": true
+  },
+  "materializationPlanSha256": "sha256:115b3c67df27678fa5977b079a0f607df06436e2e0b6d83cbbcbd83c47ed0617"
+}

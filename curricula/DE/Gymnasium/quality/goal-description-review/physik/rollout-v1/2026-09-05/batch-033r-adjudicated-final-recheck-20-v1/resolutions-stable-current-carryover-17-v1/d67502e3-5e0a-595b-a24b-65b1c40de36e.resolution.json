@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-b033r-stable-current-carryover-17-v1-resolution-d67502e3-5e0a-595b-a24b-65b1c40de36e",
+  "goal": {
+    "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:0d5cef647aee1e97824bc8d632e7f0154020a6e5914129bf9027d0cf333cb6db",
+    "pageFingerprint": "sha256:81e315abd5c041aedbe6212c1f2ef60838bf8bbfe3f99012c3feb805f580bcb4",
+    "goalReviewContextFingerprint": "sha256:f774a0baad0425d300e47725cb0c89da0d8713b507336c78b8707409955d4373",
+    "finalText": {
+      "titleDe": "Bewegungen mit Videoanalyse untersuchen",
+      "titleEn": "Investigate motion using video analysis",
+      "descriptionDe": "Die lernende Person kann ein Bewegungsvideo räumlich und zeitlich kalibrieren, daraus Orts-Zeit-Daten sowie s(t)- und v(t)-Diagramme gewinnen und Modelle einer gleichförmigen oder geworfenen Bewegung unter Berücksichtigung der Messunsicherheit prüfen.",
+      "descriptionEn": "The learner can calibrate a motion video spatially and temporally, obtain position-time data and s(t) and v(t) graphs from it, and test models of uniform or projectile motion while accounting for measurement uncertainty."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-a",
+      "campaignDigest": "sha256:43107a51c42e2ecf5b1fb389b7f1d2861ce54176a247f3141530bb7a4eae1fbb",
+      "roundId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:ed528a6a3a4c63bb4c87de55dc25543e3d610374133a498baeace77a61030754",
+      "goalReviewContextFingerprint": "sha256:f774a0baad0425d300e47725cb0c89da0d8713b507336c78b8707409955d4373",
+      "batchId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z",
+      "runManifestDigest": "sha256:9ac7e7e5ec3db7091ae85b9a81e4f5daba0986cec42b7faa4a418635ee7b2327",
+      "resultsDigest": "sha256:aaedbb7bf78fcc0578470884cc4432719f969de55f9682f78aca07a79eb92e70",
+      "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-015",
+      "recordDigest": "sha256:8bce74769888e24e90daf3c692af64f661e0d1dd51c028cfe017a4ea190d6de9"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-b",
+      "campaignDigest": "sha256:b9f2b17cc7ec44e0e785c5620886325c238ad03485d25f6156ceda3f36cede25",
+      "roundId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:ed528a6a3a4c63bb4c87de55dc25543e3d610374133a498baeace77a61030754",
+      "goalReviewContextFingerprint": "sha256:f774a0baad0425d300e47725cb0c89da0d8713b507336c78b8707409955d4373",
+      "batchId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "phys-b033r-round-b-gpt5-20260905",
+      "runManifestDigest": "sha256:06f0fc3e5bda4a034eb9dea5ec6080c26147af95f2458a4323cbd6efc3ad2d8e",
+      "resultsDigest": "sha256:ca4a01267bf7b94fc45e24356236f1bb82c5f7344ae4f240d1c929c54917406c",
+      "recordId": "phys-b033r-round-b-gpt5-20260905:015",
+      "recordDigest": "sha256:75f3af9934225e92c996701c0cbf093fecdd409a046230cf3858b149d35bbc0a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:58172f5e308ac549563d8d4b6c922e0eec2c696e8aba8e22524388e4614c0d0d"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.stable-current-carryover-17-v1.json",
+    "manifestId": "physik-b033r-stable17-synthesis-openai-codex-20260905",
+    "manifestDigest": "sha256:ba53ea4a611d6e55823a57619bc335bbaa4d8a1d6f3ee17babf7e12b2cd9b30e",
+    "manifestFingerprint": "sha256:fb051501e94b447684d5e42fe0277060f9d482c00f026c1072d2cadaa6403704",
+    "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Physics B033r bounded stable-seventeen synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:58:57.068Z",
+    "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B trennt Pixel- und Bildzeitdaten von kalibrierten physikalischen Größen, verlangt Einheiten und prüft Bewegungsmodelle samt physikalischer und messtechnischer Abweichungsursachen.",
+    "rationaleEn": "Both blind reviews confirm the current wording. Round B separates pixel and frame-time data from calibrated physical quantities, requires units, and tests motion models together with physical and measurement-related causes of deviations.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Videoanalyse übersetzt Pixelpositionen und Bildzeiten erst durch räumliche und zeitliche Kalibrierung in physikalische Orts-Zeit-Daten; daraus abgeleitete Geschwindigkeiten und Diagramme tragen Messunsicherheit, und ein Bewegungsmodell wird an Datenverlauf und Abweichungen geprüft statt nur eingesetzt.",
+      "essentialUnderstandingEn": "Video analysis converts pixel positions and frame times into physical position-time data only through spatial and temporal calibration; derived velocities and graphs carry measurement uncertainty, and a motion model is tested against the data trend and deviations rather than merely applied.",
+      "observablePerformanceDe": "Die lernende Person kalibriert ein geeignet aufgenommenes Video, verfolgt eine definierte Position, erzeugt s(t)- und v(t)-Darstellungen mit Einheiten, prüft ein gleichförmiges oder Wurfmodell an den Daten und benennt relevante Unsicherheitsquellen wie Perspektive, Markierung und Bildrate.",
+      "observablePerformanceEn": "The learner calibrates a suitably recorded video, tracks a defined position, produces s(t) and v(t) representations with units, tests a uniform-motion or projectile model against the data, and identifies relevant uncertainty sources such as perspective, marking, and frame rate.",
+      "transferExpectationDe": "Für ein neues Video mit veränderter Kameraperspektive, Bildrate oder Bewegungsart wählt die lernende Person die nötige Kalibrierung und Modellprüfung neu und erklärt, welche Abweichungen physikalisch und welche messtechnisch verursacht sind.",
+      "transferExpectationEn": "For a new video with a changed camera perspective, frame rate, or type of motion, the learner selects the required calibration and model test afresh and explains which deviations are physical and which arise from measurement."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-2777d001671875ec80136138af1f8edf2b63712e5dcb785642b9959422bba33d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:8d89eacc5bab1c7447d867e3fc623df78fc6960b89c624b8cd37bd538b36618d"
+}

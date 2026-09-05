@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-02T18:17:23.491Z
+Generated: 2026-09-05T07:00:39.059Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,15 +16,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1177 |
-| Atomare Ziele im Visualisierungs-Scope | 793 |
-| Ziele mit primaerem Visualisierungslink | 720 |
+| Alle Ziele in der Landschaft | 1179 |
+| Atomare Ziele im Visualisierungs-Scope | 795 |
+| Ziele mit primaerem Visualisierungslink | 722 |
 | Coverage | 90.8% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 793 |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 795 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 236 |
+| Review-Ledger-Dateien | 237 |
 | Offene Provider-Deferred-Ziele | 73 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 1 |
 | `approved` | 20 |
-| `pilot` | 699 |
+| `pilot` | 701 |
 
 ## Ledger Decisions
 
@@ -67,6 +67,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_user_review_correction` | 47 |
 | `accepted_replacement` | 4 |
 | `accepted_retroactive_nano_banana` | 14 |
+| `accepted_reuse_after_current_visual_review` | 2 |
 | `accepted_reuse_after_description_review` | 27 |
 | `accepted_unchanged_human_approval_preserved` | 2 |
 | `accepted_unchanged_nano_banana_reverified` | 1 |
@@ -93,7 +94,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-formula-domain-correction-2026-09-02.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-checkpoint-split-reuse-2026-09-05.md` |
 | Latest ledger status | `completed_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-4ac925cf-3862-4810-be2a-d92efff7d735",
+  "goal": {
+    "goalId": "4ac925cf-3862-4810-be2a-d92efff7d735",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:bbe891bc1fd1ac15194b01af339e4d7c2e200d25fcbeef69c59bd5ce7d2dc9ea",
+    "pageFingerprint": "sha256:e96a74f506c381251e3ffe5c0068e1ece7f54b087ff8593b798facf92d867f4a",
+    "goalReviewContextFingerprint": "sha256:3a24d27a097aea20490f09928bc368a2bd7ba462a06d2c3480b6fc1e07f0140f",
+    "finalText": {
+      "titleDe": "Wahrscheinlichkeiten verknüpfter Ereignisse berechnen",
+      "titleEn": "Calculate probabilities of combined events",
+      "descriptionDe": "Die lernende Person kann Wahrscheinlichkeiten verknüpfter Ereignisse aus Vierfeldertafeln und relativen Häufigkeiten ableiten, Additionsregeln begründen und Ergebnisse im Kontext interpretieren.",
+      "descriptionEn": "The learner can derive probabilities of combined events from contingency tables and relative frequencies, justify addition rules, and interpret results in context."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:3a24d27a097aea20490f09928bc368a2bd7ba462a06d2c3480b6fc1e07f0140f",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-4ac925cf",
+      "recordDigest": "sha256:4980d7477a99651c17a733796614c4c4d072624ce8daaf4b883f9c3fb8c045ba"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:3a24d27a097aea20490f09928bc368a2bd7ba462a06d2c3480b6fc1e07f0140f",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-019",
+      "recordDigest": "sha256:d50dcf6fcc690130a4e2b811ca8580eea4bc834619554ada2e0b0a4df1616f82"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-4ac925cf-3862-4810-be2a-d92efff7d735",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen das aktuelle Ziel mit KEEP. Runde A ist stärker, weil sie die Additionsregel durch Zerlegung in disjunkte Teilmengen herleitet, den Überlappungsterm als Korrektur einer konkreten Doppelzählung prüft und relative Häufigkeiten ausdrücklich als datenbasierte Schätzungen mit Bezug zur Grundgesamtheit deutet.",
+    "rationaleEn": "Both rounds confirm the current goal with KEEP. Round A is stronger because it derives the addition rule by decomposition into disjoint parts, assesses the overlap term as correction of concrete double counting, and explicitly interprets relative frequencies as data-based estimates relative to the sample space.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht Wahrscheinlichkeiten verknüpfter Ereignisse über disjunkte Teilmengen und insbesondere P(A∪B) = P(A) + P(B) − P(A∩B); sie versteht die vereinfachte Additionsregel für disjunkte Ereignisse und relative Häufigkeiten als datenbasierte Schätzungen.",
+      "essentialUnderstandingEn": "The learner understands probabilities of combined events through disjoint parts and in particular P(A∪B) = P(A) + P(B) − P(A∩B); the learner understands the simplified addition rule for disjoint events and relative frequencies as data-based estimates.",
+      "observablePerformanceDe": "Die lernende Person entnimmt einer Vierfeldertafel oder relativen Häufigkeiten die passenden Schnitt-, Rand- und Vereinigungsanteile, leitet die Additionsregel durch Zerlegung ohne Doppelzählung her, berechnet die gesuchte Wahrscheinlichkeit und interpretiert sie mit korrektem Ereignisbezug im Kontext.",
+      "observablePerformanceEn": "The learner extracts the relevant intersection, marginal, and union proportions from a contingency table or relative frequencies, derives the addition rule by decomposing without double counting, calculates the required probability, and interprets it in context with the correct reference event.",
+      "transferExpectationDe": "In einer neuen Datensituation sind die Ereignisse nicht disjunkt, obwohl eine vorgelegte Lösung ihre Wahrscheinlichkeiten nur addiert; die lernende Person erkennt die Doppelzählung, rekonstruiert den Schnittanteil aus der Tabelle, korrigiert das Ergebnis und vergleicht es mit dem tatsächlich disjunkten Sonderfall.",
+      "transferExpectationEn": "In a fresh data situation, the events are not disjoint although a presented solution simply adds their probabilities; the learner identifies the double counting, reconstructs the intersection proportion from the table, corrects the result, and compares it with the genuinely disjoint special case."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-4ac925cf-3862-4810-be2a-d92efff7d735",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4c5658ebe1ce3adb1d26566842f516a0e41196775304adf1c181066d06c0f07b"
+}

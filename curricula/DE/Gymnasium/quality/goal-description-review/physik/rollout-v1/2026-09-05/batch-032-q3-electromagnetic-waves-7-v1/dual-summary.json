@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:fa8bd90818a602ad88fa8564fb26ddadc2fa458d64387a545a44804f967c1cae",
+  "reviewInputFingerprint": "sha256:8efc8b020277548d7e94c1d344135984b62a36a464a498a825ffbf27bd351bcc",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-032-q3-electromagnetic-waves-7-v1-20260905-a",
+      "roundId": "physik-rollout-v1-batch-032-q3-electromagnetic-waves-7-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-032-q3-electromagnetic-waves-7-v1-20260905-independent-a",
+      "runIds": [
+        "physik-b032-round-a-openai-codex-20260904T2225Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-032-q3-electromagnetic-waves-7-v1-20260905-b",
+      "roundId": "physik-rollout-v1-batch-032-q3-electromagnetic-waves-7-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-032-q3-electromagnetic-waves-7-v1-20260905-independent-b",
+      "runIds": [
+        "physik-b032-batch001-subject-review-gpt5-20260905"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:4a7cbe83",
+      "secondRecordId": "physik-b032-b-r01-spectrum",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:549269d3",
+      "secondRecordId": "physik-b032-b-r02-polarization",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6270e558-d657-5363-a6b2-e49a032a453b",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:6270e558",
+      "secondRecordId": "physik-b032-b-r03-double-slit",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91683676-01cf-5003-80fa-a04d043b4e61",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:91683676",
+      "secondRecordId": "physik-b032-b-r04-spectra-grating",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:4c919da9",
+      "secondRecordId": "physik-b032-b-r05-standing-em-waves",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:f6a3a602",
+      "secondRecordId": "physik-b032-b-r06-single-slit",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "firstRecordId": "physik-b032-round-a-openai-codex-20260904T2225Z:d1e26b52",
+      "secondRecordId": "physik-b032-b-r07-interferometer",
+      "firstRunId": "physik-b032-round-a-openai-codex-20260904T2225Z",
+      "secondRunId": "physik-b032-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

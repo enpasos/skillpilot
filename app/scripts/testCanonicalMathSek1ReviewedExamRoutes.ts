@@ -3,7 +3,10 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
-import { collectCanonicalMathSek1ReviewedExamRouteFindings } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import {
+  collectCanonicalMathSek1ReviewedExamRouteFindings,
+  hasUnavailableCurricularAtomicAssessmentPrerequisite,
+} from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 const canonicalPath = resolve(
   process.cwd(),
@@ -67,4 +70,30 @@ assert.equal(
   'a157b619-e875-5db6-b26a-607a39de00dc',
 )
 
-console.log('Canonical Mathematics Sek-I reviewed exam-route regression tests passed.')
+const assessment = {
+  requires: ['curricular-prerequisite', 'orientation-prerequisite'],
+  extendedData: { applicabilityFromRequires: true },
+}
+const curricularAtomicGoalIds = new Set(['curricular-prerequisite', 'indirect-prerequisite'])
+const visibleCurricularTarget = new Set(['curricular-prerequisite'])
+
+assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
+  assessment, curricularAtomicGoalIds, new Set(),
+), true, 'An explicitly applicability-derived assessment may be absent when a direct curricular target is excluded.')
+assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
+  assessment, curricularAtomicGoalIds, visibleCurricularTarget,
+), false, 'Missing orientation or indirect prerequisites must not waive the required assessment endpoint.')
+assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
+  { ...assessment, extendedData: {} }, curricularAtomicGoalIds, new Set(),
+), false, 'Missing target prerequisites alone must not waive assessments without applicabilityFromRequires.')
+assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
+  { ...assessment, requires: ['unknown-prerequisite'] }, curricularAtomicGoalIds, new Set(),
+), false, 'Unknown prerequisites must not be treated as authoritatively curricular atomic goals.')
+assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
+  { ...assessment, requires: [] }, curricularAtomicGoalIds, new Set(),
+), false, 'An empty prerequisite list must not waive an assessment endpoint.')
+assert.equal(hasUnavailableCurricularAtomicAssessmentPrerequisite(
+  assessment, curricularAtomicGoalIds, new Set(['orientation-prerequisite']),
+), true, 'A curricular goal available only as prerequisite support is still absent from the target projection.')
+
+console.log('Canonical Mathematics Sek-I reviewed exam-route regression tests passed, including exact assessment target applicability.')
