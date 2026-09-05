@@ -18,6 +18,7 @@
     "check:goal-book-publication": "tsx scripts/checkGoalBookPublication.ts",
     "feedback:pull": "tsx scripts/pullGoalFeedback.ts",
     "feedback:validate": "tsx scripts/validateGoalFeedbackInbox.ts",
+    "prebuild:package-consumer": "tsx scripts/testPackageConsumerGoalBookIsolation.ts",
     "build:package-consumer": "tsc -b && tsx scripts/buildPackageConsumerFrontend.ts",
     "test:coach-variants": "tsx src/coachVariants/visibleSession/visibleSession.test.ts && tsx src/coachVariants/openAiMcp/providerEligibility.test.ts && tsx src/coachVariants/openAiMcp/openAiMcp.test.ts && tsx src/utils/synchronousInFlightGuard.test.ts && tsx src/utils/privacyViewCopy.test.ts",
     "test:claude-v1-start": "tsx src/coachVariants/claudeV1/claudeV1Start.test.ts && tsx scripts/testClaudeV1StartUi.tsx",

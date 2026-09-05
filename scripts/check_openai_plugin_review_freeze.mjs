@@ -3676,6 +3676,42 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "1874c7b63d17e6f72741487066878c5a36cbd7b64e7fba1b8c3f1f76362327c1"
       }
     ]
+  },
+  {
+    "id": "2026-09-05-package-consumer-goal-book-isolation",
+    "approvedAt": "2026-09-05",
+    "approvedBy": "product-owner",
+    "reason": "Fix the reported Curriculum CI failure after the approved course-plan book selection introduced repository book registry IDs into the isolated package-consumer frontend.",
+    "scope": "Only extend the existing package-consumer-mode Vite source replacement boundary to the repository goal-book publication registry, add a type-only unavailable adapter with empty registry/lookup results and fail-closed URL builders, and run a focused adapter/export/resolver/mode/graph/chunk regression through prebuild:package-consumer. Preserve the strict existing UUID, curriculum policy and artifact isolation gates unchanged. Keep the complete export surface for linking package-disabled modules before tree shaking; never import repository data at runtime. The public goal-book routes were already unavailable in package mode. Course goal selection and local time planning remain available, with no invalid repository book link. All non-package build modes retain the byte-identical registry and UI components. No production runtime, package/API/MCP/OAuth/tool/schema/resource/launch/session/identity/locale/learning-state contract, review fixture/case/artifact or portal changes; OpenAI 1.0.0 and Claude 1.1.1 remain immutable. No central class storage, curriculum authoring or renewed curriculum QA. Document this independently isolated CI correction in section 6.56; do not deploy.",
+    "target": "isolated-package-consumer-frontend-build-and-ci-only",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-package-consumer-build-isolation-with-no-submitted-openai-or-production-web-effect",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/vite.config.ts",
+        "priorAuthorizedSha256": "9c2f36efbd6755554b2ae2aeb5db0ec076e9a28cf3152b96e61ab99fc16735c7",
+        "authorizedSha256": "5e05421ab42494087c6de25a0eb5e7842c6706406aa89465b9f244c914b1c76c"
+      },
+      {
+        "path": "app/package.json",
+        "priorAuthorizedSha256": "d073e96f6d38e1caad8c9d86a4f2ffb8eb240443048c6dd73b42d083c71aa47f",
+        "authorizedSha256": "40db0e21f1a6a3ef07b31d9dce9bb5bf1e1e8e383220d5c389caff7254fcd3f7"
+      },
+      {
+        "path": "app/src/packageConsumer/goalBookPublicationUnavailable.ts",
+        "authorizedSha256": "dacfbc1a8cc68f55a393f38d78ecbb25ae58b8f98c7659bf3166d95bb8cdf869"
+      },
+      {
+        "path": "app/scripts/testPackageConsumerGoalBookIsolation.ts",
+        "authorizedSha256": "bf4357c38b45033bdc390188db799f125379875029005159e4b1d49e813b92de"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "1874c7b63d17e6f72741487066878c5a36cbd7b64e7fba1b8c3f1f76362327c1",
+        "authorizedSha256": "fa94bfc365e53fb682d49638ec81dd906f2ba5901158cf3348cece674f9790f6"
+      }
+    ]
   }
 ];
 
