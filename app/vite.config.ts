@@ -72,6 +72,10 @@ const PACKAGE_CONSUMER_SOURCE_REPLACEMENTS = new Map([
     path.resolve(APP_ROOT, 'src', 'packageConsumer', 'goalSourceRationalesUnavailable.ts'),
   ],
   [
+    path.resolve(APP_ROOT, 'src', 'utils', 'goalBookPublicationRegistry'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'goalBookPublicationUnavailable.ts'),
+  ],
+  [
     path.resolve(APP_ROOT, 'src', 'utils', 'jurisdictionMetadata'),
     path.resolve(APP_ROOT, 'src', 'packageConsumer', 'jurisdictionMetadata.ts'),
   ],

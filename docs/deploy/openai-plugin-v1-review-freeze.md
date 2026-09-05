@@ -3085,3 +3085,30 @@ bleiben unverändert. Der Portalreview wird nicht zurückgezogen oder neu
 eingereicht. Die konkreten Quell-, Test- und Dokumentationshashes werden
 append-only gebunden. Ein Deployment oder die Wiederaufnahme fachlicher
 Curriculum-QS gehört nicht zu dieser Umsetzung.
+
+### 6.56 CI-Korrektur: Buchregister nur im Repository-Webfrontend
+
+Der Product Owner hat am **5. September 2026** die Behebung des roten
+Curriculum-CI-Jobs beauftragt. Im separaten `package-consumer`-Build zog die
+neue Kursplan-Buchauswahl das Repository-Buchregister mit festen
+Curriculum-IDs in das Bundle. Der bestehende Isolationstest hat dies korrekt
+abgewiesen; seine UUID-, Quellen- und Modulgrenzen bleiben unverändert streng.
+
+Die Korrektur ergänzt ausschließlich die bestehende Modulersetzung in
+`app/vite.config.ts` für den Modus `package-consumer`. Ein eigener Adapter
+`goalBookPublicationUnavailable.ts` liefert dort keine Repository-Buchauswahl
+und verweigert eine Buchroute. Er importiert ausschließlich Typen, keine
+Repository-Daten. Die Kurszielauswahl und lokale Zeitplanung bleiben erhalten;
+die öffentliche Buchroute war in diesem Build bereits ausgeschlossen.
+Eine neue isolierte Regression läuft über `prebuild:package-consumer` vor dem
+bestehenden paketbasierten Frontendbuild.
+
+Das normale Produktions-Webfrontend verwendet weiterhin das byteidentische
+Buchregister und die unveränderten Darstellungskomponenten aus Abschnitt 6.55.
+Die Modulersetzung ist in allen anderen Buildmodi inaktiv. Diese unabhängige
+Build-Isolationskorrektur hat keinen Effekt auf OpenAI `1.0.0`, Claude `1.1.1`,
+MCP/OAuth, Tools, Schemas, Start-, Session- oder Lernzustandsverträge,
+Portalwerte, Reviewfälle und Artefakte. Die betroffenen Konfigurations-,
+Adapter-, Test- und Dokumentationshashes werden append-only gebunden. Es gibt
+keine fachlichen Curriculum-Änderungen, keine zentrale Klassenablage und
+keine Änderung des Portalreviews.
