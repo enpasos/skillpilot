@@ -55,6 +55,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       edit: 'Fachplan bearbeiten',
       activate: 'Für Schüler aktivieren',
       update: 'Änderungen übernehmen',
+      curriculumReview: 'Curriculum geändert – Plan prüfen',
       current: 'Aktiv für den Schüler',
       preview: 'Schülervorschau',
       localOnly: 'Entwürfe nur auf diesem Gerät · erst nach Bestätigung beim Schüler wirksam',
@@ -83,6 +84,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
         current: 'Aktiv für den Schüler',
         'cockpit-only': 'Aktiv · kein lokaler Entwurf',
         'update-required': 'Änderungen noch nicht übernommen',
+        'review-required': 'Planabgleich erforderlich',
         unavailable: 'Prüfung nicht möglich',
       } satisfies Record<TeacherLearningPlanActivationStatus, string>,
     }
@@ -95,6 +97,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       edit: 'Edit subject plan',
       activate: 'Activate for learner',
       update: 'Apply changes',
+      curriculumReview: 'Curriculum changed – review plan',
       current: 'Active for learner',
       preview: 'Learner preview',
       localOnly: 'Drafts on this device only · applied to the learner after confirmation',
@@ -123,6 +126,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
         current: 'Active for learner',
         'cockpit-only': 'Active · no local draft',
         'update-required': 'Changes not applied yet',
+        'review-required': 'Plan reconciliation required',
         unavailable: 'Cannot verify',
       } satisfies Record<TeacherLearningPlanActivationStatus, string>,
     }
@@ -134,7 +138,7 @@ const statusClassName = (status: TeacherLearningPlanActivationStatus) => {
   if (status === 'ready') {
     return 'border-sky-300 bg-sky-50 text-sky-900 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100'
   }
-  if (status === 'update-required') {
+  if (status === 'update-required' || status === 'review-required') {
     return 'border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100'
   }
   if (status === 'not-ready' || status === 'unavailable') {
@@ -518,7 +522,7 @@ export const TrainerLearningPlanActivation = ({
                 aria-label={`${copy.edit}: ${subject.label}`}
                 aria-pressed={subject.landscapeId === classSession.landscapeId}
               >
-                <span className="min-w-0"><span className="block text-sm font-semibold">{subject.label}</span><span className="block text-xs">{copy.status[subject.status]}</span></span>
+                <span className="min-w-0"><span className="block text-sm font-semibold">{subject.label}</span><span className="block text-xs">{subject.status === 'review-required' && subject.issue === 'server-plan-stale' ? copy.curriculumReview : copy.status[subject.status]}</span></span>
                 <Pencil size={14} className="shrink-0" aria-hidden="true" />
               </button>
             </li>

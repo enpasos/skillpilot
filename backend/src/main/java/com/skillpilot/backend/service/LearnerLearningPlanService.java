@@ -31,8 +31,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.TreeMap;
@@ -506,12 +506,8 @@ public class LearnerLearningPlanService {
             }
             try {
                 List<LearnerLearningPlanApi.Block> blocks = readBlocks(stored);
-                boolean current = Objects.equals(
-                        stored.getScopeFingerprint(),
-                        learners.learningPlanFingerprint(
-                                skillpilotId,
-                                stored.getLandscapeId(),
-                                blocks));
+                boolean current = learners.isLearningPlanCompatible(
+                        skillpilotId, stored.getCurriculumId(), stored.getLandscapeId(), blocks);
                 if (current) {
                     omittedCurrentPlans.add(stored.getLandscapeId());
                 }
@@ -786,9 +782,8 @@ public class LearnerLearningPlanService {
             String skillpilotId,
             LearnerLearningPlan plan) {
         List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
-        if (!Objects.equals(
-                plan.getScopeFingerprint(),
-                learners.learningPlanFingerprint(skillpilotId, plan.getLandscapeId(), blocks))) {
+        if (!learners.isLearningPlanCompatible(
+                skillpilotId, plan.getCurriculumId(), plan.getLandscapeId(), blocks)) {
             throw conflict("The personal curriculum changed after this learning plan was captured");
         }
         return blocks;
@@ -899,9 +894,8 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
         boolean stale = true;
         try {
-            stale = !Objects.equals(
-                    plan.getScopeFingerprint(),
-                    learners.learningPlanFingerprint(skillpilotId, plan.getLandscapeId(), blocks));
+            stale = !learners.isLearningPlanCompatible(
+                    skillpilotId, plan.getCurriculumId(), plan.getLandscapeId(), blocks);
         } catch (ResponseStatusException exception) {
             if (exception.getStatusCode().is5xxServerError()) {
                 throw exception;

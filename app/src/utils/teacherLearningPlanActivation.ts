@@ -33,6 +33,7 @@ export type TeacherLearningPlanActivationStatus =
   | 'current'
   | 'cockpit-only'
   | 'update-required'
+  | 'review-required'
   | 'unavailable'
 
 export interface TeacherLearningPlanActivationSubject {
@@ -383,6 +384,69 @@ export const learnerPlanCopyMatchesServer = (
     === JSON.stringify(canonicalComparableBlocks(serverPlan.blocks))
 )
 
+/**
+ * Read-only draft status, deliberately separate from the exact activation
+ * response check above. Curriculum-owned fallback titles are not teacher
+ * edits; projected goal changes still require reconciliation. No local
+ * provenance or class metadata is added to the publication document.
+ */
+export const compareTeacherLearningPlanDraft = (
+  localPlan: TeacherCoursePlan,
+  copy: LearnerLearningPlanCopy,
+  serverPlan: LearnerLearningPlanDetail,
+): { status: 'current' | 'update-required' | 'review-required'; issue: string | null } => {
+  if (serverPlan.stale) return { status: 'review-required', issue: 'server-plan-stale' }
+
+  const localBlocks = new Map(localPlan.blocks.map((block) => [block.id, block]))
+  const withoutFallbackTitles = (blocks: readonly ComparableLearningPlanBlock[]) => (
+    canonicalComparableBlocks(blocks).map((block) => {
+      const localBlock = localBlocks.get(block.id)
+      if (block.kind === 'learning' && localBlock?.kind === 'learning' && !localBlock.title?.trim()) {
+        return { ...block, title: undefined }
+      }
+      return block
+    })
+  )
+  const localBlocksToCompare = withoutFallbackTitles(copy.blocks)
+  const serverBlocksToCompare = withoutFallbackTitles(serverPlan.blocks)
+  const authoredFields = (blocks: typeof localBlocksToCompare) => blocks.map((block) => {
+    if (block.kind !== 'learning') return block
+    return { ...block, atomicGoalIds: undefined }
+  })
+  // A curriculum projection can empty a still-authored block. Compare its
+  // authored fields too, so losing its atoms is not called a local deletion.
+  // Already empty, never-published blocks remain outside the effective copy.
+  const comparedBlockIds = new Set([...copy.blocks, ...serverPlan.blocks].map((block) => block.id))
+  const authoredBlocks = localPlan.blocks.filter((block) => block.kind !== 'learning' || comparedBlockIds.has(block.id))
+  if (copy.planLabel !== (serverPlan.planLabel ?? '')
+    || JSON.stringify(authoredFields(withoutFallbackTitles(authoredBlocks))) !== JSON.stringify(authoredFields(serverBlocksToCompare))) {
+    return { status: 'update-required', issue: null }
+  }
+  if (JSON.stringify(localBlocksToCompare) !== JSON.stringify(serverBlocksToCompare)) {
+    return { status: 'review-required', issue: 'projected-goals-changed' }
+  }
+
+  // Old server documents do not record whether a title was teacher-authored.
+  // If local history contains that exact explicit title, its removal must not
+  // disappear as a fallback-only update. History cannot prove which revision
+  // was published, so report reconciliation rather than inventing authorship.
+  const serverBlocks = new Map(serverPlan.blocks.map((block) => [block.id, block]))
+  const possibleExplicitTitleRemoval = copy.blocks.some((block) => {
+    const localBlock = localBlocks.get(block.id)
+    const serverBlock = serverBlocks.get(block.id)
+    if (block.kind !== 'learning' || localBlock?.kind !== 'learning'
+      || localBlock.title?.trim() || serverBlock?.kind !== 'learning'
+      || !serverBlock.title || block.title === serverBlock.title) return false
+    return localPlan.revisionHistory.some((revision) => revision.blocks.some((previous) => (
+      previous.id === block.id && previous.kind === 'learning'
+      && previous.goalId === localBlock.goalId && previous.title?.trim() === serverBlock.title
+    )))
+  })
+  return possibleExplicitTitleRemoval
+    ? { status: 'review-required', issue: 'learning-block-title-origin-unknown' }
+    : { status: 'current', issue: null }
+}
+
 const copyStoredServerPlan = (
   serverPlan: LearnerLearningPlanDetail,
 ): LearnerLearningPlanCopy | null => {
@@ -513,9 +577,10 @@ export const loadTeacherLearningPlanActivationSubject = async ({
         : !serverCopy
           ? 'unavailable'
           : serverPlan.stale
-            ? 'update-required'
+            ? 'review-required'
             : 'cockpit-only',
-      issue: serverPlan && !serverCopy ? 'server-plan-not-replayable' : null,
+      issue: serverPlan && !serverCopy ? 'server-plan-not-replayable'
+        : serverPlan?.stale ? 'server-plan-stale' : null,
     }
   }
 
@@ -548,11 +613,9 @@ export const loadTeacherLearningPlanActivationSubject = async ({
         issue: 'plan-not-calculable',
       }
     }
-    const status = !serverPlan
-      ? 'ready'
-      : serverPlan.stale || !learnerPlanCopyMatchesServer(materialized.copy, serverPlan)
-        ? 'update-required'
-        : 'current'
+    const comparison = serverPlan
+      ? compareTeacherLearningPlanDraft(loaded.plan, materialized.copy, serverPlan)
+      : { status: 'ready' as const, issue: null }
     return {
       landscapeId,
       label,
@@ -562,8 +625,7 @@ export const loadTeacherLearningPlanActivationSubject = async ({
       serverPlan,
       expectedRevision: serverPlan?.revision ?? 0,
       activationSource: 'local',
-      status,
-      issue: null,
+      ...comparison,
     }
   } catch (error) {
     if (signal?.aborted) throw error

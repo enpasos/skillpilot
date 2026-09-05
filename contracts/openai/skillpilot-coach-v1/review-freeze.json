@@ -3473,6 +3473,109 @@
           "priorAuthorizedSha256": "4b312aa53015e64c013a44cd82c93774b39d647f14f053fe689e7c6438ed07ab"
         }
       ]
+    },
+    {
+      "id": "2026-09-05-learning-plan-curriculum-compatibility",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Repair the explicitly reported production invalidation of unchanged personal subject plans after curriculum updates, under the Product Owner approved compatibility and status hotfix.",
+      "scope": "Only current first-party teacher plan status and shared backend personal-plan validity, with their focused regressions and section 6.54 documentation. Replace broad historical graph-hash equality for stored-plan eligibility with one read-only current compatibility check over the unchanged captured curriculum identity, subject, exact normalized block/atom/date/order payload, current target projection and focus, relevant graph integrity and prerequisite schedule. Reuse the decision for summaries, hidden-plan activation guards, explicit continuation/reconcile/subject switch and completion handoff. Existing unmastered prerequisites remain frontier blockers; missing, cyclic, incompatible or uncheckable dependencies fail closed. Preserve stored v2 capture hashes, revision locking and bounded checks; never rewrite or expand a plan, fingerprint, revision, preference, focus, active goal or mastery merely by reading or previewing, and perform no migration or automatic republication. Distinguish curriculum reconciliation from local teacher edits; ignore curriculum-owned fallback-title drift only in read-only status, conservatively expose possible explicit-title removal and preserve exact confirmed activation-response comparison. Keep class information browser-local. This can restore regular active-goal handoff only in the already opted-in plan workflow from sections 6.31/6.45. Preserve OpenAI 1.0.0 and Claude 1.1.1 package bytes, submitted default-false review fixture, MCP/OAuth/tools/schemas/resources/launch/session/identity/locale contracts, portal values and review artifacts; do not deploy or resume curriculum QA. The separately approved book/time-planning feature is outside this exception.",
+      "target": "current-production-first-party-web-and-backend-plan-compatibility-hotfix",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-existing-opt-in-plan-handoff-correction-with-unchanged-submitted-contract-review-fixture-and-artifacts",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/utils/teacherLearningPlanActivation.ts",
+          "priorAuthorizedSha256": "72c22df370572bbff9605ded9c987b44b492602ece8d80cdf5cbb78b7df8c7bc",
+          "authorizedSha256": "f3c9cf442564f1d6476dd9fb0d3e378af054da5f6e1749333c3b9e495cad82e8"
+        },
+        {
+          "path": "app/src/utils/teacherLearningPlanActivation.test.ts",
+          "priorAuthorizedSha256": "3ebeb603a6d2db8d1c0a176f9fd103a8c51ad8884f18058ca1cd544302f7db3f",
+          "authorizedSha256": "e510eddc1739f39e43a003c70795fa89800f12923c9413b068bcdb9692777bb2"
+        },
+        {
+          "path": "app/src/components/TrainerLearningPlanActivation.tsx",
+          "priorAuthorizedSha256": "18db8a3522fe039027e4e12128f2376d02abf3209683b66d65421e603cd7b8d6",
+          "authorizedSha256": "9ea7fa3e8edfeff825096f9b12004e0eead5375e5fad0cf4bd630229025ca4e7"
+        },
+        {
+          "path": "app/scripts/testTrainerLearningPlanActivationUi.ts",
+          "priorAuthorizedSha256": "56a358f03fd1ca3aab9efa622d138fc81c8cfd0f0f8974c5fbc2ae39162873e3",
+          "authorizedSha256": "8e034749b4956f2e05d3f4e7ffba520326033589d03d4fe55435cdbff9b11dc9"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+          "priorAuthorizedSha256": "d564cf3b8b7179dc6b5ab4aeba3f55b0057fd004e66dbcafa21a2086224c140c",
+          "authorizedSha256": "f38ccdc8972a3a3a2149ac659e649bc69c06a16f0a6bc6e3b6cc5fa457901b81"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+          "priorAuthorizedSha256": "ce14e8f77a00e297e8ce7225bc4a64776d82254b294dbbbd344959e719dd0e7a",
+          "authorizedSha256": "86f6891887ac8e0946bfc98b8913838a4c2277797639a509ca25432132ed29d9"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+          "priorAuthorizedSha256": "90d7a903ad90dfcaa35f03fc5d6d4b7a467cf59a6300d74f30ccf569528b0d87",
+          "authorizedSha256": "77dfa466c876a872b568394b0b74b0e258f6dbfeac3221a9c2767731bd84851c"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+          "priorAuthorizedSha256": "363b909ea734b981d684ecfcf0f75fccaad2948726597b5b3eddbe32398acfaa",
+          "authorizedSha256": "bca77505ed420407759122db55c6e84a8d99dad14ac543e2fccac449b20b242b"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "f2d345028cd609a9926d1e8b7bf2695c87343a7eb1029bca53de60cfa7e70a0a",
+          "authorizedSha256": "6fd0305c7175f69ba26f4062512847a6fb28fca1a57bb91cc2c34b8993a23a1d"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-05-course-plan-book-selection-and-timeline",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Implement the explicitly approved first connection of learning-goal books and teacher time planning within the existing browser-local course planning workspace.",
+      "scope": "Only two presentation components, their CoursePlanPilotView integration, focused browser regression and section 6.55/concept documentation. Read the already available authoritative course projection and planning baseline; show goal descriptions, bounded included-goal/prerequisite lists and supported fixed public-book links without class or learner identifiers. Keep the published BookModel, original-source matrix, public routes and PDF artifacts unchanged. Prepare only the existing guarded section draft; retain explicit local save, date validation, keyboard focus and separate confirmed personal-plan activation. Render existing learning, buffer and milestone dates as a proportional calendar timeline with bounded ticks and contained mobile scrolling, editing only via the existing form. Show unscheduled counts only for a complete evaluable plan; missing or invalid evaluation remains unknown and disables the unscheduled filter. Do not infer mastery, allocate teaching time or move dates automatically. Add no persistence, network capability, API, central class storage, calendar/AI connection or publication. Preserve OpenAI 1.0.0 and Claude 1.1.1 package bytes, MCP/OAuth/tools/schemas/MCP-Apps resources, provider handlers, prepared messages, session/identity/locale/learning-state contracts, portal values, fixtures, review cases and artifacts. No deployment or resumption of curriculum QA.",
+      "target": "current-production-first-party-web-local-teacher-course-planning",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-local-teacher-planning-presentation-with-unchanged-submitted-contract-and-review-flow",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/components/CoursePlanLearningBook.tsx",
+          "authorizedSha256": "2839514038e98d0b7309e942338e62c47e56ec58505b617ab1862cef1754ac27"
+        },
+        {
+          "path": "app/src/components/CoursePlanTimeline.tsx",
+          "authorizedSha256": "7a08aae2cdb45dc9f94beb73f281452b6abc70b944c7d9ef875ea7c41f52c424"
+        },
+        {
+          "path": "app/src/components/CoursePlanPilotView.tsx",
+          "priorAuthorizedSha256": "4acf81fc411f9ea14a4f50b5fde2ca6ad7ba085a0ee37ece0c7cd18433e99925",
+          "authorizedSha256": "a1478c9057412c375426d405820409d46920dae37c1c7f92673b3f644cea2099"
+        },
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "7d0eda970a5be32da445ee59706454862105e6e6b12ea74d03ebd73974ba4da8",
+          "authorizedSha256": "61ca11d28486cd931baf2afbecae0b336b1562475a808f36c041090255bae153"
+        },
+        {
+          "path": "docs/concept/skill-graph/teacher-goal-book-time-planning.md",
+          "authorizedSha256": "61ff6c117732901c3c3af5eb7f8fa35ec89512071c54f70e9c03db63859c1a7e"
+        },
+        {
+          "path": "docs/concept/index.md",
+          "priorAuthorizedSha256": "17afe5586b013ae2cd4021b52422ce420103ba4e78ba62909d65d7ec319657bf",
+          "authorizedSha256": "a98411c6055b4c554043154266831263c2395f89c60fff71ae21b9a476420c40"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "6fd0305c7175f69ba26f4062512847a6fb28fca1a57bb91cc2c34b8993a23a1d",
+          "authorizedSha256": "1874c7b63d17e6f72741487066878c5a36cbd7b64e7fba1b8c3f1f76362327c1"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [

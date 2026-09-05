@@ -2990,3 +2990,98 @@ Feedback-Handler, Session-, Identitäts-, Locale- und Lernzustandssemantik,
 Portalwerte, Reviewer-Zugänge und Reviewartefakte bleiben unverändert. Es
 erfolgt weder ein Deployment noch ein erneutes Einreichen. Die große fachliche
 Curriculum-QS bleibt pausiert.
+
+### 6.54 Eng begrenzte Ausnahme: kompatible Lernpläne nach Curriculum-Updates
+
+Der Product Owner hat am **5. September 2026** nach der Diagnose des
+Produktionsproblems ausdrücklich den vorgeschlagenen Hotfix im aktuellen
+First-Party-Web-/Backend-Stand einschließlich Statusanzeige und
+Regressionstests freigegeben. Unveränderte, gegen das aktuelle persönliche
+Curriculum weiterhin gültige Fachzeitpläne sollen nach fachlichen Updates
+ohne erneute Übernahme weiterlaufen können.
+
+Die bisherige pauschale Gleichheit mit dem gespeicherten fachweiten
+Graph-Fingerprint wird ausschließlich für die Gültigkeitsentscheidung
+bestehender persönlicher Fachzeitpläne durch eine gemeinsame lesende
+Kompatibilitätsprüfung ersetzt. Die unveränderten gespeicherten Ziel-IDs,
+Blöcke, Reihenfolgen und Termine müssen weiterhin zum aktuellen persönlichen
+Curriculum, zum Fach, zu den Blockfoki und zur aktuellen Voraussetzungslage
+passen. Nicht prüfbare oder inkompatible Pläne bleiben ausgeschlossen.
+Frontier, Revisionen und die bestehenden expliziten Schreibgrenzen bleiben
+verbindlich. Neue Curriculumziele werden nicht stillschweigend in einen
+gespeicherten Plan eingefügt.
+
+Ein alter Fingerprint enthält keinen historischen Graphsnapshot. Die neue
+Prüfung behauptet deshalb keine historische Strukturidentität, sondern prüft
+die heutige Gültigkeit der unveränderten gespeicherten Planung. Lesen und
+Vorschau schreiben weder Planbytes noch Fingerprint, Revision, Modus, Fokus,
+aktives Ziel oder Mastery um. Es gibt keine Datenmigration, automatische
+Neuveröffentlichung oder neue zentrale Lehrer-/Klassenablage.
+
+Die lokale Lehrkraftanzeige unterscheidet einen erforderlichen Planabgleich
+von tatsächlichen lokalen Planänderungen. Ein nur aus dem Curriculum
+abgeleiteter Titelwechsel gilt nicht als Lehreränderung; selbst bearbeitete
+Titel und unklare Herkunft bleiben konservativ prüfbar. Der strikte Vergleich
+einer ausdrücklich bestätigten Aktivierungsantwort wird nicht gelockert.
+
+Der freigegebene Dateiumfang umfasst `LearnerService.java`,
+`LearnerLearningPlanService.java`, deren fokussierte Service- und
+Integrationstests sowie die eng zugehörige lokale
+`teacherLearningPlanActivation`-Logik, ihre Statusdarstellung und Regressionen.
+Ihre konkreten Hashes und dieser Nachtrag werden append-only in der
+Freeze-Kette gebunden; frühere Freigaben bleiben unverändert.
+
+Die korrigierte Gültigkeitsentscheidung kann nach bereits aktiviertem Planmodus
+wieder eine reguläre Lernübergabe erlauben. Diese begrenzte beobachtbare
+Zustandswirkung gehört zur ausdrücklich freigegebenen Korrektur des Ablaufs
+aus Abschnitt 6.31/6.45; sie ist nicht mit einer Änderung des eingereichten
+Paketvertrags gleichzusetzen. Das OpenAI-Plugin bleibt unverändert `1.0.0`,
+das Claude-Paket unverändert `1.1.1`. MCP/OAuth, Tools, Schemas, MCP-Apps-
+Ressourcen, Provider-Startabläufe, Prepared Messages, Session-, Identitäts-
+und Locale-Verträge, Portalwerte, die standardmäßig planlose Review-Fixture,
+Reviewfälle und Reviewartefakte bleiben unverändert. Der Portalreview wird
+nicht zurückgezogen oder neu eingereicht. Die fachliche Curriculum-QS bleibt
+pausiert. Die separat freigegebene Verbindung von Lernzielbuch und Zeitplanung
+ist kein Bestandteil dieses Produktions-Hotfixes.
+
+### 6.55 Eng begrenzte Ausnahme: Buchauswahl und lokale Kursplan-Zeitachse
+
+Der Product Owner hat am **5. September 2026** zusätzlich ausdrücklich die
+Planung und Umsetzung der Verbindung von Lernzielbuch und Zeitplanung
+freigegeben. Die erste Ausbaustufe ist auf den vorhandenen lokalen
+First-Party-Kursplanungsraum beschränkt; sie bleibt vom Produktions-Hotfix aus
+Abschnitt 6.54 getrennt.
+
+Freigegeben sind zwei reine Darstellungskomponenten
+(`CoursePlanLearningBook.tsx`, `CoursePlanTimeline.tsx`), ihre Einbindung in
+`CoursePlanPilotView.tsx`, die zugehörige Kursplan-UI-Regression und das
+Konzept `teacher-goal-book-time-planning.md` mit seinem Eintrag im Konzeptindex:
+
+- Eine lesbare Zielauswahl nutzt ausschließlich die bereits vorliegende
+  autoritative Kursprojektion und vorhandene Planungsbasis. Sie erfindet keine
+  neuen Ziele oder Bündel und behauptet nicht, ein separates geprüftes
+  BookModel zu sein. Bei unterstützten Fächern öffnen öffentliche Ziel-Links
+  das bestehende Lernzielbuch, ohne Klassen- oder Lernendenkennungen zu
+  übermitteln. Die öffentliche Buchroute, ihre Quellenanzeige und ihre
+  Artefakte bleiben unverändert.
+- Die Auswahl bereitet ausschließlich das vorhandene Abschnittsformular vor.
+  Entwurfswarnung, sichtbarer Tastaturfokus, Datumsprüfung, explizites lokales
+  Speichern und die getrennte bestätigte Übernahme bleiben erhalten.
+- Eine maßstäbliche Kalenderzeitachse stellt die vorhandenen Abschnitte,
+  Puffer und Meilensteine dar. Tastaturbedienbare Elemente öffnen die
+  bestehende Bearbeitung. Es gibt keine automatische Terminänderung und keine
+  neuen Ferien-, Stundenbudget- oder Mastery-Annahmen.
+- Noch nicht eingeplante Ziele und vorhandene Voraussetzungshinweise sind
+  lesende Planungsinformationen. Sie bescheinigen weder Unterrichtsabdeckung
+  noch individuelles Verständnis.
+
+Es gibt keine zusätzliche Persistenz, zentrale Klassenablage, neue API,
+KI-/Kalenderverbindung oder automatische Publikation. Die Komponenten erhalten
+keine neuen Session-, Identitäts-, Provider-Start- oder Lernzustandsfähigkeiten.
+Das Ziel ist ausschließlich das aktuelle First-Party-Webfrontend. OpenAI
+`1.0.0`, Claude `1.1.1`, ihre Pakete, MCP/OAuth, Tools, Schemas, MCP-Apps-
+Ressourcen, Startabläufe, Portalwerte, Reviewfälle, Fixtures und Artefakte
+bleiben unverändert. Der Portalreview wird nicht zurückgezogen oder neu
+eingereicht. Die konkreten Quell-, Test- und Dokumentationshashes werden
+append-only gebunden. Ein Deployment oder die Wiederaufnahme fachlicher
+Curriculum-QS gehört nicht zu dieser Umsetzung.

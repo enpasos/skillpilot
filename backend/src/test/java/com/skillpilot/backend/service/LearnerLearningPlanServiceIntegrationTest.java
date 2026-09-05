@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.mock;
@@ -31,6 +32,7 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,6 +107,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                         learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID)));
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
+        doCallRealMethod().when(learnerService).isLearningPlanCompatible(
+                eq(LEARNER_ID), any(), any(), any());
         when(landscapeService.getById(LANDSCAPE_ID))
                 .thenReturn(landscape(LANDSCAPE_ID, "Mathematik"));
         when(landscapeService.getById(PHYSICS_LANDSCAPE_ID))
@@ -206,6 +210,106 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
         verify(learnerService, never()).acquireLearningPlanMutationLock(any());
         verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void compatibleLegacyPlanSurvivesScopeAdditionsWithoutReadOrPreviewRewritingStoredState() {
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Original plan", List.of(
+                        learning("block", "2026-09-01", "2026-09-04", "atom-a", "atom-b"))), TODAY);
+        String legacyFingerprint = useLegacyFingerprint(created.planId());
+        var stored = planRepository.findById(created.planId()).orElseThrow();
+        String originalBlocks = stored.getBlocksJson();
+        Instant originalCapturedAt = stored.getCapturedAt();
+        Instant originalUpdatedAt = stored.getUpdatedAt();
+        Instant originalCreatedAt = stored.getCreatedAt();
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        List.of("atom-b", "atom-c", "atom-d")));
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        clearInvocations(learnerService, eventPublisher);
+
+        var detail = service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY);
+        assertThat(detail.stale()).isFalse();
+        assertThat(detail.blocks()).isEqualTo(created.blocks());
+        assertThat(detail.metrics().totalPlanned()).isEqualTo(2);
+        assertThat(detail.metrics().completedDueThroughToday()).isEqualTo(1);
+        assertThat(service.getPlans(LEARNER_ID, TODAY).plans()).singleElement()
+                .satisfies(summary -> assertThat(summary.stale()).isFalse());
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").unavailablePlanCount()).isZero();
+        var preview = service.previewPlans(LEARNER_ID, new LearnerLearningPlanApi.ActivateRequest(
+                TODAY, List.of(new LearnerLearningPlanApi.ActivationPlan(
+                        LANDSCAPE_ID, created.revision(), created.planLabel(), created.blocks()))));
+        assertThat(preview.days().get(0).totals()).isEqualTo(detail.metrics());
+
+        planRepository.flush();
+        var afterReads = planRepository.findById(created.planId()).orElseThrow();
+        assertThat(afterReads.getScopeFingerprint()).isEqualTo(legacyFingerprint);
+        assertThat(afterReads.getRevision()).isEqualTo(created.revision());
+        assertThat(afterReads.getBlocksJson()).isEqualTo(originalBlocks);
+        assertThat(afterReads.getCapturedAt()).isEqualTo(originalCapturedAt);
+        assertThat(afterReads.getCreatedAt()).isEqualTo(originalCreatedAt);
+        assertThat(afterReads.getUpdatedAt()).isEqualTo(originalUpdatedAt);
+        assertThat(afterReads.getCurriculumId()).isEqualTo(CURRICULUM_ID);
+        assertThat(afterReads.getLandscapeId()).isEqualTo(LANDSCAPE_ID);
+        assertThat(afterReads.getPlanLabel()).isEqualTo("Original plan");
+        assertThat(learner.getFollowLearningPlans()).isFalse();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
+        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(learnerService, never()).setPlannedGoalsAndGetState(any(), any());
+        verify(learnerService, never()).setActiveGoal(any(), any());
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(), any(Boolean.class), any(Boolean.class), any(), any(), any(Boolean.class), any());
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void removedPlannedAtomFailsClosedForStatusContinueSwitchAndReconcileWithoutPlanRewrite() {
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Original plan", List.of(
+                        learning("block", "2026-09-01", "2026-09-04", "atom-a", "atom-b"))), TODAY);
+        String legacyFingerprint = useLegacyFingerprint(created.planId());
+        String originalBlocks = planRepository.findById(created.planId()).orElseThrow().getBlocksJson();
+        learner.setFollowLearningPlans(true);
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-c"), List.of("atom-a", "atom-c")));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        clearInvocations(learnerService, eventPublisher);
+
+        assertStoredPlanCannotDriveLearning(created);
+
+        var unchanged = planRepository.findById(created.planId()).orElseThrow();
+        assertThat(unchanged.getScopeFingerprint()).isEqualTo(legacyFingerprint);
+        assertThat(unchanged.getBlocksJson()).isEqualTo(originalBlocks);
+        assertThat(unchanged.getRevision()).isEqualTo(created.revision());
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getFollowLearningPlans()).isTrue();
+        assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
+    }
+
+    @Test
+    void currentPrerequisiteReorderOrInvalidFocusDoesNotSilentlyRepairAStoredPlan() {
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Original plan", List.of(
+                        learning("block", "2026-09-01", "2026-09-04", "atom-a", "atom-b"))), TODAY);
+        String originalBlocks = planRepository.findById(created.planId()).orElseThrow().getBlocksJson();
+        learner.setFollowLearningPlans(true);
+        when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
+                .thenReturn(List.of(learning("block", "2026-09-01", "2026-09-04", "atom-b", "atom-a")));
+        clearInvocations(learnerService, eventPublisher);
+
+        assertStoredPlanCannotDriveLearning(created);
+        when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
+                .thenAnswer(invocation -> invocation.getArgument(1));
+        doThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Focus is outside the subject target"))
+                .when(learnerService).validateLearningPlanBlockFoci(eq(LEARNER_ID), eq(LANDSCAPE_ID), any());
+        assertStoredPlanCannotDriveLearning(created);
+        assertThat(planRepository.findById(created.planId()).orElseThrow().getBlocksJson())
+                .isEqualTo(originalBlocks);
+        assertThat(planRepository.findById(created.planId()).orElseThrow().getRevision())
+                .isEqualTo(created.revision());
     }
 
     @Test
@@ -647,7 +751,7 @@ class LearnerLearningPlanServiceIntegrationTest {
 
     @Test
     void activationRejectsAnOmittedCurrentStoredPlanBeforeAnyMutation() {
-        service.upsert(
+        var created = service.upsert(
                 LEARNER_ID,
                 LANDSCAPE_ID,
                 new LearnerLearningPlanApi.UpsertRequest(
@@ -655,6 +759,10 @@ class LearnerLearningPlanServiceIntegrationTest {
                         "Mathematik",
                         List.of(learning("math-block", "2026-09-01", "2026-09-04", "atom-a"))),
                 TODAY);
+        String legacyFingerprint = useLegacyFingerprint(created.planId());
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        List.of("atom-a", "atom-b", "atom-d")));
         clearInvocations(learnerService, eventPublisher);
 
         assertStatus(
@@ -680,6 +788,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                     assertThat(plan.getLandscapeId()).isEqualTo(LANDSCAPE_ID);
                     assertThat(plan.getRevision()).isEqualTo(1);
                     assertThat(plan.getPlanLabel()).isEqualTo("Mathematik");
+                    assertThat(plan.getScopeFingerprint()).isEqualTo(legacyFingerprint);
                 });
         verify(learnerService, never()).applyLearningPlanTransition(
                 any(),
@@ -802,7 +911,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
-    void continueRequiresOptInCurrentFingerprintRevisionAndFrontierEligibility() {
+    void continueRequiresOptInCurrentCompatibilityRevisionAndFrontierEligibility() {
         LearnerLearningPlanApi.PlanDetail created = service.upsert(
                 LEARNER_ID,
                 LANDSCAPE_ID,
@@ -811,6 +920,10 @@ class LearnerLearningPlanServiceIntegrationTest {
                         null,
                         List.of(learning("block", "2026-09-01", "2026-09-04", "atom-a", "atom-b"))),
                 TODAY);
+        String legacyFingerprint = useLegacyFingerprint(created.planId());
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        List.of("atom-a", "atom-b", "atom-d")));
 
         LearnerLearningPlanApi.ContinueRequest request = new LearnerLearningPlanApi.ContinueRequest(
                 created.revision(),
@@ -845,9 +958,11 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(response.state()).isSameAs(state);
         verify(learnerService).setPlannedGoalsAndGetState(LEARNER_ID, Set.of("block-focus"));
         verify(learnerService).setActiveGoal(LEARNER_ID, "atom-b");
+        assertThat(planRepository.findById(created.planId()).orElseThrow().getScopeFingerprint())
+                .isEqualTo(legacyFingerprint);
 
         when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
-                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"), List.of("atom-b", "atom-d")));
+                .thenReturn(scope(List.of("atom-a", "atom-c", "atom-d"), List.of("atom-d")));
         assertStatus(() -> service.continuePlan(LEARNER_ID, created.planId(), request), HttpStatus.CONFLICT);
     }
 
@@ -883,6 +998,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                                 "2026-09-04",
                                 "atom-p"))),
                 TODAY);
+        String legacyFingerprint = useLegacyFingerprint(physics.planId());
 
         LearnerLearningPlanApi.TransitionResponse response = service.switchPlan(
                 LEARNER_ID,
@@ -908,6 +1024,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                 physics.planId(),
                 new LearnerLearningPlanApi.ContinueRequest(physics.revision(), TODAY));
         assertThat(samePointer.changed()).isTrue();
+        assertThat(planRepository.findById(physics.planId()).orElseThrow().getScopeFingerprint())
+                .isEqualTo(legacyFingerprint);
         verify(learnerService, times(2)).applyLearningPlanTransition(
                 LEARNER_ID,
                 false,
@@ -936,7 +1054,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                         true,
                         "LEARNING_PLAN_RECONCILED"))
                 .thenReturn(new LearnerService.LearningPlanTransitionResult(true, selectedState));
-        service.upsert(
+        var created = service.upsert(
                 LEARNER_ID,
                 PHYSICS_LANDSCAPE_ID,
                 new LearnerLearningPlanApi.UpsertRequest(
@@ -949,12 +1067,15 @@ class LearnerLearningPlanServiceIntegrationTest {
                                 "2026-09-04",
                                 "atom-p"))),
                 TODAY);
+        String legacyFingerprint = useLegacyFingerprint(created.planId());
 
         LearnerLearningPlanApi.TransitionResponse selected = service.reconcile(
                 LEARNER_ID,
                 new LearnerLearningPlanApi.ReconcileRequest(TODAY));
         assertThat(selected.changed()).isTrue();
         assertThat(selected.activeGoalId()).isEqualTo("atom-p");
+        assertThat(planRepository.findById(created.planId()).orElseThrow().getScopeFingerprint())
+                .isEqualTo(legacyFingerprint);
 
         learner.setActiveGoalId("atom-p");
         UnifiedLearnerStateResponse noOpState = mock(UnifiedLearnerStateResponse.class);
@@ -1121,9 +1242,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                                 "atom-p"))),
                 TODAY);
 
-        var stale = planRepository.findById(math.planId()).orElseThrow();
-        stale.setScopeFingerprint("sha256:stale");
-        planRepository.saveAndFlush(stale);
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-b", "atom-c"), List.of("atom-b")));
         var malformed = planRepository.findById(physics.planId()).orElseThrow();
         malformed.setBlocksJson("{not-json");
         planRepository.saveAndFlush(malformed);
@@ -1222,6 +1342,36 @@ class LearnerLearningPlanServiceIntegrationTest {
                     assertThat(subject.canContinue()).isFalse();
                 });
         assertThat(learner.getActiveGoalId()).isEqualTo("atom-a");
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    private String useLegacyFingerprint(UUID planId) {
+        var stored = planRepository.findById(planId).orElseThrow();
+        String fingerprint = "sha256:" + "a".repeat(64);
+        stored.setScopeFingerprint(fingerprint);
+        planRepository.saveAndFlush(stored);
+        return fingerprint;
+    }
+
+    private void assertStoredPlanCannotDriveLearning(LearnerLearningPlanApi.PlanDetail plan) {
+        var detail = service.getPlan(LEARNER_ID, plan.landscapeId(), TODAY);
+        assertThat(detail.stale()).isTrue();
+        assertThat(detail.canContinue()).isFalse();
+        assertThat(detail.nextEligibleGoal()).isNull();
+        assertThat(service.getPlans(LEARNER_ID, TODAY).plans()).singleElement()
+                .satisfies(summary -> assertThat(summary.stale()).isTrue());
+        var today = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(today.subjects()).isEmpty();
+        assertThat(today.unavailablePlanCount()).isEqualTo(1);
+        var request = new LearnerLearningPlanApi.ContinueRequest(plan.revision(), TODAY);
+        assertStatus(() -> service.continuePlan(LEARNER_ID, plan.planId(), request), HttpStatus.CONFLICT);
+        assertStatus(() -> service.switchPlan(LEARNER_ID, plan.planId(), request), HttpStatus.CONFLICT);
+        assertThat(service.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY)).changed())
+                .isFalse();
+        verify(learnerService, never()).setPlannedGoalsAndGetState(any(), any());
+        verify(learnerService, never()).setActiveGoal(any(), any());
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(), any(Boolean.class), any(Boolean.class), any(), any(), any(Boolean.class), any());
         verify(eventPublisher, never()).publishEvent(any());
     }
 

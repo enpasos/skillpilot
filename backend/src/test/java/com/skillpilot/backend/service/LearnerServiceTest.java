@@ -1088,7 +1088,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void stalePlanFingerprintFailsClosedAfterCompletion() {
+    void incompatibleCapturedCurriculumFailsClosedAfterCompletion() {
         prepareRepresentationLearningPlan();
         LearnerLearningPlan plan = learnerLearningPlanRepository
                 .findByLearner_SkillpilotIdAndLandscapeId(
@@ -1096,6 +1096,7 @@ public class LearnerServiceTest {
                         CANONICAL_MATH_LANDSCAPE_ID)
                 .orElseThrow();
         plan.setScopeFingerprint("sha256:stale-structure");
+        plan.setCurriculumId("different-captured-curriculum");
         learnerLearningPlanRepository.saveAndFlush(plan);
         learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
         learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
@@ -1111,6 +1112,130 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void compatibleHistoricalFingerprintStillAllowsReadAndAutomaticHandoffWithoutRewrite() throws Exception {
+        prepareRepresentationLearningPlan();
+        LearnerLearningPlan plan = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdAndLandscapeId(learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        String historicalFingerprint = "sha256:" + "a".repeat(64);
+        plan.setScopeFingerprint(historicalFingerprint);
+        learnerLearningPlanRepository.saveAndFlush(plan);
+        long revision = plan.getRevision();
+        String blocksJson = plan.getBlocksJson();
+        Instant capturedAt = plan.getCapturedAt();
+        assertThat(learnerLearningPlanService.getPlan(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID, LocalDate.parse("2026-09-02")).stale()).isFalse();
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        assertThat(completion.activeGoal()).isNotNull();
+        assertThat(completion.activeGoal().id()).isEqualTo(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(plan.getScopeFingerprint()).isEqualTo(historicalFingerprint);
+        assertThat(plan.getRevision()).isEqualTo(revision);
+        assertThat(plan.getBlocksJson()).isEqualTo(blocksJson);
+        assertThat(plan.getCapturedAt()).isEqualTo(capturedAt);
+    }
+
+    @Test
+    void currentPlanCompatibilityIgnoresMetadataAndUnrelatedGraphChanges() throws Exception {
+        prepareRepresentationLearningPlan();
+        LearnerLearningPlan plan = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdAndLandscapeId(learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        List<com.skillpilot.backend.api.LearnerLearningPlanApi.Block> blocks = objectMapper.readValue(
+                plan.getBlocksJson(), new com.fasterxml.jackson.core.type.TypeReference<>() { });
+        Map<String, LearningGoal> goals = new HashMap<>();
+        landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID).getGoals().forEach(goal -> goals.put(goal.getId(), goal));
+        LearningGoal planned = goals.get(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        LearningGoal unrelated = goals.get("f7dcf8c8-06c1-5972-b02a-9d35e5ab7600");
+        String oldTitle = planned.getTitle();
+        String oldDescription = planned.getDescription();
+        var oldResources = planned.getResourceLinks();
+        var oldRequires = unrelated.getRequires();
+        String capturedHash = plan.getScopeFingerprint();
+        String storedBlocks = plan.getBlocksJson();
+        long revision = plan.getRevision();
+        try {
+            planned.setTitle("Updated explanatory title");
+            planned.setDescription("Updated explanation only.");
+            planned.setResourceLinks(List.of(Map.of("url", "https://example.org/updated-illustration.png")));
+            assertThat(learnerService.learningPlanFingerprint(learnerId, CANONICAL_MATH_LANDSCAPE_ID, blocks))
+                    .isEqualTo(capturedHash);
+            assertThat(learnerService.isLearningPlanCompatible(
+                    learnerId, plan.getCurriculumId(), plan.getLandscapeId(), blocks)).isTrue();
+
+            unrelated.setRequires(List.of(CANONICAL_MATH_ORIENTATION_ID));
+            assertThat(learnerService.learningPlanFingerprint(learnerId, CANONICAL_MATH_LANDSCAPE_ID, blocks))
+                    .isNotEqualTo(capturedHash);
+            assertThat(learnerService.isLearningPlanCompatible(
+                    learnerId, plan.getCurriculumId(), plan.getLandscapeId(), blocks)).isTrue();
+            assertThat(learnerLearningPlanService.getPlan(
+                    learnerId, plan.getLandscapeId(), LocalDate.parse("2026-09-02")).stale()).isFalse();
+            assertThat(plan.getScopeFingerprint()).isEqualTo(capturedHash);
+            assertThat(plan.getBlocksJson()).isEqualTo(storedBlocks);
+            assertThat(plan.getRevision()).isEqualTo(revision);
+        } finally {
+            planned.setTitle(oldTitle);
+            planned.setDescription(oldDescription);
+            planned.setResourceLinks(oldResources);
+            unrelated.setRequires(oldRequires);
+        }
+    }
+
+    @Test
+    void currentPlanCompatibilityRejectsInvalidAtomsFocusAndPrerequisiteOrder() throws Exception {
+        prepareRepresentationLearningPlan();
+        LearnerLearningPlan plan = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdAndLandscapeId(learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        List<com.skillpilot.backend.api.LearnerLearningPlanApi.Block> blocks = objectMapper.readValue(
+                plan.getBlocksJson(), new com.fasterxml.jackson.core.type.TypeReference<>() { });
+        var original = blocks.getFirst();
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, "different-curriculum", plan.getLandscapeId(), blocks)).isFalse();
+        for (List<String> invalidAtoms : List.of(
+                List.of("unknown-goal"), List.of(CANONICAL_REPRESENTATION_CLUSTER_ID),
+                List.of(CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_CHOOSE_REPRESENTATION_ID))) {
+            var changed = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                    original.id(), original.kind(), original.goalId(), original.title(), original.startDate(),
+                    original.endDate(), original.date(), invalidAtoms);
+            assertThat(learnerService.isLearningPlanCompatible(
+                    learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(changed))).isFalse();
+        }
+        var wrongFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), CANONICAL_CHOOSE_REPRESENTATION_ID, original.title(),
+                original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(wrongFocus))).isFalse();
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), blocks)).isTrue();
+    }
+
+    @Test
+    void compatibilityGraphChecksExternalReferencesAndSeparateEdgeDagsWithoutMasteryRequirements() {
+        var blocks = List.of(learningPlanBlock("plan", "2026-09-01", "2026-09-02", List.of("planned")));
+        Map<String, LearningGoal> graph = new HashMap<>();
+        graph.put("planned", goal("planned", List.of("external"), List.of()));
+        graph.put("external", goal("external", List.of(), List.of()));
+        graph.put("unrelated", goal("unrelated", List.of("absent-but-unrelated"), List.of()));
+        assertThatCode(() -> learnerService.validateLearningPlanCompatibilityGraph(blocks, graph)).doesNotThrowAnyException();
+        graph.remove("external");
+        assertThatThrownBy(() -> learnerService.validateLearningPlanCompatibilityGraph(blocks, graph)).isInstanceOf(IllegalStateException.class);
+        graph.put("external", goal("external", List.of("planned"), List.of()));
+        assertThatThrownBy(() -> learnerService.validateLearningPlanCompatibilityGraph(blocks, graph)).isInstanceOf(IllegalStateException.class);
+        graph.put("external", goal("external", List.of(), List.of("nested")));
+        graph.put("nested", goal("nested", List.of(), List.of("external")));
+        assertThatThrownBy(() -> learnerService.validateLearningPlanCompatibilityGraph(blocks, graph)).isInstanceOf(IllegalStateException.class);
+        graph.clear();
+        graph.put("parent", goal("parent", List.of("planned"), List.of("planned")));
+        graph.put("planned", goal("planned", List.of(), List.of()));
+        assertThatCode(() -> learnerService.validateLearningPlanCompatibilityGraph(blocks, graph)).doesNotThrowAnyException();
+        graph.put("parent", goal("parent", List.of(), List.of("planned")));
+        graph.put("planned", goal("planned", List.of("parent"), List.of()));
+        assertThatCode(() -> learnerService.validateLearningPlanCompatibilityGraph(blocks, graph)).doesNotThrowAnyException();
     }
 
     @Test

@@ -3,8 +3,13 @@ import { fileURLToPath } from 'node:url'
 
 import { chromium, type Browser, type Download, type Page } from 'playwright'
 import tailwindcss from '@tailwindcss/vite'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import { startViteTestServer } from './viteTestServer'
+import { CoursePlanLearningBook } from '../src/components/CoursePlanLearningBook'
+import { convertLearningGoal } from '../src/goalTypes'
+import { GOAL_BOOK_PUBLICATION_REGISTRY, goalBookRoute } from '../src/utils/goalBookPublicationRegistry'
 import {
   getTeacherCoursePlanStorageId,
   teacherCoursePlanStoragePrefixForClass,
@@ -395,6 +400,19 @@ const captureLinkedPlanningScreenshots = async (page: Page, prefix: string) => {
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
+for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
+  const selectedGoal = convertLearningGoal(landscape.goals[2] as Parameters<typeof convertLearningGoal>[0], { landscapeId: definition.landscapeId })
+  const outside = { ...selectedGoal, id: 'outside-current-course', title: 'OUTSIDE COURSE MUST NOT RENDER' }
+  const markup = renderToStaticMarkup(createElement(CoursePlanLearningBook, {
+    goals: new Map([[selectedGoal.id, selectedGoal]]),
+    options: [{ goal: outside, count: 1, totalCount: 1, atomicGoalIds: [outside.id] },
+      { goal: selectedGoal, count: 1, totalCount: 1, atomicGoalIds: [selectedGoal.id] }],
+    plannedGoalIds: new Set<string>(), language: 'de', onPrepareGoal: () => { throw new Error('render cannot prepare or save a plan') },
+  }))
+  assert(markup.includes(`${goalBookRoute(definition.bookId)}#goal-${selectedGoal.id}`), 'compatible ordinary atoms link to the exact registered public book route')
+  assert(markup.includes('rel="noopener noreferrer"'), 'public book links keep new-tab navigation isolated')
+  assert(!markup.includes(outside.title), 'the authoritative goal map excludes a foreign picker option')
+}
 const trainerViewSource = await readFile(
   fileURLToPath(new URL('../src/views/TrainerView.tsx', import.meta.url)),
   'utf8',
@@ -490,9 +508,21 @@ try {
 
   const today = localDateString()
   const blockEnd = addDays(today, 13)
-  await page.getByRole('button', { name: 'Ersten Abschnitt planen', exact: true }).click()
+  const selectionPanel = page.getByTestId('course-plan-learning-book')
+  const planBeforeSelection = await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
+  await selectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
+  await selectionPanel.getByRole('searchbox', { name: 'Lernziele durchsuchen' }).fill('Mechanik')
+  await selectionPanel.getByRole('button', { name: /Mechanik.*2 planbare Ziele/u }).click()
+  assert(await selectionPanel.getByTestId('course-plan-goal-description').getByText('Die lernende Person kann mechanik erklären.', { exact: true }).isVisible(),
+    'the current scope-selected cluster description is readable before planning')
+  assert(await selectionPanel.getByRole('link').count() === 0, 'unsupported curriculum fixtures do not invent public book links')
+  await selectionPanel.getByRole('button', { name: 'Als Planabschnitt vorbereiten', exact: true }).click()
+  assertJsonEqual(await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), planBeforeSelection,
+    'reading and preparing a curriculum goal do not write the local plan')
+  await selectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
   const form = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true }).locator('..').locator('..')
   const goalSelect = form.getByRole('combobox', { name: 'Lernziel oder Cluster' })
+  assert(await goalSelect.inputValue() === clusterGoalId, 'the picker prepares the existing section form with the exact authorized cluster')
   const goalOptionValues = await goalSelect.locator('option').evaluateAll((options) => (
     options.map((option) => (option as HTMLOptionElement).value)
   ))
@@ -513,6 +543,13 @@ try {
   assert(await page.getByText('2 Lernziele', { exact: true }).count() >= 1, 'the selected cluster is expanded to two planning units')
 
   const mechanicsBlock = page.getByTestId('course-plan-block').filter({ has: page.getByRole('heading', { name: 'Mechanik', exact: true }) })
+  const timeline = page.getByTestId('course-plan-timeline')
+  await timeline.getByTestId('course-plan-timeline-block').first().focus()
+  await page.keyboard.press('Enter')
+  const timelineForm = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true }).locator('..').locator('..')
+  assert(await timelineForm.getByLabel('Von', { exact: true }).inputValue() === today, 'keyboard activation on a timeline bar opens the existing date form')
+  assert(await timelineForm.getByRole('heading').evaluate((heading) => document.activeElement === heading), 'the timeline edit action focuses the existing form heading')
+  await timelineForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
   assert(await mechanicsBlock.getByRole('checkbox').count() === 0, 'compact planning cards do not expose teaching-coverage controls')
   await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
   assert(await page.getByText('Die Lehrkraft führt', { exact: true }).isVisible(), 'teacher agency remains visible in its dedicated workspace')
@@ -603,10 +640,43 @@ try {
   await secondForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
   await page.getByRole('heading', { name: 'Reserve', exact: true }).waitFor()
 
+  const timelineBars = await timeline.getByTestId('course-plan-timeline-block').evaluateAll((buttons) => buttons.map((button) => {
+    const bar = button.querySelector<HTMLElement>('[aria-hidden="true"]')
+    return { start: (button as HTMLElement).dataset.start, end: (button as HTMLElement).dataset.end,
+      left: bar?.style.left, width: bar?.style.width }
+  }))
+  const learningBar = timelineBars.find((bar) => bar.start === today && bar.end === blockEnd)
+  const bufferBar = timelineBars.find((bar) => bar.start === addDays(today, 14) && bar.end === addDays(today, 18))
+  assert(learningBar && bufferBar && Math.abs(Number.parseFloat(learningBar.width ?? '') / Number.parseFloat(bufferBar.width ?? '') - 14 / 5) < 0.001,
+    'learning and buffer bar widths share one proportional calendar axis')
+  assert(Number.parseFloat(bufferBar.left ?? '') > Number.parseFloat(learningBar.left ?? ''), 'later sections start farther right on the same timeline')
+  await selectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
+  for (const viewport of [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'mobile', width: 390, height: 844 }]) {
+    await page.setViewportSize(viewport)
+    await selectionPanel.scrollIntoViewIfNeeded()
+    const overflow = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth,
+      document: document.documentElement.scrollWidth,
+      planner: document.querySelector('[data-testid="trainer-course-plan-view"]')?.scrollWidth,
+      plannerViewport: document.querySelector('[data-testid="trainer-course-plan-view"]')?.clientWidth }))
+    assert(overflow.document <= overflow.viewport && overflow.planner === overflow.plannerViewport,
+      `the open picker and timeline have no ${viewport.name} viewport overflow: ${JSON.stringify(overflow)}`)
+    await page.screenshot({ path: `/tmp/skillpilot-course-plan-picker-${viewport.name}-20260905.png`, fullPage: true })
+    await timeline.scrollIntoViewIfNeeded()
+    await page.screenshot({ path: `/tmp/skillpilot-course-plan-timeline-${viewport.name}-20260905.png`, fullPage: true })
+  }
+  await page.setViewportSize({ width: 1280, height: 720 })
+  await selectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
+
   await mechanicsBlock.getByRole('button', { name: 'Bearbeiten', exact: true }).click()
   const guardedEditForm = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true }).locator('..').locator('..')
   await guardedEditForm.getByLabel(/^Bezeichnung/u).fill('Noch nicht gespeicherter Abschnittstitel')
   const planBeforeGuardedActions = await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
+  await selectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
+  await selectionPanel.getByRole('button', { name: 'Als Planabschnitt vorbereiten', exact: true }).click()
+  await cancelLocalDraftReplacement(page)
+  assert(await guardedEditForm.getByLabel(/^Bezeichnung/u).inputValue() === 'Noch nicht gespeicherter Abschnittstitel',
+    'preparing a book selection cannot overwrite an active unsaved section draft')
+  await selectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
   await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   await cancelLocalDraftReplacement(page)
   assert(await guardedEditForm.getByLabel(/^Bezeichnung/u).inputValue() === 'Noch nicht gespeicherter Abschnittstitel', 'cancelling a new-section action keeps the existing unsaved editor')
@@ -1059,6 +1129,15 @@ try {
   await personalizedPage.goto(`${server.baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
   await personalizedPage.getByRole('heading', { name: 'Planung für Mathematik Einzelbetreuung', exact: true }).waitFor()
   await planningScopeRequest
+  const pendingSelectionPanel = personalizedPage.getByTestId('course-plan-learning-book')
+  await pendingSelectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
+  assert(await pendingSelectionPanel.getByTestId('course-plan-unplanned-goals').textContent() === 'Die Planzuordnung ist derzeit nicht verlässlich auswertbar.',
+    'pending authoritative evaluation reports unknown assignments, not an invented unscheduled count')
+  assert(await pendingSelectionPanel.getByRole('checkbox', { name: 'Mit noch nicht eingeplanten Zielen', exact: true }).isDisabled(),
+    'the unscheduled-only filter is disabled while assignments are unknown')
+  assert(await pendingSelectionPanel.getByRole('list', { name: 'Planbare Lernziele' }).getByRole('button').count() > 0,
+    'an unavailable assignment evaluation does not hide the authoritative selectable goals')
+  await pendingSelectionPanel.getByText('Lernziele auswählen', { exact: true }).click()
   await openPlanActions(personalizedPage)
   const earlyPublishButton = personalizedPage.getByRole('button', {
     name: 'Nur dieses Fach aktualisieren',

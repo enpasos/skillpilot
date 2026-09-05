@@ -57,6 +57,8 @@ import {
 } from '../utils/learnerLearningPlanReadModel'
 import { PacingGauge, type PacingGaugeStatus } from './PacingGauge'
 import { ConfirmModal } from './ConfirmModal'
+import { CoursePlanLearningBook } from './CoursePlanLearningBook'
+import { CoursePlanTimeline } from './CoursePlanTimeline'
 
 type CoursePlanBlockKind = TeacherCoursePlanBlock['kind']
 export type CoursePlanSection = 'plan' | 'preview' | 'teaching'
@@ -383,6 +385,9 @@ export const CoursePlanPilotView = ({
         return {
           goal,
           totalCount: scopeAtomicGoalIds.length,
+          atomicGoalIds: openGoalIds
+            ? scopeAtomicGoalIds.filter((goalId) => openGoalIds.has(goalId))
+            : scopeAtomicGoalIds,
           count: openGoalIds
             ? scopeAtomicGoalIds.filter((goalId) => openGoalIds.has(goalId)).length
             : scopeAtomicGoalIds.length,
@@ -394,6 +399,9 @@ export const CoursePlanPilotView = ({
         || left.goal.title.localeCompare(right.goal.title, language === 'de' ? 'de-DE' : 'en-GB')
       ))
   }, [goals, landscapeBaseline, language, visibleChildrenByParent])
+  const plannedGoalIds = useMemo(() => evaluation?.quality.status === 'complete' && evaluation.metrics
+    ? new Set(evaluation.assignments.flatMap((assignment) => assignment.atomicGoalIds))
+    : null, [evaluation])
 
   const goalOptions = useMemo(() => {
     const normalizedSearch = goalSearch.trim().toLocaleLowerCase(language === 'de' ? 'de-DE' : 'en-GB')
@@ -729,18 +737,21 @@ export const CoursePlanPilotView = ({
     revise(plan.blocks, planLabelDraft.trim())
   }
 
-  const openNewBlock = () => guardDraftReplacement(() => {
+  const prepareNewBlock = (goalId = '') => guardDraftReplacement(() => {
+    if (goalId && !plannableGoalOptions.some((option) => option.goal.id === goalId && option.count > 0)) return
     changeSection('plan')
     cancelPendingBlockSave()
-    const nextDraft = createDraft(asOf)
+    const initialDraft = createDraft(asOf)
+    const nextDraft = { ...initialDraft, goalId }
     setDraft(nextDraft)
-    setDraftBaseline(serializeDraft(nextDraft))
+    setDraftBaseline(serializeDraft(initialDraft))
     setEditingBlockId(null)
     setFormError('')
     setGoalSearch('')
     setPendingDeleteId(null)
     setShowBlockForm(true)
   })
+  const openNewBlock = () => prepareNewBlock()
 
   const openEditBlock = (block: TeacherCoursePlanBlock) => guardDraftReplacement(() => {
     changeSection('plan')
@@ -1378,6 +1389,13 @@ export const CoursePlanPilotView = ({
           ))}
         </nav>
         <div id="course-plan-section-plan" hidden={section !== 'plan'} className="space-y-4">
+        <CoursePlanLearningBook options={plannableGoalOptions} goals={goals} plannedGoalIds={plannedGoalIds} language={language} onPrepareGoal={prepareNewBlock} />
+        {hasPlanBlocks && <CoursePlanTimeline blocks={plan.blocks} goals={goals} language={language} onEditBlock={openEditBlock} />}
+        {evaluation?.quality.issues.some((issue) => issue.code === 'CP-GOAL-PREREQUISITE-SCHEDULE') && (
+          <p role="alert" className="rounded-lg border border-amber-300 p-3 text-sm text-amber-900 dark:text-amber-100">{language === 'de'
+            ? 'Voraussetzungen und Zeiträume passen noch nicht zusammen. Prüfe die betroffenen Abschnitte; dies ist keine Aussage zum Lernstand.'
+            : 'Prerequisites and planned periods do not align yet. Review the affected sections; this does not describe mastery.'}</p>
+        )}
         {calculationUnavailable && hasPlanBlocks && (
           <section className="rounded-2xl border border-rose-300 bg-rose-50 p-5 text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100" role="alert">
             <div className="flex items-start gap-3">

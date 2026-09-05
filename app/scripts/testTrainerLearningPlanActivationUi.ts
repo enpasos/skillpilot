@@ -126,6 +126,11 @@ try {
     })],
     [physicsLandscapeId, null],
   ])
+  const originalMathPlan = serverPlans.get(mathLandscapeId)!
+  serverPlans.set(mathLandscapeId, {
+    ...originalMathPlan,
+    blocks: originalMathPlan.blocks.map((block) => ({ ...block, title: 'Früherer Curriculumtitel' })),
+  })
 
   const fulfillPlan = async (route: Route, landscapeId: string) => {
     const plan = serverPlans.get(landscapeId)
@@ -259,7 +264,7 @@ try {
   }
   assert(
     await subjectOverview.getByText('Aktiv für den Schüler', { exact: true }).count() === 1,
-    'the matching Mathematics copy is persistently recognized as current',
+    'Mathematics stays current after a curriculum fallback-title change without a teacher plan edit',
   )
   assert(
     await page.getByText('Bereit zur Aktivierung', { exact: true }).count() === 1,
@@ -424,7 +429,9 @@ try {
   assert(physicsPlan, 'the successful activation created the Physics cockpit plan')
   serverPlans.set(physicsLandscapeId, { ...physicsPlan, stale: true })
   await page.getByRole('button', { name: 'Erneut prüfen', exact: true }).click()
-  await page.getByText('Änderungen noch nicht übernommen', { exact: true }).waitFor()
+  await page.getByText('Curriculum geändert – Plan prüfen', { exact: true }).waitFor()
+  assert(await page.getByText('Änderungen noch nicht übernommen', { exact: true }).count() === 0,
+    'curriculum staleness does not falsely claim an unapplied teacher edit')
   assert(
     await page.getByRole('button', { name: /^(Für Schüler aktivieren|Änderungen übernehmen)$/u, exact: true }).isEnabled(),
     'a replayable stale server-only plan stays visible and is included for atomic server revalidation',
@@ -440,7 +447,7 @@ try {
     .click()
   await page.getByRole('alert').filter({ hasText: 'konnte nicht sicher bestätigt werden' }).waitFor()
   assert(
-    await page.getByText('Änderungen noch nicht übernommen', { exact: true }).count() === 1,
+    await page.getByText('Curriculum geändert – Plan prüfen', { exact: true }).count() === 1,
     'an incoherent success response does not produce a partial or verified-success status',
   )
 
