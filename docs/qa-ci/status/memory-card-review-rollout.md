@@ -8,7 +8,7 @@
 > Source of truth: `docs/qa-ci/status/curriculum-quality-status.json`
 > Source of truth: `curricula/DE/Gymnasium/canonical/`
 
-Generated from `docs/qa-ci/status/curriculum-quality-status.json`; status snapshot generated at 2026-06-01T21:13:21.801Z.
+Generated from `docs/qa-ci/status/curriculum-quality-status.json`; status snapshot generated at 2026-09-05T04:20:39.737Z.
 
 This report is a reproducible triage view, not a semantic decision ledger. It helps decide which curricula need real CQR-302 work next.
 
@@ -40,13 +40,13 @@ Only configured memory-card reviews are enforced by CI and the subject export re
 
 | Curriculum | Maturity | CQR-302 | Review goals | Heuristic candidates | Candidate share | Lane | Memory nodes | Primary cards | Recommendation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Mathematik (Gymnasium, DE) | M6 | pass | 750 | 180 | 24% | M6 halten | 6 | 64 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
-| Physik (Gymnasium, DE) | M6 | pass | 425 | 78 | 18% | M6 halten | 5 | 148 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Mathematik (Gymnasium, DE) | M6 | pass | 795 | 195 | 25% | M6 halten | 6 | 64 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Physik (Gymnasium, DE) | M6 | pass | 464 | 84 | 18% | M6 halten | 5 | 148 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Chemie (Gymnasium, DE) | M6 | pass | 376 | 62 | 16% | M6 halten | 6 | 55 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | pass | 413 | 49 | 12% | M6 halten | 5 | 62 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Biologie (Gymnasium, DE) | M6 | pass | 355 | 37 | 10% | M6 halten | 1 | 17 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Geschichte (Gymnasium, DE) | M6 | pass | 156 | 36 | 23% | M6 halten | 5 | 57 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M6 | pass | 303 | 30 | 10% | M6 halten | 5 | 51 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M2 | pass | 303 | 30 | 10% | M6 halten | 5 | 51 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Deutsch (Gymnasium, DE) | M6 | pass | 268 | 20 | 7% | M6 halten | 5 | 48 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Informatik (Gymnasium, DE) | M6 | pass | 207 | 17 | 8% | M6 halten | 5 | 28 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 | Latein (Gymnasium, DE) | M6 | pass | 115 | 5 | 4% | M6 halten | 5 | 34 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
@@ -55,11 +55,11 @@ Only configured memory-card reviews are enforced by CI and the subject export re
 
 ### Mathematik (Gymnasium, DE)
 
-Natürliche Zahlen ordnen und vergleichen; Lagebeziehungen geometrischer Objekte beschreiben; Winkel messen, zeichnen und fachsprachlich beschreiben; Natürliche und ganze Zahlen multiplizieren und dividieren; Natürliche Zahlen als unbegrenzt fortsetzbar verstehen und große Zahlbezeichnungen verwenden
+Natürliche Zahlen ordnen und vergleichen; Vier Grundrechenarten mit natürlichen Zahlen in Sachsituationen auswählen und prüfen; Parallele und senkrechte Lagebeziehungen erkennen und begründen; Winkelzeichnungen und Gradmaße ineinander überführen; Vierecke anhand ihrer Eigenschaften einordnen und begründen
 
 ### Physik (Gymnasium, DE)
 
-Temperatur und Wärme unterscheiden; Entstehung und Zerlegung von Farben erklären; Schallquellen und Schallempfänger beschreiben; Kern und Hülle des Atoms qualitativ beschreiben; Radioaktive Strahlung nachweisen und Wirkungen einordnen
+Tonhöhe, Lautstärke und Geräusche unterscheiden; Nuklidschreibweise deuten und Isotope unterscheiden; Kern und Hülle des Atoms qualitativ beschreiben; Lichtwege mit dem Strahlenmodell darstellen und vorhersagen; Reflexionsgesetz experimentell prüfen
 
 ### Chemie (Gymnasium, DE)
 

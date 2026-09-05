@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b032r-q3-em-waves-b-run-001",
+  "campaignId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-b",
+  "roundId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:bd747826848bb4a632f429959da3f0c70613cadee2185db839f9b6a2da73f16d",
+  "bundleFingerprint": "sha256:3bb109193d062409a322fbe1753718d7bfbb93b2f01623efea6153888d4600fe",
+  "bookDigest": "sha256:23b735b0670342b16a7e0b5e9d1c4c5487d3d6f006b64e34050fc1bf8f517724",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+    "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+    "6270e558-d657-5363-a6b2-e49a032a453b",
+    "91683676-01cf-5003-80fa-a04d043b4e61",
+    "4c919da9-157a-5a14-a725-f7343975c9ab",
+    "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+    "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:bd747826848bb4a632f429959da3f0c70613cadee2185db839f9b6a2da73f16d"
+    }
+  ],
+  "startedAt": "2026-09-04T22:51:00.000Z",
+  "completedAt": "2026-09-04T22:56:26.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:b7f23ad037f8e514d90e8c49691c640a9ff62b26d94c704a2b5cbf378ff82732",
+  "toolchainVersion": "goal-description-review-v1"
+}

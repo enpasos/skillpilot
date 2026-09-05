@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b028-current-without-f179-v1",
+  "reviewedAt": "2026-09-02T16:37:46.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-028-positive-understanding-candidate-author-2026-09-02",
+  "goals": [
+    {
+      "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "reason": "DE: Das Profil operationalisiert ein lineares Gleichungssystem als gemeinsame Bedingung an ein geordnetes Zahlenpaar und verbindet algebraische Lösungsschritte mit der Lage zweier Geraden. Es verlangt eine fachsprachlich begründete Unterscheidung zwischen genau einer, keiner und unendlich vielen Lösungen. Zwei unabhängige Fälle wechseln zwischen einem eindeutig lösbaren System und einer Parameterfamilie mit identischen oder parallelen Geraden; die gebundene Visualisierung ist Lernunterstützung, aber keine Antwortvorlage. EN: The profile operationalizes a system of linear equations as two simultaneous conditions on an ordered pair and connects algebraic solution steps with the relative positions of two lines. It requires a technically justified distinction among exactly one, no, and infinitely many solutions. Two independent cases vary between a uniquely solvable system and a parameter family with coincident or parallel lines; the bound visualization is learning support, not an answer template.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "common-solution-across-equations-and-representations",
+            "essentialUnderstandingDe": "Eine Lösung eines linearen Gleichungssystems mit zwei Variablen ist ein geordnetes Zahlenpaar, das beide Gleichungen gleichzeitig erfüllt. Im Koordinatensystem entspricht es einem gemeinsamen Punkt der zugehörigen Geraden; algebraische und grafische Verfahren beschreiben deshalb dieselbe Lösungsmenge.",
+            "essentialUnderstandingEn": "A solution of a system of two linear equations is an ordered pair that satisfies both equations simultaneously. In the coordinate plane it corresponds to a common point of the associated lines, so algebraic and graphical methods describe the same solution set.",
+            "observablePerformanceDe": "Die lernende Person löst ein unbekanntes System mit einem passenden algebraischen Verfahren, prüft das erhaltene Zahlenpaar in beiden Ausgangsgleichungen und konstruiert oder deutet die beiden Geraden so, dass der gemeinsame Punkt mit dem algebraischen Ergebnis übereinstimmt.",
+            "observablePerformanceEn": "The learner solves an unfamiliar system using a suitable algebraic method, checks the resulting ordered pair in both original equations, and constructs or interprets the two lines so that their common point agrees with the algebraic result."
+          },
+          {
+            "id": "solution-multiplicity-from-line-relation-and-algebra",
+            "essentialUnderstandingDe": "Zwei nicht parallele Geraden besitzen genau einen Schnittpunkt, verschiedene parallele Geraden keinen und identische Geraden unendlich viele gemeinsame Punkte. Algebraisch zeigen sich diese Fälle als eindeutige Variablenwerte, als Widerspruch oder als allgemeingültige Aussage.",
+            "essentialUnderstandingEn": "Two non-parallel lines have exactly one intersection, distinct parallel lines have none, and coincident lines have infinitely many common points. Algebraically, these cases appear as unique variable values, a contradiction, or an identity.",
+            "observablePerformanceDe": "Die lernende Person klassifiziert neue Systeme als eindeutig lösbar, unlösbar oder unterbestimmt, belegt die Einordnung sowohl durch eine algebraische Reduktion als auch durch die Geradenlage und verwendet die Begriffe Lösungsmenge, Schnittpunkt, parallel und identisch fachlich korrekt.",
+            "observablePerformanceEn": "The learner classifies new systems as uniquely solvable, inconsistent, or underdetermined, supports the classification through both algebraic reduction and the relative positions of the lines, and uses the terms solution set, intersection, parallel, and coincident correctly."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "common-solution-across-equations-and-representations",
+            "solution-multiplicity-from-line-relation-and-algebra"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solution-multiplicity",
+            "textDe": "Genau ein Schnittpunkt, verschiedene parallele Geraden oder identische Geraden",
+            "textEn": "Exactly one intersection, distinct parallel lines, or coincident lines"
+          },
+          {
+            "id": "given-representation",
+            "textDe": "Gleichungen in unterschiedlicher Form, unbeschriftete Geraden oder eine Parameterfamilie",
+            "textEn": "Equations in different forms, unlabelled lines, or a parameter family"
+          },
+          {
+            "id": "direction-of-translation",
+            "textDe": "Vom Gleichungssystem zum Graphen oder von der Geradenlage zur algebraischen Lösungsmenge",
+            "textEn": "From the system to its graph or from the line relation to the algebraic solution set"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unique-solution-two-representations",
+            "taskDemandDe": "Löse das System 2x + y = 7 und x − y = 2 algebraisch. Prüfe das Zahlenpaar in beiden Gleichungen und stelle anschließend beide Geraden in einem selbst gewählten Koordinatensystem dar. Erläutere, wie die grafische und die rechnerische Lösung zusammenhängen.",
+            "taskDemandEn": "Solve the system 2x + y = 7 and x − y = 2 algebraically. Check the ordered pair in both equations and then represent both lines in a coordinate system of your own construction. Explain how the graphical and algebraic solutions are related.",
+            "expectedPerformanceDe": "Die lernende Person erhält (3|1), bestätigt 2·3 + 1 = 7 und 3 − 1 = 2 und zeichnet zwei nicht parallele Geraden, die sich bei (3|1) schneiden. Sie bezeichnet genau dieses gemeinsame Zahlenpaar beziehungsweise diesen Schnittpunkt als die eine Lösung des Systems.",
+            "expectedPerformanceEn": "The learner obtains (3, 1), verifies 2·3 + 1 = 7 and 3 − 1 = 2, and draws two non-parallel lines intersecting at (3, 1). The learner identifies precisely this common ordered pair or intersection as the single solution of the system.",
+            "understandingFocusDe": "Der Grundfall prüft die Gleichwertigkeit der algebraischen und grafischen Lösungsdarstellung sowie die simultane Erfüllung beider Gleichungen.",
+            "understandingFocusEn": "The direct case tests the equivalence of algebraic and graphical solution representations and simultaneous satisfaction of both equations."
+          },
+          {
+            "id": "parameter-controls-none-or-infinitely-many",
+            "taskDemandDe": "Untersuche ohne fertige Zeichnung das System y = 2x + 1 und 2y = 4x + k für verschiedene Werte von k. Bestimme, wann keine und wann unendlich viele Lösungen vorliegen, und begründe beide Fälle algebraisch und mit der Lage der Geraden.",
+            "taskDemandEn": "Without a supplied graph, investigate the system y = 2x + 1 and 2y = 4x + k for different values of k. Determine when there are no solutions and when there are infinitely many, and justify both cases algebraically and through the positions of the lines.",
+            "expectedPerformanceDe": "Die lernende Person setzt die erste Gleichung in die zweite ein und erhält 4x + 2 = 4x + k. Für k = 2 erkennt sie eine allgemeingültige Aussage und identische Geraden mit unendlich vielen Lösungen; für k ≠ 2 entsteht ein Widerspruch und zwei verschiedene parallele Geraden ohne Lösung.",
+            "expectedPerformanceEn": "The learner substitutes the first equation into the second and obtains 4x + 2 = 4x + k. For k = 2, the learner recognizes an identity and coincident lines with infinitely many solutions; for k ≠ 2, there is a contradiction and two distinct parallel lines with no solution.",
+            "understandingFocusDe": "Der Parametertransfer prüft, ob Widerspruch und Identität als algebraische Gegenstücke verschiedener paralleler beziehungsweise identischer Geraden verstanden werden.",
+            "understandingFocusEn": "The parameter transfer tests whether contradiction and identity are understood as the algebraic counterparts of distinct parallel and coincident lines."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "15512e77-31e3-5222-8a6b-84791618e5ce",
+      "reason": "DE: Das Profil bindet Addition und Subtraktion von Bruchtermen an äquivalente Erweiterungen auf einen aus faktorisierten Nennern gewonnenen gemeinsamen Nenner. Es verlangt begründete Zählerbildung, korrekte Vorzeichenführung und Erhaltung der ursprünglichen Definitionsbedingungen. Zwei unabhängige Fälle wechseln zwischen verschiedenen linearen Nennern und einer Subtraktion mit bereits enthaltenem Produktnenner; das Bild liefert keine Leistungsvorlage. EN: The profile binds addition and subtraction of fractional expressions to equivalent expansions to a common denominator obtained from factored denominators. It requires justified numerator construction, correct sign handling, and preservation of the original domain restrictions. Two independent cases vary between distinct linear denominators and a subtraction involving an already combined product denominator; the image does not provide a performance template.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "common-denominator-from-factor-structure",
+            "essentialUnderstandingDe": "Bruchterme können nur über gleichnamige Nenner direkt addiert oder subtrahiert werden. Ein geeigneter Hauptnenner enthält jeden benötigten Nennerfaktor in ausreichender Vielfachheit; das Erweitern multipliziert Zähler und Nenner mit demselben auf der gemeinsamen Definitionsmenge von null verschiedenen Faktor und erhält dadurch den Termwert.",
+            "essentialUnderstandingEn": "Fractional expressions can be added or subtracted directly only after their denominators have been made the same. A suitable common denominator contains every required denominator factor with sufficient multiplicity; expanding multiplies numerator and denominator by the same nonzero factor on the common domain and therefore preserves the expression's value.",
+            "observablePerformanceDe": "Die lernende Person faktorisiert die Nenner eines neuen Terms, bestimmt einen geeigneten Hauptnenner, gibt die ursprünglichen ausgeschlossenen Werte an und begründet für jeden Summanden den benötigten Erweiterungsfaktor.",
+            "observablePerformanceEn": "For a new expression, the learner factors the denominators, determines a suitable common denominator, states the originally excluded values, and justifies the expansion factor required for each term."
+          },
+          {
+            "id": "combine-numerators-and-preserve-equivalence",
+            "essentialUnderstandingDe": "Nach dem Erweitern werden nur die Zähler unter dem gemeinsamen Nenner zusammengefasst; bei einer Subtraktion wirkt das Minuszeichen auf den gesamten folgenden Zähler. Anschließendes Vereinfachen darf die auf der ursprünglichen gemeinsamen Definitionsmenge geltende Gleichwertigkeit nicht verändern.",
+            "essentialUnderstandingEn": "After expansion, only the numerators are combined over the common denominator; in a subtraction, the minus sign applies to the entire following numerator. Subsequent simplification must preserve equivalence on the original common domain.",
+            "observablePerformanceDe": "Die lernende Person führt Addition oder Subtraktion mit sichtbarer Klammer- und Vorzeichenstruktur durch, vereinfacht den resultierenden Zähler und überprüft die Gleichwertigkeit für einen zulässigen Wert, ohne ausgeschlossene Werte durch eine Kürzung wieder aufzunehmen.",
+            "observablePerformanceEn": "The learner performs the addition or subtraction with explicit parentheses and sign structure, simplifies the resulting numerator, and checks equivalence at an admissible value without reintroducing excluded values through cancellation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "common-denominator-from-factor-structure",
+            "combine-numerators-and-preserve-equivalence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "denominator-factor-overlap",
+            "textDe": "Verschiedene lineare Faktoren oder ein Nenner, der die Faktoren eines anderen bereits enthält",
+            "textEn": "Distinct linear factors or one denominator that already contains the factors of another"
+          },
+          {
+            "id": "operation-and-sign-structure",
+            "textDe": "Addition oder Subtraktion mit ein- oder mehrgliedrigem Zähler",
+            "textEn": "Addition or subtraction with a single-term or multi-term numerator"
+          },
+          {
+            "id": "simplification-effect",
+            "textDe": "Ein nicht weiter kürzbarer Ergebniszähler oder eine weitgehende Zählerkürzung bei unveränderter Definitionsmenge",
+            "textEn": "A numerator that cannot be reduced further or extensive numerator simplification with the original domain retained"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sum-with-two-distinct-linear-denominators",
+            "taskDemandDe": "Addiere 2/(x − 1) + 3/(x + 1). Bestimme zuerst die gemeinsame Definitionsmenge und einen geeigneten Hauptnenner, begründe beide Erweiterungen und prüfe das vereinfachte Ergebnis an einem zulässigen Wert.",
+            "taskDemandEn": "Add 2/(x − 1) + 3/(x + 1). First determine the common domain and a suitable common denominator, justify both expansions, and check the simplified result at an admissible value.",
+            "expectedPerformanceDe": "Die lernende Person nennt x ≠ −1 und x ≠ 1, verwendet (x − 1)(x + 1), bildet 2(x + 1) + 3(x − 1) und erhält (5x − 1)/(x² − 1). Eine Einsetzung wie x = 2 bestätigt denselben Wert für Ausgangs- und Ergebnisform.",
+            "expectedPerformanceEn": "The learner states x ≠ −1 and x ≠ 1, uses (x − 1)(x + 1), forms 2(x + 1) + 3(x − 1), and obtains (5x − 1)/(x² − 1). A substitution such as x = 2 confirms the same value for the original and resulting forms.",
+            "understandingFocusDe": "Der Grundfall prüft Hauptnennerwahl, äquivalentes Erweitern, Zähleraddition und Definitionsmenge als zusammenhängende Begründung.",
+            "understandingFocusEn": "The direct case tests common-denominator selection, equivalent expansion, numerator addition, and domain as one coherent justification."
+          },
+          {
+            "id": "subtraction-with-nested-product-denominator",
+            "taskDemandDe": "Vereinfache 1/(x − 2) − (x + 1)/(x² − 4). Faktorisiere vor der Hauptnennerwahl, kennzeichne die Definitionsmenge und erkläre, wie das Minuszeichen auf den zweiten Zähler wirkt. Kontrolliere das Ergebnis unabhängig.",
+            "taskDemandEn": "Simplify 1/(x − 2) − (x + 1)/(x² − 4). Factor before choosing the common denominator, state the domain, and explain how the minus sign applies to the second numerator. Check the result independently.",
+            "expectedPerformanceDe": "Die lernende Person zerlegt x² − 4 = (x − 2)(x + 2), schließt x = ±2 aus und erweitert den ersten Bruch mit x + 2. Sie bildet [(x + 2) − (x + 1)]/(x² − 4) = 1/(x² − 4), behält beide ausgeschlossenen Werte bei und bestätigt die Gleichwertigkeit für einen zulässigen Wert.",
+            "expectedPerformanceEn": "The learner factors x² − 4 = (x − 2)(x + 2), excludes x = ±2, and expands the first fraction by x + 2. The learner forms [(x + 2) − (x + 1)]/(x² − 4) = 1/(x² − 4), retains both excluded values, and confirms equivalence at an admissible value.",
+            "understandingFocusDe": "Der Transfer verändert Faktorüberlappung und Vorzeichenstruktur und zeigt, ob Vereinfachung und ursprüngliche Definitionsmenge konsistent bleiben.",
+            "understandingFocusEn": "The transfer changes factor overlap and sign structure and reveals whether simplification and the original domain remain consistent."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "76478e47-5ff9-5de1-b601-5e6e436ad855",
+      "reason": "DE: Das Profil prüft Multiplikation und Division von Bruchtermen über Faktorstruktur statt über optische Kürzmuster. Für Division muss der Kehrwertschritt einschließlich der zusätzlichen Bedingung, dass der Divisor nicht null ist, begründet werden; alle ursprünglichen Definitionsbedingungen bleiben auch nach vollständiger Kürzung erhalten. Zwei unabhängige Fälle wechseln Operation, Faktorüberlappung und Ergebnisform. EN: The profile tests multiplication and division of fractional expressions through factor structure rather than visual cancellation patterns. For division, the reciprocal step must be justified together with the additional condition that the divisor is nonzero; all original domain restrictions remain even after complete cancellation. Two independent cases vary the operation, factor overlap, and form of the result.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "factorwise-product-and-valid-cancellation",
+            "essentialUnderstandingDe": "Beim Multiplizieren von Bruchtermen werden Zählerfaktoren und Nennerfaktoren zu einem Produkt verbunden. Gekürzt werden dürfen gemeinsame, von null verschiedene Faktoren des gesamten Zählers und Nenners, nicht einzelne Summanden innerhalb einer Summe; Faktorisieren macht diese Struktur sichtbar.",
+            "essentialUnderstandingEn": "When multiplying fractional expressions, numerator factors and denominator factors are combined into products. Cancellation is valid only for common nonzero factors of the entire numerator and denominator, not for individual terms within a sum; factoring exposes this structure.",
+            "observablePerformanceDe": "Die lernende Person faktorisiert einen neuen Produktterm vollständig, kennzeichnet gemeinsame Faktoren, kürzt nur auf Produktebene und begründet das vereinfachte Ergebnis durch die erhaltene Faktorstruktur.",
+            "observablePerformanceEn": "The learner fully factors a new product expression, identifies common factors, cancels only at the product level, and justifies the simplified result through the preserved factor structure."
+          },
+          {
+            "id": "division-reciprocal-and-original-domain",
+            "essentialUnderstandingDe": "Durch einen Bruchterm zu dividieren bedeutet, mit seinem Kehrwert zu multiplizieren, sofern der Divisor definiert und nicht null ist. Die zulässigen Werte werden aus allen Nennern des Ausgangsterms und zusätzlich aus den Nullstellen des Divisorzählers bestimmt; Kürzen entfernt diese ursprünglichen Ausschlüsse nicht.",
+            "essentialUnderstandingEn": "Dividing by a fractional expression means multiplying by its reciprocal, provided the divisor is defined and nonzero. Admissible values are determined by all denominators in the original expression and additionally by the zeros of the divisor's numerator; cancellation does not remove those original exclusions.",
+            "observablePerformanceDe": "Die lernende Person gibt vor der Umformung sämtliche ausgeschlossenen Werte an, begründet den Kehrwertschritt, vereinfacht faktorweise und prüft an ausgewählten zulässigen sowie ausgeschlossenen Werten, dass Ergebnisform und ursprüngliche Definitionsmenge gemeinsam benötigt werden.",
+            "observablePerformanceEn": "Before transforming, the learner states all excluded values, justifies the reciprocal step, simplifies factor by factor, and uses selected admissible and excluded values to show that both the resulting expression and the original domain are required."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "factorwise-product-and-valid-cancellation",
+            "division-reciprocal-and-original-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "operation",
+            "textDe": "Produkt zweier Bruchterme oder Quotient mit Kehrwertbildung",
+            "textEn": "A product of two fractional expressions or a quotient requiring a reciprocal"
+          },
+          {
+            "id": "factor-source",
+            "textDe": "Lineare Faktoren aus Differenz von Quadraten, gemeinsamen Monomen oder bereits faktorisierten Termen",
+            "textEn": "Linear factors from a difference of squares, common monomials, or already factored expressions"
+          },
+          {
+            "id": "post-cancellation-form",
+            "textDe": "Verbleibender Bruchterm oder vollständige Kürzung zu einer Konstanten mit weiterhin ausgeschlossenen Werten",
+            "textEn": "A remaining fractional expression or complete cancellation to a constant with excluded values retained"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "multiply-factor-and-retain-holes",
+            "taskDemandDe": "Vereinfache [(x² − 9)/(x² − 4)] · [(x + 2)/(x − 3)]. Bestimme die Definitionsmenge aus dem Ausgangsterm, faktorisiere und begründe jede Kürzung. Gib Ergebnis und ursprüngliche Ausschlüsse gemeinsam an.",
+            "taskDemandEn": "Simplify [(x² − 9)/(x² − 4)] · [(x + 2)/(x − 3)]. Determine the domain from the original expression, factor, and justify each cancellation. State the result together with the original exclusions.",
+            "expectedPerformanceDe": "Die lernende Person schließt x = −2, 2 und 3 aus, faktorisiert x² − 9 und x² − 4 und kürzt die Faktoren x − 3 sowie x + 2. Sie erhält (x + 3)/(x − 2) für x ∉ {−2, 2, 3} und erklärt, dass die gekürzten Faktoren bei den ausgeschlossenen Werten nicht durch null geteilt werden durften.",
+            "expectedPerformanceEn": "The learner excludes x = −2, 2, and 3, factors x² − 9 and x² − 4, and cancels the factors x − 3 and x + 2. The learner obtains (x + 3)/(x − 2) for x ∉ {−2, 2, 3} and explains that the cancelled factors could not be divided by zero at the excluded values.",
+            "understandingFocusDe": "Der Produktfall prüft Faktorisierung, zulässiges Kürzen und das Fortbestehen von Definitionslücken trotz vereinfachter Ergebnisform.",
+            "understandingFocusEn": "The product case tests factoring, valid cancellation, and persistence of domain holes despite a simplified resulting form."
+          },
+          {
+            "id": "divide-to-one-with-extra-divisor-exclusion",
+            "taskDemandDe": "Vereinfache [(x² − 1)/(x² − x)] : [(x + 1)/x]. Ermittle alle Bedingungen, unter denen der Ausgangsterm definiert und der Divisor nicht null ist, und überprüfe, warum das vereinfachte Ergebnis allein diese Bedingungen nicht zeigt.",
+            "taskDemandEn": "Simplify [(x² − 1)/(x² − x)] ÷ [(x + 1)/x]. Determine all conditions under which the original expression is defined and the divisor is nonzero, and verify why the simplified result alone does not display those conditions.",
+            "expectedPerformanceDe": "Die lernende Person schließt aus den Nennern x = 0 und x = 1 sowie wegen des Divisors x = −1 aus. Nach Faktorisierung und Multiplikation mit x/(x + 1) erhält sie 1 für x ∉ {−1, 0, 1}; sie zeigt, dass diese drei Werte im Ausgangsterm unzulässig bleiben, obwohl die Ergebnisform 1 überall definiert wäre.",
+            "expectedPerformanceEn": "The learner excludes x = 0 and x = 1 from the denominators and x = −1 because the divisor would be zero. After factoring and multiplying by x/(x + 1), the learner obtains 1 for x ∉ {−1, 0, 1}; the learner shows that these three values remain inadmissible in the original expression although the resulting expression 1 would be defined everywhere.",
+            "understandingFocusDe": "Der Divisionsfall prüft die zusätzliche Nichtnullbedingung des Divisors und trennt algebraische Ergebnisform von der Definitionsmenge des Ausgangsterms.",
+            "understandingFocusEn": "The division case tests the divisor's additional nonzero condition and distinguishes the algebraic result from the domain of the original expression."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "reason": "DE: Das Profil verbindet das rechnerische Lösen einer Bruchgleichung mit ihrer gemeinsamen Definitionsmenge und mit der Gleichheit der Funktionswerte beider Gleichungsseiten. Es verlangt, dass Kandidaten an den Ausgangstermen geprüft und Lösungen als x-Koordinaten tatsächlicher Schnittpunkte gedeutet werden. Zwei unabhängige Fälle wechseln zwischen einem zulässigen Schnittpunkt und einem ausschließlich ausgeschlossenen algebraischen Kandidaten; die vorhandene Grafik bleibt Lernhilfe statt Antwortvorlage. EN: The profile connects algebraic solution of a fractional equation with its common domain and with equality of the function values represented by its two sides. It requires candidates to be checked in the original expressions and solutions to be interpreted as the x-coordinates of actual intersections. Two independent cases vary between an admissible intersection and an exclusively excluded algebraic candidate; the existing graphic remains learning support rather than an answer template.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "solve-equivalently-on-common-domain",
+            "essentialUnderstandingDe": "Eine Bruchgleichung ist nur auf der gemeinsamen Definitionsmenge beider Gleichungsseiten gestellt. Das Multiplizieren mit einem Hauptnenner beseitigt Nenner nur für Werte, bei denen dieser Faktor nicht null ist; deshalb werden die Definitionsbedingungen vorab festgehalten und alle algebraischen Kandidaten in den Ausgangstermen geprüft.",
+            "essentialUnderstandingEn": "A fractional equation is posed only on the common domain of its two sides. Multiplying by a common denominator removes denominators only for values at which that factor is nonzero; therefore domain restrictions are recorded first and every algebraic candidate is checked in the original expressions.",
+            "observablePerformanceDe": "Die lernende Person bestimmt für eine neue Bruchgleichung die gemeinsame Definitionsmenge, führt begründete äquivalente Umformungen innerhalb dieser Menge aus und entscheidet durch Rückprüfung, welche Kandidaten tatsächlich zur Lösungsmenge gehören.",
+            "observablePerformanceEn": "For a new fractional equation, the learner determines the common domain, performs justified equivalent transformations within that domain, and uses substitution into the original expressions to decide which candidates actually belong to the solution set."
+          },
+          {
+            "id": "solutions-as-intersection-abscissas",
+            "essentialUnderstandingDe": "Für jeden x-Wert der gemeinsamen Definitionsmenge ist die Bruchgleichung genau dann erfüllt, wenn die Graphen der beiden Gleichungsseiten dort denselben y-Wert besitzen. Die Lösungen sind daher die x-Koordinaten tatsächlicher Schnittpunkte; eine Definitionslücke oder Asymptote ist kein Schnittpunkt.",
+            "essentialUnderstandingEn": "For each x-value in the common domain, the fractional equation holds exactly when the graphs of its two sides have the same y-value there. The solutions are therefore the x-coordinates of actual intersections; a domain hole or asymptote is not an intersection.",
+            "observablePerformanceDe": "Die lernende Person skizziert oder erzeugt zu einer frischen Gleichung beide Graphen mit erkennbaren Definitionslücken, ordnet jedem zulässigen algebraischen Lösungswert einen Schnittpunkt zu und erklärt fehlende Schnittpunkte durch die gemeinsame Definitionsmenge statt durch bloßen Bildeindruck.",
+            "observablePerformanceEn": "For a fresh equation, the learner sketches or generates both graphs with visible domain exclusions, associates each admissible algebraic solution value with an intersection, and explains absent intersections through the common domain rather than mere visual appearance."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solve-equivalently-on-common-domain",
+            "solutions-as-intersection-abscissas"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "candidate-admissibility",
+            "textDe": "Zulässige algebraische Lösung oder ausschließlich ausgeschlossener Kandidat",
+            "textEn": "An admissible algebraic solution or an exclusively excluded candidate"
+          },
+          {
+            "id": "graph-relation",
+            "textDe": "Tatsächlicher Schnittpunkt im gemeinsamen Definitionsbereich oder scheinbare Gleichheit an einer gemeinsamen Definitionslücke",
+            "textEn": "An actual intersection in the common domain or apparent equality at a shared domain hole"
+          },
+          {
+            "id": "solution-direction",
+            "textDe": "Rechnerische Lösung mit anschließender Graphdeutung oder Graphprognose mit algebraischer Kontrolle",
+            "textEn": "Algebraic solution followed by graph interpretation or a graphical prediction checked algebraically"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "admissible-fractional-intersection",
+            "taskDemandDe": "Löse 1/(x − 1) = 2/(x + 2) unter Angabe der gemeinsamen Definitionsmenge. Prüfe die Lösung in beiden Ausgangstermen und deute sie anschließend anhand selbst erstellter oder unabhängig erzeugter Graphen der beiden Gleichungsseiten.",
+            "taskDemandEn": "Solve 1/(x − 1) = 2/(x + 2), stating the common domain. Check the solution in both original expressions and then interpret it using graphs of the two sides that you construct or generate independently.",
+            "expectedPerformanceDe": "Die lernende Person schließt x = 1 und x = −2 aus, erhält aus x + 2 = 2x − 2 den zulässigen Wert x = 4 und bestätigt auf beiden Seiten y = 1/3. Die Graphen besitzen daher bei (4|1/3) einen Schnittpunkt; dessen x-Koordinate 4 ist die Lösung.",
+            "expectedPerformanceEn": "The learner excludes x = 1 and x = −2, obtains the admissible value x = 4 from x + 2 = 2x − 2, and verifies y = 1/3 on both sides. The graphs therefore intersect at (4, 1/3), whose x-coordinate 4 is the solution.",
+            "understandingFocusDe": "Der Grundfall prüft gemeinsame Definitionsmenge, äquivalentes Lösen, Rückprüfung und die präzise Zuordnung zwischen Lösung und Schnittpunkt.",
+            "understandingFocusEn": "The direct case tests the common domain, equivalent solving, substitution check, and precise correspondence between a solution and an intersection."
+          },
+          {
+            "id": "excluded-candidate-means-no-intersection",
+            "taskDemandDe": "Untersuche (x + 1)/(x − 2) = 3/(x − 2). Eine Nennerbeseitigung liefert scheinbar x = 2. Entscheide mit gemeinsamer Definitionsmenge und Graphdeutung über die tatsächliche Lösungsmenge und erkläre, was bei x = 2 geschieht.",
+            "taskDemandEn": "Investigate (x + 1)/(x − 2) = 3/(x − 2). Clearing the denominators appears to produce x = 2. Use the common domain and a graph interpretation to determine the actual solution set and explain what happens at x = 2.",
+            "expectedPerformanceDe": "Die lernende Person hält x ≠ 2 vor der Umformung fest, erkennt x = 2 als unzulässigen Kandidaten und gibt die leere Lösungsmenge an. Sie erklärt, dass beide Graphen bei x = 2 nicht definiert sind und dort deshalb trotz der reduzierten Gleichung x + 1 = 3 kein Schnittpunkt existiert.",
+            "expectedPerformanceEn": "The learner records x ≠ 2 before transforming, recognizes x = 2 as an inadmissible candidate, and gives the empty solution set. The learner explains that both graphs are undefined at x = 2, so no intersection exists there despite the reduced equation x + 1 = 3.",
+            "understandingFocusDe": "Der unabhängige Transfer trennt eine formal erzeugte Kandidatenstelle von einer Lösung und einem tatsächlichen Graphenschnittpunkt.",
+            "understandingFocusEn": "The independent transfer distinguishes a formally produced candidate value from a solution and an actual graph intersection."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0a154cbd-1218-4553-835c-a754e9901bba",
+      "reason": "DE: Das Profil verlangt, dass Formeln mit Bruchtermen als Gleichungen unter expliziten Nichtnullbedingungen äquivalent nach einer Zielvariablen umgeformt werden. Begründete Ganzgleichungsoperationen, symbolische Rückprüfung, Einheiten und physikalische Plausibilität sichern das Ergebnis gegen bloßes Formeldreieck- oder Einsetzwissen. Zwei unabhängige Naturwissenschaftsfälle verwenden bewusst andere Formeln als die gebundene Visualisierung und wechseln zwischen einem einfachen Quotienten und einer Summe von Kehrwerten. EN: The profile requires formulas containing fractional expressions to be rearranged equivalently for a target variable under explicit nonzero conditions. Justified whole-equation operations, symbolic substitution, units, and physical plausibility protect against mere formula-triangle or substitution knowledge. Two independent science cases deliberately use formulas other than the bound visualization and vary between a simple quotient and a sum of reciprocals.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "isolate-target-with-equivalent-whole-equation-operations",
+            "essentialUnderstandingDe": "Eine Formel mit Bruchtermen ist eine Gleichung. Die Zielvariable wird durch Operationen an beiden Seiten isoliert; Nenner dürfen nur mit Faktoren beseitigt und Kehrwerte nur gebildet werden, wenn die betreffenden Größen nicht null sind. Die resultierende Formel gilt genau unter den aus Ausgangsformel und Umformung folgenden Bedingungen.",
+            "essentialUnderstandingEn": "A formula containing fractional expressions is an equation. The target variable is isolated by applying operations to both sides; denominators may be cleared and reciprocals taken only when the relevant quantities are nonzero. The resulting formula is valid precisely under the conditions implied by the original formula and the rearrangement.",
+            "observablePerformanceDe": "Die lernende Person benennt Zielvariable und Nichtnullbedingungen, führt jeden Umformungsschritt auf die gesamte Gleichung aus und begründet, warum die neue Formel zur Ausgangsformel äquivalent ist, statt Variablen nur nach einem Merkschema zu verschieben.",
+            "observablePerformanceEn": "The learner identifies the target variable and nonzero conditions, applies each transformation to the entire equation, and explains why the new formula is equivalent to the original rather than merely moving symbols according to a memorized pattern."
+          },
+          {
+            "id": "verify-symbolically-dimensionally-and-in-context",
+            "essentialUnderstandingDe": "Eine korrekt aufgelöste Formel kann durch Rückeinsetzen in die symbolische Ausgangsform, durch passende Einheiten und durch die erwartete Abhängigkeit der Größen geprüft werden. Diese Prüfungen betreffen die Gleichungsstruktur und nicht nur einen einzelnen Zahlenwert.",
+            "essentialUnderstandingEn": "A correctly rearranged formula can be checked by substituting it back into the symbolic original, by consistent units, and by the expected dependence among the quantities. These checks concern the equation's structure rather than only one numerical value.",
+            "observablePerformanceDe": "Die lernende Person setzt die hergeleitete Zielvariablenform symbolisch zurück, kontrolliert die Einheit an einem naturwissenschaftlichen Beispiel und erläutert mindestens eine plausible Änderungsbeziehung zwischen Zielgröße und den übrigen Größen.",
+            "observablePerformanceEn": "The learner substitutes the derived target-variable form back symbolically, checks the unit in a science example, and explains at least one plausible dependence between the target quantity and the remaining quantities."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "isolate-target-with-equivalent-whole-equation-operations",
+            "verify-symbolically-dimensionally-and-in-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-position",
+            "textDe": "Zielvariable in einem einfachen Nenner oder in einem von mehreren Kehrwerttermen",
+            "textEn": "The target variable in a simple denominator or in one of several reciprocal terms"
+          },
+          {
+            "id": "condition-structure",
+            "textDe": "Nur ursprüngliche Nennerbedingungen oder zusätzliche Nichtnullbedingung durch Kehrwertbildung",
+            "textEn": "Only original denominator conditions or an additional nonzero condition introduced by taking a reciprocal"
+          },
+          {
+            "id": "verification-mode",
+            "textDe": "Symbolische Rückeinsetzung, Einheitenprüfung und qualitative Abhängigkeitskontrolle in wechselnder Kombination",
+            "textEn": "Symbolic substitution, unit checking, and qualitative dependence checks in varying combinations"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "density-formula-solve-for-volume",
+            "taskDemandDe": "Die Dichteformel ρ = m/V soll nach V aufgelöst werden. Leite die neue Formel mit begründeten Gleichungsoperationen her, nenne ihre Bedingungen, prüfe sie symbolisch und kontrolliere die Einheit von V, wenn m in Kilogramm und ρ in Kilogramm pro Kubikmeter gegeben sind.",
+            "taskDemandEn": "The density formula ρ = m/V is to be rearranged for V. Derive the new formula using justified equation operations, state its conditions, check it symbolically, and verify the unit of V when m is given in kilograms and ρ in kilograms per cubic metre.",
+            "expectedPerformanceDe": "Die lernende Person hält V ≠ 0 fest, multipliziert beide Seiten mit V und teilt für ρ ≠ 0 durch ρ, sodass V = m/ρ entsteht. Rückeinsetzen liefert ρ = m/(m/ρ); die Einheit kg/(kg/m³) = m³ und die Aussage, dass bei gleicher Masse eine größere Dichte ein kleineres Volumen ergibt, stützen die Formel.",
+            "expectedPerformanceEn": "The learner records V ≠ 0, multiplies both sides by V, and divides by ρ for ρ ≠ 0 to obtain V = m/ρ. Substitution gives ρ = m/(m/ρ); the unit kg/(kg/m³) = m³ and the statement that, at fixed mass, greater density gives smaller volume support the formula.",
+            "understandingFocusDe": "Der direkte Fall prüft Ganzgleichungsoperationen, Bedingungen sowie symbolische, dimensionale und qualitative Kontrolle ohne Bezug auf die Bildformel.",
+            "understandingFocusEn": "The direct case tests whole-equation operations, conditions, and symbolic, dimensional, and qualitative checks without relying on the formula shown in the image."
+          },
+          {
+            "id": "thin-lens-reciprocal-transfer",
+            "taskDemandDe": "Löse die Formel 1/f = 1/g + 1/b nach b auf. Dokumentiere die gemeinsame Nennerbildung und alle Nichtnullbedingungen. Prüfe die hergeleitete Formel erst symbolisch und anschließend für f = 0,10 m und g = 0,30 m durch Rückeinsetzen in die Ausgangsform.",
+            "taskDemandEn": "Rearrange the formula 1/f = 1/g + 1/b for b. Document formation of the common denominator and all nonzero conditions. Check the derived formula first symbolically and then for f = 0.10 m and g = 0.30 m by substituting into the original form.",
+            "expectedPerformanceDe": "Die lernende Person bildet 1/b = 1/f − 1/g = (g − f)/(fg) und erhält b = fg/(g − f), wobei f, g und b in der Ausgangsform nicht null sowie g ≠ f für die endliche Zielvariablenform gelten. Mit den angegebenen Werten folgt b = 0,15 m; 10 m⁻¹ = 3,33… m⁻¹ + 6,66… m⁻¹ bestätigt die Ausgangsform.",
+            "expectedPerformanceEn": "The learner forms 1/b = 1/f − 1/g = (g − f)/(fg) and obtains b = fg/(g − f), with f, g, and b nonzero in the original formula and g ≠ f for the finite target-variable form. The given values yield b = 0.15 m; 10 m⁻¹ = 3.33… m⁻¹ + 6.66… m⁻¹ verifies the original form.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Hauptnennerbildung und Kehrwert unter zusätzlichen Bedingungen in einer strukturell komplexeren Formel.",
+            "understandingFocusEn": "The independent transfer tests common-denominator formation and taking a reciprocal under additional conditions in a structurally more complex formula."
+          }
+        ]
+      }
+    }
+  ]
+}

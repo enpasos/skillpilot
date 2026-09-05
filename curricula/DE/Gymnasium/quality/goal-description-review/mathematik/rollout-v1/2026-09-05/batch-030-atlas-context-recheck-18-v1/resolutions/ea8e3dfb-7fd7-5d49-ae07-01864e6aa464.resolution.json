@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-resolution-ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+  "goal": {
+    "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:70944a923ab0a81276dffe1c609255296acf419f8e07f9b7859f1c3d6b39df6d",
+    "pageFingerprint": "sha256:46bba7bec9828c07e8e72e8e96736071622914f3962fb8b119c249e9de030848",
+    "goalReviewContextFingerprint": "sha256:f20c77a8a5d79051d5dc540bf630dc47c6d86d8b01006cf83486730b0ecbb665",
+    "finalText": {
+      "titleDe": "Parameter periodischer Funktionen deuten",
+      "titleEn": "Interpret parameters of periodic functions",
+      "descriptionDe": "Die lernende Person kann Amplitude, Periodenlänge, Phasenverschiebung und vertikale Verschiebung interpretieren und entsprechende Parameter in Termen $y = a \\cdot \\sin(bx+c)+d$ bestimmen.",
+      "descriptionEn": "The learner can interpret amplitude, period, phase shift and vertical shift and determine corresponding parameters in terms $y = a \\cdot \\sin(bx+c)+d$."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-a",
+      "campaignDigest": "sha256:a217a7586aff4e520f05f1f96adcd8dc174aeeefd2dab38b47ad651520d63e66",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "goalReviewContextFingerprint": "sha256:f20c77a8a5d79051d5dc540bf630dc47c6d86d8b01006cf83486730b0ecbb665",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "runManifestDigest": "sha256:bf56ce1bf1e81ec01e3ad54f3ed6611eae7a43815e038ffe6d20ad500e1592bd",
+      "resultsDigest": "sha256:a1249e669cb125274bea20b1a0201c9f30961651729bb69b1994d89db2b0e571",
+      "recordId": "mathematik-b030-atlas-context-recheck-a-record-010",
+      "recordDigest": "sha256:41b989013bff46722cdac80972c0808f6234d8e64ab89f5800eb1170591f8d70"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-b",
+      "campaignDigest": "sha256:70cb69393ff4a12787240d27c30c2d0f933742bb18230f2e6f194b442822d682",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "goalReviewContextFingerprint": "sha256:f20c77a8a5d79051d5dc540bf630dc47c6d86d8b01006cf83486730b0ecbb665",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:3d3d4435d09327a9b8c50d5033b10c1338e76965b8033809edcba14f128b7c7c",
+      "resultsDigest": "sha256:83d636c8419981f63489931dfbb62712ccd949f1ec14900c00c6712966f62b82",
+      "recordId": "mathematik-b030-b-r10-periodic-parameters",
+      "recordDigest": "sha256:18bfd19ded71f88b1c1adc2dbd615decec947f90e71f067e347861c527d0a4a0"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:e39c6377655c66470ad7c61b22deea31649467cc06d732bf94e4cae07941dd8c"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905",
+    "manifestDigest": "sha256:9c27f7417c99d459d4879725600e84188a9d0d5bb6aee17e77d6937545dfb89e",
+    "manifestFingerprint": "sha256:d6a9e6537309194fb0d2135badf125a27a9109a468e09fa52fae26a8bf1af05e",
+    "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-010"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-010",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B030 subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T22:52:47.928Z",
+    "rationaleDe": "Beide Blindprüfungen bestätigen das Interpretieren und Bestimmen von Amplitude, Periodenlänge, Phasen- und Vertikalverschiebung in der angegebenen Funktionsfamilie als kohärente, prüfbare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B ist stärker, weil sie die Phasenverschiebung präzise als −c/b behandelt, äquivalente Termdarstellungen berücksichtigt und die Parameter aus neuen Graph- und Kontextdaten statt durch Schemaeinsetzen erschließen lässt; Runde A bleibt vollständig gebunden.",
+    "rationaleEn": "Both blind reviews confirm interpreting and determining amplitude, period, horizontal shift, and vertical shift in the stated function family as a coherent assessable competence. The current text is retained. Round B is stronger because it handles the horizontal shift precisely as −c/b, accounts for equivalent expression forms, and requires parameters to be inferred from fresh graph and context data rather than by template substitution; Round A remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht im Term y = a·sin(bx+c)+d die Amplitude als |a|, die Periodenlänge als 2π/|b|, die Phasenverschiebung als −c/b und d als Lage der Mittellinie; Vorzeichen bewirken zusätzlich Spiegelungen beziehungsweise Richtungsänderungen.",
+      "essentialUnderstandingEn": "The learner understands in y = a·sin(bx+c)+d that the amplitude is |a|, the period is 2π/|b|, the phase shift is −c/b, and d locates the midline; signs additionally produce reflections or direction changes.",
+      "observablePerformanceDe": "Die lernende Person liest die vier Merkmale aus Graph oder Kontext ab, bestimmt dazu konsistente Parameter, zeichnet beziehungsweise prüft den resultierenden Graphen und erklärt ausdrücklich, warum c allein nicht die Phasenverschiebung ist.",
+      "observablePerformanceEn": "The learner reads the four features from a graph or context, determines consistent parameters, draws or checks the resulting graph, and explicitly explains why c alone is not the phase shift.",
+      "transferExpectationDe": "Für denselben periodischen Verlauf in den äquivalenten Formen a·sin(bx+c)+d und a·sin(b(x−x₀))+d übersetzt die lernende Person die Parameter und zeigt, dass beide Terme dieselbe Amplitude, Periode, Mittellinie und Phasenlage besitzen.",
+      "transferExpectationEn": "For the same periodic trace in the equivalent forms a·sin(bx+c)+d and a·sin(b(x−x₀))+d, the learner translates the parameters and shows that both expressions have the same amplitude, period, midline, and phase position."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8fe05e4721d61d1a5da66b34757b41364efffe7bb93e5b5696b86661c1d36721",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a1827bf71d6dd4634a94bafe81cd5a5b4c4d3299230a03602471c6842ca054dd"
+}

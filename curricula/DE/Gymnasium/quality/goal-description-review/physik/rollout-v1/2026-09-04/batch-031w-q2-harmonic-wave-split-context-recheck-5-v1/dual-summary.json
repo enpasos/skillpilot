@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b4a32198f14308aa5bb61cc853727e85974dd6d350786f5aa4877ab4aa47470f",
+  "reviewInputFingerprint": "sha256:2b1be40c70326eb0d2195c506a209c2704672feeaee14c594109c28864d8b41b",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-a",
+      "roundId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-b",
+      "roundId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-independent-b",
+      "runIds": [
+        "physik-b031w-q2-wave-context-recheck-20260905-gpt5-b1"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+      "firstRecordId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001.record-001",
+      "secondRecordId": "physik-b031w-b-record-001",
+      "firstRunId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001",
+      "secondRunId": "physik-b031w-q2-wave-context-recheck-20260905-gpt5-b1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+      "firstRecordId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001.record-002",
+      "secondRecordId": "physik-b031w-b-record-002",
+      "firstRunId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001",
+      "secondRunId": "physik-b031w-q2-wave-context-recheck-20260905-gpt5-b1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "158e1c19-7ccb-4c8c-931c-b685951ab161",
+      "firstRecordId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001.record-003",
+      "secondRecordId": "physik-b031w-b-record-003",
+      "firstRunId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001",
+      "secondRunId": "physik-b031w-q2-wave-context-recheck-20260905-gpt5-b1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68020906-e615-462e-a56f-dd1ccc14b8d7",
+      "firstRecordId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001.record-004",
+      "secondRecordId": "physik-b031w-b-record-004",
+      "firstRunId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001",
+      "secondRunId": "physik-b031w-q2-wave-context-recheck-20260905-gpt5-b1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
+      "firstRecordId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001.record-005",
+      "secondRecordId": "physik-b031w-b-record-005",
+      "firstRunId": "physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.run-001",
+      "secondRunId": "physik-b031w-q2-wave-context-recheck-20260905-gpt5-b1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

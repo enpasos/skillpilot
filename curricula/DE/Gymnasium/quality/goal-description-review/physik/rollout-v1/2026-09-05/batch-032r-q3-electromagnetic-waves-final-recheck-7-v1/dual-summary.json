@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3bb109193d062409a322fbe1753718d7bfbb93b2f01623efea6153888d4600fe",
+  "reviewInputFingerprint": "sha256:2a9429b7d9748b16eeae34757e4d7650b2a72888673bfcd58478c154ca961805",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-a",
+      "roundId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-independent-a",
+      "runIds": [
+        "physik-b032r-first-pass-a-gpt5-20260905"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-b",
+      "roundId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-032r-q3-electromagnetic-waves-final-recheck-7-v1-20260905-independent-b",
+      "runIds": [
+        "physik-b032r-q3-em-waves-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "firstRecordId": "b032r-a-4a7cbe83",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-001",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "firstRecordId": "b032r-a-549269d3",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-002",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6270e558-d657-5363-a6b2-e49a032a453b",
+      "firstRecordId": "b032r-a-6270e558",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-003",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91683676-01cf-5003-80fa-a04d043b4e61",
+      "firstRecordId": "b032r-a-91683676",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-004",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "firstRecordId": "b032r-a-4c919da9",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-005",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "firstRecordId": "b032r-a-f6a3a602",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-006",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "firstRecordId": "b032r-a-d1e26b52",
+      "secondRecordId": "physik-b032r-q3-em-waves-b-record-007",
+      "firstRunId": "physik-b032r-first-pass-a-gpt5-20260905",
+      "secondRunId": "physik-b032r-q3-em-waves-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

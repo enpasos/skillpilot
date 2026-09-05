@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b031r-stable-current-carryover-5-v3-20260905",
+  "purpose": "Hash-bound carryover of exactly 5 current KEEP/KEEP consensus goals from B031R; every other source-batch goal remains explicitly excluded.",
+  "source": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1.config.json",
+    "configSha256": "sha256:cfac7e99b3de84e4a67b46bab9a350886d227c0cc21af4e7dc2df2ad7dd4eec5",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/batch-manifest.json",
+    "batchManifestSha256": "sha256:c805c10e8736cfb9c27b62476ae5e7ae8f820bb4455e76db7c03d8e2de954726",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/dual-summary.json",
+    "dualSummarySha256": "sha256:24d60e2666c3ef814c186b8235c5879c297e98d30f7b51c653613a741237c489",
+    "roundA": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/round-a/results/physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-a.batch-001.records.jsonl",
+      "recordsSha256": "sha256:694e9638a16fbf28460dafd17c097f95e1765d627a2afc6e8513396f325fb7d2",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/round-a/results/physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-a.batch-001.run.json",
+      "runSha256": "sha256:3b32ea90b732d4b6f35ec2f4fcc15c86c89c0b02ef5d7f08a0c6272e9f71c8de"
+    },
+    "roundB": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/round-b/results/physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-b.batch-001.records.jsonl",
+      "recordsSha256": "sha256:aa0d6276f8d69b2842f0ef6b8bef1cfd25658f829a0a7391a85541d84908b381",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/round-b/results/physik-rollout-v1-batch-031r-q2-oscillations-and-waves-revised-10-v1-20260902-first-pass-b.batch-001.run.json",
+      "runSha256": "sha256:ff3f58973e768d590fe41e5a95ae53b0a730476a53602b5cf6c020c7c1eda0b6"
+    }
+  },
+  "currentRuntimeSnapshot": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "baseGoalBookConfigSha256": "sha256:f2ae7c25c2f288ead6796db39aaed38b6c813e6e2c2496024cb5f127bdd73190",
+    "canonicalLandscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "canonicalLandscapeSha256": "sha256:bb7d8ef730cc58ed920b8203f69c51f4c7159577fdee2666849e0bd18f451eaa",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "semanticKindLedgerSha256": "sha256:edd84697377ff8498ded077ecaaf31175188f8dc5c79789bb559b0d00c94e80e",
+    "currentBaseBookDigest": "sha256:a993875f0769c4c8a1f481f9dfa2c9eb0923a945399d2859b7cb699d8d555a95",
+    "currentSubsetBookDigest": "sha256:732654cab459786cce38f616988583e5b9a69ef179993f9a7653ef380842115a",
+    "capturedAtMaterializationExecution": true
+  },
+  "compatibilityRebase": {
+    "status": "accepted_exact_current_direct_context",
+    "reason": "Review-contract page fingerprints remain byte-bound to the two blind runs. Current Atlas goal and page fingerprints are rebuilt only at execution; contextual page drift is allowed only while the goal fingerprint, bilingual text, and direct canonical context remain exact.",
+    "sourceBaseBookDigest": "sha256:3d6fe7628a6bc1179623d0813c02c6fc0a2a00eb4e979b2177b114c52ce7c0ac",
+    "sourceSubsetBookDigest": "sha256:097494ba698b1955d58edc0ecb783037d94dac6232708427a855ab38f48b8a28",
+    "currentBindings": [
+      {
+        "goalId": "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "9dba2826-b179-59f0-8d91-5916079e5abe"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:c06994caa61b9437c58fcf0cfb918463f95255e063d699ba79455b307883bb25",
+        "sourceGoalFingerprint": "sha256:468559fccaabb8356f667f0aeb87101d8f3c825c39cd1fb60baf6c21b5337545",
+        "currentGoalFingerprint": "sha256:468559fccaabb8356f667f0aeb87101d8f3c825c39cd1fb60baf6c21b5337545",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:96a2d61f13b7c2d5995fdcedc36801637eed53fc8358c4a04034d3ce98f13c22",
+        "currentPageFingerprint": "sha256:96a2d61f13b7c2d5995fdcedc36801637eed53fc8358c4a04034d3ce98f13c22",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:3d324eb987ed85dfbaabcdb6c815a124421d37aa0acbcd68e299e155809ffd4c"
+      },
+      {
+        "goalId": "85157cf0-7f68-5aea-b375-0f9797008cc9",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK",
+            "Context"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK5_BEWERTEN"
+            ],
+            "guidingIdeas": [
+              "LI_WELLEN"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "d716a35e-e422-5aba-b39a-f2e22f1e1e74"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:59b15d4e5ee21a20f2128f1864aed98a2b5d5e54d772d34d751ff4b5b005a72e",
+        "sourceGoalFingerprint": "sha256:fbf2d26ea0503e3c8b55d95d90257b71f9a57e504dafe18ec3b5bd59d4af16bd",
+        "currentGoalFingerprint": "sha256:fbf2d26ea0503e3c8b55d95d90257b71f9a57e504dafe18ec3b5bd59d4af16bd",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:00899adab7dde4a695c216ffa7237631a4719bfc0ff559a7b490c22f62771e8a",
+        "currentPageFingerprint": "sha256:00899adab7dde4a695c216ffa7237631a4719bfc0ff559a7b490c22f62771e8a",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:06d8b3af5c6dfeea020d731359308abf5e4e172ad4ad3ba337d3e36481b4a164"
+      },
+      {
+        "goalId": "f47a7fa0-b929-5264-b038-b83fd682967f",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK",
+            "Context"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "LI_WELLEN"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "d716a35e-e422-5aba-b39a-f2e22f1e1e74"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:b417aeb79f23f9d8800b9a4ceb556fd3be9eb8d864bf4310259731e5f0873a02",
+        "sourceGoalFingerprint": "sha256:32c0c06b4e634efab98bac3d039802d15eadabfb87aced227f9d826c9e08a6c1",
+        "currentGoalFingerprint": "sha256:32c0c06b4e634efab98bac3d039802d15eadabfb87aced227f9d826c9e08a6c1",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:33688e7466b420b0f8e22a22bbe6f4a2fa716967bbc8674e8d92a5fa071e57cf",
+        "currentPageFingerprint": "sha256:33688e7466b420b0f8e22a22bbe6f4a2fa716967bbc8674e8d92a5fa071e57cf",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:f10beef7ef6d2cd10693436313f43406aa093b4234ded6e197270e983c9eecbd"
+      },
+      {
+        "goalId": "e160acb4-5b88-509e-8055-2653df420c65",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_WELLEN"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:80864b6978091d2bcff14eaf0502a4fc69a3666704a040b7e1429433b4425243",
+        "sourceGoalFingerprint": "sha256:e1cc4d682ade666044692fbbe30b3208b84a9892568cda5040809b9a59fcb785",
+        "currentGoalFingerprint": "sha256:e1cc4d682ade666044692fbbe30b3208b84a9892568cda5040809b9a59fcb785",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:b42f11da2a4c4dbb337726fe6f97f209d82c802e7ef2d6568af378e2b8abb4f6",
+        "currentPageFingerprint": "sha256:d0bee33ab52a1bf0992d7b940d57361a2665520cb641857b2428b2ff4866a36d",
+        "exactPageFingerprint": false,
+        "sourceGoalReviewContextFingerprint": "sha256:3bf7062e909377883142862d8c39998d960b914a64497923173acdcfff9b9281"
+      },
+      {
+        "goalId": "215f5558-562c-5686-b649-931f324c7983",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK1_EXPERIMENTIEREN",
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_WELLEN"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "d5772db3-120c-5c37-ab46-2336d02236b0"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:d1038e88eb7c9239232c81908dc926ce0f31a893a649f809d2c16052ad1b7bf3",
+        "sourceGoalFingerprint": "sha256:121419eee6e868a60edb230924a92e66409c55aa61e8cc859fa36e7ddcc4c222",
+        "currentGoalFingerprint": "sha256:121419eee6e868a60edb230924a92e66409c55aa61e8cc859fa36e7ddcc4c222",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:42f27483b2db65e9db4f65f7dc34a9d0892f955fa936e7e7bd21fdb7dc81999f",
+        "currentPageFingerprint": "sha256:42f27483b2db65e9db4f65f7dc34a9d0892f955fa936e7e7bd21fdb7dc81999f",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:f9b0f5c504ee7925cc6a878b180fa5d6882d55014d3cfa656e6a9c3df3c46285"
+      }
+    ]
+  },
+  "claimedGoalIds": [
+    "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+    "85157cf0-7f68-5aea-b375-0f9797008cc9",
+    "f47a7fa0-b929-5264-b038-b83fd682967f",
+    "e160acb4-5b88-509e-8055-2653df420c65",
+    "215f5558-562c-5686-b649-931f324c7983"
+  ],
+  "explicitlyExcludedGoalIds": [
+    "d03f1cb6-c224-53db-ad91-76cc7827978d",
+    "158e1c19-7ccb-4c8c-931c-b685951ab161",
+    "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+    "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+    "1c430e0a-b63e-5729-8715-a96a5a68740f"
+  ],
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-5-v3.json",
+  "synthesisManifestDigest": "sha256:8697200c023d68724e4e13e9edb838c88d2e9990d51ca349fdf2978f316c55fa",
+  "synthesisManifestFingerprint": "sha256:13ab36147b2492b9911d2da34bb85af9183b0c08ca8ca16ffdacc5ae5b422626",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-5-v3.json",
+  "resolutionIndexDigest": "sha256:fb6b89ce3b59da2e8801cbe54328a8c2bbfedd115efb48772907bcabefd37332",
+  "safeguards": {
+    "sourceConfigManifestDualSummaryRunsAndRecordsByteBound": true,
+    "twoIndependentKeepDecisionsRequired": true,
+    "selectedEvidenceRoundMustBeKeep": true,
+    "currentBilingualTextRequiredExact": true,
+    "currentGoalFingerprintRequiredExact": true,
+    "currentDirectCanonicalContextRequiredExactAndRefingerprintedAtExecution": true,
+    "currentAtlasPageFingerprintCapturedAtExecutionWithoutClaimingHistoricalEquality": true,
+    "stableAndExcludedScopesDisjointAndComplete": true,
+    "currentRuntimeReboundImmediatelyBeforeWrite": true,
+    "separateBatchResolutionIndex": true,
+    "openAiReviewFreezeRequiredBeforeWrite": true
+  },
+  "materializationPlanSha256": "sha256:b781e511402d1aaac166b2ad802e24ac7ed31dc60b6d5d4c2db1ab029e79f8f2"
+}

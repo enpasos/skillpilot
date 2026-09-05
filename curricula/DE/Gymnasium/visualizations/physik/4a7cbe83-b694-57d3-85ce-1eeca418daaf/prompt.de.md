@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `4a7cbe83-b694-57d3-85ce-1eeca418daaf`
 - Titel: Spektrum elektromagnetischer Wellen
-- Beschreibung: Die lernende Person kann das Spektrum elektromagnetischer Wellen darstellen, typische Frequenzbereiche benennen und zugeordneten technischen Anwendungen Beispiele zuordnen.
+- Beschreibung: Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Spektrum elektromagnetischer Wellen
-Beschreibung: Die lernende Person kann das Spektrum elektromagnetischer Wellen darstellen, typische Frequenzbereiche benennen und zugeordneten technischen Anwendungen Beispiele zuordnen.
+Beschreibung: Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.
 
 Zusatzanweisung:
 Pflichtinhalt:

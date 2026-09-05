@@ -15,7 +15,10 @@ import {
   collectDuplicateDirectPhaseStructureFindings,
   collectLearnerFacingCompositionLabelFindings,
 } from './lib/learnerFacingCompositionLabels'
-import { collectCanonicalMathSek1ReviewedExamRouteFindings } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import {
+  collectCanonicalMathSek1ReviewedExamRouteFindings,
+  hasUnavailableCurricularAtomicAssessmentPrerequisite,
+} from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
   viewId: string
@@ -691,6 +694,9 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
 
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const visibleGoalIds = collectSourceGoalIds(rootNodes)
+  const curricularAtomicGoalIds = new Set(landscape.goals
+    .filter((goal) => goal.semanticKind === 'curricularAtomic')
+    .map((goal) => goal.id))
   const findings: CompositionViewFinding[] = []
 
   if (!visibleGoalIds.has(CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID)) {
@@ -726,6 +732,11 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
 
     const missingTaskGoalIds = (folder?.contains ?? [])
       .filter((taskId) => !visibleGoalIds.has(taskId))
+      .filter((taskId) => !hasUnavailableCurricularAtomicAssessmentPrerequisite(
+        goalById.get(taskId),
+        curricularAtomicGoalIds,
+        visibleGoalIds,
+      ))
     if (missingTaskGoalIds.length > 0) {
       findings.push({
         code: 'CPV-211',

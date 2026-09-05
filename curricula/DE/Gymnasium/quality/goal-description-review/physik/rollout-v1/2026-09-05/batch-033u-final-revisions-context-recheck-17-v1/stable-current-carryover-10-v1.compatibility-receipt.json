@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b033u-stable-current-carryover-10-v1-20260905",
+  "purpose": "Fail-closed bounded materialization of exactly ten exact-current KEEP/KEEP Physics B033u goals; six revised goals and one goal with a revised direct prerequisite remain excluded.",
+  "sourceBatchId": "physik-rollout-v1-batch-033u-final-revisions-context-recheck-17-v1-20260905",
+  "sourceCampaignGoalCount": 17,
+  "source": {
+    "configPath": "batch-033u-final-revisions-context-recheck-17-v1.config.json",
+    "configDigest": "sha256:f3703983040ee30c9df469ec7d36e54c5272f090b162ac494f3e46c4bc56ba55",
+    "batchManifestPath": "batch-manifest.json",
+    "batchManifestDigest": "sha256:35d9e1351a48704b757e3a739ff74a0029b0464103bdab3ab49af02ea0d0c5d9",
+    "dualSummaryPath": "dual-summary.json",
+    "dualSummaryDigest": "sha256:a9c01ad1399a9183979b4b728dc50770ef48acce1d59127d2345d7dbf44f3607",
+    "canonicalLandscapeDigest": "sha256:8813c385f07d2b7865148d6b571c04ab41212e63736a8327c526565d18608e1f",
+    "semanticKindLedgerDigest": "sha256:a43ab65709df285a3406a259deec7ba679dd788a4a0077ba1a89e2a28943f1cc",
+    "authoringPath": "stable-current-carryover-10-v1.authoring.json",
+    "authoringDigest": "sha256:85c16d13a7b587bd0b9c3162a0b951951c92a45cd03427e21029a0d8b06f3934"
+  },
+  "claimedGoalIds": [
+    "9f59a088-3939-59e9-821d-167fadfda782",
+    "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+    "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+    "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+    "0f803c37-8191-5a07-9b31-9603ded98fe2",
+    "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+    "73b309ed-1aab-5778-8494-d9b65f5a352b",
+    "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+    "38e0ff49-f132-44c8-b17a-73dada5344db",
+    "e19fccd7-6a35-5c9e-86e1-dcca76481e9c"
+  ],
+  "claimedGoalCount": 10,
+  "explicitlyExcludedChangedGoalIds": [
+    "0b4f2020-8486-5372-9cb9-6e59f698ac2d",
+    "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+    "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+    "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+    "74a74132-fa39-541c-8d3c-696cf228452d",
+    "8fbae050-c5c9-52b6-9983-2c366e9c8ade"
+  ],
+  "explicitlyExcludedDependentGoal": {
+    "goalId": "0b08aed8-3c0f-5b38-844c-1bb363abbf68",
+    "changedPrerequisiteGoalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade"
+  },
+  "currentPrerequisiteContexts": [
+    {
+      "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+      "prerequisites": [
+        {
+          "goalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "titleDe": "Arbeit, Spannung und Potenzial im E-Feld",
+          "canonicalContextFingerprint": "sha256:ab9bbd2a2b0893bbbaefcf213e717f5783e2e9ffb781454021c7632ded5ff4b5"
+        }
+      ]
+    },
+    {
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "prerequisites": [
+        {
+          "goalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+          "titleDe": "Arbeit, Spannung und Potenzial im E-Feld",
+          "canonicalContextFingerprint": "sha256:ab9bbd2a2b0893bbbaefcf213e717f5783e2e9ffb781454021c7632ded5ff4b5"
+        }
+      ]
+    },
+    {
+      "goalId": "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+      "prerequisites": [
+        {
+          "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+          "titleDe": "Physikalische Informationen aus Quellen auswerten",
+          "canonicalContextFingerprint": "sha256:202f36eb6a96237279b00bf4241cc0d6e6d1c8776d09ff0752f247a4bb3a5385"
+        },
+        {
+          "goalId": "bdaa56ad-6257-58a3-a633-8a6339f72f09",
+          "titleDe": "Innenohr mit Resonanzmodellen erklären",
+          "canonicalContextFingerprint": "sha256:6f5c7e072ef91d0886590bba5c856cbc3caa60951a2cf9cfa11db8fc630ed6b8"
+        }
+      ]
+    },
+    {
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "prerequisites": [
+        {
+          "goalId": "7df599e8-21ac-5be4-89f9-9b2a6f2e4465",
+          "titleDe": "Grundlagen des elektrischen Feldes",
+          "canonicalContextFingerprint": "sha256:c3e947c198ce5533e15a154776630ba2b00594237656cb1082ddd2582b217910"
+        },
+        {
+          "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
+          "titleDe": "Methode: Modellbildung mit Tabellenkalkulation",
+          "canonicalContextFingerprint": "sha256:0cbe6bae9b3345bad5c490ad6b23a3180525e45b448e6ef64304f292d72ea4b2"
+        }
+      ]
+    },
+    {
+      "goalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        }
+      ]
+    },
+    {
+      "goalId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        },
+        {
+          "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+          "titleDe": "Selbstinduktion und Induktivität",
+          "canonicalContextFingerprint": "sha256:924e8fcff69558a8e0b3d3e28f7d787c64693696de137890237db3457d3fbd67"
+        },
+        {
+          "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+          "titleDe": "Energie und Energieerhaltung in Schwingungen",
+          "canonicalContextFingerprint": "sha256:02094f4677de2376bbcb39043c46ca175aaa7fcbe355600f9bd1b738b1fc8921"
+        }
+      ]
+    },
+    {
+      "goalId": "73b309ed-1aab-5778-8494-d9b65f5a352b",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        }
+      ]
+    },
+    {
+      "goalId": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        }
+      ]
+    },
+    {
+      "goalId": "38e0ff49-f132-44c8-b17a-73dada5344db",
+      "prerequisites": [
+        {
+          "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
+          "titleDe": "Kondensator und Feld im Plattenkondensator",
+          "canonicalContextFingerprint": "sha256:444fa8f6e389ac60cc4aafd343851460b911a4f1edb5d5a50c404df75561692e"
+        },
+        {
+          "goalId": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
+          "titleDe": "Flächenladungsdichte nutzen",
+          "canonicalContextFingerprint": "sha256:398750f852a820e731e6453d7d05f0357b0201dd2cb3bdbd4faf09cf449ab095"
+        }
+      ]
+    },
+    {
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "prerequisites": [
+        {
+          "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+          "titleDe": "Elektrisches Potenzial berechnen",
+          "canonicalContextFingerprint": "sha256:6aafbef7c7cf34251987a9dc51f95d1ea4fbe1429a79de45052b6810816241a8"
+        },
+        {
+          "goalId": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+          "titleDe": "Feldlinienbilder von Ladungs- und Leiteranordnungen deuten",
+          "canonicalContextFingerprint": "sha256:0f884d67f80890802e3afca5c49ef95e54f2834f7fe6bb27f77f4d8842328214"
+        }
+      ]
+    }
+  ],
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-10-v1.json",
+  "synthesisManifestDigest": "sha256:8d4b9f94bc68ce2767ea2b244f02fe73ebf54c38b99d5b302b7e5ac2c55cd4ce",
+  "synthesisManifestFingerprint": "sha256:5a915bce27ede06c1fea6f95cab2b10fcf56e6f400617816f5f854eca9c98b51",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-10-v1.json",
+  "resolutionIndexDigest": "sha256:daf0ac426aecc784a5af693db5dafbcbc025d192e4325978ccb6c1953d8ce69e",
+  "noCentralRolloutRegistration": true,
+  "safeguards": {
+    "exactCampaignPartitionRequired": true,
+    "exactKeepKeepDecisionPairsRequired": true,
+    "reviewedBilingualTextAndCanonicalContextMustRemainCurrent": true,
+    "directPrerequisiteIdsAndTitlesMustRemainCurrent": true,
+    "changedGoalsMustRemainExcluded": true,
+    "dependentOfChangedPrerequisiteMustRemainExcluded": true,
+    "individualResolutionsFreshlyValidated": true,
+    "centralRegistrationPerformed": false
+  }
+}

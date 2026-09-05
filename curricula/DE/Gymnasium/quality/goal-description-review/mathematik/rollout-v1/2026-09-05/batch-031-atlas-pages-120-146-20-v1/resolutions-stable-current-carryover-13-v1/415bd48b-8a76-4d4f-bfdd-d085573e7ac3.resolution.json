@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+  "goal": {
+    "goalId": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e038f6961a7d8eff9724b3df2ab19881997728223be741588e930fc7b1df80d3",
+    "pageFingerprint": "sha256:710ce679e28588be9a5471230cb1b3f3661d1afcfc993b333e7c1642b8ce4d7a",
+    "goalReviewContextFingerprint": "sha256:2d7a2e0bdf8996c236446fae4dfa13da51a23c17f71cdbd915c559fe674bbb12",
+    "finalText": {
+      "titleDe": "Volumen von Zylindern berechnen",
+      "titleEn": "Calculate volumes of cylinders",
+      "descriptionDe": "Die lernende Person kann das Volumen von Zylindern aus Grundflächeninhalt und Höhe berechnen, passende Einheiten verwenden und Ergebnisse in Sachsituationen prüfen.",
+      "descriptionEn": "The learner can calculate the volume of cylinders from base area and height, use suitable units, and check results in real contexts."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:2d7a2e0bdf8996c236446fae4dfa13da51a23c17f71cdbd915c559fe674bbb12",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-415bd48b",
+      "recordDigest": "sha256:f3857c59879c1d081e170fea0560296d0a5753ca75e4a37d8518bdbd06b1eb20"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:2d7a2e0bdf8996c236446fae4dfa13da51a23c17f71cdbd915c559fe674bbb12",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-013",
+      "recordDigest": "sha256:36e41d9904e6610bb356f16b4ed110903d1ee57223264d980ac727b38cfbddd5"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen die Volumenkompetenz mit KEEP. Runde A liefert die stärkere Evidenz, weil sie V=G·h aus kongruenten Querschnitten strukturell erklärt, senkrechte Höhe und Radius beziehungsweise Durchmesser unterscheidet und Einheitenumrechnung, Füllhöhe sowie Kapazitätsplausibilität in einer neuen Behältersituation bindet.",
+    "rationaleEn": "Both rounds confirm the volume competency with KEEP. Round A provides stronger evidence because it structurally explains V=G·h through congruent cross-sections, distinguishes perpendicular height and radius versus diameter, and binds unit conversion, fill height, and capacity plausibility in a fresh container situation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht das Zylindervolumen als Produkt aus dem Inhalt G der in jeder Höhe kongruenten Grundfläche und der senkrechten Höhe h, also V = G·h, und verbindet diese Struktur bei einem Kreiszylinder mit G = πr² sowie mit kubischen Volumeneinheiten.",
+      "essentialUnderstandingEn": "The learner understands the volume of a cylinder as the product of the area G of its congruent cross-section at every height and the perpendicular height h, V = G·h, and connects this structure for a circular cylinder with G = πr² and cubic volume units.",
+      "observablePerformanceDe": "Die lernende Person identifiziert in Skizze oder Sachtext Grundfläche, Radius beziehungsweise Durchmesser und senkrechte Höhe, baut die Volumenrechnung aus G·h auf, rechnet Einheiten vor der Verknüpfung konsistent um und prüft Ergebnis und Größenordnung am Kontext.",
+      "observablePerformanceEn": "From a diagram or context, the learner identifies the base, radius or diameter, and perpendicular height, builds the volume calculation from G·h, converts units consistently before combining quantities, and checks the result and its order of magnitude against the context.",
+      "transferExpectationDe": "In einer neuen Behältersituation sind Durchmesser, Füllhöhe und eine in Litern angegebene Zielmenge gegeben; die lernende Person entscheidet, welche Höhe für das Modell zählt, bestimmt Volumen oder fehlende Größe und beurteilt, ob das Ergebnis zur realen Kapazität passt.",
+      "transferExpectationEn": "In a fresh container situation, the diameter, fill height, and a target amount in litres are given; the learner decides which height is relevant to the model, determines the volume or missing quantity, and judges whether the result is consistent with the real capacity."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a210b2665cb98408942c4d0a876912b5cabd38a5f03312c133ef22aeec692d36"
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0ae401539a7651e4ae8ae9fd2fdcdcb56f183377ea84c327e6693ce82803ae09",
+  "reviewInputFingerprint": "sha256:e0d5c2cc4d4c8c8b8d5aa2a059bf75542314e2a41374917c1c0cc5230f8923ec",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905-a",
+      "roundId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905-independent-a",
+      "runIds": [
+        "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905-b",
+      "roundId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031s-final-corrections-and-dependent-context-5-v1-20260905-independent-b",
+      "runIds": [
+        "mathematik-b031s-batch001-subject-review-gpt5-20260905"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+      "firstRecordId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z.record-001",
+      "secondRecordId": "math-b031s-b-fa0b6b69-20260905",
+      "firstRunId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z",
+      "secondRunId": "mathematik-b031s-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+      "firstRecordId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z.record-002",
+      "secondRecordId": "math-b031s-b-895a60ea-20260905",
+      "firstRunId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z",
+      "secondRunId": "mathematik-b031s-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+      "firstRecordId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z.record-003",
+      "secondRecordId": "math-b031s-b-a6c8db0a-20260905",
+      "firstRunId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z",
+      "secondRunId": "mathematik-b031s-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
+      "firstRecordId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z.record-004",
+      "secondRecordId": "math-b031s-b-0500f77f-20260905",
+      "firstRunId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z",
+      "secondRunId": "mathematik-b031s-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "firstRecordId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z.record-005",
+      "secondRecordId": "math-b031s-b-7f11ffe0-20260905",
+      "firstRunId": "mathematik-b031s-round-a-fresh-codex-gpt5-20260905t001112z",
+      "secondRunId": "mathematik-b031s-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

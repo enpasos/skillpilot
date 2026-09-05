@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b033y-overlap-safe-stable-current-carryover-1-v1-20260905",
+  "purpose": "Fail-closed overlap-safe carryover of the sole unowned exact-current KEEP/KEEP goal; two central owners, one directly stale KEEP/KEEP context, and both split targets remain excluded.",
+  "sourceBatchId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905",
+  "sourceCampaignGoalCount": 6,
+  "source": {
+    "configPath": "batch-033y-relativity-split-final-current-recheck-6-v1.config.json",
+    "configDigest": "sha256:3833dd959062418abef588e1300e1b7105c475de7ca73ad6c607d8e1ab2ab7fb",
+    "batchManifestPath": "batch-manifest.json",
+    "batchManifestDigest": "sha256:63aa687230bf9377b6dc84053ad3400a2b6000e51f549e90dceaeffee4cc2f56",
+    "dualSummaryPath": "dual-summary.json",
+    "dualSummaryDigest": "sha256:7269f8d265477e2564f64932ddb765a5f4daddd88210f28674d29db29d851163",
+    "canonicalLandscapeDigest": "sha256:9e903090f05d8178d5b11b5d6b4f267b89a169398c2aed3318a1114b16ad2bc8",
+    "semanticKindLedgerDigest": "sha256:95e22da26ff1edcb731861f8ca49ee919d8ff78aaaf8f12ad536b2840ea0945d",
+    "authoringPath": "overlap-safe-stable-current-carryover-1-v1.authoring.json",
+    "authoringDigest": "sha256:e84215fb0a42c4af6799f539bb010fcd09fd58cba72dd42eccfe96b6dc6e7d04"
+  },
+  "claimedGoalIds": [
+    "512f81af-1480-56a8-ae52-af3aa1a6a859"
+  ],
+  "claimedGoalCount": 1,
+  "explicitlyExcludedChangedGoalIds": [
+    "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+    "57ec031c-9a91-5331-81a7-6ef900f7c63e"
+  ],
+  "explicitlyExcludedContextStaleGoalIds": [
+    "a684bec1-ba59-59d0-98d2-4ca37236f64c"
+  ],
+  "explicitlyExcludedOverlapGoalIds": [
+    "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+    "a08e33db-d821-457b-86dd-870e7648c5f4"
+  ],
+  "existingStrictOverlapOwners": [
+    {
+      "goalId": "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+      "resolutionIndexPath": "batch-033w-final-adjudication-context-recheck-10-v1/resolution-index.overlap-safe-stable-current-carryover-7-v1.json",
+      "resolutionIndexDigest": "sha256:69e34671a33cb190c25902ad56002195cc5c481887f21af23754d503f140e0e2",
+      "resolutionPath": "resolutions-overlap-safe-stable-current-carryover-7-v1/8d34228c-da38-5c1e-97cc-571f3eafb9f4.resolution.json",
+      "resolutionDigest": "sha256:292e582afa20832873c162fcb1810af9efd5d73f51ef60f03d38e6ad244bb7ed"
+    },
+    {
+      "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
+      "resolutionIndexPath": "../../../checkpoint-current-2026-08-26/resolution-index.json",
+      "resolutionIndexDigest": "sha256:d416336b837baab42192b586ad6dfbb490ab71170b00d25e5032e9fe66deb8c4",
+      "resolutionPath": "../calibration-v2/2026-08-26/final-20-v6/resolutions/a08e33db-d821-457b-86dd-870e7648c5f4.resolution.json",
+      "resolutionDigest": "sha256:ab45d55285b342a989a6ea6e4c4f2a26b4fd21d6cfadf732a1d511dfbc7d1285"
+    }
+  ],
+  "currentPrerequisiteContexts": [
+    {
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "prerequisites": []
+    }
+  ],
+  "synthesisManifestPath": "synthesis-decisions.overlap-safe-stable-current-carryover-1-v1.json",
+  "synthesisManifestDigest": "sha256:63ca2c6248810c082427f303fc37484969939fafde4f09889bae39795dca909f",
+  "synthesisManifestFingerprint": "sha256:54bb1189759275393d8a78a6817242d1ce11b25c3583ceebf554caef5db77752",
+  "resolutionIndexPath": "resolution-index.overlap-safe-stable-current-carryover-1-v1.json",
+  "resolutionIndexDigest": "sha256:a939d976b15541d12674a61db7f1129fa30f87d753db2b297b5b407cade7ca90",
+  "noCentralRolloutRegistration": true,
+  "safeguards": {
+    "exactCampaignPartitionRequired": true,
+    "exactKeepKeepDecisionPairRequired": true,
+    "reviewedBilingualTextAndCanonicalContextMustRemainCurrent": true,
+    "directlyStaleKeepMustRemainExcluded": true,
+    "alreadyStrictOverlapsMustRemainExcludedAndPinned": true,
+    "individualResolutionFreshlyValidated": true,
+    "centralRegistrationPerformed": false
+  }
+}

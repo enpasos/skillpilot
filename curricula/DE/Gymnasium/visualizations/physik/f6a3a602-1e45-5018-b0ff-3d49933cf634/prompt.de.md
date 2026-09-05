@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `f6a3a602-1e45-5018-b0ff-3d49933cf634`
 - Titel: Beugung am Einzelspalt berechnen
-- Beschreibung: Die lernende Person kann Intensitätsverteilung und Maxima/Minima eines Einzelspalts bestimmen.
+- Beschreibung: Die lernende Person kann die Intensitätsverteilung im Fraunhofer-Beugungsbild eines Einzelspalts modellieren und die Lagen seiner Minima sowie der Maxima mit angemessenen Näherungen bestimmen.
 
 ## Generator
 
@@ -28,7 +28,7 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Beugung am Einzelspalt berechnen
-Beschreibung: Die lernende Person kann Intensitätsverteilung und Maxima/Minima eines Einzelspalts bestimmen.
+Beschreibung: Die lernende Person kann die Intensitätsverteilung im Fraunhofer-Beugungsbild eines Einzelspalts modellieren und die Lagen seiner Minima sowie der Maxima mit angemessenen Näherungen bestimmen.
 
 Zusatzanweisung:
 Pflichtinhalt:

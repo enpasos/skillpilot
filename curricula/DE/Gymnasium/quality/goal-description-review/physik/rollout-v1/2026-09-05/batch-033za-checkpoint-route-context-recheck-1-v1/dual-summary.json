@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0361d67cdc30699a41ebafba2b868ce6a1415b84078b1f920b3ead6fcd8a0f0e",
+  "reviewInputFingerprint": "sha256:c9bd37a240047b420bad98aa45a0130230da36434118111a89385a603f1393e0",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-a",
+      "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-a",
+      "runIds": [
+        "codex-round-a-physik-b033za-20260905"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-b",
+      "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-b",
+      "runIds": [
+        "physics-b033za-b-openai-gpt5-run-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "firstRecordId": "physik-b033za-round-a-7badac4d-20260905",
+      "secondRecordId": "physics-b033za-b-7badac4d-record-v1",
+      "firstRunId": "codex-round-a-physik-b033za-20260905",
+      "secondRunId": "physics-b033za-b-openai-gpt5-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

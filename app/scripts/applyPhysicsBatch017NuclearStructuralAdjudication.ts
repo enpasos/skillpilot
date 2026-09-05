@@ -75,7 +75,7 @@ const allJurisdictions = [
   'DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',
   'DE-NI', 'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
 ]
-const nuclideNotationJurisdictions = ['DE-BW', 'DE-MV', 'DE-ST', 'DE-TH']
+const nuclideNotationJurisdictions = ['DE-BW', 'DE-MV', 'DE-RP', 'DE-ST', 'DE-TH']
 const massEnergyReleaseJurisdictions = ['DE-BY', 'DE-MV', 'DE-ST']
 
 const paths = {

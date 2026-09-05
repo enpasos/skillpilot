@@ -1,0 +1,300 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Mathematics B032r stable-current-nine synthesis candidate",
+  "synthesizedAt": "2026-09-05T02:21:21.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905",
+    "batchManifestDigest": "sha256:76aa52b9d09d2ba900d27298ec12a1ab3e0aafac3d9325adcc8678ace86dadc0",
+    "configDigest": "sha256:6a8cc25344181abe8fb4c788d49882265fc64de476e38ca69093882fe83eb430",
+    "bundleFingerprint": "sha256:6a2cbcddb2b39b41bdd23bc93cf632d9d7a7d157a69d254376bd322e39dbb76d",
+    "bookDigest": "sha256:d23cfa83995324fbfcbeddff7415f7d4bfac00411a769146986bbccfb77736ae",
+    "reviewInputFingerprint": "sha256:87fe6a359b1a995332d9acd4a7c2bba30d959839dadb226a078f7095f26cb7d5",
+    "dualSummaryDigest": "sha256:e73666deadfca5700984971e7aa9ff2cce56ba32a7918be805eaa2e4fd802150",
+    "canonicalLandscapeDigest": "sha256:61f4852a1ec760ad86d7bacb8c168cac17fedfcf86195d8b3d061c931c0dea4c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-a",
+      "campaignDigest": "sha256:116d48cb67de6ef964980520528511d56bdd1ed41afff57091c944bc8a07fb09",
+      "roundId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:87fe6a359b1a995332d9acd4a7c2bba30d959839dadb226a078f7095f26cb7d5",
+      "batchId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3e2ace9f2fdebe00edcaa96e97ae63dda4fab5bba61b2829e748dab1e11c30e5",
+      "runId": "math-b032r-round-a-gpt5-20260905",
+      "runManifestDigest": "sha256:c6297aefa66ab2e7c2c7cd22cd6768be12953fb24cfe897e1a61092e0158b106",
+      "resultsDigest": "sha256:033ccb404485764736226d360cb246521004432b661d9b4e7ec2d39ca7f45a40"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-b",
+      "campaignDigest": "sha256:8e402a6f2337c7ea95a2197389b86ece32c0258d19db31d54baec6af51ef719f",
+      "roundId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:87fe6a359b1a995332d9acd4a7c2bba30d959839dadb226a078f7095f26cb7d5",
+      "batchId": "mathematik-rollout-v1-batch-032r-adjudicated-final-recheck-10-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:f5a8dbfd77ac8553dbbde44d58d8b75486a9c26607b056dc9a47a87c025cfdf0",
+      "runId": "mathematik-b032r-round-b-codex-gpt5-20260905-001",
+      "runManifestDigest": "sha256:f88d15fd77a611696daae115b839b8981ae0ea59ff9280b19234091c9e454c34",
+      "resultsDigest": "sha256:f3143b04c4fb0da1b57bfe97c06c2eb64733e1b98e554d092a43e93a69bbbfd7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-001",
+      "goalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3f29f1e6b0da4842d1ff488147a349d4b053e5469ae60ba2764c6160d864a727",
+      "pageFingerprint": "sha256:b2397ec212f55fa66db4634abdbc3cd24b916c73cfd502931538a8ad8d0a2aa9",
+      "goalReviewContextFingerprint": "sha256:ebcfbf5fb5be28969014255814454820d712ddd37010a2eac289041509e2e95b",
+      "finalText": {
+        "titleDe": "Irrationalität von √2 indirekt begründen",
+        "titleEn": "Justify the irrationality of √2 by indirect proof",
+        "descriptionDe": "Die lernende Person kann beim indirekten Beweis der Irrationalität von √2 die Annahme einer vollständig gekürzten rationalen Darstellung, die daraus folgenden Teilbarkeitsaussagen und den entstehenden Widerspruch erläutern und den Widerspruch auf die Ausgangsannahme zurückführen.",
+        "descriptionEn": "The learner can explain, in the indirect proof that √2 is irrational, the assumption of a rational representation in lowest terms, the resulting divisibility statements, and the contradiction, and relate that contradiction back to the initial assumption."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-01-7676b0f9",
+          "recordDigest": "sha256:48b94f2d72e1a3da9c25059cd71c1ad04b7c99c9a0038f9c28baf9b8f85bb5e7"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-001",
+          "recordDigest": "sha256:cfadbee463e64733f5370774f5c295cfb56ecce59957e43d0893239dc8c2e734"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde A wird für die Synthese gewählt, weil sie den vollständigen Widerspruchsbeweis einschließlich des Schlusses von p² gerade auf p gerade, der Substitution p = 2k und der ausdrücklichen Rückführung auf die Ausgangsannahme am präzisesten operationalisiert; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round A is selected for synthesis because it most precisely operationalizes the complete contradiction proof, including the inference from p squared even to p even, the substitution p = 2k, and the explicit return to the initial assumption; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-002",
+      "goalId": "f9e21454-857c-5a6a-8367-32a34fc0026b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c5d0d358ff03fa0a2272e725f24a5a7dbaa3c1e1a714c26a891bfd1f54d86b5b",
+      "pageFingerprint": "sha256:689a289a68f7d38dadc89076437494e0cbe6eb80f581a5fcd0249f44417b2e1d",
+      "goalReviewContextFingerprint": "sha256:3dbf50d0e3dc4c549a3d0442d4db7c650f1b19f5ed25538a24155de74cebcce3",
+      "finalText": {
+        "titleDe": "Erweiterung zu den reellen Zahlen begründen und Zahlen einordnen",
+        "titleEn": "Justify the extension to real numbers and classify numbers",
+        "descriptionDe": "Die lernende Person kann anhand irrationaler Zahlen erklären, warum der Zahlbereich der rationalen Zahlen zu den reellen Zahlen erweitert wird, und unterschiedlich dargestellte Zahlen begründet als rational oder irrational sowie als reell einordnen.",
+        "descriptionEn": "The learner can use irrational numbers to explain why the rational number system is extended to the real numbers and classify numbers in different representations, with justification, as rational or irrational and as real."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-02-f9e21454",
+          "recordDigest": "sha256:ac7fe4f86b26d76552729715be7eabca91764544bc2fd41d66c2ca1432c3c95a"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-002",
+          "recordDigest": "sha256:2c73af84ac2088d032cf2df1d787ddb2905c8dfd5aa1b0ed62d6bd15e6d0d14f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde A wird gewählt, weil sie die entscheidende Grenze zwischen dem exakten Zahlenwert und einer bloßen Dezimalnäherung ausdrücklich absichert und die Einordnung nicht an der Schreibweise festmacht; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round A is selected because it explicitly safeguards the decisive distinction between an exact value and a mere decimal approximation and does not base classification on notation; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-003",
+      "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0a9a71ac3dc3e5700e89265611a8ed7a4679f4384e0ae8166ec5adb24cb33b6c",
+      "pageFingerprint": "sha256:faf8cb50a99d08853a861608abd3fe371d9e228b5b6c159b8e4cfeb76d326628",
+      "goalReviewContextFingerprint": "sha256:31a229d2649b286696cb531f963896f6309a811d95b83ffeaf9e23725b42c8bf",
+      "finalText": {
+        "titleDe": "Wurzelfunktionen graphisch untersuchen",
+        "titleEn": "Investigate root functions graphically",
+        "descriptionDe": "Die lernende Person kann bei grundlegenden Wurzelfunktionen Funktionsterm, Definitions- und Wertemenge sowie Graph aufeinander beziehen und charakteristische Graphenmerkmale begründen.",
+        "descriptionEn": "The learner can relate the formula, domain, range, and graph of basic root functions and justify the characteristic features of their graphs."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-03-66077296",
+          "recordDigest": "sha256:177b4f9a8ab816b411533f4d80b0b53b496c5aa65d02574d76b6f52970d4f5a9"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-003",
+          "recordDigest": "sha256:0e935d433a43b15e510aa272d31c0b4eeef0448095d5c7f7bb3119ed4487a67b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde B wird gewählt, weil sie die Konstruktion oder Ergänzung des Graphen aus begründeten Punkten und die wechselseitige Vervollständigung von Term, Tabelle und Teilgraph besonders klar fordert; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round B is selected because it especially clearly requires constructing or completing the graph from justified points and completing formula, table, and partial graph representations consistently; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-004",
+      "goalId": "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ad2ef370d4efd6663c4927147f20f3b120886688f242bc1f97b4d44380ee8804",
+      "pageFingerprint": "sha256:8da49878ea0f9a68fef12fc2f2ebaa24283f82481cdacd9be176330173b27440",
+      "goalReviewContextFingerprint": "sha256:5eca4e37f460db824cd103345d78305921832d1324496680f57137dfe08a9b36",
+      "finalText": {
+        "titleDe": "Transformationen von Potenz- und Wurzelfunktionsgraphen beschreiben",
+        "titleEn": "Describe transformations of power and root function graphs",
+        "descriptionDe": "Die lernende Person kann Verschiebungen, Streckungen und Spiegelungen an Potenz- und Wurzelfunktionsgraphen erkennen und mit Termänderungen verknüpfen.",
+        "descriptionEn": "The learner can identify shifts, stretches, and reflections of power and root function graphs and connect them with changes in the expression."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-04-eb28b403",
+          "recordDigest": "sha256:b7a9dfa988be0f2dd6b61b805e4ea72c2734066f40c27ea841d9a8ab3f764ec1"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-004",
+          "recordDigest": "sha256:24792fd0f6ddca8b2e633c5bc5c94ccc1ffb480129923d592eaa52c49beb2f91"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde A wird gewählt, weil sie innere und äußere Parameterwirkungen, deren Reihenfolge sowie mögliche Folgen für die Definitionsmenge in einer besonders vollständigen Transferanforderung verbindet; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round A is selected because it connects inner and outer parameter effects, their order, and possible consequences for the domain in an especially complete transfer requirement; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-005",
+      "goalId": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cb3381f6d462b9e93e5ff53b6adf291b223bb9aa1f0593515e9725bde8d734f5",
+      "pageFingerprint": "sha256:81e3f49780d0817aad080f3e06b4863b39880d18d443c850698f620586aac2dc",
+      "goalReviewContextFingerprint": "sha256:f250751060a732e4f871cda67f2f5e8c49c046a520b00463b54f5f7ff8c87db2",
+      "finalText": {
+        "titleDe": "Sinus- und Kosinuswerte am Einheitskreis im Gradmaß deuten",
+        "titleEn": "Interpret sine and cosine values on the unit circle in degrees",
+        "descriptionDe": "Die lernende Person kann Sinuswerte als y- und Kosinuswerte als x-Koordinaten zu Winkeln von 0° bis 360° am Einheitskreis deuten, ihre Vorzeichen bestimmen, zu vorgegebenen Werten passende Winkel finden und vom Taschenrechner ausgegebene negative Winkelgrößen als äquivalente Winkel im betrachteten Bereich einordnen.",
+        "descriptionEn": "The learner can interpret sine values as y-coordinates and cosine values as x-coordinates on the unit circle for angles from 0° to 360°, determine their signs, find angles matching given values, and relate negative angle measures returned by a calculator to equivalent angles in the stated interval."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-05-97b3232d",
+          "recordDigest": "sha256:05c569ac359d261c637285864d606bf9880c30ed133198ba0f88eee63f968ce1"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-005",
+          "recordDigest": "sha256:0cc04412c3d59c20aa7d8e09378fe630ee65b6417ef44b71b1b49f0399a5ae16"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde A wird gewählt, weil sie alle Lösungen im Gradintervall, Quadrantenvorzeichen, Symmetrien und die Einordnung negativer Taschenrechner-Hauptwerte durch Koterminalität gemeinsam prüfbar macht; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round A is selected because it jointly makes all solutions in the degree interval, quadrant signs, symmetries, and the interpretation of negative calculator principal values through coterminality assessable; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-006",
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a8d7d3950f9a884bd5f006f9f40ad0181f08b2c408dcc44d92c8b87b4a66d157",
+      "pageFingerprint": "sha256:594ef31de8366b8e283da52358484018532402082ef65049bb544e78ee71c6b4",
+      "goalReviewContextFingerprint": "sha256:19865ae5fa43149b8140b5de14d44206677b269f42b53f8bce06e012bfdba866",
+      "finalText": {
+        "titleDe": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+        "titleEn": "Interpret sine and cosine values on the unit circle in radians and determine angles",
+        "descriptionDe": "Die lernende Person kann Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2π am Einheitskreis veranschaulichen, Vorzeichen sicher bestimmen und zu vorgegebenen Sinus- oder Kosinuswerten passende Winkelgrößen angeben.",
+        "descriptionEn": "The learner can illustrate sine and cosine values for angles between 0 and 2π on the unit circle, determine signs reliably, and identify suitable angles for given sine or cosine values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-06-c8818eae",
+          "recordDigest": "sha256:9a1fd7d0c59ec976cf19e6fe79aace953950b679549f1324b3e9732231093511"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-006",
+          "recordDigest": "sha256:ab994e22c573fe73b74f9e2a088fac6e994d23e9f1827cbf6311752c5317fa99"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde A wird gewählt, weil sie ausdrücklich alle passenden Winkelgrößen zwischen 0 und 2π mit Symmetriebegründung und den Transfer ohne eingeübtes Gradmaßschema verlangt; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round A is selected because it explicitly requires all matching angle measures from 0 to 2 pi with a symmetry justification and transfer without relying on a memorized degree template; Round B remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-007",
+      "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d7a32df4fc4e502c16ece9ecd2cdaf19e9d1f92d7f196c6ac7bd6ebcadf1dbb1",
+      "pageFingerprint": "sha256:a744d4a62805d5f8337ee3cc3bb13dd72c9d76f6df9fbfbaaf4b0e38e42085c1",
+      "goalReviewContextFingerprint": "sha256:1e95863254b4347895271cae028c612606e8e82added3e84bf32dfa86ffbc2d3",
+      "finalText": {
+        "titleDe": "Sinussatz herleiten",
+        "titleEn": "Derive the sine law",
+        "descriptionDe": "Die lernende Person kann den Sinussatz für ein allgemeines Dreieck aus bekannten geometrischen Beziehungen herleiten und jeden Schritt der Seiten-Winkel-Beziehung begründen.",
+        "descriptionEn": "The learner can derive the sine law for a general triangle from known geometric relationships and justify each step in the side-angle relationship."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-07-0c8c1ae9",
+          "recordDigest": "sha256:6408bbfc2103c78d74ff278262c9c6a604a0ee7e5435bc38a1b130d23dce3683"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-007",
+          "recordDigest": "sha256:c54bcd63262b38d53d4e5c2cee0a5d2da63dd70b86086dc8b78f7162d58964cb"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde B wird gewählt, weil sie die Höhe aus beiden rechtwinkligen Teildreiecken darstellen, die Ausdrücke gleichsetzen und jede Seiten-Winkel-Zuordnung sowie Äquivalenzumformung begründen lässt; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round B is selected because it requires expressing the altitude from both right-triangle parts, equating the expressions, and justifying every side-angle correspondence and equivalent transformation; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-008",
+      "goalId": "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b500b00fd4006824955c8cf907cdf4a77d69023524e6092fafb11edc85865bcb",
+      "pageFingerprint": "sha256:038612b553cbe2c315f6b494fae17bad417e731ed4327e2bda70237e7d546256",
+      "goalReviewContextFingerprint": "sha256:3e42b3e0d26f4b9581e20d6176c17b710ec1e6c6bfe500c2f69663685531fb76",
+      "finalText": {
+        "titleDe": "Kosinussatz herleiten",
+        "titleEn": "Derive the cosine law",
+        "descriptionDe": "Die lernende Person kann den Kosinussatz in einem allgemeinen Dreieck mithilfe geeigneter Zerlegungen oder Koordinatenüberlegungen herleiten und den Satz des Pythagoras als Spezialfall erklären.",
+        "descriptionEn": "The learner can derive the cosine law in a general triangle using suitable decompositions or coordinate reasoning and explain the Pythagorean theorem as a special case."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-08-786ae588",
+          "recordDigest": "sha256:d2a70645d81c1cfea3c79485cfa37cf9fbf1443dd08e1a99f122ed54041a7b3b"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-008",
+          "recordDigest": "sha256:40dd5c7b7b5ca52f7909d3b4b49d07e1af05671c179576ad1e89b07c006d4380"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde B wird gewählt, weil sie den Korrekturterm über Komponenten, die Vereinfachung mit sin²(α)+cos²(α)=1, den stumpfwinkligen Transfer und den rechten Grenzfall als zusammenhängende Herleitung ausweist; Runde A bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round B is selected because it presents the correction term through components, simplification with sin squared plus cos squared equals one, obtuse-triangle transfer, and the right-angle limiting case as one coherent derivation; Round A remains fully bound."
+    },
+    {
+      "decisionId": "mathematik-b032r-stable-current-carryover-9-v1-openai-codex-20260905-decision-009",
+      "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d5631f40973073c241526fd3c844520d821f512e8cffe7c1bc69f8c15f6a4434",
+      "pageFingerprint": "sha256:43140a533bd0fd3a725acc30e91d1d8091403ce53abae00cc9cbbd62216f2428",
+      "goalReviewContextFingerprint": "sha256:8fbfb1475ad6057a12eccab21d2ff864d35e99c42221c0d3104420b9add308cc",
+      "finalText": {
+        "titleDe": "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+        "titleEn": "Read properties of quadratic functions from graphs",
+        "descriptionDe": "Die lernende Person kann aus dem Graphen einer quadratischen Funktion Wertemenge, Nullstellen, Vorzeichenbereiche, Monotonieverhalten, Extremwerte und den y-Achsenabschnitt bestimmen.",
+        "descriptionEn": "The learner can determine the range, roots, sign intervals, monotonic behaviour, extrema, and y-intercept of a quadratic function from its graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b032r-a-10-e0c3359d",
+          "recordDigest": "sha256:dbe107cb1c69cf310a7c28b184fd20657651efaa4317e34be49d1b9274c45319"
+        },
+        "second": {
+          "recordId": "mathematik-b032r-round-b-record-010",
+          "recordDigest": "sha256:6414babca3e1bfd9ba8383b06a01600bb1324112df064b3a4e2b4cc8bc9451bf"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den exakten aktuellen Text mit KEEP. Runde A wird gewählt, weil sie neben der konsistenten Bestimmung aller Parabeleigenschaften ausdrücklich die Evidenzgrenze eines beschnittenen Darstellungsfensters prüfen lässt; Runde B bleibt vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the exact current text with KEEP. Round A is selected because, in addition to determining all parabola properties consistently, it explicitly assesses the evidence limits of a clipped viewing window; Round B remains fully bound."
+    }
+  ],
+  "manifestFingerprint": "sha256:c6323b4be45dd84d80bd0e401c06f4caaa62ff23be52084059eafb26d9385e69"
+}

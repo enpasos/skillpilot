@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+  "goal": {
+    "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e74256d7d55f0a954c7be30cd75e037712db87dc259450ef3aa0108f6f9556d1",
+    "pageFingerprint": "sha256:79c3d69eca904e5abe673f3942bc338fe96eaa1e785b597158c858c6cb8526af",
+    "goalReviewContextFingerprint": "sha256:ec37b777081724741bc3184689da3b3e520b97d34575bc3378edc2c7a875c9e0",
+    "finalText": {
+      "titleDe": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
+      "titleEn": "Describe angle relations in figures and use them for geometric arguments",
+      "descriptionDe": "Die lernende Person kann Winkelbeziehungen an Parallelen, in Dreiecken und in Vielecken fachsprachlich beschreiben und diese Beziehungen für einfache geometrische Argumentationen nutzen.",
+      "descriptionEn": "The learner can describe angle relations at parallel lines, in triangles, and in polygons using correct terminology and use these relations for simple geometric arguments."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:ec37b777081724741bc3184689da3b3e520b97d34575bc3378edc2c7a875c9e0",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-fc047e6e",
+      "recordDigest": "sha256:5f65af1206eb00c9a24b3a861cfabade3eefca777b223bff1a853fba359781b3"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:ec37b777081724741bc3184689da3b3e520b97d34575bc3378edc2c7a875c9e0",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-011",
+      "recordDigest": "sha256:0f5e599fa9c0b6305544072ad221b5793bb372b86abe3e7c85cd7a2d1e9dfb78"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen die aktuelle Beschreibung mit KEEP. Runde A ist stärker, weil sie Winkelbeziehungen ausdrücklich aus Lagebedingungen herleitet, die Vieleckwinkelsumme durch Dreieckszerlegung begründet und bei einer gedrehten Figur zwischen gegebener Parallelität und bloß parallelem Aussehen unterscheidet.",
+    "rationaleEn": "Both rounds confirm the current description with KEEP. Round A is stronger because it explicitly derives angle relations from positional conditions, justifies polygon angle sums by decomposition into triangles, and distinguishes stated parallelism from merely parallel appearance in a rotated figure.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht Winkelbeziehungen als aus Lagebedingungen folgende Zusammenhänge: An geschnittenen Parallelen gelten entsprechende Wechsel- und Stufenwinkelbeziehungen, die Winkelsumme im Dreieck beträgt 180°, und Vieleckbeziehungen lassen sich durch Zerlegung in Dreiecke begründen.",
+      "essentialUnderstandingEn": "The learner understands angle relations as consequences of positional conditions: for intersected parallel lines, corresponding and alternate-angle relations hold, the angles in a triangle sum to 180°, and polygon relations can be justified by decomposition into triangles.",
+      "observablePerformanceDe": "Die lernende Person bestimmt unbekannte Winkel in einer zusammengesetzten Figur und begründet jeden Schritt mit der passenden Lagebedingung oder Winkelbeziehung, unterscheidet gegebene Parallelität von einer nur scheinbar parallelen Zeichnung und stellt die Argumentationskette fachsprachlich dar.",
+      "observablePerformanceEn": "The learner determines unknown angles in a composite figure and justifies each step using the relevant positional condition or angle relation, distinguishes stated parallelism from lines that merely look parallel in a diagram, and presents the chain of reasoning using correct terminology.",
+      "transferExpectationDe": "In einer neuen, gedrehten Figur mit einer Hilfslinie überträgt die lernende Person die Winkelbeziehungen unabhängig von der Bildlage, wählt eine kurze Begründungskette und erklärt, welche Folgerung ohne die Parallelitätsvoraussetzung nicht zulässig wäre.",
+      "transferExpectationEn": "In a fresh rotated figure containing an auxiliary line, the learner transfers the angle relations independently of orientation, chooses a short chain of reasoning, and explains which inference would be invalid without the parallelism condition."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ba7632ba6901f826602c75059d4ce8ee9ebe1c87acaf15d769016e18419e04e1"
+}

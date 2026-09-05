@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033x-stable-current-carryover-1-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-physics-b033x-integration-2026-09-05",
+  "synthesizedAt": "2026-09-05T02:38:18.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905",
+    "batchManifestDigest": "sha256:5b5a6f7ee249a1a8765d8974e3e8c654a37eef71645ad97ecae2b2cddbc4247c",
+    "configDigest": "sha256:9c46158bd808952c522a04b8c53da88f0c500fb9e9d3ca0c5b99f5c6ed0f03bd",
+    "bundleFingerprint": "sha256:3240691aaea2b0f9c22516981eb82a1c61e899631c029d5fb77c3bc0db5c8417",
+    "bookDigest": "sha256:fd566c5a3261f64ff198320d66a5f1dda02e4ce5da1963e48cc9dd73461d7548",
+    "reviewInputFingerprint": "sha256:da751be1805631343988398b553c99cd906d90ebc21739c5e2a93eddb804d1ec",
+    "dualSummaryDigest": "sha256:7ceced7f5d92e644a5b29d59fd72d2772f93fe6d9c384bf1d56863ac20f37072",
+    "canonicalLandscapeDigest": "sha256:feab56ab0e3d0c8cfce8a48f41aceabdda2e45c86512e6746b0a303b9a297736"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-a",
+      "campaignDigest": "sha256:a56526fe83135c072709809b62afdc699ea49b98238c957c4134f7693f3df78a",
+      "roundId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:da751be1805631343988398b553c99cd906d90ebc21739c5e2a93eddb804d1ec",
+      "batchId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7b0583e85e3e5470d5a037089bfc8633a6dda95ba3a01a0221a64aeaae8594da",
+      "runId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-a.codex-blind-a",
+      "runManifestDigest": "sha256:f308aa74d3b3842fcc420208ec79520e19e551fbc87d057db67a284d8e295434",
+      "resultsDigest": "sha256:2f71305e0ad543b80baf2f1610e26fc513c30323d95861c1e3d1b2eb3e497bb3"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-b",
+      "campaignDigest": "sha256:0b1f1d33f0773203fa9d3f1fd441a97a795b65a15e45b70e8b3338cd994702f0",
+      "roundId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:da751be1805631343988398b553c99cd906d90ebc21739c5e2a93eddb804d1ec",
+      "batchId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e98ab6325ca8e63bb707b83453ee9c2c9f4298aaefa577f1cf2020f9da68c844",
+      "runId": "physik-b033x-round-b-codex-gpt5-20260905",
+      "runManifestDigest": "sha256:8739f5782f2eac8e3c86bb6dba403d3248b26576db08fbc5817c69dc0e23fff7",
+      "resultsDigest": "sha256:e604456af7f6f03cae1a57ebf8c98d1d67fc758c543c364a9b63ccd4a1c5a2a3"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033x-stable-current-carryover-1-v1-openai-codex-20260905-decision-001",
+      "goalId": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7d88450b7bd26dad77ae8935a9f74a1ec762f6446ae62ea3e64b4bac2093f5b4",
+      "pageFingerprint": "sha256:378f250cf6178e5b849452a339e753334fa2af1f28577d27443ee3b8f8767a67",
+      "goalReviewContextFingerprint": "sha256:5c6bf3ba37fa7231b541a4a8d724a1f55175b6720a85c7eae07133d54f3aee30",
+      "finalText": {
+        "titleDe": "Schwingungsgleichung lösen",
+        "titleEn": "Solve Oscillation Equation",
+        "descriptionDe": "Die lernende Person kann die lineare Differenzialgleichung einer ungedämpften harmonischen Schwingung für gegebene Anfangsbedingungen lösen und die Lösung anhand von Amplitude, Kreisfrequenz und Phase physikalisch deuten.",
+        "descriptionEn": "The learner can solve the linear differential equation of an undamped harmonic oscillator for given initial conditions and physically interpret the solution in terms of amplitude, angular frequency, and phase."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-a.record-001",
+          "recordDigest": "sha256:2f79c85b7cabb7853f25d3b77f87bef8820ea2b10f8cccf4cec0c2d55f2981ee"
+        },
+        "second": {
+          "recordId": "physik-b033x-round-b-codex-gpt5-20260905:01",
+          "recordDigest": "sha256:1c270a4f428ec6d4e0f4f4d6585c62f2f12e481da8913b188be1dae11949ff4a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Blindprüfungen bestätigen den aktuellen zweisprachigen Text als zusammenhängende Kompetenz zum Lösen und physikalischen Deuten der ungedämpften harmonischen Schwingungsgleichung. Runde B wird ausgewählt, weil sie äquivalente Lösungsdarstellungen, die eindeutige Bestimmung durch beide Anfangsbedingungen sowie Vorzeichen-, Einheiten- und Phasenkonventionen besonders vollständig operationalisiert; Runde A bleibt mit ihrer eigenständigen Evidenz vollständig gebunden.",
+      "rationaleEn": "Both independent blind reviews confirm the current bilingual text as one coherent competence for solving and physically interpreting the undamped harmonic-oscillator equation. Round B is selected because it particularly completely operationalizes equivalent solution representations, unique determination by both initial conditions, and sign, unit, and phase conventions; Round A remains fully bound with its independent evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:66a65a888b118421503775cdf9c8193f8594f421f1db4c95d0b2f3142f0848a6"
+}

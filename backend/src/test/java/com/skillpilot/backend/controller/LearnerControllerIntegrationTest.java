@@ -575,7 +575,7 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(189);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(192);
     }
 
     @Test
@@ -1322,22 +1322,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "238", "238" },
-                { "DE-BE", "237", "237" },
-                { "DE-BW", "256", "256" },
-                { "DE-BY", "226", "226" },
-                { "DE-HB", "211", "211" },
-                { "DE-HE", "324", "378" },
-                { "DE-HH", "237", "237" },
-                { "DE-MV", "237", "237" },
-                { "DE-NI", "237", "237" },
-                { "DE-NW", "237", "237" },
-                { "DE-RP", "158", "165" },
-                { "DE-SH", "222", "229" },
-                { "DE-SL", "237", "237" },
-                { "DE-SN", "237", "237" },
-                { "DE-ST", "237", "237" },
-                { "DE-TH", "238", "238" }
+                { "DE-BB", "239", "239" },
+                { "DE-BE", "238", "238" },
+                { "DE-BW", "257", "257" },
+                { "DE-BY", "229", "229" },
+                { "DE-HB", "212", "212" },
+                { "DE-HE", "317", "358" },
+                { "DE-HH", "238", "238" },
+                { "DE-MV", "238", "238" },
+                { "DE-NI", "238", "238" },
+                { "DE-NW", "238", "238" },
+                { "DE-RP", "261", "287" },
+                { "DE-SH", "256", "262" },
+                { "DE-SL", "238", "238" },
+                { "DE-SN", "238", "238" },
+                { "DE-ST", "238", "238" },
+                { "DE-TH", "239", "239" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1373,12 +1373,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "738", "769" },
-                { "DE-HE", "LK", "864", "895" },
-                { "DE-RP", "GK", "577", "584" },
-                { "DE-RP", "LK", "688", "695" },
-                { "DE-SH", "GK", "622", "629" },
-                { "DE-SH", "LK", "718", "725" }
+                { "DE-HE", "GK", "731", "749" },
+                { "DE-HE", "LK", "857", "875" },
+                { "DE-RP", "GK", "675", "700" },
+                { "DE-RP", "LK", "786", "811" },
+                { "DE-SH", "GK", "650", "656" },
+                { "DE-SH", "LK", "746", "752" }
         };
         SoftAssertions softly = new SoftAssertions();
 

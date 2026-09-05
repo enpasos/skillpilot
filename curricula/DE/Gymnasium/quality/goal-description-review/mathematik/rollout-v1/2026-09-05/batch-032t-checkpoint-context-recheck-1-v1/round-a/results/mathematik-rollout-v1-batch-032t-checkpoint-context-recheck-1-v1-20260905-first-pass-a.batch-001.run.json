@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-round-a-mathematik-b032t-20260905",
+  "campaignId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-a",
+  "roundId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:91468ad0979058fe39f51fae28a180136f1cb75c9a3c3498ce9e1637e9f4ccd8",
+  "bundleFingerprint": "sha256:f58e7b80d94a779f794159ab692e6853bdc6c24b7cc6de0fff4df5f89544ccca",
+  "bookDigest": "sha256:b749d27d87eadc0b167405deab56530f3e44b2f5a6a32812ba5f5396ca9dd0ab",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:4318d40e0016a60e499326ca8c8fdf2c639c71a1b469a26ada2f9b285cd1b3d5",
+  "independenceGroupId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f17935b0-189f-5e0c-988d-ce508b710097"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:91468ad0979058fe39f51fae28a180136f1cb75c9a3c3498ce9e1637e9f4ccd8"
+    }
+  ],
+  "startedAt": "2026-09-05T04:07:48Z",
+  "completedAt": "2026-09-05T04:29:25Z",
+  "status": "completed",
+  "outputDigest": "sha256:2b5370c2d3423cbbd74810b78d6d2e7def24a1c50fd684be7aab0e4b1208caf4",
+  "toolchainVersion": "codex-agent-v1"
+}

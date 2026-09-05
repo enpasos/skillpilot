@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b033s-stable-current-adjudicated-2-v1",
+  "reviewedAt": "2026-09-05T23:30:00.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-033s-stable-adjudicated2-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "reason": "DE: Das Profil prüft eine fachliche Strahlungsrisikobeurteilung als begründete Auswahl und Verbindung von Quellen-, Dosis- und Expositionsgrößen, nicht als Schluss von Aktivität allein auf Risiko. Zwei unabhängige Fälle wechseln zwischen externer Gammaexposition mit Geometrie und Abschirmung und interner Alphaexposition mit strahlenschutzbezogener Gewichtung; Unsicherheit, Modellgrenzen und die Trennung physikalischer Befunde von Werturteilen bleiben explizit. EN: The profile assesses radiation-risk evaluation as a justified selection and connection of source, dose, and exposure quantities, not as an inference from activity alone. Two independent cases vary between external gamma exposure with geometry and shielding and internal alpha exposure with radiation-protection weighting; uncertainty, model limits, and the distinction between physical findings and value judgments remain explicit.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "source-activity-and-dose-answer-different-questions",
+            "essentialUnderstandingDe": "Die Aktivität A in Becquerel beschreibt Zerfälle pro Zeit in einer Quelle. Die absorbierte Dosis D in Gray beschreibt deponierte Energie pro bestrahlter Masse; Äquivalent- oder effektive Dosis in Sievert ergänzt je nach Fragestellung Strahlungs- beziehungsweise Gewebewichtungen. Zwischen gleicher Aktivität und gleichem Risiko besteht ohne Expositionsmodell kein eindeutiger Zusammenhang.",
+            "essentialUnderstandingEn": "Activity A in becquerels describes decays per unit time in a source. Absorbed dose D in grays describes energy deposited per irradiated mass; equivalent or effective dose in sieverts adds radiation or tissue weighting as appropriate to the question. Equal activity does not imply equal risk without an exposure model.",
+            "observablePerformanceDe": "Die lernende Person ordnet in einer neuen Risikofrage Aktivität, Dosis und Einheiten korrekt ihren Rollen zu, wählt eine zur Aussage passende Dosisgröße und erklärt, welche zusätzlichen Angaben für die Verbindung von Quelle und Exposition nötig sind.",
+            "observablePerformanceEn": "For a fresh risk question, the learner correctly assigns activity, dose, and units to their roles, selects a dose quantity appropriate to the claim, and explains what additional information is needed to connect source and exposure."
+          },
+          {
+            "id": "exposure-model-connects-duration-geometry-shielding-and-radiation-type",
+            "essentialUnderstandingDe": "Die Exposition hängt unter anderem von Strahlungsart, Dauer, Abstand und Geometrie, Abschirmung sowie innerer oder äußerer Aufnahme ab; einfache Abstands- oder Abschirmungsmodelle gelten nur unter ihren angegebenen Bedingungen.",
+            "essentialUnderstandingEn": "Exposure depends on radiation type, duration, distance and geometry, shielding, and internal or external intake; simple distance or shielding models apply only under their stated conditions.",
+            "observablePerformanceDe": "Die lernende Person baut aus bereitgestellten sicheren Daten ein transparentes Expositionsmodell auf, berechnet oder vergleicht die relevante Dosis mit konsistenten Einheiten und prüft mindestens eine Annahme oder einen Grenzfall.",
+            "observablePerformanceEn": "Using supplied safe data, the learner builds a transparent exposure model, calculates or compares the relevant dose with consistent units, and checks at least one assumption or limiting case."
+          },
+          {
+            "id": "risk-judgment-separates-evidence-uncertainty-and-criteria",
+            "essentialUnderstandingDe": "Eine fachliche Risikobeurteilung verbindet physikalische Dosisbefunde und deren Unsicherheit mit ausdrücklich genannten Vergleichs- oder Schutzkriterien; eine Dosisabschätzung allein legt keine gesellschaftliche oder individuelle Wertentscheidung fest.",
+            "essentialUnderstandingEn": "A defensible risk assessment connects physical dose evidence and its uncertainty to explicitly stated comparison or protection criteria; a dose estimate alone does not determine a societal or individual value judgment.",
+            "observablePerformanceDe": "Die lernende Person formuliert ein abgestuftes Urteil, kennzeichnet Mess- und Modellunsicherheit, nennt das verwendete Kriterium und trennt belastbare physikalische Aussage von einer weitergehenden Wertentscheidung.",
+            "observablePerformanceEn": "The learner formulates a qualified judgment, identifies measurement and model uncertainty, states the criterion used, and distinguishes a defensible physical claim from a further value judgment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["source-activity-and-dose-answer-different-questions", "exposure-model-connects-duration-geometry-shielding-and-radiation-type", "risk-judgment-separates-evidence-uncertainty-and-criteria"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "exposure-path", "textDe": "äußere Bestrahlung oder innere Aufnahme", "textEn": "external irradiation or internal intake"},
+          {"id": "informative-quantity", "textDe": "Aktivität, absorbierte Dosis, Äquivalentdosis oder effektive Dosis", "textEn": "activity, absorbed dose, equivalent dose, or effective dose"},
+          {"id": "physical-modifier", "textDe": "Dauer, Abstand und Geometrie, Abschirmung oder Strahlungsart", "textEn": "duration, distance and geometry, shielding, or radiation type"},
+          {"id": "uncertainty-source", "textDe": "Messunsicherheit, Modellnäherung oder fehlende biokinetische Information", "textEn": "measurement uncertainty, model approximation, or missing biokinetic information"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "external-gamma-workplace-comparison",
+            "taskDemandDe": "Für eine abgeschirmte Gammaquelle wird unter beaufsichtigten Referenzbedingungen in 1 m Abstand eine Äquivalentdosisleistung von (4,0±0,5) µSv/h angegeben. Im Fernfeld darf näherungsweise das 1/r²-Gesetz benutzt werden; eine Schutzwand lässt (25±3)% durch. Person A arbeitet 3 h in 2 m Abstand hinter der Wand, Person B 0,5 h in 1 m Abstand ohne Wand. Vergleiche die Dosis, beurteile die Aussagekraft der Quellenaktivität und formuliere ein unsicherheitsbewusstes Urteil.",
+            "taskDemandEn": "For a shielded gamma source, an equivalent dose rate of (4.0±0.5) µSv/h at 1 m is supplied under supervised reference conditions. In the far field an inverse-square approximation may be used; a protective wall transmits (25±3)%. Person A works for 3 h at 2 m behind the wall, while person B works for 0.5 h at 1 m without the wall. Compare dose, assess what the source activity can establish, and formulate an uncertainty-aware judgment.",
+            "expectedPerformanceDe": "Für A ergibt das Modell 4,0·(1/2²)·0,25·3≈0,75 µSv, für B 4,0·0,5=2,0 µSv; B erhält trotz kürzerer Dauer die größere geschätzte Dosis. Die Aktivität allein ersetzt weder Dosisleistung noch Geometrie und Abschirmung. Das Urteil nennt Unsicherheitsfortpflanzung qualitativ und begrenzt das 1/r²-Modell auf eine hinreichend punktförmige Quelle im Fernfeld.",
+            "expectedPerformanceEn": "The model gives A about 4.0·(1/2²)·0.25·3=0.75 µSv and B 4.0·0.5=2.0 µSv; B has the larger estimated dose despite the shorter duration. Activity alone replaces neither dose rate nor geometry and shielding. The judgment treats uncertainty propagation qualitatively and limits the inverse-square model to a sufficiently point-like source in the far field.",
+            "understandingFocusDe": "Direkte AB3-Beurteilung mit Dosisgröße, Dauer, Geometrie, Abschirmung und Modellunsicherheit.",
+            "understandingFocusEn": "Direct AB3 assessment combining dose quantity, duration, geometry, shielding, and model uncertainty."
+          },
+          {
+            "id": "same-activity-internal-alpha-transfer",
+            "taskDemandDe": "Zwei Proben besitzen dieselbe Aktivität von 1,0 kBq. Probe X ist ein gekapselter Alphastrahler außerhalb des Körpers; für die betrachtete Person ist die zusätzliche absorbierte Dosis unterhalb der Nachweisgrenze. Von Probe Y wurde eine kleine Menge aufgenommen; bereitgestellte Modellierung ergibt für ein Organ D=(0,20±0,06) mGy, mit w_R=20. Bestimme die Organ-Äquivalentdosis, erkläre den Risikounterschied und benenne, was für eine effektive Dosisbeurteilung noch fehlt.",
+            "taskDemandEn": "Two samples have the same activity of 1.0 kBq. Sample X is an encapsulated alpha source outside the body; the additional absorbed dose for the person considered is below detection. A small amount of sample Y was taken into the body; supplied modelling gives D=(0.20±0.06) mGy to one organ, with w_R=20. Determine the organ equivalent dose, explain the risk difference, and state what is still missing for an effective-dose assessment.",
+            "expectedPerformanceDe": "Für Y gilt H_T=w_R·D=(4,0±1,2) mSv. Gleiche Aktivität führt wegen äußerer Kapselung gegenüber innerer Energiedeposition nicht zu gleicher Dosis oder Beurteilung. Für eine effektive Dosis fehlen mindestens Gewebewichtung und Beiträge weiterer Organe; Aufenthaltszeit, Verteilung im Körper und Modellannahmen begrenzen die Aussage.",
+            "expectedPerformanceEn": "For Y, H_T=w_R·D=(4.0±1.2) mSv. Equal activity does not imply equal dose or assessment because external encapsulation and internal energy deposition differ. An effective-dose estimate still needs at least tissue weighting and contributions from other organs; residence time, bodily distribution, and model assumptions limit the claim.",
+            "understandingFocusDe": "Unabhängiger Transfer zu Strahlungsart, innerer Exposition, Gewichtung und fehlender Information bei gleicher Quellenaktivität.",
+            "understandingFocusEn": "Independent transfer to radiation type, internal exposure, weighting, and missing information despite equal source activity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9fb1dd85-11b7-4a5a-b124-27fea8d1788e",
+      "reason": "DE: Das Profil operationalisiert den beibehaltenen Canonicaltext durch sichere Experimente beziehungsweise Simulationen, eine klare Trennung von Beobachtung und Modellschluss sowie eigenständig konstruierte Feldlinienbilder. Drei unabhängige Fälle variieren Leiteranordnung, Feldrichtung und Systemgrenze; elektrostatisches Gleichgewicht und Ladungserhaltung liefern die im Review geforderte fachliche Tiefe, ohne ein zusätzliches Lernziel in den Canonicaltext einzubauen. EN: The profile operationalises the retained canonical wording through safe experiments or simulations, a clear distinction between observation and model inference, and learner-constructed field-line diagrams. Three independent cases vary conductor arrangement, field direction, and system boundary; electrostatic equilibrium and charge conservation provide the depth requested in review without adding another goal to the canonical wording.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "DE: Eine Reviewrunde verlangte Gleichgewicht und Ladungserhaltung ausdrücklich im Canonicaltext. Die Synthese behält den aktuellen Text, macht beide Bedingungen aber hier zu verpflichtenden Evidenzerwartungen. EN: One review round requested equilibrium and charge conservation explicitly in the canonical wording. The synthesis retains the current wording but makes both conditions required evidence expectations here."
+      ],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "safe-induction-investigation-separates-observation-and-inference",
+            "essentialUnderstandingDe": "Influenz kann durch Annäherung eines geladenen Körpers ohne leitenden Kontakt untersucht werden. Zeigerausschlag, Sensorsignal oder nach Trennung gemessene Ladung sind Beobachtungen; die räumliche Verschiebung freier Ladungen im Leiter ist eine modellgestützte Erklärung.",
+            "essentialUnderstandingEn": "Electrostatic induction can be investigated by bringing a charged object near without conductive contact. Pointer deflection, sensor signal, or charge measured after separation are observations; spatial redistribution of free charge in the conductor is a model-based explanation.",
+            "observablePerformanceDe": "Die lernende Person formuliert für eine sichere Niedrigenergie-Anordnung oder Simulation eine prüfbare Frage, verändert gezielt Abstand oder Feldrichtung, kontrolliert Kontakt und Anfangsladung, protokolliert Beobachtungen mit Unsicherheit und trennt sie sprachlich vom Modellschluss.",
+            "observablePerformanceEn": "For a safe low-energy setup or simulation, the learner states a testable question, deliberately varies distance or field direction, controls contact and initial charge, records observations with uncertainty, and verbally separates them from model inference."
+          },
+          {
+            "id": "charge-redistribution-reaches-electrostatic-equilibrium",
+            "essentialUnderstandingDe": "Im äußeren Feld bewegen sich freie Ladungen eines Leiters, bis ihre erzeugte Feldwirkung im Leitermaterial das äußere Feld kompensiert und elektrostatisches Gleichgewicht erreicht ist. Bei einem isolierten, anfangs neutralen Leiter werden positive und negative Oberflächenbereiche getrennt, während seine Gesamtladung null bleibt.",
+            "essentialUnderstandingEn": "In an external field, free charges in a conductor move until their field cancels the external field within the conducting material and electrostatic equilibrium is reached. In an isolated conductor that is initially neutral, positive and negative surface regions separate while its total charge remains zero.",
+            "observablePerformanceDe": "Die lernende Person erklärt für eine neue Leiterform Richtung und Ort der Ladungsverschiebung, bilanziert die Gesamtladung für die ausdrücklich gewählte Systemgrenze und begründet, warum im Leiterinneren im Gleichgewicht kein elektrisches Feld verbleibt.",
+            "observablePerformanceEn": "For a fresh conductor shape, the learner explains the direction and location of charge redistribution, balances total charge for the explicitly chosen system boundary, and justifies why no electric field remains inside the conductor at equilibrium."
+          },
+          {
+            "id": "field-line-diagram-represents-result-and-limits",
+            "essentialUnderstandingDe": "Ein Feldlinienbild stellt Richtung und relative Stärke des resultierenden elektrischen Feldes dar, nicht die Bahnen sichtbarer Teilchen. Im elektrostatischen Gleichgewicht verlaufen im Leitermaterial keine Feldlinien; außerhalb treffen sie eine Leiteroberfläche senkrecht und passen qualitativ zur induzierten Oberflächenladung.",
+            "essentialUnderstandingEn": "A field-line diagram represents the direction and relative strength of the resulting electric field, not paths of visible particles. At electrostatic equilibrium no field lines run through the conducting material; outside, they meet a conductor surface normally and are qualitatively consistent with induced surface charge.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder korrigiert zu einem unbekannten Influenzfall ein konsistentes Feldlinienbild, erläutert Pfeilrichtung und Liniendichte, verbindet es mit der Ladungsverteilung und benennt, was die Darstellung nicht direkt beobachtbar macht.",
+            "observablePerformanceEn": "For an unfamiliar induction case, the learner constructs or corrects a consistent field-line diagram, explains arrow direction and line density, connects it to charge distribution, and states what the representation does not make directly observable."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["safe-induction-investigation-separates-observation-and-inference", "charge-redistribution-reaches-electrostatic-equilibrium", "field-line-diagram-represents-result-and-limits"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "conductor-arrangement", "textDe": "ein einzelner Leiter oder zwei zunächst berührende und später getrennte Leiter", "textEn": "one conductor or two conductors initially touching and later separated"},
+          {"id": "external-field-change", "textDe": "veränderter Abstand, umgekehrte Feldrichtung oder veränderte Leiterform", "textEn": "changed distance, reversed field direction, or changed conductor shape"},
+          {"id": "system-boundary", "textDe": "isolierter Leiter oder Leiter mit vorübergehender Erdverbindung", "textEn": "isolated conductor or conductor with a temporary ground connection"},
+          {"id": "evidence-form", "textDe": "Sensorsignal, Ladungsmessung nach Trennung oder selbst erzeugtes Feldlinienbild", "textEn": "sensor signal, charge measurement after separation, or learner-produced field-line diagram"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-spheres-separation-experiment",
+            "taskDemandDe": "Plane und deute einen sicheren Versuch oder eine Simulation mit zwei zunächst neutralen, sich berührenden Metallkugeln A und B. Ein negativ geladener Stab wird ohne Kontakt nahe A gehalten; während er dort bleibt, werden die Kugeln getrennt und danach untersucht. Benenne Variable, Kontrollen, Beobachtung und Modellschluss und zeichne ein Feldlinienbild vor der Trennung.",
+            "taskDemandEn": "Plan and interpret a safe experiment or simulation using two initially neutral touching metal spheres A and B. A negatively charged rod is held near A without contact; while it remains, the spheres are separated and then tested. State the variable, controls, observation, and model inference, and draw a field-line diagram before separation.",
+            "expectedPerformanceDe": "Der Abstand des Stabs kann variiert werden; Kontakt, Anfangsneutralität und Entladung zwischen Durchgängen werden kontrolliert. Ein Sensor zeigt nach Trennung A positiv und B negativ. Daraus wird Elektronenverschiebung von A nach B erschlossen; für A+B bleibt die Gesamtladung null. Das Feldlinienbild zeigt die resultierende Feldrichtung, keine Elektronenbahnen, und keine Linien im Metallinneren im Gleichgewicht.",
+            "expectedPerformanceEn": "Rod distance may be varied; contact, initial neutrality, and discharge between trials are controlled. A sensor shows A positive and B negative after separation. This supports inference of electron movement from A to B; total charge of A+B remains zero. The field-line diagram shows the resulting field direction, not electron paths, and no lines inside the metal at equilibrium.",
+            "understandingFocusDe": "Direkter Influenznachweis mit kontrolliertem Experiment, Ladungsbilanz und Beobachtung–Modell-Trennung.",
+            "understandingFocusEn": "Direct induction evidence combining a controlled experiment, charge balance, and observation–model distinction."
+          },
+          {
+            "id": "conducting-sphere-uniform-field-transfer",
+            "taskDemandDe": "Eine neutrale isolierte Metallkugel befindet sich zwischen großen Platten in einem annähernd homogenen Feld nach rechts. Sage Ladungsverteilung und Feld im Inneren voraus, konstruiere das resultierende Feldlinienbild und erkläre, was sich bei umgekehrter Plattenpolung ändert. Eine Simulation darf zur unabhängigen Prüfung genutzt werden.",
+            "taskDemandEn": "A neutral isolated metal sphere lies between large plates in an approximately uniform field directed to the right. Predict the charge distribution and internal field, construct the resulting field-line diagram, and explain what changes when plate polarity is reversed. A simulation may be used for an independent check.",
+            "expectedPerformanceDe": "Elektronen verschieben sich entgegen der Feldrichtung zur linken Oberfläche; links entsteht negativer, rechts positiver Oberflächenbereich, insgesamt bleibt die Kugel neutral. Im Gleichgewicht ist E innen null; äußere Linien werden verzerrt und treffen die Oberfläche senkrecht. Umgekehrte Polung vertauscht die Ladungsseiten und Pfeilrichtung, nicht die Gesamtladung.",
+            "expectedPerformanceEn": "Electrons move opposite the field toward the left surface; the left surface becomes negative and the right positive, while the sphere remains neutral overall. At equilibrium E is zero inside; external lines are distorted and meet the surface normally. Reversing polarity swaps the charged sides and arrow direction, not the total charge.",
+            "understandingFocusDe": "Unabhängiger Transfer auf neue Geometrie und umgekehrte Feldrichtung mit Gleichgewichts- und Darstellungsprüfung.",
+            "understandingFocusEn": "Independent transfer to new geometry and reversed field direction with equilibrium and representation checks."
+          },
+          {
+            "id": "temporary-grounding-boundary",
+            "taskDemandDe": "Vergleiche in einer sicheren Simulation einen isolierten neutralen Leiter neben einem negativen Stab mit demselben Leiter, dessen abgewandte Seite vorübergehend geerdet wird. Die Erdung wird getrennt, solange der Stab noch steht, danach wird der Stab entfernt. Erkläre Ladungsfluss, Endladung und Feldlinien und begründe die jeweilige Systemgrenze.",
+            "taskDemandEn": "In a safe simulation, compare an isolated neutral conductor near a negative rod with the same conductor when its far side is temporarily grounded. The ground is disconnected while the rod remains, and the rod is then removed. Explain charge flow, final charge, and field lines and justify the system boundary in each stage.",
+            "expectedPerformanceDe": "Ohne Erdung wird Ladung nur getrennt und die Leitergesamtladung bleibt null. Mit Erdung können abgestoßene Elektronen in die Erde abfließen; nach Trennen der Erdung bleibt der Leiter positiv geladen. Leiter allein ist während der Erdung kein abgeschlossenes Ladungssystem; Leiter+Erde erhält die Gesamtladung. Nach Entfernen des Stabs verteilt sich die verbleibende positive Ladung neu.",
+            "expectedPerformanceEn": "Without grounding, charge is only separated and total conductor charge stays zero. With grounding, repelled electrons can flow to Earth; after disconnecting the ground, the conductor remains positively charged. The conductor alone is not a closed charge system while grounded; conductor plus Earth conserves total charge. Removing the rod redistributes the remaining positive charge.",
+            "understandingFocusDe": "Transfer zur Geltungsgrenze der Neutralitätsaussage durch veränderte Systemgrenze, ohne die Influenzmechanik zu verlassen.",
+            "understandingFocusEn": "Transfer to the validity boundary of the neutrality claim through a changed system boundary while remaining within induction physics."
+          }
+        ]
+      }
+    }
+  ]
+}

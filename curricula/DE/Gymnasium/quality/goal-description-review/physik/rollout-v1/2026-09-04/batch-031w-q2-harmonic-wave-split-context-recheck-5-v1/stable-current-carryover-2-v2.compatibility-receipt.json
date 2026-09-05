@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-b031w-stable-current-carryover-2-v2-20260905",
+  "purpose": "Hash-bound carryover of exactly 2 current KEEP/KEEP consensus goals from B031W; every other source-batch goal remains explicitly excluded.",
+  "source": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1.config.json",
+    "configSha256": "sha256:a2036015a934c9d39bf3286f5f068090a3db48e8868aab19a8bbc733663dabe3",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/batch-manifest.json",
+    "batchManifestSha256": "sha256:1509a4ba2466debbcd2f239e879a4a614e2142eec9d4797d7228e72a5ee576a3",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/dual-summary.json",
+    "dualSummarySha256": "sha256:f92d2cb3c37b5e4cf66ecff906ce411284f18abbfeb1d06a188080cdc72eb9b7",
+    "roundA": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/round-a/results/physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.batch-001.records.jsonl",
+      "recordsSha256": "sha256:018b6e8d270f5f9517a0e8f2a282fc9e06df1251980e49805dd41befb9b0c676",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/round-a/results/physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-a.batch-001.run.json",
+      "runSha256": "sha256:fc7a4f59f324a323fa5659bf4912d9874109fb9f88f72f98debd9ae8c5dd8356"
+    },
+    "roundB": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/round-b/results/physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-b.batch-001.records.jsonl",
+      "recordsSha256": "sha256:b2c3ec17a76332bd3e6f13b7e0b13d5d50a645d1c074aa16a541da8be4a308b1",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/round-b/results/physik-rollout-v1-batch-031w-q2-harmonic-wave-split-context-recheck-5-v1-20260904-first-pass-b.batch-001.run.json",
+      "runSha256": "sha256:2745528a533708d8a19d9a48c41bbcc509758b02b0d069747bebda68a0b5e229"
+    }
+  },
+  "currentRuntimeSnapshot": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "baseGoalBookConfigSha256": "sha256:f2ae7c25c2f288ead6796db39aaed38b6c813e6e2c2496024cb5f127bdd73190",
+    "canonicalLandscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "canonicalLandscapeSha256": "sha256:bb7d8ef730cc58ed920b8203f69c51f4c7159577fdee2666849e0bd18f451eaa",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "semanticKindLedgerSha256": "sha256:edd84697377ff8498ded077ecaaf31175188f8dc5c79789bb559b0d00c94e80e",
+    "currentBaseBookDigest": "sha256:a993875f0769c4c8a1f481f9dfa2c9eb0923a945399d2859b7cb699d8d555a95",
+    "currentSubsetBookDigest": "sha256:3242e289604c4507e6b233582de533771c89ee0a184b2d6adf7f2bcd36079842",
+    "capturedAtMaterializationExecution": true
+  },
+  "compatibilityRebase": {
+    "status": "accepted_exact_current_direct_context",
+    "reason": "Review-contract page fingerprints remain byte-bound to the two blind runs. Current Atlas goal and page fingerprints are rebuilt only at execution; contextual page drift is allowed only while the goal fingerprint, bilingual text, and direct canonical context remain exact.",
+    "sourceBaseBookDigest": "sha256:ff3e488579bd01bc4e68ef4344dad41148a5a28936febe2810c901f8f044a0ae",
+    "sourceSubsetBookDigest": "sha256:d623673decd13f81bb69d50361c86539f51f6939203ce14bf63613095dd155d1",
+    "currentBindings": [
+      {
+        "goalId": "158e1c19-7ccb-4c8c-931c-b685951ab161",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "PK2_MODELLIEREN",
+              "PK3_MATHEMATISIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_WELLEN"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "bf559969-a05c-58b5-82c5-3d719d96555d",
+            "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:7830fc69ec6216b2ce8dc93f117aad7c8e82707d16d6b1882488761942cc704a",
+        "sourceGoalFingerprint": "sha256:8b0165b93776e2a997344aeaa3d176f1d868f7c3b7834ac39a39f7d7ccec5198",
+        "currentGoalFingerprint": "sha256:8b0165b93776e2a997344aeaa3d176f1d868f7c3b7834ac39a39f7d7ccec5198",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:fa4bfd216183c008e4c51f3a63541648cbf8d904907b96a7b270e8211e3f8484",
+        "currentPageFingerprint": "sha256:fa4bfd216183c008e4c51f3a63541648cbf8d904907b96a7b270e8211e3f8484",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:6adbad702ff21a084e88ca50ca6d4a0f0e6e53471e04677e2d7e4fb59bfc8a3d"
+      },
+      {
+        "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
+        "currentCanonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK",
+            "Concept"
+          ],
+          "competencyRefs": [],
+          "sourceRef": "KC2024, Gymnasiale Oberstufe Physik",
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-physics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "PK2_MODELLIEREN"
+            ],
+            "guidingIdeas": [
+              "LI_WELLEN"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": null,
+            "projection": null
+          },
+          "requires": [
+            "bf559969-a05c-58b5-82c5-3d719d96555d"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "currentCanonicalContextFingerprint": "sha256:ed042b0eecf4d12c2bfcdc378cd3bf79b7c026280603f8eceebed128ff195889",
+        "sourceGoalFingerprint": "sha256:255063002dc474deae052ac3d64a6bc27193427941c8edb63eecc56a7eec4d07",
+        "currentGoalFingerprint": "sha256:255063002dc474deae052ac3d64a6bc27193427941c8edb63eecc56a7eec4d07",
+        "exactGoalFingerprint": true,
+        "sourcePageFingerprint": "sha256:3d3e7eabf11f9b46fe38d6acb332a045053fc45ff7bf5f6d3417ec42743960f0",
+        "currentPageFingerprint": "sha256:3d3e7eabf11f9b46fe38d6acb332a045053fc45ff7bf5f6d3417ec42743960f0",
+        "exactPageFingerprint": true,
+        "sourceGoalReviewContextFingerprint": "sha256:ce1917cd7c5a850ee8bb4dfda5b4222702fea5bb4c131e83632e898494ceadca"
+      }
+    ]
+  },
+  "claimedGoalIds": [
+    "158e1c19-7ccb-4c8c-931c-b685951ab161",
+    "9dba2826-b179-59f0-8d91-5916079e5abe"
+  ],
+  "explicitlyExcludedGoalIds": [
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "bf559969-a05c-58b5-82c5-3d719d96555d",
+    "68020906-e615-462e-a56f-dd1ccc14b8d7"
+  ],
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-2-v2.json",
+  "synthesisManifestDigest": "sha256:a3c5f4fdfa91d1e8676b89d6261cc8d988294077ada79d347ff2514281629816",
+  "synthesisManifestFingerprint": "sha256:5afdf655273eeba9d810cf45734359adf2570794c8614cae262d5d170b8a0cec",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-2-v2.json",
+  "resolutionIndexDigest": "sha256:ee2d0bcc3964685aca4ab87ae136a374cc7d8a5a1336702d111ce3e7867ff4af",
+  "safeguards": {
+    "sourceConfigManifestDualSummaryRunsAndRecordsByteBound": true,
+    "twoIndependentKeepDecisionsRequired": true,
+    "selectedEvidenceRoundMustBeKeep": true,
+    "currentBilingualTextRequiredExact": true,
+    "currentGoalFingerprintRequiredExact": true,
+    "currentDirectCanonicalContextRequiredExactAndRefingerprintedAtExecution": true,
+    "currentAtlasPageFingerprintCapturedAtExecutionWithoutClaimingHistoricalEquality": true,
+    "stableAndExcludedScopesDisjointAndComplete": true,
+    "currentRuntimeReboundImmediatelyBeforeWrite": true,
+    "separateBatchResolutionIndex": true,
+    "openAiReviewFreezeRequiredBeforeWrite": true
+  },
+  "materializationPlanSha256": "sha256:5ae9153e9e7ffbed4b3944f470752f55ccb5590cbf4cd28d5dfc0eea8231224e"
+}

@@ -22,6 +22,7 @@ import {
 } from './memoryCardReviewConfigDiscovery'
 import { isGoalVisualizationAiApproved } from './goalVisualizationQaModel'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
+import { hasUnavailableCurricularAtomicAssessmentPrerequisite } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -1177,7 +1178,8 @@ const routeProfiles: RouteProfile[] = [
     goalSelector: (goal) => isAtomicGoal(goal)
       && isCanonicalGymPhysicsSek1Goal(goal)
       && !isMemoryGoal(goal)
-      && !isPracticeOrAssessmentGoal(goal),
+      && !isPracticeOrAssessmentGoal(goal)
+      && !isMotivationOrOrientationGoal(goal),
     clusterSelector: isCanonicalGymPhysicsSek1Goal,
   },
   {
@@ -1189,7 +1191,8 @@ const routeProfiles: RouteProfile[] = [
     goalSelector: (goal) => isAtomicGoal(goal)
       && isCanonicalGymPhysicsSek2Goal(goal)
       && !isMemoryGoal(goal)
-      && !isPracticeOrAssessmentGoal(goal),
+      && !isPracticeOrAssessmentGoal(goal)
+      && !isMotivationOrOrientationGoal(goal),
     clusterSelector: isCanonicalGymPhysicsSek2Goal,
   },
   {
@@ -1538,11 +1541,19 @@ function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
   return (goal.tags ?? []).includes('Practice') || (goal.tags ?? []).includes('Assessment')
 }
 
+function isMotivationOrOrientationGoal(goal: LearningGoal): boolean {
+  const tags = goal.tags ?? []
+  return goal.semanticKind === 'orientation'
+    || tags.includes('Motivation')
+    || tags.includes('Orientation')
+}
+
 function isProjectedRouteTargetGoal(goal: LearningGoal | undefined): goal is LearningGoal {
   return !!goal
     && isAtomicGoal(goal)
     && !isMemoryGoal(goal)
     && !isPracticeOrAssessmentGoal(goal)
+    && !isMotivationOrOrientationGoal(goal)
 }
 
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
@@ -1984,6 +1995,15 @@ function evaluateRouteEndpointCompositionVisibility(
   const enforceProjectionLocalAssessmentRequires = (
     profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID
   )
+  const mathSek1CurricularAtomicGoalIds = profile.profileId === 'canonical-math-sek1'
+    ? new Set(loadJson<{ decisions: Array<{
+      goalId: string; semanticKind: string; decisionStatus: string
+    }> }>(resolve(repoRoot, 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json'))
+      .decisions
+      .filter((decision) => decision.decisionStatus === 'authoritative'
+        && decision.semanticKind === 'curricularAtomic')
+      .map((decision) => decision.goalId))
+    : null
 
   const viewEntries = readCompositionViewFilesForLandscapeId(profile.landscapeId)
     .map((file) => ({ file, view: normalizeCompositionView(loadJson<unknown>(file)) }))
@@ -2190,6 +2210,16 @@ function evaluateRouteEndpointCompositionVisibility(
         })
       }
       const expectedTerminalGoalIds = scopedTerminalGoals
+        // Match CPV-211: only an applicability-derived assessment with a
+        // missing direct curricular-atomic target prerequisite may be absent.
+        // Prerequisite-only support never promotes that atom into the target.
+        .filter((goal) => !mathSek1CurricularAtomicGoalIds
+          || visibleTargetAtomicGoalIds.has(goal.id)
+          || !hasUnavailableCurricularAtomicAssessmentPrerequisite(
+            goal,
+            mathSek1CurricularAtomicGoalIds,
+            visibleTargetAtomicGoalIds,
+          ))
         .filter((goal) => !useCompiledJurisdiction
           || (!!jurisdiction && compiledJurisdictionsByGoalId.get(goal.id)?.has(jurisdiction)))
         .filter((goal) => !enforceProjectionLocalAssessmentRequires

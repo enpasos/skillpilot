@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1c4bf20b47232852423c4ae04495865a4a8ed4de934194b0fc18369a32275504",
+  "reviewInputFingerprint": "sha256:a1cae180894690fb3cffe592a8a70fe31b82a3b4587ecb7833317d49b7a28265",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-a",
+      "roundId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-independent-a",
+      "runIds": [
+        "physik-b031t-round-a-atomicity-review-20260902"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-b",
+      "roundId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1-20260902-independent-b",
+      "runIds": [
+        "physik-b031t-rb-openai-gpt5-20260904"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+      "firstRecordId": "physik-b031t-round-a-cb0ced6d-20260902",
+      "secondRecordId": "physik-b031t-rb-openai-gpt5-20260904:cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+      "firstRunId": "physik-b031t-round-a-atomicity-review-20260902",
+      "secondRunId": "physik-b031t-rb-openai-gpt5-20260904",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

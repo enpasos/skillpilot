@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-a.run-001",
+  "campaignId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-a",
+  "roundId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:a3199315ac8c81e14884d54794565bfb38643151e11e8f39582c466b6282c563",
+  "bundleFingerprint": "sha256:2579806453deb5aa339db25cb1fae7a5e5475725ebd37db100859481ad26124f",
+  "bookDigest": "sha256:fc36ae7c7eaa4b9aefa81493c42a24bfcf9269aaa29da235fdd51108e269fddc",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:b6530c5ea6e27e329daf8fd9d181390e6108bc84b307f7169bd67c686d24c99f",
+  "independenceGroupId": "physik-rollout-v1-batch-031x-q2-harmonic-wave-final-recheck-3-v1-20260905-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+    "bf559969-a05c-58b5-82c5-3d719d96555d",
+    "68020906-e615-462e-a56f-dd1ccc14b8d7"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a3199315ac8c81e14884d54794565bfb38643151e11e8f39582c466b6282c563"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-04T22:17:19Z",
+  "completedAt": "2026-09-04T22:18:40Z",
+  "status": "completed",
+  "outputDigest": "sha256:62d8a12dc608cd9207f6aa672ad619be9e4658b5d138f79b0ddb1d5991c5b896",
+  "toolchainVersion": "codex-cli"
+}

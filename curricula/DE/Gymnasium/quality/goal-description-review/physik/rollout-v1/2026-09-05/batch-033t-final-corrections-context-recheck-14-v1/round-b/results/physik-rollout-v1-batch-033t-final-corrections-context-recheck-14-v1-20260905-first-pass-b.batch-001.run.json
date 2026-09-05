@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b033t-batch001-subject-review-gpt5-20260905",
+  "campaignId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-b",
+  "roundId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:c9566b46b99cf5e6a78a191479b5180c8a30b71dbcfb794e98309ad48987ee29",
+  "bundleFingerprint": "sha256:af166879d3ba5f4936838afdd7dfcefcd24c9fbf5e7a45319bd7325e4195b743",
+  "bookDigest": "sha256:f135baf7a032ef084f20f8010cceef762e9cab1ea8686ca159d1402279d7036e",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-033t-final-corrections-context-recheck-14-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1730c01d-8c85-57df-b031-c11e2a0511b1",
+    "9f59a088-3939-59e9-821d-167fadfda782",
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+    "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+    "b9fcbad4-a855-54b7-8017-4caac1e2ffb7",
+    "bdaa56ad-6257-58a3-a633-8a6339f72f09",
+    "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+    "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+    "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+    "8cdef591-6ddb-5151-8c74-a80be0271079",
+    "3aaac6ad-948e-502a-9d49-ce40db0f2ca3",
+    "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+    "0b08aed8-3c0f-5b38-844c-1bb363abbf68"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c9566b46b99cf5e6a78a191479b5180c8a30b71dbcfb794e98309ad48987ee29"
+    }
+  ],
+  "startedAt": "2026-09-05T00:23:46.296Z",
+  "completedAt": "2026-09-05T00:30:58.189Z",
+  "status": "completed",
+  "outputDigest": "sha256:89955f0d04bf33a9f99c59e48375407a4026f66de376d4ca53381486b4d658a8",
+  "toolchainVersion": "codex-cli-0.153.0"
+}

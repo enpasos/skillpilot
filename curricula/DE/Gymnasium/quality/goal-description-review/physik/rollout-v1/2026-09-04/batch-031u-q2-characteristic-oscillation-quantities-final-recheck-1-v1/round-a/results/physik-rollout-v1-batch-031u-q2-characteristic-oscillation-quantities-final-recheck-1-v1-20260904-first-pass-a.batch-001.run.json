@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-a.batch-001.openai-gpt5",
+  "campaignId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-a",
+  "roundId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:7258da26642bd99fff70fcd42140f0027bb4001be7cb9610d5f6d6478e18bd86",
+  "bundleFingerprint": "sha256:ffa35e2491a23278b78fa4481c72656e2880e7a03979cea84890e47c3d861c93",
+  "bookDigest": "sha256:b369c2ec8f5d2f52e4eba013bb71700c2516456f7dfb475ccf4a4ad02b57eb11",
+  "provider": "OpenAI",
+  "model": "GPT-5 family",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7258da26642bd99fff70fcd42140f0027bb4001be7cb9610d5f6d6478e18bd86"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-04T21:23:32Z",
+  "completedAt": "2026-09-04T21:24:43Z",
+  "status": "completed",
+  "outputDigest": "sha256:c27224adf69df0657ac893c990d485fab7b7ca21594b8b97fc9fadc740b300e7",
+  "toolchainVersion": "codex-agent-unversioned"
+}

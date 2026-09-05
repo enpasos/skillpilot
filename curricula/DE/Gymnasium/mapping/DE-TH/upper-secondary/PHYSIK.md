@@ -8,7 +8,7 @@ Diese Spur ersetzt den alten Pilot-Quellsnapshot durch eine Source-Extraction au
 - Quelle: `curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2024.pdf`
 - Source-Extraction: `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2012_2024.source-extraction.json`
 - M3-Review: `curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json`
-- Source-Ziele: 257
+- Source-Ziele: 240
 - Passagen: 11
 - Status: MAPPING-1, MAPPING-2 und MAPPING-3 abgeschlossen.
 

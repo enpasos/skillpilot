@@ -18,6 +18,8 @@ type Revision = {
   atomicityReason: string
   memoryStatus: 'memory_required' | 'no_memory_needed'
   memoryReason: string
+  reviewedAt?: string
+  reviewer?: string
 }
 
 const repoRoot = resolve(import.meta.dirname, '../..')
@@ -50,6 +52,20 @@ const revisions: Record<string, Revision> = {
     memoryStatus: 'memory_required',
     memoryReason: 'Sinusmodell und charakteristische Schwingungsgrößen bleiben ein enger Abrufkern; Modellbereich, Experiment, Diagrammdeutung und Harmonizitätsprüfung bleiben Verständnisleistungen.',
   },
+  'fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e': {
+    beforeDe: 'Die lernende Person kann die Größen Auslenkung, Amplitude, Periodendauer und Frequenz definieren, deren Zusammenhang beschreiben und die Schwingungsgleichung qualitativ deuten.',
+    beforeEn: 'The learner can define the quantities displacement, amplitude, period, and frequency, describe their relationship, and qualitatively interpret the oscillation equation.',
+    intermediateDe: 'Die lernende Person kann Auslenkung, Amplitude, Periodendauer und Frequenz einer harmonischen Schwingung definieren, den Zusammenhang $f = 1/T$ erläutern und die Schwingungsgleichung anhand dieser Größen qualitativ deuten.',
+    intermediateEn: 'The learner can define displacement, amplitude, period, and frequency of a harmonic oscillation, explain the relationship $f = 1/T$, and qualitatively interpret the oscillation equation in terms of these quantities.',
+    afterDe: 'Die lernende Person kann Auslenkung, Amplitude, Periodendauer und Frequenz einer harmonischen Schwingung definieren, den Zusammenhang $f = 1/T$ erläutern und eine Gleichung für die Auslenkung in Abhängigkeit von der Zeit mithilfe dieser Größen qualitativ deuten.',
+    afterEn: 'The learner can define displacement, amplitude, period, and frequency of a harmonic oscillation, explain the relationship $f = 1/T$, and qualitatively interpret an equation for displacement as a function of time in terms of these quantities.',
+    expectedPromptFiles: 1,
+    atomicityReason: 'Die vier charakteristischen Größen, ihre reziproke Frequenz-Perioden-Beziehung und die qualitative Deutung einer Auslenkung-Zeit-Gleichung sind koordinierte Parameterdarstellungen desselben harmonischen Schwingungsmodells und bilden eine zusammenhängende Modellinterpretationskompetenz.',
+    memoryStatus: 'memory_required',
+    memoryReason: 'Die Definitionen sowie $f = 1/T$ bleiben ein enger Abrufkern; das Unterscheiden der Größen und die qualitative Gleichungsdeutung bleiben Verständnis- und Transferleistungen.',
+    reviewedAt: '2026-09-04',
+    reviewer: 'codex-physics-b031d-characteristic-oscillation-quantities-adjudication-2026-09-04',
+  },
   '158e1c19-7ccb-4c8c-931c-b685951ab161': {
     beforeDe: 'Die lernende Person kann eine fortschreitende ebene Transversalwelle beschreiben und die Auslenkungen s(x,t) für festgehaltene Orte beziehungsweise Zeitpunkte deuten, insbesondere als Momentanbild einer Welle.',
     beforeEn: 'The learner can describe a progressive plane transverse wave and interpret the deflections s(x,t) for fixed positions or times, in particular as an instantaneous snapshot of a wave.',
@@ -59,6 +75,18 @@ const revisions: Record<string, Revision> = {
     atomicityReason: 'Zeitverlauf und Momentanbild sind zwei Schnitte derselben Funktion s(x,t), deren koordinierte Deutung genau die beanspruchte Darstellungsleistung einer fortschreitenden Transversalwelle bildet.',
     memoryStatus: 'no_memory_needed',
     memoryReason: 'Die Unterscheidung der beiden Schnitte von s(x,t) muss an Darstellungen selbstständig vollzogen werden; eine isolierte Merkkarte würde diese Koordinationsleistung nicht sichern.',
+  },
+  '68020906-e615-462e-a56f-dd1ccc14b8d7': {
+    beforeDe: 'Die lernende Person kann Longitudinal- und Transversalwellen anhand der Schwingungsrichtung, Ausbreitungsrichtung und charakteristischer Beispiele unterscheiden.',
+    beforeEn: 'The learner can distinguish longitudinal and transverse waves using oscillation direction, propagation direction, and characteristic examples.',
+    afterDe: 'Die lernende Person kann Longitudinal- und Transversalwellen danach unterscheiden, ob die lokale Schwingungsrichtung parallel beziehungsweise senkrecht zur Ausbreitungsrichtung verläuft, und charakteristische Beispiele anhand dieses Kriteriums begründet zuordnen.',
+    afterEn: 'The learner can distinguish longitudinal and transverse waves according to whether the local oscillation direction is parallel or perpendicular to the direction of propagation and justify the classification of characteristic examples using this criterion.',
+    expectedPromptFiles: 1,
+    atomicityReason: 'Die relative Orientierung von lokaler Schwingungs- und Ausbreitungsrichtung ist das eine definierende Unterscheidungskriterium; die begründete Zuordnung charakteristischer Beispiele wendet genau dieses Kriterium an.',
+    memoryStatus: 'no_memory_needed',
+    memoryReason: 'Die Klassifikation muss an neuen Darstellungen über die relative Orientierung zweier Richtungen begründet werden; eine isolierte Merkkarte würde diese räumliche Deutungsleistung nicht sichern.',
+    reviewedAt: '2026-09-05',
+    reviewer: 'codex-physics-b031w-post-split-adjudication-2026-09-05',
   },
   'd716a35e-e422-5aba-b39a-f2e22f1e1e74': {
     beforeDe: 'Die lernende Person kann Brechung, Reflexion und Beugung als charakteristische Wellenphänomene beschreiben und mithilfe von Beispielen (z. B. Wellenwanne) qualitativ deuten.',
@@ -284,8 +312,8 @@ for (const [goalId, revision] of Object.entries(revisions)) {
     fingerprint: goalReviewFingerprint(goal, 'semantic-atomicity-v1'),
     status: 'atomic',
     semanticAtomic: true,
-    reviewedAt,
-    reviewer,
+    reviewedAt: revision.reviewedAt ?? reviewedAt,
+    reviewer: revision.reviewer ?? reviewer,
     reason: revision.atomicityReason,
     suggestedSplit: [],
   })
@@ -296,8 +324,8 @@ for (const [goalId, revision] of Object.entries(revisions)) {
   Object.assign(memoryRecord, {
     fingerprint: goalReviewFingerprint(goal, 'memory-card-review-v1'),
     memoryUseful: revision.memoryStatus === 'memory_required',
-    reviewedAt,
-    reviewer,
+    reviewedAt: revision.reviewedAt ?? reviewedAt,
+    reviewer: revision.reviewer ?? reviewer,
     reason: revision.memoryReason,
   })
   if (revision.memoryStatus === 'memory_required') {

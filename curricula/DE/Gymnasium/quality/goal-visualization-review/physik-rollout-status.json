@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-02T18:17:23.855Z",
+  "generatedAt": "2026-09-05T07:00:39.537Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -10,22 +10,22 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
   "summary": {
-    "totalGoals": 706,
-    "atomicGoalsInScope": 461,
-    "goalsWithPrimaryVisualization": 413,
-    "coveragePercent": 89.6,
-    "goalsAccountedForByAssetOrDeferred": 461,
+    "totalGoals": 710,
+    "atomicGoalsInScope": 464,
+    "goalsWithPrimaryVisualization": 415,
+    "coveragePercent": 89.4,
+    "goalsAccountedForByAssetOrDeferred": 464,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "accepted": 75,
-      "pilot": 338
+      "pilot": 340
     },
     "linkedVisualizationReviewStatuses": {
       "accepted": 75,
-      "pilot": 338
+      "pilot": 340
     },
-    "reviewLedgerFiles": 87,
+    "reviewLedgerFiles": 89,
     "reviewDecisionCounts": {
       "accepted_cluster_overview_after_atomic_split": 1,
       "accepted_documented_repo_native_fallback": 1,
@@ -48,13 +48,14 @@
       "accepted_pilot_after_third_regeneration": 3,
       "accepted_pilot_after_user_review_correction": 10,
       "accepted_retroactive_nano_banana": 22,
+      "accepted_reuse_after_current_visual_review": 3,
       "blocked_provider_quota": 1,
-      "deferred_provider_limitation": 61,
+      "deferred_provider_limitation": 62,
       "provider_temporary_failure_retried": 1,
       "rejected_after_user_review_replaced": 8,
       "rejected_regenerated": 227
     },
-    "openProviderDeferredGoals": 48,
+    "openProviderDeferredGoals": 49,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 1,
     "regularUnlinkedGoals": 0,
@@ -63,20 +64,13 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-088.md",
-    "latestLedgerStatus": "accepted_existing_assets_after_description_review",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-checkpoint-split-reuse-2026-09-05.md",
+    "latestLedgerStatus": "completed_pilot",
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
   "qualityQueues": {
     "openProviderDeferred": [
-      {
-        "batch": "074",
-        "goalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
-        "title": "Aktive und saltatorische Signalleitung physikalisch erklaeren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieb mindestens ein Teil der Ionen- oder Leitungsrichtung fachlich irreführend: zunächst liefen die saltatorischen Pfeile rückwärts, im letzten Kandidaten zeigen Na⁺-Pfeile an der unteren Membran trotz der Beschriftung ‚hinein‘ aus dem Axon heraus."
-      },
       {
         "batch": "079",
         "goalId": "1593d95c-2aac-504c-8527-37cb61877da9",
@@ -97,13 +91,6 @@
         "title": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
         "decision": "deferred_provider_limitation",
         "notes": "The incompatible Nano Banana Pro visualization stays withdrawn. Its three exact image copies and original prompt are preserved under `curricula/DE/Gymnasium/quality/goal-visualization-archive/2026-08-28-physics-b023-astronomical-unit/`; no replacement asset was created."
-      },
-      {
-        "batch": "074",
-        "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
-        "title": "Aussenohr als Frequenzfilter und Richtungshoeren deuten",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieben die Laufwege beziehungsweise die Ausbreitungsgeometrie missverständlich: zweimal wurde der lange Weg als kurz bezeichnet, im letzten Kandidaten läuft ein zusätzlicher Schallpfeil scheinbar aus dem fernen Ohr heraus."
       },
       {
         "batch": "074",
@@ -150,7 +137,7 @@
       {
         "batch": "074",
         "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
-        "title": "Elektrische Dipolfelder mit dem EKG verknuepfen",
+        "title": "Elektrische Dipolfelder mit dem EKG verknüpfen",
         "decision": "deferred_provider_limitation",
         "notes": "Kein fachlich vollständiger Kandidat nach drei Originalprüfungen: Versuche 1 und 2 platzierten V1/V2 plausibel, zeigten jedoch Feldpfeile von − nach +; Versuch 3 korrigierte das E-Feld von + nach −, platzierte V2 aber deutlich zu tief und nicht im vierten Interkostalraum links parasternal. Nicht importieren."
       },
@@ -169,11 +156,25 @@
         "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
       },
       {
+        "batch": "089",
+        "goalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+        "title": "Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären",
+        "decision": "deferred_provider_limitation",
+        "notes": "Kein Ersatzbild erzeugt. Die vorbereitete Prompt-Lane bleibt ausschließlich auf Google Gemini / Nano Banana Pro gebunden; Import erst nach einem gezielten Lauf und einer separaten fachlichen Prüfung von lokaler Schwingung, Störungs- und Energieausbreitung."
+      },
+      {
         "batch": "081",
         "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
         "title": "Fraunhoferlinien in Sternspektren deuten",
         "decision": "deferred_provider_limitation",
         "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
+      },
+      {
+        "batch": "074",
+        "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+        "title": "Frequenzspektren von Tönen und Klängen analysieren",
+        "decision": "deferred_provider_limitation",
+        "notes": "Nach drei gezielten Versuchen gelang keine zugleich saubere und maßstäbliche Superposition: Die ersten beiden Kandidaten enthielten Schleifen in den Sinuskurven; der dritte war zwar glatt, zeichnete die mit 2A bezeichnete Summenamplitude bei gleicher Achsenskalierung aber deutlich kleiner als das Doppelte der Eingänge."
       },
       {
         "batch": "082",
@@ -185,7 +186,7 @@
       {
         "batch": "074",
         "goalId": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
-        "title": "Geiger-Mueller-Zaehler funktional erklaeren",
+        "title": "Geiger-Müller-Zählrohr funktional erklären",
         "decision": "deferred_provider_limitation",
         "notes": "Nach drei gezielten Versuchen blieb die Bewegungsrichtung der Elektronen im Zählrohr falsch oder uneindeutig; zuletzt liefen die Elektronenpfeile vom positiven Zentraldraht radial nach außen statt zu ihm hin."
       },
@@ -309,6 +310,13 @@
         "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
       },
       {
+        "batch": "074",
+        "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
+        "title": "Richtungshören mit spektralen und binauralen Hinweisen untersuchen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Nach drei gezielten Versuchen blieben die Laufwege beziehungsweise die Ausbreitungsgeometrie missverständlich: zweimal wurde der lange Weg als kurz bezeichnet, im letzten Kandidaten läuft ein zusätzlicher Schallpfeil scheinbar aus dem fernen Ohr heraus."
+      },
+      {
         "batch": "083",
         "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
         "title": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
@@ -318,16 +326,16 @@
       {
         "batch": "074",
         "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
-        "title": "Ruhepotential durch Ladungs- und Konzentrationsunterschiede modellieren",
+        "title": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
         "decision": "deferred_provider_limitation",
         "notes": "Nach drei gezielten Versuchen bleiben trotz fachlich passender Konzentrationsverteilung, Gegenkräfte und −70 mV sichtbare Schreibweisen mit ‚aussen‘ bestehen. Eine orthografisch fehlerfreie Fassung wurde nicht erzeugt."
       },
       {
         "batch": "074",
-        "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
-        "title": "Schallinterferenz und Frequenzspektren analysieren",
+        "goalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+        "title": "Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären",
         "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen gelang keine zugleich saubere und maßstäbliche Superposition: Die ersten beiden Kandidaten enthielten Schleifen in den Sinuskurven; der dritte war zwar glatt, zeichnete die mit 2A bezeichnete Summenamplitude bei gleicher Achsenskalierung aber deutlich kleiner als das Doppelte der Eingänge."
+        "notes": "Nach drei gezielten Versuchen blieb mindestens ein Teil der Ionen- oder Leitungsrichtung fachlich irreführend: zunächst liefen die saltatorischen Pfeile rückwärts, im letzten Kandidaten zeigen Na⁺-Pfeile an der unteren Membran trotz der Beschriftung ‚hinein‘ aus dem Axon heraus."
       },
       {
         "batch": "082",
@@ -552,6 +560,14 @@
       "url": "/assets/goal-visualizations/physik/48e3d6c2-00bf-5afd-8846-ba3dbd01e96d/48e3d6c2-00bf-5afd-8846-ba3dbd01e96d.jpg"
     },
     {
+      "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+      "title": "Anwendungen ionisierender Strahlung qualitativ beurteilen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e5c08365-a0d3-592c-ad8e-d2c2c6e2b717/e5c08365-a0d3-592c-ad8e-d2c2c6e2b717.jpg"
+    },
+    {
       "goalId": "979e0d0d-8933-4ace-814f-f28060ad280f",
       "title": "Anwendungen und Risiken radioaktiver Strahlung beurteilen",
       "phase": "GLOBAL",
@@ -617,7 +633,7 @@
     },
     {
       "goalId": "6d882aac-9658-5f0d-bf3d-9338f0143bbc",
-      "title": "Aufloesungsvermoegen des Auges experimentell bestimmen",
+      "title": "Auflösungsvermögen des Auges experimentell bestimmen",
       "phase": "GLOBAL",
       "area": "Biophysik",
       "reviewStatus": "pilot",
@@ -657,7 +673,7 @@
     },
     {
       "goalId": "c2e0fc31-27a2-5727-9025-a824db9150d2",
-      "title": "Axonsegmente als elektrische Schaltungen modellieren",
+      "title": "Axonsegmente als elektrische Ersatzschaltungen modellieren",
       "phase": "GLOBAL",
       "area": "Biophysik",
       "reviewStatus": "pilot",
@@ -705,7 +721,7 @@
     },
     {
       "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
-      "title": "Beugungsbegrenztes Aufloesungsvermoegen des Auges abschaetzen",
+      "title": "Beugungsbegrenzte Winkelauflösung des Auges abschätzen",
       "phase": "GLOBAL",
       "area": "Biophysik",
       "reviewStatus": "pilot",
@@ -718,6 +734,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/ce431132-dfc4-42c2-aff6-bd72035190f8/ce431132-dfc4-42c2-aff6-bd72035190f8.jpg"
+    },
+    {
+      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "title": "Bewegungen mit Videoanalyse untersuchen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d67502e3-5e0a-595b-a24b-65b1c40de36e/d67502e3-5e0a-595b-a24b-65b1c40de36e.jpg"
     },
     {
       "goalId": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
@@ -766,6 +790,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/cde9b548-2cf4-59ad-b5d4-a71872afbe56/cde9b548-2cf4-59ad-b5d4-a71872afbe56.jpg"
+    },
+    {
+      "goalId": "0b08aed8-3c0f-5b38-844c-1bb363abbf68",
+      "title": "Biologische und künstliche neuronale Verschaltungen mit einem gemeinsamen Modell vergleichen",
+      "phase": "GLOBAL",
+      "area": "Biophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0b08aed8-3c0f-5b38-844c-1bb363abbf68/0b08aed8-3c0f-5b38-844c-1bb363abbf68.jpg"
     },
     {
       "goalId": "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
@@ -854,6 +886,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/dfa53498-34f5-5326-9d94-87e7b528caf3/dfa53498-34f5-5326-9d94-87e7b528caf3.jpg"
+    },
+    {
+      "goalId": "8c97c234-a932-5e84-aed5-237b4e2a8336",
+      "title": "Delayed-Choice-Experimente messkontextbezogen deuten",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8c97c234-a932-5e84-aed5-237b4e2a8336/8c97c234-a932-5e84-aed5-237b4e2a8336.jpg"
     },
     {
       "goalId": "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
@@ -1086,6 +1126,14 @@
       "area": "Elektrizität",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/baa2bf3c-798a-5ec3-a667-031bf062d96c/baa2bf3c-798a-5ec3-a667-031bf062d96c.jpg"
+    },
+    {
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "title": "Elektrische Stromstärke als Ladungsrate deuten",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/bbee4c52-4e95-5529-990f-706aa99316a3/bbee4c52-4e95-5529-990f-706aa99316a3.jpg"
     },
     {
       "goalId": "c156d2fb-0fe9-5f13-8baa-3e74d7da151e",
@@ -1424,14 +1472,6 @@
       "url": "/assets/goal-visualizations/physik/5f17e992-fd07-56ee-80a0-567f45bbd10c/5f17e992-fd07-56ee-80a0-567f45bbd10c.jpg"
     },
     {
-      "goalId": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
-      "title": "Erweiterte Feldlinienbilder deuten",
-      "phase": "Q1",
-      "area": "",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/physik/f3de5922-dd45-4fb6-87c1-525d1952dd89/f3de5922-dd45-4fb6-87c1-525d1952dd89.jpg"
-    },
-    {
       "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
       "title": "Erzwungene Schwingungen und Resonanz",
       "phase": "Q2",
@@ -1441,7 +1481,7 @@
     },
     {
       "goalId": "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
-      "title": "Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)",
+      "title": "Exkurs: Relativistische Energie und Impuls im Linearbeschleuniger",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
@@ -1510,6 +1550,14 @@
       "area": "Biophysik",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/39ef1e8a-9203-5192-8c76-8e0c3322646f/39ef1e8a-9203-5192-8c76-8e0c3322646f.jpg"
+    },
+    {
+      "goalId": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+      "title": "Feldlinienbilder von Ladungs- und Leiteranordnungen deuten",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/f3de5922-dd45-4fb6-87c1-525d1952dd89/f3de5922-dd45-4fb6-87c1-525d1952dd89.jpg"
     },
     {
       "goalId": "e3bce51c-cfeb-4706-b95e-a22b76e7dd73",
@@ -1785,7 +1833,7 @@
     },
     {
       "goalId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
-      "title": "Harmonische Wellen und ihre Größen",
+      "title": "Harmonische Wellen über ihre Kenngrößen beschreiben",
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
@@ -1897,7 +1945,7 @@
     },
     {
       "goalId": "bdaa56ad-6257-58a3-a633-8a6339f72f09",
-      "title": "Innenohr mit Resonanzmodellen erklaeren",
+      "title": "Innenohr mit Resonanzmodellen erklären",
       "phase": "GLOBAL",
       "area": "Biophysik",
       "reviewStatus": "accepted",
@@ -2080,14 +2128,6 @@
       "url": "/assets/goal-visualizations/physik/6031bed0-9baa-4f45-b2a5-57ffb00d39cc/6031bed0-9baa-4f45-b2a5-57ffb00d39cc.jpg"
     },
     {
-      "goalId": "8c97c234-a932-5e84-aed5-237b4e2a8336",
-      "title": "Komplementarität und Delayed-choice-Experiment",
-      "phase": "Q4",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/8c97c234-a932-5e84-aed5-237b4e2a8336/8c97c234-a932-5e84-aed5-237b4e2a8336.jpg"
-    },
-    {
       "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
       "title": "Kondensator und Feld im Plattenkondensator",
       "phase": "Q1",
@@ -2224,6 +2264,14 @@
       "url": "/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg"
     },
     {
+      "goalId": "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+      "title": "Längenkontraktion erläutern",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0c305cf9-3923-51cf-a9ae-5849edc99c9f/0c305cf9-3923-51cf-a9ae-5849edc99c9f.jpg"
+    },
+    {
       "goalId": "da0837c7-95a7-5a6a-81db-f33cb7f42d85",
       "title": "Lärmbelastung des Gehörs beurteilen",
       "phase": "GLOBAL",
@@ -2321,7 +2369,7 @@
     },
     {
       "goalId": "b9fcbad4-a855-54b7-8017-4caac1e2ffb7",
-      "title": "Lokalitaet und Verschraenkung einordnen",
+      "title": "Lokalität und Verschränkung einordnen",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "accepted",
@@ -2345,7 +2393,7 @@
     },
     {
       "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
-      "title": "Lorentztransformation anwenden",
+      "title": "Lorentztransformationen anwenden",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "accepted",
@@ -2457,7 +2505,7 @@
     },
     {
       "goalId": "8cdef591-6ddb-5151-8c74-a80be0271079",
-      "title": "Membran- und Axialwiderstand in Nervenmodellen untersuchen",
+      "title": "Membran- und Axialwiderstand im passiven Axonmodell untersuchen",
       "phase": "GLOBAL",
       "area": "Biophysik",
       "reviewStatus": "pilot",
@@ -2512,12 +2560,12 @@
       "url": "/assets/goal-visualizations/physik/28f6a324-5f5e-5771-91d2-c007f6c275aa/28f6a324-5f5e-5771-91d2-c007f6c275aa.jpg"
     },
     {
-      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
-      "title": "Methode: Videoanalyse von Bewegungen",
-      "phase": "E",
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "title": "Michelson-Morley-Nullbefund historisch einordnen",
+      "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/d67502e3-5e0a-595b-a24b-65b1c40de36e/d67502e3-5e0a-595b-a24b-65b1c40de36e.jpg"
+      "url": "/assets/goal-visualizations/physik/512f81af-1480-56a8-ae52-af3aa1a6a859/512f81af-1480-56a8-ae52-af3aa1a6a859.jpg"
     },
     {
       "goalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
@@ -2566,14 +2614,6 @@
       "area": "Optik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/33e3417c-e062-5f4a-8df9-3195dca50089/33e3417c-e062-5f4a-8df9-3195dca50089.jpg"
-    },
-    {
-      "goalId": "0b08aed8-3c0f-5b38-844c-1bb363abbf68",
-      "title": "Neuronale Verschaltungen und kuenstliche neuronale Netze physikalisch einordnen",
-      "phase": "GLOBAL",
-      "area": "Biophysik",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/0b08aed8-3c0f-5b38-844c-1bb363abbf68/0b08aed8-3c0f-5b38-844c-1bb363abbf68.jpg"
     },
     {
       "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
@@ -2809,7 +2849,7 @@
     },
     {
       "goalId": "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
-      "title": "Physikalische Prinzipien des Corti-Organs erschliessen",
+      "title": "Physikalische Prinzipien des Corti-Organs aus Quellen erschließen",
       "phase": "GLOBAL",
       "area": "Biophysik",
       "reviewStatus": "accepted",
@@ -2945,19 +2985,11 @@
     },
     {
       "goalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
-      "title": "Radialsymmetrische elektrische Felder",
+      "title": "Radialsymmetrische elektrische Felder beschreiben",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/98e42cda-9e5d-5910-b2c0-3e631fd20c78/98e42cda-9e5d-5910-b2c0-3e631fd20c78.jpg"
-    },
-    {
-      "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
-      "title": "Radioaktive Strahlung und Wirkungen",
-      "phase": "Q4",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/e5c08365-a0d3-592c-ad8e-d2c2c6e2b717/e5c08365-a0d3-592c-ad8e-d2c2c6e2b717.jpg"
     },
     {
       "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
@@ -3008,8 +3040,16 @@
       "url": "/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg"
     },
     {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "title": "Relativistische Geschwindigkeitsaddition anwenden",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2239cb67-82cb-585f-ab82-e1f2510eb4f7/2239cb67-82cb-585f-ab82-e1f2510eb4f7.jpg"
+    },
+    {
       "goalId": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
-      "title": "Relativitätspostulate und Experimente",
+      "title": "Relativitätspostulate formulieren und erläutern",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
@@ -3249,7 +3289,7 @@
     },
     {
       "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
-      "title": "Stabilitaet astronomischer Objekte beurteilen",
+      "title": "Stabilität astronomischer Objekte beurteilen",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "accepted",
@@ -3342,14 +3382,6 @@
       "area": "Elektrizität",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/8a84de16-2fde-58ec-827a-f803e2ce8564/8a84de16-2fde-58ec-827a-f803e2ce8564.jpg"
-    },
-    {
-      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
-      "title": "Stromstärke als Ladungstransport",
-      "phase": "Q1",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/bbee4c52-4e95-5529-990f-706aa99316a3/bbee4c52-4e95-5529-990f-706aa99316a3.jpg"
     },
     {
       "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
@@ -3552,14 +3584,6 @@
       "url": "/assets/goal-visualizations/physik/f92b5b8a-327f-50d2-8313-6a142399ebf0/f92b5b8a-327f-50d2-8313-6a142399ebf0.jpg"
     },
     {
-      "goalId": "70b358bf-da6d-53ba-8393-51d5c2365b04",
-      "title": "Vom Sand zum Smartphone: Die digitale Revolution",
-      "phase": "Q4",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/70b358bf-da6d-53ba-8393-51d5c2365b04/70b358bf-da6d-53ba-8393-51d5c2365b04.jpg"
-    },
-    {
       "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
       "title": "Waagerechter Wurf analysieren",
       "phase": "E",
@@ -3689,7 +3713,7 @@
     },
     {
       "goalId": "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
-      "title": "Zeitdilatation und Längenkontraktion",
+      "title": "Zeitdilatation erläutern",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",

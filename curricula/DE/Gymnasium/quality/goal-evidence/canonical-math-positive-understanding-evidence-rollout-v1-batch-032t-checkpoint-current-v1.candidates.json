@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b032t-checkpoint-current-v1",
+  "reviewedAt": "2026-09-05T04:29:26.000Z",
+  "reviewer": "openai-codex-math-b032t-positive-understanding-candidate-author",
+  "goals": [
+    {
+      "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+      "reason": "DE: Die frische KEEP/KEEP-Synthese wählt die fachlich präzisere Evidenz der zweiten unabhängigen Runde. Das V2-Profil operationalisiert Äquivalenzumformungen, die Richtungsumkehr bei negativer Skalierung, die Randzugehörigkeit und die konsistente Übersetzung zwischen Ungleichung, Intervall und Zahlengerade. Zwei unabhängige Fälle verändern Vorzeichenstruktur und Strenge der Relation. EN: The fresh KEEP/KEEP synthesis selects the more technically precise evidence from the second independent review. The V2 profile operationalizes equivalent transformations, reversal under negative scaling, boundary membership, and consistent translation among inequality, interval, and number-line representations. Two independent cases vary the sign structure and strictness of the relation.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "equivalent-transformations-and-sign",
+            "essentialUnderstandingDe": "Äquivalenzumformungen erhalten genau die Lösungsmenge einer linearen Ungleichung; beim Multiplizieren oder Dividieren beider Seiten mit einer negativen Zahl muss die Ordnungsrichtung umgekehrt werden.",
+            "essentialUnderstandingEn": "Equivalent transformations preserve exactly the solution set of a linear inequality; when both sides are multiplied or divided by a negative number, the direction of the inequality must be reversed.",
+            "observablePerformanceDe": "Die lernende Person löst selbstständig eine lineare Ungleichung, begründet die gewählten Äquivalenzumformungen und erklärt anhand der Ordnung der Zahlen, warum und wann eine Multiplikation oder Division mit einer negativen Zahl die Richtungsumkehr verlangt.",
+            "observablePerformanceEn": "The learner independently solves a linear inequality, justifies the chosen equivalent transformations, and explains from the ordering of numbers why and when multiplication or division by a negative number requires reversing the inequality."
+          },
+          {
+            "id": "solution-set-representations",
+            "essentialUnderstandingDe": "Die Ungleichung, das zugehörige Intervall und der markierte Bereich auf der Zahlengeraden beschreiben dieselbe Menge zulässiger Werte; das Relationszeichen bestimmt, ob der Grenzwert zur Lösungsmenge gehört.",
+            "essentialUnderstandingEn": "The inequality, the corresponding interval, and the marked region on the number line describe the same set of permissible values; the inequality symbol determines whether the boundary value belongs to the solution set.",
+            "observablePerformanceDe": "Die lernende Person entscheidet selbstständig, ob der Grenzwert enthalten ist, prüft je einen Wert innerhalb und außerhalb der Lösungsmenge und überführt das Ergebnis konsistent in Intervallschreibweise und eine Darstellung auf der Zahlengeraden.",
+            "observablePerformanceEn": "The learner independently decides whether the boundary value is included, checks one value inside and one outside the solution set, and translates the result consistently into interval notation and a number-line representation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "equivalent-transformations-and-sign",
+            "solution-set-representations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sign-structure",
+            "textDe": "Die Lage und die Vorzeichen der Variablenterme werden so verändert, dass neu entschieden werden muss, ob beim Isolieren der Variablen eine Richtungsumkehr erforderlich ist.",
+            "textEn": "The placement and signs of the variable terms are changed so that the learner must decide afresh whether isolating the variable requires reversing the inequality."
+          },
+          {
+            "id": "boundary-kind",
+            "textDe": "Zwischen strenger und nicht strenger Ungleichung wird gewechselt, sodass sich die Zugehörigkeit des Grenzwerts und die offene oder geschlossene Darstellung ändern.",
+            "textEn": "The task switches between a strict and a non-strict inequality, changing boundary membership and the open or closed representation."
+          },
+          {
+            "id": "representation",
+            "textDe": "Die verlangte Ergebnisdarstellung wechselt zwischen Ungleichung, Intervallschreibweise und Zahlengerade, ohne die bezeichnete Lösungsmenge zu verändern.",
+            "textEn": "The required result representation changes among inequality, interval notation, and number line without changing the solution set denoted."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-scaling-nonstrict-boundary",
+            "taskDemandDe": "Löse selbstständig die Ungleichung 5 − 3x ≥ 17 mit begründeten Äquivalenzumformungen. Stelle die Lösungsmenge als Intervall und auf der Zahlengeraden dar und prüfe den Grenzwert sowie je einen Wert innerhalb und außerhalb der Lösungsmenge.",
+            "taskDemandEn": "Independently solve the inequality 5 − 3x ≥ 17 using justified equivalent transformations. Represent the solution set as an interval and on a number line, and check the boundary value together with one value inside and one outside the solution set.",
+            "expectedPerformanceDe": "Die lernende Person erhält −3x ≥ 12 und begründet, dass die Division durch −3 die Relation zu x ≤ −4 umkehrt. Sie gibt (−∞, −4] an, markiert −4 geschlossen mit einem Strahl nach links und bestätigt beispielsweise x = −4 und x = −5 als Lösungen, während x = −3 die Ausgangsungleichung nicht erfüllt.",
+            "expectedPerformanceEn": "The learner obtains −3x ≥ 12 and explains that division by −3 reverses the relation to x ≤ −4. The learner gives (−∞, −4], marks −4 as a closed boundary with a ray to the left, and verifies, for example, that x = −4 and x = −5 are solutions while x = −3 does not satisfy the original inequality.",
+            "understandingFocusDe": "Geprüft wird, dass negative Skalierung die Ordnungsrichtung ändert, während äquivalente Umformungen und Darstellungswechsel dieselbe Lösungsmenge erhalten.",
+            "understandingFocusEn": "The case checks that negative scaling changes the inequality direction while equivalent transformations and changes of representation preserve the same solution set."
+          },
+          {
+            "id": "terms-both-sides-strict-transfer",
+            "taskDemandDe": "Löse als frischen Transferfall die strenge Ungleichung 4 − 2x < x + 10. Entwickle und begründe den Lösungsweg, gib das Ergebnis in Intervallschreibweise und auf der Zahlengeraden an und prüfe den Grenzwert sowie Werte auf beiden Seiten.",
+            "taskDemandEn": "As a fresh transfer case, solve the strict inequality 4 − 2x < x + 10. Develop and justify the solution route, give the result in interval notation and on a number line, and check the boundary value and values on both sides.",
+            "expectedPerformanceDe": "Die lernende Person formt zu −3x < 6 und nach begründeter Division durch −3 zu x > −2 um. Sie gibt (−2, ∞) an, markiert −2 offen mit einem Strahl nach rechts und bestätigt beispielsweise x = 0 als Lösung, während x = −2 und x = −3 die Ausgangsungleichung nicht erfüllen.",
+            "expectedPerformanceEn": "The learner transforms the inequality to −3x < 6 and, after justified division by −3, to x > −2. The learner gives (−2, ∞), marks −2 as an open boundary with a ray to the right, and verifies, for example, that x = 0 is a solution while x = −2 and x = −3 do not satisfy the original inequality.",
+            "understandingFocusDe": "Der Transfer verändert zugleich die Lage der Variablenterme, die Vorzeichenstruktur und die Randart; dadurch muss die Beziehung zwischen Umformung, Ordnung und Darstellung neu angewendet werden statt ein bekanntes Zahlenschema zu kopieren.",
+            "understandingFocusEn": "The transfer changes the placement of variable terms, the sign structure, and the boundary type, requiring the relationship among transformation, order, and representation to be applied afresh rather than copying a familiar numerical template."
+          }
+        ]
+      }
+    }
+  ]
+}

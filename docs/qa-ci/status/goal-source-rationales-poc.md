@@ -9,7 +9,7 @@
 > Source of truth: `curricula/DE/Gymnasium/mapping/`
 > Source of truth: `curricula/DE/Gymnasium/input/`
 
-Erzeugt: 2026-06-02T04:02:39.966Z
+Erzeugt: 2026-09-05T05:03:07.108Z
 
 Dieser PoC rendert menschenlesbare Quellenbegründungen für ausgewählte SkillPilot-Lernziele. Er nutzt derzeit nur den klassischen reviewten Weg: kanonisches Ziel -> Mapping-Review-Entscheidung -> Source-Extraction -> offizielles Quelldokument.
 
@@ -65,7 +65,7 @@ Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLU
 - Review-Datum: 2026-05-07
 - Reviewer: codex
 - Evidence-Methode: legacy-by-mapping-projected-to-source-extraction
-- Weitere klassische Quellenwege im JSON: 1
+- Weitere klassische Quellenwege im JSON: 349
 
 ### MEM/FWU SPARQL-Route
 

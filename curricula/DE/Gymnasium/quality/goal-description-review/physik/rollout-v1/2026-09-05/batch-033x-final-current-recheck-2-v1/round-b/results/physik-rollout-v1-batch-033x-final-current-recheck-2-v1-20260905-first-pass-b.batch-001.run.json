@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b033x-round-b-codex-gpt5-20260905",
+  "campaignId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-b",
+  "roundId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e98ab6325ca8e63bb707b83453ee9c2c9f4298aaefa577f1cf2020f9da68c844",
+  "bundleFingerprint": "sha256:3240691aaea2b0f9c22516981eb82a1c61e899631c029d5fb77c3bc0db5c8417",
+  "bookDigest": "sha256:fd566c5a3261f64ff198320d66a5f1dda02e4ce5da1963e48cc9dd73461d7548",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:b6aa902cf033e76e2cf43d183f98491e5ef8c3c56c1c1a9499ab8e5680f42506",
+  "independenceGroupId": "physik-rollout-v1-batch-033x-final-current-recheck-2-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "a684bec1-ba59-59d0-98d2-4ca37236f64c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:9a95587eb139bb5ac9e3ffa254eecb70531231e55199845d4f43884bbeca21aa"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:c2365cfea6d1aca4ea46f4ce18b4cc1aca4443d0360e23f51c2948bb209089ff"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e98ab6325ca8e63bb707b83453ee9c2c9f4298aaefa577f1cf2020f9da68c844"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-05T02:37:00Z",
+  "completedAt": "2026-09-05T02:38:17Z",
+  "status": "completed",
+  "outputDigest": "sha256:e604456af7f6f03cae1a57ebf8c98d1d67fc758c543c364a9b63ccd4a1c5a2a3",
+  "toolchainVersion": "codex-review-jsonl-v1"
+}

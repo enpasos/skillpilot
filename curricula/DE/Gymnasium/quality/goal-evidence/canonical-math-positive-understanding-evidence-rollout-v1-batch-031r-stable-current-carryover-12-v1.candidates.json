@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b031r-stable-current-carryover-12-v1",
+  "reviewedAt": "2026-09-05T22:45:00.000Z",
+  "reviewer": "codex-math-rollout-v1-batch-031r-stable12-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "17c9e061-fe52-5553-be81-fec7a525fcbd",
+      "reason": "DE: Das Profil prüft einen vorgegebenen algebraischen Lösungsweg nicht nur am Ergebnis, sondern an Definitionsmenge, Äquivalenz, Vorzeichen und Lösungsmenge. Ein Gleichungsfall und ein unabhängig variierter Ungleichungsfall verlangen Fehlerlokalisierung, begründete Korrektur und Rückprüfung; vorausgesetzte Umformungsroutinen werden nicht als neues Lernziel mitgeprüft. EN: The profile assesses a supplied algebraic solution path through its domain, equivalence, signs, and solution set rather than only its answer. An equation case and an independently varied inequality case require locating, justifiably correcting, and checking an error; prerequisite transformation routines are not reassessed as a new goal.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "solution-path-preserves-equivalence-and-domain",
+            "essentialUnderstandingDe": "Ein gültiger Lösungsweg arbeitet innerhalb der angegebenen Definitionsmenge und erhält bei jedem Äquivalenzschritt genau dieselbe Lösungsmenge; Klammern, Divisionen und ausgeschlossene Werte müssen dabei vollständig berücksichtigt werden.",
+            "essentialUnderstandingEn": "A valid solution path stays within the stated domain and preserves exactly the same solution set at every equivalence step; brackets, divisions, and excluded values must all be accounted for.",
+            "observablePerformanceDe": "Die lernende Person prüft die Schritte einer neuen Gleichung einzeln, benennt den ersten ungültigen Schritt mit mathematischem Grund, korrigiert ihn und verifiziert die erhaltene Lösung in der Ausgangsgleichung.",
+            "observablePerformanceEn": "The learner checks the steps of a fresh equation one by one, identifies the first invalid step with a mathematical reason, corrects it, and verifies the resulting solution in the original equation."
+          },
+          {
+            "id": "inequality-sign-and-solution-set-consistency",
+            "essentialUnderstandingDe": "Bei einer linearen Ungleichung kehrt sich das Vergleichszeichen genau dann um, wenn beide Seiten mit einer negativen Zahl multipliziert oder durch sie dividiert werden; die notierte Lösungsmenge muss das korrigierte Verhältnis ausdrücken.",
+            "essentialUnderstandingEn": "For a linear inequality, the comparison sign reverses exactly when both sides are multiplied or divided by a negative number; the stated solution set must express the corrected relation.",
+            "observablePerformanceDe": "Die lernende Person lokalisiert in einem fremden Ungleichungsweg einen Vorzeichenfehler, schreibt die korrekte Intervall- oder Mengendarstellung und bestätigt Randpunkt und eine innere Probe passend zur Ungleichung.",
+            "observablePerformanceEn": "The learner locates a sign error in an unfamiliar inequality solution, writes the correct interval or set notation, and checks the boundary and one interior value consistently with the inequality."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["solution-path-preserves-equivalence-and-domain", "inequality-sign-and-solution-set-consistency"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "relation-type", "textDe": "Gleichung oder lineare Ungleichung", "textEn": "equation or linear inequality"},
+          {"id": "error-location", "textDe": "Klammerauflösung, Äquivalenzschritt, Vorzeichenwechsel oder Lösungsnotation", "textEn": "bracket expansion, equivalence step, sign reversal, or solution notation"},
+          {"id": "validation", "textDe": "Einsetzen in die Ausgangsgleichung oder Rand- und Innenwertprüfung", "textEn": "substitution in the original equation or boundary-and-interior-value check"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "equation-distribution-error",
+            "taskDemandDe": "Prüfe den vorgegebenen Weg für 3(2x−1)=5x+7: 6x−1=5x+7, x=8, L={8}. Lokalisiere den ersten Fehler, korrigiere ab dort und prüfe die Lösung in der Ausgangsgleichung; die Definitionsmenge ist R.",
+            "taskDemandEn": "Check the supplied path for 3(2x−1)=5x+7: 6x−1=5x+7, x=8, S={8}. Locate the first error, correct the path from there, and verify the solution in the original equation; the domain is R.",
+            "expectedPerformanceDe": "Der Faktor 3 muss auch auf −1 wirken, also 6x−3=5x+7 und damit x=10. Einsetzen liefert auf beiden Seiten 57; x=8 wird begründet verworfen.",
+            "expectedPerformanceEn": "The factor 3 must also multiply −1, giving 6x−3=5x+7 and hence x=10. Substitution gives 57 on both sides; x=8 is rejected with justification.",
+            "understandingFocusDe": "Unabhängige Prüfung eines Gleichungswegs mit erstem Fehler, Äquivalenz und Lösungsprobe.",
+            "understandingFocusEn": "Independent checking of an equation path through its first error, equivalence, and solution verification."
+          },
+          {
+            "id": "inequality-negative-division-error",
+            "taskDemandDe": "Prüfe den Weg für −3(x−2)≤9: x−2≤−3, x≤−1, L=(−∞,−1]. Korrigiere den ersten ungültigen Schritt und prüfe den Randwert sowie je einen Wert auf beiden Seiten des Randes.",
+            "taskDemandEn": "Check the path for −3(x−2)≤9: x−2≤−3, x≤−1, S=(−∞,−1]. Correct the first invalid step and check the boundary plus one value on either side of it.",
+            "expectedPerformanceDe": "Bei Division durch −3 wird ≤ zu ≥; daher x−2≥−3, x≥−1 und L=[−1,∞). Der Randwert erfüllt die Gleichheit, x=0 erfüllt und x=−2 verletzt die Ausgangsungleichung.",
+            "expectedPerformanceEn": "Division by −3 reverses ≤ to ≥; therefore x−2≥−3, x≥−1, and S=[−1,∞). The boundary satisfies equality, x=0 satisfies, and x=−2 violates the original inequality.",
+            "understandingFocusDe": "Transfer zur Vorzeichenregel und zur Konsistenz zwischen korrigiertem Verhältnis und Lösungsmenge.",
+            "understandingFocusEn": "Transfer to the sign rule and consistency between the corrected relation and solution set."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+      "reason": "DE: Das Profil verlangt, Mengen-, Intervall- und Funktionsnotation aus der Bedeutung einer Aussage auszuwählen und ihre Bestandteile zu erläutern. Zwei unabhängige Fälle wechseln zwischen einer kontinuierlichen Lösungsmenge mit Randsemantik und einer diskreten Zuordnung mit Definitions-, Ziel- und Wertemenge. EN: The profile requires choosing set, interval, and function notation from the meaning of a statement and explaining its parts. Two independent cases vary between a continuous solution set with endpoint semantics and a discrete mapping with domain, codomain, and image.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "set-and-interval-notation-preserve-membership",
+            "essentialUnderstandingDe": "Intervall- und Mengenschreibweise bezeichnen dieselben zugelassenen Zahlen, wenn Ungleichungsrichtung sowie offene und geschlossene Ränder übereinstimmen; geschweifte Klammern für Aufzählungen sind davon zu unterscheiden.",
+            "essentialUnderstandingEn": "Interval and set-builder notation denote the same permitted numbers when inequality direction and open or closed endpoints agree; braces used for enumerations must be distinguished from them.",
+            "observablePerformanceDe": "Die lernende Person übersetzt eine neue Zahlenbedingung zwischen Wortlaut, Ungleichung, Mengenschreibweise und Intervall und erläutert anhand von Randwerten, welche Zahlen dazugehören.",
+            "observablePerformanceEn": "The learner translates a fresh numerical condition among words, inequality, set-builder notation, and interval notation and explains membership using endpoint values."
+          },
+          {
+            "id": "function-notation-identifies-mapping-objects",
+            "essentialUnderstandingDe": "Eine Schreibweise f:D→Z bezeichnet eine Zuordnung von Definitionsmenge D in eine Zielmenge Z; f(x) bezeichnet den zu x gehörenden Wert, während die tatsächlich erreichten Werte eine möglicherweise kleinere Wertemenge bilden.",
+            "essentialUnderstandingEn": "Notation f:D→C denotes a mapping from domain D into codomain C; f(x) denotes the value assigned to x, while the values actually attained form a possibly smaller image set.",
+            "observablePerformanceDe": "Die lernende Person notiert eine diskrete Zuordnung als Funktion, deutet Definitions- und Zielmenge sowie einzelne Funktionswerte und bestimmt die erreichte Wertemenge ohne die drei Objekte zu verwechseln.",
+            "observablePerformanceEn": "The learner writes a discrete mapping as a function, interprets its domain, codomain, and individual function values, and determines the image without conflating the three objects."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["set-and-interval-notation-preserve-membership", "function-notation-identifies-mapping-objects"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "notation-family", "textDe": "Mengen-, Intervall- oder Funktionsnotation", "textEn": "set, interval, or function notation"},
+          {"id": "object-domain", "textDe": "kontinuierliche Zahlenmenge oder diskrete endliche Zuordnung", "textEn": "continuous number set or discrete finite mapping"},
+          {"id": "direction", "textDe": "Notation erzeugen, in Worte übersetzen oder eine unpassende Schreibweise korrigieren", "textEn": "produce notation, translate it into words, or correct unsuitable notation"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "half-open-temperature-range",
+            "taskDemandDe": "Eine Messreihe berücksichtigt Temperaturen von −2 °C einschließlich bis 3 °C ausschließlich. Gib die Menge als Ungleichung, in Mengenschreibweise und als Intervall an und entscheide für −2, 0 und 3 über die Zugehörigkeit.",
+            "taskDemandEn": "A measurement series includes temperatures from −2 °C inclusive up to but not including 3 °C. Give the set as an inequality, in set-builder notation, and as an interval, and decide membership for −2, 0, and 3.",
+            "expectedPerformanceDe": "Die lernende Person notiert −2≤x<3, {x∈R | −2≤x<3} und [−2,3); −2 und 0 gehören dazu, 3 nicht. Sie erklärt die eckige beziehungsweise runde Randklammer aus der Aussage.",
+            "expectedPerformanceEn": "The learner writes −2≤x<3, {x∈R | −2≤x<3}, and [−2,3); −2 and 0 belong, while 3 does not. The learner explains the closed and open endpoint symbols from the statement.",
+            "understandingFocusDe": "Unabhängige Bedeutungsübersetzung mit asymmetrischen Randbedingungen.",
+            "understandingFocusEn": "Independent semantic translation with asymmetric endpoint conditions."
+          },
+          {
+            "id": "finite-function-mapping",
+            "taskDemandDe": "Für D={0,1,2,3} wird jeder Zahl ihr Rest bei Division durch 2 zugeordnet. Notiere eine Funktion r:D→{0,1,2}, gib r(3) an, bestimme die Wertemenge und erläutere, warum Ziel- und Wertemenge hier nicht gleich sind.",
+            "taskDemandEn": "For D={0,1,2,3}, assign to each number its remainder upon division by 2. Write a function r:D→{0,1,2}, state r(3), determine the image, and explain why codomain and image differ here.",
+            "expectedPerformanceDe": "Eine passende Notation ist r(n)=n mod 2 mit r(3)=1. Die Definitionsmenge ist D, die Zielmenge {0,1,2}, erreicht werden aber nur {0,1}; der Wert 2 bleibt zulässiges Zielmengenelement ohne Urbild.",
+            "expectedPerformanceEn": "Suitable notation is r(n)=n mod 2 with r(3)=1. The domain is D, the codomain is {0,1,2}, but only {0,1} is attained; 2 remains an allowed codomain element without a preimage.",
+            "understandingFocusDe": "Transfer von Zahlenmengen zur formalen Beschreibung und Deutung einer diskreten Funktion.",
+            "understandingFocusEn": "Transfer from number sets to the formal description and interpretation of a discrete function."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+      "reason": "DE: Das Profil bindet die Konstruktion an die definierenden Eigenschaften Parallelität und 90°-Schnitt statt an bloße optische Genauigkeit. Zwei unabhängige Aufgaben variieren Werkzeug, Lage des vorgegebenen Punktes und Begründungsweg; die Prüfung erfolgt aus frischen Konstruktionsspuren. EN: The profile binds construction to the defining properties of parallelism and a 90-degree intersection rather than visual accuracy alone. Two independent tasks vary the tool, position of the given point, and justification; evidence comes from fresh construction marks.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "parallel-construction-preserves-direction",
+            "essentialUnderstandingDe": "Eine Gerade durch einen vorgegebenen Punkt ist zur Ausgangsgeraden parallel, wenn ihre Richtung unverändert übertragen wird; daraus folgen gleicher Abstand und kein Schnittpunkt in der euklidischen Ebene.",
+            "essentialUnderstandingEn": "A line through a given point is parallel to the original line when its direction is transferred unchanged; this implies constant distance and no intersection in the Euclidean plane.",
+            "observablePerformanceDe": "Die lernende Person konstruiert durch einen neuen Punkt eine Parallele mit dem Geodreieck oder durch zweimalige Senkrechtkonstruktion und erklärt, welche unveränderte Richtung beziehungsweise Winkelbeziehung die Parallelität sichert.",
+            "observablePerformanceEn": "The learner constructs a parallel through a fresh point using a set square or two perpendicular constructions and explains which preserved direction or angle relation guarantees parallelism."
+          },
+          {
+            "id": "perpendicular-construction-establishes-right-angle",
+            "essentialUnderstandingDe": "Eine Senkrechte schneidet die Ausgangsgerade im rechten Winkel; bei der Zirkelkonstruktion entsteht sie als Mittelsenkrechte einer Strecke mit symmetrisch gewählten Endpunkten.",
+            "essentialUnderstandingEn": "A perpendicular intersects the original line at a right angle; in a compass construction it arises as the perpendicular bisector of a segment whose endpoints were chosen symmetrically.",
+            "observablePerformanceDe": "Die lernende Person konstruiert eine Senkrechte mit Zirkel und Lineal, lässt die notwendigen Kreisbögen sichtbar und begründet den rechten Winkel über Gleichabstände statt durch Nachmessen allein.",
+            "observablePerformanceEn": "The learner constructs a perpendicular with compass and straightedge, leaves the necessary arcs visible, and justifies the right angle through equal distances rather than measurement alone."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["parallel-construction-preserves-direction", "perpendicular-construction-establishes-right-angle"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "relation", "textDe": "parallel oder senkrecht", "textEn": "parallel or perpendicular"},
+          {"id": "tool", "textDe": "Geodreieck oder Zirkel und Lineal", "textEn": "set square or compass and straightedge"},
+          {"id": "point-position", "textDe": "Punkt auf oder außerhalb der Ausgangsgeraden", "textEn": "point on or off the original line"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parallel-through-external-point",
+            "taskDemandDe": "Gegeben sind eine schräg liegende Gerade g und ein Punkt P außerhalb von g. Konstruiere mit dem Geodreieck die Parallele p durch P, beschreibe das Anlegen und Verschieben und begründe die Parallelität fachsprachlich.",
+            "taskDemandEn": "Given an oblique line g and a point P outside g, use a set square to construct the parallel p through P. Describe the alignment and translation and justify the parallelism mathematically.",
+            "expectedPerformanceDe": "Eine Kante wird an g ausgerichtet, das Geodreieck ohne Drehung bis P verschoben und p durch P gezeichnet. Die unveränderte Kantenrichtung beziehungsweise gleiche Winkel zu einer Hilfsgeraden begründet p∥g.",
+            "expectedPerformanceEn": "One edge is aligned with g, the set square is translated without rotation to P, and p is drawn through P. The preserved edge direction, or equal angles to a transversal, justifies p∥g.",
+            "understandingFocusDe": "Eigenständige Parallelkonstruktion mit expliziter geometrischer Eigenschaft.",
+            "understandingFocusEn": "Independent parallel construction with an explicit geometric property."
+          },
+          {
+            "id": "perpendicular-at-point-with-compass",
+            "taskDemandDe": "Auf einer neuen Geraden h liegt Q. Markiere mit dem Zirkel zwei gleich weit von Q entfernte Punkte A und B auf h, konstruiere aus gleich großen Bögen ihren Schnitt S und zeichne QS. Begründe, warum QS senkrecht zu h ist.",
+            "taskDemandEn": "A point Q lies on a fresh line h. With a compass mark points A and B on h equally far from Q, intersect equal arcs from A and B at S, and draw QS. Justify why QS is perpendicular to h.",
+            "expectedPerformanceDe": "Aus QA=QB und SA=SB liegen Q und S auf der Mittelsenkrechten von AB; daher ist QS die Mittelsenkrechte und schneidet h in Q unter 90°. Die Kreisbögen dokumentieren die Gleichabstände.",
+            "expectedPerformanceEn": "Because QA=QB and SA=SB, Q and S lie on the perpendicular bisector of AB; hence QS is that perpendicular bisector and meets h at Q at 90 degrees. The arcs document the equal distances.",
+            "understandingFocusDe": "Transfer zu Zirkel und Lineal mit einer eigenschaftsbasierten statt visuellen Kontrolle.",
+            "understandingFocusEn": "Transfer to compass and straightedge with a property-based rather than visual check."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+      "reason": "DE: Das Profil verlangt die Auswahl eines Kongruenzsatzes aus korrekt zugeordneten Seiten und Winkeln sowie die Prüfung seiner vollständigen Voraussetzungen. Ein positiver SWS-Fall und ein unabhängig variierter SSW-Fall ohne ausreichende Zusatzbedingung unterscheiden tragfähige Begründung von bloß ähnlich aussehenden Dreiecken. EN: The profile requires selecting a congruence criterion from correctly corresponding sides and angles and checking all its conditions. A positive SAS case and an independently varied SSA case without a sufficient additional condition distinguish valid justification from merely similar-looking triangles.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "congruence-data-must-correspond",
+            "essentialUnderstandingDe": "Ein Kongruenzsatz bezieht sich auf zueinander passende Seiten und Winkel beider Dreiecke; bei SWS muss der gleiche Winkel zwischen den beiden verglichenen Seiten liegen, bei WSW die verglichene Seite zwischen den Winkeln.",
+            "essentialUnderstandingEn": "A triangle congruence criterion concerns corresponding sides and angles in the two triangles; for SAS the equal angle must lie between the compared sides, and for ASA the compared side lies between the angles.",
+            "observablePerformanceDe": "Die lernende Person ordnet die Eckpunkte zweier neu beschrifteter Dreiecke konsistent zu, markiert die tatsächlich gegebenen Gleichheiten und wählt daraus einen passenden Kongruenzsatz.",
+            "observablePerformanceEn": "The learner consistently matches the vertices of two freshly labelled triangles, marks the equalities actually given, and selects an appropriate congruence criterion from them."
+          },
+          {
+            "id": "criterion-conditions-justify-or-limit-congruence",
+            "essentialUnderstandingDe": "Erst die vollständigen Voraussetzungen eines Kongruenzsatzes bestimmen ein Dreieck eindeutig bis auf Spiegelung und Lage; zwei Seiten und ein nicht eingeschlossener Winkel reichen ohne zusätzliche Bedingung nicht allgemein aus.",
+            "essentialUnderstandingEn": "Only the complete conditions of a congruence criterion determine a triangle uniquely up to reflection and position; two sides and a non-included angle are not generally sufficient without an additional condition.",
+            "observablePerformanceDe": "Die lernende Person formuliert eine nachvollziehbare Kongruenzbegründung oder weist begründet zurück, dass die gegebenen Daten einen Kongruenzschluss erlauben, und nennt die fehlende Lagebedingung.",
+            "observablePerformanceEn": "The learner gives a clear congruence justification or justifiably rejects a congruence conclusion from the supplied data and identifies the missing positional condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["congruence-data-must-correspond", "criterion-conditions-justify-or-limit-congruence"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "criterion-status", "textDe": "vollständiger Kongruenzsatz oder unzureichende Datenlage", "textEn": "complete congruence criterion or insufficient data"},
+          {"id": "data-type", "textDe": "zwei Seiten mit eingeschlossenem Winkel oder nicht eingeschlossenem Winkel", "textEn": "two sides with an included or non-included angle"},
+          {"id": "labelling", "textDe": "gleiche oder permutierte Eckpunktreihenfolge", "textEn": "matching or permuted vertex order"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sas-with-permuted-labels",
+            "taskDemandDe": "In ΔABC und ΔEFD gilt AB=EF=6 cm, AC=ED=4 cm und ∠BAC=∠FED=52°. Ordne die Eckpunkte zu, wähle einen Kongruenzsatz und begründe die Kongruenz ohne Abmessen der Zeichnung.",
+            "taskDemandEn": "For triangles ABC and EFD, AB=EF=6 cm, AC=ED=4 cm, and angle BAC equals angle FED at 52 degrees. Match the vertices, choose a congruence criterion, and justify congruence without measuring the drawing.",
+            "expectedPerformanceDe": "A↔E, B↔F und C↔D; der gleiche Winkel liegt jeweils zwischen den beiden gleichen Seiten. Damit gilt ΔABC≅ΔEFD nach SWS, unabhängig von Lage oder Spiegelung in der Skizze.",
+            "expectedPerformanceEn": "A corresponds to E, B to F, and C to D; in each triangle the equal angle lies between the two equal sides. Thus triangle ABC is congruent to EFD by SAS, regardless of position or reflection in the sketch.",
+            "understandingFocusDe": "Eigenständige Zuordnung und vollständige SWS-Begründung bei veränderter Beschriftung.",
+            "understandingFocusEn": "Independent correspondence and complete SAS justification under changed labelling."
+          },
+          {
+            "id": "ssa-insufficient-data",
+            "taskDemandDe": "Zwei Dreiecke besitzen jeweils Seiten der Längen 5 cm und 8 cm sowie einen Winkel von 30°, der der 5-cm-Seite gegenüberliegt und nicht zwischen den beiden gegebenen Seiten liegt. Prüfe, ob daraus zwingend Kongruenz folgt, und begründe.",
+            "taskDemandEn": "Two triangles each have sides of lengths 5 cm and 8 cm and a 30-degree angle opposite the 5 cm side, not between the two given sides. Determine whether congruence necessarily follows and justify your answer.",
+            "expectedPerformanceDe": "Die Angaben bilden keinen der uneingeschränkt geltenden SSS-, SWS- oder WSW-Fälle; die nicht eingeschlossene SSW-Lage kann zwei verschiedene Dreiecke zulassen. Ohne eine passende Zusatzbedingung ist ein Kongruenzschluss daher nicht gerechtfertigt.",
+            "expectedPerformanceEn": "The data do not form any unconditional SSS, SAS, or ASA case; the non-included SSA configuration can allow two different triangles. Without a suitable additional condition, a congruence conclusion is not justified.",
+            "understandingFocusDe": "Transfer zur Geltungsgrenze der Kongruenzsätze statt schematischer Datenzählung.",
+            "understandingFocusEn": "Transfer to the validity boundary of congruence criteria rather than mechanical counting of data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "reason": "DE: Das Profil prüft die Mantelformel als begründete Flächenbeziehung im Netz eines geraden Kreiszylinders. Zwei unabhängige Fälle wechseln zwischen Vorwärtsableitung und Rückwärtsdeutung eines Mantelrechtecks; Mantel und Gesamtoberfläche sowie die Geltung für gerade Kreiszylinder bleiben getrennt. EN: The profile assesses the lateral-area formula as a justified area relation in the net of a right circular cylinder. Two independent cases vary between forward derivation and reverse interpretation of a lateral rectangle; lateral and total surface area, and the boundary to right circular cylinders, remain distinct.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "unrolled-lateral-surface-matches-circumference-and-height",
+            "essentialUnderstandingDe": "Beim Abrollen des Mantels eines geraden Kreiszylinders entsteht ein Rechteck: Seine umlaufende Seite hat die Länge des Grundkreisumfangs 2πr, seine dazu senkrechte Seite die Zylinderhöhe h.",
+            "essentialUnderstandingEn": "Unrolling the lateral surface of a right circular cylinder produces a rectangle: its wrapping side has the base-circle circumference 2πr, and its perpendicular side has the cylinder height h.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder beschriftet für neue Maße ein Zylindernetz, ordnet 2πr und h den richtigen Rechteckseiten zu und begründet die Zuordnung über Naht und Grundkreis.",
+            "observablePerformanceEn": "For fresh dimensions, the learner creates or labels a cylinder net, assigns 2πr and h to the correct rectangle sides, and justifies the assignment using the seam and base circle."
+          },
+          {
+            "id": "lateral-area-product-and-boundary",
+            "essentialUnderstandingDe": "Als Rechteckfläche ist der Mantel M=(2πr)·h=2πrh; die beiden Kreisflächen gehören erst zur Gesamtoberfläche, und die Herleitung setzt einen geraden Kreiszylinder voraus.",
+            "essentialUnderstandingEn": "As a rectangle area, the lateral surface is M=(2πr)h=2πrh; the two circular bases belong only to total surface area, and the derivation assumes a right circular cylinder.",
+            "observablePerformanceDe": "Die lernende Person leitet M aus den Seitenlängen her, berechnet es mit Flächeneinheit und entscheidet bei einer neuen Verpackung begründet, welche Flächen von der Mantelformel erfasst werden.",
+            "observablePerformanceEn": "The learner derives M from the side lengths, calculates it with square units, and justifiably decides which surfaces of a fresh package are covered by the lateral-area formula."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["unrolled-lateral-surface-matches-circumference-and-height", "lateral-area-product-and-boundary"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "reasoning-direction", "textDe": "vom Zylinder zum Netz oder vom Rechteck zurück zum Zylinder", "textEn": "from cylinder to net or from rectangle back to cylinder"},
+          {"id": "given-quantity", "textDe": "Radius, Umfang oder Rechteckseiten gegeben", "textEn": "radius, circumference, or rectangle sides given"},
+          {"id": "surface-scope", "textDe": "nur Mantel oder Gesamtoberfläche mit Grund- und Deckfläche", "textEn": "lateral surface only or total surface including both bases"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "derive-lateral-area-from-cylinder",
+            "taskDemandDe": "Ein gerader Kreiszylinder hat Radius 3 cm und Höhe 8 cm. Skizziere sein Netz, beschrifte die Mantelrechteckseiten, leite M her und berechne die Mantelfläche; erkläre, warum die Kreisflächen nicht enthalten sind.",
+            "taskDemandEn": "A right circular cylinder has radius 3 cm and height 8 cm. Sketch its net, label the lateral rectangle sides, derive M, and calculate the lateral area; explain why the circular bases are not included.",
+            "expectedPerformanceDe": "Die Rechteckseiten sind 2π·3=6π cm und 8 cm, also M=6π·8=48π cm². Die zwei Kreise sind getrennte Grund- und Deckflächen und würden nur bei der Gesamtoberfläche addiert.",
+            "expectedPerformanceEn": "The rectangle sides are 2π·3=6π cm and 8 cm, so M=6π·8=48π cm². The two circles are separate base and top surfaces and would be added only for total surface area.",
+            "understandingFocusDe": "Direkte Herleitung aus einem selbst beschrifteten Netz mit klarer Flächenabgrenzung.",
+            "understandingFocusEn": "Direct derivation from a learner-labelled net with a clear boundary between surface components."
+          },
+          {
+            "id": "reverse-label-design",
+            "taskDemandDe": "Ein rechteckiges Etikett ist 31,4 cm lang und 12 cm hoch und umschließt einen geraden Zylinder genau einmal ohne Überlappung. Bestimme Radius und Mantelfläche des Zylinders und erläutere die Modellgrenzen.",
+            "taskDemandEn": "A rectangular label is 31.4 cm long and 12 cm high and wraps exactly once around a right cylinder without overlap. Determine the cylinder radius and lateral area and state the model boundaries.",
+            "expectedPerformanceDe": "Die Länge 31,4 cm ist der Umfang 2πr, also r≈5,0 cm; die Höhe bleibt 12 cm und M=31,4·12=376,8 cm². Das Ergebnis gilt ohne Überlappung, Nahtzugabe und Deckflächen und für einen geraden Kreiszylinder.",
+            "expectedPerformanceEn": "The length 31.4 cm is the circumference 2πr, so r≈5.0 cm; the height remains 12 cm and M=31.4·12=376.8 cm². The result assumes no overlap or seam allowance, excludes the bases, and applies to a right circular cylinder.",
+            "understandingFocusDe": "Unabhängiger Rückwärtstransfer vom Mantelrechteck zu Radius und Zylinderfläche.",
+            "understandingFocusEn": "Independent reverse transfer from a lateral rectangle to cylinder radius and area."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+      "reason": "DE: Das Profil prüft, ob geometrische Bedingungen in passende Ortslinien übersetzt und deren Schnittpunkte als Kandidaten vollständig geprüft werden. Zwei unabhängige Konstruktionsprobleme kombinieren Mittelsenkrechte und Mittelparallelen beziehungsweise Thaleskreis und Kreis; mögliche Mehrdeutigkeit wird positiv bestimmt. EN: The profile assesses translating geometric conditions into suitable loci and fully checking their intersections as candidate solutions. Two independent construction problems combine a perpendicular bisector with lines midway between parallels, and a Thales circle with a circle; possible multiplicity is determined positively.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "condition-selects-exact-locus",
+            "essentialUnderstandingDe": "Eine Abstands- oder Winkelbedingung beschreibt eine ganze Ortslinie: gleiche Entfernung zu zwei Punkten die Mittelsenkrechte, gleiche Entfernung zu zwei parallelen Geraden die Mittelparallele, feste Entfernung einen Kreis und rechter Umfangswinkel den Thaleskreis.",
+            "essentialUnderstandingEn": "A distance or angle condition describes an entire locus: equal distance from two points gives a perpendicular bisector, equal distance from two parallel lines gives a midway parallel, fixed distance gives a circle, and a right inscribed angle gives a Thales circle.",
+            "observablePerformanceDe": "Die lernende Person übersetzt jede Bedingung eines neuen Problems getrennt in eine passende Ortslinie, konstruiert sie exakt und erläutert die kennzeichnende Eigenschaft.",
+            "observablePerformanceEn": "The learner translates each condition of a fresh problem separately into a suitable locus, constructs it exactly, and explains its defining property."
+          },
+          {
+            "id": "locus-intersections-are-verified-solutions",
+            "essentialUnderstandingDe": "Gesuchte Punkte müssen gleichzeitig auf allen erforderlichen Ortslinien liegen; deren Schnittpunkte liefern alle Kandidaten, die anschließend an jeder Ausgangsbedingung zu prüfen sind. Je nach Lage kann es null, eine oder mehrere Lösungen geben.",
+            "essentialUnderstandingEn": "Required points must lie on all relevant loci simultaneously; their intersections supply all candidates, which must then be checked against every original condition. Depending on the configuration there may be zero, one, or several solutions.",
+            "observablePerformanceDe": "Die lernende Person markiert sämtliche Schnittpunkte, prüft sie an den ursprünglichen Bedingungen und begründet die Anzahl der Lösungen aus der Lage der Ortslinien.",
+            "observablePerformanceEn": "The learner marks every intersection, checks it against the original conditions, and justifies the number of solutions from the relative positions of the loci."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["condition-selects-exact-locus", "locus-intersections-are-verified-solutions"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "condition-family", "textDe": "gleiche Entfernung, feste Entfernung oder rechter Umfangswinkel", "textEn": "equal distance, fixed distance, or right inscribed angle"},
+          {"id": "locus-combination", "textDe": "Mittelsenkrechte mit Mittelparallelen oder Thaleskreis mit Kreis", "textEn": "perpendicular bisector with midway parallels or Thales circle with circle"},
+          {"id": "solution-count", "textDe": "keine, eine oder mehrere Schnittpunktlösungen", "textEn": "zero, one, or several intersection solutions"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rescue-station-loci",
+            "taskDemandDe": "Zwei Orte A und B sowie zwei parallele Straßenränder g und h sind gegeben. Eine Rettungsstation soll von A und B gleich weit entfernt und von beiden Straßenrändern gleich weit entfernt sein. Konstruiere alle möglichen Standorte und begründe sie.",
+            "taskDemandEn": "Two towns A and B and two parallel road edges g and h are given. A rescue station must be equally distant from A and B and equally distant from both road edges. Construct all possible locations and justify them.",
+            "expectedPerformanceDe": "Die erste Bedingung liefert die Mittelsenkrechte von AB, die zweite die Mittelparallele zwischen g und h. Ihr Schnittpunkt ist die Lösung; bei parallelen Ortslinien gäbe es keinen, bei identischen unendlich viele Kandidaten, was aus der konkreten Lage geprüft wird.",
+            "expectedPerformanceEn": "The first condition gives the perpendicular bisector of AB and the second the line midway between g and h. Their intersection is the solution; parallel loci would give none and coincident loci infinitely many candidates, as checked from the actual configuration.",
+            "understandingFocusDe": "Eigenständige Übersetzung zweier Gleichabstandsbedingungen und Schnittpunktprüfung.",
+            "understandingFocusEn": "Independent translation of two equal-distance conditions and verification of their intersection."
+          },
+          {
+            "id": "right-triangle-vertex-loci",
+            "taskDemandDe": "Die Strecke AB ist fest. Konstruiere alle Punkte C, für die ∠ACB=90° und AC=4 cm gilt. Verwende passende Ortslinien, markiere alle Lösungen und erläutere Sonderlagen mit keinem oder einem Schnittpunkt.",
+            "taskDemandEn": "Segment AB is fixed. Construct all points C for which angle ACB is 90 degrees and AC=4 cm. Use suitable loci, mark all solutions, and explain special configurations with zero or one intersection.",
+            "expectedPerformanceDe": "C liegt wegen des rechten Winkels auf dem Thaleskreis über AB und wegen AC=4 cm auf dem Kreis um A mit Radius 4 cm. Alle gemeinsamen Schnittpunkte werden geprüft; Tangentiallage ergibt einen, getrennte Kreise ergeben keinen Standort.",
+            "expectedPerformanceEn": "Because of the right angle, C lies on the Thales circle over AB; because AC=4 cm, it lies on the circle centred at A with radius 4 cm. All common intersections are checked; tangency gives one and disjoint circles give no location.",
+            "understandingFocusDe": "Transfer zu einer anderen Ortslinienkombination und zur vollständigen Behandlung der Lösungsanzahl.",
+            "understandingFocusEn": "Transfer to a different locus combination and complete treatment of the number of solutions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+      "reason": "DE: Das Profil prüft das Lesen charakteristischer Merkmale trigonometrischer Graphen und ihre Deutung als periodischer Verlauf. Ein Graphfall und ein unabhängig variierter Tabellenfall verlangen Periodenbestimmung, Zuordnung einer einfachen Sinus- oder Kosinusbeschreibung und eine explizite Modellgrenze; bloßes Wiedererkennen eines Bildes genügt nicht. EN: The profile assesses reading characteristic features of trigonometric graphs and interpreting them as periodic behaviour. A graph case and an independently varied table case require determining a period, matching a simple sine or cosine description, and stating a model boundary; merely recognizing an image is insufficient.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "periodic-graph-features-have-meaning",
+            "essentialUnderstandingDe": "Bei einem periodischen Sinus- oder Kosinusverlauf wiederholen sich Funktionswerte und charakteristische Stellen nach einer kleinsten positiven Periode; Mittellinie, Maxima, Minima und Nullstellen bestimmen Lage und Schwankungsbereich.",
+            "essentialUnderstandingEn": "In a periodic sine or cosine pattern, function values and characteristic points repeat after a least positive period; the midline, maxima, minima, and zeros determine position and range of variation.",
+            "observablePerformanceDe": "Die lernende Person liest aus einem unbekannten Graphen Periode, Wertebereich und charakteristische Stellen ab und erklärt deren Bedeutung im gegebenen einfachen periodischen Kontext.",
+            "observablePerformanceEn": "From an unfamiliar graph, the learner reads the period, range, and characteristic points and explains their meaning in the given simple periodic context."
+          },
+          {
+            "id": "simple-sine-cosine-description-matches-start-and-cycle",
+            "essentialUnderstandingDe": "Eine passende Funktionsbeschreibung muss sowohl Zykluslänge und Schwankungsbereich als auch die Lage im Zyklus treffen; ein Start auf der Mittellinie mit Anstieg spricht für eine Sinusform, ein Start im Maximum für eine Kosinusform ohne Phasenverschiebung.",
+            "essentialUnderstandingEn": "A suitable function description must match the cycle length, range, and position within the cycle; starting at the midline while increasing supports a sine form, while starting at a maximum supports an unshifted cosine form.",
+            "observablePerformanceDe": "Die lernende Person wählt aus einfachen Sinus- und Kosinusbeschreibungen eine passende aus oder formuliert sie, prüft sie an mehreren Stellen und begrenzt die Fortsetzung als periodische Modellannahme.",
+            "observablePerformanceEn": "The learner selects or formulates a suitable simple sine or cosine description, checks it at several points, and qualifies continuation as a periodic modelling assumption."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["periodic-graph-features-have-meaning", "simple-sine-cosine-description-matches-start-and-cycle"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "representation", "textDe": "Graph oder tabellarisch gegebene charakteristische Werte", "textEn": "graph or tabulated characteristic values"},
+          {"id": "cycle-position", "textDe": "Start im Maximum oder auf der Mittellinie mit Steigungsrichtung", "textEn": "start at a maximum or at the midline with a direction of change"},
+          {"id": "context", "textDe": "Drehbewegung, Pegel oder anderer idealisiert periodischer Verlauf", "textEn": "rotational motion, level, or another idealized periodic process"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ferris-wheel-height-graph",
+            "taskDemandDe": "Ein frischer Graph der Höhe eines Riesenrads beginnt bei t=0 im Maximum 18 m, erreicht nach 3 min die Mittellinie 11 m und nach 6 min das Minimum 4 m. Bestimme Periode und Wertebereich, ordne eine einfache Kosinusbeschreibung zu und deute die Stellen.",
+            "taskDemandEn": "A fresh graph of Ferris-wheel height starts at a maximum of 18 m at t=0, reaches the midline of 11 m after 3 min, and the minimum of 4 m after 6 min. Determine period and range, match a simple cosine description, and interpret the points.",
+            "expectedPerformanceDe": "Mittellinie 11 m und Amplitude 7 m ergeben den Bereich [4,18]; vom Maximum zum Minimum ist eine halbe Periode, also T=12 min. Eine passende Beschreibung ist h(t)=11+7 cos(2πt/12); die Werte werden an 0, 3 und 6 min geprüft.",
+            "expectedPerformanceEn": "Midline 11 m and amplitude 7 m give range [4,18]; maximum to minimum is half a period, so T=12 min. A suitable description is h(t)=11+7 cos(2πt/12), checked at 0, 3, and 6 min.",
+            "understandingFocusDe": "Eigenständiges Lesen und Zuordnen aus einem maximumstartenden Graphen.",
+            "understandingFocusEn": "Independent reading and matching from a graph that starts at a maximum."
+          },
+          {
+            "id": "periodic-table-sine-transfer",
+            "taskDemandDe": "Ein idealisierter Pegel relativ zum Mittelwert hat bei t=0,2,4,6,8 h die Werte 0, 1, 0, −1, 0 m und steigt zu Beginn. Bestimme eine passende Sinusbeschreibung, begründe die Periode und erkläre, unter welcher Annahme die Vorhersage für t=10 h gilt.",
+            "taskDemandEn": "An idealized level relative to its mean has values 0, 1, 0, −1, 0 m at t=0,2,4,6,8 h and initially rises. Determine a suitable sine description, justify the period, and state the assumption under which a prediction for t=10 h is valid.",
+            "expectedPerformanceDe": "Die Werte bilden Viertelperioden eines ansteigenden Sinus mit T=8 h, etwa p(t)=sin(2πt/8); daher wäre p(10)=1. Diese Fortsetzung gilt nur, wenn der idealisierte regelmäßige Zyklus außerhalb des Messintervalls bestehen bleibt.",
+            "expectedPerformanceEn": "The values form quarter-period points of an increasing sine with T=8 h, for example p(t)=sin(2πt/8); hence p(10)=1. This continuation is valid only if the idealized regular cycle persists beyond the observation interval.",
+            "understandingFocusDe": "Transfer von diskreten charakteristischen Werten zur Periodizität und zur Modellgrenze.",
+            "understandingFocusEn": "Transfer from discrete characteristic values to periodicity and its modelling boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+      "reason": "DE: Das Profil verbindet Winkel im Bogenmass mit Punkten des Einheitskreises und daraus mit Werten und Symmetrien von Sinus und Kosinus. Zwei unabhängige Fälle wechseln zwischen exaktem Quadrantenwert und geometrisch begründeter Spiegelungs- beziehungsweise Periodizitätseigenschaft; bloße Tabellenreproduktion reicht nicht. EN: The profile connects angles in radians with unit-circle points and thereby with sine and cosine values and symmetries. Two independent cases vary between an exact quadrant value and a geometrically justified reflection or periodicity property; reproducing a value table is insufficient.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "unit-circle-coordinates-give-cosine-and-sine",
+            "essentialUnderstandingDe": "Zum gerichteten Winkel x gehört auf dem Einheitskreis der Punkt (cos x|sin x); Quadrant und Bezugswinkel bestimmen Vorzeichen und Betrag der beiden Funktionswerte.",
+            "essentialUnderstandingEn": "For a directed angle x, the corresponding unit-circle point is (cos x, sin x); the quadrant and reference angle determine the signs and magnitudes of both function values.",
+            "observablePerformanceDe": "Die lernende Person lokalisiert einen neuen Winkel im Bogenmass auf dem Einheitskreis, leitet beide Koordinaten mit Vorzeichen her und erklärt deren Bedeutung als Kosinus- und Sinuswert.",
+            "observablePerformanceEn": "The learner locates a fresh radian angle on the unit circle, derives both signed coordinates, and explains their meaning as cosine and sine values."
+          },
+          {
+            "id": "circle-transformations-explain-properties",
+            "essentialUnderstandingDe": "Spiegelungen und volle Umläufe am Einheitskreis erklären Funktionsbeziehungen: Spiegelung an der x-Achse erhält die x-Koordinate und wechselt das Vorzeichen der y-Koordinate, ein Umlauf von 2π führt zum selben Punkt zurück.",
+            "essentialUnderstandingEn": "Reflections and full turns on the unit circle explain function relations: reflection in the x-axis preserves the x-coordinate and reverses the y-coordinate, while a turn of 2π returns to the same point.",
+            "observablePerformanceDe": "Die lernende Person begründet an einer frischen Kreisfigur eine Symmetrie- oder Periodizitätsaussage für Sinus und Kosinus geometrisch und überprüft sie an einem nicht vorgegebenen Winkel.",
+            "observablePerformanceEn": "Using a fresh circle construction, the learner geometrically justifies a symmetry or periodicity statement for sine and cosine and checks it at an independently chosen angle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["unit-circle-coordinates-give-cosine-and-sine", "circle-transformations-explain-properties"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "angle-location", "textDe": "verschiedene Quadranten und positive oder negative Drehrichtung", "textEn": "different quadrants and positive or negative direction of rotation"},
+          {"id": "reasoning-demand", "textDe": "exakte Werte bestimmen oder allgemeine Eigenschaft erklären", "textEn": "determine exact values or explain a general property"},
+          {"id": "circle-operation", "textDe": "Bezugswinkel, Spiegelung oder voller Umlauf", "textEn": "reference angle, reflection, or full turn"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "five-sixths-pi-values",
+            "taskDemandDe": "Markiere x=5π/6 auf einem selbst gezeichneten Einheitskreis. Bestimme sin x und cos x aus Bezugswinkel und Quadrant und erkläre, warum die Vorzeichen verschieden sind.",
+            "taskDemandEn": "Mark x=5π/6 on a learner-drawn unit circle. Determine sin x and cos x from the reference angle and quadrant and explain why the signs differ.",
+            "expectedPerformanceDe": "5π/6 liegt im zweiten Quadranten mit Bezugswinkel π/6; der Punkt ist (−√3/2|1/2). Daher cos(5π/6)=−√3/2 und sin(5π/6)=1/2, passend zu negativer x- und positiver y-Koordinate.",
+            "expectedPerformanceEn": "5π/6 lies in quadrant II with reference angle π/6; the point is (−√3/2,1/2). Hence cos(5π/6)=−√3/2 and sin(5π/6)=1/2, matching negative x- and positive y-coordinates.",
+            "understandingFocusDe": "Eigenständiger Wechsel von Bogenmass und Winkelvorstellung zu beiden Funktionswerten.",
+            "understandingFocusEn": "Independent movement from radian and angle representations to both function values."
+          },
+          {
+            "id": "reflection-and-full-turn-properties",
+            "taskDemandDe": "Ein Punkt P zum Winkel θ hat die Koordinaten (0,6|0,8). Konstruiere die Punkte zu −θ und θ+2π und leite daraus die zugehörigen Sinus- und Kosinuswerte sowie die allgemeinen Beziehungen ab.",
+            "taskDemandEn": "A point P for angle theta has coordinates (0.6,0.8). Construct the points for −theta and theta+2π and derive their sine and cosine values and the corresponding general relations.",
+            "expectedPerformanceDe": "Spiegelung an der x-Achse gibt (0,6|−0,8), also cos(−θ)=cos θ und sin(−θ)=−sin θ. Ein voller Umlauf führt zu P zurück, also haben θ+2π und θ dieselben beiden Werte.",
+            "expectedPerformanceEn": "Reflection in the x-axis gives (0.6,−0.8), so cos(−theta)=cos theta and sin(−theta)=−sin theta. A full turn returns to P, so theta+2π and theta have the same two values.",
+            "understandingFocusDe": "Transfer von einzelnen Koordinaten zu geometrisch begründeten Funktionseigenschaften.",
+            "understandingFocusEn": "Transfer from individual coordinates to geometrically justified function properties."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "reason": "DE: Das Profil prüft das Bogenmass als Winkelbeschreibung über die Bogenlänge am Einheitskreis und den sicheren proportionalen Wechsel zu Gradmass. Zwei unabhängige Fälle variieren Quadrant, Drehrichtung und Ausgangseinheit; äquivalente Winkel werden von einer verlangten Hauptdarstellung unterschieden. EN: The profile assesses radian measure as an angle description through arc length on the unit circle and reliable proportional conversion to degrees. Two independent cases vary quadrant, direction, and starting unit; coterminal angles are distinguished from a requested principal representation.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "radian-measure-is-directed-unit-circle-arc",
+            "essentialUnderstandingDe": "Am Einheitskreis ist das Bogenmass eines gerichteten Winkels gleich der vorzeichenbehafteten Länge des vom Startstrahl überstrichenen Kreisbogens; 2π beschreibt einen vollen Umlauf und π einen halben.",
+            "essentialUnderstandingEn": "On the unit circle, the radian measure of a directed angle equals the signed length of the arc swept from the initial ray; 2π represents a full turn and π a half turn.",
+            "observablePerformanceDe": "Die lernende Person veranschaulicht einen neuen positiven oder negativen Winkel durch Drehrichtung, Endstrahl und zugehörigen Einheitskreisbogen und beschriftet dessen Bogenmass.",
+            "observablePerformanceEn": "The learner illustrates a fresh positive or negative angle using its direction, terminal ray, and associated unit-circle arc and labels its radian measure."
+          },
+          {
+            "id": "degree-radian-conversion-preserves-turn-fraction",
+            "essentialUnderstandingDe": "Grad- und Bogenmass beschreiben denselben Anteil einer Umdrehung mit 180°=π rad; deshalb erfolgt die Umrechnung proportional mit π/180 beziehungsweise 180/π.",
+            "essentialUnderstandingEn": "Degrees and radians describe the same fraction of a turn with 180 degrees equal to π radians; conversion is therefore proportional using π/180 or 180/π.",
+            "observablePerformanceDe": "Die lernende Person rechnet frische Winkel in beide Richtungen exakt um, prüft das Ergebnis an bekannten Viertel- oder Halbumdrehungen und ordnet es demselben Endstrahl zu.",
+            "observablePerformanceEn": "The learner converts fresh angles exactly in both directions, checks the result against known quarter or half turns, and assigns it to the same terminal ray."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["radian-measure-is-directed-unit-circle-arc", "degree-radian-conversion-preserves-turn-fraction"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "source-unit", "textDe": "Gradmass oder Bogenmass gegeben", "textEn": "degrees or radians given"},
+          {"id": "direction", "textDe": "positive gegenläufige oder negative im Uhrzeigersinn verlaufende Drehung", "textEn": "positive counterclockwise or negative clockwise rotation"},
+          {"id": "angle-range", "textDe": "Winkel innerhalb einer Umdrehung oder koterminaler Winkel außerhalb", "textEn": "angle within one turn or coterminal angle outside it"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-quarters-pi-unit-circle",
+            "taskDemandDe": "Veranschauliche 3π/4 am Einheitskreis mit Drehrichtung, Bogen und Endstrahl, rechne den Winkel in Grad um und erkläre die Lage im zweiten Quadranten.",
+            "taskDemandEn": "Illustrate 3π/4 on the unit circle with direction, arc, and terminal ray, convert the angle to degrees, and explain its position in quadrant II.",
+            "expectedPerformanceDe": "Der gegen den Uhrzeigersinn gemessene Bogen hat Länge 3π/4; Multiplikation mit 180°/π ergibt 135°. Das liegt zwischen 90° und 180° und endet deshalb im zweiten Quadranten.",
+            "expectedPerformanceEn": "The counterclockwise arc has length 3π/4; multiplying by 180 degrees/π gives 135 degrees. This lies between 90 and 180 degrees and therefore ends in quadrant II.",
+            "understandingFocusDe": "Direkte Verbindung von Einheitskreisbogen, Bogenmass, Gradmass und räumlicher Lage.",
+            "understandingFocusEn": "Direct connection among unit-circle arc, radian measure, degree measure, and geometric position."
+          },
+          {
+            "id": "negative-degree-to-radian-transfer",
+            "taskDemandDe": "Wandle −210° exakt in Bogenmass um, zeichne die gerichtete Drehung am Einheitskreis und gib zusätzlich den koterminalen Winkel im Intervall [0,2π) an. Erkläre, warum beide denselben Endstrahl besitzen.",
+            "taskDemandEn": "Convert −210 degrees exactly to radians, draw the directed turn on the unit circle, and also give the coterminal angle in [0,2π). Explain why both have the same terminal ray.",
+            "expectedPerformanceDe": "−210°·π/180°=−7π/6. Durch Addition eines vollen Umlaufs 2π entsteht 5π/6 im verlangten Intervall; beide Winkel unterscheiden sich um 2π und haben daher denselben Endstrahl.",
+            "expectedPerformanceEn": "−210 degrees times π/180 degrees equals −7π/6. Adding one full turn 2π gives 5π/6 in the required interval; the angles differ by 2π and therefore share a terminal ray.",
+            "understandingFocusDe": "Unabhängiger Rückwärtstransfer mit negativer Drehrichtung und expliziter Darstellungsgrenze.",
+            "understandingFocusEn": "Independent reverse transfer with negative rotation and an explicit representation boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+      "reason": "DE: Das Profil prüft Sinus und Kosinus selbst als periodische Funktionen in Term und Graph: Periode, Wertebereich, charakteristische Stellen und ihre gegenseitige Phasenlage. Zwei unabhängige Fälle wechseln zwischen vergleichender Beschreibung und Fehlerdiagnose; Eigenschaften werden nur für die benannten Grundfunktionen behauptet. EN: The profile assesses sine and cosine themselves as periodic functions in expressions and graphs: period, range, characteristic points, and their relative phase. Two independent cases vary between comparative description and error diagnosis; properties are claimed only for the stated basic functions.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "base-functions-have-characteristic-periodic-features",
+            "essentialUnderstandingDe": "Die Grundfunktionen sin x und cos x haben Periode 2π und Wertebereich [−1,1]; ihre Nullstellen und Extremstellen wiederholen sich regelmäßig, wobei Sinus bei x=0 den Wert 0 und Kosinus den Wert 1 besitzt.",
+            "essentialUnderstandingEn": "The basic functions sin x and cos x have period 2π and range [−1,1]; their zeros and extrema repeat regularly, with sine equal to 0 and cosine equal to 1 at x=0.",
+            "observablePerformanceDe": "Die lernende Person beschreibt an frischen Termen und selbst ergänzten Graphen Periode, Wertebereich, Nullstellen und Extremstellen fachsprachlich und belegt die Wiederholung an mehreren x-Werten.",
+            "observablePerformanceEn": "Using fresh expressions and learner-completed graphs, the learner describes the period, range, zeros, and extrema mathematically and demonstrates repetition at several x-values."
+          },
+          {
+            "id": "sine-and-cosine-are-phase-shifted-not-identical",
+            "essentialUnderstandingDe": "Sinus- und Kosinusgraph besitzen dieselbe Form und Periode, sind aber um π/2 gegeneinander verschoben; cos x=sin(x+π/2) beschreibt diese Phasenbeziehung.",
+            "essentialUnderstandingEn": "The sine and cosine graphs have the same shape and period but are shifted by π/2 relative to one another; cos x=sin(x+π/2) expresses this phase relation.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet Sinus- und Kosinusgraph anhand charakteristischer Stellen, erklärt ihre Verschiebung und korrigiert eine Term-Graph-Zuordnung mit mindestens zwei Funktionswerten.",
+            "observablePerformanceEn": "The learner distinguishes sine and cosine graphs using characteristic points, explains their shift, and corrects an expression-to-graph match using at least two function values."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["base-functions-have-characteristic-periodic-features", "sine-and-cosine-are-phase-shifted-not-identical"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "function", "textDe": "Sinus- oder Kosinusgrundfunktion", "textEn": "basic sine or cosine function"},
+          {"id": "representation", "textDe": "Term, Wertangaben oder selbst ergänzter Graph", "textEn": "expression, supplied values, or learner-completed graph"},
+          {"id": "task-direction", "textDe": "Eigenschaften beschreiben, Funktionen vergleichen oder Zuordnungsfehler korrigieren", "textEn": "describe properties, compare functions, or correct a matching error"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "compare-basic-sine-cosine",
+            "taskDemandDe": "Zeichne aus den charakteristischen Werten bei 0, π/2, π, 3π/2 und 2π die Graphen von sin x und cos x auf [0,2π]. Beschreibe Periode, Wertebereich, Nullstellen und Extremstellen und erkläre die Verschiebung.",
+            "taskDemandEn": "Using characteristic values at 0, π/2, π, 3π/2, and 2π, draw the graphs of sin x and cos x on [0,2π]. Describe period, range, zeros, and extrema and explain the shift.",
+            "expectedPerformanceDe": "Beide Graphen liegen in [−1,1] und setzen sich mit Periode 2π fort. Sinus hat bei 0,π,2π Nullstellen; Kosinus bei π/2,3π/2. Die Kosinuswerte stimmen mit den um π/2 vorgezogenen Sinuswerten überein.",
+            "expectedPerformanceEn": "Both graphs lie in [−1,1] and continue with period 2π. Sine has zeros at 0,π,2π; cosine at π/2,3π/2. Cosine values agree with sine values shifted forward by π/2.",
+            "understandingFocusDe": "Direkter, selbst erzeugter Vergleich der beiden periodischen Grundfunktionen.",
+            "understandingFocusEn": "Direct learner-produced comparison of the two basic periodic functions."
+          },
+          {
+            "id": "diagnose-cosine-graph-label",
+            "taskDemandDe": "Ein als y=cos x beschrifteter Graph beginnt bei (0|0), steigt bis (π/2|1), fällt durch (π|0) und erreicht bei 3π/2 den Wert −1. Prüfe die Beschriftung, korrigiere sie und begründe mit charakteristischen Werten und Periodizität.",
+            "taskDemandEn": "A graph labelled y=cos x starts at (0,0), rises to (π/2,1), falls through (π,0), and reaches −1 at 3π/2. Check the label, correct it, and justify using characteristic values and periodicity.",
+            "expectedPerformanceDe": "Die Punkte gehören zur Sinusgrundfunktion, nicht zu Kosinus, denn sin 0=0 und sin(π/2)=1, während cos 0=1. Die Folge setzt sich nach 2π periodisch fort; die Korrektur gilt für die dargestellte unveränderte Grundfunktion.",
+            "expectedPerformanceEn": "The points belong to the basic sine function, not cosine, because sin 0=0 and sin(π/2)=1 whereas cos 0=1. The pattern repeats after 2π; the correction applies to the untransformed basic function shown.",
+            "understandingFocusDe": "Transfer zur fachlich begründeten Diagnose einer Term-Graph-Verwechslung.",
+            "understandingFocusEn": "Transfer to a mathematically justified diagnosis of an expression-to-graph mismatch."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+      "reason": "DE: Das Profil prüft die gemeinsame Volumenstruktur von Prismen und Pyramiden über Grundflächeninhalt, senkrechte Höhe, körperabhängige Formelwahl und Ergebnisprüfung. Gedrehte Darstellungen und ein direkter Körpervergleich erzwingen Transfer, ohne die nachgelagerten Ziele zur Formelbegründung oder umfassenden Modellierung vorwegzunehmen. EN: The profile assesses the shared volume structure of prisms and pyramids through base area, perpendicular height, solid-dependent formula choice, and result checking. Rotated representations and a direct comparison of solids require transfer without taking over successor goals on formula derivation or broader modelling.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "base-and-perpendicular-height",
+            "essentialUnderstandingDe": "Grundflächeninhalt G und senkrechte Höhe h sind die für das Volumen maßgeblichen Größen; eine Seitenkante oder schräge Körperkante ist nur dann h, wenn sie senkrecht auf der Grundebene steht.",
+            "essentialUnderstandingEn": "Base area G and perpendicular height h are the quantities relevant to volume; a lateral or sloping edge is h only when it is perpendicular to the base plane.",
+            "observablePerformanceDe": "Die lernende Person markiert in einer unbekannten Körperdarstellung Grundfläche und senkrechte Höhe, begründet ihre Wahl über die Senkrechtbeziehung und bestimmt G aus den gegebenen Grundflächenmaßen.",
+            "observablePerformanceEn": "In an unfamiliar solid representation, the learner marks the base and perpendicular height, justifies the choice using perpendicularity, and determines G from the given base dimensions."
+          },
+          {
+            "id": "solid-type-controls-volume-factor",
+            "essentialUnderstandingDe": "Ein Prisma hat bei Grundflächeninhalt G und Höhe h das Volumen G·h; eine Pyramide mit demselben G und h hat das Volumen ⅓·G·h. Die Körperart entscheidet daher über den Faktor 1 oder ⅓.",
+            "essentialUnderstandingEn": "A prism with base area G and height h has volume G·h; a pyramid with the same G and h has volume one third of G·h. The solid type therefore determines the factor 1 or one third.",
+            "observablePerformanceDe": "Die lernende Person klassifiziert neue Körper, wählt die passende Formel und erklärt bei gleichem G und h das Volumenverhältnis 3:1.",
+            "observablePerformanceEn": "The learner classifies fresh solids, selects the appropriate formula, and explains the 3:1 volume ratio for equal G and h."
+          },
+          {
+            "id": "volume-result-keeps-units-and-plausibility",
+            "essentialUnderstandingDe": "Die Multiplikation einer Flächengröße mit einer Länge erzeugt eine kubische Einheit; ein Volumenergebnis muss positiv und hinsichtlich Formel, Einheit und Größenordnung geometrisch plausibel sein.",
+            "essentialUnderstandingEn": "Multiplying an area quantity by a length produces a cubic unit; a volume result must be positive and geometrically plausible in formula, unit, and magnitude.",
+            "observablePerformanceDe": "Die lernende Person rechnet mit konsistenten Einheiten, gibt eine passende Volumeneinheit an und prüft das Ergebnis durch Überschlag oder Vergleich mit einem zugehörigen Prisma.",
+            "observablePerformanceEn": "The learner calculates with consistent units, states a suitable cubic unit, and checks the result by estimation or comparison with a corresponding prism."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["base-and-perpendicular-height", "solid-type-controls-volume-factor", "volume-result-keeps-units-and-plausibility"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "solid-family", "textDe": "Prisma oder Pyramide mit unterschiedlicher Grundflächenform", "textEn": "prism or pyramid with a different base shape"},
+          {"id": "representation", "textDe": "Perspektivskizze mit schräger Ablenkung oder direkter Körpervergleich", "textEn": "perspective drawing with a distracting sloping edge or direct comparison of solids"},
+          {"id": "given-and-unit", "textDe": "Grundflächenmaße oder G gegeben sowie einheitliche oder gemischte Maßeinheiten", "textEn": "base dimensions or G supplied and uniform or mixed measurement units"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "triangular-prism-perpendicular-height",
+            "taskDemandDe": "Ein dreieckiges Prisma hat eine rechtwinklige Grundfläche mit Katheten 6 cm und 4 cm. In der Perspektivskizze sind eine schräge Seitenkante von 12 cm und der senkrechte Abstand der Grundflächen von 10 cm markiert. Bestimme und prüfe das Volumen.",
+            "taskDemandEn": "A triangular prism has a right-triangular base with legs 6 cm and 4 cm. Its perspective drawing labels a sloping lateral edge of 12 cm and the perpendicular distance between the bases as 10 cm. Determine and check the volume.",
+            "expectedPerformanceDe": "G=½·6·4=12 cm²; als Höhe gilt der senkrechte Abstand 10 cm, nicht die schräge Kante. V=12·10=120 cm³; Grundfläche mal eine Länge erklärt die kubische Einheit.",
+            "expectedPerformanceEn": "G=one half times 6 times 4=12 cm²; the perpendicular distance 10 cm, not the sloping edge, is the height. V=12 times 10=120 cm³; area times length explains the cubic unit.",
+            "understandingFocusDe": "Eigenständige Identifikation von G und h trotz optisch auffälliger Schrägkante.",
+            "understandingFocusEn": "Independent identification of G and h despite a visually prominent sloping edge."
+          },
+          {
+            "id": "same-base-prism-pyramid-transfer",
+            "taskDemandDe": "Ein Prisma und eine Pyramide besitzen dieselbe fünfeckige Grundfläche G=18 dm² und dieselbe senkrechte Höhe h=2,5 m. Berechne beide Volumina in m³ und erkläre und prüfe ihr Verhältnis.",
+            "taskDemandEn": "A prism and a pyramid have the same pentagonal base area G=18 dm² and the same perpendicular height h=2.5 m. Calculate both volumes in m³ and explain and check their ratio.",
+            "expectedPerformanceDe": "18 dm²=0,18 m². Das Prisma hat V=0,45 m³, die Pyramide V=0,15 m³. Der Faktor ⅓ erklärt das Verhältnis 3:1; beide Ergebnisse sind positiv und kleiner beziehungsweise gleich dem umschließenden Prisma.",
+            "expectedPerformanceEn": "18 dm²=0.18 m². The prism has V=0.45 m³ and the pyramid V=0.15 m³. The factor one third explains the 3:1 ratio; both results are positive and no larger than the enclosing prism.",
+            "understandingFocusDe": "Unabhängiger Transfer zu Körperwahl, Flächeneinheiten und geometrischer Verhältnisprüfung.",
+            "understandingFocusEn": "Independent transfer to solid selection, area units, and a geometric ratio check."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "reason": "DE: Das Profil prüft den vollständigen Modellierungsbogen bei zusammengesetzten Körpern: Idealisierung und Zerlegung, flexible Verbindung geometrischer Beziehungen sowie kontextbezogene Validierung. Drei unabhängige Anwendungen variieren Körperfamilie, gesuchte Größen und einbezogene Oberflächen; Längen, Winkel, Flächen und Volumina werden innerhalb der beanspruchten J10-Kompetenz sichtbar. EN: The profile assesses the full modelling cycle for composite solids: idealization and decomposition, flexible combination of geometric relations, and contextual validation. Three independent applications vary solid families, requested quantities, and included surfaces; lengths, angles, areas, and volumes become observable within the claimed Year 10 competence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "context-is-idealized-as-solids-with-boundaries",
+            "essentialUnderstandingDe": "Eine räumliche Sachsituation wird mathematisch lösbar, indem reale Teile passenden Grundkörpern zugeordnet, gemeinsame Flächen und Maße identifiziert und Annahmen wie Wandstärke, Überlappung oder offene Flächen ausdrücklich festgelegt werden.",
+            "essentialUnderstandingEn": "A spatial context becomes mathematically tractable by matching real components to standard solids, identifying shared surfaces and dimensions, and explicitly stating assumptions such as wall thickness, overlap, or open surfaces.",
+            "observablePerformanceDe": "Die lernende Person fertigt für eine neue Situation eine beschriftete Zerlegungsskizze an, definiert die benötigten Größen und entscheidet begründet, welche Flächen oder Volumenteile addiert, abgezogen oder nicht gezählt werden.",
+            "observablePerformanceEn": "For a fresh situation, the learner produces a labelled decomposition sketch, defines the needed quantities, and justifiably decides which surfaces or volume parts are added, subtracted, or excluded."
+          },
+          {
+            "id": "geometric-relations-are-combined-coherently",
+            "essentialUnderstandingDe": "Unbekannte Längen und Winkel können über rechtwinklige Querschnitte bestimmt und anschließend in Oberflächen- und Volumenformeln der Teilkörper eingesetzt werden; gemeinsame Maße und Einheiten müssen über alle Teilschritte konsistent bleiben.",
+            "essentialUnderstandingEn": "Unknown lengths and angles can be determined from right-triangle cross-sections and then used in surface-area and volume formulas for component solids; shared dimensions and units must remain consistent throughout.",
+            "observablePerformanceDe": "Die lernende Person verbindet in einem neuen Mehrschrittproblem mindestens eine geometrisch hergeleitete Länge oder einen Winkel mit Flächen- und Volumenberechnungen und dokumentiert die Abhängigkeiten nachvollziehbar.",
+            "observablePerformanceEn": "In a fresh multistep problem, the learner combines at least one geometrically derived length or angle with surface-area and volume calculations and documents the dependencies clearly."
+          },
+          {
+            "id": "model-results-are-interpreted-and-validated",
+            "essentialUnderstandingDe": "Ein geometrisches Modellergebnis gilt nur unter den gewählten Idealisierungen und muss durch Einheit, Größenordnung, Randvergleich und den Sachkontext geprüft sowie sinnvoll gerundet werden.",
+            "essentialUnderstandingEn": "A geometric model result is valid only under its chosen idealizations and must be checked through units, magnitude, bounds, and context and rounded appropriately.",
+            "observablePerformanceDe": "Die lernende Person interpretiert jedes Ergebnis mit Bezug zur Frage, führt eine unabhängige Plausibilitätsprüfung durch und benennt mindestens eine Modellgrenze, die das reale Ergebnis verändern könnte.",
+            "observablePerformanceEn": "The learner interprets each result in relation to the question, performs an independent plausibility check, and states at least one model limitation that could change the real result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["context-is-idealized-as-solids-with-boundaries", "geometric-relations-are-combined-coherently", "model-results-are-interpreted-and-validated"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "solid-composition", "textDe": "Zylinder mit Kegel, Dreiecksprisma oder Zylinder mit Halbkugeln", "textEn": "cylinder with cone, triangular prism, or cylinder with hemispheres"},
+          {"id": "target-quantity", "textDe": "hergeleitete Länge oder Winkel, Außenfläche oder Innenvolumen", "textEn": "derived length or angle, external area, or internal volume"},
+          {"id": "model-boundary", "textDe": "offene oder gemeinsame Flächen, Wandstärke, Nahtzugabe oder nutzbarer Innenraum", "textEn": "open or shared surfaces, wall thickness, seam allowance, or usable interior"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cylindrical-silo-conical-roof",
+            "taskDemandDe": "Ein Silo wird als Zylinder mit Radius 3 m und Höhe 8 m sowie aufgesetztem geradem Kegeldach der senkrechten Höhe 2 m modelliert. Bestimme Dachschräglänge und Dachneigungswinkel, Außenfläche ohne Boden und gemeinsamer Kreisfläche sowie Innenvolumen; dokumentiere Annahmen.",
+            "taskDemandEn": "A silo is modelled as a cylinder of radius 3 m and height 8 m topped by a right conical roof of vertical height 2 m. Determine roof slant height and roof angle, external area excluding the floor and shared circle, and interior volume; document assumptions.",
+            "expectedPerformanceDe": "Im Axialschnitt gilt s=√(3²+2²)=√13 m und tan α=2/3. Außenfläche ist 2π·3·8+π·3·√13, Volumen π·3²·8+⅓π·3²·2. Wandstärke, Dachüberstand und Naht werden als nicht modelliert benannt; gemeinsame Fläche und Boden werden nicht doppelt gezählt.",
+            "expectedPerformanceEn": "In the axial section, s=sqrt(3²+2²)=sqrt(13) m and tan alpha=2/3. External area is 2π·3·8+π·3·sqrt(13), and volume is π·3²·8+one third π·3²·2. Wall thickness, roof overhang, and seams are excluded; the shared circle and floor are not double-counted.",
+            "understandingFocusDe": "Mehrschritttransfer von Querschnittsgeometrie zu Winkel, Oberfläche und Volumen eines zusammengesetzten Körpers.",
+            "understandingFocusEn": "Multistep transfer from cross-sectional geometry to angle, surface area, and volume of a composite solid."
+          },
+          {
+            "id": "triangular-prism-tent",
+            "taskDemandDe": "Ein Zelt wird als 4 m langes gerades Prisma mit gleichschenkliger Dreiecksgrundfläche modelliert; Breite 3 m, Innenhöhe 1,8 m. Bestimme Länge und Neigungswinkel einer Dachseite, Stofffläche ohne Boden mit zwei Stirndreiecken und Innenvolumen. Prüfe sinnvolle Rundung und Grenzen.",
+            "taskDemandEn": "A tent is modelled as a 4 m long right prism with an isosceles triangular cross-section, width 3 m and interior height 1.8 m. Determine the length and angle of a roof side, fabric area excluding the floor but including two triangular ends, and interior volume. Check rounding and limitations.",
+            "expectedPerformanceDe": "Der halbe Querschnitt hat Katheten 1,5 m und 1,8 m, also Dachseite √(1,5²+1,8²) und tan α=1,8/1,5. Stofffläche sind zwei Dachrechtecke plus zwei Dreiecke; V=(½·3·1,8)·4. Nähte, Eingangsöffnung und Stoffdurchhang begrenzen das Modell.",
+            "expectedPerformanceEn": "Half the cross-section has legs 1.5 m and 1.8 m, so the roof side is sqrt(1.5²+1.8²) and tan alpha=1.8/1.5. Fabric area consists of two roof rectangles plus two triangles; V=(one half times 3 times 1.8) times 4. Seams, doorway, and fabric sag limit the model.",
+            "understandingFocusDe": "Unabhängiger Transfer zu einem Prisma mit anderer Zerlegung und kontextabhängiger Flächenauswahl.",
+            "understandingFocusEn": "Independent transfer to a prism with a different decomposition and context-dependent surface selection."
+          },
+          {
+            "id": "capsule-container-inverse-check",
+            "taskDemandDe": "Ein Behälter wird als Zylinder der Länge 10 cm mit zwei Halbkugeln Radius 2 cm modelliert. Bestimme Gesamtlänge, Außenfläche und Volumen, erkläre die Zusammenfassung der Halbkugeln und prüfe, ob ein Quader 15 cm×5 cm×5 cm als Verpackung ausreicht.",
+            "taskDemandEn": "A container is modelled as a cylinder of length 10 cm with two hemispherical ends of radius 2 cm. Determine total length, external area, and volume, explain combining the hemispheres, and check whether a 15 cm by 5 cm by 5 cm box is sufficient packaging.",
+            "expectedPerformanceDe": "Gesamtlänge 14 cm; die Halbkugeln bilden eine Kugel, daher Außenfläche 2π·2·10+4π·2² und Volumen π·2²·10+4/3π·2³. Die Maße 14×4×4 passen innerhalb 15×5×5, vorbehaltlich Polsterung und Wandstärke; das Verpackungsvolumen ist eine zusätzliche Plausibilitätsobergrenze.",
+            "expectedPerformanceEn": "Total length is 14 cm; the hemispheres form a sphere, so external area is 2π·2·10+4π·2² and volume is π·2²·10+4/3π·2³. Dimensions 14 by 4 by 4 fit within 15 by 5 by 5, subject to padding and wall thickness; box volume provides an additional plausibility upper bound.",
+            "understandingFocusDe": "Transfer zu einer dritten Körperkombination mit Dimensionsprüfung und expliziter Modellgrenze.",
+            "understandingFocusEn": "Transfer to a third solid combination with dimensional checking and an explicit model boundary."
+          }
+        ]
+      }
+    }
+  ]
+}

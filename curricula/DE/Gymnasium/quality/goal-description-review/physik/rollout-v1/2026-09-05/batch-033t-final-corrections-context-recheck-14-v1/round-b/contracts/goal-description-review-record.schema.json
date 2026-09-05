@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+  "title": "SkillPilot learning-goal description review record v1",
+  "description": "Exactly one fingerprint-bound decision for one learning goal in one description-review run. AI output remains a non-authoritative candidate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "runId",
+    "campaignId",
+    "roundId",
+    "bundleFingerprint",
+    "bookDigest",
+    "goalId",
+    "goalFingerprint",
+    "pageFingerprint",
+    "currentTitleDe",
+    "currentTitleEn",
+    "currentDescriptionDe",
+    "currentDescriptionEn",
+    "decision",
+    "understandingEvidence",
+    "rationale",
+    "evidenceProfileContract",
+    "evidenceProfileRecommendation",
+    "recordStatus",
+    "reviewAuthority"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "recordId": { "$ref": "#/$defs/stableId" },
+    "runId": { "$ref": "#/$defs/stableId" },
+    "campaignId": { "$ref": "#/$defs/stableId" },
+    "roundId": { "$ref": "#/$defs/stableId" },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "bookDigest": { "$ref": "#/$defs/digest" },
+    "goalId": { "$ref": "#/$defs/stableId" },
+    "goalFingerprint": { "$ref": "#/$defs/digest" },
+    "pageFingerprint": { "$ref": "#/$defs/digest" },
+    "currentTitleDe": { "$ref": "#/$defs/nonBlank" },
+    "currentTitleEn": { "$ref": "#/$defs/nonBlank" },
+    "currentDescriptionDe": { "$ref": "#/$defs/longText" },
+    "currentDescriptionEn": { "$ref": "#/$defs/longText" },
+    "decision": { "enum": ["keep", "revise", "split_review", "block"] },
+    "proposedDescriptionDe": { "$ref": "#/$defs/longText" },
+    "proposedDescriptionEn": { "$ref": "#/$defs/longText" },
+    "understandingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "essentialUnderstandingDe",
+        "essentialUnderstandingEn",
+        "observablePerformanceDe",
+        "observablePerformanceEn",
+        "transferExpectationDe",
+        "transferExpectationEn"
+      ],
+      "properties": {
+        "essentialUnderstandingDe": {
+          "description": "Positive, goal-specific statement in German of the subject-specific ideas, relationships, distinctions, structures, models, meanings, or conditions the learner understands.",
+          "$ref": "#/$defs/longText"
+        },
+        "essentialUnderstandingEn": {
+          "description": "Positive, goal-specific statement in English of the subject-specific ideas, relationships, distinctions, structures, models, meanings, or conditions the learner understands.",
+          "$ref": "#/$defs/longText"
+        },
+        "observablePerformanceDe": {
+          "description": "Concrete statement in German of what the learner can explain, justify, construct, compare, or solve as evidence of that understanding.",
+          "$ref": "#/$defs/longText"
+        },
+        "observablePerformanceEn": {
+          "description": "Concrete statement in English of what the learner can explain, justify, construct, compare, or solve as evidence of that understanding.",
+          "$ref": "#/$defs/longText"
+        },
+        "transferExpectationDe": {
+          "description": "Positive statement in German of how the learner applies the understanding to a changed example, representation, or context.",
+          "$ref": "#/$defs/longText"
+        },
+        "transferExpectationEn": {
+          "description": "Positive statement in English of how the learner applies the understanding to a changed example, representation, or context.",
+          "$ref": "#/$defs/longText"
+        }
+      }
+    },
+    "rationale": { "$ref": "#/$defs/longText" },
+    "evidenceProfileContract": { "const": "positive-understanding-evidence-v2" },
+    "evidenceProfileRecommendation": { "enum": ["none", "create", "revise"] },
+    "recordStatus": { "enum": ["candidate", "accepted", "rejected"] },
+    "reviewAuthority": { "enum": ["ai_candidate", "human"] }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "decision": { "const": "revise" } },
+        "required": ["decision"]
+      },
+      "then": {
+        "properties": {
+          "proposedDescriptionDe": { "$ref": "#/$defs/longText" },
+          "proposedDescriptionEn": { "$ref": "#/$defs/longText" }
+        },
+        "required": ["proposedDescriptionDe", "proposedDescriptionEn"]
+      },
+      "else": {
+        "not": {
+          "anyOf": [
+            { "required": ["proposedDescriptionDe"] },
+            { "required": ["proposedDescriptionEn"] }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "reviewAuthority": { "const": "ai_candidate" } },
+        "required": ["reviewAuthority"]
+      },
+      "then": {
+        "properties": { "recordStatus": { "const": "candidate" } }
+      }
+    },
+    {
+      "if": {
+        "properties": { "recordStatus": { "const": "accepted" } },
+        "required": ["recordStatus"]
+      },
+      "then": {
+        "properties": { "reviewAuthority": { "const": "human" } }
+      }
+    }
+  ],
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    }
+  }
+}

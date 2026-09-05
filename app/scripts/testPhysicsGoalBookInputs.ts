@@ -516,17 +516,17 @@ const EXPECTED_JURISDICTIONS = [
 ] as const
 
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 461,
+  curricularAtomic: 464,
   curricularArea: 101,
   practiceAssessment: 133,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
-  orientation: 1,
-  total: 706,
+  orientation: 2,
+  total: 710,
 }
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6387
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6215
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6308
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6136
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 172
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 57
 
@@ -1619,7 +1619,7 @@ for (const profilePath of [
     }
   })
 }
-assert.equal(canonicalProfileTargetIds.size, 388)
+assert.equal(canonicalProfileTargetIds.size, 391)
 assert.equal(
   canonicalProfileTargetIds.has(ROAD_SAFETY_GOAL_ID),
   false,
@@ -1658,7 +1658,7 @@ const navigationGoalIds = new Set([...collectAtomicGoalIds(
 assert.deepEqual(
   [...navigationGoalIds].sort(compareCodePoints),
   [...atlasCurricularAtomicGoalIds].sort(compareCodePoints),
-  'canonical goal-book navigation must place all 461 atlas goals exactly once',
+  'canonical goal-book navigation must place all 464 atlas goals exactly once',
 )
 
 const durationPolicy = readJson<{

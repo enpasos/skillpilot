@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-74dc4b0d-a167-564c-bdc1-5cf510aee280",
+  "goal": {
+    "goalId": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4560f811cf4b5b11bf9195e286efd9be886514c26dab94e9928249c173659e94",
+    "pageFingerprint": "sha256:beef07b72fad842cb1ee4031872aa3eaaef7e25686c4a2ed767334489d1be7a0",
+    "goalReviewContextFingerprint": "sha256:265007ef015690c1f82c7e9518f0276345464fcbc756138afc619aeb96f99b0c",
+    "finalText": {
+      "titleDe": "Algebraische Terme ausmultiplizieren",
+      "titleEn": "Expand algebraic expressions",
+      "descriptionDe": "Die lernende Person kann Produkte und Klammerausdrücke mithilfe des Distributivgesetzes ausmultiplizieren, gleichartige Terme zusammenfassen und die Umformung überprüfen.",
+      "descriptionEn": "The learner can expand products and bracketed expressions using the distributive law, collect like terms, and verify the transformation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:265007ef015690c1f82c7e9518f0276345464fcbc756138afc619aeb96f99b0c",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-74dc4b0d",
+      "recordDigest": "sha256:03b70b316240bfc6d2fcb844d011f01933523dde7608f1bf41cf3e172390a708"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:265007ef015690c1f82c7e9518f0276345464fcbc756138afc619aeb96f99b0c",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-006",
+      "recordDigest": "sha256:c09dfc163ad9d5a10820820738d0c4e9a0d744f9dae0c20384dce0139041b801"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-74dc4b0d-a167-564c-bdc1-5cf510aee280",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen den aktuellen Text mit KEEP. Runde A ist stärker, weil sie die Verteilung auf jeden Klammersummanden, das Kriterium identischer Variablenteile für gleichartige Terme und die fachsprachliche Diagnose eines Vorzeichen- oder Zusammenfassungsfehlers in einer neuen Mehrklammer-Situation explizit prüft.",
+    "rationaleEn": "Both rounds confirm the current text with KEEP. Round A is stronger because it explicitly assesses distribution to every bracket term, the identical-variable-part criterion for like terms, and precise diagnosis of a sign or collection error in a fresh multi-bracket situation.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht Ausmultiplizieren als Anwendung des Distributivgesetzes auf jeden Klammersummanden und versteht, dass nur gleichartige Terme mit übereinstimmendem Variablenteil zusammengefasst werden dürfen.",
+      "essentialUnderstandingEn": "The learner understands expansion as applying the distributive law to every term inside the brackets and understands that only like terms with matching variable parts may be collected.",
+      "observablePerformanceDe": "Die lernende Person multipliziert einfache Produkte und Klammerausdrücke einschließlich negativer Faktoren korrekt aus, ordnet und fasst gleichartige Terme zusammen, begründet Vorzeichenentscheidungen und prüft die erhaltene äquivalente Form durch Rückstrukturierung oder Wertproben.",
+      "observablePerformanceEn": "The learner correctly expands simple products and bracketed expressions, including negative factors, orders and collects like terms, justifies sign choices, and checks the resulting equivalent form by reconstructing the structure or using substitutions.",
+      "transferExpectationDe": "Bei einem neuen Ausdruck mit zwei Klammerprodukten und einem vorangestellten Minuszeichen findet und korrigiert die lernende Person einen typischen Vorzeichen- oder Zusammenfassungsfehler und erläutert, welches Rechengesetz verletzt wurde.",
+      "transferExpectationEn": "For a fresh expression with two bracketed products and a leading minus sign, the learner finds and corrects a typical sign or collection error and explains which arithmetic law was violated."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-74dc4b0d-a167-564c-bdc1-5cf510aee280",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b2030519153a6a26a2e6f82ff2cac128c44f113c1af89f187bccc79a391e148d"
+}

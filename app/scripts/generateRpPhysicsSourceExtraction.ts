@@ -32,6 +32,7 @@ type CompositionNode = {
   id?: string
   goalId?: string
   displayLabel?: string
+  projectionRole?: 'target' | 'prerequisiteOnly'
   children?: CompositionNode[]
 }
 
@@ -131,6 +132,25 @@ const appendGoalEntryToStructure = (
     goalId,
     ...(displayLabel ? { displayLabel } : {}),
   })
+}
+
+const keepGoalAsPrerequisiteOnly = (
+  view: Record<string, unknown>,
+  goalId: string,
+  fallbackStructureId?: string,
+): void => {
+  let matched = false
+  walkCompositionNodes(compositionRootNodes(view), (node) => {
+    if (node.goalId !== goalId) return
+    node.projectionRole = 'prerequisiteOnly'
+    matched = true
+  })
+  if (!matched && fallbackStructureId) {
+    appendGoalEntryToStructure(view, fallbackStructureId, goalId)
+    walkCompositionNodes(compositionRootNodes(view), (node) => {
+      if (node.goalId === goalId) node.projectionRole = 'prerequisiteOnly'
+    })
+  }
 }
 
 const slug = (value: string): string =>
@@ -771,7 +791,6 @@ const qualificationPhaseSpecs: ManualSourceGoalSpec[] = [
     courseLevel: 'GK_LK',
     canonicalGoalIds: [
       '4888444f-4520-437a-9ba7-e74e8f8ed129',
-      'f06c581a-7157-584e-a692-99bcd613cff9',
       'd5772db3-120c-5c37-ab46-2336d02236b0',
       '3efa0cda-f55b-5534-8fac-ffe1d312aed1',
       '0d2a4690-d891-503b-96f4-42c2de48fd8b',
@@ -1247,7 +1266,7 @@ const qualificationPhaseSpecs: ManualSourceGoalSpec[] = [
     sourceSpan: '4.4 Kernphysik und 5.4 Strahlenbiophysik, S. 40 und 70',
     sourceRef: 'Rheinland-Pfalz Lehrplan Physik MSS, 4.4 Kernphysik und 5.4 Strahlenbiophysik, S. 40 und 70',
     courseLevel: 'GK_LK',
-    canonicalGoalIds: ['e5c08365-a0d3-592c-ad8e-d2c2c6e2b717', 'a12fddce-0215-58d9-bd91-21be8a960d25'],
+    canonicalGoalIds: ['f74c691b-0b76-54e0-8fd6-a22211994e0a', 'a12fddce-0215-58d9-bd91-21be8a960d25'],
   },
   {
     id: 'rp-phys-sek2-q-quantum-nuclear-links-lk',
@@ -1628,6 +1647,7 @@ const extraction = {
     key: 'MSS-PHYSIK',
     title: 'Lehrplan Physik Grund- und Leistungsfach in der gymnasialen Oberstufe (Mainzer Studienstufe)',
     path: sourcePdfPath,
+    url: 'https://static.bildung-rp.de/lehrplaene/naturwissenschaften/Lehrplan_Physik-Web.pdf',
     official: true,
   },
   method: {
@@ -1785,6 +1805,23 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
   view.scope = {
     ...(typeof view.scope === 'object' && view.scope !== null ? view.scope : {}),
     jurisdiction: 'DE-RP',
+  }
+  keepGoalAsPrerequisiteOnly(
+    view,
+    'bf8517a9-142b-5789-826a-767f3b277998',
+    suffix.startsWith('sekii-') ? undefined : 'physics-seki-route-prerequisites',
+  )
+  if (!suffix.startsWith('sekii-')) {
+    keepGoalAsPrerequisiteOnly(
+      view,
+      '51de4fd9-6827-5b3d-b2ca-5e27ba961a7f',
+      'physics-seki-route-prerequisites',
+    )
+    keepGoalAsPrerequisiteOnly(
+      view,
+      'b60f63b6-e70b-5557-9f54-86d42fa80325',
+      'physics-seki-route-prerequisites',
+    )
   }
   appendGoalEntryToStructure(
     view,

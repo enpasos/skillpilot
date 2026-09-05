@@ -24,6 +24,7 @@ import {
 import {
   buildGoalDescriptionDualRoundResolution,
   extractGoalDescriptionDualRoundResolutionSource,
+  fingerprintGoalDescriptionReviewContext,
   validateGoalDescriptionDualRoundResolution,
   type GoalDescriptionDualRoundResolution,
 } from './validateGoalDescriptionDualRoundResolution'
@@ -62,7 +63,19 @@ if (args.filter((arg) => arg === '--write').length > 1) {
 }
 const writeMode = args.includes('--write')
 
-const batches = [
+type RebindBatchSpec = {
+  configPath: string
+  outputDirectory: string
+  applicabilityOnlyGoalIds?: readonly string[]
+  completedApplicabilityRebinds?: readonly {
+    goalId: string
+    previousContextFingerprint: string
+    currentContextFingerprint: string
+    currentJurisdictions: readonly string[]
+  }[]
+}
+
+const batches: readonly RebindBatchSpec[] = [
   {
     configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-003a-j6-nonstructural-17-current-v2.config.json',
     outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-003a-j6-nonstructural-17-current-v2',
@@ -91,6 +104,20 @@ const batches = [
     configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-013-global-electricity-residual-2-v1.config.json',
     outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-27/batch-013-global-electricity-residual-2-v1',
   },
+  {
+    configPath: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-031x-q2-harmonic-wave-final-recheck-3-v1.config.json',
+    outputDirectory: 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-031x-q2-harmonic-wave-final-recheck-3-v1',
+    applicabilityOnlyGoalIds: [],
+    completedApplicabilityRebinds: [{
+      goalId: 'bf559969-a05c-58b5-82c5-3d719d96555d',
+      previousContextFingerprint: 'sha256:333b7a2b5ec31129da9072bbcda21f769db6fed793e56282a122544207de455c',
+      currentContextFingerprint: 'sha256:6aad753e05ad812a6f353559990e9fba8eae690b40a490cb824a6788bb4428fa',
+      currentJurisdictions: [
+        'DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',
+        'DE-NI', 'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
+      ],
+    }],
+  },
 ] as const
 
 type JsonObject = Record<string, unknown>
@@ -113,6 +140,53 @@ const parseJsonl = <T>(bytes: Buffer, label: string): T[] => bytes.toString('utf
   .split(/\r?\n/u)
   .filter((line) => line.trim() !== '')
   .map((line, index) => parseJson<T>(line, `${label}:${index + 1}`))
+
+const withoutApplicabilityBindings = (value: unknown): unknown => {
+  const clone = structuredClone(value) as JsonObject
+  delete clone.goalFingerprint
+  delete clone.pageFingerprint
+  const canonicalContext = clone.canonicalContext as JsonObject | undefined
+  if (canonicalContext) delete canonicalContext.applicability
+  const reviewContext = clone.reviewContext as JsonObject | undefined
+  const page = reviewContext?.page as JsonObject | undefined
+  if (page) {
+    delete page.applicability
+    delete page.goalFingerprint
+    delete page.pageFingerprint
+  }
+  return clone
+}
+
+const applicabilityJurisdictions = (value: unknown): string[] => {
+  const input = value as JsonObject
+  const canonicalContext = input.canonicalContext as JsonObject | undefined
+  const applicability = canonicalContext?.applicability as JsonObject | undefined
+  return Array.isArray(applicability?.jurisdiction)
+    ? applicability.jurisdiction.map(String)
+    : []
+}
+
+const reviewSemanticPayload = (record: GoalDescriptionReviewRecord): JsonObject => {
+  const clone = structuredClone(record) as unknown as JsonObject
+  for (const key of [
+    'campaignId', 'roundId', 'bundleFingerprint', 'bookDigest', 'goalFingerprint', 'pageFingerprint',
+    'currentTitleDe', 'currentTitleEn', 'currentDescriptionDe', 'currentDescriptionEn',
+  ]) delete clone[key]
+  return clone
+}
+
+const differingPaths = (left: unknown, right: unknown, prefix = '$'): string[] => {
+  if (JSON.stringify(left) === JSON.stringify(right)) return []
+  if (
+    left === null || right === null
+    || typeof left !== 'object' || typeof right !== 'object'
+    || Array.isArray(left) || Array.isArray(right)
+  ) return [prefix]
+  const leftObject = left as JsonObject
+  const rightObject = right as JsonObject
+  const keys = [...new Set([...Object.keys(leftObject), ...Object.keys(rightObject)])].sort()
+  return keys.flatMap((key) => differingPaths(leftObject[key], rightObject[key], `${prefix}.${key}`))
+}
 
 const roundArtifacts = async (
   outputDirectory: string,
@@ -139,7 +213,12 @@ const roundArtifacts = async (
   }
 }
 
-const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batches[number]) => {
+const rematerializeBatch = async ({
+  configPath,
+  outputDirectory,
+  applicabilityOnlyGoalIds,
+  completedApplicabilityRebinds,
+}: RebindBatchSpec) => {
   const originalRoot = resolve(repoRoot, outputDirectory)
   const originalConfigBytes = await readFile(resolve(repoRoot, configPath))
   const originalConfig = parseJson<JsonObject>(originalConfigBytes, configPath)
@@ -187,6 +266,14 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
     const finalManifestBytes = jsonBytes(finalManifest)
     await writeFile(preparedManifestPath, finalManifestBytes)
 
+    const observedApplicabilityOnlyGoalIds = new Set<string>()
+    const applicabilityRebinds = new Map<string, {
+      oldContextFingerprint: string
+      newContextFingerprint: string
+      oldJurisdictions: string[]
+      newJurisdictions: string[]
+    }>()
+
     for (const round of ['round-a', 'round-b'] as const) {
       const oldRoundRoot = join(originalRoot, round)
       const newRoundRoot = join(temporaryOutput, round)
@@ -198,6 +285,58 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
         await readFile(join(newRoundRoot, 'description-review-input.json')),
         `${round} input`,
       )
+      const oldInput = parseJson<GoalDescriptionReviewInput>(
+        await readFile(join(oldRoundRoot, 'description-review-input.json')),
+        `${round} original input`,
+      )
+      for (const completed of completedApplicabilityRebinds ?? []) {
+        const reboundGoal = oldInput.goals.find((goal) => goal.goalId === completed.goalId)
+        if (!reboundGoal) throw new Error(`${round}: completed applicability rebind ${completed.goalId} is missing`)
+        if (completed.previousContextFingerprint === completed.currentContextFingerprint) {
+          throw new Error(`${round}: completed applicability rebind ${completed.goalId} has identical before/after fingerprints`)
+        }
+        const actualFingerprint = fingerprintGoalDescriptionReviewContext(reboundGoal)
+        if (actualFingerprint !== completed.currentContextFingerprint) {
+          throw new Error(
+            `${round}: completed applicability rebind ${completed.goalId} context fingerprint drifted; `
+            + `expected ${completed.currentContextFingerprint}; actual ${actualFingerprint}`,
+          )
+        }
+        if (JSON.stringify(applicabilityJurisdictions(reboundGoal)) !== JSON.stringify(completed.currentJurisdictions)) {
+          throw new Error(`${round}: completed applicability rebind ${completed.goalId} jurisdictions drifted`)
+        }
+      }
+      if (applicabilityOnlyGoalIds) {
+        const oldInputById = new Map(oldInput.goals.map((goal) => [goal.goalId, goal]))
+        for (const goal of input.goals) {
+          const oldGoal = oldInputById.get(goal.goalId)
+          if (!oldGoal) throw new Error(`${round}: current goal ${goal.goalId} was not in the original input`)
+          if (JSON.stringify(oldGoal) === JSON.stringify(goal)) continue
+          if (JSON.stringify(withoutApplicabilityBindings(oldGoal)) !== JSON.stringify(withoutApplicabilityBindings(goal))) {
+            throw new Error(
+              `${round}: ${goal.goalId} drift is not applicability-only; paths=`
+              + differingPaths(withoutApplicabilityBindings(oldGoal), withoutApplicabilityBindings(goal)).join(',')
+              + `; old=${JSON.stringify(withoutApplicabilityBindings(oldGoal))}`
+              + `; new=${JSON.stringify(withoutApplicabilityBindings(goal))}`,
+            )
+          }
+          const oldJurisdictions = applicabilityJurisdictions(oldGoal)
+          const newJurisdictions = applicabilityJurisdictions(goal)
+          if (
+            oldJurisdictions.some((jurisdiction) => !newJurisdictions.includes(jurisdiction))
+            || newJurisdictions.length <= oldJurisdictions.length
+          ) {
+            throw new Error(`${round}: ${goal.goalId} applicability drift is not strictly additive`)
+          }
+          observedApplicabilityOnlyGoalIds.add(goal.goalId)
+          applicabilityRebinds.set(goal.goalId, {
+            oldContextFingerprint: fingerprintGoalDescriptionReviewContext(oldGoal),
+            newContextFingerprint: fingerprintGoalDescriptionReviewContext(goal),
+            oldJurisdictions,
+            newJurisdictions,
+          })
+        }
+      }
       const batch = campaign.batches[0]
       if (!batch || campaign.batches.length !== 1) throw new Error(`${round}: expected exactly one batch`)
       const oldRecordsPath = join(oldRoundRoot, 'results', `${batch.batchId}.records.jsonl`)
@@ -210,7 +349,7 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
       const records = oldRecords.map((record) => {
         const goal = inputGoalById.get(record.goalId)
         if (!goal) throw new Error(`${round}: record ${record.recordId} has no current input goal`)
-        return {
+        const rebound = {
           ...record,
           campaignId: campaign.campaignId,
           roundId: campaign.roundId,
@@ -223,6 +362,10 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
           currentDescriptionDe: goal.currentDescriptionDe,
           currentDescriptionEn: goal.currentDescriptionEn,
         }
+        if (JSON.stringify(reviewSemanticPayload(record)) !== JSON.stringify(reviewSemanticPayload(rebound))) {
+          throw new Error(`${round}: record ${record.recordId} semantic content changed during context rebind`)
+        }
+        return rebound
       })
       const recordsBytes = Buffer.from(`${records.map((record) => JSON.stringify(record)).join('\n')}\n`)
       const oldRun = parseJson<GoalEvidenceAiRunManifest>(await readFile(oldRunPath), `${round} run`)
@@ -256,6 +399,14 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
         writeFile(join(newRoundRoot, 'results', `${batch.batchId}.records.jsonl`), recordsBytes),
         writeFile(join(newRoundRoot, 'results', `${batch.batchId}.run.json`), jsonBytes(run)),
       ])
+    }
+
+    if (applicabilityOnlyGoalIds) {
+      const expected = [...applicabilityOnlyGoalIds].sort()
+      const observed = [...observedApplicabilityOnlyGoalIds].sort()
+      if (JSON.stringify(observed) !== JSON.stringify(expected)) {
+        throw new Error(`Applicability-only drift scope mismatch: expected ${expected.join(',')}; observed ${observed.join(',')}`)
+      }
     }
 
     const [first, second] = await Promise.all([
@@ -482,6 +633,9 @@ const rematerializeBatch = async ({ configPath, outputDirectory }: typeof batche
         writeFile(join(originalRoot, 'synthesis-decisions.json'), synthesisBytes),
         writeFile(join(originalRoot, 'resolution-index.json'), jsonBytes(index)),
       ])
+    }
+    for (const [goalId, details] of applicabilityRebinds) {
+      console.log(`APPLICABILITY_REBIND ${goalId} ${JSON.stringify(details)}`)
     }
     console.log(
       `CHECK rebind_math_known_review_context_stales ${writeMode ? 'WRITE' : 'PASS'} `

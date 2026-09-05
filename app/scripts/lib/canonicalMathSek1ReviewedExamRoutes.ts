@@ -1,6 +1,15 @@
 import type { CompositionViewFinding } from '../../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../../src/utils/authoring/canonicalAuthoring'
 
+export const hasUnavailableCurricularAtomicAssessmentPrerequisite = (
+  assessment: { requires?: string[]; extendedData?: Record<string, unknown> } | undefined,
+  curricularAtomicGoalIds: ReadonlySet<string>,
+  targetGoalIds: ReadonlySet<string>,
+): boolean => assessment?.extendedData?.applicabilityFromRequires === true
+  && (assessment.requires ?? []).some((requiredId) => (
+    curricularAtomicGoalIds.has(requiredId) && !targetGoalIds.has(requiredId)
+  ))
+
 interface ReviewedExamRoute {
   year: string
   yearAnchorId: string

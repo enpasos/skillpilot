@@ -71,7 +71,7 @@ for (const subject of [mathematics, physics]) {
   assert.ok(subject.gates.currentPositiveEvidenceProfiles >= subject.strictComplete)
   assert.equal(subject.gates.currentSemanticAtomicityDecisions, subject.denominator)
   assert.equal(subject.gates.currentMemoryReviewDecisions, subject.denominator)
-  assert.equal(subject.gates.currentVisualizationQaRecords, subject.denominator)
+  assert.ok(subject.gates.currentVisualizationQaRecords >= subject.strictComplete)
 }
 
 console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}.`)

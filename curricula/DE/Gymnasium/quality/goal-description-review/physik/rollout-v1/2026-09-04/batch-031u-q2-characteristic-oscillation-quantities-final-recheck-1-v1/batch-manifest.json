@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1.config.json",
+  "configDigest": "sha256:4225471e68c2abc647db001acf7abbf2404acdc7056789c7d3d7932f7fe69525",
+  "goalIds": [
+    "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 461,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:23204d4e2e376235eda1af164c6ff73711e009ea318149cbb448428e74167a4e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b369c2ec8f5d2f52e4eba013bb71700c2516456f7dfb475ccf4a4ad02b57eb11",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ffa35e2491a23278b78fa4481c72656e2880e7a03979cea84890e47c3d861c93",
+    "reviewInputFingerprint": "sha256:57ea046ec1e82972c08e0deb4eb4ee29a75200dbe03541c839f906520d871399",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-a",
+        "campaignDigest": "sha256:e48c21dc24d756dd248c87736cf416bfeed5df80d14aaba6de99d33fe4d0dab9",
+        "roundId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-independent-a",
+        "batchId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7258da26642bd99fff70fcd42140f0027bb4001be7cb9610d5f6d6478e18bd86"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-b",
+        "campaignDigest": "sha256:6808365a6cec08a229270d000fbf050e3ab6c490fecd5cbc675ff04791e0d0d9",
+        "roundId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-independent-b",
+        "batchId": "physik-rollout-v1-batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1-20260904-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:af8ca4bb69f662b967e7edccf1c8669023bda44bb70740fda82d3c6e8516e229"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

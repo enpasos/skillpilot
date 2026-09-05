@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Harmonische Wellen und ihre Größen
+# Lernzielvisualisierung: Harmonische Wellen über ihre Kenngrößen beschreiben
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `cb0ced6d-b7c1-5b7d-9922-8c394f6030e8`
-- Titel: Harmonische Wellen und ihre Größen
-- Beschreibung: Die lernende Person kann harmonische Wellen erzeugen und beschreiben, charakteristische Größen wie Ausbreitungsgeschwindigkeit, Wellenlänge und Frequenz angeben und den Zusammenhang $v = \lambda \cdot f$ nutzen.
+- Titel: Harmonische Wellen über ihre Kenngrößen beschreiben
+- Beschreibung: Die lernende Person kann bei einer fortschreitenden harmonischen Welle Frequenz und Wellenlänge als zeitliche beziehungsweise räumliche Periodizität deuten, die Phasengeschwindigkeit von der lokalen Schwingungsbewegung unterscheiden und den Zusammenhang $v = \lambda \cdot f$ begründen und nutzen.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Harmonische Wellen und ihre Größen
-Beschreibung: Die lernende Person kann harmonische Wellen erzeugen und beschreiben, charakteristische Größen wie Ausbreitungsgeschwindigkeit, Wellenlänge und Frequenz angeben und den Zusammenhang $v = \lambda \cdot f$ nutzen.
+Titel: Harmonische Wellen über ihre Kenngrößen beschreiben
+Beschreibung: Die lernende Person kann bei einer fortschreitenden harmonischen Welle Frequenz und Wellenlänge als zeitliche beziehungsweise räumliche Periodizität deuten, die Phasengeschwindigkeit von der lokalen Schwingungsbewegung unterscheiden und den Zusammenhang $v = \lambda \cdot f$ begründen und nutzen.
 
 Zusatzanweisung:
 Pflichtinhalt:

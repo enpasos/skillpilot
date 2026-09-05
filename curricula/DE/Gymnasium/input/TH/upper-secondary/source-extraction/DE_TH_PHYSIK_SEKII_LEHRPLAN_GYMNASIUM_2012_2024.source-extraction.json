@@ -33,12 +33,12 @@
   "method": {
     "sourceProvision": "Der amtliche Thüringer Lehrplan Physik 2012 und die Fortschreibung der Qualifikationsphase 2024 liegen lokal als PDFs vor; der alte Snapshot wird nicht als fachliche Quelle verwendet.",
     "passageExtraction": "pdftotext -layout; Passagen werden je Klassenstufe und Themen-/Inhaltsbereich gebildet.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet und ausgewiesenem Schülerexperiment. Projektvorschläge, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt."
+    "sourceGoalExtraction": "Ein Source-Ziel pro fachlichem Kompetenzbullet und ausgewiesenem Schülerexperiment. Allgemeine Programm- und Anforderungsniveau-Vorspänne, Projektvorschläge, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt."
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
       "accepted": true,
-      "details": "257 Source-Ziele statt 14 im alten Snapshot. Die Abweichung ist gewollt und gegen geprüfte Physik-Spuren plausibilisiert: BB/BE/BW/HB/HE/NI/SH/RP/NW/SN/ST = 175/175/221/214/274/154/169/193/187/318/575 Source-Ziele; Thüringen Sek II kombiniert Einführungsphase 2012 mit Qualifikationsphase 2024."
+      "details": "240 Source-Ziele statt 14 im alten Snapshot. Die Abweichung ist gewollt und gegen geprüfte Physik-Spuren plausibilisiert: BB/BE/BW/HB/HE/NI/SH/RP/NW/SN/ST = 175/175/221/214/274/154/169/193/187/318/575 Source-Ziele; Thüringen Sek II kombiniert Einführungsphase 2012 mit Qualifikationsphase 2024."
     }
   },
   "expectedTopicCodes": [
@@ -96,13 +96,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Thüringen-Physik-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "257 Source-Ziele"
+            "details": "240 Source-Ziele"
           },
           {
             "id": "source-goal-count-peer-baseline",
             "label": "Source-Ziel-Anzahl ist gegen bereits geprüfte Physik-Inventare kritisch plausibilisiert",
             "passed": true,
-            "details": "257 Source-Ziele; BB/BE/BW/HB/HE/NI/SH/RP/NW/SN/ST = 175/175/221/214/274/154/169/193/187/318/575 Source-Ziele; Thüringen Sek II kombiniert Einführungsphase 2012 mit Qualifikationsphase 2024."
+            "details": "240 Source-Ziele; BB/BE/BW/HB/HE/NI/SH/RP/NW/SN/ST = 175/175/221/214/274/154/169/193/187/318/575 Source-Ziele; Thüringen Sek II kombiniert Einführungsphase 2012 mit Qualifikationsphase 2024."
           },
           {
             "id": "source-goal-ids-unique",
@@ -131,7 +131,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "257 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "240 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
           },
           {
             "id": "m3-review-file-present",
@@ -143,13 +143,13 @@
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "257/257 Source-Ziele reviewed; offen: 0."
+            "details": "240/240 Source-Ziele reviewed; offen: 0."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 257/257; keine offenen Canonical-Gaps."
+            "details": "Abgedeckt: 240/240; keine offenen Canonical-Gaps."
           }
         ]
       }
@@ -293,7 +293,7 @@
       "id": "th-physics-sekii:th-3-6-radioaktivitat",
       "topicCode": "TH-3-6-radioaktivitat",
       "title": "Klassenstufe 11 Einführungsphase: Radioaktivität",
-      "text": "- Sach- und Methodenkompetenz: die Zusammensetzung von Atomkernen mit Hilfe der Symbolschreibweise bestimmen,\n- Sach- und Methodenkompetenz: Isotope unterscheiden,\n- Sach- und Methodenkompetenz: α-, β- und γ-Strahlung mit Hilfe ihrer Eigenschaften unterscheiden und Nachweismöglichkeiten beschreiben,\n- Sach- und Methodenkompetenz: die Entstehung von α-, β- und γ-Strahlung beschreiben sowie die zugehörigen Zerfallsgleichungen angeben,\n- Sach- und Methodenkompetenz: die grafische Darstellung des zeitlichen Verlaufs eines radioaktiven Zerfalls interpretieren und die Halbwertszeit bestimmen.\n- Selbst- und Sozialkompetenz: sich unter Verwendung naturwissenschaftlicher Kenntnisse und unter Berücksichtigung ökonomischer sowie ökologischer Gesichtspunkte einen persönlichen Standpunkt zur Anwendung radioaktiver Strahlung bilden,\n- Selbst- und Sozialkompetenz: sich mit den Meinungen anderer zum Thema Radioaktivität sachlich und tolerant auseinandersetzen,\n- Selbst- und Sozialkompetenz: Informationen und Aussagen hinterfragen, bewerten und sich eine Meinung bilden,\n- Selbst- und Sozialkompetenz: in Bezug auf den Strahlenschutz Konsequenzen für das eigene Handeln ableiten.\n- Selbst- und Sozialkompetenz: erweitertem Allgemeinund Fachwissen,\n- Selbst- und Sozialkompetenz: verstärktem fachübergreifenden Arbeiten und Lernen,\n- Selbst- und Sozialkompetenz: eigenverantwortlichem und selbstständig gestaltetem Lernen,\n- Selbst- und Sozialkompetenz: der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen,\n- Selbst- und Sozialkompetenz: der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen,\n- Selbst- und Sozialkompetenz: sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis,\n- Selbst- und Sozialkompetenz: einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken,\n- Selbst- und Sozialkompetenz: einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken,\n- Selbst- und Sozialkompetenz: einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen der inhaltlichen Gliederung der Qualifikationsphase, vergleichbar den Basiskonzepten für den Physikunterricht der Sekundarstufe I, die Sachgebiete Felder, Wellen, Quanten und Materie zugrunDer Fachunterricht wird gemäß den Beschlüssen der Kultusministerkonferenz zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II auf unterschiedlichem Anforderungsniveau erteilt. Dabei repräsentiert der Unterricht\n- Selbst- und Sozialkompetenz: mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung,\n- Selbst- und Sozialkompetenz: mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften Bildung10. Die fachlichen Kompetenzen und Inhalte des Unterrichts mit erhöhtem Anforderungsniveau unterscheiden sich von denen des Unterrichts mit grundlegendem Anforderungsniveau in\n- Selbst- und Sozialkompetenz: einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 9 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 10 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Vereinbarungen zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II, 2006.\n- Selbst- und Sozialkompetenz: einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung,\n- Selbst- und Sozialkompetenz: einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung,\n- Selbst- und Sozialkompetenz: einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung,\n- Selbst- und Sozialkompetenz: einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel,\n- Selbst- und Sozialkompetenz: einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. Die für die Klassenstufen 11/12 für beide Anforderungsniveaus ausgewiesenen Ziele des Kompetenzerwerbs erfordern eine schulinterne Präzisierung und Abstimmung. Die ausgewiesenen Ziele des grundlegenden Anforderungsniveaus sind immanenter Bestandteil des erhöhten Anforderungsniveaus.",
+      "text": "- Sach- und Methodenkompetenz: die Zusammensetzung von Atomkernen mit Hilfe der Symbolschreibweise bestimmen,\n- Sach- und Methodenkompetenz: Isotope unterscheiden,\n- Sach- und Methodenkompetenz: α-, β- und γ-Strahlung mit Hilfe ihrer Eigenschaften unterscheiden und Nachweismöglichkeiten beschreiben,\n- Sach- und Methodenkompetenz: die Entstehung von α-, β- und γ-Strahlung beschreiben sowie die zugehörigen Zerfallsgleichungen angeben,\n- Sach- und Methodenkompetenz: die grafische Darstellung des zeitlichen Verlaufs eines radioaktiven Zerfalls interpretieren und die Halbwertszeit bestimmen.\n- Selbst- und Sozialkompetenz: sich unter Verwendung naturwissenschaftlicher Kenntnisse und unter Berücksichtigung ökonomischer sowie ökologischer Gesichtspunkte einen persönlichen Standpunkt zur Anwendung radioaktiver Strahlung bilden,\n- Selbst- und Sozialkompetenz: sich mit den Meinungen anderer zum Thema Radioaktivität sachlich und tolerant auseinandersetzen,\n- Selbst- und Sozialkompetenz: Informationen und Aussagen hinterfragen, bewerten und sich eine Meinung bilden,\n- Selbst- und Sozialkompetenz: in Bezug auf den Strahlenschutz Konsequenzen für das eigene Handeln ableiten.",
       "page": 31,
       "sourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
       "sourceGoalIds": [
@@ -305,24 +305,7 @@
         "th-phys-sekii-th-3-6-radioaktivitat-089-d0faa2b4",
         "th-phys-sekii-th-3-6-radioaktivitat-090-5878cb00",
         "th-phys-sekii-th-3-6-radioaktivitat-091-c11608ca",
-        "th-phys-sekii-th-3-6-radioaktivitat-092-e10bb744",
-        "th-phys-sekii-th-3-6-radioaktivitat-093-f17ebc0f",
-        "th-phys-sekii-th-3-6-radioaktivitat-094-8b4f0a4d",
-        "th-phys-sekii-th-3-6-radioaktivitat-095-6b0613eb",
-        "th-phys-sekii-th-3-6-radioaktivitat-096-733f7f65",
-        "th-phys-sekii-th-3-6-radioaktivitat-097-d907d3b6",
-        "th-phys-sekii-th-3-6-radioaktivitat-098-b52676d3",
-        "th-phys-sekii-th-3-6-radioaktivitat-099-08a29343",
-        "th-phys-sekii-th-3-6-radioaktivitat-100-15560493",
-        "th-phys-sekii-th-3-6-radioaktivitat-101-8d515058",
-        "th-phys-sekii-th-3-6-radioaktivitat-102-83a48473",
-        "th-phys-sekii-th-3-6-radioaktivitat-103-db2360b9",
-        "th-phys-sekii-th-3-6-radioaktivitat-104-44b75906",
-        "th-phys-sekii-th-3-6-radioaktivitat-105-62d9b55f",
-        "th-phys-sekii-th-3-6-radioaktivitat-106-f1c5e826",
-        "th-phys-sekii-th-3-6-radioaktivitat-107-5706eb9f",
-        "th-phys-sekii-th-3-6-radioaktivitat-108-48fc3e96",
-        "th-phys-sekii-th-3-6-radioaktivitat-109-96cc34cc"
+        "th-phys-sekii-th-3-6-radioaktivitat-092-e10bb744"
       ]
     },
     {
@@ -2916,448 +2899,6 @@
       "rawSourceText": "Selbst- und Sozialkompetenz: in Bezug auf den Strahlenschutz Konsequenzen für das eigene Handeln ableiten.",
       "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
       "rawParentBulletText": "in Bezug auf den Strahlenschutz Konsequenzen für das eigene Handeln ableiten."
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-093-f17ebc0f",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 93,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: erweitertem Allgemeinund Fachwissen",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: erweitertem Allgemeinund Fachwissen.",
-      "sourceText": "Selbst- und Sozialkompetenz: erweitertem Allgemeinund Fachwissen,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "erweitertem Allgemeinund Fachwissen,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: erweitertem Allgemeinund Fachwissen,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "erweitertem Allgemeinund Fachwissen,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-094-8b4f0a4d",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 94,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: verstärktem fachübergreifenden Arbeiten und Lernen",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: verstärktem fachübergreifenden Arbeiten und Lernen.",
-      "sourceText": "Selbst- und Sozialkompetenz: verstärktem fachübergreifenden Arbeiten und Lernen,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "verstärktem fachübergreifenden Arbeiten und Lernen,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: verstärktem fachübergreifenden Arbeiten und Lernen,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "verstärktem fachübergreifenden Arbeiten und Lernen,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-095-6b0613eb",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 95,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: eigenverantwortlichem und selbstständig gestaltetem Lernen",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: eigenverantwortlichem und selbstständig gestaltetem Lernen.",
-      "sourceText": "Selbst- und Sozialkompetenz: eigenverantwortlichem und selbstständig gestaltetem Lernen,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "eigenverantwortlichem und selbstständig gestaltetem Lernen,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: eigenverantwortlichem und selbstständig gestaltetem Lernen,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "eigenverantwortlichem und selbstständig gestaltetem Lernen,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-096-733f7f65",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 96,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen.",
-      "sourceText": "Selbst- und Sozialkompetenz: der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "der gezielten Anwendung unterschiedlicher Problemlösungsstrategien beim Bearbeiten komplexerer Aufgabenstellungen,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-097-d907d3b6",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 97,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen.",
-      "sourceText": "Selbst- und Sozialkompetenz: der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "der sachgerechten Auswahl von Informationen aus unterschiedlichen Quellen,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-098-b52676d3",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 98,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis.",
-      "sourceText": "Selbst- und Sozialkompetenz: sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "sachgerechtem Reflektieren über den Aufgabenlösungsprozess und dessen Ergebnis,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-099-08a29343",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 99,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken.",
-      "sourceText": "Selbst- und Sozialkompetenz: einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einer sicheren und überzeugenden Darstellung von Arbeitsergebnissen mit Hilfe unterschiedlicher Präsentationsformen und -techniken,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-100-15560493",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 100,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken.",
-      "sourceText": "Selbst- und Sozialkompetenz: einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einer umfangreicheren Anwendung wissenschaftlicher Arbeitsmethoden und -techniken,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-101-8d515058",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 101,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen...",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen der inhaltlichen Gliederung der Qualifikationsphase, vergleichbar den Basiskonzepten für den Physikunterricht der Sekundarstufe I, die Sachgebiete Felder, Wellen, Quanten und Materie zugrunDer Fachunterricht wird gemäß den Beschlüssen der Kultusministerkonferenz zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II auf unterschiedlichem Anforderungsniveau erteilt. Dabei repräsentiert der Unterricht.",
-      "sourceText": "Selbst- und Sozialkompetenz: einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen der inhaltlichen Gliederung der Qualifikationsphase, vergleichbar den Basiskonzepten für den Physikunterricht der Sekundarstufe I, die Sachgebiete Felder, Wellen, Quanten und Materie zugrunDer Fachunterricht wird gemäß den Beschlüssen der Kultusministerkonferenz zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II auf unterschiedlichem Anforderungsniveau erteilt. Dabei repräsentiert der Unterricht",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen der inhaltlichen Gliederung der Qualifikationsphase, vergleichbar den Basiskonzepten für den Physikunterricht der Sekundarstufe I, die Sachgebiete Felder, Wellen, Quanten und Materie zugrunDer Fachunterricht wird gemäß den Beschlüssen der Kultusministerkonferenz zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II auf unterschiedlichem Anforderungsniveau erteilt. Dabei repräsentiert der Unterricht",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen der inhaltlichen Gliederung der Qualifikationsphase, vergleichbar den Basiskonzepten für den Physikunterricht der Sekundarstufe I, die Sachgebiete Felder, Wellen, Quanten und Materie zugrunDer Fachunterricht wird gemäß den Beschlüssen der Kultusministerkonferenz zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II auf unterschiedlichem Anforderungsniveau erteilt. Dabei repräsentiert der Unterricht",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einem erhöhten Grad der Formalisierung und Mathematisierung8. Gemäß den Einheitlichen Prüfungsanforderungen für die Abiturprüfung Physik9 (EPA) liegen der inhaltlichen Gliederung der Qualifikationsphase, vergleichbar den Basiskonzepten für den Physikunterricht der Sekundarstufe I, die Sachgebiete Felder, Wellen, Quanten und Materie zugrunDer Fachunterricht wird gemäß den Beschlüssen der Kultusministerkonferenz zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II auf unterschiedlichem Anforderungsniveau erteilt. Dabei repräsentiert der Unterricht"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-102-83a48473",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 102,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung.",
-      "sourceText": "Selbst- und Sozialkompetenz: mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "mit grundlegendem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen Bildung,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-103-db2360b9",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 103,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften ...",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften Bildung10. Die fachlichen Kompetenzen und Inhalte des Unterrichts mit erhöhtem Anforderungsniveau unterscheiden sich von denen des Unterrichts mit grundlegendem Anforderungsniveau in.",
-      "sourceText": "Selbst- und Sozialkompetenz: mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften Bildung10. Die fachlichen Kompetenzen und Inhalte des Unterrichts mit erhöhtem Anforderungsniveau unterscheiden sich von denen des Unterrichts mit grundlegendem Anforderungsniveau in",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften Bildung10. Die fachlichen Kompetenzen und Inhalte des Unterrichts mit erhöhtem Anforderungsniveau unterscheiden sich von denen des Unterrichts mit grundlegendem Anforderungsniveau in",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften Bildung10. Die fachlichen Kompetenzen und Inhalte des Unterrichts mit erhöhtem Anforderungsniveau unterscheiden sich von denen des Unterrichts mit grundlegendem Anforderungsniveau in",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "mit erhöhtem Anforderungsniveau das Lernniveau der gymnasialen Oberstufe unter dem Aspekt einer wissenschaftspropädeutischen, exemplarisch vertieften Bildung10. Die fachlichen Kompetenzen und Inhalte des Unterrichts mit erhöhtem Anforderungsniveau unterscheiden sich von denen des Unterrichts mit grundlegendem Anforderungsniveau in"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-104-44b75906",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 104,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfung...",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 9 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 10 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Vereinbarungen zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II, 2006.",
-      "sourceText": "Selbst- und Sozialkompetenz: einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 9 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 10 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Vereinbarungen zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II, 2006.",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 9 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 10 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Vereinbarungen zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II, 2006.",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 9 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 10 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Vereinbarungen zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II, 2006.",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einer thematischen Erweiterung und theoretischen Vertiefung, 8 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 9 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Einheitliche Prüfungsanforderungen in der Abiturprüfung Biologie, Chemie und Physik (Beschluss der Kultusministerkonferenz vom 01.12.1989 i.d.F. vom 10 Sekretariat der Ständigen Konferenz der Kultusminister der Länder: Vereinbarungen zur Gestaltung der gymnasialen Oberstufe in der Sekundarstufe II, 2006."
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-105-62d9b55f",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 105,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung.",
-      "sourceText": "Selbst- und Sozialkompetenz: einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einer stärker wissenschaftssystematisch geprägten Auseinandersetzung mit den Inhalten und deren stärkere Vernetzung,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-106-f1c5e826",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 106,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung.",
-      "sourceText": "Selbst- und Sozialkompetenz: einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einem höheren Abstraktionsgrad und einer stärkeren Mathematisierung,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-107-5706eb9f",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 107,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung.",
-      "sourceText": "Selbst- und Sozialkompetenz: einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einem höheren Schwierigkeitsund Komplexitätsgrad sowie der Offenheit der Aufgabenstellung,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-108-48fc3e96",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 108,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel.",
-      "sourceText": "Selbst- und Sozialkompetenz: einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel,",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel,",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel,",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einem größeren Umfang und der Art bereitgestellter Informationen und Hilfsmittel,"
-    },
-    {
-      "id": "th-phys-sekii-th-3-6-radioaktivitat-109-96cc34cc",
-      "passageId": "th-physics-sekii:th-3-6-radioaktivitat",
-      "topicCode": "TH-3-6-radioaktivitat",
-      "bulletIndex": 109,
-      "aspectIndex": 1,
-      "title": "Selbstund Sozialkompetenz: einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. ...",
-      "description": "Die lernende Person kann Selbst- und Sozialkompetenz: einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. Die für die Klassenstufen 11/12 für beide Anforderungsniveaus ausgewiesenen Ziele des Kompetenzerwerbs erfordern eine schulinterne Präzisierung und Abstimmung. Die ausgewiesenen Ziele des grundlegenden Anforderungsniveaus sind immanenter Bestandteil des erhöhten Anforderungsniveaus.",
-      "sourceText": "Selbst- und Sozialkompetenz: einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. Die für die Klassenstufen 11/12 für beide Anforderungsniveaus ausgewiesenen Ziele des Kompetenzerwerbs erfordern eine schulinterne Präzisierung und Abstimmung. Die ausgewiesenen Ziele des grundlegenden Anforderungsniveaus sind immanenter Bestandteil des erhöhten Anforderungsniveaus.",
-      "sourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "parentBulletText": "einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. Die für die Klassenstufen 11/12 für beide Anforderungsniveaus ausgewiesenen Ziele des Kompetenzerwerbs erfordern eine schulinterne Präzisierung und Abstimmung. Die ausgewiesenen Ziele des grundlegenden Anforderungsniveaus sind immanenter Bestandteil des erhöhten Anforderungsniveaus.",
-      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyBullet",
-      "tags": [
-        "source:thueringen",
-        "stage:SekII",
-        "topic:th-3-6-radioaktivitat",
-        "competencyArea:selbst-und-sozialkompetenz",
-        "course:GK_LK",
-        "sourceDocument:TH-PH-2012"
-      ],
-      "rawSourceText": "Selbst- und Sozialkompetenz: einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. Die für die Klassenstufen 11/12 für beide Anforderungsniveaus ausgewiesenen Ziele des Kompetenzerwerbs erfordern eine schulinterne Präzisierung und Abstimmung. Die ausgewiesenen Ziele des grundlegenden Anforderungsniveaus sind immanenter Bestandteil des erhöhten Anforderungsniveaus.",
-      "rawSourceSpan": "Klassenstufe 11 Einführungsphase, Radioaktivität, Selbst- und Sozialkompetenz, PDF-S. 31",
-      "rawParentBulletText": "einem umfangreicheren Transfer und einer tiefgründigeren Reflexion fachspezifischer Arbeitsmethoden im Allgemeinen und speziell beim Experimentieren. Die für die Klassenstufen 11/12 für beide Anforderungsniveaus ausgewiesenen Ziele des Kompetenzerwerbs erfordern eine schulinterne Präzisierung und Abstimmung. Die ausgewiesenen Ziele des grundlegenden Anforderungsniveaus sind immanenter Bestandteil des erhöhten Anforderungsniveaus."
     },
     {
       "id": "th-phys-sekii-th-4-1-elektrische-und-magnetische-felder-110-8bde7d19",

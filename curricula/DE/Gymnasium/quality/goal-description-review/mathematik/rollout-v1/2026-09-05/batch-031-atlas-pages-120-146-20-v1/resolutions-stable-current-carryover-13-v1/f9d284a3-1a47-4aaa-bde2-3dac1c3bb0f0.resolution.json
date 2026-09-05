@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-b031-stable13-current-carryover-v1-resolution-f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+  "goal": {
+    "goalId": "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4776dc2e6880aa222255a444218113a85470146d5535850de47c401842cb6e5a",
+    "pageFingerprint": "sha256:30639c6e20b4e2b61a97d7302b0b20a7d68fd2b7d4fd3de2b5a5a9da98195823",
+    "goalReviewContextFingerprint": "sha256:fe73574d2fb84efa5acdbde48b5db6b6a9c6d8ab4e4614a34507465863027854",
+    "finalText": {
+      "titleDe": "Zwischen Tabelle, Graph und Term wechseln",
+      "titleEn": "Switch Between Table, Graph, and Expression (Lower Secondary)",
+      "descriptionDe": "Die lernende Person kann zwischen Tabelle, Graph und Termdarstellung einfacher Funktionen wechseln, Informationen konsistent übertragen und Ergebnisse mit passenden Kontrollschritten absichern.",
+      "descriptionEn": "The learner can switch between table, graph, and expression representations of simple functions, transfer information consistently, and verify results with suitable checks."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-a",
+      "campaignDigest": "sha256:8f760efadd9fd353a02a29a8525a44cb5fd10dcc449ae2cdb6375c284e82d1a7",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:fe73574d2fb84efa5acdbde48b5db6b6a9c6d8ab4e4614a34507465863027854",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b031-first-pass-a-gpt5-20260905",
+      "runManifestDigest": "sha256:1215028918f8b85d6efcbe69c752e918c4dfa358ab334e4e8b463c99987543ef",
+      "resultsDigest": "sha256:1a242a705753a73374686d6377384b33f3ebabc000a1c41b7fe87b4b1eeec9a2",
+      "recordId": "b031-a-f9d284a3",
+      "recordDigest": "sha256:2d796e8bfee93af6be0dd77122d23fa65c0179c70e0d4a2fafbf0048dd1ac4ab"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-b",
+      "campaignDigest": "sha256:d3f0cc98847e431d8c4ad2d2ebc7f33ee56563707c8d430afc417c835c0d9471",
+      "roundId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:7f6b30800194c8d854575ce9ff92216b44ebbef14697d22ac4f127c04c5e30c4",
+      "goalReviewContextFingerprint": "sha256:fe73574d2fb84efa5acdbde48b5db6b6a9c6d8ab4e4614a34507465863027854",
+      "batchId": "mathematik-rollout-v1-batch-031-atlas-pages-120-146-20-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b031-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:506bacdd551aed5c59856b27ffc6616117388e2527738a08f5677ac04353ee5a",
+      "resultsDigest": "sha256:04d655d07399bf33befe1a788faea038191318b90713308596b1ab0003eeb128",
+      "recordId": "mathematik-b031-b-record-002",
+      "recordDigest": "sha256:f841991fa3cd1d5b7240ce8cea8e9a4dca9531717d7d8f05bfa18b1cef347210"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:60c0b03be9a8220d3866fd86a60a7e0ae6ade89ddd032eee30c9d40643c6037e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-b031-stable13-current-carryover-v1-synthesis-f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B031 stable-current subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T23:12:04.000Z",
+    "rationaleDe": "Beide Runden bestätigen den aktuellen bilingualen Text mit KEEP. Runde A ist stärker, weil sie den vollständigen Wechsel aus jeder Ausgangsdarstellung in die beiden anderen verlangt, Achsenskalierung und Wertepaar-Kontrollen bindet und einen absichtlich widersprüchlichen Tabellenwert darstellungsübergreifend diagnostizieren lässt.",
+    "rationaleEn": "Both rounds confirm the current bilingual text with KEEP. Round A is stronger because it requires conversion from any starting representation into the other two, binds axis scaling and ordered-pair checks, and asks the learner to diagnose a deliberately inconsistent table value across representations.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass Tabelle, Graph und Term verschiedene Darstellungen derselben Funktion sind und deshalb dieselben Eingabe-Ausgabe-Beziehungen, besondere Werte und Veränderungsmuster widerspruchsfrei codieren müssen.",
+      "essentialUnderstandingEn": "The learner understands that a table, graph, and expression are different representations of the same function and therefore must encode the same input-output relationships, notable values, and patterns of change consistently.",
+      "observablePerformanceDe": "Die lernende Person erzeugt zu einer einfachen Funktion aus jeder der drei Darstellungen die beiden anderen, erläutert die Zuordnung der Informationen und prüft die Übereinstimmung durch ausgewählte Wertepaar-, Achsen- und Termkontrollen.",
+      "observablePerformanceEn": "Starting from any one of the three representations of a simple function, the learner produces the other two, explains how the information corresponds, and checks consistency using selected input-output pairs, axes, and the expression.",
+      "transferExpectationDe": "Bei einer neuen Funktion mit nicht bei null beginnender Achsenskalierung und einer absichtlich widersprüchlichen Tabellenzeile überträgt die lernende Person die korrekten Informationen, entdeckt den Widerspruch und begründet die Korrektur darstellungsübergreifend.",
+      "transferExpectationEn": "For a fresh function with axes that do not start at zero and one deliberately inconsistent table row, the learner transfers the correct information, detects the inconsistency, and justifies the correction across representations."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+        "source": "both",
+        "textDe": "Die beiden KEEP-Reviews unterscheiden sich nur in Evidenzformulierung und Begründung; die nicht gewählte Runde bleibt als unabhängige kompatible Bestätigung vollständig gebunden.",
+        "textEn": "The two KEEP reviews differ only in evidence wording and rationale; the unselected round remains fully bound as an independent compatible confirmation.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e70913b9951270aad3f7e5993d27d4fbfabff1436816460ac725dfd74b9bb79e"
+}

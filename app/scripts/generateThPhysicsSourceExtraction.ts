@@ -277,11 +277,86 @@ const batch017RemovedTargetsBySourceGoalId: Record<string, string[]> = {
   ]
 }
 
+// Batch 033 narrowed the canonical ionising-radiation target to concrete
+// applications. Remove the former keyword-derived catch-all edge only for the
+// audited sources and retain the two actual application judgements (089/238).
+const batch033RemovedRadiationSourceGoalIds = new Set([
+  'th-phys-sekii-th-3-6-radioaktivitat-084-ccd23b74',
+  'th-phys-sekii-th-3-6-radioaktivitat-085-6b051f4a',
+  'th-phys-sekii-th-3-6-radioaktivitat-086-4ae31405',
+  'th-phys-sekii-th-3-6-radioaktivitat-087-f4fbfd69',
+  'th-phys-sekii-th-3-6-radioaktivitat-088-9c3dab10',
+  'th-phys-sekii-th-3-6-radioaktivitat-090-5878cb00',
+  'th-phys-sekii-th-3-6-radioaktivitat-091-c11608ca',
+  'th-phys-sekii-th-3-6-radioaktivitat-092-e10bb744',
+  'th-phys-sekii-th-3-6-radioaktivitat-093-f17ebc0f',
+  'th-phys-sekii-th-3-6-radioaktivitat-094-8b4f0a4d',
+  'th-phys-sekii-th-3-6-radioaktivitat-095-6b0613eb',
+  'th-phys-sekii-th-3-6-radioaktivitat-096-733f7f65',
+  'th-phys-sekii-th-3-6-radioaktivitat-097-d907d3b6',
+  'th-phys-sekii-th-3-6-radioaktivitat-098-b52676d3',
+  'th-phys-sekii-th-3-6-radioaktivitat-099-08a29343',
+  'th-phys-sekii-th-3-6-radioaktivitat-100-15560493',
+  'th-phys-sekii-th-3-6-radioaktivitat-101-8d515058',
+  'th-phys-sekii-th-3-6-radioaktivitat-102-83a48473',
+  'th-phys-sekii-th-3-6-radioaktivitat-103-db2360b9',
+  'th-phys-sekii-th-3-6-radioaktivitat-104-44b75906',
+  'th-phys-sekii-th-3-6-radioaktivitat-105-62d9b55f',
+  'th-phys-sekii-th-3-6-radioaktivitat-106-f1c5e826',
+  'th-phys-sekii-th-3-6-radioaktivitat-107-5706eb9f',
+  'th-phys-sekii-th-3-6-radioaktivitat-108-48fc3e96',
+  'th-phys-sekii-th-3-6-radioaktivitat-109-96cc34cc',
+  'th-phys-sekii-th-4-2-mechanische-und-elektromagnetische-schwingungen-und-wellen-188-29b9c73b',
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-217-9ac4dd3d',
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-230-96fcbc6a',
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-231-6c1e00c1',
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-232-408721b1',
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-239-5878cb00',
+])
+
+const batch033TargetsBySourceGoalId: Record<string, string[]> = {
+  'th-phys-sekii-th-3-6-radioaktivitat-084-ccd23b74': [
+    'f74c691b-0b76-54e0-8fd6-a22211994e0a',
+  ],
+  'th-phys-sekii-th-3-6-radioaktivitat-085-6b051f4a': [
+    'f74c691b-0b76-54e0-8fd6-a22211994e0a',
+  ],
+  'th-phys-sekii-th-3-6-radioaktivitat-086-4ae31405': [
+    '1593d95c-2aac-504c-8527-37cb61877da9',
+    '25d91cc0-d84c-5522-86b5-fdff73264f08',
+  ],
+  'th-phys-sekii-th-3-6-radioaktivitat-087-f4fbfd69': [
+    '1593d95c-2aac-504c-8527-37cb61877da9',
+    'a12fddce-0215-58d9-bd91-21be8a960d25',
+  ],
+  'th-phys-sekii-th-3-6-radioaktivitat-088-9c3dab10': [
+    '16b94a12-ecc5-5b5c-85b6-87b4290bebf8',
+  ],
+  'th-phys-sekii-th-3-6-radioaktivitat-090-5878cb00': [
+    'b378c8b3-5e83-5abf-8243-b0f345037bfc',
+    '979e0d0d-8933-4ace-814f-f28060ad280f',
+  ],
+  'th-phys-sekii-th-3-6-radioaktivitat-092-e10bb744': [
+    '861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd',
+  ],
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-230-96fcbc6a': [
+    '3b50255a-6b01-578b-8f5c-4383536a3221',
+  ],
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-231-6c1e00c1': [
+    'a12fddce-0215-58d9-bd91-21be8a960d25',
+    '16b94a12-ecc5-5b5c-85b6-87b4290bebf8',
+  ],
+  'th-phys-sekii-th-4-4-quantenphysik-und-materie-232-408721b1': [
+    'a12fddce-0215-58d9-bd91-21be8a960d25',
+  ],
+}
+
 const applyPhysicsBatch015Targets = (sourceGoalId: string, canonicalGoalIds: string[]): string[] => [
   ...new Set([
-    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId)),
+    ...canonicalGoalIds.filter((goalId) => !batch015SplitParentIds.has(goalId) && !batch017SplitParentIds.has(goalId) && !(batch017RemovedTargetsBySourceGoalId[sourceGoalId] ?? []).includes(goalId) && !(batch033RemovedRadiationSourceGoalIds.has(sourceGoalId) && goalId === target.radiation)),
     ...(batch015TargetsBySourceGoalId[sourceGoalId] ?? []),
     ...(batch017TargetsBySourceGoalId[sourceGoalId] ?? []),
+    ...(batch033TargetsBySourceGoalId[sourceGoalId] ?? []),
   ]),
 ]
 
@@ -654,14 +729,44 @@ const canonicalTitleById = new Map(canonical.goals.map((goal) => [goal.id, goal.
 const canonicalGoalById = new Map(canonical.goals.map((goal) => [goal.id, goal]))
 const parsedBullets = [...parse2012(), ...parse2024()]
 
-// Batch 017 TH non-subject source-bullet filter. This is a defensive second
-// boundary behind parse2012: project suggestions and the page-25 introduction
-// to the upper-secondary 11S phase are not Sek-I competencies.
+// The 2012 parser keeps the preceding topic while crossing the heading into
+// section 4. These exact hashes identify the 17 general qualification-phase
+// preamble fragments that were consequently mislabelled as Radioaktivitaet.
+// Filtering after stage enumeration preserves every later stable source ID.
+const th2012QualificationPreambleSourceTextHashes = new Set([
+  'f17ebc0f',
+  '8b4f0a4d',
+  '6b0613eb',
+  '733f7f65',
+  'd907d3b6',
+  'b52676d3',
+  '08a29343',
+  '15560493',
+  '8d515058',
+  '83a48473',
+  'db2360b9',
+  '44b75906',
+  '62d9b55f',
+  'f1c5e826',
+  '5706eb9f',
+  '48fc3e96',
+  '96cc34cc',
+])
+
+// TH non-subject source-bullet filter. This is a defensive second boundary
+// behind parse2012: project suggestions, the page-25 introduction to the
+// upper-secondary 11S phase, and the section-4 qualification-phase preamble
+// are not fachliche source competencies of the topic that precedes them.
 // The loop still enumerates the unfiltered bullet list so retained IDs stay stable.
 const isNonSubjectSourceBullet = (bullet: SourceBullet): boolean => {
-  if (bullet.stage !== 'SekI') return false
-  if (bullet.competencyArea === 'Projektvorschläge') return true
-  return bullet.code === 'TH-2-2-3-radioaktivitat' && bullet.page >= 25
+  if (bullet.stage === 'SekI') {
+    if (bullet.competencyArea === 'Projektvorschläge') return true
+    return bullet.code === 'TH-2-2-3-radioaktivitat' && bullet.page >= 25
+  }
+  return bullet.code === 'TH-3-6-radioaktivitat'
+    && th2012QualificationPreambleSourceTextHashes.has(
+      hash(`${bullet.competencyArea}: ${bullet.text}`),
+    )
 }
 
 const buildExtraction = (config: ExtractionConfig) => {
@@ -731,6 +836,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     const inferredCanonicalGoalIds = inferCanonicalGoalIds(sourceGoal, config.stage)
     const batch017Touched = inferredCanonicalGoalIds.some((goalId) => batch017SplitParentIds.has(goalId))
       || batch017TargetsBySourceGoalId[sourceGoal.id] !== undefined
+    const batch033Touched = batch033RemovedRadiationSourceGoalIds.has(sourceGoal.id)
     const canonicalGoalIds = applyPhysicsBatch015Targets(sourceGoal.id, inferredCanonicalGoalIds)
     const batch017Labels = (batch017TargetsBySourceGoalId[sourceGoal.id] ?? []).map((goalId) => ({
       '25d91cc0-d84c-5522-86b5-fdff73264f08': 'Ionisierende Strahlung mit geeigneten Detektoren nachweisen',
@@ -744,15 +850,21 @@ const buildExtraction = (config: ExtractionConfig) => {
       sourceSpan: sourceGoal.sourceSpan,
       decision: canonicalGoalIds.length > 0 ? 'mapped' : 'unmapped',
       canonicalGoalIds,
-      rationale: batch017Touched
+      rationale: sourceGoal.id === 'th-phys-sekii-th-3-6-radioaktivitat-090-5878cb00'
+        ? 'Batch-033-Adjudikation: Die physikfachliche Seite von "sachlich auseinandersetzen" wird bewusst nur als 1:n-Teilabdeckung geführt. Das Prozessziel trägt das Unterscheiden fachlicher und außerfachlicher Argumente, das Abwägen und das begründete Formulieren; das Inhaltsziel bindet diese Bewertung an Anwendungen, Nutzen und Risiken radioaktiver Strahlung. Der Verhaltensmodus "tolerant" wird weder als eigenes Physik-Atom noch als vollständig source-identische Kompetenz behauptet; beide Kanten bleiben partial.'
+        : batch033Touched
+        ? 'Batch-033-Fachreview: Die Quelle trägt das neu fokussierte Ziel nur bei einer konkreten Anwendung ionisierender Strahlung. Die frühere generische Strahlungszuordnung wurde entfernt und gegebenenfalls durch fachlich passende Atomziele ersetzt.'
+        : batch017Touched
         ? batch017Labels.length > 0
           ? `Batch-017-Fachreview: Die beiden früheren Sammelziele wurden strukturell entflochten. Diese Quelle stützt direkt oder teilweise ${batch017Labels.join('; ')}; fachfremde Altzuordnungen wurden nicht fortgeschrieben, andere bereits geprüfte Ziele bleiben erhalten.`
           : 'Batch-017-Fachreview: Die frühere Sammelzuordnung war für diese Quelle fachlich zu breit. Sie wurde ohne Vererbung auf die neuen Kinder entfernt; andere bereits geprüfte Ziele bleiben erhalten.'
         : canonicalGoalIds.length > 1
           ? 'Das amtliche Thüringen-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.'
           : 'Das amtliche Thüringen-Source-Ziel ist inhaltlich durch den angegebenen kanonischen Physik-Teilbaum abgedeckt; die Zuordnung auf ein Sammelziel ist eine fachliche Abdeckungsentscheidung.',
-      reviewedAt: batch017Touched ? '2026-08-28' : '2026-05-11',
-      reviewer: batch017Touched ? 'codex-physics-batch-017-nuclear-structural-adjudication' : 'codex',
+      reviewedAt: batch033Touched ? '2026-09-05' : batch017Touched ? '2026-08-28' : '2026-05-11',
+      reviewer: batch033Touched
+        ? 'codex-physics-batch-033-source-mapping-adjudication-2026-09-05'
+        : batch017Touched ? 'codex-physics-batch-017-nuclear-structural-adjudication' : 'codex',
     }
   })
 
@@ -808,7 +920,7 @@ const buildExtraction = (config: ExtractionConfig) => {
       sourceGoalExtraction:
         config.stage === 'SekI'
           ? 'Ein Source-Ziel pro fachlichem Kompetenzbullet und ausgewiesenem Schülerexperiment. Projektvorschläge, fachunspezifische Lernorganisationssätze, PDF-Übergangsartefakte, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt.'
-          : 'Ein Source-Ziel pro Kompetenzbullet und ausgewiesenem Schülerexperiment. Projektvorschläge, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt.',
+          : 'Ein Source-Ziel pro fachlichem Kompetenzbullet und ausgewiesenem Schülerexperiment. Allgemeine Programm- und Anforderungsniveau-Vorspänne, Projektvorschläge, Lernausgangslagen, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt.',
     },
     qualityReview: {
       sourceGoalCountPeerBaseline: {

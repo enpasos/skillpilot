@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b032t-checkpoint-context-recheck-1-v1-synthesis-v1",
+  "manifestFingerprint": "sha256:5c243f3093b94af9b7a42b8735ec016ee41c5b494fd31faffaab7c77ffa3f3f4",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-ai-synthesis",
+  "synthesizedAt": "2026-09-05T04:29:26.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905",
+    "batchManifestDigest": "sha256:1eaca57081594546bd8d6e7b9843103b52bc696c011d26c3d238e101ca8a7569",
+    "configDigest": "sha256:897b524b0570f5fd8e47da3881681143bbe125d2c4a965238d314550d38dc503",
+    "bundleFingerprint": "sha256:f58e7b80d94a779f794159ab692e6853bdc6c24b7cc6de0fff4df5f89544ccca",
+    "bookDigest": "sha256:b749d27d87eadc0b167405deab56530f3e44b2f5a6a32812ba5f5396ca9dd0ab",
+    "reviewInputFingerprint": "sha256:265765455f1ca491efa81fa79f3d28b1aa87ce06d7416dad35083c94af1d1d7a",
+    "dualSummaryDigest": "sha256:5c50cd924ec813b47491c7fa1380ac9966fc7587adff95759e4ea61a334df71e",
+    "canonicalLandscapeDigest": "sha256:8057f269675dc6b7fdd3129d027f418a8692ea1fb5d777847b30c2b9b222889f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-a",
+      "campaignDigest": "sha256:3e9c3e96c629c19478bdf86fb42fbcd4ec4120e820f824f0a6ce240e5a01ec01",
+      "roundId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:265765455f1ca491efa81fa79f3d28b1aa87ce06d7416dad35083c94af1d1d7a",
+      "batchId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:91468ad0979058fe39f51fae28a180136f1cb75c9a3c3498ce9e1637e9f4ccd8",
+      "runId": "codex-round-a-mathematik-b032t-20260905",
+      "runManifestDigest": "sha256:1c387beff95d0ee1cc3e6d230ac84037806476a2fd0d23d613f96cd8d58e701c",
+      "resultsDigest": "sha256:2b5370c2d3423cbbd74810b78d6d2e7def24a1c50fd684be7aab0e4b1208caf4"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-b",
+      "campaignDigest": "sha256:284d339bb0802325f8a9c01fbbea525fcc805c7c622ee462512629ac5b65e9a6",
+      "roundId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:265765455f1ca491efa81fa79f3d28b1aa87ce06d7416dad35083c94af1d1d7a",
+      "batchId": "mathematik-rollout-v1-batch-032t-checkpoint-context-recheck-1-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0640d77d830bfb81853c2188da8963f0e74d6f56d9055a33b252ced9b30956fc",
+      "runId": "math-b032t-b-openai-gpt5-run-v1",
+      "runManifestDigest": "sha256:d0c6c9de39786119358f304c62cc3386f754893fc857d6b8a5fa1404a1eeef13",
+      "resultsDigest": "sha256:9d63896cd7ce281165797f28560bf4c70677b20bd134ba54eabba90b51519e47"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b032t-f17935b0-keep-current-synthesis-v1",
+      "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9e8b7f2914956c279da4f23fbb943a3194c4eb4cc446eabe53a08eef214d5a77",
+      "pageFingerprint": "sha256:ec099b0185ac926dde8e0c73954c5b3c4cd1d4f087f701c3cc44044952a7f869",
+      "goalReviewContextFingerprint": "sha256:c7dc2b38e63d6de12da1a20057315d076cdb5208dee7ea93e56131b14016826e",
+      "finalText": {
+        "titleDe": "Lineare Ungleichungen lösen und Lösungsmengen darstellen",
+        "titleEn": "Solve linear inequalities and represent solution sets",
+        "descriptionDe": "Die lernende Person kann lineare Ungleichungen mit Äquivalenzumformungen lösen, bei Multiplikation oder Division durch negative Zahlen die Ordnungsrichtung korrekt umkehren und die Lösungsmenge auf der Zahlengeraden oder in Intervallschreibweise darstellen.",
+        "descriptionEn": "The learner can solve linear inequalities using equivalent transformations, correctly reverse the inequality when multiplying or dividing by a negative number, and represent the solution set on a number line or using interval notation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b032t-round-a-f17935b0-20260905",
+          "recordDigest": "sha256:7fd96acbeae1f12d8594883e91b96dcff35003789735711e023c9b1b221edc3f"
+        },
+        "second": {
+          "recordId": "math-b032t-b-f17935b0-record-v1",
+          "recordDigest": "sha256:681bae7145b539e97b376efcb94891c76c5e2fa411efe20aa5179da017785fb2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die bestehende bilinguale Beschreibung als klare, kohärente Kompetenz aus Äquivalenzumformungen, Vorzeichenregel und Darstellung der Lösungsmenge; daher bleibt der aktuelle Text unverändert. Für die Evidenz wird die zweite Runde gewählt, weil sie zusätzlich die Zugehörigkeit des Randwerts bei strengen und nicht strengen Ungleichungen sowie die konsistente Übersetzung zwischen Ungleichung, Intervall und Zahlengerade explizit beobachtbar macht, ohne den Zielumfang zu erweitern.",
+      "rationaleEn": "Both independent current reviews confirm that the existing bilingual description states a clear, coherent competence combining equivalent transformations, the sign rule, and representation of the solution set; the current text therefore remains unchanged. The second round is selected for evidence because it additionally makes boundary inclusion for strict and non-strict inequalities and consistent translation among inequality, interval, and number-line representations explicitly observable without expanding the goal's scope."
+    }
+  ]
+}

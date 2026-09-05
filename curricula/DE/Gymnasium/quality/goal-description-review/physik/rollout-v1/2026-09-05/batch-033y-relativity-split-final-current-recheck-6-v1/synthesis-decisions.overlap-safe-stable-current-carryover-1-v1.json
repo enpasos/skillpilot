@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033y-overlap-safe-stable-current-carryover-1-v1-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-physics-b033y-overlap-safe-stable-current-carryover-2026-09-05",
+  "synthesizedAt": "2026-09-05T03:11:20.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905",
+    "batchManifestDigest": "sha256:63aa687230bf9377b6dc84053ad3400a2b6000e51f549e90dceaeffee4cc2f56",
+    "configDigest": "sha256:3833dd959062418abef588e1300e1b7105c475de7ca73ad6c607d8e1ab2ab7fb",
+    "bundleFingerprint": "sha256:a8e6809ea7a0f9430db8238ecf1c60f02da563a10278206c9009953b886c93d5",
+    "bookDigest": "sha256:aa21fe4b0f69b011504998bc5ad5e0f0580be083c52dcf88912205cb1417ada0",
+    "reviewInputFingerprint": "sha256:8ee93eaf09b9fbae04021d797957e3de3dfd52bebeadee81edd2631e0be20801",
+    "dualSummaryDigest": "sha256:7269f8d265477e2564f64932ddb765a5f4daddd88210f28674d29db29d851163",
+    "canonicalLandscapeDigest": "sha256:9e903090f05d8178d5b11b5d6b4f267b89a169398c2aed3318a1114b16ad2bc8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-a",
+      "campaignDigest": "sha256:75af1e2aa3fe6111bab2c71016bbc687403fa0a46dbfb44d841a442fe039fca2",
+      "roundId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:8ee93eaf09b9fbae04021d797957e3de3dfd52bebeadee81edd2631e0be20801",
+      "batchId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d9c783bc09141bc01bc539ed9212fe7b583de0c7f434a02d7e6a6642cbb7269f",
+      "runId": "openai-gpt5-codex-physik-b033y-round-a-20260905",
+      "runManifestDigest": "sha256:c57b314510b01b735fca082dd038609cb74842247a95a41316ece11dd14a082d",
+      "resultsDigest": "sha256:8010b4d705d41f1b5153ff4b19926449f6135ee67fa4171d33fdc14673828a69"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-b",
+      "campaignDigest": "sha256:8a4a54d1d1203843e224f4e911708f9eef95f6723ae59bc302ba601be8c0a23a",
+      "roundId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:8ee93eaf09b9fbae04021d797957e3de3dfd52bebeadee81edd2631e0be20801",
+      "batchId": "physik-rollout-v1-batch-033y-relativity-split-final-current-recheck-6-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:df4ab5f60f3d4d5281307ca55f775f515a22653897d07f10cac8eb81bf3bc011",
+      "runId": "openai-gpt5-physik-b033y-round-b-20260905",
+      "runManifestDigest": "sha256:9c989dca42e3a55e7f952652d1673bfb4dc06eb4713d8e6ad42e1b86a21ca5f5",
+      "resultsDigest": "sha256:39e35a95bab9c47eec3610b865282c7df67231bf7355fbab74fce44d6c045ec7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033y-overlap-safe-stable-current-carryover-1-v1-openai-codex-20260905-decision-001",
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d6e4353e87225abd11845df994899674ab38289189f039b81e350b5da6a4a83f",
+      "pageFingerprint": "sha256:9578854e3aff6e97b408c79696dc7ed5b4506a08c5cf938ac4abe009b6abb84c",
+      "goalReviewContextFingerprint": "sha256:40af689428815f1eeb6fa2b488a439b358fa5b09cd2fbf44e2d509317b13a117",
+      "finalText": {
+        "titleDe": "Michelson-Morley-Nullbefund historisch einordnen",
+        "titleEn": "Historically Interpret the Michelson–Morley Null Result",
+        "descriptionDe": "Die lernende Person kann den Nullbefund des Michelson-Morley-Versuchs historisch einordnen und erläutern, weshalb er gegen den erwarteten Nachweis eines Ätherwinds sprach, ohne ihn als alleinigen Beweis der Relativitätspostulate zu deuten.",
+        "descriptionEn": "The learner can historically contextualize the null result of the Michelson–Morley experiment and explain why it counted against the expected detection of an ether wind without treating it as stand-alone proof of the postulates of relativity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033y-a-003-512f81af-1480-56a8-ae52-af3aa1a6a859",
+          "recordDigest": "sha256:09a91712f8af4ad6ef74455eba52c1a79fe0706e38ba81efac7885209e6c1529"
+        },
+        "second": {
+          "recordId": "physik-b033y-round-b.512f81af-1480-56a8-ae52-af3aa1a6a859",
+          "recordDigest": "sha256:50c01a91ab42600a9b3a28ab968ec971367675e944017bea6f5f6a1a93508962"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle bilinguale Formulierung und ihren fachlich begrenzten historischen Evidenzanspruch. Das Ziel und sein direkter Atlas-Kontext sind nach den beiden Folgesplits unverändert exakt aktuell.",
+      "rationaleEn": "Both independent reviews confirm the current bilingual wording and its scientifically bounded historical-evidence claim. The goal and its direct Atlas context remain unchanged and exact-current after the two subsequent splits."
+    }
+  ],
+  "manifestFingerprint": "sha256:54bb1189759275393d8a78a6817242d1ce11b25c3583ceebf554caef5db77752"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-resolution-dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+  "goal": {
+    "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:d42470e39d832ff587d0f490bf9d2768e4456292e3cecf14ce7092cac0b4ca8f",
+    "pageFingerprint": "sha256:671fc983ad78880904a051d58aef1a1525fa9332ce785ee60c571d83b631f5ae",
+    "goalReviewContextFingerprint": "sha256:3027cfc6db82b97c1243f67f0d386c197397af19dc43d8c76c399a38a3521dc5",
+    "finalText": {
+      "titleDe": "Seitenhalbierende in Dreiecken konstruieren",
+      "titleEn": "Construct medians in triangles",
+      "descriptionDe": "Die lernende Person kann zu einem gegebenen Dreieck die Seitenhalbierenden durch Konstruktion der Seitenmittelpunkte und Verbinden mit den gegenüberliegenden Eckpunkten konstruieren und prüfen.",
+      "descriptionEn": "For a given triangle, the learner can construct the medians by constructing each side midpoint and joining it to the opposite vertex, and can check the result."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-a",
+      "campaignDigest": "sha256:a217a7586aff4e520f05f1f96adcd8dc174aeeefd2dab38b47ad651520d63e66",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "goalReviewContextFingerprint": "sha256:3027cfc6db82b97c1243f67f0d386c197397af19dc43d8c76c399a38a3521dc5",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a.batch-001",
+      "runId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "runManifestDigest": "sha256:bf56ce1bf1e81ec01e3ad54f3ed6611eae7a43815e038ffe6d20ad500e1592bd",
+      "resultsDigest": "sha256:a1249e669cb125274bea20b1a0201c9f30961651729bb69b1994d89db2b0e571",
+      "recordId": "mathematik-b030-atlas-context-recheck-a-record-018",
+      "recordDigest": "sha256:1483445e1553bf333e3203e93082819127177280ceeb5ea288901a7a13782086"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-b",
+      "campaignDigest": "sha256:70cb69393ff4a12787240d27c30c2d0f933742bb18230f2e6f194b442822d682",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+      "goalReviewContextFingerprint": "sha256:3027cfc6db82b97c1243f67f0d386c197397af19dc43d8c76c399a38a3521dc5",
+      "batchId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b.batch-001",
+      "runId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "runManifestDigest": "sha256:3d3d4435d09327a9b8c50d5033b10c1338e76965b8033809edcba14f128b7c7c",
+      "resultsDigest": "sha256:83d636c8419981f63489931dfbb62712ccd949f1ec14900c00c6712966f62b82",
+      "recordId": "mathematik-b030-b-r18-triangle-medians",
+      "recordDigest": "sha256:87cfddda7d3161e490dff190d222d0a04eedb6712a45a108e6a71b37f089ace9"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:e39c6377655c66470ad7c61b22deea31649467cc06d732bf94e4cae07941dd8c"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905",
+    "manifestDigest": "sha256:9c27f7417c99d459d4879725600e84188a9d0d5bb6aee17e77d6937545dfb89e",
+    "manifestFingerprint": "sha256:d6a9e6537309194fb0d2135badf125a27a9109a468e09fa52fae26a8bf1af05e",
+    "decisionId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-018"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-b030-atlas-context-recheck-18-synthesis-openai-codex-20260905-decision-018",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex Mathematics B030 subject synthesis candidate",
+    "synthesizedAt": "2026-09-04T22:52:47.928Z",
+    "rationaleDe": "Beide Blindprüfungen bestätigen die Konstruktion und Prüfung von Seitenhalbierenden über Seitenmittelpunkte und gegenüberliegende Eckpunkte als fachlich korrekte, atomare Kompetenz. Der aktuelle Text bleibt unverändert. Runde B liefert die stärkere Evidence, weil sie die Seitenhalbierende ausdrücklich von Mittelsenkrechter, Höhe und Winkelhalbierender abgrenzt, den Prüfweg bindet und die durch die Supplement-Grenze tatsächlich sichtbare Atlas-Platzierung auf Hessen und Thüringen beschränkt; Runde A bleibt vollständig gebunden.",
+    "rationaleEn": "Both blind reviews confirm constructing and checking medians through side midpoints and opposite vertices as a mathematically correct atomic competence. The current text is retained. Round B provides the stronger evidence because it explicitly distinguishes a median from a perpendicular bisector, altitude, and angle bisector, binds the verification method, and limits the atlas placement to Hesse and Thuringia as actually visible through the supplement boundary; Round A remains fully bound.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht eine Seitenhalbierende als Strecke beziehungsweise Gerade vom Eckpunkt zum Mittelpunkt der gegenüberliegenden Seite; ihre Konstruktion beruht daher auf der überprüfbaren Halbierung der Seite und der Inzidenz mit dem richtigen Eckpunkt, nicht auf Senkrecht- oder Winkelhalbierung.",
+      "essentialUnderstandingEn": "The learner understands a median as the segment or line from a vertex to the midpoint of the opposite side; its construction therefore rests on verifiable bisection of the side and incidence with the correct vertex, not on perpendicular or angle bisection.",
+      "observablePerformanceDe": "Zu einem beliebigen gegebenen Dreieck konstruiert die lernende Person die drei Seitenmittelpunkte, verbindet jeden mit dem jeweils gegenüberliegenden Eckpunkt und prüft jede Seitenhalbierende durch Gleichheit der beiden Teilstrecken sowie korrekte Zuordnung von Seite und Eckpunkt.",
+      "observablePerformanceEn": "For an arbitrary given triangle, the learner constructs the three side midpoints, joins each to the corresponding opposite vertex, and checks every median by equality of the two side segments and correct matching of side and vertex.",
+      "transferExpectationDe": "In einer gedrehten oder stumpfwinkligen Figur mit zusätzlichen Hilfslinien identifiziert die lernende Person fehlerhafte Mittelpunkt- oder Eckpunktzuordnungen, korrigiert die Konstruktion und begründet die Prüfung ausschließlich mit der Definition der Seitenhalbierenden.",
+      "transferExpectationEn": "In a rotated or obtuse figure containing additional construction lines, the learner identifies incorrect midpoint or vertex assignments, corrects the construction, and justifies the check solely from the definition of a median."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-4ca7d0de052a68f0fd11aa809702787b307a2453698322a2932b3dc727cabd04",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0bb4ea2046c17992b47791effbec6b45987a76c275968f4ec69e97cbc26565bf"
+}

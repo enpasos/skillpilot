@@ -2859,3 +2859,101 @@ Claude-1.1.1-Kandidat bleiben unverändert. Es erfolgen keine externe Publikatio
 Portaländerung oder Produktionsaktivierung. Die eng begrenzten First-Party-,
 Service- und Regressionsdateien werden append-only mit ihren konkreten Hashes
 gebunden; frühere Freigaben und die eingereichten Bytes bleiben unverändert.
+
+### 6.51 Eng begrenzte Ausnahme: Claude 1.1.1 Marketplace-Veroeffentlichung und Updateanleitung
+
+Der Product Owner hat am **5. September 2026** ausdrücklich verlangt, dass das
+Claude-Update über den Marketplace erfolgt, und die unveränderte
+[Veröffentlichung von 1.1.1](https://github.com/enpasos/skillpilot-claude-marketplace/pull/2)
+nach Prüfung der Copilot-Hinweise selbst gemergt. Freigegeben ist ausschließlich
+die Veröffentlichung des bereits unveränderlich gebundenen Claude-1.1.1-Pakets
+sowie dessen deutsche und englische First-Party-Installations- und Updatehilfe.
+
+Die öffentliche Revision `5cc7aba22ddf90ab8273cd6c15b71e8186781fc3` wurde nach dem
+Merge mit dem geschlossenen Export von elf Dateien verglichen, mit dem
+gepinnten Claude-Validator streng geprüft und über die echte HTTPS-Gitquelle
+in einem isolierten Profil installiert. Der Tree-SHA-256 lautet
+`8c6c67b46763224d901a65b35408dad7752f6c7db08203fd38cf0f568a74c5d3`;
+das Plugin bleibt Version `1.1.1` mit SHA-256
+`b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351`.
+
+Die zusätzliche Freigabe umfasst nur `marketplace-publication.json`, die
+Marketplace-Anleitung in `PluginCatalogView.tsx`, ihren Veröffentlichungsschalter
+und die fokussierten Regressionen sowie das Marketplace-Runbook und diesen
+Nachweis. Updates stehen vor der Neuinstallation; die Anleitung nennt 1.1.1,
+erhält die gezielte Bereinigung alter SkillPilot-Dateiinstallationen, den
+gebündelten OAuth-Konnektor und die Rückkehr zu SkillPilot. Sie bietet keinen
+Datei-Upload als parallelen Installationsweg an. Die vorhandene Kopieraktion
+schreibt weiterhin nur die feste öffentliche Repository-Adresse.
+
+Nur der öffentliche Repository-Nachweis wird `pass`; die separate
+Guide-Entscheidung ist an Kandidat, Revision und Tree gebunden. Der Status bleibt
+`published_pending_acceptance`. Reale Neuinstallation, Account-Migration und
+Refresh, Web/Android/Voice, Datenschutz-, Rechts- und Supportabnahmen bleiben
+offen; `openPublicBetaReady` bleibt `false`. Der Git-Merge bestätigt keine
+bereits aktualisierten Benutzeraccounts. Es erfolgt kein First-Party-Deployment.
+
+Das eingereichte OpenAI-Paket 1.0.0, alle OpenAI- und Claude-Paketbytes,
+MCP-/OAuth-/Tool-/Schema-/MCP-Apps-Verträge, Provider-Start-Handler, Prepared
+Messages, Session-, Identitäts- und Locale-Semantik, Portalwerte, Reviewfälle,
+Fixtures und Reviewartefakte bleiben unverändert. Der OpenAI-Portalreview wird
+weder zurückgezogen noch neu eingereicht. Die konkreten Guide-, Metadaten-,
+Test- und Dokumentationshashes werden append-only gebunden; kein früherer
+Hashanker wird ersetzt.
+
+Präzisierung derselben Guide-Freigabe anhand der vom Product Owner am
+5. September gezeigten Claude-Web-Dialoge: Die installierte Version 1.0.4
+bietet keine Aktion „Aktualisieren“. Belegt sind „Hinzufügen“ → „Marketplace
+hinzufügen“ → „Aus einem Repository hinzufügen“, die bekannte Repository-URL,
+„Automatisch synchronisieren“ und „Synchronisieren“. Nur die bereits
+freigegebene Anleitung, ihre Copy-Regression und das Runbook werden darauf
+korrigiert. Die englischen Bezeichnungen sind Übersetzungen der beobachteten
+deutschen Oberfläche. Die anschließende Versionsprüfung auf 1.1.1 bleibt
+erforderlich; weder ein erfolgreicher Account-Refresh noch automatische Updates
+über alle Clients sind damit abgenommen. Ein ergänzender Hashketteneintrag
+erhält sämtliche vorherigen Bindungen, ohne die Freigabe zu erweitern.
+
+Der nachfolgende Screenshot nach „Synchronisieren“ meldet ausdrücklich
+„Dieser Marketplace wurde bereits hinzugefügt.“ Das erneute Hinzufügen ist
+damit kein belegter Updateweg für bestehende Installationen. Die Anleitung
+trennt diese Beobachtung von den Schritten zur Neuinstallation und lässt die
+manuelle Web-Refresh-Abnahme offen; sie erfindet weder eine Updateaktion noch
+einen Lösch-/Neuinstallations-Workaround.
+
+### 6.52 Eng begrenzte Ausnahme: arbeitstagsfester Backend-Aktivierungstest
+
+Der Product Owner hat am **5. September 2026** die zuvor ausdrücklich
+angefragte Wochenendkorrektur in
+`backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java`
+einschließlich der zugehörigen Freeze-Hashfortschreibung genehmigt.
+Der Test
+`planPackageActivationEnablesFollowingAndSelectsTheFirstGoalWithoutAnotherAction`
+legte seinen eintägigen Lernblock auf den jeweils aktuellen Berliner Tag. Am
+Samstag und Sonntag verletzt das die unveränderte Produktregel, dass ein
+Lernblock mindestens einen Arbeitstag enthalten muss.
+
+Freigegeben und geändert ist ausschließlich das Testdatum dieses Falls:
+
+- `asOf` bleibt der aktuelle Berliner Kalendertag und wird unverändert als
+  Aktivierungsstichtag übergeben;
+- der eintägige Testblock liegt auf dem letzten Freitag einschließlich heute
+  (`previousOrSame(FRIDAY)`), sodass er stets einen Arbeitstag enthält und am
+  tatsächlichen Aktivierungstag fällig ist;
+- sämtliche bestehenden Assertions, die Systemzeit, der Produktcode und alle
+  übrigen Testfälle bleiben unverändert.
+
+Die bestehende Hashkette wird append-only fortgesetzt:
+
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java`:
+  `0105dcec686ce142d729b77e435665f50d535a53bcfc1f35637d79138e5b8ec2`
+  → `90d7a903ad90dfcaa35f03fc5d6d4b7a467cf59a6300d74f30ccf569528b0d87`.
+
+Die Ausnahme ist rein testseitig; das eingereichte Plugin bleibt
+`skillpilot-coach-v1` Version `1.0.0`. Runtime-, Session-, Identitäts-, Locale-
+und Lernzustandsverhalten, OpenAI-/Claude-Pakete, MCP/OAuth, Tools, Schemas,
+MCP-Apps-Ressourcen, Startabläufe, Portalwerte, Reviewer-Zugänge und
+Reviewartefakte werden nicht verändert. Ein Zurückziehen oder erneutes
+Einreichen im OpenAI-Portal ist deshalb nicht erforderlich. Der Freeze-Record,
+seine exakte Checker-Erwartung und der zugehörige Regressionstest erhalten nur
+den zusätzlichen, auf diese Testdatei und diesen Dokumentationsnachtrag
+begrenzten Hashketteneintrag; frühere Freigaben bleiben unverändert erhalten.

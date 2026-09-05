@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b033za-checkpoint-route-context-recheck-current-v1",
+  "reviewedAt": "2026-09-05T04:35:26.915Z",
+  "reviewer": "codex-physics-b033za-selected-round-a-evidence-candidate-2026-09-05",
+  "goals": [
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "reason": "DE: Das Profil übernimmt die im manifestgebundenen keep/keep-Abschluss ausdrücklich ausgewählte Evidence-Fassung der ersten frischen Review-Runde. Es prüft die Klassifikation aus Leitfähigkeitsdaten unter vergleichbaren Bedingungen, trennt Datenangabe und daraus abgeleitete Kategorie und fordert einen unabhängigen Transfer auf einen neuen Materialsatz mit unterschiedlich dokumentierten Temperaturen. EN: The profile uses the first fresh review round's evidence formulation explicitly selected by the manifest-bound keep/keep closure. It assesses classification from conductivity data under comparable conditions, distinguishes reported data from the category inferred from them, and requires independent transfer to a new material set with differently documented temperatures.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "classify-by-conductivity-under-comparable-conditions",
+            "essentialUnderstandingDe": "Die elektrische Leitfähigkeit beschreibt, wie gut ein Material unter festgelegten Bedingungen elektrischen Strom leitet. Leiter, Nichtleiter und Halbleiter zeigen typischerweise unterschiedliche Leitfähigkeitsbereiche; eine begründete Zuordnung setzt deshalb vergleichbare Bedingungen voraus.",
+            "essentialUnderstandingEn": "Electrical conductivity describes how readily a material conducts electric current under specified conditions. Conductors, insulators, and semiconductors typically occupy different conductivity ranges; a justified classification therefore requires comparable conditions.",
+            "observablePerformanceDe": "Die lernende Person prüft selbstständig, ob vorgegebene Leitfähigkeitsdaten unter vergleichbaren Bedingungen erhoben wurden, vergleicht die Materialien, unterscheidet Datenangabe und daraus abgeleitete Kategorie und begründet die Zuordnung als Leiter, Nichtleiter oder Halbleiter sowie die Einordnung eines Technik- oder Alltagsbeispiels mit Bezug auf die Leitfähigkeit.",
+            "observablePerformanceEn": "The learner independently checks whether supplied conductivity data were obtained under comparable conditions, compares the materials, distinguishes the reported data from the category inferred from them, and justifies classification as a conductor, insulator, or semiconductor as well as the classification of a technological or everyday example by reference to conductivity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "classify-by-conductivity-under-comparable-conditions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "material-set",
+            "textDe": "Ein neuer Satz unbekannter Materialien deckt sehr hohe, mittlere und sehr geringe typische Leitfähigkeiten ab.",
+            "textEn": "A new set of unknown materials spans very high, intermediate, and very low typical conductivities."
+          },
+          {
+            "id": "comparison-temperature",
+            "textDe": "Die Leitfähigkeitsangaben stammen entweder von derselben Temperatur oder enthalten zusätzlich nicht direkt vergleichbare Werte bei einer anderen Temperatur.",
+            "textEn": "The conductivity data are either taken at the same temperature or also include values at a different temperature that are not directly comparable."
+          },
+          {
+            "id": "application-context",
+            "textDe": "Die begründete Zuordnung wird auf ein neues Beispiel aus Technik oder Alltag übertragen.",
+            "textEn": "The justified classification is transferred to a new example from technology or everyday life."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "same-temperature-unknown-materials",
+            "taskDemandDe": "Für drei gleichartig dokumentierte unbekannte Materialien A, B und C sind bei 20 °C typische Leitfähigkeiten von 5,8 × 10^7 S/m, 4,0 × 10^-4 S/m und weniger als 1,0 × 10^-10 S/m angegeben. Ordne die Materialien anhand dieser Daten begründet als Leiter, Halbleiter oder Nichtleiter ein und wähle für jedes eine passende technische oder alltägliche Verwendung, bei der das jeweilige Leitvermögen entscheidend ist.",
+            "taskDemandEn": "For three consistently documented unknown materials A, B, and C, typical conductivities of 5.8 × 10^7 S/m, 4.0 × 10^-4 S/m, and less than 1.0 × 10^-10 S/m are given at 20 °C. Use these data to justify classification as a conductor, semiconductor, or insulator and choose for each a suitable technological or everyday use in which its conduction behavior is decisive.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die gemeinsame Temperatur als Vergleichsbedingung, ordnet A wegen der sehr hohen, B wegen der mittleren und C wegen der sehr geringen Leitfähigkeit den drei Klassen zu und begründet jede Verwendung über die benötigte elektrische Leitfähigkeit oder Isolation. Sie kennzeichnet die Klassen als Schlussfolgerung aus den Daten, nicht als Messwert selbst.",
+            "expectedPerformanceEn": "The learner identifies the common temperature as a comparison condition, assigns A to the conductor class because of its very high conductivity, B to the semiconductor class because of its intermediate conductivity, and C to the insulator class because of its very low conductivity, and justifies each use through the required electrical conduction or insulation. The learner identifies each class as an inference from the data, not as a measured value itself.",
+            "understandingFocusDe": "Typische Leitfähigkeit unter denselben Bedingungen trägt die begründete Materialklassifikation und Anwendungseinordnung.",
+            "understandingFocusEn": "Typical conductivity under the same conditions supports the justified material classification and application choice."
+          },
+          {
+            "id": "mixed-temperature-fresh-transfer",
+            "taskDemandDe": "Ein neuer Materialsatz D, E und F enthält für 20 °C die Leitfähigkeiten 4,6 × 10^7 S/m, weniger als 1,0 × 10^-11 S/m und 6,0 × 10^-4 S/m. Für F ist zusätzlich ein Wert von 2,5 × 10^-3 S/m bei 80 °C angegeben. Wähle die für den Vergleich geeigneten Angaben aus, begründe die drei Kategorien und erläutere, warum der zusätzliche Wert nicht ohne Kennzeichnung mit den 20-°C-Werten verglichen werden darf.",
+            "taskDemandEn": "A fresh set of materials D, E, and F lists conductivities of 4.6 × 10^7 S/m, less than 1.0 × 10^-11 S/m, and 6.0 × 10^-4 S/m at 20 °C. An additional value of 2.5 × 10^-3 S/m at 80 °C is given for F. Select the data suitable for comparison, justify the three categories, and explain why the additional value must not be compared with the 20 °C values without identifying the changed condition.",
+            "expectedPerformanceDe": "Die lernende Person vergleicht ausschließlich die drei 20-°C-Werte, leitet daraus D als Leiter, E als Nichtleiter und F als Halbleiter ab und trennt die dokumentierte Leitfähigkeit von der daraus begründeten Kategorie. Sie erklärt, dass der 80-°C-Wert eine veränderte Bedingung enthält und deshalb kein gleichartiger Vergleichswert ist.",
+            "expectedPerformanceEn": "The learner compares only the three values at 20 °C, infers D as a conductor, E as an insulator, and F as a semiconductor, and distinguishes the documented conductivity from the category justified from it. The learner explains that the 80 °C value contains a changed condition and therefore is not a like-for-like comparison value.",
+            "understandingFocusDe": "Die Bedingungsgleichheit wird in einem frischen Fall aktiv geprüft, bevor aus Messangaben eine Stoffklasse abgeleitet wird.",
+            "understandingFocusEn": "Comparable conditions are actively checked in a fresh case before a material class is inferred from measured data."
+          }
+        ]
+      }
+    }
+  ]
+}

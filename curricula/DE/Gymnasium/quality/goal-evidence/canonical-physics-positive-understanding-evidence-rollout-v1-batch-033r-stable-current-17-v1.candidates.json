@@ -1,0 +1,1199 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b033r-stable-current-17-v1",
+  "reviewedAt": "2026-09-05T00:15:00.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-033r-stable-current-17-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "3d3e5917-d367-535d-a6ad-b9d87259e6ce",
+      "reason": "DE: Das Profil verbindet die Feldprojektion mit dem cos²-Intensitätsgesetz und verlangt zwei unabhängige, unsicherheitsbewusste Datenauswertungen. Offset und Filter-Nichtidealität werden diagnostiziert statt als beliebige Abweichung benannt. EN: The profile connects field projection to the cos² intensity law and requires two independent, uncertainty-aware data analyses. Offset and filter non-ideality are diagnosed rather than named as arbitrary deviations.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "derive-malus-from-field-projection",
+            "essentialUnderstandingDe": "Ein idealer Analysator überträgt die Feldkomponente E₀ cos(α) entlang seiner Transmissionsachse. Weil Intensität proportional zum Quadrat der Feldamplitude ist, folgt I = I₀ cos²(α) mit Maxima bei parallelen und Minima bei gekreuzten Richtungen.",
+            "essentialUnderstandingEn": "An ideal analyzer transmits the field component E₀ cos(α) along its transmission axis. Because intensity is proportional to the square of field amplitude, I = I₀ cos²(α), with maxima for parallel and minima for crossed directions.",
+            "observablePerformanceDe": "Die lernende Person leitet den cos²-Zusammenhang aus der Projektion her, definiert den verwendeten Winkel eindeutig und sagt Intensitätsverhältnisse sowie Extrema für neue Winkel voraus.",
+            "observablePerformanceEn": "The learner derives the cos² relation from the projection, defines the angle used unambiguously, and predicts intensity ratios and extrema for fresh angles."
+          },
+          {
+            "id": "test-malus-model-and-deviations",
+            "essentialUnderstandingDe": "Messuntergrund, unvollständige Polarisation und endliches Extinktionsverhältnis verändern Offset, Minimum oder Kurvenform; eine Abweichung ist nur dann belegt, wenn sie gegenüber Messunsicherheit und einem passenden Modell systematisch bleibt.",
+            "essentialUnderstandingEn": "Measurement background, incomplete polarization, and finite extinction ratio alter the offset, minimum, or curve shape; a deviation is established only when it remains systematic relative to uncertainty and an appropriate model.",
+            "observablePerformanceDe": "Die lernende Person plant oder wertet eine Winkelreihe mit Untergrundkontrolle aus, stellt I gegen cos²(α) dar und entscheidet anhand von Unsicherheiten, welche Abweichungsursache durch die Daten gestützt wird.",
+            "observablePerformanceEn": "The learner plans or analyzes an angular series with background control, plots I against cos²(α), and uses uncertainty to decide which cause of deviation is supported by the data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "derive-malus-from-field-projection",
+            "test-malus-model-and-deviations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "angle-reference",
+            "textDe": "Bekannte oder unbekannte Polarisationsrichtung und veränderter Winkelnullpunkt",
+            "textEn": "Known or unknown polarization direction and a changed angular zero"
+          },
+          {
+            "id": "background-level",
+            "textDe": "Vernachlässigbarer oder messbarer konstanter Untergrund",
+            "textEn": "Negligible or measurable constant background"
+          },
+          {
+            "id": "filter-quality",
+            "textDe": "Idealer Analysator oder Filter mit endlichem Extinktionsverhältnis",
+            "textEn": "Ideal analyzer or filter with finite extinction ratio"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "malus-table-with-background",
+            "taskDemandDe": "Eine Tabelle enthält Intensitäten für Analysatorwinkel von 0° bis 180° samt Unsicherheiten und eine Dunkelmessung. Bestimme I₀, prüfe den cos²-Verlauf und entscheide, ob ein konstanter Untergrund die Restintensität am Minimum erklärt.",
+            "taskDemandEn": "A table gives intensities for analyzer angles from 0° to 180° with uncertainties and a dark reading. Determine I₀, test the cos² trend, and decide whether a constant background explains the residual intensity at the minimum.",
+            "expectedPerformanceDe": "Die lernende Person korrigiert oder modelliert den Offset nachvollziehbar, vergleicht normierte Werte mit cos²(α), nutzt die Unsicherheiten und trennt einen konstanten Untergrund von einer winkelabhängigen Modellabweichung.",
+            "expectedPerformanceEn": "The learner corrects or models the offset transparently, compares normalized values with cos²(α), uses the uncertainties, and distinguishes a constant background from an angle-dependent model deviation.",
+            "understandingFocusDe": "Der Fall prüft Gesetz, Messauswertung und eine datengetragene Abweichungsdiagnose.",
+            "understandingFocusEn": "The case assesses the law, measurement analysis, and a data-supported diagnosis of deviations."
+          },
+          {
+            "id": "shifted-polarization-and-imperfect-minimum",
+            "taskDemandDe": "Eine zweite Messreihe besitzt ihr Maximum bei 25° und ein nicht verschwindendes Minimum. Ermittle die Polarisationsrichtung, sage Werte für zwei neue Winkel voraus und entscheide, ob Untergrund allein oder ein nichtidealer Filter zur Kurve passt.",
+            "taskDemandEn": "A second data set has its maximum at 25° and a nonzero minimum. Infer the polarization direction, predict values for two fresh angles, and decide whether background alone or a non-ideal filter fits the curve.",
+            "expectedPerformanceDe": "Die lernende Person berücksichtigt den verschobenen Winkelursprung, nutzt die Periodizität des cos²-Gesetzes, gibt Vorhersagen mit plausibler Genauigkeit an und begründet die Modellwahl aus der gesamten Kurvenform.",
+            "expectedPerformanceEn": "The learner accounts for the shifted angular origin, uses the periodicity of the cos² law, gives predictions with plausible precision, and justifies the model choice from the full curve shape.",
+            "understandingFocusDe": "Der unabhängige Transfer trennt Winkelgeometrie, Idealgesetz und Filtergrenze.",
+            "understandingFocusEn": "The independent transfer distinguishes angular geometry, the ideal law, and filter limitations."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8c97c234-a932-5e84-aed5-237b4e2a8336",
+      "reason": "DE: Das Profil bindet Delayed Choice an konkrete Messanordnungen und Ensemble-Statistiken. Es prüft ausdrücklich, dass weder Retrokausalität noch eine vorab vorhandene klassische Bahn aus den Daten folgt. EN: The profile binds delayed choice to concrete measurement arrangements and ensemble statistics. It explicitly assesses that neither retrocausality nor a pre-existing classical path follows from the data.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "relate-setup-to-accessible-information",
+            "essentialUnderstandingDe": "Die tatsächlich realisierte Messanordnung legt fest, ob Interferenzstatistik oder Weginformation zugänglich ist. Die Aussage betrifft beobachtbare Ensembleverteilungen und nicht eine nachträgliche Veränderung eines vergangenen Einzelereignisses.",
+            "essentialUnderstandingEn": "The measurement arrangement actually implemented determines whether interference statistics or which-path information are accessible. The claim concerns observable ensemble distributions, not a retroactive alteration of a past individual event.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert für jede Anordnung den Messweg, ordnet die erwarteten Detektionsstatistiken zu und benennt genau, welche Information daraus zugänglich ist.",
+            "observablePerformanceEn": "The learner reconstructs the measurement path for each arrangement, assigns the expected detection statistics, and states precisely what information is accessible."
+          },
+          {
+            "id": "separate-findings-from-ontological-claims",
+            "essentialUnderstandingDe": "Komplementäre Statistiken rechtfertigen keine Behauptung einer verborgen festgelegten klassischen Bahn und keinen retrokausalen Einfluss. Deutungen müssen auf das beschränkt bleiben, was die Messdaten unterscheiden.",
+            "essentialUnderstandingEn": "Complementary statistics justify neither a hidden predetermined classical path nor retrocausal influence. Interpretations must remain limited to what the measurement data distinguish.",
+            "observablePerformanceDe": "Die lernende Person trennt Befund und Deutung, prüft konkurrierende Aussagen an den Daten und verwirft weitergehende klassische oder retrokausale Behauptungen ohne zusätzliche Evidenz.",
+            "observablePerformanceEn": "The learner separates finding from interpretation, tests competing claims against the data, and rejects stronger classical or retrocausal assertions without additional evidence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "relate-setup-to-accessible-information",
+            "separate-findings-from-ontological-claims"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measurement-choice",
+            "textDe": "Interferenzfähige oder weginformationsfähige Endmessung",
+            "textEn": "Interference-capable or which-path-capable final measurement"
+          },
+          {
+            "id": "choice-location",
+            "textDe": "Wahl vor oder nach dem Eintritt in den Interferometerbereich",
+            "textEn": "Choice before or after entry into the interferometer region"
+          },
+          {
+            "id": "data-view",
+            "textDe": "Unbedingte Gesamtstatistik oder nach Messergebnis sortierte Teilstatistiken",
+            "textEn": "Unconditioned aggregate statistics or subsets sorted by measurement outcome"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "delayed-mach-zehnder-choice",
+            "taskDemandDe": "Bei einem Mach-Zehnder-Interferometer wird der zweite Strahlteiler erst nach Eintritt einzelner Quantenobjekte wahlweise eingesetzt oder entfernt. Sage für viele Wiederholungen die Detektorstatistik beider Einstellungen voraus und beurteile die Aussage, der spätere Entschluss ändere rückwirkend den früheren Weg.",
+            "taskDemandEn": "In a Mach–Zehnder interferometer, the second beam splitter is either inserted or removed only after individual quantum objects have entered. Predict the detector statistics for many repetitions in both settings and assess the claim that the later choice retroactively changes the earlier path.",
+            "expectedPerformanceDe": "Die lernende Person ordnet Interferenzstatistik der geschlossenen und Weginformation der offenen Anordnung zu, argumentiert mit beobachtbaren Häufigkeiten und zeigt, warum daraus keine rückwirkende Änderung oder klassische Vorabbahn folgt.",
+            "expectedPerformanceEn": "The learner assigns interference statistics to the closed and which-path information to the open arrangement, reasons from observable frequencies, and shows why neither retroactive change nor a pre-existing classical path follows.",
+            "understandingFocusDe": "Der Fall prüft die zentrale Messkontextaussage an einem konkreten Ablauf.",
+            "understandingFocusEn": "The case assesses the central measurement-context claim in a concrete sequence."
+          },
+          {
+            "id": "delayed-path-marker-readout",
+            "taskDemandDe": "Ein Wegmarker kann nach der Wechselwirkung in zwei verschiedenen Basen ausgelesen werden. Vergleiche die unbedingte Detektionsverteilung und passend sortierte Teilverteilungen, bestimme die jeweils zugängliche Information und begrenze die Deutung.",
+            "taskDemandEn": "A path marker can be read out in two different bases after the interaction. Compare the unconditioned detection distribution and appropriately sorted subsets, determine the information accessible in each, and limit the interpretation.",
+            "expectedPerformanceDe": "Die lernende Person unterscheidet Gesamt- und bedingte Statistik, erklärt den Zusammenhang von Unterscheidbarkeit und Interferenzinformation und vermeidet die Behauptung, eine spätere Sortierung habe ein vergangenes Ereignis verändert.",
+            "expectedPerformanceEn": "The learner distinguishes aggregate and conditional statistics, explains the relation between distinguishability and interference information, and avoids claiming that later sorting changed a past event.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Messinformation und Interpretation ohne Rückgriff auf dasselbe Strahlteilerschema.",
+            "understandingFocusEn": "The independent transfer assesses measurement information and interpretation without reusing the same beam-splitter scheme."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+      "reason": "DE: Zwei unterschiedliche Anwendungen verlangen eine vollständige physikalische Funktionskette sowie eine getrennte, kriteriengebundene Nutzen- und Gefährdungsbeurteilung. Unsichere Strahlenarbeit wird ausschließlich über bereitgestellte Daten behandelt. EN: Two different applications require a complete physical functional chain and a separate, criteria-based assessment of benefit and hazard. Unsafe radiation work is handled only through supplied data.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "explain-application-function-chain",
+            "essentialUnderstandingDe": "Eine Anwendung wird durch Strahlungsart, charakteristische Wechselwirkung mit Materie und gegebenenfalls das Nachweisprinzip verständlich; Beobachtung, daraus erschlossene Größe und technische Funktion sind zu unterscheiden.",
+            "essentialUnderstandingEn": "An application is understood through radiation type, characteristic interaction with matter, and, where relevant, the detection principle; observation, inferred quantity, and technical function must be distinguished.",
+            "observablePerformanceDe": "Die lernende Person stellt für eine unbekannte Anwendung die Kette von Quelle über Wechselwirkung und Signal bis zur erschlossenen Information dar und begründet die Eignung der Strahlungsart.",
+            "observablePerformanceEn": "For an unfamiliar application, the learner presents the chain from source through interaction and signal to inferred information and justifies the suitability of the radiation type."
+          },
+          {
+            "id": "assess-benefit-hazard-and-protection",
+            "essentialUnderstandingDe": "Nutzen und Gefährdung sind getrennte Urteile. Expositionsweg, Reichweite, Aktivität beziehungsweise Dosisinformation, Aufenthaltsbedingungen und wirksame Abschirmung verändern die Risikoeinordnung.",
+            "essentialUnderstandingEn": "Benefit and hazard are separate judgments. Exposure pathway, range, activity or dose information, occupancy conditions, and effective shielding change the risk assessment.",
+            "observablePerformanceDe": "Die lernende Person beurteilt Nutzen und Gefährdung anhand expliziter Kriterien, vergleicht eine Schutz- oder Verfahrensalternative und kennzeichnet fehlende Daten sowie Wertannahmen.",
+            "observablePerformanceEn": "The learner assesses benefit and hazard using explicit criteria, compares a protection or procedural alternative, and identifies missing data and value assumptions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "explain-application-function-chain",
+            "assess-benefit-hazard-and-protection"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "application-domain",
+            "textDe": "Medizinische Diagnostik oder industrielle Prozessmessung",
+            "textEn": "Medical diagnosis or industrial process measurement"
+          },
+          {
+            "id": "exposure-path",
+            "textDe": "Äußere Exposition oder Aufnahme eines Radionuklids",
+            "textEn": "External exposure or intake of a radionuclide"
+          },
+          {
+            "id": "protection-condition",
+            "textDe": "Geänderte Abschirmung, Entfernung oder Aufenthaltszeit",
+            "textEn": "Changed shielding, distance, or exposure time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pet-tracer-assessment",
+            "taskDemandDe": "Für eine PET-Untersuchung sind Zerfallsart, Annihilationsphotonen, Koinzidenznachweis und Dosisdaten gegeben. Erkläre die Bildentstehungskette, beurteile den diagnostischen Nutzen gegenüber der Exposition und nenne eine begründete Schutz- oder Indikationsgrenze.",
+            "taskDemandEn": "For a PET examination, decay type, annihilation photons, coincidence detection, and dose data are supplied. Explain the image-formation chain, assess diagnostic benefit against exposure, and state a justified protection or indication limit.",
+            "expectedPerformanceDe": "Die lernende Person verknüpft Positronenzerfall, Annihilation, gegenläufige Photonen und Koinzidenzsignal, trennt Messsignal von Bildinferenz und stützt Nutzen- sowie Gefährdungsurteil auf die gegebenen Expositionsdaten.",
+            "expectedPerformanceEn": "The learner connects positron decay, annihilation, opposed photons, and coincidence signal, distinguishes measurement signal from image inference, and bases benefit and hazard judgments on the supplied exposure data.",
+            "understandingFocusDe": "Der Fall verbindet Funktionsverständnis mit einer evidenzgebundenen medizinischen Abwägung.",
+            "understandingFocusEn": "The case connects functional understanding with an evidence-based medical judgment."
+          },
+          {
+            "id": "sealed-source-thickness-gauge",
+            "taskDemandDe": "Ein abgeschirmtes Dickenmessgerät nutzt eine versiegelte Betaquelle und einen Detektor; Absorptions- und Streudaten sowie eine Gamma-Alternative sind angegeben. Erkläre die Messfunktion, vergleiche beide Strahlungsarten und beurteile Betrieb und Schutzmaßnahmen.",
+            "taskDemandEn": "A shielded thickness gauge uses a sealed beta source and a detector; absorption and scattering data and a gamma alternative are supplied. Explain the measurement function, compare both radiation types, and assess operation and protective measures.",
+            "expectedPerformanceDe": "Die lernende Person begründet die Dickeninferenz aus der Zählrate, berücksichtigt Reichweite und Abschirmbarkeit, wägt Messbereich gegen Exposition ab und nennt Bedingungen, unter denen die Alternative geeigneter wäre.",
+            "expectedPerformanceEn": "The learner justifies thickness inference from count rate, considers range and shieldability, weighs measurement range against exposure, and states conditions under which the alternative would be more suitable.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft dieselben Kriterien in einer nichtmedizinischen Anwendung.",
+            "understandingFocusEn": "The independent transfer assesses the same criteria in a non-medical application."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
+      "reason": "DE: Das Profil prüft die Kausalkette von Primärionisation bis Zählimpuls und die daraus folgende fehlende Energieauflösung. Zählstatistik und Detektorwahl werden in unabhängigen Signalfällen beurteilt. EN: The profile assesses the causal chain from primary ionisation to counting pulse and the resulting lack of energy resolution. Counting statistics and detector choice are evaluated in independent signal cases.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "explain-geiger-discharge-chain",
+            "essentialUnderstandingDe": "Eine Primärionisation löst im Geiger-Bereich eine sich räumlich ausbreitende Gasentladung aus; Löschung beendet sie. Der resultierende Impuls ist weitgehend von der ursprünglich deponierten Energie entkoppelt.",
+            "essentialUnderstandingEn": "Primary ionisation triggers a spatially spreading gas discharge in the Geiger region; quenching terminates it. The resulting pulse is largely decoupled from the energy initially deposited.",
+            "observablePerformanceDe": "Die lernende Person ordnet Aufbau und zeitlichen Ablauf von Ionisation, Lawine, Impuls, Löschung und Erholungszeit kausal und korrigiert eine Erklärung, die die Impulshöhe direkt mit Teilchenenergie gleichsetzt.",
+            "observablePerformanceEn": "The learner causally orders the setup and timing of ionisation, avalanche, pulse, quenching, and recovery and corrects an explanation that equates pulse height directly with particle energy."
+          },
+          {
+            "id": "distinguish-counting-from-spectroscopy",
+            "essentialUnderstandingDe": "Die Zahl registrierter Impulse liefert nach Untergrund- und gegebenenfalls Totzeitbetrachtung eine Ereignisrate; nahezu gleiche Impulshöhen erlauben keine Energiespektroskopie.",
+            "essentialUnderstandingEn": "The number of registered pulses provides an event rate after considering background and, where relevant, dead time; nearly equal pulse heights do not permit energy spectroscopy.",
+            "observablePerformanceDe": "Die lernende Person deutet Pulsfolgen, trennt Rate und Energieinformation und wählt für eine Messfrage begründet zwischen Geiger-Müller-Zählrohr und einem energieauflösenden Detektor.",
+            "observablePerformanceEn": "The learner interprets pulse trains, distinguishes rate from energy information, and justifiably chooses between a Geiger–Müller counter and an energy-resolving detector for a measurement question."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "explain-geiger-discharge-chain",
+            "distinguish-counting-from-spectroscopy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "incident-radiation",
+            "textDe": "Unterschiedliche Strahlungsart oder Teilchenenergie",
+            "textEn": "Different radiation type or particle energy"
+          },
+          {
+            "id": "counting-regime",
+            "textDe": "Niedrige Rate oder hohe Rate mit relevanter Totzeit",
+            "textEn": "Low rate or high rate with relevant dead time"
+          },
+          {
+            "id": "measurement-question",
+            "textDe": "Ereignisnachweis oder Bestimmung eines Energiespektrums",
+            "textEn": "Event detection or determination of an energy spectrum"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "equal-pulses-different-sources",
+            "taskDemandDe": "Oszilloskopbilder zweier Quellen zeigen unterschiedlich viele, aber annähernd gleich hohe Geigerimpulse; Untergrunddaten sind beigefügt. Erkläre die Impulsentstehung, bestimme korrigierte Raten und beurteile, ob die Quellenenergie aus den Pulshöhen folgt.",
+            "taskDemandEn": "Oscilloscope traces from two sources show different numbers of approximately equal Geiger pulses; background data are supplied. Explain pulse formation, determine corrected rates, and assess whether source energy follows from pulse height.",
+            "expectedPerformanceDe": "Die lernende Person beschreibt die Gasentladung, korrigiert die Zählraten um den Untergrund und verweigert eine Energiebestimmung aus der Impulshöhe mit kausaler Begründung.",
+            "expectedPerformanceEn": "The learner describes the gas discharge, corrects count rates for background, and rejects energy determination from pulse height with a causal justification.",
+            "understandingFocusDe": "Der Fall prüft Funktion, Zählen und die zentrale Informationsgrenze gemeinsam.",
+            "understandingFocusEn": "The case jointly assesses operation, counting, and the central information limit."
+          },
+          {
+            "id": "detector-choice-for-mixture",
+            "taskDemandDe": "Eine Strahlungsmischung soll entweder nur überwacht oder nach Energien getrennt werden. Vergleiche Geiger-Müller-Zählrohr und einen bereitgestellten energieproportionalen Detektor anhand ihrer Signalmodelle und entscheide für beide Messziele.",
+            "taskDemandEn": "A radiation mixture is either to be monitored or separated by energy. Compare a Geiger–Müller counter with a supplied energy-proportional detector using their signal models and decide for both measurement goals.",
+            "expectedPerformanceDe": "Die lernende Person wählt das Zählrohr für robusten Ereignisnachweis und den energieproportionalen Detektor für Spektroskopie, benennt Untergrund beziehungsweise Totzeit und begründet die Wahl aus der Impulsbildung.",
+            "expectedPerformanceEn": "The learner chooses the counter for robust event detection and the energy-proportional detector for spectroscopy, states background or dead-time considerations, and justifies the choice from pulse formation.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Detektorwahl statt bloßer Gerätebeschreibung.",
+            "understandingFocusEn": "The independent transfer assesses detector choice rather than mere device description."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "reason": "DE: Das Profil operationalisiert genau die im Revisionsdissens genannten Funktionsdetails, ohne den kanonischen Text zu verengen: Sammelvermögen, räumliche Auflösung, Spektralzerlegung, Inferenz und Informationsgrenze werden an zwei neuen astronomischen Fragen geprüft. EN: The profile operationalizes exactly the functional details named in the revision dissent without narrowing the canonical text: light gathering, spatial resolution, spectral separation, inference, and information limits are assessed through two fresh astronomical questions.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "distinguish-observation-and-inference",
+            "essentialUnderstandingDe": "Astronomie erschließt entfernte Objekte überwiegend aus empfangener Strahlung. Teleskope sammeln Strahlung und können räumliche Struktur trennen; Spektroskopie trennt Strahlung nach Wellenlänge. Eigenschaften des Objekts werden aus diesen Daten modellabhängig erschlossen, nicht direkt berührt oder gemessen.",
+            "essentialUnderstandingEn": "Astronomy investigates distant objects mainly through received radiation. Telescopes collect radiation and can separate spatial structure; spectroscopy separates radiation by wavelength. Object properties are inferred from these data in a model-dependent way rather than touched or measured directly.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet für eine Fragestellung Beobachtungsgröße, Instrumentfunktion und erschlossene Objekteigenschaft und trennt jede direkte Messung von der anschließenden Inferenz.",
+            "observablePerformanceEn": "For a question, the learner identifies the observed quantity, instrument function, and inferred object property and distinguishes each direct measurement from the subsequent inference."
+          },
+          {
+            "id": "choose-method-and-state-limit",
+            "essentialUnderstandingDe": "Die geeignete Methode hängt von Fragestellung, Helligkeit, Winkelgröße, Spektralbereich, Auflösung und Störeinflüssen ab. Teleskopie und Spektroskopie können sich ergänzen; keine Methode liefert ohne Modell und Unsicherheit eine vollständige Objektbeschreibung.",
+            "essentialUnderstandingEn": "The suitable method depends on the question, brightness, angular size, spectral region, resolution, and interference. Telescopy and spectroscopy can complement one another; neither method supplies a complete object description without a model and uncertainty.",
+            "observablePerformanceDe": "Die lernende Person wählt für ein neues Objekt Teleskopie, Spektroskopie oder beide, begründet die Wahl aus der benötigten Information und nennt eine konkrete Auflösungs-, Signal- oder Modellgrenze.",
+            "observablePerformanceEn": "For a fresh object, the learner chooses telescopy, spectroscopy, or both, justifies the choice from the information required, and states a specific resolution, signal, or model limitation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "distinguish-observation-and-inference",
+            "choose-method-and-state-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "research-question",
+            "textDe": "Räumliche Struktur, Bewegung, Temperatur oder Zusammensetzung",
+            "textEn": "Spatial structure, motion, temperature, or composition"
+          },
+          {
+            "id": "spectral-region",
+            "textDe": "Sichtbares Licht, Radio- oder Röntgenstrahlung",
+            "textEn": "Visible light, radio waves, or X-rays"
+          },
+          {
+            "id": "object-condition",
+            "textDe": "Helle aufgelöste Quelle oder schwache unaufgelöste Quelle",
+            "textEn": "Bright resolved source or faint unresolved source"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "binary-star-method-choice",
+            "taskDemandDe": "Ein Doppelstern ist in einem Bild knapp unaufgelöst; zeitlich wechselnde Spektrallinien sind messbar. Entscheide, welche Aussagen Teleskopbild und Spektroskopie jeweils erlauben, wie beide kombiniert werden können und welche Eigenschaft weiterhin unsicher bleibt.",
+            "taskDemandEn": "A binary star is just unresolved in an image, while time-varying spectral lines can be measured. Decide what the telescope image and spectroscopy each permit, how they can be combined, and which property remains uncertain.",
+            "expectedPerformanceDe": "Die lernende Person unterscheidet räumliche Auflösung von spektraler Geschwindigkeitsinformation, beschreibt beobachtete Daten und erschlossene Bahnmerkmale getrennt und benennt etwa Neigung oder Massenmodell als Grenze.",
+            "expectedPerformanceEn": "The learner distinguishes spatial resolution from spectral velocity information, separately describes observed data and inferred orbital features, and identifies inclination or the mass model as a limitation.",
+            "understandingFocusDe": "Der Fall prüft begründete Methodenwahl und Daten-zu-Eigenschaft-Inferenz.",
+            "understandingFocusEn": "The case assesses justified method selection and data-to-property inference."
+          },
+          {
+            "id": "exoplanet-atmosphere-spectrum",
+            "taskDemandDe": "Während eines Transits wird mit und ohne Planet ein Sternspektrum aufgenommen. Erkläre die Rollen von Teleskop und Spektrograph, leite aus differenziellen Linien eine begrenzte Atmosphärenaussage ab und nenne eine Störquelle.",
+            "taskDemandEn": "During a transit, a stellar spectrum is recorded with and without the planet in front of the star. Explain the roles of telescope and spectrograph, draw a bounded atmospheric inference from differential lines, and state one confounding source.",
+            "expectedPerformanceDe": "Die lernende Person ordnet Sammeln und zeitliche Messung dem Teleskop, Wellenlängentrennung dem Spektrographen zu, trennt Absorptionssignal von Atmosphärenmodell und berücksichtigt Sternaktivität oder Instrumentrauschen.",
+            "expectedPerformanceEn": "The learner assigns light collection and timed measurement to the telescope, wavelength separation to the spectrograph, distinguishes absorption signal from atmospheric model, and considers stellar activity or instrument noise.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft kombinierte Methoden an einer schwachen indirekten Signatur.",
+            "understandingFocusEn": "The independent transfer assesses combined methods using a weak indirect signature."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
+      "reason": "DE: Das Profil macht Stabilität als Kraftbilanz mit konkreter Druckquelle sichtbar und verlangt Vorhersagen bei geänderten Zustandsbedingungen. Gas-, Strahlungs- und Entartungsdruck werden nicht austauschbar behandelt. EN: The profile makes stability observable as a force balance with a specific pressure source and requires predictions under changed state conditions. Gas, radiation, and degeneracy pressure are not treated as interchangeable.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "identify-hydrostatic-balance",
+            "essentialUnderstandingDe": "Ein näherungsweise stabiles astronomisches Objekt besitzt ein Gleichgewicht zwischen nach innen gerichteter Gravitation und dem nach außen gerichteten Druckgradienten. Der relevante Druck kann je nach Objekt überwiegend aus thermischem Gas, Strahlung oder Entartung stammen.",
+            "essentialUnderstandingEn": "An approximately stable astronomical object has a balance between inward gravity and the outward pressure gradient. Depending on the object, the relevant pressure may arise mainly from thermal gas, radiation, or degeneracy.",
+            "observablePerformanceDe": "Die lernende Person legt System und betrachtete Schicht fest, kennzeichnet die entgegengesetzten Kraftdichten beziehungsweise Kräfte und begründet, welche Druckquelle das vorgelegte Objekt stützt.",
+            "observablePerformanceEn": "The learner defines the system and layer considered, identifies the opposing force densities or forces, and justifies which pressure source supports the object."
+          },
+          {
+            "id": "predict-response-to-imbalance",
+            "essentialUnderstandingDe": "Änderungen von Masse, Temperatur, Zusammensetzung oder Energieproduktion verändern Gravitation oder Druckantwort. Ein Ungleichgewicht begünstigt zunächst Kontraktion oder Expansion; die weitere Entwicklung hängt von Rückkopplungen und dem gültigen Objektmodell ab.",
+            "essentialUnderstandingEn": "Changes in mass, temperature, composition, or energy production alter gravity or pressure response. An imbalance initially favors contraction or expansion; subsequent evolution depends on feedback and the valid object model.",
+            "observablePerformanceDe": "Die lernende Person sagt die Richtung der ersten Reaktion voraus, verfolgt eine plausible Rückkopplung und kennzeichnet, wo eine qualitative Gleichgewichtsbetrachtung keine vollständige Entwicklung liefert.",
+            "observablePerformanceEn": "The learner predicts the direction of the initial response, follows a plausible feedback, and identifies where a qualitative equilibrium treatment does not provide the full evolution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "identify-hydrostatic-balance",
+            "predict-response-to-imbalance"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "pressure-source",
+            "textDe": "Gas-, Strahlungs- oder Entartungsdruck als dominanter Beitrag",
+            "textEn": "Gas, radiation, or degeneracy pressure as the dominant contribution"
+          },
+          {
+            "id": "perturbation",
+            "textDe": "Änderung von Masse, Temperatur oder Zusammensetzung",
+            "textEn": "Change in mass, temperature, or composition"
+          },
+          {
+            "id": "object-type",
+            "textDe": "Hauptreihenstern, massereicher Stern oder Weißer Zwerg",
+            "textEn": "Main-sequence star, massive star, or white dwarf"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cooling-main-sequence-layer",
+            "taskDemandDe": "In einem vereinfachten Sternmodell sinkt bei zunächst gleicher Masse die Kerntemperatur und damit der Gasdruck. Bestimme die erste Bewegungsrichtung der Schichten, erkläre eine mögliche Druckrückkopplung und beurteile, ob das neue Gleichgewicht allein aus der Momentaufnahme folgt.",
+            "taskDemandEn": "In a simplified stellar model, core temperature and hence gas pressure fall while mass initially remains constant. Determine the initial direction of layer motion, explain a possible pressure feedback, and assess whether the new equilibrium follows from the snapshot alone.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die zunächst überwiegende Gravitation und Kontraktion, erläutert mögliche Erwärmung durch Kompression und begrenzt die Aussage ohne Energieerzeugungs- und Transportmodell.",
+            "expectedPerformanceEn": "The learner identifies initially dominant gravity and contraction, explains possible heating by compression, and limits the claim without an energy-generation and transport model.",
+            "understandingFocusDe": "Der Fall prüft Bilanz, Störung und Modellgrenze an thermischem Druck.",
+            "understandingFocusEn": "The case assesses balance, perturbation, and model limits for thermal pressure."
+          },
+          {
+            "id": "white-dwarf-mass-increase",
+            "taskDemandDe": "Ein Weißer Zwerg nimmt Masse auf. Vergleiche qualitativ die verstärkte Gravitation mit dem entartungsbedingten Gegendruck, sage die Stabilitätsrichtung voraus und erkläre, weshalb ein Gasdruckargument hier nicht genügt.",
+            "taskDemandEn": "A white dwarf accretes mass. Qualitatively compare the increased gravity with degeneracy support, predict the stability trend, and explain why a gas-pressure argument is insufficient here.",
+            "expectedPerformanceDe": "Die lernende Person benennt Entartungsdruck als maßgebliche Stütze, erkennt die zunehmende gravitative Beanspruchung und kennzeichnet eine Grenzmasse beziehungsweise den Bedarf eines weiterführenden Modells, ohne eine beliebige thermische Stabilisierung anzunehmen.",
+            "expectedPerformanceEn": "The learner identifies degeneracy pressure as the relevant support, recognizes increasing gravitational demand, and notes a limiting mass or need for a more advanced model without assuming arbitrary thermal stabilization.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft dieselbe Bilanz mit einer anderen Druckquelle.",
+            "understandingFocusEn": "The independent transfer assesses the same balance with a different pressure source."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "reason": "DE: Das Profil verlangt Konstruktion und Deutung beider Darstellungen sowie die saubere Trennung von Grundfrequenz, Spektralanteilen, Tonhöhe, Lautstärke und Klangfarbe. Zwei neue Klangänderungen verhindern reine Mustererkennung. EN: The profile requires construction and interpretation of both representations and clean separation of fundamental frequency, spectral components, pitch, loudness, and timbre. Two fresh sound changes prevent mere pattern recognition.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "translate-time-and-frequency-representations",
+            "essentialUnderstandingDe": "Zeitverlauf und Frequenzspektrum codieren dasselbe Signal unterschiedlich. Bei periodischen Klängen bestimmt die Grundfrequenz die Periodendauer; harmonische und weitere Spektralanteile erscheinen mit ihren relativen Amplituden im Spektrum.",
+            "essentialUnderstandingEn": "A time trace and frequency spectrum encode the same signal differently. For periodic complex sounds, fundamental frequency determines period, while harmonic and other spectral components appear with their relative amplitudes in the spectrum.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus angegebenen Komponenten einen qualitativen Zeitverlauf oder ein Spektrum, ordnet zusammengehörige Darstellungen zu und erklärt Frequenz- und Amplitudenkonventionen.",
+            "observablePerformanceEn": "The learner constructs a qualitative time trace or spectrum from supplied components, matches corresponding representations, and explains frequency and amplitude conventions."
+          },
+          {
+            "id": "separate-pitch-timbre-and-level",
+            "essentialUnderstandingDe": "Tonhöhe folgt vor allem der Grundfrequenz, Klangfarbe der spektralen Struktur und Pegel beziehungsweise Lautstärke der Gesamtsamplitude; diese Eigenschaften können unabhängig verändert werden, soweit das Modell trägt.",
+            "essentialUnderstandingEn": "Pitch follows mainly from fundamental frequency, timbre from spectral structure, and level or loudness from overall amplitude; these properties can be changed independently within the model.",
+            "observablePerformanceDe": "Die lernende Person sagt bei veränderten Grund- oder Obertonanteilen voraus, welche Wahrnehmungsmerkmale sich ändern, und begründet die Aussage aus den Spektren statt aus Instrumentnamen.",
+            "observablePerformanceEn": "The learner predicts which perceptual features change when fundamental or overtone components change and justifies the claim from spectra rather than instrument names."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "translate-time-and-frequency-representations",
+            "separate-pitch-timbre-and-level"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "spectral-change",
+            "textDe": "Geänderte Grundfrequenz oder geänderte relative Obertonanteile",
+            "textEn": "Changed fundamental frequency or changed relative overtone amplitudes"
+          },
+          {
+            "id": "signal-form",
+            "textDe": "Nahezu sinusförmiger Ton oder komplexer periodischer Klang",
+            "textEn": "Nearly sinusoidal tone or complex periodic sound"
+          },
+          {
+            "id": "representation-given",
+            "textDe": "Zeitdiagramm, Spektrum oder Komponentenliste als Ausgangspunkt",
+            "textEn": "Time graph, spectrum, or component list as the starting point"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "match-waveforms-and-spectra",
+            "taskDemandDe": "Drei unbekannte periodische Zeitdiagramme und drei Spektren besitzen teils gleiche Grundfrequenz, aber verschiedene Obertonstärken. Ordne die Paare zu, bestimme Grund- und Obertöne und vergleiche Tonhöhe sowie Klangfarbe.",
+            "taskDemandEn": "Three unfamiliar periodic time traces and three spectra have partly equal fundamentals but different overtone strengths. Match the pairs, identify fundamental and overtones, and compare pitch and timbre.",
+            "expectedPerformanceDe": "Die lernende Person nutzt Periodendauer und Linienabstände, ordnet relative Amplituden konsistent zu und erklärt gleiche Tonhöhe bei unterschiedlicher Klangfarbe ohne die Gesamtamplitude mit einem Oberton zu verwechseln.",
+            "expectedPerformanceEn": "The learner uses period and line spacing, consistently assigns relative amplitudes, and explains equal pitch with different timbre without confusing overall amplitude with an overtone.",
+            "understandingFocusDe": "Der Fall prüft die bidirektionale Übersetzung beider Darstellungen.",
+            "understandingFocusEn": "The case assesses bidirectional translation between the representations."
+          },
+          {
+            "id": "filter-harmonics-preserve-fundamental",
+            "taskDemandDe": "Ein Klang wird durch einen Tiefpass verändert, der höhere Obertöne stark dämpft, die Grundfrequenz aber erhält. Skizziere das neue Spektrum, sage den qualitativen Zeitverlauf voraus und begründe Änderungen von Tonhöhe, Pegel und Klangfarbe.",
+            "taskDemandEn": "A complex sound is changed by a low-pass filter that strongly attenuates higher overtones but preserves the fundamental. Sketch the new spectrum, predict the qualitative time trace, and justify changes in pitch, level, and timbre.",
+            "expectedPerformanceDe": "Die lernende Person behält die Grundfrequenz und Periodendauer bei, reduziert die entsprechenden Spektrallinien, erwartet einen glatteren Zeitverlauf und trennt eine mögliche Pegeländerung von der veränderten Klangfarbe.",
+            "expectedPerformanceEn": "The learner preserves the fundamental and period, reduces the corresponding spectral lines, expects a smoother time trace, and separates a possible level change from altered timbre.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft kausale Vorhersage aus einer spektralen Manipulation.",
+            "understandingFocusEn": "The independent transfer assesses causal prediction from a spectral manipulation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
+      "reason": "DE: Das Profil kombiniert Laufzeit-, Pegel- und spektrale Hinweise, fordert eine geometrische Laufzeitabschätzung und prüft frequenzabhängige Mehrdeutigkeiten. Keine einzelne Hinweisart wird als universell dargestellt. EN: The profile combines timing, level, and spectral cues, requires a geometric time-delay estimate, and assesses frequency-dependent ambiguities. No single cue is presented as universal.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "combine-localization-cues",
+            "essentialUnderstandingDe": "Interaurale Laufzeitdifferenzen entstehen aus Wegunterschieden, Pegeldifferenzen vor allem durch frequenzabhängigen Kopfschatten, und Ohrmuschel sowie Gehörgang prägen richtungsabhängige Spektren. Das Hörsystem kombiniert diese Hinweise.",
+            "essentialUnderstandingEn": "Interaural time differences arise from path differences, level differences mainly from frequency-dependent head shadow, and the pinna and ear canal shape direction-dependent spectra. The auditory system combines these cues.",
+            "observablePerformanceDe": "Die lernende Person ordnet für eine Richtung Vorzeichen und relative Größe der Hinweise zu, schätzt Δt = Δs/c ab und erklärt, welcher Hinweis für das gegebene Frequenzband aussagekräftig ist.",
+            "observablePerformanceEn": "For a direction, the learner assigns the sign and relative size of the cues, estimates Δt = Δs/c, and explains which cue is informative for the given frequency band."
+          },
+          {
+            "id": "assess-cue-limits-and-ambiguity",
+            "essentialUnderstandingDe": "Laufzeit-, Pegel- und spektrale Hinweise besitzen frequenz- und geometrieabhängige Grenzen; etwa können Vorne-hinten-Lagen ähnliche binaurale Werte liefern und tiefe beziehungsweise hohe Frequenzen unterschiedliche Hinweise tragen.",
+            "essentialUnderstandingEn": "Timing, level, and spectral cues have frequency- and geometry-dependent limits; for example, front–back positions may yield similar binaural values, while low and high frequencies carry different cues.",
+            "observablePerformanceDe": "Die lernende Person erkennt mehrdeutige Datensätze, benennt den fehlenden Hinweis und sagt voraus, wie ein geändertes Frequenzband, eine Kopfbewegung oder Ohrmuschelfilterung die Lokalisierbarkeit beeinflusst.",
+            "observablePerformanceEn": "The learner identifies ambiguous data sets, states the missing cue, and predicts how a changed frequency band, head movement, or pinna filtering affects localization."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "combine-localization-cues",
+            "assess-cue-limits-and-ambiguity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "source-direction",
+            "textDe": "Links-rechts, vorne-hinten oder Höhenrichtung",
+            "textEn": "Left–right, front–back, or elevation direction"
+          },
+          {
+            "id": "frequency-band",
+            "textDe": "Tieffrequenter, breitbandiger oder hochfrequenter Schall",
+            "textEn": "Low-frequency, broadband, or high-frequency sound"
+          },
+          {
+            "id": "listener-geometry",
+            "textDe": "Geänderte Kopfbreite, Kopfhaltung oder Ohrmuschelfilterung",
+            "textEn": "Changed head width, head orientation, or pinna filtering"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "side-source-time-delay",
+            "taskDemandDe": "Eine Schallquelle steht seitlich; Kopfbreite, Einfallswinkel und Schallgeschwindigkeit sind angegeben. Schätze die interaurale Laufzeitdifferenz, bestimme das Vorzeichen für beide Ohren und beurteile für tiefe und hohe Frequenzen zusätzliche Pegelhinweise.",
+            "taskDemandEn": "A sound source is to one side; head width, incidence angle, and sound speed are given. Estimate the interaural time difference, determine the sign for both ears, and assess additional level cues at low and high frequencies.",
+            "expectedPerformanceDe": "Die lernende Person modelliert den Wegunterschied plausibel, erhält eine realistische Mikrosekunden-Größenordnung und erklärt, weshalb Kopfschatten bei kurzen Wellenlängen typischerweise stärker beiträgt.",
+            "expectedPerformanceEn": "The learner models path difference plausibly, obtains a realistic microsecond scale, and explains why head shadow typically contributes more at short wavelengths.",
+            "understandingFocusDe": "Der Fall verbindet Geometrie, Rechnung und frequenzabhängige Hinweiswahl.",
+            "understandingFocusEn": "The case connects geometry, calculation, and frequency-dependent cue selection."
+          },
+          {
+            "id": "front-back-spectral-ambiguity",
+            "taskDemandDe": "Zwei Quellen vorne und hinten erzeugen nahezu gleiche Laufzeit- und Pegeldifferenzen, aber unterschiedliche Außenohrspektren. Deute die Messdaten und sage voraus, was bei geglätteter Ohrmuschelfilterung oder einer kleinen Kopfbewegung geschieht.",
+            "taskDemandEn": "Two sources in front and behind produce nearly equal timing and level differences but different outer-ear spectra. Interpret the data and predict what happens when pinna filtering is smoothed or the head makes a small movement.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die binaurale Mehrdeutigkeit, nutzt richtungsabhängige Spektralkerben zur Unterscheidung und erwartet bei geschwächter Filterung mehr, bei dynamischer Kopfbewegung weniger Mehrdeutigkeit.",
+            "expectedPerformanceEn": "The learner recognizes the binaural ambiguity, uses direction-dependent spectral notches to distinguish the sources, and expects more ambiguity with weakened filtering and less with dynamic head motion.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft spektrale Hinweise jenseits einer Seitenlokalisation.",
+            "understandingFocusEn": "The independent transfer assesses spectral cues beyond lateral localization."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c2e0fc31-27a2-5727-9025-a824db9150d2",
+      "reason": "DE: Das Profil fordert eine selbst konstruierte Mehrsegment-Ersatzschaltung, physikalische Bauteilzuordnung und Vorhersagen bei veränderten RC-Parametern. Die Grenze zur aktiven, regenerativen Leitung bleibt explizit. EN: The profile requires a learner-constructed multi-segment equivalent circuit, physical assignment of components, and predictions under changed RC parameters. The boundary to active regenerative conduction remains explicit.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "construct-passive-axon-circuit",
+            "essentialUnderstandingDe": "Die Membran speichert Ladung wie eine Kapazität, der Membranwiderstand beschreibt Leckstrom und der Axialwiderstand den längsgerichteten Strom zwischen Segmenten. Gekoppelte RC-Segmente erklären zeitlich verzögertes und räumlich abgeschwächtes passives Potenzial.",
+            "essentialUnderstandingEn": "The membrane stores charge like a capacitance, membrane resistance represents leakage, and axial resistance represents longitudinal current between segments. Coupled RC segments explain delayed and spatially attenuated passive potential.",
+            "observablePerformanceDe": "Die lernende Person konstruiert und beschriftet mindestens drei gekoppelte Segmente, verfolgt Strompfade und sagt aus Widerständen und Kapazitäten qualitative Signalverläufe voraus.",
+            "observablePerformanceEn": "The learner constructs and labels at least three coupled segments, traces current paths, and predicts qualitative signal trends from resistances and capacitances."
+          },
+          {
+            "id": "state-passive-model-limit",
+            "essentialUnderstandingDe": "Ein rein passives lineares RC-Netzwerk regeneriert ein abgeschwächtes Signal nicht. Aktionspotenziale benötigen zusätzliche spannungsabhängige, nichtlineare Leitfähigkeiten; deren detaillierte Kinetik ist nicht im passiven Ersatzmodell enthalten.",
+            "essentialUnderstandingEn": "A purely passive linear RC network does not regenerate an attenuated signal. Action potentials require additional voltage-dependent nonlinear conductances; their detailed kinetics are not contained in the passive equivalent model.",
+            "observablePerformanceDe": "Die lernende Person vergleicht Modellvorhersage und aktiv fortgeleiteten Signalverlauf, lokalisiert die fehlende Funktion und ergänzt spannungsabhängige Elemente nur dort, wo die aktive Leitung sie verlangt.",
+            "observablePerformanceEn": "The learner compares the model prediction with an actively propagated signal, locates the missing function, and adds voltage-dependent elements only where active conduction requires them."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "construct-passive-axon-circuit",
+            "state-passive-model-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "segment-parameter",
+            "textDe": "Veränderte Membrankapazität, Membran- oder Axialwiderstand",
+            "textEn": "Changed membrane capacitance, membrane resistance, or axial resistance"
+          },
+          {
+            "id": "segment-geometry",
+            "textDe": "Andere Segmentlänge oder Zahl gekoppelter Segmente",
+            "textEn": "Different segment length or number of coupled segments"
+          },
+          {
+            "id": "conduction-regime",
+            "textDe": "Passive Ausbreitung oder aktive Regeneration an diskreten Stellen",
+            "textEn": "Passive spread or active regeneration at discrete sites"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "passive-pulse-across-segments",
+            "taskDemandDe": "Ein kurzer Strompuls wird in das erste von vier Axonsegmenten eingespeist. Zeichne die Ersatzschaltung, skizziere die Potenziale der Segmente und sage voraus, wie größere Membrankapazität beziehungsweise höherer Membranwiderstand Verzögerung und Abschwächung verändern.",
+            "taskDemandEn": "A short current pulse is injected into the first of four axon segments. Draw the equivalent circuit, sketch segment potentials, and predict how greater membrane capacitance or higher membrane resistance changes delay and attenuation.",
+            "expectedPerformanceDe": "Die lernende Person ordnet Cₘ, Rₘ und Rₐ korrekt an, erwartet passive Verzögerung und Abnahme, trennt die langsamere Aufladung bei größerem Cₘ von der geringeren Leckage bei größerem Rₘ und begründet beide Vorhersagen.",
+            "expectedPerformanceEn": "The learner arranges Cₘ, Rₘ, and Rₐ correctly, expects passive delay and attenuation, distinguishes slower charging with greater Cₘ from reduced leakage with greater Rₘ, and justifies both predictions.",
+            "understandingFocusDe": "Der Fall prüft Schaltungskonstruktion und kausale Parameterwirkung.",
+            "understandingFocusEn": "The case assesses circuit construction and causal parameter effects."
+          },
+          {
+            "id": "myelinated-segment-model-limit",
+            "taskDemandDe": "Ein Signal bleibt entlang eines myelinisierten Axons nahezu erhalten, obwohl ein rein passives Segmentmodell Abnahme vorhersagt. Passe Widerstände und Kapazitäten qualitativ an, erkläre die verbleibende Diskrepanz und markiere nötige aktive Elemente an den Knoten.",
+            "taskDemandEn": "A signal remains nearly preserved along a myelinated axon although a purely passive segment model predicts attenuation. Adjust resistances and capacitances qualitatively, explain the remaining discrepancy, and mark the active elements needed at the nodes.",
+            "expectedPerformanceDe": "Die lernende Person verbindet Myelinisierung mit höherem Membranwiderstand und kleinerer wirksamer Kapazität, erkennt aber, dass dies keine Regeneration erzeugt, und ergänzt spannungsabhängige Leitfähigkeiten als ausdrückliche Modellweiterung.",
+            "expectedPerformanceEn": "The learner connects myelination with greater membrane resistance and smaller effective capacitance but recognizes that this does not create regeneration and adds voltage-dependent conductances as an explicit model extension.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Modellleistung und Modellgrenze an veränderter Struktur.",
+            "understandingFocusEn": "The independent transfer assesses model capability and limitation under changed structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
+      "reason": "DE: Das Profil bindet die Kreisblenden-Näherung an ihre Annahmen, Einheiten und Skalierung und trennt die ideale optische Grenze von biologischer Sehschärfe. Zwei Bedingungen verhindern eine pauschale Gleichsetzung. EN: The profile binds the circular-aperture approximation to its assumptions, units, and scaling and separates the ideal optical limit from biological visual acuity. Two conditions prevent blanket identification.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "apply-circular-aperture-limit",
+            "essentialUnderstandingDe": "Für eine ideale Kreisblende liefert das Rayleigh-Kriterium θ_min ≈ 1,22 λ/D im Kleinwinkel- und Fernfeldregime. Größere Wellenlänge verschlechtert, größere wirksame Öffnung verbessert die ideale Winkelauflösung.",
+            "essentialUnderstandingEn": "For an ideal circular aperture, the Rayleigh criterion gives θ_min ≈ 1.22 λ/D in the small-angle far-field regime. Greater wavelength worsens and a larger effective aperture improves ideal angular resolution.",
+            "observablePerformanceDe": "Die lernende Person wählt λ und D in konsistenten Einheiten, berechnet oder skaliert θ_min, prüft Größenordnung und Parameterabhängigkeit und nennt die verwendeten Idealannahmen.",
+            "observablePerformanceEn": "The learner uses λ and D in consistent units, calculates or scales θ_min, checks order of magnitude and parameter dependence, and states the ideal assumptions used."
+          },
+          {
+            "id": "distinguish-optical-and-biological-limits",
+            "essentialUnderstandingDe": "Die Beugungsgrenze ist nur eine optische Untergrenze. Netzhautabtastung, Kontrast, Aberrationen, Beleuchtung und neuronale Verarbeitung können die reale Sehschärfe zusätzlich begrenzen.",
+            "essentialUnderstandingEn": "The diffraction limit is only an optical lower bound. Retinal sampling, contrast, aberrations, illumination, and neural processing can additionally limit real visual acuity.",
+            "observablePerformanceDe": "Die lernende Person vergleicht einen gemessenen Sehschärfewert mit der Beugungsabschätzung und entscheidet begründet, ob eine Abweichung optisch allein erklärt werden kann.",
+            "observablePerformanceEn": "The learner compares a measured visual-acuity value with the diffraction estimate and justifiably decides whether optics alone can explain a discrepancy."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "apply-circular-aperture-limit",
+            "distinguish-optical-and-biological-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "wavelength",
+            "textDe": "Kurze oder lange sichtbare Wellenlänge",
+            "textEn": "Short or long visible wavelength"
+          },
+          {
+            "id": "pupil-diameter",
+            "textDe": "Helle oder dunkle Bedingung mit unterschiedlicher Pupillenweite",
+            "textEn": "Bright or dark condition with different pupil diameter"
+          },
+          {
+            "id": "biological-condition",
+            "textDe": "Hoher oder geringer Kontrast sowie zusätzliche Aberration",
+            "textEn": "High or low contrast and additional aberration"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "green-light-pupil-estimate",
+            "taskDemandDe": "Für λ = 550 nm und D = 3,0 mm schätze die ideale Winkelauflösung des Auges, wandle sie in Bogenminuten um und vergleiche sie mit einem angegebenen Sehschärfewert samt Unsicherheit.",
+            "taskDemandEn": "For λ = 550 nm and D = 3.0 mm, estimate the ideal angular resolution of the eye, convert it to arcminutes, and compare it with a supplied visual-acuity value and uncertainty.",
+            "expectedPerformanceDe": "Die lernende Person rechnet Einheiten korrekt, erhält eine plausible Größenordnung, interpretiert θ als minimale Winkeltrennung und erklärt eine größere reale Schwelle mit möglichen biologischen oder optischen Zusatzgrenzen.",
+            "expectedPerformanceEn": "The learner handles units correctly, obtains a plausible scale, interprets θ as a minimum angular separation, and explains a larger real threshold using possible biological or additional optical limitations.",
+            "understandingFocusDe": "Der Fall prüft Rechnung, Bedeutung und begrenzten Vergleich mit Messung.",
+            "understandingFocusEn": "The case assesses calculation, meaning, and a bounded comparison with measurement."
+          },
+          {
+            "id": "dim-red-light-prediction",
+            "taskDemandDe": "Bei schwachem rotem Licht wird die Pupille größer als bei hellem grünem Licht. Berechne aus gegebenen λ- und D-Werten beide idealen Grenzen, sage die Richtung der Änderung voraus und beurteile, ob die reale Sehschärfe zwingend gleich folgt.",
+            "taskDemandEn": "In dim red light the pupil is larger than in bright green light. Calculate both ideal limits from supplied λ and D values, predict the direction of change, and assess whether real visual acuity must follow in the same way.",
+            "expectedPerformanceDe": "Die lernende Person wägt größere Öffnung gegen längere Wellenlänge ab, stützt die ideale Vorhersage quantitativ und verweigert eine zwingende Aussage zur realen Sehschärfe ohne Kontrast-, Aberrations- und Netzhautdaten.",
+            "expectedPerformanceEn": "The learner weighs the larger aperture against the longer wavelength, supports the ideal prediction quantitatively, and rejects a necessary claim about real acuity without contrast, aberration, and retinal data.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft konkurrierende Parameter und die Modellgrenze.",
+            "understandingFocusEn": "The independent transfer assesses competing parameters and the model boundary."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6d882aac-9658-5f0d-bf3d-9338f0143bbc",
+      "reason": "DE: Das Profil verlangt einen sicheren, operationalisierten Versuch mit vorab festgelegtem Trennkriterium, Winkelgeometrie und Unsicherheitsbilanz. Die gemessene Sehschärfe wird nicht mit der idealen Beugungsgrenze verwechselt. EN: The profile requires a safe operationalized experiment with a pre-defined resolution criterion, angular geometry, and uncertainty budget. Measured visual acuity is not confused with the ideal diffraction limit.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "design-safe-resolution-test",
+            "essentialUnderstandingDe": "Eine reproduzierbare Bestimmung benötigt ein vorab festgelegtes Trennkriterium, bekannte Zielstruktur, kontrollierte Entfernung und Beleuchtung sowie eine ungefährliche Versuchsdurchführung.",
+            "essentialUnderstandingEn": "A reproducible determination requires a pre-defined resolution criterion, a known target structure, controlled distance and illumination, and a safe experimental procedure.",
+            "observablePerformanceDe": "Die lernende Person formuliert eine testbare Frage, definiert das Kriterium vor der Messung, plant Wiederholungen und Kontrollen und rechnet Strukturgröße und Abstand in einen Grenzwinkel um.",
+            "observablePerformanceEn": "The learner formulates a testable question, defines the criterion before measurement, plans repeats and controls, and converts target size and distance into a limiting angle."
+          },
+          {
+            "id": "evaluate-uncertainty-and-model-comparison",
+            "essentialUnderstandingDe": "Streuung zwischen Wiederholungen ist von systematischen Einflüssen wie ungenauer Zielgröße, Entfernung, Kontrast, Korrektionszustand und Erwartung zu unterscheiden. Die Beugungsabschätzung beschreibt ein Idealmodell, nicht automatisch den Messwert.",
+            "essentialUnderstandingEn": "Scatter among repeats must be distinguished from systematic effects such as uncertain target size, distance, contrast, optical correction, and expectation. The diffraction estimate describes an ideal model, not automatically the measured value.",
+            "observablePerformanceDe": "Die lernende Person gibt einen Messwert mit Unsicherheit an, diskutiert zufällige und systematische Beiträge und beurteilt eine Abweichung von der Beugungsgrenze ohne nachträgliche Änderung des Trennkriteriums.",
+            "observablePerformanceEn": "The learner reports a result with uncertainty, discusses random and systematic contributions, and assesses a deviation from the diffraction limit without changing the resolution criterion after the fact."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "design-safe-resolution-test",
+            "evaluate-uncertainty-and-model-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "test-pattern",
+            "textDe": "Linienpaar, Landolt-Ring oder periodisches Gitter mit definiertem Kriterium",
+            "textEn": "Line pair, Landolt ring, or periodic grating with a defined criterion"
+          },
+          {
+            "id": "viewing-condition",
+            "textDe": "Geänderter Abstand, Kontrast oder Beleuchtung",
+            "textEn": "Changed distance, contrast, or illumination"
+          },
+          {
+            "id": "uncertainty-source",
+            "textDe": "Wiederholungsstreuung, Geometriefehler oder Erwartungseinfluss",
+            "textEn": "Repeatability scatter, geometric error, or expectation effect"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "repeated-line-pair-threshold",
+            "taskDemandDe": "Bestimme mit gedruckten Linienpaaren bekannter Trennung und mehreren zufällig angeordneten Durchgängen den Grenzabstand, bei dem zwei Linien nach einem vorab notierten Kriterium getrennt werden. Berechne den Winkel und eine Unsicherheit.",
+            "taskDemandEn": "Using printed line pairs of known separation and several randomized trials, determine the limiting distance at which two lines are resolved under a criterion written down in advance. Calculate the angle and an uncertainty.",
+            "expectedPerformanceDe": "Die lernende Person arbeitet mit sicherer normaler Betrachtung, protokolliert Einzelwerte, berechnet den Kleinwinkel aus Struktur und Abstand, quantifiziert Streuung und Geometrieunsicherheit und meldet ein begrenztes Ergebnis.",
+            "expectedPerformanceEn": "The learner uses safe normal viewing, records individual values, calculates the small angle from structure and distance, quantifies scatter and geometric uncertainty, and reports a bounded result.",
+            "understandingFocusDe": "Der Fall prüft vollständige Versuchsplanung, Auswertung und Unsicherheitsangabe.",
+            "understandingFocusEn": "The case assesses complete experimental planning, analysis, and uncertainty reporting."
+          },
+          {
+            "id": "contrast-and-lighting-replication",
+            "taskDemandDe": "Wiederhole den Test mit einem kontrastärmeren Muster oder geänderter Beleuchtung bei gleichem vorab festgelegtem Kriterium. Vergleiche beide Winkelwerte mit der Kreisblendenabschätzung und ordne die Differenzen ein.",
+            "taskDemandEn": "Repeat the test with a lower-contrast pattern or changed illumination while keeping the pre-defined criterion. Compare both angular results with the circular-aperture estimate and interpret the differences.",
+            "expectedPerformanceDe": "Die lernende Person kontrolliert die übrige Geometrie, vergleicht Ergebnisse samt Unsicherheiten, trennt einen biologisch-kontrastbedingten Effekt von der idealen λ/D-Grenze und benennt verbleibende systematische Unsicherheit.",
+            "expectedPerformanceEn": "The learner controls the remaining geometry, compares results with uncertainties, distinguishes a biological contrast effect from the ideal λ/D limit, and states remaining systematic uncertainty.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Robustheit des Kriteriums und Modellvergleich.",
+            "understandingFocusEn": "The independent transfer assesses robustness of the criterion and model comparison."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "reason": "DE: Das Profil prüft die vollständige Datenkette von Pixel und Bildzeit zu physikalischen Größen sowie eine residual- und unsicherheitsbewusste Modellprüfung. Gleichförmige Bewegung und Wurf bilden unabhängige Fälle. EN: The profile assesses the complete data chain from pixels and frame times to physical quantities and a residual- and uncertainty-aware model test. Uniform motion and projectile motion form independent cases.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "calibrate-and-derive-motion-data",
+            "essentialUnderstandingDe": "Pixelkoordinaten und Frame-Nummern werden erst durch räumlichen Maßstab, Zeitbasis, Achsenwahl und Perspektivkontrolle zu physikalischen Orts-Zeit-Daten. Numerisch abgeleitete Geschwindigkeiten verstärken Positionsrauschen.",
+            "essentialUnderstandingEn": "Pixel coordinates and frame numbers become physical position-time data only through spatial scale, time base, axis choice, and perspective control. Numerically derived velocities amplify positional noise.",
+            "observablePerformanceDe": "Die lernende Person kalibriert ein neues Video, verfolgt einen definierten Punkt, dokumentiert Einheiten und Unsicherheiten und erzeugt s(t)- sowie v(t)-Darstellungen mit nachvollziehbarer Ableitung.",
+            "observablePerformanceEn": "The learner calibrates a fresh video, tracks a defined point, documents units and uncertainties, and creates s(t) and v(t) representations with a transparent derivative method."
+          },
+          {
+            "id": "test-motion-model-against-data",
+            "essentialUnderstandingDe": "Ein Bewegungsmodell wird durch Verlauf, Parameter, Residuen und Unsicherheiten geprüft. Perspektive, Tracking, Bildrate und reale Kräfte können unterschiedliche Abweichungsmuster erzeugen.",
+            "essentialUnderstandingEn": "A motion model is tested through trend, parameters, residuals, and uncertainties. Perspective, tracking, frame rate, and real forces can produce different patterns of deviation.",
+            "observablePerformanceDe": "Die lernende Person wählt zwischen gleichförmigem und Wurfmodell, passt oder vergleicht das Modell mit Daten und trennt begründet physikalische von messtechnischen Abweichungen.",
+            "observablePerformanceEn": "The learner chooses between uniform-motion and projectile models, fits or compares the model with data, and justifiably separates physical from measurement-related deviations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "calibrate-and-derive-motion-data",
+            "test-motion-model-against-data"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "motion-type",
+            "textDe": "Geradlinig gleichförmige Bewegung oder zweidimensionaler Wurf",
+            "textEn": "Uniform rectilinear motion or two-dimensional projectile motion"
+          },
+          {
+            "id": "camera-condition",
+            "textDe": "Nahezu orthogonale oder perspektivisch verzerrte Aufnahme",
+            "textEn": "Nearly orthogonal or perspective-distorted recording"
+          },
+          {
+            "id": "sampling-quality",
+            "textDe": "Hohe oder geringe Bildrate und unterschiedlich starkes Trackingrauschen",
+            "textEn": "High or low frame rate and different levels of tracking noise"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cart-video-model-test",
+            "taskDemandDe": "Ein Wagenvideo enthält Maßstab, Bildrate und leicht schräg stehende Kamera. Kalibriere die Bewegung, gewinne s(t) und v(t), prüfe ein gleichförmiges Modell und entscheide anhand der Residuen, ob Perspektive oder reale Beschleunigung plausibler ist.",
+            "taskDemandEn": "A cart video includes a scale, frame rate, and a slightly oblique camera. Calibrate the motion, obtain s(t) and v(t), test a uniform-motion model, and use residuals to decide whether perspective or real acceleration is more plausible.",
+            "expectedPerformanceDe": "Die lernende Person legt eine geeignete Achse fest, korrigiert oder begrenzt die Perspektive, erhält physikalische Einheiten, passt eine Gerade an s(t) und deutet systematische gegenüber zufälligen Residuen.",
+            "expectedPerformanceEn": "The learner defines a suitable axis, corrects or bounds perspective, obtains physical units, fits a line to s(t), and interprets systematic versus random residuals.",
+            "understandingFocusDe": "Der Fall prüft Kalibrierung und Diagnose eines Modells aus frischen Daten.",
+            "understandingFocusEn": "The case assesses calibration and diagnosis of a model from fresh data."
+          },
+          {
+            "id": "projectile-video-components",
+            "taskDemandDe": "Ein zweidimensionales Wurfvideo mit unbekanntem Startzeitpunkt und bekannter Bildrate wird vorgelegt. Kalibriere beide Achsen, bestimme x(t), y(t), v_x(t) und v_y(t) und prüfe horizontale Gleichförmigkeit sowie vertikale konstante Beschleunigung.",
+            "taskDemandEn": "A two-dimensional projectile video with unknown start time and known frame rate is supplied. Calibrate both axes, determine x(t), y(t), v_x(t), and v_y(t), and test horizontal uniform motion and vertical constant acceleration.",
+            "expectedPerformanceDe": "Die lernende Person rekonstruiert den Zeitnullpunkt begründet, führt getrennte Fits mit Einheiten und Unsicherheiten aus und ordnet Abweichungen etwa Luftwiderstand, Perspektive oder numerischer Differentiation zu.",
+            "expectedPerformanceEn": "The learner reconstructs the time origin with justification, performs separate fits with units and uncertainties, and attributes deviations to factors such as drag, perspective, or numerical differentiation.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft dieselbe Datenkette in einem anderen Bewegungsmodell.",
+            "understandingFocusEn": "The independent transfer assesses the same data chain in a different motion model."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "reason": "DE: Das Profil macht mittlere Stromstärke als Netto-Ladungsrate durch einen festgelegten Querschnitt verständlich und prüft Einheit, Richtung und Zeitintervall. Ein gepulster Transport verhindert bloßes Formeleinsetzen. EN: The profile makes average current meaningful as net charge-transfer rate through a specified cross-section and assesses unit, direction, and time interval. Pulsed transfer prevents mere formula substitution.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "interpret-average-current",
+            "essentialUnderstandingDe": "Die mittlere Stromstärke ist die netto durch einen festgelegten Querschnitt in einem festgelegten Zeitintervall transportierte Ladung, I = ΔQ/Δt. Die Bezugsrichtung bestimmt das Vorzeichen; 1 A und 1 C/s sind dieselbe Einheit.",
+            "essentialUnderstandingEn": "Average current is the net charge transported through a specified cross-section in a specified interval, I = ΔQ/Δt. The reference direction determines the sign; 1 A and 1 C/s are the same unit.",
+            "observablePerformanceDe": "Die lernende Person markiert Querschnitt, Zeitintervall und Richtung, berechnet I mit Einheit und erklärt das Ergebnis als Ladungsmenge pro Zeit statt nur als Zahlenwert.",
+            "observablePerformanceEn": "The learner marks the cross-section, interval, and direction, calculates I with units, and explains the result as charge per time rather than only as a number."
+          },
+          {
+            "id": "compare-intervals-and-rearrange",
+            "essentialUnderstandingDe": "Bei zeitlich ungleichmäßigem Transport hängt der Mittelwert vom gewählten Intervall ab. Gleiche Gesamtladung kann bei anderer Dauer eine andere mittlere Stromstärke bedeuten; die Beziehung kann physikalisch nach Q oder t umgestellt werden.",
+            "essentialUnderstandingEn": "For time-varying transfer, the average depends on the chosen interval. Equal total charge can imply a different average current over a different duration; the relation can be physically rearranged for Q or t.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus Ladungs-Zeit-Daten mehrere Mittelwerte, vergleicht sie, kehrt die Beziehung für eine neue Zielgröße um und begründet Vorzeichen und Intervallwahl.",
+            "observablePerformanceEn": "The learner determines several averages from charge-time data, compares them, rearranges the relation for a fresh target quantity, and justifies sign and interval choice."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "interpret-average-current",
+            "compare-intervals-and-rearrange"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "time-profile",
+            "textDe": "Gleichmäßiger oder gepulster Ladungstransport",
+            "textEn": "Steady or pulsed charge transfer"
+          },
+          {
+            "id": "reference-direction",
+            "textDe": "Gleiche oder umgekehrte Bezugsrichtung",
+            "textEn": "Same or reversed reference direction"
+          },
+          {
+            "id": "known-quantity",
+            "textDe": "Gesuchte Stromstärke, Ladung oder Zeit",
+            "textEn": "Unknown current, charge, or time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "charge-time-data-intervals",
+            "taskDemandDe": "Ein Q(t)-Datensatz zeigt ungleichmäßigen Ladungstransport durch einen markierten Leiterquerschnitt. Bestimme die mittlere Stromstärke für zwei Intervalle, erkläre ihre Unterschiede und gib die Bedeutung eines negativen Werts bei der gewählten Richtung an.",
+            "taskDemandEn": "A Q(t) data set shows non-uniform charge transfer through a marked conductor cross-section. Determine average current for two intervals, explain their difference, and state the meaning of a negative value for the chosen direction.",
+            "expectedPerformanceDe": "Die lernende Person bildet passende ΔQ/Δt-Werte mit C/s beziehungsweise A, verwendet Nettoänderungen und deutet Vorzeichen und Intervallabhängigkeit physikalisch.",
+            "expectedPerformanceEn": "The learner forms appropriate ΔQ/Δt values in C/s or A, uses net changes, and physically interprets sign and interval dependence.",
+            "understandingFocusDe": "Der Fall prüft Mittelwertbedeutung an Daten statt isolierter Formelwerte.",
+            "understandingFocusEn": "The case assesses the meaning of an average using data rather than isolated formula values."
+          },
+          {
+            "id": "equal-charge-different-pulses",
+            "taskDemandDe": "Zwei Geräte übertragen pro Zyklus dieselbe Ladung, aber mit unterschiedlich langen Pulsen und Pausen. Berechne Puls- und Zyklusmittelwerte, vergleiche sie und bestimme die Zeit für eine vorgegebene Gesamtladung.",
+            "taskDemandEn": "Two devices transfer the same charge per cycle but use pulses and pauses of different durations. Calculate pulse and cycle averages, compare them, and determine the time required for a specified total charge.",
+            "expectedPerformanceDe": "Die lernende Person legt für jeden Mittelwert das Intervall offen, erhält unterschiedliche Pulsströme trotz gleicher Ladung, berechnet den Zyklusmittelwert inklusive Pause und stellt I = Q/t sinnvoll um.",
+            "expectedPerformanceEn": "The learner states the interval for each average, obtains different pulse currents despite equal charge, calculates the cycle average including the pause, and meaningfully rearranges I = Q/t.",
+            "understandingFocusDe": "Der unabhängige Transfer trennt Ladung, Pulsdauer und Mittelungsintervall.",
+            "understandingFocusEn": "The independent transfer distinguishes charge, pulse duration, and averaging interval."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8da5c981-8216-5fcd-a393-19f392ae2006",
+      "reason": "DE: Das Profil operationalisiert die im Revisionsdissens genannten Größen vollständig: Betrag, Vektorrichtung, Ladungsvorzeichen, 1/r²-Skalierung und E = F/q werden in zwei unabhängigen Anordnungen geprüft, ohne den kanonischen Text zu erweitern. EN: The profile fully operationalizes the quantities named in the revision dissent: magnitude, vector direction, charge signs, inverse-square scaling, and E = F/q are assessed in two independent configurations without expanding the canonical text.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "apply-coulomb-law-as-vector-relation",
+            "essentialUnderstandingDe": "Für Punktladungen ist der Kraftbetrag proportional zu |q₁q₂|/r²; die Kraft liegt auf der Verbindungslinie. Gleiche Vorzeichen führen zu Abstoßung, ungleiche zu Anziehung, und das Modell setzt punktförmige beziehungsweise hinreichend kleine kugelsymmetrische Ladungen voraus.",
+            "essentialUnderstandingEn": "For point charges, force magnitude is proportional to |q₁q₂|/r² and the force lies along the joining line. Like signs repel and unlike signs attract, and the model assumes point-like or sufficiently small spherically symmetric charges.",
+            "observablePerformanceDe": "Die lernende Person wählt Abstand, SI-Einheiten und Ladungsvorzeichen, bestimmt Kraftbetrag und Vektorrichtung, prüft das Wechselwirkungspaar und kontrolliert die 1/r²-Skalierung.",
+            "observablePerformanceEn": "The learner selects separation, SI units, and charge signs, determines force magnitude and vector direction, checks the interaction pair, and verifies inverse-square scaling."
+          },
+          {
+            "id": "connect-force-and-field-strength",
+            "essentialUnderstandingDe": "Das elektrische Feld ist eine Eigenschaft der Quellenanordnung; eine ideale positive Probeladung erfährt F = q_test E. Daher folgt E = F/q_test, während Richtung und Wert des Quellenfelds nicht von der gewählten hinreichend kleinen Probeladung abhängen.",
+            "essentialUnderstandingEn": "The electric field is a property of the source configuration; an ideal positive test charge experiences F = q_test E. Thus E = F/q_test, while the direction and value of the source field do not depend on the sufficiently small test charge chosen.",
+            "observablePerformanceDe": "Die lernende Person leitet aus einer Coulombkraft die Feldstärke mit Einheit N/C ab, sagt die Kraft auf eine andere positive oder negative Probeladung voraus und erklärt die Probeladungsunabhängigkeit des Feldes.",
+            "observablePerformanceEn": "The learner derives field strength from a Coulomb force in N/C, predicts the force on a different positive or negative test charge, and explains the test-charge independence of the field."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "apply-coulomb-law-as-vector-relation",
+            "connect-force-and-field-strength"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "charge-signs",
+            "textDe": "Gleiche oder ungleiche Ladungsvorzeichen",
+            "textEn": "Like or unlike charge signs"
+          },
+          {
+            "id": "distance-change",
+            "textDe": "Geänderter Abstand mit zu prüfender 1/r²-Skalierung",
+            "textEn": "Changed separation with inverse-square scaling to be tested"
+          },
+          {
+            "id": "test-charge",
+            "textDe": "Positive, negative oder betragsmäßig veränderte Probeladung",
+            "textEn": "Positive, negative, or magnitude-changed test charge"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-charge-force-change",
+            "taskDemandDe": "Zwei Punktladungen mit gegebenen Vorzeichen und Abstand werden zunächst berechnet; danach wird ein Vorzeichen umgekehrt und der Abstand verdoppelt. Sage Richtung und Faktoränderung vor der Rechnung voraus und bestimme anschließend beide Kraftvektoren.",
+            "taskDemandEn": "Two point charges with given signs and separation are first calculated; then one sign is reversed and the separation is doubled. Predict direction and scale factor before calculating and then determine both force vectors.",
+            "expectedPerformanceDe": "Die lernende Person nutzt Beträge und Vorzeichen getrennt, zeichnet entgegengesetzte Wechselwirkungskräfte entlang der Verbindungslinie, erwartet den Faktor 1/4 beim doppelten Abstand und prüft Einheit sowie Plausibilität.",
+            "expectedPerformanceEn": "The learner handles magnitudes and signs separately, draws opposite interaction forces along the joining line, expects a factor of 1/4 at twice the separation, and checks units and plausibility.",
+            "understandingFocusDe": "Der Fall prüft das Coulomb-Gesetz als physikalische Vektorbeziehung statt als Einsetzschema.",
+            "understandingFocusEn": "The case assesses Coulomb’s law as a physical vector relation rather than a substitution recipe."
+          },
+          {
+            "id": "field-from-two-test-charges",
+            "taskDemandDe": "Am selben Ort werden nacheinander zwei hinreichend kleine Probeladungen unterschiedlichen Betrags und Vorzeichens eingesetzt; ihre Kräfte sind angegeben. Bestimme E aus beiden Messungen, erkläre die Richtungen und entscheide, ob die Daten zu demselben Quellenfeld passen.",
+            "taskDemandEn": "At the same location, two sufficiently small test charges of different magnitude and sign are used in succession; their forces are supplied. Determine E from both measurements, explain the directions, and decide whether the data fit the same source field.",
+            "expectedPerformanceDe": "Die lernende Person teilt vektoriell beziehungsweise vorzeichenrichtig durch q_test, erhält dieselbe Feldstärke, erklärt die Richtungsumkehr der Kraft bei negativer Ladung und trennt Feldquelle von Probeladung.",
+            "expectedPerformanceEn": "The learner divides vectorially or with correct signs by q_test, obtains the same field strength, explains reversal of force for a negative charge, and distinguishes the field source from the test charge.",
+            "understandingFocusDe": "Der unabhängige Transfer macht E = F/q und Probeladungsunabhängigkeit direkt beobachtbar.",
+            "understandingFocusEn": "The independent transfer makes E = F/q and test-charge independence directly observable."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+      "reason": "DE: Das Profil verbindet radiale Richtung, Ladungsvorzeichen, qualitative Feldliniendichte und 1/r²-Geometrie. Es begrenzt die Gleichsetzung von Kugel und Punktladung ausdrücklich auf den Außenraum. EN: The profile connects radial direction, charge sign, qualitative field-line density, and inverse-square geometry. It explicitly limits equivalence between a sphere and a point charge to the exterior.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "represent-radial-field-and-scaling",
+            "essentialUnderstandingDe": "Das Feld einer Punktladung ist radial; es zeigt von positiver Ladung weg und zu negativer hin. Derselbe Feldfluss verteilt sich auf Kugelflächen proportional zu r², sodass E im Außenraum wie 1/r² abnimmt; Feldliniendichte ist nur eine qualitative Darstellung.",
+            "essentialUnderstandingEn": "The field of a point charge is radial; it points away from positive charge and toward negative charge. The same flux spreads over spherical areas proportional to r², so E decreases as 1/r² in the exterior; field-line density is only a qualitative representation.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder korrigiert ein radiales Feldbild, vergleicht Feldstärken bei mehreren Radien und begründet Richtung sowie Skalierung geometrisch und mit klaren Darstellungskonventionen.",
+            "observablePerformanceEn": "The learner constructs or corrects a radial field diagram, compares field strengths at several radii, and justifies direction and scaling geometrically with clear representation conventions."
+          },
+          {
+            "id": "apply-spherical-exterior-limit",
+            "essentialUnderstandingDe": "Außerhalb einer kugelsymmetrischen Ladungsverteilung entspricht das Feld dem einer im Zentrum gedachten Gesamtladung. Diese Aussage liefert ohne weitere Information keine Feldverteilung im Inneren und gilt nicht allgemein für unsymmetrische Verteilungen.",
+            "essentialUnderstandingEn": "Outside a spherically symmetric charge distribution, the field equals that of the total charge imagined at the center. Without further information, this statement gives no interior field distribution and does not generally hold for asymmetric distributions.",
+            "observablePerformanceDe": "Die lernende Person überträgt das Außenfeldargument auf eine neue Kugel, kennzeichnet den gültigen Bereich und verweigert unbelegte Aussagen über Innenraum oder unsymmetrische Fälle.",
+            "observablePerformanceEn": "The learner transfers the exterior-field argument to a new sphere, marks the valid region, and rejects unsupported claims about the interior or asymmetric cases."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "represent-radial-field-and-scaling",
+            "apply-spherical-exterior-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "charge-sign",
+            "textDe": "Positive oder negative Quellenladung",
+            "textEn": "Positive or negative source charge"
+          },
+          {
+            "id": "radius",
+            "textDe": "Vergleich mehrerer Außenradien",
+            "textEn": "Comparison of several exterior radii"
+          },
+          {
+            "id": "source-shape",
+            "textDe": "Punktladung, kugelsymmetrische oder unsymmetrische Verteilung",
+            "textEn": "Point charge, spherically symmetric distribution, or asymmetric distribution"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "point-charge-field-map",
+            "taskDemandDe": "Für eine negative Punktladung sind Feldstärkebeträge bei r und 2r teilweise gegeben. Ergänze Werte und Vektoren bei weiteren Punkten, skizziere ein konsistentes Feldlinienbild und erkläre die Änderung ohne Feldlinien als materielle Objekte zu behandeln.",
+            "taskDemandEn": "For a negative point charge, field magnitudes at r and 2r are partly supplied. Complete values and vectors at further points, sketch a consistent field-line diagram, and explain the change without treating field lines as material objects.",
+            "expectedPerformanceDe": "Die lernende Person richtet Vektoren radial nach innen, nutzt 1/r² für relative Werte, zeichnet nur qualitativ dichtere Linien nahe der Ladung und erklärt die Kugelflächengeometrie.",
+            "expectedPerformanceEn": "The learner directs vectors radially inward, uses 1/r² for relative values, draws only qualitatively denser lines near the charge, and explains the spherical-area geometry.",
+            "understandingFocusDe": "Der Fall prüft Skalierung und Darstellungskonvention gemeinsam.",
+            "understandingFocusEn": "The case assesses scaling and representation conventions together."
+          },
+          {
+            "id": "charged-sphere-exterior-and-interior",
+            "taskDemandDe": "Zwei kugelsymmetrische Ladungsverteilungen besitzen gleiche Gesamtladung, aber unterschiedliche Radien. Vergleiche ihre Felder an demselben äußeren Punkt und beurteile anschließend die Behauptung, daraus folge auch ein identisches Innenfeld.",
+            "taskDemandEn": "Two spherically symmetric charge distributions have equal total charge but different radii. Compare their fields at the same exterior point and then assess the claim that an identical interior field follows.",
+            "expectedPerformanceDe": "Die lernende Person erhält im gemeinsamen Außenraum denselben radialen 1/r²-Wert, kennzeichnet die Bedingung r außerhalb beider Körper und weist die Innenfeldbehauptung mangels Verteilungsmodell zurück.",
+            "expectedPerformanceEn": "The learner obtains the same radial inverse-square value in the common exterior, states the condition that r lies outside both bodies, and rejects the interior-field claim without a distribution model.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft die genaue Reichweite des Kugelsymmetriearguments.",
+            "understandingFocusEn": "The independent transfer assesses the exact scope of the spherical-symmetry argument."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "reason": "DE: Das Profil verlangt Feldbeiträge am selben Ort, einen gemeinsamen Maßstab und echte grafische Vektoraddition. Symmetrie, Aufhebung und Vorzeichenwechsel werden an zwei neuen Geometrien geprüft. EN: The profile requires field contributions at the same location, a common scale, and genuine graphical vector addition. Symmetry, cancellation, and sign reversal are assessed in two fresh geometries.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "construct-vector-superposition",
+            "essentialUnderstandingDe": "Die Gesamtfeldstärke an einem Ort ist die Vektorsumme der dortigen Einzelbeiträge. Jeder Beitrag wird zunächst unabhängig aus Quellenzeichen, Geometrie und relativer Stärke bestimmt; Beträge allein dürfen nicht addiert werden.",
+            "essentialUnderstandingEn": "The total field at a location is the vector sum of the individual contributions there. Each contribution is first determined independently from source sign, geometry, and relative magnitude; magnitudes alone must not be added.",
+            "observablePerformanceDe": "Die lernende Person zeichnet alle Beitragsvektoren an einem gemeinsamen Angriffspunkt und Maßstab, führt Polygon- oder Parallelogrammaddition aus und begründet Richtung sowie relative Größe des Resultats.",
+            "observablePerformanceEn": "The learner draws all component vectors at a common point and scale, performs polygon or parallelogram addition, and justifies the direction and relative magnitude of the resultant."
+          },
+          {
+            "id": "use-symmetry-and-predict-changes",
+            "essentialUnderstandingDe": "Symmetrie kann Komponenten aufheben oder verstärken, doch dies gilt nur für die betreffenden Richtungen und Beträge. Eine verschobene Quelle oder ein umgekehrtes Vorzeichen verändert die Beitragsvektoren und damit mögliche Nullstellen.",
+            "essentialUnderstandingEn": "Symmetry can cancel or reinforce components, but only for the relevant directions and magnitudes. Moving a source or reversing a sign changes the component vectors and hence possible zero points.",
+            "observablePerformanceDe": "Die lernende Person sagt vor der Konstruktion qualitative Änderungen voraus, nutzt Symmetrie begründet und überprüft die Vorhersage mit einer neuen Vektoraddition.",
+            "observablePerformanceEn": "The learner predicts qualitative changes before construction, uses symmetry with justification, and checks the prediction with a fresh vector addition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "construct-vector-superposition",
+            "use-symmetry-and-predict-changes"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "source-signs",
+            "textDe": "Gleiche oder ungleiche Ladungsvorzeichen",
+            "textEn": "Like or unlike charge signs"
+          },
+          {
+            "id": "geometry",
+            "textDe": "Symmetrische, verschobene oder nichtkollineare Anordnung",
+            "textEn": "Symmetric, displaced, or non-collinear arrangement"
+          },
+          {
+            "id": "field-point",
+            "textDe": "Mittelpunkt, Achsenpunkt oder allgemeiner Punkt",
+            "textEn": "Midpoint, axial point, or general point"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-like-charges-midpoint-and-offset",
+            "taskDemandDe": "Zwei gleiche positive Ladungen liegen symmetrisch. Konstruiere das Gesamtfeld zuerst im Mittelpunkt und dann an einem seitlich versetzten Punkt; erkläre, welche Komponenten sich jeweils aufheben oder addieren.",
+            "taskDemandEn": "Two equal positive charges are arranged symmetrically. Construct the total field first at the midpoint and then at a laterally displaced point; explain which components cancel or add in each case.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet im Mittelpunkt gleich große entgegengesetzte Beiträge und erhält null; am versetzten Punkt nutzt sie gleichen Maßstab, zerlegt gegebenenfalls Komponenten und begründet ein nichtverschwindendes Resultat.",
+            "expectedPerformanceEn": "The learner draws equal opposed contributions at the midpoint and obtains zero; at the displaced point, they use a common scale, resolve components if needed, and justify a nonzero resultant.",
+            "understandingFocusDe": "Der Fall prüft Symmetrie als Ergebnis der Vektoraddition, nicht als Merksatz.",
+            "understandingFocusEn": "The case assesses symmetry as a result of vector addition rather than a memorized rule."
+          },
+          {
+            "id": "dipole-sign-reversal",
+            "taskDemandDe": "An einem vorgegebenen Punkt neben zwei Ladungen wird zunächst ein Dipolfeld grafisch addiert. Danach wird das negative Ladungsvorzeichen umgekehrt. Sage die Änderung voraus und konstruiere beide Resultierenden im selben Maßstab.",
+            "taskDemandEn": "At a specified point beside two charges, a dipole field is first added graphically. The negative charge is then reversed. Predict the change and construct both resultants to the same scale.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt für jede Quelle die korrekte Feldrichtung, erkennt die grundlegende Änderung von Dipol- zu Gleichzeichenanordnung und erklärt Verstärkung beziehungsweise Abschwächung aus den Vektoren.",
+            "expectedPerformanceEn": "The learner determines the correct field direction for each source, recognizes the fundamental change from a dipole to a like-charge arrangement, and explains reinforcement or reduction from the vectors.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft Vorzeichen- und Geometrieverständnis.",
+            "understandingFocusEn": "The independent transfer assesses understanding of sign and geometry."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+      "reason": "DE: Das Profil behandelt Feldlinien als Modellrepräsentation und verbindet ihre lokalen Konventionen mit den Randbedingungen elektrostatischer Leiter. Faraday-Abschirmung und Spitzenwirkung werden in unabhängigen Konstruktionen geprüft. EN: The profile treats field lines as a model representation and connects their local conventions to electrostatic conductor boundary conditions. Faraday shielding and field enhancement at sharp points are assessed in independent constructions.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "interpret-field-line-conventions",
+            "essentialUnderstandingDe": "Die Tangente an eine Feldlinie gibt die lokale Feldrichtung an; relative Liniendichte codiert Feldstärke nur qualitativ. Feldlinien sind weder Teilchenbahnen noch direkt beobachtete materielle Fäden und dürfen sich in einer eindeutigen Feldrichtung nicht kreuzen.",
+            "essentialUnderstandingEn": "The tangent to a field line gives local field direction; relative line density encodes field strength only qualitatively. Field lines are neither particle trajectories nor directly observed material threads and cannot cross where the field direction is unique.",
+            "observablePerformanceDe": "Die lernende Person liest und konstruiert unbekannte Dipol- und Leiterfeldbilder, begründet lokale Richtung und relative Stärke und korrigiert Verletzungen der Darstellungskonventionen.",
+            "observablePerformanceEn": "The learner reads and constructs unfamiliar dipole and conductor field diagrams, justifies local direction and relative strength, and corrects violations of representation conventions."
+          },
+          {
+            "id": "apply-conductor-equilibrium-conditions",
+            "essentialUnderstandingDe": "Im elektrostatischen Gleichgewicht ist das Feld im Leitermaterial null und die äußere Feldrichtung steht an der Oberfläche senkrecht. Ladungsumordnung ermöglicht Abschirmung eines geschlossenen Hohlraums; starke Oberflächenkrümmung geht mit größerer lokaler Feldstärke einher.",
+            "essentialUnderstandingEn": "In electrostatic equilibrium, the field inside conducting material is zero and the exterior field is normal to the surface. Charge redistribution enables shielding of a closed cavity; strong surface curvature is associated with greater local field strength.",
+            "observablePerformanceDe": "Die lernende Person nutzt diese Randbedingungen, um Feldfreiheit im geschützten Innenraum und Feldverstärkung an Spitzen zu erklären, und begrenzt die Aussage ausdrücklich auf elektrostatisches Gleichgewicht.",
+            "observablePerformanceEn": "The learner uses these boundary conditions to explain a field-free shielded interior and field enhancement at sharp points and explicitly limits the claim to electrostatic equilibrium."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "interpret-field-line-conventions",
+            "apply-conductor-equilibrium-conditions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "configuration",
+            "textDe": "Dipol, geschlossener Leiterhohlraum oder äußerer Leiter",
+            "textEn": "Dipole, closed conducting cavity, or external conductor"
+          },
+          {
+            "id": "surface-curvature",
+            "textDe": "Gerundete oder stark gekrümmte Leiteroberfläche",
+            "textEn": "Rounded or sharply curved conductor surface"
+          },
+          {
+            "id": "representation-task",
+            "textDe": "Unbekanntes Bild deuten, fehlerhaftes Bild korrigieren oder neues Bild konstruieren",
+            "textEn": "Interpret an unfamiliar diagram, correct a flawed one, or construct a new one"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "correct-dipole-and-conductor-diagrams",
+            "taskDemandDe": "Mehrere vorgeschlagene Feldlinienbilder eines Dipols und eines geladenen Leiters enthalten kreuzende Linien, tangentiale Oberflächenlinien oder unplausible Dichte. Markiere Fehler und konstruiere jeweils eine fachlich konsistente Alternative.",
+            "taskDemandEn": "Several proposed field-line diagrams for a dipole and a charged conductor contain crossing lines, tangential surface lines, or implausible density. Mark the errors and construct a scientifically consistent alternative for each.",
+            "expectedPerformanceDe": "Die lernende Person verwendet Tangentenrichtung, Quellen- und Senkenzeichen, Nichtkreuzung und qualitative Dichte konsistent und lässt Feldlinien an der Leiteroberfläche im Gleichgewicht senkrecht stehen.",
+            "expectedPerformanceEn": "The learner consistently uses tangent direction, source and sink signs, non-crossing, and qualitative density and makes field lines meet the conductor surface normally at equilibrium.",
+            "understandingFocusDe": "Der Fall prüft aktive Konstruktion und Grenzen der Repräsentation.",
+            "understandingFocusEn": "The case assesses active construction and the limits of the representation."
+          },
+          {
+            "id": "faraday-cage-and-sharp-tip",
+            "taskDemandDe": "Ein geschlossener leitender Hohlraum besitzt außen eine gerundete und eine scharfe Stelle; eine äußere Ladung erzeugt ein Feld. Skizziere die qualitative Feldverteilung, vergleiche beide Oberflächenbereiche und erkläre das Feld im geschützten Innenraum.",
+            "taskDemandEn": "A closed conducting cavity has a rounded and a sharp exterior region; an external charge creates a field. Sketch the qualitative field distribution, compare the two surface regions, and explain the field in the shielded interior.",
+            "expectedPerformanceDe": "Die lernende Person zeigt Umordnung äußerer Oberflächenladung, ein feldfreies Leitermaterial und abgeschirmten Innenraum, zeichnet dichtere äußere Linien an der Spitze und nennt elektrostatisches Gleichgewicht als Bedingung.",
+            "expectedPerformanceEn": "The learner shows redistribution of exterior surface charge, field-free conducting material and a shielded interior, draws denser exterior lines near the tip, and states electrostatic equilibrium as the condition.",
+            "understandingFocusDe": "Der unabhängige Transfer verbindet Abschirmung und Spitzenwirkung in derselben neuen Geometrie.",
+            "understandingFocusEn": "The independent transfer connects shielding and field enhancement in the same fresh geometry."
+          }
+        ]
+      }
+    }
+  ]
+}

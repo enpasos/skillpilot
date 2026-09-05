@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-round-a-physik-b033za-20260905",
+  "campaignId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-a",
+  "roundId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:9d0695fa36f4137dab7137542f524c6b121fdc641ef4e551c031fec4655ee367",
+  "bundleFingerprint": "sha256:0361d67cdc30699a41ebafba2b868ce6a1415b84078b1f920b3ead6fcd8a0f0e",
+  "bookDigest": "sha256:f2ef5445839e2db3f832cd501e04d9e4115e3e678652b9211b2e41adb7f71090",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4318d40e0016a60e499326ca8c8fdf2c639c71a1b469a26ada2f9b285cd1b3d5",
+  "independenceGroupId": "physik-rollout-v1-batch-033za-checkpoint-route-context-recheck-1-v1-20260905-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9d0695fa36f4137dab7137542f524c6b121fdc641ef4e551c031fec4655ee367"
+    }
+  ],
+  "startedAt": "2026-09-05T04:07:48Z",
+  "completedAt": "2026-09-05T04:29:25Z",
+  "status": "completed",
+  "outputDigest": "sha256:3262d5aa194686065ccc116844069bbb2f3ab88605302fd32c00d82d5ba1a6a5",
+  "toolchainVersion": "codex-agent-v1"
+}

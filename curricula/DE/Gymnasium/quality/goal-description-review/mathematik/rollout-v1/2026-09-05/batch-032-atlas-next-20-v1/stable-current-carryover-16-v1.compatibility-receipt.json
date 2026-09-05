@@ -1,0 +1,1363 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-b032-stable-current-carryover-16-v1-20260905",
+  "purpose": "Fail-closed bounded carryover of fifteen exact KEEP/KEEP goals plus the explicitly adjudicated KEEP-current goal 6596405a from Mathematics B032; all source records require positive-understanding-evidence-v2/create.",
+  "source": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1.config.json",
+    "configDigest": "sha256:a6538515f402ca0c9c5eb5f156745431af0928491c3e80128c2701ddc426faf8",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/batch-manifest.json",
+    "batchManifestDigest": "sha256:f454d626ce2d4bff8489995ee4306cf8b55ebb1d5aa053c65a2b8555dffe28cb",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/dual-summary.json",
+    "dualSummaryDigest": "sha256:1cd66dfeeaf74cd2249af7453fea1b033989e79bf1a8e5b6b041cd74d064e3bb",
+    "roundA": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/round-a/results/mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-first-pass-a.batch-001.records.jsonl",
+      "recordsDigest": "sha256:42a3df07e6a19809f08afb49b103d1ac938f32082fda7db2b9cc78d8ec2f1d49",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/round-a/results/mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-first-pass-a.batch-001.run.json",
+      "runDigest": "sha256:00c83c8ee4efe0a322123ba6bc3d6df5061117298e22bde62b07f97f3ddfb6f9"
+    },
+    "roundB": {
+      "recordsPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/round-b/results/mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-first-pass-b.batch-001.records.jsonl",
+      "recordsDigest": "sha256:9706a62574acf918cceaf933049fda911796502cc06443b09bb42779d11cbc9c",
+      "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/round-b/results/mathematik-rollout-v1-batch-032-atlas-next-20-v1-20260905-first-pass-b.batch-001.run.json",
+      "runDigest": "sha256:2fb74713b5f440a760820846efc103447d957afc16a1b0f6847438b001831212"
+    },
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "canonicalDigest": "sha256:61f4852a1ec760ad86d7bacb8c168cac17fedfcf86195d8b3d061c931c0dea4c",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "semanticKindLedgerDigest": "sha256:384328a7ba3c333276a3f5b09403f07013e57ebaa1fe753bd5247da649b630be",
+    "authoringPath": "stable-current-carryover-16-v1.authoring.json",
+    "authoringDigest": "sha256:995839885277dfbcef74b493d56162427456269a5c2e75454860a102a167d0b9"
+  },
+  "sourceCampaignGoalCount": 20,
+  "claimedGoalIds": [
+    "6596405a-9728-41df-9163-53670ec2a937",
+    "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+    "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+    "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+    "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+    "7fad6a57-cda1-5dee-a55e-877be64ba992",
+    "68505a32-3b1d-57b2-a495-00b4097eb50d",
+    "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+    "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+    "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+    "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+    "71a483ba-9680-4654-bb5e-5ab5427f0919",
+    "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+    "e663cc67-5249-55db-b103-357b58a1ca91",
+    "e322310f-f33a-485d-bc23-2412a6b8fa12",
+    "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+  ],
+  "claimedGoalCount": 16,
+  "exactKeepKeepGoalCount": 15,
+  "adjudicatedKeepCurrentDissentGoalIds": [
+    "6596405a-9728-41df-9163-53670ec2a937"
+  ],
+  "explicitlyExcludedGoals": [
+    {
+      "goalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+      "first": "split_review",
+      "second": "split_review"
+    },
+    {
+      "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "first": "revise",
+      "second": "revise"
+    },
+    {
+      "goalId": "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+      "first": "revise",
+      "second": "keep"
+    },
+    {
+      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "first": "keep",
+      "second": "revise"
+    }
+  ],
+  "evidenceContract": "positive-understanding-evidence-v2",
+  "evidenceRecommendation": "create",
+  "evidenceRoundByGoalId": {
+    "6596405a-9728-41df-9163-53670ec2a937": "first",
+    "f8704a7b-e93d-4e32-b0f9-1b171545fe28": "first",
+    "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5": "first",
+    "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1": "first",
+    "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a": "first",
+    "7fad6a57-cda1-5dee-a55e-877be64ba992": "first",
+    "68505a32-3b1d-57b2-a495-00b4097eb50d": "first",
+    "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb": "first",
+    "e131c594-c45e-5718-9f33-7ae39ddc82ad": "first",
+    "47d8d47c-7c59-5394-9098-11d9ad3723f1": "first",
+    "4d78bbcc-89b8-47f0-aa45-516199e4da5d": "first",
+    "71a483ba-9680-4654-bb5e-5ab5427f0919": "first",
+    "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f": "first",
+    "e663cc67-5249-55db-b103-357b58a1ca91": "first",
+    "e322310f-f33a-485d-bc23-2412a6b8fa12": "first",
+    "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e": "first"
+  },
+  "exactRecordBindings": {
+    "6596405a-9728-41df-9163-53670ec2a937": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-001",
+        "recordDigest": "sha256:02181c345964d0c8d3053948da98835bb4bde488d14320970dca9384da89fba7"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:01",
+        "recordDigest": "sha256:866b57a0f9dc047353df22a2ccb1e9e194e9d40fa7c10702ebaa63384a824151"
+      }
+    },
+    "f8704a7b-e93d-4e32-b0f9-1b171545fe28": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-002",
+        "recordDigest": "sha256:972e796360ae437335c1272557ba3f60bb372e04bb32da4528776064e07b88d3"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:02",
+        "recordDigest": "sha256:e495a3a86ce29d02e44d5106bee8d8fb5b39952c286cd03aac7e4a9dbff68e62"
+      }
+    },
+    "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-003",
+        "recordDigest": "sha256:d90fd5e76e48613e92c4a6a9a51c43ca73c34ca24bd83deb71573f04ec220ae8"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:03",
+        "recordDigest": "sha256:08a6bbdd576c5d5c1a8d79fdc0df8e2a420c79537f6ebf346d17b06f5ed6d3e2"
+      }
+    },
+    "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-005",
+        "recordDigest": "sha256:886e4061954bac7d64139401f62b24a8a723665ff693534eeac51d2318c464d0"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:05",
+        "recordDigest": "sha256:e226cc3e49d9e9eaaf59920fdedc3dcd9b7f4528dac0babcc9524a4a8f1e20f0"
+      }
+    },
+    "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-006",
+        "recordDigest": "sha256:edcce098362e0aac376cd3f7a73d75349a5394cde9b059bcee673cbf932043d5"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:06",
+        "recordDigest": "sha256:0511434d45d0b1e7fac503d43a504ca6452128c72723b0fa5de588d38e0fa17d"
+      }
+    },
+    "7fad6a57-cda1-5dee-a55e-877be64ba992": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-007",
+        "recordDigest": "sha256:9966a21734d45350b1cf9c20763791b030633408cd2ea771382961401f101f46"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:07",
+        "recordDigest": "sha256:0a2cff76157b222ffc66e9c02c6901fe82008b28cdd9fe5781fa4b6bb59ae4a4"
+      }
+    },
+    "68505a32-3b1d-57b2-a495-00b4097eb50d": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-008",
+        "recordDigest": "sha256:fa153ea7b0731a453666b038a1aa01efa2b5123b5ab999df528446dcabefd06d"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:08",
+        "recordDigest": "sha256:1b6222e35ed26d1a8a4f082bccf0f574f398d52291ccb091d5139ed4cfe407a1"
+      }
+    },
+    "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-009",
+        "recordDigest": "sha256:9ca9615965e5ecf1e41bf84b09e98fd0be0033499ae9226b2249efba08d72423"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:09",
+        "recordDigest": "sha256:1e49e65bb04b62460a56d57e909a0e8a9983f719ed4324eea7da9522aba29f65"
+      }
+    },
+    "e131c594-c45e-5718-9f33-7ae39ddc82ad": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-010",
+        "recordDigest": "sha256:b9080b99a1e5b47b8878fd415cb65c4470c1a9ac725ffc3a7d92095a5962edac"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:10",
+        "recordDigest": "sha256:3e366284508e398a0865ac8c1692e0debc1bfa41a5ec24560873cddf4bbe8729"
+      }
+    },
+    "47d8d47c-7c59-5394-9098-11d9ad3723f1": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-011",
+        "recordDigest": "sha256:08b56e144764e3c327eb02740f3da314a3058c9d28646e3bb12fd5e6cb806e93"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:11",
+        "recordDigest": "sha256:b7bbf2692e1e1a005b94d7cb233a6e65ac4e72f660ee1c337535f19f309e9a78"
+      }
+    },
+    "4d78bbcc-89b8-47f0-aa45-516199e4da5d": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-013",
+        "recordDigest": "sha256:522c299ba4780e6dc7376c86536b43cea2ccd194c1412eb96b4d662a7aa826bb"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:13",
+        "recordDigest": "sha256:f96553e705151b7a2faf42b3ba3729488e9ce999e6d0cfe6c84dbe4e81aa2ca5"
+      }
+    },
+    "71a483ba-9680-4654-bb5e-5ab5427f0919": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-014",
+        "recordDigest": "sha256:628d3aacb83d6d7ac44df562388887db54ee00371e9eb5c388fac9480a2d714d"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:14",
+        "recordDigest": "sha256:8c0977474c6a62344a0aeaf2dea98b414b9cf0f51f2b06898f27f24832ec4147"
+      }
+    },
+    "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-016",
+        "recordDigest": "sha256:7f698f02268c5966307bea40b884b492b1e8d771e56f324c89ff468b246bc997"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:16",
+        "recordDigest": "sha256:f60566a62b90a2bd477251c637c17c0b9be8bcb54bf1b46f392573b5aab70829"
+      }
+    },
+    "e663cc67-5249-55db-b103-357b58a1ca91": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-017",
+        "recordDigest": "sha256:b97e5cc96c3a12781c687b094be2fea2e5ba963b23898889c25747566b3e52dc"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:17",
+        "recordDigest": "sha256:c52acbc8e00b773e389df4206407d6e13d759cf80c0dab80177e47f27184dfd4"
+      }
+    },
+    "e322310f-f33a-485d-bc23-2412a6b8fa12": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-018",
+        "recordDigest": "sha256:cda91db67e85b0c9ef9ea76d700fc5d277b30bd2e8eba236a85de0617fe2a99c"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:18",
+        "recordDigest": "sha256:34ae5c670cdc73c64d75227b65a02875f314d700e4488c519387c91bd24cc3a8"
+      }
+    },
+    "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e": {
+      "first": {
+        "recordId": "mathematik-b032-round-a-record-020",
+        "recordDigest": "sha256:dc5f5d6311f194d4daaba6da1ae44f1ae54a978779676a107aab8d6863f5a5b8"
+      },
+      "second": {
+        "recordId": "math-b032-round-b-gpt5-20260905:20",
+        "recordDigest": "sha256:7eb3af6609dac18448b20b09f60f82b37f2a86e9fbbdc2961b3d0cd813130230"
+      }
+    }
+  },
+  "currentCanonicalContexts": [
+    {
+      "goalId": "6596405a-9728-41df-9163-53670ec2a937",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j8_integer_exponent_rules",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J8",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J8.4C"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "fd860da9-73ba-47cd-a1a8-452424915a80",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:661e9b02730fe5ff5b35f95ec293052514c3e08a13ef18b36b48e4896aea14ff"
+    },
+    {
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_square_roots_define_estimate",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.ROOTS.DEFINE_ESTIMATE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+          "44cb7404-114e-5b14-b33a-ddee41952d46",
+          "26f668a0-6425-5466-9cf7-6295dd189005",
+          "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+          "02013455-72a0-5213-9509-ed77f7ede62b",
+          "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+          "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+          "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810",
+          "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+          "05012547-7263-5bfa-9e7c-df970745a011"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:0bb9c89b83790738d7cf55986a461e1aed9ddbea177228807b820aa4434c10db"
+    },
+    {
+      "goalId": "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_simplify_basic_radicals",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.ROOTS.SIMPLIFY_BASIC"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:aa5760a7497d65c15a9f8ae1453b7ec39e4e057969ae5b087953b853899d6afb"
+    },
+    {
+      "goalId": "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_heron_method",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.1",
+            "K3.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.1C"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+          "02013455-72a0-5213-9509-ed77f7ede62b",
+          "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+          "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+          "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+          "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+          "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810",
+          "26f668a0-6425-5466-9cf7-6295dd189005",
+          "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "05012547-7263-5bfa-9e7c-df970745a011",
+          "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:0b97722de572ec95b660f3eb478f3b4fcc376a6780e0cb9f330b558c0c9d161d"
+    },
+    {
+      "goalId": "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_radicals_add_subtract",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.RADICALS.ADD_SUBTRACT"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:b3c9a88e00675b734e3c14703d6dff03f18692ef2f6c71ece6701a21b334073b"
+    },
+    {
+      "goalId": "7fad6a57-cda1-5dee-a55e-877be64ba992",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_radicals_multiply_divide",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.RADICALS.MULTIPLY_DIVIDE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:b7689523eea19c4c475433608c604782993e816a2c2b440ab50f310b228bcecc"
+    },
+    {
+      "goalId": "68505a32-3b1d-57b2-a495-00b4097eb50d",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_radical_powers_simplify",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.RADICALS.POWERS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "7fad6a57-cda1-5dee-a55e-877be64ba992",
+          "6596405a-9728-41df-9163-53670ec2a937",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:11463c959193f1696e1f44d27d8ae072645ac98a18afc12bb3a9302e82518d4f"
+    },
+    {
+      "goalId": "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_partial_radical_extraction",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.RADICALS.PARTIAL_EXTRACTION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "7fad6a57-cda1-5dee-a55e-877be64ba992",
+          "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:9383e753cc353c1bcb0b6e62ec8a669d0aa90ab6f5e4c5f6f9c2c0fcde06687d"
+    },
+    {
+      "goalId": "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_rationalize_radical_denominators",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.RADICALS.RATIONALIZE_DENOMINATORS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "7fad6a57-cda1-5dee-a55e-877be64ba992",
+          "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:6009cd91774c523cc3018a74ffbe50eb527fe4661b89585e969da04ead89922d"
+    },
+    {
+      "goalId": "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_cube_roots_by_definition",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 15, S. 24.",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J9",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.ROOTS.CUBE_ROOTS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+          "6596405a-9728-41df-9163-53670ec2a937"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:4990c568c4e7d7126fbc00451ef17802b34c4df363859360fa55a3e37dc0f0d7"
+    },
+    {
+      "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_pythagorean_theorem",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.1",
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2"
+          ],
+          "phase": "J9",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.6"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "f0a49da2-018b-4cda-adbd-27047b610a0f",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "de393ab3-d2af-5476-8b46-315185abb805"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:7c8768ff265321b1a39a56f61da2d0bf2fe4a0f65114cff155a57e376fc46a04"
+    },
+    {
+      "goalId": "71a483ba-9680-4654-bb5e-5ab5427f0919",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_right_triangle_trig",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "J9",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.7A"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+          "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:5a0ff51298eafa8b806e5594f15e07a60405abe84a1a2e72973efc69a58fff55"
+    },
+    {
+      "goalId": "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_derive_cosine_law",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "J9",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.7B2B"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "71a483ba-9680-4654-bb5e-5ab5427f0919"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:f6831fd5441075f6ac390d0097c4aa5ad2f3e085764e6eb6ed5682633dcdcfda"
+    },
+    {
+      "goalId": "e663cc67-5249-55db-b103-357b58a1ca91",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_apply_sine_cosine_laws_general_triangles",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "J9",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.7B2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "71a483ba-9680-4654-bb5e-5ab5427f0919"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:7d2f585eae6b0b6828768e17e65cbc65a3eea5b448039723c5a2a61382d8a4d7"
+    },
+    {
+      "goalId": "e322310f-f33a-485d-bc23-2412a6b8fa12",
+      "canonicalContext": {
+        "shortKey": "canonical_math_binomial_formulas_quadratic_terms",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K3.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "GLOBAL",
+          "area": "Algebra",
+          "topicCode": "CANONICAL.MATH.SEK1.3A2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "fd860da9-73ba-47cd-a1a8-452424915a80",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:95340f66b89aa42615fb447cd9d5d06b9936bd61987ffc808fa44bfc91e4dba5"
+    },
+    {
+      "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+      "canonicalContext": {
+        "shortKey": "canonical_math_sek1_j9_read_quadratic_graph_properties",
+        "phase": null,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical",
+          "modality:visual",
+          "representation:graph",
+          "tool:geogebra"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L4"
+          ],
+          "phase": "J9",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.2A2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "canonicalContextFingerprint": "sha256:08459a9c4f89a87620b0973b31361529e077edda6b79b9a78d7a96748ae1dd7e"
+    }
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 793,
+  "currentCurriculumAtomicDenominator": 794,
+  "synthesisManifestPath": "synthesis-decisions.stable-current-carryover-16-v1.json",
+  "synthesisManifestDigest": "sha256:ca1a6c7a27cbf61c89d30f42e93d6baadba8ed50a653c35e5484dc7393e1099c",
+  "synthesisManifestFingerprint": "sha256:dbdb06e29fe484dbdd4b093a94b592b18b93a2d3bc962d6edfaf682807ac27d6",
+  "resolutionIndexPath": "resolution-index.stable-current-carryover-16-v1.json",
+  "resolutionIndexDigest": "sha256:e82a5fb2cc2af1e2e32d8dd34f1778cb3f83ef7ddd9051b7b4c399ebb4d0e004",
+  "noCentralRolloutRegistration": true,
+  "safeguards": {
+    "allSourceArtifactsByteBound": true,
+    "bothExactRecordDigestsBoundPerGoal": true,
+    "bothRecordsRequirePositiveUnderstandingEvidenceV2Create": true,
+    "exactCurrentBilingualTextAndDirectContextRequired": true,
+    "exactReviewDecisionPairsRequired": true,
+    "mixedDecisionRequiresExactRejectedBilingualRevisionDissent": true,
+    "roundAEvidenceSelectedForEveryClaimedGoal": true,
+    "individualResolutionsFreshlyValidated": true,
+    "centralRegistrationPerformed": false
+  }
+}

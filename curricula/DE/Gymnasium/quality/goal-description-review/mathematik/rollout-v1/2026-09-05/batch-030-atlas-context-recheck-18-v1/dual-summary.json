@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:799d53cea473d59e634c28e053766d196dca2044f2aa36342c0a612c31e5b49d",
+  "reviewInputFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+  "goalCount": 18,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-a",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-a",
+      "runIds": [
+        "mathematik-b030-atlas-context-recheck-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-b",
+      "roundId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905-independent-b",
+      "runIds": [
+        "mathematik-b030-batch001-subject-review-gpt5-20260905"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 18,
+    "unavailable": 0,
+    "requiresSynthesis": 18
+  },
+  "goals": [
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-001",
+      "secondRecordId": "mathematik-b030-b-r01-perpendicular-bisectors",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-002",
+      "secondRecordId": "mathematik-b030-b-r02-angle-bisectors",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-003",
+      "secondRecordId": "mathematik-b030-b-r03-special-triangles",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-004",
+      "secondRecordId": "mathematik-b030-b-r04-spatial-points-tuples",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-005",
+      "secondRecordId": "mathematik-b030-b-r05-position-displacement-vectors",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-006",
+      "secondRecordId": "mathematik-b030-b-r06-vector-collinearity",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-007",
+      "secondRecordId": "mathematik-b030-b-r07-unit-circle-radians-values",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-008",
+      "secondRecordId": "mathematik-b030-b-r08-radian-periodic-processes",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-009",
+      "secondRecordId": "mathematik-b030-b-r09-sine-cosine-functions",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-010",
+      "secondRecordId": "mathematik-b030-b-r10-periodic-parameters",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-011",
+      "secondRecordId": "mathematik-b030-b-r11-trig-characteristic-points",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-012",
+      "secondRecordId": "mathematik-b030-b-r12-graphical-trig-derivatives",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-013",
+      "secondRecordId": "mathematik-b030-b-r13-trig-chain-rule",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-014",
+      "secondRecordId": "mathematik-b030-b-r14-trig-derivative-context",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-015",
+      "secondRecordId": "mathematik-b030-b-r15-trig-polynomial-comparison",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-016",
+      "secondRecordId": "mathematik-b030-b-r16-congruence-triangle-construction",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-017",
+      "secondRecordId": "mathematik-b030-b-r17-special-triangle-lines",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "firstRecordId": "mathematik-b030-atlas-context-recheck-a-record-018",
+      "secondRecordId": "mathematik-b030-b-r18-triangle-medians",
+      "firstRunId": "mathematik-b030-atlas-context-recheck-a-run-001",
+      "secondRunId": "mathematik-b030-batch001-subject-review-gpt5-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

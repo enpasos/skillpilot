@@ -1,0 +1,540 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033r-stable17-synthesis-openai-codex-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex Physics B033r bounded stable-seventeen synthesis candidate",
+  "synthesizedAt": "2026-09-04T23:58:57.068Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905",
+    "batchManifestDigest": "sha256:ed76219d9dda4584c482c2808b156df602849f5e82e8a985630ea12255a482f7",
+    "configDigest": "sha256:f380ddb46f174cba57e47f89a43af27c73c5a07630c409d961c4c450cb1345ae",
+    "bundleFingerprint": "sha256:3af217065f845d5aee81c2a8d4248f6c20582066489b573504ac5ba8cec832e9",
+    "bookDigest": "sha256:2abca2583344ce2473e3c8404c2b213826da8b6045b0edf4eb9bbeab8f516ef5",
+    "reviewInputFingerprint": "sha256:ed528a6a3a4c63bb4c87de55dc25543e3d610374133a498baeace77a61030754",
+    "dualSummaryDigest": "sha256:58172f5e308ac549563d8d4b6c922e0eec2c696e8aba8e22524388e4614c0d0d",
+    "canonicalLandscapeDigest": "sha256:ff32c4d3d8b5162bf150c652e0b1919d4ecd2485c5ddbf760da0b55ab3d234a4"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-a",
+      "campaignDigest": "sha256:43107a51c42e2ecf5b1fb389b7f1d2861ce54176a247f3141530bb7a4eae1fbb",
+      "roundId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:ed528a6a3a4c63bb4c87de55dc25543e3d610374133a498baeace77a61030754",
+      "batchId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3241cadaf621130974f33ff6178be69676e3e79d8be52dbd9abe0489f14d7f8e",
+      "runId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z",
+      "runManifestDigest": "sha256:9ac7e7e5ec3db7091ae85b9a81e4f5daba0986cec42b7faa4a418635ee7b2327",
+      "resultsDigest": "sha256:aaedbb7bf78fcc0578470884cc4432719f969de55f9682f78aca07a79eb92e70"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-b",
+      "campaignDigest": "sha256:b9f2b17cc7ec44e0e785c5620886325c238ad03485d25f6156ceda3f36cede25",
+      "roundId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:ed528a6a3a4c63bb4c87de55dc25543e3d610374133a498baeace77a61030754",
+      "batchId": "physik-rollout-v1-batch-033r-adjudicated-final-recheck-20-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d9645146168df70b5f721fea481861b65464d6118633c80f5c945d3e1673bf99",
+      "runId": "phys-b033r-round-b-gpt5-20260905",
+      "runManifestDigest": "sha256:06f0fc3e5bda4a034eb9dea5ec6080c26147af95f2458a4323cbd6efc3ad2d8e",
+      "resultsDigest": "sha256:ca4a01267bf7b94fc45e24356236f1bb82c5f7344ae4f240d1c929c54917406c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-001",
+      "goalId": "3d3e5917-d367-535d-a6ad-b9d87259e6ce",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:259f5660dc08a8fdecc670b39db9c1cc2afe7a5dcaa3aaf7aedbebdd5cc2fa93",
+      "pageFingerprint": "sha256:99ef202c91f471fd98394acf13adcf1a479a1f5ce2de4038ba78f6245217e608",
+      "goalReviewContextFingerprint": "sha256:cb53c5329f26df5777c4968bc99912f444f84951f2dc9b04011ee7ed3feb6f64",
+      "finalText": {
+        "titleDe": "Polarisation quantitativ mit dem Malus-Gesetz untersuchen",
+        "titleEn": "Investigate polarization quantitatively using Malus's law",
+        "descriptionDe": "Die lernende Person kann für linear polarisiertes Licht die Intensität hinter einem Analysator in Abhängigkeit vom Winkel zwischen Polarisations- und Transmissionsrichtung messen, die Daten unter Berücksichtigung der Messunsicherheit mit I = I₀ cos²(α) vergleichen und Abweichungen durch Untergrund oder nichtideale Filter begründen.",
+        "descriptionEn": "The learner can measure the intensity of linearly polarized light behind an analyzer as a function of the angle between the polarization and transmission directions, compare the data with I = I₀ cos²(α) while accounting for measurement uncertainty, and explain deviations caused by background light or non-ideal filters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-001",
+          "recordDigest": "sha256:a204733af7e1ec5b034c1bb4158b7b4db0a15c3308d0920f2827e45886a32433"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:001",
+          "recordDigest": "sha256:9160b3e628503f164fcad2b7a761f7061850663e4bf2a4dc7d03087d315bfb03"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B wird gewählt, weil sie die Feldamplitudenprojektion als Ursache des cos²-Verlaufs, eine kontrollierte Winkelmessreihe, Unsicherheiten und die getrennte Diagnose von Offset und Nichtidealität besonders klar beobachtbar macht.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B is selected because it makes the electric-field amplitude projection behind the cos² trend, a controlled angular measurement series, uncertainty, and the separate diagnosis of offset and non-ideality especially observable."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-002",
+      "goalId": "8c97c234-a932-5e84-aed5-237b4e2a8336",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7dfe54342e63fc68283900a9a34291c7755ec17fd99eb816aa91465f9a24df29",
+      "pageFingerprint": "sha256:f0ae792c5df468296bb351bcd1970931420d844f1a1dee172590f72c3805623c",
+      "goalReviewContextFingerprint": "sha256:95a3aa3ee697920b7486d8c19c01cae22938f4932b8e58df9c437fd49e389619",
+      "finalText": {
+        "titleDe": "Delayed-Choice-Experimente messkontextbezogen deuten",
+        "titleEn": "Interpret delayed-choice experiments in terms of measurement context",
+        "descriptionDe": "Die lernende Person kann an einem Delayed-Choice-Experiment erklären, wie die gewählte Messanordnung entweder Interferenzstatistik oder Weginformation zugänglich macht, und diesen experimentellen Befund von retrokausalen oder klassisch-ontologischen Deutungen unterscheiden.",
+        "descriptionEn": "The learner can use a delayed-choice experiment to explain how the selected measurement arrangement makes either interference statistics or which-path information accessible and distinguish this experimental finding from retrocausal or classically ontological interpretations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-002",
+          "recordDigest": "sha256:fadf01a9a70ca5b7530c51ac5e3a52515ca5bd10dc9470fdd35897fd5891b331"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:002",
+          "recordDigest": "sha256:8924d5e75069a762c5d844c0d60552ddca38664d30c56c1b1d7749d6fc04eb58"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B bindet Aufbau, zugängliche Information, Detektionsstatistik und die Zurückweisung retrokausaler sowie klassischer Bahnaussagen in der stärkeren experimentellen Argumentationskette.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B binds setup, accessible information, detection statistics, and rejection of retrocausal and classical-path claims in the stronger experimental chain of reasoning."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-003",
+      "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a6c94c719e1ed4705a9126d5dd7c8b149840067904c5bf3ae9073f2dabb6ca67",
+      "pageFingerprint": "sha256:fd5f2e4353d7261d3c2fef4727128051a8524834ff7c4061879f7069e0cb78d3",
+      "goalReviewContextFingerprint": "sha256:16b602ed742e34fe1fcf6b1fe9d8bba9df9b307cefe72245dde4edd836546a57",
+      "finalText": {
+        "titleDe": "Anwendungen ionisierender Strahlung qualitativ beurteilen",
+        "titleEn": "Qualitatively assess applications of ionising radiation",
+        "descriptionDe": "Die lernende Person kann bei einer konkreten Anwendung ionisierender Strahlung deren Funktion über Strahlungsart, Wechselwirkung und Nachweisprinzip erklären und Nutzen sowie Gefährdung unter Berücksichtigung von Expositionsweg, Reichweite und Abschirmung qualitativ beurteilen.",
+        "descriptionEn": "For a specific application of ionising radiation, the learner can explain its operation in terms of radiation type, interaction, and detection principle and qualitatively assess its benefits and hazards while considering the exposure pathway, range, and shielding."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-003",
+          "recordDigest": "sha256:68b7e3a9096e6372f30ca8b9b3ba7769812b0c13c7a6f065decac5ad3bfc157e"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:003",
+          "recordDigest": "sha256:e4957da6eb4bc6a8acd16c1ad2f9ff4fd5595179d893da00bb465eced0550776"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen die fallbezogene Beurteilung. Runde B trennt Funktionskette, empirische Wirkung, Nutzenurteil und Gefährdung am klarsten und verlangt den erneuten Kriteriengebrauch bei geändertem Expositionsweg oder anderer Abschirmung.",
+      "rationaleEn": "Both blind reviews confirm the case-based assessment. Round B most clearly separates the functional chain, empirical effect, benefit judgment, and hazard and requires renewed use of the criteria under a changed exposure pathway or shielding."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-004",
+      "goalId": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:535d211af78b965a6ea839c4774a9d555008c2f4749f2aade1d15518f1f09213",
+      "pageFingerprint": "sha256:8fd773db286b9ca269ca55f48ec7ddeb7cb17c28f7ef7305cc323aaf0b3b4768",
+      "goalReviewContextFingerprint": "sha256:ffe9c9daffa60c2577ac88f4290557b8191dfca895ead6ac7e133e4daa37536e",
+      "finalText": {
+        "titleDe": "Geiger-Müller-Zählrohr funktional erklären",
+        "titleEn": "Explain the operation of a Geiger–Müller counter",
+        "descriptionDe": "Die lernende Person kann erklären, wie Primärionisation im Geiger-Müller-Zählrohr eine lawinenartige Gasentladung und dadurch einen Zählimpuls auslöst, und begründen, warum das Gerät Ereignisse zählt, aber keine Energie der einfallenden Strahlung bestimmt.",
+        "descriptionEn": "The learner can explain how primary ionisation in a Geiger–Müller counter triggers an avalanche-like gas discharge and hence a counting pulse, and justify why the device counts events but does not determine the energy of the incident radiation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-004",
+          "recordDigest": "sha256:9052430a8a891930880d036eb781752669f044036d261c591b355617446f79e9"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:004",
+          "recordDigest": "sha256:e8f8a128992832f66dfa5c234bc83809dabd48496c49995007786c95d9007dd5"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B erklärt die nicht energieproportionale Impulsbildung im Geiger-Bereich kausal und grenzt Zählfähigkeit und Energieauflösung anhand neuer Signale und eines energieauflösenden Detektors besonders präzise ab.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B causally explains non-energy-proportional pulse formation in the Geiger region and especially precisely distinguishes counting ability from energy resolution using fresh signals and an energy-resolving detector."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-005",
+      "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:22ab8e136b08937b3aa62b4ec44ec5bb3537f29eb56a5ce70bfd0e8f046ce1c0",
+      "pageFingerprint": "sha256:ea7fd8a17b7110e5e5fcaf16933056278ef5e7571178c2d59506c8e3c893eb4d",
+      "goalReviewContextFingerprint": "sha256:e293325fa71ef50fb9e42675ed043e6e54af746e39218e39bcfbce0d7754b4be",
+      "finalText": {
+        "titleDe": "Astronomische Beobachtungsmethoden",
+        "titleEn": "Astronomical Observation Methods",
+        "descriptionDe": "Die lernende Person kann Astronomie als Beobachtungswissenschaft beschreiben und Teleskope sowie Spektroskopie als zentrale Zugänge zu astronomischen Objekten erläutern.",
+        "descriptionEn": "The learner can describe astronomy as an observational science and explain telescopes and spectroscopy as central ways to study astronomical objects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-006",
+          "recordDigest": "sha256:7a98568971f680f011a5ed6e15de09133350689259761cdb112d37abdf6b0de1"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:006",
+          "recordDigest": "sha256:c81a8cd6729bb4ff7a9a62b159187a648899b4e4f36302e665801ad8f3e6de7a"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Astronomie als Beobachtungswissenschaft beschreiben und erläutern, wie Teleskope Strahlung sammeln und räumlich auflösen, während Spektroskopie sie nach Wellenlängen zerlegt, um Eigenschaften astronomischer Objekte zu erschließen.",
+        "proposedDescriptionEn": "The learner can describe astronomy as an observational science and explain how telescopes collect and spatially resolve radiation, while spectroscopy separates it by wavelength to infer properties of astronomical objects.",
+        "rationaleDe": "Die Ergänzung benennt sinnvolle Prüfkriterien, behebt aber keinen fachlichen Fehler oder Assessment-Blocker des aktuellen Textes. Teleskopfunktion, Spektralzerlegung, Daten-zu-Eigenschaft-Inferenz und Informationsgrenzen werden stattdessen im positiven Evidenzprofil konkret und bilingual operationalisiert.",
+        "rationaleEn": "The expansion states useful assessment criteria but remedies no scientific error or assessment blocker in the current text. Telescope function, spectral separation, data-to-property inference, and information limits are instead operationalized concretely and bilingually in the positive evidence profile."
+      },
+      "rationaleDe": "Runde A bestätigt den aktuellen Wortlaut und liefert eine vollständige beobachtbare Evidenzkette. Die von Runde B vorgeschlagene funktionale Ausführung ist fachlich hilfreich, aber nicht zwingender Bestandteil des kanonischen Zieltexts: „erläutern“ umfasst bereits Sammeln, räumliches Auflösen, spektrales Zerlegen und begrenztes Erschließen. Diese Details werden im eigenen Evidenzprofil verbindlich geprüft, ohne das breite Methodenwahlziel im Text unnötig einzuengen.",
+      "rationaleEn": "Round A confirms the current wording and supplies a complete observable evidence chain. The functional expansion proposed by Round B is useful but need not be part of the canonical goal text: “explain” already encompasses collection, spatial resolution, spectral separation, and bounded inference. The separate evidence profile assesses those details explicitly without unnecessarily narrowing the broad method-selection goal in the text."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-006",
+      "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b2bfa3f4cbdfadc73784c6e2a83160174d34f2d56269837b6d094fde4c760bb7",
+      "pageFingerprint": "sha256:f89e3b20e5651a785049dd01f79f0aef55a913674c956f6558ce121c1fa7c8e5",
+      "goalReviewContextFingerprint": "sha256:4a6628ab909e443641142d2dae3f7bdcd0b5a3b78da82e0518551816664a18ad",
+      "finalText": {
+        "titleDe": "Stabilität astronomischer Objekte beurteilen",
+        "titleEn": "Assess the stability of astronomical objects",
+        "descriptionDe": "Die lernende Person kann bei einem astronomischen Objekt Gleichgewicht oder Ungleichgewicht zwischen Gravitation und Druckgradientkräften aus Gas-, Strahlungs- oder Entartungsdruck erklären und die Folgen veränderter Bedingungen für seine Stabilität qualitativ beurteilen.",
+        "descriptionEn": "For an astronomical object, the learner can explain equilibrium or imbalance between gravity and pressure-gradient forces arising from gas, radiation, or degeneracy pressure and qualitatively assess how changed conditions affect its stability."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-007",
+          "recordDigest": "sha256:961234921f022f8eed53df47248f57f17510cba99d0e4983c1f8844f58f20a01"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:007",
+          "recordDigest": "sha256:0f86ca3979ee34e0d6f247a2f92b3f3eab872bd1d0d43b2c95b1f280c69d8b17"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen die Stabilitätskompetenz. Runde B verbindet Kraftbilanz, konkrete Druckquelle und eine qualitative Vorhersage bei veränderter Masse, Temperatur oder Zusammensetzung besonders vollständig.",
+      "rationaleEn": "Both blind reviews confirm the stability competence. Round B most fully connects force balance, the specific pressure source, and a qualitative prediction under changed mass, temperature, or composition."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-007",
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30568558572118ec6d55497a22a9e67c54e562741376def0677727ade3de8549",
+      "pageFingerprint": "sha256:d3e1b9fa73c83b8dfab826f04ba341c143513230021feea6eef9b2b844951aca",
+      "goalReviewContextFingerprint": "sha256:a9df467bc0c8ec6a6c3109e25879c1198a1f0cf889c3e124712a50e9c6c625a9",
+      "finalText": {
+        "titleDe": "Frequenzspektren von Tönen und Klängen analysieren",
+        "titleEn": "Analyse frequency spectra of tones and complex sounds",
+        "descriptionDe": "Die lernende Person kann Zeitdiagramme und Frequenzspektren von Tönen und Klängen miteinander verknüpfen, Grund- und Obertöne identifizieren und den Einfluss der Spektralanteile auf die Klangfarbe erklären.",
+        "descriptionEn": "The learner can relate time-domain graphs and frequency spectra of tones and complex sounds, identify fundamental and overtone components, and explain how the spectral components affect timbre."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-008",
+          "recordDigest": "sha256:f620aec544f8be357adf5ce4aa14df5a3d1be1dd66290d5ba6e0d97a2e9e3784"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:008",
+          "recordDigest": "sha256:2ae97dd89fdf4b28da9f74fa1e91a1d65e6fcafaa696db8ea54c35bef95365af"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B übersetzt Zeit- und Frequenzdarstellung explizit ineinander und trennt Grundfrequenz, relative Spektralanteile, Tonhöhe und Klangfarbe in der stärkeren Transferaufgabe.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B explicitly translates between time and frequency representations and separates fundamental frequency, relative spectral components, pitch, and timbre in the stronger transfer task."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-008",
+      "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:56739330747fc0a10fdcb5e5924b579a48aa0aeae6375f95e5c3faa3be354f74",
+      "pageFingerprint": "sha256:cc788b8b3b8d1b2c18a448b7a808d749686e872758d32098832e4fdd07b0edbc",
+      "goalReviewContextFingerprint": "sha256:3f2dbdb77c170e1ca9273b5774353a32f3fd68fd5e063b9881532e3b254879d5",
+      "finalText": {
+        "titleDe": "Richtungshören mit spektralen und binauralen Hinweisen untersuchen",
+        "titleEn": "Investigate sound localisation using spectral and binaural cues",
+        "descriptionDe": "Die lernende Person kann erklären, wie richtungsabhängige Filterung durch Ohrmuschel und Gehörgang sowie interaurale Laufzeit- und Pegeldifferenzen zur Schalllokalisation beitragen, Laufzeitdifferenzen für eine gegebene Richtung abschätzen und frequenzabhängige Grenzen der Hinweise beurteilen.",
+        "descriptionEn": "The learner can explain how direction-dependent filtering by the pinna and ear canal and interaural time and level differences contribute to sound localisation, estimate a time difference for a given direction, and assess frequency-dependent limitations of these cues."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-009",
+          "recordDigest": "sha256:54c91a8aa11c7f975f389a920c0dbfb62c62663e2f5f260a55ea1e2f8f84ac53"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:009",
+          "recordDigest": "sha256:7414a780cf7602f9c49b32c50e1569b725d68d6347a4bc1e07d1ce3ef0b37bbe"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B verknüpft Laufzeitabschätzung, Pegel- und Spektralhinweise mit Geometrie und Frequenz und prüft deren wechselnde Aussagekraft in einer neuen Lokalisationssituation.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B connects time-difference estimation, level and spectral cues with geometry and frequency and assesses their changing reliability in a fresh localization situation."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-009",
+      "goalId": "c2e0fc31-27a2-5727-9025-a824db9150d2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:534f4a73f004af0fc19135ef1c3a8084b834781666d8e891a1dec8c1b726dbe3",
+      "pageFingerprint": "sha256:2d2db1e5bfe95ad9be04fb984e14d05172708fe2ab9b4ba36746bc08f53c01f2",
+      "goalReviewContextFingerprint": "sha256:89ba8ac85da1b2c460b074bf9aebae14e920ee85f6a8187f8a687743aaa166ed",
+      "finalText": {
+        "titleDe": "Axonsegmente als elektrische Ersatzschaltungen modellieren",
+        "titleEn": "Model axon segments as equivalent electrical circuits",
+        "descriptionDe": "Die lernende Person kann ein Axonsegment mit Membrankapazität sowie Membran- und Axialwiderstand als elektrische Ersatzschaltung modellieren, mehrere Segmente verknüpfen und begründen, welche passive Signalausbreitung das Modell erklärt und welche zusätzlichen spannungsabhängigen Elemente für aktive Leitung nötig sind.",
+        "descriptionEn": "The learner can model an axon segment as an equivalent electrical circuit with membrane capacitance and membrane and axial resistance, connect multiple segments, and justify which passive signal propagation the model explains and which additional voltage-dependent elements are required for active conduction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-010",
+          "recordDigest": "sha256:b558943ce05ffb64e41ccfc02acb00c142142b73a8e6c5f8a58868b28bd6f300"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:010",
+          "recordDigest": "sha256:81972e12e96598f95ef297de5539874c06730f5bc16aa70eee0170bc4f6818c6"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den Modellierungsumfang. Runde B ordnet Kapazität, Membran- und Axialwiderstand physikalisch zu, verlangt ein gekoppeltes Segmentmodell und markiert die Grenze zur regenerativen aktiven Leitung besonders deutlich.",
+      "rationaleEn": "Both blind reviews confirm the modeling scope. Round B physically assigns capacitance, membrane resistance, and axial resistance, requires a coupled-segment model, and especially clearly marks the boundary to regenerative active conduction."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-010",
+      "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f34ef17263d047a31d797d91bcc8e22a1ad5077e4b1cdaa83caa2d554aa24481",
+      "pageFingerprint": "sha256:ba7a1b71aa76c90d280de22badadce1e32d6310cb68692038ae7b4d0e070a9dd",
+      "goalReviewContextFingerprint": "sha256:9f3e76791cffde1804ad29cceac36448fdf9f392195d146aa06a1236f9b98235",
+      "finalText": {
+        "titleDe": "Beugungsbegrenzte Winkelauflösung des Auges abschätzen",
+        "titleEn": "Estimate the diffraction-limited angular resolution of the eye",
+        "descriptionDe": "Die lernende Person kann die Fraunhofer-Beugung an einer Kreisblende nutzen, um aus Wellenlänge und Pupillendurchmesser die beugungsbegrenzte Winkelauflösung des Auges abzuschätzen, und diese ideale optische Grenze von biologischen Einflüssen auf die Sehschärfe unterscheiden.",
+        "descriptionEn": "The learner can use Fraunhofer diffraction at a circular aperture to estimate the diffraction-limited angular resolution of the eye from wavelength and pupil diameter and distinguish this ideal optical limit from biological influences on visual acuity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-012",
+          "recordDigest": "sha256:5792b34ac0afed65aaf033c91e2b3606109feb3d27e7b50c4c15d31e9f8594f3"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:012",
+          "recordDigest": "sha256:4302d54f2ff456abe9cae56adf878a6711d1757a44bd72c4e8a46d59e15b2147"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B bindet die Kreisblenden-Näherung, Einheiten, Skalierung und den begründeten Vergleich mit biologisch bestimmter realer Sehschärfe am vollständigsten.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B most fully binds the circular-aperture approximation, units, scaling, and justified comparison with biologically determined real visual acuity."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-011",
+      "goalId": "6d882aac-9658-5f0d-bf3d-9338f0143bbc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba942ecff2a8316f96c58222984ebdb48fc13c44bc16da33bf799167f7bc6214",
+      "pageFingerprint": "sha256:a5a3681e14ef25b37c9e4c73f0d62f290a7c560397ace2a5f66a8dbd2865b05c",
+      "goalReviewContextFingerprint": "sha256:3ddcdc3150424203bf0de2fcc13a1bf4d2ed942eb06df720ecf2ce78f89f9ac5",
+      "finalText": {
+        "titleDe": "Auflösungsvermögen des Auges experimentell bestimmen",
+        "titleEn": "Determine the resolving power of the eye experimentally",
+        "descriptionDe": "Die lernende Person kann das Auflösungsvermögen des eigenen Auges mit einem sicheren Versuch und einem vorab festgelegten Trennkriterium bestimmen, das Ergebnis mit einer beugungsoptischen Abschätzung vergleichen und zufällige sowie systematische Messunsicherheiten diskutieren.",
+        "descriptionEn": "The learner can determine the resolving power of their own eye using a safe experiment and a pre-defined resolution criterion, compare the result with a diffraction-based estimate, and discuss random and systematic measurement uncertainties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-013",
+          "recordDigest": "sha256:837324b27ccdbd265f865c5bee782268c4793fb0e5a8000eb760a822967a0513"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:013",
+          "recordDigest": "sha256:482f904de87c48bbe910bccdd88e51b8914cb4b411815dee742756b743b54377"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen die experimentelle Kompetenz. Runde B verlangt ein vorab festgelegtes Trennkriterium, sichere kontrollierte Geometrie, Winkelumrechnung, Unsicherheitsanalyse und die saubere Trennung von realer Sehschärfe und idealer Beugungsgrenze.",
+      "rationaleEn": "Both blind reviews confirm the experimental competence. Round B requires a pre-defined resolution criterion, safe controlled geometry, angular conversion, uncertainty analysis, and a clean distinction between real visual acuity and the ideal diffraction limit."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-012",
+      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d5cef647aee1e97824bc8d632e7f0154020a6e5914129bf9027d0cf333cb6db",
+      "pageFingerprint": "sha256:81e315abd5c041aedbe6212c1f2ef60838bf8bbfe3f99012c3feb805f580bcb4",
+      "goalReviewContextFingerprint": "sha256:f774a0baad0425d300e47725cb0c89da0d8713b507336c78b8707409955d4373",
+      "finalText": {
+        "titleDe": "Bewegungen mit Videoanalyse untersuchen",
+        "titleEn": "Investigate motion using video analysis",
+        "descriptionDe": "Die lernende Person kann ein Bewegungsvideo räumlich und zeitlich kalibrieren, daraus Orts-Zeit-Daten sowie s(t)- und v(t)-Diagramme gewinnen und Modelle einer gleichförmigen oder geworfenen Bewegung unter Berücksichtigung der Messunsicherheit prüfen.",
+        "descriptionEn": "The learner can calibrate a motion video spatially and temporally, obtain position-time data and s(t) and v(t) graphs from it, and test models of uniform or projectile motion while accounting for measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-015",
+          "recordDigest": "sha256:8bce74769888e24e90daf3c692af64f661e0d1dd51c028cfe017a4ea190d6de9"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:015",
+          "recordDigest": "sha256:75f3af9934225e92c996701c0cbf093fecdd409a046230cf3858b149d35bbc0a"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B trennt Pixel- und Bildzeitdaten von kalibrierten physikalischen Größen, verlangt Einheiten und prüft Bewegungsmodelle samt physikalischer und messtechnischer Abweichungsursachen.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B separates pixel and frame-time data from calibrated physical quantities, requires units, and tests motion models together with physical and measurement-related causes of deviations."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-013",
+      "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9d5ed3dfbabad376b8af66a428d1fe19620e6eef69e3d4891fc587f6214b05f1",
+      "pageFingerprint": "sha256:24508677c92ca73b020176998b828ac037f4a4b041de78e77d75062c1f7826af",
+      "goalReviewContextFingerprint": "sha256:a3b7a4501eb3ccdecbc0b9ffa66e3c67da6ff9d39982b3cf737a3fc67b95250b",
+      "finalText": {
+        "titleDe": "Elektrische Stromstärke als Ladungsrate deuten",
+        "titleEn": "Interpret electric current as a rate of charge transfer",
+        "descriptionDe": "Die lernende Person kann die mittlere elektrische Stromstärke als durch einen Querschnitt transportierte Ladung pro Zeitintervall mit I = ΔQ/Δt deuten, Berechnungen durchführen und den Einheitenzusammenhang 1 A = 1 C/s erklären.",
+        "descriptionEn": "The learner can interpret average electric current as the charge transported through a cross-section per time interval using I = ΔQ/Δt, perform calculations, and explain the unit relation 1 A = 1 C/s."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-016",
+          "recordDigest": "sha256:3a505073d82dcc17a8bc274398b06c6b2b35cf918b176b964c15f53b9fc21a60"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:016",
+          "recordDigest": "sha256:ce2846ebb0c74a1dec42ea221efe934e35a17d558df0008151942e92940a94d2"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B macht Querschnitt, Netto-Ladung, Zeitintervall, Umstellen der Beziehung und die Bedeutung unterschiedlicher Mittelwerte bei zeitlich verändertem Transport besonders klar prüfbar.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B makes the cross-section, net charge, time interval, rearrangement of the relation, and the meaning of different averages under time-varying transfer especially assessable."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-014",
+      "goalId": "8da5c981-8216-5fcd-a393-19f392ae2006",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0dd1e4495d2909dc58cc4e25236e154d0a6cb0b7dd6ff69a5c5d2813b27dc3f5",
+      "pageFingerprint": "sha256:cbd15d21b6fa25bbca7ae41acf1345e34072ef116cffc4c9e1f86837e3c7d764",
+      "goalReviewContextFingerprint": "sha256:ba46815c00f28a3c9ea0a7b3507f225a8771b4d9dd00b5394ffc77c9e0b1987d",
+      "finalText": {
+        "titleDe": "Coulomb'sches Gesetz",
+        "titleEn": "Coulomb's Law",
+        "descriptionDe": "Die lernende Person kann die elektrische Kraft zwischen Punktladungen quantitativ mit dem Coulomb'schen Gesetz berechnen und den Zusammenhang zur Feldstärke begründen.",
+        "descriptionEn": "The learner can quantitatively calculate the electric force between point charges using Coulomb's law and justify its relation to field strength."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-017",
+          "recordDigest": "sha256:11e8993eb69e2a7f2c7362366659f5ece9bf46e7b958ea4c5cc760b768987bd6"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:017",
+          "recordDigest": "sha256:cc4e2f46d752d18df146b7b1a768ff6a90722a46557c8f85f8a01737bd540e8b"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Betrag und Richtung der elektrischen Kraft zwischen zwei Punktladungen aus Ladungsvorzeichen und Abstand mit dem Coulomb’schen Gesetz bestimmen und über E = F/q den Zusammenhang zur elektrischen Feldstärke begründen.",
+        "proposedDescriptionEn": "The learner can use Coulomb's law to determine the magnitude and direction of the electric force between two point charges from their charge signs and separation and justify the relation to electric field strength through E = F/q.",
+        "rationaleDe": "Die vorgeschlagene Fassung präzisiert die erwartete Lösungsausführung, behebt aber weder einen fachlichen Fehler noch eine echte Mehrdeutigkeit des aktuellen Ziels. Vorzeichen, Vektorrichtung, 1/r²-Skalierung, E = F/q und Probeladungsunabhängigkeit werden im Evidenzprofil verbindlich operationalisiert.",
+        "rationaleEn": "The proposal clarifies expected solution work but remedies neither a scientific error nor a genuine ambiguity in the current goal. Signs, vector direction, inverse-square scaling, E = F/q, and test-charge independence are explicitly operationalized in the evidence profile."
+      },
+      "rationaleDe": "Runde B bestätigt den aktuellen Wortlaut und liefert die stärkere Evidenzfassung. Die von Runde A vorgeschlagene Ergänzung von Betrag, Richtung, Vorzeichen, Abstand und E = F/q ist eine sinnvolle Assessment-Operationalisierung, aber kein zwingender Textzusatz: Die quantitative Kraftberechnung und das begründete Feldstärkeverhältnis schließen diese fachlichen Bestandteile bereits ein. Das eigene Evidenzprofil prüft sie ausdrücklich in zwei unabhängigen Fällen.",
+      "rationaleEn": "Round B confirms the current wording and supplies the stronger evidence formulation. Round A’s proposed addition of magnitude, direction, signs, separation, and E = F/q is a useful assessment operationalization but not a required textual addition: quantitative force calculation and a justified relation to field strength already entail these scientific components. The separate evidence profile assesses them explicitly in two independent cases."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-015",
+      "goalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd224002654c66c828a8d03ae503a89fb4ca2a1ac615aa441a0dcf03dacbd579",
+      "pageFingerprint": "sha256:2fc5cf0fd077c9d78c82ef72169f053cf83cd32a33a176129b13950c8b0011ca",
+      "goalReviewContextFingerprint": "sha256:ff2ef37081bf63e51227039a11b05d493f46d36d247de5f6cb6ca29e0d103474",
+      "finalText": {
+        "titleDe": "Radialsymmetrische elektrische Felder beschreiben",
+        "titleEn": "Describe radially symmetric electric fields",
+        "descriptionDe": "Die lernende Person kann das elektrische Feld einer Punktladung beziehungsweise den Außenraum einer kugelsymmetrischen Ladungsverteilung durch radiale Feldrichtung und Feldliniendichte beschreiben und die Abnahme der Feldstärke mit E ∝ 1/r² qualitativ begründen.",
+        "descriptionEn": "The learner can describe the electric field of a point charge or the exterior of a spherically symmetric charge distribution in terms of radial field direction and field-line density and qualitatively justify the decrease in field strength as E ∝ 1/r²."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-018",
+          "recordDigest": "sha256:f88782e49ee1fe2161d30df20b4a550cc5c86c22dbfb9cae2793d48c85c98093"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:018",
+          "recordDigest": "sha256:a4a2a5809654ed49afcdc95094b95c586af14350860690108e8dc3854b9823c7"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B verbindet Symmetrie, radiale Richtung, qualitative Feldliniendichte und 1/r²-Geometrie und grenzt Aussagen über den Außenraum sauber von unbelegten Aussagen über das Innere ab.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B connects symmetry, radial direction, qualitative field-line density, and inverse-square geometry and cleanly distinguishes exterior claims from unsupported claims about the interior."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-016",
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd52a4bf27fe29120f2e79faeff721a08f190277b043b5d19e2bdc094fb2106f",
+      "pageFingerprint": "sha256:2bb795c76c805163ef61774741574f5003d69e58300264cc4ea9f7e90b20c825",
+      "goalReviewContextFingerprint": "sha256:59afe37aaa0ec3da9271204be88e3b8837d0011ef8275b084fcbaee1712779ae",
+      "finalText": {
+        "titleDe": "Superposition elektrischer Felder",
+        "titleEn": "Superposition of Electric Fields",
+        "descriptionDe": "Die lernende Person kann elektrische Felder durch grafische Addition von Feldstärkevektoren überlagern und einfache Superpositionssituationen qualitativ auswerten.",
+        "descriptionEn": "The learner can superimpose electric fields by graphical addition of field strength vectors and qualitatively evaluate simple superposition situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-019",
+          "recordDigest": "sha256:20d75d3cbd57cc2dbc7e47235a2b588dfa95c82ebb86016d1aead7d4c908944b"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:019",
+          "recordDigest": "sha256:4699fe0899855ef3d4e57131768a4ad9491eb202f8413aa8f0e391a2feed3b8e"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B verlangt einzelne Feldbeiträge im gemeinsamen Maßstab, echte Vektoraddition und eine neue Geometrie mit Verstärkung, Abschwächung oder Aufhebung.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B requires individual field contributions on a common scale, genuine vector addition, and a fresh geometry exhibiting reinforcement, reduction, or cancellation."
+    },
+    {
+      "decisionId": "physik-b033r-stable17-synthesis-openai-codex-20260905-decision-017",
+      "goalId": "f3de5922-dd45-4fb6-87c1-525d1952dd89",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2d0e19085655f15d0996a8b58091fdc9a422db5b1f2e20c30ce7f757bf6aee35",
+      "pageFingerprint": "sha256:4bc4dbf19a6f481dc2a9d238514a78bd7a178ea8ee3709da112f65950e39ed68",
+      "goalReviewContextFingerprint": "sha256:c0db26fcf1b08413bc5c0ec6bc4d6ff411ae4c6de706565c223b1379e37cef64",
+      "finalText": {
+        "titleDe": "Feldlinienbilder von Ladungs- und Leiteranordnungen deuten",
+        "titleEn": "Interpret field-line diagrams of charge and conductor configurations",
+        "descriptionDe": "Die lernende Person kann Feldlinienbilder eines elektrischen Dipols sowie von Leitern im elektrostatischen Gleichgewicht anhand von Tangentenrichtung und relativer Liniendichte deuten und daraus Feldfreiheit im Inneren eines Faraday-Käfigs sowie lokale Feldverstärkung an Spitzen qualitativ erklären.",
+        "descriptionEn": "The learner can interpret field-line diagrams of an electric dipole and of conductors in electrostatic equilibrium using tangent direction and relative line density and thereby qualitatively explain the absence of a field inside a Faraday cage and local field enhancement at sharp points."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b033r-round-a-fresh-codex-gpt5-20260905t235522z.record-020",
+          "recordDigest": "sha256:b79623f93835a05592d8e3312d2625246cdeaef79837960148f99ed4a4046e62"
+        },
+        "second": {
+          "recordId": "phys-b033r-round-b-gpt5-20260905:020",
+          "recordDigest": "sha256:f1d29512af639a7acdfda698cdbee49a0c28fae905b5392cb13b2a57028d220f"
+        }
+      },
+      "rationaleDe": "Beide Blindprüfungen bestätigen den aktuellen Wortlaut. Runde B behandelt Feldlinien ausdrücklich als Modellrepräsentation und verbindet Tangente, relative Dichte, Leitergleichgewicht, Abschirmung und Spitzenwirkung in einer neuen Konstruktion oder Korrektur.",
+      "rationaleEn": "Both blind reviews confirm the current wording. Round B explicitly treats field lines as a model representation and connects tangent, relative density, conductor equilibrium, shielding, and field enhancement at sharp points in a fresh construction or correction."
+    }
+  ],
+  "manifestFingerprint": "sha256:fb051501e94b447684d5e42fe0277060f9d482c00f026c1072d2cadaa6403704"
+}
