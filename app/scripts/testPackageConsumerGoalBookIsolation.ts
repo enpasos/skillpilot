@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -13,6 +14,23 @@ const registryPath = path.join(appRoot, 'src/utils/goalBookPublicationRegistry.t
 const adapterPath = path.join(appRoot, 'src/packageConsumer/goalBookPublicationUnavailable.ts')
 const importerPath = path.join(appRoot, 'src/components/CoursePlanLearningBook.tsx')
 const policyName = 'skillpilot-package-consumer-source-policy'
+
+// Catch stale transitive smoke bindings before the expensive frontend build.
+// The Python contract/smoke gates remain the authoritative independent checks.
+const repoRoot = path.resolve(appRoot, '..')
+const runnerPath = 'scripts/run_package_consumer_smoke.py'
+const runnerBytes = await readFile(path.join(repoRoot, runnerPath))
+const vitePin = runnerBytes.toString('utf8').match(/^\s*"app\/vite\.config\.ts": "([a-f0-9]{64})",$/mu)
+assert.ok(vitePin, 'the package smoke must explicitly pin the Vite source policy')
+const sha256 = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
+assert.equal(sha256(await readFile(path.join(appRoot, 'vite.config.ts'))), vitePin[1],
+  'the package smoke Vite pin must match the reviewed build configuration')
+const readinessPolicy = JSON.parse(await readFile(path.join(repoRoot,
+  'contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json'), 'utf8'))
+assert.equal(readinessPolicy.consumerSmokeRunner.path, runnerPath)
+assert.equal(readinessPolicy.consumerSmokeRunner.bytes, runnerBytes.length)
+assert.equal(readinessPolicy.consumerSmokeRunner.sha256, sha256(runnerBytes),
+  'the readiness policy must bind the smoke runner after helper pins change')
 
 assert.deepEqual(Object.keys(unavailable).sort(), Object.keys(publication).sort(),
   'the adapter exposes every registry runtime export needed by linking before tree-shaking')
