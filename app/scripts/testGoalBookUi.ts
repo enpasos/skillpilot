@@ -2,7 +2,9 @@ import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
+import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
+import type { GoalBookOriginalSourcesPayload } from '../src/utils/goalBookOriginalSources'
 
 const FIRST_GOAL_ID = '11111111-1111-4111-8111-111111111111'
 const SECOND_GOAL_ID = '22222222-2222-4222-8222-222222222222'
@@ -12,6 +14,8 @@ const MODEL_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json'
 const PDF_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.pdf'
 const PHYSICS_MODEL_PATH = '/lernzielbuch/de-gym-physik-bundesweit.book-model.json'
 const PHYSICS_PDF_PATH = '/lernzielbuch/de-gym-physik-bundesweit.pdf'
+const SOURCES_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.original-sources.json'
+const PHYSICS_SOURCES_PATH = '/lernzielbuch/de-gym-physik-bundesweit.original-sources.json'
 const MATHEMATICS_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 
@@ -222,6 +226,38 @@ const externalPrerequisites = physicsPages[2].externalPrerequisites as Array<Rec
 externalPrerequisites[0].landscapeId = MATHEMATICS_LANDSCAPE_ID
 const physicsFixture = `${JSON.stringify(physicsModel, null, 2)}\n`
 const physicsFixtureSha256 = `sha256:${createHash('sha256').update(physicsFixture).digest('hex')}`
+const sourcesFixture: GoalBookOriginalSourcesPayload = {
+  schemaVersion: '1.0.0', bookId: 'de-gym-mathematik-bundesweit', bookDigest: String(mathModel.digest),
+  documents: [
+    { id: 'he-g8', title: 'Originalquelle Hessen G8', url: 'https://education.example/he-g8.pdf' },
+    { id: 'he-topic', title: 'Hessischer Themenbereich', url: 'https://education.example/he-topic.pdf' },
+    { id: 'he-context', title: 'Hessischer Quellenkontext', url: 'https://education.example/he-context' },
+  ],
+  evidence: [
+    { id: 'direct', documentId: 'he-g8', sourceRef: 'Abschnitt 2.1: Zahlen vergleichen', kind: 'direct', scopeMatch: 'exact',
+      mappedTargetGoalId: FIRST_GOAL_ID, sourceGoalId: 'source-direct', unspecifiedDimensions: [],
+      sourceScope: { jurisdiction: 'DE-HE', stage: ['SekI'], durationModel: ['G8'], courseProfile: [] } },
+    { id: 'topic', documentId: 'he-topic', sourceRef: 'Themenbereich Zahlen', kind: 'inherited', scopeMatch: 'exact',
+      mappedTargetGoalId: 'algebra', sourceGoalId: 'source-topic', unspecifiedDimensions: [],
+      sourceScope: { jurisdiction: 'DE-HE', stage: ['SekI'], durationModel: ['G8'], courseProfile: [] } },
+    { id: 'context', documentId: 'he-context', sourceRef: 'Allgemeine Zahlbereichsanforderungen', kind: 'direct', scopeMatch: 'source-context',
+      mappedTargetGoalId: FIRST_GOAL_ID, sourceGoalId: 'source-context', unspecifiedDimensions: ['durationModel'],
+      sourceScope: { jurisdiction: 'DE-HE', stage: ['SekI'], durationModel: [], courseProfile: [] } },
+  ],
+  goals: Object.fromEntries(mathPages.map((goalPage) => {
+    const goalId = String(goalPage.goalId)
+    const applicability = goalPage.applicability as Array<{
+      jurisdiction: string
+      scopes: Array<{ stage: 'SekI' | 'SekII'; durationModel: 'G8' | 'G9' | null; courseProfile: 'GK' | 'LK' | null }>
+    }>
+    return [goalId, applicability.flatMap(({ jurisdiction, scopes }) => scopes.map((scope) => ({
+      jurisdiction, ...scope,
+      evidenceIds: goalId === FIRST_GOAL_ID && scope.stage === 'SekI'
+        ? scope.durationModel === 'G8' ? ['direct', 'topic'] : ['context']
+        : [],
+    })))]
+  })),
+}
 const index = JSON.parse(singleBookIndexFixture) as {
   schemaVersion: 1
   books: Array<Record<string, unknown>>
@@ -251,12 +287,17 @@ const indexFixture = JSON.stringify(index)
 const server = await startViteTestServer(
   appRoot,
   'scripts/fixtures/goalBookUi.html',
+  { plugins: tailwindcss() },
 )
 
 let browser: Browser | null = null
 
 const assertNoHorizontalOverflow = async (page: Page, width: number) => {
   await page.setViewportSize({ width, height: 900 })
+  await page.waitForFunction(() => {
+    const shell = document.querySelector('[data-testid="goal-book-shell"]')
+    return shell !== null && Number.parseFloat(getComputedStyle(shell).minHeight) > 0
+  })
   await page.waitForTimeout(50)
   const dimensions = await page.evaluate(() => ({
     bodyClientWidth: document.body.clientWidth,
@@ -319,6 +360,8 @@ try {
   let physicsModelRequests = 0
   let delayNextMathModelResponse = false
   let imageRequests = 0
+  let sourceRequests = 0
+  let physicsSourceRequests = 0
   const compositionViewRequests: URL[] = []
 
   page.on('pageerror', (error) => browserErrors.push(error.message))
@@ -357,6 +400,16 @@ try {
       contentType: 'application/json; charset=utf-8',
       body: physicsFixture,
     })
+  })
+  await page.route(`**${SOURCES_PATH}`, async (route) => {
+    sourceRequests += 1
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(sourcesFixture) })
+  })
+  await page.route(`**${PHYSICS_SOURCES_PATH}`, async (route) => {
+    physicsSourceRequests += 1
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      ...sourcesFixture, bookId: physicsBook.id, bookDigest: `sha256:${'0'.repeat(64)}`,
+    }) })
   })
   await page.route('**/api/ui/composition-views/match?*', async (route) => {
     const url = new URL(route.request().url())
@@ -508,6 +561,7 @@ try {
   )
   const applicability = page.getByRole('heading', { name: 'Curriculare Geltung' })
     .locator('xpath=ancestor::section[1]')
+  assert(sourceRequests === 0 && physicsSourceRequests === 0, 'source metadata is not requested before the matrix opens')
   assert(
     (await applicability.innerText()).includes('Hessen: G8/G9'),
     'the page exposes a compact state-coupled applicability summary',
@@ -518,6 +572,34 @@ try {
       && (await applicability.getByRole('table').innerText()).includes('Sekundarstufe II'),
     'the exact applicability tuples are available in an expandable detail matrix',
   )
+  const rows = applicability.locator('tbody tr')
+  const sourceLink = rows.nth(0).getByRole('link', { name: 'Originalquelle Hessen G8', exact: true })
+  await sourceLink.waitFor()
+  assert(sourceRequests === 1, 'all matrix rows share exactly one source metadata request')
+  assert(await sourceLink.getAttribute('href') === 'https://education.example/he-g8.pdf'
+    && await sourceLink.getAttribute('target') === '_blank'
+    && await sourceLink.getAttribute('rel') === 'noopener noreferrer', 'official links open safely without invented PDF page fragments')
+  assert((await rows.nth(0).innerText()).includes('Abschnitt 2.1: Zahlen vergleichen')
+    && (await rows.nth(0).innerText()).includes('Direkt zugeordnet'), 'the direct source exposes its actual locator')
+  assert(await rows.nth(0).getByRole('link').count() === 1, 'additional references are not eagerly mounted')
+  await rows.nth(0).getByText('Weitere Belege (1)', { exact: true }).click()
+  await rows.nth(0).getByRole('link', { name: 'Hessischer Themenbereich', exact: true }).waitFor()
+  assert((await rows.nth(0).innerText()).includes('Über Themenbereich zugeordnet'), 'inherited topic evidence stays distinguishable')
+  assert((await rows.nth(1).innerText()).includes('Nur Quellenkontext')
+    && (await rows.nth(1).innerText()).includes('Direkt zugeordnet')
+    && (await rows.nth(1).innerText()).includes('In den erfassten Quellenangaben nicht differenziert: G8/G9')
+    && await rows.nth(1).getByRole('link', { name: 'Originalquelle Hessen G8', exact: true }).count() === 0,
+  'a G8-specific reference never appears in the G9 row; underspecified evidence is clearly contextual')
+  assert((await rows.nth(2).innerText()).includes('Keine Originalquelle für diese Geltungszeile zugeordnet.'),
+    'a missing upper-secondary mapping is honestly empty instead of borrowing lower-secondary evidence')
+  await page.getByRole('button', { name: 'EN', exact: true }).click()
+  const englishRows = page.getByRole('heading', { name: 'Curricular applicability' })
+    .locator('xpath=ancestor::section[1]').locator('tbody tr')
+  assert((await englishRows.nth(0).innerText()).includes('Directly mapped')
+    && (await englishRows.nth(1).innerText()).includes('Source context only'), 'source metadata chrome supports English')
+  await page.getByRole('button', { name: 'DE', exact: true }).click()
+  await assertNoHorizontalOverflow(page, 375)
+  await assertNoHorizontalOverflow(page, 1440)
   await page.getByTestId('goal-book-page')
     .getByRole('link', { name: new RegExp(`Brüche addieren.*${SECOND_GOAL_ID}`, 'su') })
     .click()
@@ -795,6 +877,13 @@ try {
       && await page.getByRole('heading', { name: 'Curricular applicability' }).count() === 1,
     'the navigation chrome switches from German to English while identifying German book content',
   )
+  const englishApplicability = page.getByRole('heading', { name: 'Curricular applicability' })
+    .locator('xpath=ancestor::section[1]')
+  await englishApplicability.getByText('Show complete applicability matrix', { exact: true }).click()
+  await englishApplicability.getByText('Source information is currently unavailable.', { exact: true }).first().waitFor()
+  assert(await englishApplicability.getByRole('columnheader', { name: 'Original sources', exact: true }).count() === 1
+    && await englishApplicability.getByRole('link').count() === 0 && physicsSourceRequests === 1,
+  'a stale sidecar fails closed without breaking the book or borrowing the other subject sources')
   await page.getByRole('button', { name: 'DE', exact: true }).click()
   assert(
     await page.getByLabel('Lernziele durchsuchen').count() === 1,

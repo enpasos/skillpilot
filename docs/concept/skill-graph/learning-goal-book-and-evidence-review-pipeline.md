@@ -1226,6 +1226,44 @@ for the later moderated intake. Its schema and link context are implemented;
 the production form and moderation queue are not claimed as deployed in the
 current phase.
 
+### 15.1 Original sources in the online applicability matrix
+
+The public mathematics and physics matrices expose original-source links per
+`goalId × jurisdiction × stage × durationModel × courseProfile`. Source
+traceability is not the same as applicability: a direct reviewed mapping, an
+inherited topic mapping and incompletely scoped source context must remain
+distinguishable. Missing individual evidence is shown explicitly, not replaced
+by a guessed jurisdiction-level document or an invented review decision.
+Known source restrictions are intersected; contradictory values are excluded,
+not widened into an apparently valid source. Unknown metadata never erases a
+known document restriction. A missing recorded dimension does not assert that
+the original document itself leaves that dimension unspecified.
+
+The supplement `/lernzielbuch/<bookId>.original-sources.json` is versioned and
+bound to the unchanged shared BookModel's ID and digest. It contains only
+deduplicated public document metadata, fundstellen and row references, not a
+second curriculum or a runtime applicability resolver. It is loaded on demand
+when the matrix is opened, never through the repository-wide rationale loader
+or learner APIs. It is excluded from service-worker precaching with the other
+book artifacts. Stale/missing data does not prevent reading the book; the UI
+reports unavailable evidence rather than claiming that no source exists.
+
+The build derives the supplement from existing mapping/extraction inputs:
+
+```bash
+npm --prefix app run build:goal-book-original-sources
+npm --prefix app run check:goal-book-original-sources
+npm --prefix app run test:goal-book-original-sources
+```
+
+The normal publication gate also recomputes and compares these inputs. A change
+to source metadata therefore requires regeneration before deployment. The
+BookModel, page fingerprints, PDF layout and feedback bindings do not change
+merely to add this read-only supplement. Existing PDF links reach the online
+goal page and its full source matrix. Printed source page numbers are shown as
+locators; they are not converted into PDF page-index fragments unless such an
+index is explicitly available in the source data.
+
 ## 16. References to adjacent concepts
 
 - [SkillPilot Skill Graph Specification](graph-definition.md)
