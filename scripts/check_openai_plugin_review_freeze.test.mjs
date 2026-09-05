@@ -3674,6 +3674,74 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "4b312aa53015e64c013a44cd82c93774b39d647f14f053fe689e7c6438ed07ab"
         }
       ]
+    },
+    {
+      "id": "2026-09-05-goal-book-original-source-matrix",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Implement the explicitly requested original-source links for each applicability-matrix entry in the public mathematics and physics learning-goal books.",
+      "scope": "Only the first-party GoalBookView source column, its bounded lazy public original-source metadata reader and components, deterministic mapping/extraction supplement build, publication freshness gate, focused regressions and section 6.53 documentation. Bind source metadata to the unchanged registered book ID and BookModel digest; distinguish direct and inherited mappings, incompletely scoped source context and missing evidence. Preserve BookModel/PDF bytes and seven feedback-link parameters. No learner APIs or state, curriculum authoring/review decisions, package-consumer route, OpenAI or Claude package, MCP/OAuth/tool/schema/MCP-Apps resource, coach launch/session/identity/locale/state contract, portal, review artifact or deployment change. Generated public source evidence is Layer A metadata, not frozen plugin bytes.",
+      "target": "current-first-party-public-goal-book-source-traceability-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-read-only-public-book-evidence-no-submitted-coach-or-feedback-flow-effect",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/package.json",
+          "authorizedSha256": "d073e96f6d38e1caad8c9d86a4f2ffb8eb240443048c6dd73b42d083c71aa47f",
+          "priorAuthorizedSha256": "57c3044890cfbb43ef31093524fd6e02f662b4ed76ad09e4f218ce6a0df56ea9"
+        },
+        {
+          "path": "app/src/views/GoalBookView.tsx",
+          "authorizedSha256": "bf8c9397d231726a4a0096fc7d180a8e1380ab6db6c1b065702673f41f8188dd",
+          "priorAuthorizedSha256": "e3ead51b2eca0e1b6674b60873f0f01536ce9e878bf7a15b82ecd3d701f4fa4e"
+        },
+        {
+          "path": "app/src/components/GoalBookOriginalSources.tsx",
+          "authorizedSha256": "2ecf0ca99a923a41f4e8371132f4b022de5187defe351d0cdfe8f96735d6014d"
+        },
+        {
+          "path": "app/src/utils/goalBookOriginalSources.ts",
+          "authorizedSha256": "b1f87a0d5f54172e34e2eec0b0f8f585c4ffcf400b21b1ff537ead3ad41de552"
+        },
+        {
+          "path": "app/src/utils/goalBookOriginalSources.test.ts",
+          "authorizedSha256": "0c3bb049e196671a24f6300a7c5132386c00fd8ad0c073a4c76147b47b2778d9"
+        },
+        {
+          "path": "app/scripts/goalBookOriginalSources.ts",
+          "authorizedSha256": "1c16862875c2c9a9741993e07b9237db9595a330c439aec29d9df7fdecc9dd21"
+        },
+        {
+          "path": "app/scripts/testGoalBookOriginalSources.ts",
+          "authorizedSha256": "3db0d62a5df99f716156713eae62f0bb0b26c8dc81e608499805a9b204274696"
+        },
+        {
+          "path": "app/scripts/buildGoalBookOriginalSources.ts",
+          "authorizedSha256": "4dbb8f8296616ec677fb9bdb9b8307399596895b9d88235ae1a39b55a7ad9753"
+        },
+        {
+          "path": "app/scripts/checkGoalBookPublication.ts",
+          "authorizedSha256": "bb17360cca71a1be9ae2c0a5ec5a7a74a1b55f243b6ae97d1ee2fcabd75e9827"
+        },
+        {
+          "path": "app/scripts/testGoalBookPublication.ts",
+          "authorizedSha256": "fd49334616e0a98b08e6a2697a7249c4bdb2d5c76f6fb5659058a26e32ab7ae4"
+        },
+        {
+          "path": "app/scripts/testGoalBookUi.ts",
+          "authorizedSha256": "04b56099ec326db57e1931ddde745de18f8495382e4f77771a44e8264dbbacb8"
+        },
+        {
+          "path": "docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md",
+          "authorizedSha256": "9377fef659385cf16d3824c140783a49f828c229dfb9a6e6ce2e9676b1ae52d2"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "authorizedSha256": "f2d345028cd609a9926d1e8b7bf2695c87343a7eb1029bca53de60cfa7e70a0a",
+          "priorAuthorizedSha256": "4b312aa53015e64c013a44cd82c93774b39d647f14f053fe689e7c6438ed07ab"
+        }
+      ]
     }
   ]);
 });

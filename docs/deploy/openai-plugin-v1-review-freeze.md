@@ -2957,3 +2957,36 @@ Einreichen im OpenAI-Portal ist deshalb nicht erforderlich. Der Freeze-Record,
 seine exakte Checker-Erwartung und der zugehörige Regressionstest erhalten nur
 den zusätzlichen, auf diese Testdatei und diesen Dokumentationsnachtrag
 begrenzten Hashketteneintrag; frühere Freigaben bleiben unverändert erhalten.
+
+### 6.53 Eng begrenzte Ausnahme: Originalquellen in der öffentlichen Buchmatrix
+
+Der Product Owner hat am **5. September 2026** ausdrücklich die Umsetzung
+nachvollziehbarer Originalquellen, insbesondere Links, für jeden Eintrag der
+Geltungsmatrix im Lernzielbuch verlangt. Die Freigabe betrifft ausschließlich
+die lesende Quellenanzeige in der öffentlichen First-Party-Buchansicht für
+Mathematik und Physik sowie deren Build- und Regressionsevidenz.
+
+Die zusätzliche Spalte zeigt vorhandene amtliche Dokumentlinks und Fundstellen
+aus den bestehenden Mapping-/Quellenextraktionsdaten. Direkte Zuordnungen,
+Zuordnungen über übergeordnete Themenbereiche und unvollständig eingegrenzter
+Quellenkontext bleiben unterscheidbar; fehlende Einzelbelege werden nicht
+durch erfundene Quellen oder Freigabeentscheidungen ersetzt. Gedruckte
+Seitenzahlen werden nicht ungeprüft in PDF-Seitenanker umgedeutet.
+
+Ein separater, versionierter öffentlicher Quellenindex ist an Buch-ID und
+BookModel-Digest gebunden und wird erst beim Öffnen der Matrix gelesen. Er
+enthält ausschließlich abgeleitete Belegmetadaten, keine zweite Lernziel- oder
+Geltungsdefinition und keine Lernerdaten. Der Veröffentlichungscheck prüft ihn
+gegen die aktuellen Quelleninputs. Das gemeinsame BookModel, die PDF-Seiten,
+deren Onlineverweise und die sieben bestehenden Feedback-Linkparameter bleiben
+unverändert. Neue Netzwerkzugriffe beschränken sich auf statische Buchmetadaten;
+amtliche Originalquellen öffnen erst nach ausdrücklicher Linkauswahl.
+
+Die bisher hashgebundene `GoalBookView.tsx` erhält nur diese Anzeigeanbindung.
+Die konkreten Quellenanzeige-, Prüf- und Dokumentationshashes werden append-only
+ergänzt. Das eingereichte OpenAI-Plugin bleibt Version `1.0.0`; OpenAI- und
+Claude-Pakete, MCP/OAuth, Tools, Schemas, MCP-Apps-Ressourcen, Startabläufe,
+Feedback-Handler, Session-, Identitäts-, Locale- und Lernzustandssemantik,
+Portalwerte, Reviewer-Zugänge und Reviewartefakte bleiben unverändert. Es
+erfolgt weder ein Deployment noch ein erneutes Einreichen. Die große fachliche
+Curriculum-QS bleibt pausiert.

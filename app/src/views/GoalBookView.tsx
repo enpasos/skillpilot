@@ -20,6 +20,7 @@ import { LanguageToggle } from '../components/LanguageToggle'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InlineMathText } from '../components/InlineMathText'
 import { GoalBookChapterTree } from '../components/GoalBookChapterTree'
+import { GoalBookOriginalSources } from '../components/GoalBookOriginalSources'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
   assertGoalBookPublicationBinding,
@@ -86,6 +87,8 @@ const copy = {
     applicabilityStage: 'Stufe',
     applicabilityDuration: 'G8/G9',
     applicabilityCourse: 'Kursprofil',
+    applicabilitySources: 'Originalquellen',
+    applicabilityScrollHint: 'Weitere Spalten und Originalquellen: Tabelle seitlich scrollen.',
     notApplicable: 'nicht relevant',
     states: 'Bundesländer',
     additionalStates: 'weitere',
@@ -166,6 +169,8 @@ const copy = {
     applicabilityStage: 'Stage',
     applicabilityDuration: 'G8/G9',
     applicabilityCourse: 'Course profile',
+    applicabilitySources: 'Original sources',
+    applicabilityScrollHint: 'More columns and original sources: scroll the table sideways.',
     notApplicable: 'not applicable',
     states: 'German states',
     additionalStates: 'more',
@@ -280,9 +285,12 @@ const stageLabel = (stage: string, language: 'de' | 'en'): string => {
 
 const ApplicabilityPanel: React.FC<{
   applicability: GoalBookApplicabilityGroup[]
+  model: GoalBookRuntimeModel
+  goalId: string
   language: 'de' | 'en'
   c: typeof copy.de | typeof copy.en
-}> = ({ applicability, language, c }) => {
+}> = ({ applicability, model, goalId, language, c }) => {
+  const [sourcesActive, setSourcesActive] = useState(false)
   const jurisdictions = applicability.map(({ jurisdiction }) => jurisdiction)
   const jurisdictionNames = jurisdictions.map((jurisdiction) => jurisdictionLabel(jurisdiction, language))
   const jurisdictionSummary = jurisdictionNames.length === 16
@@ -320,10 +328,11 @@ const ApplicabilityPanel: React.FC<{
           {durationGroups.length > 3 ? ` · +${durationGroups.length - 3} ${c.additionalStates}` : ''}
         </p>
       )}
-      <details className="mt-2">
+      <details className="mt-2" onToggle={(event) => setSourcesActive(event.currentTarget.open)}>
         <summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold text-sky-800 dark:text-sky-200">
           {c.applicabilityDetails}
         </summary>
+        <p className="pb-2 text-xs text-text-secondary md:hidden">{c.applicabilityScrollHint}</p>
         <div className="overflow-x-auto pb-1">
           <table className="w-full min-w-[34rem] border-collapse text-left text-xs">
             <thead>
@@ -332,6 +341,7 @@ const ApplicabilityPanel: React.FC<{
                 <th className="px-2 py-2 font-semibold">{c.applicabilityStage}</th>
                 <th className="px-2 py-2 font-semibold">{c.applicabilityDuration}</th>
                 <th className="px-2 py-2 font-semibold">{c.applicabilityCourse}</th>
+                <th className="px-2 py-2 font-semibold">{c.applicabilitySources}</th>
               </tr>
             </thead>
             <tbody>
@@ -343,9 +353,13 @@ const ApplicabilityPanel: React.FC<{
                         {jurisdictionLabel(jurisdiction, language)}
                       </th>
                     )}
-                    <td className="px-2 py-2">{stageLabel(scope.stage, language)}</td>
-                    <td className="px-2 py-2">{scope.durationModel ?? c.notApplicable}</td>
-                    <td className="px-2 py-2">{scope.courseProfile ?? c.notApplicable}</td>
+                    <td className="px-2 py-2 align-top">{stageLabel(scope.stage, language)}</td>
+                    <td className="px-2 py-2 align-top">{scope.durationModel ?? c.notApplicable}</td>
+                    <td className="px-2 py-2 align-top">{scope.courseProfile ?? c.notApplicable}</td>
+                    <td className="px-2 py-2 align-top">
+                      <GoalBookOriginalSources model={model} goalId={goalId} jurisdiction={jurisdiction}
+                        scope={scope} active={sourcesActive} language={language} />
+                    </td>
                   </tr>
                 ))
               ))}
@@ -492,7 +506,7 @@ const GoalPage: React.FC<{
       </div>
 
       {page.applicability && (
-        <ApplicabilityPanel applicability={page.applicability} language={language} c={c} />
+        <ApplicabilityPanel applicability={page.applicability} model={model} goalId={page.goalId} language={language} c={c} />
       )}
 
       {showImage && page.visualization && (

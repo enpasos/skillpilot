@@ -14,6 +14,8 @@ import {
   goalBookFrontMatterPageCount,
   inspectGoalBookPdfArtifact,
 } from './goalBookRenderer'
+import { buildGoalBookOriginalSources, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
+import { MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES, parseGoalBookOriginalSources } from '../src/utils/goalBookOriginalSources'
 import {
   DEFAULT_GOAL_BOOK_ID,
   GOAL_BOOK_PUBLICATION_REGISTRY,
@@ -74,6 +76,7 @@ export type GoalBookPublicationPaths = {
   bookId: string
   indexPath: string
   modelPath: string
+  originalSourcesPath: string
   pdfPath: string
   renderManifestPath: string
   configPath: string
@@ -87,6 +90,7 @@ export const goalBookPublicationPaths = (
   bookId: definition.bookId,
   indexPath: resolve(publicationRoot, 'index.json'),
   modelPath: resolve(publicationRoot, `${definition.artifactStem}.book-model.json`),
+  originalSourcesPath: resolve(publicationRoot, `${definition.artifactStem}.original-sources.json`),
   pdfPath: resolve(publicationRoot, `${definition.artifactStem}.pdf`),
   renderManifestPath: resolve(
     publicationRoot,
@@ -329,6 +333,18 @@ export const verifyPublishedGoalBook = async (
   if (stableGoalBookJson(publishedModel) !== stableGoalBookJson(currentBuild.model)) {
     fail('published BookModel semantics differ from the current canonical build')
   }
+
+  // The supplement contains evidence only. It cannot alter the shared goal,
+  // applicability, PDF or feedback model, and must match current source inputs.
+  const originalSources = await buildGoalBookOriginalSources(publishedModel)
+  const originalSourcesRaw = await readFile(paths.originalSourcesPath, 'utf8')
+  if (Buffer.byteLength(originalSourcesRaw) > MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES) {
+    fail('original sources exceed the browser runtime size budget')
+  }
+  if (originalSourcesRaw !== serializeGoalBookOriginalSources(originalSources)) {
+    fail('original sources are stale; run npm run build:goal-book-original-sources')
+  }
+  parseGoalBookOriginalSources(originalSources, publishedModel)
 
   const modelSha256 = sha256(Buffer.from(publishedModelRaw, 'utf8'))
   const pdfSha256 = sha256(pdf)

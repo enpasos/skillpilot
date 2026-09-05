@@ -150,6 +150,28 @@ assert.throws(
 
 const temporaryDirectory = await mkdtemp(join(tmpdir(), 'skillpilot-published-goal-book.'))
 try {
+  const staleSourcesPath = join(temporaryDirectory, 'stale.original-sources.json')
+  await writeFile(staleSourcesPath, '{}\n', 'utf8')
+  await assert.rejects(
+    verifyPublishedGoalBook({
+      ...defaultGoalBookPublicationPaths,
+      originalSourcesPath: staleSourcesPath,
+    }),
+    /original sources are stale/u,
+    'source changes cannot silently publish stale original-source links',
+  )
+
+  const oversizedSourcesPath = join(temporaryDirectory, 'oversized.original-sources.json')
+  await writeFile(oversizedSourcesPath, ' '.repeat(8 * 1024 * 1024 + 1), 'utf8')
+  await assert.rejects(
+    verifyPublishedGoalBook({
+      ...defaultGoalBookPublicationPaths,
+      originalSourcesPath: oversizedSourcesPath,
+    }),
+    /original sources exceed the browser runtime size budget/u,
+    'original sources that the browser cannot load cannot pass publication',
+  )
+
   const tamperedPdfPath = join(temporaryDirectory, 'tampered.pdf')
   await writeFile(tamperedPdfPath, '%PDF-1.7\nintentionally tampered\n%%EOF\n', 'latin1')
   await assert.rejects(
