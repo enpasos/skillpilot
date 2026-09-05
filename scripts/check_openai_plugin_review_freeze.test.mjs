@@ -3881,6 +3881,39 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "fa94bfc365e53fb682d49638ec81dd906f2ba5901158cf3348cece674f9790f6"
         }
       ]
+    },
+    {
+      "id": "2026-09-05-package-consumer-smoke-helper-bindings",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Fix the subsequently reported Curriculum CI failure caused by the stale package-smoke Vite helper pin after the already verified and authorized package-only goal-book isolation correction.",
+      "scope": "Update only the app/vite.config.ts helper digest in the independent package-consumer smoke runner and then its exact runner digest in the full-standalone-v1 readiness policy. Preserve runner byte length, identities, versions, schemas, executable logic, all other helper digests and every fail-closed isolation, provenance, adversarial and readiness assertion. Extend the existing early package-build isolation regression to verify the Vite pin and transitive runner path/bytes/hash policy binding before building, without removing independent Python gates. Document section 6.57 and validate the full affected contract CI step plus previously skipped schema, UUID, archive and legacy checks. No application or curriculum changes, central class storage, production runtime or OpenAI 1.0.0/Claude 1.1.1 package, MCP/OAuth/tool/schema/resource/launch/session/identity/locale/learning-state/review/portal/fixture/artifact changes. No deployment or curriculum QA resumption.",
+      "target": "independent-curriculum-package-consumer-ci-trust-bindings-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-independent-package-ci-checksum-alignment-with-unchanged-submitted-and-production-runtime",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "scripts/run_package_consumer_smoke.py",
+          "priorAuthorizedSha256": "4490199905bd4e87b1ed63cb7946545ffed16e26d06daad789e64b5c5c7bcffe",
+          "authorizedSha256": "3b24e8bb1cdf08aca3f7fe0bc008a4396b940de573704384fcafa96cfc12affd"
+        },
+        {
+          "path": "contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json",
+          "priorAuthorizedSha256": "ec5dfbff03ddaccd89371abddc592d9e4a9b29c913115da7a9b8f74abcdeb941",
+          "authorizedSha256": "8b8606650c868ed65deea0744182f74f2c2623751c57bd41b2818a9a4853b6f4"
+        },
+        {
+          "path": "app/scripts/testPackageConsumerGoalBookIsolation.ts",
+          "priorAuthorizedSha256": "bf4357c38b45033bdc390188db799f125379875029005159e4b1d49e813b92de",
+          "authorizedSha256": "22eb2552c132c66131ef20e38ae2431981d6ae9f08d6423502296f3a4a723087"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "fa94bfc365e53fb682d49638ec81dd906f2ba5901158cf3348cece674f9790f6",
+          "authorizedSha256": "4da7398340119e0ee1caaf6675ea8091c5beb8de99998a7d1bb1de063692c93e"
+        }
+      ]
     }
   ]);
 });

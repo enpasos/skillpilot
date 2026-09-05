@@ -3112,3 +3112,30 @@ Portalwerte, Reviewfälle und Artefakte. Die betroffenen Konfigurations-,
 Adapter-, Test- und Dokumentationshashes werden append-only gebunden. Es gibt
 keine fachlichen Curriculum-Änderungen, keine zentrale Klassenablage und
 keine Änderung des Portalreviews.
+
+### 6.57 CI-Nachtrag: vollständige Package-Smoke-Prüfsummenkette
+
+Der Product Owner hat am **5. September 2026** die Behebung des nachfolgenden
+roten Curriculum-CI-Schritts beauftragt. Die Korrektur aus Abschnitt 6.56 war
+im separaten Paketbuild erfolgreich, aber dessen nachgelagerter hermetischer
+Smoke-Runner band weiterhin die vorherige Vite-Konfiguration.
+
+Freigegeben ist ausschließlich die Fortschreibung dieses einen geprüften
+Vite-Hilfshashes in `scripts/run_package_consumer_smoke.py` und anschließend
+des Runner-Hashes in der zugehörigen `full-standalone-v1.readiness-policy.json`.
+Runner-Bytezahl, Identitäten, Versionen, Schemas, Prüflogik und alle übrigen
+Hilfshashes bleiben unverändert. Es werden keine Isolations-, Herkunfts-,
+Manipulations- oder Readiness-Gates entfernt oder gelockert.
+
+Die bereits vorhandene frühe Package-Build-Regression prüft zusätzlich die
+Vite-/Runner-/Policy-Bindung, damit derselbe Fehler künftig vor dem Build
+auffällt. Die unabhängigen Python-Vertrags- und Smoke-Prüfungen bleiben
+vollständig bestehen. Nachgetestet werden der gesamte betroffene CI-Schritt
+und die bisher übersprungenen Schema-, UUID-, Archiv- und Legacy-Gates.
+
+Die Änderungen betreffen ausschließlich die unabhängige Paket- und
+CI-Vertrauenskette. Anwendungslogik, Curricula, Klassenablage, OpenAI `1.0.0`,
+Claude `1.1.1`, MCP/OAuth, Tools, Schemas, Start-/Session-/Lernzustandsverträge,
+Portalwerte, Reviewfälle und Artefakte bleiben unverändert. Die betroffenen
+Quell-, Policy-, Test- und Dokumentationshashes werden append-only gebunden;
+eine Portalaktion oder ein Deployment erfolgt nicht.
