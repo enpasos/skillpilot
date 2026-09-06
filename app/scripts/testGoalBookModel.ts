@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
+import { testGoalBookInputIsolation } from './testGoalBookInputIsolation'
 import {
   normalizeCanonicalLandscape,
   resolveCanonicalNodeType,
@@ -24,6 +25,8 @@ import {
   fingerprintGoalEvidenceReviewInput,
   fingerprintGoalForEvidence,
 } from './goalEvidenceProfileModel'
+
+await testGoalBookInputIsolation()
 
 const PILOT_GOAL_ID = '8dd9f210-2683-5902-acab-e3be22725232'
 const PILOT_PREREQUISITE_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'

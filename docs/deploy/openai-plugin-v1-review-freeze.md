@@ -3262,3 +3262,91 @@ API-, Speicher- und Datenschutzsemantik, Portalwerte, Reviewfälle,
 OpenAI-Review-Fixtures und Reviewartefakte bleiben unverändert. Der
 Portalreview wird weder zurückgezogen noch neu eingereicht. Es erfolgt kein
 Deployment und keine Wiederaufnahme einer allgemeinen Curriculum-QS.
+
+### 6.60 Präzisierte Freigabe: Chemie und Biologie als bundesweite Atlanten
+
+Der Product Owner hat am **6. September 2026** ausdrücklich präzisiert, dass
+Chemie und Biologie dieselben bundesweiten Lernzielatlanten wie Mathematik
+und Physik erhalten sollen, nicht die in Abschnitt 6.59 beschriebenen
+einzelnen LK-/GK-Kompositionsbücher. Die öffentlichen Publikations-IDs lauten
+deshalb `de-gym-chemie-bundesweit` und `de-gym-biologie-bundesweit`.
+Dies ist eine konkrete Freigabe der öffentlichen Buchauswahl und ihrer
+Integration, keine pauschale Neubasierung aufgrund der mechanischen
+Testdatenfreigabe aus Abschnitt 6.58.
+
+Beide Atlanten verwenden den bestehenden nativen Manifest-, Navigations-,
+Geltungs- und Publikationspfad. Die Manifeste binden die buchlokal aus
+vorhandenen geprüften Quellenzuordnungen erzeugten Kompositionsansichten
+aller 16 Bundesländer; die getrennte kanonische
+Buchnavigation hat den Umfang `DE`/`CrossStage`, ohne Beschränkung auf GK oder
+LK. Der äußere Buchumfang bleibt wie bei Mathematik und Physik allein
+`schoolForm: Gymnasium`. Geltungszeilen und Dauer-/Kursprofile werden aus den
+gebundenen Quellen und der fachbezogenen Dauerregelung abgeleitet, nicht durch
+pauschale Zuschreibung einer bundesweiten Geltung an jedes Ziel.
+
+Stufe und Kursprofil bleiben an explizite Quellangaben gebunden. Für Chemie
+in Brandenburg und Berlin bleibt die eng begrenzte Profilzuordnung aus vier
+exakten bestehenden Landesansichten als Quellenkontext ausgewiesen; es gibt
+keine generische Profilableitung. Die belegte Biologie-Geltung in
+Sekundarstufe II bleibt auf Hessen und Bayern begrenzt. 18 gewöhnliche
+Chemieziele bleiben bis zu einer autoritativen Geltungszuordnung außerhalb
+des Atlas; ihnen werden keine erfundenen Bundesland-, Stufen- oder
+Kursprofilzuordnungen gegeben.
+
+BookModel, PDF, Render-Manifest, Originalquellen-Metadaten und öffentlicher
+Index werden konsistent für die beiden tatsächlichen Atlanten gebaut. Die
+Mathematik- und Physik-Artefakte bleiben unverändert. Quellenbelege bleiben
+ziel- und geltungszeilenbezogen; eine fehlende Einzelzuordnung wird weiterhin
+als fehlend angezeigt. Bundesweite Darstellung ist keine Behauptung einer
+lückenlosen fachlichen Quellen- oder Human-Review-Abdeckung.
+
+Die buchlokalen Typklassifikationen liegen außerhalb der globalen
+Release-Model-Registry unter
+`curricula/DE/Gymnasium/quality/goal-book-publication/`. Sie bleiben reine
+Knotentypdaten und erteilen keine neue Atomicity-, Human-, Maturity-,
+Visualisierungs- oder Releasefreigabe. Der vorhandene buchlokale leere
+Biologie-Visualisierungsinput startet weiterhin keinen Bildrollout.
+
+Das öffentliche Register, die Curricula-Verweise und ihre Regressionen
+verwenden die neuen IDs. Die vorhandene Buchdarstellung, Cockpit-Aktion und
+deren Fixture benötigen dafür keine Änderung. Die betroffenen Tests prüfen
+die nationale Manifest-/Navigationsform, alle 16 Quell- und
+Geltungsjurisdiktionen, native Originaldokumente und exakte Matrixzeilen sowie
+fachgebundene, erst beim Öffnen der Matrix geladene Quellen. Quellenlücken
+bleiben sichtbar. Publikationsintegrität, falsche Hashbindungen, Datenschutz-
+und Package-Consumer-Isolation werden nicht gelockert.
+
+Der Current-Binding-Lookup behält exakt `bookId` und `goalId`; der bestehende
+Feedbackweg behält exakt `bookId`, `goalId`, `edition`, `goalFingerprint`,
+`pageFingerprint`, `bookDigest` und `page`. Kein Prefetch, zusätzliche
+Übertragungsdaten oder automatische Umschreibung alter Buchbindungen wird
+eingeführt. Der browserlokale Cockpit-Herkunftsmarker und Rücksprung sowie
+die bestehenden Backend-Regeln bleiben unverändert.
+
+Der vorhandene Publikationsprüfer verlangt für Chemie und Biologie zusätzlich
+verpflichtend den zum Buchconfig gehörenden `.inputs.json`-Companion. Der
+native Quelleninput-Checker vergleicht daraus erzeugte Ansichten, Manifest,
+Navigation und Herkunftsbeleg erneut mit den aktuellen Quellen- und
+Mappingbytes, auch bei der Deployment-Publikationsprüfung. Fehlender,
+veralteter oder unpassender Input wird nicht übersprungen. Buch-ID,
+Landschaft, Typ-Ledger und Quellenmanifest müssen exakt zum nativen
+Buchconfig passen; die tatsächlich publizierten Projektionspfade müssen zum geprüften
+Ausgabesatz gehören. Alle bisherigen Publikationsprüfungen bleiben erhalten.
+
+Append-only neu gebunden werden ausschließlich die tatsächlich geänderten,
+bereits geschützten `app/scripts/testGoalBookPublication.ts`,
+`app/scripts/testGoalBookUi.ts`, `app/scripts/testLearnerGoalFeedbackUi.ts`
+und `app/scripts/checkGoalBookPublication.ts` sowie dieser Nachtrag.
+Record, Checker und Regressionserwartung enthalten
+denselben präzisen neuen Eintrag. Die ungebundenen Runtime-/Backend-
+Katalogtests, das Buchregister, öffentliche Darstellung und fachliche
+Buch-/Atlasdaten erhalten keine neuen Pins. Alle früheren Einträge,
+einschließlich Abschnitt 6.59, bleiben bytegleich; primäre Runtime- und
+Baumketten werden nicht verändert.
+
+OpenAI `1.0.0`, Claude `1.1.1`, ihre Pakete, MCP/OAuth, Tools, Schemas,
+MCP-Apps-Ressourcen, Coach-Berechtigungen und Start-/Session-/Identitäts-/
+Locale-/Lernzustandsverträge, API-, Speicher- und Datenschutzsemantik,
+Portalwerte, Reviewfälle, OpenAI-Review-Fixtures und Reviewartefakte bleiben
+unverändert. Es erfolgt keine Portalaktion, kein Deployment und keine
+Wiederaufnahme einer allgemeinen Curriculum-QS.

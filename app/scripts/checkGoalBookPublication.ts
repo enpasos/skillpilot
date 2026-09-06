@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { relative, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
@@ -8,6 +8,7 @@ import {
   loadGoalBookBuildInputs,
   parseAndValidateGoalBookModel,
   stableGoalBookJson,
+  type GoalBookConfigFile,
   type GoalBookModel,
 } from './goalBookModel'
 import {
@@ -15,6 +16,7 @@ import {
   inspectGoalBookPdfArtifact,
 } from './goalBookRenderer'
 import { buildGoalBookOriginalSources, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
+import { checkGoalBookSourceAtlasInputs, readGoalBookSourceAtlasInputConfig, type GoalBookSourceAtlasInputConfig } from './goalBookSourceAtlasInputs'
 import { MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES, parseGoalBookOriginalSources } from '../src/utils/goalBookOriginalSources'
 import {
   DEFAULT_GOAL_BOOK_ID,
@@ -290,9 +292,35 @@ export const assertCanonicalRelationUrls = (model: GoalBookModel) => {
   }
 }
 
+export const assertGoalBookSourceAtlasConfigBinding = (
+  source: Pick<GoalBookSourceAtlasInputConfig, 'bookId' | 'landscapePath' | 'semanticKindLedgerPath' | 'manifestPath'>,
+  config: Pick<GoalBookConfigFile, 'bookId' | 'landscapePath' | 'semanticKindLedgerPath' | 'compositionViewManifestPath'>,
+): void => {
+  if (source.bookId !== config.bookId
+    || source.landscapePath !== config.landscapePath
+    || source.semanticKindLedgerPath !== config.semanticKindLedgerPath
+    || source.manifestPath !== config.compositionViewManifestPath) {
+    fail('source-derived atlas input companion does not match the native book config')
+  }
+}
+
 export const verifyPublishedGoalBook = async (
   paths: GoalBookPublicationPaths = defaultGoalBookPublicationPaths,
 ) => {
+  const sourceAtlasDefinition = goalBookDefinitionById(paths.bookId)
+  const needsSourceAtlasInputs = sourceAtlasDefinition?.subject === 'chemistry'
+    || sourceAtlasDefinition?.subject === 'biology'
+  if (needsSourceAtlasInputs && !paths.configPath.endsWith('.json')) {
+    fail('source-derived atlas config must have a JSON input companion')
+  }
+  const companionPath = relative(REPOSITORY_ROOT, paths.configPath).replace(/\.json$/u, '.inputs.json')
+  const sourceAtlasConfig = needsSourceAtlasInputs
+    ? readGoalBookSourceAtlasInputConfig(companionPath, REPOSITORY_ROOT) : null
+  const sourceAtlasInputs = sourceAtlasConfig
+    ? checkGoalBookSourceAtlasInputs(companionPath, REPOSITORY_ROOT) : null
+  if (sourceAtlasInputs && sourceAtlasInputs.receipt.bookId !== paths.bookId) {
+    fail('source-derived atlas input companion belongs to a different book')
+  }
   const [
     indexRaw,
     publishedModelRaw,
@@ -308,6 +336,16 @@ export const verifyPublishedGoalBook = async (
     readFile(paths.renderManifestSchemaPath, 'utf8'),
     loadGoalBookBuildInputs(paths.configPath),
   ])
+  if (sourceAtlasInputs && sourceAtlasConfig) {
+    assertGoalBookSourceAtlasConfigBinding(sourceAtlasConfig, currentBuild.config)
+    const checkedPaths = new Set(Object.keys(sourceAtlasInputs.outputs))
+    const source = currentBuild.model.source
+    if ([source.compositionViewManifestPath, source.navigationViewPath,
+      ...(source.compositionViewSources ?? []).map(({ path }) => path),
+    ].some((path) => !path || !checkedPaths.has(path))) {
+      fail('published atlas projection is not bound to its checked source inputs')
+    }
+  }
 
   const index = parseGoalBookPublicationIndex(indexRaw)
   const indexBook = index.books.find(({ bookId }) => bookId === paths.bookId)

@@ -35,8 +35,8 @@ class GoalFeedbackPublishedCatalogTest {
                 "lernzielbuch/index.json",
                 "lernzielbuch/de-gym-mathematik-bundesweit.book-model.json",
                 "lernzielbuch/de-gym-physik-bundesweit.book-model.json",
-                "lernzielbuch/de-gym-chemie-lk.book-model.json",
-                "lernzielbuch/de-gym-biologie-gk.book-model.json"));
+                "lernzielbuch/de-gym-chemie-bundesweit.book-model.json",
+                "lernzielbuch/de-gym-biologie-bundesweit.book-model.json"));
     }
 
     @Test
@@ -44,7 +44,7 @@ class GoalFeedbackPublishedCatalogTest {
         ObjectNode index = (ObjectNode) mapper.readTree(
                 Files.readAllBytes(publicRoot.resolve("lernzielbuch/index.json")));
         ObjectNode chemistry = (ObjectNode) index.withArray("books").get(2);
-        assertThat(chemistry.path("bookId").asText()).isEqualTo("de-gym-chemie-lk");
+        assertThat(chemistry.path("bookId").asText()).isEqualTo("de-gym-chemie-bundesweit");
         ((ObjectNode) chemistry.get("model")).put("sha256", "sha256:" + "0".repeat(64));
         ResourceLoader loader = publicationLoader(new HashSet<>(), mapper.writeValueAsBytes(index));
         assertThatThrownBy(() -> registry(loader))

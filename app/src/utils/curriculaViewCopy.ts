@@ -47,8 +47,8 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         feedbackSubjects: [
           { label: 'Mathematics', bookId: 'de-gym-mathematik-bundesweit' },
           { label: 'Physics', bookId: 'de-gym-physik-bundesweit' },
-          { label: 'Chemistry', bookId: 'de-gym-chemie-lk', scopeNote: 'Existing goal selection (advanced-course / LK profile)' },
-          { label: 'Biology', bookId: 'de-gym-biologie-gk', scopeNote: 'Existing goal selection (basic-course / GK profile)' },
+          { label: 'Chemistry', bookId: 'de-gym-chemie-bundesweit', scopeNote: 'Nationwide overview with applicability and original sources per goal' },
+          { label: 'Biology', bookId: 'de-gym-biologie-bundesweit', scopeNote: 'Lower secondary: 16 states; upper secondary: currently Hesse and Bavaria' },
         ],
         openGoals: 'Open learning goals',
         feedbackNotAvailable: 'A direct goal-feedback entry is not available here yet.',
@@ -104,8 +104,8 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         feedbackSubjects: [
           { label: 'Mathematik', bookId: 'de-gym-mathematik-bundesweit' },
           { label: 'Physik', bookId: 'de-gym-physik-bundesweit' },
-          { label: 'Chemie', bookId: 'de-gym-chemie-lk', scopeNote: 'Vorhandene Lernzielauswahl (LK-Profil)' },
-          { label: 'Biologie', bookId: 'de-gym-biologie-gk', scopeNote: 'Vorhandene Lernzielauswahl (GK-Profil)' },
+          { label: 'Chemie', bookId: 'de-gym-chemie-bundesweit', scopeNote: 'Bundesweite Übersicht mit Geltung und Originalquellen je Lernziel' },
+          { label: 'Biologie', bookId: 'de-gym-biologie-bundesweit', scopeNote: 'Sek I: 16 Länder; Sek II: derzeit Hessen und Bayern' },
         ],
         openGoals: 'Lernziele öffnen',
         feedbackNotAvailable: 'Hier gibt es noch keinen direkten Einstieg zum Lernziel-Feedback.',
