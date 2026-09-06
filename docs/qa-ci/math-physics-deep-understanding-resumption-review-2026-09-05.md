@@ -1490,3 +1490,57 @@ rohbyte-hashgebunden; sie bleiben absichtlich unverändert, statt historische
 Manifeste, Auswahlbelege und Receipts nachträglich umzuschreiben. Dies sind
 keine JSON-, Build- oder Qualitätsfehler. Fünf ungebundene Markdown-Notizen
 wurden ausschließlich um ihre überzählige EOF-Leerzeile bereinigt.
+
+### CI-Nachkorrektur zum Zwischenstand vom 6. September 2026
+
+Der GitHub-Lauf zu `9a98fc5c9` zeigte zwei Lücken in der lokalen
+Abschlussprüfung: Der Mapping-Batch-Bericht war nach der Aktualisierung seines
+Quellenlückenberichts nicht erneut erzeugt worden; zwei Backend-Tests enthielten
+noch die Zielanzahlen vor dem genehmigten B032v-Split. Nach dem frühen Abbruch
+verdeckte Curriculum-CI außerdem eine veraltete Voraussetzungskante im
+Projektionstest und veraltete Paket-Konformitätskennzahlen.
+
+Diese technische Nachkorrektur verändert weder Curricula noch Runtime-Verhalten:
+
+- Der Mapping-Batch wird aus dem aktuellen Quellenlückenbericht regeneriert.
+- Alle 44 betroffenen Backend-Scope-Erwartungen steigen exakt um ein Atom.
+  Der unabhängige ID-Vergleich bestätigt jeweils nur den Ersatz des ehemaligen
+  Atoms `e0c3359d` durch seine zwei genehmigten Kinder. Die alte ID bleibt Cluster.
+- Der Projektionstest prüft beide neuen Voraussetzungen sowie weiterhin die
+  vier unveränderten Voraussetzungen, kanonisch und in der Hessen-LK-Ansicht.
+- Exakte Veröffentlichungs- und Ressourcenkennzahlen einschließlich ihrer
+  Profil-Hashbindung werden an den bestehenden Layer-A-Stand angeglichen.
+  Bildfreigaben werden nicht angehoben: Ein Bild verlässt durch den Split den
+  atomaren Scope; zwei bereits ersetzte Bilder haben zu Recht keine aktuelle
+  menschliche Freigabe. Die erwartete Freigabezahl sinkt deshalb von 150 auf 147.
+
+Vor dem nächsten Commit nach einer fachlichen Änderung gehören deshalb auch
+folgende abhängige Checks ausdrücklich zum Abschluss, nicht erst zum späteren
+GitHub-Lauf:
+
+1. Die vollständige Quellenberichtskette bis einschließlich
+   `check:goal-source-rationale-mapping-batch-01` nach dem letzten Regenerieren.
+2. `test:composition-projection-roles` und bei Ziel-/Scope-Änderungen der
+   vollständige Backend-Check mit der gepinnten produktiven Corretto-Version.
+3. Die Release-Modell-Konformität im tatsächlichen Curriculum-CI-Modus:
+   `SKILLPILOT_SOURCE_PDF_MODE=committed-bindings` und
+   `SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false` mit
+   `scripts/run_curriculum_release_model_conformance.sh`. Veraltete Zähler und
+   Nachweise müssen gegen die fachlichen Änderungen belegt werden; keine
+   Abschwächung der Guards oder automatische Übernahme menschlicher Freigaben.
+
+Lokale Nachprüfung dieser CI-Reparatur erfolgreich: vollständiges
+`./gradlew check` mit Corretto `25.0.2.10.1` (1.556 Tests, keine Fehler, ein
+unveränderter Skip), Projektionstest, vollständige Quellenberichtskette,
+Memory-Checks aller zehn Bereiche, aktueller Curriculum-Status und alle neun
+geschützten Maturity-Floors. Schema-, UUID-, Kompositions-, Bild-, Dokumentations-,
+Release- und Freeze-Prüfungen sind ebenfalls bestanden. Der unveränderte
+Release-Modell-CI-Befehl endet mit Exit 0: unabhängiger Validator mit 49
+Negativfällen, aktuelle Quellen-/Redistribution-Bindungen samt Selbsttests und
+zwei bytegleiche Modellbuilds. Veröffentlichungsstatus und menschliche
+Freigabeentscheidungen bleiben unverändert; der Paketstatus bleibt `not-ready`.
+Ein neuer GitHub-Lauf ist damit noch nicht nachgewiesen: kein Commit, Push oder
+Deployment in dieser Reparatur.
+
+Der große QS-Lauf bleibt angehalten. Die separat freigegebenen drei
+Schreibkorrekturen aus dem Feedback-Eingang sind nicht Teil dieser CI-Reparatur.
