@@ -94,6 +94,21 @@ ledger, manifest and source-view bindings fail closed. The explicit mapping
 lists are intentional: newly reviewed source collections must be added and
 inspected, not automatically treated as new publication coverage.
 
+Original PDFs under `curricula/` are deliberately gitignored authoring downloads.
+The two `.inputs.json` configurations therefore pin those document snapshots by
+repository-relative cache path, official URL and SHA-256. The initial pins are
+the exact hashes already recorded in the published source-projection receipts,
+verified against the existing local downloads. They preserve archived document
+identity, not a claim that CI downloaded or re-reviewed the current remote PDF.
+Source extraction JSON, reviewed mappings and all other derivation inputs remain
+mandatory and freshly hash-checked. If a pinned PDF is locally present, its bytes
+must match; if absent, the same committed snapshot binding is used offline.
+Missing, malformed, duplicate, unused or URL-mismatched snapshot metadata fails
+closed; missing inputs without a snapshot still fail. No network download or
+bulk addition of third-party PDFs is required for CI or deployment.
+The regression copies both real atlas input sets into isolated directories
+without any PDF downloads and requires exactly identical generated outputs.
+
 Biology currently has no primary goal visualizations. Its empty visualization
 input lives with the book configuration, outside the global image-QA registry,
 and creates neither image approvals nor a new visualization rollout. Chemistry

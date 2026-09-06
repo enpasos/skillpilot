@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { copyFileSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -47,7 +48,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
   try {
     const actual = readGoalBookSourceAtlasInputConfig('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-    const config: GoalBookSourceAtlasInputConfig = { ...actual, expectedJurisdictions: ['DE-HE'], expectedCurricularAtomicGoalCount: 1, mappingPaths: ['mapping.json'], landscapePath: 'landscape.json', semanticKindLedgerPath: 'ledger.json', durationModelPolicyPath: 'duration.json' }
+    const config: GoalBookSourceAtlasInputConfig = { ...actual, sourceDocumentSnapshots: [], expectedJurisdictions: ['DE-HE'], expectedCurricularAtomicGoalCount: 1, mappingPaths: ['mapping.json'], landscapePath: 'landscape.json', semanticKindLedgerPath: 'ledger.json', durationModelPolicyPath: 'duration.json' }
     const goal = { id: '00000000-0000-4000-8000-000000000001', title: 'Fixture', description: 'Fixture', type: 'atomic', contains: [], requires: [], phase: 'Q1', courseLevel: 'LK' }
     const landscape = { landscapeId: '00000000-0000-4000-8000-000000000002', title: 'Biologie', subject: 'Biologie', goals: [goal] }
     const mapping = { sourceLandscapeId: 'fixture-source', targetLandscapeId: landscape.landscapeId, sourceExtractionPath: 'source.json', decisions: [{ sourceGoalId: 'source-goal', decision: 'mapped', canonicalGoalIds: [goal.id], reviewer: 'existing-fixture-review', reviewedAt: '2026-01-01', rationale: 'Fixture only' }], mappings: [{ legacyGoalId: 'ignored', canonicalGoalId: 'not-a-goal' }] }
@@ -59,6 +60,29 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     write('duration.json', duration)
     write('mapping.json', mapping)
     write('source.json', source)
+    write('doc.txt', 'fixture source bytes')
+    const pdfPath = 'curricula/DE/Gymnasium/input/HE/fixture.pdf'
+    const snapshot = { path: pdfPath, url: source.sourceDocument.url, sha256: `sha256:${createHash('sha256').update(readFileSync(resolve(fixtureRoot, 'doc.txt'))).digest('hex')}` }
+    const snapshotConfig = { ...config, sourceDocumentSnapshots: [snapshot] }
+    write('source.json', { ...source, sourceDocument: { ...source.sourceDocument, path: pdfPath } })
+    // A clean checkout has no ignored PDF downloads and must derive identical bytes.
+    const offline = buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot)
+    write(pdfPath, 'fixture source bytes')
+    assert.deepEqual(buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot), offline)
+    write(pdfPath, 'corrupted local cache')
+    assert.throws(() => buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot), /Source document snapshot mismatch/)
+    rmSync(resolve(fixtureRoot, pdfPath))
+    assert.throws(() => buildGoalBookSourceAtlasInputs(config, fixtureRoot), /ENOENT/)
+    assert.throws(() => buildGoalBookSourceAtlasInputs({ ...snapshotConfig, sourceDocumentSnapshots: [snapshot, snapshot] }, fixtureRoot), /Duplicate source document snapshot/)
+    assert.throws(() => buildGoalBookSourceAtlasInputs({ ...snapshotConfig, sourceDocumentSnapshots: [{ ...snapshot, sha256: 'sha256:invalid' }] }, fixtureRoot), /Invalid source snapshot digest/)
+    assert.throws(() => buildGoalBookSourceAtlasInputs({ ...snapshotConfig, sourceDocumentSnapshots: [{ ...snapshot, url: 'https://example.org/wrong-source' }] }, fixtureRoot), /Source snapshot URL mismatch/)
+    assert.throws(() => buildGoalBookSourceAtlasInputs({ ...snapshotConfig, sourceDocumentSnapshots: [snapshot, { ...snapshot, path: 'curricula/DE/Gymnasium/input/HE/unused.pdf' }] }, fixtureRoot), /Unused source document snapshot/)
+    assert.throws(() => buildGoalBookSourceAtlasInputs({ ...snapshotConfig, sourceDocumentSnapshots: [{ ...snapshot, path: 'curricula/DE/Gymnasium/input/../outside.pdf' }] }, fixtureRoot), /Invalid source snapshot path/)
+    rmSync(resolve(fixtureRoot, 'source.json'))
+    assert.throws(() => buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot), /ENOENT/, 'A snapshot must never replace the required source extraction')
+    write('source.json', source)
+    rmSync(resolve(fixtureRoot, 'doc.txt'))
+    assert.throws(() => buildGoalBookSourceAtlasInputs(config, fixtureRoot), /ENOENT/, 'Non-snapshot source inputs remain mandatory')
     write('doc.txt', 'fixture source bytes')
     write('config.json', config)
     const initial = buildGoalBookSourceAtlasInputs(config, fixtureRoot)
@@ -112,8 +136,25 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 10)
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
   // Every grouped witness expands back to the exact original provenance record.
-  for (const result of [biology, chemistry]) {
+  for (const [subject, result] of [['biology', biology], ['chemistry', chemistry]] as const) {
     assert.deepEqual(expandGoalBookSourceAtlasReceipt(compactGoalBookSourceAtlasReceipt(result.receipt)), result.receipt)
+    const configPath = `app/scripts/config/goal-books/de-gym-${subject}-national-atlas.inputs.json`
+    const config = readGoalBookSourceAtlasInputConfig(configPath, root)
+    const snapshotPaths = new Set(config.sourceDocumentSnapshots?.map(snapshot => snapshot.path))
+    assert.equal(snapshotPaths.size, subject === 'biology' ? 16 : 30)
+    const checkoutRoot = mkdtempSync(resolve(tmpdir(), 'skillpilot-atlas-without-downloads-'))
+    try {
+      // Copy only the required repository inputs and published derivation, not
+      // any authoring PDF cache: both real atlases must pass in a fresh checkout.
+      const paths = new Set([configPath, ...result.receipt.inputBindings.map(binding => binding.path), ...Object.keys(result.outputs)])
+      for (const path of paths) if (!snapshotPaths.has(path)) {
+        mkdirSync(dirname(resolve(checkoutRoot, path)), { recursive: true })
+        copyFileSync(resolve(root, path), resolve(checkoutRoot, path))
+      }
+      assert.deepEqual(checkGoalBookSourceAtlasInputs(configPath, checkoutRoot), result)
+    } finally {
+      rmSync(checkoutRoot, { recursive: true, force: true })
+    }
   }
-  console.log('PASS source-atlas input derivation, negative scope/binding/boundary checks and current Biology/Chemistry coverage')
+  console.log('PASS source-atlas input derivation, offline snapshot/binding/boundary checks and current Biology/Chemistry coverage without PDF downloads')
 }
