@@ -15,6 +15,8 @@ export interface GoalBookSourceAtlasInputConfig {
   landscapePath: string
   semanticKindLedgerPath: string
   durationModelPolicyPath: string
+  /** Pinned original-document downloads; source extractions remain required inputs. */
+  sourceDocumentSnapshots?: { path: string, url: string, sha256: string }[]
   mappingPaths: string[]
   allowedSourceSubjects?: string[]
   fallbackViewPaths?: string[]
@@ -170,6 +172,17 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
   assert.deepEqual(config.expectedJurisdictions, sorted(config.expectedJurisdictions))
   assert.ok(config.expectedJurisdictions.every(j => /^DE-[A-Z]{2}$/u.test(j)))
   assert.equal(new Set(config.mappingPaths).size, config.mappingPaths.length)
+  const snapshots = new Map((config.sourceDocumentSnapshots ?? []).map(snapshot => {
+    assert.ok(/^curricula\/DE\/Gymnasium\/input\/.+\.pdf$/u.test(snapshot.path), `Invalid source snapshot path: ${snapshot.path}`)
+    assert.ok(!snapshot.path.split('/').includes('..') && !snapshot.path.includes('\\'), `Invalid source snapshot path: ${snapshot.path}`)
+    local(repoRoot, snapshot.path)
+    assert.ok(/^sha256:[a-f0-9]{64}$/u.test(snapshot.sha256), `Invalid source snapshot digest: ${snapshot.path}`)
+    const url = new URL(snapshot.url)
+    assert.ok(url.protocol === 'https:' && !url.username && !url.password, `Invalid source snapshot URL: ${snapshot.path}`)
+    return [snapshot.path, snapshot] as const
+  }))
+  assert.equal(snapshots.size, config.sourceDocumentSnapshots?.length ?? 0, 'Duplicate source document snapshot')
+  const usedSnapshots = new Set<string>()
   const bindings = new Map<string, string>()
   const read = (path: string): Row => {
     const bytes = readFileSync(local(repoRoot, path))
@@ -240,11 +253,27 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
       const document = sourceDocument(extraction, sourceGoal, passage)
       const documentPath = str(document.path)
       assert.ok(documentPath, `Missing local source document: ${sourceGoalId}`)
-      if (!bindings.has(documentPath)) bindings.set(documentPath, digest(readFileSync(local(repoRoot, documentPath))))
       assert.equal(document.official, true, `Non-official source: ${sourceGoalId}`)
       const url = new URL(str(document.url))
       assert.equal(url.protocol, 'https:')
       assert.ok(!url.username && !url.password)
+      const snapshot = snapshots.get(documentPath)
+      if (snapshot) {
+        assert.equal(snapshot.url, str(document.url), `Source snapshot URL mismatch: ${documentPath}`)
+        usedSnapshots.add(documentPath)
+      }
+      if (!bindings.has(documentPath)) {
+        const documentFile = local(repoRoot, documentPath)
+        // Original PDF downloads are gitignored caches, not build inputs. A
+        // committed snapshot preserves their exact provenance offline; when
+        // cached bytes are present they must still match, never silently drift.
+        if (snapshot && !existsSync(documentFile)) bindings.set(documentPath, snapshot.sha256)
+        else {
+          const sha256 = digest(readFileSync(documentFile))
+          if (snapshot) assert.equal(sha256, snapshot.sha256, `Source document snapshot mismatch: ${documentPath}`)
+          bindings.set(documentPath, sha256)
+        }
+      }
       const levels = [sourceGoal, passage, document, extraction]
       const stage = sourceAtlasFacet(levels, 'stage')
       const course = sourceAtlasFacet(levels, 'courseProfile')
@@ -273,6 +302,7 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
     assert.equal(reviewed.size, sourceGoals.size, `Incomplete source decision coverage: ${mappingPath}`)
   }
   assert.equal(unresolved.length, config.expectedUnresolvedScopeDecisionCount, 'Source-scope uncertainty changed; inspect rather than guess')
+  assert.deepEqual(sorted(usedSnapshots), sorted(snapshots.keys()), 'Unused source document snapshot')
   const outputs: Record<string, string> = {}
   const put = (path: string, value: unknown) => {
     const bookRelative = relative(resolve(repoRoot, BOOK_ROOT), local(repoRoot, path))
