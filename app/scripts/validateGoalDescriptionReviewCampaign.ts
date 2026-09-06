@@ -825,11 +825,13 @@ export const validateGoalDescriptionReviewBatch = async ({
       errors.push(`Description record ${record.recordId} does not preserve the bound current bilingual text`)
     }
     if (record.decision === 'revise') {
-      if (record.proposedDescriptionDe === record.currentDescriptionDe) {
-        errors.push(`Description record ${record.recordId} has a no-op German revision`)
-      }
-      if (record.proposedDescriptionEn === record.currentDescriptionEn) {
-        errors.push(`Description record ${record.recordId} has a no-op English revision`)
+      // A translation-only correction must preserve an already sound counterpart.
+      // Both complete proposals are still required by the record schema.
+      if (
+        record.proposedDescriptionDe === record.currentDescriptionDe
+        && record.proposedDescriptionEn === record.currentDescriptionEn
+      ) {
+        errors.push(`Description record ${record.recordId} has a no-op bilingual revision`)
       }
     }
     if (record.recordStatus !== 'candidate' || record.reviewAuthority !== 'ai_candidate') {

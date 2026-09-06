@@ -45,7 +45,7 @@ verifiedBooks.forEach(({ model }) => {
 const verified = verifiedBooks.find(({ model }) => model.book.id === 'de-gym-mathematik-bundesweit')
 assert.ok(verified, 'the real publication contains the registered mathematics atlas')
 assert.equal(verified.model.book.id, 'de-gym-mathematik-bundesweit')
-assert.equal(verified.model.pages.length, 795)
+assert.equal(verified.model.pages.length, 796)
 assert.equal(verified.index.books[0].model.url, '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json')
 assert.equal(verified.index.books[0].pdf.url, '/lernzielbuch/de-gym-mathematik-bundesweit.pdf')
 const registryFixture = {

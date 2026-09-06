@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b035r-relative-dispersion-current-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-math-b035r-current-pair",
+  "synthesizedAt": "2026-09-06T08:52:18.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906",
+    "batchManifestDigest": "sha256:17a7fd91f409e900a7a811562f3871cccd16c927d883093495e974323f840846",
+    "configDigest": "sha256:3849277bcb594801cd5c8a65a485844a6563446a03836fbcef6824a4fcfeb30a",
+    "bundleFingerprint": "sha256:f6b5d6ce7368d9d1367d853e4edd5ef6858b749a3556761411caa4fae5c1adf7",
+    "bookDigest": "sha256:21b6ffd0d184216456c4d78e2d27bdfcf101925d503a6763bcdf7bf9730be58a",
+    "reviewInputFingerprint": "sha256:513290c8f0cc7535d4d8c859db951ecd8e07b63d98d690cbf77da6807adb9ee7",
+    "dualSummaryDigest": "sha256:f790c6f8a6cc270f2fae783f601a36292789cee3936333437e3ff7252dd8ad57",
+    "canonicalLandscapeDigest": "sha256:28b5bfa658369bf560f93d5ca09d315263b394e12638e0982d6b7eb61c1ec50c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-a",
+      "campaignDigest": "sha256:0e8c40485c13b8a7a4218fae36681048eff9dff9f943477e2d8f8d790c91a504",
+      "roundId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:513290c8f0cc7535d4d8c859db951ecd8e07b63d98d690cbf77da6807adb9ee7",
+      "batchId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8d516e8edfa0b1d0b8d16cffb35127796a36ae5dd2ca07e55f5efc14f83eea7b",
+      "runId": "math-b035r-blind-a-20260906",
+      "runManifestDigest": "sha256:7d764ce514c6819bc2ea6678079554802e8b595d788f614ca6379f48adbc9c43",
+      "resultsDigest": "sha256:03c301549af84e74cf47bbdd8ea155a90b120e46ba1012bc6bce1147567e0031"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-b",
+      "campaignDigest": "sha256:602e97caab2620eb3e178412049d6740c7ed7e8efb948cf7c70a88b3e5bd2dd7",
+      "roundId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:513290c8f0cc7535d4d8c859db951ecd8e07b63d98d690cbf77da6807adb9ee7",
+      "batchId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:5a5d98fd75159737adc6e748141998481a2dcc81f61699596b9e34efead87e45",
+      "runId": "math-b035r-blind-b-20260906",
+      "runManifestDigest": "sha256:8c5155614ba8d5f2919e4f526be72f3d66ba6a3ea79796227a3ae16786e98752",
+      "resultsDigest": "sha256:14ef20cc355533e81db436c5251450ac5dec844cda9a4e7f07b5a95e6e8f26de"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b035r-relative-dispersion-current-synthesis-20260906-v1-decision-001",
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7fe1882ac0768832fb1f0cdab85389a47f1f8113a9c9ae2f591248298550840",
+      "pageFingerprint": "sha256:6b6912aa369a2a8c8d82bf8501e37d431f61e94182d3955e84d7c7fe03425232",
+      "goalReviewContextFingerprint": "sha256:6addd2cf0ee8ac77adf9483331f2f03a023ddf2909c4e4625947cecd89e20ba1",
+      "finalText": {
+        "titleDe": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+        "titleEn": "Compute relative dispersion of binomial distributions (advanced course)",
+        "descriptionDe": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+        "descriptionEn": "The learner can compute the relative dispersion (coefficient of variation) $\\sigma/\\mu$ of a binomial distribution with $n\\ge 1$ and $0<p<1$ and show that for fixed $p$ it decreases as $n$ grows (e.g. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$)."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b035r-blind-a-20260906.goal-5b54f272",
+          "recordDigest": "sha256:34d64c7dca1fbf70225989963e34c5e9b812504f9efcf8934aff2eb844646002"
+        },
+        "second": {
+          "recordId": "math-b035r-blind-b-20260906.001",
+          "recordDigest": "sha256:1cf2381892a5f99d9ed35afa33a8cab527a11e7a977cd97f2fbfaa78df256289"
+        }
+      },
+      "rationaleDe": "Beide frischen unabhängigen Runden bestätigen die nach der Definitionsbereichskorrektur aktuelle deutsche und englische Fassung als KEEP. Für n >= 1 und 0 < p < 1 ist der Erwartungswert positiv; bei festem p erklärt der Faktor 1/sqrt(n) die allgemeine Abnahme der relativen Streuung trotz wachsender absoluter Standardabweichung. Berechnung und Begründung sind eine kohärente Kompetenz. Zahlenvergleiche allein ersetzen den allgemeinen Nachweis nicht; die Umkehrfrage zur Halbierung ist passende Transfer-Evidenz, keine neue Pflicht zur Differentialrechnung. Die früheren REVISE-Urteile bleiben nur Übernahmeprovenienz. Die exakte normative Quellenabdeckung und die separate Bildprüfung werden durch diese AI-Synthese nicht als menschlich freigegeben dargestellt.",
+      "rationaleEn": "Both fresh independent rounds confirm KEEP for the current German and English text after the domain correction. For n >= 1 and 0 < p < 1 the mean is positive; at fixed p the factor 1/sqrt(n) explains the general decrease in relative dispersion despite increasing absolute standard deviation. Calculation and justification form one coherent competence. Numerical comparisons do not replace the general argument; the inverse halving question supplies suitable transfer evidence without requiring calculus. Earlier REVISE records remain adoption provenance only. This AI synthesis grants no human approval of exact normative source coverage or the separate image review."
+    }
+  ],
+  "manifestFingerprint": "sha256:78defb94d06af5277e967884e6bac4de4c2b3169a6b4475546b350141168d253"
+}

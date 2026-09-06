@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: accepted
 - Quellbild: `350fc8b1-ead0-4239-b28a-217cbd3bd1c3.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/350fc8b1-ead0-4239-b28a-217cbd3bd1c3/350fc8b1-ead0-4239-b28a-217cbd3bd1c3.jpg`
 
@@ -31,9 +31,10 @@ Titel: Monotonie und Extremstellen mit der ersten Ableitung untersuchen
 Beschreibung: Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.
 
 Zusatzanweisung:
-Pflichtinhalt: Erstelle eine klare mathematische Lernvisualisierung zu Monotonie und Extremstellen. Zeige drei korrekt getrennte Fälle mit Funktionsgraph und Vorzeichenwechsel von f': Erstens f(x) = −x² mit f'(x) = −2x und Vorzeichenwechsel von plus nach minus am Hochpunkt. Zweitens f(x) = x² mit Vorzeichenwechsel von minus nach plus am Tiefpunkt. Drittens f(x) = x³ mit f'(x) = 3x² ≥ 0: waagerechte Tangente bei x = 0, aber kein Vorzeichenwechsel von f' und kein Extremum. Der dritte Graph muss S-förmig durch den Ursprung verlaufen.
-
-Vermeiden: eine Parabel als Sattel- oder Terrassenpunkt, falsche Vorzeichenfolgen, zusätzliche Extremstellen, Dezimalpunkte oder dekorative Graphen ohne mathematische Aussage.
+Use case: precise-object-edit
+Bild 1 ist der aktuelle zu korrigierende Kandidat. Linke und mittlere Spalte sind jetzt richtig; dort NICHTS ändern. Rechts gibt es fälschlich drei waagerechte schwarze Linien: eine durch den blauen Sattel, eine knapp darunter mit x-Pfeil und die weit unten durch den roten Parabelscheitel.
+Ändere ausschließlich diese Achsenzuordnung rechts: Entferne die MITTLERE der drei Linien (die mit dem bisherigen x-Pfeil knapp unter dem blauen Sattel) vollständig. Die OBERE Linie durch den blauen Sattel wird zur einzigen x-Achse des blauen Graphen: gib ihr rechts eine Pfeilspitze und die Beschriftung x. Der blaue Sattel bleibt damit genau am neuen oberen Achsenursprung (0,0) und seine Tangente ist identisch mit seiner x-Achse. Die UNTERSTE Linie durch den roten Parabelscheitel bleibt mit ihrem Pfeil und ihrem x unverändert die Achse von f′.
+Die blaue Kurve selbst, die rote Parabel, beide Formeln, sämtliche Texte/Pfeile/Vorzeichen und der Originalstil bleiben unverändert. Am Ende gibt es rechts genau ZWEI x-Achsen: eine durch den blauen Sattel, eine durch den roten Parabelscheitel. Keine unbeschriftete zusätzliche waagerechte Linie.
 ```
 
 ## Review-Notiz

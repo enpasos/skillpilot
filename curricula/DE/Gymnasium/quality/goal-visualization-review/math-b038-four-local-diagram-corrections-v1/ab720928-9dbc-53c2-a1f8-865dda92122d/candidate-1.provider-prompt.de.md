@@ -1,0 +1,43 @@
+# Lernzielvisualisierung: Exponentielle Modelle anwenden
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `ab720928-9dbc-53c2-a1f8-865dda92122d`
+- Titel: Exponentielle Modelle anwenden
+- Beschreibung: Die lernende Person kann Daten zu Wachstum oder Zerfall mit exponentiellen Funktionen modellieren, Parameter aus Messwerten bestimmen und Aussagen zur Zukunftsentwicklung treffen.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: pilot
+- Quellbild: `ab720928-9dbc-53c2-a1f8-865dda92122d.jpg`
+- Public Asset: `/assets/goal-visualizations/mathematik/ab720928-9dbc-53c2-a1f8-865dda92122d/ab720928-9dbc-53c2-a1f8-865dda92122d.jpg`
+
+## Prompt
+
+```text
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+
+Titel: Exponentielle Modelle anwenden
+Beschreibung: Die lernende Person kann Daten zu Wachstum oder Zerfall mit exponentiellen Funktionen modellieren, Parameter aus Messwerten bestimmen und Aussagen zur Zukunftsentwicklung treffen.
+
+Zusatzanweisung:
+Use case: precise-object-edit
+Asset type: mathematische Lernziel-Illustration
+Input images: Bild 1 ist das zu korrigierende Original.
+Korrigiere ausschließlich das Koordinatendiagramm im rechten grünen Feld. Die Zeitachse ist eine lineare Achse ohne Achsenbruch: Zeichne die Werte 0,1,2,3,4 in gleichen horizontalen Abständen; 4 liegt vier Einheitsabstände rechts der senkrechten Achse. Platz durch kleinere, aber gut lesbare Einheitsabstände innerhalb desselben Feldes schaffen. Die Modellkurve f(t)=120·1,25^t verläuft durch die roten Messpunkte bei t=0,1,2; die Fortsetzung bis t=4 ist gestrichelt. Bei t=4 gehört die Prognose f(4)≈293. Die horizontalen Positionen der Messpunkte müssen genau zu 0,1,2 passen, der Prognosepfeil zu 4. Positive ansteigende, nach oben gekrümmte Exponentialkurve, keine künstliche Zeitkompression zwischen 2 und 4.
+Alle Inhalte des linken und mittleren Feldes, die Formel, alle drei Messwerte (0|120),(1|150),(2|187,5), der Prognosetext für t=4, Modellkritik, Figuren, Farben, lockere Handschrift und Layout bleiben unverändert. Ändere sonst nichts, insbesondere keine neuen Zahlen/technischen IDs oder zusätzliche Erklärkästen.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

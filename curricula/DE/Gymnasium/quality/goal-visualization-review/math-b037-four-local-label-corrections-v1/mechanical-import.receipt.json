@@ -1,0 +1,938 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "ai_only_mechanical_visualization_import",
+  "receiptId": "math-b037-five-root-selected-image-corrections-mechanical-import-20260906",
+  "startedAt": "2026-09-06T10:14:30.993Z",
+  "completedAt": "2026-09-06T10:17:07.733Z",
+  "status": "PASS",
+  "scope": {
+    "goalIds": [
+      "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+      "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "e9445479-c188-5c09-842d-faa5e8678099",
+      "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "1511b39a-4094-5450-a755-4a3ad3339733"
+    ],
+    "newImageGenerationPerformed": false,
+    "newImageSelectionOrVisualApprovalPerformed": false,
+    "rootSuppliedSelectedCandidates": true,
+    "canonicalWritesLimitedToSelectedResourceLinks": true,
+    "assetAndPromptWritesViaNativeImporter": true,
+    "qaWritesViaNativeGenerator": true,
+    "booksIndexesDescriptionReviewsAndPositiveProfilesChangedByImporter": false,
+    "deploymentPerformed": false,
+    "oldFilesDeleted": false
+  },
+  "authority": {
+    "recordStatus": "candidate",
+    "reviewAuthority": "ai_candidate",
+    "technicalImportOnly": true,
+    "newAiApprovalAssigned": false,
+    "newHumanApprovalAssigned": false,
+    "historicalApprovalTransferred": false,
+    "masteryOrLearnerProgressGranted": false
+  },
+  "temporalBoundary": "This receipt binds the mechanical import state captured at completedAt, before any separate later root approval decision. It is not a claim that the whole QA ledger must remain byte-identical after that later decision.",
+  "toolBindings": {
+    "importer": {
+      "path": "scripts/import_goal_visualization.mjs",
+      "digest": "sha256:620af111f79aa924752188eec9cb9c20f783753f1a7e10e299b64e807f3e5a65",
+      "bytes": 8809
+    },
+    "importHelper": {
+      "path": "scripts/goal_visualization_common.mjs",
+      "digest": "sha256:27ec61529fd9ae9d889a1cb740e0a08d47a61161471c9249a2846866cce3dddb",
+      "bytes": 9608
+    },
+    "qaGenerator": {
+      "path": "app/scripts/generateGoalVisualizationQaLedgers.ts",
+      "digest": "sha256:dc51355eb4b0f99f0b03670fc760872a54487af466d9b84898928279fde74882",
+      "bytes": 16156
+    }
+  },
+  "checks": {
+    "freezeBefore": "PASS",
+    "freezeAfter": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22",
+    "nativeImports": [
+      {
+        "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+        "command": "'node' 'scripts/import_goal_visualization.mjs' '7c0dee9b-a827-456d-9f88-b196fc4e9a13' 'tmp/math-b037-7c-local-geometry-fallback-v1.png' '--landscape' 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' '--subject' 'mathematik' '--review-status' 'pilot' '--provider' 'Google Gemini / Nano Banana Pro + SkillPilot SVG correction' '--prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/import-prompt.de.md' '--reconstruction-prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/reconstruction-current.de.md'",
+        "exitCode": 0
+      },
+      {
+        "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+        "command": "'node' 'scripts/import_goal_visualization.mjs' '623cd47f-6f9e-58a7-911c-69e4a8609a27' 'tmp/math-b037-623-local-duplicate-label-correction-v1.png' '--landscape' 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' '--subject' 'mathematik' '--review-status' 'pilot' '--provider' 'Google Gemini / Nano Banana Pro + SkillPilot SVG correction' '--prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/import-prompt.de.md' '--reconstruction-prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/reconstruction-current.de.md'",
+        "exitCode": 0
+      },
+      {
+        "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+        "command": "'node' 'scripts/import_goal_visualization.mjs' 'e9445479-c188-5c09-842d-faa5e8678099' 'tmp/goal-visualizations/e9445479-c188-5c09-842d-faa5e8678099/generated/e9445479-c188-5c09-842d-faa5e8678099.generated.2026-09-06T09-59-38-135Z.jpg' '--landscape' 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' '--subject' 'mathematik' '--review-status' 'pilot' '--provider' 'Google Gemini / Nano Banana Pro (gemini-3-pro-image)' '--prompt' 'tmp/goal-visualizations/e9445479-c188-5c09-842d-faa5e8678099/nano-banana-prompt.de.md' '--reconstruction-prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/reconstruction-current.de.md'",
+        "exitCode": 0
+      },
+      {
+        "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "command": "'node' 'scripts/import_goal_visualization.mjs' '0404f20e-34cc-5c9b-ae6a-62cc9cf02bae' 'tmp/goal-visualizations/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/generated/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.generated.2026-09-06T09-55-08-291Z.jpg' '--landscape' 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' '--subject' 'mathematik' '--review-status' 'pilot' '--provider' 'Google Gemini / Nano Banana Pro (gemini-3-pro-image)' '--prompt' 'tmp/goal-visualizations/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/nano-banana-prompt.de.md' '--reconstruction-prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/reconstruction-current.de.md'",
+        "exitCode": 0
+      },
+      {
+        "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+        "command": "'node' 'scripts/import_goal_visualization.mjs' '1511b39a-4094-5450-a755-4a3ad3339733' 'tmp/goal-visualizations/1511b39a-4094-5450-a755-4a3ad3339733/generated/1511b39a-4094-5450-a755-4a3ad3339733.generated.2026-09-06T09-55-12-844Z.jpg' '--landscape' 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' '--subject' 'mathematik' '--review-status' 'pilot' '--provider' 'Google Gemini / Nano Banana Pro (gemini-3-pro-image)' '--prompt' 'tmp/goal-visualizations/1511b39a-4094-5450-a755-4a3ad3339733/nano-banana-prompt.de.md' '--reconstruction-prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/reconstruction-current.de.md'",
+        "exitCode": 0
+      }
+    ],
+    "nativeQaRegeneration": {
+      "command": "npm --prefix app run quality:goal-visualization-qa -- --subject mathematik",
+      "exitCode": 0,
+      "records": 809
+    },
+    "onlySelectedResourceLinksCanChange": true,
+    "allOtherCanonicalDataUnchanged": true,
+    "qaOutsideFiveTargetsUnchanged": true,
+    "threeAssetCopiesByteIdentical": true,
+    "promptsMatchExactInputs": true,
+    "noHumanOrAiApprovalAssigned": true
+  },
+  "baseline": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/mechanical-import-before.json",
+    "digest": "sha256:d4ca686188f6a51983b40a2e6c0c2148e6c592fd6da4d9c0be53f12c687b5d14",
+    "bytes": 39674
+  },
+  "landscapeBefore": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "digest": "sha256:cf535121febb2c2fb31c2992fd65901d0706a55e3e034d359ab838a84584478c",
+    "bytes": 3287242
+  },
+  "landscapeAfter": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "digest": "sha256:aab32ad4ce33b5d91d0350def06feddd9288de1cf1eae0d41332479b809c22cf",
+    "bytes": 3287319
+  },
+  "qaBefore": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+    "digest": "sha256:64e14757b0687a8023d65372b9634129370a26177dec9546ff0ba9022e81e962",
+    "bytes": 1683329
+  },
+  "qaAtMechanicalCompletion": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+    "digest": "sha256:a5cd9a3f3849dab2dde95294e715bce46aaa04771cf8d0bfc7eb980362520ecb",
+    "bytes": 1680376
+  },
+  "preservedCanonicalDigestExcludingSelectedResourceLinks": "sha256:db7d93226dc177910acf5368d570119eea922e64834bfc79b984ed50e76dbca1",
+  "preservedQaDigestOutsideSelectedGoals": "sha256:b2ab25bdf7e71120e7197c1ff44bbe1d1446da5ee3002c35d498b9871cbdc081",
+  "targets": [
+    {
+      "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+      "url": "/assets/goal-visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+      "provider": "Google Gemini / Nano Banana Pro + SkillPilot SVG correction",
+      "reviewStatus": "pilot",
+      "assetDigest": "sha256:c8e71e1f620c9330b078a6610dceb90c2ce881aac78b485f86affa1328fe0da6",
+      "assetCopies": [
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+          "digest": "sha256:c8e71e1f620c9330b078a6610dceb90c2ce881aac78b485f86affa1328fe0da6",
+          "bytes": 3267582
+        },
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+          "digest": "sha256:c8e71e1f620c9330b078a6610dceb90c2ce881aac78b485f86affa1328fe0da6",
+          "bytes": 3267582
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+          "digest": "sha256:c8e71e1f620c9330b078a6610dceb90c2ce881aac78b485f86affa1328fe0da6",
+          "bytes": 3267582
+        }
+      ],
+      "canonicalPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/prompt.de.md",
+        "digest": "sha256:f42234953e81c8132216d427a87413c9b263c4e8c16a77316bf71ea18e5f1c62",
+        "bytes": 5056
+      },
+      "canonicalPromptTextDigest": "sha256:248f7f6e5e7b64c10a4286c848e527da808f6694561af08884dc62a57a24c1e0",
+      "importPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/import-prompt.de.md",
+        "digest": "sha256:669bc8f9735beddb0413d3af6bba8c3fdeca79e785eebdcc1a774099d03931b6",
+        "bytes": 4118
+      },
+      "canonicalReconstructionPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/image-reconstruction-prompt.de.md",
+        "digest": "sha256:c0f73493b0029f47ac7d8058368c62d9d7d5cdfec22b477a1617e28ab53accdd",
+        "bytes": 2031
+      },
+      "reconstructionInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/reconstruction-current.de.md",
+        "digest": "sha256:ca343f7e9ebc5a542910191fd83708dee37de4ab08840973947abfae49b48860",
+        "bytes": 1285
+      },
+      "changedGoalFields": [
+        "resourceLinks"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+          "title": "Visualisierung: Sekanten-, Tangenten- und Normalensteigungen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+          "provider": "Google Gemini / Nano Banana Pro + SkillPilot SVG correction",
+          "description": "Visualisierung zum Lernziel: Sekanten-, Tangenten- und Normalensteigungen bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sekanten-, Tangenten- und Normalensteigungen bestimmen\". Die lernende Person kann Sekanten-, Tangenten- und Normalensteigungen an Funktionsgraphen bestimmen und die berechneten Steigungen fachsprachlich deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "qaRecord": {
+        "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+        "title": "Sekanten-, Tangenten- und Normalensteigungen bestimmen",
+        "description": "Die lernende Person kann Sekanten-, Tangenten- und Normalensteigungen an Funktionsgraphen bestimmen und die berechneten Steigungen fachsprachlich deuten.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/7c0dee9b-a827-456d-9f88-b196fc4e9a13/7c0dee9b-a827-456d-9f88-b196fc4e9a13.png",
+        "assetSha256": "sha256:c8e71e1f620c9330b078a6610dceb90c2ce881aac78b485f86affa1328fe0da6",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      },
+      "oldApprovalsNotTransferred": true,
+      "oldImagesArchived": true,
+      "oldAlternativeExtensionFilesRetained": true,
+      "archives": {
+        "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+        "files": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/pre-import/goal.json",
+            "digest": "sha256:84b305fd438791b0e81e149adcb8a6621a6beebbec2d6aea53782df6adcb349d",
+            "bytes": 2378
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/pre-import/resource-links.json",
+            "digest": "sha256:2bf224b3cb043835d611a5c33ece4df1dd83f667ec9792c9ef6168265ebf13fe",
+            "bytes": 903
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/pre-import/qa-record.json",
+            "digest": "sha256:e6ea897e224299ce9fe6021b7dc2ceecf67cdde06cb462bf5a8c3322e92a2e07",
+            "bytes": 1833
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/pre-import/prompt.de.md",
+            "digest": "sha256:22cf3e7217ecc362fb927b96848be6fa9799827731621a7441d9d0dd0ee67547",
+            "bytes": 2875
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/reconstruction-current.de.md",
+            "digest": "sha256:ca343f7e9ebc5a542910191fd83708dee37de4ab08840973947abfae49b48860",
+            "bytes": 1285
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/provider-attempt-1.de.md",
+            "digest": "sha256:74feccd68a938409aba59e24d66a1032b524635f8e2afd260141cfaa73d29ddd",
+            "bytes": 4343
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/edit-attempt-1.de.md",
+            "digest": "sha256:7a2e68db06fce98f7280b8f68abd067c15878e93c0c70701dd6922d10703dddb",
+            "bytes": 2453
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/provider-attempt-2.de.md",
+            "digest": "sha256:e9adabbae584ddd891cdb5eaa3294c9f02d356724dd02aaeec9188f7c0a25e01",
+            "bytes": 4628
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/edit-attempt-2.de.md",
+            "digest": "sha256:49064b75a1456643eef94ad83ae7874204bb60b449523098de28598a0153415e",
+            "bytes": 2738
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/rejected-attempt-1.jpg",
+            "digest": "sha256:b48e39db5ecf10b6ae5d6b178aa3b644c49d03eaf20334431bc4e82ec3a4f6af",
+            "bytes": 1932513
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/rejected-attempt-2.jpg",
+            "digest": "sha256:92e2a5f025944c161e4847be2e5406ad2982c9c20b3803d5ac72780b2c82f92c",
+            "bytes": 1994439
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/import-prompt.de.md",
+            "digest": "sha256:669bc8f9735beddb0413d3af6bba8c3fdeca79e785eebdcc1a774099d03931b6",
+            "bytes": 4118
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/local-geometry-fallback-v1.svg",
+            "digest": "sha256:86f7609785f84c28132fa88253ae8c3e5a3d161afb65a11957d5d0722fff198d",
+            "bytes": 4900
+          }
+        ],
+        "originalImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/original/7c0dee9b-a827-456d-9f88-b196fc4e9a13.jpg",
+          "digest": "sha256:427b27d8080bda0cf11d17d005551be63753e14b680e9fc76235c9cd5ed15344",
+          "bytes": 2357582
+        }
+      },
+      "selectionProvenance": {
+        "kind": "root_selected_narrow_svg_correction_after_two_rejected_provider_attempts",
+        "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-local-slopes-correction-v1/local-geometry-fallback-v1.svg",
+        "originalProvider": "Google Gemini / Nano Banana Pro",
+        "secondRejectedAttemptRootFinding": "Δx=2 falsch beschriftet; N(2|0,5) liegt auf der gezeichneten y=0-Linie; inkonsistente Skalen; Sonderfallnormale weiterhin seitlich zum Scheitel versetzt.",
+        "localIntervention": "Nur zwei Diagrammregionen und restaurierter dekorativer Blasenkreis; vollständiges finales PNG durch Root gesichtet."
+      }
+    },
+    {
+      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "url": "/assets/goal-visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+      "provider": "Google Gemini / Nano Banana Pro + SkillPilot SVG correction",
+      "reviewStatus": "pilot",
+      "assetDigest": "sha256:ac39a58351733360d97bc13ce3f4aeccd9ab5f3a6385813ffd2ebcff48b29832",
+      "assetCopies": [
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+          "digest": "sha256:ac39a58351733360d97bc13ce3f4aeccd9ab5f3a6385813ffd2ebcff48b29832",
+          "bytes": 3822387
+        },
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+          "digest": "sha256:ac39a58351733360d97bc13ce3f4aeccd9ab5f3a6385813ffd2ebcff48b29832",
+          "bytes": 3822387
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+          "digest": "sha256:ac39a58351733360d97bc13ce3f4aeccd9ab5f3a6385813ffd2ebcff48b29832",
+          "bytes": 3822387
+        }
+      ],
+      "canonicalPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/prompt.de.md",
+        "digest": "sha256:d405f616e01903c9e34b7ff335990b7b79487bc3b236ddf75fbdab66bcd5cfd7",
+        "bytes": 3820
+      },
+      "canonicalPromptTextDigest": "sha256:1f3ad57160edb81320169e810e3b331ea53283c65ac2d83f76a37321a8c35a38",
+      "importPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/import-prompt.de.md",
+        "digest": "sha256:d9c40e7ca390b822a4be6bf394a429e3b296d37da363aab15ba0d5a8b06f39c3",
+        "bytes": 2924
+      },
+      "canonicalReconstructionPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/image-reconstruction-prompt.de.md",
+        "digest": "sha256:6b360bf36c09a4eed7e40b1c05d21e4c13aa77e87a14366af795f4573b42a80e",
+        "bytes": 1652
+      },
+      "reconstructionInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/reconstruction-current.de.md",
+        "digest": "sha256:7aad70de4b37c127631ff9d672268b05763349e95cab45ba82beaf23af8fc869",
+        "bytes": 948
+      },
+      "changedGoalFields": [
+        "resourceLinks"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+          "title": "Visualisierung: Ganzrationale Funktionen ableiten",
+          "url": "/assets/goal-visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+          "provider": "Google Gemini / Nano Banana Pro + SkillPilot SVG correction",
+          "description": "Visualisierung zum Lernziel: Ganzrationale Funktionen ableiten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ganzrationale Funktionen ableiten\". Die lernende Person kann ganzrationale Funktionen mithilfe der Potenz-, Faktor- und Summenregel sicher ableiten und Ableitungsterme korrekt vereinfachen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "qaRecord": {
+        "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+        "title": "Ganzrationale Funktionen ableiten",
+        "description": "Die lernende Person kann ganzrationale Funktionen mithilfe der Potenz-, Faktor- und Summenregel sicher ableiten und Ableitungsterme korrekt vereinfachen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/623cd47f-6f9e-58a7-911c-69e4a8609a27/623cd47f-6f9e-58a7-911c-69e4a8609a27.png",
+        "assetSha256": "sha256:ac39a58351733360d97bc13ce3f4aeccd9ab5f3a6385813ffd2ebcff48b29832",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      },
+      "oldApprovalsNotTransferred": true,
+      "oldImagesArchived": true,
+      "oldAlternativeExtensionFilesRetained": true,
+      "archives": {
+        "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+        "files": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/pre-import/goal.json",
+            "digest": "sha256:05bdb80aed18e87366240141fa767dbc8c5d6a1ffc638a2783aeb7b6138d37eb",
+            "bytes": 2237
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/pre-import/resource-links.json",
+            "digest": "sha256:c1affd9bae7fa996a53da7f864146ec645939a0e4dbf94614880e217dd1b135f",
+            "bytes": 861
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/pre-import/qa-record.json",
+            "digest": "sha256:2dfd9fee35d41aa04216944047626aecdb75c04cf2e6eb8762ff236c5afa95ab",
+            "bytes": 2030
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/pre-import/prompt.de.md",
+            "digest": "sha256:10f3d44955b1d0ddb474082999d7492480ff6b9d1c86e57414688121d40f87c9",
+            "bytes": 1720
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/reconstruction-current.de.md",
+            "digest": "sha256:7aad70de4b37c127631ff9d672268b05763349e95cab45ba82beaf23af8fc869",
+            "bytes": 948
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/provider-attempt-1.de.md",
+            "digest": "sha256:88e4723aa0c5893d3d3e3ef19f128ac1c710aa67b42b51d0e6dd62e6808c9904",
+            "bytes": 2290
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/edit-attempt-1.de.md",
+            "digest": "sha256:995e2f89eec8b4043f35de0376df0d4194a37a0bf2070b902b22249fdd190371",
+            "bytes": 463
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/pre-import/image-reconstruction-prompt.de.md",
+            "digest": "sha256:6641a38b4b314d1f5d8a965ff4982cff38472fd6064d93e58cf67306ab96c8a9",
+            "bytes": 4357
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/provider-attempt-2.de.md",
+            "digest": "sha256:7d0acef6357f23e7a6377faa60d59d1758cfecc18666ef60b60266698b17ea04",
+            "bytes": 2457
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/edit-attempt-2.de.md",
+            "digest": "sha256:3a5712895f3de9d616800c1887f392e6279793d8b770035fd68e6b8785882eaf",
+            "bytes": 630
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/rejected-attempt-1.jpg",
+            "digest": "sha256:27434872f851b96cb60d2beb217c86aa9f76a4987d530326e935dd1777891b50",
+            "bytes": 1923343
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/rejected-attempt-2.jpg",
+            "digest": "sha256:7d95675e0bccb49238f80c18bb46db7331f1edc521f640ae5395dab376005ae6",
+            "bytes": 1913895
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/import-prompt.de.md",
+            "digest": "sha256:d9c40e7ca390b822a4be6bf394a429e3b296d37da363aab15ba0d5a8b06f39c3",
+            "bytes": 2924
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/local-duplicate-label-correction-v1.svg",
+            "digest": "sha256:09509d2fabba9503f729057bef4e7f82b7b766d1ba4b1bdc18c6f55d520a1f4b",
+            "bytes": 816
+          }
+        ],
+        "originalImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/original.jpg",
+          "digest": "sha256:0f9aae90d845dc2f671dc2c7dde87790deba6a2966d1af90b0363433afa5c047",
+          "bytes": 2184364
+        }
+      },
+      "selectionProvenance": {
+        "kind": "root_selected_narrow_svg_correction_after_two_rejected_provider_attempts",
+        "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/623cd47f-6f9e-58a7-911c-69e4a8609a27/local-duplicate-label-correction-v1.svg",
+        "originalProvider": "Google Gemini / Nano Banana Pro",
+        "secondRejectedAttemptRootFinding": "Zwei −7 im Sammeltrichter unverändert; korrekter Ergebnisterm kompensiert die Verdopplung nicht.",
+        "localIntervention": "Nur 46×35-Rechteck bei (970,900) in viewBox-Breite 2048 über dem unteren zweiten −7; Grau an Root-Pixelmessungen angepasst."
+      }
+    },
+    {
+      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+      "url": "/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "reviewStatus": "pilot",
+      "assetDigest": "sha256:66310cb1fa9c7020f652a8dda1885aa6c1a85e8b0c45c373a51e030648bb08fa",
+      "assetCopies": [
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+          "digest": "sha256:66310cb1fa9c7020f652a8dda1885aa6c1a85e8b0c45c373a51e030648bb08fa",
+          "bytes": 1645570
+        },
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+          "digest": "sha256:66310cb1fa9c7020f652a8dda1885aa6c1a85e8b0c45c373a51e030648bb08fa",
+          "bytes": 1645570
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+          "digest": "sha256:66310cb1fa9c7020f652a8dda1885aa6c1a85e8b0c45c373a51e030648bb08fa",
+          "bytes": 1645570
+        }
+      ],
+      "canonicalPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/prompt.de.md",
+        "digest": "sha256:75bad9f3fffd4283cad459a32342131778b4d9036cb75f818c94b0299aee60ef",
+        "bytes": 2626
+      },
+      "canonicalPromptTextDigest": "sha256:40c1ee30a2671c9b6bb108e08e5ee08becb6ff3fca1dcbd7d062aa43fcc263a3",
+      "importPrompt": {
+        "path": "tmp/goal-visualizations/e9445479-c188-5c09-842d-faa5e8678099/nano-banana-prompt.de.md",
+        "digest": "sha256:50a9e1cf0dc3aed9349c98dab869966ef832e73a2fab5ee471ddd8f4d7af7eb1",
+        "bytes": 2630
+      },
+      "canonicalReconstructionPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/image-reconstruction-prompt.de.md",
+        "digest": "sha256:11e9e8a31957cdd3cacc168c3ccca2204076c8bf2634358ebb2875c7eeb345ac",
+        "bytes": 1979
+      },
+      "reconstructionInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/reconstruction-current.de.md",
+        "digest": "sha256:2c0b63559e692ca8eb67345919dfd4d649b42ce525056a4f9db5fdcf4f6a9331",
+        "bytes": 1202
+      },
+      "changedGoalFields": [
+        "resourceLinks"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e9445479-c188-5c09-842d-faa5e8678099",
+          "title": "Visualisierung: Potenzregel für ganzzahlige Exponenten exemplarisch begründen",
+          "url": "/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Potenzregel für ganzzahlige Exponenten exemplarisch begründen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Potenzregel für ganzzahlige Exponenten exemplarisch begründen\". Die lernende Person kann die Ableitung von $f(x)=x^n$ für betragsmäßig kleine ganzzahlige Exponenten exemplarisch begründen und die Potenzregel fachsprachlich einordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "qaRecord": {
+        "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+        "title": "Potenzregel für ganzzahlige Exponenten exemplarisch begründen",
+        "description": "Die lernende Person kann die Ableitung von $f(x)=x^n$ für betragsmäßig kleine ganzzahlige Exponenten exemplarisch begründen und die Potenzregel fachsprachlich einordnen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg",
+        "assetSha256": "sha256:66310cb1fa9c7020f652a8dda1885aa6c1a85e8b0c45c373a51e030648bb08fa",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      },
+      "oldApprovalsNotTransferred": true,
+      "oldImagesArchived": true,
+      "oldAlternativeExtensionFilesRetained": false,
+      "archives": {
+        "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+        "files": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/pre-import/goal.json",
+            "digest": "sha256:db6e7dbd3fe7670e66cc4ec335c6566d26b655a83328d0b4dd2e7111a462c1db",
+            "bytes": 2416
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/pre-import/resource-links.json",
+            "digest": "sha256:2e36c274b7ae86778939e5ad61fdd961b4804336ecd5851d3b8cfdff12fddaa0",
+            "bytes": 950
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/pre-import/qa-record.json",
+            "digest": "sha256:9d8d84d526a20113378a3ccc19a5479a127f1179dcbe66c216ca92c48f835f8e",
+            "bytes": 1870
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/pre-import/prompt.de.md",
+            "digest": "sha256:b32f4441fb8e2d35708033f2f39bf15956b3f48cfe5456e711ac50a03220fffc",
+            "bytes": 2817
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/reconstruction-current.de.md",
+            "digest": "sha256:2c0b63559e692ca8eb67345919dfd4d649b42ce525056a4f9db5fdcf4f6a9331",
+            "bytes": 1202
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/provider-attempt-1.de.md",
+            "digest": "sha256:d4636d1e11276dbcba80d893b1d3cd82acac339f568166ade90ad84a8c71a855",
+            "bytes": 2541
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/edit-attempt-1.de.md",
+            "digest": "sha256:80483c2bc07db4afeef55825134b6057ef2da77b0d55dd52f861b2eadcf881f3",
+            "bytes": 584
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/pre-import/image-reconstruction-prompt.de.md",
+            "digest": "sha256:32b0c387037c59a670ef039f01e34af672fdef5f15c3c077b2c0eedca828c679",
+            "bytes": 4241
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/provider-attempt-2.de.md",
+            "digest": "sha256:50a9e1cf0dc3aed9349c98dab869966ef832e73a2fab5ee471ddd8f4d7af7eb1",
+            "bytes": 2630
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/edit-attempt-2.de.md",
+            "digest": "sha256:1e270821ca06c10dc360a284a51650b4a07e456decec958a92cde599df6d520e",
+            "bytes": 673
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/rejected-attempt-1.jpg",
+            "digest": "sha256:a2aff21f6f448dbeb05ed6bf69bc05c6f9fd6e6f5b731ee39a11791b9d403d99",
+            "bytes": 1614229
+          }
+        ],
+        "originalImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/e9445479-c188-5c09-842d-faa5e8678099/original.jpg",
+          "digest": "sha256:f4b233c5699ad8c16995e7a905756c46b7233f3cd51aa87a3aaa3612ec817202",
+          "bytes": 1953705
+        }
+      },
+      "selectionProvenance": {
+        "kind": "root_selected_nano_banana_generated_local_correction",
+        "selectedAttempt": 2,
+        "candidate": {
+          "path": "tmp/goal-visualizations/e9445479-c188-5c09-842d-faa5e8678099/generated/e9445479-c188-5c09-842d-faa5e8678099.generated.2026-09-06T09-59-38-135Z.jpg",
+          "digest": "sha256:66310cb1fa9c7020f652a8dda1885aa6c1a85e8b0c45c373a51e030648bb08fa",
+          "bytes": 1645570
+        }
+      }
+    },
+    {
+      "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "url": "/assets/goal-visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "reviewStatus": "pilot",
+      "assetDigest": "sha256:d05b33d62922f7cbbfe466d52a70011be2a6a834bedc7b9b1cfa39fe98f8ef37",
+      "assetCopies": [
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+          "digest": "sha256:d05b33d62922f7cbbfe466d52a70011be2a6a834bedc7b9b1cfa39fe98f8ef37",
+          "bytes": 2049814
+        },
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+          "digest": "sha256:d05b33d62922f7cbbfe466d52a70011be2a6a834bedc7b9b1cfa39fe98f8ef37",
+          "bytes": 2049814
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+          "digest": "sha256:d05b33d62922f7cbbfe466d52a70011be2a6a834bedc7b9b1cfa39fe98f8ef37",
+          "bytes": 2049814
+        }
+      ],
+      "canonicalPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/prompt.de.md",
+        "digest": "sha256:ac859e00fd8da0e2490f4fde131a5a29b7191eaa8b4c65edc50227878d9ac5cf",
+        "bytes": 2426
+      },
+      "canonicalPromptTextDigest": "sha256:4bf1866f04dc1aff1a8b55aca90e51bb3c927c26404f4dd8b57bb683608087ac",
+      "importPrompt": {
+        "path": "tmp/goal-visualizations/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/nano-banana-prompt.de.md",
+        "digest": "sha256:e232287932105586e6aab72d8768a2a6ba49a65117eba408bc10bfdef2a73728",
+        "bytes": 2430
+      },
+      "canonicalReconstructionPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/image-reconstruction-prompt.de.md",
+        "digest": "sha256:625662189155e1ccef7a2763d0ea566d35a0f60259e2d4758ceb8f75ad6a2d04",
+        "bytes": 1972
+      },
+      "reconstructionInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/reconstruction-current.de.md",
+        "digest": "sha256:c4f0433adf749eea708f931dfd3c17a401c6a63390d54f139d2ad328411966bd",
+        "bytes": 1242
+      },
+      "changedGoalFields": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+          "title": "Visualisierung: Begriff der Stammfunktion verstehen",
+          "url": "/assets/goal-visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Begriff der Stammfunktion verstehen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Begriff der Stammfunktion verstehen\". Die lernende Person kann eine Stammfunktion als Funktion verstehen, deren Ableitung die gegebene Funktion ist, und diese Beziehung an einfachen Beispielen fachsprachlich beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "qaRecord": {
+        "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "title": "Begriff der Stammfunktion verstehen",
+        "description": "Die lernende Person kann eine Stammfunktion als Funktion verstehen, deren Ableitung die gegebene Funktion ist, und diese Beziehung an einfachen Beispielen fachsprachlich beschreiben.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.jpg",
+        "assetSha256": "sha256:d05b33d62922f7cbbfe466d52a70011be2a6a834bedc7b9b1cfa39fe98f8ef37",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      },
+      "oldApprovalsNotTransferred": true,
+      "oldImagesArchived": true,
+      "oldAlternativeExtensionFilesRetained": false,
+      "archives": {
+        "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "files": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/pre-import/goal.json",
+            "digest": "sha256:f03d0016066a335f41257488508bc0c24b4537e52c37246fc4a8e9da7026470b",
+            "bytes": 2400
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/pre-import/resource-links.json",
+            "digest": "sha256:674560c3499e79f594eb7b274991c481391f95546662098de76dbc608f6b5971",
+            "bytes": 896
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/pre-import/qa-record.json",
+            "digest": "sha256:7e48eb9694246b941d199f1941c08a6464ee53d2d59de037dc4a08d461ce9492",
+            "bytes": 1713
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/pre-import/prompt.de.md",
+            "digest": "sha256:d0878f40efd95cb853a8a9e29914427ea0e81bad92b11e4a67728f5387463ed4",
+            "bytes": 1784
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/reconstruction-current.de.md",
+            "digest": "sha256:c4f0433adf749eea708f931dfd3c17a401c6a63390d54f139d2ad328411966bd",
+            "bytes": 1242
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/provider-attempt-1.de.md",
+            "digest": "sha256:e232287932105586e6aab72d8768a2a6ba49a65117eba408bc10bfdef2a73728",
+            "bytes": 2430
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/edit-attempt-1.de.md",
+            "digest": "sha256:2c208b4986e09a0e4d5c973c007441b2ba50829a52ec251e6881baafa3a1015a",
+            "bytes": 539
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/pre-import/image-reconstruction-prompt.de.md",
+            "digest": "sha256:83cd34be888aaa95d30d7dbef16f0b106338e88f64fe19323b808491792e7c92",
+            "bytes": 5123
+          }
+        ],
+        "originalImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/original.jpg",
+          "digest": "sha256:486739a1320205fc6c7d9d2640d8acae326414828cc9ce6ac40c7682eade16d1",
+          "bytes": 2359268
+        }
+      },
+      "selectionProvenance": {
+        "kind": "root_selected_nano_banana_generated_local_correction",
+        "selectedAttempt": 1,
+        "candidate": {
+          "path": "tmp/goal-visualizations/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae/generated/0404f20e-34cc-5c9b-ae6a-62cc9cf02bae.generated.2026-09-06T09-55-08-291Z.jpg",
+          "digest": "sha256:d05b33d62922f7cbbfe466d52a70011be2a6a834bedc7b9b1cfa39fe98f8ef37",
+          "bytes": 2049814
+        }
+      }
+    },
+    {
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "url": "/assets/goal-visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "reviewStatus": "pilot",
+      "assetDigest": "sha256:b767146d1ef184894db46aa97904f0ed4b5e3ff52403bcf05c2d0aa7ec43fd9b",
+      "assetCopies": [
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+          "digest": "sha256:b767146d1ef184894db46aa97904f0ed4b5e3ff52403bcf05c2d0aa7ec43fd9b",
+          "bytes": 2238601
+        },
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+          "digest": "sha256:b767146d1ef184894db46aa97904f0ed4b5e3ff52403bcf05c2d0aa7ec43fd9b",
+          "bytes": 2238601
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+          "digest": "sha256:b767146d1ef184894db46aa97904f0ed4b5e3ff52403bcf05c2d0aa7ec43fd9b",
+          "bytes": 2238601
+        }
+      ],
+      "canonicalPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/prompt.de.md",
+        "digest": "sha256:d21ad268a6d623faf4b461112d0c44a45bb713a37326ada128610ea07831f925",
+        "bytes": 2852
+      },
+      "canonicalPromptTextDigest": "sha256:9415cba1fae7cf5148d873c3cb5a08d69a2c934a6450b2ab76aa68b120da7344",
+      "importPrompt": {
+        "path": "tmp/goal-visualizations/1511b39a-4094-5450-a755-4a3ad3339733/nano-banana-prompt.de.md",
+        "digest": "sha256:0a8f8f8fe06a431f1eade8c00d9106d49d62f2d8bf7d1d8f4682f8107d2bc1e3",
+        "bytes": 2856
+      },
+      "canonicalReconstructionPrompt": {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/image-reconstruction-prompt.de.md",
+        "digest": "sha256:086f4477ebb79d7de320c2b7ba92d4abebd2a5c8fc52384518a90fc6415af20d",
+        "bytes": 1829
+      },
+      "reconstructionInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/reconstruction-current.de.md",
+        "digest": "sha256:1740239cfd038e6ed6d41207b527491a419c17cc910771890937cfe6f4e263c1",
+        "bytes": 1136
+      },
+      "changedGoalFields": [
+        "resourceLinks"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1511b39a-4094-5450-a755-4a3ad3339733",
+          "title": "Visualisierung: Einfache Extremwertprobleme lösen",
+          "url": "/assets/goal-visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Einfache Extremwertprobleme lösen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Extremwertprobleme lösen\". Die lernende Person kann einfache Extremwertaufgaben aus Sachsituationen mit Hilfe der Ableitung lösen und das Ergebnis im Kontext interpretieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "qaRecord": {
+        "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+        "title": "Einfache Extremwertprobleme lösen",
+        "description": "Die lernende Person kann einfache Extremwertaufgaben aus Sachsituationen mit Hilfe der Ableitung lösen und das Ergebnis im Kontext interpretieren.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/1511b39a-4094-5450-a755-4a3ad3339733/1511b39a-4094-5450-a755-4a3ad3339733.jpg",
+        "assetSha256": "sha256:b767146d1ef184894db46aa97904f0ed4b5e3ff52403bcf05c2d0aa7ec43fd9b",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      },
+      "oldApprovalsNotTransferred": true,
+      "oldImagesArchived": true,
+      "oldAlternativeExtensionFilesRetained": false,
+      "archives": {
+        "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+        "files": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/pre-import/goal.json",
+            "digest": "sha256:f50f7660b8088b095ff0deeae0fe6348e1b61bdf8a6ddf3f92f108e5a170e455",
+            "bytes": 2121
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/pre-import/resource-links.json",
+            "digest": "sha256:4964a408735ac21ec79bdb03fe19a898e38c9e0bba95328c8df37e730a04bf58",
+            "bytes": 837
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/pre-import/qa-record.json",
+            "digest": "sha256:c210e7cac8af6173ddcb35d1b6a93c88f01424291de761e512c7e61407112dc5",
+            "bytes": 2174
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/pre-import/prompt.de.md",
+            "digest": "sha256:3e261bdaf974e8ef7f51f0d03380e9ab8bd5d1fdb899b9e4414353ed90d25b0d",
+            "bytes": 2395
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/reconstruction-current.de.md",
+            "digest": "sha256:1740239cfd038e6ed6d41207b527491a419c17cc910771890937cfe6f4e263c1",
+            "bytes": 1136
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/provider-attempt-1.de.md",
+            "digest": "sha256:0a8f8f8fe06a431f1eade8c00d9106d49d62f2d8bf7d1d8f4682f8107d2bc1e3",
+            "bytes": 2856
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/edit-attempt-1.de.md",
+            "digest": "sha256:b36cfbac7e3e9338868b7be89b8b016f9705306944b37ca2dd54b51d06c99779",
+            "bytes": 1038
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/pre-import/image-reconstruction-prompt.de.md",
+            "digest": "sha256:59ec9caab81dedc5f7b4ec2beb3291eadb0bf6f370a2dbc3d502f43ec3db17a3",
+            "bytes": 4923
+          }
+        ],
+        "originalImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b037-four-local-label-corrections-v1/1511b39a-4094-5450-a755-4a3ad3339733/original.jpg",
+          "digest": "sha256:4e66e365d8d1b74d924f7e2436a0026ac943fc1e1e9aa084f89d316ca502d60b",
+          "bytes": 2292863
+        }
+      },
+      "selectionProvenance": {
+        "kind": "root_selected_nano_banana_generated_local_correction",
+        "selectedAttempt": 1,
+        "candidate": {
+          "path": "tmp/goal-visualizations/1511b39a-4094-5450-a755-4a3ad3339733/generated/1511b39a-4094-5450-a755-4a3ad3339733.generated.2026-09-06T09-55-12-844Z.jpg",
+          "digest": "sha256:b767146d1ef184894db46aa97904f0ed4b5e3ff52403bcf05c2d0aa7ec43fd9b",
+          "bytes": 2238601
+        }
+      }
+    }
+  ]
+}

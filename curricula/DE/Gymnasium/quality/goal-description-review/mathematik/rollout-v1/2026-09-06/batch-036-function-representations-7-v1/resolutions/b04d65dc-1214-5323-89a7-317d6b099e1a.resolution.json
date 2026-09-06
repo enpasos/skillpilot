@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-resolution-b04d65dc-1214-5323-89a7-317d6b099e1a",
+  "goal": {
+    "goalId": "b04d65dc-1214-5323-89a7-317d6b099e1a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:19e2cdade084b134fc567367f6fe08c63ad4a05bb344b20b865fc93f6516bd74",
+    "pageFingerprint": "sha256:d29c2a2556e1ab9322d8df0fff1d0d5a3f2a3c816fab6c16d3bd8c0d36b8428a",
+    "goalReviewContextFingerprint": "sha256:9af65f659996d48a95db680d76e3666fb77a23dbd953b75314a893d14c554527",
+    "finalText": {
+      "titleDe": "Zwischen Tabelle, Graph und Term wechseln",
+      "titleEn": "Switch between table, graph and expression",
+      "descriptionDe": "Die lernende Person kann zwischen Tabelle, Graph und Termdarstellung wechseln, Informationen konsistent übertragen und passende Kontrollschritte nutzen.",
+      "descriptionEn": "The learner can switch between table, graph and expression representations, transfer information consistently and use suitable checks."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-a",
+      "campaignDigest": "sha256:30f68756cd05a1737d0050706e64394c524db28aa5fba57b76de0914b14db73c",
+      "roundId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:258eeef4535f39a02ec3fdd4b07bc4ab898f3ffb97ecb48acd0b50b22d524666",
+      "goalReviewContextFingerprint": "sha256:9af65f659996d48a95db680d76e3666fb77a23dbd953b75314a893d14c554527",
+      "batchId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-a.batch-001",
+      "runId": "math-b036-blind-a-20260906",
+      "runManifestDigest": "sha256:0e78c6c7615f46cdb6bd974f876b9cb6decc973de68ae871a3d45a023a4d7923",
+      "resultsDigest": "sha256:4f0fa6157cb06b33462fe659b4d1d914fcf154a918cb0752e2f9e3a3f7188040",
+      "recordId": "math-b036-blind-a-20260906.goal-b04d65dc",
+      "recordDigest": "sha256:51fbb9fae88a4b776c20618048bb3831ae8aa6c88d5600402652559cbfe8927e"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-b",
+      "campaignDigest": "sha256:ee4dc4c342d520de08ddde71925f77726dba49ed8a518968ee57c2fd648e4e4d",
+      "roundId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:258eeef4535f39a02ec3fdd4b07bc4ab898f3ffb97ecb48acd0b50b22d524666",
+      "goalReviewContextFingerprint": "sha256:9af65f659996d48a95db680d76e3666fb77a23dbd953b75314a893d14c554527",
+      "batchId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-b.batch-001",
+      "runId": "math-b036-blind-b-20260906",
+      "runManifestDigest": "sha256:83ae7c64f6c1b92bcb492782caee0bcd3d08a2301f611ae3944bfc35bc55c691",
+      "resultsDigest": "sha256:eec7b8e5b50592eca616378074220090e548bd337d8c12c190d84d01d08ae500",
+      "recordId": "math-b036-blind-b-20260906.record-006",
+      "recordDigest": "sha256:fc15fa9719bdb6c60ff02eb9938f830c2dcedb2c76dd9df98dfe5e3aed457895"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:a7ec6122145c18d5e258c3de2bedcf743fbb81ed243ca2be497178b65128371d"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-b036-function-representations-parent-synthesis-20260906",
+    "manifestDigest": "sha256:556802c1892cb7c27a1d94449de8e541222334884400e13fedfd04761cdeb585",
+    "manifestFingerprint": "sha256:bf4b769bd3913dcce49f09ca62936125ce4b1fc748d1135ccfaaf6a95346368c",
+    "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "math-b036-function-representations-parent-synthesis-20260906-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-parent-full-dual-record-counterreview",
+    "synthesizedAt": "2026-09-06T09:32:15.000Z",
+    "rationaleDe": "Der Hauptvergleich der sieben zugehörigen Kontextschwerpunkte bestätigt hier konsistenten Darstellungswechsel mit Kontrolle als einen Erfolgskern. Zwei aktuelle KEEP-Records begründen dieselbe Abgrenzung zur allgemeinen Fehlerdiagnose. Endliche Tabellen bestimmen nur unter benannten Zusatzannahmen einen globalen Term.",
+    "rationaleEn": "The parent comparison of the seven contextual emphases confirms consistent representation switching with checks as one success criterion here. Two current KEEP records support the same boundary with general error diagnosis. Finite tables determine a global expression only under stated additional assumptions.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Tabelle, Graph und Term können dieselbe Zuordnung von Argumenten zu Funktionswerten darstellen. Beim Übertragen müssen Wertpaare, Definitionsbereich und erkennbare Struktur zusammenpassen; eine endliche Tabelle zeigt nur ausgewählte Werte und bestimmt ohne weitere Bedingungen nicht zwingend einen einzigen Term oder den vollständigen Verlauf.",
+      "essentialUnderstandingEn": "A table, graph and expression can represent the same assignment of arguments to function values. Translation must preserve value pairs, domain and identifiable structure; a finite table shows only selected values and, without further conditions, need not determine a unique expression or the complete graph.",
+      "observablePerformanceDe": "Die lernende Person überführt eine selbstständig bearbeitete einfache Funktionsdarstellung in die anderen Formen, etwa eine Tabelle einer vorgegebenen linearen Familie in Graph und Term, und prüft die übertragenen Werte und Merkmale gegeneinander. Sie kann bei einem anderen Ausgangsformat die Übertragungsrichtung wechseln.",
+      "observablePerformanceEn": "The learner independently converts a simple function representation into the other forms, for example a table from a specified linear family into a graph and expression, and checks the transferred values and features against one another. They can reverse the direction of translation when given a different starting format.",
+      "transferExpectationDe": "Eine neue Aufgabe beginnt statt mit einem Term mit einer Tabelle ungleich weit auseinanderliegender x-Werte und angegebener Funktionsfamilie. Die lernende Person überträgt die tatsächlichen Koordinatenabstände korrekt in den Graphen, bestimmt einen dazu passenden Term und nutzt passende Kontrollen statt ein gleichmäßiges Tabellenraster vorauszusetzen.",
+      "transferExpectationEn": "A fresh task starts with a table of unequally spaced x-values and a specified function family instead of an expression. The learner transfers the actual coordinate spacing correctly to the graph, obtains a corresponding expression and uses suitable checks rather than assuming equally spaced table entries."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-9ed0614bd42be7b030aca27ac2219386721219203e0c06aefe49f2aa26c283cc",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fd8bd8d0b3bc8e452c65f2228d6d3d6299c628acca2dead6e79fe1dc5083bfab"
+}

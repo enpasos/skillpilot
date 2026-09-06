@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b035r-blind-b-20260906",
+  "campaignId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-b",
+  "roundId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5a5d98fd75159737adc6e748141998481a2dcc81f61699596b9e34efead87e45",
+  "bundleFingerprint": "sha256:f6b5d6ce7368d9d1367d853e4edd5ef6858b749a3556761411caa4fae5c1adf7",
+  "bookDigest": "sha256:21b6ffd0d184216456c4d78e2d27bdfcf101925d503a6763bcdf7bf9730be58a",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:c2c84483e6bac8b77deaeb36c4a432dfd090d2aa84b1b1f44ac1369d07409a4c",
+  "independenceGroupId": "mathematik-rollout-v1-batch-035r-relative-dispersion-recheck-1-v1-20260906-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5b54f272-f588-5009-8b42-eb15f846d3e2"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5a5d98fd75159737adc6e748141998481a2dcc81f61699596b9e34efead87e45"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-06T08:50:43Z",
+  "completedAt": "2026-09-06T08:52:10Z",
+  "status": "completed",
+  "outputDigest": "sha256:14ef20cc355533e81db436c5251450ac5dec844cda9a4e7f07b5a95e6e8f26de",
+  "toolchainVersion": "codex-agent"
+}

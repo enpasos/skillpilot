@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `49f9059a-876c-5051-8146-d008b5cc691c.jpg`
 
 ## Zweck
@@ -18,28 +18,34 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein handgezeichnetes, lehrreiches Diagramm im Cartoon-Stil auf einem hellbeigen Hintergrund. Überall auf dem Hintergrund sind verstreute, hellgraue mathematische Symbole wie "e", "x²" und "∞" zu sehen.
+Ein handgezeichnetes, lehrreiches Diagramm im Cartoon-Stil auf einem hellbeigen Hintergrund. Der Hintergrund ist mit verstreuten, sehr hellgrauen, mathematischen Symbolen wie 'e', 'x²', '∞' und Punkten dekoriert.
 
-Oben mittig steht der Titel in einer fetten, schwarzen, abgerundeten Handschrift: "Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)".
+Oben mittig befindet sich ein abgerundetes, hellbeiges Rechteck mit dem Titel in fetter, schwarzer, runder Schrift: 'Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)'.
 
-Der Hauptinhalt ist in zwei Bereiche unterteilt: links eine Wertetabelle und rechts eine schematische Grafik, die durch Pfeile und Text miteinander verbunden sind.
+Links unter dem Haupttitel ist ein hellgraues, abgerundetes Rechteck mit dem Titel 'Wertetabelle für große x (Beispiel)' in fetter, schwarzer, runder Schrift. Darunter ist eine weiße Tabelle mit dicken schwarzen Rändern und dünnen schwarzen Linien. Die Tabelle hat 5 Zeilen und 3 Spalten.
+Die Kopfzeile enthält:
+1. Spalte: 'x' (zentriert)
+2. Spalte: 'Potenzfunktion y = x² (blau)' (zentriert, hellblauer Hintergrund)
+3. Spalte: 'Exponentialfunktion y = eˣ (rot)' (zentriert, hellroter Hintergrund)
+Die Datenzeilen sind:
+1. Zeile: '1', '1', '≈ 2.7'
+2. Zeile: '2', '4', '≈ 7.4'
+3. Zeile: '5', '25', '≈ 148.4'
+4. Zeile: '10', '100', '≈ 22026'
+Unter der Tabelle steht in schwarzer, informeller Schrift: 'Für wachsende x steigen beide, aber eˣ explodiert im Vergleich.'
 
-Links befindet sich eine Wertetabelle. Darüber steht der Titel "Wertetabelle für große x (Beispiel)" in schwarzer, abgerundeter Schrift, umrahmt von einem hellgrauen, abgerundeten Rechteck. Die Tabelle hat einen dicken schwarzen Rand und dünne schwarze Trennlinien. Die Kopfzeile enthält drei Zellen: die erste mit "x" auf weißem Grund, die zweite mit "Potenzfunktion y = x² (blau)" auf hellblauem Grund und die dritte mit "Exponentialfunktion y = eˣ (rot)" auf hellrotem Grund. Die Datenzeilen auf weißem Grund sind:
-- Erste Zeile: "1", "1", "≈ 2.7"
-- Zweite Zeile: "2", "4", "≈ 7.4"
-- Dritte Zeile: "5", "25", "≈ 148.4"
-- Vierte Zeile: "10", "100", "≈ 22026"
-Unterhalb der Tabelle steht der Text in schwarzer, abgerundeter Schrift: "Für wachsende x steigen beide, aber eˣ explodiert im Vergleich."
+Rechts unter dem Haupttitel ist ein hellgraues, abgerundetes Rechteck mit dem Titel 'Schematische Grafik: Asymptotisches Verhalten' in fetter, schwarzer, runder Schrift. Darunter ist ein schwarzes kartesisches Koordinatensystem. Die x-Achse ist mit einem Pfeil nach rechts und der Beschriftung 'x → ∞' versehen. Die y-Achse ist mit einem Pfeil nach oben und der Beschriftung 'y' versehen. Der Ursprung ist mit '0' markiert, und auf der y-Achse ist ein Strich bei '1' markiert.
+Eine blaue Kurve, beschriftet 'y = x² (Potenz)' in blauer Schrift, beginnt am Ursprung, verläuft durch (1,1) und steigt parabolisch an.
+Eine rote Kurve, beschriftet 'y = eˣ' in roter Schrift, beginnt bei (0,1) und steigt exponentiell viel steiler an als die blaue Kurve.
+Über den Kurven zeigt ein schwarzer Pfeil von dem Text 'eˣ dominiert x² deutlich' auf den Bereich, wo die rote Kurve die blaue Kurve übertrifft.
+Oben rechts im Diagramm befindet sich eine gelbe, wolkenförmige Hervorhebung mit der mathematischen Notation: 'lim (x→∞) (eˣ / x²) = ∞'. Das 'lim' und 'x→∞' sind kleiner und unter dem Bruch platziert.
+Unter dem Diagramm stehen zwei Zeilen in schwarzer, informeller Schrift:
+1. Zeile: '„Für x ≥ 0 liegt eˣ über x².“'
+2. Zeile: '„Für x → ∞ wird das Verhältnis eˣ / x² beliebig groß.“'
 
-Mehrere dicke, hellbraune Pfeile mit schwarzer Umrandung verbinden die Bereiche. Ein Pfeil zeigt vom Titel der Wertetabelle zum Titel der Grafik. Ein weiterer Pfeil zeigt von der Zelle "≈ 22026" in der Tabelle nach rechts unten, wobei die Pfeilspitze von einem gelb-orangefarbenen "Explosions"-Effekt mit zackigen Strahlen umgeben ist. Daneben steht der Text "Wächst viel schneller!" in schwarzer, abgerundeter Schrift. Ein dritter Pfeil zeigt vom Text unter der Tabelle ("Für wachsende x steigen beide...") nach rechts unten.
+Ein dicker, schwarzer, handgezeichneter Pfeil verbindet den Titel der Wertetabelle mit dem Titel der Schematischen Grafik.
+Ein dicker, handgezeichneter, hellbrauner Pfeil mit schwarzer Umrandung zeigt von der untersten rechten Zelle der Wertetabelle nach rechts. Um die Pfeilspitze herum ist ein orange-gelber "Explosions"- oder "Funkel"-Effekt dargestellt. Daneben steht in schwarzer, informeller Schrift: 'Wächst viel schneller!'.
+Ein weiterer dicker, schwarzer, handgezeichneter Pfeil zeigt vom Text unter der Wertetabelle zum Text unter der Schematischen Grafik.
 
-Rechts befindet sich eine schematische Grafik. Darüber steht der Titel "Schematische Grafik: Asymptotisches Verhalten" in schwarzer, abgerundeter Schrift, umrahmt von einem hellgrauen, abgerundeten Rechteck. Die Grafik zeigt ein schwarzes kartesisches Koordinatensystem. Die Y-Achse ist mit "y" beschriftet und zeigt nach oben. Die X-Achse ist mit "x → ∞" beschriftet und zeigt nach rechts. Der Ursprung ist mit "0" markiert. Auf der Y-Achse gibt es eine Markierung bei "1". Auf der X-Achse gibt es Markierungen bei "1" und "2". Eine gestrichelte vertikale Linie verläuft von x=2 bis zur blauen Kurve.
-Zwei Kurven sind eingezeichnet:
-- Eine blaue Kurve, die die Funktion y = x² darstellt. Sie beginnt bei (0,0), verläuft durch (1,1) und (2,4) und steigt dann weiter an. Sie ist mit "y = x² (Potenz)" in blauem Text beschriftet.
-- Eine rote Kurve, die die Funktion y = eˣ darstellt. Sie beginnt bei (0,1), verläuft durch (1, ≈2.7) und (2, ≈7.4), kreuzt die blaue Kurve zwischen x=1.5 und x=2 und steigt dann viel steiler an, wobei sie deutlich über der blauen Kurve bleibt. Sie ist mit "y = eˣ (Exponential)" in rotem Text beschriftet.
-Oberhalb der Kurven, links, steht der Text "eˣ dominiert x² deutlich" in schwarzer Schrift, mit einem kleinen schwarzen Pfeil, der auf den Bereich zeigt, wo die rote Kurve weit über der blauen liegt.
-Oben rechts im Grafikbereich befindet sich ein gelb hinterlegtes Feld mit der mathematischen Grenzwertnotation in schwarzer Schrift: "lim (x→∞) eˣ/x² = ∞".
-Unterhalb der Grafik steht der Text in schwarzer, abgerundeter Schrift: "Die rote Kurve überholt die blaue und bleibt asymptotisch weit darüber."
-
-Ganz unten, über die gesamte Breite, befindet sich ein langes, horizontales, hellgelbes, abgerundetes Rechteck. Darin steht der "Merksatz" in fetter, schwarzer, abgerundeter Handschrift: "Merksatz: Exponentialfunktion dominiert Potenzfunktion im Unendlichen."
+Ganz unten auf dem Bild ist ein langes, hellgelbes, abgerundetes Rechteck mit dem 'Merksatz: Exponentialfunktion dominiert Potenzfunktion im Unendlichen.' in fetter, schwarzer, runder Schrift.
 ```

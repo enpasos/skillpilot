@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: accepted
 - Quellbild: `af1c3116-5b55-55f5-86da-8c2cfe2c550c.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/af1c3116-5b55-55f5-86da-8c2cfe2c550c/af1c3116-5b55-55f5-86da-8c2cfe2c550c.jpg`
 
@@ -31,23 +31,17 @@ Titel: Gesundheitsrisiken physikalischer Technologien beurteilen
 Beschreibung: Die lernende Person kann Gesundheitsrisiken und Sicherheitsfragen bei physikalisch-technischen Anwendungen, einschliesslich digitaler Technologien, fachlich begruenden und Handlungsoptionen ableiten.
 
 Zusatzanweisung:
-Use case: scientific-educational.
-Regenerate the complete image as a balanced German safety infographic titled `Gesundheitsrisiken beurteilen`.
+Use case: precise-object-edit
+Asset type: vorhandene didaktische Risiko-Infografik lokal korrigieren.
+Input image: das einzige Bild ist das zu bearbeitende Original, keine bloße Stilreferenz.
 
-Use the central reasoning chain `Quelle → Exposition oder Dosis → mögliche Wirkung → passende Schutzmaßnahme` and three compact examples:
-- `Laser`: enclosure/beam stop plus `Schutzbrille passend zu Wellenlänge und optischer Dichte`; never show a generic universal safety glass.
-- `Ionisierende Strahlung`: assess dose; show the three controls `Zeit verkürzen`, `Abstand vergrößern`, `Abschirmung nutzen`.
-- `Funkfelder`: assess `Feldstärke, Dauer und Grenzwerte`; show distance as only one factor, not as a complete risk judgment by itself.
+Ändere ausschließlich das kleine Laser-Piktogramm direkt links neben „Einhausen und Strahlfänger“ in der obersten gelben Zeile der Spalte „passende Schutzmaßnahme“.
 
-Use only these short German protection labels in the examples:
-- Laser: `Einhausen und Strahlfänger` and `Schutzbrille passend zu Wellenlänge und optischer Dichte`.
-- Ionisierende Strahlung: `Zeit verkürzen`, `Abstand vergrößern`, `Abschirmung nutzen`.
-- Funkfelder: `Feldstärke, Dauer und Grenzwerte prüfen`, then `Exposition verringern` and `Grenzwerte einhalten`; distance may appear only as one way to reduce exposure.
-Do not use English words, pseudo-English phrases, or invented medical claims.
+Fehler: Der Laser strahlt im Original nach links aus dem offenen Gehäuse heraus. Rechts hinter dem Laser sitzt ein rotes trichterförmiges Objekt außerhalb des Strahlwegs. So wird der Strahl nicht abgefangen.
 
-For the possible effect of radio-frequency fields, write exactly `thermische Wirkung bei hoher Exposition`. Do not label heating itself as scientifically disputed and do not show a brain-damage, cancer, or illness icon. If uncertainty is mentioned, separate it as `weitere Wirkungen: Evidenz prüfen` without claiming that such harm exists.
+Korrektur: Erhalte den nach links gerichteten Laser, aber zeichne vor seine linke Austrittsöffnung einen mattschwarzen Strahlfängerblock im Strahlweg. Ein einzelner kurzer gerader roter Strahl läuft von der linken Laseröffnung bis zu diesem Block und endet dort vollständig. Er reicht nicht durch den Block hindurch. Entferne den roten Trichter rechts hinter dem Laser. Laser, kurzer Strahl und Strahlfänger liegen vollständig innerhalb einer geschlossenen grauen Umrandung als schematische Einhausung. Kein Strahl darf aus dieser Umrandung austreten. Kein zweiter Strahl, kein Stern außerhalb des Gehäuses, keine Reflexionsstrahlen. Die links emittierende Richtung bleibt überall eindeutig.
 
-Make clear that benefit and risk require evidence-based comparison, not alarmist icons. Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+Unverändert bleiben: alle übrigen Bilder, alle Beschriftungen einschließlich „Einhausen und Strahlfänger“, sämtliche Pfeile zwischen den Spalten, Schutzbrille, Dosis- und Strahlenrisikoangaben, Funkfeldzeile, Nutzen-Risiko-Waage, vollständiges Layout, vorhandene Schrift, Farben und der lockere Zeichenstil. Keine zusätzlichen Worte, Warnsymbole, Zahlen oder technischen IDs. Keine Neugestaltung des Gesamtbilds und kein Beschnitt.
 ```
 
 ## Review-Notiz

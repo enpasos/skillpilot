@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b032w-linear-current-context-synthesis-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-b032w-integrator",
+  "synthesizedAt": "2026-09-05T19:36:57.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905",
+    "batchManifestDigest": "sha256:76da974d6cb6a752de6911b9776da40cd98c5bba22c33a2aa493b89e62839091",
+    "configDigest": "sha256:c57adcce85d7e14f949113c3e0d66f62d9ca8ee6424a76296ec234c704a6ce07",
+    "bundleFingerprint": "sha256:631333f707dcce3d31e0cd7ff46f774af6ec71ba5c57013509bb796893ff47be",
+    "bookDigest": "sha256:9c4e87fd0d279ac105541efc00a8e13e54a3626349f2ca8137e61b219b43ad52",
+    "reviewInputFingerprint": "sha256:5b0399dd52fe93d4a6753531a0a433422896323a5e70a366066184da32395f61",
+    "dualSummaryDigest": "sha256:36172b0e566d35041a798387e34deaa3718c4159eb0d01f355cadd9e70dcb19f",
+    "canonicalLandscapeDigest": "sha256:eb9ca6bad4ff78111d360c33269722be1c43108c8b2ba16b12ef62f9afdb7e72"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-a",
+      "campaignDigest": "sha256:a36fe84bbd1613d765a0929fcef6d7132ce0853a24a0355e0049bacd873ca6c5",
+      "roundId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:5b0399dd52fe93d4a6753531a0a433422896323a5e70a366066184da32395f61",
+      "batchId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4ec357f1d41ecd31963f185b5ed77e1631cc27c2b1c36b4a65a1be04e439c2e2",
+      "runId": "math-b032w-blind-a-20260905",
+      "runManifestDigest": "sha256:4a9597e2c1d0554c12a4f82a1d38ec894ee62675afb9b2979f2ebdda6a172935",
+      "resultsDigest": "sha256:ef74b468985c8c5dfdfb1410664c0dc63f8c22cb6afd7819cc93482d2e03127a"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-b",
+      "campaignDigest": "sha256:56b76b14ccb21a88c36754cb9edde9ea8c65dcd4d9849ebc439b0d75fbff6305",
+      "roundId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:5b0399dd52fe93d4a6753531a0a433422896323a5e70a366066184da32395f61",
+      "batchId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:2672394fdb9efe034c6873e6fe792a14964c130aba9e8e7246198bb8ef22f7dd",
+      "runId": "math-b032w-blind-b-20260905",
+      "runManifestDigest": "sha256:668b7e2beda98918c2958f543c1665a6c174c81054c69c8b26d375c353615f82",
+      "resultsDigest": "sha256:1ea7ca9c61e8bfcf98999a6a5b2ef4a97495435602e78b419a33859ca7c5b2ee"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b032w-linear-current-context-synthesis-20260905-decision-001",
+      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:66a0dd400f778a16982b8dfa6cffb50385929c598342c0f6887413b9239a4d27",
+      "pageFingerprint": "sha256:b1cab023dc239cafc73f25f087e9beb55c2ea2cf1273374800eb5bf5bf382c16",
+      "goalReviewContextFingerprint": "sha256:f0622f688d6096a32298616078c5199ee765ffd2d4d28e954c9df0d798a24d95",
+      "finalText": {
+        "titleDe": "Lineare Funktionen beschreiben",
+        "titleEn": "Describe linear functions",
+        "descriptionDe": "Die lernende Person kann lineare Funktionen durch Gleichungen, Wertetabellen und Graphen darstellen sowie die Bedeutung von Steigung und y-Achsenabschnitt in einfachen Situationen deuten.",
+        "descriptionEn": "The learner can represent linear functions using equations, value tables, and graphs and interpret the meaning of slope and the y-intercept in simple situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032w-blind-a-20260905.goal-001",
+          "recordDigest": "sha256:8aa91fac79854dc30059828fb83e63e198bf26ec172306ef123513e1ec0439ce"
+        },
+        "second": {
+          "recordId": "math-b032w-blind-b-20260905.goal-001",
+          "recordDigest": "sha256:09623fb9505d428368ee534b7e6b5f102fcf0986289dbe725f86368064cdb364"
+        }
+      },
+      "rationaleDe": "Der Wortlaut blieb unverändert; nur die gebundenen Nachfolgerreferenzen änderten sich durch den Grapheneigenschaften-Split. Beide neuen isolierten Runden bestätigen Darstellung und Parameterbedeutung als kohärente Kompetenz. Die aktuelle Resolution ersetzt ausschließlich den alten B023a-Nachweis; das weiterhin gültige V2-Profil wird nicht dupliziert.",
+      "rationaleEn": "The wording is unchanged; only the bound successor references changed through the graph-properties split. Both new isolated rounds confirm representation and parameter meaning as a coherent competence. This current resolution replaces only the old B023a evidence; the still-valid V2 profile is not duplicated."
+    }
+  ],
+  "manifestFingerprint": "sha256:bea74b685a14011088ba7c556b15b0fd6fbb9acbacd4cbc624512dcb6fdbabce"
+}

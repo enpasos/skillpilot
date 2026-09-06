@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b033zc-blind-b-20260906",
+  "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-b",
+  "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:6d9fca0a460b49ab52d96f913eda6f916095cd4c2f09345348725b4af1669818",
+  "bundleFingerprint": "sha256:5459c44174fb962f0e0b8dbe3c42bd0554d7cb21ed8493207b0107d9663ef6a1",
+  "bookDigest": "sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:9fed79adb6e1ed4515279998e3996564147ff3277b4d03fb670c4280c5db8e04",
+  "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+    "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6d9fca0a460b49ab52d96f913eda6f916095cd4c2f09345348725b4af1669818"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-06T04:44:41Z",
+  "completedAt": "2026-09-06T04:48:56Z",
+  "status": "completed",
+  "outputDigest": "sha256:48e104e2ebd165caac9400401348f81f7771c01dd9c1737b74dc81e2cd520e5f",
+  "toolchainVersion": "node-20.20.2+apply_patch"
+}

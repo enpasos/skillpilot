@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-05T06:46:05.942Z
+Generated: 2026-09-06T16:02:01.359Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,22 +16,22 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1179 |
-| Atomare Blattleernziele | 923 |
-| Davon relevant fuer Quellenbegruendung | 795 |
+| Alle Mathematik-Ziele | 1181 |
+| Atomare Blattleernziele | 924 |
+| Davon relevant fuer Quellenbegruendung | 796 |
 | Memory-/Nicht-Content-Blattziele | 128 |
-| Clusterziele | 256 |
+| Clusterziele | 257 |
 | Runtime-Quellenbegruendungen | 740 |
 | Runtime-Ziele mit klassischem Quellenweg | 740 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 228 |
-| Relevante Blattziele mit klassischem Quellenweg | 740/795 (93.1%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 228/795 (28.7%) |
-| Relevante Blattziele ohne Runtime-Quellenbegruendung | 55 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 227 |
+| Relevante Blattziele mit klassischem Quellenweg | 740/796 (93.0%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 227/796 (28.5%) |
+| Relevante Blattziele ohne Runtime-Quellenbegruendung | 56 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/256 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 256 |
-| contains-Relationen mit Begruendungstext | 0/1300 |
-| requires-Relationen mit Begruendungstext | 0/2447 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/257 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 257 |
+| contains-Relationen mit Begruendungstext | 0/1302 |
+| requires-Relationen mit Begruendungstext | 0/2449 |
 
 ## Interpretation
 
@@ -47,9 +47,9 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | E | 93 | 85 (91.4%) | 24 (25.8%) | 8 |
 | Q2 | 142 | 138 (97.2%) | 21 (14.8%) | 4 |
 | Q3 | 76 | 73 (96.1%) | 16 (21.1%) | 3 |
+| J9 | 47 | 46 (97.9%) | 18 (38.3%) | 1 |
 | J10 | 58 | 58 (100.0%) | 21 (36.2%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 10 (20.8%) | 0 |
-| J9 | 46 | 46 (100.0%) | 19 (41.3%) | 0 |
 | J7 | 45 | 45 (100.0%) | 17 (37.8%) | 0 |
 | J6 | 43 | 43 (100.0%) | 22 (51.2%) | 0 |
 | J8 | 39 | 39 (100.0%) | 16 (41.0%) | 0 |
@@ -61,7 +61,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
 | unknown | 386 | 338 (87.6%) | 70 (18.1%) | 48 |
-| Analysis | 127 | 121 (95.3%) | 37 (29.1%) | 6 |
+| Analysis | 128 | 121 (94.5%) | 36 (28.1%) | 7 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
 | Geometry | 81 | 81 (100.0%) | 40 (49.4%) | 0 |
 | LinearAlgebra | 68 | 68 (100.0%) | 7 (10.3%) | 0 |
@@ -136,6 +136,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Analysis-Modelle in Sachzusammenhängen validieren (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.MODEL_VALIDATION | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Analysis-Modelle in Sachzusammenhängen validieren (LK) |
 | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.DIFFERENTIAL_CONTEXT | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
 | Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.INTEGRAL_CONTEXT | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
+| Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten (canonical_math_sek1_j9_read_quadratic_axes_and_signs) | J9 | Analysis | CANONICAL.MATH.SEK1.J9.2A2A | Mathematik > Jahrgangsstufe 9 > Quadratische Funktionen beschreiben und anwenden > Quadratische Funktionen und Gleichungen grundlegend untersuchen > Quadratische Funktionen in Darstellungen deuten > Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten > Eigenschaften quadratischer Funktionen aus Graphen ablesen > Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten |
 | Statistische Erhebungen exemplarisch planen und dokumentieren | Q3 | Stochastics | CANONICAL.MATH.SEK2.STATISTICS.SURVEYS.PLAN_AND_DOCUMENT | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Statistik und weitere Wahrscheinlichkeitsverteilungen > Q3.5 Statistik: Datenanalyse und Modellvergleich > Zufallsexperimente statistisch auswerten > Statistische Erhebungen planen, auswerten und kritisch beurteilen > Statistische Erhebungen planen und Daten aufbereiten > Statistische Erhebungen exemplarisch planen und dokumentieren |
 | Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability) | Q3 | unknown | - | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Grundlegende Begriffe und Methoden der Stochastik > Statistischen Wahrscheinlichkeitsbegriff anwenden > Empirische und theoretische Wahrscheinlichkeit unterscheiden |
 | Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) | Q3 | unknown | - | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Wahrscheinlichkeitsverteilungen (Überblick) > Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) |
@@ -225,7 +226,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Kongruenzbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Kongruenzbeziehungen ebener Figuren untersuchen |
 | Längen- und Winkelbeziehungen einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Längen- und Winkelbeziehungen einfacher Körper untersuchen |
 
-Weitere 432 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 433 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -292,11 +293,11 @@ Weitere 432 Eintraege stehen in der JSON-Begleitdatei.
 | Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by) | Q4 | Algebra | CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) |
 | Problemlösen und Argumentieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren |
 
-Weitere 196 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 197 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-05T02:50:50.988Z
+- Runtime index generated: 2026-09-06T12:05:29.301Z
 

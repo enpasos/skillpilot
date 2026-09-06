@@ -1,0 +1,123 @@
+// Bounded B038 author check: reads only original input, P rules/schema and this candidate set.
+// Run from repo root: app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-038-derivative-applications-and-exponentials-20-v1/positive-author-check.ts
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import assert from 'node:assert/strict';
+import { resolve } from 'node:path';
+import Ajv2020 from '../../../../../../../../../app/node_modules/ajv/dist/2020.js';
+import addFormats from '../../../../../../../../../app/node_modules/ajv-formats/dist/index.js';
+import { parseAndValidateGoalBookModel } from '../../../../../../../../../app/scripts/goalBookModel.ts';
+import { fingerprintPositiveGoalEvidenceProfile } from '../../../../../../../../../app/scripts/positiveGoalEvidenceProfileModel.ts';
+import { reviewPositiveGoalEvidenceConfig } from '../../../../../../../../../app/scripts/positiveGoalEvidenceReview.ts';
+const base="curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-038-derivative-applications-and-exponentials-20-v1";
+const candidatePath="curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1.candidates.json";
+const read=(p:string)=>readFileSync(resolve(p),'utf8');
+const json=(p:string)=>JSON.parse(read(p));
+const hash=(p:string)=>'sha256:'+createHash('sha256').update(readFileSync(resolve(p))).digest('hex');
+const set=json(candidatePath), config=json(base+'.config.json');
+const model=parseAndValidateGoalBookModel(read(base+'/bundle/book-model.json'));
+const manifest=json(base+'/bundle/manifest.json');
+assert.equal(model.digest,'sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817');
+assert.equal(manifest.bundleFingerprint,'sha256:0623cc80aebed4380b27bef7c75ba62d57f2e4ab0392ecb068cbc17135f689e8');
+assert.equal(manifest.bookModelDigest,model.digest);
+assert.deepEqual(set.goals.map((g:any)=>g.goalId),config.goalIds);
+assert.deepEqual(model.pages.map((p:any)=>p.goalId),config.goalIds);
+assert.equal(set.schemaVersion,1);
+assert.equal(set.authoringContract,'positive-understanding-evidence-candidates-v1');
+assert.ok(Number.isFinite(Date.parse(set.reviewedAt)));
+assert.ok(set.reviewer.includes('unbound'));
+const schemaPath='contracts/goal-evidence/v2/goal-evidence-profile.schema.json';
+const schema=json(schemaPath), ajv=new Ajv2020({allErrors:true,strict:false});
+addFormats(ajv);
+ajv.addSchema(schema);
+const valid=ajv.compile({$ref:schema.$id+'#/$defs/profile'});
+const profileFingerprints=set.goals.map((g:any)=>{
+  assert.ok(valid(g.profile),g.goalId+': '+ajv.errorsText(valid.errors));
+  assert.equal(g.evidenceLevel,'E1');assert.equal(g.maximumClaimScope,'G1');
+  assert.ok(!('goalFingerprint' in g)&&!('reviewInputFingerprint' in g)&&!('status' in g));
+  const p=g.profile, ids=p.expectations.map((e:any)=>e.id);
+  assert.equal(new Set(ids).size,ids.length);
+  assert.deepEqual(p.coverageExpectations.requiredExpectationIds,ids);
+  assert.equal(p.coverageExpectations.minimumIndependentDemonstrations,2);
+  assert.equal(p.coverageExpectations.freshVariationRequired,true);
+  assert.equal(p.coverageExpectations.independentTransferRequired,true);
+  assert.equal(p.applicationCaseBriefs.length,2);
+  assert.equal(new Set(p.applicationCaseBriefs.map((c:any)=>c.id)).size,2);
+  return {goalId:g.goalId,profileFingerprint:fingerprintPositiveGoalEvidenceProfile(p)};
+});
+let assertions=0;
+const eq=(a:number,b:number,tol=1e-10)=>{assert.ok(Math.abs(a-b)<=tol, a+' != '+b);assertions++};
+const yes=(a:boolean)=>{assert.ok(a);assertions++};
+const cases:string[]=[];
+const check=(id:string,fn:()=>void)=>{fn();cases.push(id)};
+const sgn=(x:number)=>Math.sign(x);
+check('01a',()=>{const f=(x:number)=>x**3-6*x*x+9*x;eq(f(1),4);eq(f(3),0);[0,2,4].forEach((x,i)=>eq(sgn(3*(x-1)*(x-3)),[1,-1,1][i]));});
+check('01b',()=>{eq(0**3+2,2);eq(3*0**2,0);eq(sgn(3*(-1)**2),1);eq(sgn(3*1**2),1);});
+check('02a',()=>{eq(10+6*2**2-2**3,26);eq(12*2-3*2**2,12);eq(12-6*2,0);yes(12-6*1>0&&12-6*3<0);});
+check('02b',()=>{eq(30-4*(1-1)+(1-1)**3,30);eq(-4+3*(1-1)**2,-4);yes(6*(0-1)<0&&6*(2-1)>0);});
+check('03a',()=>{eq(3*0**2,0);eq(12*0**2,0);yes((-1)**3<0&&1**3>0);yes((-1)**4>0&&1**4>0);});
+check('03b',()=>{yes(12*(-1)**2>0&&12*1**2>0);yes(20*(-1)**3<0&&20*1**3>0);eq(60*0**2,0);});
+check('04a',()=>{eq(-2*2+1,-3);eq(-2*(-2)+1,5);eq(-2*0+1,1);yes(-6*(2**2-1)<0&&-6*(0**2-1)>0);});
+check('04b',()=>{eq(0.5*0**2+5,5);eq(0*4**2+5,5);yes(2*0.5*(-1)<0&&2*0.5*1>0);});
+check('05a',()=>{const f=(x:number)=>x**4-2*x*x;eq(f(Math.SQRT2),0);eq(f(0),0);eq(f(-1),-1);eq(f(1),-1);eq(f(1/Math.sqrt(3)),-5/9);eq(12*(1/Math.sqrt(3))**2-4,0);});
+check('05b',()=>{const f=(x:number)=>x**3-0.03*x;eq(f(-0.1),0.002);eq(f(0.1),-0.002);eq(f(Math.sqrt(.03)),0);eq(3*.1**2-.03,0);yes(3*0**2-.03<0);});
+check('06a',()=>{const step=(x:number)=>x-(x*x-3)/(2*x);eq(step(2),7/4);eq(step(7/4),97/56);eq((97/56)**2-3,1/3136);});
+check('06b',()=>{const f=(x:number)=>x**3-2*x+2, step=(x:number)=>x-f(x)/(3*x*x-2);eq(step(0),1);eq(step(1),0);eq(step(-2),-1.8);eq(step(-1.8),-1.769948,1e-6);yes(Math.abs(f(step(-1.8)))<Math.abs(f(-1.8)));});
+check('07a',()=>{eq(75/50,1.5);eq(112.5/75,1.5);eq(50*1.5**2,112.5);eq(50+25*2,100);});
+check('07b',()=>{eq(160*.5**(3/3),80);eq(160*.5**(6/3),40);yes(160*.5**3!==80);});
+check('08a',()=>{eq(Math.SQRT2**2,2);eq(12*Math.SQRT2**4,48);eq(24*Math.SQRT2**2,48);});
+check('08b',()=>{eq(Math.sqrt(20/80),.5);eq(80*.5,40);eq(80*.5**4,5);});
+check('09a',()=>{eq(Math.exp(0),1);eq(Math.exp(Math.log(2)),2);});
+check('09b',()=>{eq(Math.exp(-3),1/Math.exp(3));eq(Math.exp(Math.log(4)),4);eq(Math.exp(-Math.log(4)),.25);yes(Math.exp(-3)>0);});
+check('10a',()=>{eq(100*Math.exp(.6),182.212,0.0005);eq(Math.log(2)/.2,3.466,0.0005);eq(100*(Math.exp(.2)-1),22.14,.005);});
+check('10b',()=>{eq(-Math.log(2)/3,-.23105,.000005);eq(240*Math.exp(-Math.log(2)/3*3),120);eq(240*Math.exp(-Math.log(2)/3*4.5),84.853,.0005);});
+check('11a',()=>{eq(Math.log(1.5)/Math.log(1.1),4.25416,.000005);eq(200*1.1**4,292.82);eq(200*1.1**5,322.102);yes(200*1.1**4<300&&200*1.1**5>300);});
+check('11b',()=>{eq(Math.log(.25)/Math.log(.8),6.21257,.000005);eq(80*.8**(Math.log(.25)/Math.log(.8)),20);eq(Math.log(1.25)/Math.log(.8),-1);});
+check('12a',()=>{eq(Math.sqrt(90/40),1.5);eq(40*1.5**4,202.5);eq(40*1.5**6,455.625);});
+check('12b',()=>{eq(Math.sqrt(64/100),.8);eq(100/.8,125);eq(125*.8**5,40.96);eq(125*.8**7,26.2144);yes(40.96!==50);});
+check('13a',()=>{[1,10,30].forEach(x=>yes(x*x/Math.exp(x)<=6/x));});
+check('13b',()=>{[1,10,30].forEach(t=>{eq((-t)**3*Math.exp(-t),-(t**3)/Math.exp(t));yes(t**3/Math.exp(t)<=24/t);});});
+check('14a',()=>{[-1,0,1,2].forEach((x,i)=>eq(3**x,[1/3,1,3,9][i]));});
+check('14b',()=>{[-1,0,1,2].forEach((x,i)=>{eq(.25**x,[4,1,.25,1/16][i]);eq(.25**x,4**(-x));});eq(1**(-9),1);});
+check('15a',()=>{eq(Math.exp(Math.log(3)),3);eq(Math.exp(0),1);yes(Math.exp(Math.log(3))!==Math.exp(0));});
+check('15b',()=>{eq(1/2,.5);eq(Math.exp(-Math.log(2)),.5);yes(-Math.log(2)<0&&Math.exp(-Math.log(2))>0);yes(.5<Math.exp(0));});
+check('16a',()=>{eq(2+2*.05,2.1);eq(2*Math.exp(.05),2.10254,.000005);yes(2*Math.exp(.05)>2.1);});
+check('16b',()=>{eq(Math.log(.5)*.25,-.173287,.0000005);eq((.5**3-.5**2),-.125);});
+check('17a',()=>{[10,100,1000].forEach((n,i)=>eq((1+1/n)**n,[2.593742,2.704814,2.716924][i],.0000005));});
+check('17b',()=>{const q=(h:number,a:number)=>(a**h-a**(-h))/(2*h);eq(q(.01,2.7182),.99998656,.000000005);eq(q(.01,2.7183),1.00002335,.000000005);eq(q(.001,2.71828),.99999949,.000000005);eq(q(.001,2.71829),1.00000317,.000000005);});
+check('18a',()=>{eq(100-80*.75**2,55);eq(20*1.25**2,31.25);eq(100-80,20);});
+check('18b',()=>{eq(18+62,80);eq(18+62*.5,49);eq(18+62*.5**2,33.5);eq(62*.5**2,15.5);});
+check('19a',()=>{eq(60+20,80);eq(60*.8+20,68);eq(.8*80,64);eq((68-20)/(80-20),.8);});
+check('19b',()=>{eq(50-30,20);eq(50-30*.5,35);yes(50-30*2**10<0);});
+check('20a',()=>{eq(Math.log(1.08),.076961,.0000005);eq(7*Math.exp(Math.log(1.08)),7.56);eq(Math.exp(0),1);});
+check('20b',()=>{eq(Math.exp(-.3),.740818,.0000005);eq(100*(1-Math.exp(-.3)),25.918,.0005);eq(-.3/60,-.005);eq(Math.exp(-.005),.995012,.0000005);eq(Math.exp(-.005)**60,Math.exp(-.3));});
+assert.equal(cases.length,40);
+const boundPrefix="curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-038a-derivative-applications-and-exponentials-13-v1";
+const excludedGoalIds=["781f133a-08bb-54b9-8fda-efa2f8f9b12c","346efb31-c400-5bd3-a698-dd9a7e1bc3f7","628928a6-4f48-54dc-952d-dec0e69dc856","f05acdc5-4949-54c7-b8cd-56ddd1fbdbad","d900e0a4-0c45-50dd-a37b-01f9f91a134c","ab720928-9dbc-53c2-a1f8-865dda92122d","49f9059a-876c-5051-8146-d008b5cc691c"];
+const expected13=set.goals.filter((g:any)=>!excludedGoalIds.includes(g.goalId));
+const boundSet=json(boundPrefix+'.candidates.json'), boundConfig=json(boundPrefix+'.config.json');
+assert.deepEqual(boundSet.goals.map((g:any)=>g.goalId),expected13.map((g:any)=>g.goalId));
+assert.deepEqual(boundConfig.scope.goalIds,expected13.map((g:any)=>g.goalId));
+for (const g of boundSet.goals) {
+  const original=expected13.find((x:any)=>x.goalId===g.goalId);
+  assert.deepEqual(g.profile,original.profile);
+  assert.deepEqual(g.dissent,original.dissent);
+  assert.equal(g.evidenceLevel,original.evidenceLevel);
+  assert.equal(g.maximumClaimScope,original.maximumClaimScope);
+}
+const boundReview=reviewPositiveGoalEvidenceConfig(boundPrefix+'.config.json');
+assert.deepEqual(boundReview.errors,[]);
+assert.equal(boundReview.records.length,13);
+assert.deepEqual(boundReview.counts,{approved:0,needsHumanReview:13,rejected:0});
+for (const r of boundReview.records) {
+  assert.ok(!excludedGoalIds.includes(r.goalId));
+  assert.equal(r.profileFingerprint,fingerprintPositiveGoalEvidenceProfile(expected13.find((g:any)=>g.goalId===r.goalId).profile));
+  assert.equal(r.status,'needs_human_review');assert.equal(r.reviewAuthority,'ai_candidate');
+  assert.equal(r.evidenceLevel,'E1');assert.equal(r.maximumClaimScope,'G1');assert.deepEqual(r.reviewRunIds,[]);
+}
+const boundSummary={profiles:13,cases:26,nativeErrors:0,status:'needs_human_review',authority:'ai_candidate',profileTransferExact:true,excludedGoalIds,candidateDigest:hash(boundPrefix+'.candidates.json'),configDigest:hash(boundPrefix+'.config.json'),reviewDigest:hash(boundPrefix+'.review.jsonl')};
+console.log(JSON.stringify({status:'PASS',checkedAt:new Date().toISOString(),authority:'ai_candidate',intendedStatus:'needs_human_review',binding:'unboundDraft',profiles:20,cases:40,numericAssertions:assertions,candidatePath,candidateDigest:hash(candidatePath),modelDigest:model.digest,bundleFingerprint:manifest.bundleFingerprint,profileFingerprints,boundSummary,instructionDigests:{
+ authoring:hash('curricula/DE/Gymnasium/quality/goal-evidence/prompts/positive-understanding-evidence-profile-authoring-v2.md'),
+ criteria:hash('curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md'),
+ schema:hash(schemaPath)
+},limitations:['The original 20 candidates remain unbound; the separate 13-record current binding is reported only in boundSummary.','Numeric samples check concrete arithmetic, not proofs of global signs or asymptotic limits; those arguments were authored and inspected separately.','No learner performance, human approval, source approval, image QA or central registration claimed.']},null,2));

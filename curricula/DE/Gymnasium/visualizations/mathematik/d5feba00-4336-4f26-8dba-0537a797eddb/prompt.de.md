@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: accepted
 - Quellbild: `d5feba00-4336-4f26-8dba-0537a797eddb.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/d5feba00-4336-4f26-8dba-0537a797eddb/d5feba00-4336-4f26-8dba-0537a797eddb.jpg`
 
@@ -31,9 +31,11 @@ Titel: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unt
 Beschreibung: Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und typische Fehlschlüsse fachlich begründen.
 
 Zusatzanweisung:
-Pflichtinhalt: Erstelle eine fachlich exakte Lernvisualisierung zu notwendigen und hinreichenden Bedingungen für Extrem- und Wendestellen. Nutze vier klar getrennte Felder. Extremstelle notwendig: f'(x₀) = 0, aber nicht hinreichend; Gegenbeispiel f(x) = x³ bei x₀ = 0 mit S-förmigem Durchgang und ohne Extremum. Extremstelle hinreichend: Vorzeichenwechsel von f' von plus nach minus für einen Hochpunkt oder von minus nach plus für einen Tiefpunkt. Wendestelle notwendig: f''(x₀) = 0, aber nicht hinreichend; Gegenbeispiel f(x) = x⁴ bei x₀ = 0 ohne Wendestelle. Wendestelle hinreichend: f'' wechselt das Vorzeichen; alternativ f''(x₀) = 0 und f'''(x₀) ≠ 0. Zeichnungen, Vorzeichen und Texte müssen exakt übereinstimmen.
-
-Vermeiden: eine Parabel als Graph von x³, ein Tiefpunkt als Gegenbeispiel ohne Extremum, eine Wendestelle bei x⁴, vertauschte Ableitungen oder unklare Häkchen ohne Bedingung.
+Use case: precise-object-edit
+Asset type: mathematische Lernziel-Illustration
+Input images: Bild 1 ist das zu korrigierende Original.
+Korrigiere genau eine falsche Beschriftung: Im unteren rechten großen Feld „WENDESTELLE: HINREICHENDE BEDINGUNG“ steht am rechten kleinen, sigmoidförmigen Graphen f(x)=x³. Entferne ausschließlich diese Formel neben diesem rechten kleinen Graphen und rekonstruiere an ihrer Stelle den gleichmäßig hellblauen Hintergrund. Dieser Graph ist ein qualitatives Beispiel einer glatten Funktion mit Wendestelle und wird nicht als konkrete Kubikfunktion bezeichnet.
+Wichtig: Die Formel f(x)=x³ im kleinen Gegenbeispiel oben links bleibt unverändert erhalten! Auch f(x)=x⁴ unten links bleibt unverändert. Erhalte alle vier großen Felder, jede andere Überschrift/Formel, Kurven, Achsen, Pfeile, markierten Wendestellen, Vorzeichenwechsel, Farben, Lesbarkeit und den Originalstil exakt. Keine neuen Objekte, keine neue Funktion, keine technischen IDs, keine Umgestaltung.
 ```
 
 ## Review-Notiz

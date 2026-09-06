@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b033zc-gps-rest-energy-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-b033zc-reviewed-current-pair",
+  "synthesizedAt": "2026-09-06T04:49:03.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905",
+    "batchManifestDigest": "sha256:8e3e4b805332bc4751f5699663e047e98b631ad06fde078975a57005ab1d213b",
+    "configDigest": "sha256:6ee3ea9a608c39e40692bfe305ea8731a9955af8b5872b9d4449c973088b5a4a",
+    "bundleFingerprint": "sha256:5459c44174fb962f0e0b8dbe3c42bd0554d7cb21ed8493207b0107d9663ef6a1",
+    "bookDigest": "sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b",
+    "reviewInputFingerprint": "sha256:27fe39dfb7dbc2557951bff196604a90c093941dd78fa7db02869cfe086ac6ab",
+    "dualSummaryDigest": "sha256:65c25af1217b2f917d027681b3f6644c3f6547e065c8afec3565c87d4ee82ae0",
+    "canonicalLandscapeDigest": "sha256:4d21330a783dc38687abcaf1dafc768a54af80ae9e949f38c2256c04afb48fb0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-a",
+      "campaignDigest": "sha256:390d40e33b3ca91d20c649e2b62f9dba444f6a99b76bf64766dc862d1cf08b2c",
+      "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:27fe39dfb7dbc2557951bff196604a90c093941dd78fa7db02869cfe086ac6ab",
+      "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:79f9637ee71b50538f78897311bf184baf7f459d781ad55157cde3d5f5a707ea",
+      "runId": "physics-b033zc-blind-a-20260906",
+      "runManifestDigest": "sha256:ec1265f10d8207c30bf8c9f9cd81e0c4310935280bc07f130fc5037e52391da5",
+      "resultsDigest": "sha256:26e3f5cbbd6c7ac1f4d3c297fe18b3784862b663935be3b7c9a5d7c984e11d26"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-b",
+      "campaignDigest": "sha256:65d7c8ffb7a1b3a9dad7f5596935d59099b66fc7f626507bc6dd09a3fa704b92",
+      "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:27fe39dfb7dbc2557951bff196604a90c093941dd78fa7db02869cfe086ac6ab",
+      "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6d9fca0a460b49ab52d96f913eda6f916095cd4c2f09345348725b4af1669818",
+      "runId": "physics-b033zc-blind-b-20260906",
+      "runManifestDigest": "sha256:5c0930ecc6d9fd145a39bba2804406969cb7f8ef497229c40fe421697b2f066b",
+      "resultsDigest": "sha256:48e104e2ebd165caac9400401348f81f7771c01dd9c1737b74dc81e2cd520e5f"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b033zc-gps-rest-energy-synthesis-20260906-v1-decision-001",
+      "goalId": "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c62c8bf24c0f1d8064d0f863d8e82e99654ee8b2f80c4bb80d3e444a4bf95cfc",
+      "pageFingerprint": "sha256:3dabc0e1548dbf1116f9f24a1f3fe002b031391815a8ad128cd76d50759d466b",
+      "goalReviewContextFingerprint": "sha256:f5310a3056536e4d07c34d4fee320f4a7a3c707b9e2e3dbfc7fb1aedda542438",
+      "finalText": {
+        "titleDe": "GPS und Relativitätstheorie",
+        "titleEn": "GPS and Relativity",
+        "descriptionDe": "Die lernende Person kann qualitativ erklären, wie Bewegung und Gravitation den Gang von GPS-Satellitenuhren gegenüber einer erdgebundenen Zeitreferenz beeinflussen und warum relativistische Zeitkorrekturen für eine präzise Positionsbestimmung erforderlich sind.",
+        "descriptionEn": "The learner can qualitatively explain how motion and gravity affect the rate of GPS satellite clocks relative to an Earth-based time reference and why relativistic time corrections are necessary for precise positioning."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zc-blind-a-20260906.001",
+          "recordDigest": "sha256:0f18f28c3dcd133ea29a2ce3d1d738effb6450ec28d5b86179b22d2dd99f1552"
+        },
+        "second": {
+          "recordId": "physics-b033zc-blind-b-20260906.a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+          "recordDigest": "sha256:bc083fb725d5410b05e7ca01e7833bf05dc8283676c296fc0f148259bed6c668"
+        }
+      },
+      "rationaleDe": "Beide neuen unabhängigen Runden prüfen den tatsächlich übernommenen Endtext und empfehlen KEEP. Uhrvergleich, gegensinnige Bewegungs- und Gravitationsbeiträge und deren Bedeutung für präzise Positionen bilden eine einzelne qualitative Erklärkompetenz. Runde A wird wegen der vollständigen Fehlerkette und der klar angegebenen höheren Kreisbahn als Evidenzbasis gewählt; Runde B ergänzt sinnvoll die isolierte Tempoänderung bei gleicher Höhe im simulierten Kurzabschnitt. Keine quantitative ART- oder Bahndynamikpflicht wird ergänzt. Die Quellenreconciliation und Übernahme bleiben im Vorgänger B033zb separat dokumentiert; dessen alte REVISE-Records sind nicht die aktuellen Abschlussreviews. Die Synthese bescheinigt weder eine vollständige nationale Quellen-/Projektionsprüfung noch neue Bild- oder menschliche Freigabe.",
+      "rationaleEn": "Both new independent rounds review the adopted final wording and recommend KEEP. Comparing clock rates, the opposing motion and gravity contributions, and their significance for accurate positioning form one qualitative explanatory competence. Round A supplies the evidence because it includes the complete error chain and an explicitly specified higher circular orbit; Round B usefully adds an isolated speed change at the same altitude over a short simulated trajectory segment. No quantitative general-relativity or orbital-dynamics requirement is added. Source reconciliation and adoption remain separately documented in predecessor B033zb; its old REVISE records are not the current closing reviews. This synthesis certifies neither complete national source/projection verification nor new image or human approval."
+    },
+    {
+      "decisionId": "physics-b033zc-gps-rest-energy-synthesis-20260906-v1-decision-002",
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6151dd3896ba664ec5f3ff9bbc2bd445c055bc6730ee05af402191daca85234c",
+      "pageFingerprint": "sha256:e382bfea8c013f1c703193f94bffa4295caf1881e63c0eea6dfc620b29716486",
+      "goalReviewContextFingerprint": "sha256:54bace2fea2a1d456509389086d829331a0993e52bf71c40f3624e2f125d12f8",
+      "finalText": {
+        "titleDe": "Masse-Energie-Äquivalenz einordnen",
+        "titleEn": "Classify Mass-Energy Equivalence",
+        "descriptionDe": "Die lernende Person kann die Masse-Energie-Äquivalenz E₀ = m₀c² als Beziehung zwischen Ruheenergie und invarianter Masse fachlich einordnen und an qualitativen Beispielen deuten.",
+        "descriptionEn": "The learner can explain the physical meaning of mass-energy equivalence E₀ = m₀c² as the relation between rest energy and invariant mass and interpret it using qualitative examples."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zc-blind-a-20260906.002",
+          "recordDigest": "sha256:96c0f6f4301dbdae739c603e1d36ebb0c87bcdca1bff31355727e95ac771cba8"
+        },
+        "second": {
+          "recordId": "physics-b033zc-blind-b-20260906.bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+          "recordDigest": "sha256:2d74a930b2ba1b0545018818df0f373250c7af8c1a4b3303e77b83e26ae5286b"
+        }
+      },
+      "rationaleDe": "Beide neuen unabhängigen Runden bestätigen den aktuellen Endtext mit KEEP: E₀ und m₀ benennen Ruheenergie und invariante Masse, nicht unqualifiziert geschwindigkeitsabhängige Masse. Die qualitative Einordnung und Beispieldeutung bleiben eine Kompetenz. Runde A wird gewählt, weil sie Invarianz gegenüber Bezugssystemwechsel ausdrücklich von physikalischen Änderungen innerer Energie trennt und beim Abstrahltransfer einen resultierenden Impuls ausschließt. Runde B bestätigt dieselbe Systemgrenzenlogik am Körper und seiner aufnehmenden Umgebung. Der separate V2-Kandidat operationalisiert dies durch symmetrische Emission und einen isolierten Behälter; keine neue Reaktions-, Impuls- oder Herleitungsroutine ist vorgeschrieben. Historische Übernahmebelege, unveränderte Bilder und aktuelle AI-Reviews bleiben getrennt; weder Quellenabdeckung noch menschliche Einzelabnahme werden zusätzlich behauptet.",
+      "rationaleEn": "Both new independent rounds confirm the current final wording with KEEP: E₀ and m₀ denote rest energy and invariant mass, not unqualified speed-dependent mass. Qualitative interpretation and examples remain one competence. Round A is selected because it explicitly separates reference-frame invariance from physical changes in internal energy and excludes net momentum in its radiation-transfer variation. Round B confirms the same system-boundary reasoning for a body and its receiving surroundings. The separate V2 candidate makes this concrete through symmetric emission and an isolated container; no new reaction, momentum or derivation routine is required. Historical adoption evidence, unchanged images and current AI reviews remain distinct; no additional source-coverage or individual human-acceptance claim is made."
+    }
+  ],
+  "manifestFingerprint": "sha256:ae452ec8dbfbc907a0b110ba167d912ab5c9265955931360e9f21c2d447977bd"
+}

@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b037a-current-pages-dual-synthesis-15-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-parent-full-independent-round-comparison",
+  "synthesizedAt": "2026-09-06T10:22:15.708Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906",
+    "batchManifestDigest": "sha256:6de10c6a44fdd12d7554713f25159482b7b9facec9777d88eb03f0509acd361e",
+    "configDigest": "sha256:17127a71cbb55742487aa9e11dd391ee48cb114545d58a5637b97127eeca808b",
+    "bundleFingerprint": "sha256:1a83aa529c2ab0b02ceaa982ee50347aa9ab2581f7ed1a610ad3dd8af11a94b9",
+    "bookDigest": "sha256:f0d7f2b628e5d4755366156acd9aded5c319046e52b13326af6febf99efc32bc",
+    "reviewInputFingerprint": "sha256:2ad0c9ea050e13d50a9aded8dd79485dadf7bd1b9c6e0278d903ee4ea0e916b5",
+    "dualSummaryDigest": "sha256:a6ca7c6736b8eb4177afa8593ae3e97aa70108d0f6727fe35e88257b9b6e1b39",
+    "canonicalLandscapeDigest": "sha256:aab32ad4ce33b5d91d0350def06feddd9288de1cf1eae0d41332479b809c22cf"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-a",
+      "campaignDigest": "sha256:502d35a88cf722fd4ee3dc7e17ddabb8d0954d7e68775e35a46998197436010a",
+      "roundId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:2ad0c9ea050e13d50a9aded8dd79485dadf7bd1b9c6e0278d903ee4ea0e916b5",
+      "batchId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3b6fdd21de97c55f4024e71368b0558fc4c26a4db261e5dbd968d23bfa989974",
+      "runId": "math-b037a-blind-a-20260906",
+      "runManifestDigest": "sha256:4a77b6eedb47ba0ee59212e4433465a72f577afbdfb095840c055260e0a9ad8c",
+      "resultsDigest": "sha256:eab31dc79d376777ea8a3f581012f39b1c61fddc749b12151db2163c7c395c62"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-b",
+      "campaignDigest": "sha256:547df2a045f5a97da7ab59f50a398fd0576b53471951985e585fad2a1657d61c",
+      "roundId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:2ad0c9ea050e13d50a9aded8dd79485dadf7bd1b9c6e0278d903ee4ea0e916b5",
+      "batchId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:143e1ab5a1675b6137bb52a01dc0826961b8a49269784753905776829a24342f",
+      "runId": "mathematik-b037a19-20260906-first-pass-b-run-001",
+      "runManifestDigest": "sha256:2c3d1b87e454cdf821ff97b657aebbc32f5e4a89da4536aa3a71073c7e955de0",
+      "resultsDigest": "sha256:ffbfa1c76a86d9a000ed9ec44c29a16ae83809e740a263930a8f4d22faf02a9b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-001",
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1d2bc29ba7768607c729add7f243b4b860e3b2b980a7954fb980db2cd646f40e",
+      "pageFingerprint": "sha256:83ef160b150b49fc81f5d8bb61bfdee9c7fd089459bda7d5ad624b57e0c56229",
+      "goalReviewContextFingerprint": "sha256:42160a26118fd6bbd24165f024ce89533d86168e62d3c227b11c46216d36f33f",
+      "finalText": {
+        "titleDe": "Achsen, Skalen und Einheiten lesen",
+        "titleEn": "Read axes, scales and units",
+        "descriptionDe": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+        "descriptionEn": "The learner can read axis labels, scaling and units correctly and derive values or statements from them."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.80c232f1-8f72-5829-9dbe-5a610ccab3be",
+          "recordDigest": "sha256:c729cc53cda27183b4661588a699ec5024139eae271c6a3e10794aed631aefeb"
+        },
+        "second": {
+          "recordId": "b037a19-b-80c232f1-8f72-5829-9dbe-5a610ccab3be",
+          "recordDigest": "sha256:96bd7188c2f304dd493ef8b235597b0a9faa187dd6a6f62a2f9324d2218378b7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Beide Achsenrollen, negative Skalenwerte und Hunderter-Euro-Einheit werden mit korrekten Zwischenwerten gelesen. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-002",
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6d115a45d0585730b8e5ef3d5a0864e24cb8c1c9b424b99fa8539b8ebb32f3e6",
+      "pageFingerprint": "sha256:0c9d176f4561b465ef440f6c3ec99887d28940824c2571dab2dfafa3c455519c",
+      "goalReviewContextFingerprint": "sha256:e1ac51e4442e93ee97afbd074623483d06459da02f0d28c5f915ea3fccd83fd5",
+      "finalText": {
+        "titleDe": "Kennwerte und Trends deuten",
+        "titleEn": "Interpret key values and trends",
+        "descriptionDe": "Die lernende Person kann aus Diagrammen typische Kennwerte bestimmen (z. B. Steigung, Maximum, Schnittpunkte) und Trends inhaltlich deuten.",
+        "descriptionEn": "The learner can determine typical key values from diagrams (e.g. slope, maximum, intersections) and interpret trends meaningfully."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.496f16a0-c031-5753-b988-d6cd3cab595e",
+          "recordDigest": "sha256:e5fa72575630e2089b2182cf95efcd4d4a1c6284d0c7534edec3396a80151ecc"
+        },
+        "second": {
+          "recordId": "b037a19-b-496f16a0-c031-5753-b988-d6cd3cab595e",
+          "recordDigest": "sha256:9c55ad819f912f039fb9bb2b94074899226edf4d113afabad0771ca63226959e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Plateau, abschnittsweise Änderungsraten und Vergleich zweier Verläufe sind konkret und mit Einheiten abgesichert. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-003",
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:77b254048840ff301f55c2da39f68ae59a6e7788a9fc167e80fbfa6324f1dbac",
+      "pageFingerprint": "sha256:0d27cb56f5ad69f2be9afc6015940e7c42b121479f46f6ac04f268a818f1826b",
+      "goalReviewContextFingerprint": "sha256:139ebc7191ffac845a66d8263a45403df264d046f3637eabd259f635a6a9cbd2",
+      "finalText": {
+        "titleDe": "Aussagen anhand von Diagrammen prüfen",
+        "titleEn": "Check claims using diagrams",
+        "descriptionDe": "Die lernende Person kann Aussagen anhand von Diagrammen prüfen, Belege aus dem Diagramm anführen und irreführende Darstellungen (z. B. abgeschnittene Achsen) erkennen.",
+        "descriptionEn": "The learner can check claims using diagrams, cite evidence from the diagram and detect misleading representations (e.g. truncated axes)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.fcfbff12-bd03-52ec-b242-a693212b3d2b",
+          "recordDigest": "sha256:fb967ea83122300291e040ab224ad7355e9a14929eafbbb0039efcbd3dd64005"
+        },
+        "second": {
+          "recordId": "b037a19-b-fcfbff12-bd03-52ec-b242-a693212b3d2b",
+          "recordDigest": "sha256:03ddae1b7cd0b0a34d0e79e993e70d9e8f5b05b697f641e0ed3a1b71a5eef0ed"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Abgeschnittene Wertachse und ungleiche Zeitabstände liefern unterschiedliche begründete Aussagenprüfungen. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-004",
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3263d7976c1e2035b9e598cce64c8425473b6f0c3aeb5c1f80cde2961fe351ea",
+      "pageFingerprint": "sha256:bbc3f9b9a8de08965055e5bac77cd89f5a7e50b24b13832eae89315694723e68",
+      "goalReviewContextFingerprint": "sha256:0a89e8f8188488a3cc756b26d818fda33747c3206c9993fe50387ac812300a2b",
+      "finalText": {
+        "titleDe": "Missverständnisse erklären und korrigieren",
+        "titleEn": "Explain and correct misconceptions",
+        "descriptionDe": "Die lernende Person kann typische Fehlinterpretationen bei Diagrammen benennen, verständlich korrigieren und alternative, klarere Darstellungen vorschlagen.",
+        "descriptionEn": "The learner can name typical misinterpretations in diagrams, correct them clearly and propose alternative, clearer representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.d668c22d-caeb-5e91-8980-721c931a2bcf",
+          "recordDigest": "sha256:5802ccdf99e8785c341af960d1af481727558f3f4f98634a6b44fbe3436639b7"
+        },
+        "second": {
+          "recordId": "b037a19-b-d668c22d-caeb-5e91-8980-721c931a2bcf",
+          "recordDigest": "sha256:4377ade8ace3989522cd91348f0df35a905e0ef2cb9453850424aab88885f699"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Datenverhältnis gegen Symbolfläche sowie absolute Anzahl gegen Anteil: Die Korrektur enthält jeweils eine brauchbare alternative Darstellung. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-005",
+      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3dfe26a80eaa74ebeb9a4e0b5536454e503bdeb177cc0eec57073e4b06242ef3",
+      "pageFingerprint": "sha256:6ab2d0bd730e4347302510e0a9b2a4549ce6ebeaa421eeebed0cf9ae0a3e5314",
+      "goalReviewContextFingerprint": "sha256:b9d8bb1a79501ab7ab49b4832be6bb21805dbf5d6e2e115a22ea4a9da63e692a",
+      "finalText": {
+        "titleDe": "Mittlere Änderungsrate berechnen und deuten",
+        "titleEn": "Calculate and interpret average rate of change",
+        "descriptionDe": "Die lernende Person kann mittlere Änderungsraten als Differenzenquotienten berechnen und im Kontext von Sachsituationen (z. B. Durchschnittsgeschwindigkeit) deuten.",
+        "descriptionEn": "The learner can calculate average rates of change as difference quotients and interpret them in the context of real-world situations (e.g., average speed)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+          "recordDigest": "sha256:7b1349e2e95a0029341f7c36b4ebf7682a75285be5a070c6a438008ebdd68bdc"
+        },
+        "second": {
+          "recordId": "b037a19-b-ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+          "recordDigest": "sha256:1d9a06a9ad8b3175fc7ab7bf62c3fad934ddeb477aeae730889c305be8612da2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Positive kumulierte Wegänderung und negative nichtlineare Temperaturänderung behalten Intervall, Quotienteneinheit und lokale Aussagegrenze. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-006",
+      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4bb4e75863ec2b4c95d277ae41eb3ef5f7293e3e41cb662223d8c724e96b6dbd",
+      "pageFingerprint": "sha256:4a571ef30cf547fa1535720f3ac14717144e3b77ccb033693d9ed7f73ccbb0dc",
+      "goalReviewContextFingerprint": "sha256:0b00847060407dd806123bff263ba41f8e6f1708dd5924bfc0a78da39e86b4fd",
+      "finalText": {
+        "titleDe": "Grenzwerte des Differenzenquotienten bestimmen",
+        "titleEn": "Determine limits of difference quotients",
+        "descriptionDe": "Die lernende Person kann Grenzwerte des Differenzenquotienten mit der h-Methode (h → 0) tabellarisch oder numerisch bestimmen und den Übergang von der Sekante zur Tangente begründen.",
+        "descriptionEn": "The learner can determine limits of difference quotients using the h-method (h → 0) from tables or numerically and justify the transition from secant to tangent."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+          "recordDigest": "sha256:7aaeedae0a5343f5e754c2363c9826bd8d942cdf891037d6a0cfe5c1251e32c7"
+        },
+        "second": {
+          "recordId": "b037a19-b-b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+          "recordDigest": "sha256:271f7e4b1db4a188c996eaff986c4643586fb5aba3c58a0ccb8f1d2b5ed190bb"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Beidseitige h-Tabellen tragen eine numerische Annäherung; bekannte einfache Funktionsterme ermöglichen die ausdrücklich davon getrennte Absicherung, nicht einen Beweis aus vier Zahlen. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-007",
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f1c1678a1f8c4e801f75391868474c78c3c306248ba24df4fd44ecd66f125b6c",
+      "pageFingerprint": "sha256:a253295fefcbdcea70af241619602b9e3b95935a96fd9853710be35dac5ca785",
+      "goalReviewContextFingerprint": "sha256:3c5452ad4143faf0435ae8ff978ff9c33bd828c773e734b177c317771101297e",
+      "finalText": {
+        "titleDe": "Faktor- und Summenregel beweisen und anwenden",
+        "titleEn": "Prove and apply the constant multiple and sum rules",
+        "descriptionDe": "Die lernende Person kann Faktor- und Summenregel für Ableitungen begründen, in Rechnungen anwenden und die einzelnen Ableitungsschritte nachvollziehbar darstellen.",
+        "descriptionEn": "The learner can justify the constant multiple and sum rules for derivatives, apply them in calculations, and present the individual differentiation steps coherently."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+          "recordDigest": "sha256:48efd201ba51d6e6103c4f14898c37b43e046c7d51edfd1435a2ee540633489d"
+        },
+        "second": {
+          "recordId": "b037a19-b-dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+          "recordDigest": "sha256:b0e941f20676cc2f6c346e32eb96cb33c53bacf852da96f301002503d78dcdf5"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Faktor- und Summenregel werden aus den Quotienten begründet und mit negativer Skalierung beziehungsweise algebraischer Aufhebung angewandt. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-008",
+      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:855d6182f1a765b0984fdd7ed86d156fbab0a2fab0df932accc17eede94c798c",
+      "pageFingerprint": "sha256:abb2108290540baedebf54280cfebfdb660f50e9552ab88b4e4592c505ee26fe",
+      "goalReviewContextFingerprint": "sha256:4f63dc5977393896a99f8c524a605fad651bd6c07edaa10b3e0edaf3cd6a6525",
+      "finalText": {
+        "titleDe": "Ableitung als Steigung im Punkt deuten",
+        "titleEn": "Interpret derivative as slope at a point",
+        "descriptionDe": "Die lernende Person kann den Wert der Ableitung an einem Punkt als Steigung der Tangente und als momentane Änderungsrate in Sachsituationen deuten.",
+        "descriptionEn": "The learner can interpret the value of the derivative at a point as the slope of the tangent and as the instantaneous rate of change in real-world situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.b1dcc191-d046-50de-984a-ee5c17157628",
+          "recordDigest": "sha256:ad4e2244fec064804c09423ecaaf747e906300edebf29a07b7d8422465218058"
+        },
+        "second": {
+          "recordId": "b037a19-b-b1dcc191-d046-50de-984a-ee5c17157628",
+          "recordDigest": "sha256:2500c3c68c9bfe4a81c89b1e982d26b5877c0b48428e6b3581ab3e0dc2f5f2af"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Position und Bestand bleiben vom signierten beziehungsweise verschwindenden lokalen Änderungswert getrennt. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-009",
+      "goalId": "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:32ee29ecd8f7ea58d2c64d104be4517e96e0ed57964650aa397169de75900748",
+      "pageFingerprint": "sha256:29ae8821bff5b4a89f2a039ddb4f403465747092fb6e54357dcab7489e0a402e",
+      "goalReviewContextFingerprint": "sha256:52c9cb23f9daab8f9747ba090fc8eb14a0cdeb4f94e58d80b3a383c4b127be20",
+      "finalText": {
+        "titleDe": "Von der Ableitung an einer Stelle zur Ableitungsfunktion übergehen",
+        "titleEn": "Move from the derivative at a point to the derivative function",
+        "descriptionDe": "Die lernende Person kann erklären, wie aus den Ableitungswerten an einzelnen Stellen eine Ableitungsfunktion entsteht, und diese Vorstellung an einfachen Funktionsgraphen oder Termen erläutern.",
+        "descriptionEn": "The learner can explain how a derivative function arises from derivative values at individual points and illustrate this idea using simple function graphs or terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.01acfcc8-7204-5c22-8774-13f6383f4fd4",
+          "recordDigest": "sha256:81f4a4e274eef52886ff03076dbe1842b9dd721b1f08d9521423cb9b96fadc1f"
+        },
+        "second": {
+          "recordId": "b037a19-b-01acfcc8-7204-5c22-8774-13f6383f4fd4",
+          "recordDigest": "sha256:dacd39c8b1e9b4a50d375696e43469b3e8ed910229ff2d71803b00bcbdaee2c9"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Der Übergang zur Ableitungsfunktion wird aus bekannter Term-/Geradenstruktur begründet, nicht aus einer endlichen Wertetabelle allein. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-010",
+      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e74d162728cd54db3b0f28ad3cc07253725085cc492d8a25d6d458d03e336c7b",
+      "pageFingerprint": "sha256:56a8435af980d3c20d609bb98c020703b518762a26951e63c17ad6a3937efcfa",
+      "goalReviewContextFingerprint": "sha256:dd0d068ddef252430a1ce9fdcc0c578bd2c5c1ad62d9ee0d612810ef4bf30693",
+      "finalText": {
+        "titleDe": "Zusammenhang von f und f′ am Graphen beschreiben",
+        "titleEn": "Describe relationship between f and f' on the graph",
+        "descriptionDe": "Die lernende Person kann aus dem Graphen von f Aussagen über Vorzeichen und Verlauf von f′ ableiten und umgekehrt, insbesondere bezüglich Monotonie und Extremstellen.",
+        "descriptionEn": "The learner can derive statements about the sign and course of f' from the graph of f and vice versa, especially regarding monotonicity and extrema."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.845440ce-f63f-5835-903f-739145ca27bd",
+          "recordDigest": "sha256:ec12b1848814a4f63b1ad83c10e9d39147e7804d0c2ff2d1be827dce6b1b4e83"
+        },
+        "second": {
+          "recordId": "b037a19-b-845440ce-f63f-5835-903f-739145ca27bd",
+          "recordDigest": "sha256:ae9aec6cfa8b619268644f3627e75150224bbe14e5989cc7a8194360e6d3ffaf"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Beide Darstellungsrichtungen werden geprüft; x³ zeigt ausdrücklich die stationäre Stelle ohne Extremum und die unbestimmte additive Konstante. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-011",
+      "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:480d9421f2e9c399d6060e4a294c28aed33e25e9cbdaf323bc7786fb92884281",
+      "pageFingerprint": "sha256:6663f8ca5b5f4f5c5454fd827108751b537effe8763c365264f94c2e9a76d205",
+      "goalReviewContextFingerprint": "sha256:87c64412d94d27ba8e3233d6ee73cc87ab2463f6b94d73ccaf1a8021f03fc74f",
+      "finalText": {
+        "titleDe": "Tangentengleichungen und Steigungswinkel bestimmen",
+        "titleEn": "Determine tangent equations and slope angles",
+        "descriptionDe": "Die lernende Person kann mit Hilfe der Ableitung Tangentengleichungen an Funktionsgraphen aufstellen und den Steigungswinkel der Tangente berechnen.",
+        "descriptionEn": "The learner can use the derivative to set up tangent equations to function graphs and calculate the slope angle of the tangent."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+          "recordDigest": "sha256:5cc095ff1e875725f85784a294627ffbbb5d39e3122bad3718ec4e3e4d2995a7"
+        },
+        "second": {
+          "recordId": "b037a19-b-0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+          "recordDigest": "sha256:86dbe82b0b5c94b27c19110ec0193bb44bfa3884d6ca8797bf4ae043cd384206"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Berührpunkt, Gleichung und vorzeichenbehafteter Winkel passen sowohl zur steigenden Parabel- als auch fallenden reziproken Tangente. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-012",
+      "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b5bfcf684ee3fa6cff4228471110ac5ad3c1a158e520369f422458b2086a1f59",
+      "pageFingerprint": "sha256:52e41403a588a17c46aea36b046cd94d1ddd40fcc3b0b2978077b62c4fc2d5bd",
+      "goalReviewContextFingerprint": "sha256:46841b2a53b1b1e896d039a635cb554f32f5a1f39cf1c4a391903cae145a04da",
+      "finalText": {
+        "titleDe": "Tangenten- und Normalengleichungen bestimmen",
+        "titleEn": "Determine tangent and normal equations",
+        "descriptionDe": "Die lernende Person kann mit Hilfe der Ableitung Gleichungen von Tangenten und Normalen an Funktionsgraphen bestimmen und diese in einfachen Kontexten verwenden.",
+        "descriptionEn": "The learner can use the derivative to determine equations of tangents and normals to function graphs and use them in simple contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.f042385e-f772-42db-9c96-f21a792ac5ea",
+          "recordDigest": "sha256:9212f6fea2aad0724495bedb9360641ed87dd67da3518745664055d5014f3980"
+        },
+        "second": {
+          "recordId": "b037a19-b-f042385e-f772-42db-9c96-f21a792ac5ea",
+          "recordDigest": "sha256:1bb1dc7ce40069fb567e7ee9a6bcc7a4173d58acb3571b19ecb040dab9765eec"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Lokale Geraden werden im Modell verwendet; schräge und vertikale Normalen teilen den richtigen Berührpunkt ohne Division durch null. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-013",
+      "goalId": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:052196631122ee6b73cf12abd4fd8d7b2ffa9b4d9bfd1a355478453e767f18d8",
+      "pageFingerprint": "sha256:69b7dc2368802b2b406dd1b3a2e33b949af66e5b548cd0d2994d6ce9e9a9a57d",
+      "goalReviewContextFingerprint": "sha256:5409832bd24313b5fb7b0e8bd2e4f0d72933a14a4655c13374d5e977664db257",
+      "finalText": {
+        "titleDe": "Sekanten-, Tangenten- und Normalensteigungen mit Steigungswinkeln bestimmen",
+        "titleEn": "Determine secant, tangent, and normal slopes with slope angles",
+        "descriptionDe": "Die lernende Person kann Sekanten-, Tangenten- und Normalensteigungen bestimmen und zugehörige Steigungswinkel berechnen.",
+        "descriptionEn": "The learner can determine secant, tangent, and normal slopes and calculate corresponding slope angles."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.6aed5be9-f62f-482a-9b98-4253c3275e6e",
+          "recordDigest": "sha256:b4868de60bbfba879bafd0a584bfbd8636e8753117b3be151e2da3cdd65b4346"
+        },
+        "second": {
+          "recordId": "b037a19-b-6aed5be9-f62f-482a-9b98-4253c3275e6e",
+          "recordDigest": "sha256:65b31afe436db52b0362d66b65d4a8a24d665b9627bdcac027f9b17d8978e6ad"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Sekante, Tangente und Normale werden getrennt bestimmt, Winkelkonvention und vertikaler Sonderfall sind explizit. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-014",
+      "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cf84c18c62d178dd11fd5509c20471cc86ba05c4af3ebe0c7dd8bf42faf28a5f",
+      "pageFingerprint": "sha256:e09cf8613817e5710cdaaa553c52c31699a8b56a4ad769c218e23d76d86089d1",
+      "goalReviewContextFingerprint": "sha256:47a1ae693af52e89d2fcbc3a1ae3163fbe2c4519c2e5acb7a1c029eab6fdc6cd",
+      "finalText": {
+        "titleDe": "Schnittwinkel zwischen Funktionsgraphen deuten",
+        "titleEn": "Interpret intersection angles between function graphs",
+        "descriptionDe": "Die lernende Person kann Schnittwinkel zwischen Funktionsgraphen mithilfe von Tangentensteigungen bestimmen und fachlich deuten.",
+        "descriptionEn": "The learner can determine intersection angles between function graphs using tangent slopes and interpret them mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.56b4acb5-6024-573f-9890-35fbd21ee343",
+          "recordDigest": "sha256:2523f440e39cb863dea7943700ec269407b924e87774fc4d89314decca2c17a9"
+        },
+        "second": {
+          "recordId": "b037a19-b-56b4acb5-6024-573f-9890-35fbd21ee343",
+          "recordDigest": "sha256:4e98a0d5e78b22748288d1b44cabe224d855e1139375184281d57b03882d9d5f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Lokaler Tangentenwinkel am gemeinsamen Punkt und rechter Sonderfall sind geometrisch korrekt; kein falscher Schluss aus einem Formelnenner null. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    },
+    {
+      "decisionId": "mathematik-b037a-current-pages-dual-synthesis-15-v1-decision-015",
+      "goalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b4b59988bf89faf82e02af851a36cc3d274f1ee58c943a013171d3e5821151a9",
+      "pageFingerprint": "sha256:003afb041380131aef3503b22b5b3d194713ad194a9086711c7d606fe5dca3e9",
+      "goalReviewContextFingerprint": "sha256:3e71befa959785ab2950652be4074e7508b52f6b0f1bc6df93af44b99754bc62",
+      "finalText": {
+        "titleDe": "Lokale Differenzierbarkeit am Graphen beurteilen",
+        "titleEn": "Assess local differentiability from graphs",
+        "descriptionDe": "Die lernende Person kann an Graphen die lokale Differenzierbarkeit einer Funktion beurteilen, nicht differenzierbare Stellen identifizieren und typische Gegenbeispiele (z. B. Knicke) skizzieren.",
+        "descriptionEn": "The learner can assess the local differentiability of a function from graphs, identify non-differentiable points, and sketch typical counterexamples (e.g. corners)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037a-blind-a-20260906.7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+          "recordDigest": "sha256:1ed2d78cf94a114d856410cc39756f227760b36ab3f7016188b3da7ad5baf4ff"
+        },
+        "second": {
+          "recordId": "b037a19-b-7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+          "recordDigest": "sha256:c28d3a8a5674ea761360bbc4049795b2947d7b581830996a104d292e797f6368"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Beschreibungsreviews vollständig verglichen: KEEP ist fachlich gerechtfertigt. Stetiger Knick und unstetiger Sprung sind verschiedene graphisch begründete Gegenfälle; Punktzuordnung und glatter Vergleich sind präzise. Unveränderte Beschreibungen werden nicht stilistisch umgeschrieben; Wiederverwendung nur nach vollständiger aktueller Seiten- und Kontextgleichheit.",
+      "rationaleEn": "Both independent description reviews were fully compared and support KEEP within the existing scope. The positive case profile was independently checked in both languages; no added curricular obligation or human approval is claimed. Reuse requires exact current page and context equivalence."
+    }
+  ],
+  "manifestFingerprint": "sha256:1de1e69ead876f37abfa1d97b5047ef4b90d0a0fd0527015ee138017f3337605"
+}

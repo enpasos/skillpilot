@@ -1,0 +1,7 @@
+Use case: precise-object-edit
+Asset type: mathematische Lernziel-Illustration
+Input images: Bild 1 ist das zu korrigierende Original, keine bloße Stilreferenz.
+Ändere ausschließlich folgende geometrischen Fehler im Original. Layout, Handschriftstil, Farben, sämtliche Überschriften, Formeln, Vorzeichentabellen und alle roten Ableitungsgraphen bleiben unverändert.
+1. Links bei f(x)=-x² und in der Mitte bei f(x)=x²: Entferne jeweils die kurze schräge schwarze Gerade durch den Scheitel. Die Tangente bei x=0 ist exakt waagerecht und fällt mit der vorhandenen waagerechten x-Achse zusammen. Scheitel und Berührpunkt bleiben im jeweiligen Achsenursprung. Die beschrifteten Hinweis-Pfeile bleiben erhalten und zeigen auf diesen Ursprung.
+2. Rechts beim blauen f(x)=x³: Sein Sattelpunkt muss genau im Ursprung seines oberen Koordinatensystems liegen, am Schnittpunkt der y-Achse mit der oberen x-Achse. Dort liegt seine exakt waagerechte Tangente auf dieser x-Achse, nicht oberhalb. Der blaue Kubikgraph geht links unter und rechts über diese Achse und hat am Ursprung Steigung null. Verschiebe/korrigiere nur diesen blauen Graphen, seine kurze schwarze Tangente und den Endpunkt des Hinweis-Pfeils. Die untere rote Parabel f′(x)=3x², ihr eigener Achsenursprung und die Vorzeichenzeile bleiben unverändert.
+Keine neuen Inhalte, keine technischen IDs, keine zusätzliche Umgestaltung. Prüfe vor Ausgabe die drei waagerechten Ursprungstangenten und die unveränderten korrekten Ableitungen.

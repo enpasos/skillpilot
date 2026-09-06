@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b037s-current-optimization-dual-synthesis-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-parent-full-independent-round-comparison",
+  "synthesizedAt": "2026-09-06T10:41:37.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906",
+    "batchManifestDigest": "sha256:6c5639cec5fbd29d25e4b4ca93e3b2bd76cd8d1dc89dddd3fc8bef3d3f2698e2",
+    "configDigest": "sha256:afc0831fdb9cc8136da2dccfa7d053846f80c9104afb7e4dd4703fefcfbd5fc5",
+    "bundleFingerprint": "sha256:45099430c40e65fcba4ec219e93e51e27f4659056d526a003264bcd50f0741d9",
+    "bookDigest": "sha256:4bc5174a4f58f34220bbe65cb1ef197dd4d0ccb199383125c8a4a3239b1a02ec",
+    "reviewInputFingerprint": "sha256:3b2f71f1d18a8cfb480270182575b921e76e2f4f41406d976792cdbdb11bbc6e",
+    "dualSummaryDigest": "sha256:4d0f415079b64a1e4b619c9a445117f2c2bd58bcfcf3dcaecd5206ca2fe2742a",
+    "canonicalLandscapeDigest": "sha256:aab32ad4ce33b5d91d0350def06feddd9288de1cf1eae0d41332479b809c22cf"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-a",
+      "campaignDigest": "sha256:e2b814db229a2142a602936aa784c433f095ecf28cc70714a7eaaf2242f2693c",
+      "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:3b2f71f1d18a8cfb480270182575b921e76e2f4f41406d976792cdbdb11bbc6e",
+      "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:20a15fd3ffe3d4e433c61df05aa2a6e589b56c9e8d0e65df3819565b05a84878",
+      "runId": "math-b037s-independent-a-20260906",
+      "runManifestDigest": "sha256:a1521515c624528b894e8d13f0064dfc07ceb52eae9ae292862fb77b69f170b9",
+      "resultsDigest": "sha256:f4af48e006dd21d6b98fe6cdbe458b06c86e3cb3f3dc432f0f9428214d6add2e"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-b",
+      "campaignDigest": "sha256:a207c683550064da1c757161d5c4dad68dc88dbb618fb9443e2f8ecf386fe34f",
+      "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:3b2f71f1d18a8cfb480270182575b921e76e2f4f41406d976792cdbdb11bbc6e",
+      "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:45117d913adcdbc140d3d18646748313ed447c111f5dc24402bc8bb3d8b165c5",
+      "runId": "math-b037s-optimization-20260906-blind-b",
+      "runManifestDigest": "sha256:1f2f263c269673c7c71e1c92b917d3f330ca4005b32e24b069463b723f9ae329",
+      "resultsDigest": "sha256:a3082d0119923e3723ce60298564f2f82d84d074c52ab802db2b2ec991b766d3"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b037s-current-optimization-dual-synthesis-v1-decision-001",
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e95b436df5fbdb97620489a9cf4eed0443cc98ba3262859b52d6956d786c945d",
+      "pageFingerprint": "sha256:80260c64a86b0659b67fc3386114b8b4b4b8961613576bed99e1320a4d106162",
+      "goalReviewContextFingerprint": "sha256:4bfbac053600f517ac2a8c52073a0ca4f5241be8c333266e8eeef871f53c504a",
+      "finalText": {
+        "titleDe": "Einfache Extremwertprobleme lösen",
+        "titleEn": "Solve simple extremal problems",
+        "descriptionDe": "Die lernende Person kann einfache Extremwertaufgaben aus Sachsituationen mit Hilfe der Ableitung lösen und das Ergebnis im Kontext interpretieren.",
+        "descriptionEn": "The learner can solve simple optimization problems from real-world situations using the derivative and interpret the result in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037s-a-1511b39a",
+          "recordDigest": "sha256:d3929ebdbcba99b5295b93427b43df05b31628b95812dae469e9e100e630c045"
+        },
+        "second": {
+          "recordId": "math-b037s-optimization-20260906-blind-b.001",
+          "recordDigest": "sha256:c28c62ba2817c8ac6eb5869fb8268acc008e0621bcd06c761f847ec4e1d23570"
+        }
+      },
+      "rationaleDe": "Beide frischen unabhängigen Runden vollständig gelesen: KEEP für die kohärente einfache Extremwertkompetenz mit Ableitung und Kontextdeutung. Voraussetzungen tragen die Aufgabe; komplexere Modellierung der Nachfolger wird nicht vorweggenommen. Kandidatencharakter stationärer Stellen, zulässiger Bereich und passende Randprüfung bleiben im positiven Nachweis konkret prüfbar. Beide Runden sowie die Elternsichtung bestätigen am aktuellen cadf5303-Bild die Nullstellen0/10, das Maximum(5,50) und Zaunseiten x/x/y. Historischer Plotbefund bleibt erhalten; kein Mensch oder Quellenbeleg wird als Freigabe behauptet.",
+      "rationaleEn": "Both complete fresh independent rounds support KEEP for simple derivative-based optimization and contextual interpretation, without importing more advanced successor skills. Stationary candidates, feasibility and relevant boundaries remain testable in the positive evidence. Both rounds and the parent inspection find the current image consistent at roots0/10, maximum(5,50) and fence labels x/x/y. Historical image findings are retained; no human or source approval is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:a9de7b4e9549ce44b962a9513d3a27a5143ee38506272944340be83454ca4bc5"
+}

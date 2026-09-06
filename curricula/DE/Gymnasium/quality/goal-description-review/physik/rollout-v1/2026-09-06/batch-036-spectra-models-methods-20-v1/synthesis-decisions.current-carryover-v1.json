@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-physics-b036-current-pair",
+  "synthesizedAt": "2026-09-06T09:04:13.961Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906",
+    "batchManifestDigest": "sha256:a3862f6730f9efa294aef1be1014ea7225b85b206cdec9c2d0b0ef2ee5584006",
+    "configDigest": "sha256:be718834cb6720a65bbbcc8a9ec949f753da40b1da113bec6cec0c9c4b9d9847",
+    "bundleFingerprint": "sha256:afe0b5764ffa9b1809d3590c235df4b2e4c924a39af9c1f31a884d4d3b480255",
+    "bookDigest": "sha256:53447634cd068173c688d5a94822becaddb3f1ab6aa0c8520444a531332267b0",
+    "reviewInputFingerprint": "sha256:de90a617126da2ac0b1ee4f2502e1c4abd0cdf32419a34abc59b73de63b6108b",
+    "dualSummaryDigest": "sha256:8decafb48d4e24c8c58b01ea4a205863f40994c72c2bacec8923d7b1421751fb",
+    "canonicalLandscapeDigest": "sha256:36516d37f36eb460a63e9c43abd97175b958a1b500db96dd7d8d8388b258da79"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-a",
+      "campaignDigest": "sha256:652326dc6866032af31f22d20e0af1a436f3a84fbf8f51e4fa76752df84bc34a",
+      "roundId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:de90a617126da2ac0b1ee4f2502e1c4abd0cdf32419a34abc59b73de63b6108b",
+      "batchId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1b2fd56a8d46a4d060ebe8d8bc0fbd1bbedd09e6c56ec4f72874912da37df4b9",
+      "runId": "physics-b036-blind-a-20260906",
+      "runManifestDigest": "sha256:d75647d9f08951e78b667230068895ff2cbdd6c1b59734edaa95ec0c40079a1a",
+      "resultsDigest": "sha256:23b77ee5861bfe200047d5f056b8ed76463312a252b0caf930b4b104a96e23de"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-b",
+      "campaignDigest": "sha256:bf220269e7d6bec5bfd97e699cbeaaff302b3a0e6927e7a728442c62a116373e",
+      "roundId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:de90a617126da2ac0b1ee4f2502e1c4abd0cdf32419a34abc59b73de63b6108b",
+      "batchId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7ed22681ae9f501779a2d40e970af333de7dff19459169a1eb7b47a49c56c710",
+      "runId": "physics-b036-blind-b-20260906",
+      "runManifestDigest": "sha256:4f0aae8f0254ac280b4947a3ceb0f0028c4174bd8e89a4c8e90de97c312abb4f",
+      "resultsDigest": "sha256:622f54cb2dbf2cbfa65270d46fa31c263d336bb731566a41e0b82a00bf01441a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-001",
+      "goalId": "2fab2e3a-1558-5e67-aed0-15fc51c737cd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec8b3648fc41a54ef0b0275961f5d0f62c96c9ed6464aa622c949e76559d5f95",
+      "pageFingerprint": "sha256:46ec58193c783b146ae8c8248b6203db74b38924bbcca3f9c028dc2a825ad425",
+      "goalReviewContextFingerprint": "sha256:3c231e565f1857df6fe8d23d9be855e59f30b8ac68f6e8420f5c58448839f808",
+      "finalText": {
+        "titleDe": "Teilchenphysik in der Forschung (CERN)",
+        "titleEn": "Particle Physics in Research (CERN)",
+        "descriptionDe": "Die lernende Person kann Ziele und Methoden aktueller Teilchenphysik (z. B. Beschleunigerexperimente) erläutern und Chancen sowie Grenzen großer Forschungsanlagen bewerten.",
+        "descriptionEn": "The learner can explain goals and methods of current particle physics (e.g., accelerator experiments) and evaluate opportunities and limits of large research facilities."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.001",
+          "recordDigest": "sha256:de840967ca05305999345f58ae522e64fff10dcee19980d9303229d80b6effd2"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.001",
+          "recordDigest": "sha256:a93ba644db393c229c4a441067be7487923054be931b853661839bb275d6e88f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen KEEP: Eine bereitgestellte Forschungsfrage führt von beobachtbaren Belegen zu einer begrenzten Interpretation und Kriterien zur Einordnung der Anlage. Es werden keine aktuellen CERN-Ergebnisse erfunden und weder Forschungsinferenz noch Anlagenbewertung als experimenteller Beweis ausgegeben.",
+      "rationaleEn": "Both independent rounds confirm KEEP: a supplied research question connects observable evidence to bounded interpretation and criteria for evaluating the facility. No current CERN result is invented and neither inference nor facility evaluation is presented as experimental proof."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-002",
+      "goalId": "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b25d33467cbb019eb17c1f47972506a9eaf36a426a46f210c9c5cb897f0ed251",
+      "pageFingerprint": "sha256:ea5b491d886d610d3d28e5a4fe0321f41406c1a177b73cd353785e07972281fc",
+      "goalReviewContextFingerprint": "sha256:c07b3d8d91ec67a4306fa0061db4495434c28921f46766e0ff0e6a4474185a49",
+      "finalText": {
+        "titleDe": "Emission, Absorption und Linienspektren",
+        "titleEn": "Emission, Absorption, and Line Spectra",
+        "descriptionDe": "Die lernende Person kann Emission und Absorption von Photonen im Energieniveauschema darstellen und den Zusammenhang zwischen diskreten Spektrallinien und Energieniveaudifferenzen erklären.",
+        "descriptionEn": "The learner can represent emission and absorption of photons in the energy level diagram and explain the connection between discrete spectral lines and energy level differences."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.002",
+          "recordDigest": "sha256:632ce9f1f92611e1e5e609b9ddc656ece368019eae3013d7de8cbad73f163e29"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.002",
+          "recordDigest": "sha256:c633d7e3ebb70dedae66b73f2b11c9e5999dedabfbe3497fc40bfce84487ceb2"
+        }
+      },
+      "rationaleDe": "Emission und Absorption sind komplementäre Richtungen desselben Energiedifferenzmodells; beide Runden bestätigen KEEP. Die Niveaupfeile bezeichnen Energieübergänge, keine räumlichen Bahnen. Das Modell behauptet nicht, dass jeder denkbare Übergang als Linie auftritt.",
+      "rationaleEn": "Emission and absorption are complementary directions of the same energy-difference model; both rounds confirm KEEP. Level arrows denote energy transitions, not spatial trajectories. The model does not imply that every conceivable transition produces a line."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-003",
+      "goalId": "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:92e7be0b975e7458c12db6944b5fb7e73de4ed3b8573c6e6cff5e38c533362d0",
+      "pageFingerprint": "sha256:3d577623136d976f5d5b88a16a4f8daabccb195939ae1ff6f419a33bf57ff637",
+      "goalReviewContextFingerprint": "sha256:1e5161bc1f315b300550fce4d20c832f34e4ccc3e6ab16c4f534f1bb5eda1adc",
+      "finalText": {
+        "titleDe": "Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für Modelle diskreter Energiezustände interpretieren",
+        "titleEn": "Interpret the Role of Flame Colors, Line Spectra, and Spectral Analysis for Models of Discrete Energy States",
+        "descriptionDe": "Die lernende Person kann die Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für die Entwicklung von Modellen diskreter Energiezustände der Elektronen in der Atomhülle fachlich interpretieren.",
+        "descriptionEn": "The learner can interpret the significance of flame colors, line spectra, and spectral analysis for the development of models of discrete energy states of electrons in the shell."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.003",
+          "recordDigest": "sha256:33963bbce4db35feae306e9a09391e17a6db4a302326beaefcb537f0cd40af9b"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.003",
+          "recordDigest": "sha256:096275e4a94bbf8402e4c76238d94b3536d6a6abc93ebba4a2a29e105fd740b5"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP: Flammenfärbung, aufgelöste Spektren und die damit begründete diskrete Energievorstellung bilden einen gemeinsamen Evidenzgang. Bloße Farbe ersetzt keine aufgelöste Spektralanalyse; eine vollständige Geschichte aller Atommodelle wird nicht zusätzlich verlangt.",
+      "rationaleEn": "Both rounds confirm KEEP: flame colour, resolved spectra and the resulting discrete-energy account form one evidence chain. Colour alone does not replace resolved spectral analysis; a complete history of atomic models is not added."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-004",
+      "goalId": "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1981045a832f310e5acf40959088b3414d4c3d6e2d9a106b2fe22edec3e200d3",
+      "pageFingerprint": "sha256:4f5dfcf56023e48f4fdf0a30f4282a009e54c55683bcf1e5551039b92cede711",
+      "goalReviewContextFingerprint": "sha256:7f469643ae03a03197657f1efdf3dd495397bd38d33e6f8d41dabe60adbcd954",
+      "finalText": {
+        "titleDe": "Charakteristisches Röntgenspektrum mit Energieniveaus der Atomhülle erklären",
+        "titleEn": "Explain the Characteristic X-ray Spectrum Using Electron-Shell Energy Levels",
+        "descriptionDe": "Die lernende Person kann das charakteristische Röntgenspektrum mithilfe von Energieniveaus der Atomhülle erklären.",
+        "descriptionEn": "The learner can explain the characteristic X-ray spectrum using the energy levels of the electron shell."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.004",
+          "recordDigest": "sha256:2eedc9c891da22e302f76e00414617eadf743daa6b738750fa8651153e55e6d2"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.004",
+          "recordDigest": "sha256:f5f12761c8e7595a5b22e4cdbbea7d4c6d4c187f9911a8c449a62a9c04e52170"
+        }
+      },
+      "rationaleDe": "Innere Leerstelle, nachfolgender Übergang und materialspezifische Photonenenergie sind ein kohärenter Erklärungsweg für charakteristische Röntgenstrahlung. Beide Runden bestätigen KEEP; das kontinuierliche Bremsspektrum bleibt unterscheidbar. Keine praktische Erzeugung gefährlicher Strahlung ist Teil des Nachweises.",
+      "rationaleEn": "An inner-shell vacancy, subsequent transition and material-specific photon energy form a coherent explanation of characteristic X-rays. Both rounds confirm KEEP; the continuous bremsstrahlung spectrum remains distinct. Practical generation of hazardous radiation is not part of the evidence."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-005",
+      "goalId": "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8566e3fcbfa1ede9145c386645911633ad3c8a2ff8e54dd28713c58fe8247ee2",
+      "pageFingerprint": "sha256:dd9e53dc425a0d03ced7aa7cd4a63e03aa49ed3d3706bf5e5d4dd8d976da9e2e",
+      "goalReviewContextFingerprint": "sha256:c2f38c82b1229d31545de441314600cebbce5231fc83fd900a347e4b105f0611",
+      "finalText": {
+        "titleDe": "Historische Entwicklung der Atommodelle und Modellgrenzen fachlich einordnen",
+        "titleEn": "Classify the Historical Development of Atomic Models and Their Limits",
+        "descriptionDe": "Die lernende Person kann an der historischen Entwicklung der Atommodelle spezifische Eigenschaften und Grenzen naturwissenschaftlicher Modelle fachlich herausarbeiten.",
+        "descriptionEn": "The learner can use the historical development of atomic models to work out the specific properties and limits of scientific models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.005",
+          "recordDigest": "sha256:36b0df489bc3324fd29fe685ca5aa76b4ef231c9ce5373007475659d60e42d31"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.005",
+          "recordDigest": "sha256:d78544a28956c19bb6ca720c1218299af49a2b7db1d6fceca9fab97d5bc05cb0"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP für den evidenzbezogenen Modellvergleich: Entscheidend sind die jeweilige Erklärungskraft und Grenze gegenüber einer gegebenen Beobachtung, nicht das Aufsagen einer Chronologie. Die Beispiele erweitern den Zielumfang nicht auf vollständige quantenmechanische Herleitungen.",
+      "rationaleEn": "Both rounds confirm KEEP for evidence-based model comparison: the relevant issue is each model's explanatory power and limitation for a supplied observation, not reciting chronology. Examples do not extend the goal to full quantum-mechanical derivations."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-006",
+      "goalId": "974a2d1c-2225-519d-965f-7744fe8aafd5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:015da32487d045b0bd0684d261c2cca0a56dcf1306692e1a79ef89a2af563d76",
+      "pageFingerprint": "sha256:30f1760e0b0571de7321e5609b0607b1b2a6f579c2c882d82562016c297d7301",
+      "goalReviewContextFingerprint": "sha256:2f71e0af24b2b95efcc5c4377bf9e0de37b694b00e3e75901e90e5a1b484014d",
+      "finalText": {
+        "titleDe": "Rydberg-Formel anwenden",
+        "titleEn": "Apply Rydberg Formula",
+        "descriptionDe": "Die lernende Person kann mithilfe der Rydberg-Formel Wellenlängen von Spektrallinien bestimmen und den Bezug zu Energieniveaus verdeutlichen.",
+        "descriptionEn": "The learner can determine wavelengths of spectral lines using the Rydberg formula and clarify the relation to energy levels."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.006",
+          "recordDigest": "sha256:c1189799294a1ffc3fec1763fe16f675c32a5f753801e0a1c505d112f214c2fa"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.006",
+          "recordDigest": "sha256:12d028b8665ee80b232ec0c009dc32ac6110ac00eb5224a88dea1825a1f586dc"
+        }
+      },
+      "rationaleDe": "Die Rydberg-Beziehung verbindet Niveaupaar, positive inverse Wellenlänge und Wasserstoffspektrum in einer Kompetenz. Beide Runden bestätigen KEEP; höheres und niedrigeres Niveau werden korrekt zugeordnet. Eine Übertragung auf beliebige Mehrelektronenatome wird nicht vorausgesetzt.",
+      "rationaleEn": "The Rydberg relation connects a level pair, positive inverse wavelength and the hydrogen spectrum in one competence. Both rounds confirm KEEP; higher and lower levels are assigned correctly. Generalisation to arbitrary multi-electron atoms is not assumed."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-007",
+      "goalId": "0172ca41-cc42-51d6-94ad-f0f4680059e4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7fe4bdd7c72e9b9c39a4f0cd1d5a290bc93e759ec7c0bb2b8b011cf49c1146cb",
+      "pageFingerprint": "sha256:a62a95ed543ae6bb9d4766096f83177ce7683617aea3e3251982d93520b0e3e9",
+      "goalReviewContextFingerprint": "sha256:8cb804b1f8a2fe23ad422f0ad62185c4235c49d77bdf04a9b6d76b3ae1a62126",
+      "finalText": {
+        "titleDe": "Laserprinzip (Vertiefung: Resonator-Moden)",
+        "titleEn": "Laser Principle (Advanced: Resonator Modes)",
+        "descriptionDe": "Die lernende Person kann das Resonatorprinzip und die Modenbildung im Laser erläutern und deren Bedeutung für die Lichtverstärkung deuten.",
+        "descriptionEn": "The learner can explain the resonator principle and mode formation in lasers and interpret their relevance for light amplification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.007",
+          "recordDigest": "sha256:8d665fc012c3de959364f5797327cc2003d30833881315ae9ef118ac0e2f6302"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.007",
+          "recordDigest": "sha256:f3bf7b75b64dbd93695168caf890097d745a92255386a274588876cdfe060a08"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP: Resonanzbedingung und Modenselektion beschreiben die Rückkopplung im Resonator. Der passive Resonator ist keine Energiequelle; Verstärkung setzt ein aktives Medium voraus. Idealisierungen und nicht automatisch lasernde zulässige Moden bleiben unterscheidbar.",
+      "rationaleEn": "Both rounds confirm KEEP: the resonance condition and mode selection describe resonator feedback. A passive resonator is not an energy source; amplification requires an active medium. Idealisations and allowed modes that do not necessarily lase remain distinguishable."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-008",
+      "goalId": "75f7139f-0f07-5cec-bcea-4f139502b528",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:80cd091d269ab675b3c7bc82c763de0f2f1c3cd3364797967e2815e7cc836901",
+      "pageFingerprint": "sha256:ba0c6d1e40a7712d95654870e6ba2c90a328812527ab5ed34060bcaa7397e2d0",
+      "goalReviewContextFingerprint": "sha256:d89fbd77ce7e658daade6bb7a67446a70fbf5f812bf3ca26d1ec04603ce80001",
+      "finalText": {
+        "titleDe": "Laserprinzip und Anwendungen",
+        "titleEn": "Laser Principle and Applications",
+        "descriptionDe": "Die lernende Person kann metastabile Niveaus, Besetzungsinversion und stimulierte Emission beschreiben sowie Aufbau, Funktionsprinzip und Anwendungen von Lasern erläutern.",
+        "descriptionEn": "The learner can describe metastable levels, population inversion, and stimulated emission as well as explain the structure, operating principle, and applications of lasers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.009",
+          "recordDigest": "sha256:e699d1fbeba4fec540dc8ee48dd4afbb49394614b5e9334e86828dd9268a5f10"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.009",
+          "recordDigest": "sha256:d7285dedd8dd7681ff5262bdfce2388033576af07e12f66138a33221854c0ba7"
+        }
+      },
+      "rationaleDe": "Laserprinzip und eine durch Strahleigenschaften begründete Anwendung gehören zu einem gemeinsamen Erklärungszusammenhang. Beide Runden bestätigen KEEP. Metastabilität kann ein konkretes Beispiel erklären, wird jedoch nicht als universelle Bauvorschrift für jeden Laser ausgegeben.",
+      "rationaleEn": "The laser principle and an application justified by beam properties belong to one explanatory context. Both rounds confirm KEEP. Metastability may explain a particular example but is not presented as a universal requirement for every laser."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-009",
+      "goalId": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b080115c826415cd4ca103161e9a83e056ab6733a12269ecfe641c112710fb3b",
+      "pageFingerprint": "sha256:b5690d4b58e576c0ceeae053ddd3e40d7e5c264723fd60e88245719aae4def0a",
+      "goalReviewContextFingerprint": "sha256:d1e748571f13a3581b50896b021044018e08f3791b6ee6727872c234ae330897",
+      "finalText": {
+        "titleDe": "Planetenatmosphaeren mit Spektren untersuchen",
+        "titleEn": "Investigate Planetary Atmospheres with Spectra",
+        "descriptionDe": "Die lernende Person kann erlaeutern, wie Spektren zur Untersuchung von Planetenatmosphaeren genutzt werden.",
+        "descriptionEn": "The learner can explain how spectra are used to investigate planetary atmospheres."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.010",
+          "recordDigest": "sha256:16aae0946b0258b763aed40882101ec6d617b0723d593402b5c2270329ceeff8"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.010",
+          "recordDigest": "sha256:f35b2e97b2a6f0f46155badc4e509384aed6e8a9e138140492da2151b4e8f50f"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP für den begründeten Schluss von Spektralmerkmalen auf atmosphärische Bestandteile. Referenzvergleich und begrenzte Eindeutigkeit gehören zur selben Interpretation; ein fehlendes Signal beweist nicht die Abwesenheit eines Stoffes.",
+      "rationaleEn": "Both rounds confirm KEEP for a justified inference from spectral features to atmospheric constituents. Reference comparison and limited uniqueness belong to the same interpretation; a missing signal does not prove a constituent's absence."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-010",
+      "goalId": "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6ac02bacd2d601a056910b41df15374a0188ff131bce90666d4b6ead5c572c38",
+      "pageFingerprint": "sha256:fe31fa59666cef4715401aa1dd34b0ae6144bf9fe090e4b3514ee2310ad0e525",
+      "goalReviewContextFingerprint": "sha256:f8f4862421705002f08bc4b9ed3a85b8c72622e3276aa46602dfc1fbffaedde8",
+      "finalText": {
+        "titleDe": "Physikalische Aussagen empirisch überprüfen",
+        "titleEn": "Test physical statements empirically",
+        "descriptionDe": "Die lernende Person kann an Beispielen erläutern, dass physikalische Aussagen durch Fragestellung, Hypothese, Experiment und Bestätigung oder Widerlegung überprüfbar sind.",
+        "descriptionEn": "The learner can explain with examples how physical statements can be tested through questions, hypotheses, experiments, and confirmation or refutation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.014",
+          "recordDigest": "sha256:6b5a49c6e1eda88f3b99eedd3c484dc8691bc51c00117f15ee69d48c6014608e"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.014",
+          "recordDigest": "sha256:c54beb56758ced01439d7ab25296b8a8934a56bcfc5c0ebc953e00ca5c9f768e"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP: Beobachtung, Vorhersage und begrenzte empirische Stützung werden an einer konkreten Behauptung verglichen. Bestätigung ist hier kein universeller Beweis. Eine vollständige eigenständige Forschungsstudie wird nicht zusätzlich verlangt.",
+      "rationaleEn": "Both rounds confirm KEEP: observation, prediction and bounded empirical support are compared for a concrete claim. Confirmation is not a universal proof. A complete independent research study is not additionally required."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-011",
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:52379367a20c1759b50f785fbc0e2b2105fbe2bffd9e2e183b982f5015d29dc8",
+      "pageFingerprint": "sha256:2d65a507faed0d9e7d68e33cca8c2e55bfd0a0c188936428f571fa24ec7d957f",
+      "goalReviewContextFingerprint": "sha256:efb69e934e3f9d6752d83a725253272d47e01b516bf9dca8bf96a8b32ca5d73f",
+      "finalText": {
+        "titleDe": "Funktion physikalischer Modelle erläutern",
+        "titleEn": "Explain the function of physical models",
+        "descriptionDe": "Die lernende Person kann die Funktion physikalischer Modelle an Beispielen wie Strahlenmodell, Teilchenmodell, Atommodell oder Elementarmagnetmodell erläutern.",
+        "descriptionEn": "The learner can explain the function of physical models using examples such as ray, particle, atomic, or elementary magnet models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.015",
+          "recordDigest": "sha256:ff3c3c24dc4ff1f9480a2e09a4de4d3d2be3822e595af35ce30e2349736986e9"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.015",
+          "recordDigest": "sha256:e8575bc38388fe558e148751b068c6b8c76ce10bec6120e5d435581d6f79cafb"
+        }
+      },
+      "rationaleDe": "Modelle werden hinsichtlich Zweck, Annahmen und Grenzen geprüft; beide Runden bestätigen denselben Kompetenzkern als KEEP. Mehrere Modellbeispiele sind Alternativen zur Demonstration, keine zusätzliche Pflicht zur vollständigen Beherrschung mehrerer physikalischer Theorien.",
+      "rationaleEn": "Models are examined for purpose, assumptions and limitations; both rounds confirm KEEP for this shared competence. Multiple model examples are alternatives for demonstration, not an additional obligation to master several complete physical theories."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-012",
+      "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:028099e53583ff77cba011b3a0732e609d8d75f943b78a3571c6149acb59a1e0",
+      "pageFingerprint": "sha256:15ba65b04cf5ca6dfe8d82a30999f5ffbbb5ec36784f7c17f319cc7b82cbe306",
+      "goalReviewContextFingerprint": "sha256:292272088a48feec008c3a1a3bc060e57fe987618919d2f3c5c0ee1ba33969d0",
+      "finalText": {
+        "titleDe": "SI-Einheiten in physikalischen Beispielen nutzen",
+        "titleEn": "Use SI units in physical examples",
+        "descriptionDe": "Die lernende Person kann die Funktion des SI-Einheitensystems erläutern und einfache physikalische Größen mit passenden SI-Einheiten angeben.",
+        "descriptionEn": "The learner can explain the function of the SI system and state simple physical quantities with suitable SI units."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.016",
+          "recordDigest": "sha256:111a84c942406eb20142d0874fa700cb260119b11b6ef741f5a7c5eae9da1d90"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.016",
+          "recordDigest": "sha256:efc9d3eaec30cc6d8f0420a1c42695923961cbf99ceede4a22d14e62d3dd03e2"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP: Größe, Einheit und einheitenkonsistente Darstellung bilden denselben Umgang mit SI-Größen. Die Beispiele unterscheiden Basiseinheit und abgeleitete Einheit, ohne alle definierenden Naturkonstanten als neue Memorierpflicht einzuführen.",
+      "rationaleEn": "Both rounds confirm KEEP: quantities, units and unit-consistent representation form the same use of SI quantities. Examples distinguish base and derived units without introducing memorisation of all defining constants."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-013",
+      "goalId": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:00db0d12da0e9027d122e0ec72d89581ac36a923f2351923fcdee3d5e67b76af",
+      "pageFingerprint": "sha256:3f14428af033da74de3682fff6616f86d7543dbbfde687458e94e33cf00fb1ab",
+      "goalReviewContextFingerprint": "sha256:fb4f77e13e01bd06f68a60efe7963f6d8d0f87e0288661871a6fe51b7842356d",
+      "finalText": {
+        "titleDe": "Astronomische Groessenordnungen und Einheiten",
+        "titleEn": "Astronomical Scales and Units",
+        "descriptionDe": "Die lernende Person kann astronomische Distanzen, Massen und Leuchtkraefte mit Einheiten wie Astronomischer Einheit, Lichtjahr, Parsec, Sonnenmasse und Sonnenleuchtkraft beschreiben und einordnen.",
+        "descriptionEn": "The learner can describe and classify astronomical distances, masses, and luminosities using units such as astronomical unit, light-year, parsec, solar mass, and solar luminosity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.017",
+          "recordDigest": "sha256:99fdf5caf75cce6bc6886d46f5f8a20636f57b164f153ea8fea913623416c7dd"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.017",
+          "recordDigest": "sha256:0db0821747a0cbb36d19117c1580054a8e508d466a8061dd3f6a4cbc7766881f"
+        }
+      },
+      "rationaleDe": "Astronomische Maßstäbe und ihre Umrechnung bilden einen zusammenhängenden Kompetenzkern, den beide Runden als KEEP bestätigen. Längen-, Massen- und Leistungsmaßstäbe werden nicht vermischt; Leuchtkraft bleibt von scheinbarer Helligkeit getrennt. Parallaxenmessung wird nicht zusätzlich gefordert.",
+      "rationaleEn": "Astronomical scales and their conversion form one coherent competence, confirmed as KEEP by both rounds. Length, mass and power scales are not conflated; luminosity remains distinct from apparent brightness. Parallax measurement is not an added requirement."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-014",
+      "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:22fcfe58e6dd2b900899384a1565b8d205ef878595dc2cc2a39df949047974cf",
+      "pageFingerprint": "sha256:041993105cc8d558befe98ece293685af5a36baed8414c6c3cae5519f8a50291",
+      "goalReviewContextFingerprint": "sha256:317b0f591e7b81b1f13db557e63cd3e14a18cabbd84912c5e0431c64a3ef8318",
+      "finalText": {
+        "titleDe": "Experimente planen und Messdaten auswerten",
+        "titleEn": "Plan experiments and evaluate measurement data",
+        "descriptionDe": "Die lernende Person kann zu einer physikalischen Fragestellung einen einfachen Versuchsaufbau planen, Messdaten strukturiert erfassen und mit passenden Darstellungen oder einfacher Mathematisierung auswerten.",
+        "descriptionEn": "The learner can plan a simple experimental setup for a physical question, record measurement data systematically, and evaluate them with suitable representations or simple mathematization."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.018",
+          "recordDigest": "sha256:34447a1ef9d240be81b93a7876d8083be3b66745c0d2fb52cae9befc3912117a"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.018",
+          "recordDigest": "sha256:043494ddd6a9f7b26d89ceeb0d51089c04d434711e90f3fb9c9efee1afb51563"
+        }
+      },
+      "rationaleDe": "Planung, nachvollziehbares Protokoll und Auswertung desselben begrenzten Experiments gehören zusammen; beide Runden bestätigen KEEP. Variablenkontrolle und Unsicherheitsdeutung operationalisieren den vorhandenen Anspruch, statt unabhängige zusätzliche Fachthemen einzuführen.",
+      "rationaleEn": "Planning, a traceable record and analysis of the same bounded experiment belong together; both rounds confirm KEEP. Variable control and interpreting uncertainty operationalise the existing requirement instead of adding independent subject topics."
+    },
+    {
+      "decisionId": "physics-b036-current-fifteen-keep-synthesis-20260906-v1-decision-015",
+      "goalId": "0dd1e39c-8557-5a4e-b467-caae964fff67",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fd90a9742173caef84f4218d4c628a29d70ee2ccc37f4aaeb079259e703c0058",
+      "pageFingerprint": "sha256:db20e81349b62a5aef4c4282bc778effcc053ecdf401d191d5d5581cd8669548",
+      "goalReviewContextFingerprint": "sha256:4c93b65be4361a1188e96512239aee3b856b443c55456bf44a4c6cfd74f36051",
+      "finalText": {
+        "titleDe": "Solarmodule in Schaltungen experimentell untersuchen",
+        "titleEn": "Experimentally investigate solar modules in circuits",
+        "descriptionDe": "Die lernende Person kann Stromstärke und Spannung von Solarmodulen in Reihen- und Parallelschaltungen messen, Einflussgrößen wie Neigung oder Beschattung variieren und Schlussfolgerungen für eine geeignete Nutzung ziehen.",
+        "descriptionEn": "The learner can measure current and voltage of solar modules in series and parallel circuits, vary influences such as tilt or shading, and draw conclusions for suitable use."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b036-blind-a-20260906.019",
+          "recordDigest": "sha256:7384a57d959e12f4ac8315bd6e9c6b2b7083a21187d61375a7605c7be73bbf4e"
+        },
+        "second": {
+          "recordId": "physics-b036-blind-b-20260906.019",
+          "recordDigest": "sha256:5edd8573348e511e43df8807954ad78c27f6b75b1d7fdd8dd697cb78c51b5588"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP für den experimentellen Vergleich von Solarmodulschaltungen. Kontrollierte Beleuchtung, gleiche Module und festgehaltene Belastungsbedingungen tragen die Interpretation von Strom und Spannung. Die Untersuchung bleibt bei sicheren Unterrichtsmodulen; Optimierung eines vollständigen MPP-Reglers ist kein neuer Zielbestandteil.",
+      "rationaleEn": "Both rounds confirm KEEP for experimentally comparing solar-module circuits. Controlled illumination, matched modules and specified load conditions support interpreting current and voltage. Investigation stays with safe classroom modules; optimising a complete maximum-power-point controller is not an added goal."
+    }
+  ],
+  "manifestFingerprint": "sha256:2000128349403f6281b0bd6b47207f2ffe5896b956b1b677f788ccbd8fbeb74c"
+}

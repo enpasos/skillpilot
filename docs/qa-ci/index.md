@@ -108,6 +108,8 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Mathematik/Physik: Wiederaufnahme- und Effizienzreview, 2026-09-05](math-physics-deep-understanding-resumption-review-2026-09-05.md)
+  Geprüfte Wiederverwendung der begonnenen Batches, strenge Fortschrittszähler und dokumentierte Wiederaufnahme mit begrenztem Strukturentscheid.
 - [Mathematik/Physik Deep-Understanding Verfahrensreview und Zwischenstopp, 2026-09-02](math-physics-deep-understanding-procedure-review-2026-09-02.md)
   Reviewed high-quality rollout procedure, strict progress boundary, protected B029/B031 in-flight state, and exact resumable handoff.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-29](math-physics-deep-understanding-rollout-checkpoint-2026-08-29.md)

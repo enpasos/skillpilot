@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b038-three-clarification-adoption-v1",
+  "recordedAt": "2026-09-06T11:56:17.187Z",
+  "authority": {
+    "execution": "codex_ai_agent",
+    "reviewAuthority": "ai_candidate",
+    "humanApprovalClaimed": false,
+    "scopeDirection": "Exact three root-directed bilingual clarifications after root adjudication. This emitter does not inspect another D/P review, grant curriculum publication authority, or claim a human review."
+  },
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:bc1197fed423ac41f50a08559989c395c5c56cc3af1c2d5355938d86112b342c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:f9cc031f5baec3dd1c195d259f2b603a6894ec22a4692df3011412073a5bd9b6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "sha256": "sha256:ec7e55144e37ba70175d8772c7f37293f26a640193af548444edb13a866a8250"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "sha256": "sha256:67b010f19408b74992e201613220ea31599fcb74e9559d44f3f8333d257dc20c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl",
+      "sha256": "sha256:184e422a8cde529963758beadbd671c1b28aa7ec2f705dbe6f8dda65a4866d21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.de.json",
+      "sha256": "sha256:85be5a28d8a1f947c727bdd37fc216f3d8817f1567d0ca3c3a373931e648d3fa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.en.json",
+      "sha256": "sha256:4b854f3fa5f9d3c57c5e7c3a3f100163d6c28775e5dd1386aca55362a6a8c106"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "sha256": "sha256:1a02d601a1022a0167d339599b8ef3ef9dc2f67c4fe5ea8b59141e6fdbe42e1f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "sha256": "sha256:5e1e071231587496e7bd5ecab4a8bee07fa51eea1db08d39f2112b0ef7e0fa1e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "sha256": "sha256:90d5511603dc1d31fa33161b7f0a7425469c48e16dd03b96619a0ecb0bd92f9b"
+    },
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:5b36dae5a957dd48fa19a3ca974381caefa22bdaec2c1842e63dbe94279a13fa"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+      "sha256": "sha256:22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+    },
+    {
+      "path": "tmp/adopt-math-b038-three-clarifications.ts",
+      "sha256": "sha256:abac83e67b75a48e63a452f3676c899bdf4f4dc4301a8eddb110f077923492c8"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+      "sha256": "sha256:4ea9aae846288db456ae21e6131feecc224fa89b55df942361f91bfe2cb6a071"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+      "sha256": "sha256:a9b4d55b6287739bb7cb40dc8837823491b269093fd29568a5e4868c12e0af7a"
+    }
+  ],
+  "changes": [
+    {
+      "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+      "before": {
+        "id": "d5feba00-4336-4f26-8dba-0537a797eddb",
+        "title": "Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden",
+        "titleEn": "Distinguish necessary and sufficient conditions for extrema and inflection points",
+        "description": "Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und typische Fehlschlüsse fachlich begründen.",
+        "descriptionEn": "The learner can distinguish between necessary and sufficient conditions for extrema and inflection points and justify common misconceptions mathematically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "b3604df4-15a8-41c8-a8b0-50dadd698bd3"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.3",
+            "K2.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+            "title": "Visualisierung: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden",
+            "url": "/assets/goal-visualizations/mathematik/d5feba00-4336-4f26-8dba-0537a797eddb/d5feba00-4336-4f26-8dba-0537a797eddb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden\". Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und typische Fehlschlüsse fachlich begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "after": {
+        "id": "d5feba00-4336-4f26-8dba-0537a797eddb",
+        "title": "Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden",
+        "titleEn": "Distinguish necessary and sufficient conditions for extrema and inflection points",
+        "description": "Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und fachlich begründen, warum typische Fehlschlüsse unzulässig sind.",
+        "descriptionEn": "The learner can distinguish between necessary and sufficient conditions for extrema and inflection points and explain mathematically why typical invalid inferences are not justified.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "b3604df4-15a8-41c8-a8b0-50dadd698bd3"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.3",
+            "K2.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+            "title": "Visualisierung: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden",
+            "url": "/assets/goal-visualizations/mathematik/d5feba00-4336-4f26-8dba-0537a797eddb/d5feba00-4336-4f26-8dba-0537a797eddb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden\". Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und typische Fehlschlüsse fachlich begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "changedCanonicalFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "bindingsBefore": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "fingerprint": "sha256:21e6ba4401620ddac56fc98b11cd634fda572666e40ad695bb11b238e88ce756",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "fingerprint": "sha256:3e188470b31a4a74880419810857227f004a48b02affdbeb86e74c6df289423e",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend.",
+          "memoryGoalIds": [
+            "ca708087-71f8-5fae-91c5-b80721a4208f"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_analysis_core"
+          ]
+        },
+        "semanticKind": {
+          "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "sourceFingerprint": "sha256:3d49a24153941ef3509c730abc7b251cb60d904be3c3362fb8cbdf97adfb481a",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "bindingsAfter": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "fingerprint": "sha256:1c734380a89a0176167e1970a2430294f8f22cb54d322be49e2348129c20f9c5",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: Der gemeinsame Gegenstand ist die logische Tragweite notwendiger und hinreichender Ableitungsbedingungen für Extrem- und Wendestellen. Gegenbeispiele wie x³ ohne Extremum trotz f'(0)=0 und x⁴ ohne Wendestelle trotz f''(0)=0 prüfen dieselbe Schlusslogik. Die Präzisierung richtet die Begründung ausdrücklich auf die Unzulässigkeit des Fehlschlusses; sie fügt keine unabhängige Untersuchungsroutine hinzu. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "fingerprint": "sha256:cd9bcffaa1009a37d8111eecf40c6639c575288eb08e0d773f04080a8158c2e4",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: memory_required bleibt begründet und unverändert: Die drei tatsächlich gelesenen aktiven Karten math_analysis_c08, c09 und c10 enthalten kurze notwendige beziehungsweise hinreichende Kriterien, die im glatten inneren Kurvendiskussionskontext sicher abrufbar sein müssen. Ihre DE-Primärfingerprints und kept/necessary-Originverweise auf dieses Ziel sind aktuell. Memoryziel ca708087-71f8-5fae-91c5-b80721a4208f und Deck de_gymnasium_math_analysis_core bleiben bestehen. Die Karten ersetzen weder Gegenbeispiele noch Begründungen; diese Vorbereitung ist keine neue Kartenfreigabe oder vollständige Sichtbarkeitsprüfung. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet.",
+          "memoryGoalIds": [
+            "ca708087-71f8-5fae-91c5-b80721a4208f"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_analysis_core"
+          ]
+        },
+        "semanticKind": {
+          "goalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "sourceFingerprint": "sha256:cde39f3bc7eb337badda6a76083d1db2bb37c8ea279604ccefbbba6f5a42e853",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "individualReassessment": {
+        "atomicityReason": "Der gemeinsame Gegenstand ist die logische Tragweite notwendiger und hinreichender Ableitungsbedingungen für Extrem- und Wendestellen. Gegenbeispiele wie x³ ohne Extremum trotz f'(0)=0 und x⁴ ohne Wendestelle trotz f''(0)=0 prüfen dieselbe Schlusslogik. Die Präzisierung richtet die Begründung ausdrücklich auf die Unzulässigkeit des Fehlschlusses; sie fügt keine unabhängige Untersuchungsroutine hinzu.",
+        "memoryReason": "memory_required bleibt begründet und unverändert: Die drei tatsächlich gelesenen aktiven Karten math_analysis_c08, c09 und c10 enthalten kurze notwendige beziehungsweise hinreichende Kriterien, die im glatten inneren Kurvendiskussionskontext sicher abrufbar sein müssen. Ihre DE-Primärfingerprints und kept/necessary-Originverweise auf dieses Ziel sind aktuell. Memoryziel ca708087-71f8-5fae-91c5-b80721a4208f und Deck de_gymnasium_math_analysis_core bleiben bestehen. Die Karten ersetzen weder Gegenbeispiele noch Begründungen; diese Vorbereitung ist keine neue Kartenfreigabe oder vollständige Sichtbarkeitsprüfung.",
+        "semanticKindReason": "Das fachliche Blatt verlangt überprüfbare mathematische Argumentation über Bedingungen. Der gesonderte Memory-Anteil macht das Inhaltsziel nicht selbst zum Memoryknoten; es ist weder Orientierung noch terminales Assessment. curricularAtomic bleibt bestehen.",
+        "authority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "visualizationHandoff": "Every resourceLink is retained as freshly read at emission. Image bytes and QA including pre-existing human approvals are untouched. Root owns any description-based alt/QA snapshot synchronization and must not interpret this receipt as renewed image approval."
+    },
+    {
+      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "before": {
+        "id": "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+        "titleEn": "Use properties of the natural exponential function",
+        "description": "Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+        "descriptionEn": "The learner can motivate $e^x$, justify important properties (values, derivative, behavior at infinity) and use $e^x$ to model continuous processes.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+            "title": "Visualisierung: Eigenschaften der natürlichen Exponentialfunktion begründen",
+            "url": "/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Eigenschaften der natürlichen Exponentialfunktion begründen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Eigenschaften der natürlichen Exponentialfunktion begründen\". Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "after": {
+        "id": "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+        "titleEn": "Justify properties of the natural exponential function",
+        "description": "Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+        "descriptionEn": "The learner can motivate $e^x$ and justify important properties such as its values, derivative, and behavior at infinity.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+            "title": "Visualisierung: Eigenschaften der natürlichen Exponentialfunktion begründen",
+            "url": "/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Eigenschaften der natürlichen Exponentialfunktion begründen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Eigenschaften der natürlichen Exponentialfunktion begründen\". Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "changedCanonicalFields": [
+        "descriptionEn",
+        "titleEn"
+      ],
+      "bindingsBefore": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:6f61c1fd6952cd556defd58f72b2d67af8799a68509cd558b56ea92d05416f4a",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:d2dca7fe83089727d509a9b390f5fa80cc87835794d8dac6bd9d59fd99ae7b61",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "semanticKind": {
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "sourceFingerprint": "sha256:732f80dc5f3a1b60bb86d8f147ad52fef3db025f3fb4e84d8b1e31d76af440c4",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "bindingsAfter": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:55832b257dcd4f5f6f383235250ff990db134f05fce9214ee30935c7f2bce2c4",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: Motivation und Begründung der Wert-, Ableitungs- und Grenzwerteigenschaften sind eine zusammenhängende Erklärung der natürlichen Exponentialfunktion. Die EN-Reparatur entfernt den zusätzlichen Modellierungsauftrag und stellt den bereits im DE beanspruchten Kern wieder her; sie schafft keinen neuen fachlichen Teilauftrag. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:1587db102b528fef3d1ed380d6e590b834ed72b4d3f36f1e6cf8438bc356ecde",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: no_memory_needed bleibt individuell angemessen: Bewertet wird die begründete Verknüpfung von Exponentialgesetz, Positivität, Ableitung und Grenzverhalten, nicht isolierter Ziffern- oder Formelabruf. Das bloße Wiederholen von (e^x)'=e^x oder e≈2,718 würde diese Begründung nicht nachweisen. Die reine EN-Scopekorrektur erfordert kein neues zielbezogenes Deck. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "sourceFingerprint": "sha256:b9c4a6d892d6eec630e185e84424d42a2913b2df4f3a3267c742fd124278b87a",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "individualReassessment": {
+        "atomicityReason": "Motivation und Begründung der Wert-, Ableitungs- und Grenzwerteigenschaften sind eine zusammenhängende Erklärung der natürlichen Exponentialfunktion. Die EN-Reparatur entfernt den zusätzlichen Modellierungsauftrag und stellt den bereits im DE beanspruchten Kern wieder her; sie schafft keinen neuen fachlichen Teilauftrag.",
+        "memoryReason": "no_memory_needed bleibt individuell angemessen: Bewertet wird die begründete Verknüpfung von Exponentialgesetz, Positivität, Ableitung und Grenzverhalten, nicht isolierter Ziffern- oder Formelabruf. Das bloße Wiederholen von (e^x)'=e^x oder e≈2,718 würde diese Begründung nicht nachweisen. Die reine EN-Scopekorrektur erfordert kein neues zielbezogenes Deck.",
+        "semanticKindReason": "Das Begründen konkreter Eigenschaften einer mathematischen Funktion ist ein assessierbares curriculares Inhaltsziel. Das Verb motivieren bezeichnet hier die mathematische Einführung von e^x, nicht einen unbewerteten Orientierungsdialog. curricularAtomic bleibt bestehen.",
+        "authority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "visualizationHandoff": "Every resourceLink is retained as freshly read at emission. Image bytes and QA including pre-existing human approvals are untouched. Root owns any description-based alt/QA snapshot synchronization and must not interpret this receipt as renewed image approval."
+    },
+    {
+      "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+      "before": {
+        "id": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+        "title": "Besonderheit der natürlichen Exponentialfunktion erläutern",
+        "titleEn": "Explain the special role of the natural exponential function",
+        "description": "Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion fachlich erläutern und ihren herausgehobenen Stellenwert innerhalb exponentieller Funktionen beschreiben.",
+        "descriptionEn": "The learner can explain the special role of the natural exponential function and describe its distinguished position among exponential functions.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "8fa32a68-46eb-414e-8292-a4c4052b2522"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+            "title": "Visualisierung: Besonderheit der natürlichen Exponentialfunktion erläutern",
+            "url": "/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Besonderheit der natürlichen Exponentialfunktion erläutern.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Besonderheit der natürlichen Exponentialfunktion erläutern\". Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion fachlich erläutern und ihren herausgehobenen Stellenwert innerhalb exponentieller Funktionen beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "after": {
+        "id": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+        "title": "Besonderheit der natürlichen Exponentialfunktion erläutern",
+        "titleEn": "Explain the special role of the natural exponential function",
+        "description": "Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion $f(x)=e^x$ erläutern, dass an jeder Stelle die Tangentensteigung mit dem Funktionswert übereinstimmt.",
+        "descriptionEn": "The learner can explain the distinctive property of the natural exponential function $f(x)=e^x$: at every point, the tangent slope equals the function value.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "8fa32a68-46eb-414e-8292-a4c4052b2522"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+            "title": "Visualisierung: Besonderheit der natürlichen Exponentialfunktion erläutern",
+            "url": "/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Besonderheit der natürlichen Exponentialfunktion erläutern.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Besonderheit der natürlichen Exponentialfunktion erläutern\". Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion fachlich erläutern und ihren herausgehobenen Stellenwert innerhalb exponentieller Funktionen beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "changedCanonicalFields": [
+        "description",
+        "descriptionEn"
+      ],
+      "bindingsBefore": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "fingerprint": "sha256:e751d237ec72ddf2e9c4d8896944d5b71ddff3b6db725f19cc97bf1a878923f4",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "fingerprint": "sha256:66d117d4baf1ad560128c4b86ff74c0e6e4f733ef4e5543fcb614495d4dd848c",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "semanticKind": {
+          "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "sourceFingerprint": "sha256:926c4a238af8560789c2c6274c3887364239d180d7586c64a9f971aa25d627ac",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "bindingsAfter": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "fingerprint": "sha256:4d80e81e9e7970a6d0ce20347702964910b211e604dec7264eb33dda8ed055e6",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: Die erläuternde Kompetenz bezieht sich jetzt ausdrücklich auf eine einzige Beziehung: Bei e^x stimmen an derselben Stelle Tangentensteigung und Funktionswert überein. Das ist nicht die zusätzliche Routine einer Ableitungsanwendung, sondern der schon beanspruchte besondere Funktionszusammenhang. Die Identität und der Schwierigkeitsanspruch bleiben erhalten. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "fingerprint": "sha256:6d9176accabb57ea9e9e2ce705268cdf555028c71c834c3ca88d054203561734",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: no_memory_needed bleibt angemessen: Die Person muss die Gleichheit von Steigung und Funktionswert erklären und von konstanter absoluter Steigung unterscheiden, etwa anhand der unterschiedlichen Werte 1 bei 0 und e bei 1. Eine isolierte Karte f'=f wäre kein ausreichender Verständnisnachweis. Die Präzisierung benennt dieselbe Beziehung und schafft keinen zusätzlichen kompakten Abrufkanon. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "sourceFingerprint": "sha256:bbe2a66dac91d71337a8d67b89a6635b9df42d953b6c824d7e1d4269cba01661",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "individualReassessment": {
+        "atomicityReason": "Die erläuternde Kompetenz bezieht sich jetzt ausdrücklich auf eine einzige Beziehung: Bei e^x stimmen an derselben Stelle Tangentensteigung und Funktionswert überein. Das ist nicht die zusätzliche Routine einer Ableitungsanwendung, sondern der schon beanspruchte besondere Funktionszusammenhang. Die Identität und der Schwierigkeitsanspruch bleiben erhalten.",
+        "memoryReason": "no_memory_needed bleibt angemessen: Die Person muss die Gleichheit von Steigung und Funktionswert erklären und von konstanter absoluter Steigung unterscheiden, etwa anhand der unterschiedlichen Werte 1 bei 0 und e bei 1. Eine isolierte Karte f'=f wäre kein ausreichender Verständnisnachweis. Die Präzisierung benennt dieselbe Beziehung und schafft keinen zusätzlichen kompakten Abrufkanon.",
+        "semanticKindReason": "Das Erläutern einer punktweisen Beziehung zwischen Funktionswert und Tangentensteigung ist eine überprüfbare mathematische Inhaltskompetenz. Trotz des Wortes Besonderheit ist es weder bloße Motivation noch ein Memory- oder Prüfungsmodus. curricularAtomic bleibt bestehen.",
+        "authority": "ai_candidate",
+        "humanApprovalClaimed": false
+      },
+      "visualizationHandoff": "Every resourceLink is retained as freshly read at emission. Image bytes and QA including pre-existing human approvals are untouched. Root owns any description-based alt/QA snapshot synchronization and must not interpret this receipt as renewed image approval."
+    }
+  ],
+  "retainedMemoryTrace": {
+    "originGoalId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+    "memoryGoal": {
+      "id": "ca708087-71f8-5fae-91c5-b80721a4208f",
+      "title": "Lernkarten - Analysis-Kernregeln",
+      "titleEn": "Flashcards - Core Analysis Rules",
+      "description": "Die lernende Person festigt zentrale Ableitungs- und Stammfunktionsregeln sowie Bedingungen für Extrem- und Wendestellen und den Hauptsatz der Analysis. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+      "descriptionEn": "The learner consolidates key differentiation and antiderivative rules, criteria for extrema and inflection points, and the fundamental theorem of calculus. Understanding and application are practiced in the related learning goals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_math_analysis_core",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_math_flashcards_analysis_core.de.json",
+        "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_analysis_core.en.json"
+      },
+      "contains": [],
+      "requires": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    "deckId": "de_gymnasium_math_analysis_core",
+    "cards": [
+      {
+        "cardId": "math_analysis_c08",
+        "primaryCardDe": {
+          "id": "math_analysis_c08",
+          "front": "Notwendige Bedingung: \n\nExtremstelle bei $x_0$",
+          "back": "$f'(x_0) = 0$",
+          "category": "Kurvendiskussion",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        "translationCardEn": {
+          "id": "math_analysis_c08",
+          "front": "Necessary condition:\n\nExtremum at $x_0$",
+          "back": "$f'(x_0) = 0$",
+          "category": "Curve Analysis",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        "retainedCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "deckId": "de_gymnasium_math_analysis_core",
+          "cardId": "math_analysis_c08",
+          "fingerprint": "sha256:84d350bcc19516210c73a9bfe1ceef69d6b0c5ba42d96bc4d445cf01d8915563",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "d5feba00-4336-4f26-8dba-0537a797eddb"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Behalten: Die notwendige Bedingung für Extremstellen ist ein kurzer Prüfbaustein und dem Lernziel zu Extrem-/Wendebedingungen zugeordnet."
+        },
+        "currentPrimaryFingerprint": "sha256:84d350bcc19516210c73a9bfe1ceef69d6b0c5ba42d96bc4d445cf01d8915563"
+      },
+      {
+        "cardId": "math_analysis_c09",
+        "primaryCardDe": {
+          "id": "math_analysis_c09",
+          "front": "Hinreichende Bedingung: \n\nHochpunkt bei $x_0$",
+          "back": "$f'(x_0) = 0$ und $f''(x_0) < 0$.\n\nAlternativ: Vorzeichenwechsel von + nach -.",
+          "category": "Kurvendiskussion",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        "translationCardEn": {
+          "id": "math_analysis_c09",
+          "front": "Sufficient condition:\n\nLocal maximum at $x_0$",
+          "back": "$f'(x_0) = 0$ and $f''(x_0) < 0$.\n\nAlternatively: sign change from + to -.",
+          "category": "Curve Analysis",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        "retainedCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "deckId": "de_gymnasium_math_analysis_core",
+          "cardId": "math_analysis_c09",
+          "fingerprint": "sha256:a4adb475548ea8946a64758811f1855ecb548fb90414e66954891d92bcf2ad26",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "d5feba00-4336-4f26-8dba-0537a797eddb"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Behalten: Hinreichende Bedingung für Hochpunkte ist ein knapper Kriterienbaustein, der in Aufgaben sicher abrufbar sein muss."
+        },
+        "currentPrimaryFingerprint": "sha256:a4adb475548ea8946a64758811f1855ecb548fb90414e66954891d92bcf2ad26"
+      },
+      {
+        "cardId": "math_analysis_c10",
+        "primaryCardDe": {
+          "id": "math_analysis_c10",
+          "front": "Notwendige Bedingung: \n\nWendestelle bei $x_0$",
+          "back": "$f''(x_0) = 0$",
+          "category": "Kurvendiskussion",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        "translationCardEn": {
+          "id": "math_analysis_c10",
+          "front": "Necessary condition:\n\nInflection point at $x_0$",
+          "back": "$f''(x_0) = 0$",
+          "category": "Curve Analysis",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        "retainedCardReview": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "deckId": "de_gymnasium_math_analysis_core",
+          "cardId": "math_analysis_c10",
+          "fingerprint": "sha256:7659840f8d3e0ef23ad0ac30590f2d8024e6929fb96c4dc01da460074b391b9c",
+          "status": "kept",
+          "necessary": true,
+          "originGoalIds": [
+            "d5feba00-4336-4f26-8dba-0537a797eddb"
+          ],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Behalten: Notwendige Bedingung für Wendestellen ist ein knapper Kriterienbaustein zum zugehörigen Lernziel."
+        },
+        "currentPrimaryFingerprint": "sha256:7659840f8d3e0ef23ad0ac30590f2d8024e6929fb96c4dc01da460074b391b9c"
+      }
+    ],
+    "status": "retained_current_trace_not_new_card_approval",
+    "visibilityCoverageReaudited": false
+  },
+  "preservedHumanImageReviews": [
+    {
+      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+      "description": "Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+      "subject": "mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+      "assetSha256": "sha256:4ea9aae846288db456ae21e6131feecc224fa89b55df942361f91bfe2cb6a071",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "yes",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-07T19:40:35Z",
+      "chatGptReviewer": "codex",
+      "chatGptNotes": "Accepted after user review correction. The left-side arrow next to 'nähert sich 0, bleibt positiv' now points in negative x direction, matching the behavior of e^x as x approaches minus infinity. The graph remains positive and approaches the x-axis from above on the left. The right growth arrow, point (0|1), tangent, derivative note, value table, German spelling, and visible notation remain coherent.",
+      "humanReviewedAt": "2026-07-08T04:34:00.994Z",
+      "humanReviewer": "workbench"
+    },
+    {
+      "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+      "title": "Besonderheit der natürlichen Exponentialfunktion erläutern",
+      "description": "Die lernende Person kann die Besonderheit der natürlichen Exponentialfunktion fachlich erläutern und ihren herausgehobenen Stellenwert innerhalb exponentieller Funktionen beschreiben.",
+      "subject": "mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+      "assetSha256": "sha256:a9b4d55b6287739bb7cb40dc8837823491b269093fd29568a5e4868c12e0af7a",
+      "umlautsCorrectChatGpt": "yes",
+      "contentApprovedChatGpt": "yes",
+      "humanApproved": "yes",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": "2026-07-07T05:12:00.000Z",
+      "chatGptReviewer": "codex",
+      "chatGptNotes": "Corrected with Nano Banana Pro. The speech bubble now states the special property of the natural exponential function with f'(x)=f(x); the graph, point (0|1), tangent slope m=1, f(x)=e^x, f'(x)=e^x, and the statement that function and derivative are equal remain mathematically consistent. German umlauts are correct.",
+      "humanReviewedAt": "2026-07-07T05:42:44.501Z",
+      "humanReviewer": "workbench"
+    }
+  ],
+  "fileDigests": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "beforeSha256": "sha256:bc1197fed423ac41f50a08559989c395c5c56cc3af1c2d5355938d86112b342c",
+      "afterSha256": "sha256:2253559aa4234bddbc36586257898613e26138c6cbe0f2ff94c809be548c73cd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "beforeSha256": "sha256:f9cc031f5baec3dd1c195d259f2b603a6894ec22a4692df3011412073a5bd9b6",
+      "afterSha256": "sha256:466ede651ab865022d5ccca760f4c5e8814762092f7d89a88ad4884d3355266f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "beforeSha256": "sha256:ec7e55144e37ba70175d8772c7f37293f26a640193af548444edb13a866a8250",
+      "afterSha256": "sha256:0480c4f856b38f9305e3e405f1720f13e4b27a47cd5d32ff4aafbb5501abe52d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "beforeSha256": "sha256:67b010f19408b74992e201613220ea31599fcb74e9559d44f3f8333d257dc20c",
+      "afterSha256": "sha256:285409ed7a21c0d1708674a3011cf2ec048b1fda8a480fc79fbac7464863582f"
+    }
+  ],
+  "boundaries": [
+    "Exactly six canonical text fields change in three goals: two DE/EN descriptions for d5, EN title/description only for 628, two DE/EN descriptions for 3a5. All IDs, edges, order, counts, applicability, weights and unrelated goal objects remain identical.",
+    "Three atomicity and three memory decisions are individually reassessed with specific AI-only reasons; statuses remain atomic and respectively memory_required/no_memory_needed/no_memory_needed. Existing memoryGoalIds, deckIds and all cards/card reviews remain unchanged.",
+    "Only three semantic-kind source fingerprints change using the native import. semanticKind, decisionStatus and decisionBasis remain unchanged; prior authority is preserved, not reissued.",
+    "No resourceLink, image, QA, source mapping, registry, in-flight, book, generated report, runtime or review-record changes. Existing human image approvals for 628 and 3a5 are preserved without new claims.",
+    "Root owns current-description alt/QA snapshot synchronization, current-state review/synthesis, quality regeneration and protected M6 floor validation. The emitter makes no full-source or visibility-coverage claim."
+  ],
+  "recovery": "Before/after goal objects and A/M/kind records are retained for each exact target. Restore only scoped fields after verifying the recorded after state, preserving independent later resourceLinks/image imports; never revert full files blindly."
+}

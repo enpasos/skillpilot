@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b036-blind-a-20260906",
+  "campaignId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-a",
+  "roundId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:a489dd1bc858f21ebf80d6826d44177ecbe470d6a8e032fe8862cb27ed2d80ae",
+  "bundleFingerprint": "sha256:70f64bfcf938c65ea2e98e3132d2dbec6385902819485c419fc8f90993094cec",
+  "bookDigest": "sha256:7c3228cf0fa28432222a22e11c5933d5339a41f953480713e62394b6a113a2d9",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cf4fe700-dec2-502f-888b-90acefa307bb",
+    "0272c501-2931-5e52-b62f-af068db63c44",
+    "99bfb566-f875-5646-ac3e-05a039838c54",
+    "7ba19509-8ee6-50e0-a411-a371f05b1801",
+    "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+    "b04d65dc-1214-5323-89a7-317d6b099e1a",
+    "42b57670-d2be-5da2-be2f-d58055901813"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a489dd1bc858f21ebf80d6826d44177ecbe470d6a8e032fe8862cb27ed2d80ae"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-06T09:26:28Z",
+  "completedAt": "2026-09-06T09:32:14Z",
+  "status": "completed",
+  "outputDigest": "sha256:4f0fa6157cb06b33462fe659b4d1d914fcf154a918cb0752e2f9e3a3f7188040",
+  "toolchainVersion": "codex-agent-review-v1"
+}

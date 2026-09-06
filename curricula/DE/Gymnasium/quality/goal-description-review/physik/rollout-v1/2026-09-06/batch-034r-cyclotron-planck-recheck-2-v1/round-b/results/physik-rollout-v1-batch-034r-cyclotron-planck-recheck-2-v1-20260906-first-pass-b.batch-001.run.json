@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b034r-blind-b-20260906",
+  "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-b",
+  "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:87abacf9ece552f7522c1e6c18bb01ec1f69d9c2dbfac2e156b5490f2d444881",
+  "bundleFingerprint": "sha256:29b28286ae3b004d1804c95356bf9e5ec80edf940bea52e37532546db5f27380",
+  "bookDigest": "sha256:dd4c196657b903576183f2116e25e658b05ccbecd91db64f7825473e3056d1d4",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:9e0d267612e0d045a2027714e697d7ca2a74245def212a2bff0ed3c3f28fa9e7",
+  "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d1306bda-35ff-53e9-9458-3cbc128874d8",
+    "28f6a324-5f5e-5771-91d2-c007f6c275aa"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:87abacf9ece552f7522c1e6c18bb01ec1f69d9c2dbfac2e156b5490f2d444881"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-06T06:57:56Z",
+  "completedAt": "2026-09-06T07:00:52Z",
+  "status": "completed",
+  "outputDigest": "sha256:476e486b54f6b0ac02df35bea6b0df29fe47eec83d55ad206586f5019ef0e70c",
+  "toolchainVersion": "codex-agent"
+}

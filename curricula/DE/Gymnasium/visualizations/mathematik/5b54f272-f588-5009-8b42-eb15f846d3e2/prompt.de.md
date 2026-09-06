@@ -4,7 +4,7 @@
 
 - SkillPilot-ID: `5b54f272-f588-5009-8b42-eb15f846d3e2`
 - Titel: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)
-- Beschreibung: Die lernende Person kann die relative Streuung (Variationskoeffizient) $\sigma/\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\sigma/\mu = \sqrt{\frac{1-p}{n\,p}}$).
+- Beschreibung: Die lernende Person kann die relative Streuung (Variationskoeffizient) $\sigma/\mu$ einer Binomialverteilung mit $n\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\sigma/\mu = \sqrt{\frac{1-p}{n\,p}}$).
 
 ## Generator
 
@@ -28,21 +28,16 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Relative Streuung binomialverteilter Zufallsgrößen berechnen
-Beschreibung: Die lernende Person kann die relative Streuung (Variationskoeffizient) $\sigma/\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\sigma/\mu = \sqrt{\frac{1-p}{n\,p}}$).
+Beschreibung: Die lernende Person kann die relative Streuung (Variationskoeffizient) $\sigma/\mu$ einer Binomialverteilung mit $n\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\sigma/\mu = \sqrt{\frac{1-p}{n\,p}}$).
 
 Zusatzanweisung:
-Setze ausschließlich die drei Wahrscheinlichkeitsangaben in den Diagrammköpfen neu; der übrige korrekte Inhalt bleibt unverändert.
+MINIMALE TEXTKORREKTUR. Bewahre das Referenzbild exakt, nur ein falscher Text muss ersetzt werden.
 
-Pflichtinhalt:
-- Über jedem der drei Diagramme steht exakt „p = 0,25“.
-- Es gibt genau drei solche Angaben, alle mit Dezimalkomma.
-- n=4, n=16, n=64, die Mittelwerte 1, 4, 16, die Standardabweichungen 0,87; 1,73; 3,46 und die relativen Streuungen 0,87; 0,43; 0,22 bleiben unverändert.
-- Formel und Aussage zur abnehmenden relativen Streuung bleiben erhalten.
+Im LINKEN Diagramm steht unter dem DRITTEN Balken auf der horizontalen Zahlenachse fälschlich „μ = 1“. Ersetze genau diesen Text UNTER der Achse durch die einzelne Zahl „2“.
 
-Vermeiden:
-- Kein sichtbares „0.25“ und überhaupt kein Dezimalpunkt.
-- Keine Kurs- oder Schulformangabe und keine Änderung fachlicher Werte.
-- Keine technischen Metadaten, Logos oder Wasserzeichen.
+Die fünf Beschriftungen UNTER den Balken müssen danach lauten: 0, 1, 2, 3, 4.
+
+Das „μ = 1“ OBERHALB der Achse bleibt als Kennwerttext stehen. Es darf nur UNTER der linken Achse kein „μ = 1“ mehr geben. Alles andere unverändert lassen. Keine weiteren Änderungen, keine neuen Pfeile, keine neuen Beschriftungen.
 ```
 
 ## Review-Notiz

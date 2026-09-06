@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-b037-held-neuron-scope-1-v1",
+  "reviewedAt": "2026-09-06T11:02:59Z",
+  "reviewer": "Codex P author; Physics B037; unbound neuron scope draft only",
+  "goals": [
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "reason": "Eigenständiger bilingualer Profilentwurf aus aktuellem Zieltext und Originalseitenkontext; zwei unabhängige Fälle, keine Aussage über reale Lernleistungen. Vorläufig ungebunden bis zum Stabilitätssignal.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der aktuelle Text verbindet eigenständig prüfbare Laufzeitmessung, E-/B-Abschätzung und Flussinduktion. Das Profil deckt diese Klauseln ausdrücklich ab, entscheidet aber weder ihre semantische Atomizität noch einen biologischen Wirkzusammenhang; Quellenreconciliation bleibt nötig. / The current text combines independently assessable timing, E/B estimation, and flux induction. Coverage is explicit but does not settle semantic atomicity or a biological causal link; source reconciliation remains necessary."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "laufzeit",
+            "essentialUnderstandingDe": "Eine räumliche Fortpflanzungsgeschwindigkeit folgt aus Weg- und Zeitdifferenzen desselben Nervensignals; Auslöse- oder Geräteverzögerungen sind nicht Laufzeit entlang des betrachteten Abschnitts.",
+            "essentialUnderstandingEn": "A spatial propagation speed follows from distance and time differences for the same nerve signal; trigger or instrument delays are not travel time along the selected segment.",
+            "observablePerformanceDe": "Beschreibt ein nichtinvasiv zu bearbeitendes Messdatenszenario, ordnet zwei Signalmarken zu und begründet, welche Differenz eine gemeinsame Verzögerung entfernt.",
+            "observablePerformanceEn": "Describes a measurement-data scenario requiring no invasive activity, matches two signal features, and explains which difference removes a shared delay."
+          },
+          {
+            "id": "feldmodelle",
+            "essentialUnderstandingDe": "E≈U/d und ein vorgegebenes Leiterfeldmodell liefern geometrieabhängige Feldabschätzungen, keine direkte Messung und keine Erklärung der biologischen Signalgeschwindigkeit.",
+            "essentialUnderstandingEn": "E≈U/d and a supplied wire-field model give geometry-dependent field estimates, not direct measurements or an explanation of biological signal speed.",
+            "observablePerformanceDe": "Berechnet E und B mit SI-Einheiten, benennt Feldrichtung oder räumlichen Bezug und die idealisierte Geometrie; trennt Signalfortpflanzung von Ladungsträgerbewegung.",
+            "observablePerformanceEn": "Calculates E and B in SI units, identifies field direction or spatial reference and the idealized geometry; distinguishes signal propagation from charge-carrier motion."
+          },
+          {
+            "id": "fluss",
+            "essentialUnderstandingDe": "Induktionsspannung erfordert zeitlich veränderten magnetischen Fluss, nicht lediglich ein vorhandenes Magnetfeld; die Schleifenorientierung zählt.",
+            "essentialUnderstandingEn": "Induced voltage requires magnetic flux changing with time, not merely a magnetic field being present; loop orientation matters.",
+            "observablePerformanceDe": "Erklärt an einer getrennten idealisierten Messschleife die Wirkung einer Feld- oder Orientierungsänderung und den Nullfall konstanten Flusses, ohne biologische Kausalität daraus zu behaupten.",
+            "observablePerformanceEn": "Explains how field or orientation changes affect a separate idealized measurement loop and identifies the zero case of constant flux, without claiming biological causation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "laufzeit",
+            "feldmodelle",
+            "fluss"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "messprinzip-geometrie",
+            "textDe": "Zwei Ableitorte gegenüber zwei Reizabständen mit gemeinsamer Verzögerung; zeitabhängiges B gegenüber gedrehter Schleife.",
+            "textEn": "Two recording positions versus two stimulation distances sharing a delay; time-varying B versus a rotated loop."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ableitorte",
+            "taskDemandDe": "Bearbeite ausschließlich synthetische Daten: derselbe Signalmarker passiert Orte im Abstand 3,0 cm bei 1,0 und 1,6 ms. Für getrennte Abschätzungen seien 80 mV über 8 nm homogen sowie ein langer gerader Modellleiter mit I=1 µA gegeben; B=2·10⁻⁷ I/r in SI bei r=1 mm. Eine separate einwindige Schleife A=1 cm² steht normal zu B, das in 10 ms von 0 auf 2 mT wächst. Erläutere Messprinzip, Feldgrößen und Induktion; keine Untersuchung am Körper.",
+            "taskDemandEn": "Use synthetic data only: the same signal feature passes positions 3.0 cm apart at 1.0 and 1.6 ms. Separate estimates assume 80 mV uniformly across 8 nm and a long straight model wire with I=1 µA; B=2·10⁻⁷ I/r in SI at r=1 mm. A separate single-turn loop of area 1 cm² is normal to B, which rises from 0 to 2 mT in 10 ms. Explain measurement principle, fields, and induction; no investigation on a body.",
+            "expectedPerformanceDe": "Leitet v=50 m/s aus Δs/Δt ab, nicht aus 3 cm/1,6 ms. Schätzt E=1·10⁷ V/m quer zur Modellschicht und B=2·10⁻¹⁰ T im Abstand 1 mm; das sind Modellwerte. ΔΦ=2·10⁻⁷ Wb erzeugt im linearen Anstieg |Uind|=20 µV; anschließend bei festem B und fester Geometrie null. Erklärt, dass keine dieser Rechnungen die Nervenleitung als Induktionsprozess nachweist.",
+            "expectedPerformanceEn": "Derives v=50 m/s from Δs/Δt, not from 3 cm/1.6 ms. Estimates E=1·10⁷ V/m across the model layer and B=2·10⁻¹⁰ T at 1 mm; these are model values. ΔΦ=2·10⁻⁷ Wb gives |Uind|=20 µV during the linear rise; afterwards fixed B and geometry give zero. Explains that none of these calculations establishes nerve conduction as an induction process.",
+            "understandingFocusDe": "Laufzeit, abgeleitete Felder und Flussänderung als getrennte, begrenzt verknüpfbare Aussagen.",
+            "understandingFocusEn": "Travel time, inferred fields, and flux change as distinct statements with limited connections."
+          },
+          {
+            "id": "verzoegerung-und-drehung",
+            "taskDemandDe": "In einem zweiten synthetischen Datensatz führen Reizabstände 4 cm und 10 cm zu Latenzen 2 ms und 3 ms am selben Ableitort; eine unbekannte Zusatzverzögerung ist gleich. Schätze getrennt E bei 50 mV über 5 nm und B für I=2 µA, r=0,5 mm mit dem oben angegebenen Modell. Eine separate einwindige Schleife A=1 cm² wird bei konstanten 1 mT in 20 ms von Flächennormale parallel B zu senkrecht B gedreht. Erkläre Aussagen und Grenzen ohne Körperexperiment.",
+            "taskDemandEn": "In a second synthetic dataset, stimulation distances of 4 cm and 10 cm give latencies of 2 ms and 3 ms at one recording site; an unknown additional delay is shared. Separately estimate E for 50 mV across 5 nm and B for I=2 µA, r=0.5 mm using the stated model. A separate single-turn loop of area 1 cm² in constant 1 mT is rotated in 20 ms from its normal parallel to B to perpendicular to B. Explain conclusions and limits without a body experiment.",
+            "expectedPerformanceDe": "Eliminiert die gemeinsame Verzögerung und erhält 60 m/s. E≈1·10⁷ V/m, B≈8·10⁻¹⁰ T; weder 4 cm/2 ms noch 10 cm/3 ms bestimmt hier die Leitungsgeschwindigkeit. Trotz konstantem B fällt Φ von 10⁻⁷ Wb auf null, also mittlerer Betrag 5 µV; der zeitliche Spannungsverlauf benötigt den Drehverlauf. Erklärt die idealisierte Orientierung und behauptet keine Messbarkeit einzelner Nervensignale mit dieser Schleife.",
+            "expectedPerformanceEn": "Eliminates the shared delay to obtain 60 m/s. E≈1·10⁷ V/m, B≈8·10⁻¹⁰ T; neither 4 cm/2 ms nor 10 cm/3 ms determines conduction speed here. Despite constant B, Φ falls from 10⁻⁷ Wb to zero, giving mean magnitude 5 µV; the voltage time course requires the rotation history. Explains the idealized orientation and does not claim that this loop can detect individual nerve signals.",
+            "understandingFocusDe": "Messdifferenz beseitigt Störanteil; Geometrieänderung kann bei konstantem B induzieren.",
+            "understandingFocusEn": "A measurement difference removes a nuisance contribution; changing geometry can induce voltage at constant B."
+          }
+        ]
+      }
+    }
+  ]
+}

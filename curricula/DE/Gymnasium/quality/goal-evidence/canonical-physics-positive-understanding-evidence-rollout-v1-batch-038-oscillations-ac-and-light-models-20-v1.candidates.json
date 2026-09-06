@@ -1,0 +1,1287 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-b038-oscillations-ac-and-light-models-20-v1",
+  "reviewedAt": "2026-09-06T12:36:52Z",
+  "reviewer": "Codex P author; Physics B038; unbound AI candidates only",
+  "goals": [
+    {
+      "goalId": "18c1f954-487e-5121-bb18-6c64a82f573d",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der Titel nennt Klassifikation, die Beschreibung konkret Exponentialansätze und Parameter. Das Profil verlangt keine zusätzliche vollständige Klassifikation unterkritischer, kritischer und überkritischer Dämpfung."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "envelope-and-oscillation",
+            "essentialUnderstandingDe": "Bei einem exponentiell gedämpften Schwingungsmodell beschreibt A₀e^(−δt) die Hüllkurve, nicht die vorzeichenwechselnde Auslenkung; δ hat die Einheit einer inversen Zeit.",
+            "essentialUnderstandingEn": "In an exponentially damped oscillation model, A₀e^(−δt) describes the envelope, not the sign-changing displacement; δ has units of inverse time.",
+            "observablePerformanceDe": "Bestimmt und deutet Hüllkurvenparameter und trennt Amplitudenabnahme von Periodendauer und Phase.",
+            "observablePerformanceEn": "Determines and interprets envelope parameters and separates amplitude decay from period and phase."
+          },
+          {
+            "id": "model-compatibility",
+            "essentialUnderstandingDe": "Exponentielle Abnahme bedeutet einen gleichen Amplitudenfaktor in gleichen Zeitabständen und ist eine zu prüfende Idealisierung.",
+            "essentialUnderstandingEn": "Exponential decay means the same amplitude factor over equal time intervals and is an idealisation to test.",
+            "observablePerformanceDe": "Prüft frische Amplitudendaten auf diese Struktur und begrenzt unpassende Exponentialansätze.",
+            "observablePerformanceEn": "Tests fresh amplitude data for this structure and limits inappropriate exponential models."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "envelope-and-oscillation",
+            "model-compatibility"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "compatible-and-incompatible-envelope",
+            "textDe": "Eine exponentielle Hüllkurve parametrisieren und eine gleichmäßig linear abnehmende Folge als abweichenden Fall prüfen.",
+            "textEn": "Parameterise an exponential envelope and test a uniformly linearly decreasing sequence as a contrasting case."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "exponential-envelope",
+            "taskDemandDe": "Eine simulierte gedämpfte Schwingung hat die Hüllkurvenwerte A(0)=8 mm, A(2 s)=4 mm, A(4 s)=2 mm; ihre Periodendauer beträgt 0,5 s. Formuliere einen passenden Ansatz, deute die Parameter und prognostiziere A(6 s). Die Phase ist nicht angegeben.",
+            "taskDemandEn": "A simulated damped oscillation has envelope values A(0)=8 mm, A(2 s)=4 mm, A(4 s)=2 mm and period 0.5 s. Formulate a suitable model, interpret its parameters, and predict A(6 s). The phase is not supplied.",
+            "expectedPerformanceDe": "A(t)=8e^(−(ln 2/2)t) mm mit δ≈0,3466 s⁻¹; A(6 s)=1 mm. Ein Auslenkungsmodell ist x(t)=A(t)cos(4πt+φ), t in s. Frequenz 2 Hz und unbekannte Phase φ werden nicht mit δ verwechselt. Die Hüllkurvendaten stützen den Ansatz, beweisen aber kein universelles Reibungsgesetz.",
+            "expectedPerformanceEn": "A(t)=8e^(−(ln 2/2)t) mm with δ≈0.3466 s⁻¹; A(6 s)=1 mm. A displacement model is x(t)=A(t)cos(4πt+φ), t in s. Frequency 2 Hz and unknown phase φ are not confused with δ. The envelope data support the model but do not prove a universal friction law.",
+            "understandingFocusDe": "Hüllkurvenabnahme quantitativ deuten, ohne die Schwingung durch eine reine Exponentialfunktion zu ersetzen.",
+            "understandingFocusEn": "Interpret envelope decay quantitatively without replacing the oscillation by a pure exponential."
+          },
+          {
+            "id": "non-exponential-sequence",
+            "taskDemandDe": "Aufeinanderfolgende gleichseitige Auslenkungsmaxima liegen jeweils 0,5 s auseinander und betragen 8,6,4,2 mm. Prüfe, ob ein einziger exponentieller Dämpfungsparameter alle vier idealisiert exakten Angaben beschreibt. Welche Schlussfolgerung ist zulässig?",
+            "taskDemandEn": "Successive same-side displacement maxima are spaced 0.5 s apart and have amplitudes 8,6,4,2 mm. Assess whether one exponential damping parameter describes all four idealised exact values. What conclusion is warranted?",
+            "expectedPerformanceDe": "Die Faktoren 6/8=0,75, 4/6≈0,667 und 2/4=0,5 sind verschieden, die Differenz ist jeweils −2 mm. Ein konstanter δ passt nicht zu allen Angaben. Ein linearer Abnahmeansatz beschreibt diese endliche Folge; daraus allein folgt weder eine sichere Reibungsursache noch die Fortsetzung zu negativen Amplituden.",
+            "expectedPerformanceEn": "Factors 6/8=0.75, 4/6≈0.667, and 2/4=0.5 differ, while each difference is −2 mm. One constant δ does not fit all entries. Linear decrease describes this finite sequence; it establishes neither a definite friction mechanism nor continuation to negative amplitudes.",
+            "understandingFocusDe": "Modellpassung anhand von Verhältnissen prüfen und Schlussfolgerungen begrenzen.",
+            "understandingFocusEn": "Test model compatibility using ratios and bound the resulting inference."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "controlled-resonance-comparison",
+            "essentialUnderstandingDe": "Resonanzkurven stellen die stationäre Antwortamplitude gegen die Anregungsfrequenz dar; ein Dämpfungsvergleich erfordert vergleichbare Anregung und Systemparameter.",
+            "essentialUnderstandingEn": "Resonance curves plot steady-state response amplitude against driving frequency; comparing damping requires comparable driving and system parameters.",
+            "observablePerformanceDe": "Vergleicht Höhe, Breite und Lage von Resonanzbereichen quantitativ und nennt die kontrollierten Bedingungen.",
+            "observablePerformanceEn": "Compares height, width, and location of resonance regions quantitatively and states the controlled conditions."
+          },
+          {
+            "id": "peak-and-resolution",
+            "essentialUnderstandingDe": "Stärkere Dämpfung verringert und verbreitert im betrachteten linearen Modell den Resonanzgipfel; ein diskretes Frequenzraster bestimmt seine Lage nur begrenzt genau.",
+            "essentialUnderstandingEn": "In the linear model considered, stronger damping lowers and broadens the resonance peak; a discrete frequency grid determines its position with limited precision.",
+            "observablePerformanceDe": "Unterscheidet tabellarischen Höchstwert und tatsächlichen Peak und berücksichtigt Raster beziehungsweise Modellgrenzen.",
+            "observablePerformanceEn": "Distinguishes the largest tabulated value from the actual peak and accounts for sampling or model limitations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-resonance-comparison",
+            "peak-and-resolution"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sampled-curve-and-normalised-model",
+            "textDe": "Diskret bereitgestellte Kurvenwerte und ein dimensionsloses Antwortmodell mit veränderter Dämpfung auswerten.",
+            "textEn": "Analyse discretely supplied curve values and a dimensionless response model with changed damping."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sampled-response",
+            "taskDemandDe": "Konstruierte, auf 0,001 mm gerundete Modellwerte bei gleicher Anregung und gleichem Oszillator lauten für 8,9,10,11,12 Hz: A=(2,538;3,821;5,000;3,288;1,995) mm und B=(1,667;1,747;1,667;1,444;1,185) mm. Zeichne beide Kurven und vergleiche Gipfel und Bereich oberhalb der halben jeweiligen Gipfelhöhe. Sind Peakfrequenzen und Halbwertsbreiten damit exakt bestimmt?",
+            "taskDemandEn": "Constructed model values rounded to 0.001 mm, with equal driving and the same oscillator, are A=(2.538,3.821,5.000,3.288,1.995) mm and B=(1.667,1.747,1.667,1.444,1.185) mm at 8,9,10,11,12 Hz. Plot both curves and compare peaks and regions above half the respective peak height. Are peak frequencies and half-height widths thereby determined exactly?",
+            "expectedPerformanceDe": "Das Verhältnis der tabellarischen Maxima ist 5/1,747≈2,862; sie liegen bei 10 beziehungsweise 9 Hz. A überschreitet 2,5 mm an den Stützpunkten 8 bis 11 Hz, B überschreitet 0,8735 mm im ganzen Raster. B ist niedriger und im erfassten Halbwertsbereich breiter, passend zu stärkerer Dämpfung. Nicht alle Halbwertsgrenzen sind erfasst; zwischen den Stützpunkten können die wahren Peaks liegen. Genauere Lage und Breite verlangen ein feineres und größeres Raster.",
+            "expectedPerformanceEn": "The ratio of tabulated maxima is 5/1.747≈2.862, located at 10 and 9 Hz respectively. A exceeds 2.5 mm at samples from 8 to 11 Hz; B exceeds 0.8735 mm throughout the grid. B is lower and broader in the sampled half-height region, consistent with stronger damping. Not all half-height boundaries are covered; true peaks may lie between samples. More precise positions and widths require a finer and wider grid.",
+            "understandingFocusDe": "Aus Kurvenwerten belastbare, aber nicht genauer als die Daten gestützte Aussagen gewinnen.",
+            "understandingFocusEn": "Derive defensible claims from curve data without exceeding their resolution."
+          },
+          {
+            "id": "damping-model",
+            "taskDemandDe": "Für einen linearen erzwungenen Oszillator ist M(r)=1/√((1−r²)²+(2ζr)²) gegeben, r=f/f₀. Vergleiche ζ=0,1 und 0,3 bei r=1. Als Hilfsmittel gilt für diese Fälle r_peak=√(1−2ζ²). Was zeigen die Ergebnisse über Peak und Eigenfrequenz?",
+            "taskDemandEn": "For a linear driven oscillator, M(r)=1/√((1−r²)²+(2ζr)²) is supplied, with r=f/f₀. Compare ζ=0.1 and 0.3 at r=1. For these cases the supporting relation r_peak=√(1−2ζ²) is supplied. What do the results show about peak and natural frequency?",
+            "expectedPerformanceDe": "Bei r=1 sind M=5 beziehungsweise 5/3≈1,667. Die Peaklagen sind etwa 0,98995f₀ und 0,90554f₀: sie liegen nicht genau bei f₀. Größere Dämpfung senkt und verbreitert hier den Peak und verschiebt ihn; die gegebenen Formeln gelten für stationäre lineare Antwort, nicht für einen Einschalttransienten.",
+            "expectedPerformanceEn": "At r=1, M is 5 and 5/3≈1.667 respectively. Peak positions are approximately 0.98995f₀ and 0.90554f₀, not exactly f₀. Greater damping lowers and broadens the peak here and shifts it; the supplied formulas apply to steady linear response, not a switch-on transient.",
+            "understandingFocusDe": "Ein quantitatives Modell verwenden, ohne Resonanzfrequenz automatisch mit ungedämpfter Eigenfrequenz gleichzusetzen.",
+            "understandingFocusEn": "Use a quantitative model without automatically equating resonance frequency with undamped natural frequency."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "restoring-and-storage-analogy",
+            "essentialUnderstandingDe": "Beim idealen Feder-Masse-System und LC-Kreis entsprechen sich Auslenkung und Ladung, Geschwindigkeit und Strom sowie die zugehörigen Energieformen; die Größen sind analog, nicht physikalisch identisch.",
+            "essentialUnderstandingEn": "In an ideal mass-spring system and LC circuit, displacement corresponds to charge, velocity to current, and the associated energy forms correspond; the quantities are analogous, not physically identical.",
+            "observablePerformanceDe": "Ordnet Größen und Rückstellwirkung fachlich zu und erklärt vergleichbare Phasen des Energieaustauschs.",
+            "observablePerformanceEn": "Maps quantities and restoring behaviour correctly and explains comparable phases of energy exchange."
+          },
+          {
+            "id": "analogy-and-limits",
+            "essentialUnderstandingDe": "Ein idealer vollständiger Energieaustausch setzt vernachlässigbare Verluste voraus; mechanische Reibung und elektrischer Widerstand begrenzen ihn auf verschiedene physikalische Weise.",
+            "essentialUnderstandingEn": "Ideal complete energy exchange requires negligible losses; mechanical friction and electrical resistance limit it through different physical mechanisms.",
+            "observablePerformanceDe": "Überträgt eine begründete Aussage zwischen beiden Systemen und nennt die konkrete Grenze der Analogie.",
+            "observablePerformanceEn": "Transfers a justified statement between the systems and identifies a concrete limit of the analogy."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "restoring-and-storage-analogy",
+            "analogy-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "phase-correspondence-and-parameter-change",
+            "textDe": "Energiephasen vergleichen und die Analogie auf eine veränderte Trägheitsgröße übertragen.",
+            "textEn": "Compare energy phases and transfer the analogy to a changed inertial parameter."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quarter-period-energy",
+            "taskDemandDe": "Vergleiche ein ideales Federpendel, das aus maximaler Auslenkung losgelassen wird, mit einem idealen LC-Kreis, dessen Kondensator anfangs maximal geladen ist und dessen Strom null ist. Beschreibe Anfang, Viertelperiode und halbe Periode in beiden Systemen.",
+            "taskDemandEn": "Compare an ideal mass-spring oscillator released at maximum displacement with an ideal LC circuit whose capacitor is initially maximally charged and whose current is zero. Describe the initial state, quarter-period, and half-period in both systems.",
+            "expectedPerformanceDe": "Anfang: Federenergie beziehungsweise elektrische Feldenergie maximal, Geschwindigkeit beziehungsweise Strom null. Nach T/4: Auslenkung beziehungsweise Ladung null, kinetische beziehungsweise magnetische Energie maximal. Nach T/2: umgekehrte Auslenkung beziehungsweise Ladung mit erneut maximaler Speicherenergie. Ladung ist keine mechanische Strecke; der Strom entspricht ihrer Änderungsrate.",
+            "expectedPerformanceEn": "Initially spring energy or electric-field energy is maximal and velocity or current is zero. At T/4 displacement or charge is zero and kinetic or magnetic energy is maximal. At T/2 displacement or charge has reversed with storage energy maximal again. Charge is not a mechanical distance; current corresponds to its rate of change.",
+            "understandingFocusDe": "Rückstellwirkung und Energieumlagerung durch eine konsistente Zuordnung beschreiben.",
+            "understandingFocusEn": "Describe restoring behaviour and energy redistribution through a consistent mapping."
+          },
+          {
+            "id": "inertia-change",
+            "taskDemandDe": "Für den Vergleich sind T_mech=2π√(m/k) und T_LC=2π√(LC) gegeben. Im Federpendel wird nur m vervierfacht. Welche Änderung im LC-Kreis entspricht dem, und wie ändern sich die Perioden? Was geschieht bei hinzugefügter Reibung beziehungsweise Widerstand?",
+            "taskDemandEn": "For comparison, T_mech=2π√(m/k) and T_LC=2π√(LC) are supplied. Only m is quadrupled in the mechanical oscillator. What LC change corresponds to this, and how do the periods change? What happens with added friction or resistance?",
+            "expectedPerformanceDe": "m entspricht L, k entspricht 1/C. Eine Vervierfachung von L bei gleichem C entspricht der Massenänderung; beide Perioden verdoppeln sich. Reibung beziehungsweise Widerstand übertragen Schwingungsenergie an die Umgebung, sodass die Amplitude ohne Nachspeisung abnimmt. Die Formeln sind hier Hilfsmittel für den Vergleich, keine zusätzliche Herleitungsaufgabe.",
+            "expectedPerformanceEn": "m corresponds to L and k to 1/C. Quadrupling L at fixed C corresponds to the mass change; both periods double. Friction or resistance transfers oscillation energy to the surroundings, reducing amplitude without replenishment. The formulas support comparison here, not an additional derivation task.",
+            "understandingFocusDe": "Die Analogie für eine neue Vorhersage nutzen und physikalische Verluste getrennt benennen.",
+            "understandingFocusEn": "Use the analogy for a new prediction and distinguish the physical loss mechanisms."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "thomson-and-units",
+            "essentialUnderstandingDe": "Für den idealisierten LC-Kreis gilt f₀=1/(2π√(LC)); L und C bestimmen die Eigenfrequenz, nicht die anfängliche Ladungsamplitude.",
+            "essentialUnderstandingEn": "For an idealised LC circuit, f₀=1/(2π√(LC)); L and C determine natural frequency, not initial charge amplitude.",
+            "observablePerformanceDe": "Wählt die Thomson-Gleichung, rechnet Einheiten korrekt um und unterscheidet f₀, ω₀ und T.",
+            "observablePerformanceEn": "Chooses Thomson's equation, converts units correctly, and distinguishes f₀, ω₀, and T."
+          },
+          {
+            "id": "parameter-dependence",
+            "essentialUnderstandingDe": "Die Frequenz hängt umgekehrt von der Quadratwurzel des Produkts LC ab; die Aussage setzt ein ideales beziehungsweise hinreichend verlustarmes Modell voraus.",
+            "essentialUnderstandingEn": "Frequency is inversely proportional to the square root of LC; this assumes an ideal or sufficiently low-loss model.",
+            "observablePerformanceDe": "Begründet Parameteränderungen und prüft das Ergebnis durch Verhältnis- und Plausibilitätsbetrachtungen.",
+            "observablePerformanceEn": "Justifies parameter changes and checks results through ratios and plausibility."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "thomson-and-units",
+            "parameter-dependence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direct-calculation-and-fixed-product",
+            "textDe": "Eine Frequenz aus Bauteilwerten berechnen und bei gegenläufig veränderten Bauteilen das Produkt LC beurteilen.",
+            "textEn": "Calculate frequency from component values and assess LC when components change in opposite directions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "millihenry-microfarad",
+            "taskDemandDe": "Ein idealisierter LC-Kreis hat L=20 mH und C=5 μF. Bestimme Eigenfrequenz und Periodendauer. Erläutere, wie eine Vervierfachung von C bei gleichem L wirkt.",
+            "taskDemandEn": "An idealised LC circuit has L=20 mH and C=5 μF. Determine natural frequency and period. Explain the effect of quadrupling C with L unchanged.",
+            "expectedPerformanceDe": "LC=10⁻⁷ s², √(LC)≈3,1623·10⁻⁴ s. T≈1,9869 ms, f₀≈503,29 Hz; ω₀≈3162,28 s⁻¹ ist nicht die Frequenz in Hz. Vierfaches C verdoppelt T und halbiert f₀.",
+            "expectedPerformanceEn": "LC=10⁻⁷ s² and √(LC)≈3.1623·10⁻⁴ s. T≈1.9869 ms, f₀≈503.29 Hz; ω₀≈3162.28 s⁻¹ is not the frequency in Hz. Quadrupling C doubles T and halves f₀.",
+            "understandingFocusDe": "Einheiten und Quadratwurzelabhängigkeit gemeinsam verwenden.",
+            "understandingFocusEn": "Use units and square-root dependence together."
+          },
+          {
+            "id": "unchanged-frequency",
+            "taskDemandDe": "In einer idealisierten Abstimmung wird L halbiert und C verdoppelt; zugleich wird die Anfangsspannung am Kondensator verdoppelt. Beurteile die Frequenzänderung und nenne eine praktische Grenze der Aussage.",
+            "taskDemandEn": "In an idealised tuning change, L is halved and C doubled; the initial capacitor voltage is also doubled. Assess the frequency change and name a practical limitation.",
+            "expectedPerformanceDe": "LC bleibt gleich, daher bleiben f₀ und T gleich. Die höhere Anfangsspannung ändert im linearen idealen Modell die Amplitude, nicht f₀. Nichtlineare Bauteile oder merkliche Verluste können die Idealisierung begrenzen; aus der Spannung allein folgt keine doppelte Frequenz.",
+            "expectedPerformanceEn": "LC remains unchanged, so f₀ and T remain unchanged. Higher initial voltage changes amplitude, not f₀, in the linear ideal model. Nonlinear components or appreciable losses can limit the idealisation; doubled voltage alone does not imply doubled frequency.",
+            "understandingFocusDe": "Gegenläufige Änderungen und einen frequenzunabhängigen Anfangswert unterscheiden.",
+            "understandingFocusEn": "Distinguish compensating parameter changes from a frequency-independent initial condition."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "ansatz-and-initial-state",
+            "essentialUnderstandingDe": "Für den idealen LC-Kreis erfüllt q die Gleichung q″+q/(LC)=0. Ein Sinus-Cosinus-Ansatz muss sowohl diese Gleichung als auch Anfangsladung und Anfangsstrom erfüllen.",
+            "essentialUnderstandingEn": "For an ideal LC circuit, q satisfies q″+q/(LC)=0. A sine-cosine ansatz must satisfy both the equation and the initial charge and current.",
+            "observablePerformanceDe": "Setzt den Ansatz ein, bestimmt Kreisfrequenz und Konstanten und überprüft mit der vereinbarten Stromrichtung i=q′ die Anfangsbedingungen.",
+            "observablePerformanceEn": "Substitutes the ansatz, determines angular frequency and constants, and checks initial conditions using the chosen current convention i=q′."
+          },
+          {
+            "id": "solution-meaning",
+            "essentialUnderstandingDe": "Periodendauer, Frequenz und periodische elektrische/magnetische Energieumlagerung folgen aus derselben Lösung; der ideale Kreis ist verlustfrei und nicht extern angetrieben.",
+            "essentialUnderstandingEn": "Period, frequency, and periodic electric/magnetic energy redistribution follow from the same solution; the ideal circuit has no losses or external drive.",
+            "observablePerformanceDe": "Deutet q(t), i(t) und Energiephasen konsistent und benennt die Idealisation.",
+            "observablePerformanceEn": "Interprets q(t), i(t), and energy phases consistently and states the idealisation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ansatz-and-initial-state",
+            "solution-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "charged-and-current-initialisation",
+            "textDe": "Anfangs elektrisch gespeicherte und anfangs magnetisch gespeicherte Energie mit verschiedenen Phasen der Lösung vergleichen.",
+            "textEn": "Compare initially electric and initially magnetic stored energy through different solution phases."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "charged-capacitor",
+            "taskDemandDe": "Gegeben sind L=0,1 H, C=10 μF, q″+q/(LC)=0 sowie q(0)=20 μC, i(0)=0 mit i=q′. Löse mit geeignetem Ansatz und deute T, f und die Energie nach einer Viertelperiode. Die Energieausdrücke q²/(2C) und Li²/2 dürfen verwendet werden.",
+            "taskDemandEn": "Given L=0.1 H, C=10 μF, q″+q/(LC)=0, q(0)=20 μC, and i(0)=0 with i=q′, solve using a suitable ansatz and interpret T, f, and energy after a quarter-period. You may use energy expressions q²/(2C) and Li²/2.",
+            "expectedPerformanceDe": "ω=1000 s⁻¹, q(t)=20·10⁻⁶ cos(1000t) C und i(t)=−0,020 sin(1000t) A erfüllen Gleichung und Startwerte. T≈6,283 ms, f≈159,155 Hz. Nach T/4 ist q=0 und i=−20 mA; die anfänglichen 20 μJ elektrischer Energie liegen vollständig magnetisch vor.",
+            "expectedPerformanceEn": "ω=1000 s⁻¹, q(t)=20·10⁻⁶ cos(1000t) C and i(t)=−0.020 sin(1000t) A satisfy the equation and initial values. T≈6.283 ms, f≈159.155 Hz. At T/4, q=0 and i=−20 mA; the initial 20 μJ of electric energy is entirely magnetic.",
+            "understandingFocusDe": "Ansatz, Stromvorzeichen und Energieumlagerung aus derselben Lösung begründen.",
+            "understandingFocusEn": "Justify the ansatz, current sign, and energy exchange from the same solution."
+          },
+          {
+            "id": "initial-current",
+            "taskDemandDe": "Für einen anderen idealen Kreis gilt q″+40000q=0, q(0)=0, i(0)=+0,040 A und i=q′. L=0,5 H ist gegeben. Bestimme q(t), i(t), Periodendauer und die Energiephase beim ersten positiven Ladungsmaximum.",
+            "taskDemandEn": "For another ideal circuit, q″+40000q=0, q(0)=0, i(0)=+0.040 A, and i=q′. L=0.5 H is supplied. Determine q(t), i(t), period, and energy phase at the first positive charge maximum.",
+            "expectedPerformanceDe": "ω=200 s⁻¹, q(t)=2·10⁻⁴ sin(200t) C, i(t)=0,040 cos(200t) A. T≈31,416 ms, f≈31,831 Hz; nach T/4 ist q maximal und i=0. C=1/(Lω²)=50 μF; die anfänglichen 0,4 mJ magnetischer Energie liegen dann elektrisch vor. Ein reiner Cosinus ohne Phasenanpassung würde die Anfangsbedingungen verfehlen.",
+            "expectedPerformanceEn": "ω=200 s⁻¹, q(t)=2·10⁻⁴ sin(200t) C, i(t)=0.040 cos(200t) A. T≈31.416 ms, f≈31.831 Hz; at T/4 q is maximal and i=0. C=1/(Lω²)=50 μF; the initial 0.4 mJ of magnetic energy is then electric. An unshifted pure cosine would fail the initial conditions.",
+            "understandingFocusDe": "Die Phase durch eine geänderte Anfangssituation bestimmen statt dieselbe Musterlösung zu wiederholen.",
+            "understandingFocusEn": "Determine phase from a changed initial situation rather than repeat the same model solution."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die aktuellen EN-Felder enthalten deutschen Text. Der bilinguale Profilentwurf übersetzt den vorhandenen DE-Umfang ohne zusätzliche Kompetenz; Bindung bleibt offen."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "phasor-projection",
+            "essentialUnderstandingDe": "Ein Zeiger stellt Amplitude und Phase einer sinusförmigen Größe bei festgelegter Projektion dar; Spannung und Strom eines ideal ohmschen Widerstands sind bei gleicher Bezugsrichtung in Phase.",
+            "essentialUnderstandingEn": "A phasor represents amplitude and phase of a sinusoidal quantity using a specified projection; voltage and current in an ideal ohmic resistor are in phase under consistent reference directions.",
+            "observablePerformanceDe": "Konstruiert Zeiger aus Zeitfunktionen oder umgekehrt und kennzeichnet Projektion, Drehsinn, Einheiten und Amplitudenskalierung.",
+            "observablePerformanceEn": "Constructs phasors from time functions or vice versa and labels projection, rotation direction, units, and amplitude scales."
+          },
+          {
+            "id": "relative-phase",
+            "essentialUnderstandingDe": "Die relative Phase zwischen Spannung und Strom ist von der gemeinsamen Phase gegenüber dem Zeitursprung zu unterscheiden; Zeiger sind keine räumlichen Bewegungen von Ladungen.",
+            "essentialUnderstandingEn": "Relative phase between voltage and current differs from their common phase relative to the time origin; phasors are not spatial charge trajectories.",
+            "observablePerformanceDe": "Deutet Gleichzeitigkeit von Nulldurchgängen und Extrema und überträgt die Darstellung auf einen geänderten Zeitursprung.",
+            "observablePerformanceEn": "Interprets simultaneous zero crossings and extrema and transfers the representation to a changed time origin."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "phasor-projection",
+            "relative-phase"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "time-to-phasor-and-back",
+            "textDe": "Zeitfunktion in ein Zeigerbild übersetzen und ein gegebenes gemeinsam gedrehtes Zeigerpaar zurück in Zeitfunktionen übertragen.",
+            "textEn": "Translate a time function into phasors and convert a given commonly rotated phasor pair back into time functions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ohmic-sine",
+            "taskDemandDe": "Für einen ideal ohmschen Widerstand R=200 Ω in einem Kleinspannungsmodell gilt u(t)=4 sin(200πt) V, t in s. Bestimme i(t), zeichne beide Amplitudenzeiger mit Sinusprojektion und erkläre die Phasenbeziehung.",
+            "taskDemandEn": "For an ideal ohmic resistor R=200 Ω in a low-voltage model, u(t)=4 sin(200πt) V with t in s. Determine i(t), draw both amplitude phasors using sine projection, and explain their phase relationship.",
+            "expectedPerformanceDe": "i(t)=0,020 sin(200πt) A. f=100 Hz, T=10 ms; beide Zeiger sind gleichgerichtet und rotieren mit derselben Kreisfrequenz. Nulldurchgänge und Maxima sind gleichzeitig, Δφ=0. Zeigerlängen benötigen getrennte V- und A-Skalen; sie werden nicht als gleichartige räumliche Vektoren addiert.",
+            "expectedPerformanceEn": "i(t)=0.020 sin(200πt) A. f=100 Hz and T=10 ms; the two phasors are aligned and rotate at the same angular frequency. Zero crossings and maxima coincide, Δφ=0. Lengths need separate V and A scales; the phasors are not added as like physical spatial vectors.",
+            "understandingFocusDe": "Ohmsches Verhalten als proportionale, phasengleiche Zeitverläufe darstellen.",
+            "understandingFocusEn": "Represent ohmic behaviour as proportional, in-phase time signals."
+          },
+          {
+            "id": "shifted-time-origin",
+            "taskDemandDe": "Bei Kosinusprojektion liegen die Amplitudenzeiger eines ohmschen Kreises bei t=0 beide unter −60° zur positiven Projektionsachse; ihre Beträge sind 6 V und 30 mA, ihre gemeinsame Kreisfrequenz ω. Gib Zeitfunktionen und Anfangswerte an. Eilt der Strom um 60° nach?",
+            "taskDemandEn": "With cosine projection, both amplitude phasors of an ohmic circuit lie at −60° to the positive projection axis at t=0. Their magnitudes are 6 V and 30 mA and their common angular frequency is ω. State time functions and initial values. Does the current lag by 60°?",
+            "expectedPerformanceDe": "u=6 cos(ωt−π/3) V und i=0,030 cos(ωt−π/3) A; u(0)=3 V, i(0)=15 mA. Beide besitzen denselben Anfangswinkel, daher beträgt ihre relative Phase 0 und R=200 Ω. Der gemeinsame Winkel beschreibt den gewählten Zeitursprung, keinen Stromnachlauf.",
+            "expectedPerformanceEn": "u=6 cos(ωt−π/3) V and i=0.030 cos(ωt−π/3) A; u(0)=3 V and i(0)=15 mA. Both share the same initial angle, so relative phase is 0 and R=200 Ω. The common angle describes the chosen time origin, not current lag.",
+            "understandingFocusDe": "Absolute Zeigerlage von einer physikalischen Phasendifferenz unterscheiden.",
+            "understandingFocusEn": "Distinguish absolute phasor orientation from physical phase difference."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die EN-Felder sind derzeit deutsch. C und L bleiben ideale Einzelbauteile; keine ungenannte kombinierte RLC-Impedanzrechnung als Zusatzpflicht."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "differential-phase-relations",
+            "essentialUnderstandingDe": "Für ideale Bauteile gilt bei passiver Vorzeichenkonvention i_C=C·du_C/dt und u_L=L·di_L/dt; die Ableitung erzeugt bei Sinussignalen die Viertelperiodenverschiebung.",
+            "essentialUnderstandingEn": "For ideal components under the passive sign convention, i_C=C·du_C/dt and u_L=L·di_L/dt; differentiation produces a quarter-period shift for sinusoidal signals.",
+            "observablePerformanceDe": "Leitet aus einem angegebenen sinusförmigen Verlauf den anderen her und begründet Richtung und Betrag der Phasenverschiebung.",
+            "observablePerformanceEn": "Derives one sinusoidal quantity from the other and justifies the direction and magnitude of phase shift."
+          },
+          {
+            "id": "amplitude-and-frequency",
+            "essentialUnderstandingDe": "Die Amplitudenverhältnisse sind Î_C/Û_C=ωC und Û_L/Î_L=ωL; eine Frequenzänderung wirkt bei gleicher Spannungsamplitude auf C und L entgegengesetzt.",
+            "essentialUnderstandingEn": "Amplitude ratios are Î_C/Û_C=ωC and Û_L/Î_L=ωL; at equal voltage amplitude, frequency changes affect C and L in opposite ways.",
+            "observablePerformanceDe": "Konstruiert konsistente Zeigerdiagramme und prüft Amplituden, Einheiten und geänderte Frequenzfälle.",
+            "observablePerformanceEn": "Constructs consistent phasor diagrams and checks amplitudes, units, and changed-frequency cases."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "differential-phase-relations",
+            "amplitude-and-frequency"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "capacitor-and-inductor",
+            "textDe": "Kapazitiven Stromvorlauf und induktiven Spannungs­vorlauf aus den jeweiligen Differentialbeziehungen selbst erschließen.",
+            "textEn": "Derive capacitive current lead and inductive voltage lead independently from their differential relations."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "capacitive-current",
+            "taskDemandDe": "Für einen idealen Kondensator C=10 μF gilt u_C=2 sin(1000t) V. Nutze i_C=C·du_C/dt, bestimme den Strom und stelle die Phasen als Zeiger dar. Was ändert sich bei doppelter Frequenz und gleicher Spannungsamplitude?",
+            "taskDemandEn": "For an ideal capacitor C=10 μF, u_C=2 sin(1000t) V. Use i_C=C·du_C/dt, determine current, and represent the phases as phasors. What changes at twice the frequency with unchanged voltage amplitude?",
+            "expectedPerformanceDe": "i_C=0,020 cos(1000t) A=0,020 sin(1000t+π/2) A: Strom eilt um 90° vor. Î/Û=0,010 A/V=ωC. Bei doppeltem ω verdoppelt sich Î auf 40 mA; die ideale Phasenverschiebung bleibt 90°. Einheiten und passive Bezugsrichtung werden angegeben.",
+            "expectedPerformanceEn": "i_C=0.020 cos(1000t) A=0.020 sin(1000t+π/2) A: current leads by 90°. Î/Û=0.010 A/V=ωC. Doubling ω doubles Î to 40 mA; the ideal phase shift remains 90°. Units and the passive reference direction are stated.",
+            "understandingFocusDe": "Ableitungsbeziehung statt eines auswendig gelernten Vorlaufmerksatzes verwenden.",
+            "understandingFocusEn": "Use the differential relation rather than a memorised lead-lag slogan."
+          },
+          {
+            "id": "inductive-voltage",
+            "taskDemandDe": "Für eine ideale Spule L=0,2 H ist i_L=0,010 sin(500t) A gegeben. Nutze u_L=L·di_L/dt und konstruiere ein Zeigerdiagramm. Wie verändert sich die Stromamplitude bei doppelter Frequenz, wenn nun die Spannungsamplitude festgehalten wird?",
+            "taskDemandEn": "For an ideal inductor L=0.2 H, i_L=0.010 sin(500t) A is given. Use u_L=L·di_L/dt and construct a phasor diagram. How does current amplitude change at twice the frequency when voltage amplitude is held fixed?",
+            "expectedPerformanceDe": "u_L=1,0 cos(500t) V: Spannung eilt dem Strom um 90° vor, Û/Î=100 Ω=ωL. Bei festem Û=1 V und doppeltem ω wird Î=5 mA. Das Vorzeichen der passiven Klemmenspannung ist von einer entgegengesetzt orientierten induzierten EMK zu unterscheiden; ohmsche Spulenverluste sind hier ausgeschlossen.",
+            "expectedPerformanceEn": "u_L=1.0 cos(500t) V: voltage leads current by 90°, Û/Î=100 Ω=ωL. At fixed Û=1 V and doubled ω, Î becomes 5 mA. The passive terminal-voltage sign differs from an oppositely oriented induced emf; resistive coil losses are excluded here.",
+            "understandingFocusDe": "Den geänderten Bauteiltyp und die festgehaltene Größe in der Vorhersage berücksichtigen.",
+            "understandingFocusEn": "Account for the changed component and controlled quantity in the prediction."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e413a352-33c4-53ae-b54a-30e52c3e65ae",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Aktuelles EN ist deutscher Text. Die im Ziel genannten Filtertypen sind durch 'oder' alternativ; diese zwei RC-Fälle verlangen keine zusätzliche vollständige Bandpass-/Bandfilterroutine."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "frequency-response",
+            "essentialUnderstandingDe": "Ein Filter wird durch das Verhältnis von Ausgangs- zu Eingangsamplitude in Abhängigkeit von der Frequenz beschrieben; die Abgriffstelle gehört zur Schaltungsdefinition.",
+            "essentialUnderstandingEn": "A filter is described by output-to-input amplitude ratio versus frequency; the output measurement location is part of the circuit definition.",
+            "observablePerformanceDe": "Berechnet oder misst bei kontrollierter Eingangsamplitude einen Frequenzgang und stellt ihn mit beschrifteten Achsen dar.",
+            "observablePerformanceEn": "Calculates or measures a frequency response at controlled input amplitude and plots it with labelled axes."
+          },
+          {
+            "id": "pass-range-and-model",
+            "essentialUnderstandingDe": "Durchlass- und Sperrbereiche sind graduell; ein endlicher Grenzfrequenzwert bedeutet keine scharfe Alles-oder-nichts-Grenze.",
+            "essentialUnderstandingEn": "Pass and stop regions are gradual; a finite cutoff frequency is not a sharp all-or-nothing boundary.",
+            "observablePerformanceDe": "Deutet den Kurvenverlauf, prüft tiefe und hohe Frequenzen und nennt die Grenzen des verwendeten Modells oder der Messung.",
+            "observablePerformanceEn": "Interprets the curve, checks low and high frequencies, and states limitations of the model or measurement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "frequency-response",
+            "pass-range-and-model"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "output-node-change",
+            "textDe": "Bei derselben RC-Reihenschaltung den Ausgang über C beziehungsweise R abgreifen und die gegensätzlichen Frequenzgänge erklären.",
+            "textEn": "Take the output across C versus R in the same series RC circuit and explain the opposite frequency responses."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "capacitor-output",
+            "taskDemandDe": "Eine ideale unbelastete RC-Reihenschaltung hat R=1 kΩ und C=1 μF; Ausgang ist die Kondensatorspannung. Für die rechnerische Untersuchung ist H_C=1/√(1+(2πfRC)²) gegeben. Zeichne den Verlauf mit Werten bei 0,1f_c, f_c und 10f_c, wobei f_c=1/(2πRC).",
+            "taskDemandEn": "An ideal unloaded series RC circuit has R=1 kΩ and C=1 μF; the output is capacitor voltage. For a computational investigation H_C=1/√(1+(2πfRC)²) is supplied. Plot values at 0.1f_c, f_c, and 10f_c, where f_c=1/(2πRC).",
+            "expectedPerformanceDe": "f_c≈159,15 Hz; H_C≈0,9950;0,7071;0,09950. Die Kurve beschreibt einen Tiefpass mit H→1 für f→0 und H→0 für f→∞; bei f_c wird noch rund 70,7 Prozent der Eingangsamplitude übertragen. Das Modell setzt einen unbelasteten Ausgang und ideale Bauteile voraus.",
+            "expectedPerformanceEn": "f_c≈159.15 Hz; H_C≈0.9950,0.7071,0.09950. The curve is low-pass, with H→1 as f→0 and H→0 as f→∞; at f_c about 70.7 percent of input amplitude is still transmitted. The model assumes an unloaded output and ideal components.",
+            "understandingFocusDe": "Aus einem gegebenen Hilfsmittel selbst einen physikalisch gedeuteten Frequenzgang erstellen.",
+            "understandingFocusEn": "Use a supplied relation to construct and physically interpret a frequency response."
+          },
+          {
+            "id": "resistor-output",
+            "taskDemandDe": "Im selben RC-Modell wird der Ausgang jetzt über R statt C abgegriffen. Gegeben ist H_R=(2πfRC)/√(1+(2πfRC)²). Untersuche und zeichne den Verlauf bei 0,1f_c, f_c und 10f_c und erkläre, weshalb der Abgriff die Filterwirkung ändert.",
+            "taskDemandEn": "In the same RC model the output is now taken across R rather than C. H_R=(2πfRC)/√(1+(2πfRC)²) is supplied. Investigate and plot values at 0.1f_c, f_c, and 10f_c and explain why changing the output location changes the filtering.",
+            "expectedPerformanceDe": "H_R≈0,09950;0,7071;0,9950, also Hochpass. Bei niedriger Frequenz fließt wenig Strom und an R fällt wenig Spannung ab; bei hoher Frequenz ist der kapazitive Widerstand klein und fast die gesamte Spannung liegt an R. Gleiche Bauteile bedeuten ohne gleiche Abgriffstelle nicht denselben Filter.",
+            "expectedPerformanceEn": "H_R≈0.09950,0.7071,0.9950, hence high-pass. At low frequency little current flows and little voltage drops across R; at high frequency capacitive reactance is small and almost all voltage lies across R. Identical components do not imply the same filter without the same output location.",
+            "understandingFocusDe": "Einen strukturell veränderten Messabgriff in Rechnung, Grafik und Erklärung berücksichtigen.",
+            "understandingFocusEn": "Account for a structurally changed output location in calculation, plot, and explanation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "opened-oscillating-system",
+            "essentialUnderstandingDe": "Beim Übergang vom konzentrierten LC-Kreis zum offenen Dipol bleiben zeitlich wechselnde Ladungs- und Stromverteilungen wesentlich, während elektrische und magnetische Felder stärker in den umgebenden Raum reichen.",
+            "essentialUnderstandingEn": "In moving from a lumped LC circuit to an open dipole, time-varying charge and current distributions remain essential while electric and magnetic fields extend further into surrounding space.",
+            "observablePerformanceDe": "Erklärt die Modellverbindung mit eigenen Skizzen und unterscheidet Leiterladung, Strom und elektromagnetisches Feld.",
+            "observablePerformanceEn": "Explains the model connection with original sketches and distinguishes conductor charge, current, and electromagnetic field."
+          },
+          {
+            "id": "radiated-energy",
+            "essentialUnderstandingDe": "Ein zeitabhängiger Dipol kann Energie als elektromagnetische Welle abgeben; Feldbilder sind Darstellungen und keine sich ablösenden materiellen Fäden.",
+            "essentialUnderstandingEn": "A time-dependent dipole can radiate energy as an electromagnetic wave; field drawings are representations, not material threads breaking off.",
+            "observablePerformanceDe": "Beschreibt die Energieübertragung und grenzt stationäre Felder sowie ein dauerhaft gespeistes Signal von einem frei abklingenden System ab.",
+            "observablePerformanceEn": "Describes energy transfer and distinguishes static fields and a continuously powered signal from a freely decaying system."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "opened-oscillating-system",
+            "radiated-energy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "opening-geometry-and-supply-change",
+            "textDe": "Geometrischen Übergang zum offenen Dipol und veränderte Energiezufuhr als unabhängige Erklärungssituationen nutzen.",
+            "textEn": "Use the geometric transition to an open dipole and changed energy supply as independent explanatory situations."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "open-circuit-model",
+            "taskDemandDe": "Eine Zeichnungsfolge zeigt einen LC-Kreis mit zunehmend auseinandergezogenen Kondensatorplatten und gestrecktem Leiter. Ergänze eigene Feld- und Ladungsskizzen für zwei entgegengesetzte Ladungsphasen und erkläre, was die Dipol-Idealisierung beschreibt.",
+            "taskDemandEn": "A drawing sequence shows an LC circuit with capacitor plates increasingly separated and its conductor straightened. Add your own field and charge sketches for two opposite charge phases and explain what the dipole idealisation represents.",
+            "expectedPerformanceDe": "Die Endladungen wechseln ihr Vorzeichen; dazwischen ändern sich Strom und magnetisches Feld. Felder sind nicht nur auf den kleinen Kondensatorraum beschränkt. Der offene schwingende Dipol ist ein vereinfachtes Modell einer abstrahlenden Anordnung, keine wörtlich unveränderte LC-Geometrie und kein Nachweis einer vollständigen Feldlösung.",
+            "expectedPerformanceEn": "End charges reverse sign; current and magnetic field change in between. Fields are not confined to a small capacitor region. The open oscillating dipole is a simplified model of a radiating arrangement, not a literally unchanged LC geometry or a complete field solution.",
+            "understandingFocusDe": "Die Modellanalogie anhand von Ladung, Strom und räumlicher Feldausdehnung erklären.",
+            "understandingFocusEn": "Explain the model analogy through charge, current, and spatial field extent."
+          },
+          {
+            "id": "source-off",
+            "taskDemandDe": "Vergleiche einen statisch geladenen Dipol, einen anfangs schwingenden und danach nicht mehr gespeisten Dipol und einen fortdauernd angetriebenen Dipol. Welche Anordnung kann eine anhaltende elektromagnetische Welle liefern, und woher stammt ihre Energie?",
+            "taskDemandEn": "Compare a statically charged dipole, a dipole initially oscillating but then no longer powered, and a continuously driven dipole. Which can deliver a sustained electromagnetic wave, and where does its energy come from?",
+            "expectedPerformanceDe": "Eine konstante Ladungsverteilung besitzt ein statisches Feld und strahlt im betrachteten Modell nicht fortdauernd. Ein frei schwingender realer Dipol verliert Energie durch Abstrahlung und weitere Verluste und klingt ab. Anhaltende Abstrahlung erfordert Energiezufuhr aus der Quelle; die Welle trägt Energie durch den Raum, nicht die Leiterladungen bis zum Empfänger.",
+            "expectedPerformanceEn": "A constant charge distribution has a static field and does not continuously radiate in this model. A freely oscillating real dipole loses energy through radiation and other losses and decays. Sustained radiation requires source energy; the wave carries energy through space, not the conductor charges all the way to the receiver.",
+            "understandingFocusDe": "Abstrahlung mit einer ehrlichen Energiebilanz verbinden und Feldtransport von Ladungstransport trennen.",
+            "understandingFocusEn": "Connect radiation with an honest energy account and distinguish field propagation from charge transport."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "91f1838c-80fc-55f5-ac30-e7d1498fccee",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "EN-Titel und EN-Beschreibung sind aktuell deutsch. Der Entwurf bleibt beim Rückkopplungsprinzip; keine zusätzliche detaillierte Oszillatorschaltungs- oder Regelungsauslegung."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "feedback-and-energy-source",
+            "essentialUnderstandingDe": "Rückkopplung führt einen Teil des Schwingungssignals passend zur Phase auf eine steuernde Verstärkerstufe zurück; die zum Verlustausgleich nötige Energie stammt aus der Versorgung.",
+            "essentialUnderstandingEn": "Feedback returns part of the oscillation signal with suitable phase to a controlling amplifier stage; energy needed to compensate losses comes from the supply.",
+            "observablePerformanceDe": "Erklärt Signalweg und Energiezufuhr getrennt und begründet, wann Rückkopplung die Schwingung verstärkt oder abschwächt.",
+            "observablePerformanceEn": "Explains signal path and energy supply separately and justifies when feedback reinforces or weakens oscillation."
+          },
+          {
+            "id": "maintenance-not-runaway",
+            "essentialUnderstandingDe": "Dauerhafte Schwingung benötigt im eingeschwungenen Zustand passenden Verlustausgleich; gleichbleibend übergroße Verstärkung kann keine unbegrenzt wachsende reale Amplitude erzeugen.",
+            "essentialUnderstandingEn": "Sustained oscillation requires appropriate loss compensation in steady state; persistently excessive gain cannot produce an unlimited real amplitude.",
+            "observablePerformanceDe": "Deutet veränderte Rückkopplungsphase oder Verstärkung in einem einfachen Oszillatorkontext und benennt die Amplitudenbegrenzung.",
+            "observablePerformanceEn": "Interprets changed feedback phase or gain in a simple oscillator context and identifies amplitude limitation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "feedback-and-energy-source",
+            "maintenance-not-runaway"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "energy-balance-and-phase-reversal",
+            "textDe": "Verlustausgleich aus einer Modell-Energiebilanz erklären und die Wirkung umgekehrter Rückkopplungsphase vorhersagen.",
+            "textEn": "Explain loss compensation from a model energy balance and predict the effect of reversed feedback phase."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "loss-compensation",
+            "taskDemandDe": "Ein simuliertes Schwingkreismodell enthält 2,0 mJ Schwingungsenergie und verliert je Periode 0,2 mJ. Eine passend phasengesteuerte Verstärkerstufe ersetzt genau diesen Betrag. Zeichne Signal- und Energiefluss und beurteile den Verlauf mit und ohne Versorgung.",
+            "taskDemandEn": "A simulated oscillating-circuit model contains 2.0 mJ of oscillation energy and loses 0.2 mJ per period. A suitably phase-controlled amplifier stage replaces exactly that amount. Draw signal and energy flows and assess behaviour with and without the supply.",
+            "expectedPerformanceDe": "Mit Versorgung wird der Verlust von 0,2 mJ je Periode ausgeglichen und die Schwingungsenergie bleibt im Modell 2,0 mJ. Ohne Nachspeisung sinkt sie nach einer Periode auf 1,8 mJ. Das rückgeführte Signal steuert die Energiezufuhr; es erzeugt die fehlende Energie nicht selbst.",
+            "expectedPerformanceEn": "With the supply, the 0.2 mJ loss per period is compensated and oscillation energy stays at 2.0 mJ in the model. Without replenishment it falls to 1.8 mJ after one period. The feedback signal controls energy delivery; it does not create the missing energy itself.",
+            "understandingFocusDe": "Signalrückführung und physikalische Energiequelle sauber trennen.",
+            "understandingFocusEn": "Clearly separate signal feedback from the physical energy source."
+          },
+          {
+            "id": "reversed-feedback",
+            "taskDemandDe": "In einer sicheren Oszillatorsimulation wird bei unveränderter Versorgung das Rückkopplungssignal um eine halbe Periode verschoben. Erläutere die erwartete Wirkung gegenüber phasenpassender Rückkopplung. Was begrenzt die Amplitude, falls die anfängliche Verstärkung zu groß gewählt wird?",
+            "taskDemandEn": "In a safe oscillator simulation, the feedback signal is shifted by half a period with the supply unchanged. Explain the expected effect compared with phase-matched feedback. What limits amplitude if initial gain is set too high?",
+            "expectedPerformanceDe": "Eine halbe Periode entspricht 180°; ein zuvor verstärkender Beitrag wirkt nun der Schwingung entgegen und kann sie abklingen lassen. Bei phasenpassender zu großer Kleinsignalverstärkung wächst sie zunächst, bis reale Nichtlinearität oder Regelung die wirksame Verstärkung begrenzt. Eine exakte Frequenz- oder Schaltungsdimensionierung folgt aus diesen Angaben nicht.",
+            "expectedPerformanceEn": "Half a period corresponds to 180°; a previously reinforcing contribution now opposes the oscillation and can make it decay. With phase-matched excessive small-signal gain it initially grows until nonlinearity or control limits effective gain. These details do not determine exact frequency or circuit component values.",
+            "understandingFocusDe": "Die Phasenbedingung für Rückkopplung auf einen geänderten Signalweg übertragen.",
+            "understandingFocusEn": "Transfer the feedback phase condition to a changed signal path."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die aktuellen EN-Felder sind deutsch. Die zwei vorgegebenen Beispiele prüfen das allgemeine Modulationsprinzip, keine zusätzliche Herleitung von AM-/FM-Spektren oder Empfängerbauteilen."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "carrier-information-distinction",
+            "essentialUnderstandingDe": "Modulation verändert eine vereinbarte Eigenschaft einer Trägerwelle entsprechend dem Nutzsignal; Träger, Information und Übertragungsweg sind verschiedene Rollen.",
+            "essentialUnderstandingEn": "Modulation changes an agreed property of a carrier wave according to the message signal; carrier, information, and transmission path play distinct roles.",
+            "observablePerformanceDe": "Beschreibt an einem frischen Signalbeispiel, welche Trägereigenschaft welche Information trägt und wie ein Empfänger diese grundsätzlich gewinnt.",
+            "observablePerformanceEn": "Describes in a fresh signal example which carrier property carries which information and how a receiver can recover it in principle."
+          },
+          {
+            "id": "coding-and-recovery",
+            "essentialUnderstandingDe": "Die empfangene schnelle Schwingung ist nicht bereits das ursprüngliche Nutzsignal; dessen Gewinnung setzt die bekannte Modulations- oder Zuordnungsregel voraus.",
+            "essentialUnderstandingEn": "The received rapid oscillation is not already the original message; recovery requires the known modulation or mapping rule.",
+            "observablePerformanceDe": "Überträgt das Prinzip auf eine andere veränderte Trägereigenschaft und trennt Modulation von bloß höherer Sendeleistung.",
+            "observablePerformanceEn": "Transfers the principle to a different changing carrier property and distinguishes modulation from merely increasing transmission power."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "carrier-information-distinction",
+            "coding-and-recovery"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "amplitude-envelope-and-frequency-code",
+            "textDe": "Eine analoge Amplitudenhüllkurve und eine ausdrücklich gegebene digitale Frequenzzuordnung als unterschiedliche Trägernutzung erklären.",
+            "textEn": "Explain an analogue amplitude envelope and an explicitly supplied digital frequency mapping as different uses of a carrier."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "amplitude-carrier",
+            "taskDemandDe": "Ein rein mathematisches Sendemodell lautet u(t)=[2+0,5 sin(2π·1000t)] sin(2π·100000t) V. Beschreibe Träger und Nutzsignal und skizziere eine kurze Signalfolge. Welche Größe müsste der Empfänger verfolgen, um das 1-kHz-Signal zurückzugewinnen?",
+            "taskDemandEn": "A purely mathematical transmitter model is u(t)=[2+0.5 sin(2π·1000t)] sin(2π·100000t) V. Describe carrier and message and sketch a short signal segment. Which quantity should the receiver track to recover the 1-kHz signal?",
+            "expectedPerformanceDe": "Die schnelle Trägerschwingung hat 100 kHz und 10 μs Periodendauer. Ihre positive Amplitudenhüllkurve variiert zwischen 1,5 und 2,5 V mit 1 kHz; pro Nutzsignalperiode liegen 100 Trägerperioden vor. Grundsätzlich wird die Hüllkurvenänderung gewonnen und der konstante Anteil abgetrennt. Keine Empfängerschaltung muss konstruiert werden.",
+            "expectedPerformanceEn": "The rapid carrier has frequency 100 kHz and period 10 μs. Its positive amplitude envelope varies between 1.5 and 2.5 V at 1 kHz; one message period contains 100 carrier periods. In principle the envelope variation is recovered and its constant component removed. No receiver circuit construction is required.",
+            "understandingFocusDe": "Informationstragende Hüllkurve von der schnellen elektromagnetischen Trägerschwingung unterscheiden.",
+            "understandingFocusEn": "Distinguish the information-bearing envelope from the rapid electromagnetic carrier oscillation."
+          },
+          {
+            "id": "frequency-coded-message",
+            "taskDemandDe": "Eine simulierte Funkverbindung nutzt konstante Amplitude und bekannte, gleich lange Zeitfenster. Vereinbart sind 9,9 MHz für 0 und 10,1 MHz für 1. In drei Fenstern werden 10,1;9,9;10,1 MHz empfangen. Erläutere die Nachricht und das Modulationsprinzip; warum genügt hier reine Amplitudenmessung nicht?",
+            "taskDemandEn": "A simulated radio link uses constant amplitude and known equal-duration time slots. The agreed mapping is 9.9 MHz for 0 and 10.1 MHz for 1. Three received slots contain 10.1,9.9,10.1 MHz. Explain the message and modulation principle; why is amplitude measurement alone insufficient?",
+            "expectedPerformanceDe": "Die Folge lautet 101. Nicht die Amplitude, sondern die nach der vorgegebenen Regel wechselnde Frequenz trägt hier die Information. Der Empfänger muss Frequenzzustände den Zeitfenstern und Symbolen zuordnen. Beide Fälle übertragen Information über eine modulierte elektromagnetische Trägerwelle; eine bloße Amplitudenerhöhung ohne Nachrichtenabhängigkeit wäre keine solche Codierung.",
+            "expectedPerformanceEn": "The sequence is 101. Here information is carried by frequency changes under the supplied rule, not amplitude. The receiver must associate frequency states with slots and symbols. Both cases transmit information through a modulated electromagnetic carrier; merely raising amplitude without message dependence would not implement this coding.",
+            "understandingFocusDe": "Die abstrakte Träger-Nutzsignal-Beziehung auf eine andere Signalgröße übertragen.",
+            "understandingFocusEn": "Transfer the abstract carrier-message relation to another signal quantity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "electromagnetic-propagation",
+            "essentialUnderstandingDe": "Licht wird im Wellenmodell durch gekoppelte elektrische und magnetische Feldänderungen beschrieben; die Ausbreitungsgeschwindigkeit ist keine Geschwindigkeit mitreisender Leiterladungen.",
+            "essentialUnderstandingEn": "In the wave model, light is described by coupled electric and magnetic field variations; its propagation speed is not the speed of conductor charges travelling with it.",
+            "observablePerformanceDe": "Beschreibt eine frische Feld-/Ausbreitungssituation und verknüpft räumliche und zeitliche Periodizität mit der angegebenen Lichtgeschwindigkeit.",
+            "observablePerformanceEn": "Describes a fresh field/propagation situation and connects spatial and temporal periodicity with the supplied speed of light."
+          },
+          {
+            "id": "coherence-and-vacuum-speed",
+            "essentialUnderstandingDe": "Kohärenz bedeutet eine ausreichend stabile Phasenbeziehung über den betrachteten Zeitraum; sie ist weder bloß gleiche Farbe noch eine erhöhte Lichtgeschwindigkeit.",
+            "essentialUnderstandingEn": "Coherence means a sufficiently stable phase relation over the interval considered; it is neither merely the same colour nor increased light speed.",
+            "observablePerformanceDe": "Prüft Phasenangaben und begründet, welche Aussagen über Kohärenz und Vakuumausbreitung daraus folgen.",
+            "observablePerformanceEn": "Examines phase information and justifies conclusions about coherence and vacuum propagation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "electromagnetic-propagation",
+            "coherence-and-vacuum-speed"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "single-wave-and-relative-phase",
+            "textDe": "Eine einzelne laufende Welle und den Phasenbezug zweier gleichfarbiger Teilwellen untersuchen.",
+            "textEn": "Investigate one travelling wave and the phase relation between two same-colour wave components."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "vacuum-wave",
+            "taskDemandDe": "Eine idealisierte Lichtwelle läuft im Vakuum in z-Richtung; ihr elektrisches Feld schwingt in x-Richtung. Beschreibe die magnetische Feldorientierung und die Ausbreitung. Für λ=600 nm sind c=3,0·10⁸ m/s und c=λf gegeben; ordne die resultierende Frequenz ein.",
+            "taskDemandEn": "An idealised light wave travels in the z direction in vacuum; its electric field oscillates in the x direction. Describe the magnetic field orientation and propagation. For λ=600 nm, c=3.0·10⁸ m/s and c=λf are supplied; interpret the resulting frequency.",
+            "expectedPerformanceDe": "Das magnetische Feld liegt quer dazu in y-Richtung, mit Orientierung passend zur Ausbreitung; beide Felder sind transversal. f=5,0·10¹⁴ Hz, T=2,0·10⁻¹⁵ s. Die Feldgrößen ändern sich periodisch, während das Muster sich mit c ausbreitet; kein materielles Medium oder Elektronentransport über die Lichtstrecke ist erforderlich.",
+            "expectedPerformanceEn": "The magnetic field lies transversely along y, oriented consistently with propagation; both fields are transverse. f=5.0·10¹⁴ Hz and T=2.0·10⁻¹⁵ s. Field quantities vary periodically as the pattern propagates at c; no material medium or electron transport along the light path is required.",
+            "understandingFocusDe": "Feldschwingung, räumliche Ausbreitung und charakteristische Geschwindigkeit unterscheiden.",
+            "understandingFocusEn": "Distinguish field oscillation, spatial propagation, and characteristic speed."
+          },
+          {
+            "id": "phase-stability",
+            "taskDemandDe": "Zwei gleichfarbige Lichtanteile haben im Fall A über die Beobachtungszeit eine konstante Phasendifferenz π/2, im Fall B eine rasch zufällig wechselnde Phasendifferenz. Vergleiche Kohärenz und ihre Ausbreitung im Vakuum. Verändert höhere Intensität allein ihre Lichtgeschwindigkeit?",
+            "taskDemandEn": "Two same-colour light components have a constant phase difference π/2 throughout observation in case A and a rapidly random phase difference in case B. Compare coherence and their propagation in vacuum. Does greater intensity alone change their speed?",
+            "expectedPerformanceDe": "A besitzt eine stabile relative Phase und ist in diesem betrachteten Sinn kohärent; B nicht über die angegebene Beobachtungszeit. Gleiche Farbe allein genügt nicht. Beide breiten sich im Vakuum mit c aus; eine bloße Intensitätsänderung ändert c nicht. Kohärenz beschreibt den Phasenbezug, keine besondere schnellere Lichtart.",
+            "expectedPerformanceEn": "A has a stable relative phase and is coherent in the sense considered; B is not over the stated observation interval. The same colour alone is insufficient. Both propagate in vacuum at c; an intensity change alone does not change c. Coherence describes phase relation, not a special faster kind of light.",
+            "understandingFocusDe": "Kohärenz operational an Phasenangaben erklären und von Ausbreitungsgeschwindigkeit trennen.",
+            "understandingFocusEn": "Explain coherence operationally from phase information and separate it from propagation speed."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8ad305d2-bde0-4223-9477-517b2943148b",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "'Strahlenmodell bei Dispersion begrenzen' wird fachlich präzisiert: n(λ)-abhängige Strahlen können Dispersion beschreiben, erklären aber nicht ihre mikroskopische Ursache. Keine pauschale Aussage, Dispersion sei mit Strahlen unmöglich."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "ray-wave-domain",
+            "essentialUnderstandingDe": "Strahlen beschreiben Ausbreitungsrichtungen und geometrische Abbildungen näherungsweise; sie enthalten ohne zusätzliche Welleninformation keine Interferenz- oder Beugungsstruktur.",
+            "essentialUnderstandingEn": "Rays approximately describe propagation directions and geometrical imaging; without additional wave information they contain no interference or diffraction structure.",
+            "observablePerformanceDe": "Wählt für eine gegebene Aperturfrage ein geeignetes Modell und erklärt die Abhängigkeit von Aperturgröße und Wellenlänge.",
+            "observablePerformanceEn": "Chooses an appropriate model for an aperture question and explains dependence on aperture size and wavelength."
+          },
+          {
+            "id": "dispersion-limit",
+            "essentialUnderstandingDe": "Ein Strahlenmodell mit wellenlängenabhängigem Brechungsindex kann Farbaufspaltung beschreiben; ein einziger konstanter Index kann dies nicht. Die mikroskopische Ursache der Dispersion ist dadurch noch nicht erklärt.",
+            "essentialUnderstandingEn": "A ray model with wavelength-dependent refractive index can describe colour separation; one constant index cannot. This does not yet explain the microscopic cause of dispersion.",
+            "observablePerformanceDe": "Unterscheidet Beschreibung und Erklärung und benennt präzise, welche Strahlenmodell-Annahme bei Dispersion zu ergänzen ist.",
+            "observablePerformanceEn": "Distinguishes description from explanation and states precisely which ray-model assumption needs extension for dispersion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ray-wave-domain",
+            "dispersion-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "aperture-and-dispersive-interface",
+            "textDe": "Eine veränderte Apertur und eine farbabhängige Grenzflächenbrechung als unterschiedliche Modellgrenzen bearbeiten.",
+            "textEn": "Examine a changed aperture and colour-dependent refraction at an interface as different model boundaries."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "narrowing-aperture",
+            "taskDemandDe": "Licht mit λ=500 nm trifft auf einen Spalt, dessen Breite von 1 mm auf 0,01 mm verringert wird. Ein geometrisches Modell sagt jeweils nur den geraden Durchgang voraus. Erläutere, weshalb beim engen Spalt die beobachtete Aufweitung zunehmend wichtig wird. Als Orientierung ist sin θ_min=λ/a gegeben.",
+            "taskDemandEn": "Light of wavelength λ=500 nm meets a slit narrowed from 1 mm to 0.01 mm. A geometrical model predicts only straight passage. Explain why observed spreading becomes increasingly important for the narrow slit. The relation sin θ_min=λ/a is supplied for orientation.",
+            "expectedPerformanceDe": "λ/a wächst von 0,0005 auf 0,05, also um Faktor 100; die erste Minimumsrichtung liegt ungefähr bei 0,029° beziehungsweise 2,87°. Eine bloße Strahlenbegrenzung durch die Blende bildet diese Aufweitung und Minima nicht ab. Bei großer Apertur und begrenzter Auflösung kann die geometrische Näherung dennoch zweckmäßig sein.",
+            "expectedPerformanceEn": "λ/a increases from 0.0005 to 0.05, a factor of 100; the first-minimum directions are approximately 0.029° and 2.87°. A mere ray boundary at the aperture does not reproduce this spreading and the minima. With a large aperture and limited resolution, geometrical approximation can still be useful.",
+            "understandingFocusDe": "Eine Modellgrenze aus dem Größenverhältnis begründen statt Strahlen generell für falsch zu erklären.",
+            "understandingFocusEn": "Justify a model boundary from a size ratio rather than declaring rays universally wrong."
+          },
+          {
+            "id": "dispersive-refraction",
+            "taskDemandDe": "Für Licht von Luft in ein transparentes Material sind n_rot=1,50 und n_blau=1,53 gegeben. Beschreibe bei gleichem schrägem Einfallswinkel die unterschiedlichen Strahlrichtungen mithilfe des gegebenen Zusammenhangs sin β=sin α/n. Was kann dieses Modell beschreiben, und was erklärt es nicht?",
+            "taskDemandEn": "For light entering a transparent material from air, n_red=1.50 and n_blue=1.53 are supplied. Describe the different ray directions at the same oblique incidence using sin β=sin α/n. What can this model describe, and what does it not explain?",
+            "expectedPerformanceDe": "Der blaue Strahl wird stärker zum Lot gebrochen, weil sein n größer und daher sin β kleiner ist. Farbabhängige Brechung ist mit Strahlen und n(λ) beschreibbar; ein einziger farbunabhängiger Index würde die Richtungen gleichsetzen. Die Ursache der Frequenzabhängigkeit im Material oder Beugungsintensitäten liefert diese geometrische Beschreibung nicht.",
+            "expectedPerformanceEn": "The blue ray bends more towards the normal because its larger n gives smaller sin β. Colour-dependent refraction can be described with rays and n(λ); a single colour-independent index would predict the same direction. This geometric description does not provide the material cause of frequency dependence or diffraction intensities.",
+            "understandingFocusDe": "Dispersion als Grenze einer zu einfachen Strahlenannahme, nicht als Unmöglichkeit jeder Strahlenbeschreibung deuten.",
+            "understandingFocusEn": "Interpret dispersion as a limit of an oversimplified ray assumption, not the impossibility of any ray description."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c71315c1-f329-4289-a145-d99819da7bad",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Echte Durchführung und eigene Dokumentation sind Material-/Durchführungsanforderungen für spätere Leistungserhebung. Hier wurden keine Experimente durchgeführt oder empirischen Messdaten erzeugt; unsicherer Laserbetrieb wird nicht angeleitet."
+      ],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "controlled-pattern-investigation",
+            "essentialUnderstandingDe": "Ein aussagekräftiger Interferenzversuch variiert gezielt die Spaltanordnung und hält Lichtquelle, Ausrichtung, Schirmabstand und Dokumentation vergleichbar.",
+            "essentialUnderstandingEn": "An informative interference experiment deliberately varies the aperture arrangement while keeping light source, alignment, screen distance, and documentation comparable.",
+            "observablePerformanceDe": "Formuliert eine prüfbare Frage, plant und führt einen betreuten sicheren Schulversuch aus und dokumentiert Einzelspalt-, Doppelspalt- und Gittermuster in eigenen Messungen oder Skizzen.",
+            "observablePerformanceEn": "Formulates a testable question, plans and performs a supervised safe school experiment, and documents single-slit, double-slit, and grating patterns through original measurements or sketches."
+          },
+          {
+            "id": "observed-and-inferred",
+            "essentialUnderstandingDe": "Beobachtete Maxima, Minima und Breiten sind mit Messauflösung und Störeinflüssen zu dokumentieren; ihre Erklärung ist von der Beobachtung zu trennen.",
+            "essentialUnderstandingEn": "Observed maxima, minima, and widths must be recorded with measurement resolution and disturbances; their explanation is distinct from observation.",
+            "observablePerformanceDe": "Vergleicht veränderte Muster, benennt Unsicherheiten und zieht eine durch die eigenen Beobachtungen begrenzte Schlussfolgerung.",
+            "observablePerformanceEn": "Compares changed patterns, identifies uncertainties, and draws a conclusion bounded by the observations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-pattern-investigation",
+            "observed-and-inferred"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "slit-width-and-slit-number",
+            "textDe": "Einzelspaltbreite gezielt ändern und unabhängig davon Doppelspalt mit einem Mehrfachspalt gleicher Periode vergleichen.",
+            "textEn": "Deliberately change single-slit width and independently compare a double slit with a multi-slit arrangement of the same period."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "single-slit-width-test",
+            "taskDemandDe": "Untersuche im betreuten Schulaufbau die Frage: Wie verändert kleinere Einzelspaltbreite das zentrale Beugungsmaximum? Verwende eine vom Lehrpersonal freigegebene, abgeschirmte Lichtquelle, Strahlfänger und Beobachtung ausschließlich am Schirm; keine direkte oder reflektierte Strahlbetrachtung. Wähle zwei Breiten, konstante Beleuchtung und konstanten Schirmabstand.",
+            "taskDemandEn": "In a supervised school setup investigate how reducing single-slit width changes the central diffraction maximum. Use a teacher-approved shielded source, beam stop, and screen-only observation; never view a direct or reflected beam. Choose two widths with constant illumination and screen distance.",
+            "expectedPerformanceDe": "Die lernende Person protokolliert Breiten, Abstand, Ausrichtung und eigene Messwerte der ersten Minima links/rechts, einschließlich Ableseunsicherheit. Bei kleinerem Spalt wird ein breiteres zentrales Maximum erwartet; eine beispielhafte Halbierung der Breite führt im passenden Fernfeldmodell näherungsweise zur Verdopplung der Zentralbreite. Diese Erwartung wird gegen die tatsächlich beobachteten Muster geprüft, nicht als gemessen behauptet.",
+            "expectedPerformanceEn": "The learner records widths, distance, alignment, and original left/right first-minimum measurements with reading uncertainty. A narrower slit is expected to yield a broader central maximum; for example, halving width approximately doubles central width in a suitable far-field model. This expectation is tested against the actual observations, not claimed as already measured.",
+            "understandingFocusDe": "Kontrollierte Variation, eigene Beobachtung und Modellvorhersage getrennt dokumentieren.",
+            "understandingFocusEn": "Document controlled variation, original observation, and model prediction separately."
+          },
+          {
+            "id": "double-slit-to-grating",
+            "taskDemandDe": "Vergleiche in einem zweiten betreuten, gleichartig gesicherten Schulversuch einen Doppelspalt mit einem Gitter aus mehreren gleich breiten Spalten bei gleichem Spaltmittenabstand, gleicher Wellenlänge und gleichem Schirmabstand. Plane, wie Lage und Schärfe der Hauptmaxima vergleichbar dokumentiert werden.",
+            "taskDemandEn": "In a second supervised school experiment with equivalent safeguards, compare a double slit with a grating of several equally wide slits at the same centre spacing, wavelength, and screen distance. Plan how to document principal-maximum positions and sharpness comparably.",
+            "expectedPerformanceDe": "Eigene Schirmprofile oder maßstäbliche Skizzen dokumentieren Hauptmaxima, Nebenstruktur und eine definierte Breitenmessung mit Unsicherheit. Bei gleicher Periode liegen die Hauptmaxima in denselben Richtungen, beim Mehrfachspalt werden sie schmaler und schärfer. Unterschiedliche Gesamtintensität oder Detektorsättigung darf nicht als reine Schärfeänderung ausgegeben werden. Quantitative Wellenlängenbestimmung ist hier keine Zusatzpflicht.",
+            "expectedPerformanceEn": "Original screen profiles or scale drawings document principal maxima, subsidiary structure, and a defined width measurement with uncertainty. With the same period, principal maxima occur in the same directions; with multiple slits they become narrower and sharper. Changed total intensity or detector saturation must not be mistaken for a pure sharpness change. Quantitative wavelength determination is not an additional requirement here.",
+            "understandingFocusDe": "Spaltzahl als veränderte Bedingung experimentell isolieren und Muster fachsprachlich dokumentieren.",
+            "understandingFocusEn": "Experimentally isolate slit number as the changed condition and document patterns using appropriate terminology."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "pattern-structure",
+            "essentialUnderstandingDe": "Einzelspalt, Doppelspalt und Gitter unterscheiden sich in Zentralmaximum, Nebenstruktur und Schärfe der Hauptmaxima; beim realen Mehrfachspalt wird die Interferenzstruktur durch die endliche Einzelspaltbreite moduliert.",
+            "essentialUnderstandingEn": "Single slit, double slit, and grating differ in central maximum, subsidiary structure, and principal-peak sharpness; in a real multi-slit arrangement finite individual width modulates the interference pattern.",
+            "observablePerformanceDe": "Beschreibt und erstellt qualitative Intensitätsprofile und ordnet ihre Merkmale der Spaltbreite, dem Mittenabstand und der Spaltzahl zu.",
+            "observablePerformanceEn": "Describes and constructs qualitative intensity profiles and relates features to slit width, centre spacing, and slit number."
+          },
+          {
+            "id": "idealisation-and-envelope",
+            "essentialUnderstandingDe": "Die schmalen Interferenzstreifen idealisierter punktförmiger Spalte sind von einer realen Beugungshüllkurve zu unterscheiden; Maxima können unterdrückt werden.",
+            "essentialUnderstandingEn": "Narrow fringes of idealised point-like slits must be distinguished from a real diffraction envelope; maxima can be suppressed.",
+            "observablePerformanceDe": "Überträgt Mustermerkmale auf geänderte Spaltbreite oder Spaltzahl, ohne jedes Maximum als gleich intensiv vorauszusetzen.",
+            "observablePerformanceEn": "Transfers pattern features to changed slit width or number without assuming equal intensity for every maximum."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "pattern-structure",
+            "idealisation-and-envelope"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "finite-width-and-number",
+            "textDe": "Endliche Breite gegenüber idealisierten schmalen Spalten und höhere Spaltzahl bei gleicher Periode vergleichen.",
+            "textEn": "Compare finite width with idealised narrow slits and increased slit number at the same period."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "envelope-over-fringes",
+            "taskDemandDe": "Beschreibe und skizziere die idealisierte Doppelspalt-Intensitätsstruktur für sehr schmale gleiche Spalte. Ergänze anschließend eine breite Einzelspalt-Hüllkurve für reale endliche Breite. Was unterscheidet sich, wenn die Spalte breiter werden, ihr Mittenabstand aber gleich bleibt?",
+            "taskDemandEn": "Describe and sketch the idealised double-slit intensity pattern for very narrow equal slits. Then add a broad single-slit envelope for real finite width. What changes when slit width increases but centre spacing stays fixed?",
+            "expectedPerformanceDe": "Die feinen Interferenzstreifen behalten bei gleicher Wellenlänge und gleichem Mittenabstand ungefähr ihren Abstand; ihre Höhen liegen bei endlicher Breite unter einer Beugungshüllkurve. Breitere Einzelspalte verengen diese Hüllkurve, sodass weniger sichtbare Streifen ins Zentralmaximum passen und einzelne Ordnungen unterdrückt sein können. Ein reines gleich hohes Streifenbild wäre unvollständig.",
+            "expectedPerformanceEn": "At the same wavelength and centre spacing, fine interference fringes retain approximately the same spacing; with finite width their heights lie under a diffraction envelope. Wider individual slits narrow that envelope, leaving fewer visible fringes in the central lobe and potentially suppressing individual orders. A pattern of equally high fringes alone would be incomplete.",
+            "understandingFocusDe": "Zwei geometrische Größen und ihre unterschiedlichen Musterwirkungen trennen.",
+            "understandingFocusEn": "Separate two geometrical parameters and their different effects on the pattern."
+          },
+          {
+            "id": "more-slits",
+            "taskDemandDe": "Ein Doppelspalt und ein Gitter mit zehn gleichen Spalten besitzen denselben Spaltmittenabstand und dieselbe Einzelspaltbreite. Erstelle zwei qualitative Intensitätsprofile bei gleicher Wellenlänge und unterscheide Hauptmaximalagen, Schärfe und Hüllkurve. Es ist keine exakte Intensitätsformel zu lösen.",
+            "taskDemandEn": "A double slit and a grating with ten equal slits have the same centre spacing and individual slit width. Construct two qualitative intensity profiles at the same wavelength and distinguish principal-maximum positions, sharpness, and envelope. No exact intensity formula must be solved.",
+            "expectedPerformanceDe": "Die Hauptmaxima liegen in denselben Richtungen, die Zehnspaltmaxima sind schmaler und stärker ausgeprägt gegenüber den Zwischenbereichen. Die Einzelspalt-Hüllkurve bleibt aufgrund gleicher Breite an denselben Richtungen begrenzend. Hauptmaximalage, Peakbreite und Einhüllende dürfen nicht zu einer einzigen 'Streifenbreite' zusammengezogen werden.",
+            "expectedPerformanceEn": "Principal maxima lie in the same directions; ten-slit peaks are narrower and more pronounced relative to intervening regions. With equal slit width, the single-slit envelope still limits intensity at the same directions. Principal-maximum location, peak width, and envelope must not be collapsed into one notion of fringe width.",
+            "understandingFocusDe": "Spaltzahl verändern, ohne Wirkungen von Spaltperiode und Einzelspaltbreite zu verwechseln.",
+            "understandingFocusEn": "Change slit number without confusing the effects of slit period and individual width."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "geometry-and-condition",
+            "essentialUnderstandingDe": "Im Fernfeld haben Einzelspaltminima und Hauptmaxima periodischer Spaltanordnungen unterschiedliche Bedingungen; Spaltbreite a und Mittenabstand d dürfen nicht verwechselt werden.",
+            "essentialUnderstandingEn": "In the far field, single-slit minima and principal maxima of periodic slit arrangements obey different conditions; slit width a and centre spacing d must not be confused.",
+            "observablePerformanceDe": "Wählt die zur Anordnung passende Bedingung, bestimmt zulässige Ordnungen und übersetzt Winkel in Schirmpositionen.",
+            "observablePerformanceEn": "Chooses the condition appropriate to the arrangement, determines admissible orders, and converts angles into screen positions."
+          },
+          {
+            "id": "approximation-and-units",
+            "essentialUnderstandingDe": "Fernfeldannahme und Kleinwinkelnäherung sind nicht dasselbe; y=D tan θ wird nur für kleine Winkel zu y≈D sin θ.",
+            "essentialUnderstandingEn": "The far-field assumption and small-angle approximation are different; y=D tan θ becomes y≈D sin θ only for small angles.",
+            "observablePerformanceDe": "Prüft Einheiten, Symmetrie, Winkelgröße und die Zulässigkeit berechneter Beugungsordnungen.",
+            "observablePerformanceEn": "Checks units, symmetry, angle size, and admissibility of calculated diffraction orders."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "geometry-and-condition",
+            "approximation-and-units"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "single-slit-minimum-and-periodic-maxima",
+            "textDe": "Einzelspaltminima bei kleinem Winkel und periodische Hauptmaxima bis zu größeren Gitterwinkeln berechnen.",
+            "textEn": "Calculate single-slit minima at small angles and periodic principal maxima extending to larger grating angles."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "single-slit-screen",
+            "taskDemandDe": "Ein Einzelspalt hat a=0,20 mm, λ=500 nm und Schirmabstand D=2,0 m; die Fernfeldannahme ist erfüllt. Bestimme die ersten Minima und die Breite des zentralen Maximums. Nutze a sin θ=mλ für m≠0 und begründe, warum m=0 kein Minimum ist.",
+            "taskDemandEn": "A single slit has a=0.20 mm, λ=500 nm, and screen distance D=2.0 m; far-field conditions are satisfied. Determine the first minima and central-maximum width. Use a sin θ=mλ for m≠0 and explain why m=0 is not a minimum.",
+            "expectedPerformanceDe": "Für m=±1 ist sin θ=±0,0025 und y≈±5,0 mm; die Zentralbreite beträgt etwa 10,0 mm. Genau wäre y=D tan(arcsin(±0,0025)); die Kleinwinkelnäherung ist hier gut. m=0 bezeichnet die zentrale konstruktive Richtung und darf nicht als Minimum eingesetzt werden.",
+            "expectedPerformanceEn": "For m=±1, sin θ=±0.0025 and y≈±5.0 mm; central width is approximately 10.0 mm. Exactly, y=D tan(arcsin(±0.0025)); the small-angle approximation is good here. m=0 denotes the central constructive direction and must not be used as a minimum.",
+            "understandingFocusDe": "Einzelspaltbedingung, Ordnungsgrenze und symmetrische Schirmgeometrie korrekt verbinden.",
+            "understandingFocusEn": "Connect the single-slit condition, order restriction, and symmetric screen geometry correctly."
+          },
+          {
+            "id": "double-slit-and-grating",
+            "taskDemandDe": "Bei λ=600 nm und D=1,0 m vergleiche die erste Hauptmaximumsrichtung eines idealisierten Doppelspalts mit d=0,50 mm und eines Gitters mit d=2,0 μm. Die Fernfeldbedingung sei jeweils erfüllt. Nutze d sin θ=mλ, berechne die positiven Schirmpositionen und prüfe, ob die vierte Gitterordnung existiert.",
+            "taskDemandEn": "At λ=600 nm and D=1.0 m, compare the first principal-maximum direction of an idealised double slit with d=0.50 mm and a grating with d=2.0 μm. Far-field conditions are satisfied in both cases. Use d sin θ=mλ, calculate positive screen positions, and assess whether fourth grating order exists.",
+            "expectedPerformanceDe": "Doppelspalt: sin θ=0,0012 und y≈1,20 mm. Gitter: sin θ=0,3, θ≈17,46° und y≈0,3145 m; D sin θ=0,300 m wäre hier merklich ungenau. Für m=4 wäre sin θ=1,2 unmöglich, daher existiert diese Ordnung nicht. Negative Ordnungen liegen symmetrisch gegenüber.",
+            "expectedPerformanceEn": "Double slit: sin θ=0.0012 and y≈1.20 mm. Grating: sin θ=0.3, θ≈17.46°, and y≈0.3145 m; D sin θ=0.300 m would be noticeably inaccurate here. At m=4, sin θ=1.2 is impossible, so that order does not exist. Negative orders are symmetrically opposite.",
+            "understandingFocusDe": "Dieselbe Periodenbedingung in verschiedenen Winkelregimen nutzen und nichtphysikalische Lösungen ausschließen.",
+            "understandingFocusEn": "Use the same periodicity condition in different angular regimes and exclude nonphysical solutions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "paths-and-phase",
+            "essentialUnderstandingDe": "Alltägliche Interferenz entsteht durch Überlagerung zusammenhängender Lichtanteile mit unterschiedlichen Phasen, etwa nach Reflexion an einer dünnen Schicht oder an periodischen Strukturen.",
+            "essentialUnderstandingEn": "Everyday interference arises from superposition of related light contributions with different phases, for example after reflection from a thin film or a periodic structure.",
+            "observablePerformanceDe": "Identifiziert die beteiligten Teilwellen und erklärt einen beobachtbaren Helligkeits- oder Farbeffekt physikalisch.",
+            "observablePerformanceEn": "Identifies the participating wave components and physically explains an observable brightness or colour effect."
+          },
+          {
+            "id": "changed-geometry",
+            "essentialUnderstandingDe": "Geometrie, Schichtdicke oder Blickrichtung verändern die Phasenbedingungen und damit das Muster; ein Interferenzfarbeffekt ist nicht automatisch ein Materialfarbstoff.",
+            "essentialUnderstandingEn": "Geometry, film thickness, or viewing direction changes phase conditions and hence the pattern; interference colour is not automatically a material pigment.",
+            "observablePerformanceDe": "Sagt eine qualitative Änderung voraus und benennt, welche fehlenden Angaben eine genaue Farb- oder Intensitätsrechnung verhindern.",
+            "observablePerformanceEn": "Predicts a qualitative change and identifies missing information that prevents an exact colour or intensity calculation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "paths-and-phase",
+            "changed-geometry"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "thin-film-and-periodic-surface",
+            "textDe": "Reflexion an zwei Schichtgrenzen und Überlagerung an einer periodischen Oberfläche als unterschiedliche Alltagsfälle erklären.",
+            "textEn": "Explain reflections at two film boundaries and superposition at a periodic surface as different everyday cases."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "soap-film",
+            "taskDemandDe": "Eine dünne Seifenhaut zeigt unter weißem Licht farbige Bereiche, deren Farben sich beim Ablaufen der Flüssigkeit ändern. Erkläre den Effekt anhand der vorderen und hinteren Grenzfläche und sage voraus, ob die Farbe allein die chemische Zusammensetzung eindeutig festlegt.",
+            "taskDemandEn": "A thin soap film shows coloured regions in white light; colours change as the liquid drains. Explain the effect using the front and rear interfaces and predict whether colour alone uniquely determines chemical composition.",
+            "expectedPerformanceDe": "An beiden Grenzflächen reflektierte Lichtanteile überlagern sich; optischer Weg in der Schicht und mögliche Phasensprünge bei Reflexion bestimmen, welche Wellenlängen verstärkt oder abgeschwächt werden. Veränderte Dicke verschiebt diese Bedingungen. Ohne Dicke, Brechzahl und Betrachtungsgeometrie ergibt sich keine eindeutige Farbvorhersage; der Effekt benötigt keinen wechselnden Farbstoff.",
+            "expectedPerformanceEn": "Light reflected at both interfaces superposes; optical path through the film and possible reflection phase changes determine which wavelengths are enhanced or suppressed. Changing thickness shifts these conditions. Without thickness, refractive index, and viewing geometry there is no unique colour prediction; the effect requires no changing pigment.",
+            "understandingFocusDe": "Teilwellen und Phasenbedingungen als Ursache einer alltagsnahen Farbänderung identifizieren.",
+            "understandingFocusEn": "Identify component waves and phase conditions as the cause of an everyday colour change."
+          },
+          {
+            "id": "disc-surface",
+            "taskDemandDe": "Eine CD zeigt unter weißem Licht richtungsabhängige Farbstreifen. Erkläre die Rolle ihrer dicht benachbarten periodischen Spuren und prognostiziere, was beim Drehen der Scheibe geschieht. Eine Berechnung der Spurweite ist nicht verlangt.",
+            "taskDemandEn": "A CD shows direction-dependent coloured bands in white light. Explain the role of its closely spaced periodic tracks and predict what happens as the disc rotates. Calculating track spacing is not required.",
+            "expectedPerformanceDe": "Beiträge von benachbarten Spuren überlagern sich; konstruktive Richtungen hängen von Wellenlänge und Einfalls-/Beobachtungsgeometrie ab. Deshalb gelangen verschiedene Farben in verschiedene Richtungen, und beim Drehen wandern die beobachteten Farben. Das ist eine periodische Beugungs-/Interferenzstruktur, nicht bloß wechselnde Materialfarbe oder allein prismatische Brechung.",
+            "expectedPerformanceEn": "Contributions from neighbouring tracks superpose; constructive directions depend on wavelength and incidence/viewing geometry. Different colours therefore reach different directions, and rotating the disc shifts the observed colours. This is a periodic diffraction/interference structure, not merely changing material colour or prism refraction alone.",
+            "understandingFocusDe": "Das Überlagerungsprinzip auf eine andere geometrische Struktur übertragen.",
+            "understandingFocusEn": "Transfer the superposition principle to a different geometrical structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Zielreihenfolge wird nicht als streng lineare, historisch widerspruchsfreie Ablösung aller Modelle ausgegeben. Keine erfundenen Quellenzitate oder ungesicherten Datierungen; exakte Quellenarbeit ist in diesem Profil nicht als zusätzliche Pflicht eingeführt."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "historical-model-development",
+            "essentialUnderstandingDe": "Lichtstrahlen, klassische Lichtteilchen, Lichtwellen, elektromagnetische Wellen und Photonen stehen für unterschiedliche Modellideen und Erklärungsmöglichkeiten; die Entwicklung ist nicht bloß ein Austausch von Namen.",
+            "essentialUnderstandingEn": "Light rays, classical light particles, light waves, electromagnetic waves, and photons represent different model ideas and explanatory possibilities; their development is not merely a change of names.",
+            "observablePerformanceDe": "Beschreibt die Entwicklung mit fachlich passenden Modellmerkmalen und erläutert, welche Fragen neue Modellideen motivierten.",
+            "observablePerformanceEn": "Describes the development using appropriate model features and explains which questions motivated new model ideas."
+          },
+          {
+            "id": "retained-domains",
+            "essentialUnderstandingDe": "Neue Modelle erweitern Erklärungsbereiche, ohne alle älteren Näherungen unbrauchbar zu machen. Photonen sind nicht einfach eine Rückkehr zu klassischen Kügelchen mit festgelegten Bahnen.",
+            "essentialUnderstandingEn": "New models extend explanatory domains without making every older approximation useless. Photons are not simply a return to classical pellets with predetermined trajectories.",
+            "observablePerformanceDe": "Ordnet eine neue historische Darstellung kritisch ein und erklärt die fortbestehende begrenzte Rolle älterer Modelle.",
+            "observablePerformanceEn": "Critically assesses a fresh historical account and explains the continuing limited role of older models."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "historical-model-development",
+            "retained-domains"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "narrative-and-critical-reconstruction",
+            "textDe": "Eine eigene Entwicklungserzählung erstellen und unabhängig davon eine irreführende lineare Ablösungserzählung korrigieren.",
+            "textEn": "Create an original development narrative and independently correct a misleading story of simple successive replacement."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "model-development-map",
+            "taskDemandDe": "Erstelle aus den Begriffen Lichtstrahl, klassisches Lichtteilchen, Lichtwelle, elektromagnetische Welle und Photon eine erläuterte Übersicht zur geschichtlichen Entwicklung. Verbinde die Modelle mit geometrischer Ausbreitung, Interferenz, Feldbeschreibung und quantisiertem Energieaustausch, ohne zusätzliche Jahreszahlen auswendig anzugeben.",
+            "taskDemandEn": "Using light ray, classical light particle, light wave, electromagnetic wave, and photon, create an explained overview of historical model development. Relate the models to geometrical propagation, interference, field description, and quantised energy exchange without requiring memorised additional dates.",
+            "expectedPerformanceDe": "Die Übersicht unterscheidet Strahlen als geometrische Ausbreitungsbeschreibung, klassische Teilchenideen, die Wellenbeschreibung von Beugung/Interferenz, die elektromagnetische Felddeutung des Lichts und Photonen für quantisierten Energieaustausch. Sie kennzeichnet konkurrierende und überlappende Modellideen; eine saubere zeitliche Einbahnfolge aller Begriffe wird nicht behauptet.",
+            "expectedPerformanceEn": "The overview distinguishes rays as geometrical propagation descriptions, classical particle ideas, wave descriptions of diffraction/interference, electromagnetic field interpretation of light, and photons for quantised energy exchange. It identifies competing and overlapping ideas rather than asserting a clean one-way chronology of every concept.",
+            "understandingFocusDe": "Historische Modellideen über ihren physikalischen Gehalt verbinden.",
+            "understandingFocusEn": "Connect historical model ideas through their physical content."
+          },
+          {
+            "id": "museum-caption",
+            "taskDemandDe": "Eine Ausstellung schreibt: 'Das Wellenmodell ersetzte die Strahlen vollständig; später bewiesen Photonen, dass Licht doch nur aus klassischen Kügelchen besteht.' Verfasse eine fachlich korrekte kurze Ersatzbeschriftung mit Bezug auf geometrische Optik, Interferenz und einzelne Energieübertragungen.",
+            "taskDemandEn": "An exhibit states: 'The wave model completely replaced rays; later photons proved that light consists only of classical pellets after all.' Write a short scientifically accurate replacement caption referring to geometrical optics, interference, and individual energy transfers.",
+            "expectedPerformanceDe": "Strahlen bleiben für geeignete geometrisch-optische Fragen nützliche Näherungen, Wellen beschreiben Interferenz, und die elektromagnetische Theorie ordnet Licht als Feldphänomen ein. Die Photonenvorstellung erklärt quantisierten Energieaustausch, beseitigt jedoch nicht die Interferenzbeobachtungen und bedeutet keine Rückkehr zu vorausgesetzten klassischen Lichtbahnen. Historische Weiterentwicklung erweitert und begrenzt Modelle.",
+            "expectedPerformanceEn": "Rays remain useful approximations for suitable geometrical-optics questions; waves describe interference, and electromagnetic theory identifies light as a field phenomenon. The photon concept explains quantised energy exchange but does not remove interference observations or restore assumed classical light paths. Historical development extends and limits models.",
+            "understandingFocusDe": "Eine neue Darstellung auf Modellkontinuität und falsche Gleichsetzungen prüfen.",
+            "understandingFocusEn": "Assess a new account for continuity between models and false equivalences."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "patterns-and-single-events",
+            "essentialUnderstandingDe": "Klassische kohärente Wellen überlagern Amplituden, unabhängige klassische Teilchen addieren Trefferverteilungen. Quantenobjekte können einzelne lokalisierte Nachweise liefern, deren Gesamtheit ein Interferenzmuster bildet.",
+            "essentialUnderstandingEn": "Classical coherent waves superpose amplitudes, while independent classical particles add hit distributions. Quantum objects can produce individual localised detections whose aggregate forms an interference pattern.",
+            "observablePerformanceDe": "Vergleicht die drei Modelle anhand der getrennten Aussagen über Einzelereignisse und das Muster vieler Ereignisse.",
+            "observablePerformanceEn": "Compares the three models through separate claims about individual events and the pattern of many events."
+          },
+          {
+            "id": "changed-path-information",
+            "essentialUnderstandingDe": "Muster hängen von den Versuchsbedingungen ab; ein quantenmechanisches Interferenzmuster setzt erhaltene Kohärenz zwischen den Alternativen voraus und liefert keine beobachtete klassische Einzelbahn.",
+            "essentialUnderstandingEn": "Patterns depend on experimental conditions; a quantum interference pattern requires coherence between alternatives and does not provide an observed classical individual trajectory.",
+            "observablePerformanceDe": "Überträgt den Vergleich auf veränderte Spalt- oder Weginformationsbedingungen und vermeidet eine Vorhersage des nächsten Einzeltreffers.",
+            "observablePerformanceEn": "Transfers the comparison to changed slit or path-information conditions and avoids predicting the next individual detection."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "patterns-and-single-events",
+            "changed-path-information"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "weak-beam-and-path-marking",
+            "textDe": "Sehr schwache Intensität und eine idealisierte unterscheidbare Wegmarkierung als unterschiedliche Änderungen vergleichen.",
+            "textEn": "Compare very low intensity and idealised distinguishable path marking as different changes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "single-arrivals",
+            "taskDemandDe": "Im Doppelspaltversuch werden klassische Wellen, unabhängige klassische Kügelchen und einzeln ausgesandte gleich präparierte Quantenobjekte verglichen. Beide Spalte sind offen; im Quantenfall bleibt die Kohärenz erhalten und es wird keine Weginformation gewonnen. Beschreibe Einzelereignisse und langfristiges Muster.",
+            "taskDemandEn": "In a double-slit comparison consider classical waves, independent classical pellets, and individually emitted identically prepared quantum objects. Both slits are open; quantum coherence is preserved and no path information is obtained. Describe individual events and long-run patterns.",
+            "expectedPerformanceDe": "Kohärente klassische Wellen zeigen eine kontinuierlich beschreibbare Interferenzintensität. Klassische Kügelchen treffen lokal auf; ihre Verteilungen addieren sich ohne kohärenten Interferenzterm. Quantenobjekte werden ebenfalls lokal einzeln nachgewiesen, doch viele Nachweise bauen die Interferenzverteilung auf. Dafür müssen nicht zwei Quantenobjekte gleichzeitig durch die Anordnung fliegen.",
+            "expectedPerformanceEn": "Coherent classical waves show a continuously describable interference intensity. Classical pellets produce local hits whose distributions add without a coherent interference term. Quantum objects are likewise detected locally one at a time, yet many detections build the interference distribution. Two quantum objects need not pass through the apparatus simultaneously.",
+            "understandingFocusDe": "Lokalisierte Nachweise und wellenartige Gesamtverteilung gleichzeitig richtig einordnen.",
+            "understandingFocusEn": "Correctly accommodate both localised detections and a wave-like aggregate distribution."
+          },
+          {
+            "id": "distinguishable-paths",
+            "taskDemandDe": "In einer idealisierten Variante bleiben beide Spalte offen, aber jeder Quantenweg wird vollständig unterscheidbar markiert. Vergleiche dies mit dem unmarkierten kohärenten Fall und mit klassischen unabhängigen Teilchen. Es geht um Modellvorhersagen, nicht um einen hier durchgeführten Versuch.",
+            "taskDemandEn": "In an idealised variant both slits remain open, but each quantum path is marked so that paths are fully distinguishable. Compare this with the unmarked coherent case and with classical independent particles. This concerns model predictions, not an experiment performed here.",
+            "expectedPerformanceDe": "Bei vollständiger Wegunterscheidbarkeit fehlt im unbedingten Schirmmuster der Interferenzterm; übrig bleibt die Summe der Einzelwegverteilungen unter vergleichbaren Randbedingungen. Einzelne Nachweise bleiben lokal. Die klassische Teilchensumme ändert ihren grundsätzlichen Charakter durch das bloße Kenntlichmachen der Wege nicht. Das markierte Ergebnis beweist keine klassische Bahn im vorher unmarkierten Experiment.",
+            "expectedPerformanceEn": "With full path distinguishability, the unconditional screen pattern lacks the interference term and becomes the sum of single-path distributions under comparable conditions. Individual detections remain local. Merely marking paths does not change the fundamental additive character of classical particle distributions. The marked result does not prove a classical trajectory in the previously unmarked experiment.",
+            "understandingFocusDe": "Versuchsabhängige Musteränderung von rückwirkenden Behauptungen über unbeobachtete Bahnen unterscheiden.",
+            "understandingFocusEn": "Distinguish a condition-dependent pattern change from retrospective claims about unobserved trajectories."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "reason": "Eigenständig verfasster bilingualer Physik-B038-Profilentwurf aus den aktuellen Zieltexten und Originalseiten; zwei unabhängige Fälle. Ungebunden bis zum Stabilitätssignal; keine reale Lernleistungs- oder Freigabeaussage.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "probability-versus-trajectory",
+            "essentialUnderstandingDe": "Quantenmechanische Vorhersagen beziehen sich auf Wahrscheinlichkeiten möglicher Messergebnisse bei festgelegter Präparation und Messanordnung, nicht auf eine aus diesen Angaben bekannte klassische Einzelbahn.",
+            "essentialUnderstandingEn": "Quantum predictions concern probabilities of possible measurement outcomes for specified preparation and measurement arrangement, not a classical individual trajectory known from those data.",
+            "observablePerformanceDe": "Formuliert zutreffende Einzelereignis- und Ensembleaussagen und benennt, welche Information die Wahrscheinlichkeitsverteilung nicht liefert.",
+            "observablePerformanceEn": "States correct single-event and ensemble claims and identifies information the probability distribution does not supply."
+          },
+          {
+            "id": "statistical-prediction",
+            "essentialUnderstandingDe": "Eine erwartete Häufigkeit ist keine garantierte exakte Anzahl und legt keine Reihenfolge der Einzelergebnisse fest; veränderte Messbedingungen können die Verteilung verändern.",
+            "essentialUnderstandingEn": "An expected frequency is not a guaranteed exact count and does not determine the sequence of individual outcomes; changed measurement conditions can change the distribution.",
+            "observablePerformanceDe": "Deutet konkrete Wahrscheinlichkeitsangaben und bewertet deterministische Schlussfolgerungen sowie Schlussfolgerungen über unbeobachtete Wege.",
+            "observablePerformanceEn": "Interprets concrete probability data and assesses deterministic conclusions and claims about unobserved paths."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "probability-versus-trajectory",
+            "statistical-prediction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "ensemble-count-and-same-marginal",
+            "textDe": "Erwartete Trefferzahlen deuten und zeigen, dass gleiche Ergebniswahrscheinlichkeiten keine eindeutige Bahnrekonstruktion erlauben.",
+            "textEn": "Interpret expected detection counts and show that identical outcome probabilities do not allow unique trajectory reconstruction."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "screen-probability",
+            "taskDemandDe": "Ein gegebenes Quantenmodell sagt für gleich präparierte, unabhängig registrierte Nachweise P(A)=0,30 für einen Schirmbereich A voraus. Was darf man für 1000 Nachweise erwarten? Beurteile 'genau der nächste dritte Nachweis liegt in A' und 'es werden sicher genau 300'.",
+            "taskDemandEn": "A supplied quantum model predicts P(A)=0.30 for a screen region A for identically prepared independently registered detections. What may be expected for 1000 detections? Assess 'the next third detection will lie in A' and 'there will certainly be exactly 300'.",
+            "expectedPerformanceDe": "Die erwartete Anzahl ist 1000·0,30=300; tatsächliche Zahlen können statistisch abweichen. Die Wahrscheinlichkeit betrifft jedes entsprechend präparierte Ereignis, legt aber weder dessen Ort noch die Reihenfolge fest. Eine einzelne Abweichung von 300 widerlegt das Modell nicht automatisch; die Präparation und Auswertung müssen vergleichbar sein.",
+            "expectedPerformanceEn": "The expected count is 1000·0.30=300; actual counts can fluctuate statistically. The probability concerns each correspondingly prepared event but determines neither its location nor the sequence. A deviation from 300 does not automatically refute the model; preparation and analysis must be comparable.",
+            "understandingFocusDe": "Quantitativ sinnvolle Vorhersage ohne falsche Garantie für Einzelereignisse geben.",
+            "understandingFocusEn": "Give a meaningful quantitative prediction without a false guarantee for individual events."
+          },
+          {
+            "id": "probability-not-path-record",
+            "taskDemandDe": "Zwei verschiedene idealisierte Messanordnungen liefern beide P(links)=P(rechts)=1/2 für zwei Detektorbereiche. Eine Person behauptet, daraus die gleiche klassische Bahn jedes Quantenobjekts rekonstruieren zu können. Erkläre, welche Aussagen die Angaben tragen und welche Zusatzinformation fehlt.",
+            "taskDemandEn": "Two different idealised measurement arrangements both give P(left)=P(right)=1/2 for two detector regions. Someone claims to reconstruct the same classical trajectory of every quantum object from this. Explain what the data support and what information is missing.",
+            "expectedPerformanceDe": "Die gleichen zwei Ergebniswahrscheinlichkeiten bedeuten nur gleiche Vorhersagen für diese grob zusammengefassten Detektorereignisse. Sie bestimmen keine Einzeltrefferfolge und enthalten keine Bahnaufzeichnung zwischen Quelle und Detektor. Bei 200 Nachweisen ist je 100 nur der Erwartungswert. Eine tatsächlich zusätzliche Wegmessung wäre eine neue Messanordnung und darf nicht als schon vorhandene Information unterstellt werden.",
+            "expectedPerformanceEn": "Equal outcome probabilities imply only equal predictions for these coarsely grouped detector events. They determine neither the sequence of individual hits nor a trajectory record between source and detector. For 200 detections, 100 each is only the expectation. An additional actual path measurement would be a new measurement arrangement and cannot be assumed as information already present.",
+            "understandingFocusDe": "Grenzen einer Ergebnisverteilung erklären, ohne eine ungestützte Interpretation verborgener Einzelbahnen einzuführen.",
+            "understandingFocusEn": "Explain the limits of an outcome distribution without introducing an unsupported interpretation of hidden individual paths."
+          }
+        ]
+      }
+    }
+  ]
+}

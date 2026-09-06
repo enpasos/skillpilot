@@ -1,0 +1,45 @@
+{
+  "documentType": "bounded-curriculum-structural-adjudication",
+  "schemaVersion": 1,
+  "approvalDate": "2026-09-05",
+  "approvalInstruction": "Freigabe erteilt - auch für ähnliche Fälle, wenn Du sie für eine wirkliche Verbesserung erachtest",
+  "baseCommit": "91175ca666b754741402b42e135901ed57f2fb39",
+  "reviewEvidence": "dual-summary.json",
+  "scope": "Public Layer A only; reviewed graph-property split and local zero-coordinate clarification. No runtime, learner-state, plugin or human evidence-profile approval.",
+  "retainedClusterId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+  "children": [
+    {
+      "id": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_axes_and_signs",
+      "title": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
+      "titleEn": "Interpret axis intersections and signs of quadratic functions from graphs",
+      "description": "Die lernende Person kann aus dem Graphen einer quadratischen Funktion die Schnittpunkte mit den Koordinatenachsen ablesen, daraus Nullstellen und y-Achsenabschnitt angeben und die Vorzeichenbereiche anhand der Lage des Graphen zur x-Achse bestimmen.",
+      "descriptionEn": "The learner can read the intersections of a quadratic function's graph with the coordinate axes, identify its zeros and y-intercept from them, and determine its sign intervals from the graph's position relative to the x-axis.",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2A2A"
+    },
+    {
+      "id": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_range_extremum_monotonicity",
+      "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
+      "titleEn": "Determine the extremum value, range and monotonicity of quadratic functions from graphs",
+      "description": "Die lernende Person kann aus Scheitelpunkt und Öffnungsrichtung des Graphen einer quadratischen Funktion den Extremwert, die Wertemenge und die Intervalle des Steigens und Fallens bestimmen.",
+      "descriptionEn": "The learner can use the vertex and opening direction of a quadratic function's graph to determine its extremum value, range, and intervals of increase and decrease.",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2A2B"
+    }
+  ],
+  "zeroGoalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
+  "zeroDescription": "Die lernende Person kann bei quadratischen Funktionen der Form f(x) = a(x + d)^2 + e mit a ≠ 0 Nullstellen als x-Koordinaten der Schnittpunkte des Graphen mit der x-Achse und als Lösungen von f(x) = 0 aufeinander beziehen, ihre Anzahl aus Scheitelpunktlage und Öffnungsrichtung begründen und die Lösungen in einfachen Fällen graphisch und rechnerisch bestimmen.",
+  "zeroDescriptionEn": "The learner can relate the zeros of quadratic functions of the form f(x) = a(x + d)^2 + e, with a ≠ 0, to the x-coordinates of the graph's intersections with the x-axis and to the solutions of f(x) = 0, justify their number from the vertex position and opening direction, and determine the solutions graphically and algebraically in simple cases.",
+  "replacesRequires": [
+    { "goalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600", "withChildIndexes": [0], "reason": "Axis/zero meaning is needed; vertex position and opening are already supplied by parameter interpretation." },
+    { "goalId": "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12", "withChildIndexes": [], "reason": "Classifying polynomial expressions does not require the graph-reading routines." },
+    { "goalId": "1ce8af38-082a-477b-af48-b924c92761bf", "withChildIndexes": [1], "reason": "Characteristic graph trajectories use shape and variation, not necessarily zeros or signs." },
+    { "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a", "withChildIndexes": [1], "reason": "Graphical variation supports the transition from average to instantaneous rates." },
+    { "goalId": "a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf", "withChildIndexes": [1], "reason": "Extrema are explicitly interpreted; the axis/zero competence is already a prerequisite through the zero goal." },
+    { "goalId": "3f3557a8-7d89-4f96-8a32-e24745c34d82", "withChildIndexes": [], "reason": "The focus/directrix locus construction does not depend on either graph-reading routine." },
+    { "goalId": "29ce4053-b5c5-4a82-9ff0-3acc492284d8", "withChildIndexes": [0, 1], "reason": "The existing goal explicitly interprets both vertex and zeros." }
+  ],
+  "imagePolicy": "Retain the good existing Nano Banana Pro overview unchanged on the cluster. Review any exact-byte child reuse for its narrower purpose; never inherit human approval automatically.",
+  "scopePreservation": "Keep scope-specific target/prerequisiteOnly projection roles. Preserve aggregate source mappings; route narrowly evidenced aspects to the matching child only.",
+  "progressPolicy": "No strict-complete credit until all current goal-level gates are valid. Historical records remain unchanged; revised contexts require new independent review."
+}

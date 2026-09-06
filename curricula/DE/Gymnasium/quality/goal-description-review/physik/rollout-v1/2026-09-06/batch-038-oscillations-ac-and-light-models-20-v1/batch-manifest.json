@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-038-oscillations-ac-and-light-models-20-v1.config.json",
+  "configDigest": "sha256:9944db572643a88cabbc27588ae80042c3ddc62fda8355b199eaf72974c01278",
+  "goalIds": [
+    "18c1f954-487e-5121-bb18-6c64a82f573d",
+    "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+    "a844895e-2cdc-4665-aad2-a49c62f11759",
+    "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+    "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+    "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+    "e413a352-33c4-53ae-b54a-30e52c3e65ae",
+    "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+    "91f1838c-80fc-55f5-ac30-e7d1498fccee",
+    "122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+    "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+    "8ad305d2-bde0-4223-9477-517b2943148b",
+    "c71315c1-f329-4289-a145-d99819da7bad",
+    "2c6af966-7703-4176-a117-5ddb8295bedf",
+    "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+    "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+    "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+    "5c57dbc7-d258-4aad-a84c-e773f3c493ae"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:23a002b357e6e171f637be9dbef79f76e3da19b90f368bdb93338e89c8df429d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:581fbe64b8bb23ca7fb639a4608675e161b9caf4aeba9f60eca6783598ab1477",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6f4afd2c738ec478100c705411f7890c6d9578b4f038d052a6382348cdfdbb1d",
+    "reviewInputFingerprint": "sha256:3f2be264966bbc72a462e248cf02843a3554e9905a8fc784213422c852c998f3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-a",
+        "campaignDigest": "sha256:0c500af7048d8ebcfc1606a8b6ba68efde5038446610c4314b2f7a391e7bf0e4",
+        "roundId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-independent-a",
+        "batchId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:76d979cb4008be81a3e4b0776d9a4fce336f00de05904c6a453efc6f8f4e2975"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-b",
+        "campaignDigest": "sha256:11b95fd8dedf1a55fd906fb6fd3d328fcdca23dfc12b73739bde4914b0f8bdd7",
+        "roundId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-independent-b",
+        "batchId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4097262e6b9e078c0db902833b4af556b74b4600c62334583d6d33fe719baeb5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

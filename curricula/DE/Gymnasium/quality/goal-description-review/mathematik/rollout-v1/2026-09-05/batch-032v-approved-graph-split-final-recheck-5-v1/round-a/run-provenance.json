@@ -1,0 +1,38 @@
+{
+  "runId": "math-b032v-blind-a-20260905",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "role": "subject_reviewer",
+  "modelIdentity": {
+    "exactModelIdentifier": null,
+    "inheritedModel": "unspecified",
+    "modelDiversityClaim": false,
+    "explanation": "No exact model identifier was supplied to the reviewer. The model was inherited without a specified identifier; available model names are not evidence of the model used."
+  },
+  "generationParameters": {
+    "model": "unknown",
+    "reasoningEffort": "default",
+    "forkTurns": "none",
+    "reviewIsolation": true
+  },
+  "generationParametersExactUtf8Json": "{\"model\":\"unknown\",\"reasoningEffort\":\"default\",\"forkTurns\":\"none\",\"reviewIsolation\":true}",
+  "generationParametersFingerprint": "sha256:be0cdf1d0e582218d45be0f024ca3ef53c659a91c4959ec9e6ec1fd9e1f4bb9f",
+  "generationParameterSemantics": "model=unknown records unavailable identity; reasoningEffort=default records no explicit override and does not identify a resolved effort; forkTurns=none records the coordinator-stated isolated dispatch configuration.",
+  "reviewIsolationMeaning": "Blind independent round-A review used only its supplied current inputs and repository instructions. No other review outputs, authoring decisions, or canonical diffs were inspected. After the first-pass records were returned, the previous B032u round-A run manifest and provenance were inspected only as serialization format references; the records were not revised.",
+  "observedTiming": {
+    "firstObservedActiveAt": "2026-09-05T19:26:44Z",
+    "recordsCreatedAt": "2026-09-05T19:29:49Z",
+    "intermediateObservedAt": "2026-09-05T19:27:43Z",
+    "exactInferenceStartedAt": null,
+    "exactInferenceCompletedAt": null,
+    "durationSeconds": null,
+    "semantics": "The manifest's required startedAt and completedAt fields store observed run clock markers: the first clock read while this review was already active and the clock read after the complete records were assembled and validated. They are not inferred model start or finish times and do not establish inference duration."
+  },
+  "inputDigest": "sha256:8aba95595dcd4e7936e086b3cc9e2e937c4c5b5cee4687b817e78ab630a05eee",
+  "outputDigest": "sha256:2ed64861045b22840aa163f9dd5923eff5a223f4eb4d20a6e488d741667eed49",
+  "outputSerialization": "Exactly the already-returned records in assigned order, one JSON object per UTF-8 line, with a final newline; no review-content changes.",
+  "usage": null,
+  "tokenUsage": null,
+  "cost": null,
+  "unknownMetricsExplanation": "Exact inference duration, token usage, and cost were not provided by the execution environment and have not been estimated."
+}

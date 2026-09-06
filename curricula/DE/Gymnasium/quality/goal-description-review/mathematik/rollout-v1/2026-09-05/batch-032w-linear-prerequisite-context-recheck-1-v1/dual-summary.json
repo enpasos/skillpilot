@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:631333f707dcce3d31e0cd7ff46f774af6ec71ba5c57013509bb796893ff47be",
+  "reviewInputFingerprint": "sha256:5b0399dd52fe93d4a6753531a0a433422896323a5e70a366066184da32395f61",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-a",
+      "roundId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-independent-a",
+      "runIds": [
+        "math-b032w-blind-a-20260905"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-b",
+      "roundId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-independent-b",
+      "runIds": [
+        "math-b032w-blind-b-20260905"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::unknown::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "firstRecordId": "math-b032w-blind-a-20260905.goal-001",
+      "secondRecordId": "math-b032w-blind-b-20260905.goal-001",
+      "firstRunId": "math-b032w-blind-a-20260905",
+      "secondRunId": "math-b032w-blind-b-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

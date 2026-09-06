@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b033b-blind-a-20260906",
+  "campaignId": "mathematik-rollout-v1-batch-033b-coordinates-lines-motion-current-5-v1-20260906-a",
+  "roundId": "mathematik-rollout-v1-batch-033b-coordinates-lines-motion-current-5-v1-20260906-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-033b-coordinates-lines-motion-current-5-v1-20260906-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ca34a9638ec3839fc45ed3aefb84c4b673f653c0fb9322615bbf039c0866c18a",
+  "bundleFingerprint": "sha256:494087ada675f488f38fdd188580d63148bf24710720da2d33846845a3ffd6e4",
+  "bookDigest": "sha256:0e047669b5ee3679e4ca57d547062af8a52650738a8cb0e8dbf771ddf0eedbd9",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:9134583a47bd1e1b1ca89664c5e17e769d193c03659d80f4a17ce55fa7be7346",
+  "independenceGroupId": "mathematik-rollout-v1-batch-033b-coordinates-lines-motion-current-5-v1-20260906-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+    "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+    "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+    "b025df0c-994c-4807-9c5f-2d548905b73f",
+    "ba343971-10e5-4b05-b005-405b9c1ce447"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ca34a9638ec3839fc45ed3aefb84c4b673f653c0fb9322615bbf039c0866c18a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-06T06:00:36Z",
+  "completedAt": "2026-09-06T06:04:43Z",
+  "status": "completed",
+  "outputDigest": "sha256:cdffed8679cb3ce2da8722d9d9f69bcbfd2373b77e0210ca0cd10d9ffc969d1d",
+  "toolchainVersion": "codex-agent-review-v1"
+}

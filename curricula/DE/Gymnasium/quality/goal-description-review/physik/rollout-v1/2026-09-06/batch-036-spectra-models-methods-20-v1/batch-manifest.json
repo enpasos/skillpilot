@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1.config.json",
+  "configDigest": "sha256:be718834cb6720a65bbbcc8a9ec949f753da40b1da113bec6cec0c9c4b9d9847",
+  "goalIds": [
+    "2fab2e3a-1558-5e67-aed0-15fc51c737cd",
+    "904670af-8e4c-543e-bc9b-e6248d87a10d",
+    "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+    "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+    "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+    "974a2d1c-2225-519d-965f-7744fe8aafd5",
+    "0172ca41-cc42-51d6-94ad-f0f4680059e4",
+    "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+    "75f7139f-0f07-5cec-bcea-4f139502b528",
+    "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+    "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+    "84ddb244-e560-592f-9d43-e84c801fe5b4",
+    "8ac61062-f63e-5935-96ae-84014906c368",
+    "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+    "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+    "3ed3279e-c524-5230-a277-dda89493df6d",
+    "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+    "d3c153b9-e09b-5668-8386-73105546a7c1",
+    "0dd1e39c-8557-5a4e-b467-caae964fff67",
+    "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:d879471bbc9c575de41baebb36c8f757a983e93ad309ac8c5b74e91567eb4c8a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:53447634cd068173c688d5a94822becaddb3f1ab6aa0c8520444a531332267b0",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:afe0b5764ffa9b1809d3590c235df4b2e4c924a39af9c1f31a884d4d3b480255",
+    "reviewInputFingerprint": "sha256:de90a617126da2ac0b1ee4f2502e1c4abd0cdf32419a34abc59b73de63b6108b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-a",
+        "campaignDigest": "sha256:652326dc6866032af31f22d20e0af1a436f3a84fbf8f51e4fa76752df84bc34a",
+        "roundId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-independent-a",
+        "batchId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1b2fd56a8d46a4d060ebe8d8bc0fbd1bbedd09e6c56ec4f72874912da37df4b9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-b",
+        "campaignDigest": "sha256:bf220269e7d6bec5bfd97e699cbeaaff302b3a0e6927e7a728442c62a116373e",
+        "roundId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-independent-b",
+        "batchId": "physik-rollout-v1-batch-036-spectra-models-methods-20-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7ed22681ae9f501779a2d40e970af333de7dff19459169a1eb7b47a49c56c710"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

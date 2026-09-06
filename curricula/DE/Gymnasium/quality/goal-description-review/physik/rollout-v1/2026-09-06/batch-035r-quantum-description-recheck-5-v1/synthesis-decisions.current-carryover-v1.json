@@ -1,0 +1,188 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b035r-current-5-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-b035r-current-pair",
+  "synthesizedAt": "2026-09-06T08:03:26.950Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906",
+    "batchManifestDigest": "sha256:911fd97a402c5f4f683092862d164b88244f23d136072fbf9fbe154497f826b3",
+    "configDigest": "sha256:9f9493c6ef8e978fd4111571c40c3fd272b71ac3d5f787eefe54e7bc3bf0dc3e",
+    "bundleFingerprint": "sha256:d4db156c0254e29a399371a0bb18a4f61cfcd05a395edff9685d42dc1b6b72a5",
+    "bookDigest": "sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc",
+    "reviewInputFingerprint": "sha256:9020dc9d6051fb1a008d15e991a805a9e6003015482fc26742c194a4128c65b8",
+    "dualSummaryDigest": "sha256:431a2ad76064f178975746319f016125f073a8b9e72ea8c01bff0fdc4a522625",
+    "canonicalLandscapeDigest": "sha256:de5ffe299f45b82157b4c6cef3db9cbed479baf27e6eb78da9c02aa37e3d90ba"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-a",
+      "campaignDigest": "sha256:67b197ae558ecb4b78d6b0308efedd8e16ff66734eb683f2b7a793a8012e9ed7",
+      "roundId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:9020dc9d6051fb1a008d15e991a805a9e6003015482fc26742c194a4128c65b8",
+      "batchId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e96b900b4929bf3199814f89f004e14161b2c4d657cad32c07b937bf8589573b",
+      "runId": "physics-b035r-recheck-a-20260906",
+      "runManifestDigest": "sha256:a0432a565e0d5731d0f489b0268497209a17a8f44bde7bceb26be387d764109b",
+      "resultsDigest": "sha256:c91bc6322bfe01388995b807bdc5c48a494add6d7e13a8dc5ebd240c74b75f16"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-b",
+      "campaignDigest": "sha256:c120168154c082708ecbc4919c92a5dd6262a6090db50af5ccdbd6305c5edacd",
+      "roundId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:9020dc9d6051fb1a008d15e991a805a9e6003015482fc26742c194a4128c65b8",
+      "batchId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b1b0f1c37685fe85ee779549b3428beab191ea2ae9cf039e697a9528a94abb1b",
+      "runId": "physics-b035r-blind-b-20260906",
+      "runManifestDigest": "sha256:906458dca05a923bbd824e017cf29d759bc34a3aeac6bb317944960c77e77cbb",
+      "resultsDigest": "sha256:e12530a667b91d7e24277b9ae9aa86cc56405c1afdaa00fddaa5bf8808a727a2"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b035r-current-5-synthesis-20260906-v1-decision-001",
+      "goalId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b3d32bc6e5c4b1cd957f5dae1e333290833589bd83bec5b54971cd7148d52230",
+      "pageFingerprint": "sha256:7aa965af730d560f5de745a8048313535312ce6e48a56e1bc295b0ff60f5a135",
+      "goalReviewContextFingerprint": "sha256:f2e93f0df8d97b970d4fd599893e255795c850f00b459f51201cdd525e2140dc",
+      "finalText": {
+        "titleDe": "Wellenfunktion und Wahrscheinlichkeitsdeutung",
+        "titleEn": "Wave Function and Probability Interpretation",
+        "descriptionDe": "Die lernende Person kann qualitativ erläutern, wie das Betragsquadrat der quantenmechanischen Wellenfunktion eine Wahrscheinlichkeitsdichte angibt und daraus die Wahrscheinlichkeit für den Nachweis eines Quantenobjekts in einem Raumbereich folgt.",
+        "descriptionEn": "The learner can qualitatively explain how the squared modulus of the quantum mechanical wave function gives a probability density and how this determines the probability of detecting a quantum object in a spatial region."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b035r-recheck-a-20260906.001",
+          "recordDigest": "sha256:5878f5dee70f9ab9eeafc94d81c4488059984aa3e6efd34074e4ae7749fb829f"
+        },
+        "second": {
+          "recordId": "physics-b035r-blind-b-20260906.51bc5513-6879-548f-b19a-9746b667f1a3",
+          "recordDigest": "sha256:c47a0a4ba653f91a11fbec85d1a38d8ddf737996a14697e338b787d6c5e01f51"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden bestätigen die gezielte Unterscheidung von Betragsquadrat, Wahrscheinlichkeitsdichte und Nachweiswahrscheinlichkeit in einem Raumbereich. Der qualitative Erklärungsanspruch bleibt erhalten; formale Integration ist nicht zusätzlich vorgeschrieben. Der vorhandene zugeordnete Born-Regel-Memory-Nachweis bleibt sinnvoll und unverändert. Das getrennt gegengeprüfte V2-Profil prüft Vorzeichen und Bereichsbreite in zwei unterschiedlichen Fällen. Originalbild und Quellenzuordnungen bleiben erhalten; diese KI-Synthese erteilt keine Human- oder Quellenfreigabe.",
+      "rationaleEn": "Both independent current rounds confirm the targeted distinction between squared modulus, probability density and detection probability in a spatial region. The qualitative explanatory scope is retained without adding mandatory formal integration. The existing linked Born-rule memory evidence remains useful and unchanged. The separately counter-reviewed V2 profile tests sign and region width in two different cases. The original image and source mappings are retained; this AI synthesis grants no human or source approval."
+    },
+    {
+      "decisionId": "physics-b035r-current-5-synthesis-20260906-v1-decision-002",
+      "goalId": "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ebad935d6d9c949127954b6e3856872142baf0925dc4564cf910cdfeb20c9806",
+      "pageFingerprint": "sha256:8976f3300f49b09d63d25f83774917b5cacd744d99d1c6a0f4115f543813edb5",
+      "goalReviewContextFingerprint": "sha256:72617e3d9237fbe8763cf2549d48843b0d9611e1c65a6fc98de5ed3bb4044e93",
+      "finalText": {
+        "titleDe": "Grenzen des Potentialtopf-Modells",
+        "titleEn": "Limits of the Potential Well Model",
+        "descriptionDe": "Die lernende Person kann das idealisierte unendliche Kastenpotential mit dem atomaren Coulomb-Potential vergleichen und daraus Aussagegrenzen des Kastenmodells für Atome erläutern.",
+        "descriptionEn": "The learner can compare the idealized infinite square well with the atomic Coulomb potential and use this comparison to explain the limits of the square-well model for atoms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b035r-recheck-a-20260906.002",
+          "recordDigest": "sha256:f6001f8042c8cbb146cdd32a38b411330bdeb3b82c1707a2c29d273276a9fc81"
+        },
+        "second": {
+          "recordId": "physics-b035r-blind-b-20260906.ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+          "recordDigest": "sha256:7c32ea3ab44e6fe3949c88d5682ef57d1c4f487392abeea82421b69bf8a50224"
+        }
+      },
+      "rationaleDe": "Beide frischen Runden bestätigen den zusammenhängenden Modellvergleich mit daraus begründeten Aussagegrenzen. Die Fassung nennt jetzt das unendliche Kastenpotential und das atomare Coulomb-Potential, statt ein unspezifisches reales Potential vorauszusetzen. Weder eine neue Rechenroutine noch eine vollständige Beschreibung von Atomen wird verlangt. Das V2-Profil trennt Niveauabstandsvergleich und Übertragbarkeit bei geänderten Randbedingungen. Die zuvor gegengeprüften Quellenumfänge bleiben unverändert; weitere Beschreibungs- oder Bildänderungen wären nicht durch eine belegte Schwäche begründet.",
+      "rationaleEn": "Both fresh rounds confirm one coherent comparison of models and the resulting explanation of their limits. The wording now names the infinite square well and atomic Coulomb potential instead of assuming an unspecified real potential. It requires neither a new calculation routine nor a complete description of atoms. The V2 profile separates comparison of level spacings from transfer under changed boundary conditions. The previously checked source scopes remain unchanged; further wording or image changes would not address a demonstrated weakness."
+    },
+    {
+      "decisionId": "physics-b035r-current-5-synthesis-20260906-v1-decision-003",
+      "goalId": "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a94f0b7ac3dd00aa02ac57cdedd24f991e9f40b4ede18ab430426b9c77fc9301",
+      "pageFingerprint": "sha256:e25f9a9ad15e1541a6d31f30902055e95b12302d69ee1ed8ad7ebedea0868eac",
+      "goalReviewContextFingerprint": "sha256:a4cb0dad9df660c0edc05ac70e7992f48088d317e667f23a4b201426306d7e55",
+      "finalText": {
+        "titleDe": "Das Messproblem in der Quantenphysik",
+        "titleEn": "The Measurement Problem in Quantum Physics",
+        "descriptionDe": "Die lernende Person kann die mögliche Zustandspräparation oder -änderung durch eine Quantenmessung erläutern, den sogenannten Kollaps der Wellenfunktion als modellabhängige Beschreibung einordnen und dies von klassischer Messunsicherheit unterscheiden.",
+        "descriptionEn": "The learner can explain possible state preparation or change through a quantum measurement, identify the so-called collapse of the wave function as a model-dependent description and distinguish this from classical measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b035r-recheck-a-20260906.003",
+          "recordDigest": "sha256:9fa0d86d54e53d6755e3c24c926a19eddc363334b78ee432fa8abc5e51ff1b84"
+        },
+        "second": {
+          "recordId": "physics-b035r-blind-b-20260906.b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+          "recordDigest": "sha256:96f3051bf34000e48f9972cc84c685cf1c6ae1870d15c5cfc551fe0879694d3c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden behalten den aktuellen Kompetenzkern: mögliche Zustandspräparation oder -änderung, modellabhängige Kollapsbeschreibung und Abgrenzung von klassischer Messunsicherheit gehören zur selben begrifflichen Einordnung. Die Formulierung behauptet weder einen zwangsläufigen Zustandswechsel bei jeder Messung noch eine einzig richtige Ontologie. Das gegengeprüfte V2-Profil kennzeichnet den Kollaps ebenfalls modellabhängig und nutzt veränderte Messfolgen als Transfer. Der Quellabgleich rechtfertigt keine zusätzliche Pflicht zur Benennung eines Projektionsmodells; DE/EN bleiben gleichwertig.",
+      "rationaleEn": "Both independent rounds retain the current competence: possible state preparation or change, a model-dependent collapse description, and distinction from classical measurement uncertainty form one conceptual interpretation. The wording asserts neither unavoidable state change in every measurement nor a single correct ontology. The counter-reviewed V2 profile also qualifies collapse as model-dependent and uses changed measurement sequences for transfer. Source reconciliation does not justify making the name of a projection model mandatory; German and English remain equivalent."
+    },
+    {
+      "decisionId": "physics-b035r-current-5-synthesis-20260906-v1-decision-004",
+      "goalId": "aef1e312-6a0c-5323-9202-c22ae84086f2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:502811f8297c42bdd9d6b97c9746a9e11a88d9754f16a4a01e06f4a0bbbae194",
+      "pageFingerprint": "sha256:7b11adc05f99f5e982fdbf70972d0764be74bd33e7d52c12da42625ec76e1b6a",
+      "goalReviewContextFingerprint": "sha256:d3df6764c70167d3daa634a98fc6c09aae1c0dcf240a982bbb0dde1a8d6bf50d",
+      "finalText": {
+        "titleDe": "Koinzidenznachweis einzelner Photonen",
+        "titleEn": "Coincidence Detection of Single Photons",
+        "descriptionDe": "Die lernende Person kann Koinzidenzmessungen zum Nachweis einzelner Photonen qualitativ erklären und begründen, wie unterdrückte gleichzeitige Nachweise an den beiden Ausgängen eines Strahlteilers bei geeigneter Einzelphotonenpräparation die Unteilbarkeit eines Photons beim Nachweis stützen.",
+        "descriptionEn": "The learner can qualitatively explain coincidence measurements for detecting single photons and explain how suppressed simultaneous detections at both outputs of a beam splitter, with suitable single-photon preparation, support a photon's indivisibility upon detection."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b035r-recheck-a-20260906.004",
+          "recordDigest": "sha256:3bfb3052d7c0520b356daa3511ddfa3674f909ae86c38c19dc874c5c3a95439a"
+        },
+        "second": {
+          "recordId": "physics-b035r-blind-b-20260906.aef1e312-6a0c-5323-9202-c22ae84086f2",
+          "recordDigest": "sha256:19a3062f9f1262033c549cff62bbf59524fa8ef40bb0c484d14aca2f5b11d2dc"
+        }
+      },
+      "rationaleDe": "Beide neuen Runden bestätigen die expliziten Nachweisbedingungen: geeignete Einzelphotonenpräparation und unterdrückte Ausgangskoinzidenzen stützen Unteilbarkeit beim Nachweis. Koinzidenz als Messmethode allein, beliebig schwaches Licht oder PET begründen diesen Schluss nicht. Die zwei V2-Fälle prüfen bedingte Einzel-/Koinzidenzzahlen samt Vergleichsbedingungen und die Grenze einer anderen Koinzidenzverwendung; die Rechenwerte wurden unabhängig bestätigt. Keine klassische Flugbahn, kein Nullereignis ohne Effizienzkontext und keine neue Quellenabdeckung werden behauptet. Das passende vorhandene Bild bleibt unverändert.",
+      "rationaleEn": "Both new rounds confirm the explicit detection conditions: suitable single-photon preparation and suppressed output coincidences support indivisibility upon detection. Coincidence as a method alone, arbitrarily weak light, or PET do not establish that conclusion. The two V2 cases test conditional single and coincidence counts with comparison conditions, and the limits of a different coincidence application; the numerical values were independently checked. No classical trajectory, context-free zero-event claim, or new source coverage is asserted. The suitable existing image remains unchanged."
+    },
+    {
+      "decisionId": "physics-b035r-current-5-synthesis-20260906-v1-decision-005",
+      "goalId": "43adaa0b-1f37-5d55-a496-6900555274a1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ee9d1c89ea10bbf19e0cbc2871574e84a57a71b50706bbd8d73e768567af23d1",
+      "pageFingerprint": "sha256:6ac7d235912abb56eab5fefb079597a89aeb4016ad842a27efe5f00a9b7c7e04",
+      "goalReviewContextFingerprint": "sha256:29f9a3909e35b6d626fde5777791bac7875e74bb9f0d986cb17788447db69e24",
+      "finalText": {
+        "titleDe": "Potentialverlaeufe und Atombindung quantenmechanisch plausibilisieren",
+        "titleEn": "Use quantum-mechanical potential profiles to explain atomic bonding qualitatively",
+        "descriptionDe": "Die lernende Person kann einfache Potentialverläufe mithilfe von Simulationen untersuchen, Wellenfunktionen und Energieniveaus qualitativ vergleichen und damit das Zustandekommen von Atombindung plausibel machen.",
+        "descriptionEn": "The learner can investigate simple potential profiles using simulations, compare wave functions and energy levels qualitatively and use this comparison to make the formation of atomic bonds plausible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b035r-recheck-a-20260906.005",
+          "recordDigest": "sha256:2c92630c1c30ce6551970b1ad567eead979422dab69a352ac4e9f7c063b973f0"
+        },
+        "second": {
+          "recordId": "physics-b035r-blind-b-20260906.43adaa0b-1f37-5d55-a496-6900555274a1",
+          "recordDigest": "sha256:afbc46a3f78754d6172e9cdbf48f597fc6bd4b84f2c7d373e9bbdd63b592418d"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen Simulation, qualitativen Darstellungsvergleich und damit begründete Atombindung als eine verbundene Modellierungsleistung. Die übernommene Fassung macht diese Verbindung ausdrücklich und übersetzt die zuvor deutschen Englischfelder tatsächlich, ohne den BY-Quellenumfang zu erweitern. Im V2-Profil bleibt Simulation Teil der beobachtbaren Leistung; elektronische Energie und Gesamtenergie werden unterschieden, ein abgesenktes Einzelenergieniveau wird nicht als hinreichender Stabilitätsbeweis gewertet. Die Energiebeispiele sind nachgerechnet. Das vorhandene Bild wird nicht ersetzt, und die Synthese ist keine Humanfreigabe.",
+      "rationaleEn": "Both current rounds confirm simulation, qualitative comparison of representations and the resulting account of atomic bonding as one connected modeling performance. The adopted wording makes this connection explicit and genuinely translates the formerly German English fields without expanding the Bavarian source scope. Simulation remains part of observable performance in the V2 profile; electronic and total energies are distinguished, and a lowered single electronic level is not treated as sufficient proof of stability. The energy examples have been checked. The existing image is not replaced, and this synthesis is not a human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:5a5391bb83bfce14cfb567c348e6c410c323efbe8ca559e3d9d99dcffa0c8939"
+}

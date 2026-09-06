@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-035-quantum-models-particles-20-v1.config.json",
+  "configDigest": "sha256:fbf5de47ee846abdafbfc5c40bebf0b1eb036c8daca6f0468d5f7b124f1524a9",
+  "goalIds": [
+    "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+    "d7244ce4-5409-58d1-a1b4-bfae35f391e1",
+    "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+    "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
+    "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+    "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+    "81c0d811-e6de-5489-8415-3b257c734a2e",
+    "ea2d5085-4ec1-5e33-87e0-15edcad635bf",
+    "51bc5513-6879-548f-b19a-9746b667f1a3",
+    "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+    "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+    "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
+    "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+    "aef1e312-6a0c-5323-9202-c22ae84086f2",
+    "43adaa0b-1f37-5d55-a496-6900555274a1",
+    "2ec48368-ac5b-55f9-a396-5a5fe4e1e874",
+    "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+    "4e046c1c-bcc7-5e3c-9f71-f80d69027483",
+    "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+    "8eb6456b-d915-50ed-a076-2b23c2e5420c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:3b9ad81e435bf2b9cfdfbbc730712b02892df4aeae0810465bfeabc0d6b49030"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:61708de873f1fa35d6be4db1a616551c6036fd900d9f6571a4776da18729fd73",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7dd858d46ef5ba4f50f56a98145881b40c139f63f0ab9a169e216c0892abc70f",
+    "reviewInputFingerprint": "sha256:6442f96dbcf32780dabee52cc83a5c05e3298d8456d9341189e89d1f64b84900",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-a",
+        "campaignDigest": "sha256:de3a6abf2b74fe20d45e7fbbf7a2e30f3fea8338e2adf86a09c9937d50408eeb",
+        "roundId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-independent-a",
+        "batchId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1316c712f2867e181931875bdb15191d59e5fed480ec86098c2bb6934faf33f5"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-b",
+        "campaignDigest": "sha256:7c3b3854edebcc71015bf64e761f1c6d725c22d7acfa389860c5724dadb83c9d",
+        "roundId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-independent-b",
+        "batchId": "physik-rollout-v1-batch-035-quantum-models-particles-20-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e752cb09dd33d249004681442005945663c3ecf207d4c8d3a80c1e34abed8ac5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:45099430c40e65fcba4ec219e93e51e27f4659056d526a003264bcd50f0741d9",
+  "reviewInputFingerprint": "sha256:3b2f71f1d18a8cfb480270182575b921e76e2f4f41406d976792cdbdb11bbc6e",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-a",
+      "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-a",
+      "runIds": [
+        "math-b037s-independent-a-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-b",
+      "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-b",
+      "runIds": [
+        "math-b037s-optimization-20260906-blind-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact platform model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "firstRecordId": "math-b037s-a-1511b39a",
+      "secondRecordId": "math-b037s-optimization-20260906-blind-b.001",
+      "firstRunId": "math-b037s-independent-a-20260906",
+      "secondRunId": "math-b037s-optimization-20260906-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

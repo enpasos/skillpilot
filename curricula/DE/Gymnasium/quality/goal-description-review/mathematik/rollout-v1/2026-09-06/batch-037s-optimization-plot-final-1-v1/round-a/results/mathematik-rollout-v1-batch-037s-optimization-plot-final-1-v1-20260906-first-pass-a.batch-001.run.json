@@ -1,0 +1,32 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b037s-independent-a-20260906",
+  "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-a",
+  "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:20a15fd3ffe3d4e433c61df05aa2a6e589b56c9e8d0e65df3819565b05a84878",
+  "bundleFingerprint": "sha256:45099430c40e65fcba4ec219e93e51e27f4659056d526a003264bcd50f0741d9",
+  "bookDigest": "sha256:4bc5174a4f58f34220bbe65cb1ef197dd4d0ccb199383125c8a4a3239b1a02ec",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:fe32d7f5a562561cd85603cf9cb7e25b993294ff14ff0b98f6f899397f4bc7c7",
+  "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": ["1511b39a-4094-5450-a755-4a3ad3339733"],
+  "inputArtifacts": [
+    {"role":"description_review_batch_input_jsonl","digest":"sha256:20a15fd3ffe3d4e433c61df05aa2a6e589b56c9e8d0e65df3819565b05a84878"},
+    {"role":"review_prompt","digest":"sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role":"review_criteria","digest":"sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"},
+    {"role":"run_manifest_schema","digest":"sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"}
+  ],
+  "startedAt": "2026-09-06T10:40:22Z",
+  "completedAt": "2026-09-06T10:41:36Z",
+  "status": "completed",
+  "outputDigest": "sha256:f4af48e006dd21d6b98fe6cdbe458b06c86e3cb3f3dc432f0f9428214d6add2e",
+  "toolchainVersion": "codex-native-review-v1"
+}

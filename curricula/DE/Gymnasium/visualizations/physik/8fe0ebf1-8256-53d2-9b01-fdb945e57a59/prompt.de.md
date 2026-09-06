@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,35 +27,19 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Linsenaugen im Tierreich fachlich vergleichen
+Titel: Linsenaugen im Tierreich physikalisch vergleichen
 Beschreibung: Die lernende Person kann Aufbau und Aufloesungsvermoegen unterschiedlicher Linsenaugen recherchieren, Modellgrenzen reflektieren und die Passung biologischer Systeme zu Anforderungen begruenden.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: precise-object-edit
+Asset type: didaktische Physik-Illustration, vorhandenes Bild lokal korrigieren.
+Input image: einziges Eingabebild ist das zu bearbeitende Original. Es ist keine bloße Stilreferenz.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Linsenaugen vergleichen`.
-- Use three animal-eye model cards: `Mensch`, `Katze`, `Greifvogel`.
-- Each card should show a simplified lens-eye cross section with only: pupil opening, lens, retina.
-- Add a shared comparison board with three physical criteria:
-  `Pupille D`, `Brennweite f`, `Rezeptorabstand s`.
-- Show qualitative bars, not exact biological numbers:
-  cat has larger `Pupille D` for low light;
-  bird of prey has small `s` for high resolving power;
-  human is a reference middle case.
-- Add one small formula card: `kleiner s und groesseres D -> bessere Aufloesung`.
-- Add one model-boundary note: `Modellgrenze: Biologie vereinfacht`.
-- Visible learner text must be limited to the title, the animal labels, the criterion labels, the formula/note above, and `Nachtsehen` / `hohe Aufloesung`.
+Ändere ausschließlich den falschen Strahlenverlauf im oberen linken Kasten „Mensch“. Er zeigt derzeit zwei parallel einfallende Strahlen, die sich schon deutlich VOR der Netzhaut kreuzen und danach wieder auseinanderlaufen. Das ist in diesem Vergleich eines normalen menschlichen Linsenauges falsch.
 
-Vermeiden:
+Zeichne genau diese beiden Strahlen nach der Linse als gerade konvergierende Linien zu EINEM gemeinsamen Punkt AUF der Netzhaut an der hinteren rechten Innenwand des Auges. Die Strahlen dürfen sich nicht vorher kreuzen und nicht hinter diesem Netzhautpunkt weiterlaufen. Die beiden einfallenden Strahlen links bleiben parallel. Der Schnittpunkt gehört auf die innere hintere Netzhautkontur, nicht außerhalb des Auges und nicht mitten in den Glaskörper.
 
-- Do not invent exact visual acuity numbers or exact pupil diameters.
-- Do not claim that larger pupil alone always gives better image quality.
-- Do not draw compound eyes; this goal is about lens eyes.
-- Do not draw rays unless they are very simple and meet the retina consistently.
-- Do not add arrowheads to optical rays.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Erhalte alles andere: sämtliche Beschriftungen, Schrift, Farben, lockeren Zeichenstil, Rahmen, Augenumrisse, Linse, Pupille und anatomischen Zeigelinien, die Kästen „Katze“ und „Greifvogel“, die gesamte untere Tabelle, deren Balken und die beiden rechten Hinweisboxen. Keine neuen Kästen, keine neuen Daten, keine zusätzliche Überschrift, keine technischen IDs. Keine vollständige Neugestaltung. Das gesamte Originalformat und der gesamte Bildinhalt bleiben sichtbar.
 ```
 
 ## Review-Notiz

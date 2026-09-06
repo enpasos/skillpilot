@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+  "decision": "accepted_pilot_after_regeneration",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-09-06T08:43:31.862Z",
+  "provider": "Google Gemini / Nano Banana Pro",
+  "model": "gemini-3-pro-image",
+  "oldImage": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b035-relative-dispersion-v1/rejected/original.jpg",
+    "sha256": "sha256:6f94379b2ef4f34e8509d861fad291fbe811fb596f63111d2e273fbd6b65d174"
+  },
+  "rejectedAttempts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b035-relative-dispersion-v1/rejected/nano-attempt-1.jpg",
+      "sha256": "sha256:9f57d9a3a63e24971c97443b73686660af09b92b495358ff23f10989f95460c2",
+      "reason": "Incorrect percentage labels and μ=1 placed on third x tick; misleading horizontal spread arrows."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b035-relative-dispersion-v1/rejected/nano-attempt-2.jpg",
+      "sha256": "sha256:8a1b9bcea13b2ebdaa0cbef1d248bda58833489feb0911d7c33736205e1bc213",
+      "reason": "Wrong μ=1 still at third tick instead of k=2."
+    }
+  ],
+  "acceptedAssets": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "sha256": "sha256:9e7e31fb90053dc4391dc4f945bca55e23c5385ff1c142ce045a7f7cc92aa32c"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "sha256": "sha256:9e7e31fb90053dc4391dc4f945bca55e23c5385ff1c142ce045a7f7cc92aa32c"
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "sha256": "sha256:9e7e31fb90053dc4391dc4f945bca55e23c5385ff1c142ce045a7f7cc92aa32c"
+    }
+  ],
+  "fullImageReview": "Vollbild geprüft: n=4 hat genau fünf korrekt zu 0..4 zugeordnete, rechtsschiefe Balken mit Maximum bei 1; p=0,25 und μ=1/4/16, σ≈0,87/1,73/3,46, σ/μ≈0,87/0,43/0,22 sind rechnerisch korrekt. Keine irreführenden σ/μ-Doppelpfeile; mittlere/rechte Verteilung ausdrücklich schematisch, keine gemeinsame absolute Achsenskalierung behauptet. Formel gilt mit n≥1,0<p<1. Ein redundantes 2-Label im dritten Balken bleibt kosmetisch, bezeichnet denselben k-Wert wie darunter. Nano-Banana-Stil erhalten. Pilot-AI-Prüfung, keine menschliche Publikationsfreigabe.",
+  "checks": {
+    "binomialPMFn4p025": [
+      0.31640625,
+      0.421875,
+      0.2109375,
+      0.046875,
+      0.00390625
+    ],
+    "numericalValues": [
+      {
+        "n": 4,
+        "p": 0.25,
+        "mean": 1,
+        "sigma": 0.8660254037844386,
+        "relativeSigma": 0.8660254037844386
+      },
+      {
+        "n": 16,
+        "p": 0.25,
+        "mean": 4,
+        "sigma": 1.7320508075688772,
+        "relativeSigma": 0.4330127018922193
+      },
+      {
+        "n": 64,
+        "p": 0.25,
+        "mean": 16,
+        "sigma": 3.4641016151377544,
+        "relativeSigma": 0.21650635094610965
+      }
+    ],
+    "stylisticReplacementsOnly": false,
+    "descriptionDomainAgrees": true,
+    "humanApproved": false
+  },
+  "boundaries": [
+    "Replaced only the actually defective binomial visualization; no other accepted image was substituted.",
+    "Original and rejected Nano candidates preserved in rejected/; current image remains a pilot AI candidate.",
+    "Global absolute spread cannot be compared by the diagram widths: the two larger-n panels are schematic. Numeric σ grows, whereas σ/μ decreases.",
+    "Redundant k=2 label is recorded as cosmetic; no exact ordinate scale or human release approval claimed."
+  ]
+}

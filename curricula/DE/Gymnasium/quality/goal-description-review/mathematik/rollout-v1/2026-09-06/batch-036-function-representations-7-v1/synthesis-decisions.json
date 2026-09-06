@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b036-function-representations-parent-synthesis-20260906",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-parent-full-dual-record-counterreview",
+  "synthesizedAt": "2026-09-06T09:32:15.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906",
+    "batchManifestDigest": "sha256:d95d2a285981bdd4275af455cd128c112fa5c2bee14f3726cf686a031699831e",
+    "configDigest": "sha256:c924acdc71cfd4659d5798915a0a33e4a9383014b6933d36c9b3e00d696344cc",
+    "bundleFingerprint": "sha256:70f64bfcf938c65ea2e98e3132d2dbec6385902819485c419fc8f90993094cec",
+    "bookDigest": "sha256:7c3228cf0fa28432222a22e11c5933d5339a41f953480713e62394b6a113a2d9",
+    "reviewInputFingerprint": "sha256:258eeef4535f39a02ec3fdd4b07bc4ab898f3ffb97ecb48acd0b50b22d524666",
+    "dualSummaryDigest": "sha256:a7ec6122145c18d5e258c3de2bedcf743fbb81ed243ca2be497178b65128371d",
+    "canonicalLandscapeDigest": "sha256:28b5bfa658369bf560f93d5ca09d315263b394e12638e0982d6b7eb61c1ec50c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-a",
+      "campaignDigest": "sha256:30f68756cd05a1737d0050706e64394c524db28aa5fba57b76de0914b14db73c",
+      "roundId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:258eeef4535f39a02ec3fdd4b07bc4ab898f3ffb97ecb48acd0b50b22d524666",
+      "batchId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a489dd1bc858f21ebf80d6826d44177ecbe470d6a8e032fe8862cb27ed2d80ae",
+      "runId": "math-b036-blind-a-20260906",
+      "runManifestDigest": "sha256:0e78c6c7615f46cdb6bd974f876b9cb6decc973de68ae871a3d45a023a4d7923",
+      "resultsDigest": "sha256:4f0fa6157cb06b33462fe659b4d1d914fcf154a918cb0752e2f9e3a3f7188040"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-b",
+      "campaignDigest": "sha256:ee4dc4c342d520de08ddde71925f77726dba49ed8a518968ee57c2fd648e4e4d",
+      "roundId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:258eeef4535f39a02ec3fdd4b07bc4ab898f3ffb97ecb48acd0b50b22d524666",
+      "batchId": "mathematik-rollout-v1-batch-036-function-representations-7-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:f0936e982384e8c25e458f7c59c79184389534a13e0e3267c89dd23e276b5ac7",
+      "runId": "math-b036-blind-b-20260906",
+      "runManifestDigest": "sha256:83ae7c64f6c1b92bcb492782caee0bcd3d08a2301f611ae3944bfc35bc55c691",
+      "resultsDigest": "sha256:eec7b8e5b50592eca616378074220090e548bd337d8c12c190d84d01d08ae500"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-001",
+      "goalId": "cf4fe700-dec2-502f-888b-90acefa307bb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e98f818332ae2348a0ad9a81453a60c3f34fa7a3321e6910b70a3065a50d08e4",
+      "pageFingerprint": "sha256:fa4b6bca537ddc0edeb2356d4ae1f3d1fa525df5cc086c2ab34c1d1000d75a8d",
+      "goalReviewContextFingerprint": "sha256:c25cc6f7b7928426e7766926d3d08d79bdf14b3690b06253747592a29ebaf809",
+      "finalText": {
+        "titleDe": "Informationen aus Darstellungen entnehmen",
+        "titleEn": "Extract information from representations",
+        "descriptionDe": "Die lernende Person kann aus einer Darstellung relevante Informationen entnehmen (z. B. Nullstellen, Steigungen, Schnittpunkte) und in Worten oder Symbolen formulieren.",
+        "descriptionEn": "The learner can extract relevant information from a representation (e.g. zeros, slopes, intersections) and express it in words or symbols."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-cf4fe700",
+          "recordDigest": "sha256:c684af29ae72ea8e200abc25511f87d6ab2bfe52264d9ad689d6cbbfdbfdf78b"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-001",
+          "recordDigest": "sha256:d321a058424ff27cad1da6ce6dc07520dd827a329b1550b2c0053c310ef98c08"
+        }
+      },
+      "rationaleDe": "Beide vollständigen aktuellen Reviews bestätigen dieselbe Informationsentnahme aus Darstellungen mit sprachlicher oder symbolischer Formulierung. Skalen, Bedeutung von Koordinaten und Grenzen tabellierter Werte werden im Profil präzisiert; keine vollständige Funktionsrekonstruktion oder Differentialrechnung wird hinzugefügt.",
+      "rationaleEn": "Both complete current reviews confirm extracting information from representations and expressing it verbally or symbolically. Scales, coordinate meaning and limits of tabulated data are specified in the profile without adding complete function reconstruction or calculus."
+    },
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-002",
+      "goalId": "0272c501-2931-5e52-b62f-af068db63c44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:269e3100175654e2ecb92cc386824ac8b146a2aead3b1c9671b8acc2a50a9fdf",
+      "pageFingerprint": "sha256:8bc586899180ab7ae5538bee31114fabef67be7eb66f6266bf8d732abe65670e",
+      "goalReviewContextFingerprint": "sha256:3991e49e128c6996c571b0c4c5d6635fa9e5e5bcf4ac4a545626b4f05282ebc6",
+      "finalText": {
+        "titleDe": "Aus Term einen Graphen erstellen",
+        "titleEn": "Create a graph from an expression",
+        "descriptionDe": "Die lernende Person kann aus einem Term oder einer Funktionsvorschrift den zugehörigen Graphen skizzieren bzw. erstellen und zentrale Merkmale markieren.",
+        "descriptionEn": "The learner can sketch or create the corresponding graph from an expression or function rule and mark key features."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-0272c501",
+          "recordDigest": "sha256:54caff4f8473b463c43afe5eeaf24ba9704cf2f0bd1523cb5a27d4f9ab8aad90"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-002",
+          "recordDigest": "sha256:ae531e1e1dd37990615953ff088d792555377bee56fc819141af7806d7314b1f"
+        }
+      },
+      "rationaleDe": "Zwei aktuelle KEEP-Urteile tragen die gerichtete Übertragung einer Vorschrift in ihren Graphen einschließlich zentraler Merkmale. Der Hauptvergleich bestätigt methodische Offenheit und die notwendige Beachtung des vorgegebenen Definitionsbereichs; Rückgewinnung einer Gleichung und Nachbarverfahren bleiben getrennt.",
+      "rationaleEn": "Two current KEEP decisions support translating a function rule into its graph with key features. The parent comparison confirms methodological openness and respect for the supplied domain; reconstruction of an equation and neighbouring procedures remain separate."
+    },
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-003",
+      "goalId": "99bfb566-f875-5646-ac3e-05a039838c54",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c1d04965cd3e3644ea36bae1ed66a1bc037f6eb0134ef9d3671c36b8b16574db",
+      "pageFingerprint": "sha256:e7256fa3709f766fb58efb8e814b400febd1da85e643feac0ad93c624b8321fd",
+      "goalReviewContextFingerprint": "sha256:71f8861cbc748147c995f0a8a999142286116e9eae96d50d8afeffbc453cf55f",
+      "finalText": {
+        "titleDe": "Termmerkmale aus Graphen ableiten",
+        "titleEn": "Derive expression features from a graph",
+        "descriptionDe": "Die lernende Person kann aus einem Graphen zentrale Termmerkmale wie Funktionsfamilie, Parameter, Nullstellen oder Symmetrie ableiten und fachsprachlich formulieren.",
+        "descriptionEn": "The learner can derive key features of a corresponding expression, such as its function family, parameters, zeros, or symmetry, from a graph and describe them using appropriate mathematical terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-99bfb566",
+          "recordDigest": "sha256:192a5c81b7d51406795f12e4bb2c37189a260a9e7921f2b30822d0ea06922ade"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-003",
+          "recordDigest": "sha256:faea03c3e9b23bcacb6ddf8c546f205e690b3da26b434131929ba1153b211ca6"
+        }
+      },
+      "rationaleDe": "Die aktuelle EN-Fassung verlangt wie DE Termmerkmale statt zusätzlich eine vollständige Gleichung. Beide aktuellen Runden bestätigen diese Grenze zum Nachfolger. Aus Bildausschnitten folgen nur die tatsächlich gestützten Merkmale; die Aufgaben müssen eine passende Klasse oder hinreichende Angaben liefern.",
+      "rationaleEn": "The current English wording, like German, requires expression features rather than an additional complete equation. Both current rounds confirm this boundary with the successor. A graph window supports only the features actually established; tasks must specify an appropriate family or sufficient information."
+    },
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-004",
+      "goalId": "7ba19509-8ee6-50e0-a411-a371f05b1801",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fffa48b0f16fb19811e4d7f6403c0f21999acbfe567c81ef7b67ce7e665dd472",
+      "pageFingerprint": "sha256:966314829b00e4a5ddec0324f8b9a4b4cce083fa8e89764d9cbc27bad975087d",
+      "goalReviewContextFingerprint": "sha256:cc867a7dcadb429e8c9adfe134b5f3577790e36135b680503a9ad097f4d9aac6",
+      "finalText": {
+        "titleDe": "Verschiebungen und Streckungen von Funktionsgraphen erkennen",
+        "titleEn": "Recognize shifts and stretches of function graphs",
+        "descriptionDe": "Die lernende Person kann Verschiebungen sowie Streckungen oder Stauchungen von Funktionsgraphen in x- und y-Richtung anhand von Term, Graph oder Parametern erkennen und beschreiben.",
+        "descriptionEn": "The learner can recognize and describe shifts and stretches or compressions of function graphs in the x- and y-directions from terms, graphs, or parameters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-7ba19509",
+          "recordDigest": "sha256:17e4a83fafafe6acef9f619095d750f7eadc4adb7f7e1413af83aa793fd96d99"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-004",
+          "recordDigest": "sha256:eaf333ddc69bf7e915c1f2f2916a89c2cbeb7b655db1005113a9ce9bc943bd60"
+        }
+      },
+      "rationaleDe": "A und B bestätigen eine gemeinsame Erkennung von Koordinatenwirkungen. Die identische Zuordnung (u,v) zu (c+u/b,av+d) bei positiven Faktoren erklärt insbesondere die reziproke horizontale Skalierung. Spiegelungen und vollständige Funktionsuntersuchungen werden nicht eingeschmuggelt; eine vorhandene Quellreferenz ist keine neue Mappingfreigabe.",
+      "rationaleEn": "A and B confirm one competency for recognising coordinate effects. The shared mapping from (u,v) to (c+u/b,av+d), for positive factors, explains reciprocal horizontal scaling. Reflections and complete function analyses are not added; an existing source reference does not grant new mapping approval."
+    },
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-005",
+      "goalId": "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27d45d2827d6731b6d19209726003cda85df9a660371374fce3252d3a865ea51",
+      "pageFingerprint": "sha256:5c060999260c37da418cec6e17b9e090bbae6b2d457b2c461ccd824bccae3e3c",
+      "goalReviewContextFingerprint": "sha256:3f2df35f2f2fed32b3a3d5395eddf4330b7c5740ded264687ca2774c94c2cb2c",
+      "finalText": {
+        "titleDe": "Funktionsgleichungen aus Graphen bestimmen",
+        "titleEn": "Determine function equations from graphs",
+        "descriptionDe": "Die lernende Person kann aus einem gegebenen Graphen in einfachen Fällen eine passende Funktionsgleichung angeben und die verwendeten Merkmale begründen.",
+        "descriptionEn": "The learner can determine a suitable function equation from a given graph in simple cases and justify the features used."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-1801c759",
+          "recordDigest": "sha256:a4f66fc64776926152dc08e5d29b421a2884602cd62cb8b4db9676132c4ca8af"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-005",
+          "recordDigest": "sha256:7b0c9fde25444c57d33eb17057c0eec1032234eee23d30a4df59ffd803c38b9d"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Urteile erhalten einfache Fälle, eine passende Gleichung und die Begründung anhand ihrer Merkmale. Der Hauptreview bestätigt, dass Aufgaben genügend Angaben innerhalb einer geeigneten Funktionsfamilie liefern müssen; eine eindeutige globale Rekonstruktion aus beliebigen endlichen Daten wird nicht behauptet.",
+      "rationaleEn": "Both current decisions preserve simple cases, a suitable equation and justification through its features. The parent review confirms that tasks require sufficient information within an appropriate function family; unique global reconstruction from arbitrary finite data is not claimed."
+    },
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-006",
+      "goalId": "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:19e2cdade084b134fc567367f6fe08c63ad4a05bb344b20b865fc93f6516bd74",
+      "pageFingerprint": "sha256:d29c2a2556e1ab9322d8df0fff1d0d5a3f2a3c816fab6c16d3bd8c0d36b8428a",
+      "goalReviewContextFingerprint": "sha256:9af65f659996d48a95db680d76e3666fb77a23dbd953b75314a893d14c554527",
+      "finalText": {
+        "titleDe": "Zwischen Tabelle, Graph und Term wechseln",
+        "titleEn": "Switch between table, graph and expression",
+        "descriptionDe": "Die lernende Person kann zwischen Tabelle, Graph und Termdarstellung wechseln, Informationen konsistent übertragen und passende Kontrollschritte nutzen.",
+        "descriptionEn": "The learner can switch between table, graph and expression representations, transfer information consistently and use suitable checks."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-b04d65dc",
+          "recordDigest": "sha256:51fbb9fae88a4b776c20618048bb3831ae8aa6c88d5600402652559cbfe8927e"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-006",
+          "recordDigest": "sha256:fc15fa9719bdb6c60ff02eb9938f830c2dcedb2c76dd9df98dfe5e3aed457895"
+        }
+      },
+      "rationaleDe": "Der Hauptvergleich der sieben zugehörigen Kontextschwerpunkte bestätigt hier konsistenten Darstellungswechsel mit Kontrolle als einen Erfolgskern. Zwei aktuelle KEEP-Records begründen dieselbe Abgrenzung zur allgemeinen Fehlerdiagnose. Endliche Tabellen bestimmen nur unter benannten Zusatzannahmen einen globalen Term.",
+      "rationaleEn": "The parent comparison of the seven contextual emphases confirms consistent representation switching with checks as one success criterion here. Two current KEEP records support the same boundary with general error diagnosis. Finite tables determine a global expression only under stated additional assumptions."
+    },
+    {
+      "decisionId": "math-b036-function-representations-parent-synthesis-20260906-decision-007",
+      "goalId": "42b57670-d2be-5da2-be2f-d58055901813",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1b9da2d36187de5c98c7378d44968360df5a08b2bccdfbf62ca4ef43dbffe50a",
+      "pageFingerprint": "sha256:7eaf5e840a293e99a95233559805b6f27717984f73d11a561bcb288b3d83edf6",
+      "goalReviewContextFingerprint": "sha256:fbf7dd8838c14c37a8ac524cbe52840a6230fc99c4e3fb8f00c3fb14690e3b65",
+      "finalText": {
+        "titleDe": "Übertragungen begründen und prüfen",
+        "titleEn": "Justify and check translations",
+        "descriptionDe": "Die lernende Person kann Übertragungen zwischen Darstellungen begründen, typische Fehlerquellen benennen und die Konsistenz der Darstellungen prüfen.",
+        "descriptionEn": "The learner can justify translations between representations, name typical sources of error and check consistency between representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b036-blind-a-20260906.goal-42b57670",
+          "recordDigest": "sha256:833d782eb6afec384dfee7d3ee2831ddb04b4ac39adbebc11070675f4263075a"
+        },
+        "second": {
+          "recordId": "math-b036-blind-b-20260906.record-007",
+          "recordDigest": "sha256:5dcff85225452c38ee696fffcb88b0d243074963054b54c23a436256a1c5310e"
+        }
+      },
+      "rationaleDe": "Zwei aktuelle KEEP-Records bestätigen begründetes Prüfen als Schwerpunkt gegenüber dem vorausgesetzten Darstellungswechsel. Der Hauptreview übernimmt die gemeinsame Unterscheidung: Ein Gegenwert widerlegt Konsistenz, wenige passende Stichproben beweisen keine allgemeine Gleichheit. Keine zusätzliche formale Beweiskompetenz wird gefordert.",
+      "rationaleEn": "Two current KEEP records confirm reasoned checking as distinct from prerequisite representation switching. The parent retains the common distinction: a conflicting value refutes consistency, while a few matching samples do not prove general equality. No additional formal proof competency is required."
+    }
+  ],
+  "manifestFingerprint": "sha256:bf4b769bd3913dcce49f09ca62936125ce4b1fc748d1135ccfaaf6a95346368c"
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:38150656559bf00a44661bf357b1d7426250149a030417b8ea3ad7c148918077",
+  "reviewInputFingerprint": "sha256:f766f69cea15c1659865f864af76b089e8e45522d65df01fdceec5f36f981831",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-a",
+      "roundId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-independent-a",
+      "runIds": [
+        "math-b032u-a-gpt56sol-20260905"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-b",
+      "roundId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-independent-b",
+      "runIds": [
+        "math-b032u-b-gpt6astra-20260905"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "firstRecordId": "math-b032u-a-001",
+      "secondRecordId": "math-b032u-b-001",
+      "firstRunId": "math-b032u-a-gpt56sol-20260905",
+      "secondRunId": "math-b032u-b-gpt6astra-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "firstRecordId": "math-b032u-a-002",
+      "secondRecordId": "math-b032u-b-002",
+      "firstRunId": "math-b032u-a-gpt56sol-20260905",
+      "secondRunId": "math-b032u-b-gpt6astra-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+      "firstRecordId": "math-b032u-a-003",
+      "secondRecordId": "math-b032u-b-003",
+      "firstRunId": "math-b032u-a-gpt56sol-20260905",
+      "secondRunId": "math-b032u-b-gpt6astra-20260905",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
+      "firstRecordId": "math-b032u-a-004",
+      "secondRecordId": "math-b032u-b-004",
+      "firstRunId": "math-b032u-a-gpt56sol-20260905",
+      "secondRunId": "math-b032u-b-gpt6astra-20260905",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

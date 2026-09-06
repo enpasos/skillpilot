@@ -1,0 +1,280 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b033-current-carryover-8-synthesis-20260905-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-b033-existing-review-synthesis",
+  "synthesizedAt": "2026-09-05T03:51:02.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905",
+    "batchManifestDigest": "sha256:b29e5de7499326fd6f30f998f81cb64f3a9bb18365ae85adbf907af8bf29a1b3",
+    "configDigest": "sha256:34b6e3c374c22e89f0fdbb78bb8ca33d408a4c0fa25d9f5a1695f24ab47c28b0",
+    "bundleFingerprint": "sha256:956a2e476a8429313d929649e002bdb1eceb58a50fdaf3e0f02c640d22444e7d",
+    "bookDigest": "sha256:4aeacd9f38faa376910b5208190e42a144846aa5d2fce47bbd27bad4a6ebebce",
+    "reviewInputFingerprint": "sha256:621be727a1b214c8a6b637c9e621fe42c7746e4dc64f7f630f4d2db90ba22948",
+    "dualSummaryDigest": "sha256:5b6b94ab4f5006815f11cfc8d277cd6525ee0f4f7b91f578718e59c9eab6973f",
+    "canonicalLandscapeDigest": "sha256:eb9ca6bad4ff78111d360c33269722be1c43108c8b2ba16b12ef62f9afdb7e72"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-a",
+      "campaignDigest": "sha256:87cd47c0998f71d87b804dec6e28308aec9d7984d0dc1023e4bccd9b5eb8fc82",
+      "roundId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:621be727a1b214c8a6b637c9e621fe42c7746e4dc64f7f630f4d2db90ba22948",
+      "batchId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:c72d58b502e95c559282129a063e844fed1c27fc56c283fb6d33bade4ee85f13",
+      "runId": "math-b033-round-a-openai-gpt5-20260905",
+      "runManifestDigest": "sha256:8a89d872698a131b537e600f1774ce0166edf746d2f001317ff6a33e9f8c14e0",
+      "resultsDigest": "sha256:f925bb4908f3e7b709f47787afe4be64c4f4abddffd61d9d968feca70876a868"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-b",
+      "campaignDigest": "sha256:8f0251c69b303fd96b1ac3bc1c8be29e26bf5717b1988a09b510e995d248a61f",
+      "roundId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:621be727a1b214c8a6b637c9e621fe42c7746e4dc64f7f630f4d2db90ba22948",
+      "batchId": "mathematik-rollout-v1-batch-033-atlas-next-unreviewed-disjoint-20-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:bb6a3d54110cf4e58eb246a4982fe8c5e59bc419c48d4eb9aec2a8e449c744df",
+      "runId": "mathematik-b033-round-b-openai-gpt5-20260905-run-001",
+      "runManifestDigest": "sha256:5a3f742a56f18472826912af1fd9208afb4ba77870528639324b3be91568d738",
+      "resultsDigest": "sha256:fdb9673afac118fbd30f9cac616a7ffc6aaee288d88585c64e713bf8bd2c9bf5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-001",
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:57f4f50c5fe2fb6d26d00eb9a12ecfa2d07c516670b3072c1ac3d0b5855b226c",
+      "pageFingerprint": "sha256:3dcbf8d4b29d70127e52996ff8d7adf2d43ea05fb042a36be902a8b0c25259ef",
+      "goalReviewContextFingerprint": "sha256:b295df6f9f4c7e14da20444940c37c5da8e6d2493eff5a2465009c6dd5060c04",
+      "finalText": {
+        "titleDe": "Quadratische Funktionen aus Punkten oder Bedingungen bestimmen",
+        "titleEn": "Determine quadratic functions from points or conditions",
+        "descriptionDe": "Die lernende Person kann lineare Gleichungssysteme mit drei Unbekannten nutzen, um Koeffizienten quadratischer Funktionen aus Punkten oder Bedingungen zu bestimmen, und das Verfahren algorithmisch erläutern.",
+        "descriptionEn": "The learner can use systems of three linear equations to determine coefficients of quadratic functions from points or conditions and explain the procedure algorithmically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.001",
+          "recordDigest": "sha256:2a795c045759e3af7459da754483778956e1753b572f3d8e0ac81a6440ebbd4e"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-001",
+          "recordDigest": "sha256:66ab70dd5393d8fcce59d6af7c53602c88edd31d0a928eb58d52068e92c96abb"
+        }
+      },
+      "rationaleDe": "Beide vorhandenen Blindrunden bestätigen dieselbe kohärente Bestimmungskompetenz: Bedingungen liefern ein lineares Gleichungssystem für die drei Koeffizienten, dessen Lösung algorithmisch erklärt wird. Runde B hält den Transfer bei passenden Punkten und linearen Bedingungen; der geeignete bilinguale Zieltext bleibt unverändert.",
+      "rationaleEn": "Both existing blind rounds confirm the same coherent determination competence: conditions yield a linear system for the three coefficients, whose solution is explained algorithmically. Round B keeps transfer within suitable points and linear conditions; the adequate bilingual description remains unchanged."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-002",
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5033eb83ce4cbc9cc62e02d1645ef337ad33292b6c0611b1a5d21ffa96ba534b",
+      "pageFingerprint": "sha256:254decbe2d6e4bbe478645cea8e005d4629f151ee6091d91ffb9a8f6d865cc36",
+      "goalReviewContextFingerprint": "sha256:fef29a86ed00acc25a391b8332592774732745fea54c936a9be85ceea85efc43",
+      "finalText": {
+        "titleDe": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+        "titleEn": "Use tree diagrams and path rules for compound experiments",
+        "descriptionDe": "Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+        "descriptionEn": "The learner can structure compound random experiments using tree diagrams and determine probabilities in multi-step situations using path rules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.007",
+          "recordDigest": "sha256:659eaeed8e05521ac43d89e3c4858a9d420c8cb22bc3adf532a4f9b7e33074aa"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-007",
+          "recordDigest": "sha256:8ac2f1162e04fddfdd3fdbb52e17e233268525251e57d4eaf81058739b1e0a8b"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Baumstruktur und Pfadregeln als eine Darstellungs- und Auswertungskompetenz. Die Evidenz aus Runde B verbindet vollständige Zweige, Auswahl disjunkter Ereignispfade und begründete Produkt- und Summenregel, ohne die bedingte Rückwärtsrechnung des Nachfolgeziels hinzuzufügen.",
+      "rationaleEn": "Both rounds confirm tree structure and path rules as one representation and evaluation competence. Round B connects complete branches, selection of disjoint event paths and justified multiplication and addition without adding the conditional reverse inference of the successor goal."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-003",
+      "goalId": "e55edcb9-2184-4a24-890e-70cc91028990",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5ed2682a39e37aef5d5f3c31ce6419011d6c7231e8b96f02a0550471ec42344d",
+      "pageFingerprint": "sha256:92eecede0a5a64ff49a96087810c4091eb23e1dde21f35071270e3fe283ba5b4",
+      "goalReviewContextFingerprint": "sha256:b7660c27a062619b0fbccea7a579e04ac2293703d5a9650da05c6d29d7cdfa83",
+      "finalText": {
+        "titleDe": "Stochastische Simulationen und Monte-Carlo-Verfahren deuten",
+        "titleEn": "Interpret stochastic simulations and Monte Carlo methods",
+        "descriptionDe": "Die lernende Person kann Zufallsexperimente simulieren, Näherungswerte für Wahrscheinlichkeiten gewinnen und Monte-Carlo-Verfahren als stochastische Approximation deuten.",
+        "descriptionEn": "The learner can simulate random experiments, obtain approximate probability values, and interpret Monte Carlo methods as stochastic approximation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.008",
+          "recordDigest": "sha256:5d101757805e2ac2bef08cab369386eac097274f14b77827e7193b921aacdc08"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-008",
+          "recordDigest": "sha256:934e27acf69af5bff1584eeedb345db93c5c545051a4799449de68c7e25e0cdd"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Zufallsexperimente durch wiederholte Zufallsversuche simulieren, relative Häufigkeiten als Näherungswerte für Wahrscheinlichkeiten auswerten und erklären, wie die Anzahl der Durchläufe und zufällige Schwankungen die Monte-Carlo-Näherung beeinflussen.",
+        "proposedDescriptionEn": "The learner can simulate random experiments through repeated trials, use relative frequencies as approximations of probabilities, and explain how the number of trials and random variation affect the Monte Carlo approximation.",
+        "rationaleDe": "Die Ergänzungen aus Runde B sind fachlich berechtigt, beseitigen aber keine fehlende oder falsche Kompetenzbehauptung: „Näherungswerte für Wahrscheinlichkeiten gewinnen“ und „als stochastische Approximation deuten“ fordern schon Gewinnung und Deutung des Näherungsergebnisses. Relative Häufigkeit, unabhängige Wiederholungen, typische Schwankung und Einfluss der Durchlaufzahl werden ausdrücklich als qualitative Evidenz im getrennten V2-Profil verlangt. Die vorgeschlagene längere deutsche und englische Ersetzung verschiebt diese Prüftiefe unnötig in den knappen Zieltext und wird verworfen. Reale Zufallsmittel oder digitale Simulation bleiben gleichermaßen zulässig; formale Konfidenzintervalle werden nicht ergänzt.",
+        "rationaleEn": "Round B's additions are mathematically valid but do not repair a missing or false competence claim: 'obtain approximate probability values' and 'interpret ... as stochastic approximation' already require producing and interpreting the approximation. Relative frequency, independent repetition, typical variation and the effect of trial count are expressly required as qualitative evidence in the separate V2 profile. The proposed longer German and English replacement unnecessarily moves this assessment detail into the concise description and is rejected. Physical random devices and digital simulation remain equally admissible; formal confidence intervals are not added."
+      },
+      "rationaleDe": "Runde A bestätigt den bestehenden zusammenhängenden Anspruch aus Simulation, Wahrscheinlichkeitsnäherung und Deutung als stochastische Approximation. Relative Häufigkeit und zufällige Schwankung präzisieren diesen bereits ausdrücklich beanspruchten Verstehensanteil im V2-Profil. Die knappe, gleichwertige deutsche und englische Formulierung bleibt erhalten; der konkrete Überarbeitungsvorschlag aus Runde B wird ausdrücklich zurückgewiesen.",
+      "rationaleEn": "Round A confirms the existing coherent claim comprising simulation, probability approximation and interpretation as stochastic approximation. Relative frequency and random variation specify this already explicit understanding demand in the V2 profile. The concise and equivalent German and English wording is retained; the concrete revision proposed by Round B is explicitly rejected."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-004",
+      "goalId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9f2f386efc1984aff7bd46586bcc36b682e45a43fcfe356d5128a7e18a2ef23d",
+      "pageFingerprint": "sha256:8eb6ae9fcbec17bc4ccb4696d83e9b44ea39a2a4b8ee8a53c22848a0cd01781f",
+      "goalReviewContextFingerprint": "sha256:6fadbd2e5891a37bbf180fafb132dad023e850ae43979ad7da112cbaf783a88a",
+      "finalText": {
+        "titleDe": "Definitionsmenge einer Funktion bestimmen",
+        "titleEn": "Determine the domain of a function",
+        "descriptionDe": "Die lernende Person kann die Definitionsmenge einer reellwertigen Funktion aus Term, Graph oder Sachkontext bestimmen und Einschränkungen fachsprachlich begründen.",
+        "descriptionEn": "The learner can determine the domain of a real-valued function from a term, graph, or real-world context and justify restrictions using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.013",
+          "recordDigest": "sha256:778deffe58d87d1b4321392e5247432c09637d0d1ba3513a5b697d8bf2dd1f91"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-013",
+          "recordDigest": "sha256:4c70e08913cefa6847d7cdac8b89b2c3b6b6039f9a9eb25da272c29dc863192d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die begründete Bestimmung zulässiger Eingaben aus Term, Graph und Sachkontext. Runde B bindet Ausschlüsse und Grenzen an die jeweilige Darstellung. Der bestehende Zieltext enthält bereits Gegenstand, Handlung und fachliche Begründung; der gebundene Quellenverweis wird nicht als zusätzliche Quellenprüfung ausgegeben.",
+      "rationaleEn": "Both rounds confirm justified determination of admissible inputs from expression, graph and context. Round B binds exclusions and boundaries to the respective representation. The existing description already contains object, action and mathematical justification; the bound source reference is not presented as additional source verification."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-005",
+      "goalId": "741a8120-71ad-5f87-b9d8-be9d778b097b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8f72503f3b029857c53a40d92dc073859386e523160d601150d1bd6d448dbd09",
+      "pageFingerprint": "sha256:779ed66bd43136af777ecdde8b026841b0eda35bc6d710f3b3ffa0df66ae79b6",
+      "goalReviewContextFingerprint": "sha256:d110ae8af63ab864e66e5fc25e979530196436f18bad57542aad788b00152ce1",
+      "finalText": {
+        "titleDe": "Wertemenge einer Funktion bestimmen",
+        "titleEn": "Determine the range of a function",
+        "descriptionDe": "Die lernende Person kann die Wertemenge einer reellwertigen Funktion aus Term, Graph oder Sachkontext bestimmen und die möglichen Funktionswerte begründet angeben.",
+        "descriptionEn": "The learner can determine the range of a real-valued function from a term, graph, or real-world context and state the possible function values with justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.014",
+          "recordDigest": "sha256:c10ef26ba0d38973da647ec9d2d4c2c819b0f567487c31c205e52e69fad60c34"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-014",
+          "recordDigest": "sha256:a05971b1f01b5ad9a58151a1299a15737323a24701f770c6c902b7ddb2e285f4"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Wertemenge als tatsächlich angenommene Ausgaben auf der gegebenen Definitionsmenge. Runde B macht Randzugehörigkeit und Darstellungswechsel konkret beobachtbar. Das ist die Präzisierung derselben begründeten Mengenbestimmung im Evidenzprofil, keine nötige Zieltextänderung.",
+      "rationaleEn": "Both rounds confirm the range as outputs actually attained on the given domain. Round B makes endpoint inclusion and representation changes concretely observable. This specifies the same justified set determination in the evidence profile and does not require a description change."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-006",
+      "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c707033213bbb9524b7b5e7060364d6577063bb373854fe5bf5a1e8f69d74931",
+      "pageFingerprint": "sha256:89ec6867a11fe6db60d86047b08953c10c23fdb795edce7c8c120a13ea4cdbde",
+      "goalReviewContextFingerprint": "sha256:55bfd8b1995eee630526692d44aa9b17a29df6044e2ad034c5aada49f177c564",
+      "finalText": {
+        "titleDe": "Funktionswerte aus Graphen ablesen",
+        "titleEn": "Read function values from graphs",
+        "descriptionDe": "Die lernende Person kann aus Graphen zu gegebenen x-Werten die zugehörigen Funktionswerte sowie zu gegebenen Funktionswerten die zugehörigen x-Werte ablesen.",
+        "descriptionEn": "The learner can read the corresponding function values for given x-values and the corresponding x-values for given function values from graphs."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.016",
+          "recordDigest": "sha256:55551a0b693250a1fad17fef03268c3e6312d4e5490d8810911c812c0bd0431a"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-016",
+          "recordDigest": "sha256:773de35c5a8441664594ca294f2ec156392d8ee8c14591875dd12e9f1b5c3c67"
+        }
+      },
+      "rationaleDe": "Beide Leserichtungen koordinieren dieselbe Beziehung (x,f(x)) im Graphen; beide Runden bestätigen den unveränderten Zieltext. Runde B erfasst neben mehreren und fehlenden Urbildern auch konstante Abschnitte. Die separate Evidenz prüft vollständiges Ablesen und Skalierung ohne eine algebraische Gleichungslösekompetenz hinzuzufügen.",
+      "rationaleEn": "Both reading directions coordinate the same relation (x,f(x)) in a graph; both rounds confirm the unchanged description. Round B covers constant segments as well as multiple and absent preimages. The separate evidence checks complete reading and scale without adding algebraic equation solving."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-007",
+      "goalId": "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca6e3decca27f03b544b155bb2689eedbbc945a4605ad562ef5ae169903d065e",
+      "pageFingerprint": "sha256:04d0e95e0aa1b31796e07259f37bcce16e01eb4e193574ddf31cb2b84da5558a",
+      "goalReviewContextFingerprint": "sha256:5fb3fdcefdcd054ff4ae7606840b290bff98ba2fe4f7c82896a99c4c1dce4e9d",
+      "finalText": {
+        "titleDe": "Parameter linearer Funktionen deuten",
+        "titleEn": "Interpret parameters of linear functions",
+        "descriptionDe": "Die lernende Person kann bei linearen Funktionen die Bedeutung von Steigung und y-Achsenabschnitt im Graphen und in einfachen Sachsituationen deuten.",
+        "descriptionEn": "The learner can interpret the meaning of slope and y-intercept in graphs and simple real-world situations for linear functions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.019",
+          "recordDigest": "sha256:d6f5051e09db4423bbd5d04880baf669db01a9240c6790a4646f362e7b7fd6db"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-019",
+          "recordDigest": "sha256:744b46a1f685cbd8e9666522dada49cbe2a4d592b1e4c0e2074292f34623d5b1"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Steigung und y-Achsenabschnitt als zusammengehörige Parameter eines linearen Modells. Runde B deutet Vorzeichen, Größen und sachliche Einheiten als Änderungsrate und Wert bei x=0. Der aktuelle Text fordert diese Deutung bereits graphisch und in einfachen Sachzusammenhängen.",
+      "rationaleEn": "Both rounds confirm slope and y-intercept as related parameters of one linear model. Round B interprets signs, magnitudes and contextual units as rate of change and value at x=0. The current description already requires that interpretation graphically and in simple contexts."
+    },
+    {
+      "decisionId": "math-b033-current-carryover-8-synthesis-20260905-v1-decision-008",
+      "goalId": "3f4d1340-1fbb-5109-b9c2-08fc61303133",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7b6b20e159f52640fa4ba7f7d7724c92838e563e361fe9dfe456f9e271fa156a",
+      "pageFingerprint": "sha256:fef61d0006819c46903e4c412848de47d79ebfffe2bbb5cd2594e68060ae5ce1",
+      "goalReviewContextFingerprint": "sha256:a127a6fdbd0657a99b80e5c4d71b6dd0ff8cc4c3f0c7e9a003d5fe7dc9af07e3",
+      "finalText": {
+        "titleDe": "Darstellung erstellen und beschriften",
+        "titleEn": "Create and label a representation",
+        "descriptionDe": "Die lernende Person kann eine Darstellung aus gegebenen Informationen erstellen (z. B. Wertetabelle, Funktionsgraph) und Achsen, Einheiten und Parameter korrekt beschriften.",
+        "descriptionEn": "The learner can create a representation from given information (e.g. value table, function graph) and label axes, units and parameters correctly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b033-round-a-openai-gpt5-20260905.020",
+          "recordDigest": "sha256:54150d61668defdfa802289f0f969d19f793a53eb2e244fec917c3acccd45b83"
+        },
+        "second": {
+          "recordId": "mathematik-b033-round-b-record-020",
+          "recordDigest": "sha256:d3eb25e7e145d84fd4e402968e55560742db78716b090a3b104903a7536d3872"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Erstellen und fachgerechtes Beschriften als zusammenhängende Darstellungsleistung. Runde B verlangt informationsgetreue Werte und Beziehungen sowie lesbare Größen, Einheiten und Parameter. Die Auswahl einer Darstellungsform bleibt die bereits getrennte Voraussetzung; der geeignete Zieltext wird beibehalten.",
+      "rationaleEn": "Both rounds confirm construction and accurate labelling as one coherent representation performance. Round B requires faithful values and relationships and readable quantities, units and parameters. Choosing a representation remains the already separate prerequisite; the adequate description is retained."
+    }
+  ],
+  "manifestFingerprint": "sha256:7a806f95b0668abad5eebefda543afc954a60b86c2c4be0ed1aa0f14602e1208"
+}

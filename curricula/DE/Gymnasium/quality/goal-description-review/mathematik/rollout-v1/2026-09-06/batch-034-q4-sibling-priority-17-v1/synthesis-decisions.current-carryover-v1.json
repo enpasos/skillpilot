@@ -1,0 +1,524 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b034-current-17-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-math-b034-current-pair",
+  "synthesizedAt": "2026-09-06T07:19:52.588Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906",
+    "batchManifestDigest": "sha256:7a88189ec797c4d2ed2c9df3195bf1df701bb352ac4aa1c4f66968717706923d",
+    "configDigest": "sha256:9684657aae2698de0b60c9ffb84f50a4cedc5e9836fe2dd60451c96fc742255b",
+    "bundleFingerprint": "sha256:0ae6a9d60ec3d071b9569f386f4c99034030b1010e4eb2a7dfde83b8b073719e",
+    "bookDigest": "sha256:9e70d1df1ec12585b7a5b88df8ada8243b78821b9404fdf6bb85635d2dc1fd60",
+    "reviewInputFingerprint": "sha256:fcf4a34eb77aa0f2fea4ab22f7680aa79360fa5115829fc09bdefd9338e277ea",
+    "dualSummaryDigest": "sha256:3f8cd6c2135e5a06e4cf3f75e991ebee85c9dbd3f732c2c602776f83e2f4241a",
+    "canonicalLandscapeDigest": "sha256:d4c9804d2027d5dc81ad59cff31b9347bdd5f01294028f75b79b2c0542246b66"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-a",
+      "campaignDigest": "sha256:eb3e33326f29d9499d3e917ad20d5f63e7ff2e076180d7e5ab25599b16d75776",
+      "roundId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:fcf4a34eb77aa0f2fea4ab22f7680aa79360fa5115829fc09bdefd9338e277ea",
+      "batchId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:211a1122a4e08b79314fd7cf1a93bf63c3d5c5acf08129f8d8523138719ebb18",
+      "runId": "math-b034-blind-a-20260906",
+      "runManifestDigest": "sha256:d41365878312c9b87057390782d738c7bfc4e49793bd3ad5cebc4f3bbd7ea066",
+      "resultsDigest": "sha256:7760f82a64eb8fe8f83c24f7cbf9bdb8d4bcf35a271b7d815692ab16a8fa27e8"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-b",
+      "campaignDigest": "sha256:e65e9f70f363fb8fd6f778ee8e51e7dc554a5a1a71f9e32969b8a1f0282f3fe3",
+      "roundId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:fcf4a34eb77aa0f2fea4ab22f7680aa79360fa5115829fc09bdefd9338e277ea",
+      "batchId": "mathematik-rollout-v1-batch-034-q4-sibling-priority-17-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b39150206c570faa89016b2075ccc6f9f21dec7aef0fba692a72db74b81b2fa1",
+      "runId": "math-b034-blind-b-20260906",
+      "runManifestDigest": "sha256:e1aa837da368cf1b1e099dde62df373187a376ea80e45608badd3624aa7b8065",
+      "resultsDigest": "sha256:3ffe84d6b5b401822ab92c771bb738670fb871399b6d6cb7fd469a0a2def8c9a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-001",
+      "goalId": "5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9aad2f143f255e421b122e8471da4540c1a6e089272d2bc4bee6263a2d715dfe",
+      "pageFingerprint": "sha256:6f813735fd5f1c51015fa7d270db167c0e35fa677f43186a8bc7fdc52fffbb4f",
+      "goalReviewContextFingerprint": "sha256:db02f7bf6bd03556284ffdb58407de9c70669a9fd95965547b0c7939ca8d5ad2",
+      "finalText": {
+        "titleDe": "Parameter für vorgegebene Nullstellen bestimmen",
+        "titleEn": "Determine parameters for given zeros",
+        "descriptionDe": "Die lernende Person kann Parameterwerte berechnen, für die eine Scharfunktion eine vorgegebene Nullstelle besitzt, und die Lösung algebraisch begründen.",
+        "descriptionEn": "The learner can calculate parameter values for which a family function has a given zero and justify the solution algebraically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
+          "recordDigest": "sha256:eaf443688706526722a5e72ab1c439660a43cb8a286c4cc3ed47d83cea877e1f"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
+          "recordDigest": "sha256:75708bba1f8cec28372b19d3cd207804d55cdaf8e11a6697dc4022cfcb03dfba"
+        }
+      },
+      "rationaleDe": "Die vorgegebene Nullstelle und der gesuchte Parameter sind ausdrücklich unterschieden; die algebraische Begründung hält Lösungsbedingung und Zulässigkeit zusammen. Beide aktuellen unabhängigen Runden bestätigen KEEP. Eine allgemeine Parameterbereichsanalyse wird nicht hinzugenommen.",
+      "rationaleEn": "The prescribed zero and unknown parameter are explicitly distinguished; algebraic justification connects the solution condition with admissibility. Both current independent rounds confirm KEEP. General parameter-range analysis is not added."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-002",
+      "goalId": "6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2697753e86d3f69b9a24f114796458d61faba001be6d28a883535b9fef961999",
+      "pageFingerprint": "sha256:e08bf322c034f55c3c9630503071b2b891ecf6d2b50ddfc33bea64879d005e40",
+      "goalReviewContextFingerprint": "sha256:d3cc9bc67bfa5299f92752ad2f30e794ef64bba5efcd3e34e17c738b281d7cab",
+      "finalText": {
+        "titleDe": "Parameter zur Modellierung von Sachsituationen bestimmen",
+        "titleEn": "Determine parameters for modeling real-world situations",
+        "descriptionDe": "Die lernende Person kann einen Parameter einer Funktionenschar so bestimmen, dass eine vorgegebene Kontextbedingung erfüllt ist.",
+        "descriptionEn": "The learner can determine a parameter of a family of functions so that a given contextual condition is fulfilled."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
+          "recordDigest": "sha256:076420e49a7e047167308e1ea8873e998f1a79113bd1b5c9253c203a47659209"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
+          "recordDigest": "sha256:0d962441e010cc7ab01219b0584a55b3b8dbfd167836fecc4bb8c8e66e883aad"
+        }
+      },
+      "rationaleDe": "Die Erfüllung einer Sachbedingung durch einen Parameter ist ein klarer Modellierungsschritt mit Kontextübersetzung und Rückbezug. Beide Runden behalten den Text bei. Freie Funktionsklassenwahl oder ein vollständiger Modellierungskreislauf wären zusätzliche Anforderungen.",
+      "rationaleEn": "Meeting a contextual requirement through a parameter is a clear modeling step involving translation and interpretation. Both rounds retain the wording. Free selection of function classes or a complete modeling cycle would be additional requirements."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-003",
+      "goalId": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:16ed5874275c5dd5ab3353e7f5644dd62b8b491f37a1d5c087fb80b6a8279379",
+      "pageFingerprint": "sha256:18a779b6ba00cd1681af463d5f6855f899c82a70505ceebffd519e8d436e7359",
+      "goalReviewContextFingerprint": "sha256:f76bfa214415b501e43ac233a97b767b661c1ae99f6c51a15fcb8b144a344e4b",
+      "finalText": {
+        "titleDe": "Parameterbereiche für Lösungsexistenz analysieren (LK)",
+        "titleEn": "Analyze parameter ranges for solution existence",
+        "descriptionDe": "Die lernende Person kann für eine Funktionenschar begründen, für welche Parameterbereiche eine geforderte Lösung existiert.",
+        "descriptionEn": "The learner can justify for which parameter ranges of a family of functions a required solution exists."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "recordDigest": "sha256:51c439c55bededd70ed0e9cc4662d7fb7c993f66fec4d921cbab463cb601e20d"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "recordDigest": "sha256:d2b5b15ea90d6f2addf6505e825b9fcd176c054bfb768c9c4f9c7f40e3709971"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die begründete Existenzanalyse ganzer Parameterbereiche einschließlich ihrer Grenzen als eigenständigen, methodenneutralen Kompetenzkern. Der LK-Titel wird nicht gegen die mitgelieferte GK/LK-Projektion als zusätzliche Ausschlussregel interpretiert.",
+      "rationaleEn": "Both rounds confirm reasoned existence analysis over parameter ranges, including boundaries, as a distinct method-neutral competence. The LK title is not interpreted as an additional exclusion rule contrary to the supplied GK/LK projection."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-004",
+      "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9b36c9b11faccb8e43fb1df9eca383528a37845577c9dc0b499033a0d1b645f7",
+      "pageFingerprint": "sha256:35327333bd9c3db0125c14a6b35d1e434c7c9d1c79389cf5781819b8688a6a91",
+      "goalReviewContextFingerprint": "sha256:16e03e97b4cf358d7be1896967736bb4e329f4390404e88938cee917649897bd",
+      "finalText": {
+        "titleDe": "Beweis durch Kontraposition",
+        "titleEn": "Prove by contrapositive",
+        "descriptionDe": "Die lernende Person kann eine Implikation $A \\Rightarrow B$ durch den Beweis der Kontraposition $\\neg B \\Rightarrow \\neg A$ beweisen und die logische Äquivalenz begründen.",
+        "descriptionEn": "The learner can prove an implication $A \\Rightarrow B$ by proving the contrapositive $\\neg B \\Rightarrow \\neg A$ and justify the logical equivalence."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-81527aac-1abf-588d-acae-b82a86564b06",
+          "recordDigest": "sha256:c1fb06571dfb354d4100359e2aab0f5e70f6ce3e01a0d33d28d8e3a0fe4283dd"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-81527aac-1abf-588d-acae-b82a86564b06",
+          "recordDigest": "sha256:66bc8ccd6d341c2271af61fb32495630706bf0e2614d750547804fbb49bc7d41"
+        }
+      },
+      "rationaleDe": "Korrekte Kontraposition und Rechtfertigung ihrer logischen Äquivalenz sind Teile derselben Beweismethode; beide Runden bestätigen KEEP. Elementare allgemeine Argumente erhalten den Kern auch für die angezeigte Sek-I-Projektion. Der abgelehnte pauschale Quellenanker wird hier nicht rehabilitiert.",
+      "rationaleEn": "Correct contraposition and justification of its logical equivalence belong to the same proof method; both rounds confirm KEEP. Elementary general arguments retain this core for the displayed lower-secondary projection. The rejected blanket source anchor is not reinstated."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-005",
+      "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d5f0b47e302a332d037720c0dc7b62bbf250c5a16245fe2addb2288da704e0b",
+      "pageFingerprint": "sha256:1f6e906f104e5c239bbd44dbfd44968cd17ed508e31012f007827c4d2d90dfd8",
+      "goalReviewContextFingerprint": "sha256:4b5d1ac23eef9df40c257381a20a6e61d80a7b9980672000572930e28d7aaef3",
+      "finalText": {
+        "titleDe": "Beweis mit Fallunterscheidung",
+        "titleEn": "Prove by cases",
+        "descriptionDe": "Die lernende Person kann eine Aussage durch vollständige Fallunterscheidung beweisen und sicherstellen, dass alle Fälle abgedeckt sind.",
+        "descriptionEn": "The learner can prove a statement by a complete case distinction and ensure that all cases are covered."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-9ea981ed-8b78-502c-b316-01d8cb885814",
+          "recordDigest": "sha256:f35f0d9c5ac6978a4e5ea307804ea0630109e5200b65315c1cf1b84db76e2e6f"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-9ea981ed-8b78-502c-b316-01d8cb885814",
+          "recordDigest": "sha256:9b6f046629c4b8c519dfa2f79e7c24d3e51b9e1848b3cf24b345a7bdfd6b0310"
+        }
+      },
+      "rationaleDe": "Vollständige Fallabdeckung ist bereits ausdrücklich Teil der Beweiskompetenz. Beide Runden bestätigen KEEP: Die einzelnen Fallargumente und ihr gemeinsamer Geltungsbereich bilden einen Beweis, keine unabhängigen neuen Routinen. Es wird keine Pflicht zur paarweisen Disjunktheit erfunden.",
+      "rationaleEn": "Exhaustive case coverage is already explicit in the proof competence. Both rounds confirm KEEP: individual case arguments and their combined domain form one proof, not separate new routines. Pairwise disjointness is not invented as a requirement."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-006",
+      "goalId": "670286aa-c29d-560c-8fca-755e35f5d437",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9be3c87530949cbfddff48aa487a1816c1c1c17b476d8b50b80314d36aa4c3f4",
+      "pageFingerprint": "sha256:fe61c2225282ffe52770261a3029e2ea3de8f643e64b69ee6771d4e3fd6755ec",
+      "goalReviewContextFingerprint": "sha256:88f922b00902f785e43b29147aaa555d47058253cdb9b79177acb0a5b82a66ae",
+      "finalText": {
+        "titleDe": "Variablen und Parameter definieren",
+        "titleEn": "Define variables and parameters",
+        "descriptionDe": "Die lernende Person kann Variablen und Parameter passend wählen, ihre Bedeutung angeben und ggf. Wertebereiche festlegen.",
+        "descriptionEn": "The learner can choose suitable variables and parameters, state their meaning and, if needed, specify ranges of values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-670286aa-c29d-560c-8fca-755e35f5d437",
+          "recordDigest": "sha256:a99c586dcdef4ac8054c7f6023edb65948cd8172a07e6cd84aadcc5f12dd821f"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-670286aa-c29d-560c-8fca-755e35f5d437",
+          "recordDigest": "sha256:4fa8853e37d72eb10fad1951ffe0eaa4690d2aecaca48fef843373fc89e2e223"
+        }
+      },
+      "rationaleDe": "Symbolwahl, Größenbedeutung und erforderliche Wertebereiche ergeben gemeinsam wohldefinierte Modellgrößen. Beide Runden behalten den zweisprachigen Text bei; Rollenwechsel bleiben an die Modellfrage gebunden. Das vollständige Aufstellen oder Lösen eines Modells wird nicht zusätzlich gefordert.",
+      "rationaleEn": "Symbol choice, quantity meanings and required ranges jointly define model quantities. Both rounds retain the bilingual text; role changes remain tied to the modeling question. Building or solving an entire model is not additionally required."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-007",
+      "goalId": "c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:65d83b665ac768fa878b32c991a6b32e22ae8b1a05378fa74ac799ea804743ec",
+      "pageFingerprint": "sha256:b2932409700fe5d449ca99df3f6c070a664cdf6f051375ff403e33d18dc7c091",
+      "goalReviewContextFingerprint": "sha256:652c2bfe6d7ecd4ec8a8275d4b5518945ac458c2d1a9e11a8d14dd31689ea331",
+      "finalText": {
+        "titleDe": "Rand- und Anfangsbedingungen festlegen",
+        "titleEn": "Set boundary and initial conditions",
+        "descriptionDe": "Die lernende Person kann Rand- bzw. Anfangsbedingungen oder Nebenbedingungen aus dem Kontext ableiten und im Modell festhalten.",
+        "descriptionEn": "The learner can derive boundary or initial conditions (or other constraints) from context and record them in the model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
+          "recordDigest": "sha256:42da65491f085398b41f349fb4ebd025a97f2e7c317950569ece52749d16015b"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
+          "recordDigest": "sha256:d244be1905519deb74ad5d94a7075cc5435b8ae552f55e543a4843bc35e8017c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das Ableiten und Notieren von Kontextbedingungen als eine Übersetzungsleistung. Rand-, Anfangs- und Nebenbedingungen sind mögliche Formen dieses Schritts; daraus folgen weder mehrere neue Lösungsverfahren noch eine Pflicht zur Differentialgleichung.",
+      "rationaleEn": "Both rounds confirm deriving and recording contextual constraints as one translation performance. Boundary, initial and other constraints are possible forms of this step; they imply neither several new solving procedures nor mandatory differential equations."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-008",
+      "goalId": "5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:74e4df691b1830e52b3f4a42a4df904cf05c3e87b88b9c8a9a294a57188adefe",
+      "pageFingerprint": "sha256:7ae634d812dcf19c7f420fdebd4432d90a46456bb3be059159ca953b545d993e",
+      "goalReviewContextFingerprint": "sha256:93c4f88a5eb93602c8ae6eacaf15334bb793db137754f3b354509edff442c970",
+      "finalText": {
+        "titleDe": "Modell vollständig notieren",
+        "titleEn": "Write the model completely",
+        "descriptionDe": "Die lernende Person kann das Modell vollständig und verständlich notieren (Definitionen, Variablen, Einheiten, Bedingungen), sodass es bearbeitbar ist.",
+        "descriptionEn": "The learner can write the model completely and clearly (definitions, variables, units, conditions) so that it can be processed."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
+          "recordDigest": "sha256:f386f82b37ae7d1c79d2f9856403623f7d348996fa128aa01fad8d58c789f6f5"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
+          "recordDigest": "sha256:5110edcb3cda2a7ce27380bc8060edd9e5583554daade968f57fb2b59a428af3"
+        }
+      },
+      "rationaleDe": "Die vollständige, verständliche Modellnotation integriert bereits gewonnene Bestandteile zu einer bearbeitbaren Darstellung. Beide Runden bestätigen KEEP und die Abgrenzung gegen erneute Herleitung oder Lösung des ganzen Modells. Die etwas technische englische Wortwahl ist kein fachlicher Mangel.",
+      "rationaleEn": "Complete, clear model notation integrates previously developed components into a workable representation. Both rounds confirm KEEP and distinguish this from deriving or solving the entire model again. The slightly technical English wording is not a substantive defect."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-009",
+      "goalId": "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:04fb571af9093a71313af2ef9614321ef3394e71d606b6974a3bf8288a951249",
+      "pageFingerprint": "sha256:3863429b2f3cf67d44c444a6e5fc6b153bc30222a37300e0d2e747a6052ea7c2",
+      "goalReviewContextFingerprint": "sha256:5e94638ffa337422da3526ffb17104fc53b57385f21f25df7c16dd9d365e3862",
+      "finalText": {
+        "titleDe": "Probe durch Einsetzen durchführen",
+        "titleEn": "Check by substitution",
+        "descriptionDe": "Die lernende Person kann Ergebnisse durch Einsetzen in Ausgangsgleichungen oder -bedingungen überprüfen und Abweichungen erklären.",
+        "descriptionEn": "The learner can verify results by substitution into original equations or conditions and explain deviations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+          "recordDigest": "sha256:53460f22bbb59e178b7d157d75fa24cb4645a5423cbd85195940c3f891f859a9"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+          "recordDigest": "sha256:8f91e5b9285180dd66c249e7d1485db042a4f8b1b2db3ede1aadd2c990b99285"
+        }
+      },
+      "rationaleDe": "Die Probe wird ausdrücklich auf Ausgangsgleichungen oder -bedingungen bezogen und verlangt eine Erklärung von Abweichungen. Beide Runden bestätigen KEEP. Das Profil kann exakte Erfüllung, unzulässige Kandidaten und Näherungsabweichungen unterscheiden, ohne benachbarte Kontrollverfahren in den Text aufzunehmen.",
+      "rationaleEn": "The check explicitly uses original equations or conditions and requires discrepancies to be explained. Both rounds confirm KEEP. The profile can distinguish exact satisfaction, inadmissible candidates and approximation residuals without importing neighboring checking procedures into the wording."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-010",
+      "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7a7ebb38273e185f937c293e77fafb72ff438d348d3f1d5412137cd22ef3f68a",
+      "pageFingerprint": "sha256:79f6f1833f7b1f8b4f758684df70a2023d78f8c2b9ae83330dd77625609e951b",
+      "goalReviewContextFingerprint": "sha256:85a3bbba6aba25235bd1fddcd9040e5164f46aa16ffdf86c2c15b0454a35f604",
+      "finalText": {
+        "titleDe": "Einheiten- und Dimensionscheck anwenden",
+        "titleEn": "Apply a units and dimensions check",
+        "descriptionDe": "Die lernende Person kann Einheiten bzw. Dimensionen prüfen und so grobe Fehler (z. B. falsche Skalierung) erkennen.",
+        "descriptionEn": "The learner can check units or dimensions and thus detect coarse errors (e.g. wrong scaling)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+          "recordDigest": "sha256:2683f94ff960e8884b7c454f97f374c848240f0b373e8f8b083097a4c59d8e2e"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+          "recordDigest": "sha256:c5b3e20e15aa9d2435dbb6e7c52cb45c006bbc144e5a0f38d705e24b585caf47"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die begrenzte Einheiten- und Dimensionskontrolle. Einheitenumrechnung kann Skalierungsfehler sichtbar machen, während Dimensionskonsistenz keinen beliebigen dimensionslosen Faktor bestätigt. Diese Reichweitengrenze ist in der Evidenz zu operationalisieren; der Text behauptet keine universelle Fehlererkennung.",
+      "rationaleEn": "Both rounds confirm bounded unit and dimensional checking. Unit conversion can expose scaling errors, whereas dimensional consistency does not confirm an arbitrary dimensionless factor. This limit belongs in the evidence; the wording does not claim universal error detection."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-011",
+      "goalId": "1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e4520d8f075838f8d676751b1b989d9672485fa615098082bded406d7bc97aad",
+      "pageFingerprint": "sha256:f5ea1f4588fea821f95e8203f5df1d48f1a8fb8cb82826cf579c95a220cc96dc",
+      "goalReviewContextFingerprint": "sha256:80bf9b5980da6f1f8e73f13ade6335a6f859b586a6661efe719dd0025946a772",
+      "finalText": {
+        "titleDe": "Kontrollrechnung mit Alternativmethode",
+        "titleEn": "Cross-check with an alternative method",
+        "descriptionDe": "Die lernende Person kann Ergebnisse mit einer alternativen Rechnung oder einer Abschätzung kontrollieren und die Übereinstimmung bewerten.",
+        "descriptionEn": "The learner can cross-check results with an alternative computation or estimate and evaluate agreement."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c",
+          "recordDigest": "sha256:845fbd69a4becdc47baed2f4d6c518eb75d72435c02cf5fc9ed62e352089295b"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c",
+          "recordDigest": "sha256:339529e8ba95b4e40d512aea0c8fc601cc4d88358e0308a9f446d544b8ac0f3f"
+        }
+      },
+      "rationaleDe": "Eine alternative Rechnung oder begründete Abschätzung mit Bewertung der Übereinstimmung bildet eine Kontrollkompetenz. Beide Runden bestätigen KEEP und unterscheiden exakte Bestätigung von bloßer Vereinbarkeit mit Schranken. Weder alle Kontrollmethoden noch eine nachgelagerte Fehlerbehebung werden zur Pflicht.",
+      "rationaleEn": "An alternative computation or justified estimate with assessment of agreement forms one checking competence. Both rounds confirm KEEP and distinguish exact confirmation from compatibility with bounds. Neither every checking method nor subsequent error correction becomes mandatory."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-012",
+      "goalId": "e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5a7dcba69c40a6fdc73e934a92809c68284d3d6a9003061ef3f84bf44022a212",
+      "pageFingerprint": "sha256:4ee8b5641459d5001eab70dc3a77306543027b2818ecf2826652545fae569a04",
+      "goalReviewContextFingerprint": "sha256:5f0265c601bd5a8088929963ad472c257ea28b5d7c1a2bab621f4b42528ac2be",
+      "finalText": {
+        "titleDe": "Verfahren begründet auswählen (LK)",
+        "titleEn": "Choose a method with justification",
+        "descriptionDe": "Die lernende Person kann für eine Aufgabe ein Verfahren begründet auswählen (z. B. symbolisch vs. numerisch, Tool vs. Hand) und die Entscheidung begründen.",
+        "descriptionEn": "The learner can choose a method for a task with justification (e.g. symbolic vs. numerical, tool vs. manual) and explain the decision."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
+          "recordDigest": "sha256:ae9ea2e283fe00f4a283fa2fd4e649e20d39fb3dfffa21ca82ad7dc773b3fdcf"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
+          "recordDigest": "sha256:92f5399ec3eca389fcc761ca55591c5156781b47a0b73281f1d5275ddcd40fbd"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die begründete Verfahrenswahl bei. Aufgabenstruktur, Voraussetzungen und benötigte Ergebnisqualität konkretisieren die Wahl zwischen zulässigen Wegen; die sprachliche Doppelung von Begründen ist kein echter Kompetenzmangel. Keine Software oder numerische Routine wird vorgeschrieben.",
+      "rationaleEn": "Both rounds retain justified method selection. Task structure, prerequisites and required result quality specify the choice among valid approaches; repeated wording about justification is not a substantive competence defect. No software or numerical routine is prescribed."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-013",
+      "goalId": "619f29f5-7f44-5654-9692-01b250997d52",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:14d389e4d2af57441084e542f1194b429b75d4b7e7b5a3eccbb1ea7ec3c2805a",
+      "pageFingerprint": "sha256:6ed7da4f1982c8f7409dd171adf83af6a503452337c9a1c3ad18e0a15cf32e4f",
+      "goalReviewContextFingerprint": "sha256:28065ca8e56ad3f03b19318ed7d1534ed1edb5ec78003a6bc828f74eb71a4e47",
+      "finalText": {
+        "titleDe": "Entscheidung dokumentieren und bewerten (LK)",
+        "titleEn": "Document and evaluate the decision",
+        "descriptionDe": "Die lernende Person kann die gewählte Vorgehensweise dokumentieren, Grenzen benennen und die Entscheidung im Nachhinein bewerten.",
+        "descriptionEn": "The learner can document the chosen approach, name limitations and evaluate the decision afterwards."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-619f29f5-7f44-5654-9692-01b250997d52",
+          "recordDigest": "sha256:77809fb5049e42a3464810f03695c5d782725bf94a98110c2522046fa5b9c432"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-619f29f5-7f44-5654-9692-01b250997d52",
+          "recordDigest": "sha256:baf92ad2d0cc30fd8777360645ab751cdd9e38ac864d9ccbd044a8a7f08937bf"
+        }
+      },
+      "rationaleDe": "Dokumentation, Grenzen und rückblickende Bewertung betreffen dieselbe bereits getroffene Verfahrensentscheidung. Beide Runden bestätigen die Abgrenzung gegen vorgelagerte Auswahl und nachgelagerte allgemeine Optimierung. Der knappe zweisprachige Text muss kein Protokollschema festlegen.",
+      "rationaleEn": "Documentation, limitations and retrospective evaluation concern the same prior method decision. Both rounds confirm its distinction from prior selection and subsequent general optimization. The concise bilingual wording need not prescribe a reporting template."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-014",
+      "goalId": "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e9d7f547f58fbd95c7a3e22481047b0e8c5658fdf1c7ba3f9984c7666836ffa9",
+      "pageFingerprint": "sha256:be78db0500aa29094287e5523d05ec9ac0e6211453dea587241b0caf6e532cf8",
+      "goalReviewContextFingerprint": "sha256:82667a8f110bb6f928d98a9d4918b0e6cddba79a8d90fbdc7afa0efd6c710584",
+      "finalText": {
+        "titleDe": "Auf Rückfragen eingehen",
+        "titleEn": "Respond to questions",
+        "descriptionDe": "Die lernende Person kann auf Rückfragen eingehen, Missverständnisse klären und die eigene Erklärung gezielt anpassen.",
+        "descriptionEn": "The learner can respond to questions, clarify misunderstandings and adjust their explanation deliberately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+          "recordDigest": "sha256:b32174d8ee4fc0ab8f168ded219dec7cfe0724e2568ab4c9f6ea6953b89e12a3"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+          "recordDigest": "sha256:d839bf7d363786c339495376d0d9a4b27c5bf077f2723f569da8fc7269954d7c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen eine zusammenhängende mathematische Kommunikationsleistung: Rückfrage verstehen, Missverständnis klären, Erklärung gezielt anpassen. Der fachliche Kontext begrenzt die Leistung; allgemeine Gesprächsgewandtheit reicht nicht. Konkrete mathematische Rückfragen gehören in die Evidenz statt in eine erweiterte Beschreibung.",
+      "rationaleEn": "Both rounds confirm a coherent mathematical communication performance: understand the question, clarify the misunderstanding and deliberately adapt the explanation. Subject context bounds the performance; general conversational fluency is insufficient. Concrete mathematical questions belong in the evidence rather than an expanded description."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-015",
+      "goalId": "75db9a04-d346-5968-953b-b20a8aea56c3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:910e6481ef5d964e5626aefdf006aed1bf37345e47acbfc866ceb5c5a3f97d93",
+      "pageFingerprint": "sha256:eb04c0f61558b6286ec7de3acc4b251b5137fcccb77ec3fc0a4a47951c612d5c",
+      "goalReviewContextFingerprint": "sha256:f77eacf73f075e41708154b580f151bf13e6d44e896b49ba95931429f82b94c0",
+      "finalText": {
+        "titleDe": "Medien passend auswählen",
+        "titleEn": "Choose appropriate media",
+        "descriptionDe": "Die lernende Person kann passende Medien auswählen (Tafel, Folie, digitales Tool) und deren Einsatz für Verständlichkeit begründen.",
+        "descriptionEn": "The learner can choose suitable media (board, slides, digital tool) and justify their use for clarity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-75db9a04-d346-5968-953b-b20a8aea56c3",
+          "recordDigest": "sha256:a77b89c314de3397b00db332f8871f974e5a30445da735f71e3ddc5a79f5d47f"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-75db9a04-d346-5968-953b-b20a8aea56c3",
+          "recordDigest": "sha256:c7ccc5bd8bb943bc544654cb19458b96f5298b38555292cd76d6ac605f6a5c5e"
+        }
+      },
+      "rationaleDe": "Die Auswahl eines Mediums wird bereits an Verständlichkeit und Begründung gebunden. Beide Runden bestätigen KEEP. Mathematische Beziehungen und Darstellungszweck bestimmen die Evidenz; weder Digitalpräferenz noch Beherrschung sämtlicher genannter Medien oder einer bestimmten Software werden hinzuerfunden.",
+      "rationaleEn": "Media selection is already tied to clarity and justification. Both rounds confirm KEEP. Mathematical relationships and representational purpose determine the evidence; neither a preference for digital tools nor mastery of all listed media or particular software is invented."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-016",
+      "goalId": "a111f535-ff21-5953-90f6-bee81d61b186",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ee7fbbecd04995739062c3b7c966432807c60744610d334637a9a8f48e55b348",
+      "pageFingerprint": "sha256:0a3b076fa2d3e961cae1770fc05f804913a49ee4da4bb0404a2c6fcea4a034e0",
+      "goalReviewContextFingerprint": "sha256:47ed7858026c46d01954e512d101ffcdef29e338698f70aaeb2d729f526bd858",
+      "finalText": {
+        "titleDe": "Definitionen und Sätze präzise nutzen (LK)",
+        "titleEn": "Use definitions and theorems precisely",
+        "descriptionDe": "Die lernende Person kann Definitionen und Sätze präzise verwenden, Voraussetzungen prüfen und sauber zitieren bzw. anwenden.",
+        "descriptionEn": "The learner can use definitions and theorems precisely, check prerequisites and apply or cite them cleanly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-a111f535-ff21-5953-90f6-bee81d61b186",
+          "recordDigest": "sha256:cdf046c4304b05ff9a9afb3d3d65532daffcdd9f6500772cf0e7bad114c12d4c"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-a111f535-ff21-5953-90f6-bee81d61b186",
+          "recordDigest": "sha256:dec886fe060819db16529e333bb23dadeaefba1d8b60643efcf818f207ad4c55"
+        }
+      },
+      "rationaleDe": "Definitionen und Sätze werden als unterschiedliche mathematische Objekte präzise verwendet, mit Voraussetzungsprüfung und gültiger Schlussrichtung. Beide Runden bestätigen eine zusammenhängende Präzisionskompetenz, nicht einen zusätzlichen Inhaltskanon oder mehrere neue Beweisverfahren.",
+      "rationaleEn": "Definitions and theorems are used precisely as distinct mathematical objects, with premise checking and valid inference direction. Both rounds confirm one coherent precision competence, not an additional content canon or several new proof procedures."
+    },
+    {
+      "decisionId": "math-b034-current-17-synthesis-20260906-v1-decision-017",
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:57bc532f40663010f919d4a624e6d78c912f48827b4adbc309ffc6361509c7a5",
+      "pageFingerprint": "sha256:03f8b5d51391c162bbca89e35fe0d16d9b6ac1114a2d3a6d7cb19cf1fd603ecd",
+      "goalReviewContextFingerprint": "sha256:a3fceefa89d2a03edf8308af4667000b1f7679d2f630e83df171f45accd2169d",
+      "finalText": {
+        "titleDe": "Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)",
+        "titleEn": "Develop a decision rule for a complex problem",
+        "descriptionDe": "Die lernende Person kann für eine komplexere Problemstellung eine mathematisch begründete Entscheidungsregel formulieren.",
+        "descriptionEn": "The learner can formulate a mathematically justified decision rule for a more complex problem."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b034-blind-a-20260906-613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+          "recordDigest": "sha256:b3427743892657bfaceab635fe0e6eed9ef2a1889890d0693e1a973c5c674f07"
+        },
+        "second": {
+          "recordId": "math-b034-blind-b-20260906-613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+          "recordDigest": "sha256:eaff4fc74687ab580e173035fcfc97236761988bb05edd90b45dbf0e4b7ee3a2"
+        }
+      },
+      "rationaleDe": "Eine mathematisch begründete, anwendbare Entscheidungsregel ist das ausdrücklich beanspruchte Produkt. Beide Runden bestätigen KEEP; Kriterien, Zulässigkeit und Grenzfälle konkretisieren diesen Prozess. Die statistischen Voraussetzungen verengen das Ziel nicht stillschweigend auf einen bestimmten Hypothesentest.",
+      "rationaleEn": "A mathematically justified, executable decision rule is the explicitly claimed product. Both rounds confirm KEEP; criteria, admissibility and boundary cases specify the process. Statistical prerequisites do not silently narrow the goal to a particular hypothesis test."
+    }
+  ],
+  "manifestFingerprint": "sha256:6dd0bde996bc93e803e6792aa2759a9f16a722252bb4e232796799814d369e3d"
+}

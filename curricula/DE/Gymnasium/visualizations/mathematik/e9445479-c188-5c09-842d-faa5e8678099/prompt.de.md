@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `e9445479-c188-5c09-842d-faa5e8678099.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg`
@@ -31,23 +31,7 @@ Titel: Potenzregel für ganzzahlige Exponenten exemplarisch begründen
 Beschreibung: Die lernende Person kann die Ableitung von $f(x)=x^n$ für betragsmäßig kleine ganzzahlige Exponenten exemplarisch begründen und die Potenzregel fachsprachlich einordnen.
 
 Zusatzanweisung:
-Create a new scientific-educational infographic titled "Potenzregel exemplarisch begründen". The visual must derive the rule, not merely apply it.
-
-Left panel titled "Beispiel f(x) = x²". Show the difference quotient in four exact steps:
-f'(x) = lim_(h→0) ((x+h)² − x²) / h
-= lim_(h→0) (2xh + h²) / h
-= lim_(h→0) (2x + h)
-= 2x
-
-Use color to show that expanding (x+h)² gives x² + 2xh + h², the x² terms cancel, and h can be factored and cancelled only before taking the limit.
-
-Right panel titled "Einordnung". Show the general rule:
-d/dx (x^n) = n · x^(n−1)
-and the mapping for the example: n = 2 → 2 · x^(2−1) = 2x.
-
-Add the concise conclusion: "Der Differenzenquotient begründet die Potenzregel im Beispiel."
-
-Every limit, exponent and cancellation must be exact. No unsupported proof claim for all integers, no logos, brands, watermarks or unrelated text.
+Bearbeite das angehängte Original. Entferne ALLE blauen schrägen Kürzungsstriche im gesamten linken Rechenweg. Insbesondere in h(2x+h)/h darf kein einziges h durchgestrichen sein, weder das äußere, noch das innere, noch der Nenner. Auch in allen anderen Zeilen dürfen Nenner-h NICHT durchgestrichen werden. Die vollständige algebraische Umformung mit h(2x+h)/h und danach 2x+h erklärt das Kürzen bereits ohne Durchstreichungen. Die roten Durchstreichungen der beiden sich aufhebenden x² bleiben erhalten. Buchstaben, Farben, sämtliche übrigen Formeln, Überschriften und Originaldesign unverändert lassen. Keine neue blaue Kürzungslinie irgendwo hinzufügen.
 ```
 
 ## Review-Notiz

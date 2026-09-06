@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b037r-slopes-repaired-1-v1",
+  "reviewedAt": "2026-09-06T10:19:13Z",
+  "reviewer": "Codex P author; Math B037r; current AI candidate binding after stable source signal",
+  "goals": [
+    {
+      "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+      "reason": "Nach stabiler DE/EN-Korrektur und aktueller PNG-Metadatenübernahme wird der zuvor ungebundene, mathematisch geprüfte Entwurf als separater aktueller AI-Kandidat gebunden. Die beiden Fälle und alle positiven Erwartungen bleiben unverändert.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der alte topicCode enthält noch INTERSECTION_ANGLES; er erweitert den aktuellen, in DE/EN übereinstimmenden Steigungstext nicht. Dieses Profil verlangt weder Schnittwinkel noch vollständige Geradengleichungen. Bei horizontaler Tangente ist die Normale vertikal und besitzt keine endliche Steigung."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "slope-definitions",
+            "essentialUnderstandingDe": "Eine Sekante verbindet zwei Graphpunkte; die Tangente trägt die Ableitung am gewählten Punkt und die Normale steht dort senkrecht auf der Tangente.",
+            "essentialUnderstandingEn": "A secant joins two graph points; the tangent carries the derivative at the chosen point and the normal is perpendicular to that tangent there.",
+            "observablePerformanceDe": "Berechnet und benennt Sekanten- und Tangentensteigung mit ihrem Intervall- bzw. Punktbezug und bestimmt die Normalenrichtung fachlich korrekt.",
+            "observablePerformanceEn": "Calculates and names secant and tangent slopes with their interval or point reference and determines the normal direction correctly."
+          },
+          {
+            "id": "slope-meaning-boundary",
+            "essentialUnderstandingDe": "Die negative Kehrwertregel gilt für eine endliche, von null verschiedene Tangentensteigung; bei einer horizontalen Tangente ist die Normale vertikal.",
+            "essentialUnderstandingEn": "The negative reciprocal rule applies to a finite nonzero tangent slope; for a horizontal tangent, the normal is vertical.",
+            "observablePerformanceDe": "Deutet positive, negative oder verschwindende Steigung als Geradenrichtung und kennzeichnet eine vertikale Normale ohne endliche Steigung.",
+            "observablePerformanceEn": "Interprets positive, negative or zero slope as line direction and identifies a vertical normal as having no finite slope."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "slope-definitions",
+            "slope-meaning-boundary"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "regular-to-zero",
+            "textDe": "Eine nichtlineare Funktion mit endlicher Normalensteigung gegen einen Scheitel mit vertikaler Normale variieren.",
+            "textEn": "Vary a nonlinear function with finite normal slope against a vertex with a vertical normal."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cubic-three-slopes",
+            "taskDemandDe": "Für f(x)=x³ bestimme die Sekantensteigung zwischen x=0 und x=2 sowie Tangenten- und Normalensteigung bei x=1. Deute die berechneten Steigungen fachsprachlich; Winkel sind nicht gefragt.",
+            "taskDemandEn": "For f(x)=x³, determine the secant slope between x=0 and x=2 and tangent and normal slopes at x=1. Interpret the slopes using mathematical terminology; angles are not requested.",
+            "expectedPerformanceDe": "Erhält mS=(8-0)/2=4 als mittlere Änderung auf [0,2], mT=f′(1)=3 als lokale Tangentensteigung und mN=-1/3 als fallende senkrechte Richtung. Unterscheidet ausdrücklich Intervall und Punkt.",
+            "expectedPerformanceEn": "Obtains mS=(8-0)/2=4 as the average change on [0,2], mT=f′(1)=3 as local tangent slope and mN=-1/3 as the decreasing perpendicular direction. Explicitly distinguishes interval from point.",
+            "understandingFocusDe": "Die drei Steigungen mit ihrem jeweiligen geometrischen Bezug deuten.",
+            "understandingFocusEn": "Interpret the three slopes with their respective geometric references."
+          },
+          {
+            "id": "vertex-three-slopes",
+            "taskDemandDe": "Für g(x)=(x-2)² bestimme die Sekantensteigung zwischen x=2 und x=3 sowie Tangentensteigung und Normalenrichtung bei x=2. Erläutere den Sonderfall ohne Winkelrechnung.",
+            "taskDemandEn": "For g(x)=(x-2)², determine the secant slope between x=2 and x=3 and tangent slope and normal direction at x=2. Explain the special case without angle calculations.",
+            "expectedPerformanceDe": "Gibt mS=1 und mT=0 an. Erläutert: Die Sekante steigt, die Tangente am Scheitel ist waagrecht und die Normale ist vertikal; sie besitzt keine endliche Steigung. -1/0 ist keine zulässige Berechnung einer Normalensteigung.",
+            "expectedPerformanceEn": "Gives mS=1 and mT=0. Explains that the secant rises, the tangent at the vertex is horizontal and the normal is vertical, with no finite slope. -1/0 is not a valid normal-slope calculation.",
+            "understandingFocusDe": "Den Nullfall bei der Normalenbildung geometrisch korrekt begrenzen.",
+            "understandingFocusEn": "Handle the zero case in constructing a normal with correct geometric limits."
+          }
+        ]
+      }
+    }
+  ]
+}

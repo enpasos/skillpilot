@@ -1,0 +1,40 @@
+{
+  "runId": "math-b032v-blind-b-20260905",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": null,
+  "modelIdentityNote": "Exact runtime model identifier and inherited model selection were not supplied. No model diversity is asserted.",
+  "generationParameters": {
+    "model": "unknown",
+    "modelSelection": "inherited_unspecified",
+    "reasoningEffort": "default",
+    "forkTurns": "none",
+    "reviewIsolation": {
+      "blindToOtherReviews": true,
+      "allowedReviewInputs": "Assigned round-b packet only",
+      "excludedReviewInputs": "Other rounds, prior reviews, adjudications, canonical diffs and external evidence profiles"
+    }
+  },
+  "generationParametersFingerprint": "sha256:0313a538e9c357ecc7d2813086ab4d00cf3a80266897fc15296c71ed15b6d92c",
+  "generationParametersFingerprintEncoding": "SHA-256 of UTF-8 JSON.stringify(generationParameters), preserving documented key order, without a trailing newline",
+  "createdAt": "2026-09-05T19:29:16Z",
+  "timing": {
+    "firstObservedInProgressAt": "2026-09-05T19:26:45Z",
+    "recordsFinalizedObservedAt": "2026-09-05T19:29:16Z",
+    "source": "Reviewer clock tool observations during input review and immediately after finalizing and validating the records in memory.",
+    "manifestStartedAtMeaning": "First observed in-progress clock timestamp. The run had already begun; this required manifest field does not represent the unknown inference start.",
+    "manifestCompletedAtMeaning": "Clock observation after all record content had been finalized and validated in memory, before returning the unchanged JSONL.",
+    "exactInferenceStartedAt": null,
+    "exactInferenceCompletedAt": null,
+    "inferenceDurationSeconds": null
+  },
+  "usage": null,
+  "tokens": null,
+  "cost": null,
+  "unknownMeasurementNote": "Exact run start, inference duration, token usage and cost were not supplied or measured; no values were inferred from wall-clock observations.",
+  "toolchainVersion": "codex-apply-patch-v1",
+  "toolchainVersionMeaning": "Local identifier for the apply_patch materialization workflow, not a measured product build",
+  "materialization": "The reviewer materialized the five already returned candidate records unchanged after the coordinator confirmed both B032v blind rounds had finished. Only the own B032u run manifest and provenance were read as a format reference after the review was complete; no earlier review records or other round outputs were read.",
+  "artifactDigestEncoding": "SHA-256 of exact persisted output bytes",
+  "outputDigest": "sha256:ff1afe49bff836e00206d701977d32602df03f87ec2a6667dd08cc0e2ddf96d3"
+}

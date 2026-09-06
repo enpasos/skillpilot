@@ -3139,3 +3139,44 @@ Claude `1.1.1`, MCP/OAuth, Tools, Schemas, Start-/Session-/Lernzustandsverträge
 Portalwerte, Reviewfälle und Artefakte bleiben unverändert. Die betroffenen
 Quell-, Policy-, Test- und Dokumentationshashes werden append-only gebunden;
 eine Portalaktion oder ein Deployment erfolgt nicht.
+
+### 6.58 Eng begrenzte Ausnahme: Lernzielbuch-Testzahl nach Layer-A-Aufteilung
+
+Der Product Owner hat am **5. September 2026** die genaue Frage freigegeben,
+ob ausschließlich die feste Lernzielbuch-Testzahl von 795 auf 796 und die
+zugehörigen Freeze-Prüfhashes samt Dokumentation angepasst werden dürfen:
+„ja .... bei Fragen auf ähnlichem Risikoniveau hast Du auch meine Freigabe“.
+
+Die bereits fachlich genehmigte Aufteilung eines zusammengesetzten
+Mathematikziels in zwei atomare Teilkompetenzen erhöht die aktuelle
+Mathematikbuch-Anzahl um eins. Freigegeben ist in
+`app/scripts/testGoalBookPublication.ts` ausschließlich der Erwartungswert
+von `verified.model.pages.length`: **796 statt 795**. Die exakte
+Anzahlprüfung bleibt erhalten. Testablauf, Negativfälle, Datenintegrität,
+Veröffentlichungs- und Quellenprüfungen werden weder entfernt noch gelockert.
+
+Die Testdatei wird in der vorhandenen Hashkette append-only fortgeschrieben:
+
+- `app/scripts/testGoalBookPublication.ts`:
+  `fd49334616e0a98b08e6a2697a7249c4bdb2d5c76f6fb5659058a26e32ab7ae4`
+  → `11483618c5b187dc8bd31c7a0e9a92b0bab74297a73fa2ba8a40a2f4104e0079`.
+
+Der neue Ausnahme-Eintrag bindet zusätzlich den Hash dieses Nachtrags;
+Runtime-Checker und Regressionserwartung enthalten dieselbe genaue Ausnahme.
+Frühere Freigaben und eingereichte Baselines bleiben unverändert. Ziel ist
+ausschließlich der lokale/CI-seitige Veröffentlichungstest des öffentlichen
+Layer-A-Buchs. OpenAI `1.0.0`, Claude `1.1.1`, ihre Pakete, Produktquellen,
+MCP/OAuth, Tools, Schemas, MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/
+Locale-/Lernzustandsverträge, Portalwerte, Reviewfälle, Fixtures und Artefakte
+ändern sich nicht. Es ist weder ein Zurückziehen noch ein erneutes Einreichen
+des Portalreviews erforderlich; es erfolgt kein Deployment.
+
+Die zusätzliche Vorabfreigabe auf vergleichbarem Risikoniveau gilt für
+nachweislich mechanische Testdaten-/Zähler- und abgeleitete Hashanpassungen
+infolge bereits genehmigter fachlicher Layer-A-Änderungen, mit unveränderter
+Prüflogik und unverändertem Produktverhalten. Auch solche Fälle erhalten einen
+konkret dokumentierten Umfang, exakte append-only Hashbindungen und passende
+Regressionen. Sie gestattet keine pauschale Neubasierung, Abschwächung von
+Gates oder Änderung von Verträgen, Reviewfällen, Berechtigungen, Speicherung
+oder Sicherheitsverhalten. Bei unklarem oder höherem Risiko bleibt die
+gesonderte Rückfrage erforderlich.

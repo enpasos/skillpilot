@@ -1,0 +1,1244 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b037a-diagrams-first-calculus-19-v1",
+  "reviewedAt": "2026-09-06T10:00:59Z",
+  "reviewer": "Codex P author; Math B037a; AI candidate only",
+  "goals": [
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "reason": "Skalenlesen wird an unterschiedlich aufgebauten Diagrammen als Zuordnung von Position, Größe und Einheit sichtbar.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Aufgaben geben Skalen vollständig an; logarithmische Skalen und weitergehende Trendanalyse werden nicht als Pflicht ergänzt."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "scale-to-value",
+            "essentialUnderstandingDe": "Beschriftung und Teilung legen fest, welche Größe und welcher Zahlenwert zu einer Diagrammposition gehören.",
+            "essentialUnderstandingEn": "Labels and divisions determine the quantity and numerical value represented by a diagram position.",
+            "observablePerformanceDe": "Liest Positionen unter Beachtung von Anfangswert, Teilung und Einheit ab und formuliert die zugehörigen Werte korrekt.",
+            "observablePerformanceEn": "Reads positions using the starting value, divisions and units and states the corresponding values correctly."
+          },
+          {
+            "id": "axis-role",
+            "essentialUnderstandingDe": "Eine Kategorieachse benennt Gruppen, während eine Größenachse Werte samt gegebenem Einheitenfaktor trägt.",
+            "essentialUnderstandingEn": "A categorical axis names groups, while a quantitative axis carries values with any stated unit multiplier.",
+            "observablePerformanceDe": "Unterscheidet Achsenrollen und erläutert, wie eine Beschriftung wie 100 € die abgelesene Zahl verändert.",
+            "observablePerformanceEn": "Distinguishes axis roles and explains how a label such as 100 € changes the meaning of a read-off number."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "scale-to-value",
+            "axis-role"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "axis-format",
+            "textDe": "Ein Zeit-Temperatur-Diagramm mit negativen Skalenwerten gegen ein horizontales Kategoriendiagramm mit Einheitenfaktor variieren.",
+            "textEn": "Vary a time-temperature diagram with negative scale values against a horizontal categorical chart with a unit multiplier."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "temperature-scale",
+            "taskDemandDe": "Ein Diagramm hat eine Zeitachse in h mit Marken 0,2,4 und eine Temperaturachse in °C mit Marken -10,0,10; beide sind linear geteilt. P liegt horizontal genau zwischen 2 und 4 sowie vertikal zwischen 0 und 10. Lies P und erläutere die Größen.",
+            "taskDemandEn": "A diagram has a time axis in h marked 0,2,4 and a temperature axis in °C marked -10,0,10; both scales are linear. P is horizontally halfway between 2 and 4 and vertically halfway between 0 and 10. Read P and explain the quantities.",
+            "expectedPerformanceDe": "Formuliert: Nach 3 h beträgt die Temperatur 5 °C. Begründet beide Zwischenwerte durch die gleichmäßige Teilung und behandelt 3 als Zeit, nicht als Temperatur.",
+            "expectedPerformanceEn": "States that after 3 h the temperature is 5 °C. Justifies both intermediate values from the uniform divisions and treats 3 as time, not temperature.",
+            "understandingFocusDe": "Achsenbeschriftung und Teilung gemeinsam lesen.",
+            "understandingFocusEn": "Read axis labels and divisions together."
+          },
+          {
+            "id": "horizontal-unit-factor",
+            "taskDemandDe": "Ein horizontales Balkendiagramm zeigt Gruppen A und B auf der vertikalen Achse. Die horizontale Achse heißt Betrag in 100 € und hat lineare Marken 0,2,4. A endet bei 2, B genau zwischen 3 und 4. Lies beide Beträge und ihre Differenz.",
+            "taskDemandEn": "A horizontal bar chart shows groups A and B on the vertical axis. The horizontal axis is labelled Amount in 100 € and has linear marks 0,2,4. A ends at 2 and B halfway between 3 and 4. Read both amounts and their difference.",
+            "expectedPerformanceDe": "Nennt A=200 €, B=350 € und die Differenz 150 €. Erläutert, dass A/B Kategorien und die abgelesenen 2 bzw. 3,5 Vielfache von 100 € sind.",
+            "expectedPerformanceEn": "Gives A=200 €, B=350 € and a difference of 150 €. Explains that A/B are categories and the read-off values 2 and 3.5 are multiples of 100 €.",
+            "understandingFocusDe": "Bei vertauschter Achsenlage den Einheitenfaktor erhalten.",
+            "understandingFocusEn": "Preserve the unit multiplier when axis orientation changes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "reason": "Kennwerte tragen konkrete Aussagen über den dargestellten Verlauf, nicht bloß eine optische Beschreibung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Beispiele liefern vollständig festgelegte stückweise lineare Verläufe. Aussagen außerhalb des gezeigten Zeitbereichs und Ursachenbehauptungen bleiben offen."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "diagram-features",
+            "essentialUnderstandingDe": "Steigung, höchster Wert und Schnittpunkt beschreiben Änderungsrate, Niveau und Gleichstand der dargestellten Größen.",
+            "essentialUnderstandingEn": "Slope, highest value and intersection describe rate of change, level and equality of the represented quantities.",
+            "observablePerformanceDe": "Bestimmt die für den Fall relevanten Kennwerte aus dem Diagramm und benennt ihren Zeit- oder Größenbezug.",
+            "observablePerformanceEn": "Determines the features relevant to the case from the diagram and states their time or quantity reference."
+          },
+          {
+            "id": "contextual-trend",
+            "essentialUnderstandingDe": "Ein Trend beschreibt Richtung und Stärke der dargestellten Veränderung im beobachteten Bereich; er erklärt nicht automatisch deren Ursache.",
+            "essentialUnderstandingEn": "A trend describes the direction and strength of the represented change in the observed range; it does not automatically explain its cause.",
+            "observablePerformanceDe": "Deutet Anstieg, Gleichbleiben, Abnahme oder Überholen anhand der Kennwerte mit passenden Einheiten und begrenztem Zeitbezug.",
+            "observablePerformanceEn": "Interprets increase, stability, decrease or overtaking using the features, appropriate units and a bounded time reference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "diagram-features",
+            "contextual-trend"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "one-versus-two-series",
+            "textDe": "Einen Verlauf mit Plateau gegen zwei sich schneidende lineare Verläufe variieren.",
+            "textEn": "Vary a single course with a plateau against two intersecting linear courses."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "reservoir-trend",
+            "taskDemandDe": "Ein Volumen-Zeit-Diagramm verbindet (0 h|20 L),(2 h|60 L),(5 h|60 L),(7 h|40 L) geradlinig. Bestimme den höchsten Wert und die Änderungsraten der Abschnitte; deute den Verlauf.",
+            "taskDemandEn": "A volume-time diagram joins (0 h,20 L),(2 h,60 L),(5 h,60 L),(7 h,40 L) with straight segments. Determine the highest value and each segment's rate of change; interpret the course.",
+            "expectedPerformanceDe": "Gibt 60 L während 2≤t≤5 h sowie +20,0,-10 L/h für die drei Abschnitte an. Beschreibt Füllen, gleichbleibendes Volumen und anschließende Abnahme im dargestellten Zeitraum.",
+            "expectedPerformanceEn": "Gives 60 L during 2≤t≤5 h and +20,0,-10 L/h for the three segments. Describes filling, constant volume and subsequent decrease during the shown period.",
+            "understandingFocusDe": "Maximum und Steigung im selben Kontext unterschiedlich deuten.",
+            "understandingFocusEn": "Interpret maximum and slope differently within the same context."
+          },
+          {
+            "id": "two-distance-lines",
+            "taskDemandDe": "Ein Weg-Zeit-Diagramm auf 0≤t≤4 h zeigt Gerade A durch (0|0),(4|24) und Gerade B durch (0|8),(4|16), Wege in km. Bestimme den Gleichstand und deute die Entwicklungen.",
+            "taskDemandEn": "A distance-time diagram on 0≤t≤4 h shows line A through (0,0),(4,24) and line B through (0,8),(4,16), distances in km. Determine where the distances are equal and interpret the developments.",
+            "expectedPerformanceDe": "Liest bzw. bestimmt 6 km/h für A und 2 km/h für B sowie den Schnittpunkt (2 h|12 km). Erklärt: A liegt anfangs 8 km zurück, erreicht nach 2 h denselben Wegwert und liegt danach im gezeigten Bereich vorn.",
+            "expectedPerformanceEn": "Reads or determines 6 km/h for A and 2 km/h for B and the intersection (2 h,12 km). Explains that A starts 8 km behind, reaches the same distance value after 2 h and is ahead thereafter in the displayed range.",
+            "understandingFocusDe": "Einen Schnittpunkt als inhaltlichen Gleichstand bei verschiedenen Trends deuten.",
+            "understandingFocusEn": "Interpret an intersection as contextual equality under different trends."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "reason": "Das Profil verlangt belegte Aussagenprüfungen und erkennt zwei verschiedene irreführende Darstellungsmechanismen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Fälle prüfen konkrete Behauptungen; aus einer verzerrten Grafik folgt keine Behauptung über absichtliche Täuschung ihres Urhebers."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "claim-and-evidence",
+            "essentialUnderstandingDe": "Eine Diagrammaussage ist an den dargestellten Werten und Bezugsgrößen zu prüfen, nicht allein am visuellen Eindruck.",
+            "essentialUnderstandingEn": "A chart claim must be checked against the displayed values and reference quantities, not merely visual impression.",
+            "observablePerformanceDe": "Belegt ein zustimmendes oder ablehnendes Urteil mit konkreten Diagrammwerten und der zur Aussage passenden Rechnung.",
+            "observablePerformanceEn": "Supports agreement or rejection with specific chart values and a calculation appropriate to the claim."
+          },
+          {
+            "id": "distorted-comparison",
+            "essentialUnderstandingDe": "Abgeschnittene Wertachsen oder unpassende Zeitabstände können Größenverhältnisse oder Änderungsraten optisch verzerren.",
+            "essentialUnderstandingEn": "Truncated value axes or inappropriate time spacing can visually distort ratios or rates of change.",
+            "observablePerformanceDe": "Identifiziert den konkreten Darstellungsmechanismus und erläutert dessen Einfluss auf die geprüfte Aussage.",
+            "observablePerformanceEn": "Identifies the specific representational mechanism and explains its effect on the claim being checked."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "claim-and-evidence",
+            "distorted-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "distortion-axis",
+            "textDe": "Von einer abgeschnittenen Wertachse zu ungleich langen, gleich breit gezeichneten Zeitintervallen wechseln.",
+            "textEn": "Change from a truncated value axis to unequal time intervals drawn with equal widths."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "truncated-bars",
+            "taskDemandDe": "Ein Balkendiagramm zeigt Werte A=50 und B=55; die sichtbaren Balken beginnen auf einer abgeschnittenen Achse bei 45. Prüfe: B ist doppelt so groß wie A. Führe Zahlenbelege und den Grafikmechanismus an.",
+            "taskDemandEn": "A bar chart shows A=50 and B=55; the visible bars start at 45 on a truncated axis. Check the claim that B is twice as large as A. Give numerical evidence and identify the graphical mechanism.",
+            "expectedPerformanceDe": "Weist die Verdoppelung zurück: 55/50=1,1, also 10 % mehr. Die sichtbaren Längen 5 und 10 haben zwar Verhältnis 2, bilden aber Abstände von 45 statt der ganzen Werte ab.",
+            "expectedPerformanceEn": "Rejects doubling: 55/50=1.1, so the increase is 10%. The visible lengths 5 and 10 have ratio 2 but represent differences from 45 rather than the full values.",
+            "understandingFocusDe": "Gezeigte Balkenlänge von tatsächlichem Größenverhältnis unterscheiden.",
+            "understandingFocusEn": "Distinguish displayed bar length from the actual value ratio."
+          },
+          {
+            "id": "unequal-time-gaps",
+            "taskDemandDe": "Ein Liniendiagramm setzt die Jahresmarken 0,1,10 gleich weit auseinander und verbindet die Werte 0,10,20. Prüfe: Die Größe wächst in beiden Abschnitten gleich schnell. Begründe anhand der Beschriftung.",
+            "taskDemandEn": "A line chart places year marks 0,1,10 at equal distances and joins values 0,10,20. Check the claim that the quantity grows equally fast in both segments. Justify using the labels.",
+            "expectedPerformanceDe": "Berechnet 10 Einheiten/Jahr im ersten und 10/9≈1,11 Einheiten/Jahr im zweiten Abschnitt. Erklärt, dass gleiche gezeichnete Anstiege hier keine gleichen Änderungsraten bedeuten, weil ein und neun Jahre gleich breit erscheinen.",
+            "expectedPerformanceEn": "Calculates 10 units/year in the first segment and 10/9≈1.11 units/year in the second. Explains that equal drawn rises do not imply equal rates because one year and nine years appear equally wide.",
+            "understandingFocusDe": "Zeitbezogene Aussage mit tatsächlichen Intervalllängen prüfen.",
+            "understandingFocusEn": "Check a time-related claim using the actual interval lengths."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "reason": "Positive Leistung ist hier das verständliche Korrigieren einer vorgegebenen Fehlinterpretation samt begründeter klarerer Darstellung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Fehlinterpretationen gehören ausdrücklich zum Ziel. Die Beispiele sind konstruierte Aufgaben, keine Diagnose tatsächlicher Lernender oder Absichten von Diagrammautoren."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "explain-misreading",
+            "essentialUnderstandingDe": "Die Bedeutung einer Bildgröße oder eines Anteils hängt von der dargestellten Größe und deren Bezugsbasis ab.",
+            "essentialUnderstandingEn": "The meaning of a visual size or a proportion depends on the represented quantity and its reference base.",
+            "observablePerformanceDe": "Benennt die vorgegebene Fehlinterpretation, erklärt sie verständlich und ersetzt sie durch eine numerisch belegte zutreffende Aussage.",
+            "observablePerformanceEn": "Names the supplied misinterpretation, explains it clearly and replaces it with a numerically supported correct statement."
+          },
+          {
+            "id": "clearer-alternative",
+            "essentialUnderstandingDe": "Eine klarere Darstellung erhält die Daten und macht den relevanten Vergleich und dessen Bezugsbasis sichtbar.",
+            "essentialUnderstandingEn": "A clearer representation preserves the data and makes the relevant comparison and its reference base visible.",
+            "observablePerformanceDe": "Schlägt eine konkrete alternative Darstellung mit passenden Beschriftungen vor und erklärt, warum der gewünschte Vergleich darin klarer ist.",
+            "observablePerformanceEn": "Proposes a concrete alternative representation with suitable labels and explains why it makes the intended comparison clearer."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "explain-misreading",
+            "clearer-alternative"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "comparison-basis",
+            "textDe": "Flächeneindruck eines Bildsymbols gegen absolute Anzahlen bei unterschiedlichen Gruppengrößen variieren.",
+            "textEn": "Vary the area impression of pictograms against absolute counts for groups of different sizes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "square-pictograms",
+            "taskDemandDe": "Für 10 und 20 verkaufte Hefte zeigt eine Grafik Quadrate mit Seitenlängen 1 cm und 2 cm. Eine Betrachterin folgert aus den Bildflächen eine Vervierfachung. Erkläre die Verwechslung und schlage eine klarere Darstellung vor.",
+            "taskDemandEn": "For 10 and 20 notebooks sold, a graphic shows squares with side lengths 1 cm and 2 cm. A viewer infers a fourfold increase from the pictured areas. Explain the confusion and propose a clearer representation.",
+            "expectedPerformanceDe": "Unterscheidet das Flächenverhältnis 4:1 vom Datenverhältnis 2:1 und formuliert die tatsächliche Verdoppelung. Schlägt etwa gleich breite Balken von 10 und 20 auf einer bei null beginnenden Anzahlachse vor und begründet deren Längenvergleich.",
+            "expectedPerformanceEn": "Distinguishes the area ratio 4:1 from the data ratio 2:1 and states the actual doubling. Proposes, for example, equal-width bars of 10 and 20 on a count axis starting at zero and justifies the length comparison.",
+            "understandingFocusDe": "Eine mehrdimensionale Bildvergrößerung in einen ehrlichen Datenvergleich übersetzen.",
+            "understandingFocusEn": "Translate multidimensional image enlargement into a faithful data comparison."
+          },
+          {
+            "id": "different-class-sizes",
+            "taskDemandDe": "Ein Balkendiagramm zeigt 12 teilnehmende Kinder von 20 in Klasse A und 15 von 30 in Klasse B. Prüfe und korrigiere die Deutung: In B nimmt der größere Anteil teil. Schlage für den Anteilsvergleich eine klarere Darstellung vor.",
+            "taskDemandEn": "A bar chart shows 12 participating children out of 20 in class A and 15 out of 30 in class B. Check and correct the interpretation that B has the larger participation proportion. Propose a clearer representation for comparing proportions.",
+            "expectedPerformanceDe": "Erklärt: B hat mehr Teilnehmende absolut, A aber 12/20=60 % gegenüber 15/30=50 %. Schlägt 100-%-Balken oder Prozentbalken mit beschrifteten Gruppengrößen 20 und 30 vor, damit Anteil und Anzahl unterscheidbar bleiben.",
+            "expectedPerformanceEn": "Explains that B has more participants in absolute terms, but A has 12/20=60% compared with 15/30=50%. Proposes 100%-bars or percentage bars labelled with group sizes 20 and 30 so proportions and counts remain distinguishable.",
+            "understandingFocusDe": "Bei geänderter Bezugsbasis die Interpretation und die Darstellung gemeinsam verbessern.",
+            "understandingFocusEn": "Improve both interpretation and representation when the reference base changes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "reason": "Der Differenzenquotient wird als signierte Änderung je Eingabeeinheit berechnet und auf das konkrete Intervall bezogen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Durchschnittliche Änderungsrate ist nicht automatisch momentane Rate. Im Wegfall ist ausdrücklich die kumulierte zurückgelegte Strecke gegeben, nicht eine möglicherweise rückläufige Ortskoordinate."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "difference-quotient",
+            "essentialUnderstandingDe": "Die mittlere Änderungsrate auf [a,b], a≠b, ist (f(b)-f(a))/(b-a); Zähler und Nenner müssen zum selben Intervall gehören.",
+            "essentialUnderstandingEn": "The average rate of change on [a,b], a≠b, is (f(b)-f(a))/(b-a); numerator and denominator must refer to the same interval.",
+            "observablePerformanceDe": "Berechnet beide Differenzen konsistent und gibt den Quotienten mit passender zusammengesetzter Einheit an.",
+            "observablePerformanceEn": "Calculates both differences consistently and gives the quotient with the appropriate compound unit."
+          },
+          {
+            "id": "rate-interpretation",
+            "essentialUnderstandingDe": "Vorzeichen und Einheit beschreiben die mittlere Veränderung der Ausgangsgröße je Eingabeeinheit, nicht notwendig einen konstanten Verlauf.",
+            "essentialUnderstandingEn": "Sign and unit describe the average change of the output per input unit, not necessarily a constant course.",
+            "observablePerformanceDe": "Deutet den berechneten Wert im Sachzusammenhang und begrenzt die Aussage auf das betrachtete Intervall.",
+            "observablePerformanceEn": "Interprets the calculated value in context and limits the statement to the interval considered."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "difference-quotient",
+            "rate-interpretation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "data-and-sign",
+            "textDe": "Aus zwei Streckenmessungen einen positiven Mittelwert bestimmen und unabhängig aus einem nichtlinearen Temperaturmodell einen negativen Mittelwert deuten.",
+            "textEn": "Determine a positive average from two distance measurements and independently interpret a negative average from a nonlinear temperature model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "travel-average",
+            "taskDemandDe": "Eine kumulierte Wegmessung liefert s(2 min)=100 m und s(5 min)=460 m. Bestimme die Durchschnittsgeschwindigkeit in diesem Intervall und erläutere, ob sie die Geschwindigkeit zu jedem Zeitpunkt festlegt.",
+            "taskDemandEn": "A cumulative distance measurement gives s(2 min)=100 m and s(5 min)=460 m. Determine average speed on this interval and explain whether it determines speed at every instant.",
+            "expectedPerformanceDe": "Berechnet (460-100)/(5-2)=120 m/min=2 m/s. Deutet 120 m je Minute im Durchschnitt auf [2,5] min; die beiden Messwerte legen den momentanen Geschwindigkeitsverlauf nicht fest.",
+            "expectedPerformanceEn": "Calculates (460-100)/(5-2)=120 m/min=2 m/s. Interprets 120 m per minute on average over [2,5] min; the two measurements do not determine the instantaneous speed course.",
+            "understandingFocusDe": "Mittlere Rate von Gesamtstrecke und Momentanwert unterscheiden.",
+            "understandingFocusEn": "Distinguish an average rate from total distance and an instantaneous value."
+          },
+          {
+            "id": "cooling-average",
+            "taskDemandDe": "Auf 0≤t≤8 min beschreibt T(t)=80-3t+0,1t² die Temperatur in °C. Berechne und deute die mittlere Änderungsrate von t=2 bis t=6 min.",
+            "taskDemandEn": "On 0≤t≤8 min, T(t)=80-3t+0.1t² describes temperature in °C. Calculate and interpret the average rate of change from t=2 to t=6 min.",
+            "expectedPerformanceDe": "Erhält T(2)=74,4 und T(6)=65,6 sowie (65,6-74,4)/4=-2,2 °C/min. Erklärt eine durchschnittliche Abnahme um 2,2 °C je Minute, ohne eine konstante Abkühlrate zu behaupten.",
+            "expectedPerformanceEn": "Obtains T(2)=74.4 and T(6)=65.6 and (65.6-74.4)/4=-2.2 °C/min. Explains an average decrease of 2.2 °C per minute without claiming a constant cooling rate.",
+            "understandingFocusDe": "Eine negative mittlere Rate eines nichtlinearen Modells im Kontext deuten.",
+            "understandingFocusEn": "Interpret a negative average rate of a nonlinear model in context."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "reason": "Die h-Methode verbindet beidseitig verfeinerte Sekantenquotienten mit einer begründeten Tangentengrenze; Tabellenbeobachtung und exakter Beleg bleiben getrennt.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Endliche Tabellen allein beweisen weder Existenz noch exakten Wert eines Grenzwerts. Die bekannten Funktionsvorschriften erlauben hier zusätzlich eine einfache Strukturkontrolle; kein Grenzwertbeweis aus bloßen Messdaten wird verlangt oder behauptet."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "h-method",
+            "essentialUnderstandingDe": "Für h≠0 ist (f(x₀+h)-f(x₀))/h eine Sekantensteigung. Beidseitige Verkleinerung von h untersucht die lokale Grenzsteigung am festen Punkt.",
+            "essentialUnderstandingEn": "For h≠0, (f(x₀+h)-f(x₀))/h is a secant slope. Decreasing h from both sides investigates the local limiting slope at the fixed point.",
+            "observablePerformanceDe": "Erstellt oder berechnet passende positive und negative h-Werte samt Quotienten und beschreibt deren Annäherung mit erkennbarer Genauigkeit.",
+            "observablePerformanceEn": "Tabulates or calculates suitable positive and negative h-values and their quotients and describes their convergence with an explicit level of precision."
+          },
+          {
+            "id": "secant-tangent-limit",
+            "essentialUnderstandingDe": "Ein gemeinsamer endlicher Grenzwert der Quotienten liefert die Tangentensteigung; h=0 selbst bleibt im ursprünglichen Quotienten ausgeschlossen.",
+            "essentialUnderstandingEn": "A common finite limit of the quotients gives the tangent slope; h=0 remains excluded from the original quotient.",
+            "observablePerformanceDe": "Erklärt den Übergang der Sekante zur Tangente, unterscheidet numerische Annäherung vom exakten Beleg und nutzt die im Fall bekannte Funktionsstruktur zur Absicherung.",
+            "observablePerformanceEn": "Explains the secant-to-tangent transition, distinguishes numerical approximation from exact justification and uses the function structure known in the case to support the result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "h-method",
+            "secant-tangent-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quotient-structure",
+            "textDe": "Einen linearen Quotientenrest bei einer quadratischen Funktion gegen einen rationalen Quotienten mit Domainbedingung variieren.",
+            "textEn": "Vary a linear quotient remainder for a quadratic function against a rational quotient with a domain condition."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "h-square",
+            "taskDemandDe": "Untersuche für f(x)=x² bei x₀=2 die h-Methode mit h=0,1;-0,1;0,01;-0,01. Bestimme den Grenzwert, begründe den Sekanten-Tangenten-Übergang und erläutere die Aussagekraft der endlichen Tabelle anhand der bekannten Vorschrift.",
+            "taskDemandEn": "Investigate the h-method for f(x)=x² at x₀=2 using h=0.1;-0.1;0.01;-0.01. Determine the limit, justify the secant-to-tangent transition and explain the finite table's evidential scope using the known rule.",
+            "expectedPerformanceDe": "Berechnet 4,1;3,9;4,01;3,99. Beschreibt die beidseitige Annäherung an 4 und sichert sie etwa mit Q(h)=4+h für h≠0 ab. Erklärt: Die zweite Sekantenstelle nähert sich x₀, die Steigungen nähern sich der Tangentensteigung 4; vier Zahlen allein sind kein allgemeiner Grenzwertbeweis.",
+            "expectedPerformanceEn": "Calculates 4.1;3.9;4.01;3.99. Describes two-sided convergence to 4 and supports it, for example, using Q(h)=4+h for h≠0. Explains that the second secant point approaches x₀ and the slopes approach tangent slope 4; four numbers alone are not a general limit proof.",
+            "understandingFocusDe": "Numerische Verfeinerung mit einer bekannten einfachen Funktionsstruktur verbinden.",
+            "understandingFocusEn": "Connect numerical refinement to a known simple function structure."
+          },
+          {
+            "id": "h-reciprocal",
+            "taskDemandDe": "Untersuche unabhängig f(x)=1/x bei x₀=1 mit denselben vier h-Werten. Erläutere Domainbedingungen, Grenzsteigung und den Unterschied zwischen gerundeten Quotienten und einem exakten Grenzwertargument.",
+            "taskDemandEn": "Independently investigate f(x)=1/x at x₀=1 using the same four h-values. Explain domain conditions, limiting slope and the difference between rounded quotients and an exact limit argument.",
+            "expectedPerformanceDe": "Erhält ungefähr -0,909091;-1,111111;-0,990099;-1,010101. Erkennt die Annäherung an -1 von beiden Seiten. Begründet sie etwa durch Q(h)=-1/(1+h), h≠0,-1; die Tabelle illustriert, die bekannte Formel sichert den Grenzwert und damit die Tangentensteigung -1.",
+            "expectedPerformanceEn": "Obtains approximately -0.909091;-1.111111;-0.990099;-1.010101. Recognizes convergence to -1 from both sides. Justifies it, for example, using Q(h)=-1/(1+h), h≠0,-1; the table illustrates while the known formula establishes the limit and hence tangent slope -1.",
+            "understandingFocusDe": "Die h-Methode auf eine andere Quotientenstruktur übertragen und ihre Gültigkeit begrenzen.",
+            "understandingFocusEn": "Transfer the h-method to a different quotient structure and state its validity conditions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+      "reason": "Zwei exemplarische Herleitungen decken einen positiven und einen negativen kleinen ganzzahligen Exponenten ab.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Exemplarische Begründung ist kein Beweis für alle ganzzahligen Exponenten. Die Fälle n=3 und n=-1 illustrieren die Regel mit unterschiedlicher Algebra und Domain, ohne eine vollständige Induktion zu verlangen."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "exemplary-derivation",
+            "essentialUnderstandingDe": "Eine Ableitungsregel kann für einen gewählten Exponenten aus dem Differenzenquotienten begründet werden, statt nur als fertige Formel eingesetzt zu werden.",
+            "essentialUnderstandingEn": "A derivative rule for a chosen exponent can be justified from the difference quotient rather than merely substituted as a ready-made formula.",
+            "observablePerformanceDe": "Führt für den gegebenen kleinen ganzzahligen Exponenten eine gültige Herleitung mit h≠0 und nachvollziehbarem Grenzübergang aus.",
+            "observablePerformanceEn": "Gives a valid derivation for the specified small integer exponent with h≠0 and a coherent limit step."
+          },
+          {
+            "id": "power-rule-scope",
+            "essentialUnderstandingDe": "Die Form nx^(n-1) verbindet Exponent und Ableitung; bei negativen Exponenten gehört der Ausschluss x=0 zur Aussage.",
+            "essentialUnderstandingEn": "The form nx^(n-1) connects the exponent to the derivative; for negative exponents, excluding x=0 is part of the statement.",
+            "observablePerformanceDe": "Ordnet sein hergeleitetes Ergebnis fachsprachlich in die Potenzregel ein und benennt die Gültigkeitsbedingungen des Beispiels.",
+            "observablePerformanceEn": "Explains how the derived result exemplifies the power rule and states the example's validity conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "exemplary-derivation",
+            "power-rule-scope"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "integer-sign",
+            "textDe": "Von positiver Potenz mit binomischer Entwicklung zu negativer Potenz mit Bruchdifferenz wechseln.",
+            "textEn": "Change from a positive power using binomial expansion to a negative power using a difference of fractions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cube-justification",
+            "taskDemandDe": "Begründe für f(x)=x³ exemplarisch die Potenzregel über den Differenzenquotienten und ordne das Ergebnis in nx^(n-1) ein.",
+            "taskDemandEn": "For f(x)=x³, justify this instance of the power rule through the difference quotient and relate the result to nx^(n-1).",
+            "expectedPerformanceDe": "Entwickelt ((x+h)³-x³)/h=3x²+3xh+h² für h≠0 und erhält für h→0 die Ableitung 3x². Erläutert den Faktor 3 und den Exponenten 2 als n und n-1, gültig für alle reellen x in diesem Beispiel.",
+            "expectedPerformanceEn": "Expands ((x+h)³-x³)/h=3x²+3xh+h² for h≠0 and obtains derivative 3x² as h→0. Explains factor 3 and exponent 2 as n and n-1, valid for every real x in this example.",
+            "understandingFocusDe": "Eine Exponentenregel durch eine allgemeine x-Rechnung an einem konkreten Exponenten begründen.",
+            "understandingFocusEn": "Justify an exponent rule by working with general x for one specified exponent."
+          },
+          {
+            "id": "negative-power-justification",
+            "taskDemandDe": "Begründe unabhängig die Ableitung von f(x)=x^(-1). Nenne die zulässigen Stellen und erkläre, wie das Ergebnis zur Potenzregel passt.",
+            "taskDemandEn": "Independently justify the derivative of f(x)=x^(-1). State the admissible inputs and explain how the result fits the power rule.",
+            "expectedPerformanceDe": "Formt [1/(x+h)-1/x]/h zu -1/[x(x+h)] um, bei x≠0,h≠0,x+h≠0. Der Grenzwert ist -1/x²=-x^(-2). Ordnet -1 als Faktor n und -2 als n-1 ein und behält x≠0 bei.",
+            "expectedPerformanceEn": "Transforms [1/(x+h)-1/x]/h into -1/[x(x+h)] for x≠0,h≠0,x+h≠0. The limit is -1/x²=-x^(-2). Identifies -1 as factor n and -2 as n-1 and retains x≠0.",
+            "understandingFocusDe": "Die exemplarische Begründung bei geändertem Vorzeichen des Exponenten und anderer Domain durchführen.",
+            "understandingFocusEn": "Give an exemplary justification with a changed exponent sign and a different domain."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "reason": "Begründung aus Quotienten und Grenzwerten wird von anschließender Anwendung unterschieden; beide Regeln werden konkret getragen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die allgemeinen Begründungen setzen Differenzierbarkeit der beteiligten Funktionen an der betrachteten Stelle und einen konstanten Faktor voraus. Produkt- oder Kettenregel sind keine zusätzlichen Pflichten."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "linearity-justification",
+            "essentialUnderstandingDe": "Konstante Faktoren und Summen lassen sich im Differenzenquotienten trennen; bei existierenden Ableitungen tragen die Grenzwertregeln die entsprechenden Ableitungsregeln.",
+            "essentialUnderstandingEn": "Constant factors and sums separate in the difference quotient; when derivatives exist, limit rules support the corresponding differentiation rules.",
+            "observablePerformanceDe": "Begründet Faktor- und Summenregel aus dieser Zerlegung und nennt Konstanz bzw. Differenzierbarkeit als relevante Voraussetzungen.",
+            "observablePerformanceEn": "Justifies the constant multiple and sum rules from this decomposition and states constancy and differentiability as relevant assumptions."
+          },
+          {
+            "id": "transparent-application",
+            "essentialUnderstandingDe": "Die Regeln wirken auf die Summanden und ihre konstanten Faktoren; Vereinfachung darf dieselbe Funktion vor oder nach dem Ableiten darstellen.",
+            "essentialUnderstandingEn": "The rules act on terms and their constant factors; simplification can represent the same function before or after differentiation.",
+            "observablePerformanceDe": "Wendet die Regeln mit nachvollziehbaren Zwischenschritten an und vereinfacht das Ergebnis konsistent, auch wenn sich Summanden aufheben.",
+            "observablePerformanceEn": "Applies the rules with coherent intermediate steps and simplifies consistently, including when terms cancel."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "linearity-justification",
+            "transparent-application"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "rule-and-cancellation",
+            "textDe": "Eine allgemeine Faktorbegründung mit negativer Skalierung gegen eine allgemeine Summenbegründung mit sich aufhebenden Termen variieren.",
+            "textEn": "Vary a general constant-multiple justification with negative scaling against a general sum justification with cancelling terms."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "constant-multiple",
+            "taskDemandDe": "Sei u an x differenzierbar und c eine reelle Konstante. Begründe (cu)′=cu′ am Differenzenquotienten. Wende die begründeten Regeln anschließend auf F(x)=-3x²+5 an und zeige die Schritte.",
+            "taskDemandEn": "Let u be differentiable at x and c a real constant. Justify (cu)′=cu′ using the difference quotient. Then apply the justified rules to F(x)=-3x²+5 and show the steps.",
+            "expectedPerformanceDe": "Zieht c aus [cu(x+h)-cu(x)]/h heraus und nutzt den Grenzwert zu cu′(x). Erhält F′=-3·2x+0=-6x; erläutert, warum c konstant sein muss und der konstante Summand verschwindet.",
+            "expectedPerformanceEn": "Factors c out of [cu(x+h)-cu(x)]/h and takes the limit to obtain cu′(x). Gets F′=-3·2x+0=-6x; explains why c must be constant and why the constant term disappears.",
+            "understandingFocusDe": "Eine Regel begründen und ihren konstanten Faktor in einer Rechnung erkennbar nutzen.",
+            "understandingFocusEn": "Justify a rule and visibly use its constant factor in a calculation."
+          },
+          {
+            "id": "sum-cancellation",
+            "taskDemandDe": "Seien u und v an x differenzierbar. Begründe (u+v)′=u′+v′ am Differenzenquotienten. Nutze danach u(x)=x³ und v(x)=-x³+2x und vergleiche Ableiten vor und nach dem Zusammenfassen.",
+            "taskDemandEn": "Let u and v be differentiable at x. Justify (u+v)′=u′+v′ using the difference quotient. Then use u(x)=x³ and v(x)=-x³+2x and compare differentiating before and after simplification.",
+            "expectedPerformanceDe": "Zerlegt den Quotienten der Summe in die zwei Quotienten und nutzt deren existierende Grenzwerte. Rechnet 3x²+(-3x²+2)=2; vorheriges Zusammenfassen ergibt u+v=2x mit derselben Ableitung 2. Die Rechnung illustriert die allgemein begründete Summenregel.",
+            "expectedPerformanceEn": "Splits the sum's quotient into two quotients and uses their existing limits. Calculates 3x²+(-3x²+2)=2; simplifying first gives u+v=2x with the same derivative 2. The calculation illustrates the generally justified sum rule.",
+            "understandingFocusDe": "Bei struktureller Aufhebung die Linearität nachvollziehbar anwenden.",
+            "understandingFocusEn": "Apply linearity coherently when terms structurally cancel."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "reason": "Unterschiedlich aufgebaute Polynome werden mit den benannten Regeln abgeleitet und algebraisch konsistent vereinfacht.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die zweite Schreibweise enthält ein Produkt, lässt sich aber elementar zu einem Polynom zusammenfassen. Eine zusätzliche Produktregelpflicht wird nicht eingeführt."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "polynomial-rules",
+            "essentialUnderstandingDe": "Ein Polynom ist eine Summe konstanter Vielfacher nichtnegativer ganzzahliger Potenzen; Konstanten haben Ableitung null.",
+            "essentialUnderstandingEn": "A polynomial is a sum of constant multiples of nonnegative integer powers; constants have derivative zero.",
+            "observablePerformanceDe": "Wendet Potenz-, Faktor- und Summenregel auf die passende Polynomstruktur an und unterscheidet konstante von variablen Termen.",
+            "observablePerformanceEn": "Applies the power, constant multiple and sum rules to the appropriate polynomial structure and distinguishes constant from variable terms."
+          },
+          {
+            "id": "equivalent-simplification",
+            "essentialUnderstandingDe": "Äquivalente Polynomdarstellungen beschreiben dieselbe Funktion und führen nach korrekter Vereinfachung zur selben Ableitung.",
+            "essentialUnderstandingEn": "Equivalent polynomial forms describe the same function and yield the same derivative after correct simplification.",
+            "observablePerformanceDe": "Vereinfacht Ausgangs- oder Ableitungsterme gültig und stellt die Regelanwendung so dar, dass Koeffizienten und Exponenten nachvollziehbar bleiben.",
+            "observablePerformanceEn": "Validly simplifies original or derivative expressions and presents rule applications so coefficients and exponents remain traceable."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "polynomial-rules",
+            "equivalent-simplification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "polynomial-form",
+            "textDe": "Eine ausgeschriebene Summe höheren Grades gegen ein zunächst geklammertes Polynom mit zusammenfassbaren Termen variieren.",
+            "textEn": "Vary an expanded higher-degree sum against an initially factored polynomial with terms that can be collected."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expanded-polynomial",
+            "taskDemandDe": "Leite f(x)=3x⁴-2x²+5x-7 ab und vereinfache. Erläutere die Wirkung der Regeln auf die vier Summanden.",
+            "taskDemandEn": "Differentiate f(x)=3x⁴-2x²+5x-7 and simplify. Explain how the rules act on the four terms.",
+            "expectedPerformanceDe": "Erhält f′(x)=12x³-4x+5. Ordnet 3·4x³, -2·2x, 5 und 0 den Summanden zu; die Konstante -7 trägt null bei.",
+            "expectedPerformanceEn": "Obtains f′(x)=12x³-4x+5. Assigns 3·4x³, -2·2x, 5 and 0 to the respective terms; the constant -7 contributes zero.",
+            "understandingFocusDe": "Regelgerechte Ableitung mit sichtbar erhaltenen Vorzeichen und Faktoren.",
+            "understandingFocusEn": "Rule-based differentiation with signs and factors visibly preserved."
+          },
+          {
+            "id": "rearranged-polynomial",
+            "taskDemandDe": "Leite g(x)=(x-2)(x+1)+x² mithilfe der Potenz-, Faktor- und Summenregel ab; bereite die Polynomdarstellung dafür geeignet auf.",
+            "taskDemandEn": "Differentiate g(x)=(x-2)(x+1)+x² using the power, constant multiple and sum rules; first put the polynomial into a suitable form.",
+            "expectedPerformanceDe": "Formt gültig zu x²-x-2+x²=2x²-x-2 um und erhält g′(x)=4x-1. Erläutert, warum die Umformung dieselbe Funktion erhält und die Konstante in der Ableitung wegfällt.",
+            "expectedPerformanceEn": "Validly rewrites it as x²-x-2+x²=2x²-x-2 and obtains g′(x)=4x-1. Explains why the rearrangement preserves the function and why the constant disappears in the derivative.",
+            "understandingFocusDe": "Den Zugang über eine äquivalente Polynomstruktur selbstständig wählen.",
+            "understandingFocusEn": "Independently choose an approach through an equivalent polynomial structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+      "reason": "Die Fälle trennen Funktionswert, Tangentensteigung und momentane Sachrate; negativer und verschwindender Ableitungswert werden inhaltlich unterschiedlich gedeutet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Eine Steigung an einem Punkt beschreibt keinen ganzen Zeitabschnitt. Es werden weder Tangentengleichungen noch ein vollständiges Extremwertkriterium als zusätzliche Leistungen verlangt."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "value-versus-slope",
+            "essentialUnderstandingDe": "f(x₀) gibt eine Höhe oder einen Bestand an, f′(x₀) die Tangentensteigung und lokale Änderungsrate; die Einheiten unterscheiden sich.",
+            "essentialUnderstandingEn": "f(x₀) gives a height or amount, while f′(x₀) gives the tangent slope and local rate of change; their units differ.",
+            "observablePerformanceDe": "Erläutert die beiden Werte getrennt am Punkt und im Sachkontext mit den jeweiligen Einheiten.",
+            "observablePerformanceEn": "Explains the two values separately at the point and in context with their respective units."
+          },
+          {
+            "id": "local-rate-meaning",
+            "essentialUnderstandingDe": "Eine negative Ableitung bedeutet momentane Abnahme, eine Ableitung null eine horizontale Tangente; daraus folgt keine konstante Funktion in einer Umgebung.",
+            "essentialUnderstandingEn": "A negative derivative means instantaneous decrease, while a zero derivative means a horizontal tangent; neither implies a constant function in a neighbourhood.",
+            "observablePerformanceDe": "Deutet Vorzeichen oder Nullwert lokal und formuliert die Grenze dessen, was daraus über benachbarte Zeitpunkte folgt.",
+            "observablePerformanceEn": "Interprets the sign or zero value locally and states the limit of what it implies about neighbouring times."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "value-versus-slope",
+            "local-rate-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sign-and-context",
+            "textDe": "Eine negative Ortsänderungsrate gegen einen horizontalen Tangentenfall bei veränderlichem Volumen variieren.",
+            "textEn": "Vary a negative position rate against a horizontal-tangent case with changing volume."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "position-rate",
+            "taskDemandDe": "Für eine Bewegung auf einer Zahlengeraden sind zur Zeit t=3 s die Angaben s(3)=12 m und s′(3)=-2 m/s gegeben. Deute beide Werte und die Tangente im t-s-Diagramm.",
+            "taskDemandEn": "For motion on a number line, at t=3 s the data are s(3)=12 m and s′(3)=-2 m/s. Interpret both values and the tangent in the t-s diagram.",
+            "expectedPerformanceDe": "Erklärt: Die Position ist 12 m, die momentane Ortsänderungsrate beträgt -2 m/s; die Bewegung erfolgt in negativer Koordinatenrichtung. Die Tangente hat in diesen Achseneinheiten Steigung -2, nicht die Höhe -2; der Wert bestimmt keine konstante Geschwindigkeit für ein längeres Intervall.",
+            "expectedPerformanceEn": "Explains that position is 12 m and instantaneous position rate is -2 m/s, indicating motion in the negative coordinate direction. The tangent has slope -2 in these axis units, not height -2; the value does not determine constant velocity over a longer interval.",
+            "understandingFocusDe": "Eine negative Ableitung als lokale Sachrate statt als Funktionswert lesen.",
+            "understandingFocusEn": "Read a negative derivative as a local contextual rate rather than a function value."
+          },
+          {
+            "id": "zero-volume-rate",
+            "taskDemandDe": "Ein glatter Volumengraph zeigt V(5 min)=100 L und dort eine horizontale Tangente. Bei 4 und 6 min sind jeweils 101 L markiert. Deute V′(5) und prüfe die Aussage, das Volumen sei deshalb während 4≤t≤6 konstant.",
+            "taskDemandEn": "A smooth volume graph shows V(5 min)=100 L and a horizontal tangent there. At 4 and 6 min, 101 L is labelled. Interpret V′(5) and check the claim that the volume is therefore constant throughout 4≤t≤6.",
+            "expectedPerformanceDe": "Gibt V′(5)=0 L/min an und beschreibt eine momentane Änderungsrate null bei einem Bestand von 100 L. Die markierten Werte 101 L widerlegen die behauptete Konstanz auf dem ganzen Intervall; eine punktweise Rate bleibt eine lokale Aussage.",
+            "expectedPerformanceEn": "Gives V′(5)=0 L/min and describes an instantaneous rate of zero at a volume of 100 L. The labelled values of 101 L refute the claimed constancy over the whole interval; a pointwise rate remains a local statement.",
+            "understandingFocusDe": "Eine horizontale Tangente korrekt interpretieren, ohne den Nullwert zu verallgemeinern.",
+            "understandingFocusEn": "Interpret a horizontal tangent correctly without generalizing the zero value."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+      "reason": "Aus x-abhängigen bzw. konstanten Tangentensteigungen wird die neue Zuordnung x↦f′(x) erklärt; endlich viele Punkte werden nicht zur eindeutigen Funktionsrekonstruktion erklärt.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die gegebenen einfachen Funktionsvorschriften oder die vollständige Geradenstruktur tragen die Zuordnung. Eine Tabelle einzelner Ableitungswerte allein bestimmt keine beliebige Ableitungsfunktion."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "new-assignment",
+            "essentialUnderstandingDe": "Die Ableitungsfunktion ordnet jeder Stelle, an der die Ableitung existiert, deren Ableitungswert zu; ihre y-Werte sind Steigungen der Ausgangsfunktion.",
+            "essentialUnderstandingEn": "The derivative function assigns each input where the derivative exists its derivative value; its y-values are slopes of the original function.",
+            "observablePerformanceDe": "Erklärt den Rollenwechsel von einem einzelnen Steigungswert zu der Zuordnung x↦f′(x) und stellt passende Paare dieser neuen Zuordnung dar.",
+            "observablePerformanceEn": "Explains the transition from an individual slope value to the assignment x↦f′(x) and represents suitable pairs of that new assignment."
+          },
+          {
+            "id": "function-supported-generalization",
+            "essentialUnderstandingDe": "Eine bekannte Funktionsstruktur begründet den Zusammenhang für variable x; wenige berechnete Werte illustrieren ihn nur.",
+            "essentialUnderstandingEn": "Known function structure justifies the relationship for variable x; a few calculated values only illustrate it.",
+            "observablePerformanceDe": "Verbindet einzelne Ableitungswerte mit einer durch Term oder Graphstruktur begründeten Ableitungsfunktion und unterscheidet beide Graphen.",
+            "observablePerformanceEn": "Connects individual derivative values to a derivative function justified by expression or graph structure and distinguishes the two graphs."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "new-assignment",
+            "function-supported-generalization"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "varying-to-constant",
+            "textDe": "Veränderliche Steigungen einer Parabel gegen überall gleiche Steigungen einer Geraden variieren.",
+            "textEn": "Vary changing parabola slopes against a straight line's constant slopes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parabola-slope-assignment",
+            "taskDemandDe": "Für f(x)=x²-1 auf R: Erläutere anhand der Stellen -2,-1,0,1, wie aus einzelnen Ableitungswerten eine Ableitungsfunktion entsteht. Begründe die Zuordnung auch für variables x.",
+            "taskDemandEn": "For f(x)=x²-1 on R, explain using inputs -2,-1,0,1 how individual derivative values form a derivative function. Also justify the assignment for variable x.",
+            "expectedPerformanceDe": "Ordnet die Ableitungswerte -4,-2,0,2 den Stellen zu und erklärt f′(x)=2x aus der bekannten Termstruktur. Die Punkte (-2|-4),(-1|-2),(0|0),(1|2) liegen auf dem Ableitungsgraphen; dessen Ordinaten sind nicht die Höhen x²-1 des Ausgangsgraphen.",
+            "expectedPerformanceEn": "Assigns derivative values -4,-2,0,2 to the inputs and explains f′(x)=2x from the known expression structure. Points (-2,-4),(-1,-2),(0,0),(1,2) lie on the derivative graph; their ordinates are not the original heights x²-1.",
+            "understandingFocusDe": "Den variablen Steigungswert als Funktionswert einer neuen Funktion begreifen.",
+            "understandingFocusEn": "Understand variable slope values as values of a new function."
+          },
+          {
+            "id": "constant-slope-assignment",
+            "taskDemandDe": "Der vollständige Graph einer affinen Funktion ist eine Gerade durch (-1|5) und (1|11). Erläutere ihre Ableitungsfunktion und skizziere deren Graphen, ohne die Höhe der Ausgangsgeraden als Ableitungswert zu verwenden.",
+            "taskDemandEn": "The complete graph of an affine function is a straight line through (-1,5) and (1,11). Explain its derivative function and sketch its graph without treating the original line's height as a derivative value.",
+            "expectedPerformanceDe": "Bestimmt die überall gleiche Steigung (11-5)/2=3 und erklärt die Zuordnung x↦3. Zeichnet die horizontale Gerade y=3 als Ableitungsgraphen; die sich ändernden Höhen der Ausgangsgeraden sind davon verschieden.",
+            "expectedPerformanceEn": "Determines the everywhere constant slope (11-5)/2=3 and explains the assignment x↦3. Draws the horizontal line y=3 as the derivative graph; the changing original line heights are different quantities.",
+            "understandingFocusDe": "Die neue Funktionszuordnung auch bei konstantem statt variablem Ableitungswert erklären.",
+            "understandingFocusEn": "Explain the new functional assignment when the derivative value is constant rather than variable."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+      "reason": "Die beiden Richtungen f→f′ und f′→f werden mit Vorzeichenwechsel und einem stationären Nicht-Extrempunkt sichtbar.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Strenges Wachstum impliziert nicht f′>0 an jeder einzelnen Stelle; x³ ist der konkrete Gegenfall. Ein Ableitungsgraph legt außerdem keine absolute Höhe von f fest. Das Profil ergänzt keine Pflicht zur zweiten Ableitung."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "slope-sign-course",
+            "essentialUnderstandingDe": "Vorzeichen von f′ beschreiben lokale Steigungsrichtung; auf einem Intervall trägt f′>0 bzw. f′<0 steigenden bzw. fallenden Verlauf. Die Höhe von f ist keine Ableitungsinformation.",
+            "essentialUnderstandingEn": "Signs of f′ describe local slope direction; on an interval, f′>0 or f′<0 supports increasing or decreasing behaviour. The height of f is not derivative information.",
+            "observablePerformanceDe": "Leitet aus dem gegebenen f-Graphen passende Vorzeichen-/Verlaufsaussagen über f′ ab und aus einem f′-Graphen Aussagen über das Steigen oder Fallen von f.",
+            "observablePerformanceEn": "Derives suitable sign/course statements about f′ from a given f graph and statements about f increasing or decreasing from an f′ graph."
+          },
+          {
+            "id": "stationary-versus-extremum",
+            "essentialUnderstandingDe": "Eine stationäre Stelle f′=0 allein ist kein Extremum; ein Wechsel der Steigungsrichtung unterscheidet Extremstellen von stationären Durchgängen.",
+            "essentialUnderstandingEn": "A stationary input f′=0 alone is not an extremum; a change in slope direction distinguishes extrema from stationary passages.",
+            "observablePerformanceDe": "Unterscheidet anhand des Graphverlaufs oder Vorzeichenwechsels Extremstellen von einem Nullwert ohne Richtungswechsel und benennt nicht festgelegte Höhen.",
+            "observablePerformanceEn": "Uses graph behaviour or sign changes to distinguish extrema from a zero without a direction change and states which heights remain undetermined."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "slope-sign-course",
+            "stationary-versus-extremum"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direction-and-zero",
+            "textDe": "Von einem f-Graphen mit zwei Extremstellen zu einem f′-Graphen mit isolierter Nullstelle ohne Vorzeichenwechsel wechseln.",
+            "textEn": "Change from an f graph with two extrema to an f′ graph with an isolated zero and no sign change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cubic-graph-to-derivative",
+            "taskDemandDe": "Gegeben ist der exakt spezifizierte Graph f(x)=x³-3x mit Hochpunkt (-1|2), Tiefpunkt (1|-2) und dem durch den Term festgelegten Verlauf. Beschreibe daraus Vorzeichen und qualitative Entwicklung von f′, ohne eine zweite Ableitung zu verlangen.",
+            "taskDemandEn": "Given the exactly specified graph f(x)=x³-3x with local maximum (-1,2), local minimum (1,-2) and the course fixed by the expression, describe the sign and qualitative course of f′ without requiring a second derivative.",
+            "expectedPerformanceDe": "Beschreibt f′>0 für x<-1 und x>1, f′<0 für -1<x<1 und Nullwerte bei ±1. Verknüpft +→- mit dem Hochpunkt und -→+ mit dem Tiefpunkt; beschreibt anhand der Tangentensteigungen das Fallen von f′ bis x=0 und anschließende Steigen. 3x²-3 ist ein passender Kontrollterm, aber keine zweite Ableitung nötig.",
+            "expectedPerformanceEn": "States f′>0 for x<-1 and x>1, f′<0 for -1<x<1 and zeros at ±1. Links +→- to the local maximum and -→+ to the local minimum; describes f′ decreasing to x=0 and then increasing using tangent slopes. 3x²-3 is a suitable checking expression, but no second derivative is needed.",
+            "understandingFocusDe": "Graphischen Verlauf in Vorzeichen und Entwicklung der Steigungswerte übersetzen.",
+            "understandingFocusEn": "Translate graphical behaviour into signs and development of slope values."
+          },
+          {
+            "id": "derivative-with-touching-zero",
+            "taskDemandDe": "Gegeben ist der Graph f′(x)=3x² auf R, eine nach oben geöffnete Parabel mit Scheitel (0|0). Was folgt für Monotonie und eine mögliche Extremstelle von f bei 0? Ist f(0) dadurch bestimmt? Ein passendes einfaches f darf zur Erläuterung genutzt werden.",
+            "taskDemandEn": "Given the graph f′(x)=3x² on R, an upward-opening parabola with vertex (0,0), what follows about monotonicity and a possible extremum of f at 0? Does this determine f(0)? A suitable simple f may be used to explain.",
+            "expectedPerformanceDe": "Erklärt: f steigt links und rechts und insgesamt streng, bei 0 ist die Tangente horizontal, aber es gibt keinen Vorzeichenwechsel und kein Extremum. f(x)=x³+C illustriert dies; C und damit f(0) sind nicht festgelegt. Der isolierte Nullwert widerspricht strengem Wachstum nicht.",
+            "expectedPerformanceEn": "Explains that f increases on both sides and strictly overall; the tangent is horizontal at 0, but there is no sign change and no extremum. f(x)=x³+C illustrates this; C and hence f(0) are undetermined. The isolated zero does not contradict strict increase.",
+            "understandingFocusDe": "Aus f′ begründete qualitative Aussagen gewinnen, ohne einen Nullwert oder die Höheninformation zu überdehnen.",
+            "understandingFocusEn": "Derive justified qualitative statements from f′ without overextending a zero or the height information."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "reason": "Der Stammfunktionsbegriff wird durch überprüfbare Beziehungen F′=f und durch nicht eindeutige Funktionshöhen positiv beschrieben.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Nur einfache vorgegebene Beispiele werden auf die Definitionsbeziehung geprüft. Das Profil verlangt keine systematische Integration, Flächenberechnung oder vollständige Stammfunktionenfamilie."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "antiderivative-relation",
+            "essentialUnderstandingDe": "F ist eine Stammfunktion von f auf einem Intervall, wenn F dort differenzierbar ist und F′(x)=f(x) gilt; F und f müssen nicht dieselben Funktionswerte haben.",
+            "essentialUnderstandingEn": "F is an antiderivative of f on an interval if F is differentiable there and F′(x)=f(x); F and f need not have the same function values.",
+            "observablePerformanceDe": "Prüft einfache vorgegebene Funktionsterme durch Ableiten und formuliert die Beziehung in der richtigen Richtung.",
+            "observablePerformanceEn": "Checks simple supplied expressions by differentiation and states the relationship in the correct direction."
+          },
+          {
+            "id": "constant-height-freedom",
+            "essentialUnderstandingDe": "Additive Konstanten verändern die Ableitung nicht; deshalb kann dieselbe Funktion mehrere verschieden hoch liegende Stammfunktionen besitzen.",
+            "essentialUnderstandingEn": "Additive constants do not change the derivative, so one function can have multiple antiderivatives at different vertical positions.",
+            "observablePerformanceDe": "Erläutert an einfachen Beispielen, warum gleiche Ableitungen trotz verschiedener Funktionswerte möglich sind.",
+            "observablePerformanceEn": "Explains through simple examples why identical derivatives are possible despite different function values."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "antiderivative-relation",
+            "constant-height-freedom"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "given-function",
+            "textDe": "Eine nicht konstante Ausgangsfunktion gegen die Nullfunktion variieren und dabei Funktionshöhe von Ableitung trennen.",
+            "textEn": "Vary a nonconstant original function against the zero function while separating function height from derivative."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-antiderivatives",
+            "taskDemandDe": "Für f(x)=2x auf R werden F(x)=x²+3 und H(x)=x²-4 vorgeschlagen. Prüfe beide als Stammfunktionen und erkläre, warum ihre unterschiedlichen Werte kein Widerspruch sind.",
+            "taskDemandEn": "For f(x)=2x on R, F(x)=x²+3 and H(x)=x²-4 are proposed. Check both as antiderivatives and explain why their different values are not a contradiction.",
+            "expectedPerformanceDe": "Zeigt F′=H′=2x=f und nennt beide Stammfunktionen. Erklärt, dass die Differenz 7 konstant ist und beim Ableiten verschwindet; verlangt wird F′=f, nicht F=f.",
+            "expectedPerformanceEn": "Shows F′=H′=2x=f and identifies both as antiderivatives. Explains that the difference 7 is constant and disappears under differentiation; the requirement is F′=f, not F=f.",
+            "understandingFocusDe": "Die Definitionsbeziehung und ihre fehlende Eindeutigkeit an einer einfachen Funktion erläutern.",
+            "understandingFocusEn": "Explain the defining relationship and its nonuniqueness for a simple function."
+          },
+          {
+            "id": "zero-function",
+            "taskDemandDe": "Für f(x)=0 auf dem offenen Intervall (-2,2) stehen F(x)=5 und G(x)=x zur Auswahl. Entscheide anhand der Stammfunktionsdefinition und erläutere die Graphbedeutung.",
+            "taskDemandEn": "For f(x)=0 on the open interval (-2,2), the candidates are F(x)=5 and G(x)=x. Decide using the definition of an antiderivative and explain the graphical meaning.",
+            "expectedPerformanceDe": "Erklärt: F′=0, also ist F eine Stammfunktion, obwohl F den Wert 5 hat. G′=1≠0, also passt G nicht. Der waagrechte Graph von F hat an jeder Stelle Steigung null; auch jede andere konstante Höhe würde passen.",
+            "expectedPerformanceEn": "Explains that F′=0, so F is an antiderivative although its value is 5. G′=1≠0, so G does not fit. F's horizontal graph has zero slope at every input; any other constant height would also fit.",
+            "understandingFocusDe": "Funktionswert null von Ableitung null unterscheiden.",
+            "understandingFocusEn": "Distinguish a zero function value from a zero derivative."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+      "reason": "Tangentengleichung, Berührpunkt und Winkel werden aus derselben lokalen Steigung konsistent bestimmt.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Fälle vereinbaren den vorzeichenbehafteten Steigungswinkel α=arctan(m) in (-90°,90°). Andere korrekt erklärte Geradenwinkelkonventionen sind mathematisch möglich; der Zieltext legt keine Konvention fest."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "tangent-point-slope",
+            "essentialUnderstandingDe": "Die Tangente an einer differenzierbaren Stelle x₀ geht durch (x₀,f(x₀)) und hat Steigung f′(x₀).",
+            "essentialUnderstandingEn": "The tangent at a differentiable input x₀ passes through (x₀,f(x₀)) and has slope f′(x₀).",
+            "observablePerformanceDe": "Bestimmt Punkt und Ableitungswert und stellt damit eine passende Tangentengleichung auf; kontrolliert Punkt und Steigung.",
+            "observablePerformanceEn": "Determines the point and derivative value, constructs a suitable tangent equation and checks its point and slope."
+          },
+          {
+            "id": "slope-angle",
+            "essentialUnderstandingDe": "Steigung und Winkel beziehen sich auf dieselbe Geradenrichtung; bei gleicher Koordinatenskalierung gilt tan(α)=m in der vereinbarten Winkelkonvention.",
+            "essentialUnderstandingEn": "Slope and angle describe the same line direction; with equal coordinate scaling, tan(α)=m under the agreed angle convention.",
+            "observablePerformanceDe": "Berechnet den zugehörigen Winkel mit korrektem Vorzeichen und Rundung und erläutert seine Beziehung zum Anstieg oder Abfall der Tangente.",
+            "observablePerformanceEn": "Calculates the corresponding angle with correct sign and rounding and explains its relation to the tangent rising or falling."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "tangent-point-slope",
+            "slope-angle"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "function-and-sign",
+            "textDe": "Eine steigende Parabeltangente gegen eine fallende Tangente einer reziproken Funktion variieren.",
+            "textEn": "Vary an increasing parabola tangent against a decreasing tangent of a reciprocal function."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rising-tangent-angle",
+            "taskDemandDe": "Bestimme für f(x)=x² bei x₀=1 die Tangentengleichung und den Winkel α=arctan(m)∈(-90°,90°). Die x- und y-Einheiten sind gleich skaliert.",
+            "taskDemandEn": "For f(x)=x² at x₀=1, determine the tangent equation and angle α=arctan(m)∈(-90°,90°). The x- and y-units use equal scaling.",
+            "expectedPerformanceDe": "Berechnet P(1|1), f′(1)=2 und y-1=2(x-1), also y=2x-1. Erhält α≈63,43° und bestätigt, dass die steigende Tangente durch P geht.",
+            "expectedPerformanceEn": "Calculates P(1,1), f′(1)=2 and y-1=2(x-1), hence y=2x-1. Obtains α≈63.43° and checks that the rising tangent passes through P.",
+            "understandingFocusDe": "Steigung, Gleichung und Winkel konsistent verknüpfen.",
+            "understandingFocusEn": "Connect slope, equation and angle consistently."
+          },
+          {
+            "id": "falling-reciprocal-angle",
+            "taskDemandDe": "Bestimme unabhängig für g(x)=1/x bei x₀=1 die Tangente und ihren Winkel in derselben Konvention bei gleich skalierten Achsen.",
+            "taskDemandEn": "Independently determine the tangent to g(x)=1/x at x₀=1 and its angle under the same convention with equally scaled axes.",
+            "expectedPerformanceDe": "Erhält P(1|1), g′(1)=-1, y-1=-(x-1), also y=-x+2. Gibt α=-45° an und deutet den negativen Winkel als fallende Geradenrichtung; prüft Punkt und Steigung.",
+            "expectedPerformanceEn": "Obtains P(1,1), g′(1)=-1, y-1=-(x-1), hence y=-x+2. Gives α=-45° and interprets the negative angle as a falling line direction; checks point and slope.",
+            "understandingFocusDe": "Bei anderer Funktionsstruktur und negativem Winkel dieselbe Beziehung anwenden.",
+            "understandingFocusEn": "Apply the same relationship to a different function structure and a negative angle."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "reason": "Geradengleichungen werden in einfachen geometrischen Kontexten verwendet, einschließlich des vertikalen Normalen-Sonderfalls.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Normalen werden im gewöhnlichen euklidischen Koordinatensystem mit gleich großen x-/y-Einheiten betrachtet. Bei waagrechter Tangente ist x=x₀ nötig; eine endliche Normalensteigung wird nicht erfunden."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "tangent-normal-equations",
+            "essentialUnderstandingDe": "Tangente und Normale gehen durch denselben Graphpunkt; bei endlicher von null verschiedener Tangentensteigung m ist die Normalensteigung -1/m.",
+            "essentialUnderstandingEn": "The tangent and normal pass through the same graph point; for a finite nonzero tangent slope m, the normal slope is -1/m.",
+            "observablePerformanceDe": "Bestimmt beide Geraden aus Punkt und Ableitung und behandelt bei m=0 die vertikale Normale gesondert.",
+            "observablePerformanceEn": "Determines both lines from the point and derivative and handles the vertical normal separately when m=0."
+          },
+          {
+            "id": "use-local-lines",
+            "essentialUnderstandingDe": "Die Tangente beschreibt die lokale Richtung, die Normale eine dazu senkrechte Richtung; ihre Gleichungen ermöglichen einfache geometrische Anschlussberechnungen.",
+            "essentialUnderstandingEn": "The tangent describes local direction and the normal a perpendicular direction; their equations support simple geometric attachment calculations.",
+            "observablePerformanceDe": "Verwendet die berechneten Geraden für die konkret gefragte Lage im Modell und kontrolliert Berührpunkt sowie Orthogonalität.",
+            "observablePerformanceEn": "Uses the calculated lines to answer the specified position question in the model and checks the contact point and perpendicularity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "tangent-normal-equations",
+            "use-local-lines"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "normal-orientation",
+            "textDe": "Eine schräg verlaufende Normale gegen eine vertikale Normale an einem Scheitel variieren.",
+            "textEn": "Vary an oblique normal against a vertical normal at a vertex."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ramp-guide",
+            "taskDemandDe": "Ein zweidimensionales Rampenmodell ist y=x² mit beiden Achsen in Metern und gleicher Skalierung. Bei P mit x=1 sollen eine gerade tangentiale Führung und eine dazu senkrechte Strebe verlaufen. Bestimme beide Geraden und den Schnittpunkt der Normalen mit dem Boden y=0.",
+            "taskDemandEn": "A two-dimensional ramp model is y=x² with both axes in metres and equal scaling. At P with x=1, a straight tangential guide and a perpendicular brace are required. Determine both lines and the normal's intersection with ground y=0.",
+            "expectedPerformanceDe": "Ermittelt P(1|1), mT=2, Tangente y=2x-1 und Normale y=-x/2+3/2. Findet den Bodenpunkt (3|0), bestätigt den gemeinsamen Punkt und mT·mN=-1. Verwendet die Geraden lokal, nicht als exakte Rampenform überall.",
+            "expectedPerformanceEn": "Finds P(1,1), mT=2, tangent y=2x-1 and normal y=-x/2+3/2. Finds ground point (3,0), checks the common point and mT·mN=-1. Uses the lines locally, not as the exact ramp shape everywhere.",
+            "understandingFocusDe": "Tangentengleichung und senkrechte Anschlussrichtung im Modell verwenden.",
+            "understandingFocusEn": "Use a tangent equation and a perpendicular attachment direction in a model."
+          },
+          {
+            "id": "vertex-support",
+            "taskDemandDe": "Ein Profil ist y=(x-2)²+1 mit gleich skalierten Meterachsen. Am Scheitel soll eine tangentiale Schiene und eine normale Stütze bis y=0 liegen. Bestimme Geraden und Fußpunkt.",
+            "taskDemandEn": "A profile is y=(x-2)²+1 with equally scaled metre axes. At its vertex, a tangential rail and a normal support extending to y=0 are required. Determine the lines and the foot point.",
+            "expectedPerformanceDe": "Bestimmt S(2|1), mT=0 und die Tangente y=1. Die Normale ist x=2, nicht eine Gerade mit endlicher Steigung -1/0; ihr Fußpunkt ist (2|0). Erklärt die waagrechte bzw. senkrechte Richtung.",
+            "expectedPerformanceEn": "Determines S(2,1), mT=0 and tangent y=1. The normal is x=2, not a line with finite slope -1/0; its foot point is (2,0). Explains the horizontal and vertical directions.",
+            "understandingFocusDe": "Die Normalenidee im Sonderfall ohne endliche Normalensteigung erhalten.",
+            "understandingFocusEn": "Preserve the idea of a normal in the special case without a finite normal slope."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "reason": "Sekante, Tangente und Normale werden unterschieden und ihre Richtungen mit einer expliziten Winkelkonvention verknüpft.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Für nichtvertikale Geraden wird α=arctan(m) in (-90°,90°) verwendet. Eine vertikale Normale hat keine endliche Steigung; ihr ungerichteter Winkel zur Horizontalen beträgt gesondert 90°."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "three-slopes",
+            "essentialUnderstandingDe": "Sekantensteigung gehört zu zwei verschiedenen Stellen, Tangentensteigung zur Ableitung an einer Stelle und Normalenrichtung zur Senkrechten auf diese Tangente.",
+            "essentialUnderstandingEn": "Secant slope belongs to two distinct inputs, tangent slope to the derivative at one input and normal direction to the perpendicular to that tangent.",
+            "observablePerformanceDe": "Berechnet die passenden Steigungen mit ihren jeweiligen Bezugspunkten und kennzeichnet den vertikalen Normalenfall ohne endliche Steigung.",
+            "observablePerformanceEn": "Calculates the appropriate slopes with their reference points and identifies a vertical normal as having no finite slope."
+          },
+          {
+            "id": "angles-and-direction",
+            "essentialUnderstandingDe": "Der Steigungswinkel einer nichtvertikalen Geraden folgt aus ihrer Steigung unter einer festgelegten Winkelkonvention; vertikale Richtungen sind gesondert zu behandeln.",
+            "essentialUnderstandingEn": "A nonvertical line's slope angle follows from its slope under a specified angle convention; vertical directions require separate treatment.",
+            "observablePerformanceDe": "Gibt zu den berechneten Richtungen passende Winkel mit Vorzeichen und Einheiten an und unterscheidet Winkel null von vertikaler Richtung.",
+            "observablePerformanceEn": "Gives angles with appropriate signs and units for the calculated directions and distinguishes a zero angle from a vertical direction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "three-slopes",
+            "angles-and-direction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "regular-to-horizontal",
+            "textDe": "Reguläre endliche Steigungen gegen einen Fall mit waagrechter Tangente und vertikaler Normale variieren.",
+            "textEn": "Vary ordinary finite slopes against a case with a horizontal tangent and vertical normal."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-regular-angles",
+            "taskDemandDe": "Für f(x)=x² bestimme die Sekantensteigung zwischen x=0 und x=1 sowie Tangenten- und Normalensteigung bei x=1. Gib bei gleicher Achsenskalierung die Winkel α=arctan(m)∈(-90°,90°) an.",
+            "taskDemandEn": "For f(x)=x², determine the secant slope between x=0 and x=1 and the tangent and normal slopes at x=1. With equal axis scaling, give angles α=arctan(m)∈(-90°,90°).",
+            "expectedPerformanceDe": "Erhält mS=1, mT=2 und mN=-1/2; die Winkel sind 45°, etwa 63,43° und -26,57°. Erläutert den Unterschied zwischen Intervall- und Punktsteigung und die senkrechte Normalenrichtung.",
+            "expectedPerformanceEn": "Obtains mS=1, mT=2 and mN=-1/2; angles are 45°, approximately 63.43° and -26.57°. Explains the distinction between interval and point slopes and the perpendicular normal direction.",
+            "understandingFocusDe": "Drei verschiedene Richtungen anhand ihrer jeweiligen Definition konsistent bestimmen.",
+            "understandingFocusEn": "Determine three different directions consistently from their respective definitions."
+          },
+          {
+            "id": "horizontal-tangent-angles",
+            "taskDemandDe": "Für g(x)=1-x² betrachte die Sekante zwischen x=0 und x=2 und die Tangente samt Normale bei x=0. Bestimme Steigungen und Winkel; nichtvertikale Winkel wie zuvor, vertikale Richtung als ungerichteter Winkel zur Horizontalen.",
+            "taskDemandEn": "For g(x)=1-x², consider the secant between x=0 and x=2 and the tangent and normal at x=0. Determine slopes and angles; use the previous convention for nonvertical angles and the undirected angle to the horizontal for a vertical direction.",
+            "expectedPerformanceDe": "Erhält mS=(-3-1)/2=-2 mit Winkel etwa -63,43°; mT=0 mit Winkel 0°. Die Normale ist vertikal, besitzt keine endliche Steigung und hat ungerichteten Winkel 90° zur Horizontalen. Berechnet keinen Ausdruck -1/0.",
+            "expectedPerformanceEn": "Obtains mS=(-3-1)/2=-2 with angle approximately -63.43°; mT=0 with angle 0°. The normal is vertical, has no finite slope and makes an undirected angle of 90° with the horizontal. Does not calculate -1/0.",
+            "understandingFocusDe": "Bei veränderter Geometrie die Definitionen einschließlich eines Randfalls richtig anwenden.",
+            "understandingFocusEn": "Apply the definitions correctly to changed geometry including a limiting case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "reason": "Der Schnittwinkel wird als Winkel der beiden lokalen Tangenten am gemeinsamen Punkt bestimmt, einschließlich des senkrechten Sonderfalls.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Fälle fragen ausdrücklich nach dem kleineren ungerichteten Winkel zwischen 0° und 90° bei gleicher Achsenskalierung. Ein Nenner null in einer Tangensformel wird nicht als fehlender geometrischer Winkel missverstanden."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "local-intersection-angle",
+            "essentialUnderstandingDe": "Der Schnittwinkel differenzierbarer Graphen am gemeinsamen Punkt ist der Winkel ihrer Tangenten dort, nicht ein Winkel zwischen beliebigen Sekanten.",
+            "essentialUnderstandingEn": "The intersection angle of differentiable graphs at their common point is the angle of their tangents there, not an angle between arbitrary secants.",
+            "observablePerformanceDe": "Bestimmt die beiden Tangentensteigungen an derselben Schnittstelle und nutzt sie zur Berechnung des gefragten kleineren Winkels.",
+            "observablePerformanceEn": "Determines the two tangent slopes at the same intersection and uses them to calculate the requested smaller angle."
+          },
+          {
+            "id": "angle-interpretation",
+            "essentialUnderstandingDe": "Richtungswinkel müssen als Geradenrichtungen verglichen werden; senkrechte Tangenten ergeben 90°, auch wenn eine Quotientenformel dafür nicht definiert ist.",
+            "essentialUnderstandingEn": "Direction angles must be compared as line directions; perpendicular tangents give 90° even when a quotient formula is undefined there.",
+            "observablePerformanceDe": "Interpretiert den Winkel lokal als spitzen oder rechten Schnitt und behandelt senkrechte Richtungen mit einer gültigen geometrischen Begründung.",
+            "observablePerformanceEn": "Interprets the angle locally as an acute or right intersection and handles perpendicular directions with valid geometric reasoning."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "local-intersection-angle",
+            "angle-interpretation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "acute-to-right",
+            "textDe": "Einen Schnitt einer gekrümmten Funktion mit einer Geraden gegen einen orthogonalen Geradenschnitt variieren.",
+            "textEn": "Vary the intersection of a curved function and a line against an orthogonal line intersection."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "acute-graph-intersection",
+            "taskDemandDe": "Bestimme den kleineren Schnittwinkel von f(x)=x² und g(x)=x am gemeinsamen Punkt mit x=1. Die Achsen sind gleich skaliert. Erläutere, welche Richtungen der Winkel vergleicht.",
+            "taskDemandEn": "Determine the smaller intersection angle of f(x)=x² and g(x)=x at their common point with x=1. The axes are equally scaled. Explain which directions the angle compares.",
+            "expectedPerformanceDe": "Prüft P(1|1), erhält m1=2 und m2=1 und berechnet etwa |arctan(2)-arctan(1)|≈18,43°. Deutet dies als lokalen Winkel der Tangenten bei P; andere Schnittstellen werden nicht mit diesem Punkt vermischt.",
+            "expectedPerformanceEn": "Checks P(1,1), obtains m1=2 and m2=1 and calculates, for example, |arctan(2)-arctan(1)|≈18.43°. Interprets this as the local tangent angle at P and does not mix other intersections with this point.",
+            "understandingFocusDe": "Schnittstelle und lokale Tangentenrichtung zusammenhalten.",
+            "understandingFocusEn": "Keep the intersection point and local tangent directions aligned."
+          },
+          {
+            "id": "orthogonal-intersection",
+            "taskDemandDe": "Bestimme unabhängig den kleineren Schnittwinkel der Graphen f(x)=x und g(x)=-x bei (0|0). Begründe das Ergebnis auch für den Fall, dass 1+m1m2=0 ist.",
+            "taskDemandEn": "Independently determine the smaller intersection angle of f(x)=x and g(x)=-x at (0,0). Justify the result when 1+m1m2=0.",
+            "expectedPerformanceDe": "Nennt m1=1,m2=-1 und m1m2=-1. Die Richtungen sind senkrecht und der kleinere Winkel ist 90°. Erklärt, dass eine Tangensquotientenformel mit Nenner null hier gesonderte Behandlung verlangt, nicht einen nicht existierenden Schnittwinkel.",
+            "expectedPerformanceEn": "Gives m1=1,m2=-1 and m1m2=-1. The directions are perpendicular and the smaller angle is 90°. Explains that a tangent-quotient formula with zero denominator requires separate handling here, not that the intersection angle does not exist.",
+            "understandingFocusDe": "Eine besondere Formelgrenze durch die geometrische Bedeutung auflösen.",
+            "understandingFocusEn": "Resolve a formula's special-case limitation through geometric meaning."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "reason": "Lokale Differenzierbarkeit wird an exakt spezifizierten Graphen durch eindeutige lokale Steigung beurteilt; Knick und Sprung sind unterschiedliche Gegenbeispiele.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Ein unscharfes Rasterbild kann eine mathematische Ecke oder Stetigkeit nicht beweisen. Die Fälle geben die Graphstruktur exakt vor. Vertikale Tangenten oder weitere pathologische Beispiele werden nicht als Zusatzpflicht eingeführt."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "unique-local-slope",
+            "essentialUnderstandingDe": "Differenzierbarkeit an einer inneren Stelle verlangt eine gemeinsame endliche lokale Grenzsteigung; zwei verschiedene einseitige Steigungen verhindern sie.",
+            "essentialUnderstandingEn": "Differentiability at an interior input requires a common finite local limiting slope; two different one-sided slopes prevent it.",
+            "observablePerformanceDe": "Beurteilt im gegebenen Graphmodell die lokale Steigung von links und rechts und benennt die Stelle sowie den Grund einer fehlenden Ableitung.",
+            "observablePerformanceEn": "Assesses local slopes from the left and right in the given graph model and states the input and reason for a missing derivative."
+          },
+          {
+            "id": "counterexample-sketch",
+            "essentialUnderstandingDe": "Knick und Sprung verhindern Differenzierbarkeit auf unterschiedliche Weise; gleiche Steigungen getrennter Äste beseitigen einen Sprung nicht.",
+            "essentialUnderstandingEn": "A corner and a jump prevent differentiability in different ways; equal slopes of separated branches do not remove a jump.",
+            "observablePerformanceDe": "Skizziert ein zum Urteil passendes Gegenbeispiel mit korrekter Punktzuordnung und erklärt die entscheidende lokale Eigenschaft.",
+            "observablePerformanceEn": "Sketches a counterexample consistent with the judgement, using correct point inclusion, and explains its decisive local property."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "unique-local-slope",
+            "counterexample-sketch"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "failure-mechanism",
+            "textDe": "Eine stetige Ecke gegen eine unstetige Sprungstelle mit parallelen Ästen variieren.",
+            "textEn": "Vary a continuous corner against a discontinuous jump with parallel branches."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "corner-versus-smooth",
+            "taskDemandDe": "Vergleiche bei x=0 die exakt gegebenen Graphen f(x)=|x| und g(x)=x². Beurteile die lokale Differenzierbarkeit und skizziere den Knick als Gegenbeispiel mit erkennbaren einseitigen Richtungen.",
+            "taskDemandEn": "At x=0 compare the exactly given graphs f(x)=|x| and g(x)=x². Assess local differentiability and sketch the corner as a counterexample with clear one-sided directions.",
+            "expectedPerformanceDe": "Zeichnet den V-förmigen Graphen mit Steigungen -1 links und +1 rechts; f hat bei 0 keine gemeinsame Ableitung. Der Parabelgraph besitzt dort eine horizontale Tangente mit Steigung 0 und ist differenzierbar. Eine horizontale Tangente ist kein Knick.",
+            "expectedPerformanceEn": "Draws the V-shaped graph with slope -1 on the left and +1 on the right; f has no common derivative at 0. The parabola has a horizontal tangent of slope 0 there and is differentiable. A horizontal tangent is not a corner.",
+            "understandingFocusDe": "Einen Richtungsbruch von einer glatten stationären Stelle unterscheiden.",
+            "understandingFocusEn": "Distinguish a break in direction from a smooth stationary point."
+          },
+          {
+            "id": "jump-with-parallel-branches",
+            "taskDemandDe": "Ein Graph ist durch f(x)=x für x<0 und f(x)=x+1 für x≥0 exakt festgelegt. Beurteile Differenzierbarkeit bei 0 und skizziere den Sprung mit offenen bzw. geschlossenen Punkten.",
+            "taskDemandEn": "A graph is exactly specified by f(x)=x for x<0 and f(x)=x+1 for x≥0. Assess differentiability at 0 and sketch the jump using open and closed points.",
+            "expectedPerformanceDe": "Markiert (0|0) offen und (0|1) geschlossen. Benennt den Sprung und damit fehlende Differenzierbarkeit bei 0, obwohl beide Äste Steigung 1 haben. Erklärt, dass die lokale Ableitung die Annäherung an denselben Funktionspunkt voraussetzt.",
+            "expectedPerformanceEn": "Marks (0,0) open and (0,1) closed. Identifies the jump and hence the lack of differentiability at 0, although both branches have slope 1. Explains that a local derivative requires approaching the same function point.",
+            "understandingFocusDe": "Eine andere Ursache fehlender Differenzierbarkeit graphisch begründen.",
+            "understandingFocusEn": "Give a graphical justification for a different cause of nondifferentiability."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "reason": "Einfache Optimierung wird mit einer hergeleiteten Nebenbedingung und mit einer bindenden Randbeschränkung in zwei unabhängigen Kontexten sichtbar.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Es werden nur einfache Modelle mit expliziten Annahmen verwendet. Ein stationärer Punkt außerhalb des zulässigen Bereichs ist keine zulässige Lösung; reale Gültigkeit außerhalb der Aufgabenannahmen wird nicht behauptet."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "objective-and-domain",
+            "essentialUnderstandingDe": "Ein Extremwertproblem benötigt eine zu optimierende Größe, die Nebenbedingungen und einen sachlich zulässigen Variablenbereich.",
+            "essentialUnderstandingEn": "An optimization problem requires an objective quantity, constraints and a contextually admissible variable range.",
+            "observablePerformanceDe": "Übersetzt die gegebenen Bedingungen in eine passende Zielfunktion mit Domain oder erläutert die Bedeutung eines vorgegebenen Modells.",
+            "observablePerformanceEn": "Translates the given conditions into a suitable objective function and domain or explains the meaning of a supplied model."
+          },
+          {
+            "id": "derivative-and-global-check",
+            "essentialUnderstandingDe": "Eine Nullstelle der Ableitung ist nur ein innerer Kandidat; Randwerte und Zulässigkeit entscheiden mit über das gesuchte Optimum.",
+            "essentialUnderstandingEn": "A zero of the derivative is only an interior candidate; endpoint values and admissibility also determine the required optimum.",
+            "observablePerformanceDe": "Untersucht die relevanten Kandidaten mithilfe der Ableitung, begründet das Optimum auf dem zulässigen Bereich und interpretiert die Entscheidung mit passenden Einheiten.",
+            "observablePerformanceEn": "Investigates relevant candidates using the derivative, justifies the optimum on the admissible domain and interprets the decision using appropriate units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "objective-and-domain",
+            "derivative-and-global-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "interior-to-boundary",
+            "textDe": "Ein inneres Flächenmaximum aus einer geometrischen Nebenbedingung gegen ein Randmaximum bei vorgegebener Produktionsgrenze variieren.",
+            "textEn": "Vary an interior area maximum derived from a geometric constraint against a boundary maximum under a stated production limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "wall-enclosure",
+            "taskDemandDe": "Ein rechteckiges Gehege liegt an einer geraden Wand, die keinen Zaun benötigt. Für die zwei gleich langen Tiefenseiten und die gegenüberliegende Breite stehen zusammen 30 m Zaun bereit. Bestimme mit der Ableitung die größtmögliche Fläche und die Seitenlängen.",
+            "taskDemandEn": "A rectangular enclosure lies along a straight wall requiring no fence. A total of 30 m of fence is available for the two equal depth sides and the opposite width. Use the derivative to determine the greatest possible area and side lengths.",
+            "expectedPerformanceDe": "Setzt für Tiefe a und Breite b die Bedingung 2a+b=30, also A(a)=a(30-2a), 0<a<15. Aus A′=30-4a folgt a=7,5 m,b=15 m,A=112,5 m². Begründet das Maximum durch +→- der Ableitung oder die nach unten geöffnete Parabel; die degenerierten Randflächen sind 0.",
+            "expectedPerformanceEn": "For depth a and width b, sets 2a+b=30, hence A(a)=a(30-2a), 0<a<15. From A′=30-4a obtains a=7.5 m,b=15 m,A=112.5 m². Justifies the maximum by the derivative changing +→- or the downward-opening parabola; degenerate endpoint areas are zero.",
+            "understandingFocusDe": "Geometrische Bedingung, zulässige Maße und Ableitungsergebnis konsistent verknüpfen.",
+            "understandingFocusEn": "Connect the geometric constraint, admissible dimensions and derivative result consistently."
+          },
+          {
+            "id": "capacity-limited-profit",
+            "taskDemandDe": "Ein vereinfachtes Gewinnmodell lautet G(q)=-q²+20q-64 in Gewinneinheiten; q bezeichnet produzierte Einheiten und ist auf 0≤q≤8 beschränkt. Bestimme das Gewinnmaximum mit der Ableitung und erläutere auch die Entscheidung, wenn nur ganze q erlaubt sind.",
+            "taskDemandEn": "A simplified profit model is G(q)=-q²+20q-64 in profit units; q denotes units produced and is restricted to 0≤q≤8. Use the derivative to determine maximum profit and also explain the decision when only integer q is permitted.",
+            "expectedPerformanceDe": "Ermittelt G′=20-2q. Der stationäre Kandidat q=10 liegt außerhalb; auf [0,8] ist G′ positiv. Das Maximum liegt deshalb bei q=8 mit G=32, gegenüber G(0)=-64. Dieselbe zulässige Randmenge q=8 maximiert auch für ganze q=0,…,8; eine Kapazität von 10 wird nicht erfunden.",
+            "expectedPerformanceEn": "Finds G′=20-2q. The stationary candidate q=10 is outside the domain; G′ is positive on [0,8]. The maximum is therefore at q=8 with G=32, compared with G(0)=-64. The same admissible boundary quantity q=8 also maximizes over integers q=0,…,8; capacity 10 is not invented.",
+            "understandingFocusDe": "Ein Randoptimum als sachlich richtige Lösung statt eines unzulässigen stationären Punkts begründen.",
+            "understandingFocusEn": "Justify a boundary optimum as the contextually correct solution rather than an inadmissible stationary point."
+          }
+        ]
+      }
+    }
+  ]
+}

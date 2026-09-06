@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `e9445479-c188-5c09-842d-faa5e8678099.jpg`
 
 ## Zweck
@@ -18,22 +18,9 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Präsentationsfolie mit einem hellblauen Kopfbereich oben und einem hellblauen Fußbereich unten rechts. Der Hintergrund der Folie ist weiß. Die Folie ist vertikal in zwei Spalten geteilt durch eine dünne hellblaue Linie.
+# Standalone-Bildrekonstruktion – Potenzregel exemplarisch begründen
 
-Im hellblauen Kopfbereich steht zentriert in schwarzer, fetter, serifenloser Schrift der Titel: "Potenzregel exemplarisch begründen".
+Helle zweispaltige Infografik, weißer Hintergrund, hellblaue Kopf- und Fußflächen, schwarze gut lesbare Schrift, farbige Terme und lockere Erklärungspfeile. Titel „Potenzregel exemplarisch begründen“. Links „Beispiel f(x)=x²“ mit korrekter Grenzwertkette: f′(x)=lim(h→0) ((x+h)²−x²)/h = lim(h→0) (x²+2xh+h²−x²)/h = lim(h→0) (2xh+h²)/h = lim(h→0) h(2x+h)/h = lim(h→0) (2x+h) = 2x. Jeder Bruch hat einen echten, den gesamten Zähler umfassenden Bruchstrich. Sprechblase (x+h)²=x²+2xh+h². Die beiden entgegengesetzten x²-Terme dürfen rot durchgestrichen sein. Keine blauen Durchstreichungen an h, insbesondere niemals den additiven Summanden h in (2x+h) kürzen. Der Faktor h wird nur für h≠0 gekürzt, bevor h gegen null geht. Kurze Labels „h ausklammern & kürzen“ und „Grenzwertbildung (h → 0)“.
 
-Die linke Spalte zeigt eine mathematische Ableitung. Oben links steht in schwarzer, fetter, serifenloser Schrift: "Beispiel f(x) = x²". Darunter folgen mehrere Zeilen mit Gleichungen, die den Grenzwert des Differenzenquotienten berechnen:
-
-1.  Die erste Zeile beginnt mit `f'(x) = lim` mit `h→0` als Index unter `lim`. Die Gleichung ist `(x + h)² - x² / h`. Dabei ist das erste `x` in Rot, das `h` in Grün.
-2.  Die nächste Zeile beginnt mit einem leeren, nach rechts zeigenden Pfeil (schwarze Kontur, weiß gefüllt), gefolgt von `= lim` mit `h→0` als Index. Die Gleichung ist `(x + h)² - x² / h`. Hier sind `x` und `h` in Blau. Rechts daneben befindet sich eine hellgrau umrandete, wolkenförmige Sprechblase mit weißem Hintergrund. Darin steht in schwarzer Schrift: `(x + h)² = x² + 2xh + h²`. Das erste `x²` ist Rot, `2xh` ist Blau, `h²` ist Grün.
-3.  Die dritte Zeile beginnt ebenfalls mit einem leeren, nach rechts zeigenden Pfeil, gefolgt von `= lim` mit `h→0` als Index. Die Gleichung ist `(x² + 2xh + h²) - x² / h`. Das erste `x²` ist Rot und mit einer roten diagonalen Linie durchgestrichen. Das letzte `x²` ist ebenfalls Rot und mit einer roten diagonalen Linie durchgestrichen. Rechts daneben steht in kleinerer schwarzer Schrift: "x² Terme kürzen sich".
-4.  Die vierte Zeile beginnt mit einem leeren, nach rechts zeigenden Pfeil, gefolgt von `= lim` mit `h→0` als Index. Die Gleichung ist `2xh + h² / h`. `2xh` ist Blau, `h²` ist Grün.
-5.  Die fünfte Zeile beginnt mit einem leeren, nach rechts zeigenden Pfeil, gefolgt von `= lim` mit `h→0` als Index. Die Gleichung ist `h(2x + h) / h`. Das `h` im Zähler ist Blau und mit einer blauen diagonalen Linie durchgestrichen. Das `h` im Nenner ist ebenfalls Blau und mit einer blauen diagonalen Linie durchgestrichen. Rechts daneben steht in kleinerer schwarzer Schrift: "h ausklammern & kürzen".
-6.  Die sechste Zeile beginnt mit einem leeren, nach rechts zeigenden Pfeil, gefolgt von `= lim` mit `h→0` als Index. Die Gleichung ist `(2x + h)`. `2x` ist Blau, `h` ist Grün. Unter dem `h` befindet sich eine grüne Wellenlinie, und ein grüner, geschwungener Pfeil zeigt von der Wellenlinie nach rechts unten.
-7.  Die letzte Zeile ist `= 2x` in schwarzer, fetter Schrift. Rechts daneben befindet sich ein gefüllter, schwarzer, nach links zeigender Pfeil, gefolgt von "Grenzwertbildung (h → 0)" in schwarzer Schrift.
-
-Die rechte Spalte enthält eine Einordnung. Oben rechts steht in schwarzer, fetter, serifenloser Schrift: "Einordnung". Darunter steht in schwarzer, fetter mathematischer Notation die allgemeine Potenzregel: `d/dx (xⁿ) = n ⋅ xⁿ⁻¹`.
-Darunter befindet sich ein leerer, nach rechts zeigender Pfeil (schwarze Kontur, weiß gefüllt), dessen rechteckiger Körper den schwarzen Text "Mapping Beispiel" enthält. Rechts vom Pfeil steht in schwarzer, fetter mathematischer Notation die Anwendung der Regel: `n = 2 → 2 ⋅ x²⁻¹ = 2x`.
-
-Im hellblauen Fußbereich der rechten Spalte steht zentriert in schwarzer, serifenloser Schrift: "Der Differenzenquotient begründet die Potenzregel im Beispiel."
+Rechts „Einordnung“: d/dx(xⁿ)=n·xⁿ⁻¹; Beispiel n=2 → 2·x²⁻¹=2x. Abschluss: „Der Differenzenquotient begründet die Potenzregel im Beispiel.“ Kein Anspruch, dieses einzelne Beispiel beweise den Satz für alle ganzen Exponenten. Keine Logos oder Metadaten.
 ```

@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b033-current-carryover-8-v1",
+  "reviewedAt": "2026-09-05T21:17:11Z",
+  "reviewer": "openai-codex-b033-existing-review-positive-candidate-author",
+  "goals": [
+    {
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "reason": "DE: Zwei bestätigende Blindrunden tragen die unveränderte Bestimmungskompetenz; konkrete Fälle wechseln von drei Punktangaben zu einer linearen Beziehung zwischen Funktionswerten. EN: Two confirming blind rounds support the unchanged determination competence; concrete cases change from three point specifications to a linear relationship between function values.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "conditions-to-system",
+            "essentialUnderstandingDe": "Eine Bedingung an f(x)=ax²+bx+c wird durch Einsetzen als lineare Gleichung in a, b und c ausgedrückt; passende unabhängige Bedingungen bestimmen dieselben drei Koeffizienten gemeinsam.",
+            "essentialUnderstandingEn": "A condition on f(x)=ax²+bx+c becomes a linear equation in a, b and c by substitution; suitable independent conditions jointly determine those same three coefficients.",
+            "observablePerformanceDe": "Die lernende Person übersetzt die gegebenen Punkte oder linearen Bedingungen selbstständig in ein Gleichungssystem mit den Unbekannten a, b und c und erläutert jede Gleichung.",
+            "observablePerformanceEn": "The learner independently translates given points or linear conditions into a system with unknowns a, b and c and explains each equation."
+          },
+          {
+            "id": "solve-explain-check",
+            "essentialUnderstandingDe": "Die Lösung des Gleichungssystems muss alle Ausgangsbedingungen gleichzeitig erfüllen; a≠0 sichert, dass der ermittelte Term quadratisch ist.",
+            "essentialUnderstandingEn": "The solution of the system must satisfy all original conditions simultaneously; a≠0 ensures that the resulting expression is quadratic.",
+            "observablePerformanceDe": "Die lernende Person löst das System mit einem nachvollziehbaren Verfahren, erläutert den Ablauf algorithmisch und überprüft den gefundenen Funktionsterm an den ursprünglichen Bedingungen.",
+            "observablePerformanceEn": "The learner solves the system with a transparent method, explains its algorithmic sequence and checks the resulting function expression against the original conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "conditions-to-system",
+            "solve-explain-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "kind-of-condition",
+            "textDe": "Zwischen drei Punkten und einer Kombination aus Punkten und einer Gleichheit zweier Funktionswerte wechseln.",
+            "textEn": "Change between three points and a combination of points and an equality of two function values."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-points",
+            "taskDemandDe": "Bestimme ohne Musterlösung f(x)=ax²+bx+c durch (0|1), (1|0) und (2|3) mit einem linearen Gleichungssystem. Erläutere den Ablauf und prüfe die Bedingungen.",
+            "taskDemandEn": "Without a worked solution, determine f(x)=ax²+bx+c through (0,1), (1,0) and (2,3) using a system of linear equations. Explain the procedure and check the conditions.",
+            "expectedPerformanceDe": "Aus c=1, a+b+c=0 und 4a+2b+c=3 folgt a=2, b=−3, c=1. Die lernende Person erläutert den Lösungsgang und bestätigt alle drei Punktwerte sowie a≠0.",
+            "expectedPerformanceEn": "From c=1, a+b+c=0 and 4a+2b+c=3 it follows that a=2, b=−3, c=1. The learner explains the solution sequence and confirms all three point values and a≠0.",
+            "understandingFocusDe": "Punktbedingungen werden in ein gemeinsames Koeffizientensystem übersetzt und am Funktionsterm geprüft.",
+            "understandingFocusEn": "Point conditions are translated into one coefficient system and checked against the function expression."
+          },
+          {
+            "id": "equal-heights",
+            "taskDemandDe": "Für eine neue Parabel gilt f(0)=1, f(2)=−3 und f(1)=f(3). Bestimme den Term durch ein lineares Gleichungssystem und erläutere besonders die Gleichung aus der letzten Bedingung.",
+            "taskDemandEn": "For a fresh parabola, f(0)=1, f(2)=−3 and f(1)=f(3). Determine the expression using a system of linear equations and explain in particular the equation arising from the final condition.",
+            "expectedPerformanceDe": "c=1, 4a+2b+c=−3 und a+b+c=9a+3b+c liefern a=1, b=−4, c=1. f(1)=f(3)=−2 bestätigt die relative Bedingung. Die Erklärung nennt Aufbau, Lösung und Rückprüfung.",
+            "expectedPerformanceEn": "c=1, 4a+2b+c=−3 and a+b+c=9a+3b+c yield a=1, b=−4, c=1. f(1)=f(3)=−2 confirms the relative condition. The explanation covers construction, solution and checking.",
+            "understandingFocusDe": "Die Bedingungsart wechselt von fest vorgegebenen Punktwerten zu einer Beziehung zweier Werte; Ableitungen sind nicht erforderlich.",
+            "understandingFocusEn": "The condition changes from specified point values to a relationship between two values; derivatives are not required."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "reason": "DE: Baumdiagramm und beide Pfadregeln werden an einer vollständigen Ereignisberechnung verbunden; der Transfer verändert die Abhängigkeit der Stufen. EN: The tree diagram and both path rules are coordinated in a complete event calculation; transfer changes dependence between stages.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "tree-encodes-sequence",
+            "essentialUnderstandingDe": "Ein Pfad beschreibt eine mögliche Ergebnisfolge; die Zweigwahrscheinlichkeiten beziehen sich jeweils auf die nach dem bisherigen Pfad verbleibende Situation und summieren sich an jedem Verzweigungspunkt zu 1.",
+            "essentialUnderstandingEn": "A path describes a possible outcome sequence; branch probabilities refer to the situation remaining after the preceding path and sum to 1 at each branching point.",
+            "observablePerformanceDe": "Die lernende Person zeichnet einen vollständigen Baum des Experiments und begründet die Zweigwahrscheinlichkeiten aus der jeweiligen Versuchssituation.",
+            "observablePerformanceEn": "The learner draws a complete tree of the experiment and justifies branch probabilities from the situation at each stage."
+          },
+          {
+            "id": "event-from-paths",
+            "essentialUnderstandingDe": "Die Wahrscheinlichkeit einer Ergebnisfolge ist das Produkt entlang ihres Pfades; die Wahrscheinlichkeit eines Ereignisses ist die Summe seiner disjunkten Ergebnispfade.",
+            "essentialUnderstandingEn": "The probability of an outcome sequence is the product along its path; an event probability is the sum of its disjoint outcome paths.",
+            "observablePerformanceDe": "Die lernende Person wählt alle und nur die zum Ereignis gehörenden Pfade, berechnet ihre Wahrscheinlichkeiten und begründet Produkt und Summe.",
+            "observablePerformanceEn": "The learner selects all and only the paths belonging to the event, calculates their probabilities and justifies multiplication and addition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "tree-encodes-sequence",
+            "event-from-paths"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "replacement-and-depth",
+            "textDe": "Zurücklegen oder Nichtzurücklegen verändert die Zweigwahrscheinlichkeiten; eine zusätzliche Stufe verändert die Ereignispfade.",
+            "textEn": "Replacement or no replacement changes branch probabilities; an additional stage changes the event paths."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "with-replacement",
+            "taskDemandDe": "Ein Beutel enthält drei rote und zwei blaue Kugeln. Zweimal wird zufällig mit Zurücklegen gezogen. Zeichne den Baum und bestimme begründet die Wahrscheinlichkeit für genau eine rote Kugel.",
+            "taskDemandEn": "A bag contains three red and two blue balls. Two random draws are made with replacement. Draw the tree and justify the probability of exactly one red ball.",
+            "expectedPerformanceDe": "An jeder Stufe gelten 3/5 und 2/5. Die disjunkten Pfade RB und BR haben je 6/25; ihre Summe ist 12/25. Baum und Rechnung stimmen in der zeitlichen Reihenfolge überein.",
+            "expectedPerformanceEn": "At each stage the probabilities are 3/5 and 2/5. The disjoint paths RB and BR each have probability 6/25; their sum is 12/25. The tree and calculation agree on the sequence of stages.",
+            "understandingFocusDe": "Multiplikation innerhalb eines Pfades und Addition verschiedener Zielpfade werden begründet.",
+            "understandingFocusEn": "Multiplication within a path and addition of different event paths are justified."
+          },
+          {
+            "id": "without-replacement",
+            "taskDemandDe": "Ein anderer Durchgang beginnt wieder mit drei roten und zwei blauen Kugeln, jetzt erfolgen drei zufällige Ziehungen ohne Zurücklegen. Erstelle einen neuen Baum und bestimme die Wahrscheinlichkeit für genau zwei rote Kugeln.",
+            "taskDemandEn": "A separate experiment starts again with three red and two blue balls, but now makes three random draws without replacement. Create a new tree and determine the probability of exactly two red balls.",
+            "expectedPerformanceDe": "Die Zweige verwenden die nach jeder Ziehung verbleibenden Anzahlen. RRB, RBR und BRR haben jeweils Wahrscheinlichkeit 1/5; insgesamt ergibt sich 3/5. Unmögliche Pfade werden mit Wahrscheinlichkeit 0 oder als fehlende Zweige dargestellt.",
+            "expectedPerformanceEn": "Branches use the counts remaining after each draw. RRB, RBR and BRR each have probability 1/5, giving a total of 3/5. Impossible paths are represented with probability 0 or omitted branches.",
+            "understandingFocusDe": "Die bedingte Versuchssituation und die Zahl der Ereignispfade ändern sich; die gleichen beiden Pfadregeln bleiben gültig.",
+            "understandingFocusEn": "The conditional trial situation and number of event paths change; the same two path rules remain valid."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e55edcb9-2184-4a24-890e-70cc91028990",
+      "reason": "DE: Der bestehende Zieltext verlangt bereits Simulation, Wahrscheinlichkeitsnäherung und deren stochastische Deutung. Das Profil konkretisiert relative Häufigkeit, Wiederholung und Schwankung als Evidenz dieses Anspruchs. EN: The existing description already requires simulation, probability approximation and its stochastic interpretation. The profile specifies relative frequency, repetition and variation as evidence of that claim.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "DE: Runde B verlangt relative Häufigkeiten, Schwankung und Durchlaufzahl zusätzlich im Zieltext. Diese inhaltlich berechtigten Details werden im V2-Profil ausdrücklich gefordert; der Zieltext benennt mit „als stochastische Approximation deuten“ bereits den zugehörigen Verstehensanspruch. Die vorgeschlagene bilinguale Textersetzung wird als unnötige Verlagerung von Profildetails abgelehnt. EN: Round B asks to add relative frequencies, variation and trial counts to the description. These substantively valid details are explicitly required in the V2 profile; 'interpret ... as stochastic approximation' already names their understanding demand. The proposed bilingual replacement is rejected as an unnecessary transfer of profile detail into the description."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "simulation-model",
+            "essentialUnderstandingDe": "Eine Simulation bildet den Zufallsmechanismus und das betrachtete Ereignis ab; die relative Häufigkeit des Ereignisses in wiederholten Durchläufen schätzt dessen Wahrscheinlichkeit.",
+            "essentialUnderstandingEn": "A simulation represents the random mechanism and event of interest; the event's relative frequency over repeated trials estimates its probability.",
+            "observablePerformanceDe": "Die lernende Person legt selbstständig einen passenden Zufallsmechanismus, ein zählbares Ereignis und eine Wiederholungszahl fest, führt die Simulation mit realen Zufallsmitteln oder digital aus und berechnet Trefferzahl geteilt durch Durchlaufzahl.",
+            "observablePerformanceEn": "The learner independently specifies a suitable random mechanism, a countable event and a number of trials, performs the simulation with physical random devices or digitally and calculates hits divided by trials."
+          },
+          {
+            "id": "stochastic-approximation",
+            "essentialUnderstandingDe": "Unabhängige Simulationsläufe können unterschiedliche Näherungswerte liefern; mehr Durchläufe vermindern die typische Schwankung, garantieren aber weder Exaktheit noch in jedem einzelnen Lauf einen kleineren Fehler.",
+            "essentialUnderstandingEn": "Independent simulation runs can produce different approximations; more trials reduce typical variation but guarantee neither exactness nor a smaller error in every individual run.",
+            "observablePerformanceDe": "Die lernende Person vergleicht unabhängige Läufe und verschiedene Durchlaufzahlen und erläutert an den relativen Häufigkeiten den Näherungscharakter und die beobachtete Schwankung.",
+            "observablePerformanceEn": "The learner compares independent runs and different trial counts and explains approximation and observed variation using their relative frequencies."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "simulation-model",
+            "stochastic-approximation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "random-mechanism",
+            "textDe": "Von unabhängigen Münzwürfen zu Ziehungen ohne Zurücklegen wechseln und die im Modell gespeicherte Situation entsprechend anpassen.",
+            "textEn": "Change from independent coin tosses to draws without replacement and adapt the state tracked by the model."
+          },
+          {
+            "id": "trial-count",
+            "textDe": "Mehrere unabhängige Läufe mit kleiner und größerer Wiederholungszahl vergleichen.",
+            "textEn": "Compare several independent runs with smaller and larger trial counts."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coin-simulation",
+            "taskDemandDe": "Entwirf und führe selbstständig eine Simulation für das Ereignis „mindestens zweimal Kopf bei drei fairen Münzwürfen“ aus. Wähle zwei praktikable Durchlaufzahlen, wiederhole die Läufe unabhängig und erläutere die Näherungswerte.",
+            "taskDemandEn": "Independently design and perform a simulation of the event 'at least two heads in three fair coin tosses'. Choose two practical trial counts, repeat the runs independently and explain the approximations.",
+            "expectedPerformanceDe": "Jeder Durchlauf verwendet drei unabhängige Münzwürfe mit jeweils gleichwahrscheinlichen Ergebnissen Kopf und Zahl und zählt Treffer ab zwei Köpfen. Treffer/Durchläufe liefert jeweils die Schätzung. Die lernende Person erklärt Unterschiede zwischen Läufen und die typischerweise geringere Schwankung bei höherer Durchlaufzahl, ohne einen festen Simulationswert zu verlangen.",
+            "expectedPerformanceEn": "Each trial uses three independent coin tosses, each with equally likely outcomes heads and tails, and counts a hit at two or more heads. Hits/trials gives each estimate. The learner explains differences between runs and typically smaller variation at higher trial counts without requiring a fixed simulated value.",
+            "understandingFocusDe": "Ein konkret passendes Zufallsmodell erzeugt eine relative Häufigkeit mit nachvollziehbarem Näherungscharakter.",
+            "understandingFocusEn": "A specifically appropriate random model produces a relative frequency with a justified approximate interpretation."
+          },
+          {
+            "id": "dependent-draw-simulation",
+            "taskDemandDe": "Entwirf als frische Aufgabe eine Simulation: Aus drei roten und zwei blauen Kugeln werden drei ohne Zurücklegen gezogen; gesucht ist genau zweimal Rot. Führe unabhängige Läufe verschiedener Größe aus und erläutere, wie dein Modell und die Ergebnisdeutung angepasst werden.",
+            "taskDemandEn": "As a fresh task, design a simulation: three balls are drawn without replacement from three red and two blue balls; the event is exactly two red balls. Perform independent runs of different sizes and explain how the model and interpretation are adapted.",
+            "expectedPerformanceDe": "Innerhalb eines Durchlaufs werden gezogene Kugeln entfernt, vor jedem neuen Durchlauf wird der ursprüngliche Beutel wiederhergestellt. Gezählt wird genau zweimal Rot. Die relativen Häufigkeiten werden als schwankende Schätzungen interpretiert und mit zunehmender Laufgröße auf typische Stabilisierung untersucht.",
+            "expectedPerformanceEn": "Drawn balls are removed within a trial, and the original bag is restored before each new trial. Exactly two red balls count as a hit. Relative frequencies are interpreted as fluctuating estimates and examined for typical stabilization as runs become larger.",
+            "understandingFocusDe": "Der Wechsel zu abhängigen Ziehungen verlangt ein verändertes Simulationsmodell; die Interpretation als stochastische Approximation bleibt erhalten.",
+            "understandingFocusEn": "Changing to dependent draws requires an altered simulation model while retaining interpretation as stochastic approximation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+      "reason": "DE: Die Definitionsmenge wird aus Term, vollständigem Graphen und Sachmodell begründet; frische Fälle unterscheiden rechnerische und sachliche Zulässigkeit. EN: The domain is justified from expression, complete graph and contextual model; fresh cases distinguish algebraic and contextual admissibility.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "admissible-inputs",
+            "essentialUnderstandingDe": "Die Definitionsmenge enthält die zugelassenen Eingaben. Nenner dürfen nicht null werden und reelle Quadratwurzeln verlangen nichtnegative Radikanden; im vollständigen Graphen gehören genau die vorkommenden x-Koordinaten dazu.",
+            "essentialUnderstandingEn": "The domain contains admissible inputs. Denominators must be nonzero and real square roots require nonnegative radicands; in a complete graph, exactly the occurring x-coordinates belong to it.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus Term oder vollständig spezifiziertem Graphen die zulässigen x-Werte, begründet Ausschlüsse und notiert offene oder geschlossene Grenzen korrekt.",
+            "observablePerformanceEn": "The learner determines admissible x-values from an expression or fully specified graph, justifies exclusions and records open or closed boundaries correctly."
+          },
+          {
+            "id": "contextual-restrictions",
+            "essentialUnderstandingDe": "Sachbedingungen können die rechnerisch möglichen Eingaben zusätzlich beschränken; ein begrenztes Zeichenfenster allein legt die Definitionsmenge einer Funktion nicht fest.",
+            "essentialUnderstandingEn": "Context can further restrict algebraically possible inputs; a limited plotting window alone does not determine a function's domain.",
+            "observablePerformanceDe": "Die lernende Person leitet sachliche Eingabegrenzen aus der Aufgabenangabe ab und kennzeichnet, welche Beschränkung aus dem Term und welche aus dem Modell stammt.",
+            "observablePerformanceEn": "The learner derives contextual input boundaries from the task information and identifies which restriction comes from the expression and which from the model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "admissible-inputs",
+            "contextual-restrictions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "source-of-restriction",
+            "textDe": "Zwischen algebraischem Ausschluss, vollständig gezeichneten Graphenendpunkten und sachlicher Modellgrenze wechseln.",
+            "textEn": "Change between an algebraic exclusion, fully specified graph endpoints and a contextual model boundary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expression-and-complete-graph",
+            "taskDemandDe": "Bestimme den maximalen reellen Definitionsbereich von f(x)=√(x+1)/(x−2). Ein separat gegebener vollständiger Graph besteht aus einem durchgehenden Bogen von einem ausgefüllten Punkt bei x=−3 bis zu einem offenen Punkt bei x=4. Bestimme auch dessen Definitionsmenge und begründe beide Angaben.",
+            "taskDemandEn": "Determine the maximal real domain of f(x)=√(x+1)/(x−2). A separately supplied complete graph consists of a continuous arc from a filled endpoint at x=−3 to an open endpoint at x=4. Determine that domain too and justify both answers.",
+            "expectedPerformanceDe": "Für den Term gilt x≥−1 und x≠2, also [−1,2)∪(2,∞). Der vollständige Graph hat Definitionsmenge [−3,4). Die Begründung ordnet jede Grenze dem Radikanden, Nenner oder Endpunkt zu.",
+            "expectedPerformanceEn": "For the expression, x≥−1 and x≠2, so the domain is [−1,2)∪(2,∞). The complete graph has domain [−3,4). The justification connects each boundary to the radicand, denominator or endpoint.",
+            "understandingFocusDe": "Die Zulässigkeit wird aus expliziter Information bestimmt und nicht mit dem sichtbaren Zeichenfenster verwechselt.",
+            "understandingFocusEn": "Admissibility is determined from explicit information and distinguished from the visible plotting window."
+          },
+          {
+            "id": "contextual-domain",
+            "taskDemandDe": "Ein Vorratsbehälter enthält anfangs 60 Liter und gibt gleichmäßig 5 Liter pro Minute ab. Das Modell V(t)=60−5t beschreibt nur den Zeitraum vom Öffnen bis zum vollständigen Leeren. Bestimme seinen sachlichen Definitionsbereich und vergleiche ihn mit dem maximalen reellen Definitionsbereich des Terms.",
+            "taskDemandEn": "A tank initially contains 60 litres and releases 5 litres per minute. The model V(t)=60−5t describes only the period from opening to complete emptying. Determine its contextual domain and compare it with the expression's maximal real domain.",
+            "expectedPerformanceDe": "Rechnerisch ist der Term für jedes reelle t definiert. Im Modell beginnt t bei 0 und endet bei 12 Minuten; D=[0,12]. Beide Grenzen folgen aus der beschriebenen Modellphase und sind eingeschlossen.",
+            "expectedPerformanceEn": "Algebraically the expression is defined for every real t. In the model t begins at 0 and ends at 12 minutes, so D=[0,12]. Both boundaries follow from the stated model period and are included.",
+            "understandingFocusDe": "Die neue Einschränkung entsteht aus dem Sachmodell statt aus einer undefinierten Rechenoperation.",
+            "understandingFocusEn": "The new restriction arises from the contextual model rather than an undefined operation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "741a8120-71ad-5f87-b9d8-be9d778b097b",
+      "reason": "DE: Die Wertemenge wird aus tatsächlich angenommenen Ausgaben auf dem vorgegebenen Eingabebereich begründet; der Transfer verändert Randzugehörigkeit und Darstellungsquelle. EN: The range is justified from outputs actually attained on the given input domain; transfer changes endpoint inclusion and representation source.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "attained-output-set",
+            "essentialUnderstandingDe": "Die Wertemenge umfasst genau die von zulässigen Eingaben erzeugten Ausgaben; eine ausgeschlossene Eingabe entfernt einen Ausgabewert nur, wenn ihn keine andere zulässige Eingabe liefert.",
+            "essentialUnderstandingEn": "The range contains exactly the outputs produced by admissible inputs; excluding an input removes an output only if no other admissible input produces it.",
+            "observablePerformanceDe": "Die lernende Person bestimmt alle möglichen y-Werte aus Term, vollständigem Graphen oder Sachkontext und begründet untere und obere Grenze sowie deren Zugehörigkeit.",
+            "observablePerformanceEn": "The learner determines all possible y-values from an expression, complete graph or contextual situation and justifies lower and upper bounds and whether they are included."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "attained-output-set"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "domain-and-endpoints",
+            "textDe": "Den Eingabebereich einschließlich offener und geschlossener Grenzen verändern und die Auswirkung auf tatsächlich angenommene Werte verfolgen.",
+            "textEn": "Change the input domain, including open and closed boundaries, and trace the effect on values actually attained."
+          },
+          {
+            "id": "representation-source",
+            "textDe": "Zwischen Funktionsterm, vollständig spezifiziertem Graphen und Sachmodell wechseln.",
+            "textEn": "Change between a function expression, fully specified graph and contextual model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "restricted-quadratic",
+            "taskDemandDe": "Bestimme die Wertemenge von f(x)=(x−1)²+2 auf D=[−1,3]. Begründe, dass alle angegebenen Werte tatsächlich vorkommen, ohne nur einzelne Werte zu berechnen.",
+            "taskDemandEn": "Determine the range of f(x)=(x−1)²+2 on D=[−1,3]. Justify that every reported value is attained, rather than merely calculating isolated values.",
+            "expectedPerformanceDe": "x−1 durchläuft [−2,2], sein Quadrat genau [0,4], also W=[2,6]. Minimum 2 bei x=1 und Maximum 6 bei x=−1 oder 3 werden angenommen.",
+            "expectedPerformanceEn": "x−1 ranges over [−2,2], its square over exactly [0,4], hence W=[2,6]. The minimum 2 at x=1 and maximum 6 at x=−1 or 3 are attained.",
+            "understandingFocusDe": "Die Wertemenge folgt aus der Termstruktur auf dem gesamten Eingabebereich.",
+            "understandingFocusEn": "The range follows from the expression's structure over the entire input domain."
+          },
+          {
+            "id": "open-bound-and-graph",
+            "taskDemandDe": "Eine frische Aufgabe verwendet denselben Term auf D=(1,3]. Bestimme die neue Wertemenge. Bestimme außerdem die Wertemenge eines separat vollständig gegebenen, streng fallenden durchgehenden Graphenbogens von einem offenen Punkt mit y=5 zu einem ausgefüllten Punkt mit y=−1.",
+            "taskDemandEn": "A fresh task uses the same expression on D=(1,3]. Determine its new range. Also determine the range of a separately supplied complete, strictly decreasing continuous graph arc from an open endpoint at y=5 to a filled endpoint at y=−1.",
+            "expectedPerformanceDe": "Auf (1,3] gilt 0<(x−1)²≤4 und damit W=(2,6]; 2 wird nicht mehr angenommen. Für den vollständigen Bogen gilt W=[−1,5), weil er genau die dazwischenliegenden Höhen durchläuft.",
+            "expectedPerformanceEn": "On (1,3], 0<(x−1)²≤4, giving W=(2,6]; 2 is no longer attained. For the complete arc, W=[−1,5), since it traverses exactly the intermediate heights.",
+            "understandingFocusDe": "Die Änderung der Eingabemenge und der Wechsel zum Graphen verlangen die erneute Prüfung, ob Randwerte tatsächlich angenommen werden.",
+            "understandingFocusEn": "The changed input domain and switch to a graph require a fresh check of whether boundary values are actually attained."
+          },
+          {
+            "id": "contextual-output",
+            "taskDemandDe": "Ein Tankmodell V(t)=60−5t gilt für 0≤t≤12 Minuten, vom Öffnen bis zum Leeren. Bestimme und begründe die möglichen Füllmengen in Litern.",
+            "taskDemandEn": "A tank model V(t)=60−5t applies for 0≤t≤12 minutes, from opening until emptying. Determine and justify the possible volumes in litres.",
+            "expectedPerformanceDe": "Die Füllmenge durchläuft gleichmäßig alle Werte von 60 bis 0 Liter einschließlich beider Grenzen; W=[0,60] Liter. Die Begründung verbindet den gegebenen Zeitbereich mit den erreichbaren Füllmengen.",
+            "expectedPerformanceEn": "The volume passes uniformly through every value from 60 down to 0 litres, including both endpoints; W=[0,60] litres. The justification connects the given time interval to attainable volumes.",
+            "understandingFocusDe": "Sachliche Ausgaben werden auf der bereits vorgegebenen Definitionsmenge interpretiert.",
+            "understandingFocusEn": "Contextual outputs are interpreted on the already specified domain."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a",
+      "reason": "DE: Beide Ableserichtungen bleiben am Graphpunkt (x,f(x)) gebunden; der Transfer umfasst mehrere Urbilder und einen konstanten Abschnitt. EN: Both reading directions remain tied to graph points (x,f(x)); transfer includes multiple preimages and a constant segment.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "read-forward",
+            "essentialUnderstandingDe": "Ein Punkt (x,y) auf einem Funktionsgraphen bedeutet y=f(x); die Achsenbeschriftung und Skalierung bestimmen seine Koordinaten.",
+            "essentialUnderstandingEn": "A point (x,y) on a function graph means y=f(x); axis labels and scales determine its coordinates.",
+            "observablePerformanceDe": "Die lernende Person liest selbstständig zum gegebenen zulässigen x die Graphenhöhe ab und nennt das zugehörige Eingabe-Ausgabe-Paar unter Beachtung der Skalierung.",
+            "observablePerformanceEn": "The learner independently reads the graph height for a given admissible x and states the corresponding input-output pair, taking the scale into account."
+          },
+          {
+            "id": "read-reverse",
+            "essentialUnderstandingDe": "Alle Schnittpunkte der Höhe y mit dem Funktionsgraphen liefern die zugehörigen x-Werte; je nach Graph sind es keine, einer, mehrere oder die Werte eines ganzen konstanten Abschnitts.",
+            "essentialUnderstandingEn": "All intersections of the level y with the function graph give the corresponding x-values; depending on the graph there may be none, one, several or all values of a constant segment.",
+            "observablePerformanceDe": "Die lernende Person liest zu einer vorgegebenen Höhe alle zugehörigen x-Werte vollständig ab und unterscheidet einzelne Werte, Intervalle und eine leere Ergebnismenge.",
+            "observablePerformanceEn": "The learner completely reads all x-values corresponding to a specified height and distinguishes individual values, intervals and an empty result set."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "read-forward",
+            "read-reverse"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "preimage-structure",
+            "textDe": "Vom Graphen ohne konstanten Abschnitt zu einem Graphen mit Plateau und anderer Achsenskalierung wechseln.",
+            "textEn": "Change from a graph without a constant segment to one with a plateau and a different axis scale."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "broken-line-reading",
+            "taskDemandDe": "Gegeben ist nur ein vollständig gezeichneter Funktionsgraph, der geradlinig die Punkte (−2|1), (0|3) und (3|0) verbindet; beide Achsen sind beschriftet. Lies f(1) und alle x-Werte mit f(x)=2 ab und erkläre die beiden Leserichtungen.",
+            "taskDemandEn": "Only a complete plotted function graph is supplied, joining (−2,1), (0,3) and (3,0) by straight segments, with both axes labelled. Read f(1) and every x with f(x)=2 and explain both reading directions.",
+            "expectedPerformanceDe": "f(1)=2; die Höhe 2 wird bei x=−1 und x=1 erreicht. Die Erklärung verfolgt einmal die senkrechte Linie x=1 und einmal die waagerechte Linie y=2.",
+            "expectedPerformanceEn": "f(1)=2; height 2 is attained at x=−1 and x=1. The explanation follows the vertical line x=1 in one direction and horizontal line y=2 in the other.",
+            "understandingFocusDe": "Die Koordinatenbeziehung wird in beiden Richtungen unmittelbar am Graphen gelesen.",
+            "understandingFocusEn": "The coordinate relationship is read directly from the graph in both directions."
+          },
+          {
+            "id": "plateau-reading",
+            "taskDemandDe": "Ein neuer vollständiger Graph verbindet (−2|2), (0|2), (2|−2), (4|2) geradlinig. Eine Rastereinheit entspricht auf der x-Achse 1 und auf der y-Achse 2. Lies f(3), alle x mit f(x)=2 und alle x mit f(x)=−3 ab.",
+            "taskDemandEn": "A fresh complete graph joins (−2,2), (0,2), (2,−2), (4,2) by straight segments. One grid unit represents 1 on the x-axis and 2 on the y-axis. Read f(3), every x with f(x)=2 and every x with f(x)=−3.",
+            "expectedPerformanceDe": "f(3)=0. Zur Höhe 2 gehören alle x aus [−2,0] sowie x=4; zur Höhe −3 gehört kein x. Die lernende Person berücksichtigt die verschiedenen Skalierungen und liest den ganzen konstanten Abschnitt.",
+            "expectedPerformanceEn": "f(3)=0. Height 2 corresponds to every x in [−2,0] and also x=4; height −3 has no corresponding x. The learner accounts for the different scales and reads the entire constant segment.",
+            "understandingFocusDe": "Die umgekehrte Leserichtung liefert jetzt ein Intervall und einen isolierten Wert statt nur einzelner Schnittstellen.",
+            "understandingFocusEn": "Reverse reading now produces an interval and an isolated value rather than only isolated intersections."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+      "reason": "DE: Steigung und Achsenabschnitt werden als gerichtete Änderung pro Eingabeeinheit und Ausgangswert am Graphen und im Sachzusammenhang gedeutet. EN: Slope and intercept are interpreted as signed change per input unit and value at zero in a graph and context.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "slope-and-intercept-meaning",
+            "essentialUnderstandingDe": "Bei f(x)=mx+b gibt m die Änderung von y pro Einheit in x an; b ist der Wert bei x=0. Im Sachzusammenhang hat m die Einheit der Ausgabe pro Eingabeeinheit und b die Einheit der Ausgabe.",
+            "essentialUnderstandingEn": "In f(x)=mx+b, m gives the change in y per unit of x; b is the value at x=0. In context, m has output units per input unit and b has output units.",
+            "observablePerformanceDe": "Die lernende Person erklärt beide Parameter anhand von Graph und einfacher Sachsituation, deutet Vorzeichen und Größen und ordnet die passenden Einheiten zu.",
+            "observablePerformanceEn": "The learner explains both parameters using a graph and a simple contextual situation, interprets signs and magnitudes and assigns the appropriate units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "slope-and-intercept-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "increasing-or-decreasing-context",
+            "textDe": "Von wachsenden Kosten mit Grundbetrag zu einer abnehmenden Füllmenge wechseln; Achsen und Einheiten ändern sich.",
+            "textEn": "Change from increasing costs with a fixed charge to a decreasing volume; axes and units change."
+          },
+          {
+            "id": "axis-scale",
+            "textDe": "Parameter an einem Graphen mit unterschiedlichen Zahlenabständen pro Rastereinheit deuten.",
+            "textEn": "Interpret parameters on a graph with different numerical increments per grid unit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rental-cost",
+            "taskDemandDe": "Ein linearer Mietpreis wird durch C(t)=4+3t für t≥0 beschrieben; t zählt Stunden und C Euro. Der zugehörige Graph ist gegeben. Erläutere am Graphen und im Kontext die Bedeutung von 4 und 3.",
+            "taskDemandEn": "A linear rental charge is described by C(t)=4+3t for t≥0, with t in hours and C in euros. The corresponding graph is supplied. Explain the meanings of 4 and 3 in the graph and context.",
+            "expectedPerformanceDe": "4 Euro ist die Grundgebühr bei t=0 und der y-Achsenabschnitt. 3 Euro pro Stunde ist die Steigung: pro weiterer Stunde steigt der Preis um 3 Euro. Die Erklärung ordnet Grundbetrag und Änderung den entsprechenden Graphenmerkmalen zu.",
+            "expectedPerformanceEn": "4 euros is the fixed charge at t=0 and the y-intercept. 3 euros per hour is the slope: each additional hour increases the cost by 3 euros. The explanation connects the fixed amount and change to the corresponding graph features.",
+            "understandingFocusDe": "Der Achsenabschnitt benennt einen Betrag, die Steigung einen Betrag pro Zeiteinheit.",
+            "understandingFocusEn": "The intercept names an amount, whereas the slope names an amount per unit of time."
+          },
+          {
+            "id": "draining-tank-graph",
+            "taskDemandDe": "Ein frischer linearer Graph zeigt den Inhalt eines sich leerenden Tanks. Eine Rastereinheit bedeutet horizontal 2 Minuten und vertikal 10 Liter. Die Gerade verläuft durch (0|60) und (4|40). Deute Steigung und y-Achsenabschnitt mit Einheiten und erkläre das Vorzeichen der Steigung.",
+            "taskDemandEn": "A fresh linear graph shows the contents of a draining tank. One grid unit represents 2 minutes horizontally and 10 litres vertically. The line passes through (0,60) and (4,40). Interpret slope and y-intercept with units and explain the slope's sign.",
+            "expectedPerformanceDe": "Der Achsenabschnitt 60 Liter ist die anfängliche Füllmenge. Die Änderung beträgt −20 Liter in 4 Minuten, also −5 Liter pro Minute; das negative Vorzeichen bedeutet Abnahme. Die unterschiedlichen Rastermaßstäbe werden in die Deutung einbezogen.",
+            "expectedPerformanceEn": "The intercept of 60 litres is the initial volume. The change is −20 litres over 4 minutes, hence −5 litres per minute; the negative sign means a decrease. The different grid scales are accounted for in the interpretation.",
+            "understandingFocusDe": "Ein abnehmender Zusammenhang und veränderte Achsenskalierung verlangen die inhaltliche Deutung beider Parameter.",
+            "understandingFocusEn": "A decreasing relationship and changed axis scales require contextual interpretation of both parameters."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3f4d1340-1fbb-5109-b9c2-08fc61303133",
+      "reason": "DE: Gegebene Beziehungen werden in einer vorgegebenen geeigneten Darstellungsform vollständig und lesbar umgesetzt; Fälle wechseln zwischen kontinuierlichem Graphen und diskreter Wertetabelle. EN: Given relationships are rendered completely and readably in a specified suitable representation; cases change between a continuous graph and a discrete value table.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "faithful-construction",
+            "essentialUnderstandingDe": "Eine Darstellung codiert dieselben gegebenen Werte und Beziehungen; Koordinaten, Tabellenzeilen und Skalierung müssen die Informationen konsistent wiedergeben.",
+            "essentialUnderstandingEn": "A representation encodes the same given values and relationships; coordinates, table rows and scale must reproduce the information consistently.",
+            "observablePerformanceDe": "Die lernende Person erstellt aus den Angaben selbstständig die verlangte Wertetabelle oder den Funktionsgraphen und trägt Werte und Beziehungen korrekt ein.",
+            "observablePerformanceEn": "The learner independently creates the requested value table or function graph from the supplied information and enters values and relationships correctly."
+          },
+          {
+            "id": "readable-labels",
+            "essentialUnderstandingDe": "Größenbezeichnungen, Einheiten, Skalen und angegebene Parameter legen fest, wie eine Tabelle oder ein Graph gelesen wird; die Beschriftung muss zur jeweiligen Darstellungsform passen.",
+            "essentialUnderstandingEn": "Quantity labels, units, scales and specified parameters determine how a table or graph is read; labelling must fit the representation.",
+            "observablePerformanceDe": "Die lernende Person beschriftet Achsen beziehungsweise Tabellenspalten, Einheiten und angegebene Parameter so, dass die Darstellung ohne mündliche Zusatzangaben interpretierbar ist.",
+            "observablePerformanceEn": "The learner labels axes or table columns, units and specified parameters so that the representation can be interpreted without additional oral information."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "faithful-construction",
+            "readable-labels"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "continuous-and-discrete",
+            "textDe": "Zwischen einem vorgegebenen kontinuierlichen Funktionszusammenhang als Graph und diskreten Messangaben als Wertetabelle wechseln.",
+            "textEn": "Change between a specified continuous functional relationship shown as a graph and discrete measurements shown as a value table."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "labelled-motion-graph",
+            "taskDemandDe": "Für 0≤t≤4 Sekunden ist die Strecke durch s(t)=v·t mit v=1,5 Metern pro Sekunde gegeben. Erstelle selbstständig den Funktionsgraphen mit geeigneter Skalierung und vollständiger Beschriftung von Größen, Einheiten und Parameter.",
+            "taskDemandEn": "For 0≤t≤4 seconds, distance is given by s(t)=v·t with v=1.5 metres per second. Independently create the function graph with a suitable scale and complete quantity, unit and parameter labels.",
+            "expectedPerformanceDe": "Die Darstellung zeigt das Geradenstück von (0|0) bis (4|6), horizontal t in Sekunden und vertikal s in Metern. Skalen sind eindeutig; v=1,5 m/s ist als angegebener Parameter bezeichnet. Eingetragene Zwischenpunkte stimmen mit der Beziehung überein.",
+            "expectedPerformanceEn": "The representation shows the line segment from (0,0) to (4,6), with t in seconds horizontally and s in metres vertically. Scales are unambiguous; v=1.5 m/s is identified as the specified parameter. Any plotted intermediate points agree with the relationship.",
+            "understandingFocusDe": "Der vorgegebene kontinuierliche Zusammenhang wird informationsgetreu und eigenständig als lesbarer Graph konstruiert.",
+            "understandingFocusEn": "The specified continuous relationship is independently constructed as a readable graph that preserves the information."
+          },
+          {
+            "id": "discrete-table",
+            "taskDemandDe": "Eine neue Aufgabe liefert nur folgende Messangaben: Nach 0, 2 und 4 Minuten betragen die Temperaturen 15, 18 und 17 Grad Celsius. Erstelle daraus eine vollständig beschriftete Wertetabelle; eine Formel zwischen den Messzeiten ist nicht gegeben.",
+            "taskDemandEn": "A fresh task supplies only these measurements: at 0, 2 and 4 minutes the temperatures are 15, 18 and 17 degrees Celsius. Create a fully labelled value table; no formula between the measurement times is supplied.",
+            "expectedPerformanceDe": "Die Tabelle ordnet 0→15, 2→18 und 4→17 korrekt zu; Spalten heißen Zeit t in Minuten und Temperatur θ in °C oder gleichwertig. Sie gibt die drei Messpaare wieder, ohne nicht gegebene Zwischenwerte zu ergänzen.",
+            "expectedPerformanceEn": "The table correctly matches 0→15, 2→18 and 4→17; columns are labelled time t in minutes and temperature θ in °C or equivalent. It records the three measured pairs without adding unspecified intermediate values.",
+            "understandingFocusDe": "Die Darstellungsform und die Informationsstruktur wechseln; sachgerechte Beschriftung erhält die Bedeutung auch bei diskreten Daten.",
+            "understandingFocusEn": "The representation and information structure change; accurate labels preserve meaning for discrete data too."
+          }
+        ]
+      }
+    }
+  ]
+}

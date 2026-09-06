@@ -1,0 +1,3 @@
+Use case: precise-object-edit
+Bild 1 ist der zu korrigierende Kandidat. Entferne ausschließlich die einzelne Zahl „2“ unter der x-Achse der rechten schematischen Grafik und fülle die Stelle mit dem weißen Hintergrund. Der Graph ist ein qualitatives, nicht maßstäblich beziffertes Schema. Behalte die 0 am Ursprung und die 1 an der y-Achse beim Startwert von e^x unverändert. Die Zahl 2 in der LINKEN WERTETABELLE und alle Exponenten ² bleiben selbstverständlich erhalten!
+Beide rechts bereits korrigierten Kurven (blau startet bei 0, rot bei 1 und stets über blau), alle Formeln, Überschriften, Texte, Zeichnungen, Abstände und Farben sonst exakt unverändert. Keine neuen Zahlen, keine Umgestaltung.

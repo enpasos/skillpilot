@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b034-current-carryover-15-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-b034-current-pair",
+  "synthesizedAt": "2026-09-06T06:47:58.622Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906",
+    "batchManifestDigest": "sha256:6e3a4f6fd5dd0bbec1a945dd7ab3b62ac16321521e48d78cb29c902fba144085",
+    "configDigest": "sha256:311fb0209c133aaad3916403b84afc6c4042e6b3a109031ece9ca58756c7a301",
+    "bundleFingerprint": "sha256:370e088cf4360bc619f92ed40ec872b8ef615662bf73b521eee0ecca8d271b03",
+    "bookDigest": "sha256:c608e775d9be88b732a0bf7d059f6a2c1e57becf5cefa91727f5011c12def509",
+    "reviewInputFingerprint": "sha256:8d6def3b303f7d09d31657f7af0919c410190ec938a7cfb3b8ea4e56a7416676",
+    "dualSummaryDigest": "sha256:2915ff1a657c1a4d85b5661a563ffe298412b44b97435425c997e879e457e6d4",
+    "canonicalLandscapeDigest": "sha256:3316c5a2641e99a28087c911d1434c01e6608c5883834f133a1ea7c24ab01f3f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-a",
+      "campaignDigest": "sha256:9e0baaf94e86b212e9b0e86189f45d6f44655b10d7266a4f7e6d841ccaa28dd8",
+      "roundId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:8d6def3b303f7d09d31657f7af0919c410190ec938a7cfb3b8ea4e56a7416676",
+      "batchId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:27794a02989317e4fc656d5d017c28394d18b92a0eb04315331aba9d225af848",
+      "runId": "physics-b034-blind-a-20260906",
+      "runManifestDigest": "sha256:4980816eec1308bcb473c992a484a41f169463206877a472055932237d225421",
+      "resultsDigest": "sha256:fc0d77141887bd97696c5e89d05a36407a06cadf23d797456b61b92c53058e45"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-b",
+      "campaignDigest": "sha256:57617a50e81a2dec7eb75081704c1dd8390fa6043561bed6e8f48fe33bde804e",
+      "roundId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:8d6def3b303f7d09d31657f7af0919c410190ec938a7cfb3b8ea4e56a7416676",
+      "batchId": "physik-rollout-v1-batch-034-next-unresolved-20-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:bea5c7746f81082f8cd25d0efa2de180c2d6803c435d991bc19231f9e4a38271",
+      "runId": "physics-b034-blind-b-20260906",
+      "runManifestDigest": "sha256:2176774da09a2e054fd6e335b60f0858a4b453265d72b6950784cf3cd3efa13e",
+      "resultsDigest": "sha256:f763ca2fdf4d7e7925c80597c339a61c877188eb9160728d4dacf9c840fc8585"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-001",
+      "goalId": "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:91642c5031a0d508c5607b7064fb0f20dd0911d84eb63a97339761846e77255f",
+      "pageFingerprint": "sha256:0f5d2c30c4fca43d8d4d6a23eb73742e48172e90caba8974f91eced1512ccbda",
+      "goalReviewContextFingerprint": "sha256:820f50681b2f5cb1c5debd57c4fb2bfb508d417079a523a9bc49c31542b243ab",
+      "finalText": {
+        "titleDe": "Nuklidschreibweise deuten und Isotope unterscheiden",
+        "titleEn": "Interpret nuclide notation and distinguish isotopes",
+        "descriptionDe": "Die lernende Person kann aus der Nuklidschreibweise mit Massenzahl A und Protonenzahl Z die Protonen- und Neutronenzahl eines Atomkerns bestimmen und Isotope als Kerne desselben Elements mit gleicher Protonen-, aber unterschiedlicher Neutronenzahl begründet unterscheiden.",
+        "descriptionEn": "The learner can use nuclide notation with mass number A and proton number Z to determine an atomic nucleus’s proton and neutron numbers and give a reasoned distinction of isotopes as nuclei of the same element with the same proton number but different neutron numbers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.1",
+          "recordDigest": "sha256:ad031fc65d78bdad09f507ba16d428aa8149221be975609fb9f533d7ef2bcc3d"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-001",
+          "recordDigest": "sha256:ce1541e8fbbf873cc02bb8101ff49e579d0b6dc50d6d01259e0ac2be0ed82447"
+        }
+      },
+      "rationaleDe": "Kernzahlen, Nuklidschreibweise und Isotopenkriterium bilden eine gemeinsame Darstellungskompetenz. Beide Runden bestätigen die aktuelle DE/EN-Fassung. Das Profil verlangt Hin- und Rückübersetzung sowie den Isobaren-Gegenfall; Zerfall, Stabilität und Elektronenbilanz werden nicht hinzugefügt.",
+      "rationaleEn": "Nuclear counts, nuclide notation and the isotope criterion form one representation competence. Both rounds support the current DE/EN wording. The profile requires forward and reverse translation and the isobar counterexample without adding decay, stability or electron accounting."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-002",
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d6e4353e87225abd11845df994899674ab38289189f039b81e350b5da6a4a83f",
+      "pageFingerprint": "sha256:fc32431986c0967c9f59b543081867110642f51c91aab763b16b93f36574d4c2",
+      "goalReviewContextFingerprint": "sha256:23d8d9bd847fc5d3c5d674f898f509e81d43d6bbd0d541fb30c56e7bc12e8037",
+      "finalText": {
+        "titleDe": "Michelson-Morley-Nullbefund historisch einordnen",
+        "titleEn": "Historically Interpret the Michelson–Morley Null Result",
+        "descriptionDe": "Die lernende Person kann den Nullbefund des Michelson-Morley-Versuchs historisch einordnen und erläutern, weshalb er gegen den erwarteten Nachweis eines Ätherwinds sprach, ohne ihn als alleinigen Beweis der Relativitätspostulate zu deuten.",
+        "descriptionEn": "The learner can historically contextualize the null result of the Michelson–Morley experiment and explain why it counted against the expected detection of an ether wind without treating it as stand-alone proof of the postulates of relativity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.2",
+          "recordDigest": "sha256:93e85ba5b2cefa04222f04ecfdc05b33d1ebd64b6b96cccfbe4dc98f8fdcf6a2"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-002",
+          "recordDigest": "sha256:9fa2f8e480fa4230f712afc567ec5c0c24f9c4e0bbd20262706860d436b10240"
+        }
+      },
+      "rationaleDe": "Versuchsbefund und historische Einordnung gehören zu derselben evidenzbezogenen Erklärung. Beide Runden trennen erwartete Ätherwind-Signatur, endliche Messauflösung und spätere Theorie. Die synthetischen Profildaten sind nicht als historische Messwerte ausgegeben; weder Alleinbeweis der Postulate noch alleiniger Einfluss auf Einstein wird behauptet.",
+      "rationaleEn": "The experimental result and its historical place form one evidence-based explanation. Both rounds distinguish the predicted ether-wind signature, finite resolution and later theory. Synthetic profile data are not presented as historical measurements; neither sole proof of the postulates nor sole influence on Einstein is claimed."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-003",
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2a3674a1c5be0c8da7608041fd7a8aa57e63183d79be11b2b83fcfd4e1034a46",
+      "pageFingerprint": "sha256:67161bf96c1a5f8ac97585ad42274e6a6812a8fc63a177d793b744123a9bdf12",
+      "goalReviewContextFingerprint": "sha256:a0e27cae42f4a5ae256fb8da14db5bfc5c386905638716fe339b9d991346fcae",
+      "finalText": {
+        "titleDe": "Quantitative Superposition elektrischer Felder",
+        "titleEn": "Quantitative Superposition of Electric Fields",
+        "descriptionDe": "Die lernende Person kann elektrische Feldstärken vektoriell addieren und Fälle mit parallelen oder orthogonalen Feldern berechnen.",
+        "descriptionEn": "The learner can vectorially add electric field strengths and calculate cases with parallel or orthogonal fields."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.3",
+          "recordDigest": "sha256:e2b5407e82e242070cba7bfc3f72dd559714b2d98d39cd279ceb7ae41b25c0aa"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-003",
+          "recordDigest": "sha256:b35603373c1ff24b01bad3d6fa4bda8e2b49a2fb1d6b4e20a4ef13492a4942c3"
+        }
+      },
+      "rationaleDe": "Die quantitative Vektoraddition von Feldstärken am selben Ort ist klar und bilingual gleichwertig. Kollineare Gegenrichtung und orthogonale Anordnung prüfen die notwendige Richtungsdeutung derselben Kompetenz. Aus den vorgegebenen Feldern wird weder eine zusätzliche Quellfeldberechnung noch eine Teilchenbahnaufgabe.",
+      "rationaleEn": "Quantitative vector addition of field strengths at one location is clear and equivalent in both languages. Opposing collinear and orthogonal configurations test directional meaning within the same competence, without adding source-field calculation or particle trajectories."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-004",
+      "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c792b7b24de880962131087d96bc05432f2c7a74286b469effb12cbf8c30e6df",
+      "pageFingerprint": "sha256:70876f966d8690979e1e4aa820de7631fdf91a7b02aae272cc961f2f1079e315",
+      "goalReviewContextFingerprint": "sha256:ac58350b605e1ad81cd00a490a06a419265b5434768cc15ce36e4e0d8c9c38f8",
+      "finalText": {
+        "titleDe": "Idealen Transformator quantitativ deuten",
+        "titleEn": "Quantitatively interpret the ideal transformer",
+        "descriptionDe": "Die lernende Person kann Aufbau und Funktionsprinzip eines Transformators mit Induktion erklären, beim idealen Transformator Spannungs- und Stromstärkeübersetzungen berechnen und die gegenläufige Übersetzung mit Energieerhaltung begründen.",
+        "descriptionEn": "The learner can explain the structure and function of a transformer using induction, calculate voltage and current ratios for an ideal transformer, and justify inverse ratios with energy conservation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.4",
+          "recordDigest": "sha256:3d126094be441813be609204bc317be3edc073e92a974834a5b5b6ca687302b7"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-004",
+          "recordDigest": "sha256:804ad0355faa6ff5976a80488eea1f5ff25186857451cafcca71ebf9014cd3c4"
+        }
+      },
+      "rationaleDe": "Induktionsprinzip und quantitative ideale Transformatorbeziehungen sind eine kohärente Modellkompetenz. Das Profil setzt verlustlose Übertragung, ohmsche Last und Effektivwerte ausdrücklich voraus und prüft beide Leistungen bei Auf- und Abwärtstransformation. Es fordert keinen Netzspannungsversuch und behauptet keinen Energiegewinn.",
+      "rationaleEn": "Induction and quantitative ideal transformer relations form a coherent modelling competence. The profile explicitly assumes lossless transfer, a resistive load and RMS quantities and checks input and output power for step-up and step-down cases. It requires no mains experiment and claims no energy gain."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-005",
+      "goalId": "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6d009944d84e6d08f723bb8dab237269d6275b6a81a0ed3a468c8700e811b258",
+      "pageFingerprint": "sha256:da624f229e64953026f5adfc297bbc57728ed29821a5b2e9f88fb26ed480827c",
+      "goalReviewContextFingerprint": "sha256:801fe1c6804d386115969d6d857200ceb4f6533686ff639a0cc7e1bfabf342d2",
+      "finalText": {
+        "titleDe": "Totalreflexion und Glasfasern",
+        "titleEn": "Total Reflection and Optical Fibers",
+        "descriptionDe": "Die lernende Person kann das Phänomen der Totalreflexion qualitativ erklären und einfache Anwendungen wie Lichtleitung in Glasfasern deuten.",
+        "descriptionEn": "The learner can qualitatively explain the phenomenon of total reflection and interpret simple applications like light transmission in optical fibers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.5",
+          "recordDigest": "sha256:85f1b87fdfd724716727c3a829bf28a6aea6bdc0b3695e8f9cff80173f395a2b"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-005",
+          "recordDigest": "sha256:f593e0533fbf2b908e80f62f5e5ad98d1973ee89228becc1bb335f9cb0327dd6"
+        }
+      },
+      "rationaleDe": "Totalreflexionsbedingung und Lichtleiteranwendung bilden dieselbe qualitative Grenzflächenerklärung. Beide Runden behalten das Niveau bei. Vorgegebene Grenzwinkel erlauben Medienumkehr und lokale Winkeländerung zu beurteilen, ohne ein neues quantitatives Brechungsgesetz zu verlangen.",
+      "rationaleEn": "The total-internal-reflection condition and light-guide application form the same qualitative interface explanation. Both rounds retain the level. Supplied critical angles allow assessment of reversed media and changed local angles without demanding a new quantitative refraction law."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-006",
+      "goalId": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9f52502676a7ad074cdd062fcf9b6c0430e45b13f9f323577c9041f8ca46d31b",
+      "pageFingerprint": "sha256:1f71409b5e1056a9927e4624999203e537ad4efdceb4a53018a0603b1844a7ab",
+      "goalReviewContextFingerprint": "sha256:3ecd072540670d6cf02c99fffb7fdfd5a4adddb9dcd7082ba73f0980df5c6ac5",
+      "finalText": {
+        "titleDe": "Photonen und Elektronen als Quantenobjekte beschreiben",
+        "titleEn": "Describe Photons and Electrons as Quantum Objects",
+        "descriptionDe": "Die lernende Person kann Photonen und Elektronen als Quantenobjekte beschreiben und ihre Wellen- und Teilcheneigenschaften zur Deutung einfacher quantenphysikalischer Experimente nutzen.",
+        "descriptionEn": "The learner can describe photons and electrons as quantum objects and use their wave and particle properties to interpret simple quantum-physics experiments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.7",
+          "recordDigest": "sha256:b88c049d3f1bfa95857373e4d113c80eb62f0ddcf61299da0935d17cb4356f51"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-007",
+          "recordDigest": "sha256:9a6442f9e24480d7050d54f0e657f04d75f6b4e4105dad94c33b2cf5a6901f4a"
+        }
+      },
+      "rationaleDe": "Der gemeinsame Quantenobjektbegriff an Photonen und Elektronen ist ausdrücklich empirisch begründbar. Einzelregistrierungen und Ensembleverteilung sind unterschiedliche Beobachtungsebenen derselben Erklärung, keine unabhängigen Routinen. Doppelspalt und Kristallbeugung sind Profilvariationen ohne zusätzliche Wellenlängenrechnung oder klassische Bahnbehauptung.",
+      "rationaleEn": "The common quantum-object concept for photons and electrons is explicitly empirically grounded. Single detections and ensemble distributions are different observational levels of one explanation, not independent routines. Double-slit and crystal diffraction provide variations without adding wavelength calculations or classical trajectory claims."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-007",
+      "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b2abb8d489a7639454da5121e952e1e454fb19241cac6e1d767fbd8035f804f1",
+      "pageFingerprint": "sha256:fe57174e26f225311b68fe61a7ef909ae32f0f014d41df6fbeaf8ceb5ffc3b15",
+      "goalReviewContextFingerprint": "sha256:31e3e892ec315c7a740b8fb5c2858a3156fcb987cbd9c16345ffdd8e4e138386",
+      "finalText": {
+        "titleDe": "Die Bedeutung von Modellen an Photon und Elektron reflektieren",
+        "titleEn": "Reflect on the Role of Models Using Photon and Electron",
+        "descriptionDe": "Die lernende Person kann am Beispiel von Photon und Elektron die Bedeutung physikalischer Modelle als Erkenntniswerkzeuge reflektieren und die Reichweite solcher Modelle fachlich einordnen.",
+        "descriptionEn": "The learner can reflect on the role of physical models as tools of understanding using photon and electron and classify the scope of such models in disciplinary terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.8",
+          "recordDigest": "sha256:bf43bdd1afe025276f8ac62de95c7354a5e43a527202f272a85c7298549ec121"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-008",
+          "recordDigest": "sha256:794f816b5ed7fc26dbfd68d960545759bb4d3bb692daf4a85a2c65e49718e324"
+        }
+      },
+      "rationaleDe": "Die Modellreflexion ist gegenüber bloßer Phänomenbeschreibung erkennbar: Beobachtung, Annahme, Erklärungszweck und Grenze werden unterschieden. Beide Runden bestätigen den aktuellen Text. Die Profilauswahl ist beispielhaft; sie erklärt weder eine bestimmte Interpretation zur Pflicht noch fordert sie formale Quantenmechanik.",
+      "rationaleEn": "Model reflection is distinguishable from merely describing phenomena: observation, assumption, explanatory purpose and limits are separated. Both rounds support the current wording. Profile examples neither prescribe one interpretation nor demand formal quantum mechanics."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-008",
+      "goalId": "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e1127c16111f008d48dc9814218f50ada4ab2c75a7d6375bb0e442580bc8dc2f",
+      "pageFingerprint": "sha256:9e745730cb29b07f8f05b1586fc5413feb0592e4aa07d771532159bb39f68dc7",
+      "goalReviewContextFingerprint": "sha256:ef120e7bbcb0ea713f72536233ca2036ddd723b1c5d79bfefcdb7b0b6d8c5fe5",
+      "finalText": {
+        "titleDe": "Ausgewaehltes Forschungsgebiet beschreiben",
+        "titleEn": "Describe a Selected Research Field",
+        "descriptionDe": "Die lernende Person kann Aspekte eines ausgewaehlten aktuellen Forschungsgebiets der Physik und dessen Anwendungen fachlich beschreiben.",
+        "descriptionEn": "The learner can describe aspects of a selected current research field in physics and its applications."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.11",
+          "recordDigest": "sha256:e7226122c4f2e77d620aed9a57776cd313f32fd8c607404795f0b563b9a14064"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-011",
+          "recordDigest": "sha256:a39e6b28fa820238b81903e458ade42c1a78de358b5be9401423e36be627b42d"
+        }
+      },
+      "rationaleDe": "Die Auswahl eines Forschungsgebiets bleibt bewusst offen; eine Festlegung im Zieltext wäre keine Reparatur. Beide Runden verlangen fachliche Beschreibung samt Anwendung, nicht schon die separate quantitative Methodenanwendung. Die konkreten Gravitationswellenfälle bleiben austauschbare AI-Profilbeispiele und unterscheiden Messsignal, Modell und astrophysikalischen Schluss.",
+      "rationaleEn": "The research field is intentionally open; prescribing one in the goal would not be a repair. Both rounds require a scientific description with an application, not yet the separate quantitative application of methods. Concrete gravitational-wave cases remain replaceable AI profile examples distinguishing signal, model and astrophysical inference."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-009",
+      "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e14c92836a6cb9a9dd4d8fe3cba939a327c03b43a91f55bb67c83a73a9c3ff2d",
+      "pageFingerprint": "sha256:afe2adea265518813ea10c4297cdadd08bd611707b0679c2355dea27b91bd782",
+      "goalReviewContextFingerprint": "sha256:3dcbe3a5ab1d94ff8afb2a9fe8153a8745304040363d7e5344fb86a0efa6b08b",
+      "finalText": {
+        "titleDe": "Physikalische Methoden im Forschungsgebiet anwenden",
+        "titleEn": "Apply Physics Methods in a Research Field",
+        "descriptionDe": "Die lernende Person kann fachliche Konzepte, Modelle und Arbeitsweisen aus der Kursstufe auf ein ausgewaehltes Forschungsgebiet uebertragen.",
+        "descriptionEn": "The learner can transfer concepts, models, and methods from upper-secondary physics to a selected research field."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.12",
+          "recordDigest": "sha256:6fe6c853d2c5f655820cfdeb0a83350db6413ea6495fcd44554071661f4c5c06"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-012",
+          "recordDigest": "sha256:16017f7abc69fc24adf7583a872d7b601ccadc15327577919ed517799c38dd90"
+        }
+      },
+      "rationaleDe": "Der eigenständige Kern ist begründeter Transfer bekannter Kursstufenmethoden auf ein ausgewähltes Forschungsproblem. Konzepte und Modelle sind Mittel dieser Leistung, keine verpflichtende Mehrfachliste. Das Profil muss konkrete Größen, Datenvergleich und Grenzen instanziieren; die vorgeschlagenen Forschungsfälle ändern weder kanonische Gebietswahl noch Forschungsbeschreibung des Vorgängerziels.",
+      "rationaleEn": "The distinct core is justified transfer of familiar upper-secondary methods to a selected research problem. Concepts and models are means of this performance, not a mandatory list of separate competences. The profile must instantiate quantities, data comparison and limits; proposed cases change neither the canonical field choice nor the predecessor's research-description competence."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-010",
+      "goalId": "4888444f-4520-437a-9ba7-e74e8f8ed129",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:55afdaf855cd367e6cd1beb0547c6abe7b70c69d07c7107b12b6d6cc69effb55",
+      "pageFingerprint": "sha256:ff79292b3f2731d6cb00f5eb231f42720f28357c591969291f14ec9f934332ed",
+      "goalReviewContextFingerprint": "sha256:1f61a44c1c3468a076539dffae60233ce209ac6523065af56c17e01e13fb8711",
+      "finalText": {
+        "titleDe": "Überlagerungen unabhängiger Schwingungen qualitativ beschreiben",
+        "titleEn": "Qualitatively Describe Superpositions of Independent Oscillations",
+        "descriptionDe": "Die lernende Person kann Überlagerungen unabhängiger Schwingungen qualitativ beschreiben und dabei Verstärkung, Abschwächung und Schwebungen fachlich einordnen.",
+        "descriptionEn": "The learner can qualitatively describe superpositions of independent oscillations and classify reinforcement, attenuation, and beats in disciplinary terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.13",
+          "recordDigest": "sha256:1d82b1d97fb28f04a4dab28607988bc02b409d7c36c3b707186fcdb36471249c"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-013",
+          "recordDigest": "sha256:01602ebeca5d44cffc1b88c7554c6260436fbcf77dc22b636fc1d9be8905bc39"
+        }
+      },
+      "rationaleDe": "Verstärkung, Abschwächung und Schwebung sind Erscheinungen derselben linearen Überlagerung. Beide Runden bewahren die qualitative Begrenzung. Das Profil kontrastiert feste Gegenphase mit wandernder relativer Phase; weder Dämpfung noch Kopplung noch verpflichtende Herleitung einer Schwebungsformel werden ergänzt.",
+      "rationaleEn": "Reinforcement, reduction and beats are manifestations of the same linear superposition. Both rounds preserve the qualitative limitation. The profile contrasts fixed opposite phase with drifting relative phase without adding damping, coupling or mandatory derivation of a beat formula."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-011",
+      "goalId": "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:64dda332dba95ac1301491cddeef839d20418fe77526d043f29711acdef70bb2",
+      "pageFingerprint": "sha256:d16ec0701b90995f005d060f7d0b609d1112272e5534035fa4cad1b3e5b0c6eb",
+      "goalReviewContextFingerprint": "sha256:63a4b6e2eda76dd2fa831a68fc5fcc78bcf788f0c87a2b8cbfa44804adc42be1",
+      "finalText": {
+        "titleDe": "Energie und Impuls von Photonen",
+        "titleEn": "Energy and Momentum of Photons",
+        "descriptionDe": "Die lernende Person kann Zusammenhänge zwischen Energie, Impuls, Frequenz und Wellenlänge von Photonen darstellen und fachlich deuten.",
+        "descriptionEn": "The learner can represent relationships between energy, momentum, frequency, and wavelength of photons and interpret them in disciplinary terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.15",
+          "recordDigest": "sha256:4e395e971c5beaffe02aa5b0dd4cab62dab85fe4fab1a0585f3d7134db0453fe"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-015",
+          "recordDigest": "sha256:54ae213a65a21ef9889d78cd0fbf673a5b12c22089c0de2c617e3a2622744e83"
+        }
+      },
+      "rationaleDe": "Energie, Impuls, Frequenz und Wellenlänge sind zusammenhängende Größen desselben Photons. Darstellen und Deuten sind schon im Text verlangt. Das Profil prüft Vakuumbedingung, Einheiten, inverse Übersetzung und Einzelphoton gegenüber Photonenzahl; Stoß- und Emissionsmodelle bleiben getrennt.",
+      "rationaleEn": "Energy, momentum, frequency and wavelength are related quantities of one photon. Representation and interpretation are already required. The profile tests vacuum conditions, units, inverse translation and individual photon versus photon count, keeping collision and emission models separate."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-012",
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f0083e6c119ae129adf8f4277369d48031d4935033163d1aaf8c01366534ddf3",
+      "pageFingerprint": "sha256:596b2aba59e54ad905ac36f31dcbc88a77855c82d5a26d8c455b1fa6cd76051b",
+      "goalReviewContextFingerprint": "sha256:fa4e416353d410b85771afe67780460a4bcc34586a449a4f6c39756bf21053d4",
+      "finalText": {
+        "titleDe": "Fotöffekt und Einstein-Deutung",
+        "titleEn": "Photoelectric Effect and Einstein's Interpretation",
+        "descriptionDe": "Die lernende Person kann den Fotöffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.",
+        "descriptionEn": "The learner can describe the photoelectric effect, explain Einstein's interpretation, and highlight contradictions to classical wave theory."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.16",
+          "recordDigest": "sha256:b8ba383a304e6b5af2cd2c80d95c862a01e524cbb9f2128baa4445f774a66f92"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-016",
+          "recordDigest": "sha256:860bac5b0657a387e3774b31d07a9d5ff8ed4a3a484f09ed51046fe6c5796f51"
+        }
+      },
+      "rationaleDe": "Phänomen, Einstein-Deutung und Grenze der klassischen Theorie bilden einen zusammenhängenden evidenzbezogenen Erklärungsauftrag. Beide Runden bestätigen die inhaltliche Fassung. Das Profil unterscheidet Schwelle, maximale Energie und Emissionsrate im Einphotonenregime. Die separate h-Auswertung wird nicht vorgezogen; der Titel-Schreibfehler allein erzeugt keine neue inhaltliche Fassung.",
+      "rationaleEn": "The phenomenon, Einstein interpretation and limits of classical theory form one evidence-based explanatory task. Both rounds support the substantive wording. The profile distinguishes threshold, maximum energy and emission rate in the single-photon regime without importing the separate h-analysis. The title's spelling issue alone does not create a new substantive version."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-013",
+      "goalId": "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0a3807a55f559295972f252ea64ddd97c67cf87c3ff6ace1d69de96cedbd3744",
+      "pageFingerprint": "sha256:b230dc4d8babc60ed429c41ce5a3c8c362e7717ec7d72989154a3e7584c8b140",
+      "goalReviewContextFingerprint": "sha256:ee9a8f4138b0fd978a68cc2d14e8994dd53bc52d7ba44108c9031a3fb6274a91",
+      "finalText": {
+        "titleDe": "Wie funktionieren Solarzellen und Lichtsensoren?",
+        "titleEn": "How Do Solar Cells and Light Sensors Work?",
+        "descriptionDe": "Einstieg in die Quantenphysik über Alltagsanwendungen: Die lernende Person kann die Funktionsidee von Solarzellen und Lichtsensoren beschreiben und offene Fragen formulieren.",
+        "descriptionEn": "Entry into quantum physics via everyday applications: the learner can describe the basic idea of solar cells and light sensors and formulate guiding questions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.17",
+          "recordDigest": "sha256:e1535244f7a5a75a473f2a440aee956ead05d016cdd0b7f7e2a2e7482bc19f1b"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-017",
+          "recordDigest": "sha256:3e8f1fc4de5376c471842757bce5c6e28144e9f4eb69c5247f14dda93ca56b3c"
+        }
+      },
+      "rationaleDe": "Das autoritativ als curricularAtomic klassifizierte Einstiegsziel fordert grundlegende Funktionsbeschreibung und sachbezogene offene Fragen. Beide Runden halten diesen AB1-Anspruch; es wird weder zur reinen Orientierung umklassifiziert noch zur vollständigen Halbleitererklärung erweitert. Die Beispiele trennen Energieversorgung und Sensorsignal und erfordern keine gefährliche praktische Arbeit.",
+      "rationaleEn": "This introductory goal is authoritatively classified as curricularAtomic and requires basic functional description and relevant open questions. Both rounds retain this AB1 demand; it is neither reclassified as pure orientation nor expanded to full semiconductor theory. Examples distinguish power supply from sensor signal and require no hazardous practical activity."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-014",
+      "goalId": "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2f79fbcd70874bf7952af6a015d537e07309956a06258dcb5391022cbd09dc78",
+      "pageFingerprint": "sha256:45857ca0c1da0e0e5ee00d857925aa4e72ab3166cd50e69b032515fcf7308bdc",
+      "goalReviewContextFingerprint": "sha256:a16b0b5f7a75c6800d10620799c088848dd8389ab65eef16d64213992d129df2",
+      "finalText": {
+        "titleDe": "De-Broglie-Wellen",
+        "titleEn": "De Broglie Waves",
+        "descriptionDe": "Die lernende Person kann die De-Broglie-Hypothese formulieren, die De-Broglie-Wellenlänge berechnen und die Wellen-Natur von Teilchen qualitativ begründen.",
+        "descriptionEn": "The learner can formulate the De Broglie hypothesis, calculate the De Broglie wavelength, and qualitatively justify the wave nature of particles."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.19",
+          "recordDigest": "sha256:9bd174f75a291d90d656324ea293c475eb1a7b16cdd85a12ce16be6858f77724"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-019",
+          "recordDigest": "sha256:278c6f3ed59ff60879a998dc9e785044e19053fa72a369910e99638756046dbd"
+        }
+      },
+      "rationaleDe": "Hypothese, Wellenlängenberechnung und qualitative Begründung verbinden dieselbe Materiewellenbeziehung mit Beobachtungen. Die aktuelle DE/EN-Fassung ist gleichwertig. Das Profil begrenzt p=mv ausdrücklich auf nichtrelativistische Fälle und prüft Größenordnungen; eine quantitative Kristallbeugung oder sichere Einzelbahn wird nicht hinzugefügt.",
+      "rationaleEn": "The hypothesis, wavelength calculation and qualitative justification connect the same matter-wave relation to observations. Current DE/EN wording is equivalent. The profile explicitly restricts p=mv to nonrelativistic cases and checks scales without adding quantitative crystal diffraction or definite individual trajectories."
+    },
+    {
+      "decisionId": "physics-b034-current-carryover-15-synthesis-20260906-v1-decision-015",
+      "goalId": "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2f48ae3ee9983c9a8615fcd9fe4e1734925c712c72bc00143e27030996f719e8",
+      "pageFingerprint": "sha256:89cc8d9c05163d6421597da382d6056debcffc6f47dd37ace4a3482b25de3a5d",
+      "goalReviewContextFingerprint": "sha256:8dfebfaea73e70e5573b670f29f940082228dc5159473c02196fcf79f7b0a917",
+      "finalText": {
+        "titleDe": "Compton-Effekt",
+        "titleEn": "Compton Effect",
+        "descriptionDe": "Die lernende Person kann den Compton-Effekt qualitativ beschreiben und seine Bedeutung für den Teilchencharakter von Strahlung erläutern.",
+        "descriptionEn": "The learner can qualitatively describe the Compton effect and explain its significance for the particle character of radiation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034-blind-a-20260906.20",
+          "recordDigest": "sha256:20ea17278d11d1463b11cda36aa8f09ee8198c9d4a0a3b9cec3db4a44cd050bd"
+        },
+        "second": {
+          "recordId": "physics-b034-blind-b-20260906-020",
+          "recordDigest": "sha256:b312d5472c53bd6bb114b2992939ba38a29a764515262e9889c38361c5e23375"
+        }
+      },
+      "rationaleDe": "Die Compton-Beschreibung fordert ausdrücklich qualitative Deutung und Bedeutung für den Teilchencharakter. Beide Runden halten diese Grenze auch bei AB3-Metadaten ein. Das Profil verwendet vorgegebene synthetische Spektren und trennt Energie-/Impulsübertrag pro Ereignis von der Ereigniszahl, ohne relativistische Herleitung oder praktische Röntgenarbeit.",
+      "rationaleEn": "The Compton description explicitly requires qualitative interpretation and significance for particle behaviour. Both rounds preserve that boundary despite AB3 metadata. The profile uses supplied synthetic spectra and distinguishes energy/momentum transfer per event from event count, without relativistic derivation or practical X-ray work."
+    }
+  ],
+  "manifestFingerprint": "sha256:476275e88f79d997bfd3fad013f9b681db0c25aa1e2ae3d5276c9e74526090ad"
+}

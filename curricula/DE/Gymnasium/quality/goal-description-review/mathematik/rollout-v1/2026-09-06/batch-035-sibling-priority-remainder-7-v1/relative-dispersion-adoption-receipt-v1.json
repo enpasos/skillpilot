@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b035-relative-dispersion-adoption-v1",
+  "adoptedAt": "2026-09-06T08:36:10.422Z",
+  "authority": "Product-owner permission for genuine, similar low-risk improvements; Layer A only.",
+  "sourceEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-035-sibling-priority-remainder-7-v1/round-b/results/mathematik-rollout-v1-batch-035-sibling-priority-remainder-7-v1-20260906-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:059c8805d860cc1353a9fd2dd9f47cebde8df8b7ba6685272f6a81bba286842f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-035-sibling-priority-remainder-7-v1/source-scope-relative-dispersion-v1.md",
+      "sha256": "sha256:5c52d05ec785d6219606ac821ff722d80f0c99b21a5860a8a4f42d401a97425b"
+    }
+  ],
+  "before": {
+    "g": {
+      "id": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "titleEn": "Compute relative dispersion of binomial distributions (advanced course)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "descriptionEn": "The learner can compute the relative dispersion (coefficient of variation) $\\sigma/\\mu$ of a binomial distribution and show that for fixed $p$ it decreases as $n$ grows (e.g. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+          "title": "Visualisierung: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK).",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)\". Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "a": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "semantic-atomicity-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "fingerprint": "sha256:56d40c23b1149829a65d0cf63460920920a5c3ac41d2c44d71d376ed15d7f7e4",
+      "status": "atomic",
+      "semanticAtomic": true,
+      "reviewedAt": "2026-05-05",
+      "reviewer": "codex",
+      "reason": "Q3-Review: Eine zusammenhaengende Zufallsgroessen- oder Binomialroutine mit einem klar abgrenzbaren Rechen- und Deutungsziel.",
+      "suggestedSplit": []
+    },
+    "m": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "fingerprint": "sha256:d0739484acf78f238d0fd5b8d490fd201175984a240b3c40a2f3d784b1961555",
+      "status": "no_memory_needed",
+      "memoryUseful": false,
+      "reviewedAt": "2026-05-17",
+      "reviewer": "codex-memory-pilot",
+      "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+    },
+    "s": {
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "sourceFingerprint": "sha256:bdafdc272e5f0f1552197ccca11cca1ebe7a72922a0ace5784525dc90cd35813",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    "q": {
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "subject": "mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "assetSha256": "sha256:6f94379b2ef4f34e8509d861fad291fbe811fb596f63111d2e273fbd6b65d174",
+      "umlautsCorrectChatGpt": "no",
+      "contentApprovedChatGpt": "no",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": null,
+      "chatGptReviewer": "",
+      "chatGptNotes": "",
+      "humanReviewedAt": null,
+      "humanReviewer": "",
+      "aiApproved": "yes",
+      "aiApprovedAssetSha256": "sha256:6f94379b2ef4f34e8509d861fad291fbe811fb596f63111d2e273fbd6b65d174",
+      "aiReviewedAt": "2026-07-16T15:49:01.434Z",
+      "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+      "aiNotes": "Alle drei Diagramme zeigen p=0,25; μ=1,4,16, σ≈0,87,1,73,3,46 und die relativen Streuungen 0,87,0,43,0,22 stimmen mit der Formel überein und nehmen korrekt ab."
+    }
+  },
+  "after": {
+    "g": {
+      "id": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "titleEn": "Compute relative dispersion of binomial distributions (advanced course)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "descriptionEn": "The learner can compute the relative dispersion (coefficient of variation) $\\sigma/\\mu$ of a binomial distribution with $n\\ge 1$ and $0<p<1$ and show that for fixed $p$ it decreases as $n$ grows (e.g. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+          "title": "Visualisierung: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK).",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)\". Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "a": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "semantic-atomicity-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "fingerprint": "sha256:5d391750d8280ae3d335a40c5bfb7ffa9c7d30c1e8572479ce499ae1391f78f9",
+      "status": "atomic",
+      "semanticAtomic": true,
+      "reviewedAt": "2026-09-06",
+      "reviewer": "codex-math-b035-relative-dispersion-adoption",
+      "reason": "Erneute fachliche AI-Prüfung der DE/EN-Fassung: Berechnung und Begründung der relativen Binomialstreuung bleiben eine einzige kohärente Kompetenz. Die Grenzen n≥1 und 0<p<1 machen nur den schon behaupteten Abnahmezusammenhang mathematisch gültig. Keine menschliche Einzelabnahme behauptet.",
+      "suggestedSplit": []
+    },
+    "m": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "fingerprint": "sha256:6b64f05ae4fcac636311c9e442a8e1b056ae6a8d949dd12312d9ebedb7729684",
+      "status": "no_memory_needed",
+      "memoryUseful": false,
+      "reviewedAt": "2026-09-06",
+      "reviewer": "codex-math-b035-relative-dispersion-adoption",
+      "reason": "Erneute fachliche AI-Prüfung der DE/EN-Fassung: Der Quotient wird aus μ=np und σ=√(np(1−p)) hergeleitet und an frischen Fällen begründet; die Randbedingung schafft keinen zusätzlichen isolierten Abrufkern und benötigt kein neues Deck. Keine menschliche Einzelabnahme behauptet."
+    },
+    "s": {
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "sourceFingerprint": "sha256:f3cad99168afa1b7b4886494c754f246ae8b0fbbef7a0be061564ae9afedd6db",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    "q": {
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "subject": "mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "visualizationState": "available",
+      "missingReason": "",
+      "imageUrl": "/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+      "assetSha256": "sha256:6f94379b2ef4f34e8509d861fad291fbe811fb596f63111d2e273fbd6b65d174",
+      "umlautsCorrectChatGpt": "no",
+      "contentApprovedChatGpt": "no",
+      "humanApproved": "no",
+      "humanIssueIdentified": "no",
+      "humanIssueDescription": "",
+      "chatGptReviewedAt": null,
+      "chatGptReviewer": "",
+      "chatGptNotes": "",
+      "humanReviewedAt": null,
+      "humanReviewer": "",
+      "aiApproved": "no",
+      "aiApprovedAssetSha256": "",
+      "aiReviewedAt": "2026-09-06T08:36:10.355Z",
+      "aiReviewer": "codex-math-b035-original-image-counterreview",
+      "aiNotes": "Erneute Sichtprüfung: Das Original zeigt für n=4 mehr als fünf Balken und eine unpassende symmetrische Form. Alte AI-Freigabe aufgehoben; gezielte Nano-Banana-Korrektur wird separat geprüft. Zahlenwerte allein sind kein ausreichender Bildnachweis. Keine menschliche Abnahme behauptet."
+    }
+  },
+  "fileDigests": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "before": "sha256:d4c9804d2027d5dc81ad59cff31b9347bdd5f01294028f75b79b2c0542246b66",
+      "after": "sha256:28b5bfa658369bf560f93d5ca09d315263b394e12638e0982d6b7eb61c1ec50c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "before": "sha256:f5b7e54bba243aed51898dee5fbdbc27fc5eb6baa2051552c20d8a88e94b7dbf",
+      "after": "sha256:d113f5ada120cdef7999378ad2ce2cd365b9bf031a26c6cab4cc63aa7fa510a2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "before": "sha256:a7254fe89b66340e9f30f33ef6e9164460ac1b24d31893d954c1950466ffc081",
+      "after": "sha256:abde27265ed82442f2501dcdd4c259385c6535b4327235e0c33fd9a47f3567ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "before": "sha256:a27dcbfdd355556a3bd132b35dddf88b7497a4dc08856807ad1e351968ff73af",
+      "after": "sha256:5b5a9f1e5f05e03cd3c8ef1c049592a283fba88d0101d9d23fc4ef504a9e82e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "before": "sha256:c0d5036bcba4960a7f700677f5e42cc9c292f453c0d7168ba328c8d450fcc4ad",
+      "after": "sha256:2d1e95bb6bfb45ac00afca37ea960da8f6e4a8171ebb924a87952f45e84db6ef"
+    }
+  ],
+  "boundaries": [
+    "Only missing mathematical conditions in DE/EN and matching alt text; IDs, graph, titles, source mappings, applicability and mastery unchanged.",
+    "Atomicity and memory re-evaluated individually. No new normative source coverage asserted.",
+    "Known inaccurate original image loses AI approval. Replacement and final description review remain pending.",
+    "Separate exam coverage debt for 9cf020ee-4f6b-554e-97d6-eca3e2aabe99 is documented in the source-scope audit, not resolved by this change."
+  ]
+}

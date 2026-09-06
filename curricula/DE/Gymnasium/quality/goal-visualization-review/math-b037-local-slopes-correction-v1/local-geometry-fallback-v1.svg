@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2752" height="1536" viewBox="0 0 2048 1143.0697674419" role="img" aria-labelledby="title desc">
+  <title id="title">Sekanten-, Tangenten- und Normalensteigungen bestimmen</title>
+  <desc id="desc">Vorhandene Nano-Banana-Illustration mit örtlich korrigierter Geometrie: Bei f(x)=x² schneiden sich Tangente y=2x−1 und Normale y=−0,5x+1,5 in P(1|1). Bei g(x)=−x² gehen waagerechte Tangente und senkrechte Normale gemeinsam durch den Scheitel.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L12 7 L1 13" fill="none" stroke="#252522" stroke-width="3" stroke-linecap="round"/></marker>
+    <style>
+      .txt {font-family:'DejaVu Sans Condensed',sans-serif;fill:#151513;font-size:27px;}
+      .small {font-size:22px;}
+      .bold {font-weight:bold;}
+      .axis {stroke:#252522;stroke-width:3;fill:none;}
+      .curve {stroke:#e89a46;stroke-width:6;fill:none;stroke-linecap:round;}
+      .tangent {stroke:#5b9950;stroke-width:7;fill:none;stroke-linecap:round;}
+      .normal {stroke:#94589b;stroke-width:7;fill:none;stroke-linecap:round;}
+      .point {fill:#e74442;stroke:#171717;stroke-width:3;}
+    </style>
+  </defs>
+  <image xlink:href="original/7c0dee9b-a827-456d-9f88-b196fc4e9a13.jpg" x="0" y="0" width="2048" height="1143.0697674419"/>
+  <!-- Only the two faulty diagram regions are replaced; original overview remains. -->
+  <rect x="930" y="298" width="678" height="382" fill="#fdf6eb"/>
+  <rect x="930" y="680" width="567" height="209" fill="#fdf6eb"/>
+  <rect x="1375" y="575" width="310" height="82" fill="#fdf6eb"/>
+  <circle cx="1616" cy="510" r="14" fill="#fff" stroke="#151513" stroke-width="4"/>
+  <!-- Uniform u=104; Cartesian origin (1135,730); screen y points down. -->
+  <path class="axis" d="M965 730 H1460" marker-end="url(#arrow)"/>
+  <path class="axis" d="M1135 828 V304" marker-end="url(#arrow)"/>
+  <path class="axis" d="M1239 724 V736 M1343 724 V736 M1129 626 H1141 M1129 522 H1141 M1129 418 H1141"/>
+  <g class="txt small"><text x="1110" y="760">0</text><text x="1232" y="763">1</text><text x="1336" y="763">2</text><text x="1105" y="634">1</text><text x="1105" y="530">2</text><text x="1105" y="426">3</text></g>
+  <text class="txt bold" x="1465" y="754">x</text><text class="txt bold" x="1150" y="328">y</text>
+  <!-- Exact quadratic Bezier of f(x)=x² from x=-1.5 to x=2. -->
+  <path class="curve" d="M979 496 Q1161 1042 1343 314"/>
+  <path class="tangent" d="M1143 818 L1380 344"/>
+  <path class="normal" d="M979 496 L1460 736.5"/>
+  <text class="txt bold" x="1210" y="337" style="fill:#d7832e">f(x)=x²</text>
+  <text class="txt bold" x="1386" y="400" style="fill:#528c46">Tangente</text>
+  <text class="txt bold" x="971" y="468" style="fill:#8a5094">Normale</text>
+  <!-- P=(1,1), H=(2,1), Q=(2,3); rise is exactly twice run. -->
+  <path d="M1239 626 H1343 V418" fill="none" stroke="#c84543" stroke-width="4"/>
+  <circle cx="1343" cy="418" r="5" fill="#5b9950"/>
+  <text class="txt small" x="1357" y="453">Q(2|3)</text>
+  <text class="txt small" x="1357" y="650">H(2|1)</text>
+  <text class="txt small" x="1260" y="611" style="fill:#bd3938">Δx = 1</text>
+  <text class="txt" x="1361" y="529" style="fill:#bd3938">Δy = 2</text>
+  <!-- Square spanned by normalized perpendicular tangent/normal vectors. -->
+  <path d="M1248.8387 606.3226 L1229.1613 596.4839 L1219.3226 616.1613" fill="none" stroke="#252522" stroke-width="3"/>
+  <circle class="point" cx="1239" cy="626" r="9"/>
+  <text class="txt bold" x="1172" y="574">P(1|1)</text>
+  <text class="txt bold" x="1394" y="603">mₜ = f′(1) = 2</text>
+  <!-- Small inset: all directions share one vertex; no parallel displaced normal. -->
+  <rect x="1525" y="770" width="479" height="327" fill="#fff"/>
+  <text class="txt" x="1554" y="812" style="fill:#3193a7">g(x)=−x²</text>
+  <path class="axis" d="M1630 944 H1845" marker-end="url(#arrow)"/>
+  <path class="axis" d="M1740 1070 V823" marker-end="url(#arrow)"/>
+  <path d="M1655 1055.15385 Q1740 832.84615 1825 1055.15385" stroke="#3193a7" stroke-width="5" fill="none"/>
+  <path class="normal" d="M1740 833 V1065"/>
+  <path class="tangent" d="M1635 944 H1834"/>
+  <path class="axis" d="M1740 944 H1761 V923"/>
+  <circle class="point" cx="1740" cy="944" r="6"/>
+  <text class="txt small bold" x="1665" y="922">(0|0)</text>
+  <text class="txt small bold" x="1760" y="847" style="fill:#8a5094">Normale</text>
+  <text class="txt small" x="1553" y="988">Tangente:</text>
+  <text class="txt" x="1553" y="1023">mₜ = 0</text>
+  <text class="txt small" x="1860" y="941"><tspan x="1860">Steigung</tspan><tspan x="1860" dy="28">der</tspan><tspan x="1860" dy="28">Normalen</tspan><tspan x="1860" dy="28">nicht</tspan><tspan x="1860" dy="28">definiert</tspan></text>
+</svg>

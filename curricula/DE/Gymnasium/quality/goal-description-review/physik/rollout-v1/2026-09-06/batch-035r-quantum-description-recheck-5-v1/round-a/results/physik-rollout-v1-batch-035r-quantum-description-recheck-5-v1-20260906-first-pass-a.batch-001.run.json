@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b035r-recheck-a-20260906",
+  "campaignId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-a",
+  "roundId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e96b900b4929bf3199814f89f004e14161b2c4d657cad32c07b937bf8589573b",
+  "bundleFingerprint": "sha256:d4db156c0254e29a399371a0bb18a4f61cfcd05a395edff9685d42dc1b6b72a5",
+  "bookDigest": "sha256:ad062e4f39d758ccf0c9b097d5f60390cb31afcd5239831ed81c4e07ae87c7dc",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c2c84483e6bac8b77deaeb36c4a432dfd090d2aa84b1b1f44ac1369d07409a4c",
+  "independenceGroupId": "physik-rollout-v1-batch-035r-quantum-description-recheck-5-v1-20260906-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "51bc5513-6879-548f-b19a-9746b667f1a3",
+    "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+    "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+    "aef1e312-6a0c-5323-9202-c22ae84086f2",
+    "43adaa0b-1f37-5d55-a496-6900555274a1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e96b900b4929bf3199814f89f004e14161b2c4d657cad32c07b937bf8589573b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-06T07:51:48Z",
+  "completedAt": "2026-09-06T07:53:58Z",
+  "status": "completed",
+  "outputDigest": "sha256:c91bc6322bfe01388995b807bdc5c48a494add6d7e13a8dc5ebd240c74b75f16",
+  "toolchainVersion": "codex-agent"
+}

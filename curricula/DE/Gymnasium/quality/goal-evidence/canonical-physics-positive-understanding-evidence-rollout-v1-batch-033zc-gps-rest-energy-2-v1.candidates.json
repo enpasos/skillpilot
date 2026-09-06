@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b033zc-gps-rest-energy-2-v1",
+  "reviewedAt": "2026-09-06T04:42:12Z",
+  "reviewer": "codex-physics-b033zc-positive-evidence-author-2026-09-06",
+  "goals": [
+    {
+      "goalId": "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+      "reason": "DE: Das Profil bindet die aktuelle präzisierte GPS-Beschreibung. Es konkretisiert Uhrvergleich, gegensinnige Beiträge und Positionsgenauigkeit in einer vereinfachten Laufzeitbeschreibung. Der B033zb-Synthesehinweis dient als begrenzter Quellenkontext, nicht als neue unabhängige Review-Runde. EN: The profile binds the current clarified GPS description. It makes clock comparison, opposing contributions, and positioning accuracy concrete through a simplified signal-timing account. The B033zb synthesis note supplies bounded source context, not a new independent review round.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "DE: Die begrenzte Reconciliation in curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033zb-relativity-current-context-recheck-9-v1/source-reconciliation.md unterscheidet erhaltene HE-GPS-Autorierungsprovenienz von RP-Lehrplanankern zur gravitativen Zeitabhängigkeit und ergänzender NIST-Fachinformation. Eine vollständige bundesweite Quellen-/Projektionsprüfung und ein ausdrückliches amtliches HE-GPS-Gebot werden damit nicht behauptet. EN: The bounded reconciliation in the named note distinguishes retained HE GPS authoring provenance from RP curricular anchors on gravitational time dependence and supplementary NIST physical information. It establishes neither a complete nationwide source/projection audit nor an explicit official HE requirement to teach GPS."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "competing-clock-rate-contributions",
+            "essentialUnderstandingDe": "In der üblichen GPS-Näherung verlangsamt die Bewegung den Gang einer Satellitenuhr gegenüber einer erdgebundenen Zeitreferenz, während ihr höheres Gravitationspotenzial ihn beschleunigt. Der Gesamteffekt hängt von beiden Beiträgen ab. Ein Gangunterschied erzeugt über die Zeit einen anwachsenden Zeitversatz; einmaliges Synchronisieren beseitigt den Gangunterschied nicht.",
+            "essentialUnderstandingEn": "In the usual GPS approximation, motion slows the rate of a satellite clock relative to an Earth-based time reference, while its higher gravitational potential speeds it up. The net effect depends on both contributions. A rate difference produces an accumulating time offset; synchronizing once does not remove the rate difference.",
+            "observablePerformanceDe": "Die lernende Person bezeichnet die verglichenen Uhren und die gemeinsame Zeitreferenz, unterscheidet selbstständig Ursache und Vorzeichen der beiden Beiträge und sagt aus ihrem Größenverhältnis Vorlauf oder Nachlauf voraus. Bei geänderten Bahnangaben begründet sie, weshalb der bisherige Korrekturterm neu geprüft werden muss.",
+            "observablePerformanceEn": "The learner identifies the clocks being compared and their common time reference, independently distinguishes the causes and signs of the two contributions, and predicts whether the satellite clock gains or loses time from their relative sizes. For changed orbital information, they explain why the previous correction term must be reassessed."
+          },
+          {
+            "id": "clock-time-to-position",
+            "essentialUnderstandingDe": "GPS nutzt Sende- und Empfangszeitangaben für Entfernungsinformationen. Im vereinfachten Modell mit korrekt referenzierter Empfängeruhr, bekannten Satellitenpositionen und vernachlässigten Ausbreitungsfehlern verfälscht ein Satellitenzeitfehler die zugeordnete Signallaufzeit und damit die Entfernung. Die Positionslösung nutzt mehrere Satelliten; ein einzelner Entfernungsfehler legt noch keinen bestimmten Positionsfehler fest.",
+            "essentialUnderstandingEn": "GPS uses transmission and reception time readings to obtain range information. In a simplified model with a correctly referenced receiver clock, known satellite positions, and negligible propagation errors, a satellite timing error distorts the assigned signal travel time and hence the range. The position solution uses several satellites; one range error does not yet determine a particular position error.",
+            "observablePerformanceDe": "Die lernende Person erläutert eigenständig die Kette Gangabweichung, Zeitversatz, zugeordnete Laufzeit, Entfernung und Positionsgenauigkeit. Sie sagt im angegebenen Modell das Vorzeichen des Entfernungsfehlers voraus, vergleicht den verbleibenden Zeitfehler mit einer angegebenen Genauigkeitsanforderung und nennt fehlende Angaben sowie die Grenzen dieser vereinfachten Bewertung.",
+            "observablePerformanceEn": "The learner independently explains the chain from rate difference through time offset, assigned travel time, and range to positioning accuracy. They predict the sign of the range error within the stated model, compare the residual timing error with a supplied accuracy requirement, and identify missing information and the limits of this simplified assessment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "competing-clock-rate-contributions",
+            "clock-time-to-position"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "balance-of-contributions",
+            "textDe": "Die dominierende Ursache wechselt vom beschleunigenden Gravitationsbeitrag zum verlangsamenden Bewegungsbeitrag.",
+            "textEn": "The dominant cause changes from the speeding gravitational contribution to the slowing motion contribution."
+          },
+          {
+            "id": "correction-state",
+            "textDe": "Die Ausgangsaufgabe behandelt nur anfängliche Synchronisation, die Transferaufgabe einen auf eine andere Bahn übertragenen zeitabhängigen Korrekturterm.",
+            "textEn": "The initial task concerns synchronization only at the start; the transfer task concerns a time-dependent correction term carried over to another orbit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "usual-gps-balance-and-accumulating-error",
+            "taskDemandDe": "Ein vereinfachtes GPS-Modell vergleicht eine Satellitenuhr mit einer erdgebundenen Zeitreferenz. Die Uhren sind anfangs synchronisiert; danach fehlt jede Gangkorrektur. Für die betrachtete Bahn ist der beschleunigende Gravitationsbeitrag größer als der verlangsamende Bewegungsbeitrag. Die Empfängeruhr zeigt die Referenzzeit korrekt an; Satellitenpositionen sind bekannt, Ausbreitungsfehler werden vernachlässigt. Im betrachteten Betriebsintervall überschreitet der unkorrigierte Zeitversatz die für präzise Entfernungsmessung zulässige Zeitunsicherheit. Erkläre die Entwicklung und ihre Bedeutung für die Positionsbestimmung.",
+            "taskDemandEn": "A simplified GPS model compares a satellite clock with an Earth-based time reference. The clocks are synchronized initially, but no rate correction is applied afterward. For the orbit considered, the speeding gravitational contribution is larger than the slowing motion contribution. The receiver clock correctly shows reference time; satellite positions are known, and propagation errors are neglected. Over the operating interval considered, the uncorrected time offset exceeds the timing uncertainty allowed for precise ranging. Explain the development and its significance for positioning.",
+            "expectedPerformanceDe": "Die lernende Person erklärt, dass die Satellitenuhr vorläuft und ihr Zeitversatz anwächst. Ihr unberichtigter Sendestempel liegt zu spät; Empfangszeit minus Sendestempel ergibt deshalb eine zu kleine Laufzeit und eine zu kleine Entfernung. Die angegebenen Genauigkeitsanforderungen werden verletzt, weshalb Gangkorrekturen nötig sind. Sie unterscheidet diese verfälschte Auswertung von der tatsächlichen Signalausbreitung und erklärt, dass ein genauer Positionsfehler zusätzlich Satellitengeometrie und weitere Messungen voraussetzt.",
+            "expectedPerformanceEn": "The learner explains that the satellite clock gains time and its offset grows. Its uncorrected transmission timestamp is too late; reception time minus transmission timestamp therefore gives too short a travel time and too small a range. The stated accuracy requirements are violated, making rate corrections necessary. They distinguish this distorted evaluation from actual signal propagation and explain that an exact position error additionally requires satellite geometry and further measurements.",
+            "understandingFocusDe": "Die konkurrierenden Uhrbeiträge werden als Ursache einer konkreten Fehlerkette bis zum Genauigkeitskriterium erklärt.",
+            "understandingFocusEn": "The competing clock contributions are explained as the cause of a concrete error chain leading to an accuracy criterion."
+          },
+          {
+            "id": "changed-orbit-and-old-correction",
+            "taskDemandDe": "Eine neue Navigationssatellitenbahn wird qualitativ beschrieben: Der Bewegungsbeitrag verlangsamt die Satellitenuhr jetzt stärker, als der Gravitationsbeitrag sie beschleunigt. Ein alter zeitabhängiger Korrekturterm zieht weiterhin den für die bisherige GPS-Bahn erwarteten Vorlauf vom Sendestempel ab. Nutze wieder das Modell mit korrekt referenzierter Empfängeruhr und vernachlässigten Ausbreitungsfehlern. Sage die Fehlerrichtung voraus und erkläre, welche Angaben nötig sind, um die verbleibende Genauigkeit über ein Betriebsintervall zu beurteilen.",
+            "taskDemandEn": "A new navigation-satellite orbit is described qualitatively: the motion contribution now slows the satellite clock more than the gravitational contribution speeds it up. An old time-dependent correction term still subtracts the gain expected for the previous GPS orbit from the transmission timestamp. Again use the model with a correctly referenced receiver clock and negligible propagation errors. Predict the error direction and explain what information is needed to assess residual accuracy over an operating interval.",
+            "expectedPerformanceDe": "Die lernende Person begründet einen anwachsenden Nachlauf. Der alte Term verschiebt den Sendestempel noch weiter nach früh, sodass die ermittelte Laufzeit und Entfernung zu groß werden. Sie verwirft die unveränderte Übernahme mit Bezug auf beide Beiträge. Für eine belastbare Genauigkeitsprüfung nennt sie deren Differenz beziehungsweise den verbleibenden Gangfehler, Anfangsversatz, Betriebsdauer und zulässige Zeitunsicherheit; für die Positionsabweichung zusätzlich die Satellitengeometrie. Das Vorzeichen allein erlaubt keine quantitative Genauigkeitszusage.",
+            "expectedPerformanceEn": "The learner justifies an accumulating clock lag. The old term shifts the transmission timestamp even earlier, making the inferred travel time and range too large. They reject carrying the correction over unchanged by referring to both contributions. For a defensible accuracy check they identify the difference between the contributions or residual rate error, initial offset, operating duration, and allowed timing uncertainty; for position error they also require satellite geometry. The sign alone permits no quantitative accuracy guarantee.",
+            "understandingFocusDe": "Eine umgekehrte Gesamtwirkung und eine ungeeignete Korrektur verlangen eine neue Modellbewertung statt einer bloßen Zahlenvariation.",
+            "understandingFocusEn": "A reversed net effect and an unsuitable correction require a fresh model assessment rather than a mere numerical variation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "reason": "DE: Das Profil bindet die aktuelle Beschreibung E₀=m₀c² mit Ruheenergie und invarianter Masse. Zwei qualitative Fälle unterscheiden Energieabgabe über eine Systemgrenze von Energieumverteilung im isolierten Gesamtsystem und halten einen bloßen Bezugssystemwechsel davon getrennt. EN: The profile binds the current E₀=m₀c² description with rest energy and invariant mass. Two qualitative cases distinguish energy transfer across a system boundary from redistribution within an isolated complete system and keep a mere change of reference frame separate.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "DE: Die begrenzte Reconciliation in curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033zb-relativity-current-context-recheck-9-v1/source-reconciliation.md nennt RP-Anker zur Masse-Energie-Äquivalenz und unterscheidet sie von historischen HE-Massenformulierungen. E₀ und m₀ sind die aktuelle lokale Begriffsklärung; damit wird keine vollständige Prüfung aller Länderprojektionen oder neue menschliche Freigabe behauptet. EN: The bounded reconciliation in the named note identifies RP anchors for mass-energy equivalence and distinguishes them from historical HE mass wording. E₀ and m₀ are the current local clarification of quantities; this claims neither complete verification of all state projections nor new human approval."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "rest-energy-and-invariant-mass",
+            "essentialUnderstandingDe": "E₀=m₀c² verknüpft die Energie im Ruhesystem eines Körpers oder Gesamtsystems mit dessen invarianter Masse. Innere Energie gehört zur Ruheenergie. Die Energie desselben unveränderten Körpers in einem System, in dem er sich bewegt, kann größer sein; ein solcher Bezugssystemwechsel ändert m₀ nicht.",
+            "essentialUnderstandingEn": "E₀=m₀c² relates the energy in the rest frame of an object or complete system to its invariant mass. Internal energy is part of rest energy. The energy of the same unchanged object in a frame where it moves can be larger; such a frame change does not alter m₀.",
+            "observablePerformanceDe": "Die lernende Person erläutert eigenständig E₀, m₀ und c, benennt das Ruhesystem und sagt qualitativ die Massenänderung nach einer Änderung der Ruheenergie voraus. Sie unterscheidet diese physikalische Energieänderung von der Beschreibung desselben Zustands aus einem bewegten Bezugssystem.",
+            "observablePerformanceEn": "The learner independently explains E₀, m₀, and c, identifies the rest frame, and qualitatively predicts the mass change following a change in rest energy. They distinguish this physical energy change from describing the same state in a moving reference frame."
+          },
+          {
+            "id": "system-boundary-and-retained-energy",
+            "essentialUnderstandingDe": "Ob die invariante Masse eines gewählten Systems abnimmt, hängt von dessen gesamter Ruheenergie ab. Energieabgabe über die Systemgrenze kann sie verringern. Bleibt die Energie als Strahlung oder innere Energie innerhalb eines isolierten Gesamtsystems, erhält eine bloße Umverteilung dessen gesamte Ruheenergie und invariante Masse.",
+            "essentialUnderstandingEn": "Whether the invariant mass of a chosen system decreases depends on its total rest energy. Energy transfer out across the system boundary can reduce it. If energy remains as radiation or internal energy within an isolated complete system, mere redistribution preserves that system's total rest energy and invariant mass.",
+            "observablePerformanceDe": "Die lernende Person zeichnet oder beschreibt selbst die Systemgrenze, verfolgt die Energie vom abgebenden Teil zum Empfänger und begründet getrennte Aussagen über Teilsystem und Gesamtsystem. Sie überträgt ihre Aussage auf einen Fall, in dem Strahlung die äußere Grenze passieren kann oder im Inneren bleibt.",
+            "observablePerformanceEn": "The learner independently draws or describes the system boundary, tracks energy from the emitting part to the receiver, and justifies separate statements about subsystem and complete system. They transfer their reasoning to a case where radiation can cross the outer boundary or remains inside."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "rest-energy-and-invariant-mass",
+            "system-boundary-and-retained-energy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "energy-crosses-or-stays",
+            "textDe": "Strahlung verlässt das betrachtete System oder bleibt innerhalb seiner isolierten äußeren Grenze.",
+            "textEn": "Radiation leaves the system considered or stays within its isolated outer boundary."
+          },
+          {
+            "id": "subsystem-and-frame",
+            "textDe": "Der betrachtete Gegenstand wechselt vom emittierenden Körper zum vollständigen Behälter; zusätzlich wird ein Energieverlust von einem reinen Beobachtungssystemwechsel getrennt.",
+            "textEn": "The object considered changes from the emitting body to the complete container; energy loss is also distinguished from a mere change of observing frame."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "body-radiates-outward",
+            "taskDemandDe": "Ein anfangs ruhender Körper sendet in einem Gedankenexperiment zwei gleich energiereiche Lichtpulse in entgegengesetzte Richtungen aus. Die Pulse verlassen die gewählte Grenze um den Körper; kein Stoff wird ausgetauscht. Durch die symmetrische Abgabe bleibt der Körper auch danach in Ruhe. Erläutere E₀=m₀c² für den Körper vor und nach der Abgabe und verfolge, wohin die abgegebene Energie gelangt. Ändert sich seine invariante Masse nochmals, wenn derselbe Endzustand aus einem gleichförmig bewegten Bezugssystem beschrieben wird?",
+            "taskDemandEn": "In a thought experiment, a body initially at rest emits two light pulses of equal energy in opposite directions. The pulses leave the chosen boundary around the body; no matter is exchanged. Symmetric emission leaves the body at rest afterward as well. Explain E₀=m₀c² for the body before and after emission and track where the emitted energy goes. Does its invariant mass change again if the same final state is described from a uniformly moving reference frame?",
+            "expectedPerformanceDe": "Die lernende Person benennt den Körper allein als System und erklärt: Seine Ruheenergie nimmt ab, daher ist seine invariante Masse nach der Abgabe kleiner. Die fehlende Körperenergie befindet sich in den außerhalb weiterlaufenden Pulsen. Symmetrie erlaubt hier den Vergleich zweier ruhender Körperzustände ohne Rückstoßrechnung. Ein anderer Beobachter ordnet dem Endzustand zusätzlich Bewegungsenergie zu, aber dieselbe invariante Endmasse; E₀ bezeichnet weiterhin die Energie im Körperruhesystem.",
+            "expectedPerformanceEn": "The learner identifies the body alone as the system and explains that its rest energy decreases, so its invariant mass is smaller after emission. The energy lost by the body is carried by the pulses traveling outside. Symmetry permits comparison of two stationary body states here without recoil calculations. Another observer assigns additional kinetic energy to the final state but the same final invariant mass; E₀ still denotes energy in the body's rest frame.",
+            "understandingFocusDe": "Eine reale Änderung der Ruheenergie wird mit Massenänderung verknüpft und von einer reinen Koordinatenbeschreibung getrennt.",
+            "understandingFocusEn": "A physical change of rest energy is linked to mass change and distinguished from a mere change of coordinate description."
+          },
+          {
+            "id": "radiation-retained-in-isolated-container",
+            "taskDemandDe": "Nun liegt der emittierende Körper in einem ideal isolierten Behälter. Zwei gleich energiereiche entgegengesetzte Lichtpulse bleiben vollständig im Inneren und werden von gegenüberliegenden Wänden aufgenommen; keine Energie und kein Stoff verlassen die äußere Grenze. Vergleiche den Körper unmittelbar nach der Emission und den gesamten Behälter vor der Emission sowie nach dem Abklingen innerer Bewegungen. Begründe, ob dieselbe Massenabnahme wie im offenen Ausgangsfall für das Gesamtsystem gilt.",
+            "taskDemandEn": "Now the emitting body is inside an ideally isolated container. Two light pulses of equal energy traveling in opposite directions remain entirely inside and are absorbed by opposite walls; neither energy nor matter leaves the outer boundary. Compare the body immediately after emission and the complete container before emission and after internal motions have settled. Justify whether the complete system undergoes the same mass decrease as in the initial open case.",
+            "expectedPerformanceDe": "Die lernende Person wählt zwei Grenzen: Der emittierende Körper verliert zunächst Ruheenergie und Masse; die übrigen Behälterteile nehmen die Energie auf. Für den gesamten isolierten Behälter bleibt die Energie im gemeinsamen Ruhesystem erhalten und damit auch die invariante Gesamtmasse. Während der Ausbreitung zählt die eingeschlossene Strahlungsenergie zum Gesamtsystem, anschließend die aufgenommene innere Energie. Der Fall ist eine Umverteilung innerhalb der Grenze, kein Verlust über sie.",
+            "expectedPerformanceEn": "The learner chooses two boundaries: the emitting body initially loses rest energy and mass, while the other container parts receive the energy. For the complete isolated container, energy in the common rest frame is conserved, and so is total invariant mass. During propagation, trapped radiation energy belongs to the complete system; afterward, the absorbed internal energy does. This case redistributes energy within the boundary rather than losing it across that boundary.",
+            "understandingFocusDe": "Die veränderte Systemgrenze entscheidet, welche Massenänderung aus derselben lokalen Energieabgabe gefolgert werden darf.",
+            "understandingFocusEn": "The changed system boundary determines which mass change may be inferred from the same local energy emission."
+          }
+        ]
+      }
+    }
+  ]
+}

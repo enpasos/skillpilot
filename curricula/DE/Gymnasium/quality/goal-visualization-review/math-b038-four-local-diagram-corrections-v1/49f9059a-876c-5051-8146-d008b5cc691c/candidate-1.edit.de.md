@@ -1,0 +1,6 @@
+Use case: precise-object-edit
+Asset type: mathematische Lernziel-Illustration
+Input images: Bild 1 ist das zu korrigierende Original.
+Behalte die linke Wertetabelle, den Haupttitel, den unteren Merksatz, Farben, Handschrift, alle Pfeile und das Zweispaltenlayout unverändert. Korrigiere ausschließlich den rechten Graphen und seinen erklärenden Satz darunter.
+Im rechten Koordinatensystem ist blau y=x² und rot y=e^x. Blau startet bei (0,0), mit waagerechter Ursprungstangente; rot startet bei (0,1), mit positiver Steigung. Für ALLE x≥0 liegt ROT oberhalb BLAU. Die beiden Kurven haben im gezeigten nichtnegativen x-Bereich KEINEN Schnittpunkt. Beide wachsen gekrümmt nach oben, die rote Kurve wächst für große x deutlich schneller. Bei x=2 sind blau=4 und rot≈7,4, also keine Kreuzung. Entferne die falsche gestrichelte Schnittpunktmarkierung. Zeichne die Funktionsverläufe und Beschriftungen konsistent; die farbigen Funktionsnamen bleiben dem richtigen Graphen zugeordnet. Der richtige Grenzwert lim(x→∞) e^x/x²=∞ bleibt unverändert erhalten.
+Ersetze den falschen Satz „Die rote Kurve überholt die blaue und bleibt asymptotisch weit darüber.“ durch exakt: „Für x ≥ 0 liegt e^x über x².\nFür x → ∞ wird das Verhältnis e^x/x² beliebig groß.“ Nutze zwei gut lesbare Zeilen im vorhandenen Platz. Kein übriger Text wird verändert, keine neuen Inhalte oder technischen IDs.

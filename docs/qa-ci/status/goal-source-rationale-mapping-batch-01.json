@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T05:03:06.737Z",
+  "generatedAt": "2026-09-06T05:37:09.856Z",
   "generator": "app/scripts/reportGoalSourceRationaleMappingBatch.ts",
   "request": {
     "gapIssueReportPath": "docs/qa-ci/status/goal-source-rationale-gap-issues.json",
@@ -8,20 +8,20 @@
     "maxItems": 20
   },
   "sourceReport": {
-    "generatedAt": "2026-09-05T02:50:57.637Z",
+    "generatedAt": "2026-09-06T05:37:09.062Z",
     "summary": {
-      "totalClassicSourceGapIssues": 55,
-      "coveredSiblingMappingGaps": 24,
+      "totalClassicSourceGapIssues": 56,
+      "coveredSiblingMappingGaps": 25,
       "isolatedSourceExpansionGaps": 31,
-      "phases": 4,
+      "phases": 5,
       "areas": 3
     }
   },
   "summary": {
     "batchId": "GSR-MAP-BATCH-01",
     "candidates": 20,
-    "totalSiblingMappingIssues": 24,
-    "remainingSiblingMappingIssuesOutsideBatch": 4,
+    "totalSiblingMappingIssues": 25,
+    "remainingSiblingMappingIssuesOutsideBatch": 5,
     "byJurisdiction": [
       {
         "jurisdiction": "DE-HE",
@@ -33,15 +33,11 @@
       },
       {
         "jurisdiction": "DE-BW",
-        "candidates": 2
+        "candidates": 3
       },
       {
         "jurisdiction": "DE-SH",
         "candidates": 2
-      },
-      {
-        "jurisdiction": "DE-NW",
-        "candidates": 1
       },
       {
         "jurisdiction": "DE-TH",
@@ -51,7 +47,7 @@
     "byPhase": [
       {
         "phase": "Q4",
-        "candidates": 14
+        "candidates": 13
       },
       {
         "phase": "Q2",
@@ -60,12 +56,52 @@
       {
         "phase": "Q3",
         "candidates": 2
+      },
+      {
+        "phase": "J9",
+        "candidates": 1
       }
     ]
   },
   "candidates": [
     {
       "batchItemId": "GSR-MAP-BATCH-01-001",
+      "issueId": "GSR-GAP-6C26A00A",
+      "priorityScore": 89,
+      "goalId": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_axes_and_signs",
+      "title": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
+      "description": "Die lernende Person kann aus dem Graphen einer quadratischen Funktion die Schnittpunkte mit den Koordinatenachsen ablesen, daraus Nullstellen und y-Achsenabschnitt angeben und die Vorzeichenbereiche anhand der Lage des Graphen zur x-Achse bestimmen.",
+      "phase": "J9",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2A2A",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 9",
+        "Quadratische Funktionen beschreiben und anwenden",
+        "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+        "Quadratische Funktionen in Darstellungen deuten",
+        "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+        "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+        "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten"
+      ],
+      "proposedAnchor": {
+        "goalId": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+        "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-BW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+        "sourceGoalId": "bw-math-seki-bp2016-3-2-4-02-7a39c971",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.4, Kompetenz 2, S. 28.",
+        "topicCode": "BP2016-3.2.4",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json` den Source-Goal-Anker `bw-math-seki-bp2016-3-2-4-02-7a39c971`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `6c26a00a-ad1e-59cc-93e2-a38e1683665c` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-002",
       "issueId": "GSR-GAP-613871F6",
       "priorityScore": 87,
       "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
@@ -98,7 +134,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-002",
+      "batchItemId": "GSR-MAP-BATCH-01-003",
       "issueId": "GSR-GAP-7D37513B",
       "priorityScore": 85,
       "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
@@ -131,7 +167,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-003",
+      "batchItemId": "GSR-MAP-BATCH-01-004",
       "issueId": "GSR-GAP-3AEA4D33",
       "priorityScore": 78,
       "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
@@ -165,7 +201,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-004",
+      "batchItemId": "GSR-MAP-BATCH-01-005",
       "issueId": "GSR-GAP-5B54F272",
       "priorityScore": 65,
       "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
@@ -199,7 +235,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-005",
+      "batchItemId": "GSR-MAP-BATCH-01-006",
       "issueId": "GSR-GAP-6CA8AD6B",
       "priorityScore": 65,
       "goalId": "6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
@@ -233,7 +269,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-006",
+      "batchItemId": "GSR-MAP-BATCH-01-007",
       "issueId": "GSR-GAP-1BDAC3D8",
       "priorityScore": 65,
       "goalId": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
@@ -267,7 +303,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-007",
+      "batchItemId": "GSR-MAP-BATCH-01-008",
       "issueId": "GSR-GAP-CE2EB0A8",
       "priorityScore": 62,
       "goalId": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
@@ -302,7 +338,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-008",
+      "batchItemId": "GSR-MAP-BATCH-01-009",
       "issueId": "GSR-GAP-5E615E88",
       "priorityScore": 45,
       "goalId": "5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
@@ -336,7 +372,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-009",
+      "batchItemId": "GSR-MAP-BATCH-01-010",
       "issueId": "GSR-GAP-BF17CADA",
       "priorityScore": 41,
       "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
@@ -368,7 +404,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-010",
+      "batchItemId": "GSR-MAP-BATCH-01-011",
       "issueId": "GSR-GAP-81527AAC",
       "priorityScore": 41,
       "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
@@ -402,7 +438,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-011",
+      "batchItemId": "GSR-MAP-BATCH-01-012",
       "issueId": "GSR-GAP-9EA981ED",
       "priorityScore": 41,
       "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
@@ -436,7 +472,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-012",
+      "batchItemId": "GSR-MAP-BATCH-01-013",
       "issueId": "GSR-GAP-83A6CCB1",
       "priorityScore": 37,
       "goalId": "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
@@ -470,7 +506,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-013",
+      "batchItemId": "GSR-MAP-BATCH-01-014",
       "issueId": "GSR-GAP-5C4B5AB1",
       "priorityScore": 36,
       "goalId": "5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
@@ -504,7 +540,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-014",
+      "batchItemId": "GSR-MAP-BATCH-01-015",
       "issueId": "GSR-GAP-C3CAD3F5",
       "priorityScore": 36,
       "goalId": "c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
@@ -538,7 +574,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-015",
+      "batchItemId": "GSR-MAP-BATCH-01-016",
       "issueId": "GSR-GAP-A111F535",
       "priorityScore": 22,
       "goalId": "a111f535-ff21-5953-90f6-bee81d61b186",
@@ -572,7 +608,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-016",
+      "batchItemId": "GSR-MAP-BATCH-01-017",
       "issueId": "GSR-GAP-F4DF008D",
       "priorityScore": 20,
       "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
@@ -606,7 +642,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-017",
+      "batchItemId": "GSR-MAP-BATCH-01-018",
       "issueId": "GSR-GAP-670286AA",
       "priorityScore": 16,
       "goalId": "670286aa-c29d-560c-8fca-755e35f5d437",
@@ -640,7 +676,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-018",
+      "batchItemId": "GSR-MAP-BATCH-01-019",
       "issueId": "GSR-GAP-D8F1FD06",
       "priorityScore": 2,
       "goalId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
@@ -673,7 +709,7 @@
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     },
     {
-      "batchItemId": "GSR-MAP-BATCH-01-019",
+      "batchItemId": "GSR-MAP-BATCH-01-020",
       "issueId": "GSR-GAP-75DB9A04",
       "priorityScore": 2,
       "goalId": "75db9a04-d346-5968-953b-b20a8aea56c3",
@@ -704,40 +740,6 @@
       },
       "coveredSiblingGoals": 2,
       "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` den Source-Goal-Anker `by-math-m13-3-f5091eb7-s02-69fef47054`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `75db9a04-d346-5968-953b-b20a8aea56c3` oder splitte den Source-Beleg feiner.",
-      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
-    },
-    {
-      "batchItemId": "GSR-MAP-BATCH-01-020",
-      "issueId": "GSR-GAP-619F29F5",
-      "priorityScore": 0,
-      "goalId": "619f29f5-7f44-5654-9692-01b250997d52",
-      "shortKey": null,
-      "title": "Entscheidung dokumentieren und bewerten (LK)",
-      "description": "Die lernende Person kann die gewählte Vorgehensweise dokumentieren, Grenzen benennen und die Entscheidung im Nachhinein bewerten.",
-      "phase": "Q4",
-      "area": "unknown",
-      "topicCode": null,
-      "pathTitles": [
-        "Mathematik",
-        "Funktionenscharen, Argumentieren und komplexe Zahlen",
-        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
-        "Problemlösen und Argumentieren",
-        "Effizienz von Verfahren beurteilen (LK)",
-        "Entscheidung dokumentieren und bewerten (LK)"
-      ],
-      "proposedAnchor": {
-        "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
-        "title": "Aufwand und Genauigkeit vergleichen (LK)",
-        "sourceRationaleStatus": "classic_source_partial",
-        "jurisdiction": "DE-NW",
-        "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
-        "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d",
-        "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19",
-        "topicCode": "NW-SEKII-PROCESS-PROBLEMLOSEN",
-        "matchType": "partial"
-      },
-      "coveredSiblingGoals": 1,
-      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json` den Source-Goal-Anker `de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `619f29f5-7f44-5654-9692-01b250997d52` oder splitte den Source-Beleg feiner.",
       "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
     }
   ]

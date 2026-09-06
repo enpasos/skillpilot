@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 795 |
-| goals without memory need | 756 |
+| ordinary atomic goals reviewed | 796 |
+| goals without memory need | 757 |
 | goals with intentional memory support | 39 |
 | goals needing developer review | 0 |
 | primary cards in scope | 64 |
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 288 | 2 | 7 | 0 |
-| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 288 | 2 | 10 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 290 | 2 | 7 | 0 |
+| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 290 | 2 | 10 | 0 |
 
 ## Memory-Required Goals
 
@@ -49,7 +49,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | E: Ableitungen elementarer Funktionen berechnen (`858113c5-e53b-57bb-b01f-ba95c3ddcb6f`) | `de_gymnasium_math_analysis_core` | Der bestehende Memory-Anteil bleibt streng auf kompakte Ableitungsregeln im Deck de_gymnasium_math_analysis_core begrenzt; Regelauswahl und Anwendung werden weiterhin durch Verständnis und Aufgabenpraxis getragen. |
 | E: Ableitungen von $e^x$ und $a^x$ verwenden (`c3c057a3-caf9-44a5-ae60-639e3119e94a`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | E: Arithmetische und geometrische Folgen beschreiben (`67c4d6f8-45fc-53d5-8c95-a4c423e421a6`) | `de_gymnasium_math_functions_basics` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
-| E: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden (`d5feba00-4336-4f26-8dba-0537a797eddb`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
+| E: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden (`d5feba00-4336-4f26-8dba-0537a797eddb`) | `de_gymnasium_math_analysis_core` | Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: memory_required bleibt begründet und unverändert: Die drei tatsächlich gelesenen aktiven Karten math_analysis_c08, c09 und c10 enthalten kurze notwendige beziehungsweise hinreichende Kriterien, die im glatten inneren Kurvendiskussionskontext sicher abrufbar sein müssen. Ihre DE-Primärfingerprints und kept/necessary-Originverweise auf dieses Ziel sind aktuell. Memoryziel ca708087-71f8-5fae-91c5-b80721a4208f und Deck de_gymnasium_math_analysis_core bleiben bestehen. Die Karten ersetzen weder Gegenbeispiele noch Begründungen; diese Vorbereitung ist keine neue Kartenfreigabe oder vollständige Sichtbarkeitsprüfung. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet. |
 | E: Produkt- und Kettenregel an Beispielen überprüfen (`864f9a45-badf-5a31-88d3-da4525808c2d`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | GLOBAL: Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten (`525b1da9-7fdd-4a70-9f30-ff01d7511b04`) | `de_gymnasium_math_linalg_core` | Der bestehende Memory-Anteil bleibt auf die kompakte Geradengleichung im Deck de_gymnasium_math_linalg_core begrenzt; begrenzte Parameterintervalle und Kontextdeutung bleiben Verständnis und Aufgabenpraxis. |
 | GLOBAL: Scheitelpunkte quadratischer Funktionen bestimmen (`3e4032bd-4d8c-4e72-bfdd-64a34df053c9`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
