@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-06",
+  "reviewerKind": "AI visual review",
+  "humanApprovalClaimed": false,
+  "scope": "Champion comic panel 3: direct goal feedback first; GitHub for larger topics",
+  "delivery": {
+    "width": 2816,
+    "height": 1536,
+    "format": "PNG",
+    "method": "Copy only the generated panel 3 rectangle onto the original raster; no new vector illustration or lettering",
+    "changedPixelChannelsOutsidePanel": 0,
+    "runtimeCopiesByteIdentical": true
+  },
+  "variants": [
+    {
+      "language": "de",
+      "source": "docs/comic3/champion.de.png",
+      "originalSha256": "3b9e7c4d3344716835ca820496a3bd2dd7ff8dada33346c1217e9c214997a603",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "prompt": "feedback-edit.de.prompt.md",
+      "candidateSha256": "3ec21099e4246f04f8f47dc5607c84f07830ab32bc376a2afe25461423d94b15",
+      "candidatePanel": {"x": 28, "y": 784, "width": 1333, "height": 714},
+      "destinationPanel": {"x": 24, "y": 784, "width": 1367, "height": 726},
+      "finalSha256": "500627e917938a4fc7fa9160f168a60282d98c3eedbdea8bea54f6c66cf71f4e",
+      "review": "Accepted panel: feedback button and complete German bubble legible; larger topics remain on GitHub; original panels 1, 2 and 4 retained pixel-exactly"
+    },
+    {
+      "language": "en",
+      "source": "docs/comic3/champion.en.png",
+      "originalSha256": "4647c7aab9cc9d5a4e9136952e388641a6cb10f817e3a1fc80e596db10157eb7",
+      "provider": "Nano Banana Pro illustration with OpenAI built-in image-generation text fallback",
+      "rejectedNanoBananaAttempts": [
+        {
+          "prompt": "feedback-edit.en.prompt.md",
+          "sha256": "65f097f5092b5f728e2f3cd38b68b5386aa06b87235d6204f63520ad16f07a6e",
+          "reason": "Duplicated discuss discuss in the panel 3 bubble"
+        },
+        {
+          "prompt": "feedback-edit.en.retry.prompt.md",
+          "sha256": "8394fcd48f3e9dc37be172dc80168f0792ea14b562c4c3aaa966feb7d34951ae",
+          "reason": "Targeted text correction still duplicated discuss discuss"
+        },
+        {
+          "prompt": "feedback-edit.en.short.prompt.md",
+          "sha256": "8219401efdd395d7c3298a63401fe3a215d02b66549155b72582a1519e5dfba3",
+          "reason": "Shorter wording duplicated Use GitHub for"
+        }
+      ],
+      "fallbackPrompt": "feedback-edit.en.fallback.prompt.md",
+      "fallbackCandidateSha256": "3ae35e5b42dcd5817bfc888424b63245631a29b3422b70d7da969358e5700758",
+      "candidatePanel": {"x": 14, "y": 484, "width": 818, "height": 444},
+      "destinationPanel": {"x": 24, "y": 784, "width": 1367, "height": 727},
+      "finalSha256": "cfc98941ee62c63a14cec46da0c09ba0cafd600447ab5eb956a4cf9886ef9be3",
+      "review": "Accepted panel: exact three sentences, no repeated wording, legible feedback button; original panels 1, 2 and 4 retained pixel-exactly"
+    }
+  ]
+}

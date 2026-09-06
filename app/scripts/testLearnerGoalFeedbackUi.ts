@@ -60,7 +60,7 @@ try {
     await route.fulfill({
       status: 200,
       contentType: 'application/json; charset=utf-8',
-      body: JSON.stringify(binding),
+      body: JSON.stringify({ ...binding, bookId: new URL(route.request().url()).searchParams.get('bookId') }),
     })
   })
 
@@ -120,6 +120,23 @@ try {
   const destinationState = await page.getByTestId('feedback-state').textContent() ?? ''
   assert.deepEqual(JSON.parse(destinationState), { goalFeedbackOrigin: 'learner-cockpit' })
   assert(!/skillpilotId|learnerId|sessionId|chatSession|returnUrl/iu.test(destinationState))
+  for (const [subject, bookId] of [['chemistry', 'de-gym-chemie-lk'], ['biology', 'de-gym-biologie-gk']]) {
+    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerGoalFeedbackUi.html?subject=${subject}`)
+    await feedbackButton.waitFor()
+    assert.equal(await page.getByRole('button', { name: /Feedback zu diesem Lernziel/u }).count(), 1)
+    const before = lookupUrls.length
+    await feedbackButton.click()
+    await page.getByRole('heading', { name: 'Bestehender Feedbackweg' }).waitFor()
+    assert.equal(lookupUrls.length, before + 1)
+    assert.equal(lookupUrls.at(-1)?.searchParams.get('bookId'), bookId)
+    assert.equal(lookupCookieHeaders.at(-1), undefined)
+    assert.equal(lookupRefererHeaders.at(-1), undefined)
+    const params = new URLSearchParams(await page.getByTestId('feedback-search').textContent() ?? '')
+    assert.deepEqual([...params.keys()].sort(), [...destinationParams.keys()].sort())
+    assert.equal(params.get('bookId'), bookId)
+    assert.equal(params.get('goalId'), goalId)
+    assert.deepEqual(JSON.parse(await page.getByTestId('feedback-state').textContent() ?? '{}'), { goalFeedbackOrigin: 'learner-cockpit' })
+  }
   assert.equal(errors.length, 0, `Cockpit feedback UI browser errors:\n${errors.join('\n')}`)
   await context.close()
 

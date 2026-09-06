@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import { chromium, type Browser, type Page } from 'playwright'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
+import { goalBookDefinitionById, goalBookRoute } from '../src/utils/goalBookPublicationRegistry'
 import { startViteTestServer } from './viteTestServer'
 
 function assert(condition: unknown, message: string): asserts condition {
@@ -50,8 +51,8 @@ const curriculaPayload = {
       skillpilotIdMasked: '***',
       masteredCount: 1,
       totalTopicGoals: 1,
-      issuesCount: 0,
-      pullRequestsCount: 0,
+      issuesCount: 90123,
+      pullRequestsCount: 80456,
     }],
   }],
 }
@@ -68,7 +69,7 @@ const configurePage = async (page: Page) => {
     localStorage.setItem('skillpilot_lang', 'de')
     localStorage.setItem('skillpilot_theme', 'light')
   })
-  await page.route('**/api/ui/curricula/champions/me', (route) => route.fulfill({ json: [] }))
+  await page.route('**/api/ui/curricula/champions/me', (route) => route.fulfill({ status: 401, json: {} }))
   await page.route('**/api/ui/curricula/*/topics', (route) => route.fulfill({ json: [] }))
   await page.route('**/api/ui/curricula', (route) => route.fulfill({ json: curriculaPayload }))
 }
@@ -101,6 +102,42 @@ try {
 
     const card = page.getByTestId('curriculum-quality-overview-card')
     await card.waitFor()
+    const feedback = page.getByTestId('curricula-feedback-entry')
+    assert(await feedback.isVisible(), 'anonymous visitors can reach goal feedback before Champion registration')
+    assert(await page.locator('form').count() === 0, 'optional Champion registration stays closed initially')
+    assert(
+      await feedback.getByText('Öffentliches Lernziel-Feedback braucht weder ein GitHub-Konto noch eine Champion-Registrierung.', { exact: true }).count() === 1,
+      'goal feedback is clearly independent of GitHub and Champion registration',
+    )
+    const subjects = [
+      ['Mathematik', 'de-gym-mathematik-bundesweit'],
+      ['Physik', 'de-gym-physik-bundesweit'],
+      ['Chemie', 'de-gym-chemie-lk'],
+      ['Biologie', 'de-gym-biologie-gk'],
+    ] as const
+    assert(await feedback.getByTestId('curricula-feedback-subject').count() === 4, 'all four sciences have an explicit feedback entry')
+    for (const [subject, bookId] of subjects) {
+      const subjectCard = feedback.getByTestId('curricula-feedback-subject').filter({ has: page.getByRole('heading', { name: subject, exact: true }) })
+      assert(goalBookDefinitionById(bookId), `${subject} has its scoped book in the publication registry`)
+      const link = subjectCard.getByRole('link', { name: `${subject}: Lernziele öffnen`, exact: true })
+      assert(await link.getAttribute('href') === goalBookRoute(bookId), `${subject} opens its registered goal book, not an unbound feedback form`)
+    }
+    assert(await feedback.getByText('Vorhandene Lernzielauswahl (LK-Profil)', { exact: true }).count() === 1, 'Chemistry states its existing LK view instead of promising nationwide coverage')
+    assert(await feedback.getByText('Vorhandene Lernzielauswahl (GK-Profil)', { exact: true }).count() === 1, 'Biology states its existing GK view instead of promising nationwide coverage')
+    assert(await feedback.getByText('Für weitere Curricula ohne direkten Feedbackeinstieg nutze ebenfalls GitHub und nenne das Curriculum und das Thema.', { exact: true }).count() === 1, 'other curricula retain an explicit and honest GitHub fallback')
+    assert(
+      await feedback.getByRole('link', { name: 'Größeres Thema auf GitHub besprechen', exact: true }).getAttribute('href') === 'https://github.com/enpasos/skillpilot/issues',
+      'GitHub remains available for larger and technical topics',
+    )
+    const bodyText = await page.locator('body').innerText()
+    assert(!bodyText.includes('90123') && !bodyText.includes('80456'), 'API issue and pull-request counts must not become visible contribution metrics')
+    assert(await card.getByText('Lernfortschritt', { exact: true }).count() === 1, 'existing learning progress remains separate from feedback')
+    assert(await card.getByText('1 / 1', { exact: true }).count() === 1, 'the learning-progress value remains unchanged')
+    const feedbackBeforeComic = await feedback.evaluate((element) => {
+      const comic = document.querySelector('img[src="/comic3/champion.de.png"]')
+      return comic != null && (element.compareDocumentPosition(comic) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0
+    })
+    assert(feedbackBeforeComic, 'the actionable feedback entry precedes the explanatory Champion comic')
     const grid = page.getByTestId('curriculum-quality-grid')
     const rows = page.getByTestId('curriculum-quality-row')
     assert(await rows.count() === subjectMaturities.length, 'every subject has one quality row')
@@ -156,6 +193,19 @@ try {
         gridBox.x >= cardBox.x && gridBox.x + gridBox.width <= cardBox.x + cardBox.width,
         'the quality grid stays within the aggregate card',
       )
+    }
+
+    if (expected.width === 1024) {
+      await page.getByRole('button', { name: 'Champion-Registrierung / Verwaltung', exact: true }).click()
+      assert(await page.getByRole('button', { name: 'Mit GitHub verbinden', exact: true }).isVisible(), 'optional Champion registration retains its existing GitHub connection')
+      await page.getByRole('button', { name: 'EN', exact: true }).click()
+      await page.getByRole('heading', { name: 'Improve curricula together', exact: true }).waitFor()
+      assert(await feedback.getByText('Public goal feedback does not require a GitHub account or Champion registration.', { exact: true }).count() === 1, 'English copy preserves the public-feedback boundary')
+      assert(await feedback.getByText('Existing goal selection (advanced-course / LK profile)', { exact: true }).count() === 1, 'English Chemistry copy keeps its scoped LK view')
+      assert(await feedback.getByText('Existing goal selection (basic-course / GK profile)', { exact: true }).count() === 1, 'English Biology copy keeps its scoped GK view')
+      assert(await page.getByRole('button', { name: 'Connect with GitHub', exact: true }).isVisible(), 'English Champion registration keeps the same action')
+      assert(await card.getByText('Learning progress', { exact: true }).count() === 1, 'English learning progress remains visible')
+      assert(await feedback.getByRole('link', { name: 'Mathematics: Open learning goals', exact: true }).getAttribute('href') === goalBookRoute('de-gym-mathematik-bundesweit'), 'English feedback uses the same actual mathematics book')
     }
 
     await page.close()

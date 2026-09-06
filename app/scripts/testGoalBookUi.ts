@@ -226,6 +226,17 @@ const externalPrerequisites = physicsPages[2].externalPrerequisites as Array<Rec
 externalPrerequisites[0].landscapeId = MATHEMATICS_LANDSCAPE_ID
 const physicsFixture = `${JSON.stringify(physicsModel, null, 2)}\n`
 const physicsFixtureSha256 = `sha256:${createHash('sha256').update(physicsFixture).digest('hex')}`
+const additionalSubjectFixtures = [
+  ['de-gym-chemie-lk', 'Chemie', 'Chemistry', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'LK'],
+  ['de-gym-biologie-gk', 'Biologie', 'Biology', '08a43a1b-d97e-522c-9dfa-c950a493364e', 'GK'],
+].map(([bookId, label, labelEn, landscapeId, profile]) => {
+  const fixture = JSON.parse(physicsFixture.replaceAll(PHYSICS_LANDSCAPE_ID, landscapeId))
+  fixture.book.id = bookId
+  fixture.book.title = `Lernzielbuch ${label} – Gymnasium, Kompositionsansicht ${profile}`
+  const body = `${JSON.stringify(fixture, null, 2)}\n`
+  return { bookId, label, labelEn, title: fixture.book.title, body, digest: fixture.digest,
+    sha256: `sha256:${createHash('sha256').update(body).digest('hex')}` }
+})
 const sourcesFixture: GoalBookOriginalSourcesPayload = {
   schemaVersion: '1.0.0', bookId: 'de-gym-mathematik-bundesweit', bookDigest: String(mathModel.digest),
   documents: [
@@ -283,6 +294,13 @@ index.books.push({
     renderManifestSha256: `sha256:${'f'.repeat(64)}`,
   },
 })
+additionalSubjectFixtures.forEach(({ bookId, title, sha256, digest }) => index.books.push({
+  bookId, title, locale: 'de-DE', publicationMode: 'review', pageCount: 3,
+  model: { url: `/lernzielbuch/${bookId}.book-model.json`, sha256, modelDigest: digest },
+  pdf: { url: `/lernzielbuch/${bookId}.pdf`, sha256: `sha256:${'e'.repeat(64)}`,
+    renderManifestUrl: `/lernzielbuch/${bookId}.pdf.render-manifest.json`,
+    renderManifestSha256: `sha256:${'f'.repeat(64)}` },
+}))
 const indexFixture = JSON.stringify(index)
 const server = await startViteTestServer(
   appRoot,
@@ -401,6 +419,11 @@ try {
       body: physicsFixture,
     })
   })
+  for (const fixture of additionalSubjectFixtures) {
+    await page.route(`**/lernzielbuch/${fixture.bookId}.book-model.json`, async (route) => {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: fixture.body })
+    })
+  }
   await page.route(`**${SOURCES_PATH}`, async (route) => {
     sourceRequests += 1
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(sourcesFixture) })
@@ -810,7 +833,9 @@ try {
   const subjectNavigation = page.getByRole('navigation', { name: 'Fach auswählen' })
   assert(
     await subjectNavigation.getByRole('link', { name: 'Mathematik', exact: true }).getAttribute('aria-current') === 'page'
-      && await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).count() === 1,
+      && await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).count() === 1
+      && await subjectNavigation.getByRole('link', { name: 'Chemie', exact: true }).count() === 1
+      && await subjectNavigation.getByRole('link', { name: 'Biologie', exact: true }).count() === 1,
     'the complete closed publication catalog is presented as a subject selector',
   )
   await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).click()
@@ -938,6 +963,20 @@ try {
     'personalized chapter views are resolved only through same-origin, scope-bound matcher GETs',
   )
 
+  for (const fixture of additionalSubjectFixtures) {
+    await page.getByRole('navigation', { name: 'Fach auswählen' })
+      .getByRole('link', { name: fixture.label, exact: true }).click()
+    await page.getByRole('heading', { name: fixture.title }).waitFor()
+    assert(page.url().includes(`?book=${fixture.bookId}`), 'subject navigation keeps the scoped book ID')
+    assert(await page.getByTestId('goal-book-pdf').getAttribute('href') === `/lernzielbuch/${fixture.bookId}.pdf`, 'PDF follows the selected subject')
+    const link = page.getByTestId('goal-book-page').getByRole('link', { name: 'Feedback zu „Natürliche Zahlen vergleichen“' })
+    const url = new URL(await link.getAttribute('href') ?? '', 'https://skillpilot.test')
+    assert(url.searchParams.get('bookId') === fixture.bookId && url.searchParams.size === 7, 'Chemistry/Biology retain the exact seven-field feedback binding')
+    await page.getByRole('button', { name: 'EN', exact: true }).click()
+    assert(await page.getByRole('navigation', { name: 'Select subject' }).getByRole('link', { name: fixture.labelEn, exact: true }).count() === 1, 'English subject labels are available')
+    await page.getByRole('button', { name: 'DE', exact: true }).click()
+    await assertNoHorizontalOverflow(page, 375)
+  }
   assert(browserErrors.length === 0, `browser errors: ${browserErrors.join('\n')}`)
 } finally {
   try {

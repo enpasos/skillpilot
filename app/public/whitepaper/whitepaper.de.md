@@ -298,8 +298,10 @@ Der jeweils aktuelle Stand im generierten Qualitätsstatus und im [Curriculum-Ve
 ![Curriculum Champion Comic](../comic3/champion.de.png)
 
 - Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
-- Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
-- Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
+- Sie **lernen Ziele selbst durch** und melden Fehler oder Unklarheiten direkt am betreffenden Lernziel, sofern ein Feedbackeinstieg verfügbar ist.
+- Größere, übergreifende oder technische Themen sowie Rückmeldungen zu weiteren Curricula werden auf GitHub gebündelt.
+- Die Champion-Rolle ist freiwillig. Öffentliches Lernziel-Feedback ist auch ohne Champion-Registrierung und GitHub-Konto möglich.
+- Champion-Profile zeigen Lernfortschritt und verfügbare Qualitätsstände, keine Rangliste nach Feedbackmenge oder Issues/PRs.
 
 Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI-Lerncoach wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
 

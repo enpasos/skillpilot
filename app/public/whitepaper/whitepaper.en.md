@@ -301,8 +301,10 @@ The generated quality status and the [Curriculum Directory](https://skillpilot.c
 **Curriculum Champions (practice anchor):**
 ![Curriculum Champion comic](../comic3/champion.en.png)
 - Champions take responsibility for a curriculum or a **clearly scoped topic area**.
-- They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
-- Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
+- They **work through learning goals themselves** and report errors or unclear content directly on the relevant goal wherever a feedback entry is available.
+- Larger, cross-cutting or technical topics, and feedback on other curricula, are collected on GitHub.
+- The Champion role is optional. Public goal feedback does not require Champion registration or a GitHub account.
+- Champion profiles show learning progress and available quality status, not rankings by feedback volume or Issues/PRs.
 
 The QA process does not only cover curricula: the SkillPilot AI learning coach is continuously qualified in real-world use so that the experience remains reliable and didactically sound across curricula.
 
