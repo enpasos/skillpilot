@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict'
 import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 import {
   assertCanonicalRelationUrls,
+  assertGoalBookSourceAtlasConfigBinding,
   defaultGoalBookPublicationPaths,
+  goalBookPublicationPaths,
   parseGoalBookPublicationIndex,
   verifyPublishedGoalBook,
   verifyPublishedGoalBooks,
@@ -12,6 +14,25 @@ import {
 import { serviceWorkerPrecacheGlobIgnores } from '../serviceWorkerNavigationPolicy'
 import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublicationRegistry'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { buildGoalBookOriginalSources } from './goalBookOriginalSources'
+
+const sourceBindingFixture = {
+  bookId: 'fixture-atlas', landscapePath: 'fixture-landscape.json',
+  semanticKindLedgerPath: 'fixture-types.json', manifestPath: 'fixture.sources.json',
+}
+const nativeBindingFixture = {
+  bookId: sourceBindingFixture.bookId, landscapePath: sourceBindingFixture.landscapePath,
+  semanticKindLedgerPath: sourceBindingFixture.semanticKindLedgerPath,
+  compositionViewManifestPath: sourceBindingFixture.manifestPath,
+}
+assert.doesNotThrow(() => assertGoalBookSourceAtlasConfigBinding(sourceBindingFixture, nativeBindingFixture))
+for (const key of ['bookId', 'landscapePath', 'semanticKindLedgerPath', 'manifestPath'] as const) {
+  assert.throws(
+    () => assertGoalBookSourceAtlasConfigBinding({ ...sourceBindingFixture, [key]: 'different-input' }, nativeBindingFixture),
+    /input companion does not match/u,
+    `a source-input companion cannot verify another ${key}`,
+  )
+}
 
 const verifiedBooks = await verifyPublishedGoalBooks()
 assert.deepEqual(
@@ -72,19 +93,48 @@ const registryFixture = {
 assert.equal(
   parseGoalBookPublicationIndex(JSON.stringify(registryFixture)).books.length,
   4,
-  'the closed registry accepts both atlases and the scoped chemistry and biology books',
+  'the closed registry accepts all four nationwide subject atlases',
 )
-for (const [bookId, profile] of [
-  ['de-gym-chemie-lk', 'LK'],
-  ['de-gym-biologie-gk', 'GK'],
-] as const) {
-  const scoped = verifiedBooks.find(({ model }) => model.book.id === bookId)
-  assert.ok(scoped, `missing native scoped publication ${bookId}`)
-  assert.ok(scoped.model.pages.length > 0)
-  assert.equal(scoped.model.pages.length, scoped.model.book.pageCount)
-  assert.equal(scoped.model.book.scope.courseProfile, profile)
-  assert.equal(scoped.model.book.scope.stage, 'CrossStage')
-  assert.ok(scoped.model.source.compositionViewPath.endsWith('.view.json'), 'the publication binds its existing single composition view')
+const nationwideJurisdictions = [
+  'DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',
+  'DE-NI', 'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
+]
+for (const bookId of ['de-gym-chemie-bundesweit', 'de-gym-biologie-bundesweit']) {
+  const atlas = verifiedBooks.find(({ model }) => model.book.id === bookId)
+  assert.ok(atlas, `missing native nationwide publication ${bookId}`)
+  const { model } = atlas
+  assert.ok(model.pages.length > 0)
+  assert.equal(model.pages.length, model.book.pageCount)
+  assert.deepEqual(model.book.scope, { schoolForm: 'Gymnasium' }, 'the atlas is not restricted to one course profile or stage')
+  assert.deepEqual(model.navigation.canonicalProjectionSource.scope, {
+    jurisdiction: 'DE', schoolForm: 'Gymnasium', stage: 'CrossStage',
+  })
+  assert.equal(model.source.navigationOwnership, 'canonical-composition-view-v1')
+  assert.ok(model.source.compositionViewManifestPath?.endsWith('.sources.json'))
+  assert.equal(model.source.compositionViewPath, model.source.compositionViewManifestPath)
+  assert.equal(model.source.navigationViewPath, model.navigation.canonicalProjectionSource.path)
+  assert.ok(model.source.durationModelPolicyPath && model.source.durationModelPolicyDigest)
+  assert.deepEqual([...new Set(model.source.compositionViewSources?.map(({ scope }) => scope.jurisdiction))].sort(), nationwideJurisdictions)
+  assert.deepEqual([...new Set(model.pages.flatMap(({ applicability }) => (
+    (applicability ?? []).map(({ jurisdiction }) => jurisdiction)
+  )))].sort(), nationwideJurisdictions)
+  assert.ok(model.pages.every(({ applicability }) => applicability && applicability.length > 0))
+
+  // The unchanged publication gate already byte-binds this sidecar to the
+  // current native inputs. Missing row-level evidence remains an honest gap.
+  const sources = buildGoalBookOriginalSources(model)
+  assert.equal(sources.bookId, bookId)
+  assert.equal(sources.bookDigest, model.digest)
+  assert.ok(sources.documents.length > 0 && sources.evidence.length > 0, 'the atlas exposes real original-source documents, not an empty placeholder')
+  assert.ok(Object.values(sources.goals).some((rows) => rows.some(({ evidenceIds }) => evidenceIds.length > 0)))
+  for (const page of model.pages) {
+    const tuples = (page.applicability ?? []).flatMap(({ jurisdiction, scopes }) => (
+      scopes.map((scope) => ({ jurisdiction, ...scope }))
+    ))
+    assert.deepEqual(sources.goals[page.goalId].map(({ jurisdiction, stage, durationModel, courseProfile }) => (
+      { jurisdiction, stage, durationModel, courseProfile }
+    )), tuples)
+  }
 }
 assert.throws(
   () => parseGoalBookPublicationIndex(JSON.stringify({
@@ -161,6 +211,19 @@ assert.throws(
 
 const temporaryDirectory = await mkdtemp(join(tmpdir(), 'skillpilot-published-goal-book.'))
 try {
+  for (const subject of ['chemistry', 'biology']) {
+    const definition = GOAL_BOOK_PUBLICATION_REGISTRY.find((entry) => entry.subject === subject)
+    assert.ok(definition)
+    const paths = goalBookPublicationPaths(definition)
+    await assert.rejects(
+      verifyPublishedGoalBook({
+        ...paths,
+        configPath: join(dirname(paths.configPath), 'missing-publication-input-companion.json'),
+      }),
+      /ENOENT.*missing-publication-input-companion\.inputs\.json/u,
+      `${subject}: missing source-input companions must fail before artifact verification`,
+    )
+  }
   const staleSourcesPath = join(temporaryDirectory, 'stale.original-sources.json')
   await writeFile(staleSourcesPath, '{}\n', 'utf8')
   await assert.rejects(

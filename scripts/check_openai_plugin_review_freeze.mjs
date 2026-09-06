@@ -3811,6 +3811,44 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "f0420d773adedb482dc23f067e7736c395f7757b8782403d64e26ea87c29bc53"
       }
     ]
+  },
+  {
+    "id": "2026-09-06-chemistry-biology-nationwide-atlases",
+    "approvedAt": "2026-09-06",
+    "approvedBy": "product-owner",
+    "reason": "Implement the product owner's explicit correction that Chemistry and Biology must be nationwide native atlases like Mathematics and Physics, not single-profile LK/GK books.",
+    "scope": "Replace the scoped public Chemistry/Biology catalog entries with de-gym-chemie-bundesweit and de-gym-biologie-bundesweit using the existing native source-manifest, canonical-navigation, applicability, BookModel, PDF, render-manifest, original-sources and index pipeline. Book-local composition views derive from existing reviewed source mappings across all sixteen jurisdictions, with explicit source stage/profile and bounded subject duration policy; do not invent curricular applicability. Chemistry BB/BE profile fallback uses exactly four existing authored state views as source context, not generic inference; Biology upper-secondary applicability remains HE/BY and eighteen Chemistry goals remain outside the atlas pending authoritative scope. Preserve Mathematics and Physics artifact bytes, honest missing source evidence and book-only node-type classification outside the global release-model registry; no new atomicity, human, maturity, visualization or release approval. Update registered IDs and focused native-shape, source-matrix, browser, runtime and backend-catalog assertions while preserving the exact two-field click-triggered lookup, seven-field feedback binding, cockpit-local origin/return, fail-closed checks and package-consumer/privacy boundaries. Require the matching .inputs.json companion for both source-derived atlases and rerun its native current-source/output check during publication; bind book ID, landscape, semantic-kind ledger and source manifest to the actual native config and its checked output paths. Missing, stale or mismatched companions fail closed without an optional existence bypass. Advance only the four existing source/test bindings below and section 6.60 documentation; no new pins, primary runtime/tree changes, broad rebaseline or rewriting of prior section 6.59. No shared book/feedback runtime or backend implementation, API/storage/privacy semantics, OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource, coach permissions, launch/session/identity/locale/learning-state contract, portal, review case/fixture/artifact or deployment change.",
+    "target": "first-party-public-native-layer-a-nationwide-atlases-only",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-unchanged-submitted-contract-and-review-flow",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/scripts/testGoalBookPublication.ts",
+        "priorAuthorizedSha256": "d7f1dd816cd10857c1bbc4b2b50a1dfec01480b713f25d785f138cba4bc03c59",
+        "authorizedSha256": "e2be85c9ae8aa46d4594699e644b50868724103f52263f9d9fd886ce7657f162"
+      },
+      {
+        "path": "app/scripts/testGoalBookUi.ts",
+        "priorAuthorizedSha256": "30c0092873d659740587c0811d137994ae1a9b3f998b59cde9951f52f46a8eef",
+        "authorizedSha256": "3df0652bd00238350918595e509d2047450b139e2dd8ce25a71dc695e6b70682"
+      },
+      {
+        "path": "app/scripts/testLearnerGoalFeedbackUi.ts",
+        "priorAuthorizedSha256": "936d90410a1a030d638357167d02c44831ee1442aa03b6da6e266a5e2b6d83f7",
+        "authorizedSha256": "0892593508055ab455aead7b44d6501e22f3e2944c581d946a462a0bc2a0bd7d"
+      },
+      {
+        "path": "app/scripts/checkGoalBookPublication.ts",
+        "priorAuthorizedSha256": "bb17360cca71a1be9ae2c0a5ec5a7a74a1b55f243b6ae97d1ee2fcabd75e9827",
+        "authorizedSha256": "621b94a5a13807f349269fa7e258c7780e1cecb75763956de966b64e32068d8e"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "f0420d773adedb482dc23f067e7736c395f7757b8782403d64e26ea87c29bc53",
+        "authorizedSha256": "91b6bfe07990480c2bde2e908dea60e7931564f95d8cfde6d642d03efa73dfc4"
+      }
+    ]
   }
 ];
 

@@ -120,21 +120,29 @@ try {
   const destinationState = await page.getByTestId('feedback-state').textContent() ?? ''
   assert.deepEqual(JSON.parse(destinationState), { goalFeedbackOrigin: 'learner-cockpit' })
   assert(!/skillpilotId|learnerId|sessionId|chatSession|returnUrl/iu.test(destinationState))
-  for (const [subject, bookId] of [['chemistry', 'de-gym-chemie-lk'], ['biology', 'de-gym-biologie-gk']]) {
+  for (const [subject, bookId] of [['chemistry', 'de-gym-chemie-bundesweit'], ['biology', 'de-gym-biologie-bundesweit']]) {
+    const before = lookupUrls.length
     await page.goto(`${server.baseUrl}/scripts/fixtures/learnerGoalFeedbackUi.html?subject=${subject}`)
     await feedbackButton.waitFor()
     assert.equal(await page.getByRole('button', { name: /Feedback zu diesem Lernziel/u }).count(), 1)
-    const before = lookupUrls.length
+    assert.equal(lookupUrls.length, before, 'the nationwide subject does not introduce prefetching')
     await feedbackButton.click()
     await page.getByRole('heading', { name: 'Bestehender Feedbackweg' }).waitFor()
     assert.equal(lookupUrls.length, before + 1)
     assert.equal(lookupUrls.at(-1)?.searchParams.get('bookId'), bookId)
+    assert.deepEqual([...lookupUrls.at(-1)!.searchParams.keys()].sort(), ['bookId', 'goalId'])
     assert.equal(lookupCookieHeaders.at(-1), undefined)
     assert.equal(lookupRefererHeaders.at(-1), undefined)
     const params = new URLSearchParams(await page.getByTestId('feedback-search').textContent() ?? '')
     assert.deepEqual([...params.keys()].sort(), [...destinationParams.keys()].sort())
     assert.equal(params.get('bookId'), bookId)
     assert.equal(params.get('goalId'), goalId)
+    assert.equal(params.size, 7)
+    assert.equal(params.get('page'), String(binding.page))
+    assert.equal(params.get('edition'), binding.edition)
+    assert.equal(params.get('bookDigest'), binding.bookDigest)
+    assert.equal(params.get('goalFingerprint'), binding.goalFingerprint)
+    assert.equal(params.get('pageFingerprint'), binding.pageFingerprint)
     assert.deepEqual(JSON.parse(await page.getByTestId('feedback-state').textContent() ?? '{}'), { goalFeedbackOrigin: 'learner-cockpit' })
   }
   assert.equal(errors.length, 0, `Cockpit feedback UI browser errors:\n${errors.join('\n')}`)

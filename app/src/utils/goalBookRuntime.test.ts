@@ -341,8 +341,8 @@ const publicationIndexFixture = {
       renderManifestSha256: sha,
     },
   }, ...[
-    ['de-gym-chemie-lk', 'Chemie'],
-    ['de-gym-biologie-gk', 'Biologie'],
+    ['de-gym-chemie-bundesweit', 'Chemie'],
+    ['de-gym-biologie-bundesweit', 'Biologie'],
   ].map(([bookId, title]) => ({
     bookId, title, locale: 'de-DE', publicationMode: 'review', pageCount: 2,
     model: { url: `/lernzielbuch/${bookId}.book-model.json`, sha256: sha, modelDigest: sha },
@@ -352,8 +352,8 @@ const publicationIndexFixture = {
 }
 const publicationIndex = parseGoalBookPublicationIndex(publicationIndexFixture)
 for (const [bookId, landscapeId] of [
-  ['de-gym-chemie-lk', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'],
-  ['de-gym-biologie-gk', '08a43a1b-d97e-522c-9dfa-c950a493364e'],
+  ['de-gym-chemie-bundesweit', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'],
+  ['de-gym-biologie-bundesweit', '08a43a1b-d97e-522c-9dfa-c950a493364e'],
 ]) {
   assert.equal(selectGoalBookPublication(publicationIndex, `?book=${bookId}`).bookId, bookId)
   assert.equal(selectGoalBookPublication(publicationIndex, `?landscape=${landscapeId}`).bookId, bookId)

@@ -27,20 +27,20 @@ export const GOAL_BOOK_PUBLICATION_REGISTRY = Object.freeze([
     configPath: 'scripts/config/goal-books/de-gym-physics-national-atlas.json',
   }),
   Object.freeze({
-    bookId: 'de-gym-chemie-lk',
+    bookId: 'de-gym-chemie-bundesweit',
     landscapeId: 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0',
     edition: 'curricular-atomic-v1',
     subject: 'chemistry',
-    artifactStem: 'de-gym-chemie-lk',
-    configPath: 'scripts/config/goal-books/de-gym-chemistry-lk.json',
+    artifactStem: 'de-gym-chemie-bundesweit',
+    configPath: 'scripts/config/goal-books/de-gym-chemistry-national-atlas.json',
   }),
   Object.freeze({
-    bookId: 'de-gym-biologie-gk',
+    bookId: 'de-gym-biologie-bundesweit',
     landscapeId: '08a43a1b-d97e-522c-9dfa-c950a493364e',
     edition: 'curricular-atomic-v1',
     subject: 'biology',
-    artifactStem: 'de-gym-biologie-gk',
-    configPath: 'scripts/config/goal-books/de-gym-biology-gk.json',
+    artifactStem: 'de-gym-biologie-bundesweit',
+    configPath: 'scripts/config/goal-books/de-gym-biology-national-atlas.json',
   }),
 ]) satisfies readonly GoalBookPublicationDefinition[]
 

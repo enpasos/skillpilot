@@ -227,12 +227,16 @@ externalPrerequisites[0].landscapeId = MATHEMATICS_LANDSCAPE_ID
 const physicsFixture = `${JSON.stringify(physicsModel, null, 2)}\n`
 const physicsFixtureSha256 = `sha256:${createHash('sha256').update(physicsFixture).digest('hex')}`
 const additionalSubjectFixtures = [
-  ['de-gym-chemie-lk', 'Chemie', 'Chemistry', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'LK'],
-  ['de-gym-biologie-gk', 'Biologie', 'Biology', '08a43a1b-d97e-522c-9dfa-c950a493364e', 'GK'],
-].map(([bookId, label, labelEn, landscapeId, profile]) => {
+  ['de-gym-chemie-bundesweit', 'Chemie', 'Chemistry', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'],
+  ['de-gym-biologie-bundesweit', 'Biologie', 'Biology', '08a43a1b-d97e-522c-9dfa-c950a493364e'],
+].map(([bookId, label, labelEn, landscapeId]) => {
   const fixture = JSON.parse(physicsFixture.replaceAll(PHYSICS_LANDSCAPE_ID, landscapeId))
   fixture.book.id = bookId
-  fixture.book.title = `Lernzielbuch ${label} – Gymnasium, Kompositionsansicht ${profile}`
+  fixture.book.title = `Lernzielbuch ${label} – Gymnasium bundesweit`
+  fixture.book.scope = { schoolForm: 'Gymnasium' }
+  fixture.navigation.canonicalProjectionSource.scope = {
+    jurisdiction: 'DE', schoolForm: 'Gymnasium', stage: 'CrossStage',
+  }
   const body = `${JSON.stringify(fixture, null, 2)}\n`
   return { bookId, label, labelEn, title: fixture.book.title, body, digest: fixture.digest,
     sha256: `sha256:${createHash('sha256').update(body).digest('hex')}` }
@@ -380,6 +384,7 @@ try {
   let imageRequests = 0
   let sourceRequests = 0
   let physicsSourceRequests = 0
+  const additionalSourceRequests = new Map<string, number>()
   const compositionViewRequests: URL[] = []
 
   page.on('pageerror', (error) => browserErrors.push(error.message))
@@ -422,6 +427,19 @@ try {
   for (const fixture of additionalSubjectFixtures) {
     await page.route(`**/lernzielbuch/${fixture.bookId}.book-model.json`, async (route) => {
       await route.fulfill({ status: 200, contentType: 'application/json', body: fixture.body })
+    })
+    await page.route(`**/lernzielbuch/${fixture.bookId}.original-sources.json`, async (route) => {
+      additionalSourceRequests.set(fixture.bookId, (additionalSourceRequests.get(fixture.bookId) ?? 0) + 1)
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+        ...sourcesFixture,
+        bookId: fixture.bookId,
+        bookDigest: fixture.digest,
+        documents: sourcesFixture.documents.map((document) => ({
+          ...document,
+          title: `${fixture.label}: ${document.title}`,
+          url: `https://education.example/${fixture.bookId}/${document.id}.pdf`,
+        })),
+      }) })
     })
   }
   await page.route(`**${SOURCES_PATH}`, async (route) => {
@@ -967,11 +985,35 @@ try {
     await page.getByRole('navigation', { name: 'Fach auswählen' })
       .getByRole('link', { name: fixture.label, exact: true }).click()
     await page.getByRole('heading', { name: fixture.title }).waitFor()
-    assert(page.url().includes(`?book=${fixture.bookId}`), 'subject navigation keeps the scoped book ID')
+    assert(page.url().includes(`?book=${fixture.bookId}`), 'subject navigation keeps the nationwide atlas ID')
     assert(await page.getByTestId('goal-book-pdf').getAttribute('href') === `/lernzielbuch/${fixture.bookId}.pdf`, 'PDF follows the selected subject')
+    const atlasFilters = page.getByRole('group', { name: 'Curriculum filtern' })
+    assert(await atlasFilters.getByLabel('Bundesland').count() === 1
+      && await atlasFilters.getByLabel('Stufe').count() === 1
+      && await atlasFilters.getByLabel('Kursprofil').count() === 1,
+    'each new atlas exposes the same state, stage and course-profile filters')
+    assert((additionalSourceRequests.get(fixture.bookId) ?? 0) === 0, 'atlas source metadata remains lazy')
+    const matrix = page.getByRole('heading', { name: 'Curriculare Geltung' }).locator('xpath=ancestor::section[1]')
+    await matrix.getByText('Vollständige Geltungsmatrix anzeigen', { exact: true }).click()
+    const originalSource = matrix.getByRole('link', { name: `${fixture.label}: Originalquelle Hessen G8`, exact: true })
+    await originalSource.first().waitFor()
+    assert(additionalSourceRequests.get(fixture.bookId) === 1, 'the subject matrix shares one bound original-source request')
+    assert(await originalSource.first().getAttribute('href') === `https://education.example/${fixture.bookId}/he-g8.pdf`, 'source links belong to the selected atlas, not another subject')
+    assert(await matrix.getByRole('table').count() === 1
+      && (await matrix.innerText()).includes('Keine Originalquelle für diese Geltungszeile zugeordnet.'),
+    'the atlas shows exact applicability rows and retains honest source gaps')
     const link = page.getByTestId('goal-book-page').getByRole('link', { name: 'Feedback zu „Natürliche Zahlen vergleichen“' })
     const url = new URL(await link.getAttribute('href') ?? '', 'https://skillpilot.test')
-    assert(url.searchParams.get('bookId') === fixture.bookId && url.searchParams.size === 7, 'Chemistry/Biology retain the exact seven-field feedback binding')
+    assert(url.origin === 'https://skillpilot.com' && url.pathname === '/lernziel-feedback'
+      && url.searchParams.get('bookId') === fixture.bookId
+      && url.searchParams.get('goalId') === FIRST_GOAL_ID
+      && url.searchParams.get('edition') === 'curricular-atomic-v1'
+      && url.searchParams.get('bookDigest') === fixture.digest
+      && url.searchParams.get('goalFingerprint')?.startsWith('sha256:')
+      && url.searchParams.get('pageFingerprint')?.startsWith('sha256:')
+      && Number(url.searchParams.get('page')) > 0
+      && [...url.searchParams.keys()].sort().join(',') === 'bookDigest,bookId,edition,goalFingerprint,goalId,page,pageFingerprint',
+    'Chemistry/Biology retain exactly the seven-field production feedback binding')
     await page.getByRole('button', { name: 'EN', exact: true }).click()
     assert(await page.getByRole('navigation', { name: 'Select subject' }).getByRole('link', { name: fixture.labelEn, exact: true }).count() === 1, 'English subject labels are available')
     await page.getByRole('button', { name: 'DE', exact: true }).click()

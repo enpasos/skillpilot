@@ -31,32 +31,9 @@ Physics snapshot.
 
 ## Chemistry and Biology feedback books
 
-The Chemistry and Biology ledgers are self-contained node-type publication
-profiles, using the same closed schema and fingerprint contract as Physics.
-Their `authoritative` status binds the current **node type** for the native
-book builder; it is not a human approval, a positive semantic-atomicity verdict,
-or a description, memory, visualization, source-coverage or maturity upgrade.
-The matching `*.goal-book-type-classification-v1.receipt.json` files record
-the actual source bindings and separate existing atomicity evidence from newly
-inspected ordinary technical content leaves. In particular, Chemistry's 177
-type-only classifications do not create the missing atomicity review records.
-Canonical goals and all existing QA ledgers remain unchanged.
-
-These two review-mode books bind existing single composition views:
-
-- `de-gym-chemie-lk`: `de-de-gym-chemistry-lk`, CrossStage/LK.
-- `de-gym-biologie-gk`: `de-de-gym-biology-gk`, CrossStage/GK.
-
-They are not nationwide atlas unions and do not claim complete Bundesland,
-duration-model or original-source coverage. Their native original-source
-sidecars contain no documents or evidence because these single-view models do
-not publish an atlas applicability matrix. Empty sidecars do not mean that the
-canonical goals have no curricular sources. The books publish only the goals
-in their bound views; out-of-view goals do not acquire feedback bindings.
-
-Biology currently has no primary goal visualizations. Its empty visualization
-input lives with the book configuration, outside the global image-QA registry,
-and creates neither image approvals nor a new visualization rollout. Chemistry
-retains its existing visualization QA, including all human decisions. The two
-Mathematics/Physics book artifact families remain byte-identical when these
-scoped publications are added to the catalog.
+The scoped Chemistry and Biology publication inputs live in the sibling
+[`goal-book-publication`](../goal-book-publication/README.md) directory.
+They must not be stored here, including in subdirectories: the composition-view
+validator recursively discovers `*.semantic-kinds.json` files in `release-model`
+and applies their authoritative classifications to **all** composition views.
+Book-only type decisions must not implicitly change that global validation scope.
