@@ -67,13 +67,25 @@ const registryFixture = {
       renderManifestUrl: '/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json',
       renderManifestSha256: `sha256:${'d'.repeat(64)}`,
     },
-  }],
+  }, ...verified.index.books.slice(2)],
 }
 assert.equal(
   parseGoalBookPublicationIndex(JSON.stringify(registryFixture)).books.length,
-  2,
-  'the closed registry accepts the complete mathematics and physics catalog',
+  4,
+  'the closed registry accepts both atlases and the scoped chemistry and biology books',
 )
+for (const [bookId, profile] of [
+  ['de-gym-chemie-lk', 'LK'],
+  ['de-gym-biologie-gk', 'GK'],
+] as const) {
+  const scoped = verifiedBooks.find(({ model }) => model.book.id === bookId)
+  assert.ok(scoped, `missing native scoped publication ${bookId}`)
+  assert.ok(scoped.model.pages.length > 0)
+  assert.equal(scoped.model.pages.length, scoped.model.book.pageCount)
+  assert.equal(scoped.model.book.scope.courseProfile, profile)
+  assert.equal(scoped.model.book.scope.stage, 'CrossStage')
+  assert.ok(scoped.model.source.compositionViewPath.endsWith('.view.json'), 'the publication binds its existing single composition view')
+}
 assert.throws(
   () => parseGoalBookPublicationIndex(JSON.stringify({
     ...registryFixture,
@@ -85,10 +97,9 @@ assert.throws(
 assert.throws(
   () => parseGoalBookPublicationIndex(JSON.stringify({
     ...registryFixture,
-    books: [...registryFixture.books.slice(0, 1), {
-      ...registryFixture.books[1],
-      bookId: 'unregistered-book',
-    }],
+    books: registryFixture.books.map((entry, index) => index === 1
+      ? { ...entry, bookId: 'unregistered-book' }
+      : entry),
   })),
   /closed publication registry/u,
   'an unregistered publication fails closed',

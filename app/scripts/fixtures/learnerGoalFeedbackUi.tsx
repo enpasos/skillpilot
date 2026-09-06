@@ -15,6 +15,12 @@ const eligibleGoal = {
   type: 'atomic' as const,
   contains: [],
 }
+const selectedSubject = new URLSearchParams(window.location.search).get('subject')
+const subjectLandscapeId = selectedSubject === 'chemistry'
+  ? 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
+  : selectedSubject === 'biology'
+    ? '08a43a1b-d97e-522c-9dfa-c950a493364e'
+    : eligibleGoal.landscapeId
 
 const FeedbackDestination = () => {
   const location = useLocation()
@@ -34,7 +40,7 @@ const Fixture = () => (
         path="/learner"
         element={(
           <main className="mx-auto w-full max-w-3xl p-4">
-            <LearnerGoalFeedbackAction goal={eligibleGoal} />
+            <LearnerGoalFeedbackAction goal={{ ...eligibleGoal, landscapeId: subjectLandscapeId }} />
             <LearnerGoalFeedbackAction
               goal={{
                 ...eligibleGoal,

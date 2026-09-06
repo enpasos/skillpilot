@@ -3180,3 +3180,85 @@ Regressionen. Sie gestattet keine pauschale Neubasierung, Abschwächung von
 Gates oder Änderung von Verträgen, Reviewfällen, Berechtigungen, Speicherung
 oder Sicherheitsverhalten. Bei unklarem oder höherem Risiko bleibt die
 gesonderte Rückfrage erforderlich.
+
+### 6.59 Eng begrenzte Ausnahme: öffentliches Direktfeedback und Chemie-/Biologiebücher
+
+Der Product Owner hat am **6. September 2026** ausdrücklich freigegeben,
+Lernziel-Direktfeedback auf der öffentlichen Curricula-Seite als primären
+Beitragsweg darzustellen, die bisherigen Issues-/PR-Zähler zu entfernen und
+GitHub als sekundären Weg für größere Themen beizubehalten. Die zugehörige
+deutsche und englische Whitepaper- und Comicdarstellung darf entsprechend
+angepasst werden. Zusätzlich sind echte native Lernzielbücher für Chemie und
+Biologie sowie deren Anbindung an den bereits vorhandenen Feedbackweg aus
+Abschnitten 6.18 und 6.19 freigegeben.
+
+Die beiden neuen Bücher heißen `de-gym-chemie-lk` und `de-gym-biologie-gk`.
+Sie verwenden die bestehenden fachlichen CrossStage-Kompositionsansichten
+mit dem jeweiligen Kursprofil LK beziehungsweise GK. Sie werden nicht als
+bundesweite Vollatlanten oder als neue fachliche Curriculum-Abdeckung
+ausgegeben. Konfiguration, BookModel, PDF, Render-Manifest und
+Originalquellen-Metadaten entstehen über den vorhandenen nativen
+Publikationspfad und werden im bestehenden öffentlichen Buchindex registriert.
+Die vorhandenen Mathematik- und Physik-Buchartefakte bleiben bytegleich.
+
+Die ergänzten `semanticKind`-Ledgers und ihre Typbelege klassifizieren nur den
+Knotentyp für die Buchprojektion. Sie sind keine neue positive fachliche
+Atomicity-, Human-Review-, Maturity- oder Releaseentscheidung. Insbesondere
+werden die 177 gewöhnlichen Chemie-Inhalts-/Prozesskompetenzblätter ohne
+Atomicity-Review nicht nachträglich als fachlich geprüft ausgegeben. Ihr
+Knotentyp wurde anhand der vorhandenen Texte und Marker abgeglichen; die
+kanonischen Ziele und Atomicity-Ledgers bleiben unverändert. Der leere,
+buchlokale Visualisierungsinput
+`app/scripts/config/goal-books/de-gym-biology-gk.visualization-input.json`
+liegt außerhalb der globalen Bild-QA-Registry. Er erteilt keine Bildfreigabe
+und startet keinen Biologie-Bildrollout. Bestehende Publikations-, Quellen-,
+Bildfreigabe- und Integritätsprüfungen bleiben streng.
+
+Das öffentliche Buchregister und die vier lokalisierten Fachbeschriftungen
+in `GoalBookView` werden um die beiden tatsächlichen Bücher ergänzt. Die
+vorhandene Cockpit-Aktion darf nun auch für registrierte Chemie- und
+Biologieziele denselben bewussten Current-Binding-Lookup verwenden. Dieser
+bleibt ein begrenzter, nicht speichernder Lesezugriff mit genau `bookId` und
+`goalId`; es gibt kein Vorabladen. Feedbacklinks und Kontextprüfung behalten
+exakt `bookId`, `goalId`, `edition`, `goalFingerprint`, `pageFingerprint`,
+`bookDigest` und `page`. Es werden keine Lernenden-, Session-, Chat- oder
+Lernstandsdaten ergänzt. Cockpit-Herkunftsmarker und Rücksprung bleiben
+unverändert browserlokal; unbekannte Ziele, zusätzliche Parameter und falsche
+Publikationsbindungen bleiben ungültig.
+
+Die bestehende Backend-Publikationsregistry verarbeitet den erweiterten
+öffentlichen Index ohne Implementierungsänderung. Eine zusätzliche
+Repository-Katalogregression prüft die echten neuen Buchbindungen; die
+vorhandenen Backend-Fixtures und Fail-closed-Tests bleiben unverändert.
+Browser- und Publikationsregressionen werden um Fachwahl, native Buchbindung,
+die sieben Feedbackfelder und den unveränderten Cockpit-Übertragungsrahmen
+ergänzt. Die bestehende Package-Consumer-Isolation bleibt unverändert.
+
+Die genaue Hashfortschreibung betrifft ausschließlich diese bereits
+gebundenen Dateien und diesen Dokumentationsnachtrag:
+
+- `app/src/views/GoalBookView.tsx`;
+- `app/scripts/testGoalBookPublication.ts`;
+- `app/scripts/testGoalBookUi.ts`;
+- `app/scripts/testLearnerGoalFeedbackUi.ts`;
+- `app/scripts/fixtures/learnerGoalFeedbackUi.tsx`;
+- `docs/deploy/openai-plugin-v1-review-freeze.md`.
+
+Record, Runtime-Checker und Regressionserwartung erhalten denselben neuen
+append-only Eintrag. Alle früheren Einträge und eingereichten Baselines
+bleiben unverändert. Die zusätzliche Regression sichert, dass dabei kein
+bisher ungepinnter Pfad neu gebunden und keine primäre Runtime- oder Baumkette
+geändert wird. Insbesondere erhalten das bisher ungepinnte Buchregister,
+Buchdaten, öffentliche Curricula-/Whitepaper-/Comicdarstellung und deren
+ungepinnte Tests keine neue Dauerbindung. Die Comic-Transparenzkorrektur
+betrifft nur die beiden Bilddigests der vorhandenen `champion-comic`-Sammlung;
+sie ändert keine Providerzählungen oder sonstige Provenienzbehauptungen.
+
+Diese Freigabe erweitert allein den öffentlichen First-Party-Buch- und
+Feedback-Fachumfang. Sie schafft keine MCP- oder Coach-Werkzeugberechtigung.
+OpenAI `1.0.0`, Claude `1.1.1`, ihre Pakete, MCP/OAuth, Tools, Schemas,
+MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/Locale-/Lernzustandsverträge,
+API-, Speicher- und Datenschutzsemantik, Portalwerte, Reviewfälle,
+OpenAI-Review-Fixtures und Reviewartefakte bleiben unverändert. Der
+Portalreview wird weder zurückgezogen noch neu eingereicht. Es erfolgt kein
+Deployment und keine Wiederaufnahme einer allgemeinen Curriculum-QS.

@@ -11,6 +11,7 @@ import { BadgeCheck, Trophy } from 'lucide-react'
 import { CANONICAL_GYMNASIUM_ROOT_ID, getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
 import { getCurriculaChampionCopy } from '../utils/curriculaChampionCopy'
 import { getCurriculaViewCopy } from '../utils/curriculaViewCopy'
+import { goalBookDefinitionById, goalBookRoute } from '../utils/goalBookPublicationRegistry'
 import {
   buildGymnasiumSubjectQualityRows,
   CURRICULUM_QUALITY_FILTER_AVAILABLE,
@@ -690,18 +691,74 @@ export const CurriculaView: React.FC = () => {
       <div className="max-w-5xl mx-auto p-6 space-y-10">
         <PublicPageHeader
           className="pt-10 md:pt-0"
-          title={t.startPage.cards.curricula?.title || 'Curricula'}
-          subtitle={t.curriculaPage.subtitle}
+          title={curriculaViewCopy.pageTitle}
+          subtitle={curriculaViewCopy.pageSubtitle}
         />
+
+        <section
+          aria-labelledby="curricula-feedback-title"
+          data-testid="curricula-feedback-entry"
+          className="rounded-3xl border border-sky-200 bg-sky-50/80 p-6 shadow-sm dark:border-sky-900 dark:bg-sky-950/30 md:p-8"
+        >
+          <h2 id="curricula-feedback-title" className="text-2xl font-semibold text-text-primary">
+            {curriculaViewCopy.feedbackTitle}
+          </h2>
+          <p className="mt-2 text-text-secondary">{curriculaViewCopy.feedbackDescription}</p>
+          <p className="mt-3 text-sm text-text-primary">{curriculaViewCopy.feedbackSteps}</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {curriculaViewCopy.feedbackSubjects.map(({ label, bookId, scopeNote }) => (
+              <div key={bookId} data-testid="curricula-feedback-subject" className="flex min-w-0 flex-col gap-3 rounded-xl border border-border-color bg-white/80 p-4 dark:bg-slate-900/60">
+                <h3 className="font-semibold text-text-primary">{label}</h3>
+                {scopeNote && <p className="text-xs text-text-secondary">{scopeNote}</p>}
+                {goalBookDefinitionById(bookId) ? (
+                  <Link
+                    to={goalBookRoute(bookId)}
+                    aria-label={`${label}: ${curriculaViewCopy.openGoals}`}
+                    className="mt-auto rounded-lg bg-sky-700 px-3 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                  >
+                    {curriculaViewCopy.openGoals}
+                  </Link>
+                ) : (
+                  <>
+                    <p className="text-xs text-text-secondary">{curriculaViewCopy.feedbackNotAvailable}</p>
+                    <a
+                      href="https://github.com/enpasos/skillpilot/issues"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${label}: ${curriculaViewCopy.githubFallback}`}
+                      className="mt-auto text-sm text-sky-700 underline underline-offset-4 dark:text-sky-300"
+                    >
+                      {curriculaViewCopy.githubFallback}
+                    </a>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-sm text-text-secondary">{curriculaViewCopy.feedbackAccessNote}</p>
+          <div className="mt-6 border-t border-border-color pt-4">
+            <h3 className="font-semibold text-text-primary">{curriculaViewCopy.githubTitle}</h3>
+            <p className="mt-2 text-sm text-text-secondary">{curriculaViewCopy.githubDescription}</p>
+            <p className="mt-2 text-sm text-text-secondary">{curriculaViewCopy.otherCurriculaFeedback}</p>
+            <a
+              href="https://github.com/enpasos/skillpilot/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-sm text-sky-700 underline underline-offset-4 dark:text-sky-300"
+            >
+              {curriculaViewCopy.githubAction}
+            </a>
+          </div>
+        </section>
 
         <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-3xl border border-border-color p-6 md:p-8 shadow-xl">
           <div className="flex flex-col gap-6">
             <div>
               <h2 className="text-2xl font-semibold text-text-primary">
-                {t.curriculaPage.intro.title}
+                {curriculaViewCopy.championIntroTitle}
               </h2>
               <p className="text-text-secondary mt-2">
-                {t.curriculaPage.intro.description}
+                {curriculaViewCopy.championIntroDescription}
               </p>
             </div>
             <div className="rounded-2xl border border-border-color bg-white/70 dark:bg-slate-900/40 p-4">
@@ -713,7 +770,7 @@ export const CurriculaView: React.FC = () => {
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {t.curriculaPage.intro.panels.map((panel, index) => (
+              {curriculaViewCopy.championPanels.map((panel, index) => (
                 <div
                   key={`${panel.title}-${index}`}
                   className="rounded-2xl border border-border-color bg-white/60 dark:bg-slate-900/30 p-4"
@@ -734,7 +791,7 @@ export const CurriculaView: React.FC = () => {
                   {t.curriculaPage.registration.title}
                 </h2>
                 <p className="text-text-secondary mt-2">
-                  {t.curriculaPage.registration.description}
+                  {curriculaViewCopy.registrationDescription}
                 </p>
               </div>
               <button
@@ -1342,7 +1399,7 @@ export const CurriculaView: React.FC = () => {
                             <div className="flex flex-wrap gap-4 text-xs text-text-secondary">
                               <div className="flex flex-col">
                                 <span className="uppercase tracking-wider" title={championCopy.achievementsTooltip}>
-                                  {t.curriculaPage.table.achievements}
+                                  {curriculaViewCopy.learningProgressLabel}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
                                   {champion.masteredCount ?? 0}
@@ -1362,22 +1419,6 @@ export const CurriculaView: React.FC = () => {
                                   </span>
                                 </div>
                               )}
-                              <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title={championCopy.issuesTooltip}>
-                                  {t.curriculaPage.table.issues}
-                                </span>
-                                <span className="text-sm font-semibold text-text-primary">
-                                  {champion.issuesCount}
-                                </span>
-                              </div>
-                              <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title={championCopy.pullRequestsTooltip}>
-                                  {t.curriculaPage.table.prs}
-                                </span>
-                                <span className="text-sm font-semibold text-text-primary">
-                                  {champion.pullRequestsCount}
-                                </span>
-                              </div>
                             </div>
                           </div>
                           )
